@@ -37,7 +37,6 @@ enum TransactionStatus {
   STATUS_UNKNOWN = 0;
   STATUS_PENDING = 1;
   STATUS_FINALIZED = 2;
-  STATUS_EXECUTED = 3;
   STATUS_SEALED = 4;
 }
 
@@ -55,7 +54,7 @@ message Collection {
 }
 
 message CollectionGuarantee {
-  bytes collectionHash = 1;
+  bytes collection_id = 1;
   repeated bytes signatures = 2;
 }
 

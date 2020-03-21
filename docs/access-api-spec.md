@@ -85,7 +85,7 @@ The following methods query information about [block headers](#block-headers).
 `GetLatestBlockHeader` gets the latest sealed or unsealed block header.
 
 ```
-rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderResponse);
+rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderResponse)
 ```
 
 <details>
@@ -93,7 +93,7 @@ rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderRespo
 
   ```
   message GetLatestBlockHeaderRequest {
-    bool is_sealed;
+    bool is_sealed
   }
   ```
 </details>
@@ -103,7 +103,7 @@ rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderRespo
   
   ```
   message BlockHeaderResponse {
-    flow.BlockHeader block;
+    flow.BlockHeader block
   }
   ```
 </details>
@@ -113,7 +113,7 @@ rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderRespo
 `GetBlockHeaderByID` gets a block header by ID.
 
 ```
-rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse);
+rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 ```
 
 <details>
@@ -121,7 +121,7 @@ rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 
   ```
   message GetBlockHeaderByIDRequest {
-    bytes id;
+    bytes id
   }
   ```
 </details>
@@ -131,7 +131,7 @@ rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
   
   ```
   message BlockHeaderResponse {
-    flow.BlockHeader block;
+    flow.BlockHeader block
   }
   ```
 </details>
@@ -141,7 +141,7 @@ rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 `GetBlockHeaderByHeight` gets a block header by height.
 
 ```
-rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderResponse);
+rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderResponse)
 ```
 
 <details>
@@ -149,7 +149,7 @@ rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderR
 
   ```
   message GetBlockHeaderByHeightRequest {
-    uint64 height;
+    uint64 height
   }
   ```
 </details>
@@ -159,7 +159,7 @@ rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderR
   
   ```
   message BlockHeaderResponse {
-    flow.BlockHeader block;
+    flow.BlockHeader block
   }
   ```
 </details>
@@ -175,7 +175,7 @@ The following methods query information about [full blocks]().
 `GetLatestBlock` gets the full payload of the latest sealed or unsealed block.
 
 ```
-rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse);
+rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse)
 ```
 
 <details>
@@ -183,7 +183,7 @@ rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse);
 
   ```
   message GetLatestBlockRequest {
-    bool is_sealed;
+    bool is_sealed
   }
   ```
 </details>
@@ -193,7 +193,7 @@ rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse);
   
   ```
   message BlockResponse {
-    flow.Block block;
+    flow.Block block
   }
   ```
 </details>
@@ -203,7 +203,7 @@ rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse);
 `GetBlockByID` gets a full block by ID.
 
 ```
-rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse);
+rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse)
 ```
 
 <details>
@@ -211,7 +211,7 @@ rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse);
 
   ```
   message GetBlockByIDRequest {
-    bytes id;
+    bytes id
   }
   ```
 </details>
@@ -221,7 +221,7 @@ rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse);
   
   ```
   message BlockResponse {
-    flow.Block block;
+    flow.Block block
   }
   ```
 </details>
@@ -231,7 +231,7 @@ rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse);
 `GetBlockByHeight` gets a full block by height.
 
 ```
-rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse);
+rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse)
 ```
 
 <details>
@@ -239,7 +239,7 @@ rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse);
 
   ```
   message GetBlockByHeightRequest {
-    uint64 height;
+    uint64 height
   }
   ```
 </details>
@@ -249,7 +249,7 @@ rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse);
   
   ```
   message BlockResponse {
-    flow.Block block;
+    flow.Block block
   }
   ```
 </details>
@@ -265,7 +265,7 @@ The following methods query information about [collections]().
 `GetCollectionByID` gets a collection by ID.
 
 ```
-rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse);
+rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse)
 ```
 
 <details>
@@ -273,7 +273,7 @@ rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse);
 
   ```
   message GetCollectionByIDRequest {
-    bytes id;
+    bytes id
   }
   ```
 </details>
@@ -283,7 +283,7 @@ rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse);
   
   ```
   message CollectionResponse {
-    flow.Collection collection;
+    flow.Collection collection
   }
   ```
 </details>
@@ -299,7 +299,7 @@ The following methods can be used to submit transactions and fetch their results
 `SendTransaction` submits a transaction to the network.
 
 ```
-rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse);
+rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse)
 ```
 
 `SendTransaction` determines the correct cluster of collector nodes that is responsible for collecting the transaction based on the hash of the transaction and forwards the transaction to that cluster.
@@ -311,7 +311,7 @@ rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse);
 
   ```
   message SendTransactionRequest {
-    flow.Transaction transaction;
+    flow.Transaction transaction
   }
   ```
 </details>
@@ -319,11 +319,11 @@ rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse);
 <details>
   <summary>Response</summary>
   
-  `SendTransactionResponse` message contains the hash of the submitted transaction.
+  `SendTransactionResponse` message contains the ID of the submitted transaction.
 
   ```
   message SendTransactionResponse {
-    bytes id;
+    bytes id
   }
   ```
 </details>
@@ -337,17 +337,17 @@ If the transaction is not found in the access node cache, the request is forward
 _Currently, only transactions within the current epoch can be queried._
 
 ```
-rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse);
+rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
-  `GetTransactionRequest` contains the hash of the transaction that is being queried.
+  `GetTransactionRequest` contains the ID of the transaction that is being queried.
 
   ```
   message GetTransactionRequest {
-    bytes id;
+    bytes id
   }
   ```
 </details>
@@ -359,7 +359,7 @@ rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse);
 
   ```
   message TransactionResponse {
-    flow.Transaction transaction;
+    flow.Transaction transaction
   }
   ```
 </details>
@@ -369,7 +369,7 @@ rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse);
 `GetTransactionResult` gets the execution result of a transaction.
 
 ```
-rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultResponse);
+rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultResponse)
 ```
 
 <details>
@@ -377,7 +377,7 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
 
   ```
   message GetTransactionRequest {
-    bytes id;
+    bytes id
   }
   ```
 </details>
@@ -387,8 +387,8 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
   
   ```
   message TransactionResultResponse {
-    flow.TransactionStatus status;
-    repeated flow.Event events;
+    flow.TransactionStatus status
+    repeated flow.Event events
   }
   ```
 </details>
@@ -412,7 +412,7 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 
   ```
   message GetAccountRequest {
-    bytes address;
+    bytes address
   }
   ```
 </details>
@@ -537,7 +537,7 @@ message AccountPublicKey {
 | Field         | Description    |
 |---------------|----------------|
 | public_key    | The public key encoded as bytes |
-| sign_algo     | The signature scheme (currently ECDSA-P256 or ECDSA-SECp256k1) |
+| sign_algo     | The signature algorithm (currently ECDSA-P256 or ECDSA-SECp256k1) |
 | hash_algo     | The hashing algorithm (SHA2-256 or SHA3-256) |
 | weight        | The weight assigned to this key |
 
@@ -579,11 +579,11 @@ A block may be sealed or unsealed depending on whether it has been computed and 
  
 ```
 message Block {
-  string chain_id
-  uint64 number
-  bytes previous_block_hash
+  bytes id
+  bytes parent_id
+  uint64 height
   google.protobuf.Timestamp timestamp
-  repeated SignedCollectionHash signed_collection_hashes
+  repeated CollectionGuarantee collection_guarantees
   repeated BlockSeal block_seals
   repeated bytes signatures
 }
@@ -591,12 +591,12 @@ message Block {
 
 | Field                    | Description    |
 | -------------------------|----------------|
-| chainID                  | Unique ID of the Flow blockchain |
-| number                   | The number of the block in the chain |
-| previous_block_hash      | Hash of the previous block in the chain |
+| id                       | The hash of the entire block payload, acts as the unique identifier for the block |
+| height                   | The height of the block in the chain |
+| parent_id                | ID of the previous block in the chain |
 | timestamp                | Timestamp when the block was proposed |
-| signed_collection_hashes | A list of hashes of all the collections in the block |
-| blockSeals               | List of block seal hashes |
+| collection_guarantees    | List of IDs of all the collections in the block |
+| block_seals              | List of block seals |
 | signatures               | Signatures of the consensus nodes |
 
 ### Block Header
@@ -607,28 +607,26 @@ The latest sealed block header represents the last block that was added to the c
 
 ```
 message BlockHeader {
-  bytes hash
-  bytes previous_block_hash
-  uint64 number
+  bytes id
+  bytes parent_id
+  uint64 height
 }
 ```
 
 | Field               | Description   |
 |---------------------|---------------|
-| hash                | The hash of the entire block payload, acts as the unique identifier for the block |
-| previous_block_hash | Hash of the previous block in the chain |
-| number              | The number of the block in the chain |
+| id                  | The hash of the entire block payload, acts as the unique identifier for the block |
+| parent_id           | ID of the previous block in the chain |
+| height              | The height of the block in the chain |
 
 ### Event
 
 An event is emitted as the result of a transaction execution. Events can either be user-defined events originating from a Cadence smart contract, or Flow system events such as `AccountCreated`, `AccountUpdated`, etc.
 
-More information on user-defined events can be found [here](https://github.com/dapperlabs/flow-go/tree/master/language/docs).
-
 ```
 message Event {
   string type
-  bytes transaction_hash
+  bytes transaction_id
   uint32 index
   bytes payload
 }
@@ -637,6 +635,6 @@ message Event {
 | Field            | Description    |
 | -----------------|---------------| 
 | type             | The fully-qualified unique type identifier of the event |
-| transaction_hash | Hash of the transaction associated with this event |
+| transaction_id   | ID of the transaction associated with this event |
 | index            | index defines the ordering of events in a transaction. The first event emitted has index 0, the second has index 1, and so on |
-| payload          |  Event fields encoded as XDR bytes.|
+| payload          |  Event fields encoded as  [Cadence JSON values]()|
