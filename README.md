@@ -59,8 +59,11 @@ You can find an in-depth description of each of the above features in the [Flow 
 - [Accounts, Keys & Signing](/docs/accounts-and-keys.md)
 - [Flow Access API](/docs/access-api-spec.md)
   - Transaction Submission
-  - Block Formation
 - Using the Emulator
+- [Technical Papers](https://www.onflow.org/technical-paper)
+  - Technical Paper 1: [Separating Consensus & Compute](https://arxiv.org/pdf/1909.05821.pdf)
+  - Technical Paper 2: [Block Formation](https://arxiv.org/pdf/2002.07403.pdf)
+  - Technical Paper 3: [Execution Verification](https://arxiv.org/pdf/1909.05832.pdf)
 
 ## Tools
 
