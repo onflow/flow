@@ -68,7 +68,7 @@ If a ping request returns an error or times out, it can be assumed that the Acce
 
 <details>
   <summary>Response</summary>
-  
+
   ```
   message PingResponse {}
   ```
@@ -88,6 +88,26 @@ The following methods query information about [block headers](#block-headers).
 rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderResponse);
 ```
 
+<details>
+  <summary>Request</summary>
+
+  ```
+  message GetLatestBlockHeaderRequest {
+    bool is_sealed;
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message BlockHeaderResponse {
+    flow.BlockHeader block;
+  }
+  ```
+</details>
+
 #### GetBlockHeaderByID
 
 `GetBlockHeaderByID` gets a block header by ID.
@@ -95,6 +115,26 @@ rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderRespo
 ```
 rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse);
 ```
+
+<details>
+  <summary>Request</summary>
+
+  ```
+  message GetBlockHeaderByIDRequest {
+    bytes id;
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message BlockHeaderResponse {
+    flow.BlockHeader block;
+  }
+  ```
+</details>
 
 #### GetBlockHeaderByHeight
 
@@ -104,13 +144,25 @@ rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderResponse);
 ```
 
-**BlockHeaderResponse**
+<details>
+  <summary>Request</summary>
 
-```
-message BlockHeaderResponse {
-  flow.BlockHeader block;
-}
-```
+  ```
+  message GetBlockHeaderByHeightRequest {
+    uint64 height;
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message BlockHeaderResponse {
+    flow.BlockHeader block;
+  }
+  ```
+</details>
 
 ---
 
@@ -126,6 +178,26 @@ The following methods query information about [full blocks]().
 rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse);
 ```
 
+<details>
+  <summary>Request</summary>
+
+  ```
+  message GetLatestBlockRequest {
+    bool is_sealed;
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message BlockResponse {
+    flow.Block block;
+  }
+  ```
+</details>
+
 #### GetBlockByID
 
 `GetBlockByID` gets a full block by ID.
@@ -133,6 +205,26 @@ rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse);
 ```
 rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse);
 ```
+
+<details>
+  <summary>Request</summary>
+
+  ```
+  message GetBlockByIDRequest {
+    bytes id;
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message BlockResponse {
+    flow.Block block;
+  }
+  ```
+</details>
 
 #### GetBlockByHeight
 
@@ -142,13 +234,25 @@ rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse);
 rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse);
 ```
 
-**BlockResponse**
+<details>
+  <summary>Request</summary>
 
-```
-message BlockResponse {
-  flow.Block block;
-}
-```
+  ```
+  message GetBlockByHeightRequest {
+    uint64 height;
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message BlockResponse {
+    flow.Block block;
+  }
+  ```
+</details>
 
 ---
 
@@ -164,13 +268,25 @@ The following methods query information about [collections]().
 rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse);
 ```
 
-**CollectionResponse**
+<details>
+  <summary>Request</summary>
 
-```
-message CollectionResponse {
-  flow.Collection collection;
-}
-```
+  ```
+  message GetCollectionByIDRequest {
+    bytes id;
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message CollectionResponse {
+    flow.Collection collection;
+  }
+  ```
+</details>
 
 ---
 
@@ -188,25 +304,29 @@ rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse);
 
 `SendTransaction` determines the correct cluster of collector nodes that is responsible for collecting the transaction based on the hash of the transaction and forwards the transaction to that cluster.
 
-**SendTransactionRequest**
+<details>
+  <summary>Request</summary>
 
-`SendTransactionRequest` message contains the transaction that is being request to be executed.
+  `SendTransactionRequest` message contains the transaction that is being request to be executed.
 
-```
-message SendTransactionRequest {
-  Transaction transaction;
-}
-```
+  ```
+  message SendTransactionRequest {
+    flow.Transaction transaction;
+  }
+  ```
+</details>
 
-**SendTransactionResponse**
+<details>
+  <summary>Response</summary>
+  
+  `SendTransactionResponse` message contains the hash of the submitted transaction.
 
-`SendTransactionResponse` message contains the hash of the submitted transaction.
-
-```
-message SendTransactionResponse {
-  bytes hash = 1;
-}
-```
+  ```
+  message SendTransactionResponse {
+    bytes id;
+  }
+  ```
+</details>
 
 #### GetTransaction
 
@@ -220,25 +340,29 @@ _Currently, only transactions within the current epoch can be queried._
 rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse);
 ```
 
-**GetTransactionRequest**
+<details>
+  <summary>Request</summary>
 
-`GetTransactionRequest` contains the hash of the transaction that is being queried.
+  `GetTransactionRequest` contains the hash of the transaction that is being queried.
 
-```
-message GetTransactionRequest {
-  bytes hash
-}
-```
+  ```
+  message GetTransactionRequest {
+    bytes id;
+  }
+  ```
+</details>
 
-**TransactionResponse**
+<details>
+  <summary>Response</summary>
+  
+  `TransactionResponse` contains the basic information about a transaction, but does not include post-execution results.
 
-`TransactionResponse` contains the basic information about a transaction, but does not include post-execution results.
-
-```
-message TransactionResponse {
-  Transaction transaction
-}
-```
+  ```
+  message TransactionResponse {
+    flow.Transaction transaction;
+  }
+  ```
+</details>
 
 #### GetTransactionResult
 
@@ -248,14 +372,26 @@ message TransactionResponse {
 rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultResponse);
 ```
 
-**TransactionResultResponse**
+<details>
+  <summary>Request</summary>
 
-```
-message TransactionResultResponse {
-  flow.TransactionStatus status = 1;
-  repeated flow.Event events = 2;
-}
-```
+  ```
+  message GetTransactionRequest {
+    bytes id;
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message TransactionResultResponse {
+    flow.TransactionStatus status;
+    repeated flow.Event events;
+  }
+  ```
+</details>
 
 --- 
 
@@ -271,21 +407,25 @@ The access node queries the execution node for the account details stored as par
 rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 ```
 
-**GetAccountRequest**
+<details>
+  <summary>Request</summary>
 
-```
-message GetAccountRequest {
-  bytes address
-}
-```
+  ```
+  message GetAccountRequest {
+    bytes address;
+  }
+  ```
+</details>
 
-**GetAccountResponse**
-
-```
-message GetAccountResponse {
-  Account account
-}
-```
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message GetAccountResponse {
+    Account account
+  }
+  ```
+</details>
 
 ---
 
@@ -301,21 +441,25 @@ This function can be used to read execution state from the Flow blockchain. The 
 rpc ExecuteScript(ExecuteScriptRequest) returns (ExecuteScriptResponse)
 ```
 
-**ExecuteScriptRequest**
+<details>
+  <summary>Request</summary>
 
-```
-message ExecuteScriptRequest {
-  bytes script
-}
-```
+  ```
+  message ExecuteScriptRequest {
+    bytes script
+  }
+  ```
+</details>
 
-**ExecuteScriptResponse**
-
-```
-message ExecuteScriptResponse {
-  bytes value
-}
-```
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message ExecuteScriptResponse {
+    bytes value
+  }
+  ```
+</details>
 
 ---
 
@@ -331,23 +475,27 @@ rpc GetEvents(GetEventsRequest) returns (GetEventsResponse)
 
 Events can be requested for a specific block range via the `start_block` and `end_block` (inclusive) fields and further filtered by the event type via the `type` field. Event types are namespaced with the address of the account and contract in which they are declared. Events are provided by execution nodes.
 
-**GetEventsRequest**
+<details>
+  <summary>Request</summary>
 
-```
-message GetEventsRequest {
-  string type
-  uint64 start_block
-  uint64 end_block
-}
-```
+  ```
+  message GetEventsRequest {
+    string type
+    uint64 start_block
+    uint64 end_block
+  }
+  ```
+</details>
 
-**GetEventsResponse**
-
-```
-message GetEventsResponse {
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message GetEventsResponse {
     repeated Event events
-}
-```
+  }
+  ```
+</details>
 
 ## Entities
 
