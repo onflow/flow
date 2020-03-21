@@ -2,12 +2,6 @@
 
 Flow is a fast, secure, and developer-friendly blockchain built to support the next generation of games, apps, and the digital assets that power them.
 
-- **Developer-first experience:** Flow is designed for builders. Snappy user experiences are made possible by an architecture that brings 1000x speed-ups and deterministic block finality, all without the use of sharding. The development experience is designed from the ground up, with production-quality SDKs, built-in logging and Cadence, a new programming language that makes writing smart contracts safe and easy.
-‍
-- **Consumer-friendly onboarding:** Flow is designed for the masses. The network is launching with mainstream-ready payment onramps to allow a safe and low-friction conversion from fiat to crypto.
-‍
-- **Mainstream-ready apps and distribution:** Awesome content is the best catalyst for adoption. Flow has global reach from day one, with committed partners representing leading technology firms as well as some of the most-loved brands in the world.
-
 Read more about Flow's high-level architecture in the [technical primer](https://www.onflow.org/primer).
 
 ## Getting Started
