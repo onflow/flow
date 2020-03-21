@@ -32,7 +32,9 @@ Here's an example of how to submit an account creation transaction with the Go S
 
 > What about smart contracts?
 
-Ethereum draws a distinction between accounts and contracts, both of which are addressable. Contracts are immutable and cannot be upgraded after deployment. To achieve the same in Flow, simply create an account with `contracts` but no authorized `publicKeys`.
+Ethereum draws a distinction between accounts and contracts, both of which are addressable. Ethereum contracts are immutable and cannot be upgraded after deployment.
+
+To achieve the same in Flow, simply create an account with deployed code and an empty list of authorized keys. This renders the account immutable by making it impossible to authorize a transaction that would mutate the account code.
 
 ## Keys
 
