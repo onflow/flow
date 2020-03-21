@@ -59,14 +59,16 @@ rpc Ping(PingRequest) returns (PingResponse)
 If a ping request returns an error or times out, it can be assumed that the Access API is unavailable.
 
 <details>
-  <summary>Request</summary> 
+  <summary>Request</summary>
+
   ```
   message PingRequest {}
   ```
 </details>
 
 <details>
-  <summary>Response</summary> 
+  <summary>Response</summary>
+  
   ```
   message PingResponse {}
   ```
