@@ -1,6 +1,6 @@
 # Accounts, Keys and Signing
 
-Flow introduces new features to give applications and end-users more safety and flexibility when managing keys, accounts and the assets inside them.
+Flow introduces new features to give applications and end users more safety and flexibility when managing keys, accounts and the assets inside them.
 
 ## Accounts
 
@@ -9,8 +9,8 @@ An account on Flow is a record in the chainstate that holds the following inform
 - **Address** - unique identifier for the account
 - **Balance** - default token balance
 - **Public Keys** - public keys authorized on the account
-- **Contracts** - Cadence contracts deployed to the account
-- **Resource Storage** - area of the account used to store resource assets
+- **Code** - Cadence contracts deployed to the account
+- **Storage** - area of the account used to store resource assets
 
 ### Account creation
 
@@ -28,7 +28,7 @@ _Conceptually, this isn't much different than Ethereum or Bitcoin. Although priv
 
 > What does an account creation transaction look like?
 
-TODO: link to Go example
+Here's an example of how to submit an account creation transaction with the Go SDK: [Account Creation Example](https://github.com/dapperlabs/flow-go-sdk/blob/master/examples/emulator/create_account/main.go).
 
 > What about smart contracts?
 
@@ -54,7 +54,7 @@ The signature and hashing algorthim must be specified so that signatures generat
 
 To add keys to an account, you can submit a transaction that is authorized to access that account.
 
-TODO: link to Go example
+Here's an example of how to add an account key with the Go SDK: [Add Account Key Example](https://github.com/dapperlabs/flow-go-sdk/blob/master/examples/emulator/add_account_key/main.go).
 
 ### Supported signature & hashing algorithms
 
@@ -93,7 +93,7 @@ For example, an account might contain the following keys:
 - Key Index: 2, Weight: 500
 - Key Index: 3, Weight: 500
 
-This represents a 2-of-3 multisig quorum, in which a transaction is authorized to access the account if it receives signatures from at least 2 out of 3 keys.
+This represents a 2-of-3 multisig quorum, in which a transaction is authorized to access the account if it receives signatures from _at least_ 2 out of 3 keys.
 
 ## Signing a transaction
 
