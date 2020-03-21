@@ -32,7 +32,7 @@ Flow supports a variety of signature algorithms and curves, making it easy for u
 
 Every Flow account has built-in support for multi-signature transactions, making it simpler than ever to lock down your account with multiple weighted keys.
 
-Learn more about accounts, weighted keys and transactions [in this guide]().
+Learn more about accounts, weighted keys and transactions [in this guide](/docs/accounts-and-keys.md).
 
 ### Building Apps
 
@@ -61,12 +61,12 @@ You can find an in-depth description of each of the above features in the [Flow 
 
 > 📖 Learn the fundamentals of Flow.
 
-- Introduction to Cadence
-- Accounts, Keys & Signing
-- Using the Emulator
-- Access API
+- [Introduction to Cadence](https://docs.onflow.org/docs/getting-started-1)
+- [Accounts, Keys & Signing](/docs/accounts-and-keys.md)
+- [Flow Access API](/docs/access-api-spec.md)
   - Transaction Submission
   - Block Formation
+- Using the Emulator
 
 ## Tools
 
@@ -79,15 +79,11 @@ The Flow SDKs provide libraries for applications to connect and interact with th
 - [Flow Go SDK](https://github.com/dapperlabs/flow-go-sdk)
 - Flow JS SDK (TBA)
 
-### Code Editors
-
-- [Flow Playground](https://play.onflow.org)
-- Cadence VS Code extension (TBA)
-
-### Testing
+### Development
 
 - [Flow Emulator]()
-
-### Deployment
-
+- [Flow Playground](https://play.onflow.org)
+- Cadence VS Code extension (TBA)
 - Flow CLI (TBA)
+
+
