@@ -24,7 +24,7 @@ Give Cadence a try and learn the fundamentals with the [Flow Developer Playgroun
 
 Flow supports a variety of signature algorithms and curves, making it easy for users to manage keys using the secure enclave on their laptop, phone or inside a battle-ready HSM.
 
-Every Flow account has built-in support for multi-signature transactions, making it simpler than ever to lock down your account with multiple weighted keys.
+Every Flow account has built-in support for multi-signature transactions, making it simpler than ever to secure your account with multiple weighted keys.
 
 Learn more about accounts, weighted keys and transactions [in this guide](/docs/accounts-and-keys.md).
 
@@ -79,5 +79,3 @@ The Flow SDKs provide libraries for applications to connect and interact with th
 - [Flow Playground](https://play.onflow.org)
 - Cadence VS Code extension (TBA)
 - Flow CLI (TBA)
-
-
