@@ -2,25 +2,189 @@
 
 > Version 0.1.1
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [RPC Service](#rpc-service)
+  - [Ping](#ping)
+  - [Block Headers](#block-headers)
+    - [GetLatestBlockHeader](#getlatestblockheader)
+    - [GetBlockHeaderByID](#getblockheaderbyid)
+    - [GetBlockHeaderByHeight](#getblockheaderbyheight)
+  - [Blocks](#blocks)
+    - [GetLatestBlock](#getlatestblock)
+    - [GetBlockByID](#getblockbyid)
+    - [GetBlockByHeight](#getblockbyheight)
+  - [Collections](#collections)
+    - [GetCollectionByID](#getcollectionbyid)
+  - [Transactions](#transactions)
+    - [SendTransaction](#sendtransaction)
+    - [GetTransaction](#gettransaction)
+    - [GetTransactionResult](#gettransactionresult)
+  - [Accounts](#accounts)
+    - [GetAccount](#getaccount)
+  - [Scripts](#scripts)
+    - [ExecuteScript](#executescript)
+  - [Events](#events)
+    - [GetEvents](#getevents)
+- [Entities](#entities)
+  - [Account](#account)
+  - [Account Public Key](#account-public-key)
+  - [Transaction](#transaction)
+  - [Block](#block)
+  - [Block Header](#block-header)
+  - [Event](#event)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## RPC Service
 
 The following functions are implemented as a [gRPC service](https://grpc.io/). 
 
-The language-agnostic spec for this API is defined using [Protocol Buffers](), which allows for client libraries to be generated in most popular programming languages.
+The language-agnostic spec for this API is defined using [Protocol Buffers](https://developers.google.com/protocol-buffers), which allows for client libraries to be generated in most popular programming languages.
 
 - [Flow Access API Protobuf source files]()
 
-### SendTransaction
+---
+
+### Ping
+
+`Ping` will return a successful response if the Access API is ready and available.
+
+```
+rpc Ping(PingRequest) returns (PingResponse)
+```
+
+If a ping request returns an error or times out, it can be assumed that the Access API is unavailable.
+
+**PingRequest**
+
+```
+message PingRequest {}
+```
+
+**PingResponse**
+
+```
+message PingResponse {}
+```
+
+---
+
+### Block Headers
+
+The following methods query information about [block headers](#block-headers).
+
+#### GetLatestBlockHeader
+
+`GetLatestBlockHeader` gets the latest sealed or unsealed block header.
+
+```
+rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderResponse);
+```
+
+#### GetBlockHeaderByID
+
+`GetBlockHeaderByID` gets a block header by ID.
+
+```
+rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse);
+```
+
+#### GetBlockHeaderByHeight
+
+`GetBlockHeaderByHeight` gets a block header by height.
+
+```
+rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderResponse);
+```
+
+**BlockHeaderResponse**
+
+```
+message BlockHeaderResponse {
+  flow.BlockHeader block;
+}
+```
+
+---
+
+### Blocks
+
+The following methods query information about [full blocks]().
+
+#### GetLatestBlock
+
+`GetLatestBlock` gets the full payload of the latest sealed or unsealed block.
+
+```
+rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse);
+```
+
+#### GetBlockByID
+
+`GetBlockByID` gets a full block by ID.
+
+```
+rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse);
+```
+
+#### GetBlockByHeight
+
+`GetBlockByHeight` gets a full block by height.
+
+```
+rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse);
+```
+
+**BlockResponse**
+
+```
+message BlockResponse {
+  flow.Block block;
+}
+```
+
+---
+
+### Collections
+
+The following methods query information about [collections]().
+
+#### GetCollectionByID
+
+`GetCollectionByID` gets a collection by ID.
+
+```
+rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse);
+```
+
+**CollectionResponse**
+
+```
+message CollectionResponse {
+  flow.Collection collection;
+}
+```
+
+---
+
+### Transactions
+
+The following methods can be used to submit transactions and fetch their results.
+
+#### SendTransaction
 
 `SendTransaction` submits a transaction to the network.
 
 ```
-rpc SendTransaction(SendTransactionRequest) returns (SendTransactionResponse)
+rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse);
 ```
 
 `SendTransaction` determines the correct cluster of collector nodes that is responsible for collecting the transaction based on the hash of the transaction and forwards the transaction to that cluster.
 
-##### SendTransactionRequest
+**SendTransactionRequest**
 
 `SendTransactionRequest` message contains the transaction that is being request to be executed.
 
@@ -30,7 +194,7 @@ message SendTransactionRequest {
 }
 ```
 
-##### SendTransactionResponse
+**SendTransactionResponse**
 
 `SendTransactionResponse` message contains the hash of the submitted transaction.
 
@@ -40,19 +204,19 @@ message SendTransactionResponse {
 }
 ```
 
-### GetTransaction
+#### GetTransaction
 
-`GetTransaction` retrieves a transaction by hash. In addition to the transaction, it also returns all the events generated for that transaction.
+`GetTransaction` gets a transaction by ID.
 
-```
-rpc GetTransaction(GetTransactionRequest) returns (GetTransactionResponse);
-```
-
-`GetTransaction` queries an observation node for the specified transaction. If the transaction is not found in the observation node cache, the request is forwarded to a collection node.
+If the transaction is not found in the access node cache, the request is forwarded to a collection node.
 
 _Currently, only transactions within the current epoch can be queried._
 
-##### GetTransactionRequest
+```
+rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse);
+```
+
+**GetTransactionRequest**
 
 `GetTransactionRequest` contains the hash of the transaction that is being queried.
 
@@ -62,52 +226,48 @@ message GetTransactionRequest {
 }
 ```
 
-##### GetTransactionResponse
+**TransactionResponse**
 
-`GetTransactionResponse` contains the transaction details and the events associated with the transaction.
+`TransactionResponse` contains the basic information about a transaction, but does not include post-execution results.
 
 ```
-message GetTransactionResponse {
+message TransactionResponse {
   Transaction transaction
-  Event events
 }
 ```
 
-### GetLatestBlock
+#### GetTransactionResult
 
-`GetLatestBlock` returns the latest sealed or unsealed block as a block header.
-
-```  
-rpc GetLatestBlock(GetLatestBlockRequest) returns (GetLatestBlockResponse);
-```
-
-##### GetLatestBlockRequest
+`GetTransactionResult` gets the execution result of a transaction.
 
 ```
-message GetLatestBlockRequest {
-  bool is_sealed
-}
-``` 
+rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultResponse);
+```
 
-##### GetLatestBlockResponse
+**TransactionResultResponse**
 
 ```
-message GetLatestBlockResponse {
-  BlockHeader block
+message TransactionResultResponse {
+  flow.TransactionStatus status = 1;
+  repeated flow.Event events = 2;
 }
 ```
 
-### GetAccount
+--- 
+
+### Accounts
+
+#### GetAccount
 
 `GetAccount` gets an account by address.
+
+The access node queries the execution node for the account details stored as part of the execution state.
 
 ```
 rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 ```
 
-`GetAccount` queries the execution node for the account details stored as part of the execution state.
-
-##### GetAccountRequest
+**GetAccountRequest**
 
 ```
 message GetAccountRequest {
@@ -115,7 +275,7 @@ message GetAccountRequest {
 }
 ```
 
-#### GetAccountResponse
+**GetAccountResponse**
 
 ```
 message GetAccountResponse {
@@ -123,17 +283,21 @@ message GetAccountResponse {
 }
 ```
 
-### ExecuteScript
+---
+
+### Scripts
+
+#### ExecuteScript
 
 `ExecuteScript` executes a read-only Cadance script against the latest sealed execution state.
+
+This function can be used to read execution state from the Flow blockchain. The script is executed on an execution node and the return value is encoded using the [Cadence JSON value specification]().
 
 ```
 rpc ExecuteScript(ExecuteScriptRequest) returns (ExecuteScriptResponse)
 ```
 
-`ExecuteScript` can be used to read execution state from the Flow blockchain. The script is executed on an execution node and the return value is encoded as XDR bytes. 
-
-##### ExecuteScriptRequest
+**ExecuteScriptRequest**
 
 ```
 message ExecuteScriptRequest {
@@ -141,7 +305,7 @@ message ExecuteScriptRequest {
 }
 ```
 
-##### ExecuteScriptResponse
+**ExecuteScriptResponse**
 
 ```
 message ExecuteScriptResponse {
@@ -149,7 +313,11 @@ message ExecuteScriptResponse {
 }
 ```
 
-### GetEvents
+---
+
+### Events
+
+#### GetEvents
 
 `GetEvents` retrieves events matching a given query.
 
@@ -159,7 +327,7 @@ rpc GetEvents(GetEventsRequest) returns (GetEventsResponse)
 
 Events can be requested for a specific block range via the `start_block` and `end_block` (inclusive) fields and further filtered by the event type via the `type` field. Event types are namespaced with the address of the account and contract in which they are declared. Events are provided by execution nodes.
 
-##### GetEventsRequest
+**GetEventsRequest**
 
 ```
 message GetEventsRequest {
@@ -169,34 +337,12 @@ message GetEventsRequest {
 }
 ```
 
-##### GetEventsResponse
+**GetEventsResponse**
 
 ```
 message GetEventsResponse {
     repeated Event events
 }
-```
-
-### Ping
-
-`Ping` will return a successful response if the Observation API is ready and available.
-
-```
-rpc Ping(PingRequest) returns (PingResponse)
-```
-
-If a ping request returns an error or times out, it can be assumed that the Observation API is unavailable.
-
-#### PingRequest
-
-```
-message PingRequest {}
-```
-
-#### PingResponse
-
-```
-message PingResponse {}
 ```
 
 ## Entities
