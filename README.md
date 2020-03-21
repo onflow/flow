@@ -33,7 +33,7 @@ Learn more about accounts, weighted keys and transactions [in this guide](/docs/
 
 > 💻 Build on Flow from the comfort of your own dev machine.
 
-The Flow Emulator is a feature-complete replica of the real network that looks, acts and talks like Flow. You can use the emulator _right now_ to build real applications that are compatible with both testnet and mainnet.
+The Flow Emulator is a feature complete replica of the real network that looks, acts and talks like Flow. You can use the emulator _right now_ to build real applications that are compatible with both testnet and mainnet.
 
 - [Install the emulator]()
 - Follow the examples in the [Flow Go SDK](https://github.com/dapperlabs/flow-go-sdk) to see it in action
