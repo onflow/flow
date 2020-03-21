@@ -14,7 +14,7 @@ Read more about Flow's high-level architecture in the [technical primer](https:/
 
 >  🔨 Let's build!
 
-The following section introduces common use cases for developers building on Flow.
+The following sections introduce common use cases for developers building on Flow.
 
 ### Writing Smart Contracts
 
