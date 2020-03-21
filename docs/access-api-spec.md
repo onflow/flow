@@ -44,7 +44,7 @@ The following functions are implemented as a [gRPC service](https://grpc.io/).
 
 The language-agnostic spec for this API is defined using [Protocol Buffers](https://developers.google.com/protocol-buffers), which allows for client libraries to be generated in most popular programming languages.
 
-- [Flow Access API Protobuf source files]()
+- [Flow Access API Protobuf source files](/proto)
 
 ---
 
@@ -78,7 +78,7 @@ If a ping request returns an error or times out, it can be assumed that the Acce
 
 ### Block Headers
 
-The following methods query information about [block headers](#block-headers).
+The following methods query information about [block headers](#block-header).
 
 #### GetLatestBlockHeader
 
@@ -168,7 +168,7 @@ rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderR
 
 ### Blocks
 
-The following methods query information about [full blocks]().
+The following methods query information about [full blocks](#block).
 
 #### GetLatestBlock
 
@@ -258,7 +258,7 @@ rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse)
 
 ### Collections
 
-The following methods query information about [collections]().
+The following methods query information about collections.
 
 #### GetCollectionByID
 
@@ -435,7 +435,7 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 
 `ExecuteScript` executes a read-only Cadance script against the latest sealed execution state.
 
-This function can be used to read execution state from the Flow blockchain. The script is executed on an execution node and the return value is encoded using the [Cadence JSON value specification]().
+This function can be used to read execution state from the Flow blockchain. The script is executed on an execution node and the return value is encoded using the [Cadence JSON value specification](/docs/cadence-json-spec.md).
 
 ```
 rpc ExecuteScript(ExecuteScriptRequest) returns (ExecuteScriptResponse)
@@ -637,4 +637,4 @@ message Event {
 | type             | The fully-qualified unique type identifier of the event |
 | transaction_id   | ID of the transaction associated with this event |
 | index            | index defines the ordering of events in a transaction. The first event emitted has index 0, the second has index 1, and so on |
-| payload          |  Event fields encoded as  [Cadence JSON values]()|
+| payload          |  Event fields encoded as  [Cadence JSON values](/docs/cadence-json-spec.md)|

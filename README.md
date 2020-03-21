@@ -35,7 +35,7 @@ Learn more about accounts, weighted keys and transactions [in this guide](/docs/
 
 The Flow Emulator is a feature complete replica of the real network that looks, acts and talks like Flow. You can use the emulator _right now_ to build real applications that are compatible with both testnet and mainnet.
 
-- [Install the emulator]()
+- [Install the emulator](/docs/emulator.md)
 - Follow the examples in the [Flow Go SDK](https://github.com/dapperlabs/flow-go-sdk) to see it in action
 
 ### Accessing the Network
@@ -58,8 +58,10 @@ You can find an in-depth description of each of the above features in the [Flow 
 
 - [Introduction to Cadence](https://docs.onflow.org/docs/getting-started-1)
 - [Accounts, Keys & Signing](/docs/accounts-and-keys.md)
+- [Transaction Lifecyle](/docs/transaction-lifecycle.md)
 - [Flow Access API](/docs/access-api-spec.md)
-- Using the Emulator
+  - [Cadence JSON Encoding](/docs/cadence-json-spec.md)
+- [Using the Emulator](/docs/emulator.md)
 - [Technical Papers](https://www.onflow.org/technical-paper)
   - Technical Paper 1: [Separating Consensus & Compute](https://arxiv.org/pdf/1909.05821.pdf)
   - Technical Paper 2: [Block Formation](https://arxiv.org/pdf/2002.07403.pdf)
@@ -78,7 +80,7 @@ The Flow SDKs provide libraries for applications to connect and interact with th
 
 ### Development
 
-- [Flow Emulator]()
+- [Flow Emulator](/docs/emulator.md)
 - [Flow Playground](https://play.onflow.org)
 - Cadence VS Code extension (TBA)
 - Flow CLI (TBA)

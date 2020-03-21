@@ -97,4 +97,4 @@ This represents a 2-of-3 multisig quorum, in which a transaction is authorized t
 
 ## Signing a transaction
 
-_Coming soon..._
+_Documentation coming soon..._
