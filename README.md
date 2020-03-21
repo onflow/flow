@@ -2,7 +2,8 @@
 
 Flow is a fast, secure, and developer-friendly blockchain built to support the next generation of games, apps, and the digital assets that power them.
 
-Read more about Flow's high-level architecture in the [technical primer](https://www.onflow.org/primer).
+- For a high-level overview of Flow's architecture, check out the [primer](https://www.onflow.org/primer).
+- Details about the protocol can be found in the [techinical papers](https://www.onflow.org/technical-paper). 
 
 ## Getting Started
 
@@ -58,7 +59,6 @@ You can find an in-depth description of each of the above features in the [Flow 
 - [Introduction to Cadence](https://docs.onflow.org/docs/getting-started-1)
 - [Accounts, Keys & Signing](/docs/accounts-and-keys.md)
 - [Flow Access API](/docs/access-api-spec.md)
-  - Transaction Submission
 - Using the Emulator
 - [Technical Papers](https://www.onflow.org/technical-paper)
   - Technical Paper 1: [Separating Consensus & Compute](https://arxiv.org/pdf/1909.05821.pdf)
