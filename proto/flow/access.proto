@@ -126,7 +126,6 @@ message GetTransactionRequest {
 
 message TransactionResponse {
   flow.Transaction transaction = 1;
-  repeated flow.Event events = 2;
 }
 
 message TransactionResultResponse {
