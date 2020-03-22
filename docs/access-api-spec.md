@@ -545,6 +545,26 @@ message BlockHeader {
 | parent_id           | ID of the previous block in the chain |
 | height              | Height of the block in the chain |
 
+### Block Seal
+
+A block seal is an attestation that the execution result of a specific block has been verified and approved by a quorum of verification nodes.
+
+```
+message BlockSeal {
+  bytes block_id
+  bytes execution_receipt_id
+  repeated bytes execution_receipt_signatures
+  repeated bytes result_approval_signatures
+}
+```
+
+| Field                        | Description   |
+|------------------------------|---------------|
+| block_id                     | ID of the block being sealed |
+| execution_receipt_id         | ID execution receipt being sealed |
+| execution_receipt_signatures | BLS signatures of verification nodes on the execution receipt contents |
+| result_approval_signatures   | BLS signatures of verification nodes on the result approval contents |
+
 ### Collection
 
 A collection is a batch of transactions that have been included in a block. Collections are used to improve consensus throughput by increasing the number of transactions per block.
@@ -560,6 +580,23 @@ message Collection {
 |---------------------|---------------|
 | id                  | SHA3-256 hash of the collection contents |
 | transaction_ids     | Ordered list of transaction IDs in the collection |
+
+### Collection Guarantee
+
+A collection guarantee is a signed attestation that specifies the collection nodes that have guaranteed to store and respond to queries about a collection.
+
+```
+message CollectionGuarantee {
+  bytes collection_id
+  repeated bytes signatures
+}
+```
+
+| Field               | Description   |
+|---------------------|---------------|
+| collection_id       | SHA3-256 hash of the collection contents |
+| signatures          | BLS signatures of the collection nodes guaranteeing the collection |
+
 
 ### Transaction
 
