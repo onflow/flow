@@ -29,11 +29,14 @@
   - [Events](#events)
     - [GetEvents](#getevents)
 - [Entities](#entities)
-  - [Account](#account)
-  - [Account Public Key](#account-public-key)
-  - [Transaction](#transaction)
   - [Block](#block)
   - [Block Header](#block-header)
+  - [Block Seal](#block-seal)
+  - [Collection](#collection)
+  - [Collection Guarantee](#collection-guarantee)
+  - [Transaction](#transaction)
+  - [Account](#account)
+    - [Account Public Key](#account-public-key)
   - [Event](#event)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
