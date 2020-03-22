@@ -82,7 +82,7 @@ The following methods query information about [block headers](#block-header).
 
 #### GetLatestBlockHeader
 
-`GetLatestBlockHeader` gets the latest sealed or unsealed block header.
+`GetLatestBlockHeader` gets the latest sealed or unsealed [block header](#block-header).
 
 ```
 rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderResponse)
@@ -110,7 +110,7 @@ rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderRespo
 
 #### GetBlockHeaderByID
 
-`GetBlockHeaderByID` gets a block header by ID.
+`GetBlockHeaderByID` gets a [block header](#block-header) by ID.
 
 ```
 rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
@@ -138,7 +138,7 @@ rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 
 #### GetBlockHeaderByHeight
 
-`GetBlockHeaderByHeight` gets a block header by height.
+`GetBlockHeaderByHeight` gets a [block header](#block-header) by height.
 
 ```
 rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderResponse)
@@ -172,7 +172,7 @@ The following methods query information about [full blocks](#block).
 
 #### GetLatestBlock
 
-`GetLatestBlock` gets the full payload of the latest sealed or unsealed block.
+`GetLatestBlock` gets the full payload of the latest sealed or unsealed [block](#block).
 
 ```
 rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse)
@@ -200,7 +200,7 @@ rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse)
 
 #### GetBlockByID
 
-`GetBlockByID` gets a full block by ID.
+`GetBlockByID` gets a [full block](#block) by ID.
 
 ```
 rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse)
@@ -228,7 +228,7 @@ rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse)
 
 #### GetBlockByHeight
 
-`GetBlockByHeight` gets a full block by height.
+`GetBlockByHeight` gets a [full block](#block) by height.
 
 ```
 rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse)
@@ -258,11 +258,11 @@ rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse)
 
 ### Collections
 
-The following methods query information about collections.
+The following methods query information about [collections](#collection).
 
 #### GetCollectionByID
 
-`GetCollectionByID` gets a collection by ID.
+`GetCollectionByID` gets a [collection](#collection) by ID.
 
 ```
 rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse)
@@ -292,7 +292,7 @@ rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse)
 
 ### Transactions
 
-The following methods can be used to submit transactions and fetch their results.
+The following methods can be used to submit [transactions](#transaction) and fetch their results.
 
 #### SendTransaction
 
@@ -330,7 +330,7 @@ rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse)
 
 #### GetTransaction
 
-`GetTransaction` gets a transaction by ID.
+`GetTransaction` gets a [transaction](#transaction) by ID.
 
 If the transaction is not found in the access node cache, the request is forwarded to a collection node.
 
@@ -399,9 +399,9 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
 
 #### GetAccount
 
-`GetAccount` gets an account by address.
+`GetAccount` gets an [account](#account) by address.
 
-The access node queries the execution node for the account details stored as part of the execution state.
+The access node queries an execution node for the account details, which are stored as part of the execution state.
 
 ```
 rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
@@ -435,7 +435,7 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 
 `ExecuteScript` executes a read-only Cadance script against the latest sealed execution state.
 
-This function can be used to read execution state from the Flow blockchain. The script is executed on an execution node and the return value is encoded using the [Cadence JSON value specification](/docs/cadence-json-spec.md).
+This function can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [Cadence JSON value specification](/docs/cadence-json-spec.md).
 
 ```
 rpc ExecuteScript(ExecuteScriptRequest) returns (ExecuteScriptResponse)
@@ -501,6 +501,92 @@ Events can be requested for a specific block range via the `start_block` and `en
 
 Below are in-depth descriptions of each of the data entities returned or accepted by the Access API.
 
+### Block
+ 
+```
+message Block {
+  bytes id
+  bytes parent_id
+  uint64 height
+  google.protobuf.Timestamp timestamp
+  repeated CollectionGuarantee collection_guarantees
+  repeated BlockSeal block_seals
+  repeated bytes signatures
+}
+```
+
+| Field                    | Description    |
+| -------------------------|----------------|
+| id                       | SHA3-256 hash of the entire block payload |
+| height                   | Height of the block in the chain |
+| parent_id                | ID of the previous block in the chain |
+| timestamp                | Timestamp when the block was proposed |
+| collection_guarantees    | List of IDs of all the collections in the block |
+| block_seals              | List of block seals |
+| signatures               | Signatures of the consensus nodes |
+
+The detailed semantics of block formation are covered in the [block formation guide](/docs/transaction-lifecycle.md#block-formation).
+
+### Block Header
+
+A block header is a short description of a block and does not contain the full block contents. It contains the block ID, height, and ID of the parent block.
+
+```
+message BlockHeader {
+  bytes id
+  bytes parent_id
+  uint64 height
+}
+```
+
+| Field               | Description   |
+|---------------------|---------------|
+| id                  | SHA3-256 hash of the entire block payload |
+| parent_id           | ID of the previous block in the chain |
+| height              | Height of the block in the chain |
+
+### Collection
+
+A collection is a batch of transactions that have been included in a block. Collections are used to improve consensus throughput by increasing the number of transactions per block.
+
+```
+message Collection {
+  bytes id
+  repeated bytes transaction_ids
+}
+```
+
+| Field               | Description   |
+|---------------------|---------------|
+| id                  | SHA3-256 hash of the collection contents |
+| transaction_ids     | Ordered list of transaction IDs in the collection |
+
+### Transaction
+
+A transaction represents a unit of computation that is submitted to the Flow network.
+
+```
+message Transaction {
+  bytes script
+  bytes reference_block_id
+  bytes payer_account
+  repeated bytes script_accounts
+  repeated AccountSignature signatures
+  TransactionStatus status
+}
+```
+
+| Field                | Description    |
+| ---------------------|----------------| 
+| script               | Raw source code for a Cadence script, encoded as UTF-8 bytes |
+| reference_block_id   | Block ID used to determine transaction expiry |
+| payer_account        | Address of account paying for gas and network fees |
+| script_accounts      | Addresses of accounts authorizing the transaction to mutate their state |
+| signatures           | Signatures from payer and script accounts |
+| status               | One of `unknown`, `pending`, `finalized`, or `sealed` |
+
+The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](/docs/transaction-lifecycle.md#submission).
+
 ### Account
 
 An account is a user's identity on the Flow blockchain. It contains a unique address, balance, a list of public keys and any code that has been deployed to the account. 
@@ -521,7 +607,9 @@ message Account {
 | code         | The code deployed to this account |
 | keys         | A list of the public keys for this account |
 
-### Account Public Key
+More information on accounts can be found [here](/docs/accounts-and-keys.md).
+
+#### Account Public Key
 
 An account public key is a reference to a public key associated with a Flow account. Accounts can be configured with zero or more public keys, each of which can be used for signature verification when authorizing a transaction.
 
@@ -541,83 +629,7 @@ message AccountPublicKey {
 | hash_algo     | The hashing algorithm (SHA2-256 or SHA3-256) |
 | weight        | The weight assigned to this key |
 
-### Transaction
-
-A transaction represents a unit of computation that is submitted to the Flow network. It is signed by one or more Flow accounts, and also specifies limits for the network and computation fees required for processing.
-
-```
-message Transaction {
-  bytes script
-  bytes reference_block_hash
-  uint64 nonce
-  uint64 compute_limit
-  bytes payer_account
-  repeated bytes script_accounts
-  repeated AccountSignature signatures
-  TransactionStatus status
-}
-```
-
-| Field        | Description    |
-| ------------- |---------------| 
-| script               | Raw source code for a Cadence script, encoded as UTF-8 bytes |
-| reference_block_hash | The reference block hash is the hash of an existing block used to specify the expiry window for this transaction. Transactions expire after `N` blocks are sealed on top of the specified reference hash |
-| nonce                | An arbitrary nonce |
-| compute_limit        | The gas limit for the transaction execution |
-| payer_account        | The account that is paying for the gas and network fees of the transaction |
-| script_accounts      | The accounts that have authorized the transaction to update their state. A transaction can have zero to many script accounts. |
-| signatures           | Signature of either the payer or script accounts |
-| status               | One of `unknown`, `pending`, `finalized`, or `sealed` |
-
-Note: The total weight of the  keys of each of the signing account should be greater than or equal to 1000.
-
-### Block
-
-A block includes the transactions as well as the other inputs (incl. the random seed) required for execution, but not the resulting state after block execution.
-
-A block may be sealed or unsealed depending on whether it has been computed and the resulting execution state has been verified.
- 
-```
-message Block {
-  bytes id
-  bytes parent_id
-  uint64 height
-  google.protobuf.Timestamp timestamp
-  repeated CollectionGuarantee collection_guarantees
-  repeated BlockSeal block_seals
-  repeated bytes signatures
-}
-```
-
-| Field                    | Description    |
-| -------------------------|----------------|
-| id                       | The hash of the entire block payload, acts as the unique identifier for the block |
-| height                   | The height of the block in the chain |
-| parent_id                | ID of the previous block in the chain |
-| timestamp                | Timestamp when the block was proposed |
-| collection_guarantees    | List of IDs of all the collections in the block |
-| block_seals              | List of block seals |
-| signatures               | Signatures of the consensus nodes |
-
-### Block Header
-
-A block header is a short description of a block and does not contain the full block contents. It contains the block hash and the hash of the previous block.
-
-The latest sealed block header represents the last block that was added to the chain, while the latest unsealed header represents the last finalized block that has not yet been verified.
-
-```
-message BlockHeader {
-  bytes id
-  bytes parent_id
-  uint64 height
-}
-```
-
-| Field               | Description   |
-|---------------------|---------------|
-| id                  | The hash of the entire block payload, acts as the unique identifier for the block |
-| parent_id           | ID of the previous block in the chain |
-| height              | The height of the block in the chain |
+More information on account keys and weights can be found [here](/docs/accounts-and-keys.md).
 
 ### Event
 
@@ -633,8 +645,8 @@ message Event {
 ```
 
 | Field            | Description    |
-| -----------------|---------------| 
-| type             | The fully-qualified unique type identifier of the event |
-| transaction_id   | ID of the transaction associated with this event |
-| index            | index defines the ordering of events in a transaction. The first event emitted has index 0, the second has index 1, and so on |
-| payload          |  Event fields encoded as  [Cadence JSON values](/docs/cadence-json-spec.md)|
+| -----------------|----------------| 
+| type             | Fully-qualified unique type identifier for the event |
+| transaction_id   | ID of the transaction the event was emitted from |
+| index            | Zero-based index of the event within the transaction |
+| payload          | Event fields encoded as [Cadence JSON values](/docs/cadence-json-spec.md)|
