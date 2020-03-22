@@ -520,10 +520,10 @@ message Block {
 | id                       | SHA3-256 hash of the entire block payload |
 | height                   | Height of the block in the chain |
 | parent_id                | ID of the previous block in the chain |
-| timestamp                | Timestamp when the block was proposed |
-| collection_guarantees    | List of IDs of all the collections in the block |
-| block_seals              | List of block seals |
-| signatures               | Signatures of the consensus nodes |
+| timestamp                | Timestamp of when the block was proposed |
+| collection_guarantees    | List of [collection guarantees](#collection-guarantee) |
+| block_seals              | List of [block seals](#block-seal) |
+| signatures               | BLS signatures of consensus nodes |
 
 The detailed semantics of block formation are covered in the [block formation guide](/docs/transaction-lifecycle.md#block-formation).
 
@@ -661,10 +661,10 @@ message AccountPublicKey {
 
 | Field         | Description    |
 |---------------|----------------|
-| public_key    | The public key encoded as bytes |
-| sign_algo     | The signature algorithm (currently ECDSA-P256 or ECDSA-SECp256k1) |
-| hash_algo     | The hashing algorithm (SHA2-256 or SHA3-256) |
-| weight        | The weight assigned to this key |
+| public_key    | Public key encoded as bytes |
+| sign_algo     | [Signature algorithm](/docs/accounts-and-keys.md#supported-signature--hashing-algorithms) |
+| hash_algo     | [Hashing algorithm](/docs/accounts-and-keys.md#supported-signature--hashing-algorithms) |
+| weight        | [Weight assigned to the key](/docs/accounts-and-keys.md#weighted-keys) |
 
 More information on account keys and weights can be found [here](/docs/accounts-and-keys.md).
 
