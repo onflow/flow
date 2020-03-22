@@ -529,7 +529,7 @@ The detailed semantics of block formation are covered in the [block formation gu
 
 ### Block Header
 
-A block header is a short description of a block and does not contain the full block contents. It contains the block ID, height, and ID of the parent block.
+A block header is a summary of a block and contains only the block ID, height, and parent block ID.
 
 ```
 message BlockHeader {
