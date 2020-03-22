@@ -2,6 +2,20 @@
 
 Flow introduces new features to give applications and end users more safety and flexibility when managing keys, accounts and the assets inside them.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Accounts](#accounts)
+  - [Account creation](#account-creation)
+- [Keys](#keys)
+  - [Adding a key to an account](#adding-a-key-to-an-account)
+  - [Supported signature & hashing algorithms](#supported-signature--hashing-algorithms)
+  - [Weighted keys](#weighted-keys)
+- [Signing a transaction](#signing-a-transaction)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Accounts
 
 An account on Flow is a record in the chainstate that holds the following information:
