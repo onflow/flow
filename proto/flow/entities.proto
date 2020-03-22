@@ -51,7 +51,8 @@ message Transaction {
 }
 
 message Collection {
-  repeated Transaction transactions = 1;
+  bytes id = 1;
+  repeated bytes transaction_ids = 2;
 }
 
 message CollectionGuarantee {
