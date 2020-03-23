@@ -143,6 +143,7 @@ A signer declaration includes the following:
 ```
 SignerDeclaration {
   address Address
+  roles   List<SignerRole>
   keys    List<AccountKey>
 }
 
