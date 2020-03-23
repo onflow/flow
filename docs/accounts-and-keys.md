@@ -177,7 +177,7 @@ After the below tranaction is executed, the sequence number for `Key 0` on `Acco
 ```json
 {
   // other transaction fields
-  ...
+  // ...
   "signers": [
     {
       "address": "0x01",
