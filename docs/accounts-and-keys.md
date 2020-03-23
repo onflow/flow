@@ -117,7 +117,7 @@ This represents a 2-of-3 multisig quorum, in which a transaction is authorized t
 
 ## Signing a transaction
 
-Signing a transaction for Flow is a multi-step process that can involve one or more accounts, each of which sign for a different purpose.
+Signing a transaction for Flow is a multi-step process that can involve one or more accounts, each of which signs for a different purpose.
 
 ### Signer roles
 
@@ -200,7 +200,5 @@ After the below tranaction is executed, the sequence number for `Key 0` on `Acco
 ```
 
 ### Transaction signatures
-
-
 
 _Documentation coming soon..._
