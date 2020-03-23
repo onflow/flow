@@ -175,19 +175,20 @@ After the below tranaction is executed, the sequence number for `Key 0` on `Acco
 
 ```json
 {
+  // other transaction fields
   ...
   "signers": [
     {
       "address": "0x01",
       "roles": ["proposer", "authorizer"],
       "keys": [
-        { "index": 0, "sequence_number": 42 },
+        { "index": 0, "sequence_number": 42 }, // proposal key
         { "index": 1 }
       ]
     },
     {
       "address": "0x02",
-      "roles": ["payer",],
+      "roles": ["payer"],
       "keys": [{ "index": 2 }]
     },
     {
