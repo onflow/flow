@@ -51,11 +51,11 @@ service AccessService {
 
   // Scripts
 
-  // ExecuteScriptAtLatestBlock executes a script against the execution state at the latest sealed block.
+  // ExecuteScriptAtLatestBlock executes a read-only Cadance script against the latest sealed execution state.
   rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse);
-  // ExecuteScriptAtBlockID executes a script against the execution state at the block with the given ID.
+  // ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
   rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse);
-  // ExecuteScriptAtBlockHeight executes a script against the execution state at the given block height.
+  // ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the execution state at the given block height.
   rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse);
 
   // Events
@@ -153,12 +153,12 @@ message ExecuteScriptAtLatestBlockRequest {
   bytes script = 1;
 }
 
-message ExecuteScriptAtBlockID {
+message ExecuteScriptAtBlockIDRequest {
   bytes block_id = 1;
   bytes script = 2;
 }
 
-message ExecuteScriptAtBlockHeight {
+message ExecuteScriptAtBlockHeightRequest {
   uint64 block_height = 1;
   bytes script = 2;
 }
