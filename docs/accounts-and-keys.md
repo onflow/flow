@@ -68,7 +68,7 @@ When adding a public key to an account, you must specify the following informati
 - Hashing algorithm (see codes below)
 - Weight (integer between 1-1000)
 
-The signature and hashing algorthims are included because Flow supports a variety of algorithms and curves.
+The signature algorithm is included because Flow could support a variety of signatures schemes with different parameters. The included hashing algorithm specifies the hashing function used to verify signatures.
 
 > How are keys added to an account?
 
