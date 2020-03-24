@@ -132,9 +132,7 @@ A transaction must pre-declare the accounts that will be signing for each of the
 ```
 TransactionBody {
   ...
-  proposer    SignerDeclaration
-  payer       SignerDeclaration
-  authorizers List<SignerDeclaration>
+  signers List<SignerDeclaration>
 }
 ```
 
