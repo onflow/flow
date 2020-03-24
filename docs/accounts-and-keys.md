@@ -157,7 +157,7 @@ A transaction is invalid if its signer list does not contain exactly one propose
 
 ### Sequence numbers
 
-Flow uses sequence numbers to prevent [transaction replay attacks](https://en.wikipedia.org/wiki/Replay_attack).
+Flow uses sequence numbers to ensure that each transaction runs at most once. This prevents many unwanted situations such as [transaction replay attacks](https://en.wikipedia.org/wiki/Replay_attack).
 
 Sequence numbers work similarly to transaction nonces in Ethereum, but with several key differences:
 
