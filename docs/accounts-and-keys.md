@@ -165,12 +165,12 @@ Flow uses sequence numbers to ensure that each transaction runs at most once. Th
 
 Sequence numbers work similarly to transaction nonces in Ethereum, but with several key differences:
 
-- Sequence numbers are **incremented per account key**, not per account
+- **Each key in an account has a dedicated sequence number** associated with it. Unlike Ethereum, there is no sequence number for the entire account.
 - When creating a transaction, only the **proposer must specify a sequence number**. Payers and authorizers are not required to.
 
 Furthermore, the transaction proposer is only required to specify a sequence number for one of the keys in its signer declaration. This key is referred to as the _proposal key_.
 
-Each time an account key is used as a proposal key, its sequence number increases by 1 (assuming the transaction is executed). The sequence number is incremented after execution, even if the transaction fails (reverts) during execution.
+Each time an account key is used as a proposal key, its sequence number is incremented by 1. The sequence number is updated after execution, even if the transaction fails (reverts) during execution.
 
 A transaction is rejected if its proposal key does not specify a sequence number equal to the sequence number stored on the account _at execution time._
 
