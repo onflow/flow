@@ -166,7 +166,7 @@ Sequence numbers work similarly to transaction nonces in Ethereum, but with seve
 
 Furthermore, the transaction proposer is only required to specify a sequence number for one of the keys in its signer declaration. This key is referred to as the _proposal key_.
 
-Each time an account key is used as a proposal key, its sequence number increases by 1 (assuming the transaction is executed).
+Each time an account key is used as a proposal key, its sequence number increases by 1 (assuming the transaction is executed). The sequence number is incremented after execution, even if the transaction fails (reverts) during execution.
 
 A transaction is rejected if its proposal key does not specify a sequence number equal to the sequence number stored on the account _at execution time._
 
