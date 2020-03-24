@@ -122,7 +122,7 @@ Signing a transaction for Flow is a multi-step process that can involve one or m
 ### Signer roles
 
 - *Proposer:* the account that is proposing the transaction.
-- *Payer:* the account paying for the network and gas fees.
+- *Payer:* the account paying for the transaction fees.
 - *Authorizers:* zero or more accounts authorizing the transaction to mutate their state.
 
 ### Signer declarations
