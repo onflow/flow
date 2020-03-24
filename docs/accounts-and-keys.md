@@ -76,6 +76,10 @@ To add keys to an account, you can submit a transaction that is authorized to ac
 
 Here's an example of how to add an account key with the Go SDK: [Add Account Key Example](https://github.com/dapperlabs/flow-go-sdk/blob/master/examples/emulator/add_account_key/main.go).
 
+### Revoking a key from an account
+
+Feature and documentation coming soon...
+
 ### Supported signature & hashing algorithms
 
 Flow will have initial support for a predefined set of signature and hash pairings, but more curves and algorithms will be added in the future.
