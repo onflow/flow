@@ -151,7 +151,9 @@ AccountKey {
 }
 ```
 
-Each declaration specifies the address of a signer account and the list of keys that must be used for signing. A account key is identified by its unique index within the account.
+Each declaration contains an account address, the roles that signer is fulfilling and the list of keys that must be used for signing. An account key is identified by its unique index within the account.
+
+A transaction is invalid if its signer list does not contain exactly one proposer and exactly one payer. However, a transaction is not required to specify any authorizers if it does not directly mutate account state.
 
 ### Sequence numbers
 
