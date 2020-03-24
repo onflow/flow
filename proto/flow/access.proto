@@ -51,8 +51,12 @@ service AccessService {
 
   // Scripts
 
-  // ExecuteScript executes a script against the latest sealed world state.
-  rpc ExecuteScript (ExecuteScriptRequest) returns (ExecuteScriptResponse);
+  // ExecuteScriptAtLatestBlock executes a script against the execution state at the latest sealed block.
+  rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse);
+  // ExecuteScriptAtBlockID executes a script against the execution state for the block with the given ID.
+  rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse);
+  // ExecuteScriptAtBlockHeight executes a script against the execution state for the block at the given height.
+  rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse);
 
   // Events
 
@@ -145,8 +149,18 @@ message GetAccountResponse {
 
 // Scripts
 
-message ExecuteScriptRequest {
+message ExecuteScriptAtLatestBlockRequest {
   bytes script = 1;
+}
+
+message ExecuteScriptAtBlockID {
+  bytes block_id = 1;
+  bytes script = 2;
+}
+
+message ExecuteScriptAtBlockHeight {
+  uint64 block_height = 1;
+  bytes script = 2;
 }
 
 message ExecuteScriptResponse {
