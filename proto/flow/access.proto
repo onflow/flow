@@ -53,9 +53,9 @@ service AccessService {
 
   // ExecuteScriptAtLatestBlock executes a script against the execution state at the latest sealed block.
   rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse);
-  // ExecuteScriptAtBlockID executes a script against the execution state for the block with the given ID.
+  // ExecuteScriptAtBlockID executes a script against the execution state at the block with the given ID.
   rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse);
-  // ExecuteScriptAtBlockHeight executes a script against the execution state for the block at the given height.
+  // ExecuteScriptAtBlockHeight executes a script against the execution state at the given block height.
   rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse);
 
   // Events
