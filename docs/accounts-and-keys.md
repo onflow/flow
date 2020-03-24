@@ -8,11 +8,17 @@ Flow introduces new features to give applications and end users more safety and 
 
 - [Accounts](#accounts)
   - [Account creation](#account-creation)
+  - [Account addresses](#account-addresses)
 - [Keys](#keys)
   - [Adding a key to an account](#adding-a-key-to-an-account)
+  - [Revoking a key from an account](#revoking-a-key-from-an-account)
   - [Supported signature & hashing algorithms](#supported-signature--hashing-algorithms)
   - [Weighted keys](#weighted-keys)
 - [Signing a transaction](#signing-a-transaction)
+  - [Signer roles](#signer-roles)
+  - [Signer declarations](#signer-declarations)
+  - [Sequence numbers](#sequence-numbers)
+  - [Transaction signatures](#transaction-signatures)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -68,13 +74,17 @@ When adding a public key to an account, you must specify the following informati
 - Hashing algorithm (see codes below)
 - Weight (integer between 1-1000)
 
-The signature and hashing algorthims are included because Flow supports a variety of algorithms and curves.
+The signature algorithm is included because Flow has the potential to support a variety of signatures schemes with different parameters. The included hashing algorithm specifies the hashing function used to verify signatures.
 
 > How are keys added to an account?
 
 To add keys to an account, you can submit a transaction that is authorized to access that account.
 
 Here's an example of how to add an account key with the Go SDK: [Add Account Key Example](https://github.com/dapperlabs/flow-go-sdk/blob/master/examples/emulator/add_account_key/main.go).
+
+### Revoking a key from an account
+
+Feature and documentation coming soon...
 
 ### Supported signature & hashing algorithms
 
@@ -116,5 +126,91 @@ For example, an account might contain the following keys:
 This represents a 2-of-3 multisig quorum, in which a transaction is authorized to access the account if it receives signatures from _at least_ 2 out of 3 keys.
 
 ## Signing a transaction
+
+Signing a transaction for Flow is a multi-step process that can involve one or more accounts, each of which signs for a different purpose.
+
+### Signer roles
+
+- *Proposer:* the account that is proposing the transaction.
+- *Payer:* the account paying for the transaction fees.
+- *Authorizers:* zero or more accounts authorizing the transaction to mutate their state.
+
+### Signer declarations
+
+A transaction must pre-declare the accounts that will be signing for each of the above roles. Signer declarations are included in the transaction body, which is signed by all parties.
+
+```
+TransactionBody {
+  ...
+  signers List<SignerDeclaration>
+}
+```
+
+A signer declaration includes the following:
+
+```
+SignerDeclaration {
+  address Address
+  roles   List<SignerRole>
+  keys    List<AccountKey>
+}
+
+AccountKey {
+  index           Integer
+  sequence_number Optional<Integer>
+}
+```
+
+Each declaration contains an account address, the roles that signer is fulfilling and the list of keys that must be used for signing. An account key is identified by its unique index within the account.
+
+A transaction is invalid if its signer list does not contain exactly one proposer and exactly one payer. However, a transaction is not required to specify any authorizers if it does not directly mutate account state.
+
+### Sequence numbers
+
+Flow uses sequence numbers to ensure that each transaction runs at most once. This prevents many unwanted situations such as [transaction replay attacks](https://en.wikipedia.org/wiki/Replay_attack).
+
+Sequence numbers work similarly to transaction nonces in Ethereum, but with several key differences:
+
+- **Each key in an account has a dedicated sequence number** associated with it. Unlike Ethereum, there is no sequence number for the entire account.
+- When creating a transaction, only the **proposer must specify a sequence number**. Payers and authorizers are not required to.
+
+Furthermore, the transaction proposer is only required to specify a sequence number for one of the keys in its signer declaration. This key is referred to as the _proposal key_.
+
+Each time an account key is used as a proposal key, its sequence number is incremented by 1. The sequence number is updated after execution, even if the transaction fails (reverts) during execution.
+
+A transaction is rejected if its proposal key does not specify a sequence number equal to the sequence number stored on the account _at execution time._
+
+**Example**
+
+After the below tranaction is executed, the sequence number for `Key 0` on `Account 0x01` will increase to 43.
+
+```json
+{
+  // other transaction fields
+  // ...
+  "signers": [
+    {
+      "address": "0x01",
+      "roles": ["proposer", "authorizer"],
+      "keys": [
+        { "index": 0, "sequence_number": 42 }, // proposal key
+        { "index": 1 }
+      ]
+    },
+    {
+      "address": "0x02",
+      "roles": ["payer"],
+      "keys": [{ "index": 2 }]
+    },
+    {
+      "address": "0x03",
+      "roles": ["authorizer"],
+      "keys": [{ "index": 6 }]
+    }
+  ]
+}
+```
+
+### Transaction signatures
 
 _Documentation coming soon..._
