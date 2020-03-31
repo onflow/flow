@@ -6,8 +6,8 @@ option go_package = "flow";
 
 import "flow/entities.proto";
 
-// AccessService is the public-facing API provided by access nodes.
-service AccessService {
+// AccessAPI is the public-facing API provided by access nodes.
+service AccessAPI {
 
   // Ping is used to check if the access node is alive and healthy.
   rpc Ping (PingRequest) returns (PingResponse);
