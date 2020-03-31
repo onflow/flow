@@ -434,21 +434,90 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 
 ### Scripts
 
-#### ExecuteScript
+#### ExecuteScriptAtLatestBlock
 
-`ExecuteScript` executes a read-only Cadance script against the latest sealed execution state.
+`ExecuteScriptAtLatestBlock` executes a read-only Cadance script against the latest sealed execution state.
 
-This function can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/docs/json-cadence-spec.md).
+This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/docs/json-cadence-spec.md).
 
 ```
-rpc ExecuteScript(ExecuteScriptRequest) returns (ExecuteScriptResponse)
+rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse)
+```
+
+This method is a shortcut for the following:
+
+```
+header = GetLatestBlockHeader()
+value = ExecuteScriptAtBlockID(header.ID, script)
 ```
 
 <details>
   <summary>Request</summary>
 
   ```
-  message ExecuteScriptRequest {
+  message ExecuteScriptAtLatestBlockRequest {
+    bytes script
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message ExecuteScriptResponse {
+    bytes value
+  }
+  ```
+</details>
+
+#### ExecuteScriptAtBlockID
+
+`ExecuteScriptAtBlockID` executes a ready-only Cadence script against the execution state at the block with the given ID.
+
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [Cadence JSON value specification](/docs/cadence-json-spec.md).
+
+```
+rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
+```
+
+<details>
+  <summary>Request</summary>
+
+  ```
+  message ExecuteScriptAtBlockIDRequest {
+    bytes block_id
+    bytes script
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message ExecuteScriptResponse {
+    bytes value
+  }
+  ```
+</details>
+
+#### ExecuteScriptAtBlockHeight
+
+`ExecuteScriptAtBlockHeight` executes a ready-only Cadence script against the execution state at the given block height.
+
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [Cadence JSON value specification](/docs/cadence-json-spec.md).
+
+```
+rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
+```
+
+<details>
+  <summary>Request</summary>
+
+  ```
+  message ExecuteScriptAtBlockHeightRequest {
+    uint64 block_height
     bytes script
   }
   ```
