@@ -60,7 +60,7 @@ You can find an in-depth description of each of the above features in the [Flow 
 - [Accounts, Keys & Signing](/docs/accounts-and-keys.md)
 - [Transaction Lifecyle](/docs/transaction-lifecycle.md)
 - [Flow Access API](/docs/access-api-spec.md)
-  - [Cadence JSON Encoding](/docs/cadence-json-spec.md)
+  - [JSON-Cadence Data Interchange Format](/docs/json-cadence-spec.md)
 - [Using the Emulator](/docs/emulator.md)
 - [Technical Papers](https://www.onflow.org/technical-paper)
   - Technical Paper 1: [Separating Consensus & Compute](https://arxiv.org/pdf/1909.05821.pdf)

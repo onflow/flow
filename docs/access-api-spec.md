@@ -438,7 +438,7 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 
 `ExecuteScriptAtLatestBlock` executes a read-only Cadance script against the latest sealed execution state.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [Cadence JSON value specification](/docs/cadence-json-spec.md).
+This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/docs/json-cadence-spec.md).
 
 ```
 rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse)
@@ -758,4 +758,4 @@ message Event {
 | type             | Fully-qualified unique type identifier for the event |
 | transaction_id   | ID of the transaction the event was emitted from |
 | index            | Zero-based index of the event within the transaction |
-| payload          | Event fields encoded as [Cadence JSON values](/docs/cadence-json-spec.md)|
+| payload          | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md)|
