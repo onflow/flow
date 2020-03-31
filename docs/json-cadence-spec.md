@@ -1,10 +1,10 @@
-# JSON Cadence Value Encoding Specification
+# JSON-Cadence Data Interchange Format
 
 > Version 0.1.1
 
-JSON-Cadence is a data interchange format used to represent Cadence values as language-agnostic JSON objects.
+JSON-Cadence is a data interchange format used to represent Cadence values as language-independent JSON objects.
 
-This format is less descriptive than a complete ABI, and instead promotes the following tenets:
+This format includes less descriptive type information than a complete [ABI](https://en.wikipedia.org/wiki/Application_binary_interface), and instead promotes the following tenets:
 
 - **Human-readability** - JSON-Cadence is easy to read and comprehend, which speeds up development and debugging.
 - **Compatibility** - JSON is a common format with built-in support in most high-level programming languages, making it easy to parse on a variety of platforms.
