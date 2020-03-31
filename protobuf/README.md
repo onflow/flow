@@ -16,4 +16,4 @@ Running the command below (in the current directory) will generate stubs for Go 
 prototool generate
 ```
 
-_Output files are saved to `/proto/out`._
+_Output files are saved to `/protobuf/out`._
