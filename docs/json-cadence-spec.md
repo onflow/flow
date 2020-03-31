@@ -2,13 +2,13 @@
 
 > Version 0.1.1
 
-JSON-Cadence is an encoding format used to represent Cadence values as language-agnostic JSON objects.
+JSON-Cadence is a data interchange format used to represent Cadence values as language-agnostic JSON objects.
 
-This format is purposefully less descriptive than a complete ABI, and instead promotes the following tenets:
+This format is less descriptive than a complete ABI, and instead promotes the following tenets:
 
-- **Human-readability** - This format is easy to read and comprehend, which speeds up development and debugging.
-- **Compatibility** - JSON is a common spec with built-in support in most high-level programming languages, making it easy to parse on a variety of platforms.
-- **Portability** - This format is self-describing and thus can be transported and decoded without accompanying type definitions (i.e. ABI).
+- **Human-readability** - JSON-Cadence is easy to read and comprehend, which speeds up development and debugging.
+- **Compatibility** - JSON is a common format with built-in support in most high-level programming languages, making it easy to parse on a variety of platforms.
+- **Portability** - JSON-Cadence is self-describing and thus can be transported and decoded without accompanying type definitions (i.e. an ABI).
 
 -- 
 
@@ -128,9 +128,9 @@ This format is purposefully less descriptive than a complete ABI, and instead pr
 
 `[U]Int`, `[U]Int8`, `[U]Int16`, `[U]Int32`,`[U]Int64`,`[U]Int128`, `[U]Int256`,  `Word8`, `Word16`, `Word32`, or `Word64`
 
-All integer types are encoded as strings for consistency, even though the JSON spec supports number literals for integers up to 64 bits.
+Although JSON supports integer literals up to 64 bits, all integer types are encoded as strings for consistency.
 
-Although the static type is not strictly required for decoding, it is provided to inform client of potential range.
+While the static type is not strictly required for decoding, it is provided to inform client of potential range.
 
 ```json
 {
@@ -149,17 +149,13 @@ Although the static type is not strictly required for decoding, it is provided t
 }
 ```
 
-- Type: `[U]Int`, `[U]Int8`, `[U]Int16`, `[U]Int32`,`[U]Int64`,`[U]Int128`, `[U]Int256`,  `Word8`, `Word16`, `Word32`, or `Word64`
-- Includes the static type to let client know about potential range
-- Always encoding as string for consistency
-- JavaScript:
-    - `[U]Int8`, `[U]Int16`, `[U]Int32`, `Word8`, `Word16`, `Word32`: decode as JS `number`
-    - `[U]Int`,`[U]Int64`,`[U]Int128`, `[U]Int256`, `Word64`: decode as JS `BigInt`
-    - (JavaScript's `Number.MAX_SAFE_INTEGER` is 2^53 - 1)
-
 ---
 
 ## Fixed Point
+
+`[U]Fix64`
+
+Although fixed point numbers are implemented as integers, JSON-Cadence uses a decimal string representation for readability.
 
 ```json
 {
@@ -178,10 +174,6 @@ Although the static type is not strictly required for decoding, it is provided t
     "value": "12.3"
 }
 ```
-
-- Type: `[U]Fix64`
-- JavaScript library should have `[U]Fix64` types which parse and know e.g. factor is 10^8
-- As decimal for readability reasons
 
 ---
 
@@ -225,6 +217,8 @@ Although the static type is not strictly required for decoding, it is provided t
 
 ## Dictionary
 
+Dictionaries are encoded as a list of key-value pairs to preserve the deterministic ordering implemented by Cadence.
+
 ```json
 {
   "type": "Dictionary"
@@ -260,12 +254,13 @@ Although the static type is not strictly required for decoding, it is provided t
 }
 ```
 
-- In order of keys
-- Not a JSON dictionary, because keys might be non-string
-
 ---
 
 ## Composites (Struct, Resource, Event)
+
+`"Event"`, `"Struct"`, `"Resource"`
+
+Composite fields are encoded as a list of name-value pairs in the order in which they appear in the composite type declaration.
 
 ```json
 {
@@ -299,6 +294,3 @@ Although the static type is not strictly required for decoding, it is provided t
   }
 }
 ```
-
-- Type: `"Event"`, `"Struct"`, `"Resource"`
-- Fields must be in alphabetical order
