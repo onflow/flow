@@ -537,12 +537,12 @@ rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (Exec
 
 ### Events
 
-#### GetEventsForRange
+#### GetEventsForHeightRange
 
-`GetEventsForRange` retrieves events matching a given query.
+`GetEventsForHeightRange` retrieves events matching a given query.
 
 ```
-rpc GetEventsForRange(GetEventsForRangeRequest) returns (GetEventsForRangeResponse)
+rpc GetEventsForHeightRange(GetEventsForHeightRangeRequest) returns (GetEventsForHeightRangeResponse)
 ```
 
 Events can be requested for a specific sealed block range via the `start_height` and `end_height` (inclusive) fields and further filtered by the event type via the `type` field.
@@ -553,7 +553,7 @@ Event types are namespaced with the address of the account and contract in which
   <summary>Request</summary>
 
   ```
-  message GetEventsForRangeRequest {
+  message GetEventsForHeightRangeRequest {
     string type
     uint64 start_height = 2;
     uint64 end_height = 3;
@@ -565,7 +565,7 @@ Event types are namespaced with the address of the account and contract in which
   <summary>Response</summary>
   
   ```
-  message GetEventsForRangeResponse {
+  message GetEventsForHeightRangeResponse {
     repeated Event events
   }
   ```

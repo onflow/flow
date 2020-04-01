@@ -60,8 +60,8 @@ service AccessAPI {
 
   // Events
 
-  // GetEventsForRange retrieves events for all sealed blocks between the start block height and the end block height (inclusive) that have the given type
-  rpc GetEventsForRange (GetEventsForRangeRequest) returns (GetEventsForRangeResponse);
+  // GetEventsForHeightRange retrieves events for all sealed blocks between the start block height and the end block height (inclusive) that have the given type
+  rpc GetEventsForHeightRange (GetEventsForHeightRangeRequest) returns (GetEventsForHeightRangeResponse);
 
   // GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
   rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse);
@@ -172,13 +172,13 @@ message ExecuteScriptResponse {
 
 // Events
 
-message GetEventsForRangeRequest {
+message GetEventsForHeightRangeRequest {
   string type = 1;
   uint64 start_height = 2;
   uint64 end_height = 3;
 }
 
-message GetEventsForRangeResponse {
+message GetEventsForHeightRangeResponse {
   repeated flow.Event events = 1;
 }
 
