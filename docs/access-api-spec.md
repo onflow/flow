@@ -545,7 +545,9 @@ rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (Exec
 rpc GetEventsForRange(GetEventsForRangeRequest) returns (GetEventsForRangeResponse)
 ```
 
-Events can be requested for a specific block range via the `start_block` and `end_block` (inclusive) fields and further filtered by the event type via the `type` field. Event types are namespaced with the address of the account and contract in which they are declared. Events are provided by execution nodes.
+Events can be requested for a specific sealed block range via the `start_height` and `end_height` (inclusive) fields and further filtered by the event type via the `type` field.
+If maximum chain height is less than end_height, then events until and including maximum height will be returned
+Event types are namespaced with the address of the account and contract in which they are declared. Events are provided by execution nodes.
 
 <details>
   <summary>Request</summary>
@@ -553,8 +555,8 @@ Events can be requested for a specific block range via the `start_block` and `en
   ```
   message GetEventsForRangeRequest {
     string type
-    uint64 start_block
-    uint64 end_block
+    uint64 start_height = 2;
+    uint64 end_height = 3;
   }
   ```
 </details>
@@ -577,14 +579,15 @@ Events can be requested for a specific block range via the `start_block` and `en
 rpc GetEventsForBlockIDs(GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse)
 ```
 
-Events can be requested for a list of block ids via the `block_ids` field. Events of all types will be returned.
+Events can be requested for a list of block ids via the `block_ids` field and further filtered by the event type via the `type` field.
 
 <details>
   <summary>Request</summary>
 
   ```
   message GetEventsForBlockIDsRequest {
-    repeated uint64 block_ids = 1;
+    string type = 1;
+    repeated bytes block_ids = 2;
   }
   ```
 </details>
