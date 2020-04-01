@@ -60,8 +60,11 @@ service AccessAPI {
 
   // Events
 
-  // GetEvents retrieves events matching the given query.
-  rpc GetEvents (GetEventsRequest) returns (GetEventsResponse);
+  // GetEventsForRange retrieves events for all blocks between the start block id and the end block id (inclusive) and the given type
+  rpc GetEventsForRange (GetEventsForRangeRequest) returns (GetEventsForRangeResponse);
+
+  // GetEventsForBlockIDs retrieves all events for all the specified block ids
+  rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse);
 }
 
 message PingRequest {}
@@ -169,12 +172,20 @@ message ExecuteScriptResponse {
 
 // Events
 
-message GetEventsRequest {
+message GetEventsForRangeRequest {
   string type = 1;
   uint64 start_block = 2;
   uint64 end_block = 3;
 }
 
-message GetEventsResponse {
+message GetEventsForRangeResponse {
+  repeated flow.Event events = 1;
+}
+
+message GetEventsForBlockIDsRequest {
+  repeated uint64 block_ids = 1;
+}
+
+message GetEventsForBlockIDsResponse {
   repeated flow.Event events = 1;
 }

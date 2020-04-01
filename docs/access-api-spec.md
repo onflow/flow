@@ -537,12 +537,12 @@ rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (Exec
 
 ### Events
 
-#### GetEvents
+#### GetEventsForRange
 
-`GetEvents` retrieves events matching a given query.
+`GetEventsForRange` retrieves events matching a given query.
 
 ```
-rpc GetEvents(GetEventsRequest) returns (GetEventsResponse)
+rpc GetEventsForRange(GetEventsForRangeRequest) returns (GetEventsForRangeResponse)
 ```
 
 Events can be requested for a specific block range via the `start_block` and `end_block` (inclusive) fields and further filtered by the event type via the `type` field. Event types are namespaced with the address of the account and contract in which they are declared. Events are provided by execution nodes.
@@ -551,7 +551,7 @@ Events can be requested for a specific block range via the `start_block` and `en
   <summary>Request</summary>
 
   ```
-  message GetEventsRequest {
+  message GetEventsForRangeRequest {
     string type
     uint64 start_block
     uint64 end_block
@@ -563,8 +563,38 @@ Events can be requested for a specific block range via the `start_block` and `en
   <summary>Response</summary>
   
   ```
-  message GetEventsResponse {
+  message GetEventsForRangeResponse {
     repeated Event events
+  }
+  ```
+</details>
+
+#### GetEventsForBlockIDs
+
+`GetEventsForBlockIDs` retrieves all events for the given block ids.
+
+```
+rpc GetEventsForBlockIDs(GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse)
+```
+
+Events can be requested for a list of block ids via the `block_ids` field. Events of all types will be returned.
+
+<details>
+  <summary>Request</summary>
+
+  ```
+  message GetEventsForBlockIDsRequest {
+    repeated uint64 block_ids = 1;
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+
+  ```
+  message GetEventsForBlockIDsResponse {
+    repeated flow.Event events = 1;
   }
   ```
 </details>
