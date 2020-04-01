@@ -573,13 +573,13 @@ Event types are namespaced with the address of the account and contract in which
 
 #### GetEventsForBlockIDs
 
-`GetEventsForBlockIDs` retrieves all events for the given block ids.
+`GetEventsForBlockIDs` retrieves all events for the given block IDs.
 
 ```
 rpc GetEventsForBlockIDs(GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse)
 ```
 
-Events can be requested for a list of block ids via the `block_ids` field and further filtered by the event type via the `type` field.
+Events can be requested for a list of block IDs via the `block_ids` field and further filtered by the event type via the `type` field.
 
 <details>
   <summary>Request</summary>
