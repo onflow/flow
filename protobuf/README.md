@@ -15,5 +15,3 @@ Running the command below (in the current directory) will generate stubs for Go 
 ```shell script
 prototool generate
 ```
-
-_Output files are saved to `/protobuf/out`._

@@ -13,6 +13,6 @@ generate:
     - name: go
       type: go
       flags: plugins=grpc
-      output: ./out/go
+      output: ./go
     - name: java
-      output: ./out/java
+      output: ./java
