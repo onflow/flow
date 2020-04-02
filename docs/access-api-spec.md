@@ -539,7 +539,7 @@ rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (Exec
 
 #### GetEventsForHeightRange
 
-`GetEventsForHeightRange` retrieves events matching a given query.
+`GetEventsForHeightRange` retrieves events emitted within a specific block range.
 
 ```
 rpc GetEventsForHeightRange(GetEventsForHeightRangeRequest) returns (GetEventsForHeightRangeResponse)
@@ -565,8 +565,8 @@ Event types are namespaced with the address of the account and contract in which
   <summary>Response</summary>
   
   ```
-  message GetEventsForHeightRangeResponse {
-    repeated Event events
+  message EventsResponse {
+   repeated flow.Event events = 1;
   }
   ```
 </details>
@@ -596,8 +596,8 @@ Events can be requested for a list of block IDs via the `block_ids` field and fu
   <summary>Response</summary>
 
   ```
-  message GetEventsForBlockIDsResponse {
-    repeated flow.Event events = 1;
+  message EventsResponse {
+   repeated flow.Event events = 1;
   }
   ```
 </details>
