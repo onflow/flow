@@ -10,7 +10,23 @@ This format includes less descriptive type information than a complete [ABI](htt
 - **Compatibility** - JSON is a common format with built-in support in most high-level programming languages, making it easy to parse on a variety of platforms.
 - **Portability** - JSON-Cadence is self-describing and thus can be transported and decoded without accompanying type definitions (i.e. an ABI).
 
--- 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
+
+- [Optional](#optional)
+- [Bool](#bool)
+- [String](#string)
+- [Address](#address)
+- [Integers](#integers)
+- [Fixed Point](#fixed-point)
+- [Array](#array)
+- [Dictionary](#dictionary)
+- [Composites (Struct, Resource, Event)](#composites-struct-resource-event)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+---
 
 ## Void
 
