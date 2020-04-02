@@ -14,6 +14,7 @@ This format includes less descriptive type information than a complete [ABI](htt
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Table of Contents
 
+- [Void](#void)
 - [Optional](#optional)
 - [Bool](#bool)
 - [String](#string)
@@ -167,7 +168,7 @@ While the static type is not strictly required for decoding, it is provided to i
 
 ---
 
-## Fixed Point
+## Fixed Point Numbers
 
 `[U]Fix64`
 
