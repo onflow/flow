@@ -10,11 +10,28 @@ This format includes less descriptive type information than a complete [ABI](htt
 - **Compatibility** - JSON is a common format with built-in support in most high-level programming languages, making it easy to parse on a variety of platforms.
 - **Portability** - JSON-Cadence is self-describing and thus can be transported and decoded without accompanying type definitions (i.e. an ABI).
 
--- 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
+
+- [Void](#void)
+- [Optional](#optional)
+- [Bool](#bool)
+- [String](#string)
+- [Address](#address)
+- [Integers](#integers)
+- [Fixed Point](#fixed-point)
+- [Array](#array)
+- [Dictionary](#dictionary)
+- [Composites (Struct, Resource, Event)](#composites-struct-resource-event)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+---
 
 ## Void
 
-```json
+```
 {
   "type": "Void"
 }
@@ -22,7 +39,7 @@ This format includes less descriptive type information than a complete [ABI](htt
 
 **Example**
 
-```json
+```
 {
   "type": "Void"
 }
@@ -32,7 +49,7 @@ This format includes less descriptive type information than a complete [ABI](htt
 
 ## Optional
 
-```json
+```
 {
   "type": "Optional",
   "value": null | <value>
@@ -42,7 +59,7 @@ This format includes less descriptive type information than a complete [ABI](htt
 
 **Example**
 
-```json
+```
 // Non-nil
 
 {
@@ -65,16 +82,16 @@ This format includes less descriptive type information than a complete [ABI](htt
 
 ## Bool
 
-```json
+```
 {
-  "type": "Bool"
+  "type": "Bool",
   "value": true | false
 }
 ```
 
 **Example**
 
-```json
+```
 {
   "type": "Bool",
   "value": true
@@ -85,7 +102,7 @@ This format includes less descriptive type information than a complete [ABI](htt
 
 ## String
 
-```json
+```
 {
   "type": "String",
   "value": "..."
@@ -95,7 +112,7 @@ This format includes less descriptive type information than a complete [ABI](htt
 
 **Example**
 
-```json
+```
 {
   "type": "String",
   "value": "Hello, world!"
@@ -106,7 +123,7 @@ This format includes less descriptive type information than a complete [ABI](htt
 
 ## Address
 
-```json
+```
 {
   "type": "Address",
   "value": "0x0" // as hex-encoded string with 0x prefix
@@ -115,7 +132,7 @@ This format includes less descriptive type information than a complete [ABI](htt
 
 **Example**
 
-```json
+```
 {
   "type": "Address",
   "value": "0x1234"
@@ -132,7 +149,7 @@ Although JSON supports integer literals up to 64 bits, all integer types are enc
 
 While the static type is not strictly required for decoding, it is provided to inform client of potential range.
 
-```json
+```
 {
   "type": "<type>",
   "value": "<decimal string representation of integer>"
@@ -142,7 +159,7 @@ While the static type is not strictly required for decoding, it is provided to i
 
 **Example**
 
-```json
+```
 {
   "type": "UInt8",
   "value": "123"
@@ -151,13 +168,13 @@ While the static type is not strictly required for decoding, it is provided to i
 
 ---
 
-## Fixed Point
+## Fixed Point Numbers
 
 `[U]Fix64`
 
 Although fixed point numbers are implemented as integers, JSON-Cadence uses a decimal string representation for readability.
 
-```json
+```
 {
     "type": "[U]Fix64",
     "value": "<integer>.<fractional>"
@@ -167,7 +184,7 @@ Although fixed point numbers are implemented as integers, JSON-Cadence uses a de
 
 **Example**
 
-```json
+```
 
 {
     "type": "Fix64",
@@ -179,7 +196,7 @@ Although fixed point numbers are implemented as integers, JSON-Cadence uses a de
 
 ## Array
 
-```json
+```
 {
   "type": "Array",
   "value": [
@@ -193,7 +210,7 @@ Although fixed point numbers are implemented as integers, JSON-Cadence uses a de
 
 **Example**
 
-```json
+```
 {
   "type": "Array",
   "value": [
@@ -219,12 +236,12 @@ Although fixed point numbers are implemented as integers, JSON-Cadence uses a de
 
 Dictionaries are encoded as a list of key-value pairs to preserve the deterministic ordering implemented by Cadence.
 
-```json
+```
 {
   "type": "Dictionary"
   "value": [
     {
-      "key": <key>, 
+      "key": "<key>", 
       "value": <value>
     },
     ...
@@ -235,7 +252,7 @@ Dictionaries are encoded as a list of key-value pairs to preserve the determinis
 
 **Example**
 
-```json
+```
 {
   "type": "Dictionary"
   "value": [
@@ -258,11 +275,11 @@ Dictionaries are encoded as a list of key-value pairs to preserve the determinis
 
 ## Composites (Struct, Resource, Event)
 
-`"Event"`, `"Struct"`, `"Resource"`
+`Event`, `Struct`, `Resource`
 
 Composite fields are encoded as a list of name-value pairs in the order in which they appear in the composite type declaration.
 
-```json
+```
 {
   "type": "Struct" | "Resource" | "Event",
   "value": {
@@ -272,7 +289,7 @@ Composite fields are encoded as a list of name-value pairs in the order in which
         "name": "<field name>",
         "value": <field value>
       },
-      // ...
+      ...
     ]
   }
 }
@@ -280,7 +297,7 @@ Composite fields are encoded as a list of name-value pairs in the order in which
 
 **Example** 
 
-```json
+```
 {
   "type": "Resource",
   "value": {
