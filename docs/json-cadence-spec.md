@@ -274,7 +274,7 @@ Dictionaries are encoded as a list of key-value pairs to preserve the determinis
 
 ## Composites (Struct, Resource, Event)
 
-`"Event"`, `"Struct"`, `"Resource"`
+`Event`, `Struct`, `Resource`
 
 Composite fields are encoded as a list of name-value pairs in the order in which they appear in the composite type declaration.
 
