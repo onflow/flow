@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package entities;
+
+message AccountSignature {
+  bytes account = 1;
+  bytes signature = 2;
+}
+
+enum TransactionStatus {
+  STATUS_UNKNOWN = 0;
+  STATUS_PENDING = 1;
+  STATUS_FINALIZED = 2;
+  STATUS_SEALED = 4;
+}
+
+message Transaction {
+  bytes script = 1;
+  bytes reference_block_id = 2;
+  bytes payer_account = 3;
+  repeated bytes script_accounts = 4;
+  repeated AccountSignature signatures = 5;
+  TransactionStatus status = 6;
+}

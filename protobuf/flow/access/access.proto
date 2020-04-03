@@ -1,10 +1,13 @@
 syntax = "proto3";
 
-package flow;
+package access;
 
-option go_package = "flow";
-
-import "flow/entities.proto";
+import "flow/entities/block_header.proto";
+import "flow/entities/block.proto";
+import "flow/entities/collection.proto";
+import "flow/entities/transaction.proto";
+import "flow/entities/account.proto";
+import "flow/entities/event.proto";
 
 // AccessAPI is the public-facing API provided by access nodes.
 service AccessAPI {
@@ -86,7 +89,7 @@ message GetBlockHeaderByHeightRequest {
 }
 
 message BlockHeaderResponse {
-  flow.BlockHeader block = 1;
+  entities.BlockHeader block = 1;
 }
 
 // Blocks
@@ -104,7 +107,7 @@ message GetBlockByHeightRequest {
 }
 
 message BlockResponse {
-  flow.Block block = 1;
+  entities.Block block = 1;
 }
 
 // Collections
@@ -114,13 +117,13 @@ message GetCollectionByIDRequest {
 }
 
 message CollectionResponse {
-  flow.Collection collection = 1;
+  entities.Collection collection = 1;
 }
 
 // Transactions
 
 message SendTransactionRequest {
-  flow.Transaction transaction = 1;
+  entities.Transaction transaction = 1;
 }
 
 message SendTransactionResponse {
@@ -132,12 +135,12 @@ message GetTransactionRequest {
 }
 
 message TransactionResponse {
-  flow.Transaction transaction = 1;
+  entities.Transaction transaction = 1;
 }
 
 message TransactionResultResponse {
-  flow.TransactionStatus status = 1;
-  repeated flow.Event events = 2;
+  entities.TransactionStatus status = 1;
+  repeated entities.Event events = 2;
 }
 
 // Accounts
@@ -147,7 +150,7 @@ message GetAccountRequest {
 }
 
 message GetAccountResponse {
-  flow.Account account = 1;
+  entities.Account account = 1;
 }
 
 // Scripts
@@ -179,7 +182,7 @@ message GetEventsForHeightRangeRequest {
 }
 
 message EventsResponse {
-  repeated flow.Event events = 1;
+  repeated entities.Event events = 1;
 }
 
 message GetEventsForBlockIDsRequest {

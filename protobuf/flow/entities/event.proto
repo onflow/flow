@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package entities;
+
+message Event {
+  string type = 1;
+  bytes transaction_id = 2;
+  uint32 index = 3;
+  bytes payload = 4;
+}
