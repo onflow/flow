@@ -1,3 +1,3 @@
 .PHONY: generate
 generate:
-	rm -rf ./go ./java && prototool generate
+	rm -rf ./go && prototool generate
