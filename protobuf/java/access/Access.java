@@ -2301,17 +2301,17 @@ public final class Access {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.flow.BlockHeader block = 1;</code>
+     * <code>.entities.BlockHeader block = 1;</code>
      */
     boolean hasBlock();
     /**
-     * <code>.flow.BlockHeader block = 1;</code>
+     * <code>.entities.BlockHeader block = 1;</code>
      */
-    flow.Entities.BlockHeader getBlock();
+    entities.BlockHeaderOuterClass.BlockHeader getBlock();
     /**
-     * <code>.flow.BlockHeader block = 1;</code>
+     * <code>.entities.BlockHeader block = 1;</code>
      */
-    flow.Entities.BlockHeaderOrBuilder getBlockOrBuilder();
+    entities.BlockHeaderOuterClass.BlockHeaderOrBuilder getBlockOrBuilder();
   }
   /**
    * Protobuf type {@code access.BlockHeaderResponse}
@@ -2359,11 +2359,11 @@ public final class Access {
               done = true;
               break;
             case 10: {
-              flow.Entities.BlockHeader.Builder subBuilder = null;
+              entities.BlockHeaderOuterClass.BlockHeader.Builder subBuilder = null;
               if (block_ != null) {
                 subBuilder = block_.toBuilder();
               }
-              block_ = input.readMessage(flow.Entities.BlockHeader.parser(), extensionRegistry);
+              block_ = input.readMessage(entities.BlockHeaderOuterClass.BlockHeader.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(block_);
                 block_ = subBuilder.buildPartial();
@@ -2404,23 +2404,23 @@ public final class Access {
     }
 
     public static final int BLOCK_FIELD_NUMBER = 1;
-    private flow.Entities.BlockHeader block_;
+    private entities.BlockHeaderOuterClass.BlockHeader block_;
     /**
-     * <code>.flow.BlockHeader block = 1;</code>
+     * <code>.entities.BlockHeader block = 1;</code>
      */
     public boolean hasBlock() {
       return block_ != null;
     }
     /**
-     * <code>.flow.BlockHeader block = 1;</code>
+     * <code>.entities.BlockHeader block = 1;</code>
      */
-    public flow.Entities.BlockHeader getBlock() {
-      return block_ == null ? flow.Entities.BlockHeader.getDefaultInstance() : block_;
+    public entities.BlockHeaderOuterClass.BlockHeader getBlock() {
+      return block_ == null ? entities.BlockHeaderOuterClass.BlockHeader.getDefaultInstance() : block_;
     }
     /**
-     * <code>.flow.BlockHeader block = 1;</code>
+     * <code>.entities.BlockHeader block = 1;</code>
      */
-    public flow.Entities.BlockHeaderOrBuilder getBlockOrBuilder() {
+    public entities.BlockHeaderOuterClass.BlockHeaderOrBuilder getBlockOrBuilder() {
       return getBlock();
     }
 
@@ -2739,29 +2739,29 @@ public final class Access {
         return this;
       }
 
-      private flow.Entities.BlockHeader block_;
+      private entities.BlockHeaderOuterClass.BlockHeader block_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          flow.Entities.BlockHeader, flow.Entities.BlockHeader.Builder, flow.Entities.BlockHeaderOrBuilder> blockBuilder_;
+          entities.BlockHeaderOuterClass.BlockHeader, entities.BlockHeaderOuterClass.BlockHeader.Builder, entities.BlockHeaderOuterClass.BlockHeaderOrBuilder> blockBuilder_;
       /**
-       * <code>.flow.BlockHeader block = 1;</code>
+       * <code>.entities.BlockHeader block = 1;</code>
        */
       public boolean hasBlock() {
         return blockBuilder_ != null || block_ != null;
       }
       /**
-       * <code>.flow.BlockHeader block = 1;</code>
+       * <code>.entities.BlockHeader block = 1;</code>
        */
-      public flow.Entities.BlockHeader getBlock() {
+      public entities.BlockHeaderOuterClass.BlockHeader getBlock() {
         if (blockBuilder_ == null) {
-          return block_ == null ? flow.Entities.BlockHeader.getDefaultInstance() : block_;
+          return block_ == null ? entities.BlockHeaderOuterClass.BlockHeader.getDefaultInstance() : block_;
         } else {
           return blockBuilder_.getMessage();
         }
       }
       /**
-       * <code>.flow.BlockHeader block = 1;</code>
+       * <code>.entities.BlockHeader block = 1;</code>
        */
-      public Builder setBlock(flow.Entities.BlockHeader value) {
+      public Builder setBlock(entities.BlockHeaderOuterClass.BlockHeader value) {
         if (blockBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2775,10 +2775,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.BlockHeader block = 1;</code>
+       * <code>.entities.BlockHeader block = 1;</code>
        */
       public Builder setBlock(
-          flow.Entities.BlockHeader.Builder builderForValue) {
+          entities.BlockHeaderOuterClass.BlockHeader.Builder builderForValue) {
         if (blockBuilder_ == null) {
           block_ = builderForValue.build();
           onChanged();
@@ -2789,13 +2789,13 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.BlockHeader block = 1;</code>
+       * <code>.entities.BlockHeader block = 1;</code>
        */
-      public Builder mergeBlock(flow.Entities.BlockHeader value) {
+      public Builder mergeBlock(entities.BlockHeaderOuterClass.BlockHeader value) {
         if (blockBuilder_ == null) {
           if (block_ != null) {
             block_ =
-              flow.Entities.BlockHeader.newBuilder(block_).mergeFrom(value).buildPartial();
+              entities.BlockHeaderOuterClass.BlockHeader.newBuilder(block_).mergeFrom(value).buildPartial();
           } else {
             block_ = value;
           }
@@ -2807,7 +2807,7 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.BlockHeader block = 1;</code>
+       * <code>.entities.BlockHeader block = 1;</code>
        */
       public Builder clearBlock() {
         if (blockBuilder_ == null) {
@@ -2821,33 +2821,33 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.BlockHeader block = 1;</code>
+       * <code>.entities.BlockHeader block = 1;</code>
        */
-      public flow.Entities.BlockHeader.Builder getBlockBuilder() {
+      public entities.BlockHeaderOuterClass.BlockHeader.Builder getBlockBuilder() {
         
         onChanged();
         return getBlockFieldBuilder().getBuilder();
       }
       /**
-       * <code>.flow.BlockHeader block = 1;</code>
+       * <code>.entities.BlockHeader block = 1;</code>
        */
-      public flow.Entities.BlockHeaderOrBuilder getBlockOrBuilder() {
+      public entities.BlockHeaderOuterClass.BlockHeaderOrBuilder getBlockOrBuilder() {
         if (blockBuilder_ != null) {
           return blockBuilder_.getMessageOrBuilder();
         } else {
           return block_ == null ?
-              flow.Entities.BlockHeader.getDefaultInstance() : block_;
+              entities.BlockHeaderOuterClass.BlockHeader.getDefaultInstance() : block_;
         }
       }
       /**
-       * <code>.flow.BlockHeader block = 1;</code>
+       * <code>.entities.BlockHeader block = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          flow.Entities.BlockHeader, flow.Entities.BlockHeader.Builder, flow.Entities.BlockHeaderOrBuilder> 
+          entities.BlockHeaderOuterClass.BlockHeader, entities.BlockHeaderOuterClass.BlockHeader.Builder, entities.BlockHeaderOuterClass.BlockHeaderOrBuilder> 
           getBlockFieldBuilder() {
         if (blockBuilder_ == null) {
           blockBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              flow.Entities.BlockHeader, flow.Entities.BlockHeader.Builder, flow.Entities.BlockHeaderOrBuilder>(
+              entities.BlockHeaderOuterClass.BlockHeader, entities.BlockHeaderOuterClass.BlockHeader.Builder, entities.BlockHeaderOuterClass.BlockHeaderOrBuilder>(
                   getBlock(),
                   getParentForChildren(),
                   isClean());
@@ -4359,17 +4359,17 @@ public final class Access {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.flow.Block block = 1;</code>
+     * <code>.entities.Block block = 1;</code>
      */
     boolean hasBlock();
     /**
-     * <code>.flow.Block block = 1;</code>
+     * <code>.entities.Block block = 1;</code>
      */
-    flow.Entities.Block getBlock();
+    entities.BlockOuterClass.Block getBlock();
     /**
-     * <code>.flow.Block block = 1;</code>
+     * <code>.entities.Block block = 1;</code>
      */
-    flow.Entities.BlockOrBuilder getBlockOrBuilder();
+    entities.BlockOuterClass.BlockOrBuilder getBlockOrBuilder();
   }
   /**
    * Protobuf type {@code access.BlockResponse}
@@ -4417,11 +4417,11 @@ public final class Access {
               done = true;
               break;
             case 10: {
-              flow.Entities.Block.Builder subBuilder = null;
+              entities.BlockOuterClass.Block.Builder subBuilder = null;
               if (block_ != null) {
                 subBuilder = block_.toBuilder();
               }
-              block_ = input.readMessage(flow.Entities.Block.parser(), extensionRegistry);
+              block_ = input.readMessage(entities.BlockOuterClass.Block.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(block_);
                 block_ = subBuilder.buildPartial();
@@ -4462,23 +4462,23 @@ public final class Access {
     }
 
     public static final int BLOCK_FIELD_NUMBER = 1;
-    private flow.Entities.Block block_;
+    private entities.BlockOuterClass.Block block_;
     /**
-     * <code>.flow.Block block = 1;</code>
+     * <code>.entities.Block block = 1;</code>
      */
     public boolean hasBlock() {
       return block_ != null;
     }
     /**
-     * <code>.flow.Block block = 1;</code>
+     * <code>.entities.Block block = 1;</code>
      */
-    public flow.Entities.Block getBlock() {
-      return block_ == null ? flow.Entities.Block.getDefaultInstance() : block_;
+    public entities.BlockOuterClass.Block getBlock() {
+      return block_ == null ? entities.BlockOuterClass.Block.getDefaultInstance() : block_;
     }
     /**
-     * <code>.flow.Block block = 1;</code>
+     * <code>.entities.Block block = 1;</code>
      */
-    public flow.Entities.BlockOrBuilder getBlockOrBuilder() {
+    public entities.BlockOuterClass.BlockOrBuilder getBlockOrBuilder() {
       return getBlock();
     }
 
@@ -4797,29 +4797,29 @@ public final class Access {
         return this;
       }
 
-      private flow.Entities.Block block_;
+      private entities.BlockOuterClass.Block block_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          flow.Entities.Block, flow.Entities.Block.Builder, flow.Entities.BlockOrBuilder> blockBuilder_;
+          entities.BlockOuterClass.Block, entities.BlockOuterClass.Block.Builder, entities.BlockOuterClass.BlockOrBuilder> blockBuilder_;
       /**
-       * <code>.flow.Block block = 1;</code>
+       * <code>.entities.Block block = 1;</code>
        */
       public boolean hasBlock() {
         return blockBuilder_ != null || block_ != null;
       }
       /**
-       * <code>.flow.Block block = 1;</code>
+       * <code>.entities.Block block = 1;</code>
        */
-      public flow.Entities.Block getBlock() {
+      public entities.BlockOuterClass.Block getBlock() {
         if (blockBuilder_ == null) {
-          return block_ == null ? flow.Entities.Block.getDefaultInstance() : block_;
+          return block_ == null ? entities.BlockOuterClass.Block.getDefaultInstance() : block_;
         } else {
           return blockBuilder_.getMessage();
         }
       }
       /**
-       * <code>.flow.Block block = 1;</code>
+       * <code>.entities.Block block = 1;</code>
        */
-      public Builder setBlock(flow.Entities.Block value) {
+      public Builder setBlock(entities.BlockOuterClass.Block value) {
         if (blockBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4833,10 +4833,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Block block = 1;</code>
+       * <code>.entities.Block block = 1;</code>
        */
       public Builder setBlock(
-          flow.Entities.Block.Builder builderForValue) {
+          entities.BlockOuterClass.Block.Builder builderForValue) {
         if (blockBuilder_ == null) {
           block_ = builderForValue.build();
           onChanged();
@@ -4847,13 +4847,13 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Block block = 1;</code>
+       * <code>.entities.Block block = 1;</code>
        */
-      public Builder mergeBlock(flow.Entities.Block value) {
+      public Builder mergeBlock(entities.BlockOuterClass.Block value) {
         if (blockBuilder_ == null) {
           if (block_ != null) {
             block_ =
-              flow.Entities.Block.newBuilder(block_).mergeFrom(value).buildPartial();
+              entities.BlockOuterClass.Block.newBuilder(block_).mergeFrom(value).buildPartial();
           } else {
             block_ = value;
           }
@@ -4865,7 +4865,7 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Block block = 1;</code>
+       * <code>.entities.Block block = 1;</code>
        */
       public Builder clearBlock() {
         if (blockBuilder_ == null) {
@@ -4879,33 +4879,33 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Block block = 1;</code>
+       * <code>.entities.Block block = 1;</code>
        */
-      public flow.Entities.Block.Builder getBlockBuilder() {
+      public entities.BlockOuterClass.Block.Builder getBlockBuilder() {
         
         onChanged();
         return getBlockFieldBuilder().getBuilder();
       }
       /**
-       * <code>.flow.Block block = 1;</code>
+       * <code>.entities.Block block = 1;</code>
        */
-      public flow.Entities.BlockOrBuilder getBlockOrBuilder() {
+      public entities.BlockOuterClass.BlockOrBuilder getBlockOrBuilder() {
         if (blockBuilder_ != null) {
           return blockBuilder_.getMessageOrBuilder();
         } else {
           return block_ == null ?
-              flow.Entities.Block.getDefaultInstance() : block_;
+              entities.BlockOuterClass.Block.getDefaultInstance() : block_;
         }
       }
       /**
-       * <code>.flow.Block block = 1;</code>
+       * <code>.entities.Block block = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          flow.Entities.Block, flow.Entities.Block.Builder, flow.Entities.BlockOrBuilder> 
+          entities.BlockOuterClass.Block, entities.BlockOuterClass.Block.Builder, entities.BlockOuterClass.BlockOrBuilder> 
           getBlockFieldBuilder() {
         if (blockBuilder_ == null) {
           blockBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              flow.Entities.Block, flow.Entities.Block.Builder, flow.Entities.BlockOrBuilder>(
+              entities.BlockOuterClass.Block, entities.BlockOuterClass.Block.Builder, entities.BlockOuterClass.BlockOrBuilder>(
                   getBlock(),
                   getParentForChildren(),
                   isClean());
@@ -5455,17 +5455,17 @@ public final class Access {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.flow.Collection collection = 1;</code>
+     * <code>.entities.Collection collection = 1;</code>
      */
     boolean hasCollection();
     /**
-     * <code>.flow.Collection collection = 1;</code>
+     * <code>.entities.Collection collection = 1;</code>
      */
-    flow.Entities.Collection getCollection();
+    entities.CollectionOuterClass.Collection getCollection();
     /**
-     * <code>.flow.Collection collection = 1;</code>
+     * <code>.entities.Collection collection = 1;</code>
      */
-    flow.Entities.CollectionOrBuilder getCollectionOrBuilder();
+    entities.CollectionOuterClass.CollectionOrBuilder getCollectionOrBuilder();
   }
   /**
    * Protobuf type {@code access.CollectionResponse}
@@ -5513,11 +5513,11 @@ public final class Access {
               done = true;
               break;
             case 10: {
-              flow.Entities.Collection.Builder subBuilder = null;
+              entities.CollectionOuterClass.Collection.Builder subBuilder = null;
               if (collection_ != null) {
                 subBuilder = collection_.toBuilder();
               }
-              collection_ = input.readMessage(flow.Entities.Collection.parser(), extensionRegistry);
+              collection_ = input.readMessage(entities.CollectionOuterClass.Collection.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(collection_);
                 collection_ = subBuilder.buildPartial();
@@ -5558,23 +5558,23 @@ public final class Access {
     }
 
     public static final int COLLECTION_FIELD_NUMBER = 1;
-    private flow.Entities.Collection collection_;
+    private entities.CollectionOuterClass.Collection collection_;
     /**
-     * <code>.flow.Collection collection = 1;</code>
+     * <code>.entities.Collection collection = 1;</code>
      */
     public boolean hasCollection() {
       return collection_ != null;
     }
     /**
-     * <code>.flow.Collection collection = 1;</code>
+     * <code>.entities.Collection collection = 1;</code>
      */
-    public flow.Entities.Collection getCollection() {
-      return collection_ == null ? flow.Entities.Collection.getDefaultInstance() : collection_;
+    public entities.CollectionOuterClass.Collection getCollection() {
+      return collection_ == null ? entities.CollectionOuterClass.Collection.getDefaultInstance() : collection_;
     }
     /**
-     * <code>.flow.Collection collection = 1;</code>
+     * <code>.entities.Collection collection = 1;</code>
      */
-    public flow.Entities.CollectionOrBuilder getCollectionOrBuilder() {
+    public entities.CollectionOuterClass.CollectionOrBuilder getCollectionOrBuilder() {
       return getCollection();
     }
 
@@ -5893,29 +5893,29 @@ public final class Access {
         return this;
       }
 
-      private flow.Entities.Collection collection_;
+      private entities.CollectionOuterClass.Collection collection_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          flow.Entities.Collection, flow.Entities.Collection.Builder, flow.Entities.CollectionOrBuilder> collectionBuilder_;
+          entities.CollectionOuterClass.Collection, entities.CollectionOuterClass.Collection.Builder, entities.CollectionOuterClass.CollectionOrBuilder> collectionBuilder_;
       /**
-       * <code>.flow.Collection collection = 1;</code>
+       * <code>.entities.Collection collection = 1;</code>
        */
       public boolean hasCollection() {
         return collectionBuilder_ != null || collection_ != null;
       }
       /**
-       * <code>.flow.Collection collection = 1;</code>
+       * <code>.entities.Collection collection = 1;</code>
        */
-      public flow.Entities.Collection getCollection() {
+      public entities.CollectionOuterClass.Collection getCollection() {
         if (collectionBuilder_ == null) {
-          return collection_ == null ? flow.Entities.Collection.getDefaultInstance() : collection_;
+          return collection_ == null ? entities.CollectionOuterClass.Collection.getDefaultInstance() : collection_;
         } else {
           return collectionBuilder_.getMessage();
         }
       }
       /**
-       * <code>.flow.Collection collection = 1;</code>
+       * <code>.entities.Collection collection = 1;</code>
        */
-      public Builder setCollection(flow.Entities.Collection value) {
+      public Builder setCollection(entities.CollectionOuterClass.Collection value) {
         if (collectionBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5929,10 +5929,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Collection collection = 1;</code>
+       * <code>.entities.Collection collection = 1;</code>
        */
       public Builder setCollection(
-          flow.Entities.Collection.Builder builderForValue) {
+          entities.CollectionOuterClass.Collection.Builder builderForValue) {
         if (collectionBuilder_ == null) {
           collection_ = builderForValue.build();
           onChanged();
@@ -5943,13 +5943,13 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Collection collection = 1;</code>
+       * <code>.entities.Collection collection = 1;</code>
        */
-      public Builder mergeCollection(flow.Entities.Collection value) {
+      public Builder mergeCollection(entities.CollectionOuterClass.Collection value) {
         if (collectionBuilder_ == null) {
           if (collection_ != null) {
             collection_ =
-              flow.Entities.Collection.newBuilder(collection_).mergeFrom(value).buildPartial();
+              entities.CollectionOuterClass.Collection.newBuilder(collection_).mergeFrom(value).buildPartial();
           } else {
             collection_ = value;
           }
@@ -5961,7 +5961,7 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Collection collection = 1;</code>
+       * <code>.entities.Collection collection = 1;</code>
        */
       public Builder clearCollection() {
         if (collectionBuilder_ == null) {
@@ -5975,33 +5975,33 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Collection collection = 1;</code>
+       * <code>.entities.Collection collection = 1;</code>
        */
-      public flow.Entities.Collection.Builder getCollectionBuilder() {
+      public entities.CollectionOuterClass.Collection.Builder getCollectionBuilder() {
         
         onChanged();
         return getCollectionFieldBuilder().getBuilder();
       }
       /**
-       * <code>.flow.Collection collection = 1;</code>
+       * <code>.entities.Collection collection = 1;</code>
        */
-      public flow.Entities.CollectionOrBuilder getCollectionOrBuilder() {
+      public entities.CollectionOuterClass.CollectionOrBuilder getCollectionOrBuilder() {
         if (collectionBuilder_ != null) {
           return collectionBuilder_.getMessageOrBuilder();
         } else {
           return collection_ == null ?
-              flow.Entities.Collection.getDefaultInstance() : collection_;
+              entities.CollectionOuterClass.Collection.getDefaultInstance() : collection_;
         }
       }
       /**
-       * <code>.flow.Collection collection = 1;</code>
+       * <code>.entities.Collection collection = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          flow.Entities.Collection, flow.Entities.Collection.Builder, flow.Entities.CollectionOrBuilder> 
+          entities.CollectionOuterClass.Collection, entities.CollectionOuterClass.Collection.Builder, entities.CollectionOuterClass.CollectionOrBuilder> 
           getCollectionFieldBuilder() {
         if (collectionBuilder_ == null) {
           collectionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              flow.Entities.Collection, flow.Entities.Collection.Builder, flow.Entities.CollectionOrBuilder>(
+              entities.CollectionOuterClass.Collection, entities.CollectionOuterClass.Collection.Builder, entities.CollectionOuterClass.CollectionOrBuilder>(
                   getCollection(),
                   getParentForChildren(),
                   isClean());
@@ -6067,17 +6067,17 @@ public final class Access {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.flow.Transaction transaction = 1;</code>
+     * <code>.entities.Transaction transaction = 1;</code>
      */
     boolean hasTransaction();
     /**
-     * <code>.flow.Transaction transaction = 1;</code>
+     * <code>.entities.Transaction transaction = 1;</code>
      */
-    flow.Entities.Transaction getTransaction();
+    entities.TransactionOuterClass.Transaction getTransaction();
     /**
-     * <code>.flow.Transaction transaction = 1;</code>
+     * <code>.entities.Transaction transaction = 1;</code>
      */
-    flow.Entities.TransactionOrBuilder getTransactionOrBuilder();
+    entities.TransactionOuterClass.TransactionOrBuilder getTransactionOrBuilder();
   }
   /**
    * Protobuf type {@code access.SendTransactionRequest}
@@ -6125,11 +6125,11 @@ public final class Access {
               done = true;
               break;
             case 10: {
-              flow.Entities.Transaction.Builder subBuilder = null;
+              entities.TransactionOuterClass.Transaction.Builder subBuilder = null;
               if (transaction_ != null) {
                 subBuilder = transaction_.toBuilder();
               }
-              transaction_ = input.readMessage(flow.Entities.Transaction.parser(), extensionRegistry);
+              transaction_ = input.readMessage(entities.TransactionOuterClass.Transaction.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(transaction_);
                 transaction_ = subBuilder.buildPartial();
@@ -6170,23 +6170,23 @@ public final class Access {
     }
 
     public static final int TRANSACTION_FIELD_NUMBER = 1;
-    private flow.Entities.Transaction transaction_;
+    private entities.TransactionOuterClass.Transaction transaction_;
     /**
-     * <code>.flow.Transaction transaction = 1;</code>
+     * <code>.entities.Transaction transaction = 1;</code>
      */
     public boolean hasTransaction() {
       return transaction_ != null;
     }
     /**
-     * <code>.flow.Transaction transaction = 1;</code>
+     * <code>.entities.Transaction transaction = 1;</code>
      */
-    public flow.Entities.Transaction getTransaction() {
-      return transaction_ == null ? flow.Entities.Transaction.getDefaultInstance() : transaction_;
+    public entities.TransactionOuterClass.Transaction getTransaction() {
+      return transaction_ == null ? entities.TransactionOuterClass.Transaction.getDefaultInstance() : transaction_;
     }
     /**
-     * <code>.flow.Transaction transaction = 1;</code>
+     * <code>.entities.Transaction transaction = 1;</code>
      */
-    public flow.Entities.TransactionOrBuilder getTransactionOrBuilder() {
+    public entities.TransactionOuterClass.TransactionOrBuilder getTransactionOrBuilder() {
       return getTransaction();
     }
 
@@ -6505,29 +6505,29 @@ public final class Access {
         return this;
       }
 
-      private flow.Entities.Transaction transaction_;
+      private entities.TransactionOuterClass.Transaction transaction_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          flow.Entities.Transaction, flow.Entities.Transaction.Builder, flow.Entities.TransactionOrBuilder> transactionBuilder_;
+          entities.TransactionOuterClass.Transaction, entities.TransactionOuterClass.Transaction.Builder, entities.TransactionOuterClass.TransactionOrBuilder> transactionBuilder_;
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
       public boolean hasTransaction() {
         return transactionBuilder_ != null || transaction_ != null;
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
-      public flow.Entities.Transaction getTransaction() {
+      public entities.TransactionOuterClass.Transaction getTransaction() {
         if (transactionBuilder_ == null) {
-          return transaction_ == null ? flow.Entities.Transaction.getDefaultInstance() : transaction_;
+          return transaction_ == null ? entities.TransactionOuterClass.Transaction.getDefaultInstance() : transaction_;
         } else {
           return transactionBuilder_.getMessage();
         }
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
-      public Builder setTransaction(flow.Entities.Transaction value) {
+      public Builder setTransaction(entities.TransactionOuterClass.Transaction value) {
         if (transactionBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6541,10 +6541,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
       public Builder setTransaction(
-          flow.Entities.Transaction.Builder builderForValue) {
+          entities.TransactionOuterClass.Transaction.Builder builderForValue) {
         if (transactionBuilder_ == null) {
           transaction_ = builderForValue.build();
           onChanged();
@@ -6555,13 +6555,13 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
-      public Builder mergeTransaction(flow.Entities.Transaction value) {
+      public Builder mergeTransaction(entities.TransactionOuterClass.Transaction value) {
         if (transactionBuilder_ == null) {
           if (transaction_ != null) {
             transaction_ =
-              flow.Entities.Transaction.newBuilder(transaction_).mergeFrom(value).buildPartial();
+              entities.TransactionOuterClass.Transaction.newBuilder(transaction_).mergeFrom(value).buildPartial();
           } else {
             transaction_ = value;
           }
@@ -6573,7 +6573,7 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
       public Builder clearTransaction() {
         if (transactionBuilder_ == null) {
@@ -6587,33 +6587,33 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
-      public flow.Entities.Transaction.Builder getTransactionBuilder() {
+      public entities.TransactionOuterClass.Transaction.Builder getTransactionBuilder() {
         
         onChanged();
         return getTransactionFieldBuilder().getBuilder();
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
-      public flow.Entities.TransactionOrBuilder getTransactionOrBuilder() {
+      public entities.TransactionOuterClass.TransactionOrBuilder getTransactionOrBuilder() {
         if (transactionBuilder_ != null) {
           return transactionBuilder_.getMessageOrBuilder();
         } else {
           return transaction_ == null ?
-              flow.Entities.Transaction.getDefaultInstance() : transaction_;
+              entities.TransactionOuterClass.Transaction.getDefaultInstance() : transaction_;
         }
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          flow.Entities.Transaction, flow.Entities.Transaction.Builder, flow.Entities.TransactionOrBuilder> 
+          entities.TransactionOuterClass.Transaction, entities.TransactionOuterClass.Transaction.Builder, entities.TransactionOuterClass.TransactionOrBuilder> 
           getTransactionFieldBuilder() {
         if (transactionBuilder_ == null) {
           transactionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              flow.Entities.Transaction, flow.Entities.Transaction.Builder, flow.Entities.TransactionOrBuilder>(
+              entities.TransactionOuterClass.Transaction, entities.TransactionOuterClass.Transaction.Builder, entities.TransactionOuterClass.TransactionOrBuilder>(
                   getTransaction(),
                   getParentForChildren(),
                   isClean());
@@ -7647,17 +7647,17 @@ public final class Access {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.flow.Transaction transaction = 1;</code>
+     * <code>.entities.Transaction transaction = 1;</code>
      */
     boolean hasTransaction();
     /**
-     * <code>.flow.Transaction transaction = 1;</code>
+     * <code>.entities.Transaction transaction = 1;</code>
      */
-    flow.Entities.Transaction getTransaction();
+    entities.TransactionOuterClass.Transaction getTransaction();
     /**
-     * <code>.flow.Transaction transaction = 1;</code>
+     * <code>.entities.Transaction transaction = 1;</code>
      */
-    flow.Entities.TransactionOrBuilder getTransactionOrBuilder();
+    entities.TransactionOuterClass.TransactionOrBuilder getTransactionOrBuilder();
   }
   /**
    * Protobuf type {@code access.TransactionResponse}
@@ -7705,11 +7705,11 @@ public final class Access {
               done = true;
               break;
             case 10: {
-              flow.Entities.Transaction.Builder subBuilder = null;
+              entities.TransactionOuterClass.Transaction.Builder subBuilder = null;
               if (transaction_ != null) {
                 subBuilder = transaction_.toBuilder();
               }
-              transaction_ = input.readMessage(flow.Entities.Transaction.parser(), extensionRegistry);
+              transaction_ = input.readMessage(entities.TransactionOuterClass.Transaction.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(transaction_);
                 transaction_ = subBuilder.buildPartial();
@@ -7750,23 +7750,23 @@ public final class Access {
     }
 
     public static final int TRANSACTION_FIELD_NUMBER = 1;
-    private flow.Entities.Transaction transaction_;
+    private entities.TransactionOuterClass.Transaction transaction_;
     /**
-     * <code>.flow.Transaction transaction = 1;</code>
+     * <code>.entities.Transaction transaction = 1;</code>
      */
     public boolean hasTransaction() {
       return transaction_ != null;
     }
     /**
-     * <code>.flow.Transaction transaction = 1;</code>
+     * <code>.entities.Transaction transaction = 1;</code>
      */
-    public flow.Entities.Transaction getTransaction() {
-      return transaction_ == null ? flow.Entities.Transaction.getDefaultInstance() : transaction_;
+    public entities.TransactionOuterClass.Transaction getTransaction() {
+      return transaction_ == null ? entities.TransactionOuterClass.Transaction.getDefaultInstance() : transaction_;
     }
     /**
-     * <code>.flow.Transaction transaction = 1;</code>
+     * <code>.entities.Transaction transaction = 1;</code>
      */
-    public flow.Entities.TransactionOrBuilder getTransactionOrBuilder() {
+    public entities.TransactionOuterClass.TransactionOrBuilder getTransactionOrBuilder() {
       return getTransaction();
     }
 
@@ -8085,29 +8085,29 @@ public final class Access {
         return this;
       }
 
-      private flow.Entities.Transaction transaction_;
+      private entities.TransactionOuterClass.Transaction transaction_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          flow.Entities.Transaction, flow.Entities.Transaction.Builder, flow.Entities.TransactionOrBuilder> transactionBuilder_;
+          entities.TransactionOuterClass.Transaction, entities.TransactionOuterClass.Transaction.Builder, entities.TransactionOuterClass.TransactionOrBuilder> transactionBuilder_;
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
       public boolean hasTransaction() {
         return transactionBuilder_ != null || transaction_ != null;
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
-      public flow.Entities.Transaction getTransaction() {
+      public entities.TransactionOuterClass.Transaction getTransaction() {
         if (transactionBuilder_ == null) {
-          return transaction_ == null ? flow.Entities.Transaction.getDefaultInstance() : transaction_;
+          return transaction_ == null ? entities.TransactionOuterClass.Transaction.getDefaultInstance() : transaction_;
         } else {
           return transactionBuilder_.getMessage();
         }
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
-      public Builder setTransaction(flow.Entities.Transaction value) {
+      public Builder setTransaction(entities.TransactionOuterClass.Transaction value) {
         if (transactionBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8121,10 +8121,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
       public Builder setTransaction(
-          flow.Entities.Transaction.Builder builderForValue) {
+          entities.TransactionOuterClass.Transaction.Builder builderForValue) {
         if (transactionBuilder_ == null) {
           transaction_ = builderForValue.build();
           onChanged();
@@ -8135,13 +8135,13 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
-      public Builder mergeTransaction(flow.Entities.Transaction value) {
+      public Builder mergeTransaction(entities.TransactionOuterClass.Transaction value) {
         if (transactionBuilder_ == null) {
           if (transaction_ != null) {
             transaction_ =
-              flow.Entities.Transaction.newBuilder(transaction_).mergeFrom(value).buildPartial();
+              entities.TransactionOuterClass.Transaction.newBuilder(transaction_).mergeFrom(value).buildPartial();
           } else {
             transaction_ = value;
           }
@@ -8153,7 +8153,7 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
       public Builder clearTransaction() {
         if (transactionBuilder_ == null) {
@@ -8167,33 +8167,33 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
-      public flow.Entities.Transaction.Builder getTransactionBuilder() {
+      public entities.TransactionOuterClass.Transaction.Builder getTransactionBuilder() {
         
         onChanged();
         return getTransactionFieldBuilder().getBuilder();
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
-      public flow.Entities.TransactionOrBuilder getTransactionOrBuilder() {
+      public entities.TransactionOuterClass.TransactionOrBuilder getTransactionOrBuilder() {
         if (transactionBuilder_ != null) {
           return transactionBuilder_.getMessageOrBuilder();
         } else {
           return transaction_ == null ?
-              flow.Entities.Transaction.getDefaultInstance() : transaction_;
+              entities.TransactionOuterClass.Transaction.getDefaultInstance() : transaction_;
         }
       }
       /**
-       * <code>.flow.Transaction transaction = 1;</code>
+       * <code>.entities.Transaction transaction = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          flow.Entities.Transaction, flow.Entities.Transaction.Builder, flow.Entities.TransactionOrBuilder> 
+          entities.TransactionOuterClass.Transaction, entities.TransactionOuterClass.Transaction.Builder, entities.TransactionOuterClass.TransactionOrBuilder> 
           getTransactionFieldBuilder() {
         if (transactionBuilder_ == null) {
           transactionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              flow.Entities.Transaction, flow.Entities.Transaction.Builder, flow.Entities.TransactionOrBuilder>(
+              entities.TransactionOuterClass.Transaction, entities.TransactionOuterClass.Transaction.Builder, entities.TransactionOuterClass.TransactionOrBuilder>(
                   getTransaction(),
                   getParentForChildren(),
                   isClean());
@@ -8259,36 +8259,36 @@ public final class Access {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.flow.TransactionStatus status = 1;</code>
+     * <code>.entities.TransactionStatus status = 1;</code>
      */
     int getStatusValue();
     /**
-     * <code>.flow.TransactionStatus status = 1;</code>
+     * <code>.entities.TransactionStatus status = 1;</code>
      */
-    flow.Entities.TransactionStatus getStatus();
+    entities.TransactionOuterClass.TransactionStatus getStatus();
 
     /**
-     * <code>repeated .flow.Event events = 2;</code>
+     * <code>repeated .entities.Event events = 2;</code>
      */
-    java.util.List<flow.Entities.Event> 
+    java.util.List<entities.EventOuterClass.Event> 
         getEventsList();
     /**
-     * <code>repeated .flow.Event events = 2;</code>
+     * <code>repeated .entities.Event events = 2;</code>
      */
-    flow.Entities.Event getEvents(int index);
+    entities.EventOuterClass.Event getEvents(int index);
     /**
-     * <code>repeated .flow.Event events = 2;</code>
+     * <code>repeated .entities.Event events = 2;</code>
      */
     int getEventsCount();
     /**
-     * <code>repeated .flow.Event events = 2;</code>
+     * <code>repeated .entities.Event events = 2;</code>
      */
-    java.util.List<? extends flow.Entities.EventOrBuilder> 
+    java.util.List<? extends entities.EventOuterClass.EventOrBuilder> 
         getEventsOrBuilderList();
     /**
-     * <code>repeated .flow.Event events = 2;</code>
+     * <code>repeated .entities.Event events = 2;</code>
      */
-    flow.Entities.EventOrBuilder getEventsOrBuilder(
+    entities.EventOuterClass.EventOrBuilder getEventsOrBuilder(
         int index);
   }
   /**
@@ -8347,11 +8347,11 @@ public final class Access {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                events_ = new java.util.ArrayList<flow.Entities.Event>();
+                events_ = new java.util.ArrayList<entities.EventOuterClass.Event>();
                 mutable_bitField0_ |= 0x00000001;
               }
               events_.add(
-                  input.readMessage(flow.Entities.Event.parser(), extensionRegistry));
+                  input.readMessage(entities.EventOuterClass.Event.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -8392,51 +8392,51 @@ public final class Access {
     public static final int STATUS_FIELD_NUMBER = 1;
     private int status_;
     /**
-     * <code>.flow.TransactionStatus status = 1;</code>
+     * <code>.entities.TransactionStatus status = 1;</code>
      */
     public int getStatusValue() {
       return status_;
     }
     /**
-     * <code>.flow.TransactionStatus status = 1;</code>
+     * <code>.entities.TransactionStatus status = 1;</code>
      */
-    public flow.Entities.TransactionStatus getStatus() {
+    public entities.TransactionOuterClass.TransactionStatus getStatus() {
       @SuppressWarnings("deprecation")
-      flow.Entities.TransactionStatus result = flow.Entities.TransactionStatus.valueOf(status_);
-      return result == null ? flow.Entities.TransactionStatus.UNRECOGNIZED : result;
+      entities.TransactionOuterClass.TransactionStatus result = entities.TransactionOuterClass.TransactionStatus.valueOf(status_);
+      return result == null ? entities.TransactionOuterClass.TransactionStatus.UNRECOGNIZED : result;
     }
 
     public static final int EVENTS_FIELD_NUMBER = 2;
-    private java.util.List<flow.Entities.Event> events_;
+    private java.util.List<entities.EventOuterClass.Event> events_;
     /**
-     * <code>repeated .flow.Event events = 2;</code>
+     * <code>repeated .entities.Event events = 2;</code>
      */
-    public java.util.List<flow.Entities.Event> getEventsList() {
+    public java.util.List<entities.EventOuterClass.Event> getEventsList() {
       return events_;
     }
     /**
-     * <code>repeated .flow.Event events = 2;</code>
+     * <code>repeated .entities.Event events = 2;</code>
      */
-    public java.util.List<? extends flow.Entities.EventOrBuilder> 
+    public java.util.List<? extends entities.EventOuterClass.EventOrBuilder> 
         getEventsOrBuilderList() {
       return events_;
     }
     /**
-     * <code>repeated .flow.Event events = 2;</code>
+     * <code>repeated .entities.Event events = 2;</code>
      */
     public int getEventsCount() {
       return events_.size();
     }
     /**
-     * <code>repeated .flow.Event events = 2;</code>
+     * <code>repeated .entities.Event events = 2;</code>
      */
-    public flow.Entities.Event getEvents(int index) {
+    public entities.EventOuterClass.Event getEvents(int index) {
       return events_.get(index);
     }
     /**
-     * <code>repeated .flow.Event events = 2;</code>
+     * <code>repeated .entities.Event events = 2;</code>
      */
-    public flow.Entities.EventOrBuilder getEventsOrBuilder(
+    public entities.EventOuterClass.EventOrBuilder getEventsOrBuilder(
         int index) {
       return events_.get(index);
     }
@@ -8455,7 +8455,7 @@ public final class Access {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != flow.Entities.TransactionStatus.STATUS_UNKNOWN.getNumber()) {
+      if (status_ != entities.TransactionOuterClass.TransactionStatus.STATUS_UNKNOWN.getNumber()) {
         output.writeEnum(1, status_);
       }
       for (int i = 0; i < events_.size(); i++) {
@@ -8470,7 +8470,7 @@ public final class Access {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != flow.Entities.TransactionStatus.STATUS_UNKNOWN.getNumber()) {
+      if (status_ != entities.TransactionOuterClass.TransactionStatus.STATUS_UNKNOWN.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
@@ -8801,13 +8801,13 @@ public final class Access {
 
       private int status_ = 0;
       /**
-       * <code>.flow.TransactionStatus status = 1;</code>
+       * <code>.entities.TransactionStatus status = 1;</code>
        */
       public int getStatusValue() {
         return status_;
       }
       /**
-       * <code>.flow.TransactionStatus status = 1;</code>
+       * <code>.entities.TransactionStatus status = 1;</code>
        */
       public Builder setStatusValue(int value) {
         status_ = value;
@@ -8815,17 +8815,17 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.TransactionStatus status = 1;</code>
+       * <code>.entities.TransactionStatus status = 1;</code>
        */
-      public flow.Entities.TransactionStatus getStatus() {
+      public entities.TransactionOuterClass.TransactionStatus getStatus() {
         @SuppressWarnings("deprecation")
-        flow.Entities.TransactionStatus result = flow.Entities.TransactionStatus.valueOf(status_);
-        return result == null ? flow.Entities.TransactionStatus.UNRECOGNIZED : result;
+        entities.TransactionOuterClass.TransactionStatus result = entities.TransactionOuterClass.TransactionStatus.valueOf(status_);
+        return result == null ? entities.TransactionOuterClass.TransactionStatus.UNRECOGNIZED : result;
       }
       /**
-       * <code>.flow.TransactionStatus status = 1;</code>
+       * <code>.entities.TransactionStatus status = 1;</code>
        */
-      public Builder setStatus(flow.Entities.TransactionStatus value) {
+      public Builder setStatus(entities.TransactionOuterClass.TransactionStatus value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -8835,7 +8835,7 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.TransactionStatus status = 1;</code>
+       * <code>.entities.TransactionStatus status = 1;</code>
        */
       public Builder clearStatus() {
         
@@ -8844,22 +8844,22 @@ public final class Access {
         return this;
       }
 
-      private java.util.List<flow.Entities.Event> events_ =
+      private java.util.List<entities.EventOuterClass.Event> events_ =
         java.util.Collections.emptyList();
       private void ensureEventsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          events_ = new java.util.ArrayList<flow.Entities.Event>(events_);
+          events_ = new java.util.ArrayList<entities.EventOuterClass.Event>(events_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          flow.Entities.Event, flow.Entities.Event.Builder, flow.Entities.EventOrBuilder> eventsBuilder_;
+          entities.EventOuterClass.Event, entities.EventOuterClass.Event.Builder, entities.EventOuterClass.EventOrBuilder> eventsBuilder_;
 
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
-      public java.util.List<flow.Entities.Event> getEventsList() {
+      public java.util.List<entities.EventOuterClass.Event> getEventsList() {
         if (eventsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(events_);
         } else {
@@ -8867,7 +8867,7 @@ public final class Access {
         }
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
       public int getEventsCount() {
         if (eventsBuilder_ == null) {
@@ -8877,9 +8877,9 @@ public final class Access {
         }
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
-      public flow.Entities.Event getEvents(int index) {
+      public entities.EventOuterClass.Event getEvents(int index) {
         if (eventsBuilder_ == null) {
           return events_.get(index);
         } else {
@@ -8887,10 +8887,10 @@ public final class Access {
         }
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
       public Builder setEvents(
-          int index, flow.Entities.Event value) {
+          int index, entities.EventOuterClass.Event value) {
         if (eventsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8904,10 +8904,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
       public Builder setEvents(
-          int index, flow.Entities.Event.Builder builderForValue) {
+          int index, entities.EventOuterClass.Event.Builder builderForValue) {
         if (eventsBuilder_ == null) {
           ensureEventsIsMutable();
           events_.set(index, builderForValue.build());
@@ -8918,9 +8918,9 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
-      public Builder addEvents(flow.Entities.Event value) {
+      public Builder addEvents(entities.EventOuterClass.Event value) {
         if (eventsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8934,10 +8934,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
       public Builder addEvents(
-          int index, flow.Entities.Event value) {
+          int index, entities.EventOuterClass.Event value) {
         if (eventsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8951,10 +8951,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
       public Builder addEvents(
-          flow.Entities.Event.Builder builderForValue) {
+          entities.EventOuterClass.Event.Builder builderForValue) {
         if (eventsBuilder_ == null) {
           ensureEventsIsMutable();
           events_.add(builderForValue.build());
@@ -8965,10 +8965,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
       public Builder addEvents(
-          int index, flow.Entities.Event.Builder builderForValue) {
+          int index, entities.EventOuterClass.Event.Builder builderForValue) {
         if (eventsBuilder_ == null) {
           ensureEventsIsMutable();
           events_.add(index, builderForValue.build());
@@ -8979,10 +8979,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
       public Builder addAllEvents(
-          java.lang.Iterable<? extends flow.Entities.Event> values) {
+          java.lang.Iterable<? extends entities.EventOuterClass.Event> values) {
         if (eventsBuilder_ == null) {
           ensureEventsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -8994,7 +8994,7 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
       public Builder clearEvents() {
         if (eventsBuilder_ == null) {
@@ -9007,7 +9007,7 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
       public Builder removeEvents(int index) {
         if (eventsBuilder_ == null) {
@@ -9020,16 +9020,16 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
-      public flow.Entities.Event.Builder getEventsBuilder(
+      public entities.EventOuterClass.Event.Builder getEventsBuilder(
           int index) {
         return getEventsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
-      public flow.Entities.EventOrBuilder getEventsOrBuilder(
+      public entities.EventOuterClass.EventOrBuilder getEventsOrBuilder(
           int index) {
         if (eventsBuilder_ == null) {
           return events_.get(index);  } else {
@@ -9037,9 +9037,9 @@ public final class Access {
         }
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
-      public java.util.List<? extends flow.Entities.EventOrBuilder> 
+      public java.util.List<? extends entities.EventOuterClass.EventOrBuilder> 
            getEventsOrBuilderList() {
         if (eventsBuilder_ != null) {
           return eventsBuilder_.getMessageOrBuilderList();
@@ -9048,33 +9048,33 @@ public final class Access {
         }
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
-      public flow.Entities.Event.Builder addEventsBuilder() {
+      public entities.EventOuterClass.Event.Builder addEventsBuilder() {
         return getEventsFieldBuilder().addBuilder(
-            flow.Entities.Event.getDefaultInstance());
+            entities.EventOuterClass.Event.getDefaultInstance());
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
-      public flow.Entities.Event.Builder addEventsBuilder(
+      public entities.EventOuterClass.Event.Builder addEventsBuilder(
           int index) {
         return getEventsFieldBuilder().addBuilder(
-            index, flow.Entities.Event.getDefaultInstance());
+            index, entities.EventOuterClass.Event.getDefaultInstance());
       }
       /**
-       * <code>repeated .flow.Event events = 2;</code>
+       * <code>repeated .entities.Event events = 2;</code>
        */
-      public java.util.List<flow.Entities.Event.Builder> 
+      public java.util.List<entities.EventOuterClass.Event.Builder> 
            getEventsBuilderList() {
         return getEventsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          flow.Entities.Event, flow.Entities.Event.Builder, flow.Entities.EventOrBuilder> 
+          entities.EventOuterClass.Event, entities.EventOuterClass.Event.Builder, entities.EventOuterClass.EventOrBuilder> 
           getEventsFieldBuilder() {
         if (eventsBuilder_ == null) {
           eventsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              flow.Entities.Event, flow.Entities.Event.Builder, flow.Entities.EventOrBuilder>(
+              entities.EventOuterClass.Event, entities.EventOuterClass.Event.Builder, entities.EventOuterClass.EventOrBuilder>(
                   events_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -9625,17 +9625,17 @@ public final class Access {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.flow.Account account = 1;</code>
+     * <code>.entities.Account account = 1;</code>
      */
     boolean hasAccount();
     /**
-     * <code>.flow.Account account = 1;</code>
+     * <code>.entities.Account account = 1;</code>
      */
-    flow.Entities.Account getAccount();
+    entities.AccountOuterClass.Account getAccount();
     /**
-     * <code>.flow.Account account = 1;</code>
+     * <code>.entities.Account account = 1;</code>
      */
-    flow.Entities.AccountOrBuilder getAccountOrBuilder();
+    entities.AccountOuterClass.AccountOrBuilder getAccountOrBuilder();
   }
   /**
    * Protobuf type {@code access.GetAccountResponse}
@@ -9683,11 +9683,11 @@ public final class Access {
               done = true;
               break;
             case 10: {
-              flow.Entities.Account.Builder subBuilder = null;
+              entities.AccountOuterClass.Account.Builder subBuilder = null;
               if (account_ != null) {
                 subBuilder = account_.toBuilder();
               }
-              account_ = input.readMessage(flow.Entities.Account.parser(), extensionRegistry);
+              account_ = input.readMessage(entities.AccountOuterClass.Account.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(account_);
                 account_ = subBuilder.buildPartial();
@@ -9728,23 +9728,23 @@ public final class Access {
     }
 
     public static final int ACCOUNT_FIELD_NUMBER = 1;
-    private flow.Entities.Account account_;
+    private entities.AccountOuterClass.Account account_;
     /**
-     * <code>.flow.Account account = 1;</code>
+     * <code>.entities.Account account = 1;</code>
      */
     public boolean hasAccount() {
       return account_ != null;
     }
     /**
-     * <code>.flow.Account account = 1;</code>
+     * <code>.entities.Account account = 1;</code>
      */
-    public flow.Entities.Account getAccount() {
-      return account_ == null ? flow.Entities.Account.getDefaultInstance() : account_;
+    public entities.AccountOuterClass.Account getAccount() {
+      return account_ == null ? entities.AccountOuterClass.Account.getDefaultInstance() : account_;
     }
     /**
-     * <code>.flow.Account account = 1;</code>
+     * <code>.entities.Account account = 1;</code>
      */
-    public flow.Entities.AccountOrBuilder getAccountOrBuilder() {
+    public entities.AccountOuterClass.AccountOrBuilder getAccountOrBuilder() {
       return getAccount();
     }
 
@@ -10063,29 +10063,29 @@ public final class Access {
         return this;
       }
 
-      private flow.Entities.Account account_;
+      private entities.AccountOuterClass.Account account_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          flow.Entities.Account, flow.Entities.Account.Builder, flow.Entities.AccountOrBuilder> accountBuilder_;
+          entities.AccountOuterClass.Account, entities.AccountOuterClass.Account.Builder, entities.AccountOuterClass.AccountOrBuilder> accountBuilder_;
       /**
-       * <code>.flow.Account account = 1;</code>
+       * <code>.entities.Account account = 1;</code>
        */
       public boolean hasAccount() {
         return accountBuilder_ != null || account_ != null;
       }
       /**
-       * <code>.flow.Account account = 1;</code>
+       * <code>.entities.Account account = 1;</code>
        */
-      public flow.Entities.Account getAccount() {
+      public entities.AccountOuterClass.Account getAccount() {
         if (accountBuilder_ == null) {
-          return account_ == null ? flow.Entities.Account.getDefaultInstance() : account_;
+          return account_ == null ? entities.AccountOuterClass.Account.getDefaultInstance() : account_;
         } else {
           return accountBuilder_.getMessage();
         }
       }
       /**
-       * <code>.flow.Account account = 1;</code>
+       * <code>.entities.Account account = 1;</code>
        */
-      public Builder setAccount(flow.Entities.Account value) {
+      public Builder setAccount(entities.AccountOuterClass.Account value) {
         if (accountBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10099,10 +10099,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Account account = 1;</code>
+       * <code>.entities.Account account = 1;</code>
        */
       public Builder setAccount(
-          flow.Entities.Account.Builder builderForValue) {
+          entities.AccountOuterClass.Account.Builder builderForValue) {
         if (accountBuilder_ == null) {
           account_ = builderForValue.build();
           onChanged();
@@ -10113,13 +10113,13 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Account account = 1;</code>
+       * <code>.entities.Account account = 1;</code>
        */
-      public Builder mergeAccount(flow.Entities.Account value) {
+      public Builder mergeAccount(entities.AccountOuterClass.Account value) {
         if (accountBuilder_ == null) {
           if (account_ != null) {
             account_ =
-              flow.Entities.Account.newBuilder(account_).mergeFrom(value).buildPartial();
+              entities.AccountOuterClass.Account.newBuilder(account_).mergeFrom(value).buildPartial();
           } else {
             account_ = value;
           }
@@ -10131,7 +10131,7 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Account account = 1;</code>
+       * <code>.entities.Account account = 1;</code>
        */
       public Builder clearAccount() {
         if (accountBuilder_ == null) {
@@ -10145,33 +10145,33 @@ public final class Access {
         return this;
       }
       /**
-       * <code>.flow.Account account = 1;</code>
+       * <code>.entities.Account account = 1;</code>
        */
-      public flow.Entities.Account.Builder getAccountBuilder() {
+      public entities.AccountOuterClass.Account.Builder getAccountBuilder() {
         
         onChanged();
         return getAccountFieldBuilder().getBuilder();
       }
       /**
-       * <code>.flow.Account account = 1;</code>
+       * <code>.entities.Account account = 1;</code>
        */
-      public flow.Entities.AccountOrBuilder getAccountOrBuilder() {
+      public entities.AccountOuterClass.AccountOrBuilder getAccountOrBuilder() {
         if (accountBuilder_ != null) {
           return accountBuilder_.getMessageOrBuilder();
         } else {
           return account_ == null ?
-              flow.Entities.Account.getDefaultInstance() : account_;
+              entities.AccountOuterClass.Account.getDefaultInstance() : account_;
         }
       }
       /**
-       * <code>.flow.Account account = 1;</code>
+       * <code>.entities.Account account = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          flow.Entities.Account, flow.Entities.Account.Builder, flow.Entities.AccountOrBuilder> 
+          entities.AccountOuterClass.Account, entities.AccountOuterClass.Account.Builder, entities.AccountOuterClass.AccountOrBuilder> 
           getAccountFieldBuilder() {
         if (accountBuilder_ == null) {
           accountBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              flow.Entities.Account, flow.Entities.Account.Builder, flow.Entities.AccountOrBuilder>(
+              entities.AccountOuterClass.Account, entities.AccountOuterClass.Account.Builder, entities.AccountOuterClass.AccountOrBuilder>(
                   getAccount(),
                   getParentForChildren(),
                   isClean());
@@ -12983,27 +12983,27 @@ public final class Access {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .flow.Event events = 1;</code>
+     * <code>repeated .entities.Event events = 1;</code>
      */
-    java.util.List<flow.Entities.Event> 
+    java.util.List<entities.EventOuterClass.Event> 
         getEventsList();
     /**
-     * <code>repeated .flow.Event events = 1;</code>
+     * <code>repeated .entities.Event events = 1;</code>
      */
-    flow.Entities.Event getEvents(int index);
+    entities.EventOuterClass.Event getEvents(int index);
     /**
-     * <code>repeated .flow.Event events = 1;</code>
+     * <code>repeated .entities.Event events = 1;</code>
      */
     int getEventsCount();
     /**
-     * <code>repeated .flow.Event events = 1;</code>
+     * <code>repeated .entities.Event events = 1;</code>
      */
-    java.util.List<? extends flow.Entities.EventOrBuilder> 
+    java.util.List<? extends entities.EventOuterClass.EventOrBuilder> 
         getEventsOrBuilderList();
     /**
-     * <code>repeated .flow.Event events = 1;</code>
+     * <code>repeated .entities.Event events = 1;</code>
      */
-    flow.Entities.EventOrBuilder getEventsOrBuilder(
+    entities.EventOuterClass.EventOrBuilder getEventsOrBuilder(
         int index);
   }
   /**
@@ -13055,11 +13055,11 @@ public final class Access {
               break;
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                events_ = new java.util.ArrayList<flow.Entities.Event>();
+                events_ = new java.util.ArrayList<entities.EventOuterClass.Event>();
                 mutable_bitField0_ |= 0x00000001;
               }
               events_.add(
-                  input.readMessage(flow.Entities.Event.parser(), extensionRegistry));
+                  input.readMessage(entities.EventOuterClass.Event.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -13098,36 +13098,36 @@ public final class Access {
     }
 
     public static final int EVENTS_FIELD_NUMBER = 1;
-    private java.util.List<flow.Entities.Event> events_;
+    private java.util.List<entities.EventOuterClass.Event> events_;
     /**
-     * <code>repeated .flow.Event events = 1;</code>
+     * <code>repeated .entities.Event events = 1;</code>
      */
-    public java.util.List<flow.Entities.Event> getEventsList() {
+    public java.util.List<entities.EventOuterClass.Event> getEventsList() {
       return events_;
     }
     /**
-     * <code>repeated .flow.Event events = 1;</code>
+     * <code>repeated .entities.Event events = 1;</code>
      */
-    public java.util.List<? extends flow.Entities.EventOrBuilder> 
+    public java.util.List<? extends entities.EventOuterClass.EventOrBuilder> 
         getEventsOrBuilderList() {
       return events_;
     }
     /**
-     * <code>repeated .flow.Event events = 1;</code>
+     * <code>repeated .entities.Event events = 1;</code>
      */
     public int getEventsCount() {
       return events_.size();
     }
     /**
-     * <code>repeated .flow.Event events = 1;</code>
+     * <code>repeated .entities.Event events = 1;</code>
      */
-    public flow.Entities.Event getEvents(int index) {
+    public entities.EventOuterClass.Event getEvents(int index) {
       return events_.get(index);
     }
     /**
-     * <code>repeated .flow.Event events = 1;</code>
+     * <code>repeated .entities.Event events = 1;</code>
      */
-    public flow.Entities.EventOrBuilder getEventsOrBuilder(
+    public entities.EventOuterClass.EventOrBuilder getEventsOrBuilder(
         int index) {
       return events_.get(index);
     }
@@ -13474,22 +13474,22 @@ public final class Access {
       }
       private int bitField0_;
 
-      private java.util.List<flow.Entities.Event> events_ =
+      private java.util.List<entities.EventOuterClass.Event> events_ =
         java.util.Collections.emptyList();
       private void ensureEventsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          events_ = new java.util.ArrayList<flow.Entities.Event>(events_);
+          events_ = new java.util.ArrayList<entities.EventOuterClass.Event>(events_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          flow.Entities.Event, flow.Entities.Event.Builder, flow.Entities.EventOrBuilder> eventsBuilder_;
+          entities.EventOuterClass.Event, entities.EventOuterClass.Event.Builder, entities.EventOuterClass.EventOrBuilder> eventsBuilder_;
 
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
-      public java.util.List<flow.Entities.Event> getEventsList() {
+      public java.util.List<entities.EventOuterClass.Event> getEventsList() {
         if (eventsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(events_);
         } else {
@@ -13497,7 +13497,7 @@ public final class Access {
         }
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
       public int getEventsCount() {
         if (eventsBuilder_ == null) {
@@ -13507,9 +13507,9 @@ public final class Access {
         }
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
-      public flow.Entities.Event getEvents(int index) {
+      public entities.EventOuterClass.Event getEvents(int index) {
         if (eventsBuilder_ == null) {
           return events_.get(index);
         } else {
@@ -13517,10 +13517,10 @@ public final class Access {
         }
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
       public Builder setEvents(
-          int index, flow.Entities.Event value) {
+          int index, entities.EventOuterClass.Event value) {
         if (eventsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -13534,10 +13534,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
       public Builder setEvents(
-          int index, flow.Entities.Event.Builder builderForValue) {
+          int index, entities.EventOuterClass.Event.Builder builderForValue) {
         if (eventsBuilder_ == null) {
           ensureEventsIsMutable();
           events_.set(index, builderForValue.build());
@@ -13548,9 +13548,9 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
-      public Builder addEvents(flow.Entities.Event value) {
+      public Builder addEvents(entities.EventOuterClass.Event value) {
         if (eventsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -13564,10 +13564,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
       public Builder addEvents(
-          int index, flow.Entities.Event value) {
+          int index, entities.EventOuterClass.Event value) {
         if (eventsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -13581,10 +13581,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
       public Builder addEvents(
-          flow.Entities.Event.Builder builderForValue) {
+          entities.EventOuterClass.Event.Builder builderForValue) {
         if (eventsBuilder_ == null) {
           ensureEventsIsMutable();
           events_.add(builderForValue.build());
@@ -13595,10 +13595,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
       public Builder addEvents(
-          int index, flow.Entities.Event.Builder builderForValue) {
+          int index, entities.EventOuterClass.Event.Builder builderForValue) {
         if (eventsBuilder_ == null) {
           ensureEventsIsMutable();
           events_.add(index, builderForValue.build());
@@ -13609,10 +13609,10 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
       public Builder addAllEvents(
-          java.lang.Iterable<? extends flow.Entities.Event> values) {
+          java.lang.Iterable<? extends entities.EventOuterClass.Event> values) {
         if (eventsBuilder_ == null) {
           ensureEventsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -13624,7 +13624,7 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
       public Builder clearEvents() {
         if (eventsBuilder_ == null) {
@@ -13637,7 +13637,7 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
       public Builder removeEvents(int index) {
         if (eventsBuilder_ == null) {
@@ -13650,16 +13650,16 @@ public final class Access {
         return this;
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
-      public flow.Entities.Event.Builder getEventsBuilder(
+      public entities.EventOuterClass.Event.Builder getEventsBuilder(
           int index) {
         return getEventsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
-      public flow.Entities.EventOrBuilder getEventsOrBuilder(
+      public entities.EventOuterClass.EventOrBuilder getEventsOrBuilder(
           int index) {
         if (eventsBuilder_ == null) {
           return events_.get(index);  } else {
@@ -13667,9 +13667,9 @@ public final class Access {
         }
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
-      public java.util.List<? extends flow.Entities.EventOrBuilder> 
+      public java.util.List<? extends entities.EventOuterClass.EventOrBuilder> 
            getEventsOrBuilderList() {
         if (eventsBuilder_ != null) {
           return eventsBuilder_.getMessageOrBuilderList();
@@ -13678,33 +13678,33 @@ public final class Access {
         }
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
-      public flow.Entities.Event.Builder addEventsBuilder() {
+      public entities.EventOuterClass.Event.Builder addEventsBuilder() {
         return getEventsFieldBuilder().addBuilder(
-            flow.Entities.Event.getDefaultInstance());
+            entities.EventOuterClass.Event.getDefaultInstance());
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
-      public flow.Entities.Event.Builder addEventsBuilder(
+      public entities.EventOuterClass.Event.Builder addEventsBuilder(
           int index) {
         return getEventsFieldBuilder().addBuilder(
-            index, flow.Entities.Event.getDefaultInstance());
+            index, entities.EventOuterClass.Event.getDefaultInstance());
       }
       /**
-       * <code>repeated .flow.Event events = 1;</code>
+       * <code>repeated .entities.Event events = 1;</code>
        */
-      public java.util.List<flow.Entities.Event.Builder> 
+      public java.util.List<entities.EventOuterClass.Event.Builder> 
            getEventsBuilderList() {
         return getEventsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          flow.Entities.Event, flow.Entities.Event.Builder, flow.Entities.EventOrBuilder> 
+          entities.EventOuterClass.Event, entities.EventOuterClass.Event.Builder, entities.EventOuterClass.EventOrBuilder> 
           getEventsFieldBuilder() {
         if (eventsBuilder_ == null) {
           eventsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              flow.Entities.Event, flow.Entities.Event.Builder, flow.Entities.EventOrBuilder>(
+              entities.EventOuterClass.Event, entities.EventOuterClass.Event.Builder, entities.EventOuterClass.EventOrBuilder>(
                   events_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -14618,82 +14618,92 @@ public final class Access {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\030flow/access/access.proto\022\006access\032\023flow" +
-      "/entities.proto\"\r\n\013PingRequest\"\016\n\014PingRe" +
-      "sponse\"0\n\033GetLatestBlockHeaderRequest\022\021\n" +
-      "\tis_sealed\030\001 \001(\010\"\'\n\031GetBlockHeaderByIDRe" +
-      "quest\022\n\n\002id\030\001 \001(\014\"/\n\035GetBlockHeaderByHei" +
-      "ghtRequest\022\016\n\006height\030\001 \001(\004\"7\n\023BlockHeade" +
-      "rResponse\022 \n\005block\030\001 \001(\0132\021.flow.BlockHea" +
-      "der\"*\n\025GetLatestBlockRequest\022\021\n\tis_seale" +
-      "d\030\001 \001(\010\"!\n\023GetBlockByIDRequest\022\n\n\002id\030\001 \001" +
-      "(\014\")\n\027GetBlockByHeightRequest\022\016\n\006height\030" +
-      "\001 \001(\004\"+\n\rBlockResponse\022\032\n\005block\030\001 \001(\0132\013." +
-      "flow.Block\"&\n\030GetCollectionByIDRequest\022\n" +
-      "\n\002id\030\001 \001(\014\":\n\022CollectionResponse\022$\n\ncoll" +
-      "ection\030\001 \001(\0132\020.flow.Collection\"@\n\026SendTr" +
-      "ansactionRequest\022&\n\013transaction\030\001 \001(\0132\021." +
-      "flow.Transaction\"%\n\027SendTransactionRespo" +
-      "nse\022\n\n\002id\030\001 \001(\014\"#\n\025GetTransactionRequest" +
-      "\022\n\n\002id\030\001 \001(\014\"=\n\023TransactionResponse\022&\n\013t" +
-      "ransaction\030\001 \001(\0132\021.flow.Transaction\"a\n\031T" +
-      "ransactionResultResponse\022\'\n\006status\030\001 \001(\016" +
-      "2\027.flow.TransactionStatus\022\033\n\006events\030\002 \003(" +
-      "\0132\013.flow.Event\"$\n\021GetAccountRequest\022\017\n\007a" +
-      "ddress\030\001 \001(\014\"4\n\022GetAccountResponse\022\036\n\007ac" +
-      "count\030\001 \001(\0132\r.flow.Account\"3\n!ExecuteScr" +
-      "iptAtLatestBlockRequest\022\016\n\006script\030\001 \001(\014\"" +
-      "A\n\035ExecuteScriptAtBlockIDRequest\022\020\n\010bloc" +
-      "k_id\030\001 \001(\014\022\016\n\006script\030\002 \001(\014\"I\n!ExecuteScr" +
-      "iptAtBlockHeightRequest\022\024\n\014block_height\030" +
-      "\001 \001(\004\022\016\n\006script\030\002 \001(\014\"&\n\025ExecuteScriptRe" +
-      "sponse\022\r\n\005value\030\001 \001(\014\"X\n\036GetEventsForHei" +
-      "ghtRangeRequest\022\014\n\004type\030\001 \001(\t\022\024\n\014start_h" +
-      "eight\030\002 \001(\004\022\022\n\nend_height\030\003 \001(\004\"-\n\016Event" +
-      "sResponse\022\033\n\006events\030\001 \003(\0132\013.flow.Event\">" +
-      "\n\033GetEventsForBlockIDsRequest\022\014\n\004type\030\001 " +
-      "\001(\t\022\021\n\tblock_ids\030\002 \003(\0142\230\013\n\tAccessAPI\0221\n\004" +
-      "Ping\022\023.access.PingRequest\032\024.access.PingR" +
-      "esponse\022X\n\024GetLatestBlockHeader\022#.access" +
-      ".GetLatestBlockHeaderRequest\032\033.access.Bl" +
-      "ockHeaderResponse\022T\n\022GetBlockHeaderByID\022" +
-      "!.access.GetBlockHeaderByIDRequest\032\033.acc" +
-      "ess.BlockHeaderResponse\022\\\n\026GetBlockHeade" +
-      "rByHeight\022%.access.GetBlockHeaderByHeigh" +
-      "tRequest\032\033.access.BlockHeaderResponse\022F\n" +
-      "\016GetLatestBlock\022\035.access.GetLatestBlockR" +
-      "equest\032\025.access.BlockResponse\022B\n\014GetBloc" +
-      "kByID\022\033.access.GetBlockByIDRequest\032\025.acc" +
-      "ess.BlockResponse\022J\n\020GetBlockByHeight\022\037." +
-      "access.GetBlockByHeightRequest\032\025.access." +
-      "BlockResponse\022Q\n\021GetCollectionByID\022 .acc" +
-      "ess.GetCollectionByIDRequest\032\032.access.Co" +
-      "llectionResponse\022R\n\017SendTransaction\022\036.ac" +
-      "cess.SendTransactionRequest\032\037.access.Sen" +
-      "dTransactionResponse\022L\n\016GetTransaction\022\035" +
-      ".access.GetTransactionRequest\032\033.access.T" +
-      "ransactionResponse\022X\n\024GetTransactionResu" +
-      "lt\022\035.access.GetTransactionRequest\032!.acce" +
-      "ss.TransactionResultResponse\022C\n\nGetAccou" +
-      "nt\022\031.access.GetAccountRequest\032\032.access.G" +
-      "etAccountResponse\022f\n\032ExecuteScriptAtLate" +
-      "stBlock\022).access.ExecuteScriptAtLatestBl" +
-      "ockRequest\032\035.access.ExecuteScriptRespons" +
-      "e\022^\n\026ExecuteScriptAtBlockID\022%.access.Exe" +
-      "cuteScriptAtBlockIDRequest\032\035.access.Exec" +
-      "uteScriptResponse\022f\n\032ExecuteScriptAtBloc" +
-      "kHeight\022).access.ExecuteScriptAtBlockHei" +
-      "ghtRequest\032\035.access.ExecuteScriptRespons" +
-      "e\022Y\n\027GetEventsForHeightRange\022&.access.Ge" +
-      "tEventsForHeightRangeRequest\032\026.access.Ev" +
-      "entsResponse\022S\n\024GetEventsForBlockIDs\022#.a" +
-      "ccess.GetEventsForBlockIDsRequest\032\026.acce" +
-      "ss.EventsResponseb\006proto3"
+      "\n\030flow/access/access.proto\022\006access\032 flow" +
+      "/entities/block_header.proto\032\031flow/entit" +
+      "ies/block.proto\032\036flow/entities/collectio" +
+      "n.proto\032\037flow/entities/transaction.proto" +
+      "\032\033flow/entities/account.proto\032\031flow/enti" +
+      "ties/event.proto\"\r\n\013PingRequest\"\016\n\014PingR" +
+      "esponse\"0\n\033GetLatestBlockHeaderRequest\022\021" +
+      "\n\tis_sealed\030\001 \001(\010\"\'\n\031GetBlockHeaderByIDR" +
+      "equest\022\n\n\002id\030\001 \001(\014\"/\n\035GetBlockHeaderByHe" +
+      "ightRequest\022\016\n\006height\030\001 \001(\004\";\n\023BlockHead" +
+      "erResponse\022$\n\005block\030\001 \001(\0132\025.entities.Blo" +
+      "ckHeader\"*\n\025GetLatestBlockRequest\022\021\n\tis_" +
+      "sealed\030\001 \001(\010\"!\n\023GetBlockByIDRequest\022\n\n\002i" +
+      "d\030\001 \001(\014\")\n\027GetBlockByHeightRequest\022\016\n\006he" +
+      "ight\030\001 \001(\004\"/\n\rBlockResponse\022\036\n\005block\030\001 \001" +
+      "(\0132\017.entities.Block\"&\n\030GetCollectionByID" +
+      "Request\022\n\n\002id\030\001 \001(\014\">\n\022CollectionRespons" +
+      "e\022(\n\ncollection\030\001 \001(\0132\024.entities.Collect" +
+      "ion\"D\n\026SendTransactionRequest\022*\n\013transac" +
+      "tion\030\001 \001(\0132\025.entities.Transaction\"%\n\027Sen" +
+      "dTransactionResponse\022\n\n\002id\030\001 \001(\014\"#\n\025GetT" +
+      "ransactionRequest\022\n\n\002id\030\001 \001(\014\"A\n\023Transac" +
+      "tionResponse\022*\n\013transaction\030\001 \001(\0132\025.enti" +
+      "ties.Transaction\"i\n\031TransactionResultRes" +
+      "ponse\022+\n\006status\030\001 \001(\0162\033.entities.Transac" +
+      "tionStatus\022\037\n\006events\030\002 \003(\0132\017.entities.Ev" +
+      "ent\"$\n\021GetAccountRequest\022\017\n\007address\030\001 \001(" +
+      "\014\"8\n\022GetAccountResponse\022\"\n\007account\030\001 \001(\013" +
+      "2\021.entities.Account\"3\n!ExecuteScriptAtLa" +
+      "testBlockRequest\022\016\n\006script\030\001 \001(\014\"A\n\035Exec" +
+      "uteScriptAtBlockIDRequest\022\020\n\010block_id\030\001 " +
+      "\001(\014\022\016\n\006script\030\002 \001(\014\"I\n!ExecuteScriptAtBl" +
+      "ockHeightRequest\022\024\n\014block_height\030\001 \001(\004\022\016" +
+      "\n\006script\030\002 \001(\014\"&\n\025ExecuteScriptResponse\022" +
+      "\r\n\005value\030\001 \001(\014\"X\n\036GetEventsForHeightRang" +
+      "eRequest\022\014\n\004type\030\001 \001(\t\022\024\n\014start_height\030\002" +
+      " \001(\004\022\022\n\nend_height\030\003 \001(\004\"1\n\016EventsRespon" +
+      "se\022\037\n\006events\030\001 \003(\0132\017.entities.Event\">\n\033G" +
+      "etEventsForBlockIDsRequest\022\014\n\004type\030\001 \001(\t" +
+      "\022\021\n\tblock_ids\030\002 \003(\0142\230\013\n\tAccessAPI\0221\n\004Pin" +
+      "g\022\023.access.PingRequest\032\024.access.PingResp" +
+      "onse\022X\n\024GetLatestBlockHeader\022#.access.Ge" +
+      "tLatestBlockHeaderRequest\032\033.access.Block" +
+      "HeaderResponse\022T\n\022GetBlockHeaderByID\022!.a" +
+      "ccess.GetBlockHeaderByIDRequest\032\033.access" +
+      ".BlockHeaderResponse\022\\\n\026GetBlockHeaderBy" +
+      "Height\022%.access.GetBlockHeaderByHeightRe" +
+      "quest\032\033.access.BlockHeaderResponse\022F\n\016Ge" +
+      "tLatestBlock\022\035.access.GetLatestBlockRequ" +
+      "est\032\025.access.BlockResponse\022B\n\014GetBlockBy" +
+      "ID\022\033.access.GetBlockByIDRequest\032\025.access" +
+      ".BlockResponse\022J\n\020GetBlockByHeight\022\037.acc" +
+      "ess.GetBlockByHeightRequest\032\025.access.Blo" +
+      "ckResponse\022Q\n\021GetCollectionByID\022 .access" +
+      ".GetCollectionByIDRequest\032\032.access.Colle" +
+      "ctionResponse\022R\n\017SendTransaction\022\036.acces" +
+      "s.SendTransactionRequest\032\037.access.SendTr" +
+      "ansactionResponse\022L\n\016GetTransaction\022\035.ac" +
+      "cess.GetTransactionRequest\032\033.access.Tran" +
+      "sactionResponse\022X\n\024GetTransactionResult\022" +
+      "\035.access.GetTransactionRequest\032!.access." +
+      "TransactionResultResponse\022C\n\nGetAccount\022" +
+      "\031.access.GetAccountRequest\032\032.access.GetA" +
+      "ccountResponse\022f\n\032ExecuteScriptAtLatestB" +
+      "lock\022).access.ExecuteScriptAtLatestBlock" +
+      "Request\032\035.access.ExecuteScriptResponse\022^" +
+      "\n\026ExecuteScriptAtBlockID\022%.access.Execut" +
+      "eScriptAtBlockIDRequest\032\035.access.Execute" +
+      "ScriptResponse\022f\n\032ExecuteScriptAtBlockHe" +
+      "ight\022).access.ExecuteScriptAtBlockHeight" +
+      "Request\032\035.access.ExecuteScriptResponse\022Y" +
+      "\n\027GetEventsForHeightRange\022&.access.GetEv" +
+      "entsForHeightRangeRequest\032\026.access.Event" +
+      "sResponse\022S\n\024GetEventsForBlockIDs\022#.acce" +
+      "ss.GetEventsForBlockIDsRequest\032\026.access." +
+      "EventsResponseb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          flow.Entities.getDescriptor(),
+          entities.BlockHeaderOuterClass.getDescriptor(),
+          entities.BlockOuterClass.getDescriptor(),
+          entities.CollectionOuterClass.getDescriptor(),
+          entities.TransactionOuterClass.getDescriptor(),
+          entities.AccountOuterClass.getDescriptor(),
+          entities.EventOuterClass.getDescriptor(),
         });
     internal_static_access_PingRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -14851,7 +14861,12 @@ public final class Access {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_access_GetEventsForBlockIDsRequest_descriptor,
         new java.lang.String[] { "Type", "BlockIds", });
-    flow.Entities.getDescriptor();
+    entities.BlockHeaderOuterClass.getDescriptor();
+    entities.BlockOuterClass.getDescriptor();
+    entities.CollectionOuterClass.getDescriptor();
+    entities.TransactionOuterClass.getDescriptor();
+    entities.AccountOuterClass.getDescriptor();
+    entities.EventOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
