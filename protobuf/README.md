@@ -13,5 +13,5 @@ You can use [prototool](https://github.com/uber/prototool) to generate gRPC clie
 Running the command below (in the current directory) will generate stubs for Go:
 
 ```shell script
-prototool generate
+make generate
 ```

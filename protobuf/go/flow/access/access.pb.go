@@ -6,7 +6,7 @@ package access
 import (
 	context "context"
 	fmt "fmt"
-	entities "github.com/dapperlabs/flow/protobuf/go/flow/go/flow/entities"
+	entities "github.com/dapperlabs/flow/protobuf/go/flow/entities"
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
