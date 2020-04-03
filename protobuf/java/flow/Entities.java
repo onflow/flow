@@ -8865,7 +8865,7 @@ public final class Entities {
       "(\014\022\r\n\005index\030\003 \001(\r\022\017\n\007payload\030\004 \001(\014*d\n\021Tr" +
       "ansactionStatus\022\022\n\016STATUS_UNKNOWN\020\000\022\022\n\016S" +
       "TATUS_PENDING\020\001\022\024\n\020STATUS_FINALIZED\020\002\022\021\n" +
-      "\rSTATUS_SEALED\020\004B\006Z\004flowb\006proto3"
+      "\rSTATUS_SEALED\020\004b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

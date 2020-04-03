@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package flow;
 
-option go_package = "flow";
-
 import "google/protobuf/timestamp.proto";
 
 message BlockHeader {

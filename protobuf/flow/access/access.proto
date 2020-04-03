@@ -1,8 +1,6 @@
 syntax = "proto3";
 
-package flow;
-
-option go_package = "flow";
+package access;
 
 import "flow/entities.proto";
 
