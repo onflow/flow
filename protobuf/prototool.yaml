@@ -14,5 +14,3 @@ generate:
       type: go
       flags: plugins=grpc
       output: ./go
-    - name: java
-      output: ./java
