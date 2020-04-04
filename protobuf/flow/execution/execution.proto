@@ -30,7 +30,7 @@ service ExecutionAPI {
     // GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
     rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (EventsResponse);
 
-    // GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
+    // GetEventsForBlockIDAndTransactionID retrieves the events emitted by a transaction in a specific block.
     rpc GetEventsForBlockIDTransactionID (GetEventsForBlockIDTransactionIDRequest) returns (EventsResponse);
 }
 
@@ -91,4 +91,3 @@ message GetEventsForBlockIDTransactionIDRequest {
     bytes block_id = 1;
     bytes transaction_id = 2;
 }
-
