@@ -478,7 +478,7 @@ value = ExecuteScriptAtBlockID(header.ID, script)
 
 `ExecuteScriptAtBlockID` executes a ready-only Cadence script against the execution state at the block with the given ID.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [Cadence JSON value specification](/docs/cadence-json-spec.md).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/docs/cadence-json-spec.md).
 
 ```
 rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
@@ -509,7 +509,7 @@ rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScrip
 
 `ExecuteScriptAtBlockHeight` executes a ready-only Cadence script against the execution state at the given block height.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [Cadence JSON value specification](/docs/cadence-json-spec.md).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/docs/cadence-json-spec.md).
 
 ```
 rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
