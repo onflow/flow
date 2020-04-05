@@ -63,10 +63,10 @@ service AccessAPI {
 
   // Events
 
-  // GetEventsForHeightRange retrieves events for all sealed blocks between the start block height and the end block height (inclusive) that have the given type
+  // GetEventsForHeightRange retrieves events emitted within the specified block range.
   rpc GetEventsForHeightRange (GetEventsForHeightRangeRequest) returns (EventsResponse);
 
-  // GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
+  // GetEventsForBlockIDs retrieves events for the specified block IDs and event type.
   rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (EventsResponse);
 }
 

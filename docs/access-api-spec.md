@@ -39,18 +39,18 @@
   - [Collection Guarantee](#collection-guarantee)
   - [Transaction](#transaction)
   - [Account](#account)
-    - [Account Public Key](#account-public-key)
+    - [Account Key](#account-key)
   - [Event](#event)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## RPC Service
 
-The following functions are implemented as a [gRPC service](https://grpc.io/). 
+The Access API is implemented as a [gRPC service](https://grpc.io/).
 
-The language-agnostic spec for this API is defined using [Protocol Buffers](https://developers.google.com/protocol-buffers), which allows for client libraries to be generated in most popular programming languages.
+A language-agnostic specification for this API is defined using [Protocol Buffers](https://developers.google.com/protocol-buffers), which can be used to generate client libraries in a variety of programming languages.
 
-- [Flow Access API Protobuf source files](/proto)
+- [Flow Access API protobuf source files](/proto)
 
 ---
 
@@ -540,17 +540,21 @@ rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (Exec
 
 ### Events
 
+The following methods can be used to query for on-chain [events](#event).
+
 #### GetEventsForHeightRange
 
-`GetEventsForHeightRange` retrieves events emitted within a specific block range.
+`GetEventsForHeightRange` retrieves [events](#event) emitted within the specified block range.
 
 ```
 rpc GetEventsForHeightRange(GetEventsForHeightRangeRequest) returns (GetEventsForHeightRangeResponse)
 ```
 
-Events can be requested for a specific sealed block range via the `start_height` and `end_height` (inclusive) fields and further filtered by the event type via the `type` field.
-If maximum chain height is less than end_height, then events until and including maximum height will be returned
-Event types are namespaced with the address of the account and contract in which they are declared. Events are provided by execution nodes.
+Events can be requested for a specific sealed block range via the `start_height` and `end_height` (inclusive) fields and further filtered by event type via the `type` field.
+
+If `end_height` is greater than the current sealed chain height, then this method will return events up to and including the latest sealed block.
+
+Event types are namespaced with the address of the account and contract in which they are declared.
 
 <details>
   <summary>Request</summary>
@@ -576,13 +580,12 @@ Event types are namespaced with the address of the account and contract in which
 
 #### GetEventsForBlockIDs
 
-`GetEventsForBlockIDs` retrieves all events for the given block IDs.
-
+`GetEventsForBlockIDs` retrieves [events](#event) for the specified block IDs and event type.
 ```
 rpc GetEventsForBlockIDs(GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse)
 ```
 
-Events can be requested for a list of block IDs via the `block_ids` field and further filtered by the event type via the `type` field.
+Events can be requested for a list of block IDs via the `block_ids` field and further filtered by event type via the `type` field.
 
 <details>
   <summary>Request</summary>
@@ -637,7 +640,7 @@ The detailed semantics of block formation are covered in the [block formation gu
 
 ### Block Header
 
-A block header is a summary of a block and contains only the block ID, height, and parent block ID.
+A block header is a summary of a [block](#block) and contains only the block ID, height, and parent block ID.
 
 ```
 message BlockHeader {
@@ -655,7 +658,7 @@ message BlockHeader {
 
 ### Block Seal
 
-A block seal is an attestation that the execution result of a specific block has been verified and approved by a quorum of verification nodes.
+A block seal is an attestation that the execution result of a specific [block](#block) has been verified and approved by a quorum of verification nodes.
 
 ```
 message BlockSeal {
@@ -675,7 +678,7 @@ message BlockSeal {
 
 ### Collection
 
-A collection is a batch of transactions that have been included in a block. Collections are used to improve consensus throughput by increasing the number of transactions per block.
+A collection is a batch of [transactions](#transaction) that have been included in a block. Collections are used to improve consensus throughput by increasing the number of transactions per block.
 
 ```
 message Collection {
@@ -754,9 +757,9 @@ message Account {
 
 More information on accounts can be found [here](/docs/accounts-and-keys.md).
 
-#### Account Public Key
+#### Account Key
 
-An account public key is a reference to a public key associated with a Flow account. Accounts can be configured with zero or more public keys, each of which can be used for signature verification when authorizing a transaction.
+An account key is a reference to a public key associated with a Flow account. Accounts can be configured with zero or more public keys, each of which can be used for signature verification when authorizing a transaction.
 
 ```
 message AccountPublicKey {
@@ -774,11 +777,11 @@ message AccountPublicKey {
 | hash_algo     | [Hashing algorithm](/docs/accounts-and-keys.md#supported-signature--hashing-algorithms) |
 | weight        | [Weight assigned to the key](/docs/accounts-and-keys.md#weighted-keys) |
 
-More information on account keys and weights can be found [here](/docs/accounts-and-keys.md).
+More information on account keys and key weights can be found [here](/docs/accounts-and-keys.md).
 
 ### Event
 
-An event is emitted as the result of a transaction execution. Events can either be user-defined events originating from a Cadence smart contract, or Flow system events such as `AccountCreated`, `AccountUpdated`, etc.
+An event is emitted as the result of a [transaction](#transaction) execution. Events are either user-defined events originating from a Cadence smart contract, or built-in Flow system events.
 
 ```
 message Event {
