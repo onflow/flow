@@ -1206,9 +1206,9 @@ type AccessAPIClient interface {
 	ExecuteScriptAtBlockID(ctx context.Context, in *ExecuteScriptAtBlockIDRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
 	// ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the execution state at the given block height.
 	ExecuteScriptAtBlockHeight(ctx context.Context, in *ExecuteScriptAtBlockHeightRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
-	// GetEventsForHeightRange retrieves events for all sealed blocks between the start block height and the end block height (inclusive) that have the given type
+	// GetEventsForHeightRange retrieves events emitted within the specified block range.
 	GetEventsForHeightRange(ctx context.Context, in *GetEventsForHeightRangeRequest, opts ...grpc.CallOption) (*EventsResponse, error)
-	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
+	// GetEventsForBlockIDs retrieves events for the specified block IDs and event type.
 	GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*EventsResponse, error)
 }
 
@@ -1405,9 +1405,9 @@ type AccessAPIServer interface {
 	ExecuteScriptAtBlockID(context.Context, *ExecuteScriptAtBlockIDRequest) (*ExecuteScriptResponse, error)
 	// ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the execution state at the given block height.
 	ExecuteScriptAtBlockHeight(context.Context, *ExecuteScriptAtBlockHeightRequest) (*ExecuteScriptResponse, error)
-	// GetEventsForHeightRange retrieves events for all sealed blocks between the start block height and the end block height (inclusive) that have the given type
+	// GetEventsForHeightRange retrieves events emitted within the specified block range.
 	GetEventsForHeightRange(context.Context, *GetEventsForHeightRangeRequest) (*EventsResponse, error)
-	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
+	// GetEventsForBlockIDs retrieves events for the specified block IDs and event type.
 	GetEventsForBlockIDs(context.Context, *GetEventsForBlockIDsRequest) (*EventsResponse, error)
 }
 

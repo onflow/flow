@@ -607,7 +607,7 @@ type ExecutionAPIClient interface {
 	ExecuteScriptAtBlockHeight(ctx context.Context, in *ExecuteScriptAtBlockHeightRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
 	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
 	GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*EventsResponse, error)
-	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
+	// GetEventsForBlockIDAndTransactionID retrieves the events emitted by a transaction in a specific block.
 	GetEventsForBlockIDTransactionID(ctx context.Context, in *GetEventsForBlockIDTransactionIDRequest, opts ...grpc.CallOption) (*EventsResponse, error)
 }
 
@@ -696,7 +696,7 @@ type ExecutionAPIServer interface {
 	ExecuteScriptAtBlockHeight(context.Context, *ExecuteScriptAtBlockHeightRequest) (*ExecuteScriptResponse, error)
 	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
 	GetEventsForBlockIDs(context.Context, *GetEventsForBlockIDsRequest) (*EventsResponse, error)
-	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
+	// GetEventsForBlockIDAndTransactionID retrieves the events emitted by a transaction in a specific block.
 	GetEventsForBlockIDTransactionID(context.Context, *GetEventsForBlockIDTransactionIDRequest) (*EventsResponse, error)
 }
 
