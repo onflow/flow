@@ -745,7 +745,7 @@ message TransactionSignature {
 | ------------------------------|-------------| 
 | script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes |
 | reference_block_id            | Block ID used to determine transaction expiry |
-| [proposal_key](#proposal_key) | Account key used to propose the transaction |
+| [proposal_key](#proposal-key) | Account key used to propose the transaction |
 | payer                         | [Signer declaration](#transaction-signer) of the payer account |
 | authorizers                   | [Signer declaration](#transaction-signer) of the transaction authorizers |
 | signatures                    | [Signatures](#transaction-signature) from all signer accounts |
