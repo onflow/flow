@@ -544,7 +544,7 @@ The following methods can be used to query for on-chain [events](#event).
 
 #### GetEventsForHeightRange
 
-`GetEventsForHeightRange` retrieves [events](#event) emitted within the specified block range.
+`GetEventsForHeightRange` retrieves [blockevents](#blockevent) emitted within the specified block range.
 
 ```
 rpc GetEventsForHeightRange(GetEventsForHeightRangeRequest) returns (GetEventsForHeightRangeResponse)
@@ -573,14 +573,14 @@ Event types are namespaced with the address of the account and contract in which
   
   ```
   message EventsResponse {
-   repeated flow.Event events = 1;
+   repeated BlockEvent block_events = 1;
   }
   ```
 </details>
 
 #### GetEventsForBlockIDs
 
-`GetEventsForBlockIDs` retrieves [events](#event) for the specified block IDs and event type.
+`GetEventsForBlockIDs` retrieves [blockevents](#blockevent) for the specified block IDs and event type.
 ```
 rpc GetEventsForBlockIDs(GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse)
 ```
@@ -603,7 +603,7 @@ Events can be requested for a list of block IDs via the `block_ids` field and fu
 
   ```
   message EventsResponse {
-   repeated flow.Event events = 1;
+   repeated BlockEvent block_events = 1;
   }
   ```
 </details>
@@ -798,3 +798,21 @@ message Event {
 | transaction_id   | ID of the transaction the event was emitted from |
 | index            | Zero-based index of the event within the transaction |
 | payload          | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md)|
+
+### BlockEvent
+
+A block event contains a block id, the height of the block and all the [events](#event) emitted as a result of the execution of transactions within the block.
+
+```
+message BlockEvent {
+   bytes block_id = 1;
+   uint64 block_height = 2;
+   repeated Event events = 3;
+}
+```
+
+| Field            | Description    |
+| -----------------|----------------|
+| block_id         | ID of the block the event was emitted from |
+| block_height     | Height of the block in the chain |
+| events           | All the [events](#event) for the block|
