@@ -41,6 +41,7 @@
   - [Account](#account)
     - [Account Key](#account-key)
   - [Event](#event)
+  - [Block Event](#block-event)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -799,7 +800,7 @@ message Event {
 | index            | Zero-based index of the event within the transaction |
 | payload          | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md)|
 
-### BlockEvent
+### Block Event
 
 A block event contains a block id, the height of the block and all the [events](#event) emitted as a result of the execution of transactions within the block.
 
