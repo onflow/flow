@@ -64,10 +64,10 @@ service AccessAPI {
   // Events
 
   // GetEventsForHeightRange retrieves events emitted within the specified block range.
-  rpc GetEventsForHeightRange (GetEventsForHeightRangeRequest) returns (GetEventsForHeightRangeResponse);
+  rpc GetEventsForHeightRange (GetEventsForHeightRangeRequest) returns (EventsResponse);
 
   // GetEventsForBlockIDs retrieves events for the specified block IDs and event type.
-  rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse);
+  rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (EventsResponse);
 }
 
 message PingRequest {}
@@ -186,10 +186,7 @@ message GetEventsForBlockIDsRequest {
   repeated bytes block_ids = 2;
 }
 
-message GetEventsForHeightRangeResponse {
+message EventsResponse {
   repeated entities.BlockEvents block_events = 1;
 }
 
-message GetEventsForBlockIDsResponse {
-  repeated entities.Event events = 1;
-}
