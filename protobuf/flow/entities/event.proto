@@ -9,9 +9,3 @@ message Event {
   uint32 event_index = 4;
   bytes payload = 5;
 }
-
-message BlockEvent {
-   bytes block_id = 1;
-   uint64 block_height = 2;
-   repeated Event events = 3;
-}

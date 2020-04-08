@@ -41,7 +41,6 @@
   - [Account](#account)
     - [Account Key](#account-key)
   - [Event](#event)
-  - [Block Event](#block-event)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -545,7 +544,7 @@ The following methods can be used to query for on-chain [events](#event).
 
 #### GetEventsForHeightRange
 
-`GetEventsForHeightRange` retrieves [blockevents](#blockevent) emitted within the specified block range.
+`GetEventsForHeightRange` retrieves [events](#event) emitted within the specified block range.
 
 ```
 rpc GetEventsForHeightRange(GetEventsForHeightRangeRequest) returns (GetEventsForHeightRangeResponse)
@@ -554,6 +553,8 @@ rpc GetEventsForHeightRange(GetEventsForHeightRangeRequest) returns (GetEventsFo
 Events can be requested for a specific sealed block range via the `start_height` and `end_height` (inclusive) fields and further filtered by event type via the `type` field.
 
 If `end_height` is greater than the current sealed chain height, then this method will return events up to and including the latest sealed block.
+
+The event results are grouped by block, with each group specifying a block ID and height.
 
 Event types are namespaced with the address of the account and contract in which they are declared.
 
@@ -574,19 +575,26 @@ Event types are namespaced with the address of the account and contract in which
   
   ```
   message EventsResponse {
-   repeated BlockEvent block_events = 1;
+    message Result {
+      bytes block_id = 1;
+      uint64 block_height = 2;
+      repeated entities.Event events = 3;
+    }
+    repeated Result results = 1;
   }
   ```
 </details>
 
 #### GetEventsForBlockIDs
 
-`GetEventsForBlockIDs` retrieves [blockevents](#blockevent) for the specified block IDs and event type.
+`GetEventsForBlockIDs` retrieves [events](#event) for the specified block IDs and event type.
 ```
 rpc GetEventsForBlockIDs(GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse)
 ```
 
 Events can be requested for a list of block IDs via the `block_ids` field and further filtered by event type via the `type` field.
+
+The event results are grouped by block, with each group specifying a block ID and height.
 
 <details>
   <summary>Request</summary>
@@ -604,7 +612,12 @@ Events can be requested for a list of block IDs via the `block_ids` field and fu
 
   ```
   message EventsResponse {
-   repeated BlockEvent block_events = 1;
+    message Result {
+      bytes block_id = 1;
+      uint64 block_height = 2;
+      repeated entities.Event events = 3;
+    }
+    repeated Result results = 1;
   }
   ```
 </details>
@@ -799,21 +812,3 @@ message Event {
 | transaction_id   | ID of the transaction the event was emitted from |
 | index            | Zero-based index of the event within the transaction |
 | payload          | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md)|
-
-### Block Event
-
-A block event contains a block id, the height of the block and all the [events](#event) emitted as a result of the execution of transactions within the block.
-
-```
-message BlockEvent {
-   bytes block_id = 1;
-   uint64 block_height = 2;
-   repeated Event events = 3;
-}
-```
-
-| Field            | Description    |
-| -----------------|----------------|
-| block_id         | ID of the block the event was emitted from |
-| block_height     | Height of the block in the chain |
-| events           | All the [events](#event) for the block|

@@ -187,6 +187,11 @@ message GetEventsForBlockIDsRequest {
 }
 
 message EventsResponse {
-  repeated entities.BlockEvent block_events = 1;
+  message Result {
+    bytes block_id = 1;
+    uint64 block_height = 2;
+    repeated entities.Event events = 3;
+  }
+  repeated Result results = 1;
 }
 
