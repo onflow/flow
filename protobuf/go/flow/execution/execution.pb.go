@@ -87,119 +87,88 @@ func (m *PingResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PingResponse proto.InternalMessageInfo
 
-type GetAccountRequest struct {
-	Address              []byte   `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+type GetAccountAtBlockIDRequest struct {
+	BlockId              []byte   `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
+	Address              []byte   `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetAccountRequest) Reset()         { *m = GetAccountRequest{} }
-func (m *GetAccountRequest) String() string { return proto.CompactTextString(m) }
-func (*GetAccountRequest) ProtoMessage()    {}
-func (*GetAccountRequest) Descriptor() ([]byte, []int) {
+func (m *GetAccountAtBlockIDRequest) Reset()         { *m = GetAccountAtBlockIDRequest{} }
+func (m *GetAccountAtBlockIDRequest) String() string { return proto.CompactTextString(m) }
+func (*GetAccountAtBlockIDRequest) ProtoMessage()    {}
+func (*GetAccountAtBlockIDRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_699624211ed46c53, []int{2}
 }
 
-func (m *GetAccountRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetAccountRequest.Unmarshal(m, b)
+func (m *GetAccountAtBlockIDRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAccountAtBlockIDRequest.Unmarshal(m, b)
 }
-func (m *GetAccountRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetAccountRequest.Marshal(b, m, deterministic)
+func (m *GetAccountAtBlockIDRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAccountAtBlockIDRequest.Marshal(b, m, deterministic)
 }
-func (m *GetAccountRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetAccountRequest.Merge(m, src)
+func (m *GetAccountAtBlockIDRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAccountAtBlockIDRequest.Merge(m, src)
 }
-func (m *GetAccountRequest) XXX_Size() int {
-	return xxx_messageInfo_GetAccountRequest.Size(m)
+func (m *GetAccountAtBlockIDRequest) XXX_Size() int {
+	return xxx_messageInfo_GetAccountAtBlockIDRequest.Size(m)
 }
-func (m *GetAccountRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetAccountRequest.DiscardUnknown(m)
+func (m *GetAccountAtBlockIDRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAccountAtBlockIDRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetAccountRequest proto.InternalMessageInfo
+var xxx_messageInfo_GetAccountAtBlockIDRequest proto.InternalMessageInfo
 
-func (m *GetAccountRequest) GetAddress() []byte {
+func (m *GetAccountAtBlockIDRequest) GetBlockId() []byte {
+	if m != nil {
+		return m.BlockId
+	}
+	return nil
+}
+
+func (m *GetAccountAtBlockIDRequest) GetAddress() []byte {
 	if m != nil {
 		return m.Address
 	}
 	return nil
 }
 
-type GetAccountResponse struct {
+type GetAccountAtBlockIDResponse struct {
 	Account              *entities.Account `protobuf:"bytes,1,opt,name=account,proto3" json:"account,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *GetAccountResponse) Reset()         { *m = GetAccountResponse{} }
-func (m *GetAccountResponse) String() string { return proto.CompactTextString(m) }
-func (*GetAccountResponse) ProtoMessage()    {}
-func (*GetAccountResponse) Descriptor() ([]byte, []int) {
+func (m *GetAccountAtBlockIDResponse) Reset()         { *m = GetAccountAtBlockIDResponse{} }
+func (m *GetAccountAtBlockIDResponse) String() string { return proto.CompactTextString(m) }
+func (*GetAccountAtBlockIDResponse) ProtoMessage()    {}
+func (*GetAccountAtBlockIDResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_699624211ed46c53, []int{3}
 }
 
-func (m *GetAccountResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetAccountResponse.Unmarshal(m, b)
+func (m *GetAccountAtBlockIDResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAccountAtBlockIDResponse.Unmarshal(m, b)
 }
-func (m *GetAccountResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetAccountResponse.Marshal(b, m, deterministic)
+func (m *GetAccountAtBlockIDResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAccountAtBlockIDResponse.Marshal(b, m, deterministic)
 }
-func (m *GetAccountResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetAccountResponse.Merge(m, src)
+func (m *GetAccountAtBlockIDResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAccountAtBlockIDResponse.Merge(m, src)
 }
-func (m *GetAccountResponse) XXX_Size() int {
-	return xxx_messageInfo_GetAccountResponse.Size(m)
+func (m *GetAccountAtBlockIDResponse) XXX_Size() int {
+	return xxx_messageInfo_GetAccountAtBlockIDResponse.Size(m)
 }
-func (m *GetAccountResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetAccountResponse.DiscardUnknown(m)
+func (m *GetAccountAtBlockIDResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAccountAtBlockIDResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetAccountResponse proto.InternalMessageInfo
+var xxx_messageInfo_GetAccountAtBlockIDResponse proto.InternalMessageInfo
 
-func (m *GetAccountResponse) GetAccount() *entities.Account {
+func (m *GetAccountAtBlockIDResponse) GetAccount() *entities.Account {
 	if m != nil {
 		return m.Account
-	}
-	return nil
-}
-
-type ExecuteScriptAtLatestBlockRequest struct {
-	Script               []byte   `protobuf:"bytes,1,opt,name=script,proto3" json:"script,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ExecuteScriptAtLatestBlockRequest) Reset()         { *m = ExecuteScriptAtLatestBlockRequest{} }
-func (m *ExecuteScriptAtLatestBlockRequest) String() string { return proto.CompactTextString(m) }
-func (*ExecuteScriptAtLatestBlockRequest) ProtoMessage()    {}
-func (*ExecuteScriptAtLatestBlockRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_699624211ed46c53, []int{4}
-}
-
-func (m *ExecuteScriptAtLatestBlockRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ExecuteScriptAtLatestBlockRequest.Unmarshal(m, b)
-}
-func (m *ExecuteScriptAtLatestBlockRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ExecuteScriptAtLatestBlockRequest.Marshal(b, m, deterministic)
-}
-func (m *ExecuteScriptAtLatestBlockRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ExecuteScriptAtLatestBlockRequest.Merge(m, src)
-}
-func (m *ExecuteScriptAtLatestBlockRequest) XXX_Size() int {
-	return xxx_messageInfo_ExecuteScriptAtLatestBlockRequest.Size(m)
-}
-func (m *ExecuteScriptAtLatestBlockRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ExecuteScriptAtLatestBlockRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ExecuteScriptAtLatestBlockRequest proto.InternalMessageInfo
-
-func (m *ExecuteScriptAtLatestBlockRequest) GetScript() []byte {
-	if m != nil {
-		return m.Script
 	}
 	return nil
 }
@@ -216,7 +185,7 @@ func (m *ExecuteScriptAtBlockIDRequest) Reset()         { *m = ExecuteScriptAtBl
 func (m *ExecuteScriptAtBlockIDRequest) String() string { return proto.CompactTextString(m) }
 func (*ExecuteScriptAtBlockIDRequest) ProtoMessage()    {}
 func (*ExecuteScriptAtBlockIDRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_699624211ed46c53, []int{5}
+	return fileDescriptor_699624211ed46c53, []int{4}
 }
 
 func (m *ExecuteScriptAtBlockIDRequest) XXX_Unmarshal(b []byte) error {
@@ -251,53 +220,6 @@ func (m *ExecuteScriptAtBlockIDRequest) GetScript() []byte {
 	return nil
 }
 
-type ExecuteScriptAtBlockHeightRequest struct {
-	BlockHeight          uint64   `protobuf:"varint,1,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
-	Script               []byte   `protobuf:"bytes,2,opt,name=script,proto3" json:"script,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ExecuteScriptAtBlockHeightRequest) Reset()         { *m = ExecuteScriptAtBlockHeightRequest{} }
-func (m *ExecuteScriptAtBlockHeightRequest) String() string { return proto.CompactTextString(m) }
-func (*ExecuteScriptAtBlockHeightRequest) ProtoMessage()    {}
-func (*ExecuteScriptAtBlockHeightRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_699624211ed46c53, []int{6}
-}
-
-func (m *ExecuteScriptAtBlockHeightRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ExecuteScriptAtBlockHeightRequest.Unmarshal(m, b)
-}
-func (m *ExecuteScriptAtBlockHeightRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ExecuteScriptAtBlockHeightRequest.Marshal(b, m, deterministic)
-}
-func (m *ExecuteScriptAtBlockHeightRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ExecuteScriptAtBlockHeightRequest.Merge(m, src)
-}
-func (m *ExecuteScriptAtBlockHeightRequest) XXX_Size() int {
-	return xxx_messageInfo_ExecuteScriptAtBlockHeightRequest.Size(m)
-}
-func (m *ExecuteScriptAtBlockHeightRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ExecuteScriptAtBlockHeightRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ExecuteScriptAtBlockHeightRequest proto.InternalMessageInfo
-
-func (m *ExecuteScriptAtBlockHeightRequest) GetBlockHeight() uint64 {
-	if m != nil {
-		return m.BlockHeight
-	}
-	return 0
-}
-
-func (m *ExecuteScriptAtBlockHeightRequest) GetScript() []byte {
-	if m != nil {
-		return m.Script
-	}
-	return nil
-}
-
 type ExecuteScriptResponse struct {
 	Value                []byte   `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -309,7 +231,7 @@ func (m *ExecuteScriptResponse) Reset()         { *m = ExecuteScriptResponse{} }
 func (m *ExecuteScriptResponse) String() string { return proto.CompactTextString(m) }
 func (*ExecuteScriptResponse) ProtoMessage()    {}
 func (*ExecuteScriptResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_699624211ed46c53, []int{7}
+	return fileDescriptor_699624211ed46c53, []int{5}
 }
 
 func (m *ExecuteScriptResponse) XXX_Unmarshal(b []byte) error {
@@ -337,73 +259,18 @@ func (m *ExecuteScriptResponse) GetValue() []byte {
 	return nil
 }
 
-type GetEventsForHeightRangeRequest struct {
-	Type                 string   `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
-	StartHeight          uint64   `protobuf:"varint,2,opt,name=start_height,json=startHeight,proto3" json:"start_height,omitempty"`
-	EndHeight            uint64   `protobuf:"varint,3,opt,name=end_height,json=endHeight,proto3" json:"end_height,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *GetEventsForHeightRangeRequest) Reset()         { *m = GetEventsForHeightRangeRequest{} }
-func (m *GetEventsForHeightRangeRequest) String() string { return proto.CompactTextString(m) }
-func (*GetEventsForHeightRangeRequest) ProtoMessage()    {}
-func (*GetEventsForHeightRangeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_699624211ed46c53, []int{8}
-}
-
-func (m *GetEventsForHeightRangeRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetEventsForHeightRangeRequest.Unmarshal(m, b)
-}
-func (m *GetEventsForHeightRangeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetEventsForHeightRangeRequest.Marshal(b, m, deterministic)
-}
-func (m *GetEventsForHeightRangeRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetEventsForHeightRangeRequest.Merge(m, src)
-}
-func (m *GetEventsForHeightRangeRequest) XXX_Size() int {
-	return xxx_messageInfo_GetEventsForHeightRangeRequest.Size(m)
-}
-func (m *GetEventsForHeightRangeRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetEventsForHeightRangeRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetEventsForHeightRangeRequest proto.InternalMessageInfo
-
-func (m *GetEventsForHeightRangeRequest) GetType() string {
-	if m != nil {
-		return m.Type
-	}
-	return ""
-}
-
-func (m *GetEventsForHeightRangeRequest) GetStartHeight() uint64 {
-	if m != nil {
-		return m.StartHeight
-	}
-	return 0
-}
-
-func (m *GetEventsForHeightRangeRequest) GetEndHeight() uint64 {
-	if m != nil {
-		return m.EndHeight
-	}
-	return 0
-}
-
 type EventsResponse struct {
-	Events               []*entities.Event `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	Results              []*EventsResponse_Result `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
 }
 
 func (m *EventsResponse) Reset()         { *m = EventsResponse{} }
 func (m *EventsResponse) String() string { return proto.CompactTextString(m) }
 func (*EventsResponse) ProtoMessage()    {}
 func (*EventsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_699624211ed46c53, []int{9}
+	return fileDescriptor_699624211ed46c53, []int{6}
 }
 
 func (m *EventsResponse) XXX_Unmarshal(b []byte) error {
@@ -424,7 +291,62 @@ func (m *EventsResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_EventsResponse proto.InternalMessageInfo
 
-func (m *EventsResponse) GetEvents() []*entities.Event {
+func (m *EventsResponse) GetResults() []*EventsResponse_Result {
+	if m != nil {
+		return m.Results
+	}
+	return nil
+}
+
+type EventsResponse_Result struct {
+	BlockId              []byte            `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
+	BlockHeight          uint64            `protobuf:"varint,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
+	Events               []*entities.Event `protobuf:"bytes,3,rep,name=events,proto3" json:"events,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
+}
+
+func (m *EventsResponse_Result) Reset()         { *m = EventsResponse_Result{} }
+func (m *EventsResponse_Result) String() string { return proto.CompactTextString(m) }
+func (*EventsResponse_Result) ProtoMessage()    {}
+func (*EventsResponse_Result) Descriptor() ([]byte, []int) {
+	return fileDescriptor_699624211ed46c53, []int{6, 0}
+}
+
+func (m *EventsResponse_Result) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_EventsResponse_Result.Unmarshal(m, b)
+}
+func (m *EventsResponse_Result) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_EventsResponse_Result.Marshal(b, m, deterministic)
+}
+func (m *EventsResponse_Result) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EventsResponse_Result.Merge(m, src)
+}
+func (m *EventsResponse_Result) XXX_Size() int {
+	return xxx_messageInfo_EventsResponse_Result.Size(m)
+}
+func (m *EventsResponse_Result) XXX_DiscardUnknown() {
+	xxx_messageInfo_EventsResponse_Result.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_EventsResponse_Result proto.InternalMessageInfo
+
+func (m *EventsResponse_Result) GetBlockId() []byte {
+	if m != nil {
+		return m.BlockId
+	}
+	return nil
+}
+
+func (m *EventsResponse_Result) GetBlockHeight() uint64 {
+	if m != nil {
+		return m.BlockHeight
+	}
+	return 0
+}
+
+func (m *EventsResponse_Result) GetEvents() []*entities.Event {
 	if m != nil {
 		return m.Events
 	}
@@ -443,7 +365,7 @@ func (m *GetEventsForBlockIDsRequest) Reset()         { *m = GetEventsForBlockID
 func (m *GetEventsForBlockIDsRequest) String() string { return proto.CompactTextString(m) }
 func (*GetEventsForBlockIDsRequest) ProtoMessage()    {}
 func (*GetEventsForBlockIDsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_699624211ed46c53, []int{10}
+	return fileDescriptor_699624211ed46c53, []int{7}
 }
 
 func (m *GetEventsForBlockIDsRequest) XXX_Unmarshal(b []byte) error {
@@ -492,7 +414,7 @@ func (m *GetEventsForBlockIDTransactionIDRequest) Reset() {
 func (m *GetEventsForBlockIDTransactionIDRequest) String() string { return proto.CompactTextString(m) }
 func (*GetEventsForBlockIDTransactionIDRequest) ProtoMessage()    {}
 func (*GetEventsForBlockIDTransactionIDRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_699624211ed46c53, []int{11}
+	return fileDescriptor_699624211ed46c53, []int{8}
 }
 
 func (m *GetEventsForBlockIDTransactionIDRequest) XXX_Unmarshal(b []byte) error {
@@ -530,14 +452,12 @@ func (m *GetEventsForBlockIDTransactionIDRequest) GetTransactionId() []byte {
 func init() {
 	proto.RegisterType((*PingRequest)(nil), "execution.PingRequest")
 	proto.RegisterType((*PingResponse)(nil), "execution.PingResponse")
-	proto.RegisterType((*GetAccountRequest)(nil), "execution.GetAccountRequest")
-	proto.RegisterType((*GetAccountResponse)(nil), "execution.GetAccountResponse")
-	proto.RegisterType((*ExecuteScriptAtLatestBlockRequest)(nil), "execution.ExecuteScriptAtLatestBlockRequest")
+	proto.RegisterType((*GetAccountAtBlockIDRequest)(nil), "execution.GetAccountAtBlockIDRequest")
+	proto.RegisterType((*GetAccountAtBlockIDResponse)(nil), "execution.GetAccountAtBlockIDResponse")
 	proto.RegisterType((*ExecuteScriptAtBlockIDRequest)(nil), "execution.ExecuteScriptAtBlockIDRequest")
-	proto.RegisterType((*ExecuteScriptAtBlockHeightRequest)(nil), "execution.ExecuteScriptAtBlockHeightRequest")
 	proto.RegisterType((*ExecuteScriptResponse)(nil), "execution.ExecuteScriptResponse")
-	proto.RegisterType((*GetEventsForHeightRangeRequest)(nil), "execution.GetEventsForHeightRangeRequest")
 	proto.RegisterType((*EventsResponse)(nil), "execution.EventsResponse")
+	proto.RegisterType((*EventsResponse_Result)(nil), "execution.EventsResponse.Result")
 	proto.RegisterType((*GetEventsForBlockIDsRequest)(nil), "execution.GetEventsForBlockIDsRequest")
 	proto.RegisterType((*GetEventsForBlockIDTransactionIDRequest)(nil), "execution.GetEventsForBlockIDTransactionIDRequest")
 }
@@ -545,42 +465,38 @@ func init() {
 func init() { proto.RegisterFile("flow/execution/execution.proto", fileDescriptor_699624211ed46c53) }
 
 var fileDescriptor_699624211ed46c53 = []byte{
-	// 550 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x54, 0x4d, 0x6f, 0xd3, 0x40,
-	0x10, 0x55, 0x93, 0x34, 0x6d, 0x26, 0x6e, 0x50, 0x57, 0x25, 0x24, 0x0e, 0xa9, 0xd2, 0x95, 0xa0,
-	0x91, 0xa0, 0xa9, 0x14, 0x0e, 0x08, 0x71, 0x0a, 0x22, 0x14, 0x4b, 0x08, 0x55, 0x86, 0x0b, 0x17,
-	0x90, 0x63, 0x0f, 0xa9, 0xd5, 0xc8, 0x4e, 0xbd, 0x9b, 0x00, 0x7f, 0x87, 0x5f, 0x8a, 0xbc, 0x1f,
-	0xfe, 0xc0, 0x71, 0x92, 0x9b, 0x77, 0xe6, 0xcd, 0x9b, 0xb7, 0x3b, 0xf3, 0x0c, 0xe7, 0x3f, 0x17,
-	0xe1, 0xaf, 0x6b, 0xfc, 0x8d, 0xee, 0x8a, 0xfb, 0x61, 0x90, 0x7e, 0x8d, 0x96, 0x51, 0xc8, 0x43,
-	0xd2, 0x48, 0x02, 0x66, 0x4f, 0x42, 0x03, 0xee, 0x73, 0x1f, 0xd9, 0xb5, 0xe3, 0xba, 0xe1, 0x2a,
-	0xe0, 0x12, 0x67, 0x76, 0xf3, 0x49, 0x5c, 0xa3, 0x4e, 0xd1, 0x13, 0x68, 0xde, 0xfa, 0xc1, 0xdc,
-	0xc6, 0x87, 0x15, 0x32, 0x4e, 0x5b, 0x60, 0xc8, 0x23, 0x5b, 0x86, 0x01, 0x43, 0x7a, 0x05, 0xa7,
-	0x37, 0xc8, 0x27, 0x92, 0x4d, 0x81, 0x48, 0x07, 0x8e, 0x1c, 0xcf, 0x8b, 0x90, 0xb1, 0xce, 0xc1,
-	0xe0, 0x60, 0x68, 0xd8, 0xfa, 0x48, 0x27, 0x40, 0xb2, 0x70, 0x49, 0x42, 0x5e, 0xc0, 0x91, 0xd2,
-	0x23, 0xf0, 0xcd, 0xf1, 0xe9, 0x48, 0x6b, 0x19, 0x69, 0xac, 0x46, 0xd0, 0xb7, 0x70, 0x31, 0x15,
-	0xb7, 0xc2, 0x2f, 0x6e, 0xe4, 0x2f, 0xf9, 0x84, 0x7f, 0x72, 0x38, 0x32, 0xfe, 0x6e, 0x11, 0xba,
-	0xf7, 0x5a, 0x41, 0x1b, 0xea, 0x4c, 0x64, 0x95, 0x00, 0x75, 0xa2, 0x36, 0xf4, 0xff, 0x2b, 0x16,
-	0x65, 0xd6, 0x7b, 0x5d, 0xd8, 0x85, 0xe3, 0x59, 0x1c, 0xf9, 0xe1, 0x7b, 0x5a, 0xbb, 0x38, 0x5b,
-	0x5e, 0x86, 0xb3, 0x92, 0xe3, 0xfc, 0x5e, 0x10, 0x24, 0x38, 0x3f, 0xa2, 0x3f, 0xbf, 0x4b, 0x9e,
-	0xe4, 0x02, 0x0c, 0xc9, 0x7b, 0x27, 0xc2, 0x82, 0xbb, 0x66, 0x37, 0x67, 0x29, 0xb2, 0x94, 0xff,
-	0x0a, 0x1e, 0xe7, 0xf8, 0x93, 0x67, 0x3b, 0x83, 0xc3, 0xb5, 0xb3, 0x58, 0xa1, 0x12, 0x2a, 0x0f,
-	0x74, 0x0d, 0xe7, 0x37, 0xc8, 0xa7, 0xf1, 0x08, 0xd9, 0x87, 0x30, 0x52, 0x32, 0x9c, 0x60, 0x8e,
-	0x5a, 0x0b, 0x81, 0x1a, 0xff, 0xb3, 0x94, 0x65, 0x0d, 0x5b, 0x7c, 0xc7, 0xfa, 0x18, 0x77, 0x22,
-	0xae, 0xf5, 0x55, 0xa4, 0x3e, 0x11, 0x53, 0xfa, 0xfa, 0x00, 0x18, 0x78, 0x1a, 0x50, 0x15, 0x80,
-	0x06, 0x06, 0x9e, 0x4c, 0xd3, 0x37, 0xd0, 0x92, 0x4d, 0x13, 0x7d, 0x97, 0x50, 0x17, 0x9b, 0x14,
-	0x6f, 0x41, 0x75, 0xd8, 0x1c, 0x3f, 0x4a, 0xa7, 0x2a, 0x90, 0xb6, 0x4a, 0xd3, 0xcf, 0xd0, 0xcb,
-	0x4a, 0x56, 0x23, 0x61, 0xdb, 0xf4, 0xf6, 0xa0, 0xa1, 0xe7, 0xc4, 0x3a, 0x95, 0x41, 0x75, 0x68,
-	0xd8, 0xc7, 0x6a, 0x50, 0x8c, 0xde, 0xc3, 0xe5, 0x06, 0xbe, 0xaf, 0x91, 0x13, 0x30, 0xc7, 0x8d,
-	0xdd, 0xb0, 0xd7, 0xbc, 0x9f, 0x41, 0x8b, 0xa7, 0x25, 0x31, 0x40, 0xce, 0xe5, 0x24, 0x13, 0xb5,
-	0xbc, 0xf1, 0xdf, 0x43, 0x30, 0xa6, 0xda, 0x66, 0x93, 0x5b, 0x8b, 0xbc, 0x86, 0x5a, 0x6c, 0x11,
-	0xd2, 0x1e, 0xa5, 0x76, 0xcc, 0x58, 0xc8, 0x7c, 0x52, 0x88, 0xab, 0xf7, 0xb2, 0x00, 0x52, 0x73,
-	0x90, 0xa7, 0x19, 0x58, 0xc1, 0x62, 0x66, 0xbf, 0x24, 0xab, 0xa8, 0x16, 0x60, 0x96, 0x9b, 0x84,
-	0xbc, 0xcc, 0x14, 0xef, 0xf4, 0x92, 0x39, 0x28, 0x43, 0x27, 0xdd, 0x3c, 0x68, 0x6f, 0x76, 0x15,
-	0x19, 0x96, 0x77, 0xca, 0x1b, 0x6f, 0x8f, 0x2e, 0xc5, 0x3b, 0x65, 0x7c, 0xb6, 0xed, 0x4e, 0x45,
-	0x3b, 0xee, 0xd1, 0xed, 0x1b, 0x9c, 0x6d, 0xda, 0x49, 0xf2, 0x3c, 0xff, 0xf0, 0x65, 0x4b, 0x6b,
-	0x76, 0xb3, 0x1d, 0xf2, 0xbe, 0x78, 0x80, 0xc1, 0xae, 0xf5, 0x24, 0xe3, 0xed, 0x6d, 0x36, 0xed,
-	0xf2, 0x96, 0x96, 0xb3, 0xba, 0xf8, 0x99, 0xbf, 0xfa, 0x17, 0x00, 0x00, 0xff, 0xff, 0x62, 0x75,
-	0xee, 0x55, 0x31, 0x06, 0x00, 0x00,
+	// 491 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0x4d, 0x6f, 0xd3, 0x40,
+	0x10, 0x55, 0x48, 0x48, 0x9a, 0x89, 0x1b, 0xc4, 0x52, 0x82, 0xb3, 0x11, 0xc8, 0xac, 0x54, 0x1a,
+	0x09, 0xe1, 0x4a, 0xe1, 0x80, 0xc4, 0x2d, 0x88, 0x00, 0xe1, 0x80, 0xca, 0xc2, 0x85, 0x13, 0x72,
+	0xed, 0xa5, 0xb5, 0x6a, 0x79, 0x5d, 0xef, 0xba, 0xc0, 0x8f, 0xe3, 0xc7, 0xf0, 0x4f, 0x90, 0x77,
+	0xd7, 0x1f, 0x01, 0xdb, 0xa5, 0x37, 0xcf, 0xcc, 0x9b, 0x99, 0xb7, 0xf3, 0x5e, 0x02, 0x8f, 0xbe,
+	0x45, 0xfc, 0xfb, 0x31, 0xfb, 0xc1, 0xfc, 0x4c, 0x86, 0x3c, 0xae, 0xbe, 0xdc, 0x24, 0xe5, 0x92,
+	0xa3, 0x71, 0x99, 0xc0, 0x0b, 0x0d, 0x8d, 0x65, 0x28, 0x43, 0x26, 0x8e, 0x3d, 0xdf, 0xe7, 0x59,
+	0x2c, 0x35, 0x0e, 0xcf, 0x77, 0x8b, 0xec, 0x8a, 0x15, 0x25, 0xb2, 0x0f, 0x93, 0x93, 0x30, 0x3e,
+	0xa3, 0xec, 0x32, 0x63, 0x42, 0x92, 0x29, 0x58, 0x3a, 0x14, 0x09, 0x8f, 0x05, 0x23, 0x1f, 0x01,
+	0xbf, 0x65, 0x72, 0xad, 0xa7, 0xad, 0xe5, 0xab, 0x88, 0xfb, 0x17, 0xdb, 0xd7, 0x06, 0x8d, 0xe6,
+	0xb0, 0x77, 0x9a, 0x67, 0xbe, 0x86, 0x81, 0xdd, 0x73, 0x7a, 0x4b, 0x8b, 0x8e, 0x54, 0xbc, 0x0d,
+	0x90, 0x0d, 0x23, 0x2f, 0x08, 0x52, 0x26, 0x84, 0x7d, 0x4b, 0x57, 0x4c, 0x48, 0xde, 0xc3, 0xa2,
+	0x71, 0xa4, 0xde, 0x88, 0x9e, 0xc2, 0xc8, 0x90, 0x57, 0x23, 0x27, 0xab, 0xbb, 0x6e, 0x41, 0xdc,
+	0x35, 0x4d, 0xb4, 0x40, 0x10, 0x0a, 0x0f, 0x37, 0xea, 0x04, 0xec, 0x93, 0x9f, 0x86, 0xc9, 0x8d,
+	0x18, 0xce, 0x60, 0x28, 0x54, 0x93, 0x21, 0x68, 0x22, 0xf2, 0x0c, 0xee, 0xef, 0xcc, 0x2c, 0x99,
+	0x1d, 0xc0, 0xed, 0x2b, 0x2f, 0xca, 0x98, 0x19, 0xa4, 0x03, 0xf2, 0xab, 0x07, 0xd3, 0x4d, 0x7e,
+	0x50, 0x51, 0x02, 0x5f, 0xc2, 0x28, 0x65, 0x22, 0x8b, 0xa4, 0xb0, 0x7b, 0x4e, 0x7f, 0x39, 0x59,
+	0x39, 0x6e, 0xa5, 0xdc, 0x2e, 0xd6, 0xa5, 0x0a, 0x48, 0x8b, 0x06, 0xcc, 0x61, 0xa8, 0x53, 0x5d,
+	0xd4, 0x1f, 0x83, 0xa5, 0x4b, 0xe7, 0x2c, 0x3c, 0x3b, 0xd7, 0x0f, 0x18, 0xd0, 0x89, 0xca, 0xbd,
+	0x53, 0x29, 0x74, 0x04, 0x43, 0x25, 0xb3, 0xb0, 0xfb, 0x8a, 0xc2, 0x9d, 0xea, 0x8a, 0x8a, 0x01,
+	0x35, 0x65, 0xf2, 0x41, 0xc9, 0xa1, 0x59, 0xbd, 0xe1, 0xa9, 0xb9, 0x9f, 0x28, 0x0e, 0x88, 0x60,
+	0x20, 0x7f, 0x26, 0xfa, 0xcd, 0x63, 0xaa, 0xbe, 0xd1, 0x02, 0xc6, 0x05, 0xb3, 0x5c, 0xdd, 0xfe,
+	0xd2, 0xa2, 0x7b, 0x86, 0x9a, 0x20, 0x17, 0x70, 0xd4, 0x30, 0xef, 0x73, 0xea, 0xc5, 0xc2, 0xf3,
+	0xf3, 0x0b, 0xfc, 0x97, 0x38, 0x87, 0x30, 0x95, 0x55, 0x4b, 0x0e, 0xd0, 0x22, 0xed, 0xd7, 0xb2,
+	0xdb, 0x60, 0xf5, 0xbb, 0x0f, 0xd6, 0xa6, 0x38, 0xed, 0xfa, 0x64, 0x8b, 0x5e, 0xc0, 0x20, 0xf7,
+	0x2f, 0x9a, 0xd5, 0x2e, 0x5e, 0xf3, 0x37, 0x7e, 0xf0, 0x4f, 0xde, 0x68, 0x16, 0xc0, 0xbd, 0x06,
+	0x57, 0xa2, 0xc3, 0x1a, 0xbe, 0xfd, 0x87, 0x80, 0x9f, 0x5c, 0x07, 0x2b, 0xb7, 0xcc, 0x9a, 0xfd,
+	0x8a, 0x96, 0x75, 0x8b, 0x74, 0x59, 0x1a, 0x3b, 0x6d, 0xc8, 0x72, 0xcb, 0x17, 0x38, 0x68, 0x92,
+	0x14, 0xfd, 0xc5, 0xb2, 0x4d, 0x73, 0x3c, 0x6f, 0xb5, 0x2b, 0xba, 0x04, 0xe7, 0x3a, 0x75, 0xd1,
+	0xaa, 0x7b, 0x4d, 0x93, 0x15, 0x3a, 0x56, 0x9e, 0x0e, 0xd5, 0x1f, 0xd5, 0xf3, 0x3f, 0x01, 0x00,
+	0x00, 0xff, 0xff, 0x9e, 0x7e, 0xcf, 0x2e, 0x0d, 0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -597,14 +513,10 @@ const _ = grpc.SupportPackageIsVersion4
 type ExecutionAPIClient interface {
 	// Ping is used to check if the access node is alive and healthy.
 	Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error)
-	// GetAccount gets an account by address.
-	GetAccount(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*GetAccountResponse, error)
-	// ExecuteScriptAtLatestBlock executes a read-only Cadance script against the latest sealed execution state.
-	ExecuteScriptAtLatestBlock(ctx context.Context, in *ExecuteScriptAtLatestBlockRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
+	// GetAccountAtBlockID gets an account by address at the given block ID
+	GetAccountAtBlockID(ctx context.Context, in *GetAccountAtBlockIDRequest, opts ...grpc.CallOption) (*GetAccountAtBlockIDResponse, error)
 	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
 	ExecuteScriptAtBlockID(ctx context.Context, in *ExecuteScriptAtBlockIDRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
-	// ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the execution state at the given block height.
-	ExecuteScriptAtBlockHeight(ctx context.Context, in *ExecuteScriptAtBlockHeightRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
 	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
 	GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*EventsResponse, error)
 	// GetEventsForBlockIDAndTransactionID retrieves the events emitted by a transaction in a specific block.
@@ -628,18 +540,9 @@ func (c *executionAPIClient) Ping(ctx context.Context, in *PingRequest, opts ...
 	return out, nil
 }
 
-func (c *executionAPIClient) GetAccount(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*GetAccountResponse, error) {
-	out := new(GetAccountResponse)
-	err := c.cc.Invoke(ctx, "/execution.ExecutionAPI/GetAccount", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *executionAPIClient) ExecuteScriptAtLatestBlock(ctx context.Context, in *ExecuteScriptAtLatestBlockRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error) {
-	out := new(ExecuteScriptResponse)
-	err := c.cc.Invoke(ctx, "/execution.ExecutionAPI/ExecuteScriptAtLatestBlock", in, out, opts...)
+func (c *executionAPIClient) GetAccountAtBlockID(ctx context.Context, in *GetAccountAtBlockIDRequest, opts ...grpc.CallOption) (*GetAccountAtBlockIDResponse, error) {
+	out := new(GetAccountAtBlockIDResponse)
+	err := c.cc.Invoke(ctx, "/execution.ExecutionAPI/GetAccountAtBlockID", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -649,15 +552,6 @@ func (c *executionAPIClient) ExecuteScriptAtLatestBlock(ctx context.Context, in 
 func (c *executionAPIClient) ExecuteScriptAtBlockID(ctx context.Context, in *ExecuteScriptAtBlockIDRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error) {
 	out := new(ExecuteScriptResponse)
 	err := c.cc.Invoke(ctx, "/execution.ExecutionAPI/ExecuteScriptAtBlockID", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *executionAPIClient) ExecuteScriptAtBlockHeight(ctx context.Context, in *ExecuteScriptAtBlockHeightRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error) {
-	out := new(ExecuteScriptResponse)
-	err := c.cc.Invoke(ctx, "/execution.ExecutionAPI/ExecuteScriptAtBlockHeight", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -686,14 +580,10 @@ func (c *executionAPIClient) GetEventsForBlockIDTransactionID(ctx context.Contex
 type ExecutionAPIServer interface {
 	// Ping is used to check if the access node is alive and healthy.
 	Ping(context.Context, *PingRequest) (*PingResponse, error)
-	// GetAccount gets an account by address.
-	GetAccount(context.Context, *GetAccountRequest) (*GetAccountResponse, error)
-	// ExecuteScriptAtLatestBlock executes a read-only Cadance script against the latest sealed execution state.
-	ExecuteScriptAtLatestBlock(context.Context, *ExecuteScriptAtLatestBlockRequest) (*ExecuteScriptResponse, error)
+	// GetAccountAtBlockID gets an account by address at the given block ID
+	GetAccountAtBlockID(context.Context, *GetAccountAtBlockIDRequest) (*GetAccountAtBlockIDResponse, error)
 	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
 	ExecuteScriptAtBlockID(context.Context, *ExecuteScriptAtBlockIDRequest) (*ExecuteScriptResponse, error)
-	// ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the execution state at the given block height.
-	ExecuteScriptAtBlockHeight(context.Context, *ExecuteScriptAtBlockHeightRequest) (*ExecuteScriptResponse, error)
 	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
 	GetEventsForBlockIDs(context.Context, *GetEventsForBlockIDsRequest) (*EventsResponse, error)
 	// GetEventsForBlockIDAndTransactionID retrieves the events emitted by a transaction in a specific block.
@@ -707,17 +597,11 @@ type UnimplementedExecutionAPIServer struct {
 func (*UnimplementedExecutionAPIServer) Ping(ctx context.Context, req *PingRequest) (*PingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
 }
-func (*UnimplementedExecutionAPIServer) GetAccount(ctx context.Context, req *GetAccountRequest) (*GetAccountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAccount not implemented")
-}
-func (*UnimplementedExecutionAPIServer) ExecuteScriptAtLatestBlock(ctx context.Context, req *ExecuteScriptAtLatestBlockRequest) (*ExecuteScriptResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ExecuteScriptAtLatestBlock not implemented")
+func (*UnimplementedExecutionAPIServer) GetAccountAtBlockID(ctx context.Context, req *GetAccountAtBlockIDRequest) (*GetAccountAtBlockIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAccountAtBlockID not implemented")
 }
 func (*UnimplementedExecutionAPIServer) ExecuteScriptAtBlockID(ctx context.Context, req *ExecuteScriptAtBlockIDRequest) (*ExecuteScriptResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteScriptAtBlockID not implemented")
-}
-func (*UnimplementedExecutionAPIServer) ExecuteScriptAtBlockHeight(ctx context.Context, req *ExecuteScriptAtBlockHeightRequest) (*ExecuteScriptResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ExecuteScriptAtBlockHeight not implemented")
 }
 func (*UnimplementedExecutionAPIServer) GetEventsForBlockIDs(ctx context.Context, req *GetEventsForBlockIDsRequest) (*EventsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetEventsForBlockIDs not implemented")
@@ -748,38 +632,20 @@ func _ExecutionAPI_Ping_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ExecutionAPI_GetAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAccountRequest)
+func _ExecutionAPI_GetAccountAtBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAccountAtBlockIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ExecutionAPIServer).GetAccount(ctx, in)
+		return srv.(ExecutionAPIServer).GetAccountAtBlockID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/execution.ExecutionAPI/GetAccount",
+		FullMethod: "/execution.ExecutionAPI/GetAccountAtBlockID",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExecutionAPIServer).GetAccount(ctx, req.(*GetAccountRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ExecutionAPI_ExecuteScriptAtLatestBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ExecuteScriptAtLatestBlockRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ExecutionAPIServer).ExecuteScriptAtLatestBlock(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/execution.ExecutionAPI/ExecuteScriptAtLatestBlock",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExecutionAPIServer).ExecuteScriptAtLatestBlock(ctx, req.(*ExecuteScriptAtLatestBlockRequest))
+		return srv.(ExecutionAPIServer).GetAccountAtBlockID(ctx, req.(*GetAccountAtBlockIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -798,24 +664,6 @@ func _ExecutionAPI_ExecuteScriptAtBlockID_Handler(srv interface{}, ctx context.C
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ExecutionAPIServer).ExecuteScriptAtBlockID(ctx, req.(*ExecuteScriptAtBlockIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ExecutionAPI_ExecuteScriptAtBlockHeight_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ExecuteScriptAtBlockHeightRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ExecutionAPIServer).ExecuteScriptAtBlockHeight(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/execution.ExecutionAPI/ExecuteScriptAtBlockHeight",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExecutionAPIServer).ExecuteScriptAtBlockHeight(ctx, req.(*ExecuteScriptAtBlockHeightRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -865,20 +713,12 @@ var _ExecutionAPI_serviceDesc = grpc.ServiceDesc{
 			Handler:    _ExecutionAPI_Ping_Handler,
 		},
 		{
-			MethodName: "GetAccount",
-			Handler:    _ExecutionAPI_GetAccount_Handler,
-		},
-		{
-			MethodName: "ExecuteScriptAtLatestBlock",
-			Handler:    _ExecutionAPI_ExecuteScriptAtLatestBlock_Handler,
+			MethodName: "GetAccountAtBlockID",
+			Handler:    _ExecutionAPI_GetAccountAtBlockID_Handler,
 		},
 		{
 			MethodName: "ExecuteScriptAtBlockID",
 			Handler:    _ExecutionAPI_ExecuteScriptAtBlockID_Handler,
-		},
-		{
-			MethodName: "ExecuteScriptAtBlockHeight",
-			Handler:    _ExecutionAPI_ExecuteScriptAtBlockHeight_Handler,
 		},
 		{
 			MethodName: "GetEventsForBlockIDs",
