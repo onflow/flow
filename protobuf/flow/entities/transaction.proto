@@ -2,11 +2,6 @@ syntax = "proto3";
 
 package entities;
 
-message AccountSignature {
-  bytes account = 1;
-  bytes signature = 2;
-}
-
 enum TransactionStatus {
   STATUS_UNKNOWN = 0;
   STATUS_PENDING = 1;
@@ -14,11 +9,28 @@ enum TransactionStatus {
   STATUS_SEALED = 4;
 }
 
+message TransactionProposalKey {
+  bytes address = 1;
+  uint32 key = 2;
+  uint64 sequence_number = 3;
+}
+
+message TransactionSigner {
+  bytes address = 1;
+  repeated uint32 keys = 2;
+}
+
+message TransactionSignature {
+  uint32 index = 1;
+  bytes signature = 2;
+}
+
 message Transaction {
   bytes script = 1;
   bytes reference_block_id = 2;
-  bytes payer_account = 3;
-  repeated bytes script_accounts = 4;
-  repeated AccountSignature signatures = 5;
-  TransactionStatus status = 6;
+  uint64 gas_limit = 3;
+  TransactionProposalKey proposal_key = 4;
+  TransactionSigner payer = 5;
+  repeated TransactionSigner authorizers = 6;
+  repeated TransactionSignature signatures = 7;
 }

@@ -1,6 +1,6 @@
 # Flow Access API Specification
 
-> Version 0.1.1
+> Version 0.1.2
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -394,6 +394,8 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
   ```
   message TransactionResultResponse {
     flow.TransactionStatus status
+    uint32 status_code
+    string error_message
     repeated flow.Event events
   }
   ```
@@ -731,43 +733,86 @@ A transaction represents a unit of computation that is submitted to the Flow net
 message Transaction {
   bytes script
   bytes reference_block_id
-  bytes payer_account
-  repeated bytes script_accounts
-  repeated AccountSignature signatures
-  TransactionStatus status
+  uint64 gas_limit
+  TransactionProposalKey proposal_key
+  TransactionSigner payer
+  repeated TransactionSigner authorizers
+  repeated TransactionSignature signatures
+}
+
+message TransactionProposalKey {
+  bytes address
+  uint32 key
+  uint64 sequence_number
+}
+
+message TransactionSigner {
+  bytes address
+  repeated uint32 keys
+}
+
+message TransactionSignature {
+  uint32 index
+  bytes signature
 }
 ```
 
-| Field                | Description    |
-| ---------------------|----------------| 
-| script               | Raw source code for a Cadence script, encoded as UTF-8 bytes |
-| reference_block_id   | Block ID used to determine transaction expiry |
-| payer_account        | Address of account paying for gas and network fees |
-| script_accounts      | Addresses of accounts authorizing the transaction to mutate their state |
-| signatures           | Signatures from payer and script accounts |
-| status               | One of `unknown`, `pending`, `finalized`, or `sealed` |
+| Field                         | Description |
+| ------------------------------|-------------| 
+| script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes |
+| reference_block_id            | Block ID used to determine transaction expiry |
+| [proposal_key](#proposal-key) | Account key used to propose the transaction |
+| payer                         | [Signer declaration](#transaction-signer) of the payer account |
+| authorizers                   | [Signer declaration](#transaction-signer) of the transaction authorizers |
+| signatures                    | [Signatures](#transaction-signature) from all signer accounts |
 
 The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](/docs/transaction-lifecycle.md#submission).
 
+#### Proposal Key
+
+The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](/docs/accounts-and-keys.md#sequence-numbers).
+
+| Field           | Description |
+| ----------------|-------------| 
+| address         | Address of proposer account |
+| key             | Index of proposal key within proposal account |
+| sequence_number | [Sequence number](/docs/accounts-and-keys.md#sequence-numbers) for the proposal key |
+
+#### Transaction Signer
+
+A transaction signer declaration indicates an account that is required to sign a transaction, as well as the key-set it must use for signing. Signer declarations are covered in more detail [here](/docs/accounts-and-keys.md#signing-a-transaction).
+
+| Field   | Description |
+| --------|-------------| 
+| address | Address of signer account |
+| keys    | List of key indices within signer account |
+
+#### Transaction Signature
+
+| Field     | Description |
+| ----------|-------------|
+| index     | Index of the signature within the transaction, used to determine ordering |
+| signature | Raw signature byte data |
+
 ### Account
 
-An account is a user's identity on the Flow blockchain. It contains a unique address, balance, a list of public keys and any code that has been deployed to the account. 
+An account is a user's identity on Flow. It contains a unique address, a balance, a list of public keys and the code that has been deployed to the account. 
 
 ```
 message Account {
   bytes address
   uint64 balance
   bytes code
-  repeated AccountPublicKey keys
+  repeated AccountKey keys
 }
 ```
 
-| Field        | Description    |
-|--------------|----------------|
-| address      | A unique account address |
+| Field        | Description |
+|--------------|-------------|
+| address      | A unique account identifier |
 | balance      | The account balance |
 | code         | The code deployed to this account |
-| keys         | A list of the public keys for this account |
+| keys         | A list of keys configured on this account |
 
 More information on accounts can be found [here](/docs/accounts-and-keys.md).
 
@@ -776,22 +821,26 @@ More information on accounts can be found [here](/docs/accounts-and-keys.md).
 An account key is a reference to a public key associated with a Flow account. Accounts can be configured with zero or more public keys, each of which can be used for signature verification when authorizing a transaction.
 
 ```
-message AccountPublicKey {
+message AccountKey {
+  uint32 index
   bytes public_key
   uint32 sign_algo
   uint32 hash_algo
   uint32 weight
+  uint32 sequence_number
 }
 ```
 
-| Field         | Description    |
-|---------------|----------------|
-| public_key    | Public key encoded as bytes |
-| sign_algo     | [Signature algorithm](/docs/accounts-and-keys.md#supported-signature--hashing-algorithms) |
-| hash_algo     | [Hashing algorithm](/docs/accounts-and-keys.md#supported-signature--hashing-algorithms) |
-| weight        | [Weight assigned to the key](/docs/accounts-and-keys.md#weighted-keys) |
+| Field           | Description    |
+|-----------------|----------------|
+| index           | Index of the key within the account, used as a unique identifier |
+| public_key      | Public key encoded as bytes |
+| sign_algo       | [Signature algorithm](/docs/accounts-and-keys.md#supported-signature--hashing-algorithms) |
+| hash_algo       | [Hashing algorithm](/docs/accounts-and-keys.md#supported-signature--hashing-algorithms) |
+| weight          | [Weight assigned to the key](/docs/accounts-and-keys.md#weighted-keys) |
+| sequence_number | [Sequence number for the key](/docs/accounts-and-keys.md#sequence-numbers) |
 
-More information on account keys and key weights can be found [here](/docs/accounts-and-keys.md).
+More information on account keys, key weights and sequence numbers can be found [here](/docs/accounts-and-keys.md).
 
 ### Event
 
