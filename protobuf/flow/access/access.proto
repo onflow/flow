@@ -140,7 +140,8 @@ message TransactionResponse {
 
 message TransactionResultResponse {
   entities.TransactionStatus status = 1;
-  repeated entities.Event events = 2;
+  uint32 error = 2;
+  repeated entities.Event events = 3;
 }
 
 // Accounts
