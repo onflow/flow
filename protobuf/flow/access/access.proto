@@ -140,7 +140,7 @@ message TransactionResponse {
 
 message TransactionResultResponse {
   entities.TransactionStatus status = 1;
-  uint32 error_code = 2;
+  uint32 status_code = 2;
   string error_message = 3;
   repeated entities.Event events = 4;
 }
