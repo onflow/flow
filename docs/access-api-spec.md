@@ -394,6 +394,8 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
   ```
   message TransactionResultResponse {
     flow.TransactionStatus status
+    uint32 status_code
+    string error_message
     repeated flow.Event events
   }
   ```
