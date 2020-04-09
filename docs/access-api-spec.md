@@ -556,6 +556,8 @@ Events can be requested for a specific sealed block range via the `start_height`
 
 If `end_height` is greater than the current sealed chain height, then this method will return events up to and including the latest sealed block.
 
+The event results are grouped by block, with each group specifying a block ID and height.
+
 Event types are namespaced with the address of the account and contract in which they are declared.
 
 <details>
@@ -575,7 +577,12 @@ Event types are namespaced with the address of the account and contract in which
   
   ```
   message EventsResponse {
-   repeated flow.Event events = 1;
+    message Result {
+      bytes block_id = 1;
+      uint64 block_height = 2;
+      repeated entities.Event events = 3;
+    }
+    repeated Result results = 1;
   }
   ```
 </details>
@@ -588,6 +595,8 @@ rpc GetEventsForBlockIDs(GetEventsForBlockIDsRequest) returns (GetEventsForBlock
 ```
 
 Events can be requested for a list of block IDs via the `block_ids` field and further filtered by event type via the `type` field.
+
+The event results are grouped by block, with each group specifying a block ID and height.
 
 <details>
   <summary>Request</summary>
@@ -605,7 +614,12 @@ Events can be requested for a list of block IDs via the `block_ids` field and fu
 
   ```
   message EventsResponse {
-   repeated flow.Event events = 1;
+    message Result {
+      bytes block_id = 1;
+      uint64 block_height = 2;
+      repeated entities.Event events = 3;
+    }
+    repeated Result results = 1;
   }
   ```
 </details>

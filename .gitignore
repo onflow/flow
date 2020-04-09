@@ -2,3 +2,6 @@
 
 # Generated protobuf output
 /proto/out
+
+# IDE related files
+.idea

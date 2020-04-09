@@ -1001,45 +1001,6 @@ func (m *GetEventsForHeightRangeRequest) GetEndHeight() uint64 {
 	return 0
 }
 
-type EventsResponse struct {
-	Events               []*entities.Event `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
-}
-
-func (m *EventsResponse) Reset()         { *m = EventsResponse{} }
-func (m *EventsResponse) String() string { return proto.CompactTextString(m) }
-func (*EventsResponse) ProtoMessage()    {}
-func (*EventsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_4382e32bb8e3e8e5, []int{24}
-}
-
-func (m *EventsResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_EventsResponse.Unmarshal(m, b)
-}
-func (m *EventsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_EventsResponse.Marshal(b, m, deterministic)
-}
-func (m *EventsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EventsResponse.Merge(m, src)
-}
-func (m *EventsResponse) XXX_Size() int {
-	return xxx_messageInfo_EventsResponse.Size(m)
-}
-func (m *EventsResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_EventsResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_EventsResponse proto.InternalMessageInfo
-
-func (m *EventsResponse) GetEvents() []*entities.Event {
-	if m != nil {
-		return m.Events
-	}
-	return nil
-}
-
 type GetEventsForBlockIDsRequest struct {
 	Type                 string   `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 	BlockIds             [][]byte `protobuf:"bytes,2,rep,name=block_ids,json=blockIds,proto3" json:"block_ids,omitempty"`
@@ -1052,7 +1013,7 @@ func (m *GetEventsForBlockIDsRequest) Reset()         { *m = GetEventsForBlockID
 func (m *GetEventsForBlockIDsRequest) String() string { return proto.CompactTextString(m) }
 func (*GetEventsForBlockIDsRequest) ProtoMessage()    {}
 func (*GetEventsForBlockIDsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_4382e32bb8e3e8e5, []int{25}
+	return fileDescriptor_4382e32bb8e3e8e5, []int{24}
 }
 
 func (m *GetEventsForBlockIDsRequest) XXX_Unmarshal(b []byte) error {
@@ -1087,6 +1048,100 @@ func (m *GetEventsForBlockIDsRequest) GetBlockIds() [][]byte {
 	return nil
 }
 
+type EventsResponse struct {
+	Results              []*EventsResponse_Result `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
+}
+
+func (m *EventsResponse) Reset()         { *m = EventsResponse{} }
+func (m *EventsResponse) String() string { return proto.CompactTextString(m) }
+func (*EventsResponse) ProtoMessage()    {}
+func (*EventsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4382e32bb8e3e8e5, []int{25}
+}
+
+func (m *EventsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_EventsResponse.Unmarshal(m, b)
+}
+func (m *EventsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_EventsResponse.Marshal(b, m, deterministic)
+}
+func (m *EventsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EventsResponse.Merge(m, src)
+}
+func (m *EventsResponse) XXX_Size() int {
+	return xxx_messageInfo_EventsResponse.Size(m)
+}
+func (m *EventsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_EventsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_EventsResponse proto.InternalMessageInfo
+
+func (m *EventsResponse) GetResults() []*EventsResponse_Result {
+	if m != nil {
+		return m.Results
+	}
+	return nil
+}
+
+type EventsResponse_Result struct {
+	BlockId              []byte            `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
+	BlockHeight          uint64            `protobuf:"varint,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
+	Events               []*entities.Event `protobuf:"bytes,3,rep,name=events,proto3" json:"events,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
+}
+
+func (m *EventsResponse_Result) Reset()         { *m = EventsResponse_Result{} }
+func (m *EventsResponse_Result) String() string { return proto.CompactTextString(m) }
+func (*EventsResponse_Result) ProtoMessage()    {}
+func (*EventsResponse_Result) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4382e32bb8e3e8e5, []int{25, 0}
+}
+
+func (m *EventsResponse_Result) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_EventsResponse_Result.Unmarshal(m, b)
+}
+func (m *EventsResponse_Result) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_EventsResponse_Result.Marshal(b, m, deterministic)
+}
+func (m *EventsResponse_Result) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EventsResponse_Result.Merge(m, src)
+}
+func (m *EventsResponse_Result) XXX_Size() int {
+	return xxx_messageInfo_EventsResponse_Result.Size(m)
+}
+func (m *EventsResponse_Result) XXX_DiscardUnknown() {
+	xxx_messageInfo_EventsResponse_Result.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_EventsResponse_Result proto.InternalMessageInfo
+
+func (m *EventsResponse_Result) GetBlockId() []byte {
+	if m != nil {
+		return m.BlockId
+	}
+	return nil
+}
+
+func (m *EventsResponse_Result) GetBlockHeight() uint64 {
+	if m != nil {
+		return m.BlockHeight
+	}
+	return 0
+}
+
+func (m *EventsResponse_Result) GetEvents() []*entities.Event {
+	if m != nil {
+		return m.Events
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*PingRequest)(nil), "access.PingRequest")
 	proto.RegisterType((*PingResponse)(nil), "access.PingResponse")
@@ -1112,8 +1167,9 @@ func init() {
 	proto.RegisterType((*ExecuteScriptAtBlockHeightRequest)(nil), "access.ExecuteScriptAtBlockHeightRequest")
 	proto.RegisterType((*ExecuteScriptResponse)(nil), "access.ExecuteScriptResponse")
 	proto.RegisterType((*GetEventsForHeightRangeRequest)(nil), "access.GetEventsForHeightRangeRequest")
-	proto.RegisterType((*EventsResponse)(nil), "access.EventsResponse")
 	proto.RegisterType((*GetEventsForBlockIDsRequest)(nil), "access.GetEventsForBlockIDsRequest")
+	proto.RegisterType((*EventsResponse)(nil), "access.EventsResponse")
+	proto.RegisterType((*EventsResponse_Result)(nil), "access.EventsResponse.Result")
 }
 
 func init() { proto.RegisterFile("flow/access/access.proto", fileDescriptor_4382e32bb8e3e8e5) }

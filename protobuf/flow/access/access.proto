@@ -183,12 +183,17 @@ message GetEventsForHeightRangeRequest {
   uint64 end_height = 3;
 }
 
-message EventsResponse {
-  repeated entities.Event events = 1;
-}
-
 message GetEventsForBlockIDsRequest {
   string type = 1;
   repeated bytes block_ids = 2;
+}
+
+message EventsResponse {
+  message Result {
+    bytes block_id = 1;
+    uint64 block_height = 2;
+    repeated entities.Event events = 3;
+  }
+  repeated Result results = 1;
 }
 
