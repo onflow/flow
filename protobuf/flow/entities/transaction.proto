@@ -6,7 +6,7 @@ enum TransactionStatus {
   UNKNOWN = 0;
   PENDING = 1;
   FINALIZED = 2;
-  EXECUTE = 3;
+  EXECUTED = 3;
   SEALED = 4;
 }
 
