@@ -3,34 +3,32 @@ syntax = "proto3";
 package entities;
 
 enum TransactionStatus {
-  STATUS_UNKNOWN = 0;
-  STATUS_PENDING = 1;
-  STATUS_FINALIZED = 2;
-  STATUS_SEALED = 4;
-}
-
-message TransactionProposalKey {
-  bytes address = 1;
-  uint32 key = 2;
-  uint64 sequence_number = 3;
-}
-
-message TransactionSigner {
-  bytes address = 1;
-  repeated uint32 keys = 2;
-}
-
-message TransactionSignature {
-  uint32 index = 1;
-  bytes signature = 2;
+  UNKNOWN = 0;
+  PENDING = 1;
+  FINALIZED = 2;
+  EXECUTE = 3;
+  SEALED = 4;
 }
 
 message Transaction {
+  message ProposalKey {
+    bytes address = 1;
+    uint32 key_id = 2;
+    uint64 sequence_number = 3;
+  }
+  
+  message Signature {
+    uint32 signer_index = 1;
+    uint32 key_id = 2;
+    bytes signature = 3;
+  }
+
   bytes script = 1;
   bytes reference_block_id = 2;
   uint64 gas_limit = 3;
-  TransactionProposalKey proposal_key = 4;
-  TransactionSigner payer = 5;
-  repeated TransactionSigner authorizers = 6;
-  repeated TransactionSignature signatures = 7;
+  ProposalKey proposal_key = 4;
+  bytes payer = 5;
+  repeated bytes authorizers = 6;
+  repeated Signature payload_signatures = 7;
+  repeated Signature envelope_signatures = 8;
 }
