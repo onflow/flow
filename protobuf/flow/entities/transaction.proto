@@ -18,7 +18,7 @@ message Transaction {
   }
   
   message Signature {
-    uint32 signer_index = 1;
+    uint32 address = 1;
     uint32 key_id = 2;
     bytes signature = 3;
   }
