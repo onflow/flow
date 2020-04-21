@@ -1,6 +1,6 @@
 # JSON-Cadence Data Interchange Format
 
-> Version 0.1.1
+> Version 0.1.3
 
 JSON-Cadence is a data interchange format used to represent Cadence values as language-independent JSON objects.
 

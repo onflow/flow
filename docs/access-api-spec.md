@@ -1,6 +1,6 @@
 # Flow Access API Specification
 
-> Version 0.1.2
+> Version 0.1.3
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -724,7 +724,6 @@ message CollectionGuarantee {
 | collection_id       | SHA3-256 hash of the collection contents |
 | signatures          | BLS signatures of the collection nodes guaranteeing the collection |
 
-
 ### Transaction
 
 A transaction represents a unit of computation that is submitted to the Flow network.
@@ -735,20 +734,16 @@ message Transaction {
   bytes reference_block_id
   uint64 gas_limit
   TransactionProposalKey proposal_key
-  TransactionSigner payer
-  repeated TransactionSigner authorizers
-  repeated TransactionSignature signatures
+  bytes payer
+  repeated bytes authorizers
+  repeated TransactionSignature payload_signatures
+  repeated TransactionSignature envelope_signatures
 }
 
 message TransactionProposalKey {
   bytes address
-  uint32 key
+  uint32 key_id
   uint64 sequence_number
-}
-
-message TransactionSigner {
-  bytes address
-  repeated uint32 keys
 }
 
 message TransactionSignature {
@@ -762,9 +757,9 @@ message TransactionSignature {
 | script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes |
 | reference_block_id            | Block ID used to determine transaction expiry |
 | [proposal_key](#proposal-key) | Account key used to propose the transaction |
-| payer                         | [Signer declaration](#transaction-signer) of the payer account |
-| authorizers                   | [Signer declaration](#transaction-signer) of the transaction authorizers |
-| signatures                    | [Signatures](#transaction-signature) from all signer accounts |
+| payer                         | Address of the payer account |
+| authorizers                   | Addresses of the transaction authorizers |
+| signatures                    | [Signatures](#transaction-signatures) from all signer accounts |
 
 The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](/docs/transaction-lifecycle.md#submission).
 
@@ -775,7 +770,7 @@ The proposal key is used to specify a sequence number for the transaction. Seque
 | Field           | Description |
 | ----------------|-------------| 
 | address         | Address of proposer account |
-| key             | Index of proposal key within proposal account |
+| key_id          | Index of proposal key within proposal account |
 | sequence_number | [Sequence number](/docs/accounts-and-keys.md#sequence-numbers) for the proposal key |
 
 #### Transaction Signer
@@ -835,8 +830,8 @@ message AccountKey {
 |-----------------|----------------|
 | index           | Index of the key within the account, used as a unique identifier |
 | public_key      | Public key encoded as bytes |
-| sign_algo       | [Signature algorithm](/docs/accounts-and-keys.md#supported-signature--hashing-algorithms) |
-| hash_algo       | [Hashing algorithm](/docs/accounts-and-keys.md#supported-signature--hashing-algorithms) |
+| sign_algo       | [Signature algorithm](/docs/accounts-and-keys.md#supported-signature--hash-algorithms) |
+| hash_algo       | [Hash algorithm](/docs/accounts-and-keys.md#supported-signature--hash-algorithms) |
 | weight          | [Weight assigned to the key](/docs/accounts-and-keys.md#weighted-keys) |
 | sequence_number | [Sequence number for the key](/docs/accounts-and-keys.md#sequence-numbers) |
 
