@@ -2,8 +2,7 @@
 
 The Flow Emulator is a lightweight tool that emulates the behaviour of the real Flow network. 
 
-The emulator exposes a gRPC server that implements the Flow Observation API, which is designed to have near feature parity
-with the real network API.
+The emulator exposes a gRPC server that implements the [Flow Access API](access-api-spec.md), which is designed to have near feature parity with the real network API.
 
 ## Running the emulator with the Flow CLI
 
@@ -29,7 +28,7 @@ This command has several useful flags:
 - `--persist` Enable persistent storage (uses [Badger](https://github.com/dgraph-io/badger) key-value DB)
 - `--dbpath` Path to store database (default: `./flowdb`)
 
-All configuration options and flags are listed [here](#all-configuration-options).
+> ⚙️ All configuration options and flags are listed [here](#all-configuration-options).
 
 ### Using the emulator in a project	
 
@@ -61,7 +60,7 @@ Here's how to run the emulator Docker image on port 9001 in verbose mode:
 docker run -e FLOW_PORT=9001 -e FLOW_VERBOSE=true gcr.io/dl-flow/emulator
 ```
 
-All configuration options are listed [here](#all-configuration-options).
+> ⚙️ All environment variable options are listed [here](#all-configuration-options).
 
 #### Accounts
 
