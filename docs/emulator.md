@@ -54,11 +54,6 @@ In addition to using command-line flags, the emulator can also be configured
 Here's a sample configuration:
 
 ```sh
-In addition to using command-line flags, the emulator can also be configured with environment variables, which can be passed into the Docker image.
-
-Here's a sample configuration:
-
-```
 FLOW_VERBOSE=true
 FLOW_PORT=3596
 FLOW_BLOCKTIME=5s
@@ -72,7 +67,7 @@ Here's how to run the emulator Docker image on port 9001 in verbose mode:
 docker run -e FLOW_PORT=9001 -e FLOW_VERBOSE=true gcr.io/dl-flow/emulator
 ```
 
-> ⚙️ All environment variable options are listed [here](#all-configuration-options).
+> ⚙️ All environment variable options [are listed below](#all-configuration-options).
 
 #### Accounts
 
