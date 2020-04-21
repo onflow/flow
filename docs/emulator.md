@@ -54,6 +54,11 @@ In addition to using command-line flags, the emulator can also be configured
 Here's a sample configuration:
 
 ```sh
+In addition to using command-line flags, the emulator can also be configured with environment variables, which can be passed into the Docker image.
+
+Here's a sample configuration:
+
+```
 FLOW_VERBOSE=true
 FLOW_PORT=3596
 FLOW_BLOCKTIME=5s
