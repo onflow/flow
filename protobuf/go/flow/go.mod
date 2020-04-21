@@ -1,4 +1,4 @@
-module github.com/dapperlabs/flow/protobuf/go/flow
+module github.com/onflow/flow/protobuf/go/flow
 
 go 1.13
 
