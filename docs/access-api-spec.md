@@ -747,7 +747,8 @@ message TransactionProposalKey {
 }
 
 message TransactionSignature {
-  uint32 index
+  bytes address
+  uint32 key_id
   bytes signature
 }
 ```
@@ -770,23 +771,15 @@ The proposal key is used to specify a sequence number for the transaction. Seque
 | Field           | Description |
 | ----------------|-------------| 
 | address         | Address of proposer account |
-| key_id          | Index of proposal key within proposal account |
+| key_id          | ID of proposal key on the proposal account |
 | sequence_number | [Sequence number](/docs/accounts-and-keys.md#sequence-numbers) for the proposal key |
-
-#### Transaction Signer
-
-A transaction signer declaration indicates an account that is required to sign a transaction, as well as the key-set it must use for signing. Signer declarations are covered in more detail [here](/docs/accounts-and-keys.md#signing-a-transaction).
-
-| Field   | Description |
-| --------|-------------| 
-| address | Address of signer account |
-| keys    | List of key indices within signer account |
 
 #### Transaction Signature
 
 | Field     | Description |
 | ----------|-------------|
-| index     | Index of the signature within the transaction, used to determine ordering |
+| address   | Address of the account for this signature |
+| key_id    | ID of the account key |
 | signature | Raw signature byte data |
 
 ### Account
@@ -817,7 +810,7 @@ An account key is a reference to a public key associated with a Flow account. Ac
 
 ```
 message AccountKey {
-  uint32 index
+  uint32 id
   bytes public_key
   uint32 sign_algo
   uint32 hash_algo
@@ -828,7 +821,7 @@ message AccountKey {
 
 | Field           | Description    |
 |-----------------|----------------|
-| index           | Index of the key within the account, used as a unique identifier |
+| id              | Index of the key within the account, used as a unique identifier |
 | public_key      | Public key encoded as bytes |
 | sign_algo       | [Signature algorithm](/docs/accounts-and-keys.md#supported-signature--hash-algorithms) |
 | hash_algo       | [Hash algorithm](/docs/accounts-and-keys.md#supported-signature--hash-algorithms) |
@@ -845,14 +838,16 @@ An event is emitted as the result of a [transaction](#transaction) execution. Ev
 message Event {
   string type
   bytes transaction_id
-  uint32 index
+  uint32 transaction_index
+  uint32 event_index
   bytes payload
 }
 ```
 
-| Field            | Description    |
-| -----------------|----------------| 
-| type             | Fully-qualified unique type identifier for the event |
-| transaction_id   | ID of the transaction the event was emitted from |
-| index            | Zero-based index of the event within the transaction |
-| payload          | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md)|
+| Field             | Description    |
+| ------------------|----------------| 
+| type              | Fully-qualified unique type identifier for the event |
+| transaction_id    | ID of the transaction the event was emitted from |
+| transaction_index | Zero-based index of the transaction within the block |
+| event_index       | Zero-based index of the event within the transaction |
+| payload           | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md)|
