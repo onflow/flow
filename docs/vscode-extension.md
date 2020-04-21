@@ -60,7 +60,7 @@ To change accounts, click on the active account button on the bottom right of th
 
 ![Visual Studio Code extension: Changing account](images/vscode-5-changing-accounts.png)
 
-You can also add a new account by opening up the command palette (`CMD+Shift+P`) and selecting `Create Account`.
+You can also add a new account by opening up the command palette (press `Shift+Command+P` on macOS and `Shift+Ctrl+P` on Linux/Windows), and selecting `Create Account`.
 
 ## Deploying Contracts
 
