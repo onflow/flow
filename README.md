@@ -53,6 +53,8 @@ The Flow Access API provides a single unified interface for applications and use
 
 You can find an in-depth description of each of the above features in the [Flow Access API Specification](/docs/access-api-spec.md).
 
+To interact with the Flow Access API from JavaScript you can use the [Flow JavaScript SDK](https://github.com/onflow/flow-js-sdk)
+
 ## Documentation
 
 > 📖 Learn the fundamentals of Flow.
