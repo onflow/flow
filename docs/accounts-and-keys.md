@@ -48,7 +48,7 @@ _Conceptually, this isn't much different than Ethereum or Bitcoin. Although priv
 
 > What does an account creation transaction look like?
 
-Here's an example of how to submit an account creation transaction with the Go SDK: [Account Creation Example](https://github.com/dapperlabs/flow-go-sdk/blob/master/examples/emulator/create_account/main.go).
+Here's an example of how to submit an account creation transaction with the Go SDK: [Account Creation Example](https://github.com/onflow/flow-go-sdk/blob/master/examples/create_account/main.go).
 
 > What about smart contracts?
 
@@ -80,7 +80,7 @@ The signature algorithm is included because Flow has the potential to support a 
 
 To add keys to an account, you can submit a transaction that is authorized to access that account.
 
-Here's an example of how to add an account key with the Go SDK: [Add Account Key Example](https://github.com/dapperlabs/flow-go-sdk/blob/master/examples/emulator/add_account_key/main.go).
+Here's an example of how to add an account key with the Go SDK: [Add Account Key Example](https://github.com/onflow/flow-go-sdk/blob/master/examples/add_account_key/main.go).
 
 ### Revoking a key from an account
 
