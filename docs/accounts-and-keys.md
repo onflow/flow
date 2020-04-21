@@ -12,9 +12,13 @@ Flow introduces new features to give applications and end users more safety and 
 - [Keys](#keys)
   - [Adding a key to an account](#adding-a-key-to-an-account)
   - [Revoking a key from an account](#revoking-a-key-from-an-account)
-  - [Supported signature & hashing algorithms](#supported-signature--hashing-algorithms)
+  - [Supported signature & hash algorithms](#supported-signature--hash-algorithms)
   - [Weighted keys](#weighted-keys)
 - [Signing a transaction](#signing-a-transaction)
+  - [Signer roles](#signer-roles)
+  - [Proposal key](#proposal-key)
+  - [Sequence numbers](#sequence-numbers)
+  - [Transaction signatures](#transaction-signatures)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -64,10 +68,10 @@ Flow accounts can be configured with multiple public keys that are used to contr
 
 When adding a public key to an account, you must specify the following information:
 
-- Index (used to identify key within an account)
+- ID (used to identify key within an account)
 - Raw public key (encoded as bytes)
 - Signature algorthim (see codes below)
-- Hashing algorithm (see codes below)
+- Hash algorithm (see codes below)
 - Weight (integer between 1-1000)
 
 The signature algorithm is included because Flow has the potential to support a variety of signatures schemes with different parameters. The included hashing algorithm specifies the hashing function used to verify signatures.
@@ -82,7 +86,7 @@ Here's an example of how to add an account key with the Go SDK: [Add Account Key
 
 Feature and documentation coming soon...
 
-### Supported signature & hashing algorithms
+### Supported signature & hash algorithms
 
 Flow will have initial support for a predefined set of signature and hash pairings, but more curves and algorithms will be added in the future.
 
@@ -91,9 +95,9 @@ Flow will have initial support for a predefined set of signature and hash pairin
 | Algorithm    | Curve     | ID              | Code |
 |--------------|-----------|-----------------|------|
 | ECDSA        | P-256     | ECDSA_P256      | 2    |
-| ECDSA        | SECp256k1 | ECDSA_SECp256k1 | 3    |
+| ECDSA        | secp256k1 | ECDSA_secp256k1 | 3    |
 
-**Hashing Algorithms**
+**Hash Algorithms**
 
 | Algorithm    | Output Size | ID              | Code |
 |--------------|-------------|-----------------|------|
@@ -107,7 +111,7 @@ Flow will have initial support for a predefined set of signature and hash pairin
 |                 | SHA2_256 | SHA2_384 | SHA3_256 | SHA3_384 |
 |-----------------|----------|----------|----------|----------|
 | ECDSA_P256      | ✅       | ✅       | ✅       | ✅      |
-| ECDSA_SECp256k1 | ✅       | ✅       | ✅       | ✅      |
+| ECDSA_secp256k1 | ✅       | ✅       | ✅       | ✅      |
 
 ### Weighted keys
 
@@ -115,12 +119,73 @@ Each account key has a weight that determines the signing power it holds. A tran
 
 For example, an account might contain the following keys:
 
-- Key Index: 1, Weight: 500
-- Key Index: 2, Weight: 500
-- Key Index: 3, Weight: 500
+- Key ID: 1, Weight: 500
+- Key ID: 2, Weight: 500
+- Key ID: 3, Weight: 500
 
 This represents a 2-of-3 multisig quorum, in which a transaction is authorized to access the account if it receives signatures from _at least_ 2 out of 3 keys.
 
 ## Signing a transaction
+
+Signing a transaction for Flow is a multi-step process that can involve one or more accounts, each of which signs for a different purpose.
+
+### Signer roles
+
+- *Proposer:* the account that specifies a [proposal key](#proposal-key).	
+- *Payer:* the account paying for the transaction fees.	
+- *Authorizers:* zero or more accounts authorizing the transaction to mutate their state.	
+
+### Proposal key
+
+Each transaction must declare a proposal key, which can be an account key from any Flow account. The acccount that owns the proposal key is referred to as the proposer.
+
+A proposal key definition declares the address, key ID, and up-to-date sequence number for the account key.
+
+```json	
+{	
+  // other transaction fields	
+  // ...	
+  "proposalKey": {
+    "address": "0x01",
+    "keyId": 7,
+    "sequenceNumber": 42
+  }
+}	
+```	
+
+### Sequence numbers	
+
+Flow uses sequence numbers to ensure that each transaction runs at most once. This prevents many unwanted situations such as [transaction replay attacks](https://en.wikipedia.org/wiki/Replay_attack).	
+
+Sequence numbers work similarly to transaction nonces in Ethereum, but with several key differences:
+
+- **Each key in an account has a dedicated sequence number** associated with it. Unlike Ethereum, there is no sequence number for the entire account.	
+- When creating a transaction, only the **proposer must specify a sequence number**. Payers and authorizers are not required to.	
+
+Furthermore, the transaction proposer is only required to specify a sequence number for one of the keys in its signer declaration. This key is referred to as the _proposal key_.	
+
+Each time an account key is used as a proposal key, its sequence number is incremented by 1. The sequence number is updated after execution, even if the transaction fails (reverts) during execution.
+
+A transaction is rejected if its proposal key does not specify a sequence number equal to the sequence number stored on the account _at execution time._	
+
+**Example**	
+
+After the below tranaction is executed, the sequence number for `Key 7` on `Account 0x01` will increase to 43.
+
+```json	
+{	
+  // other transaction fields	
+  // ...	
+  "proposalKey": {
+    "address": "0x01",
+    "keyId": 7,
+    "sequenceNumber": 42
+  },
+  "payer": "0x02",
+  "authorizers": [ "0x01" ],
+}
+```
+
+### Transaction signatures
 
 _Documentation coming soon..._
