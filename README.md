@@ -3,7 +3,7 @@
 Flow is a fast, secure, and developer-friendly blockchain built to support the next generation of games, apps, and the digital assets that power them.
 
 - For a high-level overview of Flow's architecture, check out the [primer](https://www.onflow.org/primer).
-- Details about the protocol can be found in the [techinical papers](https://www.onflow.org/technical-paper). 
+- Details about the protocol can be found in the [techinical papers](https://www.onflow.org/technical-paper).
 
 ## Getting Started
 
@@ -83,4 +83,4 @@ The Flow SDKs provide libraries for applications to connect and interact with th
 - [Flow Emulator](/docs/emulator.md)
 - [Flow CLI](/docs/cli.md)
 - [Flow Playground](https://play.onflow.org)
-- Cadence VS Code extension (TBA)
+- [Cadence Visual Studio Code extension](/docs/vscode-extension.md)

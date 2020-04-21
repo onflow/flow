@@ -10,9 +10,9 @@ The Flow CLI can be installed on macOS, Linux and Windows:
 
 _This installation method only works on macOS/x86-64 and Linux/x86-64 architectures._
 
-This script downloads the appropriate binary for your system and moves it to `/usr/local/bin`:
+This script downloads and installs the appropriate binary for your system:
 
-```shell script
+```sh
 sh -ci "$(curl -fsSL https://storage.googleapis.com/flow-cli/install.sh)"
 ```
 
