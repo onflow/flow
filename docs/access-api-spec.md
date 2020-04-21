@@ -38,6 +38,8 @@
   - [Collection](#collection)
   - [Collection Guarantee](#collection-guarantee)
   - [Transaction](#transaction)
+    - [Proposal Key](#proposal-key)
+    - [Transaction Signature](#transaction-signature)
   - [Account](#account)
     - [Account Key](#account-key)
   - [Event](#event)
