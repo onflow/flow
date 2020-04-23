@@ -4,7 +4,17 @@ The Flow CLI is a command-line interface that provides useful utilities for buil
 
 ## Installation
 
-The Flow CLI can be installed on macOS, Linux and Windows:
+The Flow CLI can be installed on macOS, Linux and Windows.
+
+### macOS
+
+_This installation method only works on macOS Mojave or newer._
+
+The recommended way to install the Flow CLI on macOS is with [Homebrew](https://brew.sh/):
+
+```sh
+brew install onflow/flow/flow-cli
+```
 
 ### Linux and macOS
 
