@@ -79,7 +79,8 @@ message GetEventsForBlockIDsRequest {
 // Transactions
 
 message GetTransactionResultRequest {
-    bytes id = 1;
+    bytes block_id = 1;
+    bytes transaction_id = 2;
 }
 
 message GetTransactionResultResponse {
