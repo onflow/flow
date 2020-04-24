@@ -220,85 +220,85 @@ func (m *ExecuteScriptAtBlockIDRequest) GetScript() []byte {
 	return nil
 }
 
-type ExecuteScriptResponse struct {
+type ExecuteScriptAtBlockIDResponse struct {
 	Value                []byte   `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ExecuteScriptResponse) Reset()         { *m = ExecuteScriptResponse{} }
-func (m *ExecuteScriptResponse) String() string { return proto.CompactTextString(m) }
-func (*ExecuteScriptResponse) ProtoMessage()    {}
-func (*ExecuteScriptResponse) Descriptor() ([]byte, []int) {
+func (m *ExecuteScriptAtBlockIDResponse) Reset()         { *m = ExecuteScriptAtBlockIDResponse{} }
+func (m *ExecuteScriptAtBlockIDResponse) String() string { return proto.CompactTextString(m) }
+func (*ExecuteScriptAtBlockIDResponse) ProtoMessage()    {}
+func (*ExecuteScriptAtBlockIDResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_699624211ed46c53, []int{5}
 }
 
-func (m *ExecuteScriptResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ExecuteScriptResponse.Unmarshal(m, b)
+func (m *ExecuteScriptAtBlockIDResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ExecuteScriptAtBlockIDResponse.Unmarshal(m, b)
 }
-func (m *ExecuteScriptResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ExecuteScriptResponse.Marshal(b, m, deterministic)
+func (m *ExecuteScriptAtBlockIDResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ExecuteScriptAtBlockIDResponse.Marshal(b, m, deterministic)
 }
-func (m *ExecuteScriptResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ExecuteScriptResponse.Merge(m, src)
+func (m *ExecuteScriptAtBlockIDResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExecuteScriptAtBlockIDResponse.Merge(m, src)
 }
-func (m *ExecuteScriptResponse) XXX_Size() int {
-	return xxx_messageInfo_ExecuteScriptResponse.Size(m)
+func (m *ExecuteScriptAtBlockIDResponse) XXX_Size() int {
+	return xxx_messageInfo_ExecuteScriptAtBlockIDResponse.Size(m)
 }
-func (m *ExecuteScriptResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_ExecuteScriptResponse.DiscardUnknown(m)
+func (m *ExecuteScriptAtBlockIDResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ExecuteScriptAtBlockIDResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ExecuteScriptResponse proto.InternalMessageInfo
+var xxx_messageInfo_ExecuteScriptAtBlockIDResponse proto.InternalMessageInfo
 
-func (m *ExecuteScriptResponse) GetValue() []byte {
+func (m *ExecuteScriptAtBlockIDResponse) GetValue() []byte {
 	if m != nil {
 		return m.Value
 	}
 	return nil
 }
 
-type EventsResponse struct {
-	Results              []*EventsResponse_Result `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+type GetEventsForBlockIDsResponse struct {
+	Results              []*GetEventsForBlockIDsResponse_Result `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                               `json:"-"`
+	XXX_unrecognized     []byte                                 `json:"-"`
+	XXX_sizecache        int32                                  `json:"-"`
 }
 
-func (m *EventsResponse) Reset()         { *m = EventsResponse{} }
-func (m *EventsResponse) String() string { return proto.CompactTextString(m) }
-func (*EventsResponse) ProtoMessage()    {}
-func (*EventsResponse) Descriptor() ([]byte, []int) {
+func (m *GetEventsForBlockIDsResponse) Reset()         { *m = GetEventsForBlockIDsResponse{} }
+func (m *GetEventsForBlockIDsResponse) String() string { return proto.CompactTextString(m) }
+func (*GetEventsForBlockIDsResponse) ProtoMessage()    {}
+func (*GetEventsForBlockIDsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_699624211ed46c53, []int{6}
 }
 
-func (m *EventsResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_EventsResponse.Unmarshal(m, b)
+func (m *GetEventsForBlockIDsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetEventsForBlockIDsResponse.Unmarshal(m, b)
 }
-func (m *EventsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_EventsResponse.Marshal(b, m, deterministic)
+func (m *GetEventsForBlockIDsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetEventsForBlockIDsResponse.Marshal(b, m, deterministic)
 }
-func (m *EventsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EventsResponse.Merge(m, src)
+func (m *GetEventsForBlockIDsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetEventsForBlockIDsResponse.Merge(m, src)
 }
-func (m *EventsResponse) XXX_Size() int {
-	return xxx_messageInfo_EventsResponse.Size(m)
+func (m *GetEventsForBlockIDsResponse) XXX_Size() int {
+	return xxx_messageInfo_GetEventsForBlockIDsResponse.Size(m)
 }
-func (m *EventsResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_EventsResponse.DiscardUnknown(m)
+func (m *GetEventsForBlockIDsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetEventsForBlockIDsResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_EventsResponse proto.InternalMessageInfo
+var xxx_messageInfo_GetEventsForBlockIDsResponse proto.InternalMessageInfo
 
-func (m *EventsResponse) GetResults() []*EventsResponse_Result {
+func (m *GetEventsForBlockIDsResponse) GetResults() []*GetEventsForBlockIDsResponse_Result {
 	if m != nil {
 		return m.Results
 	}
 	return nil
 }
 
-type EventsResponse_Result struct {
+type GetEventsForBlockIDsResponse_Result struct {
 	BlockId              []byte            `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
 	BlockHeight          uint64            `protobuf:"varint,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
 	Events               []*entities.Event `protobuf:"bytes,3,rep,name=events,proto3" json:"events,omitempty"`
@@ -307,46 +307,46 @@ type EventsResponse_Result struct {
 	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *EventsResponse_Result) Reset()         { *m = EventsResponse_Result{} }
-func (m *EventsResponse_Result) String() string { return proto.CompactTextString(m) }
-func (*EventsResponse_Result) ProtoMessage()    {}
-func (*EventsResponse_Result) Descriptor() ([]byte, []int) {
+func (m *GetEventsForBlockIDsResponse_Result) Reset()         { *m = GetEventsForBlockIDsResponse_Result{} }
+func (m *GetEventsForBlockIDsResponse_Result) String() string { return proto.CompactTextString(m) }
+func (*GetEventsForBlockIDsResponse_Result) ProtoMessage()    {}
+func (*GetEventsForBlockIDsResponse_Result) Descriptor() ([]byte, []int) {
 	return fileDescriptor_699624211ed46c53, []int{6, 0}
 }
 
-func (m *EventsResponse_Result) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_EventsResponse_Result.Unmarshal(m, b)
+func (m *GetEventsForBlockIDsResponse_Result) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetEventsForBlockIDsResponse_Result.Unmarshal(m, b)
 }
-func (m *EventsResponse_Result) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_EventsResponse_Result.Marshal(b, m, deterministic)
+func (m *GetEventsForBlockIDsResponse_Result) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetEventsForBlockIDsResponse_Result.Marshal(b, m, deterministic)
 }
-func (m *EventsResponse_Result) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EventsResponse_Result.Merge(m, src)
+func (m *GetEventsForBlockIDsResponse_Result) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetEventsForBlockIDsResponse_Result.Merge(m, src)
 }
-func (m *EventsResponse_Result) XXX_Size() int {
-	return xxx_messageInfo_EventsResponse_Result.Size(m)
+func (m *GetEventsForBlockIDsResponse_Result) XXX_Size() int {
+	return xxx_messageInfo_GetEventsForBlockIDsResponse_Result.Size(m)
 }
-func (m *EventsResponse_Result) XXX_DiscardUnknown() {
-	xxx_messageInfo_EventsResponse_Result.DiscardUnknown(m)
+func (m *GetEventsForBlockIDsResponse_Result) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetEventsForBlockIDsResponse_Result.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_EventsResponse_Result proto.InternalMessageInfo
+var xxx_messageInfo_GetEventsForBlockIDsResponse_Result proto.InternalMessageInfo
 
-func (m *EventsResponse_Result) GetBlockId() []byte {
+func (m *GetEventsForBlockIDsResponse_Result) GetBlockId() []byte {
 	if m != nil {
 		return m.BlockId
 	}
 	return nil
 }
 
-func (m *EventsResponse_Result) GetBlockHeight() uint64 {
+func (m *GetEventsForBlockIDsResponse_Result) GetBlockHeight() uint64 {
 	if m != nil {
 		return m.BlockHeight
 	}
 	return 0
 }
 
-func (m *EventsResponse_Result) GetEvents() []*entities.Event {
+func (m *GetEventsForBlockIDsResponse_Result) GetEvents() []*entities.Event {
 	if m != nil {
 		return m.Events
 	}
@@ -400,46 +400,46 @@ func (m *GetEventsForBlockIDsRequest) GetBlockIds() [][]byte {
 	return nil
 }
 
-type GetTransactionRequest struct {
+type GetTransactionResultRequest struct {
 	Id                   []byte   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetTransactionRequest) Reset()         { *m = GetTransactionRequest{} }
-func (m *GetTransactionRequest) String() string { return proto.CompactTextString(m) }
-func (*GetTransactionRequest) ProtoMessage()    {}
-func (*GetTransactionRequest) Descriptor() ([]byte, []int) {
+func (m *GetTransactionResultRequest) Reset()         { *m = GetTransactionResultRequest{} }
+func (m *GetTransactionResultRequest) String() string { return proto.CompactTextString(m) }
+func (*GetTransactionResultRequest) ProtoMessage()    {}
+func (*GetTransactionResultRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_699624211ed46c53, []int{8}
 }
 
-func (m *GetTransactionRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetTransactionRequest.Unmarshal(m, b)
+func (m *GetTransactionResultRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetTransactionResultRequest.Unmarshal(m, b)
 }
-func (m *GetTransactionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetTransactionRequest.Marshal(b, m, deterministic)
+func (m *GetTransactionResultRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetTransactionResultRequest.Marshal(b, m, deterministic)
 }
-func (m *GetTransactionRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetTransactionRequest.Merge(m, src)
+func (m *GetTransactionResultRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetTransactionResultRequest.Merge(m, src)
 }
-func (m *GetTransactionRequest) XXX_Size() int {
-	return xxx_messageInfo_GetTransactionRequest.Size(m)
+func (m *GetTransactionResultRequest) XXX_Size() int {
+	return xxx_messageInfo_GetTransactionResultRequest.Size(m)
 }
-func (m *GetTransactionRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetTransactionRequest.DiscardUnknown(m)
+func (m *GetTransactionResultRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetTransactionResultRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetTransactionRequest proto.InternalMessageInfo
+var xxx_messageInfo_GetTransactionResultRequest proto.InternalMessageInfo
 
-func (m *GetTransactionRequest) GetId() []byte {
+func (m *GetTransactionResultRequest) GetId() []byte {
 	if m != nil {
 		return m.Id
 	}
 	return nil
 }
 
-type TransactionResultResponse struct {
+type GetTransactionResultResponse struct {
 	StatusCode           uint32            `protobuf:"varint,2,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
 	ErrorMessage         string            `protobuf:"bytes,3,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
 	Events               []*entities.Event `protobuf:"bytes,4,rep,name=events,proto3" json:"events,omitempty"`
@@ -448,46 +448,46 @@ type TransactionResultResponse struct {
 	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *TransactionResultResponse) Reset()         { *m = TransactionResultResponse{} }
-func (m *TransactionResultResponse) String() string { return proto.CompactTextString(m) }
-func (*TransactionResultResponse) ProtoMessage()    {}
-func (*TransactionResultResponse) Descriptor() ([]byte, []int) {
+func (m *GetTransactionResultResponse) Reset()         { *m = GetTransactionResultResponse{} }
+func (m *GetTransactionResultResponse) String() string { return proto.CompactTextString(m) }
+func (*GetTransactionResultResponse) ProtoMessage()    {}
+func (*GetTransactionResultResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_699624211ed46c53, []int{9}
 }
 
-func (m *TransactionResultResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TransactionResultResponse.Unmarshal(m, b)
+func (m *GetTransactionResultResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetTransactionResultResponse.Unmarshal(m, b)
 }
-func (m *TransactionResultResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TransactionResultResponse.Marshal(b, m, deterministic)
+func (m *GetTransactionResultResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetTransactionResultResponse.Marshal(b, m, deterministic)
 }
-func (m *TransactionResultResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TransactionResultResponse.Merge(m, src)
+func (m *GetTransactionResultResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetTransactionResultResponse.Merge(m, src)
 }
-func (m *TransactionResultResponse) XXX_Size() int {
-	return xxx_messageInfo_TransactionResultResponse.Size(m)
+func (m *GetTransactionResultResponse) XXX_Size() int {
+	return xxx_messageInfo_GetTransactionResultResponse.Size(m)
 }
-func (m *TransactionResultResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_TransactionResultResponse.DiscardUnknown(m)
+func (m *GetTransactionResultResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetTransactionResultResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_TransactionResultResponse proto.InternalMessageInfo
+var xxx_messageInfo_GetTransactionResultResponse proto.InternalMessageInfo
 
-func (m *TransactionResultResponse) GetStatusCode() uint32 {
+func (m *GetTransactionResultResponse) GetStatusCode() uint32 {
 	if m != nil {
 		return m.StatusCode
 	}
 	return 0
 }
 
-func (m *TransactionResultResponse) GetErrorMessage() string {
+func (m *GetTransactionResultResponse) GetErrorMessage() string {
 	if m != nil {
 		return m.ErrorMessage
 	}
 	return ""
 }
 
-func (m *TransactionResultResponse) GetEvents() []*entities.Event {
+func (m *GetTransactionResultResponse) GetEvents() []*entities.Event {
 	if m != nil {
 		return m.Events
 	}
@@ -500,53 +500,52 @@ func init() {
 	proto.RegisterType((*GetAccountAtBlockIDRequest)(nil), "execution.GetAccountAtBlockIDRequest")
 	proto.RegisterType((*GetAccountAtBlockIDResponse)(nil), "execution.GetAccountAtBlockIDResponse")
 	proto.RegisterType((*ExecuteScriptAtBlockIDRequest)(nil), "execution.ExecuteScriptAtBlockIDRequest")
-	proto.RegisterType((*ExecuteScriptResponse)(nil), "execution.ExecuteScriptResponse")
-	proto.RegisterType((*EventsResponse)(nil), "execution.EventsResponse")
-	proto.RegisterType((*EventsResponse_Result)(nil), "execution.EventsResponse.Result")
+	proto.RegisterType((*ExecuteScriptAtBlockIDResponse)(nil), "execution.ExecuteScriptAtBlockIDResponse")
+	proto.RegisterType((*GetEventsForBlockIDsResponse)(nil), "execution.GetEventsForBlockIDsResponse")
+	proto.RegisterType((*GetEventsForBlockIDsResponse_Result)(nil), "execution.GetEventsForBlockIDsResponse.Result")
 	proto.RegisterType((*GetEventsForBlockIDsRequest)(nil), "execution.GetEventsForBlockIDsRequest")
-	proto.RegisterType((*GetTransactionRequest)(nil), "execution.GetTransactionRequest")
-	proto.RegisterType((*TransactionResultResponse)(nil), "execution.TransactionResultResponse")
+	proto.RegisterType((*GetTransactionResultRequest)(nil), "execution.GetTransactionResultRequest")
+	proto.RegisterType((*GetTransactionResultResponse)(nil), "execution.GetTransactionResultResponse")
 }
 
 func init() { proto.RegisterFile("flow/execution/execution.proto", fileDescriptor_699624211ed46c53) }
 
 var fileDescriptor_699624211ed46c53 = []byte{
-	// 547 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0xdd, 0x8e, 0xd3, 0x3c,
-	0x10, 0x55, 0x7f, 0xbe, 0x76, 0x3b, 0x4d, 0xfb, 0x09, 0xb3, 0x5b, 0xd2, 0x54, 0x40, 0x31, 0x3f,
-	0x5b, 0x09, 0xd1, 0x95, 0xca, 0x05, 0x12, 0x77, 0x05, 0xca, 0x52, 0x24, 0xd0, 0x62, 0xb8, 0xe1,
-	0x86, 0x2a, 0x9b, 0x0c, 0xdd, 0x88, 0x12, 0x97, 0xd8, 0x59, 0xe0, 0x15, 0x78, 0x27, 0x5e, 0x81,
-	0x67, 0x42, 0xb1, 0x9d, 0x34, 0xa1, 0x4d, 0x11, 0x77, 0x99, 0x33, 0xc7, 0xe3, 0x33, 0x67, 0xc6,
-	0x81, 0x1b, 0x1f, 0x57, 0xfc, 0xeb, 0x09, 0x7e, 0x43, 0x2f, 0x96, 0x01, 0x0f, 0x37, 0x5f, 0xe3,
-	0x75, 0xc4, 0x25, 0x27, 0xad, 0x0c, 0x70, 0x06, 0x9a, 0x1a, 0xca, 0x40, 0x06, 0x28, 0x4e, 0x5c,
-	0xcf, 0xe3, 0x71, 0x28, 0x35, 0xcf, 0xe9, 0x17, 0x93, 0x78, 0x89, 0x69, 0x8a, 0x76, 0xa0, 0x7d,
-	0x16, 0x84, 0x4b, 0x86, 0x5f, 0x62, 0x14, 0x92, 0x76, 0xc1, 0xd2, 0xa1, 0x58, 0xf3, 0x50, 0x20,
-	0x7d, 0x03, 0xce, 0x29, 0xca, 0xa9, 0xae, 0x36, 0x95, 0x4f, 0x56, 0xdc, 0xfb, 0x34, 0x7f, 0x66,
-	0xd8, 0xa4, 0x0f, 0x07, 0xe7, 0x09, 0xb2, 0x08, 0x7c, 0xbb, 0x32, 0xac, 0x8c, 0x2c, 0xd6, 0x54,
-	0xf1, 0xdc, 0x27, 0x36, 0x34, 0x5d, 0xdf, 0x8f, 0x50, 0x08, 0xbb, 0xaa, 0x33, 0x26, 0xa4, 0x2f,
-	0x61, 0xb0, 0xb3, 0xa4, 0xbe, 0x91, 0xdc, 0x87, 0xa6, 0x11, 0xaf, 0x4a, 0xb6, 0x27, 0x57, 0xc6,
-	0xa9, 0xf0, 0xb1, 0x39, 0xc4, 0x52, 0x06, 0x65, 0x70, 0x7d, 0xa6, 0x2c, 0xc0, 0xb7, 0x5e, 0x14,
-	0xac, 0xff, 0x49, 0x61, 0x0f, 0x1a, 0x42, 0x1d, 0x32, 0x02, 0x4d, 0x44, 0x1f, 0xc0, 0x51, 0xa1,
-	0x66, 0xa6, 0xec, 0x10, 0xfe, 0xbb, 0x74, 0x57, 0x31, 0x9a, 0x42, 0x3a, 0xa0, 0x3f, 0x2b, 0xd0,
-	0x9d, 0x25, 0x86, 0x8a, 0x8c, 0xf8, 0x18, 0x9a, 0x11, 0x8a, 0x78, 0x25, 0x85, 0x5d, 0x19, 0xd6,
-	0x46, 0xed, 0xc9, 0x70, 0xbc, 0x99, 0x5c, 0x91, 0x3b, 0x66, 0x8a, 0xc8, 0xd2, 0x03, 0x0e, 0x87,
-	0x86, 0x86, 0xf6, 0x49, 0xbf, 0x05, 0x96, 0x4e, 0x5d, 0x60, 0xb0, 0xbc, 0xd0, 0x0d, 0xd4, 0x59,
-	0x5b, 0x61, 0x2f, 0x14, 0x44, 0x8e, 0xa1, 0xa1, 0xc6, 0x2c, 0xec, 0x9a, 0x92, 0xf0, 0xff, 0xc6,
-	0x45, 0xa5, 0x80, 0x99, 0x34, 0x7d, 0xad, 0xc6, 0xa1, 0x55, 0x3d, 0xe7, 0x91, 0xf1, 0x4f, 0xa4,
-	0x06, 0x12, 0xa8, 0xcb, 0xef, 0x6b, 0xdd, 0x73, 0x8b, 0xa9, 0x6f, 0x32, 0x80, 0x56, 0xaa, 0x2c,
-	0x99, 0x6e, 0x6d, 0x64, 0xb1, 0x03, 0x23, 0x4d, 0xd0, 0x63, 0x38, 0x3a, 0x45, 0xf9, 0x2e, 0x72,
-	0x43, 0xe1, 0x7a, 0x49, 0xc7, 0x69, 0xa5, 0x2e, 0x54, 0xb3, 0x4e, 0xaa, 0x81, 0x4f, 0x7f, 0x54,
-	0xa0, 0x5f, 0xa0, 0x29, 0x23, 0x52, 0x0f, 0x6f, 0x42, 0x5b, 0x48, 0x57, 0xc6, 0x62, 0xe1, 0x71,
-	0x1f, 0x55, 0x87, 0x1d, 0x06, 0x1a, 0x7a, 0xca, 0x7d, 0x24, 0xb7, 0xa1, 0x83, 0x51, 0xc4, 0xa3,
-	0xc5, 0x67, 0x14, 0xc2, 0x5d, 0xa2, 0x5d, 0x53, 0x0a, 0x2d, 0x05, 0xbe, 0xd2, 0x58, 0xce, 0x85,
-	0xfa, 0x5e, 0x17, 0x26, 0xbf, 0x6a, 0x60, 0xcd, 0xd2, 0x19, 0x4d, 0xcf, 0xe6, 0xe4, 0x11, 0xd4,
-	0x93, 0x87, 0x40, 0x7a, 0xb9, 0xd1, 0xe5, 0x1e, 0x8a, 0x73, 0x6d, 0x0b, 0x37, 0xc2, 0x7d, 0xb8,
-	0xba, 0x63, 0xbd, 0xc9, 0xdd, 0x1c, 0xbf, 0xfc, 0x45, 0x39, 0xf7, 0xfe, 0x46, 0xcb, 0x6e, 0xe9,
-	0xed, 0x5e, 0x7c, 0x32, 0xca, 0xef, 0xda, 0xbe, 0xb7, 0xe1, 0x0c, 0xcb, 0x98, 0xd9, 0x2d, 0xef,
-	0xe1, 0x70, 0xd7, 0x6e, 0x90, 0x3f, 0x54, 0x96, 0x2d, 0x8f, 0xd3, 0x2f, 0xdd, 0x7b, 0xf2, 0x41,
-	0x95, 0xde, 0x9a, 0x3f, 0x19, 0x16, 0x4b, 0x6f, 0xef, 0x91, 0x73, 0x27, 0xc7, 0x28, 0xdd, 0x9f,
-	0xf3, 0x86, 0xfa, 0xbd, 0x3d, 0xfc, 0x1d, 0x00, 0x00, 0xff, 0xff, 0xc2, 0x12, 0xa9, 0xc8, 0x43,
-	0x05, 0x00, 0x00,
+	// 540 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0xdd, 0x6e, 0xd3, 0x30,
+	0x14, 0x56, 0x7f, 0x68, 0xd7, 0x93, 0x74, 0x08, 0x33, 0x95, 0x2c, 0x85, 0x31, 0x8c, 0xd8, 0x8a,
+	0x10, 0x99, 0x54, 0x24, 0xb8, 0x2e, 0x50, 0xb6, 0x22, 0x81, 0x86, 0xe1, 0xbe, 0xca, 0x92, 0x43,
+	0x17, 0xd1, 0xc5, 0xc5, 0x76, 0x06, 0x3c, 0x04, 0x0f, 0xc8, 0x4b, 0xf0, 0x0c, 0x28, 0xb6, 0xd3,
+	0x76, 0x5b, 0xda, 0x8d, 0xbb, 0x9c, 0xff, 0xef, 0x7c, 0xfe, 0x4e, 0x60, 0xe7, 0xeb, 0x94, 0xff,
+	0x38, 0xc0, 0x9f, 0x18, 0x65, 0x2a, 0xe1, 0xe9, 0xe2, 0x2b, 0x98, 0x09, 0xae, 0x38, 0x69, 0xcd,
+	0x1d, 0x7e, 0xd7, 0xa4, 0xa6, 0x2a, 0x51, 0x09, 0xca, 0x83, 0x30, 0x8a, 0x78, 0x96, 0x2a, 0x93,
+	0xe7, 0x6f, 0x5f, 0x0c, 0xe2, 0x39, 0x16, 0x21, 0xda, 0x06, 0xe7, 0x38, 0x49, 0x27, 0x0c, 0xbf,
+	0x67, 0x28, 0x15, 0xdd, 0x04, 0xd7, 0x98, 0x72, 0xc6, 0x53, 0x89, 0xf4, 0x13, 0xf8, 0x87, 0xa8,
+	0x06, 0xa6, 0xdb, 0x40, 0xbd, 0x9e, 0xf2, 0xe8, 0xdb, 0xe8, 0xad, 0xcd, 0x26, 0xdb, 0xb0, 0x71,
+	0x92, 0x7b, 0xc6, 0x49, 0xec, 0x55, 0x76, 0x2b, 0x3d, 0x97, 0x35, 0xb5, 0x3d, 0x8a, 0x89, 0x07,
+	0xcd, 0x30, 0x8e, 0x05, 0x4a, 0xe9, 0x55, 0x4d, 0xc4, 0x9a, 0xf4, 0x3d, 0x74, 0x4b, 0x5b, 0x9a,
+	0x89, 0xe4, 0x19, 0x34, 0x2d, 0x78, 0xdd, 0xd2, 0xe9, 0xdf, 0x09, 0x0a, 0xe0, 0x81, 0x2d, 0x62,
+	0x45, 0x06, 0x65, 0xf0, 0x60, 0xa8, 0x29, 0xc0, 0xcf, 0x91, 0x48, 0x66, 0xff, 0x85, 0xb0, 0x03,
+	0x0d, 0xa9, 0x8b, 0x2c, 0x40, 0x6b, 0xd1, 0x97, 0xb0, 0xb3, 0xaa, 0xa7, 0x85, 0xb8, 0x05, 0xb7,
+	0xce, 0xc3, 0x69, 0x86, 0xb6, 0xa3, 0x31, 0xe8, 0x9f, 0x0a, 0xdc, 0x3f, 0x44, 0x35, 0xcc, 0xc9,
+	0x95, 0xef, 0xb8, 0xb0, 0x55, 0x72, 0x5e, 0x76, 0x04, 0x4d, 0x81, 0x32, 0x9b, 0x2a, 0xe9, 0x55,
+	0x76, 0x6b, 0x3d, 0xa7, 0x1f, 0x04, 0x8b, 0x07, 0x5d, 0x57, 0x19, 0x30, 0x5d, 0xc6, 0x8a, 0x72,
+	0x9f, 0x43, 0xc3, 0xb8, 0xd6, 0xed, 0xf7, 0x08, 0x5c, 0x13, 0x3a, 0xc5, 0x64, 0x72, 0x6a, 0xb6,
+	0xac, 0x33, 0x47, 0xfb, 0x8e, 0xb4, 0x8b, 0xec, 0x43, 0x43, 0x6b, 0x41, 0x7a, 0x35, 0x0d, 0xe8,
+	0xf6, 0x82, 0x6a, 0x0d, 0x86, 0xd9, 0x30, 0xfd, 0xa8, 0xdf, 0xac, 0x04, 0xa0, 0x61, 0x99, 0x40,
+	0x5d, 0xfd, 0x9a, 0x19, 0x3e, 0x5a, 0x4c, 0x7f, 0x93, 0x2e, 0xb4, 0x0a, 0x64, 0xb9, 0x04, 0x6a,
+	0x3d, 0x97, 0x6d, 0x58, 0x68, 0x92, 0x3e, 0xd7, 0xfd, 0xbe, 0x88, 0x30, 0x95, 0x61, 0x94, 0xef,
+	0x6f, 0x37, 0xb4, 0xfd, 0x36, 0xa1, 0x3a, 0xdf, 0xa7, 0x9a, 0xc4, 0xf4, 0xb7, 0xa1, 0xb6, 0x24,
+	0xdf, 0x52, 0xfb, 0x10, 0x1c, 0xa9, 0x42, 0x95, 0xc9, 0x71, 0xc4, 0x63, 0xd4, 0xab, 0xb6, 0x19,
+	0x18, 0xd7, 0x1b, 0x1e, 0x23, 0x79, 0x0c, 0x6d, 0x14, 0x82, 0x8b, 0xf1, 0x19, 0x4a, 0x19, 0x4e,
+	0xd0, 0xab, 0x69, 0xa8, 0xae, 0x76, 0x7e, 0x30, 0xbe, 0x25, 0x3a, 0xea, 0x6b, 0xe9, 0xe8, 0xff,
+	0xad, 0x81, 0x3b, 0x2c, 0x9e, 0x6e, 0x70, 0x3c, 0x22, 0xaf, 0xa0, 0x9e, 0x9f, 0x0d, 0xe9, 0x2c,
+	0xbd, 0xe8, 0xd2, 0x59, 0xf9, 0xf7, 0xae, 0xf8, 0x2d, 0xf0, 0x18, 0xee, 0x96, 0x1c, 0x03, 0x79,
+	0x72, 0x51, 0x19, 0x2b, 0xee, 0xcf, 0xdf, 0xbb, 0x2e, 0xcd, 0x4e, 0x39, 0x83, 0x4e, 0xb9, 0xa4,
+	0x49, 0x6f, 0xa9, 0xc3, 0xda, 0x4b, 0xf2, 0x9f, 0xde, 0x20, 0xd3, 0x8e, 0x9b, 0xc0, 0x56, 0x99,
+	0x5a, 0xc8, 0xde, 0xb5, 0x7a, 0x37, 0xa3, 0xf6, 0x6f, 0x78, 0x17, 0x76, 0xd0, 0x15, 0x59, 0x5c,
+	0x1e, 0xb4, 0x4a, 0x67, 0x97, 0x07, 0xad, 0xd4, 0xd7, 0x49, 0x43, 0xff, 0x2c, 0x5f, 0xfc, 0x0b,
+	0x00, 0x00, 0xff, 0xff, 0x4c, 0xa5, 0x81, 0x7a, 0x91, 0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -566,11 +565,11 @@ type ExecutionAPIClient interface {
 	// GetAccountAtBlockID gets an account by address at the given block ID
 	GetAccountAtBlockID(ctx context.Context, in *GetAccountAtBlockIDRequest, opts ...grpc.CallOption) (*GetAccountAtBlockIDResponse, error)
 	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
-	ExecuteScriptAtBlockID(ctx context.Context, in *ExecuteScriptAtBlockIDRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
+	ExecuteScriptAtBlockID(ctx context.Context, in *ExecuteScriptAtBlockIDRequest, opts ...grpc.CallOption) (*ExecuteScriptAtBlockIDResponse, error)
 	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
-	GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*EventsResponse, error)
+	GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*GetEventsForBlockIDsResponse, error)
 	// GetTransactionResult gets the result of a transaction.
-	GetTransactionResult(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error)
+	GetTransactionResult(ctx context.Context, in *GetTransactionResultRequest, opts ...grpc.CallOption) (*GetTransactionResultResponse, error)
 }
 
 type executionAPIClient struct {
@@ -599,8 +598,8 @@ func (c *executionAPIClient) GetAccountAtBlockID(ctx context.Context, in *GetAcc
 	return out, nil
 }
 
-func (c *executionAPIClient) ExecuteScriptAtBlockID(ctx context.Context, in *ExecuteScriptAtBlockIDRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error) {
-	out := new(ExecuteScriptResponse)
+func (c *executionAPIClient) ExecuteScriptAtBlockID(ctx context.Context, in *ExecuteScriptAtBlockIDRequest, opts ...grpc.CallOption) (*ExecuteScriptAtBlockIDResponse, error) {
+	out := new(ExecuteScriptAtBlockIDResponse)
 	err := c.cc.Invoke(ctx, "/execution.ExecutionAPI/ExecuteScriptAtBlockID", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -608,8 +607,8 @@ func (c *executionAPIClient) ExecuteScriptAtBlockID(ctx context.Context, in *Exe
 	return out, nil
 }
 
-func (c *executionAPIClient) GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*EventsResponse, error) {
-	out := new(EventsResponse)
+func (c *executionAPIClient) GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*GetEventsForBlockIDsResponse, error) {
+	out := new(GetEventsForBlockIDsResponse)
 	err := c.cc.Invoke(ctx, "/execution.ExecutionAPI/GetEventsForBlockIDs", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -617,8 +616,8 @@ func (c *executionAPIClient) GetEventsForBlockIDs(ctx context.Context, in *GetEv
 	return out, nil
 }
 
-func (c *executionAPIClient) GetTransactionResult(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error) {
-	out := new(TransactionResultResponse)
+func (c *executionAPIClient) GetTransactionResult(ctx context.Context, in *GetTransactionResultRequest, opts ...grpc.CallOption) (*GetTransactionResultResponse, error) {
+	out := new(GetTransactionResultResponse)
 	err := c.cc.Invoke(ctx, "/execution.ExecutionAPI/GetTransactionResult", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -633,11 +632,11 @@ type ExecutionAPIServer interface {
 	// GetAccountAtBlockID gets an account by address at the given block ID
 	GetAccountAtBlockID(context.Context, *GetAccountAtBlockIDRequest) (*GetAccountAtBlockIDResponse, error)
 	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
-	ExecuteScriptAtBlockID(context.Context, *ExecuteScriptAtBlockIDRequest) (*ExecuteScriptResponse, error)
+	ExecuteScriptAtBlockID(context.Context, *ExecuteScriptAtBlockIDRequest) (*ExecuteScriptAtBlockIDResponse, error)
 	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
-	GetEventsForBlockIDs(context.Context, *GetEventsForBlockIDsRequest) (*EventsResponse, error)
+	GetEventsForBlockIDs(context.Context, *GetEventsForBlockIDsRequest) (*GetEventsForBlockIDsResponse, error)
 	// GetTransactionResult gets the result of a transaction.
-	GetTransactionResult(context.Context, *GetTransactionRequest) (*TransactionResultResponse, error)
+	GetTransactionResult(context.Context, *GetTransactionResultRequest) (*GetTransactionResultResponse, error)
 }
 
 // UnimplementedExecutionAPIServer can be embedded to have forward compatible implementations.
@@ -650,13 +649,13 @@ func (*UnimplementedExecutionAPIServer) Ping(ctx context.Context, req *PingReque
 func (*UnimplementedExecutionAPIServer) GetAccountAtBlockID(ctx context.Context, req *GetAccountAtBlockIDRequest) (*GetAccountAtBlockIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountAtBlockID not implemented")
 }
-func (*UnimplementedExecutionAPIServer) ExecuteScriptAtBlockID(ctx context.Context, req *ExecuteScriptAtBlockIDRequest) (*ExecuteScriptResponse, error) {
+func (*UnimplementedExecutionAPIServer) ExecuteScriptAtBlockID(ctx context.Context, req *ExecuteScriptAtBlockIDRequest) (*ExecuteScriptAtBlockIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteScriptAtBlockID not implemented")
 }
-func (*UnimplementedExecutionAPIServer) GetEventsForBlockIDs(ctx context.Context, req *GetEventsForBlockIDsRequest) (*EventsResponse, error) {
+func (*UnimplementedExecutionAPIServer) GetEventsForBlockIDs(ctx context.Context, req *GetEventsForBlockIDsRequest) (*GetEventsForBlockIDsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetEventsForBlockIDs not implemented")
 }
-func (*UnimplementedExecutionAPIServer) GetTransactionResult(ctx context.Context, req *GetTransactionRequest) (*TransactionResultResponse, error) {
+func (*UnimplementedExecutionAPIServer) GetTransactionResult(ctx context.Context, req *GetTransactionResultRequest) (*GetTransactionResultResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionResult not implemented")
 }
 
@@ -737,7 +736,7 @@ func _ExecutionAPI_GetEventsForBlockIDs_Handler(srv interface{}, ctx context.Con
 }
 
 func _ExecutionAPI_GetTransactionResult_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTransactionRequest)
+	in := new(GetTransactionResultRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -749,7 +748,7 @@ func _ExecutionAPI_GetTransactionResult_Handler(srv interface{}, ctx context.Con
 		FullMethod: "/execution.ExecutionAPI/GetTransactionResult",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExecutionAPIServer).GetTransactionResult(ctx, req.(*GetTransactionRequest))
+		return srv.(ExecutionAPIServer).GetTransactionResult(ctx, req.(*GetTransactionResultRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
