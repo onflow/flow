@@ -85,6 +85,6 @@ message GetTransactionResultRequest {
 
 message GetTransactionResultResponse {
     uint32 status_code = 1;
-    string error_message = 3;
-    repeated entities.Event events = 4;
+    string error_message = 2;
+    repeated entities.Event events = 3;
 }
