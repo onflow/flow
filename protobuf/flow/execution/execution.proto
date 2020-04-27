@@ -19,15 +19,17 @@ service ExecutionAPI {
     // Scripts
 
     // ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
-    rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse);
+    rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptAtBlockIDResponse);
 
     // Events
 
     // GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
-    rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (EventsResponse);
+    rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse);
 
-    // GetEventsForBlockIDAndTransactionID retrieves the events emitted by a transaction in a specific block.
-    rpc GetEventsForBlockIDTransactionID (GetEventsForBlockIDTransactionIDRequest) returns (EventsResponse);
+    // Transaction
+
+    // GetTransactionResult gets the result of a transaction.
+    rpc GetTransactionResult (GetTransactionResultRequest) returns (GetTransactionResultResponse);
 }
 
 // Ping
@@ -54,13 +56,13 @@ message ExecuteScriptAtBlockIDRequest {
     bytes script = 2;
 }
 
-message ExecuteScriptResponse {
+message ExecuteScriptAtBlockIDResponse {
     bytes value = 1;
 }
 
 // Events
 
-message EventsResponse {
+message GetEventsForBlockIDsResponse {
     message Result {
         bytes block_id = 1;
         uint64 block_height = 2;
@@ -74,7 +76,15 @@ message GetEventsForBlockIDsRequest {
     repeated bytes block_ids = 2;
 }
 
-message GetEventsForBlockIDTransactionIDRequest {
+// Transactions
+
+message GetTransactionResultRequest {
     bytes block_id = 1;
     bytes transaction_id = 2;
+}
+
+message GetTransactionResultResponse {
+    uint32 status_code = 1;
+    string error_message = 2;
+    repeated entities.Event events = 3;
 }
