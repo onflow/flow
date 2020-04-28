@@ -172,7 +172,7 @@ Sequence numbers work similarly to transaction nonces in Ethereum, but with seve
 - **Each key in an account has a dedicated sequence number** associated with it. Unlike Ethereum, there is no sequence number for the entire account.	
 - When creating a transaction, only the **proposer must specify a sequence number**. Payers and authorizers are not required to.	
 
-The transaction proposer is only required to specify a sequence number a single account key, even it if signs with multiple keys. This key is referred to as the _proposal key_.	
+The transaction proposer is only required to specify a sequence number for a single account key, even it if signs with multiple keys. This key is referred to as the _proposal key_.	
 
 Each time an account key is used as a proposal key, its sequence number is incremented by 1. The sequence number is updated after execution, even if the transaction fails (reverts) during execution.
 
