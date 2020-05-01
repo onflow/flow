@@ -24,11 +24,12 @@ message Transaction {
   }
 
   bytes script = 1;
-  bytes reference_block_id = 2;
-  uint64 gas_limit = 3;
-  ProposalKey proposal_key = 4;
-  bytes payer = 5;
-  repeated bytes authorizers = 6;
-  repeated Signature payload_signatures = 7;
-  repeated Signature envelope_signatures = 8;
+  repeated bytes arguments = 2;
+  bytes reference_block_id = 3;
+  uint64 gas_limit = 4;
+  ProposalKey proposal_key = 5;
+  bytes payer = 6;
+  repeated bytes authorizers = 7;
+  repeated Signature payload_signatures = 8;
+  repeated Signature envelope_signatures = 9;
 }

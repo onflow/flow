@@ -1,6 +1,6 @@
 # Flow Access API Specification
 
-> Version 0.1.3
+> Version 0.1.4
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -733,6 +733,7 @@ A transaction represents a unit of computation that is submitted to the Flow net
 ```
 message Transaction {
   bytes script
+  repeated bytes arguments
   bytes reference_block_id
   uint64 gas_limit
   TransactionProposalKey proposal_key
@@ -758,6 +759,7 @@ message TransactionSignature {
 | Field                         | Description |
 | ------------------------------|-------------| 
 | script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes |
+| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](/docs/json-cadence-spec.md) bytes
 | reference_block_id            | Block ID used to determine transaction expiry |
 | [proposal_key](#proposal-key) | Account key used to propose the transaction |
 | payer                         | Address of the payer account |
