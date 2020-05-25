@@ -31,6 +31,8 @@
   - [Events](#events)
     - [GetEventsForHeightRange](#geteventsforheightrange)
     - [GetEventsForBlockIDs](#geteventsforblockids)
+  - [ChainID](#chain-id)
+    - [GetChainID](#getchainid)
 - [Entities](#entities)
   - [Block](#block)
   - [Block Header](#block-header)
@@ -622,6 +624,38 @@ The event results are grouped by block, with each group specifying a block ID an
       repeated entities.Event events = 3;
     }
     repeated Result results = 1;
+  }
+  ```
+</details>
+
+---
+
+### Chain ID
+
+ChainID helps identify the Flow network (mainnet versus testnet). The following method can be used to query for the Chain ID
+
+#### GetChainID
+
+`GetChainID` retrieves the chain ID
+```
+rpc GetChainID() returns (GetChainIDResponse)
+```
+
+<details>
+<summary>Request</summary>
+
+  ```
+  message GetChainIDRequest {
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+
+  ```
+  message GetChainIDResponse {
+    string chain_id = 1;
   }
   ```
 </details>

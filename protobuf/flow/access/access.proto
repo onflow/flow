@@ -68,6 +68,11 @@ service AccessAPI {
 
   // GetEventsForBlockIDs retrieves events for the specified block IDs and event type.
   rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (EventsResponse);
+
+  // ChainID
+
+  // GetChainID retrieves the chain ID of the Flow network
+  rpc GetChainID (GetChainIDRequest) returns (GetChainIDResponse);
 }
 
 message PingRequest {}
@@ -197,3 +202,11 @@ message EventsResponse {
   repeated Result results = 1;
 }
 
+// Chain ID
+
+message GetChainIDRequest {
+}
+
+message GetChainIDResponse {
+  string chain_id = 1;
+}
