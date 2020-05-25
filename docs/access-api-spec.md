@@ -632,11 +632,12 @@ The event results are grouped by block, with each group specifying a block ID an
 
 ### Network Parameters
 
-The following method can be used to query for [Network parameters](#network-parameters).
+Network parameters provide information about the flow network. Currently, it only includes the chain ID.
+The following method can be used to query for network parameters.
 
 #### GetNetworkParameters
 
-`GetNetworkParameters` retrieves the [Network parameters](#network-parameters)
+`GetNetworkParameters` retrieves the network parameters
 ```
 rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParametersResponse)
 ```
@@ -657,6 +658,11 @@ rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParame
     string chain_id = 1;
   }
   ```
+
+| Field             | Description    |
+| ------------------|----------------|
+| chain_id          | Chain ID helps identify the Flow network. It can be one of `flow-mainnet`, `flow-testnet` or `flow-emulator` |
+
 </details>
 
 ## Entities
@@ -889,16 +895,3 @@ message Event {
 | event_index       | Zero-based index of the event within the transaction |
 | payload           | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md)|
 
-### Network Parameters
-
-Network parameters provide information about the Flow network. Currently, it only includes chain ID.
-
-```
-message NetworkParameters {
-	string chain_id = 1;
-}
-```
-
-| Field             | Description    |
-| ------------------|----------------|
-| chain_id          | ChainID helps identify the Flow network. It can be one of `flow-mainnet`, `flow-testnet` or `flow-emulator` |
