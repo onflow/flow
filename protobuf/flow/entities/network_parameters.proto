@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package entities;
+
+message NetworkParameters {
+	string chain_id = 1;
+}

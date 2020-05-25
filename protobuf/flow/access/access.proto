@@ -2,12 +2,13 @@ syntax = "proto3";
 
 package access;
 
+import "flow/entities/account.proto";
 import "flow/entities/block_header.proto";
 import "flow/entities/block.proto";
 import "flow/entities/collection.proto";
-import "flow/entities/transaction.proto";
-import "flow/entities/account.proto";
 import "flow/entities/event.proto";
+import "flow/entities/network_parameters.proto";
+import "flow/entities/transaction.proto";
 
 // AccessAPI is the public-facing API provided by access nodes.
 service AccessAPI {
@@ -16,7 +17,7 @@ service AccessAPI {
   rpc Ping (PingRequest) returns (PingResponse);
 
   // Block Headers
-  
+
   // GetLatestBlockHeader gets the latest sealed or unsealed block header.
   rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderResponse);
   // GetBlockHeaderByID gets a block header by ID.
@@ -69,10 +70,10 @@ service AccessAPI {
   // GetEventsForBlockIDs retrieves events for the specified block IDs and event type.
   rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (EventsResponse);
 
-  // ChainID
+  // NetworkParameters
 
-  // GetChainID retrieves the chain ID of the Flow network
-  rpc GetChainID (GetChainIDRequest) returns (GetChainIDResponse);
+  // GetNetworkParameters retrieves the Flow network details
+  rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParametersResponse);
 }
 
 message PingRequest {}
@@ -202,11 +203,10 @@ message EventsResponse {
   repeated Result results = 1;
 }
 
-// Chain ID
+// Network Parameters
 
-message GetChainIDRequest {
-}
+message GetNetworkParametersRequest {}
 
-message GetChainIDResponse {
-  string chain_id = 1;
+message GetNetworkParametersResponse {
+  entities.NetworkParameters network_parameters = 1;
 }

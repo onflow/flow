@@ -31,8 +31,8 @@
   - [Events](#events)
     - [GetEventsForHeightRange](#geteventsforheightrange)
     - [GetEventsForBlockIDs](#geteventsforblockids)
-  - [ChainID](#chain-id)
-    - [GetChainID](#getchainid)
+  - [Network Parameters](#network-parameters)
+    - [GetNetworkParameters](#getnetworkparameters)
 - [Entities](#entities)
   - [Block](#block)
   - [Block Header](#block-header)
@@ -630,23 +630,22 @@ The event results are grouped by block, with each group specifying a block ID an
 
 ---
 
-### Chain ID
+### Network Parameters
 
-ChainID helps identify the Flow network (mainnet versus testnet). The following method can be used to query for the Chain ID
+The following method can be used to query for [Network parameters](#network-parameters).
 
-#### GetChainID
+#### GetNetworkParameters
 
-`GetChainID` retrieves the chain ID
+`GetNetworkParameters` retrieves the [Network parameters](#network-parameters)
 ```
-rpc GetChainID() returns (GetChainIDResponse)
+rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParametersResponse)
 ```
 
 <details>
 <summary>Request</summary>
 
   ```
-  message GetChainIDRequest {
-  }
+  message GetNetworkParametersRequest {}
   ```
 </details>
 
@@ -654,7 +653,7 @@ rpc GetChainID() returns (GetChainIDResponse)
   <summary>Response</summary>
 
   ```
-  message GetChainIDResponse {
+  message GetNetworkParametersResponse {
     string chain_id = 1;
   }
   ```
@@ -889,3 +888,17 @@ message Event {
 | transaction_index | Zero-based index of the transaction within the block |
 | event_index       | Zero-based index of the event within the transaction |
 | payload           | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md)|
+
+### Network Parameters
+
+Network parameters provide information about the flow network. Currently, it only includes chain-id
+
+```
+message NetworkParameters {
+	string chain_id = 1;
+}
+```
+
+| Field             | Description    |
+| ------------------|----------------|
+| chain_id          | ChainID helps identify the Flow network (mainnet, testnet or emulator) |
