@@ -901,4 +901,4 @@ message NetworkParameters {
 
 | Field             | Description    |
 | ------------------|----------------|
-| chain_id          | ChainID helps identify the Flow network (mainnet, testnet or emulator) |
+| chain_id          | ChainID helps identify the Flow network. It can be one of `flow-mainnet`, `flow-testnet` or `flow-emulator` |
