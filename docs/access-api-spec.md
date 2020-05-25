@@ -891,7 +891,7 @@ message Event {
 
 ### Network Parameters
 
-Network parameters provide information about the flow network. Currently, it only includes chain-id
+Network parameters provide information about the Flow network. Currently, it only includes chain ID.
 
 ```
 message NetworkParameters {
