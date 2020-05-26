@@ -31,6 +31,8 @@
   - [Events](#events)
     - [GetEventsForHeightRange](#geteventsforheightrange)
     - [GetEventsForBlockIDs](#geteventsforblockids)
+  - [Network Parameters](#network-parameters)
+    - [GetNetworkParameters](#getnetworkparameters)
 - [Entities](#entities)
   - [Block](#block)
   - [Block Header](#block-header)
@@ -626,6 +628,43 @@ The event results are grouped by block, with each group specifying a block ID an
   ```
 </details>
 
+---
+
+### Network Parameters
+
+Network parameters provide information about the flow network. Currently, it only includes the chain ID.
+The following method can be used to query for network parameters.
+
+#### GetNetworkParameters
+
+`GetNetworkParameters` retrieves the network parameters
+```
+rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParametersResponse)
+```
+
+<details>
+<summary>Request</summary>
+
+  ```
+  message GetNetworkParametersRequest {}
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+
+  ```
+  message GetNetworkParametersResponse {
+    string chain_id = 1;
+  }
+  ```
+
+| Field             | Description    |
+| ------------------|----------------|
+| chain_id          | Chain ID helps identify the Flow network. It can be one of `flow-mainnet`, `flow-testnet` or `flow-emulator` |
+
+</details>
+
 ## Entities
 
 Below are in-depth descriptions of each of the data entities returned or accepted by the Access API.
@@ -855,3 +894,4 @@ message Event {
 | transaction_index | Zero-based index of the transaction within the block |
 | event_index       | Zero-based index of the event within the transaction |
 | payload           | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md)|
+
