@@ -632,7 +632,7 @@ The event results are grouped by block, with each group specifying a block ID an
 
 ### Network Parameters
 
-Network parameters provide information about the flow network. Currently, it only includes the chain ID.
+Network parameters provide information about the Flow network. Currently, it only includes the chain ID.
 The following method can be used to query for network parameters.
 
 #### GetNetworkParameters
