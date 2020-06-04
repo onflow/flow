@@ -54,6 +54,7 @@ message GetAccountAtBlockIDResponse {
 message ExecuteScriptAtBlockIDRequest {
     bytes block_id = 1;
     bytes script = 2;
+    repeated bytes arguments = 3;
 }
 
 message ExecuteScriptAtBlockIDResponse {
