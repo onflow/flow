@@ -1,4 +1,6 @@
-# Visual Studio Code Extension
+# Cadence Visual Studio Code Extension
+
+> Version 0.4.0
 
 To install the Visual Studio Code extension for Cadence,
 you first need to [install Visual Studio Code](https://code.visualstudio.com/Download).
@@ -73,3 +75,19 @@ When the emulator is running, you can deploy contracts to the active account. Yo
 In the vscode extension, submitting transactions and scripts is similar to deploying contracts. When writing a transaction or script, you should see a button appear at the top of your definition prompting you to submit it. Click the button to send it, using the active account as the signer.
 
 ![Visual Studio Code extension: Submitting transactions and scripts](images/vscode-7-submitting-transactions-and-scripts.png)
+
+# Changelog
+
+## Version 0.4.0
+- Upgraded Cadence Language Server to [v0.4.0](https://github.com/onflow/cadence/releases/tag/v0.4.0)
+- Upgraded Flow Emulator to [v0.4.0](https://github.com/onflow/flow/blob/master/docs/emulator.md#version-040)
+- Changed from sequential (e.g. 0x01, 0x02, etc) to linear code address generation 
+
+
+### ⚙️ Installing & Upgrading
+
+Please re-run the following command to upgrade your existing VS Code extension:
+
+```sh
+flow cadence install-vscode-extension
+```
