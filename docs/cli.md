@@ -1,5 +1,7 @@
 # Flow CLI
 
+> Version 0.4.0
+
 The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.
 
 ## Installation
@@ -30,3 +32,11 @@ _This installation method only works on Windows 10, 8.1, or 7 (SP1, with [PowerS
 ### Upgrading an existing installation
 
 Simply re-run the installation commands above.
+
+# Changelog
+
+## Version 0.4.0
+
+- Upgraded Cadence to [v0.4.0](https://github.com/onflow/cadence/releases/tag/v0.4.0)
+- Upgraded Flow Emulator to [v0.4.0](https://github.com/onflow/flow/blob/master/docs/emulator.md#version-040)
+- Upgraded Cadence VS Code Extension to [v0.4.0](https://github.com/onflow/flow/blob/master/docs/vscode-extension.md#version-040)
