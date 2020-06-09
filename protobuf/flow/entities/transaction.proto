@@ -8,6 +8,7 @@ enum TransactionStatus {
   FINALIZED = 2;
   EXECUTED = 3;
   SEALED = 4;
+  EXPIRED = 5;
 }
 
 message Transaction {
