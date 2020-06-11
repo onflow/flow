@@ -112,16 +112,14 @@ Flow will have initial support for a predefined set of signature and hash pairin
 | Algorithm    | Output Size | ID              | Code |
 |--------------|-------------|-----------------|------|
 | SHA-2        | 256         | SHA2_256        | 1    |
-| SHA-2        | 384         | SHA2_384        | 2    |
 | SHA-3        | 256         | SHA3_256        | 3    |
-| SHA-3        | 384         | SHA3_384        | 4    |
 
 **Compatibility Table**
 
-|                 | SHA2_256 | SHA2_384 | SHA3_256 | SHA3_384 |
-|-----------------|----------|----------|----------|----------|
-| ECDSA_P256      | ✅       | ✅       | ✅       | ✅      |
-| ECDSA_secp256k1 | ✅       | ✅       | ✅       | ✅      |
+|                 | SHA2_256 | SHA3_256 | 
+|-----------------|----------|----------|
+| ECDSA_P256      | ✅       | ✅       | 
+| ECDSA_secp256k1 | ✅       | ✅       | 
 
 ### Weighted Keys
 
