@@ -49,8 +49,10 @@ service AccessAPI {
 
   // Accounts
 
-  // GetAccount gets an account by address.
+  // GetAccount gets an account by address from the latest sealed execution state
   rpc GetAccount (GetAccountRequest) returns (GetAccountResponse);
+  // GetAccountAtBlockHeight gets an account by address at the given block height
+  rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (GetAccountAtBlockHeightResponse);
 
   // Scripts
 
@@ -157,6 +159,15 @@ message GetAccountRequest {
 }
 
 message GetAccountResponse {
+  entities.Account account = 1;
+}
+
+message GetAccountAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+}
+
+message GetAccountAtBlockHeightResponse {
   entities.Account account = 1;
 }
 

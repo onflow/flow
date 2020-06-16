@@ -24,6 +24,7 @@
     - [GetTransactionResult](#gettransactionresult)
   - [Accounts](#accounts)
     - [GetAccount](#getaccount)
+    - [GetAccountAtBlockHeight](#getaccountatblockheight)
   - [Scripts](#scripts)
     - [ExecuteScriptAtLatestBlock](#executescriptatlatestblock)
     - [ExecuteScriptAtBlockID](#executescriptatblockid)
@@ -439,13 +440,42 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
   ```
 </details>
 
+#### GetAccountAtBlockHeight
+
+`GetAccountAtBlockHeight` gets an [account](#account) by address at the given block height
+
+The access node queries an execution node for the account details, which are stored as part of the execution state.
+
+```
+rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (GetAccountAtBlockHeightResponse)
+```
+
+<details>
+  <summary>Request</summary>
+  ```
+  message GetAccountAtBlockHeightRequest {
+    bytes address
+    uint64 block_height
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+
+  ```
+  message GetAccountAtBlockHeightResponse {
+    Account account
+  }
+  ```
+</details>
 ---
 
 ### Scripts
 
 #### ExecuteScriptAtLatestBlock
 
-`ExecuteScriptAtLatestBlock` executes a read-only Cadance script against the latest sealed execution state.
+`ExecuteScriptAtLatestBlock` executes a read-only Cadence script against the latest sealed execution state.
 
 This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/docs/json-cadence-spec.md).
 
