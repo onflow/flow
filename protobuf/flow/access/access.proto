@@ -49,14 +49,14 @@ service AccessAPI {
 
   // Accounts
 
-  // GetAccount gets an account by address from the latest sealed execution state
-  rpc GetAccount (GetAccountRequest) returns (GetAccountResponse);
+  // GetAccountAtLatestBlock gets an account by address from the latest sealed execution state
+  rpc GetAccountAtLatestBlock (GetAccountAtLatestBlockRequest) returns (AccountResponse);
   // GetAccountAtBlockHeight gets an account by address at the given block height
-  rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (GetAccountAtBlockHeightResponse);
+  rpc GetAccountAtBlockHeight (GetAccountAtBlockHeightRequest) returns (AccountResponse);
 
   // Scripts
 
-  // ExecuteScriptAtLatestBlock executes a read-only Cadance script against the latest sealed execution state.
+  // ExecuteScriptAtLatestBlock executes a read-only Cadence script against the latest sealed execution state.
   rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse);
   // ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
   rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse);
@@ -154,21 +154,17 @@ message TransactionResultResponse {
 
 // Accounts
 
-message GetAccountRequest {
+message GetAccountAtLatestBlockRequest {
   bytes address = 1;
 }
 
-message GetAccountResponse {
+message AccountResponse {
   entities.Account account = 1;
 }
 
 message GetAccountAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
-}
-
-message GetAccountAtBlockHeightResponse {
-  entities.Account account = 1;
 }
 
 // Scripts

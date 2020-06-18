@@ -410,21 +410,21 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
 
 ### Accounts
 
-#### GetAccount
+#### GetAccountAtLatestBlock
 
-`GetAccount` gets an [account](#account) by address.
+`GetAccountAtLatestBlock` gets an [account](#account) by address.
 
-The access node queries an execution node for the account details, which are stored as part of the execution state.
+The access node queries an execution node for the account details, which are stored as part of the sealed execution state.
 
 ```
-rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
+rpc GetAccountAtLatestBlock(GetAccountAtLatestBlockRequest) returns (AccountResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
   ```
-  message GetAccountRequest {
+  message GetAccountAtLatestBlockRequest {
     bytes address
   }
   ```
@@ -434,7 +434,7 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
   <summary>Response</summary>
   
   ```
-  message GetAccountResponse {
+  message AccountResponse {
     Account account
   }
   ```
@@ -447,7 +447,7 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 The access node queries an execution node for the account details, which are stored as part of the execution state.
 
 ```
-rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (GetAccountAtBlockHeightResponse)
+rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (AccountResponse)
 ```
 
 <details>
@@ -464,7 +464,7 @@ rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (GetAccountA
   <summary>Response</summary>
 
   ```
-  message GetAccountAtBlockHeightResponse {
+  message AccountResponse {
     Account account
   }
   ```
