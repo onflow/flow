@@ -442,7 +442,7 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 
 #### GetAccountAtBlockHeight
 
-`GetAccountAtBlockHeight` gets an [account](#account) by address at the given block height
+`GetAccountAtBlockHeight` gets an [account](#accounts) by address at the given block height.
 
 The access node queries an execution node for the account details, which are stored as part of the execution state.
 
@@ -924,4 +924,3 @@ message Event {
 | transaction_index | Zero-based index of the transaction within the block |
 | event_index       | Zero-based index of the event within the transaction |
 | payload           | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md)|
-
