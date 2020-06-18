@@ -23,7 +23,7 @@
     - [GetTransaction](#gettransaction)
     - [GetTransactionResult](#gettransactionresult)
   - [Accounts](#accounts)
-    - [GetAccount](#getaccount)
+    - [GetAccountAtLatestBlock](#getaccountatlatestblock)
     - [GetAccountAtBlockHeight](#getaccountatblockheight)
   - [Scripts](#scripts)
     - [ExecuteScriptAtLatestBlock](#executescriptatlatestblock)
