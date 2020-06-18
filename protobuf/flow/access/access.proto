@@ -50,7 +50,7 @@ service AccessAPI {
   // Accounts
 
   // GetAccount gets an account by address from the latest sealed execution state
-  rpc GetAccount (GetAccountRequest) returns (GetAccountResponse);
+  rpc GetAccountAtLatestBlock (GetAccountRequest) returns (GetAccountResponse);
   // GetAccountAtBlockHeight gets an account by address at the given block height
   rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (GetAccountAtBlockHeightResponse);
 
