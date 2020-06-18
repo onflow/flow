@@ -1426,7 +1426,7 @@ type AccessAPIClient interface {
 	GetTransaction(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResponse, error)
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error)
-	// GetAccountAtLatestBlock gets an account by address from the latest sealed execution state
+	// GetAccountAtLatestBlock gets an account by address from the latest sealed execution state.
 	GetAccountAtLatestBlock(ctx context.Context, in *GetAccountAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountResponse, error)
 	// GetAccountAtBlockHeight gets an account by address at the given block height
 	GetAccountAtBlockHeight(ctx context.Context, in *GetAccountAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountResponse, error)
@@ -1647,7 +1647,7 @@ type AccessAPIServer interface {
 	GetTransaction(context.Context, *GetTransactionRequest) (*TransactionResponse, error)
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(context.Context, *GetTransactionRequest) (*TransactionResultResponse, error)
-	// GetAccountAtLatestBlock gets an account by address from the latest sealed execution state
+	// GetAccountAtLatestBlock gets an account by address from the latest sealed execution state.
 	GetAccountAtLatestBlock(context.Context, *GetAccountAtLatestBlockRequest) (*AccountResponse, error)
 	// GetAccountAtBlockHeight gets an account by address at the given block height
 	GetAccountAtBlockHeight(context.Context, *GetAccountAtBlockHeightRequest) (*AccountResponse, error)
