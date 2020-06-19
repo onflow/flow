@@ -23,7 +23,8 @@
     - [GetTransaction](#gettransaction)
     - [GetTransactionResult](#gettransactionresult)
   - [Accounts](#accounts)
-    - [GetAccount](#getaccount)
+    - [GetAccountAtLatestBlock](#getaccountatlatestblock)
+    - [GetAccountAtBlockHeight](#getaccountatblockheight)
   - [Scripts](#scripts)
     - [ExecuteScriptAtLatestBlock](#executescriptatlatestblock)
     - [ExecuteScriptAtBlockID](#executescriptatblockid)
@@ -409,21 +410,21 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
 
 ### Accounts
 
-#### GetAccount
+#### GetAccountAtLatestBlock
 
-`GetAccount` gets an [account](#account) by address.
+`GetAccountAtLatestBlock` gets an [account](#account) by address.
 
-The access node queries an execution node for the account details, which are stored as part of the execution state.
+The access node queries an execution node for the account details, which are stored as part of the sealed execution state.
 
 ```
-rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
+rpc GetAccountAtLatestBlock(GetAccountAtLatestBlockRequest) returns (AccountResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
   ```
-  message GetAccountRequest {
+  message GetAccountAtLatestBlockRequest {
     bytes address
   }
   ```
@@ -433,19 +434,48 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
   <summary>Response</summary>
   
   ```
-  message GetAccountResponse {
+  message AccountResponse {
     Account account
   }
   ```
 </details>
 
+#### GetAccountAtBlockHeight
+
+`GetAccountAtBlockHeight` gets an [account](#accounts) by address at the given block height.
+
+The access node queries an execution node for the account details, which are stored as part of the execution state.
+
+```
+rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (AccountResponse)
+```
+
+<details>
+  <summary>Request</summary>
+  ```
+  message GetAccountAtBlockHeightRequest {
+    bytes address
+    uint64 block_height
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+
+  ```
+  message AccountResponse {
+    Account account
+  }
+  ```
+</details>
 ---
 
 ### Scripts
 
 #### ExecuteScriptAtLatestBlock
 
-`ExecuteScriptAtLatestBlock` executes a read-only Cadance script against the latest sealed execution state.
+`ExecuteScriptAtLatestBlock` executes a read-only Cadence script against the latest sealed execution state.
 
 This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/docs/json-cadence-spec.md).
 
@@ -894,4 +924,3 @@ message Event {
 | transaction_index | Zero-based index of the transaction within the block |
 | event_index       | Zero-based index of the event within the transaction |
 | payload           | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md)|
-
