@@ -35,6 +35,16 @@ Simply re-run the installation commands above.
 
 # Changelog
 
+## Version 0.5.1
+
+- Upgraded Cadence to [v0.5.1](https://github.com/onflow/cadence/releases/tag/v0.5.1)
+- Upgraded Flow Emulator to [v0.5.1](https://github.com/onflow/flow/blob/master/docs/emulator.md#version-051)
+
+## Version 0.5.0
+
+- Upgraded Cadence to [v0.5.0](https://github.com/onflow/cadence/releases/tag/v0.5.0)
+- Upgraded Flow Emulator to [v0.5.0](https://github.com/onflow/flow/blob/master/docs/emulator.md#version-050)
+
 ## Version 0.4.0
 
 - Upgraded Cadence to [v0.4.0](https://github.com/onflow/cadence/releases/tag/v0.4.0)
