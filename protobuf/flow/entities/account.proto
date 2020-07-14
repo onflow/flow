@@ -18,4 +18,5 @@ message AccountKey {
   uint32 hash_algo = 4;
   uint32 weight = 5;
   uint32 sequence_number = 6;
+  bool revoked = 7;
 }
