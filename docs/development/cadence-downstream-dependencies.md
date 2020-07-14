@@ -1,4 +1,4 @@
-# Updating the Cadence Downstream Dependencies
+# Updating the Cadence Downstream Dependencies / Releasing the CLI
 
 Updating the Cadence downstream dependencies should be done in the following steps:
 
@@ -29,3 +29,7 @@ Updating the Cadence downstream dependencies should be done in the following ste
    - Update `github.com/dapperlabs/flow-emulator` to the new release
    - Update `github.com/onflow/flow-go-sdk` to the new release
    - Tag a new release and push it
+   - Run `make versioned-binaries` to build the binaries
+   - Upload the binaries (`cmd/flow/flow-*`) to https://console.cloud.google.com/storage/browser/flow-cli/?project=dl-flow&authuser=0
+   - Change the contents of `version.txt` in the bucket to `vX.X.X`
+   
