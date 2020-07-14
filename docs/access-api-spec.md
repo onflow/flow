@@ -920,6 +920,7 @@ message AccountKey {
   uint32 hash_algo
   uint32 weight
   uint32 sequence_number
+  bool revoked
 }
 ```
 
@@ -931,6 +932,7 @@ message AccountKey {
 | hash_algo       | [Hash algorithm](/docs/accounts-and-keys.md#supported-signature--hash-algorithms) |
 | weight          | [Weight assigned to the key](/docs/accounts-and-keys.md#weighted-keys) |
 | sequence_number | [Sequence number for the key](/docs/accounts-and-keys.md#sequence-numbers) |
+| revoked         | Flag showing whether or not the key has been revoked |
 
 More information on account keys, key weights and sequence numbers can be found [here](/docs/accounts-and-keys.md).
 
