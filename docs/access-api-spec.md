@@ -415,7 +415,7 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
 
 `GetAccount` gets an [account](#account) by address at the latest sealed block.
 
-Note: this function behaves identically to `GetAccountAtLatestBlock` and will be deprecated in a future version.
+⚠️ Warning: this function is deprecated. It behaves identically to `GetAccountAtLatestBlock` and will be removed in a future version.
 
 ```
 rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
