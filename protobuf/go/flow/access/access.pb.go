@@ -1508,6 +1508,8 @@ type AccessAPIClient interface {
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
+	//
+	// Warning: this function is deprecated. It behaves identically to GetAccountAtLatestBlock and will be removed in a future version.
 	GetAccount(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*GetAccountResponse, error)
 	// GetAccountAtLatestBlock gets an account by address from the latest sealed execution state.
 	GetAccountAtLatestBlock(ctx context.Context, in *GetAccountAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountResponse, error)
@@ -1740,6 +1742,8 @@ type AccessAPIServer interface {
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(context.Context, *GetTransactionRequest) (*TransactionResultResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
+	//
+	// Warning: this function is deprecated. It behaves identically to GetAccountAtLatestBlock and will be removed in a future version.
 	GetAccount(context.Context, *GetAccountRequest) (*GetAccountResponse, error)
 	// GetAccountAtLatestBlock gets an account by address from the latest sealed execution state.
 	GetAccountAtLatestBlock(context.Context, *GetAccountAtLatestBlockRequest) (*AccountResponse, error)

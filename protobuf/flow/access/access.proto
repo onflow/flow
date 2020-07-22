@@ -50,6 +50,8 @@ service AccessAPI {
   // Accounts
 
   // GetAccount is an alias for GetAccountAtLatestBlock.
+  //
+  // Warning: this function is deprecated. It behaves identically to GetAccountAtLatestBlock and will be removed in a future version.
   rpc GetAccount (GetAccountRequest) returns (GetAccountResponse);
   // GetAccountAtLatestBlock gets an account by address from the latest sealed execution state.
   rpc GetAccountAtLatestBlock (GetAccountAtLatestBlockRequest) returns (AccountResponse);
