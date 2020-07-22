@@ -23,6 +23,7 @@
     - [GetTransaction](#gettransaction)
     - [GetTransactionResult](#gettransactionresult)
   - [Accounts](#accounts)
+    - [GetAccount](#getaccount)
     - [GetAccountAtLatestBlock](#getaccountatlatestblock)
     - [GetAccountAtBlockHeight](#getaccountatblockheight)
   - [Scripts](#scripts)
@@ -409,6 +410,36 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
 --- 
 
 ### Accounts
+
+#### GetAccount
+
+`GetAccount` gets an [account](#account) by address at the latest sealed block.
+
+Note: this function behaves identically to `GetAccountAtLatestBlock` and will be deprecated in a future version.
+
+```
+rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
+```
+
+<details>
+  <summary>Request</summary>
+
+  ```
+  message GetAccountRequest {
+    bytes address
+  }
+  ```
+</details>
+
+<details>
+  <summary>Response</summary>
+  
+  ```
+  message GetAccountResponse {
+    Account account
+  }
+  ```
+</details>
 
 #### GetAccountAtLatestBlock
 
