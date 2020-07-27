@@ -1,6 +1,6 @@
 # Flow Emulator
 
-> Version 0.5.1
+> Version 0.7.0
 
 The Flow Emulator is a lightweight tool that emulates
 the behaviour of the real Flow network.
@@ -135,6 +135,22 @@ This version of the emulator is included in v0.5.1 of the [Flow CLI](./cli.md).
 ```
 docker run -p 3569:3569 gcr.io/dl-flow/emulator:v0.5.1
 ```
+
+---
+
+## Version 0.7.0
+
+## SDK Compatibility
+
+| Flow Go SDK v0.6.0 | Flow Go SDK v0.7.0 | Flow Go SDK v0.7.1 | Flow Go SDK v0.8.0
+|--|--|--|--|
+|❌|✅|✅|✅|
+
+## ⭐ Features
+
+`GetAccount` was reintroduced to provide backwards compatibility for clients that do not yet support the `GetAccountAtLatestBlock` method.
+
+This method is simply an alias for `GetAccountAtLatestBlock`. The emulator now implements _both_ methods.
 
 ---
 

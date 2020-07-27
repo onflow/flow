@@ -1,6 +1,6 @@
 # Flow CLI
 
-> Version 0.5.1
+> Version 0.7.0
 
 The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.
 
@@ -34,6 +34,10 @@ _This installation method only works on Windows 10, 8.1, or 7 (SP1, with [PowerS
 Simply re-run the installation commands above.
 
 # Changelog
+
+## Version 0.7.0
+
+- Upgrade Flow Emulator to [v0.7.0](https://github.com/onflow/flow/blob/master/docs/emulator.md#version-070)
 
 ## Version 0.5.1
 
