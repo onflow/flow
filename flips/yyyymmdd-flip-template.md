@@ -1,12 +1,12 @@
-# Title of RFC
+# Title of FLIP
 
 | Status        | (Proposed / Accepted / Implemented / Obsolete)       |
 :-------------- |:---------------------------------------------------- |
-| **RFC #**     | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
+| **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
 | **Author(s)** | My Name (me@example.org), AN Other (you@example.org) |
 | **Sponsor**   | A N Expert (core-contributor@example.org)            |
 | **Updated**   | YYYY-MM-DD                                           |
-| **Obsoletes** | RFC it replaces, else remove this header             |
+| **Obsoletes** | FLIP it replaces, else remove this header            |
 
 ## Objective
 
@@ -36,7 +36,7 @@ your chosen approach is superior.
 
 Make sure you’ve thought through and addressed the following sections. If a 
 section is not relevant to your specific proposal, please explain why, e.g. 
-your RFC addresses a convention or process, not an API.
+your FLIP addresses a convention or process, not an API.
 
 ### Alternatives Considered
 * Make sure to discuss the relative merits of alternatives to your proposal.
@@ -75,4 +75,4 @@ your RFC addresses a convention or process, not an API.
 
 ## Questions and Discussion Topics
 
-Seed this with open questions you require feedback on from the RFC process.
+Seed this with open questions you require feedback on from the FLIP process.
