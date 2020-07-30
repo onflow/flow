@@ -64,7 +64,7 @@ your FLIP addresses a convention or process, not an API.
     - The code does not need to work (since the feature is not implemented yet) but the expectation is that the code does work before the feature can be merged. 
 
 ### Compatibility
-* Does the design conform to the backwards & forwards compatibility [requirements](../docs/compatibility)?
+* Does the design conform to the backwards & forwards compatibility [requirements](../docs/compatibility.md)?
 * How will this proposal interact with other parts of the Flow Ecosystem?
     - How will it work with FCL?
     - How will it work with the Emulator?
