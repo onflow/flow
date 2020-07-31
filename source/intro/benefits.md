@@ -1,5 +1,5 @@
 ---
-title: Why GraphQL?
+title: Why Flow?
 description: GraphQL and Apollo help you ship features faster
 ---
 

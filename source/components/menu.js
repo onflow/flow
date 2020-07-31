@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { NavItemTitle } from 'gatsby-theme-apollo-docs';
+import { NavItemTitle } from 'gatsby-theme-flow';
 import { size } from 'polished';
 import { colors } from '@apollo/space-kit/colors';
 

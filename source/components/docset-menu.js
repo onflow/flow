@@ -7,7 +7,7 @@ import { ReactComponent as ReactLogo } from '../assets/react-logo.svg';
 import {
   NavItemsContext,
   NavItemDescription
-} from 'gatsby-theme-apollo-docs';
+} from 'gatsby-theme-flow';
 import { colors } from '@apollo/space-kit/colors';
 import { size } from 'polished';
 import { MenuWrapper, MenuItem } from './menu';

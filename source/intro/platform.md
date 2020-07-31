@@ -1,5 +1,5 @@
 ---
-title: The Apollo platform
+title: The Flow platform
 description: Bring your data graph from prototype to production
 ---
 
