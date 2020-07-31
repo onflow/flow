@@ -51,7 +51,9 @@ contributors and maintainers and get early feedback. Use the [Flow community for
 
    Include the header table and the contents of the **Objective** section 
    in the comment of your pull request, using Markdown. For an example,
-   please see [this example FLIP](https://github.com/onflow/flow/pull/5). Include a mention of any of the GitHub handles of co-authors, reviewers, and sponsors.
+   please see [this example FLIP](https://github.com/onflow/flow/pull/5). 
+   Include a mention of any of the GitHub handles of co-authors, reviewers 
+   and sponsors.
 
    At the top of the PR identify how long the comment period will be. This
    should be a minimum of two weeks from posting the PR.
@@ -72,8 +74,7 @@ contributors and maintainers and get early feedback. Use the [Flow community for
 While implementation code is not necessary to start the FLIP process, its
 existence in full or part may help the design discussion.
 
-If in any doubt about this process, feel free to ask on the
-developers mailing list or file an issue in [onflow/flow](https://github.com/onflow/flow/issues).
+If in any doubt about this process, feel free to ask on [Discord](https://discord.gg/flow), the [community forum](https://forum.onflow.org/), or file an issue in [onflow/flow](https://github.com/onflow/flow/issues).
 
 ## Community members
 
