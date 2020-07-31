@@ -4,7 +4,7 @@
 :-------------- |:---------------------------------------------------- |
 | **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
 | **Author(s)** | My Name (me@example.org), AN Other (you@example.org) |
-| **Sponsor**   | A N Expert (core-contributor@example.org)            |
+| **Sponsor**   | AN Expert (core-contributor@example.org)             |
 | **Updated**   | YYYY-MM-DD                                           |
 | **Obsoletes** | FLIP it replaces, else remove this header            |
 
