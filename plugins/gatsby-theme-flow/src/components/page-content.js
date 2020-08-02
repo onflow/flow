@@ -6,7 +6,9 @@ import useMount from 'react-use/lib/useMount';
 import {HEADER_HEIGHT} from '../utils';
 import {FaGithub, FaDiscord} from 'react-icons/fa';
 import {IconSchema} from '@apollo/space-kit/icons/IconSchema';
-import {PageNav, breakpoints, colors} from 'gatsby-theme-apollo-core';
+import {colors} from '../utils/colors';
+import breakpoints from '../utils/breakpoints';
+import PageNav from './page-nav';
 import {withPrefix} from 'gatsby';
 
 const Wrapper = styled.div({

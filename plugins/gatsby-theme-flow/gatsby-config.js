@@ -1,6 +1,7 @@
 const path = require('path');
+const mapKeys = require('lodash/mapKeys');
 const remarkTypescript = require('remark-typescript');
-const {colors} = require('gatsby-theme-apollo-core/src/utils/colors');
+const {colors} = require('./src/utils/colors');
 const {HEADER_HEIGHT} = require('./src/utils');
 
 module.exports = ({
@@ -105,7 +106,15 @@ module.exports = ({
   ];
 
   const plugins = [
-    'gatsby-theme-apollo-core',
+    'gatsby-plugin-svgr',
+    'gatsby-plugin-emotion',
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-less',
+      options: {
+        modifyVars: mapKeys(colors, (value, key) => `color-${key}`)
+      }
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import FlowLogo from '../../assets/flow-logo.svg';
-import {ReactComponent as DocsIcon} from '../../assets/docs.svg';
+import FlowLogo from '../assets/flow-logo.svg';
+import {ReactComponent as DocsIcon} from '../assets/docs.svg';
 
 const Wrapper = styled.div({
   display: 'flex',

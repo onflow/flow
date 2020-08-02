@@ -22,7 +22,6 @@
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-source-git": "^1.0.1",
     "gatsby-theme-flow": "file:./plugins/gatsby-theme-flow",
-    "gatsby-theme-apollo-core": "file:./vendor/gatsby-theme-apollo-core",
     "gatsby-transformer-remark": "^2.6.30",
     "js-yaml": "^3.13.1",
     "prismjs": "^1.15.0",
@@ -38,11 +37,6 @@
     "simple-git": "^2.7.0",
     "source-sans-pro": "^3.6.0",
     "striptags": "^3.1.1"
-  },
-  "devDependencies": {
-    "gatsby": "^2.19.49",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
   },
   "peerDependencies": {
     "gatsby": "^2.13.80",

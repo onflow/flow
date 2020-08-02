@@ -5,8 +5,8 @@ import TextFit from 'react-textfit';
 import {ApolloIcon} from '@apollo/space-kit/icons/ApolloIcon';
 import {Global, css} from '@emotion/core';
 import {IconArrowRight} from '@apollo/space-kit/icons/IconArrowRight';
-import {colors} from 'gatsby-theme-apollo-core/src/utils/colors';
-import {smallCaps} from 'gatsby-theme-apollo-core/src/utils/typography';
+import {colors} from '../utils/colors';
+import {smallCaps} from '../utils/typography';
 
 const {fonts, image} = preval`
   const fs = require('fs');

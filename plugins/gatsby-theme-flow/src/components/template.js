@@ -8,7 +8,9 @@ import PropTypes from 'prop-types';
 import React, {Fragment, createContext, useContext} from 'react';
 import rehypeReact from 'rehype-react';
 import styled from '@emotion/styled';
-import {ContentWrapper, colors, smallCaps} from 'gatsby-theme-apollo-core';
+import ContentWrapper from './content-wrapper';
+import {colors} from '../utils/colors';
+import {smallCaps} from '../utils/typography';
 import {MDXProvider} from '@mdx-js/react';
 import {graphql, navigate} from 'gatsby';
 

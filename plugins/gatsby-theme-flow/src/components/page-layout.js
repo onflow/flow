@@ -9,16 +9,14 @@ import Search from './search';
 import styled from '@emotion/styled';
 import useLocalStorage from 'react-use/lib/useLocalStorage';
 import {Button} from '@apollo/space-kit/Button';
-import {
-  FlexWrapper,
-  Layout,
-  MenuButton,
-  Sidebar,
-  SidebarNav,
-  breakpoints,
-  colors,
-  useResponsiveSidebar
-} from 'gatsby-theme-apollo-core';
+import {colors} from '../utils/colors';
+import breakpoints from '../utils/breakpoints';
+import FlexWrapper from './flex-wrapper';
+import Layout from './layout';
+import MenuButton from './menu-button';
+import Sidebar from './sidebar';
+import SidebarNav from './sidebar-nav';
+import {useResponsiveSidebar} from './responsive-sidebar';
 import {Helmet} from 'react-helmet';
 import {IconLayoutModule} from '@apollo/space-kit/icons/IconLayoutModule';
 import {Link, graphql, navigate, useStaticQuery} from 'gatsby';

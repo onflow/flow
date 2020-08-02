@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import {IconArrowDown} from '@apollo/space-kit/icons/IconArrowDown';
 import {IconArrowUp} from '@apollo/space-kit/icons/IconArrowUp';
 import {IconCheck} from '@apollo/space-kit/icons/IconCheck';
-import {colors} from 'gatsby-theme-apollo-core';
+import {colors} from '../utils/colors';
 import {size, transparentize} from 'polished';
 
 const Container = styled.div({

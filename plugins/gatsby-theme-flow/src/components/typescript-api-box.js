@@ -7,7 +7,8 @@ import remark from 'remark';
 import remark2react from 'remark-react';
 import styled from '@emotion/styled';
 import withProps from 'recompose/withProps';
-import {colors, smallCaps} from 'gatsby-theme-apollo-core';
+import {colors} from '../utils/colors';
+import {smallCaps} from '../utils/typography';
 
 const Container = styled.div({
   border: `1px solid ${colors.divider}`,

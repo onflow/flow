@@ -7,8 +7,8 @@ import {IconExpandList} from '@apollo/space-kit/icons/IconExpandList';
 import {IconOutlink} from '@apollo/space-kit/icons/IconOutlink';
 import {Link, withPrefix} from 'gatsby';
 import {colors} from '../utils/colors';
-import {size} from 'polished';
 import {smallCaps} from '../utils/typography';
+import {size} from 'polished';
 
 const ExpandAll = styled.button(smallCaps, {
   display: 'flex',

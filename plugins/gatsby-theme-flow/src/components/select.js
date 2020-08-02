@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import useClickAway from 'react-use/lib/useClickAway';
 import {Button} from '@apollo/space-kit/Button';
 import {IconArrowDown} from '@apollo/space-kit/icons/IconArrowDown';
-import {colors} from 'gatsby-theme-apollo-core';
+import {colors} from '../utils/colors';
 import {size} from 'polished';
 
 const Wrapper = styled.div({

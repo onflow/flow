@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import breakpoints from '../utils/breakpoints';
 import styled from '@emotion/styled';
 import {IconArrowLeft} from '@apollo/space-kit/icons/IconArrowLeft';
 import {IconArrowRight} from '@apollo/space-kit/icons/IconArrowRight';
 import {Link} from 'gatsby';
 import {colors} from '../utils/colors';
-import {size} from 'polished';
+import breakpoints from '../utils/breakpoints';
 import {smallCaps} from '../utils/typography';
+import {size} from 'polished';
 
 const Container = styled.nav({
   display: 'flex',
