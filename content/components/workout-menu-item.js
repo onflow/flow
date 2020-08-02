@@ -1,7 +1,7 @@
 import { MenuItem } from './menu';
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors } from 'gatsby-theme-apollo-core';
+import { colors } from 'gatsby-theme-flow/src/utils/colors';
 import { MDXProvider } from '@mdx-js/react';
 
 const InnerWrapper = styled.div({
