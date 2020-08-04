@@ -7,6 +7,7 @@ import React from "react";
 import classnames from "classnames";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { assertUnreachable } from "./shared/assertUnreachable";
+import { ShadedColor, getOffsetInPalette } from './utils/colors';
 
 type TLength = string | 0 | number;
 
@@ -58,7 +59,13 @@ function getTextColor({
         : undefined;
     case "flat":
       if (color === defaultColor) {
-        return colors.grey.darker;
+        return theme === "dark" ? colors.grey.light : colors.grey.darker;
+      }
+
+      // We have a custom color and we're in dark mode, lighten the base and
+      // focused colors 1 shade.
+      if (theme === "dark" && (!mode || mode === ":focus")) {
+        return getOffsetInPalette(1, "lighter", color);
       }
 
       return color;
@@ -101,7 +108,27 @@ function getHoverBackgroundColor({
   feel: NonNullable<Props["feel"]>;
   theme: NonNullable<Props["theme"]>;
 }): CSS.BackgroundColorProperty {
-  return colors.silver.light;
+  if (color === colors.white) {
+    // Special case for secondary buttons
+    return colors.silver.light;
+  }
+
+  switch (feel) {
+    case "flat":
+      // Hardcode if we're using the default color (special case), otherwise get
+      // the next lightest color.
+      if (color === defaultColor) {
+        return theme === "light" ? colors.silver.light : colors.grey.dark;
+      }
+
+      return getOffsetInPalette(Infinity, "lighter", color);
+    case "raised":
+      // One shade darker
+      return getOffsetInPalette(1, "darker", color);
+    /* istanbul ignore next */
+    default:
+      throw assertUnreachable(feel);
+  }
 }
 
 // Types that could use some improvement:
@@ -136,7 +163,7 @@ interface Props
    *
    * @default colors.silver.light
    */
-  color?: typeof colors["white"];
+  color?: ShadedColor | typeof colors["white"];
 
   /**
    * If the button will appear and behave disabled.
@@ -404,7 +431,17 @@ export const Button = React.forwardRef<HTMLElement, Props>(
                     // The `box-shadow` property is copied directly from Zeplin for the
                     // light theme. For the dark theme we use a variant of the color to
                     // make the borders sharp.
-                    boxShadow: `0 1px 4px 0 rgba(18, 21, 26, 0.08), 0 0 0 2px #bbdbff, inset 0 0 0 1px #2075d6, inset 0 -1px 0 0 rgba(18, 21, 26, 0.05)`,
+                    boxShadow: `0 1px 4px 0 rgba(18, 21, 26, 0.08), 0 0 0 2px ${
+                      theme === "light" ||
+                      color === defaultColor ||
+                      color === colors.white
+                        ? "#bbdbff"
+                        : getOffsetInPalette(Infinity, "lighter", color)
+                    }, inset 0 0 0 1px ${
+                      color === defaultColor || color === colors.white
+                        ? "#2075d6"
+                        : getOffsetInPalette(1, "darker", color)
+                    }, inset 0 -1px 0 0 rgba(18, 21, 26, 0.05)`,
                   },
                   "&:active, &[data-force-active-state], &[aria-expanded=true]": {
                     ...(getTextColor({
@@ -421,7 +458,16 @@ export const Button = React.forwardRef<HTMLElement, Props>(
                       }),
                     }),
 
-                    backgroundColor: colors.white,
+                    backgroundColor:
+                      color === colors.white
+                        ? colors.white
+                        : feel === "raised"
+                        ? color
+                        : color === defaultColor
+                        ? theme === "dark"
+                          ? colors.grey.darker
+                          : colors.silver.base
+                        : getOffsetInPalette(2, "lighter", color),
 
                     // The `box-shadow` properties are copied directly from Zeplin
                     boxShadow:
