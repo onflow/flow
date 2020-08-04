@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { NavItemTitle } from 'gatsby-theme-flow';
 import { size } from 'polished';
-import { colors } from '@apollo/space-kit/colors';
+import { theme } from 'gatsby-theme-flow/src/colors';
 
 export const MenuWrapper = styled.div({
   display: 'grid',
@@ -22,7 +22,7 @@ const IconWrapper = styled.div({
 });
 
 const TextWrapper = styled.div({
-  color: colors.text1
+  color: theme.text1
 });
 
 export function MenuItem({icon, title, children, ...props}) {

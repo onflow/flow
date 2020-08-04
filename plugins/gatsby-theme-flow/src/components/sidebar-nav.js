@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
 import React, {useRef, useState} from 'react';
 import styled from '@emotion/styled';
-import {IconArrowUp} from '@apollo/space-kit/icons/IconArrowUp';
-import {IconCollapseList} from '@apollo/space-kit/icons/IconCollapseList';
-import {IconExpandList} from '@apollo/space-kit/icons/IconExpandList';
-import {IconOutlink} from '@apollo/space-kit/icons/IconOutlink';
+import {FaChevronUp, FaExternalLinkAlt} from 'react-icons/fa';
+import {IconExpandList, IconCollapseList} from '../ui/icons';
 import {Link, withPrefix} from 'gatsby';
-import {colors} from '../utils/colors';
+import {theme} from '../colors';
 import {smallCaps} from '../utils/typography';
 import {size} from 'polished';
 
@@ -24,7 +22,7 @@ const ExpandAll = styled.button(smallCaps, {
   cursor: 'pointer',
   color: 'inherit',
   ':hover': {
-    opacity: colors.hoverOpacity
+    opacity: theme.hoverOpacity
   },
   svg: {
     ...size(12),
@@ -46,10 +44,10 @@ const StyledListItem = styled.li({
     color: 'inherit',
     textDecoration: 'none',
     ':hover': {
-      opacity: colors.hoverOpacity
+      opacity: theme.hoverOpacity
     },
     '&.active': {
-      color: colors.primary,
+      color: theme.primary,
       pointerEvents: 'none'
     }
   }
@@ -69,14 +67,14 @@ const categoryTitleStyles = {
   alignItems: 'center',
   justifyContent: 'space-between',
   padding: '12px 0',
-  color: colors.text1,
+  color: theme.text1,
   fontWeight: 'bold',
   fontSize: 14,
   lineHeight: '15px',
   ...smallCaps,
   svg: size(10),
   '&.active': {
-    color: colors.primary
+    color: theme.primary
   }
 };
 
@@ -84,7 +82,7 @@ const CategoryTitle = styled.div(categoryTitleStyles);
 const CategoryLink = styled(Link)(categoryTitleStyles, {
   textDecoration: 'none',
   ':hover': {
-    opacity: colors.hoverOpacity
+    opacity: theme.hoverOpacity
   }
 });
 
@@ -97,7 +95,7 @@ const StyledCheckbox = styled.input({
   opacity: 0,
   zIndex: 1,
   [`:hover ~ ${CategoryTitle}`]: {
-    opacity: colors.hoverOpacity
+    opacity: theme.hoverOpacity
   },
   ':not(:checked) ~': {
     [`${CategoryTitle} svg`]: {
@@ -109,10 +107,10 @@ const StyledCheckbox = styled.input({
   }
 });
 
-const StyledOutlinkIcon = styled(IconOutlink)(size(14), {
+const StyledOutlinkIcon = styled(FaExternalLinkAlt)(size(14), {
   verticalAlign: -1,
   marginLeft: 8,
-  color: colors.text3
+  color: theme.text3
 });
 
 function isPageSelected(path, pathname) {
@@ -232,7 +230,7 @@ export default function SidebarNav(props) {
               ) : (
                 <CategoryTitle className={className}>
                   {category.title}
-                  {!props.alwaysExpanded && <IconArrowUp />}
+                  {!props.alwaysExpanded && <FaChevronUp />}
                 </CategoryTitle>
               )}
               <NavItems

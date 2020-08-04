@@ -1,14 +1,12 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import { ReactComponent as AppleLogo } from '../assets/apple-logo.svg';
-import { IconSatellite3 } from '@apollo/space-kit/icons/IconSatellite3';
-import { IconSchema } from '@apollo/space-kit/icons/IconSchema';
 import { ReactComponent as ReactLogo } from '../assets/react-logo.svg';
 import {
   NavItemsContext,
   NavItemDescription
 } from 'gatsby-theme-flow';
-import { colors } from '@apollo/space-kit/colors';
+import { colors } from 'gatsby-theme-flow/src/colors';
 import { size } from 'polished';
 import { MenuWrapper, MenuItem } from './menu';
 
@@ -46,9 +44,7 @@ const StyledLink = styled.a({
 });
 
 const icons = [
-  <IconSatellite3 weight="thin" />,
   <ReactLogo />,
-  <IconSchema weight="thin" />,
   <AppleLogo style={{
     padding: 1,
     paddingTop: 0,

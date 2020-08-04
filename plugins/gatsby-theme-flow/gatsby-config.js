@@ -1,7 +1,7 @@
 const path = require('path');
 const mapKeys = require('lodash/mapKeys');
 const remarkTypescript = require('remark-typescript');
-const {colors} = require('./src/utils/colors');
+const {theme} = require('./src/colors');
 const {HEADER_HEIGHT} = require('./src/utils');
 
 module.exports = ({
@@ -30,67 +30,6 @@ module.exports = ({
         ignoreFileExtensions: []
       }
     },
-    {
-      resolve: 'gatsby-remark-mermaid',
-      options: {
-        mermaidOptions: {
-          themeCSS: `
-            .node rect,
-            .node circle,
-            .node polygon,
-            .node path {
-              stroke-width: 2px;
-              stroke: ${colors.primary};
-              fill: ${colors.background};
-            }
-            .node.secondary rect,
-            .node.secondary circle,
-            .node.secondary polygon,
-            .node.tertiary rect,
-            .node.tertiary circle,
-            .node.tertiary polygon {
-              fill: white;
-            }
-            .node.secondary rect,
-            .node.secondary circle,
-            .node.secondary polygon {
-              stroke: ${colors.secondary};
-            }
-            .cluster rect,
-            .node.tertiary rect,
-            .node.tertiary circle,
-            .node.tertiary polygon {
-              stroke: ${colors.tertiaryLight};
-            }
-            .cluster rect {
-              fill: none;
-              stroke-width: 2px;
-            }
-            .edgeLabel {
-              background-color: white;
-            }
-            .messageText, .noteText, .loopText {
-              font-size: 12px;
-            }
-            g rect, polygon.labelBox {
-              stroke-width: 2px;
-            }
-            g rect.actor {
-              stroke: ${colors.tertiary};
-              fill: white;
-            }
-            g rect.note {
-              stroke: ${colors.secondary};
-              fill: white;
-            }
-            g line.loopLine, polygon.labelBox {
-              stroke: ${colors.primary};
-              fill: white;
-            }
-          `
-        }
-      }
-    },
     'gatsby-remark-code-titles',
     {
       resolve: 'gatsby-remark-prismjs',
@@ -112,8 +51,11 @@ module.exports = ({
     {
       resolve: 'gatsby-plugin-less',
       options: {
-        modifyVars: mapKeys(colors, (value, key) => `color-${key}`)
-      }
+        modifyVars: mapKeys(theme, (value, key) => `color-${key}`),
+        lessOptions: {
+          relativeUrls: false,
+        },
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',

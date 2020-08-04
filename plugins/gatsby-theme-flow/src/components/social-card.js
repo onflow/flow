@@ -2,10 +2,10 @@
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
 import TextFit from 'react-textfit';
-import {ApolloIcon} from '@apollo/space-kit/icons/ApolloIcon';
+import {ApolloIcon} from '../ui/icons';
 import {Global, css} from '@emotion/core';
-import {IconArrowRight} from '@apollo/space-kit/icons/IconArrowRight';
-import {colors} from '../utils/colors';
+import {FaArrowRight} from 'react-icons/fa';
+import {theme} from '../colors';
 import {smallCaps} from '../utils/typography';
 
 const {fonts, image} = preval`
@@ -66,7 +66,7 @@ export default function SocialCard(props) {
           fontSize: 32,
           fontWeight: 600,
           marginBottom: 16,
-          color: colors.primaryLight,
+          color: theme.primaryLight,
           ...smallCaps
         }}
       >
@@ -74,7 +74,7 @@ export default function SocialCard(props) {
         {props.category && (
           <Fragment>
             {' '}
-            <IconArrowRight
+            <FaArrowRight
               className="arrow-icon"
               style={{
                 width: '0.5em',
@@ -94,7 +94,7 @@ export default function SocialCard(props) {
           height: 250,
           marginBottom: 'auto',
           lineHeight: 1.2,
-          colors: colors.text1
+          colors: theme.text1
         }}
       >
         {props.title.replace(/\s+(\S*)$/, '\xA0$1')}

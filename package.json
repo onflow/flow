@@ -6,11 +6,14 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "@apollo/space-kit": "^5.6.0",
     "@emotion/core": "^10.0.7",
     "@emotion/styled": "^10.0.7",
     "@mdx-js/mdx": "^1.1.0",
     "@mdx-js/react": "^1.0.27",
+    "@svgr/webpack": "^4.2.0",
+    "@types/classnames": "^2.2.9",
+    "@types/tinycolor2": "^1.4.2",
+    "classnames": "^2.2.6",
     "gatsby": "2.24.11",
     "gatsby-plugin-emotion": "^4.0.3",
     "gatsby-plugin-google-analytics": "^2.2.5",
@@ -33,6 +36,7 @@
     "js-yaml": "^3.13.1",
     "less": "^3.10.1",
     "lodash": "^4.17.14",
+    "normalize.css": "^8.0.1",
     "polished": "^2.3.3",
     "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
@@ -50,7 +54,7 @@
     "simple-git": "^2.7.0",
     "source-sans-pro": "^3.6.0",
     "striptags": "^3.1.1",
-    "@svgr/webpack": "^4.2.0"
+    "tinycolor2": "^1.4.1"
   },
   "peerDependencies": {
     "gatsby": "^2.13.80",

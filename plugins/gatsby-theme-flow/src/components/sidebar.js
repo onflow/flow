@@ -2,7 +2,7 @@ import Logo from './logo';
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
 import styled from '@emotion/styled';
-import {colors} from '../utils/colors';
+import {theme} from '../colors';
 import breakpoints from '../utils/breakpoints';
 import {transparentize} from 'polished';
 
@@ -11,7 +11,7 @@ const Container = styled.aside({
   width: 312,
   height: '100vh',
   padding: 24,
-  borderRight: `1px solid ${colors.divider}`,
+  borderRight: `1px solid ${theme.divider}`,
   overflowY: 'auto',
   position: 'sticky',
   top: 0
@@ -39,7 +39,7 @@ const Header = styled.div({
 });
 
 const StyledLink = styled.a({
-  color: colors.text1,
+  color: theme.text1,
   textDecoration: 'none'
 });
 

@@ -1,14 +1,14 @@
 import { MenuItem } from './menu';
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors } from 'gatsby-theme-flow/src/utils/colors';
+import { theme } from 'gatsby-theme-flow/src/colors';
 import { MDXProvider } from '@mdx-js/react';
 
 const InnerWrapper = styled.div({
   marginTop: '1rem',
   ul: {
     marginLeft: 0,
-    color: colors.text2
+    color: theme.text2
   },
   li: {
     fontSize: '1rem',
@@ -43,7 +43,7 @@ const components = {
 export default function WorkoutMenuItem(props) {
   return (
     <MenuItem
-      style={{color: colors.text1}}
+      style={{color: theme.text1}}
       icon={(
         React.createElement(props.icon, {
           style: {

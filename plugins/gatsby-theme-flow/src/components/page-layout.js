@@ -8,8 +8,8 @@ import React, {createContext, useMemo, useRef, useState} from 'react';
 import Search from './search';
 import styled from '@emotion/styled';
 import useLocalStorage from 'react-use/lib/useLocalStorage';
-import {Button} from '@apollo/space-kit/Button';
-import {colors} from '../utils/colors';
+import {Button} from '../ui/Button';
+import {theme} from '../colors';
 import breakpoints from '../utils/breakpoints';
 import FlexWrapper from './flex-wrapper';
 import Layout from './layout';
@@ -18,7 +18,7 @@ import Sidebar from './sidebar';
 import SidebarNav from './sidebar-nav';
 import {useResponsiveSidebar} from './responsive-sidebar';
 import {Helmet} from 'react-helmet';
-import {IconLayoutModule} from '@apollo/space-kit/icons/IconLayoutModule';
+import {FaCaretSquareDown} from 'react-icons/fa';
 import {Link, graphql, navigate, useStaticQuery} from 'gatsby';
 import {MobileLogo} from './mobile-logo';
 import {Select} from './select';
@@ -38,11 +38,11 @@ const ButtonWrapper = styled.div({
 const StyledButton = styled(Button)({
   width: '100%',
   ':not(:hover)': {
-    backgroundColor: colors.background
+    backgroundColor: theme.background
   }
 });
 
-const StyledIcon = styled(IconLayoutModule)(size(16), {
+const StyledIcon = styled(FaCaretSquareDown)(size(16), {
   marginLeft: 'auto'
 });
 
@@ -52,7 +52,7 @@ const MobileNav = styled.div({
     display: 'flex',
     alignItems: 'center',
     marginRight: 32,
-    color: colors.text1
+    color: theme.text1
   }
 });
 
@@ -66,8 +66,8 @@ const HeaderInner = styled.span({
 const Eyebrow = styled.div({
   flexShrink: 0,
   padding: '8px 56px',
-  backgroundColor: colors.background,
-  color: colors.primary,
+  backgroundColor: theme.background,
+  color: theme.primary,
   fontSize: 14,
   position: 'sticky',
   top: 0,
@@ -203,7 +203,7 @@ export default function PageLayout(props) {
               <ButtonWrapper ref={buttonRef}>
                 <StyledButton
                   feel="flat"
-                  color={colors.primary}
+                  color={theme.primary}
                   size="small"
                   onClick={openMenu}
                   style={{display: 'flex'}}

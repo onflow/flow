@@ -1,19 +1,17 @@
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
 import styled from '@emotion/styled';
-import {IconArrowDown} from '@apollo/space-kit/icons/IconArrowDown';
-import {IconArrowUp} from '@apollo/space-kit/icons/IconArrowUp';
-import {IconCheck} from '@apollo/space-kit/icons/IconCheck';
-import {colors} from '../utils/colors';
+import {FaChevronUp, FaChevronDown, FaCheck} from 'react-icons/fa';
+import {theme} from '../colors';
 import {size, transparentize} from 'polished';
 
 const Container = styled.div({
   marginBottom: '1.45rem',
-  borderLeft: `2px solid ${colors.primary}`
+  borderLeft: `2px solid ${theme.primary}`
 });
 
 const InnerContainer = styled.div({
-  border: `1px solid ${colors.text4}`,
+  border: `1px solid ${theme.text4}`,
   borderLeft: 0,
   borderTopRightRadius: 4,
   borderBottomRightRadius: 4
@@ -29,7 +27,7 @@ const StyledButton = styled.button({
   padding: `12px ${horizontalPadding}px`,
   border: 0,
   fontSize: 16,
-  color: colors.primary,
+  color: theme.primary,
   lineHeight: 'calc(5/3)',
   textAlign: 'left',
   background: 'none',
@@ -49,7 +47,7 @@ const StyledButton = styled.button({
 
 const Content = styled.div({
   padding: `8px ${horizontalPadding + iconSize + iconMargin}px`,
-  color: colors.text1,
+  color: theme.text1,
   p: {
     fontSize: '1rem'
   }
@@ -61,10 +59,10 @@ const ListItemNumber = styled.div(size(lineItemNumberSize), {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  border: `1px solid ${colors.primary}`,
+  border: `1px solid ${theme.primary}`,
   borderRadius: '50%',
   fontSize: 14,
-  color: colors.primary,
+  color: theme.primary,
   textAlign: 'center',
   backgroundColor: 'white',
   position: 'absolute',
@@ -75,7 +73,7 @@ const ListItemNumber = styled.div(size(lineItemNumberSize), {
 
 export const ExpansionPanelList = styled.ul({
   marginLeft: lineItemNumberOffset,
-  borderLeft: `1px solid ${colors.primary}`,
+  borderLeft: `1px solid ${theme.primary}`,
   listStyle: 'none'
 });
 
@@ -100,7 +98,7 @@ export function ExpansionPanelListItem(props) {
   return (
     <StyledListItem>
       <ListItemNumber>
-        {props.number === 'check' ? <IconCheck /> : props.number}
+        {props.number === 'check' ? <FaCheck /> : props.number}
       </ListItemNumber>
       {props.children}
     </StyledListItem>
@@ -114,7 +112,7 @@ ExpansionPanelListItem.propTypes = {
 
 export function ExpansionPanel(props) {
   const [expanded, setExpanded] = useState(false);
-  const Icon = expanded ? IconArrowUp : IconArrowDown;
+  const Icon = expanded ? FaChevronUp : FaChevronDown;
   return (
     <Container>
       <InnerContainer>

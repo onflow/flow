@@ -2,18 +2,18 @@ import PropTypes from 'prop-types';
 import React, {useRef} from 'react';
 import styled from '@emotion/styled';
 import useCopyToClipboard from 'react-use/lib/useCopyToClipboard';
-import {Button} from '@apollo/space-kit/Button';
+import {Button} from '../ui/Button';
 import {
   GA_EVENT_CATEGORY_CODE_BLOCK,
   MultiCodeBlockContext
 } from './multi-code-block';
 import {Select} from './select';
-import {colors} from '../utils/colors';
+import {theme} from '../colors';
 import {trackCustomEvent} from 'gatsby-plugin-google-analytics';
 
 const Container = styled.div({
   marginBottom: '1.45rem',
-  border: `1px solid ${colors.divider}`,
+  border: `1px solid ${theme.divider}`,
   borderRadius: 4
 });
 
@@ -22,7 +22,7 @@ const Header = styled.div({
   alignItems: 'center',
   justifyContent: 'flex-end',
   padding: 10,
-  borderBottom: `1px solid ${colors.divider}`
+  borderBottom: `1px solid ${theme.divider}`
 });
 
 const StyledSelect = styled(Select)({
@@ -31,7 +31,7 @@ const StyledSelect = styled(Select)({
 
 const InnerContainer = styled.div({
   padding: 15,
-  backgroundColor: colors.background,
+  backgroundColor: theme.background,
   overflow: 'auto'
 });
 

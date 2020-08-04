@@ -2,16 +2,16 @@ import PropTypes from 'prop-types';
 import React, {useMemo, useRef, useState} from 'react';
 import styled from '@emotion/styled';
 import useClickAway from 'react-use/lib/useClickAway';
-import {Button} from '@apollo/space-kit/Button';
-import {IconArrowDown} from '@apollo/space-kit/icons/IconArrowDown';
-import {colors} from '../utils/colors';
+import {Button} from '../ui/Button';
+import {FaArrowDown} from 'react-icons/fa';
+import {theme} from '../colors';
 import {size} from 'polished';
 
 const Wrapper = styled.div({
   position: 'relative'
 });
 
-const StyledIcon = styled(IconArrowDown)(size('1em'), {
+const StyledIcon = styled(FaArrowDown)(size('1em'), {
   marginLeft: 12
 });
 
@@ -43,10 +43,10 @@ const MenuItem = styled.button({
   cursor: 'pointer',
   outline: 'none',
   ':hover': {
-    backgroundColor: colors.background
+    backgroundColor: theme.background
   },
   '&.selected': {
-    backgroundColor: colors.primary,
+    backgroundColor: theme.primary,
     color: 'white'
   }
 });

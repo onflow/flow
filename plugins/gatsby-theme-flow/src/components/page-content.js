@@ -5,8 +5,8 @@ import styled from '@emotion/styled';
 import useMount from 'react-use/lib/useMount';
 import {HEADER_HEIGHT} from '../utils';
 import {FaGithub, FaDiscord} from 'react-icons/fa';
-import {IconSchema} from '@apollo/space-kit/icons/IconSchema';
-import {colors} from '../utils/colors';
+import {FaUmbrellaBeach} from 'react-icons/fa';
+import {theme} from '../colors';
 import breakpoints from '../utils/breakpoints';
 import PageNav from './page-nav';
 import {withPrefix} from 'gatsby';
@@ -25,7 +25,7 @@ const BodyContent = styled.div({
   // style all anchors with an href and no prior classes
   // this helps avoid anchors with names and styled buttons
   'a[href]:not([class])': {
-    color: colors.primary,
+    color: theme.primary,
     textDecoration: 'none',
     ':hover': {
       textDecoration: 'underline'
@@ -42,7 +42,7 @@ const BodyContent = styled.div({
       color: 'inherit',
       textDecoration: 'none',
       ':hover': {
-        color: colors.text2
+        color: theme.text2
       }
     }
   },
@@ -98,10 +98,10 @@ const AsideLinkWrapper = styled.h5({
 const AsideLinkInner = styled.a({
   display: 'flex',
   alignItems: 'center',
-  color: colors.text2,
+  color: theme.text2,
   textDecoration: 'none',
   ':hover': {
-    color: colors.text3
+    color: theme.text3
   },
   svg: {
     width: 20,
@@ -214,7 +214,7 @@ export default function PageContent(props) {
         )}
         {props.graphManagerUrl && (
           <AsideLink href={props.graphManagerUrl}>
-            <IconSchema /> Demo Apollo Studio
+            <FaUmbrellaBeach /> Demo in Playground
           </AsideLink>
         )}
       </Aside>

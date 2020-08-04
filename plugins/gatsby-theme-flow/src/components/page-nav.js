@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from '@emotion/styled';
-import {IconArrowLeft} from '@apollo/space-kit/icons/IconArrowLeft';
-import {IconArrowRight} from '@apollo/space-kit/icons/IconArrowRight';
+import {FaArrowLeft, FaArrowRight} from 'react-icons/fa';
 import {Link} from 'gatsby';
-import {colors} from '../utils/colors';
+import {theme} from '../colors';
 import breakpoints from '../utils/breakpoints';
 import {smallCaps} from '../utils/typography';
 import {size} from 'polished';
@@ -24,7 +23,7 @@ const StyledLink = styled(Link)({
   textDecoration: 'none',
   svg: size(16),
   ':hover': {
-    opacity: colors.hoverOpacity
+    opacity: theme.hoverOpacity
   }
 });
 
@@ -45,7 +44,7 @@ const LinkHeading = styled.div(smallCaps, {
 });
 
 const LinkTitle = styled.div({
-  color: colors.text1
+  color: theme.text1
 });
 
 export default function PageNav(props) {
@@ -53,7 +52,7 @@ export default function PageNav(props) {
     <Container>
       {props.prevPage && (
         <StyledLink to={props.prevPage.path}>
-          <IconArrowLeft />
+          <FaArrowLeft />
           <LinkText>
             <LinkHeading>Previous</LinkHeading>
             <LinkTitle>{props.prevPage.title}</LinkTitle>
@@ -66,7 +65,7 @@ export default function PageNav(props) {
             <LinkHeading>Next</LinkHeading>
             <LinkTitle>{props.nextPage.title}</LinkTitle>
           </LinkText>
-          <IconArrowRight />
+          <FaArrowRight />
         </StyledLink>
       )}
     </Container>

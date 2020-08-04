@@ -5,7 +5,7 @@ import striptags from 'striptags';
 import styled from '@emotion/styled';
 import useWindowScroll from 'react-use/lib/useWindowScroll';
 import useWindowSize from 'react-use/lib/useWindowSize';
-import {colors} from '../utils/colors';
+import {theme} from '../colors';
 import {trackCustomEvent} from 'gatsby-plugin-google-analytics';
 
 const StyledList = styled.ul({
@@ -18,12 +18,12 @@ const StyledListItem = styled.li(props => ({
   listStyle: 'none',
   fontSize: '1rem',
   lineHeight: 'inherit',
-  color: props.active && colors.primary,
+  color: props.active && theme.primary,
   a: {
     color: 'inherit',
     textDecoration: 'none',
     ':hover': {
-      opacity: colors.hoverOpacity
+      opacity: theme.hoverOpacity
     }
   }
 }));

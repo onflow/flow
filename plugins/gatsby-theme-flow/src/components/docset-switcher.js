@@ -3,11 +3,9 @@ import React, {Fragment, useEffect, useMemo, useRef} from 'react';
 import styled from '@emotion/styled';
 import useKey from 'react-use/lib/useKey';
 import useWindowSize from 'react-use/lib/useWindowSize';
-import {IconTwitter} from '@apollo/space-kit/icons/IconTwitter';
-import {IconYoutube} from '@apollo/space-kit/icons/IconYoutube';
-import {ReactComponent as SpectrumIcon} from '../assets/spectrum.svg';
+import {FaDiscord, FaTwitter, FaYoutube} from 'react-icons/fa';
 import {boxShadow} from './search';
-import {colors} from '../utils/colors';
+import {theme} from '../colors';
 import breakpoints from '../utils/breakpoints';
 import {smallCaps} from '../utils/typography';
 import {size, transparentize} from 'polished';
@@ -15,7 +13,7 @@ import {size, transparentize} from 'polished';
 const Wrapper = styled.div({
   width: '100%',
   height: '100%',
-  backgroundColor: transparentize(0.5, colors.text2),
+  backgroundColor: transparentize(0.5, theme.text2),
   overflow: 'auto',
   position: 'fixed',
   top: 0,
@@ -52,7 +50,7 @@ const MenuTitle = styled.h6(smallCaps, {
   marginBottom: 0,
   fontSize: 13,
   fontWeight: 600,
-  color: colors.text3
+  color: theme.text3
 });
 
 const StyledNav = styled.nav({
@@ -74,7 +72,7 @@ const NavItemInner = styled.a({
   height: '100%',
   padding: 12,
   borderRadius: 4,
-  color: colors.text1,
+  color: theme.text1,
   textDecoration: 'none',
   backgroundColor: 'transparent',
   transitionProperty: 'color, background-color',
@@ -83,9 +81,9 @@ const NavItemInner = styled.a({
   '@media (hover: hover)': {
     ':hover': {
       color: 'white',
-      backgroundColor: colors.primary,
+      backgroundColor: theme.primary,
       p: {
-        color: colors.primaryLight
+        color: theme.primaryLight
       }
     }
   }
@@ -101,7 +99,7 @@ export const NavItemDescription = styled.p({
   marginBottom: 0,
   fontSize: 14,
   lineHeight: 1.5,
-  color: colors.text3,
+  color: theme.text3,
   transition: 'color 150ms ease-in-out'
 });
 
@@ -109,17 +107,17 @@ const FooterNav = styled.nav({
   display: 'flex',
   alignItems: 'center',
   padding: '16px 24px',
-  backgroundColor: colors.background,
+  backgroundColor: theme.background,
   [breakpoints.md]: {
     display: 'block'
   }
 });
 
 const FooterNavItem = styled.a({
-  color: colors.text2,
+  color: theme.text2,
   textDecoration: 'none',
   ':hover': {
-    color: colors.text3
+    color: theme.text3
   },
   ':not(:last-child)': {
     marginRight: 24
@@ -135,9 +133,9 @@ const SocialLinks = styled.div({
 });
 
 const SocialLink = styled.a({
-  color: colors.text2,
+  color: theme.text2,
   ':hover': {
-    color: colors.text3
+    color: theme.text3
   },
   ':not(:last-child)': {
     marginRight: 24
@@ -228,10 +226,10 @@ export default function DocsetSwitcher(props) {
                   {props.spectrumUrl && (
                     <SocialLink
                       href={props.spectrumUrl}
-                      title="Spectrum"
+                      title="Discord"
                       target="_blank"
                     >
-                      <SpectrumIcon />
+                      <FaDiscord />
                     </SocialLink>
                   )}
                   {props.twitterUrl && (
@@ -240,7 +238,7 @@ export default function DocsetSwitcher(props) {
                       title="Twitter"
                       target="_blank"
                     >
-                      <IconTwitter />
+                      <FaTwitter />
                     </SocialLink>
                   )}
                   {props.youtubeUrl && (
@@ -249,7 +247,7 @@ export default function DocsetSwitcher(props) {
                       title="YouTube"
                       target="_blank"
                     >
-                      <IconYoutube />
+                      <FaYoutube />
                     </SocialLink>
                   )}
                 </SocialLinks>

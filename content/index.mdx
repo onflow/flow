@@ -6,10 +6,9 @@ description: Explore the Flow ecosystem
 import DocsetMenu from './components/docset-menu';
 import { MenuWrapper } from './components/menu';
 import WorkoutMenuItem from './components/workout-menu-item';
-import { Button } from '@apollo/space-kit/Button';
-import { IconRobot1 } from '@apollo/space-kit/icons/IconRobot1';
 import { Link } from 'gatsby';
-import { colors } from 'gatsby-theme-flow/src/utils/colors';
+import { Button } from 'gatsby-theme-flow/src/ui/Button';
+import { theme } from 'gatsby-theme-flow/src/colors';
 import {
   ExpansionPanel,
 } from 'gatsby-theme-flow/src/components/expansion-panel';
@@ -30,7 +29,7 @@ It's easy to adopt Apollo incrementally, meaning you can set it up alongside an 
 <div>
   <Button
     size="large"
-    color={colors.primary}
+    color={theme.primary}
     as={<Link to="/tutorial/introduction" />}
   >
     Start the tutorial!

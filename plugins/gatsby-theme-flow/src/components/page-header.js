@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from '@emotion/styled';
-import {colors} from '../utils/colors';
+import {theme} from '../colors';
 
 const Heading = styled.h1({
   ':not(:last-child)': {
@@ -10,7 +10,7 @@ const Heading = styled.h1({
 });
 
 const Subheading = styled.h3({
-  color: colors.text2
+  color: theme.text2
 });
 
 export default function PageHeader(props) {

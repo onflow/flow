@@ -7,11 +7,11 @@ import remark from 'remark';
 import remark2react from 'remark-react';
 import styled from '@emotion/styled';
 import withProps from 'recompose/withProps';
-import {colors} from '../utils/colors';
+import {theme} from '../colors';
 import {smallCaps} from '../utils/typography';
 
 const Container = styled.div({
-  border: `1px solid ${colors.divider}`,
+  border: `1px solid ${theme.divider}`,
   borderRadius: 4,
   margin: '1.5em 0',
   overflow: 'hidden'
@@ -19,7 +19,7 @@ const Container = styled.div({
 
 const Header = styled.div({
   padding: '1.25rem',
-  backgroundColor: colors.background
+  backgroundColor: theme.background
 });
 
 const MainHeading = styled.h4({

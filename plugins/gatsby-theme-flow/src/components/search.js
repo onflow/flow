@@ -4,15 +4,15 @@ import React, {Fragment, useEffect, useRef, useState} from 'react';
 import styled from '@emotion/styled';
 import useKey from 'react-use/lib/useKey';
 import {HEADER_HEIGHT} from '../utils';
-import {TextField} from '@apollo/space-kit/TextField';
-import {colors} from '../utils/colors';
+import {TextField} from '../ui/TextField';
+import {theme} from '../colors';
 import breakpoints from '../utils/breakpoints';
 import {smallCaps} from '../utils/typography';
 import {css} from '@emotion/core';
 import {position, size, transparentize} from 'polished';
 
 const borderRadius = 5;
-const border = `1px solid ${colors.text3}`;
+const border = `1px solid ${theme.text3}`;
 const verticalAlign = css({
   position: 'absolute',
   top: '50%',
@@ -21,8 +21,8 @@ const verticalAlign = css({
 
 const Hotkey = styled.div(verticalAlign, size(24), {
   border,
-  borderColor: colors.text4,
-  color: colors.text4,
+  borderColor: theme.text4,
+  color: theme.text4,
   borderRadius,
   textAlign: 'center',
   lineHeight: 1.125,
@@ -35,7 +35,7 @@ export const boxShadow = `${boxShadowColor} 0 2px 12px`;
 const Container = styled.div({
   flexGrow: 1,
   marginRight: 40,
-  color: colors.text2,
+  color: theme.text2,
   position: 'relative',
   zIndex: 1,
   [breakpoints.md]: {
@@ -64,9 +64,9 @@ const Container = styled.div({
       },
       '.ds-suggestion': {
         padding: '20px 32px',
-        borderBottom: `1px solid ${colors.divider}`,
+        borderBottom: `1px solid ${theme.divider}`,
         '&.ds-cursor': {
-          backgroundColor: transparentize(0.5, colors.divider)
+          backgroundColor: transparentize(0.5, theme.divider)
         }
       }
     },
@@ -99,7 +99,7 @@ const Container = styled.div({
       '&--subcategory-column': {
         marginBottom: 4,
         fontSize: 22,
-        color: colors.text1,
+        color: theme.text1,
         textAlign: 'initial'
       },
       '&--content': {
@@ -113,7 +113,7 @@ const Container = styled.div({
       },
       '&--highlight': {
         boxShadow: 'none !important',
-        color: `${colors.primary} !important`,
+        color: `${theme.primary} !important`,
         background: 'none !important'
       },
       '&--no-results': {
@@ -134,7 +134,7 @@ const Overlay = styled.div(
       visibility: 'hidden'
     },
   {
-    backgroundColor: transparentize(0.5, colors.text2),
+    backgroundColor: transparentize(0.5, theme.text2),
     transitionProperty: 'opacity, visibility',
     transitionDuration: '150ms',
     transitionTimingFunction: 'ease-in-out',

@@ -9,7 +9,7 @@ import React, {Fragment, createContext, useContext} from 'react';
 import rehypeReact from 'rehype-react';
 import styled from '@emotion/styled';
 import ContentWrapper from './content-wrapper';
-import {colors} from '../utils/colors';
+import {theme} from '../colors';
 import {smallCaps} from '../utils/typography';
 import {MDXProvider} from '@mdx-js/react';
 import {graphql, navigate} from 'gatsby';
@@ -51,7 +51,7 @@ const TableWrapper = styled.div({
   marginBottom: '1.45rem'
 });
 
-const tableBorder = `1px solid ${colors.divider}`;
+const tableBorder = `1px solid ${theme.divider}`;
 const StyledTable = styled.table({
   border: tableBorder,
   borderSpacing: 0,
@@ -67,7 +67,7 @@ const StyledTable = styled.table({
     ...smallCaps,
     fontSize: 13,
     fontWeight: 'normal',
-    color: colors.text2,
+    color: theme.text2,
     textAlign: 'inherit'
   },
   td: {

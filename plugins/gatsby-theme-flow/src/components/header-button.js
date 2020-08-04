@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import {IconProceed} from '@apollo/space-kit/icons/IconProceed';
+import {FaLongArrowAltRight} from 'react-icons/fa';
 import breakpoints from '../utils/breakpoints';
-import {colors} from '@apollo/space-kit/colors';
+import {colors} from '../colors';
 
 const Container = styled.div({
   display: 'flex',
@@ -28,8 +28,7 @@ const StyledLink = styled.a({
   }
 });
 
-const StyledIcon = styled(IconProceed)({
-  height: '0.75em',
+const StyledIcon = styled(FaLongArrowAltRight)({
   marginLeft: '0.5em'
 });
 
@@ -41,7 +40,7 @@ export default function HeaderButton() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Launch Flow Playgroound
+        Launch Flow Playground
         <StyledIcon weight="thin" />
       </StyledLink>
     </Container>
