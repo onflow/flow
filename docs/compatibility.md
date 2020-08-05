@@ -4,8 +4,9 @@ This document outlines the compatibility practices used when releasing new versi
 
 ## Semantic versioning
 
-Flow follows Semantic Versioning 2.0 (semver) for all components and projects. Each release version 
-of Flow has the form MAJOR.MINOR.PATCH. For example, Flow Protocol version 1.2.3 has MAJOR version 1, MINOR version 2, and PATCH version 3. Changes to each number have the following meaning:
+Flow follows [Semantic Versioning 2.0](https://semver.org/spec/v2.0.0.html) (semver) for all components and projects. Each release version 
+of Flow has the form MAJOR.MINOR.PATCH. For example, Flow Protocol version 1.2.3 has MAJOR version 1, 
+MINOR version 2, and PATCH version 3. Changes to each number have the following meaning:
 
 - **MAJOR:** Potentially backwards incompatible changes. Code and data that worked with a previous major release will not necessarily work with the new release.
 
@@ -13,7 +14,11 @@ of Flow has the form MAJOR.MINOR.PATCH. For example, Flow Protocol version 1.2.3
 
 - **PATCH:** Backwards compatible bug fixes.
 
-For example, release 1.0.0 introduced backwards incompatible changes from release 0.12.1. However, release 1.1.1 was backwards compatible with release 1.0.0.
+For example, release `2.0.0` introduced backwards incompatible changes from release `1.12.1`. However, release `2.1.1` was backwards compatible with release `2.0.0`.
+
+### Exception for `0.x.x` releases
+
+Many Flow projects are still in an early beta phase and therefore are denoted with a `0.x.x` version tag. While the team is moving towards proper versioning for all projects, these pre-1.0 releases are not guaranteed to follow the semantic versioning rules outlined above.
 
 ## Public APIs
 
