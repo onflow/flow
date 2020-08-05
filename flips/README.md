@@ -1,13 +1,12 @@
-# Flow Improvement Proposals (FLIP)
+# Flow Improvement Proposals (FLIPs)
 
-The purpose of a FLIP is to engage the Flow community in
-development by gathering feedback from contributors and experts while
-also communicating design changes broadly.
+The purpose of a FLIP is to engage the Flow community in development by 
+leveraging the collective ideas, insights, and experience of contributors and 
+experts while also communicating design changes broadly.
 
 ## Who is involved?
 
-Any **community member** may help by providing feedback on whether the FLIP will
-meet their needs.
+Everyone is welcome to propose and provide feedback on a FLIP.
 
 A **FLIP author** is one or more community member who writes a FLIP and is
 committed to championing it through the  process.
