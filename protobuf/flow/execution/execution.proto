@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-package execution;
+package flow.execution;
+
+option go_package = "execution";
 
 import "flow/entities/account.proto";
 import "flow/entities/event.proto";
