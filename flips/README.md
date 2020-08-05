@@ -29,23 +29,28 @@ will solve it. Specifically, the FLIP will:
 
 ## FLIP process
 
-Before submitting a FLIP, it is a good idea to discuss your aims with project
-contributors and maintainers and get early feedback. Use the [Flow community forum](https://forum.onflow.org/) or [Discord server](https://discord.gg/flow). After writing the FLIP draft, 
-gather feedback from these experts before submitting it.
+Before submitting a new FLIP, check for prior proposals in the `flips` directory, the [Flow community forum](https://forum.onflow.org/) and ask in the [Discord server](https://discord.gg/flow). The idea may have been proposed before or may be in active discussion. Consider contributing or giving feedback to existing proposals.
+
+If a new proposal is appropriate, propose a rough sketch of the idea in the forum [Flow community forum](https://forum.onflow.org/) and engage in discussion with the community, project contributors, and maintainers, to get early feedback. Continue to expand the rough sketch into a draft using the FLIP template and further refine the proposal on the forums.
+
+After writing the FLIP draft, gather feedback from project contributors and
+maintainers before submitting it. 
+
+Once the FLIP is ready for review:
 
 1. _(Optional)_ Recruit a sponsor from the maintainers of the project for which your FLIP concerns.
 
    You are not required to recruit a sponsor; this step is entirely optional. 
-   However, a sponsor acts as a valuable resource who can streamline the review 
-   process and increase the likelihood of your FLIP being accepted.
+   However, a sponsor acts as a valuable resource who can streamline the 
+   review process and increase the likelihood of your FLIP being accepted.
 
    If you do recruit a sponsor, identify them in the FLIP before posting the PR in step 2.
 
-2. Submit your FLIP as a pull request to [onflow/flow](https://github.com/onflow/flow). 
+2. Submit your FLIP as a pull request to this repository ([`onflow/flow`](https://github.com/onflow/flow)).
 
    Name your FLIP file using the [template](./yyyymmdd-flip-template.md) `YYYYMMDD-descriptive-name.md`, 
    where YYYYMMDD is the date of submission, and ‘descriptive-name’ relates to the
-   title of your FLIP. For instance, if your FLIP is titled “Event Streaming API”,
+   title of your FLIP. For instance, if your FLIP is titled "Event Streaming API",
    you might use the filename `20180531-event-streaming-api.md`. If you have images
    or other auxiliary files, create a directory of the form `YYYYMMDD-descriptive-name`
    in which to store those files.
@@ -63,15 +68,16 @@ gather feedback from these experts before submitting it.
    a brief description, and a link to the PR and a request for review.
 
 4. The sponsor may request a review committee meeting after sufficient discussion has 
-   taken place. This meeting will include the the FLIP author, 
+   taken place. This meeting will include the FLIP author, 
    core contributors and interested community members. If discussion is lively, 
    wait until it has settled before going to review. 
    The goal of the review meeting is to resolve minor issues; 
    consensus should be reached on major issues beforehand.
 
 5. The meeting may approve the FLIP, reject it, or require changes before it
-   can be considered again. Approved FLIPs will be merged into `onflow/flow/flips`, and
-   rejected FLIPs will have their PRs closed.
+   can be considered again. FLIPs will be merged into this repository 
+   ([`onflow/flow`](https://github.com/onflow)) with the outcome of the 
+   review process (approval, rejection).
 
 6. Implementations of a successful FLIP should reference it in their
    documentation, and work with the sponsor to successfully land the code.
@@ -79,7 +85,16 @@ gather feedback from these experts before submitting it.
 While implementation code is not necessary to start the FLIP process, its
 existence in full or part may help the design discussion.
 
-If in any doubt about this process, feel free to ask on [Discord](https://discord.gg/flow), the [community forum](https://forum.onflow.org/), or file an issue in [onflow/flow](https://github.com/onflow/flow/issues).
+If in any doubt about this process, feel free to ask on [Discord](https://discord.gg/flow), 
+the [community forum](https://forum.onflow.org/), or file an issue in this repository 
+([`onflow/flow`](https://github.com/onflow/flow/issues)).
+
+## Proposal states
+
+* **Proposed:** The FLIP has been proposed and is awaiting review.
+* **Rejected:** The FLIP has been reviewed and been rejected.
+* **Accepted:** The FLIP has been accepted and is either awaiting implementation or is actively being implemented.
+* **Implemented (in VERSION):** The FLIP has been implemented.
 
 ## Community members
 
@@ -91,7 +106,7 @@ Community members should:
 
 * provide feedback as soon as possible to allow adequate time for consideration
 * read FLIPs thoroughly before providing feedback
-* be civil and constructive
+* be civil and constructive (see [Code of Conduct](../CODE_OF_CONDUCT.md))
 
 ## Review committees
 
@@ -117,7 +132,7 @@ outcome of the FLIP process. In particular this includes:
 * advocating for the proposed design
 * guiding the FLIP to adhere to existing design and style conventions
 * guiding the review committee to come to a productive consensus
-* if the FLIP moves to implementation:
+* if the FLIP is approved and moves to implementation:
   * ensuring proposed implementation adheres to the design
   * liaison with appropriate parties to successfully land implementation
 
