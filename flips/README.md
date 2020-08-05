@@ -8,14 +8,14 @@ experts while also communicating design changes broadly.
 
 Everyone is welcome to propose and provide feedback on a FLIP.
 
-A **FLIP author** is one or more community member who writes a FLIP and is
-committed to championing it through the  process.
+A **FLIP author** writes a FLIP and is committed to championing it through the process.
 
 A **FLIP sponsor** is any maintainer who sponsors the FLIP and will shepherd it
 through the FLIP review process.
 
-A **review committee** is a group of maintainers who have the responsibility of
-recommending the adoption of the FLIP.
+A **review committee** is a group of maintainers who are responsible for the 
+strategic direction of components, subcomponents, and public APIs.
+They have the responsibility to accept or reject the adoption of the FLIP.
 
 ## What is a FLIP?
 
@@ -30,19 +30,21 @@ will solve it. Specifically, the FLIP will:
 ## FLIP process
 
 Before submitting a FLIP, it is a good idea to discuss your aims with project
-contributors and maintainers and get early feedback. Use the [Flow community forum](https://forum.onflow.org/) or [Discord server](https://discord.gg/flow). After writing the FLIP draft, get feedback from these experts before submitting it.
+contributors and maintainers and get early feedback. Use the [Flow community forum](https://forum.onflow.org/) or [Discord server](https://discord.gg/flow). After writing the FLIP draft, 
+gather feedback from these experts before submitting it.
 
-1. Recruit a sponsor from the maintainers of the project which your FLIP concerns.
+1. _(Optional)_ Recruit a sponsor from the maintainers of the project for which your FLIP concerns.
 
-   Identify them in the FLIP, before posting the PR in step 2.
-   If no sponsor is found you may still post the FLIP, but if 
-   within a month of posting the PR there is still no sponsor,
-   it will be closed.
+   You are not required to recruit a sponsor; this step is entirely optional. 
+   However, a sponsor acts as a valuable resource who can streamline the review 
+   process and increase the likelihood of your FLIP being accepted.
+
+   If you do recruit a sponsor, identify them in the FLIP before posting the PR in step 2.
 
 2. Submit your FLIP as a pull request to [onflow/flow](https://github.com/onflow/flow). 
 
-   Name your FLIP file using the [template](./yyyymmdd-flip-template.md) `YYYYMMDD-descriptive-name.md`, where
-   YYYYMMDD is the date of submission, and ‘descriptive-name’ relates to the
+   Name your FLIP file using the [template](./yyyymmdd-flip-template.md) `YYYYMMDD-descriptive-name.md`, 
+   where YYYYMMDD is the date of submission, and ‘descriptive-name’ relates to the
    title of your FLIP. For instance, if your FLIP is titled “Event Streaming API”,
    you might use the filename `20180531-event-streaming-api.md`. If you have images
    or other auxiliary files, create a directory of the form `YYYYMMDD-descriptive-name`
@@ -61,7 +63,11 @@ contributors and maintainers and get early feedback. Use the [Flow community for
    a brief description, and a link to the PR and a request for review.
 
 4. The sponsor may request a review committee meeting after sufficient discussion has 
-   taken place. This meeting will include the the FLIP author, core contributors and interested community members. If discussion is lively, wait until it has settled before going to review. The goal of the review meeting is to resolve minor issues; consensus should be reached on major issues beforehand.
+   taken place. This meeting will include the the FLIP author, 
+   core contributors and interested community members. If discussion is lively, 
+   wait until it has settled before going to review. 
+   The goal of the review meeting is to resolve minor issues; 
+   consensus should be reached on major issues beforehand.
 
 5. The meeting may approve the FLIP, reject it, or require changes before it
    can be considered again. Approved FLIPs will be merged into `onflow/flow/flips`, and
