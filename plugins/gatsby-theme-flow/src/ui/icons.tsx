@@ -1,9 +1,14 @@
+import React from 'react';
+import styled from '@emotion/styled';
+import {
+  FaChevronUp,
+  FaChevronDown
+} from 'react-icons/fa';
+
 export {
   FaArrowDown as IconArrowDown,
   FaArrowLeft as IconArrowLeft,
   FaArrowRight as IconArrowRight,
-  FaAsterisk as IconCollapseList,  // TODO: replace with proper icon
-  FaAsterisk as IconExpandList,  // TODO: replace with proper icon
   FaBars as IconMenu,
   FaCaretSquareDown as IconMenuSelector,
   FaCheck as IconCheck,
@@ -19,3 +24,27 @@ export {
   FaUmbrellaBeach as IconPlayground,
   FaYoutube as IconYoutube,
 } from 'react-icons/fa';
+
+const StackedIconContainer = styled.div({
+  display: 'flex',
+  flexDirection: 'column',
+  height: "1rem",
+});
+
+export function IconExpandList() {
+  return (
+    <StackedIconContainer>
+      <FaChevronUp />
+      <FaChevronDown />
+    </StackedIconContainer>
+  )
+};
+
+export function IconCollapseList() {
+  return (
+    <StackedIconContainer>
+      <FaChevronDown />
+      <FaChevronUp />
+    </StackedIconContainer>
+  )
+};
