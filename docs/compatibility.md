@@ -86,8 +86,16 @@ Each Flow component exposes a public API, loosely defined as the functionality t
         </tr>
         <tr>
             <td>Cadence</td>
-            <td></td>
-            <td></td>
+            <td>
+              Language<br/>
+              Standard Library<br/>
+              Language Server
+            </td>
+            <td>
+              Runtime interface<br/>
+              Values and types<br/>
+              Encoding (JSON-CDC)
+            </td>
         </tr>
         <tr>
             <td>Flow JavaScript SDK</td>
