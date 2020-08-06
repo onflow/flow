@@ -1,0 +1,233 @@
+syntax = "proto3";
+
+package access;
+
+import "flow/legacy/entities/account.proto";
+import "flow/legacy/entities/block_header.proto";
+import "flow/legacy/entities/block.proto";
+import "flow/legacy/entities/collection.proto";
+import "flow/legacy/entities/event.proto";
+import "flow/legacy/entities/transaction.proto";
+
+// AccessAPI is the public-facing API provided by access nodes.
+service AccessAPI {
+
+  // Ping is used to check if the access node is alive and healthy.
+  rpc Ping (PingRequest) returns (PingResponse);
+
+  // Block Headers
+
+  // GetLatestBlockHeader gets the latest sealed or unsealed block header.
+  rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderResponse);
+  // GetBlockHeaderByID gets a block header by ID.
+  rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse);
+  // GetBlockHeaderByHeight gets a block header by height.
+  rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderResponse);
+
+  // Blocks
+
+  // GetLatestBlock gets the full payload of the latest sealed or unsealed block.
+  rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse);
+  // GetBlockByID gets a full block by ID.
+  rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse);
+  // GetBlockByHeight gets a full block by height.
+  rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse);
+
+  // Collections
+
+  // GetCollectionByID gets a collection by ID.
+  rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse);
+
+  // Transactions
+
+  // SendTransaction submits a transaction to the network.
+  rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse);
+  // GetTransaction gets a transaction by ID.
+  rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse);
+  // GetTransactionResult gets the result of a transaction.
+  rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultResponse);
+
+  // Accounts
+
+  // GetAccount is an alias for GetAccountAtLatestBlock.
+  //
+  // Warning: this function is deprecated. It behaves identically to GetAccountAtLatestBlock and will be removed in a future version.
+  rpc GetAccount (GetAccountRequest) returns (GetAccountResponse);
+  // GetAccountAtLatestBlock gets an account by address from the latest sealed execution state.
+  rpc GetAccountAtLatestBlock (GetAccountAtLatestBlockRequest) returns (AccountResponse);
+  // GetAccountAtBlockHeight gets an account by address at the given block height
+  rpc GetAccountAtBlockHeight (GetAccountAtBlockHeightRequest) returns (AccountResponse);
+
+  // Scripts
+
+  // ExecuteScriptAtLatestBlock executes a read-only Cadence script against the latest sealed execution state.
+  rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse);
+  // ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
+  rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse);
+  // ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the execution state at the given block height.
+  rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse);
+
+  // Events
+
+  // GetEventsForHeightRange retrieves events emitted within the specified block range.
+  rpc GetEventsForHeightRange (GetEventsForHeightRangeRequest) returns (EventsResponse);
+
+  // GetEventsForBlockIDs retrieves events for the specified block IDs and event type.
+  rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (EventsResponse);
+
+  // NetworkParameters
+
+  // GetNetworkParameters retrieves the Flow network details
+  rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParametersResponse);
+}
+
+message PingRequest {}
+
+message PingResponse {}
+
+// Block Headers
+
+message GetLatestBlockHeaderRequest {
+  bool is_sealed = 1;
+}
+
+message GetBlockHeaderByIDRequest {
+  bytes id = 1;
+}
+
+message GetBlockHeaderByHeightRequest {
+  uint64 height = 1;
+}
+
+message BlockHeaderResponse {
+  entities.BlockHeader block = 1;
+}
+
+// Blocks
+
+message GetLatestBlockRequest {
+  bool is_sealed = 1;
+}
+
+message GetBlockByIDRequest {
+  bytes id = 1;
+}
+
+message GetBlockByHeightRequest {
+  uint64 height = 1;
+}
+
+message BlockResponse {
+  entities.Block block = 1;
+}
+
+// Collections
+
+message GetCollectionByIDRequest {
+  bytes id = 1;
+}
+
+message CollectionResponse {
+  entities.Collection collection = 1;
+}
+
+// Transactions
+
+message SendTransactionRequest {
+  entities.Transaction transaction = 1;
+}
+
+message SendTransactionResponse {
+  bytes id = 1;
+}
+
+message GetTransactionRequest {
+  bytes id = 1;
+}
+
+message TransactionResponse {
+  entities.Transaction transaction = 1;
+}
+
+message TransactionResultResponse {
+  entities.TransactionStatus status = 1;
+  uint32 status_code = 2;
+  string error_message = 3;
+  repeated entities.Event events = 4;
+}
+
+// Accounts
+
+message GetAccountRequest {
+  bytes address = 1;
+}
+
+message GetAccountResponse {
+  entities.Account account = 1;
+}
+
+message GetAccountAtLatestBlockRequest {
+  bytes address = 1;
+}
+
+message AccountResponse {
+  entities.Account account = 1;
+}
+
+message GetAccountAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+}
+
+// Scripts
+
+message ExecuteScriptAtLatestBlockRequest {
+  bytes script = 1;
+  repeated bytes arguments = 2;
+}
+
+message ExecuteScriptAtBlockIDRequest {
+  bytes block_id = 1;
+  bytes script = 2;
+  repeated bytes arguments = 3;
+}
+
+message ExecuteScriptAtBlockHeightRequest {
+  uint64 block_height = 1;
+  bytes script = 2;
+  repeated bytes arguments = 3;
+}
+
+message ExecuteScriptResponse {
+  bytes value = 1;
+}
+
+// Events
+
+message GetEventsForHeightRangeRequest {
+  string type = 1;
+  uint64 start_height = 2;
+  uint64 end_height = 3;
+}
+
+message GetEventsForBlockIDsRequest {
+  string type = 1;
+  repeated bytes block_ids = 2;
+}
+
+message EventsResponse {
+  message Result {
+    bytes block_id = 1;
+    uint64 block_height = 2;
+    repeated entities.Event events = 3;
+  }
+  repeated Result results = 1;
+}
+
+// Network Parameters
+
+message GetNetworkParametersRequest {}
+
+message GetNetworkParametersResponse {
+  string chain_id = 1;
+}
