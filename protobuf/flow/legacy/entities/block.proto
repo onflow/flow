@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package entities;
+
+import "google/protobuf/timestamp.proto";
+
+import "flow/legacy/entities/collection.proto";
+import "flow/legacy/entities/block_seal.proto";
+
+message Block {
+  bytes id = 1;
+  bytes parent_id = 2;
+  uint64 height = 3;
+  google.protobuf.Timestamp timestamp = 4;
+  repeated CollectionGuarantee collection_guarantees = 5;
+  repeated BlockSeal block_seals = 6;
+  repeated bytes signatures = 7;
+}

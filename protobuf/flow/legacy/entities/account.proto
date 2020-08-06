@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package entities;
+
+message Account {
+  bytes address = 1;
+  uint64 balance = 2;
+  bytes code = 3;
+  repeated AccountKey keys = 4;
+}
+
+message AccountKey {
+  uint32 index = 1;
+  bytes public_key = 2;
+  uint32 sign_algo = 3;
+  uint32 hash_algo = 4;
+  uint32 weight = 5;
+  uint32 sequence_number = 6;
+}

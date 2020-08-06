@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+package execution;
+
+import "flow/legacy/entities/account.proto";
+import "flow/legacy/entities/event.proto";
+
+// ExecutionAPI is the API provided by the execution nodes.
+service ExecutionAPI {
+
+    // Ping is used to check if the access node is alive and healthy.
+    rpc Ping (PingRequest) returns (PingResponse);
+
+    // Accounts
+
+    // GetAccountAtBlockID gets an account by address at the given block ID
+    rpc GetAccountAtBlockID (GetAccountAtBlockIDRequest) returns (GetAccountAtBlockIDResponse);
+
+    // Scripts
+
+    // ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
+    rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptAtBlockIDResponse);
+
+    // Events
+
+    // GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
+    rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse);
+
+    // Transaction
+
+    // GetTransactionResult gets the result of a transaction.
+    rpc GetTransactionResult (GetTransactionResultRequest) returns (GetTransactionResultResponse);
+}
+
+// Ping
+
+message PingRequest {}
+
+message PingResponse {}
+
+// Accounts
+
+message GetAccountAtBlockIDRequest {
+    bytes block_id = 1;
+    bytes address = 2;
+}
+
+message GetAccountAtBlockIDResponse {
+    entities.Account account = 1;
+}
+
+// Scripts
+
+message ExecuteScriptAtBlockIDRequest {
+    bytes block_id = 1;
+    bytes script = 2;
+    repeated bytes arguments = 3;
+}
+
+message ExecuteScriptAtBlockIDResponse {
+    bytes value = 1;
+}
+
+// Events
+
+message GetEventsForBlockIDsResponse {
+    message Result {
+        bytes block_id = 1;
+        uint64 block_height = 2;
+        repeated entities.Event events = 3;
+    }
+    repeated Result results = 1;
+}
+
+message GetEventsForBlockIDsRequest {
+    string type = 1;
+    repeated bytes block_ids = 2;
+}
+
+// Transactions
+
+message GetTransactionResultRequest {
+    bytes block_id = 1;
+    bytes transaction_id = 2;
+}
+
+message GetTransactionResultResponse {
+    uint32 status_code = 1;
+    string error_message = 2;
+    repeated entities.Event events = 3;
+}
