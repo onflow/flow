@@ -91,12 +91,6 @@ module.exports = ({
       },
     },
     {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: gatsbyRemarkPlugins,
-      },
-    },
-    {
       resolve: "gatsby-plugin-mdx",
       options: {
         gatsbyRemarkPlugins,
