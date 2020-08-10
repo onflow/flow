@@ -3,10 +3,13 @@
 Updating the Cadence downstream dependencies should be done in the following steps:
 
 1. Update [Flow Go](https://github.com/dapperlabs/flow-go):
-   - Update to the latest Cadence version by running the following command in both the root directory and in `integration` (replace `X.X.X` with the version number):
+   - Update to the latest Cadence version by running the following command (replace `X.X.X` with the version number):
      ```sh
      $ go get github.com/onflow/cadence@vX.X.X 
      ```
+     
+     - In the root directory
+     - In the `integration` directory
      
 2. Update [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
    - Update `github.com/onflow/cadence` to the new release
