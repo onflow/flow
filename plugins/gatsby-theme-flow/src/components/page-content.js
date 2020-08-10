@@ -4,8 +4,7 @@ import SectionNav from './section-nav';
 import styled from '@emotion/styled';
 import useMount from 'react-use/lib/useMount';
 import {HEADER_HEIGHT} from '../utils';
-import {FaGithub, FaDiscord} from 'react-icons/fa';
-import {FaUmbrellaBeach} from 'react-icons/fa';
+import {IconGithub, IconDiscord, IconPlayground} from '../ui/icons';
 import {theme} from '../colors';
 import breakpoints from '../utils/breakpoints';
 import PageNav from './page-nav';
@@ -181,7 +180,7 @@ export default function PageContent(props) {
 
   const editLink = props.githubUrl && (
     <AsideLink href={props.githubUrl}>
-      <FaGithub /> Edit on GitHub
+      <IconGithub /> Edit on GitHub
     </AsideLink>
   );
 
@@ -209,12 +208,12 @@ export default function PageContent(props) {
         {editLink}
         {props.spectrumUrl && (
           <AsideLink href={props.spectrumUrl}>
-            <FaDiscord /> Discuss on Discord
+            <IconDiscord /> Discuss on Discord
           </AsideLink>
         )}
         {props.graphManagerUrl && (
           <AsideLink href={props.graphManagerUrl}>
-            <FaUmbrellaBeach /> Demo in Playground
+            <IconPlayground /> Demo in Playground
           </AsideLink>
         )}
       </Aside>

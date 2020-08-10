@@ -3,9 +3,9 @@ import React, {Fragment, useEffect, useMemo, useRef} from 'react';
 import styled from '@emotion/styled';
 import useKey from 'react-use/lib/useKey';
 import useWindowSize from 'react-use/lib/useWindowSize';
-import {FaDiscord, FaTwitter, FaYoutube} from 'react-icons/fa';
 import {boxShadow} from './search';
 import {theme} from '../colors';
+import {IconDiscord, IconTwitter, IconYoutube} from '../ui/icons';
 import breakpoints from '../utils/breakpoints';
 import {smallCaps} from '../utils/typography';
 import {size, transparentize} from 'polished';
@@ -229,7 +229,7 @@ export default function DocsetSwitcher(props) {
                       title="Discord"
                       target="_blank"
                     >
-                      <FaDiscord />
+                      <IconDiscord />
                     </SocialLink>
                   )}
                   {props.twitterUrl && (
@@ -238,7 +238,7 @@ export default function DocsetSwitcher(props) {
                       title="Twitter"
                       target="_blank"
                     >
-                      <FaTwitter />
+                      <IconTwitter />
                     </SocialLink>
                   )}
                   {props.youtubeUrl && (
@@ -247,7 +247,7 @@ export default function DocsetSwitcher(props) {
                       title="YouTube"
                       target="_blank"
                     >
-                      <FaYoutube />
+                      <IconYoutube />
                     </SocialLink>
                   )}
                 </SocialLinks>

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
 import styled from '@emotion/styled';
-import {FaChevronUp, FaChevronDown, FaCheck} from 'react-icons/fa';
+import {IconChevronUp, IconChevronDown, IconCheck} from '../ui/icons';
 import {theme} from '../colors';
 import {size, transparentize} from 'polished';
 
@@ -98,7 +98,7 @@ export function ExpansionPanelListItem(props) {
   return (
     <StyledListItem>
       <ListItemNumber>
-        {props.number === 'check' ? <FaCheck /> : props.number}
+        {props.number === 'check' ? <IconCheck /> : props.number}
       </ListItemNumber>
       {props.children}
     </StyledListItem>
@@ -112,7 +112,7 @@ ExpansionPanelListItem.propTypes = {
 
 export function ExpansionPanel(props) {
   const [expanded, setExpanded] = useState(false);
-  const Icon = expanded ? FaChevronUp : FaChevronDown;
+  const Icon = expanded ? IconChevronUp : IconChevronDown;
   return (
     <Container>
       <InnerContainer>

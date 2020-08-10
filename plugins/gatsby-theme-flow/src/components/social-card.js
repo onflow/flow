@@ -4,7 +4,7 @@ import React, {Fragment} from 'react';
 import TextFit from 'react-textfit';
 import {ApolloIcon} from '../ui/icons';
 import {Global, css} from '@emotion/core';
-import {FaArrowRight} from 'react-icons/fa';
+import {IconArrowRight} from '../ui/icons';
 import {theme} from '../colors';
 import {smallCaps} from '../utils/typography';
 
@@ -74,7 +74,7 @@ export default function SocialCard(props) {
         {props.category && (
           <Fragment>
             {' '}
-            <FaArrowRight
+            <IconArrowRight
               className="arrow-icon"
               style={{
                 width: '0.5em',
