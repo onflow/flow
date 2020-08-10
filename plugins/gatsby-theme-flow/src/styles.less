@@ -12,21 +12,40 @@ body {
 
 @default-margin: 1.45rem;
 
-h1, h2, h3, h4, h5, h6, p, ul, ol, img.screenshot {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+img.screenshot {
   margin: 0;
   margin-bottom: @default-margin;
 }
 
-h4, h5 {
+h4,
+h5 {
   margin-bottom: 1.0875rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.1;
   color: @color-text1;
 }
 
-h1, h2, h3, h4, h6 {
+h1,
+h2,
+h3,
+h4,
+h6 {
   font-weight: 400;
 }
 
@@ -42,8 +61,10 @@ h3 {
   font-size: 1.4427rem;
 }
 
-h4, p, li {
-  font-size: 1.125rem
+h4,
+p,
+li {
+  font-size: 1.125rem;
 }
 
 h5 {
@@ -54,18 +75,21 @@ h6 {
   font-size: 0.875rem;
 }
 
-p, li {
+p,
+li {
   line-height: 1.7;
 }
 
-ul, ol {
+ul,
+ol {
   margin-left: @default-margin;
   padding: 0;
 }
 
 li {
   margin-bottom: @default-margin / 2;
-  > ul, > ol {
+  > ul,
+  > ol {
     margin-top: @default-margin / 2;
   }
 }
@@ -91,12 +115,10 @@ hr {
   height: 1px;
   margin-bottom: calc(@default-margin - 1px);
   border: none;
-  background-color: @color-divider
+  background-color: @color-divider;
 }
 
 img.screenshot {
-  box-shadow: 
-    0 0 0 1px rgba(18,21,26,0.04),
-    0 1px 4px 0 rgba(0,0,0,0.08);
+  box-shadow: 0 0 0 1px rgba(18, 21, 26, 0.04), 0 1px 4px 0 rgba(0, 0, 0, 0.08);
   border-radius: 8px;
 }
