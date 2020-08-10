@@ -1,8 +1,8 @@
-const path = require('path');
-const mapKeys = require('lodash/mapKeys');
-const remarkTypescript = require('remark-typescript');
-const {theme} = require('./src/colors');
-const {HEADER_HEIGHT} = require('./src/utils');
+const path = require("path");
+const mapKeys = require("lodash/mapKeys");
+const remarkTypescript = require("remark-typescript");
+const { theme } = require("./src/colors");
+const { HEADER_HEIGHT } = require("./src/utils");
 
 module.exports = ({
   root,
@@ -10,46 +10,46 @@ module.exports = ({
   pageTitle,
   description,
   githubRepo,
-  baseDir = '',
-  contentDir = 'content',
+  baseDir = "",
+  contentDir = "content",
   versions = {},
   gaTrackingId,
   ignore,
-  checkLinksOptions
+  checkLinksOptions,
 }) => {
   const gatsbyRemarkPlugins = [
     {
-      resolve: 'gatsby-remark-autolink-headers',
+      resolve: "gatsby-remark-autolink-headers",
       options: {
-        offsetY: HEADER_HEIGHT
-      }
+        offsetY: HEADER_HEIGHT,
+      },
     },
     {
-      resolve: 'gatsby-remark-copy-linked-files',
+      resolve: "gatsby-remark-copy-linked-files",
       options: {
-        ignoreFileExtensions: []
-      }
+        ignoreFileExtensions: [],
+      },
     },
-    'gatsby-remark-code-titles',
+    "gatsby-remark-code-titles",
     {
-      resolve: 'gatsby-remark-prismjs',
+      resolve: "gatsby-remark-prismjs",
       options: {
-        showLineNumbers: true
-      }
+        showLineNumbers: true,
+      },
     },
-    'gatsby-remark-rewrite-relative-links',
+    "gatsby-remark-rewrite-relative-links",
     {
-      resolve: 'gatsby-remark-check-links',
-      options: checkLinksOptions
-    }
+      resolve: "gatsby-remark-check-links",
+      options: checkLinksOptions,
+    },
   ];
 
   const plugins = [
-    'gatsby-plugin-svgr',
-    'gatsby-plugin-emotion',
-    'gatsby-plugin-react-helmet',
+    "gatsby-plugin-svgr",
+    "gatsby-plugin-emotion",
+    "gatsby-plugin-react-helmet",
     {
-      resolve: 'gatsby-plugin-less',
+      resolve: "gatsby-plugin-less",
       options: {
         modifyVars: mapKeys(theme, (value, key) => `color-${key}`),
         lessOptions: {
@@ -58,50 +58,57 @@ module.exports = ({
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
         path: path.join(root, contentDir),
-        name: 'docs',
+        name: "docs",
         ignore,
-      }
+      },
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: "gatsby-source-filesystem",
       options: {
-        plugins: gatsbyRemarkPlugins
-      }
+        name: "fonts",
+        path: path.resolve(__dirname, "src/assest/fonts"),
+      },
     },
     {
-      resolve: 'gatsby-plugin-mdx',
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: gatsbyRemarkPlugins,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-mdx",
       options: {
         gatsbyRemarkPlugins,
         remarkPlugins: [
-          [remarkTypescript, {wrapperComponent: 'MultiCodeBlock'}]
-        ]
-      }
+          [remarkTypescript, { wrapperComponent: "MultiCodeBlock" }],
+        ],
+      },
     },
-    'gatsby-plugin-printer',
+    "gatsby-plugin-printer",
     ...Object.entries(versions).map(([name, branch]) => ({
-      resolve: 'gatsby-source-git',
+      resolve: "gatsby-source-git",
       options: {
         name,
         branch,
         remote: `https://github.com/${githubRepo}`,
         patterns: [
-          path.join(baseDir, contentDir, '**'),
-          path.join(baseDir, 'gatsby-config.js'),
-          path.join(baseDir, '_config.yml')
-        ]
-      }
-    }))
+          path.join(baseDir, contentDir, "**"),
+          path.join(baseDir, "gatsby-config.js"),
+          path.join(baseDir, "_config.yml"),
+        ],
+      },
+    })),
   ];
 
   if (gaTrackingId) {
     plugins.push({
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: gaTrackingId
-      }
+        trackingId: gaTrackingId,
+      },
     });
   }
 
@@ -109,8 +116,8 @@ module.exports = ({
     siteMetadata: {
       title: pageTitle || siteName,
       siteName,
-      description
+      description,
     },
-    plugins
+    plugins,
   };
 };
