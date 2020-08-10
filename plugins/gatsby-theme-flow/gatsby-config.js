@@ -49,6 +49,18 @@ module.exports = ({
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
     {
+      resolve: "gatsby-source-git-remotes",
+      options: {
+        repos: [
+          {
+            name: "cadence",
+            remote: "https://github.com/onflow/cadence.git",
+            patterns: ["docs/**/*.md"],
+          },
+        ],
+      },
+    },
+    {
       resolve: "gatsby-plugin-less",
       options: {
         modifyVars: mapKeys(theme, (value, key) => `color-${key}`),
@@ -70,6 +82,12 @@ module.exports = ({
       options: {
         name: "fonts",
         path: path.resolve(__dirname, "src/assets/fonts"),
+      },
+    },
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: gatsbyRemarkPlugins,
       },
     },
     {
