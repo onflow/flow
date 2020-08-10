@@ -18,7 +18,7 @@ import Sidebar from './sidebar';
 import SidebarNav from './sidebar-nav';
 import {useResponsiveSidebar} from './responsive-sidebar';
 import {Helmet} from 'react-helmet';
-import {FaCaretSquareDown} from 'react-icons/fa';
+import {IconMenuSelector} from '../ui/icons';
 import {Link, graphql, navigate, useStaticQuery} from 'gatsby';
 import {MobileLogo} from './mobile-logo';
 import {Select} from './select';
@@ -42,7 +42,7 @@ const StyledButton = styled(Button)({
   }
 });
 
-const StyledIcon = styled(FaCaretSquareDown)(size(16), {
+const StyledIcon = styled(IconMenuSelector)(size(16), {
   marginLeft: 'auto'
 });
 

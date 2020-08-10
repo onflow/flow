@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from '@emotion/styled';
-import {FaArrowLeft, FaArrowRight} from 'react-icons/fa';
+import {IconArrowLeft, IconArrowRight} from '../ui/icons';
 import {Link} from 'gatsby';
 import {theme} from '../colors';
 import breakpoints from '../utils/breakpoints';
@@ -52,7 +52,7 @@ export default function PageNav(props) {
     <Container>
       {props.prevPage && (
         <StyledLink to={props.prevPage.path}>
-          <FaArrowLeft />
+          <IconArrowLeft />
           <LinkText>
             <LinkHeading>Previous</LinkHeading>
             <LinkTitle>{props.prevPage.title}</LinkTitle>
@@ -65,7 +65,7 @@ export default function PageNav(props) {
             <LinkHeading>Next</LinkHeading>
             <LinkTitle>{props.nextPage.title}</LinkTitle>
           </LinkText>
-          <FaArrowRight />
+          <IconArrowRight />
         </StyledLink>
       )}
     </Container>
