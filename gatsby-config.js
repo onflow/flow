@@ -1,3 +1,5 @@
+const themeOptions = require('./plugins/gatsby-theme-flow/theme-options')
+
 module.exports = {
   siteMetadata: {
     title: 'Flow Documentation',
@@ -7,6 +9,7 @@ module.exports = {
     {
       resolve: 'gatsby-theme-flow',
       options: {
+        ...themeOptions,
         siteName: 'Flow Docs',
         pageTitle: 'Flow Docs',
         menuTitle: 'Flow Ecosystem',
