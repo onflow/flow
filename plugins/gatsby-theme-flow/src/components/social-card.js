@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React, {Fragment} from 'react';
 import TextFit from 'react-textfit';
-import {ApolloIcon} from '../ui/icons';
+import {IconFlow} from '../ui/icons';
 import {Global, css} from '@emotion/core';
 import {IconArrowRight} from '../ui/icons';
 import {theme} from '../colors';
@@ -99,7 +99,7 @@ export default function SocialCard(props) {
       >
         {props.title.replace(/\s+(\S*)$/, '\xA0$1')}
       </TextFit>
-      <ApolloIcon style={{height: 70}} />
+      <IconFlow style={{height: 70}} />
     </div>
   );
 }
