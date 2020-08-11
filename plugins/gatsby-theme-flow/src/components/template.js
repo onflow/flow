@@ -134,8 +134,8 @@ export default function Template(props) {
   const {
     sidebarContents,
     githubUrl,
-    spectrumUrl,
-    twitterHandle,
+    discordUrl,
+    twitterUrl,
     baseUrl
   } = props.pageContext;
 
@@ -151,20 +151,20 @@ export default function Template(props) {
         siteName={title}
         baseUrl={baseUrl}
         image={fields.image}
-        twitterHandle={twitterHandle}
+        twitterUrl={twitterUrl}
       />
       <StyledContentWrapper>
         <PageHeader {...frontmatter} />
         <hr />
         <PageContent
           title={frontmatter.title}
-          graphManagerUrl={fields.graphManagerUrl}
+          playgroundUrl={fields.playgroundUrl}
           pathname={pathname}
           pages={pages}
           headings={headings}
           hash={hash}
           githubUrl={githubUrl}
-          spectrumUrl={spectrumUrl}
+          discordUrl={discordUrl}
         >
           <CustomLinkContext.Provider
             value={{

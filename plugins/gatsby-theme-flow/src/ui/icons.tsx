@@ -22,7 +22,6 @@ export {
   FaInfoCircle as IconInfoSolid,
   FaTwitter as IconTwitter,
   FaUmbrellaBeach as IconPlayground,
-  FaYoutube as IconYoutube,
 } from 'react-icons/fa';
 
 const StackedIconContainer = styled.div({

@@ -206,13 +206,13 @@ export default function PageContent(props) {
           />
         )}
         {editLink}
-        {props.spectrumUrl && (
-          <AsideLink href={props.spectrumUrl}>
+        {props.discordUrl && (
+          <AsideLink href={props.discordUrl}>
             <IconDiscord /> Discuss on Discord
           </AsideLink>
         )}
-        {props.graphManagerUrl && (
-          <AsideLink href={props.graphManagerUrl}>
+        {props.playgroundUrl && (
+          <AsideLink href={props.playgroundUrl}>
             <IconPlayground /> Demo in Playground
           </AsideLink>
         )}
@@ -228,7 +228,7 @@ PageContent.propTypes = {
   pages: PropTypes.array.isRequired,
   hash: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  graphManagerUrl: PropTypes.string.isRequired,
   headings: PropTypes.array.isRequired,
-  spectrumUrl: PropTypes.string
+  discordUrl: PropTypes.string,
+  playgroundUrl: PropTypes.string,
 };
