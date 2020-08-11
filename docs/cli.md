@@ -1,6 +1,6 @@
 # Flow CLI
 
-> Version 0.7.0
+> Version 0.8.0
 
 The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.
 
