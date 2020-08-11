@@ -25,7 +25,8 @@ const Hotkey = styled.div(verticalAlign, size(24), {
   color: theme.text4,
   borderRadius,
   textAlign: 'center',
-  lineHeight: 1.125,
+  lineHeight: 1.4,
+  fontSize: '0.9em',
   right: 10,
   pointerEvents: 'none'
 });

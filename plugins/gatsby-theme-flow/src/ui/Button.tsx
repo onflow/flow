@@ -5,9 +5,13 @@ import { ClassNames } from "@emotion/core";
 import tinycolor from "tinycolor2";
 import React from "react";
 import classnames from "classnames";
-import { LoadingSpinner } from "./LoadingSpinner";
-import { assertUnreachable } from "./shared/assertUnreachable";
 import { ShadedColor, getOffsetInPalette } from './utils/colors';
+
+// @see https://www.typescriptlang.org/docs/handbook/advanced-types.html#exhaustiveness-checking
+/* istanbul ignore next */
+export function assertUnreachable(value: never): never {
+  throw new TypeError(`Unreachable value reached ${value}`);
+}
 
 type TLength = string | 0 | number;
 
@@ -269,7 +273,7 @@ export const Button = React.forwardRef<HTMLElement, Props>(
       variant,
       endIcon,
       feel = "raised",
-      icon: iconProp,
+      icon,
       loading,
       size = "default",
       theme = "light",
@@ -286,15 +290,6 @@ export const Button = React.forwardRef<HTMLElement, Props>(
         const disabled: boolean =
           loading ||
           (as.props.disabled != null ? as.props.disabled : disabledProps);
-
-        const icon = loading ? (
-          <LoadingSpinner
-            size="2xsmall"
-            theme={theme === "light" ? "grayscale" : "dark"}
-          />
-        ) : (
-          iconProp
-        );
 
         /**
          * Icon size in pixels

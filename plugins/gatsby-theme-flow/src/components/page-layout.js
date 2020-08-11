@@ -23,7 +23,7 @@ import {Link, graphql, navigate, useStaticQuery} from 'gatsby';
 import {MobileLogo} from './mobile-logo';
 import {Select} from './select';
 import {SelectedLanguageContext} from './multi-code-block';
-import {getSpectrumUrl, getVersionBasePath} from '../utils';
+import {getVersionBasePath} from '../utils';
 import {size} from 'polished';
 import {trackCustomEvent} from 'gatsby-plugin-google-analytics';
 
@@ -150,9 +150,8 @@ export default function PageLayout(props) {
     defaultVersion
   } = props.pageContext;
   const {
-    spectrumHandle,
-    twitterHandle,
-    youtubeUrl,
+    discordUrl,
+    twitterUrl,
     navConfig = {},
     footerNavConfig,
     logoLink,
@@ -283,9 +282,8 @@ export default function PageLayout(props) {
       {hasNavItems && (
         <DocsetSwitcher
           siteName={menuTitle || siteName}
-          spectrumUrl={spectrumHandle && getSpectrumUrl(spectrumHandle)}
-          twitterUrl={twitterHandle && `https://twitter.com/${twitterHandle}`}
-          youtubeUrl={youtubeUrl}
+          discordUrl={discordUrl}
+          twitterUrl={twitterUrl}
           navItems={navItems}
           footerNavConfig={footerNavConfig}
           open={menuOpen}

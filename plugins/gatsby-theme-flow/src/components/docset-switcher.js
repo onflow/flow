@@ -5,7 +5,7 @@ import useKey from 'react-use/lib/useKey';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import {boxShadow} from './search';
 import {theme} from '../colors';
-import {IconDiscord, IconTwitter, IconYoutube} from '../ui/icons';
+import {IconDiscord, IconTwitter} from '../ui/icons';
 import breakpoints from '../utils/breakpoints';
 import {smallCaps} from '../utils/typography';
 import {size, transparentize} from 'polished';
@@ -182,8 +182,9 @@ export default function DocsetSwitcher(props) {
   }
 
   const hasSocialUrls = Boolean(
-    props.spectrumUrl || props.twitterUrl || props.youtubeUrl
+    props.discordUrl || props.twitterUrl
   );
+
   return (
     <Wrapper
       onClick={handleWrapperClick}
@@ -223,9 +224,9 @@ export default function DocsetSwitcher(props) {
                 ))}
               {hasSocialUrls && (
                 <SocialLinks>
-                  {props.spectrumUrl && (
+                  {props.discordUrl && (
                     <SocialLink
-                      href={props.spectrumUrl}
+                      href={props.discordUrl}
                       title="Discord"
                       target="_blank"
                     >
@@ -239,15 +240,6 @@ export default function DocsetSwitcher(props) {
                       target="_blank"
                     >
                       <IconTwitter />
-                    </SocialLink>
-                  )}
-                  {props.youtubeUrl && (
-                    <SocialLink
-                      href={props.youtubeUrl}
-                      title="YouTube"
-                      target="_blank"
-                    >
-                      <IconYoutube />
                     </SocialLink>
                   )}
                 </SocialLinks>
@@ -267,7 +259,6 @@ DocsetSwitcher.propTypes = {
   siteName: PropTypes.string.isRequired,
   navItems: PropTypes.array.isRequired,
   footerNavConfig: PropTypes.object.isRequired,
-  spectrumUrl: PropTypes.string,
+  discordUrl: PropTypes.string,
   twitterUrl: PropTypes.string,
-  youtubeUrl: PropTypes.string
 };
