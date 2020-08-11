@@ -1,6 +1,6 @@
 # Flow Emulator
 
-> Version 0.7.0
+> Version 0.8.0
 
 The Flow Emulator is a lightweight tool that emulates
 the behaviour of the real Flow network.
