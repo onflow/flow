@@ -112,6 +112,32 @@ flow keys generate
 
 # Changelog
 
+### SDK Compatibility
+
+| Flow Go SDK v0.6.0 | Flow Go SDK v0.7.0 | Flow Go SDK v0.7.1 | Flow Go SDK v0.8.0 | Flow Go SDK v0.9.0 |
+|--|--|--|--|--|
+|❌|✅|✅|✅|✅|
+
+### 💥  Breaking Changes
+
+**Upgrade to Cadence `v0.8.0`:** https://github.com/onflow/cadence/releases/tag/v0.8.0
+
+- Arguments passed to `cadence.Value#WithType` are now typed as pointers (`*cadence.Type`) rather than values (`cadence.Type`). 
+
+  Example:
+
+  ```go
+  myEventType := cadence.EventType{...})
+
+  // this 👇 
+  myEvent := cadence.NewEvent(...).WithType(myEventType)
+
+  // changes to this 👇 
+  myEvent := cadence.NewEvent(...).WithType(&myEventType)
+  ```
+
+---
+
 ## Version 0.5.1
 
 ### SDK Compatibility
@@ -135,22 +161,6 @@ This version of the emulator is included in v0.5.1 of the [Flow CLI](./cli.md).
 ```
 docker run -p 3569:3569 gcr.io/dl-flow/emulator:v0.5.1
 ```
-
----
-
-## Version 0.7.0
-
-## SDK Compatibility
-
-| Flow Go SDK v0.6.0 | Flow Go SDK v0.7.0 | Flow Go SDK v0.7.1 | Flow Go SDK v0.8.0
-|--|--|--|--|
-|❌|✅|✅|✅|
-
-## ⭐ Features
-
-`GetAccount` was reintroduced to provide backwards compatibility for clients that do not yet support the `GetAccountAtLatestBlock` method.
-
-This method is simply an alias for `GetAccountAtLatestBlock`. The emulator now implements _both_ methods.
 
 ---
 
