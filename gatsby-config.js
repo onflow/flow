@@ -1,47 +1,36 @@
-const themeOptions = require('./plugins/gatsby-theme-flow/theme-options')
+const themeOptions = require("./plugins/gatsby-theme-flow/theme-options");
 
 module.exports = {
   siteMetadata: {
-    title: 'Flow Documentation',
+    title: "Flow Documentation",
   },
-  pathPrefix: '/docs',
+  pathPrefix: "/docs",
   plugins: [
     {
-      resolve: 'gatsby-theme-flow',
+      resolve: "gatsby-theme-flow",
       options: {
         ...themeOptions,
-        siteName: 'Flow Docs',
-        pageTitle: 'Flow Docs',
-        menuTitle: 'Flow Ecosystem',
-        baseDir: 'docs',
-        contentDir: 'content',
+        siteName: "Flow Documentation",
+        pageTitle: "Flow Developer Portal",
+        menuTitle: "Flow Ecosystem",
+        baseDir: "docs",
+        contentDir: "content",
         root: __dirname,
-        subtitle: 'Flow Basics',
-        description: 'How to use the Apollo GraphQL platform',
-        githubRepo: 'onflow/flow',
+        subtitle: "Flow Developer Tools",
+        description: "",
+        githubRepo: "onflow/flow",
         sidebarCategories: {
-          null: ['index', 'intro/platform', 'intro/benefits'],
-          Tutorial: [
-            'tutorial/introduction',
-            'tutorial/schema',
-            'tutorial/data-source',
-            'tutorial/resolvers',
-            'tutorial/mutation-resolvers',
-            'tutorial/production',
-            'tutorial/client',
-            'tutorial/queries',
-            'tutorial/mutations',
-            'tutorial/local-state',
-          ],
-          'Development Tools': [
-            'devtools/cli',
-            'devtools/editor-plugins',
-            'devtools/apollo-config',
-          ],
-          Resources: [
-            '[Principled GraphQL](https://principledgraphql.com)',
-            'resources/graphql-glossary',
-            'resources/faq',
+          null: ["index", "intro/flow-concepts"],
+          "Cadence Tutorial": [
+            "tutorial/cadence/00-introduction",
+            "tutorial/cadence/01-first-steps",
+            "tutorial/cadence/02-hello-world",
+            "tutorial/cadence/03-fungible-tokens",
+            "tutorial/cadence/04-non-fungible-tokens",
+            "tutorial/cadence/05-marketplace-setup",
+            "tutorial/cadence/06-marketplace-compose",
+            "tutorial/cadence/07-resources-compose",
+            "tutorial/cadence/08-voting",
           ],
         },
       },

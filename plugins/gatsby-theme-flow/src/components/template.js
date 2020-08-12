@@ -1,41 +1,41 @@
-import CodeBlock from './code-block';
-import CustomSEO from './custom-seo';
-import Footer from './footer';
-import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
-import PageContent from './page-content';
-import PageHeader from './page-header';
-import PropTypes from 'prop-types';
-import React, {Fragment, createContext, useContext} from 'react';
-import rehypeReact from 'rehype-react';
-import styled from '@emotion/styled';
-import ContentWrapper from './content-wrapper';
-import {theme} from '../colors';
-import {smallCaps} from '../utils/typography';
-import {MDXProvider} from '@mdx-js/react';
-import {graphql, navigate} from 'gatsby';
+import CodeBlock from "./code-block";
+import CustomSEO from "./custom-seo";
+import Footer from "./footer";
+import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
+import PageContent from "./page-content";
+import PageHeader from "./page-header";
+import PropTypes from "prop-types";
+import React, { Fragment, createContext, useContext } from "react";
+import rehypeReact from "rehype-react";
+import styled from "@emotion/styled";
+import ContentWrapper from "./content-wrapper";
+import { theme } from "../colors";
+import { smallCaps } from "../utils/typography";
+import { MDXProvider } from "@mdx-js/react";
+import { graphql, navigate } from "gatsby";
 
 const StyledContentWrapper = styled(ContentWrapper)({
-  paddingBottom: 0
+  paddingBottom: 0,
 });
 
 const CustomLinkContext = createContext();
 
 function CustomLink(props) {
-  const {pathPrefix, baseUrl} = useContext(CustomLinkContext);
+  const { pathPrefix, baseUrl } = useContext(CustomLinkContext);
 
-  const linkProps = {...props};
+  const linkProps = { ...props };
   if (props.href) {
-    if (props.href.startsWith('/')) {
+    if (props.href.startsWith("/")) {
       linkProps.onClick = function handleClick(event) {
-        const href = event.target.getAttribute('href');
-        if (href.startsWith('/')) {
+        const href = event.target.getAttribute("href");
+        if (href.startsWith("/")) {
           event.preventDefault();
-          navigate(href.replace(pathPrefix, ''));
+          navigate(href.replace(pathPrefix, ""));
         }
       };
-    } else if (!props.href.startsWith('#') && !props.href.startsWith(baseUrl)) {
-      linkProps.target = '_blank';
-      linkProps.rel = 'noopener noreferrer';
+    } else if (!props.href.startsWith("#") && !props.href.startsWith(baseUrl)) {
+      linkProps.target = "_blank";
+      linkProps.rel = "noopener noreferrer";
     }
   }
 
@@ -43,12 +43,12 @@ function CustomLink(props) {
 }
 
 CustomLink.propTypes = {
-  href: PropTypes.string
+  href: PropTypes.string,
 };
 
 const TableWrapper = styled.div({
-  overflow: 'auto',
-  marginBottom: '1.45rem'
+  overflow: "auto",
+  marginBottom: "1.45rem",
 });
 
 const tableBorder = `1px solid ${theme.divider}`;
@@ -56,30 +56,30 @@ const StyledTable = styled.table({
   border: tableBorder,
   borderSpacing: 0,
   borderRadius: 4,
-  [['th', 'td']]: {
+  [["th", "td"]]: {
     padding: 16,
-    borderBottom: tableBorder
+    borderBottom: tableBorder,
   },
-  'tbody tr:last-child td': {
-    border: 0
+  "tbody tr:last-child td": {
+    border: 0,
   },
   th: {
     ...smallCaps,
     fontSize: 13,
-    fontWeight: 'normal',
+    fontWeight: "normal",
     color: theme.text2,
-    textAlign: 'inherit'
+    textAlign: "inherit",
   },
   td: {
-    verticalAlign: 'top',
+    verticalAlign: "top",
     p: {
-      fontSize: 'inherit',
-      lineHeight: 'inherit'
+      fontSize: "inherit",
+      lineHeight: "inherit",
     },
     code: {
-      whiteSpace: 'normal'
-    }
-  }
+      whiteSpace: "normal",
+    },
+  },
 });
 
 function CustomTable(props) {
@@ -92,16 +92,17 @@ function CustomTable(props) {
 
 function createCustomHeading(tag) {
   // eslint-disable-next-line react/display-name, react/prop-types
-  return ({children, ...props}) =>
+  return ({ children, ...props }) =>
     React.createElement(
       tag,
       props,
       // eslint-disable-next-line react/prop-types
-      <a className="headingLink" href={'#' + props.id}>
+      <a className="headingLink" href={"#" + props.id}>
         {Array.isArray(children)
           ? // eslint-disable-next-line react/prop-types
             children.filter(
-              child => child.type !== CustomLink && child.props?.mdxType !== 'a'
+              (child) =>
+                child.type !== CustomLink && child.props?.mdxType !== "a"
             )
           : children}
       </a>
@@ -112,36 +113,36 @@ const components = {
   pre: CodeBlock,
   a: CustomLink,
   table: CustomTable,
-  h1: createCustomHeading('h1'),
-  h2: createCustomHeading('h2'),
-  h3: createCustomHeading('h3'),
-  h4: createCustomHeading('h4'),
-  h5: createCustomHeading('h5'),
-  h6: createCustomHeading('h6')
+  h1: createCustomHeading("h1"),
+  h2: createCustomHeading("h2"),
+  h3: createCustomHeading("h3"),
+  h4: createCustomHeading("h4"),
+  h5: createCustomHeading("h5"),
+  h6: createCustomHeading("h6"),
 };
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
-  components
+  components,
 }).Compiler;
 
 export default function Template(props) {
-  const {hash, pathname} = props.location;
-  const {file, site} = props.data;
-  const {frontmatter, headings, fields} =
+  const { hash, pathname } = props.location;
+  const { file, site } = props.data;
+  const { frontmatter, headings, fields } =
     file.childMarkdownRemark || file.childMdx;
-  const {title, description} = site.siteMetadata;
+  const { title, description } = site.siteMetadata;
   const {
     sidebarContents,
     githubUrl,
     discordUrl,
     twitterUrl,
-    baseUrl
+    baseUrl,
   } = props.pageContext;
 
   const pages = sidebarContents
-    .reduce((acc, {pages}) => acc.concat(pages), [])
-    .filter(page => !page.anchor);
+    .reduce((acc, { pages }) => acc.concat(pages), [])
+    .filter((page) => !page.anchor);
 
   return (
     <Fragment>
@@ -169,7 +170,7 @@ export default function Template(props) {
           <CustomLinkContext.Provider
             value={{
               pathPrefix: site.pathPrefix,
-              baseUrl
+              baseUrl,
             }}
           >
             {file.childMdx ? (
@@ -190,7 +191,7 @@ export default function Template(props) {
 Template.propTypes = {
   data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
 };
 
 export const pageQuery = graphql`
@@ -202,7 +203,7 @@ export const pageQuery = graphql`
         description
       }
     }
-    file(id: {eq: $id}) {
+    file(id: { eq: $id }) {
       childMarkdownRemark {
         frontmatter {
           title
