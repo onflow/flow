@@ -1,120 +1,125 @@
-import PropTypes from 'prop-types';
-import React, {useRef, useState} from 'react';
-import styled from '@emotion/styled';
-import {IconExpandList, IconCollapseList, IconExternalLink, IconChevronUp} from '../ui/icons';
-import {Link, withPrefix} from 'gatsby';
-import {theme} from '../colors';
-import {smallCaps} from '../utils/typography';
-import {size} from 'polished';
+import PropTypes from "prop-types";
+import React, { useRef, useState } from "react";
+import styled from "@emotion/styled";
+import {
+  IconExpandList,
+  IconCollapseList,
+  IconExternalLink,
+  IconChevronUp,
+} from "../ui/icons";
+import { Link, withPrefix } from "gatsby";
+import { theme } from "../colors";
+import { smallCaps } from "../utils/typography";
+import { size } from "polished";
 
 const ExpandAll = styled.button(smallCaps, {
-  display: 'flex',
-  alignItems: 'center',
+  display: "flex",
+  alignItems: "center",
   marginBottom: 12,
-  padding: '4px 0',
+  padding: "4px 0",
   border: 0,
   fontSize: 12,
   fontWeight: 600,
   lineHeight: 1,
-  background: 'none',
-  outline: 'none',
-  cursor: 'pointer',
-  color: 'inherit',
-  ':hover': {
-    opacity: theme.hoverOpacity
+  background: "none",
+  outline: "none",
+  cursor: "pointer",
+  color: "inherit",
+  ":hover": {
+    opacity: theme.hoverOpacity,
   },
   svg: {
     ...size(12),
-    marginRight: 8
-  }
+    marginRight: 8,
+  },
 });
 
 const StyledList = styled.ul({
   marginLeft: 0,
   marginBottom: 32,
-  listStyle: 'none'
+  listStyle: "none",
 });
 
 const StyledListItem = styled.li({
-  fontSize: '1rem',
+  fontSize: "1rem",
   lineHeight: 1.5,
-  marginBottom: '0.8125rem',
+  marginBottom: "0.8125rem",
   a: {
-    color: 'inherit',
-    textDecoration: 'none',
-    ':hover': {
-      opacity: theme.hoverOpacity
+    color: "inherit",
+    textDecoration: "none",
+    ":hover": {
+      opacity: theme.hoverOpacity,
     },
-    '&.active': {
+    "&.active": {
       color: theme.primary,
-      pointerEvents: 'none'
-    }
-  }
+      pointerEvents: "none",
+    },
+  },
 });
 
 const Category = styled.div({
-  position: 'relative',
+  position: "relative",
   zIndex: 0,
   [StyledList]: {
-    position: 'relative',
-    zIndex: 2
-  }
+    position: "relative",
+    zIndex: 2,
+  },
 });
 
 const categoryTitleStyles = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  padding: '12px 0',
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  padding: "12px 0",
   color: theme.text1,
-  fontWeight: 'bold',
+  fontWeight: "bold",
   fontSize: 14,
-  lineHeight: '15px',
+  lineHeight: "15px",
   ...smallCaps,
   svg: size(10),
-  '&.active': {
-    color: theme.primary
-  }
+  "&.active": {
+    color: theme.primary,
+  },
 };
 
 const CategoryTitle = styled.div(categoryTitleStyles);
 const CategoryLink = styled(Link)(categoryTitleStyles, {
-  textDecoration: 'none',
-  ':hover': {
-    opacity: theme.hoverOpacity
-  }
+  textDecoration: "none",
+  ":hover": {
+    opacity: theme.hoverOpacity,
+  },
 });
 
 const StyledCheckbox = styled.input({
-  ...size('100%'),
-  cursor: 'pointer',
-  position: 'absolute',
+  ...size("100%"),
+  cursor: "pointer",
+  position: "absolute",
   top: 0,
   left: 0,
   opacity: 0,
   zIndex: 1,
   [`:hover ~ ${CategoryTitle}`]: {
-    opacity: theme.hoverOpacity
+    opacity: theme.hoverOpacity,
   },
-  ':not(:checked) ~': {
+  ":not(:checked) ~": {
     [`${CategoryTitle} svg`]: {
-      transform: 'scaleY(-1)'
+      transform: "scaleY(-1)",
     },
     [StyledList]: {
-      display: 'none'
-    }
-  }
+      display: "none",
+    },
+  },
 });
 
 const StyledOutlinkIcon = styled(IconExternalLink)(size(14), {
   verticalAlign: -1,
   marginLeft: 8,
-  color: theme.text3
+  color: theme.text3,
 });
 
 function isPageSelected(path, pathname) {
-  const [a, b] = [withPrefix(path), pathname].map(string =>
-    string.replace(/\/$/, '')
+  const [a, b] = [withPrefix(path), pathname].map((string) =>
+    string.replace(/\/$/, "")
   );
   return a === b;
 }
@@ -123,7 +128,10 @@ function NavItems(props) {
   return (
     <StyledList>
       {props.pages.map((page, index) => {
-        const pageTitle = page.sidebarTitle || page.title;
+        const pageTitle =
+          page.sidebarTitle || page.title === "Getting Started"
+            ? "Home"
+            : page.title;
         return (
           <StyledListItem key={index}>
             {page.anchor ? (
@@ -134,7 +142,7 @@ function NavItems(props) {
             ) : (
               <Link
                 className={
-                  isPageSelected(page.path, props.pathname) ? 'active' : null
+                  isPageSelected(page.path, props.pathname) ? "active" : null
                 }
                 to={page.path}
                 title={page.description}
@@ -153,23 +161,25 @@ function NavItems(props) {
 NavItems.propTypes = {
   pages: PropTypes.array.isRequired,
   pathname: PropTypes.string.isRequired,
-  onLinkClick: PropTypes.func
+  onLinkClick: PropTypes.func,
 };
 
 export default function SidebarNav(props) {
+  console.log(props.contents);
+
   const categoriesRef = useRef();
 
   const [allExpanded, setAllExpanded] = useState(false);
-  const categories = props.contents.filter(content => content.title);
-  const [root] = props.contents.filter(content => !content.title);
+  const categories = props.contents.filter((content) => content.title);
+  const [root] = props.contents.filter((content) => !content.title);
 
   function toggleAll() {
     const checkboxes = Array.from(
       categoriesRef.current.querySelectorAll('input[type="checkbox"]')
     );
 
-    const expanded = !checkboxes.every(checkbox => checkbox.checked);
-    checkboxes.forEach(checkbox => (checkbox.checked = expanded));
+    const expanded = !checkboxes.every((checkbox) => checkbox.checked);
+    checkboxes.forEach((checkbox) => (checkbox.checked = expanded));
     setAllExpanded(expanded);
 
     if (props.onToggleAll) {
@@ -178,12 +188,14 @@ export default function SidebarNav(props) {
   }
 
   function toggleCategory(event) {
-    const {value, checked, parentElement} = event.target;
+    const { value, checked, parentElement } = event.target;
 
     const checkboxes = parentElement.parentElement.querySelectorAll(
       'input[type="checkbox"]'
     );
-    const expanded = Array.from(checkboxes).every(checkbox => checkbox.checked);
+    const expanded = Array.from(checkboxes).every(
+      (checkbox) => checkbox.checked
+    );
     setAllExpanded(expanded);
 
     if (props.onToggleCategory) {
@@ -203,15 +215,15 @@ export default function SidebarNav(props) {
       {!props.alwaysExpanded && categories.length > 1 && (
         <ExpandAll onClick={toggleAll}>
           {React.createElement(allExpanded ? IconCollapseList : IconExpandList)}
-          {allExpanded ? 'Collapse' : 'Expand'} all
+          {allExpanded ? "Collapse" : "Expand"} all
         </ExpandAll>
       )}
       <div ref={categoriesRef}>
         {categories.map((category, index) => {
-          const isSelected = category.pages.some(page =>
+          const isSelected = category.pages.some((page) =>
             isPageSelected(page.path, props.pathname)
           );
-          const className = isSelected ? 'active' : null;
+          const className = isSelected ? "active" : null;
           return (
             <Category key={index}>
               {!props.alwaysExpanded && (
@@ -251,5 +263,5 @@ SidebarNav.propTypes = {
   pathname: PropTypes.string.isRequired,
   onToggleAll: PropTypes.func,
   onToggleCategory: PropTypes.func,
-  onLinkClick: PropTypes.func
+  onLinkClick: PropTypes.func,
 };
