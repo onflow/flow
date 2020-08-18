@@ -1,6 +1,6 @@
 ---
-title: Documentation
-description: Explore the Flow ecosystem
+title: Getting Started
+description: "Welcome to the Flow Developer Portal"
 ---
 
 import DocsetMenu from './components/docset-menu';
@@ -9,112 +9,104 @@ import WorkoutMenuItem from './components/workout-menu-item';
 import { Link } from 'gatsby';
 import { Button } from 'gatsby-theme-flow/src/ui/Button';
 import { theme } from 'gatsby-theme-flow/src/colors';
-import {
-  ExpansionPanel,
-} from 'gatsby-theme-flow/src/components/expansion-panel';
 import { ReactComponent as BadmintonPlayer } from './assets/badminton-player.svg';
 import { ReactComponent as Paragliding } from './assets/paragliding.svg';
 import { ReactComponent as Weightlift } from './assets/weightlift.svg';
 import { ReactComponent as Diving } from './assets/diving.svg';
 import { ReactComponent as HeadLight } from './assets/head-light.svg';
 
-Flow is a fast, secure, and developer-friendly blockchain built to support the next generation of games, apps, and the digital assets that power them.
+Before starting your journey on Flow we recommend reading the <a href="https://www.onflow.org/primer">Flow Primer</a> where you will get a quick introduction to how the Flow blockchain works. It will be easier to understand the concepts in these tutorials if you have an idea of how Flow works.
 
-<DocsetMenu />
+## Install Flow
 
-## New to Flow?
+To work with Flow locally you'll need to install the <a href="">Flow CLI</a>. 
+The Flow CLI is a command-line interface that provides useful utilities for building Flow applications, including the Flow Emulator.
+<a href="/installation">View Installation Instructions</a>
 
-It's easy to adopt Apollo incrementally, meaning you can set it up alongside an existing solution (such as a REST API) and migrate functionality at your convenience.
+## Write Cadence Smart Contracts
 
-<div>
-  <Button
-    size="large"
-    color={theme.primary}
-    as={<Link to="/tutorial/introduction" />}
-  >
-    Start the tutorial!
-  </Button>
-  <Button
-    size="large"
-    as={<Link to="/intro/platform" />}
-    style={{marginLeft: 16}}
-  >
-    Learn more
-  </Button>
-</div>
+Blockchain represents a new paradigm on how scarce resources are being created and managed in the digital world. That is why Flow supports a new smart contract language, Cadence, following a <a href="">resource-oriented</a> paradigm inspired by linear types. 
 
-## Recommended workouts
+Cadence allows for a more natural representation of scarce resources and it is designed for developers to build safer smart contracts.
 
 <MenuWrapper>
 
 <WorkoutMenuItem
   icon={HeadLight}
-  keyWord="Discover"
-  otherWords="Apollo"
+  keyWord="Flow"
+  otherWords="Playground"
 >
-
-* [The Flow ecosystem](./intro/platform/)
-* [Why Flow?](./intro/benefits/)
-* Introduction to [Apollo Server](https://www.apollographql.com/docs/apollo-server/) and [Apollo Client](https://www.apollographql.com/docs/react/)
-* [Overview of Apollo Studio](https://www.apollographql.com/docs/studio/)
-* [Principled GraphQL](https://principledgraphql.com/)
-
+The Flow Playground includes an in-browser editor and <a href="">Flow emulator</a> to experiment with Flow. 
+<p style="padding-top:1rem"><a href="https://play.onflow.org" target="_blank"><Button color={theme.primary} size="small" >Launch Playground</Button></a></p>
 </WorkoutMenuItem>
 
 <WorkoutMenuItem
   icon={Diving}
-  keyWord="Dive in"
-  otherWords="to the basics"
+  keyWord="Cadence"
+  otherWords="Tutorials"
 >
+ Work through the fundamentals of developing on-chain currencies, collectibles, marketplaces, and more, all on Flow.
+  <p style="padding-top:1rem"><a href="/tutorial/cadence/00-introduction/"><Button color={theme.primary} size="small">Explore Tutorials</Button></a></p>
+</WorkoutMenuItem>
 
-* Get started with [Apollo Server](https://www.apollographql.com/docs/apollo-server/getting-started/) and [Apollo Client](https://www.apollographql.com/docs/react/get-started/)
-* The [Apollo CLI](https://www.apollographql.com/docs/devtools/cli/) and [VS Code extension](./devtools/editor-plugins/)
-* [Resolvers](https://www.apollographql.com/docs/apollo-server/data/resolvers/) and [Data sources](https://www.apollographql.com/docs/apollo-server/data/data-sources/) (Apollo Server)
-* [Queries](https://www.apollographql.com/docs/react/data/queries/) and [Mutations](https://www.apollographql.com/docs/react/data/mutations/) (Apollo Client)
-* [Get started with Apollo Studio](https://www.apollographql.com/docs/studio/getting-started/)
+<WorkoutMenuItem
+  icon={Weightlift}
+  keyWord="Cadence"
+  otherWords="Language Reference">
+  The Cadence Language Reference is an in depth-guide to the Cadence language.
+<p style="padding-top:1rem"><a href="/docs/language/"><Button color={theme.primary} size="small" >Visit Reference</Button></a></p>
+</WorkoutMenuItem>
+
+<WorkoutMenuItem
+  icon={Paragliding}
+  keyWord="Cadence"
+  otherWords="Source Code"
+>
+Cadence is a new GPL with superpowers. The source code is open source on Github.
+<p style="padding-top:1rem"><a href="https://github.com/onflow/cadence" target="_blank"><Button color={theme.primary} size="small" >View Source</Button></a></p>
+</WorkoutMenuItem>
+
+</MenuWrapper>
+
+## Build Applications on Flow
+
+When choosing to build on a blockchain platform like **Flow**, it's important to consider how you want to handle transaction signing and storing information about your users.
+
+<MenuWrapper>
+
+<WorkoutMenuItem
+  icon={HeadLight}
+  keyWord="Hybrid"
+  otherWords="Applications"
+>
+Build an application that lets user's manage their own Flow account account access using a wallet, but also store some information about individual users in a database, and provide some server-side functionality that interacts with Flow. 
+<h5 style="padding-top:1rem">Tools you'll need:</h5>
+
+* [Flow GO SDK](https://www.apollographql.com/docs/apollo-server/getting-started/)
+* [Flow JS SDK](https://www.apollographql.com/docs/devtools/cli/)
 
 </WorkoutMenuItem>
 
 <WorkoutMenuItem
   icon={Weightlift}
-  keyWord="Develop"
-  otherWords="your graph"
->
+  keyWord="Decentralized"
+  otherWords="Applications">
+  Decentralized applications are the best option for developers who want to build censorship resistant and highly-scalable applications that connect directly to Flow.
+  <h5 style="padding-top:1rem">Tools you'll need:</h5>
 
-* [Registering your schema](https://www.apollographql.com/docs/studio/schema-registry/)
-* Caching in [Apollo Server](https://www.apollographql.com/docs/apollo-server/performance/caching/) and [Apollo Client](https://www.apollographql.com/docs/react/caching/cache-configuration/)
-* Mocking new features in [Apollo Server](https://www.apollographql.com/docs/apollo-server/testing/mocking/) and [Apollo Client](https://www.apollographql.com/docs/react/development-testing/client-schema-mocking/)
-* [Using schema directives](https://www.apollographql.com/docs/apollo-server/schema/directives/) (Apollo Server)
-* [Extending Apollo Server with plugins](https://www.apollographql.com/docs/apollo-server/integrations/plugins/)
-
+  * [Flow JS SDK](https://www.apollographql.com/docs/devtools/cli/)
 
 </WorkoutMenuItem>
 
 <WorkoutMenuItem
   icon={Paragliding}
-  keyWord="Deploy"
-  otherWords="to production"
+  keyWord="Client-Server"
+  otherWords="Applications"
 >
+Client-server applications are a powerful way to build rich apps that leverage Flow's decentralized properties, in conjunction with private servers for less critical components.
+<h5 style="padding-top:1rem">Tools you'll need:</h5>
 
-* Deploying Apollo Server to [Heroku](https://www.apollographql.com/docs/apollo-server/deployment/heroku/), [AWS Lambda](https://www.apollographql.com/docs/apollo-server/deployment/lambda/), [Zeit Now](https://www.apollographql.com/docs/apollo-server/deployment/now/), etc.
-* [Preventing breaking changes to your graph](https://www.apollographql.com/docs/studio/schema-checks/)
-* Introduction to [Apollo Federation](https://www.apollographql.com/docs/apollo-server/federation/introduction/) and [Managed federation](https://www.apollographql.com/docs/studio/managed-federation/overview/)
-* Authentication in [Apollo Server](https://www.apollographql.com/docs/apollo-server/security/authentication/) and [Apollo Client](https://www.apollographql.com/docs/react/networking/authentication/)
-* [Segmenting metrics by client](https://www.apollographql.com/docs/studio/client-awareness/)
-
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={BadmintonPlayer}
-  keyWord="Debug"
-  otherWords="your solution"
->
-
-* Testing in [Apollo Server](https://www.apollographql.com/docs/apollo-server/testing/testing/) and [Apollo Client](https://www.apollographql.com/docs/react/development-testing/testing/)
-* Error handling in [Apollo Server](https://www.apollographql.com/docs/apollo-server/data/errors/) and [Apollo Client](https://www.apollographql.com/docs/react/data/error-handling/)
-* [Metrics and logging](https://www.apollographql.com/docs/apollo-server/monitoring/metrics/) (Apollo Server)
-* [Analyzing performance](https://www.apollographql.com/docs/studio/performance/) with Apollo Studio
-* [Pushing federated trace data](https://www.apollographql.com/docs/apollo-server/federation/metrics/)
+* [Flow GO SDK](https://www.apollographql.com/docs/apollo-server/getting-started/)
 
 </WorkoutMenuItem>
 

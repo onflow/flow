@@ -1,23 +1,23 @@
-const themeOptions = require('./plugins/gatsby-theme-flow/theme-options')
+const themeOptions = require("./plugins/gatsby-theme-flow/theme-options");
 
 module.exports = {
   siteMetadata: {
-    title: 'Flow Documentation',
+    title: "Flow Documentation",
   },
-  pathPrefix: '/docs',
+  pathPrefix: "/docs",
   plugins: [
     {
-      resolve: 'gatsby-theme-flow',
+      resolve: "gatsby-theme-flow",
       options: {
         ...themeOptions,
-        siteName: 'Flow Docs',
-        pageTitle: 'Flow Docs',
-        menuTitle: 'Flow Ecosystem',
-        baseDir: 'docs',
-        contentDir: 'content',
-        root: __dirname,
+        siteName: "Flow Documentation",
         subtitle: 'Flow Basics',
         description: 'How to use the Apollo GraphQL platform',
+        pageTitle: "Flow Developer Portal",
+        menuTitle: "Flow Ecosystem",
+        baseDir: "docs",
+        contentDir: "content",
+        root: __dirname,
         githubRepo: 'onflow/flow',
         repositories: [
           { owner: 'onflow', name: 'flow-go-sdk' },
