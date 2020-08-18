@@ -17,8 +17,10 @@ module.exports = {
         contentDir: 'content',
         root: __dirname,
         subtitle: 'Flow Basics',
-        description: 'How to use the Apollo GraphQL platform',
+        description: 'TODO: Add description',
         githubRepo: 'onflow/flow',
+        githubAccessToken: '',
+        // githubAccessToken: '474882358b0d8ce55925562fff0ba90f3ec2708f',
         repositories: [
           { owner: 'onflow', name: 'flow-go-sdk' },
         ],

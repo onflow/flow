@@ -4,19 +4,42 @@ const remarkTypescript = require("remark-typescript");
 const { theme } = require("./src/colors");
 const { HEADER_HEIGHT } = require("./src/utils");
 
+const getReleases = `
+  query getReleases($owner: String!, $name: String!) {
+    repository(owner: $owner, name: $name) {
+      releases(first: 10, orderBy: { field: CREATED_AT, direction: DESC }) {
+        nodes {
+          name
+          author {
+            avatarUrl
+            url
+            login
+            name
+          }
+          url
+          publishedAt
+          description
+          descriptionHTML
+        }
+      }
+    }
+  }
+`;
+
 module.exports = ({
   root,
   siteName,
   pageTitle,
   description,
   githubRepo,
+  githubAccessToken,
   baseDir = "",
   contentDir = "content",
-  sections,
   versions = {},
   gaTrackingId,
   ignore,
   checkLinksOptions,
+  repositories,
 }) => {
   const gatsbyRemarkPlugins = [
     {
@@ -102,6 +125,15 @@ module.exports = ({
         ],
       },
     })),
+    {
+      resolve: 'gatsby-source-github',
+      options: {
+        headers: {
+          Authorization: `Bearer ${githubAccessToken}`,
+        },
+        queries: repositories.map((repository) => [getReleases, repository]),
+      },
+    },
   ];
 
   if (gaTrackingId) {
