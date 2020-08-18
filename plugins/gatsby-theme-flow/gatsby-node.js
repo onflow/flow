@@ -202,7 +202,13 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
   createTypes(`
     type MdxFrontmatter {
       title: String!
-      description: String!
+      description: String
+      template: String
+    }
+
+    type MarkdownRemarkFrontmatter {
+      title: String!
+      description: String
       template: String
     }
   `);
