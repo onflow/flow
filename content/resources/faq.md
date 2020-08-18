@@ -1,6 +1,7 @@
 ---
 title: Frequently Asked Questions
 description: Common questions asked at each stage of GraphQL adoption
+template: default
 ---
 
 Everyone has questions about how to properly set up a GraphQL schema, but not all questions are alike. In different stages of development, different things matter. This guide answers questions that people commonly have at every step along the journey to GraphQL in production.
