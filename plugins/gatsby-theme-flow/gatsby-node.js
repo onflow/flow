@@ -251,7 +251,7 @@ async function createPagesForSection(
 ) {
   const {data} = await graphql(`
     {
-      allFile(filter: {extension: {in: ["md", "mdx"]}, relativePath: {glob: "${section.path}"}}) {
+      allFile(filter: {extension: {in: ["md", "mdx"]}, relativePath: {glob: "${section.pattern}"}}) {
         edges {
           node {
             id

@@ -24,7 +24,7 @@ module.exports = {
         ],
         sections: [
           {
-            path: '*',
+            pattern: '*',
             sidebarCategories: {
               null: [
                 'foo/bar',
@@ -39,7 +39,7 @@ module.exports = {
             },
           },
           {
-            path: 'foo/**/*',
+            pattern: 'foo/**/*',
             sidebarCategories: {
               null: [
                 'foo/bar',
@@ -54,7 +54,7 @@ module.exports = {
             },
           },
           {
-            path: 'bar/**/*',
+            pattern: 'bar/**/*',
             sidebarCategories: {
               null: [
                 'bar/bar',
