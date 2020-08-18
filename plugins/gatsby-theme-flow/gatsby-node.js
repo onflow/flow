@@ -198,6 +198,16 @@ function getVersionSidebarCategories(gatsbyConfig, hexoConfig) {
   return sidebar_categories;
 }
 
+exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
+  createTypes(`
+    type MdxFrontmatter {
+      title: String!
+      description: String!
+      template: String
+    }
+  `);
+};
+
 const pageFragment = `
   internal {
     type
@@ -205,6 +215,7 @@ const pageFragment = `
   frontmatter {
     title
     description
+    template
   }
   fields {
     slug
@@ -214,8 +225,11 @@ const pageFragment = `
   }
 `;
 
-exports.createPages = async (
-  {actions, graphql},
+
+async function createPagesForSection(
+  actions,
+  graphql,
+  section,
   {
     baseDir = '',
     contentDir = 'content',
@@ -223,16 +237,15 @@ exports.createPages = async (
     versions = {},
     subtitle,
     githubRepo,
-    sidebarCategories,
     discordUrl,
     twitterUrl,
     localVersion,
     baseUrl
   }
-) => {
+) {
   const {data} = await graphql(`
     {
-      allFile(filter: {extension: {in: ["md", "mdx"]}}) {
+      allFile(filter: {extension: {in: ["md", "mdx"]}, relativePath: {regex: "/${section.path}/"}}) {
         edges {
           node {
             id
@@ -249,6 +262,11 @@ exports.createPages = async (
     }
   `);
 
+  const templates = {
+    default: require.resolve(`./src/components/templates/default`),
+    changelog: require.resolve(`./src/components/templates/changelog`),
+  };
+
   const {edges} = data.allFile;
   const mainVersion = localVersion || defaultVersion;
   const contentPath = path.join(baseDir, contentDir);
@@ -256,7 +274,7 @@ exports.createPages = async (
 
   const sidebarContents = {
     [mainVersion]: getSidebarContents(
-      sidebarCategories,
+      section.sidebarCategories,
       edges,
       mainVersion,
       dirPattern
@@ -312,10 +330,11 @@ exports.createPages = async (
   const currentBranch =
     process.env.BRANCH || (await git.revparse(['--abbrev-ref', 'HEAD']));
 
-  const template = require.resolve('./src/components/template');
-  edges.forEach(edge => {
+  const defaultTemplateName = 'default';
+
+  await edges.forEach(async edge => {
     const {id, relativePath} = edge.node;
-    const {fields} = getPageFromEdge(edge);
+    const {fields, frontmatter} = getPageFromEdge(edge);
 
     let versionDifference = 0;
     if (defaultVersionNumber) {
@@ -327,8 +346,10 @@ exports.createPages = async (
       }
     }
 
+    const templateName = frontmatter.template || defaultTemplateName;
+    const template = templates[templateName];
+
     let githubUrl;
-    let repoPath;
 
     if (githubRepo) {
       const [owner, repo] = githubRepo.split('/');
@@ -342,11 +363,9 @@ exports.createPages = async (
           fields.versionRef || path.join(currentBranch, contentPath),
           relativePath
         );
-
-      repoPath = `/${repo}`;
     }
 
-    actions.createPage({
+    await actions.createPage({
       path: fields.slug,
       component: template,
       context: {
@@ -364,4 +383,10 @@ exports.createPages = async (
       }
     });
   });
+};
+
+exports.createPages = async ({actions, graphql}, options) => {
+  return Promise.all(
+    options.sections.map((section) => createPagesForSection(actions, graphql, section, options))
+  );
 };

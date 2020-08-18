@@ -19,31 +19,41 @@ module.exports = {
         subtitle: 'Flow Basics',
         description: 'How to use the Apollo GraphQL platform',
         githubRepo: 'onflow/flow',
-        sidebarCategories: {
-          null: ['index', 'intro/platform', 'intro/benefits'],
-          Tutorial: [
-            'tutorial/introduction',
-            'tutorial/schema',
-            'tutorial/data-source',
-            'tutorial/resolvers',
-            'tutorial/mutation-resolvers',
-            'tutorial/production',
-            'tutorial/client',
-            'tutorial/queries',
-            'tutorial/mutations',
-            'tutorial/local-state',
-          ],
-          'Development Tools': [
-            'devtools/cli',
-            'devtools/editor-plugins',
-            'devtools/apollo-config',
-          ],
-          Resources: [
-            '[Principled GraphQL](https://principledgraphql.com)',
-            'resources/graphql-glossary',
-            'resources/faq',
-          ],
-        },
+        repositories: [
+          { owner: 'onflow', name: 'flow-go-sdk' },
+        ],
+        sections: [
+          {
+            path: 'foo',
+            sidebarCategories: {
+              null: [
+                'foo/bar',
+                'foo/bar2',
+                'foo/bar3',
+              ],
+              Foo: [
+                'foo/bar',
+                'foo/bar2',
+                'foo/bar3',
+              ],
+            },
+          },
+          {
+            path: 'bar',
+            sidebarCategories: {
+              null: [
+                'bar/bar',
+                'bar/bar2',
+                'bar/bar3',
+              ],
+              Foo: [
+                'bar/bar',
+                'bar/bar2',
+                'bar/bar3',
+              ],
+            },
+          }
+        ],
       },
     },
   ],
