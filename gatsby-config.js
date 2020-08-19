@@ -35,45 +35,23 @@ module.exports = {
             },
           },
           {
-            patterns: ['foo/**/*'],
+            patterns: ['sdks/golang/**/*'],
             sidebar: {
               null: [
-                'foo/bar',
-                'foo/bar2',
-                'foo/bar3',
-              ],
-              Foo: [
-                'foo/bar',
-                'foo/bar2',
-                'foo/bar3',
-              ],
-              Bar: [
-                'bar/bar',
-                'bar/bar2',
-                'bar/bar3',
+                'sdks/golang/index',
+                'sdks/golang/create-account',
               ],
             },
           },
           {
-            patterns: ['bar/**/*'],
+            patterns: ['sdks/javascript/**/*'],
             sidebar: {
               null: [
-                'bar/bar',
-                'bar/bar2',
-                'bar/bar3',
-              ],
-              Bar: [
-                'bar/bar',
-                'bar/bar2',
-                'bar/bar3',
-              ],
-              Foo: [
-                'bar/bar',
-                'bar/bar2',
-                'bar/bar3',
+                'sdks/javascript/index',
+                'sdks/javascript/create-account',
               ],
             },
-          }
+          },
         ],
       },
     },

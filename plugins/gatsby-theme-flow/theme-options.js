@@ -1,34 +1,35 @@
 const navConfig = {
+  "Intro to Flow": {
+    url: "/",
+    description: "TODO: Intro description",
+  },
+  "Cadence": {
+    url: "/cadence",
+    description: "TODO: Cadence description",
+  },
   "Flow Playground": {
-    url: "https://www.apollographql.com/docs",
-    description:
-      "Learn about each part of the Flow ecosystem and how they all work together.",
-    omitLandingPage: true,
-  },
-  "Flow Emulator": {
-    url: "https://www.apollographql.com/docs/apollo-server",
-    description:
-      "Configure a production-ready GraphQL server to fetch and combine data from multiple sources.",
-  },
-  "Flow CLI": {
-    url: "https://www.apollographql.com/docs/react",
-    description:
-      "Manage the entirety of your React app's state and seamlessly execute GraphQL operations.",
-  },
-  "Go SDK": {
-    url: "https://www.apollographql.com/docs/graph-manager",
-    description:
-      "Build your graph with your team, evolve it safely, and keep it running smoothly.",
+    url: "/playground",
+    description: "TODO: Playground description",
   },
   "JavaScript SDK": {
-    url: "https://www.apollographql.com/docs/ios",
-    description:
-      "Manage the entirety of your iOS app's state and seamlessly execute GraphQL operations.",
+    url: "/sdks/javascript",
+    description: "TODO: JavaScript description",
   },
-  "VSCode Extension": {
-    url: "https://www.apollographql.com/docs/android",
-    description:
-      "Manage the entirety of your Android app's state and seamlessly execute GraphQL operations.",
+  "Go SDK": {
+    url: "/sdks/golang",
+    description: "TODO: Go SDK description",
+  },
+  "Flow CLI": {
+    url: "/tools/cli",
+    description: "TODO: Flow CLI description",
+  },
+  "Flow Emulator": {
+    url: "/tools/emulator",
+    description: "TODO: Flow Emulator description",
+  },
+  "VS Code Extension": {
+    url: "/tools/vscode",
+    description: "TODO: VS Code extension description",
   },
 };
 
