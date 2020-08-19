@@ -59,9 +59,9 @@ Each file will be available at the URL that corresponds to its relative filepath
 The `sidebar` object describes the structure of the section sidebar. 
 Each page included in the section will display the same sidebar.
 
-The sidebar navigation can optionally be split into separate categories, 
+The sidebar navigation can optionally be split into categories, 
 each of which is a separate list in the `sidebar` object.
 
 For each category, the object key is used as the title for that category. 
 The category with a `null` key will not display a title and can be used to 
-display sidebar content at the root level.
+render sidebar content at the root level.
