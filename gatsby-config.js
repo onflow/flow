@@ -11,7 +11,7 @@ module.exports = {
       options: {
         ...themeOptions,
         siteName: "Flow Documentation",
-        description: 'How to use the Apollo GraphQL platform',
+        description: 'TODO: site description',
         pageTitle: "Flow Developer Portal",
         menuTitle: "Flow Ecosystem",
         baseDir: "docs",
