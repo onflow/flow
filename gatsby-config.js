@@ -11,7 +11,6 @@ module.exports = {
       options: {
         ...themeOptions,
         siteName: "Flow Documentation",
-        subtitle: 'Flow Basics',
         description: 'How to use the Apollo GraphQL platform',
         pageTitle: "Flow Developer Portal",
         menuTitle: "Flow Ecosystem",
@@ -24,8 +23,20 @@ module.exports = {
         ],
         sections: [
           {
-            pattern: '*',
-            sidebarCategories: {
+            patterns: ['*', 'intro/**/*', 'tutorial/**/*'],
+            sidebar: {
+              null : [
+                'intro/flow-concepts',
+                'intro/community',
+              ],
+              Tutorial: [
+                'tutorial/index',
+              ],
+            },
+          },
+          {
+            patterns: ['foo/**/*'],
+            sidebar: {
               null: [
                 'foo/bar',
                 'foo/bar2',
@@ -36,27 +47,22 @@ module.exports = {
                 'foo/bar2',
                 'foo/bar3',
               ],
-            },
-          },
-          {
-            pattern: 'foo/**/*',
-            sidebarCategories: {
-              null: [
-                'foo/bar',
-                'foo/bar2',
-                'foo/bar3',
-              ],
-              Foo: [
-                'foo/bar',
-                'foo/bar2',
-                'foo/bar3',
+              Bar: [
+                'bar/bar',
+                'bar/bar2',
+                'bar/bar3',
               ],
             },
           },
           {
-            pattern: 'bar/**/*',
-            sidebarCategories: {
+            patterns: ['bar/**/*'],
+            sidebar: {
               null: [
+                'bar/bar',
+                'bar/bar2',
+                'bar/bar3',
+              ],
+              Bar: [
                 'bar/bar',
                 'bar/bar2',
                 'bar/bar3',

@@ -249,38 +249,44 @@ async function createPagesForSection(
     baseUrl
   }
 ) {
-  const {data} = await graphql(`
-    {
-      allFile(filter: {extension: {in: ["md", "mdx"]}, relativePath: {glob: "${section.pattern}"}}) {
-        edges {
-          node {
-            id
-            relativePath
-            childMarkdownRemark {
-              ${pageFragment}
-            }
-            childMdx {
-              ${pageFragment}
+  const allPages = await Promise.all(section.patterns.map(async pattern => {
+    const {data} = await graphql(`
+      {
+        allFile(filter: {extension: {in: ["md", "mdx"]}, relativePath: {glob: "${pattern}"}}) {
+          edges {
+            node {
+              id
+              relativePath
+              childMarkdownRemark {
+                ${pageFragment}
+              }
+              childMdx {
+                ${pageFragment}
+              }
             }
           }
         }
       }
-    }
-  `);
+    `);
+
+    const {edges} = data.allFile;
+    return edges;
+  }))
+
+  const pages = allPages.flat();
 
   const templates = {
     default: require.resolve(`./src/components/templates/default`),
   };
 
-  const {edges} = data.allFile;
   const mainVersion = localVersion || defaultVersion;
   const contentPath = path.join(baseDir, contentDir);
   const dirPattern = new RegExp(`^${contentPath}/`);
 
   const sidebarContents = {
     [mainVersion]: getSidebarContents(
-      section.sidebarCategories,
-      edges,
+      section.sidebar,
+      pages,
       mainVersion,
       dirPattern
     )
@@ -316,7 +322,7 @@ async function createPagesForSection(
 
     sidebarContents[version] = getSidebarContents(
       getVersionSidebarCategories(...configs),
-      edges,
+      pages,
       version,
       dirPattern
     );
@@ -337,7 +343,7 @@ async function createPagesForSection(
 
   const defaultTemplateName = 'default';
 
-  await edges.forEach(async edge => {
+  await pages.forEach(async edge => {
     const {id, relativePath} = edge.node;
     const {fields, frontmatter} = getPageFromEdge(edge);
 
