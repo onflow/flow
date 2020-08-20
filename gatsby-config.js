@@ -66,6 +66,7 @@ const sections = [
     sidebar: {
       null: [
         'sdks/golang/index',
+        'sdks/golang/changelog',
         'sdks/golang/create-account',
       ],
     },
