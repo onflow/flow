@@ -59,7 +59,11 @@ const sections = [
   {
     patterns: ["sdks/golang/**/*"],
     sidebar: {
-      null: ["sdks/golang/index", "sdks/golang/create-account"],
+      null: [
+        "sdks/golang/index",
+        "sdks/golang/changelog",
+        "sdks/golang/create-account",
+      ],
     },
   },
   {
