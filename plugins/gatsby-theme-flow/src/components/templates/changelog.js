@@ -91,25 +91,24 @@ export const pageQuery = graphql`
         body
       }
     }
+    allGithubRepository {
+      edges {
+        node {
+          releases {
+            nodes {
+              name
+              publishedAt
+              url
+              description
+              author {
+                avatarUrl
+                name
+                url
+              }
+            }
+          }
+        }
+      }
+    }
   }
 `;
-
-// allGithubRepository {
-//   edges {
-//     node {
-//       releases {
-//         nodes {
-//           name
-//           publishedAt
-//           url
-//           description
-//           author {
-//             avatarUrl
-//             name
-//             url
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
