@@ -73,6 +73,23 @@ module.exports = ({
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
     {
+      resolve: "gatsby-source-git-remotes",
+      options: {
+        repos: [
+          // {
+          //   name: "cadence",
+          //   remote: "https://github.com/onflow/cadence.git",
+          //   patterns: ["docs/**/*.md"],
+          // },
+          // {
+          //   name: "flow-go",
+          //   remote: "https://github.com/dapperlabs/flow-cli",
+          //   patterns: ["README.md"],
+          // },
+        ],
+      },
+    },
+    {
       resolve: "gatsby-plugin-less",
       options: {
         modifyVars: mapKeys(theme, (value, key) => `color-${key}`),
