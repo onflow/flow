@@ -277,6 +277,7 @@ async function createPagesForSection(
 
   const templates = {
     default: require.resolve(`./src/components/templates/default`),
+    changelog: require.resolve(`./src/components/templates/changelog`),
   };
 
   const mainVersion = localVersion || defaultVersion;
