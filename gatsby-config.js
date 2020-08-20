@@ -107,9 +107,9 @@ module.exports = {
         baseDir: "docs",
         contentDir: "content",
         root: __dirname,
-        githubAccessToken: '', // https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+        githubAccessToken: process.env.GITHUB_ACCESS_TOKEN, // https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
         repositories: [
-          // { owner: 'onflow', name: 'flow-go-sdk' },
+          { owner: 'onflow', name: 'flow-go-sdk' },
         ],
         sections,
       },
