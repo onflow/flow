@@ -198,6 +198,22 @@ function getVersionSidebarCategories(gatsbyConfig, hexoConfig) {
   return sidebar_categories;
 }
 
+exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
+  createTypes(`
+    type MdxFrontmatter {
+      title: String!
+      description: String
+      template: String
+    }
+
+    type MarkdownRemarkFrontmatter {
+      title: String!
+      description: String
+      template: String
+    }
+  `);
+};
+
 const pageFragment = `
   internal {
     type
@@ -205,6 +221,7 @@ const pageFragment = `
   frontmatter {
     title
     description
+    template
   }
   fields {
     slug
@@ -214,8 +231,11 @@ const pageFragment = `
   }
 `;
 
-exports.createPages = async (
-  {actions, graphql},
+
+async function createPagesForSection(
+  actions,
+  graphql,
+  section,
   {
     baseDir = '',
     contentDir = 'content',
@@ -223,41 +243,50 @@ exports.createPages = async (
     versions = {},
     subtitle,
     githubRepo,
-    sidebarCategories,
     discordUrl,
     twitterUrl,
     localVersion,
     baseUrl
   }
-) => {
-  const {data} = await graphql(`
-    {
-      allFile(filter: {extension: {in: ["md", "mdx"]}}) {
-        edges {
-          node {
-            id
-            relativePath
-            childMarkdownRemark {
-              ${pageFragment}
-            }
-            childMdx {
-              ${pageFragment}
+) {
+  const allPages = await Promise.all(section.patterns.map(async pattern => {
+    const {data} = await graphql(`
+      {
+        allFile(filter: {extension: {in: ["md", "mdx"]}, relativePath: {glob: "${pattern}"}}) {
+          edges {
+            node {
+              id
+              relativePath
+              childMarkdownRemark {
+                ${pageFragment}
+              }
+              childMdx {
+                ${pageFragment}
+              }
             }
           }
         }
       }
-    }
-  `);
+    `);
 
-  const {edges} = data.allFile;
+    const {edges} = data.allFile;
+    return edges;
+  }))
+
+  const pages = allPages.flat();
+
+  const templates = {
+    default: require.resolve(`./src/components/templates/default`),
+  };
+
   const mainVersion = localVersion || defaultVersion;
   const contentPath = path.join(baseDir, contentDir);
   const dirPattern = new RegExp(`^${contentPath}/`);
 
   const sidebarContents = {
     [mainVersion]: getSidebarContents(
-      sidebarCategories,
-      edges,
+      section.sidebar,
+      pages,
       mainVersion,
       dirPattern
     )
@@ -293,7 +322,7 @@ exports.createPages = async (
 
     sidebarContents[version] = getSidebarContents(
       getVersionSidebarCategories(...configs),
-      edges,
+      pages,
       version,
       dirPattern
     );
@@ -312,10 +341,11 @@ exports.createPages = async (
   const currentBranch =
     process.env.BRANCH || (await git.revparse(['--abbrev-ref', 'HEAD']));
 
-  const template = require.resolve('./src/components/template');
-  edges.forEach(edge => {
+  const defaultTemplateName = 'default';
+
+  await pages.forEach(async edge => {
     const {id, relativePath} = edge.node;
-    const {fields} = getPageFromEdge(edge);
+    const {fields, frontmatter} = getPageFromEdge(edge);
 
     let versionDifference = 0;
     if (defaultVersionNumber) {
@@ -327,8 +357,10 @@ exports.createPages = async (
       }
     }
 
+    const templateName = frontmatter.template || defaultTemplateName;
+    const template = templates[templateName];
+
     let githubUrl;
-    let repoPath;
 
     if (githubRepo) {
       const [owner, repo] = githubRepo.split('/');
@@ -342,11 +374,9 @@ exports.createPages = async (
           fields.versionRef || path.join(currentBranch, contentPath),
           relativePath
         );
-
-      repoPath = `/${repo}`;
     }
-
-    actions.createPage({
+    
+    await actions.createPage({
       path: fields.slug,
       component: template,
       context: {
@@ -364,4 +394,10 @@ exports.createPages = async (
       }
     });
   });
+};
+
+exports.createPages = async ({actions, graphql}, options) => {
+  return Promise.all(
+    options.sections.map((section) => createPagesForSection(actions, graphql, section, options))
+  );
 };

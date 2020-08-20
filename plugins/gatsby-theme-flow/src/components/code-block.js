@@ -82,7 +82,7 @@ export default function CodeBlock(props) {
   const codeRef = useRef();
   return (
     <Container>
-      {!props.className.includes('language-text') && (
+      {props.className && !props.className.includes('language-text') && (
         <CodeBlockHeader codeRef={codeRef} />
       )}
       <InnerContainer>

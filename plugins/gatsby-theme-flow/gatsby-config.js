@@ -12,6 +12,7 @@ module.exports = ({
   githubRepo,
   baseDir = "",
   contentDir = "content",
+  sections,
   versions = {},
   gaTrackingId,
   ignore,
