@@ -5,7 +5,8 @@ Preview: https://flow-gatsby-docs-preview.vercel.app/
 ## Developing locally
 
 * `npm install` in this directory
-* `npm start` in this directory
+* Create a [GitHub personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) (used to fetch GitHub content).
+* `GITHUB_ACCESS_TOKEN=<your-token> npm start` in this directory
 * Open a browser to the link provided in the console.
 
 ## Adding sections
