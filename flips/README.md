@@ -15,7 +15,7 @@ through the FLIP review process.
 
 A **review committee** is a group of maintainers who are responsible for the 
 strategic direction of components, subcomponents, and public APIs.
-They have the responsibility to accept or reject the adoption of the FLIP.
+They have the responsibility to accept or reject the adoption of the FLIP via a community vote.
 
 ## What is a FLIP?
 
@@ -156,3 +156,10 @@ rather than later, stages.
 ## FLIP Template
 
 Use the template [from GitHub](./yyyymmdd-flip-template.md), being sure to follow the naming conventions described above.
+
+## FLIP Evaluation 
+
+FLIPs should be evaluated for their impact on the three pillars of Flow. These are: 
+* Community - consider how the FLIP will impact the ability for others to participate in the ongoing design and operation of the Flow network and the applications which depend on it. 
+* Empowerment - consider how the FLIP will improve the economic opportunity for creators, contributors, and participants in the community and will net positive on the marginal benefits and costs to all the impacted individuals (who choose to register their preference/vote on an issue)
+* Reliability - and finally, think about how the FLIP will impact the consistency, observerability, verifiability, and overall performance of the network for its users
