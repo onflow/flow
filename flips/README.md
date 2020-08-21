@@ -163,3 +163,5 @@ FLIPs should be evaluated for their impact on the three pillars of Flow. These a
 * **Community** - consider how the FLIP will impact the ability for others to participate in the ongoing design and operation of the Flow network and the applications which depend on it. 
 * **Empowerment** - consider how the FLIP will improve the economic opportunity for creators, contributors and participants in the community. The FLIP should result in a net positive on the marginal benefits and costs to all the impacted individuals (who choose to register their preference/vote on an issue).
 * **Reliability** - and finally, think about how the FLIP will impact the consistency, observerability, verifiability, and overall performance of the Flow network for its users.
+
+_Note: the FLIP process and guidelines were adapted from the wonderful RFC process created by the [TensorFlow community](https://github.com/tensorflow/community/tree/master/rfcs)._ ❤️
