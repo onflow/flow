@@ -1,9 +1,16 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import {Helmet} from 'react-helmet';
+import PropTypes from "prop-types";
+import React from "react";
+import { Helmet } from "react-helmet";
 
 export default function SEO(props) {
-  const {title, description, siteName, twitterCard, children, favicon} = props;
+  const {
+    title,
+    description,
+    siteName,
+    twitterCard,
+    children,
+    favicon,
+  } = props;
   return (
     <Helmet>
       <title>{title}</title>
@@ -25,10 +32,11 @@ SEO.propTypes = {
   siteName: PropTypes.string.isRequired,
   twitterCard: PropTypes.string,
   children: PropTypes.node,
-  favicon: PropTypes.string
+  favicon: PropTypes.string,
 };
 
 SEO.defaultProps = {
-  twitterCard: 'summary',
-  favicon: 'https://apollographql.com/favicon.ico'
+  twitterCard: "summary",
+  favicon:
+    "https://assets.website-files.com/5e2b4c1e6acffe6813a98828/5e2bc3fd86f4174a3f11d5f1_flow.png",
 };
