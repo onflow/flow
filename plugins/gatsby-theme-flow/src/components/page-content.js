@@ -1,113 +1,114 @@
-import PropTypes from 'prop-types';
-import React, {useRef, useState} from 'react';
-import SectionNav from './section-nav';
-import styled from '@emotion/styled';
-import useMount from 'react-use/lib/useMount';
-import {HEADER_HEIGHT} from '../utils';
-import {IconGithub, IconDiscord, IconPlayground} from '../ui/icons';
-import {theme} from '../colors';
-import breakpoints from '../utils/breakpoints';
-import PageNav from './page-nav';
-import {withPrefix} from 'gatsby';
+import PropTypes from "prop-types";
+import React, { useRef, useState } from "react";
+import SectionNav from "./section-nav";
+import styled from "@emotion/styled";
+import useMount from "react-use/lib/useMount";
+import { HEADER_HEIGHT } from "../utils";
+import { IconGithub, IconDiscord, IconPlayground } from "../ui/icons";
+import { theme } from "../colors";
+import breakpoints from "../utils/breakpoints";
+import PageNav from "./page-nav";
+import { withPrefix } from "gatsby";
 
 const Wrapper = styled.div({
-  display: 'flex',
-  alignItems: 'flex-start'
+  display: "flex",
+  alignItems: "flex-start",
 });
 
 const InnerWrapper = styled.div({
   flexGrow: 1,
-  width: 0
+  width: 0,
 });
 
 const BodyContent = styled.div({
   // style all anchors with an href and no prior classes
   // this helps avoid anchors with names and styled buttons
-  'a[href]:not([class])': {
+  "a[href]:not([class])": {
     color: theme.primary,
-    textDecoration: 'none',
-    ':hover': {
-      textDecoration: 'underline'
+    textDecoration: "none",
+    ":hover": {
+      textDecoration: "underline",
     },
     code: {
-      color: 'inherit'
-    }
+      color: "inherit",
+    },
   },
-  [['h1', 'h2', 'h3', 'h4', 'h5', 'h6']]: {
+  [["h1", "h2", "h3", "h4", "h5", "h6"]]: {
     code: {
-      whiteSpace: 'normal'
+      whiteSpace: "normal",
     },
     a: {
-      color: 'inherit',
-      textDecoration: 'none',
-      ':hover': {
-        color: theme.text2
-      }
-    }
+      color: "inherit",
+      textDecoration: "none",
+      ":hover": {
+        color: theme.text2,
+      },
+    },
   },
-  '*:not(style) +': {
-    [['h2', 'h3', 'h4']]: {
-      marginTop: 56
-    }
+  "*:not(style) +": {
+    [["h2", "h3", "h4"]]: {
+      marginTop: 56,
+    },
   },
   img: {
-    display: 'block',
-    maxWidth: '100%',
-    margin: '0 auto'
+    display: "block",
+    maxWidth: "100%",
+    margin: "0 auto",
   },
-  '.mermaid svg': {
-    maxWidth: '100%'
-  }
+  ".mermaid svg": {
+    maxWidth: "100%",
+  },
 });
 
 const Aside = styled.aside({
-  display: 'flex',
-  flexDirection: 'column',
+  display: "flex",
+  flexDirection: "column",
   flexShrink: 0,
   width: 240,
   maxHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
   marginTop: -36,
-  padding: '40px 0',
+  padding: "40px 0",
   marginLeft: 40,
-  position: 'sticky',
+  position: "sticky",
   top: HEADER_HEIGHT,
   [breakpoints.lg]: {
-    display: 'none'
+    display: "none",
   },
   [breakpoints.md]: {
-    display: 'block'
+    display: "block",
   },
   [breakpoints.sm]: {
-    display: 'none'
-  }
+    display: "none",
+  },
 });
 
 const AsideHeading = styled.h4({
-  fontWeight: 600
+  color: theme.secondary,
+  fontWeight: 600,
 });
 
 const AsideLinkWrapper = styled.h5({
-  display: 'flex',
+  display: "flex",
   marginBottom: 0,
-  ':not(:last-child)': {
-    marginBottom: 16
-  }
+  ":not(:last-child)": {
+    marginBottom: 16,
+  },
 });
 
 const AsideLinkInner = styled.a({
-  display: 'flex',
-  alignItems: 'center',
+  display: "flex",
+  alignItems: "center",
   color: theme.text2,
-  textDecoration: 'none',
-  ':hover': {
-    color: theme.text3
+  textDecoration: "none",
+  ":hover": {
+    color: theme.text3,
   },
   svg: {
     width: 20,
     height: 20,
     marginRight: 6,
-    fill: 'currentColor'
-  }
+    fill: "currentColor",
+  },
 });
 
 function AsideLink(props) {
@@ -119,19 +120,19 @@ function AsideLink(props) {
 }
 
 const EditLink = styled.div({
-  display: 'none',
+  display: "none",
   marginTop: 48,
-  justifyContent: 'flex-end',
+  justifyContent: "flex-end",
   [breakpoints.lg]: {
-    display: 'flex'
+    display: "flex",
   },
   [breakpoints.md]: {
-    display: 'none'
+    display: "none",
   },
   [breakpoints.sm]: {
-    display: 'flex',
-    marginTop: 24
-  }
+    display: "flex",
+    marginTop: 24,
+  },
 });
 
 export default function PageContent(props) {
@@ -143,7 +144,7 @@ export default function PageContent(props) {
     if (props.hash) {
       // turn numbers at the beginning of the hash to unicode
       // see https://stackoverflow.com/a/20306237/8190832
-      const hash = props.hash.toLowerCase().replace(/^#(\d)/, '#\\3$1 ');
+      const hash = props.hash.toLowerCase().replace(/^#(\d)/, "#\\3$1 ");
       try {
         const hashElement = contentRef.current.querySelector(hash);
         if (hashElement) {
@@ -155,10 +156,10 @@ export default function PageContent(props) {
     }
 
     let toLoad = 0;
-    const images = contentRef.current.querySelectorAll('img');
-    images.forEach(image => {
+    const images = contentRef.current.querySelectorAll("img");
+    images.forEach((image) => {
       if (!image.complete) {
-        image.addEventListener('load', handleImageLoad);
+        image.addEventListener("load", handleImageLoad);
         toLoad++;
       }
     });
@@ -167,14 +168,14 @@ export default function PageContent(props) {
   });
 
   function handleImageLoad() {
-    setImagesLoaded(prevImagesLoaded => prevImagesLoaded + 1);
+    setImagesLoaded((prevImagesLoaded) => prevImagesLoaded + 1);
   }
 
-  const pageIndex = props.pages.findIndex(page => {
+  const pageIndex = props.pages.findIndex((page) => {
     const prefixedPath = withPrefix(page.path);
     return (
       prefixedPath === props.pathname ||
-      prefixedPath.replace(/\/$/, '') === props.pathname
+      prefixedPath.replace(/\/$/, "") === props.pathname
     );
   });
 
@@ -197,7 +198,8 @@ export default function PageContent(props) {
         />
       </InnerWrapper>
       <Aside>
-        <AsideHeading>{props.title}</AsideHeading>
+        {/* <AsideHeading>{props.title}</AsideHeading> */}
+        <AsideHeading>{props.headings.length ? "Contents" : ""}</AsideHeading>
         {props.headings.length > 0 && (
           <SectionNav
             headings={props.headings}
