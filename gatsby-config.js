@@ -3,7 +3,7 @@ const navConfig = {
     url: "/",
     description: "TODO: Intro description",
   },
-  "Cadence": {
+  Cadence: {
     url: "/cadence",
     description: "TODO: Cadence description",
   },
@@ -50,33 +50,22 @@ const footerNavConfig = {
 
 const sections = [
   {
-    patterns: ['*', 'intro/**/*', 'tutorial/**/*'],
+    patterns: ["*", "intro/**/*", "tutorial/**/*"],
     sidebar: {
-      null : [
-        'intro/flow-concepts',
-        'intro/community',
-      ],
-      Tutorial: [
-        'tutorial/index',
-      ],
+      // null: ["intro/flow-concepts", "intro/community"],
+      // Tutorial: ["tutorial/index"],
     },
   },
   {
-    patterns: ['sdks/golang/**/*'],
+    patterns: ["sdks/golang/**/*"],
     sidebar: {
-      null: [
-        'sdks/golang/index',
-        'sdks/golang/create-account',
-      ],
+      null: ["sdks/golang/index", "sdks/golang/create-account"],
     },
   },
   {
-    patterns: ['sdks/javascript/**/*'],
+    patterns: ["sdks/javascript/**/*"],
     sidebar: {
-      null: [
-        'sdks/javascript/index',
-        'sdks/javascript/create-account',
-      ],
+      null: ["sdks/javascript/index", "sdks/javascript/create-account"],
     },
   },
 ];
@@ -93,7 +82,7 @@ module.exports = {
         navConfig,
         footerNavConfig,
         siteName: "Flow Documentation",
-        description: 'TODO: site description',
+        description: "TODO: site description",
         pageTitle: "Flow Docs",
         menuTitle: "Flow Ecosystem",
         gaTrackingId: "UA-74643563-13",
@@ -102,14 +91,12 @@ module.exports = {
         baseUrl: "https://docs.onflow.org",
         twitterUrl: "https://twitter.com/flow_blockchain",
         discordUrl: "https://discord.gg/flow",
-        githubRepo: 'onflow/flow',
+        githubRepo: "onflow/flow",
         logoLink: "/",
         baseDir: "docs",
         contentDir: "content",
         root: __dirname,
-        repositories: [
-          { owner: 'onflow', name: 'flow-go-sdk' },
-        ],
+        repositories: [{ owner: "onflow", name: "flow-go-sdk" }],
         sections,
       },
     },

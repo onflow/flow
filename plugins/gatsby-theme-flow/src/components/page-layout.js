@@ -1,105 +1,105 @@
-import '../prism.less';
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
-import DocsetSwitcher from './docset-switcher';
-import Header from './header';
-import HeaderButton from './header-button';
-import PropTypes from 'prop-types';
-import React, {createContext, useMemo, useRef, useState} from 'react';
-import Search from './search';
-import styled from '@emotion/styled';
-import useLocalStorage from 'react-use/lib/useLocalStorage';
-import {Button} from '../ui/Button';
-import {theme} from '../colors';
-import breakpoints from '../utils/breakpoints';
-import FlexWrapper from './flex-wrapper';
-import Layout from './layout';
-import MenuButton from './menu-button';
-import Sidebar from './sidebar';
-import SidebarNav from './sidebar-nav';
-import {useResponsiveSidebar} from './responsive-sidebar';
-import {Helmet} from 'react-helmet';
-import {IconMenuSelector} from '../ui/icons';
-import {Link, graphql, navigate, useStaticQuery} from 'gatsby';
-import {MobileLogo} from './mobile-logo';
-import {Select} from './select';
-import {SelectedLanguageContext} from './multi-code-block';
-import {getVersionBasePath} from '../utils';
-import {size} from 'polished';
-import {trackCustomEvent} from 'gatsby-plugin-google-analytics';
+import "../prism.less";
+import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+import DocsetSwitcher from "./docset-switcher";
+import Header from "./header";
+import HeaderButton from "./header-button";
+import PropTypes from "prop-types";
+import React, { createContext, useMemo, useRef, useState } from "react";
+import Search from "./search";
+import styled from "@emotion/styled";
+import useLocalStorage from "react-use/lib/useLocalStorage";
+import { Button } from "../ui/Button";
+import { theme } from "../colors";
+import breakpoints from "../utils/breakpoints";
+import FlexWrapper from "./flex-wrapper";
+import Layout from "./layout";
+import MenuButton from "./menu-button";
+import Sidebar from "./sidebar";
+import SidebarNav from "./sidebar-nav";
+import { useResponsiveSidebar } from "./responsive-sidebar";
+import { Helmet } from "react-helmet";
+import { IconMenuSelector } from "../ui/icons";
+import { Link, graphql, navigate, useStaticQuery } from "gatsby";
+import { MobileLogo } from "./mobile-logo";
+import { Select } from "./select";
+import { SelectedLanguageContext } from "./multi-code-block";
+import { getVersionBasePath } from "../utils";
+import { size } from "polished";
+import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
 const Main = styled.main({
-  flexGrow: 1
+  flexGrow: 1,
 });
 
 const ButtonWrapper = styled.div({
-  flexGrow: 1
+  flexGrow: 1,
 });
 
 const StyledButton = styled(Button)({
-  width: '100%',
-  ':not(:hover)': {
-    backgroundColor: theme.background
-  }
+  width: "100%",
+  ":not(:hover)": {
+    backgroundColor: theme.background,
+  },
 });
 
 const StyledIcon = styled(IconMenuSelector)(size(16), {
-  marginLeft: 'auto'
+  marginLeft: "auto",
 });
 
 const MobileNav = styled.div({
-  display: 'none',
+  display: "none",
   [breakpoints.md]: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     marginRight: 32,
-    color: theme.text1
-  }
+    color: theme.text1,
+  },
 });
 
 const HeaderInner = styled.span({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  marginBottom: 32
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  marginBottom: 32,
 });
 
 const Eyebrow = styled.div({
   flexShrink: 0,
-  padding: '8px 56px',
+  padding: "8px 56px",
   backgroundColor: theme.background,
   color: theme.primary,
   fontSize: 14,
-  position: 'sticky',
+  position: "sticky",
   top: 0,
   a: {
-    color: 'inherit',
-    fontWeight: 600
+    color: "inherit",
+    fontWeight: 600,
   },
   [breakpoints.md]: {
-    padding: '8px 24px'
-  }
+    padding: "8px 24px",
+  },
 });
 
 function getVersionLabel(version) {
   return `v${version}`;
 }
 
-const GA_EVENT_CATEGORY_SIDEBAR = 'Sidebar';
+const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
 
 function handleToggleAll(expanded) {
   trackCustomEvent({
     category: GA_EVENT_CATEGORY_SIDEBAR,
-    action: 'Toggle all',
-    label: expanded ? 'expand' : 'collapse'
+    action: "Toggle all",
+    label: expanded ? "expand" : "collapse",
   });
 }
 
 function handleToggleCategory(label, expanded) {
   trackCustomEvent({
     category: GA_EVENT_CATEGORY_SIDEBAR,
-    action: 'Toggle category',
+    action: "Toggle category",
     label,
-    value: Number(expanded)
+    value: Number(expanded),
   });
 }
 
@@ -124,12 +124,12 @@ export default function PageLayout(props) {
     openSidebar,
     sidebarOpen,
     handleWrapperClick,
-    handleSidebarNavLinkClick
+    handleSidebarNavLinkClick,
   } = useResponsiveSidebar();
 
   const buttonRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const selectedLanguageState = useLocalStorage('docs-lang');
+  const selectedLanguageState = useLocalStorage("docs-lang");
 
   function openMenu() {
     setMenuOpen(true);
@@ -139,15 +139,16 @@ export default function PageLayout(props) {
     setMenuOpen(false);
   }
 
-  const {pathname} = props.location;
-  const {siteName, title} = data.site.siteMetadata;
+  const { pathname } = props.location;
+  const { siteName, title } = data.site.siteMetadata;
   const {
     subtitle,
     sidebarContents,
     versions,
     versionDifference,
     versionBasePath,
-    defaultVersion
+    defaultVersion,
+    fields,
   } = props.pageContext;
   const {
     discordUrl,
@@ -157,14 +158,14 @@ export default function PageLayout(props) {
     logoLink,
     algoliaApiKey,
     algoliaIndexName,
-    menuTitle
+    menuTitle,
   } = props.pluginOptions;
 
   const navItems = useMemo(
     () =>
       Object.entries(navConfig).map(([title, navItem]) => ({
         ...navItem,
-        title
+        title,
       })),
     [navConfig]
   );
@@ -174,10 +175,12 @@ export default function PageLayout(props) {
     <span className="title-sidebar">{subtitle || siteName}</span>
   );
 
+  console.log(fields);
+
   return (
     <Layout>
       <Helmet
-        titleTemplate={['%s', subtitle, title].filter(Boolean).join(' - ')}
+        titleTemplate={["%s", subtitle, title].filter(Boolean).join(" - ")}
       >
         <link
           rel="stylesheet"
@@ -205,7 +208,7 @@ export default function PageLayout(props) {
                   color={theme.primary}
                   size="small"
                   onClick={openMenu}
-                  style={{display: 'flex'}}
+                  style={{ display: "flex" }}
                 >
                   {sidebarTitle}
                   <StyledIcon />
@@ -218,18 +221,18 @@ export default function PageLayout(props) {
               <Select
                 feel="flat"
                 size="small"
-                value={versionDifference ? versionBasePath : '/'}
+                value={versionDifference ? versionBasePath : "/"}
                 onChange={navigate}
-                style={{marginLeft: 8}}
+                style={{ marginLeft: 8 }}
                 options={versions.reduce(
                   (acc, version) => ({
                     ...acc,
-                    [getVersionBasePath(version)]: getVersionLabel(version)
+                    [getVersionBasePath(version)]: getVersionLabel(version),
                   }),
                   {
-                    '/': defaultVersion
+                    "/": defaultVersion
                       ? getVersionLabel(defaultVersion)
-                      : 'Latest'
+                      : "Latest",
                   }
                 )}
               />
@@ -246,19 +249,7 @@ export default function PageLayout(props) {
           )}
         </Sidebar>
         <Main>
-          <Header
-            beforeContent={
-              versionDifference !== 0 && (
-                <Eyebrow>
-                  You&apos;re viewing documentation for a{' '}
-                  {versionDifference > 0
-                    ? 'version of this software that is in development'
-                    : 'previous version of this software'}
-                  . <Link to="/">Switch to the latest stable version</Link>
-                </Eyebrow>
-              )
-            }
-          >
+          <Header>
             <MobileNav>
               <MenuButton onClick={openSidebar} />
               <MobileLogo width={32} fill="currentColor" />
@@ -270,7 +261,7 @@ export default function PageLayout(props) {
                 indexName={algoliaIndexName}
               />
             )}
-            <HeaderButton />
+            {/* <HeaderButton /> */}
           </Header>
           <SelectedLanguageContext.Provider value={selectedLanguageState}>
             <NavItemsContext.Provider value={navItems}>
@@ -299,5 +290,5 @@ PageLayout.propTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
-  pluginOptions: PropTypes.object.isRequired
+  pluginOptions: PropTypes.object.isRequired,
 };

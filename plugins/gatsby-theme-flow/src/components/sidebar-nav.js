@@ -165,8 +165,6 @@ NavItems.propTypes = {
 };
 
 export default function SidebarNav(props) {
-  console.log(props.contents);
-
   const categoriesRef = useRef();
 
   const [allExpanded, setAllExpanded] = useState(false);
