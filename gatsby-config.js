@@ -1,11 +1,15 @@
+const fs = require("fs");
+
 const navConfig = {
-  "Intro to Flow": {
+  "About Flow": {
     url: "/",
-    description: "TODO: Intro description",
+    description:
+      "New to Flow? Start here. Read about Flow's architechture, and important concepts for a deeper understanding of the Flow platform and how it works.",
   },
   Cadence: {
-    url: "/cadence",
-    description: "TODO: Cadence description",
+    url: "/tutorial/cadence/00-introduction/",
+    description:
+      "Resource-Oriented programming language for smart contracts that helps developers ensure that their code is safe, secure, clear, and approachable.",
   },
   "Flow Playground": {
     url: "/playground",
@@ -48,12 +52,30 @@ const footerNavConfig = {
   },
 };
 
+fs.readdirSync("./content/tutorial/cadence");
+
 const sections = [
   {
-    patterns: ["*", "intro/**/*", "tutorial/**/*"],
+    patterns: ["*", "intro/*", "concepts/*"],
     sidebar: {
-      // null: ["intro/flow-concepts", "intro/community"],
-      // Tutorial: ["tutorial/index"],
+      null: ["intro/community"],
+      "Flow Concepts": [],
+    },
+  },
+  {
+    patterns: ["tutorial/cadence/*"],
+    sidebar: {
+      null: ["tutorial/cadence/00-introduction"],
+      Tutorial: [
+        "tutorial/cadence/01-first-steps",
+        "tutorial/cadence/02-hello-world",
+        "tutorial/cadence/03-fungible-tokens",
+        "tutorial/cadence/04-non-fungible-tokens",
+        "tutorial/cadence/05-marketplace-setup",
+        "tutorial/cadence/06-marketplace-compose",
+        "tutorial/cadence/07-marketplace-compose",
+        "tutorial/cadence/08-voting",
+      ],
     },
   },
   {

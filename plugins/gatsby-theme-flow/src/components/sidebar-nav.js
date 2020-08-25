@@ -71,14 +71,14 @@ const categoryTitleStyles = {
   alignItems: "center",
   justifyContent: "space-between",
   padding: "12px 0",
-  color: theme.text1,
+  color: theme.secondary,
   fontWeight: "bold",
   fontSize: 14,
   lineHeight: "15px",
   ...smallCaps,
   svg: size(10),
   "&.active": {
-    color: theme.primary,
+    color: theme.secondary,
   },
 };
 

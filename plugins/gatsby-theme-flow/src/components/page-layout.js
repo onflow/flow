@@ -175,8 +175,6 @@ export default function PageLayout(props) {
     <span className="title-sidebar">{subtitle || siteName}</span>
   );
 
-  console.log(fields);
-
   return (
     <Layout>
       <Helmet
@@ -245,6 +243,7 @@ export default function PageLayout(props) {
               onToggleAll={handleToggleAll}
               onToggleCategory={handleToggleCategory}
               onLinkClick={handleSidebarNavLinkClick}
+              alwaysExpanded={true}
             />
           )}
         </Sidebar>
