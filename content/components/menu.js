@@ -3,6 +3,14 @@ import styled from "@emotion/styled";
 import { NavItemTitle } from "gatsby-theme-flow";
 import { size } from "polished";
 import { theme } from "gatsby-theme-flow/src/colors";
+import { smallCaps } from "gatsby-theme-flow/src/utils/typography";
+
+export const MenuTitle = styled.h6(smallCaps, {
+  marginBottom: 2,
+  fontSize: 13,
+  fontWeight: 600,
+  color: theme.text3,
+});
 
 export const MenuWrapper = styled.div({
   display: "grid",

@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import styled from "@emotion/styled";
-import { ReactComponent as AppleLogo } from "../assets/apple-logo.svg";
-import { ReactComponent as ReactLogo } from "../assets/react-logo.svg";
 import { NavItemsContext, NavItemDescription } from "gatsby-theme-flow";
 import { colors } from "gatsby-theme-flow/src/colors";
 import { size } from "polished";
@@ -25,7 +23,8 @@ const AppIcon = styled.div({
   ].toString(),
   borderRadius: 8,
   color: indigo.lighter,
-  backgroundImage: `linear-gradient(${[indigo.base, indigo.dark]})`,
+  fontSize: 16,
+  // backgroundImage: `linear-gradient(${[indigo.base, indigo.dark]})`,
   svg: {
     ...size(16),
     fill: "currentColor",
@@ -40,16 +39,7 @@ const StyledLink = styled.a({
   },
 });
 
-const icons = [
-  <ReactLogo />,
-  <AppleLogo
-    style={{
-      padding: 1,
-      paddingTop: 0,
-      paddingBottom: 2,
-    }}
-  />,
-];
+const icons = ["🏄🏼‍♂️", "🤹‍♂️", "☕️", "🦡", "🛠", "⛓", "🐬"];
 
 export default function DocsetMenu() {
   const navItems = useContext(NavItemsContext);
@@ -66,6 +56,7 @@ export default function DocsetMenu() {
             title={<StyledLink href={navItem.url}>{navItem.title}</StyledLink>}
           >
             <NavItemDescription>{navItem.description}</NavItemDescription>
+            <a href={navItem.docLink}>{navItem.docLinkText}</a>
           </MenuItem>
         ))}
     </MenuWrapper>

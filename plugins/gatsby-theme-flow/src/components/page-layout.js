@@ -175,6 +175,8 @@ export default function PageLayout(props) {
     <span className="title-sidebar">{subtitle || siteName}</span>
   );
 
+  console.log(props);
+
   return (
     <Layout>
       <Helmet
@@ -243,7 +245,7 @@ export default function PageLayout(props) {
               onToggleAll={handleToggleAll}
               onToggleCategory={handleToggleCategory}
               onLinkClick={handleSidebarNavLinkClick}
-              alwaysExpanded={true}
+              alwaysExpanded={props.path?.includes("/tutorial/cadence")}
             />
           )}
         </Sidebar>

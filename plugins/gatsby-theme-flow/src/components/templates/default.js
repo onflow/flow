@@ -1,12 +1,10 @@
 import React from "react";
-import BaseTemplate from './base';
+import BaseTemplate from "./base";
 
-import {graphql} from 'gatsby';
+import { graphql } from "gatsby";
 
 export default function Template(props) {
-  return (
-    <BaseTemplate {...props} />
-  );
+  return <BaseTemplate {...props} />;
 }
 
 export const pageQuery = graphql`
@@ -18,7 +16,7 @@ export const pageQuery = graphql`
         description
       }
     }
-    file(id: {eq: $id}) {
+    file(id: { eq: $id }) {
       childMarkdownRemark {
         frontmatter {
           title
