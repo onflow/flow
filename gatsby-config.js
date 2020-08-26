@@ -94,7 +94,7 @@ const sections = [
 
 module.exports = {
   siteMetadata: {
-    title: "Flow Documentation",
+    title: "Flow Ecosystem",
   },
   pathPrefix: "/docs",
   plugins: [
