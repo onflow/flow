@@ -84,7 +84,12 @@ const sections = [
       "concepts/custody-providers/*",
     ],
     sidebar: {
-      null: ["intro/community", "intro/glossary", "intro/FAQ"],
+      null: [
+        "intro/flow-token",
+        "intro/community",
+        "intro/glossary",
+        "intro/FAQ",
+      ],
       Tutorials: ["tutorial/cadence/00-introduction"],
       "Flow Concepts": [
         "concepts/flow-concepts/slashings",
