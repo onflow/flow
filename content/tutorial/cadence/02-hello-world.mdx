@@ -2,22 +2,27 @@
 title: 2. Hello World
 ---
 
+import Callout from "../../components/callout";
+
 ### Lets write and deploy our first smart contract!
 
-<!--
-[block:callout]
-{
-"type": "success",
-"body": "Open the starter code for this tutorial in the Flow Playground: <a href=\"https://play.onflow.org/5b5bd86b-3845-4c16-9a29-626ef6228846\" target=\"\_blank\">https://play.onflow.org/5b5bd86b-3845-4c16-9a29-626ef6228846</a>\nThe tutorial will be asking you to take various actions to interact with this code."
-}
-[/block] -->
-
-<!-- [block:callout]
-{
-"type": "info",
-"body": "Instructions that require you to take action are always included in a callout box like this one. These highlighted actions are all that you need to do to get your code running, but reading the rest is necessary to understand the language's design."
-}
-[/block] -->
+<Callout type="success">
+  Open the starter code for this tutorial in the Flow Playground: <br />
+  <a
+    href="https://play.onflow.org/5b5bd86b-3845-4c16-9a29-626ef6228846"
+    target="_blank"
+  >
+    https://play.onflow.org/5b5bd86b-3845-4c16-9a29-626ef6228846
+  </a>
+  <br />
+  The tutorial will be asking you to take various actions to interact with this code.
+</Callout>
+<Callout type="info">
+  Instructions that require you to take action are always included in a callout
+  box like this one. These highlighted actions are all that you need to do to
+  get your code running, but reading the rest is necessary to understand the
+  language's design.
+</Callout>
 
 A smart contract is a program that verifies and executes the performance of a contract without the need for a trusted third party. Programs that run on blockchains are commonly referred to as smart contracts because they mediate important functionality (such as currency) without having to rely on a central authority (like a bank).
 
@@ -71,19 +76,20 @@ Identifiers are custom and can be any name you want them to be to indicate what 
 
 We will start by writing a smart contract that contains a public function that returns `"Hello World!"`.
 
-<!-- [block:callout]
-{
-"type": "info",
-"body": "First, you'll need to follow this link to open a playground session with the Hello World contracts, transactions, and scripts pre-loaded: <a href=\"https://play.onflow.org/5b5bd86b-3845-4c16-9a29-626ef6228846\" target=\"\_blank\">https://play.onflow.org/5b5bd86b-3845-4c16-9a29-626ef6228846</a>"
-}
-[/block] -->
-
-<!-- [block:callout]
-{
-"type": "info",
-"body": "Open the Account `0x01` tab with the file called `HelloWorld.cdc`. \n`HelloWorld.cdc` should contain this code:"
-}
-[/block] -->
+<Callout type="info">
+  First, you'll need to follow this link to open a playground session with the
+  Hello World contracts, transactions, and scripts pre-loaded: <br />
+  <a
+    href="https://play.onflow.org/5b5bd86b-3845-4c16-9a29-626ef6228846"
+    target="_blank"
+  >
+    https://play.onflow.org/5b5bd86b-3845-4c16-9a29-626ef6228846
+  </a>
+</Callout>
+<Callout type="info">
+  Open the Account `0x01` tab with the file called `HelloWorld.cdc`. <br />
+  `HelloWorld.cdc` should contain this code:
+</Callout>
 
 <!-- [block:code]
 {
@@ -113,12 +119,11 @@ Now we can deploy this contract to your account and run a transaction that calls
 
 Now that you have some Cadence code to work with, you can deploy it to your account.
 
-<!-- [block:callout]
-{
-"type": "info",
-"body": "Make sure that the account `0x01` tab is selected and that the `HelloWorld.cdc` file is in the editor.\nClick the deploy button to deploy the contents of the editor to account `0x01`."
-}
-[/block] -->
+<Callout type="info">
+  Make sure that the account `0x01` tab is selected and that the
+  `HelloWorld.cdc` file is in the editor. <br />
+  Click the deploy button to deploy the contents of the editor to account `0x01`.
+</Callout>
 
 <!-- [block:image]
 {
