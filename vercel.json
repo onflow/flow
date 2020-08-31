@@ -1,5 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/docs/flow-cli", "destination": "https://www.google.com" }
-  ]
-}

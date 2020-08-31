@@ -5,7 +5,7 @@ sidebar: false
 ---
 
 import DocsetMenu from './components/docset-menu';
-import { MenuWrapper } from './components/menu';
+import { MenuWrapper, MenuTitle } from './components/menu';
 import WorkoutMenuItem from './components/workout-menu-item';
 import { Link } from 'gatsby';
 import { Button } from 'gatsby-theme-flow/src/ui/Button';
@@ -22,12 +22,34 @@ Before starting your journey on Flow we recommend reading the <a href="https://w
 
 To work with Flow locally you'll need to install the <a href="">Flow CLI</a>. 
 The Flow CLI is a command-line interface that provides useful utilities for building Flow applications, including the Flow Emulator.
-<a href="/installation">View Installation Instructions</a>
 
-## Write Cadence Smart Contracts
+<MenuTitle>OSX & Linux</MenuTitle>
+
+```bash
+sh -ci "$(curl -fsSL https://storage.googleapis.com/flow-cli/install.sh)"
+```
+
+<MenuTitle>Windows</MenuTitle>
+
+```powershell
+iex "& { $(irm 'https://storage.googleapis.com/flow-cli/install.ps1') }"
+```
+
+---
+
+## Developer Tools
+Flow was deisgned for builders. It's a batteries included patform complete with developer tools you can use to start building right away.
+
+<DocsetMenu />
+<p></p>
+
+---
+
+## Guides
+
+### Writing Cadence Smart Contracts
 
 Blockchain represents a new paradigm on how scarce resources are being created and managed in the digital world. That is why Flow supports a new smart contract language, Cadence, following a <a href="">resource-oriented</a> paradigm inspired by linear types. 
-
 Cadence allows for a more natural representation of scarce resources and it is designed for developers to build safer smart contracts.
 
 <MenuWrapper>
@@ -69,9 +91,9 @@ Cadence is a new GPL with superpowers. The source code is open source on Github.
 
 </MenuWrapper>
 
-## Build Applications on Flow
+### Building Applications on Flow
 
-When choosing to build on a blockchain platform like **Flow**, it's important to consider how you want to handle transaction signing and storing information about your users.
+When choosing to build on a blockchain platform like Flow, it's important to consider how you want to handle transaction signing and storing information about your users.
 
 <MenuWrapper>
 
@@ -80,11 +102,10 @@ When choosing to build on a blockchain platform like **Flow**, it's important to
   keyWord="Hybrid"
   otherWords="Applications"
 >
-Build an application that lets user's manage their own Flow account account access using a wallet, but also store some information about individual users in a database, and provide some server-side functionality that interacts with Flow. 
-<h5 style="padding-top:1rem">Tools you'll need:</h5>
+Build an application that lets user's manage their own Flow account access using a wallet, but also store some information about individual users in a database, and provide some server-side functionality that interacts with Flow. 
+<p style="padding-top:1rem"><a href="" target="_blank"><Button color={theme.primary} size="small" >View Guide</Button></a></p>
 
-* [Flow GO SDK](https://www.apollographql.com/docs/apollo-server/getting-started/)
-* [Flow JS SDK](https://www.apollographql.com/docs/devtools/cli/)
+
 
 </WorkoutMenuItem>
 
@@ -93,9 +114,9 @@ Build an application that lets user's manage their own Flow account account acce
   keyWord="Decentralized"
   otherWords="Applications">
   Decentralized applications are the best option for developers who want to build censorship resistant and highly-scalable applications that connect directly to Flow.
-  <h5 style="padding-top:1rem">Tools you'll need:</h5>
+<p style="padding-top:1rem"><a href="" target="_blank"><Button color={theme.primary} size="small" >View Guide</Button></a></p>
 
-  * [Flow JS SDK](https://www.apollographql.com/docs/devtools/cli/)
+
 
 </WorkoutMenuItem>
 
@@ -105,9 +126,9 @@ Build an application that lets user's manage their own Flow account account acce
   otherWords="Applications"
 >
 Client-server applications are a powerful way to build rich apps that leverage Flow's decentralized properties, in conjunction with private servers for less critical components.
-<h5 style="padding-top:1rem">Tools you'll need:</h5>
+<p style="padding-top:1rem"><a href="" target="_blank"><Button color={theme.primary} size="small" >View Guide</Button></a></p>
 
-* [Flow GO SDK](https://www.apollographql.com/docs/apollo-server/getting-started/)
+
 
 </WorkoutMenuItem>
 

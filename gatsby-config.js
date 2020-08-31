@@ -1,35 +1,60 @@
+const fs = require("fs");
+
 const navConfig = {
-  "Intro to Flow": {
+  "Getting Started": {
     url: "/",
-    description: "TODO: Intro description",
+    omitLandingPage: true,
+    description:
+      "New to Flow? Start here. Read about Flow's architechture, and important concepts for a deeper understanding of the Flow platform and how it works.",
   },
   Cadence: {
-    url: "/cadence",
-    description: "TODO: Cadence description",
+    url: "/tutorial/cadence/00-introduction/",
+    description:
+      "Resource-Oriented programming language for smart contracts that helps developers ensure that their code is safe, secure, clear, and approachable.",
+    docLink: "/tutorial/cadence/00-introduction",
+    docLinkText: "Cadence Documentation",
   },
   "Flow Playground": {
-    url: "/playground",
-    description: "TODO: Playground description",
+    url: "https://play.onflow.org",
+    description:
+      "Learn the basics of Flow and Cadence using our browser-based playground.",
+    docLink: "https://play.onflow.org",
+    docLinkText: "Launch the Flow Playground",
   },
   "JavaScript SDK": {
     url: "/sdks/javascript",
-    description: "TODO: JavaScript description",
+    description:
+      "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
+    docLink: "/sdks/javascript",
+    docLinkText: "JavaScript SDK Documentation",
   },
   "Go SDK": {
     url: "/sdks/golang",
-    description: "TODO: Go SDK description",
+    description:
+      "Build apps that interact with Flow using our full-featured Go SDK.",
+    docLink: "/sdks/golang",
+    docLinkText: "Go SDK Documentation",
   },
   "Flow CLI": {
     url: "/tools/cli",
-    description: "TODO: Flow CLI description",
+    description:
+      "The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.",
+    docLink: "/tools/cli",
+    docLinkText: "CLI Documentation",
   },
   "Flow Emulator": {
     url: "/tools/emulator",
-    description: "TODO: Flow Emulator description",
+    description:
+      "Develop and test your applications locally using the Flow emulator.",
+    docLink: "/tools/emulator",
+    docLinkText: "Emulator Documentation",
   },
   "VS Code Extension": {
     url: "/tools/vscode",
-    description: "TODO: VS Code extension description",
+    description:
+      "Cadence syntax highlighting and an integrated Flow emulator for VSCode users.",
+    docLink: "/tools/vscode",
+    docLinkText: "VSCode Extension Documentation",
   },
 };
 
@@ -50,10 +75,72 @@ const footerNavConfig = {
 
 const sections = [
   {
-    patterns: ["*", "intro/**/*", "tutorial/**/*"],
+    patterns: [
+      "*",
+      "intro/*",
+      "concepts/flow-concepts/*",
+      "concepts/node-operation/*",
+      "concepts/custody-providers/*",
+      "guides/node-operator/*",
+      "tutorial/cadence/*",
+    ],
     sidebar: {
-      // null: ["intro/flow-concepts", "intro/community"],
-      // Tutorial: ["tutorial/index"],
+      null: [
+        "intro/flow-token",
+        "intro/community",
+        "intro/glossary",
+        "intro/FAQ",
+      ],
+      Tutorials: ["tutorial/cadence/00-introduction"],
+      "Flow Concepts": [
+        "concepts/flow-concepts/slashings",
+        "concepts/flow-concepts/accounts-keys",
+        "concepts/flow-concepts/delegation",
+        "concepts/flow-concepts/devnet",
+        "concepts/flow-concepts/fees",
+        "concepts/flow-concepts/governance",
+        "concepts/flow-concepts/node-roles",
+        "concepts/flow-concepts/service-account",
+        "concepts/flow-concepts/testnet",
+        "concepts/flow-concepts/token-staking",
+        "concepts/flow-concepts/transactions",
+      ],
+      // "Node Operation Concepts": [
+      //   "concepts/node-operation/quickstart",
+      //   "concepts/node-operation/day1-accounts-tokens",
+      //   "concepts/node-operation/node-keys",
+      //   "concepts/node-operation/network-identity",
+      //   "concepts/node-operation/staking-rewards",
+      //   "concepts/node-operation/hosting-custody-partners",
+      // ],
+      // "Node Operator Guides": [
+      //   "guides/node-operator/setup",
+      //   "guides/node-operator/genesis-bootstrap",
+      //   "guides/node-operator/starting-nodes",
+      //   "guides/node-operator/monitoring-nodes",
+      //   "guides/node-operator/accessing-mainnet",
+      //   "guides/node-operator/spork-practice",
+      // ],
+      // "Custody Providers": [
+      //   "concepts/custody-providers/keys-accounts",
+      //   "concepts/custody-providers/token-distribution",
+      // ],
+    },
+  },
+  {
+    patterns: ["tutorial/cadence/*"],
+    sidebar: {
+      null: ["tutorial/cadence/00-introduction"],
+      Tutorial: [
+        "tutorial/cadence/01-first-steps",
+        "tutorial/cadence/02-hello-world",
+        "tutorial/cadence/03-fungible-tokens",
+        "tutorial/cadence/04-non-fungible-tokens",
+        "tutorial/cadence/05-marketplace-setup",
+        "tutorial/cadence/06-marketplace-compose",
+        "tutorial/cadence/07-marketplace-compose",
+        "tutorial/cadence/08-voting",
+      ],
     },
   },
   {
