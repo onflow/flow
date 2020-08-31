@@ -81,6 +81,7 @@ const sections = [
       "concepts/flow-concepts/*",
       "concepts/node-operation/*",
       "concepts/custody-providers/*",
+      "guides/node-operator/*",
       "tutorial/cadence/*",
     ],
     sidebar: {
@@ -104,18 +105,26 @@ const sections = [
         "concepts/flow-concepts/token-staking",
         "concepts/flow-concepts/transactions",
       ],
-      "Node Operation": [
-        "concepts/node-operation/quickstart",
-        "concepts/node-operation/day1-accounts-tokens",
-        "concepts/node-operation/node-keys",
-        "concepts/node-operation/network-identity",
-        "concepts/node-operation/staking-rewards",
-        "concepts/node-operation/hosting-custody-partners",
-      ],
-      "Custody Providers": [
-        "concepts/custody-providers/keys-accounts",
-        "concepts/custody-providers/token-distribution",
-      ],
+      // "Node Operation Concepts": [
+      //   "concepts/node-operation/quickstart",
+      //   "concepts/node-operation/day1-accounts-tokens",
+      //   "concepts/node-operation/node-keys",
+      //   "concepts/node-operation/network-identity",
+      //   "concepts/node-operation/staking-rewards",
+      //   "concepts/node-operation/hosting-custody-partners",
+      // ],
+      // "Node Operator Guides": [
+      //   "guides/node-operator/setup",
+      //   "guides/node-operator/genesis-bootstrap",
+      //   "guides/node-operator/starting-nodes",
+      //   "guides/node-operator/monitoring-nodes",
+      //   "guides/node-operator/accessing-mainnet",
+      //   "guides/node-operator/spork-practice",
+      // ],
+      // "Custody Providers": [
+      //   "concepts/custody-providers/keys-accounts",
+      //   "concepts/custody-providers/token-distribution",
+      // ],
     },
   },
   {
