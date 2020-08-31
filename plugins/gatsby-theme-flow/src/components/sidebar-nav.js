@@ -112,6 +112,23 @@ const StyledCheckbox = styled.input({
   },
 });
 
+const StyledLink = styled.a({
+  color: "inherit",
+  textDecoration: "none",
+  ":hover": {
+    color: theme.text3,
+  },
+});
+
+const DocIcon = styled.span({
+  display: "inline-block",
+  marginRight: "0.42rem",
+});
+
+const DocSetItem = styled.div({
+  marginBottom: "0.42rem",
+});
+
 const StyledOutlinkIcon = styled(IconExternalLink)(size(14), {
   verticalAlign: -1,
   marginLeft: 8,
@@ -123,6 +140,13 @@ function isPageSelected(path, pathname) {
     string.replace(/\/$/, "")
   );
   return a === b;
+}
+
+function showDocsetMenu(path) {
+  const root = path === "/";
+  const docsetPages = ["/concepts"];
+  if (root) return true;
+  return docsetPages.find((p) => path.includes(p));
 }
 
 function NavItems(props) {
@@ -206,16 +230,16 @@ export default function SidebarNav(props) {
   return (
     <>
       <>
-        {root &&
+        {showDocsetMenu(props.pathname) &&
           docset
             .filter((navItem) => {
               return !navItem.omitLandingPage;
             })
             .map((navItem, index) => (
-              <div key={navItem.url}>
-                <span>{navItem.icon}</span>
-                <a href={navItem.url}>{navItem.title}</a>
-              </div>
+              <DocSetItem key={navItem.url}>
+                <DocIcon>{navItem.icon}</DocIcon>
+                <StyledLink href={navItem.url}>{navItem.title}</StyledLink>
+              </DocSetItem>
             ))}
       </>
       {root && (
