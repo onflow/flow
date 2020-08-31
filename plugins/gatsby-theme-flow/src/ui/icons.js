@@ -5,6 +5,8 @@ import {
   FaChevronDown
 } from 'react-icons/fa';
 
+import Search from '../assets/search.svg';
+
 export {
   FaArrowDown as IconArrowDown,
   FaArrowLeft as IconArrowLeft,
@@ -23,6 +25,16 @@ export {
   FaTwitter as IconTwitter,
   FaUmbrellaBeach as IconPlayground,
 } from 'react-icons/fa';
+
+const StyledSearch = styled.img({
+  height: '1em',
+});
+
+export function IconSearch() {
+  return (
+    <StyledSearch src={Search} />
+  )
+};
 
 const StackedIconContainer = styled.div({
   display: 'flex',
