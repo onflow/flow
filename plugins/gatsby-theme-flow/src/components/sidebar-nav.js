@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import styled from "@emotion/styled";
 import {
   IconExpandList,
@@ -11,6 +11,7 @@ import { Link, withPrefix } from "gatsby";
 import { theme } from "../colors";
 import { smallCaps } from "../utils/typography";
 import { size } from "polished";
+import { NavItemsContext } from "./page-layout";
 
 const ExpandAll = styled.button(smallCaps, {
   display: "flex",
@@ -166,6 +167,7 @@ NavItems.propTypes = {
 
 export default function SidebarNav(props) {
   const categoriesRef = useRef();
+  const docset = useContext(NavItemsContext);
 
   const [allExpanded, setAllExpanded] = useState(false);
   const categories = props.contents.filter((content) => content.title);
@@ -203,6 +205,19 @@ export default function SidebarNav(props) {
 
   return (
     <>
+      <>
+        {root &&
+          docset
+            .filter((navItem) => {
+              return !navItem.omitLandingPage;
+            })
+            .map((navItem, index) => (
+              <div key={navItem.url}>
+                <span>{navItem.icon}</span>
+                <a href={navItem.url}>{navItem.title}</a>
+              </div>
+            ))}
+      </>
       {root && (
         <NavItems
           pages={root.pages}
