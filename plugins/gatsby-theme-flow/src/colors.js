@@ -49,8 +49,9 @@ const colors = {
     darker: "#CAD0D8",
     dark: "#DEE2E7",
     base: "#EBEEF0",
-    light: "#F4F6F8",
-    lighter: "#FCFDFF",
+    light: "#E3E8ED",
+    lighter: "#F4F6F8",
+    lightest: "#FCFDFF",
   },
 
   red: {
@@ -145,7 +146,8 @@ exports.theme = {
   tertiary: colors.teal.dark,
   tertiaryLight: colors.teal.base,
   divider: colors.silver.dark,
-  background: colors.silver.light,
+  dividerLight: colors.silver.light,
+  background: colors.silver.lighter,
   background2: colors.silver.base,
   text1: colors.black.lighter,
   text2: colors.grey.dark,
