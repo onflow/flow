@@ -78,10 +78,10 @@ const sections = [
     patterns: [
       "*",
       "intro/*",
-      "tutorial/cadence/*",
       "concepts/flow-concepts/*",
       "concepts/node-operation/*",
       "concepts/custody-providers/*",
+      "tutorial/cadence/*",
     ],
     sidebar: {
       null: [
