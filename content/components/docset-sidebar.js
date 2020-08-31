@@ -39,9 +39,7 @@ const StyledLink = styled.a({
   },
 });
 
-const icons = ["🏄🏼‍♂️", "🤹‍♂️", "☕️", "🦡", "🛠", "⛓", "🐬"];
-
-export default function DocsetMenu() {
+export default function DocsetSidebar() {
   const navItems = useContext(NavItemsContext);
 
   return (
@@ -53,12 +51,9 @@ export default function DocsetMenu() {
         .map((navItem, index) => (
           <MenuItem
             key={navItem.url}
-            icon={<AppIcon>{navItem.icon}</AppIcon>}
+            icon={<AppIcon>{navItem.icons}</AppIcon>}
             title={<StyledLink href={navItem.url}>{navItem.title}</StyledLink>}
-          >
-            <NavItemDescription>{navItem.description}</NavItemDescription>
-            <a href={navItem.url}>{navItem.linkText}</a>
-          </MenuItem>
+          ></MenuItem>
         ))}
     </MenuWrapper>
   );

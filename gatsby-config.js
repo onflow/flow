@@ -1,60 +1,63 @@
 const fs = require("fs");
 
+const icons = ["🏄🏼‍♂️", "🤹‍♂️", "☕️", "🦡", "🛠", "⛓", "🐬"];
+
 const navConfig = {
   "Getting Started": {
     url: "/",
+    icon: null,
     omitLandingPage: true,
     description:
       "New to Flow? Start here. Read about Flow's architechture, and important concepts for a deeper understanding of the Flow platform and how it works.",
   },
   Cadence: {
     url: "/tutorial/cadence/00-introduction/",
+    icon: icons[0],
     description:
       "Resource-Oriented programming language for smart contracts that helps developers ensure that their code is safe, secure, clear, and approachable.",
-    docLink: "/tutorial/cadence/00-introduction",
-    docLinkText: "Cadence Documentation",
+    linkText: "Cadence Documentation",
   },
   "Flow Playground": {
     url: "https://play.onflow.org",
+    icon: icons[1],
     description:
       "Learn the basics of Flow and Cadence using our browser-based playground.",
-    docLink: "https://play.onflow.org",
-    docLinkText: "Launch the Flow Playground",
+    linkText: "Launch the Flow Playground",
   },
   "JavaScript SDK": {
     url: "/sdks/javascript",
+    icon: icons[2],
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
-    docLink: "/sdks/javascript",
-    docLinkText: "JavaScript SDK Documentation",
+    linkText: "JavaScript SDK Documentation",
   },
   "Go SDK": {
     url: "/sdks/golang",
+    icon: icons[3],
     description:
       "Build apps that interact with Flow using our full-featured Go SDK.",
-    docLink: "/sdks/golang",
-    docLinkText: "Go SDK Documentation",
+    linkText: "Go SDK Documentation",
   },
   "Flow CLI": {
     url: "/tools/cli",
+    icon: icons[4],
     description:
       "The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.",
-    docLink: "/tools/cli",
-    docLinkText: "CLI Documentation",
+    linkText: "CLI Documentation",
   },
   "Flow Emulator": {
     url: "/tools/emulator",
+    icon: icons[5],
     description:
       "Develop and test your applications locally using the Flow emulator.",
-    docLink: "/tools/emulator",
-    docLinkText: "Emulator Documentation",
+    linkText: "Emulator Documentation",
   },
   "VS Code Extension": {
     url: "/tools/vscode",
+    icon: icons[6],
     description:
       "Cadence syntax highlighting and an integrated Flow emulator for VSCode users.",
-    docLink: "/tools/vscode",
-    docLinkText: "VSCode Extension Documentation",
+    linkText: "VSCode Extension Documentation",
   },
 };
 
@@ -86,10 +89,10 @@ const sections = [
     ],
     sidebar: {
       null: [
-        "intro/flow-token",
-        "intro/community",
-        "intro/glossary",
-        "intro/FAQ",
+        // "intro/flow-token",
+        // "intro/community",
+        // "intro/glossary",
+        // "intro/FAQ",
       ],
       Tutorials: ["tutorial/cadence/00-introduction"],
       "Flow Concepts": [

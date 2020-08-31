@@ -175,8 +175,6 @@ export default function PageLayout(props) {
     <span className="title-sidebar">{subtitle || siteName}</span>
   );
 
-  console.log(props);
-
   return (
     <Layout>
       <Helmet
@@ -239,14 +237,16 @@ export default function PageLayout(props) {
             )}
           </HeaderInner>
           {sidebarContents && (
-            <SidebarNav
-              contents={sidebarContents}
-              pathname={pathname}
-              onToggleAll={handleToggleAll}
-              onToggleCategory={handleToggleCategory}
-              onLinkClick={handleSidebarNavLinkClick}
-              alwaysExpanded={props.path?.includes("/tutorial/cadence")}
-            />
+            <NavItemsContext.Provider value={navItems}>
+              <SidebarNav
+                contents={sidebarContents}
+                pathname={pathname}
+                onToggleAll={handleToggleAll}
+                onToggleCategory={handleToggleCategory}
+                onLinkClick={handleSidebarNavLinkClick}
+                alwaysExpanded={props.path?.includes("/tutorial/cadence")}
+              />
+            </NavItemsContext.Provider>
           )}
         </Sidebar>
         <Main>
