@@ -10,7 +10,8 @@ import ContentWrapper from '../content-wrapper';
 import {Markdown, CustomLinkContext, components} from '../markdown';
 
 const StyledContentWrapper = styled(ContentWrapper)({
-  paddingBottom: 0
+  paddingBottom: 0,
+  maxWidth: 1280,
 });
 
 const renderAst = new rehypeReact({
