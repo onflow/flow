@@ -13,7 +13,7 @@ import {position, size, transparentize} from 'polished';
 import {IconSearch} from '../ui/icons';
 
 const borderRadius = 5;
-const border = '1px solid rgb(227 232 237)';
+const border = `1px solid ${theme.dividerLight}`;
 const verticalAlign = css({
   position: 'absolute',
   top: '50%',
