@@ -1,3 +1,113 @@
 ---
 title: Starting Your Nodes
 ---
+
+Prior to starting up your nodes make sure you have the following items completed:
+
+1. Bootstrap process completed with the bootstrap directory handy (default: `/var/flow/bootstrap`)
+2. Flow `data` directory created (default: `/var/flow/data`)
+3. [node config](https://docs.onflow.org/docs/genesis-bootstrapping#update-node-config) ready
+4. Firewall exposes TCP/3569, and if you are running `access` node also the GRPC port (default: TCP/9000)
+
+For more details head back to [Setting up your node](https://docs.onflow.org/docs/setting-up-a-node#set-your-node-to-start)
+
+When you have all the above completed, you can start your Flow node via `systemd` or `docker`.
+
+## systemd
+
+Ensure that you downloaded the systemd unit file. If you haven't follow the [Set your node to start](https://docs.onflow.org/docs/setting-up-a-node#set-your-node-to-start) guide to get your unit file and enabled.
+
+Once you have your Flow service enabled you can now start your service: `systemctl start flow`
+
+## Docker
+
+If you don't have have systemd on your system, or you prefer not to use systemd. You can run the following `docker` commands for your respective Flow role to start your node!
+
+### Access
+
+```
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	gcr.io/flow-container-registry/access:v0.0.6-alpha \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--rpc-addr=0.0.0.0:9000 \
+	--ingress-addr=${FLOW_NETWORK_COLLECTION_NODE} \
+	--script-addr=${FLOW_NETWORK_EXECUTION_NODE} \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Collection
+
+```
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	gcr.io/flow-container-registry/collection:v0.0.6-alpha \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--rpc-addr=0.0.0.0:9000 \
+	--nclusters=${FLOW_NETWORK_COLLECTION_CLUSTER_COUNT} \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Consensus
+
+```
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	gcr.io/flow-container-registry/consensus:v0.0.6-alpha \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--nclusters=${FLOW_NETWORK_COLLECTION_CLUSTER_COUNT} \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Execution
+
+```
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	gcr.io/flow-container-registry/execution:v0.0.6-alpha \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--ingress-addr=0.0.0.0:9000 \
+	--nclusters=${FLOW_NETWORK_COLLECTION_CLUSTER_COUNT} \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Verification
+
+```
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	gcr.io/flow-container-registry/verification:v0.0.6-alpha \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--nclusters=${FLOW_NETWORK_COLLECTION_CLUSTER_COUNT} \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
