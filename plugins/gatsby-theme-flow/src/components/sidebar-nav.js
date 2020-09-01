@@ -6,6 +6,7 @@ import {
   IconCollapseList,
   IconExternalLink,
   IconChevronUp,
+  getProjectIcon,
 } from "../ui/icons";
 import { Link, withPrefix } from "gatsby";
 import { theme } from "../colors";
@@ -120,14 +121,36 @@ const StyledLink = styled.a({
   },
 });
 
-const DocIcon = styled.span({
-  display: "inline-block",
+const ProjectIcon = styled.div({
+  backgroundSize: '100%',
+  height: "1.5em",
+  width: "1.5rem",
   marginRight: "0.42rem",
 });
 
-const DocSetItem = styled.div({
-  marginBottom: "0.42rem",
-});
+function ProjectLink(props) {
+  const ProjectLinkContainer = styled.div`
+    display: flex;
+    margin-bottom: 0.8rem;
+
+    ${ProjectIcon} {
+      opacity: 1;
+    }
+
+    &:hover {
+      ${ProjectIcon} {
+        opacity: 0.65;
+      }
+    }
+  `;
+
+  return (
+    <ProjectLinkContainer>
+      <ProjectIcon css={{ backgroundImage: `url(${props.icons.color})` }} />
+      {props.children}
+    </ProjectLinkContainer>
+  );
+};
 
 const StyledOutlinkIcon = styled(IconExternalLink)(size(14), {
   verticalAlign: -1,
@@ -235,12 +258,13 @@ export default function SidebarNav(props) {
             .filter((navItem) => {
               return !navItem.omitLandingPage;
             })
-            .map((navItem, index) => (
-              <DocSetItem key={navItem.url}>
-                <DocIcon>{navItem.icon}</DocIcon>
-                <StyledLink href={navItem.url}>{navItem.title}</StyledLink>
-              </DocSetItem>
-            ))}
+            .map((navItem, index) => {
+              return (
+                <ProjectLink key={navItem.url} icons={getProjectIcon(navItem.icon)}>
+                  <StyledLink href={navItem.url}>{navItem.title}</StyledLink>
+                </ProjectLink>
+              )
+            })}
       </>
       {root && (
         <NavItems
