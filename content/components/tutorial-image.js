@@ -4,5 +4,9 @@ import React from "react";
 // import { size } from "polished";
 
 export default function TutorialImage(props) {
-  return <img src={props.src} />;
+  return (
+    <div style={{ marginBottom: "1rem" }}>
+      <img src={props.src} />
+    </div>
+  );
 }
