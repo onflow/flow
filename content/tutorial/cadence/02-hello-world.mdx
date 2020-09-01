@@ -3,6 +3,7 @@ title: 2. Hello World
 ---
 
 import Callout from "../../components/callout";
+import Img from "../../components/tutorial-image";
 
 ### Lets write and deploy our first smart contract!
 
@@ -52,23 +53,12 @@ Identifiers are custom and can be any name you want them to be to indicate what 
 - The `private` domain is like a private API. You can optionally store [capabilities](https://docs.onflow.org/v0.3/docs/glossary#section-capability) to any of your stored assets here. Only the owner and anyone they give access to can use these interfaces to call functions that are defined in your private assets. Users will commonly store private capabilities here that refer to other accounts private objects.
 - The `public` domain is kind of like your account's public API. The owner can store capabilities here that that anyone else in the network can access to interact with the private assets that are stored in the account.
 
-  <!-- [block:image]
-  {
-  "images": [
-  {
-  "image": [
-  "https://files.readme.io/0988ee9-diagram-hello-world.png",
-  "diagram-hello-world.png",
-  744,
-  730,
-  "#efefef"
-  ]
-  }
-  ]
-  }
-  [/block] -->
+<img
+  style="margin-bottom: 1rem;"
+  src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/accounts-diagram.png"
+/>
 
-  A [Transaction](https://docs.onflow.org/docs/glossary#section-transaction) in Flow is defined as an arbitrary-sized block of Cadence code that is signed by one or more accounts. Transactions have access to the `/storage/` and `/private/` domains of the accounts that signed the transaction and can read and write to those domains, as well as read and call functions in public contracts and the public domains in other users` accounts.
+A [Transaction](https://docs.onflow.org/docs/glossary#section-transaction) in Flow is defined as an arbitrary-sized block of Cadence code that is signed by one or more accounts. Transactions have access to the `/storage/` and `/private/` domains of the accounts that signed the transaction and can read and write to those domains, as well as read and call functions in public contracts and the public domains in other users` accounts.
 
 ## Creating a Smart Contract
 
@@ -134,22 +124,7 @@ Now that you have some Cadence code to work with, you can deploy it to your acco
   `HelloWorld.cdc` file is in the editor. <br />
   Click the deploy button to deploy the contents of the editor to account `0x01`.
 </Callout>
-
-<!-- [block:image]
-{
-"images": [
-{
-"image": [
-"https://files.readme.io/81a13b8-Screen_Shot_2020-03-04_at_2.36.23_PM.png",
-"Screen Shot 2020-03-04 at 2.36.23 PM.png",
-1518,
-790,
-"#fbfcfb"
-]
-}
-]
-}
-[/block] -->
+<Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/playground-deploy.png" />
 
 You should see a log in the output area indicating that the deployment succeeded. (Don't worry if the transaction number or block is different.)
 
@@ -211,22 +186,7 @@ In this transaction, we are importing the contract from the address that it was 
   transaction signer. <br />
   Click the `Send` button to submit the transaction
 </Callout>
-
-<!-- [block:image]
-{
-"images": [
-{
-"image": [
-"https://files.readme.io/6797636-Screen_Shot_2020-03-04_at_2.48.02_PM.png",
-"Screen Shot 2020-03-04 at 2.48.02 PM.png",
-1518,
-786,
-"#fbfcfa"
-]
-}
-]
-}
-[/block] -->
+<Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/playground-signers.png" />
 
 You should see something like this:
 
@@ -341,21 +301,7 @@ In this case, this is the first transaction we have run, so we know that the sto
 
 Now that you have stored a resource in an account, you should see that resource show up in the `Resources` box below the editor. This box indicates which resources are stored in the selected account, and the values of the fields inside those resources. Right now, you should see that the `HelloAsset` resource is stored in account `0x02`'s storage and it has no fields.
 
-<!-- [block:image]
-{
-"images": [
-{
-"image": [
-"https://files.readme.io/5efb650-Screen_Shot_2020-03-04_at_6.35.40_PM.png",
-"Screen Shot 2020-03-04 at 6.35.40 PM.png",
-1383,
-725,
-"#f5f9f6"
-]
-}
-]
-}
-[/block] -->
+<Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/playground-resources.png" />
 
 ## Interacting with a Resource
 
@@ -603,22 +549,7 @@ Then, the script uses the reference to call the `hello` function and prints the 
 Lets execute the script to see it run correctly.
 
 <Callout type="info">Click the `Execute` button in the playground.</Callout>
-
-<!-- [block:image]
-{
-"images": [
-{
-"image": [
-"https://files.readme.io/4648ae9-Screen_Shot_2020-03-04_at_2.51.33_PM.png",
-"Screen Shot 2020-03-04 at 2.51.33 PM.png",
-1515,
-784,
-"#fbfcfb"
-]
-}
-]
-}
-[/block] -->
+<Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/playground-execute.png" />
 
 You should see something like this print:
 
@@ -640,21 +571,7 @@ The playground is initialized with a configurable number of default accounts whe
 
 In the playground, you can select accounts to edit the contracts that are deployed for them by selecting the tab for that account in the left section of the screen. The contract corresponding to that account will be displayed in the editor where you can edit and deploy it to the blockchain.
 
-<!-- [block:image]
-{
-"images": [
-{
-"image": [
-"https://files.readme.io/0032523-Screen_Shot_2020-03-04_at_2.58.51_PM.png",
-"Screen Shot 2020-03-04 at 2.58.51 PM.png",
-1516,
-785,
-"#f9faf8"
-]
-}
-]
-}
-[/block] -->
+<Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/playground-accounts.png" />
 
 ## Transactions
 
