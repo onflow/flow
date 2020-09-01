@@ -4,10 +4,7 @@ import { NavItemsContext, NavItemDescription } from "gatsby-theme-flow";
 import { colors } from "gatsby-theme-flow/src/colors";
 import { size } from "polished";
 import { MenuWrapper, MenuItem } from "./menu";
-
-function getBoxShadow(opacity, y, blur) {
-  return `rgba(18, 21, 26, ${opacity}) 0 ${y}px ${blur}px`;
-}
+import { getProjectIcon } from "gatsby-theme-flow/src/ui/icons";
 
 const { indigo } = colors;
 const AppIcon = styled.div({
@@ -15,16 +12,8 @@ const AppIcon = styled.div({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  boxShadow: [
-    getBoxShadow(0.12, 1, 2),
-    getBoxShadow(0.1, 2, 4),
-    getBoxShadow(0.08, 5, 10),
-    `inset rgba(45, 31, 102, 0.4) 0 -1px 2px`,
-  ].toString(),
-  borderRadius: 8,
-  color: indigo.lighter,
+  backgroundSize: "cover",
   fontSize: 16,
-  // backgroundImage: `linear-gradient(${[indigo.base, indigo.dark]})`,
   svg: {
     ...size(16),
     fill: "currentColor",
@@ -39,8 +28,6 @@ const StyledLink = styled.a({
   },
 });
 
-const icons = ["🏄🏼‍♂️", "🤹‍♂️", "☕️", "🦡", "🛠", "⛓", "🐬"];
-
 export default function DocsetMenu() {
   const navItems = useContext(NavItemsContext);
 
@@ -53,11 +40,17 @@ export default function DocsetMenu() {
         .map((navItem, index) => (
           <MenuItem
             key={navItem.url}
-            icon={<AppIcon>{navItem.icon}</AppIcon>}
+            icon={
+              <AppIcon
+                css={{
+                  backgroundImage: `url(${getProjectIcon(navItem.icon).color})`,
+                }}
+              />
+            }
             title={<StyledLink href={navItem.url}>{navItem.title}</StyledLink>}
           >
             <NavItemDescription>{navItem.description}</NavItemDescription>
-            <a href={navItem.url}>{navItem.linkText}</a>
+            <a href={navItem.url}>📗Visit Docs</a>
           </MenuItem>
         ))}
     </MenuWrapper>
