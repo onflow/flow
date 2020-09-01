@@ -25,12 +25,12 @@ const Changelog = ({ releases }) => {
           (release) => {
             const id = slugger.slug(release.name);
             return (
-              <div>
-                <h1 id={id} style={{position: 'relative'}}>
+              <div key={id}>
+                <h1 id={id}>
                   <a className="headingLink" href={`#${id}`}>{release.name}</a>
                 </h1>
                 <p>{release.publishedAt}</p>
-                <RawMarkdown>{release.description}</RawMarkdown>
+                <RawMarkdown slugPrefix={id}>{release.description}</RawMarkdown>
                 <hr />
               </div>
             )
