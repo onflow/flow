@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import styled from "@emotion/styled";
 import {
   IconExpandList,
@@ -11,6 +11,7 @@ import { Link, withPrefix } from "gatsby";
 import { theme } from "../colors";
 import { smallCaps } from "../utils/typography";
 import { size } from "polished";
+import { NavItemsContext } from "./page-layout";
 
 const ExpandAll = styled.button(smallCaps, {
   display: "flex",
@@ -71,14 +72,14 @@ const categoryTitleStyles = {
   alignItems: "center",
   justifyContent: "space-between",
   padding: "12px 0",
-  color: theme.text1,
+  color: theme.secondary,
   fontWeight: "bold",
   fontSize: 14,
   lineHeight: "15px",
   ...smallCaps,
   svg: size(10),
   "&.active": {
-    color: theme.primary,
+    color: theme.secondary,
   },
 };
 
@@ -111,6 +112,23 @@ const StyledCheckbox = styled.input({
   },
 });
 
+const StyledLink = styled.a({
+  color: "inherit",
+  textDecoration: "none",
+  ":hover": {
+    color: theme.text3,
+  },
+});
+
+const DocIcon = styled.span({
+  display: "inline-block",
+  marginRight: "0.42rem",
+});
+
+const DocSetItem = styled.div({
+  marginBottom: "0.42rem",
+});
+
 const StyledOutlinkIcon = styled(IconExternalLink)(size(14), {
   verticalAlign: -1,
   marginLeft: 8,
@@ -122,6 +140,13 @@ function isPageSelected(path, pathname) {
     string.replace(/\/$/, "")
   );
   return a === b;
+}
+
+function showDocsetMenu(path) {
+  const root = path === "/";
+  const docsetPages = ["/concepts"];
+  if (root) return true;
+  return docsetPages.find((p) => path.includes(p));
 }
 
 function NavItems(props) {
@@ -166,6 +191,7 @@ NavItems.propTypes = {
 
 export default function SidebarNav(props) {
   const categoriesRef = useRef();
+  const docset = useContext(NavItemsContext);
 
   const [allExpanded, setAllExpanded] = useState(false);
   const categories = props.contents.filter((content) => content.title);
@@ -203,6 +229,19 @@ export default function SidebarNav(props) {
 
   return (
     <>
+      <>
+        {showDocsetMenu(props.pathname) &&
+          docset
+            .filter((navItem) => {
+              return !navItem.omitLandingPage;
+            })
+            .map((navItem, index) => (
+              <DocSetItem key={navItem.url}>
+                <DocIcon>{navItem.icon}</DocIcon>
+                <StyledLink href={navItem.url}>{navItem.title}</StyledLink>
+              </DocSetItem>
+            ))}
+      </>
       {root && (
         <NavItems
           pages={root.pages}
