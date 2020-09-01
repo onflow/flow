@@ -1,11 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import {
-  FaChevronUp,
-  FaChevronDown
-} from 'react-icons/fa';
+import React from "react";
+import styled from "@emotion/styled";
+import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
-import Search from '../assets/search.svg';
+import Search from "../assets/search.svg";
+import Run from "../assets/run.svg";
 
 export {
   FaArrowDown as IconArrowDown,
@@ -14,7 +12,7 @@ export {
   FaBars as IconMenu,
   FaCaretSquareDown as IconMenuSelector,
   FaCheck as IconCheck,
-  FaChevronDown as IconChevronDown, 
+  FaChevronDown as IconChevronDown,
   FaChevronUp as IconChevronUp,
   FaDiscord as IconDiscord,
   FaExclamationTriangle as IconWarningSolid,
@@ -24,21 +22,23 @@ export {
   FaInfoCircle as IconInfoSolid,
   FaTwitter as IconTwitter,
   FaUmbrellaBeach as IconPlayground,
-} from 'react-icons/fa';
+} from "react-icons/fa";
 
-const StyledSearch = styled.img({
-  height: '1em',
+const IconContainer = styled.img({
+  height: "1em",
 });
 
 export function IconSearch() {
-  return (
-    <StyledSearch src={Search} />
-  )
-};
+  return <IconContainer src={Search} />;
+}
+
+export function IconRun() {
+  return <IconContainer src={Run} />;
+}
 
 const StackedIconContainer = styled.div({
-  display: 'flex',
-  flexDirection: 'column',
+  display: "flex",
+  flexDirection: "column",
   height: "1rem",
 });
 
@@ -48,8 +48,8 @@ export function IconExpandList() {
       <FaChevronUp />
       <FaChevronDown />
     </StackedIconContainer>
-  )
-};
+  );
+}
 
 export function IconCollapseList() {
   return (
@@ -57,5 +57,5 @@ export function IconCollapseList() {
       <FaChevronDown />
       <FaChevronUp />
     </StackedIconContainer>
-  )
-};
+  );
+}
