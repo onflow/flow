@@ -2,7 +2,7 @@
 import { ClassNames, jsx } from "@emotion/core";
 import React from "react";
 import * as typography from "./typography";
-import { colors } from "../colors";
+import { colors, theme } from "../colors";
 import { IconWarningSolid, IconInfoSolid } from "./icons";
 import classnames from "classnames";
 
@@ -144,7 +144,7 @@ export const TextField: React.FC<Props> = ({
           css({
             backgroundColor: disabled ? colors.silver.light : colors.white,
             border: "solid 1px",
-            borderColor: error ? colors.red.base : 'rgb(227 232 237)',
+            borderColor: error ? colors.red.base : theme.dividerLight,
             "::placeholder": {
               color: disabled ? colors.grey.lighter : colors.grey.light,
               opacity: 1,
