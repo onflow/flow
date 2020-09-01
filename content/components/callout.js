@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { colors, theme } from "gatsby-theme-flow/src/colors";
+
 import { size } from "polished";
 
 const calloutColors = {
@@ -15,6 +16,9 @@ const CalloutWrapper = styled.div((props) => ({
   backgroundColor: calloutColors[props.type].light,
   borderLeft: `10px solid ${calloutColors[props.type].dark}`,
   marginBottom: 18,
+  p: {
+    marginBottom: 0,
+  },
 }));
 
 const CalloutTitle = styled.div({
@@ -24,9 +28,15 @@ const CalloutTitle = styled.div({
   marginBottom: 18,
 });
 
-const CalloutBody = styled.div({});
+const CalloutBody = styled.div({
+  fontSize: 16,
+  p: {
+    fontSize: 16,
+  },
+});
 
 export default function Callout(props) {
+  console.log(props.children);
   return (
     <CalloutWrapper type={props.type}>
       {props.title && <CalloutTitle>{props.title}</CalloutTitle>}
