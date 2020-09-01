@@ -2,6 +2,8 @@
 title: 1. First Steps
 ---
 
+import Img from "../../components/tutorial-image";
+
 In this tutorial, we will learn how to use smart contracts, switch accounts, and view account state.
 
 ## What is Cadence?
@@ -36,3 +38,23 @@ When you click on one of these links, the tutorial will open in a new tab and th
 ## Accounts and Contracts
 
 The Accounts section on the left side of the screen is where the active accounts are listed and selected. You can click on an account tab to view the contract that is associated with that account in the main editor.
+
+<Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/playground-accounts.png" />
+
+When you have a .cdc file open in the account editor that contains a contract, you can click the deploy button to deploy that contract to the currently selected account.
+
+<Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/playground-deploy.png" />
+
+After a few seconds, you should see a message in the console confirming that the contract was deployed. You should also see the name of the contract show up in the tab for that account, indicating the account now has that contract deployed to it.
+
+You can also select transactions and scripts from the left selection menu and submit them to interact with your deployed smart contracts.
+
+This is just a small set of the things you can do with the Playground. If you would like a more detailed explanation of the different Playground features, look at the Playground Manual.
+
+## Resources
+
+Each tutorial in this package uses several files containing transactions, contracts, and scripts. All the code you need will be provided in the text of the tutorials for you to copy and paste, or you can use the pre-generated tutorial setups in the Playground.
+
+## Say Hello, World!
+
+Now that you have the Flow Developer Playground running, you can create a smart contract for Flow!
