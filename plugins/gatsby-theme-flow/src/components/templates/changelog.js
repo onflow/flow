@@ -1,8 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
+import Slugger from 'github-slugger';
+import moment from 'moment';
 import BaseTemplate from './base';
 import {RawMarkdown} from '../markdown';
-import Slugger from 'github-slugger';
 
 function extractHeadings(releases) {
   const slugger = new Slugger();
@@ -13,7 +14,7 @@ function extractHeadings(releases) {
       value: release.name,
     };
   })
-}
+};
 
 const Changelog = ({ releases }) => {
   const slugger = new Slugger();
@@ -29,7 +30,7 @@ const Changelog = ({ releases }) => {
                 <h1 id={id}>
                   <a className="headingLink" href={`#${id}`}>{release.name}</a>
                 </h1>
-                <p>{release.publishedAt}</p>
+                <p>{moment(release.publishedAt).format("dddd, MMMM Do YYYY")}</p>
                 <RawMarkdown slugPrefix={id}>{release.description}</RawMarkdown>
                 <hr />
               </div>
