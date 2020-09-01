@@ -8,51 +8,51 @@ const navConfig = {
     description:
       "New to Flow? Start here. Read about Flow's architechture, and important concepts for a deeper understanding of the Flow platform and how it works.",
   },
-  "Cadence": {
+  Cadence: {
     url: "/tutorial/cadence/00-introduction/",
-    icon: 'cadence',
+    icon: "cadence",
     description:
       "Resource-Oriented programming language for smart contracts that helps developers ensure that their code is safe, secure, clear, and approachable.",
     linkText: "Cadence Documentation",
   },
   "Flow Playground": {
     url: "https://play.onflow.org",
-    icon: 'playground',
+    icon: "playground",
     description:
       "Learn the basics of Flow and Cadence using our browser-based playground.",
     linkText: "Launch the Flow Playground",
   },
   "JavaScript SDK": {
     url: "/sdks/javascript",
-    icon: 'js-sdk',
+    icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
     linkText: "JavaScript SDK Documentation",
   },
   "Go SDK": {
     url: "/sdks/golang",
-    icon: 'go-sdk',
+    icon: "go-sdk",
     description:
       "Build apps that interact with Flow using our full-featured Go SDK.",
     linkText: "Go SDK Documentation",
   },
   "Flow CLI": {
     url: "/tools/cli",
-    icon: 'cli',
+    icon: "cli",
     description:
       "The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.",
     linkText: "CLI Documentation",
   },
   "Flow Emulator": {
     url: "/tools/emulator",
-    icon: 'emulator',
+    icon: "emulator",
     description:
       "Develop and test your applications locally using the Flow emulator.",
     linkText: "Emulator Documentation",
   },
   "VS Code Extension": {
     url: "/tools/vscode",
-    icon: 'vscode',
+    icon: "vscode",
     description:
       "Cadence syntax highlighting and an integrated Flow emulator for VSCode users.",
     linkText: "VSCode Extension Documentation",
@@ -149,8 +149,8 @@ const sections = [
     sidebar: {
       null: [
         "sdks/golang/index",
-        "sdks/golang/changelog",
         "sdks/golang/create-account",
+        "sdks/golang/changelog",
       ],
     },
   },
