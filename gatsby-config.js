@@ -74,62 +74,29 @@ const footerNavConfig = {
   },
 };
 
+// sourceGithubRepos maps a sourceInstanceName to a GitHub repo name
+const sourceGithubRepos = {
+  docs: {
+    githubRepo: "onflow/flow",
+    // NOTE: path is non-empty, because only content in this path is sourced
+    path: "docs/content",
+  },
+  cadence: {
+    githubRepo: "onflow/cadence",
+    // NOTE: path is empty, whole repo is sourced
+    path: "",
+  },
+};
+
+// sourceSlugTransformers maps a sourceInstanceName to slug transformation functions
+const sourceSlugTransformers = {
+  cadence: (slug) => slug.replace(/^\/docs\//, "/cadence/"),
+};
+
 const sections = [
   {
-    patterns: [
-      "*",
-      "intro/*",
-      "concepts/flow-concepts/*",
-      "concepts/node-operation/*",
-      "concepts/custody-providers/*",
-      "guides/node-operator/*",
-      "tutorial/cadence/*",
-    ],
-    sidebar: {
-      null: [
-        // "intro/flow-token",
-        // "intro/community",
-        // "intro/glossary",
-        // "intro/FAQ",
-      ],
-      Tutorials: ["tutorial/cadence/00-introduction"],
-      "Flow Concepts": [
-        "concepts/flow-concepts/slashings",
-        "concepts/flow-concepts/accounts-keys",
-        "concepts/flow-concepts/delegation",
-        "concepts/flow-concepts/devnet",
-        "concepts/flow-concepts/fees",
-        "concepts/flow-concepts/governance",
-        "concepts/flow-concepts/node-roles",
-        "concepts/flow-concepts/service-account",
-        "concepts/flow-concepts/testnet",
-        "concepts/flow-concepts/token-staking",
-        "concepts/flow-concepts/transactions",
-      ],
-      // "Node Operation Concepts": [
-      //   "concepts/node-operation/quickstart",
-      //   "concepts/node-operation/day1-accounts-tokens",
-      //   "concepts/node-operation/node-keys",
-      //   "concepts/node-operation/network-identity",
-      //   "concepts/node-operation/staking-rewards",
-      //   "concepts/node-operation/hosting-custody-partners",
-      // ],
-      // "Node Operator Guides": [
-      //   "guides/node-operator/setup",
-      //   "guides/node-operator/genesis-bootstrap",
-      //   "guides/node-operator/starting-nodes",
-      //   "guides/node-operator/monitoring-nodes",
-      //   "guides/node-operator/accessing-mainnet",
-      //   "guides/node-operator/spork-practice",
-      // ],
-      // "Custody Providers": [
-      //   "concepts/custody-providers/keys-accounts",
-      //   "concepts/custody-providers/token-distribution",
-      // ],
-    },
-  },
-  {
-    patterns: ["tutorial/cadence/*"],
+    sourceInstanceName: "docs",
+    patterns: ["*", "intro/**/*", "tutorial/**/*"],
     sidebar: {
       null: ["tutorial/cadence/00-introduction"],
       Tutorial: [
@@ -145,6 +112,7 @@ const sections = [
     },
   },
   {
+    sourceInstanceName: "docs",
     patterns: ["sdks/golang/**/*"],
     sidebar: {
       null: [
@@ -155,10 +123,16 @@ const sections = [
     },
   },
   {
+    sourceInstanceName: "docs",
     patterns: ["sdks/javascript/**/*"],
     sidebar: {
       null: ["sdks/javascript/index", "sdks/javascript/create-account"],
     },
+  },
+  {
+    sourceInstanceName: "cadence",
+    patterns: ["docs/**/*"],
+    sidebar: {},
   },
 ];
 
@@ -183,14 +157,11 @@ module.exports = {
         baseUrl: "https://docs.onflow.org",
         twitterUrl: "https://twitter.com/flow_blockchain",
         discordUrl: "https://discord.gg/flow",
-        githubRepo: "onflow/flow",
         logoLink: "/",
-        baseDir: "docs",
-        contentDir: "content",
         root: __dirname,
-        githubAccessToken: process.env.GITHUB_ACCESS_TOKEN, // https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
-        repositories: [{ owner: "onflow", name: "flow-go-sdk" }],
         sections,
+        sourceGithubRepos,
+        sourceSlugTransformers,
       },
     },
   ],

@@ -2,48 +2,28 @@ const jsYaml = require("js-yaml");
 const path = require("path");
 const git = require("simple-git")();
 const { createFilePath } = require("gatsby-source-filesystem");
-const { getVersionBasePath } = require("./src/utils");
 const { createPrinterNode } = require("gatsby-plugin-printer");
 
-function getConfigPaths(baseDir) {
-  return [
-    path.join(baseDir, "gatsby-config.js"), // new gatsby config
-    path.join(baseDir, "_config.yml"), // old hexo config
-  ];
-}
-
-async function onCreateNode(
-  { node, actions, getNode, loadNodeContent },
+exports.onCreateNode = async function (
+  {node, actions, getNode, loadNodeContent},
   {
-    baseDir = "",
-    contentDir = "content",
-    defaultVersion = "default",
-    localVersion,
     siteName,
     subtitle,
     sidebarCategories,
   }
 ) {
-  const configPaths = getConfigPaths(baseDir);
-  if (configPaths.includes(node.relativePath)) {
-    const value = await loadNodeContent(node);
-    actions.createNodeField({
-      name: "raw",
-      node,
-      value,
-    });
-  }
 
   if (["MarkdownRemark", "Mdx"].includes(node.internal.type)) {
     const parent = getNode(node.parent);
-    let version = localVersion || defaultVersion;
-    let slug = createFilePath({
-      node,
-      getNode,
-    });
 
+    let slug
     if (node.frontmatter.slug) {
       slug = node.frontmatter.slug; // eslint-disable-line prefer-destructuring
+    } else {
+      slug = createFilePath({
+        node,
+        getNode,
+      });
     }
 
     let category;
@@ -61,7 +41,7 @@ async function onCreateNode(
       }
     }
 
-    const { title, sidebar_title, graphManagerUrl } = node.frontmatter;
+    const {title, sidebar_title, graphManagerUrl} = node.frontmatter;
     createPrinterNode({
       id: `${node.id} >>> Printer`,
       fileName,
@@ -78,32 +58,6 @@ async function onCreateNode(
       name: "image",
       node,
       value: path.join(outputDir, fileName + ".png"),
-    });
-
-    let versionRef = "";
-    if (parent.gitRemote___NODE) {
-      const gitRemote = getNode(parent.gitRemote___NODE);
-      version = gitRemote.sourceInstanceName;
-      versionRef = gitRemote.ref;
-
-      const dirPattern = new RegExp(path.join("^", baseDir, contentDir));
-      slug = slug.replace(dirPattern, "");
-    }
-
-    if (version !== defaultVersion) {
-      slug = getVersionBasePath(version) + slug;
-    }
-
-    actions.createNodeField({
-      node,
-      name: "version",
-      value: version,
-    });
-
-    actions.createNodeField({
-      node,
-      name: "versionRef",
-      value: versionRef,
     });
 
     actions.createNodeField({
@@ -124,20 +78,18 @@ async function onCreateNode(
       value: graphManagerUrl || "",
     });
   }
-}
-
-exports.onCreateNode = onCreateNode;
+};
 
 function getPageFromEdge({ node }) {
   return node.childMarkdownRemark || node.childMdx;
 }
 
-function getSidebarContents(sidebarCategories, edges, version, dirPattern) {
+function getSidebarContents(sidebarCategories, edges) {
   return Object.keys(sidebarCategories).map((key) => ({
     title: key === "null" ? null : key,
     pages: sidebarCategories[key]
       .map((linkPath) => {
-        const match = linkPath.match(/^\[(.+)\]\((https?:\/\/.+)\)$/);
+        const match = linkPath.match(/^\[(.+)]\((https?:\/\/.+)\)$/);
         if (match) {
           return {
             anchor: true,
@@ -148,13 +100,8 @@ function getSidebarContents(sidebarCategories, edges, version, dirPattern) {
 
         const edge = edges.find((edge) => {
           const { relativePath } = edge.node;
-          const { fields } = getPageFromEdge(edge);
-          return (
-            fields.version === version &&
-            relativePath
-              .slice(0, relativePath.lastIndexOf("."))
-              .replace(dirPattern, "") === linkPath
-          );
+          const path = relativePath.slice(0, relativePath.lastIndexOf("."));
+          return path === linkPath
         });
 
         if (!edge) {
@@ -171,31 +118,6 @@ function getSidebarContents(sidebarCategories, edges, version, dirPattern) {
       })
       .filter(Boolean),
   }));
-}
-
-function getVersionSidebarCategories(gatsbyConfig, hexoConfig) {
-  if (gatsbyConfig) {
-    const trimmed = gatsbyConfig.slice(
-      gatsbyConfig.indexOf("sidebarCategories")
-    );
-
-    const json = trimmed
-      .slice(0, trimmed.indexOf("}"))
-      // wrap object keys in double quotes
-      .replace(/['"]?(\w[\w\s&-]+)['"]?:/g, '"$1":')
-      // replace single-quoted array values with double quoted ones
-      .replace(/'([\w-/.]+)'/g, '"$1"')
-      // remove trailing commas
-      .trim()
-      .replace(/,\s*\]/g, "]")
-      .replace(/,\s*$/, "");
-
-    const { sidebarCategories } = JSON.parse(`{${json}}}`);
-    return sidebarCategories;
-  }
-
-  const { sidebar_categories } = jsYaml.load(hexoConfig);
-  return sidebar_categories;
 }
 
 exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
@@ -225,8 +147,6 @@ const pageFragment = `
   }
   fields {
     slug
-    version
-    versionRef
     sidebarTitle
   }
 `;
@@ -237,22 +157,23 @@ async function createPagesForSection(
   section,
   {
     baseDir = "",
-    contentDir = "content",
-    defaultVersion = "default",
-    versions = {},
     subtitle,
-    githubRepo,
     discordUrl,
     twitterUrl,
-    localVersion,
     baseUrl,
+    sourceGithubRepos,
+    sourceSlugTransformers
   }
 ) {
   const allPages = await Promise.all(
     section.patterns.map(async (pattern) => {
       const { data } = await graphql(`
       {
-        allFile(filter: {extension: {in: ["md", "mdx"]}, relativePath: {glob: "${pattern}"}}) {
+        allFile(filter: {
+          sourceInstanceName: {eq: "${section.sourceInstanceName}"}
+          relativePath: {glob: "${pattern}"},
+          extension: {in: ["md", "mdx"]},
+        }) {
           edges {
             node {
               id
@@ -274,98 +195,29 @@ async function createPagesForSection(
     })
   );
 
-  const pages = allPages.flat();
+  const pages = allPages.flat()
 
   const templates = {
     default: require.resolve(`./src/components/templates/default`),
     changelog: require.resolve(`./src/components/templates/changelog`),
   };
 
-  const mainVersion = localVersion || defaultVersion;
-  const contentPath = path.join(baseDir, contentDir);
-  const dirPattern = new RegExp(`^${contentPath}/`);
-
-  const sidebarContents = {
-    [mainVersion]: getSidebarContents(
-      section.sidebar,
-      pages,
-      mainVersion,
-      dirPattern
-    ),
-  };
-
-  const configPaths = getConfigPaths(baseDir);
-  const versionKeys = [localVersion].filter(Boolean);
-  for (const version in versions) {
-    if (version !== defaultVersion) {
-      versionKeys.push(version);
-    }
-
-    // grab the old config files for each older version
-    const configs = await Promise.all(
-      configPaths.map(async (configPath) => {
-        const response = await graphql(`
-          {
-            file(
-              relativePath: {eq: "${configPath}"}
-              gitRemote: {sourceInstanceName: {eq: "${version}"}}
-            ) {
-              fields {
-                raw
-              }
-            }
-          }
-        `);
-
-        const { file } = response.data;
-        return file && file.fields.raw;
-      })
-    );
-
-    sidebarContents[version] = getSidebarContents(
-      getVersionSidebarCategories(...configs),
-      pages,
-      version,
-      dirPattern
-    );
-  }
-
-  let defaultVersionNumber = null;
-  try {
-    defaultVersionNumber = parseFloat(defaultVersion, 10);
-  } catch (error) {
-    // let it slide
-  }
-
-  // get the current git branch
-  // try to use the BRANCH env var from Netlify
-  // fall back to using git rev-parse if BRANCH is not available
-  const currentBranch =
-    process.env.BRANCH || (await git.revparse(["--abbrev-ref", "HEAD"]));
+  const sidebarContents = getSidebarContents(section.sidebar, pages)
 
   const defaultTemplateName = "default";
 
-  await pages.forEach(async (edge) => {
+  for (const edge of pages) {
     const { id, relativePath } = edge.node;
     const { fields, frontmatter } = getPageFromEdge(edge);
-
-    let versionDifference = 0;
-    if (defaultVersionNumber) {
-      try {
-        const versionNumber = parseFloat(fields.version, 10);
-        versionDifference = versionNumber - defaultVersionNumber;
-      } catch (error) {
-        // do nothing
-      }
-    }
 
     const templateName = frontmatter.template || defaultTemplateName;
     const template = templates[templateName];
 
     let githubUrl;
 
-    if (githubRepo) {
-      const [owner, repo] = githubRepo.split("/");
+    const sourceGithubRepo = sourceGithubRepos[section.sourceInstanceName]
+    if (sourceGithubRepo) {
+      const [owner, repo] = sourceGithubRepo.githubRepo.split("/");
       githubUrl =
         "https://" +
         path.join(
@@ -373,29 +225,32 @@ async function createPagesForSection(
           owner,
           repo,
           "tree",
-          fields.versionRef || path.join(currentBranch, contentPath),
+          "master",
+          sourceGithubRepo.path,
           relativePath
         );
     }
 
+    let slug = fields.slug;
+    const sourceSlugTransformer = sourceSlugTransformers[section.sourceInstanceName]
+    if (sourceSlugTransformer) {
+      slug = sourceSlugTransformer(slug)
+    }
+
     await actions.createPage({
-      path: fields.slug,
+      path: slug,
       component: template,
       context: {
         id,
         subtitle,
-        versionDifference,
-        versionBasePath: getVersionBasePath(fields.version),
-        sidebarContents: sidebarContents[fields.version],
+        sidebarContents: sidebarContents,
         githubUrl,
         discordUrl,
         twitterUrl,
-        versions: versionKeys, // only need to send version labels to client
-        defaultVersion,
         baseUrl,
       },
     });
-  });
+  }
 }
 
 exports.createPages = async ({ actions, graphql }, options) => {
