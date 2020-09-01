@@ -36,12 +36,24 @@ function handleHeadingClick(event) {
   });
 }
 
+function slugifyHeadings(headings) {
+  const slugger = new Slugger();
+
+  return headings.map(({value}) => {
+    const text = striptags(value);
+    const slug = slugger.slug(text);
+
+    return { text, slug };
+  });
+}
+
 export default function SectionNav(props) {
   const {y} = useWindowScroll();
   const {width, height} = useWindowSize();
   const [offsets, setOffsets] = useState([]);
 
   const {contentRef, imagesLoaded} = props;
+
   useEffect(() => {
     const headings = contentRef.current.querySelectorAll('h1, h2');
     setOffsets(
@@ -54,30 +66,36 @@ export default function SectionNav(props) {
 
           return {
             id: heading.id,
-            offset: heading.offsetTop + anchor.offsetTop
+            offset: heading.offsetTop,
           };
         })
         .filter(Boolean)
     );
   }, [width, height, contentRef, imagesLoaded]);
 
+  const headings = slugifyHeadings(props.headings);
+  const slugs = headings.map(({slug}) => slug);
+
   let activeHeading = null;
   const windowOffset = height / 2;
   const scrollTop = y + windowOffset;
+  
   for (let i = offsets.length - 1; i >= 0; i--) {
     const {id, offset} = offsets[i];
+
+    if (!slugs.includes(id)) {
+      continue;
+    }
+
     if (scrollTop >= offset) {
       activeHeading = id;
       break;
     }
   }
 
-  const slugger = new Slugger();
   return (
     <StyledList>
-      {props.headings.map(({value}) => {
-        const text = striptags(value);
-        const slug = slugger.slug(text);
+      {headings.map(({slug, text}) => {
         return (
           <StyledListItem key={slug} active={slug === activeHeading}>
             <a href={`#${slug}`} onClick={handleHeadingClick}>
