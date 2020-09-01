@@ -23,13 +23,15 @@ const verticalAlign = css({
 const Hotkey = styled.div(verticalAlign, size(24), {
   border,
   borderColor: theme.text4,
-  color: theme.text4,
+  color: theme.text3,
   borderRadius,
   textAlign: 'center',
   lineHeight: 1.4,
   fontSize: '0.9em',
   right: 10,
-  pointerEvents: 'none'
+  pointerEvents: 'none',
+  fontWeight: 600,
+  boxShadow: `0 1px 1px 0 #00000021`,
 });
 
 const boxShadowColor = transparentize(0.9, 'black');
