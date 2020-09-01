@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import {theme} from '../colors';
 import breakpoints from '../utils/breakpoints';
 import {transparentize} from 'polished';
+import { IconRun } from '../ui/icons';
 
 const Container = styled.aside({
   flexShrink: 0,
@@ -51,6 +52,7 @@ const Sidebar = React.forwardRef((props, ref) => {
           <Logo />
         </StyledLink>
       </Header>
+      <span><IconRun /> Cadence</span>
       <div className={props.className}>{props.children}</div>
     </Fragment>
   );
