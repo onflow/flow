@@ -189,7 +189,6 @@ module.exports = {
   siteMetadata: {
     title: "Flow Documentation",
   },
-  pathPrefix: "/docs",
   plugins: [
     {
       resolve: "gatsby-theme-flow",
