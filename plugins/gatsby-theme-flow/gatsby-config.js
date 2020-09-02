@@ -87,9 +87,9 @@ module.exports = ({
     {
       resolve: `gatsby-source-git`,
       options: {
-        name: `cadence`,
-        remote: `https://github.com/onflow/cadence.git`,
-        patterns: `docs/language.md`,
+        name: "cadence",
+        remote: "https://github.com/onflow/cadence.git",
+        patterns: "docs/language.md",
       },
     },
     {
