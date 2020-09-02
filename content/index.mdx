@@ -4,23 +4,23 @@ description: "Welcome to the Flow Developer Portal"
 sidebar: false
 ---
 
-import DocsetMenu from './components/docset-menu';
-import { MenuWrapper, MenuTitle } from './components/menu';
-import WorkoutMenuItem from './components/workout-menu-item';
-import { Link } from 'gatsby';
-import { Button } from 'gatsby-theme-flow/src/ui/Button';
-import { theme } from 'gatsby-theme-flow/src/colors';
-import { ReactComponent as BadmintonPlayer } from './assets/badminton-player.svg';
-import { ReactComponent as Paragliding } from './assets/paragliding.svg';
-import { ReactComponent as Weightlift } from './assets/weightlift.svg';
-import { ReactComponent as Diving } from './assets/diving.svg';
-import { ReactComponent as HeadLight } from './assets/head-light.svg';
+import DocsetMenu from "./components/docset-menu";
+import { MenuWrapper, MenuTitle } from "./components/menu";
+import WorkoutMenuItem from "./components/workout-menu-item";
+import { Link } from "gatsby";
+import { Button } from "gatsby-theme-flow/src/ui/Button";
+import { theme } from "gatsby-theme-flow/src/colors";
+import { ReactComponent as BadmintonPlayer } from "./assets/badminton-player.svg";
+import { ReactComponent as Paragliding } from "./assets/paragliding.svg";
+import { ReactComponent as Weightlift } from "./assets/weightlift.svg";
+import { ReactComponent as Diving } from "./assets/diving.svg";
+import { ReactComponent as HeadLight } from "./assets/head-light.svg";
 
 Before starting your journey on Flow we recommend reading the <a href="https://www.onflow.org/primer">Flow Primer</a> where you will get a quick introduction to how the Flow blockchain works. It will be easier to understand the concepts in these tutorials if you have an idea of how Flow works.
 
 ## Install Flow
 
-To work with Flow locally you'll need to install the <a href="">Flow CLI</a>. 
+To work with Flow locally you'll need to install the <a href="">Flow CLI</a>.
 The Flow CLI is a command-line interface that provides useful utilities for building Flow applications, including the Flow Emulator.
 
 <MenuTitle>OSX & Linux</MenuTitle>
@@ -38,18 +38,16 @@ iex "& { $(irm 'https://storage.googleapis.com/flow-cli/install.ps1') }"
 ---
 
 ## Developer Tools
+
 Flow was deisgned for builders. It's a batteries included patform complete with developer tools you can use to start building right away.
 
 <DocsetMenu />
-<p></p>
-
----
 
 <!-- ## Guides -->
 
-## Cadence Smart Contracts
+<!-- ## Cadence Smart Contracts
 
-Blockchain represents a new paradigm on how scarce resources are being created and managed in the digital world. That is why Flow supports a new smart contract language, Cadence, following a <a href="">resource-oriented</a> paradigm inspired by linear types. 
+Blockchain represents a new paradigm on how scarce resources are being created and managed in the digital world. That is why Flow supports a new smart contract language, Cadence, following a <a href="">resource-oriented</a> paradigm inspired by linear types.
 Cadence allows for a more natural representation of scarce resources and it is designed for developers to build safer smart contracts.
 
 <MenuWrapper>
@@ -59,8 +57,8 @@ Cadence allows for a more natural representation of scarce resources and it is d
   keyWord="Flow"
   otherWords="Playground"
 >
-The Flow Playground includes an in-browser editor and <a href="">Flow emulator</a> to experiment with Flow. 
-<p style="padding-top:1rem"><a href="https://play.onflow.org" target="_blank"><Button color={theme.primary} size="small" >Launch Playground</Button></a></p>
+The Flow Playground includes an in-browser editor and <a href="">Flow emulator</a> to experiment with Flow.
+<p style="padding-top:1rem"><a href="https://play.onflow.org" target="_blank"><Button color={theme.primary} size="small">Launch Playground</Button></a></p>
 </WorkoutMenuItem>
 
 <WorkoutMenuItem
@@ -89,7 +87,7 @@ Cadence is a new GPL with superpowers. The source code is open source on Github.
 <p style="padding-top:1rem"><a href="https://github.com/onflow/cadence" target="_blank"><Button color={theme.primary} size="small" >View Source</Button></a></p>
 </WorkoutMenuItem>
 
-</MenuWrapper>
+</MenuWrapper> -->
 
 <!-- ### Building Applications on Flow
 
@@ -102,7 +100,7 @@ When choosing to build on a blockchain platform like Flow, it's important to con
   keyWord="Hybrid"
   otherWords="Applications"
 >
-Build an application that lets user's manage their own Flow account access using a wallet, but also store some information about individual users in a database, and provide some server-side functionality that interacts with Flow. 
+Build an application that lets user's manage their own Flow account access using a wallet, but also store some information about individual users in a database, and provide some server-side functionality that interacts with Flow.
 <p style="padding-top:1rem"><a href="" target="_blank"><Button color={theme.primary} size="small" >View Guide</Button></a></p>
 
 
