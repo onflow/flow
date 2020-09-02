@@ -2,7 +2,7 @@ import "../prism.less";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 import DocsetSwitcher from "./docset-switcher";
 import Header from "./header";
-import HeaderButton from "./header-button";
+import HeaderNav from "./header-nav";
 import PropTypes from "prop-types";
 import React, { createContext, useMemo, useRef, useState } from "react";
 import Search from "./search";
@@ -165,8 +165,6 @@ export default function PageLayout(props) {
     <span className="title-sidebar">{subtitle || siteName}</span>
   );
 
-  console.log(fields);
-
   return (
     <Layout>
       <Helmet
@@ -209,13 +207,16 @@ export default function PageLayout(props) {
             )}
           </HeaderInner>
           {sidebarContents && (
-            <SidebarNav
-              contents={sidebarContents}
-              pathname={pathname}
-              onToggleAll={handleToggleAll}
-              onToggleCategory={handleToggleCategory}
-              onLinkClick={handleSidebarNavLinkClick}
-            />
+            <NavItemsContext.Provider value={navItems}>
+              <SidebarNav
+                contents={sidebarContents}
+                pathname={pathname}
+                onToggleAll={handleToggleAll}
+                onToggleCategory={handleToggleCategory}
+                onLinkClick={handleSidebarNavLinkClick}
+                alwaysExpanded={props.path?.includes("/tutorial/cadence")}
+              />
+            </NavItemsContext.Provider>
           )}
         </Sidebar>
         <Main>
@@ -231,7 +232,7 @@ export default function PageLayout(props) {
                 indexName={algoliaIndexName}
               />
             )}
-            {/* <HeaderButton /> */}
+            <HeaderNav />
           </Header>
           <SelectedLanguageContext.Provider value={selectedLanguageState}>
             <NavItemsContext.Provider value={navItems}>

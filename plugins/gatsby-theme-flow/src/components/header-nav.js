@@ -32,7 +32,7 @@ const StyledIcon = styled(FaLongArrowAltRight)({
   marginLeft: "0.5em",
 });
 
-export default function HeaderButton() {
+export default function HeaderNav() {
   return (
     <Container>
       <StyledLink

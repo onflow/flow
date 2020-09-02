@@ -10,9 +10,10 @@ import breakpoints from '../utils/breakpoints';
 import {smallCaps} from '../utils/typography';
 import {css} from '@emotion/core';
 import {position, size, transparentize} from 'polished';
+import {IconSearch} from '../ui/icons';
 
 const borderRadius = 5;
-const border = `1px solid ${theme.text3}`;
+const border = `1px solid ${theme.dividerLight}`;
 const verticalAlign = css({
   position: 'absolute',
   top: '50%',
@@ -22,13 +23,15 @@ const verticalAlign = css({
 const Hotkey = styled.div(verticalAlign, size(24), {
   border,
   borderColor: theme.text4,
-  color: theme.text4,
+  color: theme.text3,
   borderRadius,
   textAlign: 'center',
   lineHeight: 1.4,
   fontSize: '0.9em',
   right: 10,
-  pointerEvents: 'none'
+  pointerEvents: 'none',
+  fontWeight: 600,
+  boxShadow: `0 1px 1px 0 #00000021`,
 });
 
 const boxShadowColor = transparentize(0.9, 'black');
@@ -36,6 +39,7 @@ export const boxShadow = `${boxShadowColor} 0 2px 12px`;
 const Container = styled.div({
   flexGrow: 1,
   marginRight: 40,
+  maxWidth: 930,
   color: theme.text2,
   position: 'relative',
   zIndex: 1,
@@ -205,7 +209,8 @@ export default function Search(props) {
           onBlur={onBlur}
           onChange={onChange}
           value={value}
-          placeholder={`Search ${props.siteName}`}
+          icon={<IconSearch/>}
+          placeholder={`Search documentation...`}
         />
         {!focused && !value && <Hotkey>/</Hotkey>}
       </Container>

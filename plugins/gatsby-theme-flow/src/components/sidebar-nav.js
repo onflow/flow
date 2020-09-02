@@ -1,16 +1,18 @@
 import PropTypes from "prop-types";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import styled from "@emotion/styled";
 import {
   IconExpandList,
   IconCollapseList,
   IconExternalLink,
   IconChevronUp,
+  getProjectIcon,
 } from "../ui/icons";
 import { Link, withPrefix } from "gatsby";
 import { theme } from "../colors";
 import { smallCaps } from "../utils/typography";
 import { size } from "polished";
+import { NavItemsContext } from "./page-layout";
 
 const ExpandAll = styled.button(smallCaps, {
   display: "flex",
@@ -71,14 +73,14 @@ const categoryTitleStyles = {
   alignItems: "center",
   justifyContent: "space-between",
   padding: "12px 0",
-  color: theme.text1,
+  color: theme.secondary,
   fontWeight: "bold",
   fontSize: 14,
   lineHeight: "15px",
   ...smallCaps,
   svg: size(10),
   "&.active": {
-    color: theme.primary,
+    color: theme.secondary,
   },
 };
 
@@ -111,6 +113,45 @@ const StyledCheckbox = styled.input({
   },
 });
 
+const StyledLink = styled.a({
+  color: "inherit",
+  textDecoration: "none",
+  ":hover": {
+    color: theme.text3,
+  },
+});
+
+const ProjectIcon = styled.div({
+  backgroundSize: '100%',
+  height: "1.5em",
+  width: "1.5rem",
+  marginRight: "0.42rem",
+});
+
+function ProjectLink(props) {
+  const ProjectLinkContainer = styled.div`
+    display: flex;
+    margin-bottom: 0.8rem;
+
+    ${ProjectIcon} {
+      opacity: 1;
+    }
+
+    &:hover {
+      ${ProjectIcon} {
+        opacity: 0.65;
+      }
+    }
+  `;
+
+  return (
+    <ProjectLinkContainer>
+      <ProjectIcon css={{ backgroundImage: `url(${props.icons.color})` }} />
+      {props.children}
+    </ProjectLinkContainer>
+  );
+};
+
 const StyledOutlinkIcon = styled(IconExternalLink)(size(14), {
   verticalAlign: -1,
   marginLeft: 8,
@@ -122,6 +163,13 @@ function isPageSelected(path, pathname) {
     string.replace(/\/$/, "")
   );
   return a === b;
+}
+
+function showDocsetMenu(path) {
+  const root = path === "/";
+  const docsetPages = ["/concepts"];
+  if (root) return true;
+  return docsetPages.find((p) => path.includes(p));
 }
 
 function NavItems(props) {
@@ -166,6 +214,7 @@ NavItems.propTypes = {
 
 export default function SidebarNav(props) {
   const categoriesRef = useRef();
+  const docset = useContext(NavItemsContext);
 
   const [allExpanded, setAllExpanded] = useState(false);
   const categories = props.contents.filter((content) => content.title);
@@ -203,6 +252,20 @@ export default function SidebarNav(props) {
 
   return (
     <>
+      <>
+        {showDocsetMenu(props.pathname) &&
+          docset
+            .filter((navItem) => {
+              return !navItem.omitLandingPage;
+            })
+            .map((navItem, index) => {
+              return (
+                <ProjectLink key={navItem.url} icons={getProjectIcon(navItem.icon)}>
+                  <StyledLink href={navItem.url}>{navItem.title}</StyledLink>
+                </ProjectLink>
+              )
+            })}
+      </>
       {root && (
         <NavItems
           pages={root.pages}
