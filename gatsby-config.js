@@ -74,8 +74,28 @@ const footerNavConfig = {
   },
 };
 
+// sourceGithubRepos maps a sourceInstanceName to a GitHub repo name
+const sourceGithubRepos = {
+  "docs": {
+    githubRepo: "onflow/flow",
+    // NOTE: path is non-empty, because only content in this path is sourced
+    path: "docs/content"
+  },
+  "cadence": {
+    githubRepo: "onflow/cadence",
+    // NOTE: path is empty, whole repo is sourced
+    path: ""
+  },
+}
+
+// sourceSlugTransformers maps a sourceInstanceName to slug transformation functions
+const sourceSlugTransformers = {
+  "cadence": (slug) => slug.replace(/^\/docs\//, "/cadence/")
+}
+
 const sections = [
   {
+    sourceInstanceName: "docs",
     patterns: [
       "*",
       "intro/*",
@@ -145,17 +165,24 @@ const sections = [
     },
   },
   {
+    sourceInstanceName: "docs",
     patterns: ["sdks/golang/**/*"],
     sidebar: {
       null: ["sdks/golang/index", "sdks/golang/create-account"],
     },
   },
   {
+    sourceInstanceName: "docs",
     patterns: ["sdks/javascript/**/*"],
     sidebar: {
       null: ["sdks/javascript/index", "sdks/javascript/create-account"],
     },
   },
+  {
+    sourceInstanceName: "cadence",
+    patterns: ["docs/**/*"],
+    sidebar: {},
+  }
 ];
 
 module.exports = {
@@ -179,13 +206,11 @@ module.exports = {
         baseUrl: "https://docs.onflow.org",
         twitterUrl: "https://twitter.com/flow_blockchain",
         discordUrl: "https://discord.gg/flow",
-        githubRepo: "onflow/flow",
         logoLink: "/",
-        baseDir: "docs",
-        contentDir: "content",
         root: __dirname,
-        repositories: [{ owner: "onflow", name: "flow-go-sdk" }],
         sections,
+        sourceGithubRepos,
+        sourceSlugTransformers,
       },
     },
   ],
