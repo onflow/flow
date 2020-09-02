@@ -7,7 +7,7 @@ import React, {Fragment} from 'react';
 import rehypeReact from 'rehype-react';
 import styled from '@emotion/styled';
 import ContentWrapper from '../content-wrapper';
-import {Markdown, CustomLinkContext, components} from '../markdown';
+import {Markdown, components} from '../markdown';
 
 const StyledContentWrapper = styled(ContentWrapper)({
   paddingBottom: 0,
@@ -32,7 +32,7 @@ export default function BaseTemplate(props) {
     baseUrl
   } = props.pageContext;
 
-  const allHeadings = headings.concat(props.extraHeadings || []); 
+  const allHeadings = headings.concat(props.extraHeadings || []);
 
   const pages = sidebarContents
     .reduce((acc, {pages}) => acc.concat(pages), [])
@@ -61,19 +61,12 @@ export default function BaseTemplate(props) {
           githubUrl={githubUrl}
           discordUrl={discordUrl}
         >
-          <CustomLinkContext.Provider
-            value={{
-              pathPrefix: site.pathPrefix,
-              baseUrl
-            }}
-          >
-            {file.childMdx ? (
-              <Markdown>{file.childMdx.body}</Markdown>
-            ) : (
-              renderAst(file.childMarkdownRemark.htmlAst)
-            )}
-            {props.children}
-          </CustomLinkContext.Provider>
+          {file.childMdx ? (
+            <Markdown>{file.childMdx.body}</Markdown>
+          ) : (
+            renderAst(file.childMarkdownRemark.htmlAst)
+          )}
+          {props.children}
         </PageContent>
         <Footer />
       </StyledContentWrapper>
