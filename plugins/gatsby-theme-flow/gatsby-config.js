@@ -4,14 +4,42 @@ const remarkTypescript = require("remark-typescript");
 const { theme } = require("./src/colors");
 const { HEADER_HEIGHT } = require("./src/utils");
 
+const getReleases = `
+  query getReleases($owner: String!, $name: String!) {
+    repository(owner: $owner, name: $name) {
+      releases(first: 10, orderBy: { field: CREATED_AT, direction: DESC }) {
+        nodes {
+          name
+          author {
+            avatarUrl
+            url
+            login
+            name
+          }
+          url
+          publishedAt
+          description
+          descriptionHTML
+        }
+      }
+    }
+  }
+`;
+
 module.exports = ({
   root,
   siteName,
   pageTitle,
   description,
+  githubRepo,
+  githubAccessToken,
+  baseDir = "",
+  contentDir = "content",
+  versions = {},
   gaTrackingId,
   ignore,
   checkLinksOptions,
+  repositories,
 }) => {
   const gatsbyRemarkPlugins = [
     {
@@ -92,6 +120,28 @@ module.exports = ({
       },
     },
     "gatsby-plugin-printer",
+    ...Object.entries(versions).map(([name, branch]) => ({
+      resolve: "gatsby-source-git",
+      options: {
+        name,
+        branch,
+        remote: `https://github.com/${githubRepo}`,
+        patterns: [
+          path.join(baseDir, contentDir, "**"),
+          path.join(baseDir, "gatsby-config.js"),
+          path.join(baseDir, "_config.yml"),
+        ],
+      },
+    })),
+    {
+      resolve: 'gatsby-source-github',
+      options: {
+        headers: {
+          Authorization: `Bearer ${githubAccessToken}`,
+        },
+        queries: repositories.map((repository) => [getReleases, repository]),
+      },
+    },
   ];
 
   if (gaTrackingId) {

@@ -5,6 +5,7 @@ import {MDXProvider} from '@mdx-js/react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import {navigate} from 'gatsby';
+import Slugger from 'github-slugger';
 import CodeBlock from './code-block';
 import {theme} from '../colors';
 import {smallCaps} from '../utils/typography';
@@ -120,8 +121,10 @@ export function Markdown({ children }) {
   );
 }
 
-export function RawMarkdown({ children }) {
+export function RawMarkdown({ slugPrefix, children }) {
+  const slugger = new Slugger();
+  const slugify = (str) => `${slugPrefix}-${slugger.slug(str)}`;
   return (
-    <MarkdownToJSX options={{overrides: components}}>{children}</MarkdownToJSX>
+    <MarkdownToJSX options={{ overrides: components, slugify: slugify}}>{children}</MarkdownToJSX>
   );
 }

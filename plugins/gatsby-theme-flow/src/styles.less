@@ -11,6 +11,7 @@ body {
 }
 
 @default-margin: 1.45rem;
+@header-height: 80px;
 
 h1,
 h2,
@@ -48,6 +49,23 @@ h4,
 h6 {
   font-weight: 700;
 }
+
+.content-wrapper {
+  h1::before,
+  h2::before,
+  h3::before,
+  h4::before,
+  h5::before,
+  h6::before { 
+    display: block; 
+    content: " "; 
+    margin-top: -(@header-height+10); 
+    height: @header-height+10; 
+    visibility: hidden; 
+    pointer-events: none;
+  }
+}
+
 
 h1 {
   font-size: 2.5rem;

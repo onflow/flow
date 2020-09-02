@@ -168,7 +168,11 @@ const sections = [
     sourceInstanceName: "docs",
     patterns: ["sdks/golang/**/*"],
     sidebar: {
-      null: ["sdks/golang/index", "sdks/golang/create-account"],
+      null: [
+        "sdks/golang/index", 
+        "sdks/golang/create-account",
+        "sdks/golang/changelog",
+      ],
     },
   },
   {
@@ -208,6 +212,8 @@ module.exports = {
         discordUrl: "https://discord.gg/flow",
         logoLink: "/",
         root: __dirname,
+        githubAccessToken: process.env.GITHUB_ACCESS_TOKEN, // https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+        repositories: [{ owner: 'onflow', name: 'flow-go-sdk' }],
         sections,
         sourceGithubRepos,
         sourceSlugTransformers,
