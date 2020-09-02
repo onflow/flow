@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
 import Search from "../assets/search.svg";
+
 import Cadence from "../assets/cadence.svg";
 import CadenceColor from "../assets/cadence-color.svg";
 import Emulator from "../assets/emulator.svg";

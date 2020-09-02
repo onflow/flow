@@ -31,6 +31,11 @@ module.exports = ({
   siteName,
   pageTitle,
   description,
+  githubRepo,
+  githubAccessToken,
+  baseDir = "",
+  contentDir = "content",
+  versions = {},
   gaTrackingId,
   ignore,
   checkLinksOptions,
@@ -115,6 +120,28 @@ module.exports = ({
       },
     },
     "gatsby-plugin-printer",
+    ...Object.entries(versions).map(([name, branch]) => ({
+      resolve: "gatsby-source-git",
+      options: {
+        name,
+        branch,
+        remote: `https://github.com/${githubRepo}`,
+        patterns: [
+          path.join(baseDir, contentDir, "**"),
+          path.join(baseDir, "gatsby-config.js"),
+          path.join(baseDir, "_config.yml"),
+        ],
+      },
+    })),
+    {
+      resolve: "gatsby-source-github",
+      options: {
+        headers: {
+          Authorization: `Bearer ${githubAccessToken}`,
+        },
+        queries: repositories.map((repository) => [getReleases, repository]),
+      },
+    },
   ];
 
   if (gaTrackingId) {
