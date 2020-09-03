@@ -184,16 +184,45 @@ const sections = [
   },
   {
     sourceInstanceName: "cadence",
-    patterns: ["docs/**/*"],
-    sidebar: {},
-  },
+    patterns: ["docs/language/**/*"],
+    sidebar: {
+      null: [
+        "docs/language/index",
+        "docs/language/syntax",
+        "docs/language/constants-and-variables",
+        "docs/language/type-annotations",
+        "docs/language/values-and-types",
+        "docs/language/operators",
+        "docs/language/functions",
+        "docs/language/control-flow",
+        "docs/language/scope",
+        "docs/language/type-safety",
+        "docs/language/type-inference",
+        "docs/language/composite-types",
+        "docs/language/access-control",
+        "docs/language/interfaces",
+        "docs/language/restricted-types",
+        "docs/language/references",
+        "docs/language/imports",
+        "docs/language/accounts",
+        "docs/language/capability-based-access-control",
+        "docs/language/contracts",
+        "docs/language/events",
+        "docs/language/transactions",
+        "docs/language/run-time-types",
+        "docs/language/built-in-functions",
+        "docs/language/environment-information",
+        "docs/language/crypto",
+        "docs/language/type-hierarchy",
+      ]
+    },
+  }
 ];
 
 module.exports = {
   siteMetadata: {
     title: "Flow Documentation",
   },
-  pathPrefix: "/docs",
   plugins: [
     {
       resolve: "gatsby-theme-flow",

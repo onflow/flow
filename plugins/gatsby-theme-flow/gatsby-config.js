@@ -61,7 +61,6 @@ module.exports = ({
         showLineNumbers: true,
       },
     },
-    "gatsby-remark-rewrite-relative-links",
     {
       resolve: "gatsby-remark-check-links",
       options: checkLinksOptions,
@@ -90,12 +89,13 @@ module.exports = ({
       },
     },
     {
-      resolve: `gatsby-source-git`,
+      resolve: "gatsby-source-git",
       options: {
         name: "cadence",
         remote: "https://github.com/onflow/cadence.git",
-        patterns: "docs/language.md",
-      },
+        branch: "bastian/refactor-docs",
+        patterns: "docs/language/**/*"
+      }
     },
     {
       resolve: "gatsby-source-filesystem",

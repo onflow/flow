@@ -84,10 +84,11 @@ function getPageFromEdge({ node }) {
   return node.childMarkdownRemark || node.childMdx;
 }
 
-function getSidebarContents(sidebarCategories, edges) {
-  return Object.keys(sidebarCategories).map((key) => ({
+function getSidebarContents(section, sourceSlugTransformers, edges) {
+  const { sidebar } = section;
+  return Object.keys(sidebar).map((key) => ({
     title: key === "null" ? null : key,
-    pages: sidebarCategories[key]
+    pages: sidebar[key]
       .map((linkPath) => {
         const match = linkPath.match(/^\[(.+)]\((https?:\/\/.+)\)$/);
         if (match) {
@@ -109,11 +110,12 @@ function getSidebarContents(sidebarCategories, edges) {
         }
 
         const { frontmatter, fields } = getPageFromEdge(edge);
+        const slug = getSlug(fields.slug, sourceSlugTransformers, section);
         return {
           title: frontmatter.title,
           sidebarTitle: fields.sidebarTitle,
           description: frontmatter.description,
-          path: fields.slug,
+          path: slug,
         };
       })
       .filter(Boolean),
@@ -150,6 +152,14 @@ const pageFragment = `
     sidebarTitle
   }
 `;
+
+function getSlug(slug, sourceSlugTransformers, section) {
+  const sourceSlugTransformer = sourceSlugTransformers[section.sourceInstanceName]
+  if (sourceSlugTransformer) {
+    slug = sourceSlugTransformer(slug)
+  }
+  return slug;
+}
 
 async function createPagesForSection(
   actions,
@@ -202,7 +212,7 @@ async function createPagesForSection(
     changelog: require.resolve(`./src/components/templates/changelog`),
   };
 
-  const sidebarContents = getSidebarContents(section.sidebar, pages)
+  const sidebarContents = getSidebarContents(section, sourceSlugTransformers, pages)
 
   const defaultTemplateName = "default";
 
@@ -231,11 +241,7 @@ async function createPagesForSection(
         );
     }
 
-    let slug = fields.slug;
-    const sourceSlugTransformer = sourceSlugTransformers[section.sourceInstanceName]
-    if (sourceSlugTransformer) {
-      slug = sourceSlugTransformer(slug)
-    }
+    let slug = getSlug(fields.slug, sourceSlugTransformers, section);
 
     await actions.createPage({
       path: slug,
