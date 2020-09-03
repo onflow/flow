@@ -1,6 +1,4 @@
-const jsYaml = require("js-yaml");
 const path = require("path");
-const git = require("simple-git")();
 const { createFilePath } = require("gatsby-source-filesystem");
 const { createPrinterNode } = require("gatsby-plugin-printer");
 
