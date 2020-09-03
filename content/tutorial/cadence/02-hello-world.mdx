@@ -65,7 +65,7 @@ A [Transaction](https://docs.onflow.org/docs/glossary#section-transaction) in Fl
 We will start by writing a smart contract that contains a public function that returns `"Hello World!"`.
 
 <Callout type="info">
-  
+
   First, you'll need to follow this link to open a playground session with the
   Hello World contracts, transactions, and scripts pre-loaded: {" "}
   <a
@@ -83,7 +83,7 @@ We will start by writing a smart contract that contains a public function that r
 
 </Callout>
 
-```swift:title=HelloWorld.cdc
+```cadence:title=HelloWorld.cdc
 pub contract HelloWorld {
 
     // Declare a public field of type String.
@@ -145,7 +145,7 @@ You'll also see the name of the contract show up in the selected account tab und
 
 </Callout>
 
-```swift:title=Transaction1.cdc
+```cadence:title=Transaction1.cdc
 import HelloWorld from 0x01
 
 transaction {
@@ -168,7 +168,7 @@ To interact with a smart contract, the transaction first needs to import that sm
 
 To import a smart contract from another account, you type the line:
 
-```swift
+```cadence
 import {Contract Name} from {Address}
 ```
 
@@ -213,7 +213,7 @@ Next, we are going to get some practice with an example that uses **[resources](
 
 </Callout>
 
-```swift:title=HelloWorldResource.cdc
+```cadence:title=HelloWorldResource.cdc
 pub contract HelloWorld {
 
   // Declare a resource that only includes one function.
@@ -253,7 +253,7 @@ This is another example of what we can do with a contract. Cadence can declare t
 
 Let's walk through this contract:
 
-```swift
+```cadence
 pub resource HelloAsset {
     pub fun hello(): String {
         return "Hello, World!"
@@ -265,7 +265,7 @@ Resources are a composite type similar to a struct or a class because they can h
 
 Structs from other conventional programming languages are not an ideal way to represent this ownership because they can be copied. This means a coding error can easily result in creating multiple copies of the same asset, which breaks the scarcity requirements needed for these assets to have real value. We have to consider loss and theft at the scale of a house, a car, or a bank account with millions of dollars, or a horse. Resources, in turn, solve this problem by making creation, destruction, and movement of assets explicit.
 
-```swift
+```cadence
 init() {
 // ...
 ```
@@ -276,7 +276,7 @@ Contracts also have read and write access to the storage of the account that the
 
 In this contract's `init` function, the contract uses the `create` keyword to create an instance of the `HelloAsset` type and saves it to a local variable. To create a new resource object, we use the `create` keyword followed by an invocation of the name of the resource with any `init()` arguments. A resource can only be created in the scope that it is defined in. This prevents anyone from being able to create arbitrary amounts of resource objects that others have defined.
 
-```swift
+```cadence
 let newHello <- create HelloAsset()
 ```
 
@@ -291,7 +291,7 @@ When a resource is moved, the old location is invalidated, and the object moves 
 
 Then it uses the `AuthAccount.save` function to store it in the account storage.
 
-```swift
+```cadence
 self.account.save(<-newHello, to: /storage/Hello)
 ```
 
@@ -322,7 +322,7 @@ Now that you have stored a resource in an account, you should see that resource 
 
 </Callout>
 
-```swift:title=Transaction2.cdc
+```cadence:title=Transaction2.cdc
 import HelloWorld from 0x02
 
 // This transaction calls the "hello" method on the HelloAsset object
@@ -353,7 +353,7 @@ This transaction imports the `HelloWorld` definitions from the account we just d
 
 To remove an object from storage, we use the `load` method.
 
-```swift
+```cadence
 let helloResource <- acct.load<@HelloWorld.HelloAsset>(from: /storage/Hello)
 ```
 
@@ -365,13 +365,13 @@ The path `from` must be a storage path, i.e., only the domain storage is allowed
 
 Next, we call the `hello` function and log the output.
 
-```swift
+```cadence
 log(helloResource?.hello())
 ```
 
 We use `?` because the values in the storage are returned as [optionals](https://onflow.readme.io/docs/glossary#section-optionals-in-cadence). Optionals are values that can represent the absence of a value. Optionals have two cases: either there is a value of the specified type, or there is nothing (`nil`). An optional type is declared using the `?` suffix.
 
-```swift
+```cadence
 let newResource: HelloAsset?  // could either have a value of type `HelloAsset`
                               // or it could have a value of `nil`
 ```
@@ -380,7 +380,7 @@ Optionals allow developers to account for `nil` cases more gracefully. Here, we 
 
 Next, we use `save` again to put the object back in storage in the same spot:
 
-```swift
+```cadence
 acct.save(<-helloResource!, to: /storage/Hello)
 ```
 
@@ -415,7 +415,7 @@ In this example, we create a link and reference to your `HelloAsset` resource ob
 
 </Callout>
 
-```swift:title=Transaction3.cdc
+```cadence:title=Transaction3.cdc
 import HelloWorld from 0x02
 
 // This transaction creates a new capability
@@ -464,7 +464,7 @@ Let's break down what is happening in this transaction.
 
 First, we create a capability that is linked to the private `HelloAsset` object in `/storage/`:
 
-```swift
+```cadence
 let capability = account.link<&HelloWorld.HelloAsset>(/public/Hello, target: /storage/Hello)
 ```
 
@@ -476,7 +476,7 @@ To create a capability, we use the `AuthAccount.link` method to link a new capab
 
 To get a reference to an object from the capability, we use the capability's `borrow` method.
 
-```swift
+```cadence
 let helloReference = capability!.borrow()
 ```
 
@@ -491,7 +491,7 @@ Now, anyone can call the `hello()` method on your `HelloAsset` object by borrowi
 
 Lastly, we call the `hello()` method with our borrowed reference:
 
-```swift
+```cadence
 // Call the hello function using the reference to the HelloAsset resource
 log(helloReference?.hello())
 ```
@@ -505,14 +505,14 @@ A [script](https://onflow.readme.io/docs/glossary#section-script) is a very simp
 To execute a script, you write a function called `pub fun main()`. You can click the execute script button to run the script. The result of the script will be printed to the console output.
 
 <Callout type="info">
-  
+
   Open the file `Script1.cdc`.
-  
+
 </Callout>
 
 `Script1.cdc` should look like the following:
 
-```swift:title=Script1.cdc
+```cadence:title=Script1.cdc
 import HelloWorld from 0x02
 
 pub fun main() {
@@ -538,7 +538,7 @@ pub fun main() {
 
 This script fetches the `PublicAccount` object with `getAccount`.
 
-```swift
+```cadence
 let helloAccount = getAccount(0x02)
 ```
 
@@ -546,7 +546,7 @@ The `PublicAccount` object is available to anyone in the network for every accou
 
 Then, it gets the capability that was created in `Transaction3.cdc`.
 
-```swift
+```cadence
 // Get the public capability from the public path of the owner's account
 let helloCapability = helloAccount.getCapability(/public/Hello)
 ```
@@ -555,7 +555,7 @@ To get a capability that is stored in an account, we use the `account.getCapabil
 
 After that, the script borrows a reference from the capability, specifying `&HelloWorld.HelloAsset` as the reference type to borrow as.
 
-```swift
+```cadence
 let helloReference = helloCapability!.borrow<&HelloWorld.HelloAsset>()
 ```
 
@@ -596,7 +596,7 @@ In the playground, you can select accounts to edit the contracts that are deploy
 
 Once a contract has been deployed, you can submit transactions to interact with it. In the transactions selection section on the left side of the screen, you can select different transactions to edit and send. While a transaction is open, you can select one or more accounts to sign a transaction. This is because in Flow, multiple accounts can sign the same transaction, giving the access to their private storage. If multiple accounts are selected as signers, this needs to be reflected in the signature of the transaction to show multiple signers:
 
-```swift
+```cadence
 // One signer
 
 transaction {
