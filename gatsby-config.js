@@ -188,6 +188,7 @@ const sections = [
         "docs/language/constants-and-variables",
         "docs/language/type-annotations",
         "docs/language/values-and-types",
+        "docs/language/operators",
         "docs/language/functions",
         "docs/language/control-flow",
         "docs/language/scope",
