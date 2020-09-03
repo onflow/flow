@@ -1,26 +1,23 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import {
-  FaChevronUp,
-  FaChevronDown
-} from 'react-icons/fa';
+import React from "react";
+import styled from "@emotion/styled";
+import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
-import Search from '../assets/search.svg';
+import Search from "../assets/search.svg";
 
-import Cadence from '../assets/cadence.svg';
-import CadenceColor from '../assets/cadence-color.svg';
-import Emulator from '../assets/emulator.svg';
-import EmulatorColor from '../assets/emulator-color.svg';
-import CLI from '../assets/cli.svg';
-import CLIColor from '../assets/cli-color.svg';
-import Playground from '../assets/playground.svg';
-import PlaygroundColor from '../assets/playground-color.svg';
-import GoSDK from '../assets/go.svg';
-import GoSDKColor from '../assets/go-color.svg';
-import JSSDK from '../assets/js.svg';
-import JSSDKColor from '../assets/js-color.svg';
-import VSCode from '../assets/vscode.svg';
-import VSCodeColor from '../assets/vscode-color.svg';
+import Cadence from "../assets/cadence.svg";
+import CadenceColor from "../assets/cadence-color.svg";
+import Emulator from "../assets/emulator.svg";
+import EmulatorColor from "../assets/emulator-color.svg";
+import CLI from "../assets/cli.svg";
+import CLIColor from "../assets/cli-color.svg";
+import Playground from "../assets/playground.svg";
+import PlaygroundColor from "../assets/playground-color.svg";
+import GoSDK from "../assets/go.svg";
+import GoSDKColor from "../assets/go-color.svg";
+import JSSDK from "../assets/js.svg";
+import JSSDKColor from "../assets/js-color.svg";
+import VSCode from "../assets/vscode.svg";
+import VSCodeColor from "../assets/vscode-color.svg";
 
 export {
   FaArrowDown as IconArrowDown,
@@ -29,7 +26,7 @@ export {
   FaBars as IconMenu,
   FaCaretSquareDown as IconMenuSelector,
   FaCheck as IconCheck,
-  FaChevronDown as IconChevronDown, 
+  FaChevronDown as IconChevronDown,
   FaChevronUp as IconChevronUp,
   FaDiscord as IconDiscord,
   FaExclamationTriangle as IconWarningSolid,
@@ -39,23 +36,21 @@ export {
   FaInfoCircle as IconInfoSolid,
   FaTwitter as IconTwitter,
   FaUmbrellaBeach as IconPlayground,
-} from 'react-icons/fa';
+} from "react-icons/fa";
 
 const SVGIconContainer = styled.img({
-  height: '1em',
+  height: "1em",
 });
 
 function wrapSVGIcon(icon) {
-  return () => (
-    <SVGIconContainer src={icon} />
-  )
-};
+  return () => <SVGIconContainer src={icon} />;
+}
 
 export const IconSearch = wrapSVGIcon(Search);
 
 const StackedIconContainer = styled.div({
-  display: 'flex',
-  flexDirection: 'column',
+  display: "flex",
+  flexDirection: "column",
   height: "1rem",
 });
 
@@ -65,8 +60,8 @@ export function IconExpandList() {
       <FaChevronUp />
       <FaChevronDown />
     </StackedIconContainer>
-  )
-};
+  );
+}
 
 export function IconCollapseList() {
   return (
@@ -74,35 +69,35 @@ export function IconCollapseList() {
       <FaChevronDown />
       <FaChevronUp />
     </StackedIconContainer>
-  )
-};
+  );
+}
 
 const projectIcons = {
-  'cadence': {
+  cadence: {
     default: Cadence,
     color: CadenceColor,
   },
-  'emulator': {
+  emulator: {
     default: Emulator,
     color: EmulatorColor,
   },
-  'cli': {
+  cli: {
     default: CLI,
     color: CLIColor,
   },
-  'playground': {
+  playground: {
     default: Playground,
     color: PlaygroundColor,
   },
-  'go-sdk': {
+  "go-sdk": {
     default: GoSDK,
     color: GoSDKColor,
   },
-  'js-sdk': {
+  "js-sdk": {
     default: JSSDK,
     color: JSSDKColor,
   },
-  'vscode': {
+  vscode: {
     default: VSCode,
     color: VSCodeColor,
   },
@@ -110,4 +105,4 @@ const projectIcons = {
 
 export function getProjectIcon(name) {
   return projectIcons[name];
-};
+}

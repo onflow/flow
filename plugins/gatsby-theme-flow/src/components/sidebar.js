@@ -1,10 +1,10 @@
-import Logo from './logo';
-import PropTypes from 'prop-types';
-import React, {Fragment} from 'react';
-import styled from '@emotion/styled';
-import {theme} from '../colors';
-import breakpoints from '../utils/breakpoints';
-import {transparentize} from 'polished';
+import Logo from "./logo";
+import PropTypes from "prop-types";
+import React, { Fragment } from "react";
+import styled from "@emotion/styled";
+import { theme } from "../colors";
+import breakpoints from "../utils/breakpoints";
+import { transparentize } from "polished";
 
 const Container = styled.aside({
   flexShrink: 0,
