@@ -10,7 +10,7 @@ In this tutorial, we're going to create a marketplace that uses both the fungibl
 ---
 
 <Callout type="success">
-  
+
 Open the starter code for this tutorial in the Flow Playground: <a href="https://play.onflow.org/5a5f4fdf-f499-47a4-aef7-f01713e61fde" target="_blank">https://play.onflow.org/5a5f4fdf-f499-47a4-aef7-f01713e61fde</a><br/>
 The tutorial will be asking you to take various actions to interact with this code.
 
@@ -61,7 +61,7 @@ You can run the `CheckSetupScript.cdc` script to ensure that your accounts are c
 
 </Callout>
 
-```swift:title=CheckSetupScript.cdc
+```cadence:title=CheckSetupScript.cdc
 import FungibleToken from 0x01
 import NonFungibleToken from 0x02
 
@@ -143,10 +143,10 @@ Every user who wants to sell a NFT will store an instance of a `SaleCollection` 
 
 Switch to account `0x03`.\nOpen `Marketplace.cdc`<br/>
 With `Marketplace.cdc` open, click the `Deploy` button that appears at the bottom right of the editor\n`Marketplace.cdc` should contain the following contract definition:
-  
+
 </Callout>
 
-```swift:title=Marketplace.cdc
+```cadence:title=Marketplace.cdc
 import FungibleToken from 0x01
 import NonFungibleToken from 0x02
 
@@ -284,7 +284,7 @@ This marketplace contract has resources that function similarly to the NFT `Coll
   The owner of the sale saves a reference to their Fungible Token `Receiver` within the sale. This allows the sale resource to be able to immediately deposit the currency that was used to buy the NFT into the owners `Vault` when a purchase is made.
 - This marketplace contract includes events. Cadence supports defining events within contracts that can be emitted when important actions happen.
 
-```swift
+```cadence
 pub event ForSale(id: UInt64, price: UFix64)
 pub event PriceChanged(id: UInt64, newPrice: UFix64)
 pub event TokenPurchased(id: UInt64, price: UFix64)
@@ -299,12 +299,12 @@ You can create a `SaleCollection` and list account `0x01`'s token for sale by fo
 
 <Callout type="info">
 
-Open `Transaction1.cdc` <br/> 
+Open `Transaction1.cdc` <br/>
 Select account `0x01` as the only signer and click the `Send` button to submit the transaction.
 
 </Callout>
 
-```swift:title=Transaction1.cdc
+```cadence:title=Transaction1.cdc
 import FungibleToken from 0x01
 import NonFungibleToken from 0x02
 import Marketplace from 0x03
@@ -320,7 +320,7 @@ transaction {
     let receiver = acct.borrow<&{FungibleToken.Receiver}>(from: /storage/MainVault)
             ?? panic("Could not borrow a reference to the owner's vault")
 
-    // Create a new Sale object, 
+    // Create a new Sale object,
     // initializing it with the reference to the owner's vault
     let sale <- Marketplace.createSaleCollection(ownerVault: receiver)
 
@@ -335,7 +335,7 @@ transaction {
     // List the token for sale by moving it into the sale object
     sale.listForSale(token: <-token, price: UFix64(10))
 
-    // Store the sale object in the account storage 
+    // Store the sale object in the account storage
     acct.save<@Marketplace.SaleCollection>(<-sale, to: /storage/NFTSale)
 
     // Create a public capability to the sale so that others can call its methods
@@ -363,7 +363,7 @@ Click the `Execute` button to print the ID and price of the NFT that account `0x
 
 </Callout>
 
-```swift:title=Script2.cdc
+```cadence:title=Script2.cdc
 import FungibleToken from 0x01
 import NonFungibleToken from 0x02
 import Marketplace from 0x03
@@ -408,7 +408,7 @@ Select account `0x02` as the only signer and click the `Send` button.
 
 </Callout>
 
-```swift:title=Transaction2.cdc
+```cadence:title=Transaction2.cdc
 import FungibleToken from 0x01
 import NonFungibleToken from 0x02
 import Marketplace from 0x03
@@ -427,7 +427,7 @@ transaction {
 
   prepare(acct: AuthAccount) {
 
-    // get the references to the buyer's fungible token Vault 
+    // get the references to the buyer's fungible token Vault
     // and NFT Collection Receiver
     self.collectionRef = acct.borrow<&AnyResource{NonFungibleToken.NFTReceiver}>
                                                         (from: /storage/NFTCollection)
@@ -450,8 +450,8 @@ transaction {
 
     // purchase the NFT the the seller is selling, giving them the reference
     // to your NFT collection and giving them the tokens to buy it
-    saleRef.purchase(tokenID: 1, 
-                     recipient: self.collectionRef, 
+    saleRef.purchase(tokenID: 1,
+                     recipient: self.collectionRef,
                      buyTokens: <-self.temporaryVault)
 
     log("Token 1 has been bought by account 2!")
@@ -484,7 +484,7 @@ To run a script that verifies the NFT was purchased correctly, follow these step
   Click `Execute` button\n`Script3.cdc` should contain the following code:
 </Callout>
 
-```swift:title=Script3.cdc
+```cadence:title=Script3.cdc
 import FungibleToken from 0x01
 import NonFungibleToken from 0x02
 import Marketplace from 0x03
@@ -519,8 +519,8 @@ pub fun main() {
   log(acct2ReceiverRef.balance)
 
   // verify that the balances are correct
-  if acct1ReceiverRef.balance != UFix64(50) 
-     || acct2ReceiverRef.balance != UFix64(10) 
+  if acct1ReceiverRef.balance != UFix64(50)
+     || acct2ReceiverRef.balance != UFix64(10)
   {
       panic("Wrong balances!")
   }
@@ -581,7 +581,7 @@ Congratulations, you have successfully implemented a simple marketplace in Caden
 
 A user can hold a sale in their account with these resources and transactions. Support for a central marketplace where users can discover sales is relatively easy to implement and can build on what we already have. If we wanted to build a central marketplace on-chain, we could use a contract that looks something like this:
 
-```swift:title=CentralMarketplace.cdc
+```cadence:title=CentralMarketplace.cdc
 // Marketplace would be the central contract where people can post their sale
 // references so that anyone can access them
 pub contract Marketplace {
