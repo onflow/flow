@@ -51,12 +51,10 @@ h6 {
 }
 
 .content-wrapper {
+  // Extra padding is added to H1, H2 tags to offset the fixed header.
+  // This allows the headings to be visible when clicking on anchor links.
   h1::before,
-  h2::before,
-  h3::before,
-  h4::before,
-  h5::before,
-  h6::before { 
+  h2::before { 
     display: block; 
     content: " "; 
     margin-top: -(@header-height+10); 
