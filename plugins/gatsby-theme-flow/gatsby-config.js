@@ -33,7 +33,6 @@ module.exports = ({
         showLineNumbers: true,
       },
     },
-    "gatsby-remark-rewrite-relative-links",
     {
       resolve: "gatsby-remark-check-links",
       options: checkLinksOptions,
