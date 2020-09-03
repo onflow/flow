@@ -2,7 +2,7 @@ import "../prism.less";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 import DocsetSwitcher from "./docset-switcher";
 import Header from "./header";
-import HeaderButton from "./header-button";
+import HeaderNav from "./header-nav";
 import PropTypes from "prop-types";
 import React, { createContext, useMemo, useRef, useState } from "react";
 import Search from "./search";
@@ -19,11 +19,9 @@ import SidebarNav from "./sidebar-nav";
 import { useResponsiveSidebar } from "./responsive-sidebar";
 import { Helmet } from "react-helmet";
 import { IconMenuSelector } from "../ui/icons";
-import { Link, graphql, navigate, useStaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import { MobileLogo } from "./mobile-logo";
-import { Select } from "./select";
 import { SelectedLanguageContext } from "./multi-code-block";
-import { getVersionBasePath } from "../utils";
 import { size } from "polished";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
@@ -79,10 +77,6 @@ const Eyebrow = styled.div({
     padding: "8px 24px",
   },
 });
-
-function getVersionLabel(version) {
-  return `v${version}`;
-}
 
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
 
@@ -144,10 +138,6 @@ export default function PageLayout(props) {
   const {
     subtitle,
     sidebarContents,
-    versions,
-    versionDifference,
-    versionBasePath,
-    defaultVersion,
     fields,
   } = props.pageContext;
   const {
@@ -174,8 +164,6 @@ export default function PageLayout(props) {
   const sidebarTitle = (
     <span className="title-sidebar">{subtitle || siteName}</span>
   );
-
-  console.log(fields);
 
   return (
     <Layout>
@@ -217,35 +205,18 @@ export default function PageLayout(props) {
             ) : (
               sidebarTitle
             )}
-            {versions && versions.length > 0 && (
-              <Select
-                feel="flat"
-                size="small"
-                value={versionDifference ? versionBasePath : "/"}
-                onChange={navigate}
-                style={{ marginLeft: 8 }}
-                options={versions.reduce(
-                  (acc, version) => ({
-                    ...acc,
-                    [getVersionBasePath(version)]: getVersionLabel(version),
-                  }),
-                  {
-                    "/": defaultVersion
-                      ? getVersionLabel(defaultVersion)
-                      : "Latest",
-                  }
-                )}
-              />
-            )}
           </HeaderInner>
           {sidebarContents && (
-            <SidebarNav
-              contents={sidebarContents}
-              pathname={pathname}
-              onToggleAll={handleToggleAll}
-              onToggleCategory={handleToggleCategory}
-              onLinkClick={handleSidebarNavLinkClick}
-            />
+            <NavItemsContext.Provider value={navItems}>
+              <SidebarNav
+                contents={sidebarContents}
+                pathname={pathname}
+                onToggleAll={handleToggleAll}
+                onToggleCategory={handleToggleCategory}
+                onLinkClick={handleSidebarNavLinkClick}
+                alwaysExpanded={props.path?.includes("/tutorial/cadence")}
+              />
+            </NavItemsContext.Provider>
           )}
         </Sidebar>
         <Main>
@@ -261,7 +232,7 @@ export default function PageLayout(props) {
                 indexName={algoliaIndexName}
               />
             )}
-            {/* <HeaderButton /> */}
+            <HeaderNav />
           </Header>
           <SelectedLanguageContext.Provider value={selectedLanguageState}>
             <NavItemsContext.Provider value={navItems}>

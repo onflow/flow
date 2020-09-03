@@ -4,19 +4,42 @@ const remarkTypescript = require("remark-typescript");
 const { theme } = require("./src/colors");
 const { HEADER_HEIGHT } = require("./src/utils");
 
+const getReleases = `
+  query getReleases($owner: String!, $name: String!) {
+    repository(owner: $owner, name: $name) {
+      releases(first: 10, orderBy: { field: CREATED_AT, direction: DESC }) {
+        nodes {
+          name
+          author {
+            avatarUrl
+            url
+            login
+            name
+          }
+          url
+          publishedAt
+          description
+          descriptionHTML
+        }
+      }
+    }
+  }
+`;
+
 module.exports = ({
   root,
   siteName,
   pageTitle,
   description,
   githubRepo,
+  githubAccessToken,
   baseDir = "",
   contentDir = "content",
-  sections,
   versions = {},
   gaTrackingId,
   ignore,
   checkLinksOptions,
+  repositories,
 }) => {
   const gatsbyRemarkPlugins = [
     {
@@ -33,12 +56,15 @@ module.exports = ({
     },
     "gatsby-remark-code-titles",
     {
-      resolve: "gatsby-remark-prismjs",
+      resolve: "gatsby-remark-vscode-flow",
       options: {
-        showLineNumbers: true,
+        languageScopes: {'cadence': 'source.cadence'},
+        grammarPaths: [
+          path.resolve('..', 'vscode-flow', 'syntaxes', 'cadence.tmGrammar.json')
+        ],
+        themePath: path.resolve(__dirname, 'light_vs.json'),
       },
     },
-    "gatsby-remark-rewrite-relative-links",
     {
       resolve: "gatsby-remark-check-links",
       options: checkLinksOptions,
@@ -49,23 +75,6 @@ module.exports = ({
     "gatsby-plugin-svgr",
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
-    {
-      resolve: "gatsby-source-git-remotes",
-      options: {
-        repos: [
-          // {
-          //   name: "cadence",
-          //   remote: "https://github.com/onflow/cadence.git",
-          //   patterns: ["docs/**/*.md"],
-          // },
-          // {
-          //   name: "flow-go",
-          //   remote: "https://github.com/dapperlabs/flow-cli",
-          //   patterns: ["README.md"],
-          // },
-        ],
-      },
-    },
     {
       resolve: "gatsby-plugin-less",
       options: {
@@ -78,10 +87,19 @@ module.exports = ({
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: path.join(root, contentDir),
+        path: path.join(root, "content"),
         name: "docs",
         ignore,
       },
+    },
+    {
+      resolve: "gatsby-source-git",
+      options: {
+        name: "cadence",
+        remote: "https://github.com/onflow/cadence.git",
+        branch: "bastian/refactor-docs",
+        patterns: "docs/language/**/*"
+      }
     },
     {
       resolve: "gatsby-source-filesystem",
@@ -119,6 +137,15 @@ module.exports = ({
         ],
       },
     })),
+    {
+      resolve: "gatsby-source-github",
+      options: {
+        headers: {
+          Authorization: `Bearer ${githubAccessToken}`,
+        },
+        queries: repositories.map((repository) => [getReleases, repository]),
+      },
+    },
   ];
 
   if (gaTrackingId) {

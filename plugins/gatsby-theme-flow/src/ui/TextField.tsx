@@ -2,7 +2,7 @@
 import { ClassNames, jsx } from "@emotion/core";
 import React from "react";
 import * as typography from "./typography";
-import { colors } from "../colors";
+import { colors, theme } from "../colors";
 import { IconWarningSolid, IconInfoSolid } from "./icons";
 import classnames from "classnames";
 
@@ -144,7 +144,7 @@ export const TextField: React.FC<Props> = ({
           css({
             backgroundColor: disabled ? colors.silver.light : colors.white,
             border: "solid 1px",
-            borderColor: error ? colors.red.base : colors.silver.darker,
+            borderColor: error ? colors.red.base : theme.dividerLight,
             "::placeholder": {
               color: disabled ? colors.grey.lighter : colors.grey.light,
               opacity: 1,
@@ -155,8 +155,8 @@ export const TextField: React.FC<Props> = ({
             ...(size === "small"
               ? typography.base.small
               : typography.base.base),
-            marginRight: icon ? -30 : 0,
-            paddingLeft: icon ? 34 : size === "small" ? 8 : 12,
+            marginRight: icon ? -32 : 0,
+            paddingLeft: icon ? 40 : size === "small" ? 8 : 12,
             paddingRight: size === "small" ? 8 : 12,
             width: "100%",
             ":hover,  &[data-force-hover-state]": {
@@ -212,6 +212,7 @@ export const TextField: React.FC<Props> = ({
                 <div
                   css={{
                     position: "absolute",
+                    zIndex: 1,
                     display: "inline-flex",
                     left: 12,
                     top: "50%",

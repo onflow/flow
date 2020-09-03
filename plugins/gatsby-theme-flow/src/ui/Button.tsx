@@ -5,7 +5,7 @@ import { ClassNames } from "@emotion/core";
 import tinycolor from "tinycolor2";
 import React from "react";
 import classnames from "classnames";
-import { ShadedColor, getOffsetInPalette } from './utils/colors';
+import { ShadedColor, getOffsetInPalette } from "./utils/colors";
 
 // @see https://www.typescriptlang.org/docs/handbook/advanced-types.html#exhaustiveness-checking
 /* istanbul ignore next */
