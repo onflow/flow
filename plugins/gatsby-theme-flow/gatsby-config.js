@@ -56,9 +56,13 @@ module.exports = ({
     },
     "gatsby-remark-code-titles",
     {
-      resolve: "gatsby-remark-prismjs",
+      resolve: "gatsby-remark-vscode-flow",
       options: {
-        showLineNumbers: true,
+        languageScopes: {'cadence': 'source.cadence'},
+        grammarPaths: [
+          path.resolve('..', 'vscode-flow', 'syntaxes', 'cadence.tmGrammar.json')
+        ],
+        themePath: path.resolve(__dirname, 'light_vs.json'),
       },
     },
     {

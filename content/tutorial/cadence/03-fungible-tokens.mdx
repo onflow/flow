@@ -130,7 +130,7 @@ This approach also helps protect against potential bugs. In a Solidity contract 
 
 Below is an example of a resource for a fungible token vault. Every user who owns these tokens would have this resource stored in their account. It is important to remember that each account stores only a copy of the `Vault` resource, and not a copy of the entire `FungibleToken` contract. The `FungibleToken` contract only needs to be stored in the initial account that manages the token definitions.
 
-```swift:title=Token.cdc
+```cadence:title=Token.cdc
 pub resource Vault: Provider, Receiver {
 
     // Balance of a user's Vault
@@ -156,7 +156,7 @@ pub resource Vault: Provider, Receiver {
 
 This piece of code is for educational purposes and is not comprehensive. However, it still showcases how a resource for a token works. Each token resource object has a balance and associated functions (e.g., `deposit`, `withdraw`, etc). When a user wants to use these tokens, they instantiate a zero-balance copy of this resource in their account storage. The language requires that the initialization function `init`, which is only run once, must initialize all member variables.
 
-```swift
+```cadence
 // Balance of a user's Vault
 // we use unsigned fixed-point integers for balances because they do not require the
 // concept of a negative number and allow for more clear precision
@@ -169,7 +169,7 @@ init(balance: UFix64) {
 
 Then, the deposit function can be available for any account to transfer tokens to.
 
-```swift
+```cadence
 pub fun deposit(from: @Vault) {
     self.balance = self.balance + from.balance
     destroy from
@@ -180,7 +180,7 @@ When an account wants to send tokens to a different account, the sending account
 
 When interacting with resources, you will use the `@` symbol and a special “move operator” `<-`.
 
-```swift
+```cadence
 pub fun withdraw(amount: UInt64): @Vault {
 ```
 
@@ -188,7 +188,7 @@ This `@` symbol is required when specifying a resource type for a field, an argu
 
 If a resource is moved out of an account's storage, it either needs to be moved to an account’s storage or explicitly destroyed.
 
-```swift
+```cadence
 destroy from
 ```
 
@@ -196,7 +196,7 @@ This line ensures that resources, which often represent real value, do not get l
 
 You’ll notice that the arithmetic operations aren't explicitly protected.
 
-```swift
+```cadence
 self.balance = self.balance - amount
 ```
 
@@ -206,7 +206,7 @@ Additionally, the requirement that an account contains a copy of the token’s r
 
 The line in `withdraw` that creates a new `Vault` has the parameter name `balance` specified in the function call.
 
-```swift
+```cadence
 return <-create Vault(balance: amount)
 ```
 
@@ -232,7 +232,7 @@ The next important concept in Cadence is design-by-contract, which uses precondi
 
 Here is an example of how interfaces for the `Vault` resource we defined above would look.
 
-```swift:title=Interfaces.cdc
+```cadence:title=Interfaces.cdc
 // Interface that enforces the requirements for withdrawing
 // tokens from the implementing type
 //
@@ -274,7 +274,7 @@ open and should see the code below.
 
 </Callout>
 
-```swift:title=FungibleToken.cdc
+```cadence:title=FungibleToken.cdc
 pub contract FungibleToken {
 
     // Total supply of all tokens in existence.
@@ -467,7 +467,7 @@ This deployment stores the contract for the fungible token in your active accoun
 
 A contract's `init` function runs at contract creation, and never again afterwards. In our example, this function stores an instance of the `Vault` object with an initial balance of 30, and stores the `VaultMinter` object that you can use to mint new tokens.
 
-```swift
+```cadence
 // create the Vault with the initial balance and put it in storage
 // account.save saves an object to the specified `to` path
 // The path is a literal path that consists of a domain and identifier
@@ -489,7 +489,7 @@ In this line, we call the `save` method to store an object in storage, specifyin
 
 We also store the `VaultMinter` object to `/storage/` in the next line in the same way:
 
-```swift
+```cadence
 self.account.save(<-create VaultMinter(), to: /storage/MainMinter)
 ```
 
@@ -505,7 +505,7 @@ References are like pointers in other languages. They are a link to an object in
 
 There are many different situations in which you would create a reference to your fungible token vault. You might want a simple way to call methods on your `Vault` from anywhere in a transaction. You could also send a resource that only includes a reference to the withdraw function in the `Vault` so that others can transfer tokens for you. There could also be a function that takes a reference to a `Vault` as an argument, makes a single function call on the reference, then finishes and destroys the reference. This scenario will probably be where references are most often used. We already use this pattern in the `Vault` resource in the `mintTokens` function, shown here:
 
-```swift
+```cadence
 // Function that mints new tokens and deposits into an account's vault
 // using their `Receiver` reference.
 // We say `&AnyResource{Receiver}` to say that the recipient can be any resource
@@ -528,14 +528,14 @@ Open the transaction named `Transaction1.cdc`. <br/>
 </Callout>
 
 
-```swift:title=FungibleToken.cdc
+```cadence:title=FungibleToken.cdc
 pub contract FungibleToken {
 
     // Total supply of all tokens in existence.
     pub var totalSupply: UFix64
 
     // Provider
-    // 
+    //
     // Interface that enforces the requirements for withdrawing
     // tokens from the implementing type.
     //
@@ -565,7 +565,7 @@ pub contract FungibleToken {
         }
     }
 
-    // Receiver 
+    // Receiver
     //
     // Interface that enforces the requirements for depositing
     // tokens into the implementing type.
@@ -578,7 +578,7 @@ pub contract FungibleToken {
     pub resource interface Receiver {
         // deposit
         //
-        // Function that can be called to deposit tokens 
+        // Function that can be called to deposit tokens
         // into the implementing resource type
         //
         pub fun deposit(from: @Vault) {
@@ -601,16 +601,16 @@ pub contract FungibleToken {
     //
     // Each user stores an instance of only the Vault in their storage
     // The functions in the Vault and governed by the pre and post conditions
-    // in the interfaces when they are called. 
+    // in the interfaces when they are called.
     // The checks happen at runtime whenever a function is called.
     //
     // Resources can only be created in the context of the contract that they
     // are defined in, so there is no way for a malicious user to create Vaults
     // out of thin air. A special Minter resource needs to be defined to mint
     // new tokens.
-    // 
+    //
     pub resource Vault: Provider, Receiver, Balance {
-        
+
         // keeps track of the total balance of the account's tokens
         pub var balance: UFix64
 
@@ -633,7 +633,7 @@ pub contract FungibleToken {
             self.balance = self.balance - amount
             return <-create Vault(balance: amount)
         }
-        
+
         // deposit
         //
         // Function that takes a Vault object as an argument and adds
@@ -697,7 +697,7 @@ In order to use references, we have to first create a capability for an object, 
 
 To create a capability, we use the `link` function.
 
-```swift
+```cadence
 // Create a link to the Vault in storage that is restricted to the
 // fields and functions in `Receiver` and `Balance` interfaces,
 // this only exposes the balance field
@@ -713,7 +713,7 @@ We put the capability in `/public/MainReceiver` because we want it to be publicl
 
 Next is the `post` phase of the transaction.
 
-```swift
+```cadence
 post {
 // Check that the capabilities were created correctly
 // by getting the public capability and checking
@@ -755,7 +755,7 @@ Click the `Send` button to set up account `0x02` so that it can receive tokens.
 
 </Callout>
 
-```swift:title=Transaction2.cdc
+```cadence:title=Transaction2.cdc
 import FungibleToken from 0x01
 
 // This transaction configures an account to store and receive tokens defined by
@@ -764,7 +764,7 @@ transaction {
   prepare(acct: AuthAccount) {
     // Create a new empty Vault object
     let vaultA <- FungibleToken.createEmptyVault()
-            
+
     // Store the vault in the account storage
     acct.save<@FungibleToken.Vault>(<-vaultA, to: /storage/MainVault)
 
@@ -779,7 +779,7 @@ transaction {
   post {
     // Check that the capabilities were created correctly
     getAccount(0x02).getCapability(/public/MainReceiver)!
-                    .check<&FungibleToken.Vault{FungibleToken.Receiver}>():  
+                    .check<&FungibleToken.Vault{FungibleToken.Receiver}>():
                     "Vault Receiver Reference was not created correctly"
   }
 }
@@ -800,7 +800,7 @@ Select only account `0x01` as a signer and send `Transaction3.cdc` to mint 30 to
 
 </Callout>
 
-```swift:title=Transaction3.cdc
+```cadence:title=Transaction3.cdc
 import FungibleToken from 0x01
 
 // This transaction mints tokens and deposits them into account 2's vault
@@ -821,7 +821,7 @@ transaction {
 
     // Get the public account object for account 0x02
     let recipient = getAccount(0x02)
-    
+
     // Get the public receiver capability
     let cap = recipient.getCapability(/public/MainReceiver)!
 
@@ -843,7 +843,7 @@ This is the first example of a transaction where we utilize local transaction va
 
 In addition to borrowing references from capabilities, you'll see in this transaction that you can also borrow a reference directly from an object in storage.
 
-```swift
+```cadence
 // Borrow a reference to the stored, private minter resource
 self.mintingRef = acct.borrow<&FungibleToken.VaultMinter>
                               (from: /storage/MainMinter)
@@ -856,7 +856,7 @@ You can use the `getAccount()` built-in function to get any account's public acc
 
 We use the `getCapability` function to get the public capability from a public path, then use the `borrow` function on the capability to get the reference from it, typed as a `Vault{Receiver}`.
 
-```swift
+```cadence
 // Get the public receiver capability
 let cap = recipient.getCapability(/public/MainReceiver)!
 
@@ -889,8 +889,8 @@ Open the script named `Script1.cdc` in the scripts pane.<br/>
 
 </Callout>
 
-```swift:title=Script1.cdc
-import FungibleToken from 0x01 
+```cadence:title=Script1.cdc
+import FungibleToken from 0x01
 
 // This script reads the Vault balances of two accounts.
 pub fun main() {
@@ -951,7 +951,7 @@ Select account `0x02` as a signer and send the transaction. <br/>
 `Transaction4.cdc` should contain the following code for sending tokens to another user:
 </Callout>
 
-```swift:title=Transaction4.cdc
+```cadence:title=Transaction4.cdc
 import FungibleToken from 0x01
 
 // This transaction is a template for a transaction that
@@ -967,7 +967,7 @@ transaction {
     // and calling the withdraw function with that reference
     let vaultRef = acct.borrow<&FungibleToken.Vault>(from: /storage/MainVault)
         ?? panic("Could not borrow a reference to the owner's vault")
-      
+
     self.temporaryVault <- vaultRef.withdraw(amount: UFix64(10))
   }
 
