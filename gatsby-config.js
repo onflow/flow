@@ -214,9 +214,9 @@ const sections = [
         "docs/language/environment-information",
         "docs/language/crypto",
         "docs/language/type-hierarchy",
-      ]
+      ],
     },
-  }
+  },
 ];
 
 module.exports = {

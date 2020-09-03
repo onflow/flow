@@ -1,24 +1,28 @@
 ---
-title: 7. Kitty Hats
+title: 7. Kitty Hats (Composable Resources)
 ---
+
+import Callout from "../../components/callout";
+import Img from "../../components/tutorial-image";
 
 In this tutorial, we're going to walkthrough how resources can own other resources by creating, deploying, and moving composable NFTs.
 
 ---
 
-<!-- [block:callout]
-{
-"type": "success",
-"body": "Open the starter code for this tutorial in the Flow Playground: <a href=\"https://play.onflow.org/fb934880-ba3a-4d0d-8350-7bea017e6138\" target=\"\_blank\">https://play.onflow.org/fb934880-ba3a-4d0d-8350-7bea017e6138</a>\nThe tutorial will be asking you do take various actions to interact with this code."
-}
-[/block] -->
+<Callout type="info">
 
-<!-- [block:callout]
-{
-"type": "info",
-"body": "Instructions that require you to take action are always included in a callout box like this one. These highlighted actions are all that you need to do to get your code running, but reading the rest is necessary to understand the language's design."
-}
-[/block] -->
+Open the starter code for this tutorial in the Flow Playground: <a href="https://play.onflow.org/fb934880-ba3a-4d0d-8350-7bea017e6138" target="_blank">https://play.onflow.org/fb934880-ba3a-4d0d-8350-7bea017e6138</a><br/>
+The tutorial will be asking you do take various actions to interact with this code.
+
+</Callout>
+
+<Callout type="info">
+
+Instructions that require you to take action are always included in a callout box like this one. These highlighted actions are all that you need to do to get your code running, but reading the rest is necessary to understand the language's design.
+
+</Callout>
+
+
 
 Resources owning other resources is a powerful feature in the world of blockchain and smart contracts. To showcase how this feature works on Flow, this tutorial will take you through these steps with a composable NFT:
 
@@ -55,21 +59,79 @@ Here is a basic example of how we can replicate this feature in Cadence:
 <!-- [block:callout]
 {
 "type": "info",
-"body": "Open the account `0x01` tab which has the contract named `KittyVerse.cdc` \nDeploy the code to account `0x01`"
+"body": ""
 }
 [/block] -->
 
-<!-- [block:code]
-{
-"codes": [
-{
-"code": "// KittyVerse.cdc\n//\n// The KittyVerse contract defines two types of NFTs.\n// One is a KittyHat, which represents a special hat, and\n// the second is the Kitty resource, which can own Kitty Hats.\n//\n// You can put the hats on the cats and then call a hat function\n// that tips the hat and prints a fun message.\n// \n// This is a simple example of how Cadence supports\n// extensibility for smart contracts, but the language will soon\n// support even more powerful versions of this.\n\npub contract KittyVerse {\n\n // KittyHat is a special resource type that represents a hat\n pub resource KittyHat {\n pub let id: Int\n pub let name: String\n\n init(id: Int, name: String) {\n self.id = id\n self.name = name\n }\n\n // An example of a function someone might put in their hat resource\n pub fun tipHat(): String {\n if self.name == \"Cowboy Hat\" {\n return \"Howdy Y'all\"\n } else if self.name == \"Top Hat\" {\n return \"Greetings, fellow aristocats!\"\n } \n\n return \"Hello\"\n }\n }\n\n // Create a new hat\n pub fun createHat(id: Int, name: String): @KittyHat {\n return <-create KittyHat(id: id, name: name)\n }\n\n pub resource Kitty {\n\n pub let id: Int\n\n // place where the Kitty hats are stored\n pub let items: @{String: KittyHat}\n\n init(newID: Int) {\n self.id = newID\n self.items <- {}\n }\n\n destroy() {\n destroy self.items\n }\n }\n\n pub fun createKitty(): @Kitty {\n return <-create Kitty(newID: 1)\n }\n}\n ",
-"language": "swift",
-"name": "KittyVerse.cdc"
+<Callout type="info">
+
+Open the account `0x01` tab which has the contract named `KittyVerse.cdc`. Deploy the code to account `0x01`
+
+</Callout>
+
+```swift:title=KittyVerse.cdc
+// The KittyVerse contract defines two types of NFTs.
+// One is a KittyHat, which represents a special hat, and
+// the second is the Kitty resource, which can own Kitty Hats.
+//
+// You can put the hats on the cats and then call a hat function
+// that tips the hat and prints a fun message.
+// 
+// This is a simple example of how Cadence supports
+// extensibility for smart contracts, but the language will soon
+// support even more powerful versions of this.
+
+pub contract KittyVerse {
+
+    // KittyHat is a special resource type that represents a hat
+    pub resource KittyHat {
+        pub let id: Int
+        pub let name: String
+
+        init(id: Int, name: String) {
+            self.id = id
+            self.name = name
+        }
+
+        // An example of a function someone might put in their hat resource
+        pub fun tipHat(): String {
+            if self.name == "Cowboy Hat" {
+                return "Howdy Y'all"
+            } else if self.name == "Top Hat" {
+                return "Greetings, fellow aristocats!"
+            } 
+
+            return "Hello"
+        }
+    }
+
+    // Create a new hat
+    pub fun createHat(id: Int, name: String): @KittyHat {
+        return <-create KittyHat(id: id, name: name)
+    }
+
+    pub resource Kitty {
+
+        pub let id: Int
+
+        // place where the Kitty hats are stored
+        pub let items: @{String: KittyHat}
+
+        init(newID: Int) {
+            self.id = newID
+            self.items <- {}
+        }
+
+        destroy() {
+            destroy self.items
+        }
+    }
+
+    pub fun createKitty(): @Kitty {
+        return <-create Kitty(newID: 1)
+    }
 }
-]
-}
-[/block] -->
+```
 
 These definitions show how a Kitty resource could own hats.
 
@@ -82,24 +144,43 @@ A Kitty owner can take the hats off the Kitty and transfer them individually. Or
 
 Here is a transaction to create a `Kitty` and a `KittyHat`, store the hat in the Kitty, then store it in your account storage.
 
-<!-- [block:callout]
-{
-"type": "info",
-"body": "- Open `Transaction1.cdc` \n- Select account `0x01` as the only signer\n- Send the transaction by clicking the Send button\n`Transaction1.cdc` should contain the following code:"
-}
-[/block] -->
+<Callout type="info">
 
-<!-- [block:code]
-{
-"codes": [
-{
-"code": "// Transaction1.cdc\n\nimport KittyVerse from 0x01\n\n// This transaction creates a new kitty, creates two new hats and\n// puts the hats on the cat. Then it stores the kitty in account storage.\ntransaction {\n prepare(acct: AuthAccount) {\n\n // Create the Kitty object\n let kitty <- KittyVerse.createKitty()\n\n // Create the KittyHat objects\n let hat1 <- KittyVerse.createHat(id: 1, name: \"Cowboy Hat\")\n let hat2 <- KittyVerse.createHat(id: 2, name: \"Top Hat\")\n\n // Put the hat on the cat!\n let oldCowboyHat <- kitty.items[\"Cowboy Hat\"] <- hat1\n destroy oldCowboyHat\n let oldTopHat <- kitty.items[\"Top Hat\"] <- hat2\n destroy oldTopHat\n\n log(\"The cat has the hats\")\n\n // Store the Kitty in storage\n acct.save<@KittyVerse.Kitty>(<-kitty, to: /storage/Kitty)\n }\n}\n",
-"language": "swift",
-"name": "Transaction1.cdc"
+Open `Transaction1.cdc`. <br/>
+Select account `0x01` as the only signer<br/>
+Send the transaction by clicking the Send button. <br/>
+`Transaction1.cdc` should contain the following code:
+
+</Callout>
+
+```swift:title=Transaction1.cdc
+import KittyVerse from 0x01
+
+// This transaction creates a new kitty, creates two new hats and
+// puts the hats on the cat. Then it stores the kitty in account storage.
+transaction {
+  prepare(acct: AuthAccount) {
+
+    // Create the Kitty object
+    let kitty <- KittyVerse.createKitty()
+
+    // Create the KittyHat objects
+    let hat1 <- KittyVerse.createHat(id: 1, name: "Cowboy Hat")
+    let hat2 <- KittyVerse.createHat(id: 2, name: "Top Hat")
+
+    // Put the hat on the cat!
+    let oldCowboyHat <- kitty.items["Cowboy Hat"] <- hat1
+    destroy oldCowboyHat
+    let oldTopHat <- kitty.items["Top Hat"] <- hat2
+    destroy oldTopHat
+
+    log("The cat has the hats")
+
+    // Store the Kitty in storage
+    acct.save<@KittyVerse.Kitty>(<-kitty, to: /storage/Kitty)
+  }
 }
-]
-}
-[/block] -->
+```
 
 You should see an output that looks something like this:
 
@@ -109,24 +190,43 @@ You should see an output that looks something like this:
 
 Now we can run a transaction to move the Kitty along with its hat, remove the cowboy hat from the Kitty, then make the Kitty tip its hat.
 
-<!-- [block:callout]
-{
-"type": "info",
-"body": "- Open `Transaction2.cdc`\n- Select account `0x01` as the only signer\n- Send the transaction\n`Transaction2.cdc` should contain the following code:"
-}
-[/block] -->
+<Callout type="info">
 
-<!-- [block:code]
-{
-"codes": [
-{
-"code": "// Transaction2.cdc\n\nimport KittyVerse from 0x01\n\n// This transaction moves a kitty out of storage, \n// takes the cowboy hat off of the kitty,\n// calls its tip hat function, and then moves it back into storage.\ntransaction {\n prepare(acct: AuthAccount) {\n\n // Move the Kitty out of storage, which also moves its hat along with it\n let kitty <- acct.load<@KittyVerse.Kitty>(from: /storage/Kitty)!\n\n // Take the cowboy hat off the Kitty\n let cowboyHat <- kitty.items.remove(key: \"Cowboy Hat\")!\n\n // Tip the cowboy hat\n log(cowboyHat.tipHat())\n destroy cowboyHat\n\n // Tip the top hat that is on the Kitty\n log(kitty.items[\"Top Hat\"]?.tipHat())\n\n // Move the Kitty to storage, which\n // also moves its hat along with it.\n acct.save<@KittyVerse.Kitty>(<-kitty, to: /storage/Kitty)\n }\n}\n",
-"language": "swift",
-"name": "Transaction2.cdc"
+Open `Transaction2.cdc`<br/> 
+Select account `0x01` as the only signer.<br/>
+Send the transaction.<br/>
+Transaction2.cdc` should contain the following code:
+
+</Callout>
+
+```swift:title=Transaction2.cdc
+import KittyVerse from 0x01
+
+// This transaction moves a kitty out of storage, 
+// takes the cowboy hat off of the kitty,
+// calls its tip hat function, and then moves it back into storage.
+transaction {
+  prepare(acct: AuthAccount) {
+
+    // Move the Kitty out of storage, which also moves its hat along with it
+    let kitty <- acct.load<@KittyVerse.Kitty>(from: /storage/Kitty)!
+
+    // Take the cowboy hat off the Kitty
+    let cowboyHat <- kitty.items.remove(key: "Cowboy Hat")!
+
+    // Tip the cowboy hat
+    log(cowboyHat.tipHat())
+    destroy cowboyHat
+
+    // Tip the top hat that is on the Kitty
+    log(kitty.items["Top Hat"]?.tipHat())
+
+    // Move the Kitty to storage, which
+    // also moves its hat along with it.
+    acct.save<@KittyVerse.Kitty>(<-kitty, to: /storage/Kitty)
+  }
 }
-]
-}
-[/block] -->
+```
 
 You should see something like this output:
 

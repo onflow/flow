@@ -2,12 +2,14 @@
 title: 5. Marketplace Setup
 ---
 
-<!-- [block:callout]
-{
-"type": "success",
-"body": "Open the starter code for this tutorial in the Flow Playground: <a href=\"https://play.onflow.org/5a5f4fdf-f499-47a4-aef7-f01713e61fde\" target=\"\_blank\">https://play.onflow.org/5a5f4fdf-f499-47a4-aef7-f01713e61fde</a>\nThe tutorial will be asking you to take various actions to interact with this code."
-}
-[/block] -->
+import Callout from "../../components/callout";
+import Img from "../../components/tutorial-image";
+
+<Callout type="success">
+  
+  Open the starter code for this tutorial in the Flow Playground: <a href="https://play.onflow.org/5a5f4fdf-f499-47a4-aef7-f01713e61fde" target="_blank">https://play.onflow.org/5a5f4fdf-f499-47a4-aef7-f01713e61fde</a><br/>The tutorial will be asking you to take various actions to interact with this code.
+
+</Callout>
 
 If you have already completed the Marketplace tutorial, please move on to [Composable Resources: Kitty Hats](doc:composable-resources-kitty-hats).
 
@@ -23,53 +25,188 @@ The state of the accounts are the same as if you had completed the Fungible Toke
 4. Make sure you have the NFT definitions in `NFTv2.cdc` from the Non-fungible token tutorial in account `0x02`.
 5. Deploy the NFT code to account `0x02`.
 6. Run the transaction in Transaction 3. This is the `SetupAccount1Transaction.cdc` file. Use account `0x01` as the only signer to set up account `0x01`'s account.
-   <!-- [block:code]
-   {
-   "codes": [
-   {
-   "code": "// SetupAccount1Transaction.cdc\n\nimport FungibleToken from 0x01\nimport NonFungibleToken from 0x02\n\n// This transaction sets up account 0x01 for the marketplace tutorial\n// by publishing a Vault reference and creating an empty NFT Collection.\ntransaction {\n prepare(acct: AuthAccount) {\n // Create a public Receiver capability to the Vault\n acct.link<&FungibleToken.Vault{FungibleToken.Receiver, FungibleToken.Balance}>\n (/public/MainReceiver, target: /storage/MainVault)\n\n log(\"Created Vault references\")\n\n // store an empty NFT Collection in account storage\n acct.save<@NonFungibleToken.Collection>(<-NonFungibleToken.createEmptyCollection(), to: /storage/NFTCollection)\n\n // publish a capability to the Collection in storage\n acct.link<&{NonFungibleToken.NFTReceiver}>(/public/NFTReceiver, target: /storage/NFTCollection)\n\n log(\"Created a new empty collection and published a reference\")\n }\n}\n",
-   "language": "swift",
-   "name": "SetupAccount1Transaction.cdc"
-   }
-   ]
-   }
-   [/block] -->
+
+```swift:title=SetupAccount1Transaction.cdc
+import FungibleToken from 0x01
+import NonFungibleToken from 0x02
+
+// This transaction sets up account 0x01 for the marketplace tutorial
+// by publishing a Vault reference and creating an empty NFT Collection.
+transaction {
+  prepare(acct: AuthAccount) {
+    // Create a public Receiver capability to the Vault
+    acct.link<&FungibleToken.Vault{FungibleToken.Receiver, FungibleToken.Balance}>
+             (/public/MainReceiver, target: /storage/MainVault)
+
+    log("Created Vault references")
+
+    // store an empty NFT Collection in account storage
+    acct.save<@NonFungibleToken.Collection>(<-NonFungibleToken.createEmptyCollection(), to: /storage/NFTCollection)
+
+    // publish a capability to the Collection in storage
+    acct.link<&{NonFungibleToken.NFTReceiver}>(/public/NFTReceiver, target: /storage/NFTCollection)
+
+    log("Created a new empty collection and published a reference")
+  }
+}
+```
+
 7. Run the transaction in Transaction 4. This is the `SetupAccount2Transaction.cdc` file. Use account `0x02` as the only signer to set up account `0x02`'s account.
-   <!-- [block:code]
-   {
-   "codes": [
-   {
-   "code": "// SetupAccount2Transaction.cdc\n\nimport FungibleToken from 0x01\nimport NonFungibleToken from 0x02\n\n// This transaction adds an empty Vault to account 0x02\n// and mints an NFT with id=1 that is deposited into\n// the NFT collection on account 0x01.\ntransaction {\n\n // Private reference to this account's minter resource\n let minterRef: &NonFungibleToken.NFTMinter\n\n prepare(acct: AuthAccount) {\n // create a new vault instance with an initial balance of 30\n let vaultA <- FungibleToken.createEmptyVault()\n\n // Store the vault in the account storage\n acct.save<@FungibleToken.Vault>(<-vaultA, to: /storage/MainVault)\n\n // Create a public Receiver capability to the Vault\n let ReceiverRef = acct.link<&FungibleToken.Vault{FungibleToken.Receiver, FungibleToken.Balance}>(/public/MainReceiver, target: /storage/MainVault)\n\n log(\"Created a Vault and published a reference\")\n\n // Borrow a reference for the NFTMinter in storage\n self.minterRef = acct.borrow<&NonFungibleToken.NFTMinter>(from: /storage/NFTMinter)\n \t\t?? panic(\"Could not borrow an nft minter reference\")\n }\n execute {\n // Get the recipient's public account object\n let recipient = getAccount(0x01)\n\n // Get the Collection reference for the receiver\n // getting the public capability and borrowing a reference from it\n let receiverRef = recipient.getCapability(/public/NFTReceiver)!\n .borrow<&{NonFungibleToken.NFTReceiver}>()\n \t\t\t\t\t\t\t\t\t\t\t\t\t?? panic(\"Could not borrow an nft receiver reference\")\n\n // Mint an NFT and deposit it into account 0x01's collection\n self.minterRef.mintNFT(recipient: receiverRef)\n\n log(\"New NFT minted for account 1\")\n }\n}\n ",
-   "language": "swift",
-   "name": "SetupAccount2Transaction.cdc"
-   }
-   ]
-   }
-   [/block] -->
+
+```swift:title=SetupAccount2Transaction.cdc
+
+import FungibleToken from 0x01
+import NonFungibleToken from 0x02
+
+// This transaction adds an empty Vault to account 0x02
+// and mints an NFT with id=1 that is deposited into
+// the NFT collection on account 0x01.
+transaction {
+
+  // Private reference to this account's minter resource
+  let minterRef: &NonFungibleToken.NFTMinter
+
+  prepare(acct: AuthAccount) {
+    // create a new vault instance with an initial balance of 30
+    let vaultA <- FungibleToken.createEmptyVault()
+
+    // Store the vault in the account storage
+    acct.save<@FungibleToken.Vault>(<-vaultA, to: /storage/MainVault)
+
+    // Create a public Receiver capability to the Vault
+    let ReceiverRef = acct.link<&FungibleToken.Vault{FungibleToken.Receiver, FungibleToken.Balance}>(/public/MainReceiver, target: /storage/MainVault)
+
+    log("Created a Vault and published a reference")
+
+    // Borrow a reference for the NFTMinter in storage
+    self.minterRef = acct.borrow<&NonFungibleToken.NFTMinter>(from: /storage/NFTMinter)
+            ?? panic("Could not borrow an nft minter reference")
+  }
+  execute {
+    // Get the recipient's public account object
+    let recipient = getAccount(0x01)
+
+    // Get the Collection reference for the receiver
+    // getting the public capability and borrowing a reference from it
+    let receiverRef = recipient.getCapability(/public/NFTReceiver)!
+                               .borrow<&{NonFungibleToken.NFTReceiver}>()
+                                                        ?? panic("Could not borrow an nft receiver reference")
+
+    // Mint an NFT and deposit it into account 0x01's collection
+    self.minterRef.mintNFT(recipient: receiverRef)
+
+    log("New NFT minted for account 1")
+  }
+}
+```
+
 8. Run the transaction in Transaction 5. This is the `SetupAccount1TransactionMinting.cdc` file. Use account `0x01` as the only signer to mint fungible tokens for account 1 and 2.
-   <!-- [block:code]
-   {
-   "codes": [
-   {
-   "code": "// SetupAccount1TransactionMinting.cdc\n\nimport FungibleToken from 0x01\nimport NonFungibleToken from 0x02\n\n// This transaction mints tokens for both accounts using\n// the minter stored on account 0x01.\ntransaction {\n\n // Public Vault Receiver References for both accounts\n let acct1Ref: &AnyResource{FungibleToken.Receiver}\n let acct2Ref: &AnyResource{FungibleToken.Receiver}\n\n // Private minter references for this account to mint tokens\n let minterRef: &FungibleToken.VaultMinter \n\n prepare(acct: AuthAccount) {\n // Get the public object for account 0x02\n let account2 = getAccount(0x02)\n\n // Retrieve public Vault Receiver references for both accounts\n self.acct1Ref = acct.getCapability(/public/MainReceiver)!\n .borrow<&FungibleToken.Vault{FungibleToken.Receiver}>()\n \t\t\t\t\t\t\t?? panic(\"Could not borrow acct1 vault receiver reference\")\n self.acct2Ref = account2.getCapability(/public/MainReceiver)!\n .borrow<&FungibleToken.Vault{FungibleToken.Receiver}>()\n \t\t\t\t\t\t\t?? panic(\"Could not borrow acct2 vault receiver reference\")\n\n // Get the stored Minter reference for account 0x01\n self.minterRef = acct.borrow<&FungibleToken.VaultMinter>(from: /storage/MainMinter)\n \t\t\t?? panic(\"Could not borrow vault minter reference\")\n }\n\n execute {\n // Mint tokens for both accounts\n self.minterRef.mintTokens(amount: UFix64(20), recipient: self.acct2Ref)\n self.minterRef.mintTokens(amount: UFix64(10), recipient: self.acct1Ref)\n\n log(\"Minted new fungible tokens for account 1 and 2\")\n }\n}\n ",
-   "language": "swift",
-   "name": "SetupAccount1TransactionMinting.cdc"
-   }
-   ]
-   }
-   [/block] -->
+
+```swift:title=SetupAccount1TransactionMinting.cdc
+import FungibleToken from 0x01
+import NonFungibleToken from 0x02
+
+// This transaction mints tokens for both accounts using
+// the minter stored on account 0x01.
+transaction {
+
+    // Public Vault Receiver References for both accounts
+    let acct1Ref: &AnyResource{FungibleToken.Receiver}
+    let acct2Ref: &AnyResource{FungibleToken.Receiver}
+
+    // Private minter references for this account to mint tokens
+    let minterRef: &FungibleToken.VaultMinter     
+
+    prepare(acct: AuthAccount) {
+        // Get the public object for account 0x02
+        let account2 = getAccount(0x02)
+
+        // Retrieve public Vault Receiver references for both accounts
+        self.acct1Ref = acct.getCapability(/public/MainReceiver)!
+                    .borrow<&FungibleToken.Vault{FungibleToken.Receiver}>()
+                                ?? panic("Could not borrow acct1 vault receiver reference")
+        self.acct2Ref = account2.getCapability(/public/MainReceiver)!
+                    .borrow<&FungibleToken.Vault{FungibleToken.Receiver}>()
+                                ?? panic("Could not borrow acct2 vault receiver reference")
+
+        // Get the stored Minter reference for account 0x01
+        self.minterRef = acct.borrow<&FungibleToken.VaultMinter>(from: /storage/MainMinter)
+                ?? panic("Could not borrow vault minter reference")
+    }
+
+    execute {
+        // Mint tokens for both accounts
+        self.minterRef.mintTokens(amount: UFix64(20), recipient: self.acct2Ref)
+        self.minterRef.mintTokens(amount: UFix64(10), recipient: self.acct1Ref)
+
+        log("Minted new fungible tokens for account 1 and 2")
+    }
+}
+```
+
 9. Run the script `CheckSetupScript.cdc` file in Script 1 to ensure everything is set up.
-   <!-- [block:code]
-   {
-   "codes": [
-   {
-   "code": "// CheckSetupScript.cdc\n\nimport FungibleToken from 0x01\nimport NonFungibleToken from 0x02\n\n// This script checks that the accounts are set up correctly for the marketplace tutorial.\n//\n// Account 0x01: Vault Balance = 40, NFT.id = 1\n// Account 0x02: Vault Balance = 20, No NFTs\npub fun main() {\n // Get the accounts' public account objects\n let acct1 = getAccount(0x01)\n let acct2 = getAccount(0x02)\n\n // Get references to the account's receivers\n // by getting their public capability\n // and borrowing a reference from the capability\n let acct1ReceiverRef = acct1.getCapability(/public/MainReceiver)!\n .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()\n \t\t\t\t\t\t\t\t\t\t?? panic(\"Could not borrow acct1 vault receiver reference\")\n let acct2ReceiverRef = acct2.getCapability(/public/MainReceiver)!\n .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()\n \t\t\t\t\t\t\t\t\t\t?? panic(\"Could not borrow acct2 vault receiver reference\")\n\n // Log the Vault balance of both accounts and ensure they are\n // the correct numbers.\n // Account 0x01 should have 40.\n // Account 0x02 should have 20.\n log(\"Account 1 Balance\")\n log(acct1ReceiverRef.balance)\n log(\"Account 2 Balance\")\n log(acct2ReceiverRef.balance)\n\n // verify that the balances are correct\n if acct1ReceiverRef.balance != UFix64(40) || acct2ReceiverRef.balance != UFix64(20) {\n panic(\"Wrong balances!\")\n }\n\n // Find the public Receiver capability for their Collections\n let acct1Capability = acct1.getCapability(/public/NFTReceiver)!\n let acct2Capability = acct2.getCapability(/public/NFTReceiver)!\n\n // borrow references from the capabilities\n let nft1Ref = acct1Capability.borrow<&{NonFungibleToken.NFTReceiver}>()\n \t\t\t?? panic(\"Could not borrow acct1 nft receiver reference\")\n let nft2Ref = acct2Capability.borrow<&{NonFungibleToken.NFTReceiver}>()\n \t\t\t?? panic(\"Could not borrow acct2 nft receiver reference\")\n\n // Print both collections as arrays of IDs\n log(\"Account 1 NFTs\")\n log(nft1Ref.getIDs())\n\n log(\"Account 2 NFTs\")\n log(nft2Ref.getIDs())\n\n // verify that the collections are correct\n if nft1Ref.getIDs()[0] != UInt64(1) || nft2Ref.getIDs().length != 0 {\n panic(\"Wrong Collections!\")\n }\n}\n",
-   "language": "swift",
-   "name": "CheckSetupScript.cdc"
-   }
-   ]
-   }
-   [/block] -->
+
+```swift:title=CheckSetupScript.cdc
+import FungibleToken from 0x01
+import NonFungibleToken from 0x02
+
+// This script checks that the accounts are set up correctly for the marketplace tutorial.
+//
+// Account 0x01: Vault Balance = 40, NFT.id = 1
+// Account 0x02: Vault Balance = 20, No NFTs
+pub fun main() {
+    // Get the accounts' public account objects
+    let acct1 = getAccount(0x01)
+    let acct2 = getAccount(0x02)
+
+    // Get references to the account's receivers
+    // by getting their public capability
+    // and borrowing a reference from the capability
+    let acct1ReceiverRef = acct1.getCapability(/public/MainReceiver)!
+                          .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
+                                        ?? panic("Could not borrow acct1 vault receiver reference")
+    let acct2ReceiverRef = acct2.getCapability(/public/MainReceiver)!
+                          .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
+                                        ?? panic("Could not borrow acct2 vault receiver reference")
+
+    // Log the Vault balance of both accounts and ensure they are
+    // the correct numbers.
+    // Account 0x01 should have 40.
+    // Account 0x02 should have 20.
+    log("Account 1 Balance")
+    log(acct1ReceiverRef.balance)
+    log("Account 2 Balance")
+    log(acct2ReceiverRef.balance)
+
+    // verify that the balances are correct
+    if acct1ReceiverRef.balance != UFix64(40) || acct2ReceiverRef.balance != UFix64(20) {
+        panic("Wrong balances!")
+    }
+
+    // Find the public Receiver capability for their Collections
+    let acct1Capability = acct1.getCapability(/public/NFTReceiver)!
+    let acct2Capability = acct2.getCapability(/public/NFTReceiver)!
+
+    // borrow references from the capabilities
+    let nft1Ref = acct1Capability.borrow<&{NonFungibleToken.NFTReceiver}>()
+            ?? panic("Could not borrow acct1 nft receiver reference")
+    let nft2Ref = acct2Capability.borrow<&{NonFungibleToken.NFTReceiver}>()
+            ?? panic("Could not borrow acct2 nft receiver reference")
+
+    // Print both collections as arrays of IDs
+    log("Account 1 NFTs")
+    log(nft1Ref.getIDs())
+
+    log("Account 2 NFTs")
+    log(nft2Ref.getIDs())
+
+    // verify that the collections are correct
+    if nft1Ref.getIDs()[0] != UInt64(1) || nft2Ref.getIDs().length != 0 {
+        panic("Wrong Collections!")
+    }
+}
+```
+
 10. The script should not panic and you should see something like this output
 
 ```
@@ -85,6 +222,6 @@ The state of the accounts are the same as if you had completed the Fungible Toke
 
 ---
 
-With your playground now in the correct state, you're ready to continue with the [Composable Smart Contracts: Marketplace](doc:composable-smart-contracts-marketplace) tutorial.
+With your playground now in the correct state, you're ready to continue with the next tutorial.
 
 You do not need to open a new playground session for the marketplace tutorial. You can just continue using this one.
