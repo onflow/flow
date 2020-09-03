@@ -61,23 +61,6 @@ const HeaderInner = styled.span({
   marginBottom: 32,
 });
 
-const Eyebrow = styled.div({
-  flexShrink: 0,
-  padding: "8px 56px",
-  backgroundColor: theme.background,
-  color: theme.primary,
-  fontSize: 14,
-  position: "sticky",
-  top: 0,
-  a: {
-    color: "inherit",
-    fontWeight: 600,
-  },
-  [breakpoints.md]: {
-    padding: "8px 24px",
-  },
-});
-
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
 
 function handleToggleAll(expanded) {
@@ -138,7 +121,6 @@ export default function PageLayout(props) {
   const {
     subtitle,
     sidebarContents,
-    fields,
   } = props.pageContext;
   const {
     discordUrl,

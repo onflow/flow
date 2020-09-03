@@ -6,7 +6,6 @@ import { size } from "polished";
 import { MenuWrapper, MenuItem } from "./menu";
 import { getProjectIcon } from "gatsby-theme-flow/src/ui/icons";
 
-const { indigo } = colors;
 const AppIcon = styled.div({
   ...size("100%"),
   display: "flex",

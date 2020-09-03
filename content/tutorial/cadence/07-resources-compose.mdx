@@ -69,14 +69,14 @@ Open the account `0x01` tab which has the contract named `KittyVerse.cdc`. Deplo
 
 </Callout>
 
-```swift:title=KittyVerse.cdc
+```cadence:title=KittyVerse.cdc
 // The KittyVerse contract defines two types of NFTs.
 // One is a KittyHat, which represents a special hat, and
 // the second is the Kitty resource, which can own Kitty Hats.
 //
 // You can put the hats on the cats and then call a hat function
 // that tips the hat and prints a fun message.
-// 
+//
 // This is a simple example of how Cadence supports
 // extensibility for smart contracts, but the language will soon
 // support even more powerful versions of this.
@@ -99,7 +99,7 @@ pub contract KittyVerse {
                 return "Howdy Y'all"
             } else if self.name == "Top Hat" {
                 return "Greetings, fellow aristocats!"
-            } 
+            }
 
             return "Hello"
         }
@@ -153,7 +153,7 @@ Send the transaction by clicking the Send button. <br/>
 
 </Callout>
 
-```swift:title=Transaction1.cdc
+```cadence:title=Transaction1.cdc
 import KittyVerse from 0x01
 
 // This transaction creates a new kitty, creates two new hats and
@@ -192,17 +192,17 @@ Now we can run a transaction to move the Kitty along with its hat, remove the co
 
 <Callout type="info">
 
-Open `Transaction2.cdc`<br/> 
+Open `Transaction2.cdc`<br/>
 Select account `0x01` as the only signer.<br/>
 Send the transaction.<br/>
 Transaction2.cdc` should contain the following code:
 
 </Callout>
 
-```swift:title=Transaction2.cdc
+```cadence:title=Transaction2.cdc
 import KittyVerse from 0x01
 
-// This transaction moves a kitty out of storage, 
+// This transaction moves a kitty out of storage,
 // takes the cowboy hat off of the kitty,
 // calls its tip hat function, and then moves it back into storage.
 transaction {

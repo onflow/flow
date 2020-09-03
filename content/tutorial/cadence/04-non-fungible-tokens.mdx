@@ -63,7 +63,7 @@ Open Account `0x01` to see `NFTv1.cdc`.\n`NFTv1.cdc` should contain the followin
 
 </Callout>
 
-```swift:title=NFTv1.cdc
+```cadence:title=NFTv1.cdc
 pub contract NonFungibleToken {
 
     // Declare the NFT resource type
@@ -92,7 +92,7 @@ In this contract, the NFT is a resource with an integer ID and a field for metad
 
 In the contract's `init` function, we create a new NFT object and move it into the account storage.
 
-```swift
+```cadence
 // put it in storage
 self.account.save<@NFT>(<-create NFT(initID: 1), to: /storage/NFT1)
 ```
@@ -120,7 +120,7 @@ Open `Transaction1.cdc`, select account `0x01` as the only signer, and send the 
 
 </Callout>
 
-```swift:title=Transaction1.cdc
+```cadence:title=Transaction1.cdc
 import NonFungibleToken from 0x01
 
 // This transaction checks if an NFT exists in the storage of the given account
@@ -156,7 +156,7 @@ Deploy the contract by clicking the Deploy button in the bottom right of the edi
 
 </Callout>
 
-```swift:title=NFTv2.cdc
+```cadence:title=NFTv2.cdc
 // This is a complete version of the NonFungibleToken contract
 // that includes withdraw and deposit functionality, as well as a
 // collection resource that can be used to bundle NFTs together.
@@ -202,9 +202,9 @@ pub contract NonFungibleToken {
           self.ownedNFTs <- {}
       }
 
-      // withdraw 
+      // withdraw
       //
-      // Function that removes an NFT from the collection 
+      // Function that removes an NFT from the collection
       // and moves it to the calling context
       pub fun withdraw(withdrawID: UInt64): @NFT {
           // If the NFT isn't found, the transaction panics and reverts
@@ -213,9 +213,9 @@ pub contract NonFungibleToken {
           return <-token
       }
 
-      // deposit 
+      // deposit
       //
-      // Function that takes a NFT as an argument and 
+      // Function that takes a NFT as an argument and
       // adds it to the collections dictionary
       pub fun deposit(token: @NFT) {
           // add the new token to the dictionary which removes the old one
@@ -223,7 +223,7 @@ pub contract NonFungibleToken {
           destroy oldToken
       }
 
-      // idExists checks to see if a NFT 
+      // idExists checks to see if a NFT
       // with the given ID exists in the collection
       pub fun idExists(id: UInt64): Bool {
           return self.ownedNFTs[id] != nil
@@ -243,14 +243,14 @@ pub contract NonFungibleToken {
       }
   }
 
-  // creates a new empty Collection resource and returns it 
+  // creates a new empty Collection resource and returns it
   pub fun createEmptyCollection(): @Collection {
       return <- create Collection()
   }
 
   // NFTMinter
   //
-  // Resource that would be owned by an admin or by a smart contract 
+  // Resource that would be owned by an admin or by a smart contract
   // that allows them to mint new NFTs when needed
   pub resource NFTMinter {
 
@@ -264,10 +264,10 @@ pub contract NonFungibleToken {
           self.idCount = 1
       }
 
-      // mintNFT 
+      // mintNFT
       //
       // Function that mints a new NFT with a new ID
-      // and deposits it in the recipients collection 
+      // and deposits it in the recipients collection
       // using their collection reference
       pub fun mintNFT(recipient: &AnyResource{NFTReceiver}) {
 
@@ -306,7 +306,7 @@ There are a few new features that we use in this example, so let's walk through 
 
 This resource uses a **Dictionary,** a mutable, unordered collection of key-value associations.
 
-```swift
+```cadence
 pub var ownedNFTs: @{Int: NFT}
 ```
 
@@ -314,7 +314,7 @@ In a dictionary, all keys must have the same type, and all values must have the 
 
 If the NFT collection resource is destroyed with the `destroy` command, it needs to know what to do with the resources it stores in the dictionary. This is why resources that store other resources have to include a `destroy` function that runs when `destroy` is called on it. This destroy function has to either explicitly destroy the contained resources or move them somewhere else. In this example, we destroy them.
 
-```swift
+```cadence
 destroy() {
     destroy self.ownedNFTs
 }
@@ -322,7 +322,7 @@ destroy() {
 
 When the collection is created, the `init` function is run and must explicitly initialize all member variables. This helps prevent issues in some smart contracts where uninitialized fields can cause bugs. The init function can never run again after this. Here, we initialize the dictionary as a resource type with an empty dictionary.
 
-```swift
+```cadence
 init () {
   self.ownedNFTs <- {}
 }
@@ -330,7 +330,7 @@ init () {
 
 Another feature for dictionaries is the ability to get an array of the keys of the dictionary using the build-in `keys` function.
 
-```swift
+```cadence
 // getIDs returns an array of the IDs that are in the collection
 pub fun getIDs(): [UInt64] {
     return self.ownedNFTs.keys
@@ -360,7 +360,7 @@ In the NFT Collection, all the functions and fields are public, but we do not wa
 
 When a user stores their NFT `Collection` in their account storage, it is by default not available for other users to access. A user's account storage object is inaccessible by anyone except it's owner. To give external accounts read access to the `deposit` function, the `getIDs` function, and the `idExists` function, the owner would create a reference using an interface that only includes those fields:
 
-```swift
+```cadence
 pub resource interface NFTReceiver {
 
     pub fun deposit(token: @NFT)
@@ -375,7 +375,7 @@ Then, using that interface, they would create a link to the object in storage, s
 
 The creation of the link and capability is seen in line 132 of `NFTv2.cdc` in the init function:
 
-```swift
+```cadence
 // publish a reference to the Collection in storage
 self.account.link<&{NFTReceiver}>(/public/NFTReceiver, target: /storage/NFTCollection)
 ```
@@ -398,7 +398,7 @@ Open the script file named `Script1.cdc`.\n`Script1.cdc` should contain the foll
 
 </Callout>
 
-```swift
+```cadence
 import NonFungibleToken from 0x02
 
 // Print the NFTs owned by account 0x03.
@@ -457,7 +457,7 @@ This transaction deposits the minted NFT into the account owner's NFT collection
 
 </Callout>
 
-```swift:title=Transaction2.cdc
+```cadence:title=Transaction2.cdc
 import NonFungibleToken from 0x02
 
 // This transaction allows the Minter account to mint an NFT
@@ -498,7 +498,7 @@ Reopen `Script1.cdc` and execute the script. \nThis prints a list of the NFTs th
 
 </Callout>
 
-```swift:title=Script1.cdc
+```cadence:title=Script1.cdc
 import NonFungibleToken from 0x02
 
 // Print the NFTs owned by account 0x03.
@@ -537,7 +537,7 @@ Open the file named `Transaction3.cdc` and submit the transaction, using account
 
 </Callout>
 
-```swift:title=Transaction3.cdc
+```cadence:title=Transaction3.cdc
 import NonFungibleToken from 0x02
 
 // This transaction configures a user's account
@@ -571,7 +571,7 @@ This transaction transfers a token from account `0x02` to account `0x01`.
 
 </Callout>
 
-```swift:title=Transaction4.cdc
+```cadence:title=Transaction4.cdc
 import NonFungibleToken from 0x02
 
 // This transaction transfers an NFT from one user's collection
@@ -620,7 +620,7 @@ Execute `Script2.cdc` to see the tokens in each account:
 </Callout>
 
 
-```swift:title=Script2.cdc
+```cadence:title=Script2.cdc
 import NonFungibleToken from 0x02
 
 // Print the NFTs owned by accounts 0x01 and 0x02.
@@ -670,7 +670,7 @@ Congratulations, you now have a working NFT!
 
 This is the entire definition for the Non-Fungible Token contract for reference. It is the same as the one you've already deployed so there is no need to perform any more actions with this:
 
-```swift:title=NFTv2.cdc
+```cadence:title=NFTv2.cdc
 // This is a complete version of the NonFungibleToken contract
 // that includes withdraw and deposit functionality, as well as a
 // collection resource that can be used to bundle NFTs together.
@@ -718,9 +718,9 @@ pub contract NonFungibleToken {
             self.ownedNFTs <- {}
         }
 
-        // withdraw 
+        // withdraw
         //
-        // Function that removes an NFT from the collection 
+        // Function that removes an NFT from the collection
         // and moves it to the calling context
         pub fun withdraw(withdrawID: UInt64): @NFT {
             // If the NFT isn't found, the transaction panics and reverts
@@ -729,9 +729,9 @@ pub contract NonFungibleToken {
             return <-token
         }
 
-        // deposit 
+        // deposit
         //
-        // Function that takes a NFT as an argument and 
+        // Function that takes a NFT as an argument and
         // adds it to the collections dictionary
         pub fun deposit(token: @NFT) {
             // add the new token to the dictionary which removes the old one
@@ -739,7 +739,7 @@ pub contract NonFungibleToken {
             destroy oldToken
         }
 
-        // idExists checks to see if a NFT 
+        // idExists checks to see if a NFT
         // with the given ID exists in the collection
         pub fun idExists(id: UInt64): Bool {
             return self.ownedNFTs[id] != nil
@@ -755,14 +755,14 @@ pub contract NonFungibleToken {
         }
     }
 
-    // creates a new empty Collection resource and returns it 
+    // creates a new empty Collection resource and returns it
     pub fun createEmptyCollection(): @Collection {
         return <- create Collection()
     }
 
     // NFTMinter
     //
-    // Resource that would be owned by an admin or by a smart contract 
+    // Resource that would be owned by an admin or by a smart contract
     // that allows them to mint new NFTs when needed
     pub resource NFTMinter {
 
@@ -776,16 +776,16 @@ pub contract NonFungibleToken {
             self.idCount = 1
         }
 
-        // mintNFT 
+        // mintNFT
         //
         // Function that mints a new NFT with a new ID
-        // and deposits it in the recipients collection 
+        // and deposits it in the recipients collection
         // using their collection reference
         pub fun mintNFT(recipient: &AnyResource{NFTReceiver}) {
 
             // create a new NFT
             var newNFT <- create NFT(initID: self.idCount)
-            
+
             // deposit it in the recipient's account using their reference
             recipient.deposit(token: <-newNFT)
 

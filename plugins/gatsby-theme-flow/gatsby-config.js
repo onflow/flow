@@ -58,9 +58,22 @@ module.exports = ({
     {
       resolve: "gatsby-remark-vscode-flow",
       options: {
-        languageScopes: {'cadence': 'source.cadence'},
+        languageScopes: {
+          'cadence': 'source.cadence',
+          'powershell': 'source.powershell',
+          'solidity': 'source.solidity.security',
+          'javascript': 'source.js',
+          'shell': 'source.shell',
+          'go': 'source.go',
+          'js': 'source.js',
+        },
         grammarPaths: [
-          path.resolve('..', 'vscode-flow', 'syntaxes', 'cadence.tmGrammar.json')
+          path.resolve(__dirname, 'cadence.tmGrammar.json'),
+          path.resolve(__dirname, 'powershell.tmLanguage.json'),
+          path.resolve(__dirname, 'solidity.tmLanguage.json'),
+          path.resolve(__dirname, 'javascript.tmLanguage.json'),
+          path.resolve(__dirname, 'go.tmLanguage.json'),
+          path.resolve(__dirname, 'shell-unix-bash.tmLanguage.json'),
         ],
         themePath: path.resolve(__dirname, 'light_vs.json'),
       },

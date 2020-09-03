@@ -49,24 +49,24 @@ Click the Deploy button to deploy it to account `0x01`"
 
 </Callout>
 
-```swift:title=ApprovalVoting.cdc
+```cadence:title=ApprovalVoting.cdc
 /*
 *
-*   In this example, we want to create a simple approval voting contract 
-*   where a polling place issues ballots to addresses. 
-*   
+*   In this example, we want to create a simple approval voting contract
+*   where a polling place issues ballots to addresses.
+*
 *   The run a vote, the Admin deploys the smart contract,
-*   then initializes the proposals 
+*   then initializes the proposals
 *   using the initialize_proposals.cdc transaction.
 *   The array of proposals cannot be modified after it has been initialized.
 *
-*   Then they will give ballots to users by 
+*   Then they will give ballots to users by
 *   using the issue_ballot.cdc transaction.
 *
-*   Every user with a ballot is allowed to approve any number of proposals. 
-*   A user can choose their votes and cast them 
+*   Every user with a ballot is allowed to approve any number of proposals.
+*   A user can choose their votes and cast them
 *   with the cast_vote.cdc transaction.
-* 
+*
 */
 
 pub contract ApprovalVoting {
@@ -79,11 +79,11 @@ pub contract ApprovalVoting {
 
     // This is the resource that is issued to users.
     // When a user gets a Ballot object, they call the `vote` function
-    // to include their votes, and then cast it in the smart contract 
+    // to include their votes, and then cast it in the smart contract
     // using the `cast` function to have their vote included in the polling
     pub resource Ballot {
 
-        // array of all the proposals 
+        // array of all the proposals
         pub let proposals: [String]
 
         // corresponds to an array index in proposals after a vote
@@ -92,7 +92,7 @@ pub contract ApprovalVoting {
         init() {
             self.proposals = ApprovalVoting.proposals
             self.choices = {}
-            
+
             // Set each choice to false
             var i = 0
             while i < self.proposals.length {
@@ -138,7 +138,7 @@ pub contract ApprovalVoting {
         }
     }
 
-    // A user moves their ballot to this function in the contract where 
+    // A user moves their ballot to this function in the contract where
     // its votes are tallied and the ballot is destroyed
     pub fun cast(ballot: @Ballot) {
         var index = 0
@@ -154,7 +154,7 @@ pub contract ApprovalVoting {
         destroy ballot
     }
 
-    // initializes the contract by setting the proposals and votes to empty 
+    // initializes the contract by setting the proposals and votes to empty
     // and creating a new Admin resource to put in storage
     init() {
         self.proposals = []
@@ -168,7 +168,7 @@ pub contract ApprovalVoting {
 
 This contract implements a simple voting mechanism where an administrator can initialize it with an array of proposals to vote on by using the `initializeProposals` function.
 
-```swift
+```cadence
 // function to initialize all the proposals for the voting
 pub fun initializeProposals(_ proposals: [String]) {
     pre {
@@ -188,7 +188,7 @@ pub fun initializeProposals(_ proposals: [String]) {
 
 Then they can give `Ballot` resources to other accounts. The other accounts can record their votes on their `Ballot` resource by calling the `vote` function.
 
-```swift
+```cadence
 pub fun vote(proposal: Int) {
     pre {
         self.proposals[proposal] != nil: "Cannot vote for a proposal that doesn't exist"
@@ -199,7 +199,7 @@ pub fun vote(proposal: Int) {
 
 After a user has voted, they submit their vote to the central smart contract by calling the `cast` function, which records the votes in the `Ballot` and destroys the used `Ballot`.
 
-```swift
+```cadence
 // A user moves their ballot to this function in the contract where
 // its votes are tallied and the ballot is destroyed
 pub fun cast(ballot: @Ballot) {
@@ -237,7 +237,7 @@ Submit the transaction with account `0x01` selected as the only signer.
 
 </Callout>
 
-```swift:title=Transaction1.cdc
+```cadence:title=Transaction1.cdc
 import ApprovalVoting from 0x01
 
 // This transaction allows the administrator of the Voting contract
@@ -245,10 +245,10 @@ import ApprovalVoting from 0x01
 
 transaction {
     prepare(admin: AuthAccount) {
-        
+
         // borrow a reference to the admin Resource
         let adminRef = admin.borrow<&ApprovalVoting.Administrator>(from: /storage/VotingAdmin)!
-        
+
         // Call the initializeProposals function
         // to create the proposals array as an array of strings
         adminRef.initializeProposals(
@@ -290,7 +290,7 @@ Submit the transaction by clicking the `Send` button
 
 </Callout>
 
-```swift:title=Transaction2.cdc
+```cadence:title=Transaction2.cdc
 
 import ApprovalVoting from 0x01
 
@@ -304,7 +304,7 @@ transaction {
 
         // borrow a reference to the admin Resource
         let adminRef = admin.borrow<&ApprovalVoting.Administrator>(from: /storage/VotingAdmin)!
-        
+
         // create a new Ballot by calling the issueBallot
         // function of the admin Reference
         let ballot <- adminRef.issueBallot()
@@ -331,23 +331,23 @@ Now that account `0x02` has a `Ballot` in their storage, they can cast their vot
 Open Transaction 3 which should contain `Transaction3.cdc`.<br/>
 Select account `0x02` as the only transaction signer<br/>
 Click the `send` button to submit the transaction.
-  
+
 </Callout>
 
-```swift:title=Transaction3.cdc
+```cadence:title=Transaction3.cdc
 import ApprovalVoting from 0x01
 
 // This transaction allows a voter to select the votes they would like to make
-// and cast that vote by using the castVote function 
+// and cast that vote by using the castVote function
 // of the ApprovalVoting smart contract
 
 transaction {
     prepare(voter: AuthAccount) {
-        
+
         // take the voter's ballot our of storage
         let ballot <- voter.load<@ApprovalVoting.Ballot>(from: /storage/Ballot)!
 
-        // Vote on the proposal 
+        // Vote on the proposal
         ballot.vote(proposal: 1)
 
         // Cast the vote by submitting it to the smart contract
@@ -371,7 +371,7 @@ Click the `execute` button to run the script.
 
 </Callout>
 
-```swift:title=Script1.cdc
+```cadence:title=Script1.cdc
 import ApprovalVoting from 0x01
 
 // This script allows anyone to read the tallied votes for each proposal
@@ -379,7 +379,7 @@ import ApprovalVoting from 0x01
 
 pub fun main() {
 
-    // Access the public fields of the contract to log 
+    // Access the public fields of the contract to log
     // the proposal names and vote counts
 
     log("Number of Votes for Proposal 1:")
