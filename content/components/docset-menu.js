@@ -49,7 +49,7 @@ export default function DocsetMenu() {
             title={<StyledLink href={navItem.url}>{navItem.title}</StyledLink>}
           >
             <NavItemDescription>{navItem.description}</NavItemDescription>
-            <a href={navItem.url}>📗Visit Docs</a>
+            <a href={navItem.url}>📗 Visit Docs</a>
           </MenuItem>
         ))}
     </MenuWrapper>
