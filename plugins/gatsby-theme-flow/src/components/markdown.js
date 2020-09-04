@@ -7,6 +7,7 @@ import Slugger from 'github-slugger';
 import CodeBlock from './code-block';
 import {theme} from '../colors';
 import {smallCaps} from '../utils/typography';
+import Callout from './callout'
 
 const TableWrapper = styled.div({
   overflow: 'auto',
@@ -56,6 +57,7 @@ function CustomTable(props) {
 export const components = {
   pre: CodeBlock,
   table: CustomTable,
+  Callout,
 };
 
 export function Markdown({ children }) {
