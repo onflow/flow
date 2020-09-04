@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { colors, theme } from "gatsby-theme-flow/src/colors";
+import { colors, theme } from "../colors";
 
 const calloutColors = {
   warning: { light: colors.yellow.lightest, dark: colors.yellow.dark },
