@@ -54,12 +54,12 @@ h6 {
   // Extra padding is added to H1, H2 tags to offset the fixed header.
   // This allows the headings to be visible when clicking on anchor links.
   h1::before,
-  h2::before { 
-    display: block; 
-    content: " "; 
-    margin-top: -(@header-height+10); 
-    height: @header-height+10; 
-    visibility: hidden; 
+  h2::before {
+    display: block;
+    content: " ";
+    margin-top: -(@header-height+10);
+    height: @header-height+10;
+    visibility: hidden;
     pointer-events: none;
   }
 }
@@ -80,7 +80,7 @@ h3 {
 h4,
 p,
 li {
-  font-size: 1.125rem;
+  font-size: 1.1rem;
 }
 
 h5 {
@@ -93,7 +93,8 @@ h6 {
 
 p,
 li {
-  line-height: 1.7;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 ul,
@@ -141,4 +142,8 @@ img.screenshot {
 
 a {
   font-weight: bold;
+}
+
+code {
+  font-size: 0.9rem;
 }
