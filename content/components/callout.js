@@ -34,7 +34,6 @@ const CalloutBody = styled.div({
 });
 
 export default function Callout(props) {
-  console.log(props.children);
   return (
     <CalloutWrapper type={props.type}>
       {props.title && <CalloutTitle>{props.title}</CalloutTitle>}
