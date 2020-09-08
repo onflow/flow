@@ -30,7 +30,7 @@ const StyledSelect = styled(Select)({
 });
 
 const InnerContainer = styled.div({
-  padding: 15,
+  padding: '2px 15px',
   backgroundColor: theme.background,
   overflow: 'auto'
 });

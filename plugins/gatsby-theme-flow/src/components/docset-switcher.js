@@ -96,8 +96,8 @@ export const NavItemTitle = styled.h4({
 });
 
 export const NavItemDescription = styled.p({
-  marginBottom: 0,
-  fontSize: 14,
+  marginBottom: 8,
+  fontSize: 15,
   lineHeight: 1.5,
   color: theme.text3,
   transition: 'color 150ms ease-in-out'
