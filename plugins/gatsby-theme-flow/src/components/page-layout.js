@@ -1,5 +1,4 @@
 import "../prism.less";
-import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 import DocsetSwitcher from "./docset-switcher";
 import Header from "./header";
 import HeaderNav from "./header-nav";
