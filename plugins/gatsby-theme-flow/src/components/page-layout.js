@@ -117,10 +117,7 @@ export default function PageLayout(props) {
 
   const { pathname } = props.location;
   const { siteName, title } = data.site.siteMetadata;
-  const {
-    subtitle,
-    sidebarContents,
-  } = props.pageContext;
+  const { subtitle, sidebarContents } = props.pageContext;
   const {
     discordUrl,
     twitterUrl,
@@ -141,7 +138,7 @@ export default function PageLayout(props) {
     [navConfig]
   );
 
-  const hasNavItems = navItems.length > 0;
+  const hasNavItems = navItems.length > 0 && pathname !== "/";
   const sidebarTitle = (
     <span className="title-sidebar">{subtitle || siteName}</span>
   );
@@ -169,8 +166,8 @@ export default function PageLayout(props) {
           title={siteName}
           logoLink={logoLink}
         >
-          <HeaderInner>
-            {hasNavItems ? (
+          {hasNavItems ? (
+            <HeaderInner>
               <ButtonWrapper ref={buttonRef}>
                 <StyledButton
                   feel="flat"
@@ -183,10 +180,8 @@ export default function PageLayout(props) {
                   <StyledIcon />
                 </StyledButton>
               </ButtonWrapper>
-            ) : (
-              sidebarTitle
-            )}
-          </HeaderInner>
+            </HeaderInner>
+          ) : null}
           {sidebarContents && (
             <NavItemsContext.Provider value={navItems}>
               <SidebarNav

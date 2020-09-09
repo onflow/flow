@@ -34,6 +34,12 @@ h5 {
 
 h1,
 h2,
+h3 {
+  font-family: @fontHeading;
+}
+
+h1,
+h2,
 h3,
 h4,
 h5,
@@ -63,7 +69,6 @@ h6 {
     pointer-events: none;
   }
 }
-
 
 h1 {
   font-size: 2.5rem;
@@ -146,4 +151,13 @@ a {
 
 code {
   font-size: 0.9rem;
+}
+
+@keyframes animatebg {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 300% 0;
+  }
 }

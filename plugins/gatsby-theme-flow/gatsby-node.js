@@ -2,19 +2,14 @@ const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 const { createPrinterNode } = require("gatsby-plugin-printer");
 
-exports.onCreateNode = async function (
-  {node, actions, getNode, loadNodeContent},
-  {
-    siteName,
-    subtitle,
-    sidebarCategories,
-  }
+exports.onCreateNode = async function(
+  { node, actions, getNode, loadNodeContent },
+  { siteName, subtitle, sidebarCategories }
 ) {
-
   if (["MarkdownRemark", "Mdx"].includes(node.internal.type)) {
     const parent = getNode(node.parent);
 
-    let slug
+    let slug;
     if (node.frontmatter.slug) {
       slug = node.frontmatter.slug; // eslint-disable-line prefer-destructuring
     } else {
@@ -39,7 +34,7 @@ exports.onCreateNode = async function (
       }
     }
 
-    const {title, sidebar_title, graphManagerUrl} = node.frontmatter;
+    const { title, sidebar_title, graphManagerUrl } = node.frontmatter;
     createPrinterNode({
       id: `${node.id} >>> Printer`,
       fileName,
@@ -88,10 +83,16 @@ function getSidebarContents(section, sourceSlugTransformers, edges) {
     title: key === "null" ? null : key,
     pages: sidebar[key]
       .map((linkPath) => {
-        const match = linkPath.match(/^\[(.+)]\((https?:\/\/.+)\)$/);
+        // eg: [Here's a link](docs/awesome)
+        const match = linkPath.match(/^\[(.+)]\((.+)\)$/);
+        // eg: [Great Blog Post](https://onflow.org/blog/blogpost)
+        const matchExternalLink = linkPath.match(
+          /^\[(.+)]\((https?:\/\/.+)\)$/
+        );
+
         if (match) {
           return {
-            anchor: true,
+            anchor: matchExternalLink,
             title: match[1],
             path: match[2],
           };
@@ -100,7 +101,7 @@ function getSidebarContents(section, sourceSlugTransformers, edges) {
         const edge = edges.find((edge) => {
           const { relativePath } = edge.node;
           const path = relativePath.slice(0, relativePath.lastIndexOf("."));
-          return path === linkPath
+          return path === linkPath;
         });
 
         if (!edge) {
@@ -152,9 +153,10 @@ const pageFragment = `
 `;
 
 function getSlug(slug, sourceSlugTransformers, section) {
-  const sourceSlugTransformer = sourceSlugTransformers[section.sourceInstanceName]
+  const sourceSlugTransformer =
+    sourceSlugTransformers[section.sourceInstanceName];
   if (sourceSlugTransformer) {
-    slug = sourceSlugTransformer(slug)
+    slug = sourceSlugTransformer(slug);
   }
   return slug;
 }
@@ -170,7 +172,7 @@ async function createPagesForSection(
     twitterUrl,
     baseUrl,
     sourceGithubRepos,
-    sourceSlugTransformers
+    sourceSlugTransformers,
   }
 ) {
   const allPages = await Promise.all(
@@ -203,14 +205,18 @@ async function createPagesForSection(
     })
   );
 
-  const pages = allPages.flat()
+  const pages = allPages.flat();
 
   const templates = {
     default: require.resolve(`./src/components/templates/default`),
     changelog: require.resolve(`./src/components/templates/changelog`),
   };
 
-  const sidebarContents = getSidebarContents(section, sourceSlugTransformers, pages)
+  const sidebarContents = getSidebarContents(
+    section,
+    sourceSlugTransformers,
+    pages
+  );
 
   const defaultTemplateName = "default";
 
@@ -223,7 +229,7 @@ async function createPagesForSection(
 
     let githubUrl;
 
-    const sourceGithubRepo = sourceGithubRepos[section.sourceInstanceName]
+    const sourceGithubRepo = sourceGithubRepos[section.sourceInstanceName];
     if (sourceGithubRepo) {
       const [owner, repo] = sourceGithubRepo.githubRepo.split("/");
       githubUrl =

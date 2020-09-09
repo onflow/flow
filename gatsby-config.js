@@ -6,7 +6,7 @@ const navConfig = {
     icon: null,
     omitLandingPage: true,
     description:
-      "New to Flow? Start here. Read about Flow's architechture, and important concepts for a deeper understanding of the Flow platform and how it works.",
+      "New to Flow? Start here. Read about Flow's architecture, and important concepts for a deeper understanding of the Flow platform and how it works.",
   },
   Cadence: {
     url: "/tutorial/cadence/00-introduction/",
@@ -14,6 +14,7 @@ const navConfig = {
     description:
       "Resource-Oriented programming language for smart contracts that helps developers ensure that their code is safe, secure, clear, and approachable.",
     linkText: "Cadence Documentation",
+    playBuildDeploy: ["play"],
   },
   "Flow Playground": {
     url: "https://play.onflow.org",
@@ -21,41 +22,47 @@ const navConfig = {
     description:
       "Learn the basics of Flow and Cadence using our browser-based playground.",
     linkText: "Launch the Flow Playground",
+    playBuildDeploy: ["play"],
   },
   "JavaScript SDK": {
-    url: "/sdks/javascript",
+    url: "https://github.com/onflow/flow-js-sdk",
     icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
     linkText: "JavaScript SDK Documentation",
+    playBuildDeploy: ["build"],
   },
   "Go SDK": {
-    url: "/sdks/golang",
+    url: "https://github.com/onflow/flow-go-sdk",
     icon: "go-sdk",
     description:
       "Build apps that interact with Flow using our full-featured Go SDK.",
     linkText: "Go SDK Documentation",
+    playBuildDeploy: ["build"],
   },
   "Flow CLI": {
-    url: "/tools/cli",
+    url: "https://github.com/onflow/flow/blob/master/docs/cli.md",
     icon: "cli",
     description:
       "The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.",
     linkText: "CLI Documentation",
+    playBuildDeploy: ["build"],
   },
   "Flow Emulator": {
-    url: "/tools/emulator",
+    url: "https://github.com/onflow/flow/blob/master/docs/emulator.md",
     icon: "emulator",
     description:
       "Develop and test your applications locally using the Flow emulator.",
     linkText: "Emulator Documentation",
+    playBuildDeploy: ["build"],
   },
   "VS Code Extension": {
-    url: "/tools/vscode",
+    url: "https://github.com/onflow/vscode-flow",
     icon: "vscode",
     description:
       "Cadence syntax highlighting and an integrated Flow emulator for VSCode users.",
     linkText: "VSCode Extension Documentation",
+    playBuildDeploy: ["build"],
   },
 };
 
@@ -99,33 +106,39 @@ const sections = [
     patterns: [
       "*",
       "intro/*",
-      "concepts/flow-concepts/*",
-      "concepts/node-operation/*",
-      "concepts/custody-providers/*",
-      "guides/node-operator/*",
-      "tutorial/cadence/*",
+      // "concepts/flow-concepts/*",
+      // "concepts/node-operation/*",
+      // "concepts/custody-providers/*",
+      // "guides/node-operator/*",
+      // "tutorial/cadence/*",
     ],
     sidebar: {
-      null: [
-        // "intro/flow-token",
-        // "intro/community",
-        // "intro/glossary",
-        // "intro/FAQ",
-      ],
-      Tutorials: ["tutorial/cadence/00-introduction"],
-      "Flow Concepts": [
-        "concepts/flow-concepts/slashings",
-        "concepts/flow-concepts/accounts-keys",
-        "concepts/flow-concepts/delegation",
-        "concepts/flow-concepts/devnet",
-        "concepts/flow-concepts/fees",
-        "concepts/flow-concepts/governance",
-        "concepts/flow-concepts/node-roles",
-        "concepts/flow-concepts/service-account",
-        "concepts/flow-concepts/testnet",
-        "concepts/flow-concepts/token-staking",
-        "concepts/flow-concepts/transactions",
-      ],
+      null: ["intro/flow-token", "intro/glossary", "intro/FAQ"],
+      // Tutorial: [
+      //   "tutorial/cadence/01-first-steps",
+      //   "tutorial/cadence/02-hello-world",
+      //   "tutorial/cadence/03-fungible-tokens",
+      //   "tutorial/cadence/04-non-fungible-tokens",
+      //   "tutorial/cadence/05-marketplace-setup",
+      //   "tutorial/cadence/06-marketplace-compose",
+      //   "tutorial/cadence/07-marketplace-compose",
+      //   "tutorial/cadence/08-voting",
+      // ],
+      // Tutorials: ["tutorial/cadence/00-introduction"],
+
+      // "Flow Concepts": [
+      //   "concepts/flow-concepts/slashings",
+      //   "concepts/flow-concepts/accounts-keys",
+      //   "concepts/flow-concepts/delegation",
+      //   "concepts/flow-concepts/devnet",
+      //   "concepts/flow-concepts/fees",
+      //   "concepts/flow-concepts/governance",
+      //   "concepts/flow-concepts/node-roles",
+      //   "concepts/flow-concepts/service-account",
+      //   "concepts/flow-concepts/testnet",
+      //   "concepts/flow-concepts/token-staking",
+      //   "concepts/flow-concepts/transactions",
+      // ],
       // "Node Operation Concepts": [
       //   "concepts/node-operation/quickstart",
       //   "concepts/node-operation/day1-accounts-tokens",
@@ -149,9 +162,13 @@ const sections = [
     },
   },
   {
+    sourceInstanceName: "docs",
     patterns: ["tutorial/cadence/*"],
     sidebar: {
-      null: ["tutorial/cadence/00-introduction"],
+      null: [
+        "tutorial/cadence/00-introduction",
+        "[Cadence Language Reference](/cadence/language)",
+      ],
       Tutorial: [
         "tutorial/cadence/01-first-steps",
         "tutorial/cadence/02-hello-world",
@@ -230,11 +247,11 @@ module.exports = {
         navConfig,
         footerNavConfig,
         siteName: "Flow Documentation",
-        description: "TODO: site description",
+        description: "Start Building in the Open",
         pageTitle: "Flow Docs",
         menuTitle: "Flow Ecosystem",
-        gaTrackingId: "UA-74643563-13",
-        algoliaApiKey: "768e823959d35bbd51e4b2439be13fb7",
+        gaTrackingId: "UA-160003377-1",
+        algoliaApiKey: "a152fe18a6749041bf9e0045f5f60117",
         algoliaIndexName: "flowdata",
         baseUrl: "https://docs.onflow.org",
         twitterUrl: "https://twitter.com/flow_blockchain",

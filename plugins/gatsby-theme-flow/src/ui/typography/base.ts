@@ -30,7 +30,7 @@ export const large: TypographyDefinition = {
 
 export const base: TypographyDefinition = {
   fontFamily: fonts.base,
-  fontSize: 15,
+  fontSize: 14,
   lineHeight: 1.53,
 };
 

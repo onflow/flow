@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import styled from "@emotion/styled";
 import { NavItemsContext, NavItemDescription } from "gatsby-theme-flow";
-import { colors } from "gatsby-theme-flow/src/colors";
 import { size } from "polished";
 import { MenuWrapper, MenuItem } from "./menu";
 import { getProjectIcon } from "gatsby-theme-flow/src/ui/icons";
@@ -49,7 +48,6 @@ export default function DocsetMenu() {
             title={<StyledLink href={navItem.url}>{navItem.title}</StyledLink>}
           >
             <NavItemDescription>{navItem.description}</NavItemDescription>
-            <a href={navItem.url}>📗&nbsp;Visit Docs</a>
           </MenuItem>
         ))}
     </MenuWrapper>
