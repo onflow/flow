@@ -39,7 +39,6 @@
     "moment": "^2.27.0",
     "normalize.css": "^8.0.1",
     "polished": "^2.3.3",
-    "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react": "16.13.1",
     "react-dom": "16.12.0",

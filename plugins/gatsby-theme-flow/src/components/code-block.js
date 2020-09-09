@@ -82,16 +82,10 @@ export default function CodeBlock(props) {
   const codeRef = useRef();
   return (
     <Container>
-      {props.className && !props.className.includes('language-text') && (
-        <CodeBlockHeader codeRef={codeRef} />
-      )}
+      <CodeBlockHeader codeRef={codeRef} />
       <InnerContainer>
         <pre ref={codeRef} {...props} />
       </InnerContainer>
     </Container>
   );
 }
-
-CodeBlock.propTypes = {
-  className: PropTypes.string.isRequired
-};

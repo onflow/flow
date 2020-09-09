@@ -43,11 +43,17 @@ module.exports = async (page, pluginOptions = {}) => {
       node.value = toHtml(
         {
           type: "element",
-          tagName: "code",
+          tagName: "pre",
+          properties: {
+            className: [`language-${node.lang}`],
+          },
           children: [
             {
               type: "element",
-              tagName: "pre",
+              tagName: "code",
+              properties: {
+                className: [`language-${node.lang}`],
+              },
               children: highlighted,
             }
           ],
