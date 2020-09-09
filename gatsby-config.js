@@ -102,40 +102,30 @@ const sourceSlugTransformers = {
 
 const sections = [
   {
-    patterns: ["tutorial/cadence/*"],
-    sidebar: {
-      null: ["tutorial/cadence/00-introduction"],
-      Tutorial: [
-        "tutorial/cadence/01-first-steps",
-        "tutorial/cadence/02-hello-world",
-        "tutorial/cadence/03-fungible-tokens",
-        "tutorial/cadence/04-non-fungible-tokens",
-        "tutorial/cadence/05-marketplace-setup",
-        "tutorial/cadence/06-marketplace-compose",
-        "tutorial/cadence/07-marketplace-compose",
-        "tutorial/cadence/08-voting",
-      ],
-    },
-  },
-  {
     sourceInstanceName: "docs",
     patterns: [
       "*",
       "intro/*",
-      "concepts/flow-concepts/*",
-      "concepts/node-operation/*",
-      "concepts/custody-providers/*",
-      "guides/node-operator/*",
+      // "concepts/flow-concepts/*",
+      // "concepts/node-operation/*",
+      // "concepts/custody-providers/*",
+      // "guides/node-operator/*",
       // "tutorial/cadence/*",
     ],
     sidebar: {
-      null: [
-        "intro/flow-token",
-        "intro/community",
-        "intro/glossary",
-        "intro/FAQ",
-      ],
+      null: ["intro/flow-token", "intro/glossary", "intro/FAQ"],
+      // Tutorial: [
+      //   "tutorial/cadence/01-first-steps",
+      //   "tutorial/cadence/02-hello-world",
+      //   "tutorial/cadence/03-fungible-tokens",
+      //   "tutorial/cadence/04-non-fungible-tokens",
+      //   "tutorial/cadence/05-marketplace-setup",
+      //   "tutorial/cadence/06-marketplace-compose",
+      //   "tutorial/cadence/07-marketplace-compose",
+      //   "tutorial/cadence/08-voting",
+      // ],
       // Tutorials: ["tutorial/cadence/00-introduction"],
+
       // "Flow Concepts": [
       //   "concepts/flow-concepts/slashings",
       //   "concepts/flow-concepts/accounts-keys",
@@ -169,6 +159,26 @@ const sections = [
       //   "concepts/custody-providers/keys-accounts",
       //   "concepts/custody-providers/token-distribution",
       // ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["tutorial/cadence/**/*", "cadence/language/**/*"],
+    sidebar: {
+      null: [
+        "tutorial/cadence/00-introduction",
+        "[Cadence Language Reference](/cadence/language)",
+      ],
+      Tutorial: [
+        "tutorial/cadence/01-first-steps",
+        "tutorial/cadence/02-hello-world",
+        "tutorial/cadence/03-fungible-tokens",
+        "tutorial/cadence/04-non-fungible-tokens",
+        "tutorial/cadence/05-marketplace-setup",
+        "tutorial/cadence/06-marketplace-compose",
+        "tutorial/cadence/07-marketplace-compose",
+        "tutorial/cadence/08-voting",
+      ],
     },
   },
   {

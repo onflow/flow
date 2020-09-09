@@ -1,7 +1,7 @@
 {
   "scripts": {
     "prestart": "gatsby clean",
-    "start": "gatsby develop",
+    "start": "node --nolazy node_modules/.bin/gatsby develop --inspect-brk",
     "build": "gatsby build",
     "serve": "gatsby serve"
   },

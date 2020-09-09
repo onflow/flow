@@ -76,6 +76,7 @@ Third is `access(account)`. This means that only code in the same account or cod
 The last is `access(all)`, or `pub`. If a field or function is `access(all)` or `pub`, anyone in the network can access it as long as they have a valid reference.
 
 ```cadence:title=NFT.cdc
+
 pub contract NFT {
       // completely public, anyone can access this
       access(all) var id: Int
