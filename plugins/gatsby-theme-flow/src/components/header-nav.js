@@ -28,6 +28,29 @@ const StyledLink = styled.a({
   },
 });
 
+const AnimatedLink = styled.div`
+  position: relative;
+  color: #fff;
+  &:before {
+    content: "Launch Flow Playground";
+    animation: animatebg 7s infinite;
+    position: absolute;
+    filter: brightness(80%);
+    background: linear-gradient(
+      120deg,
+      rgb(145, 251, 158),
+      rgb(240, 125, 228),
+      rgb(139, 244, 253)
+    );
+    background-size: 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    top: 0;
+    left: 0;
+  }
+`;
+
 const StyledIcon = styled(FaLongArrowAltRight)({
   marginLeft: "0.5em",
 });
@@ -40,7 +63,7 @@ export default function HeaderNav() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Launch Flow Playground
+        <AnimatedLink>Launch Flow Playground</AnimatedLink>
         <StyledIcon weight="thin" />
       </StyledLink>
     </Container>

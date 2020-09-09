@@ -9,7 +9,7 @@ import {
   getProjectIcon,
 } from "../ui/icons";
 import { Link, withPrefix } from "gatsby";
-import { theme } from "../colors";
+import { theme, colors } from "../colors";
 import { smallCaps } from "../utils/typography";
 import { size } from "polished";
 import { NavItemsContext } from "./page-layout";
@@ -42,22 +42,26 @@ const StyledList = styled.ul({
   listStyle: "none",
 });
 
-const StyledListItem = styled.li({
-  fontSize: "1rem",
-  lineHeight: 1.5,
-  marginBottom: "0.8125rem",
-  a: {
-    color: "inherit",
-    textDecoration: "none",
-    ":hover": {
-      opacity: theme.hoverOpacity,
+const StyledListItem = (props) => {
+  const LI = styled.li({
+    ...props.extraStyles,
+    fontSize: "1rem",
+    lineHeight: 1.5,
+    marginBottom: "0.8125rem",
+    a: {
+      color: "inherit",
+      textDecoration: "none",
+      ":hover": {
+        opacity: theme.hoverOpacity,
+      },
+      "&.active": {
+        color: theme.primary,
+        pointerEvents: "none",
+      },
     },
-    "&.active": {
-      color: theme.primary,
-      pointerEvents: "none",
-    },
-  },
-});
+  });
+  return <LI>{props.children}</LI>;
+};
 
 const Category = styled.div({
   position: "relative",
@@ -181,13 +185,38 @@ function showDocsetMenu(path) {
   return docsetPages.find((p) => path.includes(p));
 }
 
+function getStylesForNavItem(page) {
+  switch (page) {
+    case "Flow Tokens":
+      const styles = {
+        color: colors.white,
+        backgroundColor: colors.midnight.dark,
+        padding: "0 0.2rem",
+        borderRadius: "1000px",
+        maxWidth: "50%",
+        textAlign: "center",
+        boxShadow: ` 20px 20x 60px #1b63b6, 
+        -20px -20px 60px #2587f6`,
+        // "&:hover": {
+        //   backgroundColor: theme.primary,
+        // },
+      };
+
+      return styles;
+    default:
+      return {};
+      break;
+  }
+}
+
 function NavItems(props) {
   return (
     <StyledList>
       {props.pages.map((page, index) => {
         const pageTitle = page.sidebarTitle || page.title;
+        const styles = getStylesForNavItem(pageTitle);
         return (
-          <StyledListItem key={index}>
+          <StyledListItem key={index} extraStyles={styles}>
             {page.anchor ? (
               <a href={page.path} target="_blank" rel="noopener noreferrer">
                 {pageTitle}
@@ -295,6 +324,7 @@ export default function SidebarNav(props) {
           const isSelected = category.pages.some((page) =>
             isPageSelected(page.path, props.pathname)
           );
+
           const className = isSelected ? "active" : null;
           return (
             <Category key={index}>

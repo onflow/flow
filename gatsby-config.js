@@ -6,7 +6,7 @@ const navConfig = {
     icon: null,
     omitLandingPage: true,
     description:
-      "New to Flow? Start here. Read about Flow's architechture, and important concepts for a deeper understanding of the Flow platform and how it works.",
+      "New to Flow? Start here. Read about Flow's architecture, and important concepts for a deeper understanding of the Flow platform and how it works.",
   },
   Cadence: {
     url: "/tutorial/cadence/00-introduction/",
@@ -25,7 +25,7 @@ const navConfig = {
     playBuildDeploy: ["play"],
   },
   "JavaScript SDK": {
-    url: "/sdks/javascript",
+    url: "https://github.com/onflow/flow-js-sdk",
     icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
@@ -33,7 +33,7 @@ const navConfig = {
     playBuildDeploy: ["build"],
   },
   "Go SDK": {
-    url: "/sdks/golang",
+    url: "https://github.com/onflow/flow-go-sdk",
     icon: "go-sdk",
     description:
       "Build apps that interact with Flow using our full-featured Go SDK.",
@@ -41,7 +41,7 @@ const navConfig = {
     playBuildDeploy: ["build"],
   },
   "Flow CLI": {
-    url: "/tools/cli",
+    url: "https://github.com/onflow/flow/blob/master/docs/cli.md",
     icon: "cli",
     description:
       "The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.",
@@ -49,7 +49,7 @@ const navConfig = {
     playBuildDeploy: ["build"],
   },
   "Flow Emulator": {
-    url: "/tools/emulator",
+    url: "https://github.com/onflow/flow/blob/master/docs/emulator.md",
     icon: "emulator",
     description:
       "Develop and test your applications locally using the Flow emulator.",
@@ -57,7 +57,7 @@ const navConfig = {
     playBuildDeploy: ["build"],
   },
   "VS Code Extension": {
-    url: "/tools/vscode",
+    url: "https://github.com/onflow/vscode-flow",
     icon: "vscode",
     description:
       "Cadence syntax highlighting and an integrated Flow emulator for VSCode users.",
@@ -163,7 +163,7 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["tutorial/cadence/**/*", "cadence/language/**/*"],
+    patterns: ["tutorial/cadence/*"],
     sidebar: {
       null: [
         "tutorial/cadence/00-introduction",
