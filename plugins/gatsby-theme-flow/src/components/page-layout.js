@@ -122,6 +122,7 @@ export default function PageLayout(props) {
     discordUrl,
     twitterUrl,
     navConfig = {},
+    pathConfig,
     footerNavConfig,
     logoLink,
     algoliaApiKey,
@@ -138,7 +139,9 @@ export default function PageLayout(props) {
     [navConfig]
   );
 
-  const hasNavItems = navItems.length > 0 && pathname !== "/";
+  const hideDocsetDropdown =
+    navItems.length > 0 && pathConfig.hideDocsetDropdown.includes(pathname);
+
   const sidebarTitle = (
     <span className="title-sidebar">{subtitle || siteName}</span>
   );
@@ -166,7 +169,7 @@ export default function PageLayout(props) {
           title={siteName}
           logoLink={logoLink}
         >
-          {hasNavItems ? (
+          {!hideDocsetDropdown && (
             <HeaderInner>
               <ButtonWrapper ref={buttonRef}>
                 <StyledButton
@@ -181,7 +184,7 @@ export default function PageLayout(props) {
                 </StyledButton>
               </ButtonWrapper>
             </HeaderInner>
-          ) : null}
+          )}
           {sidebarContents && (
             <NavItemsContext.Provider value={navItems}>
               <SidebarNav
@@ -190,6 +193,7 @@ export default function PageLayout(props) {
                 onToggleAll={handleToggleAll}
                 onToggleCategory={handleToggleCategory}
                 onLinkClick={handleSidebarNavLinkClick}
+                pathConfig={pathConfig}
                 alwaysExpanded={props.path?.includes("/tutorial/cadence")}
               />
             </NavItemsContext.Provider>
@@ -217,7 +221,7 @@ export default function PageLayout(props) {
           </SelectedLanguageContext.Provider>
         </Main>
       </FlexWrapper>
-      {hasNavItems && (
+      {!hideDocsetDropdown && (
         <DocsetSwitcher
           siteName={menuTitle || siteName}
           discordUrl={discordUrl}

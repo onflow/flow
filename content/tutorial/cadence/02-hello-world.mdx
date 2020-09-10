@@ -38,7 +38,7 @@ Each user has an account controlled by one or more private keys. This means that
 
 An account is divided into two main areas:
 
-1. The first area is the [contract area](glossary#section-account). This is the area that stores programs known as smart contracts that contain type definitions, fields, and functions that are related to a common functionality. This can also hold contract interfaces, which are basically program guidelines that other contracts can import and implement. This area cannot be directly read from in a transaction, but the owner of an account can directly overwrite contracts that are stored in it.
+1. The first area is the [contract area](/intro/glossary/#account). This is the area that stores programs known as smart contracts that contain type definitions, fields, and functions that are related to a common functionality. This can also hold contract interfaces, which are basically program guidelines that other contracts can import and implement. This area cannot be directly read from in a transaction, but the owner of an account can directly overwrite contracts that are stored in it.
 2. The second area is the account filesystem. This area is accessible in transactions and is where an account stores the objects that they own and the capabilities for controlling how these objects are accessed.
    Objects are stored under paths in the account filesystem. Paths consist of a domain and an identifier.
 
@@ -49,12 +49,12 @@ There are only three valid domains which represent the three areas in the accoun
 Identifiers are custom and can be any name you want them to be to indicate what is stored in that path.
 
 - The `storage` domain is where all objects (such as tokens or NFTs) are stored. It is only accessible by the owner of the account.
-- The `private` domain is like a private API. You can optionally store [capabilities](https://docs.onflow.org/v0.3/docs/glossary#section-capability) to any of your stored assets here. Only the owner and anyone they give access to can use these interfaces to call functions that are defined in your private assets. Users will commonly store private capabilities here that refer to other accounts private objects.
+- The `private` domain is like a private API. You can optionally store [capabilities](/intro/glossary/#capability) to any of your stored assets here. Only the owner and anyone they give access to can use these interfaces to call functions that are defined in your private assets. Users will commonly store private capabilities here that refer to other accounts private objects.
 - The `public` domain is kind of like your account's public API. The owner can store capabilities here that that anyone else in the network can access to interact with the private assets that are stored in the account.
 
 <Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/accounts-diagram.png" />
 
-A [Transaction](https://docs.onflow.org/docs/glossary#section-transaction) in Flow is defined as an arbitrary-sized block of Cadence code that is signed by one or more accounts. Transactions have access to the `/storage/` and `/private/` domains of the accounts that signed the transaction and can read and write to those domains, as well as read and call functions in public contracts and the public domains in other users` accounts.
+A [Transaction](/intro/glossary/#transaction) in Flow is defined as an arbitrary-sized block of Cadence code that is signed by one or more accounts. Transactions have access to the `/storage/` and `/private/` domains of the accounts that signed the transaction and can read and write to those domains, as well as read and call functions in public contracts and the public domains in other users` accounts.
 
 ## Creating a Smart Contract
 
@@ -202,7 +202,7 @@ Congratulations, you just executed your first Cadence transaction! :100:
 
 ---
 
-Next, we are going to get some practice with an example that uses **[resources](https://onflow.readme.io/docs/glossary#section-resource)**, one of the defining features in Cadence. A resource is a composite type like a struct or a class, but with some special rules.
+Next, we are going to get some practice with an example that uses **[resources](/intro/glossary/#resource)**, one of the defining features in Cadence. A resource is a composite type like a struct or a class, but with some special rules.
 
 <Callout type="info">
 
@@ -270,7 +270,7 @@ init() {
 
 This example also declares an `init()` function. All composite types like contracts, resources, and structs can have an optional `init()` function that only runs when the object is initially created. Cadence requires that all fields must be explicitly initialized, so if the object has fields, this function has to be used to initialize them.
 
-Contracts also have read and write access to the storage of the account that they are deployed to by using the built-in [`self.account`](https://onflow.readme.io/docs/glossary#section-account) object. This is an `AuthAccount` object that gives them access to many different functions to interact with the private storage of the account.
+Contracts also have read and write access to the storage of the account that they are deployed to by using the built-in [`self.account`](/intro/glossary/#account) object. This is an `AuthAccount` object that gives them access to many different functions to interact with the private storage of the account.
 
 In this contract's `init` function, the contract uses the `create` keyword to create an instance of the `HelloAsset` type and saves it to a local variable. To create a new resource object, we use the `create` keyword followed by an invocation of the name of the resource with any `init()` arguments. A resource can only be created in the scope that it is defined in. This prevents anyone from being able to create arbitrary amounts of resource objects that others have defined.
 
@@ -295,7 +295,7 @@ self.account.save(<-newHello, to: /storage/Hello)
 
 A contract can refer to its member functions and fields with the keyword `self`. All contracts have access to the storage of the account where they are deployed and can access that `AuthAccount` object with `self.account`.
 
-`AuthAccount` objects have many different methods that are used to interact with account storage. You can see the documentation for all of these in the Storage section of the language reference or in the [glossary](https://onflow.readme.io/docs/glossary#section-account).
+`AuthAccount` objects have many different methods that are used to interact with account storage. You can see the documentation for all of these in the Storage section of the language reference or in the [glossary](/intro/glossary/#account).
 The `save` method saves an object to account storage. The type parameter for the object type is contained in `<>` to indicate what type the stored object is. It can also be inferred from the argument's type.
 
 The first parameter is the object that is being stored, and the `to` parameter is the path that the object is being stored at. The path must be a storage path, i.e., only the domain storage is allowed as the `to` parameter.
@@ -369,7 +369,7 @@ Next, we call the `hello` function and log the output.
 log(helloResource?.hello())
 ```
 
-We use `?` because the values in the storage are returned as [optionals](https://onflow.readme.io/docs/glossary#section-optionals-in-cadence). Optionals are values that can represent the absence of a value. Optionals have two cases: either there is a value of the specified type, or there is nothing (`nil`). An optional type is declared using the `?` suffix.
+We use `?` because the values in the storage are returned as [optionals](/intro/glossary/#optionals-in-cadence). Optionals are values that can represent the absence of a value. Optionals have two cases: either there is a value of the specified type, or there is nothing (`nil`). An optional type is declared using the `?` suffix.
 
 ```cadence
 let newResource: HelloAsset?  // could either have a value of type `HelloAsset`
@@ -386,7 +386,7 @@ acct.save(<-helloResource!, to: /storage/Hello)
 
 Remember, `helloResource` is still an optional, so we have to handle the possibility that it is `nil`. Here, we use the force-unwrap operator (`!`). This operator gets the value in the optional if it contains a value, and aborts the entire transaction if the object is `nil`. It is a more risky way of dealing with optionals, but if your program is ever in a state where a value being `nil` would defeat the purpose of the whole transaction, the the force-unwrap operator is a good choice to deal with that.
 
-Refer to [Optionals In Cadence](https://onflow.readme.io/docs/glossary#section-optionals-in-cadence) to learn more about optionals and how they are used.
+Refer to [Optionals In Cadence](/intro/glossary/#optionals-in-cadence) to learn more about optionals and how they are used.
 
 <Callout type="info">
 
@@ -502,7 +502,7 @@ log(helloReference?.hello())
 
 ---
 
-A [script](https://onflow.readme.io/docs/glossary#section-script) is a very simple transaction type in Cadence that cannot perform any writes to the blockchain and can only read the state of an account. It runs without permissions from any account.
+A [script](/intro/glossary/#script) is a very simple transaction type in Cadence that cannot perform any writes to the blockchain and can only read the state of an account. It runs without permissions from any account.
 
 To execute a script, you write a function called `pub fun main()`. You can click the execute script button to run the script. The result of the script will be printed to the console output.
 

@@ -12,7 +12,7 @@ Cadence is a resource-oriented programming language that introduces new features
 
 - Type safety and a strong static type system
 - Resource-oriented programming, a new paradigm that pairs linear types with object capabilities to create a secure and declarative model for digital ownership by ensuring that resources (and their associated assets) can only exist in one location at a time, cannot be copied, and cannot be accidentally lost or deleted
-- Built-in pre-conditions and post-conditions for functions and [transactions](doc:glossary#section-transaction)
+- Built-in pre-conditions and post-conditions for functions and [transactions](/intro/glossary/#transaction)
 - The utilization of capability-based security, which enforces access control by requiring that access to objects is restricted to only the owner and those who have a valid reference to the object
 
 Swift and Rust inspire Cadence’s syntax. Its use of resource types maps well to that of Move, the programming language being developed by the Libra team.
@@ -69,7 +69,7 @@ Cadence allows the use of argument labels to describe the meaning of function ar
 
 Most smart contract languages currently use a ledger-style approach to record ownership, where an asset is stored in the smart contract as an entry in a central ledger, and this ledger is the source of truth around asset ownership. There are many disadvantages to this design, especially when it comes to tracking the ownership of multiple assets belonging to a single account. To find out all of the assets that an account owns, you would have to enumerate all the possible smart contracts that could potentially include this account and search to see if the account owns these assets.
 
-In a resource-oriented language like Cadence, resources directly tie an asset to the [account](glossary#section-account) that owns it by saving the resource in the account’s storage. As a result, ownership isn’t centralized in a single, central smart contract’s storage. Instead, each account owns and stores its own assets, and the assets can be transferred freely between accounts without the need for arbitration by a central smart contract.
+In a resource-oriented language like Cadence, resources directly tie an asset to the [account](/intro/glossary/#account) that owns it by saving the resource in the account’s storage. As a result, ownership isn’t centralized in a single, central smart contract’s storage. Instead, each account owns and stores its own assets, and the assets can be transferred freely between accounts without the need for arbitration by a central smart contract.
 
 Resources are inspired by linear types and increase safety when working with assets, which often have real, intrinsic value. Resources, as enforced by Cadence’s type system, ensure that assets are correctly manipulated and not abused.
 
@@ -93,4 +93,4 @@ The structure of the language lends itself well to compilation (for example, sta
 
 ---
 
-Now that you've learned about the goals and design of Cadence and Flow, you're ready to get started with the Flow emulator and tools! Go to the [Getting Started](doc:getting-started) page to work through language fundamentals and tutorials.
+Now that you've learned about the goals and design of Cadence and Flow, you're ready to get started with the Flow emulator and tools! Go to the [Getting Started](/tutorial/cadence/01-first-steps/) page to work through language fundamentals and tutorials.

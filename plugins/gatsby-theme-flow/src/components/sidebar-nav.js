@@ -154,7 +154,7 @@ function ProjectLink(props) {
 
   return (
     <ProjectLinkContainer>
-      <ProjectIcon css={{ backgroundImage: `url(${props.icons.color})` }} />
+      <ProjectIcon css={{ backgroundImage: `url(${props.icons?.color})` }} />
       {props.children}
     </ProjectLinkContainer>
   );
@@ -173,36 +173,45 @@ function isPageSelected(path, pathname) {
   return a === b;
 }
 
-function showDocsetMenu(path) {
-  const root = path === "/";
-  const docsetPages = [
-    "/concepts",
-    "/intro/glossary",
-    "/intro/FAQ",
-    "intro/flow-token/",
-  ];
-  if (root) return true;
-  return docsetPages.find((p) => path.includes(p));
-}
-
 function getStylesForNavItem(page) {
   switch (page) {
     case "Flow Tokens":
-      const styles = {
-        color: colors.white,
-        backgroundColor: colors.midnight.dark,
+      // TODO: Cvert these to tailwind css classes...
+      return {
+        color: colors.grey.darker,
+        backgroundColor: colors.green.lightest,
         padding: "0 0.2rem",
+        paddingLeft: "1rem",
+        marginLeft: "-1rem",
         borderRadius: "1000px",
-        maxWidth: "50%",
-        textAlign: "center",
         boxShadow: ` 20px 20x 60px #1b63b6, 
         -20px -20px 60px #2587f6`,
         // "&:hover": {
         //   backgroundColor: theme.primary,
         // },
       };
-
-      return styles;
+    case "Node Operation Quick Guide":
+      return {
+        color: colors.grey.dark,
+        padding: "0 0.2rem",
+        paddingLeft: "1rem",
+        marginLeft: "-1rem",
+        borderRadius: "1000px",
+        boxShadow: ` 20px 20x 60px #1b63b6, 
+        -20px -20px 60px #2587f6`,
+        background: colors.blue.lightest,
+      };
+    case "Cadence Language Reference":
+      return {
+        color: colors.grey.dark,
+        padding: "0 0.2rem",
+        paddingLeft: "1rem",
+        marginLeft: "-1rem",
+        borderRadius: "1000px",
+        boxShadow: ` 20px 20x 60px #1b63b6, 
+          -20px -20px 60px #2587f6`,
+        background: colors.pink.lightest,
+      };
     default:
       return {};
       break;
@@ -250,6 +259,7 @@ NavItems.propTypes = {
 export default function SidebarNav(props) {
   const categoriesRef = useRef();
   const docset = useContext(NavItemsContext);
+  const { pathname, pathConfig } = props;
 
   const [allExpanded, setAllExpanded] = useState(false);
   const categories = props.contents.filter((content) => content.title);
@@ -287,10 +297,14 @@ export default function SidebarNav(props) {
     }
   }
 
+  const showDocsetMenu = pathConfig.showDocsetMenu.find((p) => {
+    return pathname === p;
+  });
+
   return (
     <>
       <DocsetMenuWrapper>
-        {showDocsetMenu(props.pathname) &&
+        {showDocsetMenu &&
           docset
             .filter((navItem) => {
               return !navItem.omitLandingPage;

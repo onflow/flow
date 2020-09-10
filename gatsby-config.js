@@ -1,5 +1,25 @@
 const fs = require("fs");
 
+// Do things on these paths
+const pathConfig = {
+  // hide the docset dropdown on these pages
+  hideDocsetDropdown: [
+    "/",
+    "/intro/FAQ/",
+    "/intro/glossary/",
+    "/intro/flow-token/",
+    "/concepts/node-operation/quickstart",
+  ],
+  // Shows the main docest menu on these pages
+  showDocsetMenu: [
+    "/",
+    "/intro/FAQ/",
+    "/intro/glossary/",
+    "/intro/flow-token/",
+    "/concepts/node-operation/quickstart",
+  ],
+};
+
 const navConfig = {
   "Getting Started": {
     url: "/",
@@ -14,7 +34,6 @@ const navConfig = {
     description:
       "Resource-Oriented programming language for smart contracts that helps developers ensure that their code is safe, secure, clear, and approachable.",
     linkText: "Cadence Documentation",
-    playBuildDeploy: ["play"],
   },
   "Flow Playground": {
     url: "https://play.onflow.org",
@@ -22,7 +41,6 @@ const navConfig = {
     description:
       "Learn the basics of Flow and Cadence using our browser-based playground.",
     linkText: "Launch the Flow Playground",
-    playBuildDeploy: ["play"],
   },
   "JavaScript SDK": {
     url: "https://github.com/onflow/flow-js-sdk",
@@ -30,7 +48,6 @@ const navConfig = {
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
     linkText: "JavaScript SDK Documentation",
-    playBuildDeploy: ["build"],
   },
   "Go SDK": {
     url: "https://github.com/onflow/flow-go-sdk",
@@ -38,7 +55,6 @@ const navConfig = {
     description:
       "Build apps that interact with Flow using our full-featured Go SDK.",
     linkText: "Go SDK Documentation",
-    playBuildDeploy: ["build"],
   },
   "Flow CLI": {
     url: "https://github.com/onflow/flow/blob/master/docs/cli.md",
@@ -46,7 +62,6 @@ const navConfig = {
     description:
       "The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.",
     linkText: "CLI Documentation",
-    playBuildDeploy: ["build"],
   },
   "Flow Emulator": {
     url: "https://github.com/onflow/flow/blob/master/docs/emulator.md",
@@ -54,7 +69,6 @@ const navConfig = {
     description:
       "Develop and test your applications locally using the Flow emulator.",
     linkText: "Emulator Documentation",
-    playBuildDeploy: ["build"],
   },
   "VS Code Extension": {
     url: "https://github.com/onflow/vscode-flow",
@@ -62,7 +76,6 @@ const navConfig = {
     description:
       "Cadence syntax highlighting and an integrated Flow emulator for VSCode users.",
     linkText: "VSCode Extension Documentation",
-    playBuildDeploy: ["build"],
   },
 };
 
@@ -106,14 +119,19 @@ const sections = [
     patterns: [
       "*",
       "intro/*",
-      // "concepts/flow-concepts/*",
+      "concepts/node-operation/*",
       // "concepts/node-operation/*",
       // "concepts/custody-providers/*",
       // "guides/node-operator/*",
       // "tutorial/cadence/*",
     ],
     sidebar: {
-      null: ["intro/flow-token", "intro/glossary", "intro/FAQ"],
+      null: [
+        "intro/flow-token",
+        "[Node Operation Quick Guide](/concepts/node-operation/quickstart)",
+        "intro/glossary",
+        "intro/FAQ",
+      ],
       // Tutorial: [
       //   "tutorial/cadence/01-first-steps",
       //   "tutorial/cadence/02-hello-world",
@@ -176,7 +194,7 @@ const sections = [
         "tutorial/cadence/04-non-fungible-tokens",
         "tutorial/cadence/05-marketplace-setup",
         "tutorial/cadence/06-marketplace-compose",
-        "tutorial/cadence/07-marketplace-compose",
+        "tutorial/cadence/07-resources-compose",
         "tutorial/cadence/08-voting",
       ],
     },
@@ -245,6 +263,7 @@ module.exports = {
       resolve: "gatsby-theme-flow",
       options: {
         navConfig,
+        pathConfig,
         footerNavConfig,
         siteName: "Flow Documentation",
         description: "Start Building in the Open",
