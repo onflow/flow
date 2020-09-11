@@ -487,46 +487,6 @@ Subscribe to events related to your user's accounts to notify and update account
 
 Supporting delivery of tokens
 
-### Transfer Tokens (FLOW)
-
-```cadence
-transaction(amount: UFix64, to: Address) {
-
-    let vault: @FungibleToken.Vault
-
-    prepare(signer: AuthAccount) {
-        self.vault <- signer
-            .borrow<&{FungibleToken.Provider}>(from: /storage/flowTokenVault)!
-            .withdraw(amount: amount)
-    }
-
-    execute {
-        getAccount(to)
-            .getCapability(/public/flowTokenReceiver)!
-            .borrow<&{FungibleToken.Receiver}>()!
-            .deposit(from: <-self.vault)
-    }
-}
-```
-
-- **First parameter: amount:**
-
-  ```json
-  {
-      "type": "UFix64",
-      "value": "<integer>.<fractional>"
-  }
-  ```
-
-- **Second parameter: receiver address**
-
-  ```json
-  {
-      "type": "Address",
-      "value": "0x0" // as hex-encoded string with 0x prefix
-  }
-  ```
-
 ### Holding and/or Using FLOW
 <insert links for>
 **Creating Accounts**
