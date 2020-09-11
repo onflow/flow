@@ -19,12 +19,15 @@ Perform necessary KYC and provide user with their Flow address.
 
 It should look like something like `0x7e60df042a9c0868`.
 
-[Creating Accounts on Flow](https://github.com/onflow/flow-go-sdk#creating-an-account)
+Accounts can be created using a Flow SDK.
+For example, accounts can be created using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk#creating-an-account).
 
 ### **Step 2**
 
-Subscribe to events related to your user's accounts to notify and update account balance in UI
-[Querying Accounts](https://github.com/onflow/flow-go-sdk#querying-accounts)
+Subscribe to events related to your user's accounts to notify and update account balance in UI.
+
+Accounts can be queried using a Flow SDK.
+For example, this can be done using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-accounts).
 
 ## Holding and/or Using FLOW
 
@@ -35,6 +38,4 @@ Subscribe to events related to your user's accounts to notify and update account
 
 ## Unbonding / Withdrawing Stake
 
-- The process for unbonding stake (removing it from the staked node) requires either party to initiate an unbonding request; which is a function call to the staking helper.
-
-- When the request is approved by the core staking contract, the funds will be locked for one epoch and then transferred into the deposit account as set in the initial staking transaction.
+Stake can be [unbonded / withdrawn](custody-staking-and-delivery.mdx#unbonding-/-withdrawing-stake).
