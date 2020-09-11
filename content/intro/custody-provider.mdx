@@ -1,0 +1,40 @@
+<!--
+
+TODO:
+- Insert protocol for emitting event when tokens deposited into account
+- Peter to insert generalised websequence digram from this doc https://docs.google.com/document/d/1b1fVgHBlGYMu0WvIz5fwDMc153UGzXz0Pp2lr1atRrE/edit#heading=h.vyfahjj5ho25
+- Insert sequence diagram https://www.notion.so/dapperlabs/Token-Staking-Process-6877e85a057e4eab8beae7f5187f3ffb#6cdcd35f8084439d93da479f1dc0831d
+- Insert Unbonding transaction example
+https://github.com/dapperlabs/flow-internal/issues/1131
+
+-->
+
+# FlOW for custody providers
+
+## Supporting Deposits of FLOW
+
+### **Step 1**
+
+Perform necessary KYC and provide user with their Flow address.
+
+It should look like something like `0x7e60df042a9c0868`.
+
+[Creating Accounts on Flow](https://github.com/onflow/flow-go-sdk#creating-an-account)
+
+### **Step 2**
+
+Subscribe to events related to your user's accounts to notify and update account balance in UI
+[Querying Accounts](https://github.com/onflow/flow-go-sdk#querying-accounts)
+
+## Holding and/or Using FLOW
+
+**[Creating Accounts](#)**
+**[Submitting Transactions to Flow](#)**
+**[Staking FLOW](#)**
+**[Delegating FLOW](#)**
+
+## Unbonding / Withdrawing Stake
+
+- The process for unbonding stake (removing it from the staked node) requires either party to initiate an unbonding request; which is a function call to the staking helper.
+
+- When the request is approved by the core staking contract, the funds will be locked for one epoch and then transferred into the deposit account as set in the initial staking transaction.
