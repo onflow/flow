@@ -1,17 +1,42 @@
-// insert function names and flow to achieve with transaction 
+<!--
 
-# FLOW 
-## Native token of the FLOW protocol 
-The FLOW native token complies to the [fungible token standard](https://github.com/onflow/flow-ft)
+TODO:
+- FLOW vs $FLOW
+- Insert function names and flow to achieve with transaction
+- Add URL for Flow port
+- Add URL for Faucet
+- Add email address for Flow team
+- Add URL for Alpha program
+- Add URL for Token Lease Staking Program
+- Add URL for Open World Builders (is it https://medium.com/dapperlabs/open-world-builders-free-virtual-blockchain-bootcamp-cefe7f0ccb9f ?)
+- Josh to confirm Withdrawing Rewards
+- Update version number and fees applied (v0.x.x)
+- Update URL for Access API
+- Add transaction template for shipping on mainnet
+- Link to JS SDK documentation in "Submitting Transactions and Updating Users"
+- Peter to help with fleshing out deposits
+- Add link to application form in staking section
+- Link to consolidated guide in staking section
+- Confirm where node ID is generated in staking section
+
+-->
+
+# FLOW
+
+## Native token of the FLOW protocol
+
+The FLOW native token complies to the [Flow Fungible Token standard](https://github.com/onflow/flow-ft)
+
 ## Receiving & Earning FLOW
 
 ### Token Delivery
+
 Follow the process outlined below if you would like to:
-- a) claim tokens purcahsed in a previous sale
-- b) purchase or hold FLOW in the future
 
+- a) Claim tokens purchased in a previous sale
+- b) Purchase or hold FLOW in the future
 
-**Step 1)** 
+#### **Step 1: Choosing a custody provider**
 
 Choose a custody provider who currently supports Flow:
 
@@ -19,12 +44,13 @@ Choose a custody provider who currently supports Flow:
 - Finoa
 - Kraken
 - Ledger, or
-- Create your own Flow account by going to [Flow Port](Coming soon) and selecting "Create Account" under the transactions option. This will submit a transaction to the [Flow Faucet](link to below documentation) which will sign as the payer to create your account.
+- Create your own Flow account by going to [Flow Port](#) and selecting "Create Account" under the transactions option.
+  This will submit a transaction to the [Flow Faucet](#) which will sign as the payer to create your account.
 
-#### Account Creation 
-**Step 2)**
+#### **Step 2: Account creation**
 
-Your chosen custody service will provide you with an option to create a `Flow Address`. Account Addresses for managing funds and signing transactions are created as follows:
+Your chosen custody service will provide you with an option to create a `Flow Address`.
+Account addresses for managing funds and signing transactions are created as follows:
 
 1. The user (or user's agent)
    1. generates the private account key (off-chain)
@@ -33,332 +59,444 @@ Your chosen custody service will provide you with an option to create a `Flow Ad
     1. co-signs the account creation transaction (for authorization, and payment)
     2. submits the transaction to the network
 
-Once the account creation transaction has been executed and the result sealed, the user can use their private key to authorize transactions through their account (generally this is done through a wallet provider). The exact steps to complete this may vary by custody provider but they will require a thorough KYC process. 
+Once the account creation transaction has been executed and the result sealed,
+the user can use their private key to authorize transactions through their account
+(generally this is done through a wallet provider).
 
-**You are done this step when you receive your Flow Address. **
+The exact steps to complete this may vary by custody provider but they will require a thorough KYC process.
 
-It should look like something like:
+**You are done this step when you receive your Flow Address.**
 
-`0x3fes82da`
+It should look like something like: `0x3fes82da`
 
-**A Few Technical Details**
+#### Flow Addresses: Technical Details
 
-For Flow addresses, a linear code [64, 45, 7] is used as an error-detection code. The address of the i-th account created on Flow is simply the codeword corresponding to the original value (i). This linear code allows generating 2^45 distinct addresses, each address is encoded over 64 bits. Two different addresses are guaranteed to have at least 7 different bits which reduces the risk of confusing two addresses. 
+For Flow addresses, a linear code [64, 45, 7] is used as an error-detection code.
+The address of the i-th account created on Flow is simply the codeword corresponding to the original value (i).
+This linear code allows generating 2^45 distinct addresses, each address is encoded over 64 bits.
+Two different addresses are guaranteed to have at least 7 different bits which reduces the risk of confusing two addresses.
 
-Moreover, the linear code used is non-systematic, which means it's not possible to separate the extra bits from the original value bits in the codeword. This makes the generated addresses look like random numbers and two consecutive account addresses look very different. A quick off-chain test can tell if a 64 bits word could be a valid Flow address. 
+Moreover, the linear code used is non-systematic, which means it's not possible to separate the extra bits from the original value bits in the codeword.
+This makes the generated addresses look like random numbers and two consecutive account addresses look very different.
+A quick off-chain test can tell if a 64 bits word could be a valid Flow address.
 
-The generation of an account address is an on-chain mechanism that happens when a Flow network receives an account creation transaction. The network keeps track of the number of accounts already created and returns the newly created address.
+The generation of an account address is an on-chain mechanism that happens when a Flow network receives an account creation transaction.
+The network keeps track of the number of accounts already created and returns the newly created address.
 
-**Step 3)** 
+#### **Step 3**
 
-Provide the Flow team (<insert token delivery email>)your Flow Address and the tokens will be deposited into your account shortly.
+Provide the [Flow team](mailto:) your Flow Address and the tokens will be deposited into your account shortly.
 
-You will be able to **check your FLOW balance** anytime on [Flow Port](Insert link to Flow Port). 
+You will be able to **check your FLOW balance** anytime on [Flow Port](#)
 
 ### Earning FLOW
-There are a number of programs available to earn FLOW tokens. 
-* Alpha Program<link to home page>
-* Token Lease Staking Program<link to home page>
-* Open World Builders<link to home page>
+
+There are a number of programs available to earn FLOW tokens.
+
+- [Alpha Program](#)
+- [Token Lease Staking Program](#)
+- [Open World Builders](#)
 
 ## Using FLOW
+
 With FLOW, you can:
-* Spend,
-* Stake,
-* Delegate,
-* Hold,
-* Vote, 
-* Send & Share, or 
-* Create, develop, and grow your dapp.
 
+- Spend
+- Stake
+- Delegate
+- Hold
+- Vote
+- Send and share
+- Create, develop, and grow your dapp
 
+## Spending Flow
 
-## Spending Flow 
+All you need to spend Flow is an account and a tool for signing transactions
+(a wallet, custodian, or other signing service).
+The Flow Client Library (FCL) makes it super duper easy to go to any dapp,
+login with your account, have a great time,
+and then sign with the wallet of your choice only once you decide to make a purchase.
 
-All you need to spend Flow is an account and a tool for signing transactions (a wallet, custodian, or other signing service). The Flow Client Library (FCL) makes it super duper easy to go to any dapp, login with your account, have a great time, and then sign with the wallet of your choice only once you decide to make a purchase.
+## Staking FLOW
 
+You can commit tokens to stake with the `send_staking_tokens.cdc` transaction.
+These tokens are held in escrow in the `StakingHelper` resource.
+You can submit an official staking request by using the `create_staking_request.cdc`
+transaction which registers the node operator in the Flow ID Table contract
+and commits your tokens to be staked in the next epoch.
 
- 
-## Staking FLOW 
+Alternatively, you may choose to submit an `abort_stake.cdc` transaction
+which will remove the tokens from escrow and return them to your account,
+if called prior to the beginning of the epoch.
 
-You can commit tokens to stake with the `send_staking_tokens.cdc` transaction. 
-These tokens are held in escrow in the `StakingHelper` resource. You can submit an official staking request by using the `create_staking_request.cdc` transaction which registers the node operator in the Flow ID Table contract and commits your tokens to be staked in the next epoch.
-Alternatively, you may choose to submit an `abort_stake.cdc` transaction which will remove the tokens from escrow and return them to your account, if called prior to the beginning of the epoch. 
+If the `create_staking_request.cdc` transaction has been submitted,
+you can do a few things:
 
-If the `create_staking_request.cdc` transaction has been submitted, you can do a few things:
-1) Add additional tokens via `stake_new_tokens.cdc` transaction 
-2) Remove your stake via `request_unstaking.cdc` transaction, or
-3) Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction (if you've participated in an earlier epoch) 
+- Add additional tokens via `stake_new_tokens.cdc` transaction
+- Remove your stake via `request_unstaking.cdc` transaction, or
+- Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction
+   (if you've participated in an earlier epoch)
 
 ### Withdrawing Rewards
-Rewards are deposited into your pool of unlocked tokens which you can withdraw at anytime using the `withdraw_tokens.cdc` transaction. 
-Rewards are paid out at the end of each epoch, at which point you will be able to submit this transaction. 
+
+Rewards are deposited into your pool of unlocked tokens
+which you can withdraw at anytime using the `withdraw_tokens.cdc` transaction.
+Rewards are paid out at the end of each epoch,
+at which point you will be able to submit this transaction.
 You can opt to restake your rewards by submitting the `stake_unlocked_tokens.cdc` transaction.
 
+## Delegating FLOW
 
-## Delegating FLOW 
-A node operator who wants to allow delegation to their node will create a public capability for delegators using the `publish_delegation.cdc` transaction. This capability will only be valid for nodes which have already submitted a staking request and which fulfill the minimum staking requirements for that node type. 
-Token holders who wish to delegate to their node submit a `delegate_tokens.cdc` transaction providing the account addreses of the node they want to delegagte to. This transaction creates a capability that the delegator stores in their account which gives them access to: 
-1) Staking additional tokens
-2) Withdrawing rewards 
-3) Requesting to unstake
+A node operator who wants to allow delegation to their node
+will create a public capability for delegators using the `publish_delegation.cdc` transaction.
+This capability will only be valid for nodes which have already submitted a staking request
+and which fulfill the minimum staking requirements for that node type.
+Token holders who wish to delegate to their node submit a `delegate_tokens.cdc` transaction
+providing the account addresses of the node they want to delegate to.
+This transaction creates a capability that the delegator stores in their account
+which gives them access to:
 
-If a node operator has delegators, they cannot withdraw their own tokens such that their own staked tokens would fall below the minimum requirement for that node type. This is enforced at the protocol level. 
+- Staking additional tokens
+- Withdrawing rewards
+- Requesting to unstake
 
-* Collector Nodes: 250,000 FLOW
-* Consensus Nodes: 500,000 FLOW
-* Execution Nodes: 1,250,000 FLOW
-* Verification Nodes:135,000 FLOW
+If a node operator has delegators, they cannot withdraw their own tokens
+such that their own staked tokens would fall below the minimum requirement for that node type.
+This is enforced at the protocol level.
 
-The delegation logic keeps track of the amount of tokens each delegator has delegated for the node operator. When rewards are paid out, the rewards are automatically divided based on the proportion held by that token holder wrt to the total tokens staked. 
+- Collector Nodes: 250,000 FLOW
+- Consensus Nodes: 500,000 FLOW
+- Execution Nodes: 1,250,000 FLOW
+- Verification Nodes: 135,000 FLOW
 
-### Withdrawing Rewards 
-Validly staked accounts are provided a resource from the Staking Contract which allows them to withdraw rewards once they are available at the end of the epoch.
-:exclamation: @joshhannan please confirm
+The delegation logic keeps track of the amount of tokens each delegator has delegated for the node operator.
+When rewards are paid out, the rewards are automatically divided
+based on the proportion held by that token holder wrt to the total tokens staked.
+
+### Withdrawing Rewards
+
+Validly staked accounts are provided a resource from the Staking Contract
+which allows them to withdraw rewards once they are available at the end of the epoch.
 
 ## Holding FLOW
-If you have already purchased FLOW and wish to hold it, you have a couple options:
-* For relatively small, short term holdings - most people use a wallet. Wallets are used to help you sign transactions (verify your actions) when using your FLOW tokens. 
-* For larger, long term holdings - you may want to use a custody provider to keep your funds safe.
 
-You can find wallets & custodians supporting Flow here <Insert link to Flow Port>
+If you have already purchased FLOW and wish to hold it, you have a couple options:
+
+- For relatively small, short term holdings - most people use a wallet.
+  Wallets are used to help you sign transactions (verify your actions) when using your FLOW tokens.
+
+- For larger, long term holdings - you may want to use a custody provider to keep your funds safe.
+
+You can find wallets and custodians supporting Flow in the [Flow port](#)
 
 ## Voting with FLOW
-Participating in the Flow community is more than just running a node or building a dapp. It's also about engaging in discussion, debate, and decision making about the protocol, the content on it, and the people impacted by it. You can use your Flow account to submit votes to community polls and other governance related activities. 
 
-## Sending & Sharing FLOW
+Participating in the Flow community is more than just running a node or building a dapp.
+It's also about engaging in discussion, debate, and decision making about the protocol,
+the content on it, and the people impacted by it.
+You can use your Flow account to submit votes to community polls and other governance related activities.
+
+## Sending and Sharing FLOW
+
 If you just want to share the love and bring your friends to Flow - it's easier than an edible arrangement.
 
-It is possible to use the Flow blockchain without holding any FLOW tokens yourself. Free to play games, trials, community polls, and other community activities can all take place with only an account (which may be created on a person's behalf) and a small fixed fee which may paid by a user agent. The protocol requires some FLOW tokens to process these transactions but (and this is the cool part!) a product can support users who do not themselves hold FLOW while still providing that user with all the underlying security guarantees the Flow protocol provides.  
+It is possible to use the Flow blockchain without holding any FLOW tokens yourself.
+Free to play games, trials, community polls,
+and other community activities can all take place with only an account
+(which may be created on a person's behalf)
+and a small fixed fee which may paid by a user agent.
 
-Transferring FLOW, creating accounts, and updating keys are all actions made easy on Flow Port <Insert link to Flow Port>.
+The protocol requires some FLOW tokens to process these transactions,
+but (and this is the cool part!) a product can support users who do not themselves hold FLOW
+while still providing that user with all the underlying security guarantees the Flow protocol provides.
+
+Transferring FLOW, creating accounts, and updating keys are all actions made easy on [Flow Port](#)
 
 ## Creating with FLOW
 
 ### FLOWs for Development
-The Devnet Faucet is a tool for Flow developers to create accounts and fund their accounts with $FLOW tokens on the Flow Development Network.
+
+The [Flow Faucet](#) is a tool for Flow developers to create accounts
+and fund their accounts with FLOW tokens on the Flow Development Network.
 
 #### Fees
+
 Fees for account creation, and transaction submission will exist in v0.x.x of the testnet.
-//update version number and fees applied
+
 There are 2 fees that you will see applied to your transactions
-* Account Creation - currently fixed at 0.1 FLOW
-* Transaction Fee - currently fixed at 0.0001 FLOW
+
+- Account Creation: currently fixed at 0.1 FLOW
+- Transaction Fee: currently fixed at 0.0001 FLOW
 
 ##### Transaction Fees
-Transaction fees are applied only once per transaction, at time of execution. Transactions without a valid payer signature will fail and not be included in a block, prior to when the fee would be charged. If there is no one to charge, the transaction never goes through.
-However, if a transaction fails for some other reason once it is being executed, you will still be charged the fixed fee. The fee covers the cost of the network looking at the transaction and thus must be paid even if no change to your account is made.
+
+Transaction fees are applied only once per transaction, at time of execution.
+Transactions without a valid payer signature will fail and not be included in a block,
+prior to when the fee would be charged.
+If there is no one to charge, the transaction never goes through.
+
+However, if a transaction fails for some other reason once it is being executed,
+you will still be charged the fixed fee.
+The fee covers the cost of the network looking at the transaction
+and thus must be paid even if no change to your account is made.
+
 ##### Storage/Account Fees
-Account Creation fee is applied only when create account is called. This fee covers the cost of storing up to 1KB of data in perpetuity.
+
+Account Creation fee is applied only when create account is called.
+This fee covers the cost of storing up to 1KB of data in perpetuity.
 This fee is applied only once and can be "topped up" to add additional storage to an account.
-Transactions are submitted using a flow SDK via the Access API
-Results can be queried by transaction hash through the Access API
-// insert link
+Transactions are submitted using a Flow SDK via the [Access API](https://github.com/onflow/flow/blob/master/docs/access-api-spec.md).
+Results can be queried by transaction hash through the [Access API](https://github.com/onflow/flow/blob/master/docs/access-api-spec.md).
 
 ### Getting Started on Testnet
 
-Visit Flow faucet <insert link to Flow Port></insert>
-to create an account and receive $FLOW for testing. You can request additional $FLOW for testing through the same page, and with the same account, at any time. 
+Visit [Flow Faucet](#) to create an account and receive $FLOW for testing.
+You can request additional $FLOW for testing through the same page, and with the same account, at any time.
 
 ### Shipping on Mainnet
-On Mainnet, you'll need to go to your Flow Port and select `create account` under the transactions option - this will submit a transaction to the Flow faucet which will sign as the payer to create your first account. 
-<insert tx template></insert>
 
-Deploying a contract on mainnet will require that you submit your contract for review by a member of the core Cadence team to ensure safety for users. Please submit contract address to dev@onflow.org. 
+On Mainnet, you'll need to go to your [Flow Port](#)
+and select `Create Account` under the transactions option.
+This will submit a transaction to the [Flow Faucet](#) which will sign as the payer to create your first account.
 
+Deploying a contract on mainnet will require that you submit your contract for review by a member of the core Cadence team to ensure safety for users. Please submit contract address to dev@onflow.org.
 
 ## Submitting Transactions and Updating Users
-Transactions are submitted using a Flow SDK via the Access API. 
 
-On Flow, a transaction is identified by its hash - the hash that exists as soon as that transaction is signed and submitted to an Access or Collection node.Results of transactions can be queried by transaction hash through the Access API.
-A user can check the status of a transaction at any time via the Flow block explorer https://flow.bigdipper.live/
+Transactions are submitted using a Flow SDK via the Access API.
 
-To expose these results natively in your app, you can use the flow-sdk to fetch transaction results via
-https://github.com/onflow/flow-go-sdk#querying-events
-* [Fetch account state by address from a Flow Access API](https://github.com/onflow/flow-go-sdk#querying-accounts)
-Once the transaction is sealed, an event is emitted and you will be able to read `tx events` and update the user.
-* [Poll for TokenDeposited events using the Flow Acess API](https://github.com/onflow/flow-go-sdk#querying-events)
-* [Poll for TokenDeposited events using the Flow Acess API](https://github.com/onflow/flow-go-sdk#querying-events)
+On Flow, a transaction is identified by its hash - the hash that exists as soon as that transaction is signed and submitted to an Access or Collection node.
+Results of transactions can be queried by transaction hash through the Access API.
+A user can check the status of a transaction at any time via the [Flow Block Explorer](https://flow.bigdipper.live/).
 
+To expose these results natively in your app, you can use a Flow SDK to fetch transaction results,
+[for example using the Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-transaction-results).
 
-## Transaction Templates 
+Using a Flow SDK you can also fetch account state by address from a Flow Access API,
+[for example using the Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-accounts).
+
+Once the transaction is sealed, an event is emitted and you will be able to read transaction events and update the user.
+
+The Flow SDKs also allow polling for events using the Flow Access API,
+[for example using the Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-events).
+
+## Transaction Templates
+
 ### Transfer Tokens (FLOW)
-`transaction(amount: UFix64, to: Address) {
-let vault: @FungibleToken.Vault
-prepare(signer: AuthAccount) {
-self.vault <- signer
-.borrow<&{FungibleToken.Provider}>(from: /storage/flowTokenVault)!
-.withdraw(amount: amount)
+
+```cadence
+transaction(amount: UFix64, to: Address) {
+
+    let vault: @FungibleToken.Vault
+
+    prepare(signer: AuthAccount) {
+        self.vault <- signer
+            .borrow<&{FungibleToken.Provider}>(from: /storage/flowTokenVault)!
+            .withdraw(amount: amount)
+    }
+
+    execute {
+        getAccount(to)
+            .getCapability(/public/flowTokenReceiver)!
+            .borrow<&{FungibleToken.Receiver}>()!
+            .deposit(from: <-self.vault)
+    }
 }
-execute {
-getAccount(to)
-.getCapability(/public/flowTokenReceiver)!
-.borrow<&{FungibleToken.Receiver}>()!
-.deposit(from: <-self.vault)
-}
-}`
-*First Parameter*
-`{
-"type": "UFix64",
-"value": "<integer>.<fractional>"
-}`
-*Second Parameter*
-`{
-"type": "Address",
-"value": "0x0" // as hex-encoded string with 0x prefix
-}`
-### Create Account
-`transaction(publicKeys: [[UInt8]]) {
-prepare(signer: AuthAccount) {
-let acct = AuthAccount(payer: signer)
-for key in publicKeys {
-acct.addPublicKey(key)
-}
-}
-}`
-*First Parameter*
-`{
-"type": "Array",
-"value": [
+```
+
+- **First parameter: amount:**
+
+  ```json
   {
-    "type": "Array",
-    "value": [
-      {"type":"UInt8", value: 123},
-      ...
-     ]
-  },
-  ...
- ]
-}`
+      "type": "UFix64",
+      "value": "<integer>.<fractional>"
+  }
+  ```
+
+- **Second parameter: receiver address**
+
+  ```json
+  {
+      "type": "Address",
+      "value": "0x0" // as hex-encoded string with 0x prefix
+  }
+  ```
+
+### Create Account
+
+```cadence
+transaction(publicKeys: [[UInt8]]) {
+
+    prepare(signer: AuthAccount) {
+        let acct = AuthAccount(payer: signer)
+        for key in publicKeys {
+            acct.addPublicKey(key)
+        }
+    }
+}
+```
+
+- **Parameter: public keys**
+
+  ```json
+  {
+      "type": "Array",
+      "value": [
+          {
+              "type": "Array",
+              "value": [
+                  {"type": "UInt8", value: 123},
+                  ...
+              ]
+          },
+          ...
+      ]
+  }
+  ```
 
 ### Add New Key
-`transaction(publicKey: [UInt8]) {
-prepare(signer: AuthAccount) {
-let acct = AuthAccount(payer: signer)
-acct.addPublicKey(key)
+
+```cadence
+transaction(publicKey: [UInt8]) {
+    prepare(signer: AuthAccount) {
+        let acct = AuthAccount(payer: signer)
+        acct.addPublicKey(key)
+    }
 }
-}`
-*First Parameter*
-`{
-    "type": "Array",
-    "value": [
-      {"type":"UInt8", value: 123},
-      ...
-     ]
-  }`
+```
 
+- **Parameter: public key**
 
+  ```json
+  {
+      "type": "Array",
+      "value": [
+          {"type": "UInt8", value: 123},
+          ...
+      ]
+  }
+  ```
 
+# Supporting Custody, Staking, and Token Delivery on FLOW
 
-
-# Supporting Custody, Staking, and Token Delivery on FLOW 
 ## Deposits
-If you will be receiving deposits of FLOW on a user's behalff you will need to support the following transaction.
-:exclamation: @psiemens could you help flesh this out?
-##### Transfer Tokens (FLOW)
-`transaction(amount: UFix64, to: Address) {
-let vault: @FungibleToken.Vault
-prepare(signer: AuthAccount) {
-self.vault <- signer
-.borrow<&{FungibleToken.Provider}>(from: /storage/flowTokenVault)!
-.withdraw(amount: amount)
-}
-execute {
-getAccount(to)
-.getCapability(/public/flowTokenReceiver)!
-.borrow<&{FungibleToken.Receiver}>()!
-.deposit(from: <-self.vault)
-}
-}`
-*First Parameter*
-`{
-"type": "UFix64",
-"value": "<integer>.<fractional>"
-}`
-*Second Parameter*
-`{
-"type": "Address",
-"value": "0x0" // as hex-encoded string with 0x prefix
-}`
 
-## Staking 
+If you will be receiving deposits of FLOW on a user's behalf you will need to support the following transaction.
 
-As a node operator, you first need to generate your staking key, networking address, node ID, and networking key via 
+## Staking
 
-:exclamation: 
-// link out to consolidated guide
-// confirm where node ID is generated
+As a node operator, you first need to generate your staking key, networking address, node ID, and networking key.
+You then need to determine the role of node you'll be running.
 
-You then need to determine the role of node you'll be running
+Submit a staking request using a `create_staking_request.cdc` transaction.
+This will register your node in the Flow node identity table
+and commit your tokens to stake during the next epoch.
+This also stores a special node operator object in your account that is used for staking, unstaking,
+and withdrawing rewards.
 
-:exclamation: // link out to application 
-
-Submit a staking request using a `create_staking_request.cdc` transaction. 
-This will register your node in the Flow node identity table and commit your tokens to stake during the next epoch. 
-This also stores a special node operator object in your account that is used for staking, unstaking, and withdrawing rewards.
-
-Once the new epoch starts, the tokens you have committed will be marked as staked and held in the protocol state. 
-At anytime you can submit a `request_unstake.cdc` transaction which will move your tokens to the unbonding pool at the end of the current epoch. They will sit in this pool for one (1) additional epoch, at which point you will be able to withdraw your tokens via `withdraw_tokens.cdc` transaction. 
+Once the new epoch starts, the tokens you have committed will be marked as staked and held in the protocol state.
+At anytime you can submit a `request_unstake.cdc` transaction
+which will move your tokens to the unbonding pool at the end of the current epoch.
+They will sit in this pool for one (1) additional epoch,
+at which point you will be able to withdraw your tokens via `withdraw_tokens.cdc` transaction.
 
 ### Staking as a Service & Delegation - Using the Staking Helper
-If you do not hold tokens yourself, but are relying on someone else to run a node on your behalf, you can submit a staking_request without tokens - this will produce the needed node operator object mentioned above. 
-The node operator running your node will need to create a `StakingHelper` resource object and store it in a third party account using the `create_staking_helper.cdc` transaction. 
-This transaction needs to be signed by both the node operator and the token holder because it will store a capability in each account to access the third party `StakingHelper` resource.
-This resource can also define the reward split between the node operator and token holder - this is done via an `init` argument which is the % of rewards the node operator receives. 
-This `StakingHelper` allows you to securely transfer stake to the protocol for those who are using a separate node operation service, without requiring the node operator to take custody of those funds at any time. 
 
-The token holder will need to submit the `send_staking_tokens.cdc` transaction from wherever their tokens are held, before you can take any action. 
-//flag support for custody 
+If you do not hold tokens yourself,
+but are relying on someone else to run a node on your behalf,
+you can submit a staking request without tokens -
+this will produce the needed node operator object mentioned above.
+The node operator running your node will need to create a `StakingHelper` resource object
+and store it in a third party account using the `create_staking_helper.cdc` transaction.
+This transaction needs to be signed by both the node operator
+and the token holder because it will store a capability in each account to access the third party `StakingHelper` resource.
+This resource can also define the reward split between the node operator and token holder -
+this is done via an `init` argument which is the percentage of rewards the node operator receives.
+This `StakingHelper` allows you to securely transfer stake to the protocol
+for those who are using a separate node operation service,
+without requiring the node operator to take custody of those funds at any time.
+
+The token holder will need to submit the `send_staking_tokens.cdc` transaction
+from wherever their tokens are held, before you can take any action.
 Once the token holder has escrowed their staking tokens and you have generated the required node info (staking key, networking address, node ID, and networking key), you or the token holder can submit the `create_staking_request.cdc` transaction which registers the node operator in the Flow ID Table contract and commits the token holders tokens to be staked in the next epoch.
 
 If the `create_staking_request.cdc` transaction has been submitted, you can do a couple things:
-1) Remove the token holders stake via `request_unstaking.cdc` transaction (configuring this to require signatures from either or both parties is an available option)
-2) Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction, which will deposit them into the corresponding accounts (this will automatically distribute the rewards to both the staker and node operator, as defined at creation of the StakingHelper resourcee). 
+
+- Remove the token holders stake via `request_unstaking.cdc` transaction
+  (configuring this to require signatures from either or both parties is an available option)
+- Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction,
+  which will deposit them into the corresponding accounts
+  (this will automatically distribute the rewards to both the staker and node operator,
+  as defined at creation of the `StakingHelper` resource).
 
 ## Delegating Stake
-A node operator who wants to allow delegation to their node will create a public capability for delegators using the `publish_delegation.cdc` transaction. This capability will only be valid for nodes which have already submitted a staking request and which fulfill the minimum staking requirements for that node type. 
-Token holders who wish to delegate to their node submit a `delegate_tokens.cdc` transaction providing the account addreses of the node they want to delegagte to. This transaction creates a capability that the delegator stores in their account which gives them access to: 
-1) Staking additional tokens
-2) Withdrawig rewards 
-3) Requesting to unstake
 
-If a node operator has delegators, they cannot withdraw their own tokens such that their own staked tokens would fall below the minimum requirement for that node type. This is enforced at the protocol level. 
+A node operator who wants to allow delegation to their node will create a public capability for delegators using the `publish_delegation.cdc` transaction.
+This capability will only be valid for nodes which have already submitted a staking request and which fulfill the minimum staking requirements for that node type.
+Token holders who wish to delegate to their node submit a `delegate_tokens.cdc` transaction
+providing the account addresses of the node they want to delegate to.
+This transaction creates a capability that the delegator stores in their account which gives them access to:
 
-The minimum requirement for running each of the different 
-nodes is: 
-* Collector Nodes: 250,000 FLOW
-* Consensus Nodes: 500,000 FLOW
-* Execution Nodes: 1,250,000 FLOW
-* Verification Nodes:135,000 FLOW
+- Staking additional tokens
+- Withdrawing rewards
+- Requesting to unstake
 
-The delegation logic keeps track of the amount of tokens each delegator has delegated for the node operator. When rewards are paid out, the rewards are automatically divided based on the proportion held by that token holder with respect to the total tokens staked. 
+If a node operator has delegators, they cannot withdraw their own tokens such that their own staked tokens would fall below the minimum requirement for that node type. This is enforced at the protocol level.
 
+The minimum requirement for running each of the different
+nodes is:
 
-### Supporting staking and delegating txs 
-You can commit tokens to stake with the `send_staking_tokens.cdc` transaction. These tokens are held in escrow in the `StakingHelper` resource. You can submit an official staking request by using the `create_staking_request.cdc` transaction which registers the node operator in the Flow ID Table contract and commits your tokens to be staked in the next epoch.
-Alternatively, you may choose to submit an `abort_stake.cdc` transaction which will remove the tokens from escrow and return them to your account, if called prior to the beginning of the epoch. 
+- Collector Nodes: 250,000 FLOW
+- Consensus Nodes: 500,000 FLOW
+- Execution Nodes: 1,250,000 FLOW
+- Verification Nodes: 135,000 FLOW
+
+The delegation logic keeps track of the amount of tokens each delegator has delegated for the node operator.
+When rewards are paid out, the rewards are automatically divided
+based on the proportion held by that token holder wrt to the total tokens staked.
+
+### Supporting staking and delegating transactions
+
+You can commit tokens to stake with the `send_staking_tokens.cdc` transaction.
+These tokens are held in escrow in the `StakingHelper` resource.
+You can submit an official staking request by using the `create_staking_request.cdc` transaction
+which registers the node operator in the Flow ID Table contract
+and commits your tokens to be staked in the next epoch.
+
+Alternatively, you may choose to submit an `abort_stake.cdc` transaction
+which will remove the tokens from escrow and return them to your account,
+if called prior to the beginning of the epoch.
 
 If the `create_staking_request.cdc` transaction has been submitted, you can do a few things:
-1) Add additional tokens via `stake_new_tokens.cdc` transaction 
-2) Remove your stake via `request_unstaking.cdc` transaction, or
-3) Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction (if you've participated in an earlier epoch) 
+
+- Add additional tokens via `stake_new_tokens.cdc` transaction
+- Remove your stake via `request_unstaking.cdc` transaction, or
+- Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction
+  (if you've participated in an earlier epoch)
 
 ### Unbonding / Withdrawing Stake
-- The process for unbonding stake (removing it from the staked node) requires either party to initiate an unbonding request; which is a function call to the staking helper.
-- When the request is approved by the core staking contract, the funds will be locked for one epoch and then transferred into the deposit account as set in the initial staking transaction.
 
+- The process for unbonding stake (removing it from the staked node)
+  requires either party to initiate an unbonding request;
+  which is a function call to the staking helper.
+
+- When the request is approved by the core staking contract,
+  the funds will be locked for one epoch
+  and then transferred into the deposit account as set in the initial staking transaction.
 
 ## Transaction Templates
-* Create staking request
-* Stake new tokens
-* Withdraw tokens
-* Unbonding request 
-* (all .cdc above)
 
-## Supporting Flow as a custody provider...
+- Create staking request
+- Stake new tokens
+- Withdraw tokens
+- Unbonding request
+
+## Supporting Flow as a custody provider
+
 ### Supporting Deposits of FLOW
 
-**Step 1)** 
+#### **Step 1**
+
 Perform necessary KYC and provide user with their Flow address.
 
 It should look like something like:
@@ -366,56 +504,70 @@ It should look like something like:
 `0x3fes82da`
 [Creating Accounts on Flow](https://github.com/onflow/flow-go-sdk#creating-an-account)
 
-**Step 2)**
+#### **Step 2**
 
-Subscribe to events related to your user's accounts to notify and update account balance in UI 
+Subscribe to events related to your user's accounts to notify and update account balance in UI
 [Querying Accounts](https://github.com/onflow/flow-go-sdk#querying-accounts)
 
 //insert protocol for emitting event when tokens deposited into account
 
 //insert generalised websequence digram from this doc https://docs.google.com/document/d/1b1fVgHBlGYMu0WvIz5fwDMc153UGzXz0Pp2lr1atRrE/edit#heading=h.vyfahjj5ho25 **@psiemens**
 
-Supporting delivery of tokens 
-### Transfer Tokens (FLOW)
-`transaction(amount: UFix64, to: Address) {
-let vault: @FungibleToken.Vault
-prepare(signer: AuthAccount) {
-self.vault <- signer
-.borrow<&{FungibleToken.Provider}>(from: /storage/flowTokenVault)!
-.withdraw(amount: amount)
-}
-execute {
-getAccount(to)
-.getCapability(/public/flowTokenReceiver)!
-.borrow<&{FungibleToken.Receiver}>()!
-.deposit(from: <-self.vault)
-}
-}`
-*First Parameter*
-`{
-"type": "UFix64",
-"value": "<integer>.<fractional>"
-}`
-*Second Parameter*
-`{
-"type": "Address",
-"value": "0x0" // as hex-encoded string with 0x prefix
-}`
+Supporting delivery of tokens
 
+### Transfer Tokens (FLOW)
+
+```cadence
+transaction(amount: UFix64, to: Address) {
+
+    let vault: @FungibleToken.Vault
+
+    prepare(signer: AuthAccount) {
+        self.vault <- signer
+            .borrow<&{FungibleToken.Provider}>(from: /storage/flowTokenVault)!
+            .withdraw(amount: amount)
+    }
+
+    execute {
+        getAccount(to)
+            .getCapability(/public/flowTokenReceiver)!
+            .borrow<&{FungibleToken.Receiver}>()!
+            .deposit(from: <-self.vault)
+    }
+}
+```
+
+- **First parameter: amount:**
+
+  ```json
+  {
+      "type": "UFix64",
+      "value": "<integer>.<fractional>"
+  }
+  ```
+
+- **Second parameter: receiver address**
+
+  ```json
+  {
+      "type": "Address",
+      "value": "0x0" // as hex-encoded string with 0x prefix
+  }
+  ```
 
 ### Holding and/or Using FLOW
 <insert links for>
 **Creating Accounts**
 **Submitting Transactions to Flow**
 
-### Staking and/or Delegating FLOW 
+### Staking and/or Delegating FLOW
 You can commit tokens to stake with the `send_staking_tokens.cdc` transaction. These tokens are held in escrow in the `StakingHelper` resource. You can submit an official staking request by using the `create_staking_request.cdc` transaction which registers the node operator in the Flow ID Table contract and commits your tokens to be staked in the next epoch.
-Alternatively, you may choose to submit an `abort_stake.cdc` transaction which will remove the tokens from escrow and return them to your account, if called prior to the beginning of the epoch. 
+Alternatively, you may choose to submit an `abort_stake.cdc` transaction which will remove the tokens from escrow and return them to your account, if called prior to the beginning of the epoch.
 
 If the `create_staking_request.cdc` transaction has been submitted, you can do a few things:
-1) Add additional tokens via `stake_new_tokens.cdc` transaction 
+1) Add additional tokens via `stake_new_tokens.cdc` transaction
 2) Remove your stake via `request_unstaking.cdc` transaction, or
-3) Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction (if you've participated in an earlier epoch) 
+3) Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction (if you've participated in an earlier epoch)
 
 ### Unbonding / Withdrawing Stake
 - The process for unbonding stake (removing it from the staked node) requires either party to initiate an unbonding request; which is a function call to the staking helper.
@@ -427,39 +579,39 @@ https://github.com/dapperlabs/flow-internal/issues/1131
 
 ## As a node operator...
 
-As a node operator, you first need to generate your staking key, networking address, node ID, and networking key via 
+As a node operator, you first need to generate your staking key, networking address, node ID, and networking key via
 // link out to consolidated guide
 // confirm where node ID is generated
 
 You then need to determine the role of node you'll be running
-// link out to application 
+// link out to application
 
-Submit a staking request using a `create_staking_request.cdc` transaction. 
-This will register your node in the Flow node identity table and commit your tokens to stake during the next epoch. 
+Submit a staking request using a `create_staking_request.cdc` transaction.
+This will register your node in the Flow node identity table and commit your tokens to stake during the next epoch.
 This also stores a special node operator object in your account that is used for staking, unstaking, and withdrawing rewards.
 
-Once the new epoch starts, the tokens you have committed will be marked as staked and held in the protocol state. 
-At anytime you can submit a `request_unstake.cdc` transaction which will move your tokens to the unbonding pool at the end of the current epoch. They will sit in this pool for one (1) additional epoch, at which point you will be able to withdraw your tokens via `withdraw_tokens.cdc` transaction. 
+Once the new epoch starts, the tokens you have committed will be marked as staked and held in the protocol state.
+At anytime you can submit a `request_unstake.cdc` transaction which will move your tokens to the unbonding pool at the end of the current epoch. They will sit in this pool for one (1) additional epoch, at which point you will be able to withdraw your tokens via `withdraw_tokens.cdc` transaction.
 
 ### Withdrawing Rewards
-Rewards are deposited into your pool of unlocked tokens which you can withdraw at anytime using the `withdraw_tokens.cdc` transaction. 
-Rewards are paid out at the end of each epoch, at which point you will be able to submit this transaction. 
-You can opt to restake your rewards by submitting the `stake_unlocked_tokens.cdc` transaction. 
+Rewards are deposited into your pool of unlocked tokens which you can withdraw at anytime using the `withdraw_tokens.cdc` transaction.
+Rewards are paid out at the end of each epoch, at which point you will be able to submit this transaction.
+You can opt to restake your rewards by submitting the `stake_unlocked_tokens.cdc` transaction.
 
 ### Staking Helper
-If you do not hold tokens yourself, but are relying on someone else to run a node on your behalf, you can submit a staking_request without tokens - this will produce the needed node operator object mentioned above. 
-The node operator running your node will need to create a `StakingHelper` resource object and store it in a third party account using the `create_staking_helper.cdc` transaction. 
+If you do not hold tokens yourself, but are relying on someone else to run a node on your behalf, you can submit a staking_request without tokens - this will produce the needed node operator object mentioned above.
+The node operator running your node will need to create a `StakingHelper` resource object and store it in a third party account using the `create_staking_helper.cdc` transaction.
 This transaction needs to be signed by both the node operator and the token holder because it will store a capability in each account to access the third party `StakingHelper` resource.
-This resource can also define the reward split between the node operator and token holder - this is done via an `init` argument which is the % of rewards the node operator receives. 
-This `StakingHelper` allows you to securely transfer stake to the protocol for those who are using a separate node operation service, without requiring the node operator to take custody of those funds at any time. 
+This resource can also define the reward split between the node operator and token holder - this is done via an `init` argument which is the % of rewards the node operator receives.
+This `StakingHelper` allows you to securely transfer stake to the protocol for those who are using a separate node operation service, without requiring the node operator to take custody of those funds at any time.
 
-The token holder will need to submit the `send_staking_tokens.cdc` transaction from wherever their tokens are held, before you can take any action. 
-//flag support for custody 
+The token holder will need to submit the `send_staking_tokens.cdc` transaction from wherever their tokens are held, before you can take any action.
+//flag support for custody
 Once the token holder has escrowed their staking tokens and you have generated the required node info (staking key, networking address, node ID, and networking key), you or the token holder can submit the `create_staking_request.cdc` transaction which registers the node operator in the Flow ID Table contract and commits the token holders tokens to be staked in the next epoch.
 
 If the `create_staking_request.cdc` transaction has been submitted, you can do a couple things:
 1) Remove the token holders stake via `request_unstaking.cdc` transaction (configuring this to require signatures from either or both parties is an available option)
-2) Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction, which will deposit them into the corresponding accounts (this will automatically distribute the rewards to both the staker and node operator, as defined at creation of the StakingHelper resourcee). 
+2) Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction, which will deposit them into the corresponding accounts (this will automatically distribute the rewards to both the staker and node operator, as defined at creation of the StakingHelper resourcee).
 
 ### Unbonding / Withdrawing Stake
 - The process for unbonding stake (removing it from the staked node) requires either party to initiate an unbonding request; which is a function call to the staking helper.
@@ -470,7 +622,7 @@ https://github.com/dapperlabs/flow-internal/issues/1131
 
 
 # Key Concepts
-## Fees 
+## Fees
 Fees for account creation, and transaction submission will exist in v0.x.x of the testnet.
 //update version number and fees applied
 There are 2 fees that you will see applied to your transactions
@@ -483,7 +635,7 @@ However, if a transaction fails for some other reason once it is being executed,
 ### Storage/Account Fees
 Account Creation fee is applied only when create account is called. This fee covers the cost of storing up to 1KB of data in perpetuity.
 This fee is applied only once and can be "topped up" to add additional storage to an account.
-This deposit is required to manage the growth of state maintained by the protocol. For Beta Mainnet, all accounts created by the protocol will be instantiated with an unredeemable account deposit. 
+This deposit is required to manage the growth of state maintained by the protocol. For Beta Mainnet, all accounts created by the protocol will be instantiated with an unredeemable account deposit.
 
 ## Accounts
 An account on Flow is a record in the chainstate that holds the following information:
@@ -494,10 +646,10 @@ An account on Flow is a record in the chainstate that holds the following inform
   * Code - Cadence contracts deployed to the account
   * Storage - area of the account used to store resource assets
 
-Information on Generating Accounts can be found [here](https://github.com/onflow/flow/blob/master/docs/accounts-and-keys.md#accounts) 
+Information on Generating Accounts can be found [here](https://github.com/onflow/flow/blob/master/docs/accounts-and-keys.md#accounts)
 
-## Flow Service Account 
-The Service Account is a special account in Flow that has special permissions to manage system contracts. It is able to mint tokens, set fees, and update network-level contracts. 
+## Flow Service Account
+The Service Account is a special account in Flow that has special permissions to manage system contracts. It is able to mint tokens, set fees, and update network-level contracts.
 
 #### Tokens & Fees
 
@@ -512,9 +664,9 @@ The Service Account administrates other smart contracts that manage various aspe
 Besides its special permissions, the Service Account is an account like any other in Flow. During the early phases of Flow's development, the account will controlled by keys held by Dapper Labs. As Flow matures, the service account will transition to being controlled by a smart contract governed by the Flow community.
 
 ## Key Format
-We are supporting ECDSA with the curves `P-256` and `secp256k1`. For these curves, the public key is encoded into 64 bytes as `X||Y` where `||` is the concatenation operator. 
+We are supporting ECDSA with the curves `P-256` and `secp256k1`. For these curves, the public key is encoded into 64 bytes as `X||Y` where `||` is the concatenation operator.
 
- - `X` is 32 bytes and is the big endian byte encoding of the `x`-coordinate of the public key padded to 32, i.e. `X=x_31||x_30||...||x_0`  or `X =  x_31*256^31 + ... + x_i*256^i + ... + x_0`. 
+ - `X` is 32 bytes and is the big endian byte encoding of the `x`-coordinate of the public key padded to 32, i.e. `X=x_31||x_30||...||x_0`  or `X =  x_31*256^31 + ... + x_i*256^i + ... + x_0`.
  - `Y` is 32 bytes and is the big endian byte encoding of the `y`-coordinate of the public key padded to 32, i.e. `Y=y_31||y_30||...||y_0` or `Y =  y_31*256^31 + ... + y_i*256^i + ... + y_0`
 
 ### FAQs
