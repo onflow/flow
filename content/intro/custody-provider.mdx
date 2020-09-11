@@ -1,0 +1,50 @@
+# FlOW for custody providers
+
+
+### Supporting Deposits of FLOW
+
+#### **Step 1**
+
+Perform necessary KYC and provide user with their Flow address.
+
+It should look like something like:
+
+`0x7e60df042a9c0868`
+[Creating Accounts on Flow](https://github.com/onflow/flow-go-sdk#creating-an-account)
+
+#### **Step 2**
+
+Subscribe to events related to your user's accounts to notify and update account balance in UI
+[Querying Accounts](https://github.com/onflow/flow-go-sdk#querying-accounts)
+
+//insert protocol for emitting event when tokens deposited into account
+
+//insert generalised websequence digram from this doc https://docs.google.com/document/d/1b1fVgHBlGYMu0WvIz5fwDMc153UGzXz0Pp2lr1atRrE/edit#heading=h.vyfahjj5ho25 **@psiemens**
+
+Supporting delivery of tokens
+
+### Holding and/or Using FLOW
+<insert links for>
+**Creating Accounts**
+**Submitting Transactions to Flow**
+
+### Staking and/or Delegating FLOW
+You can commit tokens to stake with the `send_staking_tokens.cdc` transaction. These tokens are held in escrow in the `StakingHelper` resource. You can submit an official staking request by using the `create_staking_request.cdc` transaction which registers the node operator in the Flow ID Table contract and commits your tokens to be staked in the next epoch.
+Alternatively, you may choose to submit an `abort_stake.cdc` transaction which will remove the tokens from escrow and return them to your account, if called prior to the beginning of the epoch.
+
+If the `create_staking_request.cdc` transaction has been submitted, you can do a few things:
+1) Add additional tokens via `stake_new_tokens.cdc` transaction
+2) Remove your stake via `request_unstaking.cdc` transaction, or
+3) Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction (if you've participated in an earlier epoch)
+
+### Unbonding / Withdrawing Stake
+- The process for unbonding stake (removing it from the staked node) requires either party to initiate an unbonding request; which is a function call to the staking helper.
+- When the request is approved by the core staking contract, the funds will be locked for one epoch and then transferred into the deposit account as set in the initial staking transaction.
+//Insert sequence diagram https://www.notion.so/dapperlabs/Token-Staking-Process-6877e85a057e4eab8beae7f5187f3ffb#6cdcd35f8084439d93da479f1dc0831d
+//Insert Unbonding transaction example
+https://github.com/dapperlabs/flow-internal/issues/1131
+
+
+
+
+
