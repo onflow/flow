@@ -1,12 +1,19 @@
+<!--
+
+- link out to application
+- link out to consolidated guide
+- confirm where node ID is generated
+- Insert sequence diagram https://www.notion.so/dapperlabs/Token-Staking-Process-6877e85a057e4eab8beae7f5187f3ffb#6cdcd35f8084439d93da479f1dc0831d
+- Insert Unbonding transaction example
+https://github.com/dapperlabs/flow-internal/issues/1131
+- flag support for custody
+-->
 
 # FLOW for node operators
 
 As a node operator, you first need to generate your staking key, networking address, node ID, and networking key via
-// link out to consolidated guide
-// confirm where node ID is generated
 
 You then need to determine the role of node you'll be running
-// link out to application
 
 Submit a staking request using a `create_staking_request.cdc` transaction.
 This will register your node in the Flow node identity table and commit your tokens to stake during the next epoch.
@@ -15,12 +22,14 @@ This also stores a special node operator object in your account that is used for
 Once the new epoch starts, the tokens you have committed will be marked as staked and held in the protocol state.
 At anytime you can submit a `request_unstake.cdc` transaction which will move your tokens to the unbonding pool at the end of the current epoch. They will sit in this pool for one (1) additional epoch, at which point you will be able to withdraw your tokens via `withdraw_tokens.cdc` transaction.
 
-### Withdrawing Rewards
+## Withdrawing Rewards
+
 Rewards are deposited into your pool of unlocked tokens which you can withdraw at anytime using the `withdraw_tokens.cdc` transaction.
 Rewards are paid out at the end of each epoch, at which point you will be able to submit this transaction.
 You can opt to restake your rewards by submitting the `stake_unlocked_tokens.cdc` transaction.
 
-### Staking Helper
+## Staking Helper
+
 If you do not hold tokens yourself, but are relying on someone else to run a node on your behalf, you can submit a staking_request without tokens - this will produce the needed node operator object mentioned above.
 The node operator running your node will need to create a `StakingHelper` resource object and store it in a third party account using the `create_staking_helper.cdc` transaction.
 This transaction needs to be signed by both the node operator and the token holder because it will store a capability in each account to access the third party `StakingHelper` resource.
@@ -28,18 +37,17 @@ This resource can also define the reward split between the node operator and tok
 This `StakingHelper` allows you to securely transfer stake to the protocol for those who are using a separate node operation service, without requiring the node operator to take custody of those funds at any time.
 
 The token holder will need to submit the `send_staking_tokens.cdc` transaction from wherever their tokens are held, before you can take any action.
-//flag support for custody
+
 Once the token holder has escrowed their staking tokens and you have generated the required node info (staking key, networking address, node ID, and networking key), you or the token holder can submit the `create_staking_request.cdc` transaction which registers the node operator in the Flow ID Table contract and commits the token holders tokens to be staked in the next epoch.
 
 If the `create_staking_request.cdc` transaction has been submitted, you can do a couple things:
-1) Remove the token holders stake via `request_unstaking.cdc` transaction (configuring this to require signatures from either or both parties is an available option)
-2) Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction, which will deposit them into the corresponding accounts (this will automatically distribute the rewards to both the staker and node operator, as defined at creation of the StakingHelper resourcee).
+- Remove the token holders stake via `request_unstaking.cdc` transaction
+  (configuring this to require signatures from either or both parties is an available option)
+- Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction,
+  which will deposit them into the corresponding accounts
+  (this will automatically distribute the rewards to both the staker and node operator, as defined at creation of the StakingHelper resource).
 
-### Unbonding / Withdrawing Stake
+## Unbonding / Withdrawing Stake
+
 - The process for unbonding stake (removing it from the staked node) requires either party to initiate an unbonding request; which is a function call to the staking helper.
 - When the request is approved by the core staking contract, the funds will be locked for one epoch and then transferred into the deposit account as set in the initial staking transaction.
-//Insert sequence diagram https://www.notion.so/dapperlabs/Token-Staking-Process-6877e85a057e4eab8beae7f5187f3ffb#6cdcd35f8084439d93da479f1dc0831d
-//Insert Unbonding transaction example
-https://github.com/dapperlabs/flow-internal/issues/1131
-
-
