@@ -6,9 +6,6 @@ If you will be receiving deposits of FLOW on a user's behalf you will need to su
 
 ## Staking
 
-As a node operator, you first need to generate your staking key, networking address, node ID, and networking key.
-You then need to determine the role of node you'll be running.
-
 Submit a staking request using a `create_staking_request.cdc` transaction.
 This will register your node in the Flow node identity table
 and commit your tokens to stake during the next epoch.
@@ -104,6 +101,13 @@ If the `create_staking_request.cdc` transaction has been submitted, you can do a
 - When the request is approved by the core staking contract,
   the funds will be locked for one epoch
   and then transferred into the deposit account as set in the initial staking transaction.
+
+## Withdrawing Rewards
+
+Rewards are deposited into your pool of unlocked tokens which you can withdraw at anytime using the `withdraw_tokens.cdc` transaction.
+Rewards are paid out at the end of each epoch, at which point you will be able to submit this transaction.
+You can opt to restake your rewards by submitting the `stake_unlocked_tokens.cdc` transaction.
+
 
 ## Transaction Templates
 
