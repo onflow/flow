@@ -219,35 +219,6 @@ Transferring FLOW, creating accounts, and updating keys are all actions made eas
 The [Flow Faucet](#) is a tool for Flow developers to create accounts
 and fund their accounts with FLOW tokens on the Flow Development Network.
 
-#### Fees
-
-Fees for account creation, and transaction submission will exist in v0.x.x of the testnet.
-
-There are 2 fees that you will see applied to your transactions
-
-- Account Creation: currently fixed at 0.1 FLOW
-- Transaction Fee: currently fixed at 0.0001 FLOW
-
-##### Transaction Fees
-
-Transaction fees are applied only once per transaction, at time of execution.
-Transactions without a valid payer signature will fail and not be included in a block,
-prior to when the fee would be charged.
-If there is no one to charge, the transaction never goes through.
-
-However, if a transaction fails for some other reason once it is being executed,
-you will still be charged the fixed fee.
-The fee covers the cost of the network looking at the transaction
-and thus must be paid even if no change to your account is made.
-
-##### Storage/Account Fees
-
-Account Creation fee is applied only when create account is called.
-This fee covers the cost of storing up to 1KB of data in perpetuity.
-This fee is applied only once and can be "topped up" to add additional storage to an account.
-Transactions are submitted using a Flow SDK via the [Access API](https://github.com/onflow/flow/blob/master/docs/access-api-spec.md).
-Results can be queried by transaction hash through the [Access API](https://github.com/onflow/flow/blob/master/docs/access-api-spec.md).
-
 ### Getting Started on Testnet
 
 Visit [Flow Faucet](#) to create an account and receive $FLOW for testing.
@@ -280,6 +251,98 @@ Once the transaction is sealed, an event is emitted and you will be able to read
 The Flow SDKs also allow polling for events using the Flow Access API,
 [for example using the Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-events).
 
+# Key Concepts
+
+## Fees
+
+Fees for account creation, and transaction submission will exist in v0.x.x of the testnet.
+
+There are 2 fees that you will see applied to your transactions
+
+- Account Creation: currently fixed at 0.1 FLOW
+- Transaction Fee: currently fixed at 0.0001 FLOW
+
+### Transaction Fees
+
+Transaction fees are applied only once per transaction, at time of execution.
+Transactions without a valid payer signature will fail and not be included in a block,
+prior to when the fee would be charged.
+If there is no one to charge, the transaction never goes through.
+
+However, if a transaction fails for some other reason once it is being executed,
+you will still be charged the fixed fee.
+The fee covers the cost of the network looking at the transaction
+and thus must be paid even if no change to your account is made.
+
+### Storage/Account Fees
+
+Account Creation fee is applied only when create account is called.
+This fee covers the cost of storing up to 1KB of data in perpetuity.
+This fee is applied only once and can be "topped up" to add additional storage to an account.
+Transactions are submitted using a Flow SDK via the [Access API](https://github.com/onflow/flow/blob/master/docs/access-api-spec.md).
+Results can be queried by transaction hash through the [Access API](https://github.com/onflow/flow/blob/master/docs/access-api-spec.md).
+
+## Accounts
+
+An account on Flow is a record in the chain state that holds the following information:
+
+- **Address**: unique identifier for the account
+- **Balance**: default token balance
+- **Public Keys**: public keys authorized on the account
+- **Code**: Cadence contracts deployed to the account
+- **Storage**: area of the account used to store resource assets
+
+Information on Generating Accounts can be found [here](https://github.com/onflow/flow/blob/master/docs/accounts-and-keys.md#accounts)
+
+## Flow Service Account
+
+The Service Account is a special account in Flow that has special permissions to manage system contracts.
+ It is able to mint tokens, set fees, and update network-level contracts.
+
+### Tokens & Fees
+
+The Service Account has administrator access to the FLOW token smart contract, so it has authorization to mint and burn tokens. It also has access to the transaction fee smart contract and can adjust the fees charged for transactions execution on Flow.
+
+### Network Management
+
+The Service Account administrates other smart contracts that manage various aspects of the Flow network, such as epochs and (in the future) validator staking auctions.
+
+### Governance
+
+Besides its special permissions, the Service Account is an account like any other in Flow. During the early phases of Flow's development, the account will controlled by keys held by Dapper Labs. As Flow matures, the service account will transition to being controlled by a smart contract governed by the Flow community.
+
+## Key Format
+
+We are supporting ECDSA with the curves `P-256` and `secp256k1`. For these curves, the public key is encoded into 64 bytes as `X||Y` where `||` is the concatenation operator.
+
+- `X` is 32 bytes and is the big endian byte encoding of the `x`-coordinate of the public key padded to 32, i.e. `X=x_31||x_30||...||x_0`  or `X =  x_31*256^31 + ... + x_i*256^i + ... + x_0`.
+- `Y` is 32 bytes and is the big endian byte encoding of the `y`-coordinate of the public key padded to 32, i.e. `Y=y_31||y_30||...||y_0` or `Y =  y_31*256^31 + ... + y_i*256^i + ... + y_0`
+
+# FAQs
+
+## How do I check my FLOW balance?
+
+Visit [Flow Port](#) and sign-in to your Flow Account. Your wallet or custody provider will likely also display your FLOW balance to you.
+
+## How do I get FLOW to my users?
+
+<!-- TODO -->
+
+## How do I create accounts on my user's behalf?
+
+<!-- TODO -->
+
+## How do I transfer FLOW to my users?
+
+<!-- TODO -->
+
+## How can I reward users with FLOW?
+
+<!-- TODO -->
+
+## What are Flow Arcade Tokens (FATs)?
+
+<!-- TODO -->
 
 # Supporting Custody, Staking, and Token Delivery on FLOW
 
@@ -419,46 +482,6 @@ Subscribe to events related to your user's accounts to notify and update account
 
 Supporting delivery of tokens
 
-### Transfer Tokens (FLOW)
-
-```cadence
-transaction(amount: UFix64, to: Address) {
-
-    let vault: @FungibleToken.Vault
-
-    prepare(signer: AuthAccount) {
-        self.vault <- signer
-            .borrow<&{FungibleToken.Provider}>(from: /storage/flowTokenVault)!
-            .withdraw(amount: amount)
-    }
-
-    execute {
-        getAccount(to)
-            .getCapability(/public/flowTokenReceiver)!
-            .borrow<&{FungibleToken.Receiver}>()!
-            .deposit(from: <-self.vault)
-    }
-}
-```
-
-- **First parameter: amount:**
-
-  ```json
-  {
-      "type": "UFix64",
-      "value": "<integer>.<fractional>"
-  }
-  ```
-
-- **Second parameter: receiver address**
-
-  ```json
-  {
-      "type": "Address",
-      "value": "0x0" // as hex-encoded string with 0x prefix
-  }
-  ```
-
 ### Holding and/or Using FLOW
 <insert links for>
 **Creating Accounts**
@@ -525,59 +548,3 @@ If the `create_staking_request.cdc` transaction has been submitted, you can do a
 https://github.com/dapperlabs/flow-internal/issues/1131
 
 
-# Key Concepts
-## Fees
-Fees for account creation, and transaction submission will exist in v0.x.x of the testnet.
-//update version number and fees applied
-There are 2 fees that you will see applied to your transactions
-* Account Creation - currently fixed at 0.1 FLOW
-* Transaction Fee - currently fixed at 0.0001 FLOW
-All transactions are passed to Collection nodes with a signature in the "payer" field. That field dictates which account is responsible for paying the fee for that transaction. All transaction fees are sent to the `Flow Transaction Fees` contract which lives in the Service Account. If the balancer of the payer account is insufficient, the transaction will fail.
-### Transaction Fees
-Transaction fees are applied only once per transaction, at time of execution. Transactions without a valid payer signature will fail and not be included in a block, prior to when the fee would be charged. If there is no one to charge, the transaction never goes through.
-However, if a transaction fails for some other reason once it is being executed, you will still be charged the fixed fee. The fee covers the cost of the network looking at the transaction and thus must be paid even if no change to your account is made.
-### Storage/Account Fees
-Account Creation fee is applied only when create account is called. This fee covers the cost of storing up to 1KB of data in perpetuity.
-This fee is applied only once and can be "topped up" to add additional storage to an account.
-This deposit is required to manage the growth of state maintained by the protocol. For Beta Mainnet, all accounts created by the protocol will be instantiated with an unredeemable account deposit.
-
-## Accounts
-An account on Flow is a record in the chainstate that holds the following information:
-
-  * Address - unique identifier for the account
-  * Balance - default token balance
-  * Public Keys - public keys authorized on the account
-  * Code - Cadence contracts deployed to the account
-  * Storage - area of the account used to store resource assets
-
-Information on Generating Accounts can be found [here](https://github.com/onflow/flow/blob/master/docs/accounts-and-keys.md#accounts)
-
-## Flow Service Account
-The Service Account is a special account in Flow that has special permissions to manage system contracts. It is able to mint tokens, set fees, and update network-level contracts.
-
-#### Tokens & Fees
-
-The Service Account has administrator access to the FLOW token smart contract, so it has authorization to mint and burn tokens. It also has access to the transaction fee smart contract and can adjust the fees charged for transactions execution on Flow.
-
-#### Network Management
-
-The Service Account administrates other smart contracts that manage various aspects of the Flow network, such as epochs and (in the future) validator staking auctions.
-
-#### Governance
-
-Besides its special permissions, the Service Account is an account like any other in Flow. During the early phases of Flow's development, the account will controlled by keys held by Dapper Labs. As Flow matures, the service account will transition to being controlled by a smart contract governed by the Flow community.
-
-## Key Format
-We are supporting ECDSA with the curves `P-256` and `secp256k1`. For these curves, the public key is encoded into 64 bytes as `X||Y` where `||` is the concatenation operator.
-
- - `X` is 32 bytes and is the big endian byte encoding of the `x`-coordinate of the public key padded to 32, i.e. `X=x_31||x_30||...||x_0`  or `X =  x_31*256^31 + ... + x_i*256^i + ... + x_0`.
- - `Y` is 32 bytes and is the big endian byte encoding of the `y`-coordinate of the public key padded to 32, i.e. `Y=y_31||y_30||...||y_0` or `Y =  y_31*256^31 + ... + y_i*256^i + ... + y_0`
-
-### FAQs
-##### How do I check my FLOW balance?
-Visit [Flow Port](Insert link to Flow Port) and sign-in to your Flow Account. Your wallet or custody provider will likely also display your FLOW balance to you.
-##### How do I get FLOW to my users?
-##### How do I create accounts on my user's behalf?
-##### How do I transfer FLOW to my users?
-##### How can I reward users with FLOW?
-##### What are Flow Arcade Tokens (FATs)?s
