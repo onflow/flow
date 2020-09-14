@@ -56,19 +56,20 @@ h6 {
   font-weight: 700;
 }
 
-.content-wrapper {
-  // Extra padding is added to H1, H2 tags to offset the fixed header.
-  // This allows the headings to be visible when clicking on anchor links.
-  h1::before,
-  h2::before {
-    display: block;
-    content: " ";
-    margin-top: -(@header-height+10);
-    height: @header-height+10;
-    visibility: hidden;
-    pointer-events: none;
-  }
-}
+// TODO: enable to fix anchor links
+// .content-wrapper {
+//   // Extra padding is added to H1, H2 tags to offset the fixed header.
+//   // This allows the headings to be visible when clicking on anchor links.
+//   h1::before,
+//   h2::before {
+//     display: block;
+//     content: " ";
+//     margin-top: -(@header-height+10);
+//     height: @header-height+10;
+//     visibility: hidden;
+//     pointer-events: none;
+//   }
+// }
 
 h1 {
   font-size: 2.5rem;

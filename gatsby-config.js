@@ -214,7 +214,10 @@ const sections = [
     sourceInstanceName: "docs",
     patterns: ["sdks/javascript/**/*"],
     sidebar: {
-      null: ["sdks/javascript/index", "sdks/javascript/create-account"],
+      null: [
+        "sdks/javascript/index", 
+        "sdks/javascript/create-account",
+      ],
     },
   },
   {
