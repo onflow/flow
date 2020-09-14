@@ -218,6 +218,18 @@ const sections = [
     },
   },
   {
+    sourceInstanceName: "docs",
+    patterns: ["token/**/*"],
+    sidebar: {
+      null: [
+        "token/index",
+        "token/staking",
+        "token/custody-provider",
+        "token/node-operator",
+      ],
+    },
+  },
+  {
     sourceInstanceName: "cadence",
     patterns: ["docs/language/**/*"],
     sidebar: {
