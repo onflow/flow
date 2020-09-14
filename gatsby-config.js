@@ -226,9 +226,14 @@ const sections = [
     sidebar: {
       null: [
         "token/index",
+        "token/investors",
+        "token/custody-providers",
+        "token/node-operators",
+        "token/purchase",
         "token/staking",
-        "token/custody-provider",
-        "token/node-operator",
+        "token/earn",
+        "token/concepts",
+        "token/faq",
       ],
     },
   },

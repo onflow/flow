@@ -26,13 +26,14 @@ TODO:
 
 -->
 
-This section contains information for individuals, wallet providers, custody providers
-and node operators about the FLOW token, including how it can be acquired, 
-transferred and used for common actions such as staking.
+## Introduction
 
-### FLOW as a native token
+This section contains information about the FLOW token for individuals, investors, 
+wallet providers, custodians and node operators.
 
-FLOW is the default token for the Flow protocol, which means it is used for all protocol-level fee payments, 
+### FLOW as a Native Token
+
+FLOW is the default token for the Flow protocol, meaning it is used for all protocol-level fee payments, 
 rewards and staking transactions. FLOW implements the standard [Flow Fungible Token interface](https://github.com/onflow/flow-ft), 
 which all other on-chain fungible tokens also conform to. This interface is defined in Cadence,
 Flow's native smart-contract programming language, which makes it easy to write applications that
@@ -40,83 +41,13 @@ interact with FLOW.
 
 ## How to Get FLOW
 
-There are three general ways to acquire new FLOW tokens:
+There are currently several ways to acquire FLOW tokens:
 
-1. [**FLOW for Investors**](#flow-for-investors): Purchase as an investor through an initial token sale.
-2. [**FLOW for Validators**](): Receive newly-minted FLOW as a staking reward.
-3. [**FLOW for Consumers**](): Purchase from an external exchange that supports FLOW (TBA).
+1. [Claim FLOW as an Investor](/investors): Existing Flow investors can claim their FLOW.
+1. [Earn FLOW as a Validator](/staking): Receive newly-minted FLOW as a reward for running a node.
+1. [Earn FLOW as a Community Member](/earn): Receive newly-minted FLOW as a reward for building on Flow.
 
-### FLOW for Investors
-
-### Token Delivery
-
-Follow the process outlined below if you would like to:
-
-- a) Claim tokens purchased in a previous sale
-- b) Purchase or hold FLOW in the future
-
-#### **Step 1: Choosing a custody provider**
-
-Choose a custody provider who currently supports Flow:
-
-- Coinlist
-- Finoa
-- Kraken
-- Ledger, or
-- Create your own Flow account by going to [Flow Port](#) and selecting "Create Account" under the transactions option.
-  This will submit a transaction to the [Flow Faucet](#) which will sign as the payer to create your account.
-
-#### **Step 2: Account creation**
-
-Your chosen custody service will provide you with an option to create a `Flow Address`.
-Account addresses for managing funds and signing transactions are created as follows:
-
-1. The user (or user's agent)
-   1. generates the private account key (off-chain)
-   2. prepares a Cadence script to create their own account
-2. Dapper Labs
-    1. co-signs the account creation transaction (for authorization, and payment)
-    2. submits the transaction to the network
-
-Once the account creation transaction has been executed and the result sealed,
-the user can use their private key to authorize transactions through their account
-(generally this is done through a wallet provider).
-
-The exact steps to complete this may vary by custody provider but they will require a thorough KYC process.
-
-**You are done this step when you receive your Flow Address.**
-
-It should look like something like: `0x7e60df042a9c0868`
-
-#### Flow Addresses: Technical Details
-
-For Flow addresses, a linear code [64, 45, 7] is used as an error-detection code.
-The address of the i-th account created on Flow is simply the codeword corresponding to the original value (i).
-This linear code allows generating 2^45 distinct addresses, each address is encoded over 64 bits.
-Two different addresses are guaranteed to have at least 7 different bits which reduces the risk of confusing two addresses.
-
-Moreover, the linear code used is non-systematic, which means it's not possible to separate the extra bits from the original value bits in the codeword.
-This makes the generated addresses look like random numbers and two consecutive account addresses look very different.
-A quick off-chain test can tell if a 64 bits word could be a valid Flow address.
-
-The generation of an account address is an on-chain mechanism that happens when a Flow network receives an account creation transaction.
-The network keeps track of the number of accounts already created and returns the newly created address.
-
-#### **Step 3**
-
-Provide the [Flow team](mailto:) your Flow Address and the tokens will be deposited into your account shortly.
-
-You will be able to **check your FLOW balance** anytime on [Flow Port](#)
-
-### Earning FLOW
-
-There are a number of programs available to earn FLOW tokens.
-
-- [Alpha Program](#)
-- [Token Lease Staking Program](#)
-- [Open World Builders](#)
-
-## Using FLOW
+## How to Use FLOW
 
 With FLOW, you can:
 
@@ -128,7 +59,7 @@ With FLOW, you can:
 - Send and share
 - Create, develop, and grow your dapp
 
-## Spending Flow
+### Spending FLOW
 
 All you need to spend Flow is an account and a tool for signing transactions
 (a wallet, custodian, or other signing service).
@@ -136,68 +67,17 @@ The Flow Client Library (FCL) makes it super duper easy to go to any dapp,
 login with your account, have a great time,
 and then sign with the wallet of your choice only once you decide to make a purchase.
 
-## Staking FLOW
+### Staking FLOW
 
-You can commit tokens to stake with the `send_staking_tokens.cdc` transaction.
-These tokens are held in escrow in the `StakingHelper` resource.
-You can submit an official staking request by using the `create_staking_request.cdc`
-transaction which registers the node operator in the Flow ID Table contract
-and commits your tokens to be staked in the next epoch.
+[You can use FLOW to operate a staked node.](/staking) Node operators receive newly-minted FLOW 
+as a reward for helping to secure the network.
 
-Alternatively, you may choose to submit an `abort_stake.cdc` transaction
-which will remove the tokens from escrow and return them to your account,
-if called prior to the beginning of the epoch.
+### Delegating FLOW
 
-If the `create_staking_request.cdc` transaction has been submitted,
-you can do a few things:
+[You can use FLOW for stake delegation.](/staking#delegation) Delegators receive newly-minted FLOW 
+as a reward for helping to secure the network.
 
-- Add additional tokens via `stake_new_tokens.cdc` transaction
-- Remove your stake via `request_unstaking.cdc` transaction, or
-- Withdraw rewards/unstaked tokens via `withdraw_tokens.cdc` transaction
-   (if you've participated in an earlier epoch)
-
-### Withdrawing Rewards
-
-Rewards are deposited into your pool of unlocked tokens
-which you can withdraw at anytime using the `withdraw_tokens.cdc` transaction.
-Rewards are paid out at the end of each epoch,
-at which point you will be able to submit this transaction.
-You can opt to restake your rewards by submitting the `stake_unlocked_tokens.cdc` transaction.
-
-## Delegating FLOW
-
-A node operator who wants to allow delegation to their node
-will create a public capability for delegators using the `publish_delegation.cdc` transaction.
-This capability will only be valid for nodes which have already submitted a staking request
-and which fulfill the minimum staking requirements for that node type.
-Token holders who wish to delegate to their node submit a `delegate_tokens.cdc` transaction
-providing the account addresses of the node they want to delegate to.
-This transaction creates a capability that the delegator stores in their account
-which gives them access to:
-
-- Staking additional tokens
-- Withdrawing rewards
-- Requesting to unstake
-
-If a node operator has delegators, they cannot withdraw their own tokens
-such that their own staked tokens would fall below the minimum requirement for that node type.
-This is enforced at the protocol level.
-
-- Collector Nodes: 250,000 FLOW
-- Consensus Nodes: 500,000 FLOW
-- Execution Nodes: 1,250,000 FLOW
-- Verification Nodes: 135,000 FLOW
-
-The delegation logic keeps track of the amount of tokens each delegator has delegated for the node operator.
-When rewards are paid out, the rewards are automatically divided
-based on the proportion held by that token holder wrt to the total tokens staked.
-
-### Withdrawing Rewards
-
-Validly staked accounts are provided a resource from the Staking Contract
-which allows them to withdraw rewards once they are available at the end of the epoch.
-
-## Holding FLOW
+### Holding FLOW
 
 If you have already purchased FLOW and wish to hold it, you have a couple options:
 
@@ -208,14 +88,14 @@ If you have already purchased FLOW and wish to hold it, you have a couple option
 
 You can find wallets and custodians supporting Flow in the [Flow port](#)
 
-## Voting with FLOW
+### Voting with FLOW
 
 Participating in the Flow community is more than just running a node or building a dapp.
 It's also about engaging in discussion, debate, and decision making about the protocol,
 the content on it, and the people impacted by it.
 You can use your Flow account to submit votes to community polls and other governance related activities.
 
-## Sending and Sharing FLOW
+### Sending and Sharing FLOW
 
 If you just want to share the love and bring your friends to Flow - it's easier than an edible arrangement.
 
@@ -231,9 +111,9 @@ while still providing that user with all the underlying security guarantees the 
 
 Transferring FLOW, creating accounts, and updating keys are all actions made easy on [Flow Port](#)
 
-## Creating with FLOW
+## How to Build with FLOW
 
-### FLOWs for Development
+### FLOW for Development
 
 The [Flow Faucet](#) is a tool for Flow developers to create accounts
 and fund their accounts with FLOW tokens on the Flow Development Network.
@@ -251,7 +131,7 @@ This will submit a transaction to the [Flow Faucet](#) which will sign as the pa
 
 Deploying a contract on mainnet will require that you submit your contract for review by a member of the core Cadence team to ensure safety for users. Please submit contract address to dev@onflow.org.
 
-## Submitting Transactions and Updating Users
+### Submitting Transactions and Updating Users
 
 Transactions are submitted using a Flow SDK via the Access API.
 
@@ -269,96 +149,3 @@ Once the transaction is sealed, an event is emitted and you will be able to read
 
 The Flow SDKs also allow polling for events using the Flow Access API,
 [for example using the Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-events).
-
-# Key Concepts
-
-## Fees
-
-Fees for account creation, and transaction submission will exist in v0.x.x of the testnet.
-
-There are 2 fees that you will see applied to your transactions
-
-- Account Creation: currently fixed at 0.1 FLOW
-- Transaction Fee: currently fixed at 0.0001 FLOW
-
-### Transaction Fees
-
-Transaction fees are applied only once per transaction, at time of execution.
-Transactions without a valid payer signature will fail and not be included in a block,
-prior to when the fee would be charged.
-If there is no one to charge, the transaction never goes through.
-
-However, if a transaction fails for some other reason once it is being executed,
-you will still be charged the fixed fee.
-The fee covers the cost of the network looking at the transaction
-and thus must be paid even if no change to your account is made.
-
-### Storage/Account Fees
-
-Account Creation fee is applied only when create account is called.
-This fee covers the cost of storing up to 1KB of data in perpetuity.
-This fee is applied only once and can be "topped up" to add additional storage to an account.
-Transactions are submitted using a Flow SDK via the [Access API](https://github.com/onflow/flow/blob/master/docs/access-api-spec.md).
-Results can be queried by transaction hash through the [Access API](https://github.com/onflow/flow/blob/master/docs/access-api-spec.md).
-
-## Accounts
-
-An account on Flow is a record in the chain state that holds the following information:
-
-- **Address**: unique identifier for the account
-- **Balance**: default token balance
-- **Public Keys**: public keys authorized on the account
-- **Code**: Cadence contracts deployed to the account
-- **Storage**: area of the account used to store resource assets
-
-Information on Generating Accounts can be found [here](https://github.com/onflow/flow/blob/master/docs/accounts-and-keys.md#accounts)
-
-## Flow Service Account
-
-The Service Account is a special account in Flow that has special permissions to manage system contracts.
- It is able to mint tokens, set fees, and update network-level contracts.
-
-### Tokens & Fees
-
-The Service Account has administrator access to the FLOW token smart contract, so it has authorization to mint and burn tokens. It also has access to the transaction fee smart contract and can adjust the fees charged for transactions execution on Flow.
-
-### Network Management
-
-The Service Account administrates other smart contracts that manage various aspects of the Flow network, such as epochs and (in the future) validator staking auctions.
-
-### Governance
-
-Besides its special permissions, the Service Account is an account like any other in Flow. During the early phases of Flow's development, the account will controlled by keys held by Dapper Labs. As Flow matures, the service account will transition to being controlled by a smart contract governed by the Flow community.
-
-## Key Format
-
-We are supporting ECDSA with the curves `P-256` and `secp256k1`. For these curves, the public key is encoded into 64 bytes as `X||Y` where `||` is the concatenation operator.
-
-- `X` is 32 bytes and is the big endian byte encoding of the `x`-coordinate of the public key padded to 32, i.e. `X=x_31||x_30||...||x_0`  or `X =  x_31*256^31 + ... + x_i*256^i + ... + x_0`.
-- `Y` is 32 bytes and is the big endian byte encoding of the `y`-coordinate of the public key padded to 32, i.e. `Y=y_31||y_30||...||y_0` or `Y =  y_31*256^31 + ... + y_i*256^i + ... + y_0`
-
-# FAQs
-
-## How do I check my FLOW balance?
-
-Visit [Flow Port](#) and sign-in to your Flow Account. Your wallet or custody provider will likely also display your FLOW balance to you.
-
-## How do I get FLOW to my users?
-
-<!-- TODO -->
-
-## How do I create accounts on my user's behalf?
-
-<!-- TODO -->
-
-## How do I transfer FLOW to my users?
-
-<!-- TODO -->
-
-## How can I reward users with FLOW?
-
-<!-- TODO -->
-
-## What are Flow Arcade Tokens (FATs)?
-
-<!-- TODO -->

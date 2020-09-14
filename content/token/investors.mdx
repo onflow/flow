@@ -1,0 +1,62 @@
+---
+title: FLOW for Investors
+description: Investor guide for purchasing and claiming FLOW tokens
+---
+
+Follow the process outlined below if you would like to:
+
+- Claim tokens purchased in a previous sale
+- Purchase or hold FLOW in the future
+
+#### **Step 1: Choosing a custody provider**
+
+Choose a custody provider who currently supports Flow:
+
+- Coinlist
+- Finoa
+- Kraken
+- Ledger, or
+- Create your own Flow account by going to [Flow Port](#) and selecting "Create Account" under the transactions option.
+  This will submit a transaction to the [Flow Faucet](#) which will sign as the payer to create your account.
+
+#### **Step 2: Account creation**
+
+Your chosen custody service will provide you with an option to create a `Flow Address`.
+Account addresses for managing funds and signing transactions are created as follows:
+
+1. The user (or user's agent)
+   1. generates the private account key (off-chain)
+   2. prepares a Cadence script to create their own account
+2. Dapper Labs
+    1. co-signs the account creation transaction (for authorization, and payment)
+    2. submits the transaction to the network
+
+Once the account creation transaction has been executed and the result sealed,
+the user can use their private key to authorize transactions through their account
+(generally this is done through a wallet provider).
+
+The exact steps to complete this may vary by custody provider but they will require a thorough KYC process.
+
+**You are done this step when you receive your Flow Address.**
+
+It should look like something like: `0x7e60df042a9c0868`
+
+#### Flow Addresses: Technical Details
+
+For Flow addresses, a linear code [64, 45, 7] is used as an error-detection code.
+The address of the i-th account created on Flow is simply the codeword corresponding to the original value (i).
+This linear code allows generating 2^45 distinct addresses, each address is encoded over 64 bits.
+Two different addresses are guaranteed to have at least 7 different bits which reduces the risk of confusing two addresses.
+
+Moreover, the linear code used is non-systematic, which means it's not possible to separate the extra bits from the original value bits in the codeword.
+This makes the generated addresses look like random numbers and two consecutive account addresses look very different.
+A quick off-chain test can tell if a 64 bits word could be a valid Flow address.
+
+The generation of an account address is an on-chain mechanism that happens when a Flow network receives an account creation transaction.
+The network keeps track of the number of accounts already created and returns the newly created address.
+
+#### **Step 3**
+
+Provide the [Flow team](mailto:) your Flow Address and the tokens will be deposited into your account shortly.
+
+You will be able to **check your FLOW balance** anytime on [Flow Port](#)
