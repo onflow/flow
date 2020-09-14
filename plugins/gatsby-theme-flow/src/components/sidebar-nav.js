@@ -265,8 +265,6 @@ export default function SidebarNav(props) {
   const categories = props.contents.filter((content) => content.title);
   const [root] = props.contents.filter((content) => !content.title);
 
-  console.log(props.contents);
-
   function toggleAll() {
     const checkboxes = Array.from(
       categoriesRef.current.querySelectorAll('input[type="checkbox"]')

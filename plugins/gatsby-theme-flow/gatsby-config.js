@@ -136,7 +136,14 @@ module.exports = ({
         ],
       },
     },
-    "gatsby-plugin-printer",
+    // {
+    //   resolve: "gatsby-plugin-printer",
+    //   options: {
+    //     puppeteerLaunchOptions: {
+    //       headless: true,
+    //     },
+    //   },
+    // },
     ...Object.entries(versions).map(([name, branch]) => ({
       resolve: "gatsby-source-git",
       options: {

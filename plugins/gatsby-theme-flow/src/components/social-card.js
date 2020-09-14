@@ -23,7 +23,7 @@ const { fonts, image } = preval`
   const cssPath = require.resolve('typeface-overpass/index.css');
   const fonts = fs
     .readFileSync(cssPath, 'utf-8')
-    .replace('./files/overpass-latin-300.woff2', base64Regular);
+    .replace('./files/overpass-latin-300.woff2', base64Regular)
     .replace('./files/overpass-latin-600.woff2', base64Semibold);
 
   const imagePath = path.resolve(__dirname, '../assets/social-bg.jpg');
