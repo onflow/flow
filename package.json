@@ -1,4 +1,7 @@
 {
+  "engines" : { 
+    "node" : ">=14.0"
+  },
   "scripts": {
     "prestart": "gatsby clean",
     "start": "node --nolazy node_modules/.bin/gatsby develop --inspect-brk",
