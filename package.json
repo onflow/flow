@@ -1,6 +1,6 @@
 {
   "engines" : { 
-    "node" : ">=14.0"
+    "node": "12.x"
   },
   "scripts": {
     "prestart": "gatsby clean",
