@@ -13,30 +13,35 @@ https://github.com/dapperlabs/flow-internal/issues/1131
 - flag support for custody
 -->
 
-As a node operator, you first need to generate your staking key,
+If you want to be a node operator, you first need to generate your staking key,
 networking address, node ID, and networking key.
 Please consult the [guide](https://docs.onflow.org/docs/node-operation-consolidated-guide) to read about how to do that.
 
-You then need to determine the role of node you'll be running.
+You then need to determine the role of node you'll be running (Collector, Consensus, Execution, Verification, or Access)
 
 ## Staking
 
-If you hold tokens and want to participate in the network,
-you need to [stake](custody-staking-and-delivery#staking) them.
+If you hold tokens and want to participate in the network as a node operator.
+you need to [stake](custody-staking-and-delivery#staking) your tokens.
 
-### Staking as a Service & Delegation - Using the Staking Helper
+### Staking as a Service - Using the Staking Helper Contract
 
-If you do not hold tokens yourself,
-but are relying on someone else to run a node on your behalf,
+If you do not hold tokens and are relying on someone else to stake tokens for your node,
 you can [submit a staking request without tokens](custody-staking-and-delivery#staking-helper) -
-this will produce the needed node operator object
-[created during staking](custody-staking-and-delivery#staking).
+this will register your node and produce the needed node operator object that the token holder
+can use to stake their tokens for your node. These kind of arrangements are usually moderated by an
+off-chain legal agreement.
 
-## Withdrawing Rewards
+### Allowing other Users to trustlessly Delegate tokens to your node
+If you operate a node and want to allow other token holders to delegate tokens to your node without an off-chain legal agreement,
+you can [enable delegation for your node](custody-staking-and-delivery#delegation), which allows any user to commit stake for your node 
+and receive a proportional percentage of your node's rewards, as determined by you.
 
-Rewards are deposited into your pool of unlocked tokens
-which you can [withdraw at anytime](custody-staking-and-delivery#withdrawing-rewards).
+## Unbonding / Withdrawing Stake and Rewards
 
-## Unbonding / Withdrawing Stake
+Stake can be [unbonded / withdrawn](custody-staking-and-delivery.mdx#unbonding-/-withdrawing-stake)
+after a week-long lock-up.
 
-Stake can be [unbonded / withdrawn](custody-staking-and-delivery.mdx#unbonding-/-withdrawing-stake).
+Rewards are deposited into the same pool of unlocked tokens where unbonded tokens are stored.
+You can [withdraw these tokens at anytime](custody-staking-and-delivery#withdrawing-rewards).
+You can also [re-stake them](custody-staking-and-delivery#staking-unlocked-stake), if desired.
