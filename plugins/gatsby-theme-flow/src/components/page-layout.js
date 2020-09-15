@@ -117,7 +117,7 @@ export default function PageLayout(props) {
 
   const { pathname } = props.location;
   const { siteName, title } = data.site.siteMetadata;
-  const { subtitle, sidebarContents } = props.pageContext;
+  const { subtitle, sidebar } = props.pageContext;
   const {
     discordUrl,
     twitterUrl,
@@ -185,16 +185,16 @@ export default function PageLayout(props) {
               </ButtonWrapper>
             </HeaderInner>
           )}
-          {sidebarContents && (
+          {sidebar && (
             <NavItemsContext.Provider value={navItems}>
               <SidebarNav
-                contents={sidebarContents}
+                contents={sidebar.contents}
                 pathname={pathname}
                 onToggleAll={handleToggleAll}
                 onToggleCategory={handleToggleCategory}
                 onLinkClick={handleSidebarNavLinkClick}
                 pathConfig={pathConfig}
-                alwaysExpanded={props.path?.includes("/tutorial/cadence")}
+                alwaysExpanded={sidebar.alwaysExpanded}
               />
             </NavItemsContext.Provider>
           )}

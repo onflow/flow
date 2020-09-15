@@ -253,7 +253,10 @@ async function createPagesForSection(
       context: {
         id,
         subtitle,
-        sidebarContents: sidebarContents,
+        sidebar: {
+          alwaysExpanded: section.sidebarAlwaysExpanded,
+          contents: sidebarContents
+        },
         githubUrl,
         discordUrl,
         twitterUrl,
