@@ -226,7 +226,7 @@ const sections = [
     patterns: ["token/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
+      FLOW: [
         "token/index",
         "token/investors",
         "token/earn",
