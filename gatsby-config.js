@@ -182,6 +182,7 @@ const sections = [
   {
     sourceInstanceName: "docs",
     patterns: ["tutorial/cadence/*"],
+    sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
         "tutorial/cadence/00-introduction",
@@ -223,12 +224,19 @@ const sections = [
   {
     sourceInstanceName: "docs",
     patterns: ["token/**/*"],
+    sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
+      FLOW: [
         "token/index",
+        "token/investors",
+        "token/earn",
+        "token/concepts",
+        "token/faq",
+      ],
+      Staking: [
         "token/staking",
-        "token/custody-provider",
-        "token/node-operator",
+        "token/custody-providers",
+        "token/node-operators",
       ],
     },
   },
