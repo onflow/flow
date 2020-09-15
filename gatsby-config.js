@@ -234,9 +234,9 @@ const sections = [
         "token/faq",
       ],
       Staking: [
-        "token/staking",
-        "token/custody-providers",
-        "token/node-operators",
+        "token/staking/index",
+        "token/staking/node-operators",
+        "token/staking/staking-as-a-service",
       ],
     },
   },

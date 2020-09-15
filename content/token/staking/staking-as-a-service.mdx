@@ -1,15 +1,15 @@
 ---
-title: Staking as a Service with FLOW
-description: How to use FLOW to run a staked node on behalf of a token holder who supplies the tokens to stake
+title: Staking as a Service
+description: How to use FLOW to run a staked node on behalf of another user
 ---
 
-# Staking as a Service with Flow
-
+<Callout type="warning">
 NOTE: The details of the transactions described in this document have not been finalized.
 The overall flow of each process will stay the same, but the content and exact details
 of each transaction WILL change.
+</ Callout>
 
-## Staking as a Service & Delegation - Using the Staking Helper
+## Using the Staking Helper
 
 If a node operator does not have Flow Tokens but wants to run a node, 
 or if a token holder wants to stake, but doesn't want to have to manage
@@ -29,7 +29,7 @@ stores a capability in each account to access the third party `StakingHelper` re
 This resource also defines the reward split between the node operator and token holder -
 this is done via an `init` argument which is the percentage of rewards the node operator receives.
 
-### Delegating with the StakingHelper
+### Delegating with the Staking Helper
 
 The `StakingHelper` resource allows the token holder securely transfer stake to the protocol
 on behalf of the node operator without requiring the node operator 
