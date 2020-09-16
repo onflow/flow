@@ -117,7 +117,7 @@ pub fun main() {
 }
 ```
 
-You should see something similar to this output if your accounts are set up correctly. They are in the same state that they would have been in if you followed the [Fungible Tokens](doc:fungible-tokens) and [Non-Fungible Tokens](doc:non-fungible-tokens) tutorials in succession:
+You should see something similar to this output if your accounts are set up correctly. They are in the same state that they would have been in if you followed the [Fungible Tokens](/tutorial/cadence/03-fungible-tokens/) and [Non-Fungible Tokens](/tutorial/cadence/04-non-fungible-tokens/) tutorials in succession:
 
 ```
 "Account 1 Vault Balance"
@@ -276,7 +276,7 @@ pub contract Marketplace {
 }
 ```
 
-This marketplace contract has resources that function similarly to the NFT `Collection` that was explained in [Non-Fungible Tokens](doc:non-fungible-tokens), with a few differences and additions:
+This marketplace contract has resources that function similarly to the NFT `Collection` that was explained in [Non-Fungible Tokens](/tutorial/cadence/04-non-fungible-tokens), with a few differences and additions:
 
 - This marketplace contract has methods to add and remove NFTs, but these functions also involve setting and removing a price. When a user wants to put their NFT up for sale, they do so by depositing it into the collection with the `listForSale` function. Then, another user can call the `purchase` method, sending their `Vault` that contains the currency they are using to make the purchase. The buyer also includes a reference to their NFT `Collection` so that the purchased token can be immediately deposited into their collection when the purchase is made.
 - This marketplace contract stores a reference: `pub let ownerVault: &FungibleToken.Receiver`.
