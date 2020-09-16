@@ -230,6 +230,7 @@ const sections = [
         "token/index",
         "token/investors",
         "token/earn",
+        "token/wallets",
         "token/concepts",
         "token/faq",
       ],
