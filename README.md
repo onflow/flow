@@ -1,6 +1,6 @@
 # Flow Documentation
 
-Preview: https://flow-gatsby-docs-preview.vercel.app/
+Preview: https://flow-docs.vercel.app
 
 ## Developing locally
 

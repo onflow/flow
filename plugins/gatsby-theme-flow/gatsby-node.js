@@ -1,6 +1,6 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
-const { createPrinterNode } = require("gatsby-plugin-printer");
+// const { createPrinterNode } = require("gatsby-plugin-printer");
 
 exports.onCreateNode = async function(
   { node, actions, getNode, loadNodeContent },
@@ -35,17 +35,17 @@ exports.onCreateNode = async function(
     }
 
     const { title, sidebar_title, graphManagerUrl } = node.frontmatter;
-    createPrinterNode({
-      id: `${node.id} >>> Printer`,
-      fileName,
-      outputDir,
-      data: {
-        title,
-        subtitle: subtitle || siteName,
-        category,
-      },
-      component: require.resolve("./src/components/social-card.js"),
-    });
+    // createPrinterNode({
+    //   id: `${node.id} >>> Printer`,
+    //   fileName,
+    //   outputDir,
+    //   data: {
+    //     title,
+    //     subtitle: subtitle || siteName,
+    //     category,
+    //   },
+    //   component: require.resolve("./src/components/social-card.js"),
+    // });
 
     actions.createNodeField({
       name: "image",
@@ -253,7 +253,10 @@ async function createPagesForSection(
       context: {
         id,
         subtitle,
-        sidebarContents: sidebarContents,
+        sidebar: {
+          alwaysExpanded: section.sidebarAlwaysExpanded,
+          contents: sidebarContents
+        },
         githubUrl,
         discordUrl,
         twitterUrl,

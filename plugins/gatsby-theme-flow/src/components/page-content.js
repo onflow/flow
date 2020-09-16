@@ -6,6 +6,7 @@ import useMount from "react-use/lib/useMount";
 import { HEADER_HEIGHT } from "../utils";
 import { IconGithub, IconDiscord, IconPlayground } from "../ui/icons";
 import { theme } from "../colors";
+import { smallCaps } from "../utils/typography";
 import breakpoints from "../utils/breakpoints";
 import PageNav from "./page-nav";
 import { withPrefix } from "gatsby";
@@ -47,7 +48,7 @@ const BodyContent = styled.div({
   },
   "*:not(style) +": {
     [["h2", "h3", "h4"]]: {
-      marginTop: 56,
+      marginTop: 36,
     },
   },
   img: {
@@ -83,8 +84,10 @@ const Aside = styled.aside({
 });
 
 const AsideHeading = styled.h4({
-  color: theme.secondary,
-  fontWeight: 600,
+  ...smallCaps,
+  color: theme.text3,
+  fontSize: 14,
+  fontWeight: "bold",
 });
 
 const AsideLinkWrapper = styled.h5({

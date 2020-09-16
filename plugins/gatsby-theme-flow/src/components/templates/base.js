@@ -25,7 +25,7 @@ export default function BaseTemplate(props) {
   const {frontmatter, headings, fields} = file.childMarkdownRemark || file.childMdx;
   const {title, description} = site.siteMetadata;
   const {
-    sidebarContents,
+    sidebar,
     githubUrl,
     discordUrl,
     twitterUrl,
@@ -34,7 +34,7 @@ export default function BaseTemplate(props) {
 
   const allHeadings = headings.concat(props.extraHeadings || []);
 
-  const pages = sidebarContents
+  const pages = sidebar.contents
     .reduce((acc, {pages}) => acc.concat(pages), [])
     .filter(page => !page.anchor);
 

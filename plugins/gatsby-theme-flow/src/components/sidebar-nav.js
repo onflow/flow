@@ -77,14 +77,14 @@ const categoryTitleStyles = {
   alignItems: "center",
   justifyContent: "space-between",
   padding: "12px 0",
-  color: theme.secondary,
+  color: theme.text3,
   fontWeight: "bold",
   fontSize: 14,
   lineHeight: "15px",
   ...smallCaps,
   svg: size(10),
   "&.active": {
-    color: theme.secondary,
+    color: theme.text3,
   },
 };
 
@@ -264,8 +264,6 @@ export default function SidebarNav(props) {
   const [allExpanded, setAllExpanded] = useState(false);
   const categories = props.contents.filter((content) => content.title);
   const [root] = props.contents.filter((content) => !content.title);
-
-  console.log(props.contents);
 
   function toggleAll() {
     const checkboxes = Array.from(
