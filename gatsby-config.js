@@ -127,7 +127,6 @@ const sections = [
     ],
     sidebar: {
       null: [
-        "intro/flow-token",
         "[Node Operation Quick Guide](/concepts/node-operation/quickstart)",
         "intro/glossary",
         "intro/FAQ",
