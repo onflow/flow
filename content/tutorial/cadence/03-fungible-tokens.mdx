@@ -45,7 +45,7 @@ We're going to take you through these steps to get comfortable with the fungible
 5. Transfer tokens from one account to another.
 6. Use a script to read the accounts' balances.
 
-**Before proceeding with this tutorial**, we recommend following the instructions in [Getting Started]('/tutorial/cadence/01-first-steps/') and [Hello, World!](/tutorial/cadence/02-hello-world/) to learn the basics of the language and the playground.
+**Before proceeding with this tutorial**, we recommend following the instructions in [Getting Started](/tutorial/cadence/01-first-steps/) and [Hello, World!](/tutorial/cadence/02-hello-world/) to learn the basics of the language and the playground.
 
 <!-- For additional support, see the [Playground Manual](doc:playground-manual) -->
 
@@ -469,7 +469,7 @@ Account storage is indexed with paths, which consist of a domain and identifier.
 - `private`: Stores links, otherwise known as capabilities, to objects in storage. Only accessible by the owner of the account
 - `public`: Stores links to objects in storage: Accessible by anyone in the network.
 
-Contracts have access to the private `AuthAccount` object of the account it is stored in, using `self.account`. This object has methods that can modify storage in many ways. See the [/docs/glossary#account]() documentation for a list of all the methods it can call.
+Contracts have access to the private `AuthAccount` object of the account it is stored in, using `self.account`. This object has methods that can modify storage in many ways. See the [glossary](/intro/glossary#account) documentation for a list of all the methods it can call.
 
 In this line, we call the `save` method to store an object in storage, specifying `@Vault` as the type of the value we are storing. The first argument is the value to store, and the second argument is the path where the value is being stored. For `save` the path has to be in the `/storage` domain.
 
@@ -713,7 +713,7 @@ getAccount(0x01).getCapability(/public/MainReceiver)!
 
 The `post` phase is for ensuring that certain conditions are met after the transaction has been executed. Here, we are getting the capability from its public path and calling its `check` function to ensure that the capability contains a valid link to a valid object in storage.
 
-You might also notice that we are using a `!` symbol. This is to use the force-unwrap operator. When reading values from storage or creating capabilities, There is always the risk that the locations may be empty, so any function that interacts with them could potentially end up doing nothing if there isn't anything in that location. [Optionals](doc:glossary#section-optionals-in-cadence) are types that can represent the absence of a value. Optionals have two cases: either there is a value of the specified type, or there is nothing. An optional type is declared using the `?` suffix. Therefore, the possibility that the values are `nil` must be handled. The force-unwrap operator `!` allows us to get the value from the optional if it contains a value. If the value is `nil`, then the execution of the program aborts.
+You might also notice that we are using a `!` symbol. This is to use the force-unwrap operator. When reading values from storage or creating capabilities, There is always the risk that the locations may be empty, so any function that interacts with them could potentially end up doing nothing if there isn't anything in that location. [Optionals](/intro/glossary/#optionals-in-cadence) are types that can represent the absence of a value. Optionals have two cases: either there is a value of the specified type, or there is nothing. An optional type is declared using the `?` suffix. Therefore, the possibility that the values are `nil` must be handled. The force-unwrap operator `!` allows us to get the value from the optional if it contains a value. If the value is `nil`, then the execution of the program aborts.
 
 <Callout type="info">
 
@@ -928,7 +928,7 @@ Result > "void"
 
 If there is an error, this probably means that you missed a step earlier and might need to rerun some of the previous transactions.
 
-For help restarting the emulator from the beginning of this tutorial, see the [Playground Manual](doc:playground-manual)
+For help restarting the emulator from the beginning of this tutorial, see the [Playground Manual](/intro/playground-manual/)
 
 Now that we have two accounts, each with a `Vault`, we can see how they transfer tokens to each other!
 
