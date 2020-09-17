@@ -19,7 +19,7 @@ import { useResponsiveSidebar } from "./responsive-sidebar";
 import { Helmet } from "react-helmet";
 import { IconMenuSelector } from "../ui/icons";
 import { graphql, useStaticQuery } from "gatsby";
-import { MobileLogo } from "./mobile-logo";
+import MobileLogo from "./mobile-logo";
 import { SelectedLanguageContext } from "./multi-code-block";
 import { size } from "polished";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
@@ -48,7 +48,6 @@ const MobileNav = styled.div({
   [breakpoints.md]: {
     display: "flex",
     alignItems: "center",
-    marginRight: 32,
     color: theme.text1,
   },
 });
@@ -202,8 +201,8 @@ export default function PageLayout(props) {
         <Main>
           <Header>
             <MobileNav>
+              <MobileLogo />
               <MenuButton onClick={openSidebar} />
-              <MobileLogo width={32} fill="currentColor" />
             </MobileNav>
             {algoliaApiKey && algoliaIndexName && (
               <Search

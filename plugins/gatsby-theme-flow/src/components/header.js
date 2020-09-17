@@ -20,7 +20,7 @@ const InnerWrapper = styled.div({
   padding: "0 14px",
   backgroundColor: "white",
   [breakpoints.md]: {
-    padding: "0 24px",
+    padding: "0 32px",
   },
 });
 
