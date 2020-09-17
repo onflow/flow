@@ -175,7 +175,7 @@ function isPageSelected(path, pathname) {
 
 function getStylesForNavItem(page) {
   switch (page) {
-    case "Flow Tokens":
+    case "FLOW (Token)":
       // TODO: Cvert these to tailwind css classes...
       return {
         color: colors.grey.darker,

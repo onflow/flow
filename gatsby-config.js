@@ -16,7 +16,7 @@ const pathConfig = {
     "/intro/FAQ/",
     "/intro/glossary/",
     "/intro/flow-token/",
-    "/concepts/node-operation/quickstart/",
+    "/concepts/node-operation/quickstart",
   ],
 };
 
