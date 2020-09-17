@@ -35,12 +35,14 @@ And aquired the minimum amount of FLOW to stake for your node role:
 
 You are ready to submit a staking request.
 
-Submit a staking request using the `create_staking_request.cdc` transaction, 
-providing all the node info and tokens that you generated.
+Submit a staking request using the `create_staking_request.cdc` transaction.
+providing all the node info, tokens that you want to stake, and the percentage
+of delegator rewards you want to receive. (not relevant if you are not accepting delegation).
 This will register your node in the Flow node identity table
 and commit your tokens to stake during the next epoch.
 This also stores a special node operator object in your account that is used for staking, unstaking,
-and withdrawing rewards.
+and withdrawing rewards. For the rest of the epoch, you can modify your committed tokens however you
+want, but they will be locked in to stake after that and will be subject to staking lockup rules.
 
 Once the next epoch starts, if you have committed at least the minimum,
 the tokens you have committed will be marked as staked and held in the protocol state.
@@ -50,27 +52,30 @@ moved to their unlocked pool, which they can withdraw from at any time.
 At anytime, you can submit a `request_unstake.cdc` transaction
 which will move your tokens to the unbonding pool at the end of the current epoch.
 They will sit in this pool for one (1) additional epoch,
-at which point you will be able to withdraw your tokens via `withdraw_tokens.cdc` transaction.
+at which point you will be able to withdraw your tokens via `withdraw_unlocked_tokens.cdc` transaction.
 
 Staking rewards are paid at the end of every epoch. Every node's rewards
 are deposited to their unlocked tokens pool. They can be withdrawn
-at any time by submitting the `withdraw_tokens.cdc` transaction.
+at any time by submitting the `withdraw_reward_tokens.cdc` transaction.
 
 You can commit more tokens to stake for the next epoch at any time,
-and there are two different ways to do it.
+and there are three different ways to do it.
 1. You can commit new tokens to stake by submitting the `stake_new_tokens.cdc` transaction,
 which withdraws tokens from your account's flow token vault and commits them.
 2. You can commit tokens that are in your unlocked token pool, which holds the tokens
-you have been awarded and tokens that you have unstaked. Submit the `stake_unlocked_tokens.cdc`
+that you have unstaked. Submit the `stake_unlocked_tokens.cdc`
 transaction to move the tokens from the unlocked pool to the committed pool.
+3. You can commit tokens that are in your unlocked token pool, which holds the tokens
+you have been awarded. Submit the `stake_rewarded_tokens.cdc`
+transaction to move the tokens from the rewards pool to the committed pool.
+
+![Flow Staking For New Operators](flow-staking-new-operators.png)
 
 ## Delegating Stake
 
-A node operator who wants to allow delegation to their node will create 
-a public capability for prospective delegators to access using the `create_delegation.cdc` transaction,
-specifying the constraints for delegating to their node, and the percentage of the rewards they receive.
-This transaction will only succeed for nodes which have already submitted
-a staking request and which fulfill the minimum staking requirements for that node type.
+A node operator who wants to allow delegation to their node will use 
+the `del_create_delegation.cdc` transaction, which creates
+a public capability for prospective delegators to access to delegate to the node.
 
 If a node operator has delegators, they cannot withdraw their own tokens 
 such that their own staked tokens would fall below the minimum requirement for that node type.
@@ -86,7 +91,7 @@ based on the proportion staked by that token holder for each epoch with respect 
 
 ### Supporting staking and delegating transactions
 
-Token holders who wish to delegate to a node operator submit a `create_delegator.cdc` transaction
+Token holders who wish to delegate to a node operator submit a `del_register_delegator.cdc` transaction
 providing the account addresses of the node they want to delegate to.
 This transaction creates a capability that the delegator stores in their account which gives them access to:
 
@@ -95,7 +100,7 @@ This transaction creates a capability that the delegator stores in their account
 - Requesting to unstake their tokens
 
 Once the user has the capability in their account, 
-they can commit tokens to it to stake with the `delegate_tokens.cdc` transaction.
+they can commit tokens to it to stake with the `del_stake_new_tokens.cdc` transaction.
 These tokens are forwarded to the node operator's committed pool and their amount is 
 recorded in the node operator's delegation state.
 
@@ -103,31 +108,34 @@ Similar to the regular node operator's stake,
 the tokens you have committed will be marked as staked for the next epoch
 and held in the protocol state for the node that was delegated to.
 
-At anytime, a delegator can submit a `delegator_request_unstake.cdc` transaction
+At anytime, a delegator can submit a `del_request_unstaking.cdc` transaction
 which will move their tokens to the unbonding pool at the end of the current epoch.
 They will sit in this pool for one (1) additional epoch,
-at which point they will be able to withdraw their tokens via `delegator_withdraw_tokens.cdc` transaction.
+at which point they will be able to withdraw their tokens via `del_withdraw_unlocked_tokens.cdc` transaction.
 
-Every delegator's rewards are still deposited to the node operator's unlocked tokens pool.
-The node operator's delegation logic tracks how much each delegator has received. 
+Every delegator's rewards are still deposited to their rewarded tokens pool.
+The node operator's delegation logic tracks how much each delegator has received.
 A delegator can withdraw their rewards from the unlocked tokens pool
-at any time by submitting the `delegator_withdraw_tokens.cdc` transaction.
+at any time by submitting the `del_withdraw_rewarded_tokens.cdc` transaction.
 
 Like regular node operators, delegators can also commit more tokens to stake for the next epoch
 and there are two different ways to do it.
-1. They can commit new tokens to stake by submitting the `delegate_new_tokens.cdc` transaction,
+1. They can commit new tokens to stake by submitting the `del_stake_new_tokens.cdc` transaction,
 which withdraws tokens from their account's flow token vault 
 and commits them to the saved node operator.
-2. They can commit tokens that are in their unlocked token pool, which holds the tokens
-they have been awarded and tokens that they have unstaked. Submit the `delegate_unlocked_tokens.cdc`
+2. They can commit tokens that are in their unlocked token pool, which holds 
+the tokens that they have unstaked. Submit the `del_stake_unlocked.cdc`
 transaction to move the tokens from the unlocked pool to the committed pool for the node.
+3. They can commit tokens that are in their rewarded token pool, which holds the tokens
+they have been awarded. Submit the `del_stake_rewarded.cdc`
+transaction to move the tokens from the rewards pool to the committed pool for the node.
+
+![Flow Stake Delegation](flow-stake-delegation.png)
 
 ## Token Pools
 
 Each node operator has four token pools allocated to them:
 
-- Unlocked Tokens: Tokens that are freely available to withdraw or re-stake.
-Rewards are paid to this pool.
 - Committed Tokens: Tokens that are committed for the next epoch. 
 They are automatically moved to the staked pool when the next epoch starts.
 - Staked Tokens: Tokens that are staked by the node operator for the current epoch.
@@ -135,10 +143,152 @@ They are only moved at the end of an epoch and if the staker
 has submitted an unbonding request.
 - Unbonding Tokens: Tokens that have been unstaked, 
 but are not free to withdraw until the following epoch. 
+- Unlocked Tokens: Tokens that are freely available to withdraw or re-stake.
+Unstaked tokens go to this pool.
+- Rewarded Tokens: Tokens that are freely available to withdraw or re-stake.
+Rewards are paid to this pool.
 
 At the end of every epoch, tokens are moved between pools in this order:
 
-1. All Committed Tokens get moved to staked Tokens pool.
-2. All unbonding tokens get moved to the unlocked tokens pool.
-3. All requested unbonding tokens get moved 
+1. Rewards are paid to the rewards pool.
+2. All Committed Tokens get moved to staked Tokens pool.
+3. All unbonding tokens get moved to the unlocked tokens pool.
+4. All requested unbonding tokens get moved 
 from the staked pool to the unbonding pool.
+
+## Staking Transaction Examples
+
+### Create Staking Request
+
+```cadence:title=create_staking_request.cdc
+import FlowIDTableStaking from 0xIDENTITYTABLEADDRESS
+import FlowToken from 0xFLOWTOKENADDRESS
+
+// This transaction creates a new node struct object
+// and updates the proposed Identity Table
+
+transaction(id: String, 
+            role: UInt8, 
+            networkingAddress: String, 
+            networkingKey: String, 
+            stakingKey: String, 
+            amount: UFix64,
+            cutPercentage: UFix64) {
+
+    let flowTokenRef: &FlowToken.Vault
+
+    prepare(acct: AuthAccount) {
+
+        self.flowTokenRef = acct.borrow<&FlowToken.Vault>(from: /storage/flowTokenVault)
+            ?? panic("Could not borrow reference to FLOW Vault")
+
+        let nodeStaker <- FlowIDTableStaking.addNodeRecord(id: id, 
+                                    role: role, 
+                                    networkingAddress: networkingAddress, 
+                                    networkingKey: networkingKey, 
+                                    stakingKey: stakingKey, 
+                                    tokensCommitted: <-self.flowTokenRef.withdraw(amount: amount),
+                                    cutPercentage: cutPercentage)
+
+        
+        if acct.borrow<&FlowIDTableStaking.NodeStaker>(from: FlowIDTableStaking.NodeStakerStoragePath) == nil {
+            acct.save(<-nodeStaker, to: FlowIDTableStaking.NodeStakerStoragePath)
+        } else {
+            destroy nodeStaker
+        }
+    }
+}
+```
+
+### Stake New Tokens
+
+```cadence:title=stake_new_tokens.cdc
+import FlowIDTableStaking from 0xIDENTITYTABLEADDRESS
+import FlowToken from 0xFLOWTOKENADDRESS
+
+
+transaction(amount: UFix64) {
+
+    // Local variable for a reference to the node object
+    let stakerRef: &FlowIDTableStaking.NodeStaker
+
+    let flowTokenRef: &FlowToken.Vault
+
+    prepare(acct: AuthAccount) {
+        // borrow a reference to the node object
+        self.stakerRef = acct.borrow<&FlowIDTableStaking.NodeStaker>(from: /storage/flowStaker)
+            ?? panic("Could not borrow reference to staking admin")
+
+        self.flowTokenRef = acct.borrow<&FlowToken.Vault>(from: /storage/flowTokenVault)
+            ?? panic("Could not borrow reference to FLOW Vault")
+
+    }
+
+    execute {
+
+        self.stakerRef.stakeNewTokens(<-self.flowTokenRef.withdraw(amount: amount))
+
+    }
+}
+```
+
+### Request Staking Unbonding
+
+```cadence:title=request_unstake.cdc
+import FlowIDTableStaking from 0xIDENTITYTABLEADDRESS
+
+
+transaction(amount: UFix64) {
+
+    // Local variable for a reference to the Node object
+    let stakerRef: &FlowIDTableStaking.NodeStaker
+
+    prepare(acct: AuthAccount) {
+        // borrow a reference to the node object
+        self.stakerRef = acct.borrow<&FlowIDTableStaking.NodeStaker>(from: /storage/flowStaker)
+            ?? panic("Could not borrow reference to node object")
+
+    }
+
+    execute {
+
+        self.stakerRef.requestUnStaking(amount: amount)
+
+    }
+}
+```
+
+### Withdraw Rewards
+
+```cadence:title=withdraw_reward_tokens.cdc
+import FlowIDTableStaking from 0xIDENTITYTABLEADDRESS
+import FlowToken from 0xFLOWTOKENADDRESS
+
+
+transaction(amount: UFix64) {
+
+    // Local variable for a reference to the node object
+    let stakerRef: &FlowIDTableStaking.NodeStaker
+
+    let flowTokenRef: &FlowToken.Vault
+
+    prepare(acct: AuthAccount) {
+        // borrow a reference to the node object
+        self.stakerRef = acct.borrow<&FlowIDTableStaking.NodeStaker>(from: /storage/flowStaker)
+            ?? panic("Could not borrow reference to staking admin")
+
+        self.flowTokenRef = acct.borrow<&FlowToken.Vault>(from: /storage/flowTokenVault)
+            ?? panic("Could not borrow reference to FLOW Vault")
+
+    }
+
+    execute {
+
+        self.flowTokenRef.deposit(from: <-self.stakerRef.withdrawRewardedTokens(amount: amount))
+
+    }
+}
+```
+
+The source code for the staking contract and more transactions 
+can be found in the [Flow Core Contracts Github Repository](https://github.com/onflow/flow-core-contracts/tree/josh/staking).

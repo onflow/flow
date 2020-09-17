@@ -57,18 +57,30 @@ If the `sh_create_staking_request.cdc` transaction has been submitted
 and the tokens committed, the node operator and token holder 
 can do a few different things.
 
+Token Holder:
 - Remove the token holder's stake via the `sh_request_unstaking.cdc` transaction
   (configuring this to require signatures from either or both parties is an available option).
   This unstaking is still subject to the weeklong unbonding period before
   the requested tokens are available to be withdrawn.
-- Withdraw rewards/unstaked tokens via `sh_withdraw_tokens.cdc` transaction,
+- Withdraw unstaked tokens via `sh_withdraw_unlocked_tokens.cdc` transaction,
+  which will deposit them into the token holder's account regardless of who intiaited the transaction.
+- Withdraw rewarded tokens via `sh_withdraw_rewarded_tokens.cdc` transaction,
   which will deposit them into the corresponding accounts regardless of who
   initiated the withdraw request.
   (this will automatically distribute the rewards to both the staker and node operator,
-  as defined at creation of the `StakingHelper` resource).
+  as defined by the cut of rewards the node receeives at creation of the `StakingHelper` resource).
 - Commit additional tokens to stake via the `sh_stake_new_tokens.cdc` transaction.
-- Commit rewards/unstaked tokens to stake via the `sh_stake_unlocked_tokens.cdc` transaction.
+- Commit unstaked tokens to stake via the `sh_stake_unlocked_tokens.cdc` transaction.
+- Commit rewards tokens to stake via the `sh_stake_rewarded_tokens.cdc` transaction.
 
 If either party wants to end the relationship and not manage the node or stake
 they can simply unstake and withdraw all their tokens and the node operator
 will no longer be registered with the protocol.
+
+### High Level Staking Helper User Flow
+
+![Flow Staking Helper User Flow](flow-staking-helper-user.png)
+
+### Technical Staking Helper Contract Flow
+
+![Flow Staking Helper Contract](flow-staking-helper-contract.png)
