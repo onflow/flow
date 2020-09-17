@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    {
+      "source": "/docs/cadence",
+      "destination": "/cadence/language"
+    }
+  ]
+}
