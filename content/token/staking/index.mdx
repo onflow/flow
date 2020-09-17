@@ -153,8 +153,7 @@ At the end of every epoch, tokens are moved between pools in this order:
 1. Rewards are paid to the rewards pool.
 2. All Committed Tokens get moved to staked Tokens pool.
 3. All unbonding tokens get moved to the unlocked tokens pool.
-4. All requested unbonding tokens get moved 
-from the staked pool to the unbonding pool.
+4. All requested unbonding tokens get moved from the staked pool to the unbonding pool.
 
 ## Staking Transaction Examples
 
@@ -183,12 +182,12 @@ transaction(id: String,
             ?? panic("Could not borrow reference to FLOW Vault")
 
         let nodeStaker <- FlowIDTableStaking.addNodeRecord(id: id, 
-                                    role: role, 
-                                    networkingAddress: networkingAddress, 
-                                    networkingKey: networkingKey, 
-                                    stakingKey: stakingKey, 
-                                    tokensCommitted: <-self.flowTokenRef.withdraw(amount: amount),
-                                    cutPercentage: cutPercentage)
+                                                           role: role, 
+                                                           networkingAddress: networkingAddress, 
+                                                           networkingKey: networkingKey, 
+                                                           stakingKey: stakingKey, 
+                                                           tokensCommitted: <-self.flowTokenRef.withdraw(amount: amount),
+                                                           cutPercentage: cutPercentage)
 
         
         if acct.borrow<&FlowIDTableStaking.NodeStaker>(from: FlowIDTableStaking.NodeStakerStoragePath) == nil {
