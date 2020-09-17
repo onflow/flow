@@ -223,6 +223,17 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
+    patterns: ["concepts/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      Accounts: [
+        "concepts/accounts-and-keys",
+        "concepts/transaction-signing",
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
     patterns: ["token/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
@@ -273,6 +284,16 @@ const sections = [
         "docs/language/environment-information",
         "docs/language/crypto",
         "docs/language/type-hierarchy",
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["token/**/*"],
+    sidebar: {
+      null: [
+        "token/index",
+        "token/staking",
       ],
     },
   },
