@@ -50,14 +50,14 @@ const navConfig = {
     linkText: "JavaScript SDK Documentation",
   },
   "Go SDK": {
-    url: "https://github.com/onflow/flow-go-sdk",
+    url: "https://github.com/onflow/flow-go-sdk#flow-go-sdk",
     icon: "go-sdk",
     description:
       "Build apps that interact with Flow using our full-featured Go SDK.",
     linkText: "Go SDK Documentation",
   },
   "Flow CLI": {
-    url: "https://github.com/onflow/flow/blob/master/docs/cli.md",
+    url: "https://github.com/onflow/flow/blob/master/docs/cli.md#flow-cli ",
     icon: "cli",
     description:
       "The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.",
@@ -71,7 +71,8 @@ const navConfig = {
     linkText: "Emulator Documentation",
   },
   "VS Code Extension": {
-    url: "https://github.com/onflow/vscode-flow",
+    url:
+      "https://github.com/onflow/vscode-flow#cadence-visual-studio-code-extension",
     icon: "vscode",
     description:
       "Cadence syntax highlighting and an integrated Flow emulator for VSCode users.",
@@ -214,10 +215,7 @@ const sections = [
     sourceInstanceName: "docs",
     patterns: ["sdks/javascript/**/*"],
     sidebar: {
-      null: [
-        "sdks/javascript/index", 
-        "sdks/javascript/create-account",
-      ],
+      null: ["sdks/javascript/index", "sdks/javascript/create-account"],
     },
   },
   {
@@ -225,10 +223,7 @@ const sections = [
     patterns: ["concepts/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      Accounts: [
-        "concepts/accounts-and-keys",
-        "concepts/transaction-signing",
-      ],
+      Accounts: ["concepts/accounts-and-keys", "concepts/transaction-signing"],
     },
   },
   {
