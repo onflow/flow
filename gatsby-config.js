@@ -286,16 +286,6 @@ const sections = [
       ],
     },
   },
-  {
-    sourceInstanceName: "docs",
-    patterns: ["token/**/*"],
-    sidebar: {
-      null: [
-        "token/index",
-        "token/staking",
-      ],
-    },
-  },
 ];
 
 module.exports = {
