@@ -127,7 +127,6 @@ const sections = [
     ],
     sidebar: {
       null: [
-        "intro/flow-token",
         "[Node Operation Quick Guide](/concepts/node-operation/quickstart)",
         "intro/glossary",
         "intro/FAQ",
@@ -284,16 +283,6 @@ const sections = [
         "docs/language/environment-information",
         "docs/language/crypto",
         "docs/language/type-hierarchy",
-      ],
-    },
-  },
-  {
-    sourceInstanceName: "docs",
-    patterns: ["token/**/*"],
-    sidebar: {
-      null: [
-        "token/index",
-        "token/staking",
       ],
     },
   },
