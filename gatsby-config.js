@@ -9,6 +9,7 @@ const pathConfig = {
     "/intro/glossary/",
     "/intro/flow-token/",
     "/concepts/node-operation/quickstart",
+    "/intro/partner-update/",
   ],
   // Shows the main docest menu on these pages
   showDocsetMenu: [
@@ -17,6 +18,7 @@ const pathConfig = {
     "/intro/glossary/",
     "/intro/flow-token/",
     "/concepts/node-operation/quickstart",
+    "/intro/partner-update/",
   ],
 };
 
@@ -128,6 +130,7 @@ const sections = [
     sidebar: {
       null: [
         "[Node Operation Quick Guide](/concepts/node-operation/quickstart)",
+        "intro/partner-update",
         "intro/glossary",
         "intro/FAQ",
       ],
@@ -214,10 +217,7 @@ const sections = [
     sourceInstanceName: "docs",
     patterns: ["sdks/javascript/**/*"],
     sidebar: {
-      null: [
-        "sdks/javascript/index", 
-        "sdks/javascript/create-account",
-      ],
+      null: ["sdks/javascript/index", "sdks/javascript/create-account"],
     },
   },
   {
@@ -225,10 +225,7 @@ const sections = [
     patterns: ["concepts/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      Accounts: [
-        "concepts/accounts-and-keys",
-        "concepts/transaction-signing",
-      ],
+      Accounts: ["concepts/accounts-and-keys", "concepts/transaction-signing"],
     },
   },
   {

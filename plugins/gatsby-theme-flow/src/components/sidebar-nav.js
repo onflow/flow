@@ -202,6 +202,7 @@ function getStylesForNavItem(page) {
         background: colors.blue.lightest,
       };
     case "Cadence Language Reference":
+    case "Flow Community Partner Update":
       return {
         color: colors.grey.dark,
         padding: "0 0.2rem",
