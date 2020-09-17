@@ -4,10 +4,8 @@ import styled from '@emotion/styled';
 import {IconMenu} from '../ui/icons';
 import {size} from 'polished';
 
-const padding = 20;
 const StyledButton = styled.button({
-  padding,
-  marginLeft: -padding,
+  padding: 20,
   color: 'inherit',
   border: 'none',
   background: 'none',

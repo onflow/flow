@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import FlowLogo from "../assets/flow-logo.svg";
+import FlowDocsWordmark from "../assets/flow-docs.svg";
 
-const StyledFlowIcon = styled.img({
+const StyledFlowDocsWordmark = styled.img({
   marginTop: 5,
   marginBottom: 5,
   height: 18,
@@ -11,6 +11,6 @@ const StyledFlowIcon = styled.img({
 
 export default function Logo() {
   return (
-    <StyledFlowIcon src={FlowLogo} />
+    <StyledFlowDocsWordmark src={FlowDocsWordmark} />
   );
 }
