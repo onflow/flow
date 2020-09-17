@@ -3,10 +3,9 @@ import styled from "@emotion/styled";
 import FlowDocsWordmark from "../assets/flow-docs.svg";
 
 const StyledFlowDocsWordmark = styled.img({
-  marginTop: 5,
-  marginBottom: 5,
-  height: 18,
-  marginRight: "0.5em",
+  marginLeft: -5,
+  height: 36,
+  display: "block",
 });
 
 export default function Logo() {
