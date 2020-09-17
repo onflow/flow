@@ -267,6 +267,14 @@ async function createPagesForSection(
 }
 
 exports.createPages = async ({ actions, graphql }, options) => {
+
+  actions.createRedirect({
+    fromPath: `/docs/cadence/`,
+    toPath: `/cadence/language`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  })
+
   return Promise.all(
     options.sections.map((section) =>
       createPagesForSection(actions, graphql, section, options)
