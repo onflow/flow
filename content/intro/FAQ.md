@@ -264,7 +264,7 @@ It's true that an NFT might leave her Collection and end up somewhere else (mayb
 
 In Solidity a common form of access control is to have a allowlist of addresses stored in the contract that can access certain methods or fields. When these methods are called, the contract checks to see if the caller is in the allowlist of addresses that are allowed to access it before allowing the method to execute.
 
-```swift:title=Contract.sol
+```solidity:title=Contract.sol
 // Solidity
 function transfer(kittyId: uint, newOwner: address)
 {
