@@ -130,7 +130,7 @@ const sections = [
     sidebar: {
       null: [
         "[Node Operation Quick Guide](/concepts/node-operation/quickstart)",
-        "intro/partner-update",
+        // "intro/partner-update",
         "intro/glossary",
         "intro/FAQ",
       ],
