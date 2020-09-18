@@ -301,7 +301,7 @@ module.exports = {
         description: "Start Building in the Open",
         pageTitle: "Flow Docs",
         menuTitle: "Flow Ecosystem",
-        gaTrackingId: "UA-160003377-1",
+        gaTrackingId: "UA-156047066-4",
         algoliaApiKey: "a152fe18a6749041bf9e0045f5f60117",
         algoliaIndexName: "flowdata",
         baseUrl: "https://docs.onflow.org",
