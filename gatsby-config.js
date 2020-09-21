@@ -123,6 +123,7 @@ const sections = [
       "*",
       "intro/*",
       "concepts/node-operation/*",
+      "concepts/flow-concepts/*",
       // "concepts/node-operation/*",
       // "concepts/custody-providers/*",
       // "guides/node-operator/*",
