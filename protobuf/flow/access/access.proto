@@ -10,6 +10,7 @@ import "flow/entities/block.proto";
 import "flow/entities/collection.proto";
 import "flow/entities/event.proto";
 import "flow/entities/transaction.proto";
+import "google/protobuf/timestamp.proto";
 
 // AccessAPI is the public-facing API provided by access nodes.
 service AccessAPI {
@@ -222,6 +223,7 @@ message EventsResponse {
     bytes block_id = 1;
     uint64 block_height = 2;
     repeated entities.Event events = 3;
+    google.protobuf.Timestamp block_timestamp = 4;
   }
   repeated Result results = 1;
 }
