@@ -222,8 +222,8 @@ message EventsResponse {
   message Result {
     bytes block_id = 1;
     uint64 block_height = 2;
-    google.protobuf.Timestamp block_timestamp = 3;
-    repeated entities.Event events = 4;
+    repeated entities.Event events = 3;
+    google.protobuf.Timestamp block_timestamp = 4;
   }
   repeated Result results = 1;
 }
