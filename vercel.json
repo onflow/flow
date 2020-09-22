@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/docs",                                        "destination": "/",                                         "permanent": true },
     { "source": "/docs/getting-started-1",                      "destination": "/",                                         "permanent": true },
     { "source": "/docs/introduction",                           "destination": "/tutorial/cadence/00-introduction/",        "permanent": true },
     { "source": "/docs/getting-started",                        "destination": "/tutorial/cadence/01-first-steps/",         "permanent": true },
