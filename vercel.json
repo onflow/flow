@@ -16,8 +16,11 @@
     { "source": "/docs/faq",                                    "destination": "/intro/FAQ/",                               "permanent": true },
     { "source": "/docs/node-operation-consolidated-guide",      "destination": "/concepts/node-operation/quickstart/",      "permanent": true },
     { "source": "/docs/accessing-flow-devnet",                  "destination": "/concepts/flow-concepts/devnet/",           "permanent": true },
-    { "source": "/docs/cli",                                    "destination": "/",                                        "permanent": false},
-    { "source": "/docs/emulator",                               "destination": "/",                                        "permanent": false},
-    { "source": "/docs/visual-studio-code-extension",           "destination": "/",                                        "permanent": false}
+    { "source": "/docs/cli",                                    "destination": "/",                                         "permanent": true },
+    { "source": "/docs/emulator",                               "destination": "/",                                         "permanent": true },
+    { "source": "/docs/visual-studio-code-extension",           "destination": "/",                                         "permanent": true },
+    { "source": "/docs/node-roles",                             "destination": "/concepts/flow-concepts/node-roles/",       "permanent": true },
+    { "source": "/docs/staking-rewards",                        "destination": "/concepts/node-operation/staking-rewards/", "permanent": true },
+    { "source": "/docs/delegation",                             "destination": "/concepts/flow-concepts/delegation/",       "permanent": true }
   ]
 }
