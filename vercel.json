@@ -15,6 +15,7 @@
     { "source": "/docs/glossary",                               "destination": "/intro/glossary/",                          "permanent": true },
     { "source": "/docs/faq",                                    "destination": "/intro/FAQ/",                               "permanent": true },
     { "source": "/docs/node-operation-consolidated-guide",      "destination": "/concepts/node-operation/quickstart/",      "permanent": true },
+    { "source": "/docs/accessing-flow-devnet",                  "destination": "/concepts/flow-concepts/devnet/",           "permanent": true },
     { "source": "/docs/cli",                                    "destination": "/",                                        "permanent": false},
     { "source": "/docs/emulator",                               "destination": "/",                                        "permanent": false},
     { "source": "/docs/visual-studio-code-extension",           "destination": "/",                                        "permanent": false}
