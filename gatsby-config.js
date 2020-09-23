@@ -66,7 +66,7 @@ const navConfig = {
     linkText: "CLI Documentation",
   },
   "Flow Emulator": {
-    url: "https://github.com/onflow/flow/blob/master/docs/emulator.md",
+    url: "/emulator/",
     icon: "emulator",
     description:
       "Develop and test your applications locally using the Flow emulator.",
@@ -246,6 +246,17 @@ const sections = [
         "token/staking/index",
         "token/staking/node-operators",
         "token/staking/staking-as-a-service",
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["emulator/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: [
+        "emulator/index",
+        "emulator/changelog",
       ],
     },
   },
