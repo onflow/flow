@@ -19,15 +19,18 @@ third party in a separate account that manages this relationship, according
 to an off-chain agreement. The `StakingHelper` account has no keys and
 is not controlled by any real people.
 
-To set up this mechanism, the node operator first needs to submit the
-`sh_create_staking_helper.cdc` transaction. This does not require tokens -
-it creates a `StakingHelper` resource object and stores it in a third party account.
+To set up this mechanism, both accounts needs to submit transactions
+to set up their accounts correctlt. First, the node operator submits the
+`sh_create_stakinghelper_receiver.cdc` transaction. This does not require tokens -
+it sets up the node operator's account to use the staking helper.
 
-This transaction needs to be signed by both the node operator
-and the token holder/custody provider because it also 
-stores a capability in each account to access the third party `StakingHelper` resource.
-This resource also defines the reward split between the node operator and token holder -
-this is done via an `init` argument which is the percentage of rewards the node operator receives.
+Then, the token holder needs to submit the `sh_create_staking_helper.cdc` transaction,
+sending their tokens with the transaction.
+
+This transactions creates a `StakingHelper` resource object and stores it in a third party account with no keys.
+It also stores a capability in each account to access the third party `StakingHelper` account.
+This object also defines the reward split between the node operator and token holder -
+this is done via an initialization argument which is the percentage of rewards the node operator receives.
 
 ### Delegating with the Staking Helper
 
@@ -36,8 +39,8 @@ on behalf of the node operator without requiring the node operator
 to take custody of those funds at any time.
 
 Once the `sh_create_staking_helper.cdc` transaction is complete,
-the token holder needs to submit the `sh_send_staking_tokens.cdc` transaction
-from wherever their tokens are held, before they can take any action.
+the token holder can submit the `sh_send_staking_tokens.cdc` transaction
+from wherever their tokens are held.
 This transaction withdraws tokens from the holder's account and deposits them
 in escrow in the third-party `StakingHelper` account.
 
