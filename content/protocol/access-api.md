@@ -7,7 +7,7 @@ The Access API is implemented as a [gRPC service](https://grpc.io/).
 
 A language-agnostic specification for this API is defined using [Protocol Buffers](https://developers.google.com/protocol-buffers), which can be used to generate client libraries in a variety of programming languages.
 
-- [Flow Access API protobuf source file](/protobuf/flow/access/access.proto)
+- [Flow Access API protobuf source files](https://github.com/onflow/flow/tree/master/protobuf)
 
 ---
 
@@ -15,7 +15,7 @@ A language-agnostic specification for this API is defined using [Protocol Buffer
 
 `Ping` will return a successful response if the Access API is ready and available.
 
-```
+```protobuf
 rpc Ping(PingRequest) returns (PingResponse)
 ```
 
@@ -24,7 +24,7 @@ If a ping request returns an error or times out, it can be assumed that the Acce
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message PingRequest {}
   ```
 </details>
@@ -32,7 +32,7 @@ If a ping request returns an error or times out, it can be assumed that the Acce
 <details>
   <summary>Response</summary>
 
-  ```
+  ```protobuf
   message PingResponse {}
   ```
 </details>
@@ -47,14 +47,14 @@ The following methods query information about [block headers](#block-header).
 
 `GetLatestBlockHeader` gets the latest sealed or unsealed [block header](#block-header).
 
-```
+```protobuf
 rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message GetLatestBlockHeaderRequest {
     bool is_sealed
   }
@@ -64,7 +64,7 @@ rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderRespo
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message BlockHeaderResponse {
     flow.BlockHeader block
   }
@@ -75,14 +75,14 @@ rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderRespo
 
 `GetBlockHeaderByID` gets a [block header](#block-header) by ID.
 
-```
+```protobuf
 rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message GetBlockHeaderByIDRequest {
     bytes id
   }
@@ -92,7 +92,7 @@ rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message BlockHeaderResponse {
     flow.BlockHeader block
   }
@@ -103,14 +103,14 @@ rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 
 `GetBlockHeaderByHeight` gets a [block header](#block-header) by height.
 
-```
+```protobuf
 rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message GetBlockHeaderByHeightRequest {
     uint64 height
   }
@@ -120,7 +120,7 @@ rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderR
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message BlockHeaderResponse {
     flow.BlockHeader block
   }
@@ -137,14 +137,14 @@ The following methods query information about [full blocks](#block).
 
 `GetLatestBlock` gets the full payload of the latest sealed or unsealed [block](#block).
 
-```
+```protobuf
 rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message GetLatestBlockRequest {
     bool is_sealed
   }
@@ -154,7 +154,7 @@ rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse)
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message BlockResponse {
     flow.Block block
   }
@@ -165,14 +165,14 @@ rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse)
 
 `GetBlockByID` gets a [full block](#block) by ID.
 
-```
+```protobuf
 rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message GetBlockByIDRequest {
     bytes id
   }
@@ -182,7 +182,7 @@ rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse)
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message BlockResponse {
     flow.Block block
   }
@@ -193,14 +193,14 @@ rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse)
 
 `GetBlockByHeight` gets a [full block](#block) by height.
 
-```
+```protobuf
 rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message GetBlockByHeightRequest {
     uint64 height
   }
@@ -210,7 +210,7 @@ rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse)
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message BlockResponse {
     flow.Block block
   }
@@ -227,14 +227,14 @@ The following methods query information about [collections](#collection).
 
 `GetCollectionByID` gets a [collection](#collection) by ID.
 
-```
+```protobuf
 rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message GetCollectionByIDRequest {
     bytes id
   }
@@ -244,7 +244,7 @@ rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse)
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message CollectionResponse {
     flow.Collection collection
   }
@@ -261,7 +261,7 @@ The following methods can be used to submit [transactions](#transaction) and fet
 
 `SendTransaction` submits a transaction to the network.
 
-```
+```protobuf
 rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse)
 ```
 
@@ -272,7 +272,7 @@ rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse)
 
   `SendTransactionRequest` message contains the transaction that is being request to be executed.
 
-  ```
+  ```protobuf
   message SendTransactionRequest {
     flow.Transaction transaction
   }
@@ -284,7 +284,7 @@ rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse)
   
   `SendTransactionResponse` message contains the ID of the submitted transaction.
 
-  ```
+  ```protobuf
   message SendTransactionResponse {
     bytes id
   }
@@ -299,7 +299,7 @@ If the transaction is not found in the access node cache, the request is forward
 
 _Currently, only transactions within the current epoch can be queried._
 
-```
+```protobuf
 rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse)
 ```
 
@@ -308,7 +308,7 @@ rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse)
 
   `GetTransactionRequest` contains the ID of the transaction that is being queried.
 
-  ```
+  ```protobuf
   message GetTransactionRequest {
     bytes id
   }
@@ -320,7 +320,7 @@ rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse)
   
   `TransactionResponse` contains the basic information about a transaction, but does not include post-execution results.
 
-  ```
+  ```protobuf
   message TransactionResponse {
     flow.Transaction transaction
   }
@@ -331,14 +331,14 @@ rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse)
 
 `GetTransactionResult` gets the execution result of a transaction.
 
-```
+```protobuf
 rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message GetTransactionRequest {
     bytes id
   }
@@ -348,7 +348,7 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message TransactionResultResponse {
     flow.TransactionStatus status
     uint32 status_code
@@ -368,14 +368,14 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
 
 ⚠️ Warning: this function is deprecated. It behaves identically to `GetAccountAtLatestBlock` and will be removed in a future version.
 
-```
+```protobuf
 rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message GetAccountRequest {
     bytes address
   }
@@ -385,7 +385,7 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message GetAccountResponse {
     Account account
   }
@@ -398,14 +398,14 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 
 The access node queries an execution node for the account details, which are stored as part of the sealed execution state.
 
-```
+```protobuf
 rpc GetAccountAtLatestBlock(GetAccountAtLatestBlockRequest) returns (AccountResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message GetAccountAtLatestBlockRequest {
     bytes address
   }
@@ -415,7 +415,7 @@ rpc GetAccountAtLatestBlock(GetAccountAtLatestBlockRequest) returns (AccountResp
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message AccountResponse {
     Account account
   }
@@ -428,13 +428,14 @@ rpc GetAccountAtLatestBlock(GetAccountAtLatestBlockRequest) returns (AccountResp
 
 The access node queries an execution node for the account details, which are stored as part of the execution state.
 
-```
+```protobuf
 rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (AccountResponse)
 ```
 
 <details>
   <summary>Request</summary>
-  ```
+
+  ```protobuf
   message GetAccountAtBlockHeightRequest {
     bytes address
     uint64 block_height
@@ -445,7 +446,7 @@ rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (AccountResp
 <details>
   <summary>Response</summary>
 
-  ```
+  ```protobuf
   message AccountResponse {
     Account account
   }
@@ -461,7 +462,7 @@ rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (AccountResp
 
 This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/docs/json-cadence-spec.md).
 
-```
+```protobuf
 rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse)
 ```
 
@@ -475,7 +476,7 @@ value = ExecuteScriptAtBlockID(header.ID, script)
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message ExecuteScriptAtLatestBlockRequest {
     bytes script
   }
@@ -485,7 +486,7 @@ value = ExecuteScriptAtBlockID(header.ID, script)
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message ExecuteScriptResponse {
     bytes value
   }
@@ -498,14 +499,14 @@ value = ExecuteScriptAtBlockID(header.ID, script)
 
 This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/docs/cadence-json-spec.md).
 
-```
+```protobuf
 rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message ExecuteScriptAtBlockIDRequest {
     bytes block_id
     bytes script
@@ -516,7 +517,7 @@ rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScrip
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message ExecuteScriptResponse {
     bytes value
   }
@@ -529,14 +530,14 @@ rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScrip
 
 This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/docs/cadence-json-spec.md).
 
-```
+```protobuf
 rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
 ```
 
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message ExecuteScriptAtBlockHeightRequest {
     uint64 block_height
     bytes script
@@ -547,7 +548,7 @@ rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (Exec
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message ExecuteScriptResponse {
     bytes value
   }
@@ -564,7 +565,7 @@ The following methods can be used to query for on-chain [events](#event).
 
 `GetEventsForHeightRange` retrieves [events](#event) emitted within the specified block range.
 
-```
+```protobuf
 rpc GetEventsForHeightRange(GetEventsForHeightRangeRequest) returns (GetEventsForHeightRangeResponse)
 ```
 
@@ -574,12 +575,12 @@ If `end_height` is greater than the current sealed chain height, then this metho
 
 The event results are grouped by block, with each group specifying a block ID and height.
 
-Event types are namespaced with the address of the account and contract in which they are declared.
+Event types are name-spaced with the address of the account and contract in which they are declared.
 
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message GetEventsForHeightRangeRequest {
     string type
     uint64 start_height = 2;
@@ -591,7 +592,7 @@ Event types are namespaced with the address of the account and contract in which
 <details>
   <summary>Response</summary>
   
-  ```
+  ```protobuf
   message EventsResponse {
     message Result {
       bytes block_id = 1;
@@ -606,7 +607,8 @@ Event types are namespaced with the address of the account and contract in which
 ### GetEventsForBlockIDs
 
 `GetEventsForBlockIDs` retrieves [events](#event) for the specified block IDs and event type.
-```
+
+```protobuf
 rpc GetEventsForBlockIDs(GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse)
 ```
 
@@ -617,7 +619,7 @@ The event results are grouped by block, with each group specifying a block ID an
 <details>
   <summary>Request</summary>
 
-  ```
+  ```protobuf
   message GetEventsForBlockIDsRequest {
     string type = 1;
     repeated bytes block_ids = 2;
@@ -628,7 +630,7 @@ The event results are grouped by block, with each group specifying a block ID an
 <details>
   <summary>Response</summary>
 
-  ```
+  ```protobuf
   message EventsResponse {
     message Result {
       bytes block_id = 1;
@@ -649,15 +651,16 @@ The following method can be used to query for network parameters.
 
 ### GetNetworkParameters
 
-`GetNetworkParameters` retrieves the network parameters
-```
+`GetNetworkParameters` retrieves the network parameters.
+
+```protobuf
 rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParametersResponse)
 ```
 
 <details>
 <summary>Request</summary>
 
-  ```
+  ```protobuf
   message GetNetworkParametersRequest {}
   ```
 </details>
@@ -665,7 +668,7 @@ rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParame
 <details>
   <summary>Response</summary>
 
-  ```
+  ```protobuf
   message GetNetworkParametersResponse {
     string chain_id = 1;
   }
@@ -683,7 +686,7 @@ Below are in-depth descriptions of each of the data entities returned or accepte
 
 ## Block
  
-```
+```protobuf
 message Block {
   bytes id
   bytes parent_id
@@ -711,7 +714,7 @@ The detailed semantics of block formation are covered in the [block formation gu
 
 A block header is a summary of a [block](#block) and contains only the block ID, height, and parent block ID.
 
-```
+```protobuf
 message BlockHeader {
   bytes id
   bytes parent_id
@@ -729,7 +732,7 @@ message BlockHeader {
 
 A block seal is an attestation that the execution result of a specific [block](#block) has been verified and approved by a quorum of verification nodes.
 
-```
+```protobuf
 message BlockSeal {
   bytes block_id
   bytes execution_receipt_id
@@ -749,7 +752,7 @@ message BlockSeal {
 
 A collection is a batch of [transactions](#transaction) that have been included in a block. Collections are used to improve consensus throughput by increasing the number of transactions per block.
 
-```
+```protobuf
 message Collection {
   bytes id
   repeated bytes transaction_ids
@@ -765,7 +768,7 @@ message Collection {
 
 A collection guarantee is a signed attestation that specifies the collection nodes that have guaranteed to store and respond to queries about a collection.
 
-```
+```protobuf
 message CollectionGuarantee {
   bytes collection_id
   repeated bytes signatures
@@ -781,7 +784,7 @@ message CollectionGuarantee {
 
 A transaction represents a unit of computation that is submitted to the Flow network.
 
-```
+```protobuf
 message Transaction {
   bytes script
   repeated bytes arguments
@@ -841,7 +844,7 @@ The proposal key is used to specify a sequence number for the transaction. Seque
 
 An account is a user's identity on Flow. It contains a unique address, a balance, a list of public keys and the code that has been deployed to the account. 
 
-```
+```protobuf
 message Account {
   bytes address
   uint64 balance
@@ -863,7 +866,7 @@ More information on accounts can be found [here](/docs/accounts-and-keys.md).
 
 An account key is a reference to a public key associated with a Flow account. Accounts can be configured with zero or more public keys, each of which can be used for signature verification when authorizing a transaction.
 
-```
+```protobuf
 message AccountKey {
   uint32 id
   bytes public_key
@@ -889,7 +892,7 @@ More information on account keys, key weights and sequence numbers can be found 
 
 An event is emitted as the result of a [transaction](#transaction) execution. Events are either user-defined events originating from a Cadence smart contract, or built-in Flow system events.
 
-```
+```protobuf
 message Event {
   string type
   bytes transaction_id
