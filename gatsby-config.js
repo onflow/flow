@@ -269,6 +269,16 @@ const sections = [
     },
   },
   {
+    sourceInstanceName: "docs",
+    patterns: ["protocol/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: [
+        "protocol/access-api",
+      ],
+    },
+  },
+  {
     sourceInstanceName: "cadence",
     patterns: ["docs/language/**/*"],
     sidebar: {
