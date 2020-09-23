@@ -52,7 +52,7 @@ const navConfig = {
     linkText: "JavaScript SDK Documentation",
   },
   "Go SDK": {
-    url: "https://github.com/onflow/flow-go-sdk#flow-go-sdk",
+    url: "/sdks/golang/",
     icon: "go-sdk",
     description:
       "Build apps that interact with Flow using our full-featured Go SDK.",
@@ -206,11 +206,19 @@ const sections = [
   {
     sourceInstanceName: "docs",
     patterns: ["sdks/golang/**/*"],
+    sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
         "sdks/golang/index",
-        "sdks/golang/create-account",
         "sdks/golang/changelog",
+      ],
+      "How To": [
+        "sdks/golang/create-account",
+        "sdks/golang/sign-transaction",
+        "sdks/golang/sign-transaction-hsm",
+        "sdks/golang/send-transaction",
+        "sdks/golang/query-events",
+        "sdks/golang/transfer-funds",
       ],
     },
   },
