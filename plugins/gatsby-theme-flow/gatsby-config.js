@@ -112,7 +112,6 @@ module.exports = ({
       options: {
         name: "cadence",
         remote: "https://github.com/onflow/cadence.git",
-        branch: "bastian/refactor-docs",
         patterns: "docs/language/**/*"
       }
     },
