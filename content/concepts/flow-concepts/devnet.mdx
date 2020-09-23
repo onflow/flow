@@ -1,12 +1,13 @@
 ---
 title: Flow Devnet
 ---
+## Accessing Flow Devnet
 
 Currently, there is an internal Devnet, available for access:
 
 - [access-001.devnet14.nodes.onflow.org:9000](http://access-001.devnet14.nodes.onflow.org:9000/)
 
-```go
+```
 import "github.com/onflow/flow-go-sdk/client"
 
 func main() {
@@ -15,48 +16,53 @@ func main() {
 
   // ...
 }
+
 ```
 
-Accounts and Tokens for testing are available by request through the Flow Faucet https://testnet-faucet.onflow.org/.
+## Account Creation and Token Funding Requests
 
-- For account requests please generate ECDSA_P256 key pair and provide the public key along with your contact information then submit the form. 
-- If there were no errors with your request then an email will be sent to the email specified with the address of the account created. All accounts are created with 1000 FLOW to start.
+Accounts and Tokens for testing are available by request through the [Flow Faucet](https://testnet-faucet.onflow.org/) 
+
+- For account creation requests please generate ECDSA_P256 key pair and provide the public key along with your contact information then submit the form.
+    - If there were no errors with your request then an email will be sent with the address of newly created account. All accounts are created with 1000 FLOW to start.
+- For token funding request please provide the address you would like to have the Flow tokens sent to along with your contact information.
+    - If there were no errors with your request then an email will be sent to confirm that 1000 FLOW has been added to your account.
 - An error email will be sent to you should there be any issues processing your request
 
-- For token funding request please provide the address you would like to have the Flow tokens sent to along with your contact information. 
-- If there were no errors with your request then an email will be sent to the email specified notifying you funds have been added to your account. 
-- An error email will be sent to you should there be any issues processing your request
-
+## Key Generation
 
 - Key Generation, using our `flow-go-sdk` (crypto package):
 
-  ```go
-  import (
-    "crypto/rand"
-  	"fmt"
+    ```
+    import (
+      "crypto/rand"
+    	"fmt"
 
-    "github.com/onflow/flow-go-sdk/crypto"
-  )
+      "github.com/onflow/flow-go-sdk/crypto"
+    )
 
-  func main() {
+    func main() {
 
-  	// This seed must be kept safe if you want to use it to regenerate your private key
-  	seed := make([]byte, crypto.MinSeedLength)
+    	// This seed must be kept safe if you want to use it to regenerate your private key
+    	seed := make([]byte, crypto.MinSeedLength)
 
-  	_, err := rand.Read(seed)
-  	if err != nil {
-  		panic(err)
-  	}
+    	_, err := rand.Read(seed)
+    	if err != nil {
+    		panic(err)
+    	}
 
-  	// Remember to save your private key somewhere safe
-  	privateKey, err := crypto.GeneratePrivateKey(crypto.ECDSA_P256, seed)
-  	if err != nil {
-  		panic(err)
-  	}
-  	// This will be your public key, and what you need to send to us
-  	fmt.Printf("%x", privateKey.PublicKey().Encode())
-  }
-  ```
+    	// Remember to save your private key somewhere safe
+    	privateKey, err := crypto.GeneratePrivateKey(crypto.ECDSA_P256, seed)
+    	if err != nil {
+    		panic(err)
+    	}
+    	// This will be your public key, and what you need to send to us
+    	fmt.Printf("%x", privateKey.PublicKey().Encode())
+    }
+
+    ```
+
+## Devnet Account Usage
 
 Once you receive your account, you'll be able make use of that account using our SDK. Some examples are available here in the SDK repo:
 
@@ -67,14 +73,15 @@ Some of these examples
 - `create_account`
 - `deploy_contract`
 
-Transactions will now require [fees](/token/concepts/) in order to complete.
+Transactions will now require [fees](https://www.notion.so/token/concepts/) in order to complete.
 
 ## Important Devnet Smart Contract Addresses
 
 In order to access some of the contracts deployed to Flow Devnet, you can import them by using the following import addresses:
 
-```cadence
+```
 import FungibleToken from 0x9a0766d93b6608b7
 import FlowToken from 0x7e60df042a9c0868
 import NonFungibleToken from 0x631e88ae7f1d7c20
+
 ```
