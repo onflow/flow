@@ -70,7 +70,6 @@ Flow accounts can be configured with multiple public keys that are used to contr
 
 When adding a public key to an account, you must specify the following information:
 
-- ID (used to identify key within an account)
 - Raw public key (encoded as bytes)
 - Signature algorithm (see codes below)
 - Hash algorithm (see codes below)
