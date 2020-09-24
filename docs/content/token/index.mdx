@@ -1,0 +1,152 @@
+---
+title: FLOW Token
+sidebar_title: The FLOW Token
+description: The default currency on Flow
+---
+
+<!--
+
+TODO:
+- FLOW vs $FLOW
+- Insert function names and flow to achieve with transaction
+- Add URL for Flow port
+- Add email address for Flow team
+- Add URL for Alpha program
+- Add URL for Token Lease Staking Program
+- Add URL for Open World Builders (is it https://medium.com/dapperlabs/open-world-builders-free-virtual-blockchain-bootcamp-cefe7f0ccb9f ?)
+- Josh to confirm Withdrawing Rewards
+- Update version number and fees applied (v0.x.x)
+- Update URL for Access API
+- Add transaction template for shipping on mainnet
+- Link to JS SDK documentation in "Submitting Transactions and Updating Users"
+- Peter to help with fleshing out deposits
+- Add link to application form in staking section
+- Link to consolidated guide in staking section
+- Confirm where node ID is generated in staking section
+
+-->
+
+## Introduction
+
+This section contains information about the FLOW token for individuals, investors, 
+wallet providers, custodians and node operators.
+
+### FLOW as a Native Token
+
+FLOW is the default token for the Flow protocol, meaning it is used for all protocol-level fee payments, 
+rewards and staking transactions. FLOW implements the standard [Flow Fungible Token interface](https://github.com/onflow/flow-ft), 
+which all other on-chain fungible tokens also conform to. This interface is defined in Cadence,
+Flow's native smart-contract programming language, which makes it easy to write applications that
+interact with FLOW.
+
+## How to Get FLOW
+
+There are currently several ways to acquire FLOW tokens:
+
+1. [Claim FLOW as an Investor](/token/investors): Existing Flow investors can claim their FLOW.
+1. [Earn FLOW as a Validator](/token/staking): Receive newly-minted FLOW as a reward for running a node.
+1. [Earn FLOW as a Platform Contributor](/token/earn): Receive newly-minted FLOW as a reward for building on Flow.
+
+## How to Use FLOW
+
+With FLOW, you can:
+
+- Spend
+- Stake
+- Delegate
+- Hold
+- Vote
+- Send and share
+- Create, develop, and grow your dapp
+
+### Spending FLOW
+
+All you need to spend Flow is an account and a tool for signing transactions
+(a wallet, custodian, or other signing service).
+The Flow Client Library (FCL) makes it super duper easy to go to any dapp,
+login with your account, have a great time,
+and then sign with the wallet of your choice only once you decide to make a purchase.
+
+### Staking FLOW
+
+[You can use FLOW to operate a staked node.](/token/staking) Node operators receive newly-minted FLOW 
+as a reward for helping to secure the network.
+
+### Delegating FLOW
+
+[You can use FLOW for stake delegation.](/token/staking#delegation) Delegators receive newly-minted FLOW 
+as a reward for helping to secure the network.
+
+### Holding FLOW
+
+If you have already purchased FLOW and wish to hold it, you have a couple options:
+
+- For relatively small, short term holdings - most people use a wallet.
+  Wallets are used to help you sign transactions (verify your actions) when using your FLOW tokens.
+
+- For larger, long term holdings - you may want to use a custody provider to keep your funds safe.
+
+You can find wallets and custodians supporting Flow in the [Flow port](#)
+
+### Voting with FLOW
+
+Participating in the Flow community is more than just running a node or building a dapp.
+It's also about engaging in discussion, debate, and decision making about the protocol,
+the content on it, and the people impacted by it.
+You can use your Flow account to submit votes to community polls and other governance related activities.
+
+### Sending and Sharing FLOW
+
+If you simply want to share the love and bring your friends to Flow, it's easier than an edible arrangement.
+
+It is possible to use the Flow blockchain without holding any FLOW tokens yourself.
+Free to play games, trials, community polls,
+and other community activities can all take place with only an account
+(which may be created on a person's behalf)
+and a small fixed fee which may paid by a user agent.
+
+The protocol requires some FLOW tokens to process these transactions,
+but (and this is the cool part!) a product can support users who do not themselves hold FLOW
+while still providing that user with all the underlying security guarantees the Flow protocol provides.
+
+Transferring FLOW, creating accounts, and updating keys are all actions made easy on [Flow Port](#)
+
+## How to Build with FLOW
+
+### FLOW for Development
+
+The [Flow Faucet](https://testnet-faucet.onflow.org/) is a tool for Flow developers to make requests 
+to create accounts and fund existing accounts with FLOW tokens on the Flow Development Network (Testnet).
+
+### Getting Started on Testnet
+
+Use the [Flow Faucet](https://testnet-faucet.onflow.org/) to create an account and receive FLOW for testing.
+You can request additional FLOW for testing at any time through the faucet.
+
+### Shipping on Mainnet
+
+On Mainnet, you'll need to go to your [Flow Port](#)
+and select `Create Account` under the transactions option.
+You will only be able to use this option if you currently hold an account on the network with the ability to pay for the account creation fees.
+If you do not, and would like to create an accout, please contact us at dev@onflow.org.
+
+Deploying a contract on mainnet will require that you submit your contract for review by a member of the core Cadence team to ensure safety for users. Please submit contract address to dev@onflow.org.
+
+### Submitting Transactions and Updating Users
+
+Transactions are submitted using a Flow SDK via the Access API.
+
+On Flow, a transaction is identified by its hash - the hash that exists as soon as that transaction is signed and submitted to an Access or Collection node.
+Results of transactions can be queried by transaction hash through the Access API.
+A user can check the status of a transaction at any time via the [Flow Block Explorer](https://flow.bigdipper.live/).
+
+To expose these results natively in your app, you can use a Flow SDK to fetch transaction results,
+[for example using the Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-transaction-results).
+
+Using a Flow SDK you can also fetch account state by address from a Flow Access API,
+[for example using the Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-accounts).
+
+Once the transaction is sealed, an event is emitted and you will be able to read transaction events and update the user.
+
+The Flow SDKs also allow polling for events using the Flow Access API,
+[for example using the Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-events).

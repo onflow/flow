@@ -1,0 +1,166 @@
+---
+title: Create an Account
+description: How to create a Flow account with the Flow Go SDK
+---
+
+<Callout type="info">
+
+  You can find a complete runnable example of account creation in the
+  [Flow Go SDK source repository](https://github.com/onflow/flow-go-sdk/blob/master/examples/create_account/main.go).
+
+</Callout>
+
+On Flow, account creation happens inside a transaction. 
+Because the network allows for a many-to-many relationship between public keys and accounts, 
+it's not possible to derive a new account address from a public key offline.
+
+The Flow VM uses a deterministic address generation algorithm to assign account addresses 
+on chain. You can find more details about address generation in the 
+[accounts & keys documentation](/concepts/accounts-and-keys).
+
+## Prepare the public key
+
+Flow uses ECDSA keys to control access to user accounts. Each key pair can be used in combination 
+with the SHA2-256 or SHA3-256 hashing algorithms.
+
+To control your newly-created account, you'll need to authorize at least one public key.
+
+### Public key format
+
+Flow represents ECDSA public keys in raw form without additional metadata. 
+Each key is a single byte slice containing a concatenation of its X and Y components in big-endian byte form.
+
+For example, a public key on the `ECDSA_P256` curve consists of two 32-byte integers X and Y:
+
+```
+publicKey = bigEndianBytes(X) + bigEndianBytes(Y)
+```
+
+```go
+import (
+  "github.com/onflow/flow-go-sdk/crypto"
+)
+
+// Raw public key encoded as hex
+const rawPublicKey = "9cd98d436d111aab0718ab008a466d636a22ac3679d335b77e33ef7c52d9c8ce47cf5ad71ba38cedd336402aa62d5986dc224311383383c09125ec0636c0b042"
+
+// Decode this public key against the ECDSA_P256 curve
+publicKey, err := crypto.DecodePublicKeyHex(crypto.ECDSA_P256, rawPublicKey)
+if err != nil {
+  panic("failed to decode raw public key")
+}
+```
+
+### Define an account key
+
+A Flow account can contain zero or more public keys. These are referred to as account keys.
+
+An [account key](/concepts/accounts-and-keys/#keys) contains the following data:
+
+- Raw public key
+- Signature algorithm
+- Hash algorithm
+- Weight (integer between 0-1000)
+
+The `weight` field is used to support multi-sig functionality. 
+For this example we'll used a single account key with full weight.
+
+```go
+import (
+  "github.com/onflow/flow-go-sdk"
+  "github.com/onflow/flow-go-sdk/crypto"
+)
+
+accountKey := flow.NewAccountKey().
+  SetPublicKey(publicKey). // The signature algorithm is inferred from the public key
+  SetHashAlgo(crypto.SHA3_256). // This key will require SHA3 hashes
+  SetWeight(flow.AccountKeyWeightThreshold) // Give this key full signing weight
+```
+
+## Construct the transaction
+
+Account creation happens inside a transaction, which means that somebody must
+pay to submit that transaction to the network. We'll call this person the **account creator**.
+
+```go
+import (
+  "github.com/onflow/flow-go-sdk"
+  "github.com/onflow/flow-go-sdk/crypto"
+  "github.com/onflow/flow-go-sdk/templates"
+)
+
+var (
+  creatorAddress    flow.Address
+  creatorAccountKey *flow.AccountKey
+  creatorSigner     crypto.Signer
+)
+
+var accessAPIHost string
+
+// Establish a connection to an access node
+flowClient, err := client.New(accessAPIHost)
+if err != nil {
+  panic("failed to establish connection with Access API")
+}
+
+// Use the templates package to create a new account creation transaction
+tx := templates.CreateAccount([]*flow.AccountKey{accountKey}, nil, creatorAddress)
+
+// Set the transaction payer and proposal key
+tx.SetPayer(creatorAddress)
+tx.SetProposalKey(
+  creatorAddress,
+  creatorAccountKey.ID,
+  creatorAccountKey.SequenceNumber,
+)
+
+// Get the latest sealed block to use as a reference block
+latestBlock, err := flowClient.GetLatestBlockHeader(context.Background(), true)
+if err != nil {
+  panic("failed to fetch latest block")
+}
+
+tx.SetReferenceBlockID(latestBlock.ID)
+
+// Sign and submit the transaction
+
+err = tx.SignEnvelope(creatorAddress, creatorAccountKey.ID, creatorSigner)
+if err != nil {
+  panic("failed to sign transaction envelope")
+}
+
+err = flowClient.SendTransaction(context.Background(), *tx)
+if err != nil {
+  panic("failed to send transaction to network")
+}
+```
+
+## Fetch the result
+
+The new account address will be emitted in a system-level `flow.AccountCreated` event.
+
+This event is returned as part of the transaction result:
+
+```go
+import (
+  "github.com/onflow/flow-go-sdk"
+)
+
+result, err := flowClient.GetTransactionResult(ctx, tx.ID())
+if err != nil {
+    panic("failed to get transaction result")
+}
+
+var newAddress flow.Address
+
+if result.Status != flow.TransactionStatusSealed {
+  panic("address not known until transaction is sealed")
+}
+
+for _, event := range result.Events {
+  if event.Type == flow.EventAccountCreated {
+    newAddress = flow.AccountCreatedEvent(event).Address()
+    break
+  }
+}
+```
