@@ -70,7 +70,7 @@ Flow accounts can be configured with multiple public keys that are used to contr
 
 When adding a public key to an account, you must specify the following information:
 
-- Public key
+- Raw public key
 - Signature algorithm (see codes below)
 - Hash algorithm (see codes below)
 - Weight (integer between 1-1000)

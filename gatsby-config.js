@@ -52,7 +52,7 @@ const navConfig = {
     linkText: "JavaScript SDK Documentation",
   },
   "Go SDK": {
-    url: "https://github.com/onflow/flow-go-sdk#flow-go-sdk",
+    url: "/sdks/golang/",
     icon: "go-sdk",
     description:
       "Build apps that interact with Flow using our full-featured Go SDK.",
@@ -66,7 +66,7 @@ const navConfig = {
     linkText: "CLI Documentation",
   },
   "Flow Emulator": {
-    url: "https://github.com/onflow/flow/blob/master/docs/emulator.md",
+    url: "/emulator/",
     icon: "emulator",
     description:
       "Develop and test your applications locally using the Flow emulator.",
@@ -207,11 +207,20 @@ const sections = [
   {
     sourceInstanceName: "docs",
     patterns: ["sdks/golang/**/*"],
+    sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
         "sdks/golang/index",
-        "sdks/golang/create-account",
         "sdks/golang/changelog",
+      ],
+      "How To": [
+        "sdks/golang/create-account",
+        "sdks/golang/build-transaction",
+        "sdks/golang/sign-transaction",
+        "sdks/golang/sign-transaction-hsm",
+        "sdks/golang/send-transaction",
+        "sdks/golang/query-events",
+        "sdks/golang/transfer-funds",
       ],
     },
   },
@@ -247,6 +256,27 @@ const sections = [
         "token/staking/index",
         "token/staking/node-operators",
         "token/staking/staking-as-a-service",
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["emulator/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: [
+        "emulator/index",
+        "emulator/changelog",
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["protocol/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: [
+        "protocol/access-api",
       ],
     },
   },
