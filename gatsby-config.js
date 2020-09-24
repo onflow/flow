@@ -214,6 +214,7 @@ const sections = [
       ],
       "How To": [
         "sdks/golang/create-account",
+        "sdks/golang/build-transaction",
         "sdks/golang/sign-transaction",
         "sdks/golang/sign-transaction-hsm",
         "sdks/golang/send-transaction",
