@@ -905,12 +905,12 @@ enum TransactionStatus {
 
 | Value       | Description |
 | ------------|-------------|
-| UNKNOWN     | |
-| PENDING     | |
+| UNKNOWN     | The transaction status is not known. |
+| PENDING     | The transaction has been received by a collector but not yet finalized in a block. |
 | FINALIZED   | The consensus nodes have finalized the block that the transaction is included in |
 | EXECUTED    | The execution nodes have produced a result for the transaction |
 | SEALED      | The verification nodes have verified the transaction (the block in which the transaction is) and the seal is included in the latest block |
-| EXPIRED     | |
+| EXPIRED     | The transaction was submitted past its expiration block height. |
 
 
 ### Account
