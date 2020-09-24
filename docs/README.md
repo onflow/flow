@@ -2,7 +2,7 @@
 
 https://docs.onflow.org
 
-## Developing locally
+## Local development
 
 - `npm install` in this directory
 - Create a [GitHub personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) (used to fetch GitHub content).
