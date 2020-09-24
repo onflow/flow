@@ -134,7 +134,7 @@ transaction to move the tokens from the rewards pool to the committed pool for t
 
 ## Token Pools
 
-Each node operator has four token pools allocated to them:
+Each node operator has five token pools allocated to them:
 
 - Committed Tokens: Tokens that are committed for the next epoch. 
 They are automatically moved to the staked pool when the next epoch starts.
@@ -154,6 +154,129 @@ At the end of every epoch, tokens are moved between pools in this order:
 2. All Committed Tokens get moved to staked Tokens pool.
 3. All unbonding tokens get moved to the unlocked tokens pool.
 4. All requested unbonding tokens get moved from the staked pool to the unbonding pool.
+
+## Rewards
+
+### Schedule
+All rewards are automatically distributed via the staking smart contract 
+to the reward pools associated with each node.
+Rewards are paid out according to the following schedule:
+
+- Initial startup phase: no rewards
+- Bootstrapping phase: rewards of 20% annualized
+- After bootstrapping: rewards of 3.75% annually
+
+### Reward Payouts
+Rewards are paid out at the end of each epoch (roughly a week) to the
+users that have tokens staked.
+
+The paid rewards are proportional to the stake each node operator contributes to its node group. 
+Node groups are assigned rewards based on their revenue ratio 
+which is a coefficient assigned to them based on the security 
+they contribute to the network. 
+Please connect with the Flow team directly if you'd like to understand how these coefficients are derived.
+
+A public paper will be shared in the future.
+
+**The reward payout on a per node basis is equal to:**
+
+```
+Reward(n_node) = ((Tr) * (Tn)) * ((Sn) / (St))
+```
+
+where:
+
+- Tr = Sum of all the rewards paid to all nodes per epoch.
+- Tn = The node role's portion of total stake.
+- Sn = Amount of FLOW Staked by the node for the current Epoch.
+- St = Amount of FLOW staked by all the nodes of the selected node's type.
+
+The rewards paid for the bootstrapping phase will be roughly
+5 million FLOW per epoch (per week).
+
+Each node role's portion of total stake has been determined based on
+the amount of security they contribute to the network:
+
+- Execution Nodes comprise 7.8% of total stake (TE= 0.078)
+- Collection Nodes comprise 16.8% of total stake (TL= 0.168)
+- Consensus Nodes comprise 51.8% of total stake (TS=0.518)
+- Verification Nodes comprise 23.6% of total stake (TV=0.236)
+
+At network launch, there will be no more than:
+
+- 3 Execution Nodes
+- 43 Consensus Nodes
+- 29 Collection Nodes
+- 73 Verification Nodes (100 when performance permits)
+
+These numbers were chosen to ensure consistent returns for running a single node of any type. 
+Over time, the number of nodes will increase to promote participation 
+but we don't anticipate increasing the number of participating nodes by more than double 
+in the first year of the network's operation.
+
+### Sample Rewards Calculation
+
+Example: You are delegating 5,000 FLOW to a consensus node. If we asume there are 29 consensus nodes
+active, each with the minimum amount staked. The calculation would look like this:
+- Tr = 5,000,000 FLOW
+- Tn = 0.518
+- Sn = 5,000 FLOW
+- St = (29 nodes) * (500,000 FLOW) = 
+```
+(Reward for Epoch) = ((5,000,000 FLOW) * (0.518)) * ((5,000 FLOW) / (14,500,000 FLOW))
+                   = (2,590,000 FLOW) * 0.0003448275862
+                   = ~893.1 FLOW
+```
+
+You would receive around 893.1 FLOW. Be aware that this is just an estimate based on
+the expected minimum amount of consensus nodes and stake. So this will definitely change.
+
+Accounts for receiving Rewards are conventional user accounts. 
+They can be created in exactly the same account-creation process. 
+Whoever is putting up the tokens to stake the node will have the right 
+to select which User-Account Address will receive rewards associated with that network identity. 
+In regular time intervals, the accumulated rewards a node earns are deposited into the 
+rewards pool of tokens for that node. The recipient for the rewards has to withdraw the 
+rewards they have received in order to store them in their own account.
+
+## Slashing
+So, who gets slashed? 
+Severe slashing on Flow only takes place in the most nefarious of attacks. 
+The protocol reserves slashing for maintaining the security of the protocol rather than its liveness.
+You can find more details on the conditions under which a node is slashed in a different part of the docs.
+
+While a node is in operation and during the unbonding period thereafter, 
+the staked tokens are held by the staking smart contract.
+Slashable protocol violations must be adjudicated by a supermajority 
+of more than 2/3 of the staked consensus nodes in order to take effect.
+If a node is found guilty of committing a slashable protocol violation, 
+the consensus nodes directly deduct a fine from the node's stake. 
+Of course, only the remaining stake is deposited back into node's balance
+at the end of the unbonding period.
+
+## FAQ
+**When will the User Accounts for Node Operators be created?**
+Once the network is running, we'll issue a series of transactions 
+to create accounts for all the partners who are running nodes and/or building on Flow. 
+While the account-creation transactions will be co-signed by Dapper Labs for authorization and paying, 
+your account will be fully owned and controlled by you immediately after creation. 
+Creating accounts should be possible right after network launch but 
+we certainly appreciate your patience as we roll everyone's accounts out.
+
+**What is the relationship between nodes and account addresses**
+There is no formal relationship between nodes and account addresses.
+When you register a node, you get an object that represents your node
+and provides functionality to manage your staking, rewards, and delegation. 
+This object can be stored in any account and multiple node objects can be stored 
+in the same account.
+
+It is possible for the rewards from operating multiple nodes to be deposited into the same account. 
+Formally, we have a N Nodes-to-Single Account relationship, with N ≥ 1.
+If you would like to subsequently disburse the received rewards to accounts of multiple parties, 
+you have the full expressiveness of the Cadence smart contract language at your disposal 
+to define any rules which fit your business model. 
+
+We are happy to support you and your team with implementing the desired contracts.
 
 ## Staking Transaction Examples
 
