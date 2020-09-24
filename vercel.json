@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/docs",                                        "destination": "/",                                         "permanent": true },
     { "source": "/docs/getting-started-1",                      "destination": "/",                                         "permanent": true },
     { "source": "/docs/introduction",                           "destination": "/tutorial/cadence/00-introduction/",        "permanent": true },
     { "source": "/docs/getting-started",                        "destination": "/tutorial/cadence/01-first-steps/",         "permanent": true },
@@ -13,6 +14,13 @@
     { "source": "/docs/cadence",                                "destination": "/cadence/language/",                        "permanent": true },
     { "source": "/docs/glossary",                               "destination": "/intro/glossary/",                          "permanent": true },
     { "source": "/docs/faq",                                    "destination": "/intro/FAQ/",                               "permanent": true },
-    { "source": "/docs/node-operation-consolidated-guide",      "destination": "/concepts/node-operation/quickstart/",      "permanent": true }
+    { "source": "/docs/node-operation-consolidated-guide",      "destination": "/concepts/node-operation/quickstart/",      "permanent": true },
+    { "source": "/docs/accessing-flow-devnet",                  "destination": "/concepts/flow-concepts/devnet/",           "permanent": true },
+    { "source": "/docs/cli",                                    "destination": "/",                                         "permanent": true },
+    { "source": "/docs/emulator",                               "destination": "/",                                         "permanent": true },
+    { "source": "/docs/visual-studio-code-extension",           "destination": "/",                                         "permanent": true },
+    { "source": "/docs/node-roles",                             "destination": "/concepts/flow-concepts/node-roles/",       "permanent": true },
+    { "source": "/docs/staking-rewards",                        "destination": "/concepts/node-operation/staking-rewards/", "permanent": true },
+    { "source": "/docs/delegation",                             "destination": "/concepts/flow-concepts/delegation/",       "permanent": true }
   ]
 }

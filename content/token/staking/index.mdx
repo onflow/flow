@@ -145,12 +145,12 @@ has submitted an unbonding request.
 but are not free to withdraw until the following epoch. 
 - Unlocked Tokens: Tokens that are freely available to withdraw or re-stake.
 Unstaked tokens go to this pool.
-- Rewarded Tokens: Tokens that are freely available to withdraw or re-stake.
-Rewards are paid to this pool.
+- Rewarded Tokens: Tokens that are freely available to withdraw or re-stake. Rewards are paid and deposited to the Unlocked Pool after each epoch.
+- Rewards from the epoch are deposited into the Unlocked Pool.
 
 At the end of every epoch, tokens are moved between pools in this order:
 
-1. Rewards are paid to the rewards pool.
+1. All Committed Tokens will get moved either to the Staked Tokens pool, or to the Unbonded Tokens pool (depending on if the staked request has met the minimum stake).
 2. All Committed Tokens get moved to staked Tokens pool.
 3. All unbonding tokens get moved to the unlocked tokens pool.
 4. All requested unbonding tokens get moved from the staked pool to the unbonding pool.

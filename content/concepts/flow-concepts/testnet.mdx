@@ -22,9 +22,7 @@ This key pair will be authorized for your account on the test network. Once your
 {
 "code": "import (\n\t\"crypto/rand\"\n\t\"fmt\"\n\n\t\"github.com/onflow/flow-go-sdk/crypto\"\n)\n\nfunc main() {\n\n\t// This seed must be kept safe if you want to use it to regenerate your private key\n\tseed := make([]byte, crypto.MinSeedLength)\n\n\t\_, err := rand.Read(seed)\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\n\t// Remember to save your private key somewhere safe\n\tprivateKey, err := crypto.GeneratePrivateKey(crypto.ECDSA_P256, seed)\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\t// This will be your public key, and what you need to send to us\n\tfmt.Printf(\"Public Key: %x\\n\", privateKey.PublicKey().Encode())\n\n\t// NOTE: make sure you save your private key as well!\n}",
 "language": "go"
-}
-]
-}
+
 [/block] -->
 
 Once you have generated your keys, send the public key to dev@onflow.org and we will create your account!

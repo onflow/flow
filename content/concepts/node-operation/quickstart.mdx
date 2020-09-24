@@ -30,7 +30,8 @@ updated configuration.
 **Note: if you have downloaded the bootstrapping kit previously, ensure that you do this step again to get the latest copy of the bootstrapping kit**
 
 ```shell
-curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar\ntar -xvf boot-tools.tar
+curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
+tar -xvf boot-tools.tar
 ```
 
 ### Generating your Node ID
@@ -317,7 +318,8 @@ The metrics for the node should be able to provide a good overview of the status
 ```shell
 curl localhost:8080/metrics | grep consensus_compliance_sealed_height
 
-# HELP consensus_compliance_sealed_height the last sealed height\n# TYPE consensus_compliance_sealed_height gauge
+# HELP consensus_compliance_sealed_height the last sealed height
+# TYPE consensus_compliance_sealed_height gauge
 consensus_compliance_sealed_height 1.132054e+06
 ```
 
