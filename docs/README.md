@@ -1,6 +1,6 @@
 # Flow Documentation
 
-Preview: https://flow-docs.vercel.app
+https://docs.onflow.org
 
 ## Developing locally
 
