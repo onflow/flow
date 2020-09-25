@@ -68,6 +68,8 @@ module.exports = ({
           'go': 'source.go',
           'js': 'source.js',
           'json': 'source.json',
+          'protobuf': 'source.proto',
+          'proto': 'source.proto'
         },
         grammarPaths: [
           path.resolve(__dirname, 'cadence.tmGrammar.json'),
@@ -77,6 +79,7 @@ module.exports = ({
           path.resolve(__dirname, 'go.tmLanguage.json'),
           path.resolve(__dirname, 'shell-unix-bash.tmLanguage.json'),
           path.resolve(__dirname, 'json.tmLanguage.json'),
+          path.resolve(__dirname, 'proto3.tmLanguage.json'),
         ],
         themePath: path.resolve(__dirname, 'light_vs.json'),
       },
