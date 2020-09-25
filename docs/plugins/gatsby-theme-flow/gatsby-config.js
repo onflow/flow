@@ -64,6 +64,7 @@ module.exports = ({
           'solidity': 'source.solidity.security',
           'javascript': 'source.js',
           'shell': 'source.shell',
+          'sh': 'source.shell',
           'go': 'source.go',
           'js': 'source.js',
           'json': 'source.json',

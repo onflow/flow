@@ -10,18 +10,27 @@ module.exports = async (page, pluginOptions = {}) => {
 
   const codeNodes = []
 
-  function visitor(node) {
+  visit(markdownAST, 'code', (node) => {
     if (node.lang) {
       codeNodes.push(node)
     } else {
       const path = page.markdownNode.fields.slug
-      const { line } = node.position.start;
+      const {line} = node.position.start;
       console.warn(`Missing language tag in ${path} at line ${line}`)
     }
     return node
-  }
+  })
 
-  visit(markdownAST, 'code', visitor)
+  visit(markdownAST, 'inlineCode', (node) => {
+    const match = node.value.match(/^(\w+)•(.*)$/)
+    if (match) {
+      node.lang = match[1]
+      node.value = match[2]
+      codeNodes.push(node)
+    }
+    return node
+  })
+
 
   await Promise.all(
     codeNodes.map(async (node) => {
@@ -39,20 +48,27 @@ module.exports = async (page, pluginOptions = {}) => {
       const highlighted =
         highlighter.highlight(node.value, grammar)
 
+      const isInline = node.type === 'inlineCode'
+
+      const classes = [`language-${node.lang}`]
+      if (isInline) {
+        classes.push('inline')
+      }
+
       node.type = 'html'
       node.value = toHtml(
         {
           type: "element",
           tagName: "pre",
           properties: {
-            className: [`language-${node.lang}`],
+            className: classes,
           },
           children: [
             {
               type: "element",
               tagName: "code",
               properties: {
-                className: [`language-${node.lang}`],
+                className: classes,
               },
               children: highlighted,
             }
