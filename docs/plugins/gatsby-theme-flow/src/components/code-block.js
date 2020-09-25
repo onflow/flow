@@ -81,7 +81,7 @@ CodeBlockHeader.propTypes = {
 export default function CodeBlock(props) {
   const codeRef = useRef();
 
-  if (props.className.includes('inline')) {
+  if (props.className && props.className.includes('inline')) {
     return <pre {...props} />
   }
 
