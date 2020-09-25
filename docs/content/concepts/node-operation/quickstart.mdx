@@ -126,22 +126,22 @@ You can choose to run your Flow Node via `docker` or have `systemd` to manage yo
 
 **If you are running your Flow Node via Docker you can skip this step and go to the Docker section below.**
 
-1. Ensure that you pulled the latest changes from [flow-go repository](https://github.com/dapperlabs/flow-go) via `git`
+1. Ensure that you pulled the latest changes from [flow-go repository](https://github.com/onflow/flow-go) via `git`
 
 ```shell
 ## Clone the repo if you haven't already done so
-git clone https://github.com/dapperlabs/flow-go
+git clone https://github.com/onflow/flow-go
 
 ## Get latest changes
 cd flow-go
 git pull origin master
 ```
 
-2. Copy your respective [systemd unit file](https://github.com/dapperlabs/flow-go/tree/master/deploy/systemd-docker) to: `/etc/systemd/system`
+2. Copy your respective [systemd unit file](https://github.com/onflow/flow-go/tree/master/deploy/systemd-docker) to: `/etc/systemd/system`
 
 3. Create directory `sudo mkdir /etc/flow`
 
-4. Copy the [runtime-conf.env](https://github.com/dapperlabs/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) you updated in step 3 to: `/etc/flow/`
+4. Copy the [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) you updated in step 3 to: `/etc/flow/`
 
 5. Enable your service `sudo systemd enable YOUR-FLOW-NODE.service`
 
@@ -160,9 +160,9 @@ The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info
 
 1. Run the transit script to fetch the new genesis info:
    `./boot-tools/transit -pull -d ./bootstrap -t ${PULL_TOKEN} -role ${YOUR_NODE_TYPE}`
-2. Pull the latest changes from [flow-go repository](https://github.com/dapperlabs/flow-go)
+2. Pull the latest changes from [flow-go repository](https://github.com/onflow/flow-go)
 3. Get your `node-id`, you can find it at `/path/to/bootstrap/public-genesis-information/node-id`
-4. Update the `FLOW_GO_NODE_ID` inside [runtime-conf.env](https://github.com/dapperlabs/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) to the `node-id` that you got from the previous step
+4. Update the `FLOW_GO_NODE_ID` inside [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) to the `node-id` that you got from the previous step
 5. Start your Flow node via `docker` or `systemd`
 
 **NOTE** if you are running an execution node, you must also move the execution state from the public-genesis-information directory, to the execution-state directory with-in the bootstrap folder: `mv ./public-root-information/root.checkpoint ./execution-state/` This will eventually be taken care of by the transit script but currently requires manual input.
