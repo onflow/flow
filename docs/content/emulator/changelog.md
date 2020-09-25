@@ -90,7 +90,7 @@ There are two recommended workarounds:
 
 #### Data storage format
 
-The underlying data format used for persistent storage has changed from `gob` encoding to CBOR (https://github.com/dapperlabs/flow-emulator/pull/72). This means that existing persisted data will not be compatible with `v0.5.0` onwards.
+The underlying data format used for persistent storage has changed from `gob` encoding to CBOR (https://github.com/onflow/flow-emulator/pull/72). This means that existing persisted data will not be compatible with `v0.5.0` onwards.
 
 ### ⭐ Features
 

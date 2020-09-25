@@ -12,13 +12,13 @@ Instead, we'll aim to give some instructions for those that want to Practice the
 
 This guide assumes you have access to the Flow-Go repo, which you'll need to build up-to-date containers and run code snippets.
 
-[](https://github.com/dapperlabs/flow-go)
+[](https://github.com/onflow/flow-go)
 
 ## Local Testnet
 
 One way to get a good feel of the network with out too much interaction with infrastructure is to play with the local testnet, which we've named the Flow Local Instrumented Test Environment (FLITE).
 
-[https://github.com/dapperlabs/flow-go/blob/master/integration/localnet/README.md](https://github.com/dapperlabs/flow-go/blob/master/integration/localnet/README.md)
+[https://github.com/onflow/flow-go/blob/master/integration/localnet/README.md](https://github.com/onflow/flow-go/blob/master/integration/localnet/README.md)
 
 FLITE will allow you to start a full flow network locally, which means starting all 5 roles required for a functioning network. Instructions for initializing and starting the local network are provided in the README above.
 
@@ -28,7 +28,7 @@ When Starting FLITE, it will build all the docker images required for the networ
 
 If you would like more control over the nodes, beyond what docker compose can provide, or you wish to deploy the docker images to separate VMs, to more closely imitate Mainnet, you will have to manually run bootstrapping for a specific configuration of nodes that you would like to test.
 
-[](https://github.com/dapperlabs/flow-go/blob/master/cmd/bootstrap/README.md)
+[](https://github.com/onflow/flow-go/blob/master/cmd/bootstrap/README.md)
 
 Example files are available in the `cmd/bootstrap/example_files` folder.
 
@@ -36,7 +36,7 @@ Where the `node-config.json` will usually store all flow's nodes, where as partn
 
 Once you have all the information, you can make use of the `finalize` command:
 
-[](https://github.com/dapperlabs/flow-go/tree/master/cmd/bootstrap#example-1)
+[](https://github.com/onflow/flow-go/tree/master/cmd/bootstrap#example-1)
 
 And generate the bootstrapping folder required to start up your nodes.
 
