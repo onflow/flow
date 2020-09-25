@@ -37,6 +37,5 @@ SEO.propTypes = {
 
 SEO.defaultProps = {
   twitterCard: "summary",
-  favicon:
-    "https://assets.website-files.com/5e2b4c1e6acffe6813a98828/5e2bc3fd86f4174a3f11d5f1_flow.png",
+  favicon: "https://assets.website-files.com/5f6294c0c7a8cdd643b1c820/5f6294c0c7a8cd5e06b1c938_Asset%201%405x.png",
 };
