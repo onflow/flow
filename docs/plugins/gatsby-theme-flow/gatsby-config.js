@@ -61,12 +61,13 @@ module.exports = ({
         languageScopes: {
           'cadence': 'source.cadence',
           'powershell': 'source.powershell',
-          'solidity': 'source.solidity.security',
-          'javascript': 'source.js',
+          'javascript': 'source.ts',
+          'typescript': 'source.ts',
+          'js': 'source.ts',
+          'ts': 'source.ts',
           'shell': 'source.shell',
           'sh': 'source.shell',
           'go': 'source.go',
-          'js': 'source.js',
           'json': 'source.json',
           'protobuf': 'source.proto',
           'proto': 'source.proto'
@@ -74,8 +75,7 @@ module.exports = ({
         grammarPaths: [
           path.resolve(__dirname, 'cadence.tmGrammar.json'),
           path.resolve(__dirname, 'powershell.tmLanguage.json'),
-          path.resolve(__dirname, 'solidity.tmLanguage.json'),
-          path.resolve(__dirname, 'javascript.tmLanguage.json'),
+          path.resolve(__dirname, 'ts.tmLanguage.json'),
           path.resolve(__dirname, 'go.tmLanguage.json'),
           path.resolve(__dirname, 'shell-unix-bash.tmLanguage.json'),
           path.resolve(__dirname, 'json.tmLanguage.json'),
