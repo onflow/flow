@@ -66,3 +66,11 @@ each of which is a separate list in the `sidebar` object.
 For each category, the object key is used as the title for that category.
 The category with a `null` key will not display a title and can be used to
 render sidebar content at the root level.
+
+
+## Search
+
+Search is provided using [DocSearch](https://docsearch.algolia.com/) by Algolia.
+
+The configuration file can be found here:
+https://github.com/algolia/docsearch-configs/blob/master/configs/onflow.json
