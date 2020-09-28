@@ -74,3 +74,6 @@ Search is provided using [DocSearch](https://docsearch.algolia.com/) by Algolia.
 
 The configuration file can be found here:
 https://github.com/algolia/docsearch-configs/blob/master/configs/onflow.json
+
+This application accesses the DocSearch API using the API key specified in the `ALGOLIA_API_KEY` 
+environment variable.
