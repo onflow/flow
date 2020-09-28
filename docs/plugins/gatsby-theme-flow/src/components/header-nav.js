@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { FaLongArrowAltRight } from "react-icons/fa";
+import { Link } from "gatsby";
+import { FaLongArrowAltRight, FaExternalLinkAlt } from "react-icons/fa";
 import breakpoints from "../utils/breakpoints";
 import { colors } from "../colors";
 
 const Container = styled.div({
+  alignItems: "center",
   display: "flex",
   flexShrink: 0,
   width: 240,
@@ -20,11 +22,11 @@ const Container = styled.div({
 const StyledLink = styled.a({
   display: "flex",
   alignItems: "center",
-  color: colors.indigo.dark,
+  color: colors.blue.light,
   lineHeight: 2,
   textDecoration: "none",
   ":hover": {
-    color: colors.indigo.darker,
+    color: colors.blue.darker,
   },
 });
 
@@ -32,7 +34,7 @@ const AnimatedLink = styled.div`
   position: relative;
   color: #fff;
   &:before {
-    content: "Launch Flow Playground";
+    content: "Flow Playground";
     animation: animatebg 7s infinite;
     position: absolute;
     filter: brightness(80%);
@@ -51,20 +53,30 @@ const AnimatedLink = styled.div`
   }
 `;
 
-const StyledIcon = styled(FaLongArrowAltRight)({
-  marginLeft: "0.5em",
-});
+const Divide = styled.div`
+  width: 10px;
+  border-right: 1px solid ${colors.grey.lighter};
+  height: 11px;
+  margin-right: 10px;
+`;
 
 export default function HeaderNav() {
   return (
     <Container>
       <StyledLink
+        href="https://onflow.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        onflow.org
+      </StyledLink>
+      <Divide />
+      <StyledLink
         href="https://play.onflow.org/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <AnimatedLink>Launch Flow Playground</AnimatedLink>
-        <StyledIcon weight="thin" />
+        <AnimatedLink>Flow Playground</AnimatedLink>
       </StyledLink>
     </Container>
   );
