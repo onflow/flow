@@ -334,7 +334,7 @@ module.exports = {
         menuTitle: "Flow Ecosystem",
         gaTrackingId: "UA-156047066-4",
         algoliaApiKey: process.env.ALGOLIA_API_KEY,
-        algoliaIndexName: "flowdata",
+        algoliaIndexName: "onflow",
         baseUrl: "https://docs.onflow.org",
         twitterUrl: "https://twitter.com/flow_blockchain",
         discordUrl: "https://discord.gg/flow",
