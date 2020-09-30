@@ -299,6 +299,7 @@ const sections = [
         "docs/language/composite-types",
         "docs/language/access-control",
         "docs/language/interfaces",
+        "docs/language/enumerations",
         "docs/language/restricted-types",
         "docs/language/references",
         "docs/language/imports",
