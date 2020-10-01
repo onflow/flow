@@ -42,9 +42,9 @@ R(n_node) = ((annualised reward)*(Tn))/(number of staked nodes in n)
 - Please reference [this sheet](https://docs.google.com/spreadsheets/d/1k7r3Vi4Esmzdu8RV1Pn9qYT_HWQ9E4GsOwIOl7LySC8/edit?userstoinvite=gleb.dudka94@gmail.com&ts=5f5880a4&actionButton=1#gid=1684696774) to see estimates dealing with running each type of node.
 
 ### **Keys**:
-- Key: Algorithm Used
-    - Staking Key: BLS with curve BLS12381
-    - Networking Key: ECDSA with curve secp256k1
+- Key // Algorithm Used
+    - Staking Key // BLS with curve BLS12381
+    - Networking Key // ECDSA with curve secp256k1
 - Keys definition
     - Staking Key: Your node uses its private staking key to sign every message it sends to the Flow network. The signature guarantees authenticity and integrity for each message. This allows the holding of each node accountable for protocol compliant behaviour (or lack thereof) with its financial stake. If your messages are malicious or badly formed, other nodes can raise a slashing witness against your node which might result in your stake being slashed by the consensus nodes, if your node violated the protocol. If your staking key is compromised, an attacker can impersonate your node and result in your stake being slashed. Staking keys are not tied to Flow Accounts, they can not own resources or authorize transactions in the execution environment. Block rewards and other funds do not get paid into the Staking Key's balance, nor can the Staking Key authorize withdrawal of stake during the first Epoch. Therefore Staking Keys can be said to control no funds and are not monetary targets.
     - Networking Key: Your networking key is much like your staking key in that it's an identifier of your node to the network. The Networking Key operates at a lower protocol level, and controls and authorizes your access to the [network communication layer](https://libp2p.io/). Messages of any type sent to the communication layer are signed with this key, including control messages and metadata messages. If your node sends malformed messages to the network, your networking key may be blocked by other nodes and your node will no longer be able to communicate with the rest of the network. If your Networking key is compromised, an attacker may use it to send messages to the network, creating a denial of service. If this happens and your key is blocked, you will lose access to the network, and a prolonged disconnect may lead to your stake being slashed.
@@ -92,10 +92,10 @@ R(n_node) = ((annualised reward)*(Tn))/(number of staked nodes in n)
 - Please reference [this sheet](https://docs.google.com/spreadsheets/d/1k7r3Vi4Esmzdu8RV1Pn9qYT_HWQ9E4GsOwIOl7LySC8/edit?userstoinvite=gleb.dudka94@gmail.com&ts=5f5880a4&actionButton=1#gid=1684696774) to see estimates dealing with running each type of node.
 
 ### **Keys**:
-- Key: Algorithm Used
-    - Staking Key: BLS with curve BLS12381
-    - Networking Key: ECDSA with curve secp256k1
-    - Random Beacon Key: BLS threshold signature with curve BLS12381
+- Key // Algorithm Used
+    - Staking Key // BLS with curve BLS12381
+    - Networking Key // ECDSA with curve secp256k1
+    - Random Beacon Key // BLS threshold signature with curve BLS12381
 - Keys definition
     - Staking Key: Your node uses its private staking key to sign every message it sends to the Flow network. The signature guarantees authenticity and integrity for each message. This allows the holding of each node accountable for protocol compliant behaviour (or lack thereof) with its financial stake. If your messages are malicious or badly formed, other nodes can raise a slashing witness against your node which might result in your stake being slashed by the consensus nodes, if your node violated the protocol. If your staking key is compromised, an attacker can impersonate your node and result in your stake being slashed. Staking keys are not tied to Flow Accounts, they can not own resources or authorize transactions in the execution environment. Block rewards and other funds do not get paid into the Staking Key's balance, nor can the Staking Key authorize withdrawal of stake during the first Epoch. Therefore Staking Keys can be said to control no funds and are not monetary targets.
     - Networking Key: Your networking key is much like your staking key in that it's an identifier of your node to the network. The Networking Key operates at a lower protocol level, and controls and authorizes your access to the [network communication layer](https://libp2p.io/). Messages of any type sent to the communication layer are signed with this key, including control messages and metadata messages. If your node sends malformed messages to the network, your networking key may be blocked by other nodes and your node will no longer be able to communicate with the rest of the network. If your Networking key is compromised, an attacker may use it to send messages to the network, creating a denial of service. If this happens and your key is blocked, you will lose access to the network, and a prolonged disconnect may lead to your stake being slashed.
@@ -143,9 +143,9 @@ R(n_node) = ((annualised reward)*(Tn))/(number of staked nodes in n)
 - Please reference [this sheet](https://docs.google.com/spreadsheets/d/1k7r3Vi4Esmzdu8RV1Pn9qYT_HWQ9E4GsOwIOl7LySC8/edit?userstoinvite=gleb.dudka94@gmail.com&ts=5f5880a4&actionButton=1#gid=1684696774) to see estimates dealing with running each type of node.
 
 ### **Keys**:
-- Key: Algorithm Used
-    - Staking Key: BLS with curve BLS12381
-    - Networking Key: ECDSA with curve secp256k1
+- Key // Algorithm Used
+    - Staking Key // BLS with curve BLS12381
+    - Networking Key // ECDSA with curve secp256k1
 - Keys definition
     - Staking Key: Your node uses its private staking key to sign every message it sends to the Flow network. The signature guarantees authenticity and integrity for each message. This allows the holding of each node accountable for protocol compliant behaviour (or lack thereof) with its financial stake. If your messages are malicious or badly formed, other nodes can raise a slashing witness against your node which might result in your stake being slashed by the consensus nodes, if your node violated the protocol. If your staking key is compromised, an attacker can impersonate your node and result in your stake being slashed. Staking keys are not tied to Flow Accounts, they can not own resources or authorize transactions in the execution environment. Block rewards and other funds do not get paid into the Staking Key's balance, nor can the Staking Key authorize withdrawal of stake during the first Epoch. Therefore Staking Keys can be said to control no funds and are not monetary targets.
     - Networking Key: Your networking key is much like your staking key in that it's an identifier of your node to the network. The Networking Key operates at a lower protocol level, and controls and authorizes your access to the [network communication layer](https://libp2p.io/). Messages of any type sent to the communication layer are signed with this key, including control messages and metadata messages. If your node sends malformed messages to the network, your networking key may be blocked by other nodes and your node will no longer be able to communicate with the rest of the network. If your Networking key is compromised, an attacker may use it to send messages to the network, creating a denial of service. If this happens and your key is blocked, you will lose access to the network, and a prolonged disconnect may lead to your stake being slashed.
@@ -193,9 +193,9 @@ R(n_node) = ((annualised reward)*(Tn))/(number of staked nodes in n)
 - Please reference [this sheet](https://docs.google.com/spreadsheets/d/1k7r3Vi4Esmzdu8RV1Pn9qYT_HWQ9E4GsOwIOl7LySC8/edit?userstoinvite=gleb.dudka94@gmail.com&ts=5f5880a4&actionButton=1#gid=1684696774) to see estimates dealing with running each type of node.
 
 ### **Keys**:
-- Key: Algorithm Used
-    - Staking Key: BLS with curve BLS12381
-    - Networking Key: ECDSA with curve secp256k1
+- Key // Algorithm Used
+    - Staking Key // BLS with curve BLS12381
+    - Networking Key // ECDSA with curve secp256k1
 - Keys definition
     - Staking Key: Your node uses its private staking key to sign every message it sends to the Flow network. The signature guarantees authenticity and integrity for each message. This allows the holding of each node accountable for protocol compliant behaviour (or lack thereof) with its financial stake. If your messages are malicious or badly formed, other nodes can raise a slashing witness against your node which might result in your stake being slashed by the consensus nodes, if your node violated the protocol. If your staking key is compromised, an attacker can impersonate your node and result in your stake being slashed. Staking keys are not tied to Flow Accounts, they can not own resources or authorize transactions in the execution environment. Block rewards and other funds do not get paid into the Staking Key's balance, nor can the Staking Key authorize withdrawal of stake during the first Epoch. Therefore Staking Keys can be said to control no funds and are not monetary targets.
     - Networking Key: Your networking key is much like your staking key in that it's an identifier of your node to the network. The Networking Key operates at a lower protocol level, and controls and authorizes your access to the [network communication layer](https://libp2p.io/). Messages of any type sent to the communication layer are signed with this key, including control messages and metadata messages. If your node sends malformed messages to the network, your networking key may be blocked by other nodes and your node will no longer be able to communicate with the rest of the network. If your Networking key is compromised, an attacker may use it to send messages to the network, creating a denial of service. If this happens and your key is blocked, you will lose access to the network, and a prolonged disconnect may lead to your stake being slashed. 
