@@ -9,6 +9,7 @@ message Account {
   uint64 balance = 2;
   bytes code = 3;
   repeated AccountKey keys = 4;
+  map<string, bytes> contracts = 5;
 }
 
 message AccountKey {

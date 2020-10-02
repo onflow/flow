@@ -850,6 +850,7 @@ message Account {
   uint64 balance
   bytes code
   repeated AccountKey keys
+  map<string, bytes> contracts
 }
 ```
 
@@ -857,8 +858,9 @@ message Account {
 |--------------|-------------|
 | address      | A unique account identifier |
 | balance      | The account balance |
-| code         | The code deployed to this account |
+| code         | The code deployed to this account (deprecated, use contracts instead) |
 | keys         | A list of keys configured on this account |
+| contracts    | A map of contracts or contract interfaces deployed on this account |
 
 More information on accounts can be found [here](/docs/accounts-and-keys.md).
 
