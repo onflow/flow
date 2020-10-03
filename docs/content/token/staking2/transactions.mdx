@@ -3,25 +3,25 @@ title: Flow Staking Transactions Reference
 sidebar_title: Transactions Reference
 ---
 
-## Overview
+# Overview
 
-### Personas
+## Personas
 
 - Token Admin (TA)
 - Token Holder (TH)
 - Node Operator (NO)
 - Token Holder/Operator (TH-NO)
 
-### Use Cases
+## Use Cases
 
 1. TH-NO stakes directly
 1. TH delegates directly
 1. NO operates a node with StakingHelper
 1. TH stake with StakingHelper
 
-## Transactions
+# Transactions
 
-### Token Admin (TA)
+## Token Admin (TA)
 
 - **`TA.01`**: createAdminAccount (with `TokenAdminCollection`)
 - **`TA.02`**: createLockedAccount
@@ -29,18 +29,18 @@ sidebar_title: Transactions Reference
 - **`TA.04`**: depositLockedTokens
 - **`TA.05`**: increaseUnlockLimit
 
-### Token Holder (TH)
+## Token Holder (TH)
 
 - **`TH.01`**: withdrawUnlockedTokens
 
-#### Staking (with `Lockbox.NodeStakerProxy`)
+### Staking (with `Lockbox.NodeStakerProxy`)
 
 - **`TH.03`**: getOperatorNodeInfo (with `StakingProxy.NodeStakerProxyHolderPublic`)
 - **`TH.04`**: registerNode
 - **`TH.05`**: addStakingProxy (with `StakingProxy.NodeStakerProxyHolderPublic`)
 - **`TH.06`**: stakeLockedRewardedTokens
 
-#### Delegating (with `Lockbox.NodeDelegatorProxy`)
+### Delegating (with `Lockbox.NodeDelegatorProxy`)
 
 - **`TH.07`**: registerLockedDelegator
 - **`TH.08`**: delegateNewLockedTokens
@@ -51,9 +51,9 @@ sidebar_title: Transactions Reference
 - **`TH.13`**: withdrawLockedUnbondedDelegatedTokens
 - **`TH.14`**: withdrawLockedRewardedDelegatedTokens
 
-### Token Holder or Node Operator (TH-NO)
+## Token Holder or Node Operator (TH-NO)
 
-#### Staking (with `Lockbox.NodeStakerProxy`)
+### Staking (with `Lockbox.NodeStakerProxy`)
 
 - **`TH-NO.01`**: stakeNewLockedTokens
 - **`TH-NO.02`**: stakeLockedUnbondedTokens
@@ -62,11 +62,11 @@ sidebar_title: Transactions Reference
 - **`TH-NO.04`**: withdrawLockedUnbondedTokens
 - **`TH-NO.05`**: withdrawLockedRewardedTokens
 
-### Node Operator (NO)
+## Node Operator (NO)
 
 - **`NO.01`**: createOperatorAccount (with `StakingProxy.NodeStakerProxyHolder`)
 
-#### Staking
+### Staking
 
 - **`NO.02`**: addNodeInfo
 - **`NO.03`**: removeNodeInfo
