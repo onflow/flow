@@ -1,0 +1,75 @@
+---
+title: How to Stake FLOW
+sidebar_title: For Stakers
+---
+
+<Callout type="warning">
+  This guide is for developers who wish to stake FLOW with the help of a node operator. 
+  If you wish to operate your own node, please read the [power user guide](/token/staking2/power-users).
+</Callout>
+
+# Introduction
+
+This guide covers the technical integration required for a **token holder (TH)** and **node operator (NO)** 
+to jointly fund and operate a staked Flow node.
+
+Both parties have separate roles in this relationship:
+
+- **Node Operator:** Manages the node infrastructure but _does not hold_ any FLOW tokens.
+- **Token Holder:** Provides restricted, indirect access to their FLOW tokens for the sole purpose of staking.
+
+This guide assumes that the **token holder** has already estabilished a relationship with a trusted **node operator**.
+
+# Setup
+
+These are the steps required to set up the integration between a **token holder** and a **node operator**.
+
+## 1. Fetch Node Operator information
+
+TODO
+- Provide `operatorAddress, nodeID`
+- Uses `getOperatorNodeInfo` script
+
+## 2. Submit a staking request
+
+TODO
+- Provide `amount` to be staked
+- Provide `operatorAddress, nodeID` to stake
+- Uses `registerNode` transaction
+
+## 3. Grant staking access to the Node Operator
+
+TODO
+- Uses `addStakingProxy` transaction
+
+# Staking Actions
+
+## Stake New Tokens
+
+TODO
+- Uses `stakeNewLockedTokens`
+
+## Stake Unbonded Tokens
+
+TODO
+- Uses `stakeLockedUnbondedTokens`
+
+## Stake Rewarded Tokens
+
+TODO
+- Uses `stakeLockedRewardedTokens`
+
+## Unstake Tokens
+
+TODO
+- Uses `unstakeLockedTokens`
+
+## Withdraw Unbonded Tokens
+
+TODO
+- Uses `withdrawLockedUnbondedTokens`
+
+## Withdraw Rewarded Tokens
+
+TODO
+- Uses `withdrawLockedRewardedTokens`

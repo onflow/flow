@@ -257,6 +257,14 @@ const sections = [
         "token/staking/node-operators",
         "token/staking/staking-as-a-service",
       ],
+      Staking2: [
+        "token/staking2/index",
+        "token/staking2/stakers",
+        "token/staking2/delegators",
+        "token/staking2/node-operators",
+        "token/staking2/power-users",
+        "token/staking2/transactions",
+      ],
     },
   },
   {
