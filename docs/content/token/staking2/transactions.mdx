@@ -23,50 +23,50 @@ sidebar_title: Transactions Reference
 
 ### Token Admin (TA)
 
-- **TA.01**: createAdminAccount (with `TokenAdminCollection`)
-- **TA.02**: createLockedAccount
-- **TA.03**: createUnlockedAccount
-- **TA.04**: depositLockedTokens
-- **TA.05**: increaseUnlockLimit
+- **`TA.01`**: createAdminAccount (with `TokenAdminCollection`)
+- **`TA.02`**: createLockedAccount
+- **`TA.03`**: createUnlockedAccount
+- **`TA.04`**: depositLockedTokens
+- **`TA.05`**: increaseUnlockLimit
 
 ### Token Holder (TH)
 
-- **TH.01**: withdrawUnlockedTokens
+- **`TH.01`**: withdrawUnlockedTokens
 
 #### Staking (with `Lockbox.NodeStakerProxy`)
 
-- **TH.03**: getOperatorNodeInfo (with `StakingProxy.NodeStakerProxyHolderPublic`)
-- **TH.04**: registerNode
-- **TH.05**: addStakingProxy (with `StakingProxy.NodeStakerProxyHolderPublic`)
-- **TH.06**: stakeLockedRewardedTokens
+- **`TH.03`**: getOperatorNodeInfo (with `StakingProxy.NodeStakerProxyHolderPublic`)
+- **`TH.04`**: registerNode
+- **`TH.05`**: addStakingProxy (with `StakingProxy.NodeStakerProxyHolderPublic`)
+- **`TH.06`**: stakeLockedRewardedTokens
 
 #### Delegating (with `Lockbox.NodeDelegatorProxy`)
 
-- **TH.07**: registerLockedDelegator
-- **TH.08**: delegateNewLockedTokens
-- **TH.09**: delegateLockedUnbondedTokens
-- **TH.10**: delegateLockedRewardedTokens
-- **TH.11**: requestUnstakingLockedDelegatedTokens
-- **TH.12**: unstakeAllLockedDelegatedTokens
-- **TH.13**: withdrawLockedUnbondedDelegatedTokens
-- **TH.14**: withdrawLockedRewardedDelegatedTokens
+- **`TH.07`**: registerLockedDelegator
+- **`TH.08`**: delegateNewLockedTokens
+- **`TH.09`**: delegateLockedUnbondedTokens
+- **`TH.10`**: delegateLockedRewardedTokens
+- **`TH.11`**: requestUnstakingLockedDelegatedTokens
+- **`TH.12`**: unstakeAllLockedDelegatedTokens
+- **`TH.13`**: withdrawLockedUnbondedDelegatedTokens
+- **`TH.14`**: withdrawLockedRewardedDelegatedTokens
 
 ### Token Holder or Node Operator (TH-NO)
 
 #### Staking (with `Lockbox.NodeStakerProxy`)
 
-- **TH-NO.01**: stakeNewLockedTokens
-- **TH-NO.02**: stakeLockedUnbondedTokens
+- **`TH-NO.01`**: stakeNewLockedTokens
+- **`TH-NO.02`**: stakeLockedUnbondedTokens
 - ~~stakeLockedRewardedTokens~~ _Can only be performed by Token Holder._
-- **TH-NO.03**: unstakeLockedTokens
-- **TH-NO.04**: withdrawLockedUnbondedTokens
-- **TH-NO.05**: withdrawLockedRewardedTokens
+- **`TH-NO.03`**: unstakeLockedTokens
+- **`TH-NO.04`**: withdrawLockedUnbondedTokens
+- **`TH-NO.05`**: withdrawLockedRewardedTokens
 
 ### Node Operator (NO)
 
-- **NO.01**: createOperatorAccount (with `StakingProxy.NodeStakerProxyHolder`)
+- **`NO.01`**: createOperatorAccount (with `StakingProxy.NodeStakerProxyHolder`)
 
 #### Staking
 
-- **NO.02**: addNodeInfo
-- **NO.03**: removeNodeInfo
+- **`NO.02`**: addNodeInfo
+- **`NO.03`**: removeNodeInfo
