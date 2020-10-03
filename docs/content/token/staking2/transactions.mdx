@@ -23,6 +23,14 @@ sidebar_title: Transactions Reference
 
 ## Token Admin (TA)
 
+The **token admin** is the administrator responsible for distributing and 
+releasing locked FLOW tokens. The **token admin** has possession of a single 
+account that is used to control the lockups for all locked FLOW.
+
+The **token admin** creates a **shared account** for each **token holder**
+that is co-owned by the **token admin** and the **token holder**. 
+The **shared account** is used to store all locked FLOW owned by a **token holder**. 
+
 - **`TA.01`**: createAdminAccount (with `TokenAdminCollection`)
 - **`TA.02`**: createLockedAccount
 - **`TA.03`**: createUnlockedAccount
@@ -31,38 +39,41 @@ sidebar_title: Transactions Reference
 
 ## Token Holder (TH)
 
+The **token holder** is a user who holds possession of 
+locked and unlocked FLOW tokens.
+
+The **token holder** can stake and delegate locked or unlocked FLOW
+through the `StakingProxy` contract.
+
+The **token holder** can withdraw unlocked FLOW from the shared account created 
+by the token admin.
+
 - **`TH.01`**: withdrawUnlockedTokens
 
 ### Staking (with `Lockbox.NodeStakerProxy`)
 
-- **`TH.03`**: getOperatorNodeInfo (with `StakingProxy.NodeStakerProxyHolderPublic`)
-- **`TH.04`**: registerNode
-- **`TH.05`**: addStakingProxy (with `StakingProxy.NodeStakerProxyHolderPublic`)
-- **`TH.06`**: stakeLockedRewardedTokens
+- **`TH.02`**: getOperatorNodeInfo (with `StakingProxy.NodeStakerProxyHolderPublic`)
+- **`TH.03`**: registerNode
+- **`TH.04`**: addStakingProxy (with `StakingProxy.NodeStakerProxyHolderPublic`)
+- **`TH.05`**: stakeLockedRewardedTokens
+
+_Note: The remaining staking actions are [defined below](#token-holder-or-node-operator-th-no)._
 
 ### Delegating (with `Lockbox.NodeDelegatorProxy`)
 
-- **`TH.07`**: registerLockedDelegator
-- **`TH.08`**: delegateNewLockedTokens
-- **`TH.09`**: delegateLockedUnbondedTokens
-- **`TH.10`**: delegateLockedRewardedTokens
-- **`TH.11`**: requestUnstakingLockedDelegatedTokens
-- **`TH.12`**: unstakeAllLockedDelegatedTokens
-- **`TH.13`**: withdrawLockedUnbondedDelegatedTokens
-- **`TH.14`**: withdrawLockedRewardedDelegatedTokens
-
-## Token Holder or Node Operator (TH-NO)
-
-### Staking (with `Lockbox.NodeStakerProxy`)
-
-- **`TH-NO.01`**: stakeNewLockedTokens
-- **`TH-NO.02`**: stakeLockedUnbondedTokens
-- ~~stakeLockedRewardedTokens~~ _Can only be performed by Token Holder._
-- **`TH-NO.03`**: unstakeLockedTokens
-- **`TH-NO.04`**: withdrawLockedUnbondedTokens
-- **`TH-NO.05`**: withdrawLockedRewardedTokens
+- **`TH.06`**: registerLockedDelegator
+- **`TH.07`**: delegateNewLockedTokens
+- **`TH.08`**: delegateLockedUnbondedTokens
+- **`TH.09`**: delegateLockedRewardedTokens
+- **`TH.10`**: requestUnstakingLockedDelegatedTokens
+- **`TH.11`**: unstakeAllLockedDelegatedTokens
+- **`TH.12`**: withdrawLockedUnbondedDelegatedTokens
+- **`TH.13`**: withdrawLockedRewardedDelegatedTokens
 
 ## Node Operator (NO)
+
+The **node operator** is an independent user who operators a Flow node on
+behalf of a **token holder**.
 
 - **`NO.01`**: createOperatorAccount (with `StakingProxy.NodeStakerProxyHolder`)
 
@@ -70,3 +81,21 @@ sidebar_title: Transactions Reference
 
 - **`NO.02`**: addNodeInfo
 - **`NO.03`**: removeNodeInfo
+
+## Token Holder or Node Operator (TH-NO)
+
+Both the **token holder** and **node operator** can perform the following
+staking actions using locked or unlocked FLOW owned by the **token holder**.
+
+_Note: The **node operator** can perform these actions on behalf of 
+the **token holder**, but only with explicit permission. 
+This permission can be revoked by the **token holder**._
+
+### Staking (with `Lockbox.NodeStakerProxy`)
+
+- **`TH-NO.01`**: stakeNewLockedTokens
+- **`TH-NO.02`**: stakeLockedUnbondedTokens
+- ~~stakeLockedRewardedTokens~~ _Can only be performed by **token holder**._
+- **`TH-NO.03`**: unstakeLockedTokens
+- **`TH-NO.04`**: withdrawLockedUnbondedTokens
+- **`TH-NO.05`**: withdrawLockedRewardedTokens

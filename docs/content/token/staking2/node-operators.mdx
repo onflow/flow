@@ -2,3 +2,81 @@
 title: How to be a Flow Node Operator
 sidebar_title: For Node Operators
 ---
+
+# Introduction
+
+This guide covers the technical integration required for a **node operator (NO)** to operate
+a staked Flow node using locked FLOW provided by a **token holder (TH)**.
+
+Both parties have separate roles in this relationship:
+
+- **Node Operator:** Manages the node infrastructure but _does not hold_ any FLOW tokens.
+- **Token Holder:** Provides restricted, indirect access to their FLOW tokens for the sole purpose of staking.
+
+This guide assumes that the **node operator** has already established a 
+trusted relationship with a **token holder**.
+
+# Setup
+
+These are the steps taken by a **node operator** to set up the integration with a **token holder**.
+
+_Note: The corresponding **token holder** steps are outlined in a 
+[separate guide for token holders](/token/staking2/stakers)._
+
+## 1. Create a node operator account
+
+This step can be skipped if the **node operator** already has an account.
+
+TODO:
+- Uses `createOperatorAccount` transaction (`NO.01`)
+
+## 2. Create a new `NodeInfo` entry
+
+TODO:
+- Uses `addNodeInfo` transaction (`NO.02`)
+
+## 3. Confirm staking access with token holder
+
+After the `NodeInfo` object has been created and published, 
+the **token holder** uses it to initiate a staking request. 
+After this, the **token holder** passes a `StakingProxy.NodeStakerProxy`
+capability to the **node operator** that allows them to perform staking operations.
+
+The **node operator** should confirm that they have access to this capability.
+
+# Staking Actions
+
+## Stake New Tokens
+
+TODO
+- Uses `stakeNewLockedTokens`
+
+## Stake Unbonded Tokens
+
+TODO
+- Uses `stakeLockedUnbondedTokens`
+
+## Unstake Tokens
+
+TODO
+- Uses `unstakeLockedTokens`
+
+## Withdraw Unbonded Tokens
+
+TODO
+- Uses `withdrawLockedUnbondedTokens`
+
+## Withdraw Rewarded Tokens
+
+TODO
+- Uses `withdrawLockedRewardedTokens`
+
+# Teardown
+
+## Remove `NodeInfo` entry
+
+The **node operator** can destroy the `NodeInfo` entry after 
+the staking relationship has concluded.
+
+TODO
+- Uses `removeNodeInfo` transaction (`NO.03`)
