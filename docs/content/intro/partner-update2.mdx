@@ -1,0 +1,121 @@
+---
+title: Flow Bi-Weekly Wave
+---
+
+Hey folks, 
+
+It’s been a busy sprint for the Flow team! Thank you to everyone who has applied to become a Node Operator, contributed to the Coinlist sale, and started building on Flow - we wouldn’t be where we are without your support.
+
+Without further adieu, here’s your latest Flow update!
+
+H3[Executive Summary]
+
+## Available Now
+
+- [NBA Top Shot Open Beta Launch!](https://www.nbatopshot.com/)There’s another pack drop on October 5th, so don’t miss out
+- The contracts and transaction templates needed to support staking are now available and ready for you to integrate with. The team is going to be extra diligent responding to Discord questions in the coming weeks to ensure you aren’t blocked and have everything you need to, including: 
+  ⋅⋅* Locked Token Account - this is the account you’ll be creating to support the holding of / interaction with locked FLOW tokens. It creates a token admin capability inside the co-managed account. To learn more about the dual account model to supporting locked tokens, please read our documentation here. 
+  ⋅⋅* Locked Token Contract - this is the contract you’ll be sending <insert type> transactions to. You will not deploy this contract, you will only interact with it via the following transaction templates:
+  ⋅⋅⋅* <insert supported actions on locked token contract - answer, what is this for?>
+
+  ⋅⋅* Core Staking & Staking Proxy Contract (for Staking Helper) - this is the contract you’ll submit staking requests to. You will only need to deploy a staking proxy contract if you’re supporting staking-as-service models. The transactions needed for interacting with both of these contracts include:
+⋅⋅⋅* Staking request
+⋅⋅⋅* Unstaking request
+⋅⋅⋅* Delegating request
+⋅⋅⋅* Reward request (where do these go actually?) 
+ ⋅⋅* Delegation support - you get delegation support for free when you integrate with the core staking contract. The Flow Service Account exposes a list of node operators valid for each epoch, which is enforced by the core staking contract, and populated via the `valid staking references <insert real name for the thing that says you can delegate to a node>` exposed by individual node operators. 
+- [Community Forum] (https://forum.onflow.org/) - Join the discussions about Flow, questions you might have, and what we’ve been learning along the way.
+
+## Coming Up
+
+### Oct 13: Spork - Candidate #10
+
+- **Key Deadline:** Monday, October 12th @ 11am Pacific Time
+
+- **Startup Nodes:** Tuesday, October 13th @ 11am Pacific Time
+
+### Oct 16: Flow Port Release & Token Delivery
+
+- Custodian Partners supporting FLOW: Kraken, Finoa, Ledger, Flow Port (more on that below 😉)
+
+### Nov 2: First Staking Spork - Candidate #11
+
+- Investors will spend Oct 16 - Oct 30 staking their tokens. Partners should be ready to support investors in this process by this time.
+- This will be the first spork where keys (and stake!) are collected via Staking Requests (txs sent to staking contract - described in detail in docs below)
+- **Staking Request Deadline**: Friday October 30th @ 4pm Pacific Time
+- **Updated Node Configuration in effect as of Monday November 2 @ 10am Pacific Time**
+
+### Nov 9: First Staking Rewards!
+
+- The first rewards will be automatically paid out to your account(s) on this date
+
+## Coming Soon & Announcements
+
+- OWB Round 2!
+- Fiat on-ramps to Flow 
+… and a couple of surprises coming up in the future
+
+#### So, how the heck does all of that work?
+
+We’re so glad you asked! See below our documentation with you!
+
+### Updated Documentation & Draft Contracts
+
+Have questions regarding Flow’s latest updates and development? 
+Check out our documentation links below!
+
+Here you’ll find documentation on how to support:
+Here you’ll find documentation on how to support:
+
+1. Using FLOW native tokens
+
+   - [Overview](https://docs.onflow.org/token/)
+   - [Key Concepts](https://docs.onflow.org/token/concepts/)
+     - Includes [Fees](https://docs.onflow.org/token/concepts/#fees) & [Accounts](https://docs.onflow.org/token/concepts/#accounts)
+
+2. Staking, staking as a service, and delegation
+   - Sending staking and/or delegation transactions,
+   - Withdrawing rewards,
+   - Unbonding stake for yourself, your team, and your users.
+     - [Investor Support](https://docs.onflow.org/token/investors/)
+     - [Staking Support](https://docs.onflow.org/token/staking/)
+     - [Wallet Support](https://docs.onflow.org/token/wallets/)
+       - [Node Operator Support](https://docs.onflow.org/token/staking/node-operators/)
+       - [Staking as a Service Provider/Delegator Support](https://docs.onflow.org/token/staking/staking-as-a-service/)
+
+Draft Contracts are Available for Review (WIP, comments/PRs welcome!) here:
+
+- [https://github.com/onflow/flow-core-contracts/tree/josh/staking](https://github.com/onflow/flow-core-contracts/tree/josh/staking)
+
+Staking Helper Branch:
+
+- [https://github.com/onflow/flow-core-contracts/tree/max/staking-helper](https://github.com/onflow/flow-core-contracts/tree/max/staking-helper)
+
+New contracts and transactions you’ll need to interact with them (currently a PR here)
+
+- [https://github.com/onflow/flow-core-contracts/pull/4](https://github.com/onflow/flow-core-contracts/pull/4)
+
+## Suggested Support Milestones
+
+### Oct 16: Token delivery
+
+- Custodians will support creating accounts, receiving, and holding FLOW by this date.
+- This is also the date when fees will be turned on and when you’ll receive FLOW from the protocol to sign as the payer for transactions you’re submitting to the network (including creating accounts).
+
+### Oct 16-30: Supporting Staking for Partners
+
+- Node operators should have the ability to support their users submitting a staking transaction by this date.
+- October 16th is the first date investors will have their tokens available to them to start the staking process
+- October 30th is the last day you’ll be able to submit a staking request for the first epoch which will have rewards (Oct 31st Candidate #11 Spork)
+
+### Nov 2: First Staking Spork - Candidate #11
+
+- Investors will spend Oct 16 - Oct 30 staking their tokens. Partners should be ready to support investors in this process by this time.
+- This will be the first spork where keys (and stake!) are collected via Staking Requests (txs sent to staking contract - described in detail in docs below).
+- Staking Request Deadline: Friday October 30th @ 4pm Pacific Time
+- Node Startup: Monday November 2 @10am Pacific Time
+
+### Nov 9: Supporting Rewards
+
+- The first rewards will be paid out 1 week following all nodes successfully staking in the Candidate #11 Spork after which time a user would want to withdraw their rewards.
+- You should support token withdrawal requests by this time.
