@@ -161,6 +161,16 @@ export default function Search(props) {
         // debug: true, // keeps the results list open
         algoliaOptions: {
           hitsPerPage: 10
+        },
+        transformData: function (hits){
+          hits.forEach(hit => {
+            // replace origin so search results point to local (or vercel) deployment
+            // warning: any new or edited pages won't be correctly indexed
+            var url = new URL(hit.url);
+            url.host = window.location.host
+            url.protocol = window.location.protocol
+            hit.url = url.href
+          });
         }
       });
     }
