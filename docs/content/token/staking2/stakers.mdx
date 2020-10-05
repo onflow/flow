@@ -32,45 +32,98 @@ _Note: The corresponding **node operator** steps are outlined in a
 
 ## 1. Fetch node operator information
 
-TODO
-- Provide `operatorAddress, nodeID`
-- Uses `TH.04` script
+To fetch the node operator information for an address's staking proxy, the token holder must use use script TH.04:
+
+`stakingProxy/sh_get_node_info.cdc`
+
+Script arguments:
+
+| Argument | Type | Purpose |
+| account  | Address | Specifies the address to get the staking proxy's node info node info for. |
+
+Script returns:
+
+The `StakingProxy.NodeInfo` struct containing the details for the node. If no NodeInfo is available, the script will fail.
 
 ## 2. Register node & grant staking access to the node operator
 
-TODO
-- Provide `amount` to be staked
-- Provide `operatorAddress, nodeID` to stake to
-- Uses `TH.05` transaction
+To register the node as the token holder account's staker, the token holder must use  use transaction TH.05:
+
+`stakingProxy/sh_register_node.cdc`
+
+Transaction arguments:
+
+| Argument | Type | Purpose |
+| address  | Address | The node operator address. |
+| nodeID   | String  | The `id` from the NodeInfo. |
+| amount   | UFix64  | The number of FLOW tokens to stake. |
 
 # Staking Actions
 
 ## Stake New Tokens
 
-TODO
-- Uses `TH.06` transaction
+To stake new tokens via the proxy, the token holder must use use transaction TH.06:
+
+`lockedTokens/staker/stake_new_tokens.cdc`
+
+Transaction arguments:
+
+| Argument | Type   | Purpose |
+|amount    | UFix64 | The quantity of new FLOW tokens to add to the user's stake. |
+
 
 ## Stake Unbonded Tokens
 
-TODO
-- Uses `TH.07` transaction
+To stake unbonded tokens via the proxy, the token holder must use transaction TH.07:
+
+`lockedTokens/staker/stake_unlocked_tokens.cdc`
+
+Transaction arguments:
+
+| Argument | Type   | Purpose |
+|amount    | UFix64 | The quantity of unbonded FLOW tokens to add to the user's stake. |
 
 ## Stake Rewarded Tokens
 
-TODO
-- Uses `TH.08` transaction
+To stake rewarded tokens via the proxy, the token holder must use transaction TH.08:
+
+`lockedTokens/staker/stake_rewarded_tokens.cdc`
+
+Transaction arguments:
+
+| Argument | Type   | Purpose |
+|amount    | UFix64 | The quantity of rewarded FLOW tokens to add to the user's stake. |
 
 ## Unstake Tokens
 
-TODO
-- Uses `TH.09` transaction
+To unstake their tokens via the proxy, the token holder must use transaction TH.09:
+
+`lockedTokens/staker/unstake_all.cdc`
+
+Transaction arguments:
+
+None.
+
+**Note that this will unstake all of the user's staked tokens.**
 
 ## Withdraw Unbonded Tokens
 
-TODO
-- Uses `TH.10` transaction
+To withdraw unbonded tokens (tokens that were previously staked and then unstaked) via the proxy, the token holder must use transaction TH.10:
+
+`lockedTokens/staker/withdraw_unlocked_tokens.cdc`
+
+Transaction arguments:
+
+| Argument | Type   | Purpose |
+|amount    | UFix64 | The quantity of unbonded FLOW tokens to withdraw from the proxy. |
 
 ## Withdraw Rewarded Tokens
 
-TODO
-- Uses `TH.11` transaction
+To withdraw rewarded tokens via the proxy, the token holder must use transaction TH.11:
+
+`lockedTokens/staker/withdraw_rewarded_tokens.cdc`
+
+Transaction arguments:
+
+| Argument | Type   | Purpose |
+|amount    | UFix64 | The quantity of rewarded FLOW tokens to withdraw from the proxy. |
