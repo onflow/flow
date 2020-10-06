@@ -115,9 +115,9 @@ Transaction arguments:
 |------------|--------|---------|
 | **amount** | UFix64 | The quantity of rewarded FLOW tokens to add to the user's stake. |
 
-Since rewarded tokens are considered to be unlocked for the purposes of the vesting schedule,
+Since rewarded tokens are considered to be unstaked for the purposes of the vesting schedule,
 and staked tokens are considered locked, staking rewarded tokens marks the staked tokens as locked
-and marks an equal amount of tokens in the user's locked account as unlocked.
+and marks an equal amount of tokens in the user's locked account as unstaked.
 
 ## Unstake Tokens
 
@@ -157,5 +157,5 @@ Transaction arguments:
 |------------|--------|---------|
 | **amount** | UFix64 | The quantity of rewarded FLOW tokens to withdraw from the proxy. |
 
-Since rewards are considered to be unlocked. This marks an equal amount in your locked account as unlocked.
-You can immediately withdraw your unlocked reward tokens from your account after withdrawing rewards.
+Since rewards are considered to be unstaked. This marks an equal amount in your locked account as unstaked.
+You can immediately withdraw your unstaked reward tokens from your account after withdrawing rewards.

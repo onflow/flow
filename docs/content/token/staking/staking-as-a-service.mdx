@@ -65,7 +65,7 @@ Token Holder:
   (configuring this to require signatures from either or both parties is an available option).
   This unstaking is still subject to the weeklong unstaking period before
   the requested tokens are available to be withdrawn.
-- Withdraw unstaked tokens via `sh_withdraw_unlocked_tokens.cdc` transaction,
+- Withdraw unstaked tokens via `sh_withdraw_unstaked_tokens.cdc` transaction,
   which will deposit them into the token holder's account regardless of who intiaited the transaction.
 - Withdraw rewarded tokens via `sh_withdraw_rewarded_tokens.cdc` transaction,
   which will deposit them into the corresponding accounts regardless of who
@@ -73,7 +73,7 @@ Token Holder:
   (this will automatically distribute the rewards to both the staker and node operator,
   as defined by the cut of rewards the node receives at creation of the `StakingHelper` resource).
 - Commit additional tokens to stake via the `sh_stake_new_tokens.cdc` transaction.
-- Commit unstaked tokens to stake via the `sh_stake_unlocked_tokens.cdc` transaction.
+- Commit unstaked tokens to stake via the `sh_stake_unstaked_tokens.cdc` transaction.
 - Commit rewards tokens to stake via the `sh_stake_rewarded_tokens.cdc` transaction.
 
 If either party wants to end the relationship and not manage the node or stake
