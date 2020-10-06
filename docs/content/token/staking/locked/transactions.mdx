@@ -8,6 +8,7 @@ sidebar_title: Transactions Reference
 ## Personas
 
 - Token Admin (TA)
+- Custodian (C)
 - Token Holder (TH)
 - Node Operator (NO)
 
@@ -46,12 +47,24 @@ The **token admin** creates a **shared account** for each **token holder**
 that is co-owned by the **token admin** and the **token holder**. 
 The **shared account** is used to store all locked FLOW owned by a **token holder**. 
 
-| ID        | Name                     | Source |
-|-----------|--------------------------|--------|
-|**`TA.01`**| Set Up Admin Account     | [lockedTokens/admin/create_admin_collection.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/create_admin_collection.cdc) |
-|**`TA.02`**| Created Shared Account   | [lockedTokens/admin/create_shared_accounts.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/admin_create_shared_accounts.cdc) |
-|**`TA.04`**| Deposit Locked Tokens    | [lockedTokens/admin/deposit_locked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/deposit_locked_tokens.cdc) |
-|**`TA.05`**| Unlock Tokens            | [lockedTokens/admin/unlock_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/unlock_tokens.cdc) |
+| ID        | Name                    | Source |
+|-----------|-------------------------|--------|
+|**`TA.01`**| Set Up Admin Account    | [lockedTokens/admin/create_admin_collection.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/create_admin_collection.cdc) |
+|**`TA.02`**| Created Shared Account  | [lockedTokens/admin/admin_create_shared_accounts.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/admin_create_shared_accounts.cdc) |
+|**`TA.04`**| Deposit Locked Tokens   | [lockedTokens/admin/deposit_locked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/deposit_locked_tokens.cdc) |
+|**`TA.05`**| Unlock Tokens           | [lockedTokens/admin/unlock_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/unlock_tokens.cdc) |
+|**`TA.06`**| Deposit Account Creator | [lockedTokens/admin/admin_deposit_account_creator.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/admin_deposit_account_creator.cdc) |
+
+## Custodian
+
+The **custodian** is an agent who acts on behalf of the **token holder** for the purpose of 
+securing FLOW tokens.
+
+| ID       | Name                        | Source |
+|----------|-----------------------------|--------|
+|**`C.01`**| Set Up Creator Account      | [lockedTokens/admin/custody_setup_account_creator.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/custody_setup_account_creator.cdc) |
+|**`C.02`**| Create Shared Accounts      | [lockedTokens/admin/custody_create_shared_accounts.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/custody_create_shared_accounts.cdc) |
+|**`C.03`**| Create Only Shared Acccount | [lockedTokens/admin/custody_create_only_shared_account.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/custody_create_only_shared_account.cdc) |
 
 ## Token Holder
 
