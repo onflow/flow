@@ -38,8 +38,9 @@ To fetch the node operator information for an address's staking proxy, the token
 
 Script arguments:
 
-| Argument | Type | Purpose |
-| account  | Address | Specifies the address to get the staking proxy's node info node info for. |
+| Argument     | Type    | Purpose |
+|--------------|---------|---------|
+| **account**  | Address | Specifies the address to get the staking proxy's node info node info for. |
 
 Script returns:
 
@@ -53,10 +54,11 @@ To register the node as the token holder account's staker, the token holder must
 
 Transaction arguments:
 
-| Argument | Type | Purpose |
-| address  | Address | The node operator address. |
-| nodeID   | String  | The `id` from the NodeInfo. |
-| amount   | UFix64  | The number of FLOW tokens to stake. |
+| Argument    | Type    | Purpose |
+|-------------|---------|---------|
+| **address** | Address | The node operator address. |
+| **nodeID**  | String  | The `id` from the NodeInfo. |
+| **amount**  | UFix64  | The number of FLOW tokens to stake. |
 
 # Staking Actions
 
@@ -68,8 +70,9 @@ To stake new tokens via the proxy, the token holder must use use transaction TH.
 
 Transaction arguments:
 
-| Argument | Type   | Purpose |
-|amount    | UFix64 | The quantity of new FLOW tokens to add to the user's stake. |
+| Argument   | Type   | Purpose |
+|------------|--------|---------|
+| **amount** | UFix64 | The quantity of new FLOW tokens to add to the user's stake. |
 
 
 ## Stake Unbonded Tokens
@@ -80,8 +83,9 @@ To stake unbonded tokens via the proxy, the token holder must use transaction TH
 
 Transaction arguments:
 
-| Argument | Type   | Purpose |
-|amount    | UFix64 | The quantity of unbonded FLOW tokens to add to the user's stake. |
+| Argument   | Type   | Purpose |
+|------------|--------|---------|
+| **amount** | UFix64 | The quantity of unbonded FLOW tokens to add to the user's stake. |
 
 ## Stake Rewarded Tokens
 
@@ -91,8 +95,9 @@ To stake rewarded tokens via the proxy, the token holder must use transaction TH
 
 Transaction arguments:
 
-| Argument | Type   | Purpose |
-|amount    | UFix64 | The quantity of rewarded FLOW tokens to add to the user's stake. |
+| Argument   | Type   | Purpose |
+|------------|--------|---------|
+| **amount** | UFix64 | The quantity of rewarded FLOW tokens to add to the user's stake. |
 
 ## Unstake Tokens
 
@@ -114,8 +119,9 @@ To withdraw unbonded tokens (tokens that were previously staked and then unstake
 
 Transaction arguments:
 
-| Argument | Type   | Purpose |
-|amount    | UFix64 | The quantity of unbonded FLOW tokens to withdraw from the proxy. |
+| Argument   | Type   | Purpose |
+|------------|--------|---------|
+| **amount** | UFix64 | The quantity of unbonded FLOW tokens to withdraw from the proxy. |
 
 ## Withdraw Rewarded Tokens
 
@@ -125,5 +131,6 @@ To withdraw rewarded tokens via the proxy, the token holder must use transaction
 
 Transaction arguments:
 
-| Argument | Type   | Purpose |
-|amount    | UFix64 | The quantity of rewarded FLOW tokens to withdraw from the proxy. |
+| Argument   | Type   | Purpose |
+|------------|--------|---------|
+| **amount** | UFix64 | The quantity of rewarded FLOW tokens to withdraw from the proxy. |
