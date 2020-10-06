@@ -176,7 +176,7 @@ function isPageSelected(path, pathname) {
 function getStylesForNavItem(page) {
   switch (page) {
     case "FLOW (Token)":
-      // TODO: Cvert these to tailwind css classes...
+      // TODO: Convert these to tailwind css classes...
       return {
         color: colors.grey.darker,
         backgroundColor: colors.green.lightest,
@@ -186,9 +186,6 @@ function getStylesForNavItem(page) {
         borderRadius: "1000px",
         boxShadow: ` 20px 20x 60px #1b63b6, 
         -20px -20px 60px #2587f6`,
-        // "&:hover": {
-        //   backgroundColor: theme.primary,
-        // },
       };
     case "Node Operation Quick Guide":
       return {
@@ -202,7 +199,6 @@ function getStylesForNavItem(page) {
         background: colors.blue.lightest,
       };
     case "Cadence Language Reference":
-    case "Flow Community Partner Update":
       return {
         color: colors.grey.dark,
         padding: "0 0.2rem",

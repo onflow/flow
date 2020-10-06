@@ -9,7 +9,8 @@ const pathConfig = {
     "/intro/glossary/",
     "/intro/flow-token/",
     "/concepts/node-operation/quickstart",
-    "/intro/partner-update/",
+    "/updates/sep-16-2020/",
+    "/updates/oct-6-2020/",
   ],
   // Shows the main docest menu on these pages
   showDocsetMenu: [
@@ -18,7 +19,8 @@ const pathConfig = {
     "/intro/glossary/",
     "/intro/flow-token/",
     "/concepts/node-operation/quickstart",
-    "/intro/partner-update/",
+    "/updates/sep-16-2020/",
+    "/updates/oct-6-2020/",
   ],
 };
 
@@ -121,7 +123,8 @@ const sections = [
     sourceInstanceName: "docs",
     patterns: [
       "*",
-      "intro/*",
+      "intro/*", 
+      "updates/*",
       "concepts/node-operation/*",
       "concepts/flow-concepts/*",
       // "concepts/node-operation/*",
@@ -129,12 +132,17 @@ const sections = [
       // "guides/node-operator/*",
       // "tutorial/cadence/*",
     ],
+    sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
         "[Node Operation Quick Guide](/concepts/node-operation/quickstart)",
         // "intro/partner-update",
         "intro/glossary",
         "intro/FAQ",
+      ],
+      "Community Updates": [
+        "updates/oct-6-2020",
+        "updates/sep-16-2020",
       ],
       // Tutorial: [
       //   "tutorial/cadence/01-first-steps",
