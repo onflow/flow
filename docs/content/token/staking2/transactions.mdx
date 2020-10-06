@@ -1,5 +1,5 @@
 ---
-title: Flow Staking Transactions Reference
+title: Locked FLOW Transactions Reference
 sidebar_title: Transactions Reference
 ---
 
@@ -20,7 +20,7 @@ sidebar_title: Transactions Reference
 
 # Transactions
 
-## Token Admin (TA)
+## Token Admin
 
 The **token admin** is the administrator responsible for distributing and 
 releasing locked FLOW tokens. The **token admin** has possession of a single 
@@ -30,14 +30,14 @@ The **token admin** creates a **shared account** for each **token holder**
 that is co-owned by the **token admin** and the **token holder**. 
 The **shared account** is used to store all locked FLOW owned by a **token holder**. 
 
-| ID | Name | Source |
-|----|------|--------|
+| ID        | Name                     | Source |
+|-----------|--------------------------|--------|
 |**`TA.01`**| Set Up Admin Account     | `lockedTokens/admin/create_admin_collection.cdc` |
 |**`TA.02`**| Created Shared Account   | `lockedTokens/admin/create_shared_account.cdc` |
 |**`TA.04`**| Deposit Locked Tokens    | `lockedTokens/admin/deposit_locked_tokens.cdc` |
 |**`TA.05`**| Unlock Tokens            | `lockedTokens/admin/unlock_tokens.cdc` |
 
-## Token Holder (TH)
+## Token Holder
 
 The **token holder** is a user who holds possession of 
 locked and unlocked FLOW tokens.
@@ -48,16 +48,18 @@ through the `StakingProxy` contract.
 The **token holder** can withdraw unlocked FLOW from the shared account created 
 by the token admin.
 
-| ID | Name | Source |
-|----|------|--------|
+| ID        | Name                   | Source |
+|-----------|------------------------|--------|
 |**`TH.01`**| Withdraw Unlocked FLOW | `lockedTokens/user/withdraw_tokens.cdc` |
 |**`TH.02`**| Deposit Unlocked FLOW  | `lockedTokens/user/deposit_tokens.cdc` |
 |**`TH.03`**| Get Unlock Limit       | `lockedTokens/user/get_unlock_limit.cdc` |
 
-### Staking (with `Lockbox.NodeStakerProxy`)
+### Staking
 
-| ID | Name | Source |
-|----|------|--------|
+These transactions operate through the `StakingProxy.NodeStakerProxy` interface.
+
+| ID        | Name                         | Source |
+|-----------|------------------------------|--------|
 |**`TH.04`**| Get Operator Node Info       | `stakingProxy/sh_get_node_info.cdc` | 
 |**`TH.05`**| Register Node                | `stakingProxy/sh_register_node.cdc` |
 |**`TH.06`**| Stake New Locked FLOW        | `lockedTokens/staker/stake_new_tokens.cdc` |
@@ -67,10 +69,12 @@ by the token admin.
 |**`TH.10`**| Withdraw Unstaked FLOW       | `lockedTokens/staker/withdraw_unstaked_tokens.cdc` |
 |**`TH.11`**| Withdraw Rewarded FLOW       | `lockedTokens/staker/withdraw_rewarded_tokens.cdc` |
 
-### Delegating (with `Lockbox.NodeDelegatorProxy`)
+### Delegating
 
-| ID | Name | Source |
-|----|------|--------|
+These transactions operate through the `StakingProxy.NodeDelegatorProxy` interface.
+
+| ID        | Name                      | Source |
+|-----------|---------------------------|--------|
 |**`TH.12`**| Register Delegator        | `lockedTokens/delegator/register_delegator.cdc` |
 |**`TH.13`**| Delegate New Locked FLOW  | `lockedTokens/delegator/delegate_new_locked_tokens.cdc` |
 |**`TH.14`**| Re-delegate Unstaked FLOW | `lockedTokens/delegator/delegate_locked_unstaked_tokens.cdc` | 
@@ -79,16 +83,18 @@ by the token admin.
 |**`TH.17`**| Withdraw Unstaked FLOW    | `lockedTokens/delegator/withdraw_locked_unstaked_delegated_tokens` |
 |**`TH.18`**| Withdraw Rewarded FLOW    | `lockedTokens/delegator/withdraw_locked_rewarded_delegated_tokens.cdc` |
 
-## Node Operator (NO)
+## Node Operator
 
 The **node operator** is an independent user who operators a Flow node on
 behalf of a **token holder**.
 
-| ID | Name | Source |
-|----|------|--------|
+| ID        | Name                    | Source |
+|-----------|-------------------------|--------|
 |**`NO.01`**| Set Up Operator Account | `stakingProxy/sh_setup_node_account.cdc` | 
 
-### Staking (with `StakingProxy.NodeStakerProxy`)
+### Staking
+
+These transactions operate through the `StakingProxy.NodeStakerProxy` interface.
 
 The  **node operator** can perform the following
 staking actions using locked or unlocked FLOW owned by the **token holder**.
@@ -97,8 +103,8 @@ _Note: The **node operator** can perform these actions on behalf of
 the **token holder**, but only with explicit permission. 
 This permission can be revoked by the **token holder**._
 
-| ID | Name | Source |
-|----|------|--------|
+| ID        | Name                   | Source |
+|-----------|------------------------|--------|
 |**`NO.02`**| Add Node Info          | `stakingProxy/sh_add_node_info.cdc` | 
 |**`NO.03`**| Remove Node Info       | `stakingProxy/sh_remove_node_info.cdc` | 
 |**`NO.04`**| Remove Staking Proxy   | `stakingProxy/sh_remove_staking_proxy.cdc` | 

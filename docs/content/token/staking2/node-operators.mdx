@@ -33,7 +33,7 @@ they must configure their account. This account is referred to as the **operator
 The **operator account** will hold the staking capabilities for all **token holders**.
 
 The **node operator** can configure their account with the **Set Up Operator Account** 
-([NO.01](../transactions/#node-operator-no)) transaction.
+([NO.01](../transactions/#node-operator)) transaction.
 This transaction must be authorized by an existing account that the **token holder** wishes
 to use as its **operator account**.
 
@@ -45,12 +45,12 @@ and create the staking and networking key-pairs.
 
 After this is done, the **node operator** creates a `NodeInfo` entry and adds it to the 
 **operator account** with the **Add Node Info** 
-([NO.02](../transactions/#node-operator-no)) transaction.
+([NO.02](../transactions/#node-operator)) transaction.
 
 This transaction takes the following arguments:
 
-| Argument | Type | Purpose |
-|----------|------|---------|
+| Argument              | Type     | Description |
+|-----------------------|----------|-------------|
 | **id**                | `String` | The ID of the new node. It must be a 32 byte `String`. The operator is free to choose this value, but it must be unique across all nodes. A recommended process to generate this is to hash the staking public key. |
 | **role**              | `UInt8`  | The role of the new node. (1: collection, 2: consensus, 3: execution, 4: verification, 5: access) |
 | **networkingAddress** | `String` | The IP address the new node. |
@@ -59,7 +59,8 @@ This transaction takes the following arguments:
 
 ## 3. Send the new node ID to the token holder
 
-After the `NodeInfo` object has been created, the **token holder** must provide the following information to the **token holder**:
+After the `NodeInfo` object has been created, 
+the **token holder** must provide the following information to the **token holder**:
 
 - `nodeID` - The ID of the new node.
 - `operatorAddress` - The Flow address of the **operator account**.
@@ -79,17 +80,17 @@ The **node operator** should confirm that they have access to this capability.
 
 ## Stake New Tokens
 
-The **node operator** can stake additional tokens on behalf of the **token holder**. 
+The **node operator** can stake additional tokens on behalf of the **token holder** at any time. 
 
 _Note: This transaction stakes additional tokens to the same node that was registered in the setup phase.
 It is currently not possible to stake to multiple nodes from the same account._
 
 To stake new tokens via the `NodeStakerProxy`, 
-the **node operator** can use the **Stake New Locked FLOW** ([NO.05](../transactions/#node-operator-no)) 
+the **node operator** can use the **Stake New Locked FLOW** ([NO.05](../transactions/#node-operator)) 
 transaction with the following arguments:
 
-| Argument | Type | Purpose |
-|----------|------|---------|
+| Argument   | Type     | Description |
+|------------|----------|-------------|
 | **nodeID** | `String` | The unique identifier for the node. |
 | **amount** | `UFix64` | The number of FLOW tokens to stake. |
 
@@ -98,11 +99,11 @@ transaction with the following arguments:
 After tokens become unstaked, the **node operator** can choose to re-stake the unstaked tokens to the same node.
 
 To staked unstaked tokens via the `NodeStakerProxy`, 
-the **node operator** can use the **Re-stake Unstaked FLOW** ([NO.06](../transactions/#node-operator-no)) 
+the **node operator** can use the **Re-stake Unstaked FLOW** ([NO.06](../transactions/#node-operator)) 
 transaction with the following arguments:
 
-| Argument | Type | Purpose |
-|----------|------|---------|
+| Argument   | Type     | Description |
+|------------|----------|-------------|
 | **nodeID** | `String` | The unique identifier for the node. |
 | **amount** | `UFix64` | The number of FLOW tokens to stake. |
 
@@ -111,11 +112,11 @@ transaction with the following arguments:
 The **node operator** can submit a request to unstake the **token holder's** staked tokens at any time.
 
 To unstake staked tokens via the `NodeStakerProxy`, 
-the **node operator** can use the **Unstake FLOW** ([NO.07](../transactions/#node-operator-no)) 
+the **node operator** can use the **Unstake FLOW** ([NO.07](../transactions/#node-operator)) 
 transaction with the following arguments:
 
-| Argument   | Type   | Purpose |
-|------------|--------|---------|
+| Argument   | Type     | Description |
+|------------|----------|-------------|
 | **nodeID** | `String` | The unique identifier for the node. |
 
 _Note: unstaked tokens will be held by the central staking contract for a period of time before they are 
@@ -128,13 +129,13 @@ After tokens become unstaked, the **node operator** can withdraw them from the c
 on behalf of the **token holder**.
 
 To withdraw unstaked tokens via the `NodeStakerProxy`, 
-the **node operator** can use the **Withdraw Unstaked FLOW** ([NO.08](../transactions/#node-operator-no)) 
+the **node operator** can use the **Withdraw Unstaked FLOW** ([NO.08](../transactions/#node-operator)) 
 transaction with the following arguments:
 
-| Argument   | Type   | Purpose |
-|------------|--------|---------|
+| Argument   | Type     | Description |
+|------------|----------|-------------|
 | **nodeID** | `String` | The unique identifier for the node. |
-| **amount** | `UFix64` | The quantity of previously staked FLOW tokens to withdraw. |
+| **amount** | `UFix64` | The number of unstaked FLOW tokens to withdraw. |
 
 This transaction moves the unstaked tokens back into the `LockedTokens.Lockbox` owned by the **token holder**.
 
@@ -144,13 +145,13 @@ After earning rewards from staking, the **node operator** can withdraw them from
 on behalf of the **token holder**.
 
 To withdraw rewarded tokens via the `NodeStakerProxy`, 
-the **node operator**can use the **Withdraw Rewarded FLOW** ([NO.09](../transactions/#node-operator-no)) 
+the **node operator** can use the **Withdraw Rewarded FLOW** ([NO.09](../transactions/#node-operator)) 
 transaction with the following arguments:
 
-| Argument   | Type   | Purpose |
-|------------|--------|---------|
+| Argument   | Type     | Description |
+|------------|----------|-------------|
 | **nodeID** | `String` | The unique identifier for the node. |
-| **amount** | `UFix64` | The quantity of rewarded FLOW tokens to withdraw. |
+| **amount** | `UFix64` | The number of rewarded FLOW tokens to withdraw. |
 
 This transaction moves the rewarded tokens back into the `LockedTokens.Lockbox` owned by the **token holder**. 
 However, unlike unstaked tokens, rewards are **unlocked FLOW** and can be immediately withdrawn from the lockbox.
@@ -162,9 +163,9 @@ However, unlike unstaked tokens, rewards are **unlocked FLOW** and can be immedi
 The **node operator** can destroy the `NodeInfo` entry after 
 the staking relationship has concluded.
 
-This is done using the **Remove Node Info** ([NO.03](../transactions/#node-operator-no)) 
+This is done using the **Remove Node Info** ([NO.03](../transactions/#node-operator)) 
 transaction with the following arguments:
 
-| Argument   | Type   | Purpose |
-|------------|--------|---------|
+| Argument   | Type     | Description |
+|------------|----------|-------------|
 | **nodeID** | `String` | The unique identifier for the node. |

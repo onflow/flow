@@ -10,19 +10,19 @@ another node using the `LockedTokens` contract.
 
 # Setup
 
-After the [account setup](#) process is complete, 
+After the [account setup](../setup) process is complete, 
 the **token holder** will have access to a `LockedTokens.TokenHolder` resource in their storage.
 This resource can be used as a proxy to indirectly delegate locked FLOW tokens.
 
 ## Register as a Delegator
 
-To register as a delegator, the **token holder** can use the **Register Delegator** ([TH.12](/token/staking2/transactions/#delegating-with-lockboxnodedelegatorproxy))
+To register as a delegator, the **token holder** can use the **Register Delegator** ([TH.12](../transactions/#token-holder))
 transaction with the following arguments:
 
-| Argument | Type | Purpose |
-|----------|------|---------|
-| **id**     | `String`  | The ID of the node to delegate to. |
-| **amount** | `UFix64`  | The number of FLOW tokens to delegate. |
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **id**     | `String` | The ID of the node to delegate to. |
+| **amount** | `UFix64` | The number of FLOW tokens to delegate. |
 
 This transaction attaches a `NodeDelegatorProxy` capability to the `TokenHolder` resource. 
 This capability can later be used to perform delegation actions.
@@ -37,48 +37,48 @@ _Note: This transaction delegates additional tokens to the same node that was re
 It is currently not possible to delegate to multiple nodes from the same account._
 
 To delegate new tokens via the `NodeDelegatorProxy`, 
-the **token holder** can use the **Delegate New Locked FLOW** ([TH.13](/token/staking2/transactions/#delegating-with-lockboxnodedelegatorproxy)) 
+the **token holder** can use the **Delegate New Locked FLOW** ([TH.13](../transactions/#token-holder)) 
 transaction with the following arguments:
 
-| Argument | Type | Purpose |
-|----------|------|---------|
+| Argument   | Type     | Description |
+|------------|----------|-------------|
 | **amount** | `UFix64` | The number of FLOW tokens to delegate. |
 
-## Delegate Unstaked Tokens
+## Re-delegate Unstaked Tokens
 
 After delegated tokens become unstaked, the **token holder** can choose to re-delegate the unstaked tokens to the same node.
 
 To delegate unstaked tokens via the `NodeDelegatorProxy`, 
-the **token holder** can use the **Re-delegate Unstaked FLOW** ([TH.14](/token/staking2/transactions/#delegating-with-lockboxnodedelegatorproxy))
+the **token holder** can use the **Re-delegate Unstaked FLOW** ([TH.14](../transactions/#token-holder))
 transaction with the following arguments:
 
-| Argument | Type | Purpose |
-|----------|------|---------|
-| **amount** | UFix64  | The number of FLOW tokens to delegate. |
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **amount** | `UFix64` | The number of unstaked FLOW tokens to delegate. |
 
-## Delegate Rewarded Tokens
+## Re-delegate Rewarded Tokens
 
 After earning rewards from delegation, the **token holder** can choose to re-delegate the rewarded tokens to the same node.
 
 To delegate rewarded tokens via the `NodeDelegatorProxy`, 
-the **token holder** can use the **Re-delegate Rewarded FLOW** ([TH.15](/token/staking2/transactions/#delegating-with-lockboxnodedelegatorproxy))
+the **token holder** can use the **Re-delegate Rewarded FLOW** ([TH.15](../transactions/#token-holder))
 transaction with the following arguments:
 
-| Argument | Type | Purpose |
-|----------|------|---------|
-| **amount** | UFix64  | The number of FLOW tokens to delegate. |
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **amount** | `UFix64` | The number of rewarded FLOW tokens to delegate. |
 
 ## Unstake Delegated Tokens
 
 The **token holder** can submit a request to unstake their delegated tokens at any time.
 
 To unstake delegated tokens via the `NodeDelegatorProxy`, 
-the **token holder** can use the **Unstake Delegated FOW** ([TH.16](/token/staking2/transactions/#delegating-with-lockboxnodedelegatorproxy))
+the **token holder** can use the **Unstake Delegated FOW** ([TH.16](../transactions/#token-holder))
 transaction with the following arguments:
 
-| Argument | Type | Purpose |
-|----------|------|---------|
-| **amount** | UFix64  | The number of FLOW tokens to unstake. |
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **amount** | `UFix64` | The number of FLOW tokens to unstake. |
 
 _Note: unstaked delegated tokens will be held by the central staking contract for a period of time before they are 
 released to the token holder. Once the tokens are released (unstaked), 
@@ -89,12 +89,12 @@ they can be claimed via the [Withdraw Unstaked Tokens](#withdraw-unstaked-tokens
 After delegated tokens become unstaked, the **token holder** can withdraw them from the central staking contract.
 
 To withdraw unstaked tokens via the `NodeDelegatorProxy`, 
-the **token holder** can use the **Withdraw Unstaked FLOW ** ([TH.17](/token/staking2/transactions/#delegating-with-lockboxnodedelegatorproxy))
+the **token holder** can use the **Withdraw Unstaked FLOW ** ([TH.17](../transactions/#token-holder))
 transaction with the following arguments:
 
-| Argument | Type | Purpose |
-|----------|------|---------|
-| **amount** | UFix64  | The number of FLOW tokens to withdraw. |
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **amount** | `UFix64` | The number of unstaked FLOW tokens to withdraw. |
 
 This transaction moves the unstaked tokens back into the `LockedTokens.Lockbox` owned by the **token holder**.
 
@@ -103,12 +103,12 @@ This transaction moves the unstaked tokens back into the `LockedTokens.Lockbox` 
 After earning rewards from delegation, the **token holder** can withdraw them from the central staking contract.
 
 To withdraw rewarded tokens via the `NodeDelegatorProxy`, 
-the **token holder** can use the **Withdraw Rewarded FLOW ** ([TH.18](/token/staking2/transactions/#delegating-with-lockboxnodedelegatorproxy))
+the **token holder** can use the **Withdraw Rewarded FLOW** ([TH.18](../transactions/#token-holder))
 transaction with the following arguments:
 
-| Argument | Type | Purpose |
-|----------|------|---------|
-| **amount** | UFix64  | The number of FLOW tokens to withdraw. |
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **amount** | `UFix64` | The number of rewarded FLOW tokens to withdraw. |
 
 This transaction moves the rewarded tokens back into the `LockedTokens.Lockbox` owned by the **token holder**. 
 However, unlike unstaked tokens, rewards are **unlocked FLOW** and can be immediately withdrawn from the lockbox.
