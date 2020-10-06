@@ -43,6 +43,22 @@ This transaction creates an `AccountCreator` object and stores it in the custody
 It also publishes a capability that allows the token admin to give the custody provider 
 the authority to register locked token accounts.
 
+## Receive Account creator Capability
+
+After you have set up your account, the token admin needs to submit one more transaction
+to enable your account to register new user accounts to receive locked tokens.
+
+This transaction needs to be signed and authorized by the token admin account.
+
+`lockedTokens/admin/admin_deposit_account_creator.cdc`
+
+| Argument                    | Type    | Purpose |
+|-----------------------------|---------|---------|
+| **custodyProviderAddress**  | Address | The address of the custody provider's account. |
+
+This transaction gives the account registration capability to the custody provider's account
+that was set up in the previous transaction.
+
 # Account Creation
 
 When a custody provider uses these transactions, they must also ensure that 
