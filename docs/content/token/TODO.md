@@ -4,8 +4,8 @@
 - Custody Provider
 - Wallet Provider
 - Token Holder
-  - Existing Investor
-  - Coinlist Investor
+  - Existing Backer
+  - Coinlist Backer
 
 ## User Stories
 

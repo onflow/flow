@@ -254,7 +254,7 @@ const sections = [
     sidebar: {
       FLOW: [
         "token/index",
-        "token/investors",
+        "token/backers",
         "token/earn",
         "token/wallets",
         "token/concepts",
@@ -264,6 +264,15 @@ const sections = [
         "token/staking/index",
         "token/staking/node-operators",
         "token/staking/staking-as-a-service",
+      ],
+      "Staking with Locked FLOW": [
+        "token/staking/locked/index",
+        "token/staking/locked/setup",
+        "token/staking/locked/stakers",
+        "token/staking/locked/delegators",
+        "token/staking/locked/node-operators",
+        "token/staking/locked/power-users",
+        "token/staking/locked/transactions",
       ],
     },
   },
