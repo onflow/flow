@@ -63,7 +63,7 @@ can do a few different things.
 Token Holder:
 - Remove the token holder's stake via the `sh_request_unstaking.cdc` transaction
   (configuring this to require signatures from either or both parties is an available option).
-  This unstaking is still subject to the weeklong unbonding period before
+  This unstaking is still subject to the weeklong unstaking period before
   the requested tokens are available to be withdrawn.
 - Withdraw unstaked tokens via `sh_withdraw_unlocked_tokens.cdc` transaction,
   which will deposit them into the token holder's account regardless of who intiaited the transaction.

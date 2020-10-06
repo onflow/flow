@@ -50,7 +50,7 @@ If a staker does not meet the minimum requirement, their committed tokens are
 moved to their unlocked pool, which they can withdraw from at any time.
 
 At anytime, you can submit a `request_unstake.cdc` transaction
-which will move your tokens to the unbonding pool at the end of the current epoch.
+which will move your tokens to the unstaking pool at the end of the current epoch.
 They will sit in this pool for one (1) additional epoch,
 at which point you will be able to withdraw your tokens via `withdraw_unlocked_tokens.cdc` transaction.
 
@@ -109,7 +109,7 @@ the tokens you have committed will be marked as staked for the next epoch
 and held in the protocol state for the node that was delegated to.
 
 At anytime, a delegator can submit a `del_request_unstaking.cdc` transaction
-which will move their tokens to the unbonding pool at the end of the current epoch.
+which will move their tokens to the unstaking pool at the end of the current epoch.
 They will sit in this pool for one (1) additional epoch,
 at which point they will be able to withdraw their tokens via `del_withdraw_unlocked_tokens.cdc` transaction.
 
@@ -140,8 +140,8 @@ Each node operator has five token pools allocated to them:
 They are automatically moved to the staked pool when the next epoch starts.
 - Staked Tokens: Tokens that are staked by the node operator for the current epoch.
 They are only moved at the end of an epoch and if the staker 
-has submitted an unbonding request.
-- Unbonding Tokens: Tokens that have been unstaked, 
+has submitted an unstaking request.
+- Unstaking Tokens: Tokens that have been unstaked,
 but are not free to withdraw until the following epoch. 
 - Unlocked Tokens: Tokens that are freely available to withdraw or re-stake.
 Unstaked tokens go to this pool.
@@ -150,10 +150,10 @@ Unstaked tokens go to this pool.
 
 At the end of every epoch, tokens are moved between pools in this order:
 
-1. All Committed Tokens will get moved either to the Staked Tokens pool, or to the Unbonded Tokens pool (depending on if the staked request has met the minimum stake).
+1. All Committed Tokens will get moved either to the Staked Tokens pool, or to the Unstaked Tokens pool (depending on if the staked request has met the minimum stake).
 2. All Committed Tokens get moved to staked Tokens pool.
-3. All unbonding tokens get moved to the unlocked tokens pool.
-4. All requested unbonding tokens get moved from the staked pool to the unbonding pool.
+3. All unstaking tokens get moved to the unlocked tokens pool.
+4. All requested unstaking tokens get moved from the staked pool to the unstaking pool.
 
 ## Rewards
 
@@ -220,14 +220,14 @@ Severe slashing on Flow only takes place in the most nefarious of attacks.
 The protocol reserves slashing for maintaining the security of the protocol rather than its liveness.
 You can find more details on the conditions under which a node is slashed in a different part of the docs.
 
-While a node is in operation and during the unbonding period thereafter, 
+While a node is in operation and during the unstaking period thereafter,
 the staked tokens are held by the staking smart contract.
 Slashable protocol violations must be adjudicated by a supermajority 
 of more than 2/3 of the staked consensus nodes in order to take effect.
 If a node is found guilty of committing a slashable protocol violation, 
 the consensus nodes directly deduct a fine from the node's stake. 
 Of course, only the remaining stake is deposited back into node's balance
-at the end of the unbonding period.
+at the end of the unstaking period.
 
 ## FAQ
 **When will the User Accounts for Node Operators be created?**
@@ -329,7 +329,7 @@ transaction(amount: UFix64) {
 }
 ```
 
-### Request Staking Unbonding
+### Request Stake Unstaking
 
 ```cadence:title=request_unstake.cdc
 import FlowIDTableStaking from 0xIDENTITYTABLEADDRESS

@@ -90,7 +90,7 @@ Transaction arguments:
 
 This transaction commits tokens to stake from the user's locked token account.
 
-## Stake Unbonded Tokens
+## Stake Unstaked Tokens
 
 To stake unstaked tokens (tokens that had been previously staked but were unstaked) via the proxy, 
 the token holder must use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.07):
@@ -101,7 +101,7 @@ Transaction arguments:
 
 | Argument   | Type   | Purpose |
 |------------|--------|---------|
-| **amount** | UFix64 | The quantity of unbonded FLOW tokens to add to the user's stake. |
+| **amount** | UFix64 | The quantity of unstaked FLOW tokens to add to the user's stake. |
 
 ## Stake Rewarded Tokens
 
@@ -143,7 +143,7 @@ Transaction arguments:
 
 | Argument   | Type   | Purpose |
 |------------|--------|---------|
-| **amount** | UFix64 | The quantity of unbonded FLOW tokens to withdraw from the proxy. |
+| **amount** | UFix64 | The quantity of unstaked FLOW tokens to withdraw from the proxy. |
 
 ## Withdraw Rewarded Tokens
 
