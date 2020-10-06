@@ -79,28 +79,67 @@ The **node operator** should confirm that they have access to this capability.
 
 ## Stake New Tokens
 
-TODO
-- Uses `stakeNewLockedTokens`
+To stake new tokens, the node operator must use use transaction [../transactions/#staking-with-stakingproxynodestakerproxy](NO.05):
 
-## Stake Unbonded Tokens
+`stakingProxy/sh_stake_new_tokens.cdc`
 
-TODO
-- Uses `stakeLockedUnbondedTokens`
+Transaction arguments:
+
+| Argument   | Type   | Purpose |
+|------------|--------|---------|
+| **nodeID** | String | The unique identifier for the node. |
+| **amount** | UFix64 | The quantity of new FLOW tokens to add to the stake. |
+
+## Re-Stake Unstaked Tokens
+
+To re-stake previously unstaked tokens, the node operator must use use transaction [../transactions/#staking-with-stakingproxynodestakerproxy](NO.06):
+
+`stakingProxy/sh_stake_unstaked_tokens.cdc`
+
+Transaction arguments:
+
+| Argument   | Type   | Purpose |
+|------------|--------|---------|
+| **nodeID** | String | The unique identifier for the node. |
+| **amount** | UFix64 | The quantity of previously unstaked FLOW tokens to add to the stake. |
 
 ## Unstake Tokens
 
-TODO
-- Uses `unstakeLockedTokens`
+To unstake **all previously staked** tokens, the node operator must use use transaction [../transactions/#staking-with-stakingproxynodestakerproxy](NO.07):
 
-## Withdraw Unbonded Tokens
+`stakingProxy/sh_unstake_all.cdc`
 
-TODO
-- Uses `withdrawLockedUnbondedTokens`
+Transaction arguments:
+
+| Argument   | Type   | Purpose |
+|------------|--------|---------|
+| **nodeID** | String | The unique identifier for the node. |
+
+## Withdraw Unstaked Tokens
+
+To withdraw previously unstaked tokens, the node operator must use use transaction [../transactions/#staking-with-stakingproxynodestakerproxy](NO.08):
+
+`stakingProxy/sh_withdraw_unstaked.cdc`
+
+Transaction arguments:
+
+| Argument   | Type   | Purpose |
+|------------|--------|---------|
+| **nodeID** | String | The unique identifier for the node. |
+| **amount** | UFix64 | The quantity of previously staked FLOW tokens to withdraw. |
 
 ## Withdraw Rewarded Tokens
 
-TODO
-- Uses `withdrawLockedRewardedTokens`
+To withdraw rewarded tokens, the node operator must use use transaction [../transactions/#staking-with-stakingproxynodestakerproxy](NO.09):
+
+`stakingProxy/sh_withdraw_rewards.cdc`
+
+Transaction arguments:
+
+| Argument   | Type   | Purpose |
+|------------|--------|---------|
+| **nodeID** | String | The unique identifier for the node. |
+| **amount** | UFix64 | The quantity of rewarded FLOW tokens to withdraw. |
 
 # Teardown
 
@@ -109,5 +148,12 @@ TODO
 The **node operator** can destroy the `NodeInfo` entry after 
 the staking relationship has concluded.
 
-TODO
-- Uses `removeNodeInfo` transaction (`NO.03`)
+To do this they must use transaction [../transactions/#staking-with-stakingproxynodestakerproxy](NO.03):
+
+`stakingProxy/sh_remove_node_info.cdc`
+
+Transaction arguments:
+
+| Argument   | Type   | Purpose |
+|------------|--------|---------|
+| **nodeID** | String | The unique identifier for the node. |
