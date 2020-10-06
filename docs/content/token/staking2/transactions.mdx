@@ -35,24 +35,24 @@ The **shared account** is used to store all locked FLOW owned by a **token holde
 |**`TA.01`**| Set Up Admin Account     | `lockedTokens/admin/create_admin_collection.cdc` |
 |**`TA.02`**| Created Shared Account   | `lockedTokens/admin/create_shared_account.cdc` |
 |**`TA.04`**| Deposit Locked Tokens    | `lockedTokens/admin/deposit_locked_tokens.cdc` |
-|**`TA.05`**| Unstake Tokens           | `lockedTokens/admin/unstake_tokens.cdc` |
+|**`TA.05`**| Unlock Tokens           | `lockedTokens/admin/unlock_tokens.cdc` |
 
 ## Token Holder (TH)
 
 The **token holder** is a user who holds possession of 
-locked and unstaked FLOW tokens.
+locked and unlocked FLOW tokens.
 
-The **token holder** can stake and delegate locked or unstaked FLOW
+The **token holder** can stake and delegate locked or unlocked FLOW
 through the `StakingProxy` contract.
 
-The **token holder** can withdraw unstaked FLOW from the shared account created 
+The **token holder** can withdraw unlocked FLOW from the shared account created 
 by the token admin.
 
 | ID | Name | Source |
 |----|------|--------|
-|**`TH.01`**| Withdraw Unstaked FLOW | `lockedTokens/user/withdraw_tokens.cdc` |
-|**`TH.02`**| Deposit Unstaked FLOW  | `lockedTokens/user/deposit_tokens.cdc` |
-|**`TH.03`**| Get Unstake Limit      | `lockedTokens/user/get_unstake_limit.cdc` |
+|**`TH.01`**| Withdraw Unlocked FLOW | `lockedTokens/user/withdraw_tokens.cdc` |
+|**`TH.02`**| Deposit Unlocked FLOW  | `lockedTokens/user/deposit_tokens.cdc` |
+|**`TH.03`**| Get Unlock Limit      | `lockedTokens/user/get_unlock_limit.cdc` |
 
 ### Staking (with `Lockbox.NodeStakerProxy`)
 
@@ -91,7 +91,7 @@ behalf of a **token holder**.
 ### Staking (with `StakingProxy.NodeStakerProxy`)
 
 The  **node operator** can perform the following
-staking actions using locked or unstaked FLOW owned by the **token holder**.
+staking actions using locked or unlocked FLOW owned by the **token holder**.
 
 _Note: The **node operator** can perform these actions on behalf of 
 the **token holder**, but only with explicit permission. 
