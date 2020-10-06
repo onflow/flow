@@ -259,6 +259,7 @@ const sections = [
       ],
       Staking2: [
         "token/staking2/index",
+        "token/staking2/setup",
         "token/staking2/stakers",
         "token/staking2/delegators",
         "token/staking2/node-operators",
