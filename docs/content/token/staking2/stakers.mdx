@@ -32,7 +32,13 @@ _Note: The corresponding **node operator** steps are outlined in a
 
 ## 1. Fetch node operator information
 
-To fetch the node operator information for an address's staking proxy, the token holder must use use script TH.04:
+After a node operator has agreed to run a node for you, they will create a NodeInfo object holding the IP address and public keys for your new node. This NodeInfo object will be stored in an account owned by the node operator.
+
+The node operator should provide you with their account address and the nodeID for your new node. These parameters can be passed into the get_node_info script (TH.04) to confirm the node information.
+
+If the node information is correct, continue to step 2.
+
+To fetch the node operator information for an address's staking proxy, the token holder must use use script [../transactions/#staking-with-lockboxnodestakerproxy](TH.04):
 
 `stakingProxy/sh_get_node_info.cdc`
 
@@ -40,7 +46,8 @@ Script arguments:
 
 | Argument     | Type    | Purpose |
 |--------------|---------|---------|
-| **account**  | Address | Specifies the address to get the staking proxy's node info node info for. |
+| **account**  | Address | The address of the node operator's account. |
+| **nodeID**   | String  | The unique id of the node. |
 
 Script returns:
 
@@ -48,7 +55,7 @@ The `StakingProxy.NodeInfo` struct containing the details for the node. If no No
 
 ## 2. Register node & grant staking access to the node operator
 
-To register the node as the token holder account's staker, the token holder must use  use transaction TH.05:
+To register the node as the token holder account's staker, the token holder must use  use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.05):
 
 `stakingProxy/sh_register_node.cdc`
 
@@ -64,7 +71,7 @@ Transaction arguments:
 
 ## Stake New Tokens
 
-To stake new tokens via the proxy, the token holder must use use transaction TH.06:
+To stake new tokens via the proxy, the token holder must use use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.06):
 
 `lockedTokens/staker/stake_new_tokens.cdc`
 
@@ -77,7 +84,7 @@ Transaction arguments:
 
 ## Stake Unbonded Tokens
 
-To stake unbonded tokens via the proxy, the token holder must use transaction TH.07:
+To stake unbonded tokens via the proxy, the token holder must use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.07):
 
 `lockedTokens/staker/stake_unlocked_tokens.cdc`
 
@@ -89,7 +96,7 @@ Transaction arguments:
 
 ## Stake Rewarded Tokens
 
-To stake rewarded tokens via the proxy, the token holder must use transaction TH.08:
+To stake rewarded tokens via the proxy, the token holder must use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.08):
 
 `lockedTokens/staker/stake_rewarded_tokens.cdc`
 
@@ -101,7 +108,7 @@ Transaction arguments:
 
 ## Unstake Tokens
 
-To unstake their tokens via the proxy, the token holder must use transaction TH.09:
+To unstake their tokens via the proxy, the token holder must use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.09):
 
 `lockedTokens/staker/unstake_all.cdc`
 
@@ -113,7 +120,7 @@ None.
 
 ## Withdraw Unbonded Tokens
 
-To withdraw unbonded tokens (tokens that were previously staked and then unstaked) via the proxy, the token holder must use transaction TH.10:
+To withdraw unbonded tokens (tokens that were previously staked and then unstaked) via the proxy, the token holder must use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.10):
 
 `lockedTokens/staker/withdraw_unlocked_tokens.cdc`
 
@@ -125,7 +132,7 @@ Transaction arguments:
 
 ## Withdraw Rewarded Tokens
 
-To withdraw rewarded tokens via the proxy, the token holder must use transaction TH.11:
+To withdraw rewarded tokens via the proxy, the token holder must use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.11):
 
 `lockedTokens/staker/withdraw_rewarded_tokens.cdc`
 
