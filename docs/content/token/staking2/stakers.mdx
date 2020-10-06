@@ -31,13 +31,16 @@ _Note: The corresponding **node operator** steps are outlined in a
 [separate guide for node operators](/token/staking2/node-operators)._
 
 ## 1. Fetch node operator information
-After a node operator has agreed to run a node for you, they will create a NodeInfo object holding the IP address and public keys for your new node. This NodeInfo object will be stored in an account owned by the node operator.
+After a node operator has agreed to run a node for you, they will create a NodeInfo object holding the IP address and public keys for your new node. 
+This NodeInfo object will be stored in an account owned by the node operator. This object acts as a staking proxy 
+for the node operator to access some staking options without actually having access to your tokens.
 
-The node operator should provide you with their account address and the nodeID for your new node. These parameters can be passed into the get_node_info script (TH.04) to confirm the node information.
+The node operator should provide you with their account address and the nodeID for your new node. 
+These parameters can be passed into the get_node_info script (TH.04) to confirm the node information.
 
 If the node information is correct, continue to step 2.
 
-To fetch the node operator information for an address's staking proxy, the token holder must use use script [../transactions/#staking-with-lockboxnodestakerproxy](TH.04):
+To fetch the node operator information for a node operator's staking proxy, the token holder must use use script [../transactions/#staking-with-lockboxnodestakerproxy](TH.04):
 
 `stakingProxy/sh_get_node_info.cdc`
 
@@ -50,7 +53,7 @@ Script arguments:
 
 Script returns:
 
-The `StakingProxy.NodeInfo` struct containing the details for the node. If no NodeInfo is available, the script will fail.
+The `StakingProxy.NodeInfo` struct contains the details for the node. If no NodeInfo is available, the script will fail.
 
 ## 2. Register node & grant staking access to the node operator
 
@@ -68,6 +71,11 @@ Transaction arguments:
 
 # Staking Actions
 
+Once the token holder has registered their node with the node operator's info, their tokens and info
+are committed to the central staking contract for the next epoch. They now have access to 
+various staking operations that they can perform at any time, assuming they have
+the correct number of tokens to perform the action.
+
 ## Stake New Tokens
 
 To stake new tokens via the proxy, the token holder must use use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.06):
@@ -80,12 +88,14 @@ Transaction arguments:
 |------------|--------|---------|
 | **amount** | UFix64 | The quantity of new FLOW tokens to add to the user's stake. |
 
+This transaction commits tokens to stake from the user's locked token account.
 
 ## Stake Unbonded Tokens
 
-To stake unbonded tokens via the proxy, the token holder must use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.07):
+To stake unstaked tokens (tokens that had been previously staked but were unstaked) via the proxy, 
+the token holder must use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.07):
 
-`lockedTokens/staker/stake_unlocked_tokens.cdc`
+`lockedTokens/staker/stake_unstaked_tokens.cdc`
 
 Transaction arguments:
 
@@ -105,9 +115,13 @@ Transaction arguments:
 |------------|--------|---------|
 | **amount** | UFix64 | The quantity of rewarded FLOW tokens to add to the user's stake. |
 
+Since rewarded tokens are considered to be unlocked for the purposes of the vesting schedule,
+and staked tokens are considered locked, staking rewarded tokens marks the staked tokens as locked
+and marks an equal amount of tokens in the user's locked account as unlocked.
+
 ## Unstake Tokens
 
-To unstake their tokens via the proxy, the token holder must use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.09):
+To unstake all of their tokens via the proxy, the token holder must use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.09):
 
 `lockedTokens/staker/unstake_all.cdc`
 
@@ -117,11 +131,13 @@ None.
 
 **Note that this will unstake all of the user's staked tokens.**
 
-## Withdraw Unbonded Tokens
+When a user unstakes their tokens, they must wait until the end of the following epoch to be able to withdraw them.
 
-To withdraw unbonded tokens (tokens that were previously staked and then unstaked) via the proxy, the token holder must use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.10):
+## Withdraw Unstaked Tokens
 
-`lockedTokens/staker/withdraw_unlocked_tokens.cdc`
+To withdraw unstaked tokens (tokens that were previously staked and then unstaked) via the proxy, the token holder must use transaction [../transactions/#staking-with-lockboxnodestakerproxy](TH.10):
+
+`lockedTokens/staker/withdraw_unstaked_tokens.cdc`
 
 Transaction arguments:
 
@@ -140,3 +156,6 @@ Transaction arguments:
 | Argument   | Type   | Purpose |
 |------------|--------|---------|
 | **amount** | UFix64 | The quantity of rewarded FLOW tokens to withdraw from the proxy. |
+
+Since rewards are considered to be unlocked. This marks an equal amount in your locked account as unlocked.
+You can immediately withdraw your unlocked reward tokens from your account after withdrawing rewards.
