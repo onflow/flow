@@ -23,19 +23,50 @@ These are the steps taken by a **node operator** to set up the integration with 
 _Note: The corresponding **token holder** steps are outlined in a 
 [separate guide for token holders](/token/staking2/stakers)._
 
-## 1. Create a node operator account
+## 1. Configure a node operator account
 
-This step can be skipped if the **node operator** already has an account.
+_Note: This step can be skipped if the **node operator** has already configured their account._
 
-TODO:
-- Uses `createOperatorAccount` transaction (`NO.01`)
+Before the **node operator** can begin running nodes on behalf of **token holders**, 
+they must configure their account. This account is referred to as the **operator account**.
+
+The **operator account** will hold the staking capabilities for all **token holders**.
+
+The **node operator** can configure their account with the **Set Up Operator Account** 
+([NO.01](/token/staking2/transactions/#node-operator-no)) transaction.
+This transaction must be authorized by an existing account that the **token holder** wishes
+to use as its **operator account**.
 
 ## 2. Create a new `NodeInfo` entry
 
-TODO:
-- Uses `addNodeInfo` transaction (`NO.02`)
+When a **token holder** asks a **node operator** to run a node for them,
+the first step is for the **node operator** to provision a new node
+and create the staking and networking key-pairs.
 
-## 3. Confirm staking access with token holder
+After this is done, the **node operator** creates a `NodeInfo` entry and adds it to the 
+**operator account** with the **Add Node Info** 
+([NO.02](/token/staking2/transactions/#node-operator-no)) transaction.
+
+This transaction takes the following arguments:
+
+| Argument | Type | Purpose |
+|----------|------|---------|
+| **id**                | `String` | The ID of the new node. The operator is free to choose this value, but it must be unique across all nodes. |
+| **role**              | `UInt8`  | The role of the new node. (1: collection, 2: consensus, 3: execution, 4: verification, 5: access) |
+| **networkingAddress** | `String` | The IP address the new node. |
+| **newtorkingKey**     | `String` | The networking public key as a hex-encoded string. |
+| **stakingKey**        | `String` | The staking public key as a hex-encoded string. |
+
+## 3. Send the new node ID to the token holder
+
+After the `NodeInfo` object has been created, the **token holder** must provide the following information to the **token holder**:
+
+- `nodeID` - The ID of the new node.
+- `operatorAddress` - The Flow address of the **operator account**.
+
+The **token holder** will use this information to grant staking access to the **node operator**.
+
+## 4. Confirm staking access with token holder
 
 After the `NodeInfo` object has been created and published, 
 the **token holder** uses it to initiate a staking request. 
