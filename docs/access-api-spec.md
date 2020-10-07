@@ -755,7 +755,7 @@ message Block {
 | id                       | SHA3-256 hash of the entire block payload |
 | height                   | Height of the block in the chain |
 | parent_id                | ID of the previous block in the chain |
-| timestamp                | Timestamp of when the block was proposed |
+| timestamp                | Timestamp of when the proposer claims it constructed the block. <br> **NOTE**: It is included by the proposer, there are no guarantees on how much the time stamp can deviate from the true time the block was published. <br/> Consider observing blocks' status changes yourself to get a more reliable value. |
 | collection_guarantees    | List of [collection guarantees](#collection-guarantee) |
 | block_seals              | List of [block seals](#block-seal) |
 | signatures               | BLS signatures of consensus nodes |
