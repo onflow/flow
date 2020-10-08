@@ -1,22 +1,29 @@
 ---
-title: Staking with FLOW
+title: Smart Contract Staking with FLOW
 description: How to use FLOW for staking and delegation
 ---
 
 <Callout type="warning">
-NOTE: The details of the transactions described in this document have not been finalized.
-The overall flow of each process will stay the same, but the content and exact details
-of each transaction WILL change.
+NOTE: The details of the transactions described in this document are for regular
+interaction with the staking smart contracts. If you have locked tokens from the FLOW
+token sale and want to stake them, please see the locked tokens section of the documentation
+to learn the process for staking as a node operator.
 </ Callout>
 
 ## Staking
 
-This section describes how to run your own node and stake your own tokens for your node,
-the most basic form of staking.
+This section describes the functionality of the [core identity table and staking smart contract](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc).
+It also gives instructions for how users with unlocked Flow tokens can interact with
+it to register as a node operator or delegator.
 
-You first need to generate your staking key,
-networking address, node ID, and networking key.
+The transactions described in this document are contained in the [`flow-core-contracts/transactions/idTableStaking/`](https://github.com/onflow/flow-core-contracts/tree/master/transactions/idTableStaking)
+directory. You can see the text of all the transactions used to interact with the smart contract there.
+
+To operate a node and stake for it, You first need to generate your staking key,
+networking address, and networking key.
 Please consult the [guide](https://docs.onflow.org/docs/node-operation-consolidated-guide) to read about how to do that.
+
+To generate your node ID, simply hash your staking Key and submit that as the ID.
 
 You then need to determine the role of node you'll be running (Collector, Consensus, Execution, Verification, or Access).
 
@@ -35,16 +42,22 @@ And aquired the minimum amount of FLOW to stake for your node role:
 
 You are ready to submit a staking request.
 
-Submit a staking request using the `create_staking_request.cdc` transaction.
-providing all the node info, tokens that you want to stake, and the percentage
-of delegator rewards you want to receive. (not relevant if you are not accepting delegation).
+To create and submit a regular staking request, use the `create_staking_request.cdc` transaction.
+providing all the node info, and the tokens that you want to stake.
+
 This will register your node in the Flow node identity table
 and commit your tokens to stake during the next epoch.
 This also stores a special node operator object in your account that is used for staking, unstaking,
-and withdrawing rewards. For the rest of the epoch, you can modify your committed tokens however you
-want, but they will be locked in to stake after that and will be subject to staking lockup rules.
+and withdrawing rewards. 
 
-Once the next epoch starts, if you have committed at least the minimum,
+Once you have registered and have the special node object, you will be able
+to perform any of the valid staking options with it, assuming that you have
+the required amount of tokens for each operation.
+
+For the rest of the first epoch that you have submitted in, you can commit
+more tokens to stake or request that your committed tokens be unstaked.
+
+Once the next epoch starts, if you have committed at least the minimum stake required,
 the tokens you have committed will be marked as staked and held in the protocol state.
 If a staker does not meet the minimum requirement, their committed tokens are 
 moved to their unstaked pool, which they can withdraw from at any time.
@@ -54,8 +67,9 @@ which will move your tokens to the unstaking pool at the end of the current epoc
 They will sit in this pool for one (1) additional epoch,
 at which point you will be able to withdraw your tokens via `withdraw_unstaked_tokens.cdc` transaction.
 
-Staking rewards are paid at the end of every epoch. Every node's rewards
-are deposited to their unstaked tokens pool. They can be withdrawn
+Staking rewards are paid at the end of every epoch based on how many tokens
+are in a users `tokensStaked` pool. Every staker's rewards
+are deposited to their rewarded tokens pool. They can be withdrawn
 at any time by submitting the `withdraw_reward_tokens.cdc` transaction.
 
 You can commit more tokens to stake for the next epoch at any time,
@@ -65,7 +79,7 @@ which withdraws tokens from your account's flow token vault and commits them.
 2. You can commit tokens that are in your unstaked token pool, which holds the tokens
 that you have unstaked. Submit the `stake_unstaked_tokens.cdc`
 transaction to move the tokens from the unstaked pool to the committed pool.
-3. You can commit tokens that are in your unstaked token pool, which holds the tokens
+3. You can commit tokens that are in your rewarded token pool, which holds the tokens
 you have been awarded. Submit the `stake_rewarded_tokens.cdc`
 transaction to move the tokens from the rewards pool to the committed pool.
 
@@ -73,9 +87,10 @@ transaction to move the tokens from the rewards pool to the committed pool.
 
 ## Delegating Stake
 
-A node operator who wants to allow delegation to their node will use 
-the `del_create_delegation.cdc` transaction, which creates
-a public capability for prospective delegators to access to delegate to the node.
+Every staked node in the Flow network is eligible for delegation by any other user.
+The user only needs to know the node ID of the node they want to delegate to.
+
+The fee that node operators take from the rewards their delegators receive is 3%.
 
 If a node operator has delegators, they cannot withdraw their own tokens 
 such that their own staked tokens would fall below the minimum requirement for that node type.
@@ -86,13 +101,13 @@ If they want to unstake below the minimum, they must unstake all of their tokens
 which also unstakes all of the tokens that have been delegated to them.
 
 The delegation logic keeps track of the amount of tokens each delegator has delegated for the node operator.
-When rewards are withdrawn, the rewards are automatically divided
-based on the proportion staked by that token holder for each epoch with respect to to the total tokens staked.
+When rewards are paid, the node operator takes a 3% cut of the delegator's rewards and the
+delegators rewards are deposited in the delegator's reward pool.
 
 ### Supporting staking and delegating transactions
 
 Token holders who wish to delegate to a node operator submit a `del_register_delegator.cdc` transaction
-providing the account addresses of the node they want to delegate to.
+providing the node ID of the node they want to delegate to.
 This transaction creates a capability that the delegator stores in their account which gives them access to:
 
 - Staking additional tokens
@@ -115,7 +130,7 @@ at which point they will be able to withdraw their tokens via `del_withdraw_unst
 
 Every delegator's rewards are still deposited to their rewarded tokens pool.
 The node operator's delegation logic tracks how much each delegator has received.
-A delegator can withdraw their rewards from the unstaked tokens pool
+A delegator can withdraw their rewards from the rewarded tokens pool
 at any time by submitting the `del_withdraw_rewarded_tokens.cdc` transaction.
 
 Like regular node operators, delegators can also commit more tokens to stake for the next epoch
@@ -145,12 +160,13 @@ has submitted an unstaking request.
 but are not free to withdraw until the following epoch. 
 - Unstaked Tokens: Tokens that are freely available to withdraw or re-stake.
 Unstaked tokens go to this pool.
-- Rewarded Tokens: Tokens that are freely available to withdraw or re-stake. Rewards are paid and deposited to the Unstaked Pool after each epoch.
-- Rewards from the epoch are deposited into the Unstaked Pool.
+- Rewarded Tokens: Tokens that are freely available to withdraw or re-stake. 
+Rewards are paid and deposited to the rewarded Pool after each epoch.
 
 At the end of every epoch, tokens are moved between pools in this order:
 
-1. All Committed Tokens will get moved either to the Staked Tokens pool, or to the Unstaked Tokens pool (depending on if the staked request has met the minimum stake).
+1. All Committed Tokens will get moved either to the Staked Tokens pool, 
+or to the Unstaked Tokens pool (depending on if the staked request has met the minimum stake requirements).
 2. All Committed Tokens get moved to staked Tokens pool.
 3. All unstaking tokens get moved to the unstaked tokens pool.
 4. All requested unstaking tokens get moved from the staked pool to the unstaking pool.
@@ -192,7 +208,8 @@ where:
 - St = Amount of FLOW staked by all the nodes of the selected node's type.
 
 The rewards paid for the bootstrapping phase will be roughly
-5 million FLOW per epoch (per week).
+1.25 million FLOW per epoch (per week). This will sharply decrease in
+the months following the release.
 
 Each node role's portion of total stake has been determined based on
 the amount of security they contribute to the network:
