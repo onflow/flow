@@ -53,13 +53,7 @@ If this node information is correct, continue to step 2.
 ## 2. Register node & grant staking access to the node operator
 
 After confirming that the node information is correct, the **token holder** can register the
-node with the central staking contract.
-
-Once the node is registered, the **token holder** creates a `StakingProxy.NodeStakerProxy` 
-capability and passes it to the **node operator**, who will be able to use it to perform
-staking actions on behalf of the **token holder**.
-
-This can be done using the **Register Node** ([TH.07](../transactions/#token-holder)) transaction
+node with the central staking contract by using the using the **Register Node** ([TH.07](../transactions/#token-holder)) transaction
 with the following arguments:
 
 | Argument    | Type      | Description |
@@ -67,6 +61,13 @@ with the following arguments:
 | **address** | `Address` | The node operator address. |
 | **nodeID**  | `String`  | The unique ID of the node (from `NodeInfo`). |
 | **amount**  | `UFix64`  | The number of FLOW tokens to stake. |
+
+This transaction fetches the node info from the operator account, registers the node
+in the central staking contract, and creates a `StakingProxy.NodeStakerProxy` 
+capability to pass to the **node operator**, who will be able to use it to perform
+staking actions on behalf of the **token holder**. Token holder retains control
+of the main staking capability and still has full control to manage their own staking
+actions as well.
 
 # Staking Actions
 
@@ -118,15 +119,14 @@ transaction with the following arguments:
 
 Since rewarded tokens are considered to be unlocked for the purposes of the vesting schedule,
 and staked tokens are considered locked, staking rewarded tokens marks the staked tokens as locked
-and marks an equal amount of tokens in the **token holder's** `LockedTokens.Lockbox` as unlocked.
+and marks an equal amount of tokens in the **token holder's** `LockedTokens.LockedTokenManager` as unlocked.
 
 ## Unstake Tokens
 
 The **token holder** can submit a request to unstake their tokens at any time.
 
-To unstake staked tokens via the `NodeStakerProxy`, 
-the **token holder** can use the **Unstake FLOW** ([TH.11](../transactions/#token-holder)) 
-transaction.
+To unstake staked tokens via the `NodeStakerProxy`, the **token holder** can use 
+the **Unstake FLOW** ([TH.11](../transactions/#token-holder)) transaction.
 
 This transaction requires no arguments.
 
@@ -164,3 +164,20 @@ transaction with the following arguments:
 
 This transaction moves the rewarded tokens back into the `LockedTokens.Lockbox` owned by the **token holder**. 
 However, unlike unstaked tokens, rewards are **unlocked FLOW** and can be immediately withdrawn from the lockbox.
+
+## Getting Info about an accounts Stake
+
+To return a struct with all the information associated with a node, anyone
+can use the **Get Node Info** script with the following arguments:
+
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **nodeID** | `String` | The 32 byte ID of the node |
+
+## Register to stake for a different node
+
+Currently, the locked tokens contract only supports token holders staking to one node. 
+If a token holder wants to create a second staking relationship, they must create a new account
+and transfer their locked tokens to the new account by requesting authorization from the token admin.
+
+We plan on adding functionality in the future to allow accounts to stake to multiple nodes.

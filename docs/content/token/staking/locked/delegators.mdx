@@ -24,8 +24,12 @@ transaction with the following arguments:
 | **id**     | `String` | The ID of the node to delegate to. |
 | **amount** | `UFix64` | The number of FLOW tokens to delegate. |
 
-This transaction attaches a `NodeDelegatorProxy` capability to the `TokenHolder` resource. 
+This transaction registers the account as a delegator to the node ID they specified
+and attaches a `NodeDelegatorProxy` capability to the `TokenHolder` resource. 
 This capability can later be used to perform delegation actions.
+
+Once an account has registered as a delegator, they cannot register a second time.
+This feature will be added in the future.
 
 # Delegation Actions
 
@@ -80,7 +84,8 @@ transaction with the following arguments:
 |------------|----------|-------------|
 | **amount** | `UFix64` | The number of FLOW tokens to unstake. |
 
-_Note: unstaked delegated tokens will be held by the central staking contract for a period of time before they are 
+_Note: unstaked delegated tokens will be held by the central staking contract for a period of time 
+(the rest of the current epoch plus all of the next epoch) before they are 
 released to the token holder. Once the tokens are released (unstaked), 
 they can be claimed via the [Withdraw Unstaked Tokens](#withdraw-unstaked-tokens) action below._
 
@@ -112,3 +117,13 @@ transaction with the following arguments:
 
 This transaction moves the rewarded tokens back into the `LockedTokens.Lockbox` owned by the **token holder**. 
 However, unlike unstaked tokens, rewards are **unlocked FLOW** and can be immediately withdrawn from the lockbox.
+
+## Getting Info about an accounts delegation
+
+To return a struct with all the information associated with a delegator, anyone
+can use the **Get Delegator Info** script with the following arguments:
+
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **nodeID** | `String` | The 32 byte ID of the node of the delegator |
+| **nodeID** | `UInt8` | The ID of the delegator |
