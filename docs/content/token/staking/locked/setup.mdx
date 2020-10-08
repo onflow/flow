@@ -17,18 +17,37 @@ sidebar_title: Account Setup
 This guide covers the technical integration required for custodians to create
 accounts that store locked FLOW tokens for users.
 
+Before discussing the account creation process, some terminology needs to be defined:
+
+- **Flow Token Admin** - The user who controls the locked and vesting tokens from the 
+Flow Token sale. This user maintains a record of users, their account addresses, 
+and how many Flow tokens they will receive according to their vesting schedule.
+This user also is required to co-sign any transactions that transfer locked tokens
+before they have been unlocked via the vesting schedule.
+
+- **User** - A user who has bought Flow tokens in the Flow token sale or auction.
+
+- **Custody/Wallet Provider** - A service that is managing accounts on behalf of users.
+
 Every user who holds locked FLOW tokens gets two accounts.
 
-- **Account 1 - Shared Account:** This account is shared between the Flow token admin and the user.
-The user's key will have weight 900 and the token admin's key will have weight 100.
-Therefore, any transactions that directly access this account need to be signed by both parties.
+- **Account 1 - User Account:** This is the user's normal Flow account. 
+This account is completely controlled by the user. It can have already been creating by 
+the custody provider or can be created along with the user's second account.
+
+- **Account 2 - Shared Account:** This account is shared between the Flow token admin and the user.
+The user's key will have weight 900 and the token admin's key will have weight 100. 
+The pre-generated token admin's key with weight 900 will be easily accessible for the custody provider
+to fetch and use to create this account.
+Any transactions that directly access this account need to be signed by the user and the token admin.
 The locked tokens are stored in this account and the token admin has the authority to unlock
 tokens as outlined by the vesting schedule. This account also manages access to the staking
-and delegating functionality that a user signs up for.
+and delegating functionality that a user signs up for. 
 
-- **Account 2 - Unlocked Account:** This account is completely controlled by the user.
-It includes an object that manages access to the functionality contained in the shared account.
-The user submits token withdrawal and staking transactions with this account.
+The **User Account** will include an object that manages access to 
+the staking functionality contained in the shared account.
+The user submits token withdrawal and staking transactions with locked tokens
+with their normal account, without the need for a signature from the token admin.
 
 # Setup
 
@@ -109,10 +128,10 @@ transaction with the following arguments:
 Both transactions generally perform the same actions:
 
 1. Create the shared account and add the partial public keys to the account.
-1. Create the Locked Token Manager object in the shared account.
-1. Create the Token Holder object and store it in the user account. This object
+2. Create and store the Locked Token Manager object in the shared account.
+3. Create the Token Holder object and store it in the user account. This object
 is what the user interacts with to withdraw unlocked tokens and perform staking actions.
-1. Register the new accounts with the token admin account so that 
+4. Register the new accounts with the token admin account so that 
 it can receive locked tokens from the vesting schedule.
-1. Override the default Flow Token receiver to mark received tokens as unlocked.
-1. Create a different Flow Token receiver that the token admin account uses to deposit locked tokens.
+5. Override the default Flow Token receiver to mark received tokens as unlocked.
+6. Create a different Flow Token receiver that the token admin account uses to deposit locked tokens.
