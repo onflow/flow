@@ -28,12 +28,22 @@ used to store locked FLOW tokens owned by a **token holder**.
 
 Source: [LockedTokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/LockedTokens.cdc)
 
+| Network | Contract Address     |
+|---------|----------------------|
+| Testnet | `0xbe9b485f7d5e7787` |
+| Mainnet | TBA                  |
+
 ## `StakingProxy`
 
 The `StakingProxy` contract defines the interfaces through which **token holders** 
 and **node operators** perform staking operations with locked FLOW.
 
 Source: [StakingProxy.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/StakingProxy.cdc)
+
+| Network | Contract Address |
+|---------|------------------|
+| Testnet | `0xb5b17ac6b1db09ae` |
+| Mainnet | TBA |
 
 # Transactions
 
@@ -45,7 +55,19 @@ account that is used to control the lockups for all locked FLOW.
 
 The **token admin** creates a **shared account** for each **token holder**
 that is co-owned by the **token admin** and the **token holder**. 
-The **shared account** is used to store all locked FLOW owned by a **token holder**. 
+The **shared account** is used to store all locked FLOW owned by a **token holder**.
+
+The **token admin** public key is used by account creators to configure **token holder**
+accounts to hold locked FLOW.
+
+_Note: these keys have a weight of `100`._
+
+| Network | Token Admin Public Key |
+|---------|------------------------|
+| Testnet | `f845b840fd8c6a3078ea6b7ecb96d914832ee3b62323d4d42860235b4a175d75544f476aeb800e3a4bad2cc5375e47fc5e13356167a4512b6ad03e660c04b6db26246cba020364` |
+| Mainnet | TBA |
+
+## Setup
 
 | ID        | Name                    | Source |
 |-----------|-------------------------|--------|
@@ -83,7 +105,7 @@ by the token admin.
 |**`TH.02`**| Deposit Unlocked FLOW            | [lockedTokens/user/deposit_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/deposit_tokens.cdc) |
 |**`TH.03`**| Get Unlock Limit                 | [lockedTokens/user/get_unlock_limit.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/get_unlock_limit.cdc) |
 |**`TH.04`**| Get Locked Account Balance       | [lockedTokens/user/get_locked_account_balance.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/get_locked_account_balance.cdc) |
-|**`TH.05`**| Get Locked Account Address Limit | [lockedTokens/user/get_locked_account_address.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/get_locked_account_address.cdc) |
+|**`TH.05`**| Get Locked Account Address       | [lockedTokens/user/get_locked_account_address.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/get_locked_account_address.cdc) |
 
 ### Staking
 
