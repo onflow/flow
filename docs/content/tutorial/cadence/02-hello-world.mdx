@@ -104,7 +104,7 @@ pub contract HelloWorld {
 
 A contract is a collection of code (its functions) and data (its state) that lives in the contract area of an account in Flow. Currently, accounts can only have one contract and/or one contract interface. The line `pub let greeting: String` declares a public state constant, using the `pub` `let` keywords, called `greeting` of type `String`. We would have used `var` if we wanted to declare a variable.
 
-The `pub` keyword is an example of an access control specification meaning that it can be accessed in all scopes, but not written in all scopes. You can also use `access(all)` interchangeably with `pub` if you prefer something more descriptive. Please refer to the [Access Control section in the Glossary](https://docs.onflow.org/v0.3/docs/glossary#section-access-control) to learn more about the different levels of access control permitted in Cadence.
+The `pub` keyword is an example of an access control specification meaning that it can be accessed in all scopes, but not written in all scopes. You can also use `access(all)` interchangeably with `pub` if you prefer something more descriptive. Please refer to the [Access Control section in the Glossary](/intro/glossary/#access-control) to learn more about the different levels of access control permitted in Cadence.
 
 The `init()` section is called the initializer. It is a function that is only run when the contract is created and never again. In this example, the initializer sets the `greeting` field to `"Hello, World!"`.
 
