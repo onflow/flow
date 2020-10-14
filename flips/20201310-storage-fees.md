@@ -64,7 +64,7 @@ The execution environment has three responsibilities:
 
 #### Get storage used
 
-`storage_capacity` and `storage_used` Will be stored in the registers:
+`storage_capacity` and `storage_used` will be stored in the following registers:
 
 ```json
 [
@@ -187,6 +187,43 @@ In cadence runtime we need to add `storage_capacity` and `storage_used` read onl
 
 TODO: StorageFeesContract details
 
+### Register migration
+
+First we need to consider that some accounts will be over the 100kB minimum limit. We need to give more storage capacity to these accounts, but the question is how much more.
+
+1. 100kB more than their current storage: if they are using a lot, they might burn through the 100kB faster then they can reasonably react to this change
+2. a relative amount. for example:
+    - 2 times their current amount. Assuming a linear growth and that they started growing a month ago this will give them another month to react to the change. This will mean wi have a wide range of different storage_capacity values.
+    - find the smallest k for which the account storage is less then 10kB ^ k give them 10kB ^ (k + 1) storage capacity. Assuming an exponential growth and that they started growing a month ago this will give them another month to react to the change. This will produce only a few different storage_capacity values.
+
+Because the process of creating a register migration is not documented yet a few assumptions need to be made:
+- migration will be a function with the signature of:  (key, value) -> [(key, value)] 
+- the function must be stateless
+- it has access to other registers
+
+with this the migration pseudo-code can be written as:
+
+```py
+def migrate(key, value) -> (keyType, valueType)[]:
+    owner = get_owner_from_key(key)
+    if register_exists(owner=owner, controller="", key="storage_capacity"):
+        # we already migrated this account
+        return [(key, value)]
+    storage_used = 0
+    # get all register entries for this owner and iterate over them
+    for register in registers_for_owner(owner)
+        storage_used += register_size(register)
+
+    storage_used += 16 # because we are adding two more uint64 registers
+
+    storage_capacity = calculate_capacity_needed(storage_used)
+
+    return [
+        (key, value),
+        ((owner, "", "storage_capacity"), storage_capacity),
+        ((owner, "", "storage_used"), storage_used)
+    ]
+```
 
 ### Performance Implications
 
@@ -196,9 +233,8 @@ TODO: which tests?
 
 Create account transactions should be affected more, because of the extra call to **StorageFeesContract**.
 
-There shouldn't be any major memory usage change, since only two fields (16 bytes + 2 key sizes) are being added to each account.
+There shouldn't be any major memory usage change, since only two fields (16 bytes + 2 key sizes) are being added to each account. The current minimum size two orders of magnitudes larger (flow token receiver, flow token vault, private keys)
 
-TODO: whats the current size of an empty account? It is possible that current execution state size might grow a lot
 
 ### Dependencies
 
@@ -245,8 +281,6 @@ Since the execution state needs to be updated to include storage used/capacity f
 ### User Impact
 
 Current accounts need to be updated to include storage used/capacity fields, with the capacity being set to the minimum capacity. For the accounts that are over the limit we need to buy sufficient storage for them.
-
-TODO: what is sufficient?
 
 ## Questions and Discussion Topics
 
