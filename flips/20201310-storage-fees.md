@@ -62,8 +62,6 @@ The execution environment has three responsibilities:
     - `storage_used` set access to no one (only the execution env changes this)
     - `storage_capacity` set access only to **StorageFeesContract**
 
-#### Get storage used
-
 `storage_capacity` and `storage_used` will be stored in the following registers:
 
 ```json
@@ -80,14 +78,16 @@ The execution environment has three responsibilities:
 ]
 ```
 
+#### Get storage used
+
 Only register values are considered when size is being calculated. Register keys are not part of storage used.
 
 To prevent changing size of the `storage_used` register after `storage_used` is calculated and updated, both `storage_capacity` and `storage_used` registers will be of type uint64. This way both their sizes will be a constant value of 8.
 
 Two possible approaches of calculating the storage used by an address were considered:
 
-- absolute: get all registers from one account an sum their size to get `storage_capacity`
-- differential: on the current delta, sum the size of all the changes in size for each register changed and add it to the previous `storage_capacity`
+- absolute: get all registers for each address (touched in the current `Delta`) and sum their size to get `storage_used`
+- differential: on the current `Delta`, keep track of register size changes per address, when merging the `Delta` (back into the ledger) sum the previous `storage_used` and the delta for each account. This is the new `storage_used`.
 
 The decision was made to go with the differential approach, because iterating through all key value pairs in storage for each account touched would be to expensive and would not scale well.
 
@@ -95,7 +95,7 @@ The decision was made to go with the differential approach, because iterating th
 
 - Add a dictionary field to `Delta`: `StorageUsedDeltas map[string]int64`. The map key is the `owner`.
 - During `Delta.Set` and `Delta.Delete` keep track on the byte size change of the registers changed and write them to `StorageUsedDeltas`.    
-- Add receiver `CommitStorageUsed()` to `Delta` which does the following:  TODO: consider better function name
+- Add receiver `CommitStorageUsed()` to `Delta` which does the following:  *TODO: consider better function name*
 
     ```py
         for owner in StorageUsedDeltas.keys:
@@ -104,9 +104,7 @@ The decision was made to go with the differential approach, because iterating th
             delete StorageUsedDeltas[owner]
     ```
 - Before Delta is merged back into the ledger `StorageUsedDeltas` must be empty
-- `MergeWith` Receiver needs to change to also merge `StorageUsedDeltas` which can be done by summing the values under the same keys
-
-Using `RegisterUpdates` method on the `Delta` after the transaction, we can calculate the `storage_used` change per addresses touched in this `Delta`. Then we update `storage_used` for each account by adding the change.
+- `MergeWith` Receiver needs to change to also merge `StorageUsedDeltas` which can be done by summing the values under the same keys.
 
 - cons:
     1. any error (due to code bugs) done in this calculation will be permanent. (e.g. If storage used change is of by 10kB because of a bug in calculation fixing the bug wont correct the storage used)
