@@ -86,25 +86,17 @@ To prevent changing size of the `storage_used` register after `storage_used` is 
 
 Two possible approaches of calculating the storage used by an address were considered:
 
-- absolute: get all registers for each address (touched in the current `Delta`) and sum their size to get `storage_used`
-- differential: on the current `Delta`, keep track of register size changes per address, when merging the `Delta` (back into the ledger) sum the previous `storage_used` and the delta for each account. This is the new `storage_used`.
+- absolute: get all registers for each address (touched in the current `View`) and sum their size to get `storage_used`
+- differential: on the current `View`, keep track of register size changes per address and sum them with the previous `storage_used`.
 
 The decision was made to go with the differential approach, because iterating through all key value pairs in storage for each account touched would be to expensive and would not scale well.
 
 ##### Approach 1 - differential
 
-- Add a dictionary field to `Delta`: `StorageUsedDeltas map[string]int64`. The map key is the `owner`.
-- During `Delta.Set` and `Delta.Delete` keep track on the byte size change of the registers changed and write them to `StorageUsedDeltas`.    
-- Add receiver `CommitStorageUsed()` to `Delta` which does the following:  *TODO: consider better function name*
+The basic principle of this approach is to update accounts `storage_used` every time a register size changes, by adding the size change to current `storage_used`.
 
-    ```py
-        for owner in StorageUsedDeltas.keys:
-            old_used = delta.Get(owner, "", "storage_used")
-            delta.Set(owner, "", "storage_used", old_used + StorageUsedDeltas[owner])
-            delete StorageUsedDeltas[owner]
-    ```
-- Before Delta is merged back into the ledger `StorageUsedDeltas` must be empty
-- `MergeWith` Receiver needs to change to also merge `StorageUsedDeltas` which can be done by summing the values under the same keys.
+- During `View.Set` and `View.Delete` if storage size changes update `storage_used`.
+- If `storage_used` does not exist on the account add it.
 
 - cons:
     1. any error (due to code bugs) done in this calculation will be permanent. (e.g. If storage used change is of by 10kB because of a bug in calculation fixing the bug wont correct the storage used)
