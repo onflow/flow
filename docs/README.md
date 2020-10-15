@@ -75,5 +75,17 @@ Search is provided using [DocSearch](https://docsearch.algolia.com/) by Algolia.
 The configuration file can be found here:
 https://github.com/algolia/docsearch-configs/blob/master/configs/onflow.json
 
-This application accesses the DocSearch API using the API key specified in the `ALGOLIA_API_KEY` 
+This application accesses the DocSearch API using the API key specified in the `ALGOLIA_API_KEY`
 environment variable.
+
+## Linking to images
+
+1. Upload the image to the `flow-resources` bucket
+2. Link to it using a Markdown image tag, in the form `![description](URL)`.
+
+  For example, if the image has the path `documentation-assets/token delivery assets/FlowPort Ledger connect screen.png` in the bucket,
+  the Markdown tag should look like:
+
+  `![](https://storage.googleapis.com/flow-resources/documentation-assets/token%20delivery%20assets/Ledger1.png)`
+
+  **NOTE:** Ensure the domain is public (`googleapis.com`) instead of private (`cloud.google.com`)!
