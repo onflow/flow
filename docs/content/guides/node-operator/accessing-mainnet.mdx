@@ -1,37 +1,22 @@
 ---
-title: Accessing Mainnet
+title: Flow Mainnet
 ---
+## Accessing Flow Mainnet
 
-The Access Node for the mainnet can be accessed via
+Currently, there is an internal Devnet, available for access:
 
-## Hostname [access-00**4**.candidate5.nodes.onflow.org](http://access-005.candidate1.nodes.onflow.org/) and Port 9000
+- [access-004.mainnet1.nodes.onflow.org:9000](http://access-004.mainnet1.nodes.onflow.org:9000/)
 
-Sample Code using `[flow-go-sdk](https://github.com/onflow/flow-go-sdk/)`
+For example, to access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
 
 ```go
-package main
+import "github.com/onflow/flow-go-sdk/client"
 
-import (
-	"context"
-	"fmt"
+func main() {
+  flowAccessAddress := "access-004.mainnet1.nodes.onflow.org:9000"
+  flowClient, _ := client.New(flowAccessAddress, grpc.WithInsecure())
 
-	"google.golang.org/grpc"
-
-	"github.com/onflow/flow-go-sdk/client"
-)
-
-func main()  {
-
-	flowClient, err := client.New("access-004.candidate5.nodes.onflow.org:9000", grpc.WithInsecure())
-	if err != nil {
-		panic(err)
-	}
-	ctx := context.Background()
-	blk, err := flowClient.GetLatestBlock(ctx, true)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("Current height: %d\n", blk.Height)
-	fmt.Printf("Last sealed block ID: %s\n",blk.ID.String())
+  // ...
 }
+
 ```
