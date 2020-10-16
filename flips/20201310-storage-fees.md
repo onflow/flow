@@ -80,6 +80,8 @@ The execution environment has three responsibilities:
 
 #### Get storage used
 
+related PR: https://github.com/onflow/flow-go/pull/76
+
 Only register values are considered when size is being calculated. Register keys are not part of storage used.
 
 To prevent changing size of the `storage_used` register after `storage_used` is calculated and updated, both `storage_capacity` and `storage_used` registers will be of type uint64. This way both their sizes will be a constant value of 8.
