@@ -305,27 +305,71 @@ the consensus nodes directly deduct a fine from the node's stake.
 Of course, only the remaining stake is deposited back into node's balance
 at the end of the unstaking period.
 
-## FAQ
-**When will the User Accounts for Node Operators be created?**
-Once the network is running, we'll issue a series of transactions 
-to create accounts for all the users who are running nodes, building on Flow, and/or holding tokens. 
-While the account-creation transactions will be co-signed by Dapper Labs for authorization and paying, 
-your account will be fully owned and controlled by you immediately after creation. 
+Slashing is not handled by the staking contract at this point. 
+It will be handled on a case by case basis. Once full epoch functionality is enabled,
+slashing will be handled by the protocol.
 
-**What is the relationship between nodes and account addresses**
-There is no formal relationship between nodes and account addresses.
-When you register a node, you get an object that represents your node
-and provides functionality to manage your staking, rewards, and delegation. 
-This object can be stored in any account and multiple node objects can be stored 
-in the same account.
+## Getting Info from the Staking Contract
 
-It is possible for the rewards from operating multiple nodes to be deposited into the same account. 
-Formally, we have a N Nodes-to-Single Account relationship, with N ≥ 1.
-If you would like to subsequently disburse the received rewards to accounts of multiple parties, 
-you have the full expressiveness of the Cadence smart contract language at your disposal 
-to define any rules which fit your business model. 
+There are various ways to retreive information about the current state of the staking contract.
 
-We are happy to support you and your team with implementing the desired contracts.
+1. Getting the list of proposed nodes for the next epoch:
+
+`FlowIDTableStaking.getProposedNodeIDs()`: Returns an array of node IDs for proposed nodes. 
+Proposed nodes are nodes that have enough staked and committed for the next epoch to be above the minimum requirement.
+
+You can see an example script for retreiving this info in [`get_proposed_table.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_proposed_table.cdc).
+
+2. Get the list of all nodes that are currently staked:
+
+`FlowIDTableStaking.getStakedNodeIDs()`: Returns an array of nodeIDs that are currently staked.
+Staked nodes are nodes that currently have staked tokens above the minimum.
+
+You can see an example script for retreiving this info in [`get_current_table.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_current_table.cdc).
+
+3. Get the total committed balance of a node:
+
+`FlowIDTableStaking.getTotalCommittedBalance(_ nodeID: String)`: Returns the total committed balance for a node,
+which is their total tokens staked + committed, plus all of the staked + committed tokens of all their delegators.
+
+You can see an example script for retreiving this info in `[get_node_total_commitment.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_node_total_commitment.cdc)
+
+4. Get all of the info associated with a single node staker:
+
+`FlowIDTableStaking.NodeInfo(nodeID: String)`: Returns a `NodeInfo` struct with all of the metadata
+associated with the specified node ID. You can see the `NodeInfo` definition in the [FlowIDTableStaking
+smart contract.](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L264)
+
+You can see an example script for retreiving this info in `[get_node_info.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_node_info.cdc)
+
+5. Get all the info associated with a single delegator:
+
+`FlowIDTableStaking.DelegatorInfo(nodeID: String, delegatorID: UInt32)`: Returns a `DelegatorInfo` struct with all of the metadata
+associated with the specified node ID and delegator ID. You can see the `NodeInfo` definition in the [FlowIDTableStaking
+smart contract.](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L348)
+
+You can see an example script for retreiving this info in `[get_delegator_info.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/get_delegator_info.cdc)
+
+## Staking Events
+
+The staking contract emits various events whenever an important action occurs.
+
+```cadence
+pub event NewNodeCreated(nodeID: String, role: UInt8, amountCommitted: UFix64)
+pub event TokensCommitted(nodeID: String, amount: UFix64)
+pub event TokensStaked(nodeID: String, amount: UFix64)
+pub event TokensUnstaking(nodeID: String, amount: UFix64)
+pub event NodeRemovedAndRefunded(nodeID: String, amount: UFix64)
+pub event RewardsPaid(nodeID: String, amount: UFix64)
+pub event UnstakedTokensWithdrawn(nodeID: String, amount: UFix64)
+pub event RewardTokensWithdrawn(nodeID: String, amount: UFix64)
+
+pub event NewDelegatorCutPercentage(newCutPercentage: UFix64)
+pub event NewDelegatorCreated(nodeID: String, delegatorID: UInt32)
+pub event DelegatorRewardsPaid(nodeID: String, delegatorID: UInt32, amount: UFix64)
+pub event DelegatorUnstakedTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
+pub event DelegatorRewardTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
+```
 
 ## Staking Transaction Examples
 
