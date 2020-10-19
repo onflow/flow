@@ -135,7 +135,7 @@ the required amount of tokens for each operation.
 If a node operator has delegators, they cannot withdraw their own tokens 
 such that their own staked tokens would fall below the minimum requirement for that node type.
 This is enforced at the protocol level. If they have delegators 
-and try to unstake that puts their stake below the minimum, it will fail. 
+and try to submit an unstaking transaction that would put their stake below the minimum, it will fail. 
 
 If they want to unstake below the minimum, they must unstake all of their tokens,
 which also unstakes all of the tokens that have been delegated to them.
@@ -183,7 +183,7 @@ They will sit in this pool for one (1) additional epoch,
 at which point they will be moved to the unlocked tokens pool, where
 they are able to be freely withdrawn.
 
-A staker can also withdraw their rewarded tokens at any time.
+A staker can also withdraw their rewarded tokens at any time. These tokens are liquid and can be transferred on-chain if desired, or re-staked.
 
 When a new epoch starts, if a staker has committed at least the minimum stake required,
 the tokens they have committed will be marked as staked and held in the protocol state.
