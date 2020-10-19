@@ -144,44 +144,51 @@ through the `StakingProxy` contract.
 The **token holder** can withdraw unlocked FLOW from the shared account created 
 by the token admin.
 
-| ID        | Name                             | Source |
-|-----------|----------------------------------|--------|
-|**`TH.01`**| Withdraw Unlocked FLOW           | [lockedTokens/user/withdraw_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/withdraw_tokens.cdc) |
-|**`TH.02`**| Deposit Unlocked FLOW            | [lockedTokens/user/deposit_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/deposit_tokens.cdc) |
-|**`TH.03`**| Get Unlock Limit                 | [lockedTokens/user/get_unlock_limit.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/get_unlock_limit.cdc) |
-|**`TH.04`**| Get Locked Account Balance       | [lockedTokens/user/get_locked_account_balance.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/get_locked_account_balance.cdc) |
-|**`TH.05`**| Get Locked Account Address       | [lockedTokens/user/get_locked_account_address.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/get_locked_account_address.cdc) |
+| ID        | Name                       | Source |
+|-----------|----------------------------|--------|
+|**`TH.01`**| Withdraw Unlocked FLOW     | [lockedTokens/user/withdraw_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/withdraw_tokens.cdc) |
+|**`TH.02`**| Deposit Unlocked FLOW      | [lockedTokens/user/deposit_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/deposit_tokens.cdc) |
+|**`TH.03`**| Get Unlock Limit           | [lockedTokens/user/get_unlock_limit.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/get_unlock_limit.cdc) |
+|**`TH.04`**| Get Locked Account Balance | [lockedTokens/user/get_locked_account_balance.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/get_locked_account_balance.cdc) |
+|**`TH.05`**| Get Locked Account Address | [lockedTokens/user/get_locked_account_address.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/get_locked_account_address.cdc) |
 
 ### Staking
 
 These transactions operate through the `StakingProxy.NodeStakerProxy` interface.
 
+| ID        | Name                    | Source |
+|-----------|-------------------------|--------|
+|**`TH.06`**| Register Node           | [lockedTokens/staker/register_node.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/register_node.cdc) | 
+|**`TH.07`**| Get Node ID             | [lockedTokens/staker/get_node_id.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/get_node_id.cdc) |
+|**`TH.08`**| Stake New Locked FLOW   | [lockedTokens/staker/stake_new_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/stake_new_tokens.cdc) |
+|**`TH.09`**| Re-stake Unstaked FLOW  | [lockedTokens/staker/stake_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/stake_unstaked_tokens.cdc) |
+|**`TH.10`**| Re-stake Rewarded FLOW  | [lockedTokens/staker/stake_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/stake_rewarded_tokens.cdc) |
+|**`TH.11`**| Request Unstake of FLOW | [lockedTokens/staker/request_unstaking.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/request_unstaking.cdc) |
+|**`TH.12`**| Unstake All FLOW        | [lockedTokens/staker/unstake_all.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/unstake_all.cdc) |
+|**`TH.13`**| Withdraw Unstaked FLOW  | [lockedTokens/staker/withdraw_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/withdraw_unstaked_tokens.cdc) |
+|**`TH.14`**| Withdraw Rewarded FLOW  | [lockedTokens/staker/withdraw_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/withdraw_rewarded_tokens.cdc) |
+
+#### Register an Operator Node
+
 | ID        | Name                   | Source |
 |-----------|------------------------|--------|
-|**`TH.06`**| Get Operator Node Info | [stakingProxy/sh_get_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_get_node_info.cdc) | 
-|**`TH.07`**| Register Node          | [stakingProxy/sh_register_node.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_register_node.cdc) |
-|**`TH.08`**| Stake New Locked FLOW  | [lockedTokens/staker/stake_new_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/stake_new_tokens.cdc) |
-|**`TH.09`**| Re-stake Unstaked FLOW | [lockedTokens/staker/stake_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/stake_unstaked_tokens.cdc) |
-|**`TH.10`**| Re-stake Rewarded FLOW | [lockedTokens/staker/stake_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/stake_rewarded_tokens.cdc) |
-|**`TH.11`**| Unstake FLOW           | [lockedTokens/staker/unstake_all.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/unstake_all.cdc) |
-|**`TH.12`**| Withdraw Unstaked FLOW | [lockedTokens/staker/withdraw_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/withdraw_unstaked_tokens.cdc) |
-|**`TH.13`**| Withdraw Rewarded FLOW | [lockedTokens/staker/withdraw_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/withdraw_rewarded_tokens.cdc) |
-
+|**`TH.15`**| Get Operator Node Info | [stakingProxy/get_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/get_node_info.cdc) | 
+|**`TH.16`**| Register Operator Node | [stakingProxy/register_node.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/register_node.cdc) |
 
 ### Delegating
 
 These transactions operate through the `StakingProxy.NodeDelegatorProxy` interface.
 
-| ID        | Name                      | Source |
-|-----------|---------------------------|--------|
-|**`TH.14`**| Register Delegator        | [lockedTokens/delegator/register_delegator.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/register_delegator.cdc) |
-|**`TH.15`**| Delegate New Locked FLOW  | [lockedTokens/delegator/delegate_new_locked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/delegate_new_locked_tokens.cdc) |
-|**`TH.16`**| Re-delegate Unstaked FLOW | [lockedTokens/delegator/delegate_locked_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/delegate_locked_unstaked_tokens.cdc) | 
-|**`TH.17`**| Re-delegate Rewarded FLOW | [lockedTokens/delegator/delegate_locked_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/delegate_locked_rewarded_tokens.cdc) |
-|**`TH.18`**| Unstake Delegated FOW     | [lockedTokens/delegator/request_unstaking_locked_delegated_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/request_unstaking_locked_delegated_tokens.cdc) |
-|**`TH.19`**| Withdraw Unstaked FLOW    | [lockedTokens/delegator/withdraw_locked_unstaked_delegated_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/withdraw_locked_unstaked_delegated_tokens.cdc) |
-|**`TH.20`**| Withdraw Rewarded FLOW    | [lockedTokens/delegator/withdraw_locked_rewarded_delegated_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/withdraw_locked_rewarded_delegated_tokens.cdc) |
-|**`TH.21`**| Get Delegator Info        | [lockedTokens/delegator/get_delegator_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/get_delegator_info.cdc) |
+| ID        | Name                              | Source |
+|-----------|-----------------------------------|--------|
+|**`TH.17`**| Register Delegator                | [lockedTokens/delegator/register_delegator.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/register_delegator.cdc) |
+|**`TH.18`**| Get Delegator ID                  | [lockedTokens/delegator/get_delegator_id.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/get_delegator_id.cdc) |
+|**`TH.19`**| Delegate New Locked FLOW          | [lockedTokens/delegator/delegate_new_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/delegate_new_tokens.cdc) |
+|**`TH.20`**| Re-delegate Unstaked FLOW         | [lockedTokens/delegator/delegate_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/delegate_unstaked_tokens.cdc) | 
+|**`TH.21`**| Re-delegate Rewarded FLOW         | [lockedTokens/delegator/delegate_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/delegate_rewarded_tokens.cdc) |
+|**`TH.22`**| Request Unstake of Delegated FLOW | [lockedTokens/delegator/request_unstaking.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/request_unstaking.cdc) |
+|**`TH.23`**| Withdraw Unstaked Delegated FLOW  | [lockedTokens/delegator/withdraw_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/withdraw_unstaked_tokens.cdc) |
+|**`TH.24`**| Withdraw Rewarded Delegated FLOW  | [lockedTokens/delegator/withdraw_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/withdraw_rewarded_tokens.cdc) |
 
 ## Node Operator
 
@@ -190,13 +197,13 @@ behalf of a **token holder**.
 
 | ID        | Name                    | Source |
 |-----------|-------------------------|--------|
-|**`NO.01`**| Set Up Operator Account | [stakingProxy/sh_setup_node_account.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_setup_node_account.cdc) | 
+|**`NO.01`**| Set Up Operator Account | [stakingProxy/setup_node_account.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/setup_node_account.cdc) | 
 
 ### Staking
 
 These transactions operate through the `StakingProxy.NodeStakerProxy` interface.
 
-The  **node operator** can perform the following
+The **node operator** can perform the following
 staking actions using locked or unlocked FLOW owned by the **token holder**.
 
 _Note: The **node operator** can perform these actions on behalf of 
@@ -205,15 +212,14 @@ This permission can be revoked by the **token holder**._
 
 | ID        | Name                   | Source |
 |-----------|------------------------|--------|
-|**`NO.02`**| Add Node Info          | [stakingProxy/sh_add_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_add_node_info.cdc) | 
-|**`NO.03`**| Remove Node Info       | [stakingProxy/sh_remove_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_remove_node_info.cdc) | 
-|**`NO.04`**| Remove Staking Proxy   | [stakingProxy/sh_remove_staking_proxy.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_remove_staking_proxy.cdc) | 
-|**`NO.05`**| Stake New Locked FLOW  | [stakingProxy/sh_stake_new_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_stake_new_tokens.cdc) | 
-|**`NO.06`**| Re-stake Unstaked FLOW | [stakingProxy/sh_stake_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_stake_unstaked_tokens.cdc) | 
-|**`NO.07`**| Unstake FLOW           | [stakingProxy/sh_unstake_all.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_unstake_all.cdc) | 
-|**`NO.08`**| Withdraw Unstaked FLOW | [stakingProxy/sh_withdraw_unstaked.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_withdraw_unstaked.cdc) | 
-|**`NO.09`**| Withdraw Rewarded FLOW | [stakingProxy/sh_withdraw_rewards.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_withdraw_rewards.cdc) | 
-
+|**`NO.02`**| Add Node Info          | [stakingProxy/add_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/add_node_info.cdc) | 
+|**`NO.03`**| Remove Node Info       | [stakingProxy/remove_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/remove_node_info.cdc) | 
+|**`NO.04`**| Remove Staking Proxy   | [stakingProxy/remove_staking_proxy.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/remove_staking_proxy.cdc) | 
+|**`NO.05`**| Stake New Locked FLOW  | [stakingProxy/stake_new_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/stake_new_tokens.cdc) | 
+|**`NO.06`**| Re-stake Unstaked FLOW | [stakingProxy/stake_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/stake_unstaked_tokens.cdc) | 
+|**`NO.07`**| Unstake FLOW           | [stakingProxy/unstake_all.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/unstake_all.cdc) | 
+|**`NO.08`**| Withdraw Unstaked FLOW | [stakingProxy/withdraw_unstaked.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/withdraw_unstaked.cdc) | 
+|**`NO.09`**| Withdraw Rewarded FLOW | [stakingProxy/withdraw_rewards.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/withdraw_rewards.cdc) | 
 
 # Events
 

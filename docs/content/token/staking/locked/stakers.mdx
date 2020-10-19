@@ -37,7 +37,7 @@ they will create a `NodeInfo` object holding the IP address and public keys for 
 This `NodeInfo` object will be stored in an account owned by the node operator (**operator account**).
 
 The node operator should provide you with their **operator account** `address` and the `nodeID` for your new node. 
-These values can be passed into the **Get Operator Node Info** ([TH.06](../transactions/#token-holder)) 
+These values can be passed into the **Get Operator Node Info** ([TH.15](../transactions/#token-holder)) 
 script to confirm your node information:
 
 | Argument     | Type      | Description |
@@ -53,7 +53,7 @@ If this node information is correct, continue to step 2.
 ## 2. Register node & grant staking access to the node operator
 
 After confirming that the node information is correct, the **token holder** can register the
-node with the central staking contract by using the using the **Register Node** ([TH.07](../transactions/#token-holder)) transaction
+node with the central staking contract by using the using the **Register Node** ([TH.16](../transactions/#token-holder)) transaction
 with the following arguments:
 
 | Argument    | Type      | Description |
@@ -141,7 +141,7 @@ Once the tokens are released (unstaked), they can be claimed via the
 After tokens become unstaked, the **token holder** can withdraw them from the central staking contract.
 
 To withdraw unstaked tokens via the `NodeStakerProxy`, 
-the **token holder** can use the **Withdraw Unstaked FLOW** ([TH.12](../transactions/#token-holder)) 
+the **token holder** can use the **Withdraw Unstaked FLOW** ([TH.13](../transactions/#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -155,7 +155,7 @@ This transaction moves the unstaked tokens back into the `LockedTokens.Lockbox` 
 After earning rewards from staking, the **token holder** can withdraw them from the central staking contract.
 
 To withdraw rewarded tokens via the `NodeStakerProxy`, 
-the **token holder** can use the **Withdraw Rewarded FLOW** ([TH.13](../transactions/#token-holder)) 
+the **token holder** can use the **Withdraw Rewarded FLOW** ([TH.14](../transactions/#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
