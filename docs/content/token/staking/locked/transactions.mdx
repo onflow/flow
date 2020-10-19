@@ -168,3 +168,40 @@ This permission can be revoked by the **token holder**._
 |**`NO.07`**| Unstake FLOW           | [stakingProxy/sh_unstake_all.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_unstake_all.cdc) | 
 |**`NO.08`**| Withdraw Unstaked FLOW | [stakingProxy/sh_withdraw_unstaked.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_withdraw_unstaked.cdc) | 
 |**`NO.09`**| Withdraw Rewarded FLOW | [stakingProxy/sh_withdraw_rewards.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/sh_withdraw_rewards.cdc) | 
+
+
+# Events
+
+The LockedTokens contract defines some events that can be monitored for important actions.
+
+```cadence
+pub event SharedAccountRegistered(address: Address)
+```
+Emitted when a new shared (locked) account is registerd.
+
+```cadence
+pub event UnlockedAccountRegistered(address: Address)
+```
+Emitted when a new user (unlocked) account is registered. This event and `SharedAccountRegistered`
+are always emitted at the same time.
+
+```cadence
+pub event UnlockLimitIncreased(address: Address, increaseAmount: UFix64, newLimit: UFix64)
+```
+Emitted when the token admin increases the unlock limit for a locked account.
+This will usually happen when a milestone is reached in the vesting of the locked tokens.
+
+```cadence
+pub event LockedAccountRegisteredAsNode(address: Address, nodeID: String)
+```
+Emitted when a user registeres their locked account as a node operator.
+
+```cadence
+    pub event LockedAccountRegisteredAsDelegator(address: Address, nodeID: String)
+```
+Emitted when a user registers their locked account as a delegator.
+
+```cadence
+    pub event LockedTokensDeposited(address: Address, amount: UFix64)
+```
+Emitted when the token admin deposits locked tokens from the token sale.
