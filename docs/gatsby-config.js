@@ -123,7 +123,7 @@ const sections = [
     sourceInstanceName: "docs",
     patterns: [
       "*",
-      "intro/*", 
+      "intro/*",
       "updates/*",
       "concepts/node-operation/*",
       "concepts/flow-concepts/*",
@@ -135,15 +135,13 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
+        "[FLOW (Token)](/token)",
         "[Node Operation Quick Guide](/concepts/node-operation/quickstart)",
         // "intro/partner-update",
         "intro/glossary",
         "intro/FAQ",
       ],
-      "Community Updates": [
-        "updates/oct-6-2020",
-        "updates/sep-16-2020",
-      ],
+      "Community Updates": ["updates/oct-6-2020", "updates/sep-16-2020"],
       // Tutorial: [
       //   "tutorial/cadence/01-first-steps",
       //   "tutorial/cadence/02-hello-world",
@@ -217,10 +215,7 @@ const sections = [
     patterns: ["sdks/golang/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
-        "sdks/golang/index",
-        "sdks/golang/changelog",
-      ],
+      null: ["sdks/golang/index", "sdks/golang/changelog"],
       "How To": [
         "sdks/golang/create-account",
         "sdks/golang/build-transaction",
@@ -281,10 +276,7 @@ const sections = [
     patterns: ["emulator/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
-        "emulator/index",
-        "emulator/changelog",
-      ],
+      null: ["emulator/index", "emulator/changelog"],
     },
   },
   {
@@ -292,9 +284,7 @@ const sections = [
     patterns: ["protocol/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
-        "protocol/access-api",
-      ],
+      null: ["protocol/access-api"],
     },
   },
   {
@@ -329,7 +319,7 @@ const sections = [
         "docs/language/built-in-functions",
         "docs/language/environment-information",
         "docs/language/crypto",
-        "docs/language/type-hierarchy"
+        "docs/language/type-hierarchy",
       ],
     },
   },
