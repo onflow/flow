@@ -80,8 +80,6 @@ The execution environment has three responsibilities:
 
 #### Get storage used
 
-related PR: https://github.com/onflow/flow-go/pull/76
-
 Only register values are considered when size is being calculated. Register keys are not part of storage used.
 
 To prevent changing size of the `storage_used` register after `storage_used` is calculated and updated, both `storage_capacity` and `storage_used` registers will be of type uint64. This way both their sizes will be a constant value of 8.
@@ -108,7 +106,13 @@ The basic principle of this approach is to update accounts `storage_used` every 
     3. If we decide to change what factors into `storage_used` there will need to be a migration to fix current `storage_used` on all addresses
         - Fixable with a spork
 
-##### Approach 2 - absolute
+related PRs: 
+- storage used updated: https://github.com/onflow/flow-go/pull/76
+- storage limiter: https://github.com/onflow/flow-go/pull/80
+- expose storage used/capacity to fvm: TODO
+- purchase minimum storage on account creation: TODO
+
+##### Approach 2 - absolute (rejected)
 
 Add new method to ledger interface that gets all `RegisterEntry`s for an address
 
