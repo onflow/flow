@@ -16,7 +16,7 @@ This resource can be used as a proxy to indirectly delegate locked FLOW tokens.
 
 ## Register as a Delegator
 
-To register as a delegator, the **token holder** can use the **Register Delegator** ([TH.12](../transactions/#token-holder))
+To register as a delegator, the **token holder** can use the **Register Delegator** ([TH.17](../transactions/#token-holder))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -41,7 +41,7 @@ _Note: This transaction delegates additional tokens to the same node that was re
 It is currently not possible to delegate to multiple nodes from the same account._
 
 To delegate new tokens via the `NodeDelegatorProxy`, 
-the **token holder** can use the **Delegate New Locked FLOW** ([TH.15](../transactions/#token-holder)) 
+the **token holder** can use the **Delegate New Locked FLOW** ([TH.19](../transactions/#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -53,7 +53,7 @@ transaction with the following arguments:
 After delegated tokens become unstaked, the **token holder** can choose to re-delegate the unstaked tokens to the same node.
 
 To delegate unstaked tokens via the `NodeDelegatorProxy`, 
-the **token holder** can use the **Re-delegate Unstaked FLOW** ([TH.16](../transactions/#token-holder))
+the **token holder** can use the **Re-delegate Unstaked FLOW** ([TH.20](../transactions/#token-holder))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -65,7 +65,7 @@ transaction with the following arguments:
 After earning rewards from delegation, the **token holder** can choose to re-delegate the rewarded tokens to the same node.
 
 To delegate rewarded tokens via the `NodeDelegatorProxy`, 
-the **token holder** can use the **Re-delegate Rewarded FLOW** ([TH.17](../transactions/#token-holder))
+the **token holder** can use the **Re-delegate Rewarded FLOW** ([TH.21](../transactions/#token-holder))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -77,7 +77,7 @@ transaction with the following arguments:
 The **token holder** can submit a request to unstake their delegated tokens at any time.
 
 To unstake delegated tokens via the `NodeDelegatorProxy`, 
-the **token holder** can use the **Unstake Delegated FOW** ([TH.18](../transactions/#token-holder))
+the **token holder** can use the **Unstake Delegated FOW** ([TH.22](../transactions/#token-holder))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -94,7 +94,7 @@ they can be claimed via the [Withdraw Unstaked Tokens](#withdraw-unstaked-tokens
 After delegated tokens become unstaked, the **token holder** can withdraw them from the central staking contract.
 
 To withdraw unstaked tokens via the `NodeDelegatorProxy`, 
-the **token holder** can use the **Withdraw Unstaked FLOW ** ([TH.19](../transactions/#token-holder))
+the **token holder** can use the **Withdraw Unstaked FLOW ** ([TH.23](../transactions/#token-holder))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -108,7 +108,7 @@ This transaction moves the unstaked tokens back into the `LockedTokens.Lockbox` 
 After earning rewards from delegation, the **token holder** can withdraw them from the central staking contract.
 
 To withdraw rewarded tokens via the `NodeDelegatorProxy`, 
-the **token holder** can use the **Withdraw Rewarded FLOW** ([TH.20](../transactions/#token-holder))
+the **token holder** can use the **Withdraw Rewarded FLOW** ([TH.24](../transactions/#token-holder))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
