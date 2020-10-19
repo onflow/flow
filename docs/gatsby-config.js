@@ -131,6 +131,7 @@ const sections = [
       // "concepts/custody-providers/*",
       // "guides/node-operator/*",
       // "tutorial/cadence/*",
+      "testing/*",
     ],
     sidebarAlwaysExpanded: true,
     sidebar: {
@@ -330,6 +331,15 @@ const sections = [
         "docs/language/environment-information",
         "docs/language/crypto",
         "docs/language/type-hierarchy"
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "testing",
+    patterns: ["docs/language/**/*"],
+    sidebar: {
+      null: [
+        "docs/testing/custodian",
       ],
     },
   },

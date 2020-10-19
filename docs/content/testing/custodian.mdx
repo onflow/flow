@@ -1,0 +1,103 @@
+---
+title: General FLOW Custodian Testing Procedure
+description: How to test FLOW mainnet integration for Custodians
+---
+
+# Roles and Accounts
+
+## Roles
+
+The Token Admin is the party that controls the authorization of account creation and the issuing of FLOW tokens on the network.
+In the emulator, this is you. On testnet or mainnet it is Dapper Labs.
+
+The Custodian is the party that receives account creation authorization from the Token Admin and creates accounts for users.
+This is always you.
+
+The User is the party that receives an account from a Custodian and locked FLOW tokens from the Token Admin.
+For testing, this is you.
+
+## Accounts
+
+The Token Admin Acccount is the account that creates the LockedTokens contract and can authorize account creation
+and token unlocking.
+When testing in the emulator, this will be one of your accounts (probably the service account).
+When testing on testnet or mainnet this will be an account controlled by Dapper Labs.
+
+The Custodian Account is the account that will create user accounts to receive locked FLOW tokens.
+This is an account that you control. We describe its creation below.
+
+The User Account is an account that has been created by the Custodian Account that can receive FLOW tokens.
+This is an account that you control, it should be distinct from the other accounts. We also describe its creation below.
+
+The Shared Account is another account for the same user that has also been created by the Custodian Account that can receive
+locked FLOW tokens. It has two keys, one from the user and one from the admin. This is an account that you control, it should
+be distinct from the other accounts. We also describe its creation below.
+
+# Environment Configuration
+
+For testing using the [emulator](https://github.com/onflow/emulator) the following steps must be performed in order to
+set up the testing environment:
+* Deploy [`IDTableStaking`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc).
+* Deploy [`StakingProxy`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/StakingProxy.cdc).
+* Deploy [`LockedTokens`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/LockedTokens.cdc).
+  * This must be executed by the Token Admin account.
+
+For testnet or mainnet you do not have to perform these steps. These contracts have already been deployed on the network.
+You can find their addresses here:
+
+[testnet deployed contract addresses]()
+
+[mainnet deployed contract addresses]()
+
+# Custodian Account Creation and Setup
+
+* Create the Custodian Account with the provided public key.
+  * This must be executed by the Admin Account. On the emulator, this is you. On testnet or mainnet this is Dapper Labs. 
+* Configure the Custodian Account ([`TX C.01`](/token/staking/locked/transactions/#custodian)).
+  * This must be executed by the Custodian Account.
+* Deposit the Account Creator capability in the Custodian Account ([`TX TA.06`](/token/staking/locked/transactions/#setup).
+  * This must be executed by the Token Admin.
+
+# User and Shared Account Creation and Setup
+
+* Create the User Account and Shared Account ([`TX C.02`](/token/staking/locked/transactions/#custodian))
+  * This must be executed by the Custodian Account.
+  * The arguments to the transaction are slightly different for each network:
+    * emulator: the same as either testnet or mainnet below, at your option. 
+    * testnet: a partial user public key (weight: 900) and a partial admin public key (weight: 100).
+    * mainnet: a partial user public key (weight: 900) and a FULL admin public key (weight: 1000).
+  * The Custodian provides the User's account key(s).
+
+# Token Delivery
+
+* The Token Admin sends 1.0 locked FLOW to the User's Shared Account.
+  * This must be executed by the Admin Account.
+  * testnet: using the [`mint_locked.cdc`]() transaction.
+  * mainnet: using the [`transfer_locked_tokens.cdc`]() transaction.
+* The Custodian confirms the User's account balances. Use the
+  [`get_locked_account_balance.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/get_locked_account_balance.cdc)
+  script to fetch the locked balance, and the
+  [`get_balance.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/flowToken/scripts/get_balance.cdc)
+  script to fetch the unlocked balance.
+  * The balances should be:
+    * LOCKED BALANCE: 1.0 .
+    * UNLOCKED BALANCE: 0.0 .
+* On mainnet only, the Token Admin uses their private key to retrieve locked FLOW using [`retrieve_locked_tokens.cdc`]().
+  * This must be executed by the Token Admin Account.
+
+# Token Unlocking
+
+__**DO NOT TEST ON MAINNET**__ 
+
+* The Token Admin unlocks 0.5 FLOW for the User using the
+  [`unlock_tokens.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/unlock_tokens.cdc)
+  transaction.
+  * This must be executed by the Token Admin Account.
+* The Custodian confirms the User's account balances. Use the
+  [`get_locked_account_balance.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/user/get_locked_account_balance.cdc)
+  script to fetch the locked balance, and the
+  [`get_balance.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/flowToken/scripts/get_balance.cdc)
+  script to fetch the unlocked balance.
+  * The balances should be:
+    * LOCKED BALANCE: 0.5
+    * UNLOCKED BALANCE: 0.5
