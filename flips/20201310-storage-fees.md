@@ -8,7 +8,7 @@
 
 ## Objective
 
-Limit the maximum amount of storage each account has to prevent storing huge amount of data on chain.
+Limit the maximum amount of storage each account has, to prevent storing huge amount of data on chain.
 
 A minimum amount of storage will be provided to each account when it is created. More storage can then be purchased by using the **StorageFeesContract**. Storage can also be refunded using the same contract.
 
@@ -86,20 +86,20 @@ To prevent changing size of the `storage_used` register after `storage_used` is 
 
 Two possible approaches of calculating the storage used by an address were considered:
 
-- absolute: get all registers for each address (touched in the current `View`) and sum their size to get `storage_used`
 - differential: on the current `View`, keep track of register size changes per address and sum them with the previous `storage_used`.
+- absolute: get all registers for each address (touched in the current `View`) and sum their size to get `storage_used`
 
 The decision was made to go with the differential approach, because iterating through all key value pairs in storage for each account touched would be too expensive and would not scale well.
 
 ##### Approach 1 - differential
 
-The basic principle of this approach is to update accounts `storage_used` every time a register size changes, by adding the size change to current `storage_used`.
+The basic principle of this approach is to update an accounts `storage_used` register every time a register size changes, by adding the size change to current `storage_used`.
 
 - During `View.Set` and `View.Delete` if storage size changes update `storage_used`.
 - If `storage_used` does not exist on the account add it.
 
 - cons:
-    1. any error (due to code bugs) done in this calculation will be permanent. (e.g. If storage used change is of by 10kB because of a bug in calculation fixing the bug wont correct the storage used)
+    1. any error (due to code bugs) done in this calculation will be permanent. (e.g. If storage used change is off by 10kB because of a bug in calculation fixing the bug will not correct the storage used)
         - Mitigate by adding a lot of test coverage for this functionality
         - In the event a bad calculation is found it can be fixed during a spork (while we are still doing sporks)
     2. migration required for existing accounts 
