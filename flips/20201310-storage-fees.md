@@ -89,7 +89,7 @@ Two possible approaches of calculating the storage used by an address were consi
 - absolute: get all registers for each address (touched in the current `View`) and sum their size to get `storage_used`
 - differential: on the current `View`, keep track of register size changes per address and sum them with the previous `storage_used`.
 
-The decision was made to go with the differential approach, because iterating through all key value pairs in storage for each account touched would be to expensive and would not scale well.
+The decision was made to go with the differential approach, because iterating through all key value pairs in storage for each account touched would be too expensive and would not scale well.
 
 ##### Approach 1 - differential
 
@@ -285,4 +285,3 @@ Current accounts need to be updated to include storage used/capacity fields, wit
     - how to allow changing these values using the **StorageFeesContract**
 - execution:
     - which approach to take to get all the registers from one account
-
