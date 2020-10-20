@@ -33,7 +33,7 @@ Prescribing a reasonable minimum amount of storage will still allow almost every
 
 #### Account Storage Tracking (Execution Environment)
 
-- Every account should have a `storage_capacity` and `storage_used` 
+- Every account should have a `storage_capacity` and `storage_used` of type uint64 and unit of byte
 - Minimum amount of `storage_capacity` for each account is 100KB (as defined by the **StorageFeesContract**)
 - `storage_used` is the sum of data stored on ledger (sum of register value byte size owned by this account) (register keys are not part of storage used)
 - on every transaction `storage_used` should be updated
@@ -96,7 +96,8 @@ The decision was made to go with the differential approach, because iterating th
 The basic principle of this approach is to update an accounts `storage_used` register every time a register size changes, by adding the size change to current `storage_used`.
 
 - During `View.Set` and `View.Delete` if storage size changes update `storage_used`.
-- If `storage_used` does not exist on the account add it.
+- If `storage_used` does not exist on the account add it with the size of 8 (which is the size of itself).
+- The current value of `storage_used` is needed to increment the `storage_used`. To reduce the number of register GETs (and updating SPoCKs every time) the `View` will keep an internal cache of `storage_used` per account
 
 - cons:
     1. any error (due to code bugs) done in this calculation will be permanent. (e.g. If storage used change is off by 10kB because of a bug in calculation fixing the bug will not correct the storage used)
@@ -159,7 +160,6 @@ for account in accounts_changed:
     new_size = get_storage_used(account, in_current_view)
     if new_size > get_account_storage_capacity(account)
         raise Exception()  # make sure its correctly caught and descriptive
-    update_storage_used(account, new_size)
 ```
 
 #### Cadence interface changes
@@ -175,13 +175,40 @@ GetStorageCapacity(address Address) (value uint64, err error)
 SetStorageCapacity(address Address, value uint64) err error
 ```
 
-In cadence runtime we need to add `storage_capacity` and `storage_used` read only fields to auth account. **CAUTION** what does `storage_used` return? `storage_used` before the transaction or at this moment during the transaction.
+In cadence runtime we need to add `storage_capacity` and `storage_used` read-only fields to auth account. **CAUTION** which value does `storage_used` return? `storage_used` before the transaction or at this moment during the transaction.
 
 `SetStorageCapacity(address, value)` Will be exposed to cadence runtime only to the **StorageFeesContract**. TODO: details on how!
 
-### StorageFeesContract
+### StorageFees Smart Contract
 
-TODO: StorageFeesContract details
+A new `StorageFees` smart contract will be created. It will use the `FlowFees` contract to collect storage fees. It will be used by the `FlowServiceAccount`. The `FlowServiceAccount` Will be used as a wrapper around `StorageFees` to keep all the service functionality in one place.
+
+`StorageFees` smart contract will have the following responsibilities:
+
+- definitions:
+    - `minimumAccountStorage`: defines the minimum amount of `storage_capacity` an account can have
+    - `minimumStorageUnit`: define the minimum unit (chunk) size of storage. Storage can only be bought (refunded) in a multiple of the minimum unit
+    - `flowPerByte`: define the cost of 1 byte of storage in FLOW
+    - `flowPerAccountCreation`: define the cost of purchasing the initial minimum storage
+- functions:
+    - `purchaseMinimumStorageForAddress(payer, address)`:
+        - the payer pays for the minimum storage needed by the address
+        - checks if `storage_capacity` is already present on the address (if so panic)
+        - sets the `storage_capacity` to `minimumAccountStorage` 
+        - using `FlowFees` deducts `flowPerAccountCreation` from the payer
+    - `purchaseStorageForAddress(payer, address, amount)`:
+        - the payer pays for extra storage needed by the address
+        - checks if `storage_capacity` is present on the address (if not so panic)
+        - checks if amount is divisible by `minimumStorageUnit` (if not panic)
+        - increments `storage_capacity` by amount
+        - using `FlowFees` deducts `flowPerByte` x amount from the payer
+    - `refundStorage(account, amount)`:
+        - the account refunds its own purchased storage to its own vault 
+        - checks if `storage_capacity` is present on the address (if not so panic)
+        - checks if amount is divisible by `minimumStorageUnit` (if not panic)
+        - checks if `storage_capacity` - amount >= `minimumAccountStorage` (if not so panic)
+        - decrement `storage_capacity` by amount
+        - using `FlowFees` add `flowPerByte` x amount to the account
 
 ### Register migration
 
@@ -193,7 +220,7 @@ First we need to consider that some accounts will be over the 100kB minimum limi
     - find the smallest k for which the account storage is less then 10kB ^ k give them 10kB ^ (k + 1) storage capacity. Assuming an exponential growth and that they started growing a month ago this will give them another month to react to the change. This will produce only a few different storage_capacity values.
 
 Because the process of creating a register migration is not documented yet a few assumptions need to be made:
-- migration will be a function with the signature of:  (key, value) -> [(key, value)] 
+- migration will be a function with the signature of: `(key, value) -> [(key, value)]`
 - the function must be stateless
 - it has access to other registers
 
@@ -285,3 +312,5 @@ Current accounts need to be updated to include storage used/capacity fields, wit
     - how to allow changing these values using the **StorageFeesContract**
 - execution:
     - which approach to take to get all the registers from one account
+- general:
+    - could I delete an account (of which I have control) and refund its creation fee (to some other account)
