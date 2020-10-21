@@ -23,6 +23,8 @@
     { "source": "/docs/staking-rewards",                        "destination": "/concepts/node-operation/staking-rewards/", "permanent": true },
     { "source": "/docs/delegation",                             "destination": "/concepts/flow-concepts/delegation/",       "permanent": true },
     { "source": "/intro/partner-update",                        "destination": "/updates/sep-16-2020/",                     "permanent": true },
-    { "source": "/intro/partner-update/",                       "destination": "/updates/sep-16-2020/",                     "permanent": true }
+    { "source": "/intro/partner-update/",                       "destination": "/updates/sep-16-2020/",                     "permanent": true },
+    { "source": "/concepts/token-delivery-steps",               "destination": "/token/delivery/",                          "permanent": true },
+    { "source": "/concepts/token-delivery-steps/",              "destination": "/token/delivery/",                          "permanent": true }
   ]
 }
