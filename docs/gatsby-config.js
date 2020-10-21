@@ -249,10 +249,9 @@ const sections = [
     sidebar: {
       FLOW: [
         "token/index",
-        "token/backers",
         "token/earn",
-        "token/wallets",
         "token/concepts",
+        "token/delivery",
         "token/faq",
       ],
       Staking: [
