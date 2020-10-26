@@ -156,11 +156,18 @@ This process will be changed to account for setting `storage_capacity` and `stor
 
 Joining the calls to `FlowServiceAccount` into one transaction will also improve the performance of account creation.
 
-#### Limit Storage Used After a Transaction
+#### Limit Storage Used
 
-`StorageLimiter` transaction processor will be used to prevent `storage_used` going over the `storage_capacity`. 
+The amount of `storage_used` should be less then or equal to `storage_capacity`. There are two options on when to check that this constraint is not violated:
 
-`StorageLimiter` will user the transaction pipeline as follows:
+1. Deferred: Check after all register changes (and `storage_used` updates) from a transaction were made.
+1. Immediate: Check on every `storage_used` update during the transaction.
+
+The "immediate" approach has a slight added overhead as ech register set needs to also do a comparison. The "deferred" approach has the added benefit of allowing accounts to temporarily go over their storage capacity during the transaction then cleaning up before the end of the transaction. (e.g. assuming 100kB is the storage capacity an account could go to 120kB while doing a computation, as long as the account reduces its size to under 100kB before the transaction ends).
+
+The "deferred" approach was chosen, due to it more accurately representing the amount of data that will actually get stored to the execution state.
+
+The `StorageLimiter` transaction processor implementation will be used to prevent `storage_used` going over the `storage_capacity`. The `StorageLimiter` will use the transaction pipeline as follows:
 
 1. Create new view.
 2. Run transaction.
@@ -174,14 +181,14 @@ Joining the calls to `FlowServiceAccount` into one transaction will also improve
 3. Error handling <- catch the storage over limit and revert transaction/
 4. "Merge" view.
 
-The behaviour of `StorageLimiter` can be expressed with the following pseudo-code:
+The internal behaviour of the `StorageLimiter` can be expressed with the following pseudo-code:
 
 ```py
 accounts_changed = get_accounts_with_writes_or_deletes(in_current_view)
 for account in accounts_changed:
     new_size = get_storage_used(account, in_current_view)
     if new_size > get_account_storage_capacity(account)
-        raise Exception()  # make sure its correctly caught and descriptive
+        raise Exception()  # descriptive error
 ```
 
 #### Cadence Interface Changes
