@@ -51,7 +51,7 @@ In case additional storage will be required on an account it can be purchased by
 - Accounts can purchase more storage by calling a method on the **StorageFees**.
 - An account can purchase storage for a different account.
 - Accounts can reduce their `storage_capacity` in multiples of the storage chunk and be refunded. Doing so cannot reduce an account's `storage_capacity` below the account minimum storage capacity or below the account's `storage_used`. Storage reduction (and storage fee recovery) will be initially disabled to prevent the recovery of fees provided at no cost to new users as part of the network bootstrapping period. A global boolean value, managed by the Service Account, will control this feature and will be toggled when the bootstrapping period has ended.
-- Calling `deductAccountCreationFee` on the **FlowServiceAccount** smart contract whit an account, indirectly calls the **StorageFees** smart contract and purchases 100KB (minimum account storage capacity) for that account.
+- Calling `deductAccountCreationFee` on the **FlowServiceAccount** smart contract with an account, indirectly calls the **StorageFees** smart contract and purchases 100KB (minimum account storage capacity) for that account.
 
 ### Execution Environment Changes
 
@@ -324,7 +324,8 @@ Current users will not be impacted until they they reach storage capacity.
 
 ## Questions and Discussion Topics
 
-- Cadence:
-    - How to allow changing these values using the **StorageFees** smart contract.
-- General:
-    - Could I delete an account (of which I have control) and refund its creation fee (to some other account).
+1. Cadence:
+    1. How to allow changing these values using the **StorageFees** smart contract.
+1. General:
+    1. Could an account be deleted for the purpose of refunding its creation fee.
+    1. When calling `deductAccountCreationFee` on the **FlowServiceAccount** besides storage fees what constitutes the fees?:
