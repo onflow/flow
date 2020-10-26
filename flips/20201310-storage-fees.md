@@ -8,24 +8,24 @@
 
 ## Objective
 
-Limit the maximum amount of storage each account has, to prevent storing huge amount of data on chain.
+Limit the maximum amount of storage each account has to prevent storing huge amount of data on chain.
 
-A minimum amount of storage will be provided to each account when it is created. More storage can then be purchased by using the **StorageFeesContract**. Storage can also be refunded using the same contract.
+A minimum amount of storage will be provided to each account when it is created. Additional storage can be purchased by using the **StorageFees** smart contract. Storage can also be refunded using the same contract.
 
 ## Motivation
 
-If execution state grows to large execution node will no longer be able to hold it in memory to calculate the next state. When this will happen the execution node requirements (and the nodes them selves) will need to be updated (and will cost more to run).
+If the execution state grows too large, execution nodes will no longer be able to hold the execution state in memory, which is necessary to calculate the next execution state. When this happens, the execution node requirements (and the nodes themselves) will need to be updated (and it will cost more to operate them).
 
-Limiting the amount of storage an account can have will prevent the execution state growing because of two reasons:
+Limiting the amount of storage that an account can have will prevent the execution state from growing due to cases such as:
 
-- attacks storing large amounts of data to the blockchain with the explicit intent to slow it down or crash it
-- developers not considering storage costs in their smart contracts (because they don't need to)
+- Attacks to the system that attempt to store large amounts of data on chain with the explicit intent to slow it down or crash the network.
+- Developers not considering storage costs in their smart contracts (because they don't need to).
 
 ## User Benefit
 
-This will have the long term benefit of reducing growth of the execution state size, and thus reducing growth of the execution node requirements. 
+Limiting the maximum amount of storage each account has will have the long term benefit of reducing the growth of the execution state size, and thus reducing the growth of the execution node requirements. 
 
-Prescribing a reasonable minimum amount of storage will still allow almost everyone to deploy and use smart contracts normally. 
+Prescribing a reasonable minimum amount of storage will allow almost everyone to deploy and use smart contracts normally. The minimum amount of storage must be at least large enough to allow the account to be usable, i.e. it must be large enough to store keys to allow a transaction signed with the key to be successfully executed, and it must be large enough to store the FLOW smart contract objects (vault, receiver capability, etc.) to allow the holding of FLOW tokens.
 
 ## Design Proposal
 
@@ -33,36 +33,37 @@ Prescribing a reasonable minimum amount of storage will still allow almost every
 
 #### Account Storage Tracking (Execution Environment)
 
-- Every account should have a `storage_capacity` and `storage_used` of type uint64 and unit of byte
-- Minimum amount of `storage_capacity` for each account is 100KB (as defined by the **StorageFeesContract**)
-- `storage_used` is the sum of data stored on ledger (sum of register value byte size owned by this account) (register keys are not part of storage used)
-- on every transaction `storage_used` should be updated
-- both storage_capacity and storage_used is only controlled by the **StorageFeesContract** smart contracts and no user has access to it.
-- If a transaction tries to store more data than the limit, the tx should fail.
+- For each account two additional 64-bit unsigned integer (uint64) values are stored in the execution state (i.e. the values are explicitly stored and not inferred).
+  - Storage Capacity (`storage_capacity`): The maximum amount of storage each account can store (in bytes). The minimum value is 100KB (as defined by the **StorageFees**).
+  - Storage Used (`storage_used`): The amount of storage the account currently uses (in bytes); The sum of data stored in the execution state for the account, i.e the sum of the sizes of all register values for the account. Register keys are not part of storage used.
+- After each transaction, the `storage_used` value must be updated.
+- The `storage_capacity` value is only writeable by the **StorageFees** smart contract. Other code only has read access.
+- The `storage_used` is only writeable by the execution environment. Other code only has read access.
+- If a transaction tries to store more data than the limit, the transaction should fail. The resulting error clearly states that the storage capacity was reached.
 
-#### StorageFeesContract (part of service account)
+#### Storage Fees Smart Contract (part of the service account)
 
-- is a smart contract that holds the deposits and provides functionality for accounts to acquire or release `storage_capacity`.
-- the smallest unit of storage purchase is initially set to 10KB but can change as a parameter inside the smart contract.
-- price of storage is 1KB for 1mF.
-- accounts can purchase more storage by calling a method on the StorageFeesContract.
-- one account can purchase storage for another account.
-- accounts can release storage (note that each account can't have less than 100KB, at a cost of 0.1F) and get back the money. This feature should be disabled using a boolean initially to prevent attacks and spam transactions to make money by storage deposits.
-- `FlowServiceAccount.deductAccountCreationFee(account)` (fees contract) calls **StorageFeesContract** and purchases 100KB storage capacity for the account.
+- The Storage Fees smart contract is a smart contract that collects the deposits and provides functionality for accounts to acquire or release `storage_capacity`.
+- The smallest unit of storage purchase is initially set to 10KB. This can be changed by the smart contract.
+- Price of storage is 1KB for 1mF. This can be changed by the smart contract.
+- Accounts can purchase more storage by calling a method on the **StorageFees**.
+- An account can purchase storage for a different account.
+- Accounts can release storage and be refunded. This operation cannot reduce an account's `storage_capacity` below the account minimum storage capacity. This feature should initially be disabled (to prevent attacks and spam transactions to make money by storage deposits).
+- Calling `deductAccountCreationFee` on the **FlowServiceAccount** smart contract whit an account, indirectly calls the **StorageFees** smart contract and purchases 100KB (minimum account storage capacity) for that account.
 
-### Execution environment changes
+### Execution Environment Changes
 
 The execution environment has three responsibilities:
 
-- keeping the storage used up to date (after every transaction)
-- preventing accounts of going over storage capacity
+1. Keeping the `storage_used` value up to date after every transaction.
+1. Preventing accounts going over storage capacity.
+1. Enabling the Flow Virtual Machine (`fvm`) package access to the `storage_capacity` and `storage_used` values:
+    - Read access is permitted to both values for Cadence code
+    - Write access to `storage_used` is only permitted from the execution environment.
+    - Write access to `storage_capacity` is only permitted from the **StorageFees** smart contract
 
-- giving fvm access to `storage_capacity` and `storage_used`
-    - read access for all accounts to both values
-    - `storage_used` set access to no one (only the execution env changes this)
-    - `storage_capacity` set access only to **StorageFeesContract**
 
-`storage_capacity` and `storage_used` will be stored in the following registers:
+`storage_capacity` and `storage_used` are stored in the following registers:
 
 ```json
 [
@@ -78,51 +79,49 @@ The execution environment has three responsibilities:
 ]
 ```
 
-#### Get storage used
+#### Get and Update Storage Used
 
-Only register values are considered when size is being calculated. Register keys are not part of storage used.
+The amount of storage used by a single register on an address is the byte size of the register value. Register key size is not part of the storage used .
+`storage_used` by an address is also stored in the address' register. This could lead to a recursive problem of needing to update `storage_used` when `storage_used` is updated. Assuming that both `storage_capacity` and `storage_used` registers will be of type uint64, an thus size 8, removes this issue.
 
-To prevent changing size of the `storage_used` register after `storage_used` is calculated and updated, both `storage_capacity` and `storage_used` registers will be of type uint64. This way both their sizes will be a constant value of 8.
+Two possible approaches of calculating the `storage_used` by an address were considered:
 
-Two possible approaches of calculating the storage used by an address were considered:
-
-- differential: on the current `View`, keep track of register size changes per address and sum them with the previous `storage_used`.
-- absolute: get all registers for each address (touched in the current `View`) and sum their size to get `storage_used`
+- Differential: on the current `View`, keep track of register size changes per address and sum them with the previous `storage_used`.
+- Absolute: get all registers for each address (touched in the current `View`) and sum their size to get `storage_used`.
 
 The decision was made to go with the differential approach, because iterating through all key value pairs in storage for each account touched would be too expensive and would not scale well.
 
-##### Approach 1 - differential
+##### Approach 1 - Differential
 
-The basic principle of this approach is to update an accounts `storage_used` register every time a register size changes, by adding the size change to current `storage_used`.
+The basic principle of this approach is to update an address `storage_used` register every time a register size changes, by adding the size change to current `storage_used`:
 
-- During `View.Set` and `View.Delete` if storage size changes update `storage_used`.
-- If `storage_used` does not exist on the account add it with the size of 8 (which is the size of itself).
-- The current value of `storage_used` is needed to increment the `storage_used`. To reduce the number of register GETs (and updating SPoCKs every time) the `View` will keep an internal cache of `storage_used` per account
+- During `View.Set` and `View.Delete` if storage size changes, update `storage_used`.
+- In case `storage_used` register does not exist on the address add it with the size of 8 (the size of itself).
+- To increment the `storage_used` value, `GET` must be called to get the current value of `storage_used`. To reduce the number of register `GET`-s (and thus updating SPoCKs) the `View` will keep an internal cache of current `storage_used` values per account.
 
-- cons:
-    1. any error (due to code bugs) done in this calculation will be permanent. (e.g. If storage used change is off by 10kB because of a bug in calculation fixing the bug will not correct the storage used)
-        - Mitigate by adding a lot of test coverage for this functionality
-        - In the event a bad calculation is found it can be fixed during a spork (while we are still doing sporks)
-    2. migration required for existing accounts 
-    3. If we decide to change what factors into `storage_used` there will need to be a migration to fix current `storage_used` on all addresses
-        - Fixable with a spork
+- Cons:
+    1. Any error (due to code bugs) done in this calculation will be permanent. (e.g. If  `storage_used` change is off by 10kB because of a bug in calculation, fixing the bug will not correct the storage used)
+        - This can be mitigated by adding a lot of test coverage for this functionality.
+        - In the event a bad calculation is made and discovered, it can be corrected during a spork
+    2. Migration is required for existing addresses to set current `storage_used`.
+    3. If we decide to change what factors into `storage_used` there will need to be a migration (spork) to fix `storage_used` on all addresses.
 
-related PRs: 
-- storage used updated: https://github.com/onflow/flow-go/pull/76
-- storage limiter: https://github.com/onflow/flow-go/pull/80
-- expose storage used/capacity to fvm: TODO
-- purchase minimum storage on account creation: TODO
+Related PRs: 
+- Storage used updated: https://github.com/onflow/flow-go/pull/76.
+- Storage limiter: https://github.com/onflow/flow-go/pull/80.
+- Expose storage used/capacity to fvm: TODO.
+- Purchase minimum storage on address creation: TODO.
 
-##### Approach 2 - absolute (rejected)
+##### Approach 2 - Absolute (Rejected)
 
-Add new method to ledger interface that gets all `RegisterEntry`s for an address
+A new method will be added to the `View`'s interface that gets all `RegisterEntry`-s for an address
 
 ```go
 // GetByOwner returns all register entries for this owner
 GetByOwner(owner string) ([]flow.RegisterEntry, error)
 ```
 
-with this storage can be calculated as:
+With this method storage can be calculated as follows:
 
 ```py
 register_entries, _ =  ledger.GetByOwner(owner)
@@ -131,28 +130,30 @@ for r in register_entries:
     storage_used+= len(r.Value)
 ```
 
-- cons:
-    - this change to the ledger would require a lot of changes all the way down to `LedgerGetRegister` function (which already supports queries by key parts)
-    - slower as all the registers need to be read
+- Cons:
+    - The change to the `View` would require a lot of changes all the way down to `LedgerGetRegister` function (which already supports queries by key parts)
+    - This approach is slower as all the registers need to be read
 
 
-#### Update storage used on transaction
+#### Limit Storage Used After a Transaction
 
-`StorageLimiter` transaction processor will be used to handle updating `storage_used` and preventing storage used going over `storage_capacity`. This is how the `StorageLimiter` will fit into the transaction execution proccess:
+`StorageLimiter` transaction processor will be used to prevent `storage_used` going over the `storage_capacity`. 
 
-1. create new view
-2. run transaction
-    1. run transaction processors
-        1. NewTransactionSignatureVerifier
-        2. NewTransactionSequenceNumberChecker
-        3. NewTransactionFeeDeductor
-        4. NewTransactionInvocator <- actual transaction
-        5. *There are no further register (view) writes (or deletes) after this point. All fungible token  moves already happened. All storage size changes already happened*
-        6. **NewStorageLimiter** <- for all participating account that have touched registers, compute account size (if over limit raise error)
-3. error handling <- catch the storage over limit and revert transaction
-4. "merge" view
+`StorageLimiter` will user the transaction pipeline as follows:
 
-`StorageLimiter` behaviour 
+1. Create new view.
+2. Run transaction.
+    1. Run transaction processors (a.k.a.: transaction pipeline):
+        1. TransactionSignatureVerifier,
+        2. TransactionSequenceNumberChecker,
+        3. TransactionFeeDeductor,
+        4. TransactionInvocator, <- actual transaction execution
+        5. *There are no further register (view) writes (or deletes) in the transaction pipeline after this point. All storage size changes already happened.*
+        6. **StorageLimiter** <- for all participating addresses that have touched registers, check if address' `storage_used` is over the address' `storage_capacity`. If it is, raise an error.
+3. Error handling <- catch the storage over limit and revert transaction/
+4. "Merge" view.
+
+The behaviour of `StorageLimiter` can be expressed with the following pseudo-code:
 
 ```py
 accounts_changed = get_accounts_with_writes_or_deletes(in_current_view)
@@ -162,69 +163,75 @@ for account in accounts_changed:
         raise Exception()  # make sure its correctly caught and descriptive
 ```
 
-#### Cadence interface changes
+#### Cadence Interface Changes
 
-To expose `storage_capacity` and `storage_used` to cadence runtime, the following methods need to be added to the interface:
+To expose the `storage_capacity` and `storage_used` values to Cadence programs, the following methods need to be added to Cadence's runtime interface:
 
 ```go
-// GetStorageUsed gets storage used in bytes by the address at the moment of the function call.
+// GetStorageUsed gets storage used in bytes by the account at the moment of the function call.
 GetStorageUsed(address Address) (value uint64, err error)
-// GetStorageCapacity gets storage capacity in bytes on the address.
+// GetStorageCapacity gets storage capacity in bytes on the account.
 GetStorageCapacity(address Address) (value uint64, err error)
-// SetStorageCapacity sets storage capacity to value bytes on the address.
+// SetStorageCapacity sets storage capacity to value bytes on the account.
 SetStorageCapacity(address Address, value uint64) err error
 ```
 
-In cadence runtime we need to add `storage_capacity` and `storage_used` read-only fields to auth account. **CAUTION** which value does `storage_used` return? `storage_used` before the transaction or at this moment during the transaction.
+In the Cadence semantic analysis pass and in the interpreter, two new read-only fields are added to accounts (the types `AuthAccount` and `PublicAccount`):
+  - `let storageCapacity: UInt64`: the maximum amount of storage that the account may store.
+  - `let storageUsed: UInt64`: the currently used amount of storage. In this context "currently" refers to the state of the account as it is at that line of the programs execution.
 
-`SetStorageCapacity(address, value)` Will be exposed to cadence runtime only to the **StorageFeesContract**. TODO: details on how!
+The function `SetStorageCapacity(address, value)` will only be exposed to the **StorageFeesContract**. TODO: details on how!
 
-### StorageFees Smart Contract
+### Storage Fees Smart Contract
 
-A new `StorageFees` smart contract will be created. It will use the `FlowFees` contract to collect storage fees. It will be used by the `FlowServiceAccount`. The `FlowServiceAccount` Will be used as a wrapper around `StorageFees` to keep all the service functionality in one place.
+The new `StorageFees` smart contract will be created. It will use the `FlowFees` contract to collect storage fees. The `FlowServiceAccount` Will be used as a wrapper around `StorageFees` to keep all the service functionality in one place.
 
-`StorageFees` smart contract will have the following responsibilities:
+The `StorageFees` smart contract will have the following responsibilities:
 
-- definitions:
-    - `minimumAccountStorage`: defines the minimum amount of `storage_capacity` an account can have
-    - `minimumStorageUnit`: define the minimum unit (chunk) size of storage. Storage can only be bought (refunded) in a multiple of the minimum unit
-    - `flowPerByte`: define the cost of 1 byte of storage in FLOW
-    - `flowPerAccountCreation`: define the cost of purchasing the initial minimum storage
-- functions:
+- Definitions:
+    - `minimumStorageUnit`: define the minimum unit (chunk) size of storage. Storage can only be bought (or refunded) in a multiple of the minimum unit.
+    - `minimumAccountStorage`: defines the minimum amount of `storage_capacity` an address can have. Is a multiple of `minimumStorageUnit`.
+    - `flowPerByte`: defines the cost of 1 byte of storage in FLOW tokens.
+    - `flowPerAccountCreation`: define the cost of purchasing the initial minimum storage in FLOW tokens.
+- Functions:
     - `purchaseMinimumStorageForAddress(payer, address)`:
-        - the payer pays for the minimum storage needed by the address
-        - checks if `storage_capacity` is already present on the address (if so panic)
-        - sets the `storage_capacity` to `minimumAccountStorage` 
-        - using `FlowFees` deducts `flowPerAccountCreation` from the payer
+        - The payer pays for the minimum storage needed by the address.
+        - Check if `storage_capacity` is already present on the address (if so panic).
+        - Set the `storage_capacity` to `minimumAccountStorage`.
+        - Using `FlowFees` deduct `flowPerAccountCreation` from the payer.
     - `purchaseStorageForAddress(payer, address, amount)`:
-        - the payer pays for extra storage needed by the address
-        - checks if `storage_capacity` is present on the address (if not so panic)
-        - checks if amount is divisible by `minimumStorageUnit` (if not panic)
-        - increments `storage_capacity` by amount
-        - using `FlowFees` deducts `flowPerByte` x amount from the payer
+        - The payer pays for extra storage needed by the address.
+        - Check if `storage_capacity` is present on the address (if not so panic).
+        - Check if amount is divisible by `minimumStorageUnit` (if not panic).
+        - Increment `storage_capacity` by amount.
+        - Using `FlowFees` deduct `flowPerByte` x amount from the payer.
     - `refundStorage(account, amount)`:
-        - the account refunds its own purchased storage to its own vault 
-        - checks if `storage_capacity` is present on the address (if not so panic)
-        - checks if amount is divisible by `minimumStorageUnit` (if not panic)
-        - checks if `storage_capacity` - amount >= `minimumAccountStorage` (if not so panic)
-        - decrement `storage_capacity` by amount
-        - using `FlowFees` add `flowPerByte` x amount to the account
+        - The account refunds its own purchased storage to its own vault 
+        - Check if `storage_capacity` is present on the address (if not so panic)
+        - Check if amount is divisible by `minimumStorageUnit` (if not panic)
+        - Check if `storage_capacity` - amount >= `minimumAccountStorage` (if not so panic)
+        - Decrement `storage_capacity` by amount
+        - Using `FlowFees` add `flowPerByte` X amount to the payer
 
 ### Register migration
 
-First we need to consider that some accounts will be over the 100kB minimum limit. We need to give more storage capacity to these accounts, but the question is how much more.
+During migration we need to consider that some accounts will be over the 100kB minimum limit. The initial storage capacity assigned to these accounts must be larger than what they are currently using. If it is not these accounts will be rendered unusable until more storage is purchased for them.
 
-1. 100kB more than their current storage: if they are using a lot, they might burn through the 100kB faster then they can reasonably react to this change
-2. a relative amount. for example:
-    - 2 times their current amount. Assuming a linear growth and that they started growing a month ago this will give them another month to react to the change. This will mean wi have a wide range of different storage_capacity values.
-    - find the smallest k for which the account storage is less then 10kB ^ k give them 10kB ^ (k + 1) storage capacity. Assuming an exponential growth and that they started growing a month ago this will give them another month to react to the change. This will produce only a few different storage_capacity values.
+There are multiple possible approaches to consider when deciding how much more storage capacity to assign to accounts that are currently over the minimum account storage capacity:
+
+1. give accounts 100kB more storage capacity than their current storage. 
+    - If they are using a lot, they might burn through the 100kB faster then they can reasonably react to this change.
+2. give accounts storage capacity relative to the amount of storage used. for example:
+    - 2-times their current amount. Assuming a linear growth and that they started growing a month ago this will give them another month to react to the change. This will mean wi have a wide range of different storage_capacity values.
+    - Find the smallest k for which the account' storage is less then 10kB ^ k give them 10kB ^ (k + 1) storage capacity. Assuming an exponential growth and that they started growing a month ago this will give them another month to react to the change. This will produce only a few different storage_capacity values.
+3. consider accounts in this category to be rare enough to assign them storage capacity on a case-per-case basis.
 
 Because the process of creating a register migration is not documented yet a few assumptions need to be made:
-- migration will be a function with the signature of: `(key, value) -> [(key, value)]`
-- the function must be stateless
-- it has access to other registers
+- Migration will be a function with the signature of: `(key, value) -> [(key, value)]`.
+- The function must be stateless.
+- It has access to other registers.
 
-with this the migration pseudo-code can be written as:
+With this in mind the migration pseudo-code can be written as:
 
 ```py
 def migrate(key, value) -> (keyType, valueType)[]:
@@ -250,67 +257,71 @@ def migrate(key, value) -> (keyType, valueType)[]:
 
 ### Performance Implications
 
-This affects all transactions by adding a small overhead (calculation of `storage_used`). This can be measured by comparing the execution time of integration tests (that already exist).
+The changes done will affect all transactions by adding a small overhead:
+    - Calculation of `storage_used`.
+    - Checking `storage_used` is not over `storage_capacity`.
+
+This overhead can be measured by comparing the execution time of integration tests (that already exist).
 
 TODO: which tests?
 
-Create account transactions should be affected more, because of the extra call to **StorageFeesContract**.
+Create account transactions will be affected to a larger degree, because of the extra call to **StorageFees** Smart contract.
 
-There shouldn't be any major memory usage change, since only two fields (16 bytes + 2 key sizes) are being added to each account. The current minimum size two orders of magnitudes larger (flow token receiver, flow token vault, private keys)
-
+Memory usage should not noticeably change since only two fields (16 bytes + 2 key sizes) are being added to each account. The current minimum size two orders of magnitudes larger (flow token receiver, flow token vault, private keys, ...)
 
 ### Dependencies
 
 * Dependent projects: 
-    * flow-core-contracts (adding **StorageFeesContract**, changing **FeesContract**)
-    * cadence (access to new fields)
-    * flow-go (execution change)
-    * emulator (emulate storage size limiting)
-    * sdks (example transactions to check/increase storage) 
+    * `flow-core-contracts` (adding **StorageFeesContract**, changing **FeesContract**),
+    * `cadence` (access to new fields),
+    * `flow-go` (execution change),
+    * `emulator` (emulate storage size limiting),
+    * SDK-s (example transactions to check/increase storage).
 
 ### Engineering Impact
 
-* binary size / build time / test times should not noticeably increase 
-* Most of the changes are spread out over cadence, flow-core-contracts and flow-go they can be covered by unit test separately
+* Binary size / build time / test times should not noticeably increase.
+* Most of the changes are spread out over cadence, flow-core-contracts and flow-go they can be covered by unit test separately.
 
 ### Tutorials and Examples
 
 There are no protobuf API changes.
 
-There are Cadence api changes that can be covered with the following transactions examples (TODO: make the examples):
+There are Cadence API changes that can be covered with the following transactions examples:
 
-1. tx: get storage used and capacity of an account
-2. tx: purchase more storage for an account
-3. tx: transaction failing because it is storing to much
+1. Tx: get storage used and capacity of an account.
+2. Tx: purchase more storage for an account.
+3. Tx: transaction failing because it is storing to much.
 
+TODO: make the examples
 
 ### Documentation changes
 
-The documentation should cover the following topics:
+The documentation changes should cover the following topics:
 
-- why storage fees?
-- how much are storage fees and where is this written?
-- minimum storage on address?
-- smallest purchasable storage chunk?
-- how to check storage used and capacity?
-- how to purchase more storage?
-- how to refund storage?
-- what error will I get if im out of storage?
+- Why storage fees?
+- How much are storage fees and where is this written?
+- Minimum storage on account?
+- Smallest purchasable storage chunk?
+- How to check storage used and capacity?
+- How to purchase more storage?
+- How to refund storage?
+- What error will I get if im out of storage?
+- Access to storage capacity and storage used values in Cadence programs.
 
 ### Compatibility
 
-Since the execution state needs to be updated to include storage used/capacity fields on all accounts, execution nodes are not backwards compatible.
+Execution nodes will not be backwards compatible, because the execution state will be updated to include storage used/capacity fields on all accounts.
 
 ### User Impact
 
-Current accounts need to be updated to include storage used/capacity fields, with the capacity being set to the minimum capacity. For the accounts that are over the limit we need to buy sufficient storage for them.
+Current accounts will be updated to include storage used/capacity fields, with the capacity being set to the minimum capacity. For the accounts that are over the limit we need to buy sufficient storage.
+
+Current users will not be impacted until they they reach storage capacity.
 
 ## Questions and Discussion Topics
 
-- cadence:
-    - how to prevent changing the `storage_capacity` and `storage_used` fields using `SetValue` method?
-    - how to allow changing these values using the **StorageFeesContract**
-- execution:
-    - which approach to take to get all the registers from one account
-- general:
-    - could I delete an account (of which I have control) and refund its creation fee (to some other account)
+- Cadence:
+    - How to allow changing these values using the **StorageFees** smart contract.
+- General:
+    - Could I delete an account (of which I have control) and refund its creation fee (to some other account).
