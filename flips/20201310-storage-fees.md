@@ -98,7 +98,6 @@ The decision was made to go with the differential approach, because iterating th
 The basic principle of this approach is to update an address `storage_used` register every time a register size changes, by adding the size change to current `storage_used`:
 
 - During `View.Set` and `View.Delete` if storage size changes, update `storage_used`.
-- In case `storage_used` register does not exist on the address add it with the size of 8 (the size of itself).
 - To increment the `storage_used` value, `GET` must be called to get the current value of `storage_used`. To reduce the number of register `GET`-s (and thus updating SPoCKs) the `View` will keep an internal cache of current `storage_used` values per account.
 
 - Cons:
@@ -136,6 +135,26 @@ for r in register_entries:
     - The change to the `View` would require a lot of changes all the way down to `LedgerGetRegister` function (which already supports queries by key parts)
     - This approach is slower as all the registers need to be read
 
+#### Create Account Changes
+
+Account creation process currently goes through the following steps:
+
+1. Deduct account creation fee by calling the `FlowServiceAccount` smart contract.
+1. Set `exists` register which marks that the account exists.
+1. Set key related registers.
+1. Call `FlowServiceAccount` smart contract to initialize the FLOW token vault and receiver.
+
+This process will be changed to account for setting `storage_capacity` and `storage_used` fields:
+
+1. Set `storage_used` register to the size of itself
+1. Set `exists` register which marks that the account exists.
+1. Set key related registers.
+1. Calling the `FlowServiceAccount` smart contract to:
+    - Deduct account creation fees (including storage fees)
+    - Set `storage_capacity` to the minimum account storage
+    - Initialize the FLOW token vault and receiver.
+
+Joining the calls to `FlowServiceAccount` into one transaction will also improve the performance of account creation.
 
 #### Limit Storage Used After a Transaction
 
@@ -187,7 +206,7 @@ In the Cadence semantic analysis pass and in the interpreter, two new read-only 
 
 ### Storage Fees Smart Contract
 
-The new `StorageFees` smart contract will be created. It will use the `FlowFees` contract to collect storage fees. The `FlowServiceAccount` Will be used as a wrapper around `StorageFees` to keep all the service functionality in one place.
+The new `StorageFees` smart contract will be created. It will use the `FlowFees` contract to collect storage fees. The `FlowServiceAccount` contract will be used as a wrapper around `StorageFees` contract to keep all the service functionality in one place.
 
 The `StorageFees` smart contract will have the following responsibilities:
 
@@ -263,9 +282,9 @@ This overhead can be measured by comparing the execution time of integration tes
 
 TODO: which tests?
 
-Create account transactions will be affected to a larger degree, because of the extra call to **StorageFees** Smart contract.
+Time complexity of transactions that are creating new accounts will actually be reduced because of batching two calls to into one (see [Create Account Changes](#create-account-changes)).
 
-Memory usage should not noticeably change since only two fields (16 bytes + 2 key sizes) are being added to each account. The current minimum size two orders of magnitudes larger (flow token receiver, flow token vault, private keys, ...)
+Memory usage should not noticeably change since only two fields (16 bytes + 2 key sizes) are being added to each account. The current minimum account size is about two orders of magnitudes larger (flow token receiver, flow token vault, private keys, ...), than the registers added.
 
 ### Dependencies
 
