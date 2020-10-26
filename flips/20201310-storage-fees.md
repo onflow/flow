@@ -36,19 +36,19 @@ Prescribing a reasonable minimum amount of storage will allow almost everyone to
 - For each account two additional 64-bit unsigned integer (uint64) values are stored in the execution state (i.e. the values are explicitly stored and not inferred).
   - Storage Capacity (`storage_capacity`): The maximum amount of storage each account can store (in bytes). The minimum value is 100KB (as defined by the **StorageFees**).
   - Storage Used (`storage_used`): The amount of storage the account currently uses (in bytes); The sum of data stored in the execution state for the account, i.e the sum of the sizes of all register values for the account. Register keys are not part of storage used.
-- After each transaction, the `storage_used` value must be updated.
+- The `storage_used` value must be updated at the end of every transaction that modifies an account's storage
 - The `storage_capacity` value is only writeable by the **StorageFees** smart contract. Other code only has read access.
 - The `storage_used` is only writeable by the execution environment. Other code only has read access.
 - If a transaction tries to store more data than the limit, the transaction should fail. The resulting error clearly states that the storage capacity was reached.
 
 #### Storage Fees Smart Contract (part of the service account)
 
-- The Storage Fees smart contract is a smart contract that collects the deposits and provides functionality for accounts to acquire or release `storage_capacity`.
-- The smallest unit of storage purchase is initially set to 10KB. This can be changed by the smart contract.
-- Price of storage is 1KB for 1mF. This can be changed by the smart contract.
+- The Storage Fees smart contract is a smart contract that collects storage deposits and provides functionality for accounts to acquire or release `storage_capacity`.
+- The smallest unit of storage purchased is initially set to 10KB. This can be changed by the smart contract.
+- Initially, the price of storage is 1kB for 1mF. This value will be assessed and updated as the chain evolves.
 - Accounts can purchase more storage by calling a method on the **StorageFees**.
 - An account can purchase storage for a different account.
-- Accounts can release storage and be refunded. This operation cannot reduce an account's `storage_capacity` below the account minimum storage capacity. This feature should initially be disabled (to prevent attacks and spam transactions to make money by storage deposits).
+- Accounts can reduce their `storage_capacity` in multiples of the storage chunk and be refunded. Doing so cannot reduce an account's `storage_capacity` below the account minimum storage capacity or below the account's `storage_used`. Storage reduction (and storage fee recovery) will initially be disabled to prevent the recovery of fees provided at no cost to new users as part of the network bootstrapping period. A global boolean value, managed by the Service Account, will control this feature and will be toggled when the bootstrapping period has ended.
 - Calling `deductAccountCreationFee` on the **FlowServiceAccount** smart contract whit an account, indirectly calls the **StorageFees** smart contract and purchases 100KB (minimum account storage capacity) for that account.
 
 ### Execution Environment Changes
@@ -176,11 +176,12 @@ GetStorageCapacity(address Address) (value uint64, err error)
 SetStorageCapacity(address Address, value uint64) err error
 ```
 
+The function `SetStorageCapacity(address, value)` will only be exposed to the **StorageFees**. TODO: details on how!
+
 In the Cadence semantic analysis pass and in the interpreter, two new read-only fields are added to accounts (the types `AuthAccount` and `PublicAccount`):
   - `let storageCapacity: UInt64`: the maximum amount of storage that the account may store.
   - `let storageUsed: UInt64`: the currently used amount of storage. In this context "currently" refers to the state of the account as it is at that line of the programs execution.
 
-The function `SetStorageCapacity(address, value)` will only be exposed to the **StorageFeesContract**. TODO: details on how!
 
 ### Storage Fees Smart Contract
 
@@ -189,7 +190,7 @@ The new `StorageFees` smart contract will be created. It will use the `FlowFees`
 The `StorageFees` smart contract will have the following responsibilities:
 
 - Definitions:
-    - `minimumStorageUnit`: define the minimum unit (chunk) size of storage. Storage can only be bought (or refunded) in a multiple of the minimum unit.
+    - `minimumStorageUnit`: define the minimum unit (chunk) size of storage. Storage can only be bought (or refunded) in a multiple of the minimum storage unit.
     - `minimumAccountStorage`: defines the minimum amount of `storage_capacity` an address can have. Is a multiple of `minimumStorageUnit`.
     - `flowPerByte`: defines the cost of 1 byte of storage in FLOW tokens.
     - `flowPerAccountCreation`: define the cost of purchasing the initial minimum storage in FLOW tokens.
