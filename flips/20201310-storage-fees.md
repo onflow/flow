@@ -27,6 +27,8 @@ Limiting the maximum amount of storage each account has will have the long term 
 
 Prescribing a reasonable minimum amount of storage will allow almost everyone to deploy and use smart contracts normally. The minimum amount of storage must be at least large enough to allow the account to be usable, i.e. it must be large enough to store keys to allow a transaction signed with the key to be successfully executed, and it must be large enough to store the FLOW smart contract objects (vault, receiver capability, etc.) to allow the holding of FLOW tokens.
 
+In case additional storage will be required on an account it can be purchased by depositing FLOW tokens to the storage fees smart contract.
+
 ## Design Proposal
 
 ### Overview
@@ -48,7 +50,7 @@ Prescribing a reasonable minimum amount of storage will allow almost everyone to
 - Initially, the price of storage is 1kB for 1mF. This value will be assessed and updated as the chain evolves.
 - Accounts can purchase more storage by calling a method on the **StorageFees**.
 - An account can purchase storage for a different account.
-- Accounts can reduce their `storage_capacity` in multiples of the storage chunk and be refunded. Doing so cannot reduce an account's `storage_capacity` below the account minimum storage capacity or below the account's `storage_used`. Storage reduction (and storage fee recovery) will initially be disabled to prevent the recovery of fees provided at no cost to new users as part of the network bootstrapping period. A global boolean value, managed by the Service Account, will control this feature and will be toggled when the bootstrapping period has ended.
+- Accounts can reduce their `storage_capacity` in multiples of the storage chunk and be refunded. Doing so cannot reduce an account's `storage_capacity` below the account minimum storage capacity or below the account's `storage_used`. Storage reduction (and storage fee recovery) will be initially disabled to prevent the recovery of fees provided at no cost to new users as part of the network bootstrapping period. A global boolean value, managed by the Service Account, will control this feature and will be toggled when the bootstrapping period has ended.
 - Calling `deductAccountCreationFee` on the **FlowServiceAccount** smart contract whit an account, indirectly calls the **StorageFees** smart contract and purchases 100KB (minimum account storage capacity) for that account.
 
 ### Execution Environment Changes
@@ -190,8 +192,8 @@ The new `StorageFees` smart contract will be created. It will use the `FlowFees`
 The `StorageFees` smart contract will have the following responsibilities:
 
 - Definitions:
-    - `minimumStorageUnit`: define the minimum unit (chunk) size of storage. Storage can only be bought (or refunded) in a multiple of the minimum storage unit.
-    - `minimumAccountStorage`: defines the minimum amount of `storage_capacity` an address can have. Is a multiple of `minimumStorageUnit`.
+    - `minimumStorageUnit`: define the minimum unit (chunk) size of storage in bytes. Storage can only be bought (or refunded) in a multiple of the minimum storage unit.
+    - `minimumAccountStorage`: defines the minimum amount of `storage_capacity` an address can have. `minimumAccountStorage` is a multiple of `minimumStorageUnit`.
     - `flowPerByte`: defines the cost of 1 byte of storage in FLOW tokens.
     - `flowPerAccountCreation`: define the cost of purchasing the initial minimum storage in FLOW tokens.
 - Functions:
