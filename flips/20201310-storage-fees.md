@@ -216,18 +216,9 @@ The `StorageFees` smart contract will have the following responsibilities:
         - Decrement `storage_capacity` by amount
         - Using `FlowFees` add `flowPerByte` X amount to the payer
 
-### Register migration
+### Register Migration
 
-During migration we need to consider that some accounts will be over the 100kB minimum limit. The initial storage capacity assigned to these accounts must be larger than what they are currently using. If it is not these accounts will be rendered unusable until more storage is purchased for them.
-
-There are multiple possible approaches to consider when deciding how much more storage capacity to assign to accounts that are currently over the minimum account storage capacity:
-
-1. give accounts 100kB more storage capacity than their current storage. 
-    - If they are using a lot, they might burn through the 100kB faster then they can reasonably react to this change.
-2. give accounts storage capacity relative to the amount of storage used. for example:
-    - 2-times their current amount. Assuming a linear growth and that they started growing a month ago this will give them another month to react to the change. This will mean wi have a wide range of different storage_capacity values.
-    - Find the smallest k for which the account' storage is less then 10kB ^ k give them 10kB ^ (k + 1) storage capacity. Assuming an exponential growth and that they started growing a month ago this will give them another month to react to the change. This will produce only a few different storage_capacity values.
-3. consider accounts in this category to be rare enough to assign them storage capacity on a case-per-case basis.
+All existing accounts will be given 1 FLOW token worth of storage (1MB). Only very few accounts currently use more than 1MB of storage. Those that do user more than 1MB will be checked individually and will be given `(n + 1)`MB of storage where `n` is the smallest integer so that the account is using less then `n`MB of storage.
 
 Because the process of creating a register migration is not documented yet a few assumptions need to be made:
 - Migration will be a function with the signature of: `(key, value) -> [(key, value)]`.
@@ -257,6 +248,10 @@ def migrate(key, value) -> (keyType, valueType)[]:
         ((owner, "", "storage_used"), storage_used)
     ]
 ```
+
+#### Future Migrations
+
+During any future register migration if any account registers are touched storage used must be updated as well. To ensure that this is done, touching any account related registers should go through the logic in `accounts.go`.
 
 ### Performance Implications
 
