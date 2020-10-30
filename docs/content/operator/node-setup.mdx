@@ -1,5 +1,6 @@
 ---
 title: Setting Up a Node
+sidebar_title: Node Setup
 ---
 
 <!-- [block:api-header]
@@ -12,49 +13,26 @@ First you'll need to provision a machine or virtual machine to run your node sof
 
 ## Hardware Requirements
 
-The hardware your Node will need varies depending on the role your Node will play in the Flow network. For an overview of the differences see the [Node Roles Overview](doc:node-roles).
+The hardware your Node will need varies depending on the role your Node will play in the Flow network. For an overview of the differences see the [Node Roles Overview](/concepts/flow-concepts/node-roles).
 
 <!-- [block:callout]
 {
 "type": "warning",
 "title": "Best Guesstimates Ahead!",
-"body": "The initial node hardware requirements were a high estimate derived from the theoretical demands by the protocol running at full steam. As we optimize, the early network will likely start with much more modest requirements and gradually scale up over time. The numbers below represent our current best estimate for the state of the network.\n\nThese will be actively updated as we continue benchmarking the network's performance."
+
 }
 [/block] -->
 
-<!-- [block:parameters]
-{
-"data": {
-"h-0": "Node Type",
-"h-1": "CPU",
-"h-2": "Memory",
-"h-3": "Disk",
-"h-4": "Disk",
-"0-0": "Collector",
-"1-0": "Consensus",
-"2-0": "Execution",
-"3-0": "Verification",
-"4-0": "Access",
-"0-1": "2 core",
-"0-3": "200 GiB",
-"1-1": "2 cores",
-"2-1": "4 cores",
-"3-1": "2 cores",
-"4-1": "2 cores",
-"2-3": "5 TiB",
-"3-3": "100 GiB",
-"4-3": "200 GiB",
-"1-3": "100 GiB",
-"1-2": "4 GiB",
-"0-2": "2 GiB",
-"3-2": "2 GiB",
-"4-2": "2 GiB",
-"2-2": "8 GiB"
-},
-"cols": 4,
-"rows": 5
-}
-[/block] -->
+
+| Node Type        | CPU     | Memory |  Disk  |
+|------------------|---------|--------|--------|
+| **Collector**    | 2 cores | 16 GB  | 200 GB |
+| **Consensus**    | 2 cores | 16 GB  | 200 GB |
+| **Execution**    | 4 cores | 32 GB  | 5 TB   |
+| **Verification** | 2 cores | 16 GB  | 200 GB |
+| **Access**       | 2 cores | 16 GB  | 200 GB |
+
+_Note:The above numbers represent our current best estimate for the state of the network.  These will be actively updated as we continue benchmarking the network's performance._
 
 ## Networking Requirements
 
