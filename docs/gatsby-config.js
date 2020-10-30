@@ -136,7 +136,7 @@ const sections = [
     sidebar: {
       null: [
         "[FLOW (Token)](/token)",
-        "[Node Operation Quick Guide](/concepts/node-operation/quickstart)",
+        "[Node operations](/operator)",
         // "intro/partner-update",
         "intro/glossary",
         "intro/FAQ",
@@ -320,6 +320,22 @@ const sections = [
         "docs/language/crypto",
         "docs/language/type-hierarchy",
       ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["operator/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      FLOW: [
+          "operator/index",
+          "operator/node-setup",
+          "operator/node-bootstrap",
+          "operator/monitoring-nodes",
+          "operator/FAQs",
+      ],
+    //  Staking: [
+    //````  ],
     },
   },
 ];
