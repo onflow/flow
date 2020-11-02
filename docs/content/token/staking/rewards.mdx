@@ -1,0 +1,40 @@
+---
+title: Staking Rewards
+description: How the Flow Protocol pays rewards to stakers
+---
+
+# Rewards
+
+Rewards are paid out at the end of each epoch to all the users that have tokens staked. 
+
+## Calculation
+
+Each user gets a percentage of the rewards that is equal to their percentage of all the tokens that are staked by all users.
+
+The full reward calculation on a per user basis is equal to:
+
+```
+New Reward(user) = Tr  * (Sn / St)
+```
+
+where:
+- `Tr` = Sum of all the rewards paid to all users for the current epoch.
+- `Sn` = Amount of FLOW Staked by the user for the current Epoch.
+- `St` = Sum of all the FLOW staked by all the stakers in the network.
+
+Rewards for delegators are also calculated in the exact same way 
+that rewards for node operators are calculated, 
+with one difference in that 8% of the calculated amount 
+is given to the node operator being delegated to. 
+The remaining 92% is awarded to the delegator.
+
+## Rewards Schedule:
+
+The total rewards paid each epoch will change based on the inflation schedule 
+that has been determined in order to maximize the distribution of FLOW 
+and ensure enough liquidity for token holders. 
+
+Weeks 1-2: 5% Inflation: ~1.1 Million FLOW rewarded per week
+Weeks 3-6: 20% Inflation: ~4.4 Million FLOW rewarded per week
+Weeks 7-18: 5% Inflation: ~1.2 Million FLOW rewarded per week
+
