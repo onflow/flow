@@ -4,14 +4,29 @@ description: How to use FLOW for staking and delegation
 ---
 
 <Callout type="warning">
-NOTE: The details of the transactions described in this document are for regular interaction with the staking smart contracts. If you have locked tokens from the FLOW token sale and want to stake them, please see the locked tokens section of the documentation to learn the process for staking as a node operator.
+NOTE: The details of the transactions described in this document are for regular interaction with the staking smart contracts. 
+If you or your users have locked tokens from the FLOW token sale and want to stake them, 
+please see the locked tokens section of the documentation to learn the process for staking or delegation.
+</ Callout>
+
+<Callout type="warning">
+If you haven't read the Intro to Flow Staking document, please read that first. 
+That document provides a non-technical overview of staking on Flow for all users and is a necessary pre-requisite to this document.
+</ Callout>
+
+<Callout type="warning">
+This document assumes you have some technical knowledge about the Flow blockchain and programming environment.
 </ Callout>
 
 ## Staking
 
-This section describes the functionality of the [core identity table and staking smart contract](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc).
-It also gives instructions for how users with unlocked Flow tokens can interact with
-it to register as a node operator or delegator.
+This document describes the functionality of the [core identity table and staking smart contract](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc).
+It gives an overview of the process of staking, epochs, and delegation. It is an important pre-requisite
+to understand before proceeding with any other technical integration or interaction with the Flow Protocol,
+but it is not step-by-step instructions for how to perform specific actions. 
+
+This document also describes how to read public staking data from the contract. 
+Anyone with a Flow account on mainnet can read public data from the staking smart contract with these instructions.
 
 The transactions described in this document are contained in the [`flow-core-contracts/transactions/idTableStaking/`](https://github.com/onflow/flow-core-contracts/tree/master/transactions/idTableStaking)
 directory. You can see the text of all the transactions used to interact with the smart contract there.
@@ -60,10 +75,10 @@ At the end of every epoch, insufficiently staked node operators are refunded the
 rewards are paid to those who are currently staked, committed tokens are marked as staked, 
 unstaking tokens are marked as unstaked, and unstaking requests are changed from staked to unstaking.
 
-**Delegation Rewards Cut:** The percentage of a delegator's rewards that the node operators take. Initially set to 10%.
+**Delegation Rewards Cut:** The percentage of a delegator's rewards that the node operators take. Initially set to 8%.
 
 **Epoch Payout:** The total amount of tokens paid in rewards at the end of an epoch. 
-This value will change as the supply of FLOW changes.
+This value will change as the supply of FLOW changes. See the rewards page for more details.
 
 **Minimum Stake Requirement:** Each node type has a requirement for the minimum number of FLOW
 they have to commit to stake to be considered a valid node and receive rewards. If a node operator
@@ -84,7 +99,7 @@ be locked for staking until they request to unstake them.
 Before getting into the details of the contract, we need to discuss how time in Flow is organized.
 The operation of the Flow network is divided into epochs, which are week-long periods where various
 network maintenance operatios are performed. The schedule of each epoch is exactly the same, though
-individual actions that users take in relation to the network will be different.
+individual actions that users take in relation to staking with the network will be different.
 
 Epoch Schedule:
 
@@ -98,41 +113,66 @@ Epoch Schedule:
 
 The `FlowIDTableStaking` contract manages the identity table, and all of these phases. 
 Initially, control of these phases will be managed manually by the Flow Token Admin,
-but control will eventually be completed decentralized and managed by the smart contracts
+but control will eventually be completely decentralized and managed by the node software, smart contracts,
 and democratically by all the stakers in the network.
 
 ## Staking as a node operator
 
-To stake for a node, you first need to generate your staking key,
+To stake for a node, node operators first need to generate their staking key,
 networking address, and networking key.
-Please consult the [guide](https://docs.onflow.org/docs/node-operation-consolidated-guide) to read about how to do that.
 
-To generate your node ID, simply hash your staking Key and submit that as the ID.
+The [node operation guide](https://docs.onflow.org/docs/node-operation-consolidated-guide) 
+describes how to run a node and generate node information.
 
-You then need to determine the role of node you'll be running (Collector, Consensus, Execution, Verification, or Access).
+To generate a node ID, simply hash the staking key.
 
-Once you have determined all of this information:
-* Node role (Collector, Consensus, Execution, Verification, or Access)
-* Node ID
-* Networking Address
-* Networking Key
-* Staking Key
+Node operators need to determine the role of node they will be running 
+(Collector, Consensus, Execution, Verification, or Access).
 
-You are ready to submit a staking request.
+<Callout type="warning">
+NOTE: Access Nodes are eligible to stake but will not receive rewards for their stake. 
+Please register as a different node type if you would like to receive rewards.
+</ Callout>
 
-To create and submit a regular staking request, the node operator calls the `addNodeInfo` function,
+Once the info has been determined:
+* Node role: `UInt8` (1 = Collector, 2 = Consensus, 3 = Execution, 4 = Verification, 5 = Access)
+* Node ID: 32 byte `String`
+* Networking Address: `String`
+* Networking Key: `String`
+* Staking Key: `String`
+
+The node operator is ready to submit a staking request.
+
+<Callout type="warning">
+NOTE: The staking smart contract does not validate that the strings for the address and keys are valid.
+It simply checks to make sure they are unique. The staking admin/node software will check to make sure 
+they are valid and if they are not, the registered node will not be eligible to stake.
+</ Callout>
+
+To create and submit a regular staking request, 
+the node operator submits a **Create Staking Request** transaction,
 providing all the node info, and the tokens that they want to stake.
 
-This will register your node in the Flow node identity table
-and commit your tokens to stake during the next epoch.
-This also stores a special node operator object in your account that is used for staking, unstaking,
-and withdrawing rewards. 
+This registers the node in the Flow node identity table
+and commits the specified tokens to stake during the next epoch.
+This also stores a special node operator object in the node operator's account 
+that is used for staking, unstaking, and withdrawing rewards.
 
-Once you have registered and have the special node object, you will be able
-to perform any of the valid staking options with it, assuming that you have
-the required amount of tokens for each operation.
+Every node operator will run the same transaction to register their node at any time throughout an epoch.
+The register transaction only needs to be submitted once per node. 
+A registration cannot be used to manage multiple nodes. 
+Multiple nodes need to be registered separately.
 
-If a node operator has delegators, they cannot withdraw their own tokens 
+Once node operators have registered and have the special node object, they will be able
+to perform any of the valid staking options with it, assuming that they have
+the required amount of tokens to perform each operation.
+
+When a new epoch starts, if a staker has committed at least the minimum stake required,
+the tokens they have committed will be marked as staked and held in the protocol state.
+If a staker does not meet the minimum requirement, their committed tokens are 
+moved to their unstaked pool, which they can withdraw from at any time.
+
+If a node operator has users delegating to them, they cannot withdraw their own tokens 
 such that their own staked tokens would fall below the minimum requirement for that node type.
 This is enforced at the protocol level. If they have delegators 
 and try to submit an unstaking transaction that would put their stake below the minimum, it will fail. 
@@ -140,25 +180,28 @@ and try to submit an unstaking transaction that would put their stake below the 
 If they want to unstake below the minimum, they must unstake all of their tokens,
 which also unstakes all of the tokens that have been delegated to them.
 
+Consequently, a node operator cannot accept delegation unless their own stake is above the minimum.
+
 ## Staking as a Delegator
 
 Every staked node in the Flow network is eligible for delegation by any other user.
 The user only needs to know the node ID of the node they want to delegate to.
 
-To register as a delegator, the delegator should submit the `idTableStaking/del_register_delegator`
+To register as a delegator, the delegator submits the **Register Delegator**
 transaction, providing the id of the node operator they want to delegate to. 
-This transactions calls the `registerNewDelegator` function and stores the `NodeDelegator` object
+This transactions stores the `NodeDelegator` object
 in the user's account, which is what they use to perform staking operations.
 
-Users should be able to get these IDs off-chain, directly from the node operators. Flow is also planning
-on listing node IDs in a public place.
+Users are able to get a list of possible node ids to delegate to via on-chain scripts.
+This information will also be provided off-chain, directly from the node operators or via
+third-party services. Flow is also planning on listing node IDs in a public place like Flow Port.
 
-The fee that node operators take from the rewards their delegators receive is 10%.
+The fee that node operators take from the rewards their delegators receive is 8%.
 A node operator cannot be delegated to unless the total tokens they have committed to stake
 are above the minimum requirement for their node types.
 
 The delegation logic keeps track of the amount of tokens each delegator has delegated for the node operator.
-When rewards are paid, the node operator takes the 10% cut of the delegator's rewards and the
+When rewards are paid, the node operator takes the 8% cut of the delegator's rewards and the
 delegators rewards are deposited in the delegator's reward pool.
 
 ## Staking Operations available to All Stakers
@@ -168,32 +211,31 @@ to all the same staking operations.
 
 A staker can commit more tokens to stake for the next epoch at any time,
 and there are three different ways to do it.
-1. They can commit new tokens to stake by submitting the `stake_new_tokens.cdc` transaction,
+1. They can commit new tokens to stake by submitting the **stake_new_tokens** transaction,
 which withdraws tokens from their account's flow token vault and commits them.
 2. They can commit tokens that are in their unstaked token pool, which holds the tokens
-that they have unstaked. Submit the `stake_unstaked_tokens.cdc`
+that they have unstaked. Submit the **stake_unstaked_tokens**
 transaction to move the tokens from the unstaked pool to the committed pool.
 3. They can commit tokens that are in their rewarded token pool, which holds the tokens
-you have been awarded. They submit the `stake_rewarded_tokens.cdc`
+they have been awarded. They submit the **stake_rewarded_tokens**
 transaction to move the tokens from the rewards pool to the committed pool.
 
-At anytime, a staker can also submit a request unstaking transaction
-which will move their tokens to the unstaking pool at the end of the current epoch.
+At anytime, a staker can also submit a request to unstake tokens with the **request_unstaking** transaction.
+This marks the specified amount of tokens to be unstaked at the end of the epoch.
+At the end of the epoch, their tokens are moved to the unstaking pool at the end of the current epoch.
 They will sit in this pool for one (1) additional epoch,
 at which point they will be moved to the unlocked tokens pool, where
-they are able to be freely withdrawn.
+they are able to be freely withdrawn with the **withdraw_unstaked** transaction.
 
-A staker can also withdraw their rewarded tokens at any time. These tokens are liquid and can be transferred on-chain if desired, or re-staked.
-
-When a new epoch starts, if a staker has committed at least the minimum stake required,
-the tokens they have committed will be marked as staked and held in the protocol state.
-If a staker does not meet the minimum requirement, their committed tokens are 
-moved to their unstaked pool, which they can withdraw from at any time.
+A staker can also withdraw their rewarded tokens at any time with the **withdraw_rewarded** transaction.
+These tokens are unlocked and can be transferred on-chain if desired, or re-staked.
 
 Staking rewards are paid at the end of every epoch based on how many tokens
 are in a users `tokensStaked` pool. Every staker's rewards
 are deposited to their rewarded tokens pool. They can be withdrawn
-at any time by submitting the `withdraw_reward_tokens.cdc` transaction.
+at any time by submitting the **withdraw_reward_tokens** transaction.
+
+See the transactions document for more detail about each transaction stakers can use to participate.
 
 This diagram shows a flow of actions for new node operators.
 
@@ -227,280 +269,109 @@ or to the Unstaked Tokens pool (depending on if the staked request has met the m
 3. All unstaking tokens get moved to the unstaked tokens pool.
 4. All requested unstaking tokens get moved from the staked pool to the unstaking pool.
 
-## Rewards
 
-### Schedule
-All rewards are automatically distributed via the staking smart contract 
-to the reward pools associated with each node.
-Rewards are paid out according to the following schedule:
-
-- Initial startup phase: no rewards
-- Bootstrapping phase: rewards of 20% annualized
-- After bootstrapping: rewards of 3.75% annually
-
-### Reward Payouts
-Rewards are paid out at the end of each epoch (roughly a week) to the
-users that have tokens staked.
-
-The paid rewards are proportional to the stake each node operator contributes to its node group. 
-Node groups are assigned rewards based on their revenue ratio 
-which is a coefficient assigned to them based on the security 
-they contribute to the network. 
-Please connect with the Flow team directly if you'd like to understand how these coefficients are derived.
-
-A public paper will be shared in the future.
-
-**The reward payout on a per node basis is equal to:**
-
-```
-Reward(n_node) = ((Tr) * (Tn)) * ((Sn) / (St))
-```
-
-where:
-
-- Tr = Sum of all the rewards paid to all nodes per epoch.
-- Tn = The node role's portion of total stake.
-- Sn = Amount of FLOW Staked by the node for the current Epoch.
-- St = Amount of FLOW staked by all the nodes of the selected node's type.
-
-The rewards paid for the bootstrapping phase will be roughly
-1.25 million FLOW per epoch (per week). This will sharply decrease in
-the months following the release.
-
-Each node role's portion of total stake has been determined based on
-the amount of security they contribute to the network:
-
-- Execution Nodes comprise 7.8% of total stake (TE= 0.078)
-- Collection Nodes comprise 16.8% of total stake (TL= 0.168)
-- Consensus Nodes comprise 51.8% of total stake (TS=0.518)
-- Verification Nodes comprise 23.6% of total stake (TV=0.236)
-
-At network launch, there will be no more than:
-
-- 3 Execution Nodes
-- 43 Consensus Nodes
-- 29 Collection Nodes
-- 73 Verification Nodes (100 when performance permits)
-
-These numbers were chosen to ensure consistent returns for running a single node of any type. 
-Over time, the number of nodes will increase to promote participation 
-but we don't anticipate increasing the number of participating nodes by more than double 
-in the first year of the network's operation.
-
-## Slashing
-So, who gets slashed? 
-Severe slashing on Flow only takes place in the most nefarious of attacks. 
-The protocol reserves slashing for maintaining the security of the protocol rather than its liveness.
-You can find more details on the conditions under which a node is slashed in a different part of the docs.
-
-While a node is in operation and during the unstaking period thereafter,
-the staked tokens are held by the staking smart contract.
-Slashable protocol violations must be adjudicated by a supermajority 
-of more than 2/3 of the staked consensus nodes in order to take effect.
-If a node is found guilty of committing a slashable protocol violation, 
-the consensus nodes directly deduct a fine from the node's stake. 
-Of course, only the remaining stake is deposited back into node's balance
-at the end of the unstaking period.
-
-Slashing is not handled by the staking contract at this point. 
-It will be handled on a case by case basis. Once full epoch functionality is enabled,
-slashing will be handled by the protocol.
-
-## Getting Info from the Staking Contract
+# Getting Info from the Staking Contract
 
 There are various ways to retreive information about the current state of the staking contract.
 
-1. Getting the list of proposed nodes for the next epoch:
+## Getting the list of proposed nodes for the next epoch:
 
 `FlowIDTableStaking.getProposedNodeIDs()`: Returns an array of node IDs for proposed nodes. 
 Proposed nodes are nodes that have enough staked and committed for the next epoch to be above the minimum requirement.
 
-You can see an example script for retreiving this info in [`get_proposed_table.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_proposed_table.cdc).
+You can use the **Get Proposed Table**([SC.05](../transactions/#getting-staking-info))  script for retreiving this info.
 
-2. Get the list of all nodes that are currently staked:
+This script requires no arguments.
+
+## Get the list of all nodes that are currently staked:
 
 `FlowIDTableStaking.getStakedNodeIDs()`: Returns an array of nodeIDs that are currently staked.
 Staked nodes are nodes that currently have staked tokens above the minimum.
 
-You can see an example script for retreiving this info in [`get_current_table.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_current_table.cdc).
+You can use the **Get Current Table**([SC.04](../transactions/#getting-staking-info)) script for retreiving this info.
 
-3. Get the total committed balance of a node:
+This script requires no arguments.
 
-`FlowIDTableStaking.getTotalCommittedBalance(_ nodeID: String)`: Returns the total committed balance for a node,
-which is their total tokens staked + committed, plus all of the staked + committed tokens of all their delegators.
-
-You can see an example script for retreiving this info in `[get_node_total_commitment.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_node_total_commitment.cdc)
-
-4. Get all of the info associated with a single node staker:
+## Get all of the info associated with a single node staker:
 
 `FlowIDTableStaking.NodeInfo(nodeID: String)`: Returns a `NodeInfo` struct with all of the metadata
 associated with the specified node ID. You can see the `NodeInfo` definition in the [FlowIDTableStaking
 smart contract.](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L264)
 
-You can see an example script for retreiving this info in `[get_node_info.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_node_info.cdc)
+You can use the **Get Node Info**([SC.08](../transactions/#getting-staking-info)) script 
+with the following arguments:
 
-5. Get all the info associated with a single delegator:
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **nodeID** | `String` | The node ID of the node to search for. |
+
+## Get the total committed balance of a node:
+
+`FlowIDTableStaking.getTotalCommittedBalance(_ nodeID: String)`: Returns the total committed balance for a node,
+which is their total tokens staked + committed, plus all of the staked + committed tokens of all their delegators.
+
+You can use the **Get Node Total Commitment**([SC.09](../transactions/#getting-staking-info)) script 
+with the following argument:
+
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **nodeID** | `String` | The node ID of the node to search for. |
+
+
+## Get all the info associated with a single delegator:
 
 `FlowIDTableStaking.DelegatorInfo(nodeID: String, delegatorID: UInt32)`: Returns a `DelegatorInfo` struct with all of the metadata
 associated with the specified node ID and delegator ID. You can see the `NodeInfo` definition in the [FlowIDTableStaking
 smart contract.](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L348)
 
-You can see an example script for retreiving this info in `[get_delegator_info.cdc`](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/get_delegator_info.cdc)
+You can use the **Get Delegator Info**([SC.10](../transactions/#getting-staking-info)) 
+script with the following arguments:
 
-## Staking Events
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **nodeID** | `String` | The node ID that the delegator delegates to. |
+| **delegatorID** | `String` | The ID of the delegator to search for. |
 
-The staking contract emits various events whenever an important action occurs.
+## Get the delegation cut percentage:
 
-```cadence
-pub event NewNodeCreated(nodeID: String, role: UInt8, amountCommitted: UFix64)
-pub event TokensCommitted(nodeID: String, amount: UFix64)
-pub event TokensStaked(nodeID: String, amount: UFix64)
-pub event TokensUnstaking(nodeID: String, amount: UFix64)
-pub event NodeRemovedAndRefunded(nodeID: String, amount: UFix64)
-pub event RewardsPaid(nodeID: String, amount: UFix64)
-pub event UnstakedTokensWithdrawn(nodeID: String, amount: UFix64)
-pub event RewardTokensWithdrawn(nodeID: String, amount: UFix64)
+`FlowIDTableStaking.getRewardCutPercentage(): UFix64`: Returns a `UFix64` number for the cut of delegator rewards that each node operator takes.
 
-pub event NewDelegatorCutPercentage(newCutPercentage: UFix64)
-pub event NewDelegatorCreated(nodeID: String, delegatorID: UInt32)
-pub event DelegatorRewardsPaid(nodeID: String, delegatorID: UInt32, amount: UFix64)
-pub event DelegatorUnstakedTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
-pub event DelegatorRewardTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
-```
+You can use the **Get Cut Percentage**([SC.01](../transactions/#getting-staking-info)) script to retreive this info.
 
-## Staking Transaction Examples
+This script requires no arguments.
 
-### Create Staking Request
+## Get the Minimum Stake Requirements:
 
-```cadence:title=create_staking_request.cdc
-import FlowIDTableStaking from 0xIDENTITYTABLEADDRESS
-import FlowToken from 0xFLOWTOKENADDRESS
+`FlowIDTableStaking.getMinimumStakeRequirements(): {UInt8: UFix64}`: Returns a mapping
+for the stake requirements for each node type.
 
-// This transaction creates a new node struct object
-// and updates the proposed Identity Table
+You can use the **Get stake requirements**([SC.02](../transactions/#getting-staking-info)) script to retreive this info.
 
-transaction(id: String, 
-            role: UInt8, 
-            networkingAddress: String, 
-            networkingKey: String, 
-            stakingKey: String, 
-            amount: UFix64,
-            cutPercentage: UFix64) {
+This script requires no arguments.
 
-    let flowTokenRef: &FlowToken.Vault
+## Get the Total Weekly Reward Payout:
 
-    prepare(acct: AuthAccount) {
+`FlowIDTableStaking.getEpochTokenPayout(): UFix64`: Returns a `UFix64` value for the total number of FLOW paid out each epoch (week).
 
-        self.flowTokenRef = acct.borrow<&FlowToken.Vault>(from: /storage/flowTokenVault)
-            ?? panic("Could not borrow reference to FLOW Vault")
+You can use the **Get weekly payout**([SC.03](../transactions/#getting-staking-info)) script to retreive this info.
 
-        let nodeStaker <- FlowIDTableStaking.addNodeRecord(id: id, 
-                                                           role: role, 
-                                                           networkingAddress: networkingAddress, 
-                                                           networkingKey: networkingKey, 
-                                                           stakingKey: stakingKey, 
-                                                           tokensCommitted: <-self.flowTokenRef.withdraw(amount: amount),
-                                                           cutPercentage: cutPercentage)
+This script requires no arguments.
 
-        
-        if acct.borrow<&FlowIDTableStaking.NodeStaker>(from: FlowIDTableStaking.NodeStakerStoragePath) == nil {
-            acct.save(<-nodeStaker, to: FlowIDTableStaking.NodeStakerStoragePath)
-        } else {
-            destroy nodeStaker
-        }
-    }
-}
-```
+## Get the Total FLOW Staked:
 
-### Stake New Tokens
+You can use the **Get total FLOW staked**([SC.06](../transactions/#getting-staking-info)) script to retreive this info.
 
-```cadence:title=stake_new_tokens.cdc
-import FlowIDTableStaking from 0xIDENTITYTABLEADDRESS
-import FlowToken from 0xFLOWTOKENADDRESS
+This script requires no arguments.
 
+## Get the Total FLOW Staked by a single node type:
 
-transaction(amount: UFix64) {
+You can use the **Get total FLOW staked by node type**([SC.07](../transactions/#getting-staking-info)) script
+with the following arguments:
 
-    // Local variable for a reference to the node object
-    let stakerRef: &FlowIDTableStaking.NodeStaker
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **nodeType** | `UInt8` | The type of node to search for. |
 
-    let flowTokenRef: &FlowToken.Vault
-
-    prepare(acct: AuthAccount) {
-        // borrow a reference to the node object
-        self.stakerRef = acct.borrow<&FlowIDTableStaking.NodeStaker>(from: /storage/flowStaker)
-            ?? panic("Could not borrow reference to staking admin")
-
-        self.flowTokenRef = acct.borrow<&FlowToken.Vault>(from: /storage/flowTokenVault)
-            ?? panic("Could not borrow reference to FLOW Vault")
-
-    }
-
-    execute {
-
-        self.stakerRef.stakeNewTokens(<-self.flowTokenRef.withdraw(amount: amount))
-
-    }
-}
-```
-
-### Request Stake Unstaking
-
-```cadence:title=request_unstake.cdc
-import FlowIDTableStaking from 0xIDENTITYTABLEADDRESS
-
-
-transaction(amount: UFix64) {
-
-    // Local variable for a reference to the Node object
-    let stakerRef: &FlowIDTableStaking.NodeStaker
-
-    prepare(acct: AuthAccount) {
-        // borrow a reference to the node object
-        self.stakerRef = acct.borrow<&FlowIDTableStaking.NodeStaker>(from: /storage/flowStaker)
-            ?? panic("Could not borrow reference to node object")
-
-    }
-
-    execute {
-
-        self.stakerRef.requestUnStaking(amount: amount)
-
-    }
-}
-```
-
-### Withdraw Rewards
-
-```cadence:title=withdraw_reward_tokens.cdc
-import FlowIDTableStaking from 0xIDENTITYTABLEADDRESS
-import FlowToken from 0xFLOWTOKENADDRESS
-
-
-transaction(amount: UFix64) {
-
-    // Local variable for a reference to the node object
-    let stakerRef: &FlowIDTableStaking.NodeStaker
-
-    let flowTokenRef: &FlowToken.Vault
-
-    prepare(acct: AuthAccount) {
-        // borrow a reference to the node object
-        self.stakerRef = acct.borrow<&FlowIDTableStaking.NodeStaker>(from: /storage/flowStaker)
-            ?? panic("Could not borrow reference to staking admin")
-
-        self.flowTokenRef = acct.borrow<&FlowToken.Vault>(from: /storage/flowTokenVault)
-            ?? panic("Could not borrow reference to FLOW Vault")
-
-    }
-
-    execute {
-
-        self.flowTokenRef.deposit(from: <-self.stakerRef.withdrawRewardedTokens(amount: amount))
-
-    }
-}
-```
 
 The source code for the staking contract and more transactions 
 can be found in the [Flow Core Contracts Github Repository](https://github.com/onflow/flow-core-contracts/tree/josh/staking).

@@ -256,8 +256,9 @@ const sections = [
       ],
       Staking: [
         "token/staking/index",
-        "token/staking/node-operators",
-        "token/staking/staking-as-a-service",
+        "token/staking/rewards",
+        "token/staking/stake-slashing",
+        "token/staking/transactions",
       ],
       "Staking with Locked FLOW": [
         "token/staking/locked/index",
