@@ -1,15 +1,15 @@
 ---
 title: Stake Slashing
-description: How the Flow protocol punishes bad behavior be slashing stakers tokens
+description: How Flow enforces honest node behaviour
 ---
 
 ## Slashing
 
 Severe slashing on Flow only takes place in the most nefarious of attacks. 
 The protocol reserves slashing for maintaining the security of the protocol rather than its liveness.
-You can find more details on the conditions under which a node is slashed in the Flow white papers.
+You can find more details on the conditions under which a node is slashed in the Flow whitepapers.
 
-While a node is in operation and during the unstaking period after they request unstaking.
+While a node is in operation and during the unstaking period after they request unstaking,
 the staked tokens are held by the staking smart contract.
 Slashable protocol violations must be adjudicated by a supermajority 
 of more than 2/3 of the staked consensus nodes in order to take effect.
@@ -19,5 +19,5 @@ Of course, only the remaining stake is deposited back into node's balance
 at the end of the unstaking period.
 
 Slashing is not handled by the staking contract at this point. 
-It will be handled on a case by case basis. Once full epoch functionality is enabled,
+It will be handled on a case-by-case basis. Once full epoch functionality is enabled,
 slashing will be handled by the protocol.
