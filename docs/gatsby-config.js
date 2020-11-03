@@ -9,7 +9,8 @@ const pathConfig = {
     "/intro/glossary/",
     "/intro/flow-token/",
     "/concepts/node-operation/quickstart",
-    "/intro/partner-update/",
+    "/updates/sep-16-2020/",
+    "/updates/oct-6-2020/",
   ],
   // Shows the main docest menu on these pages
   showDocsetMenu: [
@@ -18,7 +19,8 @@ const pathConfig = {
     "/intro/glossary/",
     "/intro/flow-token/",
     "/concepts/node-operation/quickstart",
-    "/intro/partner-update/",
+    "/updates/sep-16-2020/",
+    "/updates/oct-6-2020/",
   ],
 };
 
@@ -122,6 +124,7 @@ const sections = [
     patterns: [
       "*",
       "intro/*",
+      "updates/*",
       "concepts/node-operation/*",
       "concepts/flow-concepts/*",
       // "concepts/node-operation/*",
@@ -129,13 +132,16 @@ const sections = [
       // "guides/node-operator/*",
       // "tutorial/cadence/*",
     ],
+    sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
+        "[FLOW (Token)](/token)",
         "[Node Operation Quick Guide](/concepts/node-operation/quickstart)",
         // "intro/partner-update",
         "intro/glossary",
         "intro/FAQ",
       ],
+      "Community Updates": ["updates/oct-6-2020", "updates/sep-16-2020"],
       // Tutorial: [
       //   "tutorial/cadence/01-first-steps",
       //   "tutorial/cadence/02-hello-world",
@@ -209,10 +215,7 @@ const sections = [
     patterns: ["sdks/golang/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
-        "sdks/golang/index",
-        "sdks/golang/changelog",
-      ],
+      null: ["sdks/golang/index", "sdks/golang/changelog"],
       "How To": [
         "sdks/golang/create-account",
         "sdks/golang/build-transaction",
@@ -246,16 +249,24 @@ const sections = [
     sidebar: {
       FLOW: [
         "token/index",
-        "token/investors",
         "token/earn",
-        "token/wallets",
         "token/concepts",
+        "token/delivery",
         "token/faq",
       ],
       Staking: [
         "token/staking/index",
         "token/staking/node-operators",
         "token/staking/staking-as-a-service",
+      ],
+      "Staking with Locked FLOW": [
+        "token/staking/locked/index",
+        "token/staking/locked/setup",
+        "token/staking/locked/stakers",
+        "token/staking/locked/delegators",
+        "token/staking/locked/node-operators",
+        "token/staking/locked/power-users",
+        "token/staking/locked/transactions",
       ],
     },
   },
@@ -264,10 +275,7 @@ const sections = [
     patterns: ["emulator/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
-        "emulator/index",
-        "emulator/changelog",
-      ],
+      null: ["emulator/index", "emulator/changelog"],
     },
   },
   {
@@ -275,9 +283,7 @@ const sections = [
     patterns: ["protocol/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
-        "protocol/access-api",
-      ],
+      null: ["protocol/access-api"],
     },
   },
   {
@@ -299,6 +305,7 @@ const sections = [
         "docs/language/composite-types",
         "docs/language/access-control",
         "docs/language/interfaces",
+        "docs/language/enumerations",
         "docs/language/restricted-types",
         "docs/language/references",
         "docs/language/imports",

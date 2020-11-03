@@ -63,7 +63,7 @@ rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderRespo
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message BlockHeaderResponse {
     flow.BlockHeader block
@@ -91,7 +91,7 @@ rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message BlockHeaderResponse {
     flow.BlockHeader block
@@ -119,7 +119,7 @@ rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderR
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message BlockHeaderResponse {
     flow.BlockHeader block
@@ -153,7 +153,7 @@ rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse)
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message BlockResponse {
     flow.Block block
@@ -181,7 +181,7 @@ rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse)
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message BlockResponse {
     flow.Block block
@@ -209,7 +209,7 @@ rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse)
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message BlockResponse {
     flow.Block block
@@ -243,7 +243,7 @@ rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse)
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message CollectionResponse {
     flow.Collection collection
@@ -281,7 +281,7 @@ rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse)
 
 <details>
   <summary>Response</summary>
-  
+
   `SendTransactionResponse` message contains the ID of the submitted transaction.
 
   ```protobuf
@@ -317,7 +317,7 @@ rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse)
 
 <details>
   <summary>Response</summary>
-  
+
   `TransactionResponse` contains the basic information about a transaction, but does not include post-execution results.
 
   ```protobuf
@@ -347,7 +347,7 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message TransactionResultResponse {
     flow.TransactionStatus status
@@ -358,7 +358,7 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
   ```
 </details>
 
---- 
+---
 
 ## Accounts
 
@@ -384,7 +384,7 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message GetAccountResponse {
     Account account
@@ -414,7 +414,7 @@ rpc GetAccountAtLatestBlock(GetAccountAtLatestBlockRequest) returns (AccountResp
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message AccountResponse {
     Account account
@@ -485,7 +485,7 @@ value = ExecuteScriptAtBlockID(header.ID, script)
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message ExecuteScriptResponse {
     bytes value
@@ -516,7 +516,7 @@ rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScrip
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message ExecuteScriptResponse {
     bytes value
@@ -547,7 +547,7 @@ rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (Exec
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message ExecuteScriptResponse {
     bytes value
@@ -573,7 +573,7 @@ Events can be requested for a specific sealed block range via the `start_height`
 
 If `end_height` is greater than the current sealed chain height, then this method will return events up to and including the latest sealed block.
 
-The event results are grouped by block, with each group specifying a block ID and height.
+The event results are grouped by block, with each group specifying a block ID, height and block timestamp.
 
 Event types are name-spaced with the address of the account and contract in which they are declared.
 
@@ -591,13 +591,14 @@ Event types are name-spaced with the address of the account and contract in whic
 
 <details>
   <summary>Response</summary>
-  
+
   ```protobuf
   message EventsResponse {
     message Result {
       bytes block_id = 1;
       uint64 block_height = 2;
       repeated entities.Event events = 3;
+      google.protobuf.Timestamp block_timestamp = 4;
     }
     repeated Result results = 1;
   }
@@ -614,7 +615,7 @@ rpc GetEventsForBlockIDs(GetEventsForBlockIDsRequest) returns (GetEventsForBlock
 
 Events can be requested for a list of block IDs via the `block_ids` field and further filtered by event type via the `type` field.
 
-The event results are grouped by block, with each group specifying a block ID and height.
+The event results are grouped by block, with each group specifying a block ID, height and block timestamp.
 
 <details>
   <summary>Request</summary>
@@ -636,6 +637,7 @@ The event results are grouped by block, with each group specifying a block ID an
       bytes block_id = 1;
       uint64 block_height = 2;
       repeated entities.Event events = 3;
+      google.protobuf.Timestamp block_timestamp = 4;
     }
     repeated Result results = 1;
   }
@@ -685,7 +687,7 @@ rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParame
 Below are in-depth descriptions of each of the data entities returned or accepted by the Access API.
 
 ## Block
- 
+
 ```protobuf
 message Block {
   bytes id
@@ -703,7 +705,7 @@ message Block {
 | id                       | SHA3-256 hash of the entire block payload |
 | height                   | Height of the block in the chain |
 | parent_id                | ID of the previous block in the chain |
-| timestamp                | Timestamp of when the block was proposed |
+| timestamp                | Timestamp of when the proposer claims it constructed the block. <br/> **NOTE**: It is included by the proposer, there are no guarantees on how much the time stamp can deviate from the true time the block was published. <br/> Consider observing blocks' status changes yourself to get a more reliable value. |
 | collection_guarantees    | List of [collection guarantees](#collection-guarantee) |
 | block_seals              | List of [block seals](#block-seal) |
 | signatures               | BLS signatures of consensus nodes |
@@ -811,7 +813,7 @@ message TransactionSignature {
 ```
 
 | Field                         | Description |
-| ------------------------------|-------------| 
+| ------------------------------|-------------|
 | script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes |
 | arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](/docs/json-cadence-spec.md) bytes
 | reference_block_id            | Block ID used to determine transaction expiry |
@@ -827,7 +829,7 @@ The detailed semantics of transaction creation, signing and submission are cover
 The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](/docs/accounts-and-keys.md#sequence-numbers).
 
 | Field           | Description |
-| ----------------|-------------| 
+| ----------------|-------------|
 | address         | Address of proposer account |
 | key_id          | ID of proposal key on the proposal account |
 | sequence_number | [Sequence number](/docs/accounts-and-keys.md#sequence-numbers) for the proposal key |
@@ -840,9 +842,31 @@ The proposal key is used to specify a sequence number for the transaction. Seque
 | key_id    | ID of the account key |
 | signature | Raw signature byte data |
 
+### Transaction Status
+
+```protobuf
+enum TransactionStatus {
+  UNKNOWN = 0;
+  PENDING = 1;
+  FINALIZED = 2;
+  EXECUTED = 3;
+  SEALED = 4;
+  EXPIRED = 5;
+}
+```
+
+| Value       | Description |
+| ------------|-------------|
+| UNKNOWN     | The transaction status is not known. |
+| PENDING     | The transaction has been received by a collector but not yet finalized in a block. |
+| FINALIZED   | The consensus nodes have finalized the block that the transaction is included in |
+| EXECUTED    | The execution nodes have produced a result for the transaction |
+| SEALED      | The verification nodes have verified the transaction (the block in which the transaction is) and the seal is included in the latest block |
+| EXPIRED     | The transaction was submitted past its expiration block height. |
+
 ## Account
 
-An account is a user's identity on Flow. It contains a unique address, a balance, a list of public keys and the code that has been deployed to the account. 
+An account is a user's identity on Flow. It contains a unique address, a balance, a list of public keys and the code that has been deployed to the account.
 
 ```protobuf
 message Account {
@@ -850,6 +874,7 @@ message Account {
   uint64 balance
   bytes code
   repeated AccountKey keys
+  map<string, bytes> contracts
 }
 ```
 
@@ -857,8 +882,9 @@ message Account {
 |--------------|-------------|
 | address      | A unique account identifier |
 | balance      | The account balance |
-| code         | The code deployed to this account |
+| code         | The code deployed to this account (deprecated, use contracts instead) |
 | keys         | A list of keys configured on this account |
+| contracts    | A map of contracts or contract interfaces deployed on this account |
 
 More information on accounts can be found [here](/docs/accounts-and-keys.md).
 
@@ -874,6 +900,7 @@ message AccountKey {
   uint32 hash_algo
   uint32 weight
   uint32 sequence_number
+  bool revoked
 }
 ```
 
@@ -885,6 +912,7 @@ message AccountKey {
 | hash_algo       | [Hash algorithm](/docs/accounts-and-keys.md#supported-signature--hash-algorithms) |
 | weight          | [Weight assigned to the key](/docs/accounts-and-keys.md#weighted-keys) |
 | sequence_number | [Sequence number for the key](/docs/accounts-and-keys.md#sequence-numbers) |
+| revoked         | Flag indicating whether or not the key has been revoked |
 
 More information on account keys, key weights and sequence numbers can be found [here](/docs/accounts-and-keys.md).
 
@@ -903,7 +931,7 @@ message Event {
 ```
 
 | Field             | Description    |
-| ------------------|----------------| 
+| ------------------|----------------|
 | type              | Fully-qualified unique type identifier for the event |
 | transaction_id    | ID of the transaction the event was emitted from |
 | transaction_index | Zero-based index of the transaction within the block |

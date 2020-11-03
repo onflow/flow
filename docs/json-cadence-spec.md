@@ -20,7 +20,7 @@ This format includes less type information than a complete [ABI](https://en.wiki
 - [String](#string)
 - [Address](#address)
 - [Integers](#integers)
-- [Fixed Point](#fixed-point)
+- [Fixed Point Numbers](#fixed-point-numbers)
 - [Array](#array)
 - [Dictionary](#dictionary)
 - [Composites (Struct, Resource, Event)](#composites-struct-resource-event)
