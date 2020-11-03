@@ -882,9 +882,11 @@ message Account {
 |--------------|-------------|
 | address      | A unique account identifier |
 | balance      | The account balance |
-| code         | The code deployed to this account (deprecated, use contracts instead) |
+| code         | The code deployed to this account (**deprecated**, use `contracts` instead) |
 | keys         | A list of keys configured on this account |
 | contracts    | A map of contracts or contract interfaces deployed on this account |
+
+The `code` and `contracts` fields contain the raw Cadence source code, encoded as UTF-8 bytes.
 
 More information on accounts can be found [here](/docs/accounts-and-keys.md).
 
