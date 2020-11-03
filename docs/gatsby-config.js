@@ -334,7 +334,7 @@ const sections = [
           "operator/node-setup",
           "operator/node-bootstrap",
           "operator/monitoring-nodes",
-          "operator/FAQs",
+          "operator/faq",
       ],
     //  Staking: [
     //````  ],
