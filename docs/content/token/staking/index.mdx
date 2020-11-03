@@ -244,15 +244,7 @@ at any time by submitting the **withdraw_reward_tokens** transaction.
 
 These tokens are unlocked and can be transferred on-chain if desired, or re-staked.
 
-See the transactions document for more detail about each transaction stakers can use to participate.
-
-This diagram shows a flow of actions for new node operators.
-
-![Flow Staking For New Operators](flow-staking-new-operators.png)
-
-This diagram shows a flow of actions for a new delegator.
-
-![Flow Stake Delegation](flow-stake-delegation.png)
+**See the [transactions document](../transactions) for more detail about each transaction stakers can use to participate.**
 
 # Appendix
 
@@ -260,16 +252,16 @@ This diagram shows a flow of actions for a new delegator.
 
 Each node operator has five token pools allocated to them:
 
-- Committed Tokens: Tokens that are committed for the next epoch. 
+- **Committed Tokens:** Tokens that are committed for the next epoch. 
 They are automatically moved to the staked pool when the next epoch starts.
-- Staked Tokens: Tokens that are staked by the node operator for the current epoch.
+- **Staked Tokens:** Tokens that are staked by the node operator for the current epoch.
 They are only moved at the end of an epoch and if the staker 
 has submitted an unstaking request.
-- Unstaking Tokens: Tokens that have been unstaked,
+- **Unstaking Tokens:** Tokens that have been unstaked,
 but are not free to withdraw until the following epoch. 
-- Unstaked Tokens: Tokens that are freely available to withdraw or re-stake.
+- **Unstaked Tokens:** Tokens that are freely available to withdraw or re-stake.
 Unstaked tokens go to this pool.
-- Rewarded Tokens: Tokens that are freely available to withdraw or re-stake. 
+- **Rewarded Tokens:** Tokens that are freely available to withdraw or re-stake. 
 Rewards are paid and deposited to the rewarded Pool after each epoch.
 
 At the end of every epoch, tokens are moved between pools in this order:
