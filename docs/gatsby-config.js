@@ -136,7 +136,7 @@ const sections = [
     sidebar: {
       null: [
         "[FLOW (Token)](/token)",
-        "[Node operations](/operator)",
+        "[Node operator](/operator)",
         // "intro/partner-update",
         "intro/glossary",
         "intro/FAQ",
