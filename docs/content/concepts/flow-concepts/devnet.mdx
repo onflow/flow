@@ -5,7 +5,7 @@ title: Flow Devnet
 
 Currently, there is an internal Devnet, available for access:
 
-- [access-001.devnet16.nodes.onflow.org:9000](http://access-001.devnet16.nodes.onflow.org:9000/)
+- [access.devnet.nodes.onflow.org:9000](http://access.devnet.nodes.onflow.org:9000/)
 
 For example, to access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
 
@@ -13,7 +13,7 @@ For example, to access the network using the [Flow Go SDK](https://github.com/on
 import "github.com/onflow/flow-go-sdk/client"
 
 func main() {
-  flowAccessAddress := "access-001.devnet15.nodes.onflow.org:9000"
+  flowAccessAddress := "access.devnet.nodes.onflow.org:9000"
   flowClient, _ := client.New(flowAccessAddress, grpc.WithInsecure())
 
   // ...
