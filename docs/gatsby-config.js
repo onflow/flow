@@ -337,7 +337,7 @@ const sections = [
      "Technical Guide": [
        "operator/technical-guide/node-bootstrap",
        "operator/technical-guide/monitoring-nodes",
-       "operator/technical-guide/faq",
+       "operator/technical-guide/`faq",
       ],
     },
   },
