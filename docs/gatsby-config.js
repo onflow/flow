@@ -331,13 +331,14 @@ const sections = [
     sidebar: {
       FLOW: [
           "operator/index",
+          "operator/node-roles",
           "operator/node-setup",
-          "operator/node-bootstrap",
-          "operator/monitoring-nodes",
-          "operator/faq",
       ],
-    //  Staking: [
-    //````  ],
+     "Technical Guide": [
+       "operator/technical-guide/node-bootstrap",
+       "operator/technical-guide/monitoring-nodes",
+       "operator/technical-guide/faq",
+      ],
     },
   },
 ];
