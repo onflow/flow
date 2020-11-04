@@ -256,6 +256,7 @@ const sections = [
       ],
       Staking: [
         "token/staking/index",
+        "token/staking/technical",
         "token/staking/rewards",
         "token/staking/stake-slashing",
         "token/staking/transactions",
