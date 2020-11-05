@@ -208,12 +208,15 @@ const sections = [
     patterns: ["token/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      FLOW: [
+      "Overview": [
         "token/index",
         "token/earn",
         "token/concepts",
         "token/delivery",
         "token/faq",
+      ],
+      "Developer Guides": [
+        "token/locked-account-setup",
       ],
     },
   },
@@ -227,7 +230,7 @@ const sections = [
         "staking/rewards",
         "staking/stake-slashing",
       ],
-      "Developer Guide": [
+      "Developer Guides": [
         "staking/technical-overview",
         "staking/staking-transactions",
         "staking/delegation-transactions",
@@ -246,7 +249,7 @@ const sections = [
         "node-operation/node-roles",
         "node-operation/node-setup",
       ],
-      "Operator Guide": [
+      "Operator Guides": [
         "node-operation/node-bootstrap",
         "node-operation/monitoring-nodes",
         "node-operation/faq",
