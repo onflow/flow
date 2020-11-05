@@ -76,10 +76,10 @@ const categoryTitleStyles = {
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  padding: "12px 0",
+  paddingBottom: "12px",
   color: theme.text3,
   fontWeight: "bold",
-  fontSize: 14,
+  fontSize: 13,
   lineHeight: "15px",
   ...smallCaps,
   svg: size(10),
@@ -256,7 +256,6 @@ NavItems.propTypes = {
 export default function SidebarNav(props) {
   const categoriesRef = useRef();
   const docset = useContext(NavItemsContext);
-  const { pathname, pathConfig } = props;
 
   const [allExpanded, setAllExpanded] = useState(false);
   const categories = props.contents.filter((content) => content.title);
@@ -292,15 +291,11 @@ export default function SidebarNav(props) {
     }
   }
 
-  const showDocsetMenu = pathConfig.showDocsetMenu.find((p) => {
-    return pathname === p;
-  });
-
   return (
     <>
-      <DocsetMenuWrapper>
-        {showDocsetMenu &&
-          docset
+      {props.showMainNav &&
+        <DocsetMenuWrapper>
+          {docset
             .filter((navItem) => {
               return !navItem.omitLandingPage;
             })
@@ -314,7 +309,8 @@ export default function SidebarNav(props) {
                 </ProjectLink>
               );
             })}
-      </DocsetMenuWrapper>
+        </DocsetMenuWrapper>
+      }
       {root && (
         <NavItems
           pages={root.pages}
