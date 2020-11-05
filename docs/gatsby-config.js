@@ -131,8 +131,8 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
-        "[FLOW (Token)](/token)",
-        "[Node operator](/operator)",
+        "[FLOW Token](/token)",
+        "[Node Operation](/node-operation)",
         "intro/glossary",
         "intro/FAQ",
       ],
@@ -236,6 +236,23 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
+    patterns: ["node-operation/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      "Overview": [
+        "node-operation/index",
+        "node-operation/node-roles",
+        "node-operation/node-setup",
+      ],
+      "Operator Guide": [
+        "node-operation/node-bootstrap",
+        "node-operation/monitoring-nodes",
+        "node-operation/faq",
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
     patterns: ["emulator/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
@@ -248,23 +265,6 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["protocol/access-api"],
-    },
-  },
-  {
-    sourceInstanceName: "docs",
-    patterns: ["operator/**/*"],
-    sidebarAlwaysExpanded: true,
-    sidebar: {
-      FLOW: [
-        "operator/index",
-        "operator/node-roles",
-        "operator/node-setup",
-      ],
-      "Technical Guide": [
-        "operator/technical-guide/node-bootstrap",
-        "operator/technical-guide/monitoring-nodes",
-        "operator/technical-guide/`faq",
-      ],
     },
   },
   {
