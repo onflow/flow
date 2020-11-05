@@ -1,5 +1,4 @@
 import "../prism.less";
-import DocsetSwitcher from "./docset-switcher";
 import Header from "./header";
 import HeaderNav from "./header-nav";
 import PropTypes from "prop-types";
@@ -7,7 +6,6 @@ import React, { createContext, useMemo, useRef, useState } from "react";
 import Search from "./search";
 import styled from "@emotion/styled";
 import useLocalStorage from "react-use/lib/useLocalStorage";
-import { Button } from "../ui/Button";
 import { theme } from "../colors";
 import breakpoints from "../utils/breakpoints";
 import FlexWrapper from "./flex-wrapper";
@@ -17,30 +15,13 @@ import Sidebar from "./sidebar";
 import SidebarNav from "./sidebar-nav";
 import { useResponsiveSidebar } from "./responsive-sidebar";
 import { Helmet } from "react-helmet";
-import { IconMenuSelector } from "../ui/icons";
 import { graphql, useStaticQuery } from "gatsby";
 import MobileLogo from "./mobile-logo";
 import { SelectedLanguageContext } from "./multi-code-block";
-import { size } from "polished";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
 const Main = styled.main({
   flexGrow: 1,
-});
-
-const ButtonWrapper = styled.div({
-  flexGrow: 1,
-});
-
-const StyledButton = styled(Button)({
-  width: "100%",
-  ":not(:hover)": {
-    backgroundColor: theme.background,
-  },
-});
-
-const StyledIcon = styled(IconMenuSelector)(size(16), {
-  marginLeft: "auto",
 });
 
 const MobileNav = styled.div({
@@ -52,11 +33,18 @@ const MobileNav = styled.div({
   },
 });
 
-const HeaderInner = styled.span({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  marginBottom: 32,
+export const NavItemTitle = styled.h4({
+  marginBottom: 8,
+  fontWeight: 600,
+  color: 'inherit'
+});
+
+export const NavItemDescription = styled.p({
+  marginBottom: 8,
+  fontSize: 15,
+  lineHeight: 1.5,
+  color: theme.text3,
+  transition: 'color 150ms ease-in-out'
 });
 
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
@@ -102,31 +90,16 @@ export default function PageLayout(props) {
     handleSidebarNavLinkClick,
   } = useResponsiveSidebar();
 
-  const buttonRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
   const selectedLanguageState = useLocalStorage("docs-lang");
-
-  function openMenu() {
-    setMenuOpen(true);
-  }
-
-  function closeMenu() {
-    setMenuOpen(false);
-  }
 
   const { pathname } = props.location;
   const { siteName, title } = data.site.siteMetadata;
   const { subtitle, sidebar } = props.pageContext;
   const {
-    discordUrl,
-    twitterUrl,
     navConfig = {},
-    pathConfig,
-    footerNavConfig,
     logoLink,
     algoliaApiKey,
     algoliaIndexName,
-    menuTitle,
   } = props.pluginOptions;
 
   const navItems = useMemo(
@@ -138,12 +111,7 @@ export default function PageLayout(props) {
     [navConfig]
   );
 
-  const hideDocsetDropdown =
-    navItems.length > 0 && pathConfig.hideDocsetDropdown.includes(pathname);
-
-  const sidebarTitle = (
-    <span className="title-sidebar">{subtitle || siteName}</span>
-  );
+  console.log(navItems);
 
   return (
     <Layout>
@@ -168,22 +136,6 @@ export default function PageLayout(props) {
           title={siteName}
           logoLink={logoLink}
         >
-          {!hideDocsetDropdown && (
-            <HeaderInner>
-              <ButtonWrapper ref={buttonRef}>
-                <StyledButton
-                  feel="flat"
-                  color={theme.primary}
-                  size="small"
-                  onClick={openMenu}
-                  style={{ display: "flex" }}
-                >
-                  {sidebarTitle}
-                  <StyledIcon />
-                </StyledButton>
-              </ButtonWrapper>
-            </HeaderInner>
-          )}
           {sidebar && (
             <NavItemsContext.Provider value={navItems}>
               <SidebarNav
@@ -192,7 +144,7 @@ export default function PageLayout(props) {
                 onToggleAll={handleToggleAll}
                 onToggleCategory={handleToggleCategory}
                 onLinkClick={handleSidebarNavLinkClick}
-                pathConfig={pathConfig}
+                showMainNav={sidebar.showMainNav}
                 alwaysExpanded={sidebar.alwaysExpanded}
               />
             </NavItemsContext.Provider>
@@ -220,18 +172,6 @@ export default function PageLayout(props) {
           </SelectedLanguageContext.Provider>
         </Main>
       </FlexWrapper>
-      {!hideDocsetDropdown && (
-        <DocsetSwitcher
-          siteName={menuTitle || siteName}
-          discordUrl={discordUrl}
-          twitterUrl={twitterUrl}
-          navItems={navItems}
-          footerNavConfig={footerNavConfig}
-          open={menuOpen}
-          buttonRef={buttonRef}
-          onClose={closeMenu}
-        />
-      )}
     </Layout>
   );
 }

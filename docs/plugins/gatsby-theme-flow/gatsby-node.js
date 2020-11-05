@@ -254,6 +254,7 @@ async function createPagesForSection(
         id,
         subtitle,
         sidebar: {
+          showMainNav: section.sidebarShowMainNav,
           alwaysExpanded: section.sidebarAlwaysExpanded,
           contents: sidebarContents
         },
