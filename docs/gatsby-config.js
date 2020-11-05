@@ -127,66 +127,19 @@ const sections = [
       "updates/*",
       "concepts/node-operation/*",
       "concepts/flow-concepts/*",
-      // "concepts/node-operation/*",
-      // "concepts/custody-providers/*",
-      // "guides/node-operator/*",
-      // "tutorial/cadence/*",
     ],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
         "[FLOW (Token)](/token)",
         "[Node operator](/operator)",
-        // "intro/partner-update",
         "intro/glossary",
         "intro/FAQ",
       ],
-      "Community Updates": ["updates/oct-6-2020", "updates/sep-16-2020"],
-      // Tutorial: [
-      //   "tutorial/cadence/01-first-steps",
-      //   "tutorial/cadence/02-hello-world",
-      //   "tutorial/cadence/03-fungible-tokens",
-      //   "tutorial/cadence/04-non-fungible-tokens",
-      //   "tutorial/cadence/05-marketplace-setup",
-      //   "tutorial/cadence/06-marketplace-compose",
-      //   "tutorial/cadence/07-marketplace-compose",
-      //   "tutorial/cadence/08-voting",
-      // ],
-      // Tutorials: ["tutorial/cadence/00-introduction"],
-
-      // "Flow Concepts": [
-      //   "concepts/flow-concepts/slashings",
-      //   "concepts/flow-concepts/accounts-keys",
-      //   "concepts/flow-concepts/delegation",
-      //   "concepts/flow-concepts/devnet",
-      //   "concepts/flow-concepts/fees",
-      //   "concepts/flow-concepts/governance",
-      //   "concepts/flow-concepts/node-roles",
-      //   "concepts/flow-concepts/service-account",
-      //   "concepts/flow-concepts/testnet",
-      //   "concepts/flow-concepts/token-staking",
-      //   "concepts/flow-concepts/transactions",
-      // ],
-      // "Node Operation Concepts": [
-      //   "concepts/node-operation/quickstart",
-      //   "concepts/node-operation/day1-accounts-tokens",
-      //   "concepts/node-operation/node-keys",
-      //   "concepts/node-operation/network-identity",
-      //   "concepts/node-operation/staking-rewards",
-      //   "concepts/node-operation/hosting-custody-partners",
-      // ],
-      // "Node Operator Guides": [
-      //   "guides/node-operator/setup",
-      //   "guides/node-operator/genesis-bootstrap",
-      //   "guides/node-operator/starting-nodes",
-      //   "guides/node-operator/monitoring-nodes",
-      //   "guides/node-operator/accessing-mainnet",
-      //   "guides/node-operator/spork-practice",
-      // ],
-      // "Custody Providers": [
-      //   "concepts/custody-providers/keys-accounts",
-      //   "concepts/custody-providers/token-distribution",
-      // ],
+      "Community Updates": [
+        "updates/oct-6-2020", 
+        "updates/sep-16-2020",
+      ],
     },
   },
   {
@@ -215,7 +168,10 @@ const sections = [
     patterns: ["sdks/golang/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["sdks/golang/index", "sdks/golang/changelog"],
+      null: [
+        "sdks/golang/index",
+        "sdks/golang/changelog",
+      ],
       "How To": [
         "sdks/golang/create-account",
         "sdks/golang/build-transaction",
@@ -231,7 +187,10 @@ const sections = [
     sourceInstanceName: "docs",
     patterns: ["sdks/javascript/**/*"],
     sidebar: {
-      null: ["sdks/javascript/index", "sdks/javascript/create-account"],
+      null: [
+        "sdks/javascript/index", 
+        "sdks/javascript/create-account",
+      ],
     },
   },
   {
@@ -239,7 +198,10 @@ const sections = [
     patterns: ["concepts/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      Accounts: ["concepts/accounts-and-keys", "concepts/transaction-signing"],
+      Accounts: [
+        "concepts/accounts-and-keys",
+        "concepts/transaction-signing",
+      ],
     },
   },
   {
@@ -289,6 +251,23 @@ const sections = [
     },
   },
   {
+    sourceInstanceName: "docs",
+    patterns: ["operator/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      FLOW: [
+        "operator/index",
+        "operator/node-roles",
+        "operator/node-setup",
+      ],
+      "Technical Guide": [
+        "operator/technical-guide/node-bootstrap",
+        "operator/technical-guide/monitoring-nodes",
+        "operator/technical-guide/`faq",
+      ],
+    },
+  },
+  {
     sourceInstanceName: "cadence",
     patterns: ["docs/language/**/*"],
     sidebar: {
@@ -321,23 +300,6 @@ const sections = [
         "docs/language/environment-information",
         "docs/language/crypto",
         "docs/language/type-hierarchy",
-      ],
-    },
-  },
-  {
-    sourceInstanceName: "docs",
-    patterns: ["operator/**/*"],
-    sidebarAlwaysExpanded: true,
-    sidebar: {
-      FLOW: [
-          "operator/index",
-          "operator/node-roles",
-          "operator/node-setup",
-      ],
-     "Technical Guide": [
-       "operator/technical-guide/node-bootstrap",
-       "operator/technical-guide/monitoring-nodes",
-       "operator/technical-guide/`faq",
       ],
     },
   },
