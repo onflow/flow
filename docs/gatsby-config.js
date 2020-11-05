@@ -1,29 +1,3 @@
-const fs = require("fs");
-
-// Do things on these paths
-const pathConfig = {
-  // hide the docset dropdown on these pages
-  hideDocsetDropdown: [
-    "/",
-    "/intro/FAQ/",
-    "/intro/glossary/",
-    "/intro/flow-token/",
-    "/concepts/node-operation/quickstart",
-    "/updates/sep-16-2020/",
-    "/updates/oct-6-2020/",
-  ],
-  // Shows the main docest menu on these pages
-  showDocsetMenu: [
-    "/",
-    "/intro/FAQ/",
-    "/intro/glossary/",
-    "/intro/flow-token/",
-    "/concepts/node-operation/quickstart",
-    "/updates/sep-16-2020/",
-    "/updates/oct-6-2020/",
-  ],
-};
-
 const navConfig = {
   "Getting Started": {
     url: "/",
@@ -84,21 +58,6 @@ const navConfig = {
   },
 };
 
-const footerNavConfig = {
-  Blog: {
-    href: "https://www.onflow.org/blog",
-    target: "_blank",
-    rel: "noopener noreferrer",
-  },
-  Forum: {
-    href: "https://forum.onflow.org/",
-    target: "_blank",
-  },
-  Contribute: {
-    href: "https://github.com/onflow",
-  },
-};
-
 // sourceGithubRepos maps a sourceInstanceName to a GitHub repo name
 const sourceGithubRepos = {
   docs: {
@@ -132,6 +91,7 @@ const sections = [
       // "guides/node-operator/*",
       // "tutorial/cadence/*",
     ],
+    sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
@@ -334,8 +294,6 @@ module.exports = {
       resolve: "gatsby-theme-flow",
       options: {
         navConfig,
-        pathConfig,
-        footerNavConfig,
         siteName: "Flow Documentation",
         description: "Start Building in the Open",
         pageTitle: "Flow Docs",
