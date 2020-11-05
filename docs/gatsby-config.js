@@ -241,8 +241,8 @@ const sections = [
     sidebar: {
       "Overview": [
         "node-operation/index",
-        "node-operation/node-roles",
         "node-operation/node-setup",
+        "node-operation/node-roles",
       ],
       "Operator Guide": [
         "node-operation/node-bootstrap",
