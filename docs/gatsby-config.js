@@ -125,13 +125,12 @@ const sections = [
       "*",
       "intro/*",
       "updates/*",
-      "concepts/node-operation/*",
-      "concepts/flow-concepts/*",
     ],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
         "[FLOW Token](/token)",
+        "[Staking & Delegating](/staking)",
         "[Node Operation](/node-operation)",
         "intro/glossary",
         "intro/FAQ",
@@ -216,21 +215,24 @@ const sections = [
         "token/delivery",
         "token/faq",
       ],
-      Staking: [
-        "token/staking/index",
-        "token/staking/technical",
-        "token/staking/rewards",
-        "token/staking/stake-slashing",
-        "token/staking/transactions",
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["staking/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      "Overview": [
+        "staking/index",
+        "staking/rewards",
+        "staking/stake-slashing",
       ],
-      "Staking with Locked FLOW": [
-        "token/staking/locked/index",
-        "token/staking/locked/setup",
-        "token/staking/locked/stakers",
-        "token/staking/locked/delegators",
-        "token/staking/locked/node-operators",
-        "token/staking/locked/power-users",
-        "token/staking/locked/transactions",
+      "Developer Guide": [
+        "staking/technical-overview",
+        "staking/staking-transactions",
+        "staking/delegation-transactions",
+        "staking/third-party-operator",
+        "staking/transactions",
       ],
     },
   },

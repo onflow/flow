@@ -54,6 +54,17 @@ Source: [FungibleToken.cdc](https://github.com/onflow/flow-ft/blob/master/contra
 | Testnet | `0x9a0766d93b6608b7` |
 | Mainnet | `0xf233dcee88fe0abe` |
 
+## `FlowIDTableStaking`
+
+The `FlowIDTableStaking` contract is the central table that manages staked nodes, delegation and rewards.
+
+Source: [FlowIDTableStaking.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc)
+
+| Network | Contract Address     |
+|---------|----------------------|
+| Testnet | `0x9eca2b38b18b5dfe` |
+| Mainnet | `0x8624b52f9ddcd04a` |
+
 ## `LockedTokens`
 
 The `LockedTokens` contract defines the resources and interfaces 
@@ -66,6 +77,43 @@ Source: [LockedTokens.cdc](https://github.com/onflow/flow-core-contracts/blob/ma
 | Testnet | `0x95e019a17d0e23d7` |
 | Mainnet | `0x8d0e87b65159ae63` |
 
+### Events
+
+The `LockedTokens` contract defines events that can be monitored for important actions.
+
+```cadence
+pub event SharedAccountRegistered(address: Address)
+```
+Emitted when a new shared (locked) account is registerd.
+
+```cadence
+pub event UnlockedAccountRegistered(address: Address)
+```
+Emitted when a new user (unlocked) account is registered. This event and `SharedAccountRegistered`
+are always emitted at the same time.
+
+```cadence
+pub event UnlockLimitIncreased(address: Address, increaseAmount: UFix64, newLimit: UFix64)
+```
+Emitted when the token admin increases the unlock limit for a locked account.
+This will usually happen when a milestone is reached in the vesting of the locked tokens.
+
+```cadence
+pub event LockedAccountRegisteredAsNode(address: Address, nodeID: String)
+```
+Emitted when a user registers their locked account as a node operator.
+
+```cadence
+pub event LockedAccountRegisteredAsDelegator(address: Address, nodeID: String)
+```
+Emitted when a user registers their locked account as a delegator.
+
+```cadence
+pub event LockedTokensDeposited(address: Address, amount: UFix64)
+```
+Emitted when the token admin deposits locked tokens from the token sale.
+
+
 ## `StakingProxy`
 
 The `StakingProxy` contract defines the interfaces through which **token holders** 
@@ -77,7 +125,6 @@ Source: [StakingProxy.cdc](https://github.com/onflow/flow-core-contracts/blob/ma
 |---------|----------------------|
 | Testnet | `0x7aad92e5a0715d21` |
 | Mainnet | `0x62430cf28c26d095` |
-
 
 # Transactions
 
@@ -209,39 +256,3 @@ This permission can be revoked by the **token holder**._
 |**`NO.07`**| Unstake FLOW           | [stakingProxy/unstake_all.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/unstake_all.cdc) | 
 |**`NO.08`**| Withdraw Unstaked FLOW | [stakingProxy/withdraw_unstaked.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/withdraw_unstaked.cdc) | 
 |**`NO.09`**| Withdraw Rewarded FLOW | [stakingProxy/withdraw_rewards.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/withdraw_rewards.cdc) | 
-
-# Events
-
-The LockedTokens contract defines some events that can be monitored for important actions.
-
-```cadence
-pub event SharedAccountRegistered(address: Address)
-```
-Emitted when a new shared (locked) account is registerd.
-
-```cadence
-pub event UnlockedAccountRegistered(address: Address)
-```
-Emitted when a new user (unlocked) account is registered. This event and `SharedAccountRegistered`
-are always emitted at the same time.
-
-```cadence
-pub event UnlockLimitIncreased(address: Address, increaseAmount: UFix64, newLimit: UFix64)
-```
-Emitted when the token admin increases the unlock limit for a locked account.
-This will usually happen when a milestone is reached in the vesting of the locked tokens.
-
-```cadence
-pub event LockedAccountRegisteredAsNode(address: Address, nodeID: String)
-```
-Emitted when a user registers their locked account as a node operator.
-
-```cadence
-    pub event LockedAccountRegisteredAsDelegator(address: Address, nodeID: String)
-```
-Emitted when a user registers their locked account as a delegator.
-
-```cadence
-    pub event LockedTokensDeposited(address: Address, amount: UFix64)
-```
-Emitted when the token admin deposits locked tokens from the token sale.
