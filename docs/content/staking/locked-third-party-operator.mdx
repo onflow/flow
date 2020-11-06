@@ -1,6 +1,6 @@
 ---
 title: How to Stake Locked FLOW with a Third-Party Node Operator
-sidebar_title: Use a Third-Party Operator
+sidebar_title: Stake with a Third-Party Operator
 ---
 
 # Introduction
@@ -28,7 +28,7 @@ established a trusted off-chain relationship.
 ## Operator Setup
 
 These are the steps that a **node operator** must take in order to accept 
-staking access granted by a **token holder**.
+staking access granted by a token holder.
 
 ### 1. Configure a node operator account
 
@@ -40,7 +40,7 @@ they must configure their account. This account is referred to as the operator a
 The operator account will hold the staking capabilities for all token holders.
 
 The node operator can configure their account with the **Set Up Operator Account** 
-([NO.01](../transactions/#node-operator)) transaction.
+([NO.01](/protocol/core-contracts/locked-tokens/#node-operator)) transaction.
 This transaction must be authorized by an existing account that the token holder wishes
 to use as its operator account.
 
@@ -52,7 +52,7 @@ and create the staking and networking key-pairs.
 
 After this is done, the node operator creates a `NodeInfo` entry and adds it to the 
 operator account with the **Add Node Info** 
-([NO.02](../transactions/#node-operator)) transaction.
+([NO.02](/protocol/core-contracts/locked-tokens/#node-operator)) transaction.
 
 This transaction takes the following arguments:
 
@@ -95,7 +95,7 @@ they will create a `NodeInfo` object holding the IP address and public keys for 
 This `NodeInfo` object will be stored in an account owned by the node operator (operator account).
 
 The node operator should provide you with their operator account `address` and the `nodeID` for your new node. 
-These values can be passed into the **Get Operator Node Info** ([TH.15](../transactions/#token-holder)) 
+These values can be passed into the **Get Operator Node Info** ([TH.15](/protocol/core-contracts/locked-tokens/#token-holder)) 
 script to confirm your node information:
 
 | Argument     | Type      | Description |
@@ -111,7 +111,7 @@ If this node information is correct, continue to step 2.
 ### 2. Register node & grant staking access to the node operator
 
 After confirming that the node information is correct, the token holder can register the
-node with the central staking contract by using the using the **Register Node** ([TH.16](../transactions/#token-holder)) transaction
+node with the central staking contract by using the using the **Register Node** ([TH.16](/protocol/core-contracts/locked-tokens/#token-holder)) transaction
 with the following arguments:
 
 | Argument    | Type      | Description |
@@ -137,7 +137,7 @@ _Note: This transaction stakes additional tokens to the same node that was regis
 It is currently not possible to stake to multiple nodes from the same account._
 
 To stake new tokens via the `NodeStakerProxy`, 
-the node operator can use the **Stake New Locked FLOW** ([NO.05](../transactions/#node-operator)) 
+the node operator can use the **Stake New Locked FLOW** ([NO.05](/protocol/core-contracts/locked-tokens/#node-operator)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -150,7 +150,7 @@ transaction with the following arguments:
 After tokens become unstaked, the node operator can choose to re-stake the unstaked tokens to the same node.
 
 To staked unstaked tokens via the `NodeStakerProxy`, 
-the node operator can use the **Re-stake Unstaked FLOW** ([NO.06](../transactions/#node-operator)) 
+the node operator can use the **Re-stake Unstaked FLOW** ([NO.06](/protocol/core-contracts/locked-tokens/#node-operator)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -163,7 +163,7 @@ transaction with the following arguments:
 The node operator can submit a request to unstake the token holder's staked tokens at any time.
 
 To unstake staked tokens via the `NodeStakerProxy`, 
-the node operator can use the **Unstake FLOW** ([NO.07](../transactions/#node-operator)) 
+the node operator can use the **Unstake FLOW** ([NO.07](/protocol/core-contracts/locked-tokens/#node-operator)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -180,7 +180,7 @@ After tokens become unstaked, the node operator can withdraw them from the centr
 on behalf of the token holder.
 
 To withdraw unstaked tokens via the `NodeStakerProxy`, 
-the node operator can use the **Withdraw Unstaked FLOW** ([NO.08](../transactions/#node-operator)) 
+the node operator can use the **Withdraw Unstaked FLOW** ([NO.08](/protocol/core-contracts/locked-tokens/#node-operator)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -196,7 +196,7 @@ After earning rewards from staking, the node operator can withdraw them from the
 on behalf of the token holder.
 
 To withdraw rewarded tokens via the `NodeStakerProxy`, 
-the node operator can use the **Withdraw Rewarded FLOW** ([NO.09](../transactions/#node-operator)) 
+the node operator can use the **Withdraw Rewarded FLOW** ([NO.09](/protocol/core-contracts/locked-tokens/#node-operator)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -214,7 +214,7 @@ However, unlike unstaked tokens, rewards are unlocked FLOW and can be immediatel
 The node operator can destroy the `NodeInfo` entry after 
 the staking relationship has concluded.
 
-This is done using the **Remove Node Info** ([NO.03](../transactions/#node-operator)) 
+This is done using the **Remove Node Info** ([NO.03](/protocol/core-contracts/locked-tokens/#node-operator)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |

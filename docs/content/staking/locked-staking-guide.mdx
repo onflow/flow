@@ -3,12 +3,12 @@ title: How to Stake with Locked FLOW
 sidebar_title: Stake with Locked FLOW
 ---
 
-This document outlines the steps a token holder can take to stake and manage 
+This document outlines the steps a **token holder (TH)** can take to stake and manage 
 a Flow node using the `LockedTokens` contract.
 
 <Callout type="warning">
 
-This guide covers staking with _**locked FLOW tokens**_. 
+This guide covers staking with **locked FLOW tokens**. 
 A separate guide for unlocked tokens will be published at a later date.
 </Callout>
 
@@ -22,7 +22,7 @@ the `LockedTokens.TokenHolder` can be used to perform staking operations from th
 
 ## Register a New Staked Node
 
-To register as a staker, the token holder can use the **Register Node** ([TH.06](../transactions/#token-holder))
+To register as a staker, the token holder can use the **Register Node** ([TH.06](/protocol/core-contracts/locked-tokens/#token-holder))
 transaction with the following arguments:
 
 | Argument              | Type     | Description |
@@ -54,11 +54,11 @@ assuming they have the correct number of tokens to perform the action.
 
 The token holder can stake additional tokens at any time.
 
-_Note: This transaction stakes additional tokens to the same node that was registered in the setup phase.
+_Note: this transaction stakes additional tokens to the same node that was registered in the setup phase.
 It is currently not possible to [stake to multiple nodes from the same account](#stake-multiple-nodes-from-the-same-account)._
 
 To stake new tokens via the `NodeStakerProxy`, 
-the token holder can use the **Stake New Locked FLOW** ([TH.08](../transactions/#token-holder)) 
+the token holder can use the **Stake New Locked FLOW** ([TH.08](/protocol/core-contracts/locked-tokens/#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -72,7 +72,7 @@ This transaction commits tokens to stake from the token holder's locked token ac
 After tokens become unstaked, the token holder can choose to re-stake the unstaked tokens to the same node.
 
 To staked unstaked tokens via the `NodeStakerProxy`, 
-the token holder can use the **Re-stake Unstaked FLOW** ([TH.09](../transactions/#token-holder)) 
+the token holder can use the **Re-stake Unstaked FLOW** ([TH.09](/protocol/core-contracts/locked-tokens/#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -84,7 +84,7 @@ transaction with the following arguments:
 After earning rewards from staking, the token holder can choose to re-stake the rewarded tokens to the same node.
 
 To staked rewarded tokens via the `NodeStakerProxy`, 
-the token holder can use the **Re-stake Rewarded FLOW** ([TH.10](../transactions/#token-holder)) 
+the token holder can use the **Re-stake Rewarded FLOW** ([TH.10](/protocol/core-contracts/locked-tokens/#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -100,7 +100,7 @@ and marks an equal amount of tokens in the token holder's `LockedTokens.LockedTo
 The token holder can submit a request to unstake their tokens at any time.
 
 To unstake staked tokens via the `NodeStakerProxy`, the token holder can use 
-the **Unstake FLOW** ([TH.11](../transactions/#token-holder)) transaction.
+the **Unstake FLOW** ([TH.11](/protocol/core-contracts/locked-tokens/#token-holder)) transaction.
 
 This transaction requires no arguments.
 
@@ -115,7 +115,7 @@ Once the tokens are released (unstaked), they can be claimed via the
 After tokens become unstaked, the token holder can withdraw them from the central staking contract.
 
 To withdraw unstaked tokens via the `NodeStakerProxy`, 
-the token holder can use the **Withdraw Unstaked FLOW** ([TH.13](../transactions/#token-holder)) 
+the token holder can use the **Withdraw Unstaked FLOW** ([TH.13](/protocol/core-contracts/locked-tokens/#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -129,7 +129,7 @@ This transaction moves the unstaked tokens back into the `LockedTokens.Lockbox` 
 After earning rewards from staking, the token holder can withdraw them from the central staking contract.
 
 To withdraw rewarded tokens via the `NodeStakerProxy`, 
-the token holder can use the **Withdraw Rewarded FLOW** ([TH.14](../transactions/#token-holder)) 
+the token holder can use the **Withdraw Rewarded FLOW** ([TH.14](/protocol/core-contracts/locked-tokens/#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -142,7 +142,7 @@ However, unlike unstaked tokens, rewards are _unlocked FLOW_ and can be immediat
 ## Query a Staker Record
 
 To return a struct with all the information associated with a node, anyone
-can use the **Get Node Info** ([TH.06](../transactions/#token-holder)) script with the following arguments:
+can use the **Get Node Info** ([TH.06](/protocol/core-contracts/locked-tokens/#token-holder)) script with the following arguments:
 
 | Argument   | Type     | Description |
 |------------|----------|-------------|
