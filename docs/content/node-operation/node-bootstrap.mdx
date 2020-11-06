@@ -171,8 +171,6 @@ The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info
 4. Update the `FLOW_GO_NODE_ID` inside [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) to the `node-id` that you got from the previous step
 5. Start your Flow node via `docker` or `systemd`
 
-**NOTE** if you are running an execution node, you must also move the execution state from the public-genesis-information directory, to the execution-state directory with-in the bootstrap folder: `mv ./public-root-information/root.checkpoint ./execution-state/` This will eventually be taken care of by the transit script but currently requires manual input.
-
 ### Docker
 
 **You can skip this section if you are running via systemd**
