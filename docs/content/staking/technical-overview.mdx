@@ -227,8 +227,11 @@ transaction to move the tokens from the rewards pool to the committed pool.
 ### Unstake Tokens
 
 At anytime, a staker can also submit a request to unstake tokens with the **request_unstaking** transaction.
-This marks the specified amount of tokens to be unstaked at the end of the epoch.
-At the end of the epoch, their tokens are moved to the unstaking pool.
+If the tokens are in the committed pool, they are moved to the unstaked pool and are available to withdraw.
+
+If the requested tokens are in the staked pool, 
+it marks the specified amount of tokens to be unstaked at the end of the epoch.
+At the end of the epoch, the tokens are moved to the unstaking pool.
 They will sit in this pool for one (1) additional epoch,
 at which point they will be moved to the unstaked tokens pool.
 
