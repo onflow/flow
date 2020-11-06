@@ -192,9 +192,9 @@ const sections = [
       ],
       "Developer Guides": [
         "staking/technical-overview",
-        "staking/staking-transactions",
-        "staking/delegation-transactions",
-        "staking/third-party-operator",
+        "staking/locked-staking-guide",
+        "staking/locked-delegation-guide",
+        "staking/locked-third-party-operator",
         "staking/transactions",
       ],
     },
