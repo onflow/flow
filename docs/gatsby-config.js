@@ -84,14 +84,13 @@ const sections = [
       "*",
       "intro/*",
       "updates/*",
-      "concepts/node-operation/*",
-      "concepts/flow-concepts/*",
     ],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
         "[FLOW Token](/token)",
+        "[Staking & Delegating](/staking)",
         "[Node Operation](/node-operation)",
         "intro/glossary",
         "intro/FAQ",
@@ -169,28 +168,34 @@ const sections = [
     patterns: ["token/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      FLOW: [
+      "Overview": [
         "token/index",
         "token/earn",
         "token/concepts",
         "token/delivery",
         "token/faq",
       ],
-      Staking: [
-        "token/staking/index",
-        "token/staking/technical",
-        "token/staking/rewards",
-        "token/staking/stake-slashing",
-        "token/staking/transactions",
+      "Developer Guides": [
+        "token/locked-account-setup",
       ],
-      "Staking with Locked FLOW": [
-        "token/staking/locked/index",
-        "token/staking/locked/setup",
-        "token/staking/locked/stakers",
-        "token/staking/locked/delegators",
-        "token/staking/locked/node-operators",
-        "token/staking/locked/power-users",
-        "token/staking/locked/transactions",
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["staking/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      "Overview": [
+        "staking/index",
+        "staking/rewards",
+        "staking/stake-slashing",
+      ],
+      "Developer Guides": [
+        "staking/technical-overview",
+        "staking/locked-staking-guide",
+        "staking/locked-delegation-guide",
+        "staking/locked-third-party-operator",
+        "staking/transactions",
       ],
     },
   },
@@ -204,7 +209,7 @@ const sections = [
         "node-operation/node-setup",
         "node-operation/node-roles",
       ],
-      "Operator Guide": [
+      "Operator Guides": [
         "node-operation/node-bootstrap",
         "node-operation/monitoring-nodes",
         "node-operation/faq",
