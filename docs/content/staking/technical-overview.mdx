@@ -142,7 +142,7 @@ Once the info has been determined:
 * Networking Key: `String`
 * Staking Key: `String`
 
-The node operator is ready to submit a staking request.
+The node operator is ready to register their node.
 
 <Callout type="warning">
 NOTE: The staking smart contract does not validate that the strings for the address and keys are valid.
@@ -150,8 +150,8 @@ It simply checks to make sure they are unique. The staking admin/node software w
 they are valid and if they are not, the registered node will not be eligible to stake.
 </ Callout>
 
-To create and submit a regular staking request, 
-the node operator submits a **Create Staking Request** transaction,
+To create and submit a transaction to register a node, 
+the node operator submits a **Register Node** transaction,
 providing all the node info, and the tokens that they want to stake.
 
 This registers the node in the Flow node identity table
@@ -268,7 +268,7 @@ Rewards are paid and deposited to the rewarded Pool after each epoch.
 At the end of every epoch, tokens are moved between pools in this order:
 
 1. All Committed Tokens will get moved either to the Staked Tokens pool, 
-or to the Unstaked Tokens pool (depending on if the staked request has met the minimum stake requirements).
+or to the Unstaked Tokens pool (depending on if the registered node has met the minimum stake requirements).
 2. All Committed Tokens get moved to staked Tokens pool.
 3. All unstaking tokens get moved to the unstaked tokens pool.
 4. All requested unstaking tokens get moved from the staked pool to the unstaking pool.
