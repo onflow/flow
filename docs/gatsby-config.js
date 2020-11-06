@@ -92,6 +92,7 @@ const sections = [
         "[FLOW Token](/token)",
         "[Staking & Delegating](/staking)",
         "[Node Operation](/node-operation)",
+        "[Core Contracts](/protocol/core-contracts)",
         "intro/glossary",
         "intro/FAQ",
       ],
@@ -165,6 +166,23 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
+    patterns: ["protocol/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: [
+        "protocol/access-api",
+      ],
+      "Core Contracts": [
+        "protocol/core-contracts/fungible-token",
+        "protocol/core-contracts/flow-token",
+        "protocol/core-contracts/flow-fees",
+        "protocol/core-contracts/flow-id-table-staking",
+        "protocol/core-contracts/locked-tokens",
+      ]
+    },
+  },
+  {
+    sourceInstanceName: "docs",
     patterns: ["token/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
@@ -195,7 +213,6 @@ const sections = [
         "staking/locked-staking-guide",
         "staking/locked-delegation-guide",
         "staking/locked-third-party-operator",
-        "staking/transactions",
       ],
     },
   },
@@ -222,14 +239,6 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["emulator/index", "emulator/changelog"],
-    },
-  },
-  {
-    sourceInstanceName: "docs",
-    patterns: ["protocol/**/*"],
-    sidebarAlwaysExpanded: true,
-    sidebar: {
-      null: ["protocol/access-api"],
     },
   },
   {
