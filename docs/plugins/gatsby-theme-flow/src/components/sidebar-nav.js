@@ -211,7 +211,6 @@ function getStylesForNavItem(page) {
       };
     default:
       return {};
-      break;
   }
 }
 
