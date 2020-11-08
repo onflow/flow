@@ -23,13 +23,13 @@ The hardware your Node will need varies depending on the role your Node will pla
 | **Verification** | 2 cores | 16 GB  | 200 GB |
 | **Access**       | 2 cores | 16 GB  | 200 GB |
 
-_Note:The above numbers represent our current best estimate for the state of the network.  These will be actively updated as we continue benchmarking the network's performance._
+_Note: The above numbers represent our current best estimate for the state of the network.  These will be actively updated as we continue benchmarking the network's performance._
 
 ## Networking Requirements
 
 Most of the load on your nodes will be messages sent back and forth between other nodes on the network. Make sure you have a sufficiently fast connection, we recommend at _least_ 1Gbps, and 5Gbps is better.
 
-Each node will require either a static IPv4 address or a fixed DNS name. Either works, and we'll refer to this more generally as your Node Address from here out.
+Each node will require either a static IPv4 address or a fixed DNS name. Either works, and we'll refer to this more generally as your 'Node Addres' from here out.
 
 <!-- [block:callout]
 {
@@ -39,26 +39,7 @@ Each node will require either a static IPv4 address or a fixed DNS name. Either 
 }
 [/block] -->
 
-Your firewalls must expose TCP/3569 for Node communication. If you run an Access Node, you must also expose the configurable GRPC.
-
-If you are running an Access Node, you need to be able to communicate with both a Collection Node and an Execution Node. These are what the Access Node will use to execute scripts and submit transactions, as it can't participate in the protocol itself. By default these are exposed on port 9000, but neither Collection nor Execution are required to provide these interfaces, so if you want to run an Access Node you need to talk with other Nodes you know will be available.
-
-<!-- [block:image]
-{
-"images": [
-{
-"image": [
-"https://files.readme.io/d28c155-Flow-architecture_1.png",
-"Flow-architecture (1).png",
-1460,
-721,
-"#e8edf5"
-],
-"caption": "Example Topology for an exhaustive hosting setup"
-}
-]
-}
-[/block] -->
+Your firewalls must expose TCP/3569 for Node communication. If you are running an Access Node, you must also expose the GRPC port 9000.
 
 ## Operating System Requirements
 
