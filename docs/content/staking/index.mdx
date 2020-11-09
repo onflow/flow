@@ -41,8 +41,6 @@ The Flow protocol maintains a list of node operators.
 The list contains important information about each node, like their public keys, node address, and what kind of node they are running. 
 (Collection, Consensus, Execution, Verification, or Access)
 
-[Diagram of a ledger of node Identities]
-
 To register as a node, the node operator submits a transaction to register their node along with tokens they want to stake.
 
 Once a node operator is registered and staked, assuming they keep their node online, are well behaved, 
@@ -58,8 +56,6 @@ and their staked tokens are locked in and cannot change for the duration of the 
 At the end of the epoch, rewards are paid to each node based on how many tokens they had staked for that epoch. 
 This process repeats itself indefinitely, as long as the network remains functioning.
 
-[Diagram showing the list of node IDs changing every epoch, and rewards at the end of each epoch]
-
 To determine the list of nodes that are included as officially staked nodes in the next epoch, 
 the protocol looks at the records of all the nodes that have committed tokens. 
 It checks to make sure each node’s information is correct and that the node is running properly. 
@@ -67,16 +63,12 @@ Each node also has to have committed tokens above the minimum stake required for
 If any of these checks are insufficient, the node is not included in the next epoch. 
 If a node passes all the checks, they are approved and included as an official node for the next epoch.
 
-[Diagram showing various node’s committed information, with some approved and some disapproved]
-
 Nodes do not have to continue to submit staking registration transactions every epoch in order to remain staked. 
 As long as they continue to run their node properly, their tokens will remain staked. 
 A node operator only needs to take action if they want to stake more tokens or if they want to unstake their staked tokens. 
 If a node operator decides to stake or unstake tokens, 
 their requests are not carried out until the end of the current epoch.
 In the case of unstaking requests, they also must wait an additional epoch before their unstaked tokens are available to withdraw.
-
-[Diagram showing epoch schedule with staking and unstaking requests]
 
 # Rewards
 
@@ -93,8 +85,6 @@ The tokens are committed and managed in the exact same way that normal staked to
 Rewards for delegators are also calculated in the exact same way that rewards for node operators are calculated, 
 with one difference in that 8% of the calculated amount is given to the node operator being delegated to. 
 The remaining 92% is awarded to the delegator.
-
-[Diagram of Delegation reward calculation]
 
 # How Do I Stake?
 
