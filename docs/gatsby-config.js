@@ -230,6 +230,7 @@ const sections = [
         "node-operation/node-bootstrap",
         "node-operation/monitoring-nodes",
         "node-operation/faq",
+        "node-operation/spork",
       ],
     },
   },

@@ -5,13 +5,35 @@ sidebar_title: Stake with a Third-Party Operator
 
 # Introduction
 
-TODO: outline the 2 use cases
+Whether it is through a friend or a hosted node provider, 
+some Flow token holders may wish to stake a node that is being operated by another party.
+This document outlines two methods for staking locked FLOW with a third-party operator,
+the main difference being the level of control given to the operator.
 
 # Option 1: Direct Staking
 
-TODO: show Flow Port steps + screenshots
+The direct staking method is the simplest to implement and allows the token holder
+to retain full control of their tokens. In this method, the node operator is responsible
+for creating and managing the node infrastructure, but does not control any tokens
+or initiate any staking actions.
 
-# Option 2: Staking Proxy
+This form of staking relationship can be implemented in several ways. The steps below 
+provide an outline for one possible approach, but it is not the only approach.
+
+1. The node operator [bootstraps a new node record](/node-operation/node-bootstrap/) 
+and sends the node information to the token holder.
+1. The token holder uses this node information to register the node with the central staking contract.
+This can be done in one of two ways:
+
+  a) The token holder manually [submits a transaction to register a new node](../locked-staking-guide/#setup).
+
+  b) The token holder registers the node using the Flow Port (coming soon).
+
+1. The node operator should then ensure that the node is live and running before the epoch starts.
+1. Once the epoch starts, the token holder is free to manage their stake through the Flow Port or 
+manually by following the [staking guide](../locked-staking-guide/#staking-actions).
+
+# Option 2: Indirect Staking via a Staking Proxy
 
 This section covers the technical integration required for a **node operator (NO)** to operate
 a staked Flow node using locked FLOW provided by a **token holder (TH)**. This relationship
@@ -32,7 +54,7 @@ staking access granted by a token holder.
 
 ### 1. Configure a node operator account
 
-_Note: This step can be skipped if the node operator has already configured their account._
+_Note: this step can be skipped if the node operator has already configured their account._
 
 Before the node operator can begin running nodes on behalf of token holders, 
 they must configure their account. This account is referred to as the operator account.
@@ -98,10 +120,10 @@ The node operator should provide you with their operator account `address` and t
 These values can be passed into the **Get Operator Node Info** ([TH.15](/protocol/core-contracts/locked-tokens/#token-holder)) 
 script to confirm your node information:
 
-| Argument     | Type      | Description |
-|--------------|-----------|-------------|
-| **account**  | `Address` | The address of the node operator's account. |
-| **nodeID**   | `String`  | The unique ID of the node. |
+| Argument    | Type      | Description |
+|-------------|-----------|-------------|
+| **account** | `Address` | The address of the node operator's account. |
+| **nodeID**  | `String`  | The unique ID of the node. |
 
 This script returns a `StakingProxy.NodeInfo` struct containing the details for the node. 
 If no `NodeInfo` is available, the script will fail.

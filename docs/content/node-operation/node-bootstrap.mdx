@@ -15,7 +15,7 @@ You can skip this step if it is your first time running a node on Flow.
 
 <Callout type="warning">
 
-If you had a previous node running on **candidate 9,** you’ll need to turn it
+If you had a previous node running on **mainnet 1,** you’ll need to turn it
 off just before joining the updated network and re-start your node with the
 updated configuration.
 
@@ -106,11 +106,11 @@ Uploading ...
 Uploaded 400 bytes
 ```
 
-### Stake your node
+## Step 2 - Stake your node
 
-[Stake the Flow node](/staking/locked-staking-guide)
+[Stake the Flow node](/staking/locked-staking-guide/)
 
-## Step 2 - Getting Ready to Start your Flow Node
+## Step 3 - Getting Ready to Start your Flow Node
 
 
 <Callout type="danger">
@@ -153,7 +153,7 @@ git pull origin master
 
 <Callout type="danger">Wait for the Flow team announcement before you proceed to Step 3</Callout>
 
-## Step 3 - Start your Flow Node
+## Step 4 - Start your Flow Node
 
 Once you receive an announcement from the Flow team that the network had been booted (via Discord you will need to fetch the genesis info, update your runtime configuration and then boot your Flow node up!
 
@@ -170,8 +170,6 @@ The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info
 3. Get your `node-id`, you can find it at `/path/to/bootstrap/public-genesis-information/node-id`
 4. Update the `FLOW_GO_NODE_ID` inside [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) to the `node-id` that you got from the previous step
 5. Start your Flow node via `docker` or `systemd`
-
-**NOTE** if you are running an execution node, you must also move the execution state from the public-genesis-information directory, to the execution-state directory with-in the bootstrap folder: `mv ./public-root-information/root.checkpoint ./execution-state/` This will eventually be taken care of by the transit script but currently requires manual input.
 
 ### Docker
 
@@ -281,7 +279,7 @@ docker run --rm \
 2. Check that you have updated the variables inside the `runtime-conf.env`
 3. Start your service: `sudo systemctl start flow`
 
-## Step 4 - Verify if your Node is Running
+## Step 5 - Verify if your Node is Running
 
 Here are a few handy commands that you can use to check if your Flow node is up and running
 
@@ -313,7 +311,7 @@ CGroup: /system.slice/flow-verification.service
         └─3228 /usr/bin/docker run --rm -v /var/flow/bootstrap:/bootstrap:ro -v /var/flow/data:/data:rw --rm --name flow-go --network host gcr.io/flow-container-registry/verification:candidate8 --nodeid=489f8a4513d5bd8b8b093108fec00327b683db545b37b4ea9153f61b2c0c49dc --bootstrapdir=/bootstrap --datadir=/data/protocol --alpha=1 --bind 0.0.0.0:3569 --loglevel=error
 ```
 
-## Step 5 (optional) - Monitoring and Metrics
+## Step 6 (optional) - Monitoring and Metrics
 
 This is intended for operators who would like to see what their Flow nodes are currently doing. Head over to [Monitoring Node Health](/operator/monitoring-nodes) to get setup.
 
