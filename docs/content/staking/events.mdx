@@ -50,7 +50,7 @@ pub event NewNodeCreated(nodeID: String, role: UInt8, amountCommitted: UFix64)
 
 | Field           | Type    | Description |
 |-----------------|---------|-------------|
-| nodeId          | String  | The unique ID string for the node. 32 bytes. Usually the hash of the node's public key. |
+| nodeID          | String  | The unique ID string for the node. 32 bytes. Usually the hash of the node's public key. |
 | role            | UInt8   | The node's role type. From 1 to 5 inclusive. For the meaning of the values see [https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc](FlowIDTableStaking.cdc) |
 | amountCommitted | UFix64  | The amount of FLOW tokens staked to register the node. This is determined by the `role`. |
 
@@ -66,13 +66,13 @@ pub event NodeRemovedAndRefunded(nodeID: String, amount: UFix64)
 
 | Field           | Type    | Description |
 |-----------------|---------|-------------|
-| nodeId          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
+| nodeID          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
 | amount          | UFix64  | The amount of FLOW tokens returned to the node. |
 
 Emitted by `FlowIDTableStaking.Admin.endStakingAuction()` if the node is being removed from the next epoch due to the tokens that they have committed
 for the next epoch not meeting the minimum requirements.
 
-After this event the refunded FLOW tokens will be part of the node's tokensUnstaked balance.
+After this event the refunded FLOW tokens will be part of the node's `tokensUnstaked` balance.
 
 ## Token Events
 
@@ -88,7 +88,7 @@ pub event TokensCommitted(nodeID: String, amount: UFix64)
 
 | Field           | Type    | Description |
 |-----------------|---------|-------------|
-| nodeId          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
+| nodeID          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
 | amount          | UFix64  | The amount of additional FLOW tokens committed to the node. |
 
 Emitted whenever additional tokens are staked on the node for the following epoch. Specifically:
@@ -99,7 +99,7 @@ are staked again with the node for the next epoch.
 3. By `FlowIDTableStaking.NodeStaker.stakeRewardedTokens()` when reward tokens (tokens paid in return for previous staking)
 are staked with the node for the next epoch.
 
-After this event the FLOW tokens will be part of the node's tokensCommitted balance.
+After this event the FLOW tokens will be part of the node's `tokensCommitted` balance.
 
 ### TokensStaked
 
@@ -109,7 +109,7 @@ pub event TokensStaked(nodeID: String, amount: UFix64)
 
 | Field           | Type    | Description |
 |-----------------|---------|-------------|
-| nodeId          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
+| nodeID          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
 | amount          | UFix64  | The amount of FLOW tokens staked to the node. |
 
 Emitted by `FlowIDTableStaking.Admin.moveTokens()` at the end of an epoch if committed tokens are being returned to the node's tokensStaked balance.
@@ -124,7 +124,7 @@ pub event TokensUnstaking(nodeID: String, amount: UFix64)
 
 | Field           | Type    | Description |
 |-----------------|---------|-------------|
-| nodeId          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
+| nodeID          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
 | amount          | UFix64  | The amount of FLOW tokens unstaked from the node. |
 
 Emitted by `FlowIDTableStaking.Admin.moveTokens()` at the end of an epoch if either:
@@ -139,7 +139,7 @@ pub event RewardsPaid(nodeID: String, amount: UFix64)
 
 | Field           | Type    | Description |
 |-----------------|---------|-------------|
-| nodeId          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
+| nodeID          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
 | amount          | UFix64  | The amount of FLOW tokens paid to the node this epoch as a reward. |
 
 Emitted by `FlowIDTableStaking.Admin.payRewards()` at the end of the epoch to pay rewards to node operators based on the tokens that they have staked.
@@ -156,10 +156,10 @@ pub event UnstakedTokensWithdrawn(nodeID: String, amount: UFix64)
 
 | Field           | Type    | Description |
 |-----------------|---------|-------------|
-| nodeId          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
+| nodeID          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
 | amount          | UFix64  | The amount of unstaked FLOW tokens that the node operator is withdrawing. |
 
-Emmitted by `FlowIDTableStaking.NodeStaker.withdrawUnstakedTokens()` when the node operator calls that function to withdraw part or all of their
+Emitted by `FlowIDTableStaking.NodeStaker.withdrawUnstakedTokens()` when the node operator calls that function to withdraw part or all of their
 unstaked tokens balance.
 
 After this event the FLOW tokens have been withdrawn to a newly created `FungibleToken.Vault` which the caller can deposit to the vault of their choice.
@@ -172,10 +172,10 @@ pub event RewardTokensWithdrawn(nodeID: String, amount: UFix64)
 
 | Field           | Type    | Description |
 |-----------------|---------|-------------|
-| nodeId          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
+| nodeID          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
 | amount          | UFix64  | The amount of reward FLOW tokens that the node operator is withdrawing. |
 
-Emmitted by `FlowIDTableStaking.NodeStaker.withdrawRewardedTokens()` when the node operator calls that function to withdraw part or all of their
+Emitted by `FlowIDTableStaking.NodeStaker.withdrawRewardedTokens()` when the node operator calls that function to withdraw part or all of their
 reward tokens balance.
 
 After this event the FLOW tokens have been withdrawn to a newly created `FungibleToken.Vault` which the caller can deposit to the vault of their choice.
@@ -210,7 +210,7 @@ pub event NewDelegatorCreated(nodeID: String, delegatorID: UInt32)
 
 | Field           | Type    | Description |
 |-----------------|---------|-------------|
-| nodeId          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
+| nodeID          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
 | delegatorID     | UFix64  | The ID for the new delegator. Unique within the node but not globally. |
 
 Emitted by `FlowIDTableStaking.Admin.registerNewDelegator()` when the node operator registers a new delegator for the node.
@@ -227,7 +227,7 @@ pub event DelegatorRewardsPaid(nodeID: String, delegatorID: UInt32, amount: UFix
 
 | Field           | Type    | Description |
 |-----------------|---------|-------------|
-| nodeId          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
+| nodeID          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
 | delegatorID     | UFix64  | The ID for the delegator. Unique within the node but not globally. |
 | amount          | UFix64  | The amount of reward FLOW tokens that the delegator is paid. |
 
@@ -245,11 +245,11 @@ pub event DelegatorUnstakedTokensWithdrawn(nodeID: String, delegatorID: UInt32, 
 
 | Field           | Type    | Description |
 |-----------------|---------|-------------|
-| nodeId          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
+| nodeID          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
 | delegatorID     | UFix64  | The ID for the delegator. Unique within the node but not globally. |
 | amount          | UFix64  | The amount of unstaked FLOW tokens that the delegator is withdrawing. |
 
-Emmitted by `FlowIDTableStaking.NodeDelegator.withdrawUnstakedTokens()` when the delegator calls that function to withdraw part or all of their
+Emitted by `FlowIDTableStaking.NodeDelegator.withdrawUnstakedTokens()` when the delegator calls that function to withdraw part or all of their
 unstaked tokens balance.
 
 After this event the FLOW tokens have been withdrawn to a newly created `FungibleToken.Vault` which the caller can deposit to the vault of their choice.
@@ -262,11 +262,11 @@ pub event DelegatorRewardTokensWithdrawn(nodeID: String, delegatorID: UInt32, am
 
 | Field           | Type    | Description |
 |-----------------|---------|-------------|
-| nodeId          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
+| nodeID          | String  | The unique ID string for the node. 32 bytes. The same value emitted in the `NewNodeCreated` event for the node. |
 | delegatorID     | UFix64  | The ID for the delegator. Unique within the node but not globally. |
 | amount          | UFix64  | The amount of reward FLOW tokens that the delegator is withdrawing. |
 
-Emmitted by `FlowIDTableStaking.NodeDelegator.withdrawRewardedTokens()` when the delegator calls that function to withdraw part or all of their
+Emitted by `FlowIDTableStaking.NodeDelegator.withdrawRewardedTokens()` when the delegator calls that function to withdraw part or all of their
 unstaked tokens balance.
 
 After this event the FLOW tokens have been withdrawn to a newly created `FungibleToken.Vault` which the caller can deposit to the vault of their choice.
