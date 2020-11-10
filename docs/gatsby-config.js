@@ -164,23 +164,23 @@ const sections = [
       ],
     },
   },
-  {
-    sourceInstanceName: "docs",
-    patterns: ["protocol/**/*"],
-    sidebarAlwaysExpanded: true,
-    sidebar: {
-      null: [
-        "protocol/access-api",
-      ],
-      "Core Contracts": [
-        "protocol/core-contracts/fungible-token",
-        "protocol/core-contracts/flow-token",
-        "protocol/core-contracts/flow-fees",
-        "protocol/core-contracts/flow-id-table-staking",
-        "protocol/core-contracts/locked-tokens",
-      ]
-    },
-  },
+  // {
+  //   sourceInstanceName: "docs",
+  //   patterns: ["protocol/**/*"],
+  //   sidebarAlwaysExpanded: true,
+  //   sidebar: {
+  //     null: [
+  //       "protocol/access-api",
+  //     ],
+  //     "Core Contracts": [
+  //       "protocol/core-contracts/fungible-token",
+  //       "protocol/core-contracts/flow-token",
+  //       "protocol/core-contracts/flow-fees",
+  //       "protocol/core-contracts/flow-id-table-staking",
+  //       "protocol/core-contracts/locked-tokens",
+  //     ]
+  //   },
+  // },
   {
     sourceInstanceName: "docs",
     patterns: ["token/**/*"],
@@ -198,43 +198,43 @@ const sections = [
       ],
     },
   },
-  {
-    sourceInstanceName: "docs",
-    patterns: ["staking/**/*"],
-    sidebarAlwaysExpanded: true,
-    sidebar: {
-      "Overview": [
-        "staking/index",
-        "staking/rewards",
-        "staking/stake-slashing",
-      ],
-      "Developer Guides": [
-        "staking/technical-overview",
-        "staking/locked-staking-guide",
-        "staking/locked-delegation-guide",
-        "staking/locked-third-party-operator",
-        "staking/events",
-      ],
-    },
-  },
-  {
-    sourceInstanceName: "docs",
-    patterns: ["node-operation/**/*"],
-    sidebarAlwaysExpanded: true,
-    sidebar: {
-      "Overview": [
-        "node-operation/index",
-        "node-operation/node-setup",
-        "node-operation/node-roles",
-      ],
-      "Operator Guides": [
-        "node-operation/node-bootstrap",
-        "node-operation/monitoring-nodes",
-        "node-operation/faq",
-        "node-operation/spork",
-      ],
-    },
-  },
+  // {
+  //   sourceInstanceName: "docs",
+  //   patterns: ["staking/**/*"],
+  //   sidebarAlwaysExpanded: true,
+  //   sidebar: {
+  //     "Overview": [
+  //       "staking/index",
+  //       "staking/rewards",
+  //       "staking/stake-slashing",
+  //     ],
+  //     "Developer Guides": [
+  //       "staking/technical-overview",
+  //       "staking/locked-staking-guide",
+  //       "staking/locked-delegation-guide",
+  //       "staking/locked-third-party-operator",
+  //       "staking/events",
+  //     ],
+  //   },
+  // },
+  // {
+  //   sourceInstanceName: "docs",
+  //   patterns: ["node-operation/**/*"],
+  //   sidebarAlwaysExpanded: true,
+  //   sidebar: {
+  //     "Overview": [
+  //       "node-operation/index",
+  //       "node-operation/node-setup",
+  //       "node-operation/node-roles",
+  //     ],
+  //     "Operator Guides": [
+  //       "node-operation/node-bootstrap",
+  //       "node-operation/monitoring-nodes",
+  //       "node-operation/faq",
+  //       "node-operation/spork",
+  //     ],
+  //   },
+  // },
   {
     sourceInstanceName: "docs",
     patterns: ["emulator/**/*"],
