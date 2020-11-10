@@ -213,6 +213,7 @@ const sections = [
         "staking/locked-staking-guide",
         "staking/locked-delegation-guide",
         "staking/locked-third-party-operator",
+        "staking/events",
       ],
     },
   },
