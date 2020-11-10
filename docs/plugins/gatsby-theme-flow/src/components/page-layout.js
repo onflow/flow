@@ -2,7 +2,7 @@ import "../prism.less";
 import Header from "./header";
 import HeaderNav from "./header-nav";
 import PropTypes from "prop-types";
-import React, { createContext, useMemo, useRef, useState } from "react";
+import React, { createContext, useMemo } from "react";
 import Search from "./search";
 import styled from "@emotion/styled";
 import useLocalStorage from "react-use/lib/useLocalStorage";
@@ -110,8 +110,6 @@ export default function PageLayout(props) {
       })),
     [navConfig]
   );
-
-  console.log(navItems);
 
   return (
     <Layout>

@@ -84,69 +84,22 @@ const sections = [
       "*",
       "intro/*",
       "updates/*",
-      "concepts/node-operation/*",
-      "concepts/flow-concepts/*",
-      // "concepts/node-operation/*",
-      // "concepts/custody-providers/*",
-      // "guides/node-operator/*",
-      // "tutorial/cadence/*",
     ],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
-        "[FLOW (Token)](/token)",
-        "[Node Operation Quick Guide](/concepts/node-operation/quickstart)",
-        // "intro/partner-update",
+        "[FLOW Token](/token)",
+        "[Staking & Delegating](/staking)",
+        "[Node Operation](/node-operation)",
+        "[Core Contracts](/protocol/core-contracts)",
         "intro/glossary",
         "intro/FAQ",
       ],
-      "Community Updates": ["updates/oct-6-2020", "updates/sep-16-2020"],
-      // Tutorial: [
-      //   "tutorial/cadence/01-first-steps",
-      //   "tutorial/cadence/02-hello-world",
-      //   "tutorial/cadence/03-fungible-tokens",
-      //   "tutorial/cadence/04-non-fungible-tokens",
-      //   "tutorial/cadence/05-marketplace-setup",
-      //   "tutorial/cadence/06-marketplace-compose",
-      //   "tutorial/cadence/07-marketplace-compose",
-      //   "tutorial/cadence/08-voting",
-      // ],
-      // Tutorials: ["tutorial/cadence/00-introduction"],
-
-      // "Flow Concepts": [
-      //   "concepts/flow-concepts/slashings",
-      //   "concepts/flow-concepts/accounts-keys",
-      //   "concepts/flow-concepts/delegation",
-      //   "concepts/flow-concepts/devnet",
-      //   "concepts/flow-concepts/fees",
-      //   "concepts/flow-concepts/governance",
-      //   "concepts/flow-concepts/node-roles",
-      //   "concepts/flow-concepts/service-account",
-      //   "concepts/flow-concepts/testnet",
-      //   "concepts/flow-concepts/token-staking",
-      //   "concepts/flow-concepts/transactions",
-      // ],
-      // "Node Operation Concepts": [
-      //   "concepts/node-operation/quickstart",
-      //   "concepts/node-operation/day1-accounts-tokens",
-      //   "concepts/node-operation/node-keys",
-      //   "concepts/node-operation/network-identity",
-      //   "concepts/node-operation/staking-rewards",
-      //   "concepts/node-operation/hosting-custody-partners",
-      // ],
-      // "Node Operator Guides": [
-      //   "guides/node-operator/setup",
-      //   "guides/node-operator/genesis-bootstrap",
-      //   "guides/node-operator/starting-nodes",
-      //   "guides/node-operator/monitoring-nodes",
-      //   "guides/node-operator/accessing-mainnet",
-      //   "guides/node-operator/spork-practice",
-      // ],
-      // "Custody Providers": [
-      //   "concepts/custody-providers/keys-accounts",
-      //   "concepts/custody-providers/token-distribution",
-      // ],
+      "Community Updates": [
+        "updates/oct-6-2020", 
+        "updates/sep-16-2020",
+      ],
     },
   },
   {
@@ -175,7 +128,10 @@ const sections = [
     patterns: ["sdks/golang/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["sdks/golang/index", "sdks/golang/changelog"],
+      null: [
+        "sdks/golang/index",
+        "sdks/golang/changelog",
+      ],
       "How To": [
         "sdks/golang/create-account",
         "sdks/golang/build-transaction",
@@ -191,7 +147,10 @@ const sections = [
     sourceInstanceName: "docs",
     patterns: ["sdks/javascript/**/*"],
     sidebar: {
-      null: ["sdks/javascript/index", "sdks/javascript/create-account"],
+      null: [
+        "sdks/javascript/index", 
+        "sdks/javascript/create-account",
+      ],
     },
   },
   {
@@ -199,7 +158,27 @@ const sections = [
     patterns: ["concepts/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      Accounts: ["concepts/accounts-and-keys", "concepts/transaction-signing"],
+      Accounts: [
+        "concepts/accounts-and-keys",
+        "concepts/transaction-signing",
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["protocol/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: [
+        "protocol/access-api",
+      ],
+      "Core Contracts": [
+        "protocol/core-contracts/fungible-token",
+        "protocol/core-contracts/flow-token",
+        "protocol/core-contracts/flow-fees",
+        "protocol/core-contracts/flow-id-table-staking",
+        "protocol/core-contracts/locked-tokens",
+      ]
     },
   },
   {
@@ -207,27 +186,52 @@ const sections = [
     patterns: ["token/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      FLOW: [
+      "Overview": [
         "token/index",
         "token/earn",
         "token/concepts",
         "token/delivery",
         "token/faq",
       ],
-      Staking: [
-        "token/staking/index",
-        "token/staking/rewards",
-        "token/staking/stake-slashing",
-        "token/staking/transactions",
+      "Developer Guides": [
+        "token/locked-account-setup",
       ],
-      "Staking with Locked FLOW": [
-        "token/staking/locked/index",
-        "token/staking/locked/setup",
-        "token/staking/locked/stakers",
-        "token/staking/locked/delegators",
-        "token/staking/locked/node-operators",
-        "token/staking/locked/power-users",
-        "token/staking/locked/transactions",
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["staking/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      "Overview": [
+        "staking/index",
+        "staking/rewards",
+        "staking/stake-slashing",
+      ],
+      "Developer Guides": [
+        "staking/technical-overview",
+        "staking/locked-staking-guide",
+        "staking/locked-delegation-guide",
+        "staking/locked-third-party-operator",
+        "staking/events",
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["node-operation/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      "Overview": [
+        "node-operation/index",
+        "node-operation/node-setup",
+        "node-operation/node-roles",
+      ],
+      "Operator Guides": [
+        "node-operation/node-bootstrap",
+        "node-operation/monitoring-nodes",
+        "node-operation/faq",
+        "node-operation/spork",
       ],
     },
   },
@@ -237,14 +241,6 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["emulator/index", "emulator/changelog"],
-    },
-  },
-  {
-    sourceInstanceName: "docs",
-    patterns: ["protocol/**/*"],
-    sidebarAlwaysExpanded: true,
-    sidebar: {
-      null: ["protocol/access-api"],
     },
   },
   {

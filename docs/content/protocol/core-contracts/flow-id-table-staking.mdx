@@ -1,16 +1,11 @@
 ---
-title: Staking Transactions Reference
+title: Flow Staking Contract Reference
+sidebar_title: Staking Table
 ---
 
-# Overview
+# Contract
 
-This document provides a reference for the transactions that interact with the `FlowIDTableStaking` contract.
-
-# Contracts
-
-## `FlowIDTableStaking`
-
-The `FlowIDTableStaking` contract is the Staking Contract that handles Staking, Delegating and Rewards
+The `FlowIDTableStaking` contract is the central table that manages staked nodes, delegation and rewards.
 
 Source: [FlowIDTableStaking.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc)
 
@@ -18,7 +13,6 @@ Source: [FlowIDTableStaking.cdc](https://github.com/onflow/flow-core-contracts/b
 |---------|----------------------|
 | Testnet | `0x9eca2b38b18b5dfe` |
 | Mainnet | `0x8624b52f9ddcd04a` |
-
 
 # Transactions
 
@@ -39,20 +33,19 @@ These scripts are read-only and get info about the current state of the staking 
 |**`SC.09`**| Get a nodes total Commitment           | [idTableStaking/get_node_total_commitment.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_node_total_commitment.cdc) |
 |**`SC.10`**| Get All Info about a single Delegator  | [idTableStaking/delegation/get_delegator_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/get_delegator_info.cdc) |
 
-
 ## Node Staker Transactions
 
-Please see the [locked tokens documentation](../locked/transactions) for information about staking with locked tokens.
-Docs for staking with unlocked tokens will be updated when unlocked tokens are available to stake with.
+Please see the [Locked Tokens contract](../locked-tokens/#transactions) for information about staking with locked tokens.
+Documentation for staking with unlocked tokens will be updated when unlocked tokens are available to stake with.
 
 ## Delegator Transactions
 
-Please see the [locked tokens documentation](../locked/transactions) for information about delegating with locked tokens.
-Docs for delegating with unlocked tokens will be updated when unlocked tokens are available to delegate with.
+Please see the [Locked Tokens contract](../locked-tokens/#transactions) for information about delegating with locked tokens.
+Documentation for delegating with unlocked tokens will be updated when unlocked tokens are available to delegate with.
 
 # Events
 
-The staking contract emits various events whenever an important action occurs.
+The `FlowIDTableStaking` contract emits an event whenever an important action occurs.
 
 ```cadence
 pub event NewNodeCreated(nodeID: String, role: UInt8, amountCommitted: UFix64)

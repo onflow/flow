@@ -1,12 +1,13 @@
 ---
-title: Configure an Account to Receive Locked FLOW
-sidebar_title: Account Setup
+title: Locked FLOW Account Setup
+description: Configure an account to hold locked FLOW
 ---
 
 <Callout type="warning">
 
   This guide is for custodians and wallet providers who wish to create user accounts 
-  that can hold locked FLOW tokens from the Flow token sale. 
+  that can hold locked FLOW tokens from the Flow token sale.
+
   If you already have an account and wish to stake tokens, 
   proceed to further sections of the staking docs.
 
@@ -32,7 +33,7 @@ before they have been unlocked via the vesting schedule.
 Every user who holds locked FLOW tokens gets two accounts.
 
 - **Account 1 - User Account:** This is the user's normal Flow account. 
-This account is completely controlled by the user. It can have already been creating by 
+This account is completely controlled by the user. It can have already been created by 
 the custody provider or can be created along with the user's second account.
 
 - **Account 2 - Shared Account:** This account is shared between the Flow token admin and the user.
@@ -57,7 +58,7 @@ As the custodian, you must configure a Flow account that you will use to
 create user accounts. This is called your **creator account**.
 
 You can convert an existing account into a **creator account** by running
-the **Set Up Creator Account** ([C.01](../transactions/#custodian)) transaction.
+the **Set Up Creator Account** ([C.01](/protocol/core-contracts/locked-tokens/#custodian)) transaction.
 
 This transaction creates an `AccountCreator` object and stores it in the custodian's account.
 It also publishes a capability that allows the token admin to grant the custodian 
@@ -71,7 +72,7 @@ After you have set up your creator account,
 the token admin needs to submit one more transaction
 to enable your account to register new user accounts to receive locked tokens.
 
-The **Deposit Account Creator** ([TA.06](../transactions/#token-admin)) transaction 
+The **Deposit Account Creator** ([TA.06](/protocol/core-contracts/locked-tokens/#token-admin)) transaction 
 must be signed and authorized by the token admin account. It requires the
 following arguments:
 
@@ -92,7 +93,7 @@ and how many tokens to unlock via the vesting schedule.
 ## 1. Create Both Accounts for the User
 
 If your user does not have a regular account created for them yet, you must 
-create both accounts using the **Create Shared Accounts** ([C.02](../transactions/#custodian))
+create both accounts using the **Create Shared Accounts** ([C.02](/protocol/core-contracts/locked-tokens/#custodian))
 transaction with the following arguments:
 
 | Argument                  | Type      | Description |
@@ -115,7 +116,7 @@ to interact with their locked tokens.
 </Callout>
 
 To attached a shared account to an existing user account, 
-run the **Create Only Shared Acccount** ([C.03](../transactions/#custodian))
+run the **Create Only Shared Account** ([C.03](/protocol/core-contracts/locked-tokens/#custodian))
 transaction with the following arguments:
 
 | Argument                  | Type      | Description |

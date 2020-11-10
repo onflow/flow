@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Link } from "gatsby";
-import { FaLongArrowAltRight, FaExternalLinkAlt } from "react-icons/fa";
 import breakpoints from "../utils/breakpoints";
 import { colors } from "../colors";
 

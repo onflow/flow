@@ -1,0 +1,148 @@
+---
+title: How to Delegate with Locked FLOW
+sidebar_title: Delegate with Locked FLOW
+---
+
+This document outlines the steps a **token holder (TH)** can take to delegate 
+locked FLOW tokens to a node using the `LockedTokens` contract.
+
+<Callout type="warning">
+
+This guide covers delegation with **locked FLOW tokens**. 
+A separate guide for unlocked tokens will be published at a later date.
+</Callout>
+
+# Setup
+
+## Prerequisites
+
+The token holder must [configure their account to hold locked FLOW](/token/locked-account-setup) 
+before they are able to complete the steps below. After this is complete, 
+the `LockedTokens.TokenHolder` can be used to perform staking operations from the account.
+
+## Register as a Delegator
+
+To register as a delegator, the token holder can use the **Register Delegator** ([TH.17](/protocol/core-contracts/locked-tokens/#token-holder))
+transaction with the following arguments:
+
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **id**     | `String` | The ID of the node to delegate to. |
+| **amount** | `UFix64` | The number of FLOW tokens to delegate. |
+
+This transaction registers the account as a delegator to the node ID they specified
+and attaches a `NodeDelegatorProxy` capability to the `TokenHolder` resource. 
+This capability can later be used to perform delegation actions.
+
+Once an account has registered as a delegator with one node, they cannot register with any others. 
+For more information, see [Delegate to Multiple Nodes from the Same Account](#delegate-to-multiple-nodes-from-the-same-account) below.
+This feature will be added in the future.
+
+# Delegation Actions
+
+## Delegate New Tokens
+
+The token holder can delegate additional tokens after registering as a delegator. 
+
+_Note: this transaction delegates additional tokens to the same node that was registered in the setup phase.
+It is currently not possible to [delegate to multiple nodes from the same account](#delegate-to-multiple-nodes-from-the-same-account)._
+
+To delegate new tokens via the `NodeDelegatorProxy`, 
+the token holder can use the **Delegate New Locked FLOW** ([TH.19](/protocol/core-contracts/locked-tokens/#token-holder)) 
+transaction with the following arguments:
+
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **amount** | `UFix64` | The number of FLOW tokens to delegate. |
+
+## Re-delegate Unstaked Tokens
+
+After delegated tokens become unstaked, the token holder can choose to re-delegate the unstaked tokens to the same node.
+
+To delegate unstaked tokens via the `NodeDelegatorProxy`, 
+the token holder can use the **Re-delegate Unstaked FLOW** ([TH.20](/protocol/core-contracts/locked-tokens/#token-holder))
+transaction with the following arguments:
+
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **amount** | `UFix64` | The number of unstaked FLOW tokens to delegate. |
+
+## Re-delegate Rewarded Tokens
+
+After earning rewards from delegation, the token holder can choose to re-delegate the rewarded tokens to the same node.
+
+To delegate rewarded tokens via the `NodeDelegatorProxy`, 
+the token holder can use the **Re-delegate Rewarded FLOW** ([TH.21](/protocol/core-contracts/locked-tokens/#token-holder))
+transaction with the following arguments:
+
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **amount** | `UFix64` | The number of rewarded FLOW tokens to delegate. |
+
+## Unstake Delegated Tokens
+
+The token holder can submit a request to unstake their delegated tokens at any time.
+If the tokens aren't staked yet, they will be uncommitted and available to withdraw.
+
+To unstake delegated tokens via the `NodeDelegatorProxy`, 
+the token holder can use the **Unstake Delegated FOW** ([TH.22](/protocol/core-contracts/locked-tokens/#token-holder))
+transaction with the following arguments:
+
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **amount** | `UFix64` | The number of FLOW tokens to unstake. |
+
+_Note: unstaked delegated tokens will be held by the central staking contract for a period of time 
+(the rest of the current epoch plus all of the next epoch) before they are 
+released to the token holder. Once the tokens are released (unstaked), 
+they can be claimed via the [Withdraw Unstaked Tokens](#withdraw-unstaked-tokens) action below._
+
+## Withdraw Unstaked Tokens
+
+After delegated tokens become unstaked, the token holder can withdraw them from the central staking contract.
+
+To withdraw unstaked tokens via the `NodeDelegatorProxy`, 
+the token holder can use the **Withdraw Unstaked FLOW ** ([TH.23](/protocol/core-contracts/locked-tokens/#token-holder))
+transaction with the following arguments:
+
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **amount** | `UFix64` | The number of unstaked FLOW tokens to withdraw. |
+
+This transaction moves the unstaked tokens back into the `LockedTokens.Lockbox` owned by the token holder.
+
+## Withdraw Rewarded Tokens
+
+After earning rewards from delegation, the token holder can withdraw them from the central staking contract.
+
+To withdraw rewarded tokens via the `NodeDelegatorProxy`, 
+the token holder can use the **Withdraw Rewarded FLOW** ([TH.24](/protocol/core-contracts/locked-tokens/#token-holder))
+transaction with the following arguments:
+
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **amount** | `UFix64` | The number of rewarded FLOW tokens to withdraw. |
+
+This transaction moves the rewarded tokens back into the `LockedTokens.Lockbox` owned by the token holder. 
+However, unlike unstaked tokens, rewards are _unlocked FLOW_ and can be immediately withdrawn from the lockbox.
+
+## Query a Delegator Record
+
+To return a struct with all the information associated with a delegator, anyone
+can use the **Get Delegator Info** ([TH.21](/protocol/core-contracts/locked-tokens/#token-holder)) script with the following arguments:
+
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **nodeID** | `String` | The 32 byte ID of the node of the delegator |
+| **nodeID** | `UInt8`  | The ID of the delegator |
+
+This script returns a `FlowIDTableStaking.DelegatorInfo` [struct.](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L348)
+
+## Delegate to Multiple Nodes from the Same Account
+
+Currently, the `LockedTokens` contract only supports token holders delegating to a single node.
+
+If a token holder wants to create a second delegation relationship, they must create a new account
+and transfer their locked tokens to the new account by requesting authorization from the token admin.
+
+We plan on adding functionality in the future to allow accounts to delegate to multiple nodes.

@@ -1,63 +1,14 @@
 ---
-title: Locked FLOW Transactions Reference
-sidebar_title: Transactions Reference
+title: Locked Tokens Contract Reference
+sidebar_title: Locked Tokens
 ---
-
-# Overview
-
-## Personas
-
-- Token Admin (TA)
-- Custodian (C)
-- Token Holder (TH)
-- Node Operator (NO)
-
-## Use Cases
-
-1. TH stakes directly to their own node
-1. TH delegates directly to another node
-1. NO operates a staked node
-1. TH stakes to a node operated by a NO
 
 # Contracts
 
-## `FlowToken`
-
-| Network | Contract Address     |
-|---------|----------------------|
-| Testnet | `0x7e60df042a9c0868` |
-| Mainnet | `0x1654653399040a61` |
-
-The `FlowToken` contract defines the FLOW network token.
-
-Source: [FlowToken.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowToken.cdc)
-
-## `FlowFees`
-
-The `FlowFees` contract is where all the collected flow fees are gathered.
-
-Source: [FlowFees.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc)
-
-| Network | Contract Address     |
-|---------|----------------------|
-| Testnet | `0x912d5440f7e3769e` |
-| Mainnet | `0xf919ee77447b7497` |
-
-## `FungibleToken`
-
-The `FungibleToken` contract implements the Fungible Token Standard. It is the second contract ever deployed on Flow.
-
-Source: [FungibleToken.cdc](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc)
-
-| Network | Contract Address     |
-|---------|----------------------|
-| Testnet | `0x9a0766d93b6608b7` |
-| Mainnet | `0xf233dcee88fe0abe` |
-
-## `LockedTokens`
+## LockedTokens
 
 The `LockedTokens` contract defines the resources and interfaces 
-used to store locked FLOW tokens owned by a **token holder**.
+used to store locked FLOW tokens owned by a token holder.
 
 Source: [LockedTokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/LockedTokens.cdc)
 
@@ -66,9 +17,9 @@ Source: [LockedTokens.cdc](https://github.com/onflow/flow-core-contracts/blob/ma
 | Testnet | `0x95e019a17d0e23d7` |
 | Mainnet | `0x8d0e87b65159ae63` |
 
-## `StakingProxy`
+## StakingProxy
 
-The `StakingProxy` contract defines the interfaces through which **token holders** 
+The `StakingProxy` contract defines the interfaces through which token holder 
 and **node operators** perform staking operations with locked FLOW.
 
 Source: [StakingProxy.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/StakingProxy.cdc)
@@ -78,20 +29,19 @@ Source: [StakingProxy.cdc](https://github.com/onflow/flow-core-contracts/blob/ma
 | Testnet | `0x7aad92e5a0715d21` |
 | Mainnet | `0x62430cf28c26d095` |
 
-
 # Transactions
 
 ## Token Admin
 
 The **token admin** is the administrator responsible for distributing and 
-releasing locked FLOW tokens. The **token admin** has possession of a single 
+releasing locked FLOW tokens. The token admin has possession of a single 
 account that is used to control the lockups for all locked FLOW.
 
-The **token admin** creates a **shared account** for each **token holder**
-that is co-owned by the **token admin** and the **token holder**. 
-The **shared account** is used to store all locked FLOW owned by a **token holder**.
+The token admin creates a shared account for each token holder
+that is co-owned by the token admin and the token holder. 
+The shared account is used to store all locked FLOW owned by a token holder.
 
-The **token admin** public key is used by account creators to configure **token holder**
+The token admin public key is used by account creators to configure token holder
 accounts to hold locked FLOW.
 
 _Note: these keys have a weight of `100`._
@@ -100,8 +50,6 @@ _Note: these keys have a weight of `100`._
 |---------|------------------------|
 | Testnet | `f845b840fd8c6a3078ea6b7ecb96d914832ee3b62323d4d42860235b4a175d75544f476aeb800e3a4bad2cc5375e47fc5e13356167a4512b6ad03e660c04b6db26246cba020364` |
 | Mainnet | `f845b8406e4f43f79d3c1d8cacb3d5f3e7aeedb29feaeb4559fdb71a97e2fd0438565310e87670035d83bc10fe67fe314dba5363c81654595d64884b1ecad1512a64e65e020164` |
-
-## Setup
 
 | ID        | Name                    | Source |
 |-----------|-------------------------|--------|
@@ -113,7 +61,7 @@ _Note: these keys have a weight of `100`._
 
 ## Custodian
 
-The **custodian** is an agent who acts on behalf of the **token holder** for the purpose of 
+The **custodian** is an agent who acts on behalf of the token holder for the purpose of 
 securing FLOW tokens.
 
 | ID       | Name                        | Source |
@@ -124,13 +72,13 @@ securing FLOW tokens.
 
 ## Token Holder
 
-The **token holder** is a user who holds possession of 
+The token holder is a user who holds possession of 
 locked and unlocked FLOW tokens.
 
-The **token holder** can stake and delegate locked or unlocked FLOW
+The token holder can stake and delegate locked or unlocked FLOW
 through the `StakingProxy` contract.
 
-The **token holder** can withdraw unlocked FLOW from the shared account created 
+The token holder can withdraw unlocked FLOW from the shared account created 
 by the token admin.
 
 | ID        | Name                       | Source |
@@ -182,7 +130,7 @@ These transactions operate through the `StakingProxy.NodeDelegatorProxy` interfa
 ## Node Operator
 
 The **node operator** is an independent user who operators a Flow node on
-behalf of a **token holder**.
+behalf of a token holder.
 
 | ID        | Name                    | Source |
 |-----------|-------------------------|--------|
@@ -192,12 +140,12 @@ behalf of a **token holder**.
 
 These transactions operate through the `StakingProxy.NodeStakerProxy` interface.
 
-The **node operator** can perform the following
-staking actions using locked or unlocked FLOW owned by the **token holder**.
+The node operator can perform the following
+staking actions using locked or unlocked FLOW owned by the token holder.
 
-_Note: The **node operator** can perform these actions on behalf of 
-the **token holder**, but only with explicit permission. 
-This permission can be revoked by the **token holder**._
+_Note: The node operator can perform these actions on behalf of 
+the token holder, but only with explicit permission. 
+This permission can be revoked by the token holder._
 
 | ID        | Name                   | Source |
 |-----------|------------------------|--------|
@@ -212,36 +160,54 @@ This permission can be revoked by the **token holder**._
 
 # Events
 
-The LockedTokens contract defines some events that can be monitored for important actions.
+The `LockedTokens` contract defines events that can be monitored for important actions.
 
-```cadence
+### SharedAccountRegistered
+
+Emitted when a new shared (locked) account is registered.
+
+```cadence:title=SharedAccountRegistered
 pub event SharedAccountRegistered(address: Address)
 ```
-Emitted when a new shared (locked) account is registerd.
 
-```cadence
-pub event UnlockedAccountRegistered(address: Address)
-```
-Emitted when a new user (unlocked) account is registered. This event and `SharedAccountRegistered`
+### UnlockedAccountRegistered
+
+Emitted when a new user (unlocked) account is registered. This and `SharedAccountRegistered`
 are always emitted at the same time.
 
-```cadence
-pub event UnlockLimitIncreased(address: Address, increaseAmount: UFix64, newLimit: UFix64)
+```cadence:title=UnlockedAccountRegistered
+pub event UnlockedAccountRegistered(address: Address)
 ```
+
+### UnlockLimitIncreased
+
 Emitted when the token admin increases the unlock limit for a locked account.
 This will usually happen when a milestone is reached in the vesting of the locked tokens.
 
-```cadence
-pub event LockedAccountRegisteredAsNode(address: Address, nodeID: String)
+```cadence:title=UnlockLimitIncreased
+pub event UnlockLimitIncreased(address: Address, increaseAmount: UFix64, newLimit: UFix64)
 ```
+
+### LockedAccountRegisteredAsNode
+
 Emitted when a user registers their locked account as a node operator.
 
-```cadence
-    pub event LockedAccountRegisteredAsDelegator(address: Address, nodeID: String)
+```cadence:title=LockedAccountRegisteredAsNode
+pub event LockedAccountRegisteredAsNode(address: Address, nodeID: String)
 ```
+
+### LockedAccountRegisteredAsDelegator
+
 Emitted when a user registers their locked account as a delegator.
 
-```cadence
-    pub event LockedTokensDeposited(address: Address, amount: UFix64)
+```cadence:title=LockedAccountRegisteredAsDelegator
+pub event LockedAccountRegisteredAsDelegator(address: Address, nodeID: String)
 ```
+
+### LockedTokensDeposited
+
 Emitted when the token admin deposits locked tokens from the token sale.
+
+```cadence:title=LockedTokensDeposited
+pub event LockedTokensDeposited(address: Address, amount: UFix64)
+```
