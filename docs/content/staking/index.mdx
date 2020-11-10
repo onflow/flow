@@ -8,28 +8,24 @@ This document provides an introduction to staking FLOW tokens on the Flow networ
 Staking is an important part of the security of a proof-of-stake (PoS) blockchain.
 Running nodes and staking tokens contributes to this security and is rewarded accordingly.
 
+
 ## What is Staking?
 
-A blockchain is a global network of computers working together
-to maintain the security and integrity of a shared state that applications and people around the world use. 
-Every node operator has a small part of the responsibility to keep the network running smoothly 
-and to ensure that other node operators are doing the same. 
-This large distribution of resources makes it so that control is never centralized 
-under one person or organization.
+Flow is a global network of computers working together
+to maintain the security and integrity of it's user's data.
 
-What is to stop these node operators from misbehaving and stealing someone else’s money 
-or modifying the state of the network in an unauthorized way? Staking! 
-Every node operator has to temporarily give (or ‘stake’) 
-a large number of their tokens to the network as a promise that they will behave. 
+This global network is made up of many individual nodes. Every node in the network shares a small part of the responsibility to keep the network running smoothly 
+and to ensure that other nodes are doing the same. This shared responsibility is sometimes called decentralization, because no single node is responsible for the security and integrity of the network and the data it contains.
 
-This process is called staking. 
-If a node ever misbehaves, a number of their staked tokens will be taken from them as a punishment.
-This incentivizes all the node operators to behave with the interests of all the users of the network in mind. 
-Every node watches other nodes and reports them if they misbehave. 
+Nodes in the network are software applications run by people, we call them node operators. To connect a node to the network, a node operator must first purchase some tokens. Every node operator has to temporarily give (or ‘stake’) 
+a large number of their tokens to the network as a promise that they will not modify their node to do something that is against the rules of the network, like steal funds from user's accounts.
 
-If nodes maintain the network well and never misbehave, the protocol pays them rewards on a regular basis!
+If a node ever breaks the rules defined by the network, a number of the node operator's staked tokens will be taken from them as a punishment.
+This process is automatic. Every node knows the rules defined by the network and automatically watches other nodes and reports them if they misbehave. Meanwhile, the network pays the node operator a reward of tokens on a regular basis, if their node does not break the rules.
 
-# How does Staking work in Flow?
+If I break the rules, I loose the tokens I've staked. If I operate my node with integrity, I get rewarded with more tokens! This is the basic incentive that enables a decentralized proof-of-stake network, like Flow.
+
+## How does Staking work in Flow?
 
 The Flow protocol maintains a list of node operators. 
 The list contains important information about each node, like their public keys, node address, 
@@ -42,7 +38,7 @@ Once a node operator is registered and staked, assuming they keep their node onl
 and are consistent maintainers of the network, they receive rewards at the end of every week. 
 This timeframe of earning rewards is otherwise known as an Epoch.
 
-# Epochs
+### Epochs
 
 An epoch is a week-long period that the network uses to manage the stakers and pay rewards.
 Every epoch, a list of committed nodes are chosen to be the staked nodes of the network, 
@@ -64,11 +60,11 @@ If a node operator decides to stake or unstake tokens,
 their requests are not carried out until the end of the current epoch.
 In the case of unstaking requests, they also must wait an additional epoch before their unstaked tokens are available to withdraw.
 
-# Rewards
+### Rewards
 
 Please see the [Rewards](/staking/rewards) section of the documentation for information about reward calculations and schedule.
 
-# Delegation
+## Delegation
 Any account in the network may also participate in staking by delegating their tokens to a node operator. 
 Every node operator in the network is eligible to receive delegation, there is no opting out. 
 
@@ -80,19 +76,12 @@ Rewards for delegators are also calculated in the exact same way that rewards fo
 with one difference in that 8% of the calculated amount is given to the node operator being delegated to. 
 The remaining 92% is awarded to the delegator.
 
-# How Do I Stake?
+## How Do I Stake?
 
-So you have decided you want to be a part of the Flow Protocol. Welcome! 
-You are joining a group of people from all around the world that are a part of a movement centered
-around bringing decentralization and transparency into the world.
+So you have decided you want to be a part of the Flow network. Welcome! 
+You are joining a group of people from all around the world that are a part of a movement that is bringing decentralization and transparency into the world.
 
-## Developers
-
-If you are a developer or other technically-minded person and want to learn more detail
-about the inner workings of the identity table and staking protocol, please see 
-the [staking technical documentation](../technical-overview).
-
-## Staking via a Custody Provider
+### Staking via a Custody Provider
 
 If you are using a custody provider who controls your account and private keys for you, 
 such as Kraken, Finoa, or Coinlist, they all have different policies and processes 
@@ -100,9 +89,9 @@ for what you need to do to stake your tokens, the rewards you receive,
 and the fees that they take from your staking rewards. 
 Please reach out to them if you have any questions about staking your tokens with your provider.
 
-## Manual Staking
+### Manual Staking
 
-If you are self-custodying your account and keys, you will need to learn more about how staking works
+If you are self-custodying your Flow account and keys, you will need to learn more about how staking works
 and how you can participate safely and reliably. 
-See the manual staking documentation for information about how you can use your FLOW 
+See the manual staking documentation for information about how you can use your FLOW tokens
 to stake with the network via Flow Port.
