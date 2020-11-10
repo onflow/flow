@@ -90,9 +90,9 @@ const sections = [
     sidebar: {
       null: [
         "[FLOW Token](/token)",
-        "[Staking & Delegating](/staking)",
-        "[Node Operation](/node-operation)",
-        "[Core Contracts](/protocol/core-contracts)",
+        // "[Staking & Delegating](/staking)",
+        // "[Node Operation](/node-operation)",
+        // "[Core Contracts](/protocol/core-contracts)",
         "intro/glossary",
         "intro/FAQ",
       ],
