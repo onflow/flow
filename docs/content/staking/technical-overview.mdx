@@ -39,7 +39,7 @@ If any of the definitions are confusing, you can find more detail in the contrac
 **Staker:** Any user who has staked tokens for the Flow network. 
 A node operator is a staker, and a delegator is a staker as well.
 
-**Node Operator:** A user who operates a node for the Flow network. Each node operator has a unique `NodeStaker` 
+**Node Operator:** A user who operates a node on the Flow network. Each node operator has a unique `NodeStaker` 
 object they store in their account to perform staking operations.
 
 **Delegator:** A user who delegates tokens to a node operator and receives rewards for their staked tokens, minus a fee
@@ -100,7 +100,7 @@ be locked for staking until they request to unstake them.
 
 Before getting into the details of the contract, we need to discuss how time in Flow is organized.
 The operation of the Flow network is divided into epochs, which are week-long periods where various
-network maintenance operatios are performed. The schedule of each epoch is exactly the same, though
+network maintenance operations are performed. The schedule of each epoch is exactly the same, though
 individual actions that users take in relation to staking with the network will be different.
 
 Epoch Schedule:
@@ -195,7 +195,7 @@ Every staked node in the Flow network is eligible for delegation by any other us
 The user only needs to know the node ID of the node they want to delegate to.
 
 To register as a delegator, the delegator submits the **Register Delegator**
-transaction, providing the id of the node operator they want to delegate to. 
+transaction, providing the ID of the node operator they want to delegate to. 
 This transactions stores the `NodeDelegator` object
 in the user's account, which is what they use to perform staking operations.
 
@@ -278,8 +278,8 @@ At the end of every epoch, tokens are moved between pools in this order:
 
 1. All Committed Tokens will get moved either to the Staked Tokens pool, 
 or to the Unstaked Tokens pool (depending on if the registered node has met the minimum stake requirements).
-2. All Committed Tokens get moved to staked Tokens pool.
-3. All unstaking tokens get moved to the unstaked tokens pool.
+2. All Committed Tokens get moved to Staked Tokens pool.
+3. All unstaking tokens get moved to the Unstaked Tokens pool.
 4. All requested unstaking tokens get moved from the staked pool to the unstaking pool.
 
 ## Reading Info from the Staking Contract
