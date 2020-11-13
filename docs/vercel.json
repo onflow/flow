@@ -25,6 +25,8 @@
     { "source": "/intro/partner-update",                        "destination": "/updates/sep-16-2020/",                     "permanent": true },
     { "source": "/intro/partner-update/",                       "destination": "/updates/sep-16-2020/",                     "permanent": true },
     { "source": "/concepts/token-delivery-steps",               "destination": "/token/delivery/",                          "permanent": true },
-    { "source": "/concepts/token-delivery-steps/",              "destination": "/token/delivery/",                          "permanent": true }
+    { "source": "/concepts/token-delivery-steps/",              "destination": "/token/delivery/",                          "permanent": true },
+    { "source": "/concepts/node-operation/quickstart",          "destination": "/node-operation/node-bootstrap/",           "permanent": true },
+    { "source": "/concepts/node-operation/quickstart/",         "destination": "/node-operation/node-bootstrap/",           "permanent": true }
   ]
 }
