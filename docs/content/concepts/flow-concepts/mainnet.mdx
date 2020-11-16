@@ -5,7 +5,7 @@ title: Flow Mainnet
 
 Currently, there is an internal Mainnet, available for access:
 
-- [access-004.mainnet1.nodes.onflow.org:9000](http://access-004.mainnet1.nodes.onflow.org:9000/)
+- [access.mainnet.nodes.onflow.org:9000](http://access.mainnet.nodes.onflow.org:9000/)
 
 For example, to access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
 
@@ -13,7 +13,7 @@ For example, to access the network using the [Flow Go SDK](https://github.com/on
 import "github.com/onflow/flow-go-sdk/client"
 
 func main() {
-  flowAccessAddress := "access-004.mainnet1.nodes.onflow.org:9000"
+  flowAccessAddress := "access.mainnet.nodes.onflow.org:9000"
   flowClient, _ := client.New(flowAccessAddress, grpc.WithInsecure())
 
   // ...
