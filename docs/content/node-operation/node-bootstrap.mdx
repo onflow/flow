@@ -149,7 +149,7 @@ git pull origin master
 
 4. Copy the [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) you updated in step 3 to: `/etc/flow/`
 
-5. Enable your service `sudo systemd enable YOUR-FLOW-NODE.service`
+5. Enable your service `sudo systemctl enable YOUR-FLOW-NODE.service`
 
 <Callout type="danger">Wait for the Flow team announcement before you proceed to Step 3</Callout>
 
@@ -192,7 +192,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/access:v0.10.1 \
+	gcr.io/flow-container-registry/access:v0.11.1 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -212,7 +212,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/collection:v0.10.1 \
+	gcr.io/flow-container-registry/collection:v0.11.1 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -229,7 +229,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/consensus:v0.10.1 \
+	gcr.io/flow-container-registry/consensus:v0.11.1 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -245,7 +245,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/execution:v0.10.1 \
+	gcr.io/flow-container-registry/execution:v0.11.1 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -263,7 +263,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/verification:v0.10.1 \
+	gcr.io/flow-container-registry/verification:v0.11.1 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
