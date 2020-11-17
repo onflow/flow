@@ -43,14 +43,14 @@ Unlike Ethereum, there is no sequence number for the entire account.
 Payers and authorizers are not required to.	
 
 The transaction proposer is only required to specify a sequence number for a 
-single account key, even it if signs with multiple keys. 
+single account key, even if it signs with multiple keys. 
 This key is referred to as the _proposal key_.	
 
 Each time an account key is used as a proposal key, its sequence number is incremented by 1. 
 The sequence number is updated after execution, 
 even if the transaction fails (reverts) during execution.
 
-A transaction is rejected if its proposal key does not specify a sequence number 
+A transaction is failed if its proposal key does not specify a sequence number 
 equal to the sequence number stored on the account _at execution time._	
 
 **Example**	
