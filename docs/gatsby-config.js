@@ -84,6 +84,7 @@ const sections = [
       "*",
       "intro/*",
       "updates/*",
+      "support/**/*",
     ],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
@@ -99,6 +100,9 @@ const sections = [
       "Community Updates": [
         "updates/oct-6-2020", 
         "updates/sep-16-2020",
+      ],
+      "Support": [
+        "support/flow-port",
       ],
     },
   },
