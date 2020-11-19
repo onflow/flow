@@ -102,7 +102,7 @@ const sections = [
         "updates/sep-16-2020",
       ],
       "Support": [
-        "support/flow-port",
+        "support/flow-port/index",
       ],
     },
   },
