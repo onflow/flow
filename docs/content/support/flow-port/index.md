@@ -61,7 +61,7 @@ So you have decided you want to be a part of the Flow Protocol. Welcome! You are
 If you are not using a custody provider, there is more responsibility that you have to accept, because you have complete control of your tokens. You need to ensure that you are well informed about the staking process and potentially node operation process because you will have to manage those on your own. Please read the [staking documentation](https://docs.onflow.org/staking/) before continuing with this guide.
 
 Below are the various options you can choose. Please read them carefully as it will help you understand which route is best for your situation:
-- Staking your own Node: You are responsible for running and maintaining a Flow Node. You are also solely responsible for providing the minimum stake for your   selected node (minimum 135,000 FLOW) and b) you have the technical know-how and bandwidth to run and operate a node in the Flow protocol. 
+- Staking your own Node: You are responsible for running and maintaining a Flow Node. You are also solely responsible for providing the minimum stake for your   selected node (minimum 135,000 FLOW) and you have the technical know-how and bandwidth to run and operate a node in the Flow protocol. 
 - Delegating: You have FLOW tokens and you want to stake without having to run your own node and/or have the minimum stake required. You can ‘delegate’ any amount of your FLOW tokens to an existing node operator and you will earn rewards.
 
 ### Staking your own Node
