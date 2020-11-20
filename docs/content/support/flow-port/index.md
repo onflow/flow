@@ -37,7 +37,7 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 
 ### Navigate to Flow Port to Create an Address
 
- 1. Navigate to Flow Port: https://port.onflow.org/
+ 1. Navigate to [Flow Port](https://port.onflow.org/)
  2. Click on 'Sign Up' if you need to create a new Flow Account.
  3. Click on Ledger.
  4. Follow the prompts on the screen. Plug in your Ledger device and open the Flow App.
@@ -50,15 +50,15 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 So you have decided you want to be a part of the Flow Protocol. Welcome! You are joining a group of people from all around the world that are a part of a movement centered around bringing decentralization and transparency into the world. Below is a step-by-step guide that will assist you in the staking & delegation process.
 
 ### Starting a Stake Transaction
- 1. In order to perform any sort of staking, you need to have FLOW tokens. If you do not have any FLOW tokens yet, please reference here how you can get some [https://docs.onflow.org/token]. 
- 2. Once you have FLOW tokens in your account, you can start the process of staking. You can start this process via Flow Port [https://port.onflow.org/] or your custody provider
+ 1. In order to perform any sort of staking, you need to have FLOW tokens. If you do not have any FLOW tokens yet, please [reference here](https://docs.onflow.org/token) how you can get some. 
+ 2. Once you have FLOW tokens in your account, you can start the process of staking. You can start this process via [Flow Port](https://port.onflow.org/) or your custody provider
  3. If you are using Flow Port, log-in with your Flow account address, and navigate to the Stake/Delegate page. See the Manual Staking/Delegating section below for more information about what to do next.
 
 ### Staking via a Custody Provider
  1. If you are using a custody provider who controls your account and private keys for you, such as Kraken, Finoa, or Coinlist, they all have different policies and processes for what you need to do to stake your tokens, the rewards you receive, and the fees that they take from your staking rewards. Please reach out to them if you have any questions about staking your tokens with your provider.
 
 ### Manual Staking/Delegating
-If you are not using a custody provider, there is more responsibility that you have to accept, because you have complete control of your tokens. You need to ensure that you are well informed about the staking process and potentially node operation process because you will have to manage those on your own. Please read the staking documentation before continuing with this guide. https://docs.onflow.org/staking/
+If you are not using a custody provider, there is more responsibility that you have to accept, because you have complete control of your tokens. You need to ensure that you are well informed about the staking process and potentially node operation process because you will have to manage those on your own. Please read the [staking documentation](https://docs.onflow.org/staking/) before continuing with this guide.
 
 Below are the various options you can choose. Please read them carefully as it will help you understand which route is best for your situation:
 - Staking your own Node: You are responsible for running and maintaining a Flow Node. You are also solely responsible for providing the minimum stake for your   selected node (minimum 135,000 FLOW) and b) you have the technical know-how and bandwidth to run and operate a node in the Flow protocol. 
