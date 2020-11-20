@@ -17,12 +17,13 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
  2. Click on 'Sign Up'
  3. Click on Blocto. Please disable any ad blockers you have before logging in using Blocto:
  4. Follow the user interface prompts to create a new Flow Account Address.
- 5. After you create your account, you should be logged into Flow Port. You can now see your account address in Flow Port:
+ 5. After you create your account, you should be logged into Flow Port. You can now see your account address in Flow Port
 
 ### Ledger
 #### Before You Start
 
  1. Ensure you have:
+ 
    - a.) [Ledger Live](https://support.ledger.com/hc/en-us/articles/360006395553) installed on your computer.
    - b.) [Initialized](https://support.ledger.com/hc/en-us/articles/360000613793) your Ledger Device.
 
@@ -30,9 +31,12 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 
  1. Connect your Ledger Device to your computer and open Ledger Live.
  2. Make sure your Ledger device firmware is completely up to date. You can check this by clicking on **‘Manager’** from the side navigation bar.  Choose to install the update if there is one.
+ 
    - a.) NOTE: Sometimes the install option doesn't show up, or it is not clickable. If this is the case, wait for a little bit of time to see if it appears, or restart the ledger live app if necessary.
+   
  4. Go to the Manager screen in Ledger Live and search for ‘Flow’.
  5. You should see the Flow App. Install it and follow the instructions on the device.
+ 
    - a.) NOTE: If the Flow App does not appear, it may be because you are on an outdated version. 
 
 ### Navigate to Flow Port to Create an Address
@@ -41,7 +45,7 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
  2. Click on 'Sign Up' if you need to create a new Flow Account.
  3. Click on Ledger.
  4. Follow the prompts on the screen. Plug in your Ledger device and open the Flow App.
- 5. Click on Create an account. And follow the prompts on your ledger device.
+ 5. Click on Create an account. Follow the prompts on your ledger device.
  6. Once your account address is created, you will be automatically logged into Flow Port.
 
 ## Staking & Delegating
@@ -62,12 +66,12 @@ If you are not using a custody provider, there is more responsibility that you h
 
 Below are the various options you can choose. Please read them carefully as it will help you understand which route is best for your situation:
 - Staking your own Node: You are responsible for running and maintaining a Flow Node. You are also solely responsible for providing the minimum stake for your   selected node (minimum 135,000 FLOW) and you have the technical know-how and bandwidth to run and operate a node in the Flow protocol. 
-- Delegating: You have FLOW tokens and you want to stake without having to run your own node and/or have the minimum stake required. You can ‘delegate’ any amount of your FLOW tokens to an existing node operator and you will earn rewards.
+- Delegating: You have FLOW tokens and you want to stake, without having to run your own node and/or have the full minimum stake required to run your own node. You can ‘delegate’ any amount of your FLOW tokens to an existing node operator and you will earn rewards.
 
 ### Staking your own Node
-  1. Once you have navigated to the staking/delegating page in Flow Port, click on the Stake a Node option.
+  1. Once you have navigated to the staking/delegating page in Flow Port, click on the 'Stake a Node' option.
   2. Next, select the type of node you will be running.
-  3. Input the amount of Flow you wish to stake with that node. You muct stake at least the minimum in order for your stake request to be successfully processed.
+  3. Input the amount of Flow you wish to stake with that node. You must stake at least the minimum in order for your stake request to be successfully processed. 
   4. Run the bootstrapping instructions and provide the remaining technical details needed to stake a node.
 
 ### Delegating
@@ -80,7 +84,6 @@ Below are the various options you can choose. Please read them carefully as it w
   - You are now a part of Flow, and will begin to earn rewards for being a valued member of the blockchain! 
   
 ### You have variable options at this point to:
-  - Add additional stake to your already existing stake.
-  - Withdraw/re-stake your earned rewards.
-  - Request to be unstaked from the network. 
-All of these options can be initiated from Flow Port, or your custody provider’s portal. 
+  - Add additional stake to your already existing stake. Any added FLOW will again sit in a pending status and will be processed at the next Epoch.
+  - Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this actions will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next Epoch.
+  - Request to be unstaked from the network. The unstake request will sit in a pening status for two epochs. Once it is processed, the amount that has been unstaked will sit in your unstaked FLOW amount and can now be withdrawn or re-staked.
