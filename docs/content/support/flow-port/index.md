@@ -71,7 +71,7 @@ Below are the various options you can choose. Please read them carefully as it w
 ### Staking your own Node
   1. Once you have navigated to the staking/delegating page in Flow Port, click on the 'Stake a Node' option.
   2. Next, select the type of node you will be running.
-  3. Input the amount of Flow you wish to stake with that node. You must stake at least the minimum in order for your stake request to be successfully processed. 
+  3. Input the amount of Flow you wish to stake with that node. You must stake at least the minimum in order for your stake request to be successfully processed. You are able to provide the minimum stake across multiple transactions. Meaning, you could execute your stake transaction with half of the minumum required. Then, before the next epoch, you can choose to 'Add Flow' to that pending stake to get it to the minimum stake required.  
   4. Run the bootstrapping instructions and provide the remaining technical details needed to stake a node.
 
 ### Delegating
