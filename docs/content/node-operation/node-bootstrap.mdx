@@ -24,12 +24,14 @@ updated configuration.
 ## Step 1 - Run Genesis Bootstrap
 
 <Callout type="info">
-  You will need to run this process **for each** node that you are operating
+  You will need to run this process for each node that you are operating
 </Callout>
 
 ### Download the Bootstrapping Kit
 
-**Note: if you have downloaded the bootstrapping kit previously, ensure that you do this step again to get the latest copy of the bootstrapping kit**
+<Callout type="warning">
+If you have downloaded the bootstrapping kit previously, ensure that you do this step again to get the latest copy of the bootstrapping kit
+</Callout>
 
 ```shell
 curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
@@ -124,7 +126,10 @@ Before proceeding to Step 3, ensure that Step 1 was completed successfully with 
 
 </Callout>
 
-1. Expose TCP/3569 on your firewall. If you are running Flow **access node** you will also need to **expose** TCP/9000 and optionally TCP/8000
+1. Expose TCP port **3569** on your firewall.
+
+If you are running Flow Access node you will also need to expose TCP port 9000 and optionally TCP port 8000
+
 2. Create the `data` directory if you have not previously created it and/or removed a previous version of it (default: `/var/flow/data`)
 
 <Callout type="info">

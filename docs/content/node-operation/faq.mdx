@@ -14,11 +14,11 @@ In the long-term. anyone can become a Node Validator on Flow.
 
 ### How do I generate keys?
 
-Please follow the instructions provided here: [Generate Your Node Keys](/operator/node-bootstrap#generating-your-node-id)
+Please follow the instructions provided here: [Generate Your Node Keys](/node-operation/node-bootstrap#generating-your-node-id)
 
 ### How do I check on the status of my node?
 
-Please follow the instructions provided here: [Monitoring nodes](/operator/monitoring-nodes)
+Please follow the instructions provided here: [Monitoring nodes](/node-operation/monitoring-nodes)
 
 ### Can the node address (IP or hostname) be changed after a spork?
 
@@ -46,3 +46,20 @@ However, if we do release any software update in between a Spork (e.g. an emerge
 
 In the long-term, yes - any individual or organization should be able to run one or more nodes. However, currently as the Flow protocol matures, anyone interested in running a node must present a case for how they will add unique value to the network. There will be an application process. Applicants will be asked to submit some information to the Flow team including a bit about their background and experience contributing to decentralized projects.
 They then join a webinar to meet the team and share more about how they’ll grow the community. The top applicants, in terms of community impact, will be granted a spot to run a node.
+
+### Is there any way to know if a node is currently online?
+
+To verify if a node is online, please [setup metrics](/node-operation/faq/#how-do-i-check-on-the-status-of-my-node) for the node.
+We also have an **internal** dashboard which is updated by pinging each of the registered node.
+
+### Can I migrate a node to a new machine?
+
+Yes, as long as you retain the `boostrap` information which includes the node staking key, networking key, IP address and port from the old node to the new.
+
+### Is there a public node?
+
+Yes, an access node is [publicly accessible](https://github.com/onflow/flow/blob/master/docs/content/concepts/flow-concepts/mainnet.mdx) to submit transactions and read data from the blockchain.
+
+### Where can I find how many nodes are currently running Flow?
+
+If you are running a node, then you most definitely have this information on your node in the file `<your bootstrap dir>/public-root-information/node-infos.pub.json`. If you are not running a node, you can just ask us :).
