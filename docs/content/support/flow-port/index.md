@@ -88,7 +88,3 @@ Below are the various options you can choose. Please read them carefully as it w
   - Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this actions will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next Epoch.
   - Request to be unstaked from the network. The unstake request will sit in a pening status for two epochs. Once it is processed, the amount that has been unstaked will sit in your unstaked FLOW amount and can now be withdrawn or re-staked.
   
-  <!--- ## Miscellaneous Q&A
-  - how can I get full transaction history for NBA topshot? A: Right now (11/23/2020), its very difficult as the data is spread out. There are plans to make this much easier, but it's currently not documented. Best option today is to start a database off-chain to store history. 
-  - Can a TopShot user find her flow address? A: as of 11/23, the only way is to find your transaction on Cryptoslam and then get your address from there. That said, we plan to expose the flow addresses to users in a much easier way. It's on the roadmap for TopShot and Dapper team.
----> 
