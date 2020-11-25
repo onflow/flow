@@ -45,7 +45,7 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
  2. Click on 'Sign Up' if you need to create a new Flow Account.
  3. Click on Ledger.
  4. Follow the prompts on the screen. Plug in your Ledger device and open the Flow App.
- 5. Click on Create an account. Follow the prompts on your ledger device.
+ 5. Click on Create an account. Follow the prompts on your Ledger device.
  6. Once your account address is created, you will be automatically logged into Flow Port.
 
 ## Staking & Delegating
