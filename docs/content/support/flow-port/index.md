@@ -41,7 +41,7 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 
 ### Navigate to Flow Port to Create an Address
 
- 1. Navigate to [Flow Port](https://port.onflow.org/)
+ 1. Navigate to [Flow Port](https://port.onflow.org/).
  2. Click on 'Sign Up' if you need to create a new Flow Account.
  3. Click on Ledger.
  4. Follow the prompts on the screen. Plug in your Ledger device and open the Flow App.
