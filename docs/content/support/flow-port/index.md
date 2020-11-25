@@ -51,21 +51,21 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 ## Staking & Delegating
 ### How Do I Stake or Delegate?
 
-So you have decided you want to be a part of the Flow Protocol. Welcome! You are joining a group of people from all around the world that are a part of a movement centered around bringing decentralization and transparency into the world. Below is a step-by-step guide that will assist you in the staking & delegation process.
+So you have decided you want to be a part of the Flow Network. Welcome! You are joining a group of people from all around the world that are a part of a movement centered around bringing decentralization, user empowerment, and transparency into the world. Below is a step-by-step guide that will assist you in the staking & delegation process.
 
-### Starting a Stake Transaction
+### Staking via a Custody Provider
+
+If you are using a custody provider who controls your account and private keys for you, such as Kraken, Finoa, or Coinlist, they all have different policies and processes for what you need to do to stake your tokens, the rewards you receive, and the fees that they take from your staking rewards. Please reach out to them if you have any questions about staking your tokens with your provider.
+
+### Starting a Manual Staking Transaction
  1. You need to have FLOW in order to stake. Please see the [FLOW Token](/token) reference for information on how to become a FLOW holder.
  2. Once you have FLOW tokens in your account, you can start staking through [Flow Port](https://port.onflow.org/) or, if applicable, with your [custody provider](#staking-via-a-custody-provider).
  3. If you are using Flow Port, log-in with your Flow account address and navigate to the Stake/Delegate page. See the Manual Staking/Delegating section below for more information about what to do next.
 
-### Staking via a Custody Provider
-
-Each custody provider (Kraken, Finoa, CoinList) has a different set of policies and processes in place for staking, rewards and any associated fees. Please reach out to your custodian with any questions related to staking or delegation.
-
 ### Manual Staking/Delegating
 If you are not using a custody provider, there is more responsibility that you have to accept, because you have complete control of your tokens. You need to ensure that you are well informed about the staking process and potentially node operation process because you will have to manage those on your own. Please read the [staking documentation](https://docs.onflow.org/staking/) before continuing with this guide.
 
-Below are the various options you can choose. Please read them carefully as it will help you understand which route is best for your situation:
+Below are the various options you can choose. Please be aware, that at this time you can only have 1 stake or 1 delegate per account. This means that if you want to do multiple stakes, multiple delegates, or a mixture of stakes and delegates, you will need to create multiple accounts to do so. Please read them carefully as it will help you understand which route is best for your situation:
 - Staking your own Node: You are responsible for running and maintaining a Flow Node. You are also solely responsible for providing the minimum stake for your   selected node (minimum 135,000 FLOW) and you have the technical know-how and bandwidth to run and operate a node in the Flow protocol. 
 - Delegating: You have FLOW tokens and you want to stake, without having to run your own node and/or have the full minimum stake required to run your own node. You can ‘delegate’ any amount of your FLOW tokens to an existing node operator and you will earn rewards.
 
@@ -73,7 +73,7 @@ Below are the various options you can choose. Please read them carefully as it w
   1. Once you have navigated to the staking/delegating page in Flow Port, click on the 'Stake a Node' option.
   2. Next, select the type of node you will be running.
   3. Input the amount of Flow you wish to stake with that node. You must stake at least the minimum in order for your stake request to be successfully processed. You are able to provide the minimum stake across multiple transactions. Meaning, you could execute your stake transaction with half of the minumum required. Then, before the next epoch, you can choose to 'Add Flow' to that pending stake to get it to the minimum stake required.  
-  4. Run the bootstrapping instructions and provide the remaining technical details needed to stake a node.
+  4. Run the [bootstrapping instructions](https://docs.onflow.org/node-operation/node-bootstrap/) and provide the remaining technical details needed to stake a node.
 
 ### Delegating (Coming soon!)
   1. Once you have navigated to the staking/delegating page in Flow Port, click on the Delegate option.
@@ -81,8 +81,8 @@ Below are the various options you can choose. Please read them carefully as it w
 
 ## I have successfully executed a Stake Transaction, now what?
   - Now that you have executed a stake transaction in either Flow Port or your custody provider’s portal, that transaction will now sit in a pending status until it is processed, which will be at the next Epoch Date (which is currently weekly). 
-  - During the next Epoch, the transaction will be processed. If successful, the provided FLOW will be staked and the associated Node would be either a) included in the network protocol or b) continue to operate as is in the network protocol. 
-  - You are now a part of Flow, and will begin to earn rewards for being a valued member of the blockchain! 
+  - During the next Epoch, the transaction will be processed. If successful, the provided FLOW will be staked and the associated Node would be either a) included in the network protocol if it is a new node or b) continue to operate as is in the network protocol. 
+  - You are now a part of Flow, and will begin to earn rewards for being a valued member of the network! 
   
 ### You have variable options at this point to:
   - Add additional stake to your existing stake. Any added FLOW will again sit in a pending status and be processed at the next epoch.
