@@ -88,6 +88,31 @@ $ ./boot-tools/bootstrap key --address \"${YOUR_NODE_ADDRESS}:3569\" --role ${YO
 
 ```
 
+```shell:title=Example
+$./boot-tools/bootstrap key --address "198.123.42.10:3569" --role consensus  -o ./bootstrap
+<nil> DBG will generate networking key
+<nil> INF generated networking key
+<nil> DBG will generate staking key
+<nil> INF generated staking key
+<nil> DBG assembling node information address=198.123.42.10:3569
+<nil> DBG encoded public staking and network keys networkPubKey=d92e3d5880abe233cf9fe9104db34bbb31251468a541454722b3870c04156a1b0504aef443bcaad124b997384b8fe7052847ce1e6189af1392d865e6be69835b stakingPubKey=917826e018f056a00b778a58ae83054906957ffd4b6f1b7da083551f7a9f35e02b76ace50424ed7d2c9fc69207a59f0f08a031048f5641db94e77d0648b24d150dedd54bab7cd44b4aa60cfd54be418647b0b3965f8ae54c0bcb48ae9d705162
+<nil> INF wrote file bootstrap/public-root-information/node-id
+<nil> INF wrote file bootstrap/private-root-information/private-node-info_39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a/node-info.priv.json
+<nil> INF wrote file bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
+
+$tree ./bootstrap/
+./bootstrap/
+├── private-root-information
+│   └── private-node-info_39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
+│       └── node-info.priv.json
+└── public-root-information
+    ├── node-id
+    └── node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
+
+3 directories, 3 files
+
+```
+
 ### Upload your Public Keys
 
 <Callout type="warning">
@@ -175,6 +200,35 @@ The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info
 
 1. Run the transit script to fetch the new genesis info:
    `./boot-tools/transit -pull -d ./bootstrap -t ${PULL_TOKEN} -role ${YOUR_NODE_TYPE}`
+
+```shell:title=Example
+$ ./boot-tools/transit -pull -d ./bootstrap -t mainnet-2  -role consensus
+Transit script Commit: a9f6522855e119ad832a97f8b7bce555a163e490
+2020/11/25 01:02:53 Running pull
+2020/11/25 01:02:53 Downloading bootstrap/public-root-information/node-infos.pub.json
+2020/11/25 01:02:53 Downloading bootstrap/public-root-information/root-block-seal.json
+2020/11/25 01:02:53 Downloading bootstrap/public-root-information/root-block.json
+2020/11/25 01:02:54 Downloading bootstrap/public-root-information/root-execution-result.json
+2020/11/25 01:02:54 Downloading bootstrap/public-root-information/root-qc.json
+2020/11/25 01:02:54 Downloading bootstrap/random-beacon.priv.json.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.enc
+2020/11/25 01:02:54 MD5 of the root block is: 2c9c7bba641a4ea34b6c49d5957ef058
+
+$ tree ./bootstrap/
+  ./bootstrap/
+  ├── private-root-information
+  │   └── private-node-info_39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
+  │       └── node-info.priv.json
+  ├── public-root-information
+  │   ├── node-id
+  │   ├── node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
+  │   ├── node-infos.pub.json
+  │   ├── root-block-seal.json
+  │   ├── root-block.json
+  │   ├── root-execution-result.json
+  │   └── root-qc.json
+  └── random-beacon.priv.json.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
+```
+
 2. Pull the latest changes from [flow-go repository](https://github.com/onflow/flow-go)
 3. Get your `node-id`, you can find it at `/path/to/bootstrap/public-genesis-information/node-id`
 4. Update the `FLOW_GO_NODE_ID` inside [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) to the `node-id` that you got from the previous step
