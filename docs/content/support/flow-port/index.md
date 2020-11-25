@@ -84,7 +84,7 @@ Below are the various options you can choose. Please read them carefully as it w
   - You are now a part of Flow, and will begin to earn rewards for being a valued member of the blockchain! 
   
 ### You have variable options at this point to:
-  - Add additional stake to your already existing stake. Any added FLOW will again sit in a pending status and will be processed at the next Epoch.
+  - Add additional stake to your existing stake. Any added FLOW will again sit in a pending status and be processed at the next epoch.
   - Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this actions will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next Epoch.
   - Request to be unstaked from the network. The unstake request will sit in a pening status for two epochs. Once it is processed, the amount that has been unstaked will sit in your unstaked FLOW amount and can now be withdrawn or re-staked.
   
