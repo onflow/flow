@@ -3,17 +3,11 @@ title: Setting Up a Flow Node
 sidebar_title: Node Setup
 ---
 
-<!-- [block:api-header]
-{
-"title": "Setup your Node Hardware"
-}
-[/block] -->
-
 First you'll need to provision a machine or virtual machine to run your node software.
 
 ## Hardware Requirements
 
-The hardware your Node will need varies depending on the role your Node will play in the Flow network. For an overview of the differences see the [Node Roles Overview](/operator/node-roles).
+The hardware your Node will need varies depending on the role your Node will play in the Flow network. For an overview of the differences see the [Node Roles Overview](/node-operation/node-roles).
 
 | Node Type        | CPU     | Memory |  Disk  |
 |------------------|---------|--------|--------|
@@ -31,15 +25,13 @@ Most of the load on your nodes will be messages sent back and forth between othe
 
 Each node will require either a static IPv4 address or a fixed DNS name. Either works, and we'll refer to this more generally as your 'Node Addres' from here out.
 
-<!-- [block:callout]
-{
-"type": "info",
-"body": "Your Node Address must be a publicly routable IPv4 address or valid DNS name that points to your node. This is how other nodes in the network will communicate with you.",
-"title": "Node Address Requirements"
-}
-[/block] -->
+<Callout type="info" title="Node Address Requirements">
+Your Node Address must be a publicly routable IPv4 address or valid DNS name that points to your node. This is how other nodes in the network will communicate with you.
+</Callout>
 
-Your firewalls must expose TCP/3569 for Node communication. If you are running an Access Node, you must also expose the GRPC port 9000.
+Your firewalls must expose **TCP/3569** for Node communication. If you are running an Access Node, you must also expose the GRPC port **9000**.
+
+![Flow Architecture](flow-architecture.png)
 
 ## Operating System Requirements
 
@@ -49,31 +41,26 @@ The bootstrapping scripts we'll use later are compiled binaries targeting an `am
 
 Flow also provides `systemd` service and unit files as a template for installation, though `systemd` is not required to run Flow.
 
-<!-- [block:callout]
-{
-"type": "info",
-"title": "Choose Your Own Adventure",
-"body": "Flow is distributed in such a way that makes it very system agnostic. You are free to build your own orchestration around how you run your nodes and manage your keys.\n\nFor the remainder of this guide, we cover the most simple case, a single node being hand deployed. This should give you a good sense of what's needed, and you can modify to suit your needs from there.\n\nThe Flow team has tested running nodes on Ubuntu 18.04 and GCP's Container Optimized OS which is based on Chromium OS. If you an unsure where to start, those are good choices."
-}
-[/block] -->
+<Callout type="info" title="Choose Your Own Adventure">
+Flow is distributed in such a way that makes it very system agnostic. You are free to build your own orchestration around how you run your nodes and manage your keys.
+<br/><br/>
+For the remainder of this guide, we cover the most simple case, a single node being hand deployed. This should give you a good sense of what's needed, and you can modify to suit your needs from there.
+<br/><br/>
+The Flow team has tested running nodes on Ubuntu 18.04 and GCP's Container Optimized OS which is based on Chromium OS. If you an unsure where to start, those are good choices.
+</Callout>
 
-<!-- [block:api-header]
-{
-"title": "Setup Data Directories & Disks"
-}
-[/block] -->
+## Setup Data Directories & Disks
 
 Flow stores protocol state on disk, as well as execution state in the case of execution nodes.
 
-Where the data is stored is up to you. By default the systemd files that ship with flow use `/var/flow/data`. This is where the vast majority of Flow's disk usage comes from, so you may wish to make this directory mounted to a separate disk from the OS. The performance of this disk IO is also a major bottleneck for certain node types. While all nodes need to make use of this disk, if you are running an execution node, you should make sure this is a high performing SSD.
+Where the data is stored is up to you. By default, the `systemd` files that ship with flow use `/var/flow/data`.
+This is where the vast majority of Flow's disk usage comes from, so you may wish to make this directory mounted to a separate disk from the OS.
+The performance of this disk IO is also a major bottleneck for certain node types.
+While all nodes need to make use of this disk, if you are running an execution node, you should make sure this is a high performing SSD.
 
 As a rough benchmark for planning storage capacity, each flow block will grow the data directory by 3-5KiB.
 
-<!-- [block:api-header]
-{
-"title": "Pull the Flow Images"
-}
-[/block] -->
+## Pull the Flow Images
 
 The `flow-go` binaries are distributed as container images, and need to be pulled down to your host with your image management tool of choice.
 
@@ -84,38 +71,25 @@ Replace `$ROLE` with the node type you are planning to run. Valid options are:
 - execution
 - verification
 - access
-  <!-- [block:code]
-  {
-  "codes": [
-  {
-  "code": "# Docker\ndocker pull gcr.io/flow-container-registry/${ROLE}:alpha-v0.0.1\n\n# Containerd\nctr images pull gcr.io/flow-container-registry/${ROLE}:alpha-v0.0.1",
-  "language": "shell"
-  }
-  ]
-  }
-  [/block] -->
 
-<!-- [block:api-header]
-{
-"title": "Set Your Node to Start"
-}
-[/block] -->
+```shell
+  # Docker
+  docker pull gcr.io/flow-container-registry/${ROLE}:alpha-v0.0.1
+
+  # Containerd
+  ctr images pull gcr.io/flow-container-registry/${ROLE}:alpha-v0.0.1",
+```
+
+## Set Your Node to Start
 
 Your nodes will need to boot at startup, and come back to life if they crash.
 
 If you are running `systemd` and you can use the service files provided by flow-go. Find them in the [Flow Go](https://github.com/onflow/flow-go/tree/master/deploy)
 
-<!-- [block:code]
-{
-"codes": [
-{
-"code": "mv ~/flow-${ROLE}.service /etc/systemd/system/.\n\nsystemctl enable flow",
-"language": "shell"
-}
-]
-}
-[/block] -->
+```shell
+ mv ~/flow-${ROLE}.service /etc/systemd/system/.\n\nsystemctl enable flow
+```
 
 If you are using some other system, you need to ensure that the flow container is started, and the appropriate key directories are mounted into the container.
 
-The systemd files pull runtime setting from `/etc/flow/runtime-config.env` and any `.env` files under `/etc/flow/conf.d`. Examples of these files are also available in the github repo, you will need to configured the runtime config file later.
+The `systemd` files pull runtime setting from `/etc/flow/runtime-config.env` and any `.env` files under `/etc/flow/conf.d`. Examples of these files are also available in the github repo, you will need to configured the runtime config file later.
