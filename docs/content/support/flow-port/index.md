@@ -59,7 +59,8 @@ So you have decided you want to be a part of the Flow Protocol. Welcome! You are
  3. If you are using Flow Port, log-in with your Flow account address and navigate to the Stake/Delegate page. See the Manual Staking/Delegating section below for more information about what to do next.
 
 ### Staking via a Custody Provider
- 1. If you are using a custody provider who controls your account and private keys for you, such as Kraken, Finoa, or Coinlist, they all have different policies and processes for what you need to do to stake your tokens, the rewards you receive, and the fees that they take from your staking rewards. Please reach out to them if you have any questions about staking your tokens with your provider.
+
+Each custody provider (Kraken, Finoa, CoinList) has a different set of policies and processes in place for staking, rewards and any associated fees. Please reach out to your custodian with any questions related to staking or delegation.
 
 ### Manual Staking/Delegating
 If you are not using a custody provider, there is more responsibility that you have to accept, because you have complete control of your tokens. You need to ensure that you are well informed about the staking process and potentially node operation process because you will have to manage those on your own. Please read the [staking documentation](https://docs.onflow.org/staking/) before continuing with this guide.
