@@ -54,7 +54,7 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 So you have decided you want to be a part of the Flow Protocol. Welcome! You are joining a group of people from all around the world that are a part of a movement centered around bringing decentralization and transparency into the world. Below is a step-by-step guide that will assist you in the staking & delegation process.
 
 ### Starting a Stake Transaction
- 1. In order to perform any sort of staking, you need to have FLOW tokens. If you do not have any FLOW tokens yet, please [reference here](https://docs.onflow.org/token) how you can get some. 
+ 1. You need to have FLOW in order to stake. Please see the [FLOW Token](/token) reference for information on how to become a FLOW holder.
  2. Once you have FLOW tokens in your account, you can start staking through [Flow Port](https://port.onflow.org/) or, if applicable, with your [custody provider](#staking-via-a-custody-provider).
  3. If you are using Flow Port, log-in with your Flow account address and navigate to the Stake/Delegate page. See the Manual Staking/Delegating section below for more information about what to do next.
 
