@@ -35,7 +35,7 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
    - a.) NOTE: Sometimes the install option doesn't show up, or it is not clickable. If this is the case, wait for a little bit of time to see if it appears, or restart the Ledger Live app if necessary.
    
  4. Go to the Manager screen in Ledger Live and search for ‘Flow’.
- 5. You should see the Flow App. Install it and follow the instructions on the device.
+ 5. You should see the Flow app. Install it and follow the instructions on the device.
  
    - a.) NOTE: If the Flow App does not appear, it may be because you are on an outdated version. 
 
