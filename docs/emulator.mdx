@@ -16,7 +16,17 @@ a command-line interface for working with Flow.
 
 ### Installation
 
-Follow [these steps](cli.md) to install the Flow CLI.
+<MenuTitle>OSX & Linux</MenuTitle>
+
+```shell
+sh -ci "$(curl -fsSL https://storage.googleapis.com/flow-cli/install.sh)"
+```
+
+<MenuTitle>Windows</MenuTitle>
+
+```powershell
+iex "& { $(irm 'https://storage.googleapis.com/flow-cli/install.ps1') }"
+```
 
 ### Starting the server
 
@@ -51,7 +61,7 @@ Docker builds for the emulator are automatically built and pushed to
 ### Configuration
 
 In addition to using command-line flags, the emulator can also be configured
- with environment variables, which can be passed into the Docker image.
+with environment variables, which can be passed into the Docker image.
 
 Here's a sample configuration:
 
@@ -95,20 +105,20 @@ flow keys generate
 
 ## All Configuration Options
 
-| Environment Variable    | CLI Flag              | Default      | Description |
-|-------------------------|-----------------------|--------------|-------------|
-| FLOW_PORT               | `--port,-p`           | `3569`       | port to run RPC server |
-| FLOW_HTTPPORT           | `--http-port`         | `8080`       | port to run HTTP server |
-| FLOW_VERBOSE            | `--verbose,-v`        | `false`      | enable verbose logging |
-| FLOW_BLOCKTIME          | `--block-time,-b`     | `5s`         | time between sealed blocks |
-| FLOW_SERVICEPRIVATEKEY  | `--service-priv-key`  | optional     | service account private key |
-| FLOW_SERVICEPUBLICKEY   | `--service-pub-key`   | optional     | service account public key |
-| FLOW_SERVICEKEYSIGALGO  | `--service-sig-algo`  | `ECDSA_P256` | service account key signature algorithm |
-| FLOW_SERVICEKEYHASHALGO | `--service-hash-algo` | `SHA3_256`   | service account key hash algorithm |
-| FLOW_INIT               | `--init`              | `false`      | whether to initialize a new account profile |
+| Environment Variable    | CLI Flag              | Default      | Description                                               |
+| ----------------------- | --------------------- | ------------ | --------------------------------------------------------- |
+| FLOW_PORT               | `--port,-p`           | `3569`       | port to run RPC server                                    |
+| FLOW_HTTPPORT           | `--http-port`         | `8080`       | port to run HTTP server                                   |
+| FLOW_VERBOSE            | `--verbose,-v`        | `false`      | enable verbose logging                                    |
+| FLOW_BLOCKTIME          | `--block-time,-b`     | `5s`         | time between sealed blocks                                |
+| FLOW_SERVICEPRIVATEKEY  | `--service-priv-key`  | optional     | service account private key                               |
+| FLOW_SERVICEPUBLICKEY   | `--service-pub-key`   | optional     | service account public key                                |
+| FLOW_SERVICEKEYSIGALGO  | `--service-sig-algo`  | `ECDSA_P256` | service account key signature algorithm                   |
+| FLOW_SERVICEKEYHASHALGO | `--service-hash-algo` | `SHA3_256`   | service account key hash algorithm                        |
+| FLOW_INIT               | `--init`              | `false`      | whether to initialize a new account profile               |
 | FLOW_GRPCDEBUG          | `--grpc-debug`        | `false`      | enable gRPC server reflection for debugging with grpc_cli |
-| FLOW_PERSIST            | `--persist`           | `false`      | enable persistent storage |
-| FLOW_DBPATH             | `--dbpath`            | `./flowdb`   | path to database directory |
+| FLOW_PERSIST            | `--persist`           | `false`      | enable persistent storage                                 |
+| FLOW_DBPATH             | `--dbpath`            | `./flowdb`   | path to database directory                                |
 
 # Changelog
 
@@ -117,24 +127,24 @@ flow keys generate
 ### SDK Compatibility
 
 | Flow Go SDK v0.6.0 | Flow Go SDK v0.7.0 | Flow Go SDK v0.7.1 | Flow Go SDK v0.8.0 | Flow Go SDK v0.9.0 |
-|--|--|--|--|--|
-|❌|✅|✅|✅|✅|
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| ❌                 | ✅                 | ✅                 | ✅                 | ✅                 |
 
-### 💥  Breaking Changes
+### 💥 Breaking Changes
 
 **Upgrade to Cadence `v0.8.0`:** https://github.com/onflow/cadence/releases/tag/v0.8.0
 
-- Arguments passed to `cadence.Value#WithType` are now typed as pointers (`*cadence.Type`) rather than values (`cadence.Type`). 
+- Arguments passed to `cadence.Value#WithType` are now typed as pointers (`*cadence.Type`) rather than values (`cadence.Type`).
 
   Example:
 
   ```go
   myEventType := cadence.EventType{...})
 
-  // this 👇 
+  // this 👇
   myEvent := cadence.NewEvent(...).WithType(myEventType)
 
-  // changes to this 👇 
+  // changes to this 👇
   myEvent := cadence.NewEvent(...).WithType(&myEventType)
   ```
 
@@ -145,8 +155,8 @@ flow keys generate
 ### SDK Compatibility
 
 | Flow Go SDK v0.6.0 | Flow Go SDK v0.7.0 | Flow Go SDK v0.7.1 |
-|--|--|--|
-|❌|✅|✅|
+| ------------------ | ------------------ | ------------------ |
+| ❌                 | ✅                 | ✅                 |
 
 ### 🐞 Bug Fixes
 
@@ -171,10 +181,10 @@ docker run -p 3569:3569 gcr.io/dl-flow/emulator:v0.5.1
 ### SDK Compatibility
 
 | Flow Go SDK v0.6.0 | Flow Go SDK v0.7.0 | Flow Go SDK v0.7.1 |
-|--|--|--|
-|❌|✅|✅|
+| ------------------ | ------------------ | ------------------ |
+| ❌                 | ✅                 | ✅                 |
 
-### 💥  Breaking Changes
+### 💥 Breaking Changes
 
 #### Cadence v0.5.0
 
@@ -184,7 +194,7 @@ The emulator has been upgraded to use the latest Cadence release. Please view th
 
 Cadence now represents all byte arrays as `[UInt8]` rather than `[Int]`. This affects the following functions:
 
-- `AuthAccount.addPublicKey(publicKey: [Int])` => `AuthAccount.addPublicKey(publicKey: [UInt8])` 
+- `AuthAccount.addPublicKey(publicKey: [Int])` => `AuthAccount.addPublicKey(publicKey: [UInt8])`
 - `AuthAccount.setCode(code: [Int])` => `AuthAccount.setCode(code: [UInt8])`
 
 However, array literals such as the following will still be inferred as `[Int]`, meaning that they can't be used directly:
@@ -194,6 +204,7 @@ myAccount.addPublicKey([1, 2, 3])
 ```
 
 There are two recommended workarounds:
+
 - Pass byte arrays as hexadecimal strings and decode in Cadence [JS Example](https://github.com/onflow/flow-js-sdk/blob/master/packages/six-create-account/src/six-create-account.js#L10-L18)
 - Pass byte arrays as transaction arguments typed as `[UInt8]` [Go Example](https://github.com/onflow/flow-go-sdk/blob/master/templates/accounts.go#L28-L63)
 
@@ -224,12 +235,14 @@ docker run -p 3569:3569 gcr.io/dl-flow/emulator:v0.5.0
 ### 💥 Breaking Changes
 
 - Terminology change from "root account" to "service account." This affects the following configuration parameters, but does not change functionality of the ~root~ service account:
+
   - `FLOW_ROOTPRIVATEKEY` => `FLOW_SERVICEPRIVATEKEY` (`--service-priv-key`)
   - `FLOW_ROOTPUBLICKEY` => `FLOW_SERVICEPUBLICKEY` (`--service-pub-key`)
   - `FLOW_ROOTKEYSIGALGO` => `FLOW_SERVICEKEYSIGALGO` (`--service-sig-algo`)
   - `FLOW_ROOTKEYHASHALGO` => `FLOW_SERVICEKEYHASHALGO` (`--service-hash-algo`)
 
 - Address generation format changes to be non-monotonic.
+
   - Service account address is now `0xf8d6e0586b0a20c7`
     - Using SDK: `flow.ServiceAddress(flow.Emulator)`
 
