@@ -115,7 +115,7 @@ const sections = [
         "tutorial/cadence/00-introduction",
         "[Cadence Language Reference](/cadence/language)",
       ],
-      Tutorial: [
+      "Tutorial": [
         "tutorial/cadence/01-first-steps",
         "tutorial/cadence/02-hello-world",
         "tutorial/cadence/03-fungible-tokens",
@@ -132,7 +132,10 @@ const sections = [
     patterns: ["sdks/golang/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["sdks/golang/index", "sdks/golang/changelog"],
+      null: [
+        "sdks/golang/index", 
+        "sdks/golang/changelog",
+      ],
       "How To": [
         "sdks/golang/create-account",
         "sdks/golang/build-transaction",
@@ -148,7 +151,10 @@ const sections = [
     sourceInstanceName: "docs",
     patterns: ["sdks/javascript/**/*"],
     sidebar: {
-      null: ["sdks/javascript/index", "sdks/javascript/create-account"],
+      null: [
+        "sdks/javascript/index",
+        "sdks/javascript/create-account",
+      ],
     },
   },
   {
@@ -156,7 +162,10 @@ const sections = [
     patterns: ["concepts/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      Accounts: ["concepts/accounts-and-keys", "concepts/transaction-signing"],
+      "Accounts": [
+        "concepts/accounts-and-keys",
+        "concepts/transaction-signing",
+      ],
     },
   },
   {
@@ -164,7 +173,9 @@ const sections = [
     patterns: ["protocol/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["protocol/access-api"],
+      null: [
+        "protocol/access-api",
+      ],
       "Core Contracts": [
         "protocol/core-contracts/fungible-token",
         "protocol/core-contracts/flow-token",
@@ -176,17 +187,33 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
+    patterns: ["guides/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      "Dapp Deployment Guide": [
+        "guides/dapp-deployment/index",
+        "guides/dapp-deployment/contract-testing",
+        "guides/dapp-deployment/testnet-deployment",
+        "guides/dapp-deployment/testnet-testing",
+        "guides/dapp-deployment/mainnet-deployment",
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
     patterns: ["token/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      Overview: [
+      "Overview": [
         "token/index",
         "token/earn",
         "token/concepts",
         "token/delivery",
         "token/faq",
       ],
-      "Developer Guides": ["token/locked-account-setup"],
+      "Developer Guides": [
+        "token/locked-account-setup"
+      ],
     },
   },
   {
@@ -194,7 +221,11 @@ const sections = [
     patterns: ["staking/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      Overview: ["staking/index", "staking/rewards", "staking/stake-slashing"],
+      "Overview": [
+        "staking/index",
+        "staking/rewards",
+        "staking/stake-slashing",
+      ],
       "Developer Guides": [
         "staking/technical-overview",
         "staking/locked-staking-guide",
@@ -209,7 +240,7 @@ const sections = [
     patterns: ["node-operation/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      Overview: [
+      "Overview": [
         "node-operation/index",
         "node-operation/node-setup",
         "node-operation/node-roles",
