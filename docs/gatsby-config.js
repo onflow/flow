@@ -80,7 +80,12 @@ const sourceSlugTransformers = {
 const sections = [
   {
     sourceInstanceName: "docs",
-    patterns: ["*", "intro/*", "updates/*", "support/**/*"],
+    patterns: [
+      "*",
+      "intro/*",
+      "updates/*",
+      "support/**/*",
+    ],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
@@ -92,8 +97,13 @@ const sections = [
         "intro/glossary",
         "intro/FAQ",
       ],
-      "Community Updates": ["updates/oct-6-2020", "updates/sep-16-2020"],
-      Support: ["support/flow-port/index"],
+      "Community Updates": [
+        "updates/oct-6-2020", 
+        "updates/sep-16-2020",
+      ],
+      "Support": [
+        "support/flow-port/index",
+      ],
     },
   },
   {
