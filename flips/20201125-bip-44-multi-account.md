@@ -1,11 +1,11 @@
 # Application of BIP 44 in Flow Wallets
 
-| Status        | (Proposed / Rejected / Accepted / Implemented)       |
-:-------------- |:---------------------------------------------------- |
-| **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
+| Status        | Proposed |
+:-------------- |:---------|
+| **FLIP #**    | [200](https://github.com/onflow/flow/pull/200) |
 | **Author(s)** | Peter Siemens (peter@dapperlabs.com), Jeffery Doyle (jeffrey.doyle@dapperlabs.com) |
-| **Sponsor**   | Peter Siemens (peter@dapperlabs.com)                 |
-| **Updated**   | 2020-11-25                                           |
+| **Sponsor**   | Peter Siemens (peter@dapperlabs.com) |
+| **Updated**   | 2020-11-25 |
 
 ## Objective
 
@@ -24,7 +24,7 @@ In the long term, it affects Flow wallet developers and their users.
 ## User Benefit
 
 By following this standard, developers of existing BIP 44 crypto wallets will
-be able to reduce friction for users who choose to create accounts on Flow.
+be able to reduce friction for users who wish to create accounts on Flow.
 
 ## Design Proposal
 
@@ -40,7 +40,7 @@ The BIP 44 path format is as follows:
 m / purpose' / coin_type' / account' / change / address_index
 ```
 
-When using this format to construct or discovery a Flow user wallet, 
+When using this format to construct or discover a Flow user wallet, 
 the value(s) of each path parameter should follow the specifications below.
 
 #### Purpose
@@ -50,7 +50,7 @@ Purpose is always the constant 44' (0x8000002C), as described in [BIP 44](https:
 #### Coin Type
 
 Coin type is always the constant 539' (0x8000021b), 
-the unique identifier for the Flow protocol defined in 
+the unique identifier for the Flow protocol, as defined in 
 [SatoshiLabs Improvement Proposal 44](https://github.com/satoshilabs/slips/blob/master/slip-0044.md) (SLIP 44).
 
 #### Account
