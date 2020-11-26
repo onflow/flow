@@ -178,6 +178,20 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
+    patterns: ["guides/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      "Dapp Deployment Guide": [
+        "guides/dapp-deployment/index",
+        "guides/dapp-deployment/contract-testing",
+        "guides/dapp-deployment/testnet-deployment",
+        "guides/dapp-deployment/testnet-testing",
+        "guides/dapp-deployment/mainnet-deployment",
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
     patterns: ["token/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
