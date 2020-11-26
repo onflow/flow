@@ -1,38 +1,89 @@
 ---
-title: User Accounts and Keys
+title: Developing on Flow Testnet
+description: Important information for developers using Flow Testnet
 ---
 
-Currently there is an internal test network, accessible at `access-001.devnet16.nodes.onflow.org:9000`
+The Flow testnet exists to help developers test their software and smart contracts against a live network. It's also used by the Flow core team a means of releasing and testing new protocol and smart contract features before these are integrated into Flow's main network (Mainnet).
 
-## Accessing the Network
+When the Flow protocol is updated or a new version of Cadence is released, those updates will always be made available on the the Flow Emulator _before_ they're integrated into the Flow testnet or Flow Mainnet.
 
-Accounts on the test network are currently restricted. To create an account, you'll need to generate a keypair for your account, then send us the public key so we can generate your account.
+## Risks for Early Adopters
 
-<!-- [block:callout]
-{
-"type": "warning",
-"title": "Key Generation",
-"body": "Ensure you save your private key material in addition to the public key you send to use for account creation!"
+### Breaking Changes
+
+In these early days of Flow, version updates to Cadence, Flow Node software, and the Flow SDKs will often contain important updates as well as breaking changes.
+
+Breaking changes will be a fact of life for early adopters of Flow's development stack, and you may often need to manually re-deploy your application's contracts after updates. But that's OK we're here to help!
+
+### Re-Deploying Your Application
+
+If you discover your application is broken after an update, use the latest Emulator to test changes to your application. Once you are satisfied that you've patched any breaking changes you'll need to get in touch with the Flow team to redeploy your contracts to the testnet.
+
+Before re-deploying we'll ask you to follow the steps listed in the <br/> [**Testnet Testing Guidelines.**](../flow-concepts/testnet-testing-guidelines)
+
+<!-- ### Version Compatibility
+
+A version compatibility table can be found here. This will help you navigate version compatibility between Emulator, SDK, and Network Node (flow-go) versions. -->
+
+### **Testnet Sporking**
+
+"Sporking" (soft forking) is the process of upgrading Flow network node software, and migrating the state from the previous version.
+
+Currently, **historical event data is not migrated between Sporks,** so you'll need to design your application with this in mind**.** We recognize the usefulness of historical event data and plan on adding a means of accessing it in the near future.
+
+### "Real Value" on Testnet
+
+The Flow testnet is explicitly for experimentation and testing and should not be used to exchange "real value" (For example, developing a fiat money on/off-ramp for your testnet application). Accounts using the testnet to exchange real value will be subject to removal.
+
+## Getting Started on Testnet
+
+Before using the Flow testnet you'll need to get in touch with the Flow team so we can help you bootstrap your application onto the network (we'll cover how to do this below). This is a temporary restriction while Flow is under heavy development that will help us keep the network stable and help us best support Flow's early adopters.
+
+### **Accessing Flow Testnet**
+
+To connect to the testnet from your code, use the following address:
+
+- [access001.devnet.nodes.onflow.org:9000](http://access-001.devnet14.nodes.onflow.org:9000/)
+
+Code Example:
+
+```go
+import "github.com/onflow/flow-go-sdk/client"
+
+func main() {
+  flowAccessAddress := "access-001.devnet.nodes.onflow.org:9000"
+  flowClient, _ := client.New(flowAccessAddress, grpc.WithInsecure())
+
+  // ...
 }
-[/block]
-This key pair will be authorized for your account on the test network. Once your account is created, you will use it to sign your transactions. The script below shows an example of how to generate a key pair using the Flow SDK.
-[block:code]
-{
-"codes": [
-{
-"code": "import (\n\t\"crypto/rand\"\n\t\"fmt\"\n\n\t\"github.com/onflow/flow-go-sdk/crypto\"\n)\n\nfunc main() {\n\n\t// This seed must be kept safe if you want to use it to regenerate your private key\n\tseed := make([]byte, crypto.MinSeedLength)\n\n\t\_, err := rand.Read(seed)\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\n\t// Remember to save your private key somewhere safe\n\tprivateKey, err := crypto.GeneratePrivateKey(crypto.ECDSA_P256, seed)\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\t// This will be your public key, and what you need to send to us\n\tfmt.Printf(\"Public Key: %x\\n\", privateKey.PublicKey().Encode())\n\n\t// NOTE: make sure you save your private key as well!\n}",
-"language": "go"
+```
 
-[/block] -->
+### **Creating Accounts & Deploying Contracts**
 
-Once you have generated your keys, send the public key to dev@onflow.org and we will create your account!
+Account creation and contract deployment on the Flow testnet are currently restricted to authorized users. To create an account, you'll need to generate an asymmetric cryptographic keypair. Flow currently supports the ECDSA signature algorithm and both P256 and secp256k1 curves; you can generate keypairs using the Flow cli tool's `keys generate` command. See here for how to install the flow cli: [https://github.com/onflow/flow-cli](https://github.com/onflow/flow-cli)
 
-After your account has been created, you will be able to start using the Flow test network via the Flow SDK. Check out some examples [here](https://github.com/onflow/flow-go-sdk/tree/master/examples).
+Once you've generated a keypair, visit [https://testnet-faucet.onflow.org/](https://testnet-faucet.onflow.org/) and input the _public key_ into the "Create Account" form at the top of the page.
 
-## Restrictions
+Flow isn't responsible for securing and storing the private keys for testnet accounts. Your application will need to have access to the private key counterparts to the public keys you submitted with your account creation request, in order to carry out transactions on Flow using the SDKs.
 
-Some actions on the test network are currently restricted, notably creating accounts and deploying smart contracts. If you need your test network account to have these capabilities, please let a team member know via dev@onflow.org or on [Discord](https://discord.gg/WgAQhtB).
+Before deploying your smart contracts, we'll ask you to follow the steps listed here:
 
-## Joining the Network
+**Testnet Testing Guidelines**
 
-To join the test network as a node operator, send us a message at dev@onflow.org or on [Discord](https://discord.gg/WgAQhtB).
+### **Acquiring FLOW Tokens for Development**
+
+Once your accounts have been created, you can request Tokens via the same page ([https://testnet-faucet.onflow.org/](https://testnet-faucet.onflow.org/))
+
+When your token request has been approved you'll receive an email to the address you submitted confirming the token deposit to the requested account!
+
+Likewise, you'll receive an email if there were problems with your request.
+
+## Developing on Testnet
+
+Developing on the Flow testnet in the early days of Flow will often require cooperation between you or your team and Flow's core developers.
+
+The Flow testnet comes with some useful contracts already deployed. We're claaing these the **core contracts.** There are reference pages with import addresses for the core contracts here: [https://docs.onflow.org/protocol/core-contracts/](https://docs.onflow.org/protocol/core-contracts/)
+
+Once you're accounts are set up, and you're ready to develop, you can look over some code examples from the `flow-go-sdk` here:
+
+- [https://github.com/onflow/flow-go-sdk/tree/master/examples](https://github.com/onflow/flow-go-sdk/tree/master/examples)
