@@ -85,25 +85,22 @@ const sections = [
       "intro/*",
       "updates/*",
       "support/**/*",
+      "concepts/flow-concepts/*",
     ],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
         "[FLOW Token](/token)",
-        // "[Staking & Delegating](/staking)",
-        // "[Node Operation](/node-operation)",
-        // "[Core Contracts](/protocol/core-contracts)",
-        "intro/glossary",
-        "intro/FAQ",
+        "[Staking & Delegating](/staking)",
+        "[Node Operation](/node-operation)",
+        "[Core Contracts](/protocol/core-contracts)",
+        "[Testnet Development](/concepts/flow-concepts/testnet)",
+        // "intro/glossary",
+        // "intro/FAQ",
       ],
-      "Community Updates": [
-        "updates/oct-6-2020", 
-        "updates/sep-16-2020",
-      ],
-      "Support": [
-        "support/flow-port/index",
-      ],
+      "Community Updates": ["updates/oct-6-2020", "updates/sep-16-2020"],
+      Support: ["support/flow-port/index"],
     },
   },
   {
@@ -156,7 +153,12 @@ const sections = [
     patterns: ["concepts/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      Accounts: ["concepts/accounts-and-keys", "concepts/transaction-signing"],
+      Accounts: [
+        "concepts/accounts-and-keys",
+        "concepts/transaction-signing",
+        "concepts/accessing-testnet",
+        "concepts/testnet-testing-guidelines",
+      ],
     },
   },
   {
