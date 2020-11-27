@@ -14,9 +14,9 @@ An account must be given a capability to a resource or contract in another accou
 
 ### Solution
 
-Account B creates a resource that can receive the capability and stores this in their /storage/ area. They then expose a Capability to this in their /public/ area with a function that can receive the desired Capability and store it in the resource for later use.
+Account B creates a resource that can receive the capability and stores this in their `/storage/` area. They then expose a Capability to this in their `/public/` area with a function that can receive the desired Capability and store it in the resource for later use.
 
-Account A fetches the receiver Capability from B's /public/ area, creates the desired Capability, and passes it to the receiver function. The receiver function stores the Capability in the resource that it is on in account B's /storage/ area for later use.
+Account A fetches the receiver Capability from B's `/public/` area, creates the desired Capability, and passes it to the receiver function. The receiver function stores the Capability in the resource that it is on in account B's `/storage/` area for later use.
 
 There are two nuances to this workflow that are required to ensure that it is secure.
 
@@ -44,11 +44,11 @@ A capability provided by one account to a second account must able to be revoked
 
 The first account should create the capability as a link to a capability in /private/, which then links to a resource in /storage/ . That first link is then handed to the second account as the capability for them to use. This can be stored in their private storage or a Capability Receiver.
 
-Account 1: /private/capability → /storage/resource
+**Account 1:** `/private/capability` → `/storage/resource`
 
-Account 2: Capability Receiver(Capability(→Account 1: /private/capability))
+**Account 2:** `Capability Receiver(Capability(→Account 1: /private/capability))`
 
-If the first account wants to revoke access to the resource in storage, they should delete the /private/ link that the second account's capability refers to. Capabilities use paths rather than resource identifiers, so this will break the capability.
+If the first account wants to revoke access to the resource in storage, they should delete the `/private/` link that the second account's capability refers to. Capabilities use paths rather than resource identifiers, so this will break the capability.
 
 The first account should be careful not to create another link at the same location in its private storage once the capability has been revoked, otherwise this will restore the second account's capability.
 
@@ -106,7 +106,7 @@ See "Script-Accessible Public Field", above, for how best to expose this capabil
 
 ### Example Code
 
-```go
+```swift
 pub contract AContract {
     pub struct BReportStruct {
         pub var c: UInt64
