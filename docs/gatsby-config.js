@@ -153,7 +153,7 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["concepts/**/*"],
+    patterns: ["concepts/flow-concepts/testnet/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
