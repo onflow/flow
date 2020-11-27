@@ -14,13 +14,13 @@ If that resource has functions that emit events, any account can create an insta
 
 If those events are meant to indicate actions taken using a single instance of that resource (for example an admin object, switchboard, or registry), or instances created through a particular workflow, then this will make event log search and management harder because events from other instances may be mixed in with the ones that you wish to examine.
 
-To fix this, if there should be only a single instance of the resource it should be created and link()ed to a public path in an admin account's storage during the contracts's initializer.
+To fix this, if there should be only a single instance of the resource it should be created and `link()`ed to a public path in an admin account's storage during the contracts's initializer.
 
 ### Named Value Fields are Preferable
 
 Where contracts, resources, and scripts all have to repeatedly refer to the same constant values, entering these manually is a potential source of error. These are known as [magic values](<https://en.wikipedia.org/wiki/Magic_number_(programming)>).
 
-Rather than typing the values manually in functions, transactions and scripts, store the values once in fields of the contract responsible and then access them via those fields. This is the LINK:Named Value Field pattern.
+Rather than typing the values manually in functions, transactions and scripts, store the values once in fields of the contract responsible and then access them via those fields. This is the [Named Value Field pattern](../design-patterns/#named-value-field)
 
 ### Public Functions And Fields Should Be Avoided
 
@@ -74,7 +74,7 @@ A public function on a contract that creates a resource can be called by any acc
 
 If that resource provides access to admin functions then the function should not be public.
 
-To fix this, a single instance of that resource created using it then link()ed to a private path in an admin account's storage during the contract's initializer. If the code to create the resource is complex enough that it needs its own function, the function that creates the resource should be access(contract).
+To fix this, a single instance of that resource created using it then `link()`ed to a private path in an admin account's storage during the contract's initializer. If the code to create the resource is complex enough that it needs its own function, the function that creates the resource should be access(contract).
 
 ### Public Capability Fields Are A Security Hole
 

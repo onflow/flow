@@ -28,11 +28,11 @@ The second is that the field on the receiver resource that stores the desired Ca
 
 See:
 
-[https://github.com/onflow/flow-core-contracts/blob/bfb115869bd9f815cde1fe64ab6d91ca95c0938e/contracts/LockedTokens.cdc#L527](https://github.com/onflow/flow-core-contracts/blob/bfb115869bd9f815cde1fe64ab6d91ca95c0938e/contracts/LockedTokens.cdc#L527)
+[LockedTokens.cdc](https://github.com/onflow/flow-core-contracts/blob/bfb115869bd9f815cde1fe64ab6d91ca95c0938e/contracts/LockedTokens.cdc#L527)
 
-[https://github.com/onflow/flow-core-contracts/blob/79941fe65b634800065a440ae5243744b2ca8a2f/transactions/lockedTokens/admin/custody_setup_account_creator.cdc](https://github.com/onflow/flow-core-contracts/blob/79941fe65b634800065a440ae5243744b2ca8a2f/transactions/lockedTokens/admin/custody_setup_account_creator.cdc)
+[custody_setup_account_creator.cdc](https://github.com/onflow/flow-core-contracts/blob/79941fe65b634800065a440ae5243744b2ca8a2f/transactions/lockedTokens/admin/custody_setup_account_creator.cdc)
 
-[https://github.com/onflow/flow-core-contracts/blob/79941fe65b634800065a440ae5243744b2ca8a2f/transactions/lockedTokens/admin/admin_deposit_account_creator.cdc](https://github.com/onflow/flow-core-contracts/blob/79941fe65b634800065a440ae5243744b2ca8a2f/transactions/lockedTokens/admin/admin_deposit_account_creator.cdc)
+[admin_deposit_account_creator.cdc](https://github.com/onflow/flow-core-contracts/blob/79941fe65b634800065a440ae5243744b2ca8a2f/transactions/lockedTokens/admin/admin_deposit_account_creator.cdc)
 
 ## Capability Revocation
 
@@ -64,11 +64,11 @@ Create any one-off resources in the contract's `init()` function and deliver the
 
 See how this is done in the LockedTokens contract init function:
 
-[https://github.com/onflow/flow-core-contracts/blob/master/contracts/LockedTokens.cdc#L583](https://github.com/onflow/flow-core-contracts/blob/master/contracts/LockedTokens.cdc#L583)
+[LockedTokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/LockedTokens.cdc#L583)
 
 and in the transaction that is used to deploy it:
 
-[https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/admin_deploy_contract.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/admin_deploy_contract.cdc)
+[admin_deploy_contract.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/admin_deploy_contract.cdc)
 
 ## Named Value Field
 
@@ -80,11 +80,7 @@ Your contracts, resources, and scripts all have to refer to the same value. A nu
 
 Add an `access(all)` field, e.g. a `Path` , to the contract responsible for the value, and set it in the contract's initializer. Then refer to that value via this public field rather than specifying it manually.
 
-### Example Code
-
-See:
-
-[https://github.com/onflow/flow-core-contracts/blob/master/contracts/LockedTokens.cdc#L583](https://github.com/onflow/flow-core-contracts/blob/master/contracts/LockedTokens.cdc#L583)
+[Example Code](https://github.com/onflow/flow-core-contracts/blob/master/contracts/LockedTokens.cdc#L583)
 
 ## Script-Accessible Public Field
 
