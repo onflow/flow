@@ -91,8 +91,8 @@ const sections = [
     sidebar: {
       null: [
         "[FLOW Token](/token)",
-        // "[Staking & Delegating](/staking)",
-        // "[Node Operation](/node-operation)",
+        "[Staking & Delegating](/staking)",
+        "[Node Operation](/node-operation)",
         // "[Core Contracts](/protocol/core-contracts)",
         "intro/glossary",
         "intro/FAQ",
@@ -194,11 +194,11 @@ const sections = [
     patterns: ["staking/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      Overview: ["staking/index", "staking/rewards", "staking/stake-slashing"],
+      null: ["staking/faq"],
+      Overview: ["staking/index", "staking/concepts", "staking/rewards"],
       "Developer Guides": [
-        "staking/technical-overview",
-        "staking/locked-staking-guide",
         "staking/locked-delegation-guide",
+        "staking/locked-staking-guide",
         "staking/locked-third-party-operator",
         "staking/events",
       ],

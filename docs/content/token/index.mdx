@@ -28,13 +28,13 @@ TODO:
 
 ## Introduction
 
-This section contains information about the FLOW token for individual backers, 
+This section contains information about the FLOW token for individual backers,
 wallet providers, custodians and node operators.
 
 ### FLOW as a Native Token
 
-FLOW is the default token for the Flow protocol, meaning it is used for all protocol-level fee payments, 
-rewards and staking transactions. FLOW implements the standard [Flow Fungible Token interface](https://github.com/onflow/flow-ft), 
+FLOW is the default token for the Flow protocol, meaning it is used for all protocol-level fee payments,
+rewards and staking transactions. FLOW implements the standard [Flow Fungible Token interface](https://github.com/onflow/flow-ft),
 which all other on-chain fungible tokens also conform to. This interface is defined in Cadence,
 Flow's native smart-contract programming language, which makes it easy to write applications that
 interact with FLOW.
@@ -69,12 +69,12 @@ and then sign with the wallet of your choice only once you decide to make a purc
 
 ### Staking FLOW
 
-[You can use FLOW to operate a staked node.](/token/staking) Node operators receive newly-minted FLOW 
+[You can use FLOW to operate a staked node.](/token/staking) Node operators receive newly-minted FLOW
 as a reward for helping to secure the network.
 
 ### Delegating FLOW
 
-[You can use FLOW for stake delegation.](/token/staking#delegation) Delegators receive newly-minted FLOW 
+[You can use FLOW for stake delegation.](/token/staking#delegation) Delegators receive newly-minted FLOW
 as a reward for helping to secure the network.
 
 ### Holding FLOW
@@ -111,27 +111,6 @@ while still providing that user with all the underlying security guarantees the 
 
 Transferring FLOW, creating accounts, and updating keys are all actions made easy on [Flow Port](https://port.onflow.org/)
 
-## How to Build with FLOW
-
-### FLOW for Development
-
-The [Flow Faucet](https://testnet-faucet.onflow.org/) is a tool for Flow developers to make requests 
-to create accounts and fund existing accounts with FLOW tokens on the Flow Development Network (Testnet).
-
-### Getting Started on Testnet
-
-Use the [Flow Faucet](https://testnet-faucet.onflow.org/) to create an account and receive FLOW for testing.
-You can request additional FLOW for testing at any time through the faucet.
-
-### Shipping on Mainnet
-
-On Mainnet, you'll need to go to your [Flow Port](https://port.onflow.org/)
-and select `Create Account` under the transactions option.
-You will only be able to use this option if you currently hold an account on the network with the ability to pay for the account creation fees.
-If you do not, and would like to create an accout, please contact us at dev@onflow.org.
-
-Deploying a contract on mainnet will require that you submit your contract for review by a member of the core Cadence team to ensure safety for users. Please submit contract address to dev@onflow.org.
-
 ### Submitting Transactions and Updating Users
 
 Transactions are submitted using a Flow SDK via the Access API.
@@ -150,3 +129,7 @@ Once the transaction is sealed, an event is emitted and you will be able to read
 
 The Flow SDKs also allow polling for events using the Flow Access API,
 [for example using the Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-events).
+
+## How to Build with FLOW
+
+Read more about how to start building on [Flow Testnet]() (Coming soon.), or [Flow Mainnet]() (Coming soon).
