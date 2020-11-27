@@ -80,30 +80,19 @@ const sourceSlugTransformers = {
 const sections = [
   {
     sourceInstanceName: "docs",
-    patterns: [
-      "*",
-      "intro/*",
-      "updates/*",
-      "support/**/*",
-    ],
+    patterns: ["*", "intro/*", "updates/*", "support/**/*"],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
         "[FLOW Token](/token)",
-        // "[Staking & Delegating](/staking)",
-        // "[Node Operation](/node-operation)",
-        // "[Core Contracts](/protocol/core-contracts)",
-        "intro/glossary",
-        "intro/FAQ",
+        "[Staking & Delegating](/staking)",
+        "[Node Operation](/node-operation)",
+        "[Core Contracts](/protocol/core-contracts)",
+        "[Dapp Deployment Guide](/guides/dapp-deployment)",
       ],
-      "Community Updates": [
-        "updates/oct-6-2020", 
-        "updates/sep-16-2020",
-      ],
-      "Support": [
-        "support/flow-port/index",
-      ],
+      "Community Updates": ["updates/oct-6-2020", "updates/sep-16-2020"],
+      "Support": ["support/flow-port/index"],
     },
   },
   {
@@ -111,7 +100,8 @@ const sections = [
     patterns: ["tutorial/cadence/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
+      null: ["[Home](/)"],
+      "Introduction": [
         "tutorial/cadence/00-introduction",
         "[Cadence Language Reference](/cadence/language)",
       ],
@@ -132,7 +122,8 @@ const sections = [
     patterns: ["sdks/golang/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
+      null: ["[Home](/)"],
+      "Go SDK": [
         "sdks/golang/index", 
         "sdks/golang/changelog",
       ],
@@ -162,6 +153,7 @@ const sections = [
     patterns: ["concepts/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
+      null: ["[Home](/)"],
       "Accounts": [
         "concepts/accounts-and-keys",
         "concepts/transaction-signing",
@@ -173,9 +165,7 @@ const sections = [
     patterns: ["protocol/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
-        "protocol/access-api",
-      ],
+      null: ["[Home](/)"],
       "Core Contracts": [
         "protocol/core-contracts/fungible-token",
         "protocol/core-contracts/flow-token",
@@ -204,6 +194,7 @@ const sections = [
     patterns: ["token/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
+      null: ["[Home](/)"],
       "Overview": [
         "token/index",
         "token/earn",
@@ -221,11 +212,8 @@ const sections = [
     patterns: ["staking/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      "Overview": [
-        "staking/index",
-        "staking/rewards",
-        "staking/stake-slashing",
-      ],
+      null: ["[Home](/)"],
+      "Overview": ["staking/index", "staking/rewards", "staking/stake-slashing"],
       "Developer Guides": [
         "staking/technical-overview",
         "staking/locked-staking-guide",
@@ -240,6 +228,7 @@ const sections = [
     patterns: ["node-operation/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
+      null: ["[Home](/)"],
       "Overview": [
         "node-operation/index",
         "node-operation/node-setup",
@@ -258,7 +247,8 @@ const sections = [
     patterns: ["emulator/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["emulator/index", "emulator/changelog"],
+      null: ["[Home](/)"],
+      "Developer Guides": ["emulator/index"],
     },
   },
   {

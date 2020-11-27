@@ -1,5 +1,6 @@
 ---
 title: Flow Emulator
+sidebar_title: Using the Flow Emulator
 description: A development tool that looks, acts and talks like Flow
 ---
 
@@ -54,7 +55,7 @@ Docker builds for the emulator are automatically built and pushed to
 ### Configuration
 
 In addition to using command-line flags, the emulator can also be configured
- with environment variables, which can be passed into the Docker image.
+with environment variables, which can be passed into the Docker image.
 
 Here's a sample configuration:
 
@@ -98,17 +99,17 @@ flow keys generate
 
 ## All Configuration Options
 
-| Environment Variable    | CLI Flag              | Default      | Description |
-|-------------------------|-----------------------|--------------|-------------|
-| FLOW_PORT               | `--port,-p`           | `3569`       | port to run RPC server |
-| FLOW_HTTPPORT           | `--http-port`         | `8080`       | port to run HTTP server |
-| FLOW_VERBOSE            | `--verbose,-v`        | `false`      | enable verbose logging |
-| FLOW_BLOCKTIME          | `--block-time,-b`     | `5s`         | time between sealed blocks |
-| FLOW_SERVICEPRIVATEKEY  | `--service-priv-key`  | optional     | service account private key |
-| FLOW_SERVICEPUBLICKEY   | `--service-pub-key`   | optional     | service account public key |
-| FLOW_SERVICEKEYSIGALGO  | `--service-sig-algo`  | `ECDSA_P256` | service account key signature algorithm |
-| FLOW_SERVICEKEYHASHALGO | `--service-hash-algo` | `SHA3_256`   | service account key hash algorithm |
-| FLOW_INIT               | `--init`              | `false`      | whether to initialize a new account profile |
+| Environment Variable    | CLI Flag              | Default      | Description                                               |
+| ----------------------- | --------------------- | ------------ | --------------------------------------------------------- |
+| FLOW_PORT               | `--port,-p`           | `3569`       | port to run RPC server                                    |
+| FLOW_HTTPPORT           | `--http-port`         | `8080`       | port to run HTTP server                                   |
+| FLOW_VERBOSE            | `--verbose,-v`        | `false`      | enable verbose logging                                    |
+| FLOW_BLOCKTIME          | `--block-time,-b`     | `5s`         | time between sealed blocks                                |
+| FLOW_SERVICEPRIVATEKEY  | `--service-priv-key`  | optional     | service account private key                               |
+| FLOW_SERVICEPUBLICKEY   | `--service-pub-key`   | optional     | service account public key                                |
+| FLOW_SERVICEKEYSIGALGO  | `--service-sig-algo`  | `ECDSA_P256` | service account key signature algorithm                   |
+| FLOW_SERVICEKEYHASHALGO | `--service-hash-algo` | `SHA3_256`   | service account key hash algorithm                        |
+| FLOW_INIT               | `--init`              | `false`      | whether to initialize a new account profile               |
 | FLOW_GRPCDEBUG          | `--grpc-debug`        | `false`      | enable gRPC server reflection for debugging with grpc_cli |
-| FLOW_PERSIST            | `--persist`           | `false`      | enable persistent storage |
-| FLOW_DBPATH             | `--dbpath`            | `./flowdb`   | path to database directory |
+| FLOW_PERSIST            | `--persist`           | `false`      | enable persistent storage                                 |
+| FLOW_DBPATH             | `--dbpath`            | `./flowdb`   | path to database directory                                |
