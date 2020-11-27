@@ -88,7 +88,7 @@ does not meet the minimum stake, they will not be included in the next epoch and
 Delegators are not subject to minimum stake requirements.
 
 - Collector Nodes: 250,000 FLOW
-- Consensus Nodes: 500,000 FLOW
+- Consensus Nodes: 250,000 FLOW
 - Execution Nodes: 1,250,000 FLOW
 - Verification Nodes: 135,000 FLOW
 
@@ -230,10 +230,11 @@ transaction to move the tokens from the unstaked pool to the committed pool.
 they have been awarded. They submit the **stake_rewarded_tokens**
 transaction to move the tokens from the rewards pool to the committed pool.
 
-### Unstake Tokens
+### Cancel Committed Stake / Unstake Tokens
 
-At anytime, a staker can also submit a request to unstake tokens with the **request_unstaking** transaction.
-If there are tokens in the committed pool, they are moved to the unstaked pool and are available to withdraw.
+At any time, a staker can submit a request to unstake tokens with the **request_unstaking** transaction.
+If there are tokens that have been commited but are not staked yet,
+they are moved to the unstaked pool and are available to withdraw.
 
 If the requested tokens are in the staked pool, 
 it marks the specified amount of tokens to be unstaked at the end of the epoch.
