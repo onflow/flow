@@ -89,12 +89,10 @@ const sections = [
         "[Staking & Delegating](/staking)",
         "[Node Operation](/node-operation)",
         "[Core Contracts](/protocol/core-contracts)",
-        "[Testnet Development](/concepts/flow-concepts/testnet)",
-        // "intro/glossary",
-        // "intro/FAQ",
+        "[Dapp Deployment Guide](/guides/dapp-deployment)",
       ],
       "Community Updates": ["updates/oct-6-2020", "updates/sep-16-2020"],
-      Support: ["support/flow-port/index"],
+      "Support": ["support/flow-port/index"],
     },
   },
   {
@@ -103,11 +101,11 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Introduction: [
+      "Introduction": [
         "tutorial/cadence/00-introduction",
         "[Cadence Language Reference](/cadence/language)",
       ],
-      Tutorial: [
+      "Tutorial": [
         "tutorial/cadence/01-first-steps",
         "tutorial/cadence/02-hello-world",
         "tutorial/cadence/03-fungible-tokens",
@@ -125,7 +123,11 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      "Developer Guides": [
+      "Go SDK": [
+        "sdks/golang/index", 
+        "sdks/golang/changelog",
+      ],
+      "How To": [
         "sdks/golang/create-account",
         "sdks/golang/build-transaction",
         "sdks/golang/sign-transaction",
@@ -140,18 +142,21 @@ const sections = [
     sourceInstanceName: "docs",
     patterns: ["sdks/javascript/**/*"],
     sidebar: {
-      null: ["sdks/javascript/index", "sdks/javascript/create-account"],
+      null: [
+        "sdks/javascript/index",
+        "sdks/javascript/create-account",
+      ],
     },
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["concepts/flow-concepts/testnet/*"],
+    patterns: ["concepts/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      "Developer Guides": [
-        "concepts/flow-concepts/testnet/index",
-        "concepts/flow-concepts/testnet/testing-guidelines",
+      "Accounts": [
+        "concepts/accounts-and-keys",
+        "concepts/transaction-signing",
       ],
     },
   },
@@ -172,18 +177,34 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
+    patterns: ["guides/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      "Dapp Deployment Guide": [
+        "guides/dapp-deployment/index",
+        "guides/dapp-deployment/contract-testing",
+        "guides/dapp-deployment/testnet-deployment",
+        "guides/dapp-deployment/testnet-testing",
+        "guides/dapp-deployment/mainnet-deployment",
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
     patterns: ["token/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: [
+      "Overview": [
         "token/index",
         "token/earn",
         "token/concepts",
         "token/delivery",
         "token/faq",
       ],
-      "Developer Guides": ["token/locked-account-setup"],
+      "Developer Guides": [
+        "token/locked-account-setup"
+      ],
     },
   },
   {
@@ -192,7 +213,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["staking/index", "staking/rewards", "staking/stake-slashing"],
+      "Overview": ["staking/index", "staking/rewards", "staking/stake-slashing"],
       "Developer Guides": [
         "staking/technical-overview",
         "staking/locked-staking-guide",
@@ -208,7 +229,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: [
+      "Overview": [
         "node-operation/index",
         "node-operation/node-setup",
         "node-operation/node-roles",
