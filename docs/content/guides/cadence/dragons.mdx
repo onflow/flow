@@ -4,7 +4,7 @@ title: Cadence Dragons
 
 This is an opinionated list of issues that can be improved if they are found in Cadence code intended for production.
 
-## Security And Robustness
+## Security and Robustness
 
 ### Events From Resources Might Not Be Unique
 
@@ -16,19 +16,19 @@ If those events are meant to indicate actions taken using a single instance of t
 
 To fix this, if there should be only a single instance of the resource it should be created and `link()`ed to a public path in an admin account's storage during the contracts's initializer.
 
-### Named Value Fields are Preferable
+### Named Value Fields Are Preferable
 
 Where contracts, resources, and scripts all have to repeatedly refer to the same constant values, entering these manually is a potential source of error. These are known as [magic values](<https://en.wikipedia.org/wiki/Magic_number_(programming)>).
 
 Rather than typing the values manually in functions, transactions and scripts, store the values once in fields of the contract responsible and then access them via those fields. This is the [Named Value Field pattern](../design-patterns/#named-value-field)
 
-### Public Functions And Fields Should Be Avoided
+### Public Functions and Fields Should Be Avoided
 
 Be sure to keep track of access modifiers when structuring your code, and make public only what should be public.
 
-### Array or Dictionary Fields should be private
+### Array or Dictionary Fields Should Be Private
 
-### Problem
+#### Problem
 
 This is a specific case of "Public Functions And Fields Should Be Avoided", above.
 
@@ -55,7 +55,7 @@ transaction {
 }
 ```
 
-### Solution
+#### Solution
 
 Make sure that any array or dictionary fields in contracts, structs, or resources are `access(contract)` or `access(self)` unless they need to be intentionally make public.
 
@@ -74,7 +74,7 @@ A public function on a contract that creates a resource can be called by any acc
 
 If that resource provides access to admin functions then the function should not be public.
 
-To fix this, a single instance of that resource created using it then `link()`ed to a private path in an admin account's storage during the contract's initializer. If the code to create the resource is complex enough that it needs its own function, the function that creates the resource should be access(contract).
+To fix this, a single instance of that resource created using it then `link()`ed to a private path in an admin account's storage during the contract's initializer. If the code to create the resource is complex enough that it needs its own function, the function that creates the resource should use `access(contract)` as its access modifier.
 
 ### Public Capability Fields Are A Security Hole
 
@@ -102,7 +102,7 @@ Unless of course you are dealing with entities that really are best named that w
 
 ### Omitting "Any" Types In Constraints Is Preferable
 
-Prefer `&{Receiver}` to `&AnyResource{Receiver}` .
+Prefer `&{Receiver}` to `&AnyResource{Receiver}`.
 
 It's clearer and the `Any...` is implicit.
 
@@ -114,4 +114,4 @@ A good example of when the code should specify the type being restricted is chec
 
 e.g. `accounts` rather than `account` for an array of accounts.
 
-This signals that the field or variable is not scalar. It also makes using the singular when iterating the field clearer.
+This signals that the field or variable is not scalar. It also makes it easier to the singular form for a variable name during iteration.
