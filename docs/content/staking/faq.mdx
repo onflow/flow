@@ -1,0 +1,20 @@
+---
+title: Staking FAQ
+sidebar_title: Staking FAQs
+description: Frequently Asked Questions
+---
+
+### Can a validator change its fees? Would the Account Key contract need to stay in Beta permanently to enable the validator to change the fee percentage? Does this change take effect immediately or at the next epoch?
+
+For the beta period we’re enforcing a minimum fee of 10%.
+In the future it will be a parameter you can update.
+The contract includes a function you can call to update if you would like but this wouldn’t require the contract to be in beta.
+Rewards are only paid out every epoch so the fee at the time of the epoch payout would be the one applied.
+
+### Can a token holder stake to multiple nodes? If yes, how is the stake split between them?
+
+A token holder will be able to stake multiple nodes in the future.
+However, we currently have a restriction in place making it so there is a 1-to-1 relationship between an account address and an active stake.
+We have the same restriction in place for an account address and an active delegation.
+This means that 1 account address can have at maximum 1 active stake and 1 active delegation at any given time.
+If a token holder wants to have additional stake and/or delegate transactions, then they must create additional account addresses to do so.
