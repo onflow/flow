@@ -80,12 +80,7 @@ const sourceSlugTransformers = {
 const sections = [
   {
     sourceInstanceName: "docs",
-    patterns: [
-      "*",
-      "intro/*",
-      "updates/*",
-      "support/**/*",
-    ],
+    patterns: ["*", "intro/*", "updates/*", "support/**/*"],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
@@ -97,23 +92,22 @@ const sections = [
         "intro/glossary",
         "intro/FAQ",
       ],
-      "Community Updates": [
-        "updates/oct-6-2020", 
-        "updates/sep-16-2020",
-      ],
-      "Support": [
-        "support/flow-port/index",
-      ],
+      "Community Updates": ["updates/oct-6-2020", "updates/sep-16-2020"],
+      Support: ["support/flow-port/index"],
     },
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["tutorial/cadence/*"],
+    patterns: ["tutorial/cadence/*", "guides/cadence/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
         "tutorial/cadence/00-introduction",
         "[Cadence Language Reference](/cadence/language)",
+      ],
+      "Developer Guides": [
+        "guides/cadence/design-patterns",
+        "guides/cadence/dragons",
       ],
       Tutorial: [
         "tutorial/cadence/01-first-steps",
@@ -233,8 +227,10 @@ const sections = [
   {
     sourceInstanceName: "cadence",
     patterns: ["docs/language/**/*"],
+    sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
+      null: ["[Back](../../guides/cadence/design-patterns/)"],
+      "Language Reference": [
         "docs/language/index",
         "docs/language/syntax",
         "docs/language/constants-and-variables",
