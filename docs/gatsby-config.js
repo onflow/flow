@@ -191,6 +191,8 @@ const sections = [
       null: ["staking/faq"],
       Overview: ["staking/index", "staking/concepts", "staking/rewards"],
       "Developer Guides": [
+        "staking/technical-overiew",
+        "staking/stake-slashing",
         "staking/locked-delegation-guide",
         "staking/locked-staking-guide",
         "staking/locked-third-party-operator",
