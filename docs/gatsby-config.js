@@ -189,10 +189,14 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["staking/faq"],
-      Overview: ["staking/index", "staking/concepts", "staking/rewards"],
+      Overview: [
+        "staking/index",
+        "staking/concepts",
+        "staking/rewards",
+        "staking/stake-slashing",
+      ],
       "Developer Guides": [
         "staking/technical-overiew",
-        "staking/stake-slashing",
         "staking/locked-delegation-guide",
         "staking/locked-staking-guide",
         "staking/locked-third-party-operator",
