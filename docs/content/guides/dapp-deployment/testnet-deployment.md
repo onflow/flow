@@ -162,4 +162,4 @@ Once you accounts are set up and you're ready to develop, you can look over some
 
 If you discover your application is broken after an update, use the latest emulator to test changes to your application. Once you are satisfied that you've patched any breaking changes, you'll need to get in touch with the Flow core team to redeploy your contracts to Testnet.
 
-We kindly ask you to follow the steps listed in the [Testnet Testing Guidelines.](../testnet-testing). 
+We kindly ask you to follow the steps listed in the [Testnet Testing Guidelines.](../testnet-testing) when redeploying your contracts.
