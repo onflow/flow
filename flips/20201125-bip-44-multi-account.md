@@ -100,7 +100,7 @@ respecting the [gap limit described in BIP 44](https://github.com/bitcoin/bips/b
 5. If no account is found<sup>1</sup>, skip this index and go to step 1.
 6. If an account is found, add it to the user's wallet and go to step 1.
 
-<sup>1</sup>: Flow supports account deletion, meaning that an address found in the registry
+<sup>1</sup>Flow supports account deletion, meaning that an address found in the registry
 may refer to a nonexistent account. In this case the account should be skipped
 but discovery should continue.
 
