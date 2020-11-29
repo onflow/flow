@@ -182,9 +182,14 @@ a public key registry that maps public keys to account addresses.
 
 ## Prior Art
 
-This document outlines a specific application of the standard described by BIP 44.
+This document outlines a specific application of the standard described by 
+[BIP 44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki).
 This standard has been widely adopted by Bitcoin, Ethereum and many other 
 cryptocurrency projects and communities.
+
+[SLIP 48](https://github.com/satoshilabs/slips/blob/master/slip-0048.md) describes an
+alternative to BIP 44 for Graphene-based networks which, similar to Flow, 
+do not derive account addresses directly from cryptographic public keys.
 
 ## Questions and Discussion Topics
 
