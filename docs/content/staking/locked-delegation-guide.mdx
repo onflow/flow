@@ -38,6 +38,10 @@ Once an account has registered as a delegator with one node, they cannot registe
 For more information, see [Delegate to Multiple Nodes from the Same Account](#delegate-to-multiple-nodes-from-the-same-account) below.
 This feature will be added in the future.
 
+An account can use this transaction to register a different delegator that replaces the old delegator, but only if they have withdrawn
+ALL tokens for their old delegator from their record in the staking contract. If there are any tokens remaining,
+the re-registration will fail. This is because the registration overwrites the old one, which would revoke access to the tokens.
+
 # Delegation Actions
 
 ## Delegate New Tokens
@@ -146,3 +150,8 @@ If a token holder wants to create a second delegation relationship, they must cr
 and transfer their locked tokens to the new account by requesting authorization from the token admin.
 
 We plan on adding functionality in the future to allow accounts to delegate to multiple nodes.
+
+## Stake from the Same Account
+
+An account who registers a delegator with locked tokens can also register a delegator in the same account. 
+See the Locked Staking Guide for how to register a node.
