@@ -24,17 +24,19 @@ If a ping request returns an error or times out, it can be assumed that the Acce
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message PingRequest {}
-  ```
+```protobuf
+message PingRequest {}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message PingResponse {}
-  ```
+```protobuf
+message PingResponse {}
+```
+
 </details>
 
 ---
@@ -54,21 +56,23 @@ rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderRespo
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message GetLatestBlockHeaderRequest {
-    bool is_sealed
-  }
-  ```
+```protobuf
+message GetLatestBlockHeaderRequest {
+  bool is_sealed
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message BlockHeaderResponse {
-    flow.BlockHeader block
-  }
-  ```
+```protobuf
+message BlockHeaderResponse {
+  flow.BlockHeader block
+}
+```
+
 </details>
 
 ### GetBlockHeaderByID
@@ -82,21 +86,23 @@ rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message GetBlockHeaderByIDRequest {
-    bytes id
-  }
-  ```
+```protobuf
+message GetBlockHeaderByIDRequest {
+  bytes id
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message BlockHeaderResponse {
-    flow.BlockHeader block
-  }
-  ```
+```protobuf
+message BlockHeaderResponse {
+  flow.BlockHeader block
+}
+```
+
 </details>
 
 ### GetBlockHeaderByHeight
@@ -110,21 +116,23 @@ rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderR
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message GetBlockHeaderByHeightRequest {
-    uint64 height
-  }
-  ```
+```protobuf
+message GetBlockHeaderByHeightRequest {
+  uint64 height
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message BlockHeaderResponse {
-    flow.BlockHeader block
-  }
-  ```
+```protobuf
+message BlockHeaderResponse {
+  flow.BlockHeader block
+}
+```
+
 </details>
 
 ---
@@ -144,21 +152,23 @@ rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse)
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message GetLatestBlockRequest {
-    bool is_sealed
-  }
-  ```
+```protobuf
+message GetLatestBlockRequest {
+  bool is_sealed
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message BlockResponse {
-    flow.Block block
-  }
-  ```
+```protobuf
+message BlockResponse {
+  flow.Block block
+}
+```
+
 </details>
 
 ### GetBlockByID
@@ -172,21 +182,23 @@ rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse)
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message GetBlockByIDRequest {
-    bytes id
-  }
-  ```
+```protobuf
+message GetBlockByIDRequest {
+  bytes id
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message BlockResponse {
-    flow.Block block
-  }
-  ```
+```protobuf
+message BlockResponse {
+  flow.Block block
+}
+```
+
 </details>
 
 ### GetBlockByHeight
@@ -200,21 +212,23 @@ rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse)
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message GetBlockByHeightRequest {
-    uint64 height
-  }
-  ```
+```protobuf
+message GetBlockByHeightRequest {
+  uint64 height
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message BlockResponse {
-    flow.Block block
-  }
-  ```
+```protobuf
+message BlockResponse {
+  flow.Block block
+}
+```
+
 </details>
 
 ---
@@ -234,21 +248,23 @@ rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse)
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message GetCollectionByIDRequest {
-    bytes id
-  }
-  ```
+```protobuf
+message GetCollectionByIDRequest {
+  bytes id
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message CollectionResponse {
-    flow.Collection collection
-  }
-  ```
+```protobuf
+message CollectionResponse {
+  flow.Collection collection
+}
+```
+
 </details>
 
 ---
@@ -265,30 +281,32 @@ The following methods can be used to submit [transactions](#transaction) and fet
 rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse)
 ```
 
-`SendTransaction` determines the correct cluster of collector nodes that is responsible for collecting the transaction based on the hash of the transaction and forwards the transaction to that cluster.
+`SendTransaction` determines the correct cluster of collection nodes that is responsible for collecting the transaction based on the hash of the transaction and forwards the transaction to that cluster.
 
 <details>
   <summary>Request</summary>
 
-  `SendTransactionRequest` message contains the transaction that is being request to be executed.
+`SendTransactionRequest` message contains the transaction that is being request to be executed.
 
-  ```protobuf
-  message SendTransactionRequest {
-    flow.Transaction transaction
-  }
-  ```
+```protobuf
+message SendTransactionRequest {
+  flow.Transaction transaction
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  `SendTransactionResponse` message contains the ID of the submitted transaction.
+`SendTransactionResponse` message contains the ID of the submitted transaction.
 
-  ```protobuf
-  message SendTransactionResponse {
-    bytes id
-  }
-  ```
+```protobuf
+message SendTransactionResponse {
+  bytes id
+}
+```
+
 </details>
 
 ### GetTransaction
@@ -306,25 +324,27 @@ rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse)
 <details>
   <summary>Request</summary>
 
-  `GetTransactionRequest` contains the ID of the transaction that is being queried.
+`GetTransactionRequest` contains the ID of the transaction that is being queried.
 
-  ```protobuf
-  message GetTransactionRequest {
-    bytes id
-  }
-  ```
+```protobuf
+message GetTransactionRequest {
+  bytes id
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  `TransactionResponse` contains the basic information about a transaction, but does not include post-execution results.
+`TransactionResponse` contains the basic information about a transaction, but does not include post-execution results.
 
-  ```protobuf
-  message TransactionResponse {
-    flow.Transaction transaction
-  }
-  ```
+```protobuf
+message TransactionResponse {
+  flow.Transaction transaction
+}
+```
+
 </details>
 
 ### GetTransactionResult
@@ -338,24 +358,26 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message GetTransactionRequest {
-    bytes id
-  }
-  ```
+```protobuf
+message GetTransactionRequest {
+  bytes id
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message TransactionResultResponse {
-    flow.TransactionStatus status
-    uint32 status_code
-    string error_message
-    repeated flow.Event events
-  }
-  ```
+```protobuf
+message TransactionResultResponse {
+  flow.TransactionStatus status
+  uint32 status_code
+  string error_message
+  repeated flow.Event events
+}
+```
+
 </details>
 
 ---
@@ -375,21 +397,23 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message GetAccountRequest {
-    bytes address
-  }
-  ```
+```protobuf
+message GetAccountRequest {
+  bytes address
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message GetAccountResponse {
-    Account account
-  }
-  ```
+```protobuf
+message GetAccountResponse {
+  Account account
+}
+```
+
 </details>
 
 ### GetAccountAtLatestBlock
@@ -405,21 +429,23 @@ rpc GetAccountAtLatestBlock(GetAccountAtLatestBlockRequest) returns (AccountResp
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message GetAccountAtLatestBlockRequest {
-    bytes address
-  }
-  ```
+```protobuf
+message GetAccountAtLatestBlockRequest {
+  bytes address
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message AccountResponse {
-    Account account
-  }
-  ```
+```protobuf
+message AccountResponse {
+  Account account
+}
+```
+
 </details>
 
 ### GetAccountAtBlockHeight
@@ -435,24 +461,25 @@ rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (AccountResp
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message GetAccountAtBlockHeightRequest {
-    bytes address
-    uint64 block_height
-  }
-  ```
+```protobuf
+message GetAccountAtBlockHeightRequest {
+  bytes address
+  uint64 block_height
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message AccountResponse {
-    Account account
-  }
-  ```
-</details>
----
+```protobuf
+message AccountResponse {
+  Account account
+}
+```
+
+## </details>
 
 ## Scripts
 
@@ -476,21 +503,23 @@ value = ExecuteScriptAtBlockID(header.ID, script)
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message ExecuteScriptAtLatestBlockRequest {
-    bytes script
-  }
-  ```
+```protobuf
+message ExecuteScriptAtLatestBlockRequest {
+  bytes script
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message ExecuteScriptResponse {
-    bytes value
-  }
-  ```
+```protobuf
+message ExecuteScriptResponse {
+  bytes value
+}
+```
+
 </details>
 
 ### ExecuteScriptAtBlockID
@@ -506,22 +535,24 @@ rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScrip
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message ExecuteScriptAtBlockIDRequest {
-    bytes block_id
-    bytes script
-  }
-  ```
+```protobuf
+message ExecuteScriptAtBlockIDRequest {
+  bytes block_id
+  bytes script
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message ExecuteScriptResponse {
-    bytes value
-  }
-  ```
+```protobuf
+message ExecuteScriptResponse {
+  bytes value
+}
+```
+
 </details>
 
 ### ExecuteScriptAtBlockHeight
@@ -537,22 +568,24 @@ rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (Exec
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message ExecuteScriptAtBlockHeightRequest {
-    uint64 block_height
-    bytes script
-  }
-  ```
+```protobuf
+message ExecuteScriptAtBlockHeightRequest {
+  uint64 block_height
+  bytes script
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message ExecuteScriptResponse {
-    bytes value
-  }
-  ```
+```protobuf
+message ExecuteScriptResponse {
+  bytes value
+}
+```
+
 </details>
 
 ---
@@ -580,29 +613,31 @@ Event types are name-spaced with the address of the account and contract in whic
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message GetEventsForHeightRangeRequest {
-    string type
-    uint64 start_height = 2;
-    uint64 end_height = 3;
-  }
-  ```
+```protobuf
+message GetEventsForHeightRangeRequest {
+  string type
+  uint64 start_height = 2;
+  uint64 end_height = 3;
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message EventsResponse {
-    message Result {
-      bytes block_id = 1;
-      uint64 block_height = 2;
-      repeated entities.Event events = 3;
-      google.protobuf.Timestamp block_timestamp = 4;
-    }
-    repeated Result results = 1;
+```protobuf
+message EventsResponse {
+  message Result {
+    bytes block_id = 1;
+    uint64 block_height = 2;
+    repeated entities.Event events = 3;
+    google.protobuf.Timestamp block_timestamp = 4;
   }
-  ```
+  repeated Result results = 1;
+}
+```
+
 </details>
 
 ### GetEventsForBlockIDs
@@ -620,28 +655,30 @@ The event results are grouped by block, with each group specifying a block ID, h
 <details>
   <summary>Request</summary>
 
-  ```protobuf
-  message GetEventsForBlockIDsRequest {
-    string type = 1;
-    repeated bytes block_ids = 2;
-  }
-  ```
+```protobuf
+message GetEventsForBlockIDsRequest {
+  string type = 1;
+  repeated bytes block_ids = 2;
+}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message EventsResponse {
-    message Result {
-      bytes block_id = 1;
-      uint64 block_height = 2;
-      repeated entities.Event events = 3;
-      google.protobuf.Timestamp block_timestamp = 4;
-    }
-    repeated Result results = 1;
+```protobuf
+message EventsResponse {
+  message Result {
+    bytes block_id = 1;
+    uint64 block_height = 2;
+    repeated entities.Event events = 3;
+    google.protobuf.Timestamp block_timestamp = 4;
   }
-  ```
+  repeated Result results = 1;
+}
+```
+
 </details>
 
 ---
@@ -662,23 +699,24 @@ rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParame
 <details>
 <summary>Request</summary>
 
-  ```protobuf
-  message GetNetworkParametersRequest {}
-  ```
+```protobuf
+message GetNetworkParametersRequest {}
+```
+
 </details>
 
 <details>
   <summary>Response</summary>
 
-  ```protobuf
-  message GetNetworkParametersResponse {
-    string chain_id = 1;
-  }
-  ```
+```protobuf
+message GetNetworkParametersResponse {
+  string chain_id = 1;
+}
+```
 
-| Field             | Description    |
-| ------------------|----------------|
-| chain_id          | Chain ID helps identify the Flow network. It can be one of `flow-mainnet`, `flow-testnet` or `flow-emulator` |
+| Field    | Description                                                                                                  |
+| -------- | ------------------------------------------------------------------------------------------------------------ |
+| chain_id | Chain ID helps identify the Flow network. It can be one of `flow-mainnet`, `flow-testnet` or `flow-emulator` |
 
 </details>
 
@@ -700,15 +738,15 @@ message Block {
 }
 ```
 
-| Field                    | Description    |
-| -------------------------|----------------|
-| id                       | SHA3-256 hash of the entire block payload |
-| height                   | Height of the block in the chain |
-| parent_id                | ID of the previous block in the chain |
-| timestamp                | Timestamp of when the proposer claims it constructed the block. <br/> **NOTE**: It is included by the proposer, there are no guarantees on how much the time stamp can deviate from the true time the block was published. <br/> Consider observing blocks' status changes yourself to get a more reliable value. |
-| collection_guarantees    | List of [collection guarantees](#collection-guarantee) |
-| block_seals              | List of [block seals](#block-seal) |
-| signatures               | BLS signatures of consensus nodes |
+| Field                 | Description                                                                                                                                                                                                                                                                                                       |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                    | SHA3-256 hash of the entire block payload                                                                                                                                                                                                                                                                         |
+| height                | Height of the block in the chain                                                                                                                                                                                                                                                                                  |
+| parent_id             | ID of the previous block in the chain                                                                                                                                                                                                                                                                             |
+| timestamp             | Timestamp of when the proposer claims it constructed the block. <br/> **NOTE**: It is included by the proposer, there are no guarantees on how much the time stamp can deviate from the true time the block was published. <br/> Consider observing blocks' status changes yourself to get a more reliable value. |
+| collection_guarantees | List of [collection guarantees](#collection-guarantee)                                                                                                                                                                                                                                                            |
+| block_seals           | List of [block seals](#block-seal)                                                                                                                                                                                                                                                                                |
+| signatures            | BLS signatures of consensus nodes                                                                                                                                                                                                                                                                                 |
 
 The detailed semantics of block formation are covered in the [block formation guide](/docs/transaction-lifecycle.md#block-formation).
 
@@ -724,11 +762,11 @@ message BlockHeader {
 }
 ```
 
-| Field               | Description   |
-|---------------------|---------------|
-| id                  | SHA3-256 hash of the entire block payload |
-| parent_id           | ID of the previous block in the chain |
-| height              | Height of the block in the chain |
+| Field     | Description                               |
+| --------- | ----------------------------------------- |
+| id        | SHA3-256 hash of the entire block payload |
+| parent_id | ID of the previous block in the chain     |
+| height    | Height of the block in the chain          |
 
 ## Block Seal
 
@@ -743,12 +781,12 @@ message BlockSeal {
 }
 ```
 
-| Field                        | Description   |
-|------------------------------|---------------|
-| block_id                     | ID of the block being sealed |
-| execution_receipt_id         | ID execution receipt being sealed |
+| Field                        | Description                                                            |
+| ---------------------------- | ---------------------------------------------------------------------- |
+| block_id                     | ID of the block being sealed                                           |
+| execution_receipt_id         | ID execution receipt being sealed                                      |
 | execution_receipt_signatures | BLS signatures of verification nodes on the execution receipt contents |
-| result_approval_signatures   | BLS signatures of verification nodes on the result approval contents |
+| result_approval_signatures   | BLS signatures of verification nodes on the result approval contents   |
 
 ## Collection
 
@@ -761,10 +799,10 @@ message Collection {
 }
 ```
 
-| Field               | Description   |
-|---------------------|---------------|
-| id                  | SHA3-256 hash of the collection contents |
-| transaction_ids     | Ordered list of transaction IDs in the collection |
+| Field           | Description                                       |
+| --------------- | ------------------------------------------------- |
+| id              | SHA3-256 hash of the collection contents          |
+| transaction_ids | Ordered list of transaction IDs in the collection |
 
 ## Collection Guarantee
 
@@ -777,10 +815,10 @@ message CollectionGuarantee {
 }
 ```
 
-| Field               | Description   |
-|---------------------|---------------|
-| collection_id       | SHA3-256 hash of the collection contents |
-| signatures          | BLS signatures of the collection nodes guaranteeing the collection |
+| Field         | Description                                                        |
+| ------------- | ------------------------------------------------------------------ |
+| collection_id | SHA3-256 hash of the collection contents                           |
+| signatures    | BLS signatures of the collection nodes guaranteeing the collection |
 
 ## Transaction
 
@@ -812,15 +850,15 @@ message TransactionSignature {
 }
 ```
 
-| Field                         | Description |
-| ------------------------------|-------------|
-| script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes |
-| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](/docs/json-cadence-spec.md) bytes
-| reference_block_id            | Block ID used to determine transaction expiry |
-| [proposal_key](#proposal-key) | Account key used to propose the transaction |
-| payer                         | Address of the payer account |
-| authorizers                   | Addresses of the transaction authorizers |
-| signatures                    | [Signatures](#transaction-signatures) from all signer accounts |
+| Field                         | Description                                                                                         |
+| ----------------------------- | --------------------------------------------------------------------------------------------------- |
+| script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes                                        |
+| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](/docs/json-cadence-spec.md) bytes |
+| reference_block_id            | Block ID used to determine transaction expiry                                                       |
+| [proposal_key](#proposal-key) | Account key used to propose the transaction                                                         |
+| payer                         | Address of the payer account                                                                        |
+| authorizers                   | Addresses of the transaction authorizers                                                            |
+| signatures                    | [Signatures](#transaction-signatures) from all signer accounts                                      |
 
 The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](/docs/transaction-lifecycle.md#submission).
 
@@ -828,19 +866,19 @@ The detailed semantics of transaction creation, signing and submission are cover
 
 The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](/docs/accounts-and-keys.md#sequence-numbers).
 
-| Field           | Description |
-| ----------------|-------------|
-| address         | Address of proposer account |
-| key_id          | ID of proposal key on the proposal account |
+| Field           | Description                                                                         |
+| --------------- | ----------------------------------------------------------------------------------- |
+| address         | Address of proposer account                                                         |
+| key_id          | ID of proposal key on the proposal account                                          |
 | sequence_number | [Sequence number](/docs/accounts-and-keys.md#sequence-numbers) for the proposal key |
 
 ### Transaction Signature
 
-| Field     | Description |
-| ----------|-------------|
+| Field     | Description                               |
+| --------- | ----------------------------------------- |
 | address   | Address of the account for this signature |
-| key_id    | ID of the account key |
-| signature | Raw signature byte data |
+| key_id    | ID of the account key                     |
+| signature | Raw signature byte data                   |
 
 ### Transaction Status
 
@@ -855,14 +893,14 @@ enum TransactionStatus {
 }
 ```
 
-| Value       | Description |
-| ------------|-------------|
-| UNKNOWN     | The transaction status is not known. |
-| PENDING     | The transaction has been received by a collector but not yet finalized in a block. |
-| FINALIZED   | The consensus nodes have finalized the block that the transaction is included in |
-| EXECUTED    | The execution nodes have produced a result for the transaction |
-| SEALED      | The verification nodes have verified the transaction (the block in which the transaction is) and the seal is included in the latest block |
-| EXPIRED     | The transaction was submitted past its expiration block height. |
+| Value     | Description                                                                                                                               |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| UNKNOWN   | The transaction status is not known.                                                                                                      |
+| PENDING   | The transaction has been received by a collection node but not yet finalized in a block.                                                  |
+| FINALIZED | The consensus nodes have finalized the block that the transaction is included in                                                          |
+| EXECUTED  | The execution nodes have produced a result for the transaction                                                                            |
+| SEALED    | The verification nodes have verified the transaction (the block in which the transaction is) and the seal is included in the latest block |
+| EXPIRED   | The transaction was submitted past its expiration block height.                                                                           |
 
 ## Account
 
@@ -878,13 +916,13 @@ message Account {
 }
 ```
 
-| Field        | Description |
-|--------------|-------------|
-| address      | A unique account identifier |
-| balance      | The account balance |
-| code         | The code deployed to this account (**deprecated**, use `contracts` instead) |
-| keys         | A list of keys configured on this account |
-| contracts    | A map of contracts or contract interfaces deployed on this account |
+| Field     | Description                                                                 |
+| --------- | --------------------------------------------------------------------------- |
+| address   | A unique account identifier                                                 |
+| balance   | The account balance                                                         |
+| code      | The code deployed to this account (**deprecated**, use `contracts` instead) |
+| keys      | A list of keys configured on this account                                   |
+| contracts | A map of contracts or contract interfaces deployed on this account          |
 
 The `code` and `contracts` fields contain the raw Cadence source code, encoded as UTF-8 bytes.
 
@@ -906,15 +944,15 @@ message AccountKey {
 }
 ```
 
-| Field           | Description    |
-|-----------------|----------------|
-| id              | Index of the key within the account, used as a unique identifier |
-| public_key      | Public key encoded as bytes |
+| Field           | Description                                                                            |
+| --------------- | -------------------------------------------------------------------------------------- |
+| id              | Index of the key within the account, used as a unique identifier                       |
+| public_key      | Public key encoded as bytes                                                            |
 | sign_algo       | [Signature algorithm](/docs/accounts-and-keys.md#supported-signature--hash-algorithms) |
-| hash_algo       | [Hash algorithm](/docs/accounts-and-keys.md#supported-signature--hash-algorithms) |
-| weight          | [Weight assigned to the key](/docs/accounts-and-keys.md#weighted-keys) |
-| sequence_number | [Sequence number for the key](/docs/accounts-and-keys.md#sequence-numbers) |
-| revoked         | Flag indicating whether or not the key has been revoked |
+| hash_algo       | [Hash algorithm](/docs/accounts-and-keys.md#supported-signature--hash-algorithms)      |
+| weight          | [Weight assigned to the key](/docs/accounts-and-keys.md#weighted-keys)                 |
+| sequence_number | [Sequence number for the key](/docs/accounts-and-keys.md#sequence-numbers)             |
+| revoked         | Flag indicating whether or not the key has been revoked                                |
 
 More information on account keys, key weights and sequence numbers can be found [here](/docs/accounts-and-keys.md).
 
@@ -932,10 +970,10 @@ message Event {
 }
 ```
 
-| Field             | Description    |
-| ------------------|----------------|
-| type              | Fully-qualified unique type identifier for the event |
-| transaction_id    | ID of the transaction the event was emitted from |
-| transaction_index | Zero-based index of the transaction within the block |
-| event_index       | Zero-based index of the event within the transaction |
-| payload           | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md)|
+| Field             | Description                                                               |
+| ----------------- | ------------------------------------------------------------------------- |
+| type              | Fully-qualified unique type identifier for the event                      |
+| transaction_id    | ID of the transaction the event was emitted from                          |
+| transaction_index | Zero-based index of the transaction within the block                      |
+| event_index       | Zero-based index of the event within the transaction                      |
+| payload           | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md) |
