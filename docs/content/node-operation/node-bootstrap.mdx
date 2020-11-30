@@ -1,6 +1,6 @@
 ---
-title: Node bootstrap
-sidebar_title: Node bootstrap
+title: Node Bootstrap
+sidebar_title: Node Bootstraping
 description: Running your own flow Node
 ---
 
@@ -41,8 +41,8 @@ tar -xvf boot-tools.tar
 ### Generating your Node ID
 
 A node ID is a 32 byte string that is unique to every node in Flow. 
-When you register your node to stake with Flow, 
-Generate a unique ID by hashing your staking public key.
+When you register your node to stake with Flow, you will
+generate a unique ID by hashing your staking public key.
 
 ### Generate Your Node Keys
 
@@ -133,7 +133,7 @@ Uploading ...
 Uploaded 400 bytes
 ```
 
-## Step 2 - Stake your node
+## Step 2 - Stake Your Node
 
 Stake your node via [Flow Port](https://port.onflow.org/)
 
@@ -188,13 +188,13 @@ git pull origin master
 
 <Callout type="danger">Wait for the Flow team announcement before you proceed to Step 4</Callout>
 
-## Step 4 - Start your Flow Node
+## Step 4 - Start Your Flow Node
 
-Once you receive an announcement from the Flow team that the network had been booted (via Discord), you will need to fetch the genesis info, update your runtime configuration and then boot your Flow node up!
+Once you receive an announcement from the Flow team that the network has been booted (via Discord), you will need to fetch the genesis info, update your runtime configuration and then boot your Flow node up!
 
 <Callout type="warning">
 
-The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info from (Please do NOT use the original Token that you used in Step 1) The `YOUR_NODE_TYPE` must be the same ones that you used on [step 1 - generating your node keys](/node-operation/node-bootstrap/#generate-your-node-keys)
+The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info from. (Please do NOT use the original Token that you used in Step 1) The `YOUR_NODE_TYPE` must be the same ones that you used on [step 1 - generating your node keys](/node-operation/node-bootstrap/#generate-your-node-keys)
 
 </Callout>
 
@@ -400,7 +400,7 @@ consensus_compliance_sealed_height 1.132054e+06
   * [/ip4/155.138.151.101/tcp/3569] dial tcp4 155.138.151.101:3569: connect: connection refused","retry_attempt":2,"time":"2020-05-20T18:34:21Z","message":"could not create connection"}
 ```
 
-This is error is OK. Your fellow node operators have not turned on/joined the network yet. So no need to worry about it!
+This error is OK. Your fellow node operators have not turned on/joined the network yet. So no need to worry about it!
 
 ### Flow Node Not Booting Up
 
