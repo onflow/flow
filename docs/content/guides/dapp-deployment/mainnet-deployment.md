@@ -39,11 +39,11 @@ Currently, deploying to Mainnet requires manual intervention from the Flow team.
 
 ### Prerequisites
 
-Before considering your application for deployment to Mainnet, it has to have been live on Testnet handling real world traffic for a fixed period of time as suggested here: **Testnet Testing Guidelines.**
+Before considering your application for deployment to Mainnet, it has to have been live on Testnet handling real world traffic for a fixed period of time as suggested here: [Testnet Testing Guidelines](../testnet-testing).
 
 Your project's smart contracts should include test coverage and follow any additional guidelines set out here: [Smart Contract Testing Guidelines](../contract-testing).
 
-Your reviewers will be using the following criterion when assessing your project: [Flow Project Technical Analysis](../contract-testing) Keeping these points in mind while developing your project will help speed up the review and deployment process**.**
+Your reviewers will be using the following criterion when assessing your project: [Flow Project Technical Analysis](../contract-testing) Keeping these points in mind while developing your project will help speed up the review and deployment process.
 
 ### Smart Contract Review
 
