@@ -137,8 +137,9 @@ in many cases, a user may add additional public keys from other sources, thus br
 the perfect alignment between on-chain and key path indices. Even without outside keys,
 it is still possible for keys to be added out of order.
 
-However, wallet developers or users may still incorrectly assume that the path 
-index of a public key always matches its on-chain account key index.
+Wallet developers or users should therefore not rely on the false assumption that
+the path index of a public key always matches its on-chain account key index,
+as doing so will cause confusion and errors.
 
 #### Potential Misuse of BIP 44
 
