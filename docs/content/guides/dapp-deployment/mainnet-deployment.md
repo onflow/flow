@@ -3,7 +3,7 @@ title: Mainnet Deployment Guidelines
 sidebar_title: 4. Deploy to Mainnet
 ---
 
-In the early days of the Flow network, applications deployed to the Flow Mainnet are required to be review and tested by the Flow team. For details about the testing and approval process, please read through our guide \*\*[Testnet Testing Guidelines](../testnet-testing) If your app has passed the review process you're ready to deploy on Flow's Mainnet!
+In the early days of the Flow network, applications deployed to the Flow Mainnet are required to be review and tested by the Flow team. For details about the testing and approval process, please read through our guide \[Testnet Testing Guidelines](../testnet-testing) If your app has passed the review process you're ready to deploy on Flow's Mainnet!
 
 ## Risks for Early Adopters
 
@@ -17,11 +17,11 @@ Breaking changes will be a fact of life for early adopters of Flow's development
 
 A version compatibility table can be found here. This will help you navigate version compatibility between Emulator, SDK, and Network Node (flow-go) versions.
 
-### Mainnet **Sporking**
+### Mainnet Sporking
 
 "Sporking" (soft forking) is the process of upgrading Flow network node software, and migrating the state from the previous version.
 
-Currently, **historical event data is not migrated between Sporks,** so you'll need to design your application with this in mind**.** We recognize the usefulness of historical event data and plan on adding a means of accessing it in the near future.
+Currently, **historical event data is not migrated between sporks,** so you'll need to design your application with this in mind**.** We recognize the usefulness of historical event data and plan on adding a means of accessing it in the near future.
 
 ### "Real Value" on Mainnet
 
@@ -63,7 +63,7 @@ When your application is approved for deployment, you'll need to make the Flow t
 
 Once this information has been provided the Flow team will deploy your project and notify you!
 
-### Iterating on Mainnet
+## Iterating on Mainnet
 
 In the early days, Iterating (re-deploying) on Mainnet will be a manual process. Once your application is live, and you'd like to make updates or add features, you'll need to re-submit your updated smart contracts for review using the submission form, or by reaching out to your Flow point-of-contact directly.
 
