@@ -82,7 +82,7 @@ This transaction takes the following arguments:
 |-----------------------|----------|-------------|
 | **id**                | `String` | The ID of the new node. It must be a 32 byte `String`. The operator is free to choose this value, but it must be unique across all nodes. A recommended process to generate this is to hash the staking public key. |
 | **role**              | `UInt8`  | The role of the new node. (1: collection, 2: consensus, 3: execution, 4: verification, 5: access) |
-| **networkingAddress** | `String` | The IP address the new node. |
+| **networkingAddress** | `String` | The IP address of the new node. |
 | **networkingKey**     | `String` | The networking public key as a hex-encoded string. |
 | **stakingKey**        | `String` | The staking public key as a hex-encoded string. |
 
@@ -192,7 +192,7 @@ transaction with the following arguments:
 |------------|----------|-------------|
 | **nodeID** | `String` | The unique identifier for the node. |
 
-_Note: unstaked tokens will be held by the central staking contract for a period of time before they are 
+_Note: Unstaked tokens will be held by the central staking contract for a period of time before they are 
 released to the token holder. Once the tokens are released (unstaked), 
 they can be claimed via the [Withdraw Unstaked Tokens](#withdraw-unstaked-tokens) action below._
 

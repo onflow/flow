@@ -88,7 +88,7 @@ const sections = [
         "[FLOW Token](/token)",
         "[Staking & Delegating](/staking)",
         "[Node Operation](/node-operation)",
-        // "[Core Contracts](/protocol/core-contracts)",
+        "[Core Contracts](/protocol/core-contracts)",
         "intro/glossary",
         "intro/FAQ",
       ],

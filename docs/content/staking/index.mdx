@@ -5,24 +5,24 @@ description: Introduction to how staking works on Flow
 ---
 
 This document provides an introduction to staking FLOW tokens on the Flow network for token holders and node operators.
-Staking is an important part of the security of a proof-of-stake (PoS) blockchain.
-Running nodes and staking tokens contributes to this security and is rewarded accordingly.
+Staking is an important part of the security protocol of a proof-of-stake (PoS) blockchain.
+Running nodes and staking tokens contributes to the blockchain's security and is rewarded accordingly.
 
 ## What is Staking?
 
 Flow is a global network of computers working together
-to maintain the security and integrity of it's user's data.
+to maintain the security and integrity of its users' data.
 
-This global network is made up of many individual nodes. Every node in the network shares a small part of the responsibility to keep the network running smoothly 
-and to ensure that other nodes are doing the same. This shared responsibility is sometimes called decentralization, because no single node is responsible for the security and integrity of the network and the data it contains.
+This global network is made up of many individual nodes: software applications run by people. Every node in the network shares a small part of the responsibility to keep the network running smoothly 
+and to ensure that other nodes are doing the same. This shared responsibility is sometimes called decentralization, because no single node is solely responsible for the security and integrity of the network and the data it contains.
 
-Nodes in the network are software applications run by people, we call them node operators. To connect a node to the network, a node operator must first purchase some tokens. Every node operator has to temporarily give (or ‘stake’) 
-a large number of their tokens to the network as a promise that they will not modify their node to do something that is against the rules of the network, like steal funds from user's accounts.
+Node operators are what we call the people who run nodes. In order to connect their software applications as nodes on the network, a node operator must first purchase tokens. Every node operator has to temporarily give (or ‘stake’) 
+a large number of their tokens to the network as a promise that they will not modify their node to do something that is against the rules of the network, like steal funds from users' accounts. This process of temporarily giving up tokens is called staking.  
 
 If a node ever breaks the rules defined by the network, a number of the node operator's staked tokens will be taken from them as a punishment.
-This process is automatic. Every node knows the rules defined by the network and automatically watches other nodes and reports them if they misbehave. Meanwhile, the network pays the node operator a reward of tokens on a regular basis, if their node does not break the rules.
+This process is automatic. Every node knows the rules defined by the network and automatically watches other nodes and reports them if they misbehave. Meanwhile, the network pays the node operator a reward of tokens on a regular basis provided their node does not break the rules.
 
-If I break the rules, I loose the tokens I've staked. If I operate my node with integrity, I get rewarded with more tokens! This is the basic incentive that enables a decentralized proof-of-stake network, like Flow.
+If I break the rules, I lose the tokens I've staked. If I operate my node with integrity, I get rewarded with more tokens! This is the basic incentive that enables a decentralized proof-of-stake network, like Flow.
 
 ## How Does Staking Work on Flow?
 
@@ -31,10 +31,10 @@ The list contains important information about each node, like their public keys,
 and what kind of node they are running. 
 (Collection, Consensus, Execution, Verification, or Access)
 
-To register their node, the node operator submits a transaction to register their node along with tokens they want to stake.
+To register their node, the node operator submits a transaction to register their node along with the tokens they want to stake.
 
-Once a node operator is registered and staked, assuming they keep their node online, are well behaved, 
-and are consistent maintainers of the network, they receive rewards at the end of every week. 
+Once a node operator is registered and staked-assuming they keep their node online, are well behaved, 
+and are consistent maintainers of the network-they receive rewards at the end of every week. 
 This timeframe of earning rewards is otherwise known as an Epoch.
 
 ### Epochs
@@ -42,7 +42,7 @@ This timeframe of earning rewards is otherwise known as an Epoch.
 An epoch is a week-long period that the network uses to manage the stakers and pay rewards.
 Every epoch, a list of committed nodes are chosen to be the staked nodes of the network, 
 and their staked tokens are locked in and cannot change for the duration of the epoch. 
-At the end of the epoch, rewards are paid to each node based on how many tokens they had staked for that epoch. 
+At the end of the epoch, rewards are paid to each staked node based on how many tokens they had staked for that epoch. 
 This process repeats itself indefinitely, as long as the network remains functioning.
 
 To determine the list of nodes that are included as officially staked nodes in the next epoch, 
@@ -73,7 +73,7 @@ and the amount of tokens they want to delegate.
 The tokens are committed and managed in the exact same way that normal staked tokens are managed. 
 
 Rewards for delegators are also calculated in the exact same way that rewards for node operators are calculated, 
-with one difference in that 8% of the calculated amount is given to the node operator being delegated to. 
+with one difference in that 8% of the calculated amount is given to the delegated. 
 The remaining 92% is awarded to the delegator.
 
 ## How Do I Stake?
