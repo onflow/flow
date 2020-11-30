@@ -80,12 +80,7 @@ const sourceSlugTransformers = {
 const sections = [
   {
     sourceInstanceName: "docs",
-    patterns: [
-      "*",
-      "intro/*",
-      "updates/*",
-      "support/**/*",
-    ],
+    patterns: ["*", "intro/*", "updates/*", "support/**/*"],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
@@ -97,13 +92,8 @@ const sections = [
         "intro/glossary",
         "intro/FAQ",
       ],
-      "Community Updates": [
-        "updates/oct-6-2020", 
-        "updates/sep-16-2020",
-      ],
-      "Support": [
-        "support/flow-port/index",
-      ],
+      "Community Updates": ["updates/oct-6-2020", "updates/sep-16-2020"],
+      Support: ["support/flow-port/index"],
     },
   },
   {
@@ -195,7 +185,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["staking/faq"],
-      Overview: ["staking/index", "staking/concepts", "staking/rewards"],
+      Overview: ["staking/index", "staking/rewards", "stake-slashing"],
       "Developer Guides": [
         "staking/technical-overview",
         "staking/locked-delegation-guide",
