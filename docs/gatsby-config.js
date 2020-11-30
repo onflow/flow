@@ -188,15 +188,9 @@ const sections = [
     patterns: ["staking/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["staking/faq"],
-      Overview: [
-        "staking/index",
-        "staking/concepts",
-        "staking/rewards",
-        "staking/stake-slashing",
-      ],
+      Overview: ["staking/index", "staking/rewards", "staking/stake-slashing"],
       "Developer Guides": [
-        "staking/technical-overiew",
+        "staking/technical-overview",
         "staking/locked-delegation-guide",
         "staking/locked-staking-guide",
         "staking/locked-third-party-operator",
