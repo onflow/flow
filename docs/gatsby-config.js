@@ -98,12 +98,16 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["tutorial/cadence/*"],
+    patterns: ["tutorial/cadence/*", "guides/cadence/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
         "tutorial/cadence/00-introduction",
         "[Cadence Language Reference](/cadence/language)",
+      ],
+      "Developer Guides": [
+        "guides/cadence/design-patterns",
+        "guides/cadence/dragons",
       ],
       Tutorial: [
         "tutorial/cadence/01-first-steps",
@@ -184,8 +188,7 @@ const sections = [
     patterns: ["staking/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["staking/faq"],
-      Overview: ["staking/index", "staking/rewards", "stake-slashing"],
+      Overview: ["staking/index", "staking/rewards", "staking/stake-slashing"],
       "Developer Guides": [
         "staking/technical-overview",
         "staking/locked-delegation-guide",
@@ -224,8 +227,10 @@ const sections = [
   {
     sourceInstanceName: "cadence",
     patterns: ["docs/language/**/*"],
+    sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
+      null: ["[Back](../../guides/cadence/design-patterns/)"],
+      "Language Reference": [
         "docs/language/index",
         "docs/language/syntax",
         "docs/language/constants-and-variables",
