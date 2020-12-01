@@ -11,7 +11,7 @@ on Flow Mainnet.
 
 The steps below present a framework that Flow dapp developers are encouraged to follow
 when developing and preparing their applications for Mainnet. 
-Flow is still in its infancy, meaning that many best practices are still being defined. 
+Flow is still new, and the process of defining best practices is ongoing.
 This guide aims to lay the foundation for secure and robust dapp development on Flow.
 
 ### Who created this guide?
