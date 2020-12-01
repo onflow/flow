@@ -1,7 +1,7 @@
 module.exports = {
   server: {
     command: "./node_modules/.bin/gatsby serve",
-    launchTimeout: 60000, // set to 30s
+    launchTimeout: 60000, // 60 seconds
     port: 9000,
     debug: true,
   },
