@@ -59,7 +59,7 @@ When your application is approved for deployment, you'll need to make the Flow t
 
 - Provide a git tag pointing to the source code of the smart contracts you would like to deploy, so the team can perform a checkout of the correct version.
 - Provide all the required public keys for all necessary Mainnet accounts.
-- For projects requiring multiple contracts, you'll need to provide a deployment script and instructions explaining how to perform your multi-contract deployment correctly.
+- For projects requiring multiple contracts, you'll need to provide a deployment script and/or instructions explaining how to perform your multi-contract deployment correctly.
 
 Once this information has been provided the Flow team will deploy your project and notify you!
 
