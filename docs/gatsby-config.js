@@ -142,6 +142,7 @@ const sections = [
   {
     sourceInstanceName: "docs",
     patterns: ["sdks/javascript/**/*"],
+    sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
       Overview: ["sdks/javascript/index"],
