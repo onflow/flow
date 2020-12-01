@@ -11,7 +11,7 @@ on Flow Mainnet.
 
 The steps below present a framework that Flow dapp developers are encouraged to follow
 when developing and preparing their applications for Mainnet. 
-Flow is still in its infancy, meaning that many best practices have yet to be defined. 
+Flow is still in its infancy, meaning that many best practices are still being defined. 
 This guide aims to lay the foundation for secure and robust dapp development on Flow.
 
 ### Who created this guide?
@@ -40,6 +40,7 @@ you should thoroughly test your dapp on Testnet before considering a Mainnet rel
 
 **4. [Deploy to Mainnet](./mainnet-deployment)**
 
-Deployment to Mainnet is restricted in the near term in order to ensure
-a smooth experience for Flow developers, maintainers and users.
+Your dapp must go through a review process before it can be deployed to Mainnet.
+This is to ensure a smooth and safe experience for Flow users, developers, and maintainers
+while the network is still maturing.
 Learn about the steps you will need to take to promote your dapp from Testnet to Mainnet.
