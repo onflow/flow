@@ -21,24 +21,24 @@ Suggestions for additions, changes or others improvements are gladly welcomed.
 
 ## The Road to Mainnet
 
-**1. [Smart Contract Testing](../contract-testing)**
+**1. [Smart Contract Testing](./contract-testing)**
 
 Smart contracts are the most important component of any dapp: 
 they often manage user assets, application state and other vital pieces of data.
 As such, smart contracts should be rigorously tested.
 
-**2. [Deploy to Testnet](../testnet-deployment)**
+**2. [Deploy to Testnet](./testnet-deployment)**
 
 Testnet is the perfect proving ground for any new application.
 Learn how to use the Flow toolchain to deploy your dapp to Testnet.
 
-**3. [Testnet Testing](../testnet-testing)**
+**3. [Testnet Testing](./testnet-testing)**
 
 Testnet is the closest you will get to the real thing.
 In order to uncover bugs that may only appear on a real network,
 you should thoroughly test your dapp on Testnet before considering a Mainnet release.
 
-**4. [Deploy to Mainnet](../mainnet-deployment)**
+**4. [Deploy to Mainnet](./mainnet-deployment)**
 
 Deployment to Mainnet is restricted in the near term in order to ensure
 a smooth experience for Flow developers, maintainers and users.
