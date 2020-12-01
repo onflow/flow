@@ -14,7 +14,7 @@ The things that exists probably won't be changing much externally, we will be ad
 
 ## Install
 
-```bash
+```shell
 npm install --save @onflow/fcl
 ```
 
@@ -56,7 +56,7 @@ Once complete, this example application will be deployable to the Flow test/main
 
 Run the following command to generate a React app. (Must have `npm` installed)
 
-```bash
+```shell
 npx create-react-app my-dapp
 ```
 
@@ -64,7 +64,7 @@ npx create-react-app my-dapp
 
 From the root directory of your new react app, run the following commands to install `@onflow/fcl` and the `@onflow/dev-wallet`
 
-```bash
+```shell
 npm install --save @onflow/fcl
 npm install --save-dev @onflow/dev-wallet
 ```
@@ -82,7 +82,7 @@ npm install --save-dev @onflow/dev-wallet
 
 In this guide, we'll use `@emotion/styled` to write css. (You can skip this step, or install your own preferred css tools)
 
-```bash
+```shell
 npm install --save @emotion/styled
 ```
 
@@ -94,7 +94,7 @@ The Flow emulator is a lightweight tool that emulates the behaviour of the real 
 
 From the root directory of your React app, run the following command to start the emulator
 
-```bash
+```shell
 flow emulator start --init
 ```
 
@@ -143,13 +143,13 @@ Create a `scripts` entry in your `package.json` with the following command. Copy
 
 Use the new command to run the Dev Wallet
 
-```bash
+```shell
 npm run dev:wallet
 ```
 
 If all is well you should see
 
-```bash
+```shell
 @onflow/dev-wallet@0.0.4
 *** *** *** *** *** *** ***
 
@@ -176,7 +176,7 @@ fcl.config()
 
 We're ready to start building our new app. Start the React app to begin building the UI and interacting with the emulator using `@onflow/fcl`
 
-```bash
+```shell
 npm start
 ```
 
@@ -214,7 +214,7 @@ Once configured, all that is needed is to call `fcl.authenticate()` in your code
 
 Attach the `fcl.authenticate` function to the `onClick` handler of a button
 
-```jsx
+```javascript
 <Button onClick={() => fcl.authenticate()}>Sign In/Up</Button>
 ```
 
@@ -222,7 +222,7 @@ Attach the `fcl.authenticate` function to the `onClick` handler of a button
 
 To allow users to sign out of your application, simply call `fcl.unauthenticate()`
 
-```jsx
+```javascript
 <Button onClick={() => fcl.unauthenticate()}>Sign Out</Button>
 ```
 
@@ -230,7 +230,7 @@ To allow users to sign out of your application, simply call `fcl.unauthenticate(
 
 To receive a reactive update when a user has signed in/out you can subscribe to changes
 
-```jsx
+```javascript
 fcl.currentUser().subscribe((user) => {
   console.log(user);
 });
@@ -240,7 +240,7 @@ fcl.currentUser().subscribe((user) => {
 
 Here is the code for the completed component containing the UI and logic for authenticating users using `@onflow/fcl`. Add this code to `CurrentUser.js` in the `src` directory of your app
 
-```jsx
+```javascript
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import * as fcl from "@onflow/fcl";
@@ -319,7 +319,7 @@ Cadence scripts allow you to run computations on Flow that are not recorded on t
 
 Using a simple script is a useful way to test your connection to Flow
 
-```jsx
+```javascript
 const resp = await fcl.send([
   fcl.script`
     pub fun main(): Int {
@@ -335,7 +335,7 @@ const value = await fcl.decode(response);
 
 To call A Cadence script from your React app, create another component and wire-up the UI. Here is an example component you can use. Create a file named `ScriptOne` in the `src` directory of your app with the following content
 
-```jsx
+```javascript
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import * as fcl from "@onflow/fcl";
@@ -395,7 +395,7 @@ Go ahead and test out your new script!
 
 A common use for Cadence scripts is to acquire information about a Flow account's public state and its **[resources](notion://www.notion.so/dapperlabs/resources)**. Here is an example of a script you might use to query and use another account's public resources.
 
-```jsx
+```javascript
 const response = await fcl.send([
   fcl.script`
 	import HelloWorld from 586b0d6e0a20c7f1
@@ -417,7 +417,7 @@ Cadence scripts can return complex Cadence data-types. These return values are s
 
 Given this Cadence script that returns `[SomeStruct(x: 1, y: 2), SomeStruct(x: 3, y: 4)]`
 
-```jsx
+```javascript
 const response = await fcl.send([
   fcl.script`
       pub struct SomeStruct {
@@ -439,7 +439,7 @@ const response = await fcl.send([
 
 We would like to transform `SomeStruct(x: 1, y: 2)` into a JavaScript data-structure.
 
-```jsx
+```javascript
 class Point {
   constructor({ x, y }) {
     this.x = x;
@@ -463,7 +463,7 @@ fcl.config()
 
 Here is a completed component that contains the script that will trigger our new decoding function. Create a file named `ScriptTwo` in the `src` directory of your app.
 
-```jsx
+```javascript
 import React, {useState} from "react"
 import styled from "@emotion/styled"
 import * as fcl from "@onflow/fcl"
@@ -545,7 +545,7 @@ Describing the specifics of how to compose Flow transactions is beyond the scope
 
 To send a transaction you must supply a **payer** and **proposer**. In the following transaction the current user we authenticated earlier is used for each. `@onflow/fcl` will use the configured wallet to sign this transaction on behalf of the current user.
 
-```jsx
+```javascript
 const response = await fcl.send([
   fcl.transaction`
     transaction {
@@ -561,7 +561,7 @@ const response = await fcl.send([
 
 You can subscribe to the result of a transaction in your client code.
 
-```jsx
+```javascript
 const unsub = fcl.tx(response).subscribe((transaction) => {
   if (fcl.tx.isSealed(transaction)) {
     setState("Transaction Confirmed: Is Sealed");
@@ -572,7 +572,7 @@ const unsub = fcl.tx(response).subscribe((transaction) => {
 
 Here is a completed component that contains the transaction above. Create a file named `TransactionOne` in the `src` directory of your app.
 
-```jsx
+```javascript
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import * as fcl from "@onflow/fcl";
@@ -648,7 +648,7 @@ Our application is complete!
 
 To deploy your app, you'll need to modify your configuration. Once the Flow Mainnet is live you'll be able to obtain an production Access Node API url and API Key. More on this soon!
 
-```jsx
+```javascript
 if (process.env.NODE_ENV === "development") {
   fcl
     .config()
