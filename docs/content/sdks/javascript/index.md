@@ -5,10 +5,6 @@ sidebar_title: Introduction
 
 **EARLY PUBLIC ALPHA**
 
-- **Last Updated:** April 21st 2020
-
-We are currently confident in how to consume most of the things in this repository, but most of the modules are in active development and their underlying implementations are subject to change.
-
 All changes to a module will be reflected in the modules version number (including breaking changes) as a patch, until we are confident the module is working and stable, at which point we will release a `v1.0.0`. After a `v1.0.0` release of a module we will strictly follow SemVer.
 
 ## Getting Started

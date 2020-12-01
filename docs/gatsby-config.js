@@ -144,10 +144,7 @@ const sections = [
     patterns: ["sdks/javascript/**/*"],
     sidebar: {
       null: ["[Home](/)"],
-      "Developer Guides": [
-        "sdks/javascript/index",
-        "sdks/javascript/create-account",
-      ],
+      "Developer Guides": ["sdks/javascript/index", "sdks/javascript/fcl"],
     },
   },
   {
@@ -262,7 +259,7 @@ const sections = [
     patterns: ["docs/language/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["[Back](../../guides/cadence/design-patterns/)"],
+      null: ["[Home](/)"],
       "Language Reference": [
         "docs/language/index",
         "docs/language/syntax",
