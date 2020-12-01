@@ -101,7 +101,8 @@ const sections = [
     patterns: ["tutorial/cadence/*", "guides/cadence/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
+      null: ["[Home](/)"],
+      Overview: [
         "tutorial/cadence/00-introduction",
         "[Cadence Language Reference](/cadence/language)",
       ],
@@ -126,8 +127,9 @@ const sections = [
     patterns: ["sdks/golang/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["sdks/golang/index", "sdks/golang/changelog"],
-      "How To": [
+      null: ["[Home](/)"],
+      Overview: ["sdks/golang/index", "sdks/golang/changelog"],
+      "Developer Guides": [
         "sdks/golang/create-account",
         "sdks/golang/build-transaction",
         "sdks/golang/sign-transaction",
@@ -142,7 +144,11 @@ const sections = [
     sourceInstanceName: "docs",
     patterns: ["sdks/javascript/**/*"],
     sidebar: {
-      null: ["sdks/javascript/index", "sdks/javascript/create-account"],
+      null: ["[Home](/)"],
+      "Developer Guides": [
+        "sdks/javascript/index",
+        "sdks/javascript/create-account",
+      ],
     },
   },
   {
@@ -150,6 +156,7 @@ const sections = [
     patterns: ["concepts/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
+      null: ["[Home](/)"],
       Accounts: ["concepts/accounts-and-keys", "concepts/transaction-signing"],
     },
   },
@@ -158,7 +165,7 @@ const sections = [
     patterns: ["protocol/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["protocol/access-api"],
+      null: ["[Home](/)"],
       "Core Contracts": [
         "protocol/core-contracts/fungible-token",
         "protocol/core-contracts/flow-token",
@@ -166,6 +173,7 @@ const sections = [
         "protocol/core-contracts/flow-id-table-staking",
         "protocol/core-contracts/locked-tokens",
       ],
+      "Developer Guides": ["protocol/access-api"],
     },
   },
   {
@@ -173,6 +181,7 @@ const sections = [
     patterns: ["token/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
+      null: ["[Home](/)"],
       Overview: [
         "token/index",
         "token/earn",
@@ -188,7 +197,13 @@ const sections = [
     patterns: ["staking/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      Overview: ["staking/index", "staking/rewards", "staking/stake-slashing", "staking/faq"],
+      null: ["[Home](/)"],
+      Overview: [
+        "staking/index",
+        "staking/rewards",
+        "staking/stake-slashing",
+        "staking/faq",
+      ],
       "Developer Guides": [
         "staking/technical-overview",
         "staking/locked-delegation-guide",
@@ -203,6 +218,7 @@ const sections = [
     patterns: ["node-operation/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
+      null: ["[Home](/)"],
       Overview: [
         "node-operation/index",
         "node-operation/node-setup",
@@ -221,7 +237,8 @@ const sections = [
     patterns: ["emulator/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["emulator/index", "emulator/changelog"],
+      null: ["[Home](/)"],
+      Overview: ["emulator/index", "emulator/changelog"],
     },
   },
   {
@@ -283,6 +300,7 @@ module.exports = {
         baseUrl: "https://docs.onflow.org",
         twitterUrl: "https://twitter.com/flow_blockchain",
         discordUrl: "https://discord.gg/flow",
+        discourseUrl: "https://forum.onflow.org",
         logoLink: "/",
         root: __dirname,
         githubAccessToken: process.env.GITHUB_ACCESS_TOKEN, // https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token

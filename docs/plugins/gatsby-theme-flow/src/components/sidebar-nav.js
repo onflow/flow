@@ -198,17 +198,17 @@ function getStylesForNavItem(page) {
         -20px -20px 60px #2587f6`,
         background: colors.blue.lightest,
       };
-    case "Cadence Language Reference":
-      return {
-        color: colors.grey.dark,
-        padding: "0 0.2rem",
-        paddingLeft: "1rem",
-        marginLeft: "-1rem",
-        borderRadius: "1000px",
-        boxShadow: ` 20px 20x 60px #1b63b6, 
-          -20px -20px 60px #2587f6`,
-        background: colors.pink.lightest,
-      };
+    // case "Cadence Language Reference":
+    //   return {
+    //     color: colors.grey.dark,
+    //     padding: "0 0.2rem",
+    //     paddingLeft: "1rem",
+    //     marginLeft: "-1rem",
+    //     borderRadius: "1000px",
+    //     boxShadow: ` 20px 20x 60px #1b63b6,
+    //       -20px -20px 60px #2587f6`,
+    //     background: colors.pink.lightest,
+    //   };
     default:
       return {};
   }
@@ -292,7 +292,7 @@ export default function SidebarNav(props) {
 
   return (
     <>
-      {props.showMainNav &&
+      {props.showMainNav && (
         <DocsetMenuWrapper>
           {docset
             .filter((navItem) => {
@@ -309,7 +309,7 @@ export default function SidebarNav(props) {
               );
             })}
         </DocsetMenuWrapper>
-      }
+      )}
       {root && (
         <NavItems
           pages={root.pages}
