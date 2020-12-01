@@ -144,7 +144,8 @@ const sections = [
     patterns: ["sdks/javascript/**/*"],
     sidebar: {
       null: ["[Home](/)"],
-      "Developer Guides": ["sdks/javascript/index", "sdks/javascript/fcl"],
+      Overview: ["sdks/javascript/index"],
+      "Developer Guides": ["sdks/javascript/fcl"],
     },
   },
   {
