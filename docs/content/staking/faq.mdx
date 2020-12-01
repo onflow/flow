@@ -16,17 +16,14 @@ There will be *no* automatic re-staking of staking rewards with Flow Port (ledge
 
 If you staked using a staking provider such as Kraken, Blocto or Finoa, they should be able to provide you more details.
 
-### Can a validator change its fees? Would the Account Key contract need to stay in Beta permanently to enable the validator to change the fee percentage? Does this change take effect immediately or at the next epoch?
+### Can a validator change its fees?
 
-For the beta period we’re enforcing a minimum fee of 10%.
-In the future it will be a parameter you can update.
-The contract includes a function you can call to update if you would like but this wouldn’t require the contract to be in beta.
-Rewards are only paid out every epoch, so the fee at the time of the epoch payout would be the one applied.
+For the beta period we’re enforcing a minimum delegation fee of 8% which cannot be changed.
 
 ### Can a token holder stake to multiple nodes? If yes, how is the stake split between them?
 
 A token holder will be able to stake multiple nodes in the future.
-However, currently there is a restriction in place such that there is a 1-to-1 relationship between an account address and an active stake.
+However, currently there is a restriction in place from the token lockup rules such that there is a 1-to-1 relationship between an account address and an active stake.
 We have the same restriction in place for an account address and an active delegation.
 This means that 1 account address can have at maximum 1 active stake and 1 active delegation at any given time.
 If a token holder wants to have additional stake and/or delegate transactions, then they must create additional account addresses to do so.
