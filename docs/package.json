@@ -6,7 +6,9 @@
     "prestart": "gatsby clean",
     "start": "node --nolazy node_modules/.bin/gatsby develop --inspect-brk",
     "build": "gatsby build",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "test:integration": "jest -c integration/jest.config.js",
+    "test:integrationWithWatch": "jest -c integration/jest.config.js --watch"
   },
   "dependencies": {
     "@emotion/core": "^10.0.7",
@@ -65,6 +67,9 @@
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
+    "jest": "^26.6.3",
+    "jest-puppeteer": "^3.9.0",
+    "puppeteer": "^5.5.0",
     "typeface-overpass": "^0.0.72"
   }
 }
