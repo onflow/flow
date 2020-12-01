@@ -4,7 +4,7 @@ import SectionNav from "./section-nav";
 import styled from "@emotion/styled";
 import useMount from "react-use/lib/useMount";
 import { HEADER_HEIGHT } from "../utils";
-import { IconGithub, IconDiscord, IconPlayground } from "../ui/icons";
+import { IconGithub, IconDiscourse, IconPlayground } from "../ui/icons";
 import { theme } from "../colors";
 import { smallCaps } from "../utils/typography";
 import breakpoints from "../utils/breakpoints";
@@ -211,9 +211,9 @@ export default function PageContent(props) {
           />
         )}
         {editLink}
-        {props.discordUrl && (
-          <AsideLink href={props.discordUrl}>
-            <IconDiscord /> Discuss on Discord
+        {props.discourseUrl && (
+          <AsideLink href={props.discourseUrl}>
+            <IconDiscourse /> Discuss on Discourse
           </AsideLink>
         )}
         {props.playgroundUrl && (
@@ -235,5 +235,6 @@ PageContent.propTypes = {
   title: PropTypes.string.isRequired,
   headings: PropTypes.array.isRequired,
   discordUrl: PropTypes.string,
+  discourseUrl: PropTypes.string,
   playgroundUrl: PropTypes.string,
 };

@@ -29,6 +29,7 @@ export {
   FaChevronDown as IconChevronDown,
   FaChevronUp as IconChevronUp,
   FaDiscord as IconDiscord,
+  FaDiscourse as IconDiscourse,
   FaExclamationTriangle as IconWarningSolid,
   FaExternalLinkAlt as IconExternalLink,
   FaFacebook as IconFlow, // TODO: replace with real Flow logo,

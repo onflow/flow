@@ -169,12 +169,14 @@ async function createPagesForSection(
     baseDir = "",
     subtitle,
     discordUrl,
+    discourseUrl,
     twitterUrl,
     baseUrl,
     sourceGithubRepos,
     sourceSlugTransformers,
   }
 ) {
+
   const allPages = await Promise.all(
     section.patterns.map(async (pattern) => {
       const { data } = await graphql(`
@@ -256,10 +258,11 @@ async function createPagesForSection(
         sidebar: {
           showMainNav: section.sidebarShowMainNav,
           alwaysExpanded: section.sidebarAlwaysExpanded,
-          contents: sidebarContents
+          contents: sidebarContents,
         },
         githubUrl,
         discordUrl,
+        discourseUrl,
         twitterUrl,
         baseUrl,
       },
