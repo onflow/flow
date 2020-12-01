@@ -188,7 +188,7 @@ const sections = [
     patterns: ["staking/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      Overview: ["staking/index", "staking/rewards", "staking/stake-slashing"],
+      Overview: ["staking/index", "staking/rewards", "staking/stake-slashing", "staking/faq"],
       "Developer Guides": [
         "staking/technical-overview",
         "staking/locked-delegation-guide",
