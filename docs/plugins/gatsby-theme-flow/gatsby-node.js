@@ -176,7 +176,6 @@ async function createPagesForSection(
     sourceSlugTransformers,
   }
 ) {
-  console.log(discordUrl, discourseUrl);
 
   const allPages = await Promise.all(
     section.patterns.map(async (pattern) => {
