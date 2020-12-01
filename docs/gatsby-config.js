@@ -21,7 +21,7 @@ const navConfig = {
     linkText: "Launch the Flow Playground",
   },
   "JavaScript SDK": {
-    url: "https://github.com/onflow/flow-js-sdk",
+    url: "/sdks/javascript",
     icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
@@ -35,22 +35,21 @@ const navConfig = {
     linkText: "Go SDK Documentation",
   },
   "Flow CLI": {
-    url: "https://github.com/onflow/flow/blob/master/docs/cli.md#flow-cli ",
+    url: "/devtools/flow-cli",
     icon: "cli",
     description:
       "The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.",
     linkText: "CLI Documentation",
   },
   "Flow Emulator": {
-    url: "/emulator/",
+    url: "/devtools/emulator/",
     icon: "emulator",
     description:
       "Develop and test your applications locally using the Flow emulator.",
     linkText: "Emulator Documentation",
   },
   "VS Code Extension": {
-    url:
-      "https://github.com/onflow/vscode-flow#cadence-visual-studio-code-extension",
+    url: "/devtools/vscode-extension",
     icon: "vscode",
     description:
       "Cadence syntax highlighting and an integrated Flow emulator for VSCode users.",
@@ -153,6 +152,14 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
+    patterns: ["devtools/flow-cli/*"],
+    sidebar: {
+      null: ["[Home](/)"],
+      "Developer Guides": ["devtools/flow-cli/index"],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
     patterns: ["concepts/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
@@ -234,11 +241,20 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["emulator/**/*"],
+    patterns: ["devtools/emulator/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["emulator/index", "emulator/changelog"],
+      Overview: ["devtools/emulator/index", "devtools/emulator/changelog"],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["devtools/vscode-extension/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: ["[Home](/)"],
+      Overview: ["devtools/vscode-extension/index"],
     },
   },
   {
