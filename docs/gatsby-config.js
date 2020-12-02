@@ -187,8 +187,8 @@ const sections = [
     sourceInstanceName: "docs",
     patterns: ["guides/**/*"],
     sidebarAlwaysExpanded: true,
-    null: ["[Home](/)"],
     sidebar: {
+      null: ["[Home](/)"],
       "Dapp Deployment Guide": [
         "guides/dapp-deployment/index",
         "guides/dapp-deployment/contract-testing",
