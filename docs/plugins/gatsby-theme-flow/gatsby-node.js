@@ -176,7 +176,6 @@ async function createPagesForSection(
     sourceSlugTransformers,
   }
 ) {
-
   const allPages = await Promise.all(
     section.patterns.map(async (pattern) => {
       const { data } = await graphql(`

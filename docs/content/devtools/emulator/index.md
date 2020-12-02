@@ -1,6 +1,7 @@
 ---
 title: Flow Emulator
 description: A development tool that looks, acts and talks like Flow
+sidebar_title: Introduction
 ---
 
 > Version 0.8.0
@@ -9,17 +10,17 @@ The Flow Emulator is a lightweight tool that emulates
 the behaviour of the real Flow network.
 
 The emulator exposes a gRPC server that implements the
-[Flow Access API](/protocol/access-api), which is designed
+[Flow Access API](../../protocol/access-api), which is designed
 to have near feature parity with the real network API.
 
 ## Running the emulator with the Flow CLI
 
-The emulator is bundled with the [Flow CLI](cli.md),
+The emulator is bundled with the [Flow CLI](../flow-cli),
 a command-line interface for working with Flow.
 
 ### Installation
 
-Follow [these steps](cli.md) to install the Flow CLI.
+Follow [these steps](../flow-cli) to install the Flow CLI.
 
 ### Starting the server
 
@@ -54,7 +55,7 @@ Docker builds for the emulator are automatically built and pushed to
 ### Configuration
 
 In addition to using command-line flags, the emulator can also be configured
- with environment variables, which can be passed into the Docker image.
+with environment variables, which can be passed into the Docker image.
 
 Here's a sample configuration:
 
@@ -98,17 +99,17 @@ flow keys generate
 
 ## All Configuration Options
 
-| Environment Variable    | CLI Flag              | Default      | Description |
-|-------------------------|-----------------------|--------------|-------------|
-| FLOW_PORT               | `--port,-p`           | `3569`       | port to run RPC server |
-| FLOW_HTTPPORT           | `--http-port`         | `8080`       | port to run HTTP server |
-| FLOW_VERBOSE            | `--verbose,-v`        | `false`      | enable verbose logging |
-| FLOW_BLOCKTIME          | `--block-time,-b`     | `5s`         | time between sealed blocks |
-| FLOW_SERVICEPRIVATEKEY  | `--service-priv-key`  | optional     | service account private key |
-| FLOW_SERVICEPUBLICKEY   | `--service-pub-key`   | optional     | service account public key |
-| FLOW_SERVICEKEYSIGALGO  | `--service-sig-algo`  | `ECDSA_P256` | service account key signature algorithm |
-| FLOW_SERVICEKEYHASHALGO | `--service-hash-algo` | `SHA3_256`   | service account key hash algorithm |
-| FLOW_INIT               | `--init`              | `false`      | whether to initialize a new account profile |
+| Environment Variable    | CLI Flag              | Default      | Description                                               |
+| ----------------------- | --------------------- | ------------ | --------------------------------------------------------- |
+| FLOW_PORT               | `--port,-p`           | `3569`       | port to run RPC server                                    |
+| FLOW_HTTPPORT           | `--http-port`         | `8080`       | port to run HTTP server                                   |
+| FLOW_VERBOSE            | `--verbose,-v`        | `false`      | enable verbose logging                                    |
+| FLOW_BLOCKTIME          | `--block-time,-b`     | `5s`         | time between sealed blocks                                |
+| FLOW_SERVICEPRIVATEKEY  | `--service-priv-key`  | optional     | service account private key                               |
+| FLOW_SERVICEPUBLICKEY   | `--service-pub-key`   | optional     | service account public key                                |
+| FLOW_SERVICEKEYSIGALGO  | `--service-sig-algo`  | `ECDSA_P256` | service account key signature algorithm                   |
+| FLOW_SERVICEKEYHASHALGO | `--service-hash-algo` | `SHA3_256`   | service account key hash algorithm                        |
+| FLOW_INIT               | `--init`              | `false`      | whether to initialize a new account profile               |
 | FLOW_GRPCDEBUG          | `--grpc-debug`        | `false`      | enable gRPC server reflection for debugging with grpc_cli |
-| FLOW_PERSIST            | `--persist`           | `false`      | enable persistent storage |
-| FLOW_DBPATH             | `--dbpath`            | `./flowdb`   | path to database directory |
+| FLOW_PERSIST            | `--persist`           | `false`      | enable persistent storage                                 |
+| FLOW_DBPATH             | `--dbpath`            | `./flowdb`   | path to database directory                                |

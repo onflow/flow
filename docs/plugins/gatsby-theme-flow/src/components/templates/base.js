@@ -34,8 +34,6 @@ export default function BaseTemplate(props) {
     baseUrl,
   } = props.pageContext;
 
-  console.log(props.pageContext);
-
   const allHeadings = headings.concat(props.extraHeadings || []);
 
   const pages = sidebar.contents
