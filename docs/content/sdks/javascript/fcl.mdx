@@ -1,24 +1,15 @@
 ---
-title: Flow Client Library (FCL)
+title: Flow App Quickstart
+sidebar_title: Flow App Quickstart
 ---
 
-A high level abstraction (built on top of [@onflow/sdk](/sdks/javascript)) that enables development of browser based dApps.
-
-## Status
-
-- **Last Updated:** Nov 17th 2020
-- **Stable:** Yes
-- **Risk of Breaking Change:** Low
-
-The things that exists probably won't be changing much externally, we will be adding new functionality in the near future.
-
-## Install
+## Install `@onflow/fcl`
 
 ```shell
 npm install --save @onflow/fcl
 ```
 
-## Flow App Quickstart
+## Guide
 
 **Last Updated:** May 7th 2020
 
@@ -626,28 +617,7 @@ function App() {
 }
 ```
 
-# Moving to Production
-
-Our application is complete!
-
-To deploy your app, you'll need to modify your configuration. Once the Flow Mainnet is live you'll be able to obtain an production Access Node API url and API Key. More on this soon!
-
-```javascript
-if (process.env.NODE_ENV === "development") {
-  fcl
-    .config()
-    .put("challenge.handshake", "http://localhost:8701/flow/authenticate");
-}
-
-if (process.env.NODE_ENV === "production") {
-  fcl
-    .config()
-    .put("accessNode.api", process.env.ACCESS_NODE_API)
-    .put("accessNode.key", process.env.ACCESS_NODE_KEY);
-}
-```
-
-# Final Thoughts
+## Final Thoughts
 
 Congratulations you've completed a tour of the basic functionality of `@onflow/fcl` by completing the following tasks
 
@@ -655,6 +625,5 @@ Congratulations you've completed a tour of the basic functionality of `@onflow/f
 - Use `@onflow/fcl` to send scripts and transactions to the Flow blockchain emulator
 - Install and use the Flow blockchain emulator (`flow`)
 - Install and use the FCL Dev Wallet (`fcl-wallet`) to simulate connection between your app, `@onflow/fcl` and a user's 3rd party key management software
-- Configure `@onflow/fcl` for a production deployment
 
 Hopefully this give you a head start developing your idea on Flow! Thanks for reading.
