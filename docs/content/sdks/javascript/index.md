@@ -7,13 +7,6 @@ sidebar_title: Introduction
 
 All changes to a module will be reflected in the modules version number (including breaking changes) as a patch, until we are confident the module is working and stable, at which point we will release a `v1.0.0`. After a `v1.0.0` release of a module we will strictly follow SemVer.
 
-## Getting Started
-
-A quick start guide can be found [Here](https://github.com/onflow/flow-js-sdk/tree/master/packages/fcl#flow-app-quickstart).
-
-- The Flow CLIs [emulator](../../devtools/emulator) can be used to develop against locally.
-- We have a [React Example](https://github.com/onflow/flow-js-sdk/tree/master/examples/react-simple) application for you to poke around too. If you want to run it locally, you will need the emulator running with [this config](https://github.com/onflow/flow-js-sdk/blob/master/flow.json).
-
 ## Requirements
 
 Please note, that some code provided - e.g. `Object.fromEntries` - will require Node version `v12.0.0 or higher`.
