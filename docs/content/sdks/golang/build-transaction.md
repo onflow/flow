@@ -10,7 +10,7 @@ the transaction to mutate the state owned by specific accounts.
 
 You can read more about transactions in the [transaction lifecycle documentation](/concepts/transaction-lifecycle).
 
-## Create the transaction
+## Create the Transaction
 
 You can start by creating an empty transaction with the Go SDK. 
 We'll populate the remaining fields one by one.
@@ -98,7 +98,7 @@ func main() {
 }
 ```
 
-## Gas limit
+## Gas Limit
 
 A transaction must specify a limit on the amount of computation it requires,
 referred to as the _gas limit_. A transaction will abort if it exceeds its gas limit.
@@ -126,7 +126,7 @@ func main() {
 }
 ```
 
-## Reference block
+## Reference Block
 
 A transaction must specify an expiration window (measured in blocks) during which it is considered valid by the network. 
 A transaction will be rejected if it is submitted past its expiry block. 
@@ -163,7 +163,7 @@ func main() {
 }
 ```
 
-## Proposal key
+## Proposal Key
 
 A transaction must specify a [sequence number](/concepts/transaction-signing/#sequence-numbers)
 to prevent replays and other potential attacks.

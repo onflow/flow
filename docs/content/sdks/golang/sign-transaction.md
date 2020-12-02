@@ -42,7 +42,7 @@ if err != nil {
 }
 ```
 
-## How signatures work on Flow
+## How Signatures Work on Flow
 
 Flow introduces new concepts that allow for more flexibility when 
 creating and signing transactions. Before trying the examples below, 
