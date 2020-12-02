@@ -68,11 +68,11 @@ Transitioning to a rigorous staking protocol in which all slashable conditions a
 
 **Adjudication:** Consensus nodes evaluate the content of the collection, if the collection is found invalid, the Collection Node who signed the content is slashed.
 
-**1.3 Double Collection Proposal Witness (DCPW):** Collection nodes of a cluster run a mini consensus inside the cluster to decide on a collection, which requires collectors to propose the collection and aggregate votes from others. During the collection consensus, if a Collection Node proposes more than one proposal, any other Collection Node inside the cluster can report a Double Collection Proposal Witness (including both proposals).
+**1.3 Double Collection Proposal Witness (DCPW):** Collection nodes of a cluster run a mini consensus inside the cluster to decide on a collection, which requires Collection nodes to propose the collection and aggregate votes from others. During the collection consensus, if a Collection Node proposes more than one proposal, any other Collection Node inside the cluster can report a Double Collection Proposal Witness (including both proposals).
 
 **Adjudication: **Consensus nodes evaluate the content and signatures of these two proposals, and if the witness turns out to be valid, the Collection Node who proposed two collections will get slashed.
 
-**1.4 Double Collection Voting Witness (DCVW):** Collection nodes of a cluster run a mini consensus inside the cluster to decide on a collection, which requires collectors to propose the collection and aggregate votes from others. During the collection consensus, if a Collection Node votes for more than one collection proposal with identical collection number and size, any other Collection Node inside the cluster can report a Double Collection Voting Witness (including both votes).
+**1.4 Double Collection Voting Witness (DCVW):** Collection nodes of a cluster run a mini consensus inside the cluster to decide on a collection, which requires Collection nodes to propose the collection and aggregate votes from others. During the collection consensus, if a Collection Node votes for more than one collection proposal with identical collection number and size, any other Collection Node inside the cluster can report a Double Collection Voting Witness (including both votes).
 
 **Adjudication: **Consensus nodes evaluate the signatures of these two votes and evaluate them, and if the witness turns out to be valid, the Collection Node who voted two times will get slashed.
 
