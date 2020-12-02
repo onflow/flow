@@ -72,6 +72,13 @@ which track the following info:
     * Tokens Unstaked: Tokens that used to be committed or staked and have been unstaked.
     * Tokens Rewarded: Tokens that the user has received via staking rewards.
 
+<Callout type="warning">
+NOTE: The staking smart contract does not associate a node or delegator with an account address.
+It associates it with the assigned resource object that corresponds to that entry in the contract.
+There can be any number of these objects stored in the same account, and they can be moved to different accounts
+if the owner chooses.
+</Callout> 
+
 **Epoch:** The period of time between reward payments and changes in the identity table. (Initially a week)
 At the end of every epoch, insufficiently staked node operators are refunded their stake,
 rewards are paid to those who are currently staked, committed tokens are marked as staked, 
