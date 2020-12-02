@@ -20,10 +20,10 @@ on chain. You can find more details about address generation in the
 
 ## Prepare the public key
 
-Flow uses ECDSA keys to control access to user accounts. Each key pair can be used in combination 
-with the SHA2-256 or SHA3-256 hashing algorithms.
+Flow uses ECDSA key pairs to control access to user accounts. 
+Each key pair can be used in combination with the SHA2-256 or SHA3-256 hashing algorithms.
 
-To control your newly-created account, you'll need to authorize at least one public key.
+You'll need to authorize at least one public key to control your new account.
 
 ### Public key format
 
@@ -53,17 +53,17 @@ if err != nil {
 
 ### Define an account key
 
-A Flow account can contain zero or more public keys. These are referred to as account keys.
+A Flow account can contain zero or more public keys, referred to as account keys.
 
 An [account key](/concepts/accounts-and-keys/#keys) contains the following data:
 
-- Raw public key
+- Raw public key (described above)
 - Signature algorithm
 - Hash algorithm
 - Weight (integer between 0-1000)
 
-The `weight` field is used to support multi-sig functionality. 
-For this example we'll used a single account key with full weight.
+The `weight` field is used to support [multi-sig functionality](/concepts/accounts-and-keys/#weighted-keys). 
+This example uses a single account key with full weight.
 
 ```go
 import (
@@ -84,7 +84,9 @@ pay to submit that transaction to the network. We'll call this person the **acco
 
 ```go
 import (
+  "context"
   "github.com/onflow/flow-go-sdk"
+  "github.com/onflow/flow-go-sdk/client"
   "github.com/onflow/flow-go-sdk/crypto"
   "github.com/onflow/flow-go-sdk/templates"
 )
@@ -97,7 +99,7 @@ var (
 
 var accessAPIHost string
 
-// Establish a connection to an access node
+// Establish a connection with an access node
 flowClient, err := client.New(accessAPIHost)
 if err != nil {
   panic("failed to establish connection with Access API")
