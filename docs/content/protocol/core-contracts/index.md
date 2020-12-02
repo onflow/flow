@@ -9,7 +9,7 @@ Flow protocol.
 These contracts control the following:
 
 - Standard fungible token behavior
-- Default token behavior ([FlowToken](../flow-token)) 
+- Default token behavior ([FlowToken](./flow-token))
 - Account, transaction and storage fee payments
-- Staking and delegation ([FlowIDTableStaking](../flow-id-table-staking))
-- Token lock-ups ([LockedTokens](../locked-tokens))
+- Staking and delegation ([FlowIDTableStaking](./flow-id-table-staking))
+- Token lock-ups ([LockedTokens](./locked-tokens))

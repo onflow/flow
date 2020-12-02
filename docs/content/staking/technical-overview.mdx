@@ -12,9 +12,8 @@ description: How to use FLOW for staking and delegation
   staking or delegation.
 </Callout>
 <Callout type="warning">
-  If you haven't read the Intro to Flow Staking document, please read that
-  first. That document provides a non-technical overview of staking on Flow for
-  all users and is a necessary pre-requisite to this document.
+If you haven't read the Intro to Flow Staking document, please read that first. 
+That document provides a non-technical overview of staking on Flow for all users and is a necessary prerequisite to this document.
 </Callout>
 <Callout type="warning">
   This document assumes you have some technical knowledge about the Flow
@@ -26,7 +25,7 @@ description: How to use FLOW for staking and delegation
 This document describes the functionality of the [core identity table and staking smart contract](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc).
 It gives an overview of the process of staking, epochs, and delegation. It is an important prerequisite
 to understand before proceeding with any other technical integration or interaction with the Flow Protocol,
-but it is not step-by-step instructions for how to perform specific actions.
+but does not provide step-by-step instructions for how to perform specific actions.
 
 This document also describes how to read public staking data from the contract.
 Anyone with a Flow account on mainnet can read public data from the staking smart contract with these instructions.
@@ -36,7 +35,7 @@ directory. You can see the text of all the transactions used to interact with th
 
 ## Terminology
 
-If any of the definitions are confusing, you can find more detail in the contract docs below the terminology section.
+If any of the definitions are confusing, you can find more detail in the [Smart Contract Summary](#Smart-Contract-Summary)
 
 **Staker:** Any user who has staked tokens for the Flow network.
 A node operator is a staker, and a delegator is a staker as well.
@@ -53,7 +52,7 @@ The identity table keeps separate lists for the info about node operators and de
 which track the following info:
 
 - **Node Operators:**
-
+  
   - Node ID: 32 byte identifier for the node. Usually a hash of the node public key.
   - Role: Indicates what role the node operator is. (Collection, Consensus, Execution, Verification, Access)
   - Networking Address: The address that the node operator uses for networking.
@@ -75,6 +74,13 @@ which track the following info:
     are being held for an additional epoch holding period before being released.
   - Tokens Unstaked: Tokens that used to be committed or staked and have been unstaked.
   - Tokens Rewarded: Tokens that the user has received via staking rewards.
+
+<Callout type="warning">
+NOTE: The staking smart contract does not associate a node or delegator with an account address.
+It associates it with the assigned resource object that corresponds to that entry in the contract.
+There can be any number of these objects stored in the same account, and they can be moved to different accounts
+if the owner chooses.
+</Callout> 
 
 **Epoch:** The period of time between reward payments and changes in the identity table. (Initially a week)
 At the end of every epoch, insufficiently staked node operators are refunded their stake,
@@ -102,9 +108,9 @@ The Flow staking smart contract manages a record of stakers who have staked toke
 Users who want to stake can register with the staking contract at any time, and their tokens will
 be locked for staking until they request to unstake them.
 
-Before getting into the details of the contract, we need to discuss how time in Flow is organized.
-The operation of the Flow network is divided into epochs, which are week-long periods where various
-network maintenance operations are performed. The schedule of each epoch is exactly the same, though
+Before getting into the details of the contract, we need to discuss how time is organized on the Flow blockchain.
+The operation of the Flow network is divided into epochs, which are week-long periods in which various
+network maintenance operations are performed. The schedule for each epoch is exactly the same, though
 individual actions that users take in relation to staking with the network will be different.
 
 Epoch Schedule:
@@ -123,9 +129,9 @@ Initially, control of these phases will be managed manually by the Flow Token Ad
 but control will eventually be completely decentralized and managed by the node software, smart contracts,
 and democratically by all the stakers in the network.
 
-## Staking as a node operator
+## Staking as a Node Operator
 
-To stake for a node, node operators first need to generate their staking key,
+For a node to stake, node operators first need to generate their staking key,
 networking address, and networking key.
 
 The [node operation guide](https://docs.onflow.org/docs/node-operation-consolidated-guide)
@@ -206,7 +212,7 @@ transaction, providing the ID of the node operator they want to delegate to.
 This transactions stores the `NodeDelegator` object
 in the user's account, which is what they use to perform staking operations.
 
-Users are able to get a list of possible node ids to delegate to via on-chain scripts.
+Users are able to get a list of possible node IDs to delegate to via on-chain scripts.
 This information will also be provided off-chain, directly from the node operators or via
 third-party services. Flow is also planning on listing node IDs in a public place like Flow Port.
 
@@ -251,14 +257,14 @@ at which point they will be moved to the unstaked tokens pool.
 
 ### Withdraw Unstaked Tokens
 
-At any time, stakers are able to be freely withdraw from their unstaked tokens pool
+At any time, stakers are able to freely withdraw from their unstaked tokens pool
 with the **withdraw_unstaked** transaction.
 
 ### Withdraw Rewarded Tokens
 
-Staking rewards are paid at the end of every epoch based on how many tokens
+Staking rewards are paid out at the end of every epoch based on how many tokens
 are in a users `tokensStaked` pool. Every staker's rewards
-are deposited to their rewarded tokens pool. Rewards can be withdrawn
+are deposited into their rewarded tokens pool. Rewards can be withdrawn
 at any time by submitting the **withdraw_reward_tokens** transaction.
 
 These tokens are unlocked and can be transferred on-chain if desired, or re-staked.
@@ -300,7 +306,7 @@ There are various ways to retrieve information about the current state of the st
 `FlowIDTableStaking.getProposedNodeIDs()`: Returns an array of node IDs for proposed nodes.
 Proposed nodes are nodes that have enough staked and committed for the next epoch to be above the minimum requirement.
 
-You can use the **Get Proposed Table**([SC.05](../../protocol/core-contracts/flow-id-table-staking/#getting-staking-info)) script for retreiving this info.
+You can use the **Get Proposed Table**([SC.05](../../protocol/core-contracts/flow-id-table-staking/#getting-staking-info)) script for retrieving this info.
 
 This script requires no arguments.
 
@@ -309,7 +315,7 @@ This script requires no arguments.
 `FlowIDTableStaking.getStakedNodeIDs()`: Returns an array of nodeIDs that are currently staked.
 Staked nodes are nodes that currently have staked tokens above the minimum.
 
-You can use the **Get Current Table**([SC.04](../../protocol/core-contracts/flow-id-table-staking/#getting-staking-info)) script for retreiving this info.
+You can use the **Get Current Table**([SC.04](../../protocol/core-contracts/flow-id-table-staking/#getting-staking-info)) script for retrieving this info.
 
 This script requires no arguments.
 
@@ -356,7 +362,7 @@ script with the following arguments:
 
 `FlowIDTableStaking.getRewardCutPercentage(): UFix64`: Returns a `UFix64` number for the cut of delegator rewards that each node operator takes.
 
-You can use the **Get Cut Percentage**([SC.01](../transactions/#getting-staking-info)) script to retreive this info.
+You can use the **Get Cut Percentage**([SC.01](../transactions/#getting-staking-info)) script to retrieve this info.
 
 This script requires no arguments.
 
@@ -365,7 +371,7 @@ This script requires no arguments.
 `FlowIDTableStaking.getMinimumStakeRequirements(): {UInt8: UFix64}`: Returns a mapping
 for the stake requirements for each node type.
 
-You can use the **Get stake requirements**([SC.02](../../protocol/core-contracts/flow-id-table-staking/#getting-staking-info)) script to retreive this info.
+You can use the **Get stake requirements**([SC.02](../../protocol/core-contracts/flow-id-table-staking/#getting-staking-info)) script to retrieve this info.
 
 This script requires no arguments.
 
@@ -373,13 +379,13 @@ This script requires no arguments.
 
 `FlowIDTableStaking.getEpochTokenPayout(): UFix64`: Returns a `UFix64` value for the total number of FLOW paid out each epoch (week).
 
-You can use the **Get weekly payout**([SC.03](../../protocol/core-contracts/flow-id-table-staking/#getting-staking-info)) script to retreive this info.
+You can use the **Get weekly payout**([SC.03](../../protocol/core-contracts/flow-id-table-staking/#getting-staking-info)) script to retrieve this info.
 
 This script requires no arguments.
 
 ### Get the total FLOW staked:
 
-You can use the **Get total FLOW staked**([SC.06](../../protocol/core-contracts/flow-id-table-staking/#getting-staking-info)) script to retreive this info.
+You can use the **Get total FLOW staked**([SC.06](../../protocol/core-contracts/flow-id-table-staking/#getting-staking-info)) script to retrieve this info.
 
 This script requires no arguments.
 

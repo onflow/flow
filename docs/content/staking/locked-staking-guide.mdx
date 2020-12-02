@@ -29,7 +29,7 @@ transaction with the following arguments:
 |-----------------------|----------|-------------|
 | **id**                | `String` | The ID of the new node. It must be a 32 byte `String`. The operator is free to choose this value, but it must be unique across all nodes. A recommended process to generate this is to hash the staking public key. |
 | **role**              | `UInt8`  | The role of the new node. (1: collection, 2: consensus, 3: execution, 4: verification, 5: access) |
-| **networkingAddress** | `String` | The IP address the new node. |
+| **networkingAddress** | `String` | The IP address of the new node. |
 | **networkingKey**     | `String` | The networking public key as a hex-encoded string. |
 | **stakingKey**        | `String` | The staking public key as a hex-encoded string. |
 | **amount**            | `UFix64` | The number of FLOW tokens to stake. |
@@ -38,9 +38,13 @@ This transaction registers the account as a staker with the specified node infor
 and attaches a `NodeStakerProxy` capability to the `TokenHolder` resource. 
 This capability can later be used to perform staking actions.
 
-Once an account has registered as a staker with one node, they cannot register with any others. 
+Once an account has registered as a staker with one node, they cannot register any additional nodes. 
 For more information, see [Stake Multiple Nodes from the Same Account](#stake-multiple-nodes-from-the-same-account) below.
 This feature will be added in the future.
+
+An account can use this transaction to register a different node that replaces the old node, but only if they have withdrawn
+ALL tokens for their node from their record in the staking contract. If there are any tokens remaining,
+the re-registration will fail. This is because the registration overwrites the old one, which would revoke access to their tokens.
 
 # Staking Actions
 
@@ -159,3 +163,8 @@ If a token holder wants to create a second staking relationship, they must creat
 and transfer their locked tokens to the new account by requesting authorization from the token admin.
 
 We plan on adding functionality in the future to allow accounts to stake to multiple nodes.
+
+## Delegate from the Same Account
+
+An account that registers a node with locked FLOW can also register as a delegator from the same account. 
+See the [Locked Delegation Guide](../locked-delegation-guide) for how to register a delegator.
