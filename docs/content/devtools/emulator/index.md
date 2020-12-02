@@ -1,6 +1,5 @@
 ---
 title: Flow Emulator
-sidebar_title: Using the Flow Emulator
 description: A development tool that looks, acts and talks like Flow
 sidebar_title: Introduction
 ---
