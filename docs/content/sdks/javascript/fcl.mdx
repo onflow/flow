@@ -297,7 +297,7 @@ function App() {
 
 ## Run a Cadence Script
 
-Cadence scripts allow you to run computations on Flow that are not recorded on the blockchain. You'll mainly use scripts as a way of querying Flow for information about accounts and their **[resources](notion://www.notion.so/dapperlabs/resources).** A script is not signed by any account and cannot modify an account's state.
+Cadence scripts allow you to run computations on Flow that are not recorded on the blockchain. You'll mainly use scripts as a way of querying Flow for information about accounts and their **[resources](/tutorial/cadence/03-fungible-tokens/#intuiting-ownership-with-resources).** A script is not signed by any account and cannot modify an account's state.
 
 ### Simple Script
 
@@ -377,7 +377,7 @@ Go ahead and test out your new script!
 
 ### Query Flow Accounts
 
-A common use for Cadence scripts is to acquire information about a Flow account's public state and its **[resources](notion://www.notion.so/dapperlabs/resources)**. Here is an example of a script you might use to query and use another account's public resources.
+A common use for Cadence scripts is to acquire information about a Flow account's public state and its **[resources](/tutorial/cadence/03-fungible-tokens/#intuiting-ownership-with-resources)**. Here is an example of a script you might use to query and use another account's public resources.
 
 ```javascript
 const response = await fcl.send([
