@@ -213,7 +213,7 @@ export default function PageContent(props) {
         {editLink}
         {props.discourseUrl && (
           <AsideLink href={props.discourseUrl}>
-            <IconDiscourse /> Discuss on Discourse
+            <IconDiscourse /> Discuss in Forum
           </AsideLink>
         )}
         {props.playgroundUrl && (

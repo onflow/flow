@@ -59,29 +59,29 @@ module.exports = ({
       resolve: "gatsby-remark-vscode-flow",
       options: {
         languageScopes: {
-          'cadence': 'source.cadence',
-          'powershell': 'source.powershell',
-          'javascript': 'source.ts',
-          'typescript': 'source.ts',
-          'js': 'source.ts',
-          'ts': 'source.ts',
-          'shell': 'source.shell',
-          'sh': 'source.shell',
-          'go': 'source.go',
-          'json': 'source.json',
-          'protobuf': 'source.proto',
-          'proto': 'source.proto'
+          cadence: "source.cadence",
+          powershell: "source.powershell",
+          javascript: "source.ts",
+          typescript: "source.ts",
+          js: "source.ts",
+          ts: "source.ts",
+          shell: "source.shell",
+          sh: "source.shell",
+          go: "source.go",
+          json: "source.json",
+          protobuf: "source.proto",
+          proto: "source.proto",
         },
         grammarPaths: [
-          path.resolve(__dirname, 'cadence.tmGrammar.json'),
-          path.resolve(__dirname, 'powershell.tmLanguage.json'),
-          path.resolve(__dirname, 'ts.tmLanguage.json'),
-          path.resolve(__dirname, 'go.tmLanguage.json'),
-          path.resolve(__dirname, 'shell-unix-bash.tmLanguage.json'),
-          path.resolve(__dirname, 'json.tmLanguage.json'),
-          path.resolve(__dirname, 'proto3.tmLanguage.json'),
+          path.resolve(__dirname, "cadence.tmGrammar.json"),
+          path.resolve(__dirname, "powershell.tmLanguage.json"),
+          path.resolve(__dirname, "ts.tmLanguage.json"),
+          path.resolve(__dirname, "go.tmLanguage.json"),
+          path.resolve(__dirname, "shell-unix-bash.tmLanguage.json"),
+          path.resolve(__dirname, "json.tmLanguage.json"),
+          path.resolve(__dirname, "proto3.tmLanguage.json"),
         ],
-        themePath: path.resolve(__dirname, 'light_vs.json'),
+        themePath: path.resolve(__dirname, "light_vs.json"),
       },
     },
     {
@@ -94,6 +94,7 @@ module.exports = ({
     "gatsby-plugin-svgr",
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
+
     {
       resolve: "gatsby-plugin-less",
       options: {
@@ -116,8 +117,8 @@ module.exports = ({
       options: {
         name: "cadence",
         remote: "https://github.com/onflow/cadence.git",
-        patterns: "docs/language/**/*"
-      }
+        patterns: "docs/language/**/*",
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
