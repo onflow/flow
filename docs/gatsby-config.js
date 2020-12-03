@@ -85,6 +85,7 @@ const sections = [
     sidebar: {
       null: [
         "[FLOW Token](/token)",
+        "[Dapp Deployment Guide](/guides/dapp-deployment)",
         "[Staking & Delegating](/staking)",
         "[Node Operation](/node-operation)",
         "[Core Contracts](/protocol/core-contracts)",
@@ -159,7 +160,7 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["concepts/**/*"],
+    patterns: ["concepts/flow-concepts/testnet/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
@@ -180,6 +181,21 @@ const sections = [
         "protocol/core-contracts/locked-tokens",
       ],
       "Developer Guides": ["protocol/access-api"],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["guides/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: ["[Home](/)"],
+      "Dapp Deployment Guide": [
+        "guides/dapp-deployment/index",
+        "guides/dapp-deployment/contract-testing",
+        "guides/dapp-deployment/testnet-deployment",
+        "guides/dapp-deployment/testnet-testing",
+        "guides/dapp-deployment/mainnet-deployment",
+      ],
     },
   },
   {
