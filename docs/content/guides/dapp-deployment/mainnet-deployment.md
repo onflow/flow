@@ -21,7 +21,7 @@ A version compatibility table can be found here. This will help you navigate ver
 
 "Sporking" (soft forking) is the process of upgrading Flow network node software, and migrating the state from the previous version.
 
-Currently, **historical event data is not migrated between sporks,** so you'll need to design your application with this in mind**.** We recognize the usefulness of historical event data and plan on adding a means of accessing it in the near future.
+Currently, **historical event data is not migrated between sporks,** so you'll need to design your application with this in mind. We recognize the usefulness of historical event data and plan on adding a means of accessing it in the near future.
 
 ### "Real Value" on Mainnet
 
