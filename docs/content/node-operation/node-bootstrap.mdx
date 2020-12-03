@@ -137,11 +137,19 @@ Uploaded 400 bytes
 
 Stake your node via [Flow Port](https://port.onflow.org/)
 
-<Callout type="info">
+The `node details` (`Node ID`, `Network Address`, `Networking Key` and `Staking Key`) that need to be submitted when staking the node on Flow Port, can be found in the file: `./bootstrap/public-root-information/node-info.pub.<nodeinfo>`.
 
-Please submit the same staking and the networking key generated in Step 1 on the Flow Port.
-
-</Callout>
+```shell:title=Example
+$cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
+{
+  "Role": "consensus",
+  "Address": "198.123.42.10:3569",
+  "NodeID": "39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a",
+  "Stake": 1000,
+  "NetworkPubKey": "d92e3d5880abe233cf9fe9104db34bbb31251468a541454722b3870c04156a1b0504aef443bcaad124b997384b8fe7052847ce1e6189af1392d865e6be69835b",
+  "StakingPubKey": "917826e018f056a00b778a58ae83054906957ffd4b6f1b7da083551f7a9f35e02b76ace50424ed7d2c9fc69207a59f0f08a031048f5641db94e77d0648b24d150dedd54bab7cd44b4aa60cfd54be418647b0b3965f8ae54c0bcb48ae9d705162"
+}
+```
 
 ## Step 3 - Getting Ready to Start your Flow Node
 
