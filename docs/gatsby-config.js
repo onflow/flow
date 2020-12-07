@@ -85,10 +85,10 @@ const sections = [
     sidebar: {
       null: [
         "[FLOW Token](/token)",
-        "[Dapp Deployment Guide](/guides/dapp-deployment)",
         "[Staking & Delegating](/staking)",
-        "[Node Operation](/node-operation)",
         "[Core Contracts](/protocol/core-contracts)",
+        "[Dapp Deployment Guide](/guides/dapp-deployment)",
+        "[Node Operation](/node-operation)",
         "intro/glossary",
         "intro/FAQ",
       ],
@@ -226,7 +226,8 @@ const sections = [
         "staking/stake-slashing",
         "staking/faq",
       ],
-      "Developer Guides": [
+      "Custody Providers": ["staking/custody-providers"],
+      "Manual Staking Guides": [
         "staking/technical-overview",
         "staking/locked-delegation-guide",
         "staking/locked-staking-guide",
