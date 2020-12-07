@@ -113,7 +113,7 @@ Below are the various options you can choose. Please be aware, that at this time
 ## FAQs
   1. Why do I have multiple 'Keys' on my account? 
   
-     - a.) If you created your account with Blocto, you will see that you have multiple keys that exist on your account in the 'Dashboard': 
+     If you created your account with Blocto, you will see that you have multiple keys that exist on your account in the 'Dashboard': 
      
      1 with weight 1 (device key): This is generated on Blocto and sent to users' device when they login  with email.
      1 with weight 999 (Blocto service key): This is kept in Blocto's secure key management service and is used to sign transaction.
