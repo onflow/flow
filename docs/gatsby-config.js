@@ -211,7 +211,6 @@ const sections = [
         "token/delivery",
         "token/faq",
       ],
-      "Developer Guides": ["token/locked-account-setup"],
     },
   },
   {
@@ -246,12 +245,16 @@ const sections = [
         "node-operation/index",
         "node-operation/node-setup",
         "node-operation/node-roles",
+        "node-operation/faq",
       ],
       "Operator Guides": [
         "node-operation/node-bootstrap",
         "node-operation/monitoring-nodes",
-        "node-operation/faq",
         "node-operation/spork",
+      ],
+      "Token Delivery": [
+        "node-operation/locked-account-setup",
+        "node-operation/leased-account-setup",
       ],
     },
   },

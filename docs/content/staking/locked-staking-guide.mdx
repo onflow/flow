@@ -12,15 +12,15 @@ This guide covers staking with **locked FLOW tokens**.
 A separate guide for unlocked tokens will be published at a later date.
 </Callout>
 
-# Setup
+## Setup
 
-## Prerequisites
+### Prerequisites
 
 The token holder must [configure their account to hold locked FLOW](/token/locked-account-setup) 
 before they are able to complete the steps below. After this is complete, 
 the `LockedTokens.TokenHolder` can be used to perform staking operations from the account.
 
-## Register a New Staked Node
+### Register a New Staked Node
 
 To register as a staker, the token holder can use the **Register Node** ([TH.06](/protocol/core-contracts/locked-tokens/#token-holder))
 transaction with the following arguments:
@@ -46,7 +46,7 @@ An account can use this transaction to register a different node that replaces t
 ALL tokens for their node from their record in the staking contract. If there are any tokens remaining,
 the re-registration will fail. This is because the registration overwrites the old one, which would revoke access to their tokens.
 
-# Staking Actions
+---
 
 Once the token holder has registered their node,
 their tokens and node information are committed to the central staking contract for the next epoch.
