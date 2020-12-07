@@ -128,12 +128,12 @@ Below are the various options you can choose. Please be aware, that at this time
 
   3. Where can I find a list of node operators to delegate to?
   
-     - a.) Please see a list here (Coming soon!) for all node operators that you can delegate to. This list will be updated as new node operators are onboared onto the network.
+     - a.) Please see a list here (Coming soon!) for all node operators that you can delegate to. This list will be updated as new node operators are onboarded onto the network.
      
-  4. I am currently running a node on the network already and have already gone through the staking process once. Do I need to execute a new stake everytime there is a new epoch?
+  4. I am currently running a node on the network already and have already gone through the staking process once. Do I need to execute a new stake every time there is a new epoch?
   
        - a.) Once you successfully stake your node and become part of the network, you do not need to submit a new staking request each and every epoch. Your node will be automatically staked from epoch to epoch. This also means that your Node ID will remain the same from epoch to epoch. If you want to unstake your node from the network, then you will follow the process of unstaking your node. 
        
   5. I have a Blocto account and I see that I can stake both in Flow Port and in Blocto's mobile app. What is the difference?
   
-       - a.) If you go through Flow Port, you can choose any node operator within the Flow network to delegate any amount of your Flow Tokens to. If you go through Blocto's mobile site, you will only be able to stake to Blocto run nodes. You can read more about Blocto's staking process by referencing [here] (https://guide.blocto.app/article/stake-flow-tokens-step-by-step-with-blocto).
+       - a.) If you go through Flow Port, you can choose any node operator within the Flow network to delegate any amount of your Flow Tokens to. If you go through Blocto's mobile site, you will only be able to stake to Blocto run nodes. You can read more about Blocto's staking process by referencing [here](https://guide.blocto.app/article/stake-flow-tokens-step-by-step-with-blocto).
