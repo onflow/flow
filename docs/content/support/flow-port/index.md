@@ -9,14 +9,19 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 #### Before You Start
 
  1. If you already have an existing Blocto Account, [navigate to this link](https://blocto.app.link/flow-distribution) to finish setting up your account to ensure tokens can be delivered to it.
- 2. If you do not have an existing Blocto Account, you have 2 different ways to create one: 1) Through Flow Port and 2) Through Blocto's mobile application. Below are instructions of how to do this in Flow Port.
+ 
+ 2. If you do not have an existing Blocto Account, you have 2 different ways to create one: a) Through Flow Port and b) Through Blocto's mobile application. Below are instructions of how to do this in Flow Port.
 
 #### Creating Account through Flow Port: Navigate to Flow Port
  
  1. Using Google Chrome, Navigate to [Flow Port](https://port.onflow.org/).
+ 
  2. Click on 'Sign Up'
- 3. Click on Blocto. Please disable any ad blockers you have before logging in using Blocto:
+ 
+ 3. Click on Blocto. Please disable any ad blockers you have before logging in using Blocto
+ 
  4. Follow the user interface prompts to create a new Flow Account Address.
+ 
  5. After you create your account, you should be logged into Flow Port. You can now see your account address in Flow Port
 
 ### Ledger
@@ -24,28 +29,36 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 
  1. Ensure you have:
  
-   - a.) [Ledger Live](https://support.ledger.com/hc/en-us/articles/360006395553) installed on your computer.
-   - b.) [Initialized](https://support.ledger.com/hc/en-us/articles/360000613793) your Ledger Device.
+     - a.) [Ledger Live](https://support.ledger.com/hc/en-us/articles/360006395553) installed on your computer
+
+     - b.) [Initialized](https://support.ledger.com/hc/en-us/articles/360000613793) your Ledger Device.
 
 #### Install the Flow App
 
  1. Connect your Ledger Device to your computer and open Ledger Live.
- 2. Make sure your Ledger device firmware is completely up to date. You can check this by clicking on **‘Manager’** from the side navigation bar.  Choose to install the update if there is one.
- 
-   - a.) NOTE: Sometimes the install option doesn't show up, or it is not clickable. If this is the case, wait for a little bit of time to see if it appears, or restart the Ledger Live app if necessary.
-   
- 4. Go to the Manager screen in Ledger Live and search for ‘Flow’.
- 5. You should see the Flow app. Install it and follow the instructions on the device.
- 
-   - a.) NOTE: If the Flow app does not appear, it may be because your device is using an outdated firmware version. 
 
-### Navigate to Flow Port to Create an Address
+ 2. Make sure your Ledger device firmware is up to date. You can check this by clicking on **‘Manager’** from the side navigation bar. Choose to install the update if one is available
+
+     - a.) NOTE: Sometimes the install option doesn't show up, or it is not clickable. If this is the case, wait for a little bit of time to see if it appears, or restart the ledger live app if necessary.
+
+ 3. On the Manager screen in Ledger Live and search for ‘Flow’.
+
+ 4. You should see the Flow App. Install it and follow the instructions on the device.
+
+     - a.) NOTE: If the Flow App does not appear, it may be because you are on an outdated version. Please ensure you are on the most updated version.
+
+#### Navigate to Flow Port to Create an Address
 
  1. Navigate to [Flow Port](https://port.onflow.org/).
+ 
  2. Click on 'Sign Up' if you need to create a new Flow Account.
+ 
  3. Click on Ledger.
+ 
  4. Follow the prompts on the screen. Plug in your Ledger device and open the Flow App.
+ 
  5. Click on Create an account. Follow the prompts on your Ledger device.
+ 
  6. Once your account address is created, you will be automatically logged into Flow Port.
 
 ## Staking & Delegating
@@ -59,7 +72,9 @@ If you are using a custody provider who controls your account and private keys f
 
 ### Starting a Manual Staking Transaction
  1. You need to have FLOW in order to stake. Please see the [FLOW Token](/token) reference for information on how to become a FLOW holder.
+ 
  2. Once you have FLOW tokens in your account, you can start staking through [Flow Port](https://port.onflow.org/) or, if applicable, with your [custody provider](#staking-via-a-custody-provider).
+ 
  3. If you are using Flow Port, log-in with your Flow account address and navigate to the Stake/Delegate page. See the Manual Staking/Delegating section below for more information about what to do next.
 
 ### Manual Staking/Delegating
@@ -71,13 +86,19 @@ Below are the various options you can choose. Please be aware, that at this time
 
 ### Staking your own Node
   1. Once you have navigated to the staking/delegating page in Flow Port, click on the 'Stake a Node' option.
+  
   2. Next, select the type of node you will be running.
+  
   3. Input the amount of Flow you wish to stake with that node. You must stake at least the minimum in order for your stake request to be successfully processed. You are able to provide the minimum stake across multiple transactions. Meaning, you could execute your stake transaction with half of the minumum required. Then, before the next epoch, you can choose to 'Add Flow' to that pending stake to get it to the minimum stake required.  
+  
   4. Run the [bootstrapping instructions](https://docs.onflow.org/node-operation/node-bootstrap/) and provide the remaining technical details needed to stake a node.
 
 ### Delegating (Coming soon!)
   1. Once you have navigated to the staking/delegating page in Flow Port, click on the Delegate option.
+  
   2. Next, you will specify which node operator you would like to delegate to and how many tokens you want to delegate to them. 
+  
+  3. Execute the transaction. You will now see your pending delegation that will be processed during the next epoch.
 
 ## I have successfully executed a Stake Transaction, now what?
   - Now that you have executed a stake transaction in either Flow Port or your custody provider’s portal, that transaction will now sit in a pending status until it is processed, which will be at the next Epoch Date (which is currently weekly). 
@@ -89,3 +110,30 @@ Below are the various options you can choose. Please be aware, that at this time
   - Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this actions will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next Epoch.
   - Request to be unstaked from the network. The unstake request will sit in a pening status for two epochs. Once it is processed, the amount that has been unstaked will sit in your unstaked FLOW amount and can now be withdrawn or re-staked.
   
+## FAQs
+  1. Why do I have multiple 'Keys' on my account? 
+  
+     If you created your account with Blocto, you will see that you have multiple keys that exist on your account in the 'Dashboard': 
+     
+     1 with weight 1 (device key): This is generated on Blocto and sent to users' device when they login  with email.
+     1 with weight 999 (Blocto service key): This is kept in Blocto's secure key management service and is used to sign transaction.
+     1 with weight 1000 (recovery key): This is kept in Blocto's secure key management service and is only used when user wants to switch to non-custodial mode.
+     
+     Normally if a user wants to send a Flow transaction, it requires signature from both the key on users' device and a key from Blocto service. Making it harder for hackers to steal your assets.
+     
+  2. Locked vs. Unlocked FLOW: What is the difference and what can I do with each?
+  
+     - a.) Locked FLOW: If you have locked FLOW, you can choose to either stake or delegate it and earn rewards based off of these actions. You cannot send locked FLOW to other accounts.
+     - b.) Unlocked FLOW: If you have unlocked FLOW, you can stake, delegate, and send this FLOW to other accounts. Rewards are considered 'unlocked FLOW'. 
+
+  3. Where can I find a list of node operators to delegate to?
+  
+     - a.) Please see a list here (Coming soon!) for all node operators that you can delegate to. This list will be updated as new node operators are onboarded onto the network.
+     
+  4. I am currently running a node on the network already and have already gone through the staking process once. Do I need to execute a new stake every time there is a new epoch?
+  
+       - a.) Once you successfully stake your node and become part of the network, you do not need to submit a new staking request each and every epoch. Your node will be automatically staked from epoch to epoch. This also means that your Node ID will remain the same from epoch to epoch. If you want to unstake your node from the network, then you will follow the process of unstaking your node. 
+       
+  5. I have a Blocto account and I see that I can stake both in Flow Port and in Blocto's mobile app. What is the difference?
+  
+       - a.) If you go through Flow Port, you can choose any node operator within the Flow network to delegate any amount of your Flow Tokens to. If you go through Blocto's mobile site, you will only be able to stake to Blocto run nodes. You can read more about Blocto's staking process by referencing [here](https://guide.blocto.app/article/stake-flow-tokens-step-by-step-with-blocto).
