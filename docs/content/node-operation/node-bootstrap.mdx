@@ -30,12 +30,19 @@ updated configuration.
 ### Download the Bootstrapping Kit
 
 <Callout type="warning">
-If you have downloaded the bootstrapping kit previously, ensure that you do this step again to get the latest copy of the bootstrapping kit
+If you have downloaded the bootstrapping kit previously, ensure that you do this step again to get the latest copy of the bootstrapping kit since have made some significant changes to it.
 </Callout>
 
 ```shell
 curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
 tar -xvf boot-tools.tar
+```
+```shell:title=CheckMD5
+md5sum ./boot-tools/bootstrap
+67e086be7c413a10ec92aae42f3c882a  ./boot-tools/bootstrap
+
+md5sum ./boot-tools/transit
+694e03194016d6b954a3ec5cedc2c5c2  ./boot-tools/transit
 ```
 
 ### Generating your Node ID
