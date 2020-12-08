@@ -63,7 +63,7 @@ If you are using a custody provider who controls your account and private keys f
  3. If you are using Flow Port, log-in with your Flow account address and navigate to the Stake/Delegate page. See the Manual Staking/Delegating section below for more information about what to do next.
 
 ### Manual Staking/Delegating
-If you are not using a custody provider, there is more responsibility that you have to accept, because you have complete control of your tokens. You need to ensure that you are well informed about the staking process and potentially node operation process because you will have to manage those on your own. Please read the [staking documentation](https://docs.onflow.org/staking/) before continuing with this guide.
+If you are not using a custody provider, there is more responsibility that you have to accept, because you have complete control of your tokens. You need to ensure that you are well informed about the staking process and potentially node operation process because you will have to manage those on your own. Please read the [staking documentation](/staking/) before continuing with this guide.
 
 Below are the various options you can choose. Please be aware, that at this time you can only have 1 stake or 1 delegate per account. This means that if you want to do multiple stakes, multiple delegates, or a mixture of stakes and delegates, you will need to create multiple accounts to do so. Please read them carefully as it will help you understand which route is best for your situation:
 - Staking your own Node: You are responsible for running and maintaining a Flow Node. You are also solely responsible for providing the minimum stake for your   selected node (minimum 135,000 FLOW) and you have the technical know-how and bandwidth to run and operate a node in the Flow protocol. 
@@ -80,12 +80,12 @@ Below are the various options you can choose. Please be aware, that at this time
   2. Next, you will specify which node operator you would like to delegate to and how many tokens you want to delegate to them. 
 
 ## I have successfully executed a Stake Transaction, now what?
-  - Now that you have executed a stake transaction in either Flow Port or your custody provider’s portal, that transaction will now sit in a pending status until it is processed, which will be at the next Epoch Date (which is currently weekly). 
-  - During the next Epoch, the transaction will be processed. If successful, the provided FLOW will be staked and the associated Node would be either a) included in the network protocol if it is a new node or b) continue to operate as is in the network protocol. 
+  - Now that you have executed a stake transaction in either Flow Port or your custody provider’s portal, that transaction will sit in a pending status until it is processed, which will be at the next [Epoch](/staking/#epochs) Date (which is currently weekly). 
+  - During the next [Epoch](/staking/#epochs), the transaction will be processed. If successful, the provided FLOW will be staked and the associated Node would be either **a)** included in the network protocol if it is a new node or **b)** continue to operate as is in the network protocol. 
   - You are now a part of Flow, and will begin to earn rewards for being a valued member of the network! 
   
-### You have variable options at this point to:
+## What else can I do?
   - Add additional stake to your existing stake. Any added FLOW will again sit in a pending status and be processed at the next epoch.
-  - Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this actions will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next Epoch.
-  - Request to be unstaked from the network. The unstake request will sit in a pening status for two epochs. Once it is processed, the amount that has been unstaked will sit in your unstaked FLOW amount and can now be withdrawn or re-staked.
+  - Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this actions will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next [Epoch](/staking/#epochs).
+  - Request to be unstaked from the network. The unstake request will sit in a pending status for two epochs. Once it is processed, the amount that has been unstaked will sit in your unstaked FLOW amount and can now be withdrawn or re-staked.
   

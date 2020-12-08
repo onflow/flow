@@ -41,9 +41,7 @@ account belongs to the lease provider (1000 weight). Any transactions that direc
 by this key.
 
 The **User Account** will include an object that manages access to 
-the staking functionality contained in the shared account.
-The user submits token withdrawal and staking transactions with locked tokens
-with their normal account, without the need for a signature from the token admin.
+the staking functionality contained in the lease admin account.
 
 ## Setup
 
@@ -81,23 +79,19 @@ that was configured in the previous transaction.
 ## Account Creation
 
 When a custodian uses these transactions, they must also ensure that 
-the token admin knows which account addresses map to which users. This is so 
-the token admin knows how much to pay to each locked account
-and how many tokens to unlock via the vesting schedule.
+the token admin knows which account addresses map to which users. THis is so the token 
+admin knows which accounts correspond to which lease recipient. 
 
 ### 1. Create Both Accounts for the User
 
 If your user does not have a regular account created for them yet, you must 
-create both accounts using the **Create Shared Accounts** ([C.02](/protocol/core-contracts/locked-tokens/#custodian))
+create both accounts using the **Create Shared Lease Accounts** ([C.02](/protocol/core-contracts/locked-tokens/#custodian))
 transaction with the following arguments:
 
 <!-- | Argument                  | Type      | Description |
 |---------------------------|-----------|-------------|
-| **partialAdminPublicKey** | `[UInt8]` | The public key of the token admin. Must be Weight: 100 |
-| **partialUserPublicKey**  | `[UInt8]` | The public key of the user. Must be Weight: 900 |
-| **fullUserPublicKey**     | `[UInt8]` | The public key of the user. Must be Weight: 1000 | -->
+| **adminPublicKey** | `[UInt8]` | The public key of the token admin. Must be Weight: 1000 | -->
 
-TODO: Key setup for leased token account.
 
 ### 2. Create the Shared Account for an Existing User Account
 
