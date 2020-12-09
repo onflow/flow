@@ -35,27 +35,22 @@ Hence, a utility cannot be used to generate a Flow address since it cannot be us
 
 ### Is the wallet key transferred to the staked or delegated node?
 
-No- The keys on the node are different from the wallet keys. The wallet keys always stay in the wallet.
+No - The keys on the node are different from the wallet keys. The wallet keys always stay in the wallet.
 A node operator generates the staking and networking keys separately which will be used on the node.
 
 ### Can I stake through multiple accounts to meet the minimum FLOW required for staking a node?
 
-No, the minimum staking FLOW should come from a single account for all node type except for the consensus node.
-The minimum for consensus nodes can cumulatively come from a combination a staking account and a delegation account.
+No, the minimum stake must come from a single account for all node types. Temporarily, the minimum for consensus nodes can come from a combination of a staking and delegation action from two accounts controlled by the same party. 
 
 ### How can I reach the Consensus node minimum stake of 500K FLOW
 
-The consensus node min 500K FLOW can be reached cumulatively with any combination of a lease and delegation. e.g. lease 250K and then delegate the remaining 250K.
+The consensus node minimum of 500K FLOW can be met with a minimum 250,000 FLOW action and additional delegation from the same entity. 
 
 ### Is rewards payout another spork?
 
 No, rewards payout is not a spork but (currently) a separate transaction that we initiate.
 
-### Are leased tokens technically owned by the recipient or are they still considered leased after being staked?
+### How do FLOW leases work?
 
-DapperLabs has possession of the private keys for the account where the leased tokens are held, so technically DapperLabs has ownership of them.
-The recipient of the leased tokens however has the ability to stake them for their nodes, but don't have the ability to withdraw them or do anything else with them.
+A FLOW lease from Dapper Labs gives an individual access to funds for the purpose of staking. These funds are controlled by Dapper Labs and accessible only to the individual for the purposes of staking. When the FLOW is staked, it is technically in the custody of the protocol - as with any other staked FLOW.
 
-### How long will tokens be leased to us?
-
-1 year with the opportunity to extend to 2 years
