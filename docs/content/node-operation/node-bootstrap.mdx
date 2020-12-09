@@ -217,7 +217,7 @@ The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info
    `./boot-tools/transit -pull -d ./bootstrap -t ${PULL_TOKEN} -role ${YOUR_NODE_TYPE}`
 
 ```shell:title=Example
-$ ./boot-tools/transit -pull -d ./bootstrap -t mainnet-2  -role consensus
+$ ./boot-tools/transit -pull -d ./bootstrap -t mainnet-3  -role consensus
 Transit script Commit: a9f6522855e119ad832a97f8b7bce555a163e490
 2020/11/25 01:02:53 Running pull
 2020/11/25 01:02:53 Downloading bootstrap/public-root-information/node-infos.pub.json
@@ -270,7 +270,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/access:v0.11.1 \
+	gcr.io/flow-container-registry/access:v0.12.6 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -290,7 +290,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/collection:v0.11.1 \
+	gcr.io/flow-container-registry/collection:v0.12.6 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -307,7 +307,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/consensus:v0.11.1 \
+	gcr.io/flow-container-registry/consensus:v0.12.6 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -323,7 +323,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/execution:v0.11.1 \
+	gcr.io/flow-container-registry/execution:v0.12.6 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -341,7 +341,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/verification:v0.11.1 \
+	gcr.io/flow-container-registry/verification:v0.12.6 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
