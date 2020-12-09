@@ -14,15 +14,17 @@ export default function NotFound() {
     >
       <h1
         style={{
-          padding: "2rem",
+          paddingTop: "2rem",
         }}
       >
-        Sorry, this page does not exist.
+        Oh, awkward. There is no page here.
       </h1>
-      <img
-        styles={{ display: "block", width: "400px" }}
-        src="https://port.onflow.org/static/media/logogif.c74463f5.gif"
-      />
+      <div style={{ width: "600px", height: "400px" }}>
+        <img
+          style={{ maxWidth: "100%" }}
+          src="https://port.onflow.org/static/media/logogif.c74463f5.gif"
+        />
+      </div>
     </div>
   );
 }
