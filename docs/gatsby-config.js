@@ -93,7 +93,7 @@ const sections = [
         "intro/FAQ",
       ],
       "Community Updates": ["updates/oct-6-2020", "updates/sep-16-2020"],
-      Support: ["support/flow-port/index"],
+      Support: ["support/flow-port/index", "support/flow-port/staking-guide"],
     },
   },
   {
@@ -211,9 +211,7 @@ const sections = [
         "token/delivery",
         "token/faq",
       ],
-      "Token Delivery": [
-        "token/locked-account-setup"
-      ],
+      "Token Delivery": ["token/locked-account-setup"],
     },
   },
   {
