@@ -442,14 +442,16 @@ transaction {
 
     // Use the capability's borrow method to create a new reference
     // to the object that the capability links to
+    // We use optional chaining "??" to get the value because 
+    // the value we are accessing is an optional. If the optional is nil,
+    // the panic will happen with a descriptive error message
     let helloReference = capability!.borrow()
+      ?? panic("Could not borrow a reference to the hello capability")
 
-    // Call the hello function using the reference
+    // Call the hello function using the reference 
     // to the HelloAsset resource.
     //
-    // We use the "?" symbol because
-    // the value we are accessing is an optional.
-    log(helloReference?.hello())
+    log(helloReference.hello())
   }
 }
 ```
@@ -461,7 +463,9 @@ transaction {
 
 </Callout>
 
-You should see `"Hello, World"` show up in the console again. This is because we created a capability for the `HelloAsset` object, stored the capability in `/public/Hello`, borrowed a reference from the capability, and used our reference to call the `hello` method of the object.
+You should see `"Hello, World"` show up in the console again. This is because we created a capability for the `HelloAsset` object, 
+stored the capability in `/public/Hello`, borrowed a reference from the capability, 
+and used our reference to call the `hello` method of the object.
 
 Let's break down what is happening in this transaction.
 
@@ -471,22 +475,37 @@ First, we create a capability that is linked to the private `HelloAsset` object 
 let capability = account.link<&HelloWorld.HelloAsset>(/public/Hello, target: /storage/Hello)
 ```
 
-The `HelloAsset` object is stored in `/storage/Hello`, which only the account owner can access. The owner might still want to let other people call the `hello` method, but not necessarily get full access to the actual `HelloAsset` object. This is what capabilities are for.
+The `HelloAsset` object is stored in `/storage/Hello`, which only the account owner can access. 
+The owner might still want to let other people call the `hello` method, but not necessarily get full access to the actual `HelloAsset` object. 
+This is what capabilities are for.
 
-Capabilities are kind of like pointers in other languages. They represent a link to an object in an account's storage. They are used to borrow a reference to the object, which can be used to read fields or call methods on the object they reference, but not to copy, move, or modify the object directly.
+Capabilities are kind of like pointers in other languages. They represent a link to an object in an account's storage. 
+They are used to borrow a reference to the object, which can be used to read fields or call methods on the object they reference, 
+but not to copy, move, or modify the object directly.
 
-To create a capability, we use the `AuthAccount.link` method to link a new capability to an object in storage. The type contained in `<>` is the restricted reference type that the capability represents. A reference is referred to by the `&` symbol. Here, the capability references the `HelloAsset` object, so we specify `<&HelloWorld.HelloAsset>` as the type. The first argument to the function is the path where you want to store the capability and the `target` argument is the path to the object in storage that is to be linked to.
+To create a capability, we use the `AuthAccount.link` method to link a new capability to an object in storage. 
+The type contained in `<>` is the restricted reference type that the capability represents. 
+A reference is referred to by the `&` symbol. Here, the capability references the `HelloAsset` object, 
+so we specify `<&HelloWorld.HelloAsset>` as the type. The first argument to the function is the path where you want to store the capability 
+and the `target` argument is the path to the object in storage that is to be linked to.
 
 To get a reference to an object from the capability, we use the capability's `borrow` method.
 
 ```cadence
 let helloReference = capability!.borrow()
+    ?? panic("Could not borrow a reference to the hello capability")
 ```
 
-This method creates the reference as the type we specified in `<>` in the `link` function. Here we use the force-unwrap operator (`!`) because the capability is an optional. If the capability is `nil` the transaction will abort.
-It also returns `nil` if the targeted storage slot is empty, is already borrowed, or if the requested type exceeds what is allowed by the capability.
+This method creates the reference as the type we specified in `<>` in the `link` function. 
+Here we use the force-unwrap operator (`!`) because the capability is an optional. If the capability is `nil` the transaction will abort.
+While borrowing the reference, we use optional chaining because the borrowing of the reference could fail. 
+The reference could be `nil` if the targeted storage slot is empty, is already borrowed, or if the requested type exceeds what is allowed by the capability.
+We panic with a descriptive error message so the caller can know better what went wrong.
 
-The reason we separate this process into capabilities and references is to protect against re-entrancy bugs where a malicious actor could call into an object multiple times. These bugs have plagued other smart contract languages. Only one reference to an object can exist at a time, so this type of vulnerability isn't possible for objects in storage.
+The reason we separate this process into capabilities and references is to protect against re-entrancy bugs 
+where a malicious actor could call into an object multiple times. 
+These bugs have plagued other smart contract languages. Only one reference to an object can exist at a time, 
+so this type of vulnerability isn't possible for objects in storage.
 
 Additionally, the owner of an object can effectively revoke capabilities they have created by moving the underlying object. If the referenced object is moved, capabilities that are linked to it are invalidated.
 
@@ -496,7 +515,7 @@ Lastly, we call the `hello()` method with our borrowed reference:
 
 ```cadence
 // Call the hello function using the reference to the HelloAsset resource
-log(helloReference?.hello())
+log(helloReference.hello())
 ```
 
 ## Executing Scripts
@@ -531,13 +550,14 @@ pub fun main() {
 
     // borrow a reference for the capability
     let helloReference = helloCapability!.borrow<&HelloWorld.HelloAsset>()
+        ?? panic("Could not borrow a reference to the hello capability")
 
     // The log built-in function logs its argument to stdout.
     //
     // Here we are using optional chaining to call the "hello"
     // method on the HelloAsset resource that is referenced
     // in the published area of the account.
-    log(helloReference?.hello())
+    log(helloReference.hello())
 }
 ```
 

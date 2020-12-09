@@ -215,6 +215,9 @@ pub contract NonFungibleToken {
       // adds it to the collections dictionary
       pub fun deposit(token: @NFT) {
           // add the new token to the dictionary which removes the old one
+          // Could also use the force assignment operator "<-!"
+          // which assigns the resource without having to move the old one
+          // but will panic if there is already something there
           let oldToken <- self.ownedNFTs[token.id] <- token
           destroy oldToken
       }

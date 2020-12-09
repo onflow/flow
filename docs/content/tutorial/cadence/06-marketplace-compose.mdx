@@ -10,7 +10,7 @@ In this tutorial, we're going to create a marketplace that uses both the fungibl
 
 <Callout type="success">
 
-Open the starter code for this tutorial in the Flow Playground: <a href="https://play.onflow.org/5a5f4fdf-f499-47a4-aef7-f01713e61fde" target="_blank">https://play.onflow.org/5a5f4fdf-f499-47a4-aef7-f01713e61fde</a><br/>
+Open the starter code for this tutorial in the Flow Playground: <a href="https://play.onflow.org/869e869c-145e-4d36-a893-22e16a361842" target="_blank">https://play.onflow.org/869e869c-145e-4d36-a893-22e16a361842</a><br/>
 The tutorial will be asking you to take various actions to interact with this code.
 
 </Callout>
@@ -77,9 +77,12 @@ pub fun main() {
   // by getting their public capability
   // and borrowing a reference from the capability
   let acct1ReceiverRef = acct1.getCapability(/public/MainReceiver)!
-                          .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()!
+                          .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
+                          ?? panic("Could not borrow a reference to acc1 vault receiver")
+
   let acct2ReceiverRef = acct2.getCapability(/public/MainReceiver)!
-                          .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()!
+                          .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
+                          ?? panic("Could not borrow a reference to acc2 vault receiver")
 
   // Log the Vault balance of both accounts and ensure they are
   // the correct numbers.
@@ -100,8 +103,11 @@ pub fun main() {
   let acct2Capability = acct2.getCapability(/public/NFTReceiver)!
 
   // borrow references from the capabilities
-  let nft1Ref = acct1Capability.borrow<&{NonFungibleToken.NFTReceiver}>()!
-  let nft2Ref = acct2Capability.borrow<&{NonFungibleToken.NFTReceiver}>()!
+  let nft1Ref = acct1Capability.borrow<&{NonFungibleToken.NFTReceiver}>()
+                ?? panic("Could not borrow a reference to acc1 nft collection receiver")
+
+  let nft2Ref = acct2Capability.borrow<&{NonFungibleToken.NFTReceiver}>()
+                ?? panic("Could not borrow a reference to acc2 nft collection receiver")
 
   // Print both collections as arrays of IDs
   log("Account 1 NFTs")
@@ -140,8 +146,10 @@ Every user who wants to sell a NFT will store an instance of a `SaleCollection` 
 
 <Callout type="info">
 
-Switch to account `0x03`.\nOpen `Marketplace.cdc`<br/>
-With `Marketplace.cdc` open, click the `Deploy` button that appears at the bottom right of the editor\n`Marketplace.cdc` should contain the following contract definition:
+Switch to account `0x03`.
+Open `Marketplace.cdc`<br/>
+With `Marketplace.cdc` open, click the `Deploy` button that appears at the bottom right of the editor.
+`Marketplace.cdc` should contain the following contract definition:
 
 </Callout>
 
@@ -193,9 +201,9 @@ pub contract Marketplace {
     // The fungible token vault of the owner of this sale.
     // When someone buys a token, this resource can deposit
     // tokens into their account.
-    access(account) let ownerVault: &AnyResource{FungibleToken.Receiver}
+    access(account) let ownerVault: Capability<&AnyResource{FungibleToken.Receiver}>
 
-    init (vault: &AnyResource{FungibleToken.Receiver}) {
+    init (vault: Capability<&AnyResource{FungibleToken.Receiver}>) {
         self.forSale <- {}
         self.ownerVault = vault
         self.prices = {}
@@ -245,8 +253,11 @@ pub contract Marketplace {
 
         self.prices[tokenID] = nil
 
+        let vaultRef = self.ownerVault.borrow()
+            ?? panic("Could not borrow reference to owner token vault")
+        
         // deposit the purchasing tokens into the owners vault
-        self.ownerVault.deposit(from: <-buyTokens)
+        vaultRef.deposit(from: <-buyTokens)
 
         // deposit the NFT into the buyers collection
         recipient.deposit(token: <-self.withdraw(tokenID: tokenID))
@@ -270,7 +281,7 @@ pub contract Marketplace {
   }
 
   // createCollection returns a new collection resource to the caller
-  pub fun createSaleCollection(ownerVault: &{FungibleToken.Receiver}): @SaleCollection {
+  pub fun createSaleCollection(ownerVault: Capability<&AnyResource{FungibleToken.Receiver}>): @SaleCollection {
     return <- create SaleCollection(vault: ownerVault)
   }
 }
@@ -279,8 +290,9 @@ pub contract Marketplace {
 This marketplace contract has resources that function similarly to the NFT `Collection` that was explained in [Non-Fungible Tokens](/tutorial/cadence/04-non-fungible-tokens), with a few differences and additions:
 
 - This marketplace contract has methods to add and remove NFTs, but these functions also involve setting and removing a price. When a user wants to put their NFT up for sale, they do so by depositing it into the collection with the `listForSale` function. Then, another user can call the `purchase` method, sending their `Vault` that contains the currency they are using to make the purchase. The buyer also includes a reference to their NFT `Collection` so that the purchased token can be immediately deposited into their collection when the purchase is made.
-- This marketplace contract stores a reference: `pub let ownerVault: &FungibleToken.Receiver`.
-  The owner of the sale saves a reference to their Fungible Token `Receiver` within the sale. This allows the sale resource to be able to immediately deposit the currency that was used to buy the NFT into the owners `Vault` when a purchase is made.
+- This marketplace contract stores a capability: `pub let ownerVault: Capability<&AnyResource{FungibleToken.Receiver}>`.
+  The owner of the sale saves a capability to their Fungible Token `Receiver` within the sale. 
+  This allows the sale resource to be able to immediately deposit the currency that was used to buy the NFT into the owners `Vault` when a purchase is made.
 - This marketplace contract includes events. Cadence supports defining events within contracts that can be emitted when important actions happen.
 
 ```cadence
@@ -316,8 +328,8 @@ transaction {
   prepare(acct: AuthAccount) {
 
     // Borrow a reference to the stored Vault
-    let receiver = acct.borrow<&{FungibleToken.Receiver}>(from: /storage/MainVault)
-            ?? panic("Could not borrow a reference to the owner's vault")
+    let receiver = acct.getCapability<&{FungibleToken.Receiver}>(/public/MainReceiver)
+            ?? panic("Could not get a capability to the owner's vault")
 
     // Create a new Sale object,
     // initializing it with the reference to the owner's vault
@@ -347,7 +359,7 @@ transaction {
 
 This transaction:
 
-1. Borrows the reference to the owners `Vault`
+1. Gets a capability for the owners `Vault`
 2. Creates the `SaleCollection`, which stores their `Vault` reference.
 3. Withdraws the owner's token from their normal collection
 4. Lists that token for sale and sets its price
@@ -375,7 +387,7 @@ pub fun main() {
   // Find the public Sale reference to their Collection
   let acct1saleRef = account1.getCapability(/public/NFTSale)!
                              .borrow<&AnyResource{Marketplace.SalePublic}>()
-                                                    ?? panic("Could not borrow a reference to the sale")
+                             ?? panic("Could not borrow a reference to the sale")
 
   // Los the NFTs that are for sale
   log("Account 1 NFTs for sale")
@@ -428,11 +440,11 @@ transaction {
 
     // get the references to the buyer's fungible token Vault
     // and NFT Collection Receiver
-    self.collectionRef = acct.borrow<&AnyResource{NonFungibleToken.NFTReceiver}>
-                                                        (from: /storage/NFTCollection)
-            ?? panic("Could not borrow reference to the signer's nft collection")
+    self.collectionRef = acct.borrow<&AnyResource{NonFungibleToken.NFTReceiver}>(from: /storage/NFTCollection)
+        ?? panic("Could not borrow reference to the signer's nft collection")
+
     let vaultRef = acct.borrow<&FungibleToken.Vault>(from: /storage/MainVault)
-            ?? panic("Could not borrow reference to the signer's vault")
+        ?? panic("Could not borrow reference to the signer's vault")
 
     // withdraw tokens from the buyers Vault
     self.temporaryVault <- vaultRef.withdraw(amount: UFix64(10))
@@ -445,7 +457,7 @@ transaction {
     // get the reference to the seller's sale
     let saleRef = seller.getCapability(/public/NFTSale)!
                         .borrow<&AnyResource{Marketplace.SalePublic}>()
-                                            ?? panic("could not borrow reference to the seller's sale")
+                        ?? panic("could not borrow reference to the seller's sale")
 
     // purchase the NFT the the seller is selling, giving them the reference
     // to your NFT collection and giving them the tokens to buy it
@@ -502,11 +514,12 @@ pub fun main() {
   // by getting their public capability
   // and borrowing a reference from the capability
   let acct1ReceiverRef = acct1.getCapability(/public/MainReceiver)!
-                          .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
-                                            ?? panic("Could not borrow reference to acct1 vault")
+                         .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
+                         ?? panic("Could not borrow reference to acct1 vault")
+
   let acct2ReceiverRef = acct2.getCapability(/public/MainReceiver)!
-                          .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
-                                            ?? panic("Could not borrow reference to acct2 vault")
+                         .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
+                         ?? panic("Could not borrow reference to acct2 vault")
 
   // Log the Vault balance of both accounts and ensure they are
   // the correct numbers.
@@ -531,6 +544,7 @@ pub fun main() {
   // borrow references from the capabilities
   let nft1Ref = acct1Capability.borrow<&{NonFungibleToken.NFTReceiver}>()
     ?? panic("Could not borrow reference to acct1 nft collection")
+
   let nft2Ref = acct2Capability.borrow<&{NonFungibleToken.NFTReceiver}>()
     ?? panic("Could not borrow reference to acct2 nft collection")
 
@@ -548,7 +562,8 @@ pub fun main() {
 
   // Get the public sale reference for Account 0x01
   let acct1SaleRef = acct1.getCapability(/public/NFTSale)!
-                          .borrow<&AnyResource{Marketplace.SalePublic}>()!
+                    .borrow<&AnyResource{Marketplace.SalePublic}>()
+                    ?? panic("Could not borrow a reference to the sale")
 
   // Print the NFTs that account 0x01 has for sale
   log("Account 1 NFTs for sale")
@@ -585,12 +600,12 @@ A user can hold a sale in their account with these resources and transactions. S
 // references so that anyone can access them
 pub contract Marketplace {
     // Data structure to store active sales
-    pub var tokensForSale: [&SaleCollection]
+    pub var tokensForSale: [Capability<&SaleCollection>]
 
     // listSaleCollection lists a users sale reference in the array
     // and returns the index of the sale so that users can know
     // how to remove it from the marketplace
-    pub fun listSaleCollection(collection: &SaleCollection): Int {
+    pub fun listSaleCollection(collection: Capability<&SaleCollection>): Int {
         self.tokensForSale.append(collection)
         return (self.tokensForSale.length - 1)
     }
@@ -606,7 +621,7 @@ pub contract Marketplace {
 
 This contract isn't meant to be a working or production-ready contract, but it could be extended to make a complete central marketplace by having:
 
-- Sellers list a reference to their `SaleCollection` in this contract
+- Sellers list a capability to their `SaleCollection` in this contract
 - Other functions that buyers could call to get info about all the different sales and to make purchases.
 
 A central marketplace in an off-chain application is easier to implement because:
