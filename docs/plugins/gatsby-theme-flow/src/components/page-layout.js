@@ -36,7 +36,7 @@ const MobileNav = styled.div({
 export const NavItemTitle = styled.h4({
   marginBottom: 8,
   fontWeight: 600,
-  color: 'inherit'
+  color: "inherit",
 });
 
 export const NavItemDescription = styled.p({
@@ -44,7 +44,7 @@ export const NavItemDescription = styled.p({
   fontSize: 15,
   lineHeight: 1.5,
   color: theme.text3,
-  transition: 'color 150ms ease-in-out'
+  transition: "color 150ms ease-in-out",
 });
 
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";

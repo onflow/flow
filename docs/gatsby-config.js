@@ -321,6 +321,17 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "gatsby-plugin-mixpanel",
+      options: {
+        apiToken: "3fae49de272be1ceb8cf34119f747073",
+        pageViews: "all",
+        getPageViewTransformerFn: () => ({
+          url: location.pathname,
+          page_name: document.title,
+        }),
+      },
+    },
+    {
       resolve: "gatsby-theme-flow",
       options: {
         navConfig,
