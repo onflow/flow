@@ -324,6 +324,7 @@ module.exports = {
       resolve: "gatsby-plugin-mixpanel",
       options: {
         apiToken: "3fae49de272be1ceb8cf34119f747073",
+        enableOnDevMode: false,
         pageViews: "all",
         getPageViewTransformerFn: () => ({
           url: location.pathname,
