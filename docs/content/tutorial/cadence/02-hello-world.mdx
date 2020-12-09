@@ -499,7 +499,7 @@ let helloReference = capability!.borrow()
 This method creates the reference as the type we specified in `<>` in the `link` function. 
 Here we use the force-unwrap operator (`!`) because the capability is an optional. If the capability is `nil` the transaction will abort.
 While borrowing the reference, we use optional chaining because the borrowing of the reference could fail. 
-It the reference could be `nil` if the targeted storage slot is empty, is already borrowed, or if the requested type exceeds what is allowed by the capability.
+The reference could be `nil` if the targeted storage slot is empty, is already borrowed, or if the requested type exceeds what is allowed by the capability.
 We panic with a descriptive error message so the caller can know better what went wrong.
 
 The reason we separate this process into capabilities and references is to protect against re-entrancy bugs 
