@@ -211,6 +211,9 @@ const sections = [
         "token/delivery",
         "token/faq",
       ],
+      "Token Delivery": [
+        "token/locked-account-setup"
+      ],
     },
   },
   {
@@ -232,6 +235,7 @@ const sections = [
         "staking/locked-staking-guide",
         "staking/locked-third-party-operator",
         "staking/events",
+        "staking/scripts",
       ],
     },
   },
@@ -251,10 +255,6 @@ const sections = [
         "node-operation/node-bootstrap",
         "node-operation/monitoring-nodes",
         "node-operation/spork",
-      ],
-      "Token Delivery": [
-        "node-operation/locked-account-setup",
-        "node-operation/leased-account-setup",
       ],
     },
   },
