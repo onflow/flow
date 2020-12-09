@@ -56,8 +56,8 @@ which track the following info:
   - Node ID: 32 byte identifier for the node. Usually a hash of the node public key.
   - Role: Indicates what role the node operator is. (Collection, Consensus, Execution, Verification, Access)
   - Networking Address: The address that the node operator uses for networking.
-  - Networking Key: The node operator public key for networking.
-  - Staking Key: The public key for the account that manages staking.
+  - Networking Key: The 64 byte node operator public key for networking.
+  - Staking Key: The 96 byte public key for the account that manages staking.
 
 - **Delegators:**
 
@@ -152,9 +152,9 @@ Once the info has been determined:
 
 - Node role: `UInt8` (1 = Collection, 2 = Consensus, 3 = Execution, 4 = Verification, 5 = Access)
 - Node ID: 32 byte `String`
-- Networking Address: `String`
-- Networking Key: 64 byte `String`
-- Staking Key: 96 byte `String`
+- Networking Address: `String` (Length must be less than 255 bytes (510 Hex characters))
+- Networking Key: 64 byte `String` (128 hex characters)
+- Staking Key: 96 byte `String` (192 hex characters)
 
 The node operator is ready to register their node.
 
