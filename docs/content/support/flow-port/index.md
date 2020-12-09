@@ -75,7 +75,7 @@ Below are the various options you can choose. Please be aware, that at this time
   3. Input the amount of Flow you wish to stake with that node. You must stake at least the minimum in order for your stake request to be successfully processed. You are able to provide the minimum stake across multiple transactions. Meaning, you could execute your stake transaction with half of the minumum required. Then, before the next epoch, you can choose to 'Add Flow' to that pending stake to get it to the minimum stake required.  
   4. Run the [bootstrapping instructions](https://docs.onflow.org/node-operation/node-bootstrap/) and provide the remaining technical details needed to stake a node.
 
-### Delegating (Coming soon!)
+### Delegating
   1. Once you have navigated to the staking/delegating page in Flow Port, click on the Delegate option.
   2. Next, you will specify which node operator you would like to delegate to and how many tokens you want to delegate to them. 
 

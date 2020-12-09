@@ -10,19 +10,45 @@ Rewards are paid out at the end of each [epoch](/staking/#epochs) to all the use
 Rewards are considered to be unlocked and liquid, so the user can withdraw their rewards
 at any time.
 
-More information about the rewards calculation and schedule will be provided in the near future.
-
 If you staked using a 3rd party staking provider such as Kraken, Blocto or Finoa, please read [our guides](/staking/custody-providers/) for more information about how
 to claim and use your rewards via your chosen provider.
 
-## Rewards Calculation
+## Rewards Distribution
 
-|                           | First Month | Month 12 - 18 | Months 19+ |
-| ------------------------- | ----------- | ------------- | ---------- |
-| Total rewards % (Annual)  | 20%         | 5%            | 3%         |
-| % of tokens staked        | 80-100%     | ~50%          | ~30%       |
-| Staking reward % (Annual) | 20-25%      | ~10%          | ~10%       |
+The rewards distribution schedule has been designed to ensure that enough liquid FLOW
+is available in the ecosystem to a wide variety of holders after the first few reward payments.
+Using this model, any user will be able to easily aquire FLOW from many different places
+in order to participate in the network.
 
-**NB**: In months 2-18, Dapper Labs, Ecosystem, and team allocations will not be fully staked <br/>
-**NB2**: % of tokens staked expected to go down over time as different use-cases emerge<br/>
-**NB3**: Annualized inflation = (Annualized Reward – Transaction Fees)
+The numbers in this table represent the total tokens that are paid as rewards each epoch.
+They are not meant to indicate any expectations for an individual staker's rewards.
+Different variables go into calculating what an individual staker receives as rewards.
+
+|                          | Week 1         | Weeks 2-5  | Weeks 6 - 72 | Weeks 73+ |
+| ------------------------ | -------------- | ---------- | ------------ | --------- |
+| Total Rewards % (Annual) | 5%             | 20%        | 5%           | 3%        |
+| Total Rewards Amount     | 1,173,391 FLOW | ~4.4M FLOW | ~1.2M FLOW   |
+
+## Using Rewards
+
+The process for collecting and using reward payouts will be different depending on how your tokens were staked.
+If you staked tokens using a custody provider, see [our guides](/staking/custody-providers/) for
+details about how to claim your rewards.
+
+Rewards will continue to accumulate in your account as long as you a re staked.
+You're not required to do anything with your rewards, but you can claim them and use them in a few ways.
+
+#### Once you've claimed your rewards you can:
+
+- Re-stake to earn compounding rewards! Most custody providers will automatically re-stake your rewards. (Some do not).
+  For details about re-staking related to your chosen custody provider see [our guides](/staking/custody-providers/).
+  **Note:** If you would like to stake a different node than you're currently staking, you may need to contact you custody provider directly.
+
+- Deposit your rewards in another Flow account. Or, divide your rewards between multiple accounts. This will
+  require coordination with the Flow team and the custody provider, as a custom Cadence trasnaction will need to be written that supports
+  transferring tokens from acocunts created by your provider.
+
+- TODO: Example of "General transaction for individuals to withdraw rewards and distribute to multiple accounts"
+
+- Spend your FLOW in DApps on Flow! Take your newly liquid FLOW tokens to interact with DApps deployed on Flow Mainnet!
+  (Perhaps you could aquire your first [NBA TopShot](https://www.nbatopshot.com)!)
