@@ -758,11 +758,12 @@ pub fun main() {
   // by getting their public capability
   // and borrowing a reference from the capability
   let acct1ReceiverRef = acct1.getCapability(/public/MainReceiver)!
-                          .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
-                  ?? panic("Could not borrow a reference to the acct1 receiver")
+                        .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
+                        ?? panic("Could not borrow a reference to the acct1 receiver")
+
   let acct2ReceiverRef = acct2.getCapability(/public/MainReceiver)!
-                                                .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
-                  ?? panic("Could not borrow a reference to the acct2 receiver")
+                        .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
+                        ?? panic("Could not borrow a reference to the acct2 receiver")
 
   // Read and log balance fields
   log("Account 1 Balance")
@@ -835,7 +836,7 @@ transaction {
     // by borrowing the reference from the public capability
     let receiverRef = recipient.getCapability(/public/MainReceiver)!
                       .borrow<&FungibleToken.Vault{FungibleToken.Receiver}>()
-                                    ?? panic("Could not borrow a reference to the receiver")
+                      ?? panic("Could not borrow a reference to the receiver")
 
     // deposit your tokens to their Vault
     receiverRef.deposit(from: <-self.temporaryVault)
