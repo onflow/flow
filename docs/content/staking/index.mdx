@@ -37,7 +37,7 @@ A staked node will receive weekly reward payments at the end of each epoch,
 assuming it stays online and actively participates in the protocol without committing any slashable offences.
 This timeframe of earning rewards is otherwise known as an Epoch.
 
-### Epochs
+## Epochs
 
 An epoch is a week-long period that the network uses to manage the stakers and pay rewards.
 Every epoch, a list of committed nodes are chosen to be the staked nodes of the network,
@@ -59,9 +59,10 @@ If a node operator decides to stake or unstake tokens,
 their requests are not carried out until the end of the current epoch.
 In the case of unstaking requests, they also must wait an additional epoch before their unstaked tokens are available to withdraw.
 
-### Rewards
+## Rewards
 
-Please see the [Rewards](/staking/rewards) section of the documentation for information about reward calculations and schedule.
+Please see the [rewards](/staking/rewards) section of the documentation for information about reward calculations and schedule and
+what you can do with the rewards you earn by staking a node!
 
 ## Delegation
 
@@ -78,13 +79,14 @@ The remaining 92% is awarded to the delegator.
 
 ## How Do I Stake?
 
-So you have decided you want to be a part of the Flow network. Welcome!
+So you have decided you want to be a part of the Flow network? Welcome!
 You are joining a group of people from all around the world that are a part of a movement that is bringing decentralization and transparency into the world.
 
 ### Staking using the Flow Port
 
 If you created your account using the Flow Port, you can also stake and earn rewards using the Flow Port.
 Follow this [step-by-step guide](/) to stake using the Flow Port. (Note: delegating using the Flow Port is not yet available).
+Flow Port currently supports staking, delegation and reward withdrawl using **Blocto** and **Ledger** accounts / wallets.
 
 ### Staking via a Custody Provider
 
@@ -92,6 +94,15 @@ If you are using a custody provider who controls your account and private keys f
 such as Kraken, Finoa, or Coinlist, they all have different policies and processes
 for what you need to do to stake your tokens, the rewards you receive,
 and the fees that they take from your staking rewards. Please see [our guides](/staking/custody-providers/) for more information about staking using supported custody providers.
+
+#### Node Operators: Using Leased Tokens
+
+Most custody providers do not let you choose how to stake your FLOW tokens. If you are a **Node Operator**, with locked FLOW tokens stored in a custodial wallet,
+you'll need to acquire **leased tokens** if you would like to stake a node you plan on operating. This is necessary because the tokens in your
+custodial account are "locked" by the legal requirements of the token sale, and _cannot be allocated by their owner_ until the lock period has ended.
+
+To acquire leased tokens to stake your node, you'll need to coordinate with the Flow team (leased token account admin) and your chosen custody provider.
+All supported custody providers should support holding leased tokens you can use to stake your node. We also provide [guides for custody providers](/) on how to set up user accounts to facilitate the use of leased tokens for staking.
 
 ### Manual Staking
 
