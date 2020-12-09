@@ -107,12 +107,7 @@ These transactions operate through the `StakingProxy.NodeStakerProxy` interface.
 |**`TH.13`**| Withdraw Unstaked FLOW  | [lockedTokens/staker/withdraw_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/withdraw_unstaked_tokens.cdc) |
 |**`TH.14`**| Withdraw Rewarded FLOW  | [lockedTokens/staker/withdraw_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/staker/withdraw_rewarded_tokens.cdc) |
 
-#### Register an Operator Node
-
-| ID        | Name                   | Source |
-|-----------|------------------------|--------|
-|**`TH.15`**| Get Operator Node Info | [stakingProxy/get_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/get_node_info.cdc) | 
-|**`TH.16`**| Register Operator Node | [stakingProxy/register_node.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/register_node.cdc) |
+See the [staking documentation](/protocol/core-contracts/flow-id-table-staking) for how to get info about a staked delegator.
 
 ### Delegating
 
@@ -122,6 +117,7 @@ These transactions operate through the `StakingProxy.NodeDelegatorProxy` interfa
 |-----------|-----------------------------------|--------|
 |**`TH.17`**| Register Delegator                | [lockedTokens/delegator/register_delegator.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/register_delegator.cdc) |
 |**`TH.18`**| Get Delegator ID                  | [lockedTokens/delegator/get_delegator_id.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/get_delegator_id.cdc) |
+|**`TH.25`**| Get Delegated Node ID             | [lockedTokens/delegator/get_delegator_node_id.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/get_delegator_node_id.cdc) |
 |**`TH.19`**| Delegate New Locked FLOW          | [lockedTokens/delegator/delegate_new_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/delegate_new_tokens.cdc) |
 |**`TH.20`**| Re-delegate Unstaked FLOW         | [lockedTokens/delegator/delegate_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/delegate_unstaked_tokens.cdc) | 
 |**`TH.21`**| Re-delegate Rewarded FLOW         | [lockedTokens/delegator/delegate_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/delegate_rewarded_tokens.cdc) |
@@ -129,14 +125,28 @@ These transactions operate through the `StakingProxy.NodeDelegatorProxy` interfa
 |**`TH.23`**| Withdraw Unstaked Delegated FLOW  | [lockedTokens/delegator/withdraw_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/withdraw_unstaked_tokens.cdc) |
 |**`TH.24`**| Withdraw Rewarded Delegated FLOW  | [lockedTokens/delegator/withdraw_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/delegator/withdraw_rewarded_tokens.cdc) |
 
-## Node Operator
+See the [staking documentation](/protocol/core-contracts/flow-id-table-staking) for how to get info about a staked delegator.
+
+## Node Operator Staking Proxy
 
 The **node operator** is an independent user who operators a Flow node on
-behalf of a token holder.
+behalf of a token holder. These transactions should only be used for those
+who are in a relationship where a node operator operates a node for a token holder
+and the relationship needs to be managed on chain.
 
 | ID        | Name                    | Source |
 |-----------|-------------------------|--------|
 |**`NO.01`**| Set Up Operator Account | [stakingProxy/setup_node_account.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/setup_node_account.cdc) | 
+
+#### Register an Operator Node
+
+These transactions are used in the case where the node info has to be transferred on-chain.
+If the node info can be exchanged off-chain, the normal node registration functions can be used.
+
+| ID        | Name                   | Source |
+|-----------|------------------------|--------|
+|**`TH.15`**| Get Operator Node Info for registration | [stakingProxy/get_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/get_node_info.cdc) | 
+|**`TH.16`**| Register Operator Node | [stakingProxy/register_node.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingProxy/register_node.cdc) |
 
 ### Staking
 
