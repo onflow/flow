@@ -189,7 +189,7 @@ pub event TokensUnstaking(nodeID: String, amount: UFix64)
 
 Emitted by `FlowIDTableStaking.Admin.moveTokens()` at the end of an epoch if
 a node operator's staked tokens are being unstaked in response to a request from the node operator to do so. 
-After this event the tokens will be a part of the node operator's `tokensUnstaking` balance.
+After this event the tokens will be a part of the node operator's `tokensUnstaking` balance, where they are held for a whole epoch "unstaking period" with no rewards.
 
 ### TokensUnstaked
 
@@ -328,7 +328,7 @@ pub event DelegatorTokensUnstaking(nodeID: String, delegatorID: UInt32, amount: 
 
 Emitted by `FlowIDTableStaking.Admin.moveTokens()` at the end of an epoch if 
 a delegator's staked tokens are being unstaked in response to a request from the delegator to do so. 
-After this event the tokens will be a part of the delegator's `tokensUnstaking` balance.
+After this event the tokens will be a part of the delegator's `tokensUnstaking` balance, where they are held for a whole epoch "unstaking period" with no rewards.
 
 ### DelegatorTokensUnstaked
 
