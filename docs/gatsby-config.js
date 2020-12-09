@@ -215,7 +215,7 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["staking/**/*"],
+    patterns: ["staking/**/*", "token/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
@@ -233,6 +233,7 @@ const sections = [
         "staking/locked-third-party-operator",
         "staking/events",
       ],
+      "Token Delivery": ["token/locked-account-setup"],
     },
   },
   {
@@ -251,10 +252,6 @@ const sections = [
         "node-operation/node-bootstrap",
         "node-operation/monitoring-nodes",
         "node-operation/spork",
-      ],
-      "Token Delivery": [
-        "node-operation/locked-account-setup",
-        "node-operation/leased-account-setup",
       ],
     },
   },
