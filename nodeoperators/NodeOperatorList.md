@@ -2,7 +2,7 @@
 | Node Operator             | Node Type           | Node ID  |
 |:--------------------------|:-------------------:|:---------:|
 | Alxo | Verification | f7422f2d3296ede4d1efb36ec55e3fd93702c061f7ee627881f0b3007beff2ed
-| Berkeley via Ankr (Coming Soon!) | Verification | <!--- 8f8d77ba98d1606b19fce8f6d35908bfc29ea171c02879162f6755c05e0ca1ee -->
+| Berkeley via Ankr | Verification | 8f8d77ba98d1606b19fce8f6d35908bfc29ea171c02879162f6755c05e0ca1ee 
 | Alvalor | Consensus | f3b72c50794c29319f0f77f0c7d623662eb15253c291a5360d095a4ea282fadb
 | Bison Trails | Collection | 48ba5aabeaf1a7c1bc6a96b20c8e9f6cbe7f6b3c77faec3b77fa66a630abf8c7
 | Bison Trails | Consensus | a65461e68eae80c9bd9d8edc81857c7d2cd83ba9992433c468e9ef6515d32006
@@ -23,7 +23,7 @@
 | Usopp (Coming Soon!) | Verification | <!--- d12b80ad9a9be6dbf86f8a7824739d9b2193836e5df226e063528dae33be3a4a -->
 | DSRV | Consensus | 947771ab1fd233d8694aee6c4a4259ee7e2241f4a201067aaa28adbb989d7c97
 | Figment (Coming Soon!) | Collection | <!--- 1408c08272beb24ad4fe4e531a9b937a26ee72c5f56b50ac8f2b889c3c42d316 -->
-| Figment (Coming Soon!) | Consensus | <!--- 95d61bcc7202fe7d0558baede4cc17a56aac191a0cfd110fbf824e2ef71bd49c -->
+| Figment | Consensus | 95d61bcc7202fe7d0558baede4cc17a56aac191a0cfd110fbf824e2ef71bd49c 
 | Flipside (Coming Soon!) | Collection | <!--- 581525fa93d8fe4b334c179698c6e72baccb802593e55e40da61d24e589d85be -->
 | Forbole (Coming Soon!) | Verification | <!--- 38b6148d2125c1410520ec6cbfcc65993f59b9241a652fec926206a2d5d839aa -->
 | NateAlex | Verification | f8af31c7c3294b246f34040e5685c351e89f1c1edf6c64f93f7babd73d149951
