@@ -28,7 +28,7 @@
 | Forbole (Coming Soon!) | Verification | <!--- 38b6148d2125c1410520ec6cbfcc65993f59b9241a652fec926206a2d5d839aa -->
 | NateAlex | Verification | f8af31c7c3294b246f34040e5685c351e89f1c1edf6c64f93f7babd73d149951
 | P2P (Coming Soon!) | Verification | <!--- 78ef2e461a32df2278ae78baf7cf1a54fec3601fe4723a5833c49e1935dc4b7d -->
-| P2P | Consensus | 8510b001c25c479b0874f3915fd14895c5d22331449182f1293b3c1c4bca4403
+| P2P (Coming Soon!)| Consensus | <!--- 8510b001c25c479b0874f3915fd14895c5d22331449182f1293b3c1c4bca4403 -->
 | P2P (Coming Soon!) | Collection | <!--- 79b43645fdf7c6597d8868b10c91d8cf343ab7d2cea0c98902d8f9456049918a -->
 | Open Worlds | Verification | 8d4dbdd523bd4c67ffad9282a7acefc65641d25ac9c40759de9df859eb7255e3
 | Portto | Consensus | 2cfab7e9163475282f67186b06ce6eea7fa0687d25dd9c7a84532f2016bc2e5e
@@ -41,6 +41,7 @@
 | Stake Fish (Coming Soon!) | Consensus | <!--- b09bfbaf2d9e6f6541855dc65b8e0247bd97a0cceb607b9cf89ed368bc16308d -->
 | Staked (Coming Soon!) | Collection | <!--- 129aab6407f6f66774ce77a03b8abd1ba67317eab1c70c5c6cdd7a433a7d64e8 -->
 | Staked (Coming Soon!) | Collection | <!--- fcb55c2d1fb2737b159704b5a30b194b8a8ddfb4691d55692af597ac6e236201 -->
+<!--- | Stratx (Deutsche Telcom)| Execution | 2b396b7fab0102f104a2af7e095b145cc14da28f863564802e158afc3e07e638 | -->
 | Ubisoft (Coming Soon!) | Verification | <!--- 429143c4438fcbbfc7353869b4f270e233aa0f75a6881ee977a81c962c4978ed -->
 | Ubisoft (Coming Soon!) | Collection | <!--- dc0fb2d914f0c12cc1de527d22974b8f2de376e4765e084e0b8be14b51b5ef81 -->
 | Yonsei | Verification | 5dc67a4f47ea9ce55d1b63ebe04cc68d8b29c41e40ab5cdc63b108ce292139a0
