@@ -8,12 +8,12 @@
 | Bison Trails | Consensus | a65461e68eae80c9bd9d8edc81857c7d2cd83ba9992433c468e9ef6515d32006
 | Bison Trails | Verification | b17280bf57adad0de648d827a7ccbe81c74cf6a9cc44af4778587b133747a2f9
 | Bison Trails | Execution | e52cbcd825e328acac8db6bcbdcbb6e7724862c8b89b09d85edccf41ff9981eb
-| Blockdaemon (Coming Soon!) | Consensus | <!--- cd7eed9952dbf8822062db7a351d959ef1166cd6d1856c0ad26c1c67d68e4fdb -->
-| Blockdaemon (Coming Soon!) | Verification | <!--- 49c9f946170d5fb40c2af953b1534fae771905865b142ab6ac9685b8ba5b51c1 -->
+| Blockdaemon | Consensus | cd7eed9952dbf8822062db7a351d959ef1166cd6d1856c0ad26c1c67d68e4fdb
+| Blockdaemon | Verification | 49c9f946170d5fb40c2af953b1534fae771905865b142ab6ac9685b8ba5b51c1
 | Blockchain Coalition/Block Venture | Verification | 16036263d71f64d65f84542e9f7678e578482a107b61e45b88759ebea2c7451d
 | Bitcoin Louie | Verification | fffba108a52e4ca8f5d30658c3f03f47ad1cc13a0995435c0532336236813218
 | versus-flow.art (Coming Soon!) | Verification | <!--- 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e -->
-| Chainflow (Coming Soon!) | Verification | <!--- 3b57e0ee2ece1f1dbefbd868d3eaac63b32a11df5b1a37d231145ea219055dde -->
+| Chainflow | Verification | 3b57e0ee2ece1f1dbefbd868d3eaac63b32a11df5b1a37d231145ea219055dde
 | Chainlayer | Consensus | 62de4fa4b6a05b8beb5868a5259caca4efa966aa0cb867fdd776c73abe9370ad
 | Coinfund (Coming Soon!) | Consensus | <!--- 5a4bff17941a73909472afe23f1ccdc59d7526f93b16b4e374bd8353f8b624b4 -->
 | Coinfund (Coming Soon!) | Consensus | <!--- b5702f80aa39f06ecdf4d6321bfe40f64e40b9b630085a42993f1b241bfcbf25 -->
@@ -21,7 +21,7 @@
 | CryptoTech | Consensus | b4f850b43df502e7fd292c34d9a21c2e8db350cd8a1214a4a29734bc6f3c9e92
 | DCG (Coming Soon!) | Consensus | <!--- 56e97c4cd4079caeb97d2a8f8950437107813436d5964f22a1f459eb8cf73a71 -->
 | Usopp (Coming Soon!) | Verification | <!--- d12b80ad9a9be6dbf86f8a7824739d9b2193836e5df226e063528dae33be3a4a -->
-| DSRV (Coming Soon!) | Consensus | <!--- 947771ab1fd233d8694aee6c4a4259ee7e2241f4a201067aaa28adbb989d7c97 -->
+| DSRV | Consensus | 947771ab1fd233d8694aee6c4a4259ee7e2241f4a201067aaa28adbb989d7c97
 | Figment (Coming Soon!) | Collection | <!--- 1408c08272beb24ad4fe4e531a9b937a26ee72c5f56b50ac8f2b889c3c42d316 -->
 | Figment (Coming Soon!) | Consensus | <!--- 95d61bcc7202fe7d0558baede4cc17a56aac191a0cfd110fbf824e2ef71bd49c -->
 | Flipside (Coming Soon!) | Collection | <!--- 581525fa93d8fe4b334c179698c6e72baccb802593e55e40da61d24e589d85be -->
