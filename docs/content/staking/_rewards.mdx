@@ -1,0 +1,56 @@
+---
+title: Staking Rewards
+sidebar_title: Rewards
+description: How the Flow protocol pays rewards to stakers
+---
+
+## Rewards
+
+Rewards are paid out at the end of each [epoch](/staking/#epochs) (approximately weekly) to all the users that have tokens staked.
+Rewards are considered to be unlocked and liquid, so the user can withdraw their rewards
+at any time.
+
+If you staked using a 3rd party staking provider such as Kraken, Blocto or Finoa, please read [our guides](/staking/custody-providers/) for more information about how
+to claim and use your rewards via your chosen provider.
+
+## Rewards Distribution
+
+The rewards distribution schedule has been designed to ensure there is enough liquid supply of FLOW
+available in the ecosystem to empower a wide variety of use cases.
+
+The numbers in this table represent the total amount of tokens that are paid as staking rewards at each epoch to the entire Flow ecosystem participants.
+They are not meant to indicate any expectations for an individual staker's rewards.
+Different variables go into calculating what an individual staker receives as rewards.
+
+|                          | Week 1         | Weeks 2-5  | Weeks 6 - 72 | Weeks 73+ |
+| ------------------------ | -------------- | ---------- | ------------ | --------- |
+| Total Rewards % (Annual) | 5%             | 20%        | 5%           | TBD       |
+| Total Rewards Amount     | 1,173,391 FLOW | ~4.4M FLOW | ~1.2M FLOW   | TBD       |
+
+## Using Rewards
+
+The process for collecting and using reward payouts will be different depending on how your tokens were staked.
+If you staked tokens using a custody provider, see [our guides](/staking/custody-providers/) for
+details about how to claim your rewards.
+
+Rewards will continue to accumulate in your account as long as you are staked and operate your node properly.
+You're not required to do anything with your rewards, but you can claim them and use them in a few ways.
+
+#### Once you've claimed your rewards you can:
+
+- Re-stake to earn compounding rewards! Most custody providers will automatically re-stake your rewards. (Some do not).
+  For details about re-staking related to your chosen custody provider see [our guides](/staking/custody-providers/).
+  **Note:** If you would like to stake a different node than the one you're currently staking, you may need to contact your custody provider directly
+
+- Deposit your rewards in another Flow account. Or, divide your rewards between multiple accounts. This will
+  require coordination with the Flow team and the custody provider, as a custom Cadence trasnaction will need to be written that supports
+  transferring tokens from acocunts created by your provider.
+
+Nodes can use the **Withdraw Rewarded FLOW** ([TH.14](/protocol/core-contracts/locked-tokens/#token-holder)) transaction to withdraw their rewards back to their locked account.
+Delegators can use the **Withdraw Rewarded FLOW** ([TH.24](/protocol/core-contracts/locked-tokens/#token-holder)) transaction to withdraw their rewards back to their locked account.
+
+Then, any user can use the **Withdraw Unlocked FLOW** ([TH.01](/protocol/core-contracts/locked-tokens/#token-holder)) transaction to withdraw their rewards and unlocked FLOW from the locked account to the unlocked account.
+
+- Send your tokens to other Flow users with the **Transfer FLOW** ([FT.01](/protocol/core-contracts/flow-token/#transactions)) transaction.
+- Spend your FLOW in DApps on Flow! Take your newly liquid FLOW tokens to interact with DApps deployed on Flow Mainnet!
+  (Perhaps you could aquire your first [NBA TopShot](https://www.nbatopshot.com)!)
