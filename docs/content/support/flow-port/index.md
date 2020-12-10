@@ -130,7 +130,7 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
 
   3. Where can I find a list of node operators to delegate to?
   
-     - a.) Please see a list here (Coming soon!) for all node operators that you can delegate to. This list will be updated as new node operators are onboarded onto the network.
+     - a.) Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperators/NodeOperatorList.md) for all node operators that you can delegate to. This list will be updated as new node operators are onboarded onto the network.
      
   4. I am currently running a node on the network already and have already gone through the staking process once. Do I need to execute a new stake every time there is a new epoch?
   
