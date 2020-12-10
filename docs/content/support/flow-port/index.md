@@ -86,6 +86,6 @@ Below are the various options you can choose. Please be aware, that at this time
   
 ## What else can I do?
   - Add additional stake to your existing stake. Any added FLOW will again sit in a pending status and be processed at the next epoch.
-  - Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this actions will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next [Epoch](/staking/#epochs).
+  - Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this action will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next [Epoch](/staking/#epochs).
   - Request to be unstaked from the network. The unstake request will sit in a pending status for two epochs. Once it is processed, the amount that has been unstaked will sit in your unstaked FLOW amount and can now be withdrawn or re-staked.
   
