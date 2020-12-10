@@ -23,7 +23,7 @@
 | Usopp (Coming Soon!) | Verification | <!--- d12b80ad9a9be6dbf86f8a7824739d9b2193836e5df226e063528dae33be3a4a -->
 | DSRV | Consensus | 947771ab1fd233d8694aee6c4a4259ee7e2241f4a201067aaa28adbb989d7c97
 | Figment (Coming Soon!) | Collection | <!--- 1408c08272beb24ad4fe4e531a9b937a26ee72c5f56b50ac8f2b889c3c42d316 -->
-| Figment (Coming Soon!) | Consensus | <!--- 95d61bcc7202fe7d0558baede4cc17a56aac191a0cfd110fbf824e2ef71bd49c -->
+| Figment | Consensus | 95d61bcc7202fe7d0558baede4cc17a56aac191a0cfd110fbf824e2ef71bd49c 
 | Flipside (Coming Soon!) | Collection | <!--- 581525fa93d8fe4b334c179698c6e72baccb802593e55e40da61d24e589d85be -->
 | Forbole (Coming Soon!) | Verification | <!--- 38b6148d2125c1410520ec6cbfcc65993f59b9241a652fec926206a2d5d839aa -->
 | NateAlex | Verification | f8af31c7c3294b246f34040e5685c351e89f1c1edf6c64f93f7babd73d149951
