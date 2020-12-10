@@ -1,12 +1,12 @@
 # List of available Node Operators
-| Node Operator Name        | Node Type           | Node ID  |
+| Node Operator             | Node Type           | Node ID  |
 | --------------------------|:-------------------:| --------:|
 | Alxo | Verification | f7422f2d3296ede4d1efb36ec55e3fd93702c061f7ee627881f0b3007beff2ed
 | Ankr (Berkeley) | Verification | 8f8d77ba98d1606b19fce8f6d35908bfc29ea171c02879162f6755c05e0ca1ee
 | Avalor | Consensus | f3b72c50794c29319f0f77f0c7d623662eb15253c291a5360d095a4ea282fadb
 | AZ Verification | Verification | f737008afb2c5ba01f33e452c9a3e3ae4cce6a40ba3944764247037935dc818d
 | Bison Trails | Collection | 48ba5aabeaf1a7c1bc6a96b20c8e9f6cbe7f6b3c77faec3b77fa66a630abf8c7
-| Bison Trails | Consensus	a65461e68eae80c9bd9d8edc81857c7d2cd83ba9992433c468e9ef6515d32006
+| Bison Trails | Consensus | a65461e68eae80c9bd9d8edc81857c7d2cd83ba9992433c468e9ef6515d32006
 | Bison Trails | Verification | b17280bf57adad0de648d827a7ccbe81c74cf6a9cc44af4778587b133747a2f9
 | Bison Trails | Execution | e52cbcd825e328acac8db6bcbdcbb6e7724862c8b89b09d85edccf41ff9981eb
 | Block Daemon | Consensus | cd7eed9952dbf8822062db7a351d959ef1166cd6d1856c0ad26c1c67d68e4fdb
@@ -31,12 +31,12 @@
 | P2P | Verification | 78ef2e461a32df2278ae78baf7cf1a54fec3601fe4723a5833c49e1935dc4b7d
 | P2P | Consensus | 8510b001c25c479b0874f3915fd14895c5d22331449182f1293b3c1c4bca4403
 | P2P | Collection | 79b43645fdf7c6597d8868b10c91d8cf343ab7d2cea0c98902d8f9456049918a
-| Open Worlds | Verification	8d4dbdd523bd4c67ffad9282a7acefc65641d25ac9c40759de9df859eb7255e3
+| Open Worlds | Verification | 8d4dbdd523bd4c67ffad9282a7acefc65641d25ac9c40759de9df859eb7255e3
 | Portto | Consensus | 2cfab7e9163475282f67186b06ce6eea7fa0687d25dd9c7a84532f2016bc2e5e
 | Portto | Verification | 21b21ad1ddb5e3002cc6a3faa55e23d70db014ee229c213f7a43769789125536
 | RIT | Verification | 1a671144c4e8def6ce53aa861e185ab22f559f8ba0e0ea6017b714f3b5be0d74
 | Samsung | Execution | 6c6af0933b710655ec553f4bead3b01c5e0a3ffd1194ee536efb926b356c54aa
-| Snowfro | Verification	adac59f7a5265148ec8e7c95f373d9ce9a7ec2baeaafda965d9cbfb4f88f8039
+| Snowfro | Verification | adac59f7a5265148ec8e7c95f373d9ce9a7ec2baeaafda965d9cbfb4f88f8039
 | SNZ | Verification | 85bab4d040af244ba473a11e43cb3188fb1e4d2694d2c795fee91d51bf814f28
 | Sparq | Consensus | 9ad385808628b4b2ec684dd5a31ec1da3b894f6241725b13abe7ae268bcf359d
 | Stake Fish | Consensus | b09bfbaf2d9e6f6541855dc65b8e0247bd97a0cceb607b9cf89ed368bc16308d
