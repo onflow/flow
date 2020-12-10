@@ -1,22 +1,22 @@
 ---
-title: Locked FLOW Account Setup
-description: Configure an account to hold locked FLOW
+title: Locked/Leased FLOW Account Setup
+description: Configure an account to hold locked or leased FLOW
 ---
 
 <Callout type="warning">
 
   This guide is for custodians and wallet providers who wish to create user accounts 
-  that can hold locked FLOW tokens from the Flow token sale.
+  that can hold leased or locked FLOW tokens from the Flow token sale.
 
   If you already have an account and wish to stake tokens, 
-  proceed to further sections of the staking docs.
+  please see our guides on staking [here](/staking/).
 
 </Callout>
 
-# Introduction
+## Introduction
 
 This guide covers the technical integration required for custodians to create
-accounts that store locked FLOW tokens for users.
+accounts that store locked and/or leased FLOW tokens for users.
 
 Before discussing the account creation process, some terminology needs to be defined:
 
@@ -37,6 +37,7 @@ This account is completely controlled by the user. It can have already been crea
 the custody provider or can be created along with the user's second account.
 
 - **Account 2 - Shared Account:** This account is shared between the Flow token admin and the user.
+In the case of a **locked token relationship** with a user who owns the tokens in this account,
 The user's key will have weight 900 and the token admin's key will have weight 100. 
 The pre-generated token admin's key with weight 100 will be easily accessible for the custody provider
 to fetch and use to create this account.
@@ -45,14 +46,23 @@ The locked tokens are stored in this account and the token admin has the authori
 tokens as outlined by the vesting schedule. This account also manages access to the staking
 and delegating functionality that a user signs up for. 
 
+In the case of a **leased token relationship** where the token admin has leased tokens
+to a user for the purposes or node operation, the user does not own the tokens in the shared account.
+The token admin's key will have weight 1000.
+The pre-generated token admin's key with weight 1000 will be easily accessible for the custody provider
+to fetch and use to create this account. This account also manages access to the staking
+and delegating functionality that a user signs up for. 
+
 The **User Account** will include an object that manages access to 
 the staking functionality contained in the shared account.
 The user submits token withdrawal and staking transactions with locked tokens
 with their normal account, without the need for a signature from the token admin.
+The user can also withdraw staking rewards from the shared account without the need for a signature
+from the token admin.
 
-# Setup
+## Setup
 
-## Configure a Creator Account
+### Configure a Creator Account
 
 As the custodian, you must configure a Flow account that you will use to 
 create user accounts. This is called your **creator account**.
@@ -64,7 +74,7 @@ This transaction creates an `AccountCreator` object and stores it in the custodi
 It also publishes a capability that allows the token admin to grant the custodian 
 the authority to register locked token accounts.
 
-## Receive Account Creator Capability
+### Receive Account Creator Capability
 
 _**Note: Once you reach this step, please contact the token admin.**_
 
@@ -83,30 +93,30 @@ following arguments:
 This transaction gives the account registration capability to the custodian's creator account
 that was configured in the previous transaction.
 
-# Account Creation
+## Account Creation
 
 When a custodian uses these transactions, they must also ensure that 
 the token admin knows which account addresses map to which users. This is so 
-the token admin knows how much to pay to each locked account
-and how many tokens to unlock via the vesting schedule.
+the token admin knows how much to pay to each locked account, 
+how many tokens to unlock via the vesting schedule, 
+and/or which accounts apply to each node operator.
 
-## 1. Create Both Accounts for the User
+### 1. Create Both Accounts for the User
 
 If your user does not have a regular account created for them yet, you must 
-create both accounts using the **Create Shared Accounts** ([C.02](/protocol/core-contracts/locked-tokens/#custodian))
+create both accounts using the **Create Shared Lease Accounts** ([C.04](/protocol/core-contracts/locked-tokens/#custodian))
 transaction with the following arguments:
 
 | Argument                  | Type      | Description |
 |---------------------------|-----------|-------------|
-| **partialAdminPublicKey** | `[UInt8]` | The public key of the token admin. Must be Weight: 100 |
-| **partialUserPublicKey**  | `[UInt8]` | The public key of the user. Must be Weight: 900 |
+| **fullAdminPublicKey**    | `[UInt8]` | The public key of the token admin. Must be Weight: 1000 |
 | **fullUserPublicKey**     | `[UInt8]` | The public key of the user. Must be Weight: 1000 |
 
-## 2. Create the Shared Account for an Existing User Account
+### 2. Create the Shared Account for an Existing User Account
 
 If your user already has a personal account allocated to them, you can run a transaction
 that creates the shared account and gives their existing account the capability
-to interact with their locked tokens. 
+to interact with their locked tokens.
 
 <Callout type="warning">
 
@@ -121,14 +131,23 @@ transaction with the following arguments:
 
 | Argument                  | Type      | Description |
 |---------------------------|-----------|-------------|
-| **partialAdminPublicKey** | `[UInt8]` | The public key of the token admin. Must be Weight: 100 |
-| **partialUserPublicKey**  | `[UInt8]` | The public key of the user. Must be Weight: 900 |
+| **fullAdminPublicKey** | `[UInt8]` | The public key of the token admin. Must be Weight: 1000 |
 
-# Summary 
+### 3. (Optional) Convert the Shared account to a locked account.
 
-Both transactions generally perform the same actions:
+If the account is intended to be a leased tokens account, then there is no more action to take.
+The token admin by default should have control of the shared account, and the user has access
+to staking capabilities on the shared account, but not the tokens themselves.
 
-1. Create the shared account and add the partial public keys to the account.
+If you would like to convert the shared account to a locked token account instead of a leased account,
+you must contact the token admin, who will submit a transaction that sets the keys on the shared account
+to the locked account set up, which consists of the admin key with weight 100 and the user key with weight 900.
+
+## Summary 
+
+The account creation transactions generally perform the these actions:
+
+1. Create the shared account and add the public keys to the account.
 2. Create and store the Locked Token Manager object in the shared account.
 3. Create the Token Holder object and store it in the user account. This object
 is what the user interacts with to withdraw unlocked tokens and perform staking actions.
@@ -136,3 +155,4 @@ is what the user interacts with to withdraw unlocked tokens and perform staking 
 it can receive locked tokens from the vesting schedule.
 5. Override the default Flow Token receiver to mark received tokens as unlocked.
 6. Create a different Flow Token receiver that the token admin account uses to deposit locked tokens.
+

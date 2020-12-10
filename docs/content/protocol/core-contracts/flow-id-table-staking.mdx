@@ -30,7 +30,7 @@ These scripts are read-only and get info about the current state of the staking 
 |**`SC.06`**| Get Total Flow Staked                  | [idTableStaking/get_total_staked.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_total_staked.cdc) |
 |**`SC.07`**| Get Total Flow Staked by Node Type     | [idTableStaking/get_total_staked_by_type.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_total_staked_by_type.cdc) | 
 |**`SC.08`**| Get All Info about a single NodeID     | [idTableStaking/get_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_node_info.cdc) |
-|**`SC.09`**| Get a nodes total Commitment           | [idTableStaking/get_node_total_commitment.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_node_total_commitment.cdc) |
+|**`SC.09`**| Get a node's total Commitment          | [idTableStaking/get_node_total_commitment.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_node_total_commitment.cdc) |
 |**`SC.10`**| Get All Info about a single Delegator  | [idTableStaking/delegation/get_delegator_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/get_delegator_info.cdc) |
 
 ## Node Staker Transactions
@@ -46,20 +46,34 @@ Documentation for delegating with unlocked tokens will be updated when unlocked 
 # Events
 
 The `FlowIDTableStaking` contract emits an event whenever an important action occurs.
+See the [staking events Documentation](/staking/events) for more information about each event.
 
 ```cadence
-pub event NewNodeCreated(nodeID: String, role: UInt8, amountCommitted: UFix64)
-pub event TokensCommitted(nodeID: String, amount: UFix64)
-pub event TokensStaked(nodeID: String, amount: UFix64)
-pub event TokensUnstaking(nodeID: String, amount: UFix64)
-pub event NodeRemovedAndRefunded(nodeID: String, amount: UFix64)
-pub event RewardsPaid(nodeID: String, amount: UFix64)
-pub event UnstakedTokensWithdrawn(nodeID: String, amount: UFix64)
-pub event RewardTokensWithdrawn(nodeID: String, amount: UFix64)
+    pub event NewEpoch(totalStaked: UFix64, totalRewardPayout: UFix64)
 
-pub event NewDelegatorCutPercentage(newCutPercentage: UFix64)
-pub event NewDelegatorCreated(nodeID: String, delegatorID: UInt32)
-pub event DelegatorRewardsPaid(nodeID: String, delegatorID: UInt32, amount: UFix64)
-pub event DelegatorUnstakedTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
-pub event DelegatorRewardTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
+    /// Node Events
+    pub event NewNodeCreated(nodeID: String, role: UInt8, amountCommitted: UFix64)
+    pub event TokensCommitted(nodeID: String, amount: UFix64)
+    pub event TokensStaked(nodeID: String, amount: UFix64)
+    pub event TokensUnstaking(nodeID: String, amount: UFix64)
+    pub event TokensUnstaked(nodeID: String, amount: UFix64)
+    pub event NodeRemovedAndRefunded(nodeID: String, amount: UFix64)
+    pub event RewardsPaid(nodeID: String, amount: UFix64)
+    pub event UnstakedTokensWithdrawn(nodeID: String, amount: UFix64)
+    pub event RewardTokensWithdrawn(nodeID: String, amount: UFix64)
+
+    /// Delegator Events
+    pub event NewDelegatorCreated(nodeID: String, delegatorID: UInt32)
+    pub event DelegatorTokensCommitted(nodeID: String, delegatorID: UInt32, amount: UFix64)
+    pub event DelegatorTokensStaked(nodeID: String, delegatorID: UInt32, amount: UFix64)
+    pub event DelegatorTokensUnstaking(nodeID: String, delegatorID: UInt32, amount: UFix64)
+    pub event DelegatorTokensUnstaked(nodeID: String, delegatorID: UInt32, amount: UFix64)
+    pub event DelegatorRewardsPaid(nodeID: String, delegatorID: UInt32, amount: UFix64)
+    pub event DelegatorUnstakedTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
+    pub event DelegatorRewardTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
+
+    /// Contract Field Change Events
+    pub event NewDelegatorCutPercentage(newCutPercentage: UFix64)
+    pub event NewWeeklyPayout(newPayout: UFix64)
+    pub event NewStakingMinimums(newMinimums: {UInt8: UFix64})
 ```

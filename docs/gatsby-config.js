@@ -85,15 +85,15 @@ const sections = [
     sidebar: {
       null: [
         "[FLOW Token](/token)",
-        "[Dapp Deployment Guide](/guides/dapp-deployment)",
         "[Staking & Delegating](/staking)",
-        "[Node Operation](/node-operation)",
         "[Core Contracts](/protocol/core-contracts)",
+        "[Dapp Deployment Guide](/guides/dapp-deployment)",
+        "[Node Operation](/node-operation)",
         "intro/glossary",
         "intro/FAQ",
       ],
       "Community Updates": ["updates/oct-6-2020", "updates/sep-16-2020"],
-      Support: ["support/flow-port/index"],
+      Support: ["support/flow-port/index", "support/flow-port/staking-guide"],
     },
   },
   {
@@ -211,12 +211,12 @@ const sections = [
         "token/delivery",
         "token/faq",
       ],
-      "Developer Guides": ["token/locked-account-setup"],
+      "Token Delivery": ["token/locked-account-setup"],
     },
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["staking/**/*"],
+    patterns: ["staking/**/*", "token/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
@@ -226,13 +226,16 @@ const sections = [
         "staking/stake-slashing",
         "staking/faq",
       ],
-      "Developer Guides": [
+      "Custody Providers": ["staking/custody-providers"],
+      "Manual Staking Guides": [
         "staking/technical-overview",
         "staking/locked-delegation-guide",
         "staking/locked-staking-guide",
         "staking/locked-third-party-operator",
         "staking/events",
+        "staking/scripts",
       ],
+      "Token Delivery": ["token/locked-account-setup"],
     },
   },
   {
@@ -245,11 +248,11 @@ const sections = [
         "node-operation/index",
         "node-operation/node-setup",
         "node-operation/node-roles",
+        "node-operation/faq",
       ],
       "Operator Guides": [
         "node-operation/node-bootstrap",
         "node-operation/monitoring-nodes",
-        "node-operation/faq",
         "node-operation/spork",
       ],
     },
@@ -317,6 +320,18 @@ module.exports = {
     title: "Flow Documentation",
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-mixpanel",
+      options: {
+        apiToken: "3fae49de272be1ceb8cf34119f747073",
+        enableOnDevMode: false,
+        pageViews: "all",
+        getPageViewTransformerFn: () => ({
+          url: location.pathname,
+          page_name: document.title,
+        }),
+      },
+    },
     {
       resolve: "gatsby-theme-flow",
       options: {
