@@ -44,4 +44,4 @@
 | Ubisoft (Coming Soon!) | Verification | <!--- 429143c4438fcbbfc7353869b4f270e233aa0f75a6881ee977a81c962c4978ed -->
 | Ubisoft (Coming Soon!) | Collection | <!--- dc0fb2d914f0c12cc1de527d22974b8f2de376e4765e084e0b8be14b51b5ef81 -->
 | Yonsei | Verification | 5dc67a4f47ea9ce55d1b63ebe04cc68d8b29c41e40ab5cdc63b108ce292139a0
-<!--- | Stratx (Deutsche Telcom)| Execution | 2b396b7fab0102f104a2af7e095b145cc14da28f863564802e158afc3e07e638 | -->
+| Deutsche Telcom| Execution | 2b396b7fab0102f104a2af7e095b145cc14da28f863564802e158afc3e07e638 |
