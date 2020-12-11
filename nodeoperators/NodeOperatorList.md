@@ -12,7 +12,7 @@
 | Blockdaemon | Verification | 49c9f946170d5fb40c2af953b1534fae771905865b142ab6ac9685b8ba5b51c1
 | Blockchain Coalition/Block Venture | Verification | 16036263d71f64d65f84542e9f7678e578482a107b61e45b88759ebea2c7451d
 | Bitcoin Louie | Verification | fffba108a52e4ca8f5d30658c3f03f47ad1cc13a0995435c0532336236813218
-| versus-flow.art (Coming Soon!) | Verification | <!--- 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e -->
+| versus-flow.art | Verification | 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e
 | Chainflow | Verification | 3b57e0ee2ece1f1dbefbd868d3eaac63b32a11df5b1a37d231145ea219055dde
 | Chainlayer | Consensus | 62de4fa4b6a05b8beb5868a5259caca4efa966aa0cb867fdd776c73abe9370ad
 | Coinfund (Coming Soon!) | Consensus | <!--- 5a4bff17941a73909472afe23f1ccdc59d7526f93b16b4e374bd8353f8b624b4 -->
