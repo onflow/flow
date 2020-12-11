@@ -235,7 +235,6 @@ const sections = [
         "staking/events",
         "staking/scripts",
       ],
-      "Token Delivery": ["token/locked-account-setup"],
     },
   },
   {
