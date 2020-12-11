@@ -10,4 +10,51 @@ Rewards are paid out at the end of each epoch to all the users that have tokens 
 Rewards are considered to be unlocked and liquid, so the user can withdraw their rewards
 at any time.
 
-More information about the rewards calculation and schedule will be provided in the near future.
+## Rewards Distribution
+
+The rewards distribution schedule has been designed to ensure that enough liquid FLOW
+is available in the ecosystem to a wide variety of holders after the first few reward payments,
+and to ensure that enough FLOW is added to the ecosystem every week to keep up with new holders
+and new demand while not causing too much inflation.
+
+Using this model, any user will be able to easily aquire FLOW from many different places
+in order to participate in the network.
+
+The numbers in this table represent the total tokens that are paid as rewards each epoch.
+They are not meant to indicate any expectations for an individual staker's rewards.
+
+|                                | Week 1         | Weeks 2-5  | Weeks 6 - 52  | Weeks 53+  |
+| ------------------------------ | -------------- | ---------- | ------------- | ---------- |
+| Total Rewards % (Annual)       | 5%             | 20%        | 5%            | TBD        |
+| Total Rewards Amount Per Week  | 1,173,391 FLOW | ~4.4M FLOW | ~1.2M FLOW    | TBD        |
+
+## Calculation
+
+Each user gets a percentage of the total rewards for the week that is equal to 
+their percentage of all the tokens that are staked by all users.	
+
+The full reward calculation on a per user basis is equal to:	
+
+```	
+New Reward(user) = Tr  * (Sn / St)	
+```	
+
+where:	
+- `Tr` = Sum of all the rewards paid to all users for the current epoch. (1.2M FLOW for the first week)	
+- `Sn` = Amount of FLOW Staked by the user for the current Epoch.	     (Different for each staker)
+- `St` = Sum of all the FLOW staked by all the stakers in the network.	 (Changes every epoch)
+
+Rewards for delegators are also calculated in the exact same way 	
+that rewards for node operators are calculated, 	
+with one difference in that 8% of the calculated amount 	
+is given to the node operator being delegated to. 	
+The remaining 92% is awarded to the delegator.
+
+With this calculation, the node you choose to run or delegate to DOES NOT
+affect the amount of rewards you receive every week. The only variable that you can control
+is the number of tokens you have staked. The more tokens you stake, the more rewards you will receive.
+
+Because of the variable nature of the rewards calucation, we cannot provide an expected
+weekly/yearly return for a single staker. You can plug your own numbers into the formula
+to see some sample calculations, but you won't be able to know exactly what you will earn
+until the beginning of the epoch where you expect to receive rewards.
