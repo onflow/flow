@@ -178,7 +178,10 @@ const sections = [
         "protocol/core-contracts/flow-token",
         "protocol/core-contracts/flow-fees",
         "protocol/core-contracts/flow-id-table-staking",
-        "protocol/core-contracts/locked-tokens",
+      ],
+      "Other Important Contracts": [
+          "protocol/core-contracts/locked-tokens",
+          "protocol/core-contracts/non-fungible-token"
       ],
       "Developer Guides": ["protocol/access-api"],
     },
@@ -235,7 +238,6 @@ const sections = [
         "staking/events",
         "staking/scripts",
       ],
-      "Token Delivery": ["token/locked-account-setup"],
     },
   },
   {
