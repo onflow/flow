@@ -11,6 +11,8 @@
 | Blockdaemon | Consensus | cd7eed9952dbf8822062db7a351d959ef1166cd6d1856c0ad26c1c67d68e4fdb
 | Blockdaemon | Verification | 49c9f946170d5fb40c2af953b1534fae771905865b142ab6ac9685b8ba5b51c1
 | Blockchain Coalition/Block Venture | Verification | 16036263d71f64d65f84542e9f7678e578482a107b61e45b88759ebea2c7451d
+| Blocto | Consensus | 2cfab7e9163475282f67186b06ce6eea7fa0687d25dd9c7a84532f2016bc2e5e
+| Blocto | Verification | 21b21ad1ddb5e3002cc6a3faa55e23d70db014ee229c213f7a43769789125536
 | Bitcoin Louie | Verification | fffba108a52e4ca8f5d30658c3f03f47ad1cc13a0995435c0532336236813218
 | versus-flow.art (Coming Soon!) | Verification | <!--- 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e -->
 | Chainflow | Verification | 3b57e0ee2ece1f1dbefbd868d3eaac63b32a11df5b1a37d231145ea219055dde
@@ -31,8 +33,6 @@
 | P2P (Coming Soon!)| Consensus | <!--- 8510b001c25c479b0874f3915fd14895c5d22331449182f1293b3c1c4bca4403 -->
 | P2P (Coming Soon!) | Collection | <!--- 79b43645fdf7c6597d8868b10c91d8cf343ab7d2cea0c98902d8f9456049918a -->
 | Open Worlds | Verification | 8d4dbdd523bd4c67ffad9282a7acefc65641d25ac9c40759de9df859eb7255e3
-| Portto | Consensus | 2cfab7e9163475282f67186b06ce6eea7fa0687d25dd9c7a84532f2016bc2e5e
-| Portto | Verification | 21b21ad1ddb5e3002cc6a3faa55e23d70db014ee229c213f7a43769789125536
 | RIT | Verification | 1a671144c4e8def6ce53aa861e185ab22f559f8ba0e0ea6017b714f3b5be0d74
 | Samsung (Coming Soon!) | Execution | <!--- 6c6af0933b710655ec553f4bead3b01c5e0a3ffd1194ee536efb926b356c54aa -->
 | Snowfro | Verification | adac59f7a5265148ec8e7c95f373d9ce9a7ec2baeaafda965d9cbfb4f88f8039
