@@ -19,6 +19,8 @@ import { graphql, useStaticQuery } from "gatsby";
 import MobileLogo from "./mobile-logo";
 import { SelectedLanguageContext } from "./multi-code-block";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
+import { Breadcrumb } from "gatsby-plugin-breadcrumb";
+import { startCase } from "lodash";
 
 const Main = styled.main({
   flexGrow: 1,
@@ -45,6 +47,13 @@ export const NavItemDescription = styled.p({
   lineHeight: 1.5,
   color: theme.text3,
   transition: "color 150ms ease-in-out",
+});
+
+const HeaderBreadcrumb = styled(Breadcrumb)({
+  display: "block",
+  width: "100%",
+  fontSize: "0.8rem",
+  paddingTop: "0.5rem",
 });
 
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
@@ -94,7 +103,13 @@ export default function PageLayout(props) {
 
   const { pathname } = props.location;
   const { siteName, title } = data.site.siteMetadata;
-  const { subtitle, sidebar } = props.pageContext;
+  const {
+    subtitle,
+    sidebar,
+    breadcrumb: { crumbs },
+  } = props.pageContext;
+
+  console.log(props);
   const {
     navConfig = {},
     logoLink,
@@ -110,6 +125,11 @@ export default function PageLayout(props) {
       })),
     [navConfig]
   );
+
+  const dacrumbs = crumbs.map((c) => {
+    c.crumbLabel = startCase(c.crumbLabel);
+    return c;
+  });
 
   return (
     <Layout>
@@ -162,8 +182,15 @@ export default function PageLayout(props) {
               />
             )}
             <HeaderNav />
+            <div></div>
           </Header>
           <SelectedLanguageContext.Provider value={selectedLanguageState}>
+            <HeaderBreadcrumb
+              crumbs={dacrumbs}
+              crumbSeparator=" / "
+              crumbLabel={props?.data?.file?.childMdx?.frontmatter?.title}
+              hiddenCrumbs={["/protocol"]}
+            />
             <NavItemsContext.Provider value={navItems}>
               {props.children}
             </NavItemsContext.Provider>

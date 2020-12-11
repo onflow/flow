@@ -151,7 +151,7 @@ flow accounts create \
 
 ### Making Use of Core Contracts
 
-Flow Testnet comes with some useful contracts already deployed, called **core contracts.** There are reference pages with import addresses for the core contracts here: [https://docs.onflow.org/protocol/core-contracts/](/protocol/core-contracts/)
+Flow Testnet comes with some useful contracts already deployed, called **core contracts.** There are reference pages with import addresses for the core contracts here: [https://docs.onflow.org/core-contracts/](/core-contracts/)
 
 Once you accounts are set up and you're ready to develop, you can look over some code examples from the Flow Go SDK here:
 

@@ -3,7 +3,7 @@ title: Mainnet Deployment Guidelines
 sidebar_title: 4. Deploy to Mainnet
 ---
 
-In the early days of the Flow network, applications deployed to the Flow Mainnet are required to be review and tested by the Flow team. For details about the testing and approval process, please read through our guide \[Testnet Testing Guidelines](/guides/dapp-deployment/testnet-testing/) If your app has passed the review process you're ready to deploy on Flow's Mainnet!
+In the early days of the Flow network, applications deployed to the Flow Mainnet are required to be review and tested by the Flow team. For details about the testing and approval process, please read through our guide \[Testnet Testing Guidelines](/dapp-deployment/testnet-testing/) If your app has passed the review process you're ready to deploy on Flow's Mainnet!
 
 ## Risks for Early Adopters
 

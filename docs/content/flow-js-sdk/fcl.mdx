@@ -63,7 +63,7 @@ npm install --save @emotion/styled
 
 ## Install the Flow Emulator
 
-The Flow emulator is a lightweight tool that emulates the behaviour of the real Flow network. The emulator comes bundled with the [Flow CLI](/devtools/flow-cli). Install the emulator by following these [instructions](/devtools/emulator).
+The Flow emulator is a lightweight tool that emulates the behaviour of the real Flow network. The emulator comes bundled with the [Flow CLI](/flow-cli). Install the emulator by following these [instructions](/emulator).
 
 ## Start the Flow Emulator
 
@@ -288,7 +288,7 @@ function App() {
 
 ## Run a Cadence Script
 
-Cadence scripts allow you to run computations on Flow that are not recorded on the blockchain. You'll mainly use scripts as a way of querying Flow for information about accounts and their **[resources](/tutorial/cadence/03-fungible-tokens/#intuiting-ownership-with-resources).** A script is not signed by any account and cannot modify an account's state.
+Cadence scripts allow you to run computations on Flow that are not recorded on the blockchain. You'll mainly use scripts as a way of querying Flow for information about accounts and their **[resources](/cadence/tutorial/03-fungible-tokens/#intuiting-ownership-with-resources).** A script is not signed by any account and cannot modify an account's state.
 
 ### Simple Script
 
@@ -368,7 +368,7 @@ Go ahead and test out your new script!
 
 ### Query Flow Accounts
 
-A common use for Cadence scripts is to acquire information about a Flow account's public state and its **[resources](/tutorial/cadence/03-fungible-tokens/#intuiting-ownership-with-resources)**. Here is an example of a script you might use to query and use another account's public resources.
+A common use for Cadence scripts is to acquire information about a Flow account's public state and its **[resources](/cadence/tutorial/03-fungible-tokens/#intuiting-ownership-with-resources)**. Here is an example of a script you might use to query and use another account's public resources.
 
 ```javascript
 const response = await fcl.send([
@@ -510,7 +510,7 @@ function App() {
 
 ## Execute a Cadence Transaction
 
-Flow Transactions are used to _move_ **[resources](/tutorial/cadence/00-introduction/#intuiting-ownership-with-resources)** and interact with smart contracts on behalf of Flow accounts. `@onflow` provides flexible primitives composing authorizing and paying for Transactions on Flow.
+Flow Transactions are used to _move_ **[resources](/cadence/tutorial/00-introduction/#intuiting-ownership-with-resources)** and interact with smart contracts on behalf of Flow accounts. `@onflow` provides flexible primitives composing authorizing and paying for Transactions on Flow.
 
 `@onflow` allows for specifying the **payer**, **proposer** and **authorizer** of transactions on Flow.
 

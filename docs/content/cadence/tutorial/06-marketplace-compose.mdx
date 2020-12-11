@@ -34,7 +34,7 @@ To create a marketplace, we need to integrate the functionality of both fungible
 4. Use a different account to purchase the NFT from the sale.
 5. Run a script to verify that the NFT was purchased.
 
-**Before proceeding with this tutorial**, you need to complete the [Fungible Tokens](/tutorial/cadence/03-fungible-tokens/) and [Non-Fungible Token](/tutorial/cadence/04-non-fungible-tokens/) tutorials to understand how the building blocks of this smart contract work.
+**Before proceeding with this tutorial**, you need to complete the [Fungible Tokens](/cadence/tutorial/03-fungible-tokens/) and [Non-Fungible Token](/cadence/tutorial/04-non-fungible-tokens/) tutorials to understand how the building blocks of this smart contract work.
 
 ## Marketplace Design
 
@@ -123,7 +123,7 @@ pub fun main() {
 }
 ```
 
-You should see something similar to this output if your accounts are set up correctly. They are in the same state that they would have been in if you followed the [Fungible Tokens](/tutorial/cadence/03-fungible-tokens/) and [Non-Fungible Tokens](/tutorial/cadence/04-non-fungible-tokens/) tutorials in succession:
+You should see something similar to this output if your accounts are set up correctly. They are in the same state that they would have been in if you followed the [Fungible Tokens](/cadence/tutorial/03-fungible-tokens/) and [Non-Fungible Tokens](/cadence/tutorial/04-non-fungible-tokens/) tutorials in succession:
 
 ```
 "Account 1 Vault Balance"
@@ -287,7 +287,7 @@ pub contract Marketplace {
 }
 ```
 
-This marketplace contract has resources that function similarly to the NFT `Collection` that was explained in [Non-Fungible Tokens](/tutorial/cadence/04-non-fungible-tokens), with a few differences and additions:
+This marketplace contract has resources that function similarly to the NFT `Collection` that was explained in [Non-Fungible Tokens](/cadence/tutorial/04-non-fungible-tokens), with a few differences and additions:
 
 - This marketplace contract has methods to add and remove NFTs, but these functions also involve setting and removing a price. When a user wants to put their NFT up for sale, they do so by depositing it into the collection with the `listForSale` function. Then, another user can call the `purchase` method, sending their `Vault` that contains the currency they are using to make the purchase. The buyer also includes a reference to their NFT `Collection` so that the purchased token can be immediately deposited into their collection when the purchase is made.
 - This marketplace contract stores a capability: `pub let ownerVault: Capability<&AnyResource{FungibleToken.Receiver}>`.

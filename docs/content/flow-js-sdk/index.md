@@ -15,7 +15,7 @@ Please note, that some code provided - e.g. `Object.fromEntries` - will require 
 
 - Higher Level
 
-  - [`@onflow/fcl`](/sdks/javascript/fcl/) _(mvp)_ -- A high level dapp framework built on top an opinionated use of the sdk.
+  - [`@onflow/fcl`](/flow-js-sdk/fcl/) _(mvp)_ -- A high level dapp framework built on top an opinionated use of the sdk.
   - [`@onflow/sdk`](https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk) _(mvp)_ -- Tools that enable developers to [build](https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk/src/build), [resolve](https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk/src/resolve), [send](https://github.com/onflow/flow-js-sdk/tree/master/packages/send) and [decode](https://github.com/onflow/flow-js-sdk/tree/master/packages/decode) interactions with the Flow blockchain.
   - [`@onflow/types`](https://github.com/onflow/flow-js-sdk/tree/master/packages/types) _(early wip)_ -- Type casting interaction params to cadence compatible values.
   - [`@onflow/send`](https://github.com/onflow/flow-js-sdk/tree/master/packages/send) _(mvp)_ -- Send [interactions](https://github.com/onflow/flow-js-sdk/tree/master/packages/interaction) to the Flow blockchain get [responses](https://github.com/onflow/flow-js-sdk/tree/master/packages/response) back.

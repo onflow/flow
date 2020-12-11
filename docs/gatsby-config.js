@@ -7,7 +7,7 @@ const navConfig = {
       "New to Flow? Start here. Read about Flow's architecture, and important concepts for a deeper understanding of the Flow platform and how it works.",
   },
   Cadence: {
-    url: "/tutorial/cadence/00-introduction/",
+    url: "/cadence/tutorial/00-introduction/",
     icon: "cadence",
     description:
       "Resource-Oriented programming language for smart contracts that helps developers ensure that their code is safe, secure, clear, and approachable.",
@@ -21,35 +21,35 @@ const navConfig = {
     linkText: "Launch the Flow Playground",
   },
   "JavaScript SDK": {
-    url: "/sdks/javascript",
+    url: "/flow-js-sdk",
     icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
     linkText: "JavaScript SDK Documentation",
   },
   "Go SDK": {
-    url: "/sdks/golang/",
+    url: "/flow-go-sdk",
     icon: "go-sdk",
     description:
       "Build apps that interact with Flow using our full-featured Go SDK.",
     linkText: "Go SDK Documentation",
   },
   "Flow CLI": {
-    url: "/devtools/flow-cli",
+    url: "/flow-cli",
     icon: "cli",
     description:
       "The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.",
     linkText: "CLI Documentation",
   },
   "Flow Emulator": {
-    url: "/devtools/emulator/",
+    url: "/emulator/",
     icon: "emulator",
     description:
       "Develop and test your applications locally using the Flow emulator.",
     linkText: "Emulator Documentation",
   },
   "VS Code Extension": {
-    url: "/devtools/vscode-extension",
+    url: "/vscode-extension",
     icon: "vscode",
     description:
       "Cadence syntax highlighting and an integrated Flow emulator for VSCode users.",
@@ -79,83 +79,83 @@ const sourceSlugTransformers = {
 const sections = [
   {
     sourceInstanceName: "docs",
-    patterns: ["*", "intro/*", "updates/*", "support/**/*"],
+    patterns: ["*", "intro/*", "community-updates/*", "support/**/*"],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
         "[FLOW Token](/token)",
         "[Staking & Delegating](/staking)",
-        "[Core Contracts](/protocol/core-contracts)",
-        "[Dapp Deployment Guide](/guides/dapp-deployment)",
+        "[Core Contracts](/core-contracts)",
+        "[Dapp Deployment Guide](/dapp-deployment)",
         "[Node Operation](/node-operation)",
         "intro/glossary",
         "intro/FAQ",
       ],
-      "Community Updates": ["updates/oct-6-2020", "updates/sep-16-2020"],
-      Support: ["support/flow-port/index", "support/flow-port/staking-guide"],
+      "Community Updates": [
+        "community-updates/oct-6-2020",
+        "community-updates/sep-16-2020",
+      ],
+      Support: ["flow-port/index", "flow-port/staking-guide"],
     },
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["tutorial/cadence/*", "guides/cadence/*"],
+    patterns: ["cadence/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
       Overview: [
-        "tutorial/cadence/00-introduction",
+        "cadence/tutorial/00-introduction",
         "[Cadence Language Reference](/cadence/language)",
       ],
-      "Developer Guides": [
-        "guides/cadence/design-patterns",
-        "guides/cadence/dragons",
-      ],
+      "Developer Guides": ["cadence/design-patterns", "cadence/dragons"],
       Tutorial: [
-        "tutorial/cadence/01-first-steps",
-        "tutorial/cadence/02-hello-world",
-        "tutorial/cadence/03-fungible-tokens",
-        "tutorial/cadence/04-non-fungible-tokens",
-        "tutorial/cadence/05-marketplace-setup",
-        "tutorial/cadence/06-marketplace-compose",
-        "tutorial/cadence/07-resources-compose",
-        "tutorial/cadence/08-voting",
+        "cadence/tutorial/01-first-steps",
+        "cadence/tutorial/02-hello-world",
+        "cadence/tutorial/03-fungible-tokens",
+        "cadence/tutorial/04-non-fungible-tokens",
+        "cadence/tutorial/05-marketplace-setup",
+        "cadence/tutorial/06-marketplace-compose",
+        "cadence/tutorial/07-resources-compose",
+        "cadence/tutorial/08-voting",
       ],
     },
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["sdks/golang/**/*"],
+    patterns: ["flow-go-sdk/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["sdks/golang/index", "sdks/golang/changelog"],
+      Overview: ["flow-go-sdk/index", "flow-go-sdk/changelog"],
       "Developer Guides": [
-        "sdks/golang/create-account",
-        "sdks/golang/build-transaction",
-        "sdks/golang/sign-transaction",
-        // "sdks/golang/sign-transaction-hsm",
-        "sdks/golang/send-transaction",
-        // "sdks/golang/query-events",
-        // "sdks/golang/transfer-funds",
+        "flow-go-sdk/create-account",
+        "flow-go-sdk/build-transaction",
+        "flow-go-sdk/sign-transaction",
+        // "flow-go-sdk/sign-transaction-hsm",
+        "flow-go-sdk/send-transaction",
+        // "flow-go-sdk/query-events",
+        // "flow-go-sdk/transfer-funds",
       ],
     },
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["sdks/javascript/**/*"],
+    patterns: ["flow-js-sdk/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["sdks/javascript/index"],
-      "Developer Guides": ["sdks/javascript/fcl"],
+      Overview: ["flow-js-sdk/index"],
+      "Developer Guides": ["flow-js-sdk/fcl"],
     },
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["devtools/flow-cli/*"],
+    patterns: ["flow-cli/*"],
     sidebar: {
       null: ["[Home](/)"],
-      "Developer Guides": ["devtools/flow-cli/index"],
+      "Developer Guides": ["flow-cli/index"],
     },
   },
   {
@@ -169,32 +169,32 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["protocol/**/*"],
+    patterns: ["core-contracts/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
       "Core Contracts": [
-        "protocol/core-contracts/fungible-token",
-        "protocol/core-contracts/flow-token",
-        "protocol/core-contracts/flow-fees",
-        "protocol/core-contracts/flow-id-table-staking",
-        "protocol/core-contracts/locked-tokens",
+        "core-contracts/fungible-token",
+        "core-contracts/flow-token",
+        "core-contracts/flow-fees",
+        "core-contracts/flow-id-table-staking",
+        "core-contracts/locked-tokens",
       ],
-      "Developer Guides": ["protocol/access-api"],
+      // "Developer Guides": ["access-api"],
     },
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["guides/**/*"],
+    patterns: ["dapp-deployment/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
       "Dapp Deployment Guide": [
-        "guides/dapp-deployment/index",
-        "guides/dapp-deployment/contract-testing",
-        "guides/dapp-deployment/testnet-deployment",
-        "guides/dapp-deployment/testnet-testing",
-        "guides/dapp-deployment/mainnet-deployment",
+        "dapp-deployment/index",
+        "dapp-deployment/contract-testing",
+        "dapp-deployment/testnet-deployment",
+        "dapp-deployment/testnet-testing",
+        "dapp-deployment/mainnet-deployment",
       ],
     },
   },
@@ -211,12 +211,11 @@ const sections = [
         "token/delivery",
         "token/faq",
       ],
-      "Token Delivery": ["token/locked-account-setup"],
     },
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["staking/**/*", "token/*"],
+    patterns: ["staking/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
@@ -235,7 +234,7 @@ const sections = [
         "staking/events",
         "staking/scripts",
       ],
-      "Token Delivery": ["token/locked-account-setup"],
+      "Token Delivery": ["staking/locked-account-setup"],
     },
   },
   {
@@ -259,20 +258,20 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["devtools/emulator/**/*"],
+    patterns: ["emulator/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["devtools/emulator/index", "devtools/emulator/changelog"],
+      Overview: ["emulator/index", "emulator/changelog"],
     },
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["devtools/vscode-extension/**/*"],
+    patterns: ["vscode-extension/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["devtools/vscode-extension/index"],
+      Overview: ["vscode-extension/index"],
     },
   },
   {
@@ -320,6 +319,13 @@ module.exports = {
     title: "Flow Documentation",
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-breadcrumb`,
+      options: {
+        useAutoGen: true,
+        autoGenHomeLabel: "Home",
+      },
+    },
     {
       resolve: "gatsby-plugin-mixpanel",
       options: {

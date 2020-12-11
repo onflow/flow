@@ -8,7 +8,5 @@ that interact with the Flow network.
 
 This SDK is also fully compatible with the Flow Emulator and can be used for local development.
 
-<!-- [Changelog](/sdks/golang/changelog/) -->
-
 Source: https://github.com/onflow/flow-go-sdk <br/>
 GoDoc: https://pkg.go.dev/github.com/onflow/flow-go-sdk
