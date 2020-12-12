@@ -20,7 +20,7 @@
 | Coinfund (Coming Soon!) | Consensus | <!--- d98755f4ae8bef3f372889c4d7010ca784ea6da46fdde63d27ee57b2bf5efdd7 -->
 | CryptoTech | Consensus | b4f850b43df502e7fd292c34d9a21c2e8db350cd8a1214a4a29734bc6f3c9e92
 | DCG (Coming Soon!) | Consensus | <!--- 56e97c4cd4079caeb97d2a8f8950437107813436d5964f22a1f459eb8cf73a71 -->
-| Usopp (Coming Soon!) | Verification | <!--- d12b80ad9a9be6dbf86f8a7824739d9b2193836e5df226e063528dae33be3a4a -->
+| Usopp | Verification | d12b80ad9a9be6dbf86f8a7824739d9b2193836e5df226e063528dae33be3a4a
 | DSRV | Consensus | 947771ab1fd233d8694aee6c4a4259ee7e2241f4a201067aaa28adbb989d7c97
 | Figment (Coming Soon!) | Collection | <!--- 1408c08272beb24ad4fe4e531a9b937a26ee72c5f56b50ac8f2b889c3c42d316 -->
 | Figment | Consensus | 95d61bcc7202fe7d0558baede4cc17a56aac191a0cfd110fbf824e2ef71bd49c 
