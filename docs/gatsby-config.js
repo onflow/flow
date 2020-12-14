@@ -180,8 +180,8 @@ const sections = [
         "protocol/core-contracts/flow-id-table-staking",
       ],
       "Other Important Contracts": [
-          "protocol/core-contracts/locked-tokens",
-          "protocol/core-contracts/non-fungible-token"
+        "protocol/core-contracts/locked-tokens",
+        "protocol/core-contracts/non-fungible-token",
       ],
       "Developer Guides": ["protocol/access-api"],
     },
@@ -328,10 +328,7 @@ module.exports = {
         apiToken: "3fae49de272be1ceb8cf34119f747073",
         enableOnDevMode: false,
         pageViews: "all",
-        getPageViewTransformerFn: () => ({
-          url: location.pathname,
-          page_name: document.title,
-        }),
+        trackPageViewAs: "Loaded a Page",
       },
     },
     {
