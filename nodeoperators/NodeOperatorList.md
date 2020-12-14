@@ -1,4 +1,18 @@
 # List of available Node Operators
+## FAQ 
+1. Which node should I choose to delegate to? Does one have an advantage over the other?
+
+  - In terms of amount of rewards earned, there is no difference between Node Operators and across node types. You will earn the same amount of rewards across all.
+  
+  - Regarding which node you should delegate to, each community member might have their own criteria of selection: well known node operator, supporting a specific application or community run node, nodes run by large enterprises and so forth. To avoid instability and to maximize your potential staking reward, select nodes you believe will behave honestly and will have strong uptime.
+  
+2. Can I choose a specific time period of when I want my delegation to be active?
+
+  - When you choose to delegate to a node operator, that delegation will sit in a pending status until it is processed at the next Epoch. You can see this information at the top of the Stake & Delegate screen in Flow Port. Once the delegation is processed successfully, it is now considered staked to the Node Operator and you will begin to earn rewards. There is nothing more you need to do at this point with your delegation. You will continue to earn rewards, which are paid at the end of each epoch.
+  
+  - At the time you want to unstake your delegation, you will execute an unstake-transaction. This request will now sit in a pending status for 2 epochs before it is fully unstaked. Once it is unstaked successfully at the end of 2 epochs, it will be available for you to withdraw to your wallet.
+
+## Node Operator list
 | Node Operator             | Node Type           | Node ID  |
 |:--------------------------|:-------------------:|:---------:|
 | Alxo | Verification | f7422f2d3296ede4d1efb36ec55e3fd93702c061f7ee627881f0b3007beff2ed
