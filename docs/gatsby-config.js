@@ -79,7 +79,7 @@ const sourceSlugTransformers = {
 const sections = [
   {
     sourceInstanceName: "docs",
-    patterns: ["*", "intro/*", "community-updates/*", "support/**/*"],
+    patterns: ["*", "intro/*", "community-updates/*", "flow-port/**/*"],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
@@ -332,10 +332,7 @@ module.exports = {
         apiToken: "3fae49de272be1ceb8cf34119f747073",
         enableOnDevMode: false,
         pageViews: "all",
-        getPageViewTransformerFn: () => ({
-          url: location.pathname,
-          page_name: document.title,
-        }),
+        trackPageViewsAs: "Loaded a Page",
       },
     },
     {
