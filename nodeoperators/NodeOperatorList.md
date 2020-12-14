@@ -33,7 +33,9 @@
 | Coinfund (Coming Soon!) | Consensus | <!--- b5702f80aa39f06ecdf4d6321bfe40f64e40b9b630085a42993f1b241bfcbf25 -->
 | Coinfund (Coming Soon!) | Consensus | <!--- d98755f4ae8bef3f372889c4d7010ca784ea6da46fdde63d27ee57b2bf5efdd7 -->
 | CryptoTech | Consensus | b4f850b43df502e7fd292c34d9a21c2e8db350cd8a1214a4a29734bc6f3c9e92
-| DCG (Coming Soon!) | Consensus | <!--- 56e97c4cd4079caeb97d2a8f8950437107813436d5964f22a1f459eb8cf73a71 -->
+| DCG | Consensus | 56e97c4cd4079caeb97d2a8f8950437107813436d5964f22a1f459eb8cf73a71
+| DCG | Collection | bd368122b0ccf67ebdd59d7f9b75edfa85106c3af41854c946ad0fa46e5c3ddd
+| DCG | Verification | e74d0ca7afed2b5bfd612f3c75010adb229d632ca4ab3b77d178ee226d7ec2a2
 | Usopp | Verification | d12b80ad9a9be6dbf86f8a7824739d9b2193836e5df226e063528dae33be3a4a
 | DSRV | Consensus | 947771ab1fd233d8694aee6c4a4259ee7e2241f4a201067aaa28adbb989d7c97
 | Figment (Coming Soon!) | Collection | <!--- 1408c08272beb24ad4fe4e531a9b937a26ee72c5f56b50ac8f2b889c3c42d316 -->
