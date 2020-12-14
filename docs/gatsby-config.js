@@ -328,7 +328,7 @@ module.exports = {
         apiToken: "3fae49de272be1ceb8cf34119f747073",
         enableOnDevMode: false,
         pageViews: "all",
-        trackPageViewAs: "Loaded a Page",
+        trackPageViewsAs: "Loaded a Page",
       },
     },
     {
