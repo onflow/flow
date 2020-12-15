@@ -29,9 +29,9 @@
 | versus-flow.art | Verification | 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e
 | Chainflow | Verification | 3b57e0ee2ece1f1dbefbd868d3eaac63b32a11df5b1a37d231145ea219055dde
 | Chainlayer | Consensus | 62de4fa4b6a05b8beb5868a5259caca4efa966aa0cb867fdd776c73abe9370ad
-| Coinfund (Coming Soon!) | Consensus | <!--- 5a4bff17941a73909472afe23f1ccdc59d7526f93b16b4e374bd8353f8b624b4 -->
-| Coinfund (Coming Soon!) | Consensus | <!--- b5702f80aa39f06ecdf4d6321bfe40f64e40b9b630085a42993f1b241bfcbf25 -->
-| Coinfund (Coming Soon!) | Consensus | <!--- d98755f4ae8bef3f372889c4d7010ca784ea6da46fdde63d27ee57b2bf5efdd7 -->
+| Coinfund | Consensus | 5a4bff17941a73909472afe23f1ccdc59d7526f93b16b4e374bd8353f8b624b4
+| Coinfund | Consensus | b5702f80aa39f06ecdf4d6321bfe40f64e40b9b630085a42993f1b241bfcbf25
+| Coinfund | Consensus | d98755f4ae8bef3f372889c4d7010ca784ea6da46fdde63d27ee57b2bf5efdd7
 | CryptoTech | Consensus | b4f850b43df502e7fd292c34d9a21c2e8db350cd8a1214a4a29734bc6f3c9e92
 | DCG | Consensus | 56e97c4cd4079caeb97d2a8f8950437107813436d5964f22a1f459eb8cf73a71
 | DCG | Collection | bd368122b0ccf67ebdd59d7f9b75edfa85106c3af41854c946ad0fa46e5c3ddd
