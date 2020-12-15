@@ -10,7 +10,7 @@
 
   - When you choose to delegate to a node operator, that delegation will sit in a pending status until it is processed at the next Epoch. You can see this information at the top of the Stake & Delegate screen in Flow Port. Once the delegation is processed successfully, it is now considered staked to the Node Operator and you will begin to earn rewards. There is nothing more you need to do at this point with your delegation. You will continue to earn rewards, which are paid at the end of each epoch.
   
-  - At the time you want to unstake your delegation, you will execute an unstake-transaction. This request will now sit in a pending status for 2 epochs before it is fully unstaked. Once it is unstaked successfully at the end of 2 epochs, it will be available for you to withdraw to your wallet.
+  - At the time you want to unstake your delegation, you will execute an unstake-transaction. **This request will now sit in a pending status for 2 epochs before it is fully unstaked**. Once it is unstaked successfully at the end of 2 epochs, it will be available for you to withdraw to your wallet.
 
 ## Node Operator list
 | Node Operator             | Node Type           | Node ID  |
