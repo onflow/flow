@@ -16,7 +16,7 @@
 | Node Operator             | Node Type           | Node ID  |
 |:--------------------------|:-------------------:|:---------:|
 | Alxo | Verification | f7422f2d3296ede4d1efb36ec55e3fd93702c061f7ee627881f0b3007beff2ed
-| Berkeley via Ankr | Verification | 8f8d77ba98d1606b19fce8f6d35908bfc29ea171c02879162f6755c05e0ca1ee 
+| Blockchain at Berkeley | Verification | 8f8d77ba98d1606b19fce8f6d35908bfc29ea171c02879162f6755c05e0ca1ee 
 | Alvalor | Consensus | f3b72c50794c29319f0f77f0c7d623662eb15253c291a5360d095a4ea282fadb
 | Bison Trails | Collection | 48ba5aabeaf1a7c1bc6a96b20c8e9f6cbe7f6b3c77faec3b77fa66a630abf8c7
 | Bison Trails | Consensus | a65461e68eae80c9bd9d8edc81857c7d2cd83ba9992433c468e9ef6515d32006
