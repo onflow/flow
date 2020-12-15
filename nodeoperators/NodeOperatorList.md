@@ -50,7 +50,7 @@
 | Portto | Consensus | 2cfab7e9163475282f67186b06ce6eea7fa0687d25dd9c7a84532f2016bc2e5e
 | Portto | Verification | 21b21ad1ddb5e3002cc6a3faa55e23d70db014ee229c213f7a43769789125536
 | RIT | Verification | 1a671144c4e8def6ce53aa861e185ab22f559f8ba0e0ea6017b714f3b5be0d74
-| Samsung (Coming Soon!) | Execution | <!--- 6c6af0933b710655ec553f4bead3b01c5e0a3ffd1194ee536efb926b356c54aa -->
+| Samsung | Execution | 6c6af0933b710655ec553f4bead3b01c5e0a3ffd1194ee536efb926b356c54aa
 | Snowfro | Verification | adac59f7a5265148ec8e7c95f373d9ce9a7ec2baeaafda965d9cbfb4f88f8039
 | SNZ (Coming Soon!) | Verification | <!--- 85bab4d040af244ba473a11e43cb3188fb1e4d2694d2c795fee91d51bf814f28 -->
 | Sparq | Consensus | 9ad385808628b4b2ec684dd5a31ec1da3b894f6241725b13abe7ae268bcf359d
