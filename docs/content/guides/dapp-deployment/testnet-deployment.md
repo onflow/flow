@@ -136,7 +136,7 @@ You'll want to add an account entry for your new testnet account:
 }
 ```
 
-After this, use the `accounts create` command to create a new, and e.g. deploy a contract named `MyContract` to it:
+After this, use the `accounts create` command to create a new account, and e.g. deploy a contract named `MyContract` to it:
 
 ```sh
 flow accounts create \
