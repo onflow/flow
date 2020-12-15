@@ -43,9 +43,9 @@
 | Flipside (Coming Soon!) | Collection | <!--- 581525fa93d8fe4b334c179698c6e72baccb802593e55e40da61d24e589d85be -->
 | Forbole (Coming Soon!) | Verification | <!--- 38b6148d2125c1410520ec6cbfcc65993f59b9241a652fec926206a2d5d839aa -->
 | NateAlex | Verification | f8af31c7c3294b246f34040e5685c351e89f1c1edf6c64f93f7babd73d149951
-| P2P (Coming Soon!) | Verification | <!--- 78ef2e461a32df2278ae78baf7cf1a54fec3601fe4723a5833c49e1935dc4b7d -->
+| P2P | Verification | 78ef2e461a32df2278ae78baf7cf1a54fec3601fe4723a5833c49e1935dc4b7d
 | P2P (Coming Soon!)| Consensus | <!--- 8510b001c25c479b0874f3915fd14895c5d22331449182f1293b3c1c4bca4403 -->
-| P2P (Coming Soon!) | Collection | <!--- 79b43645fdf7c6597d8868b10c91d8cf343ab7d2cea0c98902d8f9456049918a -->
+| P2P | Collection | 79b43645fdf7c6597d8868b10c91d8cf343ab7d2cea0c98902d8f9456049918a
 | Open Worlds | Verification | 8d4dbdd523bd4c67ffad9282a7acefc65641d25ac9c40759de9df859eb7255e3
 | Portto | Consensus | 2cfab7e9163475282f67186b06ce6eea7fa0687d25dd9c7a84532f2016bc2e5e
 | Portto | Verification | 21b21ad1ddb5e3002cc6a3faa55e23d70db014ee229c213f7a43769789125536
