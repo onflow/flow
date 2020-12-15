@@ -136,13 +136,13 @@ You'll want to add an account entry for your new testnet account:
 }
 ```
 
-After this, use the `accounts create` command to deploy a new contract account:
+After this, use the `accounts create` command to create a new, and e.g. deploy a contract named `MyContract` to it:
 
 ```sh
 flow accounts create \
   --host access.devnet.nodes.onflow.org:9000 \
   --signer testnet \
-  --code MyContract.cdc
+  --contract MyContracy:MyContract.cdc
 ```
 
 - `host` is the access node to connect to
