@@ -57,7 +57,7 @@
 | Snowfro | Verification | adac59f7a5265148ec8e7c95f373d9ce9a7ec2baeaafda965d9cbfb4f88f8039
 | SNZ (Coming Soon!) | Verification | <!--- 85bab4d040af244ba473a11e43cb3188fb1e4d2694d2c795fee91d51bf814f28 -->
 | Sparq | Consensus | 9ad385808628b4b2ec684dd5a31ec1da3b894f6241725b13abe7ae268bcf359d
-| Stake Fish | Consensus | <b09bfbaf2d9e6f6541855dc65b8e0247bd97a0cceb607b9cf89ed368bc16308d
+| Stake Fish | Consensus | b09bfbaf2d9e6f6541855dc65b8e0247bd97a0cceb607b9cf89ed368bc16308d
 | Staked | Collection | 129aab6407f6f66774ce77a03b8abd1ba67317eab1c70c5c6cdd7a433a7d64e8
 | Staked | Collection | fcb55c2d1fb2737b159704b5a30b194b8a8ddfb4691d55692af597ac6e236201
 | T-Systems| Execution | 2b396b7fab0102f104a2af7e095b145cc14da28f863564802e158afc3e07e638
