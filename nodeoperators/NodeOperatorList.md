@@ -57,7 +57,7 @@
 | Stake Fish (Coming Soon!) | Consensus | <!--- b09bfbaf2d9e6f6541855dc65b8e0247bd97a0cceb607b9cf89ed368bc16308d -->
 | Staked | Collection | 129aab6407f6f66774ce77a03b8abd1ba67317eab1c70c5c6cdd7a433a7d64e8
 | Staked | Collection | fcb55c2d1fb2737b159704b5a30b194b8a8ddfb4691d55692af597ac6e236201
-| Ubisoft (Coming Soon!) | Verification | <!--- 429143c4438fcbbfc7353869b4f270e233aa0f75a6881ee977a81c962c4978ed -->
-| Ubisoft (Coming Soon!) | Collection | <!--- dc0fb2d914f0c12cc1de527d22974b8f2de376e4765e084e0b8be14b51b5ef81 -->
+| Ubisoft | Verification | 429143c4438fcbbfc7353869b4f270e233aa0f75a6881ee977a81c962c4978ed
+| Ubisoft | Collection | dc0fb2d914f0c12cc1de527d22974b8f2de376e4765e084e0b8be14b51b5ef81
 | Yonsei | Verification | 5dc67a4f47ea9ce55d1b63ebe04cc68d8b29c41e40ab5cdc63b108ce292139a0
 | T-Systems| Execution | 2b396b7fab0102f104a2af7e095b145cc14da28f863564802e158afc3e07e638 |
