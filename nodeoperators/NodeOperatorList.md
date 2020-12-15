@@ -38,7 +38,7 @@
 | DCG | Verification | e74d0ca7afed2b5bfd612f3c75010adb229d632ca4ab3b77d178ee226d7ec2a2
 | Usopp | Verification | d12b80ad9a9be6dbf86f8a7824739d9b2193836e5df226e063528dae33be3a4a
 | DSRV | Consensus | 947771ab1fd233d8694aee6c4a4259ee7e2241f4a201067aaa28adbb989d7c97
-| Figment (Coming Soon!) | Collection | <!--- 1408c08272beb24ad4fe4e531a9b937a26ee72c5f56b50ac8f2b889c3c42d316 -->
+| Figment | Collection | 1408c08272beb24ad4fe4e531a9b937a26ee72c5f56b50ac8f2b889c3c42d316
 | Figment | Consensus | 95d61bcc7202fe7d0558baede4cc17a56aac191a0cfd110fbf824e2ef71bd49c 
 | Flipside (Coming Soon!) | Collection | <!--- 581525fa93d8fe4b334c179698c6e72baccb802593e55e40da61d24e589d85be -->
 | Forbole (Coming Soon!) | Verification | <!--- 38b6148d2125c1410520ec6cbfcc65993f59b9241a652fec926206a2d5d839aa -->
@@ -56,8 +56,8 @@
 | Sparq | Consensus | 9ad385808628b4b2ec684dd5a31ec1da3b894f6241725b13abe7ae268bcf359d
 | Stake Fish (Coming Soon!) | Consensus | <!--- b09bfbaf2d9e6f6541855dc65b8e0247bd97a0cceb607b9cf89ed368bc16308d -->
 | Staked | Collection | 129aab6407f6f66774ce77a03b8abd1ba67317eab1c70c5c6cdd7a433a7d64e8
-| Staked (Coming Soon!) | Collection | <!--- fcb55c2d1fb2737b159704b5a30b194b8a8ddfb4691d55692af597ac6e236201 -->
-| Ubisoft (Coming Soon!) | Verification | <!--- 429143c4438fcbbfc7353869b4f270e233aa0f75a6881ee977a81c962c4978ed -->
-| Ubisoft (Coming Soon!) | Collection | <!--- dc0fb2d914f0c12cc1de527d22974b8f2de376e4765e084e0b8be14b51b5ef81 -->
+| Staked | Collection | fcb55c2d1fb2737b159704b5a30b194b8a8ddfb4691d55692af597ac6e236201
+| Ubisoft | Verification | 429143c4438fcbbfc7353869b4f270e233aa0f75a6881ee977a81c962c4978ed
+| Ubisoft | Collection | dc0fb2d914f0c12cc1de527d22974b8f2de376e4765e084e0b8be14b51b5ef81
 | Yonsei | Verification | 5dc67a4f47ea9ce55d1b63ebe04cc68d8b29c41e40ab5cdc63b108ce292139a0
 | T-Systems| Execution | 2b396b7fab0102f104a2af7e095b145cc14da28f863564802e158afc3e07e638 |
