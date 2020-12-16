@@ -67,7 +67,7 @@
 | Ubisoft | Collection | dc0fb2d914f0c12cc1de527d22974b8f2de376e4765e084e0b8be14b51b5ef81
 | VCC | Collection | fe14c6a722212e19af1c143008d46413d4cea5097714a3720c67f356fb7c2982
 | versus-flow.art | Verification | 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e
+| Yonsei | Verification | 5dc67a4f47ea9ce55d1b63ebe04cc68d8b29c41e40ab5cdc63b108ce292139a0
 <!--- | Vignesh | Collection | -->
 <!--- | Vignesh | Consensus | -->
 <!--- | Vignesh | Verfication | -->
-| Yonsei | Verification | 5dc67a4f47ea9ce55d1b63ebe04cc68d8b29c41e40ab5cdc63b108ce292139a0 | 
