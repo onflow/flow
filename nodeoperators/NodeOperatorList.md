@@ -68,6 +68,6 @@
 | VCC | Collection | fe14c6a722212e19af1c143008d46413d4cea5097714a3720c67f356fb7c2982
 | versus-flow.art | Verification | 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e
 | Yonsei | Verification | 5dc67a4f47ea9ce55d1b63ebe04cc68d8b29c41e40ab5cdc63b108ce292139a0
-<!--- | Vignesh | Collection | -->
-<!--- | Vignesh | Consensus | -->
-<!--- | Vignesh | Verfication | -->
+| Metapurse | Collection |8fe891674136097028041f515fffb955c5d03371640b4874160d0a750a16c784
+| Metapurse | Consensus |fec6a521be551e87cfe3719f6c88f74e09e9df15c18eb5a133f610af9a7c1d34
+| Metapurse | Verfication | a9ed1f07342279504006b3a1a211d28cd6698e4bd04a7d7ce1fec967bccdf723
