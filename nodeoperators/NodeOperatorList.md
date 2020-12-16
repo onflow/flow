@@ -14,7 +14,7 @@
 
 ## Node Operator list
 | Node Operator             | Node Type           | Node ID  |
-|:--------------------------|:-------------------:|:---------:|
+|:--------------------------|:-------------------|:---------|
 | Accomplice | Verification | 79949f163dac6b72ab72c1d12b9677d71dd9367f7331d59425b485050c8712d9
 | Alxo | Verification | f7422f2d3296ede4d1efb36ec55e3fd93702c061f7ee627881f0b3007beff2ed
 | Blockchain at Berkeley | Verification | 8f8d77ba98d1606b19fce8f6d35908bfc29ea171c02879162f6755c05e0ca1ee 
