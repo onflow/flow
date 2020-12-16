@@ -24,8 +24,8 @@
     { "source": "/docs/delegation",                             "destination": "/concepts/flow-concepts/delegation/",       "permanent": true },
     { "source": "/intro/partner-update",                        "destination": "/community-updates/sep-16-2020/",                     "permanent": true },
     { "source": "/intro/partner-update/",                       "destination": "/community-updates/sep-16-2020/",                     "permanent": true },
-    { "source": "/concepts/token-delivery-steps",               "destination": "/token/delivery/",                          "permanent": true },
-    { "source": "/concepts/token-delivery-steps/",              "destination": "/token/delivery/",                          "permanent": true },
+    { "source": "/concepts/token-delivery-steps",               "destination": "/flow-token/delivery/",                          "permanent": true },
+    { "source": "/concepts/token-delivery-steps/",              "destination": "/flow-token/delivery/",                          "permanent": true },
     { "source": "/concepts/node-operation/quickstart",          "destination": "/node-operation/node-bootstrap/",           "permanent": true },
     { "source": "/concepts/node-operation/quickstart/",         "destination": "/node-operation/node-bootstrap/",           "permanent": true }
   ]

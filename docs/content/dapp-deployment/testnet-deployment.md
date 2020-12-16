@@ -88,6 +88,23 @@ func main() {
 }
 ```
 
+### Creating Additional Accounts
+
+It may be necessary to create additional accounts for testing purposes. 
+Here is a _basic_ example of a Cadence trasnaction you could use to create an account: 
+
+```cadence
+transaction (_ name: String, pubKey: String) {
+    prepare( admin: AuthAccount) {
+        let newAccount = AuthAccount(payer:admin)
+        newAccount.addPublicKey(pubKey.decodeHex())
+        
+        // Emit an event
+    }
+}
+```
+
+
 ### Deploying a Contract
 
 Using the account you created above, you can deploy additional contract accounts using the [Flow CLI](https://github.com/onflow/flow-cli).
@@ -142,7 +159,7 @@ After this, use the `accounts create` command to deploy a new contract account:
 flow accounts create \
   --host access.devnet.nodes.onflow.org:9000 \
   --signer testnet \
-  --code MyContract.cdc
+  --contract MyContract.cdc
 ```
 
 - `host` is the access node to connect to
@@ -162,3 +179,4 @@ Once you accounts are set up and you're ready to develop, you can look over some
 If you discover your application is broken after an update, use the latest emulator to test changes to your application. Once you are satisfied that you've patched any breaking changes, you'll need to get in touch with the Flow core team to redeploy your contracts to Testnet.
 
 We kindly ask you to follow the steps listed in the [Testnet Testing Guidelines.](../testnet-testing) when redeploying your contracts.
+

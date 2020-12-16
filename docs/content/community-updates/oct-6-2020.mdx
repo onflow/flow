@@ -16,9 +16,9 @@ Without further adieu, here’s the latest Flow update!
 
 The contracts and transaction templates needed to support staking are now available and ready for you to integrate with. The team is going to be extra diligent responding to Discord questions in the coming weeks to ensure you aren’t blocked and have everything you need to support staking, delegation, and the retrieval of locked FLOW tokens, including: 
 
-* Locked Token Accounts - this is the account you’ll be creating to support the holding of / interaction with locked FLOW tokens. It creates a token admin capability inside the co-managed account. You can learn more about the dual account model for supporting locked FLOW tokens [here](https://docs.onflow.org/token/staking/locked/setup/). 
+* Locked Token Accounts - this is the account you’ll be creating to support the holding of / interaction with locked FLOW tokens. It creates a token admin capability inside the co-managed account. You can learn more about the dual account model for supporting locked FLOW tokens [here](/core-contracts/locked-tokens/#stakingproxy). 
  
-* Staking with Locked FLOW - token holders and node operators can now stake locked FLOW tokens with the help of the [staking proxy contract](https://docs.onflow.org/token/staking/locked/stakers/). This proxy allows the node operator to run a node on behalf of the token holder without direct access to any of their funds. 
+* Staking with Locked FLOW - token holders and node operators can now stake locked FLOW tokens with the help of the [staking proxy contract](/core-contracts/). This proxy allows the node operator to run a node on behalf of the token holder without direct access to any of their funds. 
 
 * Core Staking Contract - this is the contract that records information about staked nodes and delegators. Staking transactions that you submit to the locked token contract will be forwarded to the core staking contract.
 
@@ -26,7 +26,7 @@ The contracts and transaction templates needed to support staking are now availa
 
 Jump onto the the [community forum](https://forum.onflow.org/) for answers and support or onto the [Flow Discord server](https://discord.gg/CNDsZxC) for live help. 
 
-You can find all of the documentation for locked FLOW tokens here: https://docs.onflow.org/token/staking/locked/ 
+You can find all of the documentation for locked FLOW tokens [https://docs.onflow.org/flow-token/staking](https://docs.onflow.org/flow-token/staking)
 
 ## Coming Up
 
@@ -65,14 +65,14 @@ NOTE: this is 1 day later than previously shared
 
 - Custodians will support creating accounts, receiving, and holding FLOW by this date.
 - This is also the date when fees will be turned on and when you'll request for the protocol to sign as the payer for transactions you’re submitting to the network (including creating accounts). 
-- Necessary integration is outlined here: https://docs.onflow.org/token/staking/locked/setup/
+- Necessary integration is outlined here: https://docs.onflow.org/flow-token/staking/locked/setup/
 
 ### Oct 16-30: Supporting Staking for Partners
 
 - Node operators should have the ability to support their users submitting a staking transaction by this date.
 - October 16th is the first date investors will have their tokens available to them to start the staking process
 - October 30th is the last day you’ll be able to submit a staking request for the first epoch which will have rewards (Nov 3rd First Staking Spork - Mainnet #2)
-- Necessary integration(s) outlined here: [Staking](https://docs.onflow.org/token/staking/locked/stakers/) & [Delegation](https://docs.onflow.org/token/staking/locked/delegators/)
+- Necessary integration(s) outlined here: [Staking](/staking#what-is-staking) & [Delegation](/staking#delegation)
 
 ### Nov 3: First Staking Spork - Mainnet #2 
 
@@ -80,7 +80,7 @@ NOTE: this is 1 day later than previously shared
 - This will be the first spork where keys (and stake!) are collected via Staking Requests.
 - Staking Request Deadline: Friday, October 30th @ 4pm Pacific Time
 - Node Startup: Tuesday, November 3 @10am Pacific Time
-- Necessary integration outlined here: [Node Operation](https://docs.onflow.org/token/staking/locked/node-operators/)
+- Necessary integration outlined here: [Node Operation](/staking/technical-overview/)
 
 ### Nov 10: Supporting Rewards
 

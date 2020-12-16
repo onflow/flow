@@ -84,7 +84,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: [
-        "[FLOW Token](/token)",
+        "[FLOW Token](/flow-token)",
         "[Staking & Delegating](/staking)",
         "[Core Contracts](/core-contracts)",
         "[Dapp Deployment Guide](/dapp-deployment)",
@@ -96,7 +96,7 @@ const sections = [
         "community-updates/oct-6-2020",
         "community-updates/sep-16-2020",
       ],
-      Support: ["flow-port/index", "flow-port/staking-guide"],
+      Support: ["flow-port/faq", "flow-port/staking-guide"],
     },
   },
   {
@@ -183,7 +183,7 @@ const sections = [
         "core-contracts/locked-tokens",
         "core-contracts/non-fungible-token",
       ],
-       "Developer Guides": ["access-api"],
+       "Developer Guides": ["core-contracts/access-api"],
     },
   },
   {
@@ -203,16 +203,16 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["token/**/*"],
+    patterns: ["flow-flow-token/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
       Overview: [
-        "token/index",
-        "token/earn",
-        "token/concepts",
-        "token/delivery",
-        "token/faq",
+        "flow-flow-token/index",
+        "flow-flow-token/earn",
+        "flow-flow-token/concepts",
+        "flow-flow-token/delivery",
+        "flow-flow-token/faq",
       ],
     },
   },
