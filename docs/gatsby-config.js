@@ -203,16 +203,16 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["flow-flow-token/**/*"],
+    patterns: ["flow-token/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
       Overview: [
-        "flow-flow-token/index",
-        "flow-flow-token/earn",
-        "flow-flow-token/concepts",
-        "flow-flow-token/delivery",
-        "flow-flow-token/faq",
+        "flow-token/index",
+        "flow-token/earn",
+        "flow-token/concepts",
+        "flow-token/delivery",
+        "flow-token/faq",
       ],
     },
   },
