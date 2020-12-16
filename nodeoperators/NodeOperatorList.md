@@ -70,4 +70,4 @@
 <!--- | Vignesh | Collection | -->
 <!--- | Vignesh | Consensus | -->
 <!--- | Vignesh | Verfication | -->
-| Yonsei | Verification | 5dc67a4f47ea9ce55d1b63ebe04cc68d8b29c41e40ab5cdc63b108ce292139a0 
+| Yonsei | Verification | 5dc67a4f47ea9ce55d1b63ebe04cc68d8b29c41e40ab5cdc63b108ce292139a0 | 
