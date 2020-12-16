@@ -50,7 +50,7 @@
 | Metapurse | Collection |da27c0fc2a4fe12c04bd70058252c5a26cfe41485bf6ea6aba1c724b7a07542d
 | Metapurse | Consensus |1780288437c9aed5056836bfffcfe19334dd6e229607fccfb3fe9b1d4d24cdca
 | Metapurse | Verfication | dc3054cae816874d7dbbe838a41ef97c8a01b44643bffc82afe3a8228eed29fd
-| NateAlex | Verification | f8af31c7c3294b246f34040e5685c351e89f1c1edf6c64f93f7babd73d149951
+| NFT42 | Verification | f8af31c7c3294b246f34040e5685c351e89f1c1edf6c64f93f7babd73d149951
 | Open Worlds | Verification | 8d4dbdd523bd4c67ffad9282a7acefc65641d25ac9c40759de9df859eb7255e3
 | Portto | Consensus | 2cfab7e9163475282f67186b06ce6eea7fa0687d25dd9c7a84532f2016bc2e5e
 | Portto | Verification | 21b21ad1ddb5e3002cc6a3faa55e23d70db014ee229c213f7a43769789125536
