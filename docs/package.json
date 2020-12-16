@@ -64,7 +64,7 @@
     "tinycolor2": "^1.4.1"
   },
   "peerDependencies": {
-    "gatsby": "^2.13.80",
+    "gatsby": "^2.29.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
