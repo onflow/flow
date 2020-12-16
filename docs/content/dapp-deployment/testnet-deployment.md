@@ -159,7 +159,7 @@ After this, use the `accounts create` command to create a new account, and e.g. 
 flow accounts create \
   --host access.devnet.nodes.onflow.org:9000 \
   --signer testnet \
-  --contract MyContract.cdc
+  --contract MyContracy:MyContract.cdc
 ```
 
 - `host` is the access node to connect to

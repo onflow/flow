@@ -101,7 +101,6 @@ export default function PageLayout(props) {
     breadcrumb: { crumbs },
   } = props.pageContext;
 
-  console.log(props);
   const {
     navConfig = {},
     logoLink,
