@@ -28,7 +28,7 @@
 | Blockchain Coalition/Block Venture | Verification | 16036263d71f64d65f84542e9f7678e578482a107b61e45b88759ebea2c7451d
 | Blockparty | Verification | 17b6c278b933bad8ec7420ff72f14689df70b18fc287549b65709448787b0aea
 | Bitcoin Louie | Verification | fffba108a52e4ca8f5d30658c3f03f47ad1cc13a0995435c0532336236813218
-| versus-flow.art | Verification | 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e
+| Calaxy | Verification | 8790cc2cabdb172e5a96c24c150865031e1818f6f84fbd68894efd0d0d12dc96
 | Chainflow | Verification | 3b57e0ee2ece1f1dbefbd868d3eaac63b32a11df5b1a37d231145ea219055dde
 | Chainlayer | Consensus | 62de4fa4b6a05b8beb5868a5259caca4efa966aa0cb867fdd776c73abe9370ad
 | Coinfund | Consensus | 5a4bff17941a73909472afe23f1ccdc59d7526f93b16b4e374bd8353f8b624b4
@@ -55,7 +55,7 @@
 | RIT | Verification | 1a671144c4e8def6ce53aa861e185ab22f559f8ba0e0ea6017b714f3b5be0d74
 | Samsung | Execution | 6c6af0933b710655ec553f4bead3b01c5e0a3ffd1194ee536efb926b356c54aa
 | Snowfro | Verification | adac59f7a5265148ec8e7c95f373d9ce9a7ec2baeaafda965d9cbfb4f88f8039
-| SNZ (Coming Soon!) | Verification | <!--- 85bab4d040af244ba473a11e43cb3188fb1e4d2694d2c795fee91d51bf814f28 -->
+| SNZ | Verification | df5c2d5b9af9d0de5c4b70ce9adbdc7ae2af1a17485b4b8640f2c5b2c58d8954
 | Sparq | Consensus | 9ad385808628b4b2ec684dd5a31ec1da3b894f6241725b13abe7ae268bcf359d
 | Stake Fish | Consensus | b09bfbaf2d9e6f6541855dc65b8e0247bd97a0cceb607b9cf89ed368bc16308d
 | Staked | Collection | 129aab6407f6f66774ce77a03b8abd1ba67317eab1c70c5c6cdd7a433a7d64e8
@@ -63,5 +63,6 @@
 | T-Systems| Execution | 2b396b7fab0102f104a2af7e095b145cc14da28f863564802e158afc3e07e638
 | Ubisoft | Verification | 429143c4438fcbbfc7353869b4f270e233aa0f75a6881ee977a81c962c4978ed
 | Ubisoft | Collection | dc0fb2d914f0c12cc1de527d22974b8f2de376e4765e084e0b8be14b51b5ef81
-| VCC | Collection | fe14c6a722212e19af1c143008d46413d4cea5097714a3720c67f356fb7c2982 
+| VCC | Collection | fe14c6a722212e19af1c143008d46413d4cea5097714a3720c67f356fb7c2982
+| versus-flow.art | Verification | 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e
 | Yonsei | Verification | 5dc67a4f47ea9ce55d1b63ebe04cc68d8b29c41e40ab5cdc63b108ce292139a0 
