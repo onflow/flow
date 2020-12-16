@@ -12,8 +12,9 @@ description: How to use FLOW for staking and delegation
   staking or delegation.
 </Callout>
 <Callout type="warning">
-If you haven't read the Intro to Flow Staking document, please read that first. 
-That document provides a non-technical overview of staking on Flow for all users and is a necessary prerequisite to this document.
+  If you haven't read the Intro to Flow Staking document, please read that
+  first. That document provides a non-technical overview of staking on Flow for
+  all users and is a necessary prerequisite to this document.
 </Callout>
 <Callout type="warning">
   This document assumes you have some technical knowledge about the Flow
@@ -52,7 +53,7 @@ The identity table keeps separate lists for the info about node operators and de
 which track the following info:
 
 - **Node Operators:**
-  
+
   - Node ID: 32 byte identifier for the node. Usually a hash of the node public key.
   - Role: Indicates what role the node operator is. (Collection, Consensus, Execution, Verification, Access)
   - Networking Address: The address that the node operator uses for networking.
@@ -76,11 +77,12 @@ which track the following info:
   - Tokens Rewarded: Tokens that the user has received via staking rewards.
 
 <Callout type="warning">
-NOTE: The staking smart contract does not associate a node or delegator with an account address.
-It associates it with the assigned resource object that corresponds to that entry in the contract.
-There can be any number of these objects stored in the same account, and they can be moved to different accounts
-if the owner chooses.
-</Callout> 
+  NOTE: The staking smart contract does not associate a node or delegator with
+  an account address. It associates it with the assigned resource object that
+  corresponds to that entry in the contract. There can be any number of these
+  objects stored in the same account, and they can be moved to different
+  accounts if the owner chooses.
+</Callout>
 
 **Epoch:** The period of time between reward payments and changes in the identity table. (Initially a week)
 At the end of every epoch, insufficiently staked node operators are refunded their stake,
@@ -167,7 +169,7 @@ The node operator is ready to register their node.
 </Callout>
 
 To create and submit a transaction to register a node,
-the node operator submits a [**Register Node**](/protocol/core-contracts/locked-tokens/#token-holder) transaction,
+the node operator submits a [**Register Node**](/core-contracts/locked-tokens/#token-holder) transaction,
 providing all the node info, and the tokens that they want to immediately stake, if any.
 
 This registers the node in the Flow node identity table

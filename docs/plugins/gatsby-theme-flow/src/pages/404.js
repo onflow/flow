@@ -13,18 +13,10 @@ export default function NotFound() {
       }}
     >
       <h1
-        style={{
-          paddingTop: "2rem",
-        }}
       >
-        Oh, awkward. There is no page here.
+        Page Not Found
       </h1>
-      <div style={{ width: "600px", height: "400px" }}>
-        <img
-          style={{ maxWidth: "100%" }}
-          src="https://port.onflow.org/static/media/logogif.c74463f5.gif"
-        />
-      </div>
+          <a href="/">Home</a>
     </div>
   );
 }
