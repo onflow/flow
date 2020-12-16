@@ -97,9 +97,9 @@
     { "source": "/token",                                         "destination": "/flow-token",                              "permanent": false },
     { "source": "/token/wallets",                                 "destination": "/flow-token/wallets",                      "permanent": false },
 
-    { "source": "/guides/node-operator/genesis-bootstrap",        "destination": "/node-operation/guides}/genesis-bootstrap","permanent": false },
+    { "source": "/guides/node-operator/genesis-bootstrap",        "destination": "/node-operation/guides/genesis-bootstrap", "permanent": false },
     { "source": "/guides/node-operator/spork-practice",           "destination": "/node-operation/guides/spork-practice",    "permanent": false },
-    { "source": "/guides/node-operator/starting-nodes",           "destination": "/node-operation/guides}/starting-nodes",   "permanent": false }
+    { "source": "/guides/node-operator/starting-nodes",           "destination": "/node-operation/guides/starting-nodes",    "permanent": false }
 
   ]
 }
