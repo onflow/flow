@@ -94,12 +94,12 @@ It may be necessary to create additional accounts for testing purposes.
 Here is a _basic_ example of a Cadence trasnaction you could use to create an account: 
 
 ```cadence
-transaction (_ name: String, pubKey: String) {
+transaction (pubKey: String) {
     prepare( admin: AuthAccount) {
         let newAccount = AuthAccount(payer:admin)
         newAccount.addPublicKey(pubKey.decodeHex())
         
-        // Emit an event
+        // Emit an 'account created' event
     }
 }
 ```
