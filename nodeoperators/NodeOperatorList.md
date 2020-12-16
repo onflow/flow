@@ -10,7 +10,7 @@
 
   - When you choose to delegate to a node operator, that delegation will sit in a pending status until it is processed at the next Epoch. You can see this information at the top of the Stake & Delegate screen in Flow Port. Once the delegation is processed successfully, it is now considered staked to the Node Operator and you will begin to earn rewards. There is nothing more you need to do at this point with your delegation. You will continue to earn rewards, which are paid at the end of each epoch.
   
-  - At the time you want to unstake your delegation, you will execute an unstake-transaction. This request will now sit in a pending status for 2 epochs before it is fully unstaked. Once it is unstaked successfully at the end of 2 epochs, it will be available for you to withdraw to your wallet.
+  - At the time you want to unstake your delegation, you will execute an unstake-transaction. **This request will now sit in a pending status for 2 epochs before it is fully unstaked**. Once it is unstaked successfully at the end of 2 epochs, it will be available for you to withdraw to your wallet.
 
 ## Node Operator list
 | Node Operator             | Node Type           | Node ID  |
@@ -42,7 +42,7 @@
 | DSRV | Consensus | 947771ab1fd233d8694aee6c4a4259ee7e2241f4a201067aaa28adbb989d7c97
 | Figment | Collection | 1408c08272beb24ad4fe4e531a9b937a26ee72c5f56b50ac8f2b889c3c42d316
 | Figment | Consensus | 95d61bcc7202fe7d0558baede4cc17a56aac191a0cfd110fbf824e2ef71bd49c 
-| Flipside (Coming Soon!) | Collection | <!--- 581525fa93d8fe4b334c179698c6e72baccb802593e55e40da61d24e589d85be -->
+| Flipside| Collection | 581525fa93d8fe4b334c179698c6e72baccb802593e55e40da61d24e589d85be
 | Forbole | Consensus | 38b6148d2125c1410520ec6cbfcc65993f59b9241a652fec926206a2d5d839aa
 | NateAlex | Verification | f8af31c7c3294b246f34040e5685c351e89f1c1edf6c64f93f7babd73d149951
 | P2P | Verification | 78ef2e461a32df2278ae78baf7cf1a54fec3601fe4723a5833c49e1935dc4b7d
