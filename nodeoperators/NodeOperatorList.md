@@ -31,6 +31,8 @@
 | Calaxy | Verification | 8790cc2cabdb172e5a96c24c150865031e1818f6f84fbd68894efd0d0d12dc96
 | Chainflow | Verification | 3b57e0ee2ece1f1dbefbd868d3eaac63b32a11df5b1a37d231145ea219055dde
 | Chainlayer | Consensus | 62de4fa4b6a05b8beb5868a5259caca4efa966aa0cb867fdd776c73abe9370ad
+| Chainlayer (Coming Soon!) | Collection | 
+| Chainlayer (Coming Soon!) | Verification | 
 | Coinfund | Consensus | 5a4bff17941a73909472afe23f1ccdc59d7526f93b16b4e374bd8353f8b624b4
 | Coinfund | Consensus | b5702f80aa39f06ecdf4d6321bfe40f64e40b9b630085a42993f1b241bfcbf25
 | Coinfund | Consensus | d98755f4ae8bef3f372889c4d7010ca784ea6da46fdde63d27ee57b2bf5efdd7
@@ -65,4 +67,7 @@
 | Ubisoft | Collection | dc0fb2d914f0c12cc1de527d22974b8f2de376e4765e084e0b8be14b51b5ef81
 | VCC | Collection | fe14c6a722212e19af1c143008d46413d4cea5097714a3720c67f356fb7c2982
 | versus-flow.art | Verification | 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e
+| Vignesh | Collection | 
+| Vignesh | Consensus | 
+| Vignesh | Verfication | 
 | Yonsei | Verification | 5dc67a4f47ea9ce55d1b63ebe04cc68d8b29c41e40ab5cdc63b108ce292139a0 
