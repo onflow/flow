@@ -4,42 +4,35 @@ sidebar_title: Rewards
 description: How the Flow protocol pays rewards to stakers
 ---
 
-<Callout type="warning">
-
-This information covers the current state of how rewards are calculated and distributed
-to node operators and delegators. All of the information in the document is still 
-being designed and is subject to change based on research and discussion by the Flow
-core team and community. If any changes are proposed, the Flow community will be notified in advance.
-</Callout>
-
-
 # Rewards
 
-Rewards are paid out at the end of each epoch, approximately weekly, to all the users that have tokens staked. 
-Once distributed, rewards are unlocked and liquid, so they can be transferred any time. 
+Rewards are paid out at the end of each epoch, approximately weekly, to all the users that have tokens staked.
+Once distributed, rewards are considered to be unlocked and liquid, so they can be transferred any time. 
 Some custody providers might require extra steps to withdraw user staking reward 
-so please contact your respective provider to get additional information as needed.
+so please contact your respective provider to get additional information as needed. 
 
 ## Rewards Distribution
 
-The rewards distribution schedule has been designed to ensure 
-there is enough liquid supply of FLOW available in the ecosystem 
-to empower a wide variety of use cases and promote fair and diverse participation in the Flow ecosystem.
+The rewards distribution schedule has been designed to ensure there is enough liquid supply of FLOW
+available in the ecosystem to empower a wide variety of use cases and, while promoting a fair
+and diverse participation in the Flow ecosystem.
 
-The numbers in this table represent the total amount of tokens that are paid 
-as staking rewards at each epoch to the entire pool of participants in the Flow network as a whole. 
-While total staking reward per epoch is known and fixed, individual rewards are variable depending on many factors. 
-Please see the next section on how to calculate an individual staking reward.
+The numbers in this table represent the total amount of tokens that are paid as staking rewards 
+at each epoch to the entire pool of participants in the Flow network as a whole.
+While total staking reward per epoch is known and fixed, individual reward is variable depending on many
+factors. Please see next section on how to calculate individual staking reward.
 
-|                                | Week 1         | Weeks 2-6  | Weeks 7 - 52  | Weeks 53+  |
+|                                | Epoch* 1         | Epochs 2-6  | Epochs 7 - 52  | Epochs 53+  |
 | ------------------------------ | -------------- | ---------- | ------------- | ---------- |
 | Total Rewards % (Annual)       | 5%             | 20%        | 5%            | TBD        |
-| Total Rewards Amount Per Week  | ~1.2M FLOW     | ~4.4M FLOW | ~1.2M FLOW    | TBD        |
+| Total Rewards Amount Per Week  | 1,173,391 FLOW | ~4.4M FLOW/epoch | ~1.2M FLOW/epoch    | TBD        |
+
+* Epochs are a week long period over which stake is fixed and at the end of which rewards are paid out to those who were staked/delegated during that epoch. 
 
 ## Individual Calculation
 
-Each user gets a percentage of the total rewards during each epoch 
-that is proportional to their percentage of all the tokens that are staked by all participants.
+Each user gets a percentage of the total rewards during each epoch that is proportional to 
+their percentage of all the tokens that are staked by all participants.	
 
 The full reward calculation on a per user basis is equal to:	
 
@@ -48,23 +41,22 @@ New Reward(user) = Tr  * (Sn / St)
 ```	
 
 where:	
-- `Tr` = Total staking rewards to be paid out during the current epoch.  (~1.2M FLOW for the first epoch)
-- `Sn` = Amount of FLOW Staked by the target user for the current Epoch. (Different for each staker)
-- `St` = Sum of all the FLOW staked by all the participants in the network. (Changes every epoch)
+- `Tr` = Total staking rewards to be paid out during current epoch. (e.g., 1.17M FLOW for the first epoch, per above table)	
+- `Sn` = Amount of FLOW Staked by the target user (or yourself) for the current Epoch. (Different for each individuals staking or delegation amount)
+- `St` = Sum of all the FLOW staked by all the participants in the network.	 (Changes based on the amount of all FLOW staked in the ecosystem)
 
-Rewards for delegators are also calculated in the exact same way that rewards for node operators are calculated, 
-with one difference in that 8% of the staking reward amount is given to the node operator being delegated to 
-(effected as a protocol layer fee, which is the same for all node operators). 
-The remaining 92% is awarded to the delegator. 
-Note: the 8% fee is only applied to the staking reward, not to the tokens delegated.
+Rewards for delegators are also calculated in the exact same way 	
+that rewards for node operators are calculated, 	
+with one difference in that 8% of the calculated staking reward amount 	
+is given to the node operator being delegated to (protocol layer fee, same for all node operators). 	
+The remaining 92% is awarded to the delegator. Note: the 8% fee is only applied to staking reward,
+not to the total amount of token delegated.
 
-With this calculation, the node you choose to run or delegate to 
-DOES NOT affect the amount of rewards you receive every week. 
-The only variable that you can control is the number of tokens you have staked. 
-The more tokens you stake, the more rewards you will receive.
+With this calculation, the node you choose to run or delegate to DOES NOT
+affect the amount of rewards you receive every week. The only variable that you can control
+is the number of tokens you have staked. 
 
-Because of the variable nature of the rewards calculation, we cannot provide an expected weekly/yearly return 
-for a single staker. You can plug your own numbers into the formula to see some sample calculations, 
-but you won't be able to know exactly what you will earn until the beginning 
-of the epoch in which you are participating in staking or delegation.
-
+Because of the variable nature of the rewards calucation, we cannot provide an expected
+weekly/yearly return for a single staker. You can plug your own numbers into the formula
+to see some sample calculations, but you won't be able to know exactly what you will earn
+until the beginning of the epoch where you expect to receive rewards.
