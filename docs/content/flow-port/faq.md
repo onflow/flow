@@ -145,6 +145,6 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
        
   6. Do I need to use my Ledger device to view information about my account (e.g. my balance and current staked or delegated FLOW)?
   
-        - a.) No you do not! You only need your Ledger device to sign transactions. If you simply want to view your account, you can do so without your Ledger. You can do this by navigating directly to the appropriate desired page URL, while inputting your address into the URL itself. For easy reference, below is a list of these URLs and where you would input your address:
-        - Dashboard: https://port.onflow.org/account/[AccountAddress]
-        - Stake & Delegate: https://port.onflow.org/stake-delegate/[AccountAddress]
+       - a.) No you do not! You only need your Ledger device to sign transactions. If you simply want to view your account, you can do so without your Ledger. You can do this by navigating directly to the appropriate desired page URL, while inputting your address into the URL itself. For easy reference, below is a list of these URLs and where you would input your address:
+       - Dashboard: https://port.onflow.org/account/[AccountAddress]
+       - Stake & Delegate: https://port.onflow.org/stake-delegate/[AccountAddress]
