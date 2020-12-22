@@ -102,7 +102,7 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
   
   3. Execute the transaction. You will now see your pending delegation that will be processed during the next epoch.
   
-  4. At this point, you can also click to 'cancel' the pending delegation as well. On the pending delegation, you will see an 'x' that you can click to initiate the cancel transaction.
+  4. At this point, you can also cancel the pending delegation. On the pending delegation, you will see an `X` that you can click to initiate the cancelation transaction.
 
 ## I have successfully executed a Stake Transaction, now what?
   - Now that you have executed a stake transaction in either Flow Port or your custody provider’s portal, that transaction will sit in a pending status until it is processed, which will be at the next [Epoch](/staking/#epochs) Date (which is currently weekly). 
@@ -113,7 +113,7 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
   - Add additional stake to your existing stake. Any added FLOW will again sit in a pending status and be processed at the next epoch.
   - Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this action will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next [Epoch](/staking/#epochs).
   - Request to be unstaked from the network. The unstake request will sit in a pending status for two epochs. Once it is processed, the amount that has been unstaked will sit in your unstaked FLOW amount and can now be withdrawn or re-staked.
-  - Change the node you are staked to/delegated to: If your staked/delegated node has no FLOW actively staked, and you have completely withdrawn all unstaked amounts and rewards associated with that stake/delegate, then you are able to change your the node you are staked to/delegated to. Simply click on the 'change node' button to intiate this process. Please note that this feature is only visible once you get your active stake/delegate into the appropriate status.
+  - Change the node you are staked/delegated to. If your staked/delegated node has no FLOW actively staked and you have completely withdrawn all unstaked amounts and rewards associated with the node, then you can move your stake to a different node. Simply click on the `Change Node` button to initiate this process. Please note that this feature is only visible once you get your active stake/delegate into the appropriate status.
   
 ## FAQs
   1. Why do I have multiple 'Keys' on my account? 
@@ -143,8 +143,8 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
   
        - a.) If you go through Flow Port, you can choose any node operator within the Flow network to delegate any amount of your Flow Tokens to. If you go through Blocto's mobile site, you will only be able to stake to Blocto run nodes. You can read more about Blocto's staking process by referencing [here](https://guide.blocto.app/article/stake-flow-tokens-step-by-step-with-blocto).
        
-  6. Do I need to use my ledger device to simply see information about my account (for example: my balance, my current stakes & delegates)?
+  6. Do I need to use my Ledger device to view information about my account (e.g. my balance and current staked or delegated FLOW)?
   
-        - a.) No you do not! You only need your ledger device to execute a transaction. If you simply want to view your account, you can do so without your ledger device. You can do this by navigating directly to the appropriate desired page URL, while inputting your address into the URL itself. For easy reference, below is a list of these URLs and where you would input your address:
-        - Dashboard: https://port.onflow.org/account/[0xAccountNumber]
-        - Stake & Delegate: https://port.onflow.org/stake-delegate/[0xAccountNumber]
+        - a.) No you do not! You only need your Ledger device to sign transactions. If you simply want to view your account, you can do so without your Ledger. You can do this by navigating directly to the appropriate desired page URL, while inputting your address into the URL itself. For easy reference, below is a list of these URLs and where you would input your address:
+        - Dashboard: https://port.onflow.org/account/[AccountAddress]
+        - Stake & Delegate: https://port.onflow.org/stake-delegate/[AccountAddress]
