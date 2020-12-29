@@ -19,6 +19,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import MobileLogo from "./mobile-logo";
 import { SelectedLanguageContext } from "./multi-code-block";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
+import { startCase } from "lodash";
 
 const Main = styled.main({
   flexGrow: 1,
@@ -94,7 +95,12 @@ export default function PageLayout(props) {
 
   const { pathname } = props.location;
   const { siteName, title } = data.site.siteMetadata;
-  const { subtitle, sidebar } = props.pageContext;
+  const {
+    subtitle,
+    sidebar,
+    breadcrumb: { crumbs },
+  } = props.pageContext;
+
   const {
     navConfig = {},
     logoLink,
@@ -110,6 +116,11 @@ export default function PageLayout(props) {
       })),
     [navConfig]
   );
+
+  const dacrumbs = crumbs.map((c) => {
+    c.crumbLabel = startCase(c.crumbLabel);
+    return c;
+  });
 
   return (
     <Layout>
@@ -162,6 +173,7 @@ export default function PageLayout(props) {
               />
             )}
             <HeaderNav />
+            <div></div>
           </Header>
           <SelectedLanguageContext.Provider value={selectedLanguageState}>
             <NavItemsContext.Provider value={navItems}>

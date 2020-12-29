@@ -19,6 +19,7 @@
     "@types/tinycolor2": "^1.4.2",
     "classnames": "^2.2.6",
     "gatsby": "2.24.11",
+    "gatsby-plugin-breadcrumb": "^10.0.0",
     "gatsby-plugin-emotion": "^4.0.3",
     "gatsby-plugin-google-analytics": "^2.2.5",
     "gatsby-plugin-less": "^3.0.1",
@@ -63,7 +64,7 @@
     "tinycolor2": "^1.4.1"
   },
   "peerDependencies": {
-    "gatsby": "^2.13.80",
+    "gatsby": "^2.29.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
