@@ -91,7 +91,7 @@ func main() {
 ### Creating Additional Accounts
 
 It may be necessary to create additional accounts for testing purposes. 
-Here is a _basic_ example of a Cadence trasnaction you could use to create an account: 
+Here is a _basic_ example of a Cadence transaction you could use to create an account: 
 
 ```cadence
 transaction (pubKey: String) {
