@@ -91,7 +91,7 @@ the **Request Unstaking** ([SC.15](/core-contracts/flow-id-table-staking/#stakin
 
 _Note: this transaction will not succeed if the node operator has delegators and the request
 would put the node operator below the minimum required tokens staked for their node type.
-Use the `Unstake All` transaction instead, which will also unstake all delegators.
+Use the `Unstake All` transaction instead, which will also unstake all delegators._
 
 _Note: unstaked tokens will be held by the central staking contract until the end of the following epoch. 
 Once the tokens are released (unstaked), they can be claimed via the 
@@ -102,12 +102,13 @@ Once the tokens are released (unstaked), they can be claimed via the
 The token holder can submit a request to unstake all their tokens at any time.
 If the tokens aren't staked yet, they will be uncommitted and available to withdraw.
 
-To unstake staked tokens, the token holder can use 
+To unstake all staked tokens, the token holder can use 
 the **Unstake All FLOW** ([SC.16](/core-contracts/flow-id-table-staking/#staking)) transaction.
 
 This transaction requires no arguments.
 
-**Warning: this will unstake all of the user's staked tokens.**
+**Warning: this will unstake all of the user's staked tokens and unstake all of the tokens
+from users that are delegating FLOW to the node.**
 
 ## Withdraw Unstaked Tokens
 
@@ -149,5 +150,5 @@ but this would require small changes to these transactions to use the new storag
 
 ## Delegate from the Same Account
 
-An account that registers a node with can also register as a delegator from the same account. 
+An account that registers a node can also register as a delegator from the same account. 
 See the [Delegation Guide](../unlocked-delegation-guide) for how to register a delegator.

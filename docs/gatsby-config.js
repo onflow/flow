@@ -214,7 +214,7 @@ const sections = [
         "flow-token/delivery",
         "flow-token/faq",
       ],
-      "Token Delivery": ["staking/locked-account-setup"],
+      "Token Delivery": ["flow-token/locked-account-setup"],
     },
   },
   {
@@ -241,7 +241,6 @@ const sections = [
         "staking/locked-staking-guide",
         "staking/locked-delegation-guide",
         "staking/locked-third-party-operator",
-
       ],
     },
   },
