@@ -22,26 +22,55 @@ These scripts are read-only and get info about the current state of the staking 
 
 | ID        | Name                                   | Source |
 |-----------|----------------------------------------|--------|
-|**`SC.01`**| Get Delegation Cut Percentage          | [idTableStaking/get_cut_percentage.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_cut_percentage.cdc) |
-|**`SC.02`**| Get Minimum Stake Requirements         | [idTableStaking/get_stake_requirements.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_stake_requirements.cdc) |
-|**`SC.03`**| Get Total Weekly Reward Payout         | [idTableStaking/get_weekly_payout.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_weekly_payout.cdc) |
-|**`SC.04`**| Get Current Staked Node Table          | [idTableStaking/get_current_table.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_current_table.cdc) |
-|**`SC.05`**| Get Proposed Staked Node Table         | [idTableStaking/get_proposed_table.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_proposed_table.cdc) |
-|**`SC.06`**| Get Total Flow Staked                  | [idTableStaking/get_total_staked.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_total_staked.cdc) |
-|**`SC.07`**| Get Total Flow Staked by Node Type     | [idTableStaking/get_total_staked_by_type.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_total_staked_by_type.cdc) | 
-|**`SC.08`**| Get All Info about a single NodeID     | [idTableStaking/get_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_node_info.cdc) |
-|**`SC.09`**| Get a node's total Commitment          | [idTableStaking/get_node_total_commitment.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_node_total_commitment.cdc) |
+|**`SC.01`**| Get Delegation Cut Percentage          | [idTableStaking/scripts/get_cut_percentage.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_cut_percentage.cdc) |
+|**`SC.02`**| Get Minimum Stake Requirements         | [idTableStaking/scripts/get_stake_requirements.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_stake_requirements.cdc) |
+|**`SC.03`**| Get Total Weekly Reward Payout         | [idTableStaking/scripts/get_weekly_payout.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_weekly_payout.cdc) |
+|**`SC.04`**| Get Current Staked Node Table          | [idTableStaking/scripts/get_current_table.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_current_table.cdc) |
+|**`SC.05`**| Get Proposed Staked Node Table         | [idTableStaking/scripts/get_proposed_table.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_proposed_table.cdc) |
+|**`SC.06`**| Get Total Flow Staked                  | [idTableStaking/scripts/get_total_staked.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_total_staked.cdc) |
+|**`SC.07`**| Get Total Flow Staked by Node Type     | [idTableStaking/scripts/get_total_staked_by_type.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_total_staked_by_type.cdc) | 
+|**`SC.08`**| Get All Info about a single NodeID     | [idTableStaking/scripts/get_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_node_info.cdc) |
+|**`SC.09`**| Get a node's total Commitment          | [idTableStaking/scripts/get_node_total_commitment.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_node_total_commitment.cdc) |
 |**`SC.10`**| Get All Info about a single Delegator  | [idTableStaking/delegation/get_delegator_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/get_delegator_info.cdc) |
+|**`SC.26`**| Get Info about a node from an address  | [idTableStaking/scripts/get_node_info_from_address.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_node_info_from_address.cdc) |
+|**`SC.27`**| Get delegator info from an address     | [idTableStaking/delegation/get_delegator_info_from_address.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/get_delegator_info_from_address.cdc) |
 
-## Node Staker Transactions
+### Staking
+
+These transactions operate through the `FlowIDTableStaking.NodeStaker` resource.
 
 Please see the [Locked Tokens contract](../locked-tokens/#transactions) for information about staking with locked tokens.
-Documentation for staking with unlocked tokens will be updated when unlocked tokens are available to stake with.
 
-## Delegator Transactions
+| ID          | Name                    | Source                                                                                                                                                                      |
+| ----------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`SC.11`** | Register Node           | [idTableStaking/node/register_node.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/node/register_node.cdc)                       |                         |
+| **`SC.12`** | Stake New Locked FLOW   | [idTableStaking/node/stake_new_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/node/stake_new_tokens.cdc)                 |
+| **`SC.13`** | Re-stake Unstaked FLOW  | [idTableStaking/node/stake_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/node/take_unstaked_tokens.cdc)        |
+| **`SC.14`** | Re-stake Rewarded FLOW  | [idTableStaking/node/stake_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/node/stake_rewarded_tokens.cdc)       |
+| **`SC.15`** | Request Unstake of FLOW | [idTableStaking/node/request_unstaking.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/node/request_unstaking.cdc)               |
+| **`SC.16`** | Unstake All FLOW        | [idTableStaking/node/unstake_all.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/node/unstake_all.cdc)                           |
+| **`SC.17`** | Withdraw Unstaked FLOW  | [idTableStaking/node/withdraw_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/node/withdraw_unstaked_tokens.cdc) |
+| **`SC.18`** | Withdraw Rewarded FLOW  | [idTableStaking/node/withdraw_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/node/withdraw_rewarded_tokens.cdc) |
+
+See the [staking documentation](/core-contracts/flow-id-table-staking) for how to get info about a staked node.
+
+### Delegating
+
+These transactions operate through the `FlowIDTableStaking.NodeDelegator` resource.
 
 Please see the [Locked Tokens contract](../locked-tokens/#transactions) for information about delegating with locked tokens.
-Documentation for delegating with unlocked tokens will be updated when unlocked tokens are available to delegate with.
+
+| ID          | Name                              | Source                                                                                                                                                                            |
+| ----------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`SC.19`** | Register Delegator                | [idTableStaking/delegation/register_delegator.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/register_delegator.cdc)          |
+| **`SC.20`** | Delegate New Locked FLOW          | [idTableStaking/delegation/del_stake_new_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/del_stake_new_tokens.cdc)           |
+| **`SC.21`** | Re-delegate Unstaked FLOW         | [idTableStaking/delegation/del_stake_unstaked.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/del_stake_unstaked.cdc) |
+| **`SC.22`** | Re-delegate Rewarded FLOW         | [idTableStaking/delegation/del_stake_rewarded.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/del_stake_rewarded.cdc) |
+| **`SC.23`** | Request Unstake of Delegated FLOW | [idTableStaking/delegation/del_request_unstaking.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/del_request_unstaking.cdc)               |
+| **`SC.24`** | Withdraw Unstaked Delegated FLOW  | [idTableStaking/delegation/del_withdraw_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/del_withdraw_unstaked_tokens.cdc) |
+| **`SC.25`** | Withdraw Rewarded Delegated FLOW  | [idTableStaking/delegation/del_withdraw_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/del_withdraw_rewarded_tokens.cdc) |
+
+See the [staking documentation](/core-contracts/flow-id-table-staking) for how to get info about a staked delegator.
 
 # Events
 

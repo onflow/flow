@@ -39,6 +39,13 @@ with the following arguments:
 | ---------- | -------- | -------------------------------------- |
 | **nodeID** | `String` | The node ID of the node to search for. |
 
+You can also query the info from an address by using the **Get Node Info From Address**([SC.26](../../core-contracts/flow-id-table-staking/#getting-staking-info)) script
+with the following arguments:
+
+| Argument   | Type     | Description                            |
+| ---------- | -------- | -------------------------------------- |
+| **address** | `Address` | The address of the account that manages the node. |
+
 ### Get the total committed balance of a node:
 
 `FlowIDTableStaking.getTotalCommittedBalance(_ nodeID: String)`: Returns the total committed balance for a node,
@@ -64,6 +71,13 @@ script with the following arguments:
 | --------------- | -------- | -------------------------------------------- |
 | **nodeID**      | `String` | The node ID that the delegator delegates to. |
 | **delegatorID** | `String` | The ID of the delegator to search for.       |
+
+You can also query the info from an address by using the **Get Delegator Info From Address**([SC.27](../../core-contracts/flow-id-table-staking/#getting-staking-info)) script
+with the following arguments:
+
+| Argument   | Type     | Description                            |
+| ---------- | -------- | -------------------------------------- |
+| **address** | `Address` | The address of the account that manages the delegator. |
 
 ### Get the delegation cut percentage:
 

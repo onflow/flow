@@ -113,7 +113,7 @@ transaction with the following arguments:
 |------------|----------|-------------|
 | **amount** | `UFix64` | The number of unstaked FLOW tokens to withdraw. |
 
-This transaction moves the unstaked tokens back into the `LockedTokens.Lockbox` owned by the token holder.
+This transaction moves the unstaked tokens back into the `LockedTokens.TokenManager` owned by the token holder.
 
 ## Withdraw Rewarded Tokens
 
@@ -127,7 +127,7 @@ transaction with the following arguments:
 |------------|----------|-------------|
 | **amount** | `UFix64` | The number of rewarded FLOW tokens to withdraw. |
 
-This transaction moves the rewarded tokens back into the `LockedTokens.Lockbox` owned by the token holder. 
+This transaction moves the rewarded tokens back into the `LockedTokens.TokenManager` owned by the token holder. 
 However, unlike unstaked tokens, rewards are _unlocked FLOW_ and can be immediately withdrawn from the lockbox.
 
 ## Query a Delegator Record
