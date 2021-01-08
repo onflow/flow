@@ -52,7 +52,8 @@ export const NavItemDescription = styled.p({
 
 const BreadcrumbWrapper = styled.div({
   width: "100%",
-
+  paddingLeft: "1rem",
+  paddingTop: "0.5rem",
   ".breadcrumb__separator": {
     fontSize: "0.8rem",
     display: "flex",
@@ -67,6 +68,11 @@ const BreadcrumbWrapper = styled.div({
     },
   },
 });
+
+const Break = styled.div`
+  height: 0;
+  flex-basis: 100%;
+`;
 
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
 
@@ -193,10 +199,10 @@ export default function PageLayout(props) {
               />
             )}
             <HeaderNav />
-            <BreadcrumbWrapper>
-              <Breadcrumb crumbs={dacrumbs} />
-            </BreadcrumbWrapper>
           </Header>
+          <BreadcrumbWrapper>
+            <Breadcrumb crumbs={dacrumbs} />
+          </BreadcrumbWrapper>
           <SelectedLanguageContext.Provider value={selectedLanguageState}>
             <NavItemsContext.Provider value={navItems}>
               {props.children}
