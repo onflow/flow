@@ -16,7 +16,7 @@ const InnerWrapper = styled.div({
   display: "flex",
   flexWrap: "wrap",
   alignItems: "center",
-  height: HEADER_HEIGHT,
+  minHeight: HEADER_HEIGHT,
   borderBottom: `1px solid ${theme.divider}`,
   padding: "0 14px",
   backgroundColor: "white",

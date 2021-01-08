@@ -72,11 +72,6 @@ const BreadcrumbWrapper = styled.div({
   },
 });
 
-const Break = styled.div`
-  height: 0;
-  flex-basis: 100%;
-`;
-
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
 
 function handleToggleAll(expanded) {
