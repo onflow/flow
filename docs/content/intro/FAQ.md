@@ -1,10 +1,41 @@
 ---
-title: FAQ
+title: Developer FAQ
 ---
 
 ## General FAQ
 
-We recommend reading the Introduction and first few tutorials before you read this, it will help with understanding some of the concepts.
+We recommend reading the Flow Primer, Cadence Introduction and first few Cadence tutorials before you read this, it will help with understanding some of the concepts.
+
+
+### How does the network verify that the execution was performed correctly?
+
+Flow utilizes a new blockchain architecture that allows for decentralized computation that is verified by other nodes in the network. Execution nodes run the transactions and update the state and verification nodes use complex cryptography to verify that these were performed correctly. See the Flow node types documentation for more details.
+
+### Is there a native currency on Flow?
+
+Yes, there is a native currency, but it is different from other blockchains in that it will be implemented as a smart contract the same as any other token in the network. A smart contract can import the `FlowToken` definition to use in contract or transaction code. See the [flow fungible token repo](https://github.com/onflow/flow-ft) for examples of how this would work and the [core contracts page](../core-contracts/flow-token) for import addresses and transaction information.
+
+### How are accounts created in Flow?
+
+Accounts are created by generating private and public keys, then submitting a transaction that initializes the account storage and assigns keys to the account. The account that creates the new account must provide a payment which is called the storage deposit to create the new account. See the [Flow-SDK](https://github.com/onflow/flow-go-sdk#creating-an-account) documentation for more context on this process.
+
+### Which wallets can I use with Flow?
+
+There are a few wallets that are currently compatible with Flow, with more to come in the future. First is the Dapper Flow Wallet, which is compatible with NBA Top Shot and will be generally compatible soon. There is also the Blocto Wallet which is a general purpose Flow wallet. All Flow wallets should utilize Flow Client library, which is a high level dapp framework built on top an opinionated use of the sdk with the goal of making wallet integration as seamless as possible for developers and users. Keep your eyes on the JS-SDK for more updates.
+
+### How can an application or developer create accounts and do other actions in Flow?
+
+See the documentation for the [Flow Client Library](https://github.com/onflow/flow-js-sdk) and [SDK](https://github.com/onflow/flow-go-sdk) for tools that expose an API for account creation, contract deployment, transaction submission, and so on. These can be called from a command line or from within an application. We will also be providing tooling for applications to handle much of this functionality on behalf of users.
+
+### What is the point of allowing multiple accounts to sign transactions?
+
+The main purpose of allowing multiple signers of a transaction is to be able to access their private account storage. Each account has a private `[account.storage](http://account.storage)` object that is only accessible within the `prepare` block of a transaction that is signed by it. If multiple accounts sign a transaction, then the transaction is allowed to interact with both of their storage objects. There are many different things it can do with this, including transferring arbitrary resources, accessing both of their private capabilities, and implementing multi-sig wallets that are built into the protocol.
+
+### Is there a publicly available API endpoint (gRPC, JSON-RPC..) we can send the transactions to?
+
+To send transactions to the network, you must submit your transactions to a public access node to be included. See the [dapp deployment guide for more info](../dapp-deployment/index)
+
+## Cadence General FAQ
 
 ### Why create a new programming language?
 
@@ -16,23 +47,7 @@ Floating point is inherently approximate, and floating point implementations are
 
 ### Cadence has changed since the last time I worked with it? What happened?
 
-Cadence is a programming language that is still in development and therefore will be going through many syntax and behaviour changes in the coming months. Early adopters need to be aware that this means that breaking changes and new features will be introduced periodically that might make your development experience slightly more challenging. We apologize for any inconvenience this causes and making sure that the language can reach a more stable state as soon as possible. If you have any opinions about features or changes to the language, we are happy to take your feedback on our public discord channel or [forum](https://forum.onflow.org/).
-
-### How does the network verify that the execution was performed correctly?
-
-Flow utilizes a new blockchain architecture that allows for decentralized computation that is verified by other nodes in the network. Execution nodes run the transactions and update the state and verification nodes use complex cryptography to verify that these were performed correctly. See the Flow node types documentation for more details.
-
-### Is there a native currency on Flow?
-
-Yes, there will be a native currency, but it will be different from other blockchains in that it will be implemented as a smart contract the same as any other token in the network. A smart contract can import the `FlowToken` definition to use in contract or transaction code. See the [flow fungible token repo](https://github.com/onflow/flow-ft) for examples of how this would work.
-
-### How are accounts created in Flow?
-
-Account are created by generating private and public keys, then submitting a transaction that initializes the account storage and assigns the keys. The account that creates the new account must provide a payment which is called the storage deposit to create the new account. See the [Flow-SDK](https://github.com/onflow/flow-go-sdk#creating-an-account) documentation for more context on this process.
-
-### Which wallets can I use with Flow?
-
-Keep your eyes on the JS-SDK, something is coming very soon :wink:.
+Cadence is a programming language that is still in development and therefore will be going through many syntax and behaviour changes as it is improved. Early adopters need to be aware that this means that breaking changes and new features will be introduced periodically that might make change your development experience. We apologize for any inconvenience this causes and we are making sure that the language can reach a more stable state as soon as possible. If you have any opinions about features or changes to the language, we are happy to take your feedback on our public discord channel or [forum](https://forum.onflow.org/).
 
 ### How do we prevent Re-entrancy?
 
@@ -42,7 +57,7 @@ Currently, there is no explicit protection against re-entrancy, but we are final
 
 When a contract is deployed, all of its public types, fields, and methods are available for anyone to call. Of course, if the methods are declared as part of a Resource type, then you must have an instance of that Resource type in order to call those methods.
 
-In Cadence, almost all access control is managed through Capability-Based Security. Instead of restricting access based on “who you are” (via access control lists, or msg.sender), Cadence typically restricts access based on “what you have” (via Resource types and capabilities).
+In Cadence, almost all access control is managed through Capability-Based Security. Instead of restricting access based on “who you are” (via access control lists, or `msg.sender`), Cadence typically restricts access based on “what you have” (via Resource types and capabilities).
 
 As an example, if an Ethereum ERC-20 fungible token allows minting, it probably has a “minter address”, and only allows the mint() method to be called if (msg.sender == minter_address). In Cadence, you’d create a Minter resource object with a mint() method on it. Only someone with access to the Minter object could call mint(), and no further access controls are necessary. You control (or transfer) ownership of the Minter object instead of recording an authorized address.
 
@@ -54,7 +69,7 @@ We haven’t seen a need for modifiers since they are mostly used either as make
 
 We are currently assessing possible VM architectures for Cadence, including the MoveVM from Libra. For now, Cadence is interpreted, which might seem like a potential performance problem, but isn’t likely to be in practice. Execution throughput of smart contract platforms is dominated by updating state proofs. For example, the current EVM has been benchmarked at over 10ktps, but validating the chain, including updating the state proofs, caps out under 100tps! We’ll be much faster at state proofs (by maintaining the entire state tree in memory on server-scale hardware), but we still don’t expect the code execution speed to be a bottleneck any time soon.
 
-### How are transaction and contracts processed, and at what cost ? Are they compiled to bytecode? Is there a publicly available API endpoint (gRPC, JSON-RPC..) we can send the transactions to?
+### How are transaction and contracts processed, and at what cost ? Are they compiled to bytecode? 
 
 The specifics of how gas is metered are pending the choice of VM architecture, which will also dictate the internal representation of the contract code.
 The Emulator that you have exposes a gRPC API.
@@ -100,30 +115,16 @@ transaction {
 }
 ```
 
-### How can an application or developer create accounts and do other actions in Flow?
 
-See the documentation for the [Flow Client Library](https://github.com/onflow/flow-js-sdk) and [SDK](https://github.com/onflow/flow-go-sdk) for tools that expose an API for account creation, contract deployment, transaction submission, and so on. These can be called from a command line or from within an application. We will also be providing tooling for applications to handle much of this functionality on behalf of users.
 
 ### What is the difference between `Void` and `nil` ?
 
 - `Void`: is a type used to indicate that a function returns nothing. It is optional to include in a function definition.
 - `nil` is a value that indicates the absence of a value. It is used primarily in optionals, types that can either represent a real value, or nothing. `nil` is the nothing case.
 
-### What is the point of allowing multiple accounts to sign transactions?
-
-The main purpose of allowing multiple signers of a transaction is to be able to access their private account storage. Each account has a private `[account.storage](http://account.storage)` object that is only accessible within the `prepare` block of a transaction that is signed by it. If multiple accounts sign a transaction, then the transaction is allowed to interact with both of their storage objects. There are many different things it can do with this, including transferring arbitrary resources, accessing both of their private capabilities, and implementing multi-sig wallets that are built into the protocol.
-
 ### How would I upgrade a contract?
 
-Currently, the upgrading process for smart contracts is relatively basic. You can upgrade the functions in a contract by using the `unsafeNotInitializingSetCode`. This changes the code of the contract without running the `init()` function again. This is unsafe because you cannot change any of the storage fields in the contract, so if you try to change any of those fields or add new fields, it will break your contract.
-
-```cadence
-transaction {
-	prepare(acct: AuthAccount, admin: AuthAccount) {
-		acct.unsafeNotInitializingSetCode("%s".decodeHex())
-	}
-}
-```
+Currently, the upgrading process for smart contracts is relatively basic. You can upgrade the functions in a contract by using the `unsafeNotInitializingSetCode`. This changes the code of the contract without running the `init()` function again. This is unsafe because you cannot change any of the storage fields in the contract, so if you try to change any of those fields or add new fields, it will break your contract. See the [contract upgrading section of the Cadence docs](https://docs.onflow.org/cadence/language/contracts/#updating-a-deployed-contract) for more info.
 
 The general idea is that as long as you control the private keys to an account, you can upgrade the contract code by deploying new code. This will be possible at launch, but it is still a risky process because you need to make sure that the new code is still compatible with resources in user's accounts.
 
@@ -133,7 +134,8 @@ In the early versions of Flow, the strict decentralization rules will not all be
 
 ### What happens if a user wants to deploy a contract with the same name and code as one they have already deployed?
 
-Currently, it would just overwrite the existing contract in the account, but in the future we will support multiple contracts per account and are still designing the rules about contracts with the same name and code.
+Cadence supports multiple contracts per account, but each contract needs to be named. If the name of a contract already is deployed to an account,
+a new contract with the same name cannot be deployed.
 
 ### How do I access block information like timestamp and block number in Cadence?
 
@@ -188,7 +190,7 @@ transaction {
 
 ### But what if I want to store multiple objects of the same type?
 
-In your storage, you can specify any name for a storage slot. So a resource of type `Token` could be in `/storage/Token` or `/storage/Unicorn` or any other choice for that matter, as long as it isn't overwriting any other object in storage.
+In your storage, you can specify any name for a storage slot. So a resource of type `Token` could be in `/storage/Token` or `/storage/Unicorn` or any other choice for that matter, as long as it isn't overwriting any other object in storage. You can also use a collection of objects stored in one spot in storage so you don't have to manage multiple storage paths.
 
 ### Benefits to ease of use for resources
 
@@ -281,7 +283,7 @@ In Cadence, this is possible, but not necessary because Cadence uses Capability 
 
 ### How are references created and distributed?
 
-See the "Capability-based Access Control" section of the language spec or one of the tutorials for a run-through of how capabilities and references are created.
+See the ["Capability-based Access Control"](https://docs.onflow.org/cadence/language/capability-based-access-control/) section of the language spec or one of the tutorials for a run-through of how capabilities and references are created.
 
 ### Why capabilities cannot be forged:
 
