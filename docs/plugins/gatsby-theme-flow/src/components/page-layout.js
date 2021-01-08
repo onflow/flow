@@ -15,6 +15,8 @@ import Sidebar from "./sidebar";
 import SidebarNav from "./sidebar-nav";
 import { useResponsiveSidebar } from "./responsive-sidebar";
 import { Helmet } from "react-helmet";
+import { Breadcrumb } from "gatsby-plugin-breadcrumb";
+
 import { graphql, useStaticQuery } from "gatsby";
 import MobileLogo from "./mobile-logo";
 import { SelectedLanguageContext } from "./multi-code-block";
@@ -46,6 +48,24 @@ export const NavItemDescription = styled.p({
   lineHeight: 1.5,
   color: theme.text3,
   transition: "color 150ms ease-in-out",
+});
+
+const BreadcrumbWrapper = styled.div({
+  width: "100%",
+
+  ".breadcrumb__separator": {
+    fontSize: "0.8rem",
+    display: "flex",
+    alignItems: "center",
+  },
+  ".breadcrumb__link": {
+    fontSize: "0.8rem",
+    color: "inherit",
+    color: theme.text3,
+    "&:hover": {
+      color: theme.primary,
+    },
+  },
 });
 
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
@@ -173,7 +193,9 @@ export default function PageLayout(props) {
               />
             )}
             <HeaderNav />
-            <div></div>
+            <BreadcrumbWrapper>
+              <Breadcrumb crumbs={dacrumbs} />
+            </BreadcrumbWrapper>
           </Header>
           <SelectedLanguageContext.Provider value={selectedLanguageState}>
             <NavItemsContext.Provider value={navItems}>
