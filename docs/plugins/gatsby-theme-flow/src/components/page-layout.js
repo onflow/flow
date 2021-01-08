@@ -52,8 +52,11 @@ export const NavItemDescription = styled.p({
 
 const BreadcrumbWrapper = styled.div({
   width: "100%",
-  paddingLeft: "1rem",
-  paddingTop: "0.5rem",
+  flexGrow: 1,
+  flexBasis: "100%",
+  paddingBottom: "0.42rem",
+  // borderTop: "1px solid",
+  borderColor: theme.divider,
   ".breadcrumb__separator": {
     fontSize: "0.8rem",
     display: "flex",
@@ -199,10 +202,10 @@ export default function PageLayout(props) {
               />
             )}
             <HeaderNav />
+            <BreadcrumbWrapper>
+              <Breadcrumb crumbs={dacrumbs} />
+            </BreadcrumbWrapper>
           </Header>
-          <BreadcrumbWrapper>
-            <Breadcrumb crumbs={dacrumbs} />
-          </BreadcrumbWrapper>
           <SelectedLanguageContext.Provider value={selectedLanguageState}>
             <NavItemsContext.Provider value={navItems}>
               {props.children}
