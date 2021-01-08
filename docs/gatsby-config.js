@@ -326,9 +326,9 @@ module.exports = {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
         useAutoGen: true,
-        autoGenHomeLabel: "Home",
+        // autoGenHomeLabel: "Home",
       },
-      exclude: [`/`],
+      exclude: [`**/`],
     },
     {
       resolve: "gatsby-plugin-mixpanel",
