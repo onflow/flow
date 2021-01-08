@@ -106,7 +106,7 @@ const sections = [
     sidebar: {
       null: ["[Home](/)"],
       Overview: [
-        "cadence/tutorial/00-introduction",
+        "cadence/tutorial/introduction",
         "[Cadence Language Reference](/cadence/language)",
       ],
       "Developer Guides": ["cadence/design-patterns", "cadence/dragons"],
@@ -325,10 +325,21 @@ module.exports = {
     {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
+        title: "Navigation: ",
         useAutoGen: true,
-        // autoGenHomeLabel: "Home",
+        autoGenHomeLabel: "Home",
+        crumbLabelUpdates: [
+          {
+            pathname: "/flow-js-sdk",
+            crumbLabel: "Flow JS SDK",
+          },
+          {
+            pathname: "/flow-go-sdk",
+            crumbLabel: "Flow GO SDK",
+          },
+        ],
+        exclude: [`**/`],
       },
-      exclude: [`**/`],
     },
     {
       resolve: "gatsby-plugin-mixpanel",
