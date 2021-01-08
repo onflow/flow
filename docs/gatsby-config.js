@@ -183,7 +183,7 @@ const sections = [
         "core-contracts/locked-tokens",
         "core-contracts/non-fungible-token",
       ],
-       "Developer Guides": ["core-contracts/access-api"],
+      "Developer Guides": ["core-contracts/access-api"],
     },
   },
   {
@@ -328,6 +328,7 @@ module.exports = {
         useAutoGen: true,
         autoGenHomeLabel: "Home",
       },
+      exclude: [`/`],
     },
     {
       resolve: "gatsby-plugin-mixpanel",
