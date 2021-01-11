@@ -1,0 +1,111 @@
+---
+title: Storing Data on Flow
+---
+
+## **Overview**
+
+Each Flow account has an associated storage capacity. By default this capacity is 100 KiB. Each account also has an associated storage used. The account's storage used is the byte size of all of the data stored in the account's storage. The account can without any additional cost use any amount of storage up to its storage capacity. If a transaction would put an account over storage capacity, that transaction fails and is reverted. Accounts can acquire more storage capacity using FLOW tokens.
+
+## Storage Capacity
+
+Storage capacity of an account is dictated by the amount of FLOW tokens it has reserved (for the purpose of increasing its storage capacity) in the account's `StorageReservation` resource. The `StorageReservation` is a special resource that is put in the account storage at account creation, with a minimum storage reservation, which is paid for by the account's creator. The minimum storage reservation is 0.1 FLOW tokens.
+
+The exact amount of storage capacity an account has is the amount of reserved FLOW tokens times the `storageBytesPerReservedFlow` variable defined on the `StorageFees` smart contract, which is **1 MiB per 1 reserved FLOW token.**
+
+Any account can increase the storage capacity of an account by depositing more FLOW tokens into the accounts `StorageReservation` resource, by using that accounts public `StorageReservationReceiver` reference.
+
+Any account can reduce its storage capacity by withdrawing reserved tokens from its `StorageReservation` resource and getting those FLOW tokens back. This operation is not allowed to reduce the account's storage reservation below the minimum storage reservation.
+
+Withdrawing reserved FLOW tokens will not be possible while some tokens on the network are still locked, to prevent creating too much free Flow.
+
+## Storage Used
+
+All data that is in an account's storage counts towards storage used. Even when an account is newly created it is not empty. There are already some items in its storage:
+
+- Metadata that marks that the account exists.
+- An empty FLOW token vault, and stored receiver capability.
+- Public keys to the account if the account was created with keys.
+- Smart contracts deployed on the account if the account was created with contracts.
+- The value of the account’s storage used as an unsigned integer.
+- A `StorageReservation` resource with reserved FLOW tokens, that defines how much storage capacity the account has, and a corresponding receiver.
+
+Adding additional keys, smart contracts, capabilities, resources, etc. to the account counts towards storage used.
+
+Data stored on the Flow blockchain is stored in a key-value ledger. Each item’s key contains the address that owns the item and the path to the item. Just as the shipping cost of a box of things you send to a friend includes the weight of the box itself, storing items on Flow takes into account the key it is stored with. **This means that the storage used by each item is the byte length of the item plus the byte length of the item’s key.**
+
+## Storage Parameters
+
+Three parameters define storage fees:
+
+- Minimum account storage reservation is **0.1 FLOW tokens** and represents **100 KiB** of storage capacity. This is also the amount of FLOW tokens that the creator of a new account needs to provide for the account's storage reservation. (`StorageFees.minimumStorageReservation`)
+- The amount of storage capacity one FLOW token represents is **1 MiB per FLOW token**. (`StorageFees.storageBytesPerReservedFlow`)
+- Refunding FLOW tokens from `StorageReservation` resource will not be possible for a while to prevent introducing too much free flowing FLOW tokens. (`StorageFees.refundingEnabled`)
+
+## Answers to Common Questions
+
+### **Why is there a storage cost?**
+
+The more data that is stored on Flow, the higher the storage requirements for execution nodes that need to store the data. As the size of the data grows its more and more difficult and costly for the execution nodes to meet those requirements.
+
+Storage fees were put in place to regulate the growth of data stored on the Flow blockchain.
+
+### **Will the cost of storage capacity change?**
+
+Yes!
+
+Storage cost will increase or decrease according to demand for storage and how easy it is to add more storage to the execution nodes.
+
+This will happen by increasing/decreasing the value of `StorageFees.storageBytesPerReservedFlow` . If this value decreases it is possible that some accounts will have less storage capacity than their storage used. Those accounts will have to first submit a transaction where they increase their storage capacity, before they can be involved in any other transactions.
+
+### **What is my current storage usage?**
+
+The values of storage used and storage capacity are available as fields both on `AuthAccount` and `PublicAccount` cadence types.
+
+```cadence
+pub fun main(account: Address) {
+    let account: PublicAccount = getAccount(account)
+    log(account.storageUsed)
+    log(account.storageCapacity)
+}
+```
+
+### **How do I purchase more storage capacity?**
+
+To increase an account's storage capacity, all that is required is to deposit more FLOW tokens into its `StorageReservation` resource. This is done by getting the account's public `StorageReservationReceiver` reference, and calling its `deposit` function.
+
+```cadence
+let receiver = StorageFees.getStorageReservationReceiver(forAddress)
+receiver.deposit(from: <-paymentVault)
+```
+
+### **Where does the Flow that I used to pay for storage go?**
+
+The FLOW tokens are stored inside the `StorageReservation` resource of each account. So they are still in the account's storage.
+
+### **How do I refund storage capacity?**
+
+If an account no longer needs as much storage capacity as it currently has, FLOW tokens can be withdrawn from the account's `StorageReservation` resource. This can be done by retrieving a reference to its `StorageReservation` and calling the `withdraw` function on it.
+
+```cadence
+// Get a reference to the signer's stored StorageReservation
+let reference = account.borrow<&StorageFees.StorageReservation>(
+	from: StorageFees.storageReservationPath)
+    ?? panic("Could not borrow reference to the owner's StorageReservation!")
+
+// Refund tokens from the account's stored StorageReservation
+let refunded <- reference.withdraw(amount: flowAmount) // this returns a @FlowToken.Vault
+```
+
+### Is storage capacity transferrable?
+
+No.
+
+Each instance of the `StorageReservation` resource must be on a predetermined path of the account it was created for. If the resource is moved to another account (or deleted) the transaction will fail, because the account suddenly has no storage capacity.
+
+Swapping a resource with someone else will also not work, because the `StorageReservation` resource is linked to one account.
+
+## Further reading
+
+The `StorageFees` smart contract that defines the `StorageReservation` resource, the `StorageReservationReceiver` resource interface and all the storage parameters can be seen here TODO.
+
+The FLIP (Flow Improvement Proposal) for storage fees can be found here TODO.
