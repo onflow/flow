@@ -214,6 +214,7 @@ const sections = [
         "flow-token/delivery",
         "flow-token/faq",
       ],
+      "Token Delivery": ["flow-token/locked-account-setup"],
     },
   },
   {
@@ -231,13 +232,16 @@ const sections = [
       "Custody Providers": ["staking/custody-providers"],
       "Manual Staking Guides": [
         "staking/technical-overview",
-        "staking/locked-delegation-guide",
-        "staking/locked-staking-guide",
-        "staking/locked-third-party-operator",
         "staking/events",
         "staking/scripts",
+        "staking/unlocked-staking-guide",
+        "staking/unlocked-delegation-guide",
       ],
-      "Token Delivery": ["staking/locked-account-setup"],
+      "Staking with Locked FLOW": [
+        "staking/locked-staking-guide",
+        "staking/locked-delegation-guide",
+        "staking/locked-third-party-operator",
+      ],
     },
   },
   {

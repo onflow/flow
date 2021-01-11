@@ -18,11 +18,11 @@ If you staked using a staking provider such as Kraken, Blocto or Finoa, please r
 
 ### Does it make a difference as to what TYPE of node we delegate to in terms of rewards?
 
-No, rewards are calculated the same for evrt node type.
+No, rewards are calculated the same for every node type.
 
 ### Can a validator change its fees?
 
-For the beta period we’re enforcing a minimum delegation fee of 8% which cannot be changed.
+For the beta period we’re enforcing a delegation fee of 8% which cannot be changed.
 
 ### Can a token holder stake to multiple nodes? If yes, how is the stake split between them?
 
@@ -57,3 +57,12 @@ No, rewards payout is not a spork but (currently) a separate transaction that we
 ### How do FLOW leases work?
 
 A FLOW lease from Dapper Labs gives an individual access to funds for the purpose of staking. These funds are controlled by Dapper Labs and accessible only to the individual for the purposes of staking. When the FLOW is staked, it is technically in the custody of the protocol - as with any other staked FLOW.
+
+### Can I query an account address of a node ID or delegator ID?
+
+The staking smart contract does not directly associate a node or delegator with an account address. 
+It associates it with the assigned resource object that corresponds to that entry in the contract. 
+There can be any number of these objects stored in the same account, 
+and they can be moved to different accounts if the owner chooses.
+It is possible to query the information about a node that an address runs though, by using the
+`get_node_info_from_address.cdc` script.
