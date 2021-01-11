@@ -55,7 +55,8 @@ const BreadcrumbWrapper = styled.div({
   flexGrow: 1,
   flexBasis: "100%",
   paddingBottom: "0.42rem",
-  // borderTop: "1px solid",
+  display: 'flex',
+  borderTop: "1px solid",
   borderColor: theme.divider,
   ".breadcrumb__separator": {
     fontSize: "0.8rem",
