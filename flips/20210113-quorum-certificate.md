@@ -2,8 +2,8 @@
 
 | Status        | (Proposed)       |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
-| ** Feature PR** | [QC Contract](https://github.com/onflow/flow-core-contracts/pull/66) |
+| **FLIP #**    | [313](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
+| **Feature PR** | [QC Contract Draft](https://github.com/onflow/flow-core-contracts/pull/66) |
 | **Author(s)** | Josh Hannan (joshua.hannan@dapperlabs.com) |
 | **Sponsor**   | Josh Hannan (joshua.hannan@dapperlabs.com)            |
 | **Updated**   | 2021-01-13                                           |
@@ -104,7 +104,7 @@ such as cluster information, voting completion status, etc.
 
 See this sequence diagram for the flow of actions in QC generation.
 
-[Diagram]()
+[Diagram](https://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgRmxvdyBRdW9ydW0gQ2VydGlmaWNhdGUgR2VuZXJhdGlvbgoKCm5vdGUgcmlnaHQgb2YgRXBvY2ggQ29udHJhY3Q6IFRyaWdnZXIgRW5kIG9mIHN0YWtpbmcgQXVjADoFAB8eRGV0ZXJtaW5lIGZpbmFsIHByb3Bvc2VkIGlkZW50aXR5IHRhYmxlAB0pQ29sbGVjdG9yIENsdXN0ZXJzCgCBIg4tPlFDAIEyC0luaXRpYWxpemUgYwAyCWMANAcgYW5kIGFsbG8Agg4FVm90ZXMgdG8gbm9kZQA4H1N0YXJ0IHZvdGluZwCCIB9lbWl0AIJOBlNldHVwIEV2ZW50CgCBPgpOb2RlLT4AgmUQUmVxdWVzdACBEAVyIG9iamVjdACBWREANw46IFJldHVybgAtB2FuZCBzdG9yAIJMEAAlEGZvcm11bGF0ZQAsBnVibWkAgVUFZQCCOx5RdWVyeSByZXN1bHRzIG9mAIIFCACCcwsAgUQSVgCCLAUgY29tcGxldGVkAIMeHkVuZAArBwCCOilDb21taXR0ZWQgZQCCYgUAgV0eUHJlcGFyZQCDbAUgZm9yIG5leHQgZXBvY2gKCgo&s=default)
 
 ### Drawbacks
 
