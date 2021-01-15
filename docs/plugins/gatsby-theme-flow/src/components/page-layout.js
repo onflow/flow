@@ -55,8 +55,7 @@ const BreadcrumbWrapper = styled.div({
   flexGrow: 1,
   flexBasis: "100%",
   paddingBottom: "0.42rem",
-  display: 'flex',
-  borderTop: "1px solid",
+  display: "flex",
   borderColor: theme.divider,
   ".breadcrumb__separator": {
     fontSize: "0.8rem",
@@ -65,7 +64,6 @@ const BreadcrumbWrapper = styled.div({
   },
   ".breadcrumb__link": {
     fontSize: "0.8rem",
-    color: "inherit",
     color: theme.text3,
     "&:hover": {
       color: theme.primary,
@@ -198,9 +196,13 @@ export default function PageLayout(props) {
               />
             )}
             <HeaderNav />
-            <BreadcrumbWrapper>
-              <Breadcrumb crumbs={dacrumbs} />
-            </BreadcrumbWrapper>
+            {props.path !== "/" ? (
+              <BreadcrumbWrapper>
+                <Breadcrumb crumbs={dacrumbs} hiddenCrumbs={["/intro"]} />
+              </BreadcrumbWrapper>
+            ) : (
+              ""
+            )}
           </Header>
           <SelectedLanguageContext.Provider value={selectedLanguageState}>
             <NavItemsContext.Provider value={navItems}>
