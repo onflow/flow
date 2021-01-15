@@ -7,7 +7,7 @@ const navConfig = {
       "New to Flow? Start here. Read about Flow's architecture, and important concepts for a deeper understanding of the Flow platform and how it works.",
   },
   Cadence: {
-    url: "/cadence/tutorial/00-introduction/",
+    url: "/cadence",
     icon: "cadence",
     description:
       "Resource-Oriented programming language for smart contracts that helps developers ensure that their code is safe, secure, clear, and approachable.",
@@ -42,7 +42,7 @@ const navConfig = {
     linkText: "CLI Documentation",
   },
   "Flow Emulator": {
-    url: "/emulator/",
+    url: "/emulator",
     icon: "emulator",
     description:
       "Develop and test your applications locally using the Flow emulator.",
@@ -105,11 +105,8 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: [
-        "cadence/tutorial/00-introduction",
-        "[Cadence Language Reference](/cadence/language)",
-      ],
-      "Developer Guides": ["cadence/design-patterns", "cadence/dragons"],
+      Overview: ["/cadence", "[Cadence Language Reference](/cadence/language)"],
+      "Developer Guides": ["cadence/design-patterns", "cadence/anti-patterns"],
       Tutorial: [
         "cadence/tutorial/01-first-steps",
         "cadence/tutorial/02-hello-world",
@@ -177,13 +174,13 @@ const sections = [
         "core-contracts/fungible-token",
         "core-contracts/flow-token",
         "core-contracts/flow-fees",
-        "core-contracts/flow-id-table-staking",
+        "core-contracts/staking-contract-reference",
       ],
       "Other Important Contracts": [
         "core-contracts/locked-tokens",
         "core-contracts/non-fungible-token",
       ],
-       "Developer Guides": ["core-contracts/access-api"],
+      "Developer Guides": ["core-contracts/access-api"],
     },
   },
   {
@@ -329,8 +326,31 @@ module.exports = {
     {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
+        title: "Navigation: ",
         useAutoGen: true,
         autoGenHomeLabel: "Home",
+        crumbLabelUpdates: [
+          {
+            pathname: "/flow-port/faq",
+            crumbLabel: "FAQ",
+          },
+          {
+            pathname: "/core-contracts/access-api",
+            crumbLabel: "Access API",
+          },
+          {
+            pathname: "/flow-js-sdk",
+            crumbLabel: "Flow JS SDK",
+          },
+          {
+            pathname: "/flow-cli",
+            crumbLabel: "Flow CLI",
+          },
+          {
+            pathname: "/flow-go-sdk",
+            crumbLabel: "Flow GO SDK",
+          },
+        ],
       },
     },
     {
