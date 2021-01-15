@@ -54,15 +54,16 @@ const BreadcrumbWrapper = styled.div({
   width: "100%",
   flexGrow: 1,
   flexBasis: "100%",
-  paddingBottom: "0.42rem",
   display: "flex",
+  marginLeft: "-4px",
   borderColor: theme.divider,
   ".breadcrumb__separator": {
     fontSize: "0.8rem",
     display: "flex",
     alignItems: "center",
   },
-  ".breadcrumb__link": {
+  ".breadcrumb__link, .breadcrumb__link__disabled": {
+    fontWeight: 500,
     fontSize: "0.8rem",
     color: theme.text3,
     "&:hover": {
@@ -198,7 +199,11 @@ export default function PageLayout(props) {
             <HeaderNav />
             {props.path !== "/" ? (
               <BreadcrumbWrapper>
-                <Breadcrumb crumbs={dacrumbs} hiddenCrumbs={["/intro"]} />
+                <Breadcrumb
+                  crumbs={dacrumbs}
+                  hiddenCrumbs={["/intro"]}
+                  disableLinks={["/flow-port", "/community-updates"]}
+                />
               </BreadcrumbWrapper>
             ) : (
               ""

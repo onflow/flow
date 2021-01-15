@@ -331,6 +331,10 @@ module.exports = {
         autoGenHomeLabel: "Home",
         crumbLabelUpdates: [
           {
+            pathname: "/flow-port/faq",
+            crumbLabel: "FAQ",
+          },
+          {
             pathname: "/core-contracts/access-api",
             crumbLabel: "Access API",
           },
