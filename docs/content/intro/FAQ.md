@@ -13,7 +13,7 @@ Flow utilizes a new blockchain architecture that allows for decentralized comput
 
 ### Is there a native currency on Flow?
 
-Yes, there is a native currency, but it is different from other blockchains in that it will be implemented as a smart contract the same as any other token in the network. A smart contract can import the `FlowToken` definition to use in contract or transaction code. See the [flow fungible token repo](https://github.com/onflow/flow-ft) for examples of how this would work and the [core contracts page](../core-contracts/flow-token) for import addresses and transaction information.
+Yes, there is a native currency, but it is different from other blockchains in that it will be implemented as a smart contract the same as any other token in the network. A smart contract can import the `FlowToken` definition to use in contract or transaction code. See the [flow fungible token repo](https://github.com/onflow/flow-ft) for examples of how this would work and the [core contracts page](/core-contracts/flow-token) for import addresses and transaction information.
 
 ### How are accounts created in Flow?
 
@@ -69,7 +69,7 @@ We haven’t seen a need for modifiers since they are mostly used either as make
 
 We are currently assessing possible VM architectures for Cadence, including the MoveVM from Libra. For now, Cadence is interpreted, which might seem like a potential performance problem, but isn’t likely to be in practice. Execution throughput of smart contract platforms is dominated by updating state proofs. For example, the current EVM has been benchmarked at over 10ktps, but validating the chain, including updating the state proofs, caps out under 100tps! We’ll be much faster at state proofs (by maintaining the entire state tree in memory on server-scale hardware), but we still don’t expect the code execution speed to be a bottleneck any time soon.
 
-### How are transaction and contracts processed, and at what cost ? Are they compiled to bytecode? 
+### How are transaction and contracts processed, and at what cost ? Are they compiled to bytecode?
 
 The specifics of how gas is metered are pending the choice of VM architecture, which will also dictate the internal representation of the contract code.
 The Emulator that you have exposes a gRPC API.
