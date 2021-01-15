@@ -7,7 +7,7 @@ const navConfig = {
       "New to Flow? Start here. Read about Flow's architecture, and important concepts for a deeper understanding of the Flow platform and how it works.",
   },
   Cadence: {
-    url: "/cadence/tutorial/00-introduction/",
+    url: "/cadence",
     icon: "cadence",
     description:
       "Resource-Oriented programming language for smart contracts that helps developers ensure that their code is safe, secure, clear, and approachable.",
@@ -42,7 +42,7 @@ const navConfig = {
     linkText: "CLI Documentation",
   },
   "Flow Emulator": {
-    url: "/emulator/",
+    url: "/emulator",
     icon: "emulator",
     description:
       "Develop and test your applications locally using the Flow emulator.",
@@ -105,11 +105,8 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: [
-        "cadence/tutorial/introduction",
-        "[Cadence Language Reference](/cadence/language)",
-      ],
-      "Developer Guides": ["cadence/design-patterns", "cadence/dragons"],
+      Overview: ["/cadence", "[Cadence Language Reference](/cadence/language)"],
+      "Developer Guides": ["cadence/design-patterns", "cadence/anti-patterns"],
       Tutorial: [
         "cadence/tutorial/01-first-steps",
         "cadence/tutorial/02-hello-world",
@@ -333,6 +330,10 @@ module.exports = {
         useAutoGen: true,
         autoGenHomeLabel: "Home",
         crumbLabelUpdates: [
+          {
+            pathname: "/core-contracts/access-api",
+            crumbLabel: "Access API",
+          },
           {
             pathname: "/flow-js-sdk",
             crumbLabel: "Flow JS SDK",

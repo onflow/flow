@@ -444,6 +444,11 @@
 			"source": "/core-contracts/flow-id-table-staking",
 			"destination": "/core-contracts/staking-contract-reference",
 			"permanent": false
+		},
+		{
+			"source": "/cadence/tutorial/00-introduction/",
+			"destination": "/cadence",
+			"permanent": true
 		}
 	]
 }
