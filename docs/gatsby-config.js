@@ -177,7 +177,7 @@ const sections = [
         "core-contracts/fungible-token",
         "core-contracts/flow-token",
         "core-contracts/flow-fees",
-        "core-contracts/flow-id-table-staking",
+        "core-contracts/staking-contract-reference",
       ],
       "Other Important Contracts": [
         "core-contracts/locked-tokens",
@@ -334,11 +334,14 @@ module.exports = {
             crumbLabel: "Flow JS SDK",
           },
           {
+            pathname: "/flow-cli",
+            crumbLabel: "Flow CLI",
+          },
+          {
             pathname: "/flow-go-sdk",
             crumbLabel: "Flow GO SDK",
           },
         ],
-        exclude: [`**/`],
       },
     },
     {
