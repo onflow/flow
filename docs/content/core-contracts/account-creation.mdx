@@ -5,8 +5,8 @@ description: Techniques for creating accounts on Flow
 
 This document covers the transaction logic required to create accounts 
 on the Flow blockchain. 
-Please read the [Accounts & Keys](/concepts/accounts-and-keys) 
-documentation for an overview of the Flow account model.
+Read the [accounts & keys documentation](/concepts/accounts-and-keys) 
+for an overview of the Flow account model.
 
 ## Batch Account Creation 
 
@@ -18,6 +18,14 @@ multiple calls to the `AuthAccount` initializer.
 Due to current transaction limits, 
 accounts **should not be created in batches larger than 20 accounts**.
 </Callout>
+
+The examples below emit the same `flow.AccountCreated` event
+as a normal account creation transaction. 
+However, rather than emitting a single event, 
+these transactions emit one event for each new account.
+
+Check out this page to see how account creation transactions and events work in Go: 
+[Create an Account with the Go SDK](/flow-go-sdk/create-account/).
 
 ### Unique Key For Each Account
 
