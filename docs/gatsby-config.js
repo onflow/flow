@@ -90,20 +90,24 @@ const sections = [
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
+      null: [],
+      Ecosystem: [
+        "[Access API](/access-api)",
         "[FLOW Token](/flow-token)",
-        "[Staking & Delegating](/staking)",
         "[Core Contracts](/core-contracts)",
-        "[Dapp Deployment Guide](/dapp-deployment)",
-        "[Node Operation](/node-operation)",
-        "intro/glossary",
-        "intro/FAQ",
       ],
-      "Community Updates": [
-        "community-updates/oct-6-2020",
-        "community-updates/sep-16-2020",
+      Guides: [
+        "[Flow Concepts](/concepts)",
+        "[Introduction to Cadence](/cadence/tutorial/01-first-steps/)",
+        "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
+        "[Project Deployment Guide](/dapp-deployment)",
+        "[Staking & Delegating](/staking)",
       ],
-      Support: ["flow-port/faq", "flow-port/staking-guide"],
+      // "Community Updates": [
+      //   "community-updates/oct-6-2020",
+      //   "community-updates/sep-16-2020",
+      // ],
+      // Support: ["flow-port/faq", "flow-port/staking-guide"],
     },
   },
   {
@@ -192,7 +196,6 @@ const sections = [
         "core-contracts/locked-tokens",
         "core-contracts/non-fungible-token",
       ],
-      "Developer Guides": ["core-contracts/access-api"],
     },
   },
   {
