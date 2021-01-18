@@ -150,6 +150,7 @@ const sections = [
   {
     sourceInstanceName: "docs",
     patterns: ["flow-cli/*"],
+    sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
       "Developer Guides": ["flow-cli/index"],
@@ -330,6 +331,10 @@ module.exports = {
         useAutoGen: true,
         autoGenHomeLabel: "Home",
         crumbLabelUpdates: [
+          {
+            pathname: "/node-operation/faq",
+            crumbLabel: "FAQ",
+          },
           {
             pathname: "/flow-port/faq",
             crumbLabel: "FAQ",

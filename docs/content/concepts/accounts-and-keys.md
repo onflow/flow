@@ -40,26 +40,26 @@ To achieve the same in Flow, simply create an account with deployed code and an 
 
 ### Account Addresses
 
-Flow addresses are generated in a deterministic sequence using the 
+Flow addresses are generated in a deterministic sequence using the
 linear code [64, 45, 7] as an error-detection code.
 
-The address of the `i-th` account created on Flow is simply the 
+The address of the `i-th` account created on Flow is simply the
 codeword corresponding to the original value (`i`).
 
-This linear code allows generating 2^45 distinct addresses, 
-with each address being encoded over 64 bits. 
-Two different addresses are guaranteed to have at least 7 different bits, 
+This linear code allows generating 2^45 distinct addresses,
+with each address being encoded over 64 bits.
+Two different addresses are guaranteed to have at least 7 different bits,
 which reduces the risk of confusing two addresses.
 
-Moreover, the linear code used is non-systematic, 
-which means it's not possible to separate the extra bits from the original 
-value bits in the codeword. This makes the generated addresses look like 
+Moreover, the linear code used is non-systematic,
+which means it's not possible to separate the extra bits from the original
+value bits in the codeword. This makes the generated addresses look like
 random numbers and two consecutive account addresses look very different.
 A quick off-chain test can determine if a 64 bit word is a valid Flow address.
 
-The generation of an account address is an on-chain mechanism that 
-happens when a Flow network receives an account creation transaction. 
-The network keeps track of the number of accounts already created and 
+The generation of an account address is an on-chain mechanism that
+happens when a Flow network receives an account creation transaction.
+The network keeps track of the number of accounts already created and
 returns the newly created address.
 
 ## Keys
@@ -75,8 +75,8 @@ When adding a public key to an account, you must specify the following informati
 - Hash algorithm (see codes below)
 - Weight (integer between 1-1000)
 
-The signature algorithm is included because Flow supports a variety of signatures schemes 
-with different parameters. The included hash algorithm specifies the hashing function 
+The signature algorithm is included because Flow supports a variety of signatures schemes
+with different parameters. The included hash algorithm specifies the hashing function
 used to verify signatures.
 
 > How are keys added to an account?
@@ -91,10 +91,10 @@ Feature and documentation coming soon...
 
 ### Supported Signature & Hash Algorithms
 
-Flow has initial support for a predefined set of signature and hash pairings, 
+Flow has initial support for a predefined set of signature and hash pairings,
 but more curves and algorithms will be added in the future.
 
-**Signature Algorithms** 
+**Signature Algorithms**
 
 | Algorithm    | Curve     | ID              | Code |
 |--------------|-----------|-----------------|------|
@@ -110,15 +110,15 @@ but more curves and algorithms will be added in the future.
 
 **Compatibility Table**
 
-|                 | SHA2_256 | SHA3_256 | 
+|                 | SHA2_256 | SHA3_256 |
 |-----------------|----------|----------|
-| ECDSA_P256      | ✅       | ✅       | 
-| ECDSA_secp256k1 | ✅       | ✅       | 
+| ECDSA_P256      | ✅       | ✅       |
+| ECDSA_secp256k1 | ✅       | ✅       |
 
 ### Weighted Keys
 
-Every account key has a weight that determines the signing power it holds. 
-A transaction is not authorized to access an account unless it has a total 
+Every account key has a weight that determines the signing power it holds.
+A transaction is not authorized to access an account unless it has a total
 signature weight greater than or equal to `1000`, the weight threshold.
 
 For example, an account could contain the following keys:
