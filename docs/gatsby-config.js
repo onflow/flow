@@ -162,7 +162,11 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Accounts: ["concepts/accounts-and-keys", "concepts/transaction-signing"],
+      Accounts: [
+        "concepts/accounts-and-keys",
+        "concepts/transaction-signing",
+        "concepts/storage",
+      ],
     },
   },
   {
