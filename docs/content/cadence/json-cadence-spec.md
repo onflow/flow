@@ -1,4 +1,6 @@
-# JSON-Cadence Data Interchange Format
+---
+title: JSON-Cadence Data Interchange Format
+---
 
 > Version 0.2.0
 
