@@ -56,7 +56,7 @@ const navConfig = {
     linkText: "VSCode Extension Documentation",
   },
   "Flow Port": {
-    url: "/flow-port/faq",
+    url: "/flow-port",
     icon: "port",
     description:
       "Flow Port, your portal to the decentralized world of Flow. Access your Flow account, interact with the blockchain, manage your assets and more.",
@@ -102,6 +102,7 @@ const sections = [
         "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
         "[Project Deployment Guide](/dapp-deployment)",
         "[Staking & Delegating](/staking)",
+        "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
       ],
       // "Community Updates": [
       //   "community-updates/oct-6-2020",
@@ -347,10 +348,6 @@ module.exports = {
         crumbLabelUpdates: [
           {
             pathname: "/node-operation/faq",
-            crumbLabel: "FAQ",
-          },
-          {
-            pathname: "/flow-port/faq",
             crumbLabel: "FAQ",
           },
           {
