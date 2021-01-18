@@ -93,8 +93,8 @@ const sections = [
       null: [],
       Ecosystem: [
         "[Access API](/access-api)",
-        "[FLOW Token](/flow-token)",
         "[Core Contracts](/core-contracts)",
+        "[FLOW Token](/flow-token)",
       ],
       Guides: [
         "[Flow Concepts](/concepts)",
@@ -103,12 +103,12 @@ const sections = [
         "[Project Deployment Guide](/dapp-deployment)",
         "[Staking & Delegating](/staking)",
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
+        "[Node Operation](/node-operation)",
       ],
       // "Community Updates": [
       //   "community-updates/oct-6-2020",
       //   "community-updates/sep-16-2020",
       // ],
-      // Support: ["flow-port/faq", "flow-port/staking-guide"],
     },
   },
   {
@@ -349,6 +349,14 @@ module.exports = {
           {
             pathname: "/node-operation/faq",
             crumbLabel: "FAQ",
+          },
+          {
+            pathname: "/access-api",
+            crumbLabel: "Access API",
+          },
+          {
+            pathname: "/flow-token/faq",
+            crumblabel: "FAQ",
           },
           {
             pathname: "/core-contracts/access-api",
