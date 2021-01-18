@@ -55,6 +55,13 @@ const navConfig = {
       "Cadence syntax highlighting and an integrated Flow emulator for VSCode users.",
     linkText: "VSCode Extension Documentation",
   },
+  "Flow Port": {
+    url: "/flow-port/faq",
+    icon: "port",
+    description:
+      "Flow Port, your portal to the decentralized world of Flow. Access your Flow account, interact with the blockchain, manage your assets and more.",
+    linkText: "Flow Port",
+  },
 };
 
 // sourceGithubRepos maps a sourceInstanceName to a GitHub repo name
@@ -144,7 +151,7 @@ const sections = [
     sidebar: {
       null: ["[Home](/)"],
       Overview: ["flow-js-sdk/index"],
-      "Developer Guides": ["flow-js-sdk/fcl"],
+      "Developer Guides": ["flow-js-sdk/flow-app-quickstart"],
     },
   },
   {

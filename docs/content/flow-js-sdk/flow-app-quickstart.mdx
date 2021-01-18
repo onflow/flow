@@ -1,629 +1,1273 @@
 ---
 title: Flow App Quickstart
-sidebar_title: Flow App Quickstart
 ---
 
-## Install `@onflow/fcl`
+# Flow App Quickstart
 
-```shell
-npm install --save @onflow/fcl
-```
-
-## Guide for Flow Client Library (FCL)
-
-**Last Updated:** May 7th 2020
+**Last Updated:** Jan 14th 2021
 
 Follow this guide to understand the basics of how to build an app that interacts with the Flow blockchain using `@onflow/fcl`
 
 This guide uses `create-react-app` and does not require any server-side code. `@onflow/fcl` is not tied to any front-end framework.
 
-In this quickstart you will
+In this quickstart you will:
 
-- Use `@onflow/fcl` to perform authentication and authorization of Flow accounts
-- Use `@onflow/fcl` to send scripts and transactions to the Flow blockchain emulator
-- Install and use the Flow blockchain emulator (`flow`)
-- Install and use the FCL Dev Wallet (`fcl-wallet`) to simulate connection between your app, `@onflow/fcl` and a user's 3rd party key management software
-- Configure `@onflow/fcl` for a production deployment
+- [ ] Configure our app so that:
+  - [ ] `@onflow/fcl` can talk to Flow (Testnet).
+  - [ ] `@onflow/fcl` can talk to FCL Wallet Discovery.
+  - [ ] That it knows about our profile contract.
+- [ ] Use `@onflow/fcl` to authenticate using a Flow (Testnet) Account via a discovered wallet.
+- [ ] Talk about resource initialization.
+- [ ] Use a script to check if the current account has a profile resource initialized.
+- [ ] Use a transaction to initialize a profile.
+- [ ] Query an accounts profile if its there.
+- [ ] Use a transaction to update a profile
+- [ ] Next Steps
+  - [ ] Deployment
+  - [ ] Path to Flow (Mainnet)
 
-Once complete, this example application will be deployable to the Flow test/main networks with only small changes to configuration values. Let's begin.
+Let's begin building a decentralized application.
 
-## Create the React App
+### Create React App and other deps.
 
-Run the following command to generate a React app. (Must have `npm` installed)
+Run the following commands to initialize a new FCL project.
 
-```shell
-npx create-react-app my-dapp
+```sh
+yarn create react-app my-app
+cd my-app
+yarn add @onflow/fcl @onflow/types
 ```
 
-## Install `@onflow` Dependencies
+Those deps:
 
-From the root directory of your new react app, run the following commands to install `@onflow/fcl` and the `@onflow/dev-wallet`
+- `@onflow/fcl` is the latest build of FCL.
+- `@onflow/types` is a conversion layer between javascript and cadence (Flows native language). These are used when we want to pass javascript into Cadence transactions and scripts.
 
-```shell
-npm install --save @onflow/fcl
-npm install --save-dev @onflow/dev-wallet
+## Configuration
+
+Generally its a good idea to use environment variables for our configuration.
+This will allow us to change environments easily and Create React App comes out of the box with fairly good support for them.
+We will then need to pass these environment variables to FCL before it talks to anything else.
+To achieve this we will create two files (`./.env.local`, `./src/config.js`) one to hold our env variables locally, one to import those env variables and supply them to FCL.
+Then we will import our configuration of FCL as the very first thing in our application.
+
+> **Note:** Create React App requires all environment variables to be prefixed with `REACT_APP_*`
+
+```sh
+touch .env.local        # Create a .env.local file for us to store our environment variables
+touch ./src/config.js   # Create a ./src/config.js file where we will import our environment variables and configure FCL
 ```
 
-### What we installed
+Now that we have our files we should add in our environment variables. Open `.env.local` and add the following to it.
 
-- `@onflow/fcl` is the library we'll use to interact with the Flow blockchain.
-- `@onflow/dev-wallet` A "custodial" wallet that can authenticate and authorize transactions. It will simulate 3rd party key-management software necessary for interacting with the Flow blockchain on behalf of a specific Flow account.
+```sh
+# File: .env.local
 
-**A Note on Wallets:** Flow is designed to support most wallet types–– fully-custodial wallets, browser-based (extensions), hardware and other managed decentralized wallet options.
+# ACCESS_NODE will be the endpoint our application
+# will use to talk to the Flow Blockchain.
+REACT_APP_ACCESS_NODE=https://access-testnet.onflow.org
 
-`@onflow/fcl` uses a handshake protocol to enable wallets to manage Flow identities, and perform authentication and authorization. Any wallet that supports the protocol can be used by your users automatically without any configuration in the application.
+# WALLET_DISCOVERY will be the endpoint our application
+# will use to discover available FCL compatible wallets.
+REACT_APP_WALLET_DISCOVERY=https://fcl-discovery.onflow.org/testnet/authn
 
-### Additional Project Dependencies
-
-In this guide, we'll use `@emotion/styled` to write css. (You can skip this step, or install your own preferred css tools)
-
-```shell
-npm install --save @emotion/styled
+# CONTRACT_PROFILE will be the address that has the Profile
+# contract we will be using in this guide.
+REACT_APP_CONTRACT_PROFILE=0xba1132bc08f82fe2
 ```
 
-## Install the Flow Emulator
+These environment variables should now be available for us to use when we go to configure FCL, which we will do next. Open `./src/config.js` and add the following to it.
 
-The Flow emulator is a lightweight tool that emulates the behaviour of the real Flow network. The emulator comes bundled with the [Flow CLI](/flow-cli). Install the emulator by following these [instructions](/emulator).
+```javascript
+// File: ./src/config.js
 
-## Start the Flow Emulator
+import { config } from "@onflow/fcl";
 
-From the root directory of your React app, run the following command to start the emulator
-
-```shell
-flow emulator start --init
+config()
+  .put("accessNode.api", process.env.REACT_APP_ACCESS_NODE) // Configure FCLs Access Node
+  .put("challenge.handshake", process.env.REACT_APP_WALLET_DISCOVERY) // Configure FCLs Wallet Discovery mechanism
+  .put("0xProfile", process.env.REACT_APP_CONTRACT_PROFILE); // Will let us use `0xProfile` in our cadence
 ```
 
-**Note:** You don't need to use the `--init` flag if you start the emulator from a directory that already contains the `flow.json` file.
+We now have a file that configures FCL but... It is not yet being invoked, so FCL still remains unconfigured in our application.
+The final step of this section is to import this file as the first thing in our application. Open `./src/index.js` and add the following as the first line.
 
-Running the above command starts the emulator and generates a `flow.json` file similar to this
+```javascript
+// File: ./src/index.js
 
-```json
-{
-  "accounts": {
-    "root": {
-      "address": "f8d6e0586b0a20c7",
-      "privateKey": "0ab0b3c92adf319ab118f6c073003f7029bb6fa8eb986f47f9b139fbb189e655",
-      "sigAlgorithm": "ECDSA_P256",
-      "hashAlgorithm": "SHA3_256"
-    }
-  }
-}
-```
-
-The emulated network is running and contains a single _root_ account we can use to authorize transactions. We will connect the private key from this account to the `dev-wallet`.
-
-## Start the Dev Wallet
-
-Create a `scripts` entry in your `package.json` with the following command. Copy and paste the private key from your root account in `flow.json` and attach it to an environment variable named `PK`
-
-### Windows
-
-```json
-{
-  "scripts": {
-    "dev:wallet": "SET PK=0ab0b3c92adf319ab118f6c073003f7029bb6fa8eb986f47f9b139fbb189e655 && fcl-wallet"
-  }
-}
-```
-
-### Linux
-
-```json
-{
-  "scripts": {
-    "dev:wallet": "PK=0ab0b3c92adf319ab118f6c073003f7029bb6fa8eb986f47f9b139fbb189e655 fcl-wallet"
-  }
-}
-```
-
-Use the new command to run the Dev Wallet
-
-```shell
-npm run dev:wallet
-```
-
-If all is well you should see
-
-```shell
-@onflow/dev-wallet@0.0.4
-*** *** *** *** *** *** ***
-
-🎉 FCL Dev Wallet has started:
-* Origin:       <http://localhost:8701>
-* FCL Authn:    <http://localhost:8701/flow/authenticate>
-* GraphiQL:     <http://localhost:8701/graphql>
-* Access Node:  <http://localhost:8080>
-* Service Address: f8d6e0586b0a20c7
-* Private Key:  0ab0b3c92adf319ab118f6c073003f7029bb6fa8eb986f47f9b139fbb189e655
-
-Include this code in development to configure fcl:
-
-import * as fcl from "@onflow/fcl"
-
-fcl.config()
-  .put("challenge.handshake", "http://localhost:8701/flow/authenticate")
-
-*** *** *** *** *** *** ***
-
-```
-
-## Start the React App
-
-We're ready to start building our new app. Start the React app to begin building the UI and interacting with the emulator using `@onflow/fcl`
-
-```shell
-npm start
-```
-
-# Build the Example Application
-
-Now that we have the Flow emulator, Dev Wallet and our React app up and running we're ready to build our application.
-
-## Configure `@onflow/fcl`
-
-Before we can use `@onflow/fcl` to interact with Flow we'll need to tell it how to connect to the Dev Wallet we started earlier. Add the following code to `src/App.js`
-
-```diff
+import "./config"; // Imports environment variables and configures FCL
+// Then the rest of ./src/index.js
 import React from "react";
-+ import * as fcl from "@onflow/fcl";
-
-import logo from "./logo.svg";
-import "./App.css";
-
-+ fcl.config()
-+    .put("challenge.handshake", "http://localhost:8701/flow/authenticate")
-
-function App() {
-  // ...
-}
-
+import ReactDOM from "react-dom";
 ```
 
-`@onflow/fcl` is now configured to connect to the Dev Wallet. For more information about how `@onflow/fcl` interacts with Wallet providers, you can view documentation [../dev-wallet](dev wallet)
+:tada: Congrats!! You have configured FCL, which is the very first step in having a decentralized application built on Flow (testnet)
 
-## Authenticate Users
+We should now be able to check off the following:
 
-Once configured, all that is needed is to call `fcl.authenticate()` in your code to authenticate Flow accounts.
+- [x] Configure our app so that:
+  - [x] `@onflow/fcl` can talk to Flow (Testnet).
+  - [x] `@onflow/fcl` can talk to FCL Wallet Discovery.
+  - [x] That it knows about our profile contract.
+- [ ] Use `@onflow/fcl` to authenticate using a Flow (Testnet) Account via a discovered wallet.
+- [ ] Talk about resource initialization.
+- [ ] Use a script to check if the current account has a profile resource initialized.
+- [ ] Use a transaction to initialize a profile.
+- [ ] Query an accounts profile if its there.
+- [ ] Use a transaction to update a profile
+- [ ] Next Steps
+  - [ ] Deployment
+  - [ ] Path to Flow (Mainnet)
 
-### Login & Signup
+## Authentication
 
-Attach the `fcl.authenticate` function to the `onClick` handler of a button
+Believe it or not, our application already has authentication. When we configured the `challenge.handshake` value we got it.
+That one piece of configuration tells FCL everything it needs to know in order to authenticate users on Flow (testnet) using FCL compatible wallets.
 
-```javascript
-<Button onClick={() => fcl.authenticate()}>Sign In/Up</Button>
-```
+Let's learn how to interact with our current user by learning about the following:
 
-### Logout
+- How to Sign Up
+- How to Log In
+- How to Log Out
+- Subscribe to the current users info
 
-To allow users to sign out of your application, simply call `fcl.unauthenticate()`
+We will learn about them by building a react component that will show the Users Flow Address and a sign out button when they are authenticated, but when they are unauthenticated it will show sign up and in buttons.
 
-```javascript
-<Button onClick={() => fcl.unauthenticate()}>Sign Out</Button>
-```
-
-### Changes to the Authenticated State
-
-To receive a reactive update when a user has signed in/out you can subscribe to changes
-
-```javascript
-fcl.currentUser().subscribe((user) => {
-  console.log(user);
-});
-```
-
-## **Build the Login Form**
-
-Here is the code for the completed component containing the UI and logic for authenticating users using `@onflow/fcl`. Add this code to `CurrentUser.js` in the `src` directory of your app
+We are going to call this component `AuthCluster` and it will live at `/src/auth-cluster.js`. Here is its code, we will talk about whats going on in it afterwords.
 
 ```javascript
+// File: ./src/auth-cluster.js
+
 import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
 import * as fcl from "@onflow/fcl";
 
-const Root = styled.div``;
-const Img = styled.img`
-  width: 35px;
-  height: 35px;
-`;
-const Name = styled.div``;
-const Button = styled.button``;
-
-const SignInButton = () => {
-  const [user, setUser] = useState(null);
-
+export function AuthCluster() {
+  const [user, setUser] = useState({ loggedIn: null });
   useEffect(() => fcl.currentUser().subscribe(setUser), []);
 
-  if (user == null) return null;
-  if (user.loggedIn) return null;
-
-  return <Button onClick={fcl.authenticate}>Sign In/Up</Button>;
-};
-
-const UserProfile = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => fcl.currentUser().subscribe(setUser), []);
-
-  if (user == null) return null;
-
-  if (!user.loggedIn) return null;
-  return (
-    <>
-      {user.identity.avatar && <Img src={user.identity.avatar} />}
-      <Name>{user.identity.name || "Anonymous"}</Name>
-      <Button onClick={fcl.unauthenticate}>Sign Out</Button>
-    </>
-  );
-};
-
-const CurrentUser = () => {
-  return (
-    <Root>
-      <SignInButton />
-      <UserProfile />
-    </Root>
-  );
-};
-
-export default CurrentUser;
-```
-
-And display the `CurrentUser` component in your app
-
-```diff
-+ import CurrentUser from "./CurrentUser"
-
-fcl.config()
- .put("challenge.handshake", "http://localhost:8701/flow/authenticate")
-
-function App() {
-  return (
-    <div className="App">
-+     <CurrentUser/>
-    </div>
-  )
+  if (user.loggedIn) {
+    return (
+      <div>
+        <span>{user?.addr ?? "No Address"}</span>
+        <button onClick={fcl.unauthenticate}>Log Out</button>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <button onClick={fcl.logIn}>Log In</button>
+        <button onClick={fcl.signUp}>Sign Up</button>
+      </div>
+    );
+  }
 }
-
 ```
 
-## Run a Cadence Script
+There is a lot going on in there, we should take a closer look, in particular at the following:
 
-Cadence scripts allow you to run computations on Flow that are not recorded on the blockchain. You'll mainly use scripts as a way of querying Flow for information about accounts and their **[resources](/cadence/tutorial/03-fungible-tokens/#intuiting-ownership-with-resources).** A script is not signed by any account and cannot modify an account's state.
+- `fcl.currentUser().subscribe(setUser)`
+- `fcl.unauthenticate`
+- `fcl.logIn` and `fcl.signUp`
 
-### Simple Script
+### `fcl.currentUser().subscribe(setUser)`
 
-Using a simple script is a useful way to test your connection to Flow
+Internally and conceptually FCL sort of uses the actor model (as much as anything in javascript really can...), this allows us to reactively subscribe to things, like in this instance, when the current user changes from being unauthenticated to authenticated.
+`fcl.currentUser()` returns us the Current Users actor, for the purposes of this guide we can think of it this way: `fcl.currentUser()` is going to return to us an object that has all the things we can do with a current user.
+One of the things we can do with a Current User is subscribe to its state, passing it a callback function. This means that anytime the state of the current user changes, our callback will be invoked with the current users current state.
+This callback is invoked immediately as soon as we subscribe, but do to how `react`, its `useState` and `useEffect` hooks work we need to be sure to give ourselves some default values.
+
+### `fcl.unauthenticate()`
+
+`fcl.unauthenticate()` is a function that is an alias to `fcl.currentUser().unauthenticate()`.
+It will trigger the unauthenticate sequence inside of the Current User Actor.
+
+### `fcl.logIn()` and `fcl.signUp()`
+
+`fcl.logIn()` and `fcl.signUp()` are function that are currently both alias to `fcl.currentUser().authenticate()`.
+It will trigger the authenticate sequence inside of the Current User Actor.
+FCL, by design, considers both of these operations the same.
+We will be expanding on this aspect of FCL in the future, and future versions will be able to pass on the intent "User wants to Log In" and "User wants to Sign Up" onto the wallets, so using the respective aliases now will lead to gaining this future intent later.
+
+### Using our `AuthCluster`
+
+We should then import and add our `AuthCluster` component to our application in `./src/App.js`. I've replaced `./src/App.js` to look like the following.
 
 ```javascript
-const resp = await fcl.send([
-  fcl.script`
-    pub fun main(): Int {
-      return 42 + 6
-    }
-  `,
-]);
+// File: ./src/Auth.js
 
-const value = await fcl.decode(response);
+import React from "react";
+import { AuthCluster } from "./auth-cluster";
 
-// value === 48
+export default function App() {
+  return (
+    <div>
+      <AuthCluster />
+    </div>
+  );
+}
 ```
 
-To call A Cadence script from your React app, create another component and wire-up the UI. Here is an example component you can use. Create a file named `ScriptOne` in the `src` directory of your app with the following content
+:tada: Congrats!! Users of our application can now authenticate and unauthenticate.
+
+We should now be able to check off the following:
+
+- [x] Configure our app so that:
+  - [x] `@onflow/fcl` can talk to Flow (Testnet).
+  - [x] `@onflow/fcl` can talk to FCL Wallet Discovery.
+  - [x] That it knows about our profile contract.
+- [x] Use `@onflow/fcl` to authenticate using a Flow (Testnet) Account via a discovered wallet.
+- [ ] Talk about resource initialization.
+- [ ] Use a script to check if the current account has a profile resource initialized.
+- [ ] Use a transaction to initialize a profile.
+- [ ] Query an accounts profile if its there.
+- [ ] Use a transaction to update a profile
+- [ ] Next Steps
+  - [ ] Deployment
+  - [ ] Path to Flow (Mainnet)
+
+## Flow Contracts
+
+I've started to think of Flow Contracts as stateful modules, and have been trying to break them down into a concept which I have been calling Micro Contracts.
+To me a Micro Contract is a smaller self contained contract that does a single thing real well, and should be re-usable across various applications with out an additional instance of it being deployed.
+As our Flow ecosystem grows and evolves hopefully the more of these building blocks become available, allowing you as the app developer to build on the shoulders of giants, enabling you to focus on the logic that makes your application/contracts special.
+
+The rest of this guide is going to focus on a Profile contract that you can find at [https://flow-view-source.com/testnet/account/0xba1132bc08f82fe2/contract/Profile](https://flow-view-source.com/testnet/account/0xba1132bc08f82fe2/contract/Profile).
+
+The idea behind that Profile contract is that a user can set their public profile once and bring it with them from application to application.
+What this means for you as an app developer is that your application can use this functionality.
+Not only that but using it should be easy enough to use in this quick start guide.
+
+Now there is **something very important** that you as an application developer needs to keep in mind when developing on Flow.
+Generally speaking, Flow Accounts need to have a resource, from a contract, in their storage, in order to interact with said contract.
+**We don't get to silently slip this resource into their storage, the user needs to actively authorize this action.**
+This resource is usually where we store the accounts specific data (that stateful part of stateful modules), it also generally acts as the interface into the contract itself.
+If we were to use the Profile contract as an example, the resource the Flow Account needs to have acts as the storage where we keep the Profiles details, it also exposes functionality for the owner of the resource to update those details.
+
+It's often not enough to only have the resource, we often need a publicly accessible interface too. This publicly accessible interface in Cadence terms is called a capability, and is usually a sub-set of what the resource is able to do.
+In the case of the Profile contract, this public capability is what allows our application to read the profiles information without the flow account authorizing our access ever time, meaning we don't ever need to store a copy of their info.
+
+We would usual call setting up a Flow Account with a contracts resources and additional capabilities "Initialization".
+As a Flow Application Developer you will need to think about this sort of thing a lot and figure out what this means for your applications UX.
+
+:tada: Congrats!! Their is so much more to learn about the above, but for now the important bit is to remember that your users need to authorize the initialization of resources from your contracts into their Flow Accounts.
+
+We should now be able to check off the following:
+
+- [x] Configure our app so that:
+  - [x] `@onflow/fcl` can talk to Flow (Testnet).
+  - [x] `@onflow/fcl` can talk to FCL Wallet Discovery.
+  - [x] That it knows about our profile contract.
+- [x] Use `@onflow/fcl` to authenticate using a Flow (Testnet) Account via a discovered wallet.
+- [x] Talk about resource initialization.
+- [ ] Use a script to check if the current account has a profile resource initialized.
+- [ ] Use a transaction to initialize a profile.
+- [ ] Query an accounts profile if its there.
+- [ ] Use a transaction to update a profile
+- [ ] Next Steps
+  - [ ] Deployment
+  - [ ] Path to Flow (Mainnet)
+
+## FCL and scripts
+
+In FCL, I almost always start off writing a script like this: `fcl.send([]).then(fcl.decode)`. `fcl.send()` takes an array that lets us describe what we want our script to be, and `fcl.decode` is going to parse out the return value from our script and turn it into javascript values.
+
+Our first script isn't going to have anything to do with our Profile contract, its going to use Cadence, to add two numbers. We are going to hardcode in these numbers to start with, and then pass them in as arguments.
+Let's look at our first script.
 
 ```javascript
-import React, { useState } from "react";
-import styled from "@emotion/styled";
 import * as fcl from "@onflow/fcl";
 
-const Root = styled.div``;
-const Header = styled.div``;
-const Button = styled.button``;
-const Results = styled.pre``;
+await fcl
+  .send([
+    fcl.script`
+      pub fun main(): Int {
+        return 5 + 4
+      }
+    `,
+  ])
+  .then(fcl.decode);
+```
 
-export default function ScriptOne() {
-  const [data, setData] = useState(null);
+In Cadence scripts, `pub fun main()` is what gets invoked, in this case it is returning an integer (`Int`).
+`fcl.send` sends our script to the chain (via our configured access node) and then `fcl.decode` is decoding the response which should return `9` in this case.
 
-  const runScript = async (e) => {
-    e.preventDefault();
-    const response = await fcl.send([
+The above snipped is fine as a starting point, but we can do so much more here, like replacing those magic numbers with script arguments.
+
+```javascript
+import * as fcl from "@onflow/fcl";
+import * as t from "@onflow/types";
+
+await fcl
+  .send([
+    fcl.script`
+      pub fun main(a: Int, b: Int): Int {
+        return a + b
+      }
+    `,
+    fcl.args([
+      fcl.arg(5, t.Int), // a
+      fcl.arg(4, t.Int), // b
+    ]),
+  ])
+  .then(fcl.decode);
+```
+
+In the above we have changed `pub fun main(): Int` to `pub fun main(a: Int, b: Int): Int`, this tells Cadence to expect to arguments, in this case both are integers.
+`fcl.args([])` allows us to pass in arguments to our Cadence script.
+The order of arguments matters here, the first argument in the array is going to be the first argument to our `main` function.
+We then see two `fcl.arg(value, t.Int)` calls passed to `fcl.args([])`, the first will be our `a` argument, and the second will be our `b` argument.
+That `t.Int` needs to match the arguments type declaration in Cadence, there is a corresponding `t.*` for every Cadence Type.
+
+> TIP: If you want to try this out, [flow-view-source](https://flow-view-source.com/testnet/account/0xba1132bc08f82fe2/contract/Profile) exposes both `fcl` and `t` in the console. Try pasting the above (sans-import) snippet in its console.
+
+I just so happen to know that the [Rawr (testnet) at 0xba1132bc08f82fe2](https://flow-view-source.com/testnet/account/0xba1132bc08f82fe2/contract/Rawr) contract has this add functionality that we are currently using.
+Let's import the Rawr contract and use its `add` function instead of writing out our bespoke implementation.
+
+```javascript
+import * as fcl from "@onflow/fcl";
+import * as t from "@onflow/types";
+
+await fcl
+  .send([
+    fcl.script`
+      import Rawr from 0xba1132bc08f82fe2
+
+      pub fun main(a: Int, b: Int): Int {
+        return Rawr.add(a: a, b: b)
+      }
+    `,
+    fcl.args([
+      fcl.arg(5, t.Int), // a
+      fcl.arg(4, t.Int), // b
+    ]),
+  ])
+  .then(fcl.decode);
+```
+
+So at this point we should be able to import contracts, and execute scripts against them. Lets apply this new found knowledge against our profile contract.
+I know for a fact that `0xba1132bc08f82fe2` (It also happens to be where the Profile contract is deployed) has a profile, so let's see if we can query the chain for it.
+
+```javascript
+import * as fcl from "@onflow/fcl";
+import * as t from "@onflow/types";
+
+await fcl
+  .send([
+    fcl.script`
+      import Profile from 0xba1132bc08f82fe2
+
+      pub fun main(address: Address): Profile.ReadOnly? {
+        return Profile.read(address)
+      }
+    `,
+    fcl.args([
+      fcl.arg("0xba1132bc08f82fe2", t.Address), // <-- t.Address this time :)
+    ]),
+  ])
+  .then(fcl);
+```
+
+We should get back something like this:
+
+```json
+{
+  "address": "0xba1132bc08f82fe2",
+  "name": "qvvg",
+  "avatar": "https://i.imgur.com/r23Zhvu.png",
+  "color": "#6600ff",
+  "info": "Flow Core Team. Creator and Maintainer of FCL and the flow-js-sdk.",
+  "verified": true
+}
+```
+
+A lot of work has been done in the [Profile](https://flow-view-source.com/testnet/account/0xba1132bc08f82fe2/contract/Profile) contract, to make interacting with it from a web app and FCL a nicer experience, I would highly recommend having a look through it, there are a lot of small lessons in there.
+
+:tada: Congrats!! You just queried a Flow Account on the Flow Blockchain for a Profile, that's rules were defined in a contract.
+
+## Checking if the Flow Account is initialized with the Profile
+
+Not all Flow Accounts are going to have a profile though, if you are new to Flow your account right now probably doesn't have one, so being able to check if an account is initialized and then being able initialize an account is extremely important. That is what we will cover next.
+
+Let's start by creating a directory for our Flow Scripts and Transactions. I generally like to call this directory `flow`, name my scripts with `*.script.js` and name my transactions with `*.tx.js`.
+Our first script is going to check if an account specified by a supplied address is initialized with a profile.
+
+```sh
+mkdir ./src/flow
+touch ./src/flow/is-initialized.script.js
+```
+
+The Profile contract exposes a helper function that lets us check if an address is initialized `Profile.check(address)`, it returns a boolean. Let's use that in our new `./src/flow/is-initialized.script.js` file.
+
+```javascript
+// File: ./src/flow/is-initialized.script.js
+
+import * as fcl from "@onflow/fcl";
+import * as t from "@onflow/types";
+
+export async function isInitialized(address) {
+  if (address == null)
+    throw new Error("isInitialized(address) -- address required");
+
+  return fcl
+    .send([
       fcl.script`
-        pub fun main(): Int {
-          return 42 + 6
+        import Profile from 0xProfile
+
+        pub fun main(address: Address): Bool {
+          return Profile.check(address)
         }
       `,
-    ]);
-    setData(await fcl.decode(response));
-  };
-
-  return (
-    <Root>
-      <Header>Script One</Header>
-      <Button onClick={runScript}>Run Script</Button>
-      {data && <Results>{JSON.stringify(data, null, 2)}</Results>}
-    </Root>
-  );
+      fcl.args([fcl.arg(address, t.Address)]),
+    ])
+    .then(fcl.decode);
 }
 ```
 
-And display the component in your app
+Something new was introduced in the above file, we used `0xProfile` instead of `0xba1132bc08f82fe2` in the import statement.
+Way way way back at the start of this guide we added in the configuration `config().put("0xProfile", "0xba1132bc08f82fe2")`, it turns out that when we are using FCL, that configuration allows us to pull the corresponding addresses from any configuration value where its key starts with `0x`.
+This is super convenient when you move from one environment/chain to another, all you should need to do is update your environment variables to reflect your new environment/chain, none of you code should need to change.
 
-```diff
-// ...
-+ import ScriptOne from "./ScriptOne"
+Other than that newly introduced import, hopefully the above is looking familiar to you now. Let's put this aside for now and move onto how to initialize an account with a Profile.
 
-fcl.config()
- .put("challenge.handshake", "http://localhost:8701/flow/authenticate")
+:tada: Congrats!! You now have a re-usable script that you can use to check if an account is initialized.
 
-function App() {
-  return (
-    <div className="App">
-      <CurrentUser/>
-+     <ScriptOne/>
-    </div>
-  )
-}
-```
+We should now be able to check off the following:
 
-Go ahead and test out your new script!
+- [x] Configure our app so that:
+  - [x] `@onflow/fcl` can talk to Flow (Testnet).
+  - [x] `@onflow/fcl` can talk to FCL Wallet Discovery.
+  - [x] That it knows about our profile contract.
+- [x] Use `@onflow/fcl` to authenticate using a Flow (Testnet) Account via a discovered wallet.
+- [x] Talk about resource initialization.
+- [x] Use a script to check if the current account has a profile resource initialized.
+- [ ] Use a transaction to initialize a profile.
+- [ ] Query an accounts profile if its there.
+- [ ] Use a transaction to update a profile
+- [ ] Next Steps
+  - [ ] Deployment
+  - [ ] Path to Flow (Mainnet)
 
-### Query Flow Accounts
+## Initializing an Account with a Profile
 
-A common use for Cadence scripts is to acquire information about a Flow account's public state and its **[resources](/cadence/tutorial/03-fungible-tokens/#intuiting-ownership-with-resources)**. Here is an example of a script you might use to query and use another account's public resources.
+Initializing an Account with a Profile is going to require a transaction. Transactions are very similar to scripts, for example: you supply them with some cadence, they accept arguments. But there is a little more to them...
+You need a transaction when you want to permanently change the state of the Flow Blockchain, there is a cost (in FLOW) involved with this (often covered by FCL compatible wallets), a Flow account needs to propose the change (acts as a nonce), and if you need the permission of the owner of the state you are chainging.
+Those three aspects we call roles and are as follows, the payer, the proposer, and authorizers (one for each owner of state).
+The most common intent will be that the Current User is responsible for all three roles, and by extension the wallet.
+What we need is the Current User to Authorize its participation as all three of the roles (payer, proposer, authorizer).
+Luckily for us FCL makes this pretty easy, `fcl.currentUser()` has an `authorization` function that can be used to do just that.
+You will need `fcl.currentUser().authorization` in almost every standard transaction, usually multiple times, because of this we have aliased it to `fcl.authz`.
 
-```javascript
-const response = await fcl.send([
-  fcl.script`
-	import HelloWorld from 586b0d6e0a20c7f1
+Transactions also require a computation limit. This value will eventually be tied to the cost to the payer of the transaction, its in your best interest to keep it as low as possible.
 
-	pub fun main() {
-	    let helloAccount = getAccount(586b0d6e0a20c7f1)
-	    let helloCapability = helloAccount.getCapability(/public/Hello)
-	    let helloReference = helloCapability!.borrow<&HelloWorld.HelloAsset>()
+Just as with the script, a good place to start with for transactions is our good old friend `fcl.send([]).then(fcl.decode)`.
+In the case of a transaction the decode is going to supply us the transactions id (or an error) that we can then use to query the status of the transaction.
 
-	    log(helloReference?.hello())
-	}
-    `,
-]);
-```
-
-### Register and Use a Custom Decoder
-
-Cadence scripts can return complex Cadence data-types. These return values are sent over-the-wire to your JavaScript code. You'll handle parsing and transforming custom Cadence data-types using **custom decoders**.
-
-Given this Cadence script that returns `[SomeStruct(x: 1, y: 2), SomeStruct(x: 3, y: 4)]`
+Let's create a `./src/flow/init-account.tx.js` file with the following FCL transaction that initializes an account.
 
 ```javascript
-const response = await fcl.send([
-  fcl.script`
-      pub struct SomeStruct {
-        pub var x: Int
-        pub var y: Int
+// File: ./src/flow/init-account.tx.js
 
-        init(x: Int, y: Int) {
-          self.x = x
-          self.y = y
-        }
-      }
+import * as fcl from "@onflow/fcl";
+import * as t from "@onflow/types";
 
-      pub fun main(): [SomeStruct] {
-        return [SomeStruct(x: 1, y: 2), SomeStruct(x: 3, y: 4)]
-      }
-    `,
-]);
-```
+export async function initAccount() {
+  const txId = await fcl
+    .send([
+      // Transactions use fcl.transaction instead of fcl.script
+      // Their syntax is a little different too
+      fcl.transaction`
+        import Profile from 0xProfile
 
-We would like to transform `SomeStruct(x: 1, y: 2)` into a JavaScript data-structure.
+        transaction {
+          // We want the accounts address for later so we can verify if the account was initialized properly
+          let address: Address
 
-```javascript
-class Point {
-  constructor({ x, y }) {
-    this.x = x;
-    this.y = y;
-  }
-}
-```
+          prepare(account: AuthAccount) {
+            // save the address for the post check
+            self.address = account.address
 
-Registering a decoding function using the code below will ensure that the response from `fcl.send` will contain `Point` objects wherever a `SomeStruct` Cadence type is returned.
+            // Only want to initialize the account if it hasnt already been initialized
+            if (!Profile.check(self.address)) {
+              // This creates and stores the Profile in the users account
+              account.save(<- Profile.new(), to: Profile.privatePath)
 
-```diff
-+ import Point from "./Point"
-// ...
+              // This creates the public capability that lets applications read the profiles info
+              account.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)
+            }
+          }
 
-fcl.config()
-  .put("challenge.handshake", "http://localhost:8701/flow/authenticate")
-+ .put("decoder.SomeStruct", data => new Point(data))
-
-// ...
-```
-
-Here is a completed component that contains the script that will trigger our new decoding function. Create a file named `ScriptTwo` in the `src` directory of your app.
-
-```javascript
-import React, {useState} from "react"
-import styled from "@emotion/styled"
-import * as fcl from "@onflow/fcl"
-
-const Root = styled.div``
-const Header = styled.div``
-const Button = styled.button``
-const Results = styled.pre``
-
-export default function ScriptTwo() {
-  const [data, setData] = useState(null)
-
-  const runScript = async e => {
-    e.preventDefault()
-    const response = await fcl.send([
-      fcl.script`
-        pub struct SomeStruct {
-          pub var x: Int
-          pub var y: Int
-
-          init(x: Int, y: Int) {
-            self.x = x
-            self.y = y
+          // verify the account has been initialized
+          post {
+            Profile.check(self.address): "Account was not initialized"
           }
         }
+      `,
+      fcl.payer(fcl.authz), // current user is responsible for paying for the transaction
+      fcl.proposer(fcl.authz), // current user acting as the nonce
+      fcl.authorizations([fcl.authz]), // current user will be first AuthAccount
+      fcl.limit(35), // set the compute limit
+    ])
+    .then(fcl.decode);
 
-        pub fun main(): [SomeStruct] {
-          return [SomeStruct(x: 1, y: 2), SomeStruct(x: 3, y: 4)]
+  return fcl.tx(txId).onceSealed();
+}
+```
+
+There is a fair bit of stuff going on above, first off that transaction code is rough, no way you can remember that, eventually you will become fairly familiar with that sort of stuff, but in the mean time if you go look at the [contract](https://flow-view-source.com/testnet/account/0xba1132bc08f82fe2/contract/Profile) I've documented how to do most of things you can possibly want to do with the profile contract.
+I forget that sort of stuff all the time, and keeping that documentation with the contract is a good way to remind myself how to use the contract, it also should make the contract more accessible to others, like you.
+I hope that this sort of documentation becomes more of a standard practice in Flow Contract Development.
+
+if we assume that the actual cadence code was copy-pasted from the contract, then there isn't much left here, let's break it down as follows:
+
+- `fcl.authz` -- we have already talked about this above, its an alias for `fcl.currentUser().authorization`.
+- `fcl.payer(fcl.authz)`, `fcl.proposer(fcl.authz)` -- These are saying the current user is responsible for the payer and proposer roles.
+- `fcl.authorizations([fcl.authz])` -- this means that our current user is authorizing the transaction to modify the state of things it owns (storage and public capabilities in this case), we gain access to this permission via the first `AuthAccount` passed into the prepare statement of our transaction.
+- `fcl.tx(txId)` -- This is a new actor we havent seen before, it keeps track of transaction statuses, in this case for the transaction we just submitted to the chain
+- `fcl.tx(txId).onceSealed()` -- This is a promise that will resolve once our change is permanently represented by the chain. It can also error if something goes wrong.
+
+:tada: Congrats!! We now have a function we can call to initialize the current users account with a Profile
+
+We should now be able to check off the following:
+
+- [x] Configure our app so that:
+  - [x] `@onflow/fcl` can talk to Flow (Testnet).
+  - [x] `@onflow/fcl` can talk to FCL Wallet Discovery.
+  - [x] That it knows about our profile contract.
+- [x] Use `@onflow/fcl` to authenticate using a Flow (Testnet) Account via a discovered wallet.
+- [x] Talk about resource initialization.
+- [x] Use a script to check if the current account has a profile resource initialized.
+- [x] Use a transaction to initialize a profile.
+- [ ] Query an accounts profile if its there.
+- [ ] Use a transaction to update a profile
+- [ ] Next Steps
+  - [ ] Deployment
+  - [ ] Path to Flow (Mainnet)
+
+## Getting an accounts Profile
+
+We actually saw this already, back when we were talking about scripts. So this section is really going to be about adding it to a file we will call `./src/flow/fetch-profile.script.js`
+
+```javascript
+// File: ./src/flow/fetch-profile.script.js
+
+import * as fcl from "@onflow/fcl";
+import * as t from "@onflow/types";
+
+export async function fetchProfile(address) {
+  if (address == null) return null;
+
+  return fcl
+    .send([
+      fcl.script`
+        import Profile from 0xProfile
+
+        pub fun main(address: Address): Profile.ReadOnly? {
+          return Profile.read(address)
+        }
+      `,
+      fcl.args([fcl.arg(address, t.Address)]),
+    ])
+    .then(fcl.decode);
+}
+```
+
+:tada: Congrats!! We now have a function we can call to fetch an accounts Profile if it has one
+
+We should now be able to check off the following:
+
+- [x] Configure our app so that:
+  - [x] `@onflow/fcl` can talk to Flow (Testnet).
+  - [x] `@onflow/fcl` can talk to FCL Wallet Discovery.
+  - [x] That it knows about our profile contract.
+- [x] Use `@onflow/fcl` to authenticate using a Flow (Testnet) Account via a discovered wallet.
+- [x] Talk about resource initialization.
+- [x] Use a script to check if the current account has a profile resource initialized.
+- [x] Use a transaction to initialize a profile.
+- [x] Query an accounts profile if its there.
+- [ ] Use a transaction to update a profile
+- [ ] Next Steps
+  - [ ] Deployment
+  - [ ] Path to Flow (Mainnet)
+
+## Updating a profile
+
+Updating a piece of information in a profile is a transaction, the contract has an example of it, and explains a bit better what you can do with it ([Link for the Lazy](https://flow-view-source.com/testnet/account/0xba1132bc08f82fe2/contract/Profile)), so we wont go into all that much detail here.
+But you should start to see a pattern with transactions:
+
+- They always have cadence
+- They sometimes have arguments
+- They always have a payer and proposer
+- They usually have authorizations
+- Payer, proposer, and first authorization are more often than not the current user
+- The more complex the transaction the higher the compute limit
+
+Initialization transactions are often the most scary looking, while also probably the most similar between contracts.
+Other transactions like the following that will live in `./src/flow/profile-set-name.tx.js` generally will borrow a resource from the AuthAccount and do some action on the resource.
+It is also fairly common to then borrow a public capability from some other account and use something from the borrowed resource on that public capability,
+an example of this would be sending FLOW tokens to someone else, the AuthAccount will borrow its Vault resource and withdraw (the action) a temporary Vault resource,
+the transaction will then borrow the public capability from the recipient of the FLOW tokens that can receive that temporary FLOW token vault.
+In our case we want to act directly on the borrowed Profile Resource.
+
+This transaction to set the name in the profile is substantially smaller than the initialization transaction we have already seen.
+Only the owner (AuthAccount) of a resource in storage can borrow it directly, we leverage this fact, and a `Profile.Owner` interface on the resource to make it so the only one who can set the name on this resource is the owner.
+Everyone else needs to interact with this resource via the linked public capability which has a limited `Profile.Public` interface.
+
+Below is our `./src/flow/profile-set-name.tx.js` file.
+
+```javascript
+// File: ./src/flow/profile-set-name.tx.js
+
+import * as fcl from "@onflow/fcl";
+import * as t from "@onflow/types";
+
+export async function setName(name) {
+  const txId = await fcl
+    .send([
+      fcl.proposer(fcl.authz),
+      fcl.payer(fcl.authz),
+      fcl.authorizations([fcl.authz]),
+      fcl.limit(35),
+      fcl.args([fcl.arg(name, t.String)]),
+      fcl.transaction`
+        import Profile from 0xProfile
+
+        transaction(name: String) {
+          prepare(account: AuthAccount) {
+            account
+              .borrow<&Profile.Base{Profile.Owner}>(from: Profile.privatePath)!
+              .setName(name)
+          }
         }
       `,
     ])
-    setData(await fcl.decode(response))
-  }
+    .then(fcl.decode);
 
-  return (
-    <Root>
-      <Header>Script Two</Header>
-      <Button onClick={runScript}>Run Script</Button>
-      {data && <Results>{JSON.stringify(data, null, 2)}</Results>}
-      <span>{data && data !== null && data[0].constructor.name} 1 </span> <!-- "Point 1" -->
-      <span>{data && data !== null && data[1].constructor.name} 2 </span> <!-- "Point 2" -->
-    </Root>
-  )
+  return fcl.tx(txId).onceSealed();
 }
 ```
 
-Display the `ScriptTwo` component in your app
+:tada: Congrats!! We now have a function we can update the users name in their Profile
 
-```diff
-// ...
+We should now be able to check off the following:
 
-import CurrentUser from "./CurrentUser"
-import ScriptOne from "./ScriptOne"
-import ScriptTwo from "./ScriptTwo"
+- [x] Configure our app so that:
+  - [x] `@onflow/fcl` can talk to Flow (Testnet).
+  - [x] `@onflow/fcl` can talk to FCL Wallet Discovery.
+  - [x] That it knows about our profile contract.
+- [x] Use `@onflow/fcl` to authenticate using a Flow (Testnet) Account via a discovered wallet.
+- [x] Talk about resource initialization.
+- [x] Use a script to check if the current account has a profile resource initialized.
+- [x] Use a transaction to initialize a profile.
+- [x] Query an accounts profile if its there.
+- [x] Use a transaction to update a profile
+- [ ] Next Steps
+  - [ ] Deployment
+  - [ ] Path to Flow (Mainnet)
 
-// ...
+## Putting it all together
 
-function App() {
-  return (
-    <div className="App">
-      <CurrentUser/>
-      <ScriptOne/>
-+     <ScriptTwo/>
-    </div>
-  )
-}
+We now have four files, each with their own functionality in them:
 
+- `./src/flow/is-initialized.script.js`
+- `./src/flow/init-account.tx.js`
+- `./src/flow/fetch-profile.scripts.js`
+- `./src/flow/profile-set-name.tx.js`
+
+These files all interact in various ways with the Flow (testnet) Blockchain. This guide isn't really a guide on React, and everyone has all sorts of opinions on how to deal with state in a React Application.
+Hopefully from those four files, and the ability to subscribe to the current users authentication status, you can see how it could be integrated into your applications and various frameworks of choice.
+It might help to think of them as powerful predefined API calls, that let you query and mutate the state on chain.
+I have personally found a nice synergy between FCL and Recoil, it has allowed me to limit the number of queries and calls to the chain I am making. You can find an example of a more complicated application [here](https://github.com/dapperlabs/kitty-items-web).
+
+With what we have done above, deployment should work with anything that allows you to set the environment variables.
+I have had pretty good success with hosting applications built like this on IPFS via [https://fleek.co/](https://fleek.co/) and the hash router from `react-router-dom`.
+But honestly anything should work.
+
+## Mainnet
+
+Eventually you will think your application is ready for Mainnet, and it probably is.
+The first step will be making sure all the contracts you are using are there, currently the Flow team needs to approve all the contracts that get deployed so we have an idea whats out there, but this requirement will go away in the near future.
+Second step will be to use all the environment variables, the ones for the contracts, there will also be a new access node value and FCL wallet discovery.
+At this point in time, your application should be working on mainnet. YMMV based on how far you stray from only talking to contracts via FCL.
+
+I think that checks everything else off of our list:
+
+- [x] Configure our app so that:
+  - [x] `@onflow/fcl` can talk to Flow (Testnet).
+  - [x] `@onflow/fcl` can talk to FCL Wallet Discovery.
+  - [x] That it knows about our profile contract.
+- [x] Use `@onflow/fcl` to authenticate using a Flow (Testnet) Account via a discovered wallet.
+- [x] Talk about resource initialization.
+- [x] Use a script to check if the current account has a profile resource initialized.
+- [x] Use a transaction to initialize a profile.
+- [x] Query an accounts profile if its there.
+- [x] Use a transaction to update a profile
+- [x] Next Steps
+  - [x] Deployment
+  - [x] Path to Flow (Mainnet)
+
+If you have any questions, concerns, comments, just want to say hi, we would love to have your company in our [discord](https://discord.gg/k6cZ7QC).
+
+## Extra Credit - Adding interface that uses our functions.
+
+Originally, this guide ended here, but a couple people on our [discord](https://discord.gg/k6cZ7QC) said they really wanted this guide to include using these functions we spent so much time making.
+This next part is a little more opinionated and your mileage may very, but we are going to continue on by adding some hooks that encapsulate certain ideas and then use those hooks in our view.
+
+In this extra credit section we are going to do the following:
+
+- [ ] Install and setup [recoil](recoiljs.org) for state
+- [ ] Create a current user hook
+- [ ] Use the current user hook in our AuthCluster component
+- [ ] Create an init hook
+- [ ] Create a InitCluster component
+- [ ] Create a profile hook
+- [ ] Create a ProfileCluster component
+
+Let's dig into it.
+
+## Recoil
+
+Recoil is a state management library for React, it will allow us to have a little more control over when we do certain actions as well as enable us to encapsulate and isolate the ability to talk to things on chain.
+
+The plan is to have a hook that covers each of the three concepts we currently have (Current User, Initialization, Profile) each hook will give us access to the corresponding data, as well as expose functions which we can use to interact with the data.
+
+The first thing we need to do with Recoil is install it.
+
+```sh
+yarn add recoil
 ```
 
-## Execute a Cadence Transaction
-
-Flow Transactions are used to _move_ **[resources](/cadence/#intuiting-ownership-with-resources)** and interact with smart contracts on behalf of Flow accounts. `@onflow` provides flexible primitives composing authorizing and paying for Transactions on Flow.
-
-`@onflow` allows for specifying the **payer**, **proposer** and **authorizer** of transactions on Flow.
-
-Describing the specifics of how to compose Flow transactions is beyond the scope of this guide. For more information about how to build Flow transactions you can read the [docs here](/cadence/language/transactions/).
-
-### Simple Transaction
-
-To send a transaction you must supply a **payer** and **proposer**. In the following transaction the current user we authenticated earlier is used for each. `@onflow/fcl` will use the configured wallet to sign this transaction on behalf of the current user.
+Once installed we need to add in the RecoilProvider to the root of our application. I am going to replace `./src/index.js` with the following:
 
 ```javascript
-const response = await fcl.send([
-  fcl.transaction`
-    transaction {
-      execute {
-        log("A transaction happened")
-      }
-    }
-  `,
-  fcl.proposer(fcl.currentUser().authorization),
-  fcl.payer(fcl.currentUser().authorization),
-]);
+// File: ./src/index.js
+
+import "./config";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { RecoilRoot } from "recoil";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+
+reportWebVitals();
 ```
 
-You can subscribe to the result of a transaction in your client code.
+In the above we are importing the `RecoilRoot` provider and then nesting aour `App` component in it.
+
+:tada: Congrats!! Recoil should now be installed and setup.
+
+Our Extra Credit checklist is now looking like this:
+
+- [x] Install and setup [recoil](recoiljs.org) for state
+- [ ] Create a current user hook
+- [ ] Use the current user hook in our AuthCluster component
+- [ ] Create an init hook
+- [ ] Create a InitCluster component
+- [ ] Create a profile hook
+- [ ] Create a ProfileCluster component
+
+## Current User Hook
+
+For this one I sort of want to start backwards, that is by talking about the outcome I want to see from our hook.
+
+Currently we have an `AuthCluster` component that lives in `./src/auth-cluster.js`, I am wanting to change it so its code looks like this:
 
 ```javascript
-const unsub = fcl.tx(response).subscribe((transaction) => {
-  if (fcl.tx.isSealed(transaction)) {
-    setState("Transaction Confirmed: Is Sealed");
-    unsub();
-  }
-});
-```
+// File: ./src/auth-cluster.js
 
-Here is a completed component that contains the transaction above. Create a file named `TransactionOne` in the `src` directory of your app.
-
-```javascript
 import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
-import * as fcl from "@onflow/fcl";
+import { useCurrentUser } from "./hooks/current-user";
 
-const Root = styled.div``;
-const Button = styled.button``;
-const Status = styled.pre``;
+function WithAuth() {
+  const cu = useCurrentUser();
 
-export default function TransactionOne() {
-  const [status, setStatus] = useState("Not Started");
-  const runTransaction = async (e) => {
-    e.preventDefault();
-    setStatus("Resolving...");
+  return !cu.loggedIn ? null : (
+    <div>
+      <span>{cu.addr ?? "No Address"}</span>
+      <button onClick={cu.logOut}>Log Out</button>
+    </div>
+  );
+}
 
-    const response = await fcl.send([
-      fcl.transaction`
-        transaction {
-          execute {
-            log("A transaction happened")
-          }
-        }
-      `,
-      fcl.proposer(fcl.currentUser().authorization),
-      fcl.payer(fcl.currentUser().authorization),
-    ]);
+function SansAuth() {
+  const cu = useCurrentUser();
 
-    setStatus("Transaction Sent, Waiting for Confirmation");
+  return cu.loggedIn ? null : (
+    <div>
+      <button onClick={cu.logIn}>Log In</button>
+      <button onClick={cu.signUp}>Sign Up</button>
+    </div>
+  );
+}
 
-    const unsub = fcl.tx(response).subscribe((transaction) => {
-      if (fcl.tx.isSealed(transaction)) {
-        setStatus("Transaction Confirmed: Is Sealed");
-        unsub();
-      }
-    });
-  };
-
+export function AuthCluster() {
   return (
-    <Root>
-      <Button onClick={runTransaction}>Run Transaction</Button>
-      <Status>{status}</Status>
-    </Root>
+    <>
+      <WithAuth />
+      <SansAuth />
+    </>
   );
 }
 ```
 
-Display the `TransactionOne` component in your app
+The difference is nuanced, but the actual consumption of this on another level to what we had before.
+The `useCurrentUser` hook we are going to create hides all the implementation details regarding what we can do with the current user, exposing a standardized set of tools in which we can consume and interact with the current user.
 
-```diff
-// ...
+Our `WithAuth` and `SansAuth` components are completely self-contained and don't require any additional props at this point, a quality I personally try to strive for, as they know when they should render and what they can do when they render, all that is left is deciding where they should redner if they decide they should.
 
-import CurrentUser from "./CurrentUser"
-import ScriptOne from "./ScriptOne"
-import ScriptTwo from "./ScriptTwo"
-+ import TransactionOne from "./Transaction"
+A good next step is creating our new `useCurrentUser` hook. We wills start by creating a `./hooks/` directory and then adding in a `./hooks/current-user.js` file for our hook to live in.
 
-// ...
+```sh
+mkdir ./src/hooks
+touch ./src/hooks/current-user.js
+```
 
-function App() {
-  return (
-    <div className="App">
-      <CurrentUser/>
-      <ScriptOne/>
-      <ScriptTwo/>
-+     <TransactionOne/>
-    </div>
-  )
+After we have the files our current user hook will look something like this:
+
+```javascript
+// File: ./src/hooks/current-user.js
+
+import { useEffect } from "react";
+import { atom, useSetRecoilState, useRecoilValue } from "recoil";
+import * as fcl from "@onflow/fcl";
+
+// This is a recoil atom (https://recoiljs.org/docs/api-reference/core/atom)
+// You can think of it as a unique reactive node with our current users state.
+// Our hook is going to subscribe to this state.
+export const $currentUser = atom({
+  key: "CURRENT_USER", // Atoms needs a unique key, we can only ever call the atom function once with this key.
+  default: { addr: null, cid: null, loggedIn: null },
+});
+
+// We only want a single place where we subscribe and update our
+// current users atom state. That will be this component that we will
+// add to the root of our application.
+export function CurrentUserSubscription() {
+  const setCurrentUser = useSetRecoilState($currentUser);
+  useEffect(() => fcl.currentUser().subscribe(setCurrentUser), [
+    setCurrentUser,
+  ]);
+  return null;
+}
+
+// Our actual hook, most of the work is happening
+// in our CurrentUserSubscription component so that allows
+// this hook to focus on decorating the current user value
+// we receive with some helper functions
+export function useCurrentUser() {
+  const currentUser = useRecoilValue($currentUser);
+
+  return {
+    ...currentUser,
+    logOut: fcl.unauthenticate,
+    logIn: fcl.logIn,
+    signUp: fcl.signUp,
+  };
 }
 ```
 
-## Final Thoughts
+The last thing we need to do here is to add our `CurrentUserSubscription` to the root of our application (./src/index.js)
 
-Congratulations you've completed a tour of the basic functionality of `@onflow/fcl` by completing the following tasks
+```javascript
+// File: ./src/index.js
 
-- Use `@onflow/fcl` to perform authentication and authorization of Flow accounts
-- Use `@onflow/fcl` to send scripts and transactions to the Flow blockchain emulator
-- Install and use the Flow blockchain emulator (`flow`)
-- Install and use the FCL Dev Wallet (`fcl-wallet`) to simulate connection between your app, `@onflow/fcl` and a user's 3rd party key management software
+import "./config";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { RecoilRoot } from "recoil";
+import { CurrentUserSubscription } from "./hooks/current-user";
 
-Hopefully this give you a head start developing your idea on Flow! Thanks for reading.
+ReactDOM.render(
+  <React.StrictMode>
+    <RecoilRoot>
+      <CurrentUserSubscription />
+      <App />
+    </RecoilRoot>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+
+reportWebVitals();
+```
+
+:tada: Congrats!! We now have a `useCurrentUser` hook and we are using it in our `AuthCluster` component.
+
+Our Extra Credit checklist is now looking like this:
+
+- [x] Install and setup [recoil](recoiljs.org) for state
+- [x] Create a current user hook
+- [x] Use the current user hook in our AuthCluster component
+- [ ] Create an init hook
+- [ ] Create a InitCluster component
+- [ ] Create a profile hook
+- [ ] Create a ProfileCluster component
+
+## Init Hook
+
+Our next hook will check if an address is initialized with the profile contract, it should also expose a function that will allow us to initialize the Profile.
+
+I usually like to think about how these hooks will be consumed so once again I think starting from the component that consumes them seems like the right place to start again.
+
+Below is a new component `InitCluster`, it will live at `./src/init-cluster.js`. It will take an address as a prop, and check if it is initialized.
+If it isn't initialized and the address is for the current user we should give the current user a button they can press to initialize the account, triggering our init-account transaction.
+Once the account is initialized the component should reactively reflect that.
+While we are doing the transaction we should display to the user that the app is doing something.
+
+```javascript
+// File: ./src/init-cluster.js
+
+import { useEffect } from "react";
+import { useCurrentUser } from "./hooks/current-user";
+import { useInit } from "./hooks/init";
+
+const fmtBool = (bool) => (bool ? "yes" : "no");
+
+export function InitCluster({ address }) {
+  const cu = useCurrentUser();
+  const init = useInit(address);
+  useEffect(() => init.check(), [address]);
+
+  if (address == null) return null;
+
+  return (
+    <div>
+      <h3>Init?: {address}</h3>
+      <ul>
+        <li>
+          <strong>Profile: </strong>
+          {init.isIdle && <span>{fmtBool(init.profile)}</span>}
+          {!init.profile && cu.addr === address && init.isIdle && (
+            <button disabled={init.isProcessing} onClick={init.exec}>
+              Initialize Profile
+            </button>
+          )}
+          {init.isProcessing && <span>PROCESSING</span>}
+        </li>
+      </ul>
+    </div>
+  );
+}
+```
+
+The above code introduces our `useInit` hook, which will live in `./src/hooks/init.js`.
+It has two independent states, one that knows if the profile is initialized and another that knows if our hook is doing some sort of work.
+We are using `atomFamily` as there can be more than once instance of an Init Atom (multiple addresses).
+
+First we need to create the file our new hook will live in.
+
+```sh
+touch ./src/hooks/init.js
+```
+
+Then we can write our new `useInit` hook in our new file: `./src/hooks/init.js`
+
+```javascript
+// File: ./src/hooks/init.js
+
+import { atomFamily, useRecoilState } from "recoil";
+import { isInitialized } from "../flow/is-initialized.script";
+import { initAccount } from "../flow/init-account.tx";
+
+const IDLE = "IDLE";
+const PROCESSING = "PROCESSING";
+
+// atomFamily is a function that returns a memoized function
+// that constructs atoms. This will allow us to define the
+// behaviour of the atom once and then construct new atoms
+// based on an id (in this case the address)
+const $profile = atomFamily({
+  key: "INIT::PROFILE::STATE",
+  default: null,
+});
+
+const $profileStatus = atomFamily({
+  key: "INIT::PROFILE::STATUS",
+  default: PROCESSING,
+});
+
+export function useInit(address) {
+  const [profile, setProfile] = useRecoilState($profile(address));
+  const [status, setStatus] = useRecoilState($profileStatus(address));
+
+  // Will check if the supplied address is initialized
+  async function check() {
+    setStatus(PROCESSING);
+    // isInitialized is going to throw an error if the address is null
+    // so we will want to avoid that. Because react hooks can't dynamically
+    // added and removed from a react node, you will find this sort of logic
+    // will leak into our hooks, we could get around this by changing our
+    // isInitialized function return null instead of throwing an error.
+    if (address != null) await isInitialized(address).then(setProfile);
+    setStatus(IDLE);
+  }
+
+  // will attempt at initializing the current address
+  async function exec() {
+    setStatus(PROCESSING);
+    await initAccount();
+    setStatus(IDLE);
+    await check();
+  }
+
+  return {
+    profile,
+    check,
+    exec,
+    isIdle: status === IDLE,
+    isProcessing: status === PROCESSING,
+    status,
+    IDLE,
+    PROCESSING,
+  };
+}
+```
+
+Now that we have an `InitCluster` component that consumes our new `useInit` hook, lets add it into our `App` component.
+One thing to note here is the use of the current users address, we are going to use that address for the rest of the guide
+as it is readily available to us, but any address should work and our component will adapt and only show what its supposed to show.
+
+```javascript
+// File: ./src/App.js
+
+import React from "react";
+import { AuthCluster } from "./auth-cluster";
+import { InitCluster } from "./init-cluster";
+import { useCurrentUser } from "./hooks/current-user";
+
+export default function App() {
+  const cu = useCurrentUser();
+
+  return (
+    <div>
+      <AuthCluster />
+      <InitCluster address={cu.addr} />
+    </div>
+  );
+}
+```
+
+:tada: Congrats!! We now have a `useInit` hook and a `InitCluster` component.
+
+Our Extra Credit checklist is now looking like this:
+
+- [x] Install and setup [recoil](recoiljs.org) for state
+- [x] Create a current user hook
+- [x] Use the current user hook in our AuthCluster component
+- [x] Create an init hook
+- [x] Create a InitCluster component
+- [ ] Create a profile hook
+- [ ] Create a ProfileCluster component
+
+## The Profile
+
+Once again let's start with the consumption by creating a `ProfileCluster` component.
+It should:
+
+- accept an address as a prop
+- fetch the profile from the chain
+- deal with the address not having a profile
+- if the profile is for the current user, allow the current user to update the name
+
+First step should be creating the file that will be the home of our new component:
+
+```sh
+touch ./src/profile-cluster.js
+```
+
+Then add the code to the file, this one is a bit more complicated but is really just more of the same, we consume the hooks and use the functionality they provide.
+
+```javascript
+// File: ./src/profile-cluster.js
+
+import { useState, useEffect } from "react";
+import { useCurrentUser } from "./hooks/current-user";
+import { useProfile } from "./hooks/profile";
+
+function ProfileForm() {
+  const cu = useCurrentUser();
+  const profile = useProfile(cu.addr);
+  const [name, setName] = useState("");
+  useEffect(() => {
+    setName(profile.name);
+  }, [profile.name]);
+
+  const submit = () => {
+    profile.setName(name);
+  };
+
+  return (
+    <div>
+      <input value={name} onChange={(e) => setName(e.target.value)} />
+      {profile.isIdle && <button onClick={submit}>Update Name</button>}
+      {profile.isProcessing && <span>PROCESSING</span>}
+    </div>
+  );
+}
+
+export function ProfileCluster({ address }) {
+  const profile = useProfile(address);
+  useEffect(() => profile.refetch(), [address]);
+  if (address == null) return null;
+
+  return (
+    <div>
+      <h3>Profile: {address}</h3>
+      {profile.isCurrentUser && <ProfileForm />}
+      <ul>
+        <li>
+          <img
+            src={profile.avatar}
+            width="50px"
+            height="50px"
+            alt={profile.name}
+          />
+        </li>
+        <li>
+          <strong>Name: </strong>
+          <span>{profile.name}</span>
+          {profile.isCurrentUser && <span> -You</span>}
+          {profile.isProcessing && <span>PROCESSING</span>}
+        </li>
+        <li>
+          <strong>Color: </strong>
+          <span>{profile.color}</span>
+        </li>
+        <li>
+          <strong>Info: </strong>
+          <span>{profile.info}</span>
+        </li>
+      </ul>
+    </div>
+  );
+}
+```
+
+Then we move onto the hook.
+`useProfile` is once again using an `atomFamily` from recoil, this is allowing us to have multiple atoms (one per address supplied).
+It has two pieces of state, one is the status, the other being the profiles details.
+If an account doesn't have a profile we are defaulting it to a Anonymous default profile.
+
+```javascript
+// File: ./src/hooks/profile.js
+
+import { atomFamily, useRecoilState } from "recoil";
+import { fetchProfile } from "../flow/fetch-profile.script";
+import { setName as profileSetName } from "../flow/profile-set-name.tx";
+import { useCurrentUser } from "./current-user";
+
+const DEFAULT = {
+  name: "Anon",
+  color: "#232323",
+  info: "...",
+  avatar: "https://avatars.onflow.org/avatar/pew",
+};
+const IDLE = "IDLE";
+const PROCESSING = "PROCESSING";
+
+const $profile = atomFamily({
+  key: "PROFILE::STATE",
+  default: DEFAULT,
+});
+
+const $status = atomFamily({
+  key: "PROFILE::STATUS",
+  default: PROCESSING,
+});
+
+export function useProfile(address) {
+  const cu = useCurrentUser();
+  const [profile, setProfile] = useRecoilState($profile(address));
+  const [status, setStatus] = useRecoilState($status(address));
+
+  async function refetch() {
+    setStatus(PROCESSING);
+    await fetchProfile(address)
+      .then((profile) => {
+        if (profile == null) return profile;
+        if (profile.avatar === "") profile.avatar = DEFAULT.avatar;
+        if (profile.info === "") profile.info = DEFAULT.info;
+        return profile;
+      })
+      .then(setProfile);
+    setStatus(IDLE);
+  }
+
+  async function setName(name) {
+    setStatus(PROCESSING);
+    await profileSetName(name);
+    setStatus(IDLE);
+    await refetch();
+  }
+
+  return {
+    ...(profile ?? DEFAULT),
+    status,
+    isCurrentUser: address === cu.addr,
+    setName,
+    refetch,
+    IDLE,
+    PROCESSING,
+    isIdle: status === IDLE,
+    isProcessing: status === PROCESSING,
+  };
+}
+```
+
+Now that we have a `ProfileCluster` component and a `useProfile` hook its time to use it.
+Let's update our `./src/App.js` file to show the current users profile, as well as show two additional profiles, one for my account which has a profile, and another for an account that I know does not have a profile.
+
+```javascript
+// File: ./src/App.js
+
+import React from "react";
+import { AuthCluster } from "./auth-cluster";
+import { InitCluster } from "./init-cluster";
+import { ProfileCluster } from "./profile-cluster";
+import { useCurrentUser } from "./hooks/current-user";
+
+export default function App() {
+  const cu = useCurrentUser();
+
+  return (
+    <div>
+      <AuthCluster />
+      <InitCluster address={cu.addr} />
+      <ProfileCluster address={cu.addr} />
+      <ProfileCluster address="0xba1132bc08f82fe2" />
+      <ProfileCluster address="0xf117a8efa34ffd58" />
+    </div>
+  );
+}
+```
+
+:tada: Congrats!! We now have a `useProfile` hook and a `ProfileCluster` component.
+
+Our Extra Credit checklist should now be complete and look like this:
+
+- [x] Install and setup [recoil](recoiljs.org) for state
+- [x] Create a current user hook
+- [x] Use the current user hook in our AuthCluster component
+- [x] Create an init hook
+- [x] Create a InitCluster component
+- [x] Create a profile hook
+- [x] Create a ProfileCluster component
+
+## Closing Note on the Extra Credit Section
+
+There are so many additional improvements that can be made in the code we just did.
+Most of those improvements come down to being smarter about when and how we query the data, pushing them into the category or how we deal with state.
+We do (while not very efficient) have a working application that can interact with the Flow (testnet) Blockchain.
+I am sure there are better/alternative ways of doing this sort of stuff, eventually there always are, so I would recommend using the above as a starting point instead of a gospel.
+Try and think about the different mechanisms available to you and take the good that aligns with your vision and drop the bad that doesn't align with it.
+
+We are eager to see what you come up with, as mentioned before, if you have any questions, concerns, comments, just want to say hi, we would love to have your company in our [discord](https://discord.gg/k6cZ7QC).
