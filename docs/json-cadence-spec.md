@@ -1,6 +1,6 @@
 # JSON-Cadence Data Interchange Format
 
-> Version 0.1.3
+> Version 0.2.0
 
 JSON-Cadence is a data interchange format used to represent Cadence values as language-independent JSON objects.
 
@@ -10,36 +10,19 @@ This format includes less type information than a complete [ABI](https://en.wiki
 - **Compatibility** - JSON is a common format with built-in support in most high-level programming languages, making it easy to parse on a variety of platforms.
 - **Portability** - JSON-Cadence is self-describing and thus can be transported and decoded without accompanying type definitions (i.e. an ABI).
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-## Table of Contents
-
-- [Void](#void)
-- [Optional](#optional)
-- [Bool](#bool)
-- [String](#string)
-- [Address](#address)
-- [Integers](#integers)
-- [Fixed Point Numbers](#fixed-point-numbers)
-- [Array](#array)
-- [Dictionary](#dictionary)
-- [Composites (Struct, Resource, Event)](#composites-struct-resource-event)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ---
 
 ## Void
 
-```
+```json
 {
   "type": "Void"
 }
 ```
 
-**Example**
+### Example
 
-```
+```json
 {
   "type": "Void"
 }
@@ -49,17 +32,16 @@ This format includes less type information than a complete [ABI](https://en.wiki
 
 ## Optional
 
-```
+```json
 {
   "type": "Optional",
   "value": null | <value>
 }
-
 ```
 
-**Example**
+### Example
 
-```
+```json
 // Non-nil
 
 {
@@ -82,16 +64,16 @@ This format includes less type information than a complete [ABI](https://en.wiki
 
 ## Bool
 
-```
+```json
 {
   "type": "Bool",
   "value": true | false
 }
 ```
 
-**Example**
+### Example
 
-```
+```json
 {
   "type": "Bool",
   "value": true
@@ -102,7 +84,7 @@ This format includes less type information than a complete [ABI](https://en.wiki
 
 ## String
 
-```
+```json
 {
   "type": "String",
   "value": "..."
@@ -110,9 +92,9 @@ This format includes less type information than a complete [ABI](https://en.wiki
 
 ```
 
-**Example**
+### Example
 
-```
+```json
 {
   "type": "String",
   "value": "Hello, world!"
@@ -123,16 +105,16 @@ This format includes less type information than a complete [ABI](https://en.wiki
 
 ## Address
 
-```
+```json
 {
   "type": "Address",
   "value": "0x0" // as hex-encoded string with 0x prefix
 }
 ```
 
-**Example**
+### Example
 
-```
+```json
 {
   "type": "Address",
   "value": "0x1234"
@@ -149,17 +131,16 @@ Although JSON supports integer literals up to 64 bits, all integer types are enc
 
 While the static type is not strictly required for decoding, it is provided to inform client of potential range.
 
-```
+```json
 {
   "type": "<type>",
   "value": "<decimal string representation of integer>"
 }
-
 ```
 
-**Example**
+### Example
 
-```
+```json
 {
   "type": "UInt8",
   "value": "123"
@@ -174,18 +155,16 @@ While the static type is not strictly required for decoding, it is provided to i
 
 Although fixed point numbers are implemented as integers, JSON-Cadence uses a decimal string representation for readability.
 
-```
+```json
 {
     "type": "[U]Fix64",
     "value": "<integer>.<fractional>"
 }
-
 ```
 
-**Example**
+### Example
 
-```
-
+```json
 {
     "type": "Fix64",
     "value": "12.3"
@@ -196,21 +175,20 @@ Although fixed point numbers are implemented as integers, JSON-Cadence uses a de
 
 ## Array
 
-```
+```json
 {
   "type": "Array",
   "value": [
-    <value for index 0>,
-    <value for index 1>
-    ...
+    <value at index 0>,
+    <value at index 1>
+    // ...
   ]
 }
-
 ```
 
-**Example**
+### Example
 
-```
+```json
 {
   "type": "Array",
   "value": [
@@ -236,23 +214,22 @@ Although fixed point numbers are implemented as integers, JSON-Cadence uses a de
 
 Dictionaries are encoded as a list of key-value pairs to preserve the deterministic ordering implemented by Cadence.
 
-```
+```json
 {
   "type": "Dictionary"
   "value": [
     {
-      "key": "<key>", 
+      "key": "<key>",
       "value": <value>
     },
     ...
   ]
 }
-
 ```
 
-**Example**
+### Example
 
-```
+```json
 {
   "type": "Dictionary"
   "value": [
@@ -260,28 +237,26 @@ Dictionaries are encoded as a list of key-value pairs to preserve the determinis
       "key": {
         "type": "UInt8",
         "value": "123"
-      }, 
+      },
       "value": {
         "type": "String",
         "value": "test"
       },
     }
   ],
-  ...
+  // ...
 }
 ```
 
 ---
 
-## Composites (Struct, Resource, Event)
-
-`Event`, `Struct`, `Resource`
+## Composites (Struct, Resource, Event, Contract)
 
 Composite fields are encoded as a list of name-value pairs in the order in which they appear in the composite type declaration.
 
-```
+```json
 {
-  "type": "Struct" | "Resource" | "Event",
+  "type": "Struct" | "Resource" | "Event" | "Contract",
   "value": {
     "id": "<fully qualified type identifier>",
     "fields": [
@@ -289,15 +264,15 @@ Composite fields are encoded as a list of name-value pairs in the order in which
         "name": "<field name>",
         "value": <field value>
       },
-      ...
+      // ...
     ]
   }
 }
 ```
 
-**Example** 
+### Example
 
-```
+```json
 {
   "type": "Resource",
   "value": {
@@ -308,6 +283,84 @@ Composite fields are encoded as a list of name-value pairs in the order in which
         "value": {"type": "Int", "value": "1"}
       }
     ]
+  }
+}
+```
+
+---
+
+## Path
+
+```json
+{
+  "type": "Path",
+  "value": {
+    "domain": "storage" | "private" | "public",
+    "identifier: "..."
+  }
+}
+```
+
+### Example
+
+```json
+{
+  "type": "Path",
+  "value": {
+    "domain": "storage",
+    "identifier: "flowTokenVault"
+  }
+}
+```
+
+---
+
+## Type
+
+```json
+{
+  "type": "Type",
+  "value": {
+    "staticType: "..."
+  }
+}
+```
+
+### Example
+
+```json
+{
+  "type": "Type",
+  "value": {
+    "staticType: "Int"
+  }
+}
+```
+
+---
+
+## Capability
+
+```json
+{
+  "type": "Capability",
+  "value": {
+    "path": <path>,
+    "address": "0x0",  // as hex-encoded string with 0x prefix
+    "borrowType": "<type ID>",
+  }
+}
+```
+
+### Example
+
+```json
+{
+  "type": "Capability",
+  "value": {
+    "path": "/public/someInteger",
+    "address": "0x1",
+    "borrowType": "Int",
   }
 }
 ```
