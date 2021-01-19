@@ -1,11 +1,11 @@
 ---
 title: Flow Port
-description: How to use the Flow Port
+description: How to use Flow Port
 ---
 
 Welcome to Flow Port, your portal to the decentralized world of Flow. Access your Flow account, interact with the blockchain, manage your assets and more.
 ## Creating an Account
-In order to access Flow Port, you must have a valid Flow address. If you do not have a Flow address, you can choose to create one via any of our FCL Wallet Providers.
+In order to access Flow Port, you must have a valid Flow address. If you do not have a Flow address, you can choose to create one via any of the available FCL wallet providers.
 
 ### Blocto
 #### Before You Start
@@ -65,7 +65,7 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 
 ## Staking & Delegating
 
-For a detailed walkthrough on how to use the Flow Port for staking and delegating, please read the [Flow Port staking walkthrough](/flow-port/staking-guide)
+For a detailed walkthrough on how to use Flow Port for staking and delegating, please read the [Flow Port staking walkthrough](/flow-port/staking-guide)
 ### How Do I Stake or Delegate?
 
 So you have decided you want to be a part of the Flow Network. Welcome! You are joining a group of people from all around the world that are a part of a movement centered around bringing decentralization, user empowerment, and transparency into the world. Below is a step-by-step guide that will assist you in the staking & delegation process.
