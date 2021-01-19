@@ -164,7 +164,7 @@ flow accounts create \
 
 - `host` is the access node to connect to
 - `signer` is the account entry used for signing
-- `code` is the path to the Cadence contract being deployed
+- `contract` is the path to the Cadence contract being deployed
 
 ### Making Use of Core Contracts
 
