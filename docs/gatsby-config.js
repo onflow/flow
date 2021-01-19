@@ -55,6 +55,13 @@ const navConfig = {
       "Cadence syntax highlighting and an integrated Flow emulator for VSCode users.",
     linkText: "VSCode Extension Documentation",
   },
+  "Flow Port": {
+    url: "/flow-port",
+    icon: "port",
+    description:
+      "Flow Port, your portal to the decentralized world of Flow. Access your Flow account, interact with the blockchain, manage your assets and more.",
+    linkText: "Flow Port",
+  },
 };
 
 // sourceGithubRepos maps a sourceInstanceName to a GitHub repo name
@@ -83,20 +90,25 @@ const sections = [
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
-        "[FLOW Token](/flow-token)",
-        "[Staking & Delegating](/staking)",
+      null: [],
+      Ecosystem: [
+        "[Access API](/access-api)",
         "[Core Contracts](/core-contracts)",
-        "[Dapp Deployment Guide](/dapp-deployment)",
+        "[FLOW Token](/flow-token)",
+      ],
+      Guides: [
+        "[Flow Concepts](/concepts)",
+        "[Introduction to Cadence](/cadence/tutorial/01-first-steps/)",
+        "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
+        "[Project Deployment Guide](/dapp-deployment)",
+        "[Staking & Delegating](/staking)",
+        "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
         "[Node Operation](/node-operation)",
-        "intro/glossary",
-        "intro/FAQ",
       ],
-      "Community Updates": [
-        "community-updates/oct-6-2020",
-        "community-updates/sep-16-2020",
-      ],
-      Support: ["flow-port/faq", "flow-port/staking-guide"],
+      // "Community Updates": [
+      //   "community-updates/oct-6-2020",
+      //   "community-updates/sep-16-2020",
+      // ],
     },
   },
   {
@@ -144,7 +156,7 @@ const sections = [
     sidebar: {
       null: ["[Home](/)"],
       Overview: ["flow-js-sdk/index"],
-      "Developer Guides": ["flow-js-sdk/fcl"],
+      "Developer Guides": ["flow-js-sdk/flow-app-quickstart"],
     },
   },
   {
@@ -162,7 +174,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Accounts: [
+      Concepts: [
         "concepts/accounts-and-keys",
         "concepts/transaction-signing",
         "concepts/storage",
@@ -185,7 +197,6 @@ const sections = [
         "core-contracts/locked-tokens",
         "core-contracts/non-fungible-token",
       ],
-      "Developer Guides": ["core-contracts/access-api"],
     },
   },
   {
@@ -340,8 +351,12 @@ module.exports = {
             crumbLabel: "FAQ",
           },
           {
-            pathname: "/flow-port/faq",
-            crumbLabel: "FAQ",
+            pathname: "/access-api",
+            crumbLabel: "Access API",
+          },
+          {
+            pathname: "/flow-token/faq",
+            crumblabel: "FAQ",
           },
           {
             pathname: "/core-contracts/access-api",

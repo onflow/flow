@@ -202,7 +202,11 @@ export default function PageLayout(props) {
                 <Breadcrumb
                   crumbs={dacrumbs}
                   hiddenCrumbs={["/intro"]}
-                  disableLinks={["/flow-port", "/community-updates"]}
+                  disableLinks={[
+                    "/flow-port",
+                    "/community-updates",
+                    "/tutorial",
+                  ]}
                 />
               </BreadcrumbWrapper>
             ) : (
