@@ -1,8 +1,8 @@
-# Self-Ejection (core protocol)
+# Self-Ejection (feature for the core protocol)
 
 | Status        | Proposed       |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | tbd (update when you have PR #)|
+| **FLIP #**    | [324](https://github.com/onflow/flow/pull/324) |
 | **Author(s)** | Alex Hentschel (alex.hentschel@dapperlabs.com) |
 | **Sponsor**   | Alex Hentschel (alex.hentschel@dapperlabs.com)             |
 | **Updated**   | 2021-01-18                                           |
