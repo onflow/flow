@@ -19,6 +19,7 @@ const Wrapper = styled.div({
 const InnerWrapper = styled.div({
   flexGrow: 1,
   width: 0,
+  maxWidth: "888px",
 });
 
 const BodyContent = styled.div({
@@ -114,6 +115,11 @@ const AsideLinkInner = styled.a({
   },
 });
 
+function sidebarPage(path) {
+  if (path === "/") return false;
+  return true;
+}
+
 function AsideLink(props) {
   return (
     <AsideLinkWrapper>
@@ -200,28 +206,30 @@ export default function PageContent(props) {
           nextPage={props.pages[pageIndex + 1]}
         />
       </InnerWrapper>
-      <Aside>
-        {/* <AsideHeading>{props.title}</AsideHeading> */}
-        <AsideHeading>{props.headings.length ? "Contents" : ""}</AsideHeading>
-        {props.headings.length > 0 && (
-          <SectionNav
-            headings={props.headings}
-            contentRef={contentRef}
-            imagesLoaded={imagesLoaded === imagesToLoad}
-          />
-        )}
-        {editLink}
-        {props.discourseUrl && (
-          <AsideLink href={props.discourseUrl}>
-            <IconDiscourse /> Discuss in Forum
-          </AsideLink>
-        )}
-        {props.playgroundUrl && (
-          <AsideLink href={props.playgroundUrl}>
-            <IconPlayground /> Demo in Playground
-          </AsideLink>
-        )}
-      </Aside>
+      {sidebarPage(props.pathname) && (
+        <Aside>
+          {/* <AsideHeading>{props.title}</AsideHeading> */}
+          <AsideHeading>{props.headings.length ? "Contents" : ""}</AsideHeading>
+          {props.headings.length > 0 && (
+            <SectionNav
+              headings={props.headings}
+              contentRef={contentRef}
+              imagesLoaded={imagesLoaded === imagesToLoad}
+            />
+          )}
+          {/* {editLink} */}
+          {props.discourseUrl && (
+            <AsideLink href={props.discourseUrl}>
+              <IconDiscourse /> Discuss in Forum
+            </AsideLink>
+          )}
+          {props.playgroundUrl && (
+            <AsideLink href={props.playgroundUrl}>
+              <IconPlayground /> Demo in Playground
+            </AsideLink>
+          )}
+        </Aside>
+      )}
     </Wrapper>
   );
 }
