@@ -38,7 +38,7 @@ on any other smart contracts.
 * Node software will primarily be submitting these transactions. They will not be initiated by a human.
 * Votes for a node can only be submitted by the node a single time. They cannot be submitted by anyone else.
 * The only action nodes should have to take after registering is submitting a single vote.
-* The epoch smart contract will monitor the QC contract for voting completion status
+* The `FlowEpoch` smart contract will monitor the QC contract for voting completion status
 
 ### High Level Design
 The smart contract defines a `Cluster` struct, which holds information about the collector nodes in each cluster,
@@ -109,6 +109,7 @@ See this sequence diagram for the flow of actions in QC generation.
 ### Drawbacks
 
 * Still researching alternative architectures. There could be better options.
+* Having votes that are opaque to the smart contract means we must trust that voters submit valid votes - the alternative is to validate votes within the smart contract which requires changes to the `Crypto` API
 
 ### Alternatives Considered
 
@@ -121,6 +122,7 @@ but this would make upgrading and unit testing more challenging
 * checking `nodeHasVoted` has to iterate through all clusters and nodes, which could take a lot of time and gas,
 especially since it needs to be called by node accounts.
 * `startVoting` has to iterate through all clusters and nodes to initialize contract field each epoch, which could take a lot of time and gas. This one is harder to avoid though, but it is only called by the service account, so isn't as much of a problem.
+* including full votes in the `EpochCommit` service event results in significantly larger event size -- performing vote aggregation within the contract would make the data size of the resulting vote data proportional to the number of clusters rather than the number of collectors
 
 ### Dependencies
 
