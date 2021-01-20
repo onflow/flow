@@ -4,14 +4,15 @@
 :-------------- |:---------------------------------------------------- |
 | **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com)   |
 | **Sponsor**   | Janez Podhostnik (janez.podhostnik@dapperlabs.com)   |
-| **Updated**   | 2020-10-13                                           |
+| **Updated**   | 2021-01-19                                           |
 
 ## Objective
 
 Limit the maximum amount of storage each account can use to prevent storing huge amount of data on chain.
 
-A minimum amount of storage capacity will be provided to each account when it is created. Additional storage can be purchased by using the **StorageFees** smart contract. Storage can also be refunded using the same contract.
+The amount of storage capacity on an account defines the accounts' storage capacity at the conversion rate of 1 MB of storage capacity per 1 FLOW (in the accounts storage).
 
+To ensure that a majority of accounts always has enough storage, a minimum account balance (of 0.1 FLOW) will be introduced.
 ## Motivation
 
 If the execution state grows too large, execution nodes will no longer be able to hold the execution state in memory, which is necessary to calculate the next execution state. When this happens, the execution node requirements (and the nodes themselves) will need to be updated (and it will cost more to operate them).
@@ -37,24 +38,16 @@ Each account will have a `storage_used` and a `storage_capacity` (uint64) values
 
 The value of `storage_used` will be an explicitly stored register on each account. `storage_used` is the amount of storage the account is currently using (in bytes); The sum of data stored in the execution state for the account, i.e the sum of the sizes of all register keys and values for the account. `storage_used` for an account will be updated during a transaction each time that account register changes. At the end of each transaction, every account with changed registers will have its `storage_used` compared to its `storage_capacity`, if the account is using more storage then its capacity the transaction will fail with a clear error. The `storage_used` register will be added to each account upon account creation. If the account existed before this change a migration will created that adds `storage_used`.
 
+The value of `storage_capacity` is computed from the accounts FLOW balance. The value of `storage_capacity` equals the accounts balance multiplied by `FlowStorageFees.storageMegaBytesPerReservedFLOW`. To add more storage to an account, more FLOW needs to be deposited to the account. If the account is already over storage capacity (due to `FlowStorageFees.storageMegaBytesPerReservedFLOW` being reduced) the first transaction that involves that account should add more FLOW to it as well, otherwise the transaction will fail.
 
-The value of `storage_capacity` is computed from the accounts `StorageReservation` resource. Each account has a `StorageReservation` resource that holds the accounts reserved (for storage capacity) Flow tokens. The value of `storage_capacity` equals the amount of reserved Flow tokens multiplied by `StorageReservation.storageBytesPerReservedFlow`. To add more storage to an account more Flow tokens need to be deposited to the accounts `StorageReservation` resource by using the `StorageReservationReceiver` public capability. Flow tokens can be withdrawn from the `StorageReservation` resource by the owner of the resource, but this has some limitations: 
-- There must be at least the minimum storage reservation left on the account.
-- Withdrawing so much that the value of `storage_capacity` at the end of the transaction is lower then the accounts `storage_used` will result in a failed transaction.
-- When this is first released withdrawing will be disabled globally so no new liquid flow is introduced.
-
-The `StorageReservation` resource and the the `StorageReservationReceiver` public capability are added to each account during account creation, and the initial (minimum) storage reservation is deposited by the account creator. If the account existed before this change a migration will created that adds `StorageReservation` and `StorageReservationReceiver` with enough reserved flow so the accounts will have enough time to adapt to this new limitation. The `StorageReservation` resource and the the `StorageReservationReceiver` resource interface will both be defined on the `StorageFees` contract, which will be deployed on the service account.
-
-Initially, the price of storage will be set to 1kB for 1mF. This value will be assessed and updated as the chain evolves. The minimum reservation will be set to 0.1F, which will be equal to 100kB of `storage_capacity`.
+The minimum amount of FLOW an account can have is `FlowStorageFees.minimumStorageReservation` (0.1 FLOW). This equals 100 kB of storage capacity, which should be enough for most accounts. This minimum is deducted from the account creator during new account creation. If the account existed before this change some flow will be deposited to it during the spork process.
 
 ### Execution Environment Changes
 
 The execution environment has four responsibilities:
 
 1. Keeping the `storage_used` value up to date at the end of every transaction.
-1. Reading the amount of reserved Flow tokens from the accounts `StorageReservation` resource.
-    1. checking that they are not below the minimum storage reservation
-    1. converting that into `storage_capacity`.
+1. Getting accounts `storage_capacity` (by calling a method on the `FlowStorageFees` smart contract)
 1. Preventing accounts going over `storage_capacity`.
 1. Enabling the Flow Virtual Machine (`fvm`) package read access to the `storage_capacity` and `storage_used` values:
 
@@ -126,35 +119,29 @@ Account creation process currently goes through the following steps:
 1. Set key related registers.
 1. Call `FlowServiceAccount` smart contract to initialize the FLOW token vault and receiver.
 
-This process will be changed to account for setting `StorageReservation` resource and `storage_used` field:
+This process will be changed to account for deducting the minimum account balance and adding it to the newly created account:
 
 1. Set `storage_used` register to the size of itself
 1. Set `exists` register which marks that the account exists.
 1. Set key related registers.
 1. Calling the `FlowServiceAccount` smart contract to:
-    - Deduct account creation fees (including storage fees)
-    - Create a `StorageReservation` resource with the minimum storage reservation (a part of the fees) and put it in accounts' private storage.
-    - Add a public capability `StorageReservationReceiver` resource to the account.
+    - Deduct account creation fees (including, and currently limited to, minimum storage reservation)
     - Initialize the FLOW token vault and receiver.
+    - Deposit minimum storage reservation to the newly created account
 
 Joining the calls to `FlowServiceAccount` into one transaction will also improve the performance of account creation.
 
 
 ### Get Storage Capacity
 
-The amount of `storage_capacity` is calculated from the amount of reserved Flow tokens. To get the amount of reserved flow tokens for an account the following procedure will be used:
+The amount of `storage_capacity` is calculated from the amount of FLOW on the account. To get the value of `storage_capacity` the following procedure will be used:
 
-- Retrieve the accounts' `StorageReservation` resource bytes from a predetermined path.
-- Decode the `StorageReservation` resource into a cadence value.
-- Verify that `StorageReservation` resource typeId (this confirms that this is the expected `StorageReservation` type defined on the service account).
-- Verify that `StorageReservation.ownerAddress` is the expected address.
-- Get the value of `StorageReservation.minimumStorageReservation` from a service account register.
-- Verify that `StorageReservation.reservedTokens.balance` is at least `StorageReservation.minimumStorageReservation`.
-- Get the value of `StorageReservation.storageBytesPerReservedFlow` from a service account register.
-- accounts' `storage_capacity` is `StorageReservation.storageBytesPerReservedFlow` times `StorageReservation.reservedTokens.balance`
+- Call a script that calls the `FlowStorageFees.calculateAccountCapacity` function with the account address as the parameter.
+- This function gets the balance of the account and:
+    - checks that the balance is above `FlowStorageFees.minimumStorageReservation` otherwise storage capacity is 0,
+    - then multiples the balance with `FlowStorageFees.storageMegaBytesPerReservedFLOW` and returns the result
 
-If any of the steps fail accounts' `storage_capacity` is considered to be zero.
-
+If any of the steps fails the accounts' `storage_capacity` is considered to be zero.
 
 #### Limit Storage Used
 
@@ -210,57 +197,19 @@ In the Cadence semantic analysis pass and in the interpreter, two new read-only 
 ### Storage Fees Smart Contract
 
 
-The smart contract can be seen [here](https://github.com/onflow/flow-core-contracts/pull/76).
+The smart contract can be seen [here](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowStorageFees.cdc).
 
-Each account will have a public `StorageReservationReceiver` capability and a private `StorageReservation` resource on predetermined paths.
+The contract holds the two parameters:
+- `storageMegaBytesPerReservedFLOW`
+- `minimumStorageReservation`
 
-The `StorageReservationReceiver` resource interface will be defined on the `StorageFees` smart contract and has the following parts:
-- Has a `deposit` method which anyone can use to increase the accounts' reserved tokens.
+An administrator resource that has the ability to change the parameters.
 
-The `StorageReservation` resource will be defined on the `StorageFees` smart contract and has the following parts:
-- Has a `FlowVault` that holds the reserved Flow tokens. This vault cannot be accessed directly.
-- Has a `deposit` method which anyone can use to increase the accounts' reserved tokens, by calling it through the `StorageReservationReceiver`.
-- Has a `withdraw` method which the holder of the account can use to withdraw reserved tokens (but not below `minimumStorageReservation`). 
-
-All functions of the `StorageReservation` resource should check that this `StorageReservation` is on the correct account on the correct path.
-
-The `StorageFees` smart contract will also have the following responsibilities:
-
-- Definitions:
-    - `minimumStorageReservation`: defines the minimum amount of reserved flow tokens an account can have and also the amount every new account has. If an account has less than this many tokens reserved (this can only happen if `minimumStorageReservation` changes in the future) the account effectively has zero `storage_capacity` and any future transaction that touches that account will fail (if it doesn't also reserve more storage for the account).
-    - `storageBytesPerReservedFlow`: defines the amount of bytes of storage capacity one reserved Flow token represents.
-    - `refundingEnabled`: defines if accounts can refund storage.
-- `minimumStorageReservation`, `storageBytesPerReservedFlow` and `refundingEnabled` should be able to change in the future.
-- Functions:
-    - `setupAccountStorage(account, storageReservation)`:
-        - The `storageReservation` `FlowVault` should have the balance of at least `minimumStorageReservation`.
-        - Check if `StorageReservation` is already present on the account (if so panic; account already has some storage).
-        - Create the `StorageReservation` resource with `storageReservation` on it.
-        - Put this `StorageReservation` resource onto the account with a corresponding `StorageReservationReceiver`.
-
-
-The `StorageFees` smart contract needs to cover three cases:
-
-1. When creating a new account, `StorageFees.setupAccountStorage` will be called with the `AuthAccount` of the account to setup:
-    - A `StorageReservation` resource needs to be added into the accounts' storage.
-    - A `StorageReservationReceiver` needs to be added to accounts public storage
-2. When purchasing more storage for an account (by using its `StorageReservationReceiver.deposit`):
-    - Accounts `StorageReservation.FlowVault.balance` needs to increase
-3. When refunding storage.
-    - Accounts `StorageReservation.FlowVault.balance` needs to decrease
-    - A `FlowVault` needs to be be returned
-
+The `calculateAccountCapacity` function mentioned above, and the two conversion helper functions: `flowToStorageCapacity` and `storageCapacityToFlow`.
 
 ### Register Migration
 
-All existing accounts will be given 1 FLOW token worth of storage (1MB). Only very few accounts currently use more than 1MB of storage. Those that do user more than 1MB will be checked individually and will be given `(n + 1)`MB of storage where `n` is the smallest integer so that the account is using less then `n`MB of storage.
-
-Because the process of creating a register migration is not documented yet a few assumptions need to be made:
-- Migration will be a function with the signature of: `(key, value) -> [(key, value)]`.
-- The function must be stateless.
-- It has access to other registers.
-
-With this in mind the migration pseudo-code can be written as:
+The migration to add `storage_used` can be written as:
 
 ```py
 def migrate(key, value) -> (keyType, valueType)[]:
@@ -268,27 +217,18 @@ def migrate(key, value) -> (keyType, valueType)[]:
     if register_exists(owner=owner, controller="", key="storage_capacity"):
         # we already migrated this account
         return [(key, value)]
-    storage_used = 0
+    storage_used = register_size(storage_used_register)
     # get all register entries for this owner and iterate over them
     for register in registers_for_owner(owner)
         storage_used += register_size(register)
 
-    storage_used += 16 # because we are adding two more uint64 registers
-
-    storage_capacity = calculate_capacity_needed(storage_used)
-
-    storage_capacity_resource_register = create_storage_capacity_resource_register(storage_capacity)
-    storage_capacity_resource_public_capability_register = create_storage_capacity_resource_public_capability_register()
-
     return [
         (key, value),
-        storage_capacity_resource_register,
-        storage_capacity_resource_public_capability_register,
         ((owner, "", "storage_used"), storage_used)
     ]
 ```
 
-The migration will keep track of how much Flow tokens in total were reserved, so that that amount can be removed from the supply
+The migration to add minimum account balance to all is actually just a series a transactions to give them flow.
 
 #### Future Migrations
 
@@ -309,7 +249,7 @@ Memory usage should not significantly change since only one field one resource a
 ### Dependencies
 
 * Dependent projects: 
-    * `flow-core-contracts` (adding **StorageFees** contract, changing **ServiceAccount** contract),
+    * `flow-core-contracts` (adding **FlowStorageFees** contract, changing **ServiceAccount** contract),
     * `cadence` (access to new fields),
     * `flow-go` (execution change),
     * `emulator` (emulate storage size limiting),
@@ -320,76 +260,6 @@ Memory usage should not significantly change since only one field one resource a
 * Binary size / build time / test times should not noticeably increase.
 * Most of the changes are spread out over cadence, flow-core-contracts and flow-go they can be covered by unit test separately.
 
-### Tutorials and Examples
-
-There are no protobuf API changes.
-
-There are Cadence API changes that can be covered with the following transactions examples:
-
-1. Get storage used and capacity of an account. 
-
-    ```cadence
-        let account: AuthAccount
-        log(account.storageUsed)
-        log(account.storageCapacity)
-
-        let publicAccount: PublicAccount
-        log(publicAccount.storageUsed)
-        log(publicAccount.storageCapacity)
-    ```
-
-1. Tx: purchase more storage for an account.
-
-    ```cadence
-    import StorageFees from 0xSTORAGEFEES
-
-    transaction(forAddress: Address, flowAmount: UFix64) {
-        // The Vault resource that holds the tokens that will be used to pay for storage
-        let paymentVault: @FungibleToken.Vault
-
-        prepare(account: AuthAccount) {
-            // Get a reference to the signer's stored vault
-            let vaultRef = account.borrow<&FlowToken.Vault>(from: /storage/flowTokenVault)
-                ?? panic("Could not borrow reference to the owner's Vault!")
-
-            // Withdraw tokens from the signer's stored vault
-            self.paymentVault <- vaultRef.withdraw(amount: flowAmount)
-        }
-
-        execute {
-            let storageReservationReceiver = StorageFees.getStorageReservationReceiver(forAddress)
-            storageReservationReceiver.deposit(from: <-paymentVault)
-        }
-    }
-
-    ```
-
-1. Tx: refund storage of an account.
-
-    ```cadence
-    import StorageFees from 0xSTORAGEFEES
-
-    transaction(flowAmount: UFix64) {
-
-        prepare(account: AuthAccount) {
-            // Get a reference to the signer's stored storageReservation
-            let storageCapacityRef = account.borrow<&StorageFees.StorageReservation>(from: StorageFees.storageReservationPath)
-                ?? panic("Could not borrow reference to the owner's StorageReservation!")
-
-            // Refund tokens from the signer's stored storageReservation
-            let refunded <- storageCapacityRef.withdraw(amount: flowAmount)
-
-            // Get a reference to the signer's Receiver
-            self.receiverRef = account.getCapability(/public/flowTokenReceiver)!.borrow<&{FungibleToken.Receiver}>()
-                ?? panic("Could not borrow receiver reference to the recipient's Vault")
-
-            // Deposit the refunded tokens
-            self.receiverRef.deposit(from: <- refunded)
-        }
-
-    }
-    ```
-
 ### Documentation changes
 
 The documentation changes should cover the following topics:
@@ -397,12 +267,11 @@ The documentation changes should cover the following topics:
 - Why storage fees?
 - How much are storage fees and where is this written?
 - Minimum storage on account?
-- Smallest purchasable storage chunk?
 - How to check storage used and capacity?
-- How to purchase more storage?
-- How to refund storage?
 - What error will I get if im out of storage?
 - Access to storage capacity and storage used values in Cadence programs.
+
+The docs are (here)[https://docs.onflow.org/concepts/storage]
 
 ### Compatibility
 
