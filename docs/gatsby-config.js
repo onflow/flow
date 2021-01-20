@@ -122,6 +122,7 @@ const sections = [
         "[Introduction to Cadence](/cadence)",
         "cadence/design-patterns",
         "cadence/anti-patterns",
+        "cadence/migration-guide",
       ],
       Tutorial: [
         "cadence/tutorial/01-first-steps",
