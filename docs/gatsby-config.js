@@ -123,6 +123,7 @@ const sections = [
         "cadence/design-patterns",
         "cadence/anti-patterns",
         "cadence/migration-guide",
+        "cadence/json-cadence-spec"
       ],
       Tutorial: [
         "cadence/tutorial/01-first-steps",
