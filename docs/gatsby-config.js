@@ -288,7 +288,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["emulator/index", "emulator/changelog"],
+      Overview: ["emulator/index"],
     },
   },
   {
