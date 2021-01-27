@@ -75,12 +75,16 @@ const sourceGithubRepos = {
     githubRepo: "onflow/cadence",
     // NOTE: path is empty, whole repo is sourced
     path: "",
-  },
+	},
+	go: {
+		githubRepo: "onflow/flow-go-sdk",
+		path: ""
+	}
 };
 
 // sourceSlugTransformers maps a sourceInstanceName to slug transformation functions
 const sourceSlugTransformers = {
-  cadence: (slug) => slug.replace(/^\/docs\//, "/cadence/"),
+	cadence: (slug) => slug.replace(/^\/docs\//, "/cadence/"),
 };
 
 const sections = [
