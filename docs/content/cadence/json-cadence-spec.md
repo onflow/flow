@@ -218,7 +218,7 @@ Dictionaries are encoded as a list of key-value pairs to preserve the determinis
 
 ```json
 {
-  "type": "Dictionary"
+  "type": "Dictionary",
   "value": [
     {
       "key": "<key>",
@@ -233,7 +233,7 @@ Dictionaries are encoded as a list of key-value pairs to preserve the determinis
 
 ```json
 {
-  "type": "Dictionary"
+  "type": "Dictionary",
   "value": [
     {
       "key": {
@@ -298,7 +298,7 @@ Composite fields are encoded as a list of name-value pairs in the order in which
   "type": "Path",
   "value": {
     "domain": "storage" | "private" | "public",
-    "identifier: "..."
+    "identifier": "..."
   }
 }
 ```
@@ -310,7 +310,7 @@ Composite fields are encoded as a list of name-value pairs in the order in which
   "type": "Path",
   "value": {
     "domain": "storage",
-    "identifier: "flowTokenVault"
+    "identifier": "flowTokenVault"
   }
 }
 ```
@@ -323,7 +323,7 @@ Composite fields are encoded as a list of name-value pairs in the order in which
 {
   "type": "Type",
   "value": {
-    "staticType: "..."
+    "staticType": "..."
   }
 }
 ```
@@ -334,7 +334,7 @@ Composite fields are encoded as a list of name-value pairs in the order in which
 {
   "type": "Type",
   "value": {
-    "staticType: "Int"
+    "staticType": "Int"
   }
 }
 ```

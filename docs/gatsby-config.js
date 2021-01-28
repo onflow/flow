@@ -122,6 +122,8 @@ const sections = [
         "[Introduction to Cadence](/cadence)",
         "cadence/design-patterns",
         "cadence/anti-patterns",
+        "cadence/migration-guide",
+        "cadence/json-cadence-spec"
       ],
       Tutorial: [
         "cadence/tutorial/01-first-steps",
@@ -286,7 +288,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["emulator/index", "emulator/changelog"],
+      Overview: ["emulator/index"],
     },
   },
   {
