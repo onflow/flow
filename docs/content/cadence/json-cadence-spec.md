@@ -218,7 +218,7 @@ Dictionaries are encoded as a list of key-value pairs to preserve the determinis
 
 ```json
 {
-  "type": "Dictionary"
+  "type": "Dictionary",
   "value": [
     {
       "key": "<key>",
@@ -233,7 +233,7 @@ Dictionaries are encoded as a list of key-value pairs to preserve the determinis
 
 ```json
 {
-  "type": "Dictionary"
+  "type": "Dictionary",
   "value": [
     {
       "key": {
