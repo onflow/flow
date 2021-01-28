@@ -17,7 +17,7 @@ Cadence is a resource-oriented programming language that introduces new features
 
 Swift and Rust inspire Cadence’s syntax. Its use of resource types maps well to that of Move, the programming language being developed by the Libra team.
 
-## Cadence's **Programming Language Pillars**
+## Cadence's Programming Language Pillars
 
 ---
 
@@ -29,13 +29,13 @@ Cadence, a new high-level programming language, needs to observe the following r
 - **Developer Experience:** The developer should be supported throughout the entire development lifecycle, from initial application logic to on-chain bugfixes.
 - **Intuiting Ownership with Resources:** Resources are a composite data type, similar to a struct, that expresses direct ownership of assets. Cadence’s strong static type system ensures that resources can only exist in one location at a time and cannot be copied or lost because of a coding mistake. Most smart contract languages currently use a ledger-style approach to record ownership, where an asset like is stored in the smart contract as an entry in a central ledger. Cadence’s resources directly tie an asset’s ownership to the [account](glossary#section-account) that owns it by saving the resource in the account’s storage. As a result, ownership isn’t centralized in a smart contract’s storage. Each account owns its assets, and the assets can be transferred freely between accounts without the need for arbitration by a central smart contract.
 
-## Addressing Challenges **with Existing Languages**
+## Addressing Challenges with Existing Languages
 
 ---
 
 Other languages pioneered smart contract development, but they lack in areas that affect the long-term viability of next-generation applications.
 
-### **Safety**
+### Safety
 
 Safety is the reliability of a smart contract to perform its function as intended. It is heavily influenced by the unchangeable-once-deployed nature of smart contracts: developers have to avoid introducing any potentially catastrophic weaknesses before releasing a smart contract. For example, in 2016, an overlooked vulnerability in the DAO code saw millions of dollars siphoned from a smart contract, eventually leading to a fork in Ethereum and two separate active blockchains (Ethereum and Ethereum Classic).
 
@@ -47,7 +47,7 @@ Some languages also express behaviors that developers tend to forget about. For 
 
 Cadence is type safe and has a strong static type system, which prevents important classes of erroneous or undesirable program behavior at compile-time (i.e., before the program is run on-chain). Types are checked statically and are not implicitly converted. Cadence also improves the safety of programs by preventing arithmetic underflow and overflow, introduces optionals to make nil-cases explicit, and always requires variables to be initialized. This helps ensure the behavior of these smart contracts is apparent and not dependent on context.
 
-### **Security**
+### Security
 
 Security, in combination with safety, ensures the successful execution of a smart contract over time by preventing unsanctioned access and guaranteeing that only authorized actions can be performed in the protocol. In some languages, functions are public by default, creating vulnerabilities that allow malicious users to find attack vectors. Cadence utilizes capability-based security, which allows the type system to enforce access control based on rules that users and developers have control over.
 
@@ -55,7 +55,7 @@ Security is a consideration when interacting with other smart contracts. Any ext
 
 In Cadence, the safety and security of programs are enhanced by **Design By Contract** and **Ownership Primitives.** Design by contract allows developers to state pre-conditions and post-conditions for functions and interfaces in a declarative manner so that callers can be certain about the behavior of called code. Ownership primitives are inspired by linear types and increase safety when working with assets. They ensure that valuable assets are, for example, not accidentally or maliciously lost or duplicated.
 
-### **Clarity and Approachability**
+### Clarity and Approachability
 
 Implicitness, context-dependability, and expressiveness are language-based challenges that developers often encounter. They affect the clarity (i.e. the readability of code and the ability to determine its intended function) and the approachability (i.e. the ability to interpret or write code) of the language and the programs built using it. For example, in Solidity, storage must be implemented in a low-level key-value manner, which obfuscates the developer’s intentions. Syntax confusion is another example, with “=+” being legal syntax leading to an assignment instead of a probably-intended increment. Solidity also has features with uncommon behaviors that can lead to unintended results. [Multiple inheritance may lead to unexpected behaviours in the program](https://medium.com/consensys-diligence/a-case-against-inheritance-in-smart-contracts-d7f2c738f78e), and testing and auditing the code is unlikely to identify this issue.
 

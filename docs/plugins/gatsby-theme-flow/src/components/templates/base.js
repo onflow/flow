@@ -52,7 +52,7 @@ export default function BaseTemplate(props) {
       />
       <StyledContentWrapper>
         <PageHeader {...frontmatter} />
-        <hr />
+        { frontmatter.title || frontmatter.description ? <hr /> :''}
         <PageContent
           title={frontmatter.title}
           playgroundUrl={fields.playgroundUrl}

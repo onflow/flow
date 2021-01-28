@@ -208,7 +208,6 @@ export default function PageContent(props) {
       </InnerWrapper>
       {sidebarPage(props.pathname) && (
         <Aside>
-          {/* <AsideHeading>{props.title}</AsideHeading> */}
           <AsideHeading>{props.headings.length ? "Contents" : ""}</AsideHeading>
           {props.headings.length > 0 && (
             <SectionNav

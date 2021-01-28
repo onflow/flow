@@ -184,7 +184,7 @@ export default function PageLayout(props) {
           )}
         </Sidebar>
         <Main>
-          <Header>
+          <Header title={title}>
             <MobileNav>
               <MobileLogo />
               <MenuButton onClick={openSidebar} />
@@ -205,7 +205,8 @@ export default function PageLayout(props) {
                   disableLinks={[
                     "/flow-port",
                     "/community-updates",
-                    "/tutorial",
+										"/tutorial",
+										"/packages"
                   ]}
                 />
               </BreadcrumbWrapper>

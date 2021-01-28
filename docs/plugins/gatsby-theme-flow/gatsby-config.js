@@ -124,18 +124,18 @@ module.exports = ({
       resolve: "gatsby-source-git",
       options: {
 				name: "flow-go-sdk",
-				branch: `adds-docs-folder`,
+				branch: `mackenzie/adds-docs-folder`,
         remote: "https://github.com/onflow/flow-go-sdk.git",
-        patterns: "docs/**/*",
+        patterns: ["docs/**/*"],
       },
 		},
 		{
       resolve: "gatsby-source-git",
       options: {
-				name: "flow-js-sdk",
-				branch: `adds-docs-folder`,
+				name: "flow-js-sdk-github",
+				branch: `mackenzie/adds-docs-folder`,
         remote: "https://github.com/onflow/flow-js-sdk.git",
-        patterns: "docs/**/*",
+        patterns: ["docs/**/*", "packages/**/*"],
       },
     },
     {

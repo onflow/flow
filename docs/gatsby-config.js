@@ -75,16 +75,18 @@ const sourceGithubRepos = {
     githubRepo: "onflow/cadence",
     // NOTE: path is empty, whole repo is sourced
     path: "",
-	},
-	go: {
-		githubRepo: "onflow/flow-go-sdk",
-		path: ""
-	}
+  },
 };
 
 // sourceSlugTransformers maps a sourceInstanceName to slug transformation functions
 const sourceSlugTransformers = {
-	cadence: (slug) => slug.replace(/^\/docs\//, "/cadence/"),
+  cadence: (slug) => slug.replace(/^\/docs\//, "/cadence/"),
+  "flow-js-sdk-github": (slug) =>
+    slug
+      .replace(/^\/docs\//, "/flow-js-sdk/")
+      .replace(/^\/packages\//, "/flow-js-sdk/packages/")
+      // Use README files as 'index' files1
+      .replace("README/", ""),
 };
 
 const sections = [
@@ -102,7 +104,7 @@ const sections = [
       ],
       Guides: [
         "[Flow Concepts](/concepts)",
-        "[Introduction to Cadence](/cadence/tutorial/01-first-steps/)",
+        "[Introduction to Cadence](/cadence)",
         "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
         "[Project Deployment Guide](/dapp-deployment)",
         "[Staking & Delegating](/staking)",
@@ -127,7 +129,7 @@ const sections = [
         "cadence/design-patterns",
         "cadence/anti-patterns",
         "cadence/migration-guide",
-        "cadence/json-cadence-spec"
+        "cadence/json-cadence-spec",
       ],
       Tutorial: [
         "cadence/tutorial/01-first-steps",
@@ -161,16 +163,6 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["flow-js-sdk/**/*"],
-    sidebarAlwaysExpanded: true,
-    sidebar: {
-      null: ["[Home](/)"],
-      Overview: ["flow-js-sdk/index"],
-      "Developer Guides": ["flow-js-sdk/flow-app-quickstart"],
-    },
-  },
-  {
-    sourceInstanceName: "docs",
     patterns: ["flow-cli/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
@@ -189,6 +181,22 @@ const sections = [
         "concepts/transaction-signing",
         "concepts/storage",
       ],
+    },
+  },
+  {
+    sourceInstanceName: "flow-js-sdk-github",
+    patterns: ["docs/**/*", "packages/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: ["[Home](/)"],
+      Packages: [
+        "[@onflow/fcl](/flow-js-sdk/packages/fcl)",
+				"[@onflow/sdk](/flow-js-sdk/packages/sdk)",
+				"[@onflow/types](/flow-js-sdk/packages/types)",
+      ],
+      "Developer Guides": [
+				"[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
+			],
     },
   },
   {
@@ -349,6 +357,7 @@ module.exports = {
     title: "Flow Documentation",
   },
   plugins: [
+    "gatsby-plugin-remove-trailing-slashes",
     {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
