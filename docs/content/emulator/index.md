@@ -15,7 +15,7 @@ The emulator is bundled with the [Flow CLI](/flow-cli), a command-line interface
 
 ### Installation
 
-Follow [these steps](https://github.com/dapperlabs/flow-cli#flow-cli) to install the Flow CLI on macOS, Linux, and Windows.
+Follow [these steps](https://github.com/onflow/flow-cli#flow-cli) to install the Flow CLI on macOS, Linux, and Windows.
 
 ## Usage
 
