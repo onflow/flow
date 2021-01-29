@@ -5,7 +5,7 @@
 	"scripts": {
 		"prestart": "gatsby clean",
 		"start": "node --nolazy node_modules/.bin/gatsby develop --inspect-brk",
-		"build": "gatsby build",
+		"build": "gatsby clean && gatsby build",
 		"serve": "gatsby serve",
 		"test:integration": "jest -c integration/jest.config.js",
 		"test:integrationWithWatch": "jest -c integration/jest.config.js --watch"
