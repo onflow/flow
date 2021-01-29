@@ -85,7 +85,7 @@ const sourceSlugTransformers = {
     slug
       .replace(/^\/docs\//, "/flow-js-sdk/")
       .replace(/^\/packages\//, "/flow-js-sdk/packages/")
-      // Use README files as 'index' files1
+      // Use README files as 'index' files!
       .replace("README/", ""),
 };
 
@@ -191,12 +191,19 @@ const sections = [
       null: ["[Home](/)"],
       Packages: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl)",
-				"[@onflow/sdk](/flow-js-sdk/packages/sdk)",
+				// "[@onflow/sdk](/flow-js-sdk/packages/sdk)",
 				"[@onflow/types](/flow-js-sdk/packages/types)",
+				"[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react)",
       ],
       "Developer Guides": [
+				"[Introducing @onflow/fcl](/flow-js-sdk)",
 				"[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
 			],
+			"Changelogs": [
+				"[@onflow/fcl](/flow-js-sdk/packages/fcl/CHANGELOG)",
+				"[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)",
+				"[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react/CHANGELOG)"
+			]
     },
   },
   {
@@ -372,7 +379,16 @@ module.exports = {
           {
             pathname: "/access-api",
             crumbLabel: "Access API",
-          },
+					},
+
+					{
+            pathname: "/flow-js-sdk/packages/fcl",
+            crumbLabel: "FCL",
+					},
+					{
+            pathname: "/flow-js-sdk/packages/fcl-react",
+            crumbLabel: "FCL + React",
+					},
           {
             pathname: "/flow-token/faq",
             crumblabel: "FAQ",
