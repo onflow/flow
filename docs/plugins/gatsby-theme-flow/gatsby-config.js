@@ -119,23 +119,28 @@ module.exports = ({
         remote: "https://github.com/onflow/cadence.git",
         patterns: "docs/language/**/*",
       },
-		},
-		{
+    },
+    {
       resolve: "gatsby-source-git",
       options: {
-				name: "flow-go-sdk",
-				branch: `master`,
+        name: "flow-go-sdk",
+        branch: `master`,
         remote: "https://github.com/onflow/flow-go-sdk.git",
         patterns: ["docs/**/*"],
       },
-		},
-		{
+    },
+    {
       resolve: "gatsby-source-git",
       options: {
-				name: "flow-js-sdk-github",
-				branch: `master`,
+        name: "flow-js-sdk-github",
+        branch: `master`,
         remote: "https://github.com/onflow/flow-js-sdk.git",
-        patterns: ["docs/**/*", "packages/**/*"],
+        patterns: [
+          "docs/**/*",
+          "packages/fcl/**/*",
+          "packages/types/**/*",
+          "packages/fcl-react/**/*",
+        ],
       },
     },
     {
