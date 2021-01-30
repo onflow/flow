@@ -123,10 +123,10 @@ module.exports = ({
     {
       resolve: "gatsby-source-git",
       options: {
-        name: "flow-go-sdk",
+        name: "flow-go-sdk-github",
         branch: `master`,
         remote: "https://github.com/onflow/flow-go-sdk.git",
-        patterns: ["docs/**/*"],
+        patterns: ["docs/**/*", "examples/**/*"],
       },
     },
     {
@@ -165,14 +165,6 @@ module.exports = ({
         ],
       },
     },
-    // {
-    //   resolve: "gatsby-plugin-printer",
-    //   options: {
-    //     puppeteerLaunchOptions: {
-    //       headless: true,
-    //     },
-    //   },
-    // },
     ...Object.entries(versions).map(([name, branch]) => ({
       resolve: "gatsby-source-git",
       options: {

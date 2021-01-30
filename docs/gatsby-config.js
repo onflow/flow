@@ -86,7 +86,13 @@ const sourceSlugTransformers = {
       .replace(/^\/docs\//, "/flow-js-sdk/")
       .replace(/^\/packages\//, "/flow-js-sdk/packages/")
       // Use README files as 'index' files!
-      .replace("README/", ""),
+			.replace("README/", ""),
+	"flow-go-sdk-github": (slug) =>
+			slug
+				.replace(/^\/docs\//, "/flow-go-sdk/")
+				.replace(/^\/examples\//, "/flow-go-sdk/examples/")
+				// Use README files as 'index' files!
+				.replace("README/", ""),
 };
 
 const sections = [
@@ -145,24 +151,6 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["flow-go-sdk/**/*"],
-    sidebarAlwaysExpanded: true,
-    sidebar: {
-      null: ["[Home](/)"],
-      Overview: ["flow-go-sdk/index", "flow-go-sdk/changelog"],
-      "Developer Guides": [
-        "flow-go-sdk/create-account",
-        "flow-go-sdk/build-transaction",
-        "flow-go-sdk/sign-transaction",
-        // "flow-go-sdk/sign-transaction-hsm",
-        "flow-go-sdk/send-transaction",
-        // "flow-go-sdk/query-events",
-        // "flow-go-sdk/transfer-funds",
-      ],
-    },
-  },
-  {
-    sourceInstanceName: "docs",
     patterns: ["flow-cli/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
@@ -182,6 +170,15 @@ const sections = [
         "concepts/storage",
       ],
     },
+	},
+	{
+    sourceInstanceName: "flow-go-sdk-github",
+    patterns: ["docs/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: ["[Home](/)"],
+      Overview: ["[Introduction](/flow-go-sdk)"],
+    },
   },
   {
     sourceInstanceName: "flow-js-sdk-github",
@@ -191,7 +188,6 @@ const sections = [
       null: ["[Home](/)"],
       Packages: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl)",
-				// "[@onflow/sdk](/flow-js-sdk/packages/sdk)",
 				"[@onflow/types](/flow-js-sdk/packages/types)",
 				"[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react)",
       ],
