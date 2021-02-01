@@ -16,8 +16,8 @@ const StyledList = styled.ul({
 
 const StyledListItem = styled.li(props => ({
   listStyle: 'none',
-  fontSize: '1rem',
-  lineHeight: 'inherit',
+  fontSize: '15px',
+  lineHeight: 1,
   color: props.active && theme.primary,
   a: {
     color: 'inherit',
@@ -79,7 +79,7 @@ export default function SectionNav(props) {
   let activeHeading = null;
   const windowOffset = height / 2;
   const scrollTop = y + windowOffset;
-  
+
   for (let i = offsets.length - 1; i >= 0; i--) {
     const {id, offset} = offsets[i];
 

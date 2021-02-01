@@ -45,9 +45,9 @@ const StyledList = styled.ul({
 const StyledListItem = (props) => {
   const LI = styled.li({
     ...props.extraStyles,
-    fontSize: "1rem",
-    lineHeight: 1.5,
-    marginBottom: "0.8125rem",
+    fontSize: "15px",
+    lineHeight: 1,
+    marginBottom: "15px",
     a: {
       color: "inherit",
       textDecoration: "none",
@@ -184,7 +184,7 @@ function getStylesForNavItem(page) {
         paddingLeft: "1rem",
         marginLeft: "-1rem",
         borderRadius: "1000px",
-        boxShadow: ` 20px 20x 60px #1b63b6, 
+        boxShadow: ` 20px 20x 60px #1b63b6,
         -20px -20px 60px #2587f6`,
       };
     case "Node Operation Quick Guide":
@@ -194,7 +194,7 @@ function getStylesForNavItem(page) {
         paddingLeft: "1rem",
         marginLeft: "-1rem",
         borderRadius: "1000px",
-        boxShadow: ` 20px 20x 60px #1b63b6, 
+        boxShadow: ` 20px 20x 60px #1b63b6,
         -20px -20px 60px #2587f6`,
         background: colors.blue.lightest,
       };
