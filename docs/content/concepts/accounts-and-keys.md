@@ -1,38 +1,8 @@
-# Accounts, Keys and Signing
+---
+title: Accounts, Keys & Signing
+---
 
 Flow introduces new features to give applications and end users more safety and flexibility when managing keys, accounts and the assets inside them.
-
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-**Table of Contents**
-
-- [Accounts, Keys and Signing](#accounts-keys-and-signing)
-	- [Accounts](#accounts)
-		- [Account Creation](#account-creation)
-		- [Account Addresses](#account-addresses)
-	- [Keys](#keys)
-		- [Adding a Key to an Account](#adding-a-key-to-an-account)
-		- [Revoking a Key From an Account](#revoking-a-key-from-an-account)
-		- [Supported Signature & Hash Algorithms](#supported-signature--hash-algorithms)
-		- [Weighted Keys](#weighted-keys)
-	- [Signing a Transaction](#signing-a-transaction)
-		- [Signer Roles](#signer-roles)
-		- [Proposal Key](#proposal-key)
-		- [Sequence Numbers](#sequence-numbers)
-		- [Anatomy of a Transaction](#anatomy-of-a-transaction)
-			- [Payload](#payload)
-			- [Authorization Envelope](#authorization-envelope)
-			- [Payment Envelope](#payment-envelope)
-			- [Payer Signs Last](#payer-signs-last)
-			- [Signature Structure](#signature-structure)
-		- [Common Signing Scenarios](#common-signing-scenarios)
-			- [Single party, single signature](#single-party-single-signature)
-			- [Single party, multiple signatures](#single-party-multiple-signatures)
-			- [Multiple parties](#multiple-parties)
-			- [Multiple parties, multiple signatures](#multiple-parties-multiple-signatures)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Accounts
 
