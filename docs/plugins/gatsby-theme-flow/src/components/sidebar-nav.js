@@ -22,7 +22,7 @@ const ExpandAll = styled.button(smallCaps, {
   border: 0,
   fontSize: 12,
   fontWeight: 600,
-  lineHeight: 1,
+  lineHeight: 1.23,
   background: "none",
   outline: "none",
   cursor: "pointer",
@@ -46,7 +46,7 @@ const StyledListItem = (props) => {
   const LI = styled.li({
     ...props.extraStyles,
     fontSize: "15px",
-    lineHeight: 1,
+    lineHeight: 1.23,
     marginBottom: "15px",
     a: {
       color: "inherit",
@@ -80,7 +80,7 @@ const categoryTitleStyles = {
   color: theme.text3,
   fontWeight: "bold",
   fontSize: 13,
-  lineHeight: "15px",
+  lineHeight: 1.23,
   ...smallCaps,
   svg: size(10),
   "&.active": {
