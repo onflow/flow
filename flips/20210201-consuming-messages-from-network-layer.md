@@ -1,4 +1,16 @@
-# Handing Messages from Networking Layer to Engines
+# Handing Messages from Networking Layer to Engines (Core Protocol)
+
+| Status        | Proposed       |
+:-------------- |:---------------------------------------------------- |
+| **FLIP #**    | [343](https://github.com/onflow/flow/pull/343) |
+| **Author(s)** | Alex Hentschel (alex.hentschel@dapperlabs.com) |
+| **Sponsor**   | Alex Hentschel (alex.hentschel@dapperlabs.com)             |
+| **Updated**   | 2021-02-01                                           |
+
+
+## Objective
+
+FLIP to generalize the API though which the Networking Layer hands messages to Engines
 
 ## Current Implementation
 
@@ -51,7 +63,8 @@ Furthermore, the overwhelmed engine cannot drop messages or change its behaviour
 as the message queue is not within its component. 
 
 
-## Proposal
+## Design Proposal
+
 The detailed semantics of the message types and their processing modality are only known to the application layer.
 **Overall, I think it would be beneficial to generalize the API through which the networking layer hands the messages
 to the application layer. For each channel, the application layer should inject the desired message consumer.**
