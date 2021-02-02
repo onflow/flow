@@ -47,7 +47,6 @@ const StyledListItem = (props) => {
     ...props.extraStyles,
     fontSize: "15px",
     lineHeight: 1.23,
-    marginBottom: "15px",
     a: {
       color: "inherit",
       textDecoration: "none",
