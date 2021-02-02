@@ -206,7 +206,8 @@ export default function PageLayout(props) {
                     "/flow-port",
                     "/community-updates",
 										"/tutorial",
-										"/flow-js-sdk/packages"
+										"/flow-js-sdk/packages",
+										"/flow-go-sdk/examples"
                   ]}
                 />
               </BreadcrumbWrapper>

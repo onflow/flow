@@ -124,7 +124,7 @@ module.exports = ({
       resolve: "gatsby-source-git",
       options: {
         name: "flow-go-sdk-github",
-        branch: `master`,
+        branch: `mackenzie/split-up-docs-pages`,
         remote: "https://github.com/onflow/flow-go-sdk.git",
         patterns: ["docs/**/*", "examples/**/*"],
       },
