@@ -57,7 +57,8 @@ then the identity table change is propagated to the consensus committee (and ult
 
 1. To request self-ejection, the operator (denoted as _Alice_) submits the respective transaction 
    (denoted as _T_) to the network (same process as any other conventional transaction).
-   For security purposes, we might want to require that the request is signed by the staking key of the node that is requesting its own ejection.
+   - This transaction will require access to the resource obtained by the operator during staking registration. 
+     For additional security we may want to require that the request is signed by the staking key of the node requesting self-ejection.
 2. The transaction will eventually be included in a block (denoted as _A_ in the illustration above).
 
    1. When the Execution Nodes process transaction _T_, a `Service Event` is emitted. 
