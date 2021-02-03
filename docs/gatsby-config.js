@@ -177,7 +177,18 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["[Introduction](/flow-go-sdk)"],
+			Overview: ["[Introduction](/flow-go-sdk)"],
+			Examples: [
+				"docs/generating-keys",
+				"docs/creating-accounts",
+				"docs/building-transactions",
+				"docs/signing-transactions",
+				"docs/sending-transactions",
+				"docs/querying-accounts",
+				"docs/querying-transactions",
+				"docs/querying-events",
+				"docs/querying-blocks",
+			]
     },
   },
   {
