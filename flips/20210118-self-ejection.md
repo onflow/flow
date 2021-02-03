@@ -3,9 +3,9 @@
 | Status        | Proposed       |
 :-------------- |:---------------------------------------------------- |
 | **FLIP #**    | [324](https://github.com/onflow/flow/pull/324) |
-| **Author(s)** | Alex Hentschel (alex.hentschel@dapperlabs.com) |
+| **Author(s)** | Alex Hentschel (alex.hentschel@dapperlabs.com) <br /> Jordan Schalm (jordan@dapperlabs.com)|
 | **Sponsor**   | Alex Hentschel (alex.hentschel@dapperlabs.com)             |
-| **Updated**   | 2021-01-18                                           |
+| **Updated**   | 2021-02-02                                           |
 
 ## Objective
 Staked nodes running the core protocol are expected to participate for the duration of 
