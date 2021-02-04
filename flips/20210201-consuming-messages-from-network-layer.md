@@ -192,3 +192,12 @@ This would be a single issue.
 
 #### Implementation Step (5): buffer
 Some buffer for technical complications and additional cleanup work.  
+
+#### Optional 
+We could remove the `network.Engine` interface and the `SubmitLocal`, `Process` functions that are copied in every engine
+to satisfy it. These are rarely used and only exist because `network.Engine` was originally created with more methods
+than it needed. 
+
+The needed implementations of `SubmitLocal` or `Process` methods could be renamed with context-specific names
+(e.g. `engine.HandleBlock(block)`)
+
