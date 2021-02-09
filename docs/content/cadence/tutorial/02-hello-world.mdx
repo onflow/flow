@@ -4,7 +4,7 @@ title: 2. Hello World
 
 import Img from "../../components/tutorial-image";
 
-### Lets write and deploy our first smart contract!
+### Let's write and deploy our first smart contract!
 
 <Callout type="success">
   Open the starter code for this tutorial in the Flow Playground: <br />
@@ -49,8 +49,8 @@ There are only three valid domains which represent the three areas in the accoun
 Identifiers are custom and can be any name you want them to be to indicate what is stored in that path.
 
 - The `storage` domain is where all objects (such as tokens or NFTs) are stored. It is only accessible by the owner of the account.
-- The `private` domain is like a private API. You can optionally store [capabilities](/intro/glossary/#capability) to any of your stored assets here. Only the owner and anyone they give access to can use these interfaces to call functions that are defined in your private assets. Users will commonly store private capabilities here that refer to other accounts private objects.
-- The `public` domain is kind of like your account's public API. The owner can store capabilities here that that anyone else in the network can access to interact with the private assets that are stored in the account.
+- The `private` domain is like a private API. You can optionally store [capabilities](/intro/glossary/#capability) to any of your stored assets here. Only the owner and anyone they give access to can use these interfaces to call functions that are defined in your private assets. Users will commonly store private capabilities here that refer to other account's private objects.
+- The `public` domain is kind of like your account's public API. The owner can store capabilities here that anyone else in the network can access to interact with the private assets that are stored in the account.
 
 <Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/accounts-diagram.png" />
 
@@ -176,7 +176,7 @@ Transactions are divided into two main phases, `prepare` and `execute`.
 1. The `prepare` phase is the only place that has access to the signing accounts' private `AuthAccount` object. `AuthAccount` has special methods that allow saving to and loading from `/storage/` and `/private/`, and creating `/public/` links to the objects in `/storage/`.
 2. The `execute` phase does not have access to `AuthAccount` and thus can only modify the objects that were removed in the `prepare` phase and call functions on external contracts and objects.
 
-By not allowing the execute phase to access account storage, we can statically verify which assets and areas of the signers storage a given transaction can modify. Browser wallets and applications that submit transactions for users can use this to show what a transaction could alter, and users can have more confidence that they aren't getting fed a malicious or dangerous transaction via an application-generated transaction. You can see examples of why this is important in the [FAQ](https://onflow.readme.io/docs/faq#section-why-is-a-transaction-split-up-into-prepare-execute-post)
+By not allowing the execute phase to access account storage, we can statically verify which assets and areas of the signer's storage a given transaction can modify. Browser wallets and applications that submit transactions for users can use this to show what a transaction could alter, and users can have more confidence that they aren't getting fed a malicious or dangerous transaction via an application-generated transaction. You can see examples of why this is important in the [FAQ](https://onflow.readme.io/docs/faq#section-why-is-a-transaction-split-up-into-prepare-execute-post)
 
 You can have multiple signers of a transaction by clicking multiple account avatars in the playground, but the number of parameters of the prepare block of the transaction NEEDS to be the same as the number of signers. If not, this will cause an error.
 
@@ -303,7 +303,7 @@ The first parameter is the object that is being stored, and the `to` parameter i
 
 If there is already an object stored under the given path, the program aborts. Remember, the Cadence type system ensures that a resource can never be accidentally lost. When moving a resource to a field, into an array, into a dictionary, or into storage, there is the possibility that the location already contains a resource. Cadence forces the developer to handle the case of an existing resource so that it is not accidentally lost through an overwrite. This is also why we can't let the execution reach the end of the block without doing anything with `newHello`, and why `save` would fail if there is already a resource at the specified path.
 
-In this case, this is the first transaction we have run, so we know that the storage spot at `/storage/Hello is empty. In real applications, we would likely perform necessary checks and actions with the location we are storing to to make sure we don't abort the transaction because of an accidental overwrite.
+In this case, this is the first transaction we have run, so we know that the storage spot at `/storage/Hello is empty. In real applications, we would likely perform necessary checks and actions with the location we are storing to make sure we don't abort the transaction because of an accidental overwrite.
 
 Now that you have stored a resource in an account, you should see that resource show up in the `Resources` box below the editor. This box indicates which resources are stored in the selected account, and the values of the fields inside those resources. Right now, you should see that the `HelloAsset` resource is stored in account `0x02`'s storage and it has no fields.
 
@@ -385,7 +385,7 @@ Next, we use `save` again to put the object back in storage in the same spot:
 acct.save(<-helloResource!, to: /storage/Hello)
 ```
 
-Remember, `helloResource` is still an optional, so we have to handle the possibility that it is `nil`. Here, we use the force-unwrap operator (`!`). This operator gets the value in the optional if it contains a value, and aborts the entire transaction if the object is `nil`. It is a more risky way of dealing with optionals, but if your program is ever in a state where a value being `nil` would defeat the purpose of the whole transaction, the the force-unwrap operator is a good choice to deal with that.
+Remember, `helloResource` is still an optional, so we have to handle the possibility that it is `nil`. Here, we use the force-unwrap operator (`!`). This operator gets the value in the optional if it contains a value, and aborts the entire transaction if the object is `nil`. It is a more risky way of dealing with optionals, but if your program is ever in a state where a value being `nil` would defeat the purpose of the whole transaction, the force-unwrap operator is a good choice to deal with that.
 
 Refer to [Optionals In Cadence](/intro/glossary/#optionals-in-cadence) to learn more about optionals and how they are used.
 
