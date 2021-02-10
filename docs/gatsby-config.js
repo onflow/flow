@@ -86,13 +86,13 @@ const sourceSlugTransformers = {
       .replace(/^\/docs\//, "/flow-js-sdk/")
       .replace(/^\/packages\//, "/flow-js-sdk/packages/")
       // Use README files as 'index' files!
-			.replace("README/", ""),
-	"flow-go-sdk-github": (slug) =>
-			slug
-				.replace(/^\/docs\//, "/flow-go-sdk/")
-				.replace(/^\/examples\//, "/flow-go-sdk/examples/")
-				// Use README files as 'index' files!
-				.replace("README/", ""),
+      .replace("README/", ""),
+  "flow-go-sdk-github": (slug) =>
+      slug
+        .replace(/^\/docs\//, "/flow-go-sdk/")
+        .replace(/^\/examples\//, "/flow-go-sdk/examples/")
+        // Use README files as 'index' files!
+        .replace("README/", ""),
 };
 
 const sections = [
@@ -170,25 +170,26 @@ const sections = [
         "concepts/storage",
       ],
     },
-	},
-	{
+  },
+  {
     sourceInstanceName: "flow-go-sdk-github",
     patterns: ["docs/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-			Overview: ["[Introduction](/flow-go-sdk)"],
-			Examples: [
-				"docs/generating-keys",
-				"docs/creating-accounts",
-				"docs/building-transactions",
-				"docs/signing-transactions",
-				"docs/sending-transactions",
-				"docs/querying-accounts",
-				"docs/querying-transactions",
-				"docs/querying-events",
-				"docs/querying-blocks",
-			]
+      Overview: ["[Introduction](/flow-go-sdk)"],
+      Examples: [
+        "docs/generating-keys",
+        "docs/creating-accounts",
+        "docs/building-transactions",
+        "docs/signing-transactions",
+        "docs/sending-transactions",
+        "docs/querying-accounts",
+        "docs/querying-transactions",
+        "docs/querying-events",
+        "docs/querying-blocks",
+        "docs/transfer-flow",
+      ]
     },
   },
   {
@@ -199,18 +200,18 @@ const sections = [
       null: ["[Home](/)"],
       Packages: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl)",
-				"[@onflow/types](/flow-js-sdk/packages/types)",
-				"[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react)",
+        "[@onflow/types](/flow-js-sdk/packages/types)",
+        "[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react)",
       ],
       "Developer Guides": [
-				"[Introducing @onflow/fcl](/flow-js-sdk)",
-				"[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
-			],
-			"Changelogs": [
-				"[@onflow/fcl](/flow-js-sdk/packages/fcl/CHANGELOG)",
-				"[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)",
-				"[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react/CHANGELOG)"
-			]
+        "[Introducing @onflow/fcl](/flow-js-sdk)",
+        "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
+      ],
+      "Changelogs": [
+        "[@onflow/fcl](/flow-js-sdk/packages/fcl/CHANGELOG)",
+        "[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)",
+        "[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react/CHANGELOG)"
+      ]
     },
   },
   {
@@ -386,16 +387,16 @@ module.exports = {
           {
             pathname: "/access-api",
             crumbLabel: "Access API",
-					},
+          },
 
-					{
+          {
             pathname: "/flow-js-sdk/packages/fcl",
             crumbLabel: "FCL",
-					},
-					{
+          },
+          {
             pathname: "/flow-js-sdk/packages/fcl-react",
             crumbLabel: "FCL + React",
-					},
+          },
           {
             pathname: "/flow-token/faq",
             crumblabel: "FAQ",
