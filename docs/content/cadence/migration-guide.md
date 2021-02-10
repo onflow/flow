@@ -4,7 +4,7 @@ title: Migration Guide
 
 ## v0.11
 
-Version 0.11 [introduced breaking changes](https://github.com/onflow/cadence/releases/edit/v0.11.0):
+Version 0.11 [introduced breaking changes](https://github.com/onflow/cadence/releases/tag/v0.11.0):
 Paths are now typed, i.e. there are specific subtypes for storage, public, and private paths,
 and the Storage API has been made type-safer by changing parameter types to more specific path types.
 
