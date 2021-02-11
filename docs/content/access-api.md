@@ -604,6 +604,8 @@ rpc GetEventsForHeightRange(GetEventsForHeightRangeRequest) returns (GetEventsFo
 
 Events can be requested for a specific sealed block range via the `start_height` and `end_height` (inclusive) fields and further filtered by event type via the `type` field.
 
+If `start_height` is greater than the current sealed chain height, then this method will return an error.
+
 If `end_height` is greater than the current sealed chain height, then this method will return events up to and including the latest sealed block.
 
 The event results are grouped by block, with each group specifying a block ID, height and block timestamp.
