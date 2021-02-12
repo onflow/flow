@@ -61,7 +61,7 @@ There are only three valid domains which represent the three areas in the accoun
 Identifiers are custom and can be any name you want them to be to indicate what is stored in that path.
 
 - The `storage` domain is where all objects (such as structs and resource objects representing tokens or NFTs) are stored. It is only directly accessible by the owner of the account.
-- The `private` domain is like a private API. You can optionally store [capabilities](/cadence/language/#capability-based-access-control/) to any of your stored assets here. 
+- The `private` domain is like a private API. You can optionally store [capabilities](/cadence/language/capability-based-access-control/) to any of your stored assets here. 
 Only the owner and anyone they give access to can use these interfaces to call functions that are defined in your private assets. 
 Users will commonly store private capabilities here that refer to other accounts private objects.
 - The `public` domain is kind of like your account's public API. The owner can link capabilities here that that anyone else in the network can access 
@@ -69,7 +69,7 @@ to interact with the private assets that are stored in the account.
 
 <Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/accounts-diagram.png" />
 
-A [Transaction](/cadence/language/#transactions) in Flow is defined as an arbitrary-sized block of Cadence code that is signed by one or more accounts. 
+A [Transaction](/cadence/language/transactions) in Flow is defined as an arbitrary-sized block of Cadence code that is signed by one or more accounts. 
 Transactions have access to the `/storage/` and `/private/` domains of the accounts that signed the transaction and can read and write to those domains, 
 as well as read and call functions in public contracts and the public domains in other users` accounts.
 
@@ -119,13 +119,21 @@ pub contract HelloWorld {
 }
 ```
 
-A contract is a collection of code (its functions) and data (its state) that lives in the contract area of an account in Flow. Currently, accounts can only have one contract and/or one contract interface. The line `pub let greeting: String` declares a public state constant, using the `pub` `let` keywords, called `greeting` of type `String`. We would have used `var` if we wanted to declare a variable.
+A contract is a collection of code (its functions) and data (its state) that lives in the contract area of an account in Flow. 
+Accounts can only have one or more contracts and/or contract interfaces, and these can be freely added, removed, or updated (with some restrictions) by the owner of the account.
 
-The `pub` keyword is an example of an access control specification meaning that it can be accessed in all scopes, but not written in all scopes. You can also use `access(all)` interchangeably with `pub` if you prefer something more descriptive. Please refer to the [Access Control section in the Glossary](/intro/glossary/#access-control) to learn more about the different levels of access control permitted in Cadence.
+The line `pub let greeting: String` declares a public state constant, using the `pub` `let` keywords, called `greeting` of type `String`. 
+We would have used `var` if we wanted to declare a variable.
 
-The `init()` section is called the initializer. It is a function that is only run when the contract is created and never again. In this example, the initializer sets the `greeting` field to `"Hello, World!"`.
+The `pub` keyword is an example of an access control specification meaning that it can be accessed in all scopes, but not written to in all scopes. 
+You can also use `access(all)` interchangeably with `pub` if you prefer something more descriptive. 
+Please refer to the [Access Control section of the language reference](/cadence/language/access-control/) to learn more about the different levels of access control permitted in Cadence.
 
-Next is a public function declaration that returns a value of type `String`. Anyone who imports this contract can call the public contract functions; i.e. the ones that have `pub` or `access(all)` specified.
+The `init()` section is called the initializer. It is a function that is only run when the contract is created and never again. 
+In this example, the initializer sets the `greeting` field to `"Hello, World!"`.
+
+Next is a public function declaration that returns a value of type `String`. 
+Anyone who imports this contract can read the public fields, use the public types, and call the public contract functions; i.e. the ones that have `pub` or `access(all)` specified.
 
 Now we can deploy this contract to your account and run a transaction that calls its function.
 
