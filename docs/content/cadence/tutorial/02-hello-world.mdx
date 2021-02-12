@@ -32,15 +32,27 @@ Before you get started with Flow, you need to understand how accounts and transa
 
 ---
 
-Like most other blockchains, the programming model in Flow is centered around accounts and transactions. All persistent state and its interfaces (the ways to interact with it) are stored in [accounts](glossary#section-account) and all code execution takes place within transactions, which are blocks of code that are submitted by external users to interact with the persistent state, which includes directly modifying account storage.
+Like most other blockchains, the programming model in Flow is centered around accounts and transactions. 
+All persistent state and its interfaces (the ways to interact with it) are stored in [accounts](https://docs.onflow.org/cadence/language/accounts/) 
+and all code execution takes place within transactions, which are blocks of code that are submitted by external users to interact with the persistent state, 
+which includes directly modifying account storage.
 
-Each user has an account controlled by one or more private keys. This means that support for multi-sig wallets is built into the protocol by default.
+Each user has an account controlled by one or more private keys. 
+This means that support for multi-sig wallets is built into the protocol by default.
 
 An account is divided into two main areas:
 
-1. The first area is the [contract area](/intro/glossary/#account). This is the area that stores programs known as smart contracts that contain type definitions, fields, and functions that are related to a common functionality. This can also hold contract interfaces, which are basically program guidelines that other contracts can import and implement. This area cannot be directly read from in a transaction, but the owner of an account can directly overwrite contracts that are stored in it.
-2. The second area is the account filesystem. This area is accessible in transactions and is where an account stores the objects that they own and the capabilities for controlling how these objects are accessed.
-   Objects are stored under paths in the account filesystem. Paths consist of a domain and an identifier.
+1. The first area is the [contract area](https://docs.onflow.org/cadence/language/accounts/). 
+This is the area that stores any number of programs known as smart contracts that contain type definitions, fields, 
+and functions that are related to a common functionality. 
+This can also hold contract interfaces, which are basically program guidelines that other contracts can import and implement. 
+This area cannot be directly read from in a transaction, unless the transaction is just reading the code deployed to an account.
+The owner of an account can directly add, remove, or update/overwrite contracts that are stored in it.
+
+2. The second area is the account filesystem. This area is accessible in transactions and is where an account stores the objects 
+that they own and the capabilities for controlling how these objects are accessed.
+
+Objects are stored under [paths in the account filesystem](https://docs.onflow.org/cadence/language/accounts/#paths). Paths consist of a domain and an identifier.
 
 Paths start with the character `/`, followed by the domain, the path separator `/`, and finally the identifier. For example, the path `/storage/test` has the domain `storage` and the identifier `test`.
 
@@ -48,13 +60,18 @@ There are only three valid domains which represent the three areas in the accoun
 
 Identifiers are custom and can be any name you want them to be to indicate what is stored in that path.
 
-- The `storage` domain is where all objects (such as tokens or NFTs) are stored. It is only accessible by the owner of the account.
-- The `private` domain is like a private API. You can optionally store [capabilities](/intro/glossary/#capability) to any of your stored assets here. Only the owner and anyone they give access to can use these interfaces to call functions that are defined in your private assets. Users will commonly store private capabilities here that refer to other accounts private objects.
-- The `public` domain is kind of like your account's public API. The owner can store capabilities here that that anyone else in the network can access to interact with the private assets that are stored in the account.
+- The `storage` domain is where all objects (such as structs and resource objects representing tokens or NFTs) are stored. It is only directly accessible by the owner of the account.
+- The `private` domain is like a private API. You can optionally store [capabilities](/cadence/language/#capability-based-access-control/) to any of your stored assets here. 
+Only the owner and anyone they give access to can use these interfaces to call functions that are defined in your private assets. 
+Users will commonly store private capabilities here that refer to other accounts private objects.
+- The `public` domain is kind of like your account's public API. The owner can link capabilities here that that anyone else in the network can access 
+to interact with the private assets that are stored in the account.
 
 <Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/accounts-diagram.png" />
 
-A [Transaction](/intro/glossary/#transaction) in Flow is defined as an arbitrary-sized block of Cadence code that is signed by one or more accounts. Transactions have access to the `/storage/` and `/private/` domains of the accounts that signed the transaction and can read and write to those domains, as well as read and call functions in public contracts and the public domains in other users` accounts.
+A [Transaction](/cadence/language/#transactions) in Flow is defined as an arbitrary-sized block of Cadence code that is signed by one or more accounts. 
+Transactions have access to the `/storage/` and `/private/` domains of the accounts that signed the transaction and can read and write to those domains, 
+as well as read and call functions in public contracts and the public domains in other users` accounts.
 
 ## Creating a Smart Contract
 
