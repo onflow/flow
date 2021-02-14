@@ -16,7 +16,7 @@ This guide assumes you have access to the Flow-Go repo, which you'll need to bui
 
 ## Local Testnet
 
-One way to get a good feel of the network with out too much interaction with infrastructure is to play with the local testnet, which we've named the Flow Local Instrumented Test Environment (FLITE).
+One way to get a good feel of the network without too much interaction with infrastructure is to play with the local testnet, which we've named the Flow Local Instrumented Test Environment (FLITE).
 
 [https://github.com/onflow/flow-go/blob/master/integration/localnet/README.md](https://github.com/onflow/flow-go/blob/master/integration/localnet/README.md)
 
@@ -32,7 +32,7 @@ If you would like more control over the nodes, beyond what docker compose can pr
 
 Example files are available in the `cmd/bootstrap/example_files` folder.
 
-Where the `node-config.json` will usually store all flow's nodes, where as partner node info usually goes into a separate folder. The last file, which will need to be manually populated, is the partner stakes file, which takes the IDs of the all partner nodes and associates a stake. For now, this can be arbitrary.
+Where the `node-config.json` will usually store all flow's nodes, whereas partner node info usually goes into a separate folder. The last file, which will need to be manually populated, is the partner stakes file, which takes the IDs of all the partner nodes and associates a stake. For now, this can be arbitrary.
 
 Once you have all the information, you can make use of the `finalize` command:
 
@@ -66,4 +66,4 @@ The two missing pieces of info here are `FLOW_GO_NODE_ID` which will have been g
 
 ## Practice Testnet
 
-Lastly, if the goal is to practice the entire Sporking procedure, including `transit` of staking and networking keys, and joining a network, we can help spin up a Testnet temporarily for this purpose. This will require quite a bit of coordination, and will basically be the same steps as a the Mainnet spork, so please let us know if this is something you'd like to do and we’ll connect to plan accordingly.
+Lastly, if the goal is to practice the entire Sporking procedure, including `transit` of staking and networking keys, and joining a network, we can help spin up a Testnet temporarily for this purpose. This will require quite a bit of coordination, and will basically be the same steps as the Mainnet spork, so please let us know if this is something you'd like to do and we’ll connect to plan accordingly.

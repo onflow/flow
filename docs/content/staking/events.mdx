@@ -130,9 +130,9 @@ pub event NodeRemovedAndRefunded(nodeID: String, amount: UFix64)
 | amount          | UFix64  | The amount of FLOW tokens returned to the node. |
 
 Emitted by `FlowIDTableStaking.Admin.endStakingAuction()` if the node is being removed from the next epoch 
-due to a failure to meet the minimum requirements of commited tokens for the next epoch.
+due to a failure to meet the minimum requirements of committed tokens for the next epoch.
 
-After this event the refunded FLOW tokens will be part of the node's `tokensUnstaked` balance.
+After this event, the refunded FLOW tokens will be part of the node's `tokensUnstaked` balance.
 
 ## Token Events
 
@@ -159,7 +159,7 @@ are staked again with the node for the next epoch.
 3. By `FlowIDTableStaking.NodeStaker.stakeRewardedTokens()` when reward tokens (tokens paid in return for previous staking)
 are staked with the node for the next epoch.
 
-After this event the FLOW tokens will be part of the node's `tokensCommitted` balance.
+After this event, the FLOW tokens will be part of the node's `tokensCommitted` balance.
 
 ### TokensStaked
 
@@ -174,7 +174,7 @@ pub event TokensStaked(nodeID: String, amount: UFix64)
 
 Emitted by `FlowIDTableStaking.Admin.moveTokens()` at the end of an epoch if committed tokens are being added to the node's tokensStaked balance.
 
-After this event the tokens will be part of the node's staked balance.
+After this event, the tokens will be part of the node's staked balance.
 
 ### TokensUnstaking
 
@@ -189,7 +189,7 @@ pub event TokensUnstaking(nodeID: String, amount: UFix64)
 
 Emitted by `FlowIDTableStaking.Admin.moveTokens()` at the end of an epoch if
 a node operator's staked tokens are being unstaked in response to a request from the node operator to do so. 
-After this event the tokens will be a part of the node operator's `tokensUnstaking` balance, where they are held for a whole epoch "unstaking period" with no rewards.
+After this event, the tokens will be a part of the node operator's `tokensUnstaking` balance, where they are held for a whole epoch "unstaking period" with no rewards.
 
 ### TokensUnstaked
 
@@ -218,7 +218,7 @@ pub event RewardsPaid(nodeID: String, amount: UFix64)
 
 Emitted by `FlowIDTableStaking.Admin.payRewards()` at the end of the epoch to pay rewards to node operators based on the tokens that they have staked.
 
-After this event the reward tokens will be part of the node's tokensRewarded balance.
+After this event, the reward tokens will be part of the node's tokensRewarded balance.
 
 The Delegator rewards are paid at the same time, see `DelegatorRewardsPaid` below.
 
@@ -236,7 +236,7 @@ pub event UnstakedTokensWithdrawn(nodeID: String, amount: UFix64)
 Emitted by `FlowIDTableStaking.NodeStaker.withdrawUnstakedTokens()` when the node operator calls that function to withdraw part or all of their
 unstaked tokens balance.
 
-After this event the FLOW tokens will be withdrawn to a newly created `FungibleToken.Vault` which the caller can deposit to the vault of their choice.
+After this event, the FLOW tokens will be withdrawn to a newly created `FungibleToken.Vault` which the caller can deposit to the vault of their choice.
 
 ### RewardTokensWithdrawn
 
@@ -252,7 +252,7 @@ pub event RewardTokensWithdrawn(nodeID: String, amount: UFix64)
 Emitted by `FlowIDTableStaking.NodeStaker.withdrawRewardedTokens()` when the node operator calls that function to withdraw part or all of their
 reward tokens balance.
 
-After this event the FLOW tokens will be withdrawn to a newly created `FungibleToken.Vault` which the caller can deposit to the vault of their choice.
+After this event, the FLOW tokens will be withdrawn to a newly created `FungibleToken.Vault` which the caller can deposit to the vault of their choice.
 
 ## Delegator Events
 
@@ -273,7 +273,7 @@ Emitted by `FlowIDTableStaking.Admin.registerNewDelegator()` when the node opera
 
 Note that the delegatorID is unique within the node but is not globally unique.
 
-After this event the new delegator is registered with the node.
+After this event, the new delegator is registered with the node.
 
 ### DelegatorTokensCommitted
 
@@ -296,7 +296,7 @@ are staked again with the delegator for the next epoch.
 3. By `FlowIDTableStaking.NodeDelegator.delegateRewardedTokens()` when reward tokens (tokens paid in return for previous staking)
 are staked with the delegator for the next epoch.
 
-After this event the FLOW tokens will be part of the delegator's `tokensCommitted` balance.
+After this event, the FLOW tokens will be part of the delegator's `tokensCommitted` balance.
 
 ### DelegatorTokensStaked
 
@@ -312,7 +312,7 @@ pub event DelegatorTokensStaked(nodeID: String, delegatorID: UInt32, amount: UFi
 
 Emitted by `FlowIDTableStaking.Admin.moveTokens()` at the end of an epoch if committed tokens are being added to the delegator's tokensStaked balance.
 
-After this event the tokens will be part of the delegator's staked balance.
+After this event, the tokens will be part of the delegator's staked balance.
 
 ### DelegatorTokensUnstaking
 
@@ -328,7 +328,7 @@ pub event DelegatorTokensUnstaking(nodeID: String, delegatorID: UInt32, amount: 
 
 Emitted by `FlowIDTableStaking.Admin.moveTokens()` at the end of an epoch if 
 a delegator's staked tokens are being unstaked in response to a request from the delegator to do so. 
-After this event the tokens will be a part of the delegator's `tokensUnstaking` balance, where they are held for a whole epoch "unstaking period" with no rewards.
+After this event, the tokens will be a part of the delegator's `tokensUnstaking` balance, where they are held for a whole epoch "unstaking period" with no rewards.
 
 ### DelegatorTokensUnstaked
 
@@ -359,7 +359,7 @@ pub event DelegatorRewardsPaid(nodeID: String, delegatorID: UInt32, amount: UFix
 
 Emitted by `FlowIDTableStaking.Admin.payRewards()` at the end of an epoch when rewards are being paid.
 
-After this event is emitted the reward tokens will be part of the delegator's tokensRewarded balance.
+After this event is emitted, the reward tokens will be part of the delegator's tokensRewarded balance.
 
 The Node rewards are paid at the same time, see `RewardsPaid` above.
 
@@ -378,7 +378,7 @@ pub event DelegatorUnstakedTokensWithdrawn(nodeID: String, delegatorID: UInt32, 
 Emitted by `FlowIDTableStaking.NodeDelegator.withdrawUnstakedTokens()` when the delegator calls that function to withdraw part or all of their
 unstaked tokens balance.
 
-After this event the FLOW tokens will be withdrawn to a newly created `FungibleToken.Vault` which the caller can deposit to the vault of their choice.
+After this event, the FLOW tokens will be withdrawn to a newly created `FungibleToken.Vault` which the caller can deposit to the vault of their choice.
 
 ### DelegatorRewardTokensWithdrawn
 
@@ -395,4 +395,4 @@ pub event DelegatorRewardTokensWithdrawn(nodeID: String, delegatorID: UInt32, am
 Emitted by `FlowIDTableStaking.NodeDelegator.withdrawRewardedTokens()` when the delegator calls that function to withdraw part or all of their
 unstaked tokens balance.
 
-After this event the FLOW tokens will be withdrawn to a newly created `FungibleToken.Vault` which the caller can deposit to the vault of their choice.
+After this event, the FLOW tokens will be withdrawn to a newly created `FungibleToken.Vault` which the caller can deposit to the vault of their choice.

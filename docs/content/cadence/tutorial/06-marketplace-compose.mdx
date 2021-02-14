@@ -142,7 +142,7 @@ Now that your accounts are in the correct state, we can build a marketplace that
 
 ---
 
-Every user who wants to sell a NFT will store an instance of a `SaleCollection` resource in their account storage.
+Every user who wants to sell an NFT will store an instance of a `SaleCollection` resource in their account storage.
 
 <Callout type="info">
 
@@ -304,7 +304,7 @@ pub event SaleWithdrawn(id: UInt64)
 
 Events are declared by indicating the access level, `event`, and the name and parameters of the event, like a function declaration. Events cannot modify state at all; they indicate when important actions happen in the smart contract. Events are emitted with the `emit` keyword followed by the invocation of the event as if it were a function call. External applications can monitor the blockchain to take action when certain events are emitted.
 
-At this point, we should have a fungible token `Vault` and a NFT `Collection` in both accounts' storage. Account `0x01` should have an NFT in their collection.
+At this point, we should have a fungible token `Vault` and an NFT `Collection` in both accounts' storage. Account `0x01` should have an NFT in their collection.
 
 You can create a `SaleCollection` and list account `0x01`'s token for sale by following these steps:
 
@@ -365,7 +365,7 @@ This transaction:
 4. Lists that token for sale and sets its price
 5. Stores the sale in their account storage and publishes a capability that allows others to purchase any NFTs for sale.
 
-Lets run a script to ensure that the sale was created correctly.
+Let's run a script to ensure that the sale was created correctly.
 
 <Callout type="info">
 
@@ -424,7 +424,7 @@ import FungibleToken from 0x01
 import NonFungibleToken from 0x02
 import Marketplace from 0x03
 
-// This transaction uses the signers Vault tokens to purchase an NFT
+// This transaction uses the signer's Vault tokens to purchase an NFT
 // from the Sale collection of account 0x01.
 transaction {
 
@@ -477,7 +477,7 @@ This transaction:
 2. Gets the references to the buyer's stored resources
 3. Withdraws the tokens that the buyer will use to purchase the NFT
 4. Gets the reference to the seller's public sale
-5. Calls the `purchase` function, passing in the tokens and the `Collection` reference. Then `purchase` deposits the bought NFT directly into the buyers collection.
+5. Calls the `purchase` function, passing in the tokens and the `Collection` reference. Then `purchase` deposits the bought NFT directly into the buyer's collection.
 
 ## Verifying the NFT Was Purchased Correctly
 
