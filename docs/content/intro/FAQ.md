@@ -21,7 +21,7 @@ Accounts are created by generating private and public keys, then submitting a tr
 
 ### Which wallets can I use with Flow?
 
-There are a few wallets that are currently compatible with Flow, with more to come in the future. First is the Dapper Flow Wallet, which is compatible with NBA Top Shot and will be generally compatible soon. There is also the Blocto Wallet which is a general purpose Flow wallet. All Flow wallets should utilize Flow Client library, which is a high level dapp framework built on top an opinionated use of the sdk with the goal of making wallet integration as seamless as possible for developers and users. Keep your eyes on the JS-SDK for more updates.
+There are a few wallets that are currently compatible with Flow, with more to come in the future. First is the Dapper Flow Wallet, which is compatible with NBA Top Shot and will be generally compatible soon. There is also the Blocto Wallet which is a general purpose Flow wallet. All Flow wallets should utilize Flow Client library, which is a high level dapp framework built on top of an opinionated use of the SDK with the goal of making wallet integration as seamless as possible for developers and users. Keep your eyes on the JS-SDK for more updates.
 
 ### How can an application or developer create accounts and do other actions in Flow?
 
@@ -53,7 +53,7 @@ Cadence is a programming language that is still in development and therefore wil
 
 Currently, there is no explicit protection against re-entrancy, but we are finalizing a specification and implementation that restricts the use of references within transactions so that potential re-entrancy bugs cannot be exploited. These protections will be enabled very soon.
 
-### As only the public endpoint is a reference to the contract storage, can anyone access/read the contract code and verify it once published ?
+### As only the public endpoint is a reference to the contract storage, can anyone access/read the contract code and verify it once published?
 
 When a contract is deployed, all of its public types, fields, and methods are available for anyone to call. Of course, if the methods are declared as part of a Resource type, then you must have an instance of that Resource type in order to call those methods.
 
@@ -65,11 +65,11 @@ As an example, if an Ethereum ERC-20 fungible token allows minting, it probably 
 
 We haven’t seen a need for modifiers since they are mostly used either as make-shift preconditions or for managing access control. Using Capability-Based Security for access control works very well with Resource Types, and we’ve found that it largely removes the need for modifiers.
 
-### There is no indication regarding a low level machine language, will we be able to access assembly like language from inside Cadence?
+### There is no indication regarding a low level machine language, will we be able to access assembly-like language from inside Cadence?
 
 We are currently assessing possible VM architectures for Cadence, including the MoveVM from Libra. For now, Cadence is interpreted, which might seem like a potential performance problem, but isn’t likely to be in practice. Execution throughput of smart contract platforms is dominated by updating state proofs. For example, the current EVM has been benchmarked at over 10ktps, but validating the chain, including updating the state proofs, caps out under 100tps! We’ll be much faster at state proofs (by maintaining the entire state tree in memory on server-scale hardware), but we still don’t expect the code execution speed to be a bottleneck any time soon.
 
-### How are transaction and contracts processed, and at what cost ? Are they compiled to bytecode?
+### How are transaction and contracts processed, and at what cost? Are they compiled to bytecode?
 
 The specifics of how gas is metered are pending the choice of VM architecture, which will also dictate the internal representation of the contract code.
 The Emulator that you have exposes a gRPC API.
@@ -87,7 +87,7 @@ Transactions are divided into three phases, `prepare`, `execute`, and `post`.
 2. The `execute` phase does not have access to account storage and thus can only modify the objects that were removed in the `prepare` phase and call function on external contracts and objects.
 3. The `post` phase is where the function can perform any condition checks to ensure that the actions were all performed correctly and the desired outcome was achieved.
 
-Transactions are split up this way primarily because by not allowing the execute phase to access account storage, we can statically verify which assets and areas of the signers storage a given transaction can modify. This ability can be used by wallets or applications that are submitting transactions for users to be able to clearly show what a transaction could be potentially altering. When submitting application-generated transactions, users can have more confidence that they aren't getting fed a malicious or dangerous transaction.
+Transactions are split up this way primarily because by not allowing the execute phase to access account storage, we can statically verify which assets and areas of the signer's storage a given transaction can modify. This ability can be used by wallets or applications that are submitting transactions for users to be able to clearly show what a transaction could be potentially altering. When submitting application-generated transactions, users can have more confidence that they aren't getting fed a malicious or dangerous transaction.
 
 As an example: This transaction could statically know that nothing besides functions that are exposed with the `Provider` interface will be called:
 
@@ -157,11 +157,11 @@ struct Block {
 
 As you are probably aware, generating random numbers in a blockchain environment is difficult. The completely open nature of the blockchain and execution environment means that an algorithm for generating random numbers is viewable by anyone. There also isn't a good source of entropy that isn't able to be cheated in every situation.
 Cadence includes an `unsafeRand` function that generates a random number that is pseudo-random, but not safe to use in every situation.
-We are also working on designing safer schemes to use in smart contract.
+We are also working on designing safer schemes to use in smart contracts.
 
 ### How will an Oracle work in Cadence?
 
-Oracles can work in Cadence just like they do in other blockchain environments. You can make a smart contract that registers events and give an authorization resource to an account that an oracle can send transactions to to log off-chain events.
+Oracles can work in Cadence just like they do in other blockchain environments. You can make a smart contract that registers events and give an authorization resource to an account that an oracle can send transactions to log off-chain events.
 
 ## Resources FAQs
 
@@ -171,7 +171,7 @@ Most smart contract languages in use today represent ownership using a ledger, w
 
 ### Every account stores their own assets
 
-In Cadence we use resources to represent real assets. Resources are stored in a users account storage within the storage structure, which is a key-value store that is keyed by type. So we store an `NFT` resource type in the `NFT` slot.
+In Cadence, we use resources to represent real assets. Resources are stored in a user's account storage within the storage structure, which is a key-value store that is keyed by type. So we store an `NFT` resource type in the `NFT` slot.
 
 ```cadence
 import NFT, createNewNFT from 0x42
@@ -206,7 +206,7 @@ Resources also are protected by Cadence's strong static type system to ensure th
 
 ### What is stopping someone from just creating a bunch of `Vault` resources out of thin air and having infinite money?
 
-Resource creation is restricted to the context in which it was defined, meaning that only code defined within the same contract as the resource can create new resources. This ensures that users can know up front what code will be able to create new Vaults and the restrictions that are put on that code. This is why the fungible token contracts define a function for creating empty Vaults that users can call.
+Resource creation is restricted to the context in which it was defined, meaning that only code defined within the same contract as the resource can create new resources. This ensures that users can know upfront what code will be able to create new Vaults and the restrictions that are put on that code. This is why the fungible token contracts define a function for creating empty Vaults that users can call.
 
 ### Why do arrays and dictionaries behave differently when they have a resource stored in them?
 
@@ -216,7 +216,7 @@ If you want to store a resource within an array or dictionary, then that array o
 
 It might help to step out and look at why the Cadence programming model is different: We want to enable different use cases. Let me give an example from something that hopefully most people here are familiar with: CryptoKitties!
 
-When you breed your CryptoKitties, you pay a birthing fee. That birthing fee is held in escrow by the CK smart contract until the Kitty is ready to be born, and then it's paid to whatever "midwife" comes along and calls the giveBirth() method (usually us!). This is a very "decentralized" solution, because it works when Dapper Labs' midwife service works, but it also has an incentive for someone else to come along and "pick up the slack" if we aren't there.
+When you breed your CryptoKitties, you pay a birthing fee. That birthing fee is held in escrow by the CK smart contract until the Kitty is ready to be born, and then it's paid to whatever "midwife" comes along and calls the giveBirth() method (usually us!). This is a very "decentralized" solution because it works when Dapper Labs' midwife service works, but it also has an incentive for someone else to come along and "pick up the slack" if we aren't there.
 
 If you look at the CK smart contract in [Etherscan](https://etherscan.io/address/0x06012c8cf97bead5deae237070f9587f8e7a266d), you can see how much total is being held in escrow in this way (about 8.5 ETH at the moment).
 
@@ -242,7 +242,7 @@ So how _should_ we think about this then?
 
 First, we assert that we don't actually need to have an answer to "Who owns this?" for _every_ asset in the system.
 
-Second, we observe that the real world collectibles (and finance!) work _just fine_ without being ask "Who owns this?" for every single asset. Who owns the dollar bill with the serial number CDB3203795? Cash works just fine without being able to answer that question!
+Second, we observe that the real world collectibles (and finance!) work _just fine_ without being asked "Who owns this?" for every single asset. Who owns the dollar bill with the serial number CDB3203795? Cash works just fine without being able to answer that question!
 
 Finally, we note that the reason we have to ask "Who owns this NFT?" in Ethereum is due to the fact that Ethereum has such tight gas limits that we can't ask efficiently ask the more natural question: "What NFTs does this person own?"
 
@@ -279,7 +279,7 @@ function transfer(kittyId: uint, newOwner: address)
 }
 ```
 
-In Cadence, this is possible, but not necessary because Cadence uses Capability security, which is a form of access control that states that nobody is allowed to access an object unless it has a specific reference to that object. So instead of adding an address to a list of authorized addresses in the contract, a reference to the contract can be given to the authorized addresses. To those who don't own the reference, it is as if the object doesn't even exist. It is not even required to checking who the caller is because a unauthorized caller could not even have the ability to see, let alone call the function.
+In Cadence, this is possible, but not necessary because Cadence uses Capability security, which is a form of access control that states that nobody is allowed to access an object unless it has a specific reference to that object. So instead of adding an address to a list of authorized addresses in the contract, a reference to the contract can be given to the authorized addresses. To those who don't own the reference, it is as if the object doesn't even exist. It is not even required to check who the caller is because an unauthorized caller could not even have the ability to see, let alone call the function.
 
 ### How are references created and distributed?
 

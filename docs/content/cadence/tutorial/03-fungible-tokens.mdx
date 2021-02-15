@@ -125,7 +125,7 @@ An important concept in Cadence is **Resources**, which are linear types. A reso
 
 This approach simplifies access control because instead of a central contract having to check the sender of a function call, most function calls happen on resource objects stored in users' account, and each user controls who is able to call the functions on resources in their account. This concept, called Capability-based security, will be explained more in a later section.
 
-This approach also helps protect against potential bugs. In a Solidity contract with all the logic contained in a central contract, an exploit is likely to affect all users who are involved in the contract. In Cadence, if there is a bug in the resource logic, an attacker would have to exploit the bug in each token holders account individually, which is much more complicated and time-consuming than it is in a central ledger system.
+This approach also helps protect against potential bugs. In a Solidity contract with all the logic contained in a central contract, an exploit is likely to affect all users who are involved in the contract. In Cadence, if there is a bug in the resource logic, an attacker would have to exploit the bug in each token holder's account individually, which is much more complicated and time-consuming than it is in a central ledger system.
 
 Below is an example of a resource for a fungible token vault. Every user who owns these tokens would have this resource stored in their account. It is important to remember that each account stores only a copy of the `Vault` resource, and not a copy of the entire `FungibleToken` contract. The `FungibleToken` contract only needs to be stored in the initial account that manages the token definitions.
 

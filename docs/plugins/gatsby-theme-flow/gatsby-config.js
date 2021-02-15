@@ -31,13 +31,13 @@ module.exports = ({
   siteName,
   pageTitle,
   description,
+  sources,
   githubRepo,
   githubAccessToken,
   baseDir = "",
   contentDir = "content",
   versions = {},
   gaTrackingId,
-  ignore,
   checkLinksOptions,
   repositories,
 }) => {
@@ -94,7 +94,6 @@ module.exports = ({
     "gatsby-plugin-svgr",
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
-
     {
       resolve: "gatsby-plugin-less",
       options: {
@@ -104,45 +103,7 @@ module.exports = ({
         },
       },
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: path.join(root, "content"),
-        name: "docs",
-        ignore,
-      },
-    },
-    {
-      resolve: "gatsby-source-git",
-      options: {
-        name: "cadence",
-        remote: "https://github.com/onflow/cadence.git",
-        patterns: "docs/language/**/*",
-      },
-    },
-    {
-      resolve: "gatsby-source-git",
-      options: {
-        name: "flow-go-sdk-github",
-        branch: `master`,
-        remote: "https://github.com/onflow/flow-go-sdk.git",
-        patterns: ["docs/**/*", "examples/**/*"],
-      },
-    },
-    {
-      resolve: "gatsby-source-git",
-      options: {
-        name: "flow-js-sdk-github",
-        branch: `master`,
-        remote: "https://github.com/onflow/flow-js-sdk.git",
-        patterns: [
-          "docs/**/*",
-          "packages/fcl/**/*",
-          "packages/types/**/*",
-          "packages/fcl-react/**/*",
-        ],
-      },
-    },
+    ...sources,
     {
       resolve: "gatsby-source-filesystem",
       options: {

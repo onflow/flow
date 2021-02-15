@@ -214,7 +214,7 @@ The user only needs to know the node ID of the node they want to delegate to.
 
 To register as a delegator, the delegator submits the **Register Delegator**
 transaction, providing the ID of the node operator they want to delegate to.
-This transactions stores the `NodeDelegator` object
+This transaction stores the `NodeDelegator` object
 in the user's account, which is what they use to perform staking operations.
 Additionally, this transaction creates a public capability for the delegator that allows
 anyone to query information about a node from the account address that runs the node.
@@ -253,7 +253,7 @@ and there are three different ways to do it.
 ### Cancel Committed Stake / Unstake Tokens
 
 At any time, a staker can submit a request to unstake tokens with the **request_unstaking** transaction.
-If there are tokens that have been commited but are not staked yet,
+If there are tokens that have been committed but are not staked yet,
 they are moved to the unstaked pool and are available to withdraw.
 
 If the requested tokens are in the staked pool,

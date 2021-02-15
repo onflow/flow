@@ -1,3 +1,5 @@
+const path = require("path");
+
 const navConfig = {
   "Getting Started": {
     url: "/",
@@ -63,7 +65,6 @@ const navConfig = {
     linkText: "Flow Port",
   },
 };
-
 // sourceGithubRepos maps a sourceInstanceName to a GitHub repo name
 const sourceGithubRepos = {
   docs: {
@@ -80,7 +81,7 @@ const sourceGithubRepos = {
 
 // sourceSlugTransformers maps a sourceInstanceName to slug transformation functions
 const sourceSlugTransformers = {
-  cadence: (slug) => slug.replace(/^\/docs\//, "/cadence/"),
+  "cadence-github": (slug) => slug.replace(/^\/docs\//, "/cadence/"),
   "flow-js-sdk-github": (slug) =>
     slug
       .replace(/^\/docs\//, "/flow-js-sdk/")
@@ -88,12 +89,64 @@ const sourceSlugTransformers = {
       // Use README files as 'index' files!
       .replace("README/", ""),
   "flow-go-sdk-github": (slug) =>
-      slug
-        .replace(/^\/docs\//, "/flow-go-sdk/")
-        .replace(/^\/examples\//, "/flow-go-sdk/examples/")
-        // Use README files as 'index' files!
-        .replace("README/", ""),
+    slug
+      .replace(/^\/docs\//, "/flow-go-sdk/")
+      .replace(/^\/examples\//, "/flow-go-sdk/examples/")
+      // Use README files as 'index' files!
+      .replace("README/", ""),
+  "flow-cli-github": (slug) =>
+    slug.replace(/^\/docs\//, "/flow-cli/").replace("README/", ""),
 };
+
+const sources = [
+  {
+    resolve: "gatsby-source-filesystem",
+    options: {
+      path: path.join(__dirname, "content"),
+      name: "docs",
+    },
+  },
+  {
+    resolve: "gatsby-source-git",
+    options: {
+      name: "cadence-github",
+      remote: "https://github.com/onflow/cadence.git",
+      patterns: "docs/language/**/*",
+    },
+  },
+  {
+    resolve: "gatsby-source-git",
+    options: {
+      name: "flow-go-sdk-github",
+      branch: "master",
+      remote: "https://github.com/onflow/flow-go-sdk.git",
+      patterns: ["docs/**/*", "examples/**/*"],
+    },
+  },
+  {
+    resolve: "gatsby-source-git",
+    options: {
+      name: "flow-js-sdk-github",
+      branch: "master",
+      remote: "https://github.com/onflow/flow-js-sdk.git",
+      patterns: [
+        "docs/**/*",
+        "packages/fcl/**/*",
+        "packages/types/**/*",
+        "packages/fcl-react/**/*",
+      ],
+    },
+  },
+  {
+    resolve: "gatsby-source-git",
+    options: {
+      name: "flow-cli-github",
+      branch: "docs",
+      remote: "https://github.com/onflow/flow-cli.git",
+      patterns: ["docs/**/*"],
+    },
+  },
+];
 
 const sections = [
   {
@@ -117,10 +170,6 @@ const sections = [
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
         "[Node Operation](/node-operation)",
       ],
-      // "Community Updates": [
-      //   "community-updates/oct-6-2020",
-      //   "community-updates/sep-16-2020",
-      // ],
     },
   },
   {
@@ -150,12 +199,20 @@ const sections = [
     },
   },
   {
-    sourceInstanceName: "docs",
-    patterns: ["flow-cli/*"],
+    sourceInstanceName: "flow-cli-github",
+    patterns: ["docs/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      "Developer Guides": ["flow-cli/index"],
+      "Flow CLI": [
+        "docs/index",
+        "docs/install",
+        "docs/generate-keys",
+        "docs/create-accounts",
+        "docs/send-transactions",
+        "docs/query-transactions",
+        "docs/execute-scripts",
+      ],
     },
   },
   {
@@ -189,7 +246,7 @@ const sections = [
         "docs/querying-events",
         "docs/querying-blocks",
         "docs/transfer-flow",
-      ]
+      ],
     },
   },
   {
@@ -207,11 +264,11 @@ const sections = [
         "[Introducing @onflow/fcl](/flow-js-sdk)",
         "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
       ],
-      "Changelogs": [
+      Changelogs: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl/CHANGELOG)",
         "[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)",
-        "[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react/CHANGELOG)"
-      ]
+        "[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react/CHANGELOG)",
+      ],
     },
   },
   {
@@ -328,7 +385,7 @@ const sections = [
     },
   },
   {
-    sourceInstanceName: "cadence",
+    sourceInstanceName: "cadence-github",
     patterns: ["docs/language/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
@@ -374,7 +431,7 @@ module.exports = {
   plugins: [
     "gatsby-plugin-remove-trailing-slashes",
     {
-      resolve: `gatsby-plugin-breadcrumb`,
+      resolve: "gatsby-plugin-breadcrumb",
       options: {
         title: "Navigation: ",
         useAutoGen: true,
@@ -433,6 +490,7 @@ module.exports = {
       resolve: "gatsby-theme-flow",
       options: {
         navConfig,
+        sources,
         siteName: "Flow Documentation",
         description: "Start Building in the Open",
         pageTitle: "Flow Docs",

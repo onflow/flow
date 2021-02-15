@@ -45,7 +45,7 @@ We're going to take you through these steps to get comfortable with the NFT:
 
 In Cadence, each NFT is represented by a resource with an integer ID. Resources are a perfect type to represent NFTs because resources have important ownership rules that are enforced by the type system. They can only have one owner, cannot be copied, and cannot be accidentally or maliciously lost or duplicated. These protections ensure that owners know that their NFT is safe and can represent an asset that has real value.
 
-An NFT is also usually represented by some sort of metadata like a name or a picture. Historically, most of this metadata has been stored off-chain, and the on-chain token only contains a url or something similar that points to the off-chain metadata. In Flow, this is possible, but the goal is to make it possible for all the metadata associated with a token to be stored on-chain. This is out of the scope of this tutorial though. This paradigm is still being designed and you can participate by seeing the [relevant issue](https://github.com/onflow/flow-nft/issues/9) in the flow NFT repository.
+An NFT is also usually represented by some sort of metadata like a name or a picture. Historically, most of this metadata has been stored off-chain, and the on-chain token only contains a URL or something similar that points to the off-chain metadata. In Flow, this is possible, but the goal is to make it possible for all the metadata associated with a token to be stored on-chain. This is out of the scope of this tutorial though. This paradigm is still being designed and you can participate by seeing the [relevant issue](https://github.com/onflow/flow-nft/issues/9) in the flow NFT repository.
 
 When users on Flow want to transact with each other, they can do so peer-to-peer and without having to interact with a central NFT contract by calling resource-defined methods in each users' account.
 
@@ -357,7 +357,7 @@ In the NFT Collection, all the functions and fields are public, but we do not wa
 - Are the owner of the object
 - Have a valid reference to that field or method (note that references can only be created from capabilities, and capabilities can only be created by the owner of the object)
 
-When a user stores their NFT `Collection` in their account storage, it is by default not available for other users to access. A user's account storage object is inaccessible by anyone except it's owner. To give external accounts read access to the `deposit` function, the `getIDs` function, and the `idExists` function, the owner would create a reference using an interface that only includes those fields:
+When a user stores their NFT `Collection` in their account storage, it is by default not available for other users to access. A user's account storage object is inaccessible by anyone except its owner. To give external accounts read access to the `deposit` function, the `getIDs` function, and the `idExists` function, the owner would create a reference using an interface that only includes those fields:
 
 ```cadence
 pub resource interface NFTReceiver {
@@ -370,7 +370,7 @@ pub resource interface NFTReceiver {
 }
 ```
 
-Then, using that interface, they would create a link to the object in storage, specifying that the link only contains the functions in the `NFTReceiver` interface. This link is called a capability. From there, the owner can then do whatever they want with that capability: they could pass it as a parameter to a function for one-time-use, or they could put in in the `/public/` domain of their account so that anyone can access it. If a user tried to use this capability to call the `withdraw` function, it wouldn't work because it doesn't exist in the interface or reference.
+Then, using that interface, they would create a link to the object in storage, specifying that the link only contains the functions in the `NFTReceiver` interface. This link is called a capability. From there, the owner can then do whatever they want with that capability: they could pass it as a parameter to a function for one-time-use, or they could put in the `/public/` domain of their account so that anyone can access it. If a user tried to use this capability to call the `withdraw` function, it wouldn't work because it doesn't exist in the interface or reference.
 
 The creation of the link and capability is seen in line 132 of `NFTv2.cdc` in the init function:
 
@@ -526,7 +526,7 @@ You should see that account `0x02` owns the NFT with `id=1`
 [1]
 ```
 
-## Transferring a NFT
+## Transferring an NFT
 
 Before we are able to transfer an NFT to another account, we need to set up that account with an NFTCollection of their own so they are able to receive NFTs.
 
