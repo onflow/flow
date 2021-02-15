@@ -82,9 +82,7 @@ const sourceGithubRepos = {
 
 // sourceSlugTransformers maps a sourceInstanceName to slug transformation functions
 const sourceSlugTransformers = {
-  "cadence": (slug) => 
-    slug.
-      replace(/^\/docs\//, "/cadence/"),
+    cadence: (slug) => slug.replace(/^\/docs\//, "/cadence/"),
   "flow-js-sdk-github": (slug) =>
     slug
       .replace(/^\/docs\//, "/flow-js-sdk/")
