@@ -169,12 +169,12 @@ You can always look at this tab to verify which contracts are in which accounts,
 
 <Callout type="info">
 
-  Open the transaction named `Transaction1.cdc` <br />
-  `Transaction1.cdc` should contain this code:
+  Open the transaction named `Say Hello` <br />
+  `Say Hello` should contain this code:
 
 </Callout>
 
-```cadence:title=Transaction1.cdc
+```cadence:title=Say Hello.cdc
 import HelloWorld from 0x01
 
 transaction {
@@ -386,15 +386,15 @@ Right now, you should see that the `HelloAsset` resource is stored in account `0
 
 <Callout type="info">
 
-Open the transaction named `Transaction2.cdc`.
+Open the transaction named `Load Hello`.
 
 <br />
 
-`Transaction2.cdc` should contain the following code:
+`Load Hello` should contain the following code:
 
 </Callout>
 
-```cadence:title=Transaction2.cdc
+```cadence:title=Load Hello.cdc
 import HelloWorld from 0x02
 
 // This transaction calls the "hello" method on the HelloAsset object
@@ -497,15 +497,15 @@ A detailed explanation of what is happening in this transaction is below the tra
 
 <Callout type="info">
 
-Open the transaction named `Transaction3.cdc`.
+Open the transaction named `Create Link`.
 
 <br />
 
-`Transaction3.cdc` should contain the following code:
+`Create Link` should contain the following code:
 
 </Callout>
 
-```cadence:title=Transaction3.cdc
+```cadence:title=Create Link
 import HelloWorld from 0x02
 
 // This transaction creates a new capability
@@ -678,7 +678,7 @@ The `PublicAccount` object is available to anyone in the network for every accou
 but only has access to a small subset of functions that can only read from the `/public/` domain in an account.
 See more about accounts here: https://docs.onflow.org/cadence/language/accounts/
 
-Then, it gets the capability that was created in `Transaction3.cdc`.
+Then, it gets the capability that was created in `Create Link`.
 
 ```cadence
 // Get the public capability from the public path of the owner's account
