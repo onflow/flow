@@ -65,7 +65,6 @@ const navConfig = {
     linkText: "Flow Port",
   },
 };
-
 // sourceGithubRepos maps a sourceInstanceName to a GitHub repo name
 const sourceGithubRepos = {
   docs: {
@@ -82,9 +81,7 @@ const sourceGithubRepos = {
 
 // sourceSlugTransformers maps a sourceInstanceName to slug transformation functions
 const sourceSlugTransformers = {
-  "cadence-github": (slug) => 
-    slug.
-      replace(/^\/docs\//, "/cadence/"),
+  "cadence-github": (slug) => slug.replace(/^\/docs\//, "/cadence/"),
   "flow-js-sdk-github": (slug) =>
     slug
       .replace(/^\/docs\//, "/flow-js-sdk/")
@@ -98,9 +95,7 @@ const sourceSlugTransformers = {
       // Use README files as 'index' files!
       .replace("README/", ""),
   "flow-cli-github": (slug) =>
-    slug
-      .replace(/^\/docs\//, "/flow-cli/")
-      .replace("README/", ""),
+    slug.replace(/^\/docs\//, "/flow-cli/").replace("README/", ""),
 };
 
 const sources = [
@@ -148,12 +143,10 @@ const sources = [
       name: "flow-cli-github",
       branch: "docs",
       remote: "https://github.com/onflow/flow-cli.git",
-      patterns: [
-        "docs/**/*",
-      ],
+      patterns: ["docs/**/*"],
     },
   },
-]
+];
 
 const sections = [
   {
@@ -253,7 +246,7 @@ const sections = [
         "docs/querying-events",
         "docs/querying-blocks",
         "docs/transfer-flow",
-      ]
+      ],
     },
   },
   {
@@ -271,11 +264,11 @@ const sections = [
         "[Introducing @onflow/fcl](/flow-js-sdk)",
         "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
       ],
-      "Changelogs": [
+      Changelogs: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl/CHANGELOG)",
         "[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)",
-        "[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react/CHANGELOG)"
-      ]
+        "[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react/CHANGELOG)",
+      ],
     },
   },
   {
@@ -392,7 +385,7 @@ const sections = [
     },
   },
   {
-    sourceInstanceName: "cadence",
+    sourceInstanceName: "cadence-github",
     patterns: ["docs/language/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
