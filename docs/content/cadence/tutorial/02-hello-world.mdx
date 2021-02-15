@@ -4,7 +4,7 @@ title: 2. Hello World
 
 import Img from "../../components/tutorial-image";
 
-### Lets write and deploy our first smart contract!
+### Let's write and deploy our first smart contract!
 
 <Callout type="success">
   Open the starter code for this tutorial in the Flow Playground: <br />
@@ -24,7 +24,9 @@ import Img from "../../components/tutorial-image";
   language's design.
 </Callout>
 
-A smart contract is a program that verifies and executes the performance of a contract without the need for a trusted third party. Programs that run on blockchains are commonly referred to as smart contracts because they mediate important functionality (such as currency) without having to rely on a central authority (like a bank).
+A smart contract is a program that verifies and executes the performance of a contract without the need for a trusted third party.
+Programs that run on blockchains are commonly referred to as smart contracts because they mediate important functionality (such as currency)
+without having to rely on a central authority (like a bank).
 
 Before you get started with Flow, you need to understand how accounts and transactions are modeled.
 
@@ -33,19 +35,20 @@ Before you get started with Flow, you need to understand how accounts and transa
 ---
 
 Like most other blockchains, the programming model in Flow is centered around accounts and transactions. 
-All persistent state and its interfaces (the ways to interact with it) are stored in [accounts](/cadence/language/accounts) 
-and all code execution takes place within transactions, which are blocks of code that are submitted by external users to interact with the persistent state, 
+All persistent state is stored in [accounts](/cadence/language/accounts). 
+The interfaces to this state (the ways to interact with it) are also stored in accounts.
+All code execution takes place within transactions, which are blocks of code that are submitted by external users to interact with the persistent state, 
 which includes directly modifying account storage.
 
 Each user has an account controlled by one or more private keys. 
-This means that support for multi-sig wallets is built into the protocol by default.
+This means that support for accounts/wallets with [multiple controllers](https://www.coindesk.com/what-is-a-multisignature-crypto-wallet) is built into the protocol by default.
 
 An account is divided into two main areas:
 
 1. The first area is the [contract area](/cadence/language/accounts). 
-This is the area that stores any number of programs known as smart contracts that contain type definitions, fields, 
-and functions that are related to a common functionality. 
-This can also hold contract interfaces, which are basically program guidelines that other contracts can import and implement. 
+This is the area that stores any number smart contracts that contain type definitions, fields, 
+and functions that relate to a common functionality. 
+This area also holds contract interfaces, which are basically program guidelines that other contracts can import and implement. 
 This area cannot be directly read from in a transaction, unless the transaction is just reading the code deployed to an account.
 The owner of an account can directly add, remove, or update/overwrite contracts that are stored in it.
 
