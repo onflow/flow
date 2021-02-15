@@ -9,10 +9,10 @@ import Img from "../../components/tutorial-image";
 <Callout type="success">
   Open the starter code for this tutorial in the Flow Playground: <br />
   <a
-    href="https://play.onflow.org/5b5bd86b-3845-4c16-9a29-626ef6228846"
+    href="https://play.onflow.org/83315e10-8a9d-40d1-9f4a-877ca93eb93c"
     target="_blank"
   >
-    https://play.onflow.org/5b5bd86b-3845-4c16-9a29-626ef6228846
+    https://play.onflow.org/83315e10-8a9d-40d1-9f4a-877ca93eb93c
   </a>
   <br />
   The tutorial will be asking you to take various actions to interact with this code.
@@ -33,7 +33,7 @@ Before you get started with Flow, you need to understand how accounts and transa
 ---
 
 Like most other blockchains, the programming model in Flow is centered around accounts and transactions. 
-All persistent state and its interfaces (the ways to interact with it) are stored in [accounts](https://docs.onflow.org/cadence/language/accounts/) 
+All persistent state and its interfaces (the ways to interact with it) are stored in [accounts](/cadence/language/accounts) 
 and all code execution takes place within transactions, which are blocks of code that are submitted by external users to interact with the persistent state, 
 which includes directly modifying account storage.
 
@@ -42,7 +42,7 @@ This means that support for multi-sig wallets is built into the protocol by defa
 
 An account is divided into two main areas:
 
-1. The first area is the [contract area](https://docs.onflow.org/cadence/language/accounts/). 
+1. The first area is the [contract area](/cadence/language/accounts). 
 This is the area that stores any number of programs known as smart contracts that contain type definitions, fields, 
 and functions that are related to a common functionality. 
 This can also hold contract interfaces, which are basically program guidelines that other contracts can import and implement. 
@@ -52,7 +52,7 @@ The owner of an account can directly add, remove, or update/overwrite contracts 
 2. The second area is the account filesystem. This area is accessible in transactions and is where an account stores the objects 
 that they own and the capabilities for controlling how these objects are accessed.
 
-Objects are stored under [paths in the account filesystem](https://docs.onflow.org/cadence/language/accounts/#paths). Paths consist of a domain and an identifier.
+Objects are stored under [paths in the account filesystem](/cadence/language/accounts/#paths). Paths consist of a domain and an identifier.
 
 Paths start with the character `/`, followed by the domain, the path separator `/`, and finally the identifier. For example, the path `/storage/test` has the domain `storage` and the identifier `test`.
 
@@ -84,10 +84,10 @@ We will start by writing a smart contract that contains a public function that r
   First, you'll need to follow this link to open a playground session with the
   Hello World contracts, transactions, and scripts pre-loaded: {" "}
   <a
-    href="https://play.onflow.org/5b5bd86b-3845-4c16-9a29-626ef6228846"
+    href="https://play.onflow.org/83315e10-8a9d-40d1-9f4a-877ca93eb93c"
     target="_blank"
   >
-    https://play.onflow.org/5b5bd86b-3845-4c16-9a29-626ef6228846
+    https://play.onflow.org/83315e10-8a9d-40d1-9f4a-877ca93eb93c
   </a>
   
 </Callout>
@@ -120,9 +120,9 @@ pub contract HelloWorld {
 ```
 
 A contract is a collection of code (its functions) and data (its state) that lives in the contract area of an account in Flow. 
-Accounts can only have one or more contracts and/or contract interfaces, and these can be freely added, removed, or updated (with some restrictions) by the owner of the account.
+Accounts can have one or more contracts and/or contract interfaces, and these can be freely added, removed, or updated (with some restrictions) by the owner of the account.
 
-The line `pub let greeting: String` declares a public state constant, using the `pub` `let` keywords, called `greeting` of type `String`. 
+The line `pub let greeting: String` declares a public (`pub`) state constant (`let`) called `greeting` of type `String`. 
 We would have used `var` if we wanted to declare a variable.
 
 The `pub` keyword is an example of an access control specification meaning that it can be accessed in all scopes, but not written to in all scopes. 
@@ -650,10 +650,10 @@ pub fun main() {
     let helloAccount = getAccount(0x02)
 
     // Get the public capability from the public path of the owner's account
-    let helloCapability = helloAccount.getCapability(/public/Hello)
+    let helloCapability = helloAccount.getCapability<&HelloWorld.HelloAsset>(/public/Hello)
 
     // borrow a reference for the capability
-    let helloReference = helloCapability!.borrow<&HelloWorld.HelloAsset>()
+    let helloReference = helloCapability.borrow()
         ?? panic("Could not borrow a reference to the hello capability")
 
     // The log built-in function logs its argument to stdout.
@@ -671,7 +671,8 @@ This script fetches the `PublicAccount` object with `getAccount`.
 let helloAccount = getAccount(0x02)
 ```
 
-The `PublicAccount` object is available to anyone in the network for every account, but only has access to a small subset of functions that can only read from the `/public/` domain in an account.
+The `PublicAccount` object is available to anyone in the network for every account, 
+but only has access to a small subset of functions that can only read from the `/public/` domain in an account.
 See more about accounts here: https://docs.onflow.org/cadence/language/accounts/
 
 Then, it gets the capability that was created in `Transaction3.cdc`.
@@ -682,13 +683,14 @@ let helloCapability = helloAccount.getCapability(/public/Hello)
 ```
 
 To get a capability that is stored in an account, we use the `account.getCapability` function. 
-This function is available on `AuthAccount`s and on `PublicAccount`s. It returns a capability at the path that is specified. 
-It does not check if the target exists, but the borrow will fail if the capability is invalid.
+This function is available on `AuthAccount`s and on `PublicAccount`s. It returns a capability at the path that is specified,
+also with the type that is specified. It does not check if the target exists, 
+but the borrow will fail if the capability is invalid.
 
-After that, the script borrows a reference from the capability, specifying `&HelloWorld.HelloAsset` as the reference type to borrow as.
+After that, the script borrows a reference from the capability.
 
 ```cadence
-let helloReference = helloCapability!.borrow<&HelloWorld.HelloAsset>()
+let helloReference = helloCapability.borrow()
 ```
 
 Then, the script uses the reference to call the `hello` function and prints the result.
