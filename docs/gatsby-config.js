@@ -95,7 +95,7 @@ const sourceSlugTransformers = {
       // Use README files as 'index' files!
       .replace("README/", ""),
   "flow-cli-github": (slug) =>
-    slug.replace(/^\/docs\//, "/flow-cli/").replace("README/", ""),
+    slug.replace(/^\/docs\//, "/flow-cli/"),
 };
 
 const sources = [
@@ -141,9 +141,10 @@ const sources = [
     resolve: "gatsby-source-git",
     options: {
       name: "flow-cli-github",
-      branch: "docs",
+      branch: "master",
       remote: "https://github.com/onflow/flow-cli.git",
       patterns: ["docs/**/*"],
+      ignore: "docs/README.md"
     },
   },
 ];
