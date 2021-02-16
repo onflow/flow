@@ -2241,7 +2241,7 @@
     },
     {
         "Role": "consensus",
-        "Address": "flow.alvalor.org:3569",
+        "Address": "consensus.flow.alvalor.org:3569",
         "NodeID": "f3b72c50794c29319f0f77f0c7d623662eb15253c291a5360d095a4ea282fadb",
         "Stake": 1000,
         "NetworkPubKey": "dafbd3ded4e3ae1b23916e9d1d4ee510d3625757dc5237b28d6026304f78bb92a3ff135bd326710bd6d90581875065fef7fb897a3336812385e7046dba9398e7",
