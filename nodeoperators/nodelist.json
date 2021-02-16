@@ -2329,7 +2329,7 @@
     },
     {
         "Role": "consensus",
-        "Address": "35.203.118.232:3569",
+        "Address": "flow-consensus.foundrydigital.com:3569",
         "NodeID": "56e97c4cd4079caeb97d2a8f8950437107813436d5964f22a1f459eb8cf73a71",
         "Stake": 1000,
         "NetworkPubKey": "4bebb748d3739bfb7a5a9def605b30e023d137a57c0fd79495c987d02197a62a8be4040773e1404ebc319cea8a39acc640ee780625ffc52846dd289b4ba3d1c2",
@@ -2337,7 +2337,7 @@
     },
     {
         "Role": "collection",
-        "Address": "35.239.97.104:3569",
+        "Address": "flow-collection.foundrydigital.com:3569",
         "NodeID": "bd368122b0ccf67ebdd59d7f9b75edfa85106c3af41854c946ad0fa46e5c3ddd",
         "Stake": 1000,
         "NetworkPubKey": "8edc0192ff74907a67e482d828910f4c8466e5fb4c4235e4accb3a9ed20861ab7f7f426c72881a696d1f7551238f818d2f03e3a3473a4916a1769f365981ece8",
@@ -2345,7 +2345,7 @@
     },
     {
         "Role": "verification",
-        "Address": "34.123.246.239:3569",
+        "Address": "flow-verification.foundrydigital.com:3569",
         "NodeID": "e74d0ca7afed2b5bfd612f3c75010adb229d632ca4ab3b77d178ee226d7ec2a2",
         "Stake": 1000,
         "NetworkPubKey": "0afb99ed4e995e033de7782d24572b803a4db8780c60abb578379752d20f678a702f726e167ce8771e8eb335f6513ed2f588aad19a90acf09944c737aab224e7",
