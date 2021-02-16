@@ -2313,7 +2313,7 @@
     },
     {
         "Role": "verification",
-        "Address": "128.199.47.72:3569",
+        "Address": "flow01.chainflow.io:3569",
         "NodeID": "3b57e0ee2ece1f1dbefbd868d3eaac63b32a11df5b1a37d231145ea219055dde",
         "Stake": 1000,
         "NetworkPubKey": "899c92553bfb5d338d9dbfa11aed9f4b93b7dcd52d14e964d01b29b56062e22782488343750d3c14e010ea5558d2c83ef37ed52715994c176a5d417fa46551dd",
