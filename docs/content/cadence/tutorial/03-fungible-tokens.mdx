@@ -851,12 +851,12 @@ pub fun main() {
     // Get references to the account's receivers
     // by getting their public capability
     // and borrowing a reference from the capability
-    let acct1ReceiverRef = acct1.getCapability(/public/MainReceiver)
-        .borrow<&ExampleToken.Vault{ExampleToken.Balance}>()
+    let acct1ReceiverRef = acct1.getCapability<&ExampleToken.Vault{ExampleToken.Balance}>(/public/MainReceiver)
+        .borrow()
         ?? panic("Could not borrow a reference to the acct1 receiver")
 
-    let acct2ReceiverRef = acct2.getCapability(/public/MainReceiver)
-        .borrow<&ExampleToken.Vault{ExampleToken.Balance}>()
+    let acct2ReceiverRef = acct2.getCapability<&ExampleToken.Vault{ExampleToken.Balance}>(/public/MainReceiver)
+        .borrow()
         ?? panic("Could not borrow a reference to the acct2 receiver")
 
     // Read and log balance fields
