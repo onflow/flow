@@ -2822,13 +2822,5 @@
         "Stake": 1000,
         "NetworkPubKey": "4330dacae96a2a88cd52d5d040358e1c32d9ad0ba7cd62316ed2390a9d1b2d6802b3e880b5755f1a460638eb3129d116eebdeaa1ffbc30ef8e66707e3353e006",
         "StakingPubKey": "9727ecb75b071a77613f4e8ef726aefb09bc467aff1f3818c84ef21aeb587876cca7d1a3ee3a56395090f8582f8f6f9a017c6984e783627712f4a9db2a87ca11e3ccb8c2eea803ba60be790c61691324b8dfd52a9c8608ccdb096ada59c4b42c"
-    },
-    {
-        "Role": "access",
-        "Address": "10.0.130.154:3569",
-        "NodeID": "7d86dfef63bfee79eebb3c0df29b781bbb69e97c5349ed912aef2d52a915966d",
-        "Stake": 1000,
-        "NetworkPubKey": "9977214a90c607b666c6ad00099fd6cde28d40e749f2bec8fd77f116f1b91d8abf46de7bc717db2aa89d455aec0ba47a823aeeecf2eef7111f8fe4f89d4d3652",
-        "StakingPubKey": "a3c0d3eb2e26f922e0b0219f48bc674de052419b69116bfcc484f91fadd5470522a1df07d288d7ea8d4f5476949cd04400d27a19d6fb20efc71fa83569450d0cace4f5742b4061fae3b790385d282ac812c7a8c8e45914e5b092de53d3d8ea27"
     }
 ]
