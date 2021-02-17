@@ -2766,5 +2766,21 @@
         "Stake": 1000,
         "NetworkPubKey": "c42713cc7828f9a197cedc5ef9b2a84537689c7793f88a755b8f11df4b388b17fbcbc53718f1c3a2b355e59ff22c0c41448d6e7d781017b315a58188a9b3756b",
         "StakingPubKey": "91c081e9f35f1be47aa8c4ebab2a4ded21454eddd359ad8b366a21fc0dd65ffb93e978631ba8de44c70e1baafd20cd94144be31fa8c9962acbc865c9afa285f6a3290a675464736e37a5bfc18f28ec253c0ad25e936bd875b4173d4ee3a270f3"
+    },
+    {
+        "Role": "collection",
+        "Address": "collection-01a.flow.chainlayer.network:3569",
+        "NodeID": "050dfd9898470c042e9190b8a9136122dee26dad438cf5b49307f55fe4dbcc98",
+        "Stake": 1000,
+        "NetworkPubKey": "d0cf4db6a0419364bd1cb9cbdccce3617587a00c3be81a2140d1930868263a4802f09182f09f61ae9adbc6bf993770bcfc061e2fffde68eeb15da07f0bae4082",
+        "StakingPubKey": "8bdeb994d42e57895a7a59c675f8cac9b9b33d1647f430fef4a1d8cc281b3b008fddcff5f23e20f36f265e76e16baade18c0ab10db405ea304623de5c193f0a0cc2556bc28be58c48eb6ea9bfa7655b1b4f12d138b2164bcdaa46b2a6c0fbf0b"
+    },
+    {
+        "Role": "verification",
+        "Address": "verification-01a.flow.chainlayer.network:3569",
+        "NodeID": "d4ffda5cbdea87f6464d37c7ab079d3f8589454d2de2b6bce1cc6c6f20829dc2",
+        "Stake": 1000,
+        "NetworkPubKey": "aff9e0d382c0ea7d970709cea68398c427ce0e67f4617c9276f9041fd731fce2699906d9f51a39e2baebca91b3236aa16fa9e55f779ee0e12456cae3ae79a719",
+        "StakingPubKey": "8956de8bbbe4371fa762b4971b8475a2fee8f74e289e1738de6ce4a0c8c3fe8036560bbb880998441f5837b5c0d55d3d15d81e56f32dbc03f19df39963bfada3680fe336e1100d3ae3eddd0ce131cc9f6246c3e8b65a092dc45c82e1bf69a3ad"
     }
 ]
