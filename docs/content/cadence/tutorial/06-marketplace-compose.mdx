@@ -10,7 +10,8 @@ In this tutorial, we're going to create a marketplace that uses both the fungibl
 
 <Callout type="success">
 
-Open the starter code for this tutorial in the Flow Playground: <a href="https://play.onflow.org/869e869c-145e-4d36-a893-22e16a361842" target="_blank">https://play.onflow.org/869e869c-145e-4d36-a893-22e16a361842</a><br/>
+Open the starter code for this tutorial in the Flow Playground: <a href="https://play.onflow.org/ebd7b6b2-d845-48fe-b3b4-a8f580a24fed"
+target="_blank">https://play.onflow.org/ebd7b6b2-d845-48fe-b3b4-a8f580a24fed</a><br/>
 The tutorial will be asking you to take various actions to interact with this code.
 
 </Callout>
@@ -76,13 +77,13 @@ pub fun main() {
   // Get references to the account's receivers
   // by getting their public capability
   // and borrowing a reference from the capability
-  let acct1ReceiverRef = acct1.getCapability(/public/MainReceiver)!
-                          .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
-                          ?? panic("Could not borrow a reference to acc1 vault receiver")
+  let acct1ReceiverRef = acct1.getCapability<&FungibleToken.Vault{FungibleToken.Balance}>(/public/MainReceiver)
+    .borrow()
+    ?? panic("Could not borrow a reference to acc1 vault receiver")
 
-  let acct2ReceiverRef = acct2.getCapability(/public/MainReceiver)!
-                          .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
-                          ?? panic("Could not borrow a reference to acc2 vault receiver")
+  let acct2ReceiverRef = acct2.getCapability<&FungibleToken.Vault{FungibleToken.Balance}>(/public/MainReceiver)
+    .borrow()
+    ?? panic("Could not borrow a reference to acc2 vault receiver")
 
   // Log the Vault balance of both accounts and ensure they are
   // the correct numbers.
@@ -94,20 +95,20 @@ pub fun main() {
   log(acct2ReceiverRef.balance)
 
   // verify that the balances are correct
-  if acct1ReceiverRef.balance != UFix64(40) || acct2ReceiverRef.balance != UFix64(20) {
+  if acct1ReceiverRef.balance != 40.0 || acct2ReceiverRef.balance != 40.0 {
       panic("Wrong balances!")
   }
 
   // Find the public Receiver capability for their Collections
-  let acct1Capability = acct1.getCapability(/public/NFTReceiver)!
-  let acct2Capability = acct2.getCapability(/public/NFTReceiver)!
+  let acct1Capability = acct1.getCapability<&{NonFungibleToken.NFTReceiver}>(/public/NFTReceiver)
+  let acct2Capability = acct2.getCapability<&{NonFungibleToken.NFTReceiver}>(/public/NFTReceiver)
 
   // borrow references from the capabilities
-  let nft1Ref = acct1Capability.borrow<&{NonFungibleToken.NFTReceiver}>()
-                ?? panic("Could not borrow a reference to acc1 nft collection receiver")
+  let nft1Ref = acct1Capability.borrow()
+        ?? panic("Could not borrow a reference to acc1 nft collection receiver")
 
-  let nft2Ref = acct2Capability.borrow<&{NonFungibleToken.NFTReceiver}>()
-                ?? panic("Could not borrow a reference to acc2 nft collection receiver")
+  let nft2Ref = acct2Capability.borrow()
+        ?? panic("Could not borrow a reference to acc2 nft collection receiver")
 
   // Print both collections as arrays of IDs
   log("Account 1 NFTs")
@@ -123,7 +124,9 @@ pub fun main() {
 }
 ```
 
-You should see something similar to this output if your accounts are set up correctly. They are in the same state that they would have been in if you followed the [Fungible Tokens](/cadence/tutorial/03-fungible-tokens/) and [Non-Fungible Tokens](/cadence/tutorial/04-non-fungible-tokens/) tutorials in succession:
+You should see something similar to this output if your accounts are set up correctly.
+They are in the same state that they would have been in if you followed
+the [Fungible Tokens](/cadence/tutorial/03-fungible-tokens/) and [Non-Fungible Tokens](/cadence/tutorial/04-non-fungible-tokens/) tutorials in succession:
 
 ```
 "Account 1 Vault Balance"
@@ -244,7 +247,7 @@ pub contract Marketplace {
         pre {
             self.forSale[tokenID] != nil && self.prices[tokenID] != nil:
                 "No token matching this ID for sale!"
-            buyTokens.balance >= (self.prices[tokenID] ?? UFix64(0)):
+            buyTokens.balance >= (self.prices[tokenID] ?? 0.0):
                 "Not enough tokens to by the NFT!"
         }
 
@@ -302,9 +305,13 @@ pub event TokenPurchased(id: UInt64, price: UFix64)
 pub event SaleWithdrawn(id: UInt64)
 ```
 
-Events are declared by indicating the access level, `event`, and the name and parameters of the event, like a function declaration. Events cannot modify state at all; they indicate when important actions happen in the smart contract. Events are emitted with the `emit` keyword followed by the invocation of the event as if it were a function call. External applications can monitor the blockchain to take action when certain events are emitted.
+Events are declared by indicating the access level, `event`, and the name and parameters of the event, like a function declaration.
+Events cannot modify state at all; they indicate when important actions happen in the smart contract.
+Events are emitted with the `emit` keyword followed by the invocation of the event as if it were a function call.
+External applications can monitor the blockchain to take action when certain events are emitted.
 
-At this point, we should have a fungible token `Vault` and an NFT `Collection` in both accounts' storage. Account `0x01` should have an NFT in their collection.
+At this point, we should have a fungible token `Vault` and an NFT `Collection` in both accounts' storage.
+Account `0x01` should have an NFT in their collection.
 
 You can create a `SaleCollection` and list account `0x01`'s token for sale by following these steps:
 
@@ -329,7 +336,6 @@ transaction {
 
     // Borrow a reference to the stored Vault
     let receiver = acct.getCapability<&{FungibleToken.Receiver}>(/public/MainReceiver)
-            ?? panic("Could not get a capability to the owner's vault")
 
     // Create a new Sale object,
     // initializing it with the reference to the owner's vault
@@ -344,7 +350,7 @@ transaction {
     let token <- collectionRef.withdraw(withdrawID: 1)
 
     // List the token for sale by moving it into the sale object
-    sale.listForSale(token: <-token, price: UFix64(10))
+    sale.listForSale(token: <-token, price: 10.0)
 
     // Store the sale object in the account storage
     acct.save<@Marketplace.SaleCollection>(<-sale, to: /storage/NFTSale)
@@ -385,9 +391,9 @@ pub fun main() {
   let account1 = getAccount(0x01)
 
   // Find the public Sale reference to their Collection
-  let acct1saleRef = account1.getCapability(/public/NFTSale)!
-                             .borrow<&AnyResource{Marketplace.SalePublic}>()
-                             ?? panic("Could not borrow a reference to the sale")
+  let acct1saleRef = account1.getCapability<&AnyResource{Marketplace.SalePublic}>(/public/NFTSale)
+        .borrow()
+        ?? panic("Could not borrow a reference to the sale")
 
   // Los the NFTs that are for sale
   log("Account 1 NFTs for sale")
@@ -447,7 +453,7 @@ transaction {
         ?? panic("Could not borrow reference to the signer's vault")
 
     // withdraw tokens from the buyers Vault
-    self.temporaryVault <- vaultRef.withdraw(amount: UFix64(10))
+    self.temporaryVault <- vaultRef.withdraw(amount: 10.0)
   }
 
   execute {
@@ -455,15 +461,15 @@ transaction {
     let seller = getAccount(0x01)
 
     // get the reference to the seller's sale
-    let saleRef = seller.getCapability(/public/NFTSale)!
-                        .borrow<&AnyResource{Marketplace.SalePublic}>()
-                        ?? panic("could not borrow reference to the seller's sale")
+    let saleRef = seller.getCapability<&AnyResource{Marketplace.SalePublic}>(/public/NFTSale)
+        .borrow()
+        ?? panic("could not borrow reference to the seller's sale")
 
     // purchase the NFT the the seller is selling, giving them the reference
     // to your NFT collection and giving them the tokens to buy it
     saleRef.purchase(tokenID: 1,
-                     recipient: self.collectionRef,
-                     buyTokens: <-self.temporaryVault)
+        recipient: self.collectionRef,
+        buyTokens: <-self.temporaryVault)
 
     log("Token 1 has been bought by account 2!")
   }
@@ -492,7 +498,8 @@ To run a script that verifies the NFT was purchased correctly, follow these step
 
 <Callout type="info">
   Open the `Script3.cdc` file.<br/>
-  Click `Execute` button\n`Script3.cdc` should contain the following code:
+  Click `Execute` button
+  `Script3.cdc` should contain the following code:
 </Callout>
 
 ```cadence:title=Script3.cdc
@@ -513,13 +520,13 @@ pub fun main() {
   // Get references to the account's receivers
   // by getting their public capability
   // and borrowing a reference from the capability
-  let acct1ReceiverRef = acct1.getCapability(/public/MainReceiver)!
-                         .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
-                         ?? panic("Could not borrow reference to acct1 vault")
+  let acct1ReceiverRef = acct1.getCapability<&FungibleToken.Vault{FungibleToken.Balance}>(/public/MainReceiver)
+        .borrow()
+        ?? panic("Could not borrow reference to acct1 vault")
 
-  let acct2ReceiverRef = acct2.getCapability(/public/MainReceiver)!
-                         .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
-                         ?? panic("Could not borrow reference to acct2 vault")
+  let acct2ReceiverRef = acct2.getCapability<&FungibleToken.Vault{FungibleToken.Balance}>(/public/MainReceiver)
+        .borrow()
+        ?? panic("Could not borrow reference to acct2 vault")
 
   // Log the Vault balance of both accounts and ensure they are
   // the correct numbers.
@@ -531,21 +538,21 @@ pub fun main() {
   log(acct2ReceiverRef.balance)
 
   // verify that the balances are correct
-  if acct1ReceiverRef.balance != UFix64(50)
-     || acct2ReceiverRef.balance != UFix64(10)
+  if acct1ReceiverRef.balance != 50.0
+     || acct2ReceiverRef.balance != 10.0
   {
       panic("Wrong balances!")
   }
 
   // Find the public Receiver capability for their Collections
-  let acct1Capability = acct1.getCapability(/public/NFTReceiver)!
-  let acct2Capability = acct2.getCapability(/public/NFTReceiver)!
+  let acct1Capability = acct1.getCapability<&{NonFungibleToken.NFTReceiver}>(/public/NFTReceiver)
+  let acct2Capability = acct2.getCapability<&{NonFungibleToken.NFTReceiver}>(/public/NFTReceiver)
 
   // borrow references from the capabilities
-  let nft1Ref = acct1Capability.borrow<&{NonFungibleToken.NFTReceiver}>()
+  let nft1Ref = acct1Capability.borrow()
     ?? panic("Could not borrow reference to acct1 nft collection")
 
-  let nft2Ref = acct2Capability.borrow<&{NonFungibleToken.NFTReceiver}>()
+  let nft2Ref = acct2Capability.borrow()
     ?? panic("Could not borrow reference to acct2 nft collection")
 
   // Print both collections as arrays of IDs
@@ -556,14 +563,14 @@ pub fun main() {
   log(nft2Ref.getIDs())
 
   // verify that the collections are correct
-  if nft2Ref.getIDs()[0] != UInt64(1) || nft1Ref.getIDs().length != 0 {
+  if nft2Ref.getIDs()[0] != 1 as UInt64 || nft1Ref.getIDs().length != 0 {
       panic("Wrong Collections!")
   }
 
   // Get the public sale reference for Account 0x01
-  let acct1SaleRef = acct1.getCapability(/public/NFTSale)!
-                    .borrow<&AnyResource{Marketplace.SalePublic}>()
-                    ?? panic("Could not borrow a reference to the sale")
+  let acct1SaleRef = acct1.getCapability<&AnyResource{Marketplace.SalePublic}>(/public/NFTSale)
+        .borrow()
+        ?? panic("Could not borrow a reference to the sale")
 
   // Print the NFTs that account 0x01 has for sale
   log("Account 1 NFTs for sale")
@@ -593,7 +600,9 @@ Congratulations, you have successfully implemented a simple marketplace in Caden
 
 ---
 
-A user can hold a sale in their account with these resources and transactions. Support for a central marketplace where users can discover sales is relatively easy to implement and can build on what we already have. If we wanted to build a central marketplace on-chain, we could use a contract that looks something like this:
+A user can hold a sale in their account with these resources and transactions.
+Support for a central marketplace where users can discover sales is relatively easy to implement and can build on what we already have.
+If we wanted to build a central marketplace on-chain, we could use a contract that looks something like this:
 
 ```cadence:title=CentralMarketplace.cdc
 // Marketplace would be the central contract where people can post their sale
