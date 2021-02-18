@@ -35,8 +35,8 @@
 | Blocto | Verification | 21b21ad1ddb5e3002cc6a3faa55e23d70db014ee229c213f7a43769789125536
 | Chainflow | Verification | 3b57e0ee2ece1f1dbefbd868d3eaac63b32a11df5b1a37d231145ea219055dde
 | Chainlayer | Consensus | 62de4fa4b6a05b8beb5868a5259caca4efa966aa0cb867fdd776c73abe9370ad
-| Chainlayer (Coming Soon!) | Collection | 
-| Chainlayer (Coming Soon!) | Verification | 
+| Chainlayer | Collection | 050dfd9898470c042e9190b8a9136122dee26dad438cf5b49307f55fe4dbcc98
+| Chainlayer | Verification | d4ffda5cbdea87f6464d37c7ab079d3f8589454d2de2b6bce1cc6c6f20829dc2
 | Coinfund | Consensus | 5a4bff17941a73909472afe23f1ccdc59d7526f93b16b4e374bd8353f8b624b4
 | Coinfund | Consensus | b5702f80aa39f06ecdf4d6321bfe40f64e40b9b630085a42993f1b241bfcbf25
 | Coinfund | Consensus | d98755f4ae8bef3f372889c4d7010ca784ea6da46fdde63d27ee57b2bf5efdd7
