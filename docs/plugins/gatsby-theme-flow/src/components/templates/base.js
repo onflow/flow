@@ -44,8 +44,6 @@ export default function BaseTemplate(props) {
     .reduce((acc, { pages }) => acc.concat(pages), [])
     .filter((page) => !page.anchor);
 
-  console.log(fields);
-
   return (
     <Fragment>
       <CustomSEO
