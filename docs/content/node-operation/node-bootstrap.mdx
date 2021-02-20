@@ -311,7 +311,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/consensus:v0.14.1 \
+	gcr.io/flow-container-registry/consensus:v0.14.2 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -327,7 +327,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/execution:v0.14.1 \
+	gcr.io/flow-container-registry/execution:v0.14.2 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
