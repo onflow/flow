@@ -178,6 +178,7 @@ message GetAccountResponse {
 
 message GetAccountAtLatestBlockRequest {
   bytes address = 1;
+  uint32 block_status = 2;
 }
 
 message AccountResponse {
@@ -194,6 +195,7 @@ message GetAccountAtBlockHeightRequest {
 message ExecuteScriptAtLatestBlockRequest {
   bytes script = 1;
   repeated bytes arguments = 2;
+  uint32 block_status = 3;
 }
 
 message ExecuteScriptAtBlockIDRequest {
