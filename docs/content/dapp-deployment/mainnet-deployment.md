@@ -3,7 +3,7 @@ title: Mainnet Deployment Guidelines
 sidebar_title: 4. Deploy to Mainnet
 ---
 
-In the early days of the Flow network, applications deployed to the Flow Mainnet are required to be review and tested by the Flow team. For details about the testing and approval process, please read through our guide \[Testnet Testing Guidelines](/dapp-deployment/testnet-testing/) If your app has passed the review process you're ready to deploy on Flow's Mainnet!
+In the early days of the Flow network, applications deployed to the Flow Mainnet are required to be review and tested by the Flow team. For details about the testing and approval process, please read through our guide [Testnet Testing Guidelines](/dapp-deployment/testnet-testing/) If your app has passed the review process you're ready to deploy on Flow's Mainnet!
 
 ## Risks for Early Adopters
 
@@ -39,11 +39,11 @@ Currently, deploying to Mainnet requires manual intervention from the Flow team.
 
 ### Prerequisites
 
-Before considering your application for deployment to Mainnet, it has to have been live on Testnet handling real world traffic for a fixed period of time as suggested here: [Testnet Testing Guidelines](../testnet-testing).
+Before considering your application for deployment to Mainnet, it has to have been live on Testnet handling real world traffic for a fixed period of time as suggested here: [Testnet Testing Guidelines](/dapp-deployment/testnet-testing).
 
-Your project's smart contracts should include test coverage and follow any additional guidelines set out here: [Smart Contract Testing Guidelines](../contract-testing).
+Your project's smart contracts should include test coverage and follow any additional guidelines set out here: [Smart Contract Testing Guidelines](/dapp-deployment/contract-testing).
 
-Your reviewers will be using the following criterion when assessing your project: [Flow Project Technical Analysis](../contract-testing) Keeping these points in mind while developing your project will help speed up the review and deployment process.
+Your reviewers will be using the following criterion when assessing your project: [Flow Project Technical Analysis](/dapp-deployment/contract-testing) Keeping these points in mind while developing your project will help speed up the review and deployment process.
 
 ### Smart Contract Review
 

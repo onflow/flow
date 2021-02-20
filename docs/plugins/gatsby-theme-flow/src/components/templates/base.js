@@ -1,13 +1,17 @@
+import styled from "@emotion/styled";
+
+import PropTypes from "prop-types";
+
+import React, { Fragment } from "react";
+
+import rehypeReact from "rehype-react";
+
+import ContentWrapper from "../content-wrapper";
 import CustomSEO from "../custom-seo";
 import Footer from "../footer";
+import { Markdown, components } from "../markdown";
 import PageContent from "../page-content";
 import PageHeader from "../page-header";
-import PropTypes from "prop-types";
-import React, { Fragment } from "react";
-import rehypeReact from "rehype-react";
-import styled from "@emotion/styled";
-import ContentWrapper from "../content-wrapper";
-import { Markdown, components } from "../markdown";
 
 const StyledContentWrapper = styled(ContentWrapper)({
   paddingBottom: 0,
@@ -40,6 +44,8 @@ export default function BaseTemplate(props) {
     .reduce((acc, { pages }) => acc.concat(pages), [])
     .filter((page) => !page.anchor);
 
+  console.log(fields);
+
   return (
     <Fragment>
       <CustomSEO
@@ -49,10 +55,11 @@ export default function BaseTemplate(props) {
         baseUrl={baseUrl}
         image={fields.image}
         twitterUrl={twitterUrl}
+        twitterHandle={"@flow_blockchain"}
       />
       <StyledContentWrapper>
         <PageHeader {...frontmatter} />
-        { frontmatter.title || frontmatter.description ? <hr /> :''}
+        {frontmatter.title || frontmatter.description ? <hr /> : ""}
         <PageContent
           title={frontmatter.title}
           playgroundUrl={fields.playgroundUrl}
