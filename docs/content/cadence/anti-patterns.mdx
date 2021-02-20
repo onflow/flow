@@ -1,5 +1,5 @@
 ---
-title: Cadence Dragons
+title: Cadence Anti-Patterns
 ---
 
 This is an opinionated list of issues that can be improved if they are found in Cadence code intended for production.
@@ -32,7 +32,7 @@ Be sure to keep track of access modifiers when structuring your code, and make p
 
 This is a specific case of "Public Functions And Fields Should Be Avoided", above.
 
-Public array or dictionary fields are not directly over-writable, but their members can be access and overwritten if the field is public. This could potentially result in security vulnerabilities for the contract if these fields are mistakenly make public.
+Public array or dictionary fields are not directly over-writable, but their members can be accessed and overwritten if the field is public. This could potentially result in security vulnerabilities for the contract if these fields are mistakenly made public.
 
 Ex:
 
@@ -57,7 +57,7 @@ transaction {
 
 #### Solution
 
-Make sure that any array or dictionary fields in contracts, structs, or resources are `access(contract)` or `access(self)` unless they need to be intentionally make public.
+Make sure that any array or dictionary fields in contracts, structs, or resources are `access(contract)` or `access(self)` unless they need to be intentionally made public.
 
 ```cadence
 pub contract Array {

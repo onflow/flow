@@ -15,6 +15,8 @@ import Sidebar from "./sidebar";
 import SidebarNav from "./sidebar-nav";
 import { useResponsiveSidebar } from "./responsive-sidebar";
 import { Helmet } from "react-helmet";
+import { Breadcrumb } from "gatsby-plugin-breadcrumb";
+
 import { graphql, useStaticQuery } from "gatsby";
 import MobileLogo from "./mobile-logo";
 import { SelectedLanguageContext } from "./multi-code-block";
@@ -46,6 +48,28 @@ export const NavItemDescription = styled.p({
   lineHeight: 1.5,
   color: theme.text3,
   transition: "color 150ms ease-in-out",
+});
+
+const BreadcrumbWrapper = styled.div({
+  width: "100%",
+  flexGrow: 1,
+  flexBasis: "100%",
+  display: "flex",
+  marginLeft: "-4px",
+  borderColor: theme.divider,
+  ".breadcrumb__separator": {
+    fontSize: "0.8rem",
+    display: "flex",
+    alignItems: "center",
+  },
+  ".breadcrumb__link, .breadcrumb__link__disabled": {
+    fontWeight: 500,
+    fontSize: "0.8rem",
+    color: theme.text3,
+    "&:hover": {
+      color: theme.primary,
+    },
+  },
 });
 
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
@@ -160,7 +184,7 @@ export default function PageLayout(props) {
           )}
         </Sidebar>
         <Main>
-          <Header>
+          <Header title={title}>
             <MobileNav>
               <MobileLogo />
               <MenuButton onClick={openSidebar} />
@@ -173,7 +197,23 @@ export default function PageLayout(props) {
               />
             )}
             <HeaderNav />
-            <div></div>
+            {props.path !== "/" ? (
+              <BreadcrumbWrapper>
+                <Breadcrumb
+                  crumbs={dacrumbs}
+                  hiddenCrumbs={["/intro"]}
+                  disableLinks={[
+                    "/flow-port",
+                    "/community-updates",
+										"/tutorial",
+										"/flow-js-sdk/packages",
+										"/flow-go-sdk/examples"
+                  ]}
+                />
+              </BreadcrumbWrapper>
+            ) : (
+              ""
+            )}
           </Header>
           <SelectedLanguageContext.Provider value={selectedLanguageState}>
             <NavItemsContext.Provider value={navItems}>

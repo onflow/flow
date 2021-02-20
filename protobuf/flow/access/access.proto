@@ -82,6 +82,12 @@ service AccessAPI {
 
   // GetNetworkParameters retrieves the Flow network details
   rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParametersResponse);
+
+  // ProtocolState
+
+  // GetLatestProtocolStateSnapshot retrieves the latest sealed protocol state snapshot.
+  // Used by Flow nodes joining the network to bootstrap a space-efficient local state.
+  rpc GetLatestProtocolStateSnapshot (GetLatestProtocolStateSnapshotRequest) returns (ProtocolStateSnapshotResponse);
 }
 
 message PingRequest {}
@@ -235,4 +241,12 @@ message GetNetworkParametersRequest {}
 
 message GetNetworkParametersResponse {
   string chain_id = 1;
+}
+
+// Protocol State
+
+message GetLatestProtocolStateSnapshotRequest {}
+
+message ProtocolStateSnapshotResponse {
+  bytes serializedSnapshot = 1;
 }

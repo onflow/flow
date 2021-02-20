@@ -1,0 +1,57 @@
+---
+title: Account Creation
+description: Techniques for creating accounts on Flow
+---
+
+This document covers the transaction logic required to create accounts 
+on the Flow blockchain. 
+Read the [accounts & keys documentation](/concepts/accounts-and-keys) 
+for an overview of the Flow account model.
+
+## Batch Account Creation 
+
+A single transaction can create multiple accounts by making 
+multiple calls to the `AuthAccount` initializer.
+
+<Callout type="warning">
+
+Due to current transaction limits, 
+accounts **should not be created in batches larger than 20 accounts**.
+</Callout>
+
+The examples below emit the same `flow.AccountCreated` event
+as a normal account creation transaction. 
+However, rather than emitting a single event, 
+these transactions emit one event for each new account.
+
+Check out this page to see how account creation transactions and events work in Go: 
+[Create an Account with the Go SDK](/flow-go-sdk/create-account/).
+
+### Unique Key For Each Account
+
+```cadence
+transaction(publicKeys: [String]) {
+  prepare(signer: AuthAccount) {
+    for publicKey in publicKeys {
+      let account = AuthAccount(payer: signer)
+      account.addPublicKey(publicKey.decodeHex())
+    }
+  }
+}
+```
+
+### Same Key For All Accounts
+
+```cadence
+transaction(publicKey: String, count: Int) {
+  prepare(signer: AuthAccount) {
+    var i = 0
+    while i < count {
+      let account = AuthAccount(payer: signer)
+      account.addPublicKey(publicKey.decodeHex())
+
+      i = i + 1
+    }
+  }
+}
+```

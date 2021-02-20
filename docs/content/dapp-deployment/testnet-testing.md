@@ -3,7 +3,7 @@ title: Testnet Testing Guidelines
 sidebar_title: 3. Testnet Testing
 ---
 
-Early adopters wishing to deploy applications to Flow Mainnet are required to have their applications tested first on Testnet before they are able submit their smart contracts to the Flow team for review.
+Early adopters wishing to deploy applications to Flow Mainnet are required to have their applications tested first on Testnet before they are able to submit their smart contracts to the Flow team for review.
 
 We're doing this in the early stages of development of the Flow network for a number of reasons. Primarily, it's to help developers understand how to create stable and robust applications using the Flow development stack.
 
@@ -28,6 +28,6 @@ There are currently JavaScript and Go testing frameworks you can use to create t
 
 After your app has been approved and deployed, a period of observation will begin. During this time the Flow team will record how your application handles traffic, to ensure there aren't any problems that could affect the wider network or your application's user-experience.
 
-During the observation period we'd like to see your application handle non-trivial amounts of traffic so we can be sure there are no issues. If we don't see enough traffic, we may delay Mainnet approval.
+During the observation period, we'd like to see your application handle non-trivial amounts of traffic so we can be sure there are no issues. If we don't see enough traffic, we may delay Mainnet approval.
 
 Including your own automated load testing or load-testing metrics could help your application get approval for Mainnet faster. The Flow team has some knowledge of problematic patterns that could cause problems, so please reach out before implementing your idea if you're unsure!

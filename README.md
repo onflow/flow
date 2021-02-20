@@ -28,7 +28,7 @@ Flow supports a variety of signature algorithms and curves, making it easy for u
 
 Every Flow account has built-in support for multi-signature transactions, making it simpler than ever to secure your account with multiple weighted keys.
 
-Learn more about accounts, weighted keys and transactions [in this guide](/docs/accounts-and-keys.md).
+Learn more about accounts, weighted keys and transactions [in this guide](https://docs.onflow.org/concepts/accounts-and-keys).
 
 ### Building Apps
 
@@ -51,7 +51,7 @@ The Flow Access API provides a single unified interface for applications and use
 - Query events emitted by your transactions
 - Read state stored in contracts and accounts
 
-You can find an in-depth description of each of the above features in the [Flow Access API Specification](/docs/access-api-spec.md).
+You can find an in-depth description of each of the above features in the [Flow Access API Specification](https://docs.onflow.org/access-api).
 
 To interact with the Flow Access API from JavaScript you can use the [Flow JavaScript SDK](https://github.com/onflow/flow-js-sdk)
 

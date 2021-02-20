@@ -12,13 +12,18 @@ being designed and is subject to change based on research and discussion by the 
 core team and community. If any changes are proposed, the Flow community will be notified in advance.
 </Callout>
 
-
 # Rewards
 
-Rewards are paid out at the end of each epoch, approximately weekly, to all the users that have tokens staked. 
-Once distributed, rewards are unlocked and liquid, so they can be transferred any time. 
+**Rewards are paid at 6:00am PT (14:00 GMT) on Tuesday**, every week,
+to all the users that have tokens staked. 
+
+Once distributed, rewards are unlocked and liquid, so they can be transferred at any time. 
 Some custody providers might require extra steps to withdraw user staking reward 
 so please contact your respective provider to get additional information as needed.
+
+**Epochs end at 10:00pm PT Tuesday (06:00 GMT Wednesday)**, every week. This means that
+reward recipients have approximately 16 hours to commit the rewards they receive in order
+for the rewards to be staked in the next epoch.
 
 ## Rewards Distribution
 
@@ -31,24 +36,24 @@ as staking rewards at each epoch to the entire pool of participants in the Flow 
 While total staking reward per epoch is known and fixed, individual rewards are variable depending on many factors. 
 Please see the next section on how to calculate an individual staking reward.
 
-|                                | Week 1         | Weeks 2-6  | Weeks 7 - 52  | Weeks 53+  |
-| ------------------------------ | -------------- | ---------- | ------------- | ---------- |
-| Total Rewards % (Annual)       | 5%             | 20%        | 5%            | TBD        |
-| Total Rewards Amount Per Week  | ~1.2M FLOW     | ~4.4M FLOW | ~1.2M FLOW    | TBD        |
+|                               | Dec 22         | Dec 29, Jan 5, 12, 19, 26 | Feb 2 weekly on Tuesdays until Dec 21, 2021 | Weeks 53+  |
+| ----------------------------- | -------------- | ------------------------- | ------------------------------------------- | ---------- |
+| Total Rewards % (Annual)      | 5%             | 20%                       | 5%                                          | TBD        |
+| Total Rewards Amount Per Week | ~1.2M FLOW     | ~4.4M FLOW                | ~1.2M FLOW                                  | TBD        |
 
 ## Individual Calculation
 
 Each user gets a percentage of the total rewards during each epoch 
 that is proportional to their percentage of all the tokens that are staked by all participants.
 
-The full reward calculation on a per user basis is equal to:	
+The full reward calculation on a per-user basis is equal to:	
 
 ```	
 New Reward(user) = Tr  * (Sn / St)	
 ```	
 
 where:	
-- `Tr` = Total staking rewards to be paid out during the current epoch.  (~1.2M FLOW for the first epoch)
+- `Tr` = Total staking rewards to be paid out during the current epoch. (See table above)
 - `Sn` = Amount of FLOW Staked by the target user for the current Epoch. (Different for each staker)
 - `St` = Sum of all the FLOW staked by all the participants in the network. (Changes every epoch)
 

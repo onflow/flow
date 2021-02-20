@@ -1,0 +1,10 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+jar {
+    from("flow") {
+        into "proto/"
+    }
+}
+
+group = 'org.onflow.flow-jvm'

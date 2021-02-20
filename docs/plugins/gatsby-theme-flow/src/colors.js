@@ -142,7 +142,7 @@ exports.colors = colors;
 exports.theme = {
   primary: colors.green.base,
   primaryLight: colors.green.lighter,
-  secondary: colors.pink.base,
+  secondary: colors.blue.base,
   tertiary: colors.teal.dark,
   tertiaryLight: colors.teal.base,
   divider: colors.silver.dark,

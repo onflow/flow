@@ -2,7 +2,7 @@
 title: Key Concepts
 ---
 
-The FLOW token is an integral part of the overall Flow ecosystem. There is a lot more to cover, 
+The FLOW token is an integral part of the overall Flow ecosystem. There is a lot more to cover,
 but here are a few key concepts.
 
 ## Fees
@@ -11,8 +11,10 @@ Fees for account creation, and transaction submission will exist in v0.x.x of th
 
 There are 2 fees that you will see applied to your transactions
 
-- Account Creation: currently fixed at 0.1 FLOW
-- Transaction Fee: currently fixed at 0.0001 FLOW
+- Account Creation: 0.001 FLOW
+- Transaction Fee: 0.000001 FLOW
+
+Please consider the above numbers only as relative reference. The exact values will most likely change during implementation and be dynamically adjusted thereafter.
 
 ### Transaction Fees
 
@@ -44,12 +46,12 @@ An account on Flow is a record in the chain state that holds the following infor
 - **Code**: Cadence contracts deployed to the account
 - **Storage**: area of the account used to store resource assets
 
-Information on Generating Accounts can be found [here](https://github.com/onflow/flow/blob/master/docs/accounts-and-keys.md#accounts)
+Information on Generating Accounts can be found [here](https://github.com/onflow/flow/blob/master/concepts/accounts-and-keys.md#accounts)
 
 ## Flow Service Account
 
 The Service Account is a special account in Flow that has special permissions to manage system contracts.
- It is able to mint tokens, set fees, and update network-level contracts.
+It is able to mint tokens, set fees, and update network-level contracts.
 
 ### Tokens & Fees
 
@@ -61,12 +63,11 @@ The Service Account administrates other smart contracts that manage various aspe
 
 ### Governance
 
-Besides its special permissions, the Service Account is an account like any other in Flow. During the early phases of Flow's development, the account will controlled by keys held by Dapper Labs. As Flow matures, the service account will transition to being controlled by a smart contract governed by the Flow community.
+Besides its special permissions, the Service Account is an account like any other in Flow. During the early phases of Flow's development, the account will be controlled by keys held by Dapper Labs. As Flow matures, the service account will transition to being controlled by a smart contract governed by the Flow community.
 
 ## Key Format
 
 We are supporting ECDSA with the curves `P-256` and `secp256k1`. For these curves, the public key is encoded into 64 bytes as `X||Y` where `||` is the concatenation operator.
 
-- `X` is 32 bytes and is the big endian byte encoding of the `x`-coordinate of the public key padded to 32, i.e. `X=x_31||x_30||...||x_0`  or `X =  x_31*256^31 + ... + x_i*256^i + ... + x_0`.
-- `Y` is 32 bytes and is the big endian byte encoding of the `y`-coordinate of the public key padded to 32, i.e. `Y=y_31||y_30||...||y_0` or `Y =  y_31*256^31 + ... + y_i*256^i + ... + y_0`
-
+- `X` is 32 bytes and is the big endian byte encoding of the `x`-coordinate of the public key padded to 32, i.e. `X=x_31||x_30||...||x_0` or `X = x_31*256^31 + ... + x_i*256^i + ... + x_0`.
+- `Y` is 32 bytes and is the big endian byte encoding of the `y`-coordinate of the public key padded to 32, i.e. `Y=y_31||y_30||...||y_0` or `Y = y_31*256^31 + ... + y_i*256^i + ... + y_0`

@@ -31,6 +31,8 @@
 | Blockdaemon | Verification | 49c9f946170d5fb40c2af953b1534fae771905865b142ab6ac9685b8ba5b51c1
 | Blockparty | Verification | 17b6c278b933bad8ec7420ff72f14689df70b18fc287549b65709448787b0aea
 | Calaxy | Verification | 8790cc2cabdb172e5a96c24c150865031e1818f6f84fbd68894efd0d0d12dc96
+| Blocto | Consensus | 2cfab7e9163475282f67186b06ce6eea7fa0687d25dd9c7a84532f2016bc2e5e
+| Blocto | Verification | 21b21ad1ddb5e3002cc6a3faa55e23d70db014ee229c213f7a43769789125536
 | Chainflow | Verification | 3b57e0ee2ece1f1dbefbd868d3eaac63b32a11df5b1a37d231145ea219055dde
 | Chainlayer | Consensus | 62de4fa4b6a05b8beb5868a5259caca4efa966aa0cb867fdd776c73abe9370ad
 | Chainlayer (Coming Soon!) | Collection | 
@@ -52,8 +54,6 @@
 | Metapurse | Verfication | dc3054cae816874d7dbbe838a41ef97c8a01b44643bffc82afe3a8228eed29fd
 | NFT42 | Verification | f8af31c7c3294b246f34040e5685c351e89f1c1edf6c64f93f7babd73d149951
 | Open Worlds | Verification | 8d4dbdd523bd4c67ffad9282a7acefc65641d25ac9c40759de9df859eb7255e3
-| Portto | Consensus | 2cfab7e9163475282f67186b06ce6eea7fa0687d25dd9c7a84532f2016bc2e5e
-| Portto | Verification | 21b21ad1ddb5e3002cc6a3faa55e23d70db014ee229c213f7a43769789125536
 | P2P | Verification | 78ef2e461a32df2278ae78baf7cf1a54fec3601fe4723a5833c49e1935dc4b7d
 | P2P | Consensus | 14faeb5538c8791827163074cd5fdbdcf70c44648a98d835c63ebb386d5c4745 
 | P2P | Collection | 79b43645fdf7c6597d8868b10c91d8cf343ab7d2cea0c98902d8f9456049918a
