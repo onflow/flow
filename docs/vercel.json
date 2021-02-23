@@ -316,21 +316,6 @@
       "permanent": false
     },
     {
-      "source": "/emulator/changelog",
-      "destination": "/emulator/changelog",
-      "permanent": false
-    },
-    {
-      "source": "/emulator",
-      "destination": "/emulator",
-      "permanent": false
-    },
-    {
-      "source": "/flow-cli",
-      "destination": "/flow-cli",
-      "permanent": false
-    },
-    {
       "source": "/sdks/golang/build-transaction",
       "destination": "/flow-go-sdk/build-transaction",
       "permanent": false
