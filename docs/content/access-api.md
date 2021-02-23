@@ -9,6 +9,17 @@ A language-agnostic specification for this API is defined using [Protocol Buffer
 
 - [Flow Access API protobuf source files](https://github.com/onflow/flow/tree/master/protobuf)
 
+## Flow access node endpoints
+
+The Access Nodes hosted by DapperLabs are accessible at:
+
+#### Mainnet
+`access.mainnet.nodes.onflow.org:9000`
+
+#### Testnet
+
+`access.devnet.nodes.onflow.org:9000`
+
 ---
 
 ## Ping

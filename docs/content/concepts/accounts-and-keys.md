@@ -52,7 +52,7 @@ When adding a public key to an account, you must specify the following informati
 
 - ID (used to identify key within an account)
 - Raw public key (encoded as bytes)
-- Signature algorthim (see codes below)
+- Signature algorithm (see codes below)
 - Hash algorithm (see codes below)
 - Weight (integer between 1-1000)
 
@@ -117,7 +117,7 @@ Signing a transaction for Flow is a multi-step process that can involve one or m
 
 ### Proposal Key
 
-Each transaction must declare a proposal key, which can be an account key from any Flow account. The acccount that owns the proposal key is referred to as the proposer.
+Each transaction must declare a proposal key, which can be an account key from any Flow account. The account that owns the proposal key is referred to as the proposer.
 
 A proposal key definition declares the address, key ID, and up-to-date sequence number for the account key.
 
@@ -150,7 +150,7 @@ A transaction is rejected if its proposal key does not specify a sequence number
 
 **Example**
 
-After the below tranaction is executed, the sequence number for `Key 7` on `Account 0x01` will increase to 43.
+After the below transaction is executed, the sequence number for `Key 7` on `Account 0x01` will increase to 43.
 
 ```javascript
 {
@@ -244,7 +244,7 @@ Since the proposal key must always have a valid signature, this scenario is only
 
 #### Single party, multiple signatures
 
-A transaction that declares a single account as the proposer, payer and authorizer may still specify mutiple signatures if the account uses weighted keys to achieve multi-sig functionality.
+A transaction that declares a single account as the proposer, payer and authorizer may still specify multiple signatures if the account uses weighted keys to achieve multi-sig functionality.
 
 | Account | Key ID | Weight |
 | ------- | ------ | ------ |
@@ -280,7 +280,7 @@ A transaction that declares a single account as the proposer, payer and authoriz
 
 #### Multiple parties
 
-A transaction that delcares different accounts for each signing role will require at least one signature from each account.
+A transaction that declares different accounts for each signing role will require at least one signature from each account.
 
 | Account | Key ID | Weight |
 | ------- | ------ | ------ |
@@ -317,7 +317,7 @@ A transaction that delcares different accounts for each signing role will requir
 
 #### Multiple parties, multiple signatures
 
-A transaction that delcares different accounts for each signing role will may require more than one signature per account if those accounts use weighted keys to achieve multi-sig functionality.
+A transaction that declares different accounts for each signing role may require more than one signature per account if those accounts use weighted keys to achieve multi-sig functionality.
 
 | Account | Key ID | Weight |
 | ------- | ------ | ------ |

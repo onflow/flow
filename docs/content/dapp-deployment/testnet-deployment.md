@@ -170,7 +170,7 @@ flow accounts create \
 
 Flow Testnet comes with some useful contracts already deployed, called **core contracts.** There are reference pages with import addresses for the core contracts here: [https://docs.onflow.org/core-contracts/](/core-contracts/)
 
-Once you accounts are set up and you're ready to develop, you can look over some code examples from the Flow Go SDK here:
+Once your accounts are set up and you're ready to develop, you can look over some code examples from the Flow Go SDK here:
 
 - [https://github.com/onflow/flow-go-sdk/tree/master/examples](https://github.com/onflow/flow-go-sdk/tree/master/examples)
 
@@ -178,5 +178,5 @@ Once you accounts are set up and you're ready to develop, you can look over some
 
 If you discover your application is broken after an update, use the latest emulator to test changes to your application. Once you are satisfied that you've patched any breaking changes, you'll need to get in touch with the Flow core team to redeploy your contracts to Testnet.
 
-We kindly ask you to follow the steps listed in the [Testnet Testing Guidelines.](../testnet-testing) when redeploying your contracts.
+We kindly ask you to follow the steps listed in the [Testnet Testing Guidelines.](/dapp-deployment/testnet-testing) when redeploying your contracts.
 

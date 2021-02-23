@@ -3,7 +3,7 @@ title: Mainnet Deployment Guidelines
 sidebar_title: 4. Deploy to Mainnet
 ---
 
-In the early days of the Flow network, applications deployed to the Flow Mainnet are required to be review and tested by the Flow team. For details about the testing and approval process, please read through our guide \[Testnet Testing Guidelines](/dapp-deployment/testnet-testing/) If your app has passed the review process you're ready to deploy on Flow's Mainnet!
+In the early days of the Flow network, applications deployed to the Flow Mainnet are required to be review and tested by the Flow team. For details about the testing and approval process, please read through our guide [Testnet Testing Guidelines](/dapp-deployment/testnet-testing/) If your app has passed the review process you're ready to deploy on Flow's Mainnet!
 
 ## Risks for Early Adopters
 
@@ -31,7 +31,7 @@ You can read about Transaction fees here: [https://docs.onflow.org/flow-token/co
 
 ### Ongoing Development
 
-The goal of the Flow project is to become decentralized and community operated, over time. In the early stages of the network the Flow core team will be primarily responsible for the stability of the network, adding protocol features included in the node software...etc. The stability of the network will increase over time, as more nodes join and begin to participate in the protocol, however there are still "unknown-unknowns" (an apt idiom from a regrettable source) Early adopters of Flow are test pilots attempting to break blockchain barriers of the past, and we're asking all early-adopters for their help flagging issues with the Flow core team.
+The goal of the Flow project is to become decentralized and community-operated, over time. In the early stages of the network, the Flow core team will be primarily responsible for the stability of the network, adding protocol features included in the node software...etc. The stability of the network will increase over time, as more nodes join and begin to participate in the protocol, however, there are still "unknown-unknowns" (an apt idiom from a regrettable source). Early adopters of Flow are test pilots attempting to break blockchain barriers of the past, and we're asking all early-adopters for their help flagging issues with the Flow core team.
 
 ## Deploying on Mainnet
 
@@ -39,17 +39,17 @@ Currently, deploying to Mainnet requires manual intervention from the Flow team.
 
 ### Prerequisites
 
-Before considering your application for deployment to Mainnet, it has to have been live on Testnet handling real world traffic for a fixed period of time as suggested here: [Testnet Testing Guidelines](../testnet-testing).
+Before considering your application for deployment to Mainnet, it has to have been live on Testnet handling real world traffic for a fixed period of time as suggested here: [Testnet Testing Guidelines](/dapp-deployment/testnet-testing).
 
-Your project's smart contracts should include test coverage and follow any additional guidelines set out here: [Smart Contract Testing Guidelines](../contract-testing).
+Your project's smart contracts should include test coverage and follow any additional guidelines set out here: [Smart Contract Testing Guidelines](/dapp-deployment/contract-testing).
 
-Your reviewers will be using the following criterion when assessing your project: [Flow Project Technical Analysis](../contract-testing) Keeping these points in mind while developing your project will help speed up the review and deployment process.
+Your reviewers will be using the following criterion when assessing your project: [Flow Project Technical Analysis](/dapp-deployment/contract-testing) Keeping these points in mind while developing your project will help speed up the review and deployment process.
 
 ### Smart Contract Review
 
 To ensure that Flow Mainnet works well for everyone in the early days, all smart contracts being deployed will be reviewed by the Flow team. The aim of the review process is to attempt to discover any issues that may affect your users or the operation of the network before your application is live.
 
-To submit your contract for review use this form: [https://buildwithflow.typeform.com/to/EkfaboAx](https://buildwithflow.typeform.com/to/EkfaboAx)
+To submit your contract for review, use this form: [https://buildwithflow.typeform.com/to/EkfaboAx](https://buildwithflow.typeform.com/to/EkfaboAx)
 
 Once your contract has been submitted for review a member of the reviewing team will contact you and discuss how long the review might take. The timeliness of the review process will be different for every project.
 
