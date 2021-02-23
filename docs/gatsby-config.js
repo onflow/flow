@@ -88,11 +88,11 @@ const sourceSlugTransformers = {
       // Use README files as 'index' files!
       .replace("README/", ""),
   "flow-go-sdk-github": (slug) =>
-      slug
-        .replace(/^\/docs\//, "/flow-go-sdk/")
-        .replace(/^\/examples\//, "/flow-go-sdk/examples/")
-        // Use README files as 'index' files!
-        .replace("README/", ""),
+    slug
+      .replace(/^\/docs\//, "/flow-go-sdk/")
+      .replace(/^\/examples\//, "/flow-go-sdk/examples/")
+      // Use README files as 'index' files!
+      .replace("README/", ""),
 };
 
 const sections = [
@@ -189,7 +189,7 @@ const sections = [
         "docs/querying-events",
         "docs/querying-blocks",
         "docs/transfer-flow",
-      ]
+      ],
     },
   },
   {
@@ -207,11 +207,11 @@ const sections = [
         "[Introducing @onflow/fcl](/flow-js-sdk)",
         "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
       ],
-      "Changelogs": [
+      Changelogs: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl/CHANGELOG)",
         "[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)",
-        "[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react/CHANGELOG)"
-      ]
+        "[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react/CHANGELOG)",
+      ],
     },
   },
   {
@@ -255,6 +255,7 @@ const sections = [
       null: ["[Home](/)"],
       Overview: [
         "flow-token/index",
+        "flow-token/available-wallets",
         "flow-token/earn",
         "flow-token/concepts",
         "flow-token/delivery",
