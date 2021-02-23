@@ -213,6 +213,9 @@ const sections = [
         "docs/send-transactions",
         "docs/query-transactions",
         "docs/execute-scripts",
+        "docs/deploy-project-contracts",
+        "docs/initialize-project",
+        "docs/project-contracts"
       ],
     },
   },
