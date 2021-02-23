@@ -517,6 +517,10 @@ module.exports = {
             crumbLabel: "FAQ",
           },
           {
+            pathname: "/faq",
+            crumbLabel: "FAQ",
+          },
+          {
             pathname: "/access-api",
             crumbLabel: "Access API",
           },
