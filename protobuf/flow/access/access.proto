@@ -3,6 +3,7 @@ syntax = "proto3";
 package flow.access;
 
 option go_package = "access";
+option java_package = "org.onflow.protobuf.access";
 
 import "flow/entities/account.proto";
 import "flow/entities/block_header.proto";
