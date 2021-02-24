@@ -316,6 +316,7 @@ const sections = [
       null: ["[Home](/)"],
       Overview: [
         "flow-token/index",
+        "flow-token/available-wallets",
         "flow-token/earn",
         "flow-token/concepts",
         "flow-token/delivery",
