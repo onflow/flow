@@ -1,454 +1,439 @@
 {
-	"redirects": [
-		{
-			"source": "/docs",
-			"destination": "/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/getting-started-1",
-			"destination": "/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/introduction",
-			"destination": "/cadence/tutorial/00-introduction/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/getting-started",
-			"destination": "/cadence/tutorial/01-first-steps/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/hello-world",
-			"destination": "/cadence/tutorial/02-hello-world/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/fungible-tokens",
-			"destination": "/cadence/tutorial/03-fungible-tokens/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/non-fungible-tokens",
-			"destination": "/cadence/tutorial/04-non-fungible-tokens/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/quick-set-up-for-marketplace",
-			"destination": "/cadence/tutorial/05-marketplace-setup/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/composable-smart-contracts-marketplace",
-			"destination": "/cadence/tutorial/06-marketplace-compose/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/composable-resources-kitty-hats",
-			"destination": "/cadence/tutorial/07-resources-compose/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/voting",
-			"destination": "/cadence/tutorial/08-voting/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/cadence",
-			"destination": "/cadence/language/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/glossary",
-			"destination": "/intro/glossary/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/faq",
-			"destination": "/intro/FAQ/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/node-operation-consolidated-guide",
-			"destination": "/node-operation",
-			"permanent": true
-		},
-		{
-			"source": "/docs/accessing-flow-testnet",
-			"destination": "/concepts/accessing-testnet",
-			"permanent": true
-		},
-		{
-			"source": "/docs/cli",
-			"destination": "/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/emulator",
-			"destination": "/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/visual-studio-code-extension",
-			"destination": "/",
-			"permanent": true
-		},
-		{
-			"source": "/docs/node-roles",
-			"destination": "/node-operation",
-			"permanent": true
-		},
-		{
-			"source": "/docs/staking-rewards",
-			"destination": "/staking",
-			"permanent": true
-		},
-		{
-			"source": "/docs/delegation",
-			"destination": "/staking",
-			"permanent": true
-		},
-		{
-			"source": "/intro/partner-update",
-			"destination": "/community-updates/sep-16-2020/",
-			"permanent": true
-		},
-		{
-			"source": "/intro/partner-update/",
-			"destination": "/community-updates/sep-16-2020/",
-			"permanent": true
-		},
-		{
-			"source": "/concepts/token-delivery-steps",
-			"destination": "/flow-token/delivery/",
-			"permanent": true
-		},
-		{
-			"source": "/concepts/token-delivery-steps/",
-			"destination": "/flow-token/delivery/",
-			"permanent": true
-		},
-		{
-			"source": "/concepts/node-operation/quickstart",
-			"destination": "/node-operation/",
-			"permanent": true
-		},
-		{
-			"source": "/concepts/node-operation/quickstart/",
-			"destination": "/node-operation/",
-			"permanent": true
-		},
-		{
-			"source": "/support/flow-port/staking-guide/",
-			"destination": "/flow-port/staking-guide/",
-			"permanent": false
-		},
-		{
-			"source": "/support/flow-port",
-			"destination": "/flow-port",
-			"permanent": false
-		},
-		{
-			"source": "/tutorial/cadence/01-first-steps",
-			"destination": "/cadence/tutorial/01-first-steps",
-			"permanent": false
-		},
-		{
-			"source": "/tutorial/cadence/02-hello-world",
-			"destination": "/cadence/tutorial/02-hello-world",
-			"permanent": false
-		},
-		{
-			"source": "/tutorial/cadence/00-introduction",
-			"destination": "/cadence/tutorial/00-introduction",
-			"permanent": false
-		},
-		{
-			"source": "/tutorial/cadence/03-fungible-tokens",
-			"destination": "/cadence/tutorial/03-fungible-tokens",
-			"permanent": false
-		},
-		{
-			"source": "/tutorial/cadence/04-non-fungible-tokens",
-			"destination": "/cadence/tutorial/04-non-fungible-tokens",
-			"permanent": false
-		},
-		{
-			"source": "/tutorial/cadence/05-marketplace-setup",
-			"destination": "/cadence/tutorial/05-marketplace-setup",
-			"permanent": false
-		},
-		{
-			"source": "/tutorial/cadence/06-marketplace-compose",
-			"destination": "/cadence/tutorial/06-marketplace-compose",
-			"permanent": false
-		},
-		{
-			"source": "/tutorial/cadence/07-resources-compose",
-			"destination": "/cadence/tutorial/07-resources-compose",
-			"permanent": false
-		},
-		{
-			"source": "/tutorial/cadence/08-voting",
-			"destination": "/cadence/tutorial/08-voting",
-			"permanent": false
-		},
-		{
-			"source": "/updates/oct-6-2020",
-			"destination": "/community-updates/oct-6-2020",
-			"permanent": false
-		},
-		{
-			"source": "/updates/sep-16-2020",
-			"destination": "/community-updates/sep-16-2020",
-			"permanent": false
-		},
-		{
-			"source": "/concepts/flow-concept/accessing-testnet",
-			"destination": "/concepts/accessing-testnet",
-			"permanent": false
-		},
-		{
-			"source": "/concepts/flow-concepts/accounts-keys",
-			"destination": "/concepts/accounts-and-keys",
-			"permanent": false
-		},
-		{
-			"source": "/concepts/flow-concepts/delegation",
-			"destination": "/concepts/delegation",
-			"permanent": false
-		},
-		{
-			"source": "/concepts/flow-concepts/fees",
-			"destination": "/concepts/fees",
-			"permanent": false
-		},
-		{
-			"source": "/concepts/flow-concepts/governance",
-			"destination": "/concepts/governance",
-			"permanent": false
-		},
-		{
-			"source": "/concepts/flow-concepts/mainnet",
-			"destination": "/concepts/mainnet",
-			"permanent": false
-		},
-		{
-			"source": "/concepts/flow-concepts/service-account",
-			"destination": "/concepts/service-account",
-			"permanent": false
-		},
-		{
-			"source": "/concepts/flow-concepts/slashing",
-			"destination": "/concepts/slashing",
-			"permanent": false
-		},
-		{
-			"source": "/concepts/flow-concepts/token-staking",
-			"destination": "/concepts/token-staking",
-			"permanent": false
-		},
-		{
-			"source": "/concepts/flow-concepts/transactions",
-			"destination": "/concepts/transactions",
-			"permanent": false
-		},
-		{
-			"source": "/protocol/core-contracts/access-api",
-			"destination": "/core-contracts/access-api",
-			"permanent": false
-		},
-		{
-			"source": "/protocol/core-contracts/flow-fees",
-			"destination": "/core-contracts/flow-fees",
-			"permanent": false
-		},
-		{
-			"source": "/protocol/core-contracts/flow-id-table-staking",
-			"destination": "/core-contracts/flow-id-table-staking",
-			"permanent": false
-		},
-		{
-			"source": "/protocol/core-contracts/flow-token",
-			"destination": "/core-contracts/flow-token",
-			"permanent": false
-		},
-		{
-			"source": "/protocol/core-contracts/fungible-token",
-			"destination": "/core-contracts/flow-token",
-			"permanent": false
-		},
-		{
-			"source": "/protocol/core-contracts",
-			"destination": "/core-contracts",
-			"permanent": false
-		},
-		{
-			"source": "/protocol/core-contracts/non-fungible-token",
-			"destination": "/core-contracts/non-fungible-token",
-			"permanent": false
-		},
-		{
-			"source": "/guides/dapp-deployment/contract-testing",
-			"destination": "/dapp-deployment/contract-testing",
-			"permanent": false
-		},
-		{
-			"source": "/guides/dapp-deployment",
-			"destination": "/dapp-deployment",
-			"permanent": false
-		},
-		{
-			"source": "/guides/dapp-deployment/mainnet-deployment",
-			"destination": "/dapp-deployment/mainnet-deployment",
-			"permanent": false
-		},
-		{
-			"source": "/guides/dapp-deployment/testnet-deployment",
-			"destination": "/dapp-deployment/testnet-deployment",
-			"permanent": false
-		},
-		{
-			"source": "/guides/dapp-deployment/testnet-testing",
-			"destination": "/dapp-deployment/testnet-testing",
-			"permanent": false
-		},
-		{
-			"source": "/devtools/emulator/changelog",
-			"destination": "/emulator/changelog",
-			"permanent": false
-		},
-		{
-			"source": "/devtools/emulator",
-			"destination": "/emulator",
-			"permanent": false
-		},
-		{
-			"source": "/devtools/flow-cli",
-			"destination": "/flow-cli",
-			"permanent": false
-		},
-		{
-			"source": "/sdks/golang/build-transaction",
-			"destination": "/flow-go-sdk/build-transaction",
-			"permanent": false
-		},
-		{
-			"source": "/sdks/golang/changelog",
-			"destination": "/flow-go-sdk/changelog",
-			"permanent": false
-		},
-		{
-			"source": "/sdks/golang/create-account",
-			"destination": "/flow-go-sdk/create-account",
-			"permanent": false
-		},
-		{
-			"source": "/sdks/golang",
-			"destination": "/flow-go-sdk",
-			"permanent": false
-		},
-		{
-			"source": "/sdks/golang/query-events",
-			"destination": "/flow-go-sdk/query-events",
-			"permanent": false
-		},
-		{
-			"source": "/sdks/golang/send-transaction",
-			"destination": "/flow-go-sdk/send-transaction",
-			"permanent": false
-		},
-		{
-			"source": "/sdks/golang/sign-transaction-hsm",
-			"destination": "/flow-go-sdk/sign-transaction-hsm",
-			"permanent": false
-		},
-		{
-			"source": "/sdks/golang/sign-transaction",
-			"destination": "/flow-go-sdk/sign-transaction",
-			"permanent": false
-		},
-		{
-			"source": "/sdks/golang/transfer-funds",
-			"destination": "/flow-go-sdk/transfer-funds",
-			"permanent": false
-		},
-		{
-			"source": "/sdks/javascript/fcl",
-			"destination": "/flow-js-sdk/fcl",
-			"permanent": false
-		},
-		{
-			"source": "/sdks/javascript",
-			"destination": "/flow-js-sdk",
-			"permanent": false
-		},
-		{
-			"source": "/token/TODO",
-			"destination": "/flow-token/TODO",
-			"permanent": false
-		},
-		{
-			"source": "/token/backers",
-			"destination": "/flow-token/backers",
-			"permanent": false
-		},
-		{
-			"source": "/token/concepts",
-			"destination": "/flow-token/concepts",
-			"permanent": false
-		},
-		{
-			"source": "/token/delivery",
-			"destination": "/flow-token/delivery",
-			"permanent": false
-		},
-		{
-			"source": "/token/earn",
-			"destination": "/flow-token/earn",
-			"permanent": false
-		},
-		{
-			"source": "/token/faq",
-			"destination": "/flow-token/faq",
-			"permanent": false
-		},
-		{
-			"source": "/token",
-			"destination": "/flow-token",
-			"permanent": false
-		},
-		{
-			"source": "/token/wallets",
-			"destination": "/flow-token/wallets",
-			"permanent": false
-		},
-		{
-			"source": "/guides/node-operator/genesis-bootstrap",
-			"destination": "/node-operation/guides/genesis-bootstrap",
-			"permanent": false
-		},
-		{
-			"source": "/guides/node-operator/spork-practice",
-			"destination": "/node-operation/guides/spork-practice",
-			"permanent": false
-		},
-		{
-			"source": "/guides/node-operator/starting-nodes",
-			"destination": "/node-operation/guides/starting-nodes",
-			"permanent": false
-		},
-		{
-			"source": "/core-contracts/flow-id-table-staking",
-			"destination": "/core-contracts/staking-contract-reference",
-			"permanent": false
-		},
-		{
-			"source": "/cadence/tutorial/00-introduction/",
-			"destination": "/cadence",
-			"permanent": true
-		}
-	]
+  "redirects": [
+    {
+      "source": "/docs",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/getting-started-1",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/introduction",
+      "destination": "/cadence/tutorial/00-introduction/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/getting-started",
+      "destination": "/cadence/tutorial/01-first-steps/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/hello-world",
+      "destination": "/cadence/tutorial/02-hello-world/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/fungible-tokens",
+      "destination": "/cadence/tutorial/03-fungible-tokens/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/non-fungible-tokens",
+      "destination": "/cadence/tutorial/04-non-fungible-tokens/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/quick-set-up-for-marketplace",
+      "destination": "/cadence/tutorial/05-marketplace-setup/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/composable-smart-contracts-marketplace",
+      "destination": "/cadence/tutorial/06-marketplace-compose/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/composable-resources-kitty-hats",
+      "destination": "/cadence/tutorial/07-resources-compose/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/voting",
+      "destination": "/cadence/tutorial/08-voting/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cadence",
+      "destination": "/cadence/language/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/glossary",
+      "destination": "/intro/glossary/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/faq",
+      "destination": "/intro/FAQ/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/node-operation-consolidated-guide",
+      "destination": "/node-operation",
+      "permanent": true
+    },
+    {
+      "source": "/docs/accessing-flow-testnet",
+      "destination": "/concepts/accessing-testnet",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cli",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/emulator",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/visual-studio-code-extension",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/node-roles",
+      "destination": "/node-operation",
+      "permanent": true
+    },
+    {
+      "source": "/docs/staking-rewards",
+      "destination": "/staking",
+      "permanent": true
+    },
+    {
+      "source": "/docs/delegation",
+      "destination": "/staking",
+      "permanent": true
+    },
+    {
+      "source": "/intro/partner-update",
+      "destination": "/community-updates/sep-16-2020/",
+      "permanent": true
+    },
+    {
+      "source": "/intro/partner-update/",
+      "destination": "/community-updates/sep-16-2020/",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/token-delivery-steps",
+      "destination": "/flow-token/delivery/",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/token-delivery-steps/",
+      "destination": "/flow-token/delivery/",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/node-operation/quickstart",
+      "destination": "/node-operation/",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/node-operation/quickstart/",
+      "destination": "/node-operation/",
+      "permanent": true
+    },
+    {
+      "source": "/support/flow-port/staking-guide/",
+      "destination": "/flow-port/staking-guide/",
+      "permanent": false
+    },
+    {
+      "source": "/support/flow-port",
+      "destination": "/flow-port",
+      "permanent": false
+    },
+    {
+      "source": "/tutorial/cadence/01-first-steps",
+      "destination": "/cadence/tutorial/01-first-steps",
+      "permanent": false
+    },
+    {
+      "source": "/tutorial/cadence/02-hello-world",
+      "destination": "/cadence/tutorial/02-hello-world",
+      "permanent": false
+    },
+    {
+      "source": "/tutorial/cadence/00-introduction",
+      "destination": "/cadence/tutorial/00-introduction",
+      "permanent": false
+    },
+    {
+      "source": "/tutorial/cadence/03-fungible-tokens",
+      "destination": "/cadence/tutorial/03-fungible-tokens",
+      "permanent": false
+    },
+    {
+      "source": "/tutorial/cadence/04-non-fungible-tokens",
+      "destination": "/cadence/tutorial/04-non-fungible-tokens",
+      "permanent": false
+    },
+    {
+      "source": "/tutorial/cadence/05-marketplace-setup",
+      "destination": "/cadence/tutorial/05-marketplace-setup",
+      "permanent": false
+    },
+    {
+      "source": "/tutorial/cadence/06-marketplace-compose",
+      "destination": "/cadence/tutorial/06-marketplace-compose",
+      "permanent": false
+    },
+    {
+      "source": "/tutorial/cadence/07-resources-compose",
+      "destination": "/cadence/tutorial/07-resources-compose",
+      "permanent": false
+    },
+    {
+      "source": "/tutorial/cadence/08-voting",
+      "destination": "/cadence/tutorial/08-voting",
+      "permanent": false
+    },
+    {
+      "source": "/updates/oct-6-2020",
+      "destination": "/community-updates/oct-6-2020",
+      "permanent": false
+    },
+    {
+      "source": "/updates/sep-16-2020",
+      "destination": "/community-updates/sep-16-2020",
+      "permanent": false
+    },
+    {
+      "source": "/concepts/flow-concept/accessing-testnet",
+      "destination": "/concepts/accessing-testnet",
+      "permanent": false
+    },
+    {
+      "source": "/concepts/flow-concepts/accounts-keys",
+      "destination": "/concepts/accounts-and-keys",
+      "permanent": false
+    },
+    {
+      "source": "/concepts/flow-concepts/delegation",
+      "destination": "/concepts/delegation",
+      "permanent": false
+    },
+    {
+      "source": "/concepts/flow-concepts/fees",
+      "destination": "/concepts/fees",
+      "permanent": false
+    },
+    {
+      "source": "/concepts/flow-concepts/governance",
+      "destination": "/concepts/governance",
+      "permanent": false
+    },
+    {
+      "source": "/concepts/flow-concepts/mainnet",
+      "destination": "/concepts/mainnet",
+      "permanent": false
+    },
+    {
+      "source": "/concepts/flow-concepts/service-account",
+      "destination": "/concepts/service-account",
+      "permanent": false
+    },
+    {
+      "source": "/concepts/flow-concepts/slashing",
+      "destination": "/concepts/slashing",
+      "permanent": false
+    },
+    {
+      "source": "/concepts/flow-concepts/token-staking",
+      "destination": "/concepts/token-staking",
+      "permanent": false
+    },
+    {
+      "source": "/concepts/flow-concepts/transactions",
+      "destination": "/concepts/transactions",
+      "permanent": false
+    },
+    {
+      "source": "/protocol/core-contracts/access-api",
+      "destination": "/core-contracts/access-api",
+      "permanent": false
+    },
+    {
+      "source": "/protocol/core-contracts/flow-fees",
+      "destination": "/core-contracts/flow-fees",
+      "permanent": false
+    },
+    {
+      "source": "/protocol/core-contracts/flow-id-table-staking",
+      "destination": "/core-contracts/flow-id-table-staking",
+      "permanent": false
+    },
+    {
+      "source": "/protocol/core-contracts/flow-token",
+      "destination": "/core-contracts/flow-token",
+      "permanent": false
+    },
+    {
+      "source": "/protocol/core-contracts/fungible-token",
+      "destination": "/core-contracts/flow-token",
+      "permanent": false
+    },
+    {
+      "source": "/protocol/core-contracts",
+      "destination": "/core-contracts",
+      "permanent": false
+    },
+    {
+      "source": "/protocol/core-contracts/non-fungible-token",
+      "destination": "/core-contracts/non-fungible-token",
+      "permanent": false
+    },
+    {
+      "source": "/guides/dapp-deployment/contract-testing",
+      "destination": "/dapp-deployment/contract-testing",
+      "permanent": false
+    },
+    {
+      "source": "/guides/dapp-deployment",
+      "destination": "/dapp-deployment",
+      "permanent": false
+    },
+    {
+      "source": "/guides/dapp-deployment/mainnet-deployment",
+      "destination": "/dapp-deployment/mainnet-deployment",
+      "permanent": false
+    },
+    {
+      "source": "/guides/dapp-deployment/testnet-deployment",
+      "destination": "/dapp-deployment/testnet-deployment",
+      "permanent": false
+    },
+    {
+      "source": "/guides/dapp-deployment/testnet-testing",
+      "destination": "/dapp-deployment/testnet-testing",
+      "permanent": false
+    },
+    {
+      "source": "/sdks/golang/build-transaction",
+      "destination": "/flow-go-sdk/build-transaction",
+      "permanent": false
+    },
+    {
+      "source": "/sdks/golang/changelog",
+      "destination": "/flow-go-sdk/changelog",
+      "permanent": false
+    },
+    {
+      "source": "/sdks/golang/create-account",
+      "destination": "/flow-go-sdk/create-account",
+      "permanent": false
+    },
+    {
+      "source": "/sdks/golang",
+      "destination": "/flow-go-sdk",
+      "permanent": false
+    },
+    {
+      "source": "/sdks/golang/query-events",
+      "destination": "/flow-go-sdk/query-events",
+      "permanent": false
+    },
+    {
+      "source": "/sdks/golang/send-transaction",
+      "destination": "/flow-go-sdk/send-transaction",
+      "permanent": false
+    },
+    {
+      "source": "/sdks/golang/sign-transaction-hsm",
+      "destination": "/flow-go-sdk/sign-transaction-hsm",
+      "permanent": false
+    },
+    {
+      "source": "/sdks/golang/sign-transaction",
+      "destination": "/flow-go-sdk/sign-transaction",
+      "permanent": false
+    },
+    {
+      "source": "/sdks/golang/transfer-funds",
+      "destination": "/flow-go-sdk/transfer-funds",
+      "permanent": false
+    },
+    {
+      "source": "/sdks/javascript/fcl",
+      "destination": "/flow-js-sdk/fcl",
+      "permanent": false
+    },
+    {
+      "source": "/sdks/javascript",
+      "destination": "/flow-js-sdk",
+      "permanent": false
+    },
+    {
+      "source": "/token/TODO",
+      "destination": "/flow-token/TODO",
+      "permanent": false
+    },
+    {
+      "source": "/token/backers",
+      "destination": "/flow-token/backers",
+      "permanent": false
+    },
+    {
+      "source": "/token/concepts",
+      "destination": "/flow-token/concepts",
+      "permanent": false
+    },
+    {
+      "source": "/token/delivery",
+      "destination": "/flow-token/delivery",
+      "permanent": false
+    },
+    {
+      "source": "/token/earn",
+      "destination": "/flow-token/earn",
+      "permanent": false
+    },
+    {
+      "source": "/token/faq",
+      "destination": "/flow-token/faq",
+      "permanent": false
+    },
+    {
+      "source": "/token",
+      "destination": "/flow-token",
+      "permanent": false
+    },
+    {
+      "source": "/token/wallets",
+      "destination": "/flow-token/wallets",
+      "permanent": false
+    },
+    {
+      "source": "/guides/node-operator/genesis-bootstrap",
+      "destination": "/node-operation/guides/genesis-bootstrap",
+      "permanent": false
+    },
+    {
+      "source": "/guides/node-operator/spork-practice",
+      "destination": "/node-operation/guides/spork-practice",
+      "permanent": false
+    },
+    {
+      "source": "/guides/node-operator/starting-nodes",
+      "destination": "/node-operation/guides/starting-nodes",
+      "permanent": false
+    },
+    {
+      "source": "/core-contracts/flow-id-table-staking",
+      "destination": "/core-contracts/staking-contract-reference",
+      "permanent": false
+    },
+    {
+      "source": "/cadence/tutorial/00-introduction/",
+      "destination": "/cadence",
+      "permanent": true
+    }
+  ]
 }
