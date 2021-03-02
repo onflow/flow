@@ -68,8 +68,6 @@
 | Staked | Collection | 129aab6407f6f66774ce77a03b8abd1ba67317eab1c70c5c6cdd7a433a7d64e8
 | Staked | Collection | fcb55c2d1fb2737b159704b5a30b194b8a8ddfb4691d55692af597ac6e236201
 | T-Systems| Execution | 2b396b7fab0102f104a2af7e095b145cc14da28f863564802e158afc3e07e638
-| Ubisoft | Verification | 429143c4438fcbbfc7353869b4f270e233aa0f75a6881ee977a81c962c4978ed
-| Ubisoft | Collection | dc0fb2d914f0c12cc1de527d22974b8f2de376e4765e084e0b8be14b51b5ef81
 | Usopp | Verification | d12b80ad9a9be6dbf86f8a7824739d9b2193836e5df226e063528dae33be3a4a
 | VCC | Collection | fe14c6a722212e19af1c143008d46413d4cea5097714a3720c67f356fb7c2982
 | versus-flow.art | Verification | 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e
