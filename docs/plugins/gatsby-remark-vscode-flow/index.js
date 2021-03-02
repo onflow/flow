@@ -1,86 +1,81 @@
-
-const visit = require("unist-util-visit")
-const {Highlighter} = require("./highlighter");
-const toHtml = require('hast-util-to-html')
+const visit = require("unist-util-visit");
+const { Highlighter } = require("./highlighter");
+const toHtml = require("hast-util-to-html");
 
 let highlighter;
 
 module.exports = async (page, pluginOptions = {}) => {
-  const { markdownAST } = page
+  const { markdownAST } = page;
 
-  const codeNodes = []
+  const codeNodes = [];
 
-  visit(markdownAST, 'code', (node) => {
+  visit(markdownAST, "code", (node) => {
     if (node.lang) {
-      codeNodes.push(node)
+      codeNodes.push(node);
     } else {
-      const path = page.markdownNode.fields.slug
-      const {line} = node.position.start;
-      console.warn(`Missing language tag in ${path} at line ${line}`)
+      const path =
+        page.markdownNode &&
+        page.markdownNode.fields &&
+        page.markdownNode.fields.slug
+          ? page.markdownNode.fields.slug
+          : "";
+      const { line } = node.position.start;
+      console.warn(`Missing language tag in ${path} at line ${line}`);
     }
-    return node
-  })
+    return node;
+  });
 
-  visit(markdownAST, 'inlineCode', (node) => {
-    const match = node.value.match(/^(\w+)•(.*)$/)
+  visit(markdownAST, "inlineCode", (node) => {
+    const match = node.value.match(/^(\w+)•(.*)$/);
     if (match) {
-      node.lang = match[1]
-      node.value = match[2]
-      codeNodes.push(node)
+      node.lang = match[1];
+      node.value = match[2];
+      codeNodes.push(node);
     }
-    return node
-  })
-
+    return node;
+  });
 
   await Promise.all(
     codeNodes.map(async (node) => {
-
       if (!highlighter) {
-        highlighter = await Highlighter.fromOptions(pluginOptions)
+        highlighter = await Highlighter.fromOptions(pluginOptions);
       }
 
-      const grammar = await highlighter.getLanguageGrammar(node.lang)
+      const grammar = await highlighter.getLanguageGrammar(node.lang);
       if (!grammar) {
-        console.warn(`Failed to load grammar for language: ${node.lang}`)
-        return node
+        console.warn(`Failed to load grammar for language: ${node.lang}`);
+        return node;
       }
 
-      const highlighted =
-        highlighter.highlight(node.value, grammar)
+      const highlighted = highlighter.highlight(node.value, grammar);
 
-      const isInline = node.type === 'inlineCode'
+      const isInline = node.type === "inlineCode";
 
-      const classes = [`language-${node.lang}`]
+      const classes = [`language-${node.lang}`];
       if (isInline) {
-        classes.push('inline')
+        classes.push("inline");
       }
 
-      node.type = 'html'
-      node.value = toHtml(
-        {
-          type: "element",
-          tagName: "pre",
-          properties: {
-            className: classes,
+      node.type = "html";
+      node.value = toHtml({
+        type: "element",
+        tagName: "pre",
+        properties: {
+          className: classes,
+        },
+        children: [
+          {
+            type: "element",
+            tagName: "code",
+            properties: {
+              className: classes,
+            },
+            children: highlighted,
           },
-          children: [
-            {
-              type: "element",
-              tagName: "code",
-              properties: {
-                className: classes,
-              },
-              children: highlighted,
-            }
-          ],
-        }
-      )
+        ],
+      });
 
-      return node
+      return node;
     })
-  )
-}
-
-
-
-
+  );
+};
