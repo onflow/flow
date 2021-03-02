@@ -20,6 +20,12 @@ The Access Nodes hosted by DapperLabs are accessible at:
 
 `access.devnet.nodes.onflow.org:9000`
 
+#### Canarynet
+
+`access.canary.nodes.onflow.org:9000`
+
+
+
 ---
 
 ## Ping
