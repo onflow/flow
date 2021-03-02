@@ -212,27 +212,32 @@ export default function PageLayout(props) {
             <AnimatePresence>
               {props.path !== "/" ? (
                 <motion.div
-                  initial={{ height: 0, opacity: 0 }}
+                  initial={{ height: 0 }}
                   animate={{
-                    opacity: 1,
                     height: window.innerWidth < sizes.md ? 40 : 20,
                   }}
-                  exit={{ opacity: 0, height: 0 }}
+                  exit={{ height: 0, transition: { delay: 0.2 } }}
                   style={{ width: "100%" }}
                 >
                   <BreadcrumbWrapper>
-                    <Breadcrumb
-                      crumbs={dacrumbs}
-                      hiddenCrumbs={["/intro"]}
-                      disableLinks={[
-                        "/flow-port",
-                        "/faq",
-                        "/community-updates",
-                        "/tutorial",
-                        "/flow-js-sdk/packages",
-                        "/flow-go-sdk/examples",
-                      ]}
-                    />
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <Breadcrumb
+                        crumbs={dacrumbs}
+                        hiddenCrumbs={["/intro"]}
+                        disableLinks={[
+                          "/flow-port",
+                          "/faq",
+                          "/community-updates",
+                          "/tutorial",
+                          "/flow-js-sdk/packages",
+                          "/flow-go-sdk/examples",
+                        ]}
+                      />
+                    </motion.div>
                   </BreadcrumbWrapper>
                 </motion.div>
               ) : (
