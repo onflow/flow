@@ -4,7 +4,7 @@ This folder contains the [Protocol Buffer](https://developers.google.com/protoco
 
 > ❓ What is the Access API?
 
-Check out the [Flow Access API specification](/docs/access-api-spec.md).
+Check out the [Flow Access API specification](/docs/content/access-api-spec.md).
 
 ## Generating stubs
 

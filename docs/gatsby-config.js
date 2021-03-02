@@ -136,12 +136,28 @@ const sources = [
       ],
     },
   },
+  {
+    resolve: "gatsby-source-git",
+    options: {
+      name: "flow-cli-github",
+      branch: "master",
+      remote: "https://github.com/onflow/flow-cli.git",
+      patterns: ["docs/**/*"],
+      ignore: "docs/README.md",
+    },
+  },
 ];
 
 const sections = [
   {
     sourceInstanceName: "docs",
-    patterns: ["*", "intro/*", "community-updates/*", "flow-port/**/*"],
+    patterns: [
+      "*",
+      "intro/*",
+      "faq/*",
+      "community-updates/*",
+      "flow-port/**/*",
+    ],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
@@ -159,6 +175,11 @@ const sections = [
         "[Staking & Delegating](/staking)",
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
         "[Node Operation](/node-operation)",
+      ],
+      FAQ: [
+        "[Builders/Developers](/faq/developers)",
+        "[Backers/Users](/faq/backers)",
+        "[Operators](/faq/operators)",
       ],
     },
   },
@@ -202,6 +223,14 @@ const sections = [
         "docs/send-transactions",
         "docs/query-transactions",
         "docs/execute-scripts",
+        "docs/initialize-project",
+        "docs/project-contracts",
+        "docs/deploy-project-contracts",
+      ],
+      FAQ: [
+        "[Builders/Developers](/faq/developers)",
+        "[Backers/Users](/faq/backers)",
+        "[Operators](/faq/operators)",
       ],
     },
   },
@@ -215,6 +244,11 @@ const sections = [
         "concepts/accounts-and-keys",
         "concepts/transaction-signing",
         "concepts/storage",
+      ],
+      FAQ: [
+        "[Builders/Developers](/faq/developers)",
+        "[Backers/Users](/faq/backers)",
+        "[Operators](/faq/operators)",
       ],
     },
   },
@@ -236,6 +270,11 @@ const sections = [
         "docs/querying-events",
         "docs/querying-blocks",
         "docs/transfer-flow",
+      ],
+      FAQ: [
+        "[Builders/Developers](/faq/developers)",
+        "[Backers/Users](/faq/backers)",
+        "[Operators](/faq/operators)",
       ],
     },
   },
@@ -259,6 +298,11 @@ const sections = [
         "[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)",
         "[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react/CHANGELOG)",
       ],
+      FAQ: [
+        "[Builders/Developers](/faq/developers)",
+        "[Backers/Users](/faq/backers)",
+        "[Operators](/faq/operators)",
+      ],
     },
   },
   {
@@ -277,6 +321,11 @@ const sections = [
         "core-contracts/locked-tokens",
         "core-contracts/non-fungible-token",
       ],
+      FAQ: [
+        "[Builders/Developers](/faq/developers)",
+        "[Backers/Users](/faq/backers)",
+        "[Operators](/faq/operators)",
+      ],
     },
   },
   {
@@ -291,6 +340,11 @@ const sections = [
         "dapp-deployment/testnet-deployment",
         "dapp-deployment/testnet-testing",
         "dapp-deployment/mainnet-deployment",
+      ],
+      FAQ: [
+        "[Builders/Developers](/faq/developers)",
+        "[Backers/Users](/faq/backers)",
+        "[Operators](/faq/operators)",
       ],
     },
   },
@@ -309,6 +363,11 @@ const sections = [
         "flow-token/faq",
       ],
       "Token Delivery": ["flow-token/locked-account-setup"],
+      FAQ: [
+        "[Builders/Developers](/faq/developers)",
+        "[Backers/Users](/faq/backers)",
+        "[Operators](/faq/operators)",
+      ],
     },
   },
   {
@@ -336,6 +395,11 @@ const sections = [
         "staking/locked-delegation-guide",
         "staking/locked-third-party-operator",
       ],
+      FAQ: [
+        "[Builders/Developers](/faq/developers)",
+        "[Backers/Users](/faq/backers)",
+        "[Operators](/faq/operators)",
+      ],
     },
   },
   {
@@ -355,6 +419,11 @@ const sections = [
         "node-operation/monitoring-nodes",
         "node-operation/spork",
       ],
+      FAQ: [
+        "[Builders/Developers](/faq/developers)",
+        "[Backers/Users](/faq/backers)",
+        "[Operators](/faq/operators)",
+      ],
     },
   },
   {
@@ -364,6 +433,11 @@ const sections = [
     sidebar: {
       null: ["[Home](/)"],
       Overview: ["emulator/index"],
+      FAQ: [
+        "[Builders/Developers](/faq/developers)",
+        "[Backers/Users](/faq/backers)",
+        "[Operators](/faq/operators)",
+      ],
     },
   },
   {
@@ -373,6 +447,11 @@ const sections = [
     sidebar: {
       null: ["[Home](/)"],
       Overview: ["vscode-extension/index"],
+      FAQ: [
+        "[Builders/Developers](/faq/developers)",
+        "[Backers/Users](/faq/backers)",
+        "[Operators](/faq/operators)",
+      ],
     },
   },
   {
@@ -413,6 +492,15 @@ const sections = [
       ],
     },
   },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["faq/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: ["[Home](/)"],
+      FAQ: ["faq/developers", "faq/backers", "faq/operators"],
+    },
+  },
 ];
 
 module.exports = {
@@ -430,6 +518,10 @@ module.exports = {
         crumbLabelUpdates: [
           {
             pathname: "/node-operation/faq",
+            crumbLabel: "FAQ",
+          },
+          {
+            pathname: "/faq",
             crumbLabel: "FAQ",
           },
           {
