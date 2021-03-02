@@ -204,10 +204,11 @@ export default function PageLayout(props) {
                   hiddenCrumbs={["/intro"]}
                   disableLinks={[
                     "/flow-port",
+                    "/faq",
                     "/community-updates",
-										"/tutorial",
-										"/flow-js-sdk/packages",
-										"/flow-go-sdk/examples"
+                    "/tutorial",
+                    "/flow-js-sdk/packages",
+                    "/flow-go-sdk/examples",
                   ]}
                 />
               </BreadcrumbWrapper>
