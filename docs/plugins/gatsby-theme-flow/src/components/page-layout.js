@@ -214,7 +214,7 @@ export default function PageLayout(props) {
                 <motion.div
                   initial={{ height: 0 }}
                   animate={{
-                    height: window.innerWidth < sizes.md ? 40 : 20,
+                    height: "auto",
                   }}
                   exit={{ height: 0, transition: { delay: 0.2 } }}
                   style={{ width: "100%" }}
