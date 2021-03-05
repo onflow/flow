@@ -18,7 +18,7 @@ make generate
 
 ## Generating and publishing JVM stubs
 
-JVM support is in alpha stage, many steps require manual intervention
+JVM support is in the alpha stage; many steps require manual intervention.
 
 `./gradlew generateProto` compiles Protobuf files into local Java classes.
 
