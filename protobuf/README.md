@@ -31,3 +31,18 @@ external configuration and appropriate GPG Keys. Please refer to plugin and [OSS
 documentation.
 Uploading to staging repo requires an approved Sonatype account. Please refer to [Gradle Nexus Publish Plugin](https://github.com/gradle-nexus/publish-plugin) 
 documentation how to provide credentials. 
+
+
+## Generating Python stubs
+
+You can use [grpcio-tools](https://pypi.org/project/grpcio-tools/) to generate gRPC client stubs.
+
+Running the command below (in the current directory) will generate stubs for Python:
+
+```shell
+python -m pip install grpcio grpcio-tools
+
+mkdir python
+
+python -m grpc_tools.protoc -I./ --python_out=python/ --grpc_python_out=python/ flow/**/**/*.proto flow/**/*.proto
+```
