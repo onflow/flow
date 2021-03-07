@@ -460,7 +460,7 @@ pub contract ExampleToken {
         // We say `&AnyResource{Receiver}` to say that the recipient can be any resource
         // as long as it implements the Receiver interface
         pub fun mintTokens(amount: UFix64, recipient: &AnyResource{Receiver}) {
-                  ExampleToken.totalSupply = ExampleToken.totalSupply + UFix64(amount)
+            ExampleToken.totalSupply = ExampleToken.totalSupply + UFix64(amount)
             recipient.deposit(from: <-create Vault(balance: amount))
         }
     }
