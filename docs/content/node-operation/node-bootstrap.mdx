@@ -166,9 +166,11 @@ Before proceeding to Step 3, ensure that Step 1 was completed successfully with 
 
 </Callout>
 
-1. Expose TCP port **3569** on your firewall.
+1. Expose TCP port **3569** on your firewall for both ingress and egress traffic
 
-If you are running Flow Access node you will also need to expose TCP port 9000 and optionally TCP port 8000
+If you are running Flow Access node, Collection node or an Execution node you will also need to expose TCP port **9000**.
+
+Optionally, for any node type, if you would like to expose the node metrics you can open port 8000.
 
 2. Create the `data` directory if you have not previously created it and/or removed a previous version of it (default: `/var/flow/data`)
 
