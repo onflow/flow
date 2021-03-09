@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package entities;
 
+option java_package = "org.onflow.protobuf.legacy.entities";
+
 message Event {
   string type = 1;
   bytes transaction_id = 2;

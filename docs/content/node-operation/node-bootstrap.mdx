@@ -127,7 +127,7 @@ $tree ./bootstrap/
   If you're running multiple nodes, you only need one token - it can be used to
   generate multiple keys.
 
-  Please use the following pattern when generating your token `mainnet-5-yourname` (you can pick any name, it just helps us keep track of the most recent keys you've sent and would like us to include in the bootstrapping process)
+  Please use the following pattern when generating your token `mainnet-6-yourname` (you can pick any name, it just helps us keep track of the most recent keys you've sent and would like us to include in the bootstrapping process)
 
 </Callout>
 
@@ -166,9 +166,11 @@ Before proceeding to Step 3, ensure that Step 1 was completed successfully with 
 
 </Callout>
 
-1. Expose TCP port **3569** on your firewall.
+1. Expose TCP port **3569** on your firewall for both ingress and egress traffic
 
-If you are running Flow Access node you will also need to expose TCP port 9000 and optionally TCP port 8000
+If you are running Flow Access node, Collection node or an Execution node you will also need to expose TCP port **9000**.
+
+Optionally, for any node type, if you would like to expose the node metrics you can open port 8000.
 
 2. Create the `data` directory if you have not previously created it and/or removed a previous version of it (default: `/var/flow/data`)
 
@@ -217,7 +219,7 @@ The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info
    `./boot-tools/transit -pull -d ./bootstrap -t ${PULL_TOKEN} -role ${YOUR_NODE_TYPE}`
 
 ```shell:title=Example
-$ ./boot-tools/transit -pull -d ./bootstrap -t mainnet-5  -role consensus
+$ ./boot-tools/transit -pull -d ./bootstrap -t mainnet-6  -role consensus
 Transit script Commit: a9f6522855e119ad832a97f8b7bce555a163e490
 2020/11/25 01:02:53 Running pull
 2020/11/25 01:02:53 Downloading bootstrap/public-root-information/node-infos.pub.json

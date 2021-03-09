@@ -3,6 +3,7 @@ syntax = "proto3";
 package flow.execution;
 
 option go_package = "execution";
+option java_package = "org.onflow.protobuf.execution";
 
 import "flow/entities/account.proto";
 import "flow/entities/event.proto";
