@@ -132,7 +132,7 @@ const sources = [
         "docs/**/*",
         "packages/fcl/**/*",
         "packages/types/**/*",
-        "packages/fcl-react/**/*",
+        "packages/sdk/**/*",
       ],
     },
   },
@@ -284,19 +284,19 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Packages: [
-        "[@onflow/fcl](/flow-js-sdk/packages/fcl)",
-        "[@onflow/types](/flow-js-sdk/packages/types)",
-        "[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react)",
-      ],
       "Developer Guides": [
         "[Introducing @onflow/fcl](/flow-js-sdk)",
         "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
       ],
+      Packages: [
+        "[@onflow/fcl](/flow-js-sdk/packages/fcl)",
+        "[@onflow/types](/flow-js-sdk/packages/types)",
+        "[@onflow/sdk](/flow-js-sdk/packages/sdk/readme)",
+      ],
       Changelogs: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl/CHANGELOG)",
         "[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)",
-        "[@onflow/fcl-react](/flow-js-sdk/packages/fcl-react/CHANGELOG)",
+        "[@onflow/sdk](/flow-js-sdk/packages/sdk/CHANGELOG)",
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
