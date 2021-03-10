@@ -15,7 +15,7 @@ You can skip this step if it is your first time running a node on Flow.
 
 <Callout type="warning">
 
-If you had a previous node running on **mainnet 4**, you’ll need to turn it
+If you had a previous node running on **mainnet 5**, you’ll need to turn it
 off just before joining the updated network and re-start your node with the
 updated configuration.
 
@@ -276,7 +276,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/access:v0.14.1 \
+	gcr.io/flow-container-registry/access:v0.14.9 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -296,7 +296,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/collection:v0.14.1 \
+	gcr.io/flow-container-registry/collection:v0.14.9 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -313,7 +313,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/consensus:v0.14.2 \
+	gcr.io/flow-container-registry/consensus:v0.14.9 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -329,7 +329,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/execution:v0.14.2 \
+	gcr.io/flow-container-registry/execution:v0.14.9 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -347,7 +347,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/verification:v0.14.1 \
+	gcr.io/flow-container-registry/verification:v0.14.9 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
