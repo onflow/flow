@@ -132,7 +132,7 @@ const sources = [
         "docs/**/*",
         "packages/fcl/**/*",
         "packages/types/**/*",
-        "packages/fcl-react/**/*",
+        "packages/sdk/**/*",
       ],
     },
   },
@@ -291,7 +291,7 @@ const sections = [
       Packages: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl)",
         "[@onflow/types](/flow-js-sdk/packages/types)",
-        "[@onflow/sdk](/flow-js-sdk/packages/sdk)",
+        "[@onflow/sdk](/flow-js-sdk/packages/sdk/readme)",
       ],
       Changelogs: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl/CHANGELOG)",
