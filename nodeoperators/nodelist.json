@@ -2577,7 +2577,7 @@
     },
     {
         "Role": "execution",
-        "Address": "139.178.85.161:3569",
+        "Address": "flow-execution.samsungnext.com:3569",
         "NodeID": "6c6af0933b710655ec553f4bead3b01c5e0a3ffd1194ee536efb926b356c54aa",
         "Stake": 1000,
         "NetworkPubKey": "e20f9286db8740c3810df47553606d15d79e01028c742846b9e109ba68e9295a3e2d7d383b24c99756db5bf131bc66619fe71c3c0696ff924623668e02a62d29",
