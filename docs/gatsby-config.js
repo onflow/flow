@@ -418,6 +418,8 @@ const sections = [
         "node-operation/node-bootstrap",
         "node-operation/monitoring-nodes",
         "node-operation/spork",
+        "node-operation/past-sporks",
+        "node-operation/upcoming-sporks",
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
