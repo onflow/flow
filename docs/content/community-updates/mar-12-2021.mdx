@@ -8,7 +8,167 @@ description: TODO
 
 ## Flow CLI v0.15.0
 
-TODO
+The Latest Flow CLI version comes packed with new features focused on the configuration. 
+We've enhanced the CLI so you can use multiple configuration files, environment variables, 
+and even reference other configuration files within the configuration. 
+Let's take a look at some examples of new functionality but before that let's explain why is it important.
+
+### ⚠️ Important Security Update
+
+Configuration files contain accounts and their corresponding private keys. 
+As these accounts can also be used on testnet and in the future on the mainnet it is of 
+critical importance that you protect these keys. Protecting account keys involve **saving 
+them as a separate file** in a separate safe location and **never NEVER committing them to Github**. 
+You can achieve this in three different ways.
+
+### Referencing configuration files
+
+New CLI functionality allows you to reference another configuration file 
+within the configuration itself. This is an easy and great way to have a separate file 
+with account credentials that then can be saved somewhere else or if saved within the 
+project it can be added to .gitignore. Using this is as simple as:
+
+`flow.json` Main configuration file example:
+```json
+{
+  "contracts": {
+    "NonFungibleToken": "./cadence/contracts/NonFungibleToken.cdc",
+    "KittyItems": "./cadence/contracts/KittyItems.cdc"
+  },
+  "deployments": {
+    "testnet": {
+      "my-testnet-account": ["KittyItems", "NonFungibleToken"]
+    }
+  },
+  "accounts": {
+    "my-testnet-account": { "fromFile": "./flow.testnet.json" }
+  }
+}
+```
+
+`flow.testnet.json` Private configuration file. **Put this file in .gitignore.**
+
+```json
+{
+  "accounts": {
+    "my-testnet-account": {
+      "address": "3ae53cb6e3f42a79",
+      "keys": "1114232967f52bd75234ae9037dd4694c1f00baad63a10c35172bf65fbb8ad1111"
+    }
+  }
+}
+```
+
+After setting this up testnet account should be kept in safe place and you can use:
+
+`flow project deploy --network=testnet`
+
+### Environment variables
+
+Environment variables allows you to pass the keys "on the fly" while executing the CLI command. 
+All you need to do is specify that environment variable in the configuration and that is all 
+(see example below). Please note that passing critical information as environment variables 
+can potentially be unsafe as the history of commands executed in the command line can get saved. 
+Only use this when dynamic values are the reasons to do so.
+
+```json
+{
+  ...
+  "accounts": {
+    "my-testnet-account": {
+      "address": "3ae53cb6e3f42a79",
+      "keys": "$PRIVATE_KEY"
+    }
+  }
+  ...
+}
+```
+
+With configuration snippet above you can use:
+
+`PRIVATE_KEY=key flow project deploy`
+
+
+Usage of environment variables is achieved by envsubs library 
+[envsubst](https://github.com/a8m/envsubst) so you can use any features supported with the library.
+
+
+### Composing configuration files
+
+Composability of configuration files enables you to specify multiple configuration 
+file paths and the content itself will be merged from right to left. 
+All the configuration content coming from the right side will overwrite the 
+configuration on the left side. This is best explained with an example:
+
+In the example below, all configurations defined in `private.account.json` will overwrite 
+the configuration in `flow.json`. This is a great way to separate sensitive data.
+
+`flow project deploy -f flow.json -f private.account.json`
+
+Example of `flow.json`
+```json
+{
+  "contracts": {
+    "NonFungibleToken": "./cadence/contracts/NonFungibleToken.cdc",
+    "KittyItems": "./cadence/contracts/KittyItems.cdc"
+  },
+  "deployments": {
+    "testnet": {
+      "my-testnet-account": ["KittyItems", "NonFungibleToken"]
+    }
+  },
+  "accounts": {
+    "my-testnet-account": {
+      "address": "0x123",
+      "keys": "1111"
+    }
+  }
+}
+```
+
+Example of `private.account.json`
+```json
+{
+  "accounts": {
+    "my-testnet-account": {
+      "address": "0x222",
+      "keys": "2222"
+    },
+    "my-testnet-account-2": {
+      "address": "0x333",
+      "keys": "3333"
+    }
+  }
+}
+```
+
+You can think of result being the configuration file that would look like 
+(even though this file doesn't get saved but it is only kept in memory):
+
+```json
+{
+  "contracts": {
+    "NonFungibleToken": "./cadence/contracts/NonFungibleToken.cdc",
+    "KittyItems": "./cadence/contracts/KittyItems.cdc"
+  },
+  "deployments": {
+    "testnet": {
+      "my-testnet-account": ["KittyItems", "NonFungibleToken"]
+    }
+  },
+  "accounts": {
+    "my-testnet-account": {
+      "address": "0x222",
+      "keys": "2222"
+    },
+    "my-testnet-account-2": {
+      "address": "0x333",
+      "keys": "3333"
+    }
+  }
+}
+```
+
 
 ## Kitty Items Marketplace
 
