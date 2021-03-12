@@ -35,7 +35,7 @@ Flow Testnet is explicitly for experimentation and testing and should not be use
 
 ### Creating an Account
 
-Anybody can use the [Testnet Faucet](https://testnet-faucet.onflow.org/) to create a Testnet account.
+Anybody can use the [Testnet Faucet](https://testnet-faucet-v2.onflow.org/) to create a Testnet account.
 
 #### Generate a Key
 
@@ -53,7 +53,7 @@ By default, this command generates an ECDSA key pair on the P-256 curve.
 
 #### Request Your Account
 
-Once you've generated a key pair, visit the [Faucet](https://testnet-faucet.onflow.org/) and input the _public key_ into the "Create Account" form at the top of the page.
+Once you've generated a key pair, visit the [Faucet](https://testnet-faucet-v2.onflow.org/) and input the _public key_ into the "Create Account" form at the top of the page.
 
 After some time, you'll receive an email with your newly-created account address.
 
@@ -63,7 +63,7 @@ Flow isn't responsible for securing and storing the private keys for testnet acc
 
 Each account created through the Testnet Faucet comes with 1000 FLOW. However, you can always request a top up through the Faucet if needed.
 
-Submit your testnet address through the "Funding an Account" form on the [Faucet](https://testnet-faucet.onflow.org/) page.
+Submit your testnet address through the "Funding an Account" form on the [Faucet](https://testnet-faucet-v2.onflow.org/) page.
 
 You'll receive an email once your request is approved and the tokens are deposited.
 

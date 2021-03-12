@@ -6,7 +6,7 @@ title: Flow Testnet
 
 Currently, there is an internal Testnet, available for access:
 
-- [access.devnet.nodes.onflow.org:9000](http://access.devnet.nodes.onflow.org:9000/)
+- [access.testnet.nodes.onflow.org:9000](http://access.devnet.nodes.onflow.org:9000/)
 
 For example, to access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
 
@@ -14,56 +14,27 @@ For example, to access the network using the [Flow Go SDK](https://github.com/on
 import "github.com/onflow/flow-go-sdk/client"
 
 func main() {
-  flowAccessAddress := "access.devnet.nodes.onflow.org:9000"
+  flowAccessAddress := "access.testnet.nodes.onflow.org:9000"
   flowClient, _ := client.New(flowAccessAddress, grpc.WithInsecure())
-
   // ...
 }
-
 ```
 
 ## Account Creation and Token Funding Requests
 
-Accounts and Tokens for testing are available by request through the [Flow Faucet](https://testnet-faucet.onflow.org/)
+Accounts and Tokens for testing are available by request through the [Flow Faucet](https://testnet-faucet-v2.onflow.org/)
 
-- For account creation requests please generate ECDSA_P256 key pair and provide the public key along with your contact information then submit the form.
-  - If there were no errors with your request then an email will be sent with the address of newly created account. All accounts are created with 1000 FLOW to start.
-- For token funding requests please provide the address you would like to have the FLOW tokens sent to along with your contact information.
-  - If there were no errors with your request then an email will be sent to confirm that 1000 FLOW has been added to your account.
-- An error email will be sent to you should there be any issues processing your request
+### Generate a Key Pair for the Faucet
 
-## Key Generation
+For Testnet, it's easy to generate a new key pair with the [Flow CLI](https://github.com/onflow/flow-cli):
 
-- Key Generation, using our `flow-go-sdk` (crypto package):
+```sh
+flow keys generate
+```
 
-  ```go
-  import (
-    "crypto/rand"
-  	"fmt"
+By default, this command generates an ECDSA key pair on the P-256 curve.
 
-    "github.com/onflow/flow-go-sdk/crypto"
-  )
-
-  func main() {
-
-  	// This seed must be kept safe if you want to use it to regenerate your private key
-  	seed := make([]byte, crypto.MinSeedLength)
-
-  	_, err := rand.Read(seed)
-  	if err != nil {
-  		panic(err)
-  	}
-
-  	// Remember to save your private key somewhere safe
-  	privateKey, err := crypto.GeneratePrivateKey(crypto.ECDSA_P256, seed)
-  	if err != nil {
-  		panic(err)
-  	}
-  	// This will be your public key, and what you need to send to us
-  	fmt.Printf("%x", privateKey.PublicKey().Encode())
-  }
-
-  ```
+**Note: this tool is intended for development purposes only and is not recommended for production use.**
 
 ## Testnet Account Usage
 
@@ -86,5 +57,4 @@ In order to access some of the contracts deployed to Flow Testnet, you can impor
 import FungibleToken from 0x9a0766d93b6608b7
 import FlowToken from 0x7e60df042a9c0868
 import NonFungibleToken from 0x631e88ae7f1d7c20
-
 ```
