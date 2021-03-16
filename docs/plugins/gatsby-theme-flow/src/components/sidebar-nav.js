@@ -288,12 +288,14 @@ export default function SidebarNav(props) {
             })
             .map((navItem, index) => {
               return (
-                <ProjectLink
-                  key={navItem.url}
-                  icons={getProjectIcon(navItem.icon)}
-                >
-                  <StyledLink href={navItem.url}>{navItem.title}</StyledLink>
-                </ProjectLink>
+                <StyledLink href={navItem.url}>
+                  <ProjectLink
+                    key={navItem.url}
+                    icons={getProjectIcon(navItem.icon)}
+                  >
+                    {navItem.title}
+                  </ProjectLink>
+                </StyledLink>
               );
             })}
         </DocsetMenuWrapper>
