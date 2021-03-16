@@ -30,9 +30,7 @@ const IconWrapper = styled.div({
 });
 
 const TextWrapper = styled.div({
-  position: "absolute",
-  right: 0,
-  color: theme.text1,
+  // color: theme.text1,
 });
 
 const TestnetPinger = async (script) => {
@@ -90,7 +88,7 @@ export function FlowNetworkStatus() {
       <MenuTitle>
         MAINNET STATUS:{" "}
         <IconWrapper>
-          {mainnetStatus === statusOK && <GrStatusGood color="red" />}
+          {mainnetStatus === statusOK && <GrStatusGood />}
           {mainnetStatus === statusUnknown && <GrStatusUnknown />}
           {mainnetStatus === statusOffline && <GrStatusCritical />}
         </IconWrapper>
