@@ -20,6 +20,7 @@ import { startCase } from "lodash";
 
 import { theme } from "../colors";
 import "../prism.less";
+import { FlowNetworkStatus } from "../components/flow-status";
 import breakpoints from "../utils/breakpoints";
 import { sizes } from "../utils/breakpoints";
 
@@ -209,6 +210,7 @@ export default function PageLayout(props) {
               />
             )}
             <HeaderNav />
+            <FlowNetworkStatus />
             <AnimatePresence>
               {props.path !== "/" ? (
                 <motion.div
