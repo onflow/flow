@@ -17,21 +17,35 @@ export const MenuTitle = styled.h6(smallCaps, {
   marginBottom: 0,
   fontSize: 13,
   fontWeight: 600,
-  color: theme.text3,
-  display: "flex",
   height: "16px",
   justifyContent: "space-between",
+  a: {
+    color: theme.text3,
+    display: "flex",
+    textDecoration: "none",
+    "&:hover": {
+      cursor: "pointer",
+      color: theme.text4,
+    },
+  },
 });
 
-const IconWrapper = styled.div({
-  ...size(28),
-  flexShrink: 0,
-  marginRight: 16,
+const IconWrapper = styled.div(({ status }) => {
+  return {
+    ...size(28),
+    display: "flex",
+    flexShrink: 0,
+    marginRight: 16,
+    color:
+      status === statusOK
+        ? theme.primary
+        : status === statusUnknown
+        ? theme.highlight
+        : theme.error,
+  };
 });
 
-const TextWrapper = styled.div({
-  // color: theme.text1,
-});
+const StatusWrapper = styled.div();
 
 const TestnetPinger = async (script) => {
   await fcl.config().put("accessNode.api", "https://access-testnet.onflow.org");
@@ -84,23 +98,27 @@ export function FlowNetworkStatus() {
   });
 
   return (
-    <TextWrapper>
+    <StatusWrapper>
       <MenuTitle>
-        MAINNET STATUS:{" "}
-        <IconWrapper>
-          {mainnetStatus === statusOK && <GrStatusGood />}
-          {mainnetStatus === statusUnknown && <GrStatusUnknown />}
-          {mainnetStatus === statusOffline && <GrStatusCritical />}
-        </IconWrapper>
+        <a href="https://flow-view-source.com/mainnet/status" target="_blank">
+          MAINNET:{" "}
+          <IconWrapper status={mainnetStatus}>
+            {mainnetStatus === statusOK && statusOK}
+            {mainnetStatus === statusUnknown && statusUnknown}
+            {mainnetStatus === statusOffline && statusOffline}
+          </IconWrapper>
+        </a>
       </MenuTitle>
       <MenuTitle>
-        TESTNET STATUS:{" "}
-        <IconWrapper>
-          {testnetStatus === statusOK && <GrStatusGood />}
-          {testnetStatus === statusUnknown && <GrStatusUnknown />}
-          {testnetStatus === statusOffline && <GrStatusCritical />}
-        </IconWrapper>
+        <a href="https://flow-view-source.com/testnet/status" target="_blank">
+          TESTNET:{" "}
+          <IconWrapper status={testnetStatus}>
+            {mainnetStatus === statusOK && statusOK}
+            {mainnetStatus === statusUnknown && statusUnknown}
+            {mainnetStatus === statusOffline && statusOffline}
+          </IconWrapper>
+        </a>
       </MenuTitle>
-    </TextWrapper>
+    </StatusWrapper>
   );
 }
