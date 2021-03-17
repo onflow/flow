@@ -741,6 +741,41 @@ message GetNetworkParametersResponse {
 
 </details>
 
+---
+
+## Protocol state snapshot
+
+The following method can be used to query the latest protocol state [snapshot](https://github.com/onflow/flow-go/blob/master/state/protocol/snapshot.go).
+
+### GetLatestProtocolStateSnapshotRequest
+
+`GetLatestProtocolStateSnapshotRequest` retrieves the latest Protocol state snapshot serialized as a byte array.
+It is used by Flow nodes joining the network to bootstrap a space-efficient local state.
+
+```protobuf
+rpc GetLatestProtocolStateSnapshot (GetLatestProtocolStateSnapshotRequest) returns (ProtocolStateSnapshotResponse);
+```
+
+<details>
+  <summary>Request</summary>
+
+```protobuf
+message GetLatestProtocolStateSnapshotRequest {}
+```
+
+</details>
+
+<details>
+  <summary>Response</summary>
+
+```protobuf
+message ProtocolStateSnapshotResponse {
+  bytes serializedSnapshot = 1;
+}
+```
+
+</details>
+
 ## Entities
 
 Below are in-depth descriptions of each of the data entities returned or accepted by the Access API.
