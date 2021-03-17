@@ -61,9 +61,9 @@ const MainnetPinger = async (script) => {
 
 const pingScript = "pub fun main(): Int { return 12 }";
 
-const statusOK = "OK";
-const statusUnknown = "UNKNOWN";
-const statusOffline = "OFFLINE";
+const statusOK = "HEALTHY";
+const statusUnknown = "DEGRADED";
+const statusOffline = "UNAVAILABLE";
 
 export function FlowNetworkStatus() {
   const [testnetStatus, setTestnetStatus] = useState(statusOK);
