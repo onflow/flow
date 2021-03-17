@@ -6,16 +6,12 @@ import React, { useState } from "react";
 
 import useSWR from "swr";
 
-import { size } from "polished";
-
 import { theme } from "gatsby-theme-flow/src/colors";
 import { smallCaps } from "gatsby-theme-flow/src/utils/typography";
 
-import { GrStatusGood, GrStatusUnknown, GrStatusCritical } from "../ui/icons";
-
 export const MenuTitle = styled.h6(smallCaps, {
   marginBottom: 0,
-  fontSize: 13,
+  fontSize: 12,
   fontWeight: 600,
   height: "16px",
   justifyContent: "space-between",
@@ -32,10 +28,10 @@ export const MenuTitle = styled.h6(smallCaps, {
 
 const IconWrapper = styled.div(({ status }) => {
   return {
-    ...size(28),
+    // ...size(28),
     display: "flex",
     flexShrink: 0,
-    marginRight: 16,
+
     color:
       status === statusOK
         ? theme.primary
@@ -45,7 +41,11 @@ const IconWrapper = styled.div(({ status }) => {
   };
 });
 
-const StatusWrapper = styled.div();
+const StatusWrapper = styled.div({
+  padding: "0.5rem",
+  backgroundColor: theme.background,
+  borderRadius: "4px",
+});
 
 const TestnetPinger = async (script) => {
   await fcl.config().put("accessNode.api", "https://access-testnet.onflow.org");
