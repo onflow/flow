@@ -33,9 +33,9 @@ const IconWrapper = styled.div(({ status }) => {
     flexShrink: 0,
 
     color:
-      status === statusOK
+      status === statusHealthy
         ? theme.primary
-        : status === statusUnknown
+        : status === statusDegraded
         ? theme.highlight
         : theme.error,
   };
@@ -45,6 +45,7 @@ const StatusWrapper = styled.div({
   padding: "0.5rem",
   backgroundColor: theme.background,
   borderRadius: "4px",
+  marginRight: "1rem",
 });
 
 const TestnetPinger = async (script) => {
@@ -61,25 +62,25 @@ const MainnetPinger = async (script) => {
 
 const pingScript = "pub fun main(): Int { return 12 }";
 
-const statusOK = "HEALTHY";
-const statusUnknown = "DEGRADED";
-const statusOffline = "UNAVAILABLE";
+const statusHealthy = "HEALTHY";
+const statusDegraded = "DEGRADED";
+const statusUnavailable = "UNAVAILABLE";
 
 export function FlowNetworkStatus() {
-  const [testnetStatus, setTestnetStatus] = useState(statusOK);
-  const [mainnetStatus, setMainnetStatus] = useState(statusOK);
+  const [testnetStatus, setTestnetStatus] = useState(statusHealthy);
+  const [mainnetStatus, setMainnetStatus] = useState(statusHealthy);
 
   useSWR(pingScript, TestnetPinger, {
     refreshInterval: 120000, // 2 minutes
     errorRetryCount: 10,
     onLoadingSlow: () => {
-      setTestnetStatus(statusUnknown);
+      setTestnetStatus(statusDegraded);
     },
     onSuccess: (result) => {
-      if (result === 12) setTestnetStatus(statusOK);
+      if (result === 12) setTestnetStatus(statusHealthy);
     },
     onError: () => {
-      setTestnetStatus(statusOffline);
+      setTestnetStatus(statusUnavailable);
     },
   });
 
@@ -87,13 +88,13 @@ export function FlowNetworkStatus() {
     refreshInterval: 120000, // 2 minutes
     errorRetryCount: 10,
     onLoadingSlow: () => {
-      setMainnetStatus(statusUnknown);
+      setMainnetStatus(statusDegraded);
     },
     onSuccess: (result) => {
-      if (result === 12) setMainnetStatus(statusOK);
+      if (result === 12) setMainnetStatus(statusHealthy);
     },
     onError: () => {
-      setMainnetStatus(statusOffline);
+      setMainnetStatus(statusUnavailable);
     },
   });
 
@@ -103,9 +104,9 @@ export function FlowNetworkStatus() {
         <a href="https://flow-view-source.com/mainnet/status" target="_blank">
           MAINNET:{" "}
           <IconWrapper status={mainnetStatus}>
-            {mainnetStatus === statusOK && statusOK}
-            {mainnetStatus === statusUnknown && statusUnknown}
-            {mainnetStatus === statusOffline && statusOffline}
+            {mainnetStatus === statusHealthy && statusHealthy}
+            {mainnetStatus === statusDegraded && statusDegraded}
+            {mainnetStatus === statusUnavailable && statusUnavailable}
           </IconWrapper>
         </a>
       </MenuTitle>
@@ -113,9 +114,9 @@ export function FlowNetworkStatus() {
         <a href="https://flow-view-source.com/testnet/status" target="_blank">
           TESTNET:{" "}
           <IconWrapper status={testnetStatus}>
-            {mainnetStatus === statusOK && statusOK}
-            {mainnetStatus === statusUnknown && statusUnknown}
-            {mainnetStatus === statusOffline && statusOffline}
+            {mainnetStatus === statusHealthy && statusHealthy}
+            {mainnetStatus === statusDegraded && statusDegraded}
+            {mainnetStatus === statusUnavailable && statusUnavailable}
           </IconWrapper>
         </a>
       </MenuTitle>

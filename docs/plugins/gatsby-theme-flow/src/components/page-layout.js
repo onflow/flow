@@ -202,6 +202,7 @@ export default function PageLayout(props) {
               <MobileLogo />
               <MenuButton onClick={openSidebar} />
             </MobileNav>
+            <FlowNetworkStatus />
             {algoliaApiKey && algoliaIndexName && (
               <Search
                 siteName={siteName}
@@ -210,7 +211,7 @@ export default function PageLayout(props) {
               />
             )}
             <HeaderNav />
-            <FlowNetworkStatus />
+
             <AnimatePresence>
               {props.path !== "/" ? (
                 <motion.div
