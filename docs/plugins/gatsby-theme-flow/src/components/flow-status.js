@@ -71,7 +71,7 @@ export function FlowNetworkStatus() {
   const [mainnetStatus, setMainnetStatus] = useState(statusHealthy);
 
   useSWR(pingScript, TestnetPinger, {
-    refreshInterval: 120000, // 2 minutes
+    refreshInterval: 120000,
     onLoadingSlow: () => {
       setTestnetStatus(statusDegraded);
     },
@@ -84,7 +84,7 @@ export function FlowNetworkStatus() {
   });
 
   useSWR(pingScript, MainnetPinger, {
-    refreshInterval: 120000, // 2 minutes
+    refreshInterval: 130000,
     onLoadingSlow: () => {
       setMainnetStatus(statusDegraded);
     },
