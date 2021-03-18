@@ -72,7 +72,6 @@ export function FlowNetworkStatus() {
 
   useSWR(pingScript, TestnetPinger, {
     refreshInterval: 120000, // 2 minutes
-    errorRetryCount: 10,
     onLoadingSlow: () => {
       setTestnetStatus(statusDegraded);
     },
@@ -86,7 +85,6 @@ export function FlowNetworkStatus() {
 
   useSWR(pingScript, MainnetPinger, {
     refreshInterval: 120000, // 2 minutes
-    errorRetryCount: 10,
     onLoadingSlow: () => {
       setMainnetStatus(statusDegraded);
     },
