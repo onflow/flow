@@ -26,7 +26,7 @@ JVM support is in the alpha stage; many steps require manual intervention.
 
 `./gradlew publishToSonatype` prepares and publishes compiled classes into JAR and uploads to OSSRH staging repository. 
 
-This require signing artifacts which is done by [Signing Gradle plugin](https://docs.gradle.org/current/userguide/signing_plugin.html) - it requires 
+This requires signing artifacts which is done by [Signing Gradle plugin](https://docs.gradle.org/current/userguide/signing_plugin.html) - it requires 
 external configuration and appropriate GPG Keys. Please refer to plugin and [OSSRH](https://central.sonatype.org/pages/working-with-pgp-signatures.html) 
 documentation.
 Uploading to staging repo requires an approved Sonatype account. Please refer to [Gradle Nexus Publish Plugin](https://github.com/gradle-nexus/publish-plugin) 
