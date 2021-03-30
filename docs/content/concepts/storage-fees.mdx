@@ -8,9 +8,9 @@ Each Flow account has an associated storage used. The account's storage used is 
 
 ## Storage Capacity
 
-Storage capacity of an account is dictated by the amount of FLOW tokens it has. **The minimum amount of FLOW tokens an account can have is 0.1. This minimum is provided by the account creator at account creation.** The minimum account reservation ensures that most accounts won't run out of storage capacity if anyone deposits anything (like an NFT) to the account.
+Storage capacity of an account is dictated by the amount of FLOW tokens it has. **The minimum amount of FLOW tokens an account can have is 0.001. This minimum is provided by the account creator at account creation.** The minimum account reservation ensures that most accounts won't run out of storage capacity if anyone deposits anything (like an NFT) to the account.
 
-The exact amount of storage capacity an account has is the amount of FLOW tokens the account has times the `storageBytesPerReservedFlow` variable defined on the `StorageFees` smart contract, which is 1 MiB per 1 reserved FLOW token.
+The exact amount of storage capacity an account has is the amount of FLOW tokens the account has times the `storageBytesPerReservedFlow` variable defined on the `StorageFees` smart contract, which is 10 MiB per 1 reserved FLOW token.
 
 Any account can increase the storage capacity of an account by depositing more FLOW tokens to the account.
 
@@ -32,8 +32,8 @@ Data stored on the Flow blockchain is stored in a key-value ledger. Each item’
 
 Two parameters define storage limits:
 
-- Minimum account FLOW is **0.1 Flow tokens** and represents **100 KiB** of storage capacity. This is also the amount of Flow tokens that the creator of a new account needs to provide for the account's storage reservation. (`StorageFees.minimumStorageReservation`)
-- The amount of storage capacity one Flow token represents is **1 MiB per Flow token**. (`StorageFees.storageBytesPerReservedFlow`)
+- Minimum account FLOW is **0.001 Flow tokens** and represents **10 KiB** of storage capacity. This is also the amount of Flow tokens that the creator of a new account needs to provide for the account's storage reservation. (`StorageFees.minimumStorageReservation`)
+- The amount of storage capacity one Flow token represents is **10 MiB per Flow token**. (`StorageFees.storageMegaBytesPerReservedFlow`)
 
 ## FAQ
 
