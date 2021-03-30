@@ -2305,14 +2305,6 @@
     },
     {
         "Role": "verification",
-        "Address": "207.246.127.193:3569",
-        "NodeID": "16036263d71f64d65f84542e9f7678e578482a107b61e45b88759ebea2c7451d",
-        "Stake": 1000,
-        "NetworkPubKey": "f9a3a126954245a9b59eb899c2c2c858524529223e760054b86ec24ac25b93ce5ef28bd5d6de22be88ee12138b35fa6fdb1ae80331a798151f9108ed49fb9808",
-        "StakingPubKey": "b7299826030111b3158495ca9266ffb1049f1890fdfc433babb6413fb6e4d0c04c0c2680629a7e86f5f39c8eb7cbc79010beb2efba3659f122faaaaf5d7ab9c9ab46cc54ffa40613e6ba7813e24c444c0f6aa3ed39d24c2cfa16998cb65e899b"
-    },
-    {
-        "Role": "verification",
         "Address": "flow01.chainflow.io:3569",
         "NodeID": "3b57e0ee2ece1f1dbefbd868d3eaac63b32a11df5b1a37d231145ea219055dde",
         "Stake": 1000,
