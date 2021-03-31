@@ -1,6 +1,6 @@
 ---
 title: FUSD Stablecoin on Flow
-sidebar_title: FUSD
+sidebar_title: Introduction
 description: Flow USD is a cryptocurrency on Flow that follows the value of USD
 ---
 
