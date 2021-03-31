@@ -14,7 +14,7 @@ A mock version of FUSD is live on Flow Testnet for development purposes.
 
 Testnet FUSD is not backed by any real assets and is available
 only for testing purposes. 
-The [Testnet FUSD page](../testnet) contains more information 
+The [Testnet FUSD page](./testnet) contains more information 
 on how to build Testnet dapps that use FUSD.
 
 # FUSD on Flow Mainnet
