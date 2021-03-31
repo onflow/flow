@@ -253,6 +253,18 @@ const sections = [
     },
   },
   {
+    sourceInstanceName: "docs",
+    patterns: ["fusd/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: ["[Home](/)"],
+      FUSD: [
+        "fusd/index",
+        "fusd/testnet",
+      ],
+    },
+  },
+  {
     sourceInstanceName: "flow-go-sdk-github",
     patterns: ["docs/**/*"],
     sidebarAlwaysExpanded: true,
