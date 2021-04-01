@@ -1,7 +1,7 @@
 ---
 title: FUSD Stablecoin on Flow Testnet
 sidebar_title: FUSD on Testnet
-description: A mock version of Flow USD is live on Flow Testnet for development purposes
+description: Mock FUSD is live on Flow Testnet for development purposes
 ---
 
 ## Contract

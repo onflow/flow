@@ -1,7 +1,7 @@
 ---
 title: FUSD Stablecoin on Flow
 sidebar_title: Introduction
-description: FUSD is a 1:1 dollar-backed stablecoin on Flow
+description: FUSD is a 1:1 USD-backed stablecoin on Flow
 ---
 
 Flow USD (FUSD) is a stablecoin on Flow, 
@@ -10,7 +10,7 @@ that is backed 1:1 against USD on Flow Mainnet.
 
 # Purpose
 
-FUSD is a 1:1 dollar-backed stablecoin that is issued as a fungible 
+FUSD is a 1:1 USD-backed stablecoin that is issued as a fungible 
 token on the Flow network. FUSD is a fixed-price asset that provides 
 a more consistently-priced experience for dapp developers and their users. 
 As a valid payment token, FUSD also acts as an alternative for users 
@@ -30,7 +30,7 @@ chooses to support payments in FUSD on Flow.
 
 A mock version of FUSD is live on Flow Testnet for development purposes.
 
-Testnet FUSD is not backed by any real assets and is available
+Testnet FUSD is not backed by any real USD and is available
 only for testing purposes. 
 The [Testnet FUSD page](/fusd/testnet) contains more information 
 on how to build Testnet dapps that use FUSD.
