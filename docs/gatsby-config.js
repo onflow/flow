@@ -166,6 +166,7 @@ const sections = [
         "[Access API](/access-api)",
         "[Core Contracts](/core-contracts)",
         "[FLOW Token](/flow-token)",
+        "[FUSD](/fusd)",
       ],
       Guides: [
         "[Flow Concepts](/concepts)",
