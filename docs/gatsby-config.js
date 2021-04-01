@@ -166,6 +166,7 @@ const sections = [
         "[Access API](/access-api)",
         "[Core Contracts](/core-contracts)",
         "[FLOW Token](/flow-token)",
+        "[FUSD](/fusd)",
       ],
       Guides: [
         "[Flow Concepts](/concepts)",
@@ -249,6 +250,18 @@ const sections = [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
         "[Operators](/faq/operators)",
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["fusd/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: ["[Home](/)"],
+      FUSD: [
+        "fusd/index",
+        "fusd/testnet",
       ],
     },
   },
