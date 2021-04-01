@@ -1,46 +1,42 @@
+import styled from "@emotion/styled";
+
+import PropTypes from "prop-types";
+
+import React, { createContext, useMemo } from "react";
+
+import { AnimatePresence, motion } from "framer-motion";
+
+import useLocalStorage from "react-use/lib/useLocalStorage";
+
+import { Helmet } from "react-helmet";
+
+import { Breadcrumb } from "gatsby-plugin-breadcrumb";
+
+import { graphql, useStaticQuery } from "gatsby";
+
+import { trackCustomEvent } from "gatsby-plugin-google-analytics";
+
+import { startCase } from "lodash";
+
+import { theme } from "../colors";
 import "../prism.less";
-import DocsetSwitcher from "./docset-switcher";
+import breakpoints from "../utils/breakpoints";
+import { sizes } from "../utils/breakpoints";
+
+import FlexWrapper from "./flex-wrapper";
 import Header from "./header";
 import HeaderNav from "./header-nav";
-import PropTypes from "prop-types";
-import React, { createContext, useMemo, useRef, useState } from "react";
-import Search from "./search";
-import styled from "@emotion/styled";
-import useLocalStorage from "react-use/lib/useLocalStorage";
-import { Button } from "../ui/Button";
-import { theme } from "../colors";
-import breakpoints from "../utils/breakpoints";
-import FlexWrapper from "./flex-wrapper";
 import Layout from "./layout";
 import MenuButton from "./menu-button";
-import Sidebar from "./sidebar";
-import SidebarNav from "./sidebar-nav";
-import { useResponsiveSidebar } from "./responsive-sidebar";
-import { Helmet } from "react-helmet";
-import { IconMenuSelector } from "../ui/icons";
-import { graphql, useStaticQuery } from "gatsby";
 import MobileLogo from "./mobile-logo";
 import { SelectedLanguageContext } from "./multi-code-block";
-import { size } from "polished";
-import { trackCustomEvent } from "gatsby-plugin-google-analytics";
+import { useResponsiveSidebar } from "./responsive-sidebar";
+import Search from "./search";
+import Sidebar from "./sidebar";
+import SidebarNav from "./sidebar-nav";
 
 const Main = styled.main({
   flexGrow: 1,
-});
-
-const ButtonWrapper = styled.div({
-  flexGrow: 1,
-});
-
-const StyledButton = styled(Button)({
-  width: "100%",
-  ":not(:hover)": {
-    backgroundColor: theme.background,
-  },
-});
-
-const StyledIcon = styled(IconMenuSelector)(size(16), {
-  marginLeft: "auto",
 });
 
 const MobileNav = styled.div({
@@ -52,11 +48,40 @@ const MobileNav = styled.div({
   },
 });
 
-const HeaderInner = styled.span({
+export const NavItemTitle = styled.h4({
+  marginBottom: 8,
+  fontWeight: 600,
+  color: "inherit",
+});
+
+export const NavItemDescription = styled.p({
+  marginBottom: 8,
+  fontSize: 15,
+  lineHeight: 1.5,
+  color: theme.text3,
+  transition: "color 150ms ease-in-out",
+});
+
+const BreadcrumbWrapper = styled.div({
+  width: "100%",
+  flexGrow: 1,
+  flexBasis: "100%",
   display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  marginBottom: 32,
+  marginLeft: "-4px",
+  borderColor: theme.divider,
+  ".breadcrumb__separator": {
+    fontSize: "0.8rem",
+    display: "flex",
+    alignItems: "center",
+  },
+  ".breadcrumb__link, .breadcrumb__link__disabled": {
+    fontWeight: 500,
+    fontSize: "0.8rem",
+    color: theme.text3,
+    "&:hover": {
+      color: theme.primary,
+    },
+  },
 });
 
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
@@ -102,31 +127,21 @@ export default function PageLayout(props) {
     handleSidebarNavLinkClick,
   } = useResponsiveSidebar();
 
-  const buttonRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
   const selectedLanguageState = useLocalStorage("docs-lang");
-
-  function openMenu() {
-    setMenuOpen(true);
-  }
-
-  function closeMenu() {
-    setMenuOpen(false);
-  }
 
   const { pathname } = props.location;
   const { siteName, title } = data.site.siteMetadata;
-  const { subtitle, sidebar } = props.pageContext;
   const {
-    discordUrl,
-    twitterUrl,
+    subtitle,
+    sidebar,
+    breadcrumb: { crumbs },
+  } = props.pageContext;
+
+  const {
     navConfig = {},
-    pathConfig,
-    footerNavConfig,
     logoLink,
     algoliaApiKey,
     algoliaIndexName,
-    menuTitle,
   } = props.pluginOptions;
 
   const navItems = useMemo(
@@ -138,12 +153,10 @@ export default function PageLayout(props) {
     [navConfig]
   );
 
-  const hideDocsetDropdown =
-    navItems.length > 0 && pathConfig.hideDocsetDropdown.includes(pathname);
-
-  const sidebarTitle = (
-    <span className="title-sidebar">{subtitle || siteName}</span>
-  );
+  const dacrumbs = crumbs.map((c) => {
+    c.crumbLabel = startCase(c.crumbLabel);
+    return c;
+  });
 
   return (
     <Layout>
@@ -168,22 +181,6 @@ export default function PageLayout(props) {
           title={siteName}
           logoLink={logoLink}
         >
-          {!hideDocsetDropdown && (
-            <HeaderInner>
-              <ButtonWrapper ref={buttonRef}>
-                <StyledButton
-                  feel="flat"
-                  color={theme.primary}
-                  size="small"
-                  onClick={openMenu}
-                  style={{ display: "flex" }}
-                >
-                  {sidebarTitle}
-                  <StyledIcon />
-                </StyledButton>
-              </ButtonWrapper>
-            </HeaderInner>
-          )}
           {sidebar && (
             <NavItemsContext.Provider value={navItems}>
               <SidebarNav
@@ -192,14 +189,14 @@ export default function PageLayout(props) {
                 onToggleAll={handleToggleAll}
                 onToggleCategory={handleToggleCategory}
                 onLinkClick={handleSidebarNavLinkClick}
-                pathConfig={pathConfig}
+                showMainNav={sidebar.showMainNav}
                 alwaysExpanded={sidebar.alwaysExpanded}
               />
             </NavItemsContext.Provider>
           )}
         </Sidebar>
         <Main>
-          <Header>
+          <Header title={title}>
             <MobileNav>
               <MobileLogo />
               <MenuButton onClick={openSidebar} />
@@ -212,7 +209,43 @@ export default function PageLayout(props) {
               />
             )}
             <HeaderNav />
+            <AnimatePresence>
+              {props.path !== "/" ? (
+                <motion.div
+                  initial={{ height: 0 }}
+                  animate={{
+                    height: "auto",
+                  }}
+                  exit={{ height: 0, transition: { delay: 0.2 } }}
+                  style={{ width: "100%" }}
+                >
+                  <BreadcrumbWrapper>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <Breadcrumb
+                        crumbs={dacrumbs}
+                        hiddenCrumbs={["/intro"]}
+                        disableLinks={[
+                          "/flow-port",
+                          "/faq",
+                          "/community-updates",
+                          "/tutorial",
+                          "/flow-js-sdk/packages",
+                          "/flow-go-sdk/examples",
+                        ]}
+                      />
+                    </motion.div>
+                  </BreadcrumbWrapper>
+                </motion.div>
+              ) : (
+                ""
+              )}
+            </AnimatePresence>
           </Header>
+
           <SelectedLanguageContext.Provider value={selectedLanguageState}>
             <NavItemsContext.Provider value={navItems}>
               {props.children}
@@ -220,18 +253,6 @@ export default function PageLayout(props) {
           </SelectedLanguageContext.Provider>
         </Main>
       </FlexWrapper>
-      {!hideDocsetDropdown && (
-        <DocsetSwitcher
-          siteName={menuTitle || siteName}
-          discordUrl={discordUrl}
-          twitterUrl={twitterUrl}
-          navItems={navItems}
-          footerNavConfig={footerNavConfig}
-          open={menuOpen}
-          buttonRef={buttonRef}
-          onClose={closeMenu}
-        />
-      )}
     </Layout>
   );
 }

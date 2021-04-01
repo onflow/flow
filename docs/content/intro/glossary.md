@@ -2,8 +2,6 @@
 title: Glossary
 ---
 
-# Vocabulary
-
 ## Account
 
 An account is a user's identity on the blockchain. A user can use one or more private keys to control access to their account. Flow accounts can hold deployed code and resources.

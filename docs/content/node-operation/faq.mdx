@@ -1,0 +1,65 @@
+---
+title: Operator FAQ
+sidebar_title: Operator FAQs
+description: Frequently Asked Questions
+---
+
+### Can anybody run a node? What is the approval process?
+
+Individuals can go through an application process that involves asking about their background and experience contributing to decentralized projects. To pursue an application, please visit [the Flow website here to apply](https://www.onflow.org/node-validators).
+
+Pending approval, new node operators will be onboarded and invited to join a webinar to meet the team and share more about how they’ll grow the community. Node Operators are invited to join and participate in Flow's Node Validator Discord channel for setup questions and network announcements.
+
+In the long-term, anyone can become a Node Validator on Flow.
+
+### How do I generate keys?
+
+Please follow the instructions provided here: [Generate Your Node Keys](/node-operation/node-bootstrap#generating-your-node-id)
+
+### How do I check on the status of my node?
+
+Please follow the instructions provided here: [Monitoring nodes](/node-operation/monitoring-nodes)
+
+### Can the node address (IP or hostname) be changed after a spork?
+
+No. The node addresses are baked-in as part of the identity table stored on-chain and hence cannot be changed after a spork. It can be changed at the next spork.
+
+### Can I bootstrap and run a node at any time?
+
+The node has to be included as part of the spork and only then will be part of the Flow protocol. Hence, a node can be bootstrapped only during a spork.
+
+### Would it hurt the network to have a node that constantly spins up and down?
+
+A node needs to be part of the genesis block. The node can bounce after that and while that may not break the Flow protocol, it will cause severe degradation of overall performance.
+A way to prevent this is to check your equipment meets Flow's [recommended requirements](/node-operation/node-setup/#hardware-requirements), periodically checking for updates and announcements in Discord but also using a node monitoring system for when your node does go offline.
+
+### Will Flow have a regular schedule for Sporks?
+
+Yes, but the precise schedule will be somewhat variable and will also include protocol upgrades. (Currently, Flow has a Mainnet Spork and a Testnet Spork roughly every two weeks).
+
+### How do I update the Node Software?
+
+One of the reasons for a [spork](/node-operation/spork) is to make sure all nodes update to the latest software version. Hence, you should have the latest software update as long as you are participating in each spork.
+However, if we do release any software update in between a Spork (e.g. an emergency patch) we will announce it on Discord.
+
+### Can anybody run a node? What is the approval process?
+
+In the long-term, yes — any individual or organization should be able to run one or more nodes. Currently, however as the Flow protocol matures, anyone interested in running a node must present a case for how they will add unique value to the network. There will be an application process. Applicants will be asked to submit some information to the Flow core team including background information and any experience contributing to decentralized projects.
+They then join a webinar to meet the team and share more about how they’ll grow the community. The top applicants, in terms of community impact, will be granted a spot to run a node.
+
+### Is there any way to know if a node is currently online?
+
+To verify if a node is online, please [setup metrics](/node-operation/faq/#how-do-i-check-on-the-status-of-my-node) for the node.
+
+### Can I migrate a node to a new machine?
+
+Yes, as long as you retain the `boostrap` information which includes the node staking key, networking key, IP address and port from the old node to the new.
+
+### Is there a public node?
+
+Yes, an access node is [publicly accesible](https://docs.onflow.org/concepts/accessing-testnet) to submit transactions and read data from the blockchain using the
+[Access API](/core-contracts/access-api).
+
+### Where can I find how many nodes are currently running Flow?
+
+If you are running a node, then you most definitely have this information on your node in the file `<your bootstrap dir>/public-root-information/node-infos.pub.json`. If you are not running a node, you can just ask us :).

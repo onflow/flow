@@ -1,0 +1,430 @@
+---
+title: Node Bootstrap
+sidebar_title: Node Bootstrapping
+description: Running your own flow Node
+---
+
+## Step 0 - Cleaning Up your Previous State
+
+<Callout type="warning">
+You can skip this step if it is your first time running a node on Flow.
+</Callout>
+
+1. Stop your Flow node
+2. Clear the contents of your `data` directory that you have previously created. The default location is `/var/flow/data`. The `data` directory contains the Flow chain state.
+
+<Callout type="warning">
+
+If you had a previous node running on **mainnet 5**, you’ll need to turn it
+off just before joining the updated network and re-start your node with the
+updated configuration.
+
+</Callout>
+
+## Step 1 - Run Genesis Bootstrap
+
+<Callout type="info">
+  You will need to run this process for each node that you are operating
+</Callout>
+
+### Download the Bootstrapping Kit
+
+<Callout type="warning">
+If you have downloaded the bootstrapping kit previously, ensure that you do this step again to get the latest copy of the bootstrapping kit since we have made some significant changes to it.
+</Callout>
+
+```shell
+curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
+tar -xvf boot-tools.tar
+```
+```shell:title=CheckMD5
+md5sum ./boot-tools/bootstrap
+67e086be7c413a10ec92aae42f3c882a  ./boot-tools/bootstrap
+
+md5sum ./boot-tools/transit
+694e03194016d6b954a3ec5cedc2c5c2  ./boot-tools/transit
+```
+
+### Generating your Node ID
+
+A node ID is a 32 byte string that is unique to every node in Flow. 
+When you register your node to stake with Flow, you will
+generate a unique ID by hashing your staking public key.
+
+### Generate Your Node Keys
+
+#### Addresses
+
+<Callout type="info">
+
+You will need to have a real address, for example, a CNAME pointed at the
+node or just the IP address e.g. example.com:3569 or 189.23.42.12:3569.
+
+</Callout>
+
+<Callout type="info">
+
+Do not include in `http://` format.
+
+</Callout>
+
+<Callout type="info">
+
+If you are running multiple nodes, please
+ensure you have different addresses for each node.
+
+</Callout>
+
+<Callout type="warning">
+
+All your current keys and Flow genesis files should be in the `bootstrap`
+folder created earlier. Please take a back up of the entire folder.
+
+</Callout>
+
+```shell
+## Skip if this is section if this is your first time ##
+# If you joined our network previously, make sure to take a backup of your previously generated keys!
+cp -r /path/to/bootstrap /path/to/bootstrap.bak
+#########################################################
+# Generate Keys
+$ mkdir ./bootstrap
+# YOUR_NODE_ADDRESS: FQDN or IP address associated to your instance
+# YOUR_NODE_ROLE: The Flow nodes that you wish to run, it should be ONE of the following - [ access, collection, consensus, execution, verification ]
+$ ./boot-tools/bootstrap key --address \"${YOUR_NODE_ADDRESS}:3569\" --role ${YOUR_NODE_ROLE} -o ./bootstrap
+
+```
+
+```shell:title=Example
+$./boot-tools/bootstrap key --address "198.123.42.10:3569" --role consensus  -o ./bootstrap
+<nil> DBG will generate networking key
+<nil> INF generated networking key
+<nil> DBG will generate staking key
+<nil> INF generated staking key
+<nil> DBG assembling node information address=198.123.42.10:3569
+<nil> DBG encoded public staking and network keys networkPubKey=d92e3d5880abe233cf9fe9104db34bbb31251468a541454722b3870c04156a1b0504aef443bcaad124b997384b8fe7052847ce1e6189af1392d865e6be69835b stakingPubKey=917826e018f056a00b778a58ae83054906957ffd4b6f1b7da083551f7a9f35e02b76ace50424ed7d2c9fc69207a59f0f08a031048f5641db94e77d0648b24d150dedd54bab7cd44b4aa60cfd54be418647b0b3965f8ae54c0bcb48ae9d705162
+<nil> INF wrote file bootstrap/public-root-information/node-id
+<nil> INF wrote file bootstrap/private-root-information/private-node-info_39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a/node-info.priv.json
+<nil> INF wrote file bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
+
+$tree ./bootstrap/
+./bootstrap/
+├── private-root-information
+│   └── private-node-info_39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
+│       └── node-info.priv.json
+└── public-root-information
+    ├── node-id
+    └── node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
+
+3 directories, 3 files
+
+```
+
+### Upload your Public Keys
+
+<Callout type="warning">
+  
+  If you're running multiple nodes, you only need one token - it can be used to
+  generate multiple keys.
+
+  Please use the following pattern when generating your token `mainnet-6-yourname` (you can pick any name, it just helps us keep track of the most recent keys you've sent and would like us to include in the bootstrapping process)
+
+</Callout>
+
+```shell
+$ ./boot-tools/transit -push -d ./bootstrap -t ${TOKEN} -role ${YOUR_NODE_ROLE}
+
+Running push
+Generating keypair
+Uploading ...
+Uploaded 400 bytes
+```
+
+## Step 2 - Stake Your Node
+
+Stake your node via [Flow Port](https://port.onflow.org/)
+
+The `node details` (`Node ID`, `Network Address`, `Networking Key` and `Staking Key`) that need to be submitted when staking the node on Flow Port, can be found in the file: `./bootstrap/public-root-information/node-info.pub.<nodeinfo>`.
+
+```shell:title=Example
+$cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
+{
+  "Role": "consensus",
+  "Address": "198.123.42.10:3569",
+  "NodeID": "39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a",
+  "Stake": 1000,
+  "NetworkPubKey": "d92e3d5880abe233cf9fe9104db34bbb31251468a541454722b3870c04156a1b0504aef443bcaad124b997384b8fe7052847ce1e6189af1392d865e6be69835b",
+  "StakingPubKey": "917826e018f056a00b778a58ae83054906957ffd4b6f1b7da083551f7a9f35e02b76ace50424ed7d2c9fc69207a59f0f08a031048f5641db94e77d0648b24d150dedd54bab7cd44b4aa60cfd54be418647b0b3965f8ae54c0bcb48ae9d705162"
+}
+```
+
+## Step 3 - Getting Ready to Start your Flow Node
+
+<Callout type="danger">
+
+Before proceeding to Step 3, ensure that Step 1 was completed successfully with the bootstrap directory handy (default: `/var/flow/bootstrap`)
+
+</Callout>
+
+1. Expose TCP port **3569** on your firewall for both ingress and egress traffic
+
+If you are running Flow Access node, Collection node or an Execution node you will also need to expose TCP port **9000**.
+
+Optionally, for any node type, if you would like to expose the node metrics you can open port 8000.
+
+2. Create the `data` directory if you have not previously created it and/or removed a previous version of it (default: `/var/flow/data`)
+
+<Callout type="info">
+
+You can choose to run your Flow Node either using `docker` or have `systemd` to manage Flow node. Please choose only **one** of these two options
+
+</Callout>
+
+### Systemd
+
+**If you are running your Flow Node via Docker, you can skip this step and go to the Docker section below.**
+
+1. Ensure that you pulled the latest changes from [flow-go repository](https://github.com/onflow/flow-go) via `git`
+
+```shell
+## Clone the repo if you haven't already done so
+git clone https://github.com/onflow/flow-go
+
+## Get latest changes
+cd flow-go
+git pull origin master
+```
+
+2. Copy your respective [systemd unit file](https://github.com/onflow/flow-go/tree/master/deploy/systemd-docker) to: `/etc/systemd/system`
+
+3. Create directory `sudo mkdir /etc/flow`
+
+4. Copy the [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) file to: `/etc/flow/`
+
+5. Enable your service `sudo systemctl enable YOUR-FLOW-NODE.service`
+
+<Callout type="danger">Wait for the Flow team announcement before you proceed to Step 4</Callout>
+
+## Step 4 - Start Your Flow Node
+
+Once you receive an announcement from the Flow team that the network has been booted (via Discord), you will need to fetch the genesis info, update your runtime configuration and then boot your Flow node up!
+
+<Callout type="warning">
+
+The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info from. (Please do NOT use the original Token that you used in Step 1) The `YOUR_NODE_TYPE` must be the same ones that you used on [step 1 - generating your node keys](/node-operation/node-bootstrap/#generate-your-node-keys)
+
+</Callout>
+
+1. Run the transit script to fetch the new genesis info:
+   `./boot-tools/transit -pull -d ./bootstrap -t ${PULL_TOKEN} -role ${YOUR_NODE_TYPE}`
+
+```shell:title=Example
+$ ./boot-tools/transit -pull -d ./bootstrap -t mainnet-6  -role consensus
+Transit script Commit: a9f6522855e119ad832a97f8b7bce555a163e490
+2020/11/25 01:02:53 Running pull
+2020/11/25 01:02:53 Downloading bootstrap/public-root-information/node-infos.pub.json
+2020/11/25 01:02:53 Downloading bootstrap/public-root-information/root-block-seal.json
+2020/11/25 01:02:53 Downloading bootstrap/public-root-information/root-block.json
+2020/11/25 01:02:54 Downloading bootstrap/public-root-information/root-execution-result.json
+2020/11/25 01:02:54 Downloading bootstrap/public-root-information/root-qc.json
+2020/11/25 01:02:54 Downloading bootstrap/random-beacon.priv.json.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.enc
+2020/11/25 01:02:54 MD5 of the root block is: 2c9c7bba641a4ea34b6c49d5957ef058
+
+$ tree ./bootstrap/
+  ./bootstrap/
+  ├── private-root-information
+  │   └── private-node-info_39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
+  │       └── node-info.priv.json
+  ├── public-root-information
+  │   ├── node-id
+  │   ├── node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
+  │   ├── node-infos.pub.json
+  │   ├── root-block-seal.json
+  │   ├── root-block.json
+  │   ├── root-execution-result.json
+  │   └── root-qc.json
+  └── random-beacon.priv.json.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
+```
+
+2. Pull the latest changes from [flow-go repository](https://github.com/onflow/flow-go)
+3. Get your `node-id`, you can find it at `/path/to/bootstrap/public-genesis-information/node-id`
+4. Update the `FLOW_GO_NODE_ID` inside [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) to the `node-id` that you got from the previous step
+5. Start your Flow node via `docker` or `systemd`
+
+### Docker
+
+<Callout type="warning">
+Please make sure you are running Docker version 19 (`docker --version`). There is currently an issue with Docker version 20.
+</Callout>
+
+**You can skip this section if you are running via systemd**
+
+1. Update your environment variables: `source /path/to/runtime-conf.env`
+2. Run the following `docker` command based on the Flow node that you are running:
+
+<Callout type="warning" title="Remember: update your docker volume mounting path">
+
+You'll need to update the path for `data` and `bootstrap` volumes in the following commands. Those paths are from step 2.2 and 2.3a.
+
+</Callout>
+
+### Access
+
+```shell
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	gcr.io/flow-container-registry/access:v0.14.9 \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--rpc-addr=0.0.0.0:9000 \
+	--http-addr=0.0.0.0:8000 \
+	--collection-ingress-port=9000 \
+	--script-addr=${FLOW_NETWORK_EXECUTION_NODE} \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Collection
+
+```shell
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	gcr.io/flow-container-registry/collection:v0.14.9 \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--ingress-addr=0.0.0.0:9000 \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Consensus
+
+```shell
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	gcr.io/flow-container-registry/consensus:v0.14.9 \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Execution
+
+```shell
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	gcr.io/flow-container-registry/execution:v0.14.9 \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--triedir=/data/execution \
+	--rpc-addr=0.0.0.0:9000 \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Verification
+
+```shell
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	gcr.io/flow-container-registry/verification:v0.14.9 \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Systemd
+
+**You can skip this section if you are running via docker**
+
+1. Check that your `runtime-conf.env` is at `/etc/flow/runtime-conf.env`
+2. Update your environment variables: `source /etc/flow/runtime-conf.env`
+3. Start your service: `sudo systemctl start flow`
+
+## Step 5 - Verify if your Node is Running
+
+Here are a few handy commands that you can use to check if your Flow node is up and running
+
+### Docker
+
+- To get Flow logs: `sudo journalctl -u flow-YOUR_ROLE`
+- To get the status: `sudo docker ps`
+
+```shell
+$ sudo docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+1dc5d43385b6 gcr.io/flow-container-registry/verification:candidate8 \"/bin/app --nodeid=4…\" 30 hours ago Up 30 hours flow-go
+```
+
+### Systemd
+
+- To get Flow logs: `sudo journalctl -u flow-YOUR_ROLE`
+- To get your Flow node status: `sudo systemctl status flow`
+
+```shell
+● flow-verification.service - Flow Access Node running with Docker
+Loaded: loaded (/etc/systemd/system/flow-verification.service; enabled; vendor preset: enabled)
+Active: active (running) since Wed 2020-05-20 18:18:13 UTC; 1 day 6h ago
+Process: 3207 ExecStartPre=/usr/bin/docker pull gcr.io/flow-container-registry/verification:${FLOW_GO_NODE_VERSION} (code=exited, status=0/SUCCESS)
+Main PID: 3228 (docker)
+Tasks: 10 (limit: 4915)
+Memory: 33.0M
+CGroup: /system.slice/flow-verification.service
+        └─3228 /usr/bin/docker run --rm -v /var/flow/bootstrap:/bootstrap:ro -v /var/flow/data:/data:rw --rm --name flow-go --network host gcr.io/flow-container-registry/verification:candidate8 --nodeid=489f8a4513d5bd8b8b093108fec00327b683db545b37b4ea9153f61b2c0c49dc --bootstrapdir=/bootstrap --datadir=/data/protocol --alpha=1 --bind 0.0.0.0:3569 --loglevel=error
+```
+
+## Step 6 (optional) - Monitoring and Metrics
+
+This is intended for operators who would like to see what their Flow nodes are currently doing. Head over to [Monitoring Node Health](/node-operation/monitoring-nodes/) to get setup.
+
+### Node Status
+
+The metrics for the node should be able to provide a good overview of the status of the node. If we want to get a quick snapshot of the status of the node, and if it's properly participating in the network, you can check the `consensus_compliance_finalized_height` or `consensus_compliance_sealed_height` metric, and ensure it is not zero.
+
+```shell
+curl localhost:8080/metrics | grep consensus_compliance_sealed_height
+
+# HELP consensus_compliance_sealed_height the last sealed height
+# TYPE consensus_compliance_sealed_height gauge
+consensus_compliance_sealed_height 1.132054e+06
+```
+
+## Common Issues
+
+### Error: cannot create connection
+
+```shell
+20T18:34:21Z","message":"could not create connection"}
+{"level":"error","node_role":"consensus","node_id":"6d3fac8675a1df96f4bb7a27305ae531b6f4d0d2bc13a233e37bb07ab6b852dc","target":"QmVcSQaCdhmk1CMeMN7HTgGiUY1i2KqgVE2vvEmQXK4gAA","error":"failed to dial : all dials failed
+  * [/ip4/155.138.151.101/tcp/3569] dial tcp4 155.138.151.101:3569: connect: connection refused","retry_attempt":2,"time":"2020-05-20T18:34:21Z","message":"could not create connection"}
+```
+
+This error is OK. Your fellow node operators have not turned on/joined the network yet. So no need to worry about it!
+
+### Flow Node Not Booting Up
+
+If your Flow node is not able to boot up, or it exits right after it boots up. You will need to do a [clean up of your state](/node-operation/node-bootstrap/#step-0---cleaning-up-your-previous-state).
+
+After cleaning up the state try booting it up again. If the problem persists, message a member from the Flow team on Discord.

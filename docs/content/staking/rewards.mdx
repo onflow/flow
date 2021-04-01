@@ -1,0 +1,75 @@
+---
+title: Staking Rewards
+sidebar_title: Rewards
+description: How the Flow protocol pays rewards to stakers
+---
+
+<Callout type="warning">
+
+This information covers the current state of how rewards are calculated and distributed
+to node operators and delegators. All of the information in the document is still 
+being designed and is subject to change based on research and discussion by the Flow
+core team and community. If any changes are proposed, the Flow community will be notified in advance.
+</Callout>
+
+# Rewards
+
+**Rewards are paid at 6:00am PT (14:00 GMT) on Tuesday**, every week,
+to all the users that have tokens staked. 
+
+Once distributed, rewards are unlocked and liquid, so they can be transferred at any time. 
+Some custody providers might require extra steps to withdraw user staking reward 
+so please contact your respective provider to get additional information as needed.
+
+**Epochs end at 10:00pm PT Tuesday (06:00 GMT Wednesday)**, every week. This means that
+reward recipients have approximately 16 hours to commit the rewards they receive in order
+for the rewards to be staked in the next epoch.
+
+## Rewards Distribution
+
+The rewards distribution schedule has been designed to ensure 
+there is enough liquid supply of FLOW available in the ecosystem 
+to empower a wide variety of use cases and promote fair and diverse participation in the Flow ecosystem.
+
+The numbers in this table represent the total amount of tokens that are paid 
+as staking rewards at each epoch to the entire pool of participants in the Flow network as a whole. 
+While total staking reward per epoch is known and fixed, individual rewards are variable depending on many factors. 
+Please see the next section on how to calculate an individual staking reward.
+
+|                               | Dec 22         | Dec 29, Jan 5, 12, 19, 26 | Feb 2 weekly on Tuesdays until Dec 21, 2021 | Weeks 53+  |
+| ----------------------------- | -------------- | ------------------------- | ------------------------------------------- | ---------- |
+| Total Rewards % (Annual)      | 5%             | 20%                       | 5%                                          | TBD        |
+| Total Rewards Amount Per Week | ~1.2M FLOW     | ~4.4M FLOW                | ~1.2M FLOW                                  | TBD        |
+
+## Individual Calculation
+
+Each user gets a percentage of the total rewards during each epoch 
+that is proportional to their percentage of all the tokens that are staked by all participants.
+
+The full reward calculation on a per-user basis is equal to:	
+
+```	
+New Reward(user) = Tr  * (Sn / St)	
+```	
+
+where:	
+- `Tr` = Total staking rewards to be paid out during the current epoch. (See table above)
+- `Sn` = Amount of FLOW Staked by the target user for the current Epoch. (Different for each staker)
+- `St` = Sum of all the FLOW staked by all the participants in the network. (Changes every epoch)
+
+Rewards for delegators are also calculated in the exact same way that rewards for node operators are calculated, 
+with one difference in that 8% of the staking reward amount is given to the node operator being delegated to 
+(effected as a protocol layer fee, which is the same for all node operators). 
+The remaining 92% is awarded to the delegator. 
+Note: the 8% fee is only applied to the staking reward, not to the tokens delegated.
+
+With this calculation, the node you choose to run or delegate to 
+DOES NOT affect the amount of rewards you receive every week. 
+The only variable that you can control is the number of tokens you have staked. 
+The more tokens you stake, the more rewards you will receive.
+
+Because of the variable nature of the rewards calculation, we cannot provide an expected weekly/yearly return 
+for a single staker. You can plug your own numbers into the formula to see some sample calculations, 
+but you won't be able to know exactly what you will earn until the beginning 
+of the epoch in which you are participating in staking or delegation.
+

@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package access;
 
+option java_package = "org.onflow.protobuf.legacy.access";
+
 import "flow/legacy/entities/account.proto";
 import "flow/legacy/entities/block_header.proto";
 import "flow/legacy/entities/block.proto";

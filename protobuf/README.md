@@ -4,9 +4,9 @@ This folder contains the [Protocol Buffer](https://developers.google.com/protoco
 
 > ❓ What is the Access API?
 
-Check out the [Flow Access API specification](/docs/access-api-spec.md).
+Check out the [Flow Access API specification](/docs/content/access-api-spec.md).
 
-## Generating stubs
+## Generating Go stubs
 
 You can use [prototool](https://github.com/uber/prototool) to generate gRPC client stubs in a variety of languages.
 
@@ -15,3 +15,19 @@ Running the command below (in the current directory) will generate stubs for Go:
 ```shell script
 make generate
 ```
+
+## Generating and publishing JVM stubs
+
+JVM support is in the alpha stage; many steps require manual intervention.
+
+`./gradlew generateProto` compiles Protobuf files into local Java classes.
+
+### Publishing
+
+`./gradlew publishToSonatype` prepares and publishes compiled classes into JAR and uploads to OSSRH staging repository. 
+
+This requires signing artifacts which is done by [Signing Gradle plugin](https://docs.gradle.org/current/userguide/signing_plugin.html) - it requires 
+external configuration and appropriate GPG Keys. Please refer to plugin and [OSSRH](https://central.sonatype.org/pages/working-with-pgp-signatures.html) 
+documentation.
+Uploading to staging repo requires an approved Sonatype account. Please refer to [Gradle Nexus Publish Plugin](https://github.com/gradle-nexus/publish-plugin) 
+documentation how to provide credentials. 

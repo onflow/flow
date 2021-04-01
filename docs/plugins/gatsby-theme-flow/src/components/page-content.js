@@ -1,15 +1,21 @@
-import PropTypes from "prop-types";
-import React, { useRef, useState } from "react";
-import SectionNav from "./section-nav";
 import styled from "@emotion/styled";
+
+import PropTypes from "prop-types";
+
+import React, { useRef, useState } from "react";
+
 import useMount from "react-use/lib/useMount";
-import { HEADER_HEIGHT } from "../utils";
-import { IconGithub, IconDiscord, IconPlayground } from "../ui/icons";
-import { theme } from "../colors";
-import { smallCaps } from "../utils/typography";
-import breakpoints from "../utils/breakpoints";
-import PageNav from "./page-nav";
+
 import { withPrefix } from "gatsby";
+
+import { theme } from "../colors";
+import { HEADER_HEIGHT } from "../utils";
+import { IconGithub, IconDiscourse, IconPlayground } from "../ui/icons";
+import breakpoints from "../utils/breakpoints";
+import { smallCaps } from "../utils/typography";
+
+import PageNav from "./page-nav";
+import SectionNav from "./section-nav";
 
 const Wrapper = styled.div({
   display: "flex",
@@ -19,6 +25,7 @@ const Wrapper = styled.div({
 const InnerWrapper = styled.div({
   flexGrow: 1,
   width: 0,
+  maxWidth: "888px",
 });
 
 const BodyContent = styled.div({
@@ -68,7 +75,7 @@ const Aside = styled.aside({
   width: 240,
   maxHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
   marginTop: -36,
-  padding: "40px 0",
+  padding: "60px 0",
   marginLeft: 40,
   position: "sticky",
   top: HEADER_HEIGHT,
@@ -113,6 +120,11 @@ const AsideLinkInner = styled.a({
     fill: "currentColor",
   },
 });
+
+function sidebarPage(path) {
+  if (path === "/") return false;
+  return true;
+}
 
 function AsideLink(props) {
   return (
@@ -200,28 +212,29 @@ export default function PageContent(props) {
           nextPage={props.pages[pageIndex + 1]}
         />
       </InnerWrapper>
-      <Aside>
-        {/* <AsideHeading>{props.title}</AsideHeading> */}
-        <AsideHeading>{props.headings.length ? "Contents" : ""}</AsideHeading>
-        {props.headings.length > 0 && (
-          <SectionNav
-            headings={props.headings}
-            contentRef={contentRef}
-            imagesLoaded={imagesLoaded === imagesToLoad}
-          />
-        )}
-        {editLink}
-        {props.discordUrl && (
-          <AsideLink href={props.discordUrl}>
-            <IconDiscord /> Discuss on Discord
-          </AsideLink>
-        )}
-        {props.playgroundUrl && (
-          <AsideLink href={props.playgroundUrl}>
-            <IconPlayground /> Demo in Playground
-          </AsideLink>
-        )}
-      </Aside>
+      {sidebarPage(props.pathname) && (
+        <Aside>
+          <AsideHeading>{props.headings.length ? "Contents" : ""}</AsideHeading>
+          {props.headings.length > 0 && (
+            <SectionNav
+              headings={props.headings}
+              contentRef={contentRef}
+              imagesLoaded={imagesLoaded === imagesToLoad}
+            />
+          )}
+          {/* {editLink} */}
+          {props.discourseUrl && (
+            <AsideLink href={props.discourseUrl}>
+              <IconDiscourse /> Discuss in Forum
+            </AsideLink>
+          )}
+          {props.playgroundUrl && (
+            <AsideLink href={props.playgroundUrl}>
+              <IconPlayground /> Demo in Playground
+            </AsideLink>
+          )}
+        </Aside>
+      )}
     </Wrapper>
   );
 }
@@ -235,5 +248,6 @@ PageContent.propTypes = {
   title: PropTypes.string.isRequired,
   headings: PropTypes.array.isRequired,
   discordUrl: PropTypes.string,
+  discourseUrl: PropTypes.string,
   playgroundUrl: PropTypes.string,
 };

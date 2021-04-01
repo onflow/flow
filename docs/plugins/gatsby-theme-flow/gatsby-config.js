@@ -31,13 +31,13 @@ module.exports = ({
   siteName,
   pageTitle,
   description,
+  sources,
   githubRepo,
   githubAccessToken,
   baseDir = "",
   contentDir = "content",
   versions = {},
   gaTrackingId,
-  ignore,
   checkLinksOptions,
   repositories,
 }) => {
@@ -59,29 +59,29 @@ module.exports = ({
       resolve: "gatsby-remark-vscode-flow",
       options: {
         languageScopes: {
-          'cadence': 'source.cadence',
-          'powershell': 'source.powershell',
-          'javascript': 'source.ts',
-          'typescript': 'source.ts',
-          'js': 'source.ts',
-          'ts': 'source.ts',
-          'shell': 'source.shell',
-          'sh': 'source.shell',
-          'go': 'source.go',
-          'json': 'source.json',
-          'protobuf': 'source.proto',
-          'proto': 'source.proto'
+          cadence: "source.cadence",
+          powershell: "source.powershell",
+          javascript: "source.ts",
+          typescript: "source.ts",
+          js: "source.ts",
+          ts: "source.ts",
+          shell: "source.shell",
+          sh: "source.shell",
+          go: "source.go",
+          json: "source.json",
+          protobuf: "source.proto",
+          proto: "source.proto",
         },
         grammarPaths: [
-          path.resolve(__dirname, 'cadence.tmGrammar.json'),
-          path.resolve(__dirname, 'powershell.tmLanguage.json'),
-          path.resolve(__dirname, 'ts.tmLanguage.json'),
-          path.resolve(__dirname, 'go.tmLanguage.json'),
-          path.resolve(__dirname, 'shell-unix-bash.tmLanguage.json'),
-          path.resolve(__dirname, 'json.tmLanguage.json'),
-          path.resolve(__dirname, 'proto3.tmLanguage.json'),
+          path.resolve(__dirname, "cadence.tmGrammar.json"),
+          path.resolve(__dirname, "powershell.tmLanguage.json"),
+          path.resolve(__dirname, "ts.tmLanguage.json"),
+          path.resolve(__dirname, "go.tmLanguage.json"),
+          path.resolve(__dirname, "shell-unix-bash.tmLanguage.json"),
+          path.resolve(__dirname, "json.tmLanguage.json"),
+          path.resolve(__dirname, "proto3.tmLanguage.json"),
         ],
-        themePath: path.resolve(__dirname, 'light_vs.json'),
+        themePath: path.resolve(__dirname, "light_vs.json"),
       },
     },
     {
@@ -103,22 +103,7 @@ module.exports = ({
         },
       },
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: path.join(root, "content"),
-        name: "docs",
-        ignore,
-      },
-    },
-    {
-      resolve: "gatsby-source-git",
-      options: {
-        name: "cadence",
-        remote: "https://github.com/onflow/cadence.git",
-        patterns: "docs/language/**/*"
-      }
-    },
+    ...sources,
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -141,14 +126,6 @@ module.exports = ({
         ],
       },
     },
-    // {
-    //   resolve: "gatsby-plugin-printer",
-    //   options: {
-    //     puppeteerLaunchOptions: {
-    //       headless: true,
-    //     },
-    //   },
-    // },
     ...Object.entries(versions).map(([name, branch]) => ({
       resolve: "gatsby-source-git",
       options: {

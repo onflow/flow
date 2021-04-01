@@ -1,0 +1,69 @@
+---
+title: Spork Practice
+---
+
+## Sporking
+
+The actual process of Sporking will mostly be covered by the Node Operators Quick Guide, and will not be covered here.
+
+[Node Operation Quick Guide](https://docs.onflow.org/docs/node-operation-consolidated-guide)
+
+Instead, we'll aim to give some instructions for those that want to Practice the process themselves, before joining the Mainnet Spork.
+
+This guide assumes you have access to the Flow-Go repo, which you'll need to build up-to-date containers and run code snippets.
+
+[](https://github.com/onflow/flow-go)
+
+## Local Testnet
+
+One way to get a good feel of the network without too much interaction with infrastructure is to play with the local testnet, which we've named the Flow Local Instrumented Test Environment (FLITE).
+
+[https://github.com/onflow/flow-go/blob/master/integration/localnet/README.md](https://github.com/onflow/flow-go/blob/master/integration/localnet/README.md)
+
+FLITE will allow you to start a full flow network locally, which means starting all 5 roles required for a functioning network. Instructions for initializing and starting the local network are provided in the README above.
+
+When Starting FLITE, it will build all the docker images required for the network. This can also be done manually ahead of time, using `make docker-build-flow` from the root directory of `flow-go`
+
+## Remote Testnet
+
+If you would like more control over the nodes, beyond what docker compose can provide, or you wish to deploy the docker images to separate VMs, to more closely imitate Mainnet, you will have to manually run bootstrapping for a specific configuration of nodes that you would like to test.
+
+[](https://github.com/onflow/flow-go/blob/master/cmd/bootstrap/README.md)
+
+Example files are available in the `cmd/bootstrap/example_files` folder.
+
+Where the `node-config.json` will usually store all flow's nodes, whereas partner node info usually goes into a separate folder. The last file, which will need to be manually populated, is the partner stakes file, which takes the IDs of all the partner nodes and associates a stake. For now, this can be arbitrary.
+
+Once you have all the information, you can make use of the `finalize` command:
+
+[](https://github.com/onflow/flow-go/tree/master/cmd/bootstrap#example-1)
+
+And generate the bootstrapping folder required to start up your nodes.
+
+Once you have the bootstrapping folder, you'll be able to start up all the nodes that were included in the bootstrapping process.
+
+[Node Operation Quick Guide](https://docs.onflow.org/docs/node-operation-consolidated-guide#docker)
+
+The startup command will look very similar to what is provided in the quick guide. One such example, assuming we named our bootstrap folder `bootstrap`:
+
+```shell
+docker run --rm \
+    -v /path/to/bootstrap:/bootstrap:ro \
+    -v /path/to/data:/data:rw \
+    --name flow-go \
+    --network host \
+    gcr.io/flow-container-registry/execution:latest \
+    --nodeid=${FLOW_GO_NODE_ID} \
+    --bootstrapdir=/bootstrap \
+    --datadir=/data/protocol \
+    --rpc-addr=0.0.0.0:9000 \
+    --nclusters=${FLOW_NETWORK_COLLECTION_CLUSTER_COUNT} \
+    --bind 0.0.0.0:3569 \
+    --loglevel=error
+```
+
+The two missing pieces of info here are `FLOW_GO_NODE_ID` which will have been generated from the bootstrap process, and will depend on which node you're trying to run, and `FLOW_NETWORK_COLLECTION_CLUSTER_COUNT` which we've been defaulting to `2`
+
+## Practice Testnet
+
+Lastly, if the goal is to practice the entire Sporking procedure, including `transit` of staking and networking keys, and joining a network, we can help spin up a Testnet temporarily for this purpose. This will require quite a bit of coordination, and will basically be the same steps as the Mainnet spork, so please let us know if this is something you'd like to do and we’ll connect to plan accordingly.

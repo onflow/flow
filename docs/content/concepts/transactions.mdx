@@ -1,0 +1,21 @@
+---
+title: Transactions
+---
+
+## Transaction Journey
+
+A Transaction is the smallest unit of computation performed by the Flow network. Each transaction includes a short script for updating the execution state (which can call methods defined in smart contracts) and includes one or more cryptographic signatures used to authenticate the authority of the submitter. A User Agent (often called “wallet software”) is responsible for forming transactions and transmitting them to Flow.
+
+When a transaction is ready, a user agent submits the transaction to a collection node. The collection node validates the transaction and then shares it with other nodes inside the cluster. The cluster forms a collection containing the transaction, aggregates a set of signatures from a supermajority of cluster members, and then forwards the collection guarantee to the consensus nodes. A collection guarantee contains a hash derived from the contents of all transactions, the cluster id which created the collection, the count of transactions in the collection, and the signatures of collection nodes committing to the collection. By signing a collection, a collection node is responsible to store and hold on to a collection and respond to queries. A collection node only receives a reward for the collections it signs.
+
+Consensus nodes are responsible for forming blocks containing collection guarantees. Finalized blocks are transmitted to execution nodes who then contact the collection nodes that guaranteed each collection for the contents of those collections.
+
+Upon receiving the content of all collections in a block, the execution nodes run the transactions referenced from that block and broadcast an Execution Receipt. The execution receipt includes a hashed commitment of the execution state resulting from correctly applying the state transitions specified in the complete transaction set for that block, plus cryptographic commitments to interim execution states at specific milestones through the block.
+
+Consensus nodes include those execution receipts in new blocks; after a block containing an execution receipt is finalized, the verification nodes start checking the correctness of the individual parts of the execution work included in the block, by recreating the transition from one interim milestone to the next. The random beacon value from the block including the transaction receipt is used to seed a deterministic assignment algorithm. This algorithm randomly assigns a region of the computation between two milestones (a chunk) to a set of verification nodes. Every chunk is assigned a number of verifiers derived from the size of the verification pool and the number of chunks in the block (this analysis assumes 50 verifiers for each chunk, and 1,000 chunks in each block).
+
+In order to verify a chunk, a verification node contacts an execution node for the input data (chunk data package) matching the appropriate milestone for their chunk from the execution receipt. If the verification node confirms that the transition from one milestone to the next is correct for that chunk it broadcasts a Result Approval to the consensus nodes; if it finds an error, it instead broadcasts a Faulty Computation Challenge (FCC).
+
+If the consensus nodes receive sufficient result approvals for all chunks in an execution receipt, they will include a Result Seal for that receipt in the next new block. At least ⅔ of the validators assigned to each chunk must positively provide result approvals for a result to be sealed. If one or more chunks don’t receive enough result approvals for sealing after several blocks have passed, the consensus nodes trigger Full Check Mode for those chunks. In full check mode, all verification nodes are asked to check the chunks in question. Full check mode requires ⅔ of all validators to respond with result approvals to seal the result. Full check mode is also triggered if the execution nodes provide two or more different execution receipts for the same block.
+
+When a result is sealed, the output of all corresponding transactions are finalized and the changes are not reversible.

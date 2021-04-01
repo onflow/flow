@@ -5,129 +5,27 @@ sidebar: false
 ---
 
 import DocsetMenu from "./components/docset-menu";
-import { MenuWrapper, MenuTitle } from "./components/menu";
-import WorkoutMenuItem from "./components/workout-menu-item";
-import { Link } from "gatsby";
-import { Button } from "gatsby-theme-flow/src/ui/Button";
+import { MenuTitle } from "./components/menu";
+import DiscoursePosts from "./components/discourse-posts";
 import { theme } from "gatsby-theme-flow/src/colors";
-import { ReactComponent as BadmintonPlayer } from "./assets/badminton-player.svg";
-import { ReactComponent as Paragliding } from "./assets/paragliding.svg";
-import { ReactComponent as Weightlift } from "./assets/weightlift.svg";
-import { ReactComponent as Diving } from "./assets/diving.svg";
-import { ReactComponent as HeadLight } from "./assets/head-light.svg";
 
-Before starting your journey on Flow we recommend reading the <a href="https://www.onflow.org/primer">Flow Primer</a> where you will get a quick introduction to how the Flow blockchain works. It will be easier to understand the concepts in these tutorials if you have an idea of how Flow works.
+‍Flow is a fast, decentralized, and developer-friendly blockchain, designed as the foundation for a new generation of games, apps, and the digital assets that power them. It is based on a unique, multi-role architecture, and designed to scale without sharding, allowing for massive improvements in speed and throughput while preserving a developer-friendly, ACID-compliant environment.
 
-## Install Flow
+**Ready to start building?** Take a tutorial or have a look at an example application:
 
-To work with Flow locally you'll need to install the <a href="https://github.com/onflow/flow/blob/master/docs/cli.md#flow-cli">Flow CLI</a>.
-The Flow CLI is a command-line interface that provides useful utilities for building Flow applications, including the Flow Emulator.
+### 🏃‍♂️ App Quickstart Using React
 
-<MenuTitle>OSX & Linux</MenuTitle>
+Follow the [Flow App Quickstart](/flow-js-sdk/flow-app-quickstart/) for a detailed guide covering how to use the [Flow JS SDK](/flow-js-sdk) to build a serverless app that connects to Flow, using React!
 
-```shell
-sh -ci "$(curl -fsSL https://storage.googleapis.com/flow-cli/install.sh)"
-```
+### 😸 Kitty Items Full-Stack Example App
 
-<MenuTitle>Windows</MenuTitle>
-
-```powershell
-iex "& { $(irm 'https://storage.googleapis.com/flow-cli/install.ps1') }"
-```
+The Kitty Items application is a full-featured NFT marketplace that demonstrates what a full-stack application can look like on Flow. It's designed to showcase the power of Cadence and Flow's client libraries.
+Have a look at the [Kitty Items GitHub repository](https://github.com/onflow/kitty-items) for more details.
 
 ---
 
-## Developer Tools
+## Explore
 
-Flow was designed for builders. It's a "batteries included" patform complete with developer tools you can use to start building right away.
+Flow was designed for builders. It's a "batteries included" platform complete with developer tools you can use to start building right away.
 
 <DocsetMenu />
-
-<!-- ## Guides -->
-
-<!-- ## Cadence Smart Contracts
-
-Blockchain represents a new paradigm on how scarce resources are being created and managed in the digital world. That is why Flow supports a new smart contract language, Cadence, following a <a href="">resource-oriented</a> paradigm inspired by linear types.
-Cadence allows for a more natural representation of scarce resources and it is designed for developers to build safer smart contracts.
-
-<MenuWrapper>
-
-<WorkoutMenuItem
-  icon={HeadLight}
-  keyWord="Flow"
-  otherWords="Playground"
->
-The Flow Playground includes an in-browser editor and <a href="">Flow emulator</a> to experiment with Flow.
-<p style="padding-top:1rem"><a href="https://play.onflow.org" target="_blank"><Button color={theme.primary} size="small">Launch Playground</Button></a></p>
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={Diving}
-  keyWord="Cadence"
-  otherWords="Tutorials"
->
- Work through the fundamentals of developing on-chain currencies, collectibles, marketplaces, and more, all on Flow.
-  <p style="padding-top:1rem"><a href="/tutorial/cadence/00-introduction/"><Button color={theme.primary} size="small">Explore Tutorials</Button></a></p>
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={Weightlift}
-  keyWord="Cadence"
-  otherWords="Language Reference">
-  The Cadence Language Reference is an in depth-guide to the Cadence language.
-<p style="padding-top:1rem"><a href="/docs/language/"><Button color={theme.primary} size="small" >Visit Reference</Button></a></p>
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={Paragliding}
-  keyWord="Cadence"
-  otherWords="Source Code"
->
-Cadence is a new GPL with superpowers. The source code is open source on Github.
-<p style="padding-top:1rem"><a href="https://github.com/onflow/cadence" target="_blank"><Button color={theme.primary} size="small" >View Source</Button></a></p>
-</WorkoutMenuItem>
-
-</MenuWrapper> -->
-
-<!-- ### Building Applications on Flow
-
-When choosing to build on a blockchain platform like Flow, it's important to consider how you want to handle transaction signing and storing information about your users.
-
-<MenuWrapper>
-
-<WorkoutMenuItem
-  icon={HeadLight}
-  keyWord="Hybrid"
-  otherWords="Applications"
->
-Build an application that lets user's manage their own Flow account access using a wallet, but also store some information about individual users in a database, and provide some server-side functionality that interacts with Flow.
-<p style="padding-top:1rem"><a href="" target="_blank"><Button color={theme.primary} size="small" >View Guide</Button></a></p>
-
-
-
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={Weightlift}
-  keyWord="Decentralized"
-  otherWords="Applications">
-  Decentralized applications are the best option for developers who want to build censorship resistant and highly-scalable applications that connect directly to Flow.
-<p style="padding-top:1rem"><a href="" target="_blank"><Button color={theme.primary} size="small" >View Guide</Button></a></p>
-
-
-
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={Paragliding}
-  keyWord="Client-Server"
-  otherWords="Applications"
->
-Client-server applications are a powerful way to build rich apps that leverage Flow's decentralized properties, in conjunction with private servers for less critical components.
-<p style="padding-top:1rem"><a href="" target="_blank"><Button color={theme.primary} size="small" >View Guide</Button></a></p>
-
-
-
-</WorkoutMenuItem>
-
-</MenuWrapper> -->

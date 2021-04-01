@@ -169,6 +169,7 @@ async function createPagesForSection(
     baseDir = "",
     subtitle,
     discordUrl,
+    discourseUrl,
     twitterUrl,
     baseUrl,
     sourceGithubRepos,
@@ -254,11 +255,13 @@ async function createPagesForSection(
         id,
         subtitle,
         sidebar: {
+          showMainNav: section.sidebarShowMainNav,
           alwaysExpanded: section.sidebarAlwaysExpanded,
-          contents: sidebarContents
+          contents: sidebarContents,
         },
         githubUrl,
         discordUrl,
+        discourseUrl,
         twitterUrl,
         baseUrl,
       },

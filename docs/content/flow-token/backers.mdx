@@ -1,0 +1,58 @@
+---
+title: FLOW for Backers
+sidebar_title: For Backers
+description: How to claim FLOW tokens
+---
+
+Please follow the process outlined below if you would like to:
+
+- Claim tokens purchased in a previous sale
+- Purchase or hold FLOW in the future
+
+## Step 1: Choose a Custody Provider
+
+Choose a custody provider who currently supports Flow:
+
+- [Finoa](https://finoa.io/)
+- [Kraken](https://www.kraken.com/)
+- [Ledger](https://www.ledger.com/), or
+- Create your own Flow account by going to [Flow Port](https://port.onflow.org/) and selecting the _Create Account_ transaction option. 
+You will only be able to use this option if you currently hold an account on the network with the ability to pay for the account creation fees.
+
+## Step 2: Create an Account
+
+Your chosen custody provider will give you an option to create a Flow address.
+Account addresses for managing funds and signing transactions are created as follows:
+
+1. The custodian (or user) generates a cryptographic key-pair consisting of a public and private key.
+2. The public key is then inserted into an _account creation_ Cadence transaction. This transaction
+will execute code that creates a new account that can only be accessed by the accompanying private key (generated in step 1).
+3. This transaction is submitted to a Flow Access API, which broadcasts it to the rest of the network.
+4. Once the transaction is executed and verified, the Access API notifies the custodian of the _account creation_
+event, including the newly-generated account address.
+
+Once the account creation transaction has been executed and the result sealed,
+the user can use their private key to authorize transactions through their account
+(generally this is done through a wallet provider).
+
+The exact steps to complete this may vary between custody providers, but it will always require a thorough KYC process.
+
+**You are done this step when you receive your Flow address.**
+
+It should look like something like: `0x7e60df042a9c0868`
+
+You can read more about address generation in the [accounts & keys documentation](/concepts/accounts-and-keys#account-addresses).
+
+## Step 3: Claim Your Tokens
+
+Once your Flow address has been created, please submit it via the _token claim form_ (coming soon).
+The form also asks for some additional information so that we can securely verify your 
+details prior to delivering your tokens. 
+
+_Please note, we will require a phone confirmation in order to initiate the deposit._
+
+You will be able to **check your FLOW balance** at any time on [Flow Port](https://port.onflow.org/).
+
+## Support
+
+Need a hand? Please don't hesitate to contact our team at [hello@onflow.org](mailto:hello@onflow.org).

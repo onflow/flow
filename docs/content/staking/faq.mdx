@@ -1,0 +1,68 @@
+---
+title: Staking FAQ
+sidebar_title: FAQs
+description: Frequently Asked Questions
+---
+
+### Where will users receive their staking reward for each staking option?
+
+If you staked using Flow Port, then you should be able to see your staking rewards there. You can also withdraw the rewards or manually re-stake them through Flow Port.
+
+If you staked using a staking provider such as Kraken, Blocto or Finoa, please read [our guides](/staking/custody-providers/) for more information.
+
+### Will staking rewards be automatically re-staked?
+
+There will be _no_ automatic re-staking of staking rewards with Flow Port (i.e. using Ledger or Blocto).
+
+If you staked using a staking provider such as Kraken, Blocto or Finoa, please read [our guides](/staking/custody-providers/) for more information.
+
+### Does it make a difference as to what TYPE of node we delegate to in terms of rewards?
+
+No, rewards are calculated the same for every node type.
+
+### Can a validator change its fees?
+
+For the beta period we’re enforcing a delegation fee of 8% which cannot be changed.
+
+### Can a token holder stake to multiple nodes? If yes, how is the stake split between them?
+
+A token holder will be able to stake multiple nodes in the future.
+However, currently there is a restriction in place from the token lockup rules such that there is a 1-to-1 relationship between an account address and an active stake.
+We have the same restriction in place for an account address and an active delegation.
+This means that 1 account address can have at maximum 1 active stake and 1 active delegation at any given time.
+If a token holder wants to have additional stake and/or delegate transactions, then they must create additional account addresses to do so.
+
+### Is there a utility to generate the FLOW addresses?
+
+Staking or delegation of FLOW has to be done via Flow port which requires a login through Ledger or Blocto.
+Hence, a utility cannot be used to generate a Flow address since it cannot be used to stake or delegate via Flow port.
+
+### Is the wallet key transferred to the staked or delegated node?
+
+No - The keys on the node are different from the wallet keys. The wallet keys always stay in the wallet.
+A node operator generates the staking and networking keys separately which will be used on the node.
+
+### Can I stake through multiple accounts to meet the minimum FLOW required for staking a node?
+
+No, the minimum stake must come from a single account for all node types. Temporarily, the minimum for consensus nodes can come from a combination of a staking and delegation action from two accounts controlled by the same party.
+
+### How can I reach the Consensus node minimum stake of 500K FLOW
+
+The consensus node minimum of 500K FLOW can be met with a minimum 250,000 FLOW action and additional delegation from the same entity.
+
+### Is rewards payout another spork?
+
+No, rewards payout is not a spork but (currently) a separate transaction that we initiate.
+
+### How do FLOW leases work?
+
+A FLOW lease from Dapper Labs gives an individual access to funds for the purpose of staking. These funds are controlled by Dapper Labs and accessible only to the individual for the purposes of staking. When the FLOW is staked, it is technically in the custody of the protocol - as with any other staked FLOW.
+
+### Can I query an account address of a node ID or delegator ID?
+
+The staking smart contract does not directly associate a node or delegator with an account address. 
+It associates it with the assigned resource object that corresponds to that entry in the contract. 
+There can be any number of these objects stored in the same account, 
+and they can be moved to different accounts if the owner chooses.
+It is possible to query the information about a node that an address runs though, by using the
+`get_node_info_from_address.cdc` script.

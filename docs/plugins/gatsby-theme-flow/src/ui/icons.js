@@ -5,6 +5,8 @@ import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import Search from "../assets/search.svg";
 
 import Cadence from "../assets/cadence.svg";
+import Port from "../assets/port.svg";
+import PortColor from "../assets/port.svg";
 import CadenceColor from "../assets/cadence-color.svg";
 import Emulator from "../assets/emulator.svg";
 import EmulatorColor from "../assets/emulator-color.svg";
@@ -29,6 +31,7 @@ export {
   FaChevronDown as IconChevronDown,
   FaChevronUp as IconChevronUp,
   FaDiscord as IconDiscord,
+  FaDiscourse as IconDiscourse,
   FaExclamationTriangle as IconWarningSolid,
   FaExternalLinkAlt as IconExternalLink,
   FaFacebook as IconFlow, // TODO: replace with real Flow logo,
@@ -100,6 +103,10 @@ const projectIcons = {
   vscode: {
     default: VSCode,
     color: VSCodeColor,
+  },
+  port: {
+    default: Port,
+    color: PortColor,
   },
 };
 
