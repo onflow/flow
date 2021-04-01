@@ -10,9 +10,9 @@
 
 Limit the maximum amount of storage each account can use to prevent storing huge amount of data on chain.
 
-The amount of storage capacity on an account defines the accounts' storage capacity at the conversion rate of 1 MB of storage capacity per 1 FLOW (in the accounts storage).
+The amount of FLOW on an account defines the accounts' storage capacity at the conversion rate of 10 MB of storage capacity per 1 FLOW (in the accounts storage).
 
-To ensure that a majority of accounts always has enough storage, a minimum account balance (of 0.1 FLOW) will be introduced.
+To ensure that a majority of accounts always have enough storage, a minimum account balance (of 0.001 FLOW) will be introduced.
 ## Motivation
 
 If the execution state grows too large, execution nodes will no longer be able to hold the execution state in memory, which is necessary to calculate the next execution state. When this happens, the execution node requirements (and the nodes themselves) will need to be updated (and it will cost more to operate them).
@@ -34,13 +34,13 @@ In case additional storage will be required on an account it can be purchased by
 
 ### Overview
 
-Each account will have a `storage_used` and a `storage_capacity` (uint64) values with the unit of bytes. Any account will be able to see an accounts `storage_used` and `storage_capacity` values, by accessing `storageUsed` and `storageCapacity` fields on both `PublicAccount` and `AuthAccount` cadence types.
+Each account will have `storage_used` and `storage_capacity` (uint64) values with the unit of bytes. Any account will be able to see an accounts `storage_used` and `storage_capacity` values, by accessing `storageUsed` and `storageCapacity` fields on both `PublicAccount` and `AuthAccount` cadence types.
 
-The value of `storage_used` will be an explicitly stored register on each account. `storage_used` is the amount of storage the account is currently using (in bytes); The sum of data stored in the execution state for the account, i.e the sum of the sizes of all register keys and values for the account. `storage_used` for an account will be updated during a transaction each time that account register changes. At the end of each transaction, every account with changed registers will have its `storage_used` compared to its `storage_capacity`, if the account is using more storage then its capacity the transaction will fail with a clear error. The `storage_used` register will be added to each account upon account creation. If the account existed before this change a migration will created that adds `storage_used`.
+The value of `storage_used` will be stored explicitly in a register on each account. `storage_used` is the amount of storage the account is currently using (in bytes); The sum of data stored in the execution state for the account, i.e the sum of the sizes of all register keys and values for the account. `storage_used` for an account will be updated during a transaction each time that the accounts' register changes. At the end of each transaction, every account with changed registers will have its `storage_used` compared to its `storage_capacity`, if the account is using more storage then its capacity the transaction will fail with a clear error. The `storage_used` register will be added to each account upon account creation. If the account existed before this change a migration will created that adds `storage_used`.
 
-The value of `storage_capacity` is computed from the accounts FLOW balance. The value of `storage_capacity` equals the accounts balance multiplied by `FlowStorageFees.storageMegaBytesPerReservedFLOW`. To add more storage to an account, more FLOW needs to be deposited to the account. If the account is already over storage capacity (due to `FlowStorageFees.storageMegaBytesPerReservedFLOW` being reduced) the first transaction that involves that account should add more FLOW to it as well, otherwise the transaction will fail.
+The value of `storage_capacity` will be computed from the accounts FLOW balance. The value of `storage_capacity` equals the accounts balance multiplied by `FlowStorageFees.storageMegaBytesPerReservedFLOW`. To add more storage to an account, more FLOW needs to be deposited to the account. If the account is already over storage capacity (due to `FlowStorageFees.storageMegaBytesPerReservedFLOW` being reduced) the first transaction that involves that account should add more FLOW to it as well, otherwise the transaction will fail.
 
-The minimum amount of FLOW an account can have is `FlowStorageFees.minimumStorageReservation` (0.1 FLOW). This equals 100 kB of storage capacity, which should be enough for most accounts. This minimum is deducted from the account creator during new account creation. If the account existed before this change some flow will be deposited to it during the spork process.
+The minimum amount of FLOW an account can have is `FlowStorageFees.minimumStorageReservation` (0.001 FLOW). This equals 10 kB of storage capacity, which should be enough for most accounts. This minimum is deducted from the account creator during new account creation. If the account existed before this change some FLOW will be deposited to it during the spork process.
 
 ### Execution Environment Changes
 
@@ -137,7 +137,7 @@ Joining the calls to `FlowServiceAccount` into one transaction will also improve
 The amount of `storage_capacity` is calculated from the amount of FLOW on the account. To get the value of `storage_capacity` the following procedure will be used:
 
 - Call a script that calls the `FlowStorageFees.calculateAccountCapacity` function with the account address as the parameter.
-- This function gets the balance of the account and:
+- This function gets the balance (from the balance capability at path `/public/flowTokenBalance` that needs to be of type `&FlowToken.Vault{FungibleToken.Balance}`) of the account and:
     - checks that the balance is above `FlowStorageFees.minimumStorageReservation` otherwise storage capacity is 0,
     - then multiples the balance with `FlowStorageFees.storageMegaBytesPerReservedFLOW` and returns the result
 
