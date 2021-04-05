@@ -111,7 +111,7 @@ In phase 2 of the bootstrapping process, the Flow team will need to securely iss
 {
 "codes": [
 {
-"code": "# If you joined our network previously, make sure to take a backup!\ncp /path/to/bootstrap /path/to/bootstrap.bak\n$ ./boot-tools/transit -push -d ./bootstrap -t ${TOKEN} -role ${YOUR_NODE_ROLE}\nRunning push\nGenerating keypair\nUploading ...\nUploaded 400 bytes",
+"code": "# If you joined our network previously, make sure to take a backup!\ncp /path/to/bootstrap /path/to/bootstrap.bak\n$ ./boot-tools/transit push -d ./bootstrap -t ${TOKEN} -role ${YOUR_NODE_ROLE}\nRunning push\nGenerating keypair\nUploading ...\nUploaded 400 bytes",
 "language": "shell",
 "name": "Upload public keys"
 }
@@ -155,7 +155,7 @@ When the Flow team gives the go-ahead, your Random Beacon keys will be available
 {
 "codes": [
 {
-"code": "~ $ ./boot-tools/transit -pull -d ./bootstrap -t ${TOKEN} -role ${YOUR_NODE_ROLE}\nFetching keys for node ID FEF5CCFD-DC66-4EF6-8ADB-C93D9B6AE5A4\nDecrypting Keys\nKeys available",
+"code": "~ $ ./boot-tools/transit pull -d ./bootstrap -t ${TOKEN} -role ${YOUR_NODE_ROLE}\nFetching keys for node ID FEF5CCFD-DC66-4EF6-8ADB-C93D9B6AE5A4\nDecrypting Keys\nKeys available",
 "language": "shell",
 "name": "Pull beacon keys"
 }
