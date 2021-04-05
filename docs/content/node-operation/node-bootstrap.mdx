@@ -132,7 +132,7 @@ $tree ./bootstrap/
 </Callout>
 
 ```shell
-$ ./boot-tools/transit -push -d ./bootstrap -t ${TOKEN} -role ${YOUR_NODE_ROLE}
+$ ./boot-tools/transit push -d ./bootstrap -t ${TOKEN} -role ${YOUR_NODE_ROLE}
 
 Running push
 Generating keypair
@@ -216,17 +216,14 @@ The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info
 </Callout>
 
 1. Run the transit script to fetch the new genesis info:
-   `./boot-tools/transit -pull -d ./bootstrap -t ${PULL_TOKEN} -role ${YOUR_NODE_TYPE}`
+   `./boot-tools/transit pull -d ./bootstrap -t ${PULL_TOKEN} -role ${YOUR_NODE_TYPE}`
 
 ```shell:title=Example
-$ ./boot-tools/transit -pull -d ./bootstrap -t mainnet-6  -role consensus
+$ ./boot-tools/transit pull -d ./bootstrap -t mainnet-6  -role consensus
 Transit script Commit: a9f6522855e119ad832a97f8b7bce555a163e490
 2020/11/25 01:02:53 Running pull
 2020/11/25 01:02:53 Downloading bootstrap/public-root-information/node-infos.pub.json
-2020/11/25 01:02:53 Downloading bootstrap/public-root-information/root-block-seal.json
-2020/11/25 01:02:53 Downloading bootstrap/public-root-information/root-block.json
-2020/11/25 01:02:54 Downloading bootstrap/public-root-information/root-execution-result.json
-2020/11/25 01:02:54 Downloading bootstrap/public-root-information/root-qc.json
+2020/11/25 01:02:54 Downloading bootstrap/public-root-information/root-protocol-snapshot.json
 2020/11/25 01:02:54 Downloading bootstrap/random-beacon.priv.json.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.enc
 2020/11/25 01:02:54 MD5 of the root block is: 2c9c7bba641a4ea34b6c49d5957ef058
 
@@ -239,10 +236,7 @@ $ tree ./bootstrap/
   │   ├── node-id
   │   ├── node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
   │   ├── node-infos.pub.json
-  │   ├── root-block-seal.json
-  │   ├── root-block.json
-  │   ├── root-execution-result.json
-  │   └── root-qc.json
+  │   └── root-protocol-snapshot.json
   └── random-beacon.priv.json.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
 ```
 
