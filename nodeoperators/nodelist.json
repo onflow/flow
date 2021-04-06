@@ -2513,7 +2513,7 @@
     },
     {
         "Role": "collection",
-        "Address": "169.48.79.56:3569",
+        "Address": "flow-1.staked.cloud:3569",
         "NodeID": "129aab6407f6f66774ce77a03b8abd1ba67317eab1c70c5c6cdd7a433a7d64e8",
         "Stake": 1000,
         "NetworkPubKey": "fb975d6e8b9108fcd5db7f5bfbe57321d6f2c28a795076c6c7e629c8e93f5af71b3dd4a97ba9ba0ad8a2ed03f48e821126059fe4e5b4306dface3ec6e1cc9b5d",
@@ -2521,7 +2521,7 @@
     },
     {
         "Role": "collection",
-        "Address": "52.117.55.154:3569",
+        "Address": "flow-0.staked.cloud:3569",
         "NodeID": "fcb55c2d1fb2737b159704b5a30b194b8a8ddfb4691d55692af597ac6e236201",
         "Stake": 1000,
         "NetworkPubKey": "de6ab4703b875c4bc3cd6269d940f84e3594ffa8890749116a724d139d26843019b4b4ca73052e9c0c52dac58a0c3634f5f0374b5f276b14aacd28389af54508",
