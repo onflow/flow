@@ -143,7 +143,11 @@ const sources = [
       branch: "master",
       remote: "https://github.com/onflow/flow-cli.git",
       patterns: ["docs/**/*"],
-      ignore: ["docs/README.md", "docs/template.md"],
+      ignore: [
+        "docs/README.md",
+        "docs/template.md",
+        "docs/developer-updates/**/*",
+      ],
     },
   },
 ];
