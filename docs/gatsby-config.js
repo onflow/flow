@@ -243,17 +243,6 @@ const sections = [
         "docs/initialize-configuration",
         "docs/security",
       ],
-      "Get Flow data": [
-        "docs/get-blocks",
-        "docs/get-events",
-        "docs/get-accounts",
-        "docs/get-collections",
-      ],
-      "Project Deployment": [
-        "docs/start-emulator",
-        "docs/project-contracts",
-        "docs/deploy-project-contracts",
-      ],
       Keys: ["docs/generate-keys"],
       Accounts: [
         "docs/create-accounts",
@@ -262,9 +251,19 @@ const sections = [
         "docs/account-remove-contract",
         "docs/account-staking-info",
       ],
+      "Project Deployment": [
+        "docs/start-emulator",
+        "docs/project-contracts",
+        "docs/deploy-project-contracts",
+      ],
       Scripts: ["docs/execute-scripts"],
       Transactions: ["docs/send-transactions", "docs/get-transactions"],
-
+      "Get Flow data": [
+        "docs/get-blocks",
+        "docs/get-events",
+        "docs/get-accounts",
+        "docs/get-collections",
+      ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
