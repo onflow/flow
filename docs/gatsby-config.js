@@ -143,7 +143,7 @@ const sources = [
       branch: "master",
       remote: "https://github.com/onflow/flow-cli.git",
       patterns: ["docs/**/*"],
-      ignore: "docs/README.md",
+      ignore: ["docs/README.md", "docs/template.md"],
     },
   },
 ];
@@ -259,10 +259,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      FUSD: [
-        "fusd/index",
-        "fusd/testnet",
-      ],
+      FUSD: ["fusd/index", "fusd/testnet"],
     },
   },
   {
