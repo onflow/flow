@@ -143,6 +143,7 @@ const sources = [
       branch: "master",
       remote: "https://github.com/onflow/flow-cli.git",
       patterns: [
+        "docs/account-add-contract.md",
         "docs/account-remove-contract.md",
         "docs/account-staking-info.md",
         "docs/account-update-contract.md",
