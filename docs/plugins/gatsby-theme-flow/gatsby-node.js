@@ -130,7 +130,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
     }
 
     type MarkdownRemarkFrontmatter {
-      title: String
+      title: String!
       description: String
       template: String
     }
