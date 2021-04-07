@@ -2,7 +2,7 @@ const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 // const { createPrinterNode } = require("gatsby-plugin-printer");
 
-exports.onCreateNode = async function(
+exports.onCreateNode = async function (
   { node, actions, getNode, loadNodeContent },
   { siteName, subtitle, sidebarCategories }
 ) {
@@ -130,7 +130,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
     }
 
     type MarkdownRemarkFrontmatter {
-      title: String!
+      title: String
       description: String
       template: String
     }
