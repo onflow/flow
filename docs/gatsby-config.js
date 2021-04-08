@@ -245,6 +245,7 @@ const sections = [
       ],
       Keys: ["docs/generate-keys"],
       Accounts: [
+        "docs/get-accounts",
         "docs/create-accounts",
         "docs/account-add-contract",
         "docs/account-update-contract",
@@ -261,7 +262,6 @@ const sections = [
       "Get Flow data": [
         "docs/get-blocks",
         "docs/get-events",
-        "docs/get-accounts",
         "docs/get-collections",
       ],
       FAQ: [
