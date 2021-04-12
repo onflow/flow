@@ -4,6 +4,7 @@ Legend:
 
 - ⭐️: Recommended
 - 😀: Activity in the last six months
+- 📘: Documentation
 
 Want your client listed here? Please fork the [`flow` repository](https://github.com/onflow/flow), edit [this page](https://github.com/onflow/flow/blob/master/docs/content/clients.md), and submit a pull request.
 
