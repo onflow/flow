@@ -5,75 +5,65 @@ sidebar_title: Staking Collection
 
 # Contract
 
-The `StakingCollection` contract is a contract that manages a resource containing a users stake and delegation information.
+The `StakingCollection` contract is a contract that manages a resource containing a users stake and delegation objects.
 
-Source: [FlowIDTableStaking.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc)
+The `StakingCollection` allows a user to manage multiple active stake or delegations, interact with stake or delegation objects
+stored in either their optional locked account or in the StakingCollection itself. If a user has locked tokens, StakingCollection
+allows a user to interact with their locked tokens to perform staking and deleagating actions.
+
+Source: [StakingCollection.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/StakingCollection.cdc)
 
 | Network | Contract Address     |
 |---------|----------------------|
-| Testnet | `0x9eca2b38b18b5dfe` |
-| Mainnet | `0x8624b52f9ddcd04a` |
+| Testnet | `0x9eca2b38b18b5dfe` | TODO: UPDATE TO ACTUAL ADDRESS
+| Mainnet | `0x8624b52f9ddcd04a` | TODO: UPDATE TO ACTUAL ADDRESS
 
 # Transactions
 
-## Getting Staking Info
+Use the following transactions to interact with the StakingCollection.
 
-These scripts are read-only and get info about the current state of the staking contract.
+_Note: The StakingCollection differentiates between stake and delegation requests through
+passing optional DelegatorIDs. For example, if you wish to Stake New Tokens for an active Stake,
+do not pass in an optional DelegatorID to the Stake New Tokens transaction._
 
 | ID        | Name                                   | Source |
 |-----------|----------------------------------------|--------|
-|**`SC.01`**| Get Delegation Cut Percentage          | [idTableStaking/get_cut_percentage.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_cut_percentage.cdc) |
-|**`SC.02`**| Get Minimum Stake Requirements         | [idTableStaking/get_stake_requirements.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_stake_requirements.cdc) |
-|**`SC.03`**| Get Total Weekly Reward Payout         | [idTableStaking/get_weekly_payout.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_weekly_payout.cdc) |
-|**`SC.04`**| Get Current Staked Node Table          | [idTableStaking/get_current_table.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_current_table.cdc) |
-|**`SC.05`**| Get Proposed Staked Node Table         | [idTableStaking/get_proposed_table.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_proposed_table.cdc) |
-|**`SC.06`**| Get Total Flow Staked                  | [idTableStaking/get_total_staked.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_total_staked.cdc) |
-|**`SC.07`**| Get Total Flow Staked by Node Type     | [idTableStaking/get_total_staked_by_type.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_total_staked_by_type.cdc) | 
-|**`SC.08`**| Get All Info about a single NodeID     | [idTableStaking/get_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_node_info.cdc) |
-|**`SC.09`**| Get a node's total Commitment          | [idTableStaking/get_node_total_commitment.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/get_node_total_commitment.cdc) |
-|**`SC.10`**| Get All Info about a single Delegator  | [idTableStaking/delegation/get_delegator_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/get_delegator_info.cdc) |
+|**`SC.01`**| Setup Staking Collection               | [stakingCollection/setup_staking_collection.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/setup_staking_collection.cdc) |
+|**`SC.02`**| Register Node                          | [stakingCollection/register_node.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/register_node.cdc) |
+|**`SC.03`**| Register Delegator                     | [stakingCollection/register_delegator.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/register_delegator.cdc) |
+|**`SC.04`**| Stake New Tokens                       | [stakingCollection/stake_new_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/stake_new_tokens.cdc) |
+|**`SC.05`**| Stake Unstaked Tokens                  | [stakingCollection/stake_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/stake_unstaked_tokens.cdc) |
+|**`SC.06`**| Stake Rewareded Tokens                 | [stakingCollection/stake_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/stake_rewarded_tokens.cdc) |
+|**`SC.07`**| Request Unstaking                      | [stakingCollection/request_unstaking.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/request_unstaking.cdc) |
+|**`SC.08`**| Withdraw Unstaked Tokens               | [stakingCollection/withdraw_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/withdraw_unstaked_tokens.cdc) |
+|**`SC.09`**| Withdraw Rewarded Tokens               | [stakingCollection/withdraw_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/withdraw_rewarded_tokens.cdc) |
+|**`SC.10`**| Close Stake                            | [stakingCollection/close_stake.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/close_stake.cdc) |
 
-## Node Staker Transactions
+## Scripts
 
-Please see the [Locked Tokens contract](../locked-tokens/#transactions) for information about staking with locked tokens.
-Documentation for staking with unlocked tokens will be updated when unlocked tokens are available to stake with.
+| ID        | Name                                   | Source |
+|-----------|----------------------------------------|--------|
+|**`SC.11`**| Get All Delegator Info                 | [stakingCollection/scripts/get_all_delegator_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_all_delegator_info.cdc) |
+|**`SC.12`**| Get All Node Info                      | [stakingCollection/scripts/get_all_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_all_node_info.cdc) |
+|**`SC.13`**| Get Delegator Ids                      | [stakingCollection/scripts/get_delegator_ids.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_delegator_ids.cdc) |
+|**`SC.14`**| Get Node Ids                           | [stakingCollection/scripts/get_node_ids.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_node_ids.cdc) |
+|**`SC.15`**| Get Does Stake Exist                   | [stakingCollection/scripts/get_does_stake_exist.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_does_stake_exist.cdc) |
+|**`SC.16`**| Get Locked Tokens Used                 | [stakingCollection/scripts/get_locked_tokens_used.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_locked_tokens_used.cdc) |
+|**`SC.17`**| Get Unlocked Tokens Used               | [stakingCollection/scripts/get_unlocked_tokens_used.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_unlocked_tokens_used.cdc) |
 
-## Delegator Transactions
 
-Please see the [Locked Tokens contract](../locked-tokens/#transactions) for information about delegating with locked tokens.
-Documentation for delegating with unlocked tokens will be updated when unlocked tokens are available to delegate with.
+## Setup Transaction
+
+To setup the Staking Collection with an account, use the `SC.01` transaction.
+
+The setup process will injest any stake or delegation records stored an an accounts associated locked account, allow them
+to be interacted with using the Staking Collection API.
 
 # Events
 
-The `FlowIDTableStaking` contract emits an event whenever an important action occurs.
-See the [staking events Documentation](/staking/events) for more information about each event.
+The `StakingCollection` contract emits an event whenever an important action occurs.
 
 ```cadence
-    pub event NewEpoch(totalStaked: UFix64, totalRewardPayout: UFix64)
-
-    /// Node Events
-    pub event NewNodeCreated(nodeID: String, role: UInt8, amountCommitted: UFix64)
-    pub event TokensCommitted(nodeID: String, amount: UFix64)
-    pub event TokensStaked(nodeID: String, amount: UFix64)
-    pub event TokensUnstaking(nodeID: String, amount: UFix64)
-    pub event TokensUnstaked(nodeID: String, amount: UFix64)
-    pub event NodeRemovedAndRefunded(nodeID: String, amount: UFix64)
-    pub event RewardsPaid(nodeID: String, amount: UFix64)
-    pub event UnstakedTokensWithdrawn(nodeID: String, amount: UFix64)
-    pub event RewardTokensWithdrawn(nodeID: String, amount: UFix64)
-
-    /// Delegator Events
-    pub event NewDelegatorCreated(nodeID: String, delegatorID: UInt32)
-    pub event DelegatorTokensCommitted(nodeID: String, delegatorID: UInt32, amount: UFix64)
-    pub event DelegatorTokensStaked(nodeID: String, delegatorID: UInt32, amount: UFix64)
-    pub event DelegatorTokensUnstaking(nodeID: String, delegatorID: UInt32, amount: UFix64)
-    pub event DelegatorTokensUnstaked(nodeID: String, delegatorID: UInt32, amount: UFix64)
-    pub event DelegatorRewardsPaid(nodeID: String, delegatorID: UInt32, amount: UFix64)
-    pub event DelegatorUnstakedTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
-    pub event DelegatorRewardTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
-
-    /// Contract Field Change Events
-    pub event NewDelegatorCutPercentage(newCutPercentage: UFix64)
-    pub event NewWeeklyPayout(newPayout: UFix64)
-    pub event NewStakingMinimums(newMinimums: {UInt8: UFix64})
+    pub event NewNodeCreated(nodeID: String, role: UInt8, amountCommitted: UFix64, address: Address)
+    pub event NewDelegatorCreated(nodeID: String, delegatorID: UInt32, amountCommitted: UFix64, address: Address)
 ```

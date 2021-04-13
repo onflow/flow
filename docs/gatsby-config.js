@@ -366,7 +366,7 @@ const sections = [
       "Other Important Contracts": [
         "core-contracts/locked-tokens",
         "core-contracts/non-fungible-token",
-        "core-contracts/staking-collection,"
+        "core-contracts/staking-collection",
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
