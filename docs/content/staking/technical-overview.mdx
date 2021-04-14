@@ -165,17 +165,18 @@ The node operator is ready to register their node.
   address and keys are valid. It simply checks to make sure they are unique and
   the correct length. The staking admin and node software will check to make
   sure they are valid and if they are not, the registered node will not be
-  eligible to stake.
+  eligible to stake. The smart contracts will verify the keys in the future.
 </Callout>
 
 To create and submit a transaction to register a node,
-the node operator submits a [**Register Node**](/core-contracts/locked-tokens/#token-holder) transaction,
-providing all the node info, and the tokens that they want to immediately stake, if any.
+the node operator calls the [`addNodeRecord` function](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L870)
+on the staking contract,
+providing all the node info and the tokens that they want to immediately stake, if any.
 
 This registers the node in the Flow node identity table
 and commits the specified tokens to stake during the next epoch.
-This also stores a special node operator object in the node operator's account
-that is used for staking, unstaking, and withdrawing rewards.
+This also return a special node operator object that to be stored in the node operator's account.
+This object is used for staking, unstaking, and withdrawing rewards.
 Additionally, this transaction creates a public capability for the node that allows
 anyone to query information about a node from the account address that runs the node.
 
@@ -212,7 +213,7 @@ Consequently, a node operator cannot accept delegation unless their own stake is
 Every staked node in the Flow network is eligible for delegation by any other user.
 The user only needs to know the node ID of the node they want to delegate to.
 
-To register as a delegator, the delegator submits the **Register Delegator**
+To register as a delegator, the delegator submits a **Register Delegator**
 transaction, providing the ID of the node operator they want to delegate to.
 This transaction stores the `NodeDelegator` object
 in the user's account, which is what they use to perform staking operations.
@@ -221,14 +222,14 @@ anyone to query information about a node from the account address that runs the 
 
 Users are able to get a list of possible node IDs to delegate to via on-chain scripts.
 This information will also be provided off-chain, directly from the node operators or via
-third-party services. Flow is also planning on listing node IDs in a public place like Flow Port.
+third-party services. The Flow team lists [available node IDs in a public repo.](https://github.com/onflow/flow/blob/master/nodeoperators/NodeOperatorList.md)
 
 The fee that node operators take from the rewards their delegators receive is 8%.
 A node operator cannot be delegated to unless the total tokens they have committed to stake
 are above the minimum requirement for their node types.
 
 The delegation logic keeps track of the amount of tokens each delegator has delegated for the node operator.
-When rewards are paid, the node operator takes the 8% cut of the delegator's rewards and the
+When rewards are paid, the node operator automatically takes the 8% cut of the delegator's rewards and the
 delegators rewards are deposited in the delegator's reward pool.
 
 ## Staking Operations Available to All Stakers
@@ -241,18 +242,18 @@ to all the same staking operations, outlined below.
 A staker can commit more tokens to stake for the next epoch at any time,
 and there are three different ways to do it.
 
-1. They can commit new tokens to stake by submitting the **stake_new_tokens** transaction,
+1. They can commit new tokens to stake by submitting a **stake_new_tokens** transaction,
    which withdraws tokens from their account's flow token vault and commits them.
 2. They can commit tokens that are in their unstaked token pool, which holds the tokens
-   that they have unstaked. Submit the **stake_unstaked_tokens**
+   that they have unstaked. Submit a **stake_unstaked_tokens**
    transaction to move the tokens from the unstaked pool to the committed pool.
 3. They can commit tokens that are in their rewarded token pool, which holds the tokens
-   they have been awarded. They submit the **stake_rewarded_tokens**
+   they have been awarded. They submit a **stake_rewarded_tokens**
    transaction to move the tokens from the rewards pool to the committed pool.
 
 ### Cancel Committed Stake / Unstake Tokens
 
-At any time, a staker can submit a request to unstake tokens with the **request_unstaking** transaction.
+At any time, a staker can submit a request to unstake tokens with a **request_unstaking** transaction.
 If there are tokens that have been committed but are not staked yet,
 they are moved to the unstaked pool and are available to withdraw.
 
@@ -266,7 +267,7 @@ at which point they will be moved to the unstaked tokens pool.
 
 Unstaking requests are not fulfilled until the end of the epoch where they are submitted,
 so a staker can cancel the unstaking request before it is carried out.
-A staker can do this by submitting the **stake_unstaked_tokens** transaction, specifying
+A staker can do this by submitting a **stake_unstaked_tokens** transaction, specifying
 the number of tokens of their unstake request they would like to cancel. 
 If the specified number of tokens have been requested to unstake, the request will be canceled.
 
@@ -280,7 +281,7 @@ with the **withdraw_unstaked** transaction.
 Staking rewards are paid out at the end of every epoch based on how many tokens
 are in a users `tokensStaked` pool. Every staker's rewards
 are deposited into their rewarded tokens pool. Rewards can be withdrawn
-at any time by submitting the **withdraw_reward_tokens** transaction.
+at any time by submitting a **withdraw_reward_tokens** transaction.
 
 These tokens are unlocked and can be transferred on-chain if desired, or re-staked.
 

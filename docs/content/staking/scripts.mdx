@@ -46,12 +46,24 @@ with the following arguments:
 | ----------- | --------- | ------------------------------------------------- |
 | **address** | `Address` | The address of the account that manages the node. |
 
-### Get the total committed balance of a node:
+### Get the total committed balance of a node (with delegators):
 
-`FlowIDTableStaking.getTotalCommittedBalance(_ nodeID: String)`: Returns the total committed balance for a node,
+`FlowIDTableStaking.NodeID(_ nodeID: String).totalCommittedWithDelegators()`: Returns the total committed balance for a node,
 which is their total tokens staked + committed, plus all of the staked + committed tokens of all their delegators.
 
 You can use the **Get Node Total Commitment**([SC.09](/core-contracts/staking-contract-reference/#getting-staking-info)) script
+with the following argument:
+
+| Argument   | Type     | Description                            |
+| ---------- | -------- | -------------------------------------- |
+| **nodeID** | `String` | The node ID of the node to search for. |
+
+### Get the total committed balance of a node (without delegators):
+
+`FlowIDTableStaking.NodeID(_ nodeID: String).totalCommittedWithoutDelegators()`: Returns the total committed balance for a node,
+which is their total tokens staked + committed, plus all of the staked + committed tokens of all their delegators.
+
+You can use the **Get Only Node Total Commitment**([SC.09](/core-contracts/staking-contract-reference/#getting-staking-info)) script
 with the following argument:
 
 | Argument   | Type     | Description                            |
