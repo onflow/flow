@@ -70,7 +70,7 @@ The Staking Collection can stake additional tokens for any Stake or Delegation m
 
 ### Stake new tokens for an active Stake
 
-The owner of a Staking Collection can use the **Stake New Tokens** ([TH.04](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Stake New Tokens** ([SL.04](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -87,7 +87,7 @@ The amount may be any number of tokens up to the sum of an accounts locked and u
 
 ### Stake new tokens for an active Delegation
 
-The owner of a Staking Collection can use the **Stake New Tokens** ([TH.04](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Stake New Tokens** ([SL.04](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -104,7 +104,7 @@ After tokens become unstaked, the owner of a Staking Collection can choose to re
 
 ### Re-stake Unstaked Tokens for an active Stake
 
-The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([TH.05](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([SL.05](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -119,7 +119,7 @@ To stake unstaked tokens for an active stake, leave the <b>delegatorID</b> argue
 
 ### Re-stake Unstaked Tokens for an active Delegation
 
-The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([TH.05](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([SL.05](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -134,7 +134,7 @@ After earning rewards from staking, the owner of a Staking Collection can choose
 
 ### Re-stake Rewareded Tokens for an active Stake
 
-The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([TH.05](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([SL.05](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -149,7 +149,7 @@ To stake rewareded tokens for an active stake, leave the <b>delegatorID</b> argu
 
 ### Re-stake Unstaked Tokens for an active Delegation
 
-The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([TH.05](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([SL.05](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -170,7 +170,7 @@ Once the tokens are released (unstaked), they can be claimed via the
 
 ### Unstake Tokens from an active Stake
 
-The owner of a Staking Collection can use the **Unstake Tokens** ([TH.06](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Unstake Tokens** ([SL.06](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -185,7 +185,7 @@ To unstake tokens from an active stake, leave the <b>delegatorID</b> arguement a
 
 ### Unstake ALL Tokens from an active Stake
 
-The owner of a Staking Collection can use the **Unstake All** ([TH.07](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Unstake All** ([SL.07](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -194,7 +194,7 @@ transaction with the following arguments:
 
 ### Unstake Tokens from an active Delegation
 
-The owner of a Staking Collection can use the **Unstake Tokens** ([TH.06](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Unstake Tokens** ([SL.06](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -209,7 +209,7 @@ After tokens for an active Stake or Delegation become unstaked, the ownder of St
 
 ### Withdraw Unstaked Tokens from an active Stake
 
-The owner of a Staking Collection can use the **Unstake Tokens** ([TH.08](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Unstake Tokens** ([SL.08](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -224,7 +224,7 @@ To withdraw unstaked tokens from an active stake, leave the <b>delegatorID</b> a
 
 ### Withdraw Unstaked Tokens from an active Delegation
 
-The owner of a Staking Collection can use the **Unstake Tokens** ([TH.08](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Unstake Tokens** ([SL.08](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -239,7 +239,7 @@ After earning rewards from staking, the token holder can withdraw them from the 
 
 ### Withdraw Rewarded Tokens from an active Stake
 
-The owner of a Staking Collection can use the **Unstake Tokens** ([TH.08](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Unstake Tokens** ([SL.08](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -254,7 +254,7 @@ To withdraw rewarded tokens from an active stake, leave the <b>delegatorID</b> a
 
 ### Withdraw Rewarded Tokens from an active Delegation
 
-The owner of a Staking Collection can use the **Unstake Tokens** ([TH.09](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Unstake Tokens** ([SL.09](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -274,7 +274,7 @@ _Note: Once a Stake or Delegation has been closed, it cannot be accessed again, 
 
 ### Close an active Stake
 
-The owner of a Staking Collection can use the **Close Stakes** ([TH.10](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Close Stakes** ([SL.10](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -288,10 +288,104 @@ To close an active stake, leave the <b>delegatorID</b> arguement as <b>nil</b>.
 
 ### Close an active Delegation
 
-The owner of a Staking Collection can use the **Close Stakes** ([TH.10](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Close Stakes** ([SL.19](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
 |-------------------------|--------------------|-------------|
 | **nodeID**              | `String`           | The nodeID of the node delegating to.  |
 | **delegatorID**         | `Optional(UInt32)` | The delegatorID of the delegator to close. |
+
+## Get All Node Info
+
+To return an array of structs representing the information associated with each node managed by an account's Staking Collection, anyone
+can use the **Get All Node Info** ([SL.12](/core-contracts/staking-collection)) script with the following arguments:
+
+| Argument    | Type       | Description |
+|-------------|------------|-------------|
+| **address** | `Addresss` | The Address of the account holding the Staking Collection to query from |
+
+This script returns an array of `FlowIDTableStaking.NodeInfo` [structs](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L264)
+representing the nodes managed by an accounts Staking Collection.
+
+## Get All Delegator Info
+
+To return an array of structs representing the information associated with each delegation managed by an account's Staking Collection, anyone
+can use the **Get All Delegator Info** ([SL.11](/core-contracts/staking-collection)) script with the following arguments:
+
+| Argument    | Type       | Description |
+|-------------|------------|-------------|
+| **address** | `Addresss` | The Address of the account holding the Staking Collection to query from |
+
+This script returns an array of `FlowIDTableStaking.DelegatorInfo` [structs](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L264)
+representing the delegations managed by an accounts Staking Collection.
+
+## Get All Node Ids
+
+To return an array of Strings representing the ids associated with each node managed by an account's Staking Collection, anyone
+can use the **Get All Node Ids** ([SL.14](/core-contracts/staking-collection)) script with the following arguments:
+
+| Argument    | Type       | Description |
+|-------------|------------|-------------|
+| **address** | `Addresss` | The Address of the account holding the Staking Collection to query from |
+
+This script returns an array of `String`
+representing each id of each node managed by an accounts Staking Collection.
+
+## Get All Delegator Ids
+
+To return an array of structs representing the delegator ids associated with each delegation managed by an account's Staking Collection, anyone
+can use the **Get All Delegator Ids** ([SL.13](/core-contracts/staking-collection)) script with the following arguments:
+
+| Argument    | Type       | Description |
+|-------------|------------|-------------|
+| **address** | `Addresss` | The Address of the account holding the Staking Collection to query from |
+
+This script returns an array of `FlowStakingCollection.DelegatorIDs` [structs](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowStakingCollection.cdc#L29)
+representing the delegator Ids of the each delegation managed by an accounts Staking Collection.
+
+## Get Locked Tokens Used
+
+To query how many Locked FLOW tokens an account has staked using their Staking Collection, anyone
+can use the **Get Locked Tokens Used** ([SL.16](/core-contracts/staking-collection)) script with the following arguments:
+
+| Argument    | Type       | Description |
+|-------------|------------|-------------|
+| **address** | `Addresss` | The Address of the account holding the Staking Collection to query from |
+
+This script returns a `UFix64` representing the number of Locked FLOW tokens staked using an accounts Staking Collection.
+
+<Callout type="info">
+Note: This number does not include Locked FLOW tokens staked not through an accounts Staking Collection.
+</Callout>
+
+## Get Unlocked Tokens Used
+
+To query how many Unlocked FLOW tokens an account has staked using their Staking Collection, anyone
+can use the **Get Unlocked Tokens Used** ([SL.17](/core-contracts/staking-collection)) script with the following arguments:
+
+| Argument    | Type       | Description |
+|-------------|------------|-------------|
+| **address** | `Addresss` | The Address of the account holding the Staking Collection to query from |
+
+This script returns a `UFix64` representing the number of Unlocked FLOW tokens staked using an accounts Staking Collection.
+
+<Callout type="info">
+Note: This number does not include Unlocked FLOW tokens staked not through an accounts Staking Collection.
+</Callout>
+
+## Get Does Stake Exist 
+
+To query if a Stake or Delegation is managed by an accounts Staking Collection, anyone
+can use the **Get Does Stake Exist** ([SL.15](/core-contracts/staking-collection)) script with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **address**             | `Addresss`         | The Address of the account holding the Staking Collection to query from |
+| **nodeID**              | `String`           | The nodeID of the node to check, or the nodeID of the node delegating to to check. |
+| **delegatorID**         | `Optional(UInt32)` | The delegatorID of the delegator to check, if checking for a delegation. |
+
+<Callout type="info">
+To query if a Stake is managed by an accounts Staking Collection, leave the <b>delegatorID</b> arguement as <b>nil</b>. 
+Otherwise, fill it in with the <b>delegatorID</b> of the Delegation.
+</Callout>
