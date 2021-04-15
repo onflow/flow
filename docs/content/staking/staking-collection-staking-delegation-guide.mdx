@@ -1,0 +1,297 @@
+---
+title: How to Stake using a Staking Collection
+sidebar_title: Stake and Delegate using a Staking Collection
+---
+
+This document outlines the steps an account can take to perform staking and delegation actions using a Staking Collection.
+
+A Staking Collection is a resource that allows it's owner to manage multiple stake and delegation
+objects, and perform staking and delegation actions using both locked and unlocked Flow.
+
+A Staking Collection does not require an account to have a secondary locked account or locked FLOW.
+However, if an account does an associated locked account, when the Staking Collection is initialized, it will connect to that locked account's 
+stake and delegation objects as well as it's locked token vault allowing it to perform staking actions with locked and unlocked FLOW.
+
+<Callout type="info">
+Staking Collection is backwards compatible with other methods of staking on Flow.
+</Callout>
+
+## Setup Staking Collection
+
+To set up a Staking Collection, you must run the **Setup Staking Collection** ([SL.01](/core-contracts/staking-collection)) transaction.
+
+## Register a New Staked Node
+
+To register a new staked node, you must run the **Register Node** ([SL.2](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument              | Type     | Description |
+|-----------------------|----------|-------------|
+| **id**                | `String` | The ID of the new node. It must be a 32 byte `String`. The operator is free to choose this value, but it must be unique across all nodes. A recommended process to generate this is to hash the staking public key. |
+| **role**              | `UInt8`  | The role of the new node. (1: collection, 2: consensus, 3: execution, 4: verification, 5: access) |
+| **networkingAddress** | `String` | The IP address of the new node. |
+| **networkingKey**     | `String` | The networking public key as a hex-encoded string. |
+| **stakingKey**        | `String` | The staking public key as a hex-encoded string. |
+| **amount**            | `UFix64` | The number of FLOW tokens to stake. |
+
+This transaction registers the account as a staker with the specified node information
+and attaches a `NodeStaker` resource to the `Staking Collection`. 
+This `NodeStaker` resourece can then later be used to perform staking actions.
+
+Once the account has registered their node using their Staking Collection,
+their tokens and node information are committed to the central staking contract for the next epoch.
+
+At this point, the Staking Collection now has access to various staking operations that they can perform,
+assuming they have the correct number of tokens to perform the action.
+
+## Register a New Delegation
+
+To register a new delegation, you must run the **Register Delegator** ([SL.3](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument   | Type     | Description |
+|------------|----------|-------------|
+| **id**     | `String` | The ID of the node to delegate to. |
+| **amount** | `UFix64` | The number of FLOW tokens to delegate. |
+
+This transaction registers the account as a delegator to the node identified by the supplied node id.
+It also attaches a `NodeDelegator` resource to the `Staking Collection`. 
+This `NodeDelegator` resourece can then later be used to perform delegation actions.
+
+Once the account has registered their new delegation using their Staking Collection,
+their tokens are committed to the central staking contract for the next epoch.
+
+At this point, the Staking Collection now has access to various delegation operations that they can perform,
+assuming they have the correct number of tokens to perform the action.
+
+## Stake New Tokens
+
+The Staking Collection can stake additional tokens for any Stake or Delegation managed by it at any time.
+
+### Stake new tokens for an active Stake
+
+The owner of a Staking Collection can use the **Stake New Tokens** ([TH.04](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node to stake new tokens to. |
+| **delegatorID**         | `Optional(UInt32)` | Unneeded - Leave as `nil` |
+| **amount**              | `UFix64`           | The number of FLOW tokens to stake. |
+
+<Callout type="info">
+To stake new tokens for an active stake, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+</Callout>
+
+The amount may be any number of tokens up to the sum of an accounts locked and unlocked FLOW.
+
+### Stake new tokens for an active Delegation
+
+The owner of a Staking Collection can use the **Stake New Tokens** ([TH.04](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node to stake new tokens to. |
+| **delegatorID**         | `Optional(UInt32)` | The delegatorID of the delegator to stake new tokens to. |
+| **amount**              | `UFix64`           | The number of FLOW tokens to stake. |
+
+The amount may be any number of tokens up to the sum of an accounts locked and unlocked FLOW.
+
+## Re-stake Unstaked Tokens
+
+After tokens become unstaked, the owner of a Staking Collection can choose to re-stake the unstaked tokens to the same Stake or Delegation.
+
+### Re-stake Unstaked Tokens for an active Stake
+
+The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([TH.05](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node to stake the unstaked tokens to. |
+| **delegatorID**         | `Optional(UInt32)` | Unneeded - Leave as `nil` |
+| **amount**              | `UFix64`           | The number of FLOW tokens to restake. |
+
+<Callout type="info">
+To stake unstaked tokens for an active stake, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+</Callout>
+
+### Re-stake Unstaked Tokens for an active Delegation
+
+The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([TH.05](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node delegating to.  |
+| **delegatorID**         | `Optional(UInt32)` | The delegatorID of the delegator to stake the unstaked tokens to. |
+| **amount**              | `UFix64`           | The number of FLOW tokens to restake. |
+
+## Re-stake Rewarded Tokens
+
+After earning rewards from staking, the owner of a Staking Collection can choose to re-stake the rewarded tokens to the same node.
+
+### Re-stake Rewareded Tokens for an active Stake
+
+The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([TH.05](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node to stake the rewareded tokens to. |
+| **delegatorID**         | `Optional(UInt32)` | Unneeded - Leave as `nil` |
+| **amount**              | `UFix64`           | The number of FLOW tokens to restake. |
+
+<Callout type="info">
+To stake rewareded tokens for an active stake, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+</Callout>
+
+### Re-stake Unstaked Tokens for an active Delegation
+
+The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([TH.05](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node delegating to.  |
+| **delegatorID**         | `Optional(UInt32)` | The delegatorID of the delegator to stake the rewareded tokens to. |
+| **amount**              | `UFix64`           | The number of FLOW tokens to restake. |
+
+## Unstake Tokens
+
+The owner of a Staking Collection can submit a request to unstake their tokens at any time for any Stake or Delegation in their collection.
+
+If the tokens aren't staked yet, they will be uncommitted and available to withdraw.
+
+_Note: unstaked tokens will be held by the central staking contract until the end of the following epoch. 
+Once the tokens are released (unstaked), they can be claimed via the 
+[Withdraw Unstaked Tokens](#withdraw-unstaked-tokens) action below._
+
+### Unstake Tokens from an active Stake
+
+The owner of a Staking Collection can use the **Unstake Tokens** ([TH.06](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node to stake the rewareded tokens to. |
+| **delegatorID**         | `Optional(UInt32)` | Unneeded - Leave as `nil` |
+| **amount**              | `UFix64`           | The number of FLOW tokens to restake. |
+
+<Callout type="info">
+To unstake tokens from an active stake, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+</Callout>
+
+### Unstake ALL Tokens from an active Stake
+
+The owner of a Staking Collection can use the **Unstake All** ([TH.07](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node to unstake all tokens from. |
+
+### Unstake Tokens from an active Delegation
+
+The owner of a Staking Collection can use the **Unstake Tokens** ([TH.06](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node delegating to.  |
+| **delegatorID**         | `Optional(UInt32)` | The delegatorID of the delegator to unstake the tokens from. |
+| **amount**              | `UFix64`           | The number of FLOW tokens to unstake. |
+
+## Withdraw Unstaked Tokens
+
+After tokens for an active Stake or Delegation become unstaked, the ownder of Staking Collection can withdraw them from the central staking contract.
+
+### Withdraw Unstaked Tokens from an active Stake
+
+The owner of a Staking Collection can use the **Unstake Tokens** ([TH.08](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node to stake the rewareded tokens to. |
+| **delegatorID**         | `Optional(UInt32)` | Unneeded - Leave as `nil` |
+| **amount**              | `UFix64`           | The number of FLOW tokens to withdraw. |
+
+<Callout type="info">
+To withdraw unstaked tokens from an active stake, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+</Callout>
+
+### Withdraw Unstaked Tokens from an active Delegation
+
+The owner of a Staking Collection can use the **Unstake Tokens** ([TH.08](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node delegating to.  |
+| **delegatorID**         | `Optional(UInt32)` | The delegatorID of the delegator to withdraw the unstaked tokens from. |
+| **amount**              | `UFix64`           | The number of FLOW tokens to withdraw. |
+
+## Withdraw Rewarded Tokens
+
+After earning rewards from staking, the token holder can withdraw them from the central staking contract.
+
+### Withdraw Rewarded Tokens from an active Stake
+
+The owner of a Staking Collection can use the **Unstake Tokens** ([TH.08](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node to stake the rewareded tokens to. |
+| **delegatorID**         | `Optional(UInt32)` | Unneeded - Leave as `nil` |
+| **amount**              | `UFix64`           | The number of FLOW tokens to withdraw. |
+
+<Callout type="info">
+To withdraw rewarded tokens from an active stake, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+</Callout>
+
+### Withdraw Rewarded Tokens from an active Delegation
+
+The owner of a Staking Collection can use the **Unstake Tokens** ([TH.09](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node delegating to.  |
+| **delegatorID**         | `Optional(UInt32)` | The delegatorID of the delegator to withdraw the rewarded tokens from. |
+| **amount**              | `UFix64`           | The number of FLOW tokens to withdraw. |
+
+## Close a Stake or Delegation
+
+One a Stake or Delegation has no tokens staked, comitted or in an unstaking state, it is eligible to be closed.
+
+Closing a Stake or Delegation first returns any unstaked or rewarded tokens to the account for which the Staking Collection is stored in.
+It then destroys the NodeStaker or NodeDelegator object from within the Staking Collection.
+
+_Note: Once a Stake or Delegation has been closed, it cannot be accessed again, and no staking or delegation actions can be futher preformed on it._
+
+### Close an active Stake
+
+The owner of a Staking Collection can use the **Close Stakes** ([TH.10](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node to close. |
+| **delegatorID**         | `Optional(UInt32)` | Unneeded - Leave as `nil` |
+
+<Callout type="info">
+To close an active stake, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+</Callout>
+
+### Close an active Delegation
+
+The owner of a Staking Collection can use the **Close Stakes** ([TH.10](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node delegating to.  |
+| **delegatorID**         | `Optional(UInt32)` | The delegatorID of the delegator to close. |
