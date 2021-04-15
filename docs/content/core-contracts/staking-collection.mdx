@@ -15,8 +15,8 @@ Source: [StakingCollection.cdc](https://github.com/onflow/flow-core-contracts/bl
 
 | Network | Contract Address     |
 |---------|----------------------|
-| Testnet | `0x9eca2b38b18b5dfe` | TODO: UPDATE TO ACTUAL ADDRESS
-| Mainnet | `0x8624b52f9ddcd04a` | TODO: UPDATE TO ACTUAL ADDRESS
+| Testnet | `0x95e019a17d0e23d7` |
+| Mainnet | `0x8d0e87b65159ae63` | 
 
 ## Transactions
 
@@ -24,7 +24,7 @@ Use the following transactions to interact with the StakingCollection.
 
 _Note: The StakingCollection differentiates between stake and delegation requests through
 passing an optional DelegatorID. For example, if you wish to Stake New Tokens for an active Stake,
-do not pass in an optional DelegatorID to the Stake New Tokens transaction._
+pass `nil` as the optional DelegatorID to the Stake New Tokens transaction. The same applies for all the other staking transactions.
 
 | ID        | Name                                   | Source |
 |-----------|----------------------------------------|--------|
@@ -33,7 +33,7 @@ do not pass in an optional DelegatorID to the Stake New Tokens transaction._
 |**`SC.03`**| Register Delegator                     | [stakingCollection/register_delegator.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/register_delegator.cdc) |
 |**`SC.04`**| Stake New Tokens                       | [stakingCollection/stake_new_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/stake_new_tokens.cdc) |
 |**`SC.05`**| Stake Unstaked Tokens                  | [stakingCollection/stake_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/stake_unstaked_tokens.cdc) |
-|**`SC.06`**| Stake Rewareded Tokens                 | [stakingCollection/stake_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/stake_rewarded_tokens.cdc) |
+|**`SC.06`**| Stake Rewarded Tokens                 | [stakingCollection/stake_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/stake_rewarded_tokens.cdc) |
 |**`SC.07`**| Request Unstaking                      | [stakingCollection/request_unstaking.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/request_unstaking.cdc) |
 |**`SC.08`**| Withdraw Unstaked Tokens               | [stakingCollection/withdraw_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/withdraw_unstaked_tokens.cdc) |
 |**`SC.09`**| Withdraw Rewarded Tokens               | [stakingCollection/withdraw_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/withdraw_rewarded_tokens.cdc) |
@@ -56,7 +56,7 @@ do not pass in an optional DelegatorID to the Stake New Tokens transaction._
 
 To setup the Staking Collection for an account, use the `SC.01` transaction.
 
-The setup process will connect any stake or delegation records stored in an accounts associated locked account with the new Staking Collection, allowing them
+The setup process finds any stake or delegation records already stored in an account's storage, as well as any in the associated locked account. It connects them with the new Staking Collection, allowing them
 to be interacted with using the Staking Collection API.
 
 ## Events
