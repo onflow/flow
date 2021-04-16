@@ -30,7 +30,7 @@ access(self) var nodeDelegators: @{String: FlowIDTableStaking.NodeDelegator}
 ```
 These dictionaries store the staking objects that are managed by the staking collection.
 Access to these dictionaries are mediated by the staking methods. When a user wants to perform a staking operation,
-they specify the nodeID and/or delegator ID they want to stake for, and the function routes the function
+they specify the nodeID and/or delegatorID they want to stake for, and the function routes the function
 call to the correct staking object and performs the specified operation.
 
 The staking collection also has a field that stores a capability for the unlocked FLOW Vault and locked FLOW vault (if applicable)
