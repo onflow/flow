@@ -104,6 +104,8 @@ Delegators are not subject to minimum stake requirements.
 - Execution Nodes: 1,250,000 FLOW
 - Verification Nodes: 135,000 FLOW
 
+There is no maximum stake limit
+
 ## Smart Contract Summary
 
 The Flow staking smart contract manages a record of stakers who have staked tokens for the network.
@@ -193,9 +195,9 @@ Once node operators have registered and have the special node object, they will 
 to perform any of the valid staking options with it, assuming that they have
 the required amount of tokens to perform each operation.
 
-When a new epoch starts, if a staker has committed at least the minimum stake required,
+When a new epoch starts, if a node operator has committed at least the minimum stake required,
 the tokens they have committed will be marked as staked and held in the protocol state.
-If a staker does not meet the minimum requirement, their committed tokens are
+If a node operator does not meet the minimum requirement, their committed tokens are
 moved to their unstaked pool, which they can withdraw from at any time.
 
 If a node operator has users delegating to them, they cannot withdraw their own tokens
@@ -203,7 +205,7 @@ such that their own staked tokens would fall below the minimum requirement for t
 If they have delegators and try to submit an unstaking transaction
 that would put their stake below the minimum, it will fail.
 
-If they want to unstake below the minimum, they must unstake all of their tokens,
+If they want to unstake below the minimum, they must unstake all of their tokens using the special `unstakeAll` method,
 which also unstakes all of the tokens that have been delegated to them.
 
 Consequently, a node operator cannot accept delegation unless their own stake is above the minimum.
@@ -285,6 +287,9 @@ at any time by submitting a **withdraw_reward_tokens** transaction.
 
 These tokens are unlocked and can be transferred on-chain if desired, or re-staked.
 
+## Query Information from the Staking Contract
+
+There is a lot of information that can be queried from the staking contract in different ways.
 **See the [scripts document](../scripts) for more detail about how to get info from the staking contract.**
 
 # Appendix

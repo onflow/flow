@@ -8,8 +8,7 @@ a Flow node using the `LockedTokens` contract.
 
 <Callout type="warning">
 
-This guide covers staking with **locked FLOW tokens**. 
-A separate guide for unlocked tokens will be published at a later date.
+This guide only covers staking with **locked FLOW tokens**.
 </Callout>
 
 ## Setup
@@ -22,7 +21,7 @@ the `LockedTokens.TokenHolder` can be used to perform staking operations from th
 
 ### Register a New Staked Node
 
-To register as a staker, the token holder can use the **Register Node** ([TH.06](/core-contracts/locked-tokens/#token-holder))
+To register as a node, the token holder can use the **Register Node** ([TH.06](/core-contracts/locked-tokens/#token-holder))
 transaction with the following arguments:
 
 | Argument              | Type     | Description |
@@ -34,11 +33,11 @@ transaction with the following arguments:
 | **stakingKey**        | `String` | The staking public key as a hex-encoded string. |
 | **amount**            | `UFix64` | The number of FLOW tokens to stake. |
 
-This transaction registers the account as a staker with the specified node information
+This transaction registers the account as a node with the specified node information
 and attaches a `NodeStakerProxy` capability to the `TokenHolder` resource. 
 This capability can later be used to perform staking actions.
 
-Once an account has registered as a staker with one node, they cannot register any additional nodes. 
+Once an account has registered as a node, they cannot register any additional nodes. 
 For more information, see [Stake Multiple Nodes from the Same Account](#stake-multiple-nodes-from-the-same-account) below.
 This feature will be added in the future.
 
@@ -142,7 +141,7 @@ transaction with the following arguments:
 | **amount** | `UFix64` | The number of rewarded FLOW tokens to withdraw. |
 
 This transaction moves the rewarded tokens back into the `LockedTokens.TokenManager` owned by the token holder. 
-However, unlike unstaked tokens, rewards are _unlocked FLOW_ and can be immediately withdrawn from the lockbox.
+However, unlike unstaked tokens, rewards are _unlocked FLOW_ and can be immediately withdrawn from the locked account.
 
 ## Query a Staker Record
 
