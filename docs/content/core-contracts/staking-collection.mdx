@@ -1,0 +1,69 @@
+---
+title: Flow Staking Collection Contract Reference
+sidebar_title: Staking Collection
+---
+
+# Contract
+
+The `StakingCollection` contract is a contract that manages a resource containing a users stake and delegation objects.
+
+The `StakingCollection` allows a user to manage multiple active nodes or delegators and interact with node or delegator objects
+stored in either their optional locked account or in the StakingCollection itself (stored in the main account). If a user has locked tokens, StakingCollection
+allows a user to interact with their locked tokens to perform staking actions for any of their nodes or delegators.
+
+Source: [StakingCollection.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/StakingCollection.cdc)
+
+| Network | Contract Address     |
+|---------|----------------------|
+| Testnet | `0x95e019a17d0e23d7` |
+| Mainnet | `0x8d0e87b65159ae63` | 
+
+## Transactions
+
+Use the following transactions to interact with the StakingCollection.
+
+_Note: The StakingCollection differentiates between stake and delegation requests through
+passing an optional DelegatorID. For example, if you wish to Stake New Tokens for an active node,
+pass `nil` as the optional DelegatorID to the Stake New Tokens transaction. The same applies for all the other staking transactions.
+
+| ID        | Name                                   | Source |
+|-----------|----------------------------------------|--------|
+|**`SL.01`**| Setup Staking Collection               | [stakingCollection/setup_staking_collection.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/setup_staking_collection.cdc) |
+|**`SL.02`**| Register Node                          | [stakingCollection/register_node.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/register_node.cdc) |
+|**`SL.03`**| Register Delegator                     | [stakingCollection/register_delegator.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/register_delegator.cdc) |
+|**`SL.04`**| Stake New Tokens                       | [stakingCollection/stake_new_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/stake_new_tokens.cdc) |
+|**`SL.05`**| Stake Unstaked Tokens                  | [stakingCollection/stake_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/stake_unstaked_tokens.cdc) |
+|**`SL.06`**| Stake Rewarded Tokens                 | [stakingCollection/stake_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/stake_rewarded_tokens.cdc) |
+|**`SL.07`**| Request Unstaking                      | [stakingCollection/request_unstaking.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/request_unstaking.cdc) |
+|**`SL.08`**| Withdraw Unstaked Tokens               | [stakingCollection/withdraw_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/withdraw_unstaked_tokens.cdc) |
+|**`SL.09`**| Withdraw Rewarded Tokens               | [stakingCollection/withdraw_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/withdraw_rewarded_tokens.cdc) |
+|**`SL.10`**| Close Stake                            | [stakingCollection/close_stake.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/close_stake.cdc) |
+
+## Scripts
+
+| ID        | Name                                   | Source |
+|-----------|----------------------------------------|--------|
+|**`SL.11`**| Get All Delegator Info                 | [stakingCollection/scripts/get_all_delegator_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_all_delegator_info.cdc) |
+|**`SL.12`**| Get All Node Info                      | [stakingCollection/scripts/get_all_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_all_node_info.cdc) |
+|**`SL.13`**| Get Delegator Ids                      | [stakingCollection/scripts/get_delegator_ids.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_delegator_ids.cdc) |
+|**`SL.14`**| Get Node Ids                           | [stakingCollection/scripts/get_node_ids.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_node_ids.cdc) |
+|**`SL.15`**| Get Does Stake Exist                   | [stakingCollection/scripts/get_does_stake_exist.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_does_stake_exist.cdc) |
+|**`SL.16`**| Get Locked Tokens Used                 | [stakingCollection/scripts/get_locked_tokens_used.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_locked_tokens_used.cdc) |
+|**`SL.17`**| Get Unlocked Tokens Used               | [stakingCollection/scripts/get_unlocked_tokens_used.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_unlocked_tokens_used.cdc) |
+
+
+## Setup Transaction
+
+To setup the Staking Collection for an account, use the `SC.01` transaction.
+
+The setup process finds any node or delegator records already stored in the main account's storage, as well as any in the associated locked account. It connects them with the new Staking Collection, allowing them
+to be interacted with using the Staking Collection API.
+
+## Events
+
+The `StakingCollection` contract emits an event whenever an important action occurs.
+
+```cadence
+    pub event NewNodeCreated(nodeID: String, role: UInt8, amountCommitted: UFix64, address: Address)
+    pub event NewDelegatorCreated(nodeID: String, delegatorID: UInt32, amountCommitted: UFix64, address: Address)
+```
