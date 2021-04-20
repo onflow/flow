@@ -21,7 +21,6 @@ import { startCase } from "lodash";
 import { theme } from "../colors";
 import "../prism.less";
 import breakpoints from "../utils/breakpoints";
-import { sizes } from "../utils/breakpoints";
 
 import FlexWrapper from "./flex-wrapper";
 import Header from "./header";

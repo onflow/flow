@@ -1,8 +1,10 @@
-import PropTypes from "prop-types";
-import React from "react";
 import styled from "@emotion/styled";
+
+import PropTypes from "prop-types";
+
+import React from "react";
+
 import { theme } from "../colors";
-import { HEADER_HEIGHT } from "../utils";
 import breakpoints from "../utils/breakpoints";
 
 const Wrapper = styled.header({
@@ -16,7 +18,6 @@ const InnerWrapper = styled.div({
   display: "flex",
   flexWrap: "wrap",
   alignItems: "center",
-  //minHeight: HEADER_HEIGHT,
   borderBottom: `1px solid ${theme.divider}`,
   padding: "14px",
   backgroundColor: "white",

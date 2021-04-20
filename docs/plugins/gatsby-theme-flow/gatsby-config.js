@@ -94,6 +94,7 @@ module.exports = ({
     "gatsby-plugin-svgr",
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-printer",
     {
       resolve: "gatsby-plugin-less",
       options: {
