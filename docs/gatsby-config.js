@@ -442,6 +442,9 @@ const sections = [
         "staking/locked-delegation-guide",
         "staking/locked-third-party-operator",
       ],
+      "Staking with Staking Collection": [
+        "staking/staking-collection-staking-delegation-guide",
+      ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
