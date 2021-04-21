@@ -7,15 +7,9 @@ sidebar_title: Staking Collection
 
 The `StakingCollection` contract is a contract that manages a resource containing a users stake and delegation objects.
 
-<<<<<<< HEAD
-The `StakingCollection` allows a user to manage multiple active stake or delegations, interact with stake or delegation objects
-stored in either their optional locked account or in the StakingCollection itself. If a user has locked tokens, StakingCollection
-allows a user to interact with their locked tokens to perform staking and deleagating actions.
-=======
 The `StakingCollection` allows a user to manage multiple active nodes or delegators and interact with node or delegator objects
 stored in either their optional locked account or in the StakingCollection itself (stored in the main account). If a user has locked tokens, StakingCollection
 allows a user to interact with their locked tokens to perform staking actions for any of their nodes or delegators.
->>>>>>> 88a4db711b9d7c4d9344cb059f26260a33b4e676
 
 Source: [StakingCollection.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/StakingCollection.cdc)
 
@@ -29,11 +23,7 @@ Source: [StakingCollection.cdc](https://github.com/onflow/flow-core-contracts/bl
 Use the following transactions to interact with the StakingCollection.
 
 _Note: The StakingCollection differentiates between stake and delegation requests through
-<<<<<<< HEAD
-passing an optional DelegatorID. For example, if you wish to Stake New Tokens for an active Stake,
-=======
 passing an optional DelegatorID. For example, if you wish to Stake New Tokens for an active node,
->>>>>>> 88a4db711b9d7c4d9344cb059f26260a33b4e676
 pass `nil` as the optional DelegatorID to the Stake New Tokens transaction. The same applies for all the other staking transactions.
 
 | ID        | Name                                   | Source |
@@ -48,29 +38,27 @@ pass `nil` as the optional DelegatorID to the Stake New Tokens transaction. The 
 |**`SL.08`**| Withdraw Unstaked Tokens               | [stakingCollection/withdraw_unstaked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/withdraw_unstaked_tokens.cdc) |
 |**`SL.09`**| Withdraw Rewarded Tokens               | [stakingCollection/withdraw_rewarded_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/withdraw_rewarded_tokens.cdc) |
 |**`SL.10`**| Close Stake                            | [stakingCollection/close_stake.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/close_stake.cdc) |
+|**`SL.11`**| Transfer Node                          | [stakingCollection/transfer_node.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/transfer_node.cdc) |
+|**`SL.12`**| Transfer Delegation                    | [stakingCollection/transfer_delegator.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/transfer_delegator.cdc) |
 
 ## Scripts
 
 | ID        | Name                                   | Source |
 |-----------|----------------------------------------|--------|
-|**`SL.11`**| Get All Delegator Info                 | [stakingCollection/scripts/get_all_delegator_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_all_delegator_info.cdc) |
-|**`SL.12`**| Get All Node Info                      | [stakingCollection/scripts/get_all_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_all_node_info.cdc) |
-|**`SL.13`**| Get Delegator Ids                      | [stakingCollection/scripts/get_delegator_ids.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_delegator_ids.cdc) |
-|**`SL.14`**| Get Node Ids                           | [stakingCollection/scripts/get_node_ids.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_node_ids.cdc) |
-|**`SL.15`**| Get Does Stake Exist                   | [stakingCollection/scripts/get_does_stake_exist.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_does_stake_exist.cdc) |
-|**`SL.16`**| Get Locked Tokens Used                 | [stakingCollection/scripts/get_locked_tokens_used.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_locked_tokens_used.cdc) |
-|**`SL.17`**| Get Unlocked Tokens Used               | [stakingCollection/scripts/get_unlocked_tokens_used.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_unlocked_tokens_used.cdc) |
+|**`SL.13`**| Get All Delegator Info                 | [stakingCollection/scripts/get_all_delegator_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_all_delegator_info.cdc) |
+|**`SL.14`**| Get All Node Info                      | [stakingCollection/scripts/get_all_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_all_node_info.cdc) |
+|**`SL.15`**| Get Delegator Ids                      | [stakingCollection/scripts/get_delegator_ids.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_delegator_ids.cdc) |
+|**`SL.16`**| Get Node Ids                           | [stakingCollection/scripts/get_node_ids.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_node_ids.cdc) |
+|**`SL.17`**| Get Does Stake Exist                   | [stakingCollection/scripts/get_does_stake_exist.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_does_stake_exist.cdc) |
+|**`SL.18`**| Get Locked Tokens Used                 | [stakingCollection/scripts/get_locked_tokens_used.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_locked_tokens_used.cdc) |
+|**`SL.19`**| Get Unlocked Tokens Used               | [stakingCollection/scripts/get_unlocked_tokens_used.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_unlocked_tokens_used.cdc) |
 
 
 ## Setup Transaction
 
 To setup the Staking Collection for an account, use the `SC.01` transaction.
 
-<<<<<<< HEAD
-The setup process finds any stake or delegation records already stored in an account's storage, as well as any in the associated locked account. It connects them with the new Staking Collection, allowing them
-=======
 The setup process finds any node or delegator records already stored in the main account's storage, as well as any in the associated locked account. It connects them with the new Staking Collection, allowing them
->>>>>>> 88a4db711b9d7c4d9344cb059f26260a33b4e676
 to be interacted with using the Staking Collection API.
 
 ## Events

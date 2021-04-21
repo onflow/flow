@@ -92,7 +92,7 @@ will be available via the staking collection and you can use all the transaction
 
 ## Register a New Staked Node
 
-To register a new staked node, you must submit the **Register Node** ([SL.2](/core-contracts/staking-collection))
+To register a new staked node, you must submit the **Register Node** ([SL.02](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument              | Type     | Description |
@@ -116,7 +116,7 @@ assuming they have the correct number of tokens to perform the action.
 
 ## Register a New Delegator
 
-To register a new delegator, you must submit the **Register Delegator** ([SL.3](/core-contracts/staking-collection))
+To register a new delegator, you must submit the **Register Delegator** ([SL.03](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -369,7 +369,7 @@ To close an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
 
 ### Close an active Delegator
 
-The owner of a Staking Collection can use the **Close Stake** ([SL.19](/core-contracts/staking-collection))
+The owner of a Staking Collection can use the **Close Stake** ([SL.10](/core-contracts/staking-collection))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -377,10 +377,56 @@ transaction with the following arguments:
 | **nodeID**              | `String`           | The nodeID of the node delegating to.  |
 | **delegatorID**         | `Optional(UInt32)` | The delegatorID of the delegator to close. |
 
+
+## Transfer a Node
+
+A user may transfer an existing Node to another another accounts Staking Collection.
+
+The account to transfer the Node to must have a valid Staking Collection set up.
+
+Transferring a Node will remove it from the authorizers Staking Collection and deposit it to the receivers Staking Collection.
+
+_Note: Once a Node or Delegator has been transferred, it cannot be accessed again by the sender. As well, all staked tokens will be considered staked by the receivers Staking Collection._
+
+<Callout type="warning">
+Transferring a Node will result in loss of custody of any Staked tokens for the sender.
+</Callout>
+
+The owner of a Staking Collection can use the **Transfer Node** ([SL.11](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the node to transfer.  |
+| **to**                  | `Address`          | The address of the account which contains the Staking Collection to transfer the Node to. |
+
+## Transfer a Delegator
+
+A user may transfer an existing Delegator to another another accounts Staking Collection.
+
+The account to transfer the Delegator to must have a valid Staking Collection set up.
+
+Transferring a Delegator will remove it from the authorizers Staking Collection and deposit it to the receivers Staking Collection.
+
+_Note: Once a Node or Delegator has been transferred, it cannot be accessed again by the sender. As well, all staked tokens will be considered staked by the receivers Staking Collection._
+
+<Callout type="warning">
+Transferring a Delegator will result in loss of custody of any Staked tokens for the sender.
+</Callout>
+
+The owner of a Staking Collection can use the **Transfer Delegator** ([SL.11](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument                | Type               | Description |
+|-------------------------|--------------------|-------------|
+| **nodeID**              | `String`           | The nodeID of the delegator to transfer.  |
+| **delegatorID**         | `UInt32`           | The delegatorID of the delegator to transfer.  |
+| **to**                  | `Address`          | The address of the account which contains the Staking Collection to transfer the Delegator to. |
+
 ## Get All Node Info
 
 To return an array of structs representing the information associated with each node managed by an account's Staking Collection, anyone
-can use the **Get All Node Info** ([SL.12](/core-contracts/staking-collection)) script with the following arguments:
+can use the **Get All Node Info** ([SL.14](/core-contracts/staking-collection)) script with the following arguments:
 
 | Argument    | Type       | Description |
 |-------------|------------|-------------|
@@ -392,7 +438,7 @@ representing the nodes managed by an accounts Staking Collection.
 ## Get All Delegator Info
 
 To return an array of structs representing the information associated with each delegator managed by an account's Staking Collection, anyone
-can use the **Get All Delegator Info** ([SL.11](/core-contracts/staking-collection)) script with the following arguments:
+can use the **Get All Delegator Info** ([SL.13](/core-contracts/staking-collection)) script with the following arguments:
 
 | Argument    | Type       | Description |
 |-------------|------------|-------------|
@@ -404,7 +450,7 @@ representing the delegators managed by an accounts Staking Collection.
 ## Get All Node Ids
 
 To return an array of Strings representing the ids associated with each node managed by an account's Staking Collection, anyone
-can use the **Get All Node Ids** ([SL.14](/core-contracts/staking-collection)) script with the following arguments:
+can use the **Get All Node Ids** ([SL.16](/core-contracts/staking-collection)) script with the following arguments:
 
 | Argument    | Type       | Description |
 |-------------|------------|-------------|
@@ -416,7 +462,7 @@ representing each id of each node managed by an accounts Staking Collection.
 ## Get All Delegator Ids
 
 To return an array of structs representing the delegator ids associated with each delegation managed by an account's Staking Collection, anyone
-can use the **Get All Delegator Ids** ([SL.13](/core-contracts/staking-collection)) script with the following arguments:
+can use the **Get All Delegator Ids** ([SL.15](/core-contracts/staking-collection)) script with the following arguments:
 
 | Argument    | Type       | Description |
 |-------------|------------|-------------|
@@ -428,7 +474,7 @@ representing the delegator Ids of each delegator managed by an accounts Staking 
 ## Get Locked Tokens Used
 
 To query how many Locked FLOW tokens an account has staked using their Staking Collection, anyone
-can use the **Get Locked Tokens Used** ([SL.16](/core-contracts/staking-collection)) script with the following arguments:
+can use the **Get Locked Tokens Used** ([SL.18](/core-contracts/staking-collection)) script with the following arguments:
 
 | Argument    | Type       | Description |
 |-------------|------------|-------------|
@@ -443,7 +489,7 @@ Note: This number does not include Locked FLOW tokens staked not through an acco
 ## Get Unlocked Tokens Used
 
 To query how many Unlocked FLOW tokens an account has staked using their Staking Collection, anyone
-can use the **Get Unlocked Tokens Used** ([SL.17](/core-contracts/staking-collection)) script with the following arguments:
+can use the **Get Unlocked Tokens Used** ([SL.19](/core-contracts/staking-collection)) script with the following arguments:
 
 | Argument    | Type       | Description |
 |-------------|------------|-------------|
@@ -458,7 +504,7 @@ Note: This number does not include Unlocked FLOW tokens staked not through an ac
 ## Get Does Node Exist 
 
 To query if a Node or Delegator is managed by an accounts Staking Collection, anyone
-can use the **Get Does Node Exist** ([SL.15](/core-contracts/staking-collection)) script with the following arguments:
+can use the **Get Does Node Exist** ([SL.17](/core-contracts/staking-collection)) script with the following arguments:
 
 | Argument                | Type               | Description |
 |-------------------------|--------------------|-------------|
