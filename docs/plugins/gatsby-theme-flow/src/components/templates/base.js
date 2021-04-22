@@ -29,7 +29,6 @@ export default function BaseTemplate(props) {
   const { frontmatter, headings, fields } =
     file.childMarkdownRemark || file.childMdx;
   const { title, description } = site.siteMetadata;
-
   const {
     sidebar,
     githubUrl,
@@ -44,6 +43,7 @@ export default function BaseTemplate(props) {
   const pages = sidebar.contents
     .reduce((acc, { pages }) => acc.concat(pages), [])
     .filter((page) => !page.anchor);
+
   return (
     <Fragment>
       <CustomSEO
