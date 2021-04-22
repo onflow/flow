@@ -2,20 +2,14 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import TextFit from "react-textfit";
-
 import { Global, css } from "@emotion/core";
-
+import { IconArrowRight } from "../ui/icons";
 import { theme } from "../colors";
 import { smallCaps } from "../utils/typography";
 
 const { fonts, image } = preval`
   const fs = require('fs');
   const path = require('path');
-
-  function randomImage() {
-    const rand = Math.floor(Math.random() * 6) + 1 
-    return "../assets/social-bg"+rand+".png"
-  }
 
   function getBase64(path) {
     const fontPath = require.resolve('typeface-overpass/' + path);
@@ -32,7 +26,7 @@ const { fonts, image } = preval`
     .replace('./files/overpass-latin-300.woff2', base64Regular)
     .replace('./files/overpass-latin-600.woff2', base64Semibold);
 
-  const imagePath = path.resolve(__dirname, "../assets/social-bg.png");
+  const imagePath = path.resolve(__dirname, '../assets/social-bg.jpg');
   const base64Image = fs.readFileSync(imagePath, 'base64');
 
   module.exports = {
@@ -50,12 +44,9 @@ export default function SocialCard(props) {
         alignItems: "flex-start",
         boxSizing: "border-box",
         width: 1200,
-        height: 630,
-        paddingTop: 120,
-        paddingLeft: 160,
-        paddingRight: 160,
-        paddingBottom: 120,
-        fontFamily: "Overpass",
+        height: 628,
+        padding: 80,
+        fontFamily: "'Overpass'",
         color: "black",
         backgroundImage: `url(${image})`,
       }}
@@ -63,6 +54,10 @@ export default function SocialCard(props) {
       <Global
         styles={css`
           ${fonts}
+          svg.arrow-icon path {
+            vector-effect: none;
+            stroke-width: 4px;
+          }
         `}
       />
       <div
@@ -70,10 +65,25 @@ export default function SocialCard(props) {
           fontSize: 32,
           fontWeight: 600,
           marginBottom: 16,
+          color: theme.primaryLight,
           ...smallCaps,
         }}
       >
         {props.subtitle}
+        {props.category && (
+          <Fragment>
+            {" "}
+            <IconArrowRight
+              className="arrow-icon"
+              style={{
+                width: "0.5em",
+                height: "0.5em",
+                verticalAlign: "0.05em",
+              }}
+            />{" "}
+            {props.category}
+          </Fragment>
+        )}
       </div>
       <TextFit
         min={80}
@@ -81,10 +91,9 @@ export default function SocialCard(props) {
         style={{
           width: "100%",
           height: 250,
-          fontWeight: 600,
           marginBottom: "auto",
-          lineHeight: 0.95,
-          color: theme.text1,
+          lineHeight: 1.2,
+          colors: theme.text1,
         }}
       >
         {props.title.replace(/\s+(\S*)$/, "\xA0$1")}
