@@ -2864,6 +2864,14 @@
         "StakingPubKey": "ac28c576572647ab6130b5eb2b92d8e67ec4d79ae903119057662879d59294cdb203b4ddae199c675ac803eb0827b0521452b3df77c7212c254da1c6f6a1bde82d5bbd6ff490893c039fe747a24859ac86450361728530a562905e0c4c3c35f4"
     },
     {
+        "Role": "verification",
+        "Address": "152.32.169.88:3569",
+        "NodeID": "55069e7e8926867bee8094bd31786f8f6b65c8c3bde468ae2275f33dc1245dc1",
+        "Stake": 1000,
+        "NetworkPubKey": "94aabc1693c8f3a8383b898c93b72b5d3807a69742b45ab629ceea721da60a2c7248fcbe74ecd4de1f1c970bd7e30af0adfb5fd06a1fa8e6cfe1c3c17530b3de",
+        "StakingPubKey": "9502246773d10f003d66793c2d70e54ee3f37597af11e173207838bedcb3620bc8350a5e7f06e4945ce4577af38f0dfe07c4616ddb2c5dd4d1777799fb6e89c8d68339f2f589f1b7f22c6ea3514bc35cd5b42609b47f257ff3fc3cf541dad2aa"
+    },
+    {
         "Role": "access",
         "Address": "flowaccessnode.momentranks.com:3569",
         "NodeID": "b62b5b069feb20bccad0b939015f48ee0469514d18541adfc914034156dad816",
