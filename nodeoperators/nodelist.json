@@ -2529,7 +2529,7 @@
     },
     {
         "Role": "consensus",
-        "Address": "consensus.flow.fish:3569",
+        "Address": "35.152.82.11:3569",
         "NodeID": "b09bfbaf2d9e6f6541855dc65b8e0247bd97a0cceb607b9cf89ed368bc16308d",
         "Stake": 1000,
         "NetworkPubKey": "2326822464086170e35d4803ae18b0cf46ae5cec25567fbb64e68799bfbef904547e619e6174265196435dd2d0612fae8d5cb07ff2b138d61b60fe1c383ec30d",
