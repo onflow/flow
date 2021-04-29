@@ -55,8 +55,8 @@ exports.onCreateNode = async function (
       titleFont: 'Overpass',
       taglineFont: 'Overpass',
       titleExtraConfig: '_bold',
-      titleBottomOffset: 320,
-      taglineTopOffset: 380
+      titleBottomOffset: 340,
+      taglineTopOffset: 360
     };
 
     actions.createNodeField({
