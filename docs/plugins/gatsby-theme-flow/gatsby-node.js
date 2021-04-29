@@ -1,6 +1,7 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
-const { createPrinterNode } = require("gatsby-plugin-printer");
+const {default: getShareImage} = require('@jlengstorf/get-share-image');
+
 
 exports.onCreateNode = async function (
   { node, actions, getNode, loadNodeContent },
@@ -34,24 +35,38 @@ exports.onCreateNode = async function (
       }
     }
 
-    const { title, sidebar_title, graphManagerUrl } = node.frontmatter;
-    
-    createPrinterNode({
-      id: `${node.id} >>> Printer`,
-      fileName,
-      outputDir,
-      data: {
-        title,
-        subtitle: subtitle || siteName,
-        category,
-      },
-      component: require.resolve("./src/components/social-card.js"),
-    });
+    const { title, description, sidebar_title, graphManagerUrl } = node.frontmatter;
+
+
+    const shareImgs = [
+      'social-bg2',
+      'social-bg3',
+      'social-bg4',
+      'social-bg5',
+      'social-bg6'
+    ]
+
+    const shareImageConfig = {
+      titleFontSize: 88,
+      textLeftOffset: 160,
+      textAreaWidth: 900,
+      cloudName: 'dapper-mk',
+      imagePublicID: shareImgs[shareImgs.length * Math.random() | 0],
+      titleFont: 'Overpass',
+      taglineFont: 'Overpass',
+      titleExtraConfig: '_bold',
+      titleBottomOffset: 320,
+      taglineTopOffset: 380
+    };
 
     actions.createNodeField({
       name: "image",
       node,
-      value: path.join(outputDir, fileName + ".png"),
+      value: getShareImage({
+        title,
+        tagline: description || 'Start Building in the Open',
+        ...shareImageConfig
+      })
     });
 
     actions.createNodeField({
@@ -150,6 +165,7 @@ const pageFragment = `
   fields {
     slug
     sidebarTitle
+    image
   }
 `;
 
