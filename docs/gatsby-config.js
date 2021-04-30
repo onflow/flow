@@ -166,6 +166,7 @@ const sources = [
         "docs/get-events.md",
         "docs/get-accounts.md",
         "docs/get-collections.md",
+        "docs/get-status.md",
         "docs/security.md",
         "docs/start-emulator.md",
       ],
@@ -274,6 +275,7 @@ const sections = [
         "docs/get-blocks",
         "docs/get-events",
         "docs/get-collections",
+        "docs/get-status",
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
