@@ -41,7 +41,7 @@ Want your SDK listed here? Please fork the [`flow` repository](https://github.co
 
 ||||
 |-|-:|-|
-| OnFlow | ⭐️ 😀 | https://github.com/whitepaperclip/on_flow |
+| OnFlow | 😀 | https://github.com/whitepaperclip/on_flow |
 
 ## .NET (C#, F#, etc.)
 
