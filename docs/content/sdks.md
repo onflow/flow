@@ -17,7 +17,7 @@ Want your SDK listed here? Please fork the [`flow` repository](https://github.co
 
 ||||
 |-|-:|-|
-| Flow JS SDK | 😀 [📘](/flow-js-sdk) | https://github.com/onflow/flow-js-sdk |
+| FCL | 😀 [📘](/flow-js-sdk) | https://github.com/onflow/flow-js-sdk |
 
 ## JVM (Java, Kotlin, Scala, etc.)
 
