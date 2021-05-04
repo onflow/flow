@@ -3,13 +3,12 @@ title: Responsible Disclosure Policy
 description: Policy and guidelines for submitting security related bugs.
 ---
 
-Daper labs builds products from the ground up with security in mind. Our code, infrastructure, and development 
-methodology helps up keep or users safe.
-
-We really appreciate the security research community's help. Responsible disclosure of vulnerabilities help to maintin the security and privacy of our customers.
-Our responsible disclosure policy provides both Dapper Lans and independent researchers a framework for collaborating effectively. By following this policy, we can work together to fix issues before they can be exploited by attackers and prevent researchers' work from being abused.
-
-If you're an independent researcher that care about making a ddifference, please follow the guidelines below. We'll work with you and treat you fairly nd we ask you do the same.
+<div>
+  <button>Submit a Bug</button>
+</div>
+<a href="/bounties">  
+  Read information about rewards
+</a>
 
 ## Guidelines for Responsible Disclosure
 We ask that all researchers adhere to these guidelines.
@@ -69,14 +68,6 @@ If you follow these guidelines when researching and reporting an issue to us, we
 ## Disclosure Acknowledgements
   
   Security acknowledgements can be found at https://dapperlabs.com/security_nods.txt
-
-## Rewards
-  
-We run closed bug bounty programs, but beyond that we also pay out rewards, once per eligible bug, to the first responsibly disclosing third party.  Rewards are based on the seriousness of the bug, but the minimum is $100 and we have and are willing to pay $100,000 or more at our sole discretion.
-
-**Elligibility**
-
-To qualify, the bug must fall within our scope and rules, be previously unknown to us, have a material impact and be demonstrably exploitable, and require action by us.
 
 ## Reporting Security Findings
 
