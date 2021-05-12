@@ -1,25 +1,39 @@
+import styled from "@emotion/styled";
+
+import PropTypes from "prop-types";
+
+import React, { createContext, useMemo } from "react";
+
+import { AnimatePresence, motion } from "framer-motion";
+
+import useLocalStorage from "react-use/lib/useLocalStorage";
+
+import { Helmet } from "react-helmet";
+
+import { Breadcrumb } from "gatsby-plugin-breadcrumb";
+
+import { graphql, useStaticQuery } from "gatsby";
+
+import { trackCustomEvent } from "gatsby-plugin-google-analytics";
+
+import { startCase } from "lodash";
+
+import { theme } from "../colors";
 import "../prism.less";
+import breakpoints from "../utils/breakpoints";
+import { sizes } from "../utils/breakpoints";
+
+import FlexWrapper from "./flex-wrapper";
 import Header from "./header";
 import HeaderNav from "./header-nav";
-import PropTypes from "prop-types";
-import React, { createContext, useMemo } from "react";
-import Search from "./search";
-import styled from "@emotion/styled";
-import useLocalStorage from "react-use/lib/useLocalStorage";
-import { theme } from "../colors";
-import breakpoints from "../utils/breakpoints";
-import FlexWrapper from "./flex-wrapper";
 import Layout from "./layout";
 import MenuButton from "./menu-button";
-import Sidebar from "./sidebar";
-import SidebarNav from "./sidebar-nav";
-import { useResponsiveSidebar } from "./responsive-sidebar";
-import { Helmet } from "react-helmet";
-import { graphql, useStaticQuery } from "gatsby";
 import MobileLogo from "./mobile-logo";
 import { SelectedLanguageContext } from "./multi-code-block";
-import { trackCustomEvent } from "gatsby-plugin-google-analytics";
-import { startCase } from "lodash";
+import { useResponsiveSidebar } from "./responsive-sidebar";
+import Search from "./search";
+import Sidebar from "./sidebar";
+import SidebarNav from "./sidebar-nav";
 
 const Main = styled.main({
   flexGrow: 1,
@@ -46,6 +60,28 @@ export const NavItemDescription = styled.p({
   lineHeight: 1.5,
   color: theme.text3,
   transition: "color 150ms ease-in-out",
+});
+
+const BreadcrumbWrapper = styled.div({
+  width: "100%",
+  flexGrow: 1,
+  flexBasis: "100%",
+  display: "flex",
+  marginLeft: "-4px",
+  borderColor: theme.divider,
+  ".breadcrumb__separator": {
+    fontSize: "0.8rem",
+    display: "flex",
+    alignItems: "center",
+  },
+  ".breadcrumb__link, .breadcrumb__link__disabled": {
+    fontWeight: 500,
+    fontSize: "0.8rem",
+    color: theme.text3,
+    "&:hover": {
+      color: theme.primary,
+    },
+  },
 });
 
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
@@ -160,7 +196,7 @@ export default function PageLayout(props) {
           )}
         </Sidebar>
         <Main>
-          <Header>
+          <Header title={title}>
             <MobileNav>
               <MobileLogo />
               <MenuButton onClick={openSidebar} />
@@ -173,8 +209,43 @@ export default function PageLayout(props) {
               />
             )}
             <HeaderNav />
-            <div></div>
+            <AnimatePresence>
+              {props.path !== "/" ? (
+                <motion.div
+                  initial={{ height: 0 }}
+                  animate={{
+                    height: "auto",
+                  }}
+                  exit={{ height: 0, transition: { delay: 0.2 } }}
+                  style={{ width: "100%" }}
+                >
+                  <BreadcrumbWrapper>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <Breadcrumb
+                        crumbs={dacrumbs}
+                        hiddenCrumbs={["/intro"]}
+                        disableLinks={[
+                          "/flow-port",
+                          "/faq",
+                          "/community-updates",
+                          "/tutorial",
+                          "/flow-js-sdk/packages",
+                          "/flow-go-sdk/examples",
+                        ]}
+                      />
+                    </motion.div>
+                  </BreadcrumbWrapper>
+                </motion.div>
+              ) : (
+                ""
+              )}
+            </AnimatePresence>
           </Header>
+
           <SelectedLanguageContext.Provider value={selectedLanguageState}>
             <NavItemsContext.Provider value={navItems}>
               {props.children}

@@ -35,13 +35,13 @@ Flow Testnet is explicitly for experimentation and testing and should not be use
 
 ### Creating an Account
 
-Anybody can use the [Testnet Faucet](https://testnet-faucet.onflow.org/) to create a Testnet account.
+Anybody can use the [Testnet Faucet](https://testnet-faucet-v2.onflow.org/) to create a Testnet account.
 
 #### Generate a Key
 
 To start, you'll need to generate an asymmetric cryptographic key pair (see [Accounts & Keys](/concepts/accounts-and-keys) for a list of supported algorithms).
 
-For Testnet, it's easy to generate a new key pair with the [Flow CLI](https://github.com/onflow/flow-cli):
+For Testnet, it's easy to generate a new key pair with the [Flow CLI](/flow-cli):
 
 ```sh
 flow keys generate
@@ -53,9 +53,7 @@ By default, this command generates an ECDSA key pair on the P-256 curve.
 
 #### Request Your Account
 
-Once you've generated a key pair, visit the [Faucet](https://testnet-faucet.onflow.org/) and input the _public key_ into the "Create Account" form at the top of the page.
-
-After some time, you'll receive an email with your newly-created account address.
+Once you've generated a key pair, visit the [Faucet](https://testnet-faucet-v2.onflow.org/) and input the _public key_ into the "Create Account" form at the top of the page.
 
 Flow isn't responsible for securing and storing the private keys for testnet accounts. You must store your private key in a safe place so that you can later use it to sign transactions that you submit to Testnet.
 
@@ -64,10 +62,6 @@ Flow isn't responsible for securing and storing the private keys for testnet acc
 Each account created through the Testnet Faucet comes with 1000 FLOW. However, you can always request a top up through the Faucet if needed.
 
 Submit your testnet address through the "Funding an Account" form on the [Faucet](https://testnet-faucet.onflow.org/) page.
-
-You'll receive an email once your request is approved and the tokens are deposited.
-
-Likewise, you'll receive an email if there were any problems with your request.
 
 ### Accessing Flow Testnet
 
@@ -90,87 +84,103 @@ func main() {
 
 ### Creating Additional Accounts
 
-It may be necessary to create additional accounts for testing purposes. 
-Here is a _basic_ example of a Cadence transaction you could use to create an account: 
+It may be necessary to create additional accounts for testing purposes and you can do so using [Flow CLI account create command](/flow-cli/create-accounts/).
 
-```cadence
-transaction (pubKey: String) {
-    prepare( admin: AuthAccount) {
-        let newAccount = AuthAccount(payer:admin)
-        newAccount.addPublicKey(pubKey.decodeHex())
-        
-        // Emit an 'account created' event
+First you need to initialize the configuration:
+
+```
+> flow project init
+```
+
+Add the account created with the use of faucet above to the `accounts` property in configuration, like so:
+
+`flow.json`
+
+```
+{
+...
+  "accounts": {
+    "my-testnet-account": {
+      "address": "ADDRESS_FROM_FAUCET",
+      "keys": "SECRET_GENERATED_IN_PREVIOUS_STEP"
     }
+  }
+...
 }
 ```
 
+After adding account to the configuration you can use that account to fund the creation of more accounts by using 
+[CLI account create](/flow-cli/create-accounts) command.
+
+```
+> flow accounts create \
+    --key a69c6986e846ba6d0....1397f5904cd319c3e01e96375d5777f1a47010 \
+    --host access.testnet.nodes.onflow.org:9000 \
+    --signer my-testnet-account 
+
+Address	 0x01cf0e2f2f715450
+Balance	 10000000
+Keys	 1
+
+Key 0	Public Key		 a69c6986e846ba6d0....1397f5904cd319c3e01e96375d5777f1a47010
+	Weight			 1000
+	Signature Algorithm	 ECDSA_P256
+	Hash Algorithm		 SHA3_256
+
+Contracts Deployed: 0
+```
 
 ### Deploying a Contract
 
-Using the account you created above, you can deploy additional contract accounts using the [Flow CLI](https://github.com/onflow/flow-cli).
+Using the account you created above, you can deploy additional contract accounts using the [Flow CLI deploy command](/flow-cli/deploy-project-contracts).
 
-Start by initializing you Flow project if you haven't already:
+Make sure flow project was initialized in the previous step and the `flow.json` is present.
 
-```sh
-flow init
+You can then specify your contracts you wish to deploy in the configuration like so:
+
 ```
-
-This will create a `flow.json` file in the current directory. It should look like this:
-
-```json
 {
-  "accounts": {
-    "service": {
-      "address": "f8d6e0586b0a20c7",
-      "privateKey": "<EMULATOR PRIVATE KEY>",
-      "sigAlgorithm": "ECDSA_P256",
-      "hashAlgorithm": "SHA3_256"
-    }
-  }
-}
-```
-
-The `service` account entry is auto-generated for use with the [Flow Emulator](/emulator).
-
-You'll want to add an account entry for your new testnet account:
-
-```json
-{
-  "accounts": {
-    "service": {
-      "address": "f8d6e0586b0a20c7",
-      "privateKey": "<EMULATOR PRIVATE KEY>",
-      "sigAlgorithm": "ECDSA_P256",
-      "hashAlgorithm": "SHA3_256"
-    },
+  ...
+  "contracts": {
+    "NonFungibleToken": "./cadence/contracts/NonFungibleToken.cdc",
+    "KittyItems": "./cadence/contracts/KittyItems.cdc"
+  },
+  "deployments": {
     "testnet": {
-      "address": "<YOUR TESTNET ADDRESS>",
-      "privateKey": "<YOUR TESTNET PRIVATE KEY>",
-      "sigAlgorithm": "ECDSA_P256",
-      "hashAlgorithm": "SHA3_256"
+      "my-testnet-account": ["KittyItems", "NonFungibleToken"]
     }
-  }
+  },
+  ...
 }
 ```
 
-After this, use the `accounts create` command to create a new account, and e.g. deploy a contract named `MyContract` to it:
+Here's a sketch of the contract source files:
+```
+pub contract NonFungibleToken { 
+  // ...
+}
+```
+```
+import NonFungibleToken from "./NonFungibleToken.cdc"
 
-```sh
-flow accounts create \
-  --host access.devnet.nodes.onflow.org:9000 \
-  --signer testnet \
-  --contract MyContracy:MyContract.cdc
+pub contract KittyItems { 
+  // ...
+}
 ```
 
-- `host` is the access node to connect to
-- `signer` is the account entry used for signing
-- `code` is the path to the Cadence contract being deployed
+You can now deploy all the contracts by running deploy command:
+```
+flow project deploy
+```
+
+Please read more about deployment in [the documentation](/flow-cli/deploy-project-contracts).
+
 
 ### Making Use of Core Contracts
 
 Flow Testnet comes with some useful contracts already deployed, called **core contracts.** There are reference pages with import addresses for the core contracts here: [https://docs.onflow.org/core-contracts/](/core-contracts/)
 
-Once you accounts are set up and you're ready to develop, you can look over some code examples from the Flow Go SDK here:
+Once your accounts are set up and you're ready to develop, you can look over some code examples from the Flow Go SDK here:
 
 - [https://github.com/onflow/flow-go-sdk/tree/master/examples](https://github.com/onflow/flow-go-sdk/tree/master/examples)
 
@@ -178,5 +188,5 @@ Once you accounts are set up and you're ready to develop, you can look over some
 
 If you discover your application is broken after an update, use the latest emulator to test changes to your application. Once you are satisfied that you've patched any breaking changes, you'll need to get in touch with the Flow core team to redeploy your contracts to Testnet.
 
-We kindly ask you to follow the steps listed in the [Testnet Testing Guidelines.](../testnet-testing) when redeploying your contracts.
+We kindly ask you to follow the steps listed in the [Testnet Testing Guidelines.](/dapp-deployment/testnet-testing) when redeploying your contracts.
 

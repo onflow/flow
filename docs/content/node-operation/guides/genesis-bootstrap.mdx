@@ -7,7 +7,7 @@ title: Genesis Bootstrapping
 {
 "type": "warning",
 "title": "Genesis Only",
-"body": "All nodes joining the network in May are required to go through this process as part of the Genesis Bootstraping."
+"body": "All nodes joining the network in May are required to go through this process as part of the Genesis Bootstrapping."
 }
 [/block] -->
 
@@ -19,7 +19,7 @@ This guide will take you through setting up your nodes, running the initial meta
 
 ## Before You Begin
 
-The Flow consensus algorithm depends on there always being a previous block, which means your nodes cannot start until _after_ the Genesis block has been signed. The process of signing that block will be done by the Flow team, and can only be done after every node has completed the first half of the bootstrapping process, which assures that all the identities are included. Since the Flow team needs to wait for metadata from all participants, it will take a hours to even days until the Flow network can start.
+The Flow consensus algorithm depends on there always being a previous block, which means your nodes cannot start until _after_ the Genesis block has been signed. The process of signing that block will be done by the Flow team, and can only be done after every node has completed the first half of the bootstrapping process, which assures that all the identities are included. Since the Flow team needs to wait for metadata from all participants, it will take hours to even days until the Flow network can start.
 
 The bootstrapping process will be in 2 phases, with the Flow team signing the Genesis block between the two.
 
@@ -41,7 +41,7 @@ Both phases of the bootstrapping are automated with scripts. Pull a copy onto ea
 
 ## Generate Your Node Keys
 
-Start the boostrapping process by generating your Staking Key and Networking Key. Use your Node Address that you generated in [Setting Up a Node](doc:setting-up-a-node) in the `--address` flag, and the node role.
+Start the bootstrapping process by generating your Staking Key and Networking Key. Use your Node Address that you generated in [Setting Up a Node](doc:setting-up-a-node) in the `--address` flag, and the node role.
 
 <!-- [block:callout]
 {
@@ -67,7 +67,7 @@ Start the boostrapping process by generating your Staking Key and Networking Key
 {
 "type": "danger",
 "title": "Protect your keys!",
-"body": "The key pairs generated in the bootstrapping process are extremely sensitive and must be managed securely. This guide does not deal with storing the keys in a secure backup or controlling access, as the right approach to this will vary user to user, but it is something you must consider.\nPrivate keys are suffixed with `.priv.json`, their public counterparts are not sensitive and can be shared freely."
+"body": "The key pairs generated in the bootstrapping process are extremely sensitive and must be managed securely. This guide does not deal with storing the keys in a secure backup or controlling access, as the right approach to this will vary from user to user, but it is something you must consider.\nPrivate keys are suffixed with `.priv.json`, their public counterparts are not sensitive and can be shared freely."
 }
 [/block] -->
 
@@ -111,7 +111,7 @@ In phase 2 of the bootstrapping process, the Flow team will need to securely iss
 {
 "codes": [
 {
-"code": "# If you joined our network previously, make sure to take a backup!\ncp /path/to/bootstrap /path/to/bootstrap.bak\n$ ./boot-tools/transit -push -d ./bootstrap -t ${TOKEN} -role ${YOUR_NODE_ROLE}\nRunning push\nGenerating keypair\nUploading ...\nUploaded 400 bytes",
+"code": "# If you joined our network previously, make sure to take a backup!\ncp /path/to/bootstrap /path/to/bootstrap.bak\n$ ./boot-tools/transit push -d ./bootstrap -t ${TOKEN} -role ${YOUR_NODE_ROLE}\nRunning push\nGenerating keypair\nUploading ...\nUploaded 400 bytes",
 "language": "shell",
 "name": "Upload public keys"
 }
@@ -155,7 +155,7 @@ When the Flow team gives the go-ahead, your Random Beacon keys will be available
 {
 "codes": [
 {
-"code": "~ $ ./boot-tools/transit -pull -d ./bootstrap -t ${TOKEN} -role ${YOUR_NODE_ROLE}\nFetching keys for node ID FEF5CCFD-DC66-4EF6-8ADB-C93D9B6AE5A4\nDecrypting Keys\nKeys available",
+"code": "~ $ ./boot-tools/transit pull -d ./bootstrap -t ${TOKEN} -role ${YOUR_NODE_ROLE}\nFetching keys for node ID FEF5CCFD-DC66-4EF6-8ADB-C93D9B6AE5A4\nDecrypting Keys\nKeys available",
 "language": "shell",
 "name": "Pull beacon keys"
 }
@@ -202,4 +202,4 @@ Once every node has puled its keys and fetched the new images, the network is re
 
 Make sure you're part of the [Discord Chat](https://chat.onflow.org). The Flow team will let everyone know once all nodes are ready.
 
-Start your systems, lets make some blocks!
+Start your systems, let's make some blocks!

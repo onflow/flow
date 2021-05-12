@@ -22,7 +22,7 @@ const ExpandAll = styled.button(smallCaps, {
   border: 0,
   fontSize: 12,
   fontWeight: 600,
-  lineHeight: 1,
+  lineHeight: 1.23,
   background: "none",
   outline: "none",
   cursor: "pointer",
@@ -45,9 +45,8 @@ const StyledList = styled.ul({
 const StyledListItem = (props) => {
   const LI = styled.li({
     ...props.extraStyles,
-    fontSize: "1rem",
-    lineHeight: 1.5,
-    marginBottom: "0.8125rem",
+    fontSize: "15px",
+    lineHeight: 1.23,
     a: {
       color: "inherit",
       textDecoration: "none",
@@ -80,7 +79,7 @@ const categoryTitleStyles = {
   color: theme.text3,
   fontWeight: "bold",
   fontSize: 13,
-  lineHeight: "15px",
+  lineHeight: 1.23,
   ...smallCaps,
   svg: size(10),
   "&.active": {
@@ -184,7 +183,7 @@ function getStylesForNavItem(page) {
         paddingLeft: "1rem",
         marginLeft: "-1rem",
         borderRadius: "1000px",
-        boxShadow: ` 20px 20x 60px #1b63b6, 
+        boxShadow: ` 20px 20x 60px #1b63b6,
         -20px -20px 60px #2587f6`,
       };
     case "Node Operation Quick Guide":
@@ -194,7 +193,7 @@ function getStylesForNavItem(page) {
         paddingLeft: "1rem",
         marginLeft: "-1rem",
         borderRadius: "1000px",
-        boxShadow: ` 20px 20x 60px #1b63b6, 
+        boxShadow: ` 20px 20x 60px #1b63b6,
         -20px -20px 60px #2587f6`,
         background: colors.blue.lightest,
       };

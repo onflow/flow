@@ -1,4 +1,4 @@
-# Transaction Lifecycle 
+# Transaction Lifecycle
 
 This document walks through each stage of a transaction's lifecycle as it moves through the Flow network.
 
@@ -6,17 +6,18 @@ This document walks through each stage of a transaction's lifecycle as it moves 
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [Submission](#submission)
-  - [Validation](#validation)
-  - [Clustering](#clustering)
-- [Block Formation](#block-formation)
-  - [Proposal](#proposal)
-  - [Finalization](#finalization)
-- [Execution](#execution)
-  - [Fee Payment](#fee-payment)
-  - [Computation](#computation)
-- [Verification](#verification)
-- [Sealing](#sealing)
+- [Transaction Lifecycle](#transaction-lifecycle)
+	- [Submission](#submission)
+		- [Validation](#validation)
+		- [Clustering](#clustering)
+	- [Block Formation](#block-formation)
+		- [Proposal](#proposal)
+		- [Finalization](#finalization)
+	- [Execution](#execution)
+		- [Fee Payment](#fee-payment)
+		- [Computation](#computation)
+	- [Verification](#verification)
+	- [Sealing](#sealing)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

@@ -6,7 +6,9 @@ import Img from "../../components/tutorial-image";
 
 <Callout type="success">
 
-Open the starter code for this tutorial in the Flow Playground: <a href="https://play.onflow.org/869e869c-145e-4d36-a893-22e16a361842" target="_blank">https://play.onflow.org/869e869c-145e-4d36-a893-22e16a361842</a><br/>The tutorial will be asking you to take various actions to interact with this code.
+Open the starter code for this tutorial in the Flow Playground: <a href="https://play.onflow.org/46ad1d6d-3ee2-40d4-adef-bfbad33f9846"
+target="_blank">https://play.onflow.org/46ad1d6d-3ee2-40d4-adef-bfbad33f9846</a><br/>
+The tutorial will be asking you to take various actions to interact with this code.
 
 </Callout>
 
@@ -14,7 +16,7 @@ If you have already completed the Marketplace tutorial, please move on to [Compo
 
 This guide will help you quickly get the playground to the state you need to complete the Marketplace tutorial. The marketplace tutorial uses the Fungible Token and Non-Fungible token contracts to allow users to buy and sell NFTs with fungible tokens.
 
-The state of the accounts are the same as if you had completed the Fungible Token and Non-Fungible Token tutorials in the same playground session. Having your playground in this state is necessary to follow the [Composable Smart Contracts: Marketplace](/cadence/tutorial/06-marketplace-compose/) tutorial.
+The state of the accounts is the same as if you had completed the Fungible Token and Non-Fungible Token tutorials in the same playground session. Having your playground in this state is necessary to follow the [Composable Smart Contracts: Marketplace](/cadence/tutorial/06-marketplace-compose/) tutorial.
 
 ---
 
@@ -87,9 +89,9 @@ transaction {
 
     // Get the Collection reference for the receiver
     // getting the public capability and borrowing a reference from it
-    let receiverRef = recipient.getCapability(/public/NFTReceiver)!
-                               .borrow<&{NonFungibleToken.NFTReceiver}>()
-                                                        ?? panic("Could not borrow an nft receiver reference")
+    let receiverRef = recipient.getCapability<&{NonFungibleToken.NFTReceiver}>(/public/NFTReceiver)
+        .borrow()
+        ?? panic("Could not borrow an nft receiver reference")
 
     // Mint an NFT and deposit it into account 0x01's collection
     self.minterRef.mintNFT(recipient: receiverRef)
@@ -121,22 +123,22 @@ transaction {
         let account2 = getAccount(0x02)
 
         // Retrieve public Vault Receiver references for both accounts
-        self.acct1Ref = acct.getCapability(/public/MainReceiver)!
-                    .borrow<&FungibleToken.Vault{FungibleToken.Receiver}>()
-                                ?? panic("Could not borrow acct1 vault receiver reference")
-        self.acct2Ref = account2.getCapability(/public/MainReceiver)!
-                    .borrow<&FungibleToken.Vault{FungibleToken.Receiver}>()
-                                ?? panic("Could not borrow acct2 vault receiver reference")
+        self.acct1Ref = acct.getCapability<&FungibleToken.Vault{FungibleToken.Receiver}>(/public/MainReceiver)
+            .borrow()
+            ?? panic("Could not borrow acct1 vault receiver reference")
+        self.acct2Ref = account2.getCapability<&FungibleToken.Vault{FungibleToken.Receiver}>(/public/MainReceiver)
+            .borrow()
+            ?? panic("Could not borrow acct2 vault receiver reference")
 
         // Get the stored Minter reference for account 0x01
         self.minterRef = acct.borrow<&FungibleToken.VaultMinter>(from: /storage/MainMinter)
-                ?? panic("Could not borrow vault minter reference")
+            ?? panic("Could not borrow vault minter reference")
     }
 
     execute {
         // Mint tokens for both accounts
-        self.minterRef.mintTokens(amount: UFix64(20), recipient: self.acct2Ref)
-        self.minterRef.mintTokens(amount: UFix64(10), recipient: self.acct1Ref)
+        self.minterRef.mintTokens(amount: 20.0, recipient: self.acct2Ref)
+        self.minterRef.mintTokens(amount: 10.0, recipient: self.acct1Ref)
 
         log("Minted new fungible tokens for account 1 and 2")
     }
@@ -161,12 +163,12 @@ pub fun main() {
     // Get references to the account's receivers
     // by getting their public capability
     // and borrowing a reference from the capability
-    let acct1ReceiverRef = acct1.getCapability(/public/MainReceiver)!
-                          .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
-                                        ?? panic("Could not borrow acct1 vault receiver reference")
-    let acct2ReceiverRef = acct2.getCapability(/public/MainReceiver)!
-                          .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
-                                        ?? panic("Could not borrow acct2 vault receiver reference")
+    let acct1ReceiverRef = acct1.getCapability<&FungibleToken.Vault{FungibleToken.Balance}>(/public/MainReceiver)
+        .borrow<&FungibleToken.Vault{FungibleToken.Balance}>()
+        ?? panic("Could not borrow acct1 vault receiver reference")
+    let acct2ReceiverRef = acct2.getCapability<&FungibleToken.Vault{FungibleToken.Balance}>(/public/MainReceiver)
+        .borrow()
+        ?? panic("Could not borrow acct2 vault receiver reference")
 
     // Log the Vault balance of both accounts and ensure they are
     // the correct numbers.
@@ -178,19 +180,19 @@ pub fun main() {
     log(acct2ReceiverRef.balance)
 
     // verify that the balances are correct
-    if acct1ReceiverRef.balance != UFix64(40) || acct2ReceiverRef.balance != UFix64(20) {
+    if acct1ReceiverRef.balance != 40.0 || acct2ReceiverRef.balance != 20.0 {
         panic("Wrong balances!")
     }
 
     // Find the public Receiver capability for their Collections
-    let acct1Capability = acct1.getCapability(/public/NFTReceiver)!
-    let acct2Capability = acct2.getCapability(/public/NFTReceiver)!
+    let acct1Capability = acct1.getCapability<&{NonFungibleToken.NFTReceiver}>(/public/NFTReceiver)
+    let acct2Capability = acct2.getCapability<&{NonFungibleToken.NFTReceiver}>(/public/NFTReceiver)
 
     // borrow references from the capabilities
-    let nft1Ref = acct1Capability.borrow<&{NonFungibleToken.NFTReceiver}>()
-            ?? panic("Could not borrow acct1 nft receiver reference")
-    let nft2Ref = acct2Capability.borrow<&{NonFungibleToken.NFTReceiver}>()
-            ?? panic("Could not borrow acct2 nft receiver reference")
+    let nft1Ref = acct1Capability.borrow()
+        ?? panic("Could not borrow acct1 nft receiver reference")
+    let nft2Ref = acct2Capability.borrow()
+        ?? panic("Could not borrow acct2 nft receiver reference")
 
     // Print both collections as arrays of IDs
     log("Account 1 NFTs")
@@ -200,7 +202,7 @@ pub fun main() {
     log(nft2Ref.getIDs())
 
     // verify that the collections are correct
-    if nft1Ref.getIDs()[0] != UInt64(1) || nft2Ref.getIDs().length != 0 {
+    if nft1Ref.getIDs()[0] != 1 as UInt64 || nft2Ref.getIDs().length != 0 {
         panic("Wrong Collections!")
     }
 }

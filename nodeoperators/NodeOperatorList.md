@@ -35,8 +35,8 @@
 | Blocto | Verification | 21b21ad1ddb5e3002cc6a3faa55e23d70db014ee229c213f7a43769789125536
 | Chainflow | Verification | 3b57e0ee2ece1f1dbefbd868d3eaac63b32a11df5b1a37d231145ea219055dde
 | Chainlayer | Consensus | 62de4fa4b6a05b8beb5868a5259caca4efa966aa0cb867fdd776c73abe9370ad
-| Chainlayer (Coming Soon!) | Collection | 
-| Chainlayer (Coming Soon!) | Verification | 
+| Chainlayer | Collection | 050dfd9898470c042e9190b8a9136122dee26dad438cf5b49307f55fe4dbcc98
+| Chainlayer | Verification | d4ffda5cbdea87f6464d37c7ab079d3f8589454d2de2b6bce1cc6c6f20829dc2
 | Coinfund | Consensus | 5a4bff17941a73909472afe23f1ccdc59d7526f93b16b4e374bd8353f8b624b4
 | Coinfund | Consensus | b5702f80aa39f06ecdf4d6321bfe40f64e40b9b630085a42993f1b241bfcbf25
 | Coinfund | Consensus | d98755f4ae8bef3f372889c4d7010ca784ea6da46fdde63d27ee57b2bf5efdd7
@@ -49,6 +49,7 @@
 | Foundry | Consensus | 56e97c4cd4079caeb97d2a8f8950437107813436d5964f22a1f459eb8cf73a71
 | Foundry | Collection | bd368122b0ccf67ebdd59d7f9b75edfa85106c3af41854c946ad0fa46e5c3ddd
 | Foundry | Verification | e74d0ca7afed2b5bfd612f3c75010adb229d632ca4ab3b77d178ee226d7ec2a2
+| Huobi | Verification | 6944b7968594f277c4c051d83ced4bab6ed87ed992d831f31ffb6a7b5926e298
 | Metapurse | Collection |da27c0fc2a4fe12c04bd70058252c5a26cfe41485bf6ea6aba1c724b7a07542d
 | Metapurse | Consensus |1780288437c9aed5056836bfffcfe19334dd6e229607fccfb3fe9b1d4d24cdca
 | Metapurse | Verfication | dc3054cae816874d7dbbe838a41ef97c8a01b44643bffc82afe3a8228eed29fd
@@ -68,8 +69,6 @@
 | Staked | Collection | 129aab6407f6f66774ce77a03b8abd1ba67317eab1c70c5c6cdd7a433a7d64e8
 | Staked | Collection | fcb55c2d1fb2737b159704b5a30b194b8a8ddfb4691d55692af597ac6e236201
 | T-Systems| Execution | 2b396b7fab0102f104a2af7e095b145cc14da28f863564802e158afc3e07e638
-| Ubisoft | Verification | 429143c4438fcbbfc7353869b4f270e233aa0f75a6881ee977a81c962c4978ed
-| Ubisoft | Collection | dc0fb2d914f0c12cc1de527d22974b8f2de376e4765e084e0b8be14b51b5ef81
 | Usopp | Verification | d12b80ad9a9be6dbf86f8a7824739d9b2193836e5df226e063528dae33be3a4a
 | VCC | Collection | fe14c6a722212e19af1c143008d46413d4cea5097714a3720c67f356fb7c2982
 | versus-flow.art | Verification | 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e

@@ -31,13 +31,13 @@ module.exports = ({
   siteName,
   pageTitle,
   description,
+  sources,
   githubRepo,
   githubAccessToken,
   baseDir = "",
   contentDir = "content",
   versions = {},
   gaTrackingId,
-  ignore,
   checkLinksOptions,
   repositories,
 }) => {
@@ -94,7 +94,6 @@ module.exports = ({
     "gatsby-plugin-svgr",
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
-
     {
       resolve: "gatsby-plugin-less",
       options: {
@@ -104,22 +103,7 @@ module.exports = ({
         },
       },
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: path.join(root, "content"),
-        name: "docs",
-        ignore,
-      },
-    },
-    {
-      resolve: "gatsby-source-git",
-      options: {
-        name: "cadence",
-        remote: "https://github.com/onflow/cadence.git",
-        patterns: "docs/language/**/*",
-      },
-    },
+    ...sources,
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -142,14 +126,6 @@ module.exports = ({
         ],
       },
     },
-    // {
-    //   resolve: "gatsby-plugin-printer",
-    //   options: {
-    //     puppeteerLaunchOptions: {
-    //       headless: true,
-    //     },
-    //   },
-    // },
     ...Object.entries(versions).map(([name, branch]) => ({
       resolve: "gatsby-source-git",
       options: {

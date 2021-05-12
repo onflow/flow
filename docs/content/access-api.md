@@ -9,6 +9,25 @@ A language-agnostic specification for this API is defined using [Protocol Buffer
 
 - [Flow Access API protobuf source files](https://github.com/onflow/flow/tree/master/protobuf)
 
+## Flow access node endpoints
+
+The Access Nodes hosted by DapperLabs are accessible at:
+
+#### Current Mainnet
+`access.mainnet.nodes.onflow.org:9000`
+
+##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](/node-operation/spork/#mainnet)
+
+#### Testnet
+
+`access.devnet.nodes.onflow.org:9000`
+
+#### Canarynet
+
+`access.canary.nodes.onflow.org:9000`
+
+
+
 ---
 
 ## Ping
@@ -604,6 +623,8 @@ rpc GetEventsForHeightRange(GetEventsForHeightRangeRequest) returns (GetEventsFo
 
 Events can be requested for a specific sealed block range via the `start_height` and `end_height` (inclusive) fields and further filtered by event type via the `type` field.
 
+If `start_height` is greater than the current sealed chain height, then this method will return an error.
+
 If `end_height` is greater than the current sealed chain height, then this method will return events up to and including the latest sealed block.
 
 The event results are grouped by block, with each group specifying a block ID, height and block timestamp.
@@ -717,6 +738,41 @@ message GetNetworkParametersResponse {
 | Field    | Description                                                                                                  |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | chain_id | Chain ID helps identify the Flow network. It can be one of `flow-mainnet`, `flow-testnet` or `flow-emulator` |
+
+</details>
+
+---
+
+## Protocol state snapshot
+
+The following method can be used to query the latest protocol state [snapshot](https://github.com/onflow/flow-go/blob/master/state/protocol/snapshot.go).
+
+### GetLatestProtocolStateSnapshotRequest
+
+`GetLatestProtocolStateSnapshotRequest` retrieves the latest Protocol state snapshot serialized as a byte array.
+It is used by Flow nodes joining the network to bootstrap a space-efficient local state.
+
+```protobuf
+rpc GetLatestProtocolStateSnapshot (GetLatestProtocolStateSnapshotRequest) returns (ProtocolStateSnapshotResponse);
+```
+
+<details>
+  <summary>Request</summary>
+
+```protobuf
+message GetLatestProtocolStateSnapshotRequest {}
+```
+
+</details>
+
+<details>
+  <summary>Response</summary>
+
+```protobuf
+message ProtocolStateSnapshotResponse {
+  bytes serializedSnapshot = 1;
+}
+```
 
 </details>
 
@@ -864,13 +920,13 @@ The detailed semantics of transaction creation, signing and submission are cover
 
 ### Proposal Key
 
-The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](/docs/accounts-and-keys.md#sequence-numbers).
+The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](/concepts/accounts-and-keys.md#sequence-numbers).
 
 | Field           | Description                                                                         |
 | --------------- | ----------------------------------------------------------------------------------- |
 | address         | Address of proposer account                                                         |
 | key_id          | ID of proposal key on the proposal account                                          |
-| sequence_number | [Sequence number](/docs/accounts-and-keys.md#sequence-numbers) for the proposal key |
+| sequence_number | [Sequence number](/concepts/accounts-and-keys.md#sequence-numbers) for the proposal key |
 
 ### Transaction Signature
 
@@ -926,7 +982,7 @@ message Account {
 
 The `code` and `contracts` fields contain the raw Cadence source code, encoded as UTF-8 bytes.
 
-More information on accounts can be found [here](/docs/accounts-and-keys.md).
+More information on accounts can be found [here](/concepts/accounts-and-keys.md).
 
 ### Account Key
 
@@ -948,13 +1004,13 @@ message AccountKey {
 | --------------- | -------------------------------------------------------------------------------------- |
 | id              | Index of the key within the account, used as a unique identifier                       |
 | public_key      | Public key encoded as bytes                                                            |
-| sign_algo       | [Signature algorithm](/docs/accounts-and-keys.md#supported-signature--hash-algorithms) |
-| hash_algo       | [Hash algorithm](/docs/accounts-and-keys.md#supported-signature--hash-algorithms)      |
-| weight          | [Weight assigned to the key](/docs/accounts-and-keys.md#weighted-keys)                 |
-| sequence_number | [Sequence number for the key](/docs/accounts-and-keys.md#sequence-numbers)             |
+| sign_algo       | [Signature algorithm](/concepts/accounts-and-keys.md#supported-signature--hash-algorithms) |
+| hash_algo       | [Hash algorithm](/concepts/accounts-and-keys.md#supported-signature--hash-algorithms)      |
+| weight          | [Weight assigned to the key](/concepts/accounts-and-keys.md#weighted-keys)                 |
+| sequence_number | [Sequence number for the key](/concepts/accounts-and-keys.md#sequence-numbers)             |
 | revoked         | Flag indicating whether or not the key has been revoked                                |
 
-More information on account keys, key weights and sequence numbers can be found [here](/docs/accounts-and-keys.md).
+More information on account keys, key weights and sequence numbers can be found [here](/concepts/accounts-and-keys.md).
 
 ## Event
 

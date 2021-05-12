@@ -3,6 +3,7 @@ syntax = "proto3";
 package flow.access;
 
 option go_package = "access";
+option java_package = "org.onflow.protobuf.access";
 
 import "flow/entities/account.proto";
 import "flow/entities/block_header.proto";
@@ -82,6 +83,12 @@ service AccessAPI {
 
   // GetNetworkParameters retrieves the Flow network details
   rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParametersResponse);
+
+  // ProtocolState
+
+  // GetLatestProtocolStateSnapshot retrieves the latest sealed protocol state snapshot.
+  // Used by Flow nodes joining the network to bootstrap a space-efficient local state.
+  rpc GetLatestProtocolStateSnapshot (GetLatestProtocolStateSnapshotRequest) returns (ProtocolStateSnapshotResponse);
 }
 
 message PingRequest {}
@@ -157,6 +164,7 @@ message TransactionResultResponse {
   uint32 status_code = 2;
   string error_message = 3;
   repeated entities.Event events = 4;
+  bytes block_id = 5;
 }
 
 // Accounts
@@ -234,4 +242,12 @@ message GetNetworkParametersRequest {}
 
 message GetNetworkParametersResponse {
   string chain_id = 1;
+}
+
+// Protocol State
+
+message GetLatestProtocolStateSnapshotRequest {}
+
+message ProtocolStateSnapshotResponse {
+  bytes serializedSnapshot = 1;
 }
