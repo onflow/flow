@@ -2,9 +2,11 @@ import styled from "@emotion/styled";
 
 import PropTypes from "prop-types";
 
-import React, { Fragment } from "react";
+import React, { useEffect, Fragment } from "react";
 
 import rehypeReact from "rehype-react";
+
+import { useMixpanel } from "gatsby-plugin-mixpanel";
 
 import ContentWrapper from "../content-wrapper";
 import CustomSEO from "../custom-seo";
@@ -43,6 +45,12 @@ export default function BaseTemplate(props) {
   const pages = sidebar.contents
     .reduce((acc, { pages }) => acc.concat(pages), [])
     .filter((page) => !page.anchor);
+
+  const mixpanel = useMixpanel();
+
+  useEffect(() => {
+    mixpanel.track(`${pathname + hash}_viewed`);
+  }, [props.data]);
 
   return (
     <Fragment>

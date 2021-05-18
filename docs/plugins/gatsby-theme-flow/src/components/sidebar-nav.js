@@ -13,6 +13,8 @@ import { theme, colors } from "../colors";
 import { smallCaps } from "../utils/typography";
 import { size } from "polished";
 import { NavItemsContext } from "./page-layout";
+import { useMixpanel } from "gatsby-plugin-mixpanel";
+import TrackingLink from "../../../../content/components/tracking-link";
 
 const ExpandAll = styled.button(smallCaps, {
   display: "flex",
@@ -120,13 +122,13 @@ const StyledCheckbox = styled.input({
   },
 });
 
-const StyledLink = styled.a({
+const StyledTrackingLink = styled(TrackingLink)(() => ({
   color: "inherit",
   textDecoration: "none",
   ":hover": {
     color: theme.text3,
   },
-});
+}));
 
 const ProjectIcon = styled.div({
   backgroundSize: "100%",
@@ -203,6 +205,7 @@ function getStylesForNavItem(page) {
 }
 
 function NavItems(props) {
+  const mixpanel = useMixpanel();
   return (
     <StyledList>
       {props.pages.map((page, index) => {
@@ -222,7 +225,10 @@ function NavItems(props) {
                 }
                 to={page.path}
                 title={page.description}
-                onClick={props.onLinkClick}
+                onClick={() => {
+                  mixpanel.track(`Homepage_nav_${page.path}_clicked`);
+                  props.onLinkClick();
+                }}
               >
                 {pageTitle}
               </Link>
@@ -292,7 +298,12 @@ export default function SidebarNav(props) {
                   key={navItem.url}
                   icons={getProjectIcon(navItem.icon)}
                 >
-                  <StyledLink href={navItem.url}>{navItem.title}</StyledLink>
+                  <StyledTrackingLink
+                    href={navItem.url}
+                    eventName={`Homepage_nav_${navItem.url}_clicked`}
+                  >
+                    {navItem.title}
+                  </StyledTrackingLink>
                 </ProjectLink>
               );
             })}

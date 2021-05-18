@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import { theme } from "../colors";
 import breakpoints from "../utils/breakpoints";
 import { transparentize } from "polished";
+import TrackingLink from "../../../../content/components/tracking-link";
 
 const Container = styled.aside({
   flexShrink: 0,
@@ -38,18 +39,18 @@ const Header = styled.div({
   marginBottom: 24,
 });
 
-const StyledLink = styled.a({
+const StyledTrackingLink = styled(TrackingLink)(() => ({
   color: theme.text1,
   textDecoration: "none",
-});
+}));
 
 const Sidebar = React.forwardRef((props, ref) => {
   const content = (
     <Fragment>
       <Header>
-        <StyledLink href={props.logoLink}>
+        <StyledTrackingLink href={props.logoLink} eventName="Home_clicked">
           <Logo />
-        </StyledLink>
+        </StyledTrackingLink>
       </Header>
       <div className={props.className}>{props.children}</div>
     </Fragment>
