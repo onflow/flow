@@ -162,6 +162,7 @@ export default function Search(props) {
         // debug: true, // keeps the results list open
         algoliaOptions: {
           hitsPerPage: 10,
+          distinct: 1,
         },
         handleSelected: function(input, _event, suggestion) {
           mixpanel.track("Searched", { text: input, selected: suggestion });

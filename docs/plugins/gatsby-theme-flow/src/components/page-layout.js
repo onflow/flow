@@ -157,7 +157,7 @@ export default function PageLayout(props) {
     c.crumbLabel = startCase(c.crumbLabel);
     return c;
   });
-
+  console.log(algoliaApiKey, algoliaIndexName);
   return (
     <Layout>
       <Helmet
