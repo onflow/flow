@@ -11,7 +11,7 @@ import { smallCaps } from "../utils/typography";
 import { css } from "@emotion/core";
 import { position, size, transparentize } from "polished";
 import { IconSearch } from "../ui/icons";
-import mixpanel from "gatsby-plugin-mixpanel";
+import { useMixPanel } from "gatsby-plugin-mixpanel";
 
 const borderRadius = 5;
 const border = `1px solid ${theme.dividerLight}`;
@@ -152,7 +152,7 @@ export default function Search(props) {
   const [focused, setFocused] = useState(false);
   const [value, setValue] = useState("");
   const inputRef = useRef(null);
-
+  const mixpanel = useMixPanel();
   useEffect(() => {
     if (typeof docsearch !== "undefined") {
       docsearch({
