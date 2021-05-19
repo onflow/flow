@@ -2,7 +2,7 @@
 title: Storing Data on Flow
 ---
 
-## **Overview**
+## Overview
 
 Each Flow account has an associated storage used. The account's storage used is the byte size of all of the data stored in the account's storage. Accounts also have a storage capacity, which is directly tied to the amount of Flow tokens an account has. The account can, without any additional cost, use any amount of storage up to its storage capacity. **If a transaction would put an account over storage capacity, that transaction fails and is reverted. Likewise, if a transaction would drop an account's balance below 0.001 Flow tokens, which is the minimum an account can have, the transaction would also fail.**
 
@@ -42,12 +42,15 @@ Two parameters define storage limits:
 
 ## FAQ
 
-### **Why is there an account minimum balance?**
+### Why is there an account minimum balance?
 
-The more data that is stored on Flow, the higher the storage requirements for execution nodes that need to store the data. As the size of the data grows, it's more and more difficult and costly for the execution nodes to meet those requirements.
+The more data that is stored on Flow, 
+the higher the storage requirements for execution nodes that need to store the data. 
+As the size of the data grows, 
+it's more and more difficult and costly for the execution nodes to meet those requirements.
 Storage fees were put in place to regulate the growth of data stored on the Flow blockchain.
 
-### **What is my current storage usage?**
+### What is my current storage usage?
 
 The values of storage used and storage capacity are available as fields both on `AuthAccount` and `PublicAccount` Cadence types.
 
