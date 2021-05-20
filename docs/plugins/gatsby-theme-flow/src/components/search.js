@@ -164,8 +164,16 @@ export default function Search(props) {
           hitsPerPage: 10,
           distinct: 1,
         },
-        handleSelected: function(input, _event, suggestion) {
+        handleSelected: function(
+          input,
+          _event,
+          suggestion,
+          _datasetNumber,
+          _context
+        ) {
           mixpanel.track("Searched", { text: input, selected: suggestion });
+          input.setVal("");
+          window.location.href = suggestion.url;
         },
         transformData: function(hits) {
           hits.forEach((hit) => {
