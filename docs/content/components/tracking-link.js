@@ -22,7 +22,8 @@ const TrackingLink = ({ href, eventName, children }) => {
 };
 
 TrackingLink.propTypes = {
-  apiUrl: PropTypes.string,
+  href: PropTypes.string,
+  eventName: PropTypes.string
 };
 
 export default TrackingLink;
