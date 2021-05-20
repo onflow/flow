@@ -225,9 +225,9 @@ function NavItems(props) {
                 }
                 to={page.path}
                 title={page.description}
-                onClick={() => {
+                onClick={(e) => {
                   mixpanel.track(`Homepage_nav_${page.path}_clicked`);
-                  props.onLinkClick();
+                  props.onLinkClick(e);
                 }}
               >
                 {pageTitle}
@@ -294,17 +294,17 @@ export default function SidebarNav(props) {
             })
             .map((navItem, index) => {
               return (
-                <ProjectLink
-                  key={navItem.url}
-                  icons={getProjectIcon(navItem.icon)}
+                <StyledTrackingLink
+                  href={navItem.url}
+                  eventName={`Homepage_nav_${navItem.url}_clicked`}
                 >
-                  <StyledTrackingLink
-                    href={navItem.url}
-                    eventName={`Homepage_nav_${navItem.url}_clicked`}
+                  <ProjectLink
+                    key={navItem.url}
+                    icons={getProjectIcon(navItem.icon)}
                   >
                     {navItem.title}
-                  </StyledTrackingLink>
-                </ProjectLink>
+                  </ProjectLink>
+                </StyledTrackingLink>
               );
             })}
         </DocsetMenuWrapper>
