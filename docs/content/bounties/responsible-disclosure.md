@@ -73,7 +73,9 @@ If you follow these guidelines when researching and reporting an issue to us, we
 
 Reports welcome! Please do reach out to us if you have a security concern. If you believe you may have found a security vulnerability in one of our products or platforms, send us an email: [security@dapperlabs.com](mailto:security@dapperlabs.com?subject=Responsible%20disclosure)
 
-We encourage you to encrypt the information you send us using our PGP key at https://dapperlabs.com/security@dapperlabs.com.pgp.txt
+We encourage you to encrypt the information you send us using our PGP key at [keys.openpgp.org/security@onflow.org](keys.openpgp.org/security@onflow.org)
+
+
 
 [🔐 PGP Public Key](https://www.notion.so/PGP-Public-Key-dc945aa551904be0a8d0a48b44e6bf68)
 
