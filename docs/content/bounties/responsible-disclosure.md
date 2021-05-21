@@ -71,7 +71,7 @@ If you follow these guidelines when researching and reporting an issue to us, we
 
 ## Reporting Security Findings
 
-Reports welcome! Please do reach out to us if you have a security concern. If you believe you may have found a security vulnerability in one of our products or platforms, send us an email: [security@dapperlabs.com](mailto:security@dapperlabs.com?subject=Responsible%20disclosure)
+Reports welcome! Please do reach out to us if you have a security concern. If you believe you may have found a security vulnerability in one of our products or platforms, send us an email: [security@dapperlabs.com](mailto:security@onflow.org?subject=Responsible%20disclosure)
 
 We encourage you to encrypt the information you send us using our PGP key at [keys.openpgp.org/security@onflow.org](keys.openpgp.org/security@onflow.org)
 
