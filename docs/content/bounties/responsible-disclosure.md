@@ -3,9 +3,7 @@ title: Responsible Disclosure Policy
 description: Policy and guidelines for submitting security related bugs.
 ---
 
-<div>
-  <button>Submit a Bug</button>
-</div>
+If you believe you may have found a security vulnerability in one of our products or platforms, send us an email: [security@dapperlabs.com](mailto:security@onflow.org?subject=Responsible%20disclosure)
 <a href="/bounties">  
   Read information about rewards
 </a>
