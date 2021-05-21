@@ -77,7 +77,6 @@ We encourage you to encrypt the information you send us using our PGP key at [ke
 
 
 
-[🔐 PGP Public Key](https://www.notion.so/PGP-Public-Key-dc945aa551904be0a8d0a48b44e6bf68)
 
 **Please include the following details with your report:**
 
