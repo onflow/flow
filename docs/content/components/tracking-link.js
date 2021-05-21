@@ -8,6 +8,10 @@ const TrackingLink = ({ href, eventName, children }) => {
   return (
     <a
       href={href}
+      style={{
+        color: "inherit",
+        textDecoration: "none",
+      }}
       onClick={() => {
         mixpanel.track(eventName);
       }}
