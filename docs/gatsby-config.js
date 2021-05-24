@@ -183,6 +183,7 @@ const sections = [
       "faq/*",
       "community-updates/*",
       "flow-port/**/*",
+      "bounties/*"
     ],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
