@@ -97,7 +97,7 @@ transaction(amount: UFix64, to: Address) {
 
     // Get a reference to the recipient's Receiver
     let receiverRef = recipient
-      .getCapability(/public/fusdReceiver)!
+      .getCapability(/public/fusdReceiver)
       .borrow<&{FungibleToken.Receiver}>()
       ?? panic("Could not borrow receiver reference to the recipient's Vault")
 
@@ -119,7 +119,7 @@ pub fun main(address: Address): UFix64 {
   let account = getAccount(address)
 
   let vaultRef = account
-    .getCapability(/public/fusdBalance)!
+    .getCapability(/public/fusdBalance)
     .borrow<&FUSD.Vault{FungibleToken.Balance}>()
     ?? panic("Could not borrow Balance capability")
 
