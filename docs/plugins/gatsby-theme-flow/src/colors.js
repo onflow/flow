@@ -154,6 +154,7 @@ exports.theme = {
   text3: colors.grey.light,
   text4: colors.silver.darker,
   warning: colors.yellow.base,
+  error: colors.red.base,
   shadow: colors.black.darker,
   highlight: colors.blue.base,
   highlight2: colors.blue.lighter,
