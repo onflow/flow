@@ -309,7 +309,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      FUSD: ["fusd/index", "fusd/testnet"],
+      FUSD: ["fusd/index", "fusd/transactions", "fusd/providers"],
     },
   },
   {

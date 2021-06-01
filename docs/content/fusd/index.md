@@ -6,43 +6,53 @@ description: FUSD is a 1:1 USD-backed stablecoin on Flow
 
 Flow USD (FUSD) is a stablecoin on Flow, 
 issued by [Prime Trust](https://www.primetrust.com/), 
-that is backed 1:1 against USD on Flow Mainnet. 
+that is backed 1:1 by the US Dollar.
 
-# Purpose
+## Purpose
 
-FUSD is a 1:1 USD-backed stablecoin that is issued as a fungible 
-token on the Flow network. FUSD is a fixed-price asset that provides 
-a more consistently-priced experience for dapp developers and their users. 
-As a valid payment token, FUSD also acts as an alternative for users 
-who may not be holding the native FLOW token.
+FUSD is a USD-backed stablecoin issued as a fungible 
+token on the Flow network. Its primary purpose is to provide 
+a more consistently-priced payment experience for dapp developers 
+and their users. In general, stablecoins do not demonstrate 
+the volatility that is common amongst other cryptocurrencies, 
+making them a suitable token for everyday trade.
 
-The volatility of cryptocurrencies can pose significant challenges
-for blockchain-based businesses. FUSD offers a nonvolatile alternative 
-for developers building on Flow.
+As a valid payment token, FUSD also acts as an alternative for users who may not be holding the native FLOW token.
 
-# Using FUSD
+## Building with FUSD
 
-FUSD is currently in testing. 
-You will be able to use it with any dapp or ecosystem player that
-chooses to support payments in FUSD on Flow. 
+As a dapp developer, you can build your application to support
+FUSD as a user payment method.
 
-## FUSD on Flow Testnet
+### FUSD on Flow Testnet
 
 A mock version of FUSD is live on Flow Testnet for development purposes.
 
 Testnet FUSD is not backed by any real USD and is available
-only for testing purposes. 
-The [Testnet FUSD page](/fusd/testnet) contains more information 
-on how to build Testnet dapps that use FUSD.
+only for testing purposes.
 
-## FUSD on Flow Mainnet
+To support FUSD on Testnet, use the [standard transactions and scripts](/fusd/transactions) with the
+Testnet contract addresses.
 
-FUSD is not yet available on Flow Mainnet.
+### FUSD on Flow Mainnet
 
-# FAQs
+FUSD is made available on Mainnet through [several providers](/fusd/providers/#mainnet).
 
-## Who is the issuer of FUSD?
+To support FUSD on Mainnet, use the [standard transactions and scripts](/fusd/transactions) with the
+Mainnet contract addresses.
+
+## FAQs
+
+### Who is the issuer of FUSD?
 
 FUSD is issued by [Prime Trust](https://www.primetrust.com/), 
 a Nevada-based trust company with address 330 South Rampart Blvd. Suite 260
 Summerlin, NV 89145.
+
+### Where can my users purchase FUSD?
+
+See the [providers](/fusd/providers/) page for available FUSD providers.
+
+### How do I sell FUSD for fiat?
+
+See the [providers](/fusd/providers/) page for available FUSD->fiat providers.

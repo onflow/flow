@@ -434,6 +434,11 @@
       "source": "/cadence/tutorial/00-introduction/",
       "destination": "/cadence",
       "permanent": true
+    },
+    {
+      "source": "/fusd/testnet",
+      "destination": "/fusd/transactions",
+      "permanent": true
     }
   ]
 }
