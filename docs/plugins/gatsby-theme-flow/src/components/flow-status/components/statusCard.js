@@ -31,7 +31,7 @@ export default function StatusCard({ accessAPIURL, networkName }) {
   });
 
   return (
-    <StatusCardWrapper>
+    <StatusCardWrapper networkStatus={networkStatus}>
       <div className="network-name">
         <h3>{startCase(networkName)}</h3>
       </div>

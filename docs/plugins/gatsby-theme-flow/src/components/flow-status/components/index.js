@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import StatusCard from "./statusCard";
 
 import { getNextSporkDate, getNetworkVersion } from "../helpers";
+
+import RecentPost from "./recentPost";
+import StatusCard from "./statusCard";
 
 function NetworkVersion(networkName) {
   const [version, setVersion] = useState("");
@@ -45,4 +47,4 @@ function NextSporkDate(networkName) {
   );
 }
 
-export { StatusCard, NetworkVersion, NextSporkDate };
+export { RecentPost, StatusCard, NetworkVersion, NextSporkDate };
