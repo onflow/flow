@@ -12,7 +12,7 @@ const fetchBreakingChanges = (resource) => {
   }).then((response) => response.json());
 };
 
-export function useDiscordAPI(resource) {
+export function useBreakingChangesPosts(resource) {
   const [posts, setPosts] = useState([]);
 
   useSWR(resource, fetchBreakingChanges, {

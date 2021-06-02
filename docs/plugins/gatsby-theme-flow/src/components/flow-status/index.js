@@ -3,7 +3,7 @@ import moment from "moment";
 
 import { StatusCard, RecentPost } from "./components";
 import { MAINNET, TESTNET, CANARYNET } from "./constants";
-import { useDiscordAPI } from "./hooks";
+import { useBreakingChangesPosts } from "./hooks";
 import { StatusWrapper, AnnouncementsWrapper } from "./styles";
 
 const networks = [
@@ -13,11 +13,9 @@ const networks = [
 ];
 
 export function FlowNetworkStatus() {
-  const recentPosts = useDiscordAPI(
+  const recentPosts = useBreakingChangesPosts(
     "/c/announcements/breaking-changes/30.json"
   );
-
-  console.log(recentPosts);
 
   return (
     <>
