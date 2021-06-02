@@ -1,9 +1,43 @@
 import styled from "@emotion/styled";
 import { theme } from "gatsby-theme-flow/src/colors";
 
-export const StatusWrapper = styled.div({
-  padding: "0.5rem",
-  backgroundColor: theme.background,
-  borderRadius: "4px",
-  marginRight: "1rem",
+import { HEALTHY, DEGRADED } from "./constants";
+
+export const StatusWrapper = styled.div({});
+
+function getColor(status) {
+  switch (status) {
+    case HEALTHY:
+      return theme.primary;
+    case DEGRADED:
+      return theme.warning;
+    default:
+      return theme.error;
+  }
+}
+
+export const StatusCardWrapper = styled.div(({ networkStatus }) => {
+  return {
+    marginBottom: "1rem",
+    display: "grid",
+    gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+    width: "100%",
+    height: "100px",
+    alignItems: "center",
+    border: `2px solid ${getColor(networkStatus)}`,
+    padding: "0 1rem",
+    borderRadius: "6px",
+    h3: {
+      marginBottom: "0",
+    },
+    h4: {
+      marginBottom: "0.2rem",
+    },
+    ".network-name": {},
+    ".next-spork-date": {},
+    ".network-status": {
+      fontWeight: "bold",
+      color: getColor(networkStatus),
+    },
+  };
 });

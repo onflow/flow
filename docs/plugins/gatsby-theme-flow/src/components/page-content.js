@@ -123,6 +123,7 @@ const AsideLinkInner = styled.a({
 
 function sidebarPage(path) {
   if (path === "/") return false;
+  if (path === "/status") return false;
   return true;
 }
 
