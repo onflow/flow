@@ -166,7 +166,7 @@ and thus accidentally pass a much larger value then intended.
 
 For example, the `UFix64` value `1.0` is represented by the integer `100000000` (as `UFix64` has a scale of 8).
 An implementation might accidentally pass `"100000000"` assuming it means the same as `"1.0"`,
-and then a decoder would instead interpret it as `"100000000.0".
+and then a decoder would instead interpret it as `"100000000.0"`.
 
 </Callout>
 
