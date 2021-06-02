@@ -2,20 +2,20 @@ import { useState } from "react";
 import useSWR from "swr";
 import moment from "moment";
 
-import { FORUM_URL } from "./constants";
+import { BREAKING_CHANGES_RESOURCE } from "./constants";
 
 const fetchBreakingChanges = (resource) => {
-  return fetch(FORUM_URL + resource, {
+  return fetch(resource, {
     headers: {
       "Content-Type": "application/json",
     },
   }).then((response) => response.json());
 };
 
-export function useBreakingChangesPosts(resource) {
+export function useBreakingChangesPosts() {
   const [posts, setPosts] = useState([]);
 
-  useSWR(resource, fetchBreakingChanges, {
+  useSWR(BREAKING_CHANGES_RESOURCE, fetchBreakingChanges, {
     refreshInterval: 100000,
     onSuccess(data) {
       const {
@@ -23,6 +23,7 @@ export function useBreakingChangesPosts(resource) {
       } = data;
 
       const sorted = topics
+        // Removes the "About this category" post
         .filter((post) => post.id !== 762)
         .map((post) => {
           const date = moment(new Date(post.created_at)).fromNow();

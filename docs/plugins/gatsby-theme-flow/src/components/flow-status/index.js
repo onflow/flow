@@ -13,9 +13,7 @@ const networks = [
 ];
 
 export function FlowNetworkStatus() {
-  const recentPosts = useBreakingChangesPosts(
-    "/c/announcements/breaking-changes/30.json"
-  );
+  const recentPosts = useBreakingChangesPosts();
 
   return (
     <>
