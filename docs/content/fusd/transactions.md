@@ -77,7 +77,7 @@ does not have an FUSD receiver.
 No funds are transferred or lost if the transaction fails.
 
 - `amount`: The amount of FUSD transfer (e.g. 10.0)
-- `to`: The recipient account address.
+- `recipient`: The recipient account address.
 
 ```cadence:title=transfer_fusd.cdc
 // Mainnet
@@ -88,7 +88,7 @@ import FUSD from 0x3c5959b568896393
 // import FungibleToken from 0x9a0766d93b6608b7
 // import FUSD from 0xe223d8a629e49c68
 
-transaction(amount: UFix64, to: Address) {
+transaction(amount: UFix64, recipient: Address) {
 
   // The Vault resource that holds the tokens that are being transfered
   let sentVault: @FungibleToken.Vault
@@ -104,10 +104,11 @@ transaction(amount: UFix64, to: Address) {
 
   execute {
     // Get the recipient's public account object
-    let recipient = getAccount(to)
+    let recipientAccount = getAccount(recipient)
 
     // Get a reference to the recipient's Receiver
-    let receiverRef = recipient.getCapability(/public/fusdReceiver)!.borrow<&{FungibleToken.Receiver}>()
+    let receiverRef = recipientAccount.getCapability(/public/fusdReceiver)!
+      .borrow<&{FungibleToken.Receiver}>()
       ?? panic("Could not borrow receiver reference to the recipient's Vault")
 
     // Deposit the withdrawn tokens in the recipient's receiver

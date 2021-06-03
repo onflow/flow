@@ -4,8 +4,8 @@ sidebar_title: Introduction
 description: FUSD is a 1:1 USD-backed stablecoin on Flow
 ---
 
-Flow USD (FUSD) is a stablecoin on Flow, 
-issued by [Prime Trust](https://www.primetrust.com/), 
+Flow USD (FUSD) is a stablecoin 
+issued by [Prime Trust](https://www.primetrust.com/)
 that is backed 1:1 by the US Dollar.
 
 ## Purpose
@@ -13,9 +13,7 @@ that is backed 1:1 by the US Dollar.
 FUSD is a USD-backed stablecoin issued as a fungible 
 token on the Flow network. Its primary purpose is to provide 
 a more consistently-priced payment experience for dapp developers 
-and their users. In general, stablecoins do not demonstrate 
-the volatility that is common amongst other cryptocurrencies, 
-making them a suitable token for everyday trade.
+and their users.
 
 As a valid payment token, FUSD also acts as an alternative for users who may not be holding the native FLOW token.
 
