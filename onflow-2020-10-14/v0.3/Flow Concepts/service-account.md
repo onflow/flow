@@ -1,0 +1,21 @@
+---
+title: "Service Account"
+slug: "service-account"
+excerpt: "Understanding the purpose and capabilities of the Flow Service Account and how it will evolve over time"
+hidden: true
+createdAt: "2020-06-29T22:43:41.646Z"
+updatedAt: "2020-09-11T08:54:44.548Z"
+---
+The Service Account is a special account in Flow that has special permissions to manage system contracts. It is able to mint tokens, set fees, and update network-level contracts. During Flow's Beta period, the Service Account is also the only account that is able to create new Flow accounts.
+
+## Tokens & Fees
+
+The Service Account has administrator access to the FLOW token smart contract, so it has authorization to mint and burn tokens. It also has access to the transaction fee smart contract and can adjust the fees charged for transactions execution on Flow.
+
+## Network Management
+
+The Service Account administrates other smart contracts that manage various aspects of the Flow network, such as epochs and (in the future) validator staking auctions.
+
+## Governance
+
+Besides its special permissions, the Service Account is an account like any other in Flow. During the early phases of Flow's development, the account will controlled by keys held by Dapper Labs. As Flow matures, the service account will transition to being controlled by a smart contract governed by the Flow community.

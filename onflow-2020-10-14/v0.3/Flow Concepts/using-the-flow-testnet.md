@@ -1,0 +1,42 @@
+---
+title: "Testnet"
+slug: "using-the-flow-testnet"
+excerpt: "Accessing and interacting with the Flow test network"
+hidden: true
+createdAt: "2020-05-22T04:20:38.433Z"
+updatedAt: "2020-08-27T21:51:35.015Z"
+---
+Currently there is an internal test network, accessible at `access-001.devnet12.nodes.onflow.org:9000`
+
+## Accessing the Network
+
+Accounts on the test network are currently restricted. To create an account, you'll need to generate a keypair for your account, then send us the public key so we can generate your account.
+[block:callout]
+{
+  "type": "warning",
+  "title": "Key Generation",
+  "body": "Ensure you save your private key material in addition to the public key you send to use for account creation!"
+}
+[/block]
+This key pair will be authorized for your account on the test network. Once your account is created, you will use it to sign your transactions. The script below shows an example of how to generate a key pair using the Flow SDK.
+[block:code]
+{
+  "codes": [
+    {
+      "code": "import (\n\t\"crypto/rand\"\n\t\"fmt\"\n\n\t\"github.com/onflow/flow-go-sdk/crypto\"\n)\n\nfunc main() {\n\n\t// This seed must be kept safe if you want to use it to regenerate your private key\n\tseed := make([]byte, crypto.MinSeedLength)\n\n\t_, err := rand.Read(seed)\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\n\t// Remember to save your private key somewhere safe\n\tprivateKey, err := crypto.GeneratePrivateKey(crypto.ECDSA_P256, seed)\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\t// This will be your public key, and what you need to send to us\n\tfmt.Printf(\"Public Key: %x\\n\", privateKey.PublicKey().Encode())\n\n\t// NOTE: make sure you save your private key as well!\n}",
+      "language": "go"
+    }
+  ]
+}
+[/block]
+Once you have generated your keys, send the public key to dev@onflow.org and we will create your account!
+
+After your account has been created, you will be able to start using the Flow test network via the Flow SDK. Check out some examples [here](https://github.com/onflow/flow-go-sdk/tree/master/examples).
+
+### Restrictions
+
+Some actions on the test network are currently restricted, notably creating accounts and deploying smart contracts. If you need your test network account to have these capabilities, please let a team member know via dev@onflow.org or on [Discord](https://discord.gg/WgAQhtB).
+
+## Joining the Network 
+
+To join the test network as a node operator, send us a message at dev@onflow.org or on [Discord](https://discord.gg/WgAQhtB).
