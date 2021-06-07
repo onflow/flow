@@ -20,8 +20,7 @@ function NetworkVersion(networkName) {
   }, []);
   return (
     <>
-      <h4>Version</h4>
-      {version}
+      <h4>Version</h4>9
     </>
   );
 }
@@ -42,7 +41,7 @@ function NextSporkDate(networkName) {
   return (
     <>
       <h4>Next Spork</h4>
-      {nextSpork}
+      June 23, 2021
     </>
   );
 }

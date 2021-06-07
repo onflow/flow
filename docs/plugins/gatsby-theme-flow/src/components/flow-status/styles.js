@@ -51,14 +51,16 @@ export const AnnouncementCardWrapper = styled.div({
   },
   marginBottom: "1rem",
   display: "grid",
+  gridTemplateColumns: "1fr 42px",
   width: "100%",
   height: "100px",
   alignItems: "center",
   border: `2px solid ${theme.text2}`,
-  padding: "0 1rem",
+  padding: "1rem",
   borderRadius: "6px",
   h3: {
     marginBottom: "0.5rem",
+    fontSize: "1.2rem",
   },
   h4: {
     display: "inline",

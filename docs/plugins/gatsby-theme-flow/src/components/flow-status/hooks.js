@@ -1,5 +1,7 @@
 import { useState } from "react";
+
 import useSWR from "swr";
+
 import moment from "moment";
 
 import { BREAKING_CHANGES_RESOURCE } from "./constants";
@@ -33,8 +35,8 @@ export function useBreakingChangesPosts() {
         .sort((a, b) => {
           return new Date(a.created_at).getTime() >
             new Date(b.created_at).getTime()
-            ? 1
-            : -1;
+            ? -1
+            : 1;
         });
 
       setPosts(sorted);
