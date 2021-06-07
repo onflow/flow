@@ -47,7 +47,7 @@ Here's how you deposit FLOW into an account:
 
 ```cadence
 let receiver = account
-  .getCapability(/public/flowTokenReceiver)!
+  .getCapability(/public/flowTokenReceiver)
   .borrow<&{FungibleToken.Receiver}>()
     ?? panic("Could not borrow FungibleToken.Receiver reference")
 
@@ -167,7 +167,7 @@ to fetch the balance of an account directly in code.
 
 ```cadence
 let balanceRef = account
-  .getCapability(/public/flowTokenBalance)!
+  .getCapability(/public/flowTokenBalance)
   .borrow<&FlowToken.Vault{FungibleToken.Balance}>()
     ?? panic("Could not borrow FungibleToken.Balance reference")
 
@@ -227,9 +227,9 @@ transaction(amount: UFix64, to: Address) {
     let recipient = getAccount(to)
 
     // Get a reference to the recipient's FungibleToken.Receiver
-    let receiver = recipient.
-      getCapability(/public/flowTokenReceiver)!.
-      borrow<&{FungibleToken.Receiver}>()
+    let receiver = recipient
+      .getCapability(/public/flowTokenReceiver)
+      .borrow<&{FungibleToken.Receiver}>()
         ?? panic("Could not borrow receiver reference to the recipient's Vault")
 
     // Deposit the withdrawn tokens in the recipient's receiver
