@@ -17,7 +17,7 @@ for staking with locked tokens from the Flow community sale.
 
 ### Register a New Staked Node
 
-To register as a staker with unlocked FLOW, the token holder can use the **Register Node** ([SC.11](/core-contracts/flow-id-table-staking/#staking))
+To register as a node operator with unlocked FLOW, the token holder can use the **Register Node** ([SC.11](/core-contracts/flow-id-table-staking/#staking))
 transaction with the following arguments:
 
 | Argument              | Type     | Description |
@@ -29,7 +29,7 @@ transaction with the following arguments:
 | **stakingKey**        | `String` | The staking public key as a 96 byte hex-encoded `String` (192 hex characters) |
 | **amount**            | `UFix64` | The number of FLOW tokens to stake. |
 
-This transaction registers the account as a staker with the specified node information
+This transaction registers the account as a node operator with the specified node information
 and creates a public link to query the nodes ID from the account address.
 
 ---
@@ -70,7 +70,7 @@ transaction with the following arguments:
 
 After earning rewards from staking, the token holder can choose to re-stake the rewarded tokens to the same node.
 
-To staked rewarded tokens, the token holder can use the **Re-stake Rewarded FLOW** ([SC.14](/core-contracts/flow-id-table-staking/#staking)) 
+To stake rewarded tokens, the token holder can use the **Re-stake Rewarded FLOW** ([SC.14](/core-contracts/flow-id-table-staking/#staking)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |

@@ -157,6 +157,19 @@ While the static type is not strictly required for decoding, it is provided to i
 
 Although fixed point numbers are implemented as integers, JSON-Cadence uses a decimal string representation for readability.
 
+<Callout type="info">
+
+The format is exactly `"<integer>.<fractional>"` and not just `"<integer>"`.
+
+This is a safety measure: As fixed-point numbers are implemented as integers, an implementation might pass in the integer value
+and thus accidentally pass a much larger value then intended.
+
+For example, the `UFix64` value `1.0` is represented by the integer `100000000` (as `UFix64` has a scale of 8).
+An implementation might accidentally pass `"100000000"` assuming it means the same as `"1.0"`,
+and then a decoder would instead interpret it as `"100000000.0"`.
+
+</Callout>
+
 ```json
 {
     "type": "[U]Fix64",

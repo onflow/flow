@@ -97,6 +97,10 @@ java {
     withSourcesJar()
 }
 
+tasks.compileJava {
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
+}
 
 repositories {
     mavenCentral()
@@ -105,4 +109,4 @@ repositories {
 group = "org.onflow"
 
 // TODO - grab version from Git
-version = "0.20"
+version = "0.21"
