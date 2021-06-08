@@ -2,6 +2,38 @@
 title: Flow Network Status
 ---
 
-import { FlowNetworkStatus } from "../plugins/gatsby-theme-flow/src/components/flow-status";
+import {
+  FlowNetworkStatus,
+  Announcements,
+} from "../plugins/gatsby-theme-flow/src/components/flow-status";
 
-<FlowNetworkStatus />
+import {
+  MAINNET,
+  TESTNET,
+  CANARYNET,
+} from "../plugins/gatsby-theme-flow/src/components/flow-status/constants";
+
+## Chains
+
+<FlowNetworkStatus
+  networkName={MAINNET}
+  networkVersion="9"
+  versionUrl=""
+  nextSporkDate="June 23, 2021"
+/>
+<FlowNetworkStatus
+  networkName={TESTNET}
+  networkVersion="9"
+  versionUrl=""
+  nextSporkDate="June 23, 2021"
+/>
+<FlowNetworkStatus
+  networkName={CANARYNET}
+  networkVersion="9"
+  versionUrl=""
+  nextSporkDate="June 23, 2021"
+/>
+
+## Announcements
+
+<Announcements />

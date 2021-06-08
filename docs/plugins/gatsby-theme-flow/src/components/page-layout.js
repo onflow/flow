@@ -21,7 +21,7 @@ import { startCase } from "lodash";
 import { theme } from "../colors";
 import "../prism.less";
 import breakpoints from "../utils/breakpoints";
-import { sizes } from "../utils/breakpoints";
+import { StatusWidget } from "../components/flow-status/components";
 
 import FlexWrapper from "./flex-wrapper";
 import Header from "./header";
@@ -201,6 +201,7 @@ export default function PageLayout(props) {
               <MobileLogo />
               <MenuButton onClick={openSidebar} />
             </MobileNav>
+            <StatusWidget />
             {algoliaApiKey && algoliaIndexName && (
               <Search
                 siteName={siteName}

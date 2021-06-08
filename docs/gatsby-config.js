@@ -183,12 +183,11 @@ const sections = [
       "faq/*",
       "community-updates/*",
       "flow-port/**/*",
-      "bounties/*"
+      "bounties/*",
     ],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [],
       Ecosystem: [
         "[Access API](/access-api)",
         "[Core Contracts](/core-contracts)",

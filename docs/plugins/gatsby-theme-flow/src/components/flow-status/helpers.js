@@ -1,9 +1,10 @@
-import moment from "moment";
+import * as fcl from "@onflow/fcl";
 
-export async function getNetworkVersion(networkName) {
-  return 10;
-}
+export const pingScript = "pub fun main(): Int { return 12 }";
 
-export async function getNextSporkDate(networkName) {
-  return moment(new Date()).format("MMM Do");
-}
+export const pinger = (accessAPIURL) => {
+  return async () => {
+    await fcl.config().put("accessNode.api", accessAPIURL);
+    return await fcl.send([fcl.script(pingScript)]).then(fcl.decode);
+  };
+};

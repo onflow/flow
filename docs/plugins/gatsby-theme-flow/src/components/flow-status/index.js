@@ -1,38 +1,39 @@
 import React from "react";
-import moment from "moment";
 
 import { StatusCard, RecentPost } from "./components";
-import { MAINNET, TESTNET, CANARYNET } from "./constants";
+import {
+  MAINNET_ACCESS_API_URL,
+  TESTNET_ACCESS_API_URL,
+  CANARYNET_ACCESS_API_URL,
+} from "./constants";
 import { useBreakingChangesPosts } from "./hooks";
 import { StatusWrapper, AnnouncementsWrapper } from "./styles";
 
-const networks = [
-  [MAINNET, "https://access-mainnet-beta.onflow.org"],
-  [TESTNET, "https://access-testnet.onflow.org"],
-  [CANARYNET, "https://canary.onflow.org"],
-];
+const networks = {
+  MAINNET: MAINNET_ACCESS_API_URL,
+  TESTNET: TESTNET_ACCESS_API_URL,
+  CANARYNET: CANARYNET_ACCESS_API_URL,
+};
 
-export function FlowNetworkStatus() {
-  const recentPosts = useBreakingChangesPosts();
-
+export function FlowNetworkStatus(props) {
   return (
-    <>
-      <h2>Chains</h2>
-      <StatusWrapper>
-        {networks.map(([networkName, accessAPIURL]) => (
-          <StatusCard
-            key={networkName}
-            accessAPIURL={accessAPIURL}
-            networkName={networkName}
-          />
-        ))}
-      </StatusWrapper>
-      <h2>Recent Announcements</h2>
-      <AnnouncementsWrapper>
-        {recentPosts.map((post) => (
-          <RecentPost key={post.id} post={post} />
-        ))}
-      </AnnouncementsWrapper>
-    </>
+    <StatusWrapper>
+      <StatusCard
+        key={props.networkName}
+        accessAPIURL={networks[props.networkName]}
+        {...props}
+      />
+    </StatusWrapper>
+  );
+}
+
+export function Announcements() {
+  const recentPosts = useBreakingChangesPosts();
+  return (
+    <AnnouncementsWrapper>
+      {recentPosts.map((post) => (
+        <RecentPost key={post.id} post={post} />
+      ))}
+    </AnnouncementsWrapper>
   );
 }

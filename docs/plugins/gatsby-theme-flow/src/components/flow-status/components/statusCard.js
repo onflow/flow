@@ -1,33 +1,31 @@
 import React, { useState } from "react";
-import { startCase } from "lodash";
-import useSWR from "swr";
-import * as fcl from "@onflow/fcl";
 
-import { NetworkVersion, NextSporkDate } from ".";
+import { startCase } from "lodash";
+
+import useSWR from "swr";
 
 import { HEALTHY, DEGRADED, UNAVAILABLE } from "../constants";
-
+import { pinger, pingScript } from "../helpers";
 import { StatusCardWrapper } from "../styles";
 
-const pingScript = "pub fun main(): Int { return 12 }";
-
-const pinger = (accessAPIURL) => {
-  return async () => {
-    await fcl.config().put("accessNode.api", accessAPIURL);
-    return await fcl.send([fcl.script(pingScript)]).then(fcl.decode);
-  };
-};
-
-export default function StatusCard({ accessAPIURL, networkName }) {
+export default function StatusCard({
+  accessAPIURL,
+  networkName,
+  networkVersion,
+  nextSporkDate,
+}) {
   const [networkStatus, setStatus] = useState(HEALTHY);
 
   useSWR(pingScript, pinger(accessAPIURL), {
-    refreshInterval: 14000,
+    refreshInterval: 140000,
     onLoadingSlow: () => setStatus(DEGRADED),
     onSuccess: (result) => {
       if (result === 12) setStatus(HEALTHY);
     },
-    onError: () => setStatus(UNAVAILABLE),
+    onError: (err) => {
+      console.log(err);
+      setStatus(UNAVAILABLE);
+    },
   });
 
   return (
@@ -36,10 +34,12 @@ export default function StatusCard({ accessAPIURL, networkName }) {
         <h3>{startCase(networkName)}</h3>
       </div>
       <div className="network-version">
-        <NetworkVersion network={networkName} />
+        <h4>Version</h4>
+        {networkVersion}
       </div>
       <div className="next-spork-date">
-        <NextSporkDate network={networkName} />
+        <h4>Next spork date</h4>
+        {nextSporkDate}
       </div>
       <div className="network-status">
         <h4>Status</h4>
