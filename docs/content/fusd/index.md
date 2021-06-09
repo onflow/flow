@@ -51,10 +51,13 @@ Summerlin, NV 89145.
 
 ### How do I get an FUSD-enabled wallet?
 
-In order to hold FUSD tokens, 
-you will need a Flow account (wallet) that is configured to receive FUSD.
+In order to hold FUSD tokens,
+you will need a Flow account (wallet) that is configured to receive FUSD. 
 
-[Blocto](https://blocto.portto.io/) wallets have built-in support for FUSD.
+All FCL compatible wallets can be easily configured to also receive FUSD.
+
+FCL compatible wallets currently supporting FUSD include:
+- [Blocto](https://blocto.portto.io/)
 
 You can configure your Blocto wallet to hold FUSD in one of two ways:
 - **On mobile:** In the Blocto mobile app, add "Flow USD" as a token asset in the "Wallet" tab.
