@@ -16,7 +16,7 @@ including credit card.
 [You will need an FUSD-enabled wallet](/fusd/#how-do-i-get-an-fusd-enabled-wallet) 
 to purchase FUSD through Ramp. 
 
-### Blocto Swap (coming soon)
+### BloctoSwap
 
 [BloctoSwap](https://swap.blocto.app/), 
 a decentralized exchange (DEX) on Flow,

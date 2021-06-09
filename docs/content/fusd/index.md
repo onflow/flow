@@ -55,13 +55,13 @@ you will need a Flow account (wallet) that is configured to receive FUSD.
 [Blocto](https://blocto.portto.io/) wallets have built-in support for FUSD.
 
 You can configure your Blocto wallet to hold FUSD in one of two ways:
-- In the Blocto mobile app, add "Flow USD" as a token asset in the "Wallet" tab.
-- Log in to [Flow Port](https://port.onflow.org/) using your Blocto account 
+- **On mobile:** In the Blocto mobile app, add "Flow USD" as a token asset in the "Wallet" tab.
+- **In browser:** Log in to [Flow Port](https://port.onflow.org/) using your Blocto account 
 and select "Configure" in the "FUSD Balance" panel.
 
 #### For Developers
 
-Use the [FUSD setup transaction](/fusd/transactions)
+Use the [FUSD setup transaction](/fusd/transactions/#setup-fusd-vault--receiver)
 to manually configure a Flow account to hold FUSD.
 
 ### Does the Flow Ledger app support FUSD?
