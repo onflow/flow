@@ -39,6 +39,8 @@ FUSD is made available on Mainnet through [several providers](/fusd/providers/#m
 To add FUSD to your app on Mainnet, use the [standard transactions and scripts](/fusd/transactions) with the
 Mainnet contract addresses.
 
+---
+
 ## FAQs
 
 ### Who is the issuer of FUSD?
@@ -64,10 +66,6 @@ and select "Configure" in the "FUSD Balance" panel.
 Use the [FUSD setup transaction](/fusd/transactions/#setup-fusd-vault--receiver)
 to manually configure a Flow account to hold FUSD.
 
-### Does the Flow Ledger app support FUSD?
-
-No, the Flow Ledger application does not yet support FUSD, but support is planned.
-
 ### Where can my users purchase FUSD?
 
 See the [providers](/fusd/providers/) page for available FUSD providers.
@@ -75,3 +73,7 @@ See the [providers](/fusd/providers/) page for available FUSD providers.
 ### How do I sell FUSD for fiat?
 
 See the [providers](/fusd/providers/) page for available FUSD providers.
+
+### Does the Flow Ledger app support FUSD?
+
+No, the Flow Ledger application does not yet support FUSD, but support is planned.
