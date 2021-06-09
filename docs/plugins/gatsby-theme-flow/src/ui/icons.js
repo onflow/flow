@@ -1,25 +1,26 @@
-import React from "react";
 import styled from "@emotion/styled";
+
+import React from "react";
+
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
-import Search from "../assets/search.svg";
-
+import CadenceColor from "../assets/cadence-color.svg";
 import Cadence from "../assets/cadence.svg";
+import CLIColor from "../assets/cli-color.svg";
+import CLI from "../assets/cli.svg";
+import EmulatorColor from "../assets/emulator-color.svg";
+import Emulator from "../assets/emulator.svg";
+import GoSDKColor from "../assets/go-color.svg";
+import GoSDK from "../assets/go.svg";
+import JSSDKColor from "../assets/js-color.svg";
+import JSSDK from "../assets/js.svg";
+import PlaygroundColor from "../assets/playground-color.svg";
+import Playground from "../assets/playground.svg";
 import Port from "../assets/port.svg";
 import PortColor from "../assets/port.svg";
-import CadenceColor from "../assets/cadence-color.svg";
-import Emulator from "../assets/emulator.svg";
-import EmulatorColor from "../assets/emulator-color.svg";
-import CLI from "../assets/cli.svg";
-import CLIColor from "../assets/cli-color.svg";
-import Playground from "../assets/playground.svg";
-import PlaygroundColor from "../assets/playground-color.svg";
-import GoSDK from "../assets/go.svg";
-import GoSDKColor from "../assets/go-color.svg";
-import JSSDK from "../assets/js.svg";
-import JSSDKColor from "../assets/js-color.svg";
-import VSCode from "../assets/vscode.svg";
+import Search from "../assets/search.svg";
 import VSCodeColor from "../assets/vscode-color.svg";
+import VSCode from "../assets/vscode.svg";
 
 export {
   FaArrowDown as IconArrowDown,
@@ -40,6 +41,12 @@ export {
   FaTwitter as IconTwitter,
   FaUmbrellaBeach as IconPlayground,
 } from "react-icons/fa";
+
+export {
+  GrStatusGood,
+  GrStatusUnknown,
+  GrStatusCritical,
+} from "react-icons/gr";
 
 const SVGIconContainer = styled.img({
   height: "1em",
