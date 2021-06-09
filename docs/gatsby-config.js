@@ -569,7 +569,6 @@ module.exports = {
     title: "Flow Documentation",
   },
   plugins: [
-    "gatsby-plugin-remove-trailing-slashes",
     {
       resolve: "gatsby-plugin-breadcrumb",
       options: {
