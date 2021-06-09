@@ -216,7 +216,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["[Cadence Language Reference](/cadence/language)"],
+      Overview: ["[Cadence Language Reference](/cadence/language/)"],
       "Developer Guides": [
         "[Introduction to Cadence](/cadence)",
         "cadence/design-patterns",
