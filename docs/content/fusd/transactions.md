@@ -16,6 +16,8 @@ contract interface on Flow.
 | Testnet  | [0xe223d8a629e49c68](https://flow-view-source.com/testnet/account/0xe223d8a629e49c68/contract/FUSD) |
 | Mainnet  | [0x3c5959b568896393](https://flowscan.org/contract/A.3c5959b568896393.FUSD) |
 
+Source: [FUSD.cdc](https://github.com/onflow/fusd/blob/main/contracts/FUSD.cdc)
+
 ## Transactions & Scripts
 
 ### Setup FUSD Vault & Receiver
