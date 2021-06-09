@@ -29,14 +29,14 @@ A mock version of FUSD is live on Flow Testnet for development purposes.
 Testnet FUSD is not backed by any real USD and is available
 only for testing purposes.
 
-To support FUSD on Testnet, use the [standard transactions and scripts](/fusd/transactions) with the
+To add FUSD to your app on Testnet, use the [standard transactions and scripts](/fusd/transactions) with the
 Testnet contract addresses.
 
 ### FUSD on Flow Mainnet
 
 FUSD is made available on Mainnet through [several providers](/fusd/providers/#mainnet).
 
-To support FUSD on Mainnet, use the [standard transactions and scripts](/fusd/transactions) with the
+To add FUSD to your app on Mainnet, use the [standard transactions and scripts](/fusd/transactions) with the
 Mainnet contract addresses.
 
 ## FAQs
@@ -47,10 +47,31 @@ FUSD is issued by [Prime Trust](https://www.primetrust.com/),
 a Nevada-based trust company with address 330 South Rampart Blvd. Suite 260
 Summerlin, NV 89145.
 
+### How do I get an FUSD-enabled wallet?
+
+In order to hold FUSD tokens, 
+you will need a Flow account (wallet) that is configured to receive FUSD.
+
+[Blocto](https://blocto.portto.io/) wallets have built-in support for FUSD.
+
+You can configure your Blocto wallet to hold FUSD in one of two ways:
+- In the Blocto mobile app, add "Flow USD" as a token asset in the "Wallet" tab.
+- Log in to [Flow Port](https://port.onflow.org/) using your Blocto account 
+and select "Configure" in the "FUSD Balance" panel.
+
+#### For Developers
+
+Use the [FUSD setup transaction](/fusd/transactions)
+to manually configure a Flow account to hold FUSD.
+
+### Does the Flow Ledger app support FUSD?
+
+No, the Flow Ledger application does not yet support FUSD, but support is planned.
+
 ### Where can my users purchase FUSD?
 
 See the [providers](/fusd/providers/) page for available FUSD providers.
 
 ### How do I sell FUSD for fiat?
 
-See the [providers](/fusd/providers/) page for available FUSD->fiat providers.
+See the [providers](/fusd/providers/) page for available FUSD providers.
