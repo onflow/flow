@@ -32,6 +32,7 @@ export function useBreakingChangesPosts() {
           post.__formatted_date = date;
           return post;
         })
+        // Couldn't find any sorting options on the API side
         .sort((a, b) => {
           return new Date(a.created_at).getTime() >
             new Date(b.created_at).getTime()

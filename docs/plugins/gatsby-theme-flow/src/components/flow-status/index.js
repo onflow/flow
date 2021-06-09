@@ -15,7 +15,7 @@ const networks = {
   CANARYNET: CANARYNET_ACCESS_API_URL,
 };
 
-export function FlowNetworkStatus(props) {
+export function NetworkStatus(props) {
   return (
     <StatusWrapper>
       <StatusCard
