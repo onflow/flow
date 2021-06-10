@@ -221,6 +221,8 @@ const sections = [
         "[Introduction to Cadence](/cadence)",
         "cadence/design-patterns",
         "cadence/anti-patterns",
+        "cadence/msg-sender",
+        "cadence/measuring-time",
         "cadence/migration-guide",
         "cadence/json-cadence-spec",
       ],
