@@ -1,11 +1,16 @@
-import Logo from "./logo";
-import PropTypes from "prop-types";
-import React, { Fragment } from "react";
 import styled from "@emotion/styled";
+
+import PropTypes from "prop-types";
+
+import React, { Fragment } from "react";
+
+import { transparentize } from "polished";
+
 import { theme } from "../colors";
 import breakpoints from "../utils/breakpoints";
-import { transparentize } from "polished";
 import TrackingLink from "../../../../content/components/tracking-link";
+
+import Logo from "./logo";
 
 const Container = styled.aside({
   flexShrink: 0,

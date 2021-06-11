@@ -12,6 +12,7 @@ export default function RecentPost({ post }) {
     <a
       href={FORUM_ADDRESS + post.slug}
       target="_blank"
+      rel="noreferrer"
       onClick={() =>
         mixpanel.track("status_page_forum_post_clicked", {
           post: post.slug,
