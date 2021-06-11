@@ -9,17 +9,6 @@ Legend:
 
 Want your SDK listed here? Please fork the [`flow` repository](https://github.com/onflow/flow), edit [this page](https://github.com/onflow/flow/blob/master/docs/content/sdks.md), and submit a pull request.
 
-<!-- ## Go
-
-|             |                     |                                       |
-| ----------- | ------------------: | ------------------------------------- |
-| Flow Go SDK | 😀 [📘](/flow-go-sdk) | https://github.com/onflow/flow-go-sdk |
-
-## JavaScript
-
-|     |                     |                                       |
-| --- | ------------------: | ------------------------------------- |
-| FCL | 😀 [📘](/flow-js-sdk) | https://github.com/onflow/flow-js-sdk | --> |
 
 ## JVM (Java, Kotlin, Scala, etc.)
 
