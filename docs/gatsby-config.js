@@ -545,6 +545,7 @@ const sections = [
         "docs/language/accounts",
         "docs/language/capability-based-access-control",
         "docs/language/contracts",
+        "docs/language/contract-updatability",
         "docs/language/events",
         "docs/language/transactions",
         "docs/language/run-time-types",
