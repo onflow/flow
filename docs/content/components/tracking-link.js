@@ -4,17 +4,12 @@ import PropTypes from "prop-types";
 
 import { useMixpanel } from "gatsby-plugin-mixpanel";
 
-import { theme } from "gatsby-theme-flow/src/colors";
-
-const TrackingLink = ({ href, eventName, children }) => {
+const TrackingLink = ({ href, eventName, children, ...props }) => {
   const mixpanel = useMixpanel();
   return (
     <a
       href={href}
-      style={{
-        color: theme.primary,
-        textDecoration: "none",
-      }}
+      {...props}
       onClick={() => {
         mixpanel.track(eventName);
       }}

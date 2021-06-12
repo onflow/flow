@@ -44,18 +44,13 @@ const Header = styled.div({
   marginBottom: 24,
 });
 
-const StyledTrackingLink = styled(TrackingLink)(() => ({
-  color: theme.text1,
-  textDecoration: "none",
-}));
-
 const Sidebar = React.forwardRef((props, ref) => {
   const content = (
     <Fragment>
       <Header>
-        <StyledTrackingLink href={props.logoLink} eventName="Home_clicked">
+        <TrackingLink href={props.logoLink} eventName="Home_clicked">
           <Logo />
-        </StyledTrackingLink>
+        </TrackingLink>
       </Header>
       <div className={props.className}>{props.children}</div>
     </Fragment>

@@ -1,6 +1,16 @@
-import PropTypes from "prop-types";
-import React, { useRef, useState, useContext } from "react";
 import styled from "@emotion/styled";
+
+import PropTypes from "prop-types";
+
+import React, { useRef, useState, useContext } from "react";
+
+import { Link, withPrefix } from "gatsby";
+
+import { size } from "polished";
+
+import { useMixpanel } from "gatsby-plugin-mixpanel";
+
+import { theme, colors } from "../colors";
 import {
   IconExpandList,
   IconCollapseList,
@@ -8,13 +18,10 @@ import {
   IconChevronUp,
   getProjectIcon,
 } from "../ui/icons";
-import { Link, withPrefix } from "gatsby";
-import { theme, colors } from "../colors";
 import { smallCaps } from "../utils/typography";
-import { size } from "polished";
-import { NavItemsContext } from "./page-layout";
-import { useMixpanel } from "gatsby-plugin-mixpanel";
 import TrackingLink from "../../../../content/components/tracking-link";
+
+import { NavItemsContext } from "./page-layout";
 
 const ExpandAll = styled.button(smallCaps, {
   display: "flex",
@@ -292,9 +299,10 @@ export default function SidebarNav(props) {
             .filter((navItem) => {
               return !navItem.omitLandingPage;
             })
-            .map((navItem, index) => {
+            .map((navItem) => {
               return (
                 <StyledTrackingLink
+                  key={navItem.url}
                   href={navItem.url}
                   eventName={`Homepage_nav_${navItem.url}_clicked`}
                 >
