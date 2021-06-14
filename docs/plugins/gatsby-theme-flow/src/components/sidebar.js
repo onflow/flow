@@ -1,11 +1,16 @@
-import Logo from "./logo";
-import PropTypes from "prop-types";
-import React, { Fragment } from "react";
 import styled from "@emotion/styled";
+
+import PropTypes from "prop-types";
+
+import React, { Fragment } from "react";
+
+import { transparentize } from "polished";
+
 import { theme } from "../colors";
 import breakpoints from "../utils/breakpoints";
-import { transparentize } from "polished";
 import TrackingLink from "../../../../content/components/tracking-link";
+
+import Logo from "./logo";
 
 const Container = styled.aside({
   flexShrink: 0,
@@ -39,18 +44,13 @@ const Header = styled.div({
   marginBottom: 24,
 });
 
-const StyledTrackingLink = styled(TrackingLink)(() => ({
-  color: theme.text1,
-  textDecoration: "none",
-}));
-
 const Sidebar = React.forwardRef((props, ref) => {
   const content = (
     <Fragment>
       <Header>
-        <StyledTrackingLink href={props.logoLink} eventName="Home_clicked">
+        <TrackingLink href={props.logoLink} eventName="Home_clicked">
           <Logo />
-        </StyledTrackingLink>
+        </TrackingLink>
       </Header>
       <div className={props.className}>{props.children}</div>
     </Fragment>
