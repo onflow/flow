@@ -1,9 +1,14 @@
-import React, { useContext } from "react";
 import styled from "@emotion/styled";
+
+import React, { useContext } from "react";
+
 import { NavItemsContext, NavItemDescription } from "gatsby-theme-flow";
+
 import { size } from "polished";
-import { MenuWrapper, MenuItem } from "./menu";
+
 import { getProjectIcon } from "gatsby-theme-flow/src/ui/icons";
+
+import { MenuWrapper, MenuItem } from "./menu";
 import TrackingLink from "./tracking-link";
 
 const AppIcon = styled.div({
@@ -22,9 +27,6 @@ const AppIcon = styled.div({
 const StyledTrackingLink = styled(TrackingLink)(() => ({
   color: "inherit",
   textDecoration: "none",
-  ":hover": {
-    textDecoration: "underline",
-  },
 }));
 
 export default function DocsetMenu(props) {
