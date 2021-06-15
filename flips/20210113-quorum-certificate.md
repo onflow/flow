@@ -158,7 +158,7 @@ but this would make upgrading and unit testing more challenging
 * `startVoting` has to iterate through all clusters and nodes to initialize contract field each epoch,
   which could take lot of time and gas. This one is harder to avoid though,
   but it is only called by the service account, so isn't as much of a problem.
-* Including full votes in the `EpochCommitted` service event results in significantly larger event size --
+* Including full votes in the `EpochCommit` service event results in significantly larger event size --
   performing vote aggregation within the contract would make the data size of the resulting vote data proportional to the number of clusters rather than the number of collectors
 
 ### Dependencies
