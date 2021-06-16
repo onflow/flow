@@ -352,12 +352,10 @@ const sections = [
       Packages: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl)",
         "[@onflow/types](/flow-js-sdk/packages/types)",
-        "[@onflow/sdk](/flow-js-sdk/packages/sdk/readme)",
       ],
       Changelogs: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl/CHANGELOG)",
         "[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)",
-        "[@onflow/sdk](/flow-js-sdk/packages/sdk/CHANGELOG)",
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
