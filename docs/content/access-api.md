@@ -916,7 +916,7 @@ message TransactionSignature {
 | authorizers                   | Addresses of the transaction authorizers                                                            |
 | signatures                    | [Signatures](#transaction-signatures) from all signer accounts                                      |
 
-The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](/docs/transaction-lifecycle.md#submission).
+The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](/concepts/transaction-signing.md).
 
 ### Proposal Key
 
