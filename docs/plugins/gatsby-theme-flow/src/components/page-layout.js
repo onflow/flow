@@ -201,7 +201,7 @@ export default function PageLayout(props) {
               <MobileLogo />
               <MenuButton onClick={openSidebar} />
             </MobileNav>
-            <StatusWidget />
+            {/* <StatusWidget /> */}
             {algoliaApiKey && algoliaIndexName && (
               <Search
                 siteName={siteName}
