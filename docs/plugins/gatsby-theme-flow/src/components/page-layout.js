@@ -201,6 +201,7 @@ export default function PageLayout(props) {
               <MobileLogo />
               <MenuButton onClick={openSidebar} />
             </MobileNav>
+            {/* Leave the widget here, so we can re-enable when status endpoint is ready. */}
             {/* <StatusWidget /> */}
             {algoliaApiKey && algoliaIndexName && (
               <Search
