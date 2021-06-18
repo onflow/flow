@@ -22,12 +22,12 @@ const navConfig = {
       "Learn the basics of Flow and Cadence using our browser-based playground.",
     linkText: "Launch the Flow Playground",
   },
-  "JavaScript SDK": {
+  "FCL (Flow's JavaScript Client Library)": {
     url: "/flow-js-sdk",
     icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
-    linkText: "JavaScript SDK Documentation",
+    linkText: "FCL Documentation",
   },
   "Go SDK": {
     url: "/flow-go-sdk",
