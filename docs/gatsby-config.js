@@ -22,7 +22,7 @@ const navConfig = {
       "Learn the basics of Flow and Cadence using our browser-based playground.",
     linkText: "Launch the Flow Playground",
   },
-  "FCL (Flow's JavaScript Client Library)": {
+  "FCL (Flow Client Library)": {
     url: "/fcl",
     icon: "js-sdk",
     description:
