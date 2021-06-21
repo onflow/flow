@@ -1,14 +1,15 @@
-version: v1
+version: v1beta1
 name: buf.build/onflow/flow
 deps:
   - buf.build/beta/googleapis
+  - buf.build/grpc-ecosystem/grpc-gateway
 build:
   roots:
-    - .
+    - protobuf
 lint:
   use:
     - DEFAULT
-  enum_zero_value_suffix:
+  enum_zero_value_suffix: UNKNOWN
   service_suffix: API
 breaking:
   use:
