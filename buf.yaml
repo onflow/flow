@@ -1,0 +1,15 @@
+version: v1
+name: buf.build/onflow/flow
+deps:
+  - buf.build/beta/googleapis
+build:
+  roots:
+    - .
+lint:
+  use:
+    - DEFAULT
+  enum_zero_value_suffix:
+  service_suffix: API
+breaking:
+  use:
+    - FILE
