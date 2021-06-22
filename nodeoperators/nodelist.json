@@ -2945,42 +2945,18 @@
     },
     {
         "Role": "access",
-        "Address": "flo4-aws-us-east-1.flonode.alchemyapi.io:3569",
-        "NodeID": "3b845784ae08964dde68b890f0f5e69274c3065f412f10753a03396fd731ca66",
+        "Address": "flow-mainnet-1.blockchain.circle.com:3569",
+        "NodeID": "1b09878f16bf98a31ed9b6d2073692af70a032482a0652307852c743765674b4",
         "Stake": 1000,
-        "NetworkPubKey": "6d892cfe98c92fb9c92eb29048dbbd90f8cabaa5ed466dbbfb599a6e46ae0465dd4f59022aff6f86a8eed7e89e7ab65db8b7296f9e28505b8328c7319bba382b",
-        "StakingPubKey": "873c908487dd8faa9588294b6499a953740134c2fa1c585cefced078f21d77c46afe7b412729b2a72e59a32bad4c942d06795982475317745a62d37b6ccfbabf7b6b2e696a1a9cd488a4691521e9d715ea2c985da06169fed25da1a7a353eb42"
+        "NetworkPubKey": "481d87db687edfe347b142ad4a59c2bd46b1ced9a955e254432dbb0c0003c66f45e89ef7e1f1f38e01a850023901d3d1e5782279ac220e8132767452ff7ba1bb",
+        "StakingPubKey": "81b485ddc22754fbc2416acf2b9ef673bbbb6f9c8e99d01695cff3bc987a122c3671522378f7f21ed6f335e110fa197713d42b3afe7b806674c158c078b626eff21d617147ff1cff4ccd745d864522140e74b7a2e2e74887190f433e4ceaf422"
     },
     {
         "Role": "access",
-        "Address": "flo5-aws-us-east-1.flonode.alchemyapi.io:3569",
-        "NodeID": "5bed8d08616afc818781e87e3073370641d2dc02e5c216ddf66a0af0331e7904",
+        "Address": "flow-node.anchorage.com:3569",
+        "NodeID": "1e0f77af45db69d9e2361739b7dd3738ec5b59af48a5e49b32a09d8b9c307d92",
         "Stake": 1000,
-        "NetworkPubKey": "9b5b53797ab8ace1d47f077e78294c8e1b5148f795e5e6b4b7eb661b84cf6fe4d685984deff9b4153dab721e5988f065e34a1c8b89f2c171e7209e98d965f2b9",
-        "StakingPubKey": "a126a0dc5a75a3357a137936c95bb34f8e45e9e405a1157a218a4b5169eb4b963530619f8206c9d266c36a33f56a85ec04d8d77287829dd831bc6067e8b9786d03c536e495d9a9eae2a59464a53c6002263c7f5e9d043f087dc942e31f5cbb2f"
-    },
-    {
-        "Role": "access",
-        "Address": "flo6-aws-us-east-1.flonode.alchemyapi.io:3569",
-        "NodeID": "83d0125d279ba7c612245fdc5be5b84f3048475f8547e6520d53cdd2214a69e8",
-        "Stake": 1000,
-        "NetworkPubKey": "55cea9ae72ceac3b8adb3a08fcf1355440c4c6162628a2addcc02f027f780277fa6e5b0a6a024201cc6fc7d5c23ba511f64da3f7bb462133a974291e4539cff1",
-        "StakingPubKey": "aab7f2d10956666f621c3225374c6224ca34ca03834e5d317bc247438f2cc98127c210ea8062081712ecba4dfb93a7b6139fc7eb3ae9e2a669a473cafac05ea4562c38ed8fefa169b70aa7ae9579ca272eaec45d0fc2450fa491e3eb759e8793"
-    },
-    {
-        "Role": "access",
-        "Address": "flo2-aws-us-east-1.flonode.alchemyapi.io:3569",
-        "NodeID": "8ab9a944436fcf367bc56789944ed008726aa62edbecd1db90d7649e5c25e1b1",
-        "Stake": 1000,
-        "NetworkPubKey": "b9001ca95ca54190fc1dd274e0893e16c980ed2af4769a557957ccc76658f68f7d2f75548f5872afee62bc7f2202bb57a8fd3ab37de3a48eba1e98484fb8c651",
-        "StakingPubKey": "a83e17ae66078ea386f209e522a065bce39e5e94dbeed622abd66bd1bd5d16542b40592c5900b3f5f8aeae6db45b5aa4035e39678206ada6bae7254c34d32e6490a3c07055d304d6ff95e3464231f095552ae0966fc0831ead912b4bf221c815"
-    },
-    {
-        "Role": "access",
-        "Address": "flo3-aws-us-east-1.flonode.alchemyapi.io:3569",
-        "NodeID": "bf3d293fdb58defe6cd2d301f39bb210e6cf53c4ee316a0be280532b9fcab11e",
-        "Stake": 1000,
-        "NetworkPubKey": "57a017e4adaf93280901e4b6df9ab9eefb67283dc53b43365aaa72af1ccfe922ea19bbb9ca881aac56ba7bb8c958076e18b0e9a715da311f1867258f79f54552",
-        "StakingPubKey": "b69743b1fde830fe4bf626b852398e45ebf7cf9626cfeec4597c35b461dc1cb32b751ee6b690c410242b15382991c9ff0480c3e25cf24893200c3879e7184cded14a3c775339c4c869397a33e235ca74adcdc65e9809aef639be9048e6cee282"
+        "NetworkPubKey": "f788aa0879c151372db7642bdc368ad7ff1508930bbb593587644179c2381354b72a483c8288b9915cb4708851d3369218c12eac9a0944658a8064539484c532",
+        "StakingPubKey": "abce4836822c2f36847a7a410c26bb2a25667993b5a5f7cacacc5c5b3ef198bfbdea34525ef3e4b16d06ea93bacae7150203da845310d3cfcc41d6c4a9c7f3eb6a59f63f0722145f9bdff95d0cf172bb2be1b94cc216fd688566c489d00b800c"
     }
 ]
