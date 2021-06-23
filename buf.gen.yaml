@@ -1,16 +1,10 @@
 version: v1beta1
 plugins:
   - name: go
-    out: gen/go
+    out: protobuf/go
     opt:
       - paths=source_relative
   - name: go-grpc
-    out: gen/go
+    out: protobuf/go
     opt:
       - paths=source_relative
-  - name: grpc-gateway
-    out: gen/go
-    opt:
-      - paths=source_relative
-  - name: openapiv2
-    out: gen/openapiv2
