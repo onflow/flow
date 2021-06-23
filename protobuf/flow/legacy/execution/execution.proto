@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package execution;
 
-option go_package = "github.com/onflow/flow/protobuf/flow/legacy/execution";
+option go_package = "github.com/onflow/flow/protobuf/go/flow/legacy/execution";
 option java_package = "org.onflow.protobuf.legacy.execution";
 
 import "flow/legacy/entities/account.proto";

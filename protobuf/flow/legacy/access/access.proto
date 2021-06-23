@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package access;
 
-option go_package = "github.com/onflow/flow/protobuf/flow/legacy/access";
+option go_package = "github.com/onflow/flow/protobuf/go/flow/legacy/access";
 option java_package = "org.onflow.protobuf.legacy.access";
 
 import "flow/legacy/entities/account.proto";
