@@ -9,6 +9,3 @@
 # Gradle temp files
 protobuf/.gradle
 protobuf/build
-
-# Tool dependencies
-/bin

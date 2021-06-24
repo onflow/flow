@@ -1,10 +1,9 @@
 version: v1beta1
-name: buf.build/onflow/flow
 deps:
   - buf.build/beta/googleapis
 build:
   roots:
-    - protobuf
+    - .
 lint:
   use:
     - DEFAULT
