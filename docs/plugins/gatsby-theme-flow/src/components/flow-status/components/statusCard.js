@@ -4,29 +4,29 @@ import { startCase } from "lodash";
 
 import useSWR from "swr";
 
-import { HEALTHY, DEGRADED, UNAVAILABLE } from "../constants";
-import { pinger, pingScript } from "../helpers";
+import { HEALTHY } from "../constants";
 import { StatusCardWrapper } from "../styles";
 
 export default function StatusCard({
-  accessAPIURL,
   networkName,
   networkVersion,
   nextSporkDate,
 }) {
   const [networkStatus, setStatus] = useState(HEALTHY);
 
-  useSWR(pingScript, pinger(accessAPIURL), {
-    refreshInterval: 140000,
-    onLoadingSlow: () => setStatus(DEGRADED),
-    onSuccess: (result) => {
-      if (result === 12) setStatus(HEALTHY);
-    },
-    onError: (err) => {
-      console.log(err);
-      setStatus(UNAVAILABLE);
-    },
-  });
+  useSWR(
+    "https://ytw5bdg6zr13.statuspage.io/api/v2/components.json",
+    (...args) => fetch(...args).then((res) => res.json()),
+    {
+      refreshInterval: 14000,
+      onSuccess: (result) => {
+        setStatus(result);
+      },
+      onError: (err) => {
+        console.log(err);
+      },
+    }
+  );
 
   return (
     <StatusCardWrapper networkStatus={networkStatus}>

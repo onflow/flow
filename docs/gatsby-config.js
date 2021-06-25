@@ -1,5 +1,13 @@
 const path = require("path");
 
+if (process.env.NODE_ENV !== "production") {
+ 
+  require("dotenv").config({
+    path: `.env.local`,
+  });
+  
+}
+
 const navConfig = {
   "Getting Started": {
     url: "/",
@@ -81,20 +89,20 @@ const sourceGithubRepos = {
 
 // sourceSlugTransformers maps a sourceInstanceName to slug transformation functions
 const sourceSlugTransformers = {
-  "cadence-github": (slug) => slug.replace(/^\/docs\//, "/cadence/"),
-  "flow-js-sdk-github": (slug) =>
+  "cadence-github": slug => slug.replace(/^\/docs\//, "/cadence/"),
+  "flow-js-sdk-github": slug =>
     slug
       .replace(/^\/docs\//, "/flow-js-sdk/")
       .replace(/^\/packages\//, "/flow-js-sdk/packages/")
       // Use README files as 'index' files!
       .replace("README/", ""),
-  "flow-go-sdk-github": (slug) =>
+  "flow-go-sdk-github": slug =>
     slug
       .replace(/^\/docs\//, "/flow-go-sdk/")
       .replace(/^\/examples\//, "/flow-go-sdk/examples/")
       // Use README files as 'index' files!
       .replace("README/", ""),
-  "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/"),
+  "flow-cli-github": slug => slug.replace(/^\/docs\//, "/flow-cli/"),
 };
 
 const sources = [
