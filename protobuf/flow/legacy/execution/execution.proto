@@ -12,33 +12,27 @@ import "flow/legacy/entities/event.proto";
 service ExecutionAPI {
 
     // Ping is used to check if the access node is alive and healthy.
-    rpc Ping(PingRequest) returns (PingResponse);
+    rpc Ping (PingRequest) returns (PingResponse);
 
     // Accounts
 
     // GetAccountAtBlockID gets an account by address at the given block ID
-    rpc GetAccountAtBlockID(GetAccountAtBlockIDRequest)
-            returns (GetAccountAtBlockIDResponse);
+    rpc GetAccountAtBlockID (GetAccountAtBlockIDRequest) returns (GetAccountAtBlockIDResponse);
 
     // Scripts
 
-    // ExecuteScriptAtBlockID executes a ready-only Cadence script against the
-    // execution state at the block with the given ID.
-    rpc ExecuteScriptAtBlockID(ExecuteScriptAtBlockIDRequest)
-            returns (ExecuteScriptAtBlockIDResponse);
+    // ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
+    rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptAtBlockIDResponse);
 
     // Events
 
-    // GetEventsForBlockIDs retrieves events for all the specified block IDs that
-    // have the given type
-    rpc GetEventsForBlockIDs(GetEventsForBlockIDsRequest)
-            returns (GetEventsForBlockIDsResponse);
+    // GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
+    rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse);
 
     // Transaction
 
     // GetTransactionResult gets the result of a transaction.
-    rpc GetTransactionResult(GetTransactionResultRequest)
-            returns (GetTransactionResultResponse);
+    rpc GetTransactionResult (GetTransactionResultRequest) returns (GetTransactionResultResponse);
 }
 
 // Ping
@@ -54,7 +48,9 @@ message GetAccountAtBlockIDRequest {
     bytes address = 2;
 }
 
-message GetAccountAtBlockIDResponse {entities.Account account = 1;}
+message GetAccountAtBlockIDResponse {
+    entities.Account account = 1;
+}
 
 // Scripts
 
@@ -64,7 +60,9 @@ message ExecuteScriptAtBlockIDRequest {
     repeated bytes arguments = 3;
 }
 
-message ExecuteScriptAtBlockIDResponse {bytes value = 1;}
+message ExecuteScriptAtBlockIDResponse {
+    bytes value = 1;
+}
 
 // Events
 

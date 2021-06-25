@@ -6,8 +6,8 @@ option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
 option java_package = "org.onflow.protobuf.entities";
 
 message BlockSeal {
-    bytes block_id = 1;
-    bytes execution_receipt_id = 2;
-    repeated bytes execution_receipt_signatures = 3;
-    repeated bytes result_approval_signatures = 4;
+  bytes block_id = 1;
+  bytes execution_receipt_id = 2;
+  repeated bytes execution_receipt_signatures = 3;
+  repeated bytes result_approval_signatures = 4;
 }

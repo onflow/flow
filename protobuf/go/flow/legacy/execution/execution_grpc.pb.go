@@ -22,11 +22,9 @@ type ExecutionAPIClient interface {
 	Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error)
 	// GetAccountAtBlockID gets an account by address at the given block ID
 	GetAccountAtBlockID(ctx context.Context, in *GetAccountAtBlockIDRequest, opts ...grpc.CallOption) (*GetAccountAtBlockIDResponse, error)
-	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the
-	// execution state at the block with the given ID.
+	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
 	ExecuteScriptAtBlockID(ctx context.Context, in *ExecuteScriptAtBlockIDRequest, opts ...grpc.CallOption) (*ExecuteScriptAtBlockIDResponse, error)
-	// GetEventsForBlockIDs retrieves events for all the specified block IDs that
-	// have the given type
+	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
 	GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*GetEventsForBlockIDsResponse, error)
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(ctx context.Context, in *GetTransactionResultRequest, opts ...grpc.CallOption) (*GetTransactionResultResponse, error)
@@ -93,11 +91,9 @@ type ExecutionAPIServer interface {
 	Ping(context.Context, *PingRequest) (*PingResponse, error)
 	// GetAccountAtBlockID gets an account by address at the given block ID
 	GetAccountAtBlockID(context.Context, *GetAccountAtBlockIDRequest) (*GetAccountAtBlockIDResponse, error)
-	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the
-	// execution state at the block with the given ID.
+	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
 	ExecuteScriptAtBlockID(context.Context, *ExecuteScriptAtBlockIDRequest) (*ExecuteScriptAtBlockIDResponse, error)
-	// GetEventsForBlockIDs retrieves events for all the specified block IDs that
-	// have the given type
+	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
 	GetEventsForBlockIDs(context.Context, *GetEventsForBlockIDsRequest) (*GetEventsForBlockIDsResponse, error)
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(context.Context, *GetTransactionResultRequest) (*GetTransactionResultResponse, error)
