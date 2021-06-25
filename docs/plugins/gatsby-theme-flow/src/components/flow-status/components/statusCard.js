@@ -14,19 +14,19 @@ export default function StatusCard({
 }) {
   const [networkStatus, setStatus] = useState(HEALTHY);
 
-  useSWR(
-    "https://ytw5bdg6zr13.statuspage.io/api/v2/components.json",
-    (...args) => fetch(...args).then((res) => res.json()),
-    {
-      refreshInterval: 14000,
-      onSuccess: (result) => {
-        setStatus(result);
-      },
-      onError: (err) => {
-        console.log(err);
-      },
-    }
-  );
+  // useSWR(
+  //   "https://ytw5bdg6zr13.statuspage.io/api/v2/components.json",
+  //   (...args) => fetch(...args).then((res) => res.json()),
+  //   {
+  //     refreshInterval: 14000,
+  //     onSuccess: (result) => {
+  //       setStatus(result);
+  //     },
+  //     onError: (err) => {
+  //       console.log(err);
+  //     },
+  //   }
+  // );
 
   return (
     <StatusCardWrapper networkStatus={networkStatus}>
