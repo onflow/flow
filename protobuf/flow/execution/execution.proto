@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package flow.execution;
 
-option go_package = "execution";
+option go_package = "github.com/onflow/flow/protobuf/go/flow/execution";
 option java_package = "org.onflow.protobuf.execution";
 
 import "flow/entities/account.proto";
@@ -21,12 +21,14 @@ service ExecutionAPI {
 
     // Scripts
 
-    // ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
+    // ExecuteScriptAtBlockID executes a ready-only Cadence script against the
+    // execution state at the block with the given ID.
     rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptAtBlockIDResponse);
 
     // Events
 
-    // GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
+    // GetEventsForBlockIDs retrieves events for all the specified block IDs that
+    // have the given type
     rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse);
 
     // Transaction
@@ -37,9 +39,11 @@ service ExecutionAPI {
 
 // Ping
 
-message PingRequest {}
+message PingRequest {
+}
 
-message PingResponse {}
+message PingResponse {
+}
 
 // Accounts
 
