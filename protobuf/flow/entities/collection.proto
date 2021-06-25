@@ -6,11 +6,11 @@ option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
 option java_package = "org.onflow.protobuf.entities";
 
 message Collection {
-  bytes id = 1;
-  repeated bytes transaction_ids = 2;
+    bytes id = 1;
+    repeated bytes transaction_ids = 2;
 }
 
 message CollectionGuarantee {
-  bytes collection_id = 1;
-  repeated bytes signatures = 2;
+    bytes collection_id = 1;
+    repeated bytes signatures = 2;
 }
