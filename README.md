@@ -61,7 +61,7 @@ To interact with the Flow Access API from JavaScript you can use the [Flow JavaS
 
 - [Introduction to Cadence](https://docs.onflow.org/cadence/)
 - [Accounts, Keys & Signing](https://docs.onflow.org/concepts/accounts-and-keys/)
-- [Transaction Lifecyle](https://docs.onflow.org/concepts/transaction-lifecycle.md)
+- [Transaction Lifecyle](https://docs.onflow.org/concepts/transaction-lifecycle/)
 - [Flow Access API](https://docs.onflow.org/access-api/)
 - [JSON-Cadence Data Interchange Format](https://docs.onflow.org/cadence/json-cadence-spec/)
 - [Using the Emulator](https://github.com/onflow/flow-emulator)
