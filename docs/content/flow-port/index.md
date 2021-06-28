@@ -75,7 +75,7 @@ So you have decided you want to be a part of the Flow Network. Welcome! You are 
 If you are using a custody provider who controls your account and private keys for you, such as Kraken, Finoa, or Coinlist, they all have different policies and processes for what you need to do to stake your tokens, the rewards you receive, and the fees that they take from your staking rewards. Please see [our guides](/staking/custody-providers/) for more information about staking using supported custody providers.
 
 ### Starting a Manual Staking Transaction
- 1. You need to have FLOW in order to stake. Please see the [FLOW Token](/token) reference for information on how to become a FLOW holder.
+ 1. You need to have FLOW in order to stake. Please see the [FLOW Token](/flow-token) reference for information on how to become a FLOW holder.
 
  2. Once you have FLOW tokens in your account, you can start staking through [Flow Port](https://port.onflow.org/) or, if applicable, with your [custody provider](#staking-via-a-custody-provider).
 

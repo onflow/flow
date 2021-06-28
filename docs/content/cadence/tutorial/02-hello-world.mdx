@@ -356,8 +356,8 @@ A contract can refer to its member functions and fields with the keyword `self`.
 All contracts have access to the storage of the account where they are deployed and can access that `AuthAccount` object with `self.account`.
 
 `AuthAccount` objects have many different methods that are used to interact with account storage. 
-You can see the documentation for all of these in the Storage section of the language reference or in the [glossary](/intro/glossary/#account).
-The `save` method saves an object to account storage. The type parameter for the object type is contained in `<>` to indicate what type the stored object is. 
+You can see the documentation for all of these in the Storage section of the language reference or in the [glossary](/cadence/language/accounts).
+The `save` method saves an object to account storage. The type parameter for the object type is contained in `<>` to indicate what type the stored object is.   
 It can also be inferred from the argument's type.
 
 The first parameter is the object that is being stored, and the `to` parameter is the path that the object is being stored at. 

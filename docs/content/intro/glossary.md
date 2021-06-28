@@ -168,4 +168,3 @@ Dictionaries are mutable, unordered collections of key-value associations. Becau
 
 See the [Optionals Section](https://docs.onflow.org/docs/cadence#optionals) in the Cadence Language Reference for more in-depth explanations and examples.
 
-Check out the [FAQ](doc:faq) next.
