@@ -1,0 +1,477 @@
+openapi: "3.0.0"
+info:
+  version: "1.0.0"
+  title: "Access API"
+host: "access.mainnet.onflow.org"
+basePath: "/v1"
+schemes:
+  - "http"
+  - "https"
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /block-headers:
+    get:
+      summary: "Gets a block header by height"
+      tags:
+        - Block Headers
+      # operationId: "TODO: findBlockHeaderByHeight"
+      parameters: 
+        - name: height
+          in: query
+          schema:
+            oneOf:
+              - type: integer
+                format: uint64
+                minimum: 0
+                default: 0
+              - type: string
+                enum:
+                  - latest
+          required: true
+          description: "TODO"
+        - name: is_sealed
+          in: query
+          schema:
+            type: boolean
+            default: false
+          required: false
+          description: "TODO"
+      responses:
+        '200':
+          description: "TODO"
+  /block-headers/{id}:
+    get:
+      summary: "Gets a block header by ID"
+      tags:
+        - Block Headers
+      # operationId: "TODO"
+      parameters: 
+        - name: id
+          in: path
+          schema:
+            type: string
+            format: hexadecimal
+            pattern: '[a-fA-F0-9]+'
+            # TODO: add this to all hex fields
+          required: true
+          description: "TODO"
+      responses:
+        '200':
+          description: "TODO"
+  /blocks:
+    get:
+      summary: "Gets a full block by height"
+      tags:
+        - Blocks
+      # operationId: "TODO"
+      parameters: 
+        - name: height
+          in: query
+          schema:
+            oneOf:
+              - type: integer
+                format: uint64
+                minimum: 0
+                default: 0
+              - type: string
+                enum:
+                  - latest
+          required: true
+          description: "TODO"
+      responses:
+        '200':
+          description: "TODO"
+  /blocks/{id}:
+    get:
+      summary: "Gets a full block by ID"
+      tags:
+        - Blocks
+      # operationId: "TODO"
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+            format: hexadecimal
+          required: true
+          description: "TODO"
+      responses:
+        '200':
+          description: "TODO"
+  /collections/{id}:
+    get:
+      summary: "Gets a collection by ID"
+      tags:
+        - Collections
+      # operationId: "TODO"
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+            format: hexadecimal
+          required: true
+          description: "TODO"
+      responses:
+        '200':
+          description: "TODO"
+  /transactions:
+    post:
+      summary: "Submits a transaction to the network"
+      tags:
+        - Transactions
+      # operationId: "TODO"
+      requestBody:
+        description: "transaction to submit"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+      responses:
+        '200':
+          description: "TODO"
+  /transactions/{id}:
+    get:
+      summary: "Gets a transaction by ID"
+      tags:
+        - Transactions
+      # operationId: "TODO"
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+            format: hexadecimal
+          required: true
+          description: "TODO"
+      responses:
+        '200':
+          description: "TODO"
+  /transactions/{id}/result:
+    get:
+      summary: "Gets the result of a transaction"
+      tags:
+        - Transactions
+      # operationId: "TODO"
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+            format: hexadecimal
+          required: true
+          description: "TODO"
+      responses:
+        '200':
+          description: "TODO"
+  /accounts/{address}:
+    get:
+      summary: "Gets an account by address at the given block height"
+      tags:
+        - Accounts
+      # operationId: "TODO"
+      parameters: 
+        - name: address
+          in: path
+          schema:
+            type: string
+            format: hexadecimal
+          required: true
+          description: "TODO"
+        - name: block_height
+          in: query
+          schema:
+            oneOf:
+              - type: integer
+                format: uint64
+                minimum: 0
+                default: 0
+              - type: string
+                enum:
+                  - latest
+          required: true
+          description: "TODO"
+      responses:
+        '200':
+          description: "TODO"
+  /scripts:
+    post:
+      summary: "Executes a ready-only Cadence script against the execution state at the given block height or ID"
+      tags:
+        - Scripts
+      # operationId: "TODO"
+      parameters:
+        - name: block_id
+          in: query
+          schema:
+            type: string
+            format: hexadecimal
+          required: false
+          description: "TODO"
+          # This parameter is incompatible with `block_height`.
+        - name: block_height
+          in: query
+          schema:
+            oneOf:
+              - type: integer
+                format: uint64
+                minimum: 0
+                default: 0
+              - type: string
+                enum:
+                  - latest
+          required: false
+          description: "TODO"
+          # This parameter is incompatible with `block_id`.
+      responses:
+          '200':
+            description: "TODO"
+  /scripts/{hash}:
+    get:
+      summary: "Gets the result of a cached script execution"
+      tags:
+        - Scripts
+      # operationId: "TODO"
+      parameters:
+        - name: hash
+          in: path
+          schema:
+            type: string
+            format: hexadecimal
+          required: true
+          description: "TODO"
+      responses:
+          '200':
+            description: "TODO"
+  /events:
+    get:
+      summary: "Retrieves events for the specified block IDs and event
+        type"
+      tags:
+        - Events
+      # operationId: "TODO"
+      parameters:
+        - name: type
+          in: query
+          schema:
+            type: string # ENUM TODO
+          required: true
+          description: "TODO"
+        - name: block_ids
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              format: hexadecimal
+              pattern: '[a-fA-F0-9]{16}'
+          required: false
+          description: "TODO"
+        - name: start_height
+          in: query
+          schema:
+            type: integer
+            format: uint64
+          required: false
+          description: "TODO"
+          # Must be used together with `end_height`.
+          # This parameter is incompatible with `block_ids`.
+        - name: end_height
+          in: query
+          schema:
+            type: integer
+            format: uint64
+          required: false
+          description: "TODO"
+          # Must be used together with `start_height`.
+          # This parameter is incompatible with `block_ids`.
+      responses:
+          '200':
+            description: "TODO"
+  /network-parameters:
+    get:
+      summary: Retrieves the Flow network details
+      tags:
+        - Network Parameters
+      responses:
+        200:
+          description: TODO
+components:
+  parameters:
+    heightParam:
+      name: height
+      in: query
+      schema:
+        oneOf:
+          - type: integer
+            format: uint64
+            minimum: 0
+            default: 0
+          - type: string
+            enum:
+              - latest
+      required: true
+      description: "TODO"
+      # block height
+    idParam:
+      name: id
+      in: path
+      schema:
+        type: string
+        format: hexadecimal
+        pattern: '[a-fA-F0-9]+'
+      required: true
+      description: "TODO"
+      # The ID of the item to retrieve
+  schemas:
+    Account:
+      type: object
+      required:
+        - address
+        - balance
+        - code
+        - keys
+        - contracts
+      properties:
+        address:
+          type: string
+          format: hexadecimal
+        balance:
+          type: integer
+          format: uint64
+        code:
+          type: string
+          format: byte
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountKey'
+        contracts:
+          type: object
+          additionalProperties:
+            type: string
+            format: byte
+    AccountKey:
+      type: object
+      required:
+        - index
+        - public_key
+        - signing_algorithm
+        - hashing_algorithm
+        - sequence_number
+        - weight
+        - revoked
+      properties:
+        index: 
+          type: integer
+        public_key:
+          type: string
+          format: byte
+        signing_algorithm:
+          type: string
+          # TODO: enum
+        hashing_algorithm:
+          type: string
+          # TODO: enum
+        sequence_number:
+          type: integer
+          format: uint64
+        weight:
+          type: integer
+        revoked:
+          type: boolean
+    Block:
+      type: object
+      required:
+        - header
+        - payload
+      properties:
+        header:
+          $ref: 'components/schemas/BlockHeader'
+        payload:
+          $ref: 'components/schemas/BlockPayload'
+        # id:
+        #   type: string
+        #   format: hexadecimal
+        #   pattern: '[a-fA-F0-9]+'
+        # parent_id:
+        #   type: string
+        #   format: hexadecimal
+        #   pattern: '[a-fA-F0-9]+'
+        # height:
+        #   type: integer
+        #   format: uint64
+    BlockHeader:
+      type: object
+      required:
+        - id
+        - parent_id
+        - height
+        - timestamp
+      properties:
+        id:
+          type: string
+          format: hexadecimal
+          pattern: '[a-fA-F0-9]+'
+        parent_id:
+          type: string
+          format: hexadecimal
+          pattern: '[a-fA-F0-9]+'
+        height:
+          type: integer
+          format: uint64
+        timestamp:
+          
+  # google.protobuf.Timestamp timestamp = 4;
+    BlockPayload:
+    Transaction:
+      type: "object"
+      required:
+        - "script"
+        - "arguments"
+        - "reference_block_id"
+        - "gas_limit"
+        - "proposal_key"
+        - "payer"
+        - "authorizers"
+        - "payload_signatures"
+        - "envelope_signatures"
+      properties:
+        script:
+          type: "string"
+          format: "binary"
+        arguments:
+          type: "array"
+          items:
+            type: "string"
+            description: format 0x[Aa-fF0-9]*
+        reference_block_id:
+          type: "string"
+          description: format 0x[Aa-fF0-9]*
+        gas_limit:
+          type: "string"
+        proposal_key:
+          $ref: "#/components/schemas/TransactionProposalKey"
+        payer:
+          type: "string"
+          description: format 0x[Aa-fF0-9]*
+        authorizers:
+          type: "array"
+          items:
+            type: "string"
+            description: format 0x[Aa-fF0-9]*
+        payload_signatures:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/TransactionSignature"
+        envelope_signatures:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/TransactionSignature"
+externalDocs:
+  description: "Find out more about Access API"
+  url: "https://docs.onflow.org/access-api/"
