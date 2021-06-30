@@ -8,7 +8,7 @@ Check out the [Flow Access API specification](/docs/content/access-api.md).
 
 ## Generating Go stubs
 
-You can use [prototool](https://github.com/uber/prototool) to generate gRPC client stubs in a variety of languages.
+You can use [buf](https://github.com/bufbuild/buf) to generate gRPC client stubs in a variety of languages.
 
 Running the command below (in the current directory) will generate stubs for Go:
 
