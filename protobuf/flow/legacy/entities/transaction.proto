@@ -20,7 +20,7 @@ message Transaction {
     uint32 key_id = 2;
     uint64 sequence_number = 3;
   }
-  
+
   message Signature {
     bytes address = 1;
     uint32 key_id = 2;
