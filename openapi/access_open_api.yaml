@@ -2,255 +2,363 @@ openapi: "3.0.0"
 info:
   version: "1.0.0"
   title: "Access API"
-host: "access.mainnet.onflow.org"
-basePath: "/v1"
-schemes:
-  - "http"
-  - "https"
-consumes:
-  - application/json
-produces:
-  - application/json
+servers:
+  - url: https://access.mainnet.onflow.org/v1
+    description: Current Mainnet
+  - url: https://access.devnet.nodes.onflow.org/v1
+    description: Testnet
+  - url: https://access.canary.nodes.onflow.org/v1
+    description: Canarynet
+# TODO: split schemas, params, responses etc into separate files
+
+# TODO: replace these with requestBody.content and responses.content
+      # consumes:
+      #   - application/json
+      # produces:
+      #   - application/json
+      
+# TODO: go through schemas and check which fields are actually required
+# TODO: only block / block-headers supports latest unsealed block
 paths:
   /block-headers:
     get:
-      summary: "Gets a block header by height"
+      summary: Gets block headers by height
+      # description: TODO
       tags:
         - Block Headers
-      # operationId: "TODO: findBlockHeaderByHeight"
+      operationId: getBlockHeadersByHeight
       parameters: 
         - name: height
           in: query
           schema:
-            oneOf:
-              - type: integer
-                format: uint64
-                minimum: 0
-                default: 0
-              - type: string
-                enum:
-                  - latest
+            # TODO: comma separated?
+            type: array
+            items:
+              $ref: '#/components/schemas/BlockHeight'
           required: true
-          description: "TODO"
-        - name: is_sealed
-          in: query
-          schema:
-            type: boolean
-            default: false
-          required: false
-          description: "TODO"
+          description: The heights of the block headers to get
+          # comma delimited heights
+        # - name: is_sealed
+        #   in: query
+        #   schema:
+        #     type: boolean
+        #     default: false
+        #   description: |
+        #     When used together with `height=latest`, indicates whether to get the latest sealed block header
       responses:
-        '200':
-          description: "TODO"
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BlockHeader'
+        # TODO: define errors
   /block-headers/{id}:
     get:
-      summary: "Gets a block header by ID"
+      summary: Gets a block header by ID
+      # description: TODO
       tags:
         - Block Headers
-      # operationId: "TODO"
+      operationId: getBlockHeaderByID
       parameters: 
         - name: id
           in: path
           schema:
-            type: string
-            format: hexadecimal
-            pattern: '[a-fA-F0-9]+'
-            # TODO: add this to all hex fields
+            $ref: '#/components/schemas/Identifier'
           required: true
-          description: "TODO"
+          description: The ID of the block header to get
       responses:
-        '200':
-          description: "TODO"
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockHeader'
+        # TODO: define errors
   /blocks:
     get:
-      summary: "Gets a full block by height"
+      summary: Gets full blocks by height
+      # description: TODO
       tags:
         - Blocks
-      # operationId: "TODO"
+      operationId: getBlockByHeight
       parameters: 
+        # TODO: comma separated?
         - name: height
           in: query
           schema:
-            oneOf:
-              - type: integer
-                format: uint64
-                minimum: 0
-                default: 0
-              - type: string
-                enum:
-                  - latest
+            $ref: '#/components/schemas/BlockHeight'
           required: true
-          description: "TODO"
+          description: The heights of the blocks to get
+        # - name: is_sealed
+        #   in: query
+        #   schema:
+        #     type: boolean
+        #     default: false
+        #   description: |
+        #     When used together with `height=latest`, indicates whether to get the full payload of the latest sealed block
       responses:
-        '200':
-          description: "TODO"
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Block'
+        # TODO: define errors
   /blocks/{id}:
     get:
-      summary: "Gets a full block by ID"
+      summary: Gets a full block by ID
+      # description: TODO
       tags:
         - Blocks
-      # operationId: "TODO"
+      operationId: getBlockByID
       parameters:
         - name: id
           in: path
           schema:
-            type: string
-            format: hexadecimal
+            $ref: '#/components/schemas/Identifier'
           required: true
-          description: "TODO"
+          description: The ID of the block to get
       responses:
-        '200':
-          description: "TODO"
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Block'
+        # TODO: define errors
   /collections/{id}:
     get:
-      summary: "Gets a collection by ID"
+      summary: Gets a collection by ID
+      # description: TODO
       tags:
         - Collections
-      # operationId: "TODO"
+      operationId: getCollectionByID
       parameters:
         - name: id
           in: path
           schema:
-            type: string
-            format: hexadecimal
+            $ref: '#/components/schemas/Identifier'
           required: true
-          description: "TODO"
+          description: The ID of the collection to get
       responses:
-        '200':
-          description: "TODO"
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+        # TODO: define errors
   /transactions:
+  # TODO: need Location response header
+  # https://datatracker.ietf.org/doc/html/rfc7231#section-7.1.2
     post:
-      summary: "Submits a transaction to the network"
+      summary: Submits a transaction to the network
+      # TODO
+      description: |
+        `SendTransaction` determines the correct cluster of collection nodes that is responsible for collecting the transaction based on the hash of the transaction and forwards the transaction to that cluster.
       tags:
         - Transactions
-      # operationId: "TODO"
+      operationId: sendTransaction
       requestBody:
-        description: "transaction to submit"
+        description: The transaction to submit
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Transaction'
       responses:
-        '200':
-          description: "TODO"
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    $ref: '#/components/schemas/Identifier'
+          headers:
+            Location:
+              schema:
+                type: string
+                format: uri
+              description: The URI to the newly submitted transaction
+        # TODO: define errors
   /transactions/{id}:
     get:
-      summary: "Gets a transaction by ID"
+      summary: Gets a transaction by ID
+      # TODO
+      description: |
+        If the transaction is not found in the access node cache, the request is forwarded to a collection node.
+      
+        *Currently, only transactions within the current epoch can be queried.*
       tags:
         - Transactions
-      # operationId: "TODO"
+      operationId: getTransactionByID
       parameters:
         - name: id
           in: path
           schema:
-            type: string
-            format: hexadecimal
+            $ref: '#/components/schemas/Identifier'
           required: true
-          description: "TODO"
+          description: The ID of the transaction to get
       responses:
-        '200':
-          description: "TODO"
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        # TODO: define errors
   /transactions/{id}/result:
     get:
-      summary: "Gets the result of a transaction"
+      summary: Gets the execution result of a transaction
+      # description: TODO
       tags:
         - Transactions
-      # operationId: "TODO"
+      operationId: getTransactionResult
       parameters:
         - name: id
           in: path
           schema:
-            type: string
-            format: hexadecimal
+            $ref: '#/components/schemas/Identifier'
           required: true
-          description: "TODO"
+          description: The ID of the transaction to get the result of
       responses:
-        '200':
-          description: "TODO"
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResult'
+        # TODO: define errors
   /accounts/{address}:
     get:
-      summary: "Gets an account by address at the given block height"
+      summary: Gets an account by address at the given block height
+      # TODO
+      description: |
+        The access node queries an execution node for the account details, which are stored as part of the sealed execution state.
       tags:
         - Accounts
-      # operationId: "TODO"
+      operationId: getAccountAtBlockHeight
       parameters: 
         - name: address
           in: path
           schema:
-            type: string
-            format: hexadecimal
+            $ref: '#/components/schemas/Address'
           required: true
-          description: "TODO"
+          description: The address of the account to get
         - name: block_height
           in: query
           schema:
-            oneOf:
-              - type: integer
-                format: uint64
-                minimum: 0
-                default: 0
-              - type: string
-                enum:
-                  - latest
-          required: true
-          description: "TODO"
+            $ref: '#/components/schemas/BlockHeight'
+          description: The block height at which to get account details
       responses:
-        '200':
-          description: "TODO"
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
   /scripts:
     post:
-      summary: "Executes a ready-only Cadence script against the execution state at the given block height or ID"
+      summary: Executes a ready-only Cadence script against the execution state at the block with the given height or ID
+      description: |
+        This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
+        # TODO: ExecuteScriptAtLatestBlock executes a read-only Cadence script against the latest sealed execution state.
+        
+#         This method is a shortcut for the following:
+
+# Copy
+# header = GetLatestBlockHeader()
+# value = ExecuteScriptAtBlockID(header.ID, script)
+
+        # This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the JSON-Cadence data interchange format.
+        
+#         ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
+
+# This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the JSON-Cadence data interchange format.
       tags:
         - Scripts
-      # operationId: "TODO"
+      operationId: executeScript
       parameters:
         - name: block_id
           in: query
+          # TODO: should this be in the post body?
           schema:
-            type: string
-            format: hexadecimal
+            $ref: '#/components/schemas/Identifier'
           required: false
-          description: "TODO"
-          # This parameter is incompatible with `block_height`.
+          description: The ID of the block to execute the script against. For a specific block height, use `block_height` instead.
         - name: block_height
           in: query
           schema:
-            oneOf:
-              - type: integer
-                format: uint64
-                minimum: 0
-                default: 0
-              - type: string
-                enum:
-                  - latest
+            $ref: '#/components/schemas/BlockHeight'
           required: false
-          description: "TODO"
-          # This parameter is incompatible with `block_id`.
+          description: The height of the block to execute the script against. This parameter is incompatible with `block_id`.
+      requestBody:
+        description: The script to execute
+        # TODO
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                script:
+                  type: string
+                  format: byte
+                arguments:
+                  type: array
+                  items:
+                    type: string
+                    format: byte
       responses:
-          '200':
-            description: "TODO"
-  /scripts/{hash}:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    format: byte
+      # TODO: define errors
+      
+  # /scripts/{hash}:
+  #   get:
+  #     summary: "Gets the result of a cached script execution"
+  #     tags:
+  #       - Scripts
+  #     # operationId: "TODO"
+  #     parameters:
+  #       - name: hash
+  #         in: path
+  #         schema:
+  #           type: string
+  #           format: hexadecimal
+  #         required: true
+  #         description: "TODO"
+  #     responses:
+  #         '200':
+  #           description: "TODO"
+  /block-events-lists:
     get:
-      summary: "Gets the result of a cached script execution"
-      tags:
-        - Scripts
-      # operationId: "TODO"
-      parameters:
-        - name: hash
-          in: path
-          schema:
-            type: string
-            format: hexadecimal
-          required: true
-          description: "TODO"
-      responses:
-          '200':
-            description: "TODO"
-  /events:
-    get:
-      summary: "Retrieves events for the specified block IDs and event
-        type"
+      summary: Retrieves events emitted within the specified block range or for the specified block IDs
+      description: |
+        Events can be requested either for a specific sealed block range via the `start_height` and `end_height` (inclusive) fields, or for a list of block IDs via the `block_ids` field, and further filtered by event type via the `type` field.
+        
+        The event results are grouped by block, with each group specifying a block ID, height and block timestamp.
+
+        Event types are name-spaced with the address of the account and contract in which they are declared.
+      # TODO: what about caching?
+      # https://stackoverflow.com/questions/4541338/how-to-construct-a-rest-api-that-takes-an-array-of-ids-for-the-resources
+      # https://stackoverflow.com/questions/24958775/restful-range-queries-for-multiple-ids
+      # TODO: set cache headers to prevent caching?
       tags:
         - Events
       # operationId: "TODO"
@@ -266,9 +374,7 @@ paths:
           schema:
             type: array
             items:
-              type: string
-              format: hexadecimal
-              pattern: '[a-fA-F0-9]{16}'
+              $ref: '#/components/schemas/Identifier'
           required: false
           description: "TODO"
         - name: start_height
@@ -317,35 +423,21 @@ components:
       required: true
       description: "TODO"
       # block height
-    idParam:
-      name: id
-      in: path
-      schema:
-        type: string
-        format: hexadecimal
-        pattern: '[a-fA-F0-9]+'
-      required: true
-      description: "TODO"
-      # The ID of the item to retrieve
   schemas:
     Account:
       type: object
       required:
         - address
         - balance
-        - code
         - keys
         - contracts
+        - block_height
       properties:
         address:
-          type: string
-          format: hexadecimal
+          $ref: '#/components/schemas/Address'
         balance:
-          type: integer
-          format: uint64
-        code:
           type: string
-          format: byte
+          format: uint64
         keys:
           type: array
           items:
@@ -355,6 +447,9 @@ components:
           additionalProperties:
             type: string
             format: byte
+        block_height:
+          type: string
+          format: uint64
     AccountKey:
       type: object
       required:
@@ -367,111 +462,271 @@ components:
         - revoked
       properties:
         index: 
-          type: integer
+          type: string
+          format: uint32
         public_key:
           type: string
           format: byte
         signing_algorithm:
-          type: string
-          # TODO: enum
+          $ref: '#/components/schemas/SigningAlgorithm'
         hashing_algorithm:
-          type: string
-          # TODO: enum
+          $ref: '#/components/schemas/HashingAlgorithm'
         sequence_number:
-          type: integer
+          type: string
           format: uint64
         weight:
-          type: integer
+          type: string
+          format: uint32
         revoked:
           type: boolean
+    SigningAlgorithm:
+      type: string
+      enum:
+      # TODO: unknown value?
+        - BLSBLS12381
+        - ECDSAP256
+        - ECDSASecp256k1
+    HashingAlgorithm:
+      type: string
+      enum:
+      # TODO: unknown value?
+        - SHA2_256
+        - SHA2_384
+        - SHA3_256
+        - SHA3_384
+        - KMAC128
     Block:
       type: object
       required:
         - header
-        - payload
+        - collection_guarantees
+        - block_seals
       properties:
         header:
-          $ref: 'components/schemas/BlockHeader'
-        payload:
-          $ref: 'components/schemas/BlockPayload'
-        # id:
-        #   type: string
-        #   format: hexadecimal
-        #   pattern: '[a-fA-F0-9]+'
-        # parent_id:
-        #   type: string
-        #   format: hexadecimal
-        #   pattern: '[a-fA-F0-9]+'
-        # height:
-        #   type: integer
-        #   format: uint64
+          $ref: '#/components/schemas/BlockHeader'
+        collection_guarantees:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionGuarantee'
+        block_seals:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlockSeal'
     BlockHeader:
       type: object
+      description: TODO (add for all schemas)
       required:
         - id
         - parent_id
         - height
         - timestamp
+        - parent_voter_signature
       properties:
         id:
-          type: string
-          format: hexadecimal
-          pattern: '[a-fA-F0-9]+'
+          $ref: '#/components/schemas/Identifier'
         parent_id:
-          type: string
-          format: hexadecimal
-          pattern: '[a-fA-F0-9]+'
+          $ref: '#/components/schemas/Identifier'
         height:
-          type: integer
+          type: string
           format: uint64
         timestamp:
-          
-  # google.protobuf.Timestamp timestamp = 4;
-    BlockPayload:
-    Transaction:
-      type: "object"
+          type: string
+          format: date-time
+        parent_voter_signature:
+          $ref: '#/components/schemas/Signature'
+    BlockSeal:
+      type: object
+      description: TODO
       required:
-        - "script"
-        - "arguments"
-        - "reference_block_id"
-        - "gas_limit"
-        - "proposal_key"
-        - "payer"
-        - "authorizers"
-        - "payload_signatures"
-        - "envelope_signatures"
+        - block_id
+        - execution_receipt_id
+        # - execution_receipt_signatures
+        # - result_approval_signatures
+        # TODO
+      properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        execution_receipt_id:
+          $ref: '#/components/schemas/Identifier'
+        # TODO: add those extra fields?
+    BlockHeight:
+      oneOf:
+        - type: integer
+          format: uint64
+          minimum: 0
+        - type: string
+          enum:
+            - latest
+            - latest_sealed
+      default: latest
+      # TODO: need this?
+    Collection:
+      type: object
+      required:
+        - id
+        - transaction_ids
+      properties:
+        id:
+          $ref: '#/components/schemas/Identifier'
+        transaction_ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier'
+    CollectionGuarantee:
+      type: object
+      required:
+        - collection_id
+        - signatures
+      properties:
+        collection_id:
+          $ref: '#/components/schemas/Identifier'
+        signatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/Signature'
+    Event:
+      type: object
+      required:
+        - type
+        - transaction_id
+        - transaction_index
+        - event_index
+        - payload
+      properties:
+        type:
+          type: string
+          # TODO: enum? separate type?
+        transaction_id:
+          $ref: '#/components/schemas/Identifier'
+        transaction_index:
+          type: string
+          format: uint32
+        event_index:
+          type: string
+          format: uint32
+        payload:
+          type: string
+          format: byte
+    Transaction:
+      type: object
+      required:
+        - script
+        - arguments
+        - reference_block_id
+        - gas_limit
+        - proposal_key
+        - payer
+        - authorizers
+        - payload_signatures
+        - envelope_signatures
       properties:
         script:
-          type: "string"
-          format: "binary"
+          type: string
+          format: byte
         arguments:
-          type: "array"
+          type: array
           items:
-            type: "string"
-            description: format 0x[Aa-fF0-9]*
+            type: string
+            format: byte
         reference_block_id:
-          type: "string"
-          description: format 0x[Aa-fF0-9]*
+          $ref: '#/components/schemas/Identifier'
         gas_limit:
-          type: "string"
+          type: string
+          format: uint64
         proposal_key:
-          $ref: "#/components/schemas/TransactionProposalKey"
+          $ref: '#/components/schemas/ProposalKey'
         payer:
-          type: "string"
-          description: format 0x[Aa-fF0-9]*
+          $ref: '#/components/schemas/Address'
         authorizers:
-          type: "array"
+          type: array
           items:
-            type: "string"
-            description: format 0x[Aa-fF0-9]*
+            $ref: '#/components/schemas/Address'
         payload_signatures:
-          type: "array"
+          type: array
           items:
-            $ref: "#/components/schemas/TransactionSignature"
+            $ref: '#/components/schemas/TransactionSignature'
         envelope_signatures:
-          type: "array"
+          type: array
           items:
-            $ref: "#/components/schemas/TransactionSignature"
+            $ref: '#/components/schemas/TransactionSignature'
+    ProposalKey:
+      type: object
+      required:
+        - address
+        - key_index
+        - sequence_number
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        key_index:
+          type: string
+          format: uint32
+        sequence_number:
+          type: string
+          format: uint64
+    TransactionSignature:
+      type: object
+      required:
+        - address
+        - signer_index
+        - key_index
+        - signature
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        signer_index:
+          type: string
+          format: uint32
+        key_index:
+          type: string
+          format: uint32
+        signature:
+          $ref: '#/components/schemas/Signature'
+    TransactionResult:
+      type: object
+      required:
+        # TODO: is this right?
+        - status
+        - signer_index
+        - key_index
+        - signature
+      properties:
+        status:
+          $ref: '#/components/schemas/TransactionStatus'
+        status_code:
+          type: string
+          format: uint32
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        error_message:
+          type: string
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+    TransactionStatus:
+      type: string
+      enum:
+        - Unknown
+        - Pending
+        - Finalized
+        - Executed
+        - Sealed
+        - Expired
+    Address:
+      description: TODO
+      type: string
+      format: hexadecimal
+      pattern: '[a-fA-F0-9]{16}'
+    Identifier:
+      description: A 32-byte unique identifier for an entity.
+      type: string
+      format: hexadecimal
+      pattern: '[a-fA-F0-9]{64}'
+    Signature:
+      description: TODO
+      type: string
+      format: byte
 externalDocs:
-  description: "Find out more about Access API"
+  description: "Find out more about the Access API"
   url: "https://docs.onflow.org/access-api/"
