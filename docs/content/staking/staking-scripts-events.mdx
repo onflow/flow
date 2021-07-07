@@ -1,13 +1,144 @@
 ---
-title: Monitoring Staking Events
-sidebar_title: Monitor Staking Events
+title: Query Staking Info with Scripts or Events
+sidebar_title: Query Staking Info with Scripts or Events
 ---
 
 # Introduction
 
-The resources used in node registration and for staking FLOW tokens emit events whenever an important action is performed.
+The staking contract stores a lot of different state, and the state is constantly changing.
+As an external party, there are two ways to keep track of these state changes. 
+You can either use Cadence scripts to query the state of the contract at any given time,
+or you can monitor events that are emitted by the staking contract to be notified of any important occurances.
 
-These events can be queried using the Go or JavaScript SDKs to extract useful notifications and information about the
+# Query Information with Scripts
+
+## Get the list of proposed nodes for the next epoch:
+
+`FlowIDTableStaking.getProposedNodeIDs()`: Returns an array of node IDs for proposed nodes.
+Proposed nodes are nodes that have enough staked and committed for the next epoch to be above the minimum requirement.
+
+You can use the **Get Proposed Table**([SC.05](/core-contracts/staking-contract-reference/#getting-staking-info)) script for retrieving this info.
+
+This script requires no arguments.
+
+## Get the list of all nodes that are currently staked:
+
+`FlowIDTableStaking.getStakedNodeIDs()`: Returns an array of nodeIDs that are currently staked.
+Staked nodes are nodes that currently have staked tokens above the minimum.
+
+You can use the **Get Current Table**([SC.04](/core-contracts/staking-contract-reference/#getting-staking-info)) script for retrieving this info.
+
+This script requires no arguments.
+
+## Get all of the info associated with a single node staker:
+
+`FlowIDTableStaking.NodeInfo(nodeID: String)`: Returns a `NodeInfo` struct with all of the metadata
+associated with the specified node ID. You can see the `NodeInfo` definition in the [FlowIDTableStaking
+smart contract.](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L264)
+
+You can use the **Get Node Info**([SC.08](/core-contracts/staking-contract-reference/#getting-staking-info)) script
+with the following arguments:
+
+| Argument   | Type     | Description                            |
+| ---------- | -------- | -------------------------------------- |
+| **nodeID** | `String` | The node ID of the node to search for. |
+
+You can also query the info from an address by using the **Get Node Info From Address**([SC.26](/core-contracts/flow-id-table-staking/#getting-staking-info)) script
+with the following arguments:
+
+| Argument    | Type      | Description                                       |
+| ----------- | --------- | ------------------------------------------------- |
+| **address** | `Address` | The address of the account that manages the node. |
+
+## Get the total committed balance of a node (with delegators):
+
+`FlowIDTableStaking.NodeInfo(_ nodeID: String).totalCommittedWithDelegators()`: Returns the total committed balance for a node,
+which is their total tokens staked + committed, plus all of the staked + committed tokens of all their delegators.
+
+You can use the **Get Node Total Commitment**([SC.09](/core-contracts/staking-contract-reference/#getting-staking-info)) script
+with the following argument:
+
+| Argument   | Type     | Description                            |
+| ---------- | -------- | -------------------------------------- |
+| **nodeID** | `String` | The node ID of the node to search for. |
+
+## Get the total committed balance of a node (without delegators):
+
+`FlowIDTableStaking.NodeInfo(_ nodeID: String).totalCommittedWithoutDelegators()`: Returns the total committed balance for a node,
+which is their total tokens staked + committed, plus all of the staked + committed tokens of all their delegators.
+
+You can use the **Get Only Node Total Commitment**([SC.09](/core-contracts/staking-contract-reference/#getting-staking-info)) script
+with the following argument:
+
+| Argument   | Type     | Description                            |
+| ---------- | -------- | -------------------------------------- |
+| **nodeID** | `String` | The node ID of the node to search for. |
+
+## Get all the info associated with a single delegator:
+
+`FlowIDTableStaking.DelegatorInfo(nodeID: String, delegatorID: UInt32)`: Returns a `DelegatorInfo` struct with all of the metadata
+associated with the specified node ID and delegator ID. You can see the `DelegatorInfo` definition in the [FlowIDTableStaking
+smart contract.](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L348)
+
+You can use the **Get Delegator Info**([SC.10](/core-contracts/staking-contract-reference/#getting-staking-info))
+script with the following arguments:
+
+| Argument        | Type     | Description                                  |
+| --------------- | -------- | -------------------------------------------- |
+| **nodeID**      | `String` | The node ID that the delegator delegates to. |
+| **delegatorID** | `String` | The ID of the delegator to search for.       |
+
+You can also query the info from an address by using the **Get Delegator Info From Address**([SC.27](/core-contracts/flow-id-table-staking/#getting-staking-info)) script
+with the following arguments:
+
+| Argument    | Type      | Description                                            |
+| ----------- | --------- | ------------------------------------------------------ |
+| **address** | `Address` | The address of the account that manages the delegator. |
+
+## Get the delegation cut percentage:
+
+`FlowIDTableStaking.getRewardCutPercentage(): UFix64`: Returns a `UFix64` number for the cut of delegator rewards that each node operator takes.
+
+You can use the **Get Cut Percentage**([SC.01](/core-contracts/flow-id-table-staking/#getting-staking-info)) script to retrieve this info.
+
+This script requires no arguments.
+
+## Get the minimum stake requirements:
+
+`FlowIDTableStaking.getMinimumStakeRequirements(): {UInt8: UFix64}`: Returns a mapping
+for the stake requirements for each node type.
+
+You can use the **Get stake requirements**([SC.02](/core-contracts/staking-contract-reference/#getting-staking-info)) script to retrieve this info.
+
+This script requires no arguments.
+
+## Get the total weekly reward payout:
+
+`FlowIDTableStaking.getEpochTokenPayout(): UFix64`: Returns a `UFix64` value for the total number of FLOW paid out each epoch (week).
+
+You can use the **Get weekly payout**([SC.03](/core-contracts/staking-contract-reference/#getting-staking-info)) script to retrieve this info.
+
+This script requires no arguments.
+
+## Get the total FLOW staked:
+
+You can use the **Get total FLOW staked**([SC.06](/core-contracts/staking-contract-reference/#getting-staking-info)) script to retrieve this info.
+
+This script requires no arguments.
+
+## Get the total FLOW staked by all the nodes of a single node role:
+
+You can use the **Get total FLOW staked by node type**([SC.07](/core-contracts/staking-contract-reference/#getting-staking-info)) script
+with the following arguments:
+
+| Argument     | Type    | Description                     |
+| ------------ | ------- | ------------------------------- |
+| **nodeType** | `UInt8` | The type of node to search for. |
+
+
+# Staking Events
+
+Staking events can be queried using the Go or JavaScript SDKs to extract useful notifications and information about the
 state of the staking process.
 
 ## Global Staking and Epoch Events

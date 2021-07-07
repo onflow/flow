@@ -444,11 +444,11 @@ const sections = [
       "Custody Providers": ["staking/custody-providers"],
       "Technical Docs": [
         "staking/epoch-preparation",
-        "staking/epoch-events",
+        "staking/epoch-scripts-events",
         "staking/technical-overview",
-        "staking/staking-events",
+        "staking/staking-scripts-events",
         "staking/qc-dkg",
-        "staking/qc-dkg-events",
+        "staking/qc-dkg-scripts-events",
       ],
       "Technical Guides": [
         "staking/staking-options",
