@@ -111,6 +111,12 @@ service AccessAPI {
   // space-efficient local state.
   rpc GetLatestProtocolStateSnapshot(GetLatestProtocolStateSnapshotRequest)
       returns (ProtocolStateSnapshotResponse);
+
+  // GetExecutionResultForBlockID returns Execution Result for a given block.
+  // At present, Access Node might not have execution results for every block
+  // and as usual, until sealed, this data can change
+  rpc GetExecutionResultForBlockID(GetExecutionResultForBlockIDRequest)
+      returns (ExecutionResultForBlockIDResponse);
 }
 
 message PingRequest {}
@@ -272,4 +278,14 @@ message GetLatestProtocolStateSnapshotRequest {}
 
 message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
+}
+
+// Execution Results
+
+message GetExecutionResultForBlockIDRequest {
+  bytes block_id = 1;
+}
+
+message ExecutionResultForBlockIDResponse {
+  entities.ExecutionResult execution_result = 1;
 }
