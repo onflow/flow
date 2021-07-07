@@ -1,7 +1,7 @@
 ---
 title: Epoch Preparation Protocol
-sidebar_title: Epoch Protocol
-description: Technical Overview of Epoch
+sidebar_title: Epoch Preparation Protocol
+description: Technical Overview of the Flow Epoch Protocol
 ---
 
 <Callout type="warning">
@@ -29,34 +29,7 @@ directory. You can see the text of all the transactions used to interact with th
 
 ## Terminology
 
-If any of the definitions are confusing, you can find more detail in the [Smart Contract Summary](#Smart-Contract-Summary)
-
-**Staker:** Any user who has staked tokens for the Flow network.
-A node operator is a staker, and a delegator is a staker as well.
-
-**Node Operator:** A user who operates a node on the Flow network. Each node operator has a unique `NodeStaker`
-object they store in their account to perform staking operations.
-
-**Delegator:** A user who delegates tokens to a node operator and receives rewards for their staked tokens, minus a fee
-taken by the node operator. Each delegator stores a unique `NodeDelegator` object in their account
-that allows them to perform staking operations.
-
-**Identity Table:** The record of all the stakers in the network.
-The identity table keeps separate lists for the info about node operators and delegators,
-which track the following info:
-
-- **Node Operators:**
-
-  - Node ID: 32 byte identifier for the node. Usually a hash of the node public key.
-  - Role: Indicates what role the node operator is. (Collection, Consensus, Execution, Verification, Access)
-  - Networking Address: The address that the node operator uses for networking.
-  - Networking Key: The 64 byte node operator public key for networking.
-  - Staking Key: The 96 byte public key for the account that manages staking.
-
-**Epoch:** The period of time between reward payments and changes in the identity table. (Initially a week)
-At the end of every epoch, insufficiently staked node operators are refunded their stake,
-rewards are paid to those who are currently staked, committed tokens are marked as staked,
-unstaking tokens are marked as unstaked, and unstaking requests are changed from staked to unstaking.
+TODO
 
 ## Smart Contract Summary
 
@@ -64,14 +37,7 @@ TODO
 
 Epoch Schedule:
 
-1. **Start of Epoch:** Generic metadata about the current epoch is updated and shared.
-2. **Staking Auction:** Stakers can perform any action they want to manage their stake, like
-   initially registering, staking new tokens, unstaking tokens, or withdrawing rewards.
-   This phase takes up the vast majority of time in the epoch.
-3. **Rewards Payout:** Pay rewards to all the node operators staked in the current epoch.
-4. **Remove Insufficiently Staked Nodes:** All node operators who don't meet the minimum
-   or are not operating their node properly will be removed.
-5. **Move tokens between pools.** (See the token pools section for the order of movements)
+TODO
 
 The `FlowEpoch` contract manages all of these phases, the `FlowIDTableStaking` contract
 manages the identity table and staking auction, the `FlowClusterQC` contract manages
@@ -84,9 +50,7 @@ and democratically by all the stakers in the network.
 
 # Query Information from the Epoch Contract
 
-There is a lot of information that can be queried from the epoch contract in different ways.
-
-ADD SCRIPTS DOCS HERE
+TODO: Add scripts docs
 
 # Monitor Epoch Events
 
