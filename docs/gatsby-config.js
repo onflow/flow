@@ -437,22 +437,24 @@ const sections = [
       null: ["[Home](/)"],
       Overview: [
         "staking/index",
-        "staking/rewards",
+        "staking/schedule",
         "staking/stake-slashing",
         "staking/faq",
       ],
       "Custody Providers": ["staking/custody-providers"],
-      "Manual Staking Guides": [
+      "Technical Docs": [
+        "staking/epoch-preparation",
+        "staking/epoch-events",
         "staking/technical-overview",
-        "staking/events",
-        "staking/scripts",
-        "staking/unlocked-staking-guide",
-        "staking/unlocked-delegation-guide",
+        "staking/staking-events",
+        "staking/qc-dkg",
+        "staking/qc-dkg-events",
       ],
-      "Staking with Locked FLOW": [
+      "Technical Guides": [
+        "staking/staking-options",
+        "staking/staking-collection",
+        "staking/unlocked-staking-guide",
         "staking/locked-staking-guide",
-        "staking/locked-delegation-guide",
-        "staking/locked-third-party-operator",
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
