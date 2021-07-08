@@ -10,6 +10,7 @@ import "flow/entities/block_header.proto";
 import "flow/entities/block.proto";
 import "flow/entities/collection.proto";
 import "flow/entities/event.proto";
+import "flow/entities/execution_result.proto";
 import "flow/entities/transaction.proto";
 import "google/protobuf/timestamp.proto";
 
