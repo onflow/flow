@@ -1,0 +1,61 @@
+---
+title: Epoch Preparation Protocol
+sidebar_title: Epoch Preparation Protocol
+description: Technical Overview of the Flow Epoch Protocol
+---
+
+<Callout type="warning">
+  If you haven't read the Intro to Flow Staking document, please read that
+  first. That document provides a non-technical overview of staking on Flow for
+  all users and is a necessary prerequisite to this document.
+</Callout>
+<Callout type="warning">
+  This document assumes you have some technical knowledge about the Flow
+  blockchain and programming environment.
+</Callout>
+
+# Epochs
+
+This document describes the functionality of the [epoch smart contracts](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs).
+It gives an overview of the process of epochs, the staking auction, and the epoch setup and commit phases.
+It is an important prerequisite to understand before proceeding with any other technical integration or interaction with the Flow Protocol,
+but does not provide step-by-step instructions for how to perform specific actions.
+
+This document also describes how to read public epoch data from the contracts.
+Anyone can read public data from the epoch smart contracts with these instructions.
+
+The transactions described in this document are contained in the [`flow-core-contracts/transactions/epoch/`](https://github.com/onflow/flow-core-contracts/tree/master/transactions/epoch)
+directory. You can see the text of all the transactions used to interact with the smart contracts there.
+
+## Terminology
+
+TODO
+
+## Smart Contract Summary
+
+TODO
+
+Epoch Schedule:
+
+TODO
+
+The `FlowEpoch` contract manages all of these phases, the `FlowIDTableStaking` contract
+manages the identity table and staking auction, the `FlowClusterQC` contract manages
+the Quorum Certificate generation for collector clusters, and the `FlowDKG` contract manages
+the Distributed Key Generation protocol for the consensus nodes.
+
+Initially, control of these phases and contracts will be managed manually by the Flow Token Admin,
+but control will eventually be completely decentralized and managed by the node software, smart contracts,
+and democratically by all the stakers in the network.
+
+# Query Information from the Epoch Contract
+
+TODO: Add scripts docs
+
+# Monitor Epoch Events
+
+See the epoch events document for detailed documentation about the events that are emitted by the epoch contract.
+
+# Appendix
+
+TODO
