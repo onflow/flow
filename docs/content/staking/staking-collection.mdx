@@ -3,8 +3,8 @@ title: Manage a Staking Collection
 sidebar_title: Staking Collection Guide
 ---
 
-This document outlines the steps a token holder can take to stake using the `FlowIDTableStaking` contract
-and the `FlowStakingCollection` contract. This is the recommended and most supported way to stake FLOW.
+This document outlines the steps a token holder can take to stake using [the `FlowIDTableStaking` contract](/core-contracts/flow-id-table-staking/)
+and [the `FlowStakingCollection` contract.](/core-contracts/staking-collection/) This is the recommended and most supported way to stake FLOW.
 It supprts any number of nodes and delegators per account, supprts locked and unlocked FLOW,
 and supports easily interaction with a node's machine account for collector and consensus nodes.
 
@@ -33,7 +33,7 @@ and incorporates their functionality so any user can stake for a node or stake a
 through a single common interface, regardless of if they have a brand new account,
 or have been staking through the locked account or unlocked account before.
 
-## Staker Fields
+## Staker Object Fields
 
 The staking collection resource has two main fields, 
 ```cadence
@@ -46,7 +46,7 @@ When a user wants to perform a staking operation,
 they specify the nodeID and/or delegatorID they want to stake for, and the function routes the function
 call to the correct staking object and performs the specified operation.
 
-## Vault Fields
+## Vault Capability Fields
 
 The staking collection also has a field that stores a capability for
 the unlocked FLOW Vault and locked FLOW vault (if applicable)
@@ -124,13 +124,14 @@ but they will also be able to use the staking collection, if desired.
 
 # How to use the Staking Collection
 
-There is a standard set of transactions provided with the staking collection
+There is a standard set of transactions provided with the staking collection.
 
 ## Setup
 
 ### Setup a Staking Collection
 
 To set up a Staking Collection, you must run the **Setup Staking Collection** ([SCO.01](/core-contracts/staking-collection)) transaction.
+
 This transaction requires no arguments and will perform the following actions:
 1. Create private capabilities for the unlocked vault and locked vault (if applicable).
 2. Create a new staking collection resource object, initializing it with the unlocked and locked vault capabilities.
@@ -138,6 +139,8 @@ This transaction requires no arguments and will perform the following actions:
 4. Create a public link to the staking collection so others can query metadata about it.
 5. If there are any node or delegator objects in the unlocked account, the transaction stores those in the staking collection
    so they can be used through the same interface as usual.
+
+**No arguments** are required for the **Setup Staking Collection** transaction.
 
 Once this transaction is complete, your existing staking objects (if any) from your unlocked account and locked account
 will be available via the staking collection and you can use all the transactions described below to access them.
@@ -215,7 +218,6 @@ At this point, the Staking Collection now has access to various delegator operat
 assuming they have the correct number of tokens to perform the action.
 
 
-
 ## Staking Operations
 
 These transactions perform actions that directly interact with the staking contract.
@@ -236,7 +238,9 @@ transaction with the following arguments:
 
 <Callout type="info">
 To stake new tokens for an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
-If staking for a delegator, `delegatorID` should be the delegator ID you are staking for.
+
+
+If staking for a delegator, <b>delegatorID</b> should be the delegator ID you are staking for.
 </Callout>
 
 The amount may be any number of tokens up to the sum of an accounts locked and unlocked FLOW.
@@ -257,9 +261,9 @@ transaction with the following arguments:
 
 <Callout type="info">
 To stake unstaked tokens for an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
-If staking for a delegator, `delegatorID` should be the delegator ID you are staking for.
-</Callout>
 
+If staking for a delegator, <b>delegatorID</b> should be the delegator ID you are staking for.
+</Callout>
 
 ### Re-stake Rewarded Tokens
 
@@ -285,9 +289,8 @@ The owner of a Staking Collection can submit a request to unstake their tokens a
 
 If the tokens aren't staked yet, they will be uncommitted and available to withdraw.
 
-_Note: unstaked tokens will be held by the central staking contract until the end of the following epoch. 
-Once the tokens are released (unstaked), they can be claimed via the 
-[Withdraw Unstaked Tokens](#withdraw-unstaked-tokens) action below.
+_Note: unstaked tokens will be held by the central staking contract until the end of the following epoch._
+_Once the tokens are released (unstaked), they can be claimed via the [Withdraw Unstaked Tokens](#withdraw-unstaked-tokens) action below._
 
 The owner of a Staking Collection can use the **Unstake Tokens** ([SCO.05](/core-contracts/staking-collection))
 transaction with the following arguments:
