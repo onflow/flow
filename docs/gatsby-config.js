@@ -441,7 +441,6 @@ const sections = [
         "staking/stake-slashing",
         "staking/faq",
       ],
-      "Custody Providers": ["staking/custody-providers"],
       "Technical Docs": [
         "staking/epoch-preparation",
         "staking/epoch-scripts-events",
@@ -456,6 +455,7 @@ const sections = [
         "staking/unlocked-staking-guide",
         "staking/locked-staking-guide",
       ],
+      "Custody Providers": ["staking/custody-providers"],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
