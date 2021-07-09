@@ -1,6 +1,6 @@
 ---
 title: Query Staking Info with Scripts or Events
-sidebar_title: Query Staking Info with Scripts or Events
+sidebar_title: Staking Scripts and Events
 ---
 
 # Introduction
@@ -291,7 +291,7 @@ pub event TokensUnstaking(nodeID: String, amount: UFix64)
 | amount | UFix64 | The amount of FLOW tokens unstaked from the node.                                                               |
 
 Emitted by `FlowIDTableStaking.Admin.moveTokens()` at the end of an epoch if
-a node operator's staked tokens are being unstaked in response to a request from the node operator to do so.
+a node operator's staked tokens are being unstaked in response to a request from the node operator.
 After this event, the tokens will be a part of the node operator's `tokensUnstaking` balance, where they are held for a whole epoch "unstaking period" with no rewards.
 
 ### TokensUnstaked
@@ -430,7 +430,7 @@ pub event DelegatorTokensUnstaking(nodeID: String, delegatorID: UInt32, amount: 
 | amount      | UFix64 | The amount of FLOW tokens unstaked from the node.                                                               |
 
 Emitted by `FlowIDTableStaking.Admin.moveTokens()` at the end of an epoch if
-a delegator's staked tokens are being unstaked in response to a request from the delegator to do so.
+a delegator's staked tokens are being unstaked in response to a request from the delegator.
 After this event, the tokens will be a part of the delegator's `tokensUnstaking` balance, where they are held for a whole epoch "unstaking period" with no rewards.
 
 ### DelegatorTokensUnstaked
