@@ -48,7 +48,7 @@ If they meet the requirements to run a node, then will be accepted to join the n
 Once a node is staking and operating properly, it will receive periodic reward payments,
 assuming it stays online and actively participates in the protocol
 without committing any actions that would harm the network, which we call slashable offenses.
-Once node's have registered, they are required to operate for a protocol-specified timeframe.
+Once nodes have registered, they are required to operate for a protocol-specified timeframe.
 This timeframe is otherwise known as an **Epoch.**
 
 ## Epochs
@@ -75,7 +75,7 @@ It checks to make sure each node’s information is correct and that the node is
 Each node also has to have committed tokens above the minimum stake required for their node role.
 If any of these checks are insufficient, the node is not included in the next epoch.
 Every epoch, some nodes also have to perform certain processes to initialize the state and communication
-with other nodesfor the next epoch. These processes are called **Cluser Quorum Certificate Generation (QC)**,
+with other nodesfor the next epoch. These processes are called **Cluster Quorum Certificate Generation (QC)**,
 and **Distributed Key Generation (DKG)**. If any node does not perform this initialization properly,
 it is not included in the next epoch's Identity Table.
 
@@ -89,12 +89,12 @@ their requests are not carried out until the end of the current epoch.
 In the case of unstaking requests, they also must wait an additional epoch before their unstaked tokens are available to withdraw.
 This allows the protocol to deal with any slashable offenses that may have happened in the previous epoch.
 
-See the [Epochs](/staking/epochs) section of the documentation for in-depth explainations 
+See the [Epochs](/staking/epoch-preparation) section of the documentation for in-depth explainations 
 of the identity table, epoch schedule, QC, and DKG.
 
 ## Rewards
 
-Please see the [rewards](/staking/rewards) section of the documentation for information about reward calculations and schedule and
+Please see the [schedule](/staking/schedule) section of the documentation for information about reward calculations and schedule and
 what you can do with the rewards you earn by staking a node!
 
 ## Delegation
