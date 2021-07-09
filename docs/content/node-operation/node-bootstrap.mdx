@@ -395,7 +395,7 @@ This is intended for operators who would like to see what their Flow nodes are c
 
 ### Node Status
 
-The metrics for the node should be able to provide a good overview of the status of the node. If we want to get a quick snapshot of the status of the node, and if it's properly participating in the network, you can check the `consensus_compliance_finalized_height` or `consensus_compliance_sealed_height` metric, and ensure it is not zero.
+The metrics for the node should be able to provide a good overview of the status of the node. If we want to get a quick snapshot of the status of the node, and if it's properly participating in the network, you can check the `consensus_compliance_finalized_height` or `consensus_compliance_sealed_height` metric, and ensure that it is not zero and strictly increasing.
 
 ```shell
 curl localhost:8080/metrics | grep consensus_compliance_sealed_height
