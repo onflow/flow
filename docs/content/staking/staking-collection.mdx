@@ -5,7 +5,7 @@ sidebar_title: Staking Collection Guide
 
 This document outlines the steps a token holder can take to stake using [the `FlowIDTableStaking` contract](/core-contracts/flow-id-table-staking/)
 and [the `FlowStakingCollection` contract.](/core-contracts/staking-collection/) This is the recommended and most supported way to stake FLOW.
-It supprts any number of nodes and delegators per account, supprts locked and unlocked FLOW,
+It supports any number of nodes and delegators per account, supports locked and unlocked FLOW,
 and supports easily interaction with a node's machine account for collector and consensus nodes.
 
 # Staking Collection Overview
@@ -32,6 +32,9 @@ the existing locked account capabilities (if they exist) and unlocked account st
 and incorporates their functionality so any user can stake for a node or stake as a delegator
 through a single common interface, regardless of if they have a brand new account,
 or have been staking through the locked account or unlocked account before.
+
+The staking collection also easily allows a user to transfer their node or delegator objects
+to other accounts without interrupting the staking process!
 
 ## Staker Object Fields
 
@@ -110,7 +113,7 @@ pub fun main(address: Address): [FlowIDTableStaking.DelegatorInfo] {
 
 Remember: A Staking Collection does not require an account
 to have a secondary locked account or locked FLOW.
-However, if an account does an associated locked account, when the Staking Collection is initialized,
+However, if an account does have an associated locked account, when the Staking Collection is initialized,
 it will connect to that locked account's node and delegator objects
 as well as it's locked token vault allowing it to perform staking actions with locked and unlocked FLOW.
 

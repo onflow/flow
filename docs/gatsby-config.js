@@ -199,7 +199,7 @@ const sections = [
         "[Introduction to Cadence](/cadence)",
         "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
         "[Project Deployment Guide](/dapp-deployment)",
-        "[Staking & Delegating](/staking)",
+        "[Epochs, Staking & Delegating](/staking)",
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
         "[Node Operation](/node-operation)",
       ],
