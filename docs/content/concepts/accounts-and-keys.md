@@ -20,7 +20,7 @@ Unlike Bitcoin and Ethereum, Flow addresses are not derived from cryptographic
 public keys. Instead, each Flow address is assigned by an on-chain function
 that follows a deterministic addressing sequence.
 
-This decoupling allows for multiple public keys to be associated with one account, 
+This decoupling allows for multiple public keys to be associated with one account,
 or for a single public key to be used across several accounts.
 
 Users must submit an _account creation transaction_ to create a new account. These transactions behave like any other transaction, and therefore must have a payer.
@@ -81,6 +81,9 @@ Flow will have initial support for a predefined set of signature and hash pairin
 | --------- | --------- | --------------- | ---- |
 | ECDSA     | P-256     | ECDSA_P256      | 2    |
 | ECDSA     | secp256k1 | ECDSA_secp256k1 | 3    |
+
+There are two curves commonly used with the ECDSA algorithm, secp256r1 ([OID 1.2.840.10045.3.1.7](http://oid-info.com/get/1.2.840.10045.3.1.7), also called the "NIST P-256." curve), and secp256K1 ([OID 1.3.132.0.10](http://oid-info.com/get/1.3.132.0.10), the "Bitcoin" curve). Please be sure to double-check which parameters you are using before registering a key, as presenting a key using one of the curves under the code and format of the other will generate an error.
+
 
 **Hash Algorithms**
 
