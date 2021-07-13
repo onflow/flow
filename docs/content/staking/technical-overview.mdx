@@ -138,7 +138,7 @@ and democratically by all the stakers in the network.
 For a node to stake, node operators first need to generate their staking key,
 networking address, and networking key.
 
-The [node operation guide](https://docs.onflow.org/docs/node-operation-consolidated-guide)
+The [node operation guide](/node-operation)
 describes how to run a node and generate node information.
 
 To generate a node ID, simply hash the staking key.
@@ -185,10 +185,9 @@ anyone to query information about a node from the account address that runs the 
 Every node operator will run the same transaction to register their node at any time throughout an epoch.
 
 <Callout type="warning">
-  The register node transaction only needs to be submitted once per node.
-  A node does not need to register every epoch.
-  A registration cannot be used to manage multiple nodes. Multiple nodes need to
-  be registered separately.
+  The register node transaction only needs to be submitted once per node. A node
+  does not need to register every epoch. A registration cannot be used to manage
+  multiple nodes. Multiple nodes need to be registered separately.
 </Callout>
 
 Once node operators have registered and have the special node object, they will be able
@@ -270,7 +269,7 @@ at which point they will be moved to the unstaked tokens pool.
 Unstaking requests are not fulfilled until the end of the epoch where they are submitted,
 so a staker can cancel the unstaking request before it is carried out.
 A staker can do this by submitting a **stake_unstaked_tokens** transaction, specifying
-the number of tokens of their unstake request they would like to cancel. 
+the number of tokens of their unstake request they would like to cancel.
 If the specified number of tokens have been requested to unstake, the request will be canceled.
 
 ### Withdraw Unstaked Tokens

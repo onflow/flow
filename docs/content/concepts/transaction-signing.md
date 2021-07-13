@@ -99,7 +99,7 @@ the payload signatures.
 The transaction _payer_ is required to sign the authorization envelope. 
 These signatures are the **envelope signatures**.
 
-> ❗ Special case: if an account is both the _payer_ and either a _proposer_ or _authorizer_, it is only required to sign the envelope. 
+> ❗ Special case: if an account is both the _payer_ and either a _proposer_ or _authorizer_, it is required only to sign the envelope. 
 
 ### Payment Envelope
 

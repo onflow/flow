@@ -1,7 +1,11 @@
-import React from "react";
 import styled from "@emotion/styled";
+
+import React from "react";
+
 import { NavItemTitle } from "gatsby-theme-flow";
+
 import { size } from "polished";
+
 import { theme } from "gatsby-theme-flow/src/colors";
 import { smallCaps } from "gatsby-theme-flow/src/utils/typography";
 

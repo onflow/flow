@@ -216,11 +216,13 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["[Cadence Language Reference](/cadence/language)"],
+      Overview: ["[Cadence Language Reference](/cadence/language/)"],
       "Developer Guides": [
         "[Introduction to Cadence](/cadence)",
         "cadence/design-patterns",
         "cadence/anti-patterns",
+        "cadence/msg-sender",
+        "cadence/measuring-time",
         "cadence/migration-guide",
         "cadence/json-cadence-spec"
       ],
@@ -308,7 +310,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      FUSD: ["fusd/index", "fusd/testnet"]
+      FUSD: ["fusd/index", "fusd/transactions", "fusd/providers"]
     }
   },
   {
@@ -349,13 +351,11 @@ const sections = [
       ],
       Packages: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl)",
-        "[@onflow/types](/flow-js-sdk/packages/types)",
-        "[@onflow/sdk](/flow-js-sdk/packages/sdk/readme)"
+        "[@onflow/types](/flow-js-sdk/packages/types)"
       ],
       Changelogs: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl/CHANGELOG)",
-        "[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)",
-        "[@onflow/sdk](/flow-js-sdk/packages/sdk/CHANGELOG)"
+        "[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
@@ -543,6 +543,7 @@ const sections = [
         "docs/language/accounts",
         "docs/language/capability-based-access-control",
         "docs/language/contracts",
+        "docs/language/contract-updatability",
         "docs/language/events",
         "docs/language/transactions",
         "docs/language/run-time-types",
@@ -569,7 +570,6 @@ module.exports = {
     title: "Flow Documentation"
   },
   plugins: [
-    "gatsby-plugin-remove-trailing-slashes",
     {
       resolve: "gatsby-plugin-breadcrumb",
       options: {
@@ -580,6 +580,10 @@ module.exports = {
           {
             pathname: "/node-operation/faq",
             crumbLabel: "FAQ"
+          },
+          {
+            pathname: "/sdks",
+            crumbLabel: "SDKs"
           },
           {
             pathname: "/faq",

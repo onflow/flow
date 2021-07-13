@@ -1,19 +1,22 @@
 ---
-title: FUSD Stablecoin on Flow Testnet
-sidebar_title: FUSD on Testnet
-description: Mock FUSD is live on Flow Testnet for development purposes
+title: FUSD Transactions & Scripts
+sidebar_title: Transactions & Scripts
+description: Transaction templates for the FUSD stablecoin on Flow 
 ---
 
 ## Contract
 
 The `FUSD` contract defines the Flow USD stablecoin token.
 
-FUSD implements the standard [FungibleToken](https://docs.onflow.org/core-contracts/fungible-token/)
+FUSD implements the standard [FungibleToken](/core-contracts/fungible-token/)
 contract interface on Flow.
 
 | Network  | Contract Address     |
 | -------- | -------------------- |
 | Testnet  | [0xe223d8a629e49c68](https://flow-view-source.com/testnet/account/0xe223d8a629e49c68/contract/FUSD) |
+| Mainnet  | [0x3c5959b568896393](https://flowscan.org/contract/A.3c5959b568896393.FUSD) |
+
+Source: [FUSD.cdc](https://github.com/onflow/fusd/blob/main/contracts/FUSD.cdc)
 
 ## Transactions & Scripts
 
@@ -27,18 +30,22 @@ It also links the following capabilities:
 - `FungibleToken.Receiver` - This capability allows this account to accept FUSD deposits.
 - `FungibleToken.Balance` - This capability allows anybody to inspect the FUSD balance of this account.
 
-```cadence
-import FungibleToken from 0x9a0766d93b6608b7
-import FUSD from 0xe223d8a629e49c68
+```cadence:title=setup_fusd_vault.cdc
+// Mainnet
+import FungibleToken from 0xf233dcee88fe0abe
+import FUSD from 0x3c5959b568896393
+
+// Testnet
+// import FungibleToken from 0x9a0766d93b6608b7
+// import FUSD from 0xe223d8a629e49c68
 
 transaction {
+
   prepare(signer: AuthAccount) {
 
-    let existingVault = signer.borrow<&FUSD.Vault>(from: /storage/fusdVault)
-
-    // If the account is already set up that's not a problem, but we don't want to replace it
-    if (existingVault != nil) {
-        return
+    // It's OK if the account already has a Vault, but we don't want to replace it
+    if(signer.borrow<&FUSD.Vault>(from: /storage/fusdVault) != nil) {
+      return
     }
     
     // Create a new FUSD Vault and put it in storage
@@ -61,30 +68,36 @@ transaction {
 }
 ```
 
+Source: [setup\_fusd\_vault.cdc](https://github.com/onflow/fusd/blob/main/transactions/setup_fusd_vault.cdc)
+
 ### Transfer FUSD
 
 This transaction withdraws FUSD from the signer's
 account and deposits it into a recipient account.
 This transaction will fail if the recipient 
-does not have an FUSD receiver. 
+does not have an FUSD receiver.
 No funds are transferred or lost if the transaction fails.
 
 - `amount`: The amount of FUSD transfer (e.g. 10.0)
-- `to`: The recipient account address.
+- `recipient`: The recipient account address.
 
-```cadence
-import FungibleToken from 0x9a0766d93b6608b7
-import FUSD from 0xe223d8a629e49c68
+```cadence:title=transfer_fusd.cdc
+// Mainnet
+import FungibleToken from 0xf233dcee88fe0abe
+import FUSD from 0x3c5959b568896393
 
-transaction(amount: UFix64, to: Address) {
+// Testnet
+// import FungibleToken from 0x9a0766d93b6608b7
+// import FUSD from 0xe223d8a629e49c68
 
-  // The Vault resource that holds the tokens being transferred
+transaction(amount: UFix64, recipient: Address) {
+
+  // The Vault resource that holds the tokens that are being transfered
   let sentVault: @FungibleToken.Vault
 
   prepare(signer: AuthAccount) {
     // Get a reference to the signer's stored vault
-    let vaultRef = signer
-      .borrow<&FUSD.Vault>(from: /storage/fusdVault)
+    let vaultRef = signer.borrow<&FUSD.Vault>(from: /storage/fusdVault)
       ?? panic("Could not borrow reference to the owner's Vault!")
 
     // Withdraw tokens from the signer's stored vault
@@ -93,11 +106,10 @@ transaction(amount: UFix64, to: Address) {
 
   execute {
     // Get the recipient's public account object
-    let recipient = getAccount(to)
+    let recipientAccount = getAccount(recipient)
 
     // Get a reference to the recipient's Receiver
-    let receiverRef = recipient
-      .getCapability(/public/fusdReceiver)!
+    let receiverRef = recipientAccount.getCapability(/public/fusdReceiver)!
       .borrow<&{FungibleToken.Receiver}>()
       ?? panic("Could not borrow receiver reference to the recipient's Vault")
 
@@ -107,19 +119,26 @@ transaction(amount: UFix64, to: Address) {
 }
 ```
 
+Source: [transfer_fusd.cdc](https://github.com/onflow/fusd/blob/main/transactions/transfer_fusd.cdc)
+
 ### Get FUSD Balance for an Account
 
 This script returns the FUSD balance of an account.
 
-```cadence
-import FungibleToken from 0x9a0766d93b6608b7
-import FUSD from 0xe223d8a629e49c68
+```cadence:title=get_fusd_balance.cdc
+// Mainnet
+import FungibleToken from 0xf233dcee88fe0abe
+import FUSD from 0x3c5959b568896393
+
+// Testnet
+// import FungibleToken from 0x9a0766d93b6608b7
+// import FUSD from 0xe223d8a629e49c68
 
 pub fun main(address: Address): UFix64 {
   let account = getAccount(address)
 
   let vaultRef = account
-    .getCapability(/public/fusdBalance)!
+    .getCapability(/public/fusdBalance)
     .borrow<&FUSD.Vault{FungibleToken.Balance}>()
     ?? panic("Could not borrow Balance capability")
 
@@ -127,17 +146,4 @@ pub fun main(address: Address): UFix64 {
 }
 ```
 
-## Where to Get FUSD
-
-### Blocto Swap
-
-FUSD is available on Testnet through the 
-[Blocto Swap decentralized exchange](https://swap-testnet.blocto.app/) (DEX).
-
-You can exchange (swap) Testnet FLOW for 
-Testnet FUSD using a Blocto wallet.
-If you don't have a Blocto wallet on Testnet,
-you can create one directly from the Blocto Swap app.
-
-Once the FUSD is in your Blocto wallet,
-you can transfer to any Testnet address that has an FUSD receiver.
+Source: [get\_fusd\_balance.cdc](https://github.com/onflow/fusd/blob/main/transactions/scripts/get_fusd_balance.cdc)

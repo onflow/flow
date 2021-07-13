@@ -506,7 +506,7 @@ message AccountResponse {
 
 `ExecuteScriptAtLatestBlock` executes a read-only Cadence script against the latest sealed execution state.
 
-This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/docs/json-cadence-spec.md).
+This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec/).
 
 ```protobuf
 rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse)
@@ -545,7 +545,7 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockID` executes a ready-only Cadence script against the execution state at the block with the given ID.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/docs/cadence-json-spec.md).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec/).
 
 ```protobuf
 rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
@@ -578,7 +578,7 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockHeight` executes a ready-only Cadence script against the execution state at the given block height.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/docs/cadence-json-spec.md).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec/).
 
 ```protobuf
 rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
@@ -804,7 +804,7 @@ message Block {
 | block_seals           | List of [block seals](#block-seal)                                                                                                                                                                                                                                                                                |
 | signatures            | BLS signatures of consensus nodes                                                                                                                                                                                                                                                                                 |
 
-The detailed semantics of block formation are covered in the [block formation guide](/docs/transaction-lifecycle.md#block-formation).
+The detailed semantics of block formation are covered in the [block formation guide](/concepts/transaction-lifecycle#block-formation).
 
 ## Block Header
 
@@ -906,27 +906,27 @@ message TransactionSignature {
 }
 ```
 
-| Field                         | Description                                                                                         |
-| ----------------------------- | --------------------------------------------------------------------------------------------------- |
-| script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes                                        |
-| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](/docs/json-cadence-spec.md) bytes |
-| reference_block_id            | Block ID used to determine transaction expiry                                                       |
-| [proposal_key](#proposal-key) | Account key used to propose the transaction                                                         |
-| payer                         | Address of the payer account                                                                        |
-| authorizers                   | Addresses of the transaction authorizers                                                            |
-| signatures                    | [Signatures](#transaction-signatures) from all signer accounts                                      |
+| Field                         | Description                                                                                          |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
+| script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes                                         |
+| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](/cadence/json-cadence-spec/) bytes |
+| reference_block_id            | Block ID used to determine transaction expiry                                                        |
+| [proposal_key](#proposal-key) | Account key used to propose the transaction                                                          |
+| payer                         | Address of the payer account                                                                         |
+| authorizers                   | Addresses of the transaction authorizers                                                             |
+| signatures                    | [Signatures](#transaction-signatures) from all signer accounts                                       |
 
-The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](/docs/transaction-lifecycle.md#submission).
+The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](/concepts/transaction-signing).
 
 ### Proposal Key
 
-The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](/concepts/accounts-and-keys.md#sequence-numbers).
+The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](/concepts/accounts-and-keys#sequence-numbers).
 
-| Field           | Description                                                                         |
-| --------------- | ----------------------------------------------------------------------------------- |
-| address         | Address of proposer account                                                         |
-| key_id          | ID of proposal key on the proposal account                                          |
-| sequence_number | [Sequence number](/concepts/accounts-and-keys.md#sequence-numbers) for the proposal key |
+| Field           | Description                                                                          |
+| --------------- | ------------------------------------------------------------------------------------ |
+| address         | Address of proposer account                                                          |
+| key_id          | ID of proposal key on the proposal account                                           |
+| sequence_number | [Sequence number](/concepts/accounts-and-keys#sequence-numbers) for the proposal key |
 
 ### Transaction Signature
 
@@ -982,7 +982,7 @@ message Account {
 
 The `code` and `contracts` fields contain the raw Cadence source code, encoded as UTF-8 bytes.
 
-More information on accounts can be found [here](/concepts/accounts-and-keys.md).
+More information on accounts can be found [here](/concepts/accounts-and-keys/).
 
 ### Account Key
 
@@ -1000,17 +1000,17 @@ message AccountKey {
 }
 ```
 
-| Field           | Description                                                                            |
-| --------------- | -------------------------------------------------------------------------------------- |
-| id              | Index of the key within the account, used as a unique identifier                       |
-| public_key      | Public key encoded as bytes                                                            |
-| sign_algo       | [Signature algorithm](/concepts/accounts-and-keys.md#supported-signature--hash-algorithms) |
-| hash_algo       | [Hash algorithm](/concepts/accounts-and-keys.md#supported-signature--hash-algorithms)      |
-| weight          | [Weight assigned to the key](/concepts/accounts-and-keys.md#weighted-keys)                 |
-| sequence_number | [Sequence number for the key](/concepts/accounts-and-keys.md#sequence-numbers)             |
-| revoked         | Flag indicating whether or not the key has been revoked                                |
+| Field           | Description                                                                             |
+| --------------- | --------------------------------------------------------------------------------------- |
+| id              | Index of the key within the account, used as a unique identifier                        |
+| public_key      | Public key encoded as bytes                                                             |
+| sign_algo       | [Signature algorithm](/concepts/accounts-and-keys#supported-signature--hash-algorithms) |
+| hash_algo       | [Hash algorithm](/concepts/accounts-and-keys#supported-signature--hash-algorithms)      |
+| weight          | [Weight assigned to the key](/concepts/accounts-and-keys#weighted-keys)                 |
+| sequence_number | [Sequence number for the key](/concepts/accounts-and-keys#sequence-numbers)             |
+| revoked         | Flag indicating whether or not the key has been revoked                                 |
 
-More information on account keys, key weights and sequence numbers can be found [here](/concepts/accounts-and-keys.md).
+More information on account keys, key weights and sequence numbers can be found [here](/concepts/accounts-and-keys/).
 
 ## Event
 
@@ -1026,10 +1026,10 @@ message Event {
 }
 ```
 
-| Field             | Description                                                               |
-| ----------------- | ------------------------------------------------------------------------- |
-| type              | Fully-qualified unique type identifier for the event                      |
-| transaction_id    | ID of the transaction the event was emitted from                          |
-| transaction_index | Zero-based index of the transaction within the block                      |
-| event_index       | Zero-based index of the event within the transaction                      |
-| payload           | Event fields encoded as [JSON-Cadence values](/docs/json-cadence-spec.md) |
+| Field             | Description                                                                |
+| ----------------- | -------------------------------------------------------------------------- |
+| type              | Fully-qualified unique type identifier for the event                       |
+| transaction_id    | ID of the transaction the event was emitted from                           |
+| transaction_index | Zero-based index of the transaction within the block                       |
+| event_index       | Zero-based index of the event within the transaction                       |
+| payload           | Event fields encoded as [JSON-Cadence values](/cadence/json-cadence-spec/) |

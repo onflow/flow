@@ -149,12 +149,17 @@ let b: Int = a    // INVALID
 let b: Int = a ?? 42
 // `b` is 42, as `a` is nil
 
-A third way to do this is by using the force-unwrap operator (`!`). This operator allows you to get the value of the optional immediately, but if the value is `nil` it aborts. This is only recommended if you definitely want to abort the transaction if a value is `nil`
+// A third way to do this is by using the force-unwrap operator (`!`). 
+// This operator allows you to get the value of the optional immediately, 
+// but if the value is `nil` it aborts.
+//
+// This is only recommended if you definitely want to abort the transaction if a value is `nil`
+
 let x: Int? = 1
 let x2 = x! // `x2` has type `Int` and non-optional value `1`
 
-      let x2: Int? = nil
-      x2!  // Aborts the program, because `y` is nil
+let x2: Int? = nil
+x2!  // Aborts the program, because `y` is nil
 ```
 
 ### Dictionaries use Optionals
@@ -163,4 +168,3 @@ Dictionaries are mutable, unordered collections of key-value associations. Becau
 
 See the [Optionals Section](https://docs.onflow.org/docs/cadence#optionals) in the Cadence Language Reference for more in-depth explanations and examples.
 
-Check out the [FAQ](doc:faq) next.

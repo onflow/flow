@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { StatusContext } from "./context";
+import React from "react";
 import { StatusCard, RecentPost } from "./components";
 import { useBreakingChangesPosts } from "./hooks";
 import { StatusWrapper, AnnouncementsWrapper } from "./styles";

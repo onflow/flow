@@ -9,8 +9,8 @@ import { BREAKING_CHANGES_RESOURCE } from "./constants";
 const fetchBreakingChanges = (resource) => {
   return fetch(resource, {
     headers: {
-      "Content-Type": "application/json",
-    },
+      "Content-Type": "application/json"
+    }
   }).then((response) => response.json());
 };
 
@@ -21,7 +21,7 @@ export function useBreakingChangesPosts() {
     refreshInterval: 100000,
     onSuccess(data) {
       const {
-        topic_list: { topics },
+        topic_list: { topics }
       } = data;
 
       const sorted = topics
@@ -41,7 +41,7 @@ export function useBreakingChangesPosts() {
         });
 
       setPosts(sorted);
-    },
+    }
   });
 
   return posts || [];
