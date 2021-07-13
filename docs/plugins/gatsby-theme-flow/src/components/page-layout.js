@@ -34,9 +34,10 @@ import { useResponsiveSidebar } from "./responsive-sidebar";
 import Search from "./search";
 import Sidebar from "./sidebar";
 import SidebarNav from "./sidebar-nav";
+import { StatusContextProvider } from "./flow-status/context";
 
 const Main = styled.main({
-  flexGrow: 1,
+  flexGrow: 1
 });
 
 const MobileNav = styled.div({
@@ -44,14 +45,14 @@ const MobileNav = styled.div({
   [breakpoints.md]: {
     display: "flex",
     alignItems: "center",
-    color: theme.text1,
-  },
+    color: theme.text1
+  }
 });
 
 export const NavItemTitle = styled.h4({
   marginBottom: 8,
   fontWeight: 600,
-  color: "inherit",
+  color: "inherit"
 });
 
 export const NavItemDescription = styled.p({
@@ -59,7 +60,7 @@ export const NavItemDescription = styled.p({
   fontSize: 15,
   lineHeight: 1.5,
   color: theme.text3,
-  transition: "color 150ms ease-in-out",
+  transition: "color 150ms ease-in-out"
 });
 
 const BreadcrumbWrapper = styled.div({
@@ -72,16 +73,16 @@ const BreadcrumbWrapper = styled.div({
   ".breadcrumb__separator": {
     fontSize: "0.8rem",
     display: "flex",
-    alignItems: "center",
+    alignItems: "center"
   },
   ".breadcrumb__link, .breadcrumb__link__disabled": {
     fontWeight: 500,
     fontSize: "0.8rem",
     color: theme.text3,
     "&:hover": {
-      color: theme.primary,
-    },
-  },
+      color: theme.primary
+    }
+  }
 });
 
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
@@ -90,7 +91,7 @@ function handleToggleAll(expanded) {
   trackCustomEvent({
     category: GA_EVENT_CATEGORY_SIDEBAR,
     action: "Toggle all",
-    label: expanded ? "expand" : "collapse",
+    label: expanded ? "expand" : "collapse"
   });
 }
 
@@ -99,7 +100,7 @@ function handleToggleCategory(label, expanded) {
     category: GA_EVENT_CATEGORY_SIDEBAR,
     action: "Toggle category",
     label,
-    value: Number(expanded),
+    value: Number(expanded)
   });
 }
 
@@ -124,7 +125,7 @@ export default function PageLayout(props) {
     openSidebar,
     sidebarOpen,
     handleWrapperClick,
-    handleSidebarNavLinkClick,
+    handleSidebarNavLinkClick
   } = useResponsiveSidebar();
 
   const selectedLanguageState = useLocalStorage("docs-lang");
@@ -134,21 +135,21 @@ export default function PageLayout(props) {
   const {
     subtitle,
     sidebar,
-    breadcrumb: { crumbs },
+    breadcrumb: { crumbs }
   } = props.pageContext;
 
   const {
     navConfig = {},
     logoLink,
     algoliaApiKey,
-    algoliaIndexName,
+    algoliaIndexName
   } = props.pluginOptions;
 
   const navItems = useMemo(
     () =>
       Object.entries(navConfig).map(([title, navItem]) => ({
         ...navItem,
-        title,
+        title
       })),
     [navConfig]
   );
@@ -173,86 +174,88 @@ export default function PageLayout(props) {
         />
       </Helmet>
       <FlexWrapper onClick={handleWrapperClick}>
-        <Sidebar
-          responsive
-          className="sidebar"
-          open={sidebarOpen}
-          ref={sidebarRef}
-          title={siteName}
-          logoLink={logoLink}
-        >
-          {sidebar && (
-            <NavItemsContext.Provider value={navItems}>
-              <SidebarNav
-                contents={sidebar.contents}
-                pathname={pathname}
-                onToggleAll={handleToggleAll}
-                onToggleCategory={handleToggleCategory}
-                onLinkClick={handleSidebarNavLinkClick}
-                showMainNav={sidebar.showMainNav}
-                alwaysExpanded={sidebar.alwaysExpanded}
-              />
-            </NavItemsContext.Provider>
-          )}
-        </Sidebar>
-        <Main>
-          <Header title={title}>
-            <MobileNav>
-              <MobileLogo />
-              <MenuButton onClick={openSidebar} />
-            </MobileNav>
-            <StatusWidget />
-            {algoliaApiKey && algoliaIndexName && (
-              <Search
-                siteName={siteName}
-                apiKey={algoliaApiKey}
-                indexName={algoliaIndexName}
-              />
+        <StatusContextProvider>
+          <Sidebar
+            responsive
+            className="sidebar"
+            open={sidebarOpen}
+            ref={sidebarRef}
+            title={siteName}
+            logoLink={logoLink}
+          >
+            {sidebar && (
+              <NavItemsContext.Provider value={navItems}>
+                <SidebarNav
+                  contents={sidebar.contents}
+                  pathname={pathname}
+                  onToggleAll={handleToggleAll}
+                  onToggleCategory={handleToggleCategory}
+                  onLinkClick={handleSidebarNavLinkClick}
+                  showMainNav={sidebar.showMainNav}
+                  alwaysExpanded={sidebar.alwaysExpanded}
+                />
+              </NavItemsContext.Provider>
             )}
-            <HeaderNav />
-            <AnimatePresence>
-              {props.path !== "/" ? (
-                <motion.div
-                  initial={{ height: 0 }}
-                  animate={{
-                    height: "auto",
-                  }}
-                  exit={{ height: 0, transition: { delay: 0.2 } }}
-                  style={{ width: "100%" }}
-                >
-                  <BreadcrumbWrapper>
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      <Breadcrumb
-                        crumbs={dacrumbs}
-                        hiddenCrumbs={["/intro"]}
-                        disableLinks={[
-                          "/flow-port",
-                          "/faq",
-                          "/community-updates",
-                          "/tutorial",
-                          "/flow-js-sdk/packages",
-                          "/flow-go-sdk/examples",
-                        ]}
-                      />
-                    </motion.div>
-                  </BreadcrumbWrapper>
-                </motion.div>
-              ) : (
-                ""
+          </Sidebar>
+          <Main>
+            <Header title={title}>
+              <MobileNav>
+                <MobileLogo />
+                <MenuButton onClick={openSidebar} />
+              </MobileNav>
+              <StatusWidget />
+              {algoliaApiKey && algoliaIndexName && (
+                <Search
+                  siteName={siteName}
+                  apiKey={algoliaApiKey}
+                  indexName={algoliaIndexName}
+                />
               )}
-            </AnimatePresence>
-          </Header>
+              <HeaderNav />
+              <AnimatePresence>
+                {props.path !== "/" ? (
+                  <motion.div
+                    initial={{ height: 0 }}
+                    animate={{
+                      height: "auto"
+                    }}
+                    exit={{ height: 0, transition: { delay: 0.2 } }}
+                    style={{ width: "100%" }}
+                  >
+                    <BreadcrumbWrapper>
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        <Breadcrumb
+                          crumbs={dacrumbs}
+                          hiddenCrumbs={["/intro"]}
+                          disableLinks={[
+                            "/flow-port",
+                            "/faq",
+                            "/community-updates",
+                            "/tutorial",
+                            "/flow-js-sdk/packages",
+                            "/flow-go-sdk/examples"
+                          ]}
+                        />
+                      </motion.div>
+                    </BreadcrumbWrapper>
+                  </motion.div>
+                ) : (
+                  ""
+                )}
+              </AnimatePresence>
+            </Header>
 
-          <SelectedLanguageContext.Provider value={selectedLanguageState}>
-            <NavItemsContext.Provider value={navItems}>
-              {props.children}
-            </NavItemsContext.Provider>
-          </SelectedLanguageContext.Provider>
-        </Main>
+            <SelectedLanguageContext.Provider value={selectedLanguageState}>
+              <NavItemsContext.Provider value={navItems}>
+                {props.children}
+              </NavItemsContext.Provider>
+            </SelectedLanguageContext.Provider>
+          </Main>
+        </StatusContextProvider>
       </FlexWrapper>
     </Layout>
   );
@@ -262,5 +265,5 @@ PageLayout.propTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
-  pluginOptions: PropTypes.object.isRequired,
+  pluginOptions: PropTypes.object.isRequired
 };
