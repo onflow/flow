@@ -443,6 +443,7 @@ const sections = [
         "staking/faq",
       ],
       "Technical Docs": [
+        "staking/epoch-terminology",
         "staking/epoch-preparation",
         "staking/epoch-scripts-events",
         "staking/technical-overview",

@@ -5,7 +5,7 @@ description: Technical Overview of the Flow Epoch Protocol
 ---
 
 <Callout type="warning">
-  If you haven't read the Intro to Flow Staking document, please read that
+  If you haven't read the [Intro to Flow Staking document](/staking/index/), please read that
   first. That document provides a non-technical overview of staking on Flow for
   all users and is a necessary prerequisite to this document.
 </Callout>
@@ -16,24 +16,166 @@ description: Technical Overview of the Flow Epoch Protocol
 
 # Epochs
 
-This document describes the functionality of the [epoch smart contracts](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs).
+The epoch preparation protocol defines how information about the next epoch is determined and propagated to the protocol state.
+
+There are two primary actors in this protocol, the Epoch Smart Contracts, and the Consensus Committee:
+
+- [`Epoch Smart Contracts`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs) - the smart contracts that manage epochs:
+    - `FlowClusterQC` : Manages the quorum certificate generation for bootstrapping the hotstuff consensus algorithm for each collector cluster.
+    - `FlowDKG` : Manages the Distributed Key Generation that consensus nodes participate in to initialize the random beacon for each epoch.
+    - `FlowIDTableStaking` : Manages the source of truth for the identity table, and enforces rules related to staking FLOW, delegating, paying rewards, and allocating token movements between epochs.
+    - `FlowEpoch` : Ties all of the previously mentioned contracts together to manage the high level epoch lifecycle. `FlowEpoch` acts as a state machine that transitions between different epoch phases when specific conditions from the other contracts are met and triggers important operations in the other smart contracts when phase changes happen.
+- `Consensus Committee` - the committee of consensus nodes for the current epoch
+
+This document describes the communication protocol between these two actors and the impact on the protocol state.
+
 It gives an overview of the process of epochs, the staking auction, and the epoch setup and commit phases.
 It is an important prerequisite to understand before proceeding with any other technical integration or interaction with the Flow Protocol,
 but does not provide step-by-step instructions for how to perform specific actions.
 
-This document also describes how to read public epoch data from the contracts.
-Anyone can read public data from the epoch smart contracts with these instructions.
-
 The transactions described in this document are contained in the [`flow-core-contracts/transactions/epoch/`](https://github.com/onflow/flow-core-contracts/tree/master/transactions/epoch)
 directory. You can see the text of all the transactions used to interact with the smart contracts there.
 
-## Terminology
+## Epochs Overview
 
-TODO
+Conceptually, Flow is a permissioned blockchain:
 
-## Smart Contract Summary
+- Only a pre-determined set of nodes is authorized to participate in the protocol. 
+The set of authorized nodes is a-priori known to all network participants. This set is referred to as the **Identity Table**.
+- An **Epoch** is defined as a period of time 
+where the set of authorized nodes is constant (or can only shrink due to ejection of malicious nodes).
 
-TODO
+At an Epoch switchover, which is the time when the network transitions from one epoch to the next,
+the set of authorized nodes can change. For each of Flow's node roles, the Flow protocol admits a protocol-determined number of nodes. 
+
+For each Epoch, there is a [Staking Auction](/staking/technical-overview/) in which new potential node operators may submit Staking Commitments.
+All this is completely smart-contract based and handled through conventional transactions.
+
+After the Staking Auction is over, the protocol determines which commitments to accept and which to reject.
+The node operators whose staking commitments were accepted are added to the Identity Table for the next epoch,
+and become authorized participants at the next epoch switchover.
+Staked Nodes also can submit other operations to modify their existing stake, which are all carried out at the end of the current epoch.
+
+The smart contract that determines the nodes for the next Epoch has special privileges.
+Specifically, it is allowed to emit [Service Events](/staking/epoch-scripts/events/),
+which are how the execution state updates the consensus node-based protocol state.
+
+At the end of the staking auction, the epoch smart contracts conclude that they have now determined
+the set of nodes which will be running the network for the next Epoch, and the amount of FLOW that all the nodes have staked.
+The smart contract then emits a service event with this information.
+
+When processing the block with seat assignment, all network nodes (including future ones which are supposed to monitor the chain in anticipation)
+are thereby informed about the upcoming change.
+
+<Callout type="warning">
+Note: At this point in time, there is no change in participating nodes.
+</Callout>
+
+There is an interim period of time until the new Epoch starts for the following tasks to be completed:
+    - The epoch smart contract will run the cluster assignment algorithm for all the collector nodes
+    and each collector node will vote for the root block of their respective clusters (managed through a smart contract that can emit service events).
+    - The Random Beacon Committee for the next Epoch (currently all consensus nodes) will run the Distributed Key Generation (DKG),
+    also managed through a smart contract that can emit service events.
+    - When completing the QC generation and DKG, the smart contracts will emit service events. 
+    After consensus nodes have collected all relevant information (DKG Keys), 
+    they can update the identity table to include the information for the next Epoch.
+
+If some necessary tasks for the next Epoch are not completed in the interim period of time, Flow halts!
+
+## Epoch Length
+
+The length of an Epoch is measured in terms of consensus views. The number of views in an epoch
+and in the various epoch phases are known before the Epoch begins
+and stored as a field in the main epoch smart contract (`FlowEpoch`).
+
+The length of an epoch *is not* fork-dependent, as it is measured in views.
+Generally, there is not a block for every view.
+However this does not pose a problem, as for each fork, the first and last block of each Epoch are clearly defined. 
+
+<Callout type="warning">
+  Motivation for measuring epoch length in consensus views:
+  While we utilize a consensus-internal detail for measuring time,
+  this solution has significantly less engineering complexity compared to using height.
+  The reason is that HotStuff requires (for liveness) a deterministic *fork-independent* primary selection per view.
+  Defining Epoch length based on height would break fork-independent primary selection,
+  as there can be multiple blocks at the same height, but with different views.
+  Using view numbers, there are no extra edge cases. 
+</Callout>
+
+# Phases
+
+The preparation for the next epoch is separated into distinct phases. Each phase occurs completely within the current epoch.
+
+![Flow Epoch Schedule](epoch-phase-diagram.png)
+
+The Epoch Smart Contract acts as a state machine. The smart contract keeps a record of the current phase,
+the number of views in the current phase, and the conditions that need to be met in order to advance to the next phase, or next epoch.
+A special `Hearbeat` resource is used to call the `advanceBlock()` method during every single new block in Flow.
+During these regular method calls, if all of the conditions are met to advance to the next phase,
+the smart contract performs any relevant retreival and storage of information, emits a Service Event,
+and transitions to the next phase, which often involves setting certain metadata
+or enabling one of the connected smart contracts to begin its work.
+
+From the perspective of the consensus committe, the phase transitions within epochs occur as a result of including a service event in a block,
+thus the phase transition only applies to the fork containing the block with the service event.
+
+The genesis block has an `EpochSetup` and an `EpochCommit` event that defines the first view and the last view of Epoch 1.
+At the end of Phase 0 and beginning of Phase 1, the `EpochSetup` service event is emitted
+that contains the identity table and other initial metadata for the upcoming epoch.
+At the end of Phase 1 and beginning of Phase 2, the `EpochCommit` service event
+is emitted that contains the results of the Epoch Setup phase.
+The start of Epoch 2 is the first block with its view > the last view of Epoch 1, and its parent view ≤ the last view of Epoch 1. 
+
+## Phase Durations
+
+The length of an epoch *is not* ****fork-dependent, as it is measured in views. 
+
+## Special Blocks
+
+Epoch Staking Auction Phase:
+
+- `0` - the first block of Epoch `N` (in its respective fork)
+- `A` - the block, whose Execution Result contains the `EpochSetup` service event
+
+Epoch Setup Phase:
+
+- `b` - the block in which the `EpochSetup` service event is sealed
+- `c` - the block which finalizes `b`
+- `D` - the block, whose Execution Result contains the `EpochCommit` service event
+
+Epoch Committed Phase:
+
+- `e` - the block in which the `EpochCommit` service event is sealed
+- `f` - the block which finalizes `e`
+
+Epoch `N+1`
+
+- `G` - the first block of the next epoch: $\textnormal{G.view} >  \hat{V}^{(N)}$  *and*  $\textnormal{G.parent.view}  \le \hat{V}^{(N)}$
+
+## Phase Transitions
+
+The **Consensus Committee** triggers the **phase transition coinciding with the Epoch switchover** by publishing the block of the next Epoch. This block's execution state will reflect the latest epoch's new identity table and metadata.
+
+For the **Epoch-*internal* Phase transitions**, the **Execution Environment** provides the trigger by emitting a respective service event:
+
+- The `Epoch Smart Contract` service event triggers the phase transition
+`Staking Auction Phase` → `Epoch Setup Phase`
+- The `EpochCommit` service event triggers the phase transition
+`Epoch Setup Phase` → `Epoch Committed Phase`
+
+Only one of each service event may be emitted each epoch, for a given fork. `EpochCommit` may only be emitted after `EpochSetup` has been generated in the respective given fork. 
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/24ff8aef-c266-4333-b451-b99272ad3122/Epoch_Diagrams_v3-Epoch_Phases_(2).png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/24ff8aef-c266-4333-b451-b99272ad3122/Epoch_Diagrams_v3-Epoch_Phases_(2).png)
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/444a4061-23ab-47b0-a5e8-5966fcb8cd31/Epoch_Diagrams_v3-Epoch_Phases_(3).png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/444a4061-23ab-47b0-a5e8-5966fcb8cd31/Epoch_Diagrams_v3-Epoch_Phases_(3).png)
+
+For conciseness, we will describe only the first phase transition resulting from `EpochSetup` service event. Both phase transitions operate the same way.
+
+Let `A` be the block whose execution emits the `EpochSetup` service event. Let `b` be the block containing the seal for `A`. There may be multiple blocks `b` and `b'` satisfying these definitions in conflicting forks — this is expected.
+
+Conceptually, the `Staking Auction Phase` ends at the end of block `A` and the `Epoch Setup Phase` begins at block `A+1`. Consensus nodes must keep track of this fork-dependent phase transition in order to correctly handle edge cases such as multiple `EpochSetup` service events being emitted. 
+
+Practically, however, there is no reason to begin work for the `Epoch Setup Phase` until block `b` is finalized (which happens when block `c` is published ), which effectively finalizes the phase transition. Thus, all non-consensus nodes can wait for the phase transition to be finalized before performing any tasks related to the `Epoch Setup Phase`.
 
 Epoch Schedule:
 
@@ -50,12 +192,5 @@ and democratically by all the stakers in the network.
 
 # Query Information from the Epoch Contract
 
-TODO: Add scripts docs
-
-# Monitor Epoch Events
-
-See the epoch events document for detailed documentation about the events that are emitted by the epoch contract.
-
-# Appendix
-
-TODO
+See the epoch scripts and events document for detailed documentation about
+you can use scripts events to learn information about the state of the epoch contracts.
