@@ -1,5 +1,3 @@
-import { result } from "lodash";
-
 import React, { createContext, useState } from "react";
 
 import useSWR from "swr";
