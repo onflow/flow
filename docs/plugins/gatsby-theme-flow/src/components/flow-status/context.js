@@ -1,6 +1,9 @@
 import { result } from "lodash";
+
 import React, { createContext, useState } from "react";
+
 import useSWR from "swr";
+
 import {
   MAINNET_STATUSPAGE_ID,
   TESTNET_STATUSPAGE_ID,

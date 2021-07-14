@@ -2,19 +2,19 @@ import styled from "@emotion/styled";
 
 import { theme } from "gatsby-theme-flow/src/colors";
 
-import { HEALTHY } from "./constants";
+import { HEALTHY, UNAVAILABLE } from "./constants";
 
 export const StatusWrapper = styled.div({});
 export const AnnouncementsWrapper = styled.div({});
 
 function getColor(status) {
   switch (status) {
-    case "loading":
-      return theme.text2;
     case HEALTHY:
       return theme.primary;
-    default:
+    case UNAVAILABLE:
       return theme.error;
+    default:
+      return theme.secondary;
   }
 }
 

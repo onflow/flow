@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 
 import React from "react";
-import { StatusContext } from "../context";
 
 import { theme } from "gatsby-theme-flow/src/colors";
 import { smallCaps } from "gatsby-theme-flow/src/utils/typography";
 
-import { HEALTHY, DEGRADED, statusPageStatuses } from "../constants";
+import { HEALTHY, UNAVAILABLE, statusPageStatuses } from "../constants";
+import { StatusContext } from "../context";
 
 export const MenuTitle = styled.h6(smallCaps, {
   marginBottom: 0,
@@ -26,14 +26,19 @@ export const MenuTitle = styled.h6(smallCaps, {
 });
 
 const statusHealthy = HEALTHY;
-const statusDegraded = DEGRADED;
+const statusUnavailable = UNAVAILABLE;
 
 const IconWrapper = styled.div(({ status }) => {
   return {
     display: "flex",
     flexShrink: 0,
 
-    color: status === statusHealthy ? theme.primary : theme.error
+    color:
+      status === statusHealthy
+        ? theme.primary
+        : status === statusUnavailable
+        ? theme.error
+        : theme.secondary
   };
 });
 
@@ -54,7 +59,7 @@ export default function StatusWidget() {
               <a href="/status">
                 MAINNET:{" "}
                 <IconWrapper status={statusPageStatuses[mainnetStatus]}>
-                  {statusPageStatuses[mainnetStatus]}
+                  {statusPageStatuses[mainnetStatus] || "Loading..."}
                 </IconWrapper>
               </a>
             </MenuTitle>
@@ -62,7 +67,7 @@ export default function StatusWidget() {
               <a href="/status">
                 TESTNET:{" "}
                 <IconWrapper status={statusPageStatuses[testnetStatus]}>
-                  {statusPageStatuses[testnetStatus]}
+                  {statusPageStatuses[testnetStatus] || "Loading..."}
                 </IconWrapper>
               </a>
             </MenuTitle>
