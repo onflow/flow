@@ -5,7 +5,7 @@ description: Technical Overview of the Flow Epoch Protocol
 ---
 
 <Callout type="warning">
-  If you haven't read the [Intro to Flow Staking document](/staking/index/), please read that
+  If you haven't read the Introduction, please read that
   first. That document provides a non-technical overview of staking on Flow for
   all users and is a necessary prerequisite to this document.
 </Callout>
@@ -57,7 +57,7 @@ and become authorized participants at the next epoch switchover.
 Staked Nodes also can submit other operations to modify their existing stake, which are all carried out at the end of the current epoch.
 
 The smart contract that determines the nodes for the next Epoch has special privileges.
-Specifically, it is allowed to emit [Service Events](/staking/epoch-scripts/events/),
+Specifically, it is allowed to emit [Service Events](/staking/epoch-scripts-events/#monitor-epoch-service-events),
 which are how the execution state updates the consensus node-based protocol state.
 
 At the end of the staking auction, the epoch smart contracts conclude that they have now determined
@@ -68,17 +68,19 @@ When processing the block with seat assignment, all network nodes (including fut
 are thereby informed about the upcoming change.
 
 <Callout type="warning">
-Note: At this point in time, there is no change in participating nodes.
+Note: At this point in the epoch (end of the staking auction), 
+there is no change in participating nodes.
+The change in participating nodes happens at the end of the epoch.
 </Callout>
 
-There is an interim period of time until the new Epoch starts for the following tasks to be completed:
-    - The epoch smart contract will run the cluster assignment algorithm for all the collector nodes
-    and each collector node will vote for the root block of their respective clusters (managed through a smart contract that can emit service events).
-    - The Random Beacon Committee for the next Epoch (currently all consensus nodes) will run the Distributed Key Generation (DKG),
-    also managed through a smart contract that can emit service events.
-    - When completing the QC generation and DKG, the smart contracts will emit service events. 
-    After consensus nodes have collected all relevant information (DKG Keys), 
-    they can update the identity table to include the information for the next Epoch.
+After the staking auction, there is an interim period of time until the new Epoch starts for the following tasks to be completed:
+- The epoch smart contract runs the cluster assignment algorithm for all the collector nodes
+and each collector node will vote for the root block of their respective clusters
+- The Random Beacon Committee for the next Epoch (currently all consensus nodes)
+will run the Distributed Key Generation (DKG),
+- When completing the QC generation and DKG, the smart contracts will emit a service event. 
+After consensus nodes have collected all relevant information (DKG Keys), 
+they can update the identity table to include the information for the next Epoch.
 
 If some necessary tasks for the next Epoch are not completed in the interim period of time, Flow halts!
 
@@ -90,10 +92,13 @@ and stored as a field in the main epoch smart contract (`FlowEpoch`).
 
 The length of an epoch *is not* fork-dependent, as it is measured in views.
 Generally, there is not a block for every view.
-However this does not pose a problem, as for each fork, the first and last block of each Epoch are clearly defined. 
+However this does not pose a problem, as for each fork,
+the first and last block of each Epoch are clearly defined. 
 
 <Callout type="warning">
-  Motivation for measuring epoch length in consensus views:
+  **Motivation for measuring epoch length in consensus views:**
+
+
   While we utilize a consensus-internal detail for measuring time,
   this solution has significantly less engineering complexity compared to using height.
   The reason is that HotStuff requires (for liveness) a deterministic *fork-independent* primary selection per view.
@@ -104,13 +109,14 @@ However this does not pose a problem, as for each fork, the first and last block
 
 # Phases
 
-The preparation for the next epoch is separated into distinct phases. Each phase occurs completely within the current epoch.
+The preparation for the next epoch is separated into distinct phases.
+Each phase occurs completely within the current epoch.
 
 ![Flow Epoch Schedule](epoch-phase-diagram.png)
 
 The Epoch Smart Contract acts as a state machine. The smart contract keeps a record of the current phase,
 the number of views in the current phase, and the conditions that need to be met in order to advance to the next phase, or next epoch.
-A special `Hearbeat` resource is used to call the `advanceBlock()` method during every single new block in Flow.
+A special `Heartbeat` resource is used to call the `advanceBlock()` method during every single new block in Flow.
 During these regular method calls, if all of the conditions are met to advance to the next phase,
 the smart contract performs any relevant retreival and storage of information, emits a Service Event,
 and transitions to the next phase, which often involves setting certain metadata
@@ -120,12 +126,14 @@ From the perspective of the consensus committe, the phase transitions within epo
 occur as a result of including a service event in a block,
 thus the phase transition only applies to the fork containing the block with the service event.
 
-The genesis block has an `EpochSetup` and an `EpochCommit` event that defines the first view and the last view of Epoch 1.
 At the end of Phase 0 and beginning of Phase 1, the `EpochSetup` service event is emitted
 that contains the identity table and other initial metadata for the upcoming epoch.
+
 At the end of Phase 1 and beginning of Phase 2, the `EpochCommit` service event
 is emitted that contains the results of the Epoch Setup phase.
-The start of Epoch 2 is the first block with its view > the last view of Epoch 1, and its parent view ≤ the last view of Epoch 1. 
+
+The start of a new epoch is the first block with its view > the last view of the previous epoch,
+and its parent view ≤ the last view of the last epoch.
 
 ## Phase Transitions
 
@@ -135,7 +143,7 @@ This block's execution state will also detect the the end view of an epoch has a
 and trigger the start of the new epoch. 
 The state of the smart contracts reflect the latest epoch's new identity table and metadata.
 
-For the **Epoch-*internal* Phase transitions**, meanin the phase transitions within an epoch,
+For the **Epoch-*internal* Phase transitions**, meaning the phase transitions within an epoch,
 the **Epoch Smart Contract** provides the trigger by emitting a respective service event:
 
 - The `EpochSetup` service event triggers the phase transition
@@ -181,7 +189,7 @@ are sufficiently long to perform all required tasks before the epoch ends.
 the `Epoch Smart Contract` computes the seat assignment information for the next epoch,
 and emits a specialized service event, the `EpochSetup` event,
 with the timing and identity table information about the next epoch.
-See the [Epoch Setup Event Documentation](/staking/epoch-scripts-events/)
+See the [Epoch Setup Event Documentation](/staking/epoch-scripts-events/#epochsetup)
 for a detailed breakdown of the epoch setup event.
 
 ## Phase 1: Epoch Setup
@@ -226,7 +234,7 @@ the `Epoch Smart Contract` computes the public key shares generated by the DKG
 and the `QC`s for the collector clusters and publishes these as `EpochCommit` service event.
 The `FlowEpoch` Smart Contract should emit this event as soon as the artifacts are determined.
 
-See the [Epoch Commit Event Documentation](/staking/epoch-scripts-events/)
+See the [Epoch Commit Event Documentation](/staking/epoch-scripts-events/#epochcommit)
 for a detailed breakdown of the epoch commit event.
 
 ## Phase 2: Epoch Committed
