@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 import { theme } from "gatsby-theme-flow/src/colors";
 
-import { HEALTHY, UNAVAILABLE } from "./constants";
+import { HEALTHY, DEGRADED } from "./constants";
 
 export const StatusWrapper = styled.div({});
 export const AnnouncementsWrapper = styled.div({});
@@ -11,14 +11,14 @@ function getColor(status) {
   switch (status) {
     case HEALTHY:
       return theme.primary;
-    case UNAVAILABLE:
-      return theme.error;
+    case DEGRADED:
+      return theme.warning;
     default:
-      return theme.secondary;
+      return theme.error;
   }
 }
 
-export const StatusCardWrapper = styled.div((props) => {
+export const StatusCardWrapper = styled.div(({ networkStatus }) => {
   return {
     marginBottom: "1rem",
     display: "grid",
@@ -26,28 +26,28 @@ export const StatusCardWrapper = styled.div((props) => {
     width: "100%",
     height: "100px",
     alignItems: "center",
-    border: `2px solid ${getColor(props.networkStatus)}`,
+    border: `2px solid ${getColor(networkStatus)}`,
     padding: "0 1rem",
     borderRadius: "6px",
     h3: {
-      marginBottom: "0"
+      marginBottom: "0",
     },
     h4: {
-      marginBottom: "0.2rem"
+      marginBottom: "0.2rem",
     },
     ".network-name": {},
     ".next-spork-date": {},
     ".network-status": {
       fontWeight: "bold",
-      color: getColor(props.networkStatus)
-    }
+      color: getColor(networkStatus),
+    },
   };
 });
 
 export const AnnouncementCardWrapper = styled.div({
   "&:hover": {
     cursor: "pointer",
-    borderColor: theme.text1
+    borderColor: theme.text1,
   },
   marginBottom: "1rem",
   display: "grid",
@@ -60,9 +60,9 @@ export const AnnouncementCardWrapper = styled.div({
   borderRadius: "6px",
   h3: {
     marginBottom: "0.5rem",
-    fontSize: "1.2rem"
+    fontSize: "1.2rem",
   },
   h4: {
-    display: "inline"
-  }
+    display: "inline",
+  },
 });
