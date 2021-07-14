@@ -1,22 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { startCase } from "lodash";
 
-import { FaTruckLoading } from "react-icons/fa";
+import useSWR from "swr";
 
-import { UNAVAILABLE, statusPageStatuses } from "../constants";
+import { HEALTHY, DEGRADED, UNAVAILABLE } from "../constants";
+import { pinger, pingScript } from "../helpers";
 import { StatusCardWrapper } from "../styles";
 
 export default function StatusCard({
-  status,
+  accessAPIURL,
   networkName,
   networkVersion,
-  nextSporkDate
+  nextSporkDate,
 }) {
-  const theStatus = statusPageStatuses[status];
+  const [networkStatus, setStatus] = useState(HEALTHY);
+
+  useSWR(pingScript, pinger(accessAPIURL), {
+    refreshInterval: 140000,
+    onLoadingSlow: () => setStatus(DEGRADED),
+    onSuccess: (result) => {
+      if (result === 12) setStatus(HEALTHY);
+    },
+    onError: (err) => {
+      console.log(err);
+      setStatus(UNAVAILABLE);
+    },
+  });
 
   return (
-    <StatusCardWrapper networkStatus={theStatus}>
+    <StatusCardWrapper networkStatus={networkStatus}>
       <div className="network-name">
         <h3>{startCase(networkName)}</h3>
       </div>
@@ -30,7 +43,7 @@ export default function StatusCard({
       </div>
       <div className="network-status">
         <h4>Status</h4>
-        {theStatus || "Loading..."}
+        {networkStatus}
       </div>
     </StatusCardWrapper>
   );
