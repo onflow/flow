@@ -28,7 +28,6 @@ export const StatusContextProvider = (props) => {
     {
       refreshInterval: 100000,
       onSuccess: (result) => {
-        console.log(result);
         setStatus(result);
       }
     }
