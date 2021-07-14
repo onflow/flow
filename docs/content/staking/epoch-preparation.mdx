@@ -116,7 +116,8 @@ the smart contract performs any relevant retreival and storage of information, e
 and transitions to the next phase, which often involves setting certain metadata
 or enabling one of the connected smart contracts to begin its work.
 
-From the perspective of the consensus committe, the phase transitions within epochs occur as a result of including a service event in a block,
+From the perspective of the consensus committe, the phase transitions within epochs
+occur as a result of including a service event in a block,
 thus the phase transition only applies to the fork containing the block with the service event.
 
 The genesis block has an `EpochSetup` and an `EpochCommit` event that defines the first view and the last view of Epoch 1.
@@ -126,60 +127,24 @@ At the end of Phase 1 and beginning of Phase 2, the `EpochCommit` service event
 is emitted that contains the results of the Epoch Setup phase.
 The start of Epoch 2 is the first block with its view > the last view of Epoch 1, and its parent view ≤ the last view of Epoch 1. 
 
-## Phase Durations
-
-The length of an epoch *is not* ****fork-dependent, as it is measured in views. 
-
-## Special Blocks
-
-Epoch Staking Auction Phase:
-
-- `0` - the first block of Epoch `N` (in its respective fork)
-- `A` - the block, whose Execution Result contains the `EpochSetup` service event
-
-Epoch Setup Phase:
-
-- `b` - the block in which the `EpochSetup` service event is sealed
-- `c` - the block which finalizes `b`
-- `D` - the block, whose Execution Result contains the `EpochCommit` service event
-
-Epoch Committed Phase:
-
-- `e` - the block in which the `EpochCommit` service event is sealed
-- `f` - the block which finalizes `e`
-
-Epoch `N+1`
-
-- `G` - the first block of the next epoch: $\textnormal{G.view} >  \hat{V}^{(N)}$  *and*  $\textnormal{G.parent.view}  \le \hat{V}^{(N)}$
-
 ## Phase Transitions
 
-The **Consensus Committee** triggers the **phase transition coinciding with the Epoch switchover** by publishing the block of the next Epoch. This block's execution state will reflect the latest epoch's new identity table and metadata.
+The **Consensus Committee** triggers the **phase transition coinciding with the Epoch switchover**
+by publishing the block of the next Epoch.
+This block's execution state will also detect the the end view of an epoch has arrived
+and trigger the start of the new epoch. 
+The state of the smart contracts reflect the latest epoch's new identity table and metadata.
 
-For the **Epoch-*internal* Phase transitions**, the **Execution Environment** provides the trigger by emitting a respective service event:
+For the **Epoch-*internal* Phase transitions**, meanin the phase transitions within an epoch,
+the **Epoch Smart Contract** provides the trigger by emitting a respective service event:
 
-- The `Epoch Smart Contract` service event triggers the phase transition
+- The `EpochSetup` service event triggers the phase transition
 `Staking Auction Phase` → `Epoch Setup Phase`
 - The `EpochCommit` service event triggers the phase transition
 `Epoch Setup Phase` → `Epoch Committed Phase`
 
-Only one of each service event may be emitted each epoch, for a given fork. `EpochCommit` may only be emitted after `EpochSetup` has been generated in the respective given fork. 
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/24ff8aef-c266-4333-b451-b99272ad3122/Epoch_Diagrams_v3-Epoch_Phases_(2).png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/24ff8aef-c266-4333-b451-b99272ad3122/Epoch_Diagrams_v3-Epoch_Phases_(2).png)
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/444a4061-23ab-47b0-a5e8-5966fcb8cd31/Epoch_Diagrams_v3-Epoch_Phases_(3).png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/444a4061-23ab-47b0-a5e8-5966fcb8cd31/Epoch_Diagrams_v3-Epoch_Phases_(3).png)
-
-For conciseness, we will describe only the first phase transition resulting from `EpochSetup` service event. Both phase transitions operate the same way.
-
-Let `A` be the block whose execution emits the `EpochSetup` service event. Let `b` be the block containing the seal for `A`. There may be multiple blocks `b` and `b'` satisfying these definitions in conflicting forks — this is expected.
-
-Conceptually, the `Staking Auction Phase` ends at the end of block `A` and the `Epoch Setup Phase` begins at block `A+1`. Consensus nodes must keep track of this fork-dependent phase transition in order to correctly handle edge cases such as multiple `EpochSetup` service events being emitted. 
-
-Practically, however, there is no reason to begin work for the `Epoch Setup Phase` until block `b` is finalized (which happens when block `c` is published ), which effectively finalizes the phase transition. Thus, all non-consensus nodes can wait for the phase transition to be finalized before performing any tasks related to the `Epoch Setup Phase`.
-
-Epoch Schedule:
-
-TODO
+Only one of each service event may be emitted each epoch, for a given fork.
+`EpochCommit` may only be emitted after `EpochSetup` has been generated in the respective given fork. 
 
 The `FlowEpoch` contract manages all of these phases, the `FlowIDTableStaking` contract
 manages the identity table and staking auction, the `FlowClusterQC` contract manages
@@ -189,6 +154,100 @@ the Distributed Key Generation protocol for the consensus nodes.
 Initially, control of these phases and contracts will be managed manually by the Flow Token Admin,
 but control will eventually be completely decentralized and managed by the node software, smart contracts,
 and democratically by all the stakers in the network.
+
+## Phase 0: Staking Auction
+
+**Purpose:** During the staking auction phase, operators can put up stake
+in exchange for being a part of the upcoming epoch.
+All voluntary commitments to increase or decrease stake for the next epoch
+must occur before the end of this phase. 
+
+**Duration:** The staking auction phase begins with the first block of the current Epoch
+Its last block is the block in which the `EpochSetup` service event is emitted.
+
+### **Protocol Directives:**
+
+Epoch Smart Contract
+
+- The `FlowEpoch` Smart Contract is responsible for ensuring that staking, un-staking,
+and stake-modification transactions for the next epoch are 
+are only executed during the staking auction and fail otherwise.
+The contract enforces this by setting a `stakingEnabled` field in the staking contract.
+Every staking method checks to see if this is set before executing.
+
+- The `FlowEpoch` Smart Contract must ensure that the subsequent phases
+are sufficiently long to perform all required tasks before the epoch ends.
+- As part of the execution result for the last block of the staking auction,
+the `Epoch Smart Contract` computes the seat assignment information for the next epoch,
+and emits a specialized service event, the `EpochSetup` event,
+with the timing and identity table information about the next epoch.
+See the [Epoch Setup Event Documentation](/staking/epoch-scripts-events/)
+for a detailed breakdown of the epoch setup event.
+
+## Phase 1: Epoch Setup
+
+**Purpose:** During the epoch setup phase, all nodes participating in the upcoming epoch
+must perform setup tasks in preparation for the upcoming epoch. 
+
+**Duration:** The epoch setup phase begins right after the `EpochSetup` service event is emitted.
+It ends with the block where `EpochCommit` service emitted.
+
+### **Protocol Directives:**
+
+Consensus:
+
+- When a primary constructs a block that seals the `EpochSetup` service event,
+the primary includes an update to the protocol state in the block.
+Specifically, it adds the nodes for the `PendingEpoch` to the list of authorized nodes.
+When this block is propagated, all staked nodes will know about the participants
+in the next epoch and can communicate with them.
+
+- Based on the `RandSeed` field in the `EpochSetup` event, all nodes compute: 
+    • The seed to initialize the consensus node's primary selection algorithm for the next epoch
+    • The seeds to initialize the collector clusters' primary selection algorithm for the next epoch
+
+- The collector nodes generate the root block for their respective clusters
+in the next Epoch and submit a vote for the root block to a specialized smart contract, `FlowClusterQC`.
+- The Random Beacon Committee for the next Epoch (currently all consensus nodes)
+will run the DKG through a specialized smart contract, `FlowDKG`.
+
+Epoch Smart Contract
+
+- The `FlowEpoch` Smart Contract is responsible for ensuring that Epoch Setup transactions
+are only executed during the Epoch Setup phase and fail otherwise.
+The contract enforces this by setting an `enabled` field in the `FlowClusterQC` and `FlowDKG` contracts.
+Every state-changing method from these contracts checks to see if this is set before executing.
+
+- The Epoch `Epoch Smart Contract` must ensure that the subsequent phase
+is sufficiently long to perform all required tasks before the epoch ends.
+
+- As part of the execution of the last block of the Epoch Setup phase,
+the `Epoch Smart Contract` computes the public key shares generated by the DKG
+and the `QC`s for the collector clusters and publishes these as `EpochCommit` service event.
+The `FlowEpoch` Smart Contract should emit this event as soon as the artifacts are determined.
+
+See the [Epoch Commit Event Documentation](/staking/epoch-scripts-events/)
+for a detailed breakdown of the epoch commit event.
+
+## Phase 2: Epoch Committed
+
+**Purpose:** When the epoch committed phase starts, the precise role of each node is fully specified.
+From a protocol-perspective, all information is available for each node
+to start its operation for the next Epoch.
+This phase provides some time for nodes to establish the communication channels
+and synchronize with the network to seamlessly switch over to the next epoch. 
+
+**Duration:** The epoch committed phase begins right *after* the `EpochCommit` service event
+has been emitted. It ends when the epoch ends.
+
+### **Protocol Directives:**
+
+Consensus
+
+- When a primary constructs a block that seals the `EpochCommit` service event,
+the primary includes an update to the protocol state in the block. Specifically, it: 
+ • adds the information generated in the setup phase to the Protocol State and 
+ • marks the updated Protocol State as `committed` in this respective fork.
 
 # Query Information from the Epoch Contract
 
