@@ -30,6 +30,21 @@ The Access Nodes hosted by DapperLabs are accessible at:
 
 ---
 
+#### Alchemy Access Nodes 
+
+Our partner, [Alchemy](https://alchemy.com), is offering free logging, monitoring, and more tooling via their dashboard to all builders on Flow. [Read their docs ](https://docs.alchemy.com/flow/guides/getting-started) and [signup](https://www.alchemy.com/flow ) to get access to their tools! Help available at their [discord](https://discord.gg/6X635zrNUg).
+
+**Note**: You will need to get and configure an API key through Alchemy to use these access nodes.
+
+**Alchemy Testnet**:
+
+`flow-testnet.g.alchemy.com:443`
+
+**Alchemy Mainnet**:
+
+`flow-mainnet.g.alchemy.com:443​`
+
+---
 ## Ping
 
 `Ping` will return a successful response if the Access API is ready and available.
