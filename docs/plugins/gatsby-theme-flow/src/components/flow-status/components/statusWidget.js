@@ -4,16 +4,23 @@ import React from "react";
 
 import { theme } from "gatsby-theme-flow/src/colors";
 import { smallCaps } from "gatsby-theme-flow/src/utils/typography";
+import breakpoints from "../../../utils/breakpoints";
 
 import { HEALTHY, UNAVAILABLE, statusPageStatuses } from "../constants";
 import { StatusContext } from "../context";
 
 export const MenuTitle = styled.h6(smallCaps, {
+  [breakpoints.sm]: {
+    fontSize: "0.5rem"
+  },
   marginBottom: 0,
   fontSize: 12,
   fontWeight: 600,
+  display: "flex",
+  flexDirection: "column",
   height: "16px",
-  justifyContent: "space-between",
+  justifyContent: "center",
+  alignItems: "center",
   a: {
     color: theme.text3,
     display: "flex",

@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 
 import { theme } from "gatsby-theme-flow/src/colors";
 
+import breakpoints from "../../utils/breakpoints";
+
 import { HEALTHY, UNAVAILABLE } from "./constants";
 
 export const StatusWrapper = styled.div({});
@@ -20,26 +22,51 @@ function getColor(status) {
 
 export const StatusCardWrapper = styled.div((props) => {
   return {
-    marginBottom: "1rem",
-    display: "grid",
-    gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+    [breakpoints.sm]: {
+      gridTemplateColumns: "1fr 1fr 1fr",
+      ".network-name": {
+        fontSize: "0.5rem",
+        h3: {
+          fontSize: "1rem"
+        }
+      },
+      ".next-spork-date": {
+        fontSize: "0.8rem",
+        h4: {
+          fontSize: "0.8rem"
+        }
+      },
+      ".network-status": {
+        fontSize: "0.8rem",
+        h4: {
+          fontSize: "0.5rem"
+        }
+      },
+      ".network-version": {
+        fontSize: "0.8rem",
+        h4: {
+          fontSize: "0.8rem"
+        }
+      }
+    },
     width: "100%",
-    height: "100px",
-    alignItems: "center",
-    border: `2px solid ${getColor(props.networkStatus)}`,
-    padding: "0 1rem",
+    gridTemplateColumns: "1fr 1fr 1fr 1fr",
+    marginBottom: "1rem",
     borderRadius: "6px",
+    display: "grid",
+    minHeight: "100px",
+    alignItems: "center",
+    padding: "1rem",
+    border: `2px solid ${getColor(props.networkStatus)}`,
+    ".network-status": {
+      fontWeight: "bold",
+      color: getColor(props.networkStatus)
+    },
     h3: {
       marginBottom: "0"
     },
     h4: {
       marginBottom: "0.2rem"
-    },
-    ".network-name": {},
-    ".next-spork-date": {},
-    ".network-status": {
-      fontWeight: "bold",
-      color: getColor(props.networkStatus)
     }
   };
 });
@@ -59,8 +86,7 @@ export const AnnouncementCardWrapper = styled.div({
   padding: "1rem",
   borderRadius: "6px",
   h3: {
-    marginBottom: "0.5rem",
-    fontSize: "1.2rem"
+    marginBottom: "0.5rem"
   },
   h4: {
     display: "inline"
