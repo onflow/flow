@@ -72,6 +72,14 @@ export const StatusCardWrapper = styled.div((props) => {
 });
 
 export const AnnouncementCardWrapper = styled.div({
+  [breakpoints.md]: {
+    h3: {
+      fontSize: "1.2rem"
+    },
+    h4: {
+      fontSize: "1rem"
+    }
+  },
   "&:hover": {
     cursor: "pointer",
     borderColor: theme.text1
@@ -80,13 +88,13 @@ export const AnnouncementCardWrapper = styled.div({
   display: "grid",
   gridTemplateColumns: "1fr 42px",
   width: "100%",
-  height: "100px",
+  minHeight: "100px",
   alignItems: "center",
   border: `2px solid ${theme.text2}`,
   padding: "1rem",
   borderRadius: "6px",
   h3: {
-    marginBottom: "0.5rem"
+    marginBottom: "1rem"
   },
   h4: {
     display: "inline"

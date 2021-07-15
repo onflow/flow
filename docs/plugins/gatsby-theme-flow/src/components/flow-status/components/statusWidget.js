@@ -11,15 +11,14 @@ import { StatusContext } from "../context";
 
 export const MenuTitle = styled.h6(smallCaps, {
   [breakpoints.sm]: {
-    fontSize: "0.5rem"
+    fontSize: "0.7rem"
   },
   marginBottom: 0,
   fontSize: 12,
   fontWeight: 600,
   display: "flex",
   flexDirection: "column",
-  height: "16px",
-  justifyContent: "center",
+  justifyContent: "space-between",
   alignItems: "center",
   a: {
     color: theme.text3,
