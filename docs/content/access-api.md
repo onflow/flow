@@ -26,7 +26,24 @@ The Access Nodes hosted by DapperLabs are accessible at:
 
 `access.canary.nodes.onflow.org:9000`
 
+---
 
+#### Alchemy Access Nodes 
+
+[Alchemy](https://alchemy.com) provides free logging, monitoring, and more tooling via their dashboard to all builders on Flow.
+[Read their documentation](https://docs.alchemy.com/flow/guides/getting-started) and 
+[sign up](https://www.alchemy.com/flow) to get access to their tools. 
+You can find support on their [Discord server](https://discord.gg/6X635zrNUg).
+
+**Note**: You will need to configure an API key through Alchemy to use these access nodes.
+
+**Alchemy Testnet**:
+
+`flow-testnet.g.alchemy.com:443`
+
+**Alchemy Mainnet**:
+
+`flow-mainnet.g.alchemy.com:443​`
 
 ---
 

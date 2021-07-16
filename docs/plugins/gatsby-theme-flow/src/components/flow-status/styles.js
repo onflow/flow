@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
 import { theme } from "gatsby-theme-flow/src/colors";
-
 import breakpoints from "../../utils/breakpoints";
 
 import { HEALTHY, UNAVAILABLE } from "./constants";
@@ -13,14 +12,14 @@ function getColor(status) {
   switch (status) {
     case HEALTHY:
       return theme.primary;
-    case UNAVAILABLE:
-      return theme.error;
+    case DEGRADED:
+      return theme.warning;
     default:
-      return theme.secondary;
+      return theme.error;
   }
 }
 
-export const StatusCardWrapper = styled.div((props) => {
+export const StatusCardWrapper = styled.div(({ networkStatus }) => {
   return {
     [breakpoints.sm]: {
       gridTemplateColumns: "1fr 1fr 1fr",
@@ -63,11 +62,17 @@ export const StatusCardWrapper = styled.div((props) => {
       color: getColor(props.networkStatus)
     },
     h3: {
-      marginBottom: "0"
+      marginBottom: "0",
     },
     h4: {
-      marginBottom: "0.2rem"
-    }
+      marginBottom: "0.2rem",
+    },
+    ".network-name": {},
+    ".next-spork-date": {},
+    ".network-status": {
+      fontWeight: "bold",
+      color: getColor(networkStatus),
+    },
   };
 });
 
@@ -82,7 +87,7 @@ export const AnnouncementCardWrapper = styled.div({
   },
   "&:hover": {
     cursor: "pointer",
-    borderColor: theme.text1
+    borderColor: theme.text1,
   },
   marginBottom: "1rem",
   display: "grid",
@@ -97,6 +102,6 @@ export const AnnouncementCardWrapper = styled.div({
     marginBottom: "1rem"
   },
   h4: {
-    display: "inline"
-  }
+    display: "inline",
+  },
 });
