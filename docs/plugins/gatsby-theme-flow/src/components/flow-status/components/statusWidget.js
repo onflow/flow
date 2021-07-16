@@ -6,6 +6,7 @@ import useSWR from "swr";
 
 import { theme } from "gatsby-theme-flow/src/colors";
 import { smallCaps } from "gatsby-theme-flow/src/utils/typography";
+import breakpoints from "../../../utils/breakpoints";
 
 import {
   HEALTHY,
@@ -17,11 +18,16 @@ import {
 import { pinger, pingScript } from "../helpers";
 
 export const MenuTitle = styled.h6(smallCaps, {
+  [breakpoints.sm]: {
+    fontSize: "0.7rem"
+  },
   marginBottom: 0,
   fontSize: 12,
   fontWeight: 600,
-  height: "16px",
+  display: "flex",
+  flexDirection: "column",
   justifyContent: "space-between",
+  alignItems: "center",
   a: {
     color: theme.text3,
     display: "flex",
