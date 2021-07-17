@@ -31,6 +31,19 @@ Each node will require either a static IPv4 address or a fixed DNS name. Either 
   communicate with you.
 </Callout>
 
+While both a static IPv4 and a domain name are possible, we prefer and recommend that node operators register their node under a domain that they control. This gives the Flow network more options for resiliency and resistance to adverse network conditions.
+
+<Callout type="warning" title="Registering a domain name for your Flow Node">
+Crash recovery and denial of service attacks are two concerns that operators can mitigate relying on each of DNS indirection and IP routing. The later requires more involvement.
+
+Running a node behind an operator-controlled hostname (rather than "just" an IP) is a simple and cheap measure that:
+
+- offers additional technical pathways to let operators improve resiliency and security,
+- lets them opt in to those measures as a reaction to an attack,
+- does not preclude any lower-level IP-based resiliency approaches.
+
+</Callout>
+
 Your firewalls must expose **TCP/3569** for Node communication. If you are running an Access Node, you must also expose the GRPC port **9000**.
 
 ![Flow Architecture](flow-architecture.png)
