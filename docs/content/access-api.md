@@ -1086,7 +1086,7 @@ message Event {
 | event_index       | Zero-based index of the event within the transaction                       |
 | payload           | Event fields encoded as [JSON-Cadence values](/cadence/json-cadence-spec/) |
 
-## ExecutionResult
+## Execution Result
 
 Execution result for a particular block.
 
