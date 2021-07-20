@@ -790,8 +790,43 @@ message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
 }
 ```
+</details>
+
+## Execution results
+
+The following method can be used to query the for [execution results](https://github.com/onflow/flow-go/blob/master/model/flow/execution_result.go) for a given block.
+
+### GetExecutionResultForBlockID
+
+`GetExecutionResultForBlockID` retrieves execution result for given block. It is different from Transaction Results,
+and contain data about chunks/collection level execution results rather than particular transactions. 
+Particularly, it contains `EventsCollection` hash for every chunk which can be used to verify the events for a block.
+
+```protobuf
+rpc GetExecutionResultForBlockID(GetExecutionResultForBlockIDRequest) returns (ExecutionResultForBlockIDResponse);
+```
+
+<details>
+    <summary>Request</summary>
+
+```protobuf
+message GetExecutionResultForBlockIDRequest {
+  bytes block_id = 1;
+}
+```
+</details>
+
+<details>
+    <summary>Response</summary>
+
+```protobuf
+message ExecutionResultForBlockIDResponse {
+  flow.ExecutionResult execution_result = 1;
+}
+```
 
 </details>
+
 
 ## Entities
 
@@ -1050,3 +1085,66 @@ message Event {
 | transaction_index | Zero-based index of the transaction within the block                       |
 | event_index       | Zero-based index of the event within the transaction                       |
 | payload           | Event fields encoded as [JSON-Cadence values](/cadence/json-cadence-spec/) |
+
+## Execution Result
+
+Execution result for a particular block.
+
+```protobuf
+message ExecutionResult {
+  bytes previous_result_id
+  bytes block_id
+  repeated Chunk chunks
+  repeated ServiceEvent service_events
+}
+```
+
+| Field              | Description                                          |
+| ------------------ | ---------------------------------------------------- |
+| previous_result_id | Identifier of parent block execution result          |
+| block_id           | ID of the block this execution result corresponds to |
+| chunks             | Zero or more chunks                                  |
+| service_events     | Zero or more service events                          |
+
+
+### Chunk
+
+Chunk described execution information for given collection in a block
+
+```protobuf
+message Chunk {
+  bytes start_state
+  bytes event_collection
+  bytes block_id
+  uint64 total_computation_used
+  uint64 number_of_transactions
+  uint64 index
+  bytes end_state
+}
+```
+
+| Field                  | Description                                          |
+| ---------------------- | ---------------------------------------------------- |
+| start_state            | State commitment at start of the chunk               |
+| event_collection       | Hash of events emitted by transactions in this chunk |
+| block_id               | Identifier of a block                                |
+| total_computation_used | Total computation used by transactions in this chunk |
+| number_of_transactions | Number of transactions in a chunk                    |
+| index                  | Index of chunk inside a block (zero-based)           |
+| end_state              | State commitment after executing chunk               |
+
+### Service Event
+
+Special type of events emitted in system chunk used for controlling Flow system.
+
+```protobuf
+message ServiceEvent {
+  string type;
+  bytes payload;
+}
+```
+
+| Field   | Description                         |
+| ------- | ----------------------------------- |
+| type    | Type of an event                    |
+| payload | JSON-serialized content of an event |
