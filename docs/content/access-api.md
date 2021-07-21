@@ -16,7 +16,7 @@ The Access Nodes hosted by DapperLabs are accessible at:
 #### Current Mainnet
 `access-mainnet-beta.onflow.org:9000`
 
-Check the latest access node URL listed for Mainnet: flow-view-source.com/mainnet/status
+Check the latest access node URL listed for Mainnet: [flow-view-source.com/mainnet/status](https://flow-view-source.com/mainnet/status)
 ##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](/node-operation/spork/#mainnet)
 
 #### Testnet
