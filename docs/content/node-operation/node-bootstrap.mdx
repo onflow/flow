@@ -15,7 +15,7 @@ You can skip this step if it is your first time running a node on Flow.
 
 <Callout type="warning">
 
-If you had a previous node running on **mainnet 9**, you’ll need to turn it
+If you had a previous node running on **mainnet 10**, you’ll need to turn it
 off just before joining the updated network and re-start your node with the
 updated configuration.
 
@@ -127,7 +127,7 @@ $tree ./bootstrap/
   If you're running multiple nodes, you only need one token - it can be used to
   generate multiple keys.
 
-  Please use the following pattern when generating your token `mainnet-10-yourname` (you can pick any name, it just helps us keep track of the most recent keys you've sent and would like us to include in the bootstrapping process)
+  Please use the following pattern when generating your token `mainnet-11-yourname` (you can pick any name, it just helps us keep track of the most recent keys you've sent and would like us to include in the bootstrapping process)
 
 </Callout>
 
@@ -219,7 +219,7 @@ The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info
    `./boot-tools/transit pull -b ./bootstrap -t ${PULL_TOKEN} -r ${YOUR_NODE_TYPE}`
 
 ```shell:title=Example
-$ ./boot-tools/transit pull -b ./bootstrap -t mainnet-10  -r consensus
+$ ./boot-tools/transit pull -b ./bootstrap -t mainnet-11  -r consensus
 Transit script Commit: a9f6522855e119ad832a97f8b7bce555a163e490
 2020/11/25 01:02:53 Running pull
 2020/11/25 01:02:53 Downloading bootstrap/public-root-information/node-infos.pub.json
@@ -270,7 +270,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/access:v0.18.4 \
+	gcr.io/flow-container-registry/access:v0.19.1 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -290,7 +290,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/collection:v0.18.4 \
+	gcr.io/flow-container-registry/collection:v0.19.1 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -307,7 +307,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/consensus:v0.18.4 \
+	gcr.io/flow-container-registry/consensus:v0.19.1 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -323,7 +323,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/execution:v0.18.4 \
+	gcr.io/flow-container-registry/execution:v0.19.1 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -341,7 +341,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/verification:v0.18.4 \
+	gcr.io/flow-container-registry/verification:v0.19.1 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
