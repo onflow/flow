@@ -2273,14 +2273,6 @@
     },
     {
         "Role": "verification",
-        "Address": "ape-flow-ver-0.man.bdi.sh:3569",
-        "NodeID": "8d4dbdd523bd4c67ffad9282a7acefc65641d25ac9c40759de9df859eb7255e3",
-        "Stake": 1000,
-        "NetworkPubKey": "def158b79245dd89dc3d40de3bee69b2c84cf4335541eddd8d78a12910b453965536769f322b17420342d625a8c4eafdc8f11bcd2cea2526731a7cde6bf675ff",
-        "StakingPubKey": "a1ed0974e33b9dcc7549539d3d85553504c914b45ab55de297f05a9cfdbbb5410a0b289c83dbeea9078333e297c255fc1227faa0b878ee6a362316f2b65650d8fb573b4f3f68e91a53c25c7e10d019eb306311463a77a90fc93a1b5cd73208bc"
-    },
-    {
-        "Role": "verification",
         "Address": "flow-v.my.to:3569",
         "NodeID": "093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e",
         "Stake": 1000,
