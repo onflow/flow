@@ -2489,7 +2489,7 @@
     },
     {
         "Role": "verification",
-        "Address": "198.100.155.181:3569",
+        "Address": "flow.snowfro.com:3569",
         "NodeID": "adac59f7a5265148ec8e7c95f373d9ce9a7ec2baeaafda965d9cbfb4f88f8039",
         "Stake": 1000,
         "NetworkPubKey": "2b71d058224e4083b47ace6189143dbddbc3a90ba36bd26dd07ff831a03b5da7eb6c86861347c397083bf61d3163ebe8cb2c6c1acd9e26cef699a95533bc7dc9",
