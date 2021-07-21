@@ -31,7 +31,7 @@ Check the latest access node URL listed for Mainnet: [flow-view-source.com/mainn
 
 #### Alchemy Access Nodes 
 
-[Alchemy](https://alchemy.com) provides free logging, monitoring, and more tooling via their dashboard to all builders on Flow.
+Our partner, [Alchemy](https://alchemy.com) is offering robust access node infrastructure in addition to free logging, monitoring, and more tooling via their dashboard to all builders on Flow.
 [Read their documentation](https://docs.alchemy.com/flow/guides/getting-started) and 
 [sign up](https://www.alchemy.com/flow) to get access to their tools. 
 You can find support on their [Discord server](https://discord.gg/6X635zrNUg).
