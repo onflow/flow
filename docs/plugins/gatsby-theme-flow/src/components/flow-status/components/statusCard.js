@@ -2,9 +2,7 @@ import React from "react";
 
 import { startCase } from "lodash";
 
-import { FaTruckLoading } from "react-icons/fa";
-
-import { UNAVAILABLE, statusPageStatuses } from "../constants";
+import { statusPageStatuses } from "../constants";
 import { StatusCardWrapper } from "../styles";
 
 export default function StatusCard({

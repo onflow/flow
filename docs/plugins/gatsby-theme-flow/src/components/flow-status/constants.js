@@ -4,6 +4,7 @@ export const CANARYNET = "canarynet";
 export const HEALTHY = "HEALTHY";
 export const DEGRADED = "DEGRADED";
 export const UNAVAILABLE = "UNAVAILABLE";
+export const UNDER_MAINTENANCE = "UNDER MAINTENANCE";
 export const FORUM_ADDRESS = "https://forum.onflow.org/t/";
 export const MAINNET_STATUSPAGE_ID = "fqvhhbc3hdw8";
 export const TESTNET_STATUSPAGE_ID = "g9d7vtywpdfq";
@@ -18,5 +19,5 @@ export const statusPageStatuses = {
   degraded_performance: DEGRADED,
   partial_outage: UNAVAILABLE,
   major_outage: UNAVAILABLE,
-  under_maintenance: UNAVAILABLE
+  under_maintenance: UNDER_MAINTENANCE
 };
