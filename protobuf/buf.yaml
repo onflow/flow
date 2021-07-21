@@ -3,7 +3,9 @@ deps:
   - buf.build/beta/googleapis
 build:
   roots:
-    - .
+    - ./
+  excludes:
+    - build/ # exclude Gradle build dir
 lint:
   use:
     - DEFAULT

@@ -26,7 +26,8 @@ type AccessAPIClient interface {
 	GetBlockHeaderByID(ctx context.Context, in *GetBlockHeaderByIDRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
 	// GetBlockHeaderByHeight gets a block header by height.
 	GetBlockHeaderByHeight(ctx context.Context, in *GetBlockHeaderByHeightRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
-	// GetLatestBlock gets the full payload of the latest sealed or unsealed block.
+	// GetLatestBlock gets the full payload of the latest sealed or unsealed
+	// block.
 	GetLatestBlock(ctx context.Context, in *GetLatestBlockRequest, opts ...grpc.CallOption) (*BlockResponse, error)
 	// GetBlockByID gets a full block by ID.
 	GetBlockByID(ctx context.Context, in *GetBlockByIDRequest, opts ...grpc.CallOption) (*BlockResponse, error)
@@ -42,21 +43,29 @@ type AccessAPIClient interface {
 	GetTransactionResult(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
 	//
-	// Warning: this function is deprecated. It behaves identically to GetAccountAtLatestBlock and will be removed in a future version.
+	// Warning: this function is deprecated. It behaves identically to
+	// GetAccountAtLatestBlock and will be removed in a future version.
 	GetAccount(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*GetAccountResponse, error)
-	// GetAccountAtLatestBlock gets an account by address from the latest sealed execution state.
+	// GetAccountAtLatestBlock gets an account by address from the latest sealed
+	// execution state.
 	GetAccountAtLatestBlock(ctx context.Context, in *GetAccountAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountResponse, error)
-	// GetAccountAtBlockHeight gets an account by address at the given block height
+	// GetAccountAtBlockHeight gets an account by address at the given block
+	// height
 	GetAccountAtBlockHeight(ctx context.Context, in *GetAccountAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountResponse, error)
-	// ExecuteScriptAtLatestBlock executes a read-only Cadence script against the latest sealed execution state.
+	// ExecuteScriptAtLatestBlock executes a read-only Cadence script against the
+	// latest sealed execution state.
 	ExecuteScriptAtLatestBlock(ctx context.Context, in *ExecuteScriptAtLatestBlockRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
-	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
+	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the
+	// execution state at the block with the given ID.
 	ExecuteScriptAtBlockID(ctx context.Context, in *ExecuteScriptAtBlockIDRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
-	// ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the execution state at the given block height.
+	// ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the
+	// execution state at the given block height.
 	ExecuteScriptAtBlockHeight(ctx context.Context, in *ExecuteScriptAtBlockHeightRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
-	// GetEventsForHeightRange retrieves events emitted within the specified block range.
+	// GetEventsForHeightRange retrieves events emitted within the specified block
+	// range.
 	GetEventsForHeightRange(ctx context.Context, in *GetEventsForHeightRangeRequest, opts ...grpc.CallOption) (*EventsResponse, error)
-	// GetEventsForBlockIDs retrieves events for the specified block IDs and event type.
+	// GetEventsForBlockIDs retrieves events for the specified block IDs and event
+	// type.
 	GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*EventsResponse, error)
 	// GetNetworkParameters retrieves the Flow network details
 	GetNetworkParameters(ctx context.Context, in *GetNetworkParametersRequest, opts ...grpc.CallOption) (*GetNetworkParametersResponse, error)
@@ -262,7 +271,8 @@ type AccessAPIServer interface {
 	GetBlockHeaderByID(context.Context, *GetBlockHeaderByIDRequest) (*BlockHeaderResponse, error)
 	// GetBlockHeaderByHeight gets a block header by height.
 	GetBlockHeaderByHeight(context.Context, *GetBlockHeaderByHeightRequest) (*BlockHeaderResponse, error)
-	// GetLatestBlock gets the full payload of the latest sealed or unsealed block.
+	// GetLatestBlock gets the full payload of the latest sealed or unsealed
+	// block.
 	GetLatestBlock(context.Context, *GetLatestBlockRequest) (*BlockResponse, error)
 	// GetBlockByID gets a full block by ID.
 	GetBlockByID(context.Context, *GetBlockByIDRequest) (*BlockResponse, error)
@@ -278,21 +288,29 @@ type AccessAPIServer interface {
 	GetTransactionResult(context.Context, *GetTransactionRequest) (*TransactionResultResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
 	//
-	// Warning: this function is deprecated. It behaves identically to GetAccountAtLatestBlock and will be removed in a future version.
+	// Warning: this function is deprecated. It behaves identically to
+	// GetAccountAtLatestBlock and will be removed in a future version.
 	GetAccount(context.Context, *GetAccountRequest) (*GetAccountResponse, error)
-	// GetAccountAtLatestBlock gets an account by address from the latest sealed execution state.
+	// GetAccountAtLatestBlock gets an account by address from the latest sealed
+	// execution state.
 	GetAccountAtLatestBlock(context.Context, *GetAccountAtLatestBlockRequest) (*AccountResponse, error)
-	// GetAccountAtBlockHeight gets an account by address at the given block height
+	// GetAccountAtBlockHeight gets an account by address at the given block
+	// height
 	GetAccountAtBlockHeight(context.Context, *GetAccountAtBlockHeightRequest) (*AccountResponse, error)
-	// ExecuteScriptAtLatestBlock executes a read-only Cadence script against the latest sealed execution state.
+	// ExecuteScriptAtLatestBlock executes a read-only Cadence script against the
+	// latest sealed execution state.
 	ExecuteScriptAtLatestBlock(context.Context, *ExecuteScriptAtLatestBlockRequest) (*ExecuteScriptResponse, error)
-	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
+	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the
+	// execution state at the block with the given ID.
 	ExecuteScriptAtBlockID(context.Context, *ExecuteScriptAtBlockIDRequest) (*ExecuteScriptResponse, error)
-	// ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the execution state at the given block height.
+	// ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the
+	// execution state at the given block height.
 	ExecuteScriptAtBlockHeight(context.Context, *ExecuteScriptAtBlockHeightRequest) (*ExecuteScriptResponse, error)
-	// GetEventsForHeightRange retrieves events emitted within the specified block range.
+	// GetEventsForHeightRange retrieves events emitted within the specified block
+	// range.
 	GetEventsForHeightRange(context.Context, *GetEventsForHeightRangeRequest) (*EventsResponse, error)
-	// GetEventsForBlockIDs retrieves events for the specified block IDs and event type.
+	// GetEventsForBlockIDs retrieves events for the specified block IDs and event
+	// type.
 	GetEventsForBlockIDs(context.Context, *GetEventsForBlockIDsRequest) (*EventsResponse, error)
 	// GetNetworkParameters retrieves the Flow network details
 	GetNetworkParameters(context.Context, *GetNetworkParametersRequest) (*GetNetworkParametersResponse, error)

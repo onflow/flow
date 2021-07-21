@@ -10,6 +10,7 @@ import "flow/entities/block_header.proto";
 import "flow/entities/block.proto";
 import "flow/entities/collection.proto";
 import "flow/entities/event.proto";
+import "flow/entities/execution_result.proto";
 import "flow/entities/transaction.proto";
 import "google/protobuf/timestamp.proto";
 
@@ -111,6 +112,12 @@ service AccessAPI {
   // space-efficient local state.
   rpc GetLatestProtocolStateSnapshot(GetLatestProtocolStateSnapshotRequest)
       returns (ProtocolStateSnapshotResponse);
+
+  // GetExecutionResultForBlockID returns Execution Result for a given block.
+  // At present, Access Node might not have execution results for every block
+  // and as usual, until sealed, this data can change
+  rpc GetExecutionResultForBlockID(GetExecutionResultForBlockIDRequest)
+      returns (ExecutionResultForBlockIDResponse);
 }
 
 message PingRequest {}
@@ -272,4 +279,14 @@ message GetLatestProtocolStateSnapshotRequest {}
 
 message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
+}
+
+// Execution Results
+
+message GetExecutionResultForBlockIDRequest {
+  bytes block_id = 1;
+}
+
+message ExecutionResultForBlockIDResponse {
+  entities.ExecutionResult execution_result = 1;
 }

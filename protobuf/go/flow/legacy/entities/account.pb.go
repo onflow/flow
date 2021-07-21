@@ -167,9 +167,7 @@ func init() {
 	proto.RegisterType((*AccountKey)(nil), "entities.AccountKey")
 }
 
-func init() {
-	proto.RegisterFile("flow/legacy/entities/account.proto", fileDescriptor_a4aab70d5e0d112b)
-}
+func init() { proto.RegisterFile("flow/legacy/entities/account.proto", fileDescriptor_a4aab70d5e0d112b) }
 
 var fileDescriptor_a4aab70d5e0d112b = []byte{
 	// 309 bytes of a gzipped FileDescriptorProto

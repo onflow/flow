@@ -9,6 +9,10 @@ Check out the [Flow Access API specification](/docs/content/access-api.md).
 ## Generating Go stubs
 
 You can use [buf](https://github.com/bufbuild/buf) to generate gRPC client stubs in a variety of languages.
+Please make sure you have `protoc-gen-go-grpc` installed, for example using command
+```shell script
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1.0
+```
 
 Running the command below (in the current directory) will generate stubs for Go:
 
