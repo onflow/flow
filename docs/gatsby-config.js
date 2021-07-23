@@ -6,77 +6,77 @@ const navConfig = {
     icon: null,
     omitLandingPage: true,
     description:
-      "New to Flow? Start here. Read about Flow's architecture, and important concepts for a deeper understanding of the Flow platform and how it works.",
+      "New to Flow? Start here. Read about Flow's architecture, and important concepts for a deeper understanding of the Flow platform and how it works."
   },
   Cadence: {
     url: "/cadence",
     icon: "cadence",
     description:
       "Resource-Oriented programming language for smart contracts that helps developers ensure that their code is safe, secure, clear, and approachable.",
-    linkText: "Cadence Documentation",
+    linkText: "Cadence Documentation"
   },
   "Flow Playground": {
     url: "https://play.onflow.org",
     icon: "playground",
     description:
       "Learn the basics of Flow and Cadence using our browser-based playground.",
-    linkText: "Launch the Flow Playground",
+    linkText: "Launch the Flow Playground"
   },
   "JavaScript SDK": {
     url: "/flow-js-sdk",
     icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
-    linkText: "JavaScript SDK Documentation",
+    linkText: "JavaScript SDK Documentation"
   },
   "Go SDK": {
     url: "/flow-go-sdk",
     icon: "go-sdk",
     description:
       "Build apps that interact with Flow using our full-featured Go SDK.",
-    linkText: "Go SDK Documentation",
+    linkText: "Go SDK Documentation"
   },
   "Flow CLI": {
     url: "/flow-cli",
     icon: "cli",
     description:
       "The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.",
-    linkText: "CLI Documentation",
+    linkText: "CLI Documentation"
   },
   "Flow Emulator": {
     url: "/emulator",
     icon: "emulator",
     description:
       "Develop and test your applications locally using the Flow emulator.",
-    linkText: "Emulator Documentation",
+    linkText: "Emulator Documentation"
   },
   "VS Code Extension": {
     url: "/vscode-extension",
     icon: "vscode",
     description:
       "Cadence syntax highlighting and an integrated Flow emulator for VSCode users.",
-    linkText: "VSCode Extension Documentation",
+    linkText: "VSCode Extension Documentation"
   },
   "Flow Port": {
     url: "/flow-port",
     icon: "port",
     description:
       "Flow Port, your portal to the decentralized world of Flow. Access your Flow account, interact with the blockchain, manage your assets and more.",
-    linkText: "Flow Port",
-  },
+    linkText: "Flow Port"
+  }
 };
 // sourceGithubRepos maps a sourceInstanceName to a GitHub repo name
 const sourceGithubRepos = {
   docs: {
     githubRepo: "onflow/flow",
     // NOTE: path is non-empty, because only content in this path is sourced
-    path: "docs/content",
+    path: "docs/content"
   },
   cadence: {
     githubRepo: "onflow/cadence",
     // NOTE: path is empty, whole repo is sourced
-    path: "",
-  },
+    path: ""
+  }
 };
 
 // sourceSlugTransformers maps a sourceInstanceName to slug transformation functions
@@ -86,7 +86,8 @@ const sourceSlugTransformers = {
     slug
       .replace(/^\/docs\//, "/flow-js-sdk/")
       .replace(/^\/packages\//, "/flow-js-sdk/packages/")
-      // Use README files as 'index' files!
+      // Use api.md as 'index' file!
+      // .replace("api/", ""),
       .replace("README/", ""),
   "flow-go-sdk-github": (slug) =>
     slug
@@ -94,7 +95,7 @@ const sourceSlugTransformers = {
       .replace(/^\/examples\//, "/flow-go-sdk/examples/")
       // Use README files as 'index' files!
       .replace("README/", ""),
-  "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/"),
+  "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/")
 };
 
 const sources = [
@@ -102,16 +103,16 @@ const sources = [
     resolve: "gatsby-source-filesystem",
     options: {
       path: path.join(__dirname, "content"),
-      name: "docs",
-    },
+      name: "docs"
+    }
   },
   {
     resolve: "gatsby-source-git",
     options: {
       name: "cadence-github",
       remote: "https://github.com/onflow/cadence.git",
-      patterns: "docs/language/**/*",
-    },
+      patterns: "docs/language/**/*"
+    }
   },
   {
     resolve: "gatsby-source-git",
@@ -119,8 +120,8 @@ const sources = [
       name: "flow-go-sdk-github",
       branch: "master",
       remote: "https://github.com/onflow/flow-go-sdk.git",
-      patterns: ["docs/**/*", "examples/**/*"],
-    },
+      patterns: ["docs/**/*", "examples/**/*"]
+    }
   },
   {
     resolve: "gatsby-source-git",
@@ -132,9 +133,9 @@ const sources = [
         "docs/**/*",
         "packages/fcl/**/*",
         "packages/types/**/*",
-        "packages/sdk/**/*",
-      ],
-    },
+        "packages/sdk/**/*"
+      ]
+    }
   },
   {
     resolve: "gatsby-source-git",
@@ -168,10 +169,10 @@ const sources = [
         "docs/get-collections.md",
         "docs/get-status.md",
         "docs/security.md",
-        "docs/start-emulator.md",
-      ],
-    },
-  },
+        "docs/start-emulator.md"
+      ]
+    }
+  }
 ];
 
 const sections = [
@@ -183,7 +184,7 @@ const sections = [
       "faq/*",
       "community-updates/*",
       "flow-port/**/*",
-      "bounties/*",
+      "bounties/*"
     ],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
@@ -192,7 +193,7 @@ const sections = [
         "[Access API](/access-api)",
         "[Core Contracts](/core-contracts)",
         "[FLOW Token](/flow-token)",
-        "[FUSD](/fusd)",
+        "[FUSD](/fusd)"
       ],
       Guides: [
         "[Flow Concepts](/concepts)",
@@ -201,14 +202,14 @@ const sections = [
         "[Project Deployment Guide](/dapp-deployment)",
         "[Staking & Delegating](/staking)",
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
-        "[Node Operation](/node-operation)",
+        "[Node Operation](/node-operation)"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -224,7 +225,7 @@ const sections = [
         "cadence/msg-sender",
         "cadence/measuring-time",
         "cadence/migration-guide",
-        "cadence/json-cadence-spec",
+        "cadence/json-cadence-spec"
       ],
       Tutorial: [
         "cadence/tutorial/01-first-steps",
@@ -234,9 +235,9 @@ const sections = [
         "cadence/tutorial/05-marketplace-setup",
         "cadence/tutorial/06-marketplace-compose",
         "cadence/tutorial/07-resources-compose",
-        "cadence/tutorial/08-voting",
-      ],
-    },
+        "cadence/tutorial/08-voting"
+      ]
+    }
   },
   {
     sourceInstanceName: "flow-cli-github",
@@ -249,7 +250,7 @@ const sections = [
         "docs/install",
         "docs/initialize-configuration",
         "docs/configuration",
-        "docs/security",
+        "docs/security"
       ],
       Keys: ["docs/generate-keys"],
       Accounts: [
@@ -258,12 +259,12 @@ const sections = [
         "docs/account-add-contract",
         "docs/account-update-contract",
         "docs/account-remove-contract",
-        "docs/account-staking-info",
+        "docs/account-staking-info"
       ],
       "Project Deployment": [
         "docs/start-emulator",
         "docs/project-contracts",
-        "docs/deploy-project-contracts",
+        "docs/deploy-project-contracts"
       ],
       Scripts: ["docs/execute-scripts"],
       Transactions: [
@@ -271,20 +272,20 @@ const sections = [
         "docs/get-transactions",
         "docs/build-transactions",
         "docs/sign-transaction",
-        "docs/send-signed-transactions",
+        "docs/send-signed-transactions"
       ],
       "Get Flow data": [
         "docs/get-blocks",
         "docs/get-events",
         "docs/get-collections",
-        "docs/get-status",
+        "docs/get-status"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -295,14 +296,14 @@ const sections = [
       Concepts: [
         "concepts/accounts-and-keys",
         "concepts/transaction-signing",
-        "concepts/storage",
+        "concepts/storage"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -310,8 +311,8 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      FUSD: ["fusd/index", "fusd/transactions", "fusd/providers"],
-    },
+      FUSD: ["fusd/index", "fusd/transactions", "fusd/providers"]
+    }
   },
   {
     sourceInstanceName: "flow-go-sdk-github",
@@ -330,14 +331,14 @@ const sections = [
         "docs/querying-transactions",
         "docs/querying-events",
         "docs/querying-blocks",
-        "docs/transfer-flow",
+        "docs/transfer-flow"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "flow-js-sdk-github",
@@ -345,24 +346,25 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
+      "API Reference": ["[@onflow/fcl](/flow-js-sdk/api)"],
       "Developer Guides": [
         "[Introducing @onflow/fcl](/flow-js-sdk)",
-        "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
+        "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)"
       ],
       Packages: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl)",
-        "[@onflow/types](/flow-js-sdk/packages/types)",
+        "[@onflow/types](/flow-js-sdk/packages/types)"
       ],
       Changelogs: [
         "[@onflow/fcl](/flow-js-sdk/packages/fcl/CHANGELOG)",
-        "[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)",
+        "[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -374,18 +376,18 @@ const sections = [
         "core-contracts/fungible-token",
         "core-contracts/flow-token",
         "core-contracts/flow-fees",
-        "core-contracts/staking-contract-reference",
+        "core-contracts/staking-contract-reference"
       ],
       "Other Important Contracts": [
         "core-contracts/locked-tokens",
-        "core-contracts/non-fungible-token",
+        "core-contracts/non-fungible-token"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -398,14 +400,14 @@ const sections = [
         "dapp-deployment/contract-testing",
         "dapp-deployment/testnet-deployment",
         "dapp-deployment/testnet-testing",
-        "dapp-deployment/mainnet-deployment",
+        "dapp-deployment/mainnet-deployment"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -419,15 +421,15 @@ const sections = [
         "flow-token/earn",
         "flow-token/concepts",
         "flow-token/delivery",
-        "flow-token/faq",
+        "flow-token/faq"
       ],
       "Token Delivery": ["flow-token/locked-account-setup"],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -439,7 +441,7 @@ const sections = [
         "staking/index",
         "staking/rewards",
         "staking/stake-slashing",
-        "staking/faq",
+        "staking/faq"
       ],
       "Custody Providers": ["staking/custody-providers"],
       "Manual Staking Guides": [
@@ -447,19 +449,19 @@ const sections = [
         "staking/events",
         "staking/scripts",
         "staking/unlocked-staking-guide",
-        "staking/unlocked-delegation-guide",
+        "staking/unlocked-delegation-guide"
       ],
       "Staking with Locked FLOW": [
         "staking/locked-staking-guide",
         "staking/locked-delegation-guide",
-        "staking/locked-third-party-operator",
+        "staking/locked-third-party-operator"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -471,21 +473,21 @@ const sections = [
         "node-operation/index",
         "node-operation/node-setup",
         "node-operation/node-roles",
-        "node-operation/faq",
+        "node-operation/faq"
       ],
       "Operator Guides": [
         "node-operation/node-bootstrap",
         "node-operation/monitoring-nodes",
         "node-operation/spork",
         "node-operation/past-sporks",
-        "node-operation/upcoming-sporks",
+        "node-operation/upcoming-sporks"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -497,9 +499,9 @@ const sections = [
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -511,9 +513,9 @@ const sections = [
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "cadence-github",
@@ -550,9 +552,9 @@ const sections = [
         "docs/language/built-in-functions",
         "docs/language/environment-information",
         "docs/language/crypto",
-        "docs/language/type-hierarchy",
-      ],
-    },
+        "docs/language/type-hierarchy"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -560,14 +562,14 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      FAQ: ["faq/developers", "faq/backers", "faq/operators"],
-    },
-  },
+      FAQ: ["faq/developers", "faq/backers", "faq/operators"]
+    }
+  }
 ];
 
 module.exports = {
   siteMetadata: {
-    title: "Flow Documentation",
+    title: "Flow Documentation"
   },
   plugins: [
     {
@@ -579,58 +581,58 @@ module.exports = {
         crumbLabelUpdates: [
           {
             pathname: "/node-operation/faq",
-            crumbLabel: "FAQ",
+            crumbLabel: "FAQ"
           },
           {
             pathname: "/sdks",
-            crumbLabel: "SDKs",
+            crumbLabel: "SDKs"
           },
           {
             pathname: "/faq",
-            crumbLabel: "FAQ",
+            crumbLabel: "FAQ"
           },
           {
             pathname: "/access-api",
-            crumbLabel: "Access API",
+            crumbLabel: "Access API"
           },
 
           {
             pathname: "/flow-js-sdk/packages/fcl",
-            crumbLabel: "FCL",
+            crumbLabel: "FCL"
           },
           {
             pathname: "/flow-js-sdk/packages/fcl-react",
-            crumbLabel: "FCL + React",
+            crumbLabel: "FCL + React"
           },
           {
             pathname: "/flow-token/faq",
-            crumblabel: "FAQ",
+            crumblabel: "FAQ"
           },
           {
             pathname: "/core-contracts/access-api",
-            crumbLabel: "Access API",
+            crumbLabel: "Access API"
           },
           {
             pathname: "/flow-js-sdk",
-            crumbLabel: "Flow JS SDK",
+            crumbLabel: "Flow JS SDK"
           },
           {
             pathname: "/flow-cli",
-            crumbLabel: "Flow CLI",
+            crumbLabel: "Flow CLI"
           },
           {
             pathname: "/flow-go-sdk",
-            crumbLabel: "Flow GO SDK",
-          },
-        ],
-      },
+            crumbLabel: "Flow GO SDK"
+          }
+        ]
+      }
     },
     {
       resolve: "gatsby-plugin-mixpanel",
       options: {
         apiToken: "3fae49de272be1ceb8cf34119f747073",
-        enableOnDevMode: false,
-      },
+        enableOnDevMode: false
+      }
     },
     {
       resolve: "gatsby-theme-flow",
@@ -654,8 +656,8 @@ module.exports = {
         repositories: [{ owner: "onflow", name: "flow-go-sdk" }],
         sections,
         sourceGithubRepos,
-        sourceSlugTransformers,
-      },
-    },
-  ],
+        sourceSlugTransformers
+      }
+    }
+  ]
 };
