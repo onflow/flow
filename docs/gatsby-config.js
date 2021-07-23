@@ -346,7 +346,12 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      "API Reference": ["[@onflow/fcl](/flow-js-sdk/api)"],
+      "API Reference": [
+        "[Configuration](/flow-js-sdk/api#configuration)",
+        "[Wallet Interactions](/flow-js-sdk/api#wallet-interactions)",
+        "[On-Chain Interactions](/flow-js-sdk/api#on-chain-interactions)",
+        "[Types, Interfaces, and Definitions](/flow-js-sdk/api#types-interfaces-and-definitions)"
+      ],
       "Developer Guides": [
         "[Introducing @onflow/fcl](/flow-js-sdk)",
         "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)"
