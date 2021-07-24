@@ -22,12 +22,12 @@ const navConfig = {
       "Learn the basics of Flow and Cadence using our browser-based playground.",
     linkText: "Launch the Flow Playground"
   },
-  "JavaScript SDK": {
-    url: "/flow-js-sdk",
+  "FCL (JavaScript Client)": {
+    url: "/fcl",
     icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
-    linkText: "JavaScript SDK Documentation"
+    linkText: "FCL Documentation"
   },
   "Go SDK": {
     url: "/flow-go-sdk",
@@ -82,10 +82,10 @@ const sourceGithubRepos = {
 // sourceSlugTransformers maps a sourceInstanceName to slug transformation functions
 const sourceSlugTransformers = {
   "cadence-github": (slug) => slug.replace(/^\/docs\//, "/cadence/"),
-  "flow-js-sdk-github": (slug) =>
+  "fcl-github": (slug) =>
     slug
-      .replace(/^\/docs\//, "/flow-js-sdk/")
-      .replace(/^\/packages\//, "/flow-js-sdk/packages/")
+      .replace(/^\/docs\//, "/fcl/")
+      .replace(/^\/packages\//, "/fcl/packages/")
       // Use api.md as 'index' file!
       // .replace("api/", ""),
       .replace("README/", ""),
@@ -126,7 +126,7 @@ const sources = [
   {
     resolve: "gatsby-source-git",
     options: {
-      name: "flow-js-sdk-github",
+      name: "fcl-github",
       branch: "master",
       remote: "https://github.com/onflow/flow-js-sdk.git",
       patterns: [
@@ -198,7 +198,7 @@ const sections = [
       Guides: [
         "[Flow Concepts](/concepts)",
         "[Introduction to Cadence](/cadence)",
-        "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)",
+        "[Flow App Quickstart](/fcl/flow-app-quickstart)",
         "[Project Deployment Guide](/dapp-deployment)",
         "[Staking & Delegating](/staking)",
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
@@ -341,28 +341,28 @@ const sections = [
     }
   },
   {
-    sourceInstanceName: "flow-js-sdk-github",
+    sourceInstanceName: "fcl-github",
     patterns: ["docs/**/*", "packages/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
       "API Reference": [
-        "[Configuration](/flow-js-sdk/api#configuration)",
-        "[Wallet Interactions](/flow-js-sdk/api#wallet-interactions)",
-        "[On-Chain Interactions](/flow-js-sdk/api#on-chain-interactions)",
-        "[Types, Interfaces, and Definitions](/flow-js-sdk/api#types-interfaces-and-definitions)"
+        "[Configuration](/fcl/api#configuration)",
+        "[Wallet Interactions](/fcl/api#wallet-interactions)",
+        "[On-Chain Interactions](/fcl/api#on-chain-interactions)",
+        "[Types, Interfaces, and Definitions](/fcl/api#types-interfaces-and-definitions)"
       ],
       "Developer Guides": [
-        "[Introducing @onflow/fcl](/flow-js-sdk)",
-        "[Flow App Quickstart](/flow-js-sdk/flow-app-quickstart)"
+        "[Introducing @onflow/fcl](/fcl)",
+        "[Flow App Quickstart](/fcl/flow-app-quickstart)"
       ],
       Packages: [
-        "[@onflow/fcl](/flow-js-sdk/packages/fcl)",
-        "[@onflow/types](/flow-js-sdk/packages/types)"
+        "[@onflow/fcl](/fcl/packages/fcl)",
+        "[@onflow/types](/fcl/packages/types)"
       ],
       Changelogs: [
-        "[@onflow/fcl](/flow-js-sdk/packages/fcl/CHANGELOG)",
-        "[@onflow/types](/flow-js-sdk/packages/types/CHANGELOG)"
+        "[@onflow/fcl](/fcl/packages/fcl/CHANGELOG)",
+        "[@onflow/types](/fcl/packages/types/CHANGELOG)"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
@@ -602,11 +602,11 @@ module.exports = {
           },
 
           {
-            pathname: "/flow-js-sdk/packages/fcl",
+            pathname: "/fcl/packages/fcl",
             crumbLabel: "FCL"
           },
           {
-            pathname: "/flow-js-sdk/packages/fcl-react",
+            pathname: "/fcl/packages/fcl-react",
             crumbLabel: "FCL + React"
           },
           {
@@ -618,8 +618,12 @@ module.exports = {
             crumbLabel: "Access API"
           },
           {
-            pathname: "/flow-js-sdk",
-            crumbLabel: "Flow JS SDK"
+            pathname: "/fcl",
+            crumbLabel: "FCL"
+          },
+          {
+            pathname: "/fcl/api",
+            crumbLabel: "API Reference"
           },
           {
             pathname: "/flow-cli",

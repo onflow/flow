@@ -43,6 +43,7 @@ Note that these tests are tied to the emulator but it is simple to refactor test
 
 ### JavaScript Tests
 
-Tests in JavaScript can be written using [flow-js-sdk](https://github.com/onflow/flow-js-sdk) and [flow-js-testing](https://github.com/onflow/flow-js-testing).
+Tests in JavaScript can be written using [fcl](https://github.com/onflow/flow-js-sdk) and [flow-js-testing](https://github.com/onflow/flow-js-testing).
 
 flow-js-testing is a newer addition so we do not have any examples using it yet.
+         
