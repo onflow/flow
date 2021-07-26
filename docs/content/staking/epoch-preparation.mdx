@@ -79,33 +79,20 @@ and each collector node will vote for the root block of their respective cluster
 - The Random Beacon Committee for the next Epoch (currently all consensus nodes)
 will run the Distributed Key Generation (DKG),
 - When completing the QC generation and DKG, the smart contracts will emit a service event. 
-After consensus nodes have collected all relevant information (DKG Keys), 
+After consensus nodes have collected all relevant information (public keys for the random beacon and cluster quorum certificates), 
 they can update the identity table to include the information for the next Epoch.
 
-If some necessary tasks for the next Epoch are not completed in the interim period of time, Flow halts!
+If preparation for the next Epoch is not completed before the current Epoch ends,
+a spork is required to transition to the next Epoch.
 
 ## Epoch Length
 
-The length of an Epoch is measured in terms of consensus views. The number of views in an epoch
-and in the various epoch phases are known before the Epoch begins
-and stored as a field in the main epoch smart contract (`FlowEpoch`).
+The length of an Epoch is measured in terms of consensus views.
+The number of views in an epoch and in the various epoch phases are known before 
+the Epoch begins and stored as a field in the main epoch smart contract (`FlowEpoch`).
 
-The length of an epoch *is not* fork-dependent, as it is measured in views.
-Generally, there is not a block for every view.
-However this does not pose a problem, as for each fork,
-the first and last block of each Epoch are clearly defined. 
-
-<Callout type="warning">
-  **Motivation for measuring epoch length in consensus views:**
-
-
-  While we utilize a consensus-internal detail for measuring time,
-  this solution has significantly less engineering complexity compared to using height.
-  The reason is that HotStuff requires (for liveness) a deterministic *fork-independent* primary selection per view.
-  Defining Epoch length based on height would break fork-independent primary selection,
-  as there can be multiple blocks at the same height, but with different views.
-  Using view numbers, there are no extra edge cases. 
-</Callout>
+Generally, there is not a block for every view,
+so the view number will not change at the same rate as the block height.
 
 # Phases
 
