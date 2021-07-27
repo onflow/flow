@@ -445,6 +445,6 @@
       "source": "/flow-js-sdk",
       "destination": "/fcl",
       "permanent": false
-    },
+    }
   ]
 }
