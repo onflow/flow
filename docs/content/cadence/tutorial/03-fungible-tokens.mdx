@@ -754,7 +754,7 @@ transaction {
 
   // Local variable for storing the reference to the Vault of
   // the account that will receive the newly minted tokens
-  var receiverRef: &ExampleToken.Vault{ExampleToken.Receiver}
+  var receiverRef: Capability<&ExampleToken.Vault>{ExampleToken.Receiver}
 
   prepare(acct: AuthAccount) {
     // Borrow a reference to the stored, private minter resource
