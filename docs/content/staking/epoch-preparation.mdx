@@ -198,8 +198,8 @@ When this block is propagated, all staked nodes will know about the participants
 in the next epoch and can communicate with them.
 
 - Based on the `RandSeed` field in the `EpochSetup` event, all nodes compute: 
-    • The seed to initialize the consensus node's primary selection algorithm for the next epoch
-    • The seeds to initialize the collector clusters' primary selection algorithm for the next epoch
+    - The seed to initialize the consensus node's primary selection algorithm for the next epoch
+    - The seeds to initialize the collector clusters' primary selection algorithm for the next epoch
 
 - The collector nodes generate the root block for their respective clusters
 in the next Epoch and submit a vote for the root block to a specialized smart contract, `FlowClusterQC`.
@@ -241,8 +241,8 @@ Consensus
 
 - When a primary constructs a block that seals the `EpochCommit` service event,
 the primary includes an update to the protocol state in the block. Specifically, it: 
- • adds the information generated in the setup phase to the Protocol State and 
- • marks the updated Protocol State as `committed` in this respective fork.
+ - adds the information generated in the setup phase to the Protocol State and 
+ - marks the updated Protocol State as `committed` in this respective fork.
 
 # Query Information from the Epoch Contract
 

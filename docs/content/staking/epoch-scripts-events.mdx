@@ -23,8 +23,8 @@ In other words, they serve as a communication mechanism between the execution st
 
 Concretely, service events are defined and emitted as events like any other in Cadence. An event is considered a service event when it is:
 
-- emitted within the service chunk, and
-- emitted from a smart contract deployed to the service account, and
+- emitted within the service chunk
+- emitted from a smart contract deployed to the service account
 - conformant to an event allowlist
 
 Each block contains a system chunk. For each system chunk,
@@ -46,8 +46,6 @@ Consequently they are handled slightly differently than other protocol state upd
 The diagram below illustrates the steps each service event goes through to be included in the protocol state.
 
 ![Flow Service Event Diagram](epoch-service-event-diagram.png)
-
-For a service event emitted in block `N`, associated state changes are applied at block `M` and become finalized at block `K`. 
 
 For conciseness, we say a service event is `sealed` when the block in which it was emitted is sealed,
 and we say a service event is `finalized` when the block containing the seal is finalized.
@@ -102,7 +100,7 @@ pub event EpochSetup (
 ### `EpochCommit`
 
 The `EpochCommit` service event is emitted when the Epoch Smart Contracts transition 
-from the Epoch Setup phase to the Epoch Committed phase. 
+from the Epoch Setup phase to the Epoch Commit phase. 
 It is emitted only when all preparation for the upcoming epoch (QC and DKG) has been completed.
 
 ```cadence
