@@ -375,6 +375,7 @@ const sections = [
         "core-contracts/flow-token",
         "core-contracts/flow-fees",
         "core-contracts/staking-contract-reference",
+        "core-contracts/epoch-contract-reference",
       ],
       "Other Important Contracts": [
         "core-contracts/locked-tokens",
@@ -443,6 +444,7 @@ const sections = [
         "staking/faq",
       ],
       "Technical Docs": [
+        "staking/epoch-terminology",
         "staking/epoch-preparation",
         "staking/epoch-scripts-events",
         "staking/technical-overview",
