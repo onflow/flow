@@ -102,7 +102,7 @@ Add the account created with the use of faucet above to the `accounts` property 
   "accounts": {
     "my-testnet-account": {
       "address": "ADDRESS_FROM_FAUCET",
-      "keys": "SECRET_GENERATED_IN_PREVIOUS_STEP"
+      "key": "PRIVATE_KEY_GENERATED_IN_PREVIOUS_STEP"
     }
   }
 ...
