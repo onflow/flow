@@ -23,7 +23,7 @@ const navConfig = {
     linkText: "Launch the Flow Playground"
   },
   "Flow Client Library (FCL)": {
-    url: "/fcl",
+    url: "/fcl/api",
     icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
