@@ -352,22 +352,13 @@ const sections = [
         "[On-Chain Interactions](/fcl/api#on-chain-interactions)",
         "[Types, Interfaces, and Definitions](/fcl/api#types-interfaces-and-definitions)"
       ],
-      "Developer Guides": [
-        "[Introducing @onflow/fcl](/fcl)",
-        "[Flow App Quickstart](/fcl/flow-app-quickstart)"
-      ],
-      Packages: [
-        "[@onflow/fcl](/fcl/packages/fcl)",
-        "[@onflow/types](/fcl/packages/types)"
-      ],
       Changelogs: [
         "[@onflow/fcl](/fcl/packages/fcl/CHANGELOG)",
         "[@onflow/types](/fcl/packages/types/CHANGELOG)"
       ],
-      FAQ: [
-        "[Builders/Developers](/faq/developers)",
-        "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)"
+      "Developer Guides": [
+        "[Introducing @onflow/fcl](/fcl)",
+        "[Flow App Quickstart](/fcl/flow-app-quickstart)"
       ]
     }
   },
