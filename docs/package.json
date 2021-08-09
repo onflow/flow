@@ -81,5 +81,6 @@
 		"jest-puppeteer": "^3.9.0",
 		"puppeteer": "^5.5.0",
 		"typeface-overpass": "^0.0.72"
-	}
+	},
+	"version": "0.0.0"
 }
