@@ -200,7 +200,7 @@ const sections = [
         "[Introduction to Cadence](/cadence)",
         "[Flow App Quickstart](/fcl/flow-app-quickstart)",
         "[Project Deployment Guide](/dapp-deployment)",
-        "[Staking & Delegating](/staking)",
+        "[Epochs, Staking & Delegating](/staking)",
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
         "[Node Operation](/node-operation)"
       ],
@@ -372,11 +372,13 @@ const sections = [
         "core-contracts/fungible-token",
         "core-contracts/flow-token",
         "core-contracts/flow-fees",
-        "core-contracts/staking-contract-reference"
+        "core-contracts/staking-contract-reference",
+        "core-contracts/epoch-contract-reference",
       ],
       "Other Important Contracts": [
         "core-contracts/locked-tokens",
-        "core-contracts/non-fungible-token"
+        "core-contracts/staking-collection",
+        "core-contracts/non-fungible-token",
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
@@ -440,6 +442,7 @@ const sections = [
         "staking/faq"
       ],
       "Technical Docs": [
+        "staking/epoch-terminology",
         "staking/epoch-preparation",
         "staking/epoch-scripts-events",
         "staking/technical-overview",

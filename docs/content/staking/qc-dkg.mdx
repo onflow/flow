@@ -6,7 +6,7 @@ description: How the Flow protocol manages the Epoch Setup Phase
 
 <Callout type="warning">
   If you haven't read the Intro to Flow Staking document and the Epoch protocol document,
-  please read that first. Those documents provide a non-technical overview of staking on Flow for
+  please read that first. Those documents provide an overview of epochs on Flow for
   all users and are necessary prerequisites to this document.
 </Callout>
 <Callout type="warning">
@@ -17,24 +17,59 @@ description: How the Flow protocol manages the Epoch Setup Phase
 
 # Epoch Setup Phase
 
-TODO
+**Purpose:** During the epoch setup phase, all nodes participating in the upcoming epoch
+must perform setup tasks in preparation for the upcoming epoch, including
+the Collector Cluster Quorum Certificate Generation and Consensus Committe Distributed Key Generation.
+
+**Duration:** The epoch setup phase begins right after the `EpochSetup` service event is emitted.
+It ends with the block where `EpochCommit` service emitted.
+
+# Machine Accounts
+
+The processes described in this document are fully automated.
+
+They are expected to be performed entirely by the node software with no manual
+interaction required by the node operator after the node has been set up and registered.
+
+To facilitate this, we recommend that node operators use a secondary "machine account"
+that only stores the `FlowClusterQC.Voter` or `FlowDKG.Participant` resource objects
+in addition to FLOW to pay for transaction fees. You can connect your node to this account
+to participate in the Epoch Setup Phase without having to do the actions manually.
+
+If you are using the [Staking Collection](/staking/staking-collection/) for your node,
+this functionality is built-in. When you register a node with the staking collection,
+you also have to provide a public key or keys for your machine account for the node.
+
+If you have a node without a machine account (if you were operating a node from the time
+before epochs and staking collection were enabled, for example) the staking collection
+also provides a method to create a machine account for an existing node.
+
+See the [Staking Collection Docs](/staking/staking-collection/#machine-account-support)
+for more information.
 
 # Collector Cluster Quorum Certificate Generation Protocol
 
-TODO
+The collector nodes generate the root block for their respective clusters
+in the next Epoch and submit a vote for the root block to a specialized smart contract, `FlowClusterQC`.
 
-## Query Information from the `FlowClusterQC` Contract
+More documentation for this process will come in the future.
+
+## `FlowClusterQC` Transactions
 
 TODO
 
 # Consensus Committee Distributed Key Generation Protocol
 
+The Random Beacon Committee for the next Epoch (currently all consensus nodes)
+will run the DKG through a specialized smart contract, `FlowDKG`.
+
+More documentation for this process will come in the future.
+
+## `FlowDKG` Transactions
+
 TODO
 
-## Query Information from the `FlowDKG` Contract
+# Monitor Events and Query State from the QC and DKG Contracts
 
-TODO
-
-# Monitor Events from the QC and DKG Contracts
-
-See the QC and DKG events document for information about the events that can be emitted by these contracts.
+See the [QC and DKG events and scripts document](/staking/qc-dkg-scripts-events) for information
+about the events that can be emitted by these contracts and scripts you can use to query information.

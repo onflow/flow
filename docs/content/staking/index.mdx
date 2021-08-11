@@ -1,6 +1,6 @@
 ---
-title: Staking & Delegating on Flow
-sidebar_title: Staking & Delegating
+title: Epochs, Staking & Delegating on Flow
+sidebar_title: Introduction
 description: Introduction to how staking works on Flow
 ---
 
@@ -74,8 +74,9 @@ the protocol looks at the records of all the nodes that have committed tokens.
 It checks to make sure each node’s information is correct and that the node is running properly.
 Each node also has to have committed tokens above the minimum stake required for their node role.
 If any of these checks are insufficient, the node is not included in the next epoch.
+
 Every epoch, some nodes also have to perform certain processes to initialize the state and communication
-with other nodesfor the next epoch. These processes are called **Cluster Quorum Certificate Generation (QC)**,
+with other nodes for the next epoch. These processes are called **Cluster Quorum Certificate Generation (QC)**,
 and **Distributed Key Generation (DKG)**. If any node does not perform this initialization properly,
 it is not included in the next epoch's Identity Table.
 

@@ -1,0 +1,36 @@
+---
+title: Flow Epoch Contracts Reference
+sidebar_title: Epoch Contracts
+---
+
+# Contract
+
+The `FlowEpoch` contract is the state machine that manages Epoch phases and emits service events.
+The `FlowClusterQC` and `FlowDKG` contracts manage the processes that happen during the Epoch Setup phase.
+
+These contracts are all deployed to the same account as the `FlowIDTableStaking` contract.
+
+Sources: 
+[FlowEpoch.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs/FlowEpoch.cdc)
+[FlowClusterQC.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs/FlowClusterQC.cdc)
+[FlowDKG.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs/FlowDKG.cdc)
+
+| Network        | Contract Address     |
+|----------------|----------------------|
+| Testnet/Canary | `0x9eca2b38b18b5dfe` |
+| Mainnet        | `0x8624b52f9ddcd04a` |
+
+# Transactions
+
+## Getting Epoch Info
+
+These scripts are read-only and get info about the current state of the epoch contract.
+
+| ID        | Name                       | Source |
+|-----------|----------------------------|--------|
+|**`EP.01`**| Get Epoch Metadata         | [epoch/get_epoch_metadata.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/epochs/get_epoch_metadata.cdc) |
+|**`EP.02`**| Get Configurable Metadata  | [epoch/get_config_metadata.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/epochs/get_config_metadata.cdc) |
+|**`EP.03`**| Get Epoch Counter          | [epoch/get_epoch_counter.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/epochs/get_epoch_counter.cdc) |
+|**`EP.04`**| Get Epoch Phase            | [epoch/get_epoch_phase.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/epochs/get_epoch_phase.cdc) |
+
+
