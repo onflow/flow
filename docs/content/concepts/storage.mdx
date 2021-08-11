@@ -12,10 +12,10 @@ Storage capacity of an account is dictated by the amount of FLOW it has. **The m
 
 The exact amount of storage capacity an account has is the amount of FLOW the account has times the `storageBytesPerReservedFlow` variable defined on the `StorageFees` smart contract, which is:
 
-- 10 MB per 1 reserved FLOW, or
-- 1 MB per 0.1 reserved FLOW, or
-- 100 kB per 0.01 reserved FLOW, or
-- 10 kB per 0.001 reserved FLOW.
+- 100 MB per 1 reserved FLOW, or
+- 10 MB per 0.1 reserved FLOW, or
+- 1 MB per 0.01 reserved FLOW, or
+- 100 kB per 0.001 reserved FLOW.
 
 Any account can increase the storage capacity of an account by depositing more FLOW to the account.
 
@@ -37,8 +37,8 @@ Data stored on the Flow blockchain is stored in a key-value ledger. Each item’
 
 Two parameters define storage limits:
 
-- Minimum account FLOW is **0.001 FLOW** and represents **10 kB** of storage capacity. This is also the amount of FLOW that the creator of a new account needs to provide for the account's storage reservation. (`StorageFees.minimumStorageReservation`)
-- The amount of storage capacity one FLOW represents is **10 MB per FLOW**. (`StorageFees.storageMegaBytesPerReservedFlow`)
+- Minimum account FLOW is **0.001 FLOW** and represents **100 kB** of storage capacity. This is also the amount of FLOW that the creator of a new account needs to provide for the account's storage reservation. (`StorageFees.minimumStorageReservation`)
+- The amount of storage capacity one FLOW represents is **100 MB per FLOW**. (`StorageFees.storageMegaBytesPerReservedFlow`)
 
 ## FAQ
 

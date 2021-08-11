@@ -2,7 +2,7 @@ const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 // const { createPrinterNode } = require("gatsby-plugin-printer");
 
-exports.onCreateNode = async function (
+exports.onCreateNode = async function(
   { node, actions, getNode, loadNodeContent },
   { siteName, subtitle, sidebarCategories }
 ) {
@@ -15,7 +15,7 @@ exports.onCreateNode = async function (
     } else {
       slug = createFilePath({
         node,
-        getNode,
+        getNode
       });
     }
 
@@ -50,25 +50,25 @@ exports.onCreateNode = async function (
     actions.createNodeField({
       name: "image",
       node,
-      value: path.join(outputDir, fileName + ".png"),
+      value: path.join(outputDir, fileName + ".png")
     });
 
     actions.createNodeField({
       node,
       name: "slug",
-      value: slug,
+      value: slug
     });
 
     actions.createNodeField({
       node,
       name: "sidebarTitle",
-      value: sidebar_title || "",
+      value: sidebar_title || ""
     });
 
     actions.createNodeField({
       node,
       name: "graphManagerUrl",
-      value: graphManagerUrl || "",
+      value: graphManagerUrl || ""
     });
   }
 };
@@ -94,7 +94,7 @@ function getSidebarContents(section, sourceSlugTransformers, edges) {
           return {
             anchor: matchExternalLink,
             title: match[1],
-            path: match[2],
+            path: match[2]
           };
         }
 
@@ -114,10 +114,10 @@ function getSidebarContents(section, sourceSlugTransformers, edges) {
           title: frontmatter.title,
           sidebarTitle: fields.sidebarTitle,
           description: frontmatter.description,
-          path: slug,
+          path: slug
         };
       })
-      .filter(Boolean),
+      .filter(Boolean)
   }));
 }
 
@@ -173,7 +173,7 @@ async function createPagesForSection(
     twitterUrl,
     baseUrl,
     sourceGithubRepos,
-    sourceSlugTransformers,
+    sourceSlugTransformers
   }
 ) {
   const allPages = await Promise.all(
@@ -210,7 +210,7 @@ async function createPagesForSection(
 
   const templates = {
     default: require.resolve(`./src/components/templates/default`),
-    changelog: require.resolve(`./src/components/templates/changelog`),
+    changelog: require.resolve(`./src/components/templates/changelog`)
   };
 
   const sidebarContents = getSidebarContents(
@@ -257,14 +257,14 @@ async function createPagesForSection(
         sidebar: {
           showMainNav: section.sidebarShowMainNav,
           alwaysExpanded: section.sidebarAlwaysExpanded,
-          contents: sidebarContents,
+          contents: sidebarContents
         },
         githubUrl,
         discordUrl,
         discourseUrl,
         twitterUrl,
-        baseUrl,
-      },
+        baseUrl
+      }
     });
   }
 }
