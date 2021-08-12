@@ -74,7 +74,7 @@ they can use the [`create_machine_account.cdc` transaction.](/staking/staking-co
 
 If a user is not using the staking collection, they can use the **Create QC Voter** ([QC.01](/core-contracts/epoch-contract-reference/#quorum-certificate-transactions-and-scripts))
 transaction. This will only store the QC Voter object in the account that stores the `NodeStaker` object.
-It does not create a machine account or store it elsewhere.
+It does not create a machine account or store it elsewhere, so it is not recommended to use. We encourage to use the staking collection instead.
 
 ### Submit Vote
 
@@ -115,7 +115,8 @@ they can use the [`create_machine_account.cdc` transaction.](/staking/staking-co
 
 If a user is not using the staking collection, they can use the **Create DKG Participant** ([DKG.01](/core-contracts/epoch-contract-reference/#dkg-transactions-and-scripts))
 transaction. This will only store the DKG Participant object in the account that stores the `NodeStaker` object.
-It does not create a machine account or store it elsewhere.
+It does not create a machine account or store it elsewhere, so it is not recommended to use. 
+The staking collection is the recommended method.
 
 ### Post Whiteboard Message
 
