@@ -49,25 +49,93 @@ for more information.
 
 # Collector Cluster Quorum Certificate Generation Protocol
 
-The collector nodes generate the root block for their respective clusters
-in the next Epoch and submit a vote for the root block to a specialized smart contract, `FlowClusterQC`.
-
-More documentation for this process will come in the future.
+The collector nodes are organized into clusters and must bootstrap
+the Hotstuff consensus algorithm for each cluster. To do this,
+they generate the root block for their respective clusters
+and submit a vote for the root block to a specialized smart contract, `FlowClusterQC`.
+If 2/3 of the collectors in a cluster have voted with the same unique vote,
+then the cluster is considered complete.
+Once all clusters are complete, the QC is complete.
 
 ## `FlowClusterQC` Transactions
 
-TODO
+### Create QC Voter Object
 
-# Consensus Committee Distributed Key Generation Protocol
+A node uses the [`getClusterQCVoter()`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs/FlowEpoch.cdc#L732)
+function in the `FlowEpoch` contract to create their Voter object and needs to provide
+a reference to their `FlowIDTableStaking.NodeStaker` object to prove they are the node owner.
+
+When registering a node with the staking collection, this process is handled by
+[the transaction to register.](/staking/staking-collection/#register-a-new-staked-node)
+It also creates a machine account for the QC object.
+
+If a user already has a registered node with the staking collection, but hasn't created their QC Voter object yet,
+they can use the [`create_machine_account.cdc` transaction.](/staking/staking-collection/#create-a-machine-account-for-an-existing-node)
+
+If a user is not using the staking collection, they can use the **Create QC Voter** ([QC.01](/core-contracts/epoch))
+transaction. This will only store the QC Voter object in the account that stores the `NodeStaker` object.
+It does not create a machine account or store it elsewhere.
+
+### Submit Vote
+
+During the Epoch Setup Phase, the node software should submit the votes for the QC generation
+automatically using the **Submit QC Vote** ([QC.02](/core-contracts/epoch))
+transaction with the following arguments.
+
+| Argument                | Type     | Description |
+|-------------------------|----------|-------------|
+| **voteSignature**       | `String` | The signed message (signed with the node's staking key) |
+| **voteMessage**         | `String` | The raw message itself. |
+
+# Consensus Committee Distributed Key Generation Protocol (DKG)
 
 The Random Beacon Committee for the next Epoch (currently all consensus nodes)
 will run the DKG through a specialized smart contract, `FlowDKG`.
-
-More documentation for this process will come in the future.
+To do this, they post a series of messages to a public "whiteboard" to 
+collectively generate a shared key array. When each node has enough information
+to generate their array of keys, they send the generated array to the smart contract
+as their final submission.
+If `(# of consensus nodes-1)/2` consensus nodes submit the same key array,
+the DKG is considered to be complete.
 
 ## `FlowDKG` Transactions
 
-TODO
+### Create DKG Participant Object
+
+A node uses the [`getDKGParticipant()`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs/FlowEpoch.cdc#L746)
+function in the `FlowEpoch` contract to create their Voter object and needs to provide
+a reference to their `FlowIDTableStaking.NodeStaker` object to prove they are the node owner.
+
+When registering a node with the staking collection, this process is handled by
+[the transaction to register.](/staking/staking-collection/#register-a-new-staked-node)
+It also creates a machine account for the DKG Object.
+
+If a user already has a registered node with the staking collection, but hasn't created their DKG Participant object yet,
+they can use the [`create_machine_account.cdc` transaction.](/staking/staking-collection/#create-a-machine-account-for-an-existing-node)
+
+If a user is not using the staking collection, they can use the **Create DKG Participant** ([DKG.01](/core-contracts/epoch))
+transaction. This will only store the DKG Participant object in the account that stores the `NodeStaker` object.
+It does not create a machine account or store it elsewhere.
+
+### Post Whiteboard Message
+
+During the Epoch Setup Phase, the node software should post whiteboard messages to the DKG
+automatically using the **Post Whiteboard Message** ([DKG.02](/core-contracts/epoch))
+transaction with the following arguments.
+
+| Argument          | Type     | Description |
+|-------------------|----------|-------------|
+| **content**       | `String` | The content of the whiteboard message |
+
+### Send Final Submission
+
+During the Epoch Setup Phase, the node software should send its final submission for the DKG
+automatically using the **Send Final Submission** ([DKG.03](/core-contracts/epoch))
+transaction with the following arguments.
+
+| Argument           | Type        | Description |
+|--------------------|-------------|-------------|
+| **submission**     | `[String?]` | The final key vector submission for the DKG. |
 
 # Monitor Events and Query State from the QC and DKG Contracts
 
