@@ -428,6 +428,26 @@ transaction with the following arguments:
 | **to**                  | `Address`          | The address of the account which contains the Staking Collection to transfer the Delegator to. |
 
 
+### Update A Node's Networking Address
+
+A user may update their node's networking address if it has become inconsistent with the protocol state.
+
+This operation can only be performed in the staking auction phase of an epoch.
+
+_Note: Currently, if a node updates its networking address and the new address does not match_
+_what is stored in the protocol state for the node, the node will not be able to participate in the upcoming epoch_
+_Only update your networking address if you have already confirmed with the Flow team that you can._
+_This restriction will be removed once fully automated epochs are completely implemented_
+
+The owner of a Staking Collection can use the **Update Networking Address** ([SCO.22](/core-contracts/staking-collection))
+transaction with the following arguments:
+
+| Argument        | Type      | Description |
+|-----------------|-----------|-------------|
+| **nodeID**      | `String`  | The nodeID of the node to update.  |
+| **newAddress**  | `String`  | The new networking address |
+
+
 # Staking Collection Scripts
 
 These scripts allow anyone to query information about an account's staking collection
