@@ -67,11 +67,6 @@
     "swr": "^0.5.6",
     "tinycolor2": "^1.4.1"
   },
-  "peerDependencies": {
-    "gatsby": "^2.29.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
-  },
   "devDependencies": {
     "@emotion/react": "^11.4.1",
     "@mdx-js/mdx": "^1.6.22",
