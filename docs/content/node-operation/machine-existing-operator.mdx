@@ -1,22 +1,29 @@
 ---
-title: Machine Account for existing Node Operators
-sidebar_title: Machine Account for existing Node Operators
-description: Machine Account for existing Node Operators
+title: Machine Accounts for Existing Node Operators
+sidebar_title: Machine Accounts for Existing Node Operators
+description: Instructions for existing Node Operators to follow to create a machine account for their collection or consensus nodes.
 ---
 
-If you are an existing `consensus` or `collection` node operator you will need a [Machine Account]() to participate in epochs. 
-This guide will walk you through creating a [Machine Account]() and getting it set up.
+The [Flow Epoch Preparation Protocol](/staking/epoch-preparation/) requires that `collection` and `consensus` nodes use an automated [machine account](/staking/qc-dkg/#machine-accounts) to participate in important processes required to start the next epoch. (QC and DKG, respectively)
+
+Starting on Thursday, August 19th 2021, all collector and consensus nodes who register with Flow Port will automatically create and initialize this machine account as part of their node registration.
+
+If you have an existing `consensus` or `collection` node that you registered with Flow Port before Thursday August 19th, you will need to create this Machine Account manually in order to participate in epochs.
+This guide will walk you through creating a Machine Account and getting it set up.
 
 ## Downloading Bootstrap Utility
 
 <Callout type="warning">
-If you have downloaded the bootstrapping kit previously, ensure that you do this step again to get the latest copy of the bootstrapping kit since we have made some significant changes to it.
+  If you have downloaded the bootstrapping kit previously, ensure that you do
+  this step again to get the latest copy of the bootstrapping kit since there
+  have been significant changes to it.
 </Callout>
 
 ```shell
 curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
 tar -xvf boot-tools.tar
 ```
+
 ```shell:title=CheckSHA256
 sha256sum ./boot-tools/bootstrap
 06c0e8a4350a1fb2cc2ece9b62f6537d23902ddd214ff3fe4db58198be265a0e  ./boot-tools/bootstrap
@@ -24,7 +31,6 @@ sha256sum ./boot-tools/bootstrap
 sha256sum ./boot-tools/transit
 e3599147a358539ff45a96af9a1a89568be9ddc5e210d42edd933871781378c9  ./boot-tools/transit
 ```
-
 
 ## Generate Machine Account key
 
@@ -54,15 +60,16 @@ $tree ./bootstrap/
 3 directories, 4 files
 ```
 
-## Create Machine Account address 
+## Create Machine Account
 
-You will now need to copy the Machine account public key and head over to [Flow Port]() to submit a transaction to create a Machine Account address. 
-You can follow the guide [here](/flow-port/staking-guide).
+You will now need to copy the Machine account public key and head over to [Flow Port](/flow-port/staking-guide/) to submit a transaction to create a Machine Account.
+
+This process will create your machine account for you and show you your machine account's address, which you will need to save for the next step.
+You can follow the guide [here](/flow-port/machine-account-address) .
 
 ## Finalize Machine Account setup
 
 You will now need to use the `bootstrap` utlity to run `machine-account` with the created address to finalize the set up of your Machine account.
-
 
 ```shell
 $ ./boot-tools/bootstrap machine-account --address ${YOUR_MACHINE_ACCOUNT_ADDRESS} -o ./bootstrap
