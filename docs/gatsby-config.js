@@ -95,7 +95,9 @@ const sourceSlugTransformers = {
       .replace(/^\/examples\//, "/flow-go-sdk/examples/")
       // Use README files as 'index' files!
       .replace("README/", ""),
-  "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/")
+  "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/"),
+  "flow-js-testing-github": (slug) =>
+    slug.replace(/^\/docs\//, "/flow-js-testing/").replace("api/", "")
 };
 
 const sources = [
@@ -363,6 +365,28 @@ const sections = [
     }
   },
   {
+    sourceInstanceName: "flow-js-testing-github",
+    patterns: ["docs/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: ["[Home](/)"],
+      "API Reference": [
+        "[Configuration](/fcl/api#configuration)",
+        "[Wallet Interactions](/fcl/api#wallet-interactions)",
+        "[On-Chain Interactions](/fcl/api#on-chain-interactions)",
+        "[Types, Interfaces, and Definitions](/fcl/api#types-interfaces-and-definitions)"
+      ],
+      Changelogs: [
+        "[@onflow/fcl](/fcl/packages/fcl/CHANGELOG)",
+        "[@onflow/types](/fcl/packages/types/CHANGELOG)"
+      ],
+      "Developer Guides": [
+        "[Introducing @onflow/fcl](/fcl)",
+        "[Flow App Quickstart](/fcl/flow-app-quickstart)"
+      ]
+    }
+  },
+  {
     sourceInstanceName: "docs",
     patterns: ["core-contracts/**/*"],
     sidebarAlwaysExpanded: true,
@@ -565,9 +589,26 @@ const sections = [
 
 module.exports = {
   siteMetadata: {
-    title: "Flow Documentation"
+    title: "Flow Documentation",
+    siteUrl: `https://docs.onflow.org`
   },
   plugins: [
+    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://docs.onflow.org",
+        sitemap: "https://docs.onflow.org/sitemap.xml",
+        env: {
+          development: {
+            policy: [{ userAgent: "*", disallow: ["/"] }]
+          },
+          production: {
+            policy: [{ userAgent: "*", allow: "/" }]
+          }
+        }
+      }
+    },
     {
       resolve: "gatsby-plugin-breadcrumb",
       options: {

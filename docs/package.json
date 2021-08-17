@@ -31,6 +31,7 @@
     "gatsby-plugin-netlify-cache": "^2.0.0",
     "gatsby-plugin-printer": "1.1.1",
     "gatsby-plugin-react-helmet": "^4.11.0",
+    "gatsby-plugin-robots-txt": "^1.6.9",
     "gatsby-plugin-svgr": "^3.0.0-beta.0",
     "gatsby-remark-autolink-headers": "^4.8.0",
     "gatsby-remark-check-links": "^2.1.0",
@@ -72,6 +73,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "framer-motion": "^4.1.17",
     "gatsby-plugin-remove-trailing-slashes": "^3.11.0",
+    "gatsby-plugin-sitemap": "^4.7.0",
     "jest": "^27.0.6",
     "jest-puppeteer": "^5.0.4",
     "typeface-overpass": "^1.1.13"
