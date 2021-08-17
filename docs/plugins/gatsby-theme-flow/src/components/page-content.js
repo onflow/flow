@@ -195,19 +195,12 @@ export default function PageContent(props) {
     );
   });
 
-  const editLink = props.githubUrl && (
-    <AsideLink href={props.githubUrl}>
-      <IconGithub /> Edit on GitHub
-    </AsideLink>
-  );
-
   return (
     <Wrapper>
       <InnerWrapper>
         <BodyContent ref={contentRef} className="content-wrapper">
           {props.children}
         </BodyContent>
-        <EditLink>{editLink}</EditLink>
         <PageNav
           prevPage={props.pages[pageIndex - 1]}
           nextPage={props.pages[pageIndex + 1]}
@@ -223,7 +216,11 @@ export default function PageContent(props) {
               imagesLoaded={imagesLoaded === imagesToLoad}
             />
           )}
-          {editLink}
+          {props.githubUrl && (
+            <AsideLink href={props.githubUrl}>
+              <IconGithub /> Edit on GitHub
+            </AsideLink>
+          )}
           {props.discourseUrl && (
             <AsideLink href={props.discourseUrl}>
               <IconDiscourse /> Discuss in Forum
