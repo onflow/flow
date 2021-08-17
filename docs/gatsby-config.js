@@ -598,7 +598,7 @@ module.exports = {
       resolve: "gatsby-plugin-robots-txt",
       options: {
         host: "https://docs.onflow.org",
-        sitemap: "https://docs.onflow.org/sitemap.xml",
+        sitemap: "https://docs.onflow.org/sitemap/sitemap-0.xml",
         env: {
           development: {
             policy: [{ userAgent: "*", disallow: ["/"] }]
