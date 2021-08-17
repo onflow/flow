@@ -128,6 +128,15 @@ const sources = [
   {
     resolve: "gatsby-source-git",
     options: {
+      name: "flow-js-testing-github",
+      branch: "master",
+      remote: "https://github.com/onflow/flow-js-testing.git",
+      patterns: ["docs/**/*", "examples/**/*"]
+    }
+  },
+  {
+    resolve: "gatsby-source-git",
+    options: {
       name: "fcl-github",
       branch: "master",
       remote: "https://github.com/onflow/flow-js-sdk.git",
@@ -370,20 +379,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      "API Reference": [
-        "[Configuration](/fcl/api#configuration)",
-        "[Wallet Interactions](/fcl/api#wallet-interactions)",
-        "[On-Chain Interactions](/fcl/api#on-chain-interactions)",
-        "[Types, Interfaces, and Definitions](/fcl/api#types-interfaces-and-definitions)"
-      ],
-      Changelogs: [
-        "[@onflow/fcl](/fcl/packages/fcl/CHANGELOG)",
-        "[@onflow/types](/fcl/packages/types/CHANGELOG)"
-      ],
-      "Developer Guides": [
-        "[Introducing @onflow/fcl](/fcl)",
-        "[Flow App Quickstart](/fcl/flow-app-quickstart)"
-      ]
+      Overview: ["[Installation](/flow-js-testing/installation)"]
     }
   },
   {
