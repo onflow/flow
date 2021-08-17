@@ -1,12 +1,19 @@
 ---
 title: Machine Account
 sidebar_title: Machine Account
-description: Machine Account
+description: Usage and Purpose of the Machine Account
 ---
 
 ### What is a Machine Account?
 
-Epochs introduce the requirement for protocol software to interact directly with system smart contracts by submitting transactions. 
-In particular, consensus nodes submit transactions to the DKG smart contract to broadcast DKG messages, and collection nodes 
-submit a transaction to the Cluster QC smart contract to submit root QC votes. To accomplish this, the protocol software needs 
-access to a Flow account, which we call the machine account.
+Epochs introduce the requirement for protocol software to interact directly with system smart contract by submitting transactions. 
+In particular, consensus nodes submit transactions to the `FlowDKG` smart contract to broadcast DKG messages, 
+and collection nodes submit a transaction to the `FlowClusterQC` smart contract to submit root QC votes. To accomplish this, 
+the protocol software needs access to a Flow account, which we call the machine account.
+
+
+<Callout type="info">
+    The machine account is distinct from the staking account. 
+    The machine account does not have access to staked tokens and is intended to be used by software, not by humans. 
+    The staking account has access to staked tokens and is intended to be used by humans.
+</Callout>

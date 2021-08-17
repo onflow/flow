@@ -449,6 +449,7 @@ const sections = [
         "staking/staking-scripts-events",
         "staking/qc-dkg",
         "staking/qc-dkg-scripts-events",
+        "staking/machine-account",
       ],
       "Technical Guides": [
         "staking/staking-options",
