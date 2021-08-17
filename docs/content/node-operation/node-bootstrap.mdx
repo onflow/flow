@@ -98,7 +98,7 @@ $ ./boot-tools/bootstrap key --address \"${YOUR_NODE_ADDRESS}:3569\" --role ${YO
 
 ```shell:title=Example
 $./boot-tools/bootstrap key --address "198.123.42.10:3569" --role consensus  -o ./bootstrap
-il> DBG will generate networking key
+<nil> DBG will generate networking key
 <nil> INF generated networking key
 <nil> DBG will generate staking key
 <nil> INF generated staking key
@@ -129,6 +129,21 @@ $tree ./bootstrap/
 <Callout type="warning">
 For `consensus` and `collection` node types a key known as the Machine account will be generated. For all other node types this will not be needed.
 </Callout>
+
+#### Generate Machine Account Address
+
+Once you have generated all your keys, you will need to now submit a transaction on Flow Port to create a Machine Account address for the Machine Account public key. In the output
+the `boostrap key` command you will see your Machine Account public key.
+
+```shell:title=Example
+$./boot-tools/bootstrap key --address "198.123.42.10:3569" --role consensus  -o ./bootstrap
+...
+<nil> DBG encoded public machine account key machineAccountPubKey=1b9c00e6f0930792c5738d3397169f8a592416f334cf11e84e6327b98691f2b72158b40886a4c3663696f96cd15bfb5a08730e529f62a00c78e2405013a6016d
+<nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-machine-account-key.priv.json
+```
+
+You can follow the guide [here](/flow-port/machine-account-address) to submit a transaction on [Flow Port]().
+
 
 ### Upload your Public Keys
 
