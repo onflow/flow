@@ -3030,5 +3030,21 @@
         "Stake": 1000,
         "NetworkPubKey": "034e5ef405e3479876522ac337985b8e70aee47333d39ef2d1117f8065b9a0e9b42a8838925e634760d31979a5a460d74446a056f784836d08f70bdb41657346",
         "StakingPubKey": "96296c7fd1222a09e46d1263b62d390d615af7cacabaea568c8cccef928fe5d3a3c7dddeafb511017e26f30e2a6458281725c571c801d04c0ff41ace338490e494c88bc192cd626b2156062a460c5a7f1b3b4ccd70caadd5e2d14e9177efd67c"
+    },
+    {
+        "Role": "access",
+        "Address": "flow-node-01.ankr.com:3569",
+        "NodeID": "5b16b7ede11d821c9acd7a6bc85d235d17aec6397d599b39b7f4f624b42465b3",
+        "Stake": 1000,
+        "NetworkPubKey": "8b14da867b05131b70b540938b6724b9fd6a0ded866a44160f5c371820e7e46dba22bec6040b1e3f211061295c42913e7274dbe71b700ca5ffee126ff6b91aab",
+        "StakingPubKey": "9283f7315858c4e4c121aa2a9087aa6f890f78ea393a360b1f8d2c2f3059f1c8ae1ac96fc9ef028383b3f8e5b7241f8600b5afe233f3e081d9e74634a5f31d8aa44df7fc52b986d0fab439df946a7c28bf1c2dfcd9c822a705d001110af612ff"
+    },
+    {
+        "Role": "access",
+        "Address": "flow-node-02.ankr.com:3569",
+        "NodeID": "5db88d84bb76dd6a5a0a180d3a14baba6db08b8c287d96890ea01d96f945f1e8",
+        "Stake": 1000,
+        "NetworkPubKey": "ac580bb9af7c6041beb90a1b5dd460a5509bfcd5d01558dcb12484dd76fd2adc79915eb8ab83940764a3eb13f7852faeb8599071b06adbd0fb281aee5d9a68c7",
+        "StakingPubKey": "b4c90574732f82649b7bd8ddaf291e63f480cfb79cb1e76d20985b589c50ce75935ac866cf391ad761b949d5655d6fca0b47d250912641c525fe4e73c04d2e2df1d1e3c6ff4cd44c363f5da7a3243f6450a16f2e6d72882b8bc884e42c62e43f"
     }
 ]
