@@ -72,10 +72,25 @@ const sourceGithubRepos = {
     // NOTE: path is non-empty, because only content in this path is sourced
     path: "docs/content"
   },
-  cadence: {
+  "cadence-github": {
     githubRepo: "onflow/cadence",
     // NOTE: path is empty, whole repo is sourced
+    path: "docs"
+  },
+  "flow-cli-github": {
+    githubRepo: "onflow/flow-cli",
+    // NOTE: path is empty, whole repo is sourced
+    path: "docs"
+  },
+  "flow-go-sdk-github": {
+    githubRepo: "onflow/flow-cli",
+    // NOTE: path is empty, whole repo is sourced
     path: ""
+  },
+  "fcl-github": {
+    githubRepo: "onflow/flow-js-sdk",
+    // NOTE: path is empty, whole repo is sourced
+    path: "docs"
   }
 };
 
@@ -95,7 +110,9 @@ const sourceSlugTransformers = {
       .replace(/^\/examples\//, "/flow-go-sdk/examples/")
       // Use README files as 'index' files!
       .replace("README/", ""),
-  "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/")
+  "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/"),
+  "flow-js-testing-github": (slug) =>
+    slug.replace(/^\/docs\//, "/flow-js-testing/").replace("api/", "")
 };
 
 const sources = [
@@ -363,6 +380,14 @@ const sections = [
     }
   },
   {
+    sourceInstanceName: "flow-js-testing-github",
+    patterns: ["docs/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: ["[Home](/)"],
+    }
+  },
+  {
     sourceInstanceName: "docs",
     patterns: ["core-contracts/**/*"],
     sidebarAlwaysExpanded: true,
@@ -565,9 +590,26 @@ const sections = [
 
 module.exports = {
   siteMetadata: {
-    title: "Flow Documentation"
+    title: "Flow Documentation",
+    siteUrl: `https://docs.onflow.org`
   },
   plugins: [
+    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://docs.onflow.org",
+        sitemap: "https://docs.onflow.org/sitemap/sitemap-0.xml",
+        env: {
+          development: {
+            policy: [{ userAgent: "*", disallow: ["/"] }]
+          },
+          production: {
+            policy: [{ userAgent: "*", allow: "/" }]
+          }
+        }
+      }
+    },
     {
       resolve: "gatsby-plugin-breadcrumb",
       options: {

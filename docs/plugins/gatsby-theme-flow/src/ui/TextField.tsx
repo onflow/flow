@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { ClassNames, jsx } from "@emotion/core";
+import { ClassNames, jsx } from "@emotion/react";
 import React from "react";
 import * as typography from "./typography";
 import { colors, theme } from "../colors";
@@ -125,7 +125,7 @@ export const TextField: React.FC<Props> = ({
   showInfoIcon,
   size = "standard",
   type,
-  value,
+  value
 }) => (
   <ClassNames>
     {({ css, cx }) => {
@@ -147,7 +147,7 @@ export const TextField: React.FC<Props> = ({
             borderColor: error ? colors.red.base : theme.dividerLight,
             "::placeholder": {
               color: disabled ? colors.grey.lighter : colors.grey.light,
-              opacity: 1,
+              opacity: 1
             },
             borderRadius: 4,
             flex: 1,
@@ -165,7 +165,7 @@ export const TextField: React.FC<Props> = ({
                   ? colors.grey.light
                   : error
                   ? colors.red.base
-                  : colors.silver.darker,
+                  : colors.silver.darker
             },
             ":focus, &[data-force-focus-state]": {
               borderColor:
@@ -174,10 +174,10 @@ export const TextField: React.FC<Props> = ({
                   : error
                   ? colors.red.base
                   : colors.silver.darker,
-              outline: "none",
-            },
+              outline: "none"
+            }
           })
-        ),
+        )
       };
 
       return (
@@ -187,7 +187,7 @@ export const TextField: React.FC<Props> = ({
               css({
                 paddingBottom: 8,
                 ...typography.base.base,
-                fontWeight: 600,
+                fontWeight: 600
               })
             )}
           >
@@ -196,7 +196,7 @@ export const TextField: React.FC<Props> = ({
               <div
                 css={{
                   ...typography.base.base,
-                  color: colors.black.base,
+                  color: colors.black.base
                 }}
               >
                 {description}
@@ -205,7 +205,7 @@ export const TextField: React.FC<Props> = ({
             <div
               css={{
                 marginTop: 8,
-                position: "relative",
+                position: "relative"
               }}
             >
               {icon && (
@@ -216,7 +216,7 @@ export const TextField: React.FC<Props> = ({
                     display: "inline-flex",
                     left: 12,
                     top: "50%",
-                    transform: "translateY(-50%)",
+                    transform: "translateY(-50%)"
                   }}
                 >
                   {icon}
@@ -229,7 +229,7 @@ export const TextField: React.FC<Props> = ({
                     className: classnames(
                       inputProps.className,
                       inputAs.props.className
-                    ),
+                    )
                   })
                 : React.createElement(inputAs, inputProps)}
             </div>
@@ -238,7 +238,7 @@ export const TextField: React.FC<Props> = ({
             css={{
               marginTop: 8,
               alignItems: "center",
-              position: "relative",
+              position: "relative"
             }}
           >
             {(helper || error) && (
@@ -249,7 +249,7 @@ export const TextField: React.FC<Props> = ({
                   display: "flex",
                   marginRight: 8,
                   marginTop: 8,
-                  paddingLeft: size === "small" ? 8 : 12,
+                  paddingLeft: size === "small" ? 8 : 12
                 }}
               >
                 {error ? (
@@ -259,7 +259,7 @@ export const TextField: React.FC<Props> = ({
                       marginRight: 8,
                       position: "relative",
                       top: 2,
-                      width: 15,
+                      width: 15
                     }}
                   />
                 ) : showInfoIcon && helper ? (
@@ -270,7 +270,7 @@ export const TextField: React.FC<Props> = ({
                       marginRight: 8,
                       position: "relative",
                       top: 2,
-                      width: 15,
+                      width: 15
                     }}
                   />
                 ) : null}

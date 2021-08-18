@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import TextFit from "react-textfit";
-import { Global, css } from "@emotion/core";
+import { Global, css } from "@emotion/react";
 import { IconArrowRight } from "../ui/icons";
 import { theme } from "../colors";
 import { smallCaps } from "../utils/typography";
@@ -48,13 +48,12 @@ export default function SocialCard(props) {
         padding: 80,
         fontFamily: "'Overpass'",
         color: "black",
-        backgroundImage: `url(${image})`,
+        backgroundImage: `url(${image})`
       }}
     >
       <Global
         styles={css`
-          ${fonts}
-          svg.arrow-icon path {
+          ${fonts} svg.arrow-icon path {
             vector-effect: none;
             stroke-width: 4px;
           }
@@ -66,7 +65,7 @@ export default function SocialCard(props) {
           fontWeight: 600,
           marginBottom: 16,
           color: theme.primaryLight,
-          ...smallCaps,
+          ...smallCaps
         }}
       >
         {props.subtitle}
@@ -78,7 +77,7 @@ export default function SocialCard(props) {
               style={{
                 width: "0.5em",
                 height: "0.5em",
-                verticalAlign: "0.05em",
+                verticalAlign: "0.05em"
               }}
             />{" "}
             {props.category}
@@ -93,7 +92,7 @@ export default function SocialCard(props) {
           height: 250,
           marginBottom: "auto",
           lineHeight: 1.2,
-          colors: theme.text1,
+          colors: theme.text1
         }}
       >
         {props.title.replace(/\s+(\S*)$/, "\xA0$1")}
@@ -105,5 +104,5 @@ export default function SocialCard(props) {
 SocialCard.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  category: PropTypes.string,
+  category: PropTypes.string
 };

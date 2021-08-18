@@ -231,6 +231,7 @@ async function createPagesForSection(
     let githubUrl;
 
     const sourceGithubRepo = sourceGithubRepos[section.sourceInstanceName];
+
     if (sourceGithubRepo) {
       const [owner, repo] = sourceGithubRepo.githubRepo.split("/");
       githubUrl =
@@ -241,8 +242,7 @@ async function createPagesForSection(
           repo,
           "tree",
           "master",
-          sourceGithubRepo.path,
-          relativePath
+          sourceGithubRepo.path
         );
     }
 
