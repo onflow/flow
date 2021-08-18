@@ -72,10 +72,25 @@ const sourceGithubRepos = {
     // NOTE: path is non-empty, because only content in this path is sourced
     path: "docs/content"
   },
-  cadence: {
+  "cadence-github": {
     githubRepo: "onflow/cadence",
     // NOTE: path is empty, whole repo is sourced
+    path: "docs"
+  },
+  "flow-cli-github": {
+    githubRepo: "onflow/flow-cli",
+    // NOTE: path is empty, whole repo is sourced
+    path: "docs"
+  },
+  "flow-go-sdk-github": {
+    githubRepo: "onflow/flow-cli",
+    // NOTE: path is empty, whole repo is sourced
     path: ""
+  },
+  "fcl-github": {
+    githubRepo: "onflow/flow-js-sdk",
+    // NOTE: path is empty, whole repo is sourced
+    path: "docs"
   }
 };
 
