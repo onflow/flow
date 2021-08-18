@@ -93,7 +93,7 @@ Node operators need to determine the role of node they will be running
 Once the info has been determined:
 
 - Node role: `UInt8` (1 = Collection, 2 = Consensus, 3 = Execution, 4 = Verification, 5 = Access)
-- Node ID: 32 byte `String`
+- Node ID: 32 byte `String` (64 hex characters)
 - Networking Address: `String` (Length must be less than 510 characters and be a properly formatted IP address or hostname)
 - Networking Key: 64 byte `String` (128 hex characters, must be a valid ECDSA-P256 Key)
 - Staking Key: 96 byte `String` (192 hex characters, must be a valid BLS key)
