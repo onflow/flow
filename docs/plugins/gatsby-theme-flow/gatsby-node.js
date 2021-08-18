@@ -243,7 +243,6 @@ async function createPagesForSection(
           "tree",
           "master",
           sourceGithubRepo.path
-          // relativePath
         );
     }
 
