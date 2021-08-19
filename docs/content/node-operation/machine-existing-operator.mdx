@@ -68,7 +68,6 @@ You will now need to copy the Machine account public key displayed in the termin
 /```
 
 This process will create your machine account for you and show you your machine account's address, which you will need to save for the next step.
-You can follow the guide [here](/flow-port/machine-account-address) .
 
 ## Finalize Machine Account setup
 
@@ -87,12 +86,13 @@ $./boot-tools/bootstrap machine-account --address 0x1de23de44985c7e7 -o ./bootst
 $tree ./bootstrap/
 ./bootstrap
 ├── private-root-information
-│   └── private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9
+│   └── private-node-info_d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160
 │       ├── node-info.priv.json
+│       ├── node-machine-account-info.priv.json
 │       └── node-machine-account-key.priv.json
 └── public-root-information
     ├── node-id
-    └── node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
+    └── node-info.pub.d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160.json
 
-3 directories, 4 files
+3 directories, 5 files
 ```
