@@ -36,6 +36,11 @@ e3599147a358539ff45a96af9a1a89568be9ddc5e210d42edd933871781378c9  ./boot-tools/t
 
 You will need to generate a Machine account private key using the `bootstrap` utility.
 
+<Callout type="warning">
+  Ensure you run the following commands on the machine you use to run your node software.
+  The bootstrap directory passed to the `-o` flag must be the same bootstrap directory used by your node.
+  The default location is `/var/flow/bootstrap`, but double-check your setup before continuing.
+</Callout>
 ```shell
 $ ./boot-tools/bootstrap machine-account-key -o ./bootstrap
 ```
