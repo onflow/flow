@@ -126,27 +126,34 @@ $tree ./bootstrap/
 3 directories, 4 files
 ```
 
-<Callout type="warning">
+<Callout type="info">
 
 For `consensus` and `collection` node types an additional key will be created for the Machine Account.
 For all other node types this will not be needed.
 
 </Callout>
 
-#### Generate Machine Account Address
+#### Machine Account Creation
 
-Once you have generated all your keys, you will need to now submit a transaction on Flow Port to create a Machine Account for the Machine Account public key. In the output of 
-the `boostrap key` command from the previous step you will see your Machine Account public key.
+If you are running a collection and consensus node, you will have an additional private key file
+which contains the private key for your node's machine account. You can learn more about machine
+accounts [here](/staking/machine-account/).
 
-```shell:title=Example
-$./boot-tools/bootstrap key --address "198.123.42.10:3569" --role consensus  -o ./bootstrap
+In Step 2 of this guied, when you submit a transaction to stake your node, you will need to provide the
+machine account public key, which can be found in the output of previous `bootstrap key` command.
+
+```shell:title=Machine Account public key in command output
+$./boot-tools/bootstrap key --address ${YOUR_NODE_ADDRESS} --role ${YOUR_NODE_ROLE}  -o ./bootstrap
 ...
 <nil> DBG encoded public machine account key machineAccountPubKey=1b9c00e6f0930792c5738d3397169f8a592416f334cf11e84e6327b98691f2b72158b40886a4c3663696f96cd15bfb5a08730e529f62a00c78e2405013a6016d
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-machine-account-key.priv.json
 ```
 
-You can follow the guide [here](/flow-port/staking-guide) to submit a transaction on [Flow Port](https://port.onflow.org/).
+<Callout type="warning">
 
+Copy the machine account public key somewhere safe. You will need it in a later step.
+
+</Callout>
 
 ### Upload your Public Keys
 
@@ -185,6 +192,9 @@ $cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e1299194
   "StakingPubKey": "917826e018f056a00b778a58ae83054906957ffd4b6f1b7da083551f7a9f35e02b76ace50424ed7d2c9fc69207a59f0f08a031048f5641db94e77d0648b24d150dedd54bab7cd44b4aa60cfd54be418647b0b3965f8ae54c0bcb48ae9d705162"
 }
 ```
+
+If you are running a collection or consensus node, you will need to provide an additional field `Machine Account Public Key`.
+This value is found in the output of the `bootstrap key` command from Step 1.
 
 ## Step 3 - Getting Ready to Start your Flow Node
 
