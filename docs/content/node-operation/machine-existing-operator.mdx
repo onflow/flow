@@ -4,11 +4,17 @@ sidebar_title: Machine Accounts for Existing Node Operators
 description: Instructions for existing Node Operators to follow to create a machine account for their collection or consensus nodes.
 ---
 
-The [Flow Epoch Preparation Protocol](/staking/epoch-preparation/) requires that `collection` and `consensus` nodes use an automated [machine account](/staking/qc-dkg/#machine-accounts) to participate in important processes required to start the next epoch. (QC and DKG, respectively)
+The [Flow Epoch Preparation Protocol](/staking/epoch-preparation/) requires that 
+`collection` and `consensus` nodes use an automated [machine account](/staking/qc-dkg/#machine-accounts) 
+to participate in important processes required to start the next epoch. (QC and DKG, respectively)
 
-Starting on Thursday, August 19th 2021, all collector and consensus nodes who register with Flow Port will automatically create and initialize this machine account as part of their node registration.
+Starting on Thursday, August 19th 2021, all collector and consensus nodes who register with Flow Port will 
+automatically create and initialize this machine account as part of their node registration.
 
-If you have an existing `consensus` or `collection` node that you registered with Flow Port before Thursday August 19th, you will need to create this Machine Account manually in order to participate in epochs. You will need to create one Machine Account for each `consensus` or `collection` node that you operate.
+If you have an existing `consensus` or `collection` node that you registered with Flow Port before Thursday August 19th,
+you will need to create this Machine Account manually in order to participate in epochs.
+You will need to create one Machine Account for each `consensus` or `collection` node that you operate.
+
 This guide will walk you through creating a Machine Account and getting it set up.
 
 <Callout type="warning">
@@ -47,11 +53,8 @@ You will need to generate a Machine account private key using the `bootstrap` ut
   The bootstrap directory passed to the `-o` flag must be the same bootstrap directory used by your node.
   The default location is `/var/flow/bootstrap`, but double-check your setup before continuing.
 </Callout>
-```shell
-$ ./boot-tools/bootstrap machine-account-key -o ./bootstrap
-```
 
-```shell:title=Example
+```shell:title=GenerateMachineAccountKey
 $./boot-tools/bootstrap machine-account-key -o ./bootstrap
 <nil> INF generated machine account private key
 <nil> DBG encoded public machine account key machineAccountPubKey=2743786d1ff1bf7d7026d693a774210eaa54728343859baab62e2df7f71a370651f4c7fd239d07af170e484eedd4f3c2df47103f6c39baf2eb2a50f67bbcba6a
