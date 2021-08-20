@@ -6,14 +6,38 @@ description: Usage and Purpose of the Machine Account
 
 ### What is a Machine Account?
 
-Epochs introduce the requirement for protocol software to interact directly with system smart contracts by submitting transactions. 
-In particular, consensus nodes submit transactions to the `FlowDKG` smart contract to broadcast DKG messages, 
-and collection nodes submit a transaction to the `FlowClusterQC` smart contract to submit root QC votes. To accomplish this, 
-the protocol software needs access to a Flow account, which we call the machine account.
+A Machine Account is a Flow account which is used autonomously by a node to interact with
+system smart contracts. Machine Accounts contain Cadence resources granted to network 
+participants which are used to participate in smart-contract-mediated protocols. Currently,
+Machine Accounts are used in the [Epoch Preparation Protocol](https://flow-docs-cd0obzavr-onflow.vercel.app/staking/epoch-preparation/), 
+which prepares the network for the next epoch.
 
+Your Machine Account is distinct from the account you use for staking your node (your Staking Account).
+The Machine Account is intended for use by node software and does not have access to your staked tokens or staking rewards.
 
 <Callout type="info">
-    The machine account is distinct from the staking account. 
-    The machine account does not have access to staked tokens and is intended to be used by software, not by humans. 
-    The staking account has access to staked tokens and is intended to be used by humans.
+
+Currently Machine Accounts are required only for `collection` and `consensus` nodes.
+
 </Callout>
+
+#### Creation
+
+For new node operators, Machine Accounts are created during the [staking process](/flow-port/staking-guide/) in Flow Port.
+For node operators who initially staked prior to the introduction of Machine Accounts, Machine Accounts can be
+created for your staked nodes by following [this guide](/node-operation/machine-existing-operator/).
+
+#### Funding
+
+Machine Accounts must maintain a balance of liquid FLOW tokens to pay fees on transactions they
+submit to system smart contracts. Typically very few transactions will be sent (about 1-5 per week)
+however more may be required under certain circumstances and network conditions.
+
+<Callout type="info">
+
+Because some transactions sent by the Machine Account are system critical, we recommend maintaining
+a balance sufficient to accomodate worst-case transaction submission numbers at all times.
+
+</Callout>
+
+We recommend a minimum balance of 0.01 FLOW for collection nodes and 1 FLOW for consensus nodes. 
