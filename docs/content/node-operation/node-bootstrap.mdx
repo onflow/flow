@@ -196,6 +196,43 @@ $cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e1299194
 If you are running a collection or consensus node, you will need to provide an additional field `Machine Account Public Key`.
 This value is found in the output of the `bootstrap key` command from Step 1.
 
+### Finalize Machine Account Setup
+
+<Callout type="warning">
+
+If you are not running a collection or consensus node, you can skip this step.
+
+</Callout>
+
+You will now need to use the `bootstrap` utility to run `machine-account` with the created address to finalize the set up of your Machine account.
+
+```shell
+$ ./boot-tools/bootstrap machine-account --address ${YOUR_MACHINE_ACCOUNT_ADDRESS} -o ./bootstrap
+```
+
+```shell:title=Example
+$./boot-tools/bootstrap machine-account --address 0x1de23de44985c7e7 -o ./bootstrap
+<nil> INF read machine account private key json
+<nil> DBG encoded public machine account key machineAccountPubKey=2743786d1ff1bf7d7026d693a774210eaa54728343859baab62e2df7f71a370651f4c7fd239d07af170e484eedd4f3c2df47103f6c39baf2eb2a50f67bbcba6a
+<nil> INF wrote file bootstrap/private-root-information/private-node-info_6f6e98c983dbd9aa69320452949b81abeab2ac591a247f55f19f4dbf0b477d26/node-machine-account-info.priv.json
+
+$tree ./bootstrap/
+./bootstrap
+├── private-root-information
+│   └── private-node-info_d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160
+│       ├── node-info.priv.json
+│       ├── node-machine-account-info.priv.json
+│       └── node-machine-account-key.priv.json
+└── public-root-information
+    ├── node-id
+    └── node-info.pub.d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160.json
+
+3 directories, 5 files
+```
+
+After running this step, you should see the `node-machine-account-info.priv.json` file in your `bootstrap` directory as shown above.
+
+
 ## Step 3 - Getting Ready to Start your Flow Node
 
 <Callout type="danger">
