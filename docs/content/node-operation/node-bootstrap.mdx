@@ -135,12 +135,12 @@ For all other node types this will not be needed.
 
 #### Machine Account Creation
 
-If you are running a collection and consensus node, you will have an additional private key file
+If you are running a collection and consensus node, you will have an additional private key file (`node-machine-account-key.priv.json`)
 which contains the private key for your node's machine account. You can learn more about machine
 accounts [here](/staking/machine-account/).
 
-In Step 2 of this guied, when you submit a transaction to stake your node, you will need to provide the
-machine account public key, which can be found in the output of previous `bootstrap key` command.
+In Step 2 of this guide, when you submit a transaction to stake your node, you will need to provide the
+machine account public key, which can be found in the output of the previous `bootstrap key` command.
 
 ```shell:title=Machine Account public key in command output
 $./boot-tools/bootstrap key --address ${YOUR_NODE_ADDRESS} --role ${YOUR_NODE_ROLE}  -o ./bootstrap
