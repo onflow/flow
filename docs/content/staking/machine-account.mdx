@@ -9,7 +9,7 @@ description: Usage and Purpose of the Machine Account
 A Machine Account is a Flow account which is used autonomously by a node to interact with
 system smart contracts. Machine Accounts contain Cadence resources granted to network 
 participants which are used to participate in smart-contract-mediated protocols. Currently,
-Machine Accounts are used in the [Epoch Preparation Protocol](https://flow-docs-cd0obzavr-onflow.vercel.app/staking/epoch-preparation/), 
+Machine Accounts are used in the [Epoch Preparation Protocol](/staking/epoch-preparation/), 
 which prepares the network for the next epoch.
 
 Your Machine Account is distinct from the account you use for staking your node (your Staking Account).
@@ -40,4 +40,6 @@ a balance sufficient to accomodate worst-case transaction submission numbers at 
 
 </Callout>
 
-We recommend a minimum balance of 0.01 FLOW for collection nodes and 1 FLOW for consensus nodes. 
+We recommend a minimum balance of 0.001 FLOW for collection nodes and 0.1 FLOW for consensus nodes, but more is definitely safer if you plan on operating your node for a very long time.
+
+A node operator can easily withdraw their FLOW from their machine account if they decide they don't need them there any more.
