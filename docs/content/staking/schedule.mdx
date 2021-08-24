@@ -60,6 +60,12 @@ to empower a wide variety of use cases and promote fair and diverse participatio
 The numbers in this table represent the total amount of tokens that are paid 
 as staking rewards at each epoch to the entire pool of participants in the Flow network as a whole. 
 While total staking reward per epoch is known and fixed, individual rewards are variable depending on many factors. 
+
+The total rewards for each epoch are fixed for that epoch, but where those rewards come from can change.
+When the protocol pays rewards, it first pulls from the central pool of all the transaction fees
+that have been paid by every user in the network since the last rewards payment.
+Once that pool has been depleted, the protocol mints new tokens that are used as rewards.
+
 Please see the next section on how to calculate an individual staking reward.
 
 |                               | Dec 22         | Dec 29, Jan 5, 12, 19, 26 | Feb 2 weekly on Tuesdays until Dec 21, 2021 | Weeks 53+  |
