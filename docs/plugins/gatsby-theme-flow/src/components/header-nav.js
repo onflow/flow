@@ -1,7 +1,9 @@
-import React from "react";
 import styled from "@emotion/styled";
-import breakpoints from "../utils/breakpoints";
+
+import React from "react";
+
 import { colors } from "../colors";
+import breakpoints from "../utils/breakpoints";
 
 const Container = styled.div({
   alignItems: "center",
@@ -10,11 +12,11 @@ const Container = styled.div({
   width: 240,
   [breakpoints.lg]: {
     width: "auto",
-    marginRight: 0,
+    marginRight: 0
   },
   [breakpoints.md]: {
-    display: "none",
-  },
+    display: "none"
+  }
 });
 
 const StyledLink = styled.a({
@@ -24,8 +26,8 @@ const StyledLink = styled.a({
   lineHeight: 2,
   textDecoration: "none",
   ":hover": {
-    color: colors.blue.darker,
-  },
+    color: colors.blue.darker
+  }
 });
 
 const AnimatedLink = styled.div`
@@ -33,7 +35,6 @@ const AnimatedLink = styled.div`
   color: #fff;
   &:before {
     content: "Flow Playground";
-    animation: animatebg 7s infinite;
     position: absolute;
     filter: brightness(80%);
     background: linear-gradient(

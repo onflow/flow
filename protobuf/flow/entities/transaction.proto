@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package flow.entities;
 
-option go_package = "entities";
+option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
 option java_package = "org.onflow.protobuf.entities";
 
 enum TransactionStatus {
@@ -20,7 +20,7 @@ message Transaction {
     uint32 key_id = 2;
     uint64 sequence_number = 3;
   }
-  
+
   message Signature {
     bytes address = 1;
     uint32 key_id = 2;
