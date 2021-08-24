@@ -47,9 +47,9 @@ Scripts can access multiple contracts and accounts, calculate values, and ensure
 
 #### JavaScript
 
-You can download the JavaScript SDK here:
+You can download FCL (Flow Client Library) here:
 
-[https://github.com/onflow/flow-js-sdk](https://github.com/onflow/flow-js-sdk)
+[https://github.com/onflow/fcl-js](https://github.com/onflow/fcl-js)
 
 To connect to an access node you will need to provide a URL to the SDK.
 **testnet: https://access-testnet.onflow.org
@@ -57,15 +57,15 @@ mainnet: https://access.onflow.org**
 
 Here are examples of querying an access node at the bottom of this page:
 
-[https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk](https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk)
+[https://github.com/onflow/fcl-js/tree/master/packages/sdk](https://github.com/onflow/fcl-js/tree/master/packages/sdk)
 
 Here are examples of creating a script and Cadence data types:
 
-[https://github.com/onflow/flow-js-sdk/tree/master/packages/types#scripts](https://github.com/onflow/flow-js-sdk/tree/master/packages/types#scripts)
+[https://github.com/onflow/fcl-js/tree/master/packages/types#scripts](https://github.com/onflow/fcl-js/tree/master/packages/types#scripts)
 
 And here are examples of parsing script output:
 
-[https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk/src/decode](https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk/src/decode)
+[https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/decode](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/decode)
 
 #### Go
 
@@ -130,15 +130,15 @@ And there is an example of usage here:
 
 ### Using JavaScript
 
-Once you connect to an Access Node using the JavaScript SDK you can query for events.
+Once you connect to an Access Node using FCL (Flow Client Library) you can query for events.
 
 This is documented here:
 
-[https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk#getevents-usage](https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk#getevents-usage)
+[https://github.com/onflow/fcl-js/tree/master/packages/sdk#getevents-usage](https://github.com/onflow/fcl-js/tree/master/packages/sdk#getevents-usage)
 
 ### Using Other Programming Languages
 
-Currently, we only provide Go and JavaScript SDKs for Flow. For an example of accessing the Flow blockchain and consuming events from it using another programming language, see "Interact with Flow using Ruby" by Daniel Podaru:
+Currently, we only provide Go and FCL (Flow Client Library)s for Flow. For an example of accessing the Flow blockchain and consuming events from it using another programming language, see "Interact with Flow using Ruby" by Daniel Podaru:
 
 [https://www.onflow.org/post/interact-with-flow-using-ruby](https://www.onflow.org/post/interact-with-flow-using-ruby)
 
@@ -158,7 +158,7 @@ With FCL, you can:
 
 You can find details about accessing Flow mainnet here [https://docs.onflow.org/access-api](https://docs.onflow.org/access-api).
 
-The access is via a GRPC interface. Transactions can also be submitted using the GRPC [SendTransaction call](https://docs.onflow.org/access-api#sendtransaction). A GRPC client written in any language should be able to talk via the Access API. We have a [Go SDK](https://github.com/onflow/flow-go-sdk) and a [JavaScript SDK](https://github.com/onflow/flow-js-sdk) that can be used if you are using a Go based or a JS based client respectively.
+The access is via a GRPC interface. Transactions can also be submitted using the GRPC [SendTransaction call](https://docs.onflow.org/access-api#sendtransaction). A GRPC client written in any language should be able to talk via the Access API. We have a [Go SDK](https://github.com/onflow/flow-go-sdk) and a [FCL (Flow Client Library)](https://github.com/onflow/fcl-js) that can be used if you are using a Go based or a JS based client respectively.
 
 ## What's the difference between a mainnet spork and testnet spork? How do sporks affect TopShot?
 
