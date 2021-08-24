@@ -3022,5 +3022,53 @@
         "Stake": 1000,
         "NetworkPubKey": "ace1c6d656d89e64a4bacfd006813e939ed44c4ed672cfa2d824974f90c79e4805fb4ffaf99e3b397c4c1efa47bb9bb42edf81d159c712e03df94ceeb3ccfd9b",
         "StakingPubKey": "b3111ac1d6d9fd38203fde4299f1e454dc1aa68b9dd5492adffe817e19c0426068ceb7d349ebfb37a3cd5e170a6af89815d8674fa356e42427427c5a7bb29f3e001eb70afe40f4b4bcfb84a00451ba7249a26b38bd0536868e6cc63684b0438a"
+    },
+    {
+        "Role": "access",
+        "Address": "access.nodes.flowstarter.app:3569",
+        "NodeID": "d81166257d36d2969ff0940cdfa8aca06915d41f0e287db0a1ab342beb75cfa3",
+        "Stake": 1000,
+        "NetworkPubKey": "034e5ef405e3479876522ac337985b8e70aee47333d39ef2d1117f8065b9a0e9b42a8838925e634760d31979a5a460d74446a056f784836d08f70bdb41657346",
+        "StakingPubKey": "96296c7fd1222a09e46d1263b62d390d615af7cacabaea568c8cccef928fe5d3a3c7dddeafb511017e26f30e2a6458281725c571c801d04c0ff41ace338490e494c88bc192cd626b2156062a460c5a7f1b3b4ccd70caadd5e2d14e9177efd67c"
+    },
+    {
+        "Role": "access",
+        "Address": "flow-node-01.ankr.com:3569",
+        "NodeID": "5b16b7ede11d821c9acd7a6bc85d235d17aec6397d599b39b7f4f624b42465b3",
+        "Stake": 1000,
+        "NetworkPubKey": "8b14da867b05131b70b540938b6724b9fd6a0ded866a44160f5c371820e7e46dba22bec6040b1e3f211061295c42913e7274dbe71b700ca5ffee126ff6b91aab",
+        "StakingPubKey": "9283f7315858c4e4c121aa2a9087aa6f890f78ea393a360b1f8d2c2f3059f1c8ae1ac96fc9ef028383b3f8e5b7241f8600b5afe233f3e081d9e74634a5f31d8aa44df7fc52b986d0fab439df946a7c28bf1c2dfcd9c822a705d001110af612ff"
+    },
+    {
+        "Role": "access",
+        "Address": "flow-node-02.ankr.com:3569",
+        "NodeID": "5db88d84bb76dd6a5a0a180d3a14baba6db08b8c287d96890ea01d96f945f1e8",
+        "Stake": 1000,
+        "NetworkPubKey": "ac580bb9af7c6041beb90a1b5dd460a5509bfcd5d01558dcb12484dd76fd2adc79915eb8ab83940764a3eb13f7852faeb8599071b06adbd0fb281aee5d9a68c7",
+        "StakingPubKey": "b4c90574732f82649b7bd8ddaf291e63f480cfb79cb1e76d20985b589c50ce75935ac866cf391ad761b949d5655d6fca0b47d250912641c525fe4e73c04d2e2df1d1e3c6ff4cd44c363f5da7a3243f6450a16f2e6d72882b8bc884e42c62e43f"
+    },
+    {
+        "Role": "access",
+        "Address": "flo8-aws-us-east-1.flonode.alchemyapi.io:3569",
+        "NodeID": "1598de889ea906cc016ca5bdd7c6ee9ef7740e755888735c428cb88319d564e2",
+        "Stake": 1000,
+        "NetworkPubKey": "87cefb2921a99013b0b1e8f88aa9da4248026c375dcc832d3e93ae701f1e7f2b293941abae24915b2de3f83f9dd52cbe96ddc982d3c4dcb821ec8adb9f48de49",
+        "StakingPubKey": "8a2ffcfb891a9da18162a34b8c1f223ff093eb9722acda3076ca747d854d3e68b7683d289a8d5fc23c62f0637fc15a760b200cb5996acf982af38b198aaace1b7bb454d21da0adf0f6c34b2a4ce32424df2f0114cc02ee01a2e2ca2dd81d01ea"
+    },
+    {
+        "Role": "access",
+        "Address": "flo9-aws-us-east-1.flonode.alchemyapi.io:3569",
+        "NodeID": "2294c32beb46b12cd7bc67e40eda367f6f38488594c293476b41a035694a6c81",
+        "Stake": 1000,
+        "NetworkPubKey": "c8bec113851ce993b56276afe355eabb618d4f344abcbb529524212048cee1440105a1f5696f4c7c28076db39e92263d6e1fe4f0f97e5c807f510579cdbde452",
+        "StakingPubKey": "9475d65e36aa53d5872c3b6266733e620b1a515a7fa760c46d1c6c90346a90fc2d51948f02b15daa4969583c665c43120d66628b2e5d1216206d920c884ec96b5f3f8baa1381855afe153481a0bc56ea77ea8254b1632284e4db273798d0f913"
+    },
+    {
+        "Role": "access",
+        "Address": "flo7-aws-us-east-1.flonode.alchemyapi.io:3569",
+        "NodeID": "d7702102331da37cbf77bf1ec9ba542032bde74200702de8fdb27328b27641bc",
+        "Stake": 1000,
+        "NetworkPubKey": "3b663202438579a81aa8efab1903354633e20dc2ad9570c212a380803dc781ff1bf74c023a7e986b2273e9e42035d08f3fd6652efd9ab5741ebc5fdbebc8be07",
+        "StakingPubKey": "8ba4521dd1a99c9201ddafaa14f23776698dcde735189d7e67eeb8877873c57ab1d09bb748dbd3fc199dcd9f69341e2f152c388d82290fc3924a6177babcb6f46d49b42737d0a3686494b1616ea16cdf0d136b88c121fa56a79dc51b291a285e"
     }
 ]

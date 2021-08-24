@@ -103,9 +103,9 @@ module.exports = ({
     {
       resolve: "gatsby-plugin-less",
       options: {
-        modifyVars: mapKeys(theme, (value, key) => `color-${key}`),
         lessOptions: {
-          relativeUrls: false
+          relativeUrls: false,
+          modifyVars: mapKeys(theme, (value, key) => `color-${key}`)
         }
       }
     },
@@ -151,7 +151,7 @@ module.exports = ({
         headers: {
           Authorization: `Bearer ${githubAccessToken}`
         },
-        queries: repositories.map((repository) => [getReleases, repository])
+        queries: repositories.map(repository => [getReleases, repository])
       }
     }
   ];

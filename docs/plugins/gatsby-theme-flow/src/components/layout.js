@@ -22,11 +22,7 @@ export default function Layout(props) {
         return (
           <Fragment>
             <Helmet defaultTitle={title} titleTemplate={`%s - ${title}`}>
-              <meta name="description" content={description} />
-              <link
-                rel="stylesheet"
-                href="https://use.typekit.net/ntx0wks.css"
-              ></link>
+              <html lang="en" />
             </Helmet>
             {props.children}
           </Fragment>
@@ -37,5 +33,5 @@ export default function Layout(props) {
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
