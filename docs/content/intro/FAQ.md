@@ -25,7 +25,7 @@ There are a few wallets that are currently compatible with Flow, with more to co
 
 ### How can an application or developer create accounts and do other actions in Flow?
 
-See the documentation for the [Flow Client Library](https://github.com/onflow/flow-js-sdk) and [SDK](https://github.com/onflow/flow-go-sdk) for tools that expose an API for account creation, contract deployment, transaction submission, and so on. These can be called from a command line or from within an application. We will also be providing tooling for applications to handle much of this functionality on behalf of users.
+See the documentation for the [Flow Client Library](https://github.com/onflow/fcl-js) and [SDK](https://github.com/onflow/flow-go-sdk) for tools that expose an API for account creation, contract deployment, transaction submission, and so on. These can be called from a command line or from within an application. We will also be providing tooling for applications to handle much of this functionality on behalf of users.
 
 ### What is the point of allowing multiple accounts to sign transactions?
 
