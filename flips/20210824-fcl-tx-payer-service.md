@@ -2,7 +2,7 @@
 
 | Status        | Proposed                                             |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
+| **FLIP #**    | [612](https://github.com/onflow/flow/pull/612)       |
 | **Author(s)** | Jeffrey Doyle (jeffrey.doyle@dapperlabs.com),        |
 | **Sponsor**   |                                                      |
 | **Updated**   | 2020-08-24                                           |
