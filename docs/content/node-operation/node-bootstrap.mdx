@@ -82,8 +82,9 @@ folder created earlier. Please take a back up of the entire folder.
 
 </Callout>
 
+
 ```shell
-## Skip if this is section if this is your first time ##
+## Skip this section if this is your first time ##
 # If you joined our network previously, make sure to take a backup of your previously generated keys!
 cp -r /path/to/bootstrap /path/to/bootstrap.bak
 #########################################################
@@ -102,23 +103,57 @@ $./boot-tools/bootstrap key --address "198.123.42.10:3569" --role consensus  -o 
 <nil> DBG will generate staking key
 <nil> INF generated staking key
 <nil> DBG assembling node information address=198.123.42.10:3569
-<nil> DBG encoded public staking and network keys networkPubKey=d92e3d5880abe233cf9fe9104db34bbb31251468a541454722b3870c04156a1b0504aef443bcaad124b997384b8fe7052847ce1e6189af1392d865e6be69835b stakingPubKey=917826e018f056a00b778a58ae83054906957ffd4b6f1b7da083551f7a9f35e02b76ace50424ed7d2c9fc69207a59f0f08a031048f5641db94e77d0648b24d150dedd54bab7cd44b4aa60cfd54be418647b0b3965f8ae54c0bcb48ae9d705162
+<nil> DBG encoded public staking and network keys networkPubKey=7f31ae79017a2a58a5e59af9184f440d08885a16614b2c4e361019fa72a9a1a42bf85b4e3f9674782f12ca06afd9782e9ccf19496baed069139385b82f8f40f6 stakingPubKey=829d086b292d84de8e7938fd2fafa8f51a6e025f429291835c20e59d9e25665febf24fa59de12a4df08be7e82c5413180cc7b1c73e01f26e05344506aaca4fa9cc009dc1c33f8ba3d7c7509e86d3d3e7341b43b9bf80bb9fba56ae0b3135dd72
 <nil> INF wrote file bootstrap/public-root-information/node-id
-<nil> INF wrote file bootstrap/private-root-information/private-node-info_39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a/node-info.priv.json
-<nil> INF wrote file bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
+<nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-info.priv.json
+<nil> INF wrote file bootstrap/public-root-information/node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
+<nil> DBG will generate machine account key
+<nil> INF generated machine account key
+<nil> DBG assembling machine account information address=198.123.42.10:3569
+<nil> DBG encoded public machine account key machineAccountPubKey=1b9c00e6f0930792c5738d3397169f8a592416f334cf11e84e6327b98691f2b72158b40886a4c3663696f96cd15bfb5a08730e529f62a00c78e2405013a6016d
+<nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-machine-account-key.priv.json
 
 $tree ./bootstrap/
-./bootstrap/
+./bootstrap
 ├── private-root-information
-│   └── private-node-info_39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
-│       └── node-info.priv.json
+│   └── private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9
+│       ├── node-info.priv.json
+│       └── node-machine-account-key.priv.json
 └── public-root-information
     ├── node-id
-    └── node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
+    └── node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
 
-3 directories, 3 files
-
+3 directories, 4 files
 ```
+
+<Callout type="info">
+
+For `consensus` and `collection` node types an additional key will be created for the Machine Account.
+For all other node types this will not be needed.
+
+</Callout>
+
+#### Machine Account Creation
+
+If you are running a collection and consensus node, you will have an additional private key file (`node-machine-account-key.priv.json`)
+which contains the private key for your node's machine account. You can learn more about machine
+accounts [here](/staking/machine-account/).
+
+In Step 2 of this guide, when you submit a transaction to stake your node, you will need to provide the
+machine account public key, which can be found in the output of the previous `bootstrap key` command.
+
+```shell:title=MachineAccountPublicKey
+$./boot-tools/bootstrap key --address ${YOUR_NODE_ADDRESS} --role ${YOUR_NODE_ROLE}  -o ./bootstrap
+...
+<nil> DBG encoded public machine account key machineAccountPubKey=1b9c00e6f0930792c5738d3397169f8a592416f334cf11e84e6327b98691f2b72158b40886a4c3663696f96cd15bfb5a08730e529f62a00c78e2405013a6016d
+<nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-machine-account-key.priv.json
+```
+
+<Callout type="warning">
+
+Copy the machine account public key somewhere safe. You will need it in a later step.
+
+</Callout>
 
 ### Upload your Public Keys
 
@@ -157,6 +192,46 @@ $cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e1299194
   "StakingPubKey": "917826e018f056a00b778a58ae83054906957ffd4b6f1b7da083551f7a9f35e02b76ace50424ed7d2c9fc69207a59f0f08a031048f5641db94e77d0648b24d150dedd54bab7cd44b4aa60cfd54be418647b0b3965f8ae54c0bcb48ae9d705162"
 }
 ```
+
+If you are running a collection or consensus node, you will need to provide an additional field `Machine Account Public Key`.
+This value is found in the output of the `bootstrap key` command from Step 1.
+
+### Finalize Machine Account Setup
+
+<Callout type="warning">
+
+If you are not running a collection or consensus node, you can skip this step.
+
+</Callout>
+
+You will now need to use the `bootstrap` utility to run `machine-account` with the created address to finalize the set up of your Machine account.
+
+```shell
+$ ./boot-tools/bootstrap machine-account --address ${YOUR_MACHINE_ACCOUNT_ADDRESS} -o ./bootstrap
+```
+
+```shell:title=Example
+$./boot-tools/bootstrap machine-account --address 0x1de23de44985c7e7 -o ./bootstrap
+<nil> INF read machine account private key json
+<nil> DBG encoded public machine account key machineAccountPubKey=2743786d1ff1bf7d7026d693a774210eaa54728343859baab62e2df7f71a370651f4c7fd239d07af170e484eedd4f3c2df47103f6c39baf2eb2a50f67bbcba6a
+<nil> INF wrote file bootstrap/private-root-information/private-node-info_6f6e98c983dbd9aa69320452949b81abeab2ac591a247f55f19f4dbf0b477d26/node-machine-account-info.priv.json
+
+$tree ./bootstrap/
+./bootstrap
+├── private-root-information
+│   └── private-node-info_d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160
+│       ├── node-info.priv.json
+│       ├── node-machine-account-info.priv.json
+│       └── node-machine-account-key.priv.json
+└── public-root-information
+    ├── node-id
+    └── node-info.pub.d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160.json
+
+3 directories, 5 files
+```
+
+After running this step, you should see the `node-machine-account-info.priv.json` file in your `bootstrap` directory as shown above.
+
 
 ## Step 3 - Getting Ready to Start your Flow Node
 
