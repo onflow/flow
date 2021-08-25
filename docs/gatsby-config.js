@@ -23,7 +23,7 @@ const navConfig = {
     linkText: "Launch the Flow Playground"
   },
   "FCL (Flow Client Library)": {
-    url: "/fcl-js/api",
+    url: "/fcl/api",
     icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
@@ -99,8 +99,8 @@ const sourceSlugTransformers = {
   "cadence-github": (slug) => slug.replace(/^\/docs\//, "/cadence/"),
   "fcl-github": (slug) =>
     slug
-      .replace(/^\/docs\//, "/fcl-js/")
-      .replace(/^\/packages\//, "/fcl-js/packages/"),
+      .replace(/^\/docs\//, "/fcl/")
+      .replace(/^\/packages\//, "/fcl/packages/"),
   // Use api.md as 'index' file!
   // .replace("api/", ""),
   // .replace("README/", ""),
