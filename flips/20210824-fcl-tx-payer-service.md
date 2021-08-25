@@ -20,14 +20,14 @@ payer for transactions that it receives.
 One of the features of Flow is that transaction fees can be payed by an account
 seperate from the authorizers of that transaction. Applications that wish to 
 provide "free" transactions for their users could opt to pay for their users 
-transactions themselves. They would do this by produdcing a signature for the 
+transactions themselves. They would do this by producing a signature for the 
 transaction as the payer for that transaction. Upon receiving this transaction, 
 the Flow network would then deduct transaction fees from the payer, not any of 
 the authorizers.
 
 Some FCL compatible Wallets choose to "swap out" the payer of a transaction they're
 requested to sign with a Flow account that the wallet controls (in the case that the 
-user's Flow account is specified as the transactions payer) to provide "free" transactions
+users Flow account is specified as the transactions payer) to provide "free" transactions
 for their users. While this makes for a desireable user experience for those that use
 Wallets with this feature, applications do not get the guarantee that _all_ of their
 users will get this user experience. This is because users are able to use whichever FCL
@@ -99,7 +99,7 @@ A Transaction Fee Payer Service would need to make available an Authorization Fu
 that applications could use in place of `fcl.currentUser().authorization` (or whatever other
 authorization function they use).
 
-The applicationss transaction code might then look something like:
+The applications transaction code might then look something like:
 
 ```javascript
 // IN CLIENT APPLICATIONS FRONTEND
@@ -107,7 +107,7 @@ The applicationss transaction code might then look something like:
 import * as fcl from "@onflow/fcl"
 import { TPaaSAuthorizationFunction } from "@YourTPaaS/TPaaS-client"
 
-const configuredTPasSAuthzFn = TPaaSAuthorizationFunction({ 
+const configuredTPaaSAuthzFn = TPaaSAuthorizationFunction({ 
     ... TPaaS Configuration ... 
     appResolveAccountURL: "https://api.myawesomedapp.com/tpaas/resolveaccount" // Example
     appSigningURL: "https://api.myawesomedapp.com/tpaas/sign" // Example
@@ -117,7 +117,7 @@ const tx = await fcl.send([
     fcl.transaction`... Cadence Code ...`,
     fcl.authorizers([fcl.currentUser().authorization]),
     fcl.proposer(fcl.currentUser().authorization),
-    fcl.payer(configuredTPasSAuthzFn)
+    fcl.payer(configuredTPaaSAuthzFn)
 ]).then(fcl.decode)
 ```
 
@@ -253,20 +253,6 @@ of FCL that may impact the TPaaS, the service would have to be updated according
 
 This is a large project. While a MVP could be built by an engineering team, a full solution
 would likely require multiple participants and skillsets from product, engineering and design.
-
-### Tutorials and Examples
-
-* If design changes existing API or creates new ones, the design owner should create 
-end-to-end examples (ideally, a tutorial) which reflects how new feature will be used. 
-Some things to consider related to the tutorial:
-    - It should show the usage of the new feature in an end to end example 
-    (i.e. from the browser to the execution node). 
-    Many new features have unexpected effects in parts far away from the place of 
-    change that can be found by running through an end-to-end example.
-    - This should be written as if it is documentation of the new feature, 
-    i.e., consumable by a user, not a Flow contributor. 
-    - The code does not need to work (since the feature is not implemented yet) 
-    but the expectation is that the code does work before the feature can be merged. 
 
 ### Compatibility
 
