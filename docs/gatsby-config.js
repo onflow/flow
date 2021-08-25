@@ -22,8 +22,8 @@ const navConfig = {
       "Learn the basics of Flow and Cadence using our browser-based playground.",
     linkText: "Launch the Flow Playground"
   },
-  "Flow Client Library (FCL)": {
-    url: "/fcl/api",
+  "FCL (Flow Client Library)": {
+    url: "/fcl-js/api",
     icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
@@ -88,7 +88,7 @@ const sourceGithubRepos = {
     path: ""
   },
   "fcl-github": {
-    githubRepo: "onflow/flow-js-sdk",
+    githubRepo: "onflow/fcl-js",
     // NOTE: path is empty, whole repo is sourced
     path: "docs"
   }
@@ -99,8 +99,8 @@ const sourceSlugTransformers = {
   "cadence-github": (slug) => slug.replace(/^\/docs\//, "/cadence/"),
   "fcl-github": (slug) =>
     slug
-      .replace(/^\/docs\//, "/fcl/")
-      .replace(/^\/packages\//, "/fcl/packages/"),
+      .replace(/^\/docs\//, "/fcl-js/")
+      .replace(/^\/packages\//, "/fcl-js/packages/"),
   // Use api.md as 'index' file!
   // .replace("api/", ""),
   // .replace("README/", ""),
@@ -145,7 +145,7 @@ const sources = [
     options: {
       name: "fcl-github",
       branch: "master",
-      remote: "https://github.com/onflow/flow-js-sdk.git",
+      remote: "https://github.com/onflow/fcl-js.git",
       patterns: [
         "docs/**/*",
         "packages/fcl/**/*",
@@ -384,7 +384,7 @@ const sections = [
     patterns: ["docs/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["[Home](/)"],
+      null: ["[Home](/)"]
     }
   },
   {
