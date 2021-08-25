@@ -100,7 +100,7 @@ Each Flow component exposes a public API, loosely defined as the functionality t
         <tr>
             <td>FCL-JS (Flow Client Library)</td>
             <td></td>
-            <td>Flow Client Library (FCL)</td>
+            <td>FCL (Flow Client Library)</td>
         </tr>
         <tr>
             <td>Flow Go SDK</td>
