@@ -13,7 +13,7 @@ FCL provides a mechanism for a transactions fees to be payed by an account
 other than the proposer or any of the authorizers of a transaction.
 
 A transaction payer service would be a service that facilitates signing as the 
-payer for transactions that it receives.
+payer for a given transaction.
 
 ## Motivation
 
