@@ -244,6 +244,10 @@ Since the TPaaS would be responsible for paying for transactions, it should have
 security mechanisms in place to safeguard itself. Rate limiting, requiring 
 API keys to be sent with each request and other security mechanisms ought to be explored.
 
+Since tranaction fees can be dynamic, increasing depending on the amount of work the network
+would need to perform for each transaction, billing for the service must be smart enough
+to take this into consideration.
+
 ### Dependencies
 
 The Transaction Fee Payer Service would depend on FCL. Should there be changes to any aspect
