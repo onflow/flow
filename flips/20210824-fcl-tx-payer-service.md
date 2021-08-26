@@ -65,7 +65,7 @@ value as revenue.
 
 ## Design Proposal
 
-> Disclaimer: The Following is an example implementation for what _might_ work. All possible solutions are not limited to just the following. You're completely free to approach the problem however you choose, even if it differs from the thoughts below.
+> Disclaimer: The following is an example implementation for what _might_ work. All possible solutions are not limited to just the following. You're completely free to approach the problem however you choose, even if it differs from the thoughts below.
 
 When creating a transasction to be sent to the blockchain, FCL expects authorization functions
 for each of the roles for that transaction to be specified.
