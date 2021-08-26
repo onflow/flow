@@ -31,7 +31,7 @@ users Flow account is specified as the transactions payer) to provide "free" tra
 for their users. While this makes for a desireable user experience for those that use
 Wallets with this feature, applications do not get the guarantee that _all_ of their
 users will get this user experience. This is because users are able to use whichever FCL
-compatible wallet they desire to the FCL compatible applications they use, and not
+compatible wallet they desire with the FCL compatible applications they use, and not
 all FCL compatible wallets will strictly choose to provide this feature.
 
 Applications that wish to guarantee that their users are able to submit transactions
@@ -92,7 +92,7 @@ The line `fcl.currentUser().authorization` is an "Authorization Function".
 (Read More about Authorization Functions: https://github.com/onflow/fcl-js/blob/master/packages/fcl/src/wallet-provider-spec/authorization-function.md)
 
 The implementation of this Authorization Function is what FCL uses to gather a
-signature from the Current User of the applcation for each of the roles of the
+signature from the Current User of the application for each of the roles of the
 transaction (Proposer, Payer and Authorizer).
 
 A Transaction Fee Payer Service would need to make available an Authorization Function
