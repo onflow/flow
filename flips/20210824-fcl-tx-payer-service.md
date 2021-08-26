@@ -260,12 +260,12 @@ of FCL that may impact the TPaaS, the service would have to be updated according
 
 ### Engineering Impact
 
-This is a large project. While a MVP could be built by an engineering team, a full solution
+This is a large project. While an MVP could be built by an engineering team, a full solution
 would likely require multiple participants and skillsets from product, engineering and design.
 
 ### Compatibility
 
-This project would need to maintain compatible with latest versions of FCL.
+This project would need to maintain compatibility with latest versions of FCL.
 
 ## Questions and Discussion Topics
 
