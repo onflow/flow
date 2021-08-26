@@ -185,7 +185,7 @@ export const TPaaSAuthorizationFunction = ({ appResolveAccountURL, appSigningURL
 The application would need to expose a API/webservice with POST routes for the 
 `appResolveAccountURL` and `appSigningURL` URLs the `TPaaSAuthorizationFunction`
 would use. The application would need to attach an API Key / Secret to the request
-it would then forward to your `TPaaS` 
+it would then forward to your `TPaaS`.
 
 The Client Application's backend might look something like:
 
@@ -233,6 +233,11 @@ the ability to resolve an account and produce a composite signature.
 
 > To re-iterate, this is just an example implementation of what _might_ work. Your
 implementation may vary extensively.
+
+The TPaaS would be responsible for maintaining a collection of Flow Accounts that it will
+use to pay for each of the transactions it signs for. It should monitor that each of the Flow
+Accounts it controlls have a suitible FLOW balance such that they can cover the transaction fees
+they needs to pay.
 
 Your TPaaS might choose to charge the client application a fee per transaction it signs. Because
 in this example implementation it attaches a secret api key to each request to your TPaaS,
