@@ -1,0 +1,115 @@
+---
+title: Machine Accounts for Existing Node Operators
+sidebar_title: Machine Accounts for Existing Node Operators
+description: Instructions for existing Node Operators to follow to create a machine account for their collection or consensus nodes.
+---
+
+The [Flow Epoch Preparation Protocol](/staking/epoch-preparation/) requires that 
+`collection` and `consensus` nodes use an automated [machine account](/staking/qc-dkg/#machine-accounts) 
+to participate in important processes required to start the next epoch. (QC and DKG, respectively)
+
+Starting on Thursday, August 26th 2021, all collector and consensus nodes who register with Flow Port will 
+automatically create and initialize this machine account as part of their node registration.
+
+If you have an existing `consensus` or `collection` node that you registered with Flow Port before Thursday August 26th,
+you will need to create this Machine Account manually in order to participate in epochs.
+You will need to create one Machine Account for each `consensus` or `collection` node that you operate.
+
+This guide will walk you through creating a Machine Account and getting it set up.
+
+<Callout type="warning">
+  During this process you will generate a new private key which will have sole control over your machine account.
+  This private key will be stored on the machine you use to run your node, alongside your staking and networking keys.
+  Loss of any of these keys (staking, networking, or machine account) will require you to un-stake your tokens, start a completely new node, and register the new node to continue participating in the Flow network, which takes multiple weeks.
+</Callout>
+
+## Downloading Bootstrap Utility
+
+<Callout type="warning">
+  If you have downloaded the bootstrapping kit previously, ensure that you do
+  this step again to get the latest copy of the bootstrapping kit since there
+  have been significant changes to it.
+</Callout>
+
+```shell
+curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
+tar -xvf boot-tools.tar
+```
+
+```shell:title=CheckSHA256
+sha256sum ./boot-tools/bootstrap
+2b687fbcf5a25074b3a3854f97230432146abc87e3d0a7fac1298ee4c8169b56  ./boot-tools/bootstrap
+
+sha256sum ./boot-tools/transit
+62bb958566c6fde2b2c975eef1c4b8a9d6d5487a9611b97600c1b9d35f8eed9a  ./boot-tools/transit
+```
+
+## Generate Machine Account key
+
+You will need to generate a Machine account private key using the `bootstrap` utility.
+
+<Callout type="warning">
+  Ensure you run the following commands on the machine you use to run your node software.
+  The bootstrap directory passed to the `-o` flag must be the same bootstrap directory used by your node.
+  The default location is `/var/flow/bootstrap`, but double-check your setup before continuing.
+</Callout>
+
+```shell:title=GenerateMachineAccountKey
+$./boot-tools/bootstrap machine-account-key -o ./bootstrap
+<nil> INF generated machine account private key
+<nil> DBG encoded public machine account key machineAccountPubKey=2743786d1ff1bf7d7026d693a774210eaa54728343859baab62e2df7f71a370651f4c7fd239d07af170e484eedd4f3c2df47103f6c39baf2eb2a50f67bbcba6a
+<nil> INF wrote file bootstrap/private-root-information/private-node-info_6f6e98c983dbd9aa69320452949b81abeab2ac591a247f55f19f4dbf0b477d26/node-machine-account-key.priv.json
+<nil> INF machine account public key: 0x2743786d1ff1bf7d7026d693a774210eaa54728343859baab62e2df7f71a370651f4c7fd239d07af170e484eedd4f3c2df47103f6c39baf2eb2a50f67bbcba6a
+
+$tree ./bootstrap/
+./bootstrap
+├── private-root-information
+│   └── private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9
+│       ├── node-info.priv.json
+│       └── node-machine-account-key.priv.json
+└── public-root-information
+    ├── node-id
+    └── node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
+
+3 directories, 4 files
+```
+
+## Create Machine Account
+
+You will now need to copy the Machine account public key displayed in the terminal output and head over to [Flow Port](/flow-port/staking-guide/#existing-node-operators) to submit a transaction to create a Machine Account. For example, from the example above, we would copy `0x2743786d1ff1bf7d702...` from this line:
+
+```shell:title=Example
+<nil> INF machine account public key: 0x2743786d1ff1bf7d7026d693a774210eaa54728343859baab62e2df7f71a370651f4c7fd239d07af170e484eedd4f3c2df47103f6c39baf2eb2a50f67bbcba6a
+```
+
+This process will create your machine account for you and show you your machine account's address, which you will need to save for the next step.
+
+## Finalize Machine Account setup
+
+You will now need to use the `bootstrap` utility to run `machine-account` with the created address to finalize the set up of your Machine account.
+
+```shell
+$ ./boot-tools/bootstrap machine-account --address ${YOUR_MACHINE_ACCOUNT_ADDRESS} -o ./bootstrap
+```
+
+```shell:title=Example
+$./boot-tools/bootstrap machine-account --address 0x1de23de44985c7e7 -o ./bootstrap
+<nil> INF read machine account private key json
+<nil> DBG encoded public machine account key machineAccountPubKey=2743786d1ff1bf7d7026d693a774210eaa54728343859baab62e2df7f71a370651f4c7fd239d07af170e484eedd4f3c2df47103f6c39baf2eb2a50f67bbcba6a
+<nil> INF wrote file bootstrap/private-root-information/private-node-info_6f6e98c983dbd9aa69320452949b81abeab2ac591a247f55f19f4dbf0b477d26/node-machine-account-info.priv.json
+
+$tree ./bootstrap/
+./bootstrap
+├── private-root-information
+│   └── private-node-info_d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160
+│       ├── node-info.priv.json
+│       ├── node-machine-account-info.priv.json
+│       └── node-machine-account-key.priv.json
+└── public-root-information
+    ├── node-id
+    └── node-info.pub.d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160.json
+
+3 directories, 5 files
+```
+
+After running this step, you should see the `node-machine-account-info.priv.json` file in your `bootstrap` directory as shown above.
