@@ -34,14 +34,24 @@ export const StatusContextProvider = (props) => {
     }
   );
 
-  const values = {
-    mainnetStatus: status?.filter((s) => s.id === MAINNET_STATUSPAGE_ID)[0]
-      .status,
-    testnetStatus: status?.filter((s) => s.id === TESTNET_STATUSPAGE_ID)[0]
-      .status,
-    canaryNetStatus: status?.filter((s) => s.id === CANARYNET_STATUSPAGE_ID)[0]
-      .status
+  let values = {
+    mainnetStatus: "No connection",
+    testnetStatus: "No connection",
+    canaryNetStatus: "No connection"
   };
+  try {
+    values = {
+      mainnetStatus: status?.filter((s) => s.id === MAINNET_STATUSPAGE_ID)[0]
+        .status,
+      testnetStatus: status?.filter((s) => s.id === TESTNET_STATUSPAGE_ID)[0]
+        .status,
+      canaryNetStatus: status?.filter(
+        (s) => s.id === CANARYNET_STATUSPAGE_ID
+      )[0].status
+    };
+  } catch (e) {
+    // swallow the error when status is not defined.
+  }
 
   return (
     <StatusContext.Provider value={values}>
