@@ -1,6 +1,6 @@
 ---
-title: Staking & Delegating on Flow
-sidebar_title: Staking & Delegating
+title: Epochs, Staking & Delegating on Flow
+sidebar_title: Introduction
 description: Introduction to how staking works on Flow
 ---
 
@@ -13,16 +13,29 @@ Running nodes and staking tokens contributes to the blockchain's security and is
 Flow is a global network of computers working together
 to maintain the security and integrity of its users' data.
 
-This global network is made up of many individual nodes: software applications run by people. Every node in the network shares a small part of the responsibility to keep the network running smoothly
-and to ensure that other nodes are doing the same. This shared responsibility is sometimes called decentralization, because no single node is solely responsible for the security and integrity of the network and the data it contains.
+This global network is made up of many individual nodes: software applications run by people.
+Every node in the network shares a small part of the responsibility to keep the network running smoothly
+and to ensure that other nodes are doing the same. This shared responsibility is sometimes called decentralization,
+because no single central node is solely responsible for the security and integrity of the network and the data it contains.
 
-Node operators are what we call the people who run nodes. In order to connect their software applications as nodes on the network, a node operator must first purchase tokens. Every node operator has to temporarily give (or ‘stake’)
-a large number of their tokens to the network as a promise that they will not modify their node to do something that is against the rules of the network, like steal funds from users' accounts. This process of temporarily giving up tokens is called staking.
+Node operators are what we call the people who run nodes.
+In order to connect their software applications as nodes on the network,
+a node operator must first purchase tokens. Every node operator has to temporarily give (or ‘stake’)
+a large number of their tokens to the network as a promise that they will not modify their node
+to do something that is against the rules of the network, like steal funds from users' accounts.
+This process of temporarily giving up tokens is called staking.
 
-If a node ever breaks the rules defined by the network, a number of the node operator's staked tokens will be taken from them as a punishment.
-This process is automatic. Every node knows the rules defined by the network and automatically watches other nodes and reports them if they misbehave. Meanwhile, the network pays the node operator a reward of tokens on a regular basis provided their node does not break the rules.
+If a node ever breaks the rules defined by the network,
+a number of the node operator's staked tokens will be taken from them as a punishment.
+This process is automatic. Every node knows the rules defined by the network
+and automatically watches other nodes and reports them if they misbehave.
+Meanwhile, the network pays the node operator a reward from a mixture of
+transaction fees and newly minted tokens
+on a regular basis provided their node does not break the rules.
 
-If I break the rules, I lose the tokens I've staked. If I operate my node with integrity, I get rewarded with more tokens! This is the basic incentive that enables a decentralized proof-of-stake network, like Flow.
+If a node operator breaks the rules, they lose the tokens they've staked.
+If they operate my node with integrity, they get rewarded with more tokens!
+This is the basic incentive that enables a decentralized proof-of-stake network, like Flow.
 
 ## How Does Staking Work on Flow?
 
@@ -32,25 +45,45 @@ and what kind of node they are running.
 (Collection, Consensus, Execution, Verification, or Access)
 
 A node operator registers a node by submitting a transaction containing their node information and the FLOW they wish to stake.
+If they meet the requirements to run a node, then will be accepted to join the network!
 
-A staked node will receive weekly reward payments at the end of each epoch,
-assuming it stays online and actively participates in the protocol without committing any slashable offences.
-This timeframe of earning rewards is otherwise known as an Epoch.
+Once a node is staking and operating properly, it will receive periodic reward payments,
+assuming it stays online and actively participates in the protocol
+without committing any actions that would harm the network, which we call slashable offenses.
+Once nodes have registered, they are required to operate for a protocol-specified timeframe.
+This timeframe is otherwise known as an **Epoch.**
 
 ## Epochs
 
-An epoch is a week-long period that the network uses to manage the stakers and pay rewards.
-Every epoch, a list of committed nodes are chosen to be the staked nodes of the network,
-and their staked tokens are locked in and cannot change for the duration of the epoch.
-At the end of the epoch, rewards are paid to each staked node based on how many tokens they had staked for that epoch.
+An **Epoch** is a roughly week-long period that the network uses
+to manage list of nodes and pay rewards.
+
+- Only a pre-determined set of nodes is authorized to participate in the protocol. 
+The set of authorized nodes is known to all network participants.
+This set is referred to as the **Identity Table**.
+- An **Epoch** is defined as a period of time, where the set of authorized nodes is constant
+(or can only shrink due to ejection of malicious nodes).
+
+Every epoch, a list of committed nodes are chosen to be the staked nodes of the network.
+This list is called the **Identity Table (ID Table)**.
+The node's staked tokens are locked in and cannot change for the duration of the epoch.
+At the end of the epoch, rewards are paid to each staked node based on how many tokens they had staked for that epoch
+and how well they performed during the epoch. Nodes can choose to join or leave, but changes to the Identity Table
+can only happen at end of an epoch, which is also the beginning of a new epoch.
 This process repeats itself indefinitely, as long as the network remains functioning.
 
 To determine the list of nodes that are included as officially staked nodes in the next epoch,
 the protocol looks at the records of all the nodes that have committed tokens.
 It checks to make sure each node’s information is correct and that the node is running properly.
-Each node also has to have committed tokens above the minimum stake required for their node.
+Each node also has to have committed tokens above the minimum stake required for their node role.
 If any of these checks are insufficient, the node is not included in the next epoch.
-If a node passes all the checks, it is approved and included as an official node for the next epoch.
+
+Every epoch, some nodes also have to perform certain processes to initialize the state and communication
+with other nodes for the next epoch. These processes are called **Cluster Quorum Certificate Generation (QC)**,
+and **Distributed Key Generation (DKG)**. If any node does not perform this initialization properly,
+it is not included in the next epoch's Identity Table.
+
+If a node passes all the checks and initializations, it is approved and included as an official node for the next epoch.
 
 Nodes do not have to continue to submit staking registration transactions every epoch in order to remain staked.
 As long as they continue to run their node properly, their tokens will remain staked.
@@ -58,10 +91,15 @@ A node operator only needs to take action if they want to stake more tokens or i
 If a node operator decides to stake or unstake tokens,
 their requests are not carried out until the end of the current epoch.
 In the case of unstaking requests, they also must wait an additional epoch before their unstaked tokens are available to withdraw.
+This allows the protocol to deal with any slashable offenses that may have happened in the previous epoch.
+
+See the [Epochs](/staking/epoch-preparation) section of the documentation for in-depth explainations 
+of the identity table, epoch schedule, QC, and DKG.
 
 ## Rewards
 
-Please see the [rewards](/staking/rewards) section of the documentation for information about reward calculations and schedule and
+Please see the [schedule](/staking/schedule) section of the documentation
+for information about reward calculations and schedule and
 what you can do with the rewards you earn by staking a node!
 
 ## Delegation
@@ -74,7 +112,7 @@ and the amount of tokens they want to delegate.
 The tokens are committed and managed in the exact same way that normal staked tokens are managed.
 
 Rewards for delegators are also calculated in the exact same way that rewards for node operators are calculated,
-with one difference in that 8% of the calculated amount is given to the delegatee.
+with one difference in that 8% of the calculated amount is given to the delegatee (the node being delegated to).
 The remaining 92% is awarded to the delegator.
 
 ## How Do I Stake?
@@ -105,9 +143,9 @@ custodial account are "locked" by the legal requirements of the token sale, and 
 To acquire leased tokens to stake your node, you'll need to coordinate with the Flow team (leased token account admin) and your chosen custody provider.
 All supported custody providers should support holding leased tokens you can use to stake your node. We also provide [guides for custody providers](/staking/technical-overview/) on how to set up user accounts to facilitate the use of leased tokens for staking.
 
-### Manual Staking
+### Manual Staking or Building your own Staking Integration
 
-If you are self-custodying your Flow account and keys, you will need to learn more about how staking works
-and how you can participate safely and reliably.
-See the [manual staking documentation](/staking/locked-staking-guide/) for information about how you can use your FLOW tokens
-to stake with the network via Flow Port.
+If you are self-custodying your Flow account and keys, or you want to build a staking service for customers,
+you will need to learn more about how staking works, the various methods for staking, and how you can participate safely and reliably.
+See the [staking technical overview](/staking/technical-overview/) first, followed by the [staking technical guide](/staking/locked-staking-guide/) 
+for information about technical integration.
