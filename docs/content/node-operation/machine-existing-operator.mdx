@@ -49,17 +49,18 @@ sha256sum ./boot-tools/transit
 You will need to generate a Machine account private key using the `bootstrap` utility.
 
 <Callout type="warning">
+
   Ensure you run the following commands on the machine you use to run your node software.
   The bootstrap directory passed to the `-o` flag must be the same bootstrap directory used by your node.
   The default location is `/var/flow/bootstrap`, but double-check your setup before continuing.
+
 </Callout>
 
 ```shell:title=GenerateMachineAccountKey
 $./boot-tools/bootstrap machine-account-key -o ./bootstrap
 <nil> INF generated machine account private key
-<nil> DBG encoded public machine account key machineAccountPubKey=2743786d1ff1bf7d7026d693a774210eaa54728343859baab62e2df7f71a370651f4c7fd239d07af170e484eedd4f3c2df47103f6c39baf2eb2a50f67bbcba6a
+<nil> INF encode machine account public key for entry to Flow Port machineAccountPubKey=f847b84031d9f47b88435e4ea828310529d2c60e806395da50d3dd0dd2f32e2de336fb44eb06488645673850897d7cc017701d7e6272a1ab7f2f125aede46363e973444a02038203e8
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_6f6e98c983dbd9aa69320452949b81abeab2ac591a247f55f19f4dbf0b477d26/node-machine-account-key.priv.json
-<nil> INF machine account public key: 0x2743786d1ff1bf7d7026d693a774210eaa54728343859baab62e2df7f71a370651f4c7fd239d07af170e484eedd4f3c2df47103f6c39baf2eb2a50f67bbcba6a
 
 $tree ./bootstrap/
 ./bootstrap
