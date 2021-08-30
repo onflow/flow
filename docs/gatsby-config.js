@@ -201,7 +201,7 @@ const sections = [
       "faq/*",
       "community-updates/*",
       "flow-port/**/*",
-      "bounties/*",
+      "bounties/*"
     ],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: true,
@@ -210,7 +210,7 @@ const sections = [
         "[Access API](/access-api)",
         "[Core Contracts](/core-contracts)",
         "[FLOW Token](/flow-token)",
-        "[FUSD](/fusd)",
+        "[FUSD](/fusd)"
       ],
       Guides: [
         "[Flow Concepts](/concepts)",
@@ -219,14 +219,14 @@ const sections = [
         "[Project Deployment Guide](/dapp-deployment)",
         "[Epochs, Staking & Delegating](/staking)",
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
-        "[Node Operation](/node-operation)",
+        "[Node Operation](/node-operation)"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -242,7 +242,7 @@ const sections = [
         "cadence/msg-sender",
         "cadence/measuring-time",
         "cadence/migration-guide",
-        "cadence/json-cadence-spec",
+        "cadence/json-cadence-spec"
       ],
       Tutorial: [
         "cadence/tutorial/01-first-steps",
@@ -252,9 +252,9 @@ const sections = [
         "cadence/tutorial/05-marketplace-setup",
         "cadence/tutorial/06-marketplace-compose",
         "cadence/tutorial/07-resources-compose",
-        "cadence/tutorial/08-voting",
-      ],
-    },
+        "cadence/tutorial/08-voting"
+      ]
+    }
   },
   {
     sourceInstanceName: "flow-cli-github",
@@ -267,7 +267,7 @@ const sections = [
         "docs/install",
         "docs/initialize-configuration",
         "docs/configuration",
-        "docs/security",
+        "docs/security"
       ],
       Keys: ["docs/generate-keys"],
       Accounts: [
@@ -276,12 +276,12 @@ const sections = [
         "docs/account-add-contract",
         "docs/account-update-contract",
         "docs/account-remove-contract",
-        "docs/account-staking-info",
+        "docs/account-staking-info"
       ],
       "Project Deployment": [
         "docs/start-emulator",
         "docs/project-contracts",
-        "docs/deploy-project-contracts",
+        "docs/deploy-project-contracts"
       ],
       Scripts: ["docs/execute-scripts"],
       Transactions: [
@@ -289,20 +289,20 @@ const sections = [
         "docs/get-transactions",
         "docs/build-transactions",
         "docs/sign-transaction",
-        "docs/send-signed-transactions",
+        "docs/send-signed-transactions"
       ],
       "Get Flow data": [
         "docs/get-blocks",
         "docs/get-events",
         "docs/get-collections",
-        "docs/get-status",
+        "docs/get-status"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -313,14 +313,14 @@ const sections = [
       Concepts: [
         "concepts/accounts-and-keys",
         "concepts/transaction-signing",
-        "concepts/storage",
+        "concepts/storage"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -328,8 +328,8 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      FUSD: ["fusd/index", "fusd/transactions", "fusd/providers"],
-    },
+      FUSD: ["fusd/index", "fusd/transactions", "fusd/providers"]
+    }
   },
   {
     sourceInstanceName: "flow-go-sdk-github",
@@ -348,14 +348,14 @@ const sections = [
         "docs/querying-transactions",
         "docs/querying-events",
         "docs/querying-blocks",
-        "docs/transfer-flow",
+        "docs/transfer-flow"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "fcl-github",
@@ -367,17 +367,17 @@ const sections = [
         "[Configuration](/fcl/api#configuration)",
         "[Wallet Interactions](/fcl/api#wallet-interactions)",
         "[On-Chain Interactions](/fcl/api#on-chain-interactions)",
-        "[Types, Interfaces, and Definitions](/fcl/api#types-interfaces-and-definitions)",
+        "[Types, Interfaces, and Definitions](/fcl/api#types-interfaces-and-definitions)"
       ],
       Changelogs: [
         "[@onflow/fcl](/fcl/packages/fcl/CHANGELOG)",
-        "[@onflow/types](/fcl/packages/types/CHANGELOG)",
+        "[@onflow/types](/fcl/packages/types/CHANGELOG)"
       ],
       "Developer Guides": [
         "[Introducing @onflow/fcl](/fcl)",
-        "[Flow App Quickstart](/fcl/flow-app-quickstart)",
-      ],
-    },
+        "[Flow App Quickstart](/fcl/flow-app-quickstart)"
+      ]
+    }
   },
   {
     sourceInstanceName: "flow-js-testing-github",
@@ -398,19 +398,19 @@ const sections = [
         "core-contracts/flow-token",
         "core-contracts/flow-fees",
         "core-contracts/staking-contract-reference",
-        "core-contracts/epoch-contract-reference",
+        "core-contracts/epoch-contract-reference"
       ],
       "Other Important Contracts": [
         "core-contracts/locked-tokens",
         "core-contracts/staking-collection",
-        "core-contracts/non-fungible-token",
+        "core-contracts/non-fungible-token"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -423,14 +423,14 @@ const sections = [
         "dapp-deployment/contract-testing",
         "dapp-deployment/testnet-deployment",
         "dapp-deployment/testnet-testing",
-        "dapp-deployment/mainnet-deployment",
+        "dapp-deployment/mainnet-deployment"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -444,15 +444,15 @@ const sections = [
         "flow-token/earn",
         "flow-token/concepts",
         "flow-token/delivery",
-        "flow-token/faq",
+        "flow-token/faq"
       ],
       "Token Delivery": ["flow-token/locked-account-setup"],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -464,7 +464,7 @@ const sections = [
         "staking/index",
         "staking/schedule",
         "staking/stake-slashing",
-        "staking/faq",
+        "staking/faq"
       ],
       "Technical Docs": [
         "staking/epoch-terminology",
@@ -474,21 +474,21 @@ const sections = [
         "staking/staking-scripts-events",
         "staking/qc-dkg",
         "staking/qc-dkg-scripts-events",
-        "staking/machine-account",
+        "staking/machine-account"
       ],
       "Technical Guides": [
         "staking/staking-options",
         "staking/staking-collection",
         "staking/unlocked-staking-guide",
-        "staking/locked-staking-guide",
+        "staking/locked-staking-guide"
       ],
       "Custody Providers": ["staking/custody-providers"],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -500,7 +500,7 @@ const sections = [
         "node-operation/index",
         "node-operation/node-setup",
         "node-operation/node-roles",
-        "node-operation/faq",
+        "node-operation/faq"
       ],
       "Operator Guides": [
         "node-operation/node-bootstrap",
@@ -508,14 +508,14 @@ const sections = [
         "node-operation/monitoring-nodes",
         "node-operation/spork",
         "node-operation/past-sporks",
-        "node-operation/upcoming-sporks",
+        "node-operation/upcoming-sporks"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -527,9 +527,9 @@ const sections = [
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -541,9 +541,9 @@ const sections = [
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)",
-      ],
-    },
+        "[Operators](/faq/operators)"
+      ]
+    }
   },
   {
     sourceInstanceName: "cadence-github",
@@ -564,6 +564,7 @@ const sections = [
         "docs/language/type-safety",
         "docs/language/type-inference",
         "docs/language/composite-types",
+        "docs/language/resources",
         "docs/language/access-control",
         "docs/language/interfaces",
         "docs/language/enumerations",
@@ -580,9 +581,9 @@ const sections = [
         "docs/language/built-in-functions",
         "docs/language/environment-information",
         "docs/language/crypto",
-        "docs/language/type-hierarchy",
-      ],
-    },
+        "docs/language/type-hierarchy"
+      ]
+    }
   },
   {
     sourceInstanceName: "docs",
@@ -590,9 +591,9 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      FAQ: ["faq/developers", "faq/backers", "faq/operators"],
-    },
-  },
+      FAQ: ["faq/developers", "faq/backers", "faq/operators"]
+    }
+  }
 ];
 
 module.exports = {
