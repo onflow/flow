@@ -15,6 +15,7 @@ import breakpoints from "../utils/breakpoints";
 import { smallCaps } from "../utils/typography";
 
 import PageNav from "./page-nav";
+import StarRating from "./rate-this";
 import SectionNav from "./section-nav";
 
 const Wrapper = styled.div({
@@ -231,6 +232,7 @@ export default function PageContent(props) {
               <IconPlayground /> Demo in Playground
             </AsideLink>
           )}
+          <StarRating />
         </Aside>
       )}
     </Wrapper>
