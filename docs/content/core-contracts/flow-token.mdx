@@ -25,21 +25,21 @@ Source: [FlowToken.cdc](https://github.com/onflow/flow-core-contracts/blob/maste
 # Events
 
 Flow relies on a set of core contracts that define key portions of the Flow protocol. Those contracts are core contracts 
-and are made to emit the events documented bellow. You can read about the core [contracts here](https://docs.onflow.org/core-contracts) 
-and view their source code with events definitions.
+and are made to emit the events documented below. You can read about the [core contracts here](https://docs.onflow.org/core-contracts) 
+and view their source code and event definitions.
 
-Events emitted from core contracts follow the standard format:
+Events emitted from core contracts follow a standard format:
 ```
 A.{contract address}.{contract name}.{event name}
 ```
-The components of the event name:
+The components of the format are:
 - `contract address` - the address of the account the contract has been deployed to
 - `contract name` - the name of the contract in the source code
-- `event name` - the name of the event found in the source code event definition
+- `event name` - the name of the event as declared in the source code
 
 ### Flow Token Contract
-Description of events emitted from the [Flow Token contract](https://docs.onflow.org/core-contracts/flow-token/). 
-The contract defines the fungible Flow token. Please note that events for the fungible token contracts are the same 
+Description of events emitted from the [FLOW Token contract](https://docs.onflow.org/core-contracts/flow-token/). 
+The contract defines the fungible FLOW token. Please note that events for the fungible token contracts are the same 
 if deployed to a different account but the `contract address` is 
 changed to the address of the account the contract has been deployed to.
 
