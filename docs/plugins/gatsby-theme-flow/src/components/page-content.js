@@ -232,7 +232,7 @@ export default function PageContent(props) {
               <IconPlayground /> Demo in Playground
             </AsideLink>
           )}
-          <StarRating />
+          <StarRating pageInfo={{ hash: props.hash, path: props.pathname }} />
         </Aside>
       )}
     </Wrapper>
