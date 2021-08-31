@@ -4,7 +4,7 @@ import { useMixpanel } from "gatsby-plugin-mixpanel";
 
 import React, { useState, useEffect } from "react";
 
-const StarButton = styled.button((props) => ({
+const StarButton = styled.button({
   backgroundColor: "transparent",
   border: "none",
   outline: "none",
@@ -16,7 +16,7 @@ const StarButton = styled.button((props) => ({
   "&.off": {
     color: "#ccc"
   }
-}));
+});
 
 const StarRating = ({ pageInfo }) => {
   const [rating, setRating] = useState(0);
@@ -38,15 +38,15 @@ const StarRating = ({ pageInfo }) => {
     <div>
       <div>{hasRated ? "Rating submitted, thank you!" : "Rate this page"}</div>
       {!hasRated &&
-        [...Array(5)].map((star, index) => {
-          index += 1;
+        [...Array(5)].map((_, i) => {
+          i += 1;
           return (
             <StarButton
               type="button"
-              key={index}
-              className={index <= (hover || rating) ? "on" : "off"}
-              onClick={() => setRating(index)}
-              onMouseEnter={() => setHover(index)}
+              key={i}
+              className={i <= (hover || rating) ? "on" : "off"}
+              onClick={() => setRating(i)}
+              onMouseEnter={() => setHover(i)}
               onMouseLeave={() => setHover(rating)}
             >
               <span className="star">&#9733;</span>
