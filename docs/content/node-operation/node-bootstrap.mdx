@@ -37,12 +37,13 @@ If you have downloaded the bootstrapping kit previously, ensure that you do this
 curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
 tar -xvf boot-tools.tar
 ```
+
 ```shell:title=CheckSHA256
 sha256sum ./boot-tools/bootstrap
-2b687fbcf5a25074b3a3854f97230432146abc87e3d0a7fac1298ee4c8169b56  ./boot-tools/bootstrap
+4f7034f6977fd1fc0980a2a38640db8d085714f7d928a67365a083886cb85814  ./boot-tools/bootstrap
 
 sha256sum ./boot-tools/transit
-62bb958566c6fde2b2c975eef1c4b8a9d6d5487a9611b97600c1b9d35f8eed9a  ./boot-tools/transit
+d1ef25d67fe339e4ae5bff150fdf814e66dba3e490965d4bb965ed34ea181e03  ./boot-tools/transit
 ```
 
 ### Generating your Node ID
@@ -110,7 +111,7 @@ $./boot-tools/bootstrap key --address "198.123.42.10:3569" --role consensus  -o 
 <nil> DBG will generate machine account key
 <nil> INF generated machine account key
 <nil> DBG assembling machine account information address=198.123.42.10:3569
-<nil> DBG encoded public machine account key machineAccountPubKey=1b9c00e6f0930792c5738d3397169f8a592416f334cf11e84e6327b98691f2b72158b40886a4c3663696f96cd15bfb5a08730e529f62a00c78e2405013a6016d
+<nil> INF encoded machine account public key for entry to Flow Port machineAccountPubKey=f847b8406e8969b869014cd1684770a8db02d01621dd1846cdf42fc2bca3444d2d55fe7abf740c548639cc8451bcae0cd6a489e6ff59bb6b38c2cfb83e095e81035e507b02038203e8
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-machine-account-key.priv.json
 
 $tree ./bootstrap/
