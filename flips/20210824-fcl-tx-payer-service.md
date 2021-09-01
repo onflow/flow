@@ -9,7 +9,7 @@
 
 ## Objective
 
-FCL provides a mechanism for a transactions fees to be payed by an account
+FCL provides a mechanism for a transactions fees to be paid by an account
 other than the proposer or any of the authorizers of a transaction.
 
 A transaction payer service would be a service that facilitates signing as the 
@@ -17,34 +17,33 @@ payer for a given transaction.
 
 ## Motivation
 
-One of the features of Flow is that transaction fees can be payed by an account
-seperate from the authorizers of that transaction. Applications that wish to 
-provide "free" transactions for their users could opt to pay for their users 
+One of the features of Flow is that transaction fees can be paid by an account
+separate from the authorizers of that transaction. Applications that wish to 
+provide "free" transactions for their users could opt to pay for their users' 
 transactions themselves. They would do this by producing a signature for the 
 transaction as the payer for that transaction. Upon receiving this transaction, 
 the Flow network would then deduct transaction fees from the payer, not any of 
 the authorizers.
 
-Some FCL compatible Wallets choose to "swap out" the payer of a transaction they're
+Some FCL compatible wallets choose to "swap out" the payer of a transaction they're
 requested to sign with a Flow account that the wallet controls (in the case that the 
 users Flow account is specified as the transactions payer) to provide "free" transactions
-for their users. While this makes for a desireable user experience for those that use
-Wallets with this feature, applications do not get the guarantee that _all_ of their
+for their users.[<-clarity needed] While this makes for a desirable user experience for those that use
+wallets with this feature, applications do not get the guarantee that _all_ of their
 users will get this user experience. This is because users are able to use whichever FCL
 compatible wallet they desire with the FCL compatible applications they use, and not
 all FCL compatible wallets will strictly choose to provide this feature.
 
-Applications that wish to guarantee that their users are able to submit transactions
-without having to pay for them will then have to always pay for them themselves. These
-applications would then have to build a "Transaction Fee Payer Service" that is able
+Applications that wish to guarantee their users can submit transactions
+without having to pay for them will pay those fees themselves. To pay these fees, it's expected that applications would need to build a "Transaction Fee Payer Service" that is able
 to receive a transaction signable and then produce a signature for it.
 
-We imagine that there is a potential business model here. A transaction fee payer
+<!--- NEEDS DISCUSSION: We imagine that there is a potential business model here. A transaction fee payer
 service (or: "TPaaS", "Transaction Payer as a Service") could be a webservice that
 works with applications to provide payer signatures for the users of those applications.
 Applications, instead of having to each individually build their own transaction
-fee payer service, could depend on a this businesses implementation. The business could charge
-a fee to the applications that use it for their ability to use this service.
+fee payer service, could depend on this businesses implementation. The business could charge
+a fee to the applications that use it for their ability to use this service.-->
 
 ## User Benefit
 
@@ -59,9 +58,9 @@ to provide the best user experiences will likely choose to allow their users to 
 transactions without them having to pay. 
 
 This Transaction Fee Payer Service will enable more applications to be able to provide
-this higher level of user experience. Creating value for the application, the users of
-that application, and the potential for the tranaction fee payer service to capture some of that
-value as revenue.
+this higher level of user experience. <!--- Creating value for the application, the users of
+that application, and the potential for the tranaction fee payer service to capture some of that 
+value as revenue. -->
 
 ## Design Proposal
 
@@ -235,13 +234,13 @@ the ability to resolve an account and produce a composite signature.
 implementation may vary extensively.
 
 The TPaaS would be responsible for maintaining a collection of Flow Accounts that it will
-use to pay for each of the transactions it signs for. It should monitor that each of the Flow
+use to pay for each of the transactions it signs for. <!--- This is why I think people would just spin up their own service rather than using a central one--> It should monitor that each of the Flow
 Accounts it controlls have a suitible FLOW balance such that they can cover the transaction fees
 they needs to pay.
 
 Your TPaaS might choose to charge the client application a fee per transaction it signs. Because
 in this example implementation it attaches a secret api key to each request to your TPaaS,
-the TPaaS could record how many times each time it has done work for each client and bill accordingly.
+the TPaaS could record how many times each time it has done work for each client and bill accordingly. <!--- Good point. Maybe we separate this point out as ### How to Charge if you're running TPaaS ? --> 
 
 ### Drawbacks
 
