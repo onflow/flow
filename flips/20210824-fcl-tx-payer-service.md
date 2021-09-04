@@ -5,15 +5,16 @@
 | **FLIP #**    | [612](https://github.com/onflow/flow/pull/612)       |
 | **Author(s)** | Jeffrey Doyle (jeffrey.doyle@dapperlabs.com),        |
 | **Sponsor**   |                                                      |
-| **Updated**   | 2020-08-24                                           |
+| **Updated**   | 2020-09-03                                           |
 
 ## Objective
 
 FCL provides a mechanism for a transactions fees to be paid by an account
 other than the proposer or any of the authorizers of a transaction.
 
-A transaction payer service would be a service that facilitates signing as the 
-payer for a given transaction.
+A Transaction Payer Service would be a service that facilitates signing as the 
+payer for a given transaction. It would exist as a resusable codebase / set of
+packages & tools that could be used by the applications that desire it.
 
 ## Motivation
 
@@ -25,25 +26,26 @@ transaction as the payer for that transaction. Upon receiving this transaction,
 the Flow network would then deduct transaction fees from the payer, not any of 
 the authorizers.
 
-Some FCL compatible wallets choose to "swap out" the payer of a transaction they're
-requested to sign with a Flow account that the wallet controls (in the case that the 
-users Flow account is specified as the transactions payer) to provide "free" transactions
-for their users.[<-clarity needed] While this makes for a desirable user experience for those that use
+Some FCL compatible wallets choose to act as the payer of the transactions their users
+sign. They do this by swapping out their users account with an account of their own,
+if their users are specified as the payer of a transaction. This allows wallets with
+this feature to provide "free" transactions for their users.
+
+While this makes for a desirable user experience for those that use
 wallets with this feature, applications do not get the guarantee that _all_ of their
 users will get this user experience. This is because users are able to use whichever FCL
 compatible wallet they desire with the FCL compatible applications they use, and not
 all FCL compatible wallets will strictly choose to provide this feature.
 
 Applications that wish to guarantee their users can submit transactions
-without having to pay for them will pay those fees themselves. To pay these fees, it's expected that applications would need to build a "Transaction Fee Payer Service" that is able
+without having to pay transaction fees for them will then have to pay those fees themselves. 
+To pay trans action fees, it's expected that applications would need to build a Transaction Payer Service that is able
 to receive a transaction signable and then produce a signature for it.
 
-<!--- NEEDS DISCUSSION: We imagine that there is a potential business model here. A transaction fee payer
-service (or: "TPaaS", "Transaction Payer as a Service") could be a webservice that
-works with applications to provide payer signatures for the users of those applications.
-Applications, instead of having to each individually build their own transaction
-fee payer service, could depend on this businesses implementation. The business could charge
-a fee to the applications that use it for their ability to use this service.-->
+A re-usable Transaction Payer Service would exist as project / set of packages and tools that applications could use
+instead of having to build an implementation of them themselves. These re-usable components
+would lower the overall complexity and effort required of a developer who wishes that 
+their application provide "free" transactions for their users.
 
 ## User Benefit
 
@@ -57,14 +59,12 @@ Users have been conditioned to expect things for free. As such, applications tha
 to provide the best user experiences will likely choose to allow their users to execute
 transactions without them having to pay. 
 
-This Transaction Fee Payer Service will enable more applications to be able to provide
-this higher level of user experience. <!--- Creating value for the application, the users of
-that application, and the potential for the tranaction fee payer service to capture some of that 
-value as revenue. -->
+This Transaction Fee Payer Service will enable more applications to be more easily able to provide
+a higher level of user experience.
 
 ## Design Proposal
 
-> Disclaimer: The following is an example implementation for what _might_ work. All possible solutions are not limited to just the following. You're completely free to approach the problem however you choose, even if it differs from the thoughts below.
+> Disclaimer: The following is an example implementation for what _might_ work. All possible solutions are not limited to just the following. You're completely free to approach the problem however you choose, even if it differs extensively from the thoughts below.
 
 When creating a transasction to be sent to the blockchain, FCL expects authorization functions
 for each of the roles for that transaction to be specified.
@@ -103,50 +103,52 @@ The applications transaction code might then look something like:
 ```javascript
 // IN CLIENT APPLICATIONS FRONTEND
 
-import * as fcl from "@onflow/fcl"
-import { TPaaSAuthorizationFunction } from "@YourTPaaS/TPaaS-client"
+// Note: "TPS" <=> "Transaction Payer Service"
 
-const configuredTPaaSAuthzFn = TPaaSAuthorizationFunction({ 
-    ... TPaaS Configuration ... 
-    appResolveAccountURL: "https://api.myawesomedapp.com/tpaas/resolveaccount" // Example
-    appSigningURL: "https://api.myawesomedapp.com/tpaas/sign" // Example
+import * as fcl from "@onflow/fcl"
+import { TPSAuthorizationFunction } from "@TPS/TPS-client"
+
+const configuredTPSAuthzFn = TPSAuthorizationFunction({ 
+    ... TPS Configuration ... 
+    resolveAccountURL: "https://api.myawesomedapp.com/tps/resolveaccount" // Example
+    signingURL: "https://api.myawesomedapp.com/tps/sign" // Example
 })
 
 const tx = await fcl.send([
     fcl.transaction`... Cadence Code ...`,
     fcl.authorizers([fcl.currentUser().authorization]),
     fcl.proposer(fcl.currentUser().authorization),
-    fcl.payer(configuredTPaaSAuthzFn)
+    fcl.payer(configuredTPSAuthzFn)
 ]).then(fcl.decode)
 ```
 
-The implementation of `TPaaSAuthorizationFunction` will need to conform to how FCL expects
+The implementation of `TPSAuthorizationFunction` will need to conform to how FCL expects
 Authorization Functions to work. (Read More about Authorization Functions: https://github.com/onflow/fcl-js/blob/master/packages/fcl/src/wallet-provider-spec/authorization-function.md) 
 
-The implementation of the `TPaaSAuthorizationFunction` might look something like:
+The implementation of the `TPSAuthorizationFunction` might look something like:
 
 ```javascript
-// IN "@YourTPaaS/TPaaS-client"
+// IN "@TPS/TPS-client"
 
-export const TPaaSAuthorizationFunction = ({ appResolveAccountURL, appSigningURL }) => async (account) => {
+export const TPSAuthorizationFunction = ({ appResolveAccountURL, appSigningURL }) => async (account) => {
 
   /** 
-    Perform a network call to resolve the FCL "account" data structure. This network call will likely be to the client applcation's backend, which would likely attach some secret authentication information (API Key etc) to the request before sending it off to the TPaaS API.
+    Perform a network call to resolve the FCL "account" data structure. This network call will likely be to the client applcation's backend.
     
     The call graph might look something like:
 
-    Client App TPaaSAuthorizationFunction =POST=> Client Backend =POST=> TPaaS API =POST RESPONSE=> Client Backend  =POST RESPONSE=> TPaaSAuthorizationFunction
+    Client App TPSAuthorizationFunction =POST=> Client Backend =POST=> TPS API =POST RESPONSE=> Client Backend  =POST RESPONSE=> TPSAuthorizationFunction
 
-    The TPaaS API would need to return back an account data structure containing:
+    The TPS API would need to return back an account data structure containing:
     (See: https://github.com/onflow/fcl-js/blob/master/packages/fcl/src/wallet-provider-spec/authorization-function.md#how-to-create-an-authorization-function for more information on the purpose of each field)
     {
         ...account,
-        tempId: tpaasSessionID
-        addr: tpaasSignerAddress
-        keyId: tpaasSignerKeyID
+        tempId: tpsTempID
+        addr: tpsPayerAddress
+        keyId: tpsPayerKeyID
     }
   **/
-  const resolvedAccount = await fetch(appResolveAccountURL, { 
+  const resolvedAccount = await fetch(resolveAccountURL, { 
     method: "POST", 
     headers: { "Content-Type": "application/json" }
     body: JSON.stringify(account) 
@@ -157,21 +159,21 @@ export const TPaaSAuthorizationFunction = ({ appResolveAccountURL, appSigningURL
     ...resolvedAccount,
     signingFunction: async signable => {
       /** 
-        Perform a network call to resolve the transaction signature. This network call will likely be to the client applcation's backend, which would likely attach some secret authentication information (API Key etc) to the request before sending it off to the TPaaS API.
+        Perform a network call to resolve the transaction signature. This network call will likely be to the client applcation's backend.
         
         The call graph might look something like:
 
-        Client App TPaaSAuthorizationFunction =POST=> Client Backend =POST=> TPaaS API =POST RESPONSE=> Client Backend  =POST RESPONSE=> TPaaSAuthorizationFunction
+        Client App TPSAuthorizationFunction =POST=> Client Backend =POST Response=> Client App TPSAuthorizationFunction
 
-        The TPaaS API would need to return back a composite signature data structure containing:
+        The TPS API would need to return back a composite signature data structure containing:
         (See: https://github.com/onflow/fcl-js/blob/master/packages/fcl/src/wallet-provider-spec/authorization-function.md#how-to-create-an-authorization-function for more information on the purpose of each field)
         {
-            addr: tpaasSignerAddress
-            keyId: tpaasSignerKeyID
-            signature: tpaasSignature // 
+            addr: tpsSignerAddress
+            keyId: tpsSignerKeyID
+            signature: TPSSignature 
         }
       **/
-      return await fetch(appSigningURL, { 
+      return await fetch(signingURL, { 
         method: "POST", 
         headers: { "Content-Type": "application/json" }
         body: JSON.stringify(signable) 
@@ -181,86 +183,144 @@ export const TPaaSAuthorizationFunction = ({ appResolveAccountURL, appSigningURL
 }
 ```
 
-The application would need to expose a API/webservice with POST routes for the 
-`appResolveAccountURL` and `appSigningURL` URLs the `TPaaSAuthorizationFunction`
-would use. The application would need to attach an API Key / Secret to the request
-it would then forward to your `TPaaS`.
+The application would need to expose an API/webservice with POST routes for the 
+`resolveAccountURL` and `signingURL` URLs the `TPSAuthorizationFunction`
+would use. The application would need to perform the actions of resolving the account,
+or signing the signable for those routes respectively.
 
 The Client Application's backend might look something like:
 
 ```javascript
 // IN CLIENT APPLICATION BACKEND
+import { TPSAccountResolver, TPSSigner } from "@TPS/TPS-server"
 
 var express = require('express')
 var app = express()
 
-app.post("/tpaas/resolveaccount", (req, res) => {
-  const account = req.body
-  const secretAPIKey = process.env.TPAAS_SECRET_API_KEY
-
-  const resolvedAccount = await fetch("https://api.yourtpaas.com/resolveaccount", {
-    method: "POST", 
-    headers: { 
-        "Content-Type": "application/json"
-        "API_KEY": secretAPIKey
+const TPSConfiguration = {
+  accounts: [
+    {
+      address: "0xABC123",
+      privateKey: process.env.ACCOUNT_ABC123_PRIVATE_KEY_HEX,
+      keyIndex: 0
+    }, 
+    {
+      address: "0x456DEF",
+      privateKey: process.env.ACCOUNT_456DEF_PRIVATE_KEY_HEX,
+      keyIndex: 0
     }
-    body: JSON.stringify(account) 
-  })
+  ],
+}
+
+const configuredTPSAccountResolver = await TPSAccountResolver(TPSConfiguration)
+const configuredTPSSigner = await TPSSigner(TPSConfiguration)
+
+app.post("/tps/resolveaccount", (req, res) => {
+  const account = req.body
+
+  const resolvedAccount = await configuredTPSAccountResolver(account)
 
   res.send(resolvedAccount)
 })
 
-app.post("/tpaas/sign", (req, res) => {
+app.post("/tps/sign", (req, res) => {
   const signable = req.body
-  const secretAPIKey = process.env.TPAAS_SECRET_API_KEY
   
-  const compositeSignature = await fetch("https://api.yourtpaas.com/sign", {
-    method: "POST", 
-    headers: { 
-        "Content-Type": "application/json"
-        "API_KEY": secretAPIKey
-    }
-    body: JSON.stringify(signable) 
-  })
+  const compositeSignature = await configuredTPSSigner(signable)
 
   res.send(compositeSignature)
 })
 ```
 
-Your webservice would be responsible for implementing both pieces of functionality,
-the ability to resolve an account and produce a composite signature.
+The applications backend might consume a package, `"@TPS/TPS-server"`, which would ideally expose some helpful utilities
+for handling the logic behind resolving an account and producing a payer signature. The above code snippet uses these
+potential utilities.
+
+The implementation of these utilities, `TPSAccountResolver` and `TPSSigner` might look like:
+
+```javascript
+// IN @TPS/TPS-server
+
+import {WalletUtils} from "@onflow/fcl"
+
+export const TPSAccountResolver = ({ accounts }) => (account) => {
+
+  // Select an available account address from those provided in the configuration.
+  const tpsPayerAddress = selectAvailableAddress(accounts)
+
+  // Select the Key ID of thekey on the Payer account that will be used during signing.
+  const tpsPayerKeyID = selectKeyID(tpsPayerAddress, accounts)
+
+  // Produce a unique identifier for this payer address and key id combination.
+  const tpsTempID = `${tpsPayerAddress}-${tpsPayerKeyID}`
+
+  return ({
+    ...account,
+    tempId: tpsTempID
+    addr: tpsPayerAddress
+    keyId: tpsPayerKeyID
+  })
+}
+
+export const TPSSigner = ({ accounts }) => (signable) => {
+  // Get the address specified in the signable as the payer.
+  const signablePayerAddress = signable.voucher.payer
+  
+  // Get the account specified in the TPSSigner configuration that corresponds
+  // to the signablePayerAdress.
+  const account = accounts.find(a => a.address === signablePayerAddress)
+
+  // Throw an error if the signablePayerAddress is not found in the TPSSigner configuration
+  if (!account) {
+    throw new Error(`TPSSigner Error: Could not find account for signablePayerAddress=${signablePayerAddress}`)
+  }
+
+  // For security, ensure that `signablePayerAddress` is not specified as a transaction authorizer or proposer.
+  if (signable.voucher.authorizers.includes(signablePayerAddress)) {
+    throw new Error(
+      `TPSSigner Error: signablePayerAddress=${signablePayerAddress} specified as a transaction authorizer in transaction signable.`
+    )
+  }
+
+  if (signable.voucher.proposalKey.address === signablePayerAddress) {
+    throw new Error(
+      `TPSSigner Error: signablePayerAddress=${signablePayerAddress} specified as the transaction proposer in transaction signable.`
+    )
+  }
+
+  // Encode the signable using WalletUtils
+  const encodedMessage = WalletUtils.encodeMessageFromSignable(signable, signablePayerAddress)
+
+  // Prodce a signature, as a hex string
+  const signature = toHexString(YourFavouriteCryptoUtility.sign(encodedMessage, account.privateKey))
+
+  return signature
+}
+```
+
+The user of the TPS utility would be responsible for maintaining that the accounts they specify into `TPSAccountResolver` and `TPSSigner` as configuration have a sufficient FLOW balance at all times to pay for transactions they sign for.
 
 > To re-iterate, this is just an example implementation of what _might_ work. Your
 implementation may vary extensively.
 
-The TPaaS would be responsible for maintaining a collection of Flow Accounts that it will
-use to pay for each of the transactions it signs for. <!--- This is why I think people would just spin up their own service rather than using a central one--> It should monitor that each of the Flow
-Accounts it controlls have a suitible FLOW balance such that they can cover the transaction fees
-they needs to pay.
-
-Your TPaaS might choose to charge the client application a fee per transaction it signs. Because
-in this example implementation it attaches a secret api key to each request to your TPaaS,
-the TPaaS could record how many times each time it has done work for each client and bill accordingly. <!--- Good point. Maybe we separate this point out as ### How to Charge if you're running TPaaS ? --> 
-
 ### Drawbacks
 
-Since the TPaaS would be responsible for paying for transactions, it should have suffient
-security mechanisms in place to safeguard itself. Rate limiting, requiring 
-API keys to be sent with each request and other security mechanisms ought to be explored.
+Since the TPS would be responsible for paying for transactions, it should have suffient
+security mechanisms in place to safeguard itself.
 
 Since tranaction fees can be dynamic, increasing depending on the amount of work the network
-would need to perform for each transaction, billing for the service must be smart enough
-to take this into consideration.
+would need to perform for each transaction, the payer service should be smart enough to take
+this into consideration as needed.
 
 ### Dependencies
 
 The Transaction Fee Payer Service would depend on FCL. Should there be changes to any aspect
-of FCL that may impact the TPaaS, the service would have to be updated accordingly.
+of FCL that may impact the TPS, the service would have to be updated accordingly.
 
 ### Engineering Impact
 
-This is a large project. While an MVP could be built by an engineering team, a full solution
-would likely require multiple participants and skillsets from product, engineering and design.
+This is a rather large project. While an MVP could be built by an engineering team, a full solution
+would likely require multiple participants and skillsets.
 
 ### Compatibility
 
@@ -268,4 +328,4 @@ This project would need to maintain compatibility with latest versions of FCL.
 
 ## Questions and Discussion Topics
 
-- Are the other approches to desiging a FPaaS that differ from the example provided in this FLIP?
+- Are the other approches to desiging a TPS that differ from the example provided in this FLIP?
