@@ -39,7 +39,7 @@ all FCL compatible wallets will strictly choose to provide this feature.
 
 Applications that wish to guarantee their users can submit transactions
 without having to pay transaction fees for them will then have to pay those fees themselves. 
-To pay trans action fees, it's expected that applications would need to build a Transaction Payer Service that is able
+To pay transaction fees, it's expected that applications would need to build a Transaction Payer Service that is able
 to receive a transaction signable and then produce a signature for it.
 
 A re-usable Transaction Payer Service would exist as project / set of packages and tools that applications could use
@@ -64,7 +64,7 @@ a higher level of user experience.
 
 ## Design Proposal
 
-> Disclaimer: The following is an example implementation for what _might_ work. All possible solutions are not limited to just the following. You're completely free to approach the problem however you choose, even if it differs extensively from the thoughts below.
+> Disclaimer: The following is an example implementation for what _might_ work. All possible solutions are not limited to just the following. You're completely free and encouraged to approach the problem however you choose, even if it differs extensively from the thoughts below.
 
 When creating a transasction to be sent to the blockchain, FCL expects authorization functions
 for each of the roles for that transaction to be specified.
@@ -130,14 +130,14 @@ The implementation of the `TPSAuthorizationFunction` might look something like:
 ```javascript
 // IN "@TPS/TPS-client"
 
-export const TPSAuthorizationFunction = ({ appResolveAccountURL, appSigningURL }) => async (account) => {
+export const TPSAuthorizationFunction = ({ resolveAccountURL, signingURL }) => async (account) => {
 
   /** 
     Perform a network call to resolve the FCL "account" data structure. This network call will likely be to the client applcation's backend.
     
     The call graph might look something like:
 
-    Client App TPSAuthorizationFunction =POST=> Client Backend =POST=> TPS API =POST RESPONSE=> Client Backend  =POST RESPONSE=> TPSAuthorizationFunction
+    Client App TPSAuthorizationFunction =POST=> Client Backend =POST Response=> Client App TPSAuthorizationFunction
 
     The TPS API would need to return back an account data structure containing:
     (See: https://github.com/onflow/fcl-js/blob/master/packages/fcl/src/wallet-provider-spec/authorization-function.md#how-to-create-an-authorization-function for more information on the purpose of each field)
@@ -170,7 +170,7 @@ export const TPSAuthorizationFunction = ({ appResolveAccountURL, appSigningURL }
         {
             addr: tpsSignerAddress
             keyId: tpsSignerKeyID
-            signature: TPSSignature 
+            signature: tpsSignature 
         }
       **/
       return await fetch(signingURL, { 
