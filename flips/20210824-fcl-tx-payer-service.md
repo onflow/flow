@@ -5,37 +5,53 @@
 | **FLIP #**    | [612](https://github.com/onflow/flow/pull/612)       |
 | **Author(s)** | Jeffrey Doyle (jeffrey.doyle@dapperlabs.com),        |
 | **Sponsor**   |                                                      |
-| **Updated**   | 2020-09-03                                           |
+| **Updated**   | 2020-09-09                                           |
 
 ## Objective
 
-FCL provides a mechanism for a transactions fees to be paid by an account
-other than the proposer or any of the authorizers of a transaction.
+There is a need for the developement of a suite of tools that will collectively
+act as a Transaction Fee Payer Service for use by applications built on Flow.
 
-A Transaction Payer Service would be a service that facilitates signing as the 
-payer for a given transaction. It would exist as a resusable codebase / set of
+Technically, this suite of tools will facilitate signing as the payer of transactions initiated
+by application's users with an account controlled by the application itself.
+
+From a functional perspective, the service would enable users of applications that employ
+these tools to be able to execute transactions, and thereby interact with Flow, without
+encurrign the burden of having to pay for their transaction fees themselves. This user experience
+is valuable for many reasons, including enabling users to engague with applications while not
+having _any_ FLOW in their account, or having to worry about having _enough_ FLOW to execute the 
+transactions they wish to execute.
+
+A Transaction Fee Payer Service would exist as a resusable codebase / set of
 packages & tools that could be used by the applications that desire it.
 
 ## Motivation
 
-One of the features of Flow is that transaction fees can be paid by an account
-separate from the authorizers of that transaction. Applications that wish to 
+One of the many features of Flow is that transaction fees can be paid by an account
+separate from the authorizers of that transaction. With this feature, applications that wish to 
 provide "free" transactions for their users could opt to pay for their users' 
 transactions themselves. They would do this by producing a signature for the 
-transaction as the payer for that transaction. Upon receiving this transaction, 
+transaction as the payer of that transaction. Upon receiving this transaction, 
 the Flow network would then deduct transaction fees from the payer, not any of 
 the authorizers.
+
+For a user to pay their transaction fees themselves, that user would have to have FLOW
+in their account. This means that should a first time Flow user attempt to engague with an application
+that does not employ a Transaction Payer Service, they would first need to acquire FLOW before
+engaguing with that application. This is an undesireable user experience, as it significantly raises
+the friction required of first time Flow users to engague with these applications. Many users who are unfamiliar 
+with blockchain applications will not understand or sympathize with this requirement. Thus it is crucial
+that applications who wish to provide a low friction experience for their users to pay transaction fees on
+their behalf.
 
 Some FCL compatible wallets choose to act as the payer of the transactions their users
 sign. They do this by swapping out their users account with an account of their own,
 if their users are specified as the payer of a transaction. This allows wallets with
-this feature to provide "free" transactions for their users.
-
-While this makes for a desirable user experience for those that use
-wallets with this feature, applications do not get the guarantee that _all_ of their
-users will get this user experience. This is because users are able to use whichever FCL
-compatible wallet they desire with the FCL compatible applications they use, and not
-all FCL compatible wallets will strictly choose to provide this feature.
+this feature to provide "free" transactions for their users. While this makes for a 
+desirable user experience for those that use wallets with this feature, applications do not 
+get the guarantee that _all_ of their users will get this user experience. 
+This is because users are able to use whichever FCL compatible wallet they desire with the FCL 
+compatible applications they use, and not all FCL compatible wallets will strictly choose to provide this feature.
 
 Applications that wish to guarantee their users can submit transactions
 without having to pay transaction fees for them will then have to pay those fees themselves. 
@@ -59,8 +75,8 @@ Users have been conditioned to expect things for free. As such, applications tha
 to provide the best user experiences will likely choose to allow their users to execute
 transactions without them having to pay. 
 
-This Transaction Fee Payer Service will enable more applications to be more easily able to provide
-a higher level of user experience.
+This Transaction Fee Payer Service will enable more applications to offer a top of the line user experience, where users can easily and seamlessly engage in any action without the friction of having to pay
+for any transaction fees.
 
 ## Design Proposal
 
@@ -316,6 +332,8 @@ this into consideration as needed.
 
 The Transaction Fee Payer Service would depend on FCL. Should there be changes to any aspect
 of FCL that may impact the TPS, the service would have to be updated accordingly.
+
+The Flow team communicates out all breaking changes to the community consistently and with sufficient time to make any updates.
 
 ### Engineering Impact
 
