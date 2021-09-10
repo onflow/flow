@@ -22,7 +22,7 @@ const navConfig = {
       "Learn the basics of Flow and Cadence using our browser-based playground.",
     linkText: "Launch the Flow Playground"
   },
-  "Flow Client Library (FCL)": {
+  "FCL (Flow Client Library)": {
     url: "/fcl/api",
     icon: "js-sdk",
     description:
@@ -72,10 +72,25 @@ const sourceGithubRepos = {
     // NOTE: path is non-empty, because only content in this path is sourced
     path: "docs/content"
   },
-  cadence: {
+  "cadence-github": {
     githubRepo: "onflow/cadence",
     // NOTE: path is empty, whole repo is sourced
+    path: "docs"
+  },
+  "flow-cli-github": {
+    githubRepo: "onflow/flow-cli",
+    // NOTE: path is empty, whole repo is sourced
+    path: "docs"
+  },
+  "flow-go-sdk-github": {
+    githubRepo: "onflow/flow-cli",
+    // NOTE: path is empty, whole repo is sourced
     path: ""
+  },
+  "fcl-github": {
+    githubRepo: "onflow/fcl-js",
+    // NOTE: path is empty, whole repo is sourced
+    path: "docs"
   }
 };
 
@@ -139,7 +154,7 @@ const sources = [
     options: {
       name: "fcl-github",
       branch: "master",
-      remote: "https://github.com/onflow/flow-js-sdk.git",
+      remote: "https://github.com/onflow/fcl-js.git",
       patterns: [
         "docs/**/*",
         "packages/fcl/**/*",
@@ -211,7 +226,7 @@ const sections = [
         "[Introduction to Cadence](/cadence)",
         "[Flow App Quickstart](/fcl/flow-app-quickstart)",
         "[Project Deployment Guide](/dapp-deployment)",
-        "[Staking & Delegating](/staking)",
+        "[Epochs, Staking & Delegating](/staking)",
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
         "[Node Operation](/node-operation)"
       ],
@@ -378,8 +393,7 @@ const sections = [
     patterns: ["docs/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["[Home](/)"],
-      Overview: ["[Installation](/flow-js-testing/installation)"]
+      null: ["[Home](/)"]
     }
   },
   {
@@ -392,10 +406,12 @@ const sections = [
         "core-contracts/fungible-token",
         "core-contracts/flow-token",
         "core-contracts/flow-fees",
-        "core-contracts/staking-contract-reference"
+        "core-contracts/staking-contract-reference",
+        "core-contracts/epoch-contract-reference"
       ],
       "Other Important Contracts": [
         "core-contracts/locked-tokens",
+        "core-contracts/staking-collection",
         "core-contracts/non-fungible-token"
       ],
       FAQ: [
@@ -455,23 +471,27 @@ const sections = [
       null: ["[Home](/)"],
       Overview: [
         "staking/index",
-        "staking/rewards",
+        "staking/schedule",
         "staking/stake-slashing",
         "staking/faq"
       ],
-      "Custody Providers": ["staking/custody-providers"],
-      "Manual Staking Guides": [
+      "Technical Docs": [
+        "staking/epoch-terminology",
+        "staking/epoch-preparation",
+        "staking/epoch-scripts-events",
         "staking/technical-overview",
-        "staking/events",
-        "staking/scripts",
+        "staking/staking-scripts-events",
+        "staking/qc-dkg",
+        "staking/qc-dkg-scripts-events",
+        "staking/machine-account"
+      ],
+      "Technical Guides": [
+        "staking/staking-options",
+        "staking/staking-collection",
         "staking/unlocked-staking-guide",
-        "staking/unlocked-delegation-guide"
+        "staking/locked-staking-guide"
       ],
-      "Staking with Locked FLOW": [
-        "staking/locked-staking-guide",
-        "staking/locked-delegation-guide",
-        "staking/locked-third-party-operator"
-      ],
+      "Custody Providers": ["staking/custody-providers"],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
@@ -493,6 +513,7 @@ const sections = [
       ],
       "Operator Guides": [
         "node-operation/node-bootstrap",
+        "node-operation/machine-existing-operator",
         "node-operation/monitoring-nodes",
         "node-operation/spork",
         "node-operation/past-sporks",
@@ -552,6 +573,7 @@ const sections = [
         "docs/language/type-safety",
         "docs/language/type-inference",
         "docs/language/composite-types",
+        "docs/language/resources",
         "docs/language/access-control",
         "docs/language/interfaces",
         "docs/language/enumerations",

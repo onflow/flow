@@ -237,7 +237,7 @@ export default function PageLayout(props) {
                             "/faq",
                             "/community-updates",
                             "/tutorial",
-                            "/flow-js-sdk/packages",
+                            "/fcl/packages",
                             "/flow-go-sdk/examples"
                           ]}
                         />

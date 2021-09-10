@@ -363,12 +363,12 @@
     },
     {
       "source": "/sdks/javascript/fcl",
-      "destination": "/flow-js-sdk/fcl",
+      "destination": "/fcl",
       "permanent": false
     },
     {
       "source": "/sdks/javascript",
-      "destination": "/flow-js-sdk",
+      "destination": "/fcl",
       "permanent": false
     },
     {

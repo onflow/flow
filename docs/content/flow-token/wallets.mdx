@@ -87,6 +87,7 @@ not happen, it is important to store FLOW.ICO tokens separately from unlocked FL
 To achieve this separation, a custodian should provision a new token vault that follows this standard:
 
 **FLOW.ICO Token Vault**
+
 - Type: `FlowToken.Vault`
 - Location: `/storage/lockedFlowTokenVault`
 
@@ -240,7 +241,7 @@ transaction(amount: UFix64, to: Address) {
 
 This transaction template is available for use in our SDKs:
 
-- [Transfer Tokens with the JavaScript SDK](https://github.com/onflow/flow-js-sdk/tree/master/packages/six-transfer-tokens)
+- [Transfer Tokens with the FCL (Flow Client Library)](https://github.com/onflow/fcl-js/tree/master/packages/six-transfer-tokens)
 - _Coming soon: Transfer Tokens with the Go SDK_
 
 ## Staking FLOW

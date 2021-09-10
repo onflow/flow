@@ -14,7 +14,7 @@ A language-agnostic specification for this API is defined using [Protocol Buffer
 The Access Nodes hosted by DapperLabs are accessible at:
 
 #### Current Mainnet
-`access.mainnet.onflow.org:9000`
+`access.mainnet.nodes.onflow.org:9000`
 ##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](/node-operation/spork/#mainnet)
 
 #### Testnet

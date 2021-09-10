@@ -1,28 +1,55 @@
 ---
-title: Staking Rewards
-sidebar_title: Rewards
-description: How the Flow protocol pays rewards to stakers
+title: Epoch and Reward Schedule
+sidebar_title: Epoch and Reward Schedule
+description: How the Flow protocol manages the schedule of an epoch and rewards payments
 ---
 
 <Callout type="warning">
 
-This information covers the current state of how rewards are calculated and distributed
-to node operators and delegators. All of the information in the document is still 
-being designed and is subject to change based on research and discussion by the Flow
-core team and community. If any changes are proposed, the Flow community will be notified in advance.
+This information covers the current state of how epoch phases are ran and how
+rewards are calculated and distributed to node operators and delegators. 
+All of the information in the document is still being designed and is subject to change
+based on research and discussion by the Flow core team and community.
+If any changes are proposed, the Flow community will be notified in advance.
 </Callout>
 
-# Rewards
+# Schedule
 
-**Rewards are paid at 8:00 am PT on Tuesday (3:00 pm UTC)**, every week, to all users that have tokens staked. 
+![Flow Epoch Schedule](epoch-phase-diagram.png)
 
-Once distributed, rewards are unlocked and liquid, so they can be transferred at any time. Some custody 
-providers might require extra steps to withdraw user staking reward so please contact your respective 
-provider to get additional information as needed.
+Epochs are the set of time when the node operators in the network are constant.
+Epoch's last roughly a week, and the **Epoch Switchover** is defined as the point in time
+when one epoch begins and the next epoch begins, marking a change in the list of valid nodes.
 
-**Epochs end at 8:00 am PT Tuesday (3:00 pm UTC)**, every week, with the next epoch beginning immediately. 
+**Epoch Switchovers will happen at 8:00 am PT on Tuesday (3:00 pm UTC)** every week.
 Please note that all staking operations that interact with staked tokens will be processed by the protocol at the start of each epoch. 
 
+## Rewards
+
+**Rewards are also paid at 8:00 am PT on Tuesday (3:00 pm UTC)**, every week, to all users that have tokens staked.
+This is the same time as the Epoch Switchover. See the Rewards Distribution section below
+for more information about rewards calculation and schedule.
+
+## Staking Auction
+
+The first, and longest phase of an epoch is the staking auction.
+This phase is when nodes and delegators can register to stake and perform other staking operations
+such as staking more tokens or unstaking their existing tokens.
+None of these operations are fully executed until the **Epoch Switchover** though.
+
+**The Staking Auction lasts for at least the first 90% of the length of an Epoch**
+
+## Epoch Setup and Epoch Commit
+
+The Epoch Setup and Epoch Commit phases are the final phases of the epoch,
+when node operators who have been included in the next epoch perform important setup functionailty
+to prepare for the next epoch.
+
+**The Epoch Setup and Epoch Committed phases last less than 10% of the time of an epoch.**
+
+**Staking Operations will be rejected during the Epoch Setup and Epoch Commit phases.**
+This is because the staking information has been finalized in preparation for the next epoch
+and cannot be changed because these final phases rely on the staking information being constant.
 
 ## Rewards Distribution
 
@@ -33,6 +60,12 @@ to empower a wide variety of use cases and promote fair and diverse participatio
 The numbers in this table represent the total amount of tokens that are paid 
 as staking rewards at each epoch to the entire pool of participants in the Flow network as a whole. 
 While total staking reward per epoch is known and fixed, individual rewards are variable depending on many factors. 
+
+The total rewards for each epoch are fixed for that epoch, but where those rewards come from can change.
+When the protocol pays rewards, it first pulls from the central pool of all the transaction fees
+that have been paid by every user in the network since the last rewards payment.
+Once that pool has been depleted, the protocol mints new tokens that are used as rewards.
+
 Please see the next section on how to calculate an individual staking reward.
 
 |                               | Dec 22         | Dec 29, Jan 5, 12, 19, 26 | Feb 2 weekly on Tuesdays until Dec 21, 2021 | Weeks 53+  |

@@ -11,7 +11,11 @@ export default function StatusCard({
   networkVersion,
   nextSporkDate
 }) {
-  const theStatus = statusPageStatuses[status];
+  let theStatus = statusPageStatuses[status];
+
+  if (theStatus === statusPageStatuses.degraded_performance) {
+    theStatus = "UNDER MAINTENANCE";
+  }
 
   return (
     <StatusCardWrapper networkStatus={theStatus}>
