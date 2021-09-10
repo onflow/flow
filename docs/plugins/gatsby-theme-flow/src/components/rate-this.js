@@ -28,7 +28,7 @@ const StarRating = ({ pageInfo }) => {
     if (rating) {
       mixpanel.track("Page rating", {
         rating,
-        pageInfo
+        url: pageInfo.path
       });
       setHasRated(true);
     }
