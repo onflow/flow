@@ -82,6 +82,11 @@ const sourceGithubRepos = {
     // NOTE: path is empty, whole repo is sourced
     path: "docs"
   },
+  "flow-js-testing-github": {
+    githubRepo: "onflow/flow-js-testing",
+    // NOTE: path is empty, whole repo is sourced
+    path: "docs"
+  },
   "flow-go-sdk-github": {
     githubRepo: "onflow/flow-cli",
     // NOTE: path is empty, whole repo is sourced
@@ -137,6 +142,15 @@ const sources = [
       name: "flow-go-sdk-github",
       branch: "master",
       remote: "https://github.com/onflow/flow-go-sdk.git",
+      patterns: ["docs/**/*", "examples/**/*"]
+    }
+  },
+  {
+    resolve: "gatsby-source-git",
+    options: {
+      name: "flow-js-testing-github",
+      branch: "master",
+      remote: "https://github.com/onflow/flow-js-testing.git",
       patterns: ["docs/**/*", "examples/**/*"]
     }
   },
@@ -216,6 +230,7 @@ const sections = [
         "[Flow Concepts](/concepts)",
         "[Introduction to Cadence](/cadence)",
         "[Flow App Quickstart](/fcl/flow-app-quickstart)",
+        "[Testing using JavaScript](/flow-js-testing/install)",
         "[Project Deployment Guide](/dapp-deployment)",
         "[Epochs, Staking & Delegating](/staking)",
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
@@ -362,21 +377,7 @@ const sections = [
     patterns: ["docs/**/*", "packages/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["[Home](/)"],
-      "API Reference": [
-        "[Configuration](/fcl/api#configuration)",
-        "[Wallet Interactions](/fcl/api#wallet-interactions)",
-        "[On-Chain Interactions](/fcl/api#on-chain-interactions)",
-        "[Types, Interfaces, and Definitions](/fcl/api#types-interfaces-and-definitions)"
-      ],
-      Changelogs: [
-        "[@onflow/fcl](/fcl/packages/fcl/CHANGELOG)",
-        "[@onflow/types](/fcl/packages/types/CHANGELOG)"
-      ],
-      "Developer Guides": [
-        "[Introducing @onflow/fcl](/fcl)",
-        "[Flow App Quickstart](/fcl/flow-app-quickstart)"
-      ]
+      null: ["[Home](/)"]
     }
   },
   {
@@ -384,7 +385,23 @@ const sections = [
     patterns: ["docs/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: ["[Home](/)"]
+      null: ["[Home](/)"],
+      Overview: ["docs/api", "docs/examples"],
+      Guides: [
+        "docs/install",
+        "docs/init",
+        "docs/accounts",
+        "docs/contracts",
+        "docs/emulator",
+        "docs/execute-scripts",
+        "docs/flow-token",
+        "docs/generator",
+        "docs/jest-helpers",
+        "docs/send-transactions",
+        "docs/structure",
+        "docs/templates",
+        "docs/type"
+      ]
     }
   },
   {
