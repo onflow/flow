@@ -4,6 +4,8 @@ import { useMixpanel } from "gatsby-plugin-mixpanel";
 
 import React, { useState, useEffect } from "react";
 
+import TrackingLink from "../../../../content/components/tracking-link";
+
 const StarButton = styled.button({
   backgroundColor: "transparent",
   border: "none",
@@ -53,6 +55,17 @@ const StarRating = ({ pageInfo }) => {
             </StarButton>
           );
         })}
+      <div>
+        <br />
+        Share your experience using Flow's documentation?{" "}
+        <TrackingLink
+          style={{ color: "#36ad68" }}
+          eventName="Feedback_link_/detailed/_clicked"
+          href={`https://docs.google.com/forms/d/e/1FAIpQLSeytoATNQ9UqA24VxGrf4OdESzBKvHC4pMKD5uCEGCcOqn4fg/viewform?entry.389052155=https://docs.onflow.org${pageInfo.path}`}
+        >
+          Provide detailed feedback here
+        </TrackingLink>
+      </div>
     </div>
   );
 };
