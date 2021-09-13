@@ -227,7 +227,7 @@ const sections = [
         "[FUSD](/fusd)"
       ],
       Guides: [
-        "[Flow Concepts](/start/index)",
+        "[Flow Concepts](/start)",
         "[Introduction to Cadence](/cadence)",
         "[Flow App Quickstart](/fcl/flow-app-quickstart)",
         "[Testing using JavaScript](/flow-js-testing/install)",
@@ -244,8 +244,8 @@ const sections = [
     }
   },
   {
-    sourceeInstanceName: "docs",
-    patterns: ["start/**/*"],
+    sourceInstanceName: "docs",
+    patterns: ["start/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
