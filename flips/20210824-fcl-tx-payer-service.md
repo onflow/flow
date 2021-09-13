@@ -17,8 +17,8 @@ by application's users with an account controlled by the application itself.
 
 From a functional perspective, the service would enable users of applications that employ
 these tools to be able to execute transactions, and thereby interact with Flow, without
-encurrign the burden of having to pay for their transaction fees themselves. This user experience
-is valuable for many reasons, including enabling users to engague with applications while not
+encurring the burden of having to pay for their transaction fees themselves. This user experience
+is valuable for many reasons, including enabling users to engauge with applications while not
 having _any_ FLOW in their account, or having to worry about having _enough_ FLOW to execute the 
 transactions they wish to execute.
 
@@ -36,10 +36,10 @@ the Flow network would then deduct transaction fees from the payer, not any of
 the authorizers.
 
 For a user to pay their transaction fees themselves, that user would have to have FLOW
-in their account. This means that should a first time Flow user attempt to engague with an application
-that does not employ a Transaction Payer Service, they would first need to acquire FLOW before
-engaguing with that application. This is an undesireable user experience, as it significantly raises
-the friction required of first time Flow users to engague with these applications. Many users who are unfamiliar 
+in their account. This can lead to a situation where a first-time Flow user attempts to engage with an application
+that does not employ a Transaction Payer Service, and they would first need to acquire FLOW before engaging with
+that application. This is an undesireable user experience, as it significantly raises
+the friction required of first time Flow users to engauge with these applications. Many users who are unfamiliar 
 with blockchain applications will not understand or sympathize with this requirement. Thus it is crucial
 that applications who wish to provide a low friction experience for their users to pay transaction fees on
 their behalf.
