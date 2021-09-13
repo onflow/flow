@@ -39,9 +39,9 @@ For a user to pay their transaction fees themselves, that user would have to hav
 in their account. This can lead to a situation where a first-time Flow user attempts to engage with an application
 that does not employ a Transaction Payer Service, and they would first need to acquire FLOW before engaging with
 that application. This is an undesireable user experience, as it significantly raises
-the friction required of first time Flow users to engauge with these applications. Many users who are unfamiliar 
-with blockchain applications will not understand or sympathize with this requirement. Thus it is crucial
-that applications who wish to provide a low friction experience for their users to pay transaction fees on
+the friction required of first time Flow users to engage with these applications. Many users who are unfamiliar 
+with blockchain applications will not understand or empathize with this requirement. Thus it is crucial
+that applications who wish to provide a low friction experience for their users pay transaction fees on
 their behalf.
 
 Some FCL compatible wallets choose to act as the payer of the transactions their users
@@ -317,11 +317,11 @@ export const TPSSigner = ({ accounts }) => (signable) => {
 The user of the TPS utility would be responsible for maintaining that the accounts they specify into `TPSAccountResolver` and `TPSSigner` as configuration have a sufficient FLOW balance at all times to pay for transactions they sign for.
 
 > To re-iterate, this is just an example implementation of what _might_ work. Your
-implementation may vary extensively.
+implementation may vary significantly.
 
 ### Drawbacks
 
-Since the TPS would be responsible for paying for transactions, it should have suffient
+Since the TPS (Transaction Payer Service) would be responsible for paying for transactions, it should have suffient
 security mechanisms in place to safeguard itself.
 
 Since tranaction fees can be dynamic, increasing depending on the amount of work the network
