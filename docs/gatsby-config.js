@@ -2,7 +2,7 @@ const path = require("path");
 
 const navConfig = {
   "Getting Started": {
-    url: "/",
+    url: "/start",
     icon: null,
     omitLandingPage: true,
     description:
@@ -227,7 +227,7 @@ const sections = [
         "[FUSD](/fusd)"
       ],
       Guides: [
-        "[Flow Concepts](/concepts)",
+        "[Flow Concepts](/start/index)",
         "[Introduction to Cadence](/cadence)",
         "[Flow App Quickstart](/fcl/flow-app-quickstart)",
         "[Testing using JavaScript](/flow-js-testing/install)",
@@ -240,6 +240,23 @@ const sections = [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
         "[Operators](/faq/operators)"
+      ]
+    }
+  },
+  {
+    sourceeInstanceName: "docs",
+    patterns: ["start/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: ["[Home](/)"],
+      "Onboarding Guide": [
+        "start/index",
+        "start/dapp-anatomy",
+        "start/accounts-wallets",
+        "start/payments",
+        "start/contracts",
+        "start/building-dapps",
+        "start/next-steps"
       ]
     }
   },
