@@ -38,11 +38,9 @@ directory. You can see the text of all the transactions used to interact with th
 
 ## Epochs Overview
 
-Conceptually, Flow is a permissioned blockchain:
-
-- Only a pre-determined set of nodes is authorized to participate in the protocol. 
-The set of authorized nodes is a-priori known to all network participants. This set is referred to as the **Identity Table**.
-- An **Epoch** is defined as a period of time 
+Only a pre-determined set of nodes is authorized to participate in the protocol at any given time.
+The set of authorized nodes is a-priori known to all network participants. 
+This set is referred to as the **Identity Table**. An **Epoch** is defined as a period of time 
 where the set of authorized nodes is constant (or can only shrink due to ejection of malicious nodes).
 
 At an Epoch switchover, which is the time when the network transitions from one epoch to the next,
@@ -88,11 +86,18 @@ a spork is required to transition to the next Epoch.
 ## Epoch Length
 
 The length of an Epoch is measured in terms of consensus views.
-The number of views in an epoch and in the various epoch phases are known before 
+The number of views in an epoch and in the various epoch phases are determined before 
 the Epoch begins and stored as a field in the main epoch smart contract (`FlowEpoch`).
 
-Generally, there is not a block for every view,
-so the view number will not change at the same rate as the block height.
+Generally, there is not a block for every view, so the view number will not change at the same rate as the block height.
+
+Because the length of a consensus view can vary depending on many different factors,
+the wall-clock time of an epoch is expected to vary from week to week. 
+Under typical network conditions we expect the variance in epoch length to be less than 2 hours for a 1-week epoch (~1%).
+Under adverse network conditions the variance in epoch length will increase (typically this will result in longer epochs).
+
+As the average view rate changes over time, the Service Account can change the epoch length to
+target a 1 week wall-clock epoch length.
 
 # Phases
 
