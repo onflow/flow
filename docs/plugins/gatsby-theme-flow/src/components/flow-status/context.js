@@ -15,6 +15,25 @@ export const StatusContext = createContext({
   canaryNetStatus: "loading"
 });
 
+function getStatusValues(status) {
+  if (status && !status.error) {
+    return {
+      mainnetStatus: status?.filter((s) => s.id === MAINNET_STATUSPAGE_ID)[0]
+        .status,
+      testnetStatus: status?.filter((s) => s.id === TESTNET_STATUSPAGE_ID)[0]
+        .status,
+      canaryNetStatus: status?.filter((s) => s.id === CANARYNET_STATUSPAGE_ID)[0]
+        .status
+    }
+  }
+
+  return {
+    mainnetStatus: null,
+    testnetStatus: null,
+    canaryNetStatus: null,
+  }
+}
+
 export const StatusContextProvider = (props) => {
   const [status, setStatus] = useState(null);
 
@@ -34,14 +53,7 @@ export const StatusContextProvider = (props) => {
     }
   );
 
-  const values = {
-    mainnetStatus: status?.filter((s) => s.id === MAINNET_STATUSPAGE_ID)[0]
-      .status,
-    testnetStatus: status?.filter((s) => s.id === TESTNET_STATUSPAGE_ID)[0]
-      .status,
-    canaryNetStatus: status?.filter((s) => s.id === CANARYNET_STATUSPAGE_ID)[0]
-      .status
-  };
+  const values = getStatusValues(status);
 
   return (
     <StatusContext.Provider value={values}>

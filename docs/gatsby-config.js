@@ -65,6 +65,7 @@ const navConfig = {
     linkText: "Flow Port"
   }
 };
+
 // sourceGithubRepos maps a sourceInstanceName to a GitHub repo name
 const sourceGithubRepos = {
   docs: {
@@ -199,7 +200,7 @@ const sections = [
         "[Flow Concepts](/concepts)",
         "[Introduction to Cadence](/cadence)",
         "[Flow App Quickstart](/fcl/flow-app-quickstart)",
-        "[Project Deployment Guide](/dapp-deployment)",
+        "[Dapp Development Guide](/dapp-development)",
         "[Staking & Delegating](/staking)",
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
         "[Node Operation](/node-operation)"
@@ -303,6 +304,31 @@ const sections = [
         "[Backers/Users](/faq/backers)",
         "[Operators](/faq/operators)"
       ]
+    }
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["dapp-development/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: [
+        "[Home](/)",
+        "dapp-development/index",
+      ],
+      "Building Your Dapp": [
+        "dapp-development/flow-dapp-anatomy",
+        "dapp-development/user-accounts-and-wallets",
+        "dapp-development/in-dapp-payments",
+        "dapp-development/smart-contracts",
+        "dapp-development/dapp-infrastructure"
+      ],
+      "Deploying Your Dapp": [
+        "dapp-development/deployment",
+        "dapp-development/contract-testing",
+        "dapp-development/testnet-deployment",
+        "dapp-development/testnet-testing",
+        "dapp-development/mainnet-deployment"
+      ],
     }
   },
   {
