@@ -9,11 +9,13 @@ export default function SEO(props) {
     siteName,
     twitterCard,
     children,
-    favicon,
+    favicon
   } = props;
   return (
     <Helmet>
       <title>{title}</title>
+      <meta charSet="utf-8" />
+      <meta name="description" content={description} />
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:description" content={description} />
@@ -32,10 +34,11 @@ SEO.propTypes = {
   siteName: PropTypes.string.isRequired,
   twitterCard: PropTypes.string,
   children: PropTypes.node,
-  favicon: PropTypes.string,
+  favicon: PropTypes.string
 };
 
 SEO.defaultProps = {
   twitterCard: "summary",
-  favicon: "https://assets.website-files.com/5f6294c0c7a8cdd643b1c820/5f6294c0c7a8cd5e06b1c938_Asset%201%405x.png",
+  favicon:
+    "https://assets.website-files.com/5f6294c0c7a8cdd643b1c820/5f6294c0c7a8cd5e06b1c938_Asset%201%405x.png"
 };

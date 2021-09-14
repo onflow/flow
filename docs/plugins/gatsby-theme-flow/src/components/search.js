@@ -1,24 +1,30 @@
 /* global docsearch */
-import PropTypes from "prop-types";
-import React, { Fragment, useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+
+import PropTypes from "prop-types";
+
+import React, { Fragment, useEffect, useRef, useState } from "react";
+
 import useKey from "react-use/lib/useKey";
+
+import { position, size, transparentize } from "polished";
+
+import { useMixpanel } from "gatsby-plugin-mixpanel";
+
+import { theme } from "../colors";
 import { HEADER_HEIGHT } from "../utils";
 import { TextField } from "../ui/TextField";
-import { theme } from "../colors";
+import { IconSearch } from "../ui/icons";
 import breakpoints from "../utils/breakpoints";
 import { smallCaps } from "../utils/typography";
-import { css } from "@emotion/core";
-import { position, size, transparentize } from "polished";
-import { IconSearch } from "../ui/icons";
-import { useMixpanel } from "gatsby-plugin-mixpanel";
 
 const borderRadius = 5;
 const border = `1px solid ${theme.dividerLight}`;
 const verticalAlign = css({
   position: "absolute",
   top: "50%",
-  transform: "translateY(-50%)",
+  transform: "translateY(-50%)"
 });
 
 const Hotkey = styled.div(verticalAlign, size(24), {
@@ -32,7 +38,7 @@ const Hotkey = styled.div(verticalAlign, size(24), {
   right: 10,
   pointerEvents: "none",
   fontWeight: 600,
-  boxShadow: `0 1px 1px 0 #00000021`,
+  boxShadow: `0 1px 1px 0 #00000021`
 });
 
 const boxShadowColor = transparentize(0.9, "black");
@@ -45,7 +51,7 @@ const Container = styled.div({
   position: "relative",
   zIndex: 1,
   [breakpoints.md]: {
-    marginRight: 0,
+    marginRight: 0
   },
   ".algolia-autocomplete": {
     width: "100%",
@@ -57,24 +63,24 @@ const Container = styled.div({
       borderRadius,
       boxShadow,
       "&::before": {
-        display: "none",
+        display: "none"
       },
       "[class^=ds-dataset-]": {
         maxHeight: `calc(100vh - ${HEADER_HEIGHT}px - 32px)`,
         padding: 0,
         border,
-        borderRadius: "inherit",
+        borderRadius: "inherit"
       },
       ".ds-suggestions": {
-        marginTop: 0,
+        marginTop: 0
       },
       ".ds-suggestion": {
         padding: "20px 32px",
         borderBottom: `1px solid ${theme.divider}`,
         "&.ds-cursor": {
-          backgroundColor: transparentize(0.5, theme.divider),
-        },
-      },
+          backgroundColor: transparentize(0.5, theme.divider)
+        }
+      }
     },
     ".algolia-docsearch-suggestion": {
       padding: 0,
@@ -83,10 +89,10 @@ const Container = styled.div({
       textDecoration: "none",
       [["&--wrapper", "&--subcategory-column", "&--content"]]: {
         width: "auto",
-        float: "none",
+        float: "none"
       },
       "&--wrapper": {
-        paddingTop: 0,
+        paddingTop: 0
       },
       "&--category-header": {
         marginTop: 0,
@@ -94,57 +100,57 @@ const Container = styled.div({
         borderBottom: 0,
         fontSize: 14,
         color: "inherit",
-        ...smallCaps,
+        ...smallCaps
       },
       [["&--subcategory-column", "&--content"]]: {
         padding: 0,
         "&::before": {
-          display: "none",
-        },
+          display: "none"
+        }
       },
       "&--subcategory-column": {
         marginBottom: 4,
         fontSize: 22,
         color: theme.text1,
-        textAlign: "initial",
+        textAlign: "initial"
       },
       "&--content": {
-        background: "none !important",
+        background: "none !important"
       },
       "&--title": {
         marginBottom: 0,
         fontSize: 18,
         fontWeight: "normal",
-        color: "inherit",
+        color: "inherit"
       },
       "&--highlight": {
         boxShadow: "none !important",
         color: `${theme.primary} !important`,
-        background: "none !important",
+        background: "none !important"
       },
       "&--no-results": {
-        padding: 32,
-      },
+        padding: 32
+      }
     },
     ".algolia-docsearch-footer": {
-      margin: 12,
-    },
-  },
+      margin: 12
+    }
+  }
 });
 
 const Overlay = styled.div(
   position("fixed", 0),
-  (props) =>
+  props =>
     !props.visible && {
       opacity: 0,
-      visibility: "hidden",
+      visibility: "hidden"
     },
   {
     backgroundColor: transparentize(0.5, theme.text2),
     transitionProperty: "opacity, visibility",
     transitionDuration: "150ms",
     transitionTimingFunction: "ease-in-out",
-    zIndex: 1,
+    zIndex: 1
   }
 );
 
@@ -153,47 +159,50 @@ export default function Search(props) {
   const [value, setValue] = useState("");
   const inputRef = useRef(null);
   const mixpanel = useMixpanel();
-  useEffect(() => {
-    if (typeof docsearch !== "undefined") {
-      docsearch({
-        apiKey: props.apiKey,
-        indexName: props.indexName,
-        inputSelector: "#input",
-        // debug: true, // keeps the results list open
-        algoliaOptions: {
-          hitsPerPage: 10,
-          distinct: 1,
-        },
-        handleSelected: function(
-          input,
-          _event,
-          suggestion,
-          _datasetNumber,
-          _context
-        ) {
-          mixpanel.track("Searched", { text: input, selected: suggestion });
-          input.setVal("");
-          window.location.href = suggestion.url;
-        },
-        transformData: function(hits) {
-          hits.forEach((hit) => {
-            // replace origin so search results point to local (or vercel) deployment
-            // warning: any new or edited pages won't be correctly indexed
-            var url = new URL(hit.url);
-            url.host = window.location.host;
-            url.protocol = window.location.protocol;
-            hit.url = url.href;
-          });
-        },
-      });
-    }
-  }, [props.apiKey, props.indexName]);
+  useEffect(
+    () => {
+      if (typeof docsearch !== "undefined") {
+        docsearch({
+          apiKey: props.apiKey,
+          indexName: props.indexName,
+          inputSelector: "#input",
+          // debug: true, // keeps the results list open
+          algoliaOptions: {
+            hitsPerPage: 10,
+            distinct: 1
+          },
+          handleSelected: function(
+            input,
+            _event,
+            suggestion,
+            _datasetNumber,
+            _context
+          ) {
+            mixpanel.track("Searched", { text: input, selected: suggestion });
+            input.setVal("");
+            window.location.href = suggestion.url;
+          },
+          transformData: function(hits) {
+            hits.forEach(hit => {
+              // replace origin so search results point to local (or vercel) deployment
+              // warning: any new or edited pages won't be correctly indexed
+              var url = new URL(hit.url);
+              url.host = window.location.host;
+              url.protocol = window.location.protocol;
+              hit.url = url.href;
+            });
+          }
+        });
+      }
+    },
+    [props.apiKey, props.indexName, mixpanel]
+  );
 
   // focus the input when the slash key is pressed
   useKey(
-    (event) =>
+    event =>
       event.keyCode === 191 && event.target.tagName.toUpperCase() !== "INPUT",
-    (event) => {
+    event => {
       event.preventDefault();
       inputRef.current.focus();
     }
@@ -224,7 +233,7 @@ export default function Search(props) {
               id="input"
               style={{
                 fontSize: 16,
-                boxShadow: resultsShown ? boxShadow : "none",
+                boxShadow: resultsShown ? boxShadow : "none"
               }}
             />
           }
@@ -244,5 +253,5 @@ export default function Search(props) {
 Search.propTypes = {
   siteName: PropTypes.string.isRequired,
   apiKey: PropTypes.string.isRequired,
-  indexName: PropTypes.string.isRequired,
+  indexName: PropTypes.string.isRequired
 };

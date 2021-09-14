@@ -1,10 +1,17 @@
-import { colors } from "../colors";
+import { ClassNames } from "@emotion/react";
+
 import * as CSS from "csstype";
-import { base } from "./typography";
-import { ClassNames } from "@emotion/core";
+
 import tinycolor from "tinycolor2";
+
 import React from "react";
+
 import classnames from "classnames";
+
+import { colors } from "../colors";
+
+import { base } from "./typography";
+
 import { ShadedColor, getOffsetInPalette } from "./utils/colors";
 
 // @see https://www.typescriptlang.org/docs/handbook/advanced-types.html#exhaustiveness-checking
@@ -28,13 +35,13 @@ function getTextColor({
   color,
   feel,
   theme,
-  mode,
+  mode
 }: {
   color: NonNullable<Props["color"]>;
   feel: NonNullable<Props["feel"]>;
   theme: NonNullable<Props["theme"]>;
   mode?: CSS.SimplePseudos;
-}): CSS.ColorProperty | undefined {
+}): CSS.PropertyValue<string> | undefined {
   // Text color will always be the same for secondary buttons
   if (color === colors.white) {
     return colors.grey.darker;
@@ -56,7 +63,7 @@ function getTextColor({
               [colors.white, colors.grey.darker],
               {
                 level: "AA",
-                size: "small",
+                size: "small"
               }
             )
             .toString()
@@ -83,10 +90,10 @@ function getTextColor({
  * Get the button's height
  */
 function getHeight({
-  size,
+  size
 }: {
   size: NonNullable<Props["size"]>;
-}): CSS.HeightProperty<TLength> {
+}): CSS.PropertyValue<TLength> {
   switch (size) {
     case "small":
       return 28;
@@ -106,12 +113,12 @@ function getHeight({
 function getHoverBackgroundColor({
   color,
   feel,
-  theme,
+  theme
 }: {
   color: NonNullable<Props["color"]>;
   feel: NonNullable<Props["feel"]>;
   theme: NonNullable<Props["theme"]>;
-}): CSS.BackgroundColorProperty {
+}): CSS.PropertyValue<string> {
   if (color === colors.white) {
     // Special case for secondary buttons
     return colors.silver.light;
@@ -335,7 +342,7 @@ export const Button = React.forwardRef<HTMLElement, Props>(
                     color:
                       feel === "flat" && theme === "dark"
                         ? colors.grey.dark
-                        : colors.grey.light,
+                        : colors.grey.light
                   },
 
                   backgroundColor:
@@ -352,7 +359,7 @@ export const Button = React.forwardRef<HTMLElement, Props>(
                     boxShadow:
                       theme === "light"
                         ? "0 1px 4px 0 rgba(18, 21, 26, 0.04), inset 0 0 0 1px rgba(18, 21, 26, 0.2), inset 0 -1px 0 0 rgba(18, 21, 26, 0.05)"
-                        : "0 0 0 1px rgba(18, 21, 26, 0.2), 0 1px 4px 0 rgba(18, 21, 26, 0.08), 0 1px 0 0 rgba(18, 21, 26, 0.05)",
+                        : "0 0 0 1px rgba(18, 21, 26, 0.2), 0 1px 4px 0 rgba(18, 21, 26, 0.08), 0 1px 0 0 rgba(18, 21, 26, 0.05)"
                   }),
 
                   color: getTextColor({ color, feel, theme }),
@@ -395,7 +402,7 @@ export const Button = React.forwardRef<HTMLElement, Props>(
 
                   textDecoration: "none",
 
-                  whiteSpace: "nowrap",
+                  whiteSpace: "nowrap"
                 },
 
                 !disabled && {
@@ -403,7 +410,7 @@ export const Button = React.forwardRef<HTMLElement, Props>(
                     backgroundColor: getHoverBackgroundColor({
                       color,
                       feel,
-                      theme,
+                      theme
                     }),
                     color: getTextColor({ color, feel, theme, mode: ":hover" }),
                     ...(feel !== "flat" && {
@@ -411,17 +418,15 @@ export const Button = React.forwardRef<HTMLElement, Props>(
                       boxShadow:
                         theme === "light"
                           ? "0 5px 10px 0 rgba(18, 21, 26, 0.08), inset 0 0 0 1px rgba(18, 21, 26, 0.2), inset 0 -1px 0 0 rgba(18, 21, 26, 0.05)"
-                          : "0 0 0 1px rgba(18, 21, 26, 0.2), 0 5px 10px 0 rgba(18, 21, 26, 0.12), 0 1px 0 0 rgba(18, 21, 26, 0.05)",
-                    }),
+                          : "0 0 0 1px rgba(18, 21, 26, 0.2), 0 5px 10px 0 rgba(18, 21, 26, 0.12), 0 1px 0 0 rgba(18, 21, 26, 0.05)"
+                    })
                   },
                   ":focus, &[data-force-focus-state]": {
                     ...(feel === "flat" && {
                       backgroundColor:
                         theme === "light" ? colors.white : "#000",
                       color:
-                        theme === "light"
-                          ? colors.blue.base
-                          : colors.blue.light,
+                        theme === "light" ? colors.blue.base : colors.blue.light
                     }),
                     // The `box-shadow` property is copied directly from Zeplin for the
                     // light theme. For the dark theme we use a variant of the color to
@@ -436,21 +441,21 @@ export const Button = React.forwardRef<HTMLElement, Props>(
                       color === defaultColor || color === colors.white
                         ? "#2075d6"
                         : getOffsetInPalette(1, "darker", color)
-                    }, inset 0 -1px 0 0 rgba(18, 21, 26, 0.05)`,
+                    }, inset 0 -1px 0 0 rgba(18, 21, 26, 0.05)`
                   },
                   "&:active, &[data-force-active-state], &[aria-expanded=true]": {
                     ...(getTextColor({
                       color,
                       feel,
                       theme,
-                      mode: ":hover",
+                      mode: ":hover"
                     }) && {
                       color: getTextColor({
                         color,
                         feel,
                         theme,
-                        mode: ":active",
-                      }),
+                        mode: ":active"
+                      })
                     }),
 
                     backgroundColor:
@@ -471,9 +476,9 @@ export const Button = React.forwardRef<HTMLElement, Props>(
                           ? "inset 0 0 0 1px rgba(18, 21, 26, 0.2), inset 0 -1px 0 0 rgba(18, 21, 26, 0.05), inset 0 2px 2px 0 rgba(18, 21, 26, 0.12)"
                           : "0 0 0 1px rgba(18, 21, 26, 0.2), 0 1px 4px 0 rgba(18, 21, 26, 0.08), 0 -1px 0 0 rgba(18, 21, 26, 0.16), inset 0 1px 2px 0 rgba(18, 21, 26, 0.42)"
                         : "none",
-                    outline: "0",
-                  },
-                },
+                    outline: "0"
+                  }
+                }
               ])
             )
           ),
@@ -515,7 +520,7 @@ export const Button = React.forwardRef<HTMLElement, Props>(
                       justifyContent: "center",
                       // The `4px` will be on the right to separate the icon from the text
                       margin: iconOnly ? 0 : "0 4px 0",
-                      width: iconSize,
+                      width: iconSize
                     })
                   )}
                 >
@@ -535,7 +540,7 @@ export const Button = React.forwardRef<HTMLElement, Props>(
                       justifyContent: "center",
                       // The `4px` will be on the right to separate the icon from the text
                       margin: iconOnly ? 0 : "0 0 0 4px",
-                      width: iconSize,
+                      width: iconSize
                     })
                   )}
                 >
@@ -543,7 +548,7 @@ export const Button = React.forwardRef<HTMLElement, Props>(
                 </span>
               )}
             </>
-          ),
+          )
         };
 
         return React.cloneElement(as, {
@@ -555,7 +560,7 @@ export const Button = React.forwardRef<HTMLElement, Props>(
             // have to get fancy and intercept the styles to use with the
             // `ClassNames` wrapper.
             as.props.css ? css(as.props.css.styles) : null
-          ),
+          )
         });
       }}
     </ClassNames>

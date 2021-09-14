@@ -28,9 +28,9 @@ function getStatusValues(status) {
   }
 
   return {
-    mainnetStatus: null,
-    testnetStatus: null,
-    canaryNetStatus: null,
+    mainnetStatus: "No connection",
+    testnetStatus: "No connection",
+    canaryNetStatus: "No connection"
   }
 }
 

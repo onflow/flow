@@ -16,7 +16,7 @@ export const BREAKING_CHANGES_RESOURCE =
 
 export const statusPageStatuses = {
   operational: HEALTHY,
-  degraded_performance: DEGRADED,
+  degraded_performance: UNDER_MAINTENANCE,
   partial_outage: UNAVAILABLE,
   major_outage: UNAVAILABLE,
   under_maintenance: UNDER_MAINTENANCE

@@ -15,6 +15,7 @@ import breakpoints from "../utils/breakpoints";
 import { smallCaps } from "../utils/typography";
 
 import PageNav from "./page-nav";
+import StarRating from "./rate-this";
 import SectionNav from "./section-nav";
 
 const Wrapper = styled.div({
@@ -195,19 +196,12 @@ export default function PageContent(props) {
     );
   });
 
-  const editLink = props.githubUrl && (
-    <AsideLink href={props.githubUrl}>
-      <IconGithub /> Edit on GitHub
-    </AsideLink>
-  );
-
   return (
     <Wrapper>
       <InnerWrapper>
         <BodyContent ref={contentRef} className="content-wrapper">
           {props.children}
         </BodyContent>
-        <EditLink>{editLink}</EditLink>
         <PageNav
           prevPage={props.pages[pageIndex - 1]}
           nextPage={props.pages[pageIndex + 1]}
@@ -223,7 +217,11 @@ export default function PageContent(props) {
               imagesLoaded={imagesLoaded === imagesToLoad}
             />
           )}
-          {editLink}
+          {props.githubUrl && (
+            <AsideLink href={props.githubUrl}>
+              <IconGithub /> Edit on GitHub
+            </AsideLink>
+          )}
           {props.discourseUrl && (
             <AsideLink href={props.discourseUrl}>
               <IconDiscourse /> Discuss in Forum
@@ -234,6 +232,7 @@ export default function PageContent(props) {
               <IconPlayground /> Demo in Playground
             </AsideLink>
           )}
+          <StarRating pageInfo={{ hash: props.hash, path: props.pathname }} />
         </Aside>
       )}
     </Wrapper>
