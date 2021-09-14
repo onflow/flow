@@ -2,10 +2,10 @@
 
 | Status        | Proposed                                             |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    |                                                      |
+| **FLIP #**    | [631](https://github.com/onflow/flow/pull/631)       |
 | **Author(s)** | Jeffrey Doyle (jeffrey.doyle@dapperlabs.com),        |
 | **Sponsor**   | Jeffrey Doyle (jeffrey.doyle@dapperlabs.com)         |
-| **Updated**   | 2020-09-14                                           |
+| **Updated**   | 2021-09-14                                           |
 
 ## Overview
 
