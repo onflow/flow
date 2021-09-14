@@ -40,10 +40,10 @@ tar -xvf boot-tools.tar
 
 ```shell:title=CheckSHA256
 sha256sum ./boot-tools/bootstrap
-4f7034f6977fd1fc0980a2a38640db8d085714f7d928a67365a083886cb85814  ./boot-tools/bootstrap
+0416f48da878716878c087233c88206d68cff961bc827c40538655045e0b47e4  ./boot-tools/bootstrap
 
 sha256sum ./boot-tools/transit
-d1ef25d67fe339e4ae5bff150fdf814e66dba3e490965d4bb965ed34ea181e03  ./boot-tools/transit
+8aa66a35375d714f21c757a8531dafed5713a031985f67cd6268522ff4ea4b90  ./boot-tools/transit
 ```
 
 ### Generating your Node ID
@@ -212,7 +212,7 @@ $ ./boot-tools/bootstrap machine-account --address ${YOUR_MACHINE_ACCOUNT_ADDRES
 ```
 
 ```shell:title=Example
-$./boot-tools/bootstrap machine-account --address 0x1de23de44985c7e7 -o ./bootstrap
+$ ./boot-tools/bootstrap machine-account --address 0x1de23de44985c7e7 -o ./bootstrap
 <nil> INF read machine account private key json
 <nil> DBG encoded public machine account key machineAccountPubKey=2743786d1ff1bf7d7026d693a774210eaa54728343859baab62e2df7f71a370651f4c7fd239d07af170e484eedd4f3c2df47103f6c39baf2eb2a50f67bbcba6a
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_6f6e98c983dbd9aa69320452949b81abeab2ac591a247f55f19f4dbf0b477d26/node-machine-account-info.priv.json
@@ -233,6 +233,19 @@ $tree ./bootstrap/
 
 After running this step, you should see the `node-machine-account-info.priv.json` file in your `bootstrap` directory as shown above.
 
+### Verify Machine Account Setup
+
+After finalizing your machine account setup, you should verify its correctness with the `check-machine-account` command:
+
+```shell:title=CheckMachineAccount
+$ ./boot-tools/bootstrap check-machine-account --access-address access.mainnet.nodes.onflow.org:9000 -o ./bootstrap
+<nil> DBG read machine account info from disk hash_algo=SHA3_256 key_index=0 machine_account_address=0x284463aa6e25877c machine_account_pub_key=f847b84051bad4512101640772bf5e05e8a49868d92eaf9ebed41030881d95485769afd28653c5c53216cdcda4554384bb3ff6396a2ac04842422d55f0562496ad8d952802038203e8 signing_algo=ECDSA_P256
+<nil> DBG checking machine account configuration... machine_account_address=0x284463aa6e25877c role=consensus
+<nil> DBG machine account balance: 0.10000000
+<nil> INF 🤖 machine account is configured correctly
+```
+
+This command will detect and provide information about common misconfigurations, or confirm that the machine account is configured correctly.
 
 ## Step 3 - Getting Ready to Start your Flow Node
 

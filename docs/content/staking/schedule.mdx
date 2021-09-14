@@ -17,11 +17,22 @@ If any changes are proposed, the Flow community will be notified in advance.
 
 ![Flow Epoch Schedule](epoch-phase-diagram.png)
 
-Epochs are the set of time when the node operators in the network are constant.
-Epoch's last roughly a week, and the **Epoch Switchover** is defined as the point in time
-when one epoch begins and the next epoch begins, marking a change in the list of valid nodes.
+An Epoch is a period of time when the node operators in the network are constant. At epoch 
+boundaries, newly staked node operators are able to join the network and existing node operators
+which have unstaked may exit the network.
 
-**Epoch Switchovers will happen at 8:00 am PT on Tuesday (3:00 pm UTC)** every week.
+Each epoch lasts approximately a week, and the **Epoch Switchover** is defined as the point in time
+when one epoch ends and the next epoch begins, marking a possible change in the list of valid nodes.
+
+<Callout type="info">
+
+The exact timing of the epoch end is influenced by the number of blocks proposed during the epoch. 
+**All quoted epoch end times are estimates and subject to some variance**. See [Epoch Preparation Protocol](/staking/epoch-preparation/#epoch-length) for details. 
+
+</Callout>
+
+
+**Epoch Switchovers will happen at approximately 8:00 am PT on Tuesday (3:00 pm UTC)** every week.
 Please note that all staking operations that interact with staked tokens will be processed by the protocol at the start of each epoch. 
 
 ## Rewards
