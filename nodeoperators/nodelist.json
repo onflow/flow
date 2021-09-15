@@ -3049,6 +3049,14 @@
     },
     {
         "Role": "access",
+        "Address": "flow-ac-02.nodeasy.com:3569",
+        "NodeID": "4fce43c2dbd52b1f06b7b69e637c8011444301c8e5efc6e90345ad1bfcce1d87",
+        "Stake": 1000,
+        "NetworkPubKey": "ca0ab0c2f1f81b37c71ab81ae6f9edd62bc44cd1f13305745c04c175d0e06d1694b7502eae6c3a5bd7e96e7b2d22a2ed21a794efc5d6fb97faba33867267c278",
+        "StakingPubKey": "87ef8c5ad179f14bc02ddb9747e41f70b38af5cd7873fb9da82daddfc9fd4a959f4f8eda8351ddca747db2d42a5b238507ab916ee743938f5f1c279c3f1300288e425caa7e36202acba4570e6ce3b6cd80338d3a6924abf4cd94df57520b6f01"
+    },
+    {
+        "Role": "access",
         "Address": "access.nodes.flowstarter.app:3569",
         "NodeID": "d81166257d36d2969ff0940cdfa8aca06915d41f0e287db0a1ab342beb75cfa3",
         "Stake": 1000,
