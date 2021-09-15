@@ -117,7 +117,7 @@ const sourceSlugTransformers = {
       .replace("README/", ""),
   "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/"),
   "flow-js-testing-github": (slug) =>
-    slug.replace(/^\/docs\//, "/flow-js-testing/").replace("api/", "")
+    slug.replace(/^\/docs\//, "/flow-js-testing/")
 };
 
 const sources = [
