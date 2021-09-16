@@ -26,9 +26,9 @@ passed, the proposed action is carried out autonomously by the DAO.
 
 What a DAO can do is virtually limitless. However, the mechanic that enables
 community participation in the actions performed by a DAO, or any other
-decentralized ecosystem is contentious. There has yet to be discovered a
-universally accepted set of best practices for enabling decentralized, community
-driven governance in a decentralized system.
+decentralized ecosystem is contentious. A universally accepted set of best practices
+for enabling decentralized, community driven governance in a decentralized system
+is yet to be discovered.
 
 This FLIP aims to gather ideas, feedback, and debate on what might be an ideal
 set of best practices for community driven governance via voting in a
