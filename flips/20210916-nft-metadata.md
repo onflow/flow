@@ -288,7 +288,7 @@ The following examples show the flexibility of this proposal with varying implem
 ### Example one:
 https://github.com/bjartek/flow-nfmt/tree/types is an example of how this standard can be implemented. When you 
 create a GenericNFT you send in the types you want to support as views. These types then become content addressable 
-using the form <address>/<collection>/<id>/<type identifier>
+using the form `<address>/<collection>/<id>/<type identifier>`
 
 A concrete example of this would be:
 `0xf8d6e0586b0a20c7/nft/0/A.f8d6e0586b0a20c7.NFTMetadata.Editioned`
