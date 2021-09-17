@@ -72,53 +72,102 @@ are resolved and created by accessing those immutable members.
 
 ### Basic Example
 
-For example, an NFT implementation for artwork may want to allow for the artist data to be retrieved 
-as an `Artist` struct:
+For example, an NFT implementation for artwork may want to allow for the image data to be retrieved 
+as an `HostedImage` struct:
 ```
-struct Artist {
-    let firstName: String
-    let lastName: String
-    let era: String
-    ...
+struct IPFSImage {
+    let url: String
+    let ipfsHash: String
+    let width: UInt32
+    let height: UInt32
+    let contentType: String
 }
 ```
 
 It could then be retrieved from the NFT using the following:
 ```
    import ArtNFT from 0x01010101
-   ...
-   let artist = nft.resolveView(Type<ArtNFT.Artist>()) as? ArtNFT.Artist
+   
+   let artwork = nft.resolveView(Type<ArtNFT.IPFSImage>()) as? ArtNFT.IPFSImage
+   
 ```
 
-The same NFT author may also want the coordinates of the art made available for viewing:
+The same NFT author may also want expose other metadata about the artwork:
 ```
-struct ArtImage {
-    let url: String
-    let width: UInt32
-    let height: UInt32
+struct Artwork {
+    let name: String
+    let dateCreated: UInt64
+    let medium: String
+    let artistName: String
 }
+
+...
+
+let artwork = nft.resolveView(Type<ArtNFT.Artwork>()) as? ArtNFT.Artwork
 ```
 
-And:
-```
-   import ArtNFT from 0x01010101
-   ...
-   let image = nft.resolveView(Type<ArtNFT.ArtImage>()) as? ArtNFT.ArtImage
+If an art piece had more than one image then they could be retrieved using an array type as such:
 ```
 
-If an art piece had more than one Artist then they could be retrieved using an array type as such:
-```
    import ArtNFT from 0x01010101
+   
    ...
-   let artists = nft.resolveView(Type<[ArtNFT.Artist]>()) as? [ArtNFT.Artist]
+   
+   let images = nft.resolveView(Type<[ArtNFT.IPFSImage]>()) as? [ArtNFT.IPFSImage]
+   
 ```
 
 Or if a more structured approach is desired the NFT author may want to create a composite struct:
 ```
-struct Artists {
-    let primaryArtist: Artist
-    let assistantArtist: Artist
-    let paintMixer: Arist
+struct ArtworkDetail {
+    let artwork: Artwork
+    let primaryImage: IPFSImage
+    let secondaryImage: IPFSImage
+}
+```
+
+Because this proposal relies on the Cadence type system, adding new view types for exposing various
+types of metadata is trivial and very robust. A few examples that one might use as a view type are:
+
+```
+// an image
+pub struct IPFSImage {
+    pub let url: String
+    pub let ipfsHash: String
+    pub let width: UInt32
+    pub let height: UInt32
+    pub let contentType: String
+}
+
+// a video
+pub struct IPFSVideo {
+    pub let url: String
+    pub let ipfsHash: String
+    pub let width: UInt32
+    pub let height: UInt32
+    pub let codec: String
+    pub let container: String
+    pub let contentType: String
+}
+
+// a file stored on the blockchain
+pub struct Mime {
+    pub let type: String
+    pub let bytes: [UInt8]
+}
+
+// a location on the planet
+pub struct GeoPoint {
+    pub let lat: UFix64
+    pub let lng: UFix64
+    pub let projection: String
+}
+
+// a file hosted by a web server with a hash for verifying it's contents
+pub struct URLWithHash {
+    pub let url: String
+    pub let hash: String?
+    pub let hashAlgo: String?
 }
 ```
 
@@ -237,10 +286,12 @@ It could be worth exploring a design-by-contract paradigm to formalize this in a
 The following examples show the flexibility of this proposal with varying implementations.
 
 ### Example one:
-https://github.com/bjartek/flow-nfmt/tree/types is an example of how this standard can be implemented. When you create a GenericNFT you send in the types you want to support as views. These types then become content addressable using the form <address>/<collection>/<id>/<type identifier>
+https://github.com/bjartek/flow-nfmt/tree/types is an example of how this standard can be implemented. When you 
+create a GenericNFT you send in the types you want to support as views. These types then become content addressable 
+using the form <address>/<collection>/<id>/<type identifier>
 
 A concrete example of this would be:
-0xf8d6e0586b0a20c7/nft/0/A.f8d6e0586b0a20c7.NFTMetadata.Editioned
+`0xf8d6e0586b0a20c7/nft/0/A.f8d6e0586b0a20c7.NFTMetadata.Editioned`
 
 ### Example two:
 This example shows how you might implement this specification with the ability to add new view types to your NFT 
