@@ -15,6 +15,25 @@ export const StatusContext = createContext({
   canaryNetStatus: "loading"
 });
 
+function getStatusValues(status) {
+  if (status && !status.error) {
+    return {
+      mainnetStatus: status?.filter((s) => s.id === MAINNET_STATUSPAGE_ID)[0]
+        .status,
+      testnetStatus: status?.filter((s) => s.id === TESTNET_STATUSPAGE_ID)[0]
+        .status,
+      canaryNetStatus: status?.filter((s) => s.id === CANARYNET_STATUSPAGE_ID)[0]
+        .status
+    }
+  }
+
+  return {
+    mainnetStatus: "No connection",
+    testnetStatus: "No connection",
+    canaryNetStatus: "No connection"
+  }
+}
+
 export const StatusContextProvider = (props) => {
   const [status, setStatus] = useState(null);
 
@@ -34,24 +53,7 @@ export const StatusContextProvider = (props) => {
     }
   );
 
-  let values = {
-    mainnetStatus: "No connection",
-    testnetStatus: "No connection",
-    canaryNetStatus: "No connection"
-  };
-  try {
-    values = {
-      mainnetStatus: status?.filter((s) => s.id === MAINNET_STATUSPAGE_ID)[0]
-        .status,
-      testnetStatus: status?.filter((s) => s.id === TESTNET_STATUSPAGE_ID)[0]
-        .status,
-      canaryNetStatus: status?.filter(
-        (s) => s.id === CANARYNET_STATUSPAGE_ID
-      )[0].status
-    };
-  } catch (e) {
-    // swallow the error when status is not defined.
-  }
+  const values = getStatusValues(status);
 
   return (
     <StatusContext.Provider value={values}>
