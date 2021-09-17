@@ -1,16 +1,18 @@
-# Title of FLIP
+Comment Period throughout Flip-Fest (ends Oct 30)
 
-| Status        | (Proposed / Rejected / Accepted / Implemented)       |
+# Team Coelacanth's Flip-Fest NFT Standard
+
+| Status        | Proposed      |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN)       |
-| **Author(s)** | Chance Santana-Wees (figs999@gmail.com)			   |
-| **Updated**   | 2021-09-16                                           |
+| **FLIP #**    | [635](https://github.com/onflow/flow/pull/635)       |
+| **Author(s)** | Chance Santana-Wees (figs999@gmail.com)	       |
+| **Updated**   | 2021-09-17                                           |
 
 ## Objective
 
 Flip-fest issue #16 "New Standard: NFT metadata"
 
-NFTs are more than just numbers and bytes — at their best, they are rich 
+NFTs are more than just numbers and bytes â€” at their best, they are rich 
 representations of digital goods that people around the world can fall in 
 love with. The current Flow NFT interface, however, does not include a metadata 
 standard that allows these representations to flourish. NFTs should be able to 
@@ -44,7 +46,7 @@ This Flip is for a new standard which adds client and contract parsable meta-dat
 to the default NFT interface. This is accomplished via a new default contract
 "MetaDataUtils".
 
-```cadence
+```
 pub contract MetaDataUtil {
     //Utilizing MIME types as existing standard, this will allow metadata to be more easily parsed by a browser
     //Any non-conformant type should use a MIME type with the following syntax "application.cadence+T" where T is the Type
@@ -53,13 +55,13 @@ pub contract MetaDataUtil {
         pub let MIME : String
         //Is the data a link to a file on an external service (ipfs for instance)
         pub let isLink : Bool
-        //if the data is compressed, this IAMA MIME type of the data inside the compressed bytes
-        pub let compressedMIME : String?
+        //if the data is compressed or a link, this IAMA MIME type of the actual final data (after download/decompression)
+        pub let innerMIME : String?
 
-        init(MIME : String, isLink : Bool, compressedMIME : String?)  {
+        init(MIME : String, isLink : Bool, innerMIME : String?)  {
             self.MIME = MIME
             self.isLink = isLink
-            self.compressedMIME = compressedMIME
+            self.innerMIME = innerMIME
         }
     }
 
@@ -84,34 +86,124 @@ pub contract MetaDataUtil {
         pub let dataProvider: Capability<&{IMetaDataProvider}>
     }
 
+    //Solid version of MetaDataHolder that can be passed around or returned in script call for use off-chain
     pub struct MetaData {
-        pub let elements : [MetaDataElement]
+        pub let data : AnyStruct
+        pub let tags : [String]
+        pub let type : DataType
+        pub let mutable : Bool
+
+        init(data : AnyStruct, type : DataType, tags : [String], mutable : Bool) {
+            self.data = data
+            self.type = type
+            self.tags = tags
+            self.mutable = mutable
+        }
+    }
+
+    pub struct SchemaElement {
+        pub let requiredTags : [String]
+        pub let validMIMETypes : [String]
+        pub let schemaData : [MetaData]
+        init(requiredTags : [String], validMIMETypes : [String]) {
+            self.requiredTags = requiredTags
+            self.validMIMETypes = validMIMETypes
+            self.schemaData = []
+        }
+    }
+
+    pub struct Schema {
+        pub let elements : [SchemaElement]
+        init(elements : [SchemaElement]) {
+            self.elements = elements
+        }
+    }
+
+    pub enum SchemaRetrievalMode : UInt8 {
+        //Schema always is returned, even if empty
+        pub case ALLOW_NONE
+        //Schema is returned if any MetaData is found
+        pub case REQUIRE_ANY
+        //Schema is returned only if all SchemaElements are found
+        pub case REQUIRE_ALL
+        //Schema is returned if any MetaData is found, but only if each SchemaElement has 1 or less matches
+        pub case SINGLE_DATA_ANY
+        //Schema is only returned if exactly one MetaData is found per SchemaElement
+        pub case SINGLE_DATA_ALL
+    }
+
+    pub struct MetaDataHolder {
+        access(self) let elements : [MetaDataElement]
 
         init(metaData : [MetaDataElement]?) {
             self.elements = metaData ?? []
         }
 
-        pub fun getMetaDataByTag(tag : String) : [MetaDataElement] {
-            var taggedElements : [MetaDataElement] = []
+        pub fun getMetaDatasByTag(tag : String) : [MetaData] {
+            var taggedElements : [MetaData] = []
             for element in self.elements {
                 if (element.hasTag(tag : tag)) {
-                    taggedElements.append(element)
+                    taggedElements.append(element.toMetaData())
                 }
             }
             return taggedElements
         }
 
-        pub fun conformsToSchema(schemaTags : [String]) : Bool {
-            var tags : [String] = []
+        pub fun getMetaDatasBySchemaElement(schemaElement: SchemaElement) : [MetaData] {
+            let matchingElements : [MetaData] = []
             for element in self.elements {
-                tags.appendAll(element.getTags())
-            }
-            for tag in schemaTags {
-                if(!tags.contains(tag)) { 
-                    return false
+                if(element.hasAllTags(requiredTags: schemaElement.requiredTags) && element.conformsToTypeRequirements(validMIMETypes: schemaElement.validMIMETypes)) {
+                    let dataType = element.getDataType()
+                    matchingElements.append(MetaData(data: element.getData(), type: dataType, tags: element.getTags(), mutable: element.isMutable()))
                 }
             }
-            return true
+
+            return matchingElements
+        }
+
+        //When successfull, this method returns the schema object with the MetaData filled into the SchemeElements
+        //If the NFTs metadata does not conform to the schema with the chosen SchemaRetrievalMode, it returns nil
+        //Checking the return of this method to see if it is nil can be used to check if the NFT conforms to the required Schema
+        pub fun retrieveSchemaData(schema : Schema, retrievalMode : SchemaRetrievalMode) : Schema? {
+            var foundAll = true
+            var foundAny = false
+            var allSingle = true
+            for schemaElement in schema.elements {
+                let found = self.getMetaDatasBySchemaElement(schemaElement: schemaElement)
+                schemaElement.schemaData.appendAll(found)
+
+                if(found.length > 0) {
+                    foundAny = true
+                    if(found.length > 1) {
+                        allSingle = false
+                    }
+                } else {
+                    foundAll = false
+                }
+            }
+
+            switch retrievalMode {
+                case SchemaRetrievalMode.SINGLE_DATA_ALL:
+                    if(!foundAll && !allSingle) {
+                        return nil
+                    }
+                case SchemaRetrievalMode.SINGLE_DATA_ANY:
+                    if(!foundAny && !allSingle) {
+                        return nil
+                    }
+                case SchemaRetrievalMode.REQUIRE_ALL:
+                    if(!foundAll) {
+                        return nil
+                    }
+                case SchemaRetrievalMode.REQUIRE_ANY:
+                    if(!foundAll) {
+                        return nil
+                    }
+                default:
+                    break
+            }
+
+            return schema
         }
     }
 
@@ -167,6 +259,36 @@ pub contract MetaDataUtil {
             return self.metaData.getTags().contains(tag)
         }
 
+        pub fun hasAllTags(requiredTags : [String]) : Bool {
+            let tags : [String] = self.metaData.getTags()
+            for tag in requiredTags {
+                if(!tags.contains(tag)) {
+                    return false
+                }
+            }
+
+            return true
+        }
+
+        pub fun conformsToTypeRequirements(validMIMETypes : [String]) : Bool {
+            if(validMIMETypes.length == 0) {
+                return true
+            }
+            let dataType = self.getDataType()
+            let mime = dataType.innerMIME ?? dataType.MIME
+            for type in validMIMETypes {
+                if(type == mime) {
+                    return true
+                }
+            }
+            return false
+        }
+
+        pub fun toMetaData() : MetaData {
+            let dataType = self.getDataType()
+            return MetaData(data: self.getData(), type: dataType, tags: self.getTags(), mutable: self.isMutable())
+        }
+
         //This method can be checked to determine if the associated metadata is able to be altered by developers
         pub fun isMutable() : Bool {
             return self.metaData.isInstance(Type<AnyStruct{IMutableMetaData}>())
@@ -175,13 +297,59 @@ pub contract MetaDataUtil {
 }
 ```
 
-In this standard:
-* Every NFT possesses a MetaData property which acts as a wrapper around MetaDataElements
+### General Overview
+* Every NFT possesses a MetaDataHolder property which acts as a wrapper around MetaDataElements
 * MetaDataElements are wrapped custom structs that are created at the time the NFT is minted.
 * MetaDataElements cannot be added after the NFT is minted, but Mutable elements can allow data to be modifiable.
 * MetaDataElements are organized by String tags, and each metadata element may have multiple tags. This allows NFTs to conform to multiple tag schemas.
 * Multiple MetaDataElements can share a tag. This is useful for broad catergories of metadata such as "equipment", but can also be used to provide multiple media types for the same tag to conform to varying schema requirements.
 
+### MetaDataElements
+MetaDataElements are wrappers around two possible types of structs, one of which is immutable and the other of which is Mutable.
+MetaDataElements possess 3 accessible functions that access stored properties 
+* The getData function can return an object of any AnyStruct type, and contains the actual metadata itself
+* The getDataType function returns a DataType object that describes the MIME type of the object for reference by off-chain systems
+  * MIME type is used as it is a widely used standard that can already be understood by browsers
+  * DataTypes also contain isLink, which is true if the data element describes a link to externaly hosted data.
+  * innerMIME is used to describe the final data type if the data blob should be decompressed or downloaded by the client 
+
+#### IImmutableElements
+Immutable elements can use default types or be defined in custom structs that implement ITaggedMetaData and IImmutableMetaData. 
+* Defining a custom class allows the data elements to be immutable while allowing a developer to upgrade the contract that defines the struct to alter the tags.
+
+#### IMutableElements
+Mutable elements store Capability pointers to IMetaDataProvider instances that can be stored anywhere.
+* Mutable elements can be used for metadata that can be modified, such as for leveling up a character.
+* Mutable elements can also be used for metadata that is shared between multiple NFTs, to minimize redundant data storage.
+  * A Side-effect (benefit?) here is that if the instance is stored in a contract in the developers account, the developer will need to cover the metaData storage costs instead of the NFT holder.
+
+### Schema System
+Schema, SchemaElement, and SchemaRetrievalMode are data types primarily for off-chain accessing of MetaData, although it may be useful for certain on-chain functionality
+* MetaDataHolder.retrieveSchemaData can be used to retrieve solid copies of the NFTs metadata for use off-chain via script
+* If the Schema complies, MetaDataHolder.retrieveSchemaData returns a Schema object which contains the MetaData in its elements[?].schemaData properties
+* If compliance fails, the method returns nil
+
+The schema system allows dApps to attempt to access the metadata of an NFT by providing a known standard. SchemaRetrievalMode allows the caller to require varying degrees of schema compliance.
+Schemas can allow multiple valid MIME types for the data allowing NFTs to have flexibility in their data storage types for media files.
+Schemas can require multiple tags per element, which can allow interesting functionality for certain applications, such as requiring a \["Equipment","Helmet"].
+Because MetaDataElements can possess multiple tags, it allows NFT developers to update their NFTs MetaData to conform to a variety of schemas with the same data.
+
+	For instance, if DEX-A expects NFTs to comply with:
+	-tag: ["name"]
+	-tag: ["text"]
+	-tag: ["img"]
+
+	while Dex-B expects NFTs to comply with:
+	-tag: ["title"]
+	-tag: ["description"]
+	-tag: ["portrait"]
+	
+	An NFT can comply with both by providing elements tagged:
+	["name","title"]
+	["text","description"]
+	["img","portrait"]
+
+### Modifications to Standard
 The only modification to the existing NFT interface is the addition of the metadata property:
 ```
 // Interface that the NFTs have to conform to
@@ -200,23 +368,7 @@ pub resource NFT: INFT {
 }
 ```
 
-Further explanation of implementation:
-
-MetaDataElements are wrappers around two possible types of structs, one of which is immutable and the other of which is Mutable.
-MetaDataElements possess 3 accessible functions that access stored properties 
-* The getData function can return an object of any AnyStruct type, and contains the actual metadata itself
-* The getDataType function returns a DataType object that describes the MIME type of the object for reference by off-chain systems
-  * MIME type is used as it is a widely used standard that can already be understood by browsers
-  * DataTypes also contain isLink, which is true if the data element describes a link to externaly hosted data.
-  * compressedMIME is used to describe the internal data type if the data blob should be decompressed by the client 
-
-Immutable elements can use default types or be defined in custom structs that implement ITaggedMetaData and IImmutableMetaData. 
-* Defining a custom class allows the data elements to be immutable while allowing a developer to upgrade the contract that defines the struct to alter the tags.
-
-Mutable elements store Capability pointers to IMetaDataProvider instances that can be stored anywhere.
-* Mutable elements can be used for metadata that can be modified, such as for leveling up a character.
-* Mutable elements can also be used for metadata that is shared between multiple NFTs, to minimize redundant data storage.
-  * A Side-effect (benefit?) here is that if the instance is stored in a contract in the developers account, the developer will need to cover the metaData storage costs instead of the NFT holder.
+### Other Contracts
 
 Additionally, this standard proposes two more default contracts that include some common DataTypes Metadata implementations.
 
@@ -225,14 +377,14 @@ The vast majority of generic client-facing metadata will conform to the TextPlai
 ```
 pub contract MIME {
     pub let TextPlain : MetaDataUtil.DataType
-    pub let HttpLink : MetaDataUtil.DataType
+    pub let LinkedPNG : MetaDataUtil.DataType
     pub let ImagePNG : MetaDataUtil.DataType
     pub let Numeric : MetaDataUtil.DataType
     pub let AnyStruct : MetaDataUtil.DataType
 
     init() {
         self.TextPlain = MetaDataUtil.DataType("text/plain",false,nil)
-        self.HttpLink = MetaDataUtil.DataType("text/plain",true,nil)
+        self.LinkedPNG = MetaDataUtil.DataType("text/plain",true,"image/png")
         self.ImagePNG = MetaDataUtil.DataType("image/png",false,nil)
         //Not an official MIME type, but can be used for numeric data that will be returned in cadence object format
         self.Numeric = MetaDataUtil.DataType("application/cadence+Number",false,nil)
@@ -465,25 +617,25 @@ pub contract CommonMetaDataElements {
 }
 ```
 
-### Drawbacks
+## Drawbacks
 
 Implementing a Metadata standard of any kind will obsolete existing NFT projects,
 which will force them to go through a re-minting process of some kind in order to
 take advantage of the new functionality.
 
-### Performance Implications
+## Performance Implications
 
-Metadata will of course impact storage size of NFTs.
+Metadata will, of course, impact storage size of NFTs.
 
-### Dependencies
+## Dependencies
 
 Cadence
 
-### Engineering Impact
+## Engineering Impact
 
 Minimal. Only adding new default contracts.
 
-### Tutorials and Examples
+## Tutorials and Examples
 
 The code shown in the Design Proposal includes a number of standard implementations of
 meta-data types.
@@ -637,7 +789,7 @@ pub contract ExampleNFT: NonFungibleToken {
 }
 ```
 
-### Compatibility
+## Compatibility
 
 Current NFT projects that implement the NonFungibleToken contract interface will
 be made obsolete and will require a migration process to use NonFungibleToken2 if
@@ -647,7 +799,7 @@ There is a risk that implementations of NonFungibleToken could be left out of
 various future projects (such as exchanges) that rely on all assets implementing the
 NonFungibleToken2 contract interface, if they do not migrate to new interface.
 
-### User Impact
+## User Impact
 
 None
 
