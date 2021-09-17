@@ -29,6 +29,7 @@ packages & tools that could be used by the applications that desire it.
 
 ## Motivation
 
+<<<<<<< HEAD
 One of the many features of Flow is that transaction fees can be paid by an
 account separate from the authorizers of that transaction. With this feature,
 applications that wish to provide "free" transactions for their users could opt
@@ -69,6 +70,43 @@ and tools that applications could use instead of having to build an
 implementation of them themselves. These re-usable components would lower the
 overall complexity and effort required of a developer who wishes that their
 application provide "free" transactions for their users.
+=======
+One of the many features of Flow is that transaction fees can be paid by an account
+separate from the authorizers of that transaction. With this feature, applications that wish to 
+provide "free" transactions for their users could opt to pay for their users' 
+transactions themselves. They would do this by producing a signature for the 
+transaction as the payer of that transaction. Upon receiving this transaction, 
+the Flow network would then deduct transaction fees from the payer, not any of 
+the authorizers.
+
+For a user to pay their transaction fees themselves, that user would have to have FLOW
+in their account. This can lead to a situation where a first-time Flow user attempts to engage with an application
+that does not employ a Transaction Payer Service, and they would first need to acquire FLOW before engaging with
+that application. This is an undesireable user experience, as it significantly raises
+the friction required of first time Flow users to engage with these applications. Many users who are unfamiliar 
+with blockchain applications will not understand or empathize with this requirement. Thus it is crucial
+that applications who wish to provide a low friction experience for their users pay transaction fees on
+their behalf.
+
+Some FCL compatible wallets choose to act as the payer of the transactions their users
+sign. They do this by swapping out their users account with an account of their own,
+if their users are specified as the payer of a transaction. This allows wallets with
+this feature to provide "free" transactions for their users. While this makes for a 
+desirable user experience for those that use wallets with this feature, applications do not 
+get the guarantee that _all_ of their users will get this user experience. 
+This is because users are able to use whichever FCL compatible wallet they desire with the FCL 
+compatible applications they use, and not all FCL compatible wallets will strictly choose to provide this feature.
+
+Applications that wish to guarantee their users can submit transactions
+without having to pay transaction fees for them will then have to pay those fees themselves. 
+To pay transaction fees, it's expected that applications would need to build a Transaction Payer Service that is able
+to receive a transaction signable and then produce a signature for it.
+
+A re-usable Transaction Payer Service would exist as project / set of packages and tools that applications could use
+instead of having to build an implementation of them themselves. These re-usable components
+would lower the overall complexity and effort required of a developer who wishes that 
+their application provide "free" transactions for their users.
+>>>>>>> e7d67effea7ddbcbb22924f1f6b2c1ac9d6eef5b
 
 ## User Benefit
 
@@ -339,6 +377,7 @@ accounts they specify into `TPSAccountResolver` and `TPSSigner` as configuration
 have a sufficient FLOW balance at all times to pay for transactions they sign
 for.
 
+<<<<<<< HEAD
 > To re-iterate, this is just an example implementation of what _might_ work.
 Your implementation may vary extensively.
 
@@ -346,6 +385,15 @@ Your implementation may vary extensively.
 
 Since the TPS would be responsible for paying for transactions, it should have
 sufficient security mechanisms in place to safeguard itself.
+=======
+> To re-iterate, this is just an example implementation of what _might_ work. Your
+implementation may vary significantly.
+
+### Drawbacks
+
+Since the TPS (Transaction Payer Service) would be responsible for paying for transactions, it should have suffient
+security mechanisms in place to safeguard itself.
+>>>>>>> e7d67effea7ddbcbb22924f1f6b2c1ac9d6eef5b
 
 Since transaction fees can be dynamic, increasing depending on the amount of work
 the network would need to perform for each transaction, the payer service should
