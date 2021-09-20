@@ -344,10 +344,7 @@ const sections = [
     patterns: ["dapp-development/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
-      null: [
-        "[Home](/)",
-        "dapp-development/index",
-      ],
+      null: ["[Home](/)", "dapp-development/index"],
       "Building Your Dapp": [
         "dapp-development/flow-dapp-anatomy",
         "dapp-development/user-accounts-and-wallets",
@@ -361,7 +358,7 @@ const sections = [
         "dapp-development/testnet-deployment",
         "dapp-development/testnet-testing",
         "dapp-development/mainnet-deployment"
-      ],
+      ]
     }
   },
   {
@@ -462,26 +459,6 @@ const sections = [
         "core-contracts/locked-tokens",
         "core-contracts/staking-collection",
         "core-contracts/non-fungible-token"
-      ],
-      FAQ: [
-        "[Builders/Developers](/faq/developers)",
-        "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)"
-      ]
-    }
-  },
-  {
-    sourceInstanceName: "docs",
-    patterns: ["dapp-deployment/**/*"],
-    sidebarAlwaysExpanded: true,
-    sidebar: {
-      null: ["[Home](/)"],
-      "Dapp Deployment Guide": [
-        "dapp-deployment/index",
-        "dapp-deployment/contract-testing",
-        "dapp-deployment/testnet-deployment",
-        "dapp-deployment/testnet-testing",
-        "dapp-deployment/mainnet-deployment"
       ],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
