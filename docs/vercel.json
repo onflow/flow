@@ -447,27 +447,27 @@
       "permanent": false
     },
     {
-      "source": "/dapp-deployment/index",
+      "source": "/dapp-deployment/index/",
       "destination": "/dapp-development/deployment",
       "permanent": true
     },
     {
-      "source": "/dapp-deployment/contract-testing",
+      "source": "/dapp-deployment/contract-testing/",
       "destination": "/dapp-development/contract-testing",
       "permanent": true
     },
     {
-      "source": "/dapp-deployment/testnet-deployment",
+      "source": "/dapp-deployment/testnet-deployment/",
       "destination": "/dapp-development/testnet-deployment",
       "permanent": true
     },
     {
-      "source": "/dapp-deployment/testnet-testing",
+      "source": "/dapp-deployment/testnet-testing/",
       "destination": "/dapp-development/testnet-testing",
       "permanent": true
     },
     {
-      "source": "/dapp-deployment/mainnet-deployment",
+      "source": "/dapp-deployment/mainnet-deployment/",
       "destination": "/dapp-development/mainnet-deployment",
       "permanent": true
     }
