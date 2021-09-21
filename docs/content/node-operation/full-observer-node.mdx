@@ -4,26 +4,28 @@ sidebar_title: Observer Node
 description: Running your own full observer node
 ---
 
-A full observer node is an unstaked access node that follows the flow consensus and serves the Access API using local data. SendTransaction and script execution requests are forwarded to an upstream staked access node. This allows anyone to setup an access node for local queries without the need for staking.
+<Callout type="warning">
+This is an open beta and may contain bugs or be missing functionality.
+</Callout>
 
-The node does the following:
-* Maintains state by following a staked access node
-* Verifies and stores blocks received from its upstream staked access node
-* Serves the Access API
-    * Get requests are processed using the node's local state
-    * SendTransaction and script executions are forwarded to the configured staked access node
-* Participates in the LibP2P network for unstaked nodes
+A full observer node is an unstaked access node that follows the flow consensus and serves the Access API using local data. This allows anyone
+to setup an access node for local queries without the need for staking.
 
-The node does not:
-* Sync the full blockchain history. For archival functionality, see [DLP](#data-provisioning-service).
-* Participate in the staked flow network.
+## Running a node
 
-## Data Provisioning Service:
+The full observer node was built in collaboration with the `optakt` team. The primary way to run a full observer node is with the Flow Data Provisioning Service (DPS).
 
-The [Data Provisioning Service](https://github.com/optakt/flow-dps/) provides access all flow blockchain data, current and historical, from a single API.
+### Data Provisioning Service
 
-The full observer node functionality is provided by the [DPS Live](https://github.com/optakt/flow-dps/tree/master/cmd/flow-dps-live) application.
+The [Data Provisioning Service](https://github.com/optakt/flow-dps/) provides efficient access to the full history of flow blockchain data from a single
+API. DPS was built by the `optakt` team and greatly streamlines usecases that require archival data.
 
-## Custom Implementations:
+For more information on DPS and the rational behind it, see their [documentation](https://github.com/optakt/flow-dps/blob/master/docs/introduction.md)
 
-If you're looking to build a stand-alone observer node or integrate one into another system, the following example implementation will get you started: https://github.com/onflow/full-observer-node-example
+The full observer node functionality is provided by the [DPS Live](https://github.com/optakt/flow-dps/tree/master/cmd/flow-dps-live) component, which
+comsumes live state updates from the flow network.
+
+### Custom Implementations
+
+If you're looking to build a stand-alone observer node or integrate one into another system, the following example implementation will get you
+started: https://github.com/onflow/full-observer-node-example
