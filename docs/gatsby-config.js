@@ -540,6 +540,7 @@ const sections = [
       "Operator Guides": [
         "node-operation/node-bootstrap",
         "node-operation/machine-existing-operator",
+        "node-operation/db-encryption-existing-operator",
         "node-operation/monitoring-nodes",
         "node-operation/spork",
         "node-operation/past-sporks",
