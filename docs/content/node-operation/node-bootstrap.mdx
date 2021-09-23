@@ -38,6 +38,8 @@ curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
 tar -xvf boot-tools.tar
 ```
 
+$$$$$ TODO UPDATE BEFORE MERGING $$$$$$
+
 ```shell:title=CheckSHA256
 sha256sum ./boot-tools/bootstrap
 0416f48da878716878c087233c88206d68cff961bc827c40538655045e0b47e4  ./boot-tools/bootstrap
@@ -103,10 +105,13 @@ $./boot-tools/bootstrap key --address "198.123.42.10:3569" --role consensus  -o 
 <nil> INF generated networking key
 <nil> DBG will generate staking key
 <nil> INF generated staking key
+<nil> DBG will generate db encryption key
+<nil> INF generated db encryption key
 <nil> DBG assembling node information address=198.123.42.10:3569
 <nil> DBG encoded public staking and network keys networkPubKey=7f31ae79017a2a58a5e59af9184f440d08885a16614b2c4e361019fa72a9a1a42bf85b4e3f9674782f12ca06afd9782e9ccf19496baed069139385b82f8f40f6 stakingPubKey=829d086b292d84de8e7938fd2fafa8f51a6e025f429291835c20e59d9e25665febf24fa59de12a4df08be7e82c5413180cc7b1c73e01f26e05344506aaca4fa9cc009dc1c33f8ba3d7c7509e86d3d3e7341b43b9bf80bb9fba56ae0b3135dd72
 <nil> INF wrote file bootstrap/public-root-information/node-id
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-info.priv.json
+<nil> INF wrote file bootstrap/private-root-information/private-node-info_5e44ad5598bb0acb44784f629e84000ffea34d5552427247d9008ccf147fb87f/secretsdb-key
 <nil> INF wrote file bootstrap/public-root-information/node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
 <nil> DBG will generate machine account key
 <nil> INF generated machine account key
@@ -120,6 +125,7 @@ $tree ./bootstrap/
 │   └── private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9
 │       ├── node-info.priv.json
 │       └── node-machine-account-key.priv.json
+│       └── secretsdb-key
 └── public-root-information
     ├── node-id
     └── node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
@@ -224,6 +230,7 @@ $tree ./bootstrap/
 │       ├── node-info.priv.json
 │       ├── node-machine-account-info.priv.json
 │       └── node-machine-account-key.priv.json
+│       └── secretsdb-key
 └── public-root-information
     ├── node-id
     └── node-info.pub.d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160.json
