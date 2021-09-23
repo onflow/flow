@@ -6,4 +6,7 @@ node_modules/
 public/*
 .cache
 
-.vercel
+.vercelclear
+
+
+.env.local

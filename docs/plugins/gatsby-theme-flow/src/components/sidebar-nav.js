@@ -51,7 +51,7 @@ const StyledList = styled.ul({
   listStyle: "none"
 });
 
-const StyledListItem = props => {
+const StyledListItem = (props) => {
   const Li = styled.li({
     ...props.extraStyles,
     fontSize: "15px",
@@ -175,7 +175,7 @@ const StyledOutlinkIcon = styled(IconExternalLink)(size(14), {
 });
 
 function isPageSelected(path, pathname) {
-  const [a, b] = [withPrefix(path), pathname].map(string =>
+  const [a, b] = [withPrefix(path), pathname].map((string) =>
     string.replace(/\/$/, "")
   );
   return a === b;
@@ -232,7 +232,7 @@ function NavItems(props) {
                 }
                 to={page.path}
                 title={page.description}
-                onClick={e => {
+                onClick={(e) => {
                   mixpanel.track(`Homepage_nav_${page.path}_clicked`);
                   props.onLinkClick(e);
                 }}
@@ -258,16 +258,16 @@ export default function SidebarNav(props) {
   const docset = useContext(NavItemsContext);
 
   const [allExpanded, setAllExpanded] = useState(false);
-  const categories = props.contents.filter(content => content.title);
-  const [root] = props.contents.filter(content => !content.title);
+  const categories = props.contents.filter((content) => content.title);
+  const [root] = props.contents.filter((content) => !content.title);
 
   function toggleAll() {
     const checkboxes = Array.from(
       categoriesRef.current.querySelectorAll('input[type="checkbox"]')
     );
 
-    const expanded = !checkboxes.every(checkbox => checkbox.checked);
-    checkboxes.forEach(checkbox => (checkbox.checked = expanded));
+    const expanded = !checkboxes.every((checkbox) => checkbox.checked);
+    checkboxes.forEach((checkbox) => (checkbox.checked = expanded));
     setAllExpanded(expanded);
 
     if (props.onToggleAll) {
@@ -281,7 +281,9 @@ export default function SidebarNav(props) {
     const checkboxes = parentElement.parentElement.querySelectorAll(
       'input[type="checkbox"]'
     );
-    const expanded = Array.from(checkboxes).every(checkbox => checkbox.checked);
+    const expanded = Array.from(checkboxes).every(
+      (checkbox) => checkbox.checked
+    );
     setAllExpanded(expanded);
 
     if (props.onToggleCategory) {
@@ -322,18 +324,15 @@ export default function SidebarNav(props) {
           onLinkClick={props.onLinkClick}
         />
       )}
-      {!props.alwaysExpanded &&
-        categories.length > 1 && (
-          <ExpandAll onClick={toggleAll}>
-            {React.createElement(
-              allExpanded ? IconCollapseList : IconExpandList
-            )}
-            {allExpanded ? "Collapse" : "Expand"} all
-          </ExpandAll>
-        )}
+      {!props.alwaysExpanded && categories.length > 1 && (
+        <ExpandAll onClick={toggleAll}>
+          {React.createElement(allExpanded ? IconCollapseList : IconExpandList)}
+          {allExpanded ? "Collapse" : "Expand"} all
+        </ExpandAll>
+      )}
       <div ref={categoriesRef}>
         {categories.map((category, index) => {
-          const isSelected = category.pages.some(page =>
+          const isSelected = category.pages.some((page) =>
             isPageSelected(page.path, props.pathname)
           );
 
