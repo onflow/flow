@@ -16,7 +16,7 @@ import {
   IconCollapseList,
   IconExternalLink,
   IconChevronUp,
-  getProjectIcon,
+  getProjectIcon
 } from "../ui/icons";
 import { smallCaps } from "../utils/typography";
 import TrackingLink from "../../../../content/components/tracking-link";
@@ -37,22 +37,22 @@ const ExpandAll = styled.button(smallCaps, {
   cursor: "pointer",
   color: "inherit",
   ":hover": {
-    opacity: theme.hoverOpacity,
+    opacity: theme.hoverOpacity
   },
   svg: {
     ...size(12),
-    marginRight: 8,
-  },
+    marginRight: 8
+  }
 });
 
 const StyledList = styled.ul({
   marginLeft: 0,
   marginBottom: 32,
-  listStyle: "none",
+  listStyle: "none"
 });
 
 const StyledListItem = (props) => {
-  const LI = styled.li({
+  const Li = styled.li({
     ...props.extraStyles,
     fontSize: "15px",
     lineHeight: 1.23,
@@ -60,15 +60,15 @@ const StyledListItem = (props) => {
       color: "inherit",
       textDecoration: "none",
       ":hover": {
-        opacity: theme.hoverOpacity,
+        opacity: theme.hoverOpacity
       },
       "&.active": {
         color: theme.primary,
-        pointerEvents: "none",
-      },
-    },
+        pointerEvents: "none"
+      }
+    }
   });
-  return <LI>{props.children}</LI>;
+  return <Li>{props.children}</Li>;
 };
 
 const Category = styled.div({
@@ -76,8 +76,8 @@ const Category = styled.div({
   zIndex: 0,
   [StyledList]: {
     position: "relative",
-    zIndex: 2,
-  },
+    zIndex: 2
+  }
 });
 
 const categoryTitleStyles = {
@@ -92,20 +92,20 @@ const categoryTitleStyles = {
   ...smallCaps,
   svg: size(10),
   "&.active": {
-    color: theme.text3,
-  },
+    color: theme.text3
+  }
 };
 
 const CategoryTitle = styled.div(categoryTitleStyles);
 const CategoryLink = styled(Link)(categoryTitleStyles, {
   textDecoration: "none",
   ":hover": {
-    opacity: theme.hoverOpacity,
-  },
+    opacity: theme.hoverOpacity
+  }
 });
 
 const DocsetMenuWrapper = styled.div({
-  marginBottom: "2rem",
+  marginBottom: "2rem"
 });
 
 const StyledCheckbox = styled.input({
@@ -117,31 +117,31 @@ const StyledCheckbox = styled.input({
   opacity: 0,
   zIndex: 1,
   [`:hover ~ ${CategoryTitle}`]: {
-    opacity: theme.hoverOpacity,
+    opacity: theme.hoverOpacity
   },
   ":not(:checked) ~": {
     [`${CategoryTitle} svg`]: {
-      transform: "scaleY(-1)",
+      transform: "scaleY(-1)"
     },
     [StyledList]: {
-      display: "none",
-    },
-  },
+      display: "none"
+    }
+  }
 });
 
 const StyledTrackingLink = styled(TrackingLink)(() => ({
   color: "inherit",
   textDecoration: "none",
   ":hover": {
-    color: theme.text3,
-  },
+    color: theme.text3
+  }
 }));
 
 const ProjectIcon = styled.div({
   backgroundSize: "100%",
   height: "1.5em",
   width: "1.5rem",
-  marginRight: "0.42rem",
+  marginRight: "0.42rem"
 });
 
 function ProjectLink(props) {
@@ -171,7 +171,7 @@ function ProjectLink(props) {
 const StyledOutlinkIcon = styled(IconExternalLink)(size(14), {
   verticalAlign: -1,
   marginLeft: 8,
-  color: theme.text3,
+  color: theme.text3
 });
 
 function isPageSelected(path, pathname) {
@@ -193,7 +193,7 @@ function getStylesForNavItem(page) {
         marginLeft: "-1rem",
         borderRadius: "1000px",
         boxShadow: ` 20px 20x 60px #1b63b6,
-        -20px -20px 60px #2587f6`,
+        -20px -20px 60px #2587f6`
       };
     case "Node Operation Quick Guide":
       return {
@@ -204,7 +204,7 @@ function getStylesForNavItem(page) {
         borderRadius: "1000px",
         boxShadow: ` 20px 20x 60px #1b63b6,
         -20px -20px 60px #2587f6`,
-        background: colors.blue.lightest,
+        background: colors.blue.lightest
       };
     default:
       return {};
@@ -250,7 +250,7 @@ function NavItems(props) {
 NavItems.propTypes = {
   pages: PropTypes.array.isRequired,
   pathname: PropTypes.string.isRequired,
-  onLinkClick: PropTypes.func,
+  onLinkClick: PropTypes.func
 };
 
 export default function SidebarNav(props) {
@@ -296,10 +296,10 @@ export default function SidebarNav(props) {
       {props.showMainNav && (
         <DocsetMenuWrapper>
           {docset
-            .filter((navItem) => {
+            .filter(navItem => {
               return !navItem.omitLandingPage;
             })
-            .map((navItem) => {
+            .map(navItem => {
               return (
                 <StyledTrackingLink
                   key={navItem.url}
@@ -376,5 +376,5 @@ SidebarNav.propTypes = {
   pathname: PropTypes.string.isRequired,
   onToggleAll: PropTypes.func,
   onToggleCategory: PropTypes.func,
-  onLinkClick: PropTypes.func,
+  onLinkClick: PropTypes.func
 };

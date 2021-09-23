@@ -13,7 +13,7 @@ The hardware your Node will need varies depending on the role your Node will pla
 | ---------------- | ------- | ------ | ------ |
 | **Collection**   | 2 cores | 16 GB  | 200 GB |
 | **Consensus**    | 2 cores | 16 GB  | 200 GB |
-| **Execution**    | 16 cores| 128 GB | 2 TB   |
+| **Execution**    | 48 cores| 384 GB | 5 TB   |
 | **Verification** | 2 cores | 16 GB  | 200 GB |
 | **Access**       | 2 cores | 16 GB  | 200 GB |
 
@@ -29,6 +29,19 @@ Each node will require either a static IPv4 address or a fixed DNS name. Either 
   Your Node Address must be a publicly routable IPv4 address or valid DNS name
   that points to your node. This is how other nodes in the network will
   communicate with you.
+</Callout>
+
+While both a static IPv4 and a domain name are possible, we prefer and recommend that node operators register their node under a domain that they control. This gives the Flow network more options for resiliency and resistance to adverse network conditions.
+
+<Callout type="warning" title="Registering a domain name for your Flow Node">
+Crash recovery and denial of service attacks are two concerns that operators can mitigate relying on each of DNS indirection and IP routing. The later requires more involvement.
+
+Running a node behind an operator-controlled hostname (rather than "just" an IP) is a simple and cheap measure that:
+
+- offers additional technical pathways to let operators improve resiliency and security,
+- lets them opt in to those measures as a reaction to an attack,
+- does not preclude any lower-level IP-based resiliency approaches.
+
 </Callout>
 
 Your firewalls must expose **TCP/3569** for Node communication. If you are running an Access Node, you must also expose the GRPC port **9000**.
@@ -57,6 +70,20 @@ Flow also provides `systemd` service and unit files as a template for installati
   The Flow team has tested running nodes on Ubuntu 18.04 and GCP's Container
   Optimized OS, which is based on Chromium OS. If you are unsure where to start,
   those are good choices.
+</Callout>
+
+## Time synchronization
+
+You should also ensure you run **time synchronization** on the machine hosting the container, to avoid clock drift. In practice, this means configuring a client for the NTP protocol, and making sure it runs as a daemon. `ntpd` is one recommended example. To configure it, you just have to point it to an NTP server to query periodically. A default from your Linux distribution or cloud operator may already be set, and in the interest of decentralization, our recommendation would be to use it unless you have a specific reason to do otherwise.
+
+<Callout type="info" title="Time synchronization FAQ">
+
+- **Leap-smearing**: Leap-smearing time servers and non-leap-smearing time servers are both acceptable for the magnitude of our time precision requirements - though considering very few providers offer leap smearing time servers, a "regular" time server helps ensure our pool of time providers is more diverse.
+
+- **Why not do it in the container itself? Why do we need to do this?**:  Without special privileges and in all major container runtimes, a container will not run with the `CAP_SYS_TIME` capability. For Flow, this means that the node software itself cannot change the time of the host machine, making the in-container use of standard time synchronization protocols ineffective.
+
+- **Why does time matter in Flow?**: Time information comes up in consensus and in smart contracts. The consensus algorithm of Flow allows nodes to exit the influence of a corrupt or ineffective "leader" node by collectively deciding to switch to the next "phase" of the protocol at the right time. The smart contract language also allows developer access to block time stamps, which provide an approximation of time. To resist manipulation in each case, honest nodes must compute timing values from an aggregate of the information provided by all nodes. That approach, though resilient, is still sensitive to inaccurate time information. In other words, a node subject to clock drift but otherwise honest will not stop the consensus, but might make it slower.
+
 </Callout>
 
 ## Setup Data Directories & Disks

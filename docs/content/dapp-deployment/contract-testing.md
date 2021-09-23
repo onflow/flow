@@ -7,7 +7,7 @@ Achieving good test coverage is vital for assuring the quality of code written t
 
 Automated tests can be run locally in the Flow emulator, and on the Flow testnet. These tests should include both unit tests; to exercise each feature of a contract, and integration tests; to exercise the behaviour of different parts of the project as a whole.
 
-Human-driven tests, in which individual testers work manually through user stories via the project's user interface or custom transactions, can also be performed locally. Tests with groups of testers can be performed similarly on testnet in a similar manner
+Human-driven tests, in which individual testers work manually through user stories via the project's user interface or custom transactions, can also be performed locally. Tests with groups of testers can be performed similarly on testnet in a similar manner.
 
 Finally, unstructured closed testing with a limited audience on testnet can gain valuable information about performance and security by capturing usage data from more organic interaction with the project's smart contracts over days or weeks.
 
@@ -43,6 +43,6 @@ Note that these tests are tied to the emulator but it is simple to refactor test
 
 ### JavaScript Tests
 
-Tests in JavaScript can be written using [flow-js-sdk](https://github.com/onflow/flow-js-sdk) and [flow-js-testing](https://github.com/onflow/flow-js-testing).
+Tests in JavaScript can be written using [fcl](https://github.com/onflow/fcl-js) and [flow-js-testing](https://github.com/onflow/flow-js-testing).
 
 flow-js-testing is a newer addition so we do not have any examples using it yet.

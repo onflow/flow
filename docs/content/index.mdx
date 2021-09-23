@@ -4,11 +4,11 @@ description: "Welcome to the Flow Developer Portal"
 sidebar: false
 ---
 
+import { theme } from "gatsby-theme-flow/src/colors";
+
 import DocsetMenu from "./components/docset-menu";
 import { MenuTitle } from "./components/menu";
 import TrackingLink from "./components/tracking-link";
-
-import { theme } from "gatsby-theme-flow/src/colors";
 
 ‍Flow is a fast, decentralized, and developer-friendly blockchain, designed as the foundation for a new generation of games, apps, and the digital assets that power them. It is based on a unique, multi-role architecture, and designed to scale without sharding, allowing for massive improvements in speed and throughput while preserving a developer-friendly, ACID-compliant environment.
 
@@ -20,7 +20,7 @@ import { theme } from "gatsby-theme-flow/src/colors";
 
 <ul className="grid-item-list">
   <li>
-    <TrackingLink href="/flow-js-sdk/flow-app-quickstart/" eventName="Homepage_link_/flow-js-sdk/flow-app-quickstart/_clicked">Flow App Quickstart</TrackingLink> <br/>
+    <TrackingLink  href="/fcl/tutorials/flow-app-quickstart/" eventName="Homepage_link_/fcl/tutorials/flow-app-quickstart/_clicked">Flow App Quickstart</TrackingLink> <br/>
     <p>a detailed guide covering how to use the <TrackingLink href="/flow-js-sdk/" eventName="Homepage_link_/flow-js-sdk/_clicked">FCL (Flow Client Library)</TrackingLink> to build a serverless app that connects to Flow, using React!</p>
   </li>
   <li>
@@ -120,10 +120,10 @@ import { theme } from "gatsby-theme-flow/src/colors";
   </li>
 
   <li>
-    <TrackingLink href="https://github.com/onflow/kitty-items" eventName="Homepage_link_/conre-contracts/_clicked">
-    Testing Frameworks (Go/JS)
+    <TrackingLink href="/flow-js-testing/install" eventName="Homepage_link_/flow-js-testing/_clicked">
+    JS Testing Framework
     </TrackingLink> <br/>
-    <p>Tools for testing your Cadence code using Go or JavaScript. Integrated with the Flow CLI and the Flow Emulator.</p>
+    <p>Tools for testing your Cadence code using JavaScript. Integrated with the Flow CLI and the Flow Emulator.</p>
   </li>
   <li>
     <TrackingLink href="/vscode-extension" eventName="Homepage_link_/vscode-extension/_clicked">
@@ -205,7 +205,7 @@ import { theme } from "gatsby-theme-flow/src/colors";
   </li>
   <li>
     <TrackingLink href="/staking" eventName="Homepage_link_/staking/_clicked">Staking & Delegating</TrackingLink> <br/>
-    <p>aan introduction to staking FLOW tokens on the Flow network for token holders and node operators. Staking is an important part of the security protocol of a proof-of-stake (PoS) blockchain. </p>
+    <p>An introduction to staking FLOW tokens on the Flow network for token holders and node operators. Staking is an important part of the security protocol of a proof-of-stake (PoS) blockchain. </p>
   </li>
   <li>
     <TrackingLink href="/node-operation" eventName="Homepage_link_/node-operation/_clicked">

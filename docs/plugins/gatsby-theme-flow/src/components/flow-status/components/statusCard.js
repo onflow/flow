@@ -1,35 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { startCase } from "lodash";
 
-import useSWR from "swr";
-
-import { HEALTHY } from "../constants";
+import { statusPageStatuses } from "../constants";
 import { StatusCardWrapper } from "../styles";
 
 export default function StatusCard({
+  status,
   networkName,
   networkVersion,
-  nextSporkDate,
+  nextSporkDate
 }) {
-  const [networkStatus, setStatus] = useState(HEALTHY);
+  let theStatus = statusPageStatuses[status];
 
-  // useSWR(
-  //   "https://ytw5bdg6zr13.statuspage.io/api/v2/components.json",
-  //   (...args) => fetch(...args).then((res) => res.json()),
-  //   {
-  //     refreshInterval: 14000,
-  //     onSuccess: (result) => {
-  //       setStatus(result);
-  //     },
-  //     onError: (err) => {
-  //       console.log(err);
-  //     },
-  //   }
-  // );
+  if (theStatus === statusPageStatuses.degraded_performance) {
+    theStatus = "UNDER MAINTENANCE";
+  }
 
   return (
-    <StatusCardWrapper networkStatus={networkStatus}>
+    <StatusCardWrapper networkStatus={theStatus}>
       <div className="network-name">
         <h3>{startCase(networkName)}</h3>
       </div>
@@ -43,7 +32,7 @@ export default function StatusCard({
       </div>
       <div className="network-status">
         <h4>Status</h4>
-        {networkStatus}
+        {theStatus || "Loading..."}
       </div>
     </StatusCardWrapper>
   );

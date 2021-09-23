@@ -15,17 +15,18 @@ import breakpoints from "../utils/breakpoints";
 import { smallCaps } from "../utils/typography";
 
 import PageNav from "./page-nav";
+import StarRating from "./rate-this";
 import SectionNav from "./section-nav";
 
 const Wrapper = styled.div({
   display: "flex",
-  alignItems: "flex-start",
+  alignItems: "flex-start"
 });
 
 const InnerWrapper = styled.div({
   flexGrow: 1,
   width: 0,
-  maxWidth: "888px",
+  maxWidth: "888px"
 });
 
 const BodyContent = styled.div({
@@ -35,37 +36,37 @@ const BodyContent = styled.div({
     color: theme.primary,
     textDecoration: "none",
     ":hover": {
-      textDecoration: "underline",
+      textDecoration: "underline"
     },
     code: {
-      color: "inherit",
-    },
+      color: "inherit"
+    }
   },
   [["h1", "h2", "h3", "h4", "h5", "h6"]]: {
     code: {
-      whiteSpace: "normal",
+      whiteSpace: "normal"
     },
     a: {
       color: "inherit",
       textDecoration: "none",
       ":hover": {
-        color: theme.text2,
-      },
-    },
+        color: theme.text2
+      }
+    }
   },
   "*:not(style) +": {
     [["h2", "h3", "h4"]]: {
-      marginTop: 36,
-    },
+      marginTop: 36
+    }
   },
   img: {
     display: "block",
     maxWidth: "100%",
-    margin: "0 auto",
+    margin: "0 auto"
   },
   ".mermaid svg": {
-    maxWidth: "100%",
-  },
+    maxWidth: "100%"
+  }
 });
 
 const Aside = styled.aside({
@@ -80,29 +81,29 @@ const Aside = styled.aside({
   position: "sticky",
   top: HEADER_HEIGHT,
   [breakpoints.lg]: {
-    display: "none",
+    display: "none"
   },
   [breakpoints.md]: {
-    display: "block",
+    display: "block"
   },
   [breakpoints.sm]: {
-    display: "none",
-  },
+    display: "none"
+  }
 });
 
 const AsideHeading = styled.h4({
   ...smallCaps,
   color: theme.text3,
   fontSize: 14,
-  fontWeight: "bold",
+  fontWeight: "bold"
 });
 
 const AsideLinkWrapper = styled.h5({
   display: "flex",
   marginBottom: 0,
   ":not(:last-child)": {
-    marginBottom: 16,
-  },
+    marginBottom: 16
+  }
 });
 
 const AsideLinkInner = styled.a({
@@ -111,14 +112,14 @@ const AsideLinkInner = styled.a({
   color: theme.text2,
   textDecoration: "none",
   ":hover": {
-    color: theme.text3,
+    color: theme.text3
   },
   svg: {
     width: 20,
     height: 20,
     marginRight: 6,
-    fill: "currentColor",
-  },
+    fill: "currentColor"
+  }
 });
 
 function sidebarPage(path) {
@@ -140,15 +141,15 @@ const EditLink = styled.div({
   marginTop: 48,
   justifyContent: "flex-end",
   [breakpoints.lg]: {
-    display: "flex",
+    display: "flex"
   },
   [breakpoints.md]: {
-    display: "none",
+    display: "none"
   },
   [breakpoints.sm]: {
     display: "flex",
-    marginTop: 24,
-  },
+    marginTop: 24
+  }
 });
 
 export default function PageContent(props) {
@@ -195,19 +196,12 @@ export default function PageContent(props) {
     );
   });
 
-  const editLink = props.githubUrl && (
-    <AsideLink href={props.githubUrl}>
-      <IconGithub /> Edit on GitHub
-    </AsideLink>
-  );
-
   return (
     <Wrapper>
       <InnerWrapper>
         <BodyContent ref={contentRef} className="content-wrapper">
           {props.children}
         </BodyContent>
-        <EditLink>{editLink}</EditLink>
         <PageNav
           prevPage={props.pages[pageIndex - 1]}
           nextPage={props.pages[pageIndex + 1]}
@@ -223,7 +217,11 @@ export default function PageContent(props) {
               imagesLoaded={imagesLoaded === imagesToLoad}
             />
           )}
-          {/* {editLink} */}
+          {props.githubUrl && (
+            <AsideLink href={props.githubUrl}>
+              <IconGithub /> Edit on GitHub
+            </AsideLink>
+          )}
           {props.discourseUrl && (
             <AsideLink href={props.discourseUrl}>
               <IconDiscourse /> Discuss in Forum
@@ -234,6 +232,7 @@ export default function PageContent(props) {
               <IconPlayground /> Demo in Playground
             </AsideLink>
           )}
+          <StarRating pageInfo={{ hash: props.hash, path: props.pathname }} />
         </Aside>
       )}
     </Wrapper>
@@ -250,5 +249,5 @@ PageContent.propTypes = {
   headings: PropTypes.array.isRequired,
   discordUrl: PropTypes.string,
   discourseUrl: PropTypes.string,
-  playgroundUrl: PropTypes.string,
+  playgroundUrl: PropTypes.string
 };

@@ -49,20 +49,20 @@ module.exports = ({
   versions = {},
   gaTrackingId,
   checkLinksOptions,
-  repositories,
+  repositories
 }) => {
   const gatsbyRemarkPlugins = [
     {
       resolve: "gatsby-remark-autolink-headers",
       options: {
-        offsetY: HEADER_HEIGHT,
-      },
+        offsetY: HEADER_HEIGHT
+      }
     },
     {
       resolve: "gatsby-remark-copy-linked-files",
       options: {
-        ignoreFileExtensions: [],
-      },
+        ignoreFileExtensions: []
+      }
     },
     "gatsby-remark-code-titles",
     {
@@ -80,7 +80,7 @@ module.exports = ({
           go: "source.go",
           json: "source.json",
           protobuf: "source.proto",
-          proto: "source.proto",
+          proto: "source.proto"
         },
         grammarPaths: [
           path.resolve(__dirname, "cadence.tmGrammar.json"),
@@ -89,15 +89,15 @@ module.exports = ({
           path.resolve(__dirname, "go.tmLanguage.json"),
           path.resolve(__dirname, "shell-unix-bash.tmLanguage.json"),
           path.resolve(__dirname, "json.tmLanguage.json"),
-          path.resolve(__dirname, "proto3.tmLanguage.json"),
+          path.resolve(__dirname, "proto3.tmLanguage.json")
         ],
-        themePath: path.resolve(__dirname, "light_vs.json"),
-      },
+        themePath: path.resolve(__dirname, "light_vs.json")
+      }
     },
     {
       resolve: "gatsby-remark-check-links",
-      options: checkLinksOptions,
-    },
+      options: checkLinksOptions
+    }
   ];
 
   const plugins = [
@@ -105,36 +105,42 @@ module.exports = ({
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
     {
+      resolve: "gatsby-plugin-layout",
+      options: {
+        component: path.resolve(__dirname, "src/components/layout.js")
+      }
+    },
+    {
       resolve: "gatsby-plugin-less",
       options: {
-        modifyVars: mapKeys(theme, (value, key) => `color-${key}`),
         lessOptions: {
           relativeUrls: false,
-        },
-      },
+          modifyVars: mapKeys(theme, (value, key) => `color-${key}`)
+        }
+      }
     },
     ...sources,
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "fonts",
-        path: path.resolve(__dirname, "src/assets/fonts"),
-      },
+        path: path.resolve(__dirname, "src/assets/fonts")
+      }
     },
     {
       resolve: "gatsby-transformer-remark",
       options: {
-        plugins: gatsbyRemarkPlugins,
-      },
+        plugins: gatsbyRemarkPlugins
+      }
     },
     {
       resolve: "gatsby-plugin-mdx",
       options: {
         gatsbyRemarkPlugins,
         remarkPlugins: [
-          [remarkTypescript, { wrapperComponent: "MultiCodeBlock" }],
-        ],
-      },
+          [remarkTypescript, { wrapperComponent: "MultiCodeBlock" }]
+        ]
+      }
     },
     ...Object.entries(versions).map(([name, branch]) => ({
       resolve: "gatsby-source-git",
@@ -145,27 +151,27 @@ module.exports = ({
         patterns: [
           path.join(baseDir, contentDir, "**"),
           path.join(baseDir, "gatsby-config.js"),
-          path.join(baseDir, "_config.yml"),
-        ],
-      },
+          path.join(baseDir, "_config.yml")
+        ]
+      }
     })),
     {
       resolve: "gatsby-source-github",
       options: {
         headers: {
-          Authorization: `Bearer ${githubAccessToken}`,
+          Authorization: `Bearer ${githubAccessToken}`
         },
-        queries: repositories.map((repository) => [getReleases, repository]),
-      },
-    },
+        queries: repositories.map(repository => [getReleases, repository])
+      }
+    }
   ];
 
   if (gaTrackingId) {
     plugins.push({
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: gaTrackingId,
-      },
+        trackingId: gaTrackingId
+      }
     });
   }
 
@@ -173,8 +179,8 @@ module.exports = ({
     siteMetadata: {
       title: pageTitle || siteName,
       siteName,
-      description,
+      description
     },
-    plugins,
+    plugins
   };
 };

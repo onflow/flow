@@ -1,0 +1,69 @@
+---
+title: In-dapp Payments on Flow
+sidebar_title: In-dapp Payments
+---
+
+User payments are an important part of many blockchain dapps. In order to create a stellar user experience, your dapp should make it as easy as possible for users to purchase digital assets. For most users, this means being able to pay for digital assets (e.g. NFTs) using their local fiat currency (e.g. via credit card).
+
+## Direct vs Peer-to-peer Sales
+
+Before diving into payments, it is important to define the difference between direct sales and peer-to-peer sales.
+
+* **Direct sales:** users purchase digital assets (e.g. NFTs) directly from a dapp developer.
+* **Peer-to-peer sales:** users purchase digital assets (e.g. NFTs) from other dapp users, usually via a marketplace.
+
+This section will highlight the considerations you should make when implementing payments for direct sales and peer-to-peer sales.
+
+## Available Payment Options
+
+### Flow USD (FUSD)
+
+FUSD is the first [USD-backed stablecoin available on the Flow blockchain](/fusd/). Like all USD stablecoins, FUSD follows the price of the US Dollar, meaning it’s well suited as an everyday payment method.
+
+FUSD can easily be used by FCL-powered dapps for both direct and peer-to-peer sales. The FCL wallets available today already support FUSD, meaning not only can your users spend FUSD directly at your storefront, but they can also transfer FUSD to other users (e.g. in exchange for an NFT) in a peer-to-peer marketplace.
+
+<Callout type="warning">
+
+**Dapp Custody Gotcha:** Custodial dapps that allow their users to hold FUSD will need to comply with any necessary regulations regarding cryptocurrency asset custody, which may include [know your customer (KYC)](https://en.wikipedia.org/wiki/Know_your_customer) and [anti-money laundering (AML)](https://en.wikipedia.org/wiki/Money_laundering) regulations. Consult your legal counsel.
+
+</Callout>
+
+**Fiat on & off ramps**
+
+Fiat-to-crypto [payment providers exist for FUSD today](/fusd/providers/); a user can purchase FUSD using their credit card with the click of a button (on-ramp), and providers like [Ramp](https://ramp.network/) allow this to happen directly inside your dapp. These providers will also allow your users to convert FUSD back to their local currency (off-ramp).
+
+FUSD providers also handle the regulatory and compliance requirements that come with fiat-to-crypto trading, meaning your dapp doesn’t need to.
+
+**Simple on-chain integration**
+
+Your dapp does not need to integrate directly with an external payment provider in order to accept FUSD payments. The FUSD token itself is a contract that implements the [fungible token standard](https://github.com/onflow/flow-ft), so you can process FUSD payments directly in your smart contracts.
+
+**Universal support**
+
+FUSD is a network-wide token supported by wallets and payment providers across the Flow blockchain ecosystem. As such, users of FCL-powered dapps will be well-acquainted with FUSD and see it as a familiar payment method.
+
+### FLOW
+
+FLOW is the default cryptocurrency that powers the Flow blockchain network, and is primarily used for staking and for paying [network fees](/flow-token/concepts/#fees). Both the FLOW cryptocurrency and FUSD stablecoin implement the same fungible token standard and therefore can be used interchangeably within your on-chain Cadence code.
+
+Many of the payment providers that support FUSD also support FLOW, including well-trusted cryptocurrency exchanges.
+
+However, FLOW isn’t always well-suited for day-to-day user payments due to its price volatility, much like any cryptocurrency.
+
+<Callout type="warning">
+
+**Dapp Custody Gotcha:** just as in the case of FUSD, custodial dapps that allow their users to hold FLOW will need to comply with any necessary regulations regarding cryptocurrency asset custody. Consult your legal counsel.
+
+</Callout>
+
+### Direct Credit Card Payments
+
+Some dapps choose to directly integrate off-chain credit card providers such as [Alipay](https://en.wikipedia.org/wiki/Alipay), [Circle](https://en.wikipedia.org/wiki/Circle_(company)), [PayPal](https://en.wikipedia.org/wiki/PayPal) or [Stripe](https://en.wikipedia.org/wiki/Stripe_(company)) in order to support NFT sales. In these scenarios, payments are processed externally by the provider, and then the NFT asset is delivered in a transaction authorized by the dapp developer.
+
+While direct credit card payments result in a good user experience, they bring significant challenges for the dapp developer. Credit card payments are prone to [chargebacks](https://en.wikipedia.org/wiki/Chargeback) and fraud, meaning users can purchase an asset, dispute the credit card transaction, and then keep the original asset without paying. Because of this, dapp developers sometimes opt for the dapp custody model when supporting direct credit card payments.
+
+Credit card payments introduce additional challenges when used in peer-to-peer payment platforms such as an NFT marketplace. When a user buys an NFT from another user using their credit card, the payment is still processed by the dapp developer, which makes the developer responsible for paying the seller. To pay the proceeds to the seller, the developer must comply with necessary regulations. Consult your legal counsel.
+
+### Recommendation
+
+FUSD and FLOW are the recommended payment methods for FCL-powered dapps, due to their ease of integration, stability and widespread ecosystem support.

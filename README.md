@@ -18,7 +18,7 @@ The following sections introduce common use cases for developers building on Flo
 
 Cadence introduces resource-oriented programming, a new paradigm that pairs linear types with object capabilities to create a secure and declarative model for digital ownership.
 
-Give Cadence a try and learn the fundamentals with the [Flow Developer Playground](https://docs.onflow.org/docs/getting-started-1).
+Give Cadence a try and learn the fundamentals with the [Flow Developer Playground](https://play.onflow.org/local?type=account&id=LOCAL-account-0).
 
 ### Managing Keys and Signing Transactions
 
@@ -36,7 +36,7 @@ Learn more about accounts, weighted keys and transactions [in this guide](https:
 
 The Flow Emulator is a feature complete replica of the real network that looks, acts and talks like Flow. You can use the emulator _right now_ to build real applications that are compatible with both testnet and mainnet.
 
-- [Install the emulator](/docs/emulator.md)
+- [Install the emulator](https://github.com/onflow/flow-emulator)
 - Follow the examples in the [Flow Go SDK](https://github.com/onflow/flow-go-sdk) to see it in action
 
 ### Accessing the Network
@@ -59,12 +59,12 @@ To interact with the Flow Access API from JavaScript you can use the [Flow JavaS
 
 > 📖 Learn the fundamentals of Flow.
 
-- [Introduction to Cadence](https://docs.onflow.org/docs/getting-started-1)
-- [Accounts, Keys & Signing](/docs/accounts-and-keys.md)
-- [Transaction Lifecyle](/docs/transaction-lifecycle.md)
-- [Flow Access API](/docs/access-api-spec.md)
-  - [JSON-Cadence Data Interchange Format](/docs/json-cadence-spec.md)
-- [Using the Emulator](/docs/emulator.md)
+- [Introduction to Cadence](https://docs.onflow.org/cadence/)
+- [Accounts, Keys & Signing](https://docs.onflow.org/concepts/accounts-and-keys/)
+- [Transaction Lifecyle](https://docs.onflow.org/concepts/transaction-lifecycle/)
+- [Flow Access API](https://docs.onflow.org/access-api/)
+- [JSON-Cadence Data Interchange Format](https://docs.onflow.org/cadence/json-cadence-spec/)
+- [Using the Emulator](https://github.com/onflow/flow-emulator)
 - [Technical Papers](https://www.onflow.org/technical-paper)
   - Technical Paper 1: [Separating Consensus & Compute](https://arxiv.org/pdf/1909.05821.pdf)
   - Technical Paper 2: [Block Formation](https://arxiv.org/pdf/2002.07403.pdf)
@@ -83,7 +83,7 @@ The Flow SDKs provide libraries for applications to connect and interact with th
 
 ### Development
 
-- [Flow Emulator](/docs/emulator.md)
-- [Flow CLI](/docs/cli.md)
+- [Flow Emulator](https://github.com/onflow/flow-emulator)
+- [Flow CLI](https://github.com/onflow/flow-cli)
 - [Flow Playground](https://play.onflow.org)
-- [Cadence Visual Studio Code extension](/docs/vscode-extension.md)
+- [Cadence Visual Studio Code extension](https://github.com/onflow/vscode-flow)

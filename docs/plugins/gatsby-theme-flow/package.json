@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "gatsby-remark-vscode-flow": "file:../gatsby-remark-vscode-flow"
+    "gatsby-remark-vscode-flow": "../gatsby-remark-vscode-flow",
+    "gatsby-source-github": "../gatsby-source-github"
   },
   "author": "",
   "license": "ISC"
