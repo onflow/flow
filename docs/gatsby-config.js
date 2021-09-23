@@ -403,10 +403,10 @@ const sections = [
     sidebar: {
       null: ["[Home](/)"],
       "API Reference": [
-        "[Configuration](/fcl/api#configuration)",
-        "[Wallet Interactions](/fcl/api#wallet-interactions)",
-        "[On-Chain Interactions](/fcl/api#on-chain-interactions)",
-        "[Types, Interfaces, and Definitions](/fcl/api#types-interfaces-and-definitions)"
+        "[Configuration](/fcl#configuration)",
+        "[Wallet Interactions](/fcl#wallet-interactions)",
+        "[On-Chain Interactions](/fcl#on-chain-interactions)",
+        "[Types, Interfaces, and Definitions](/fcl#types-interfaces-and-definitions)"
       ],
       Changelogs: [
         "[@onflow/fcl](/fcl/packages/fcl/CHANGELOG)",
@@ -698,7 +698,7 @@ module.exports = {
             crumbLabel: "FCL"
           },
           {
-            pathname: "/fcl/api",
+            pathname: "/fcl",
             crumbLabel: "API Reference"
           },
           {
