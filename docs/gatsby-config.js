@@ -402,17 +402,19 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      "API Reference": [
-        "[Configuration](/fcl#configuration)",
-        "[Wallet Interactions](/fcl#wallet-interactions)",
-        "[On-Chain Interactions](/fcl#on-chain-interactions)",
-        "[Types, Interfaces, and Definitions](/fcl#types-interfaces-and-definitions)"
+      "API Documentation": [
+        "[Quick Reference](/fcl/reference/api)",
+        "[Configuration](/fcl/reference/configure-fcl)",
+        "[Authentication](/fcl/reference/authentication)",
+        "[Scripts](/fcl/reference/scripts)",
+        "[Transactions](/fcl/reference/transactions)",
+        "[User Signatures](/fcl/reference/user-signatures)"
       ],
       Changelogs: [
         "[@onflow/fcl](/fcl/packages/fcl/CHANGELOG)",
         "[@onflow/types](/fcl/packages/types/CHANGELOG)"
       ],
-      "Developer Guides": [
+      "Guides and Tutorials": [
         "[Introducing @onflow/fcl](/fcl)",
         "[Flow App Quickstart](/fcl/tutorials/flow-app-quickstart)"
       ]
