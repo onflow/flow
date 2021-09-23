@@ -90,6 +90,9 @@ You should also ensure you run **time synchronization** on the machine hosting t
 
 Flow stores protocol state on disk, as well as execution state in the case of execution nodes.
 
+Flow stores confidential data in a separate database. We strongly recommend enabling encryption
+for this database - see [this guide](/node-operation/db-encryption-existing-operator/) for instructions.
+
 Where the data is stored is up to you. By default, the `systemd` files that ship with Flow use `/var/flow/data`.
 This is where the vast majority of Flow's disk usage comes from, so you may wish to mount this directory on a separate disk from the OS.
 The performance of this disk IO is also a major bottleneck for certain node types.
