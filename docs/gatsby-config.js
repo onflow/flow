@@ -97,6 +97,10 @@ const sourceGithubRepos = {
     githubRepo: "onflow/fcl-js",
     // NOTE: path is empty, whole repo is sourced
     path: "docs"
+  },
+  "sdk-guidelines-github": {
+    githubRepo: "onflow/sdks",
+    path: ""
   }
 };
 
@@ -119,6 +123,8 @@ const sourceSlugTransformers = {
   "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/"),
   "flow-js-testing-github": (slug) =>
     slug.replace(/^\/docs\//, "/flow-js-testing/")
+  // "sdk-guidelines-github": (slug) =>
+  //   slug.replace(/^\/docs\//, "/sdk-guidelines/")
 };
 
 const sources = [
@@ -127,6 +133,15 @@ const sources = [
     options: {
       path: path.join(__dirname, "content"),
       name: "docs"
+    }
+  },
+  {
+    resolve: "gatsby-source-git",
+    options: {
+      name: "sdk-guidelines-github",
+      remote: "https://github.com/onflow/sdks.git",
+      patterns: "**/*.md",
+      local: "content/sdk-guidelines"
     }
   },
   {
@@ -627,6 +642,14 @@ const sections = [
     sidebar: {
       null: ["[Home](/)"],
       FAQ: ["faq/developers", "faq/backers", "faq/operators"]
+    }
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["sdk-guidelines/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: ["[Home](/)"]
     }
   }
 ];
