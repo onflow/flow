@@ -1,0 +1,55 @@
+---
+title: Database Encryption for Existing Node Operators
+sidebar_title: Database Encryption for Existing Node Operators
+description: Instructions for existing Node Operators to follow to create a machine account for their collection or consensus nodes.
+---
+
+In Mainnet14, the DKG (distributed key generation) is turned on, requiring storage of 
+dynamically generated confidential data (random beacon keys). These are stored in a
+separate database which is new with the Mainnet14 release.
+
+All node operators joining after Mainnet14 will generate encryption keys for this database
+through the node bootstrapping and staking process. We strongly recommend all node operators
+(especially consensus node operators) generate an encryption key for this database. This
+guide demonstrates how to enable encryption for this database for existing operators.
+
+## Downloading Bootstrap Utility
+
+<Callout type="warning">
+  If you have downloaded the bootstrapping kit previously, ensure that you do
+  this step again to get the latest copy of the bootstrapping kit since there
+  have been significant changes to it.
+</Callout>
+
+Follow the instructions [here](/node-operation/node-bootstrap/#download-the-bootstrapping-kit)
+to download the latest version of the bootstrapping kit, then return to this page.
+
+## Generate Database Encryption Key
+
+You will need to generate an encryption key for the database using the `bootstrap` utility.
+
+<Callout type="warning">
+
+  Ensure you run the following commands on the machine you use to run your node software.
+  The bootstrap directory passed to the `-o` flag must be the same bootstrap directory used by your node.
+  The default location is `/var/flow/bootstrap`, but double-check your setup before continuing.
+
+</Callout>
+
+```shell:title=GenerateEncryptionKey
+$./boot-tools/bootstrap db-encryption-key -o ./bootstrap
+<nil> INF generated db encryption key
+<nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9secretsdb-key
+
+$tree ./bootstrap/
+./bootstrap
+├── private-root-information
+│   └── private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9
+│       ├── node-info.priv.json
+│       └── secretsdb-key
+└── public-root-information
+    ├── node-id
+    └── node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
+
+3 directories, 4 files
+```
