@@ -231,7 +231,7 @@ const sections = [
         "[Flow Concepts](/concepts)",
         "[Introduction to Cadence](/cadence)",
         "[Dapp Development Guide](/dapp-development)",
-        "[Flow App Quickstart](/fcl/flow-app-quickstart)",
+        "[Flow App Quickstart](/fcl/tutorials/flow-app-quickstart)",
         "[Staking & Delegating](/staking)",
         "[Testing using JavaScript](/flow-js-testing/install)",
         "[Epochs, Staking & Delegating](/staking)",
@@ -414,7 +414,7 @@ const sections = [
       ],
       "Developer Guides": [
         "[Introducing @onflow/fcl](/fcl)",
-        "[Flow App Quickstart](/fcl/flow-app-quickstart)"
+        "[Flow App Quickstart](/fcl/tutorials/flow-app-quickstart)"
       ]
     }
   },
