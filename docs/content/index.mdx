@@ -9,6 +9,8 @@ import { theme } from "gatsby-theme-flow/src/colors";
 import DocsetMenu from "./components/docset-menu";
 import { MenuTitle } from "./components/menu";
 import TrackingLink from "./components/tracking-link";
+import { IconGithub, IconDiscord, IconDiscourse } from "gatsby-theme-flow/src/ui/icons";
+
 
 ‍Flow is a fast, decentralized, and developer-friendly blockchain, designed as the foundation for a new generation of games, apps, and the digital assets that power them. It is based on a unique, multi-role architecture, and designed to scale without sharding, allowing for massive improvements in speed and throughput while preserving a developer-friendly, ACID-compliant environment.
 
@@ -78,8 +80,14 @@ import TrackingLink from "./components/tracking-link";
 <h3>👩‍💻 Flow SDKs</h3>
 
 <ul className="grid-item-list">
+   <li>
+    <TrackingLink href="/sdk-guidelines" eventName="Homepage_link_/sdk-guidelines/_clicked">
+    SDK Guidelines
+    </TrackingLink> <br/>
+    <p>Considering building an SDK for Flow? These guidelines will help light your path.</p>
+  </li>
   <li>
-    <TrackingLink href="/flow-js-sdk" eventName="Homepage_link_/flow-js-sdk/_clicked">
+    <TrackingLink href="/fcl" eventName="Homepage_link_/fcl/_clicked">
     FCL (Flow Client Library)
     </TrackingLink> <br/>
     <p>Connect to the Flow blockchain from your JavaScript environment. Works in both browser and NodeJS.</p>
@@ -89,7 +97,7 @@ import TrackingLink from "./components/tracking-link";
     <p>The Flow GO SDK is a powerful full-fetured set of tools for creating applications and services that leverage the Flow blockchain.</p>
   </li>
   <li>
-    <TrackingLink href="https://github.com/onflow/kitty-items" eventName="Homepage_link_/conre-contracts/_clicked">
+    <TrackingLink href="https://github.com/onflow/flow-jvm-sdk" eventName="Homepage_link_/conre-contracts/_clicked">
     Flow JVM SDK
     </TrackingLink> <br/>
     <p>The Flow JVM SDK is a library for JVM languages (e.g. Java, Kotlin) that provides utilities to interact with the Flow blockchain.</p>
@@ -118,13 +126,6 @@ import TrackingLink from "./components/tracking-link";
     <p>The Flow Emulator is a lightweight tool that emulates the behaviour of the real Flow network.
       The emulator exposes a gRPC server that implements the Flow Access API, which is designed to have near feature parity with the real network API.</p>
   </li>
-
-  <li>
-    <TrackingLink href="/flow-js-testing/install" eventName="Homepage_link_/flow-js-testing/_clicked">
-    JS Testing Framework
-    </TrackingLink> <br/>
-    <p>Tools for testing your Cadence code using JavaScript. Integrated with the Flow CLI and the Flow Emulator.</p>
-  </li>
   <li>
     <TrackingLink href="/vscode-extension" eventName="Homepage_link_/vscode-extension/_clicked">
     VSCode Flow
@@ -133,85 +134,9 @@ import TrackingLink from "./components/tracking-link";
   </li>
   <li>
     <TrackingLink href="https://github.com/onflow/fcl-dev-wallet" eventName="Homepage_link_/kitty-items/_clicked">
-    FCL Dev-Wallet
+    FCL Developer Wallet
     </TrackingLink> <br/>
     <p>An application that emulates Flow compatible wallets for use during local development. Click to view the project Github repository, or go to the Kitty Items project for instructions on how to use it while building your project.</p>
-  </li>
-</ul>
-
-</div>
-
-<div className="grid-item">
-<h3>🌎 Ecosystem </h3>
-<ul className="grid-item-list">
-  <li>
-    <TrackingLink href="/flow-token/available-wallets" eventName="Homepage_link_/flow-token/available-wallets/_clicked">
-   Flow Wallets
-    </TrackingLink> <br/>
-    <p>Go here to view a list of currently available Flow compatible wallets.</p>
-  </li>
-  <li>
-    <TrackingLink href="https://flowscan.org/" eventName="Homepage_link_/https://flowscan.org/_clicked">Flow Block Explorer</TrackingLink> <br/>
-    <p>Flow block explorer built by the community. Search Flow accounts, transactins and events. Also has information about network node operators and node staking.</p>
-  </li>
-
-  <li>
-    <TrackingLink href="/flow-port" eventName="Homepage_link_/flow-port/_clicked">
-    Flow Port
-    </TrackingLink> <br/>
-    <p>The Flow Port is your portal to the decentralized world of Flow. Access your Flow account, interact with the blockchain, manage your assets and more.</p>
-  </li>
-  <li>
-    <TrackingLink href="https://flow-faucet.vercel.app/" eventName="Homepage_link_/https://flow-faucet.vercel.app/_clicked">
-    Flow Testnet Faucet
-    </TrackingLink> <br/>
-    <p>Easily create and fund Flow testnet accounts for use while developing your idea.</p>
-  </li>
-  <li>
-    <TrackingLink href="/flow-token" eventName="Homepage_link/flow-token/_clicked">
-    FLOW Token
-    </TrackingLink> <br/>
-    <p>FLOW is Flow's the native token. Go here for information about the FLOW token for individual backers, wallet providers, custodians and node operators.</p>
-  </li>
-  <li>
-    <TrackingLink href="/fusd" eventName="Homepage_link_/fusd/_clicked">
-    FUSD (Stablecoin)
-    </TrackingLink> <br/>
-    <p>FUSD is a USD-backed stablecoin issued as a fungible token on the Flow network. Go here for more information abotu how to integrate it with your project.</p>
-  </li>
-</ul>
-
-</div>
-<div className="grid-item">
-<h3>🧭 Guides </h3>
-<ul className="grid-item-list">
-  <li>
-    <TrackingLink href="/concepts" eventName="Homepage_link_/concepts/_clicked">
-   Flow Concepts
-    </TrackingLink> <br/>
-    <p>There's a lot to cover when we're talking about a system like Flow, the technology behind the network and the design of systems you'll use to interact with it. This section will help you uncover information that can help you better understand Flow's moving parts.</p>
-  </li>
-   <li>
-    <TrackingLink href="/access-api" eventName="Homepage_link_/access-api/_clicked">
-    Flow Access API
-    </TrackingLink> <br/>
-    <p>A guide covering Flow's language-agnostic API specification defined using Protocol Buffers, which can be used to generate client libraries for Flow in a variety of programming languages.</p>
-  </li>
-    <li>
-    <TrackingLink href="/staking" eventName="Homepage_link_/dapp-deployment/_clicked">
-    Mainnet Deployment
-    </TrackingLink> <br/>
-    <p>This guide covers the steps a developer should take to prepare their application for deployment on Flow Mainnet.</p>
-  </li>
-  <li>
-    <TrackingLink href="/staking" eventName="Homepage_link_/staking/_clicked">Staking & Delegating</TrackingLink> <br/>
-    <p>An introduction to staking FLOW tokens on the Flow network for token holders and node operators. Staking is an important part of the security protocol of a proof-of-stake (PoS) blockchain. </p>
-  </li>
-  <li>
-    <TrackingLink href="/node-operation" eventName="Homepage_link_/node-operation/_clicked">
-    Node Operation
-    </TrackingLink> <br/>
-    <p>How to set-up and run your own Flow node!</p>
   </li>
 </ul>
 
@@ -221,8 +146,17 @@ import TrackingLink from "./components/tracking-link";
 
 ---
 
-## Explore
+## Join the Flow Developer Community 
 
-Flow was designed for builders. It's a "batteries included" platform complete with developer tools you can use to start building right away.
 
-<DocsetMenu />
+<TrackingLink href="https://github.com/onflow" eventName="Homepage_link_/github_link/_clicked">
+    <IconGithub style={{marginRight: 10}} size={42}/> 
+</TrackingLink>
+
+<TrackingLink href="https://discord.gg/mDvccFPx" eventName="Homepage_link_/discord_link/_clicked">
+ <IconDiscord style={{marginRight: 10}}  size={42}/>
+</TrackingLink>  
+ 
+<TrackingLink href="https://forum.onflow.org/" eventName="Homepage_link_/discourse_link/_clicked">
+ <IconDiscourse style={{marginRight: 10}}    size={42}/>  
+</TrackingLink>

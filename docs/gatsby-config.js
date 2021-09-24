@@ -35,6 +35,13 @@ const navConfig = {
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
     linkText: "FCL Documentation"
   },
+  "Testing Library": {
+    url: "/flow-js-testing",
+    icon: "js-testing",
+    description:
+      "Simplify testing your Cadence code using our JS testing library.",
+    linkText: "Flow JS Testing"
+  },
   "Go SDK": {
     url: "/flow-go-sdk",
     icon: "go-sdk",
@@ -242,6 +249,13 @@ const sections = [
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: false,
     sidebar: {
+      Ecosystem: [
+        "[Flow Wallets](/flow-token/available-wallets)",
+        "[Block Explorer](https://flowscan.org)",
+        "[Testnet Faucet](https://flow-faucet.vercel.app/)",
+        "[Flow Port](https://port.onflow.org/)",
+        "[Bug Bounty Program](/bounties)"
+      ],
       Tutorials: [
         "[Flow App Quickstart](/fcl/tutorials/flow-app-quickstart)",
         "[Introduction to Cadence](/tutorial/01-first-steps)",
@@ -252,11 +266,11 @@ const sections = [
         "[Cadence Best Practices](/cadence)",
         "[Dapp Development Guide](/dapp-development)",
         "[Building Flow SDKs (Guidelines)](/sdk-guidelines)",
-        "[Node Operation](/node-operation)",
+        "[Operate a Flow Node](/node-operation)",
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
         "[Staking Technical Guides](/staking/staking-options)"
       ],
-      Reference: [
+      Reference: [  
         "[Available Flow SDKs](/sdks)",
         "[Flow Access API](/access-api)",
         "[Cadence Language Reference](/cadence/language/)",
@@ -266,13 +280,6 @@ const sections = [
         "[FUSD Transactions & Scripts](/fusd/transactions)",
         "[Upcoming Sporks](/node-operation/upcoming-sporks)",
         "[Past Sporks](/node-operation/past-sporks)"
-      ],
-      Ecosystem: [
-        "[Flow Wallets](/flow-token/available-wallets)",
-        "[Block Explorer](https://flowscan.org)",
-        "[Testnet Faucet](https://flow-faucet.vercel.app/)",
-        "[Flow Port](https://port.onflow.org/)",
-        "[Bug Bounty Program](/bounties)"
       ],
       Tokens: ["[FLOW Token](/flow-token)", "[FUSD](/fusd)"],
       FAQ: [
