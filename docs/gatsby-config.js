@@ -256,6 +256,7 @@ const sections = [
         "[Testing using JavaScript](/flow-js-testing/install)"
       ],
       "Guides & Walkthroughs": [
+        "[Flow Concepts](/concepts)",
         "[Cadence Best Practices](/cadence)",
         "[Dapp Development Guide](/dapp-development)",
         "[Building Flow SDKs (Guidelines)](/sdk-guidelines)",
