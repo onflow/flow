@@ -167,10 +167,16 @@ p > pre.inline {
 
 .homepage-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: masonry;
   grid-gap: 2rem;
   margin-bottom: 2rem;
+}
+
+@media (min-width: 960px) {
+  .homepage-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .grid-item {
