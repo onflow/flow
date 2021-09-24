@@ -470,6 +470,11 @@
       "source": "/dapp-deployment/mainnet-deployment/",
       "destination": "/dapp-development/mainnet-deployment",
       "permanent": true
+    },
+    {
+      "source": "/fcl/flow-app-quickstart/",
+      "destination": "/fcl/tutorials/flow-app-quickstart/",
+      "permanent": true
     }
   ]
 }
