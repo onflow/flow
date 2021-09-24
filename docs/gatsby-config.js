@@ -269,6 +269,7 @@ const sections = [
         "[Available Flow SDKs](/sdks)",
         "[Flow Access API](/access-api)",
         "[Cadence Language Reference](/cadence/language/)",
+        "[Testing Library Reference](/flow-js-testing)",
         "[Core Protocol Smart Contracts](/core-contracts)",
         "[Other Important Smart Contracts](/core-contracts)",
         "[Epochs, Staking & Delegating](/staking)",
