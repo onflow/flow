@@ -259,6 +259,7 @@ const sections = [
         "[Flow Concepts](/concepts)",
         "[Cadence Best Practices](/cadence)",
         "[Dapp Development Guide](/dapp-development)",
+        "[Using the Testing Library](/flow-js-testing/install/)",
         "[Building Flow SDKs (Guidelines)](/sdk-guidelines)",
         "[Operate a Flow Node](/node-operation)",
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
