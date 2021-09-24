@@ -1,0 +1,35 @@
+---
+title: Full Observer Node
+sidebar_title: Observer Node
+description: Running your own full observer node
+---
+
+<Callout type="warning">
+This is an open beta and may contain bugs or be missing functionality.
+</Callout>
+
+A full observer node is an unstaked access node that follows the flow consensus
+and serves the Access API using local data. This allows anyone to setup an access
+node for local queries without the need for staking.
+
+## Running a node
+
+The full observer node was built in collaboration with the `optakt` team. The
+primary way to run a full observer node is with the Flow Data Provisioning
+Service (DPS).
+
+### Data Provisioning Service
+
+The [Data Provisioning Service](https://github.com/optakt/flow-dps/) provides
+efficient access to the full history of flow blockchain data from a single API.
+DPS was built by the `optakt` team and greatly streamlines use cases that require
+archival data.
+
+For more information on DPS, see their [documentation](https://github.com/optakt/flow-dps/blob/master/docs/introduction.md)
+
+The full observer node functionality is provided by the [DPS Live](https://github.com/optakt/flow-dps/tree/master/cmd/flow-dps-live)
+component, which consumes live state updates from the flow network.
+
+### Custom Implementations
+
+Here is an example implementation using the consensus follower library: https://github.com/onflow/full-observer-node-example
