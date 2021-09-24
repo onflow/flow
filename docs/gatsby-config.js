@@ -253,7 +253,7 @@ const sections = [
         "[Flow App Quickstart](/fcl/tutorials/flow-app-quickstart)",
         "[Introduction to Cadence](/tutorial/01-first-steps)",
         "[Create Non-Fungible Tokens (NFTs)](/cadence/tutorial/04-non-fungible-tokens/)",
-        "[Testing using JavaScript](/flow-js-testing/install)"
+        "[CryptoDappy Online Course!](https://www.cryptodappy.com)"
       ],
       "Guides & Walkthroughs": [
         "[Flow Concepts](/concepts)",
