@@ -1,5 +1,11 @@
 const path = require("path");
 
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config({
+    path: `.env.local`
+  });
+}
+
 const navConfig = {
   "Getting Started": {
     url: "/",
@@ -28,6 +34,13 @@ const navConfig = {
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
     linkText: "FCL Documentation"
+  },
+  "Testing Library": {
+    url: "/flow-js-testing",
+    icon: "js-testing",
+    description:
+      "Simplify testing your Cadence code using our JS testing library.",
+    linkText: "Flow JS Testing"
   },
   "Go SDK": {
     url: "/flow-go-sdk",
@@ -118,7 +131,14 @@ const sourceSlugTransformers = {
       .replace("README/", ""),
   "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/"),
   "flow-js-testing-github": (slug) =>
-    slug.replace(/^\/docs\//, "/flow-js-testing/")
+    slug.replace(/^\/docs\//, "/flow-js-testing/"),
+  "sdk-guidelines-github": (slug) =>
+    slug
+      .replace(/^\/README\//, "/sdk-guidelines/")
+      .replace(
+        /^\/ubiquitous-language\//,
+        "/sdk-guidelines/ubiquitous-language/"
+      )
 };
 
 const sources = [
@@ -127,6 +147,14 @@ const sources = [
     options: {
       path: path.join(__dirname, "content"),
       name: "docs"
+    }
+  },
+  {
+    resolve: "gatsby-source-git",
+    options: {
+      name: "sdk-guidelines-github",
+      remote: "https://github.com/onflow/sdks",
+      patterns: "**/*"
     }
   },
   {
@@ -219,30 +247,59 @@ const sections = [
       "bounties/*"
     ],
     sidebarShowMainNav: true,
-    sidebarAlwaysExpanded: true,
+    sidebarAlwaysExpanded: false,
     sidebar: {
-      Ecosystem: [
-        "[Access API](/access-api)",
-        "[Core Contracts](/core-contracts)",
-        "[FLOW Token](/flow-token)",
-        "[FUSD](/fusd)"
-      ],
-      Guides: [
-        "[Flow Concepts](/concepts)",
-        "[Introduction to Cadence](/cadence)",
-        "[Dapp Development Guide](/dapp-development)",
+      Tutorials: [
         "[Flow App Quickstart](/fcl/tutorials/flow-app-quickstart)",
-        "[Staking & Delegating](/staking)",
-        "[Testing using JavaScript](/flow-js-testing/install)",
-        "[Epochs, Staking & Delegating](/staking)",
-        "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
-        "[Node Operation](/node-operation)"
+        "[Introduction to Cadence](/cadence/tutorial/01-first-steps)",
+        "[Create Non-Fungible Tokens (NFTs)](/cadence/tutorial/04-non-fungible-tokens/)",
+        "[CryptoDappy Online Course!](https://www.cryptodappy.com)"
       ],
+      "Guides & Walkthroughs": [
+        "[Flow Concepts](/concepts)",
+        "[Cadence Best Practices](/cadence)",
+        "[Dapp Development Guide](/dapp-development)",
+        "[Using the Testing Library](/flow-js-testing/install/)",
+        "[Building Flow SDKs (Guidelines)](/sdk-guidelines)",
+        "[Operate a Flow Node](/node-operation)",
+        "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
+        "[Staking Technical Guides](/staking/staking-options)"
+      ],
+      Reference: [
+        "[Available Flow SDKs](/sdks)",
+        "[Flow Access API](/access-api)",
+        "[Cadence Language Reference](/cadence/language/)",
+        "[Testing Library Reference](/flow-js-testing)",
+        "[Core Protocol Smart Contracts](/core-contracts)",
+        "[Other Important Smart Contracts](/core-contracts)",
+        "[Epochs, Staking & Delegating](/staking)",
+        "[FUSD Transactions & Scripts](/fusd/transactions)",
+        "[Upcoming Sporks](/node-operation/upcoming-sporks)",
+        "[Past Sporks](/node-operation/past-sporks)"
+      ],
+      Ecosystem: [
+        "[Flow Wallets](/flow-token/available-wallets)",
+        "[Block Explorer](https://flowscan.org)",
+        "[Testnet Faucet](https://flow-faucet.vercel.app/)",
+        "[Flow Port](https://port.onflow.org/)",
+        "[Bug Bounty Program](/bounties)"
+      ],
+      Tokens: ["[FLOW Token](/flow-token)", "[FUSD](/fusd)"],
       FAQ: [
         "[Builders/Developers](/faq/developers)",
         "[Backers/Users](/faq/backers)",
         "[Operators](/faq/operators)"
       ]
+    }
+  },
+  {
+    sourceInstanceName: "sdk-guidelines-github",
+    patterns: ["README.md", "ubiquitous-language.md"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: ["[Home](/)"],
+      Overview: ["[SDK Guidelines](/sdk-guidelines)"],
+      Glossary: ["[Ubiquitous Language](/sdk-guidelines/ubiquitous-language)"]
     }
   },
   {
@@ -313,11 +370,6 @@ const sections = [
         "docs/get-events",
         "docs/get-collections",
         "docs/get-status"
-      ],
-      FAQ: [
-        "[Builders/Developers](/faq/developers)",
-        "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)"
       ]
     }
   },
@@ -388,11 +440,6 @@ const sections = [
         "docs/querying-events",
         "docs/querying-blocks",
         "docs/transfer-flow"
-      ],
-      FAQ: [
-        "[Builders/Developers](/faq/developers)",
-        "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)"
       ]
     }
   },
@@ -461,11 +508,6 @@ const sections = [
         "core-contracts/locked-tokens",
         "core-contracts/staking-collection",
         "core-contracts/non-fungible-token"
-      ],
-      FAQ: [
-        "[Builders/Developers](/faq/developers)",
-        "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)"
       ]
     }
   },
@@ -483,12 +525,7 @@ const sections = [
         "flow-token/delivery",
         "flow-token/faq"
       ],
-      "Token Delivery": ["flow-token/locked-account-setup"],
-      FAQ: [
-        "[Builders/Developers](/faq/developers)",
-        "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)"
-      ]
+      "Token Delivery": ["flow-token/locked-account-setup"]
     }
   },
   {
@@ -547,11 +584,6 @@ const sections = [
         "node-operation/spork",
         "node-operation/past-sporks",
         "node-operation/upcoming-sporks"
-      ],
-      FAQ: [
-        "[Builders/Developers](/faq/developers)",
-        "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)"
       ]
     }
   },
@@ -561,12 +593,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["emulator/index"],
-      FAQ: [
-        "[Builders/Developers](/faq/developers)",
-        "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)"
-      ]
+      Overview: ["emulator/index"]
     }
   },
   {
@@ -575,12 +602,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["vscode-extension/index"],
-      FAQ: [
-        "[Builders/Developers](/faq/developers)",
-        "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)"
-      ]
+      Overview: ["vscode-extension/index"]
     }
   },
   {
@@ -678,6 +700,10 @@ module.exports = {
           {
             pathname: "/access-api",
             crumbLabel: "Access API"
+          },
+          {
+            pathname: "/sdk-guidelines",
+            crumbLabel: "SDK Guidelines"
           },
 
           {
