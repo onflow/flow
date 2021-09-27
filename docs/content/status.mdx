@@ -4,35 +4,46 @@ title: Flow Network Status
 
 import {
   NetworkStatus,
-  Announcements,
+  Announcements
 } from "../plugins/gatsby-theme-flow/src/components/flow-status";
+
+import { StatusContext } from "../plugins/gatsby-theme-flow/src/components/flow-status/context";
 
 import {
   MAINNET,
   TESTNET,
-  CANARYNET,
+  CANARYNET
 } from "../plugins/gatsby-theme-flow/src/components/flow-status/constants";
 
 ## Chains
 
-<NetworkStatus
-  networkName={MAINNET}
-  networkVersion="9"
-  versionUrl="https://docs.onflow.org/node-operation/past-sporks/#mainnet-9"
-  nextSporkDate="June 23, 2021"
-/>
-<NetworkStatus
-  networkName={TESTNET}
-  networkVersion="Devnet23"
-  versionUrl="https://docs.onflow.org/node-operation/past-sporks/#devnet23"
-  nextSporkDate="June 22, 2021"
-/>
-<NetworkStatus
-  networkName={CANARYNET}
-  networkVersion="N/A"
-  versionUrl="N/A"
-  nextSporkDate="TBD"
-/>
+<StatusContext.Consumer>
+  {({ mainnetStatus, testnetStatus, canaryNetStatus }) => (
+    <>
+      <NetworkStatus
+        status={mainnetStatus}
+        networkName={MAINNET}
+        networkVersion="12"
+        versionUrl=""
+        nextSporkDate="September 15, 2021"
+      />
+      <NetworkStatus
+        status={testnetStatus}
+        networkName={TESTNET}
+        networkVersion="26"
+        versionUrl=""
+        nextSporkDate="September 14, 2021"
+      />
+      <NetworkStatus
+      status={canaryNetStatus}
+        networkName={CANARYNET}
+        networkVersion="8"
+        versionUrl=""
+        nextSporkDate="September 7, 2021"
+      />
+    </>
+  )}
+</StatusContext.Consumer>
 
 ## Announcements
 
