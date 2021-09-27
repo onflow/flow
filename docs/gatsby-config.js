@@ -251,7 +251,7 @@ const sections = [
     sidebar: {
       Tutorials: [
         "[Flow App Quickstart](/fcl/tutorials/flow-app-quickstart)",
-        "[Introduction to Cadence](/tutorial/01-first-steps)",
+        "[Introduction to Cadence](/cadence/tutorial/01-first-steps)",
         "[Create Non-Fungible Tokens (NFTs)](/cadence/tutorial/04-non-fungible-tokens/)",
         "[CryptoDappy Online Course!](https://www.cryptodappy.com)"
       ],
