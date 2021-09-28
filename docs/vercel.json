@@ -452,6 +452,11 @@
       "permanent": true
     },
     {
+      "source": "/dapp-deployment/",
+      "destination": "/dapp-development/deployment",
+      "permanent": true
+    },
+    {
       "source": "/dapp-deployment/contract-testing/",
       "destination": "/dapp-development/contract-testing",
       "permanent": true
