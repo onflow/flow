@@ -97,6 +97,20 @@ While all nodes need to make use of this disk, if you are running an execution n
 
 As a rough benchmark for planning storage capacity, each Flow block will grow the data directory by 3-5KiB.
 
+### Confidential Data & Files
+
+Flow stores dynamically generated confidential data in a separate database. We strongly recommend enabling encryption
+for this database - see [this guide](/node-operation/db-encryption-existing-operator/) for instructions.
+
+Confidential information used by Flow is stored in the `private-root-information` subtree of the `bootstrap` folder. 
+In particular:
+* the staking private key (`node-info.priv.json`)
+* the networking private key (`node-info.priv.json`)
+* the encryption key for the secrets database (`secretsdb-key`)
+* (if applicable) the initial random beacon private key (`random-beacon.priv.json`)
+
+These files contain confidential data, and must be stored and accessed securely.
+
 ## Pull the Flow Images
 
 The `flow-go` binaries are distributed as container images, and need to be pulled down to your host with your image management tool of choice.
