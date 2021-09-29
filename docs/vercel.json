@@ -480,6 +480,11 @@
       "source": "/fcl/flow-app-quickstart/",
       "destination": "/fcl/tutorials/flow-app-quickstart/",
       "permanent": true
+    },
+    {
+      "source": "/fcl/api/",
+      "destination": "/fcl",
+      "permanent": true
     }
   ]
 }
