@@ -453,6 +453,7 @@ const sections = [
         "[Quick Reference](/fcl/reference/api)",
         "[Configuration](/fcl/reference/configure-fcl)",
         "[Authentication](/fcl/reference/authentication)",
+        "[Proving Account Ownership](/fcl/reference/proving-authentication)",
         "[Scripts](/fcl/reference/scripts)",
         "[Transactions](/fcl/reference/transactions)",
         "[User Signatures](/fcl/reference/user-signatures)"
