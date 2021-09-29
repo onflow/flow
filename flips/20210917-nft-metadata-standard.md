@@ -49,7 +49,8 @@ to the default NFT interface. This is accomplished via a new default contract
 ```
 pub contract MetaDataUtil {
     //Utilizing MIME types as existing standard, this will allow metadata to be more easily parsed by a browser
-    //Any non-conformant type should use a MIME type with the following syntax "application.cadence+T" where T is the Type
+    //Any struct type that conforms to the HasMetaData interface must use MIME type "application/flow+Schema"
+    //Any other non-conformant type should use a MIME type with the following syntax "application/flow+T" where T is the Type.
     pub struct DataType {
         //This should be an IANA MIME type
         pub let MIME : String
@@ -85,6 +86,12 @@ pub contract MetaDataUtil {
     pub struct interface IMutableMetaData {
         pub let dataProvider: Capability<&{IMetaDataProvider}>
     }
+    
+    // Interface that the NFTs have to conform to
+    //
+    pub struct interface HasMetaData {
+        pub let metadata: MetaDataUtil.MetaDataHolder?
+    }
 
     //Solid version of MetaDataHolder that can be passed around or returned in script call for use off-chain
     pub struct MetaData {
@@ -105,10 +112,12 @@ pub contract MetaDataUtil {
         pub let requiredTags : [String]
         pub let validMIMETypes : [String]
         pub let schemaData : [MetaData]
-        init(requiredTags : [String], validMIMETypes : [String]) {
+        pub let subSchema: Schema?
+        init(requiredTags : [String], validMIMETypes : [String], subSchema: Schema?) {
             self.requiredTags = requiredTags
             self.validMIMETypes = validMIMETypes
             self.schemaData = []
+            self.subSchema = subSchema
         }
     }
 
@@ -139,11 +148,35 @@ pub contract MetaDataUtil {
             self.elements = metaData ?? []
         }
 
+        pub fun getFullMetaData() : [MetaData] {
+            var elements : [MetaData] = []
+            for element in self.elements {
+                elements.append(element.toMetaData(subSchema: nil))
+            }
+            return elements
+        }
+
+        pub fun getFullSchema() : Schema {
+            let elements : [SchemaElement] = []
+            
+            for element in self.getFullMetaData() {
+                let schemaElement = SchemaElement(
+                    requiredTags: element.tags,
+                    validMIMETypes : [element.type.MIME], 
+                    subSchema: nil
+                )
+                schemaElement.schemaData.append(element)
+                elements.append(schemaElement)
+            }
+
+            return Schema(elements: elements)
+        }
+
         pub fun getMetaDatasByTag(tag : String) : [MetaData] {
             var taggedElements : [MetaData] = []
             for element in self.elements {
                 if (element.hasTag(tag : tag)) {
-                    taggedElements.append(element.toMetaData())
+                    taggedElements.append(element.toMetaData(subSchema: nil))
                 }
             }
             return taggedElements
@@ -153,8 +186,7 @@ pub contract MetaDataUtil {
             let matchingElements : [MetaData] = []
             for element in self.elements {
                 if(element.hasAllTags(requiredTags: schemaElement.requiredTags) && element.conformsToTypeRequirements(validMIMETypes: schemaElement.validMIMETypes)) {
-                    let dataType = element.getDataType()
-                    matchingElements.append(MetaData(data: element.getData(), type: dataType, tags: element.getTags(), mutable: element.isMutable()))
+                    matchingElements.append(element.toMetaData(subSchema: schemaElement.subSchema))
                 }
             }
 
@@ -284,8 +316,18 @@ pub contract MetaDataUtil {
             return false
         }
 
-        pub fun toMetaData() : MetaData {
-            let dataType = self.getDataType()
+        pub fun toMetaData(subSchema: Schema?) : MetaData {
+            var dataType = self.getDataType()
+            var data = self.getData()
+            var subData = data as? {HasMetaData}
+            if(subData != nil && subData!.metadata != nil) {
+                dataType = DataType(MIME: "application.flow+Schema", isLink: false, innerMIME: nil)
+                if(subSchema == nil) {
+                    data = subData!.metadata!.getFullSchema()
+                } else {
+                    data = subData!.metadata!.retrieveSchemaData(schema: subSchema!, retrievalMode: SchemaRetrievalMode.ALLOW_NONE)
+                }
+            }
             return MetaData(data: self.getData(), type: dataType, tags: self.getTags(), mutable: self.isMutable())
         }
 
@@ -323,6 +365,9 @@ Mutable elements store Capability pointers to IMetaDataProvider instances that c
 * Mutable elements can also be used for metadata that is shared between multiple NFTs, to minimize redundant data storage.
   * A Side-effect (benefit?) here is that if the instance is stored in a contract in the developers account, the developer will need to cover the metaData storage costs instead of the NFT holder.
 
+#### HasMetaData Interface
+It is possible to nest metadata by defining a struct that conforms to the HasMetaData interface. When a metadata element conforms to HasMetaData, it allows that type to be queried by the Schema system and allows the client to receive full information about the sub-object as if it were another NFT.
+
 ### Schema System
 Schema, SchemaElement, and SchemaRetrievalMode are data types primarily for off-chain accessing of MetaData, although it may be useful for certain on-chain functionality
 * MetaDataHolder.retrieveSchemaData can be used to retrieve solid copies of the NFTs metadata for use off-chain via script
@@ -340,14 +385,24 @@ Because MetaDataElements can possess multiple tags, it allows NFT developers to 
 	-tag: ["img"]
 
 	while Dex-B expects NFTs to comply with:
-	-tag: ["title"]
-	-tag: ["description"]
-	-tag: ["portrait"]
+	-tag: ["dc:title"]
+	-tag: ["dc:description"]
+	-tag: ["dc:source"]
 	
 	An NFT can comply with both by providing elements tagged:
-	["name","title"]
-	["text","description"]
-	["img","portrait"]
+	["name","dc:title"]
+	["text","dc:description"]
+	["img","dc:source"]
+
+#### Schema Tagging Standards
+Using metadata tags is a well established practice, and lends itself well to conforming to existing standardized tagging ontologies.
+CommonMetaDataElements contains a definition for two elements that allow NFTs to use tagging standards defined in rdf format: TagNamespace and DCNamespace
+
+As a standard, any metadata element that has the tag "TagNamespace" or "ns" should be used to define an rdf style tag namespace prefix that is used by the other metadata elements on the nft. These namespaces are strings ("text/plain" mime type) that have a format "ns: uri" where ns is a short prefix and uri is the web location that defines the tagging standard.
+
+DCNamespace specifies that the NFT uses metadata tags that conform to the common DublinCore /elements/1.1/ tagging standard by providing a namespace definition of "dc: http://purl.org/dc/elements/1.1/". All of the other element structs defined in CommonMetaDataElements have tags that conform to the DublinCore elements namespace.
+
+There are many tagging ontology namespace standards in existence, and by using the TagNamespace element, developers can specify that their NFTs support any of their choice.
 
 ### Modifications to Standard
 The only modification to the existing NFT interface is the addition of the metadata property:
@@ -426,6 +481,41 @@ pub contract CommonMetaDataElements {
         }
     }
 
+    //Default element implementation that defines the rdf style namespaces used in the NFTs tagging ontology
+    //Namespace prefix and uri may not contain white space. URI should be a valid URI of an RDF format namespace definition
+    pub struct TagNamespace : MetaDataUtil.IImmutableMetaData, MetaDataUtil.ITaggedMetaData {
+        pub let data: AnyStruct
+        pub let type: MetaDataUtil.DataType
+        pub let id: UInt64
+
+        init(prefix : String, uri: String) {
+            self.data = prefix.concat(": ").concat(uri)
+            self.type = MIME.TextPlain
+            self.id = 0
+        }
+
+        pub fun getTags() : [String] {
+            return ["TagNamespace", "ns"]
+        }
+    }
+
+    //Default element implementation that specifies that this NFT uses the common DublinCore /elements/1.1/ tagging ontology 
+    pub struct DCNamespace : MetaDataUtil.IImmutableMetaData, MetaDataUtil.ITaggedMetaData {
+        pub let data: AnyStruct
+        pub let type: MetaDataUtil.DataType
+        pub let id: UInt64
+
+        init() {
+            self.data = "dc: http://purl.org/dc/elements/1.1/"
+            self.type = MIME.TextPlain
+            self.id = 0
+        }
+
+        pub fun getTags() : [String] {
+            return ["TagNamespace"]
+        }
+    }
+
     //Default element implementation for a named NFT, most NFTs will need this
     pub struct DefaultName : MetaDataUtil.IImmutableMetaData, MetaDataUtil.ITaggedMetaData {
         pub let data: AnyStruct
@@ -439,7 +529,7 @@ pub contract CommonMetaDataElements {
         }
 
         pub fun getTags() : [String] {
-            return ["name", "title"]
+            return ["dc:title", "title", "name"]
         }
     }
 
@@ -456,7 +546,7 @@ pub contract CommonMetaDataElements {
         }
 
         pub fun getTags() : [String] {
-            return ["description"]
+            return ["dc:description", "description"]
         }
     }
 
@@ -473,12 +563,12 @@ pub contract CommonMetaDataElements {
         }
 
         pub fun getTags() : [String] {
-            return ["image", "portrait"]
+            return ["dc:source", "image"]
         }
     }
 
     pub struct UpdatableStats : MetaDataUtil.IMutableMetaData, MetaDataUtil.ITaggedMetaData {
-         pub let dataProvider: Capability<&AnyStruct{MetaDataUtil.IMetaDataProvider}>
+        pub let dataProvider: Capability<&AnyStruct{MetaDataUtil.IMetaDataProvider}>
         pub let id: UInt64
         
         init(id: UInt64, provider : Capability<&UpdatableStatsProvider{MetaDataUtil.IMetaDataProvider}>,) {
@@ -611,7 +701,7 @@ pub contract CommonMetaDataElements {
         }
 
         pub fun getTags(id: UInt64) : [String] {
-            return ["image", "portrait"]
+            return ["dc:source", "image"]
         }
     }
 }
@@ -643,12 +733,6 @@ meta-data types.
 Additional Example implementation code:
 
 ```
-// This is an example implementation of a Flow Non-Fungible Token
-// It is not part of the official standard but it assumed to be
-// very similar to how many NFTs would implement the core functionality.
-
-import NonFungibleToken, MetaDataUtil, MIME, CommonMetaDataElements from 0x01
-
 pub contract ExampleNFT: NonFungibleToken {
 
     pub var totalSupply: UInt64
@@ -661,11 +745,11 @@ pub contract ExampleNFT: NonFungibleToken {
 
     pub resource NFT: NonFungibleToken.INFT {
         pub let id: UInt64
-        pub let metadata : MetaDataUtil.MetaData?
+        pub let metadata : MetaDataUtil.MetaDataHolder?
 
         init(initID: UInt64, metadataElements : [MetaDataUtil.MetaDataElement]) {
             self.id = initID
-            self.metadata = MetaDataUtil.MetaData(metadataElements)
+            self.metadata = MetaDataUtil.MetaDataHolder(metadataElements)
         }
     }
 
@@ -741,6 +825,7 @@ pub contract ExampleNFT: NonFungibleToken {
 
             // create a new NFT
             let elements : [MetaDataUtil.MetaDataElement] = [
+                MetaDataUtil.MetaDataElement(metadata: CommonMetaDataElements.DCNamespace()),
                 MetaDataUtil.MetaDataElement(metadata: CommonMetaDataElements.DefaultName(name: name)),
                 MetaDataUtil.MetaDataElement(metadata: CommonMetaDataElements.DefaultDescription(description: description)),
                 MetaDataUtil.MetaDataElement(metadata: CommonMetaDataElements.PNG_RemoteDefaultImage(id: providerID!, capability: capability))
