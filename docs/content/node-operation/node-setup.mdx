@@ -90,15 +90,26 @@ You should also ensure you run **time synchronization** on the machine hosting t
 
 Flow stores protocol state on disk, as well as execution state in the case of execution nodes.
 
-Flow stores confidential data in a separate database. We strongly recommend enabling encryption
-for this database - see [this guide](/node-operation/db-encryption-existing-operator/) for instructions.
-
 Where the data is stored is up to you. By default, the `systemd` files that ship with Flow use `/var/flow/data`.
 This is where the vast majority of Flow's disk usage comes from, so you may wish to mount this directory on a separate disk from the OS.
 The performance of this disk IO is also a major bottleneck for certain node types.
 While all nodes need to make use of this disk, if you are running an execution node, you should make sure this is a high performing SSD.
 
 As a rough benchmark for planning storage capacity, each Flow block will grow the data directory by 3-5KiB.
+
+### Confidential Data & Files
+
+Flow stores dynamically generated confidential data in a separate database. We strongly recommend enabling encryption
+for this database - see [this guide](/node-operation/db-encryption-existing-operator/) for instructions.
+
+Confidential information used by Flow is stored in the `private-root-information` subtree of the `bootstrap` folder. 
+In particular:
+* the staking private key (`node-info.priv.json`)
+* the networking private key (`node-info.priv.json`)
+* the encryption key for the secrets database (`secretsdb-key`)
+* (if applicable) the initial random beacon private key (`random-beacon.priv.json`)
+
+These files contain confidential data, and must be stored and accessed securely.
 
 ## Pull the Flow Images
 
