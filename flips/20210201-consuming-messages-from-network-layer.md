@@ -1,11 +1,11 @@
 # Handing Messages from Networking Layer to Engines (Core Protocol)
 
-| Status        | Proposed       |
+| Status        | Accepted       |
 :-------------- |:---------------------------------------------------- |
 | **FLIP #**    | [343](https://github.com/onflow/flow/pull/343) |
 | **Author(s)** | Alex Hentschel (alex.hentschel@dapperlabs.com) |
 | **Sponsor**   | Alex Hentschel (alex.hentschel@dapperlabs.com)             |
-| **Updated**   | 2021-02-03                                           |
+| **Updated**   | 2021-09-20                                           |
 
 
 ## Objective
