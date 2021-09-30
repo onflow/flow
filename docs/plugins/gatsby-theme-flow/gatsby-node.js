@@ -20,8 +20,6 @@ exports.onCreateNode = async function(
     }
 
     let category;
-    const fileName = parent.name;
-    const outputDir = "social-cards";
 
     for (const key in sidebarCategories) {
       if (key !== "null") {
@@ -35,25 +33,14 @@ exports.onCreateNode = async function(
     }
 
     const { title, sidebar_title, graphManagerUrl } = node.frontmatter;
-    // createPrinterNode({
-    //   id: `${node.id} >>> Printer`,
-    //   fileName,
-    //   outputDir,
-    //   data: {
-    //     title,
-    //     subtitle: subtitle || siteName,
-    //     category,
-    //   },
-    //   component: require.resolve("./src/components/social-card.js"),
-    // });
 
     actions.createNodeField({
       name: "image",
       node,
-      value: path.join(outputDir, fileName + ".png")
+      value: `https://flow-docs-og-image.vercel.app/**${title}**.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fstorage.googleapis.com%2Fflow-resources%2Fdocumentation-assets%2Fflow-docs.svg&widths=auto&heights=350`
     });
 
-    actions.createNodeField({
+    https: actions.createNodeField({
       node,
       name: "slug",
       value: slug
@@ -149,6 +136,7 @@ const pageFragment = `
   fields {
     slug
     sidebarTitle
+    image
   }
 `;
 

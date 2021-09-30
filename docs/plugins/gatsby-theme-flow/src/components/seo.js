@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
+
 import React from "react";
+
 import { Helmet } from "react-helmet";
 
 export default function SEO(props) {
@@ -11,17 +13,21 @@ export default function SEO(props) {
     children,
     favicon
   } = props;
+
+  const desc = description || "Flow Documentation";
+
   return (
     <Helmet>
       <title>{title}</title>
       <meta charSet="utf-8" />
-      <meta name="description" content={description} />
+      <meta property="og:type" content="website" />
+      <meta name="description" content={desc} />
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content={siteName} />
-      <meta property="og:description" content={description} />
+      <meta property="og:description" content={desc} />
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:description" content={desc} />
       <link rel="icon" href={favicon} />
       {children}
     </Helmet>
