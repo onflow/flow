@@ -14,21 +14,26 @@ node for local queries without the need for staking.
 
 ## Running a node
 
-The full observer node was built in collaboration with the `optakt` team. The
-primary way to run a full observer node is with the Flow Data Provisioning
-Service (DPS).
+The full observer node was built in collaboration with the [Optakt](https://www.optakt.io/) team.
+The primary way to run a full observer node is with the Flow Data Provisioning Service (DPS).
 
 ### Data Provisioning Service
 
 The [Data Provisioning Service](https://github.com/optakt/flow-dps/) provides
-efficient access to the full history of flow blockchain data from a single API.
-DPS was built by the `optakt` team and greatly streamlines use cases that require
-archival data.
+efficient access to the full history of Flow blockchain data from a single API.
+The DPS was built by the [Optakt](https://www.optakt.io/) team and greatly streamlines 
+use cases that require archival data.
+It provides scalable and efficient way to access the history of the Flow execution state,
+both for current live [sporks](/node-operation/spork/) and for past sporks.
 
-For more information on DPS, see their [documentation](https://github.com/optakt/flow-dps/blob/master/docs/introduction.md)
+For more information on the DPS, see their [documentation](https://github.com/optakt/flow-dps/blob/master/README.md).
 
-The full observer node functionality is provided by the [DPS Live](https://github.com/optakt/flow-dps/tree/master/cmd/flow-dps-live)
-component, which consumes live state updates from the flow network.
+The full observer node functionality is provided by the [Flow DPS Live](https://github.com/optakt/flow-dps/tree/master/cmd/flow-dps-live)
+component, which consumes live state updates from the Flow network by acting as a consensus follower.
+
+Flow DPS Live component creates and maintains the DPS index, so that the
+[Flow DPS Server](https://github.com/optakt/flow-dps/tree/master/cmd/flow-dps-server) can be ran on top of it,
+providing random access to the Flow execution state through its API.
 
 ### Custom Implementations
 
