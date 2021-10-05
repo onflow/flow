@@ -14,26 +14,26 @@ node for local queries without the need for staking.
 
 ## Running a node
 
-The full observer node was built in collaboration with the [Optakt](https://www.optakt.io/) team.
+The full observer node was built in collaboration with the Optakt team.
 The primary way to run a full observer node is with the Flow Data Provisioning Service (DPS).
 
 ### Data Provisioning Service
 
 The [Data Provisioning Service](https://github.com/optakt/flow-dps/) provides
 efficient access to the full history of Flow blockchain data from a single API.
-The DPS was built by the [Optakt](https://www.optakt.io/) team and greatly streamlines 
+The Flow DPS was built by the [Optakt](https://www.optakt.io/) team and greatly streamlines 
 use cases that require archival data.
-It provides scalable and efficient way to access the history of the Flow execution state,
-both for current live [sporks](/node-operation/spork/) and for past sporks.
+It provides a scalable and efficient way to access the history of the Flow execution state,
+both for current live [sporks](/node-operation/spork/) and for [past sporks](/node-operation/past-sporks).
 
-For more information on the DPS, see their [documentation](https://github.com/optakt/flow-dps/blob/master/README.md).
+For more information on the Flow DPS, see their [documentation](https://github.com/optakt/flow-dps/blob/master/README.md).
 
-The full observer node functionality is provided by the [Flow DPS Live](https://github.com/optakt/flow-dps/tree/master/cmd/flow-dps-live)
+The full observer node functionality is provided by the [Flow DPS live indexer](https://github.com/optakt/flow-dps/tree/master/cmd/flow-dps-live)
 component, which consumes live state updates from the Flow network by acting as a consensus follower.
 
-Flow DPS Live component creates and maintains the DPS index, so that the
-[Flow DPS Server](https://github.com/optakt/flow-dps/tree/master/cmd/flow-dps-server) can be ran on top of it,
-providing random access to the Flow execution state through its API.
+Once fully synchronized, the Flow DPS live indexer serves the [Flow DPS API](https://github.com/optakt/flow-dps/blob/master/docs/dps-api.md)
+for the active execution state in real time. The [Flow DPS Access API](https://github.com/optakt/flow-dps-access) can be run
+on top of the live indexer to enable use of the data for Access API clients.
 
 ### Custom Implementations
 
