@@ -16,7 +16,6 @@
 | Node Operator             | Node Type           | Node ID  |
 |:--------------------------|:-------------------|:---------|
 | Accomplice | Verification | 79949f163dac6b72ab72c1d12b9677d71dd9367f7331d59425b485050c8712d9
-| Alvalor | Consensus | f3b72c50794c29319f0f77f0c7d623662eb15253c291a5360d095a4ea282fadb
 | Alxo | Verification | f7422f2d3296ede4d1efb36ec55e3fd93702c061f7ee627881f0b3007beff2ed
 | Artemis | Verification | a67ca1afd47c58358c656dffa2e5585d80b01371866e5634b68dcbab090b9b6f 
 | Bison Trails | Collection | 48ba5aabeaf1a7c1bc6a96b20c8e9f6cbe7f6b3c77faec3b77fa66a630abf8c7
@@ -55,6 +54,7 @@
 | Metapurse | Consensus |1780288437c9aed5056836bfffcfe19334dd6e229607fccfb3fe9b1d4d24cdca
 | Metapurse | Verfication | dc3054cae816874d7dbbe838a41ef97c8a01b44643bffc82afe3a8228eed29fd
 | NFT42 | Verification | f8af31c7c3294b246f34040e5685c351e89f1c1edf6c64f93f7babd73d149951
+| Optakt | Consensus | f3b72c50794c29319f0f77f0c7d623662eb15253c291a5360d095a4ea282fadb
 | P2P | Verification | 78ef2e461a32df2278ae78baf7cf1a54fec3601fe4723a5833c49e1935dc4b7d
 | P2P | Consensus | 14faeb5538c8791827163074cd5fdbdcf70c44648a98d835c63ebb386d5c4745 
 | P2P | Collection | 79b43645fdf7c6597d8868b10c91d8cf343ab7d2cea0c98902d8f9456049918a
