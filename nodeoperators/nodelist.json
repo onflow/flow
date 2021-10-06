@@ -2345,7 +2345,7 @@
     },
     {
         "Role": "consensus",
-        "Address": "188.166.246.70:3569",
+        "Address": "flow-consensus.dsrvlabs.net:3569",
         "NodeID": "947771ab1fd233d8694aee6c4a4259ee7e2241f4a201067aaa28adbb989d7c97",
         "Stake": 1000,
         "NetworkPubKey": "e20a11e76188a05e8f126a68e1ec6f082f41c5ecb419fd51a11df4d61be1d070afa76ea0a858f889b21cfbf2613e3fdd8a9b13a299f72cc23037055a505f562b",
