@@ -2929,14 +2929,6 @@
     },
     {
         "Role": "access",
-        "Address": "51.83.184.35:3569",
-        "NodeID": "4c3ce66c4f4f98d55d86db3928f2c829c95e1cea1cbab4f290a068629fac6341",
-        "Stake": 1000,
-        "NetworkPubKey": "a89e21b896ef6cbd6af4abd3b0b7b8df50f5ff104065335f9e53f07e748ef62b9b20ec60c0dd9ede4099df98d3193a532023bda90a314432336ecb75e7a6f534",
-        "StakingPubKey": "b8817826de3b6b51dd8fdcc1a7b94d45fea3225482718d09a16ede07ef304007b28d3d36b0b6765f6e791e50c80128810e691a8363fd24ed4233fdbdbe837dc963d8ffe5acd3b5f3d553aa1c24892021e5c7a8a1be74db8948fbabfeda6bd874"
-    },
-    {
-        "Role": "access",
         "Address": "flow-mainnet-0.prod.blockchain.circle.com:3569",
         "NodeID": "1b09878f16bf98a31ed9b6d2073692af70a032482a0652307852c743765674b4",
         "Stake": 1000,
