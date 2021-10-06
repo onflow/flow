@@ -285,17 +285,32 @@ Composite fields are encoded as a list of name-value pairs in the order in which
 }
 ```
 
-### Example
+### Examples
 
 ```json
 {
-  "type": "Resource",
+  "type": "Struct",
   "value": {
-    "id": "0x3.GreatContract.GreatNFT",
+    "id": "A.0x3.ExampleContract.ExampleStruct",
     "fields": [
       {
-        "name": "power",
+        "name": "anIntField",
         "value": {"type": "Int", "value": "1"}
+      }
+    ]
+  }
+}
+```
+
+```
+{
+  "type": "Enum",
+  "value": {
+    "id": "A.0x4.ExampleContract.ExampleEnum",
+    "fields": [
+      {
+        "name": "rawValue",
+        "value": {"type": "Int", "value": "3"}
       }
     ]
   }
