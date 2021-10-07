@@ -97,3 +97,16 @@ message GetTransactionResultResponse {
   string error_message = 2;
   repeated entities.Event events = 3;
 }
+
+// Registers 
+
+message GetRegistertAtBlockIDRequest {
+  bytes block_id = 1;
+  bytes owner_in_hex = 2;
+  bytes controller_in_hex = 3;
+  bytes key_in_hex = 4;
+}
+
+message GetRegistertAtBlockIDResponse {
+  bytes value = 1;
+}
