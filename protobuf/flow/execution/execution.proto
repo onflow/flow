@@ -109,9 +109,9 @@ message GetTransactionResultResponse {
 
 message GetRegistertAtBlockIDRequest {
   bytes block_id = 1;
-  bytes owner_in_hex = 2;
-  bytes controller_in_hex = 3;
-  bytes key_in_hex = 4;
+  bytes register_owner = 2;
+  bytes register_controller = 3;
+  bytes register_key = 4;
 }
 
 message GetRegistertAtBlockIDResponse {
