@@ -77,8 +77,8 @@ type AccessAPIClient interface {
 	// At present, Access Node might not have execution results for every block
 	// and as usual, until sealed, this data can change
 	GetExecutionResultForBlockID(ctx context.Context, in *GetExecutionResultForBlockIDRequest, opts ...grpc.CallOption) (*ExecutionResultForBlockIDResponse, error)
-	// GetRegistertAtBlockID collects a register at the block with the given ID (if available).
-	GetRegistertAtBlockID(ctx context.Context, in *GetRegistertAtBlockIDRequest, opts ...grpc.CallOption) (*GetRegistertAtBlockIDResponse, error)
+	// GetRegisterAtBlockID collects a register at the block with the given ID (if available).
+	GetRegisterAtBlockID(ctx context.Context, in *GetRegisterAtBlockIDRequest, opts ...grpc.CallOption) (*GetRegisterAtBlockIDResponse, error)
 }
 
 type accessAPIClient struct {
@@ -287,9 +287,9 @@ func (c *accessAPIClient) GetExecutionResultForBlockID(ctx context.Context, in *
 	return out, nil
 }
 
-func (c *accessAPIClient) GetRegistertAtBlockID(ctx context.Context, in *GetRegistertAtBlockIDRequest, opts ...grpc.CallOption) (*GetRegistertAtBlockIDResponse, error) {
-	out := new(GetRegistertAtBlockIDResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetRegistertAtBlockID", in, out, opts...)
+func (c *accessAPIClient) GetRegisterAtBlockID(ctx context.Context, in *GetRegisterAtBlockIDRequest, opts ...grpc.CallOption) (*GetRegisterAtBlockIDResponse, error) {
+	out := new(GetRegisterAtBlockIDResponse)
+	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetRegisterAtBlockID", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -359,8 +359,8 @@ type AccessAPIServer interface {
 	// At present, Access Node might not have execution results for every block
 	// and as usual, until sealed, this data can change
 	GetExecutionResultForBlockID(context.Context, *GetExecutionResultForBlockIDRequest) (*ExecutionResultForBlockIDResponse, error)
-	// GetRegistertAtBlockID collects a register at the block with the given ID (if available).
-	GetRegistertAtBlockID(context.Context, *GetRegistertAtBlockIDRequest) (*GetRegistertAtBlockIDResponse, error)
+	// GetRegisterAtBlockID collects a register at the block with the given ID (if available).
+	GetRegisterAtBlockID(context.Context, *GetRegisterAtBlockIDRequest) (*GetRegisterAtBlockIDResponse, error)
 }
 
 // UnimplementedAccessAPIServer should be embedded to have forward compatible implementations.
@@ -433,8 +433,8 @@ func (UnimplementedAccessAPIServer) GetLatestProtocolStateSnapshot(context.Conte
 func (UnimplementedAccessAPIServer) GetExecutionResultForBlockID(context.Context, *GetExecutionResultForBlockIDRequest) (*ExecutionResultForBlockIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetExecutionResultForBlockID not implemented")
 }
-func (UnimplementedAccessAPIServer) GetRegistertAtBlockID(context.Context, *GetRegistertAtBlockIDRequest) (*GetRegistertAtBlockIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetRegistertAtBlockID not implemented")
+func (UnimplementedAccessAPIServer) GetRegisterAtBlockID(context.Context, *GetRegisterAtBlockIDRequest) (*GetRegisterAtBlockIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRegisterAtBlockID not implemented")
 }
 
 // UnsafeAccessAPIServer may be embedded to opt out of forward compatibility for this service.
@@ -844,20 +844,20 @@ func _AccessAPI_GetExecutionResultForBlockID_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AccessAPI_GetRegistertAtBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetRegistertAtBlockIDRequest)
+func _AccessAPI_GetRegisterAtBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRegisterAtBlockIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AccessAPIServer).GetRegistertAtBlockID(ctx, in)
+		return srv.(AccessAPIServer).GetRegisterAtBlockID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetRegistertAtBlockID",
+		FullMethod: "/flow.access.AccessAPI/GetRegisterAtBlockID",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetRegistertAtBlockID(ctx, req.(*GetRegistertAtBlockIDRequest))
+		return srv.(AccessAPIServer).GetRegisterAtBlockID(ctx, req.(*GetRegisterAtBlockIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -958,8 +958,8 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AccessAPI_GetExecutionResultForBlockID_Handler,
 		},
 		{
-			MethodName: "GetRegistertAtBlockID",
-			Handler:    _AccessAPI_GetRegistertAtBlockID_Handler,
+			MethodName: "GetRegisterAtBlockID",
+			Handler:    _AccessAPI_GetRegisterAtBlockID_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
