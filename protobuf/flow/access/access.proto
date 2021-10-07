@@ -121,9 +121,9 @@ service AccessAPI {
 
   // Registers
 
-  // GetRegistertAtBlockID collects a register at the block with the given ID (if available).
-  rpc GetRegistertAtBlockID(GetRegistertAtBlockIDRequest)
-      returns (GetRegistertAtBlockIDResponse);
+  // GetRegisterAtBlockID collects a register at the block with the given ID (if available).
+  rpc GetRegisterAtBlockID(GetRegisterAtBlockIDRequest)
+      returns (GetRegisterAtBlockIDResponse);
 }
 
 message PingRequest {}
@@ -299,13 +299,13 @@ message ExecutionResultForBlockIDResponse {
 
 // Registers 
 
-message GetRegistertAtBlockIDRequest {
+message GetRegisterAtBlockIDRequest {
   bytes block_id = 1;
   bytes register_owner = 2;
   bytes register_controller = 3;
   bytes register_key = 4;
 }
 
-message GetRegistertAtBlockIDResponse {
+message GetRegisterAtBlockIDResponse {
   bytes value = 1;
 }
