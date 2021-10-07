@@ -162,7 +162,7 @@ const sources = [
     options: {
       name: "cadence-github",
       remote: "https://github.com/onflow/cadence.git",
-      patterns: "docs/language/**/*"
+      patterns: "docs/**/*"
     }
   },
   {
@@ -303,30 +303,33 @@ const sections = [
     }
   },
   {
-    sourceInstanceName: "docs",
-    patterns: ["cadence/**/*"],
+    sourceInstanceName: "cadence-github",
+    patterns: ["docs/*.(md|mdx)", "docs/tutorial/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
       Overview: ["[Cadence Language Reference](/cadence/language/)"],
       "Developer Guides": [
         "[Introduction to Cadence](/cadence)",
-        "cadence/design-patterns",
-        "cadence/anti-patterns",
-        "cadence/msg-sender",
-        "cadence/measuring-time",
-        "cadence/migration-guide",
-        "cadence/json-cadence-spec"
+        "docs/design-patterns",
+        "docs/contract-upgrades",
+        "docs/anti-patterns",
+        "docs/msg-sender",
+        "docs/measuring-time",
+        "docs/subtyping",
+        "docs/migration-guide",
+        "docs/json-cadence-spec",
+        "docs/syntax-highlighting"
       ],
       Tutorial: [
-        "cadence/tutorial/01-first-steps",
-        "cadence/tutorial/02-hello-world",
-        "cadence/tutorial/03-fungible-tokens",
-        "cadence/tutorial/04-non-fungible-tokens",
-        "cadence/tutorial/05-marketplace-setup",
-        "cadence/tutorial/06-marketplace-compose",
-        "cadence/tutorial/07-resources-compose",
-        "cadence/tutorial/08-voting"
+        "docs/tutorial/01-first-steps",
+        "docs/tutorial/02-hello-world",
+        "docs/tutorial/03-fungible-tokens",
+        "docs/tutorial/04-non-fungible-tokens",
+        "docs/tutorial/05-marketplace-setup",
+        "docs/tutorial/06-marketplace-compose",
+        "docs/tutorial/07-resources-compose",
+        "docs/tutorial/08-voting"
       ]
     }
   },
@@ -638,6 +641,7 @@ const sections = [
         "docs/language/contracts",
         "docs/language/contract-updatability",
         "docs/language/events",
+        "docs/language/core-events",
         "docs/language/transactions",
         "docs/language/run-time-types",
         "docs/language/built-in-functions",
