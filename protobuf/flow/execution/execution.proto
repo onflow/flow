@@ -38,6 +38,13 @@ service ExecutionAPI {
   // GetTransactionResult gets the result of a transaction.
   rpc GetTransactionResult(GetTransactionResultRequest)
       returns (GetTransactionResultResponse);
+
+  // Registers
+
+  // GetRegistertAtBlockID collects a register at the block with the given ID (if available).
+  rpc GetRegistertAtBlockID(GetRegistertAtBlockIDRequest)
+      returns (GetRegistertAtBlockIDResponse);
+
 }
 
 // Ping

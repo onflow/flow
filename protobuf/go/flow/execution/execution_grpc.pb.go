@@ -30,6 +30,8 @@ type ExecutionAPIClient interface {
 	GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*GetEventsForBlockIDsResponse, error)
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(ctx context.Context, in *GetTransactionResultRequest, opts ...grpc.CallOption) (*GetTransactionResultResponse, error)
+	// GetRegistertAtBlockID collects a register at the block with the given ID (if available).
+	GetRegistertAtBlockID(ctx context.Context, in *GetRegistertAtBlockIDRequest, opts ...grpc.CallOption) (*GetRegistertAtBlockIDResponse, error)
 }
 
 type executionAPIClient struct {
@@ -85,6 +87,15 @@ func (c *executionAPIClient) GetTransactionResult(ctx context.Context, in *GetTr
 	return out, nil
 }
 
+func (c *executionAPIClient) GetRegistertAtBlockID(ctx context.Context, in *GetRegistertAtBlockIDRequest, opts ...grpc.CallOption) (*GetRegistertAtBlockIDResponse, error) {
+	out := new(GetRegistertAtBlockIDResponse)
+	err := c.cc.Invoke(ctx, "/flow.execution.ExecutionAPI/GetRegistertAtBlockID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ExecutionAPIServer is the server API for ExecutionAPI service.
 // All implementations should embed UnimplementedExecutionAPIServer
 // for forward compatibility
@@ -101,6 +112,8 @@ type ExecutionAPIServer interface {
 	GetEventsForBlockIDs(context.Context, *GetEventsForBlockIDsRequest) (*GetEventsForBlockIDsResponse, error)
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(context.Context, *GetTransactionResultRequest) (*GetTransactionResultResponse, error)
+	// GetRegistertAtBlockID collects a register at the block with the given ID (if available).
+	GetRegistertAtBlockID(context.Context, *GetRegistertAtBlockIDRequest) (*GetRegistertAtBlockIDResponse, error)
 }
 
 // UnimplementedExecutionAPIServer should be embedded to have forward compatible implementations.
@@ -121,6 +134,9 @@ func (UnimplementedExecutionAPIServer) GetEventsForBlockIDs(context.Context, *Ge
 }
 func (UnimplementedExecutionAPIServer) GetTransactionResult(context.Context, *GetTransactionResultRequest) (*GetTransactionResultResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionResult not implemented")
+}
+func (UnimplementedExecutionAPIServer) GetRegistertAtBlockID(context.Context, *GetRegistertAtBlockIDRequest) (*GetRegistertAtBlockIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRegistertAtBlockID not implemented")
 }
 
 // UnsafeExecutionAPIServer may be embedded to opt out of forward compatibility for this service.
@@ -224,6 +240,24 @@ func _ExecutionAPI_GetTransactionResult_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ExecutionAPI_GetRegistertAtBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRegistertAtBlockIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExecutionAPIServer).GetRegistertAtBlockID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.execution.ExecutionAPI/GetRegistertAtBlockID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExecutionAPIServer).GetRegistertAtBlockID(ctx, req.(*GetRegistertAtBlockIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ExecutionAPI_ServiceDesc is the grpc.ServiceDesc for ExecutionAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -250,6 +284,10 @@ var ExecutionAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetTransactionResult",
 			Handler:    _ExecutionAPI_GetTransactionResult_Handler,
+		},
+		{
+			MethodName: "GetRegistertAtBlockID",
+			Handler:    _ExecutionAPI_GetRegistertAtBlockID_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
