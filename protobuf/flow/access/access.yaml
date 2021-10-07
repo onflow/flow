@@ -1,0 +1,168 @@
+openapi: "3.0.0"
+info:
+  version: "1.0.0"
+  title: "Access API"
+servers:
+  - url: https://access.mainnet.onflow.org/v1
+    description: Current Mainnet
+  - url: https://access.devnet.nodes.onflow.org/v1
+    description: Testnet
+  - url: https://access.canary.nodes.onflow.org/v1
+    description: Canarynet
+paths:
+  /blocks:
+    get:
+      summary: Gets full blocks by height.
+      tags:
+        - Blocks
+      operationId: getBlockByHeight
+      parameters: 
+        - description: The heights of the blocks to get.
+          name: height
+          in: query
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/BlockHeight'
+            minItems: 1
+            uniqueItems: true
+          explode: false
+          style: form
+          required: true
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Block'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        404:
+          $ref: '#/components/responses/404NotFound'
+        500:
+          $ref: '#/components/responses/500InternalServerError'
+components:
+  parameters:
+    expandParam:
+        description: A comma-separated list indicating which properties of the content to expand.
+        name: expand
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+          minItems: 1
+          uniqueItems: true
+        explode: false
+        style: form
+        required: false
+    selectParam:
+      description: A comma-separated list indicating which properties of the content to return.
+      name: select
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+        minItems: 1
+        uniqueItems: true
+      explode: false
+      style: form
+      required: false
+  schemas:
+    Block:
+      type: object
+      required:
+        - id
+        - parent_id
+        - height
+        - timestamp
+        - parent_voter_signature
+      properties:
+        id:
+          $ref: '#/components/schemas/Identifier'
+        parent_id:
+          $ref: '#/components/schemas/Identifier'
+        height:
+          type: string
+          format: uint64
+        timestamp:
+          type: string
+          format: date-time
+        parent_voter_signature:
+          $ref: '#/components/schemas/Signature'
+        payload:
+          $ref: '#/components/schemas/BlockPayload'
+        execution_result:
+          $ref: '#/components/schemas/ExecutionResult'
+        _expandable:
+          type: object
+          properties:
+            payload:
+              type: string
+              format: uri
+            execution_result:
+              type: string
+              format: uri
+        _links:
+          $ref: '#/components/schemas/Links'
+    BlockPayload:
+      type: object
+    BlockHeight:
+      oneOf:
+        - type: integer
+          format: uint64
+          minimum: 0
+        - type: string
+          enum:
+            - latest
+    Address:
+      description: The 8-byte address of an account.
+      type: string
+      format: hexadecimal
+      pattern: '[a-fA-F0-9]{16}'
+    Identifier:
+      description: A 32-byte unique identifier for an entity.
+      type: string
+      format: hexadecimal
+      pattern: '[a-fA-F0-9]{64}'
+    Signature:
+      description: A variable length signature.
+      type: string
+      format: byte
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+    Links:
+      type: object
+  responses:
+    400BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    404NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    500InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+externalDocs:
+  description: "Find out more about the Access API"
+  url: "https://docs.onflow.org/access-api/"
