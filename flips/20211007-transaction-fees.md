@@ -6,7 +6,7 @@
 
 | Status        | Proposed                                             |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
+| **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/660) (update when you have PR #)|
 | **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com)   |
 | **Updated**   | 2021-10-07                                           |
 
@@ -20,46 +20,48 @@ Transaction fees should allow the Flow blockchain to self regulate transaction t
 
 ## Current design
 
-Currently transaction fees are the same for every transaction and don't change automatically over time. The transaction fee amount is defined in the `FlowServiceAccount` smart contract as the `transactionFee` field (can be seen [here]( https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowServiceAccount.cdc) or [here](https://flow-view-source.com/mainnet/account/0xe467b9dd11fa00df/contract/FlowServiceAccount)).
+Currently transaction fees are the same for all transactions and don't change over time [^2]. The transaction fee amount is defined in the `FlowServiceAccount` smart contract as the `transactionFee` field (can be seen [here]( https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowServiceAccount.cdc) or [here](https://flow-view-source.com/mainnet/account/0xe467b9dd11fa00df/contract/FlowServiceAccount)).
 
-The fees are deducted from the transaction payers account automatically. If the fee deduction fails, no state change from the transaction is committed.
+[^2]: Except when an explicit decision is made to change them.
 
-The paid transaction fees are collected on the [FlowFees](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc) smart contract and are used as part of the staking rewards. If there were more fees collected during an epoch then there were staking rewards the leftover FLOW gets burnt. This part would not be changed with this proposal.
+The fees are deducted from the transaction payer automatically. If the transaction fails the fees are still deducted and no other state change (except the fee deduction) is committed.
 
-There is an existing concept of computation limit (a.k.a.: gas limit), but it is not tied to transaction fees. The computation limit currently only prevents transactions to run for a very long time.
+The transaction fees are collected on the [FlowFees](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc) smart contract and are used as part of the staking rewards. If there were more fees collected during an epoch then there were staking rewards the leftover FLOW gets burnt. This part would not be changed with this proposal, but it is important to note, as this means collecting more fees leads to less inflation or even deflation.
+
+There is an existing concept of computation limit (a.k.a.: gas limit), but it is currently not tied to transaction fees. The computation limit is currently only used prevent transactions from running for a very long time.
 
 ## Design requirements
 
-We can separate the requirements into two perspectives.
+We can separate the requirements into two groups depending on perspective.
 
 From the protocols perspective the following requirements can be set:
 
 - Larger (byte size) transactions take more bandwidth and should be costlier than smaller transactions.
 - Transactions that are computationally more demanding should be costlier than simpler transactions.
-- If the protocol is experiencing a lot of traffic, all transactions should become more expensive.
+- If the protocol is experiencing a lot of traffic, all transactions should become more expensive, until the high traffic subsides.
 
 From the users perspective the transaction fees implementation should satisfy the following criteria:
 
 - Fees should be easy to understand:
-    - It should be made clear why they exist in the form they do, and what else was considered.
-    - It should be easy to explain how to calculate them, and how to view the actual fees that were deducted.
+    - It should be made clear why they exist in the form they do.
+    - It should be easy to explain how the fees are calculated.
 - It should be possible to calculate the transaction fees (within a reasonable margin), before actually sending a transaction.
-- The price of sending a specific transaction should not fluctuate over time so quickly that the user cannot respond to it.
+- The price of sending a specific transaction should not fluctuate over time so quickly that the user cannot respond to the fluctuation.
 - It should be possible to see the details of the transaction fee calculation after the transaction is executed.
 
 ## Proposed design
 
-The idea for this design is to break down the transaction fees into smaller parts that are easier to define control and implement.
+The idea for this design is to break down the transaction fees into smaller parts that are easier to define, control, and implement.
 
-Lets first separate transaction fees (<img src="https://render.githubusercontent.com/render/math?math=F">) into inclusion fees (<img src="https://render.githubusercontent.com/render/math?math=F_i">) and computation fees (<img src="https://render.githubusercontent.com/render/math?math=F_c">). The inclusion fees represent the cost of getting the transaction included in a collection and the cost of the increase in network traffic created by including the transaction. The computation fees account for the operational cost of executing the transaction script. 
+The first separation of the transaction fees (<img src="https://render.githubusercontent.com/render/math?math=F">) is into inclusion fees (<img src="https://render.githubusercontent.com/render/math?math=F_i">) and computation fees (<img src="https://render.githubusercontent.com/render/math?math=F_c">). The inclusion fees represent the cost of getting the transaction included in a collection and the cost of the increase in network traffic created by including the transaction. The computation fees account for the operational cost of executing the transaction script. 
 
 This separation allows for finer control over the type of transactions that are desired. For example if the volume of transactions is high and is causing congestion on the the collection nodes but the execution nodes have no problem executing all of the transactions, the inclusion fees can be increased without changing the computation fees.
 
-Each part of the fees can be further split into *effort*(<img src="https://render.githubusercontent.com/render/math?math=E">) and a *effort cost factor*(<img src="https://render.githubusercontent.com/render/math?math=f">) of FLOW per unit of effort. The *effort* required for a specific transaction should be independent of when we send the transaction[^1] and should only depend on the properties of the transaction. On the other hand the *effort cost factor* change over time depending on network activity.
+Each part of the fees can be further split into *effort*(<img src="https://render.githubusercontent.com/render/math?math=E">) and a *effort cost factor*(<img src="https://render.githubusercontent.com/render/math?math=f">) of FLOW per unit of effort. The *effort* required for a specific transaction should be independent of when the transaction is sent[^1] and should only depend on the properties of the transaction. On the other hand the *effort cost factor* would change over time depending on network activity.
 
 [^1]: Assuming there weren't any changes to the state that would make the transaction script behave differently.
 
-If we could send a completely empty transaction (without any script, arguments, or signatures; *nil transaction*), it would still require some effort from the nodes to include it in a collection and go through the pre-execution and post-execution steps. Because of this the *effort* needs to be further split into a constant part(<img src="https://render.githubusercontent.com/render/math?math=C">) and a dynamic part (<img src="https://render.githubusercontent.com/render/math?math=D">). The dynamic parts depends on the transaction properties (how large it is, how long it takes to execute, ...) while the constant parts are the same for all transactions.
+If we could send a completely empty transaction (without any script, arguments, or signatures; a *nil transaction*), it would still require some effort from the nodes to include it in a collection and go through the pre-execution and post-execution steps. Because of this the *effort* needs to be further split into a constant part(<img src="https://render.githubusercontent.com/render/math?math=C">) and a dynamic part (<img src="https://render.githubusercontent.com/render/math?math=D">). The dynamic parts depend on the transactions properties (how large it is, how long it takes to execute, ...) while the constant parts are the same for all transactions.
 
 The final result in equation form looks like this:
 
@@ -81,13 +83,16 @@ The final result in equation form looks like this:
 
 The effort cost factors <img src="https://render.githubusercontent.com/render/math?math=f_i"> and <img src="https://render.githubusercontent.com/render/math?math=f_c"> are used to change the cost of transaction fees over time, and should be changed depending on how much load the network is under. If the execution or verification nodes are struggling to execute all of the transactions, the computation effort cost factor should be increased. If the network finds it difficult to create collections from all the transactions coming in, but the execution nodes are still fine, the computation effort cost factor should be increased. 
 
-Adjusting the effort cost factors should be done with an automatic process that responds to the network load. But this does not need to be done right away.
-
 They should be defined on a smart contract and adjustable via the service account. They should be accessible for everyone to read.
 
 Another reason to tweak the cost factors is that over time some parts of the code will get optimized so the same amount of effort will get cheaper to handle. An example would be that if execution of transactions became 10% faster because of optimizations, the computation effort cost factor could be reduced by 10%.
 
 A potential third use of the effort cost factors would be to keep the cost of transaction stable according to the USD value of flow. This would require a periodic job to run, check the USD value of FLOW and update the cost factors to account for any changes. This would allow for the average transaction fees to stay relatively close to a set USD value.
+
+### Fee effort cost factors automation (surge pricing)
+
+A mechanism would be in place to increase the price of transactions if the network is experiencing load.
+This would be done by increasing one or both of the fee effort cost factors. This would incentivise users that can wait before sending their transaction to do so.
 
 ### Dynamic inclusion effort
 
