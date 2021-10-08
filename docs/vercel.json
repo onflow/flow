@@ -62,6 +62,11 @@
       "permanent": true
     },
     {
+      "source": "/cadence/index/",
+      "destination": "/cadence/",
+      "permanent": true
+    },
+    {
       "source": "/docs/glossary/",
       "destination": "/intro/glossary/",
       "permanent": true
@@ -484,6 +489,11 @@
     {
       "source": "/fcl/api/",
       "destination": "/fcl",
+      "permanent": true
+    },
+    {
+      "source": "/devtools/emulator/",
+      "destination": "/emulator/",
       "permanent": true
     }
   ]
