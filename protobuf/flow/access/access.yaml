@@ -214,6 +214,31 @@ paths:
           $ref: '#/components/responses/400BadRequest'
         500:
           $ref: '#/components/responses/500InternalServerError'
+  /collections/{id}:
+    get:
+      summary: Gets a collection by ID.
+      tags:
+        - Collections
+      parameters:
+        - name: id
+          in: path
+          schema:
+            $ref: '#/components/schemas/Identifier'
+          required: true
+          description: The ID of the collection to get.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        404:
+          $ref: '#/components/responses/404NotFound'
+        500:
+          $ref: '#/components/responses/500InternalServerError'
 components:
   parameters:
     expandParam:
@@ -243,6 +268,20 @@ components:
       style: form
       required: false
   schemas:
+    Collection:
+      type: object
+      required:
+        - id
+        - transactions
+      properties:
+        id:
+          $ref: '#/components/schemas/Identifier'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+        _links:
+          $ref: '#/components/schemas/Links'
     Transaction:
       type: object
       required:
