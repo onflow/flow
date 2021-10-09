@@ -297,6 +297,37 @@ paths:
           $ref: '#/components/responses/404NotFound'
         500:
           $ref: '#/components/responses/500InternalServerError'
+  /accounts/{address}:
+    get:
+      summary: Gets an account by address at the given block height.
+      tags:
+        - Accounts
+      parameters:
+        - name: address
+          in: path
+          schema:
+            $ref: '#/components/schemas/Address'
+          required: true
+          description: The address of the account to get.
+        - name: block_height
+          in: query
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
+          required: true
+          description: The block height to query for the account details at.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        404:
+          $ref: '#/components/responses/404NotFound'
+        500:
+          $ref: '#/components/responses/500InternalServerError'
 components:
   parameters:
     expandParam:
@@ -326,6 +357,80 @@ components:
       style: form
       required: false
   schemas:
+    Account:
+      type: object
+      required:
+        - address
+        - balance
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        balance:
+          type: integer
+          format: uint64
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountPublicKey'
+          minItems: 1
+          uniqueItems: true
+        contracts:
+          type: object
+          additionalProperties:
+            type: string
+            format: byte
+        _expandable:
+          type: object
+          properties:
+            keys:
+              type: string
+            contracts:
+              type: string
+        _links:
+          $ref: '#/components/schemas/Links'
+    AccountPublicKey:
+      type: object
+      required:
+        - index
+        - public_key
+        - signing_algorithm
+        - hashing_algorithm
+        - sequence_number
+        - weight
+        - revoked
+      properties:
+        index:
+          type: integer
+          format: uint64
+        public_key:
+          type: string
+          format: bytes
+        signing_algorithm:
+          $ref: '#/components/schemas/SigningAlgorithm'
+        hashing_algorithm:
+          $ref: '#/components/schemas/HashingAlgorithm'
+        sequence_number:
+          type: integer
+          format: uint64
+        weight:
+          type: integer
+          format: uint64
+        revoked:
+          type: boolean
+    SigningAlgorithm:
+      type: string
+      enum:
+        - BLSBLS12381
+        - ECDSAP256
+        - ECDSASecp256k1
+    HashingAlgorithm:
+      type: string
+      enum:
+        - SHA2_256
+        - SHA2_384
+        - SHA3_256
+        - SHA3_384
+        - KMAC128
     Collection:
       type: object
       required:
@@ -463,7 +568,6 @@ components:
     TransactionStatus:
       type: string
       enum: 
-       - Unknown
        - Pending
        - Finalized
        - Executed
@@ -562,6 +666,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AggregatedSignature'
+          minItems: 1
           uniqueItems: true
     StateCommitment:
       description: The root hash of the state tree.
