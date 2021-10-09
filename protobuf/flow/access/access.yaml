@@ -239,6 +239,39 @@ paths:
           $ref: '#/components/responses/404NotFound'
         500:
           $ref: '#/components/responses/500InternalServerError'
+  /execution_results:
+    get:
+      summary: Gets execution results by block ID.
+      tags:
+        - Execution Results
+      parameters:
+        - description: A comma-separated list of block IDs to get the execution results for.
+          name: block_id
+          in: query
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Identifier'
+            minItems: 1
+            uniqueItems: true
+          explode: false
+          style: form
+          required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExecutionResult'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        404:
+          $ref: '#/components/responses/404NotFound'
+        500:
+          $ref: '#/components/responses/500InternalServerError'
   /execution_results/{id}:
     get: 
       summary: Gets an execution result by ID.
