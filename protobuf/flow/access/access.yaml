@@ -239,6 +239,31 @@ paths:
           $ref: '#/components/responses/404NotFound'
         500:
           $ref: '#/components/responses/500InternalServerError'
+  /execution_results/{id}:
+    get: 
+      summary: Gets an execution result by ID.
+      tags:
+        - Execution Results
+      parameters:
+        - name: id
+          in: path
+          schema:
+            $ref: '#/components/schemas/Identifier'
+          required: true
+          description: The ID of the execution result to get.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecutionResult'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        404:
+          $ref: '#/components/responses/404NotFound'
+        500:
+          $ref: '#/components/responses/500InternalServerError'
 components:
   parameters:
     expandParam:
