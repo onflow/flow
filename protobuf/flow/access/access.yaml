@@ -145,6 +145,75 @@ paths:
           $ref: '#/components/responses/404NotFound'
         500:
           $ref: '#/components/responses/500InternalServerError'
+  /transactions:
+    post:
+      summary: Submits a transaction to the network.
+      tags:
+        - Transactions
+      requestBody:
+        description: The transaction to submit.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - script
+                - arguments
+                - reference_block_id
+                - gas_limit
+                - payer
+                - proposal_key
+                - authorizers
+                - payload_signatures
+                - envelope_signatures
+              properties:
+                script:
+                  type: string
+                  format: byte
+                arguments:
+                  type: array
+                  items:
+                    type: string
+                    format: byte
+                reference_block_id:
+                  $ref: '#/components/schemas/Identifier'
+                gas_limit:
+                  type: integer
+                  format: uint64
+                payer:
+                  $ref: '#/components/schemas/Address'
+                proposal_key:
+                  $ref: '#/components/schemas/ProposalKey'
+                authorizers:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Address'
+                payload_signatures:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/TransactionSignature'
+                envelope_signatures:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/TransactionSignature'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+          headers:
+            Location:
+              schema:
+                type: string
+                format: uri
+              description: The URI to the newly submitted transaction.
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        500:
+          $ref: '#/components/responses/500InternalServerError'
 components:
   parameters:
     expandParam:
@@ -202,9 +271,7 @@ components:
         payer:
           $ref: '#/components/schemas/Address'
         proposal_key:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProposalKey'
+          $ref: '#/components/schemas/ProposalKey'
         authorizers:
           type: array
           items:
