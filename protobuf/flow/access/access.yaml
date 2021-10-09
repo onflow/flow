@@ -328,6 +328,55 @@ paths:
           $ref: '#/components/responses/404NotFound'
         500:
           $ref: '#/components/responses/500InternalServerError'
+  /scripts:
+    post:
+      summary: Executes a read-only Cadence script against the execution state at the given block height or ID.
+      tags:
+        - Scripts
+      parameters:
+        - description: The ID of the block to execute the script against. For a specific block height, use `block_height` instead.
+          name: block_id
+          in: query
+          schema:
+            $ref: '#/components/schemas/Identifier'
+          required: false
+        - description: The height of the block to execute the script against. This parameter is incompatible with `block_id`.
+          name: block_height
+          in: query
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
+          required: false
+      requestBody:
+        description: The script to execute.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                script:
+                  type: string
+                  format: byte
+                arguments:
+                  type: array
+                  items:
+                    type: string
+                    format: byte
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    format: byte
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        500:
+          $ref: '#/components/responses/500InternalServerError'
 components:
   parameters:
     expandParam:
