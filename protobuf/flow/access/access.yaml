@@ -15,9 +15,9 @@ paths:
       summary: Gets full blocks by height.
       tags:
         - Blocks
-      operationId: getBlockByHeight
+      operationId: getBlocksByHeight
       parameters: 
-        - description: The heights of the blocks to get.
+        - description: A comma-separated list of block heights to get.
           name: height
           in: query
           schema:
@@ -29,6 +29,18 @@ paths:
           explode: false
           style: form
           required: true
+        - name: start_height
+          in: query
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
+          required: false
+          description: The start height of the block range to get. Must be used together with `end_height`. This parameter is incompatible with `height`.
+        - name: end_height
+          in: query
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
+          required: false
+          description: The ending height of the block range to get. Must be used together with `start_height`. This parameter is incompatible with `height`.
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:
@@ -40,6 +52,39 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Block'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        404:
+          $ref: '#/components/responses/404NotFound'
+        500:
+          $ref: '#/components/responses/500InternalServerError'
+  /blocks/{id}:
+    get:
+      summary: Gets a full block by ID.
+      tags:
+        - Blocks
+      operationId: getBlockByID
+      parameters:
+        - description: A comma-separated list of block IDs to get.
+          name: id
+          in: path
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Identifier'
+            minItems: 1
+            uniqueItems: true
+          explode: true
+          required: true
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Block'
         400:
           $ref: '#/components/responses/400BadRequest'
         404:
@@ -207,17 +252,32 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
-        service_events:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceEvent'
-        _expandable:
-          type: object
-          properties:
-            service_events:
-              type: string
         _links:
           $ref: '#/components/schemas/Links'
+    Event:
+      type: object
+      required:
+        - type
+        - transaction_id
+        - transaction_index
+        - event_index
+        - payload
+      properties:
+        type:
+          $ref: '#/components/schemas/EventType'
+        transaction_id:
+          $ref: '#/components/schemas/Identifier'
+        transaction_index:
+          type: integer
+          format: uint64
+          minimum: 0
+        event_index:
+          type: integer
+          format: uint64
+          minimum: 0
+        payload:
+          type: string
+          format: byte
     BlockHeight:
       oneOf:
         - type: integer
@@ -226,6 +286,9 @@ components:
         - type: string
           enum:
             - latest
+    EventType:
+      description: The qualified event type.
+      type: string
     Address:
       description: The 8-byte address of an account.
       type: string
