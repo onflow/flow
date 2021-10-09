@@ -78,6 +78,27 @@ components:
     Block:
       type: object
       required:
+        - header
+      properties:
+        header:
+          $ref: '#/components/schemas/BlockHeader'
+        payload:
+          $ref: '#/components/schemas/BlockPayload'
+        execution_result:
+          $ref: '#/components/schemas/ExecutionResult'
+        _expandable:
+          type: object
+          properties:
+            payload:
+              type: string
+            execution_result:
+              type: string
+              format: uri
+        _links:
+          $ref: '#/components/schemas/Links'
+    BlockHeader:
+      type: object
+      required:
         - id
         - parent_id
         - height
@@ -96,23 +117,107 @@ components:
           format: date-time
         parent_voter_signature:
           $ref: '#/components/schemas/Signature'
-        payload:
-          $ref: '#/components/schemas/BlockPayload'
-        execution_result:
-          $ref: '#/components/schemas/ExecutionResult'
+    BlockPayload:
+      type: object
+      required:
+        - collection_guarantees
+        - block_seals
+      properties:
+        collection_guarantees:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionGuarantee'
+          uniqueItems: true
+        block_seals:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlockSeal'
+          uniqueItems: true
+    CollectionGuarantee:
+      type: object
+      required:
+        - collection_id
+        - signer_ids
+        - signature
+      properties:
+        collection_id:
+          $ref: '#/components/schemas/Identifier'
+        signer_ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier'
+          minItems: 1
+          uniqueItems: true
+        signature:
+          $ref: '#/components/schemas/Signature'
+    BlockSeal:
+      type: object
+      required:
+        - block_id
+        - result_id
+        - final_state
+        - aggregated_approval_signatures
+      properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        result_id:
+          $ref: '#/components/schemas/Identifier'
+        final_state:
+          $ref: '#/components/schemas/StateCommitment'
+        aggregated_approval_signatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/AggregatedSignature'
+          uniqueItems: true
+    StateCommitment:
+      description: The root hash of the state tree.
+      type: string
+      format: hexadecimal
+      pattern: '[a-fA-F0-9]{64}'
+    AggregatedSignature:
+      type: object
+      required:
+        - verifier_signatures
+        - signer_ids
+      properties:
+        verifier_signatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/Signature'
+          minItems: 1
+          uniqueItems: true
+        signer_ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier'
+          minItems: 1
+          uniqueItems: true
+    ExecutionResult:
+      type: object
+      required:
+        - id
+        - block_id
+        - events
+      properties:
+        id:
+          $ref: '#/components/schemas/Identifier'
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        service_events:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceEvent'
         _expandable:
           type: object
           properties:
-            payload:
+            service_events:
               type: string
-              format: uri
-            execution_result:
-              type: string
-              format: uri
         _links:
           $ref: '#/components/schemas/Links'
-    BlockPayload:
-      type: object
     BlockHeight:
       oneOf:
         - type: integer
