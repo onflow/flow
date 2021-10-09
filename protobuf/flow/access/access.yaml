@@ -118,6 +118,33 @@ paths:
           $ref: '#/components/responses/404NotFound'
         500:
           $ref: '#/components/responses/500InternalServerError'
+  /transaction_results/{transaction_id}:
+    get:
+      summary: Gets a transaction result by ID.
+      tags:
+        - Transactions
+      parameters:
+        - description: The transaction ID of the transaction result to get.
+          name: transaction_id
+          in: path
+          schema:
+            $ref: '#/components/schemas/Identifier'
+          required: true
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResult'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        404:
+          $ref: '#/components/responses/404NotFound'
+        500:
+          $ref: '#/components/responses/500InternalServerError'
 components:
   parameters:
     expandParam:
