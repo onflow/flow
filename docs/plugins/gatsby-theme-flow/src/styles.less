@@ -164,3 +164,37 @@ p > pre.inline {
     width: 100%;
   }
 }
+
+.homepage-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: masonry;
+  grid-gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 960px) {
+  .homepage-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.grid-item {
+  padding: 1rem;
+  padding-top: 2rem;
+  border: 1px solid @color-text4;
+  border-radius: 4px;
+  box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.05);
+}
+
+.grid-item-list {
+  list-style: none;
+}
+
+.grid-item-list p {
+  font-size: 0.8rem;
+}
+
+.docs-site-omit {
+  display: none;
+}

@@ -2,7 +2,7 @@ const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 // const { createPrinterNode } = require("gatsby-plugin-printer");
 
-exports.onCreateNode = async function (
+exports.onCreateNode = async function(
   { node, actions, getNode, loadNodeContent },
   { siteName, subtitle, sidebarCategories }
 ) {
@@ -15,13 +15,11 @@ exports.onCreateNode = async function (
     } else {
       slug = createFilePath({
         node,
-        getNode,
+        getNode
       });
     }
 
     let category;
-    const fileName = parent.name;
-    const outputDir = "social-cards";
 
     for (const key in sidebarCategories) {
       if (key !== "null") {
@@ -35,40 +33,29 @@ exports.onCreateNode = async function (
     }
 
     const { title, sidebar_title, graphManagerUrl } = node.frontmatter;
-    // createPrinterNode({
-    //   id: `${node.id} >>> Printer`,
-    //   fileName,
-    //   outputDir,
-    //   data: {
-    //     title,
-    //     subtitle: subtitle || siteName,
-    //     category,
-    //   },
-    //   component: require.resolve("./src/components/social-card.js"),
-    // });
 
     actions.createNodeField({
       name: "image",
       node,
-      value: path.join(outputDir, fileName + ".png"),
+      value: `https://flow-docs-og-image.vercel.app/**${title}**.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fstorage.googleapis.com%2Fflow-resources%2Fdocumentation-assets%2Fflow-docs.png&widths=auto&heights=350`
     });
 
-    actions.createNodeField({
+    https: actions.createNodeField({
       node,
       name: "slug",
-      value: slug,
+      value: slug
     });
 
     actions.createNodeField({
       node,
       name: "sidebarTitle",
-      value: sidebar_title || "",
+      value: sidebar_title || ""
     });
 
     actions.createNodeField({
       node,
       name: "graphManagerUrl",
-      value: graphManagerUrl || "",
+      value: graphManagerUrl || ""
     });
   }
 };
@@ -94,7 +81,7 @@ function getSidebarContents(section, sourceSlugTransformers, edges) {
           return {
             anchor: matchExternalLink,
             title: match[1],
-            path: match[2],
+            path: match[2]
           };
         }
 
@@ -114,10 +101,10 @@ function getSidebarContents(section, sourceSlugTransformers, edges) {
           title: frontmatter.title,
           sidebarTitle: fields.sidebarTitle,
           description: frontmatter.description,
-          path: slug,
+          path: slug
         };
       })
-      .filter(Boolean),
+      .filter(Boolean)
   }));
 }
 
@@ -149,6 +136,7 @@ const pageFragment = `
   fields {
     slug
     sidebarTitle
+    image
   }
 `;
 
@@ -173,7 +161,7 @@ async function createPagesForSection(
     twitterUrl,
     baseUrl,
     sourceGithubRepos,
-    sourceSlugTransformers,
+    sourceSlugTransformers
   }
 ) {
   const allPages = await Promise.all(
@@ -210,7 +198,7 @@ async function createPagesForSection(
 
   const templates = {
     default: require.resolve(`./src/components/templates/default`),
-    changelog: require.resolve(`./src/components/templates/changelog`),
+    changelog: require.resolve(`./src/components/templates/changelog`)
   };
 
   const sidebarContents = getSidebarContents(
@@ -231,6 +219,7 @@ async function createPagesForSection(
     let githubUrl;
 
     const sourceGithubRepo = sourceGithubRepos[section.sourceInstanceName];
+
     if (sourceGithubRepo) {
       const [owner, repo] = sourceGithubRepo.githubRepo.split("/");
       githubUrl =
@@ -241,8 +230,7 @@ async function createPagesForSection(
           repo,
           "tree",
           "master",
-          sourceGithubRepo.path,
-          relativePath
+          sourceGithubRepo.path
         );
     }
 
@@ -257,14 +245,14 @@ async function createPagesForSection(
         sidebar: {
           showMainNav: section.sidebarShowMainNav,
           alwaysExpanded: section.sidebarAlwaysExpanded,
-          contents: sidebarContents,
+          contents: sidebarContents
         },
         githubUrl,
         discordUrl,
         discourseUrl,
         twitterUrl,
-        baseUrl,
-      },
+        baseUrl
+      }
     });
   }
 }

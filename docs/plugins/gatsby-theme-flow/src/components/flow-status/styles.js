@@ -2,7 +2,9 @@ import styled from "@emotion/styled";
 
 import { theme } from "gatsby-theme-flow/src/colors";
 
-import { HEALTHY, DEGRADED } from "./constants";
+import breakpoints from "../../utils/breakpoints";
+
+import { HEALTHY, UNAVAILABLE } from "./constants";
 
 export const StatusWrapper = styled.div({});
 export const AnnouncementsWrapper = styled.div({});
@@ -11,58 +13,90 @@ function getColor(status) {
   switch (status) {
     case HEALTHY:
       return theme.primary;
-    case DEGRADED:
-      return theme.warning;
-    default:
+    case UNAVAILABLE:
       return theme.error;
+    default:
+      return theme.secondary;
   }
 }
 
-export const StatusCardWrapper = styled.div(({ networkStatus }) => {
+export const StatusCardWrapper = styled.div((props) => {
   return {
-    marginBottom: "1rem",
-    display: "grid",
-    gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+    [breakpoints.sm]: {
+      gridTemplateColumns: "1fr 1fr 1fr",
+      ".network-name": {
+        fontSize: "0.5rem",
+        h3: {
+          fontSize: "1rem"
+        }
+      },
+      ".next-spork-date": {
+        fontSize: "0.8rem",
+        h4: {
+          fontSize: "0.8rem"
+        }
+      },
+      ".network-status": {
+        fontSize: "0.8rem",
+        h4: {
+          fontSize: "0.5rem"
+        }
+      },
+      ".network-version": {
+        fontSize: "0.8rem",
+        h4: {
+          fontSize: "0.8rem"
+        }
+      }
+    },
     width: "100%",
-    height: "100px",
-    alignItems: "center",
-    border: `2px solid ${getColor(networkStatus)}`,
-    padding: "0 1rem",
+    gridTemplateColumns: "1fr 1fr 1fr 1fr",
+    marginBottom: "1rem",
     borderRadius: "6px",
-    h3: {
-      marginBottom: "0",
-    },
-    h4: {
-      marginBottom: "0.2rem",
-    },
-    ".network-name": {},
-    ".next-spork-date": {},
+    display: "grid",
+    minHeight: "100px",
+    alignItems: "center",
+    padding: "1rem",
+    border: `2px solid ${getColor(props.networkStatus)}`,
     ".network-status": {
       fontWeight: "bold",
-      color: getColor(networkStatus),
+      color: getColor(props.networkStatus)
     },
+    h3: {
+      marginBottom: "0"
+    },
+    h4: {
+      marginBottom: "0.2rem"
+    }
   };
 });
 
 export const AnnouncementCardWrapper = styled.div({
+  [breakpoints.md]: {
+    h3: {
+      fontSize: "1.2rem"
+    },
+    h4: {
+      fontSize: "1rem"
+    }
+  },
   "&:hover": {
     cursor: "pointer",
-    borderColor: theme.text1,
+    borderColor: theme.text1
   },
   marginBottom: "1rem",
   display: "grid",
   gridTemplateColumns: "1fr 42px",
   width: "100%",
-  height: "100px",
+  minHeight: "100px",
   alignItems: "center",
   border: `2px solid ${theme.text2}`,
   padding: "1rem",
   borderRadius: "6px",
   h3: {
-    marginBottom: "0.5rem",
-    fontSize: "1.2rem",
+    marginBottom: "1rem"
   },
   h4: {
-    display: "inline",
-  },
+    display: "inline"
+  }
 });

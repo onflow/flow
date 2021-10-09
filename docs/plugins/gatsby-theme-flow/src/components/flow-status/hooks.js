@@ -1,27 +1,28 @@
-import { useState } from "react";
+/* global StatusPage */
+import { useState, useEffect } from "react";
 
 import useSWR from "swr";
 
 import moment from "moment";
 
-import { BREAKING_CHANGES_RESOURCE } from "./constants";
+import { BREAKING_CHANGES_RESOURCE as DISCOURSE_API_URL } from "./constants";
 
 const fetchBreakingChanges = (resource) => {
   return fetch(resource, {
     headers: {
-      "Content-Type": "application/json",
-    },
+      "Content-Type": "application/json"
+    }
   }).then((response) => response.json());
 };
 
 export function useBreakingChangesPosts() {
   const [posts, setPosts] = useState([]);
 
-  useSWR(BREAKING_CHANGES_RESOURCE, fetchBreakingChanges, {
+  useSWR(DISCOURSE_API_URL, fetchBreakingChanges, {
     refreshInterval: 100000,
     onSuccess(data) {
       const {
-        topic_list: { topics },
+        topic_list: { topics }
       } = data;
 
       const sorted = topics
@@ -41,8 +42,24 @@ export function useBreakingChangesPosts() {
         });
 
       setPosts(sorted);
-    },
+    }
   });
 
   return posts || [];
+}
+
+export function useStatusPageClient() {
+  const [sp, setSpClient] = useState();
+
+  useEffect(() => {
+    if (typeof StatusPage !== "undefined") {
+      const client = new StatusPage.page({
+        page: process.env.GATSBY_STATUSPAGE_PAGE_ID,
+        apiKey: process.env.GATSBY_STATUSPAGE_API_KEY
+      });
+      setSpClient(client);
+    }
+  }, []);
+
+  return sp;
 }

@@ -1,0 +1,45 @@
+---
+title: Machine Account
+sidebar_title: Machine Account
+description: Usage and Purpose of the Machine Account
+---
+
+### What is a Machine Account?
+
+A Machine Account is a Flow account which is used autonomously by a node to interact with
+system smart contracts. Machine Accounts contain Cadence resources granted to network 
+participants which are used to participate in smart-contract-mediated protocols. Currently,
+Machine Accounts are used in the [Epoch Preparation Protocol](/staking/epoch-preparation/), 
+which prepares the network for the next epoch.
+
+Your Machine Account is distinct from the account you use for staking your node (your Staking Account).
+The Machine Account is intended for use by node software and does not have access to your staked tokens or staking rewards.
+
+<Callout type="info">
+
+Currently Machine Accounts are required only for `collection` and `consensus` nodes.
+
+</Callout>
+
+#### Creation
+
+For new node operators, Machine Accounts are created during the [staking process](/flow-port/staking-guide/) in Flow Port.
+For node operators who initially staked prior to the introduction of Machine Accounts, Machine Accounts can be
+created for your staked nodes by following [this guide](/node-operation/machine-existing-operator/).
+
+#### Funding
+
+Machine Accounts must maintain a balance of liquid FLOW tokens to pay fees on transactions they
+submit to system smart contracts. Typically very few transactions will be sent (about 1-5 per week)
+however more may be required under certain circumstances and network conditions.
+
+<Callout type="info">
+
+Because some transactions sent by the Machine Account are system critical, we recommend maintaining
+a balance sufficient to accomodate worst-case transaction submission numbers at all times.
+
+</Callout>
+
+We recommend a minimum balance of 0.001 FLOW for collection nodes and 0.1 FLOW for consensus nodes, but more is definitely safer if you plan on operating your node for a very long time.
+
+A node operator can easily withdraw their FLOW from their machine account if they decide they don't need them there any more.

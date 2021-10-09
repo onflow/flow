@@ -47,9 +47,9 @@ Scripts can access multiple contracts and accounts, calculate values, and ensure
 
 #### JavaScript
 
-You can download the JavaScript SDK here:
+You can download FCL (Flow Client Library) here:
 
-[https://github.com/onflow/flow-js-sdk](https://github.com/onflow/flow-js-sdk)
+[https://github.com/onflow/fcl-js](https://github.com/onflow/fcl-js)
 
 To connect to an access node you will need to provide a URL to the SDK.
 **testnet: https://access-testnet.onflow.org
@@ -57,15 +57,15 @@ mainnet: https://access.onflow.org**
 
 Here are examples of querying an access node at the bottom of this page:
 
-[https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk](https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk)
+[https://github.com/onflow/fcl-js/tree/master/packages/sdk](https://github.com/onflow/fcl-js/tree/master/packages/sdk)
 
 Here are examples of creating a script and Cadence data types:
 
-[https://github.com/onflow/flow-js-sdk/tree/master/packages/types#scripts](https://github.com/onflow/flow-js-sdk/tree/master/packages/types#scripts)
+[https://github.com/onflow/fcl-js/tree/master/packages/types#scripts](https://github.com/onflow/fcl-js/tree/master/packages/types#scripts)
 
 And here are examples of parsing script output:
 
-[https://github.com/onflow/flow-js-sdk/tree/master/packages/decode](https://github.com/onflow/flow-js-sdk/tree/master/packages/decode)
+[https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/decode](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/decode)
 
 #### Go
 
@@ -130,24 +130,21 @@ And there is an example of usage here:
 
 ### Using JavaScript
 
-Once you connect to an Access Node using the JavaScript SDK you can query for events.
+Once you connect to an Access Node using FCL (Flow Client Library) you can query for events.
 
 This is documented here:
 
-[https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk#getevents-usage](https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk#getevents-usage)
-And there is an example of usage here:
-
-[https://github.com/onflow/kitty-items/tree/master/kitty-items-js/src/workers](https://github.com/onflow/kitty-items/tree/master/kitty-items-js/src/workers)
+[https://github.com/onflow/fcl-js/tree/master/packages/sdk#getevents-usage](https://github.com/onflow/fcl-js/tree/master/packages/sdk#getevents-usage)
 
 ### Using Other Programming Languages
 
-Currently, we only provide Go and JavaScript SDKs for Flow. For an example of accessing the Flow blockchain and consuming events from it using another programming language, see "Interact with Flow using Ruby" by Daniel Podaru:
+Currently, we only provide Go and FCL-JS (Flow Client Library) for Flow. For an example of accessing the Flow blockchain and consuming events from it using another programming language, see "Interact with Flow using Ruby" by Daniel Podaru:
 
 [https://www.onflow.org/post/interact-with-flow-using-ruby](https://www.onflow.org/post/interact-with-flow-using-ruby)
 
 ## What is FCL?
 
-Flow Client Library (FCL) enables applications to easily integrate with all FCL-compatible wallets and other services (e.g. profiles, private information, notifications). This offers developers a strong foundation to compose their apps with existing building blocks. FCL is currently supported for browser applications, and will be extended to other platforms.
+FCL (Flow Client Library) enables applications to easily integrate with all FCL-compatible wallets and other services (e.g. profiles, private information, notifications). This offers developers a strong foundation to compose their apps with existing building blocks. FCL is currently supported for browser applications, and will be extended to other platforms.
 
 With FCL, you can:
 
@@ -155,13 +152,13 @@ With FCL, you can:
 - Authenticate users
 - Query users' Flow accounts
 - Send transactions (e.g. initializing resources, sending assets, purchasing, etc.)
-- Sign transactions through wallet integration to avoid key management (especially helpful for nun-custodial apps)
+- Sign transactions through wallet integration to avoid key management (especially helpful for non-custodial apps)
 
 ## How do I access mainnet?
 
 You can find details about accessing Flow mainnet here [https://docs.onflow.org/access-api](https://docs.onflow.org/access-api).
 
-The access is via a GRPC interface. Transactions can also be submitted using the GRPC [SendTransaction call](https://docs.onflow.org/access-api#sendtransaction). A GRPC client written in any language should be able to talk via the Access API. We have a [Go SDK](https://github.com/onflow/flow-go-sdk) and a [JavaScript SDK](https://github.com/onflow/flow-js-sdk) that can be used if you are using a Go based or a JS based client respectively.
+The access is via a GRPC interface. Transactions can also be submitted using the GRPC [SendTransaction call](https://docs.onflow.org/access-api#sendtransaction). A GRPC client written in any language should be able to talk via the Access API. We have a [Go SDK](https://github.com/onflow/flow-go-sdk) and [FCL-JS (Flow Client Library)](https://github.com/onflow/fcl-js) that can be used if you are using a Go based or a JS based client respectively.
 
 ## What's the difference between a mainnet spork and testnet spork? How do sporks affect TopShot?
 
@@ -183,19 +180,22 @@ Info here: [https://docs.onflow.org/dapp-deployment](https://docs.onflow.org/dap
 
 During the beta period, you will need to submit your contract to the Flow team for review and then you’ll be able to submit it to the network.
 
-Smart contract review link here: [https://buildwithflow.typeform.com/to/EkfaboAx](https://buildwithflow.typeform.com/to/EkfaboAx)
+Smart contract review link here: [https://flowsolutionseng.zendesk.com/hc/en-us/requests/new?ticket_form_id=360001936012&tc_360045236671=b5ba92954c2f2692b56099fe653ac92d35c1e6e6](https://flowsolutionseng.zendesk.com/hc/en-us/requests/new?ticket_form_id=360001936012&tc_360045236671=b5ba92954c2f2692b56099fe653ac92d35c1e6e6)
+
+After submission, a member of the review team will contact you to discuss how long the review will take, 
+**though the minimum timeline is usually 2-3 weeks**.
 
 ## Is there a testnet/devnet?
 
-There is an access node for you to develop against on the testnet/devnet. You can learn more about it here [https://docs.onflow.org/dapp-deployment/testnet-deployment#accessing-flow-testnet](https://docs.onflow.org/dapp-deployment/testnet-deployment#accessing-flow-testnet)
+There is an access node for you to develop against on the testnet/devnet. You can learn more about it here [https://docs.onflow.org/dapp-deployment/testnet-deployment#accessing-flow-testnet](/dapp-deployment/testnet-deployment#accessing-flow-testnet)
 
 ## Is there a public node?
 
-Yes, an access node is publicly accessible to submit transactions and read data from the blockchain. If you’d like to access the devnet access node to build against, you can do so [here](https://docs.onflow.org/concepts/accessing-testnet)
+Yes, an access node is publicly accessible to submit transactions and read data from the blockchain. If you’d like to access the devnet access node to build against, you can do so [here](/concepts/accessing-testnet)
 
 ## Is it possible to add multiple public keys to a given account/address so that it can be controlled by more than one private key?
 
-Yes, accounts support multiple, weighted keys, [here](https://docs.onflow.org/cadence/language/accounts)
+Yes, accounts support multiple, weighted keys, [here](/cadence/language/accounts)
 using `AuthAccount`’s `fun addPublicKey(_ publicKey: [UInt8])`and <br/>`fun removePublicKey(_ index: Int)` functions.
 
 ## How do keys and accounts work on Flow?
@@ -204,7 +204,7 @@ Accounts are created with associated keys. There can be multiple keys on an acco
 
 FLOW supports a variety of signature schemes for adding keys to an account.
 
-Details: [https://docs.onflow.org/concepts/accounts-and-keys](https://docs.onflow.org/concepts/accounts-and-keys)
+Details: [https://docs.onflow.org/concepts/accounts-and-keys](/concepts/accounts-and-keys)
 
 ## How can I see what Fungible-Tokens an account has?
 
@@ -220,15 +220,15 @@ Flow doesn't yet provide functionality to inspect all of the resources on an acc
 
 ## How do I create a Flow account if I do not have a service account?
 
-Instructions to generate an address are here: [https://docs.onflow.org/flow-go-sdk/creating-accounts](https://docs.onflow.org/flow-go-sdk/creating-accounts). You don't need a service account.
+Instructions to generate an address are here: [https://docs.onflow.org/flow-go-sdk/creating-accounts](/flow-go-sdk/creating-accounts). You don't need a service account.
 
 ## Is there a tutorial about how to access flow testnet? From scratch, getting testnet, Flow token etc..?
 
-Yes: [https://docs.onflow.org/dapp-deployment/testnet-deployment/](https://docs.onflow.org/dapp-deployment/testnet-deployment/)
+Yes: [https://docs.onflow.org/dapp-deployment/testnet-deployment/](/dapp-deployment/testnet-deployment/)
 
 ## Can you query events between a block range?
 
-You can query the access API to get events for a block range. See Access API spec here: [https://docs.onflow.org/access-api](https://docs.onflow.org/access-api).
+You can query the access API to get events for a block range. See Access API spec here: [https://docs.onflow.org/access-api](/access-api).
 
 ## Where can I follow feature releases on Flow?
 
