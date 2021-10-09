@@ -15,7 +15,6 @@ paths:
       summary: Gets full blocks by height.
       tags:
         - Blocks
-      operationId: getBlocksByHeight
       parameters: 
         - description: A comma-separated list of block heights to get.
           name: height
@@ -60,10 +59,9 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /blocks/{id}:
     get:
-      summary: Gets a full block by ID.
+      summary: Gets full blocks by ID.
       tags:
         - Blocks
-      operationId: getBlockByID
       parameters:
         - description: A comma-separated list of block IDs to get.
           name: id
@@ -84,7 +82,36 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Block'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Block'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        404:
+          $ref: '#/components/responses/404NotFound'
+        500:
+          $ref: '#/components/responses/500InternalServerError'
+  /transactions/{id}:
+    get:
+      summary: Gets a transaction by ID.
+      tags:
+        - Transactions
+      parameters:
+        - description: The ID of the transaction to get.
+          name: id
+          in: path
+          schema:
+            $ref: '#/components/schemas/Identifier'
+          required: true
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
         400:
           $ref: '#/components/responses/400BadRequest'
         404:
@@ -120,6 +147,137 @@ components:
       style: form
       required: false
   schemas:
+    Transaction:
+      type: object
+      required:
+        - id
+        - script
+        - arguments
+        - reference_block_id
+        - gas_limit
+        - payer
+      properties:
+        id:
+          $ref: '#/components/schemas/Identifier'
+        script:
+          type: string
+          format: byte
+        arguments:
+          type: array
+          items:
+            type: string
+            format: byte
+        reference_block_id:
+          $ref: '#/components/schemas/Identifier'
+        gas_limit:
+          type: integer
+          format: uint64
+        payer:
+          $ref: '#/components/schemas/Address'
+        proposal_key:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProposalKey'
+        authorizers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        payload_signatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionSignature'
+        envelope_signatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionSignature'
+        result:
+          $ref: '#/components/schemas/TransactionResult'
+        _expandable:
+          type: object
+          properties:
+            proposal_key:
+              type: string
+            authorizers:
+              type: string
+            payload_signatures:
+              type: string
+            envelope_signatures:
+              type: string
+            result:
+              type: string
+              format: uri
+        _links:
+          $ref: '#/components/schemas/Links'
+    ProposalKey:
+      type: object
+      required:
+        - address
+        - key_index
+        - sequence_number
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        key_index:
+          type: integer
+          format: uint64
+        sequence_number:
+          type: integer
+          format: uint64
+    TransactionSignature:
+      type: object
+      required:
+        - address
+        - signer_index
+        - key_index
+        - signature
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        signer_index:
+          type: integer
+          format: uint64
+        key_index:
+          type: integer
+          format: uint64
+        signature:
+          $ref: '#/components/schemas/Signature'
+    TransactionResult:
+      type: object
+      required:
+        - block_id
+        - status
+        - error_message
+        - computation_used
+      properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        status:
+          $ref: '#/components/schemas/TransactionStatus'
+        error_message:
+          type: string
+        computation_used:
+          type: integer
+          format: uint64
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        _expandable:
+          type: object
+          properties:
+            events:
+              type: string
+        _links:
+          $ref: '#/components/schemas/Links'
+    TransactionStatus:
+      type: string
+      enum: 
+       - Unknown
+       - Pending
+       - Finalized
+       - Executed
+       - Sealed
+       - Expired
     Block:
       type: object
       required:
@@ -270,11 +428,9 @@ components:
         transaction_index:
           type: integer
           format: uint64
-          minimum: 0
         event_index:
           type: integer
           format: uint64
-          minimum: 0
         payload:
           type: string
           format: byte
@@ -282,7 +438,6 @@ components:
       oneOf:
         - type: integer
           format: uint64
-          minimum: 0
         - type: string
           enum:
             - latest
