@@ -51,7 +51,7 @@ With that said, there are circumstances where you may want to be a custodian:
 * You are building an dapp on a platform not yet supported by FCL wallets (e.g. mobile, game console).
 * You have business or product needs that necessitate a custodial approach (e.g. fraud protection, users who want a custodial option).
 
-If you do need to build your own wallet, we recommend using the [open-source Wallet API](https://github.com/onflow/wallet-api), a service you can deploy as part of your infrastructure to manage blockchain accounts and keys.
+If you do need to build your own wallet, we recommend using the [open-source Wallet API](https://github.com/flow-hydraulics/flow-wallet-api), a service you can deploy as part of your infrastructure to manage blockchain accounts and keys.
 
 ### Recommendation
 
