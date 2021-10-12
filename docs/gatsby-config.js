@@ -467,7 +467,7 @@ const sections = [
       ],
       "Guides and Tutorials": [
         "[Introducing @onflow/fcl](/fcl)",
-        "[Flow App Quickstart](/fcl/tutorials/flow-app-quickstart)"
+        "docs/tutorials/flow-app-quickstart"
       ]
     }
   },
