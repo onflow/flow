@@ -785,7 +785,8 @@ components:
           format: uint64
         - type: string
           enum:
-            - latest
+            - final
+            - sealed
     EventType:
       description: The qualified event type.
       type: string
