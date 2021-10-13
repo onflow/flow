@@ -32,6 +32,10 @@ type ExecutionAPIClient interface {
 	GetTransactionResult(ctx context.Context, in *GetTransactionResultRequest, opts ...grpc.CallOption) (*GetTransactionResultResponse, error)
 	// GetRegisterAtBlockID collects a register at the block with the given ID (if available).
 	GetRegisterAtBlockID(ctx context.Context, in *GetRegisterAtBlockIDRequest, opts ...grpc.CallOption) (*GetRegisterAtBlockIDResponse, error)
+	// GetLatestBlockHeader gets the latest sealed or unsealed block header.
+	GetLatestBlockHeader(ctx context.Context, in *GetLatestBlockHeaderRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
+	// GetBlockHeaderByID gets a block header by ID.
+	GetBlockHeaderByID(ctx context.Context, in *GetBlockHeaderByIDRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
 }
 
 type executionAPIClient struct {
@@ -96,6 +100,24 @@ func (c *executionAPIClient) GetRegisterAtBlockID(ctx context.Context, in *GetRe
 	return out, nil
 }
 
+func (c *executionAPIClient) GetLatestBlockHeader(ctx context.Context, in *GetLatestBlockHeaderRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error) {
+	out := new(BlockHeaderResponse)
+	err := c.cc.Invoke(ctx, "/flow.execution.ExecutionAPI/GetLatestBlockHeader", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *executionAPIClient) GetBlockHeaderByID(ctx context.Context, in *GetBlockHeaderByIDRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error) {
+	out := new(BlockHeaderResponse)
+	err := c.cc.Invoke(ctx, "/flow.execution.ExecutionAPI/GetBlockHeaderByID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ExecutionAPIServer is the server API for ExecutionAPI service.
 // All implementations should embed UnimplementedExecutionAPIServer
 // for forward compatibility
@@ -114,6 +136,10 @@ type ExecutionAPIServer interface {
 	GetTransactionResult(context.Context, *GetTransactionResultRequest) (*GetTransactionResultResponse, error)
 	// GetRegisterAtBlockID collects a register at the block with the given ID (if available).
 	GetRegisterAtBlockID(context.Context, *GetRegisterAtBlockIDRequest) (*GetRegisterAtBlockIDResponse, error)
+	// GetLatestBlockHeader gets the latest sealed or unsealed block header.
+	GetLatestBlockHeader(context.Context, *GetLatestBlockHeaderRequest) (*BlockHeaderResponse, error)
+	// GetBlockHeaderByID gets a block header by ID.
+	GetBlockHeaderByID(context.Context, *GetBlockHeaderByIDRequest) (*BlockHeaderResponse, error)
 }
 
 // UnimplementedExecutionAPIServer should be embedded to have forward compatible implementations.
@@ -137,6 +163,12 @@ func (UnimplementedExecutionAPIServer) GetTransactionResult(context.Context, *Ge
 }
 func (UnimplementedExecutionAPIServer) GetRegisterAtBlockID(context.Context, *GetRegisterAtBlockIDRequest) (*GetRegisterAtBlockIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRegisterAtBlockID not implemented")
+}
+func (UnimplementedExecutionAPIServer) GetLatestBlockHeader(context.Context, *GetLatestBlockHeaderRequest) (*BlockHeaderResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetLatestBlockHeader not implemented")
+}
+func (UnimplementedExecutionAPIServer) GetBlockHeaderByID(context.Context, *GetBlockHeaderByIDRequest) (*BlockHeaderResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBlockHeaderByID not implemented")
 }
 
 // UnsafeExecutionAPIServer may be embedded to opt out of forward compatibility for this service.
@@ -258,6 +290,42 @@ func _ExecutionAPI_GetRegisterAtBlockID_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ExecutionAPI_GetLatestBlockHeader_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetLatestBlockHeaderRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExecutionAPIServer).GetLatestBlockHeader(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.execution.ExecutionAPI/GetLatestBlockHeader",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExecutionAPIServer).GetLatestBlockHeader(ctx, req.(*GetLatestBlockHeaderRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ExecutionAPI_GetBlockHeaderByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBlockHeaderByIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExecutionAPIServer).GetBlockHeaderByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.execution.ExecutionAPI/GetBlockHeaderByID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExecutionAPIServer).GetBlockHeaderByID(ctx, req.(*GetBlockHeaderByIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ExecutionAPI_ServiceDesc is the grpc.ServiceDesc for ExecutionAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -288,6 +356,14 @@ var ExecutionAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetRegisterAtBlockID",
 			Handler:    _ExecutionAPI_GetRegisterAtBlockID_Handler,
+		},
+		{
+			MethodName: "GetLatestBlockHeader",
+			Handler:    _ExecutionAPI_GetLatestBlockHeader_Handler,
+		},
+		{
+			MethodName: "GetBlockHeaderByID",
+			Handler:    _ExecutionAPI_GetBlockHeaderByID_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -6,6 +6,7 @@ option go_package = "github.com/onflow/flow/protobuf/go/flow/execution";
 option java_package = "org.onflow.protobuf.execution";
 
 import "flow/entities/account.proto";
+import "flow/entities/block_header.proto";
 import "flow/entities/event.proto";
 
 // ExecutionAPI is the API provided by the execution nodes.
@@ -44,6 +45,15 @@ service ExecutionAPI {
   // GetRegisterAtBlockID collects a register at the block with the given ID (if available).
   rpc GetRegisterAtBlockID(GetRegisterAtBlockIDRequest)
       returns (GetRegisterAtBlockIDResponse);
+
+  // Block headers
+
+  // GetLatestBlockHeader gets the latest sealed or unsealed block header.
+  rpc GetLatestBlockHeader(GetLatestBlockHeaderRequest)
+      returns (BlockHeaderResponse);
+  // GetBlockHeaderByID gets a block header by ID.
+  rpc GetBlockHeaderByID(GetBlockHeaderByIDRequest)
+      returns (BlockHeaderResponse);
 
 }
 
@@ -116,4 +126,18 @@ message GetRegisterAtBlockIDRequest {
 
 message GetRegisterAtBlockIDResponse {
   bytes value = 1;
+}
+
+// Block Headers
+
+message GetLatestBlockHeaderRequest {
+  bool is_sealed = 1;
+}
+
+message GetBlockHeaderByIDRequest {
+  bytes id = 1;
+}
+
+message BlockHeaderResponse {
+  entities.BlockHeader block = 1;
 }
