@@ -3,7 +3,7 @@ info:
   version: "1.0.0"
   title: "Access API"
 servers:
-  - url: https://access.mainnet.onflow.org/v1
+  - url: https://access.mainnet.nodes.onflow.org/v1
     description: Current Mainnet
   - url: https://access.devnet.nodes.onflow.org/v1
     description: Testnet
