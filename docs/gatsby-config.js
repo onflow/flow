@@ -304,7 +304,7 @@ const sections = [
   },
   {
     sourceInstanceName: "cadence-github",
-    patterns: ["docs/*.(md|mdx)", "docs/tutorial/**/*"],
+    patterns: ["docs/*.(md|mdx|png)", "docs/tutorial/**/*.(md|mdx|png)"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
