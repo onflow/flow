@@ -69,8 +69,7 @@ The final result in equation form looks like this:
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Cbegin%7Baligned%7D%0AF%20%26%3D%20F_i%20%26%2B%26%20F_c%20%5C%5C%0A%26%3D%20E_i%20f_i%20%26%2B%26%20E_c%20f_c%5C%5C%0A%26%3D%20(C_i%20%2B%20D_i)%20f_i%20%26%2B%26%20(C_c%20%2B%20D_c)%20f_c%0A%5Cend%7Baligned%7D">
 
-![Alt text](./20211007-transaction-fees/fees_diagram.svg)
-<img src="./20211007-transaction-fees/fees_diagram.svg">
+![Alt text](20211007-transaction-fees/fees_diagram.svg)
 
 - <img src="https://render.githubusercontent.com/render/math?math=F_i">: Inclusion fees; Represent the cost of including the transaction in a collection.
     - <img src="https://render.githubusercontent.com/render/math?math=f_i">: Inclusion effort cost factor; The current cost of one unit of inclusion effort.
