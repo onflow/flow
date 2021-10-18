@@ -118,6 +118,7 @@ service AccessAPI {
   // and as usual, until sealed, this data can change
   rpc GetExecutionResultForBlockID(GetExecutionResultForBlockIDRequest)
       returns (ExecutionResultForBlockIDResponse);
+
 }
 
 message PingRequest {}
