@@ -201,9 +201,17 @@ Users are already aware of the computation limit (a.k.a.: gas limit), the change
 - setting a high computation limit will mean that the payer needs to have more funds in their account before sending the transaction. 
 - using more computation will result in more expensive transactions.
 
-The second thing to keep in mind is that the transaction fees effort cost factors that will slowly change over time. If the price is currently high the user might want to to wait for a less busy (and cheaper) time to send a transaction.
+The second thing for the user to keep in mind is that the transaction fees effort cost factors that will slowly change over time. If the price is currently high the user might want to to wait for a less busy (and cheaper) time to send a transaction.
 
 ## Implementation
+
+The proposed implementation path is to get all the parts of variable transaction fees in place (step 1-4). This would mean that everyone can get accustomed to the variable transaction fees:
+
+- How to read the emitted fee event.
+- How to present the transaction fee receipt.
+- Where to check if the effort factors have changed.
+
+After all the parts are in place, we could then focus on fine tuning each part independently.
 
 ### Step 1.
 
@@ -211,7 +219,7 @@ Decoupling the concept of effort and effort fee factors. The fee calculation wou
 
 - The constant efforts would be set to a value that would approximate the effort of a nil transaction.
 - The fee effort cost factors would be set so that there is no change to the final fees.
-- the fee calculation would be done inside the `FlowFees` smart contract.
+- The fee calculation would be done inside the `FlowFees` smart contract.
 
 Implementing this step would have no impact on users, but they could start reading the fee breakdown from the emitted fee event.
 
@@ -234,8 +242,6 @@ Introduction of the basic dynamic computation effort.
 - other computation parameters would be adjusted so that 95% of transactions would be below the current transaction prices.
 - add checks listed in the [Failing transactions](#failing_transactions) chapter (excluding those needed on collection nodes)
 
-This would mean that all the "happy path" and most of the failure paths are in place, but the computation metering is still very rudimentary.
-
 ### Step 4.
 
 Make collection nodes ignore transactions that cannot be paid for.
@@ -243,12 +249,11 @@ Make collection nodes ignore transactions that cannot be paid for.
 - Add payer eligibility checks to the collection nodes.
 - Add mechanism that the collection node pays for transactions it included in collections where the payer could not have paid.
 
-### Next steps
+### Future steps
 
 - Improve dynamic computation effort calculation.
-- Add mechanism for changing the fee effort cost factors to make fees higher when the traffic is high.
-- Parameter fine tuning.
-
+- Add mechanism for changing the fee effort cost factors to make fees higher when the traffic is high. (a.k.a: surge pricing)
+- Fee parameters fine tuning.
 
 ## Questions and Discussion Topics
 
