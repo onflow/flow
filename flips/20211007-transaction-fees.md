@@ -69,6 +69,8 @@ The final result in equation form looks like this:
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Cbegin%7Baligned%7D%0AF%20%26%3D%20F_i%20%26%2B%26%20F_c%20%5C%5C%0A%26%3D%20E_i%20f_i%20%26%2B%26%20E_c%20f_c%5C%5C%0A%26%3D%20(C_i%20%2B%20D_i)%20f_i%20%26%2B%26%20(C_c%20%2B%20D_c)%20f_c%0A%5Cend%7Baligned%7D">
 
+![Diagram](20211007-transaction-fees/fees_diagram.svg)
+
 - <img src="https://render.githubusercontent.com/render/math?math=F_i">: Inclusion fees; Represent the cost of including the transaction in a collection.
     - <img src="https://render.githubusercontent.com/render/math?math=f_i">: Inclusion effort cost factor; The current cost of one unit of inclusion effort.
     - <img src="https://render.githubusercontent.com/render/math?math=E_i">: Inclusion effort; The time invariant effort required to include this transaction into a collection.
@@ -85,7 +87,7 @@ The final result in equation form looks like this:
 
 The effort cost factors <img src="https://render.githubusercontent.com/render/math?math=f_i"> and <img src="https://render.githubusercontent.com/render/math?math=f_c"> should be defined on a smart contract and adjustable via the service account admin resource and they should be accessible for everyone to read. 
 
-The effort cost factors could be used in three different ways:
+The effort cost factors can be used in three different ways:
 
 1. The main usage of the effort cost factors is adjusting them when the network is under load. If the execution or verification nodes are struggling to execute all of the transactions, the computation effort cost factor should be increased. If the network finds it difficult to create collections from all the transactions coming in, but the execution nodes are still fine, the computation effort cost factor should be increased. 
 
@@ -99,7 +101,7 @@ While the effort cost factors could be adjusted manually from the start, that wo
 
 For the first iteration the dynamic inclusion effort can be defined to be equal to the byte length of the (rlp encoded) transaction. The maximum dynamic inclusion effort would be equal to the maximum allowed transaction size, which is currently 1,500,000 bytes.
 
-The constant inclusion effort could then be chosen by observing the impact of transactions with a different byte size and a similar computation effort. This data would then be used to predict how much impact a 0 bytes long transaction would make.
+The constant inclusion effort could be chosen by observing the impact of transactions with a different byte size and a similar computation effort. This data could be used to predict how much impact a transaction that is 0 bytes long would make.
 
 Having a positive constant inclusion effort as well as a dynamic one means that splitting a transaction into smaller pieces does not make sense (considering only the inclusion part of the transaction fees). If this would be desired (from the protocols perspective) that the transactions are as small as possible or of a certain size, the dynamic inclusion effort could be defined to grow faster then linear with the byte size of the transaction.
 
@@ -122,34 +124,36 @@ Currently the dynamic computation effort is calculated by adding 1 for every loo
 
 ### Failing transactions
 
-There are a few reasons why a transaction fails, but for the purpose of transaction fees, transaction failures can be split into four categories, according to who then gets charged for the transaction fees and how much do they get charged.
+There are a few reasons why a transaction fails, which can be split into four categories, according to who finally gets charged for the transaction fees and how much do they get charged.
 
 1. Transaction failed because the payers signature was incorrect, or the payer does not have enough funds to cover maximum transaction costs (transaction costs with the dynamic computation effort set to the computation limit).
 2. Transaction failed before the transaction script execution started (some non-payer signature was incorrect, or the sequence number was incorrect)
 3. Transaction failed during transaction script execution, during fee deduction or during the storage used check. 
 4. Transaction failed because the computation limit was reached.
 
-As mentioned earlier in scenario 1. the transaction shouldn't have been included in a collection in the first place. Because it was and there is no way to charge the payer, the collection node is charged with the transaction fees where the dynamic computation effort is set to 0.
+As discussed below, in scenario 1. the transaction shouldn't have been included in a collection in the first place. However since it was included and there is no way to charge the payer, the collection node account is charged with the transaction fees. The transaction fees are computed with the dynamic computation effort set to 0.
 
-In the second scenario the payer is charged for the transaction fees with the dynamic computation effort is set to 0.
+In the second scenario the payer is charged for the transaction fees with the dynamic computation effort set to 0.
 
 In the third case, the fees are charged normally with the dynamic computation effort set to the actual usage before the error was produced.
 
-Finally in the last case the payer is charge with the transaction fees where the dynamic computation effort is set to the computation limit.
+Finally in the last case the payer is charged with the transaction fees where the dynamic computation effort is set to the computation limit.
 
 ### Preventing malicious actors
 
 The purpose of fees is to prevent malicious actors sending transactions with the purpose of overloading the network. To achieve that, we have to check that the payer of a transaction has the funds to pay for that transaction as soon as possible.
 
-Tho achieve this the following checks should happen on the collection node, before the transaction is included in a transaction: 
-- Is the payers signature correct.
+Tho achieve this the following checks should happen on the collection node, before the transaction is even included in a collection: 
+- Is the payers signature valid.
 - Can the payer pay for the transaction. The payers default FLOW vault should have at least <img src="https://render.githubusercontent.com/render/math?math=F%5E%5Ctext%7Bmax%7D"> FLOW. <img src="https://render.githubusercontent.com/render/math?math=F%5E%5Ctext%7Bmax%7D%20%3D%20F_i%20%2B%20(C_c%20%2B%20D_c%5E%5Ctext%7Bmax%7D)%20f_c"> 
 
-If this transaction still gets included in a collection, even though it does not meet the condition, this check should be repeated in the execution node, and in case the check fails on the execution node, the transaction fees should be deducted from the collection nodes account instead of the payers account.
+It might still happen that this transaction will get included, either due to a bug or malicious behaviour from the collection node, or due to the collection node not having up to date information of the balance of the payer. In case does still get included in a collection, even though it does not meet the condition, this check should be repeated in the execution node, and in case the check fails on the execution node, the transaction fees should be deducted from the collection nodes account instead of the payers account.
 
 ### Calibrating the parameters
 
-The goal of the calibration illustrated below is to have transaction fees comparable to the current constant fees (`TC`)
+When turning on variable transaction fees the goal is to have a smooth transition to the new system. To help facilitate that the cost of transaction fees should be set so that ~95% of transactions should actually pay less transaction fees with variable transaction fees turned on.
+
+To achieve this the 6 different parts of variable transaction fees need to be calibrated accordingly.
 
 - <img src="https://render.githubusercontent.com/render/math?math=D_i"> Dynamic inclusion effort would be the byte size of a transaction
 - <img src="https://render.githubusercontent.com/render/math?math=C_i">: Constant inclusion effort would be picked by using linear regression on the impact of different size transactions (with the same computational effort) on the network, and extrapolating for a 0 size transaction.
@@ -161,10 +165,22 @@ The goal of the calibration illustrated below is to have transaction fees compar
 
 ### Viewing the deducted fees
 
-After a transaction was executed the fee breakdown should be visible in the fee deduction event. All of the components of the fee calculation should be inferable from the state of the network at the time when the transaction was executed and the event data.
+The breakdown of the transaction fee calculation for a transaction should be somehow visible after the transaction is executed.
 
-The effort cost factors and the constant inclusion/dynamic effort can be read from the state, so the remaining data needed on the transaction fee event are the dynamic inclusion effort an the dynamic calculation effort. For redundancy the total amount of fees should also be a field of the fee deduction event.
+The proposed solution is to allow anyone reconstruct the transaction fees breakdown from two sources of information.
 
+Some data can be retrieved from querying the blockchain at that height:
+- fee effort cost factors
+- inclusion static effort 
+- inclusion dynamic effort 
+
+Some data will be on the fee deduction event emitted when the fees are deducted:
+- dynamic inclusion effort
+- dynamic computation effort
+
+From this data the entire breakdown and the final price can be deducted.
+
+The fee deduction event should also contain what the final fee price was. This is so the final fee value is more accessible and also for redundancy.
 ### Transaction Fee estimation
 
 To estimate the minimum transaction fees (<img src="https://render.githubusercontent.com/render/math?math=F^%5Ctext%7Bmin%7D">) needed for a transaction some data needs to be retrieved from the state (access node):
@@ -172,26 +188,34 @@ To estimate the minimum transaction fees (<img src="https://render.githubusercon
 - The constant inclusion effort.
 - The constant dynamic effort.
 
-This could be done by the SDK with a script or a possibly a dedicated endpoint on the access nodes. 
+This could be done by the SDK with a script or a possibly over a dedicated endpoint on the access nodes. 
 
-Due to the effort cost factors slowly changing, this calculation will still be just an estimation, but if the effort cost factors change slowly enough the estimation will be fairly close.
+Due to the effort cost factors changing over time, this calculation will inherently be an estimation. To estimate the upper bound of the transaction fees the user has to choose a good value for the computation limit.
 
-After the user has chosen a good value for the computation limit. The maximum transaction fees can be estimated as well.
+If the user is unsure of what computation limit is good enough for their transaction an option is that they just go with the maximum computation limit as the transaction fees will only be deducted per computation usage.
+
+
+## User impact
+
+Users are already aware of the computation limit (a.k.a.: gas limit), the change is only that they will now need to pay more attention to it as setting the computation limit has a few implications:
+- setting a high computation limit will mean that the payer needs to have more funds in their account before sending the transaction. 
+- using more computation will result in more expensive transactions.
+
+The second thing to keep in mind is that the transaction fees effort cost factors that will slowly change over time. If the price is currently high the user might want to to wait for a less busy (and cheaper) time to send a transaction.
 
 ## Implementation
 
 ### Step 1.
 
-Decoupling the concept of effort and effort fee factors. The fee calculation would still now have any dynamic parts they would be reported as 0. The parts that would change are:
+Decoupling the concept of effort and effort fee factors. The fee calculation would still not have any dynamic parts. The dynamic effort would be reported as 0 in the transaction fee event. The parts that would change are:
 
-- The transaction fee deduction event emitted would also emit 0 as the dynamic inclusion effort and the dynamic computation effort.
 - The constant efforts would be set to a value that would approximate the effort of a nil transaction.
 - The fee effort cost factors would be set so that there is no change to the final fees.
-- the fee calculation would be done inside the `FlowFees` smart contract
+- the fee calculation would be done inside the `FlowFees` smart contract.
 
 Implementing this step would have no impact on users, but they could start reading the fee breakdown from the emitted fee event.
 
-This would also set up the stage nicely for the following steps
+This would also set up the stage nicely for the upcoming steps.
 
 ### Step 2.
 
@@ -224,15 +248,6 @@ Make collection nodes ignore transactions that cannot be paid for.
 - Improve dynamic computation effort calculation.
 - Add mechanism for changing the fee effort cost factors to make fees higher when the traffic is high.
 - Parameter fine tuning.
-
-
-## User impact
-
-Users are already aware of the computation limit (a.k.a.: gas limit), but they will now need to pay more attention to it as it has a few new implications:
-- setting a high computation limit will mean that the payer needs to have more funds in their account before sending the transaction.
-- using more computation will result in more expensive transactions
-
-Users will also need to pay attention to the transaction fees effort cost factors that will slowly change over time. It sometimes might be prudent to wait for a less busy (and cheaper) time to send a transaction.
 
 
 ## Questions and Discussion Topics
