@@ -120,15 +120,12 @@ const sourceSlugTransformers = {
     slug
       .replace(/^\/docs\//, "/fcl/")
       .replace(/^\/packages\//, "/fcl/packages/"),
-  // Use api.md as 'index' file!
-  // .replace("api/", ""),
-  // .replace("README/", ""),
+
   "flow-go-sdk-github": (slug) =>
     slug
       .replace(/^\/docs\//, "/flow-go-sdk/")
-      .replace(/^\/examples\//, "/flow-go-sdk/examples/")
-      // Use README files as 'index' files!
-      .replace("README/", ""),
+      .replace(/^\/examples\//, "/flow-go-sdk/examples/"),
+   
   "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/"),
   "flow-js-testing-github": (slug) =>
     slug.replace(/^\/docs\//, "/flow-js-testing/"),
