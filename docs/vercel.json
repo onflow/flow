@@ -452,6 +452,11 @@
       "permanent": false
     },
     {
+      "source": "/flow-js-sdk/flow-app-quickstart/",
+      "destination": "/fcl/tutorials/flow-app-quickstart",
+      "permanent": false
+    },
+    {
       "source": "/dapp-deployment/index/",
       "destination": "/dapp-development/deployment",
       "permanent": true
