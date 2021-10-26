@@ -54,11 +54,11 @@ message ExecutionData {
 }
 ```
 
-They will then serialize each of these fields<sup>[1](#footnote1)</sup> and compute a root CID from the serialized data as follows:
+They will then serialize each of these fields<sup>[1](#footnotes)</sup> and compute a root CID from the serialized data as follows:
 
 1. Split the data into blobs of up to 1MB (the message size limit of the [underlying networking stack](https://docs.ipfs.io/concepts/libp2p/)).
 2. Compute the CID of each blob and store it in the blobstore.
-3. If the number of CIDs computed in the previous step is 1, then return this CID. Otherwise, concatenate the CIDs and repeat from step 1<sup>[2](#footnote2)</sup>.
+3. If the number of CIDs computed in the previous step is 1, then return this CID. Otherwise, concatenate the CIDs and repeat from step 1<sup>[2](#footnotes)</sup>.
 
 [INSERT DIAGRAM HERE]
 
@@ -78,7 +78,7 @@ There are various reasons why a particular Execution Result may never end up bei
 * The Execution Result is invalid.
 * Certain conditions give rise to indeterminacy (e.g. Missing Collection Challenges), resulting in multiple valid Execution Results, of which only one is chosen to be sealed.
 
-As a result, Access nodes will need to keep track of all of the Execution Result IDs for each block height that they download the Execution Data for. When an Execution Result is sealed, they should purge the Execution Data for all conflicting Execution Result IDs from their blobstore<sup>[3](#footnote3)</sup>. If the Execution Data for the sealed Execution Result hasn't already been downloaded, they should initiate a new Bitswap session and begin downloading the data<sup>[4](#footnote4)</sup>.
+As a result, Access nodes will need to keep track of all of the Execution Result IDs for each block height that they download the Execution Data for. When an Execution Result is sealed, they should purge the Execution Data for all conflicting Execution Result IDs from their blobstore<sup>[3](#footnotes)</sup>. If the Execution Data for the sealed Execution Result hasn't already been downloaded, they should initiate a new Bitswap session and begin downloading the data<sup>[4](#footnotes)</sup>.
 
 [Describe how we apply essentially the same architecture on the public network, between Access nodes and Full Observer nodes.]
 
@@ -170,7 +170,7 @@ Access nodes can periodically (e.g. at every 10000th block) generate a snapshot 
 
 The root CID of the snapshot must be shared with new nodes somehow so that they can use it to download the snapshot via Bitswap. There are a few ways this can be done:
 
-* The CID can be shared on a broadcast channel using a *Byzantine consistent broadcast* algorithm<sup>[5](#footnote5)</sup>.
+* The CID can be shared on a broadcast channel using a *Byzantine consistent broadcast* algorithm<sup>[5](#footnotes)</sup>.
 * A new Access node can randomly select a couple of other Access nodes and simply ask them for the CID. If the responses it receives are concordant, it can go ahead and download the data. Once the download is complete, it can generate the state trie for each block and compare its hash to the one found on-chain in the corresponding Execution Result. If it finds an inconsistency, it has all the evidence it needs to submit a slashing challenge against the nodes which provided it with the bad CID.
 
 ### Sharding
@@ -186,14 +186,10 @@ It remains a challenge to ensure that Access nodes keep Execution Data available
 
 ---
 
-**Footnotes:**
+**<a name="footnotes">Footnotes:</a>**
 
-<a name="footnote1">1</a>: We could also serialize the entire Execution Data instead, but serializing the fields separately potentially allows us to reuse the existing Badger storage in our blobstore implementation.
-
-<a name="footnote2">2</a>: The largest Execution Data we've observed on Mainnet was ~400MB. Therefore, considering that CIDs are ~32 bytes, in practice this process will only need to be repeated at most once.
-
-<a name="footnote3">3</a>: Note that it's possible for the blob trees of two distinct Execution Data objects to contain overlapping nodes. We should be careful not to purge any blobs from the sealed Execution Data's blob tree.
-
-<a name="footnote4">4</a>: We could avoid all of this by waiting until an Execution Result is sealed before initiating the download of its Execution Data, but we choose to eagerly download data in order to achieve lower latency.
-
-<a name="footnote5">5</a>: These are motivated and specified in Section 3.10 of [Introduction to Reliable and Secure Distributed Programming](https://www.distributedprogramming.net/).
+1. We could also serialize the entire Execution Data instead, but serializing the fields separately potentially allows us to reuse the existing Badger storage in our blobstore implementation.
+2. The largest Execution Data we've observed on Mainnet was ~400MB. Therefore, considering that CIDs are ~32 bytes, in practice this process will only need to be repeated at most once.
+3. Note that it's possible for the blob trees of two distinct Execution Data objects to contain overlapping nodes. We should be careful not to purge any blobs from the sealed Execution Data's blob tree.
+4. We could avoid all of this by waiting until an Execution Result is sealed before initiating the download of its Execution Data, but we choose to eagerly download data in order to achieve lower latency.
+5. These are motivated and specified in Section 3.10 of [Introduction to Reliable and Secure Distributed Programming](https://www.distributedprogramming.net/).
