@@ -102,7 +102,7 @@ const sourceGithubRepos = {
     path: "docs"
   },
   "flow-go-sdk-github": {
-    githubRepo: "onflow/flow-cli",
+    githubRepo: "onflow/flow-go-sdk",
     // NOTE: path is empty, whole repo is sourced
     path: ""
   },
