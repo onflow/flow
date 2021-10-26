@@ -107,7 +107,7 @@ If an Access node finds that any of the downloaded objects do not have the corre
 
 #### Verification Nodes as Verifiers
 
-Since Verification nodes are each responsible for only a subset of the Chunks within a block, Execution nodes will need to split up the Execution Data they compute and generate CIDs for each Chunk. Once Verification nodes have the [Chunk Data Pack](https://github.com/onflow/flow-go/blob/e73e19a87860f470053b6a8b624d3dcd43ad23bf/model/flow/chunk.go#L40), they can reproduce the CIDs and check that they are correct.
+Since Verification nodes are each responsible for only a subset of the Chunks within a block, Execution nodes will need to compute Execution Data and CIDs for each individual Chunk. Once Verification nodes have the [Chunk Data Pack](https://github.com/onflow/flow-go/blob/e73e19a87860f470053b6a8b624d3dcd43ad23bf/model/flow/chunk.go#L40), they can reproduce the CIDs and check that they are correct.
 
 ## Requirements and Rewards
 
