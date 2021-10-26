@@ -60,7 +60,7 @@ They will then serialize each of these fields<sup>[1](#footnotes)</sup> and comp
 2. Compute the CID of each blob and store it in the blobstore.
 3. If the number of CIDs computed in the previous step is 1, then return this CID. Otherwise, concatenate the CIDs and repeat from step 1<sup>[2](#footnotes)</sup>.
 
-[INSERT DIAGRAM HERE]
+**[INSERT DIAGRAM HERE]**
 
 At the end of this process, we are left with four root CIDs (one for each field in the Execution Data). These will be included in an [Execution Result](https://github.com/onflow/flow-go/blob/master/model/flow/execution_result.go) from which an [Execution Receipt](https://github.com/onflow/flow-go/blob/master/model/flow/execution_receipt.go) is generated and later broadcast to the network.
 
@@ -70,7 +70,7 @@ Each time an Access node receives a new Execution Receipt, it will initiate a Bi
 
 In order to preserve the bandwidth of Execution nodes, who are the only creators of new data, their Bitswap implementation will be configured with custom request prioritization logic so that queries for the Execution Data of newer blocks are answered first. The expectation here is that as new blocks are executed, the likelihood of requests for older Execution Data being answered by Access nodes (rather than Execution nodes) will increase. Execution nodes will also implement an expiration policy so that the Execution Data for blocks older than a certain threshold are purged entirely, leaving Access nodes with the full responsibility of providing of this data to new nodes joining the network.
 
-[INSERT DIAGRAM HERE]
+**[INSERT DIAGRAM HERE]**
 
 There are various reasons why a particular Execution Result may never end up being sealed:
 
