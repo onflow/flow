@@ -148,7 +148,7 @@ smnzhu@mbp:~$ echo $SORTED_BY_SIZE | awk '{ a[i++]=$0; } END { print a[int(i/2)]
 smnzhu@mbp:~$ gsutil du -sh gs://flow_public_mainnet13_execution_state
 446.14 GiB   gs://flow_public_mainnet13_execution_state
 smnzhu@mbp:~$ gsutil ls gs://flow_public_mainnet13_execution_state | wc -l
-    473590
+  473590
 ```
 
 **Execution State Index (~3 week spork)**
