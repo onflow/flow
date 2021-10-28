@@ -54,7 +54,7 @@ message ExecutionData {
 }
 ```
 
-They will then serialize each of these fields<sup>[1](#footnotes)</sup> and compute a root CID from the serialized data as follows:
+They will then serialize each of these fields separately<sup>[1](#footnotes)</sup> and compute a root CID from the serialized data for each field as follows:
 
 1. Split the data into blobs of up to 1MB (the message size limit of the [underlying networking stack](https://docs.ipfs.io/concepts/libp2p/)).
 2. Compute the CID of each blob and store it in the blobstore.
