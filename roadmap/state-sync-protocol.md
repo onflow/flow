@@ -72,6 +72,8 @@ In order to preserve the bandwidth of Execution nodes, who are the only creators
 
 **[INSERT DIAGRAM HERE]**
 
+> There is a [data availability problem](https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding#what-is-the-data-availability-problem) here, where Execution nodes could ignore Bitswap requests and refuse to send any data to Access nodes. It may be possible to solve this using similar techniques as those described in [Sharding](#sharding)
+
 There are various reasons why a particular Execution Result may never end up being sealed:
 
 * The block that was executed never gets finalized.
@@ -103,7 +105,7 @@ Once an Access node downloads the Execution Data using the CIDs in an Execution 
 
 If an Access node finds that any of the downloaded objects do not have the correct hash, then the Execution node must have put an incorrect CID in their Execution Result and should be slashed.
 
-> There is a Fisherman's Dilemma here which needs to be addressed. We will not go into the details of how to solve this here.
+> There is a Verifier's Dilemma here which needs to be addressed. We will not go into the details of how to solve this here.
 
 #### Verification Nodes as Verifiers
 
@@ -179,10 +181,11 @@ The Execution Data can be sharded so that each Access node only needs to store a
 
 There are many ways that sharding can be implemented. For example, consistent hashing can be used to determine the assignment of Execution Data to Access nodes, so that when nodes join or leave the network at each epoch, the Execution Data can be remapped according to the consistent hashing scheme. We should use the Random Beacon to determine each Access node's locations around the consistent hashing circle in order to prevent malicious Access nodes from purposely skewing the distribution.
 
-It remains a challenge to ensure that Access nodes keep Execution Data available instead of pruning it and ignoring Bitswap requests. *Data availability proofs* may be helpful here:
+It remains a challenge to ensure that Access nodes keep Execution Data available instead of pruning it and ignoring Bitswap requests. *Data availability proofs* and *proofs of retrievability* may be helpful here:
 
 * [A note on data availability and erasure coding](https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding)
 * [Towards on-chain non-interactive data availability proofs](https://ethresear.ch/t/towards-on-chain-non-interactive-data-availability-proofs/4602)
+* [Proofs of Retrievability: Theory and Implementation](http://www.arijuels.com/wp-content/uploads/2013/09/BJO09b.pdf)
 
 ---
 
