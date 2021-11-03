@@ -1,0 +1,1506 @@
+openapi: 3.0.0
+info:
+  title: Access API
+  version: 1.0.0
+externalDocs:
+  description: Find out more about the Access API
+  url: https://docs.onflow.org/access-api/
+servers:
+- url: https://access.mainnet.nodes.onflow.org/v1
+  description: Current Mainnet
+- url: https://access.devnet.nodes.onflow.org/v1
+  description: Testnet
+- url: https://access.canary.nodes.onflow.org/v1
+  description: Canarynet
+paths:
+  /blocks:
+    get:
+      tags:
+      - Blocks
+      summary: Gets full blocks by height.
+      parameters:
+      - name: height
+        in: query
+        description: A comma-separated list of block heights to get.
+        required: true
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/BlockHeight'
+      - name: start_height
+        in: query
+        description: The start height of the block range to get. Must be used together
+          with `end_height`. This parameter is incompatible with `height`.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/BlockHeight'
+      - name: end_height
+        in: query
+        description: The ending height of the block range to get. Must be used together
+          with `start_height`. This parameter is incompatible with `height`.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/BlockHeight'
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Block'
+                x-content-type: application/json
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /blocks/{id}:
+    get:
+      tags:
+      - Blocks
+      summary: Gets full blocks by ID.
+      parameters:
+      - name: id
+        in: path
+        description: A comma-separated list of block IDs to get.
+        required: true
+        style: simple
+        explode: true
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier'
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Block'
+                x-content-type: application/json
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /transactions/{id}:
+    get:
+      tags:
+      - Transactions
+      summary: Gets a transaction by ID.
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the transaction to get.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /transaction_results/{transaction_id}:
+    get:
+      tags:
+      - Transactions
+      summary: Gets a transaction result by ID.
+      parameters:
+      - name: transaction_id
+        in: path
+        description: The transaction ID of the transaction result to get.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResult'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /transactions:
+    post:
+      tags:
+      - Transactions
+      summary: Submits a transaction to the network.
+      requestBody:
+        description: The transaction to submit.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/transactions_body'
+        required: true
+      responses:
+        "201":
+          description: Created
+          headers:
+            Location:
+              description: The URI to the newly submitted transaction.
+              style: simple
+              explode: false
+              schema:
+                type: string
+                format: uri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /collections/{id}:
+    get:
+      tags:
+      - Collections
+      summary: Gets a collection by ID.
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the collection to get.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /execution_results:
+    get:
+      tags:
+      - Execution Results
+      summary: Gets execution results by block ID.
+      parameters:
+      - name: block_id
+        in: query
+        description: A comma-separated list of block IDs to get the execution results
+          for.
+        required: true
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExecutionResult'
+                x-content-type: application/json
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /execution_results/{id}:
+    get:
+      tags:
+      - Execution Results
+      summary: Gets an execution result by ID.
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the execution result to get.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecutionResult'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /accounts/{address}:
+    get:
+      tags:
+      - Accounts
+      summary: Gets an account by address at the given block height.
+      parameters:
+      - name: address
+        in: path
+        description: The address of the account to get.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/Address'
+      - name: block_height
+        in: query
+        description: The block height to query for the account details at.
+        required: true
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/BlockHeight'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /scripts:
+    post:
+      tags:
+      - Scripts
+      summary: Executes a read-only Cadence script against the execution state at
+        the given block height or ID.
+      parameters:
+      - name: block_id
+        in: query
+        description: "The ID of the block to execute the script against. For a specific\
+          \ block height, use `block_height` instead."
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: block_height
+        in: query
+        description: The height of the block to execute the script against. This parameter
+          is incompatible with `block_id`.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/BlockHeight'
+      requestBody:
+        description: The script to execute.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/scripts_body'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Account:
+      required:
+      - address
+      - balance
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        balance:
+          type: integer
+          format: uint64
+        keys:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountPublicKey'
+        contracts:
+          type: object
+          additionalProperties:
+            type: string
+            format: byte
+        _expandable:
+          $ref: '#/components/schemas/Account__expandable'
+        _links:
+          $ref: '#/components/schemas/Links'
+      example:
+        address: address
+        balance: 0
+        _links: {}
+        keys:
+        - public_key: public_key
+          sequence_number: 1
+          index: 6
+          weight: 5
+          signing_algorithm: BLSBLS12381
+          revoked: true
+          hashing_algorithm: SHA2_256
+        - public_key: public_key
+          sequence_number: 1
+          index: 6
+          weight: 5
+          signing_algorithm: BLSBLS12381
+          revoked: true
+          hashing_algorithm: SHA2_256
+        contracts:
+          key: ""
+        _expandable:
+          keys: keys
+          contracts: contracts
+    AccountPublicKey:
+      required:
+      - hashing_algorithm
+      - index
+      - public_key
+      - revoked
+      - sequence_number
+      - signing_algorithm
+      - weight
+      type: object
+      properties:
+        index:
+          type: integer
+          format: uint64
+        public_key:
+          type: string
+          format: bytes
+        signing_algorithm:
+          $ref: '#/components/schemas/SigningAlgorithm'
+        hashing_algorithm:
+          $ref: '#/components/schemas/HashingAlgorithm'
+        sequence_number:
+          type: integer
+          format: uint64
+        weight:
+          type: integer
+          format: uint64
+        revoked:
+          type: boolean
+      example:
+        public_key: public_key
+        sequence_number: 1
+        index: 6
+        weight: 5
+        signing_algorithm: BLSBLS12381
+        revoked: true
+        hashing_algorithm: SHA2_256
+    SigningAlgorithm:
+      type: string
+      enum:
+      - BLSBLS12381
+      - ECDSAP256
+      - ECDSASecp256k1
+    HashingAlgorithm:
+      type: string
+      enum:
+      - SHA2_256
+      - SHA2_384
+      - SHA3_256
+      - SHA3_384
+      - KMAC128
+    Collection:
+      required:
+      - id
+      - transactions
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Identifier'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+        _links:
+          $ref: '#/components/schemas/Links'
+      example:
+        _links: {}
+        id: id
+        transactions:
+        - _links: null
+          reference_block_id: null
+          payer: payer
+          script: ""
+          result:
+            error_message: error_message
+            _links: {}
+            _expandable:
+              events: events
+            block_id: null
+            computation_used: 2
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: 0
+              type: type
+              event_index: 6
+            - transaction_id: null
+              payload: ""
+              transaction_index: 0
+              type: type
+              event_index: 6
+            status: Pending
+          envelope_signatures:
+          - null
+          - null
+          gas_limit: 0
+          payload_signatures:
+          - address: null
+            signature: ""
+            key_index: 5
+            signer_index: 5
+          - address: null
+            signature: ""
+            key_index: 5
+            signer_index: 5
+          arguments:
+          - ""
+          - ""
+          id: id
+          authorizers:
+          - null
+          - null
+          _expandable:
+            result: http://example.com/aeiou
+            envelope_signatures: envelope_signatures
+            payload_signatures: payload_signatures
+            authorizers: authorizers
+            proposal_key: proposal_key
+          proposal_key:
+            sequence_number: 1
+            address: null
+            key_index: 6
+        - _links: null
+          reference_block_id: null
+          payer: payer
+          script: ""
+          result:
+            error_message: error_message
+            _links: {}
+            _expandable:
+              events: events
+            block_id: null
+            computation_used: 2
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: 0
+              type: type
+              event_index: 6
+            - transaction_id: null
+              payload: ""
+              transaction_index: 0
+              type: type
+              event_index: 6
+            status: Pending
+          envelope_signatures:
+          - null
+          - null
+          gas_limit: 0
+          payload_signatures:
+          - address: null
+            signature: ""
+            key_index: 5
+            signer_index: 5
+          - address: null
+            signature: ""
+            key_index: 5
+            signer_index: 5
+          arguments:
+          - ""
+          - ""
+          id: id
+          authorizers:
+          - null
+          - null
+          _expandable:
+            result: http://example.com/aeiou
+            envelope_signatures: envelope_signatures
+            payload_signatures: payload_signatures
+            authorizers: authorizers
+            proposal_key: proposal_key
+          proposal_key:
+            sequence_number: 1
+            address: null
+            key_index: 6
+    Transaction:
+      required:
+      - arguments
+      - gas_limit
+      - id
+      - payer
+      - reference_block_id
+      - script
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Identifier'
+        script:
+          type: string
+          format: byte
+        arguments:
+          type: array
+          items:
+            type: string
+            format: byte
+        reference_block_id:
+          $ref: '#/components/schemas/Identifier'
+        gas_limit:
+          type: integer
+          format: uint64
+        payer:
+          $ref: '#/components/schemas/Address'
+        proposal_key:
+          $ref: '#/components/schemas/ProposalKey'
+        authorizers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        payload_signatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionSignature'
+        envelope_signatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionSignature'
+        result:
+          $ref: '#/components/schemas/TransactionResult'
+        _expandable:
+          $ref: '#/components/schemas/Transaction__expandable'
+        _links:
+          $ref: '#/components/schemas/Links'
+      example:
+        _links: null
+        reference_block_id: null
+        payer: payer
+        script: ""
+        result:
+          error_message: error_message
+          _links: {}
+          _expandable:
+            events: events
+          block_id: null
+          computation_used: 2
+          events:
+          - transaction_id: null
+            payload: ""
+            transaction_index: 0
+            type: type
+            event_index: 6
+          - transaction_id: null
+            payload: ""
+            transaction_index: 0
+            type: type
+            event_index: 6
+          status: Pending
+        envelope_signatures:
+        - null
+        - null
+        gas_limit: 0
+        payload_signatures:
+        - address: null
+          signature: ""
+          key_index: 5
+          signer_index: 5
+        - address: null
+          signature: ""
+          key_index: 5
+          signer_index: 5
+        arguments:
+        - ""
+        - ""
+        id: id
+        authorizers:
+        - null
+        - null
+        _expandable:
+          result: http://example.com/aeiou
+          envelope_signatures: envelope_signatures
+          payload_signatures: payload_signatures
+          authorizers: authorizers
+          proposal_key: proposal_key
+        proposal_key:
+          sequence_number: 1
+          address: null
+          key_index: 6
+    ProposalKey:
+      required:
+      - address
+      - key_index
+      - sequence_number
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        key_index:
+          type: integer
+          format: uint64
+        sequence_number:
+          type: integer
+          format: uint64
+      example:
+        sequence_number: 1
+        address: null
+        key_index: 6
+    TransactionSignature:
+      required:
+      - address
+      - key_index
+      - signature
+      - signer_index
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        signer_index:
+          type: integer
+          format: uint64
+        key_index:
+          type: integer
+          format: uint64
+        signature:
+          $ref: '#/components/schemas/Signature'
+      example:
+        address: null
+        signature: ""
+        key_index: 5
+        signer_index: 5
+    TransactionResult:
+      required:
+      - block_id
+      - computation_used
+      - error_message
+      - status
+      type: object
+      properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        status:
+          $ref: '#/components/schemas/TransactionStatus'
+        error_message:
+          type: string
+        computation_used:
+          type: integer
+          format: uint64
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        _expandable:
+          $ref: '#/components/schemas/TransactionResult__expandable'
+        _links:
+          $ref: '#/components/schemas/Links'
+      example:
+        error_message: error_message
+        _links: {}
+        _expandable:
+          events: events
+        block_id: null
+        computation_used: 2
+        events:
+        - transaction_id: null
+          payload: ""
+          transaction_index: 0
+          type: type
+          event_index: 6
+        - transaction_id: null
+          payload: ""
+          transaction_index: 0
+          type: type
+          event_index: 6
+        status: Pending
+    TransactionStatus:
+      type: string
+      enum:
+      - Pending
+      - Finalized
+      - Executed
+      - Sealed
+      - Expired
+    Block:
+      required:
+      - header
+      type: object
+      properties:
+        header:
+          $ref: '#/components/schemas/BlockHeader'
+        payload:
+          $ref: '#/components/schemas/BlockPayload'
+        execution_result:
+          $ref: '#/components/schemas/ExecutionResult'
+        _expandable:
+          $ref: '#/components/schemas/Block__expandable'
+        _links:
+          $ref: '#/components/schemas/Links'
+      example:
+        payload:
+          collection_guarantees:
+          - collection_id: null
+            signer_ids:
+            - null
+            - null
+            signature: null
+          - collection_id: null
+            signer_ids:
+            - null
+            - null
+            signature: null
+          block_seals:
+          - result_id: null
+            final_state: final_state
+            aggregated_approval_signatures:
+            - verifier_signatures:
+              - null
+              - null
+              signer_ids:
+              - null
+              - null
+            - verifier_signatures:
+              - null
+              - null
+              signer_ids:
+              - null
+              - null
+            block_id: null
+          - result_id: null
+            final_state: final_state
+            aggregated_approval_signatures:
+            - verifier_signatures:
+              - null
+              - null
+              signer_ids:
+              - null
+              - null
+            - verifier_signatures:
+              - null
+              - null
+              signer_ids:
+              - null
+              - null
+            block_id: null
+        _links: null
+        header:
+          parent_id: null
+          id: id
+          parent_voter_signature: ""
+          height: height
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        execution_result:
+          _links: {}
+          id: null
+          block_id: null
+          events:
+          - transaction_id: null
+            payload: ""
+            transaction_index: 0
+            type: type
+            event_index: 6
+          - transaction_id: null
+            payload: ""
+            transaction_index: 0
+            type: type
+            event_index: 6
+        _expandable:
+          payload: payload
+          execution_result: http://example.com/aeiou
+    BlockHeader:
+      required:
+      - height
+      - id
+      - parent_id
+      - parent_voter_signature
+      - timestamp
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Identifier'
+        parent_id:
+          $ref: '#/components/schemas/Identifier'
+        height:
+          type: string
+          format: uint64
+        timestamp:
+          type: string
+          format: date-time
+        parent_voter_signature:
+          $ref: '#/components/schemas/Signature'
+      example:
+        parent_id: null
+        id: id
+        parent_voter_signature: ""
+        height: height
+        timestamp: 2000-01-23T04:56:07.000+00:00
+    BlockPayload:
+      required:
+      - block_seals
+      - collection_guarantees
+      type: object
+      properties:
+        collection_guarantees:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionGuarantee'
+        block_seals:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/BlockSeal'
+      example:
+        collection_guarantees:
+        - collection_id: null
+          signer_ids:
+          - null
+          - null
+          signature: null
+        - collection_id: null
+          signer_ids:
+          - null
+          - null
+          signature: null
+        block_seals:
+        - result_id: null
+          final_state: final_state
+          aggregated_approval_signatures:
+          - verifier_signatures:
+            - null
+            - null
+            signer_ids:
+            - null
+            - null
+          - verifier_signatures:
+            - null
+            - null
+            signer_ids:
+            - null
+            - null
+          block_id: null
+        - result_id: null
+          final_state: final_state
+          aggregated_approval_signatures:
+          - verifier_signatures:
+            - null
+            - null
+            signer_ids:
+            - null
+            - null
+          - verifier_signatures:
+            - null
+            - null
+            signer_ids:
+            - null
+            - null
+          block_id: null
+    CollectionGuarantee:
+      required:
+      - collection_id
+      - signature
+      - signer_ids
+      type: object
+      properties:
+        collection_id:
+          $ref: '#/components/schemas/Identifier'
+        signer_ids:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier'
+        signature:
+          $ref: '#/components/schemas/Signature'
+      example:
+        collection_id: null
+        signer_ids:
+        - null
+        - null
+        signature: null
+    BlockSeal:
+      required:
+      - aggregated_approval_signatures
+      - block_id
+      - final_state
+      - result_id
+      type: object
+      properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        result_id:
+          $ref: '#/components/schemas/Identifier'
+        final_state:
+          $ref: '#/components/schemas/StateCommitment'
+        aggregated_approval_signatures:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/AggregatedSignature'
+      example:
+        result_id: null
+        final_state: final_state
+        aggregated_approval_signatures:
+        - verifier_signatures:
+          - null
+          - null
+          signer_ids:
+          - null
+          - null
+        - verifier_signatures:
+          - null
+          - null
+          signer_ids:
+          - null
+          - null
+        block_id: null
+    StateCommitment:
+      pattern: "[a-fA-F0-9]{64}"
+      type: string
+      description: The root hash of the state tree.
+      format: hexadecimal
+    AggregatedSignature:
+      required:
+      - signer_ids
+      - verifier_signatures
+      type: object
+      properties:
+        verifier_signatures:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Signature'
+        signer_ids:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier'
+      example:
+        verifier_signatures:
+        - null
+        - null
+        signer_ids:
+        - null
+        - null
+    ExecutionResult:
+      required:
+      - block_id
+      - events
+      - id
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Identifier'
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        _links:
+          $ref: '#/components/schemas/Links'
+      example:
+        _links: {}
+        id: null
+        block_id: null
+        events:
+        - transaction_id: null
+          payload: ""
+          transaction_index: 0
+          type: type
+          event_index: 6
+        - transaction_id: null
+          payload: ""
+          transaction_index: 0
+          type: type
+          event_index: 6
+    Event:
+      required:
+      - event_index
+      - payload
+      - transaction_id
+      - transaction_index
+      - type
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/EventType'
+        transaction_id:
+          $ref: '#/components/schemas/Identifier'
+        transaction_index:
+          type: integer
+          format: uint64
+        event_index:
+          type: integer
+          format: uint64
+        payload:
+          type: string
+          format: byte
+      example:
+        transaction_id: null
+        payload: ""
+        transaction_index: 0
+        type: type
+        event_index: 6
+    BlockHeight:
+      oneOf:
+      - type: integer
+        format: uint64
+      - type: string
+        enum:
+        - final
+        - sealed
+    EventType:
+      type: string
+      description: The qualified event type.
+    Address:
+      pattern: "[a-fA-F0-9]{16}"
+      type: string
+      description: The 8-byte address of an account.
+      format: hexadecimal
+    Identifier:
+      pattern: "[a-fA-F0-9]{64}"
+      type: string
+      description: A 32-byte unique identifier for an entity.
+      format: hexadecimal
+    Signature:
+      type: string
+      description: A variable length signature.
+      format: byte
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+    Links:
+      type: object
+    transactions_body:
+      required:
+      - arguments
+      - authorizers
+      - envelope_signatures
+      - gas_limit
+      - payer
+      - payload_signatures
+      - proposal_key
+      - reference_block_id
+      - script
+      type: object
+      properties:
+        script:
+          type: string
+          format: byte
+        arguments:
+          type: array
+          items:
+            type: string
+            format: byte
+        reference_block_id:
+          $ref: '#/components/schemas/Identifier'
+        gas_limit:
+          type: integer
+          format: uint64
+        payer:
+          $ref: '#/components/schemas/Address'
+        proposal_key:
+          $ref: '#/components/schemas/ProposalKey'
+        authorizers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        payload_signatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionSignature'
+        envelope_signatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionSignature'
+    scripts_body:
+      type: object
+      properties:
+        script:
+          type: string
+          format: byte
+        arguments:
+          type: array
+          items:
+            type: string
+            format: byte
+    inline_response_200:
+      type: object
+      properties:
+        value:
+          type: string
+          format: byte
+      example:
+        value: ""
+    Account__expandable:
+      type: object
+      properties:
+        keys:
+          type: string
+        contracts:
+          type: string
+      example:
+        keys: keys
+        contracts: contracts
+    Transaction__expandable:
+      type: object
+      properties:
+        proposal_key:
+          type: string
+        authorizers:
+          type: string
+        payload_signatures:
+          type: string
+        envelope_signatures:
+          type: string
+        result:
+          type: string
+          format: uri
+      example:
+        result: http://example.com/aeiou
+        envelope_signatures: envelope_signatures
+        payload_signatures: payload_signatures
+        authorizers: authorizers
+        proposal_key: proposal_key
+    TransactionResult__expandable:
+      type: object
+      properties:
+        events:
+          type: string
+      example:
+        events: events
+    Block__expandable:
+      type: object
+      properties:
+        payload:
+          type: string
+        execution_result:
+          type: string
+          format: uri
+      example:
+        payload: payload
+        execution_result: http://example.com/aeiou
+  responses:
+    "400BadRequest":
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    "404NotFound":
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    "500InternalServerError":
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    expandParam:
+      name: expand
+      in: query
+      description: A comma-separated list indicating which properties of the content
+        to expand.
+      required: false
+      style: form
+      explode: false
+      schema:
+        minItems: 1
+        uniqueItems: true
+        type: array
+        items:
+          type: string
+    selectParam:
+      name: select
+      in: query
+      description: A comma-separated list indicating which properties of the content
+        to return.
+      required: false
+      style: form
+      explode: false
+      schema:
+        minItems: 1
+        uniqueItems: true
+        type: array
+        items:
+          type: string
