@@ -657,7 +657,7 @@ components:
         parent_id:
           $ref: '#/components/schemas/Identifier'
         height:
-          type: string
+          type: integer
           format: uint64
         timestamp:
           type: string

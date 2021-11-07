@@ -702,14 +702,14 @@ components:
             events:
             - transaction_id: null
               payload: ""
-              transaction_index: 0
+              transaction_index: 6
               type: type
-              event_index: 6
+              event_index: 1
             - transaction_id: null
               payload: ""
-              transaction_index: 0
+              transaction_index: 6
               type: type
-              event_index: 6
+              event_index: 1
             status: Pending
           envelope_signatures:
           - null
@@ -755,14 +755,14 @@ components:
             events:
             - transaction_id: null
               payload: ""
-              transaction_index: 0
+              transaction_index: 6
               type: type
-              event_index: 6
+              event_index: 1
             - transaction_id: null
               payload: ""
-              transaction_index: 0
+              transaction_index: 6
               type: type
-              event_index: 6
+              event_index: 1
             status: Pending
           envelope_signatures:
           - null
@@ -856,14 +856,14 @@ components:
           events:
           - transaction_id: null
             payload: ""
-            transaction_index: 0
+            transaction_index: 6
             type: type
-            event_index: 6
+            event_index: 1
           - transaction_id: null
             payload: ""
-            transaction_index: 0
+            transaction_index: 6
             type: type
-            event_index: 6
+            event_index: 1
           status: Pending
         envelope_signatures:
         - null
@@ -972,14 +972,14 @@ components:
         events:
         - transaction_id: null
           payload: ""
-          transaction_index: 0
+          transaction_index: 6
           type: type
-          event_index: 6
+          event_index: 1
         - transaction_id: null
           payload: ""
-          transaction_index: 0
+          transaction_index: 6
           type: type
-          event_index: 6
+          event_index: 1
         status: Pending
     TransactionStatus:
       type: string
@@ -1055,7 +1055,7 @@ components:
           parent_id: null
           id: id
           parent_voter_signature: ""
-          height: height
+          height: 0
           timestamp: 2000-01-23T04:56:07.000+00:00
         execution_result:
           _links: {}
@@ -1064,14 +1064,14 @@ components:
           events:
           - transaction_id: null
             payload: ""
-            transaction_index: 0
+            transaction_index: 6
             type: type
-            event_index: 6
+            event_index: 1
           - transaction_id: null
             payload: ""
-            transaction_index: 0
+            transaction_index: 6
             type: type
-            event_index: 6
+            event_index: 1
         _expandable:
           payload: payload
           execution_result: http://example.com/aeiou
@@ -1089,7 +1089,7 @@ components:
         parent_id:
           $ref: '#/components/schemas/Identifier'
         height:
-          type: string
+          type: integer
           format: uint64
         timestamp:
           type: string
@@ -1100,7 +1100,7 @@ components:
         parent_id: null
         id: id
         parent_voter_signature: ""
-        height: height
+        height: 0
         timestamp: 2000-01-23T04:56:07.000+00:00
     BlockPayload:
       required:
@@ -1277,14 +1277,14 @@ components:
         events:
         - transaction_id: null
           payload: ""
-          transaction_index: 0
+          transaction_index: 6
           type: type
-          event_index: 6
+          event_index: 1
         - transaction_id: null
           payload: ""
-          transaction_index: 0
+          transaction_index: 6
           type: type
-          event_index: 6
+          event_index: 1
     Event:
       required:
       - event_index
@@ -1310,9 +1310,9 @@ components:
       example:
         transaction_id: null
         payload: ""
-        transaction_index: 0
+        transaction_index: 6
         type: type
-        event_index: 6
+        event_index: 1
     BlockHeight:
       oneOf:
       - type: integer
