@@ -62,6 +62,11 @@
       "permanent": true
     },
     {
+      "source": "/cadence/index/",
+      "destination": "/cadence/",
+      "permanent": true
+    },
+    {
       "source": "/docs/glossary/",
       "destination": "/intro/glossary/",
       "permanent": true
@@ -447,7 +452,17 @@
       "permanent": false
     },
     {
+      "source": "/flow-js-sdk/flow-app-quickstart/",
+      "destination": "/fcl/tutorials/flow-app-quickstart",
+      "permanent": false
+    },
+    {
       "source": "/dapp-deployment/index/",
+      "destination": "/dapp-development/deployment",
+      "permanent": true
+    },
+    {
+      "source": "/dapp-deployment/",
       "destination": "/dapp-development/deployment",
       "permanent": true
     },
@@ -469,6 +484,21 @@
     {
       "source": "/dapp-deployment/mainnet-deployment/",
       "destination": "/dapp-development/mainnet-deployment",
+      "permanent": true
+    },
+    {
+      "source": "/fcl/flow-app-quickstart/",
+      "destination": "/fcl/tutorials/flow-app-quickstart/",
+      "permanent": true
+    },
+    {
+      "source": "/fcl/api/",
+      "destination": "/fcl",
+      "permanent": true
+    },
+    {
+      "source": "/devtools/emulator/",
+      "destination": "/emulator/",
       "permanent": true
     }
   ]

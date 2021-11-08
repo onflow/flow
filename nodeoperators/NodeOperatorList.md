@@ -16,11 +16,41 @@
 | Node Operator             | Node Type           | Node ID  |
 |:--------------------------|:-------------------|:---------|
 | Accomplice | Verification | 79949f163dac6b72ab72c1d12b9677d71dd9367f7331d59425b485050c8712d9
-| Alvalor | Consensus | f3b72c50794c29319f0f77f0c7d623662eb15253c291a5360d095a4ea282fadb
 | Alxo | Verification | f7422f2d3296ede4d1efb36ec55e3fd93702c061f7ee627881f0b3007beff2ed
 | Artemis | Verification | a67ca1afd47c58358c656dffa2e5585d80b01371866e5634b68dcbab090b9b6f 
 | Bison Trails | Collection | 48ba5aabeaf1a7c1bc6a96b20c8e9f6cbe7f6b3c77faec3b77fa66a630abf8c7
 | Bison Trails | Consensus | a65461e68eae80c9bd9d8edc81857c7d2cd83ba9992433c468e9ef6515d32006
+| Bison Trails | Consensus | 022699aba098bce3eb3a8709f29feafa9793f65de7d24d37a46310d788cbcc74
+| Bison Trails | Consensus | 07e3017f5327ed10b7cfa0e3b3f7dc97df8f1ce2cc9d9be25e7aef00e932a691
+| Bison Trails | Consensus | 10ea3b6872e187b3835bf57f6a9597738aa6b396c03c1549f4cdac789ae27e8e
+| Bison Trails | Consensus | 166d1b52831da570fb37f0d85ded5d164937bc7ae976a6037bc33a77c3113735
+| Bison Trails | Consensus | 1a697950a4843dc67bbd34cbb0016854e64e66f088b54447beeea6999ff7641d
+| Bison Trails | Consensus | 2040bd128455e833c0968bf51c0a2eb4d05399e1ab5ac323d38170b975688bea
+| Bison Trails | Consensus | 245efcb37ebdb2966bafc0112dd86bc1f5e1d3ffa70b66887eaeb3a667b3f477
+| Bison Trails | Consensus | 3890fd0a26c0272807b731d0dda0eb15bfa5183533032303e062e9206e9f4e69
+| Bison Trails | Consensus | 490e27d1d5335f20473871f06324f4cff862d4fc22c4af7ab87574292764c518
+| Bison Trails | Consensus | 492bab4b9cb02c97bd2b03859640002e8d81eb2bc33e723ae8fabcc64f30d653
+| Bison Trails | Consensus | 54abbaea844dfc3c6cc0f58f0170783d6d01bef578761113558c4321a3e1a0df
+| Bison Trails | Consensus | 7133b78ac9e788c428a354f2f96b5cc8109123425a88cc75d729bf5adfd0a25d
+| Bison Trails | Consensus | 76a117e9635097b8a7ef6ac867f1525a76854b7e42b38075e3b422bd73e5dd2f
+| Bison Trails | Consensus | 7db974a1aa956a2693ae0bafc357e8b220d30c8a0c64213badfc603e8b911d9a
+| Bison Trails | Consensus | 8d16bacfd9854ccdc0496ec2b99fc9dab94e5810686bd4df2bd956a8a8f81fa0
+| Bison Trails | Consensus | 8f4d09dae7918afbf62c48fa968a9e8b0891cee8442065fa47cc05f4bc9a8a91
+| Bison Trails | Consensus | 95ffacf0c05757cff71a4ee49e025d5a6d1103a3aa7d91253079e1bfb7c22458
+| Bison Trails | Consensus | a01657135399d9817a1b9933c7663077ef9e376fbe72bf56d687b23d75c2f76c
+| Bison Trails | Consensus | a1bd45dbbf9077ce0ada513e2055ab4276ff81891936b0b8374617eee50c6987
+| Bison Trails | Consensus | a494a83f3eee8d95c49931a26483907aabe7bf8d6325a777b9033734756614f1
+| Bison Trails | Consensus | adbd46d6628bb41e84635f436b3411da4dde2d80854c1b6ead3373cc962d4be6
+| Bison Trails | Consensus | af8450d3906c7c3af8981736bbfbc67da78d71bee82c6f301f7656bc62815945
+| Bison Trails | Consensus | b38182167be80a81f7c7534da5c72cc6e59c0922e2aced43f8b01df3630cf788
+| Bison Trails | Consensus | b5e3cdbeb4986460b57a5a363789bb587eae7bff05589dcd122bcedc62be6664
+| Bison Trails | Consensus | b68dbd999fbf3084685833efdb6e65038f90d53992290919c0cb8332b6ac93bd
+| Bison Trails | Consensus | ccd5e456be83922268ee4a07841f7c6c2f009fac77b80828e08f7e7efd6e5278
+| Bison Trails | Consensus | e09a474478e44aed738b680d04eca770953468a80151a2491f90296009b0ee65
+| Bison Trails | Consensus | e2314f73ff8aa1fa7110b180b5e5d113898e56bc6b43f9e5c889a6bffebeec0e
+| Bison Trails | Consensus | e782fb8a9895251a82cb68b87d1306748775188c9fca97a9b91b444ddd5f7e11
+| Bison Trails | Consensus | f36176beb56175277ec31b77f51058a69ae1ebe9a13d990aa93f943d48793fd4
+| Bison Trails | Consensus | fdbe6cb2bc0e45671e977ba621746d113aaa7f045c5d3274addcd6141c8c765d
 | Bison Trails | Verification | b17280bf57adad0de648d827a7ccbe81c74cf6a9cc44af4778587b133747a2f9
 | Bison Trails | Execution | e52cbcd825e328acac8db6bcbdcbb6e7724862c8b89b09d85edccf41ff9981eb
 | Bitcoin Louie | Verification | fffba108a52e4ca8f5d30658c3f03f47ad1cc13a0995435c0532336236813218
@@ -44,7 +74,41 @@
 | CryptoTech | Consensus | b4f850b43df502e7fd292c34d9a21c2e8db350cd8a1214a4a29734bc6f3c9e92
 | DSRV | Consensus | 947771ab1fd233d8694aee6c4a4259ee7e2241f4a201067aaa28adbb989d7c97
 | Figment | Collection | 1408c08272beb24ad4fe4e531a9b937a26ee72c5f56b50ac8f2b889c3c42d316
-| Figment | Consensus | 95d61bcc7202fe7d0558baede4cc17a56aac191a0cfd110fbf824e2ef71bd49c 
+| Figment | Consensus | 95d61bcc7202fe7d0558baede4cc17a56aac191a0cfd110fbf824e2ef71bd49c
+| Figment | Consensus | 18e3cb625008338db803fd2d0fc2725b8f2ff988db992cfb2683f49d3ef29941
+| Figment | Consensus | 20a0ebfcd81c3aaa6161a97a3133c4c840952b8650f06fa69837ea2314ecdda7
+| Figment | Consensus | 2800fa8020d3c13e00019da137bc3236f4950f7fde81220a09c1b9af0ecd781f
+| Figment | Consensus | 28c3544d52f7f733b23269b601a301b10c85c8359382454bfd7a80430e37827b
+| Figment | Consensus | 2cbf580e34c96f75a7b4d85de546a150099d85fd703b6f298acfd488620dc60c
+| Figment | Consensus | 2f8f1ea5c1296f630d65c8dab2fba72278fdf70ebb1bad1a9faf0d2a76f27beb
+| Figment | Consensus | 3528a93263c82df41cf3c7e7788d00e017a4310e76bb82b86641a79065b1b2c2
+| Figment | Consensus | 39d1191804e80894f5a1cf828e08f4004ed964cdc7358d9cd3a146a672ab56e6
+| Figment | Consensus | 402325df0057b20c642f921dce88edc8e077fbc0ea29c277c1fdbbe3593dc745
+| Figment | Consensus | 407816e2586bca4412d04ba1b18d471671a64c3925efaa14ea65047050865b20
+| Figment | Consensus | 5e13ba756a7cc3418a5c3336bf05933ef5bcf663342e348cedc86000da113ca1
+| Figment | Consensus | 66f39cd4bc6bbc7115a8f5c266b14f6c40acd381285958acf45d7280c1ceffb0
+| Figment | Consensus | 67980f010ec262e91a289c6a66db3909148d1868fedf93575acbfb4e174c8b17
+| Figment | Consensus | 68c29c78c25bf6a8fe3315f86db64162510df1335ccd957f9e77d66ae1f658fa
+| Figment | Consensus | 69acaac5baa8e5a06452fd7a3cfa6771ff581e06e37a8d87c98fafecceca1627
+| Figment | Consensus | 6e3121a56f3822dfc6d11707e2518381a87a04f3a3307d6805ea4e0bc26ffd02
+| Figment | Consensus | 7f8ba5b2fe7fc2768287ab2ae1dc20fde90548b6e9572702a213d7280a4d7129
+| Figment | Consensus | 93cda295b1857253aef191d1ed9366d6963ba550d387cab93e620402cab4c7fa
+| Figment | Consensus | 97f9c1397b0a680593f64e8535d75416ac5fdcb79963773ec0d8017303e66ea8
+| Figment | Consensus | 9ca5d935372cfedd722f3c02efcbb94a3ad0617211384dc213dc6737094a02ea
+| Figment | Consensus | 9dc4cd848e5b764ff3b9ea9a9b2eba357efe3db0e1046975b67c644dd7fbfdc2
+| Figment | Consensus | a05c404084c51a407c09915bdf8444786cb5b6831cbd0ac079dff2d6d196225c
+| Figment | Consensus | a3b5022d35d4937573bf7f2e4b62be0c06f5c9f95a11b139d8eed4e0d2b30e59
+| Figment | Consensus | ad952bc03e5b8fd1d5bc0fa7bba54d9a705e212fb5c0d4a6d01a165b268d3172
+| Figment | Consensus | b3b6ac584a52a7ab15e24ac358c126c596b118639c92d72c3a49f910ddd0a9fc
+| Figment | Consensus | bd59ce9d092c69a6091d1a77ba57c24b7f5a54532216ef7bf32facb965320111
+| Figment | Consensus | c05f564477fc739d53d6d668ebba3b1d4f7f34f5331ec9ff29f0e75e2b5f960c
+| Figment | Consensus | c623076c01936f0eaadf1f8a6c618b087e8c88f00ad297db30a3172d8cd4d252
+| Figment | Consensus | de988efc8cb79d02876b7beffd404fc24b61c287ebeede567f90056f0eece90f
+| Figment | Consensus | e8e0c03ff9295328d833b2661cd6b74d2174d50c39134899db453f55dfaf22b9
+| Figment | Consensus | ea66ae75b60a219eb19358d0574259083c41efdadec35ce6d4b0c4b57d25dcae
+| Figment | Consensus | f07d945cbfc720d000a8fbb216b77cf0143f6e2b9d2568bc9af56802d45e75cf
+| Figment | Consensus | f6fe4e61b17b6e45ba64690fa83ca0b4a3898d2f3732c8c60a985c85f7295a88
+| Figment | Consensus | fc16709e4a2d04ddc27ad6ecbe9411c0962beaf749c03d667187b9c394e13237
 | Flipside| Collection | 581525fa93d8fe4b334c179698c6e72baccb802593e55e40da61d24e589d85be
 | Forbole | Consensus | 237a7a04ecf88b7c21001589ecc277190a6f7cd6e56a296a203552ade6db0927
 | Foundry | Consensus | 56e97c4cd4079caeb97d2a8f8950437107813436d5964f22a1f459eb8cf73a71
@@ -55,6 +119,7 @@
 | Metapurse | Consensus |1780288437c9aed5056836bfffcfe19334dd6e229607fccfb3fe9b1d4d24cdca
 | Metapurse | Verfication | dc3054cae816874d7dbbe838a41ef97c8a01b44643bffc82afe3a8228eed29fd
 | NFT42 | Verification | f8af31c7c3294b246f34040e5685c351e89f1c1edf6c64f93f7babd73d149951
+| Optakt | Consensus | f3b72c50794c29319f0f77f0c7d623662eb15253c291a5360d095a4ea282fadb
 | P2P | Verification | 78ef2e461a32df2278ae78baf7cf1a54fec3601fe4723a5833c49e1935dc4b7d
 | P2P | Consensus | 14faeb5538c8791827163074cd5fdbdcf70c44648a98d835c63ebb386d5c4745 
 | P2P | Collection | 79b43645fdf7c6597d8868b10c91d8cf343ab7d2cea0c98902d8f9456049918a

@@ -31,18 +31,8 @@ This guide will walk you through creating a Machine Account and getting it set u
   have been significant changes to it.
 </Callout>
 
-```shell
-curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
-tar -xvf boot-tools.tar
-```
-
-```shell:title=CheckSHA256
-sha256sum ./boot-tools/bootstrap
-0416f48da878716878c087233c88206d68cff961bc827c40538655045e0b47e4  ./boot-tools/bootstrap
-
-sha256sum ./boot-tools/transit
-8aa66a35375d714f21c757a8531dafed5713a031985f67cd6268522ff4ea4b90  ./boot-tools/transit
-```
+Follow the instructions [here](/node-operation/node-bootstrap/#download-the-bootstrapping-kit)
+to download the latest version of the bootstrapping kit, then return to this page.
 
 ## Generate Machine Account key
 
@@ -68,6 +58,7 @@ $tree ./bootstrap/
 │   └── private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9
 │       ├── node-info.priv.json
 │       └── node-machine-account-key.priv.json
+│       └── secretsdb-key
 └── public-root-information
     ├── node-id
     └── node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
@@ -108,6 +99,7 @@ $tree ./bootstrap/
 │       ├── node-info.priv.json
 │       ├── node-machine-account-info.priv.json
 │       └── node-machine-account-key.priv.json
+│       └── secretsdb-key
 └── public-root-information
     ├── node-id
     └── node-info.pub.d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160.json

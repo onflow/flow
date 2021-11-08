@@ -15,12 +15,12 @@ import PageHeader from "../page-header";
 
 const StyledContentWrapper = styled(ContentWrapper)({
   paddingBottom: 0,
-  maxWidth: 1280,
+  maxWidth: 1280
 });
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
-  components,
+  components
 }).Compiler;
 
 export default function BaseTemplate(props) {
@@ -35,7 +35,7 @@ export default function BaseTemplate(props) {
     discordUrl,
     discourseUrl,
     twitterUrl,
-    baseUrl,
+    baseUrl
   } = props.pageContext;
 
   const allHeadings = headings.concat(props.extraHeadings || []);
@@ -53,7 +53,7 @@ export default function BaseTemplate(props) {
         baseUrl={baseUrl}
         image={fields.image}
         twitterUrl={twitterUrl}
-        twitterHandle={"@flow_blockchain"}
+        twitterHandle={"flow_blockchain"}
       />
       <StyledContentWrapper>
         <PageHeader {...frontmatter} />
@@ -85,5 +85,5 @@ export default function BaseTemplate(props) {
 BaseTemplate.propTypes = {
   data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
