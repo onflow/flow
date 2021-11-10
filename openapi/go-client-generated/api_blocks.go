@@ -201,6 +201,9 @@ func (a *BlocksApiService) BlocksIdGet(ctx context.Context, id []string, localVa
 	if len(id) < 1 {
 		return localVarReturnValue, nil, reportError("id must have at least 1 elements")
 	}
+	if len(id) > 50 {
+		return localVarReturnValue, nil, reportError("id must have less than 50 elements")
+	}
 
 	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
 		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))

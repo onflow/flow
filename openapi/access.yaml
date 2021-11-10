@@ -71,6 +71,7 @@ paths:
             items:
               $ref: '#/components/schemas/Identifier'
             minItems: 1
+            maxItems: 50
             uniqueItems: true
           explode: true
           required: true
