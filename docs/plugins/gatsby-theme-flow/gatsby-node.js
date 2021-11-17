@@ -37,7 +37,7 @@ exports.onCreateNode = async function(
     actions.createNodeField({
       name: "image",
       node,
-      value: `https://flow-docs-og-image.vercel.app/**${title}**.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fstorage.googleapis.com%2Fflow-resources%2Fdocumentation-assets%2Fflow-docs.svg&widths=auto&heights=350`
+      value: `https://flow-docs-og-image.vercel.app/**${title}**.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fstorage.googleapis.com%2Fflow-resources%2Fdocumentation-assets%2Fflow-docs.png&widths=auto&heights=350`
     });
 
     https: actions.createNodeField({

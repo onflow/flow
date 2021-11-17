@@ -51,7 +51,7 @@ To ensure that Flow Mainnet works well for everyone in the early days, all smart
 
 **To submit your contract for review, use this: [Contract Review Submission Form](https://flowsolutionseng.zendesk.com/hc/en-us/requests/new?ticket_form_id=360001936012&tc_360045236671=b5ba92954c2f2692b56099fe653ac92d35c1e6e6)**
 
-Once your contract has been submitted for review a member of the reviewing team will contact you and discuss how long the review might take. The timeliness of the review process will be different for every project.
+Once your contract has been submitted for review a member of the reviewing team will contact you and discuss how long the review might take. The timeliness of the review process will be different for every project, though the minimum timeline is usually 2-3 weeks.
 
 ### Deployment Process
 

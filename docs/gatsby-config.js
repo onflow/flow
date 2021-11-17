@@ -102,7 +102,7 @@ const sourceGithubRepos = {
     path: "docs"
   },
   "flow-go-sdk-github": {
-    githubRepo: "onflow/flow-cli",
+    githubRepo: "onflow/flow-go-sdk",
     // NOTE: path is empty, whole repo is sourced
     path: ""
   },
@@ -120,15 +120,12 @@ const sourceSlugTransformers = {
     slug
       .replace(/^\/docs\//, "/fcl/")
       .replace(/^\/packages\//, "/fcl/packages/"),
-  // Use api.md as 'index' file!
-  // .replace("api/", ""),
-  // .replace("README/", ""),
+
   "flow-go-sdk-github": (slug) =>
     slug
       .replace(/^\/docs\//, "/flow-go-sdk/")
-      .replace(/^\/examples\//, "/flow-go-sdk/examples/")
-      // Use README files as 'index' files!
-      .replace("README/", ""),
+      .replace(/^\/examples\//, "/flow-go-sdk/examples/"),
+   
   "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/"),
   "flow-js-testing-github": (slug) =>
     slug.replace(/^\/docs\//, "/flow-js-testing/"),
@@ -162,7 +159,7 @@ const sources = [
     options: {
       name: "cadence-github",
       remote: "https://github.com/onflow/cadence.git",
-      patterns: "docs/language/**/*"
+      patterns: "docs/**/*"
     }
   },
   {
@@ -303,30 +300,33 @@ const sections = [
     }
   },
   {
-    sourceInstanceName: "docs",
-    patterns: ["cadence/**/*"],
+    sourceInstanceName: "cadence-github",
+    patterns: ["docs/*.(md|mdx|png)", "docs/tutorial/**/*.(md|mdx|png)"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
       Overview: ["[Cadence Language Reference](/cadence/language/)"],
       "Developer Guides": [
         "[Introduction to Cadence](/cadence)",
-        "cadence/design-patterns",
-        "cadence/anti-patterns",
-        "cadence/msg-sender",
-        "cadence/measuring-time",
-        "cadence/migration-guide",
-        "cadence/json-cadence-spec"
+        "docs/design-patterns",
+        "docs/contract-upgrades",
+        "docs/anti-patterns",
+        "docs/msg-sender",
+        "docs/measuring-time",
+        "docs/subtyping",
+        "docs/migration-guide",
+        "docs/json-cadence-spec",
+        "docs/syntax-highlighting"
       ],
       Tutorial: [
-        "cadence/tutorial/01-first-steps",
-        "cadence/tutorial/02-hello-world",
-        "cadence/tutorial/03-fungible-tokens",
-        "cadence/tutorial/04-non-fungible-tokens",
-        "cadence/tutorial/05-marketplace-setup",
-        "cadence/tutorial/06-marketplace-compose",
-        "cadence/tutorial/07-resources-compose",
-        "cadence/tutorial/08-voting"
+        "docs/tutorial/01-first-steps",
+        "docs/tutorial/02-hello-world",
+        "docs/tutorial/03-fungible-tokens",
+        "docs/tutorial/04-non-fungible-tokens",
+        "docs/tutorial/05-marketplace-setup",
+        "docs/tutorial/06-marketplace-compose",
+        "docs/tutorial/07-resources-compose",
+        "docs/tutorial/08-voting"
       ]
     }
   },
@@ -428,19 +428,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["[Introduction](/flow-go-sdk)"],
-      Examples: [
-        "docs/generating-keys",
-        "docs/creating-accounts",
-        "docs/building-transactions",
-        "docs/signing-transactions",
-        "docs/sending-transactions",
-        "docs/querying-accounts",
-        "docs/querying-transactions",
-        "docs/querying-events",
-        "docs/querying-blocks",
-        "docs/transfer-flow"
-      ]
+      Overview: ["[Introduction](/flow-go-sdk)"]
     }
   },
   {
@@ -464,7 +452,7 @@ const sections = [
       ],
       "Guides and Tutorials": [
         "[Introducing @onflow/fcl](/fcl)",
-        "[Flow App Quickstart](/fcl/tutorials/flow-app-quickstart)"
+        "docs/tutorials/flow-app-quickstart"
       ]
     }
   },
@@ -638,6 +626,7 @@ const sections = [
         "docs/language/contracts",
         "docs/language/contract-updatability",
         "docs/language/events",
+        "docs/language/core-events",
         "docs/language/transactions",
         "docs/language/run-time-types",
         "docs/language/built-in-functions",
