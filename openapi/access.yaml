@@ -492,7 +492,7 @@ components:
         transactions:
           type: array
           items:
-            $ref: '#/components/schemas/Transaction'
+            $ref: '#/components/schemas/Identifier'
         _links:
           $ref: '#/components/schemas/Links'
     Transaction:
@@ -814,6 +814,9 @@ components:
           type: string
     Links:
       type: object
+      poperties:
+        _self:
+          type: string
   responses:
     400BadRequest:
       description: Bad Request
