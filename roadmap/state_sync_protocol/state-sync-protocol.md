@@ -17,7 +17,7 @@ At the moment, the [Access API](/docs/content/access-api.md) contains a few meth
 
 Ideally, Access nodes would be able to serve such requests from their own local state to avoid introducing additional traffic and putting excessive load on nodes within the network. To do this, they need the ability to maintain an up-to-date copy of the execution state and all transaction data.
 
-The [Flow DPS](https://github.com/optakt/flow-dps) has been an important first step in this direction, providing a scalable and efficient way to access the history of the Flow execution state. It reads the protocol state by following block proposals via the [`ConsensusFollower`](https://github.com/onflow/flow-go/blob/master/follower/consensus_follower.go) library, and reads the execution-related data from records written to a Google Cloud Storage bucket by an Execution node. Going forward, we will want to incorporate this functionality into the Access node itself.
+The [Flow Data Provisioning Service (DPS)](https://github.com/optakt/flow-dps) has been an important first step in this direction, providing a scalable and efficient way to access the history of the Flow execution state. It reads the protocol state by following block proposals via the [`ConsensusFollower`](https://github.com/onflow/flow-go/blob/master/follower/consensus_follower.go) library, and reads the execution-related data from records written to a Google Cloud Storage bucket by an Execution node. Going forward, we will want to incorporate this functionality into the Access node itself.
 
 ## Objective
 
@@ -39,7 +39,7 @@ Bitswap functions with a few fundamental concepts:
 
 The full details of the Bitswap protocol can be found [here](https://research.protocol.ai/publications/accelerating-content-routing-with-bitswap-a-multi-path-file-transfer-protocol-in-ipfs-and-filecoin/delarocha2021.pdf).
 
-> To avoid conflicting terminology, we will henceforth refer to blocks in Bitswap as *blobs*.
+> **Note:** To avoid conflicting terminology, we will henceforth refer to blocks in Bitswap as *blobs*.
 
 ### State Computation
 
@@ -58,9 +58,9 @@ They will then serialize each of these fields separately<sup>[1](#footnotes)</su
 
 1. Split the data into blobs of up to 1MB (the message size limit of the [underlying networking stack](https://docs.ipfs.io/concepts/libp2p/)).
 2. Compute the CID of each blob and store it in the blobstore.
-3. If the number of CIDs computed in the previous step is 1, then return this CID. Otherwise, concatenate the CIDs and repeat from step 1<sup>[2](#footnotes)</sup>.
+3. If the number of CIDs computed in the previous step is 1, then return this CID. Otherwise, serialize the CID list and repeat from step 1 with the new serialized data<sup>[2](#footnotes)</sup>.
 
-**[INSERT DIAGRAM HERE]**
+![Execution Data Blob Tree](blob-tree.jpeg)
 
 At the end of this process, we are left with four root CIDs (one for each field in the Execution Data). These will be included in an [Execution Result](https://github.com/onflow/flow-go/blob/master/model/flow/execution_result.go) from which an [Execution Receipt](https://github.com/onflow/flow-go/blob/master/model/flow/execution_receipt.go) is generated and later broadcast to the network.
 
@@ -105,7 +105,7 @@ Once an Access node downloads the Execution Data using the CIDs in an Execution 
 
 If an Access node finds that any of the downloaded objects do not have the correct hash, then the Execution node must have put an incorrect CID in their Execution Result and should be slashed.
 
-> There is a Verifier's Dilemma here which needs to be addressed. We will not go into the details of how to solve this here.
+> **Note:** There is a Verifier's Dilemma here which needs to be addressed. We will not go into the details of how to solve this here.
 
 #### Verification Nodes as Verifiers
 
