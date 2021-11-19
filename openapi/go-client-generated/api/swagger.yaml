@@ -599,7 +599,8 @@ components:
       example:
         address: address
         balance: 0
-        _links: {}
+        _links:
+          _self: _self
         keys:
         - public_key: public_key
           sequence_number: 1
@@ -682,103 +683,16 @@ components:
         transactions:
           type: array
           items:
-            $ref: '#/components/schemas/Transaction'
+            $ref: '#/components/schemas/Identifier'
         _links:
           $ref: '#/components/schemas/Links'
       example:
-        _links: {}
+        _links:
+          _self: _self
         id: id
         transactions:
-        - payer: payer
-          script: ""
-          result:
-            error_message: error_message
-            _links: {}
-            _expandable:
-              events: events
-            computation_used: 2
-            events:
-            - payload: ""
-              transaction_index: 6
-              type: type
-              event_index: 1
-            - payload: ""
-              transaction_index: 6
-              type: type
-              event_index: 1
-            status: Pending
-          envelope_signatures:
-          - null
-          - null
-          gas_limit: 0
-          payload_signatures:
-          - signature: ""
-            key_index: 5
-            signer_index: 5
-          - signature: ""
-            key_index: 5
-            signer_index: 5
-          arguments:
-          - ""
-          - ""
-          id: id
-          authorizers:
-          - null
-          - null
-          _expandable:
-            result: http://example.com/aeiou
-            envelope_signatures: envelope_signatures
-            payload_signatures: payload_signatures
-            authorizers: authorizers
-            proposal_key: proposal_key
-          proposal_key:
-            sequence_number: 1
-            key_index: 6
-        - payer: payer
-          script: ""
-          result:
-            error_message: error_message
-            _links: {}
-            _expandable:
-              events: events
-            computation_used: 2
-            events:
-            - payload: ""
-              transaction_index: 6
-              type: type
-              event_index: 1
-            - payload: ""
-              transaction_index: 6
-              type: type
-              event_index: 1
-            status: Pending
-          envelope_signatures:
-          - null
-          - null
-          gas_limit: 0
-          payload_signatures:
-          - signature: ""
-            key_index: 5
-            signer_index: 5
-          - signature: ""
-            key_index: 5
-            signer_index: 5
-          arguments:
-          - ""
-          - ""
-          id: id
-          authorizers:
-          - null
-          - null
-          _expandable:
-            result: http://example.com/aeiou
-            envelope_signatures: envelope_signatures
-            payload_signatures: payload_signatures
-            authorizers: authorizers
-            proposal_key: proposal_key
-          proposal_key:
-            sequence_number: 1
-            key_index: 6
+        - null
+        - null
     Transaction:
       required:
       - arguments
@@ -827,20 +741,26 @@ components:
         _links:
           $ref: '#/components/schemas/Links'
       example:
+        _links: null
+        reference_block_id: null
         payer: payer
         script: ""
         result:
           error_message: error_message
-          _links: {}
+          _links:
+            _self: _self
           _expandable:
             events: events
+          block_id: null
           computation_used: 2
           events:
-          - payload: ""
+          - transaction_id: null
+            payload: ""
             transaction_index: 6
             type: type
             event_index: 1
-          - payload: ""
+          - transaction_id: null
+            payload: ""
             transaction_index: 6
             type: type
             event_index: 1
@@ -850,10 +770,12 @@ components:
         - null
         gas_limit: 0
         payload_signatures:
-        - signature: ""
+        - address: null
+          signature: ""
           key_index: 5
           signer_index: 5
-        - signature: ""
+        - address: null
+          signature: ""
           key_index: 5
           signer_index: 5
         arguments:
@@ -871,6 +793,7 @@ components:
           proposal_key: proposal_key
         proposal_key:
           sequence_number: 1
+          address: null
           key_index: 6
     ProposalKey:
       required:
@@ -889,6 +812,7 @@ components:
           format: uint64
       example:
         sequence_number: 1
+        address: null
         key_index: 6
     TransactionSignature:
       required:
@@ -909,6 +833,7 @@ components:
         signature:
           $ref: '#/components/schemas/Signature'
       example:
+        address: null
         signature: ""
         key_index: 5
         signer_index: 5
@@ -939,16 +864,20 @@ components:
           $ref: '#/components/schemas/Links'
       example:
         error_message: error_message
-        _links: {}
+        _links:
+          _self: _self
         _expandable:
           events: events
+        block_id: null
         computation_used: 2
         events:
-        - payload: ""
+        - transaction_id: null
+          payload: ""
           transaction_index: 6
           type: type
           event_index: 1
-        - payload: ""
+        - transaction_id: null
+          payload: ""
           transaction_index: 6
           type: type
           event_index: 1
@@ -979,14 +908,19 @@ components:
       example:
         payload:
           collection_guarantees:
-          - signer_ids:
+          - collection_id: null
+            signer_ids:
             - null
             - null
-          - signer_ids:
+            signature: null
+          - collection_id: null
+            signer_ids:
             - null
             - null
+            signature: null
           block_seals:
-          - final_state: final_state
+          - result_id: null
+            final_state: final_state
             aggregated_approval_signatures:
             - verifier_signatures:
               - null
@@ -1000,7 +934,9 @@ components:
               signer_ids:
               - null
               - null
-          - final_state: final_state
+            block_id: null
+          - result_id: null
+            final_state: final_state
             aggregated_approval_signatures:
             - verifier_signatures:
               - null
@@ -1014,19 +950,27 @@ components:
               signer_ids:
               - null
               - null
+            block_id: null
+        _links: null
         header:
+          parent_id: null
           id: id
           parent_voter_signature: ""
           height: 0
-          timestamp: 2000-01-23T04:56:07.000Z
+          timestamp: 2000-01-23T04:56:07.000+00:00
         execution_result:
-          _links: {}
+          _links:
+            _self: _self
+          id: null
+          block_id: null
           events:
-          - payload: ""
+          - transaction_id: null
+            payload: ""
             transaction_index: 6
             type: type
             event_index: 1
-          - payload: ""
+          - transaction_id: null
+            payload: ""
             transaction_index: 6
             type: type
             event_index: 1
@@ -1055,10 +999,11 @@ components:
         parent_voter_signature:
           $ref: '#/components/schemas/Signature'
       example:
+        parent_id: null
         id: id
         parent_voter_signature: ""
         height: 0
-        timestamp: 2000-01-23T04:56:07.000Z
+        timestamp: 2000-01-23T04:56:07.000+00:00
     BlockPayload:
       required:
       - block_seals
@@ -1077,14 +1022,19 @@ components:
             $ref: '#/components/schemas/BlockSeal'
       example:
         collection_guarantees:
-        - signer_ids:
+        - collection_id: null
+          signer_ids:
           - null
           - null
-        - signer_ids:
+          signature: null
+        - collection_id: null
+          signer_ids:
           - null
           - null
+          signature: null
         block_seals:
-        - final_state: final_state
+        - result_id: null
+          final_state: final_state
           aggregated_approval_signatures:
           - verifier_signatures:
             - null
@@ -1098,7 +1048,9 @@ components:
             signer_ids:
             - null
             - null
-        - final_state: final_state
+          block_id: null
+        - result_id: null
+          final_state: final_state
           aggregated_approval_signatures:
           - verifier_signatures:
             - null
@@ -1112,6 +1064,7 @@ components:
             signer_ids:
             - null
             - null
+          block_id: null
     CollectionGuarantee:
       required:
       - collection_id
@@ -1130,9 +1083,11 @@ components:
         signature:
           $ref: '#/components/schemas/Signature'
       example:
+        collection_id: null
         signer_ids:
         - null
         - null
+        signature: null
     BlockSeal:
       required:
       - aggregated_approval_signatures
@@ -1154,6 +1109,7 @@ components:
           items:
             $ref: '#/components/schemas/AggregatedSignature'
       example:
+        result_id: null
         final_state: final_state
         aggregated_approval_signatures:
         - verifier_signatures:
@@ -1168,6 +1124,7 @@ components:
           signer_ids:
           - null
           - null
+        block_id: null
     StateCommitment:
       pattern: "[a-fA-F0-9]{64}"
       type: string
@@ -1216,13 +1173,18 @@ components:
         _links:
           $ref: '#/components/schemas/Links'
       example:
-        _links: {}
+        _links:
+          _self: _self
+        id: null
+        block_id: null
         events:
-        - payload: ""
+        - transaction_id: null
+          payload: ""
           transaction_index: 6
           type: type
           event_index: 1
-        - payload: ""
+        - transaction_id: null
+          payload: ""
           transaction_index: 6
           type: type
           event_index: 1
@@ -1249,6 +1211,7 @@ components:
           type: string
           format: byte
       example:
+        transaction_id: null
         payload: ""
         transaction_index: 6
         type: type
@@ -1287,6 +1250,11 @@ components:
           type: string
     Links:
       type: object
+      properties:
+        _self:
+          type: string
+      example:
+        _self: _self
     transactions_body:
       required:
       - arguments

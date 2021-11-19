@@ -9,4 +9,5 @@
 package swagger
 
 type Links struct {
+	Self string `json:"_self,omitempty"`
 }
