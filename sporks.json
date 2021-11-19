@@ -577,10 +577,10 @@
       "git-commit-hash": "f019c1dbd778ce9f92dea61349ca36003678a9ad",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "https://storage.googleapis.com/flow_public_devnet31_execution_state"
+          "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-30-execution/public-root-information/root.checkpoint",
+          "root-protocol-state-snapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-30-execution/public-root-information/root-protocol-state-snapshot.json",
+          "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-30-execution/public-root-information/node-infos.pub.json",
+          "execution-state-wal-chunks": "https://storage.googleapis.com/flow_public_devnet30_execution_state"
         },
         "s3": {
           "root-checkpoint-file": "N/A",
