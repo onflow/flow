@@ -70,7 +70,7 @@ Each time an Access node receives a new Execution Receipt, it will initiate a Bi
 
 In order to preserve the bandwidth of Execution nodes, who are the only creators of new data, their Bitswap implementation will be configured with custom request prioritization logic so that queries for the Execution Data of newer blocks are answered first. The expectation here is that as new blocks are executed, the likelihood that requests for older Execution Data are answered by Access nodes (rather than Execution nodes) will increase. Execution nodes will also implement an expiration policy so that the Execution Data for blocks older than a certain threshold are purged entirely, leaving Access nodes with the full responsibility of providing this data to new nodes joining the network.
 
-**[INSERT DIAGRAM HERE]**
+![Execution Data Fanout](data-fanout.jpeg)
 
 > There is a [data availability problem](https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding#what-is-the-data-availability-problem) here, where Execution nodes could ignore Bitswap requests and refuse to send any data to Access nodes. It may be possible to solve this using similar techniques as those described in [Sharding](#sharding).
 
