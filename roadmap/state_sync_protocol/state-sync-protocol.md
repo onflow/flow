@@ -4,7 +4,7 @@
 
 Today, Access nodes act as the gateway to the Flow network, providing a query endpoint for users (REST, gRPC) and performing important admission control duties such as:
 * Rate limiting of requests (script executions, Collection requests, account queries, etc.)
-* Basic validation, preventing bad transactions from entering the network
+* Basic validation, proving a first level of filtering to prevent bad transactions from entering the network
 
 Execution nodes and Collection nodes currently still expose public APIs, vestiges of an earlier version of the protocol in which Access nodes had not yet been introduced. However, allowing users to bypass the Access layer and make direct requests to these nodes not only dilutes the valuable resources which should be reserved for performing tasks crucial to the protocol (especially in the case of Execution nodes), but it also leaves them at risk of denial-of-service attacks. Going forward, in order to protect the other staked nodes of the network, the Access layer will become the *only* way for users to interact with the network.
 
@@ -109,11 +109,14 @@ If an Access node finds that any of the downloaded objects do not have the corre
 
 #### Verification Nodes as Verifiers
 
-Since Verification nodes are each responsible for only a subset of the Chunks within a block, Execution nodes will need to compute Execution Data and CIDs for each individual Chunk. Once Verification nodes have the [Chunk Data Pack](https://github.com/onflow/flow-go/blob/e73e19a87860f470053b6a8b624d3dcd43ad23bf/model/flow/chunk.go#L40), they can reproduce the CIDs and check that they are correct.
+Instead of generating a single ExecutionData per block and creating a root CID(s) for that single ExecutionData, the Execution nodes would instead create a separate ExecutionData for each chunk. Therefore, instead of just one set of root CID's in the ExecutionResult, there would be numberOfChunks sets of root CID's.
+
+
+Each Verification node is only responsible for a subset of the Chunks within a block. Therefore, instead of generating a single Execution Data per block, Execution nodes would instead need to generate an Execution Data and root CID for each individual Chunk and include all of these root CIDs in the Execution Result. Once Verification nodes have the [Chunk Data Pack](https://github.com/onflow/flow-go/blob/e73e19a87860f470053b6a8b624d3dcd43ad23bf/model/flow/chunk.go#L40), they can recompute the Execution Data and root CID for a Chunk and check that it is correct.
 
 ## Requirements and Rewards
 
-The Access node goes from being an optional node serving as a proxy, to being a relayer of state information. It should correspondingly offer SLAs on state re-transmissions and get rewarded for it.
+The Access node goes from being an optional node serving as a proxy, to being a relayer of execution state information. It should correspondingly offer SLAs on state re-transmissions and get rewarded for it.
 
 ### Memory / Storage Estimate
 
