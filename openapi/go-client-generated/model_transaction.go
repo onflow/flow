@@ -15,10 +15,10 @@ type Transaction struct {
 	ReferenceBlockId string `json:"reference_block_id"`
 	GasLimit int32 `json:"gas_limit"`
 	Payer string `json:"payer"`
-	ProposalKey *ProposalKey `json:"proposal_key,omitempty"`
-	Authorizers []string `json:"authorizers,omitempty"`
-	PayloadSignatures []TransactionSignature `json:"payload_signatures,omitempty"`
-	EnvelopeSignatures []TransactionSignature `json:"envelope_signatures,omitempty"`
+	ProposalKey *ProposalKey `json:"proposal_key"`
+	Authorizers []string `json:"authorizers"`
+	PayloadSignatures []TransactionSignature `json:"payload_signatures"`
+	EnvelopeSignatures []TransactionSignature `json:"envelope_signatures"`
 	Result *TransactionResult `json:"result,omitempty"`
 	Expandable *TransactionExpandable `json:"_expandable,omitempty"`
 	Links *Links `json:"_links,omitempty"`

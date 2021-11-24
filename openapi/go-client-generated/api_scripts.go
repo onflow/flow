@@ -25,7 +25,7 @@ var (
 
 type ScriptsApiService service
 /*
-ScriptsApiService Executes a read-only Cadence script against the execution state at the given block height or ID.
+ScriptsApiService Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block height.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The script to execute.
  * @param optional nil or *ScriptsApiScriptsPostOpts - Optional Parameters:
