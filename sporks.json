@@ -25,7 +25,7 @@
       "flow-dps-tag": "0.1",
       "cadence-tag": "",
       "docker-tag": "v0.22.9-patch-1-epoch-view-check-hotfix",
-      "access-node": "access.mainnet.nodes.onflow.org:9000"
+      "access-node": "access-001.mainnet14.nodes.onflow.org:9000"
     },
     {
       "spork-id": "Mainnet-13",
