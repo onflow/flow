@@ -15,15 +15,15 @@
           "execution-state-wal-chunks": "https://storage.googleapis.com/flow_public_mainnet14_execution_state"
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.22.9-patch-1-epoch-view-check-hotfix",
       "flow-dps-tag": "0.1",
-      "cadence-tag": "N/A",
+      "cadence-tag": "",
       "docker-tag": "v0.22.9-patch-1-epoch-view-check-hotfix",
       "access-node": "access.mainnet.nodes.onflow.org:9000"
     },
@@ -42,15 +42,15 @@
           "execution-state-wal-chunks": "https://storage.googleapis.com/flow_public_mainnet13_execution_state"
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.21.3",
       "flow-dps-tag": "0.1",
-      "cadence-tag": "N/A",
+      "cadence-tag": "",
       "docker-tag": "v0.21.3",
       "access-node": "access-001.mainnet13.nodes.onflow.org:9000"
     },
@@ -66,18 +66,18 @@
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-12-execution/public-root-information/root.checkpoint",
           "root-protocol-state-snapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-12-execution/public-root-information/root-protocol-state-snapshot.json",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-12-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.20.5",
       "flow-dps-tag": "0.1",
-      "cadence-tag": "N/A",
+      "cadence-tag": "",
       "docker-tag": "v0.20.5",
       "access-node": "access-001.mainnet12.nodes.onflow.org:9000"
     },
@@ -93,18 +93,18 @@
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-11-execution/public-root-information/root.checkpoint",
           "root-protocol-state-snapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-11-execution/public-root-information/root-protocol-state-snapshot.json",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-11-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.19.2",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.19.2",
       "access-node": "access-001.mainnet11.nodes.onflow.org:9000"
     },
@@ -120,18 +120,18 @@
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-10-execution/public-root-information/root.checkpoint",
           "root-protocol-state-snapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-10-execution/public-root-information/root-protocol-state-snapshot.json",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-10-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.18.4",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.18.4",
       "access-node": "access-001.mainnet10.nodes.onflow.org:9000"
     },
@@ -147,18 +147,18 @@
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-9-execution/public-root-information/root.checkpoint",
           "root-protocol-state-snapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-9-execution/public-root-information/root-protocol-state-snapshot.json",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-9-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.17.4",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.17.4",
       "access-node": "access-001.mainnet9.nodes.onflow.org:9000"
     },
@@ -174,18 +174,18 @@
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-8-execution/public-root-information/root.checkpoint",
           "root-protocol-state-snapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-8-execution/public-root-information/root-protocol-state-snapshot.json",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-8-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.16.2",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.16.2",
       "access-node": "access-001.mainnet8.nodes.onflow.org:9000"
     },
@@ -201,18 +201,18 @@
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-7-execution/public-root-information/root.checkpoint",
           "root-protocol-state-snapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-7-execution/public-root-information/root-protocol-state-snapshot.json",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-7-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.15.3-patch.4",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.15.3-patch.4",
       "access-node": "access-001.mainnet7.nodes.onflow.org:9000"
     },
@@ -226,20 +226,20 @@
       "state-artefacts" : {
         "gcp": {
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-6-execution/public-root-information/root.checkpoint",
-          "root-protocol-state-snapshot": "N/A",
+          "root-protocol-state-snapshot": "",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-6-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.14.9",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.14.9",
       "access-node": "access-001.mainnet7.nodes.onflow.org:9000"
     },
@@ -253,20 +253,20 @@
       "state-artefacts" : {
         "gcp": {
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-5-execution/public-root-information/root.checkpoint",
-          "root-protocol-state-snapshot": "N/A",
+          "root-protocol-state-snapshot": "",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-6-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.14.1",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.14.1",
       "access-node": "access-001.mainnet5.nodes.onflow.org:9000"
     },
@@ -280,20 +280,20 @@
       "state-artefacts" : {
         "gcp": {
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-4-execution/public-root-information/root.checkpoint",
-          "root-protocol-state-snapshot": "N/A",
+          "root-protocol-state-snapshot": "",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-4-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.13.1",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.13.1",
       "access-node": "access-001.mainnet4.nodes.onflow.org:9000"
     },
@@ -307,19 +307,19 @@
       "state-artefacts" : {
         "gcp": {
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-3-execution/public-root-information/root.checkpoint",
-          "root-protocol-state-snapshot": "N/A",
+          "root-protocol-state-snapshot": "",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-3-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.12.6",
-      "cadence-tag": "N/A",
+      "cadence-tag": "",
       "docker-tag": "v0.12.6",
       "access-node": "access-001.mainnet3.nodes.onflow.org:9000"
     },
@@ -333,20 +333,20 @@
       "state-artefacts" : {
         "gcp": {
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-2-execution/public-root-information/root.checkpoint",
-          "root-protocol-state-snapshot": "N/A",
+          "root-protocol-state-snapshot": "",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-2-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.11.1",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.11.1",
       "access-node": "access-001.mainnet2.nodes.onflow.org:9000"
     },
@@ -360,20 +360,20 @@
       "state-artefacts" : {
         "gcp": {
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-1-execution/public-root-information/root.checkpoint",
-          "root-protocol-state-snapshot": "N/A",
+          "root-protocol-state-snapshot": "",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-1-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.10.1",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.10.1",
       "access-node": "access-001.mainnet1.nodes.onflow.org:9000"
     },
@@ -383,26 +383,26 @@
       "root-height": "6483246",
       "root-parent-id": "9131733835702b0d6321088bddb4642a4964bb5c630440ccb0de47bdbc371d1a",
       "root-state-commit": "90c6f406f5d21880d525ad4702cb249509b85e7f745db2de67e9fe541a56da4c",
-      "git-commit-hash": "N/A",
+      "git-commit-hash": "",
       "state-artefacts" : {
         "gcp": {
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-9-execution/public-root-information/root.checkpoint",
-          "root-protocol-state-snapshot": "N/A",
+          "root-protocol-state-snapshot": "",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-9-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.9.3",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.9.3",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Candidate-8",
@@ -410,26 +410,26 @@
       "root-height": "4972987",
       "root-parent-id": "5bc2b0900a5138e39d9209a8fe32e14b3e5c884bd36d2a645620f746b7c8bd47",
       "root-state-commit": "6b9161a225b087a461ec95e710fdf4e73f6d6c9401ebf066207a021dced4ce5e",
-      "git-commit-hash": "N/A",
+      "git-commit-hash": "",
       "state-artefacts" : {
         "gcp": {
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-8-execution/public-root-information/root.checkpoint",
-          "root-protocol-state-snapshot": "N/A",
+          "root-protocol-state-snapshot": "",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-8-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.8.2",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
-      "docker-tag": "N/A",
-      "access-node": "N/A"
+      "flow-dps-tag": "",
+      "cadence-tag": "",
+      "docker-tag": "",
+      "access-node": ""
     },
     {
       "spork-id": "Candidate-7",
@@ -441,22 +441,22 @@
       "state-artefacts" : {
         "gcp": {
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-7-execution/public-root-information/root.checkpoint",
-          "root-protocol-state-snapshot": "N/A",
+          "root-protocol-state-snapshot": "",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-7-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "candidate7",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.7.2",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Candidate-6",
@@ -468,22 +468,22 @@
       "state-artefacts" : {
         "gcp": {
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-6-execution/public-root-information/root.checkpoint",
-          "root-protocol-state-snapshot": "N/A",
+          "root-protocol-state-snapshot": "",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-6-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Candidate-5",
@@ -495,22 +495,22 @@
       "state-artefacts" : {
         "gcp": {
           "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-5-execution/public-root-information/root.checkpoint",
-          "root-protocol-state-snapshot": "N/A",
+          "root-protocol-state-snapshot": "",
           "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-5-execution/public-root-information/node-infos.pub.json",
-          "execution-state-wal-chunks": "N/A"
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Candidate-4",
@@ -521,23 +521,23 @@
       "git-commit-hash": "b9b197280d6590576f1ef183bc3d04d41d6be587",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.9.3",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "",
-      "access-node": "N/A"
+      "access-node": ""
     }
   ],
   "testnet": [
@@ -556,17 +556,17 @@
           "execution-state-wal-chunks": "https://storage.googleapis.com/flow_public_devnet31_execution_state"
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.23-testnet",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.23.1",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Devnet30",
@@ -583,17 +583,17 @@
           "execution-state-wal-chunks": "https://storage.googleapis.com/flow_public_devnet30_execution_state"
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.22.8-patch-1-scripts-and-errors",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.22.8-patch-1-scripts-and-errors",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Devnet29",
@@ -604,23 +604,23 @@
       "git-commit-hash": "e1659aebc39b4a15c68112227fc8c32788a798b6",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.22.8",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.22.8",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Devnet28",
@@ -631,21 +631,21 @@
       "git-commit-hash": "a979f4d25a79630581f6b350ad26730d4012cad4",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.21.6",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.21.6",
       "access-node": "access-003.devnet28.nodes.onflow.org:3569"
     },
@@ -658,23 +658,23 @@
       "git-commit-hash": "4f903f1d45e6f8c997a60de47de62a74ede3c2e4",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.21.3",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.21.3",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Devnet26",
@@ -685,23 +685,23 @@
       "git-commit-hash": "781ec414b892e2ccf7034aa263b5b19d97f82031",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.20.4",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.20.4",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Devnet25",
@@ -712,23 +712,23 @@
       "git-commit-hash": "2644560c0562412a3c2209820be07f8f3f8b1846",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.19.2",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.19.2",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Devnet24",
@@ -739,23 +739,23 @@
       "git-commit-hash": "37d9ae7a309bf7d21063f57fce008d04828d4840",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.18.3",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.18.3",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Devnet23",
@@ -766,23 +766,23 @@
       "git-commit-hash": "fef838147fa70c94a254183e23e7e79f0d412ef6",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.17.3",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.17.3",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Devnet22",
@@ -793,23 +793,23 @@
       "git-commit-hash": "4e733ba2038512e9d80bcd955e67e88ba6e3ecf2",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.16.2",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.16.2",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Devnet21",
@@ -820,23 +820,23 @@
       "git-commit-hash": "8331b78d99eddea405076e3b6a7839ec5f6ea209",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.15.3-patch.1",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.15.3-patch.1",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Devnet20",
@@ -847,23 +847,23 @@
       "git-commit-hash": "b9b197280d6590576f1ef183bc3d04d41d6be587",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.14.19",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.14.19",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Devnet19",
@@ -874,23 +874,23 @@
       "git-commit-hash": "eb11ae095df6db6e856b1a8e824f03ce4c713b19",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.14.0",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.14.0",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Devnet18",
@@ -901,23 +901,23 @@
       "git-commit-hash": "115ccee9cae920ee5bc309537cf43a9b152a1cf9",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.13.0",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.13.0",
-      "access-node": "N/A"
+      "access-node": ""
     },
     {
       "spork-id": "Devnet17",
@@ -928,23 +928,23 @@
       "git-commit-hash": "ef54713595d0fe1e0bb4b14e9469c4a64dfaf6e7",
       "state-artefacts" : {
         "gcp": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         },
         "s3": {
-          "root-checkpoint-file": "N/A",
-          "root-protocol-state-snapshot": "N/A",
-          "node-info": "N/A",
-          "execution-state-wal-chunks": "N/A"
+          "root-checkpoint-file": "",
+          "root-protocol-state-snapshot": "",
+          "node-info": "",
+          "execution-state-wal-chunks": ""
         }
       },
       "flow-go-tag": "v0.12.1",
-      "flow-dps-tag": "N/A",
-      "cadence-tag": "N/A",
+      "flow-dps-tag": "",
+      "cadence-tag": "",
       "docker-tag": "v0.12.1",
-      "access-node": "N/A"
+      "access-node": ""
     }
   ]
 }
