@@ -523,7 +523,7 @@ paths:
       - Scripts
       summary: "Executes a read-only Cadence script against the execution state at\
         \ the given block height or ID. If block height or ID is not specified, then\
-        \ the script is executed at the latest sealed block."
+        \ the script is executed at the latest sealed block height."
       parameters:
       - name: block_id
         in: query
@@ -791,9 +791,13 @@ components:
     Transaction:
       required:
       - arguments
+      - authorizers
+      - envelope_signatures
       - gas_limit
       - id
       - payer
+      - payload_signatures
+      - proposal_key
       - reference_block_id
       - script
       type: object
@@ -931,6 +935,7 @@ components:
       - block_id
       - computation_used
       - error_message
+      - events
       - status
       type: object
       properties:
