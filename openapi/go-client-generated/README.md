@@ -27,7 +27,7 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**CollectionsIdGet**](docs/CollectionsApi.md#collectionsidget) | **Get** /collections/{id} | Gets a collection by ID.
 *ExecutionResultsApi* | [**ExecutionResultsGet**](docs/ExecutionResultsApi.md#executionresultsget) | **Get** /execution_results | Gets execution results by block ID.
 *ExecutionResultsApi* | [**ExecutionResultsIdGet**](docs/ExecutionResultsApi.md#executionresultsidget) | **Get** /execution_results/{id} | Gets an execution result by ID.
-*ScriptsApi* | [**ScriptsPost**](docs/ScriptsApi.md#scriptspost) | **Post** /scripts | Executes a read-only Cadence script against the execution state at the given block height or ID.
+*ScriptsApi* | [**ScriptsPost**](docs/ScriptsApi.md#scriptspost) | **Post** /scripts | Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block.
 *TransactionsApi* | [**TransactionResultsTransactionIdGet**](docs/TransactionsApi.md#transactionresultstransactionidget) | **Get** /transaction_results/{transaction_id} | Gets a transaction result by ID.
 *TransactionsApi* | [**TransactionsIdGet**](docs/TransactionsApi.md#transactionsidget) | **Get** /transactions/{id} | Gets a transaction by ID.
 *TransactionsApi* | [**TransactionsPost**](docs/TransactionsApi.md#transactionspost) | **Post** /transactions | Submits a transaction to the network.
@@ -59,7 +59,6 @@ Class | Method | HTTP request | Description
  - [Transaction](docs/Transaction.md)
  - [TransactionExpandable](docs/TransactionExpandable.md)
  - [TransactionResult](docs/TransactionResult.md)
- - [TransactionResultExpandable](docs/TransactionResultExpandable.md)
  - [TransactionSignature](docs/TransactionSignature.md)
  - [TransactionStatus](docs/TransactionStatus.md)
  - [TransactionsBody](docs/TransactionsBody.md)

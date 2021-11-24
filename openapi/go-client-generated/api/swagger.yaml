@@ -521,8 +521,9 @@ paths:
     post:
       tags:
       - Scripts
-      summary: Executes a read-only Cadence script against the execution state at
-        the given block height or ID.
+      summary: "Executes a read-only Cadence script against the execution state at\
+        \ the given block height or ID. If block height or ID is not specified, then\
+        \ the script is executed at the latest sealed block."
       parameters:
       - name: block_id
         in: query
@@ -683,7 +684,7 @@ components:
         transactions:
           type: array
           items:
-            $ref: '#/components/schemas/Identifier'
+            $ref: '#/components/schemas/Transaction'
         _links:
           $ref: '#/components/schemas/Links'
       example:
@@ -691,8 +692,102 @@ components:
           _self: _self
         id: id
         transactions:
-        - null
-        - null
+        - _links: null
+          reference_block_id: null
+          payer: payer
+          script: ""
+          result:
+            error_message: error_message
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: 2
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: 6
+              type: type
+              event_index: 1
+            - transaction_id: null
+              payload: ""
+              transaction_index: 6
+              type: type
+              event_index: 1
+            status: Pending
+          envelope_signatures:
+          - null
+          - null
+          gas_limit: 0
+          payload_signatures:
+          - address: null
+            signature: ""
+            key_index: 5
+            signer_index: 5
+          - address: null
+            signature: ""
+            key_index: 5
+            signer_index: 5
+          arguments:
+          - ""
+          - ""
+          id: id
+          authorizers:
+          - null
+          - null
+          _expandable:
+            result: http://example.com/aeiou
+          proposal_key:
+            sequence_number: 1
+            address: null
+            key_index: 6
+        - _links: null
+          reference_block_id: null
+          payer: payer
+          script: ""
+          result:
+            error_message: error_message
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: 2
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: 6
+              type: type
+              event_index: 1
+            - transaction_id: null
+              payload: ""
+              transaction_index: 6
+              type: type
+              event_index: 1
+            status: Pending
+          envelope_signatures:
+          - null
+          - null
+          gas_limit: 0
+          payload_signatures:
+          - address: null
+            signature: ""
+            key_index: 5
+            signer_index: 5
+          - address: null
+            signature: ""
+            key_index: 5
+            signer_index: 5
+          arguments:
+          - ""
+          - ""
+          id: id
+          authorizers:
+          - null
+          - null
+          _expandable:
+            result: http://example.com/aeiou
+          proposal_key:
+            sequence_number: 1
+            address: null
+            key_index: 6
     Transaction:
       required:
       - arguments
@@ -749,8 +844,6 @@ components:
           error_message: error_message
           _links:
             _self: _self
-          _expandable:
-            events: events
           block_id: null
           computation_used: 2
           events:
@@ -787,10 +880,6 @@ components:
         - null
         _expandable:
           result: http://example.com/aeiou
-          envelope_signatures: envelope_signatures
-          payload_signatures: payload_signatures
-          authorizers: authorizers
-          proposal_key: proposal_key
         proposal_key:
           sequence_number: 1
           address: null
@@ -858,16 +947,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
-        _expandable:
-          $ref: '#/components/schemas/TransactionResult__expandable'
         _links:
           $ref: '#/components/schemas/Links'
       example:
         error_message: error_message
         _links:
           _self: _self
-        _expandable:
-          events: events
         block_id: null
         computation_used: 2
         events:
@@ -1329,30 +1414,11 @@ components:
     Transaction__expandable:
       type: object
       properties:
-        proposal_key:
-          type: string
-        authorizers:
-          type: string
-        payload_signatures:
-          type: string
-        envelope_signatures:
-          type: string
         result:
           type: string
           format: uri
       example:
         result: http://example.com/aeiou
-        envelope_signatures: envelope_signatures
-        payload_signatures: payload_signatures
-        authorizers: authorizers
-        proposal_key: proposal_key
-    TransactionResult__expandable:
-      type: object
-      properties:
-        events:
-          type: string
-      example:
-        events: events
     Block__expandable:
       type: object
       properties:

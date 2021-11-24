@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **ErrorMessage** | **string** |  | [default to null]
 **ComputationUsed** | **int32** |  | [default to null]
 **Events** | [**[]Event**](Event.md) |  | [optional] [default to null]
-**Expandable** | [***TransactionResultExpandable**](TransactionResult__expandable.md) |  | [optional] [default to null]
 **Links** | [***Links**](Links.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

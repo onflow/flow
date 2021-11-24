@@ -331,7 +331,7 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /scripts:
     post:
-      summary: Executes a read-only Cadence script against the execution state at the given block height or ID.
+      summary: Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block.
       tags:
         - Scripts
       parameters:
@@ -541,14 +541,6 @@ components:
         _expandable:
           type: object
           properties:
-            proposal_key:
-              type: string
-            authorizers:
-              type: string
-            payload_signatures:
-              type: string
-            envelope_signatures:
-              type: string
             result:
               type: string
               format: uri
@@ -608,11 +600,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
-        _expandable:
-          type: object
-          properties:
-            events:
-              type: string
         _links:
           $ref: '#/components/schemas/Links'
     TransactionStatus:
