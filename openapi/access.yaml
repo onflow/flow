@@ -224,7 +224,7 @@ paths:
         - name: id
           in: path
           schema:
-            $ref: '#/components/schemas/Identifier'
+            $ref: '#/components/schemas/Transaction'
           required: true
           description: The ID of the collection to get.
       responses:
