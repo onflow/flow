@@ -331,7 +331,7 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /scripts:
     post:
-      summary: Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block.
+      summary: Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block height.
       tags:
         - Scripts
       parameters:
