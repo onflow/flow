@@ -504,6 +504,10 @@ components:
         - reference_block_id
         - gas_limit
         - payer
+        - proposal_key
+        - authorizers
+        - payload_signatures
+        - envelope_signatures
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -586,6 +590,7 @@ components:
         - status
         - error_message
         - computation_used
+        - events
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
