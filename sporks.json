@@ -23,7 +23,7 @@
       },
       "flow-go-tag": "v0.22.9-patch-1-epoch-view-check-hotfix",
       "flow-dps-tag": "0.1",
-      "cadence-tag": "",
+      "cadence-tag": "v0.19.1-0.20210920215340-75c54c6c01eb",
       "docker-tag": "v0.22.9-patch-1-epoch-view-check-hotfix",
       "access-node": "access-001.mainnet14.nodes.onflow.org:9000"
     },
@@ -50,7 +50,7 @@
       },
       "flow-go-tag": "v0.21.3",
       "flow-dps-tag": "0.1",
-      "cadence-tag": "",
+      "cadence-tag": "v0.19.1",
       "docker-tag": "v0.21.3",
       "access-node": "access-001.mainnet13.nodes.onflow.org:9000"
     },
@@ -77,7 +77,7 @@
       },
       "flow-go-tag": "v0.20.5",
       "flow-dps-tag": "0.1",
-      "cadence-tag": "",
+      "cadence-tag": "v0.18.1-0.20210715170431-cd7a7a483000",
       "docker-tag": "v0.20.5",
       "access-node": "access-001.mainnet12.nodes.onflow.org:9000"
     },
@@ -104,7 +104,7 @@
       },
       "flow-go-tag": "v0.19.2",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.18.1-0.20210624193306-81999eb7875b",
       "docker-tag": "v0.19.2",
       "access-node": "access-001.mainnet11.nodes.onflow.org:9000"
     },
@@ -131,7 +131,7 @@
       },
       "flow-go-tag": "v0.18.4",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.18.0",
       "docker-tag": "v0.18.4",
       "access-node": "access-001.mainnet10.nodes.onflow.org:9000"
     },
@@ -158,7 +158,7 @@
       },
       "flow-go-tag": "v0.17.4",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.16.1",
       "docker-tag": "v0.17.4",
       "access-node": "access-001.mainnet9.nodes.onflow.org:9000"
     },
@@ -185,7 +185,7 @@
       },
       "flow-go-tag": "v0.16.2",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.15.1-patch.1",
       "docker-tag": "v0.16.2",
       "access-node": "access-001.mainnet8.nodes.onflow.org:9000"
     },
@@ -212,7 +212,7 @@
       },
       "flow-go-tag": "v0.15.3-patch.4",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.14.4-fix-borrowing",
       "docker-tag": "v0.15.3-patch.4",
       "access-node": "access-001.mainnet7.nodes.onflow.org:9000"
     },
@@ -239,7 +239,7 @@
       },
       "flow-go-tag": "v0.14.9",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.13.5-no-id-caching",
       "docker-tag": "v0.14.9",
       "access-node": "access-001.mainnet7.nodes.onflow.org:9000"
     },
@@ -266,8 +266,9 @@
       },
       "flow-go-tag": "v0.14.1",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.12.11",
       "docker-tag": "v0.14.1",
+      "special-note": "Use v0.14.1 for Access, Verification, Collection nodes and v0.14.2 for Consensus and Execution nodes",
       "access-node": "access-001.mainnet5.nodes.onflow.org:9000"
     },
     {
@@ -293,7 +294,7 @@
       },
       "flow-go-tag": "v0.13.1",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.10.4",
       "docker-tag": "v0.13.1",
       "access-node": "access-001.mainnet4.nodes.onflow.org:9000"
     },
@@ -319,7 +320,8 @@
         }
       },
       "flow-go-tag": "v0.12.6",
-      "cadence-tag": "",
+      "flow-dps-tag": "",
+      "cadence-tag": "v0.10.2",
       "docker-tag": "v0.12.6",
       "access-node": "access-001.mainnet3.nodes.onflow.org:9000"
     },
@@ -346,7 +348,7 @@
       },
       "flow-go-tag": "v0.11.1",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.9.2",
       "docker-tag": "v0.11.1",
       "access-node": "access-001.mainnet2.nodes.onflow.org:9000"
     },
@@ -373,7 +375,7 @@
       },
       "flow-go-tag": "v0.10.1",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.9.2",
       "docker-tag": "v0.10.1",
       "access-node": "access-001.mainnet1.nodes.onflow.org:9000"
     },
@@ -400,7 +402,7 @@
       },
       "flow-go-tag": "v0.9.3",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.8.2",
       "docker-tag": "v0.9.3",
       "access-node": ""
     },
@@ -425,7 +427,7 @@
           "execution-state-wal-chunks": ""
         }
       },
-      "flow-go-tag": "v0.8.2",
+      "flow-go-tag": "",
       "flow-dps-tag": "",
       "cadence-tag": "",
       "docker-tag": "",
@@ -454,7 +456,7 @@
       },
       "flow-go-tag": "candidate7",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.8.0",
       "docker-tag": "v0.7.2",
       "access-node": ""
     },
@@ -533,7 +535,7 @@
           "execution-state-wal-chunks": ""
         }
       },
-      "flow-go-tag": "v0.9.3",
+      "flow-go-tag": "",
       "flow-dps-tag": "",
       "cadence-tag": "",
       "docker-tag": "",
@@ -564,7 +566,7 @@
       },
       "flow-go-tag": "v0.23-testnet",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.20.0-beta10",
       "docker-tag": "v0.23.1",
       "access-node": ""
     },
@@ -591,7 +593,7 @@
       },
       "flow-go-tag": "v0.22.8-patch-1-scripts-and-errors",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.20.0-beta8.0.20211004204216-1566e18e1291",
       "docker-tag": "v0.22.8-patch-1-scripts-and-errors",
       "access-node": ""
     },
@@ -618,7 +620,7 @@
       },
       "flow-go-tag": "v0.22.8",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.20.0-beta8.0.20211004204216-1566e18e1291",
       "docker-tag": "v0.22.8",
       "access-node": ""
     },
@@ -672,7 +674,7 @@
       },
       "flow-go-tag": "v0.21.3",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.19.1",
       "docker-tag": "v0.21.3",
       "access-node": ""
     },
@@ -699,7 +701,7 @@
       },
       "flow-go-tag": "v0.20.4",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.18.1-0.20210715170431-cd7a7a483000",
       "docker-tag": "v0.20.4",
       "access-node": ""
     },
@@ -726,7 +728,7 @@
       },
       "flow-go-tag": "v0.19.2",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.18.1-0.20210624193306-81999eb7875b",
       "docker-tag": "v0.19.2",
       "access-node": ""
     },
@@ -753,7 +755,7 @@
       },
       "flow-go-tag": "v0.18.3",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.18.0",
       "docker-tag": "v0.18.3",
       "access-node": ""
     },
@@ -780,7 +782,7 @@
       },
       "flow-go-tag": "v0.17.3",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.16.1",
       "docker-tag": "v0.17.3",
       "access-node": ""
     },
@@ -807,7 +809,7 @@
       },
       "flow-go-tag": "v0.16.2",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.15.1-patch.1",
       "docker-tag": "v0.16.2",
       "access-node": ""
     },
@@ -834,7 +836,7 @@
       },
       "flow-go-tag": "v0.15.3-patch.1",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.14.4-fix-borrowing",
       "docker-tag": "v0.15.3-patch.1",
       "access-node": ""
     },
@@ -861,7 +863,7 @@
       },
       "flow-go-tag": "v0.14.19",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.13.5-no-id-caching",
       "docker-tag": "v0.14.19",
       "access-node": ""
     },
@@ -888,7 +890,7 @@
       },
       "flow-go-tag": "v0.14.0",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.12.6",
       "docker-tag": "v0.14.0",
       "access-node": ""
     },
@@ -915,7 +917,7 @@
       },
       "flow-go-tag": "v0.13.0",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.10.4",
       "docker-tag": "v0.13.0",
       "access-node": ""
     },
@@ -942,7 +944,7 @@
       },
       "flow-go-tag": "v0.12.1",
       "flow-dps-tag": "",
-      "cadence-tag": "",
+      "cadence-tag": "v0.10.2",
       "docker-tag": "v0.12.1",
       "access-node": ""
     }
