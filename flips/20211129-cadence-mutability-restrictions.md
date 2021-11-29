@@ -181,7 +181,7 @@ Another approach would be to make `let` a true constant declaration, and forbid 
 while allowing `var` to be mutated in all the contexts it can be written. This, however, is likely too restrictive;
 a complex initialization for a dictionary or array value may benefit from the ability to iteratively mutate its contents,
 up to the point at which its value is finalized, and can thus be exported. As such we would like to still allow users
-to perform mutations in an limited context.
+to perform mutations in a limited context.
 
 A third approach would be to ban contract-level public field, with the idea that users cannot accidentally shoot 
 themselves in the foot by exporting a `pub let` field from their contract and having it be externally mutated 
