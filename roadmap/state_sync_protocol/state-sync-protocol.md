@@ -84,7 +84,7 @@ There are various reasons why a particular Execution Result may never end up bei
 
 As a result, Access nodes will need to keep track of all of the Execution Result IDs for each block height that they download the Execution Data for. When an Execution Result is sealed, they should purge the Execution Data for all conflicting Execution Result IDs from their blobstore<sup>[4](#footnotes)</sup>. If the Execution Data for the sealed Execution Result hasn't already been downloaded, they should initiate a new Bitswap session and begin downloading the data<sup>[5](#footnotes)</sup>.
 
-[Describe how we apply essentially the same architecture on the public network, between Access nodes and Full Observer nodes.]
+On the public network, the same architecture can be applied between Access nodes and Observer nodes.
 
 ### Verification
 
