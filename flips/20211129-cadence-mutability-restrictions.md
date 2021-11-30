@@ -63,21 +63,20 @@ contained within that scope.
 
 However, simply writing to a field directly is not the only way in which one can modify a value. Consider the following example:
 
-```
+```cadence
 pub struct Foo {
-    pub let x : [Int]
+    pub let x: [Int]
 
     init() {
-        self.x = [3];
+        self.x = [3]
     }
 }
 
 pub fun bar() {
     let foo = Foo()
     foo.x = [0] // writes to x, not allowed
-    foo.x[0] = 0; // does not write to x, also not allowed
+    foo.x[0] = 0 // does not write to x, also not allowed
 }
-```
 
 Cadence also restricts the scopes in which an array or dictionary field can be modified (or "mutated"). Examples of 
 mutating operations include an indexed assignment, as in the above example, as well as calls to the `append` or `remove`,
@@ -128,7 +127,7 @@ This change adds a new error, the `ExternalMutationError`, which is raised when 
 is mutated outside of the context in which it was defined. The error message will also
 suggest that the user instead use a setter or modifier method for that field.
 
-Specifically, the error is emitted whenever a user attempts to perform an 
+Specifically, the error is reported whenever a user attempts to perform an 
 index assignment on a member that is not either declared with the `pub(set)` 
 access mode, or is defined in the current enclosing scope. This check is the
 same one performed for writing to fields, with the difference that mutation 
