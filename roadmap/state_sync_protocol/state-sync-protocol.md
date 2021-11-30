@@ -6,7 +6,7 @@ Today, Access nodes act as the gateway to the Flow network, providing a query en
 * Rate limiting of requests (script executions, Collection requests, account queries, etc.)
 * Basic validation, proving a first level of filtering to prevent bad transactions from entering the network
 
-Execution nodes and Collection nodes currently still expose public APIs, vestiges of an earlier version of the protocol in which Access nodes had not yet been introduced. However, allowing users to bypass the Access layer and make direct requests to these nodes not only dilutes the valuable resources which should be reserved for performing tasks crucial to the protocol (especially in the case of Execution nodes), but it also leaves them at risk of denial-of-service attacks. Going forward, in order to protect the other staked nodes of the network, the Access layer will become the *only* way for users to interact with the network.
+Execution nodes and Collection nodes currently still expose public APIs, which are now mostly obsolete. Allowing users to bypass the Access layer and make direct requests to these nodes not only dilutes the valuable resources which should be reserved for performing tasks crucial to the protocol (especially in the case of Execution nodes), but it also leaves them at risk of denial-of-service attacks. Going forward, in order to protect the other staked nodes of the network, the Access layer will become the *only* way for users to interact with the network.
 
 At the moment, the [Access API](/docs/content/access-api.md) contains a few methods in particular that proxy requests behind the scenes to other nodes (possibly from previous sporks):
 
@@ -16,6 +16,8 @@ At the moment, the [Access API](/docs/content/access-api.md) contains a few meth
 * [`GetAccountAtLatestBlock`](/docs/content/access-api.md/#getaccountatlatestblock) / [`GetAccountAtBlockHeight`](/docs/content/access-api.md/#getaccountatblockheight) forwards the request to an Execution node and returns the response.
 
 Ideally, Access nodes would be able to serve such requests from their own local state to avoid introducing additional traffic and putting excessive load on nodes within the network. To do this, they need the ability to maintain an up-to-date copy of the execution state and all transaction data.
+
+It is important for network-external entities as well as network-internal nodes to be able to acquire a full copy of the execution state. This is important to remove load from the Execution nodes. Furthermore, due to their (intentionally) low number, entities other than the Execution nodes should be able to hold (and potentially archive) the full state to further decentralization.
 
 The [Flow Data Provisioning Service (DPS)](https://github.com/optakt/flow-dps) has been an important first step in this direction, providing a scalable and efficient way to access the history of the Flow execution state. It reads the protocol state by following block proposals via the [`ConsensusFollower`](https://github.com/onflow/flow-go/blob/master/follower/consensus_follower.go) library, and reads the execution-related data from records written to a Google Cloud Storage bucket by an Execution node. Going forward, we will want to incorporate this functionality into the Access node itself.
 
@@ -62,7 +64,7 @@ They will then serialize each of these fields separately<sup>[1](#footnotes)</su
 
 ![Execution Data Blob Tree](blob-tree.jpeg)
 
-At the end of this process, we are left with four root CIDs (one for each field in the Execution Data). These will be included in an [Execution Result](https://github.com/onflow/flow-go/blob/master/model/flow/execution_result.go) from which an [Execution Receipt](https://github.com/onflow/flow-go/blob/master/model/flow/execution_receipt.go) is generated and later broadcast to the network.
+At the end of this process, we are left with four root CIDs (one for each field in the Execution Data). These will be included in an [Execution Result](https://github.com/onflow/flow-go/blob/master/model/flow/execution_result.go) from which an [Execution Receipt](https://github.com/onflow/flow-go/blob/master/model/flow/execution_receipt.go) is generated and later broadcast to the network<sup>[3](#footnotes)</sup>.
 
 ### State Propagation
 
@@ -80,7 +82,7 @@ There are various reasons why a particular Execution Result may never end up bei
 * The Execution Result is invalid.
 * Certain conditions give rise to indeterminacy (e.g. Missing Collection Challenges), resulting in multiple valid Execution Results, of which only one is chosen to be sealed.
 
-As a result, Access nodes will need to keep track of all of the Execution Result IDs for each block height that they download the Execution Data for. When an Execution Result is sealed, they should purge the Execution Data for all conflicting Execution Result IDs from their blobstore<sup>[3](#footnotes)</sup>. If the Execution Data for the sealed Execution Result hasn't already been downloaded, they should initiate a new Bitswap session and begin downloading the data<sup>[4](#footnotes)</sup>.
+As a result, Access nodes will need to keep track of all of the Execution Result IDs for each block height that they download the Execution Data for. When an Execution Result is sealed, they should purge the Execution Data for all conflicting Execution Result IDs from their blobstore<sup>[4](#footnotes)</sup>. If the Execution Data for the sealed Execution Result hasn't already been downloaded, they should initiate a new Bitswap session and begin downloading the data<sup>[5](#footnotes)</sup>.
 
 [Describe how we apply essentially the same architecture on the public network, between Access nodes and Full Observer nodes.]
 
@@ -114,9 +116,9 @@ Instead of generating a single ExecutionData per block and creating a root CID(s
 
 Each Verification node is only responsible for a subset of the Chunks within a block. Therefore, instead of generating a single Execution Data per block, Execution nodes would instead need to generate an Execution Data and root CID for each individual Chunk and include all of these root CIDs in the Execution Result. Once Verification nodes have the [Chunk Data Pack](https://github.com/onflow/flow-go/blob/e73e19a87860f470053b6a8b624d3dcd43ad23bf/model/flow/chunk.go#L40), they can recompute the Execution Data and root CID for a Chunk and check that it is correct.
 
-## Requirements and Rewards
+## Requirements
 
-The Access node goes from being an optional node serving as a proxy, to being a relayer of execution state information. It should correspondingly offer SLAs on state re-transmissions and get rewarded for it.
+The Access node goes from being an optional node serving as a proxy, to being a relayer of execution state. As a result, the hardware requirements change significantly.
 
 ### Memory / Storage Estimate
 
@@ -138,13 +140,13 @@ drwxr-xr-x 2 root root 4.0K Oct  6 19:06 extralogs
 **Execution Data (individual)**
 
 ```console
-smnzhu@mbp:~$ SORTED_BY_SIZE=$(gsutil du -h gs://flow_public_mainnet13_execution_state | sed -e 's/ MiB/M/g' -e 's/ KiB/K/g' | sort -h)
+smnzhu@mbp:~$ SORTED_BY_SIZE=$(gsutil du -h gs://flow_public_mainnet13_execution_state | sed -e 's/ MiB/M/g' -e 's/ KiB/K/g' | sort -h | sed -e 's/M/ MiB/g' -e 's/K/ KiB/g')
 smnzhu@mbp:~$ echo $SORTED_BY_SIZE | head -n 1
-3.57K     gs://flow_public_mainnet13_execution_state/5d00b1ef2670d5987015c582727ab2308b19916ea4303ad56d600bb1fb4a12fc.cbor
+3.57 KiB     gs://flow_public_mainnet13_execution_state/5d00b1ef2670d5987015c582727ab2308b19916ea4303ad56d600bb1fb4a12fc.cbor
 smnzhu@mbp:~$ echo $SORTED_BY_SIZE | tail -n 1
-377.18M   gs://flow_public_mainnet13_execution_state/38db1ad86322fa81ff105328fd2812f2d5eed87ea4b7dba4e4095b1934fcec86.cbor
+377.18 MiB   gs://flow_public_mainnet13_execution_state/38db1ad86322fa81ff105328fd2812f2d5eed87ea4b7dba4e4095b1934fcec86.cbor
 smnzhu@mbp:~$ echo $SORTED_BY_SIZE | awk '{ a[i++]=$0; } END { print a[int(i/2)]; }'
-70.47K    gs://flow_public_mainnet13_execution_state/4f6892c5b1b16e41ae1adda086b8aa241d254b780f44ceb5e45a5a1d5bb3d8aa.cbor
+70.47 KiB    gs://flow_public_mainnet13_execution_state/4f6892c5b1b16e41ae1adda086b8aa241d254b780f44ceb5e45a5a1d5bb3d8aa.cbor
 ```
 
 **Execution Data (~3 week spork)**
@@ -175,7 +177,7 @@ Access nodes can periodically (e.g. at every 10000th block) generate a snapshot 
 
 The root CID of the snapshot must be shared with new nodes somehow so that they can use it to download the snapshot via Bitswap. There are a few ways this can be done:
 
-* The CID can be shared on a broadcast channel using a *Byzantine consistent broadcast* algorithm<sup>[5](#footnotes)</sup>.
+* The CID can be shared on a broadcast channel using a *Byzantine consistent broadcast* algorithm<sup>[6](#footnotes)</sup>.
 * A new Access node can randomly select a couple of other Access nodes and simply ask them for the CID. If the responses it receives are concordant, it can go ahead and download the data. Once the download is complete, it can generate the state trie for each block and compare its hash to the one found on-chain in the corresponding Execution Result. If it finds an inconsistency, it has all the evidence it needs to submit a slashing challenge against the nodes which provided it with the bad CID.
 
 ### Sharding
@@ -196,6 +198,7 @@ It remains a challenge to ensure that Access nodes keep Execution Data available
 
 1. We could also serialize the entire Execution Data instead, but serializing the fields separately potentially allows us to reuse the existing Badger storage in our blobstore implementation.
 2. The largest Execution Data we've observed on Mainnet was ~400MB. Therefore, considering that CIDs are ~32 bytes, in practice this process will only need to be repeated at most once.
-3. Note that it's possible for the blob trees of two distinct Execution Data objects to contain overlapping nodes. We should be careful not to purge any blobs from the sealed Execution Data's blob tree.
-4. We could avoid all of this by waiting until an Execution Result is sealed before initiating the download of its Execution Data, but we choose to eagerly download data in order to achieve lower latency.
-5. These are motivated and specified in Section 3.10 of [Introduction to Reliable and Secure Distributed Programming](https://www.distributedprogramming.net/).
+3. Execution Results *must* be deterministic (if two Execution nodes get the same result after executing a block, they must generate the same Execution Result). This implies that we need a protocol-level specification of how Trie Updates should be ordered. The current convention is that reads / writes are deterministically ordered by their respective register IDs.
+4. Note that it's possible for the blob trees of two distinct Execution Data objects to contain overlapping nodes. We should be careful not to purge any blobs from the sealed Execution Data's blob tree.
+5. We could avoid all of this by waiting until an Execution Result is sealed before initiating the download of its Execution Data, but we choose to eagerly download data in order to achieve lower latency.
+6. These are motivated and specified in Section 3.10 of [Introduction to Reliable and Secure Distributed Programming](https://www.distributedprogramming.net/).
