@@ -2,7 +2,7 @@
 
 | Status        | (Proposed)       |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | [703](https://github.com/onflow/flow/pull/703)    |
+| **FLIP #**    | [703](https://github.com/onflow/flow/pull/703)       |
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Updated**   | 2021-11-29                                           |
@@ -75,12 +75,12 @@ pub struct Foo {
 pub fun bar() {
     let foo = Foo()
     foo.x = [0] // writes to x, not allowed
-    foo.x[0] = 0 // does not write to x, also not allowed
+    foo.x[0] = 0 // does not write to x, currently allowed
 }
 
-Cadence also restricts the scopes in which an array or dictionary field can be modified (or "mutated"). Examples of 
-mutating operations include an indexed assignment, as in the above example, as well as calls to the `append` or `remove`,
-methods of arrays, or the `insert` or `remove` methods of dictionaries. These operations can only be performed on a field
+This FLIP would change Cadence to also restrict the scopes in which an array or dictionary field can be modified (or "mutated"). 
+Examples of mutating operations include an indexed assignment, as in the above example, as well as calls to the `append` or `remove`,
+methods of arrays, or the `insert` or `remove` methods of dictionaries. These operations will only be able to be performed on a field
 in the current and inner scopes, the same contexts in which the field could be written to if it were a `var`. So the following 
 would typecheck:
 
@@ -114,7 +114,7 @@ pub fun addToY(foo: Foo, i: Int) {
 }
 ```
 
-This prevents external code from mutating the values of fields it can read from your contract. Consumers
+This is designed to prevent external code from mutating the values of fields it can read from your contract. Consumers
 of your contract may read the values in a `pub let` or `pub var` field, but cannot change them in any way. 
 
 If you wish to allow other code to update or modify a field in your contract, you may expose a method 
@@ -140,7 +140,8 @@ enclosing scope.
 
 The array methods that are considered mutating are `append`, `appendAll`, `remove`,
 `insert`, `removeFirst` and `removeLast`. The dictionary methods that are considered
-mutating are `insert` and `remove`. 
+mutating are `insert` and `remove`. Additionally, indexed assignment (`x[y] = e`) will
+be considered mutating for both arrays and dictionaries.  
 
 The limitations on mutation are designed to closely mirror the limitations on writes, 
 so that they can be easily explained to and understood by the user in terms of 
@@ -229,8 +230,9 @@ a new type to accomplish the same purpose as what this FLIP proposes.
 
 ### Performance Implications
 
-* This is a change only to the Cadence type checker, so it will not have any 
-performance implications for Flow or the Cadence runtime. 
+* This is a change to the Cadence type checker, so by adding more checks and errors
+for it to report, it may have a performance impact. However, this should not add
+signficantly more work to typechecking of programs that succeed on typechecks. 
 
 ### Best Practices
 
