@@ -411,6 +411,7 @@ components:
       required:
         - address
         - balance
+        - _expandable
       properties:
         address:
           $ref: '#/components/schemas/Address'
@@ -485,6 +486,7 @@ components:
       required:
         - id
         - transactions
+        - _expandable
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -515,6 +517,7 @@ components:
         - authorizers
         - payload_signatures
         - envelope_signatures
+        - _expandable
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -626,6 +629,7 @@ components:
       type: object
       required:
         - header
+        - _expandable
       properties:
         header:
           $ref: '#/components/schemas/BlockHeader'
