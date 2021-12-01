@@ -478,6 +478,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Transaction'
+        _expandable:
+          type: array
+          items:
+            type: object
+            properties:
+              transaction:
+                type: string
+                format: uri
         _links:
           $ref: '#/components/schemas/Links'
     Transaction:
