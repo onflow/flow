@@ -477,7 +477,6 @@ components:
       type: object
       required:
         - id
-        - transactions
         - _expandable
       properties:
         id:
