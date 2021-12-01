@@ -408,6 +408,9 @@ components:
   schemas:
     Account:
       type: object
+      required:
+        - address
+        - balance
       properties:
         address:
           $ref: '#/components/schemas/Address'
@@ -436,6 +439,14 @@ components:
           $ref: '#/components/schemas/Links'
     AccountPublicKey:
       type: object
+      required:
+        - index
+        - public_key
+        - signing_algorithm
+        - hashing_algorithm
+        - sequence_number
+        - weight
+        - revoked
       properties:
         index:
           type: integer
@@ -471,6 +482,9 @@ components:
         - KMAC128
     Collection:
       type: object
+      required:
+        - id
+        - transactions
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -490,6 +504,17 @@ components:
           $ref: '#/components/schemas/Links'
     Transaction:
       type: object
+      required:
+        - id
+        - script
+        - arguments
+        - reference_block_id
+        - gas_limit
+        - payer
+        - proposal_key
+        - authorizers
+        - payload_signatures
+        - envelope_signatures
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -534,6 +559,10 @@ components:
           $ref: '#/components/schemas/Links'
     ProposalKey:
       type: object
+      required:
+        - address
+        - key_index
+        - sequence_number
       properties:
         address:
           $ref: '#/components/schemas/Address'
@@ -545,6 +574,11 @@ components:
           format: uint64
     TransactionSignature:
       type: object
+      required:
+        - address
+        - signer_index
+        - key_index
+        - signature
       properties:
         address:
           $ref: '#/components/schemas/Address'
@@ -558,6 +592,12 @@ components:
           $ref: '#/components/schemas/Signature'
     TransactionResult:
       type: object
+      required:
+        - block_id
+        - status
+        - error_message
+        - computation_used
+        - events
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
@@ -584,6 +624,8 @@ components:
        - Expired
     Block:
       type: object
+      required:
+        - header
       properties:
         header:
           $ref: '#/components/schemas/BlockHeader'
@@ -603,6 +645,12 @@ components:
           $ref: '#/components/schemas/Links'
     BlockHeader:
       type: object
+      required:
+        - id
+        - parent_id
+        - height
+        - timestamp
+        - parent_voter_signature
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -618,6 +666,9 @@ components:
           $ref: '#/components/schemas/Signature'
     BlockPayload:
       type: object
+      required:
+        - collection_guarantees
+        - block_seals
       properties:
         collection_guarantees:
           type: array
@@ -631,6 +682,10 @@ components:
           uniqueItems: true
     CollectionGuarantee:
       type: object
+      required:
+        - collection_id
+        - signer_ids
+        - signature
       properties:
         collection_id:
           $ref: '#/components/schemas/Identifier'
@@ -644,6 +699,11 @@ components:
           $ref: '#/components/schemas/Signature'
     BlockSeal:
       type: object
+      required:
+        - block_id
+        - result_id
+        - final_state
+        - aggregated_approval_signatures
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
@@ -664,6 +724,9 @@ components:
       pattern: '[a-fA-F0-9]{64}'
     AggregatedSignature:
       type: object
+      required:
+        - verifier_signatures
+        - signer_ids
       properties:
         verifier_signatures:
           type: array
@@ -679,6 +742,10 @@ components:
           uniqueItems: true
     ExecutionResult:
       type: object
+      required:
+        - id
+        - block_id
+        - events
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -692,6 +759,12 @@ components:
           $ref: '#/components/schemas/Links'
     Event:
       type: object
+      required:
+        - type
+        - transaction_id
+        - transaction_index
+        - event_index
+        - payload
       properties:
         type:
           $ref: '#/components/schemas/EventType'
