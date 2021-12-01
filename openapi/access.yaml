@@ -479,11 +479,11 @@ components:
           items:
             $ref: '#/components/schemas/Transaction'
         _expandable:
-          type: array
-          items:
-            type: object
-            properties:
-              transaction:
+          type: object
+          properties:
+            transactions:
+              type: array
+              items:
                 type: string
                 format: uri
         _links:
