@@ -276,7 +276,7 @@ There may also need to be a committee, process, and code repository put in place
 types.
 
 ## Best Practices
-NFT Authors should do their best to implement as many views from the standard metadata set as appropriate for 
+NFT authors should do their best to implement as many views from the standard metadata set as appropriate for 
 their application. 
 
 NFT authors should document the views they support and contracts creators should document the views they require. 
