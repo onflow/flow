@@ -300,8 +300,8 @@ contract after it has already been published through the use of a `ViewResolver`
 [Playground available here](https://play.onflow.org/a71203b9-a03a-47f9-ab70-7285fcf4c56a?type=account&id=0)
 
 ## Compatibility
-Provided support for default methods on interfaces is added to cadence there are no backwards compatibility issues. 
-  Short of that, NFT authors will need to add implementations for the new methods added to their contracts.
+Provided support for default methods on interfaces is added to Cadence there are no backwards compatibility issues. 
+Short of that, NFT authors will need to add implementations for the new methods added to their contracts.
 
 ## User Impact
 This feature can be rolled out with no fear of changes to the user. However documentation should be provided on how 
