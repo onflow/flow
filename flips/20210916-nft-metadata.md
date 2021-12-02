@@ -20,10 +20,10 @@ and define the Type of views you need to expose in your NFT in order to support 
 So it will enable a design-by-contract pattern where the creator of a contract can define 
 the views it requires and an NFT can tell what views they export. 
 
-All NFTs and contracts using NFTs on flow are affected by this problem. This is most 
+All NFTs and contracts using NFTs on Flow are affected by this problem. This is most 
 visible in the number of contracts that Viv3 needs in order to support all their different 
 sellable items. With all the oncoming marketplaces/auction houses and things like that 
-coming to flow a good standard for NFTs will help everybody. 
+coming to Flow a good standard for NFTs will help everybody. 
 
 ## User Benefit
 We feel that a standard that authors can implement that enables easy consumption of metadata 
