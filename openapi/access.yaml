@@ -179,7 +179,7 @@ paths:
                 reference_block_id:
                   $ref: '#/components/schemas/Identifier'
                 gas_limit:
-                  type: integer
+                  type: string
                   format: uint64
                 payer:
                   $ref: '#/components/schemas/Address'
@@ -408,11 +408,15 @@ components:
   schemas:
     Account:
       type: object
+      required:
+        - address
+        - balance
+        - _expandable
       properties:
         address:
           $ref: '#/components/schemas/Address'
         balance:
-          type: integer
+          type: string
           format: uint64
         keys:
           type: array
@@ -436,9 +440,17 @@ components:
           $ref: '#/components/schemas/Links'
     AccountPublicKey:
       type: object
+      required:
+        - index
+        - public_key
+        - signing_algorithm
+        - hashing_algorithm
+        - sequence_number
+        - weight
+        - revoked
       properties:
         index:
-          type: integer
+          type: string
           format: uint64
         public_key:
           type: string
@@ -448,10 +460,10 @@ components:
         hashing_algorithm:
           $ref: '#/components/schemas/HashingAlgorithm'
         sequence_number:
-          type: integer
+          type: string
           format: uint64
         weight:
-          type: integer
+          type: string
           format: uint64
         revoked:
           type: boolean
@@ -471,6 +483,9 @@ components:
         - KMAC128
     Collection:
       type: object
+      required:
+        - id
+        - _expandable
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -490,6 +505,18 @@ components:
           $ref: '#/components/schemas/Links'
     Transaction:
       type: object
+      required:
+        - id
+        - script
+        - arguments
+        - reference_block_id
+        - gas_limit
+        - payer
+        - proposal_key
+        - authorizers
+        - payload_signatures
+        - envelope_signatures
+        - _expandable
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -504,7 +531,7 @@ components:
         reference_block_id:
           $ref: '#/components/schemas/Identifier'
         gas_limit:
-          type: integer
+          type: string
           format: uint64
         payer:
           $ref: '#/components/schemas/Address'
@@ -534,30 +561,45 @@ components:
           $ref: '#/components/schemas/Links'
     ProposalKey:
       type: object
+      required:
+        - address
+        - key_index
+        - sequence_number
       properties:
         address:
           $ref: '#/components/schemas/Address'
         key_index:
-          type: integer
+          type: string
           format: uint64
         sequence_number:
-          type: integer
+          type: string
           format: uint64
     TransactionSignature:
       type: object
+      required:
+        - address
+        - signer_index
+        - key_index
+        - signature
       properties:
         address:
           $ref: '#/components/schemas/Address'
         signer_index:
-          type: integer
+          type: string
           format: uint64
         key_index:
-          type: integer
+          type: string
           format: uint64
         signature:
           $ref: '#/components/schemas/Signature'
     TransactionResult:
       type: object
+      required:
+        - block_id
+        - status
+        - error_message
+        - computation_used
+        - events
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
@@ -566,7 +608,7 @@ components:
         error_message:
           type: string
         computation_used:
-          type: integer
+          type: string
           format: uint64
         events:
           type: array
@@ -584,6 +626,9 @@ components:
        - Expired
     Block:
       type: object
+      required:
+        - header
+        - _expandable
       properties:
         header:
           $ref: '#/components/schemas/BlockHeader'
@@ -603,13 +648,19 @@ components:
           $ref: '#/components/schemas/Links'
     BlockHeader:
       type: object
+      required:
+        - id
+        - parent_id
+        - height
+        - timestamp
+        - parent_voter_signature
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
         parent_id:
           $ref: '#/components/schemas/Identifier'
         height:
-          type: integer
+          type: string
           format: uint64
         timestamp:
           type: string
@@ -618,6 +669,9 @@ components:
           $ref: '#/components/schemas/Signature'
     BlockPayload:
       type: object
+      required:
+        - collection_guarantees
+        - block_seals
       properties:
         collection_guarantees:
           type: array
@@ -631,6 +685,10 @@ components:
           uniqueItems: true
     CollectionGuarantee:
       type: object
+      required:
+        - collection_id
+        - signer_ids
+        - signature
       properties:
         collection_id:
           $ref: '#/components/schemas/Identifier'
@@ -644,6 +702,11 @@ components:
           $ref: '#/components/schemas/Signature'
     BlockSeal:
       type: object
+      required:
+        - block_id
+        - result_id
+        - final_state
+        - aggregated_approval_signatures
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
@@ -664,6 +727,9 @@ components:
       pattern: '[a-fA-F0-9]{64}'
     AggregatedSignature:
       type: object
+      required:
+        - verifier_signatures
+        - signer_ids
       properties:
         verifier_signatures:
           type: array
@@ -679,6 +745,10 @@ components:
           uniqueItems: true
     ExecutionResult:
       type: object
+      required:
+        - id
+        - block_id
+        - events
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -692,23 +762,29 @@ components:
           $ref: '#/components/schemas/Links'
     Event:
       type: object
+      required:
+        - type
+        - transaction_id
+        - transaction_index
+        - event_index
+        - payload
       properties:
         type:
           $ref: '#/components/schemas/EventType'
         transaction_id:
           $ref: '#/components/schemas/Identifier'
         transaction_index:
-          type: integer
+          type: string
           format: uint64
         event_index:
-          type: integer
+          type: string
           format: uint64
         payload:
           type: string
           format: byte
     BlockHeight:
       oneOf:
-        - type: integer
+        - type: string
           format: uint64
         - type: string
           enum:
