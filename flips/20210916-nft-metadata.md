@@ -4,10 +4,10 @@
 This proposal will make it possible to create generic solutions that will interoperate 
 through views and not hard coded NFT types. Want to create a Marketplace? If you know 
 how to display a certain Type that defines a sellable Item you can do so. And it will 
-work for any contract, not just a single one. 
+work for any contract and any resource, not just a single one. 
 
 ## Motivation
-Currently there is no standard for defining NFT metadata. At best, most implementations 
+Currently there is no standard for defining NFT/resource metadata. At best, most implementations 
 employ a simple `{String: AnyStruct}` dictionary. Due to the various methods that NFT 
 authors use it’s hard / impossible to create applications that use NFTs whether it be 
 for something as simple as viewing them or as complex as integrating them into a game 
@@ -39,40 +39,97 @@ and SaleItem/Auction aso.
 
 ## Design Proposal
 
-The core of this proposal is to add the following two new methods to the INFT interface:
+The core of this proposal is to add the following interface and have the NFT resource implement it
 ```
-pub fun availableViews(): [Type]
-pub fun resolveView(_ type: Type): AnyStruct?
+pub resource interface ViewResolver {
+  pub fun getViews() : [Type]
+  pub fun resolveView(_ view:Type): AnyStruct
+}
 ```
 
 We will also add default implementations for these methods so that no compatibility will be broken 
 for existing NFT solutions. The new NFT interface could look something like this: 
 ```
-pub resource NFT: INFT {
+pub resource NFT: INFT, ViewResolver {
     pub let id: UInt64
-    pub fun availableViews(): [Type] {
+    pub fun getViews(): [Type] {
        return []
     }
-    pub fun resolveView(_ type: Type): AnyStruct? {
+    pub fun resolveView(_ type: Type): AnyStruct {
         return nil
     }
 }
 ```
-We propose that all metadata be expressed in Cadence types. The `pub fun availableViews(): [Type]` 
+
+We propose that all metadata be expressed in Cadence types. The `pub fun getViews(): [Type]` 
 method allows for discovery of the various types of metadata supported by the NFT by returning a `Type` 
 for each supported type of metadata. An instance of any supported type could then be retrieved by 
-calling the `pub fun resolveView(_ type: Type): AnyStruct?` method passing the desired type in as 
+calling the `pub fun resolveView(_ type: Type): AnyStruct` [method](method) passing the desired type in as 
 an argument.
 
 This proposal by no means precludes the use of member variable on the NFT resource itself, in fact 
 ideally all immutable data for an NFT is stored as immutable members of the NFT resource and views 
 are resolved and created by accessing those immutable members.
 
-### Usage Scenarios
+### Supporting other resources besides NFT
+In order to support any other resource and resource Collection like marketplaces and FT the following new interface is proposed:
+```
+pub resource interface ViewResolverCollection {
+		pub fun borrowViewResolver(id: UInt64): &{ViewResolver}
+		pub fun getIDs(): [UInt64]
+	}
 
-### Basic Example
+```
 
-For example, an NFT implementation for artwork may want to allow for the image data to be retrieved 
+This will allow any collection to be exposed as view resolvable.
+
+For single resources that are stored as is like a FungibleToken or a Profile contract you can just implement the ViewResolver interface directly.
+
+### Converting between different views. 
+
+Standards will evolve and new views will be added. In order to make it easier for maintainers we propose a mechanism to regsiter a converter from one View to another. 
+
+```
+pub struct interface ViewConverter {
+	pub let to: Type
+	pub let from: Type
+
+	pub fun convert(_ value:AnyStruct) : AnyStruct
+}
+```
+
+The Dandy NFT contract in Find has an example on how to do this: https://github.com/findonflow/find/blob/main/contracts/Dandy.cdc#L328. it would also be possible to create a central repository of  ViewConverters where you send in a ViewResolver interface to get and resolve views.
+
+ 
+### Basic Views
+
+The most basic example is having `String` be a view. Think of this as toString() in java or Stringer in go. A way to view your NFT as a string. 
+
+The bigger brother of `String` would be `Display`. How do you preview an NFT in blocot, a marketplace or other solutions:
+```
+	pub struct Display{
+		pub let name: String
+		pub let thumbnail: String
+		pub let description: String
+		
+		//This is a field describing the source of this NFT, so this could be Versus,Evolution,Chainmonster aso.
+		pub let source: String
+
+		init(name:String, thumbnail: String, description: String, source:String) {
+			self.source=source
+			self.name=name
+			self.thumbnail=thumbnail
+			self.description=description
+		}
+	}
+```
+
+The data here is taken from what blocto uses to display an NFT in their application.
+ - Would it be wise to add some sort of link here to be able to know how to navigate to the source page for this resource?
+
+### [Other](Other) examples
+
+[For](For) example, an NFT implementation for artwork may want to allow for the image data to be retrieved 
 as an `HostedImage` struct:
 ```
 struct IPFSImage {
@@ -91,6 +148,41 @@ It could then be retrieved from the NFT using the following:
    let artwork = nft.resolveView(Type<ArtNFT.IPFSImage>()) as? ArtNFT.IPFSImage
    
 ```
+
+Another suggestion for media from FIND is:
+```
+	*/
+	pub struct Media {
+		pub let data: String
+		pub let contentType: String
+		pub let protocol: String
+
+		init(data:String, contentType: String, protocol: String) {
+			self.data=data
+			self.protocol=protocol
+			self.contentType=contentType
+		}
+	}
+```
+Examples here are:
+
+An Image on IPFS:
+data: QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4
+contentType: image/jpeg
+protocol: ipfs
+
+An http image
+data: https://test.find.xyz/find.png
+contentType: image/jpeg
+protocol: http
+
+An onChain image
+data: data:image/png;base64,SOMEPNGDATAURI/wD/
+contentType: image/jpeg
+protocol: data
+
+The problem here is that the onChain image can be quite large and you might not want to resolve those every time you fetch down the Meida view. So what if we made a method on the struct that allow you to retrieve the data/content instead?
+
 
 The same NFT author may also want expose other metadata about the artwork:
 ```
@@ -171,86 +263,77 @@ pub struct URLWithHash {
 }
 ```
 
-### Royalty Example
+### Royalty 
 
-Another common issue that needs to be solved is Royalty. One option here is to use a structs like
+This particular problem has been discussed extensivly. The following suggestion was agreed upon
+by @bjartek, @rheaplex and @dete. 
+
 ```
-    pub struct Royalties{
-        pub let royalty: [Royalty]
-        init(royalty: [Royalty]) {
-            self.royalty=royalty
-        }
-    }
+  /// a struct interface that describes how to calculate royalty 
+	pub struct interface Royalty {
 
+		/// if nil cannot pay this type
+		/// if not nill withdraw that from main vault and put it into distributeRoyalty 
+		pub fun calculateRoyalty(type:Type, amount:UFix64) : UFix64?
 
-    pub enum RoyaltyType: UInt8 {
-        pub case fixed
-        pub case percentage
-    }
+		/// call this with a vault containing the amount given in calculate royalty and it will be distributed accordingly
+		pub fun distributeRoyalty(vault: @FungibleToken.Vault) 
 
-    pub struct Royalty{
-        pub let wallet:Capability<&{FungibleToken.Receiver}>
-        pub let cut: UFix64
+		/// generate a string that represents all the royalties this NFT has for display purposes
+		pub fun displayRoyalty() : String?  
 
-        //can be percentage
-        pub let type: RoyaltyType
-
-        init(wallet:Capability<&{FungibleToken.Receiver}>, cut: UFix64, type: RoyaltyType) {
-            self.wallet=wallet
-            self.cut=cut
-            self.type=type
-        }
-    }
-```
+	}
+```	
 
 ### Versus
 
-The versus project at versus.auction has the following royalty that could easily be reused by others. 
+The versus project at versus.auction can be adapted to the new standard using these few lines of code
 
 ```
-pub struct Art.Metadata {
-        pub let name: String
-        pub let artist: String
-        pub let artistAddress:Address
-        pub let description: String
-}
 
-pub struct Art.Editioned {
-        pub let edition: UInt64
-        pub let maxEdition: UInt64
-}
+	 pub fun getViews() : [Type] {
+			return [
+			Type<String>(),
+			Type<TypedMetadata.Display>(),
+			Type<TypedMetadata.Editioned>(),
+			Type<TypedMetadata.CreativeWork>(),
+			Type<{TypedMetadata.Royalty}>(),
+			Type<TypedMetadata.Media>()
+			]
+		}
+		
+	 pub fun resolveView(_ type: Type): AnyStruct {
 
-pub struct ViewPointer{
-        pub let collection: Capability<&{NonFungibleToken.CollectionPublic}>
-        pub let id: UInt64
-        pub let view: Type
+			if type== Type<String>() {
+				return self.name.concat(" ").concat(self.metadata.edition.toString()).concat(" of ").concat(self.metadata.maxEdition.toString()).concat(" by ").concat(self.metadata.artist)
+			}
 
-        init(collection: Capability<&{NonFungibleToken.CollectionPublic}>, id: UInt64, view:Type) {
-            self.collection=collection
-            self.id=id
-            self.scheme=scheme
-        }
+			if type == Type<TypedMetadata.Display>() {
+				let description=self.metadata.description.concat(" by:").concat(self.metadata.artist).concat( " edition ").concat(self.metadata.edition.toString()).concat( " of ").concat(self.metadata.maxEdition.toString())
+				return TypedMetadata.Display(name: self.metadata.name, thumbnail: self.url!, description: description, source: "versus")
+			}
 
-        pub fun resolve() : AnyStruct {
-            return self.collection.borrow()!.borrowNFT(id: self.id).resolveView(self.view)
+			if type == Type<TypedMetadata.Editioned>() {
+				return TypedMetadata.Editioned(edition: self.metadata.edition, maxEdition:self.metadata.maxEdition)
+			}
+			if type == Type<TypedMetadata.CreativeWork>() {
+				return TypedMetadata.CreativeWork(artist:self.metadata.artist, name: self.metadata.name, description: self.metadata.description, type:self.metadata.type)
+			}
+			if type == Type<{TypedMetadata.Royalty}>() {
+				return Royalties(self.royalty)
+			}
 
-        }
-    }
-
-pub struct Base64Image{
-  pub let content: String //base64 encoded image url
-}
+			if type == Type<TypedMetadata.Media>() {
+				if self.url != nil {
+					return TypedMetadata.Media(data: self.url!, contentType: self.metadata.type, protocol: "http")
+				}
+			}
+			return nil
+		}
+		
 ```
-The view pointer can be used to share views between editioned NFTs. For Versus this would be 
-the onChain content blob. 
 
-If multiple NFTs expose royalties in this way and contract owners start to honor that it could be very 
-positive for the Flow ecosystem. 
-
-Using interfaces as Views  can lead to some very powerful implementations. You can have multiple different
-structs implement a `Person` interface and then have a method that resolves a list of Person to get them all. 
-
-## Drawbacks
+[##](##) Drawbacks
 This standard does not include any required ways to store the metadata, and therefore some of the metadata 
 could be dynamic depending on how the NFTs are authored. This is a double edged sword, it allows for greater 
 flexibility, but also means that some of the metadata returned by an NFT’s view may not be immutable. This, 
@@ -286,12 +369,8 @@ It could be worth exploring a design-by-contract paradigm to formalize this in a
 The following examples show the flexibility of this proposal with varying implementations.
 
 ### Example one:
-https://github.com/bjartek/flow-nfmt/tree/types is an example of how this standard can be implemented. When you 
-create a GenericNFT you send in the types you want to support as views. These types then become content addressable 
-using the form `<address>/<collection>/<id>/<type identifier>`
-
-A concrete example of this would be:
-`0xf8d6e0586b0a20c7/nft/0/A.f8d6e0586b0a20c7.NFTMetadata.Editioned`
+The find project is going to be using metadata as lookup and index points. The project is available here:
+https://github.com/findonflow/find
 
 ### Example two:
 This example shows how you might implement this specification with the ability to add new view types to your NFT 
