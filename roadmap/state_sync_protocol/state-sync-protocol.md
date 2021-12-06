@@ -6,7 +6,7 @@ Today, Access nodes act as the gateway to the Flow network, providing a query en
 * Rate limiting of requests (script executions, Collection requests, account queries, etc.)
 * Basic validation, proving a first level of filtering to prevent bad transactions from entering the network
 
-Execution nodes and Collection nodes currently still expose public APIs, which are now mostly obsolete. Allowing users to bypass the Access layer and make direct requests to these nodes not only dilutes the valuable resources which should be reserved for performing tasks crucial to the protocol (especially in the case of Execution nodes), but it also leaves them at risk of denial-of-service attacks. Going forward, in order to protect the other staked nodes of the network, the Access layer will become the *only* way for users to interact with the network.
+Execution nodes and Collection nodes currently still expose public APIs, which are now mostly obsolete. Allowing users to bypass the Access layer and make direct requests to these nodes not only consumes valuable computational resources, which should be reserved for performing tasks crucial to the protocol (especially in the case of Execution nodes), but it also leaves them at risk of denial-of-service attacks. Going forward, in order to protect the other staked nodes of the network, the Access layer will become the *only* way for users to interact with the network.
 
 At the moment, the [Access API](/docs/content/access-api.md) contains a few methods in particular that proxy requests behind the scenes to other nodes (possibly from previous sporks):
 
