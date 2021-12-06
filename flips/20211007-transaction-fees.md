@@ -26,9 +26,9 @@ Currently transaction fees are the same for all transactions and don't change ov
 
 Transaction fees are deducted from the transaction payer's default Flow wallet automatically. This happens as the final step of transaction execution. If the transaction fails the fees are still deducted and no other state change (except the fee deduction) is committed.
 
-The transaction fees are collected on the [FlowFees](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc) smart contract and are used as part of the staking rewards. If there were more fees collected during an epoch then there were staking rewards, the leftover FLOW is kept in a pool for the next payout. This part would not be changed with this proposal, but it is important to note, as this means collecting more fees leads to less inflation or even deflation.
+The transaction fees are collected in a FLOW Vault stored in the [FlowFees](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc) smart contract and are used as part of the staking rewards. If there were more fees collected during an epoch than the specified staking reward amount for that epoch, the leftover FLOW is kept in a pool for the next payout. This part would not be changed with this proposal, but it is important to note, as this means collecting more fees leads to less inflation or even deflation.
 
-There is an existing concept of a execution limit (a.k.a.: gas limit or computation limit), but it is currently not tied to transaction fees. The execution limit is used only to prevent transactions from running for a very long time (or indefinitely). The current measurement of execution is also very rudimentary and often doesn't reflect how much time will the transaction take to execute.
+There is an existing concept of a execution limit (a.k.a.: gas limit or computation limit), but it is currently not tied to transaction fees. The execution limit is used only to prevent transactions from running for a very long time (or indefinitely). The current measurement of execution is also very rudimentary and often doesn't reflect how much time the transaction will take to execute.
 
 ## Design requirements
 
@@ -59,9 +59,11 @@ The motivation behind the first separation is to separate the fees into a part t
 The inclusion part of fees accounts for the resources needed by a transaction because of the transaction's properties (that can be known without executing the transaction's script). Transaction properties are things like the byte size of the transaction and the number of signatures. Some examples of resources that will be needed are the bandwidth to transfer the transaction from node to node, the verification of signatures and the verification of the sequence number.
 
 
-The execution part of fees accounts for the approximate operational cost of executing the transaction script, passing the results to the verification node and verifying the results. Execution fees cannot be know without actually executing the transaction script. In order to avoid having unexpectedly high execution fees, each transaction should specify a stopping limit for the execution fees.
+The execution part of fees accounts for the approximate operational cost of executing the transaction script, passing the results to the verification node and verifying the results. Execution fees cannot be known without actually executing the transaction script. In order to avoid having unexpectedly high execution fees, each transaction should specify a stopping limit for the execution fees.
 
-The inclusion fees and the execution fees can be further split into effort and an the cost of that effort in units of FLOW. The effort required for a specific transaction should be independent of when the transaction is sent[^1] and should only depend on the properties of the transaction. The cost of the effort required to execute a transaction can be a factor with the unit of FLOW per effort multiplied by the effort, however in general terms the price of effort should be a function of effort itself. This would allow increasing the price of effort if a lot of effort was used in a transaction. 
+The inclusion fees and the execution fees can be further split into effort and an the cost of that effort in units of FLOW. The effort required for a specific transaction should be independent of when the transaction is sent[^1] and should only depend on the properties of the transaction. 
+
+The cost of the effort required to execute a transaction can be a factor with the unit of FLOW per effort multiplied by the effort, however in general terms the price of effort should be a function of effort itself. This would allow increasing the price of effort if a lot of effort was used in a transaction. 
 
 The way to specify the stopping limit for the execution fees is to define a maximum execution effort.
 
@@ -71,7 +73,7 @@ Finally we need to multiply the transaction fees by a (unit-less) surge factor t
 
 ### Terminology
 
-- <img src="https://render.githubusercontent.com/render/math?math=F"> : Transaction fees.
+- <img src="https://render.githubusercontent.com/render/math?math=F"> : Total transaction fees.
 - <img src="https://render.githubusercontent.com/render/math?math=s"> : Surge factor; unit-less factor that is higher if the network is experiencing heavy load.
 - <img src="https://render.githubusercontent.com/render/math?math=F_I"> : Inclusion part of the transaction fees.
 - <img src="https://render.githubusercontent.com/render/math?math=F_E"> : Execution part of the transaction fees.
@@ -92,11 +94,11 @@ The maximum fees a transaction can incur can be written with the equation below.
 
 The surge factor serves only one purpose, which is to give all transactions on the network a surcharge or potentially a discount when the network load is high or low respectively. It should be defined on a smart contract and adjustable via the service account admin resource and should be accessible for anyone to read. 
 
-The surge factor could be adjusted manually from the start, by manually moniyoring the network and sending a transaction to update the surge factor. This would mean responding to network load would be very slow. 
+The surge factor could be adjusted manually from the start, by manually monitoring the network and sending a transaction to update the surge factor. This would mean responding to network load would be very slow. 
 
-A fist automated solution to adjusting the surge factor would be a service that would monitor the network load and send a transaction to update the surge factor when there was a change in the network load.
+A first automated solution to adjusting the surge factor would be a service that would monitor the network load and send a transaction to update the surge factor when there was a change in the network load.
 
-When automation will be in place for adjusting the surge factor, the surge factor could be adjusted frequently (in the span it takes to run a few blocks and detect a surge), but it should not change to drastically otherwise users cannot respond to the change.
+When automation will be in place for adjusting the surge factor, the surge factor could be adjusted frequently (in the span it takes to run a few blocks and detect a surge), but it should not change too drastically otherwise users cannot respond to the change.
 ### Effort cost
 
 In general there would be two different effort cost functions, one for inclusion fees <img src="https://render.githubusercontent.com/render/math?math=F_I%20%3D%20p_I(I)"> and one for execution fees <img src="https://render.githubusercontent.com/render/math?math=F_E%20%3D%20p_E(E)">. This would allow for fine tuning what kind of transactions are the most cost optimal transactions. For example if the execution effort cost function is just a linear function, it makes sense to pack as much execution effort into one transaction as possible, but if the execution effort cost becomes quadratic at a certain effort threshold, it would make sense for users to break transactions into smaller transactions (if possible) that use effort up to that threshold.
@@ -142,7 +144,7 @@ The execution effort represents the effort needed to execute the transaction scr
 
 Currently the execution effort is calculated by adding 1 for every loop or function call. This could be sufficient for the first implementation. In the future the calculation of the execution effort would be changed so that function calls would have a different execution effort cost assigned to them according to the time complexity of the method.
 
-Thi model should be replaced so that the execution effort better correlates with the time needed to execute the transaction. A possible replacement is to make some functions (that take longer to run) use more effort than others.
+This model should be replaced so that the execution effort better correlates with the time needed to execute the transaction. A possible replacement is to make some functions (that take longer to run) use more effort than others.
 
 The way execution effort is defined, means that the lower bound for execution effort is 0. Any constant part would just get counted under the inclusion effort.
 
