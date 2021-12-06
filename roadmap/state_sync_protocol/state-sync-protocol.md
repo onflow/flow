@@ -173,7 +173,7 @@ Based on the numbers above, we should require Access nodes to have >43GB of RAM 
 
 Having a checkpointing mechanism will allow new nodes to catch up more quickly, while also reducing the amount of data Access nodes need to store on disk.
 
-Access nodes can periodically (e.g. at every 10000th block) generate a snapshot of the full state index and store it in their blobstore. They can then prune all of the Execution Data for blocks older than the snapshot, and require nodes that are behind to directly sync the snapshot first before catching up via per-block Execution Data updates.
+Access nodes can periodically (e.g. at every 10000th block) generate a snapshot of the full state index and store it in their blobstore. Thereby, new access nodes (and other external clients) could directly sync starting from the most recent snapshot and catch up via per-block Execution Data updates (before they sync the full state history if they desire to do so).
 
 The root CID of the snapshot must be shared with new nodes somehow so that they can use it to download the snapshot via Bitswap. There are a few ways this can be done:
 
