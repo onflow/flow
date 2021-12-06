@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   },
   "scripts": {
     "prestart": "gatsby clean",
@@ -72,7 +72,6 @@
     "@emotion/react": "^11.4.1",
     "@mdx-js/mdx": "^1.6.22",
     "framer-motion": "^4.1.17",
-    "gatsby-plugin-remove-trailing-slashes": "^3.11.0",
     "gatsby-plugin-sitemap": "^4.7.0",
     "jest": "^27.0.6",
     "jest-puppeteer": "^5.0.4",
