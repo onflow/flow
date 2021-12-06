@@ -357,8 +357,7 @@ pub fun bar() {
 
 This change is not backwards compatible with existing Cadence smart contracts, but
 is being made in service of a future version of Cadence wherein no backwards incompatible
-changes will be required going forwards. It should not affect any other parts of Flow, 
-however. 
+changes will be required going forwards. It should not affect any other parts of Flow.
 
 ### User Impact
 
