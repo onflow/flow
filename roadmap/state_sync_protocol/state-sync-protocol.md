@@ -23,7 +23,7 @@ The [Flow Data Provisioning Service (DPS)](https://github.com/optakt/flow-dps) h
 
 ## Objective
 
-We wish to phase out the GCS bucket architecture and design a state synchronization protocol that does not rely on any third-party cloud providers, yet still enables the scalable transmission of execution state updates and transactions data from Execution nodes to Access nodes. 
+We wish to phase out distributing state via cloud storage buckets and design a state synchronization protocol that does not rely on any third-party cloud providers, yet still enables the scalable transmission of execution state updates and transactions data from Execution nodes to Access nodes. 
 
 Such a protocol should require a minimal amount of additional work from Execution nodes, and in particular it should not involve them fanning-out the data they generate to all Access nodes. Instead, Execution nodes should only need to answer a bounded number of initial state requests, after which the further exchange of this data should be delegated among Access nodes themselves. This allows us to leverage the scability of the Access node layer and gain increased data dissemination robustness and decentralization.
 
