@@ -15,7 +15,7 @@ At the moment, the [Access API](/docs/content/access-api.md) contains a few meth
 * [`ExecuteScriptAtLatestBlock`](/docs/content/access-api.md/#executescriptatlatestblock) / [`ExecuteScriptAtBlockID`](/docs/content/access-api.md/#executescriptatblockid) / [`ExecuteScriptAtBlockHeight`](/docs/content/access-api.md/#executescriptatblockheight) forwards the request to an Execution node and returns the response.
 * [`GetAccountAtLatestBlock`](/docs/content/access-api.md/#getaccountatlatestblock) / [`GetAccountAtBlockHeight`](/docs/content/access-api.md/#getaccountatblockheight) forwards the request to an Execution node and returns the response.
 
-Ideally, Access nodes would be able to serve such requests from their own local state to avoid introducing additional traffic and putting excessive load on nodes within the network. To do this, they need the ability to maintain an up-to-date copy of the execution state and all transaction data.
+Ideally, Access nodes would be able to serve such requests from their own local state to avoid introducing additional traffic and putting excessive load on nodes within the network. To do this, they need the ability to obtain an up-to-date copy of the execution state and all transaction data (as well as retain a history of this data).
 
 It is important for network-external entities as well as network-internal nodes to be able to acquire a full copy of the execution state. This is important to remove load from the Execution nodes. Furthermore, due to their (intentionally) low number, entities other than the Execution nodes should be able to hold (and potentially archive) the full state to further decentralization.
 
