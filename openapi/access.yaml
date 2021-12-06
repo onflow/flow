@@ -27,7 +27,6 @@ paths:
             uniqueItems: true
           explode: false
           style: form
-          required: true
         - name: start_height
           in: query
           schema:
@@ -180,7 +179,7 @@ paths:
                 reference_block_id:
                   $ref: '#/components/schemas/Identifier'
                 gas_limit:
-                  type: integer
+                  type: string
                   format: uint64
                 payer:
                   $ref: '#/components/schemas/Address'
@@ -412,11 +411,12 @@ components:
       required:
         - address
         - balance
+        - _expandable
       properties:
         address:
           $ref: '#/components/schemas/Address'
         balance:
-          type: integer
+          type: string
           format: uint64
         keys:
           type: array
@@ -450,7 +450,7 @@ components:
         - revoked
       properties:
         index:
-          type: integer
+          type: string
           format: uint64
         public_key:
           type: string
@@ -460,10 +460,10 @@ components:
         hashing_algorithm:
           $ref: '#/components/schemas/HashingAlgorithm'
         sequence_number:
-          type: integer
+          type: string
           format: uint64
         weight:
-          type: integer
+          type: string
           format: uint64
         revoked:
           type: boolean
@@ -485,7 +485,7 @@ components:
       type: object
       required:
         - id
-        - transactions
+        - _expandable
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -493,6 +493,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Transaction'
+        _expandable:
+          type: object
+          properties:
+            transactions:
+              type: array
+              items:
+                type: string
+                format: uri
         _links:
           $ref: '#/components/schemas/Links'
     Transaction:
@@ -508,6 +516,7 @@ components:
         - authorizers
         - payload_signatures
         - envelope_signatures
+        - _expandable
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -522,7 +531,7 @@ components:
         reference_block_id:
           $ref: '#/components/schemas/Identifier'
         gas_limit:
-          type: integer
+          type: string
           format: uint64
         payer:
           $ref: '#/components/schemas/Address'
@@ -560,10 +569,10 @@ components:
         address:
           $ref: '#/components/schemas/Address'
         key_index:
-          type: integer
+          type: string
           format: uint64
         sequence_number:
-          type: integer
+          type: string
           format: uint64
     TransactionSignature:
       type: object
@@ -576,10 +585,10 @@ components:
         address:
           $ref: '#/components/schemas/Address'
         signer_index:
-          type: integer
+          type: string
           format: uint64
         key_index:
-          type: integer
+          type: string
           format: uint64
         signature:
           $ref: '#/components/schemas/Signature'
@@ -599,7 +608,7 @@ components:
         error_message:
           type: string
         computation_used:
-          type: integer
+          type: string
           format: uint64
         events:
           type: array
@@ -619,6 +628,7 @@ components:
       type: object
       required:
         - header
+        - _expandable
       properties:
         header:
           $ref: '#/components/schemas/BlockHeader'
@@ -650,7 +660,7 @@ components:
         parent_id:
           $ref: '#/components/schemas/Identifier'
         height:
-          type: integer
+          type: string
           format: uint64
         timestamp:
           type: string
@@ -764,17 +774,17 @@ components:
         transaction_id:
           $ref: '#/components/schemas/Identifier'
         transaction_index:
-          type: integer
+          type: string
           format: uint64
         event_index:
-          type: integer
+          type: string
           format: uint64
         payload:
           type: string
           format: byte
     BlockHeight:
       oneOf:
-        - type: integer
+        - type: string
           format: uint64
         - type: string
           enum:
