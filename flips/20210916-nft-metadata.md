@@ -178,7 +178,7 @@ data: data:image/png;base64,SOMEPNGDATAURI/wD/
 contentType: image/jpeg
 protocol: data
 
-The problem here is that the onChain image can be quite large and you might not want to resolve those every time you fetch down the Meida view. So what if we made a method on the struct that allow you to retrieve the data/content instead?
+The problem here is that the on-chain image can be quite large and you might not want to resolve those every time you fetch the media view. So what if we made a method on the struct that allowed you to retrieve the data/content instead?
 
 
 The same NFT author may also want expose other metadata about the artwork:
