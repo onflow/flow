@@ -330,7 +330,7 @@ The versus project at versus.auction can be adapted to the new standard using th
 
 ## Drawbacks
 This standard does not include any required ways to store the metadata, and therefore some of the metadata 
-could be dynamic depending on how the NFTs are authored. This is a double edged sword, it allows for greater 
+could be dynamic depending on how the NFTs are authored. This is a double edged sword; it allows for greater 
 flexibility, but also means that some of the metadata returned by an NFT’s view may not be immutable. This, 
 however, may be desirable. For instance, a game may allow an NFT to be used as a character in the game and 
 expose a view that exposes a member containing the character's health.
