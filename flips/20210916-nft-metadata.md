@@ -1,4 +1,4 @@
-# Non Fungible Token Metadata
+# Non-Fungible Token Metadata
 
 ## Objective
 This proposal will make it possible to create generic solutions that will interoperate 
