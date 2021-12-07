@@ -90,10 +90,10 @@ Standards will evolve and new views will be added. In order to make it easier fo
 
 ```
 pub struct interface ViewConverter {
-	pub let to: Type
-	pub let from: Type
+    pub let to: Type
+    pub let from: Type
 
-	pub fun convert(_ value:AnyStruct) : AnyStruct
+    pub fun convert(_ value:AnyStruct): AnyStruct
 }
 ```
 
