@@ -197,13 +197,11 @@ let artwork = nft.resolveView(Type<ArtNFT.Artwork>()) as? ArtNFT.Artwork
 
 If an art piece had more than one image then they could be retrieved using an array type as such:
 ```
-
-   import ArtNFT from 0x01010101
+import ArtNFT from 0x01010101
    
-   ...
+// ...
    
-   let images = nft.resolveView(Type<[ArtNFT.IPFSImage]>()) as? [ArtNFT.IPFSImage]
-   
+let images = nft.resolveView(Type<[ArtNFT.IPFSImage]>()) as? [ArtNFT.IPFSImage]
 ```
 
 Or if a more structured approach is desired the NFT author may want to create a composite struct:
