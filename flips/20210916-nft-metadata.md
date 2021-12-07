@@ -362,7 +362,7 @@ types.
 NFT authors should do their best to implement as many views from the standard metadata set as appropriate for 
 their application. 
 
-NFT authors should document the views they support and contracts creators should document the views they require. 
+NFT authors should document the views they support and contract creators should document the views they require. 
 It could be worth exploring a design-by-contract paradigm to formalize this in a forthcoming FLIP.
 
 ## Tutorials and Examples
