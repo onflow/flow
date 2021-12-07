@@ -75,10 +75,9 @@ are resolved and created by accessing those immutable members.
 In order to support any other resource and resource collections, like marketplaces and fungible tokens, the following new interface is proposed:
 ```
 pub resource interface ViewResolverCollection {
-		pub fun borrowViewResolver(id: UInt64): &{ViewResolver}
-		pub fun getIDs(): [UInt64]
-	}
-
+    pub fun borrowViewResolver(id: UInt64): &{ViewResolver}
+    pub fun getIDs(): [UInt64]
+}
 ```
 
 This will allow any collection to be exposed as view resolvable.
