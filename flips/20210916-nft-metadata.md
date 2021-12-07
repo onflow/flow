@@ -104,7 +104,7 @@ pub struct interface ViewConverter {
 
 The most basic example is having `String` be a view. Think of this as `toString()` in Java or a `Stringer` implementation in Go. It is a way to view your NFT as a string. 
 
-The bigger brother of `String` would be `Display`. How do you preview an NFT in blocot, a marketplace or other solutions:
+The bigger brother of `String` would be `Display`. Here is how you could display an NFT in a wallet, marketplace or other user-facing application:
 ```
 	pub struct Display{
 		pub let name: String
