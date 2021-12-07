@@ -97,7 +97,7 @@ pub struct interface ViewConverter {
 }
 ```
 
-The Dandy NFT contract in Find has an example on how to do this: https://github.com/findonflow/find/blob/main/contracts/Dandy.cdc#L328. it would also be possible to create a central repository of  ViewConverters where you send in a ViewResolver interface to get and resolve views.
+[The Dandy NFT contract in Find has an example on how to do this](https://github.com/findonflow/find/blob/main/contracts/Dandy.cdc#L328). It would also be possible to create a central repository of ViewConverters where you send in a ViewResolver interface to get and resolve views.
 
  
 ### Basic Views
