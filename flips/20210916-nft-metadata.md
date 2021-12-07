@@ -35,7 +35,7 @@ in different ways with this solution. Without it all marketplaces need to hardco
 for all NFTs directly. 
 
 It will also open up the possibility to standardize on some shared structs like Royalty 
-and SaleItem/Auction aso.
+and SaleItem/Auction.
 
 ## Design Proposal
 
