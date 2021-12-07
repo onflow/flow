@@ -82,7 +82,7 @@ pub resource interface ViewResolverCollection {
 
 This will allow any collection to be exposed as view resolvable.
 
-For single resources that are stored as is like a FungibleToken or a Profile contract you can just implement the ViewResolver interface directly.
+For single resources that are stored as is like a fungible token or a profile contract you can just implement the `ViewResolver` interface directly.
 
 ### Converting between different views. 
 
