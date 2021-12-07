@@ -1,5 +1,13 @@
 # Non-Fungible Token Metadata
 
+| Status        | Proposed |
+:-------------- |:---------------------------------------------------- |
+| **FLIP #**    | [636](https://github.com/onflow/flow/pull/636)                                                                         |
+| **Author(s)** | Bjarte Karslen (bjartek@find.xyz), Deniz Mert Edincik (you@example.org), Brian Dilley (you@example.org) |
+| **Sponsor**   | Peter Siemens (peter@dapperlabs.com)                                                                                   |
+| **Updated**   | 2021-12-06                                                                                                             |
+
+
 ## Objective
 This proposal will make it possible to create generic solutions that will interoperate 
 through views and not hard-coded NFT types. Want to create a marketplace? If you know 
