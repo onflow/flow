@@ -369,7 +369,7 @@ It could be worth exploring a design-by-contract paradigm to formalize this in a
 The following examples show the flexibility of this proposal with varying implementations.
 
 ### Example one:
-The find project is going to be using metadata as lookup and index points. The project is available here:
+The Find project is going to be using metadata as lookup and index points. The project is available here:
 https://github.com/findonflow/find
 
 ### Example two:
