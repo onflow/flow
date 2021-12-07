@@ -84,7 +84,7 @@ This will allow any collection to be exposed as view resolvable.
 
 For single resources that are stored as is like a fungible token or a profile contract you can just implement the `ViewResolver` interface directly.
 
-### Converting between different views. 
+### Converting between different views
 
 Standards will evolve and new views will be added. In order to make it easier for maintainers we propose a mechanism to regsiter a converter from one View to another. 
 
