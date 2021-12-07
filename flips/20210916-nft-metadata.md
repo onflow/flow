@@ -91,22 +91,6 @@ pub resource interface ViewResolverCollection {
 This will allow any collection to be exposed as view resolvable.
 
 For single resources that are stored as is like a fungible token or a profile contract you can just implement the `ViewResolver` interface directly.
-
-### Converting between different views
-
-Standards will evolve and new views will be added. In order to make it easier for maintainers we propose a mechanism to register a converter from one View to another:
-
-```
-pub struct interface ViewConverter {
-    pub let to: Type
-    pub let from: Type
-
-    pub fun convert(_ value:AnyStruct): AnyStruct
-}
-```
-
-[The Dandy NFT contract in Find has an example on how to do this](https://github.com/findonflow/find/blob/main/contracts/Dandy.cdc#L328). It would also be possible to create a central repository of ViewConverters where you send in a ViewResolver interface to get and resolve views.
-
  
 ### Basic Views
 
