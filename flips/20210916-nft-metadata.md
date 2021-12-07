@@ -168,7 +168,7 @@ data: QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4
 contentType: image/jpeg
 protocol: ipfs
 
-An http image
+An HTTP image:
 data: https://test.find.xyz/find.png
 contentType: image/jpeg
 protocol: http
