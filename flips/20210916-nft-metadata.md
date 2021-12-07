@@ -163,7 +163,7 @@ pub struct Media {
 ```
 Examples here are:
 
-An Image on IPFS:
+An image on IPFS:
 data: QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4
 contentType: image/jpeg
 protocol: ipfs
