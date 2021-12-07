@@ -176,7 +176,7 @@ data: https://test.find.xyz/find.png
 contentType: image/jpeg
 protocol: http
 
-An onChain image
+An on-chain image:
 data: data:image/png;base64,SOMEPNGDATAURI/wD/
 contentType: image/jpeg
 protocol: data
