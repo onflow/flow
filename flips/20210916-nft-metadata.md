@@ -2,10 +2,10 @@
 
 | Status        | Proposed |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | [636](https://github.com/onflow/flow/pull/636)                                                                                     |
-| **Author(s)** | Bjarte Karslen (bjartek@find.xyz), Deniz Mert Edincik (you@example.org), Brian Dilley (briandilley@briandilley.com) |
-| **Sponsor**   | Peter Siemens (peter@dapperlabs.com)                                                                                               |
-| **Updated**   | 2021-12-06                                                                                                                         |
+| **FLIP #**    | [636](https://github.com/onflow/flow/pull/636)                                                                                       |
+| **Author(s)** | Bjarte Karslen (bjartek@find.xyz), Deniz Mert Edincik (Deniz@edincik.com), Brian Dilley (briandilley@briandilley.com) |
+| **Sponsor**   | Peter Siemens (peter@dapperlabs.com)                                                                                                 |
+| **Updated**   | 2021-12-06                                                                                                                           |
 
 
 ## Objective
