@@ -149,18 +149,17 @@ let artwork = nft.resolveView(Type<ArtNFT.IPFSImage>()) as? ArtNFT.IPFSImage
 
 Another suggestion for media from FIND is:
 ```
-	*/
-	pub struct Media {
-		pub let data: String
-		pub let contentType: String
-		pub let protocol: String
+pub struct Media {
+    pub let data: String
+    pub let contentType: String
+    pub let protocol: String
 
-		init(data:String, contentType: String, protocol: String) {
-			self.data=data
-			self.protocol=protocol
-			self.contentType=contentType
-		}
-	}
+    init(data:String, contentType: String, protocol: String) {
+        self.data=data
+        self.protocol=protocol
+        self.contentType=contentType
+    }
+}
 ```
 Examples here are:
 
