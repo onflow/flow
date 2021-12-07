@@ -102,7 +102,7 @@ pub struct interface ViewConverter {
  
 ### Basic Views
 
-The most basic example is having `String` be a view. Think of this as toString() in java or Stringer in go. A way to view your NFT as a string. 
+The most basic example is having `String` be a view. Think of this as `toString()` in Java or a `Stringer` implementation in Go. It is a way to view your NFT as a string. 
 
 The bigger brother of `String` would be `Display`. How do you preview an NFT in blocot, a marketplace or other solutions:
 ```
