@@ -343,7 +343,7 @@ Due to the potentially dynamic nature of this proposal, the methods that return 
 in any way that the NFT author sees fit which could lead to some non-performant implementations.
 
 ## Dependencies
-This builds on the existing NFT interfaces.
+This proposal builds on the existing NFT interface defined [here](https://github.com/onflow/flow-nft).
 
 ## Engineering Impact
 
