@@ -123,7 +123,7 @@ pub struct Display{
 }
 ```
 
-The data here is taken from what blocto uses to display an NFT in their application.
+The data above is taken from what the [Blocto wallet](https://blocto.portto.io/) uses to display an NFT in their application.
  - Would it be wise to add some sort of link here to be able to know how to navigate to the source page for this resource?
 
 ### [Other](Other) examples
