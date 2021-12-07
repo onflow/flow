@@ -71,7 +71,7 @@ This proposal by no means precludes the use of member variable on the NFT resour
 ideally all immutable data for an NFT is stored as immutable members of the NFT resource and views 
 are resolved and created by accessing those immutable members.
 
-### Supporting other resources besides NFT
+### Supporting other resources besides NFTs
 In order to support any other resource and resource Collection like marketplaces and FT the following new interface is proposed:
 ```
 pub resource interface ViewResolverCollection {
