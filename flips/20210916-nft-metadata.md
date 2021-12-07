@@ -288,54 +288,6 @@ by @bjartek, @rheaplex and @dete.
 	}
 ```	
 
-### Versus
-
-The versus project at versus.auction can be adapted to the new standard using these few lines of code
-
-```
-
-	 pub fun getViews() : [Type] {
-			return [
-			Type<String>(),
-			Type<TypedMetadata.Display>(),
-			Type<TypedMetadata.Editioned>(),
-			Type<TypedMetadata.CreativeWork>(),
-			Type<{TypedMetadata.Royalty}>(),
-			Type<TypedMetadata.Media>()
-			]
-		}
-		
-	 pub fun resolveView(_ type: Type): AnyStruct {
-
-			if type== Type<String>() {
-				return self.name.concat(" ").concat(self.metadata.edition.toString()).concat(" of ").concat(self.metadata.maxEdition.toString()).concat(" by ").concat(self.metadata.artist)
-			}
-
-			if type == Type<TypedMetadata.Display>() {
-				let description=self.metadata.description.concat(" by:").concat(self.metadata.artist).concat( " edition ").concat(self.metadata.edition.toString()).concat( " of ").concat(self.metadata.maxEdition.toString())
-				return TypedMetadata.Display(name: self.metadata.name, thumbnail: self.url!, description: description, source: "versus")
-			}
-
-			if type == Type<TypedMetadata.Editioned>() {
-				return TypedMetadata.Editioned(edition: self.metadata.edition, maxEdition:self.metadata.maxEdition)
-			}
-			if type == Type<TypedMetadata.CreativeWork>() {
-				return TypedMetadata.CreativeWork(artist:self.metadata.artist, name: self.metadata.name, description: self.metadata.description, type:self.metadata.type)
-			}
-			if type == Type<{TypedMetadata.Royalty}>() {
-				return Royalties(self.royalty)
-			}
-
-			if type == Type<TypedMetadata.Media>() {
-				if self.url != nil {
-					return TypedMetadata.Media(data: self.url!, contentType: self.metadata.type, protocol: "http")
-				}
-			}
-			return nil
-		}
-		
-```
-
 ## Drawbacks
 This standard does not include any required ways to store the metadata, and therefore some of the metadata 
 could be dynamic depending on how the NFTs are authored. This is a double edged sword; it allows for greater 
