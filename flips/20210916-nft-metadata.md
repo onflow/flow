@@ -142,10 +142,9 @@ struct IPFSImage {
 
 It could then be retrieved from the NFT using the following:
 ```
-   import ArtNFT from 0x01010101
+import ArtNFT from 0x01010101
    
-   let artwork = nft.resolveView(Type<ArtNFT.IPFSImage>()) as? ArtNFT.IPFSImage
-   
+let artwork = nft.resolveView(Type<ArtNFT.IPFSImage>()) as? ArtNFT.IPFSImage
 ```
 
 Another suggestion for media from FIND is:
