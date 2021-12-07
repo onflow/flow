@@ -158,14 +158,14 @@ smnzhu@mbp:~$ gsutil ls gs://flow_public_mainnet13_execution_state | wc -l
   473590
 ```
 
-**Execution State Index (~3 week spork)**
+**Execution state index (~3 week spork)**
 
 ```console
 simon_zhu_dapperlabs_com@observer-001 /var/flow/data/mainnet-13 $ sudo du -sh index
 103G    index
 ```
 
-Based on the numbers above, we should require Access nodes to have >43GB of RAM (27GB + current 16GB requirement) and minimum 1.5-2TB of storage space for a 3 month spork. These requirements can likely be decreased if sharding is implemented (see [Future Optimizations](#future-optimizations)).
+Based on the numbers above, we should require Access nodes to have >43GB of RAM (27GB + current 16GB requirement) and minimum 1.5-2TB of storage space for a 3 month spork. However, these requirements don't have to be met by a single machine, because the historic state does not change. The historic state can be easily distributed over many physical machines allowing for arbitrary horizontal scaling (see [Future Optimizations](#future-optimizations)).
 
 ## Future Optimizations
 
@@ -175,22 +175,13 @@ Having a checkpointing mechanism will allow new nodes to catch up more quickly, 
 
 Access nodes can periodically (e.g. at every 10000th block) generate a snapshot of the full state index and store it in their blobstore. Thereby, new Access nodes (and other external clients) could directly sync starting from the most recent snapshot and catch up via per-block Execution Data updates (before they sync the full state history if they desire to do so).
 
-The root CID of the snapshot must be shared with new nodes somehow so that they can use it to download the snapshot via Bitswap. There are a few ways this can be done:
+In order to download a snapshot via Bitswap, a new node can acquire the root CID by randomly selecting a couple of existing Access nodes and asking them for it. If the responses it receives are concordant, it can go ahead and download the data. Once the download is complete, it can generate the state trie for each block and compare its hash to the one found on-chain in the corresponding Execution Result. If it finds an inconsistency, it has all the evidence it needs to submit a slashing challenge against the nodes which provided it with the bad CID.
 
-* The CID can be shared on a broadcast channel using a *Byzantine consistent broadcast* algorithm<sup>[6](#footnotes)</sup>.
-* A new Access node can randomly select a couple of other Access nodes and simply ask them for the CID. If the responses it receives are concordant, it can go ahead and download the data. Once the download is complete, it can generate the state trie for each block and compare its hash to the one found on-chain in the corresponding Execution Result. If it finds an inconsistency, it has all the evidence it needs to submit a slashing challenge against the nodes which provided it with the bad CID.
+### Horizontal Scaling of Historical State Storage
 
-### Sharding
+Internally, the Access node can employ a classical micro-service architecture. In particular, the execution state index can be horizontally scaled across multiple machines, allowing Access node operators with external business incentives to store the full state history.
 
-The Execution Data can be sharded so that each Access node only needs to store and respond to requests for a fraction of the entire dataset.
-
-There are many ways that sharding can be implemented. For example, consistent hashing can be used to determine the assignment of Execution Data to Access nodes, so that when nodes join or leave the network at each epoch, the Execution Data can be remapped according to the consistent hashing scheme. We should use the Random Beacon to determine each Access node's locations around the consistent hashing circle in order to prevent malicious Access nodes from purposely skewing the distribution.
-
-It remains a challenge to ensure that Access nodes keep Execution Data available instead of pruning it and ignoring Bitswap requests. *Data availability proofs* and *proofs of retrievability* may be helpful here:
-
-* [A note on data availability and erasure coding](https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding)
-* [Towards on-chain non-interactive data availability proofs](https://ethresear.ch/t/towards-on-chain-non-interactive-data-availability-proofs/4602)
-* [Proofs of Retrievability: Theory and Implementation](http://www.arijuels.com/wp-content/uploads/2013/09/BJO09b.pdf)
+Any queries which access historical execution state can be handled by a service which is deployed and run separately from the Access node. This service can be sharded by block height, with each shard only responsible for queries within a specific height range. Each shard can be further scaled with multiple identical instances if necessary to handle higher load on more recent height ranges.
 
 ---
 
@@ -201,4 +192,3 @@ It remains a challenge to ensure that Access nodes keep Execution Data available
 3. Execution Results *must* be deterministic (if two Execution nodes get the same result after executing a block, they must generate the same Execution Result). This implies that we need a protocol-level specification of how Trie Updates should be ordered. The current convention is that reads / writes are deterministically ordered by their respective register IDs.
 4. Note that it's possible for the blob trees of two distinct Execution Data objects to contain overlapping nodes. We should be careful not to purge any blobs from the sealed Execution Data's blob tree.
 5. We could avoid all of this by waiting until an Execution Result is sealed before initiating the download of its Execution Data, but we choose to eagerly download data in order to achieve lower latency.
-6. These are motivated and specified in Section 3.10 of [Introduction to Reliable and Secure Distributed Programming](https://www.distributedprogramming.net/).
