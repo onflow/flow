@@ -86,7 +86,7 @@ For single resources that are stored as is like a fungible token or a profile co
 
 ### Converting between different views
 
-Standards will evolve and new views will be added. In order to make it easier for maintainers we propose a mechanism to regsiter a converter from one View to another. 
+Standards will evolve and new views will be added. In order to make it easier for maintainers we propose a mechanism to register a converter from one View to another:
 
 ```
 pub struct interface ViewConverter {
