@@ -80,7 +80,7 @@ In order to preserve the bandwidth of Execution nodes, who are the only creators
 
 ![Execution Data Fanout](20211026-state-sync-protocol/data-fanout.jpeg)
 
-> There is a [data availability problem](https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding#what-is-the-data-availability-problem) here, where Execution nodes could ignore Bitswap requests and refuse to send any data to Access nodes. It may be possible to solve this using similar techniques as those described in [Sharding](#sharding).
+> There is a [data availability problem](https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding#what-is-the-data-availability-problem) here, where Execution nodes could ignore Bitswap requests and refuse to send any data to Access nodes. It may be possible to solve this using [data availability proofs](https://ethresear.ch/t/towards-on-chain-non-interactive-data-availability-proofs/4602).
 
 There are various reasons why a particular Execution Result may never end up being sealed:
 
