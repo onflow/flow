@@ -30,7 +30,7 @@ We feel that a standard that authors can implement that enables easy consumption
 will lead to more applications that integrate NFTs. This will make NFTs intrinsically more 
 useful and valuable to the end users holding the NFTs.
 
-A user will be much more likely to transfer his NFT to other marketplaces and sell his NFT 
+A user will be much more likely to transfer their NFT to other marketplaces and sell their NFT 
 in different ways with this solution. Without it all marketplaces need to hardcode support 
 for all NFTs directly. 
 
