@@ -2,7 +2,7 @@
 
 ## Objective
 This proposal will make it possible to create generic solutions that will interoperate 
-through views and not hard coded NFT types. Want to create a Marketplace? If you know 
+through views and not hard-coded NFT types. Want to create a marketplace? If you know 
 how to display a certain Type that defines a sellable Item you can do so. And it will 
 work for any contract and any resource, not just a single one. 
 
