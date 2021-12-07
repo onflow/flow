@@ -190,7 +190,7 @@ struct Artwork {
     let artistName: String
 }
 
-...
+// ...
 
 let artwork = nft.resolveView(Type<ArtNFT.Artwork>()) as? ArtNFT.Artwork
 ```
