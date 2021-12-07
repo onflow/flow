@@ -128,8 +128,8 @@ The data above is taken from what the [Blocto wallet](https://blocto.portto.io/)
 
 ### Other examples
 
-[For](For) example, an NFT implementation for artwork may want to allow for the image data to be retrieved 
-as an `HostedImage` struct:
+For example, an NFT artwork implementation may want to allow for image data to be retrieved 
+as an `IPFSImage` struct:
 ```
 struct IPFSImage {
     let url: String
