@@ -106,21 +106,21 @@ The most basic example is having `String` be a view. Think of this as `toString(
 
 The bigger brother of `String` would be `Display`. Here is how you could display an NFT in a wallet, marketplace or other user-facing application:
 ```
-	pub struct Display{
-		pub let name: String
-		pub let thumbnail: String
-		pub let description: String
+pub struct Display{
+    pub let name: String
+    pub let thumbnail: String
+    pub let description: String
 		
-		//This is a field describing the source of this NFT, so this could be Versus,Evolution,Chainmonster aso.
-		pub let source: String
+    // This is a field describing the source of this NFT. This could be Versus, Evolution, Chainmonsters, etc.
+    pub let source: String
 
-		init(name:String, thumbnail: String, description: String, source:String) {
-			self.source=source
-			self.name=name
-			self.thumbnail=thumbnail
-			self.description=description
-		}
-	}
+    init(name:String, thumbnail: String, description: String, source:String) {
+        self.source=source
+        self.name=name
+        self.thumbnail=thumbnail
+        self.description=description
+    }
+}
 ```
 
 The data here is taken from what blocto uses to display an NFT in their application.
