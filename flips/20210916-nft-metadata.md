@@ -336,7 +336,7 @@ however, may be desirable. For instance, a game may allow an NFT to be used as a
 expose a view that exposes a member containing the character's health.
 
 ## Alternatives Considered
-A number of alternatives were discussed [here](https://github.com/onflow/flow-nft/issues/9)
+A number of alternatives were discussed [here](https://github.com/onflow/flow-nft/issues/9).
 
 ## Performance Implications
 Due to the potentially dynamic nature of this proposal, the methods that return metadata views can be implemented 
