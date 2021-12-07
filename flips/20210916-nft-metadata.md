@@ -72,7 +72,7 @@ ideally all immutable data for an NFT is stored as immutable members of the NFT 
 are resolved and created by accessing those immutable members.
 
 ### Supporting other resources besides NFTs
-In order to support any other resource and resource Collection like marketplaces and FT the following new interface is proposed:
+In order to support any other resource and resource collections, like marketplaces and fungible tokens, the following new interface is proposed:
 ```
 pub resource interface ViewResolverCollection {
 		pub fun borrowViewResolver(id: UInt64): &{ViewResolver}
