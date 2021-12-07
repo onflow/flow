@@ -126,7 +126,7 @@ pub struct Display{
 The data above is taken from what the [Blocto wallet](https://blocto.portto.io/) uses to display an NFT in their application.
  - Would it be wise to add some sort of link here to be able to know how to navigate to the source page for this resource?
 
-### [Other](Other) examples
+### Other examples
 
 [For](For) example, an NFT implementation for artwork may want to allow for the image data to be retrieved 
 as an `HostedImage` struct:
