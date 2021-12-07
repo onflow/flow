@@ -1,5 +1,11 @@
 # Execution State Synchronization Protocol
 
+| Status        | Proposed                                             |
+:-------------- |:---------------------------------------------------- |
+| **Author(s)** | Simon Zhu (simon.zhu@dapperlabs.com)                 |
+| **Sponsor**   | Simon Zhu (simon.zhu@dapperlabs.com)                 |
+| **Updated**   | 2021-12-07                                           |
+
 ## Context
 
 Today, Access nodes act as the gateway to the Flow network, providing a query endpoint for users (REST, gRPC) and performing important admission control duties such as:
@@ -62,7 +68,7 @@ They will then serialize each of these fields separately<sup>[1](#footnotes)</su
 2. Compute the CID of each blob and store it in the blobstore.
 3. If the number of CIDs computed in the previous step is 1, then return this CID. Otherwise, serialize the CID list and repeat from step 1 with the new serialized data<sup>[2](#footnotes)</sup>.
 
-![Execution Data Blob Tree](blob-tree.jpeg)
+![Execution Data Blob Tree](20211026-state-sync-protocol/blob-tree.jpeg)
 
 At the end of this process, we are left with four root CIDs (one for each field in the Execution Data). These will be included in an [Execution Result](https://github.com/onflow/flow-go/blob/master/model/flow/execution_result.go) from which an [Execution Receipt](https://github.com/onflow/flow-go/blob/master/model/flow/execution_receipt.go) is generated and later broadcast to the network<sup>[3](#footnotes)</sup>.
 
@@ -72,7 +78,7 @@ Each time an Access node receives a new Execution Receipt, it will initiate a Bi
 
 In order to preserve the bandwidth of Execution nodes, who are the only creators of new data, their Bitswap implementation will be configured with custom request prioritization logic so that queries for the Execution Data of newer blocks are answered first. The expectation here is that as new blocks are executed, the likelihood that requests for older Execution Data are answered by Access nodes (rather than Execution nodes) will increase. Execution nodes will also implement an expiration policy so that the Execution Data for blocks older than a certain threshold are purged entirely, leaving Access nodes with the full responsibility of providing this data to new nodes joining the network.
 
-![Execution Data Fanout](data-fanout.jpeg)
+![Execution Data Fanout](20211026-state-sync-protocol/data-fanout.jpeg)
 
 > There is a [data availability problem](https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding#what-is-the-data-availability-problem) here, where Execution nodes could ignore Bitswap requests and refuse to send any data to Access nodes. It may be possible to solve this using similar techniques as those described in [Sharding](#sharding).
 
