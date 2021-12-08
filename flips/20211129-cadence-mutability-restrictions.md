@@ -5,7 +5,7 @@
 | **FLIP #**    | [703](https://github.com/onflow/flow/pull/703)       |
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
-| **Updated**   | 2021-11-29                                           |
+| **Updated**   | 2021-12-08                                           |
 
 ## Objective
 
