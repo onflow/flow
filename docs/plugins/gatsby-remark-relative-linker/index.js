@@ -1,6 +1,4 @@
 const visit = require("unist-util-visit");
-const path = require("path");
-
 module.exports = ({ markdownAST }) => {
   visit(markdownAST, "link", (node) => {
     if (
@@ -10,9 +8,9 @@ module.exports = ({ markdownAST }) => {
       node.url.startsWith("/")
     ) {
       node.url = node.url.replace(
-        /(.*)\.(\w{2}).(md|mdx)(#.*)?$/,
+        /(.*)\.(\w{2}).mdx(#.*)?$/,
         (match, base, language, hash) => {
-          return `/${language}${path.parse(base).name}${hash}`;
+          return `/${language}${base}${hash}`;
         }
       );
     }
