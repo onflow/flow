@@ -8,7 +8,7 @@ module.exports = ({ markdownAST }) => {
       node.url.startsWith("/")
     ) {
       node.url = node.url.replace(
-        /(.*)\.(\w{2}).mdx(#.*)?$/,
+        /(.*)\.(\w{2}).(md|mdx)(#.*)?$/,
         (match, base, language, hash) => {
           return `/${language}${base}${hash}`;
         }
