@@ -110,6 +110,10 @@ const sourceGithubRepos = {
     githubRepo: "onflow/fcl-js",
     // NOTE: path is empty, whole repo is sourced
     path: "docs"
+  },
+  "flow-emulator-github": {
+    githubRepo: "onflow/flow-emulator",
+    path: ""
   }
 };
 
@@ -125,7 +129,7 @@ const sourceSlugTransformers = {
     slug
       .replace(/^\/docs\//, "/flow-go-sdk/")
       .replace(/^\/examples\//, "/flow-go-sdk/examples/"),
-   
+
   "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/"),
   "flow-js-testing-github": (slug) =>
     slug.replace(/^\/docs\//, "/flow-js-testing/"),
@@ -135,7 +139,8 @@ const sourceSlugTransformers = {
       .replace(
         /^\/ubiquitous-language\//,
         "/sdk-guidelines/ubiquitous-language/"
-      )
+      ),
+  "flow-emulator-github": (slug) => slug.replace(/^\/README\//, "/emulator/")
 };
 
 const sources = [
@@ -152,6 +157,14 @@ const sources = [
       name: "sdk-guidelines-github",
       remote: "https://github.com/onflow/sdks",
       patterns: "**/*"
+    }
+  },
+  {
+    resolve: "gatsby-source-git",
+    options: {
+      name: "flow-emulator-github",
+      remote: "https://github.com/onflow/flow-emulator",
+      patterns: ["README.md", "emulator-banner.svg"]
     }
   },
   {
@@ -578,12 +591,12 @@ const sections = [
     }
   },
   {
-    sourceInstanceName: "docs",
-    patterns: ["emulator/**/*"],
+    sourceInstanceName: "flow-emulator-github",
+    patterns: ["README.md"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["emulator/index"]
+      Overview: ["emulator/"]
     }
   },
   {
