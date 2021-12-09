@@ -252,7 +252,7 @@ pub struct URLWithHash {
 
 ### Royalty 
 
-This particular problem has been discussed extensivly. The following suggestion was agreed upon
+This particular problem has been discussed extensively. The following suggestion was agreed upon
 by @bjartek, @rheaplex and @dete. 
 
 ```
