@@ -17,7 +17,7 @@ work for any contract and any resource, not just a single one.
 ## Motivation
 Currently there is no standard for defining NFT/resource metadata. At best, most implementations 
 employ a simple `{String: AnyStruct}` dictionary. Due to the various methods that NFT 
-authors use it’s hard / impossible to create applications that use NFTs whether it be 
+authors use, it’s hard / impossible to create applications that use NFTs whether it be 
 for something as simple as viewing them or as complex as integrating them into a game 
 or application.
 
