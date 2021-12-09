@@ -4,15 +4,12 @@ module.exports = ({ markdownAST }) => {
     if (
       node.url &&
       !node.url.startsWith("//") &&
-      !node.url.startsWith("http") &&
-      node.url.startsWith("/")
+      !node.url.startsWith("http")
     ) {
-      node.url = node.url.replace(
-        /(.*)\.(\w{2}).mdx(#.*)?$/,
-        (match, base, language, hash) => {
-          return `/${language}${base}${hash}`;
-        }
-      );
+      node.url = node.url
+        .replace(/\A\.\//, "../")
+        .replace(".mdx", () => "")
+        .replace(".md", () => "");
     }
   });
 
