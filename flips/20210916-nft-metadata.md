@@ -26,7 +26,7 @@ you want to support. This will often lead to duplicated contracts and code and j
 of things to maintain. This standard will enable you to create a single Auction contract 
 and define the Type of views you need to expose in your NFT in order to support the contract. 
 So it will enable a design-by-contract pattern where the creator of a contract can define 
-the views it requires and an NFT can tell what views they export. 
+the views it requires and a NFT can tell what views they export. 
 
 All NFTs and contracts using NFTs on Flow are affected by this problem. This is most 
 visible in the number of contracts that Viv3 needs in order to support all their different 
