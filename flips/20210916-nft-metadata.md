@@ -173,7 +173,7 @@ protocol: data
 The problem here is that the on-chain image can be quite large and you might not want to resolve those every time you fetch the media view. So what if we made a method on the struct that allowed you to retrieve the data/content instead?
 
 
-The same NFT author may also want expose other metadata about the artwork:
+The same NFT author may also want to expose other metadata about the artwork:
 ```
 struct Artwork {
     let name: String
