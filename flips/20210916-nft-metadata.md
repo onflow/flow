@@ -260,7 +260,7 @@ by @bjartek, @rheaplex and @dete.
 	pub struct interface Royalty {
 
 		/// if nil cannot pay this type
-		/// if not nill withdraw that from main vault and put it into distributeRoyalty 
+		/// if not nil withdraw that from main vault and put it into distributeRoyalty 
 		pub fun calculateRoyalty(type:Type, amount:UFix64) : UFix64?
 
 		/// call this with a vault containing the amount given in calculate royalty and it will be distributed accordingly
