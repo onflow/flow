@@ -21,7 +21,7 @@ authors use, it’s hard / impossible to create applications that use NFTs wheth
 for something as simple as viewing them or as complex as integrating them into a game 
 or application.
 
-If you want to create an Auction contract on Flow today you have to hardcode all the NFTs 
+If you want to create an Auction contract on Flow today, you have to hardcode all the NFTs 
 you want to support. This will often lead to duplicated contracts and code and just lots 
 of things to maintain. This standard will enable you to create a single Auction contract 
 and define the Type of views you need to expose in your NFT in order to support the contract. 
