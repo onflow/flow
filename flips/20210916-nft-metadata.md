@@ -56,7 +56,7 @@ pub resource interface ViewResolver {
 ```
 
 We will also add default implementations for these methods so that no compatibility will be broken 
-for existing NFT solutions. The new NFT interface could look something like this: 
+for existing NFT solutions. The new NFT resource could look something like this: 
 ```
 pub resource NFT: INFT, ViewResolver {
     pub let id: UInt64
