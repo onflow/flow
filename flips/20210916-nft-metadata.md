@@ -39,7 +39,7 @@ will lead to more applications that integrate NFTs. This will make NFTs intrinsi
 useful and valuable to the end users holding the NFTs.
 
 A user will be much more likely to transfer their NFT to other marketplaces and sell their NFT 
-in different ways with this solution. Without it all marketplaces need to hardcode support 
+in different ways with this solution. Without it, all marketplaces need to hardcode support 
 for all NFTs directly. 
 
 It will also open up the possibility to standardize on some shared structs like Royalty 
