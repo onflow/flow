@@ -7,9 +7,10 @@ module.exports = ({ markdownAST }) => {
       !node.url.startsWith("http")
     ) {
       node.url = node.url
-        .replace(/\A\.\//, "../")
-        .replace(".mdx", () => "")
-        .replace(".md", () => "");
+        .replace(/\(.\//, "../")
+        .replace("#", "/#")
+        .replace(".mdx", "")
+        .replace(".md", "");
     }
   });
 
