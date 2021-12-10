@@ -188,7 +188,7 @@ const sources = [
     resolve: "gatsby-source-git",
     options: {
       name: "flow-js-testing-github",
-      branch: "master",
+      branch: "fix_docs",
       remote: "https://github.com/onflow/flow-js-testing.git",
       patterns: ["docs/**/*", "examples/**/*"]
     }

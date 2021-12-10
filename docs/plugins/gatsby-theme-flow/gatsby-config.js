@@ -49,10 +49,6 @@ module.exports = ({
 }) => {
   const gatsbyRemarkPlugins = [
     {
-      resolve: "gatsby-remark-relative-linker",
-      options: {}
-    },
-    {
       resolve: "gatsby-remark-autolink-headers",
       options: {
         offsetY: HEADER_HEIGHT
@@ -65,6 +61,7 @@ module.exports = ({
       }
     },
     "gatsby-remark-code-titles",
+    "gatsby-remark-relative-linker",
     {
       resolve: "gatsby-remark-vscode-flow",
       options: {
