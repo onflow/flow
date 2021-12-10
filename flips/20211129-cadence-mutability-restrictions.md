@@ -1,4 +1,4 @@
-# Title of FLIP
+Cadence Mutability Restrictions
 
 | Status        | (Proposed)       |
 :-------------- |:---------------------------------------------------- |
@@ -11,7 +11,7 @@
 
 This proposed change would limit the scopes in which the fields of composite types
 like contracts, structs, and resources can be mutated. Instead of allowing array 
-and dictionary fields to be modified in any scope where the field can be read, instead
+and dictionary fields to be modified in any scope where the field can be read,
 Cadence would issue a type error. These fields would instead be only modifiable 
 in the current declaration scope, as well as inner scopes of that scope. 
 
@@ -46,7 +46,7 @@ though, depending on what is stored in `x`, this could be unsafe.
 This change makes it less likely for a user to expose a value from a contract or other
 publicly accessible structure that is not intended to be mutable, but can be modified 
 by consumers of their contract regardless. This is important for a future stable, 
-permissionless version of Cadence, where users to not need to have their smart
+permissionless version of Cadence, where users do not need to have their smart
 contracts reviewed in order to deploy them to Flow. By removing one possible way that 
 users could write unsafe smart contracts, we make it easier for everyone to trust the
 correctness of contracts deployed to Flow. 
