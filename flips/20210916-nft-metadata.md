@@ -45,6 +45,7 @@ for all NFTs directly.
 It will also open up the possibility to standardize on some shared structs like Royalty 
 and SaleItem/Auction.
 
+Indirectly, users will benefit from the fact that Flow developers can put their development cycles to better use than integrating each new NFT contract to their platform.
 ## Design Proposal
 
 The core of this proposal is to add the following interface and have the NFT resource implement it
