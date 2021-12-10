@@ -1,4 +1,4 @@
-# Title of FLIP
+# Cadence Storage API Improvements
 
 | Status        | (Proposed)       |
 :-------------- |:---------------------------------------------------- |
