@@ -63,7 +63,7 @@ contained within that scope.
 
 However, simply writing to a field directly is not the only way in which one can modify a value. Consider the following example:
 
-```cadence
+```
 pub struct Foo {
     pub let x: [Int]
 
@@ -77,6 +77,7 @@ pub fun bar() {
     foo.x = [0] // writes to x, not allowed
     foo.x[0] = 0 // does not write to x, currently allowed
 }
+```
 
 This FLIP would change Cadence to also restrict the scopes in which an array or dictionary field can be modified (or "mutated"). 
 Examples of mutating operations include an indexed assignment, as in the above example, as well as calls to the `append` or `remove`,
