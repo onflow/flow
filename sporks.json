@@ -22,7 +22,7 @@
               "root-checkpoint-file": "",
               "root-protocol-state-snapshot": "",
               "node-info": "",
-              "execution-state-wal-chunks": ""
+              "execution-state-wal-chunks": "https://flow-public-mainnet15-execution-state.s3.amazonaws.com"
             }
           },
           "flow-go-tag": "v0.23.4",
