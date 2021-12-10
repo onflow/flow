@@ -1,6 +1,6 @@
 # Cadence Storage API Improvements
 
-| Status        | (Proposed)       |
+| Status        | (Approved)       |
 :-------------- |:---------------------------------------------------- |
 | **FLIP #**    | [718](https://github.com/onflow/flow/pull/718) (update when you have PR #)|
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
