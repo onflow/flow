@@ -7,7 +7,7 @@ module.exports = ({ markdownAST }) => {
       !node.url.startsWith("mailto:") &&
       !/^https?:\/\//.test(node.url)
     ) {
-      let foundNoPrefix = node.url.match(/^[\w-_]/);
+      let foundNoPrefix = node.url.match(/^[\w-_]+/);
       let foundDepth1 = node.url.match(/^\.\//);
       let foundDepth2 = node.url.match(/^\.\.\//);
       let foundDepth3 = node.url.match(/^\.\.\/\.\.\//);

@@ -57,7 +57,7 @@ module.exports = ({
     {
       resolve: "gatsby-remark-copy-linked-files",
       options: {
-        ignoreFileExtensions: []
+        ignoreFileExtensions: ["md", "mdx"]
       }
     },
     "gatsby-remark-code-titles",
