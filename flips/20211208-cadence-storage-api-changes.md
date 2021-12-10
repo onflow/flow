@@ -45,8 +45,11 @@ after this change, it will now abort execution.
 
 ### Drawbacks
 
-This is a breaking change, and will require existing contracts to be updated to 
-account for this change. 
+This is a breaking change, and may require existing contracts to be updated to 
+account for this change. However, contracts that only loaded values from storage
+that were the correct type will not need to change. Users should audit their
+existing contracts to determine whether or not their storage acceses need
+to be rewritten.
 
 ### Best Practices
 
