@@ -1,8 +1,8 @@
-# Title of FLIP
+# Optional References to Indexed Accesses
 
 | Status        | (Proposed)       |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | [722](https://github.com/onflow/flow/pull/722) (update when you have PR #)|
+| **FLIP #**    | [722](https://github.com/onflow/flow/pull/722) |
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Updated**   | 2021-12-09                                           |
