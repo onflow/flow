@@ -4,6 +4,34 @@
       "name": "mainnet",
       "sporks": [
         {
+          "id": 15,
+          "name": "Mainnet-15",
+          "spork-time": "2021-12-09T16:00:00Z",
+          "root-height": "21291692",
+          "root-parent-id": "8a28ddc6653a8991435dfbc95103d6be1a3b653cda3d664681215ee93112a203",
+          "root-state-commit": "84d9b325d3f48f7f075eea0db6c246cb5adc759a2dd8561e461477a7ca1f7f22",
+          "git-commit-hash": "bfde54ae3324db5d18ebeaa22c70b5574a114f2e",
+          "state-artefacts" : {
+            "gcp": {
+              "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-15-execution/public-root-information/root.checkpoint",
+              "root-protocol-state-snapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-15-execution/public-root-information/root-protocol-state-snapshot.json",
+              "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-15-execution/public-root-information/node-infos.pub.json",
+              "execution-state-wal-chunks": "https://storage.googleapis.com/flow_public_mainnet15_execution_state"
+            },
+            "s3": {
+              "root-checkpoint-file": "",
+              "root-protocol-state-snapshot": "",
+              "node-info": "",
+              "execution-state-wal-chunks": "https://flow-public-mainnet15-execution-state.s3.amazonaws.com"
+            }
+          },
+          "flow-go-tag": "v0.23.4",
+          "flow-dps-tag": "0.1",
+          "cadence-tag": "v0.20.2",
+          "docker-tag": "v0.23.4",
+          "access-node": "access-001.mainnet15.nodes.onflow.org:9000"
+        },
+        {
           "id": 14,
           "name": "Mainnet-14",
           "spork-time": "2021-10-06T16:00:00Z",
@@ -569,6 +597,34 @@
     {
       "name": "testnet",
       "sporks": [
+        {
+          "id": 32,
+          "name": "Devnet32",
+          "spork-time": "2021-12-06T16:00:00Z",
+          "root-height": "53376277",
+          "root-parent-id": "f900db2ccff33f3bf353c8bf28ece0a9d2650f2805b23ddb7893e296774a5457",
+          "root-state-commit": "843ea0b5498342dcf960376585eeafee8ebe008df3b03325351408a100cb830c",
+          "git-commit-hash": "be20371fa8c5044a4e25e5629bbca91f1ed19731",
+          "state-artefacts" : {
+            "gcp": {
+              "root-checkpoint-file": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-32-execution/public-root-information/root.checkpoint",
+              "root-protocol-state-snapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-32-execution/public-root-information/root-protocol-state-snapshot.json",
+              "node-info": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-32-execution/public-root-information/node-infos.pub.json",
+              "execution-state-wal-chunks": "https://storage.googleapis.com/flow_public_devnet32_execution_state"
+            },
+            "s3": {
+              "root-checkpoint-file": "",
+              "root-protocol-state-snapshot": "",
+              "node-info": "",
+              "execution-state-wal-chunks": ""
+            }
+          },
+          "flow-go-tag": "v0.23.3",
+          "flow-dps-tag": "",
+          "cadence-tag": "v0.20.2",
+          "docker-tag": "v0.23.3",
+          "access-node": ""
+        },
         {
           "id": 31,
           "name": "Devnet31",
