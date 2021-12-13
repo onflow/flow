@@ -838,7 +838,7 @@ components:
         block_id:
           $ref: '#/components/schemas/Identifier'
         block_height:
-          $ref: '#/components/schemas/BlockHeight'
+          type: string
         block_timestamp:
           type: string
           format: date-time
