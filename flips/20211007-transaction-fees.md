@@ -105,7 +105,7 @@ In general there would be two different effort cost functions, one for inclusion
 
 <!-- TODO: graph for the paragraph above! -->
 
-In the fist iteration of variable transaction fees the effort cost functions can simply be constant coefficients: <img src="https://render.githubusercontent.com/render/math?math=F_E%20%3D%20p_E%20*%20E"> and <img src="https://render.githubusercontent.com/render/math?math=F_I%20%3D%20p_I%20*%20I">. The coefficients are referred to as the inclusion effort cost parameter and the execution effort cost parameter, or together as effort cost parameters.
+In the first iteration of variable transaction fees the effort cost functions can simply be constant coefficients: <img src="https://render.githubusercontent.com/render/math?math=F_E%20%3D%20p_E%20*%20E"> and <img src="https://render.githubusercontent.com/render/math?math=F_I%20%3D%20p_I%20*%20I">. The coefficients are referred to as the inclusion effort cost parameter and the execution effort cost parameter, or together as effort cost parameters.
 
 The effort cost parameters should be defined on a smart contract and adjustable via the service account admin resource and should be accessible for everyone to read. 
 
