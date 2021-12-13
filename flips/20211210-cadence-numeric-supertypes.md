@@ -5,12 +5,12 @@
 | **FLIP #**    | N/A|
 | **Author(s)** | Supun Setunga (supun.setunga@dapperlabs.com)       |
 | **Sponsor**   | Supun Setunga (supun.setunga@dapperlabs.com)       |
-| **Updated**   | 2021-12-10                                           |
+| **Updated**   | 2021-12-13                                           |
 
 ## Objective
 
 Statically disallow arithmetic operations on numeric supertypes, as they may or may not succeed at
-runtime. 
+run-time.
 The idea is to make the current behavior that happens under the hood, more explicit to the developers,
 and by doing so, help them to avoid any unintentional/unforeseen behaviors.
 
@@ -45,7 +45,7 @@ let z: Integer = x + y
 ```
 
 This leads to situations where developers would end up writing codes that were assumed to work,
-but instead, fails at runtime for certain combination of inputs. 
+but instead, fails at run-time for certain combination of inputs.
 It is not intuitive enough for developers that their codes may not work for all inputs.
 
 ## User Benefit
@@ -107,8 +107,8 @@ combination of operands and operators of different types.
   - There are large number of combinations of different operand types and operator types.
   - The rules may again not be intuitive for developers, and may leave unintentional behaviors in
     their codes.
-  - In general, the usage of supertypes for arithmetic operations can said to be less frequent.
-    Along with that, given the complexity of the solution, it may not be worth to go for such a
+  - In general, the use of supertypes for arithmetic operations can said to be less frequent.
+    Along with that, given the complexity of the solution, it may not be worth implementing such a
     complex solution.
   
 
