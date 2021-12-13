@@ -404,7 +404,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Event'
+                $ref: '#/components/schemas/BlockEvents'
           description: OK
         '400':
           $ref: '#/components/responses/400BadRequest'
@@ -826,6 +826,22 @@ components:
           $ref: '#/components/schemas/Identifier'
         block_id:
           $ref: '#/components/schemas/Identifier'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        _links:
+          $ref: '#/components/schemas/Links'
+    BlockEvents:
+      type: object
+      properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        block_height:
+          $ref: '#/components/schemas/BlockHeight'
+        block_timestamp:
+          type: string
+          format: date-time
         events:
           type: array
           items:
