@@ -149,7 +149,7 @@ The prescribed Account Discovery procedure is as follows:
         3.1.1 If the Key Index gap limit has been reached without finding any 
         addressed in the registry, then go to step 2, incrementing the Account Index
         by one and starting with Key Index = 0 again. 
-        3.1.2 If the Key Index gap limit has not been reached, the go to step 2
+        3.1.2 If the Key Index gap limit has not been reached, the go to step 2 and
         increment the Key Index by one. 
     3.2. If an address is found, query the Flow network to fetch the account's details. 
         3.2.1. If no account is found<sup>1</sup>, go to step 2, incrementing 
