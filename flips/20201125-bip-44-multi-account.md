@@ -142,10 +142,7 @@ The prescribed Account Discovery procedure is as follows:
    path used to generate this key, and the account's details.
 1. Derive a key pair (starting with Account Index = 0 and Key Index =
    1) using the path specified in this FLIP.
-2. Scan for key usage by checking and incrementing the Key Index against the
-   public key registry, respecting the Key Index and Account Index [gap limit
-   described in BIP
-   44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki#address-gap-limit).
+2. Scan for the key usage by checking the public key registry.
    If the gap limit has been reached for both Key Index and Account Index, stop
    discovery.
     3.1. If no address is found in the registry 
