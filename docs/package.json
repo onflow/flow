@@ -23,6 +23,7 @@
     "gatsby": "^3.11.1",
     "gatsby-plugin-breadcrumb": "^12.1.1",
     "gatsby-plugin-emotion": "^6.11.0",
+    "gatsby-plugin-force-trailing-slashes": "^1.0.5",
     "gatsby-plugin-google-analytics": "^3.11.0",
     "gatsby-plugin-layout": "^2.10.0",
     "gatsby-plugin-less": "^5.11.0",

@@ -15,7 +15,7 @@ const navConfig = {
       "New to Flow? Start here. Read about Flow's architecture, and important concepts for a deeper understanding of the Flow platform and how it works."
   },
   Cadence: {
-    url: "/cadence",
+    url: "/cadence/",
     icon: "cadence",
     description:
       "Resource-Oriented programming language for smart contracts that helps developers ensure that their code is safe, secure, clear, and approachable.",
@@ -36,42 +36,42 @@ const navConfig = {
     linkText: "FCL Documentation"
   },
   "Testing Library": {
-    url: "/flow-js-testing",
+    url: "/flow-js-testing/",
     icon: "js-testing",
     description:
       "Simplify testing your Cadence code using our JS testing library.",
     linkText: "Flow JS Testing"
   },
   "Go SDK": {
-    url: "/flow-go-sdk",
+    url: "/flow-go-sdk/",
     icon: "go-sdk",
     description:
       "Build apps that interact with Flow using our full-featured Go SDK.",
     linkText: "Go SDK Documentation"
   },
   "Flow CLI": {
-    url: "/flow-cli",
+    url: "/flow-cli/",
     icon: "cli",
     description:
       "The Flow CLI is a command-line interface that provides useful utilities for building Flow applications.",
     linkText: "CLI Documentation"
   },
   "Flow Emulator": {
-    url: "/emulator",
+    url: "/emulator/",
     icon: "emulator",
     description:
       "Develop and test your applications locally using the Flow emulator.",
     linkText: "Emulator Documentation"
   },
   "VS Code Extension": {
-    url: "/vscode-extension",
+    url: "/vscode-extension/",
     icon: "vscode",
     description:
       "Cadence syntax highlighting and an integrated Flow emulator for VSCode users.",
     linkText: "VSCode Extension Documentation"
   },
   "Flow Port": {
-    url: "/flow-port",
+    url: "/flow-port/",
     icon: "port",
     description:
       "Flow Port, your portal to the decentralized world of Flow. Access your Flow account, interact with the blockchain, manage your assets and more.",
@@ -188,7 +188,7 @@ const sources = [
     resolve: "gatsby-source-git",
     options: {
       name: "flow-js-testing-github",
-      branch: "master",
+      branch: "fix_docs",
       remote: "https://github.com/onflow/flow-js-testing.git",
       patterns: ["docs/**/*", "examples/**/*"]
     }
@@ -266,39 +266,39 @@ const sections = [
         "[CryptoDappy Online Course!](https://www.cryptodappy.com)"
       ],
       "Guides & Walkthroughs": [
-        "[Flow Concepts](/concepts)",
-        "[Cadence Best Practices](/cadence)",
-        "[Dapp Development Guide](/dapp-development)",
+        "[Flow Concepts](/concepts/)",
+        "[Cadence Best Practices](/cadence/)",
+        "[Dapp Development Guide](/dapp-development/)",
         "[Using the Testing Library](/flow-js-testing/install/)",
-        "[Building Flow SDKs (Guidelines)](/sdk-guidelines)",
-        "[Operate a Flow Node](/node-operation)",
-        "[Flow Port Staking Walkthrough](/flow-port/staking-guide)",
-        "[Staking Technical Guides](/staking/staking-options)"
+        "[Building Flow SDKs (Guidelines)](/sdk-guidelines/)",
+        "[Operate a Flow Node](/node-operation/)",
+        "[Flow Port Staking Walkthrough](/flow-port/staking-guide/)",
+        "[Staking Technical Guides](/staking/staking-options/)"
       ],
       Reference: [
-        "[Available Flow SDKs](/sdks)",
-        "[Flow Access API](/access-api)",
+        "[Available Flow SDKs](/sdks/)",
+        "[Flow Access API](/access-api/)",
         "[Cadence Language Reference](/cadence/language/)",
-        "[Testing Library Reference](/flow-js-testing)",
-        "[Core Protocol Smart Contracts](/core-contracts)",
-        "[Other Important Smart Contracts](/core-contracts)",
-        "[Epochs, Staking & Delegating](/staking)",
-        "[FUSD Transactions & Scripts](/fusd/transactions)",
-        "[Upcoming Sporks](/node-operation/upcoming-sporks)",
-        "[Past Sporks](/node-operation/past-sporks)"
+        "[Testing Library Reference](/flow-js-testing/)",
+        "[Core Protocol Smart Contracts](/core-contracts/)",
+        "[Other Important Smart Contracts](/core-contracts/)",
+        "[Epochs, Staking & Delegating](/staking/)",
+        "[FUSD Transactions & Scripts](/fusd/transactions/)",
+        "[Upcoming Sporks](/node-operation/upcoming-sporks/)",
+        "[Past Sporks](/node-operation/past-sporks/)"
       ],
       Ecosystem: [
-        "[Flow Wallets](/flow-token/available-wallets)",
+        "[Flow Wallets](/flow-token/available-wallets/)",
         "[Block Explorer](https://flowscan.org)",
         "[Testnet Faucet](https://flow-faucet.vercel.app/)",
         "[Flow Port](https://port.onflow.org/)",
         "[Bug Bounty Program](/bounties)"
       ],
-      Tokens: ["[FLOW Token](/flow-token)", "[FUSD](/fusd)"],
+      Tokens: ["[FLOW Token](/flow-token/)", "[FUSD](/fusd/)"],
       FAQ: [
-        "[Builders/Developers](/faq/developers)",
-        "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)"
+        "[Builders/Developers](/faq/developers/)",
+        "[Backers/Users](/faq/backers/)",
+        "[Operators](/faq/operators/)"
       ]
     }
   },
@@ -308,8 +308,8 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["[SDK Guidelines](/sdk-guidelines)"],
-      Glossary: ["[Ubiquitous Language](/sdk-guidelines/ubiquitous-language)"]
+      Overview: ["[SDK Guidelines](/sdk-guidelines/)"],
+      Glossary: ["[Ubiquitous Language](/sdk-guidelines/ubiquitous-language/)"]
     }
   },
   {
@@ -320,7 +320,7 @@ const sections = [
       null: ["[Home](/)"],
       Overview: ["[Cadence Language Reference](/cadence/language/)"],
       "Developer Guides": [
-        "[Introduction to Cadence](/cadence)",
+        "[Introduction to Cadence](/cadence/)",
         "docs/design-patterns",
         "docs/contract-upgrades",
         "docs/anti-patterns",
@@ -398,9 +398,9 @@ const sections = [
         "concepts/storage"
       ],
       FAQ: [
-        "[Builders/Developers](/faq/developers)",
-        "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)"
+        "[Builders/Developers](/faq/developers/)",
+        "[Backers/Users](/faq/backers/)",
+        "[Operators](/faq/operators/)"
       ]
     }
   },
@@ -441,7 +441,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["[Introduction](/flow-go-sdk)"]
+      Overview: ["[Introduction](/flow-go-sdk/)"]
     }
   },
   {
@@ -451,20 +451,20 @@ const sections = [
     sidebar: {
       null: ["[Home](/)"],
       "API Documentation": [
-        "[Quick Reference](/fcl/reference/api)",
-        "[Configuration](/fcl/reference/configure-fcl)",
-        "[Authentication](/fcl/reference/authentication)",
-        "[Proving Account Ownership](/fcl/reference/proving-authentication)",
-        "[Scripts](/fcl/reference/scripts)",
-        "[Transactions](/fcl/reference/transactions)",
-        "[User Signatures](/fcl/reference/user-signatures)"
+        "[Quick Reference](/fcl/reference/api/)",
+        "[Configuration](/fcl/reference/configure-fcl/)",
+        "[Authentication](/fcl/reference/authentication/)",
+        "[Proving Account Ownership](/fcl/reference/proving-authentication/)",
+        "[Scripts](/fcl/reference/scripts/)",
+        "[Transactions](/fcl/reference/transactions/)",
+        "[User Signatures](/fcl/reference/user-signatures/)"
       ],
       Changelogs: [
         "[@onflow/fcl](/fcl/packages/fcl/CHANGELOG)",
         "[@onflow/types](/fcl/packages/types/CHANGELOG)"
       ],
       "Guides and Tutorials": [
-        "[Introducing @onflow/fcl](/fcl)",
+        "[Introducing @onflow/fcl](/fcl/)",
         "docs/tutorials/flow-app-quickstart"
       ]
     }
@@ -560,9 +560,9 @@ const sections = [
       ],
       "Custody Providers": ["staking/custody-providers"],
       FAQ: [
-        "[Builders/Developers](/faq/developers)",
-        "[Backers/Users](/faq/backers)",
-        "[Operators](/faq/operators)"
+        "[Builders/Developers](/faq/developers/)",
+        "[Backers/Users](/faq/backers/)",
+        "[Operators](/faq/operators/)"
       ]
     }
   },
@@ -667,6 +667,7 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-sitemap",
+    "gatsby-plugin-force-trailing-slashes",
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {

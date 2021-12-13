@@ -19,7 +19,7 @@ module.exports = ({ markdownAST }) => {
       } else if (foundDepth3) {
         node.url = node.url.replace(/^\.\.\/\.\.\//, "../../../");
       } else if (foundNoPrefix) {
-        node.url = "../" + node.url;
+        // node.url = "../" + node.url;
       }
 
       node.url = node.url.replace(/(?<=[^/])#/, "/#");
