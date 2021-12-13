@@ -1,7 +1,9 @@
-openapi: "3.0.0"
+openapi: 3.0.0
 info:
-  version: "1.0.0"
-  title: "Access API"
+  title: Access API
+  version: 1.0.0
+  x-logo:
+    url: ''
 servers:
   - url: https://access.mainnet.nodes.onflow.org/v1
     description: Current Mainnet
@@ -12,151 +14,150 @@ servers:
 paths:
   /blocks:
     get:
-      summary: Gets full blocks by height.
       tags:
         - Blocks
-      parameters: 
-        - description: A comma-separated list of block heights to get.
+      parameters:
+        - style: form
+          explode: false
           name: height
-          in: query
+          description: A comma-separated list of block heights to get.
           schema:
+            minItems: 1
+            uniqueItems: true
             type: array
             items:
               $ref: '#/components/schemas/BlockHeight'
-            minItems: 1
-            uniqueItems: true
-          explode: false
-          style: form
+          in: query
         - name: start_height
-          in: query
+          description: >-
+            The start height of the block range to get. Must be used together
+            with `end_height`. This parameter is incompatible with `height`.
           schema:
             $ref: '#/components/schemas/BlockHeight'
+          in: query
           required: false
-          description: The start height of the block range to get. Must be used together with `end_height`. This parameter is incompatible with `height`.
         - name: end_height
-          in: query
+          description: >-
+            The ending height of the block range to get. Must be used together
+            with `start_height`. This parameter is incompatible with `height`.
           schema:
             $ref: '#/components/schemas/BlockHeight'
+          in: query
           required: false
-          description: The ending height of the block range to get. Must be used together with `start_height`. This parameter is incompatible with `height`.
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:
-        200:
-          description: OK
+        '200':
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/Block'
-        400:
+          description: OK
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
+      summary: Gets full blocks by height.
   /blocks/{id}:
     get:
-      summary: Gets full blocks by ID.
       tags:
         - Blocks
       parameters:
-        - description: A comma-separated list of block IDs to get.
+        - explode: true
           name: id
-          in: path
+          description: A comma-separated list of block IDs to get.
           schema:
+            maxItems: 50
+            minItems: 1
+            uniqueItems: true
             type: array
             items:
               $ref: '#/components/schemas/Identifier'
-            minItems: 1
-            maxItems: 50
-            uniqueItems: true
-          explode: true
+          in: path
           required: true
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:
-        200:
-          description: OK
+        '200':
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/Block'
-        400:
+          description: OK
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
+      summary: Gets full blocks by ID.
   /transactions/{id}:
     get:
-      summary: Gets a transaction by ID.
       tags:
         - Transactions
       parameters:
-        - description: The ID of the transaction to get.
-          name: id
-          in: path
+        - name: id
+          description: The ID of the transaction to get.
           schema:
             $ref: '#/components/schemas/Identifier'
+          in: path
           required: true
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:
-        200:
-          description: OK
+        '200':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Transaction'
-        400:
+          description: OK
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
+      summary: Gets a transaction by ID.
   /transaction_results/{transaction_id}:
     get:
-      summary: Gets a transaction result by ID.
       tags:
         - Transactions
       parameters:
-        - description: The transaction ID of the transaction result to get.
-          name: transaction_id
-          in: path
+        - name: transaction_id
+          description: The transaction ID of the transaction result to get.
           schema:
             $ref: '#/components/schemas/Identifier'
+          in: path
           required: true
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:
-        200:
-          description: OK
+        '200':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResult'
-        400:
+          description: OK
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
+      summary: Gets a transaction result by ID.
   /transactions:
     post:
-      summary: Submits a transaction to the network.
-      tags:
-        - Transactions
       requestBody:
         description: The transaction to submit.
-        required: true
         content:
           application/json:
             schema:
-              type: object
               required:
                 - script
                 - arguments
@@ -167,20 +168,21 @@ paths:
                 - authorizers
                 - payload_signatures
                 - envelope_signatures
+              type: object
               properties:
                 script:
-                  type: string
                   format: byte
+                  type: string
                 arguments:
                   type: array
                   items:
-                    type: string
                     format: byte
+                    type: string
                 reference_block_id:
                   $ref: '#/components/schemas/Identifier'
                 gas_limit:
-                  type: string
                   format: uint64
+                  type: string
                 payer:
                   $ref: '#/components/schemas/Address'
                 proposal_key:
@@ -197,238 +199,297 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/TransactionSignature'
+        required: true
+      tags:
+        - Transactions
       responses:
-        201:
-          description: Created
+        '201':
+          headers:
+            Location:
+              schema:
+                format: uri
+                type: string
+              description: The URI to the newly submitted transaction.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Transaction'
-          headers:
-            Location:
-              schema:
-                type: string
-                format: uri
-              description: The URI to the newly submitted transaction.
-        400:
+          description: Created
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
+      summary: Submits a transaction to the network.
   /collections/{id}:
     get:
-      summary: Gets a collection by ID.
       tags:
         - Collections
       parameters:
         - name: id
-          in: path
+          description: The ID of the collection to get.
           schema:
             $ref: '#/components/schemas/Identifier'
+          in: path
           required: true
-          description: The ID of the collection to get.
       responses:
-        200:
-          description: OK
+        '200':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Collection'
-        400:
+          description: OK
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
+      summary: Gets a collection by ID.
   /execution_results:
     get:
-      summary: Gets execution results by block ID.
       tags:
         - Execution Results
       parameters:
-        - description: A comma-separated list of block IDs to get the execution results for.
+        - style: form
+          explode: false
           name: block_id
-          in: query
+          description: >-
+            A comma-separated list of block IDs to get the execution results
+            for.
           schema:
+            minItems: 1
+            uniqueItems: true
             type: array
             items:
               $ref: '#/components/schemas/Identifier'
-            minItems: 1
-            uniqueItems: true
-          explode: false
-          style: form
+          in: query
           required: true
       responses:
-        200:
-          description: OK
+        '200':
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/ExecutionResult'
-        400:
+          description: OK
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
+      summary: Gets execution results by block ID.
   /execution_results/{id}:
-    get: 
-      summary: Gets an execution result by ID.
+    get:
       tags:
         - Execution Results
       parameters:
         - name: id
-          in: path
+          description: The ID of the execution result to get.
           schema:
             $ref: '#/components/schemas/Identifier'
+          in: path
           required: true
-          description: The ID of the execution result to get.
       responses:
-        200:
-          description: OK
+        '200':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecutionResult'
-        400:
+          description: OK
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
+      summary: Gets an execution result by ID.
   /accounts/{address}:
     get:
-      summary: Gets an account by address at the given block height.
       tags:
         - Accounts
       parameters:
         - name: address
-          in: path
+          description: The address of the account to get.
           schema:
             $ref: '#/components/schemas/Address'
+          in: path
           required: true
-          description: The address of the account to get.
         - name: block_height
-          in: query
+          description: The block height to query for the account details at.
           schema:
             $ref: '#/components/schemas/BlockHeight'
+          in: query
           required: true
-          description: The block height to query for the account details at.
       responses:
-        200:
-          description: OK
+        '200':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
-        400:
+          description: OK
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
+      summary: Gets an account by address at the given block height.
   /scripts:
     post:
-      summary: Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block height.
-      tags:
-        - Scripts
-      parameters:
-        - description: The ID of the block to execute the script against. For a specific block height, use `block_height` instead.
-          name: block_id
-          in: query
-          schema:
-            $ref: '#/components/schemas/Identifier'
-          required: false
-        - description: The height of the block to execute the script against. This parameter is incompatible with `block_id`.
-          name: block_height
-          in: query
-          schema:
-            $ref: '#/components/schemas/BlockHeight'
-          required: false
       requestBody:
         description: The script to execute.
-        required: true
         content:
           application/json:
             schema:
               type: object
               properties:
                 script:
-                  type: string
                   format: byte
+                  type: string
                 arguments:
                   type: array
                   items:
-                    type: string
                     format: byte
+                    type: string
+        required: true
+      tags:
+        - Scripts
+      parameters:
+        - name: block_id
+          description: >-
+            The ID of the block to execute the script against. For a specific
+            block height, use `block_height` instead.
+          schema:
+            $ref: '#/components/schemas/Identifier'
+          in: query
+          required: false
+        - name: block_height
+          description: >-
+            The height of the block to execute the script against. This
+            parameter is incompatible with `block_id`.
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
+          in: query
+          required: false
       responses:
-        200:
-          description: OK
+        '200':
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   value:
-                    type: string
                     format: byte
-        400:
+                    type: string
+          description: OK
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
+      summary: >-
+        Executes a read-only Cadence script against the execution state at the
+        given block height or ID. If block height or ID is not specified, then
+        the script is executed at the latest sealed block height.
+  /status:
+    get:
+      summary: Status of the network
+      tags:
+        - Status
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
+      operationId: GetNetworkStatus
+  /events:
+    summary: Query for on-chain events.
+    summary: Query on-chain events in specified blocks. 
+    get:
+      tags:
+        - Events
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+          description: OK
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
+      parameters:
+        - name: type
+          in: query
+          description: The event type is name-spaced with the address of the account and contract in which the event is declared.
+          required: true
+          deprecated: false
+          schema:
+            $ref: '#/components/schemas/EventType'
+          allowEmptyValue: false
+        - name: start_height
+          in: query
+          required: false
+          description: The start height of the block range for events. Must be used together with `end_height`. This parameter is incompatible with `block_ids`.
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
+          allowEmptyValue: false
+        - name: end_height
+          in: query
+          required: false
+          description: The end height of the block range for events. Must be used together with `start_height`. This parameter is incompatible with `block_ids`.
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
+          allowEmptyValue: false
+        - name: block_ids
+          in: query
+          style: form
+          required: false
+          explode: false
+          allowEmptyValue: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Identifier'
+            minItems: 1
+            maxItems: 50
+            uniqueItems: true
+        - $ref: '#/components/parameters/selectParam'
 components:
-  parameters:
-    expandParam:
-        description: A comma-separated list indicating which properties of the content to expand.
-        name: expand
-        in: query
-        schema:
-          type: array
-          items:
-            type: string
-          minItems: 1
-          uniqueItems: true
-        explode: false
-        style: form
-        required: false
-    selectParam:
-      description: A comma-separated list indicating which properties of the content to return.
-      name: select
-      in: query
-      schema:
-        type: array
-        items:
-          type: string
-        minItems: 1
-        uniqueItems: true
-      explode: false
-      style: form
-      required: false
   schemas:
     Account:
-      type: object
       required:
         - address
         - balance
         - _expandable
+      type: object
       properties:
         address:
           $ref: '#/components/schemas/Address'
         balance:
-          type: string
           format: uint64
+          type: string
         keys:
+          minItems: 1
+          uniqueItems: true
           type: array
           items:
             $ref: '#/components/schemas/AccountPublicKey'
-          minItems: 1
-          uniqueItems: true
         contracts:
           type: object
           additionalProperties:
-            type: string
             format: byte
+            type: string
         _expandable:
           type: object
           properties:
@@ -439,7 +500,6 @@ components:
         _links:
           $ref: '#/components/schemas/Links'
     AccountPublicKey:
-      type: object
       required:
         - index
         - public_key
@@ -448,44 +508,45 @@ components:
         - sequence_number
         - weight
         - revoked
+      type: object
       properties:
         index:
-          type: string
           format: uint64
-        public_key:
           type: string
+        public_key:
           format: bytes
+          type: string
         signing_algorithm:
           $ref: '#/components/schemas/SigningAlgorithm'
         hashing_algorithm:
           $ref: '#/components/schemas/HashingAlgorithm'
         sequence_number:
-          type: string
           format: uint64
+          type: string
         weight:
-          type: string
           format: uint64
+          type: string
         revoked:
           type: boolean
     SigningAlgorithm:
-      type: string
       enum:
         - BLSBLS12381
         - ECDSAP256
         - ECDSASecp256k1
-    HashingAlgorithm:
       type: string
+    HashingAlgorithm:
       enum:
         - SHA2_256
         - SHA2_384
         - SHA3_256
         - SHA3_384
         - KMAC128
+      type: string
     Collection:
-      type: object
       required:
         - id
         - _expandable
+      type: object
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -499,12 +560,11 @@ components:
             transactions:
               type: array
               items:
-                type: string
                 format: uri
+                type: string
         _links:
           $ref: '#/components/schemas/Links'
     Transaction:
-      type: object
       required:
         - id
         - script
@@ -517,22 +577,23 @@ components:
         - payload_signatures
         - envelope_signatures
         - _expandable
+      type: object
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
         script:
-          type: string
           format: byte
+          type: string
         arguments:
           type: array
           items:
-            type: string
             format: byte
+            type: string
         reference_block_id:
           $ref: '#/components/schemas/Identifier'
         gas_limit:
-          type: string
           format: uint64
+          type: string
         payer:
           $ref: '#/components/schemas/Address'
         proposal_key:
@@ -555,51 +616,51 @@ components:
           type: object
           properties:
             result:
-              type: string
               format: uri
+              type: string
         _links:
           $ref: '#/components/schemas/Links'
     ProposalKey:
-      type: object
       required:
         - address
         - key_index
         - sequence_number
+      type: object
       properties:
         address:
           $ref: '#/components/schemas/Address'
         key_index:
-          type: string
           format: uint64
+          type: string
         sequence_number:
-          type: string
           format: uint64
+          type: string
     TransactionSignature:
-      type: object
       required:
         - address
         - signer_index
         - key_index
         - signature
+      type: object
       properties:
         address:
           $ref: '#/components/schemas/Address'
         signer_index:
-          type: string
           format: uint64
+          type: string
         key_index:
-          type: string
           format: uint64
+          type: string
         signature:
           $ref: '#/components/schemas/Signature'
     TransactionResult:
-      type: object
       required:
         - block_id
         - status
         - error_message
         - computation_used
         - events
+      type: object
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
@@ -608,8 +669,8 @@ components:
         error_message:
           type: string
         computation_used:
-          type: string
           format: uint64
+          type: string
         events:
           type: array
           items:
@@ -617,18 +678,18 @@ components:
         _links:
           $ref: '#/components/schemas/Links'
     TransactionStatus:
+      enum:
+        - Pending
+        - Finalized
+        - Executed
+        - Sealed
+        - Expired
       type: string
-      enum: 
-       - Pending
-       - Finalized
-       - Executed
-       - Sealed
-       - Expired
     Block:
-      type: object
       required:
         - header
         - _expandable
+      type: object
       properties:
         header:
           $ref: '#/components/schemas/BlockHeader'
@@ -642,71 +703,71 @@ components:
             payload:
               type: string
             execution_result:
-              type: string
               format: uri
+              type: string
         _links:
           $ref: '#/components/schemas/Links'
     BlockHeader:
-      type: object
       required:
         - id
         - parent_id
         - height
         - timestamp
         - parent_voter_signature
+      type: object
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
         parent_id:
           $ref: '#/components/schemas/Identifier'
         height:
-          type: string
           format: uint64
-        timestamp:
           type: string
+        timestamp:
           format: date-time
+          type: string
         parent_voter_signature:
           $ref: '#/components/schemas/Signature'
     BlockPayload:
-      type: object
       required:
         - collection_guarantees
         - block_seals
+      type: object
       properties:
         collection_guarantees:
+          uniqueItems: true
           type: array
           items:
             $ref: '#/components/schemas/CollectionGuarantee'
-          uniqueItems: true
         block_seals:
+          uniqueItems: true
           type: array
           items:
             $ref: '#/components/schemas/BlockSeal'
-          uniqueItems: true
     CollectionGuarantee:
-      type: object
       required:
         - collection_id
         - signer_ids
         - signature
+      type: object
       properties:
         collection_id:
           $ref: '#/components/schemas/Identifier'
         signer_ids:
+          minItems: 1
+          uniqueItems: true
           type: array
           items:
             $ref: '#/components/schemas/Identifier'
-          minItems: 1
-          uniqueItems: true
         signature:
           $ref: '#/components/schemas/Signature'
     BlockSeal:
-      type: object
       required:
         - block_id
         - result_id
         - final_state
         - aggregated_approval_signatures
+      type: object
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
@@ -715,40 +776,40 @@ components:
         final_state:
           $ref: '#/components/schemas/StateCommitment'
         aggregated_approval_signatures:
+          minItems: 1
+          uniqueItems: true
           type: array
           items:
             $ref: '#/components/schemas/AggregatedSignature'
-          minItems: 1
-          uniqueItems: true
     StateCommitment:
-      description: The root hash of the state tree.
-      type: string
       format: hexadecimal
+      description: The root hash of the state tree.
       pattern: '[a-fA-F0-9]{64}'
+      type: string
     AggregatedSignature:
-      type: object
       required:
         - verifier_signatures
         - signer_ids
+      type: object
       properties:
         verifier_signatures:
+          minItems: 1
+          uniqueItems: true
           type: array
           items:
             $ref: '#/components/schemas/Signature'
+        signer_ids:
           minItems: 1
           uniqueItems: true
-        signer_ids:
           type: array
           items:
             $ref: '#/components/schemas/Identifier'
-          minItems: 1
-          uniqueItems: true
     ExecutionResult:
-      type: object
       required:
         - id
         - block_id
         - events
+      type: object
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -760,53 +821,31 @@ components:
             $ref: '#/components/schemas/Event'
         _links:
           $ref: '#/components/schemas/Links'
-    Event:
-      type: object
-      required:
-        - type
-        - transaction_id
-        - transaction_index
-        - event_index
-        - payload
-      properties:
-        type:
-          $ref: '#/components/schemas/EventType'
-        transaction_id:
-          $ref: '#/components/schemas/Identifier'
-        transaction_index:
-          type: string
-          format: uint64
-        event_index:
-          type: string
-          format: uint64
-        payload:
-          type: string
-          format: byte
     BlockHeight:
       oneOf:
-        - type: string
-          format: uint64
-        - type: string
-          enum:
+        - format: uint64
+          type: string
+        - enum:
             - final
             - sealed
+          type: string
     EventType:
       description: The qualified event type.
       type: string
     Address:
+      format: hexadecimal
       description: The 8-byte address of an account.
-      type: string
-      format: hexadecimal
       pattern: '[a-fA-F0-9]{16}'
-    Identifier:
-      description: A 32-byte unique identifier for an entity.
       type: string
+    Identifier:
       format: hexadecimal
+      description: A 32-byte unique identifier for an entity.
       pattern: '[a-fA-F0-9]{64}'
+      type: string
     Signature:
+      format: byte
       description: A variable length signature.
       type: string
-      format: byte
     Error:
       type: object
       properties:
@@ -819,25 +858,92 @@ components:
       properties:
         _self:
           type: string
+    Status:
+      required:
+        - chain_id
+      type: object
+    Event:
+      required:
+        - type
+        - transaction_id
+        - transaction_index
+        - payload
+        - event_index
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/EventType'
+        transaction_id:
+          $ref: '#/components/schemas/Identifier'
+        transaction_index:
+          format: uint64
+          type: string
+        event_index:
+          format: uint64
+          type: string
+        payload:
+          format: byte
+          type: string
   responses:
     400BadRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
       description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     404NotFound:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
       description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     500InternalServerError:
-      description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+      description: Internal Server Error
+  parameters:
+    expandParam:
+      style: form
+      explode: false
+      name: expand
+      description: >-
+        A comma-separated list indicating which properties of the content to
+        expand.
+      schema:
+        minItems: 1
+        uniqueItems: true
+        type: array
+        items:
+          type: string
+      in: query
+      required: false
+    selectParam:
+      style: form
+      explode: false
+      name: select
+      description: >-
+        A comma-separated list indicating which properties of the content to
+        return.
+      schema:
+        minItems: 1
+        uniqueItems: true
+        type: array
+        items:
+          type: string
+      in: query
+      required: false
+  securitySchemes: {}
+  headers: {}
+tags:
+  - name: status
+    description: status
+    externalDocs: {}
+  - name: events
+    description: events
+    externalDocs: {}
 externalDocs:
-  description: "Find out more about the Access API"
-  url: "https://docs.onflow.org/access-api/"
+  description: Find out more about the Access API
+  url: https://docs.onflow.org/access-api/
+security: []
