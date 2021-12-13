@@ -67,11 +67,19 @@ two account indices should be used to generate child public keys that are
 assigned to the same Flow account address. Furthermore, a single account index
 should not be used to generate keys for more than one account address.
 
+The Account Index to use when generating a key pair to be added on a new account
+is the smallest Account Index of which has not yet been used to generate keys 
+set on any account.
+
 The motivation for these accounts is the same set forth in BIP 44:
 
 > Users can use these accounts to organize the funds in the same fashion as bank
 > accounts; for donation purposes (where all addresses are considered public),
 > for saving purposes, for common expenses etc.
+
+Unlike BIP 44, wallets should not prevent the creation of a new account if any
+existing account corresponding to a previous Account Index does not have any
+transaction history.
 
 In addition to the above, Flow wallets should follow the standards for account
 numbering, creation and discovery described in [BIP
@@ -97,6 +105,10 @@ This index should not be confused with the on-chain account key index. It must
 not be assumed that this index will reflect the on-chain account key index for
 any key.
 
+When generating a new key pair for an account, the Key Index to use in the path to 
+generate the new key should be the smallest unused Key Index available which 
+has not yet been used to generate a key on the account.
+
 ### Legacy Path
 
 There exist Flow accounts with keys on them which have been generated using the
@@ -117,33 +129,37 @@ Wallet developers should use a modified version of the original account
 discovery procedure [described in BIP
 44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki#account-discovery).
 
-The Account Discovery procedure is as follows:
+Modified constants from BIP 44 include:
 
-1. Derive the key generated using the Legacy Path, checking it's use with the
+The Key Index gap limit should be `5`.
+The Account Index gap limit should be `5`.
+
+The prescribed Account Discovery procedure is as follows:
+
+1. Derive the key pair using the Legacy Path, checking it's use with the
    public key registry. If an address is found, query the Flow network to fetch
-   the account's details. If an account is found, create a mapping between the
-   path used to generate this key, and the account details.
-
-2. Derive an account key pair (starting with Account Index = 0 and Key Index =
-   0) using the path specified in this FLIP.
+   the account's details. If an account is found, remember the relationship between the
+   path used to generate this key, and the account's details.
+1. Derive a key pair (starting with Account Index = 0 and Key Index =
+   1) using the path specified in this FLIP.
 2. Scan for key usage by checking and incrementing the Key Index against the
    public key registry, respecting the Key Index and Account Index [gap limit
    described in BIP
    44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki#address-gap-limit).
    If the gap limit has been reached for both Key Index and Account Index, stop
-   discovery. 
-    2.1. If no address is found in the registry 
-        2.1.1 If the Key Index gap limit has been reached without finding any 
-        addressed in the registry,then go to step 1, incrementing the Account Index
+   discovery.
+    3.1. If no address is found in the registry 
+        3.1.1 If the Key Index gap limit has been reached without finding any 
+        addressed in the registry, then go to step 2, incrementing the Account Index
         by one and starting with Key Index = 0 again. 
-        2.1.2 If the Key Index gap limit has not been reached, the go to step 1
+        3.1.2 If the Key Index gap limit has not been reached, the go to step 2
         increment the Key Index by one. 
-    2.2. If an address is found, query the Flow network to fetch the account's details. 
-        2.2.1. If no account is found<sup>1</sup>, go to step 1, incrementing 
+    3.2. If an address is found, query the Flow network to fetch the account's details. 
+        3.2.1. If no account is found<sup>1</sup>, go to step 2, incrementing 
         the Account Index by one.
-        2.2.2. If an account is found, create a mapping between the path used to
-        generate this key, and the account details, then go to step 1, incrementing
-        the Key Index by one.
+        3.2.2. If an account is found, remember the relationship between the
+        path used to generate this key and the account's details. Then go to step 2, 
+        incrementing the Key Index by one.
 
 <sup>1</sup>Flow supports account deletion, meaning that an address found in the
 registry may refer to a nonexistent account. In this case the account should be
