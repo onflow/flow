@@ -911,6 +911,9 @@ components:
       required:
         - chain_id
       type: object
+      properties:
+        chain_id:
+          type: string
   responses:
     400BadRequest:
       description: Bad Request
