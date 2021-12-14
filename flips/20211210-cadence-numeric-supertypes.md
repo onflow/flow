@@ -28,14 +28,14 @@ Currently, the arithmetic operations are also allowed on those types (e.g. `+`, 
 
 However, it is not always guaranteed that these operations will succeed at run-time.
 
-e.g:
-If the two numeric values are of same type, then the operation will succeed.
+For example, if the two numeric values are of same type, then the operation will succeed:
 ```cadence
 let x: Integer = 3 as Int8
 let y: Integer = 4 as Int8
 let z: Integer = x + y
 ```
-If the two numeric values are of different types, then there will be a run-time panic.
+
+However, if the two numeric values are of different types, then there will be a run-time panic.
 ```cadence
 let x: Integer = 3 as Int8
 let y: Integer = 4 as UInt16
@@ -56,16 +56,17 @@ Helps them to avoid any unintentional/unforeseen behaviors.
 ## Design Proposal
 
 The proposed solution is to statically disallow arithmetic operations on numeric supertypes.
-```
+
+```cadence
 let x: Integer = 3 as Int8
 let y: Integer = 4 as Int8
 
-let z: Integer = x + y     // Semantic error
-```
+let z: Integer = x + y     // Static error
 
 Developers will have to explicitly force-cast it to the desired type before they do the arithmetic
 operation.
-```
+
+```cadence
 let x: Integer = 3 as Int8
 let y: Integer = 4 as Int8
 
