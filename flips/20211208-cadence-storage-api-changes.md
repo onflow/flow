@@ -40,7 +40,7 @@ of the value.
 Concretely, where this code would previously have produced `nil` for the value of `v`:
 
 ```cadence
-account.save(3, to: /storage/path/)
+account.save(3, to: /storage/path)
 let v = account.load<String>(from: /storage/path/)
 ```
 
@@ -79,7 +79,7 @@ In general, however, there will be a general way to migrate code to be compatibl
 The following code:
 
 ```cadence
-let v = account.load<T>(from: /storage/path/)
+let v = account.load<T>(from: /storage/path)
 ```
 
 can be rewritten as:
@@ -87,7 +87,7 @@ can be rewritten as:
 ```cadence
 let var: T? = nil
 if account.type(at: /storage/path) == Type<T>() {
-    v = account.load<T>(from: /storage/path/)
+    v = account.load<T>(from: /storage/path)
 }
 ```
 
