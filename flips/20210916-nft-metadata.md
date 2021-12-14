@@ -52,7 +52,7 @@ The core of this proposal is to add the following interface and have the NFT res
 ```
 pub resource interface ViewResolver {
   pub fun getViews() : [Type]
-  pub fun resolveView(_ view:Type): AnyStruct
+  pub fun resolveView(_ view:Type): AnyStruct? 
 }
 ```
 
@@ -64,7 +64,7 @@ pub resource NFT: INFT, ViewResolver {
     pub fun getViews(): [Type] {
        return []
     }
-    pub fun resolveView(_ view: Type): AnyStruct {
+    pub fun resolveView(_ view: Type): AnyStruct? {
         return nil
     }
 }
@@ -73,7 +73,7 @@ pub resource NFT: INFT, ViewResolver {
 We propose that all metadata be expressed in Cadence types. The `pub fun getViews(): [Type]` 
 method allows for discovery of the various types of metadata supported by the NFT by returning a `Type` 
 for each supported type of metadata. An instance of any supported type could then be retrieved by 
-calling the `pub fun resolveView(_ view: Type): AnyStruct` method passing the desired type in as 
+calling the `pub fun resolveView(_ view: Type): AnyStruct?` method passing the desired type in as 
 an argument.
 
 This proposal by no means precludes the use of member variable on the NFT resource itself. In fact,
