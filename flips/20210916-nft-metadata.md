@@ -251,28 +251,6 @@ pub struct URLWithHash {
 }
 ```
 
-### Royalty 
-
-This particular problem has been discussed extensively. The following suggestion was agreed upon
-by @bjartek, @rheaplex and @dete. 
-
-```
-  /// a struct interface that describes how to calculate royalty 
-	pub struct interface Royalty {
-
-		/// if nil cannot pay this type
-		/// if not nil withdraw that from main vault and put it into distributeRoyalty 
-		pub fun calculateRoyalty(type:Type, amount:UFix64) : UFix64?
-
-		/// call this with a vault containing the amount given in, calculate royalty and it will be distributed accordingly
-		pub fun distributeRoyalty(vault: @FungibleToken.Vault) 
-
-		/// generate a string that represents all the royalties this NFT has for display purposes
-		pub fun displayRoyalty() : String?  
-
-	}
-```	
-
 ## Drawbacks
 This standard does not include any required ways to store the metadata, and therefore some of the metadata 
 could be dynamic, depending on how the NFTs are authored. This is a double edged sword; it allows for greater 
