@@ -5,7 +5,7 @@
 | **FLIP #**    | [200](https://github.com/onflow/flow/pull/200) |
 | **Author(s)** | Peter Siemens (peter@dapperlabs.com), Jeffery Doyle (jeffrey.doyle@dapperlabs.com) |
 | **Sponsor**   | Peter Siemens (peter@dapperlabs.com) |
-| **Updated**   | 2020-11-25 |
+| **Updated**   | 2021-12-14 |
 
 ## Objective
 
