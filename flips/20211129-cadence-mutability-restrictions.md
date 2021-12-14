@@ -23,9 +23,9 @@ Cadence. Developers may declare a "constant" field on their contract with `pub l
 that the field only be readable to transactions and other contracts, and unintentially allow
 other code to add or remove elements from a dictionary or array stored in that field. Consider this code:
 
-```
+```cadence
 pub contract Foo {
-	pub let x : [Int]
+	pub let x: [Int]
 
 	init() {
 	    self.x = []
@@ -63,7 +63,7 @@ contained within that scope.
 
 However, simply writing to a field directly is not the only way in which one can modify a value. Consider the following example:
 
-```
+```cadence
 pub struct Foo {
     pub let x: [Int]
 
@@ -74,8 +74,8 @@ pub struct Foo {
 
 pub fun bar() {
     let foo = Foo()
-    foo.x = [0] // writes to x, not allowed
-    foo.x[0] = 0 // does not write to x, currently allowed
+    foo.x = [0] // reassignment to `x` is not allowed, as variable is `let`
+    foo.x[0] = 0 // mutates the array, but does not reassign to `x`, currently allowed
 }
 ```
 
@@ -85,33 +85,34 @@ methods of arrays, or the `insert` or `remove` methods of dictionaries. These op
 in the current and inner scopes, the same contexts in which the field could be written to if it were a `var`. So the following 
 would typecheck:
 
-```
+```cadence
 pub struct Foo {
-    pub let x : [Int]
+    pub let x: [Int]
 
     init() {
-        self.x = [3];
+        self.x = [3]
     }
 
     pub fun addToX(i: Int) {
-        self.x.append(i)
+        self.x.append(i)  // mutation of field `x` in same scope is valid, even though field is `let`
     }
 }
 ```
 
 while the following would not:
 
-```
+```cadence
 pub struct Foo {
-    pub let y : [Int]
+    pub let y: [Int]
 
     init() {
-        self.y = [3];
+        self.y = [3]
     }
 }
 
-pub fun addToY(foo: Foo, i: Int) {
-    foo.y.append(i)
+pub fun main() {
+    let foo = Foo()
+    foo.y.append(1) // invalid, field `y` is let and cannot be mutated
 }
 ```
 
@@ -196,16 +197,16 @@ directly from the contract.
 
 Consider:
 
-```
+```cadence
 pub contract C {
     pub struct Foo {
-        pub let arr : [Int]
+        pub let arr: [Int]
         init() {
             self.arr = [3]
         }
     }
     
-    priv let foo : Foo
+    priv let foo: Foo
 
     init() {
         self.foo = Foo()
@@ -247,12 +248,12 @@ This will be communicated via changes to the Cadence documentation.
 
 Some examples of code that produces a type error as a result of this restriction:
 
-```
+```cadence
 pub resource Foo {
-    pub let x : {Int: Int}
+    pub let x: {Int: Int}
 
     init() {
-        self.x = {0:3};
+        self.x = {0: 3}
     }
 }
 
@@ -272,7 +273,7 @@ pub struct Bar {
 }
 
 pub struct Foo {
-    pub let x : [Int]
+    pub let x: [Int]
 
     init() {
         self.x = [3]
@@ -285,12 +286,12 @@ pub fun bar() {
 }
 ```
 
-```
+```cadence
 pub contract Foo {
-    pub let x : S
+    pub let x: S
     
     pub struct S {
-        pub let y : [Int]
+        pub let y: [Int]
         init() {
             self.y = [3]
         }
@@ -305,12 +306,13 @@ pub fun bar() {
     Foo.x.y.remove(at: 0) // cannot mutate `y`, field was defined in `S`
 }
 ```
-```
+
+```cadence
 pub contract Foo {
-    pub let x : S
+    pub let x: S
     
     pub struct S {
-        pub let y : [Int]
+        pub let y: [Int]
         init() {
             self.y = [3]
         }
@@ -325,12 +327,12 @@ pub contract Foo {
 
 while the following are allowed:
 
-```
+```cadence
 pub struct Foo {
     pub let x: {Int: Int}
 
     init() {
-        self.x = {3:3};
+        self.x = {3: 3}
     }
 
     pub fun bar() {
@@ -339,12 +341,13 @@ pub struct Foo {
     }
 }
 ```
-```
+
+```cadence
 pub struct Foo {
     pub(set) var x: {Int: Int}
 
     init() {
-        self.x = {3:3};
+        self.x = {3: 3}
     }
 }
 
@@ -370,7 +373,7 @@ refactored to expose a setter/modifier method for affected fields.
 ## Related Issues
 
 Do we wish to handle aliased references? Consider the following example (courtesy of @SupunS):
-```
+```cadence
 pub fun main() {
   let foo <- create Foo()
 
