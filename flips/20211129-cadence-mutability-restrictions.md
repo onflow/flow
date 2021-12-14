@@ -142,7 +142,7 @@ enclosing scope.
 
 The array methods that are considered mutating are `append`, `appendAll`, `remove`,
 `insert`, `removeFirst` and `removeLast`. The dictionary methods that are considered
-mutating are `insert` and `remove`. Additionally, indexed assignment (`x[y] = e`) will
+mutating are `insert` and `remove`. Additionally, indexed assignment (e.g. `x[y] = e`) will
 be considered mutating for both arrays and dictionaries.  
 
 The limitations on mutation are designed to closely mirror the limitations on writes, 
