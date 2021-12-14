@@ -58,7 +58,7 @@ correctness of contracts deployed to Flow.
 Cadence controls where and to what extent variables can be read and written using a combination of
 access modifiers and declaration kinds, as described [here](https://docs.onflow.org/cadence/language/access-control/).
 Of note is that the `let` kind does not allow fields to be written to in any scope, whereas `var` allows them
-to be written in the "Current and Inner" scopes; that is, the scope in which the field was declared, and any scopes
+to be reassigned in the "Current and Inner" scopes; that is, the scope in which the field was declared, and any scopes
 contained within that scope. 
 
 However, simply writing to a field directly is not the only way in which one can modify a value. Consider the following example:
