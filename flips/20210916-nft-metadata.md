@@ -1,6 +1,6 @@
 # Non-Fungible Token Metadata
 
-| Status        | Proposed |
+| Status        | Accepted |
 :-------------- |:---------------------------------------------------- |
 | **FLIP #**    | [636](https://github.com/onflow/flow/pull/636)                                                                                       |
 | **Author(s)** | Bjarte Karslen (bjartek@find.xyz), Deniz Mert Edincik (Deniz@edincik.com), Brian Dilley (briandilley@briandilley.com) |
@@ -9,12 +9,14 @@
 
 
 ## Objective
+
 This proposal will make it possible to create generic solutions that will interoperate 
 through views and not hard-coded NFT types. Want to create a marketplace? If you know 
 how to display a certain Type that defines a sellable Item, you can do so. And it will 
 work for any contract and any resource, not just a single one. 
 
 ## Motivation
+
 Currently there is no standard for defining NFT/resource metadata. At best, most implementations 
 employ a simple `{String: AnyStruct}` dictionary. Due to the various methods that NFT 
 authors use, it’s hard / impossible to create applications that use NFTs whether it be 
@@ -34,6 +36,7 @@ sellable items. With all the oncoming marketplaces/auction houses and things lik
 coming to Flow, a good standard for NFTs will help everybody. 
 
 ## User Benefit
+
 We feel that a standard that authors can implement that enables easy consumption of metadata 
 will lead to more applications that integrate NFTs. This will make NFTs intrinsically more 
 useful and valuable to the end users holding the NFTs.
@@ -46,6 +49,7 @@ It will also open up the possibility to standardize on some shared structs like 
 and SaleItem/Auction.
 
 Indirectly, users will benefit from the fact that Flow developers can put their development cycles to better use than integrating each new NFT contract to their platform.
+
 ## Design Proposal
 
 The core of this proposal is to add the following interface and have the NFT resource implement it
@@ -81,6 +85,7 @@ ideally, all immutable data for an NFT is stored as immutable members of the NFT
 are resolved and created by accessing those immutable members.
 
 ### Supporting other resources besides NFTs
+
 In order to support any other resource and resource collections, like marketplaces and fungible tokens, the following new interface is proposed:
 ```
 pub resource interface ViewResolverCollection {
@@ -252,6 +257,7 @@ pub struct URLWithHash {
 ```
 
 ## Drawbacks
+
 This standard does not include any required ways to store the metadata, and therefore some of the metadata 
 could be dynamic, depending on how the NFTs are authored. This is a double edged sword; it allows for greater 
 flexibility, but also means that some of the metadata returned by an NFT’s view may not be immutable. This, 
@@ -259,13 +265,16 @@ however, may be desirable. For instance, a game may allow an NFT to be used as a
 expose a view that exposes a member containing the character's health.
 
 ## Alternatives Considered
+
 A number of alternatives were discussed [here](https://github.com/onflow/flow-nft/issues/9).
 
 ## Performance Implications
+
 Due to the potentially dynamic nature of this proposal, the methods that return metadata views can be implemented 
 in any way that the NFT author sees fit which could lead to some non-performant implementations.
 
 ## Dependencies
+
 This proposal builds on the existing NFT interface defined [here](https://github.com/onflow/flow-nft).
 
 ## Engineering Impact
@@ -277,6 +286,7 @@ There may also need to be a committee, process, and code repository put in place
 types.
 
 ## Best Practices
+
 NFT authors should do their best to implement as many views from the standard metadata set as appropriate for 
 their application. 
 
@@ -284,34 +294,41 @@ NFT authors should document the views they support and contract creators should 
 It could be worth exploring a design-by-contract paradigm to formalize this in a forthcoming FLIP.
 
 ## Tutorials and Examples
+
 The following examples show the flexibility of this proposal with varying implementations.
 
 ### Example 1
+
 The Find project is going to be using metadata as lookup and index points. The project is available here:
 https://github.com/findonflow/find
 
 ### Example 2
+
 This example shows how you might implement this specification with the ability to add new view types to your NFT 
 contract after it has already been published through the use of a `ViewResolver` pattern.
 [Gist available here](https://gist.github.com/briandilley/962e94682b7945d882fcd99702011ea4),
 [Playground available here](https://play.onflow.org/a71203b9-a03a-47f9-ab70-7285fcf4c56a?type=account&id=0)
 
 ## Compatibility
+
 Provided support for default methods on interfaces is added to Cadence, there are no backwards compatibility issues. 
 Short of that, NFT authors will need to add implementations for the new methods added to their contracts.
 
 ## User Impact
+
 This feature can be rolled out with no fear of changes to the user. However documentation should be provided on how 
 they can change their contracts and add views. 
 
 ## Related Issues
+
 Defining how metadata stored is out of the scope of this proposal.
 
 ## Prior Art
+
 None
 
 ## Questions and Discussion Topics
+
 What post/pre conditions would be needed in the NFT methods (if any)?
 Are the arguments strong enough?
 Are more examples needed here or are the arguments strong enough?
-
