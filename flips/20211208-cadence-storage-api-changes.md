@@ -9,8 +9,9 @@
 
 ## Objective
 
-This change would cause the `load`, `borrow`, `copy` and capability borrow 
-methods of accounts to cause a force type-cast between the type of the
+This change would cause the `load`, `borrow`, and `copy` functions of 
+accounts (`AuthAccount` and `PublicAccount`) and the `Capability.borrow` 
+function to cause a force type-cast between the type of the
 value in storage and the supplied type argument. In effect, this would
 abort execution in cases where the value the user is trying to load or
 borrow does not match the type supplied. 
@@ -37,10 +38,12 @@ between the expected type (the supplied type argument) and the dynamic type
 of the value. 
 
 Concretely, where this code would previously have produced `nil` for the value of `v`:
-```
+
+```cadence
 account.save(3, to: /storage/path)
 let v = account.load<String>(from: /storage/path/)
 ```
+
 after this change, it will now abort execution.
 
 ### Drawbacks
@@ -74,16 +77,20 @@ the full release.
 
 In general, however, there will be a general way to migrate code to be compatible with this change.
 The following code:
-```
+
+```cadence
 let v = account.load<T>(from: /storage/path)
 ```
+
 can be rewritten as:
-```
-let v = nil
+
+```cadence
+var v: T? = nil
 if account.type(at: /storage/path) == Type<T>() {
     v = account.load<T>(from: /storage/path)
 }
 ```
+
 However, this is only necessary to maintain the original behavior in cases where the value stored at 
 `/storage/path` is not guaranteed to be of type `T`. In cases where this is guaranteed, code can 
 be left as is and behavior will not change. 
