@@ -17,7 +17,7 @@ import "./swagger"
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://access.mainnet.nodes.onflow.org/v1*
+All URIs are relative to *https://rest-mainnet.onflow.org/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -45,6 +45,7 @@ Class | Method | HTTP request | Description
  - [BlockPayload](docs/BlockPayload.md)
  - [BlockSeal](docs/BlockSeal.md)
  - [Collection](docs/Collection.md)
+ - [CollectionExpandable](docs/CollectionExpandable.md)
  - [CollectionGuarantee](docs/CollectionGuarantee.md)
  - [Event](docs/Event.md)
  - [ExecutionResult](docs/ExecutionResult.md)
