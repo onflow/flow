@@ -645,7 +645,8 @@ const sections = [
         "docs/language/built-in-functions",
         "docs/language/environment-information",
         "docs/language/crypto",
-        "docs/language/type-hierarchy"
+        "docs/language/type-hierarchy",
+        "docs/language/glossary"
       ]
     }
   },
