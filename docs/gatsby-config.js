@@ -321,15 +321,15 @@ const sections = [
       Overview: ["[Cadence Language Reference](/cadence/language/)"],
       "Developer Guides": [
         "[Introduction to Cadence](/cadence/)",
-        "docs/design-patterns",
-        "docs/contract-upgrades",
-        "docs/anti-patterns",
-        "docs/msg-sender",
-        "docs/measuring-time",
-        "docs/subtyping",
-        "docs/migration-guide",
-        "docs/json-cadence-spec",
-        "docs/syntax-highlighting"
+        "[Cadence Design Patterns](/cadence/design-patterns/)",
+        "[Contract Upgrades with Incompatible Changes](/cadence/contract-upgrades/)",
+        "[Cadence Anti-Patterns](/cadence/anti-patterns/)",
+        "[msg․sender Considered Harmful](/cadence/msg-sender/)",
+        "[Measuring Time In Cadence](/cadence/measuring-time/)",
+        "[Subtyping](/cadence/subtyping/)",
+        "[Migration Guide](/cadence/migration-guide/)",
+        "[JSON-Cadence Data Interchange Format](/cadence/json-cadence-spec/)",
+        "[Syntax Highlighting](/cadence/syntax-highlighting/)"
       ],
       Tutorial: [
         "docs/tutorial/01-first-steps",
@@ -475,21 +475,23 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: ["docs/api", "docs/examples"],
+      Overview: [
+        "[API](/flow-js-testing/api/)"
+      ],
       Guides: [
-        "docs/install",
-        "docs/init",
-        "docs/accounts",
-        "docs/contracts",
-        "docs/emulator",
-        "docs/execute-scripts",
-        "docs/flow-token",
-        "docs/generator",
-        "docs/jest-helpers",
-        "docs/send-transactions",
-        "docs/structure",
-        "docs/templates",
-        "docs/type"
+        "[Install Flow Javascript Testing Framework](/flow-js-testing/install/)",
+        "[Init](/flow-js-testing/init)",
+        "[Accounts](/flow-js-testing/accounts/)",
+        "[Contracts](/flow-js-testing/contracts/)",
+        "[Emulator](/flow-js-testing/emulator/)",
+        "[Execute Scripts](/flow-js-testing/execute-scripts/)",
+        "[FLOW Token](/flow-js-testing/flow-token/)",
+        "[Bootstrap Framework](/flow-js-testing/generator)",
+        "[Jest Helpers](/flow-js-testing/jest-helpers/)",
+        "[Send Transactions](/flow-js-testing/send-transactions/)",
+        "[Folder Structure](/flow-js-testing/structure)",
+        "[Templates](/flow-js-testing/templates/)",
+        "[Types](/flow-js-testing/types/)"
       ]
     }
   },
