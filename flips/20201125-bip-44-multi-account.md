@@ -122,6 +122,9 @@ The legacy path is:
 m / 44' / 1' / 769 / 0 / 0
 ```
 
+All keys generated with the legacy path as of today (Dec 2021) have been done so using the
+ECDSA P-256 curve.
+
 ### Account Discovery
 
 Wallet developers should use a modified version of the original account
@@ -135,29 +138,52 @@ The account index gap limit should be `5`.
 
 The prescribed account discovery procedure is as follows:
 
-1. Derive the key pair using the legacy path, checking it's use with the
-   public key registry. If an address is found, query the Flow network to fetch
-   the account's details. If an account is found, remember the relationship between the
-   path used to generate this key, and the account's details.
-2. Derive a key pair (starting with account index = 0 and key index =
-   1) using the path specified in this FLIP.
-3. Scan for the key usage by checking the public key registry.
+1. Derive the key pair using the legacy path and ECDSA P256<sup>1</sup>, 
+   checking its use with the public key registry. If an address is found, 
+   query the Flow network to fetch the account's details. If an account 
+   is found, remember the relationship between the path used to generate 
+   this key and the account's details.
+2. Derive the key pair(s) (starting with account index = 0 and key index =
+   1) using the path specified in this FLIP and each elliptic curve that
+   both you and Flow support (Flow currently supports keys generated on the
+   ECDSA P256<sup>1</sup> and ECDSA secp256k1<sup>2</sup> curves) for each 
+   hash algorithm that both you and Flow support (Flow currently supports 
+   SHA2_256<sup>3</sup>, SHA2_384<sup>4</sup>, SHA3_256<sup>5</sup>, SHA3_384
+   <sup>6</sup> hashing algorithms).
+3. Scan for each keys usage by querying the public key registry with the key,
+   curve and hash algorithm for it.
    If the gap limit has been reached for both key index and account index, stop
    discovery.
-    3.1. If no address is found in the registry 
-        3.1.1 If the key index gap limit has been reached without finding any 
+    - 3.1. If no addresses are found in the registry
+        - 3.1.1 If the key index gap limit has been reached without finding any
         addressed in the registry, then go to step 2, incrementing the account index
-        by one and starting with key index = 0 again. 
-        3.1.2 If the key index gap limit has not been reached, go to step 2 and
-        increment the key index by one. 
-    3.2. If an address is found, query the Flow network to fetch the account's details. 
-        3.2.1. If no account is found<sup>1</sup>, go to step 2, incrementing 
+        by one and starting with key index = 0 again.
+        - 3.1.2 If the key index gap limit has not been reached, go to step 2 and
+        increment the key index by one.
+    - 3.2. If one or more addresses are found, query the Flow network to fetch each
+      account's details.
+        - 3.2.1. If no accounts are found<sup>7</sup>, go to step 2, incrementing
         the account index by one.
-        3.2.2. If an account is found, remember the relationship between the
-        path used to generate this key and the account's details. Then go to step 2, 
-        incrementing the key index by one.
+        - 3.2.2. For each account found, remember the relationship between the path
+        used to generate this key, the curve used to generate this key,
+        and the hash algorithm corresponding to this key and the account's details.
+        Then go to step 2, incrementing the key index by one.
 
-<sup>1</sup>Flow supports account deletion, meaning that an address found in the
+<sup>1</sup>ECDSA P256 is Elliptic Curve Digital Signature Algorithm (ECDSA) on
+the NIST P-256 curve.
+
+<sup>2</sup>ECDSA secp256k1 is Elliptic Curve Digital Signature Algorithm (ECDSA) on
+the secp256k1 curve.
+
+<sup>3</sup>SHA2_256 is Secure Hashing Algorithm 2 (SHA-2) with a 256-bit digest.
+
+<sup>4</sup>SHA2_384 is Secure Hashing Algorithm 2 (SHA-2) with a 384-bit digest.
+
+<sup>5</sup>SHA3_256 is Secure Hashing Algorithm 3 (SHA-3) with a 256-bit digest.
+
+<sup>6</sup>SHA3_384 is Secure Hashing Algorithm 3 (SHA-3) with a 384-bit digest.
+
+<sup>7</sup>Flow supports account deletion, meaning that an address found in the
 registry may refer to a nonexistent account. In this case the account should be
 skipped but discovery should continue.
 
@@ -193,6 +219,20 @@ generate the additional key should be:
 When generating additional keys for an account, the correct key index to
 use in the path to generate the new key should be the smallest unused key index
 available which has not yet been used to generate a key on the account.
+
+##### Conflict Resolution: Multiple Signature & Hashing Algorithms Used for Keys Generated Using the Same Path
+
+The same derivation path should not be used with multiple combinations of signature and
+hashing algorithms to generate keys set on an account.
+
+The prescribed account discovery algorithm will find keys generated using
+all combinations of derivation paths, supported signature algorithms and supported hashing
+algorithms. However, wallets should not use the same path twice to apply
+it to multiple signature and hashing algorithms to generate keys.
+
+When generating a new key pair for an account, a new path, which has not yet been used in
+combination with any signature or hashing algorithm to generate keys set on the account,
+should be used.
 
 ### Drawbacks
 
