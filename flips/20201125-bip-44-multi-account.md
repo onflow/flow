@@ -149,13 +149,11 @@ The prescribed account discovery procedure is as follows:
 2. Derive the key pair(s) (starting with account index = 0 and key index = 0) 
    using the path specified in this FLIP and each elliptic curve that
    both you and Flow support (Flow currently supports keys generated on the
-   ECDSA P256<sup>1</sup> and ECDSA secp256k1<sup>2</sup> curves) for each 
-   hash algorithm that both you and Flow support (Flow currently supports 
-   SHA2_256<sup>3</sup>, SHA2_384<sup>4</sup>, SHA3_256<sup>5</sup>, SHA3_384
-   <sup>6</sup> hashing algorithms). Note: If you are unable to derive keys
-   for a certain elliptic curve, you may fail to discover an account / key
-   that the user has generated previously.
-3. Scan for each keys usage by querying the public key registry with the key,
+   ECDSA P256<sup>1</sup> and ECDSA secp256k1<sup>2</sup> curves).
+   Note: If you are unable to derive keys for a certain elliptic curve, 
+   you may fail to discover an account / key that the user has generated 
+   previously.
+1. Scan for each keys usage by querying the public key registry with the key,
    curve and hash algorithm for it.
    If the gap limit has been reached for both key index and account index, stop
    discovery.
@@ -167,9 +165,9 @@ The prescribed account discovery procedure is as follows:
         increment the key index by one.
     - 3.2. If one or more addresses are found, query the Flow network to fetch each
       account's details.
-        - 3.2.1. If no accounts are found<sup>7</sup>, go to step 2, incrementing
+        - 3.2.1. If no accounts are found<sup>3</sup>, go to step 2, incrementing
         the account index by one.
-        - 3.2.2. For each account found, remember the relationship between the path
+        - 3.2.2. For each account found<sup>3</sup>, remember the relationship between the path
         used to generate this key, the curve used to generate this key,
         and the hash algorithm corresponding to this key and the account's details.
         Then go to step 2, incrementing the key index by one.
@@ -180,16 +178,8 @@ the NIST P-256 curve.
 <sup>2</sup>ECDSA secp256k1 is Elliptic Curve Digital Signature Algorithm (ECDSA) on
 the secp256k1 curve.
 
-<sup>3</sup>SHA2_256 is Secure Hashing Algorithm 2 (SHA-2) with a 256-bit digest.
-
-<sup>4</sup>SHA2_384 is Secure Hashing Algorithm 2 (SHA-2) with a 384-bit digest.
-
-<sup>5</sup>SHA3_256 is Secure Hashing Algorithm 3 (SHA-3) with a 256-bit digest.
-
-<sup>6</sup>SHA3_384 is Secure Hashing Algorithm 3 (SHA-3) with a 384-bit digest.
-
-<sup>7</sup>Flow supports account deletion, meaning that an address found in the
-registry may refer to a nonexistent account. In this case the account should be
+<sup>3</sup>Flow supports account deletion, meaning that an address found in the
+registry may refer to a nonexistent account. In this case the address should be
 skipped but discovery should continue.
 
 #### Account Discovery Conflict Resolution
