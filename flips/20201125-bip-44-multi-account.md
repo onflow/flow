@@ -143,8 +143,8 @@ The prescribed account discovery procedure is as follows:
    query the Flow network to fetch the account's details. If an account 
    is found, remember the relationship between the path used to generate 
    this key and the account's details.
-2. Derive the key pair(s) (starting with account index = 0 and key index =
-   1) using the path specified in this FLIP and each elliptic curve that
+2. Derive the key pair(s) (starting with account index = 0 and key index = 1) 
+   using the path specified in this FLIP and each elliptic curve that
    both you and Flow support (Flow currently supports keys generated on the
    ECDSA P256<sup>1</sup> and ECDSA secp256k1<sup>2</sup> curves) for each 
    hash algorithm that both you and Flow support (Flow currently supports 
