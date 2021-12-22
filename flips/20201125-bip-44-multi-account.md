@@ -153,8 +153,8 @@ The prescribed account discovery procedure is as follows:
    Note: If you are unable to derive keys for a certain elliptic curve, 
    you may fail to discover an account / key that the user has generated 
    previously.
-1. Scan for each keys usage by querying the public key registry with the key,
-   curve and hash algorithm for it.
+1. Scan for each keys usage by querying the public key registry with the key and
+   elliptic curve used to generate it.
    If the gap limit has been reached for both key index and account index, stop
    discovery.
     - 3.1. If no addresses are found in the registry
