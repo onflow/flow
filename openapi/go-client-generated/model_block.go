@@ -12,6 +12,6 @@ type Block struct {
 	Header *BlockHeader `json:"header"`
 	Payload *BlockPayload `json:"payload,omitempty"`
 	ExecutionResult *ExecutionResult `json:"execution_result,omitempty"`
-	Expandable *BlockExpandable `json:"_expandable,omitempty"`
+	Expandable *BlockExpandable `json:"_expandable"`
 	Links *Links `json:"_links,omitempty"`
 }

@@ -28,8 +28,8 @@ type BlocksApiService service
 /*
 BlocksApiService Gets full blocks by height.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param height A comma-separated list of block heights to get.
  * @param optional nil or *BlocksApiBlocksGetOpts - Optional Parameters:
+     * @param "Height" (optional.Interface of []BlockHeight) -  A comma-separated list of block heights to get.
      * @param "StartHeight" (optional.Interface of BlockHeight) -  The start height of the block range to get. Must be used together with &#x60;end_height&#x60;. This parameter is incompatible with &#x60;height&#x60;.
      * @param "EndHeight" (optional.Interface of BlockHeight) -  The ending height of the block range to get. Must be used together with &#x60;start_height&#x60;. This parameter is incompatible with &#x60;height&#x60;.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
@@ -38,13 +38,14 @@ BlocksApiService Gets full blocks by height.
 */
 
 type BlocksApiBlocksGetOpts struct {
+    Height optional.Interface
     StartHeight optional.Interface
     EndHeight optional.Interface
     Expand optional.Interface
     Select_ optional.Interface
 }
 
-func (a *BlocksApiService) BlocksGet(ctx context.Context, height []BlockHeight, localVarOptionals *BlocksApiBlocksGetOpts) ([]Block, *http.Response, error) {
+func (a *BlocksApiService) BlocksGet(ctx context.Context, localVarOptionals *BlocksApiBlocksGetOpts) ([]Block, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -59,11 +60,10 @@ func (a *BlocksApiService) BlocksGet(ctx context.Context, height []BlockHeight, 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if len(height) < 1 {
-		return localVarReturnValue, nil, reportError("height must have at least 1 elements")
-	}
 
-	localVarQueryParams.Add("height", parameterToString(height, "csv"))
+	if localVarOptionals != nil && localVarOptionals.Height.IsSet() {
+		localVarQueryParams.Add("height", parameterToString(localVarOptionals.Height.Value(), "csv"))
+	}
 	if localVarOptionals != nil && localVarOptionals.StartHeight.IsSet() {
 		localVarQueryParams.Add("start_height", parameterToString(localVarOptionals.StartHeight.Value(), ""))
 	}
