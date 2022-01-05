@@ -51,12 +51,12 @@ It is not intuitive enough for developers that their codes may not work for all 
 
 ## User Benefit
 It would be more intuitive and explicit to the developers and to anyone who read the code, about
-what's happening during arithmetic operations on numeric supertypes. 
+what's happening during arithmetic and comparison operations on numeric supertypes. 
 Helps them to avoid any unintentional/unforeseen behaviors.
 
 ## Design Proposal
 
-### Arithmetic Operations (`+`, `-` `*`, `/`, etc.)
+#### Arithmetic Operations (`+`, `-` `*`, `/`, etc.)
 The proposed solution is to statically disallow arithmetic operations on numeric supertypes.
 
 ```cadence
@@ -64,6 +64,7 @@ let x: Integer = 3 as Int8
 let y: Integer = 4 as Int8
 
 let z: Integer = x + y     // Static error
+```
 
 Developers will have to explicitly force-cast it to the desired type before they do the arithmetic
 operation.
@@ -77,10 +78,10 @@ let z: Integer = (x as! Int8) + (y as! Int8)
 This way, it is intuitive for the developers that the code has the potential to fail at run-time. 
 
 
-### Equality Operations (`==`, `!=`)
+#### Equality Operations (`==`, `!=`)
 Statically allow the equality operations, and consider the raw-value and the type for the runtime
 value equality.
-```
+```cadence
 let x: Integer = 3 as Int8
 let y: Integer = 3 as Int16
 
@@ -89,7 +90,7 @@ let isEqual = x == y    // will result in 'false'
 `isEqual` will be `false` since the type of the two values are different, even though the raw-value
 is same.
 
-### Comparisons Operations (`>`, `>=`, `<`, `<=`)
+#### Comparisons Operations (`>`, `>=`, `<`, `<=`)
 As it is proposed in the equality operations, since the runtime value-semantics include both the
 value and the type, defining comparison operations for values of different types is not possible.
 
@@ -101,7 +102,7 @@ the same raw value but belongs to two different types (e.g: `x: Integer = 3 as I
 Thus, the suggestion is to statically disallow comparisons on numeric supertypes, similar to
 arithmetic operations.
 
-```
+```cadence
 let x: Integer = 3 as Int8
 let y: Integer = 4 as Int8
 
@@ -110,7 +111,7 @@ let z = x < y     // Static error
 
 Developers will have to explicitly force-cast it to the desired type before they do the comparison
 operation.
-```
+```cadence
 let x: Integer = 3 as Int8
 let y: Integer = 4 as Int8
 
@@ -120,7 +121,8 @@ let z = (x as! Int8) < (y as! Int8)
 ### Drawbacks
 - This is a breaking change, and developers will have to update their codes.
 - With this change, developers would now have to write some extra bit of code for the force casts,
-when performing arithmetic operations on numeric super types. However, it is very trivial. 
+when performing arithmetic and comparison operations on numeric super types. However, it is very 
+trivial.
 - This reduces the usefulness of numeric supertypes.
 
 ### Alternatives Considered
