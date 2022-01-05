@@ -9,8 +9,8 @@
 
 ## Objective
 
-Statically disallow arithmetic operations on numeric supertypes, as they may or may not succeed at
-run-time.
+Statically disallow arithmetic and comparison operations on numeric supertypes, as they may or may
+not succeed at run-time.
 The idea is to make the current behavior that happens under the hood, more explicit to the developers,
 and by doing so, help them to avoid any unintentional/unforeseen behaviors.
 
