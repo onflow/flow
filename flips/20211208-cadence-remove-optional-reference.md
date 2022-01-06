@@ -63,7 +63,7 @@ pub struct S {
     }
 }
 let dict: {String: S} = {}
-let s = &dict[""] as &S? // s has type &S?
+let s = &dict[""] as &S? // s has type (&S)?
 let n: Number = s.foo // optional does not have member "foo"
 ```
 
