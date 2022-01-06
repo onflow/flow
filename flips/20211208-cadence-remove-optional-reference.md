@@ -1,6 +1,6 @@
 # Optional References to Indexed Accesses
 
-| Status        | (Proposed)       |
+| Status        | (Approved)       |
 :-------------- |:---------------------------------------------------- |
 | **FLIP #**    | [722](https://github.com/onflow/flow/pull/722) |
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
