@@ -20,7 +20,7 @@ to optional values.
 ## Motivation
 
 As detailed in https://github.com/onflow/cadence/issues/747, it is possible to 
-crash execution with a failed dereference that is not caught by the typechecker
+abort execution with a failed dereference that is not caught by the type checker
 by creating a reference to the result of an indexed access, and then accessing
 a field on that reference. This occurs because while references to optional 
 values are normally disallowed, references to indexed accesses are special cased
