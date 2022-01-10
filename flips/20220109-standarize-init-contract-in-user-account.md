@@ -79,6 +79,7 @@ let exampleNFTreferece=signer.ensureContractInitialized(creator)
 
 If the user does not have the contract initialized properly then it should be stored and linked as above and an event should be emitted that contains the name of the user and the contract.
 
+On the read side of things, there might not be much changes if the storageAPI is implemented, allthough it could be worthwhile to have some accessor methods on PublicAccount to query the information. Like getting the PublicPath a resource is linked at and the interfaces it can be borrowed as. 
 
 [###](###) Drawbacks
 
