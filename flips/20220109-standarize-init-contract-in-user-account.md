@@ -9,6 +9,8 @@
 
 ## Objective
 
+What happends when a user in BloctoApp clicks "create new versus collection"? As the creator of the versus contract, I do not know. 
+
 In the current state of cadence I see a trend where initializing the storage/link a solution/contracts requires is becomming more and more decentralized. The process of doing this is not standardized in any way and the owner of a contrat have no way of knowing if another product initializes the storages correctly. 
 
 This FLIP aims to suggest a solution where it would be possible for the owner of a contract to specify how it wants itself to be initialized in a user accounts. And also enable script access to this information.
