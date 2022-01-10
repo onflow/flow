@@ -66,24 +66,19 @@ signer.link<&ExampleNFT{ExampleNFT.Admin}>(
 
 This data can then be used in the following way somehow
 
-```
-//signer is authAccount
-//TODO: do we need the ability to send in optional context or optional initialization here?
-//ensure should return the reference to the stored object so you can chain it with calls to that.  
-signer.ensureContractInitialized(type: ExampleNFT, params?)
+AuthAccount could then have a function like `ensureContractInitialized` that takes a lambda that returns `@AnyResource`. This could be used as follows
 
+```
+
+//a function value that returns a resource
+[var](var) creator = fun() { return <- ExampleNFT.createEmptyCollection() }
+
+//signer is authAccount
+let exampleNFTreferece=signer.ensureContractInitialized(creator)
 ```
 
 If the user does not have the contract initialized properly then it should be stored and linked as above and an event should be emitted that contains the name of the user and the contract.
 
-TODO: How to handle upgradeability?
-
-And in a script to fetch/borrow the contract
-
-```
-//account is here PublicAccount
-let capability=account.access<T>(type:ExampleNFT)
-```
 
 [###](###) Drawbacks
 
@@ -92,6 +87,7 @@ Existing initiliazed accounts will not automatically have the new events if we d
 ### Alternatives Considered
 
 * In some talks some users have suggested just removing paths all together. Presonally I (bjartek) see them as powerfull for more advanced work but the common use case should have an abstractions above them.
+* This proposal could be expanded to allow the read site of solutions to access the same data, but I am not sure how easy that would be without generics. 
 
 ### Performance Implications
 
@@ -103,9 +99,9 @@ No
 
 ### Engineering Impact
 
-There needs to be new methods added to AuthAccount and PublicAccount. The data stored for these also needs new fields. 
+There needs to be new methods added to AuthAccount and PublicAccount. The storage model for contracts in accounts need to be updated to store this aditional data.
 
-TODO: help needed
+TODO: help needed on how much work this is
 
 ### Best Practices
 
