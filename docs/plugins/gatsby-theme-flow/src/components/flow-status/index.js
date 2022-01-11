@@ -1,7 +1,8 @@
 import React from "react";
 import { StatusCard, RecentPost } from "./components";
 import { useBreakingChangesPosts } from "./hooks";
-import { StatusWrapper, AnnouncementsWrapper } from "./styles";
+import { useMainnetSporkPosts } from "./hooks";
+import { StatusWrapper, MainnetSporkWrapper, AnnouncementsWrapper } from "./styles";
 
 export function NetworkStatus(props) {
   return (
@@ -19,5 +20,16 @@ export function Announcements() {
         <RecentPost key={post.id} post={post} />
       ))}
     </AnnouncementsWrapper>
+  );
+}
+
+export function MainnetSpork() {
+  const mainnetSporkPosts = useMainnetSporkPosts();
+  return (
+      <MainnetSporkWrapper>
+        {mainnetSporkPosts.map((post) => (
+            <RecentPost key={post.id} post={post} />
+        ))}
+      </MainnetSporkWrapper>
   );
 }

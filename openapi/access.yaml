@@ -3,12 +3,12 @@ info:
   version: "1.0.0"
   title: "Access API"
 servers:
-  - url: https://access.mainnet.nodes.onflow.org/v1
-    description: Current Mainnet
-  - url: https://access.devnet.nodes.onflow.org/v1
-    description: Testnet
-  - url: https://access.canary.nodes.onflow.org/v1
-    description: Canarynet
+  - url: https://rest-mainnet.onflow.org/v1
+    description: Flow Mainnet
+  - url: https://rest-testnet.onflow.org/v1
+    description: Flow Testnet
+  - url: https://rest-canary.onflow.org/v1
+    description: Flow Canarynet
 paths:
   /blocks:
     get:
@@ -27,7 +27,6 @@ paths:
             uniqueItems: true
           explode: false
           style: form
-          required: true
         - name: start_height
           in: query
           schema:
@@ -180,7 +179,7 @@ paths:
                 reference_block_id:
                   $ref: '#/components/schemas/Identifier'
                 gas_limit:
-                  type: integer
+                  type: string
                   format: uint64
                 payer:
                   $ref: '#/components/schemas/Address'
@@ -331,7 +330,7 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /scripts:
     post:
-      summary: Executes a read-only Cadence script against the execution state at the given block height or ID.
+      summary: Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block height.
       tags:
         - Scripts
       parameters:
@@ -412,11 +411,12 @@ components:
       required:
         - address
         - balance
+        - _expandable
       properties:
         address:
           $ref: '#/components/schemas/Address'
         balance:
-          type: integer
+          type: string
           format: uint64
         keys:
           type: array
@@ -450,7 +450,7 @@ components:
         - revoked
       properties:
         index:
-          type: integer
+          type: string
           format: uint64
         public_key:
           type: string
@@ -460,10 +460,10 @@ components:
         hashing_algorithm:
           $ref: '#/components/schemas/HashingAlgorithm'
         sequence_number:
-          type: integer
+          type: string
           format: uint64
         weight:
-          type: integer
+          type: string
           format: uint64
         revoked:
           type: boolean
@@ -485,7 +485,7 @@ components:
       type: object
       required:
         - id
-        - transactions
+        - _expandable
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -493,6 +493,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Transaction'
+        _expandable:
+          type: object
+          properties:
+            transactions:
+              type: array
+              items:
+                type: string
+                format: uri
         _links:
           $ref: '#/components/schemas/Links'
     Transaction:
@@ -504,6 +512,11 @@ components:
         - reference_block_id
         - gas_limit
         - payer
+        - proposal_key
+        - authorizers
+        - payload_signatures
+        - envelope_signatures
+        - _expandable
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -518,7 +531,7 @@ components:
         reference_block_id:
           $ref: '#/components/schemas/Identifier'
         gas_limit:
-          type: integer
+          type: string
           format: uint64
         payer:
           $ref: '#/components/schemas/Address'
@@ -541,14 +554,6 @@ components:
         _expandable:
           type: object
           properties:
-            proposal_key:
-              type: string
-            authorizers:
-              type: string
-            payload_signatures:
-              type: string
-            envelope_signatures:
-              type: string
             result:
               type: string
               format: uri
@@ -564,10 +569,10 @@ components:
         address:
           $ref: '#/components/schemas/Address'
         key_index:
-          type: integer
+          type: string
           format: uint64
         sequence_number:
-          type: integer
+          type: string
           format: uint64
     TransactionSignature:
       type: object
@@ -580,10 +585,10 @@ components:
         address:
           $ref: '#/components/schemas/Address'
         signer_index:
-          type: integer
+          type: string
           format: uint64
         key_index:
-          type: integer
+          type: string
           format: uint64
         signature:
           $ref: '#/components/schemas/Signature'
@@ -594,6 +599,7 @@ components:
         - status
         - error_message
         - computation_used
+        - events
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
@@ -602,17 +608,12 @@ components:
         error_message:
           type: string
         computation_used:
-          type: integer
+          type: string
           format: uint64
         events:
           type: array
           items:
             $ref: '#/components/schemas/Event'
-        _expandable:
-          type: object
-          properties:
-            events:
-              type: string
         _links:
           $ref: '#/components/schemas/Links'
     TransactionStatus:
@@ -627,6 +628,7 @@ components:
       type: object
       required:
         - header
+        - _expandable
       properties:
         header:
           $ref: '#/components/schemas/BlockHeader'
@@ -658,7 +660,7 @@ components:
         parent_id:
           $ref: '#/components/schemas/Identifier'
         height:
-          type: integer
+          type: string
           format: uint64
         timestamp:
           type: string
@@ -772,17 +774,17 @@ components:
         transaction_id:
           $ref: '#/components/schemas/Identifier'
         transaction_index:
-          type: integer
+          type: string
           format: uint64
         event_index:
-          type: integer
+          type: string
           format: uint64
         payload:
           type: string
           format: byte
     BlockHeight:
       oneOf:
-        - type: integer
+        - type: string
           format: uint64
         - type: string
           enum:
@@ -814,6 +816,9 @@ components:
           type: string
     Links:
       type: object
+      properties:
+        _self:
+          type: string
   responses:
     400BadRequest:
       description: Bad Request

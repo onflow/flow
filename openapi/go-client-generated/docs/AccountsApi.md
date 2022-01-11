@@ -1,6 +1,6 @@
 # {{classname}}
 
-All URIs are relative to *https://access.mainnet.nodes.onflow.org/v1*
+All URIs are relative to *https://rest-mainnet.onflow.org/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

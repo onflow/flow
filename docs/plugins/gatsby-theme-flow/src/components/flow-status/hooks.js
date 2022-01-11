@@ -6,8 +6,9 @@ import useSWR from "swr";
 import moment from "moment";
 
 import { BREAKING_CHANGES_RESOURCE as DISCOURSE_API_URL } from "./constants";
+import { MAINNET_SPORK as DISCOURSE_MAINNET_SPORK_API_URL } from "./constants";
 
-const fetchBreakingChanges = (resource) => {
+const fetchDiscourseChanges = (resource) => {
   return fetch(resource, {
     headers: {
       "Content-Type": "application/json"
@@ -18,7 +19,7 @@ const fetchBreakingChanges = (resource) => {
 export function useBreakingChangesPosts() {
   const [posts, setPosts] = useState([]);
 
-  useSWR(DISCOURSE_API_URL, fetchBreakingChanges, {
+  useSWR(DISCOURSE_API_URL, fetchDiscourseChanges, {
     refreshInterval: 100000,
     onSuccess(data) {
       const {
@@ -45,6 +46,39 @@ export function useBreakingChangesPosts() {
     }
   });
 
+  return posts || [];
+}
+
+export function useMainnetSporkPosts() {
+  const [posts, setPosts] = useState([]);
+
+  useSWR(DISCOURSE_MAINNET_SPORK_API_URL, fetchDiscourseChanges, {
+    refreshInterval: 100000,
+    onSuccess(data) {
+      const {
+        topic_list: { topics }
+      } = data;
+
+      const sorted = topics
+          // Removes the "About this category" post
+          .filter((post) => post.id !== 2543)
+          .map((post) => {
+            const date = moment(new Date(post.created_at)).fromNow();
+            post.__formatted_date = date;
+            return post;
+          })
+          // Couldn't find any sorting options on the API side
+          .sort((a, b) => {
+            return new Date(a.created_at).getTime() >
+            new Date(b.created_at).getTime()
+                ? -1
+                : 1;
+          })
+
+      setPosts(sorted);
+    }
+  });
+  console.log(posts)
   return posts || [];
 }
 

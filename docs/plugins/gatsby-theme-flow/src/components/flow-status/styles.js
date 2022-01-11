@@ -7,6 +7,7 @@ import breakpoints from "../../utils/breakpoints";
 import { HEALTHY, UNAVAILABLE } from "./constants";
 
 export const StatusWrapper = styled.div({});
+export const MainnetSporkWrapper = styled.div({});
 export const AnnouncementsWrapper = styled.div({});
 
 function getColor(status) {

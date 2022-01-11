@@ -17,7 +17,7 @@ import "./swagger"
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://access.mainnet.nodes.onflow.org/v1*
+All URIs are relative to *https://rest-mainnet.onflow.org/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -27,7 +27,7 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**CollectionsIdGet**](docs/CollectionsApi.md#collectionsidget) | **Get** /collections/{id} | Gets a collection by ID.
 *ExecutionResultsApi* | [**ExecutionResultsGet**](docs/ExecutionResultsApi.md#executionresultsget) | **Get** /execution_results | Gets execution results by block ID.
 *ExecutionResultsApi* | [**ExecutionResultsIdGet**](docs/ExecutionResultsApi.md#executionresultsidget) | **Get** /execution_results/{id} | Gets an execution result by ID.
-*ScriptsApi* | [**ScriptsPost**](docs/ScriptsApi.md#scriptspost) | **Post** /scripts | Executes a read-only Cadence script against the execution state at the given block height or ID.
+*ScriptsApi* | [**ScriptsPost**](docs/ScriptsApi.md#scriptspost) | **Post** /scripts | Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block height.
 *TransactionsApi* | [**TransactionResultsTransactionIdGet**](docs/TransactionsApi.md#transactionresultstransactionidget) | **Get** /transaction_results/{transaction_id} | Gets a transaction result by ID.
 *TransactionsApi* | [**TransactionsIdGet**](docs/TransactionsApi.md#transactionsidget) | **Get** /transactions/{id} | Gets a transaction by ID.
 *TransactionsApi* | [**TransactionsPost**](docs/TransactionsApi.md#transactionspost) | **Post** /transactions | Submits a transaction to the network.
@@ -45,6 +45,7 @@ Class | Method | HTTP request | Description
  - [BlockPayload](docs/BlockPayload.md)
  - [BlockSeal](docs/BlockSeal.md)
  - [Collection](docs/Collection.md)
+ - [CollectionExpandable](docs/CollectionExpandable.md)
  - [CollectionGuarantee](docs/CollectionGuarantee.md)
  - [Event](docs/Event.md)
  - [ExecutionResult](docs/ExecutionResult.md)
@@ -59,7 +60,6 @@ Class | Method | HTTP request | Description
  - [Transaction](docs/Transaction.md)
  - [TransactionExpandable](docs/TransactionExpandable.md)
  - [TransactionResult](docs/TransactionResult.md)
- - [TransactionResultExpandable](docs/TransactionResultExpandable.md)
  - [TransactionSignature](docs/TransactionSignature.md)
  - [TransactionStatus](docs/TransactionStatus.md)
  - [TransactionsBody](docs/TransactionsBody.md)

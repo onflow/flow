@@ -4,6 +4,7 @@ title: Flow Network Status
 
 import {
   NetworkStatus,
+  MainnetSpork,
   Announcements
 } from "../plugins/gatsby-theme-flow/src/components/flow-status";
 
@@ -23,27 +24,31 @@ import {
       <NetworkStatus
         status={mainnetStatus}
         networkName={MAINNET}
-        networkVersion="14"
+        networkVersion="15"
         versionUrl=""
-        nextSporkDate="November 10, 2021"
+        nextSporkDate="February, 2022"
       />
       <NetworkStatus
         status={testnetStatus}
         networkName={TESTNET}
-        networkVersion="30"
+        networkVersion="32"
         versionUrl=""
-        nextSporkDate="November 9 2021"
+        nextSporkDate="February, 2022"
       />
       <NetworkStatus
       status={canaryNetStatus}
         networkName={CANARYNET}
-        networkVersion="8"
+        networkVersion="11"
         versionUrl=""
-        nextSporkDate="November 2, 2021"
+        nextSporkDate="January, 2022"
       />
     </>
   )}
 </StatusContext.Consumer>
+
+## Upcoming Mainnet Spork
+
+<MainnetSpork />
 
 ## Announcements
 

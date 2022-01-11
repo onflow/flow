@@ -12,8 +12,7 @@ type TransactionResult struct {
 	BlockId string `json:"block_id"`
 	Status *TransactionStatus `json:"status"`
 	ErrorMessage string `json:"error_message"`
-	ComputationUsed int32 `json:"computation_used"`
-	Events []Event `json:"events,omitempty"`
-	Expandable *TransactionResultExpandable `json:"_expandable,omitempty"`
+	ComputationUsed string `json:"computation_used"`
+	Events []Event `json:"events"`
 	Links *Links `json:"_links,omitempty"`
 }

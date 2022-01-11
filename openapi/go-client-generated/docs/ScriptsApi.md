@@ -1,14 +1,14 @@
 # {{classname}}
 
-All URIs are relative to *https://access.mainnet.nodes.onflow.org/v1*
+All URIs are relative to *https://rest-mainnet.onflow.org/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ScriptsPost**](ScriptsApi.md#ScriptsPost) | **Post** /scripts | Executes a read-only Cadence script against the execution state at the given block height or ID.
+[**ScriptsPost**](ScriptsApi.md#ScriptsPost) | **Post** /scripts | Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block height.
 
 # **ScriptsPost**
 > InlineResponse200 ScriptsPost(ctx, body, optional)
-Executes a read-only Cadence script against the execution state at the given block height or ID.
+Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block height.
 
 ### Required Parameters
 

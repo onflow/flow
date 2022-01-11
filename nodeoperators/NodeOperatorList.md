@@ -71,7 +71,6 @@
 | Coinfund | Consensus | 5a4bff17941a73909472afe23f1ccdc59d7526f93b16b4e374bd8353f8b624b4
 | Coinfund | Consensus | b5702f80aa39f06ecdf4d6321bfe40f64e40b9b630085a42993f1b241bfcbf25
 | Coinfund | Consensus | d98755f4ae8bef3f372889c4d7010ca784ea6da46fdde63d27ee57b2bf5efdd7
-| CryptoTech | Consensus | b4f850b43df502e7fd292c34d9a21c2e8db350cd8a1214a4a29734bc6f3c9e92
 | DSRV | Consensus | 947771ab1fd233d8694aee6c4a4259ee7e2241f4a201067aaa28adbb989d7c97
 | Figment | Collection | 1408c08272beb24ad4fe4e531a9b937a26ee72c5f56b50ac8f2b889c3c42d316
 | Figment | Consensus | 95d61bcc7202fe7d0558baede4cc17a56aac191a0cfd110fbf824e2ef71bd49c

@@ -224,7 +224,7 @@ Since the proposal key must always have a valid signature, this scenario is only
 
 | Account | Key ID | Weight |
 | ------- | ------ | ------ |
-| `0x01`  | 1      | 1.0    |
+| `0x01`  | 1      | 1000   |
 
 ```javascript
 {
@@ -254,8 +254,8 @@ A transaction that declares a single account as the proposer, payer and authoriz
 
 | Account | Key ID | Weight |
 | ------- | ------ | ------ |
-| `0x01`  | 1      | 0.5    |
-| `0x01`  | 2      | 0.5    |
+| `0x01`  | 1      | 500    |
+| `0x01`  | 2      | 500    |
 
 ```javascript
 {
@@ -290,8 +290,8 @@ A transaction that declares different accounts for each signing role will requir
 
 | Account | Key ID | Weight |
 | ------- | ------ | ------ |
-| `0x01`  | 1      | 1.0    |
-| `0x02`  | 1      | 1.0    |
+| `0x01`  | 1      | 1000   |
+| `0x02`  | 1      | 1000   |
 
 ```javascript
 {
@@ -327,10 +327,10 @@ A transaction that declares different accounts for each signing role may require
 
 | Account | Key ID | Weight |
 | ------- | ------ | ------ |
-| `0x01`  | 1      | 0.5    |
-| `0x01`  | 2      | 0.5    |
-| `0x02`  | 1      | 0.5    |
-| `0x02`  | 2      | 0.5    |
+| `0x01`  | 1      | 500    |
+| `0x01`  | 2      | 500    |
+| `0x02`  | 1      | 500    |
+| `0x02`  | 2      | 500    |
 
 ```javascript
 {
