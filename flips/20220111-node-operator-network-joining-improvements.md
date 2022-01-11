@@ -3,8 +3,8 @@
 | Status        | (Proposed / Rejected / Accepted / Implemented)       |
 :-------------- |:---------------------------------------------------- |
 | **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
-| **Author(s)** | Khalil Claybon (khalil.claybon@dapperlabs.com) |
-| **Sponsor**   | Khalil Claybon (khalil.claybon@dapperlabs.com)             |
+| **Author(s)** | Khalil Claybon (khalil.claybon@dapperlabs.com)       |
+| **Sponsor**   | Khalil Claybon (khalil.claybon@dapperlabs.com)       |
 | **Updated**   | 2022-01-11                                           |
 
 ## Objective
