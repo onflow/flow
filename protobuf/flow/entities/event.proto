@@ -12,3 +12,11 @@ message Event {
   uint32 event_index = 4;
   bytes payload = 5;
 }
+
+
+message EventProof {
+  uint32 version = 1;
+  bytes event_hash = 2; // a 32 bytes storing the hash of event 
+  uint32 hash_value_counts = 3; // number of interim hash values provided
+  repeated bytes hash_values = 4; // a series of 32-byte hash values (starting from leaf to the top of the trie; first value is a leaf neighbour, and last value is a children of the root node)
+}
