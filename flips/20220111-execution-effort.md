@@ -2,17 +2,17 @@
 
 | Status        | Proposed                                                                   |
 | :------------ | :------------------------------------------------------------------------- |
-| **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #) |
-| **Author(s)** | My Name (me@example.org), AN Other (you@example.org)                       |
-| **Updated**   | YYYY-MM-DD                                                                 |
+| **FLIP #**    | [753](https://github.com/onflow/flow/pull/753) |
+| **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com)                      |
+| **Updated**   | 2022-01-13                                                                 |
 
 ## Abstract
 
-This FLIP builds on the foundations of the [Variable Transaction fees FLIP](20211007-transaction-fees.md) and proposes measuring the execution effort of transactions by choosing certain functions, that are called during the execution of a transaction, to have a execution effort cost. This FLIP explores a choice of functions and uses data collected from sample transactions and a linear model to determine the cost of each chosen method, so that on average the execution effort of a transaction is proportional to the execution time of the transaction. This FLIP also explores the FLOW cost of a unit of execution effort.
+This FLIP builds on the foundations of the [Variable Transaction fees FLIP](20211007-transaction-fees.md) and proposes a model for measuring the execution effort of transactions by choosing certain functions/operations, that are called during the execution of a transaction, to have a related execution effort cost. This FLIP explores a choice of functions/operations and uses data collected from sample transactions and a linear model fit to determine the cost of each chosen functions/operations, so that on average the execution effort of a transaction is proportional to the execution time of the transaction. This FLIP also explores the FLOW cost of a unit of execution effort.
 
 ## Objective
 
-In the [Variable Transaction fees FLIP](20211007-transaction-fees.md) transaction execution fees are defined as the part of the transaction fees that account for the resources (bandwidth, computing power) needed to execute the transactions' script, to verify the transaction execution and to handle the propagation of transaction execution results. The execution fees (<img src="https://render.githubusercontent.com/render/math?math=F_E">) are defined as a execution effort cost function (<img src="https://render.githubusercontent.com/render/math?math=p_E">) of the execution effort (<img src="https://render.githubusercontent.com/render/math?math=E">) of the transaction <img src="https://render.githubusercontent.com/render/math?math=F_E%20%3D%20p_E(E)">.
+In the [Variable Transaction fees FLIP](20211007-transaction-fees.md) the transaction execution fees are defined as the part of the transaction fees that account for the resources (bandwidth, computing power) needed to execute the transactions' script, to verify the transaction execution and to handle the propagation of transaction execution results. The execution fees (<img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/A0hSAHHSW2.svg">) are defined as a execution effort cost function (<img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/sCA7cYTn4j.svg">) of the execution effort (<img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/WlYFrmB6Y8.svg">) of the transaction <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Uzsd7p4YBJ.svg">.
 
 The aim of this FLIP is to create a model for measuring the execution effort of transactions, that satisfies the following criteria:
 
@@ -21,50 +21,52 @@ The aim of this FLIP is to create a model for measuring the execution effort of 
 - The implementation of the model must not significantly degrade the execution time of transactions.
 - There must be a clear improvement path for the model.
 
+This first iteration of the model will not account for any networking costs and will assume verification costs are the same as execution costs.
+
 Having a model like that, the secondary goal of this FLIP is to look at how each unit on execution effort would be priced.
 
 ## Motivation
 
 By improving the model for the execution effort of transactions, transactions will be priced more fairly.
 
-As a consequence transactions that do little (e.g. transferring a (non)fungible token) will cost lees, while transactions that do a lot and cost a lot of resources to execute will cost more.
-
-This will add to the security and stability of the network as sending a lot of heavy transactions will cost accordingly, and will no longer cost the same as sending a lot of simple transactions.
+As a consequence transactions that do little (e.g. transferring a (non)fungible token) will cost less, while transactions that do a lot and require a lot of resources to execute will cost more. Attacking the system with heavy transactions in order to overload it will become costlier and thus less viable.
 
 ## Current state
 
-Currently execution effort is referenced to as computation cost. It is counted as 1 per every cadence function call or cadence loop. If the execution effort exceeds the execution effort limit (also currently referenced to as gas limit or computation limit) the transaction fails. The state changes of that transaction are reverted, but the fees are still deducted for that transaction.
+Currently execution effort is referenced to as computation cost. It is counted as 1 per every cadence function call or cadence loop made during the transaction. 
 
-There is no connection from execution effort to transaction fees. Transaction fees are a flat `0.001 FLOW` for all transactions, no matter the execution effort.
+If the execution effort exceeds the execution effort limit (also currently referenced to as gas limit or computation limit) the transaction fails. The state changes of that transaction are reverted, however the fees are still deducted for that transaction.
+
+There is currently no connection from execution effort to transaction fees. Transaction fees are always a flat fee of `0.00001 FLOW` for all transactions, no matter the execution effort.
 
 ## Proposed Design
 
-To improve the calculation of execution effort of a transaction, this FLIP proposes to choose certain functions (operations) where weights `w_i` will be placed. By counting the number of time each weight is hit during the execution of a transaction `m_i` the execution effort of that transaction can be expressed as `E = \sum{m_i  w_i}`. 
+To improve the calculation of execution effort of a transaction, this FLIP proposes to choose certain functions/operations where weights <!-- $w_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4sadlnRWsG.svg"> will be placed. By counting the number of times each weight is hit during the execution of a transaction <!-- $m_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/J3058PgFuq.svg"> the execution effort of that transaction can be expressed as <!-- $E = \sum{m_i w_i}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/uaww76uH7S.svg">.
 
-This assumes that the processing cost of a running a single function `N` times scales linearly with `N`. This assumption is made only for transactions where the execution effort of the transaction is not above the execution effort limit.
+The assumption here was that the processing cost of a running a single function <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4FLaqCTwtI.svg"> times scales linearly with <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4FLaqCTwtI.svg">. This assumption is made only for transactions where the execution effort of the transaction is not above the execution effort limit.
 
-The aim is to choose good locations for the weights and good weights so that on average the the time taken to execute a transaction (`t`) will be proportional to the execution effort of that transaction `\frac{t}{E} = \textbf{const.}`.
+Good locations and values need to be chosen for the weights so that on average the time taken to execute a transaction (<!-- $t$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/cbdkfkWybi.svg">) will be proportional to the execution effort of that transaction <!-- $\frac{t}{E} = \textbf{const.}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/ujui9morSm.svg">.
 
-This FLIP also makes the assumption that if one execution node on average runs one function `x` times slower it will run all functions `x` times slower. This means that while on all machines the relationship `\frac{t}{E} = \textbf{const.}` will still hold, it will be a different constant on very machine. This also means that we can chose the constant to be 1 when calibrating the weights, and if need be (if the machine where the calibration is done differs drastically from the execution node specs) multiply all weights by a single factor later.
+This FLIP also makes the assumption that if one execution node on average runs one function <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower it will run all functions <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower. 
 
-With these assumptions the weights can be calibrated using data was collected by running designed transactions and recording how many times each weight was hit, then using the following linear model
+This means that while the relationship <!-- $\frac{t}{E} = \textbf{const.}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/wAKzWYOybT.svg"> will still hold on all machines, the constant will be a different constant on each machine. This also means that we can chose the constant to be 1 when calibrating the weights, and if need be (if the machine where the calibration is done differs drastically from the execution node specs) multiply all weights by a single factor later.
 
-- `w` a column vector of all weights.
-- `M` a matrix with one row per transaction run. Each row is a count of how many times each weight was hit during that transaction (`m_i`).
-- `t` a column vector of the time taken of each transaction.
-- `r` is a column vector of residuals (or error terms)
+With these assumptions the weights can be calibrated using data that was collected by running designed transactions while recording how many times each weight was hit, using the following linear model.
 
-```
-t = M * w + r
-```
+- <!-- $w$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/zqZMMjc1Hx.svg"> a column vector of all weights.
+- <!-- $M$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/SmblEwKco6.svg"> a matrix with one row per transaction run. Each row is a count of how many times each weight was hit during that transaction (`m_i`).
+- <!-- $t$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/sgGbIK6FhD.svg"> a column vector of the time taken of each transaction.
+- <!-- $r$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/5tokpUE7hM.svg"> is a column vector of residuals (or error terms)
 
-Fitting a linear model means choosing the weights `w` so that the residuals `r` are as small as possible.
+<div align="center"><img style="background: white;" src="./20220111-execution-effort/eq/sS1rRPixbA.svg"></div>
+
+Fitting a linear model means choosing the weights <!-- $w$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/zqZMMjc1Hx.svg"> so that the residuals <!-- $r$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/5tokpUE7hM.svg"> are as small as possible.
 
 The code used for data collection can be found [here](https://github.com/onflow/flow-go/pull/1631).
 
 The Jupyter notebook using [Wolfram Language kernel for Jupyter notebooks](https://github.com/WolframResearch/WolframLanguageForJupyter) that was used for data analysis and the data collected can be found [here](./20220111-execution-effort)
 
-### Sample transactions and mixed transaction
+### Generated transactions for data collection
 
 Sample transactions were chosen with the following things in mind:
 
@@ -77,49 +79,49 @@ Some setup is done before any transactions are run so that more diverse transact
 - A list od 5 strings of 100 characters is put on the service account `acct.save(list, to: /storage/test)`
 - A smart contract is deployed with some functions to be called by the transactions:
 
-    ```cadence
-    access(all) contract TestContract {
-        pub var totalSupply: UInt64
-        pub var nfts: @[NFT]
+  ```cadence
+  access(all) contract TestContract {
+      pub var totalSupply: UInt64
+      pub var nfts: @[NFT]
 
-        access(all) event SomeEvent()
-        access(all) fun empty() {
-        }
-        access(all) fun emit() {
-            emit SomeEvent()
-        }
+      access(all) event SomeEvent()
+      access(all) fun empty() {
+      }
+      access(all) fun emit() {
+          emit SomeEvent()
+      }
 
-        access(all) fun mintNFT() {
-            var newNFT <- create NFT(
-                id: TestContract.totalSupply,
-                data: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            )
-            self.nfts.append( <- newNFT)
+      access(all) fun mintNFT() {
+          var newNFT <- create NFT(
+              id: TestContract.totalSupply,
+              data: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          )
+          self.nfts.append( <- newNFT)
 
-            TestContract.totalSupply = TestContract.totalSupply + UInt64(1)
-        }
+          TestContract.totalSupply = TestContract.totalSupply + UInt64(1)
+      }
 
-        pub resource NFT {
-            pub let id: UInt64
-            pub let data: String
-    
-            init(
-                id: UInt64,
-                data: String,
-            ) {
-                self.id = id
-                self.data = data
-            }
-        }
+      pub resource NFT {
+          pub let id: UInt64
+          pub let data: String
 
-        init() {
-            self.totalSupply = 0
-            self.nfts <- []
-        }
-    }
-    ```
+          init(
+              id: UInt64,
+              data: String,
+          ) {
+              self.id = id
+              self.data = data
+          }
+      }
 
-All of the ample transactions have the same boilerplate:
+      init() {
+          self.totalSupply = 0
+          self.nfts <- []
+      }
+  }
+  ```
+
+All of the ample transactions have the same boilerplate body:
 
 ```cadence
 import FungibleToken from 0xFUNGIBLETOKEN
@@ -137,10 +139,10 @@ transaction(){
 }
 ```
 
-The number of iterations (`$ITERATIONS`) is randomly chosen from one to _max loop length_ which is varied during the run so that the transaction does not exceed 500 ms (generally) (See [Appendix 1: varying sample transactions max loop length](#appendix_1:_varying_sample_transactions_max_loop_length) for details).
+The number of iterations (`$ITERATIONS`) is randomly chosen from one to _max loop length_ which is varied during the run so that the transaction does not exceed 500 ms (generally) (See [Appendix 1: varying sample transactions max loop length](#appendix_1:_varying_sample_transactions_max_loop_length) for details). This is done so its easier to compare different types of transaction to each other. 
 
 <details>
-<summary>The names and bodies of the 24 different transaction types is collapsed for better readability.</summary>
+<summary>The names and bodies of the 25 different transaction types is collapsed for better readability.</summary>
 <p>
     ```py
     [{
@@ -181,21 +183,6 @@ The number of iterations (`$ITERATIONS`) is randomly chosen from one to _max loo
         
         body:     'getAccount(signer.address).storageUsed',
         name:     "get account and get storage used",
-    },
-    {
-        
-        body:     'getAccount(signer.address).storageCapacity',
-        name:     "get account and get storage capacity",
-    },
-    {
-        
-        body:     'getAccount(signer.address).storageCapacity',
-        name:     "get account and get storage capacity",
-    },
-    {
-        
-        body:     'getAccount(signer.address).storageCapacity',
-        name:     "get account and get storage capacity",
     },
     {
         
@@ -284,28 +271,32 @@ The number of iterations (`$ITERATIONS`) is randomly chosen from one to _max loo
             signer.removePublicKey(1)
         ''',
         name: "add and remove key to/from account",
-    }]
+    },
+
+	    body:     '''TestContract.mintNFT()''',
+		name:     "mint NFT",
+    },
+    ]
     ```
 </p>
 </details>
 
-
-In order to get more varied data, mixed transactions were also simulated. Mixed transactions are created by taking two different sample transactions and running both in one transaction.
+In order to get more varied data, mixed transactions were also simulated. Mixed transactions are created by taking two different sample transactions and running both in one transaction. Each of the sample transaction bodies are run between 1 and _max loop length_/2 times.
 
 ### Data Collection procedure
 
-The data was collected by simulation executing blocks. Each block hah between 1 and 50 transactions (uniformly distributed). 
+The data was collected by simulating block execution. Each block hah between 1 and 50 transactions (uniformly distributed).
 
 Transactions were either:
 
 - (2/3 of the time) picked from the set of sample transactions and the loop length was randomly picked from 1 to the `max loop length`.
-- (1/3 ot the time) constructed by combining two different sample transactions each having a loop length from 1 to  `max loop length/2`.
+- (1/3 ot the time) constructed by combining two different sample transactions each having a loop length from 1 to `max loop length/2` (`max loop length` is different for each transaction type).
 
-After block was executed the weight data and the execution time was extracted from the logs that that transaction produced.
+After block was executed the weight data and the execution time was extracted from the logs for each transaction in that block.
 
-The execution time of each transaction is then used to adapt that sample transactions _max loop length_ so that the execution time would stay below 500 ms.
+The execution time of each sample transaction is then used to adapt that sample transactions _max loop length_ so that the execution time would stay below 500 ms
 
-A new execution state was created for every 100 blocks (clearing all state changed by the transactions during those 100 blocks).
+A new execution state was created for every 100 blocks, clearing all state changes done by the previous transactions.
 
 The data was collected by running a total of 5000 blocks which contained a total of 144 901 transactions.
 
@@ -315,13 +306,16 @@ The collected data is a large matrix that has the following form:
 
 ![TEF](./20220111-execution-effort/data-matrix-sketch.png)
 
-Matrix `M` represents the weight data, vector `v` represents the execution times.
+Matrix <!-- $M$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/SmblEwKco6.svg"> represents the weight data, vector <!-- $v$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/LwC51eYP1G.svg"> represents the execution times.
 
 ### Weights placement
 
 A total of 26 different weights were used.
-Of those 25 weights were placed in functions in `transactionEnv.go` which implements the interface between Cadence and the flow virtual machine.
+Of those 25 weights were placed in functions in `transactionEnv.go` which implements the interface between Cadence and the flow virtual machine (FVM).
+
 The `function_or_loop_call` weight is an exception as that counts any cadence function (function calls in the cadence script) and any cadence loop. This is also the weight that is already currently in place, as discussed above.
+
+The weights `GetValue` and `SetValue` are also different, as instead of just counting the number of times a transaction calls those functions, they instead count how many bytes were read or written, when they are called.
 
 | Weight name                | Weight trigger                           | intent of that part of the code                                                                             |
 | -------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -352,21 +346,17 @@ The `function_or_loop_call` weight is an exception as that counts any cadence fu
 | ValueDecoded               | function calls                           | Cadence callback after a value was decoded into a cadence type                                              |
 | ValueEncoded               | function calls                           | Cadence callback after a cadence type was encoded into a cadence json                                       |
 
-This placement of weights is excessive considering that we only have 24 different transaction types. Weight correlation was also not considered. This is reflected in the data and is corrected later.
-
-The weights `GetValue` and `SetValue`  are different, as instead of just counting the times a transaction calls those functions, they count how many bytes were read or written.
-
 ### Data analysis
 
 The large amount of different weights chosen was intentional. This allows for better insight into which weights should actually be used.
 
-The Following chapters describe how the linear model fitting was done due to a significant amount of outliers in the data and the process of eliminating weights, because they were either to correlated with other weights, to small, or had a lot of noise.
+The Following chapters describe how the linear model fitting was done due to a significant amount of outliers in the data and how certain weights were eliminated, because they were either to correlated with other weights, to small, or had a lot of noise.
 
-A note on the `time to execute [ms]` vs `Execution effort` graphs. The closer the data is to the red dashed line which represents `time to execute = Execution effort` the better the fit of the model. Data that is to the right side of the graph, represents transactions that took longer than expected, and were thus charged less than the should be (but some variance and outliers are expected here). Data to the left side of the graph represents transactions where the execution did not take as long as the model predicted, and as a consequence the transaction will be charge more then it should be.
+A note on the `time to execute [ms]` vs `Execution effort` graphs. The closer the data is to the red dashed line which represents `time to execute = Execution effort` the better the fit of the model. Data that is to the right side of the graph, represents transactions that took longer than expected, and were thus charged less than they should be (but some variance and outliers are expected here). Data to the left side of the graph represents transactions where the execution did not take as long as the model predicted, and as a consequence those transactions will be charged more then they should be.
 
 #### Weight correlation
 
-Before using the data in a linear model, its important to note that the rank of the matrix of all weight data `M` is smaller than the number of weights. This means that some wights are correlated to others. These are asy to spot by checking the correlation matrix where only the entries with 1 or -1 are highlighted.
+Before using the data in a linear model, its important to note that the rank of the matrix of all weight data <!-- $M$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/SmblEwKco6.svg"> is smaller than the number of weights. This means that some wights are correlated to others. These are asy to spot by checking the correlation matrix where only the entries with 1 or -1 are highlighted.
 
 ![Correlation1](./20220111-execution-effort/correlation1.png)
 
@@ -378,23 +368,25 @@ The pairs that are correlated are:
 
 These pairs of weights were cross checked with the implementation to confirm that they are always called together.
 
-The columns with weights `ProgramChecked`, `GetCode` and `ValueExists` were removed from the weight data matrix `M`.
+The columns with weights `ProgramChecked`, `GetCode` and `ValueExists` were removed from the weight data matrix <!-- $M$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/SmblEwKco6.svg">.
 
 #### Outliers and robust linear model fitting
 
-The following is a linear model fit on the data and plotting the data on a graph of execution time taken (in milliseconds) vs execution effort. 
+The following is a linear model fit on the data and plotting the data on a graph of execution time taken (in milliseconds) vs execution effort.
 
 ![DemoFit](./20220111-execution-effort/demo-fit.png)
 
-This data has a clear proportional relation, but also has a lot of noise especially to the right of the graph. Noise to the right of the graph means that sometimes transactions take longer than expected (which could be due to gc pauses, or the machine doing something else, or cache misses, ...). This means they would be priced in favour of the payer. 
+This data has a proportional relation, but also has a lot of noise especially to the right of the graph. Noise to the right of the graph means that sometimes transactions take longer than expected (which could be due to gc pauses, or the machine doing something else, or cache misses, ...).
 
-The outliers cause the goodness of the linear model fit to degrade. A way how to remedy this is described in detail in the [Wolfram documentation](https://reference.wolfram.com/applications/eda/RobustFitting.html) and can be describe in short as using the residual (error) of each data point to tweak the weight of that data point, and then re-fitting the data with those weights. This is done until the model converges.
+The outliers cause the goodness of the linear model fit to degrade. A way how to remedy this is described in detail in the [Wolfram documentation](https://reference.wolfram.com/applications/eda/RobustFitting.html) and can be described in short as using the residual (error) of each data point to tweak the weight of that data point, and then re-fitting the data with regard to those weights. This is done until the model converges.
 
-The error to weight relation was chosen to be an asymmetrical function with a different cut-off. This is because the outliers were mostly to the right of the graph, and the signal was to the left of the graph. The cut-off pont was 16 times of the mean residual  while the cut-off point to the right was 10 times of the mean residual.
+The function that converts the residual of a data point to its weight was chosen to be an asymmetrical function with a different cut-off to the left and to the right. This is because the outliers were mostly to the right of the graph, and the signal was to the left of the graph. The cut-off pont was 16 times of the mean of the residuals while the cut-off point to the right was 10 times of the mean residual.
 
 ![Residual2Weight](./20220111-execution-effort/residual-to-weight.png)
 
-This improves the final model fit. The color of each data point in the following graph represents the weight of that data point. The darker the color the lower the weight.
+This improves the final model fit. 
+
+On the following chart the color of each data point represents the weight of that data point. The darker the color the lower the weight of the data point.
 
 ![BetterFit](./20220111-execution-effort/better-fit.png)
 
@@ -404,17 +396,17 @@ Even with the weights with 1:1 correlation gone, the remaining weights still con
 
 ![ParametersFull](./20220111-execution-effort/parameters-full.png)
 
-Some weights contain negative values. This is not unexpected, but leaving weights as negative in the final model could be problematic, as there might be a way to construct transactions in a way to exploit that.
+Some weights also contain negative values. This is not unexpected as the data is noisy, but leaving weights as negative in the final model could be problematic, as there might be a way to construct transactions in a way to exploit that.
 
-More weights were removed until the remaining wights had a small error and were not negative.
+Through a process of trial an error, weights with high error, a negative value or a small value were removed and the data re-fitted until a god fit was found.
 
 #### Comparison with the current system
 
-The collected data can be used to make a comparison with the current system. The weight `function_or_loop_call` is exactly what is used currently, so the graph that is needed is the value of `function_or_loop_call` vs the execution time of the transaction. For easier comparison we can instead plot a fit of `function_or_loop_call` to the execution times of transactions, which allows us to directly compare this graph to the rest of the graphs.
+The collected data can be used to make a comparison with the current system. The weight `function_or_loop_call` is exactly what is currently used. Plotting a fit of `function_or_loop_call` to the execution times of transactions allows us to directly compare this graph to the final model.
 
 ![BadFit](./20220111-execution-effort/bad-fit.png)
 
-The goodness-of-fit (`r^2`) for this is `0.532394`. Considerably lower than the final model.
+The goodness-of-fit (<!-- $r^2$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/utSvouRK8p.svg">) for this is `0.532394`. Considerably lower than the final model.
 
 ### Final model proposal
 
@@ -422,7 +414,7 @@ This FLIP proposes using 8 weights:
 
 ![ParametersGood](./20220111-execution-effort/parameters-good.png)
 
-The goodness-of-fit is `0.862235`, considerably better than the current system `0.532394`.
+The goodness-of-fit for this model is `0.862235`, considerably better than the current system `0.532394`.
 
 The graph of the model:
 
@@ -432,11 +424,30 @@ The graph of the model:
 
 Since the execution effort is defined to be in a 1 to 1 correlation with the execution time, choosing the execution effort limit means choosing the maximum allowed execution time.
 
-Choosing the execution effort limit to be 250 means that if all transactions are at maximum that would currently result in a maximum of 4 transactions per second.
+Choosing the execution effort limit to be 100 means that if all transactions are at maximum that would currently result in a maximum of 10 transactions per second.
 
 ### Execution Effort cost
 
-!TODO
+Below is a table of different percentiles of transaction execution times from 5. Jan. 2022 to 13. Jan. 2022 (one week).
+
+| Percentile | Execution time [ms] |
+| ---------- | ------------------- |
+| 99         | 29.7                |
+| 95         | 15.6                |
+| 90         | 14.4                |
+| 50         | 7.07                |
+| 25         | 5.39                |
+
+
+The original goal described in the [Variable Transaction fees FLIP](20211007-transaction-fees.md) was that for 95% of transactions to be cheaper after the transition to variable transaction fees.
+
+This means that the 95th percentile execution time times the price of one unit of execution effort should be half of the current fixed fees (the other half will be inclusion effort):
+
+```
+15.6 * price of one unit of execution effort = 0.000005
+```
+
+This means that price of one unit of execution effort is <!-- $32 *10^{-8} \left[\frac{\textbf{FLOW}}{\textbf{unit of effort}}\right]$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/do5GxhVTjV.svg">
 
 ### The future of the model
 
@@ -444,13 +455,13 @@ This model needs to be further improved in the future. The following chapters ad
 
 #### Known missing weights
 
-Appendix 2 illustrates how the linear model works for the different transaction types. While it works great for many of them it performs poorly  for certain transaction types. 
+Appendix 2 illustrates how the linear model works for the different transaction types. While it works great for many of them it performs poorly for certain transaction types.
 
-Adding different weighs to the model (from those that were in the data set). Did not noticeably improve the fit for these transaction types. This means there there is one or multiple different functions/operations that need to have a weight added to them, that are not on the list of weights in this FLIP. More research is needed to find these, and improve the model.
+Adding different weighs to the model (from those that were in the data set) did not noticeably improve the fit for these transaction types. This means there there is one or multiple different functions/operations that need to have a weight added to them. More research is needed to find these functions, and improve the model.
 
 #### Data collection
 
-Transactions for data collections were designed and might not represent transaction seen "in the wild". To improve the data set the designed set of transactions could be combined with transactions seen on mainnet. To do this each transaction (or a sample of them) would need to log how many times each weight is hit (the rows of matrix `M`).
+Transactions for data collections were designed and might not represent transaction seen "in the wild". To improve the data set the designed set of transactions could be combined with transactions seen on mainnet. To do this each transaction (or a sample of them) on mainnet would need to log how many times each weight is hit.
 
 #### Outlier analysis
 
@@ -472,11 +483,6 @@ The execution effort could then be included in the calculation of the transactio
 
 ## Questions and Discussion Topics
 
-## Document TODOs:
-
-- change all variables and formulas to TeX
-- Get and process data for failing transactions
-
 ## Appendices
 
 ### Appendix 1: varying sample transactions max loop length
@@ -488,29 +494,29 @@ Sample transactions are run with a varying loop length that is randomly chosen b
 
 To address this problem the _max loop length_ (per sample transaction type) is adjusted during the data collection so that the transaction times generally span from 0 to 500 milliseconds.
 
-This is achieved using the following method. Using the assumption that we are already making, that the time taken to execute a transaction (`t`) is proportional to transactions loop length (`l`), we can write the following relation.
+This is achieved using the following method. Using the assumption that we are already making, that the time taken to execute a transaction (<!-- $t$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/IaaH0s0S1C.svg">) is proportional to transactions loop length (<!-- $l$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/flUdOiZru7.svg">), we can write the following relation.
 
-```
-t ~ kl
-```
+<!-- $$
+t \approx kl
+$$ --> 
 
-Given the desired maximum time of 500 ms (t_max), the maximum loop length (`l_max`) can be written as
+<div align="center"><img style="background: white;" src="./20220111-execution-effort/eq/4fBxFBaa1u.svg"></div>
 
-```
-t_max/k = l_max
-```
+Given the desired maximum time of 500 ms (t_max), the maximum loop length (<!-- $l_\textbf{max}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/nTaimah637.svg">) can be written as
 
-The coefficient `k` can be expressed with the date from all the previous runs. `N` is the last run of this transaction type, `t_i` and `l_i` are the time taken and loop length of the i-th run of this transaction type.
+<!-- $$
+\frac{t_\textbf{max}}{k} = l_\textbf{max}
+$$ --> 
 
-```
-k_N = \frac{1}{N} \sum_{i=0}^N{\frac{t_i}{l_i}}
-```
+<div align="center"><img style="background: white;" src="./20220111-execution-effort/eq/81WicaV3gM.svg"></div>
 
-So we don't have to keep track of all previous `t_i` and `l_i`, we can express `k_{N+1}` with `k_{N}` in the following manner.
+The coefficient <!-- $k$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/fSFxSlgTsg.svg"> can be expressed with the date from all the previous runs. <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cd7RKP5BBD.svg"> is the last run of this transaction type, <!-- $t_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/TL162H0uyX.svg"> and <!-- $l_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/ksMl1VjIVd.svg"> are the time taken and loop length of the i-th run of this transaction type.
 
-```
-k_{N+1} = \frac{N k_N + \frac{t_{N+1}}{l_{N+1}}}{N+1}
-```
+<div align="center"><img style="background: white;" src="./20220111-execution-effort/eq/t8txgKtOmc.svg"></div>
+
+So we don't have to keep track of all previous <!-- $t_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Y54OjO1DWR.svg"> and <!-- $l_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/P1NUv79K4S.svg">, we can express <!-- $k_{N+1}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/k684IPYDW2.svg"> with <!-- $k_{N}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Mtl8xqt59u.svg"> in the following manner.
+
+<div align="center"><img style="background: white;" src="./20220111-execution-effort/eq/XMTbAMXYFN.svg"></div>
 
 This means that we can update the _max loop length_ after every transaction of this type with this pseudocode
 
@@ -531,7 +537,7 @@ def update_max_loop_length(loop_length, time_taken_to_execute):
 
 ### Appendix 2: Jupyter + Mathematica
 
-[WolframScript](https://www.wolfram.com/wolframscript/) was used for data analysis. [Jupyter](https://jupyter.org/) with [WolframLanguageForJupyter](https://github.com/WolframResearch/WolframLanguageForJupyter) offers a convenient way to do this. The result was a Jupyter notebook that can be found [here](!TODO).
+[WolframScript](https://www.wolfram.com/wolframscript/) was used for data analysis. [Jupyter](https://jupyter.org/) with [WolframLanguageForJupyter](https://github.com/WolframResearch/WolframLanguageForJupyter) offers a convenient way to do this. The result was a Jupyter notebook that can be found [here](./20220111-execution-effort).
 
 The instructions on how to get these three things working together nicely are in the [WolframLanguageForJupyter](https://github.com/WolframResearch/WolframLanguageForJupyter) repository.
 
