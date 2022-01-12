@@ -40,6 +40,12 @@ BIP 44 defines an implementation of [Bitcoin Improvement Proposal
 that standardizes a format for hierarchical deterministic (HD) key derivation
 paths that support multiple coins and multiple accounts per coin.
 
+Flow accounts support keys on two different elliptic curves (secp256k1 and NIST P-256).
+While BIP 32 describes the key derivation process for the secp256k1 curve, [SLIP-0010]
+(https://github.com/satoshilabs/slips/blob/master/slip-0010.md) generalizes the derivation 
+process to the NIST P-256 curve. In the rest of this document, BIP 44 is applicable for 
+both elliptic curves. 
+
 The BIP 44 path format is as follows:
 
 ```
@@ -303,6 +309,10 @@ This document outlines a specific application of the standard described by [BIP
 44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki). This
 standard has been widely adopted by Bitcoin, Ethereum and many other
 cryptocurrency projects and communities.
+
+[SLIP-0010](https://github.com/satoshilabs/slips/blob/master/slip-0010.md) 
+is a document that generalizes the BIP 32 key derivation process
+to other curves, in particular the NIST P-256 curve supported by Flow accounts.
 
 [SLIP 48](https://github.com/satoshilabs/slips/blob/master/slip-0048.md)
 describes an alternative to BIP 44 for Graphene-based networks which, similar to
