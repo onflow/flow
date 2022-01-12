@@ -51,7 +51,7 @@ You can create a Blocto account to hold FLOW in 2 different ways:
 
 1.  Ensure you have:
 
-- a.) [Ledger Live](https://support.ledger.com/hc/en-us/articles/360006395553) installed on your computer.
+- a.) [Ledger Live](https://support.ledger.com/hc/en-us/articles/4404389606417-Download-and-install-Ledger-Live?docs=true) installed on your computer.
 
 - b.) [Initialize](https://support.ledger.com/hc/en-us/articles/360000613793) your Ledger Device.
 
