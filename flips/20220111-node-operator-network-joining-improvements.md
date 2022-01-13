@@ -34,12 +34,7 @@ This mechanism can be added in 1 of the 2 following ways.
 - Retrieve protocol root snapshot using flow client.
 - Continue with normal module initialization.
 
-2. Add separate stand alone script that will:
-- Wait for specified epoch counter & phase.
-- Retrieve protocol root snapshot using flow client.
-- Start node.
-
-Both choices require the following arguments.
+The following CLI arguments will be added:
 - startup-epoch-counter: The epoch in which to start the node.
 - startup-epoch-phase: The phase within the specified epoch in which to start the node.
 - root-snapshot-dir: Directory where downloaded root snapshot should be saved when using
