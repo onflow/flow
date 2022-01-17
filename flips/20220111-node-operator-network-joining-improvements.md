@@ -9,7 +9,7 @@
 
 ## Objective
 
-Define the tools provided the node software to facilitate starting a newly staked node at the appropriate
+Define the tools provided by the node software to facilitate starting a newly staked node at the appropriate
 time during the epoch cycle.
 
 ## Background
@@ -76,11 +76,11 @@ Implement an initialization hook which blocks regular component startup and:
 - Continue with normal module initialization.
 
 The following CLI arguments will be added:
-- startup-epoch-counter: The epoch in which to start the node.
-- startup-epoch-phase: The phase within the specified epoch in which to start the node.
-- root-snapshot-dir: Directory where downloaded root snapshot should be saved when using
+- `startup-epoch-counter`: The epoch in which to start the node.
+- `startup-epoch-phase`: The phase within the specified epoch in which to start the node.
+- `root-snapshot-dir`: Directory where downloaded root snapshot should be saved when using
   the dynamic join functionality.
-- dynamic-join: When enabled start node using mechanism described above.
+- `dynamic-join`: When enabled start node using mechanism described above.
 
 ### Flow-CLI Additions
 
