@@ -14,7 +14,7 @@ time during the epoch cycle.
 
 ## Background
 
-Currently, node operators can only join or leave the network during network sporks. Epochs enable nodes to 
+Currently, node operators can **only** join or leave the network during network sporks. Epochs enable nodes to
 dynamically join and leave the network during the course of a spork, at epoch boundaries (once per week).
 
 When a node joins the network, there is an optimal time window for that node to retrieve a root state snapshot
@@ -64,6 +64,7 @@ at epoch boundaries as opposed to when sporks happen.
 
 Node operators will be able to join the network at any epoch boundary after staking operations have completed
 without requiring manual intervention at the time when their node becomes eligible to participate in network communications.
+Node operators do NOT have to wait for a spork to join the network.
 
 ## Design Proposal
 
@@ -85,6 +86,13 @@ The following CLI arguments will be added:
 
 For flexibility, add the ability to download a root protocol snapshot file via flow-cli which will enable 
 operators to implement scripts and tooling for joining the network that fit their specific needs.
+
+### Spork process changes
+
+Currently, we ask node operators to push their networking and staking keys to DL using the `transit push` command.
+With this new ability to add new nodes at epoch boundary, the `transit push` step will no longer be needed as keys and
+other node information (network address, node id) will be pulled from the staking contract automatically. Hence, the
+`push` option will be removed from the `transit` script and the Spork process documentation updated accordingly.
 
 ### Engineering Impact
 
