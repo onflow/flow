@@ -3,8 +3,8 @@
 | Status        | (Proposed / Rejected / Accepted / Implemented)       |
 :-------------- |:---------------------------------------------------- |
 | **FLIP #**    | [752](https://github.com/onflow/flow/pull/752)       |
-| **Author(s)** | Khalil Claybon (khalil.claybon@dapperlabs.com)       |
-| **Sponsor**   | Khalil Claybon (khalil.claybon@dapperlabs.com)       |
+| **Author(s)** | Khalil Claybon (khalil.claybon@dapperlabs.com), Jordan Schalm (jordan@dapperlabs.com)       |
+| **Sponsor**   | Khalil Claybon (khalil.claybon@dapperlabs.com), Jordan Schalm (jordan@dapperlabs.com)       |
 | **Updated**   | 2022-01-11                                           |
 
 ## Objective
