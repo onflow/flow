@@ -92,7 +92,7 @@ operators to implement scripts and tooling for joining the network that fit thei
 Currently, we ask node operators to push their networking and staking keys to DL using the `transit push` command.
 With this new ability to add new nodes at epoch boundary, the `transit push` step will no longer be needed as keys and
 other node information (network address, node id) will be pulled from the staking contract automatically. Hence, the
-`push` option will be removed from the `transit` script and Spork process documentation updated accordingly.
+`push` option will be removed from the `transit` script and the Spork process documentation updated accordingly.
 
 ### Engineering Impact
 
