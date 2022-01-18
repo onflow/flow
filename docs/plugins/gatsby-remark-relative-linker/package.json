@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "unist-util-visit": "2.0.3"
+  },
+  "devDependencies": {
+    "ava": "^4.0.1"
   }
 }

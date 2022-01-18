@@ -1,5 +1,7 @@
 const visit = require("unist-util-visit");
-module.exports = ({ markdownAST }) => {
+const { updateRelativeDepth } = require("./functions");
+
+module.exports = ({ markdownAST, markdownNode }) => {
   visit(markdownAST, "link", (node) => {
     if (
       !node.url.startsWith("/") &&
@@ -7,22 +9,12 @@ module.exports = ({ markdownAST }) => {
       !node.url.startsWith("mailto:") &&
       !/^https?:\/\//.test(node.url)
     ) {
-      let foundNoPrefix = node.url.match(/^[\w-_]+/);
-      let foundDepth1 = node.url.match(/^\.\//);
-      let foundDepth2 = node.url.match(/^\.\.\//);
-      let foundDepth3 = node.url.match(/^\.\.\/\.\.\//);
+      let maxDepth = 6;
+      const isIndex = markdownNode.absoluteFilePath.includes("/index.md");
 
-      if (foundDepth1) {
-        node.url = node.url.replace(/^\.\//, "../");
-      } else if (foundDepth2) {
-        node.url = node.url.replace(/^\.\.\//, "../../");
-      } else if (foundDepth3) {
-        node.url = node.url.replace(/^\.\.\/\.\.\//, "../../../");
-      }
-
-      if (foundNoPrefix) {
-        node.url = "../" + node.url;
-      }
+      [...Array(maxDepth)].forEach((depth, index => {
+        node.url = updateRelativeDepth(node.url, index, isIndex);
+      });
 
       node.url = node.url.replace(/(?<=[^/])#/, "/#");
       node.url = node.url.replace(".mdx", "").replace(".md", "");
