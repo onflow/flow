@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **Script** | **string** |  | [default to null]
 **Arguments** | **[]string** |  | [default to null]
 **ReferenceBlockId** | **string** |  | [default to null]
-**GasLimit** | **int32** |  | [default to null]
+**GasLimit** | **string** |  | [default to null]
 **Payer** | **string** |  | [default to null]
 **ProposalKey** | [***ProposalKey**](ProposalKey.md) |  | [default to null]
 **Authorizers** | **[]string** |  | [default to null]

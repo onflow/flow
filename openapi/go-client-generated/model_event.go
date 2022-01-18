@@ -11,7 +11,7 @@ package swagger
 type Event struct {
 	Type_ string `json:"type"`
 	TransactionId string `json:"transaction_id"`
-	TransactionIndex int32 `json:"transaction_index"`
-	EventIndex int32 `json:"event_index"`
+	TransactionIndex string `json:"transaction_index"`
+	EventIndex string `json:"event_index"`
 	Payload string `json:"payload"`
 }

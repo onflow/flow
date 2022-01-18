@@ -8,6 +8,6 @@
  */
 package swagger
 
-type TransactionResultExpandable struct {
-	Events string `json:"events,omitempty"`
+type CollectionExpandable struct {
+	Transactions []string `json:"transactions,omitempty"`
 }
