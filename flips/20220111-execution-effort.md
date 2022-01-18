@@ -285,7 +285,7 @@ In order to get more varied data, mixed transactions were also simulated. Mixed 
 
 ### Data Collection procedure
 
-The data was collected by simulating block execution. Each block hah between 1 and 50 transactions (uniformly distributed).
+The data was collected by simulating block execution. Each block had between 1 and 50 transactions (uniformly distributed).
 
 Transactions were either:
 
