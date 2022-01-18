@@ -398,7 +398,7 @@ Even with the weights with 1:1 correlation gone, the remaining weights still con
 
 Some weights also contain negative values. This is not unexpected as the data is noisy, but leaving weights as negative in the final model could be problematic, as there might be a way to construct transactions in a way to exploit that.
 
-Through a process of trial an error, weights with high error, a negative value or a small value were removed and the data re-fitted until a god fit was found.
+Through a process of trial an error, weights with high error, a negative value or a small value were removed and the data re-fitted until a good fit was found.
 
 #### Comparison with the current system
 
