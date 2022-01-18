@@ -380,7 +380,7 @@ This data has a proportional relation, but also has a lot of noise especially to
 
 The outliers cause the goodness of the linear model fit to degrade. A way how to remedy this is described in detail in the [Wolfram documentation](https://reference.wolfram.com/applications/eda/RobustFitting.html) and can be described in short as using the residual (error) of each data point to tweak the weight of that data point, and then re-fitting the data with regard to those weights. This is done until the model converges.
 
-The function that converts the residual of a data point to its weight was chosen to be an asymmetrical function with a different cut-off to the left and to the right. This is because the outliers were mostly to the right of the graph, and the signal was to the left of the graph. The cut-off pont was 16 times of the mean of the residuals while the cut-off point to the right was 10 times of the mean residual.
+The function that converts the residual of a data point to its weight was chosen to be an asymmetrical function with a different cut-off to the left and to the right. This is because the outliers were mostly to the right of the graph, and the signal was to the left of the graph. The cut-off point was 16 times of the mean of the residuals while the cut-off point to the right was 10 times of the mean residual.
 
 ![Residual2Weight](./20220111-execution-effort/residual-to-weight.png)
 
