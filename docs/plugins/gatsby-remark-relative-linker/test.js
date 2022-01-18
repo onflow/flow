@@ -27,3 +27,30 @@ test("Updates relative depth 3", (t) => {
 
   t.is(result, expected);
 });
+
+test("Handles unprefixed routes", (t) => {
+  const initial = "hello.md";
+  const expected = "../hello.md";
+
+  const result = updateRelativeDepth(initial, 1, false);
+
+  t.is(result, expected);
+});
+
+test("Handles unprefixed routes in index pages", (t) => {
+  const initial = "hello.md";
+  const expected = "./hello.md";
+
+  const result = updateRelativeDepth(initial, 1, true);
+
+  t.is(result, expected);
+});
+
+test("Handles other routes in index pages", (t) => {
+  const initial = "../hello.md";
+  const expected = "./hello.md";
+
+  const result = updateRelativeDepth(initial, 2, true);
+
+  t.is(result, expected);
+});

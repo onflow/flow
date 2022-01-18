@@ -15,11 +15,10 @@ function updateRelativeDepth(url, atDepth, isIndex = false) {
   let noPrefixRegex = /^[\w-_]+/;
 
   if (url.match(noPrefixRegex)) {
-    return updateUrl(url, 1, isIndex);
+    return updateUrl(url, 0, isIndex);
   }
 
   let depthCheckRegex = buildDepthCheckRegex(atDepth);
-
   let result = url.match(depthCheckRegex);
 
   if (result) {
@@ -28,13 +27,14 @@ function updateRelativeDepth(url, atDepth, isIndex = false) {
 }
 
 function updateUrl(url, depth, index) {
-  if (index && depth === 1) {
-    return url.replace(buildDepthCheckRegex(1), parent);
+  switch (index) {
+    case true:
+      if (depth === 0) return sibling + url;
+      return url;
+    case false:
+      if (depth === 0) return parent + url;
+      return url.replace(buildDepthCheckRegex(depth), parent.repeat(depth));
   }
-  if (index) {
-    return url.replace(buildDepthCheckRegex(depth), parent.repeat(depth + 1));
-  }
-  return url.replace(buildDepthCheckRegex(depth), parent.repeat(depth));
 }
 
 module.exports = {

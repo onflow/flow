@@ -7,13 +7,15 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
-      "skipFiles": [
-        "<node_internals>/**"
+      "name": "Debug AVA test file",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ava",
+      "runtimeArgs": [
+        "--serial",
+        "${file}"
       ],
-      "program": "${workspaceFolder}/--inspect-brk",
-      "outFiles": [
-        "${workspaceFolder}/**/*.js"
+      "outputCapture": "std",
+      "skipFiles": [
+        "<node_internals>/**/*.js"
       ]
     }
   ]
