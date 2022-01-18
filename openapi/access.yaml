@@ -377,23 +377,6 @@ paths:
           $ref: '#/components/responses/400BadRequest'
         '500':
           $ref: '#/components/responses/500InternalServerError'
-  /status:
-    get:
-      summary: Status of the network
-      tags:
-        - Status
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-        '404':
-          $ref: '#/components/responses/404NotFound'
-        '500':
-          $ref: '#/components/responses/500InternalServerError'
-      operationId: GetNetworkStatus
   /events:
     summary: Query on-chain events in specified blocks. 
     get:
@@ -906,13 +889,6 @@ components:
       type: object
       properties:
         _self:
-          type: string
-    Status:
-      required:
-        - chain_id
-      type: object
-      properties:
-        chain_id:
           type: string
   responses:
     400BadRequest:
