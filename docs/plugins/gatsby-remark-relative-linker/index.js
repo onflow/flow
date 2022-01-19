@@ -2,7 +2,7 @@ const visit = require("unist-util-visit");
 const updateRelativeDepth = require("./functions");
 
 module.exports = ({ markdownAST, markdownNode }) => {
-  visit(markdownAST, "link", (node, ancestors) => {
+  visit(markdownAST, "link", (node) => {
     if (
       !node.url.startsWith("/") &&
       !node.url.startsWith("#") &&

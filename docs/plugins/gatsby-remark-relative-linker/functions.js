@@ -1,6 +1,7 @@
 const sibling = "./";
 const parent = "../";
 const UNPREFIXED = -1;
+const wasSeen = {};
 
 function* depthCheck(n) {
   for (let i = n; i > -1; i--) yield i;
