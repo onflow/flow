@@ -16,40 +16,43 @@ function buildDepthCheckRegex(depth) {
   return new RegExp("^" + escapeRegExp(parent.repeat(depth)));
 }
 
-function doUpdateURL(url, forDepth, isIndex = false) {
+function doUpdateDepth(linkText, forDepth, isIndex = false) {
   let noPrefixRegex = /^[\w-_]+/;
 
-  if (url.match(noPrefixRegex)) {
-    return updateUrl(url, UNPREFIXED, isIndex);
+  if (linkText.match(noPrefixRegex)) {
+    return updateLinkText(linkText, UNPREFIXED, isIndex);
   }
 
   let depthCheckRegex = buildDepthCheckRegex(forDepth);
-  let result = url.match(depthCheckRegex);
+  let result = linkText.match(depthCheckRegex);
 
   if (result) {
-    return updateUrl(url, forDepth, isIndex);
+    return updateLinkText(linkText, forDepth, isIndex);
   }
 }
 
-function updateUrl(url, depth, index) {
+function updateLinkText(linkText, depth, index) {
   switch (index) {
     case true:
-      return depth === UNPREFIXED || 0 ? sibling + url : url;
+      return depth === UNPREFIXED || 0 ? sibling + linkText : linkText;
     case false:
       return depth === UNPREFIXED || 0
-        ? parent + url
-        : url.replace(buildDepthCheckRegex(depth), parent.repeat(depth + 1));
+        ? parent + linkText
+        : linkText.replace(
+            buildDepthCheckRegex(depth),
+            parent.repeat(depth + 1)
+          );
   }
 }
 
-function updateRelativeDepth(url, isIndex, MAX_DEPTH_CHECK = 6) {
+function updateRelativeDepth(linkText, isIndex, MAX_DEPTH_CHECK = 6) {
   for (const depth of depthCheck(MAX_DEPTH_CHECK)) {
-    const updatedURL = doUpdateURL(url, depth, isIndex);
-    if (updatedURL) {
-      return updatedURL;
+    const updatedLinkText = doUpdateDepth(linkText, depth, isIndex);
+    if (updatedLinkText) {
+      return updatedLinkText;
     }
   }
-  return url;
+  return linkText;
 }
 
 module.exports = updateRelativeDepth;
