@@ -52,9 +52,4 @@ function updateRelativeDepth(url, isIndex, MAX_DEPTH_CHECK = 6) {
   return url;
 }
 
-module.exports = {
-  doUpdate,
-  buildDepthCheckRegex,
-  updateRelativeDepth,
-  updateUrl
-};
+module.exports = updateRelativeDepth;

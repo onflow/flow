@@ -1,6 +1,5 @@
 const visit = require("unist-util-visit");
-const { updateRelativeDepth } = require("./functions");
-const MAX_DEPTH = 6;
+const updateRelativeDepth = require("./functions");
 
 module.exports = ({ markdownAST, markdownNode }) => {
   visit(markdownAST, "link", (node, ancestors) => {
