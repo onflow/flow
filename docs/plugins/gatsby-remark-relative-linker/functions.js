@@ -2,6 +2,10 @@ const sibling = "./";
 const parent = "../";
 const UNPREFIXED = -1;
 
+function* depth(n) {
+  for (let i = n; i > -1; i--) yield i;
+}
+
 function escapeRegExp(string) {
   //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#escaping
   return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -12,7 +16,7 @@ function buildDepthCheckRegex(depthSearch) {
   return new RegExp("^" + escapeRegExp(parent.repeat(depthSearch)));
 }
 
-function updateRelativeDepth(url, forDepth, isIndex = false) {
+function doUpdate(url, forDepth, isIndex = false) {
   let noPrefixRegex = /^[\w-_]+/;
 
   if (url.match(noPrefixRegex)) {
@@ -38,7 +42,18 @@ function updateUrl(url, depth, index) {
   }
 }
 
+function updateRelativeDepth(url, isIndex, MAX_DEPTH = 6) {
+  for (const n of depth(MAX_DEPTH)) {
+    const updatedURL = doUpdate(url, n, isIndex);
+    if (updatedURL) {
+      return updatedURL;
+    }
+  }
+  return url;
+}
+
 module.exports = {
+  doUpdate,
   buildDepthCheckRegex,
   updateRelativeDepth,
   updateUrl

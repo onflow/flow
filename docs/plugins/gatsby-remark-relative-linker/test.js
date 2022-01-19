@@ -5,7 +5,7 @@ test("Handles unprefixed routes", (t) => {
   const initial = "hello.md";
   const expected = "../hello.md";
 
-  const result = updateRelativeDepth(initial, 0, false);
+  const result = updateRelativeDepth(initial, false);
 
   t.is(result, expected);
 });
@@ -14,7 +14,7 @@ test("Updates relative depth 0", (t) => {
   const initial = "./hello.md";
   const expected = "../hello.md";
 
-  const result = updateRelativeDepth(initial, 0, false);
+  const result = updateRelativeDepth(initial, false);
 
   t.is(result, expected);
 });
@@ -23,7 +23,7 @@ test("Updates relative depth 1", (t) => {
   const initial = "../hello.md";
   const expected = "../../hello.md";
 
-  const result = updateRelativeDepth(initial, 1, false);
+  const result = updateRelativeDepth(initial, false);
 
   t.is(result, expected);
 });
@@ -32,7 +32,7 @@ test("Updates relative depth 2", (t) => {
   const initial = "../../hello.md";
   const expected = "../../../hello.md";
 
-  const result = updateRelativeDepth(initial, 2, false);
+  const result = updateRelativeDepth(initial, false);
 
   t.is(result, expected);
 });
@@ -42,7 +42,7 @@ test("Handles unprefixed routes in index pages", (t) => {
   const expected = "./hello.md";
 
   const isIndex = true;
-  const result = updateRelativeDepth(initial, 1, isIndex);
+  const result = updateRelativeDepth(initial, isIndex);
 
   t.is(result, expected);
 });
@@ -51,7 +51,7 @@ test("Handles other routes in index pages", (t) => {
   const initial = "../hello.md";
   const expected = "../hello.md";
 
-  const result = updateRelativeDepth(initial, 1, true);
+  const result = updateRelativeDepth(initial, true);
 
   t.is(result, expected);
 });
