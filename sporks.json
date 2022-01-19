@@ -281,7 +281,7 @@
           "flow-dps-tag": "",
           "cadence-tag": "v0.13.5-no-id-caching",
           "docker-tag": "v0.14.9",
-          "access-node": "access-001.mainnet7.nodes.onflow.org:9000"
+          "access-node": "access-001.mainnet6.nodes.onflow.org:9000"
         },
         {
           "id": 5,
