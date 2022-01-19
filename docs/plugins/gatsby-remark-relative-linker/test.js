@@ -4,9 +4,7 @@ const updateRelativeDepth = require("./functions");
 test("Handles unprefixed links", (t) => {
   const initial = "hello.md";
   const expected = "../hello.md";
-
   const result = updateRelativeDepth(initial);
-
   t.is(result, expected);
 });
 
