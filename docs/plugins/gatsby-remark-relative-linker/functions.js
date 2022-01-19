@@ -2,7 +2,7 @@ const sibling = "./";
 const parent = "../";
 const UNPREFIXED = -1;
 
-function* depth(n) {
+function* depthSearch(n) {
   for (let i = n; i > -1; i--) yield i;
 }
 
@@ -11,9 +11,9 @@ function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function buildDepthCheckRegex(depthSearch) {
-  if (depthSearch === 0) return new RegExp("^" + escapeRegExp(sibling));
-  return new RegExp("^" + escapeRegExp(parent.repeat(depthSearch)));
+function buildDepthCheckRegex(depth) {
+  if (depth === 0) return new RegExp("^" + escapeRegExp(sibling));
+  return new RegExp("^" + escapeRegExp(parent.repeat(depth)));
 }
 
 function doUpdate(url, forDepth, isIndex = false) {
@@ -42,9 +42,9 @@ function updateUrl(url, depth, index) {
   }
 }
 
-function updateRelativeDepth(url, isIndex, MAX_DEPTH = 6) {
-  for (const n of depth(MAX_DEPTH)) {
-    const updatedURL = doUpdate(url, n, isIndex);
+function updateRelativeDepth(url, isIndex, MAX_DEPTH_SEARCH = 6) {
+  for (const depth of depthSearch(MAX_DEPTH_SEARCH)) {
+    const updatedURL = doUpdate(url, depth, isIndex);
     if (updatedURL) {
       return updatedURL;
     }
