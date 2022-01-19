@@ -2,7 +2,7 @@ const sibling = "./";
 const parent = "../";
 const UNPREFIXED = -1;
 
-function* depthSearch(n) {
+function* depthCheck(n) {
   for (let i = n; i > -1; i--) yield i;
 }
 
@@ -42,8 +42,8 @@ function updateUrl(url, depth, index) {
   }
 }
 
-function updateRelativeDepth(url, isIndex, MAX_DEPTH_SEARCH = 6) {
-  for (const depth of depthSearch(MAX_DEPTH_SEARCH)) {
+function updateRelativeDepth(url, isIndex, MAX_DEPTH_CHECK = 6) {
+  for (const depth of depthCheck(MAX_DEPTH_CHECK)) {
     const updatedURL = doUpdate(url, depth, isIndex);
     if (updatedURL) {
       return updatedURL;
