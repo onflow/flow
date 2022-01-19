@@ -49,30 +49,7 @@ module.exports = ({ markdownAST, markdownNode }) => {
       !node.url.startsWith("mailto:") &&
       !/^https?:\/\//.test(node.url)
     ) {
-      let foundNoPrefix = node.url.match(/^[\w-_]+/);
-      let foundDepth1 = node.url.match(/^\.\//);
-      let foundDepth2 = node.url.match(/^\.\.\//);
-      let foundDepth3 = node.url.match(/^\.\.\/\.\.\//);
-
-      if (foundDepth3) {
-        node.url = node.url.replace(/^\.\.\/\.\.\//, "../../../");
-      } else if (foundDepth2) {
-        node.url = node.url.replace(/^\.\.\//, "../../");
-      } else if (foundDepth1) {
-        node.url = node.url.replace(/^\.\//, "../");
-      }
-
-      switch (foundIndex) {
-        case true:
-          if (foundNoPrefix) {
-            node.url = "./" + node.url;
-          }
-        case false:
-          if (foundNoPrefix) {
-            node.url = "../" + node.url;
-          }
-      }
-
+     // TODO
       node.url = node.url.replace(/(?<=[^/])#/, "/#");
       node.url = node.url.replace(".mdx", "").replace(".md", "");
     }
