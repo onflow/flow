@@ -16,7 +16,7 @@ function buildDepthCheckRegex(depth) {
   return new RegExp("^" + escapeRegExp(parent.repeat(depth)));
 }
 
-function doUpdate(url, forDepth, isIndex = false) {
+function doUpdateURL(url, forDepth, isIndex = false) {
   let noPrefixRegex = /^[\w-_]+/;
 
   if (url.match(noPrefixRegex)) {
@@ -44,7 +44,7 @@ function updateUrl(url, depth, index) {
 
 function updateRelativeDepth(url, isIndex, MAX_DEPTH_CHECK = 6) {
   for (const depth of depthCheck(MAX_DEPTH_CHECK)) {
-    const updatedURL = doUpdate(url, depth, isIndex);
+    const updatedURL = doUpdateURL(url, depth, isIndex);
     if (updatedURL) {
       return updatedURL;
     }
