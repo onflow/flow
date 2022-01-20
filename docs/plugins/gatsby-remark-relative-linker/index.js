@@ -1,5 +1,5 @@
 const visit = require("unist-util-visit");
-const updateRelativeDepth = require("./functions");
+const updateLinkText = require("./functions");
 
 module.exports = ({ markdownAST, markdownNode }) => {
   visit(markdownAST, "link", (node) => {
@@ -13,7 +13,7 @@ module.exports = ({ markdownAST, markdownNode }) => {
         markdownNode.fileAbsolutePath.includes("index.md") ||
         markdownNode.fileAbsolutePath.includes("README.md");
 
-      node.url = updateRelativeDepth(node.url, isIndex);
+      node.url = updateLinkText(node.url, isIndex);
 
       node.url = node.url.replace(/(?<=[^/])#/, "/#");
       node.url = node.url.replace(".mdx", "").replace(".md", "");

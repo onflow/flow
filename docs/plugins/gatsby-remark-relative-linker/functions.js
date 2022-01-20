@@ -46,3 +46,15 @@ function updateLinkText(linkText, depth, index) {
           );
   }
 }
+
+function updateRelativeDepth(linkText, isIndex, MAX_DEPTH_CHECK = 6) {
+  for (const depth of depthCheck(MAX_DEPTH_CHECK)) {
+    const updatedLinkText = doUpdateDepth(linkText, depth, isIndex);
+    if (updatedLinkText) {
+      return updatedLinkText;
+    }
+  }
+  return linkText;
+}
+
+module.exports = updateRelativeDepth;
