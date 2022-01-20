@@ -40,7 +40,8 @@ test("Handles unprefixed routes in index pages", (t) => {
 test("Handles other routes in index pages, depth 0", (t) => {
   const initial = "./hello.md";
   const expected = "./hello.md";
-  const result = updateRelativeDepth(initial);
+  const isIndex = true;
+  const result = updateRelativeDepth(initial, isIndex);
   t.is(result, expected);
 });
 
