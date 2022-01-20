@@ -569,6 +569,94 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /events:
+    summary: Query on-chain events in specified blocks.
+    get:
+      tags:
+      - Events
+      parameters:
+      - name: type
+        in: query
+        description: The event type is name-spaced with the address of the account
+          and contract in which the event is declared.
+        required: true
+        deprecated: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/EventType'
+      - name: start_height
+        in: query
+        description: The start height of the block range for events. Must be used
+          together with `end_height`. This parameter is incompatible with `block_ids`.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/BlockHeight'
+      - name: end_height
+        in: query
+        description: The end height of the block range for events. Must be used together
+          with `start_height`. This parameter is incompatible with `block_ids`.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/BlockHeight'
+      - name: block_ids
+        in: query
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: false
+        schema:
+          maxItems: 50
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier'
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockEvents'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Account:
@@ -1276,6 +1364,39 @@ components:
           _self: _self
         id: null
         block_id: null
+        events:
+        - transaction_id: null
+          payload: ""
+          transaction_index: transaction_index
+          type: type
+          event_index: event_index
+        - transaction_id: null
+          payload: ""
+          transaction_index: transaction_index
+          type: type
+          event_index: event_index
+    BlockEvents:
+      type: object
+      properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        block_height:
+          type: string
+        block_timestamp:
+          type: string
+          format: date-time
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        _links:
+          $ref: '#/components/schemas/Links'
+      example:
+        _links:
+          _self: _self
+        block_timestamp: 2000-01-23T04:56:07.000+00:00
+        block_height: block_height
+        block_id: block_id
         events:
         - transaction_id: null
           payload: ""

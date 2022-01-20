@@ -25,6 +25,7 @@ Class | Method | HTTP request | Description
 *BlocksApi* | [**BlocksGet**](docs/BlocksApi.md#blocksget) | **Get** /blocks | Gets full blocks by height.
 *BlocksApi* | [**BlocksIdGet**](docs/BlocksApi.md#blocksidget) | **Get** /blocks/{id} | Gets full blocks by ID.
 *CollectionsApi* | [**CollectionsIdGet**](docs/CollectionsApi.md#collectionsidget) | **Get** /collections/{id} | Gets a collection by ID.
+*EventsApi* | [**EventsGet**](docs/EventsApi.md#eventsget) | **Get** /events | 
 *ExecutionResultsApi* | [**ExecutionResultsGet**](docs/ExecutionResultsApi.md#executionresultsget) | **Get** /execution_results | Gets execution results by block ID.
 *ExecutionResultsApi* | [**ExecutionResultsIdGet**](docs/ExecutionResultsApi.md#executionresultsidget) | **Get** /execution_results/{id} | Gets an execution result by ID.
 *ScriptsApi* | [**ScriptsPost**](docs/ScriptsApi.md#scriptspost) | **Post** /scripts | Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block height.
@@ -39,6 +40,7 @@ Class | Method | HTTP request | Description
  - [AccountPublicKey](docs/AccountPublicKey.md)
  - [AggregatedSignature](docs/AggregatedSignature.md)
  - [Block](docs/Block.md)
+ - [BlockEvents](docs/BlockEvents.md)
  - [BlockExpandable](docs/BlockExpandable.md)
  - [BlockHeader](docs/BlockHeader.md)
  - [BlockHeight](docs/BlockHeight.md)
