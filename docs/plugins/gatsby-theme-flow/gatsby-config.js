@@ -1,13 +1,9 @@
-
 const path = require("path");
 if (process.env.NODE_ENV !== "production") {
- 
   require("dotenv").config({
-    path: path.resolve(__dirname, '../.env.local'),
+    path: path.resolve(__dirname, "../.env.local")
   });
-  
 }
-
 
 const mapKeys = require("lodash/mapKeys");
 const remarkTypescript = require("remark-typescript");
@@ -61,10 +57,11 @@ module.exports = ({
     {
       resolve: "gatsby-remark-copy-linked-files",
       options: {
-        ignoreFileExtensions: []
+        ignoreFileExtensions: ["md", "mdx"]
       }
     },
     "gatsby-remark-code-titles",
+    "gatsby-remark-relative-linker",
     {
       resolve: "gatsby-remark-vscode-flow",
       options: {
@@ -161,7 +158,7 @@ module.exports = ({
         headers: {
           Authorization: `Bearer ${githubAccessToken}`
         },
-        queries: repositories.map(repository => [getReleases, repository])
+        queries: repositories.map((repository) => [getReleases, repository])
       }
     }
   ];

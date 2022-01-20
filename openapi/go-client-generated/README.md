@@ -17,7 +17,7 @@ import "./swagger"
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://access.mainnet.nodes.onflow.org/v1*
+All URIs are relative to *https://rest-mainnet.onflow.org/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
