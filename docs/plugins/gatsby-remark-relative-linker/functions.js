@@ -35,7 +35,7 @@ function doUpdateDepth(linkText, forDepth, isIndex = false) {
 function updateLinkText(linkText, depth, index) {
   switch (index) {
     case true:
-      return depth === UNPREFIXED || 0 ? SIBLING + linkText : linkText;
+      return depth === UNPREFIXED ? SIBLING + linkText : linkText;
     case false:
       return depth === UNPREFIXED || 0
         ? PARENT + linkText
