@@ -1,7 +1,7 @@
-const sibling = "./";
-const parent = "../";
+const SIBLING = "./";
+const PARENT = "../";
 const UNPREFIXED = -1;
-const wasSeen = {};
+
 
 function* depthCheck(n) {
   for (let i = n; i > -1; i--) yield i;
@@ -13,8 +13,8 @@ function escapeRegExp(string) {
 }
 
 function buildDepthCheckRegex(depth) {
-  if (depth === 0) return new RegExp("^" + escapeRegExp(sibling));
-  return new RegExp("^" + escapeRegExp(parent.repeat(depth)));
+  if (depth === 0) return new RegExp("^" + escapeRegExp(SIBLING));
+  return new RegExp("^" + escapeRegExp(PARENT.repeat(depth)));
 }
 
 function doUpdateDepth(linkText, forDepth, isIndex = false) {
@@ -35,13 +35,13 @@ function doUpdateDepth(linkText, forDepth, isIndex = false) {
 function updateLinkText(linkText, depth, index) {
   switch (index) {
     case true:
-      return depth === UNPREFIXED || 0 ? sibling + linkText : linkText;
+      return depth === UNPREFIXED || 0 ? SIBLING + linkText : linkText;
     case false:
       return depth === UNPREFIXED || 0
-        ? parent + linkText
+        ? PARENT + linkText
         : linkText.replace(
             buildDepthCheckRegex(depth),
-            parent.repeat(depth + 1)
+            PARENT.repeat(depth + 1)
           );
   }
 }
