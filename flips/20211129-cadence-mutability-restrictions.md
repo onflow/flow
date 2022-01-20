@@ -1,6 +1,6 @@
 Cadence Mutability Restrictions
 
-| Status        | (Proposed)       |
+| Status        | (Approved)       |
 :-------------- |:---------------------------------------------------- |
 | **FLIP #**    | [703](https://github.com/onflow/flow/pull/703)       |
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
