@@ -1,0 +1,14 @@
+{
+  "name": "gatsby-remark-relative-linker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "unist-util-visit": "2.0.3"
+  }
+}

@@ -8,7 +8,7 @@ import { RawMarkdown } from "../markdown";
 function extractHeadings(releases) {
   const slugger = new Slugger();
 
-  return releases.map(release => {
+  return releases.map((release) => {
     return {
       id: slugger.slug(release.name),
       value: release.name
@@ -21,7 +21,7 @@ const Changelog = ({ releases }) => {
 
   return (
     <div>
-      {releases.map(release => {
+      {releases.map((release) => {
         const id = slugger.slug(release.name);
         return (
           <div key={id}>
@@ -50,64 +50,3 @@ export default function Template(props) {
     </BaseTemplate>
   );
 }
-
-export const pageQuery = graphql`
-  query ChangeLogQuery($id: String) {
-    site {
-      pathPrefix
-      siteMetadata {
-        title
-        description
-      }
-    }
-    file(id: { eq: $id }) {
-      childMarkdownRemark {
-        frontmatter {
-          title
-          description
-        }
-        headings(depth: h2) {
-          value
-        }
-        fields {
-          image
-          graphManagerUrl
-        }
-        htmlAst
-      }
-      childMdx {
-        frontmatter {
-          title
-          description
-        }
-        headings(depth: h2) {
-          value
-        }
-        fields {
-          image
-          graphManagerUrl
-        }
-        body
-      }
-    }
-    allGithubRepository {
-      edges {
-        node {
-          releases {
-            nodes {
-              name
-              publishedAt
-              url
-              description
-              author {
-                avatarUrl
-                name
-                url
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;

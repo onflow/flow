@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **BlockId** | **string** |  | [default to null]
 **Status** | [***TransactionStatus**](TransactionStatus.md) |  | [default to null]
 **ErrorMessage** | **string** |  | [default to null]
-**ComputationUsed** | **int32** |  | [default to null]
+**ComputationUsed** | **string** |  | [default to null]
 **Events** | [**[]Event**](Event.md) |  | [default to null]
 **Links** | [***Links**](Links.md) |  | [optional] [default to null]
 

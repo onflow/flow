@@ -234,7 +234,7 @@ function NavItems(props) {
                 title={page.description}
                 onClick={(e) => {
                   mixpanel.track(`Homepage_nav_${page.path}_clicked`);
-                  props.onLinkClick(e);
+                  props.onLinkClick && props.onLinkClick(e);
                 }}
               >
                 {pageTitle}
@@ -296,10 +296,10 @@ export default function SidebarNav(props) {
       {props.showMainNav && (
         <DocsetMenuWrapper>
           {docset
-            .filter(navItem => {
+            .filter((navItem) => {
               return !navItem.omitLandingPage;
             })
-            .map(navItem => {
+            .map((navItem) => {
               return (
                 <StyledTrackingLink
                   key={navItem.url}

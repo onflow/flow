@@ -8,10 +8,6 @@
  */
 package swagger
 
-type Event struct {
-	Type_ string `json:"type"`
-	TransactionId string `json:"transaction_id"`
-	TransactionIndex string `json:"transaction_index"`
-	EventIndex string `json:"event_index"`
-	Payload string `json:"payload"`
+type CollectionExpandable struct {
+	Transactions []string `json:"transactions,omitempty"`
 }

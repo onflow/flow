@@ -14,7 +14,7 @@ import (
 type BlockHeader struct {
 	Id string `json:"id"`
 	ParentId string `json:"parent_id"`
-	Height int32 `json:"height"`
+	Height string `json:"height"`
 	Timestamp time.Time `json:"timestamp"`
 	ParentVoterSignature string `json:"parent_voter_signature"`
 }

@@ -6,12 +6,12 @@ externalDocs:
   description: Find out more about the Access API
   url: https://docs.onflow.org/access-api/
 servers:
-- url: https://access.mainnet.nodes.onflow.org/v1
-  description: Current Mainnet
-- url: https://access.devnet.nodes.onflow.org/v1
-  description: Testnet
-- url: https://access.canary.nodes.onflow.org/v1
-  description: Canarynet
+- url: https://rest-mainnet.onflow.org/v1
+  description: Flow Mainnet
+- url: https://rest-testnet.onflow.org/v1
+  description: Flow Testnet
+- url: https://rest-canary.onflow.org/v1
+  description: Flow Canarynet
 paths:
   /blocks:
     get:
@@ -22,7 +22,7 @@ paths:
       - name: height
         in: query
         description: A comma-separated list of block heights to get.
-        required: true
+        required: false
         style: form
         explode: false
         schema:
@@ -573,6 +573,7 @@ components:
   schemas:
     Account:
       required:
+      - _expandable
       - address
       - balance
       type: object
@@ -580,7 +581,7 @@ components:
         address:
           $ref: '#/components/schemas/Address'
         balance:
-          type: integer
+          type: string
           format: uint64
         keys:
           minItems: 1
@@ -599,21 +600,21 @@ components:
           $ref: '#/components/schemas/Links'
       example:
         address: address
-        balance: 0
+        balance: balance
         _links:
           _self: _self
         keys:
         - public_key: public_key
-          sequence_number: 1
-          index: 6
-          weight: 5
+          sequence_number: sequence_number
+          index: index
+          weight: weight
           signing_algorithm: BLSBLS12381
           revoked: true
           hashing_algorithm: SHA2_256
         - public_key: public_key
-          sequence_number: 1
-          index: 6
-          weight: 5
+          sequence_number: sequence_number
+          index: index
+          weight: weight
           signing_algorithm: BLSBLS12381
           revoked: true
           hashing_algorithm: SHA2_256
@@ -634,7 +635,7 @@ components:
       type: object
       properties:
         index:
-          type: integer
+          type: string
           format: uint64
         public_key:
           type: string
@@ -644,18 +645,18 @@ components:
         hashing_algorithm:
           $ref: '#/components/schemas/HashingAlgorithm'
         sequence_number:
-          type: integer
+          type: string
           format: uint64
         weight:
-          type: integer
+          type: string
           format: uint64
         revoked:
           type: boolean
       example:
         public_key: public_key
-        sequence_number: 1
-        index: 6
-        weight: 5
+        sequence_number: sequence_number
+        index: index
+        weight: weight
         signing_algorithm: BLSBLS12381
         revoked: true
         hashing_algorithm: SHA2_256
@@ -675,8 +676,8 @@ components:
       - KMAC128
     Collection:
       required:
+      - _expandable
       - id
-      - transactions
       type: object
       properties:
         id:
@@ -685,6 +686,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Transaction'
+        _expandable:
+          $ref: '#/components/schemas/Collection__expandable'
         _links:
           $ref: '#/components/schemas/Links'
       example:
@@ -701,32 +704,32 @@ components:
             _links:
               _self: _self
             block_id: null
-            computation_used: 2
+            computation_used: computation_used
             events:
             - transaction_id: null
               payload: ""
-              transaction_index: 6
+              transaction_index: transaction_index
               type: type
-              event_index: 1
+              event_index: event_index
             - transaction_id: null
               payload: ""
-              transaction_index: 6
+              transaction_index: transaction_index
               type: type
-              event_index: 1
+              event_index: event_index
             status: Pending
           envelope_signatures:
           - null
           - null
-          gas_limit: 0
+          gas_limit: gas_limit
           payload_signatures:
           - address: null
             signature: ""
-            key_index: 5
-            signer_index: 5
+            key_index: key_index
+            signer_index: signer_index
           - address: null
             signature: ""
-            key_index: 5
-            signer_index: 5
+            key_index: key_index
+            signer_index: signer_index
           arguments:
           - ""
           - ""
@@ -737,9 +740,9 @@ components:
           _expandable:
             result: http://example.com/aeiou
           proposal_key:
-            sequence_number: 1
+            sequence_number: sequence_number
             address: null
-            key_index: 6
+            key_index: key_index
         - _links: null
           reference_block_id: null
           payer: payer
@@ -749,32 +752,32 @@ components:
             _links:
               _self: _self
             block_id: null
-            computation_used: 2
+            computation_used: computation_used
             events:
             - transaction_id: null
               payload: ""
-              transaction_index: 6
+              transaction_index: transaction_index
               type: type
-              event_index: 1
+              event_index: event_index
             - transaction_id: null
               payload: ""
-              transaction_index: 6
+              transaction_index: transaction_index
               type: type
-              event_index: 1
+              event_index: event_index
             status: Pending
           envelope_signatures:
           - null
           - null
-          gas_limit: 0
+          gas_limit: gas_limit
           payload_signatures:
           - address: null
             signature: ""
-            key_index: 5
-            signer_index: 5
+            key_index: key_index
+            signer_index: signer_index
           - address: null
             signature: ""
-            key_index: 5
-            signer_index: 5
+            key_index: key_index
+            signer_index: signer_index
           arguments:
           - ""
           - ""
@@ -785,11 +788,16 @@ components:
           _expandable:
             result: http://example.com/aeiou
           proposal_key:
-            sequence_number: 1
+            sequence_number: sequence_number
             address: null
-            key_index: 6
+            key_index: key_index
+        _expandable:
+          transactions:
+          - http://example.com/aeiou
+          - http://example.com/aeiou
     Transaction:
       required:
+      - _expandable
       - arguments
       - authorizers
       - envelope_signatures
@@ -815,7 +823,7 @@ components:
         reference_block_id:
           $ref: '#/components/schemas/Identifier'
         gas_limit:
-          type: integer
+          type: string
           format: uint64
         payer:
           $ref: '#/components/schemas/Address'
@@ -849,32 +857,32 @@ components:
           _links:
             _self: _self
           block_id: null
-          computation_used: 2
+          computation_used: computation_used
           events:
           - transaction_id: null
             payload: ""
-            transaction_index: 6
+            transaction_index: transaction_index
             type: type
-            event_index: 1
+            event_index: event_index
           - transaction_id: null
             payload: ""
-            transaction_index: 6
+            transaction_index: transaction_index
             type: type
-            event_index: 1
+            event_index: event_index
           status: Pending
         envelope_signatures:
         - null
         - null
-        gas_limit: 0
+        gas_limit: gas_limit
         payload_signatures:
         - address: null
           signature: ""
-          key_index: 5
-          signer_index: 5
+          key_index: key_index
+          signer_index: signer_index
         - address: null
           signature: ""
-          key_index: 5
-          signer_index: 5
+          key_index: key_index
+          signer_index: signer_index
         arguments:
         - ""
         - ""
@@ -885,9 +893,9 @@ components:
         _expandable:
           result: http://example.com/aeiou
         proposal_key:
-          sequence_number: 1
+          sequence_number: sequence_number
           address: null
-          key_index: 6
+          key_index: key_index
     ProposalKey:
       required:
       - address
@@ -898,15 +906,15 @@ components:
         address:
           $ref: '#/components/schemas/Address'
         key_index:
-          type: integer
+          type: string
           format: uint64
         sequence_number:
-          type: integer
+          type: string
           format: uint64
       example:
-        sequence_number: 1
+        sequence_number: sequence_number
         address: null
-        key_index: 6
+        key_index: key_index
     TransactionSignature:
       required:
       - address
@@ -918,18 +926,18 @@ components:
         address:
           $ref: '#/components/schemas/Address'
         signer_index:
-          type: integer
+          type: string
           format: uint64
         key_index:
-          type: integer
+          type: string
           format: uint64
         signature:
           $ref: '#/components/schemas/Signature'
       example:
         address: null
         signature: ""
-        key_index: 5
-        signer_index: 5
+        key_index: key_index
+        signer_index: signer_index
     TransactionResult:
       required:
       - block_id
@@ -946,7 +954,7 @@ components:
         error_message:
           type: string
         computation_used:
-          type: integer
+          type: string
           format: uint64
         events:
           type: array
@@ -959,18 +967,18 @@ components:
         _links:
           _self: _self
         block_id: null
-        computation_used: 2
+        computation_used: computation_used
         events:
         - transaction_id: null
           payload: ""
-          transaction_index: 6
+          transaction_index: transaction_index
           type: type
-          event_index: 1
+          event_index: event_index
         - transaction_id: null
           payload: ""
-          transaction_index: 6
+          transaction_index: transaction_index
           type: type
-          event_index: 1
+          event_index: event_index
         status: Pending
     TransactionStatus:
       type: string
@@ -982,6 +990,7 @@ components:
       - Expired
     Block:
       required:
+      - _expandable
       - header
       type: object
       properties:
@@ -1046,7 +1055,7 @@ components:
           parent_id: null
           id: id
           parent_voter_signature: ""
-          height: 0
+          height: height
           timestamp: 2000-01-23T04:56:07.000+00:00
         execution_result:
           _links:
@@ -1056,14 +1065,14 @@ components:
           events:
           - transaction_id: null
             payload: ""
-            transaction_index: 6
+            transaction_index: transaction_index
             type: type
-            event_index: 1
+            event_index: event_index
           - transaction_id: null
             payload: ""
-            transaction_index: 6
+            transaction_index: transaction_index
             type: type
-            event_index: 1
+            event_index: event_index
         _expandable:
           payload: payload
           execution_result: http://example.com/aeiou
@@ -1081,7 +1090,7 @@ components:
         parent_id:
           $ref: '#/components/schemas/Identifier'
         height:
-          type: integer
+          type: string
           format: uint64
         timestamp:
           type: string
@@ -1092,7 +1101,7 @@ components:
         parent_id: null
         id: id
         parent_voter_signature: ""
-        height: 0
+        height: height
         timestamp: 2000-01-23T04:56:07.000+00:00
     BlockPayload:
       required:
@@ -1270,14 +1279,14 @@ components:
         events:
         - transaction_id: null
           payload: ""
-          transaction_index: 6
+          transaction_index: transaction_index
           type: type
-          event_index: 1
+          event_index: event_index
         - transaction_id: null
           payload: ""
-          transaction_index: 6
+          transaction_index: transaction_index
           type: type
-          event_index: 1
+          event_index: event_index
     Event:
       required:
       - event_index
@@ -1292,10 +1301,10 @@ components:
         transaction_id:
           $ref: '#/components/schemas/Identifier'
         transaction_index:
-          type: integer
+          type: string
           format: uint64
         event_index:
-          type: integer
+          type: string
           format: uint64
         payload:
           type: string
@@ -1303,12 +1312,12 @@ components:
       example:
         transaction_id: null
         payload: ""
-        transaction_index: 6
+        transaction_index: transaction_index
         type: type
-        event_index: 1
+        event_index: event_index
     BlockHeight:
       oneOf:
-      - type: integer
+      - type: string
         format: uint64
       - type: string
         enum:
@@ -1369,7 +1378,7 @@ components:
         reference_block_id:
           $ref: '#/components/schemas/Identifier'
         gas_limit:
-          type: integer
+          type: string
           format: uint64
         payer:
           $ref: '#/components/schemas/Address'
@@ -1416,6 +1425,18 @@ components:
       example:
         keys: keys
         contracts: contracts
+    Collection__expandable:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            type: string
+            format: uri
+      example:
+        transactions:
+        - http://example.com/aeiou
+        - http://example.com/aeiou
     Transaction__expandable:
       type: object
       properties:

@@ -10,6 +10,6 @@ package swagger
 
 type ProposalKey struct {
 	Address string `json:"address"`
-	KeyIndex int32 `json:"key_index"`
-	SequenceNumber int32 `json:"sequence_number"`
+	KeyIndex string `json:"key_index"`
+	SequenceNumber string `json:"sequence_number"`
 }
