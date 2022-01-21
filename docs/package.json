@@ -8,8 +8,7 @@
     "start": "node --nolazy node_modules/.bin/gatsby develop",
     "build": "gatsby clean && gatsby build",
     "serve": "gatsby serve",
-    "test:integration": "jest -c integration/jest.config.js",
-    "test:integrationWithWatch": "jest -c integration/jest.config.js --watch"
+    "test:plugins": "cd plugins/gatsby-remark-relative-linker && npx ava"
   },
   "dependencies": {
     "@emotion/styled": "^11.3.0",
@@ -74,8 +73,6 @@
     "@mdx-js/mdx": "^1.6.22",
     "framer-motion": "^4.1.17",
     "gatsby-plugin-sitemap": "^4.7.0",
-    "jest": "^27.0.6",
-    "jest-puppeteer": "^5.0.4",
     "typeface-overpass": "^1.1.13"
   },
   "version": "0.0.0"

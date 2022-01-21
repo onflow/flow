@@ -1,5 +1,5 @@
 const test = require("ava");
-const updateRelativeDepth = require("./functions");
+const updateRelativeDepth = require("../functions");
 
 test("Handles unprefixed links", (t) => {
   const initial = "hello.md";
