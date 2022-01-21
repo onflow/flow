@@ -52,3 +52,11 @@ test("Handles other routes in index pages", (t) => {
   const result = updateRelativeDepth(initial, isIndex);
   t.is(result, expected);
 });
+
+test("Only modifies paths at the start", (t) => {
+  const initial = "../hello/world/../page.md";
+  const expected = "../../hello/world/../page.md";
+
+  const result = updateRelativeDepth(initial);
+  t.is(result, expected);
+});
