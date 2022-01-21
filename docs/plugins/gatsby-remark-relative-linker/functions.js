@@ -36,14 +36,7 @@ function updateLinkText(linkText, depth, index) {
     case true:
       return depth === UNPREFIXED ? SIBLING + linkText : linkText;
     case false:
-      return depth === UNPREFIXED
-        ? PARENT + linkText
-        : depth === 0
-        ? linkText.replace(SIBLING, PARENT)
-        : linkText.replace(
-            buildDepthCheckRegex(depth),
-            PARENT.repeat(depth + 1)
-          );
+      return PARENT + linkText;
   }
 }
 

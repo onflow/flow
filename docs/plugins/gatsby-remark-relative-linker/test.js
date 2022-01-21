@@ -10,7 +10,7 @@ test("Handles unprefixed links", (t) => {
 
 test("Updates relative depth 0", (t) => {
   const initial = "./hello.md";
-  const expected = "../hello.md";
+  const expected = ".././hello.md";
   const result = updateRelativeDepth(initial);
   t.is(result, expected);
 });
