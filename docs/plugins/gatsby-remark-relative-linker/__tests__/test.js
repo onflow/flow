@@ -31,7 +31,7 @@ test("Updates relative depth 2", (t) => {
 
 test("Handles unprefixed routes in index pages", (t) => {
   const initial = "hello.md";
-  const expected = "./hello.md";
+  const expected = "hello.md";
   const isIndex = true;
   const result = updateRelativeDepth(initial, isIndex);
   t.is(result, expected);
