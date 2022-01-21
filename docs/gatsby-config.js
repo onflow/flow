@@ -29,7 +29,7 @@ const navConfig = {
     linkText: "Launch the Flow Playground"
   },
   "FCL (Flow Client Library)": {
-    url: "/fcl",
+    url: "/fcl/",
     icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
@@ -475,9 +475,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: [
-        "[API](/flow-js-testing/api/)"
-      ],
+      Overview: ["[API](/flow-js-testing/api/)"],
       Guides: [
         "[Install Flow Javascript Testing Framework](/flow-js-testing/install/)",
         "[Init](/flow-js-testing/init)",
