@@ -240,6 +240,12 @@ const sources = [
         "docs/get-status.md",
         "docs/security.md",
         "docs/start-emulator.md"
+        "docs/complex-transactions.md",
+        "docs/decode-keys.md",
+        "docs/manage-configuration.md",
+        "docs/project-app.md",
+        "docs/signature-generate.md",
+        "docs/signature-verfiy.md"
       ]
     }
   }
@@ -351,12 +357,12 @@ const sections = [
       null: ["[Home](/)"],
       "Flow CLI": [
         "docs/index",
-        "docs/install",
-        "docs/initialize-configuration",
-        "docs/configuration",
-        "docs/security"
+        "docs/install"
       ],
-      Keys: ["docs/generate-keys"],
+      Keys: [
+        "docs/generate-keys",
+        "docs/decode-keys"
+      ],
       Accounts: [
         "docs/get-accounts",
         "docs/create-accounts",
@@ -372,17 +378,29 @@ const sections = [
       ],
       Scripts: ["docs/execute-scripts"],
       Transactions: [
+        "docs/complex-transactions",
         "docs/send-transactions",
         "docs/get-transactions",
         "docs/build-transactions",
         "docs/sign-transaction",
         "docs/send-signed-transactions"
       ],
+      "Flow.json": [
+        "docs/initialize-configuration",
+        "docs/configuration",
+        "docs/manage-configuration",
+        "docs/security"
+      ],
       "Get Flow data": [
         "docs/get-blocks",
         "docs/get-events",
         "docs/get-collections",
         "docs/get-status"
+      ],
+      "Utils": [
+        "docs/project-app",
+        "docs/signature-generate",
+        "docs/signature-verify"
       ]
     }
   },
