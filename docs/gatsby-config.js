@@ -239,7 +239,7 @@ const sources = [
         "docs/get-collections.md",
         "docs/get-status.md",
         "docs/security.md",
-        "docs/start-emulator.md"
+        "docs/start-emulator.md",
         "docs/complex-transactions.md",
         "docs/decode-keys.md",
         "docs/manage-configuration.md",
