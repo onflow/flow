@@ -1,8 +1,8 @@
 # Improve Cadence Numeric Supertypes
 
-| Status        | Proposed       |
+| Status        | Accepted       |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | N/A|
+| **FLIP #**    | https://github.com/onflow/cadence/pull/1360|
 | **Author(s)** | Supun Setunga (supun.setunga@dapperlabs.com)       |
 | **Sponsor**   | Supun Setunga (supun.setunga@dapperlabs.com)       |
 | **Updated**   | 2021-12-13                                           |
