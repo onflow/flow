@@ -10,7 +10,7 @@ package swagger
 
 type TransactionSignature struct {
 	Address string `json:"address"`
-	SignerIndex int32 `json:"signer_index"`
-	KeyIndex int32 `json:"key_index"`
+	SignerIndex string `json:"signer_index"`
+	KeyIndex string `json:"key_index"`
 	Signature string `json:"signature"`
 }
