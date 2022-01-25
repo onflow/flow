@@ -82,6 +82,8 @@ Flow will have initial support for a predefined set of signature and hash pairin
 | ECDSA     | P-256     | ECDSA_P256      | 2    |
 | ECDSA     | secp256k1 | ECDSA_secp256k1 | 3    |
 
+*Please node that codes used for the keys here are different from the ones [defined in Cadence](https://docs.onflow.org/cadence/language/crypto/#signing-algorithms)*
+
 There are two curves commonly used with the ECDSA algorithm, secp256r1 ([OID 1.2.840.10045.3.1.7](http://oid-info.com/get/1.2.840.10045.3.1.7), also called the "NIST P-256." curve), and secp256k1 ([OID 1.3.132.0.10](http://oid-info.com/get/1.3.132.0.10), the curve used by "Bitcoin"). Please be sure to double-check which parameters you are using before registering a key, as presenting a key using one of the curves under the code and format of the other will generate an error.
 
 
