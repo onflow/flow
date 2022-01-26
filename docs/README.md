@@ -92,7 +92,7 @@ When changing the name of a section in a doc, please ensure its references are u
 If URL of a page is changed, any pages — within the Flow doc site or external websites — will see a 404 error when access the old URL. To reduce such unpleasant experience, please update [docs/vercel.json](https://github.com/onflow/flow/blob/master/docs/vercel.json) accordingly so that the visitor will be redirected to the new URL.
 
 ### "Contents" side bar
-Currently only ## sections (<h2> headers) will appear to the navigation bar on the right. 
+Currently only ## sections (\<h2\> headers) will appear to the navigation bar on the right. 
 
 
 ### Search
