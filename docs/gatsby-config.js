@@ -239,7 +239,7 @@ const sources = [
         "docs/get-collections.md",
         "docs/get-status.md",
         "docs/security.md",
-        "docs/start-emulator.md"
+        "docs/start-emulator.md",
         "docs/complex-transactions.md",
         "docs/decode-keys.md",
         "docs/manage-configuration.md",
@@ -355,14 +355,8 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      "Flow CLI": [
-        "docs/index",
-        "docs/install"
-      ],
-      Keys: [
-        "docs/generate-keys",
-        "docs/decode-keys"
-      ],
+      "Flow CLI": ["docs/index", "docs/install"],
+      Keys: ["docs/generate-keys", "docs/decode-keys"],
       Accounts: [
         "docs/get-accounts",
         "docs/create-accounts",
@@ -397,7 +391,7 @@ const sections = [
         "docs/get-collections",
         "docs/get-status"
       ],
-      "Utils": [
+      Utils: [
         "docs/project-app",
         "docs/signature-generate",
         "docs/signature-verify"
