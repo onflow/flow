@@ -521,7 +521,8 @@ const sections = [
       "Other Important Contracts": [
         "core-contracts/locked-tokens",
         "core-contracts/staking-collection",
-        "core-contracts/non-fungible-token"
+        "core-contracts/non-fungible-token",
+        "core-contracts/nft-metadata"
       ]
     }
   },
