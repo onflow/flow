@@ -350,7 +350,7 @@ The weights `GetValue` and `SetValue` are also different, as instead of just cou
 
 The large amount of different weights chosen was intentional. This allows for better insight into which weights should actually be used.
 
-The Following chapters describe how the linear model fitting was done due to a significant amount of outliers in the data and how certain weights were eliminated, because they were either to correlated with other weights, to small, or had a lot of noise.
+The Following chapters describe how the linear model fitting was done due to a significant amount of outliers in the data and how certain weights were eliminated, because they were either redundant (correlated with other weights), insignificant (had small or no impact on the correlation), or had a lot of noise.
 
 A note on the `time to execute [ms]` vs `Execution effort` graphs. The closer the data is to the red dashed line which represents `time to execute = Execution effort` the better the fit of the model. Data that is to the right side of the graph, represents transactions that took longer than expected, and were thus charged less than they should be (but some variance and outliers are expected here). Data to the left side of the graph represents transactions where the execution did not take as long as the model predicted, and as a consequence those transactions will be charged more then they should be.
 
