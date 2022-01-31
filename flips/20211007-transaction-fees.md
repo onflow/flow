@@ -12,7 +12,7 @@ Change the calculation of transaction fees on the FLOW network to better secure 
 
 ## Motivation
 
-Transaction fees should allow the Flow blockchain to self regulate transaction throughput in a way where it would always tend to the optimum throughput, they should also discourage malicious actors from trying to destabilize the network by sending computationally or network heavy transactions, as the transaction fees on such transactions would be appropriately higher.
+Transaction fees should allow the Flow blockchain to self-regulate transaction throughput in a way where it would always tend to the optimum throughput. Fees should also discourage malicious actors from trying to destabilize the network by sending computationally or network heavy transactions, as the transaction fees on such transactions would be appropriately higher.
 
 ## Note
 
@@ -20,7 +20,7 @@ In this document I used the term **effort**, **effort cost**, and **effort limit
 
 ## Current design
 
-Currently transaction fees are the same for all transactions and don't change over time [^2]. The transaction fee amount is defined in the `FlowServiceAccount` smart contract as the `transactionFee` field (this can be seen [here](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowServiceAccount.cdc) or [here](https://flow-view-source.com/mainnet/account/0xe467b9dd11fa00df/contract/FlowServiceAccount)).
+Currently, transaction fees are the same for all transactions and don't change over time [^2]. The transaction fee amount is defined in the `FlowServiceAccount` smart contract as the `transactionFee` field (this can be seen [here](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowServiceAccount.cdc) or [here](https://flow-view-source.com/mainnet/account/0xe467b9dd11fa00df/contract/FlowServiceAccount)).
 
 [^2]: Except when an explicit decision is made to change them.
 
@@ -39,9 +39,9 @@ From the protocol's perspective the following requirements can be set:
 - Fees should be proportional to effort: Transactions that require more resources (cpu, memory, bandwidth, storage, ...) from the network, to be processed, should cost more.
 - Surge pricing: If the protocol is experiencing a lot of traffic, all transactions should become more expensive, until the high traffic subsides.
 
-The ultimate goal from the protocols perspective is that transactions cost exactly the amount of FLOW needed to pay for the cost of the resources needed by the nodes to process the transaction. However measuring the exact resource consumption would be difficult and costly in itself, instead the goal is to make a reasonably good approximation and improve that approximation over time.
+The ultimate goal from the protocols perspective is that transactions cost exactly the amount of FLOW needed to pay for the cost of the resources needed by the nodes to process the transaction. However measuring the exact resource consumption would be difficult and costly in itself. Instead the goal is to make a reasonably good approximation and improve that approximation over time.
 
-From the users perspective the implementation of transaction fees should satisfy the following criteria:
+From the users' perspective the implementation of transaction fees should satisfy the following criteria:
 
 - Fees should be easy to understand:
     - It should be made clear why the transaction fees exist in the form they do.
@@ -54,7 +54,7 @@ From the users perspective the implementation of transaction fees should satisfy
 
 The idea behind this design is to break down the transaction fees into smaller parts that are easier to define, control, and implement.
 
-The motivation behind the first separation is to separate the fees into a part that can be known before executing the transaction script, inclusion fees, and a part that can only be know by executing the transaction script, execution fees. 
+The motivation behind the first separation is to partition the fees into a part that can be known before executing the transaction script, inclusion fees, and a part that can only be know by executing the transaction script, execution fees. 
 
 The inclusion part of fees accounts for the resources needed by a transaction because of the transaction's properties (that can be known without executing the transaction's script). Transaction properties are things like the byte size of the transaction and the number of signatures. Some examples of resources that will be needed are the bandwidth to transfer the transaction from node to node, the verification of signatures and the verification of the sequence number.
 
@@ -180,9 +180,9 @@ Assuming an honest and aware payer, the payer would realize their transaction fa
 
 With an unaware payer (for example due to bad automation) or a malicious payer, that wants to drain the access node account or wants to cause excess traffic without paying transaction fees, it is in the access nodes best interest to not include these transactions.
 
-The access node can check the balance of the payer prior to including their transaction and if the balance is below the minimum account balance, it would not include the transaction. However this prevents the payer from topping up his own balance, after an hones mistake. Some thought is needed here to address this edge case.
+The access node can check the balance of the payer prior to including their transaction and if the balance is below the minimum account balance, it would not include the transaction. However this prevents the payer from topping up his own balance, after an honest mistake. Some thought is needed here to address this edge case.
 
-The problem of providing economic incentive to include transactions of not part of this FLIP. This FLIP only provides a way to discourage access nodes to include transactions that cannot be paid for by the payer. 
+The problem of providing economic incentive to include transactions is not part of this FLIP. This FLIP only provides a way to discourage access nodes to include transactions that cannot be paid for by the payer. 
 
 ### Failing transactions
 
@@ -206,7 +206,7 @@ There are a few reasons why a transaction fails, which can be split into four ca
 
 ### Parameter calibration
 
-When turning on variable transaction fees the goal is to have a smooth transition to the new system. To help facilitate this, the cost of transaction fees should be set so that ~95% of transactions should actually pay less transaction fees with variable transaction fees turned on. The two different parts of variable transaction fees need to be calibrated accordingly.
+When turning on variable transaction fees, a smooth transition to the new system is desired. To help facilitate this, the cost of transaction fees should be set so that ~95% of transactions should actually pay less transaction fees with variable transaction fees turned on. The two different parts of variable transaction fees need to be calibrated accordingly.
 
 #### Inclusion fees
 
