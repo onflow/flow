@@ -4,7 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** |  | [default to null]
-**SignerIndex** | **string** |  | [default to null]
 **KeyIndex** | **string** |  | [default to null]
 **Signature** | **string** |  | [default to null]
 
