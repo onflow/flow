@@ -809,11 +809,9 @@ components:
           - address: null
             signature: ""
             key_index: key_index
-            signer_index: signer_index
           - address: null
             signature: ""
             key_index: key_index
-            signer_index: signer_index
           arguments:
           - ""
           - ""
@@ -857,11 +855,9 @@ components:
           - address: null
             signature: ""
             key_index: key_index
-            signer_index: signer_index
           - address: null
             signature: ""
             key_index: key_index
-            signer_index: signer_index
           arguments:
           - ""
           - ""
@@ -962,11 +958,9 @@ components:
         - address: null
           signature: ""
           key_index: key_index
-          signer_index: signer_index
         - address: null
           signature: ""
           key_index: key_index
-          signer_index: signer_index
         arguments:
         - ""
         - ""
@@ -1004,14 +998,10 @@ components:
       - address
       - key_index
       - signature
-      - signer_index
       type: object
       properties:
         address:
           $ref: '#/components/schemas/Address'
-        signer_index:
-          type: string
-          format: uint64
         key_index:
           type: string
           format: uint64
@@ -1021,7 +1011,6 @@ components:
         address: null
         signature: ""
         key_index: key_index
-        signer_index: signer_index
     TransactionResult:
       required:
       - block_id

@@ -11,7 +11,7 @@ paths:
       summary: Gets full blocks by height.
       tags:
         - Blocks
-      parameters: 
+      parameters:
         - description: A comma-separated list of block heights to get.
           name: height
           in: query
@@ -269,7 +269,7 @@ paths:
         '500':
           $ref: '#/components/responses/500InternalServerError'
   /execution_results/{id}:
-    get: 
+    get:
       summary: Gets an execution result by ID.
       tags:
         - Execution Results
@@ -374,7 +374,7 @@ paths:
         '500':
           $ref: '#/components/responses/500InternalServerError'
   /events:
-    summary: Query on-chain events in specified blocks. 
+    summary: Query on-chain events in specified blocks.
     get:
       tags:
         - Events
@@ -431,18 +431,18 @@ paths:
 components:
   parameters:
     expandParam:
-        description: A comma-separated list indicating which properties of the content to expand.
-        name: expand
-        in: query
-        schema:
-          type: array
-          items:
-            type: string
-          minItems: 1
-          uniqueItems: true
-        explode: false
-        style: form
-        required: false
+      description: A comma-separated list indicating which properties of the content to expand.
+      name: expand
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+        minItems: 1
+        uniqueItems: true
+      explode: false
+      style: form
+      required: false
     selectParam:
       description: A comma-separated list indicating which properties of the content to return.
       name: select
@@ -629,15 +629,11 @@ components:
       type: object
       required:
         - address
-        - signer_index
         - key_index
         - signature
       properties:
         address:
           $ref: '#/components/schemas/Address'
-        signer_index:
-          type: string
-          format: uint64
         key_index:
           type: string
           format: uint64
@@ -669,12 +665,12 @@ components:
           $ref: '#/components/schemas/Links'
     TransactionStatus:
       type: string
-      enum: 
-       - Pending
-       - Finalized
-       - Executed
-       - Sealed
-       - Expired
+      enum:
+        - Pending
+        - Finalized
+        - Executed
+        - Sealed
+        - Expired
     Block:
       type: object
       required:
