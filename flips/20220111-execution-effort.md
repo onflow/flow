@@ -33,7 +33,7 @@ As a consequence transactions that do little (e.g. transferring a (non)fungible 
 
 ## Current state
 
-Currently execution effort is referenced to as computation cost. It is counted as 1 per every cadence function call or cadence loop made during the transaction. 
+As of [v0.23.6 release ](https://github.com/onflow/flow-go/tree/v0.23.6), execution effort is referenced to as computation cost. It is counted as 1 per every cadence function call or cadence loop made during the transaction. 
 
 If the execution effort exceeds the execution effort limit (also currently referenced to as gas limit or computation limit) the transaction fails. The state changes of that transaction are reverted, however the fees are still deducted for that transaction.
 
