@@ -378,15 +378,13 @@ The following is a linear model fit on the data and plotting the data on a graph
 
 This data has a proportional relation, but also has a lot of noise especially to the right of the graph. Noise to the right of the graph means that sometimes transactions take longer than expected (which could be due to gc pauses, or the machine doing something else, or cache misses, ...).
 
-The outliers cause the goodness of the linear model fit to degrade. A way how to remedy this is described in detail in the [Wolfram documentation](https://reference.wolfram.com/applications/eda/RobustFitting.html) and can be described in short as using the residual (error) of each data point to tweak the weight of that data point, and then re-fitting the data with regard to those weights. This is done until the model converges.
+The outliers cause the goodness of the linear model fit to degrade. A way how to remedy this is described in detail in the [Wolfram documentation](https://reference.wolfram.com/applications/eda/RobustFitting.html) and can be described in short as using the residual (error) of each data point to tweak the weight of that data point, and then re-fitting the data with regard to those weights. This is done until the model converges. In the wolfram documentation this is called robust fitting.
 
 The function that converts the residual of a data point to its weight was chosen to be an asymmetrical function with a different cut-off to the left and to the right. This is because the outliers were mostly to the right of the graph, and the signal was to the left of the graph. The cut-off point was 16 times of the mean of the residuals while the cut-off point to the right was 10 times of the mean residual.
 
 ![Residual2Weight](./20220111-execution-effort/residual-to-weight.png)
 
-This improves the final model fit. 
-
-On the following chart the color of each data point represents the weight of that data point. The darker the color the lower the weight of the data point.
+The following chart illustrates the improvement to the final model fit when using robust fitting. The color of each data point represents the weight of that data point. The darker the color the lower the weight of the data point.
 
 ![BetterFit](./20220111-execution-effort/better-fit.png)
 
