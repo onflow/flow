@@ -1,5 +1,5 @@
 # Soul-Bound Token
-                                                                                                             |
+                                                                                                             
 ## Objective
 
 This proposal is to introduce a standard for Soul-Bound Token to the flow ecosystem.
