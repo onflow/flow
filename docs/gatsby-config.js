@@ -515,6 +515,7 @@ const sections = [
         "core-contracts/fungible-token",
         "core-contracts/flow-token",
         "core-contracts/flow-fees",
+        "core-contracts/service-account",
         "core-contracts/staking-contract-reference",
         "core-contracts/epoch-contract-reference"
       ],
