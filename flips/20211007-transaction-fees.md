@@ -39,7 +39,9 @@ From the protocol's perspective the following requirements can be set:
 - Fees should be proportional to effort: Transactions that require more resources (cpu, memory, bandwidth, storage, ...) from the network, to be processed, should cost more.
 - Surge pricing: If the protocol is experiencing a lot of traffic, all transactions should become more expensive, until the high traffic subsides.
 
-The ultimate goal from the protocols perspective is that transactions cost exactly the amount of FLOW needed to pay for the cost of the resources needed by the nodes to process the transaction. However measuring the exact resource consumption would be difficult and costly in itself. Instead the goal is to make a reasonably good approximation and improve that approximation over time.
+These requirements reflect both the need for fairness in pricing the transactions according to their impact on the machines processing them and the added security against resource exhaustion attacks (since they would cost more to perform).
+
+The ultimate pricing goal from the protocols perspective is that transactions cost exactly the amount of FLOW needed to pay for the cost of the resources needed by the nodes to process the transaction. However measuring the exact resource consumption would be difficult and costly in itself. It also would not account for the fact that each node (of the same type) will use a different amount of time to process the transaction. Instead, the goal is to make a reasonably good approximation, that is independent of the machine its running on, and improve that approximation over time.
 
 From the users' perspective the implementation of transaction fees should satisfy the following criteria:
 
@@ -96,7 +98,7 @@ The surge factor serves only one purpose, which is to give all transactions on t
 
 The surge factor could be adjusted manually from the start, by manually monitoring the network and sending a transaction to update the surge factor. This would mean responding to network load would be very slow. 
 
-A first automated solution to adjusting the surge factor would be a service that would monitor the network load and send a transaction to update the surge factor when there was a change in the network load.
+A first automated solution might be for the execution nodes to look at how full the blocks are and use the system chunk transaction to change the surge factor according to that.
 
 When automation will be in place for adjusting the surge factor, the surge factor could be adjusted frequently (in the span it takes to run a few blocks and detect a surge), but it should not change too drastically otherwise users cannot respond to the change.
 ### Effort cost
