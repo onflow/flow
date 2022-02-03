@@ -785,6 +785,7 @@ components:
           script: ""
           result:
             error_message: error_message
+            status_code: 0
             _links:
               _self: _self
             block_id: null
@@ -831,6 +832,7 @@ components:
           script: ""
           result:
             error_message: error_message
+            status_code: 0
             _links:
               _self: _self
             block_id: null
@@ -934,6 +936,7 @@ components:
         script: ""
         result:
           error_message: error_message
+          status_code: 0
           _links:
             _self: _self
           block_id: null
@@ -1018,12 +1021,15 @@ components:
       - error_message
       - events
       - status
+      - status_code
       type: object
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
         status:
           $ref: '#/components/schemas/TransactionStatus'
+        status_code:
+          type: integer
         error_message:
           type: string
         computation_used:
@@ -1037,6 +1043,7 @@ components:
           $ref: '#/components/schemas/Links'
       example:
         error_message: error_message
+        status_code: 0
         _links:
           _self: _self
         block_id: null

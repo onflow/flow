@@ -644,6 +644,7 @@ components:
       required:
         - block_id
         - status
+        - status_code
         - error_message
         - computation_used
         - events
@@ -652,6 +653,8 @@ components:
           $ref: '#/components/schemas/Identifier'
         status:
           $ref: '#/components/schemas/TransactionStatus'
+        status_code:
+          type: integer
         error_message:
           type: string
         computation_used:
