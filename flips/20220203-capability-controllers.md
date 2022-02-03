@@ -2,7 +2,7 @@
 
 | Status        | Proposed                                           |
 | :------------ | :------------------------------------------------- |
-| **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN)     |
+| **FLIP #**    | [798](https://github.com/onflow/flow/pull/798)     |
 | **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com) |
 | **Updated**   | 2022-02-03                                         |
 
