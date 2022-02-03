@@ -282,9 +282,8 @@ const sections = [
         "[Staking Technical Guides](/staking/staking-options/)"
       ],
       Reference: [
-        "[Available Flow SDKs](/sdks)",
-        "[Flow Access API gRPC](/access-api)",
-        "[Flow Access API HTTP](/access-http)",
+        "[Available Flow SDKs](/sdks/)",
+        "[Flow Access API](/access-api/)",
         "[Cadence Language Reference](/cadence/language/)",
         "[Testing Library Reference](/flow-js-testing/)",
         "[Core Protocol Smart Contracts](/core-contracts/)",
@@ -720,11 +719,7 @@ module.exports = {
           },
           {
             pathname: "/access-api",
-            crumbLabel: "Access API gRPC"
-          },
-          {
-            pathname: "/access-http",
-            crumbLabel: "Access API HTTP"
+            crumbLabel: "Access API"
           },
           {
             pathname: "/sdk-guidelines",
@@ -745,7 +740,7 @@ module.exports = {
           },
           {
             pathname: "/core-contracts/access-api",
-            crumbLabel: "Access API gRPC"
+            crumbLabel: "Access API"
           },
           {
             pathname: "/fcl",
