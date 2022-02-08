@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import Helmet from "react-helmet";
+
 import CustomSEO from "../components/custom-seo";
 
 export default function AccessNodeHTTPAPI(props) {
@@ -8,7 +10,7 @@ export default function AccessNodeHTTPAPI(props) {
 
   const [redocTag, setRedocTag] = useState(tagText);
 
-  useState(() => {
+  useEffect(() => {
     setRedocTag(tagText);
   });
 
@@ -25,6 +27,9 @@ export default function AccessNodeHTTPAPI(props) {
         twitterUrl={"https://twitter.com/flow_blockchain"}
         twitterHandle={"flow_blockchain"}
       />
+      <Helmet>
+        <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js" />
+      </Helmet>
       <div
         dangerouslySetInnerHTML={{
           __html: redocTag
