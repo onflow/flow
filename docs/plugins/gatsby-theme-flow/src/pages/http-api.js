@@ -30,11 +30,9 @@ export default function AccessNodeHTTPAPI(props) {
       <Helmet>
         <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js" />
       </Helmet>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: redocTag
-        }}
-      ></div>
+      <div>
+        <redoc spec-url="https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml"></redoc>
+      </div>
     </>
   );
 }
