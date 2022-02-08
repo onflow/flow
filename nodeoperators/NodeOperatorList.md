@@ -56,7 +56,6 @@
 | Bitcoin Louie | Verification | fffba108a52e4ca8f5d30658c3f03f47ad1cc13a0995435c0532336236813218
 | Blockchain at Berkeley | Verification | 8f8d77ba98d1606b19fce8f6d35908bfc29ea171c02879162f6755c05e0ca1ee
 | Blockchain Coalition/Block Venture | Verification | 16036263d71f64d65f84542e9f7678e578482a107b61e45b88759ebea2c7451d
-| Blockchange | Verification | e6b03a5cea7568966d4326d9c4191695b450aa5a3095f4ddbd6957643b23538e
 | Blockdaemon | Consensus | cd7eed9952dbf8822062db7a351d959ef1166cd6d1856c0ad26c1c67d68e4fdb
 | Blockdaemon | Verification | 49c9f946170d5fb40c2af953b1534fae771905865b142ab6ac9685b8ba5b51c1
 | Blockdaemon | Verification | 5f079d31810e4ea4ac86e70e23a04e797a37973df434d1ad854cd83d8828bcbd
@@ -118,7 +117,6 @@
 | Metapurse | Consensus |1780288437c9aed5056836bfffcfe19334dd6e229607fccfb3fe9b1d4d24cdca
 | Metapurse | Verfication | dc3054cae816874d7dbbe838a41ef97c8a01b44643bffc82afe3a8228eed29fd
 | NFT42 | Verification | f8af31c7c3294b246f34040e5685c351e89f1c1edf6c64f93f7babd73d149951
-| Optakt | Consensus | f3b72c50794c29319f0f77f0c7d623662eb15253c291a5360d095a4ea282fadb
 | P2P | Verification | 78ef2e461a32df2278ae78baf7cf1a54fec3601fe4723a5833c49e1935dc4b7d
 | P2P | Consensus | 14faeb5538c8791827163074cd5fdbdcf70c44648a98d835c63ebb386d5c4745 
 | P2P | Collection | 79b43645fdf7c6597d8868b10c91d8cf343ab7d2cea0c98902d8f9456049918a
