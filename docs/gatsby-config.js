@@ -260,7 +260,8 @@ const sections = [
       "faq/*",
       "community-updates/*",
       "flow-port/**/*",
-      "bounties/*"
+      "bounties/*",
+      "http/*"
     ],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: false,
@@ -284,6 +285,7 @@ const sections = [
       Reference: [
         "[Available Flow SDKs](/sdks/)",
         "[Flow Access API](/access-api/)",
+        "[Flow HTTP API](/http/an/)]",
         "[Cadence Language Reference](/cadence/language/)",
         "[Testing Library Reference](/flow-js-testing/)",
         "[Core Protocol Smart Contracts](/core-contracts/)",
