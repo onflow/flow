@@ -2240,14 +2240,6 @@
         "StakingPubKey": "96e4ae32e76fb81d48a597ed32f74e3ada65c820a602ce438168b4d83e7d8ded813e4f928f93dcb5ba688f7070ed4f121689beeaf9abd51b234a19cb3337cda88ef6fd7cd96fb6d289ce6fe9908fc9683e1e4b017ed1aa91783af93c37686f81"
     },
     {
-        "Role": "consensus",
-        "Address": "consensus.flow.optakt.io:3569",
-        "NodeID": "f3b72c50794c29319f0f77f0c7d623662eb15253c291a5360d095a4ea282fadb",
-        "Stake": 1000,
-        "NetworkPubKey": "dafbd3ded4e3ae1b23916e9d1d4ee510d3625757dc5237b28d6026304f78bb92a3ff135bd326710bd6d90581875065fef7fb897a3336812385e7046dba9398e7",
-        "StakingPubKey": "88e35b153bf1a7a9a22dcec8801737705c6c40fd9a91e3fe3e4c81c90161dd505db2cabac2368d75d9bce4e1ca2992b71230feaa43bfae5b4c08a83c7a64d843bac2d4541025d7e473b5cbe1639b36604091ffd5eb4d6fb3cca819e6cd72f976"
-    },
-    {
         "Role": "verification",
         "Address": "20.187.33.62:3569",
         "NodeID": "f7422f2d3296ede4d1efb36ec55e3fd93702c061f7ee627881f0b3007beff2ed",
@@ -2606,14 +2598,6 @@
         "Stake": 1000,
         "NetworkPubKey": "367b4deaef0a20221c471a0554a67f5a4d260ad702f9f3040650b210e5899dcdf9a9527a76314c396dfef91c970ed5674057427944c47574e9fd0d3b5f2453ea",
         "StakingPubKey": "a6663b2e69f7a9f22ceb43508d7de3f25500f829d62a6f2e058bb52aadb262f5eec1f3fa4ff63eab604905fb52f4cf1411bcefc4a2e8b5a33a93c73100d86c863c681ed195db8f0882a6aa7ab5adfd9344da0ba93a4cd4012736876c79f3773f"
-    },
-    {
-        "Role": "verification",
-        "Address": "p2p.d36eed1e-3ff7-4e86-b4a6-272be8d23e9c.flow.bison.run:3569",
-        "NodeID": "e6b03a5cea7568966d4326d9c4191695b450aa5a3095f4ddbd6957643b23538e",
-        "Stake": 1000,
-        "NetworkPubKey": "31313d0551af3a782f1055d090826dd19f474f4a3fa5c3f8e8d7cefca2d75ce588b43847b692e382264bb0bd43352cde57a36243f6573ee27d84d1074d30ff38",
-        "StakingPubKey": "b7b4b07eb6d74c2ad4e068e00b4de15eb0492b28fcc2feec9024f9af23a92646c69efc4e6d4101c3cef4ee7be19fe55a08b7d1a3ecc56cb1b8f03735d6f630357ee59f4945d62f7f2a0492c63d5fbd6a80441781e105564f0a91209348e8d974"
     },
     {
         "Role": "verification",
