@@ -1,23 +1,9 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect, useRef } from "react";
 import { RedocStandalone } from "redoc";
 
 import CustomSEO from "./custom-seo";
 
-function loadScript(url, callback) {
-  var script = document.createElement("script");
-  script.src = url;
-  script.type = "text/javascript";
-  script.onload = function () {
-    callback();
-  };
-}
-
 export default function AccessNodeHTTPAPI(props) {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {}, []);
-
   return (
     <>
       <CustomSEO
@@ -33,12 +19,11 @@ export default function AccessNodeHTTPAPI(props) {
       />
       <div>
         <RedocStandalone
-          specUrl="https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml"
-          onLoaded={(error) => {
-            if (!error) {
-              setIsLoaded(true);
-            }
+          options={{
+            scrollYOffset: 200,
+            nativeScrollbars: true
           }}
+          specUrl="https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml"
         />
       </div>
     </>
