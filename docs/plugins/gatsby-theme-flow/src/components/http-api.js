@@ -20,7 +20,7 @@ export default function AccessNodeHTTPAPI(props) {
       <div>
         <RedocStandalone
           options={{
-            scrollYOffset: 200,
+            scrollYOffset: 101,
             nativeScrollbars: true
           }}
           specUrl="https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml"
