@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Helmet from "react-helmet";
 
-import CustomSEO from "../components/custom-seo";
+import CustomSEO from "./custom-seo";
 
 function Script(props) {
   // Ruels: alwasy use effect at the top level and from React Functions

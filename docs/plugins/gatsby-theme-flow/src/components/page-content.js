@@ -25,8 +25,7 @@ const Wrapper = styled.div({
 
 const InnerWrapper = styled.div({
   flexGrow: 1,
-  width: 0,
-  maxWidth: "888px"
+  width: 0
 });
 
 const BodyContent = styled.div({
@@ -123,7 +122,9 @@ const AsideLinkInner = styled.a({
 
 function sidebarPage(path) {
   if (path === "/") return false;
-  if (path === "/status") return false;
+  if (path === "/status/") return false;
+  if (path === "/http-api/") return false;
+
   return true;
 }
 

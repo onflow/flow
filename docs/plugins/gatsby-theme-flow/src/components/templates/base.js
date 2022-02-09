@@ -13,9 +13,19 @@ import { Markdown, components } from "../markdown";
 import PageContent from "../page-content";
 import PageHeader from "../page-header";
 
-const StyledContentWrapper = styled(ContentWrapper)({
-  paddingBottom: 0,
-  maxWidth: 1280
+function paddedPage(path) {
+  if (path === "/http-api/") return false;
+  return true;
+}
+
+const StyledContentWrapper = styled(ContentWrapper)(({ path }) => {
+  console.log(path);
+  return {
+    padding: paddedPage(path) ? null : 0,
+    paddingBottom: 0,
+    maxWidth: paddedPage(path) ? 1280 : "100%",
+    marginTop: paddedPage(path) ? 0 : "-50px"
+  };
 });
 
 const renderAst = new rehypeReact({
@@ -29,14 +39,8 @@ export default function BaseTemplate(props) {
   const { frontmatter, headings, fields } =
     file.childMarkdownRemark || file.childMdx;
   const { title, description } = site.siteMetadata;
-  const {
-    sidebar,
-    githubUrl,
-    discordUrl,
-    discourseUrl,
-    twitterUrl,
-    baseUrl
-  } = props.pageContext;
+  const { sidebar, githubUrl, discordUrl, discourseUrl, twitterUrl, baseUrl } =
+    props.pageContext;
 
   const allHeadings = headings.concat(props.extraHeadings || []);
 
@@ -55,7 +59,7 @@ export default function BaseTemplate(props) {
         twitterUrl={twitterUrl}
         twitterHandle={"flow_blockchain"}
       />
-      <StyledContentWrapper>
+      <StyledContentWrapper path={pathname}>
         <PageHeader {...frontmatter} />
         {frontmatter.title || frontmatter.description ? <hr /> : ""}
         <PageContent
