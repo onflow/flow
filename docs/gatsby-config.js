@@ -283,6 +283,7 @@ const sections = [
       ],
       Reference: [
         "[Available Flow SDKs](/sdks/)",
+        "[Flow HTTP API](/http-api/)",
 
         "[Flow gRPC API](/access-api/)",
 
