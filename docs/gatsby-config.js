@@ -260,8 +260,7 @@ const sections = [
       "faq/*",
       "community-updates/*",
       "flow-port/**/*",
-      "bounties/*",
-      "http-api/"
+      "bounties/*"
     ],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: false,
@@ -759,6 +758,10 @@ module.exports = {
           {
             pathname: "/flow-go-sdk",
             crumbLabel: "Flow GO SDK"
+          },
+          {
+            pathname: "/http-api",
+            crumbLabel: "HTTP API"
           }
         ]
       }

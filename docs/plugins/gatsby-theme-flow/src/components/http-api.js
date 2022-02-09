@@ -34,7 +34,7 @@ export default function AccessNodeHTTPAPI(props) {
   useEffect(() => {
     console.log("Rendering API Docs...");
     setRedocTag(tagText);
-  }, []);
+  });
 
   return (
     <>
@@ -49,9 +49,6 @@ export default function AccessNodeHTTPAPI(props) {
         twitterUrl={"https://twitter.com/flow_blockchain"}
         twitterHandle={"flow_blockchain"}
       />
-      <Helmet>
-        <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js" />
-      </Helmet>
       <div>
         <div dangerouslySetInnerHTML={{ __html: redocTag }} />
       </div>

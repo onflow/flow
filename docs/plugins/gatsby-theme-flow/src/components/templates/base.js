@@ -24,7 +24,7 @@ const StyledContentWrapper = styled(ContentWrapper)(({ path }) => {
     padding: paddedPage(path) ? null : 0,
     paddingBottom: 0,
     maxWidth: paddedPage(path) ? 1280 : "100%",
-    marginTop: paddedPage(path) ? 0 : "-50px"
+    marginTop: paddedPage(path) ? 0 : "-22px"
   };
 });
 
