@@ -4,6 +4,27 @@ import Helmet from "react-helmet";
 
 import CustomSEO from "../components/custom-seo";
 
+function Script(props) {
+  // Ruels: alwasy use effect at the top level and from React Functions
+  useEffect(() => {
+    const script = document.createElement("script");
+
+    // src, async, onload
+    Object.assign(script, props);
+
+    let { parent = "body" } = props;
+
+    let parentNode = document.querySelector(parent);
+    parentNode.appendChild(script);
+
+    return () => {
+      parentNode.removeChild(script);
+    };
+  });
+
+  return null; // Return null is necessary for the moment.
+}
+
 export default function AccessNodeHTTPAPI(props) {
   const tagText =
     '<redoc spec-url="https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml"></redoc>';
@@ -11,8 +32,9 @@ export default function AccessNodeHTTPAPI(props) {
   const [redocTag, setRedocTag] = useState(tagText);
 
   useEffect(() => {
+    console.log("Rendering API Docs...");
     setRedocTag(tagText);
-  });
+  }, []);
 
   return (
     <>
@@ -31,7 +53,7 @@ export default function AccessNodeHTTPAPI(props) {
         <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js" />
       </Helmet>
       <div>
-        <redoc spec-url="https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml"></redoc>
+        <div dangerouslySetInnerHTML={{ __html: redocTag }} />
       </div>
     </>
   );
