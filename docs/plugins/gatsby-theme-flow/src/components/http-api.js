@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import Helmet from "react-helmet";
+import { RedocStandalone } from "redoc";
 
 import CustomSEO from "./custom-seo";
 
 function loadScript(url, callback) {
   var script = document.createElement("script");
+  script.src = url;
   script.type = "text/javascript";
   script.onload = function () {
     callback();
@@ -15,18 +16,7 @@ function loadScript(url, callback) {
 export default function AccessNodeHTTPAPI(props) {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    loadScript(
-      "https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js",
-      () => {
-        console.log("loaded");
-        setIsLoaded(true);
-      }
-    );
-    return () => {
-      setIsLoaded(false);
-    };
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -42,7 +32,14 @@ export default function AccessNodeHTTPAPI(props) {
         twitterHandle={"flow_blockchain"}
       />
       <div>
-        <redoc spec-url="https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml"></redoc>
+        <RedocStandalone
+          specUrl="https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml"
+          onLoaded={(error) => {
+            if (!error) {
+              setIsLoaded(true);
+            }
+          }}
+        />
       </div>
     </>
   );

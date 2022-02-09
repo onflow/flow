@@ -1,8 +1,10 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
+const webpack = require("webpack");
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 // const { createPrinterNode } = require("gatsby-plugin-printer");
 
-exports.onCreateNode = async function(
+exports.onCreateNode = async function (
   { node, actions, getNode, loadNodeContent },
   { siteName, subtitle, sidebarCategories }
 ) {
@@ -263,4 +265,28 @@ exports.createPages = async ({ actions, graphql }, options) => {
       createPagesForSection(actions, graphql, section, options)
     )
   );
+};
+
+exports.onCreateWebpackConfig = ({
+  stage,
+  rules,
+  loaders,
+  plugins,
+  actions
+}) => {
+  actions.setWebpackConfig({
+    resolve: {
+      fallback: {
+        fs: false
+      }
+    },
+    plugins: [
+      new webpack.DefinePlugin({
+        "process.versions.node": JSON.stringify(
+          process.versions.node || "0.0.0"
+        )
+      }),
+      new NodePolyfillPlugin()
+    ]
+  });
 };
