@@ -4,30 +4,28 @@ import Helmet from "react-helmet";
 
 import CustomSEO from "./custom-seo";
 
-function Script(props) {
-  // Ruels: alwasy use effect at the top level and from React Functions
-  useEffect(() => {
-    const script = document.createElement("script");
-
-    // src, async, onload
-    Object.assign(script, props);
-
-    let { parent = "body" } = props;
-
-    let parentNode = document.querySelector(parent);
-    parentNode.appendChild(script);
-
-    return () => {
-      parentNode.removeChild(script);
-    };
-  });
-
-  return null; // Return null is necessary for the moment.
+function loadScript(url, callback) {
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.onload = function () {
+    callback();
+  };
 }
 
 export default function AccessNodeHTTPAPI(props) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
-    console.log("Rendering API Docs...");
+    loadScript(
+      "https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js",
+      () => {
+        console.log("loaded");
+        setIsLoaded(true);
+      }
+    );
+    return () => {
+      setIsLoaded(false);
+    };
   }, []);
 
   return (
@@ -43,12 +41,6 @@ export default function AccessNodeHTTPAPI(props) {
         twitterUrl={"https://twitter.com/flow_blockchain"}
         twitterHandle={"flow_blockchain"}
       />
-      <Helmet>
-        <script
-          src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"
-          type="text/javascript"
-        />
-      </Helmet>
       <div>
         <redoc spec-url="https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml"></redoc>
       </div>
