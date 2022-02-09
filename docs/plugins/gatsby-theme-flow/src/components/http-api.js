@@ -26,15 +26,9 @@ function Script(props) {
 }
 
 export default function AccessNodeHTTPAPI(props) {
-  const tagText =
-    '<redoc spec-url="https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml"></redoc>';
-
-  const [redocTag, setRedocTag] = useState(tagText);
-
   useEffect(() => {
     console.log("Rendering API Docs...");
-    setRedocTag(tagText);
-  });
+  }, []);
 
   return (
     <>
@@ -49,8 +43,14 @@ export default function AccessNodeHTTPAPI(props) {
         twitterUrl={"https://twitter.com/flow_blockchain"}
         twitterHandle={"flow_blockchain"}
       />
+      <Helmet>
+        <script
+          src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"
+          type="text/javascript"
+        />
+      </Helmet>
       <div>
-        <div dangerouslySetInnerHTML={{ __html: redocTag }} />
+        <redoc spec-url="https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml"></redoc>
       </div>
     </>
   );
