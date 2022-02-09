@@ -283,8 +283,10 @@ const sections = [
       ],
       Reference: [
         "[Available Flow SDKs](/sdks/)",
-        "[Flow Access API](/access-api/)",
         "[Flow HTTP API](/http-api/)]",
+
+        "[Flow gRPC API](/access-api/)",
+
         "[Cadence Language Reference](/cadence/language/)",
         "[Testing Library Reference](/flow-js-testing/)",
         "[Core Protocol Smart Contracts](/core-contracts/)",

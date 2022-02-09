@@ -19,12 +19,11 @@ function paddedPage(path) {
 }
 
 const StyledContentWrapper = styled(ContentWrapper)(({ path }) => {
-  console.log(path);
   return {
     padding: paddedPage(path) ? null : 0,
     paddingBottom: 0,
-    maxWidth: paddedPage(path) ? 1280 : "100%"
-    // marginTop: paddedPage(path) ? 0 : "-22px"
+    maxWidth: paddedPage(path) ? 1280 : "100%",
+    marginTop: paddedPage(path) ? 0 : "-22px"
   };
 });
 
