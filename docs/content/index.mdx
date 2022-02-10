@@ -9,19 +9,20 @@ import { theme } from "gatsby-theme-flow/src/colors";
 import DocsetMenu from "./components/docset-menu";
 import { MenuTitle } from "./components/menu";
 import TrackingLink from "./components/tracking-link";
-import { IconGithub, IconDiscord, IconDiscourse } from "gatsby-theme-flow/src/ui/icons";
-
+import {
+  IconGithub,
+  IconDiscord,
+  IconDiscourse
+} from "gatsby-theme-flow/src/ui/icons";
 
 ‍Flow is a fast, decentralized, and developer-friendly blockchain, designed as the foundation for a new generation of games, apps, and the [digital assets](https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets) that power them. It is based on a unique, [multi-role architecture](https://www.onflow.org/primer), and designed to [scale without sharding](https://www.onflow.org/post/flow-blockchain-multi-node-architecture-advantages), allowing for massive improvements in speed and throughput while preserving a developer-friendly, ACID-compliant environment.
 
 ### Get Started
 
-
-
 <div className="homepage-grid">
 
 <div className="grid-item wide">
-  
+
 
   <h3> ⚡️
 
@@ -29,7 +30,6 @@ import { IconGithub, IconDiscord, IconDiscourse } from "gatsby-theme-flow/src/ui
   Flow Access Node HTTP API
 </TrackingLink>
 </h3>
-
 
 <ul className="grid-item-list">
   <li>
@@ -44,11 +44,19 @@ import { IconGithub, IconDiscord, IconDiscourse } from "gatsby-theme-flow/src/ui
 " eventName="Homepage_link_/fcl/_clicked">
   FCL (Flow Client Library)
 </TrackingLink>
+
 today!
-    <p>
-      Oh, thats new. 
-    </p>
-  </li>
+
+<span>https://rest-testnet.onflow.org/v1/</span>
+<p>Testnet: <TrackingLink event="Homepage*link*/http-api-testnet/\_clicked" href="/http-api/">View Documentation</TrackingLink></p>
+
+<span>https://rest-mainnet.onflow.org/v1/</span>
+<p>Mainnet: <TrackingLink event="Homepage*link*/http-api-mainnet/\_clicked" href="/http-api/">View Documentation</TrackingLink></p>
+
+<p>
+  Oh, that's new. 
+</p>
+</li>
 </ul>
 
 </div>
@@ -111,7 +119,6 @@ today!
 </ul>
 
 </div>
-
 
 <div className="grid-item">
   <h3>🤝 Community Code</h3>
@@ -246,20 +253,27 @@ today!
 </div>
 </div>
 
-
 ---
 
-## Join the Flow Developer Community 
+## Join the Flow Developer Community
 
-
-<TrackingLink href="https://github.com/onflow" eventName="Homepage_link_/github_link/_clicked">
-    <IconGithub style={{marginRight: 10}} size={42}/> 
+<TrackingLink
+  href="https://github.com/onflow"
+  eventName="Homepage_link_/github_link/_clicked"
+>
+  <IconGithub style={{ marginRight: 10 }} size={42} />
 </TrackingLink>
 
-<TrackingLink href="https://discord.gg/mDvccFPx" eventName="Homepage_link_/discord_link/_clicked">
- <IconDiscord style={{marginRight: 10}}  size={42}/>
-</TrackingLink>  
- 
-<TrackingLink href="https://forum.onflow.org/" eventName="Homepage_link_/discourse_link/_clicked">
- <IconDiscourse style={{marginRight: 10}}    size={42}/>  
+<TrackingLink
+  href="https://discord.gg/mDvccFPx"
+  eventName="Homepage_link_/discord_link/_clicked"
+>
+  <IconDiscord style={{ marginRight: 10 }} size={42} />
+</TrackingLink>
+
+<TrackingLink
+  href="https://forum.onflow.org/"
+  eventName="Homepage_link_/discourse_link/_clicked"
+>
+  <IconDiscourse style={{ marginRight: 10 }} size={42} />
 </TrackingLink>
