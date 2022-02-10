@@ -3,7 +3,7 @@ import { RedocStandalone } from "redoc";
 
 import CustomSEO from "./custom-seo";
 
-export default function AccessNodeHTTPAPI(props) {
+export default function AccessNodeHTTPAPI({ specUrl }) {
   return (
     <>
       <CustomSEO
@@ -23,7 +23,7 @@ export default function AccessNodeHTTPAPI(props) {
             scrollYOffset: 101,
             nativeScrollbars: true
           }}
-          specUrl="https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml"
+          specUrl={specUrl}
         />
       </div>
     </>
