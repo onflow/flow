@@ -29,7 +29,7 @@ message EventInclusionProof {
 	// InterimNodeTypes is supposed to be consumed bit by bit to determine the node types (0: fullnode, 1: shortnode) on the path to the leaf node. canonical form of InterimNodeTypes requires allocating the minimum number of bytes to capture all the nodes on the path and trailing zeros for the bits that are not used. 
 	repeated bytes InterimNodeTypes = 3;
 
-	// a series of uint16 values which represents shortNode's count (number of bits of path that are covered by the short node) for each short node on the path.
+	// a series of uint32 values which represents shortNode's count (number of bits of path that are covered by the short node) for each short node on the path.
 	repeated uint32 ShortPathLengths = 4;
 
 	// a series of 32-byte hash values which represents the hash of the non-visited sibling node for each full node on the path.
