@@ -77,6 +77,13 @@ const navConfig = {
       "Flow Port, your portal to the decentralized world of Flow. Access your Flow account, interact with the blockchain, manage your assets and more.",
     linkText: "Flow Port",
   },
+  "Kitty Items": {
+    url: "/kitty-items/",
+    icon: "kitty-items",
+    description:
+      "Kitty Items, is a complete application to help you learn and understand how to easily develop on Flow. Kitty Items is a complete NFT marketplace modeled after CryptoKitties and built with Cadence.",
+    linkText: "Kitty Items: A CryptoKitties Sample App",
+  },
 };
 
 // sourceGithubRepos maps a sourceInstanceName to a GitHub repo name
@@ -667,6 +674,22 @@ const sections = [
         "docs/language/crypto",
         "docs/language/type-hierarchy",
         "docs/language/glossary",
+      ],
+    },
+  },
+  {
+    sourceInstanceName: "docs",
+    patterns: ["kitty-items/**/*"],
+    sidebarAlwaysExpanded: true,
+    sidebar: {
+      null: ["[Home](/)"],
+      Overview: ["kitty-items/index"],
+      Tutorial: [
+        "kitty-items/get-started",
+        "kitty-items/run-testnet",
+        "kitty-items/modify",
+        "kitty-items/run-locally",
+        "kitty-items/next-steps",
       ],
     },
   },

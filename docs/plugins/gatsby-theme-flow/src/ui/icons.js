@@ -22,6 +22,8 @@ import Search from "../assets/search.svg";
 import VSCodeColor from "../assets/vscode-color.svg";
 import VSCode from "../assets/vscode.svg";
 import TestingColor from "../assets/testing-color.svg";
+import KittyItems from "../assets/kitty-items.svg";
+import KittyItemsColor from "../assets/kitty-items.svg";
 
 export {
   FaArrowDown as IconArrowDown,
@@ -119,6 +121,10 @@ const projectIcons = {
   port: {
     default: Port,
     color: PortColor
+  },
+  "kitty-items": {
+    default: KittyItems,
+    color: KittyItemsColor
   }
 };
 
