@@ -45,13 +45,13 @@ const ExpandAll = styled.button(smallCaps, {
   }
 });
 
-const StyledList = styled.ul({
+export const StyledList = styled.ul({
   marginLeft: 0,
   marginBottom: 32,
   listStyle: "none"
 });
 
-const StyledListItem = (props) => {
+export const StyledListItem = (props) => {
   const Li = styled.li({
     ...props.extraStyles,
     fontSize: "15px",

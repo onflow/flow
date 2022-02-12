@@ -29,7 +29,7 @@ const navConfig = {
     linkText: "Launch the Flow Playground"
   },
   "FCL (Flow Client Library)": {
-    url: "/fcl",
+    url: "/fcl/",
     icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
@@ -239,7 +239,13 @@ const sources = [
         "docs/get-collections.md",
         "docs/get-status.md",
         "docs/security.md",
-        "docs/start-emulator.md"
+        "docs/start-emulator.md",
+        "docs/complex-transactions.md",
+        "docs/decode-keys.md",
+        "docs/manage-configuration.md",
+        "docs/project-app.md",
+        "docs/signature-generate.md",
+        "docs/signature-verfiy.md"
       ]
     }
   }
@@ -277,7 +283,10 @@ const sections = [
       ],
       Reference: [
         "[Available Flow SDKs](/sdks/)",
-        "[Flow Access API](/access-api/)",
+        "[Flow HTTP API](/http-api/)",
+
+        "[Flow gRPC API](/access-api/)",
+
         "[Cadence Language Reference](/cadence/language/)",
         "[Testing Library Reference](/flow-js-testing/)",
         "[Core Protocol Smart Contracts](/core-contracts/)",
@@ -349,14 +358,8 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      "Flow CLI": [
-        "docs/index",
-        "docs/install",
-        "docs/initialize-configuration",
-        "docs/configuration",
-        "docs/security"
-      ],
-      Keys: ["docs/generate-keys"],
+      "Flow CLI": ["docs/index", "docs/install"],
+      Keys: ["docs/generate-keys", "docs/decode-keys"],
       Accounts: [
         "docs/get-accounts",
         "docs/create-accounts",
@@ -372,17 +375,29 @@ const sections = [
       ],
       Scripts: ["docs/execute-scripts"],
       Transactions: [
+        "docs/complex-transactions",
         "docs/send-transactions",
         "docs/get-transactions",
         "docs/build-transactions",
         "docs/sign-transaction",
         "docs/send-signed-transactions"
       ],
+      "Flow.json": [
+        "docs/initialize-configuration",
+        "docs/configuration",
+        "docs/manage-configuration",
+        "docs/security"
+      ],
       "Get Flow data": [
         "docs/get-blocks",
         "docs/get-events",
         "docs/get-collections",
         "docs/get-status"
+      ],
+      Utils: [
+        "docs/project-app",
+        "docs/signature-generate",
+        "docs/signature-verify"
       ]
     }
   },
@@ -475,9 +490,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: [
-        "[API](/flow-js-testing/api/)"
-      ],
+      Overview: ["[API](/flow-js-testing/api/)"],
       Guides: [
         "[Install Flow Javascript Testing Framework](/flow-js-testing/install/)",
         "[Init](/flow-js-testing/init)",
@@ -505,13 +518,15 @@ const sections = [
         "core-contracts/fungible-token",
         "core-contracts/flow-token",
         "core-contracts/flow-fees",
+        "core-contracts/service-account",
         "core-contracts/staking-contract-reference",
         "core-contracts/epoch-contract-reference"
       ],
       "Other Important Contracts": [
         "core-contracts/locked-tokens",
         "core-contracts/staking-collection",
-        "core-contracts/non-fungible-token"
+        "core-contracts/non-fungible-token",
+        "core-contracts/nft-metadata"
       ]
     }
   },
@@ -745,6 +760,10 @@ module.exports = {
           {
             pathname: "/flow-go-sdk",
             crumbLabel: "Flow GO SDK"
+          },
+          {
+            pathname: "/http-api",
+            crumbLabel: "HTTP API"
           }
         ]
       }

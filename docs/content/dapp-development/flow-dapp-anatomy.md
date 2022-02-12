@@ -29,7 +29,7 @@ A state query is a request made to the blockchain that returns information about
 
 ## User Wallet
 
-A user wallet is software or hardware that controls access to a user’s account on the blockchain. The application client typically connects to the user’s wallet in order to send transactions to the blockchain.
+A user wallet is software or hardware that controls access to a user’s account on the blockchain. The application client typically connects to the user’s wallet in order to send transactions to the blockchain. In many cases, the dapp physically transmits the transaction to the blockchain on behalf of the user. However, it’s important to note that the wallet has final say on what is signed or not, and therefore, has control over any transactions that interact with the user’s account.
 
 ## Flow Client Library (FCL)
 

@@ -103,7 +103,7 @@ type EventInclusionProof struct {
 	SerializedEventContent []byte `protobuf:"bytes,2,opt,name=SerializedEventContent,proto3" json:"SerializedEventContent,omitempty"`
 	// InterimNodeTypes is supposed to be consumed bit by bit to determine the node types (0: fullnode, 1: shortnode) on the path to the leaf node. canonical form of InterimNodeTypes requires allocating the minimum number of bytes to capture all the nodes on the path and trailing zeros for the bits that are not used.
 	InterimNodeTypes [][]byte `protobuf:"bytes,3,rep,name=InterimNodeTypes,proto3" json:"InterimNodeTypes,omitempty"`
-	// a series of uint16 values which represents shortNode's count (number of bits of path that are covered by the short node) for each short node on the path.
+	// a series of uint32 values which represents shortNode's count (number of bits of path that are covered by the short node) for each short node on the path.
 	ShortPathLengths []uint32 `protobuf:"varint,4,rep,packed,name=ShortPathLengths,proto3" json:"ShortPathLengths,omitempty"`
 	// a series of 32-byte hash values which represents the hash of the non-visited sibling node for each full node on the path.
 	SiblingHashes        [][]byte `protobuf:"bytes,5,rep,name=SiblingHashes,proto3" json:"SiblingHashes,omitempty"`

@@ -3,19 +3,19 @@ info:
   version: "1.0.0"
   title: "Access API"
 servers:
-  - url: https://rest-mainnet.onflow.org/v1
-    description: Flow Mainnet
+  - url: https://rest-canary.onflow.org/v1/
+    description: Flow Canary
   - url: https://rest-testnet.onflow.org/v1
     description: Flow Testnet
-  - url: https://rest-canary.onflow.org/v1
-    description: Flow Canarynet
+  - url: https://rest-mainnet.onflow.org/v1
+    description: Flow Mainnet
 paths:
   /blocks:
     get:
       summary: Gets full blocks by height.
       tags:
         - Blocks
-      parameters: 
+      parameters:
         - description: A comma-separated list of block heights to get.
           name: height
           in: query
@@ -42,7 +42,7 @@ paths:
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
@@ -50,11 +50,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Block'
-        400:
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
   /blocks/{id}:
     get:
@@ -77,7 +77,7 @@ paths:
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
@@ -85,11 +85,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Block'
-        400:
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
   /transactions/{id}:
     get:
@@ -106,17 +106,17 @@ paths:
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Transaction'
-        400:
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
   /transaction_results/{transaction_id}:
     get:
@@ -133,17 +133,17 @@ paths:
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResult'
-        400:
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
   /transactions:
     post:
@@ -198,7 +198,7 @@ paths:
                   items:
                     $ref: '#/components/schemas/TransactionSignature'
       responses:
-        201:
+        '201':
           description: Created
           content:
             application/json:
@@ -210,9 +210,9 @@ paths:
                 type: string
                 format: uri
               description: The URI to the newly submitted transaction.
-        400:
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
   /collections/{id}:
     get:
@@ -227,17 +227,17 @@ paths:
           required: true
           description: The ID of the collection to get.
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Collection'
-        400:
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
   /execution_results:
     get:
@@ -258,7 +258,7 @@ paths:
           style: form
           required: true
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
@@ -266,14 +266,14 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ExecutionResult'
-        400:
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
   /execution_results/{id}:
-    get: 
+    get:
       summary: Gets an execution result by ID.
       tags:
         - Execution Results
@@ -285,17 +285,17 @@ paths:
           required: true
           description: The ID of the execution result to get.
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecutionResult'
-        400:
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
   /accounts/{address}:
     get:
@@ -316,17 +316,17 @@ paths:
           required: true
           description: The block height to query for the account details at.
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
-        400:
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        404:
+        '404':
           $ref: '#/components/responses/404NotFound'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
   /scripts:
     post:
@@ -363,7 +363,7 @@ paths:
                     type: string
                     format: byte
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
@@ -373,25 +373,80 @@ paths:
                   value:
                     type: string
                     format: byte
-        400:
+        '400':
           $ref: '#/components/responses/400BadRequest'
-        500:
+        '500':
           $ref: '#/components/responses/500InternalServerError'
+  /events:
+    summary: Query on-chain events in specified blocks.
+    get:
+      tags:
+        - Events
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockEvents'
+          description: OK
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
+      parameters:
+        - name: type
+          in: query
+          description: The event type is name-spaced with the address of the account and contract in which the event is declared.
+          required: true
+          deprecated: false
+          schema:
+            $ref: '#/components/schemas/EventType'
+          allowEmptyValue: false
+        - name: start_height
+          in: query
+          required: false
+          description: The start height of the block range for events. Must be used together with `end_height`. This parameter is incompatible with `block_ids`.
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
+          allowEmptyValue: false
+        - name: end_height
+          in: query
+          required: false
+          description: The end height of the block range for events. Must be used together with `start_height`. This parameter is incompatible with `block_ids`.
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
+          allowEmptyValue: false
+        - name: block_ids
+          in: query
+          style: form
+          required: false
+          explode: false
+          allowEmptyValue: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Identifier'
+            minItems: 1
+            maxItems: 50
+            uniqueItems: true
+        - $ref: '#/components/parameters/selectParam'
 components:
   parameters:
     expandParam:
-        description: A comma-separated list indicating which properties of the content to expand.
-        name: expand
-        in: query
-        schema:
-          type: array
-          items:
-            type: string
-          minItems: 1
-          uniqueItems: true
-        explode: false
-        style: form
-        required: false
+      description: A comma-separated list indicating which properties of the content to expand.
+      name: expand
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+        minItems: 1
+        uniqueItems: true
+      explode: false
+      style: form
+      required: false
     selectParam:
       description: A comma-separated list indicating which properties of the content to return.
       name: select
@@ -578,15 +633,11 @@ components:
       type: object
       required:
         - address
-        - signer_index
         - key_index
         - signature
       properties:
         address:
           $ref: '#/components/schemas/Address'
-        signer_index:
-          type: string
-          format: uint64
         key_index:
           type: string
           format: uint64
@@ -597,6 +648,7 @@ components:
       required:
         - block_id
         - status
+        - status_code
         - error_message
         - computation_used
         - events
@@ -605,6 +657,8 @@ components:
           $ref: '#/components/schemas/Identifier'
         status:
           $ref: '#/components/schemas/TransactionStatus'
+        status_code:
+          type: integer
         error_message:
           type: string
         computation_used:
@@ -618,12 +672,12 @@ components:
           $ref: '#/components/schemas/Links'
     TransactionStatus:
       type: string
-      enum: 
-       - Pending
-       - Finalized
-       - Executed
-       - Sealed
-       - Expired
+      enum:
+        - Pending
+        - Finalized
+        - Executed
+        - Sealed
+        - Expired
     Block:
       type: object
       required:
@@ -754,6 +808,22 @@ components:
           $ref: '#/components/schemas/Identifier'
         block_id:
           $ref: '#/components/schemas/Identifier'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        _links:
+          $ref: '#/components/schemas/Links'
+    BlockEvents:
+      type: object
+      properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        block_height:
+          type: string
+        block_timestamp:
+          type: string
+          format: date-time
         events:
           type: array
           items:
