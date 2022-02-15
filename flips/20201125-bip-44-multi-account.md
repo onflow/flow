@@ -140,7 +140,10 @@ discovery procedure [described in BIP
 Modified constants from BIP 44 include:
 
 The key index gap limit should be `5`.
-The account index gap limit should be `5`.
+The account index gap limit should be `2`.
+(The key index gap limit and account index gap limit are flexible.
+Developers should use their best judgement when choosing a key index gap limit
+or account index gap limit.)
 
 The prescribed account discovery procedure is as follows:
 
