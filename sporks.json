@@ -15,13 +15,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-16-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-16-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-16-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": "https://storage.googleapis.com/flow_public_mainnet16_execution_state"
+            "executionStateBucket": "flow_public_mainnet16_execution_state"
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": "https://flow-public-mainnet16-execution-state.s3.amazonaws.com"
+            "executionStateBucket": "flow-public-mainnet16-execution-state"
           }
         },
         "tags": {
@@ -58,13 +58,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-15-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-15-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-15-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": "https://storage.googleapis.com/flow_public_mainnet15_execution_state"
+            "executionStateBucket": "https://storage.googleapis.com/flow_public_mainnet15_execution_state"
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": "https://flow-public-mainnet15-execution-state.s3.amazonaws.com"
+            "executionStateBucket": "flow-public-mainnet15-execution-state"
           }
         },
         "tags": {
@@ -92,13 +92,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-14-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-14-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-14-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": "https://storage.googleapis.com/flow_public_mainnet14_execution_state"
+            "executionStateBucket": "flow_public_mainnet14_execution_state"
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -125,13 +125,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-13-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-13-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-13-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": "https://storage.googleapis.com/flow_public_mainnet13_execution_state"
+            "executionStateBucket": "flow_public_mainnet13_execution_state"
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -158,13 +158,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-12-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-12-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-12-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -191,13 +191,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-11-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-11-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-11-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -224,13 +224,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-10-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-10-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-10-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -257,13 +257,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-9-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-9-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-9-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -290,13 +290,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-8-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-8-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-8-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -323,13 +323,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-7-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-7-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-7-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -356,13 +356,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-6-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-6-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -389,13 +389,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-5-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-6-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -423,13 +423,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-4-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-4-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -456,13 +456,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-3-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-3-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -489,13 +489,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-2-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-2-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -522,13 +522,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-1-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-1-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -555,13 +555,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-9-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-9-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -586,13 +586,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-8-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-8-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -617,13 +617,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-7-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-7-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -648,13 +648,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-6-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-6-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -679,13 +679,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-5-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-5-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -710,13 +710,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -743,13 +743,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-33-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-33-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-33-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": "https://storage.googleapis.com/flow_public_devnet33_execution_state"
+            "executionStateBucket": "flow_public_devnet33_execution_state"
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -783,13 +783,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-32-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-32-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-32-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": "https://storage.googleapis.com/flow_public_devnet32_execution_state"
+            "executionStateBucket": "flow_public_devnet32_execution_state"
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -824,13 +824,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-31-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-31-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-31-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": "https://storage.googleapis.com/flow_public_devnet31_execution_state"
+            "executionStateBucket": "flow_public_devnet31_execution_state"
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -855,13 +855,13 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-30-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-30-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-30-execution/public-root-information/node-infos.pub.json",
-            "executionStateData": "https://storage.googleapis.com/flow_public_devnet30_execution_state"
+            "executionStateBucket": "flow_public_devnet30_execution_state"
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -886,13 +886,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -917,13 +917,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -950,13 +950,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -981,13 +981,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -1012,13 +1012,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -1043,13 +1043,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -1074,13 +1074,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -1105,13 +1105,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -1136,13 +1136,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -1167,13 +1167,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -1198,13 +1198,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -1229,13 +1229,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
@@ -1260,13 +1260,13 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           },
           "s3": {
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateData": ""
+            "executionStateBucket": ""
           }
         },
         "tags": {
