@@ -1,7 +1,7 @@
 {
   "networks": {
     "mainnet": {
-      "mainnet-16": {
+      "mainnet16": {
         "id": 16,
         "live": true,
         "name": "Mainnet-16",
@@ -44,7 +44,7 @@
           "access.mainnet16.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-15": {
+      "mainnet15": {
         "id": 15,
         "live": false,
         "name": "Mainnet-15",
@@ -78,7 +78,7 @@
         ],
         "seedNodes": []
       },
-      "mainnet-14": {
+      "mainnet14": {
         "id": 14,
         "live": false,
         "name": "Mainnet-14",
@@ -111,7 +111,7 @@
           "access-001.mainnet14.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-13": {
+      "mainnet13": {
         "id": 13,
         "live": false,
         "name": "Mainnet-13",
@@ -144,7 +144,7 @@
           "access-001.mainnet13.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-12": {
+      "mainnet12": {
         "id": 12,
         "live": false,
         "name": "Mainnet-12",
@@ -177,7 +177,7 @@
           "access-001.mainnet12.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-11": {
+      "mainnet11": {
         "id": 11,
         "live": false,
         "name": "Mainnet-11",
@@ -210,7 +210,7 @@
           "access-001.mainnet11.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-10": {
+      "mainnet10": {
         "id": 10,
         "live": false,
         "name": "Mainnet-10",
@@ -243,7 +243,7 @@
           "access-001.mainnet10.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-9": {
+      "mainnet9": {
         "id": 9,
         "live": false,
         "name": "Mainnet-9",
@@ -276,7 +276,7 @@
           "access-001.mainnet9.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-8": {
+      "mainnet8": {
         "id": 8,
         "live": false,
         "name": "Mainnet-8",
@@ -309,7 +309,7 @@
           "access-001.mainnet8.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-7": {
+      "mainnet7": {
         "id": 7,
         "live": false,
         "name": "Mainnet-7",
@@ -342,7 +342,7 @@
           "access-001.mainnet7.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-6": {
+      "mainnet6": {
         "id": 6,
         "live": false,
         "name": "Mainnet-6",
@@ -375,7 +375,7 @@
           "access-001.mainnet6.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-5": {
+      "mainnet5": {
         "id": 5,
         "live": false,
         "name": "Mainnet-5",
@@ -409,7 +409,7 @@
           "access-001.mainnet5.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-4": {
+      "mainnet4": {
         "id": 4,
         "live": false,
         "name": "Mainnet-4",
@@ -442,7 +442,7 @@
           "access-001.mainnet4.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-3": {
+      "mainnet3": {
         "id": 3,
         "live": false,
         "name": "Mainnet-3",
@@ -475,7 +475,7 @@
           "access-001.mainnet3.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-2": {
+      "mainnet2": {
         "id": 2,
         "live": false,
         "name": "Mainnet-2",
@@ -508,7 +508,7 @@
           "access-001.mainnet2.nodes.onflow.org:9000"
         ]
       },
-      "mainnet-1": {
+      "mainnet1": {
         "id": 1,
         "live": false,
         "name": "Mainnet-1",
@@ -541,7 +541,7 @@
           "access-001.mainnet1.nodes.onflow.org:9000"
         ]
       },
-      "candidate-9": {
+      "candidate9": {
         "id": 0.9,
         "live": false,
         "name": "Candidate-9",
@@ -572,7 +572,7 @@
         },
         "accessNodes": []
       },
-      "candidate-8": {
+      "candidate8": {
         "id": 0.8,
         "live": false,
         "name": "Candidate-8",
@@ -603,7 +603,7 @@
         },
         "accessNodes": []
       },
-      "candidate-7": {
+      "candidate7": {
         "id": 0.7,
         "live": false,
         "name": "Candidate-7",
@@ -634,7 +634,7 @@
         },
         "accessNodes": []
       },
-      "candidate-6": {
+      "candidate6": {
         "id": 0.6,
         "live": false,
         "name": "Candidate-6",
@@ -665,7 +665,7 @@
         },
         "accessNodes": []
       },
-      "candidate-5": {
+      "candidate5": {
         "id": 0.5,
         "live": false,
         "name": "Candidate-5",
@@ -696,7 +696,7 @@
         },
         "accessNodes": []
       },
-      "candidate-4": {
+      "candidate4": {
         "id": 0.4,
         "live": false,
         "name": "Candidate-4",
@@ -729,7 +729,7 @@
       }
     },
     "testnet": {
-      "devnet-33": {
+      "devnet33": {
         "id": 33,
         "live": true,
         "name": "Devnet32",
@@ -769,7 +769,7 @@
             "key": "0d1523612be854638b985fc658740fa55f009f3cd49b739961ab082dc91b178ed781ef5f66878613b4d34672039150abfd9c8cfdfe48c565bca053fa4db30bec"
           }
         ]
-      },"devnet-32": {
+      },"devnet32": {
         "id": 32,
         "live": false,
         "name": "Devnet32",
@@ -810,7 +810,7 @@
           }
         ]
       },
-      "devnet-31": {
+      "devnet31": {
         "id": 31,
         "live": false,
         "name": "Devnet31",
@@ -841,7 +841,7 @@
         },
         "accessNodes": []
       },
-      "devnet-30": {
+      "devnet30": {
         "id": 30,
         "live": false,
         "name": "Devnet30",
@@ -872,7 +872,7 @@
         },
         "accessNodes": []
       },
-      "devnet-29": {
+      "devnet29": {
         "id": 29,
         "live": false,
         "name": "Devnet29",
@@ -903,7 +903,7 @@
         },
         "accessNodes": []
       },
-      "devnet-28": {
+      "devnet28": {
         "id": 28,
         "live": false,
         "name": "Devnet28",
@@ -936,7 +936,7 @@
           "access-003.devnet28.nodes.onflow.org:3569"
         ]
       },
-      "devnet-27": {
+      "devnet27": {
         "id": 27,
         "live": false,
         "name": "Devnet27",
@@ -967,7 +967,7 @@
         },
         "accessNodes": []
       },
-      "devnet-26": {
+      "devnet26": {
         "id": 26,
         "live": false,
         "name": "Devnet26",
@@ -998,7 +998,7 @@
         },
         "accessNodes": []
       },
-      "devnet-25": {
+      "devnet25": {
         "id": 25,
         "live": false,
         "name": "Devnet25",
@@ -1029,7 +1029,7 @@
         },
         "accessNodes": []
       },
-      "devnet-24": {
+      "devnet24": {
         "id": 24,
         "live": false,
         "name": "Devnet24",
@@ -1060,7 +1060,7 @@
         },
         "accessNodes": []
       },
-      "devnet-23": {
+      "devnet23": {
         "id": 23,
         "live": false,
         "name": "Devnet23",
@@ -1091,7 +1091,7 @@
         },
         "accessNodes": []
       },
-      "devnet-22": {
+      "devnet22": {
         "id": 22,
         "live": false,
         "name": "Devnet22",
@@ -1122,7 +1122,7 @@
         },
         "accessNodes": []
       },
-      "devnet-21": {
+      "devnet21": {
         "id": 21,
         "live": false,
         "name": "Devnet21",
@@ -1153,7 +1153,7 @@
         },
         "accessNodes": []
       },
-      "devnet-20": {
+      "devnet20": {
         "id": 20,
         "live": false,
         "name": "Devnet20",
@@ -1184,7 +1184,7 @@
         },
         "accessNodes": []
       },
-      "devnet-19": {
+      "devnet19": {
         "id": 19,
         "live": false,
         "name": "Devnet19",
@@ -1215,7 +1215,7 @@
         },
         "accessNodes": []
       },
-      "devnet-18": {
+      "devnet18": {
         "id": 18,
         "live": false,
         "name": "Devnet18",
@@ -1246,7 +1246,7 @@
         },
         "accessNodes": []
       },
-      "devnet-17": {
+      "devnet17": {
         "id": 17,
         "live": false,
         "name": "Devnet17",
