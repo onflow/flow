@@ -1,14 +1,57 @@
 {
   "networks": {
     "mainnet": {
+      "mainnet-16": {
+        "id": 16,
+        "live": true,
+        "name": "Mainnet-16",
+        "sporkTime": "2022-02-09T16:00:00Z",
+        "rootHeight": "23830813",
+        "rootParentId": "b0e7a891682dce277a41e87e2cef52af344ac614bf70c82a5a3a801e63960e88",
+        "rootStateCommitment": "8964d1f74c2bed2d0fbb4a366fff1fd3c39b71653e9de4d4512090798631e5f8",
+        "gitCommitHash": "c78cac3573e0548611f29df7cfa2db92203554c1",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-16-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-16-execution/public-root-information/root-protocol-state-snapshot.json",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-16-execution/public-root-information/node-infos.pub.json",
+            "executionStateData": "https://storage.googleapis.com/flow_public_mainnet16_execution_state"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateData": "https://flow-public-mainnet16-execution-state.s3.amazonaws.com"
+          }
+        },
+        "tags": {
+          "flow-go": "v0.24.4",
+          "flow-dps": "v0.24",
+          "cadence": "v0.21.1",
+          "docker": "v0.24.4"
+        },
+        "seedNodes": [
+          {
+            "address": "access-007.mainnet16.nodes.onflow.org:3569",
+            "key": "28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae"
+          },
+          {
+            "address": "access-008.mainnet16.nodes.onflow.org:3569",
+            "key": "11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a"
+          }
+        ],
+        "accessNodes": [
+          "access.mainnet16.nodes.onflow.org:9000"
+        ]
+      },
       "mainnet-15": {
         "id": 15,
-        "live": true,
+        "live": false,
         "name": "Mainnet-15",
         "sporkTime": "2021-12-09T16:00:00Z",
         "rootHeight": "21291692",
         "rootParentId": "8a28ddc6653a8991435dfbc95103d6be1a3b653cda3d664681215ee93112a203",
-        "rootState-Commit": "84d9b325d3f48f7f075eea0db6c246cb5adc759a2dd8561e461477a7ca1f7f22",
+        "rootStateCommitment": "84d9b325d3f48f7f075eea0db6c246cb5adc759a2dd8561e461477a7ca1f7f22",
         "gitCommitHash": "bfde54ae3324db5d18ebeaa22c70b5574a114f2e",
         "stateArtefacts": {
           "gcp": {
@@ -33,16 +76,7 @@
         "accessNodes": [
           "access-001.mainnet15.nodes.onflow.org:9000"
         ],
-        "seedNodes": [
-          {
-            "address": "access-007.mainnet15.nodes.onflow.org:3569",
-            "key": "28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae"
-          },
-          {
-            "address": "access-008.mainnet15.nodes.onflow.org:3569",
-            "key": "11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a"
-          }
-        ]
+        "seedNodes": []
       },
       "mainnet-14": {
         "id": 14,
@@ -71,7 +105,7 @@
           "flow-go": "v0.22.9-patch-1-epoch-view-check-hotfix",
           "flow-dps": "0.1",
           "cadence": "v0.19.1-0.20210920215340-75c54c6c01eb",
-           "docker": "v0.22.9-patch-1-epoch-view-check-hotfix"
+          "docker": "v0.22.9-patch-1-epoch-view-check-hotfix"
         },
         "accessNodes": [
           "access-001.mainnet14.nodes.onflow.org:9000"
@@ -695,9 +729,49 @@
       }
     },
     "testnet": {
-      "devnet-32": {
-        "id": 32,
+      "devnet-33": {
+        "id": 33,
         "live": true,
+        "name": "Devnet32",
+        "sporkTime": "2021-02-07T16:00:00Z",
+        "rootHeight": "59558934",
+        "rootParentId": "099fbb7b645c3441ea830746ed67059bcc1091c88ff3fd78b331137cf917d15f",
+        "rootStateCommitment": "5b5578cb4ef6c34818ce2cfd9969720c7f17681f41dffa3a9e361935140d7c8e",
+        "gitCommitHash": "bd3dca7bf20914f5c019a325b6939bbb662aa131",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-33-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-33-execution/public-root-information/root-protocol-state-snapshot.json",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-33-execution/public-root-information/node-infos.pub.json",
+            "executionStateData": "https://storage.googleapis.com/flow_public_devnet33_execution_state"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateData": ""
+          }
+        },
+        "tags": {
+          "flow-go-tag": "v0.24.3",
+          "flow-dps-tag": "v0.24",
+          "cadence-tag": "v0.21.0",
+          "docker-tag": "v0.24.3"
+        },
+        "accessNodes": [],
+        "seedNodes": [
+          {
+            "address": "access-003.devnet33.nodes.onflow.org:3570",
+            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+          },
+          {
+            "address": "access-004.devnet33.nodes.onflow.org:3570",
+            "key": "0d1523612be854638b985fc658740fa55f009f3cd49b739961ab082dc91b178ed781ef5f66878613b4d34672039150abfd9c8cfdfe48c565bca053fa4db30bec"
+          }
+        ]
+      },"devnet-32": {
+        "id": 32,
+        "live": false,
         "name": "Devnet32",
         "sporkTime": "2021-12-06T16:00:00Z",
         "rootHeight": "53376277",
