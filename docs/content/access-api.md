@@ -1095,6 +1095,7 @@ message ExecutionResult {
   bytes block_id
   repeated Chunk chunks
   repeated ServiceEvent service_events
+  bytes execution_data_id  
 }
 ```
 
@@ -1104,6 +1105,7 @@ message ExecutionResult {
 | block_id           | ID of the block this execution result corresponds to |
 | chunks             | Zero or more chunks                                  |
 | service_events     | Zero or more service events                          |
+| execution_data_id  | Root ID of the Execution Data blob tree              |
 
 
 ### Chunk
