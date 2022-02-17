@@ -1,9 +1,12 @@
 import React from "react";
-import { graphql } from "gatsby";
+
 import Slugger from "github-slugger";
+
 import moment from "moment";
-import BaseTemplate from "./base";
+
 import { RawMarkdown } from "../markdown";
+
+import BaseTemplate from "./base";
 
 function extractHeadings(releases) {
   const slugger = new Slugger();

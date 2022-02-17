@@ -10,6 +10,7 @@ message ExecutionResult {
   bytes block_id = 2;
   repeated Chunk chunks = 3;
   repeated ServiceEvent service_events = 4;
+  bytes execution_data_id = 5;
 }
 
 message Chunk {
