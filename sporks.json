@@ -729,10 +729,10 @@
       }
     },
     "testnet": {
-      "devnet33": {
+      "testnet33": {
         "id": 33,
         "live": true,
-        "name": "Devnet32",
+        "name": "Testnet32",
         "sporkTime": "2021-02-07T16:00:00Z",
         "rootHeight": "59558934",
         "rootParentId": "099fbb7b645c3441ea830746ed67059bcc1091c88ff3fd78b331137cf917d15f",
@@ -740,9 +740,9 @@
         "gitCommitHash": "bd3dca7bf20914f5c019a325b6939bbb662aa131",
         "stateArtefacts": {
           "gcp": {
-            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-33-execution/public-root-information/root.checkpoint",
-            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-33-execution/public-root-information/root-protocol-state-snapshot.json",
-            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-33-execution/public-root-information/node-infos.pub.json",
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-33/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-33/public-root-information/root-protocol-state-snapshot.json",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-33/public-root-information/node-infos.pub.json",
             "executionStateBucket": "flow_public_devnet33_execution_state"
           },
           "s3": {
