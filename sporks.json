@@ -14,6 +14,7 @@
           "gcp": {
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-16-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-16-execution/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-16-execution/public-root-information/root-protocol-state-snapshot.json.asc",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-16-execution/public-root-information/node-infos.pub.json",
             "executionStateBucket": "flow_public_mainnet16_execution_state"
           },
@@ -742,6 +743,7 @@
           "gcp": {
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-33/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-33/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-33/public-root-information/root-protocol-state-snapshot.json.asc",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-33/public-root-information/node-infos.pub.json",
             "executionStateBucket": "flow_public_devnet33_execution_state"
           },
