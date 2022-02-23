@@ -11,10 +11,11 @@ message BlockHeader {
   bytes id = 1;
   bytes parent_id = 2;
   uint64 height = 3;
-  google.protobuf.Timestamp timestamp = 4;
-  uint64 view = 5;
-  repeated bytes parent_voter_ids = 6;
-  bytes parent_voter_sig_data = 7;
-  bytes proposer_id = 8;
-  bytes proposer_sig_data = 9;
+  bytes payload_hash = 4;
+  google.protobuf.Timestamp timestamp = 5;
+  uint64 view = 6;
+  repeated bytes parent_voter_ids = 7;
+  bytes parent_voter_sig_data = 8;
+  bytes proposer_id = 9;
+  bytes proposer_sig_data = 10;
 }
