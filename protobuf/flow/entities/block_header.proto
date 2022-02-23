@@ -9,14 +9,14 @@ import "google/protobuf/timestamp.proto";
 
 message BlockHeader {
   bytes id = 1;
-  bytes chain_id = 2;
-  bytes parent_id = 3;
-  uint64 height = 4;
-  bytes payload_hash = 5;
-  google.protobuf.Timestamp timestamp = 6;
-  uint64 view = 7;
-  repeated bytes parent_voter_ids = 8;
-  bytes parent_voter_sig_data = 9;
-  bytes proposer_id = 10;
-  bytes proposer_sig_data = 11;
+  bytes parent_id = 2;
+  uint64 height = 3;
+  bytes payload_hash = 4;
+  google.protobuf.Timestamp timestamp = 5;
+  uint64 view = 6;
+  repeated bytes parent_voter_ids = 7;
+  bytes parent_voter_sig_data = 8;
+  bytes proposer_id = 9;
+  bytes proposer_sig_data = 10;
+  bytes chain_id = 11;
 }
