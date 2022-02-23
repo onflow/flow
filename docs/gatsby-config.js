@@ -119,28 +119,28 @@ const sourceGithubRepos = {
 
 // sourceSlugTransformers maps a sourceInstanceName to slug transformation functions
 const sourceSlugTransformers = {
-  "cadence-github": (slug) => slug.replace(/^\/docs\//, "/cadence/"),
-  "fcl-github": (slug) =>
+  "cadence-github": slug => slug.replace(/^\/docs\//, "/cadence/"),
+  "fcl-github": slug =>
     slug
       .replace(/^\/docs\//, "/fcl/")
       .replace(/^\/packages\//, "/fcl/packages/"),
 
-  "flow-go-sdk-github": (slug) =>
+  "flow-go-sdk-github": slug =>
     slug
       .replace(/^\/docs\//, "/flow-go-sdk/")
       .replace(/^\/examples\//, "/flow-go-sdk/examples/"),
 
-  "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/"),
-  "flow-js-testing-github": (slug) =>
+  "flow-cli-github": slug => slug.replace(/^\/docs\//, "/flow-cli/"),
+  "flow-js-testing-github": slug =>
     slug.replace(/^\/docs\//, "/flow-js-testing/"),
-  "sdk-guidelines-github": (slug) =>
+  "sdk-guidelines-github": slug =>
     slug
       .replace(/^\/README\//, "/sdk-guidelines/")
       .replace(
         /^\/ubiquitous-language\//,
         "/sdk-guidelines/ubiquitous-language/"
       ),
-  "flow-emulator-github": (slug) => slug.replace(/^\/README\//, "/emulator/")
+  "flow-emulator-github": slug => slug.replace(/^\/README\//, "/emulator/")
 };
 
 const sources = [
@@ -213,40 +213,7 @@ const sources = [
       name: "flow-cli-github",
       branch: "master",
       remote: "https://github.com/onflow/flow-cli.git",
-      patterns: [
-        "docs/index.md",
-        "docs/install.md",
-        "docs/configuration.md",
-        "docs/initialize-configuration.md",
-        "docs/generate-keys.md",
-        "docs/create-accounts.md",
-        "docs/execute-scripts.md",
-        "docs/send-transactions.md",
-        "docs/get-transactions.md",
-        "docs/build-transactions.md",
-        "docs/sign-transaction.md",
-        "docs/send-signed-transactions.md",
-        "docs/get-transactions.md",
-        "docs/account-add-contract.md",
-        "docs/account-update-contract.md",
-        "docs/account-remove-contract.md",
-        "docs/project-contracts.md",
-        "docs/deploy-project-contracts.md",
-        "docs/account-staking-info.md",
-        "docs/get-blocks.md",
-        "docs/get-events.md",
-        "docs/get-accounts.md",
-        "docs/get-collections.md",
-        "docs/get-status.md",
-        "docs/security.md",
-        "docs/start-emulator.md",
-        "docs/complex-transactions.md",
-        "docs/decode-keys.md",
-        "docs/manage-configuration.md",
-        "docs/project-app.md",
-        "docs/signature-generate.md",
-        "docs/signature-verfiy.md"
-      ]
+      patterns: ["docs/**/*"]
     }
   }
 ];
@@ -397,7 +364,8 @@ const sections = [
       Utils: [
         "docs/project-app",
         "docs/signature-generate",
-        "docs/signature-verify"
+        "docs/signature-verify",
+        "docs/snapshot-save"
       ]
     }
   },
