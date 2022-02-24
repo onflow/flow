@@ -565,6 +565,7 @@ const sections = [
       ],
       "Operator Guides": [
         "node-operation/node-bootstrap",
+        "node-operation/node-migration",
         "node-operation/machine-existing-operator",
         "node-operation/db-encryption-existing-operator",
         "node-operation/monitoring-nodes",
