@@ -213,7 +213,41 @@ const sources = [
       name: "flow-cli-github",
       branch: "master",
       remote: "https://github.com/onflow/flow-cli.git",
-      patterns: ["docs/**/*"]
+      patterns: [
+        "docs/account-add-contract.md",
+        "docs/account-remove-contract.md",
+        "docs/account-staking-info.md",
+        "docs/account-update-contract.md",
+        "docs/build-transactions.md",
+        "docs/complex-transactions.md",
+        "docs/configuration.md",
+        "docs/create-accounts.md",
+        "docs/decode-keys.md",
+        "docs/deploy-project-contracts.md",
+        "docs/execute-scripts.md",
+        "docs/generate-keys.md",
+        "docs/get-accounts.md",
+        "docs/get-blocks.md",
+        "docs/get-collections.md",
+        "docs/get-events.md",
+        "docs/get-status.md",
+        "docs/get-transactions.md",
+        "docs/index.md",
+        "docs/initialize-configuration.md",
+        "docs/install.md",
+        "docs/manage-configuration.md",
+        "docs/project-app.md",
+        "docs/project-contracts.md",
+        "docs/README.md",
+        "docs/security.md",
+        "docs/send-signed-transactions.md",
+        "docs/send-transactions.md",
+        "docs/sign-transaction.md",
+        "docs/signature-generate.md",
+        "docs/signature-verify.md",
+        "docs/snapshot-save.md",
+        "docs/start-emulator.md"
+      ]
     }
   }
 ];
@@ -321,7 +355,7 @@ const sections = [
   },
   {
     sourceInstanceName: "flow-cli-github",
-    patterns: ["docs/**/*"],
+    patterns: ["docs/**/*.(md|mdx|png)"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
