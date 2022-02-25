@@ -25,6 +25,10 @@ The Access Nodes hosted by DapperLabs are accessible at:
 
 `access.canary.nodes.onflow.org:9000`
 
+#### Rate limits for Dapper Labs access nodes
+
+Access nodes operated by Dapper Labs are [rate limited](/access-api-rate-limits).
+
 ---
 
 #### Alchemy Access Nodes 

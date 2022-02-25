@@ -7,7 +7,7 @@ There are a few different methods to migrate a running Flow node from one machin
 
 Choose the method depending upon what part of the staking data of the node is changing.
 
-###Method 1 - No change to the node staking data
+### Method 1 - No change to the node staking data
 
 If there is no change to the network address or the staking and networking keys and only the hardware the node is running needs to be changed then do the following:
 1. Stop the Flow node.
@@ -20,7 +20,7 @@ The network address is currently part of the staking data that was submitted for
 Hence, the network address of the node must stay the same between sporks otherwise the node will become unreachable for the other nodes and stop functioning.
 </Callout>
 
-###Method 2 - Network address change
+### Method 2 - Network address change
 
 A change to the node network address (IP or a hostname) can only be done during the spork process.
 
@@ -30,7 +30,7 @@ The change will not take effect till an epoch transition happens.
 2. Change the addresses in the `/var/flow/bootstrap/private-root-information/private-node-info_<nodeid>/node-info.priv.json` json file on the node.
 3. A spork also causes an epoch transition, and the new addresses will take effect after the spork immediately.
 
-###Method 3 - Staking or networking key change
+### Method 3 - Staking or networking key change
 
 If the node after migration will be using new staking or networking keys then it needs to be unstaked and then re-staked with the new keys.
 
