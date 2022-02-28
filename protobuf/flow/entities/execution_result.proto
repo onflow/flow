@@ -28,3 +28,10 @@ message ServiceEvent {
   string type = 1;
   bytes payload = 2;
 }
+
+message ExecutionReceiptMeta {
+  bytes executor_id = 1;
+  bytes result_id = 2;
+  repeated bytes spocks = 3;
+  bytes executor_signature = 4;
+}
