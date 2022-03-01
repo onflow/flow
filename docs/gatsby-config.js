@@ -238,7 +238,6 @@ const sources = [
         "docs/manage-configuration.md",
         "docs/project-app.md",
         "docs/project-contracts.md",
-        "docs/README.md",
         "docs/security.md",
         "docs/send-signed-transactions.md",
         "docs/send-transactions.md",
