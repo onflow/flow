@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package flow.state_streamer;
+
+option go_package = "github.com/onflow/flow/protobuf/go/flow/state_streamer";
+
+import "flow/entities/block.proto";
+import "flow/entities/execution_data.proto";
+
+service StateStreamer {
+  rpc GetBlocks(BlockSubscription) returns (stream entities.Block) {}
+  rpc GetExecutionData(ExecutionDataSubscription)
+      returns (stream entities.ExecutionData) {}
+}
+
+message BlockSubscription {
+  uint64 start_height = 1;
+}
+
+message ExecutionDataSubscription {
+  uint64 start_height = 1;
+}

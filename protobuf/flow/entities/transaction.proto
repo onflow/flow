@@ -37,3 +37,8 @@ message Transaction {
   repeated Signature payload_signatures = 8;
   repeated Signature envelope_signatures = 9;
 }
+
+message TransactionResult {
+  bytes transaction_id = 1;
+  uint64 computation_used = 2;
+}

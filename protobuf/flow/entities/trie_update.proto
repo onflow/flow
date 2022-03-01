@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package flow.entities;
+
+option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
+
+message TrieUpdate {
+  bytes root_hash = 1;
+  repeated bytes paths = 2;
+  repeated Payload payloads = 3;
+}
+
+message Payload {
+  Key key = 1;
+  bytes value = 2;
+}
+
+message Key {
+  repeated KeyPart key_parts = 1;
+}
+
+message KeyPart {
+  uint32 type = 1;
+  bytes value = 2;
+}

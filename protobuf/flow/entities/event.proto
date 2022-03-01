@@ -12,3 +12,7 @@ message Event {
   uint32 event_index = 4;
   bytes payload = 5;
 }
+
+message EventsList {
+  repeated Event events = 1;
+}

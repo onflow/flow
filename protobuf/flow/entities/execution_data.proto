@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package flow.entities;
+
+option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
+
+import "flow/entities/collection.proto";
+import "flow/entities/transaction.proto";
+import "flow/entities/event.proto";
+import "flow/entities/trie_update.proto";
+
+message ExecutionData {
+  bytes block_id = 1;
+  repeated Collection collections = 2;
+  repeated EventsList events = 3;
+  repeated TrieUpdate trie_updates = 4;
+  repeated TransactionResult transaction_results = 5;
+}
