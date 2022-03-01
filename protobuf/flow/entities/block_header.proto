@@ -18,5 +18,5 @@ message BlockHeader {
   bytes parent_voter_sig_data = 8;
   bytes proposer_id = 9;
   bytes proposer_sig_data = 10;
-  bytes chain_id = 11;
+  string chain_id = 11;
 }
