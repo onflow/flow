@@ -7,7 +7,7 @@ option go_package = "github.com/onflow/flow/protobuf/go/flow/state_streamer";
 import "flow/entities/block.proto";
 import "flow/entities/execution_data.proto";
 
-service StateStreamer {
+service StateStreamerAPI {
   rpc GetBlocks(BlockSubscription) returns (stream entities.Block) {}
   rpc GetExecutionData(ExecutionDataSubscription)
       returns (stream entities.ExecutionData) {}

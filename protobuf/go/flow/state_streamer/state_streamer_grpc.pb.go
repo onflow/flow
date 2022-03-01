@@ -15,28 +15,28 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// StateStreamerClient is the client API for StateStreamer service.
+// StateStreamerAPIClient is the client API for StateStreamerAPI service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type StateStreamerClient interface {
-	GetBlocks(ctx context.Context, in *BlockSubscription, opts ...grpc.CallOption) (StateStreamer_GetBlocksClient, error)
-	GetExecutionData(ctx context.Context, in *ExecutionDataSubscription, opts ...grpc.CallOption) (StateStreamer_GetExecutionDataClient, error)
+type StateStreamerAPIClient interface {
+	GetBlocks(ctx context.Context, in *BlockSubscription, opts ...grpc.CallOption) (StateStreamerAPI_GetBlocksClient, error)
+	GetExecutionData(ctx context.Context, in *ExecutionDataSubscription, opts ...grpc.CallOption) (StateStreamerAPI_GetExecutionDataClient, error)
 }
 
-type stateStreamerClient struct {
+type stateStreamerAPIClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewStateStreamerClient(cc grpc.ClientConnInterface) StateStreamerClient {
-	return &stateStreamerClient{cc}
+func NewStateStreamerAPIClient(cc grpc.ClientConnInterface) StateStreamerAPIClient {
+	return &stateStreamerAPIClient{cc}
 }
 
-func (c *stateStreamerClient) GetBlocks(ctx context.Context, in *BlockSubscription, opts ...grpc.CallOption) (StateStreamer_GetBlocksClient, error) {
-	stream, err := c.cc.NewStream(ctx, &StateStreamer_ServiceDesc.Streams[0], "/flow.state_streamer.StateStreamer/GetBlocks", opts...)
+func (c *stateStreamerAPIClient) GetBlocks(ctx context.Context, in *BlockSubscription, opts ...grpc.CallOption) (StateStreamerAPI_GetBlocksClient, error) {
+	stream, err := c.cc.NewStream(ctx, &StateStreamerAPI_ServiceDesc.Streams[0], "/flow.state_streamer.StateStreamerAPI/GetBlocks", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &stateStreamerGetBlocksClient{stream}
+	x := &stateStreamerAPIGetBlocksClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -46,16 +46,16 @@ func (c *stateStreamerClient) GetBlocks(ctx context.Context, in *BlockSubscripti
 	return x, nil
 }
 
-type StateStreamer_GetBlocksClient interface {
+type StateStreamerAPI_GetBlocksClient interface {
 	Recv() (*entities.Block, error)
 	grpc.ClientStream
 }
 
-type stateStreamerGetBlocksClient struct {
+type stateStreamerAPIGetBlocksClient struct {
 	grpc.ClientStream
 }
 
-func (x *stateStreamerGetBlocksClient) Recv() (*entities.Block, error) {
+func (x *stateStreamerAPIGetBlocksClient) Recv() (*entities.Block, error) {
 	m := new(entities.Block)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -63,12 +63,12 @@ func (x *stateStreamerGetBlocksClient) Recv() (*entities.Block, error) {
 	return m, nil
 }
 
-func (c *stateStreamerClient) GetExecutionData(ctx context.Context, in *ExecutionDataSubscription, opts ...grpc.CallOption) (StateStreamer_GetExecutionDataClient, error) {
-	stream, err := c.cc.NewStream(ctx, &StateStreamer_ServiceDesc.Streams[1], "/flow.state_streamer.StateStreamer/GetExecutionData", opts...)
+func (c *stateStreamerAPIClient) GetExecutionData(ctx context.Context, in *ExecutionDataSubscription, opts ...grpc.CallOption) (StateStreamerAPI_GetExecutionDataClient, error) {
+	stream, err := c.cc.NewStream(ctx, &StateStreamerAPI_ServiceDesc.Streams[1], "/flow.state_streamer.StateStreamerAPI/GetExecutionData", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &stateStreamerGetExecutionDataClient{stream}
+	x := &stateStreamerAPIGetExecutionDataClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -78,16 +78,16 @@ func (c *stateStreamerClient) GetExecutionData(ctx context.Context, in *Executio
 	return x, nil
 }
 
-type StateStreamer_GetExecutionDataClient interface {
+type StateStreamerAPI_GetExecutionDataClient interface {
 	Recv() (*entities.ExecutionData, error)
 	grpc.ClientStream
 }
 
-type stateStreamerGetExecutionDataClient struct {
+type stateStreamerAPIGetExecutionDataClient struct {
 	grpc.ClientStream
 }
 
-func (x *stateStreamerGetExecutionDataClient) Recv() (*entities.ExecutionData, error) {
+func (x *stateStreamerAPIGetExecutionDataClient) Recv() (*entities.ExecutionData, error) {
 	m := new(entities.ExecutionData)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -95,94 +95,94 @@ func (x *stateStreamerGetExecutionDataClient) Recv() (*entities.ExecutionData, e
 	return m, nil
 }
 
-// StateStreamerServer is the server API for StateStreamer service.
-// All implementations should embed UnimplementedStateStreamerServer
+// StateStreamerAPIServer is the server API for StateStreamerAPI service.
+// All implementations should embed UnimplementedStateStreamerAPIServer
 // for forward compatibility
-type StateStreamerServer interface {
-	GetBlocks(*BlockSubscription, StateStreamer_GetBlocksServer) error
-	GetExecutionData(*ExecutionDataSubscription, StateStreamer_GetExecutionDataServer) error
+type StateStreamerAPIServer interface {
+	GetBlocks(*BlockSubscription, StateStreamerAPI_GetBlocksServer) error
+	GetExecutionData(*ExecutionDataSubscription, StateStreamerAPI_GetExecutionDataServer) error
 }
 
-// UnimplementedStateStreamerServer should be embedded to have forward compatible implementations.
-type UnimplementedStateStreamerServer struct {
+// UnimplementedStateStreamerAPIServer should be embedded to have forward compatible implementations.
+type UnimplementedStateStreamerAPIServer struct {
 }
 
-func (UnimplementedStateStreamerServer) GetBlocks(*BlockSubscription, StateStreamer_GetBlocksServer) error {
+func (UnimplementedStateStreamerAPIServer) GetBlocks(*BlockSubscription, StateStreamerAPI_GetBlocksServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetBlocks not implemented")
 }
-func (UnimplementedStateStreamerServer) GetExecutionData(*ExecutionDataSubscription, StateStreamer_GetExecutionDataServer) error {
+func (UnimplementedStateStreamerAPIServer) GetExecutionData(*ExecutionDataSubscription, StateStreamerAPI_GetExecutionDataServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetExecutionData not implemented")
 }
 
-// UnsafeStateStreamerServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to StateStreamerServer will
+// UnsafeStateStreamerAPIServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to StateStreamerAPIServer will
 // result in compilation errors.
-type UnsafeStateStreamerServer interface {
-	mustEmbedUnimplementedStateStreamerServer()
+type UnsafeStateStreamerAPIServer interface {
+	mustEmbedUnimplementedStateStreamerAPIServer()
 }
 
-func RegisterStateStreamerServer(s grpc.ServiceRegistrar, srv StateStreamerServer) {
-	s.RegisterService(&StateStreamer_ServiceDesc, srv)
+func RegisterStateStreamerAPIServer(s grpc.ServiceRegistrar, srv StateStreamerAPIServer) {
+	s.RegisterService(&StateStreamerAPI_ServiceDesc, srv)
 }
 
-func _StateStreamer_GetBlocks_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _StateStreamerAPI_GetBlocks_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(BlockSubscription)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(StateStreamerServer).GetBlocks(m, &stateStreamerGetBlocksServer{stream})
+	return srv.(StateStreamerAPIServer).GetBlocks(m, &stateStreamerAPIGetBlocksServer{stream})
 }
 
-type StateStreamer_GetBlocksServer interface {
+type StateStreamerAPI_GetBlocksServer interface {
 	Send(*entities.Block) error
 	grpc.ServerStream
 }
 
-type stateStreamerGetBlocksServer struct {
+type stateStreamerAPIGetBlocksServer struct {
 	grpc.ServerStream
 }
 
-func (x *stateStreamerGetBlocksServer) Send(m *entities.Block) error {
+func (x *stateStreamerAPIGetBlocksServer) Send(m *entities.Block) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _StateStreamer_GetExecutionData_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _StateStreamerAPI_GetExecutionData_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(ExecutionDataSubscription)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(StateStreamerServer).GetExecutionData(m, &stateStreamerGetExecutionDataServer{stream})
+	return srv.(StateStreamerAPIServer).GetExecutionData(m, &stateStreamerAPIGetExecutionDataServer{stream})
 }
 
-type StateStreamer_GetExecutionDataServer interface {
+type StateStreamerAPI_GetExecutionDataServer interface {
 	Send(*entities.ExecutionData) error
 	grpc.ServerStream
 }
 
-type stateStreamerGetExecutionDataServer struct {
+type stateStreamerAPIGetExecutionDataServer struct {
 	grpc.ServerStream
 }
 
-func (x *stateStreamerGetExecutionDataServer) Send(m *entities.ExecutionData) error {
+func (x *stateStreamerAPIGetExecutionDataServer) Send(m *entities.ExecutionData) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-// StateStreamer_ServiceDesc is the grpc.ServiceDesc for StateStreamer service.
+// StateStreamerAPI_ServiceDesc is the grpc.ServiceDesc for StateStreamerAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var StateStreamer_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "flow.state_streamer.StateStreamer",
-	HandlerType: (*StateStreamerServer)(nil),
+var StateStreamerAPI_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "flow.state_streamer.StateStreamerAPI",
+	HandlerType: (*StateStreamerAPIServer)(nil),
 	Methods:     []grpc.MethodDesc{},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "GetBlocks",
-			Handler:       _StateStreamer_GetBlocks_Handler,
+			Handler:       _StateStreamerAPI_GetBlocks_Handler,
 			ServerStreams: true,
 		},
 		{
 			StreamName:    "GetExecutionData",
-			Handler:       _StateStreamer_GetExecutionData_Handler,
+			Handler:       _StateStreamerAPI_GetExecutionData_Handler,
 			ServerStreams: true,
 		},
 	},
