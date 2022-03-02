@@ -395,7 +395,7 @@ paths:
   /events:
     get:
       summary: Get Events
-      description: Query on-chain events by their name in the specified blocks.
+      description: Query on-chain events by their name in the specified blocks heights or block IDs.
       tags:
         - Events
       responses:
@@ -435,7 +435,7 @@ paths:
             $ref: '#/components/schemas/BlockHeight'
           allowEmptyValue: false
         - name: block_ids
-          description: List of block IDs.
+          description: List of block IDs. Either provide this parameter or both height parameters. This parameter is incompatible with heights parameters.
           in: query
           style: form
           required: false
