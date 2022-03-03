@@ -1,11 +1,11 @@
 # Application of BIP 44 in Flow Wallets
 
-| Status        | Proposed |
+| Status        | Accepted |
 :-------------- |:---------|
 | **FLIP #**    | [200](https://github.com/onflow/flow/pull/200) |
 | **Author(s)** | Peter Siemens (peter@dapperlabs.com), Jeffery Doyle (jeffrey.doyle@dapperlabs.com) |
 | **Sponsor**   | Peter Siemens (peter@dapperlabs.com) |
-| **Updated**   | 2021-12-14 |
+| **Updated**   | 2022-03-03 |
 
 ## Objective
 
