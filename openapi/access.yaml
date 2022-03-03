@@ -681,6 +681,8 @@ components:
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
+        result:
+          $ref: '#/components/schemas/TransactionResultStatus'
         status:
           $ref: '#/components/schemas/TransactionStatus'
         status_code:
@@ -697,6 +699,12 @@ components:
             $ref: '#/components/schemas/Event'
         _links:
           $ref: '#/components/schemas/Links'
+    TransactionResultStatus:
+      type: string
+      enum:
+        - Pending
+        - Success
+        - Failure
     TransactionStatus:
       type: string
       enum:
