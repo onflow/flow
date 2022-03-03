@@ -4,14 +4,10 @@
 package access
 
 import (
-	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	entities "github.com/onflow/flow/protobuf/go/flow/entities"
-	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	math "math"
 )
 
@@ -639,6 +635,7 @@ type TransactionResultResponse struct {
 	StatusCode           uint32                     `protobuf:"varint,2,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
 	ErrorMessage         string                     `protobuf:"bytes,3,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
 	Events               []*entities.Event          `protobuf:"bytes,4,rep,name=events,proto3" json:"events,omitempty"`
+	BlockId              []byte                     `protobuf:"bytes,5,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
 	XXX_unrecognized     []byte                     `json:"-"`
 	XXX_sizecache        int32                      `json:"-"`
@@ -693,6 +690,13 @@ func (m *TransactionResultResponse) GetErrorMessage() string {
 func (m *TransactionResultResponse) GetEvents() []*entities.Event {
 	if m != nil {
 		return m.Events
+	}
+	return nil
+}
+
+func (m *TransactionResultResponse) GetBlockId() []byte {
+	if m != nil {
+		return m.BlockId
 	}
 	return nil
 }
@@ -1238,13 +1242,13 @@ func (m *EventsResponse) GetResults() []*EventsResponse_Result {
 }
 
 type EventsResponse_Result struct {
-	BlockId              []byte               `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
-	BlockHeight          uint64               `protobuf:"varint,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
-	Events               []*entities.Event    `protobuf:"bytes,3,rep,name=events,proto3" json:"events,omitempty"`
-	BlockTimestamp       *timestamp.Timestamp `protobuf:"bytes,4,opt,name=block_timestamp,json=blockTimestamp,proto3" json:"block_timestamp,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	BlockId              []byte                 `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
+	BlockHeight          uint64                 `protobuf:"varint,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
+	Events               []*entities.Event      `protobuf:"bytes,3,rep,name=events,proto3" json:"events,omitempty"`
+	BlockTimestamp       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=block_timestamp,json=blockTimestamp,proto3" json:"block_timestamp,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
 func (m *EventsResponse_Result) Reset()         { *m = EventsResponse_Result{} }
@@ -1293,7 +1297,7 @@ func (m *EventsResponse_Result) GetEvents() []*entities.Event {
 	return nil
 }
 
-func (m *EventsResponse_Result) GetBlockTimestamp() *timestamp.Timestamp {
+func (m *EventsResponse_Result) GetBlockTimestamp() *timestamppb.Timestamp {
 	if m != nil {
 		return m.BlockTimestamp
 	}
@@ -1370,6 +1374,154 @@ func (m *GetNetworkParametersResponse) GetChainId() string {
 	return ""
 }
 
+type GetLatestProtocolStateSnapshotRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetLatestProtocolStateSnapshotRequest) Reset()         { *m = GetLatestProtocolStateSnapshotRequest{} }
+func (m *GetLatestProtocolStateSnapshotRequest) String() string { return proto.CompactTextString(m) }
+func (*GetLatestProtocolStateSnapshotRequest) ProtoMessage()    {}
+func (*GetLatestProtocolStateSnapshotRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4382e32bb8e3e8e5, []int{31}
+}
+
+func (m *GetLatestProtocolStateSnapshotRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetLatestProtocolStateSnapshotRequest.Unmarshal(m, b)
+}
+func (m *GetLatestProtocolStateSnapshotRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetLatestProtocolStateSnapshotRequest.Marshal(b, m, deterministic)
+}
+func (m *GetLatestProtocolStateSnapshotRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetLatestProtocolStateSnapshotRequest.Merge(m, src)
+}
+func (m *GetLatestProtocolStateSnapshotRequest) XXX_Size() int {
+	return xxx_messageInfo_GetLatestProtocolStateSnapshotRequest.Size(m)
+}
+func (m *GetLatestProtocolStateSnapshotRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetLatestProtocolStateSnapshotRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetLatestProtocolStateSnapshotRequest proto.InternalMessageInfo
+
+type ProtocolStateSnapshotResponse struct {
+	SerializedSnapshot   []byte   `protobuf:"bytes,1,opt,name=serializedSnapshot,proto3" json:"serializedSnapshot,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ProtocolStateSnapshotResponse) Reset()         { *m = ProtocolStateSnapshotResponse{} }
+func (m *ProtocolStateSnapshotResponse) String() string { return proto.CompactTextString(m) }
+func (*ProtocolStateSnapshotResponse) ProtoMessage()    {}
+func (*ProtocolStateSnapshotResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4382e32bb8e3e8e5, []int{32}
+}
+
+func (m *ProtocolStateSnapshotResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ProtocolStateSnapshotResponse.Unmarshal(m, b)
+}
+func (m *ProtocolStateSnapshotResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ProtocolStateSnapshotResponse.Marshal(b, m, deterministic)
+}
+func (m *ProtocolStateSnapshotResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ProtocolStateSnapshotResponse.Merge(m, src)
+}
+func (m *ProtocolStateSnapshotResponse) XXX_Size() int {
+	return xxx_messageInfo_ProtocolStateSnapshotResponse.Size(m)
+}
+func (m *ProtocolStateSnapshotResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ProtocolStateSnapshotResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ProtocolStateSnapshotResponse proto.InternalMessageInfo
+
+func (m *ProtocolStateSnapshotResponse) GetSerializedSnapshot() []byte {
+	if m != nil {
+		return m.SerializedSnapshot
+	}
+	return nil
+}
+
+type GetExecutionResultForBlockIDRequest struct {
+	BlockId              []byte   `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetExecutionResultForBlockIDRequest) Reset()         { *m = GetExecutionResultForBlockIDRequest{} }
+func (m *GetExecutionResultForBlockIDRequest) String() string { return proto.CompactTextString(m) }
+func (*GetExecutionResultForBlockIDRequest) ProtoMessage()    {}
+func (*GetExecutionResultForBlockIDRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4382e32bb8e3e8e5, []int{33}
+}
+
+func (m *GetExecutionResultForBlockIDRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetExecutionResultForBlockIDRequest.Unmarshal(m, b)
+}
+func (m *GetExecutionResultForBlockIDRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetExecutionResultForBlockIDRequest.Marshal(b, m, deterministic)
+}
+func (m *GetExecutionResultForBlockIDRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetExecutionResultForBlockIDRequest.Merge(m, src)
+}
+func (m *GetExecutionResultForBlockIDRequest) XXX_Size() int {
+	return xxx_messageInfo_GetExecutionResultForBlockIDRequest.Size(m)
+}
+func (m *GetExecutionResultForBlockIDRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetExecutionResultForBlockIDRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetExecutionResultForBlockIDRequest proto.InternalMessageInfo
+
+func (m *GetExecutionResultForBlockIDRequest) GetBlockId() []byte {
+	if m != nil {
+		return m.BlockId
+	}
+	return nil
+}
+
+type ExecutionResultForBlockIDResponse struct {
+	ExecutionResult      *entities.ExecutionResult `protobuf:"bytes,1,opt,name=execution_result,json=executionResult,proto3" json:"execution_result,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
+	XXX_unrecognized     []byte                    `json:"-"`
+	XXX_sizecache        int32                     `json:"-"`
+}
+
+func (m *ExecutionResultForBlockIDResponse) Reset()         { *m = ExecutionResultForBlockIDResponse{} }
+func (m *ExecutionResultForBlockIDResponse) String() string { return proto.CompactTextString(m) }
+func (*ExecutionResultForBlockIDResponse) ProtoMessage()    {}
+func (*ExecutionResultForBlockIDResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4382e32bb8e3e8e5, []int{34}
+}
+
+func (m *ExecutionResultForBlockIDResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ExecutionResultForBlockIDResponse.Unmarshal(m, b)
+}
+func (m *ExecutionResultForBlockIDResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ExecutionResultForBlockIDResponse.Marshal(b, m, deterministic)
+}
+func (m *ExecutionResultForBlockIDResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExecutionResultForBlockIDResponse.Merge(m, src)
+}
+func (m *ExecutionResultForBlockIDResponse) XXX_Size() int {
+	return xxx_messageInfo_ExecutionResultForBlockIDResponse.Size(m)
+}
+func (m *ExecutionResultForBlockIDResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ExecutionResultForBlockIDResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ExecutionResultForBlockIDResponse proto.InternalMessageInfo
+
+func (m *ExecutionResultForBlockIDResponse) GetExecutionResult() *entities.ExecutionResult {
+	if m != nil {
+		return m.ExecutionResult
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*PingRequest)(nil), "flow.access.PingRequest")
 	proto.RegisterType((*PingResponse)(nil), "flow.access.PingResponse")
@@ -1403,894 +1555,101 @@ func init() {
 	proto.RegisterType((*EventsResponse_Result)(nil), "flow.access.EventsResponse.Result")
 	proto.RegisterType((*GetNetworkParametersRequest)(nil), "flow.access.GetNetworkParametersRequest")
 	proto.RegisterType((*GetNetworkParametersResponse)(nil), "flow.access.GetNetworkParametersResponse")
+	proto.RegisterType((*GetLatestProtocolStateSnapshotRequest)(nil), "flow.access.GetLatestProtocolStateSnapshotRequest")
+	proto.RegisterType((*ProtocolStateSnapshotResponse)(nil), "flow.access.ProtocolStateSnapshotResponse")
+	proto.RegisterType((*GetExecutionResultForBlockIDRequest)(nil), "flow.access.GetExecutionResultForBlockIDRequest")
+	proto.RegisterType((*ExecutionResultForBlockIDResponse)(nil), "flow.access.ExecutionResultForBlockIDResponse")
 }
 
 func init() { proto.RegisterFile("flow/access/access.proto", fileDescriptor_4382e32bb8e3e8e5) }
 
 var fileDescriptor_4382e32bb8e3e8e5 = []byte{
-	// 1204 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x56, 0xeb, 0x6e, 0xdb, 0x36,
-	0x1b, 0x86, 0xed, 0xd4, 0xb1, 0x5f, 0x3b, 0xee, 0xf7, 0xb1, 0xa9, 0x6b, 0x2b, 0x27, 0x57, 0x3d,
-	0x2c, 0x4d, 0x57, 0x65, 0xcb, 0x06, 0x6c, 0x6d, 0xf7, 0x27, 0xc9, 0xda, 0x34, 0x40, 0xdb, 0x05,
-	0x4a, 0x50, 0x60, 0x87, 0x2e, 0x50, 0x2c, 0xc6, 0x11, 0xe2, 0x48, 0x9e, 0x48, 0xa7, 0x2b, 0xb0,
-	0x2b, 0xd8, 0x1d, 0xed, 0x12, 0x76, 0x4d, 0xfb, 0x33, 0x98, 0x07, 0x99, 0x94, 0x28, 0xd9, 0x58,
-	0x7f, 0xd9, 0x14, 0x9f, 0xf7, 0x79, 0x4f, 0xe4, 0xcb, 0x07, 0x3a, 0xe7, 0xc3, 0xe8, 0xc3, 0xb6,
-	0xd7, 0xef, 0x63, 0x42, 0xc4, 0x8f, 0x33, 0x8a, 0x23, 0x1a, 0xa1, 0xc6, 0x64, 0xc7, 0xe1, 0x9f,
-	0xac, 0x15, 0x06, 0xc3, 0x21, 0x0d, 0x68, 0x80, 0x19, 0x30, 0x1a, 0x87, 0x94, 0x23, 0xad, 0x9e,
-	0xbe, 0x79, 0x36, 0x8c, 0xfa, 0x97, 0xa7, 0x17, 0xd8, 0xf3, 0x71, 0x2c, 0x10, 0x5d, 0x03, 0x42,
-	0x6c, 0xad, 0xeb, 0x5b, 0xfd, 0x68, 0x38, 0xc4, 0x7d, 0x1a, 0x44, 0xa1, 0xd9, 0x14, 0x5f, 0xe3,
-	0xc4, 0xef, 0x86, 0xbe, 0x45, 0x63, 0x2f, 0x24, 0x9e, 0x6a, 0xbb, 0x31, 0x88, 0xa2, 0xc1, 0x10,
-	0x6f, 0xb3, 0xd5, 0xd9, 0xf8, 0x7c, 0x9b, 0x06, 0x57, 0x98, 0x50, 0xef, 0x6a, 0xc4, 0x01, 0xf6,
-	0x12, 0x34, 0x8e, 0x82, 0x70, 0xe0, 0xe2, 0xdf, 0xc6, 0x98, 0x50, 0xbb, 0x05, 0x4d, 0xbe, 0x24,
-	0xa3, 0x28, 0x24, 0xd8, 0x7e, 0x06, 0x2b, 0x07, 0x98, 0xbe, 0xf6, 0x28, 0x26, 0x74, 0x6f, 0x12,
-	0xf3, 0x2b, 0x96, 0x94, 0x80, 0xa3, 0x15, 0xa8, 0x07, 0xe4, 0x94, 0x60, 0x6f, 0x88, 0xfd, 0x4e,
-	0xa9, 0x57, 0xda, 0xac, 0xb9, 0xb5, 0x80, 0x1c, 0xb3, 0xb5, 0xfd, 0x18, 0xba, 0x07, 0x58, 0xb5,
-	0xda, 0xfb, 0x78, 0xf8, 0xbd, 0xb4, 0x6c, 0x41, 0x39, 0xe0, 0x26, 0x4d, 0xb7, 0x1c, 0xf8, 0xf6,
-	0x37, 0xb0, 0x96, 0x06, 0xbf, 0xc2, 0xc1, 0xe0, 0x82, 0x4a, 0x83, 0x36, 0x54, 0x2f, 0xd8, 0x07,
-	0x66, 0xb4, 0xe0, 0x8a, 0x95, 0x7d, 0x00, 0xb7, 0xb4, 0xc0, 0x78, 0xe0, 0xe8, 0x0b, 0xb8, 0xc1,
-	0x6a, 0xcc, 0xd0, 0x8d, 0x1d, 0xcb, 0x61, 0xbd, 0x94, 0x95, 0x72, 0x54, 0x13, 0x0e, 0xb4, 0xbf,
-	0x86, 0xdb, 0x7a, 0xaa, 0x73, 0x25, 0xf9, 0x00, 0x6e, 0xc9, 0xb8, 0x8b, 0xd2, 0xfb, 0x12, 0xee,
-	0x4c, 0x61, 0xf3, 0x25, 0xf6, 0x1c, 0x96, 0x44, 0x18, 0x22, 0xa5, 0x2d, 0x3d, 0xa5, 0x65, 0x53,
-	0x4a, 0x32, 0x99, 0x2d, 0xe8, 0x1c, 0x60, 0xba, 0x9f, 0x1c, 0xa5, 0xa2, 0xd8, 0x7e, 0x00, 0x34,
-	0x05, 0x26, 0xde, 0x9e, 0x02, 0x4c, 0x4f, 0xa2, 0x70, 0xd9, 0x4d, 0xb9, 0x54, 0xcc, 0x14, 0xb0,
-	0xfd, 0x0e, 0xda, 0xc7, 0x38, 0xf4, 0x4f, 0xa6, 0xa7, 0x51, 0xba, 0xfe, 0x0e, 0x1a, 0xca, 0x19,
-	0xcd, 0xe9, 0x8d, 0x6a, 0xa7, 0xc2, 0xed, 0x47, 0x70, 0x27, 0xc3, 0x2b, 0xa2, 0x4d, 0xe7, 0xf4,
-	0x19, 0x6b, 0xa6, 0x21, 0x82, 0x34, 0xf0, 0x18, 0x6e, 0x99, 0xf8, 0x3e, 0x2d, 0xd0, 0xbf, 0x4b,
-	0xd0, 0xd5, 0x59, 0xc7, 0x43, 0x9a, 0x70, 0x7f, 0x0b, 0x55, 0x42, 0x3d, 0x3a, 0x26, 0x8c, 0xb6,
-	0xb5, 0xd3, 0xcb, 0xa7, 0x3d, 0x66, 0x38, 0x57, 0xe0, 0xd1, 0x06, 0x34, 0xf8, 0xbf, 0xd3, 0x7e,
-	0xe4, 0xe3, 0x4e, 0xb9, 0x57, 0xda, 0x5c, 0x72, 0x81, 0x7f, 0xda, 0x8f, 0x7c, 0x8c, 0xee, 0xc1,
-	0x12, 0x8e, 0xe3, 0x28, 0x3e, 0xbd, 0xc2, 0x84, 0x78, 0x03, 0xdc, 0xa9, 0xf4, 0x4a, 0x9b, 0x75,
-	0xb7, 0xc9, 0x3e, 0xbe, 0xe1, 0xdf, 0xd0, 0xe7, 0x50, 0x65, 0x33, 0x84, 0x74, 0x16, 0x7a, 0x15,
-	0xc3, 0x41, 0x7a, 0x31, 0xd9, 0x74, 0x05, 0xc6, 0x7e, 0x02, 0xff, 0x3f, 0xc0, 0x74, 0x97, 0x8f,
-	0x3b, 0x59, 0xc5, 0x0e, 0x2c, 0x7a, 0xbe, 0x1f, 0x63, 0x42, 0x44, 0x29, 0xe5, 0xd2, 0x7e, 0x09,
-	0x48, 0x85, 0x27, 0xb7, 0x71, 0x51, 0x0c, 0x4c, 0x51, 0xca, 0x76, 0xca, 0xa7, 0x34, 0x90, 0x30,
-	0xfb, 0x19, 0xac, 0x4f, 0x79, 0x76, 0x4d, 0xd7, 0x32, 0x3f, 0x86, 0x7d, 0xb8, 0xf9, 0xe9, 0x01,
-	0xbc, 0xd7, 0x03, 0x10, 0x03, 0x43, 0xbd, 0xb8, 0xb9, 0x01, 0xa0, 0xbb, 0xd0, 0x94, 0x4f, 0x00,
-	0xbb, 0xd8, 0x65, 0x76, 0xb1, 0x1b, 0x67, 0x53, 0x0e, 0xfb, 0x47, 0xb8, 0xfb, 0xe2, 0x77, 0xdc,
-	0x1f, 0x53, 0x7c, 0xdc, 0x8f, 0x83, 0x91, 0x39, 0xc5, 0x36, 0x54, 0x09, 0xdb, 0x15, 0x0e, 0xc4,
-	0x0a, 0xad, 0x42, 0xdd, 0x8b, 0x07, 0xe3, 0x2b, 0xd6, 0xc4, 0x72, 0xaf, 0xb2, 0xd9, 0x74, 0xa7,
-	0x1f, 0xec, 0x11, 0xac, 0xa5, 0xa8, 0x19, 0xe9, 0x74, 0x00, 0x74, 0xa1, 0xc6, 0xc3, 0x4b, 0x6e,
-	0xc2, 0x22, 0x5b, 0x1f, 0xfa, 0x8a, 0xc7, 0x72, 0xbe, 0xc7, 0x4a, 0xda, 0xe3, 0x1f, 0x99, 0x64,
-	0x0c, 0xe5, 0x4a, 0x17, 0xa5, 0x94, 0x29, 0xca, 0x7f, 0xf4, 0xfe, 0x04, 0x6e, 0x6b, 0xde, 0x93,
-	0xa6, 0x2f, 0xc3, 0x8d, 0x6b, 0x6f, 0x38, 0xc6, 0x22, 0x49, 0xbe, 0xb0, 0xaf, 0x59, 0x63, 0xd9,
-	0x21, 0x27, 0x2f, 0xa3, 0x58, 0x04, 0xe9, 0x85, 0x03, 0x2c, 0x23, 0x45, 0xb0, 0x40, 0x3f, 0x8e,
-	0xb8, 0x59, 0xdd, 0x65, 0xff, 0x27, 0xd1, 0x13, 0xea, 0xc5, 0x34, 0xd5, 0x52, 0xf6, 0x4d, 0x44,
-	0xbf, 0x06, 0x80, 0x43, 0x5f, 0x02, 0x2a, 0x0c, 0x50, 0xc7, 0xa1, 0x2f, 0x3a, 0xfe, 0x96, 0x3d,
-	0xa5, 0x89, 0x5f, 0xd1, 0x13, 0x52, 0xe4, 0x74, 0x05, 0xea, 0xb2, 0x51, 0xb2, 0xcf, 0x35, 0xd1,
-	0x29, 0x62, 0xff, 0x59, 0x86, 0x16, 0x67, 0x53, 0xa6, 0xd6, 0x62, 0xcc, 0x66, 0xcd, 0xe4, 0x44,
-	0x4e, 0xae, 0xb6, 0xed, 0x28, 0x12, 0xc6, 0xd1, 0xd1, 0x8e, 0x18, 0x4b, 0xd2, 0xc4, 0xfa, 0xab,
-	0x04, 0x55, 0xfe, 0xad, 0xe8, 0x84, 0xcc, 0x3e, 0xdb, 0xca, 0x80, 0xa9, 0xcc, 0x1e, 0x30, 0x68,
-	0x1f, 0x6e, 0x72, 0xc2, 0x44, 0x9a, 0x74, 0x16, 0xc4, 0xb8, 0xe5, 0xe2, 0xc5, 0x91, 0xe2, 0xc5,
-	0x39, 0x91, 0x08, 0xb7, 0xc5, 0x4c, 0x92, 0xb5, 0xbd, 0xc6, 0x8a, 0xfb, 0x16, 0xd3, 0x0f, 0x51,
-	0x7c, 0x79, 0xe4, 0xc5, 0xde, 0x15, 0xa6, 0x38, 0x96, 0xc5, 0xb5, 0x9f, 0xc2, 0xaa, 0x79, 0x5b,
-	0x14, 0xae, 0x0b, 0xb5, 0xfe, 0x85, 0x17, 0x84, 0x32, 0xdf, 0xba, 0xbb, 0xc8, 0xd6, 0x87, 0xfe,
-	0xce, 0x3f, 0x2d, 0xa8, 0xef, 0xb2, 0xfa, 0xed, 0x1e, 0x1d, 0xa2, 0xe7, 0xb0, 0x30, 0xd1, 0x47,
-	0xa8, 0xa3, 0x15, 0x56, 0x51, 0x50, 0x56, 0xd7, 0xb0, 0x23, 0xbc, 0x9c, 0xc1, 0xb2, 0x49, 0x4c,
-	0xa1, 0x4d, 0xcd, 0xa4, 0x40, 0x6f, 0x59, 0x3d, 0x0d, 0x69, 0xd2, 0x3d, 0xbf, 0xb2, 0xf9, 0x9b,
-	0x12, 0x5d, 0xe8, 0x61, 0xda, 0x83, 0x59, 0x95, 0xcd, 0xc1, 0x7f, 0x0e, 0x6d, 0xb3, 0x4e, 0x43,
-	0x5b, 0x85, 0x3e, 0xb4, 0x59, 0x30, 0x87, 0x9f, 0x23, 0x68, 0xe9, 0x85, 0x40, 0x76, 0x41, 0x95,
-	0x24, 0xaf, 0x95, 0xe5, 0x4d, 0x18, 0x5f, 0x43, 0x53, 0x55, 0x6a, 0xa8, 0x67, 0x8c, 0x57, 0xad,
-	0x46, 0x11, 0xdb, 0x09, 0xfc, 0x2f, 0x2d, 0xe8, 0xd0, 0xfd, 0x1c, 0x46, 0x3d, 0xf7, 0x22, 0xd6,
-	0x9f, 0xd9, 0x63, 0xab, 0xcb, 0x36, 0xf4, 0x20, 0x4d, 0x6b, 0x94, 0x75, 0xd6, 0x86, 0x06, 0x33,
-	0x28, 0xba, 0x5f, 0xe0, 0x66, 0x4a, 0x3e, 0xa1, 0x7b, 0x9a, 0x8d, 0x59, 0xb4, 0x59, 0xf7, 0x8b,
-	0x41, 0x82, 0xfd, 0x1d, 0x6b, 0x98, 0x4a, 0x9e, 0x69, 0x98, 0x81, 0x5b, 0x6f, 0x82, 0x89, 0x97,
-	0x5f, 0x9a, 0x8c, 0x9a, 0x9a, 0x8b, 0xfd, 0x61, 0x01, 0xbb, 0xaa, 0xc8, 0xde, 0x00, 0x4c, 0xdf,
-	0x7a, 0xb4, 0x9e, 0x66, 0xd6, 0xc5, 0x4f, 0xaa, 0xd0, 0x06, 0xb5, 0xe3, 0x33, 0xb1, 0x6f, 0xd2,
-	0x2e, 0xe8, 0x71, 0x8e, 0xad, 0xe9, 0xf9, 0xb7, 0x56, 0x35, 0xf0, 0x0c, 0x2f, 0xca, 0x8b, 0x5b,
-	0xe0, 0x25, 0xfb, 0x2e, 0xcf, 0xf0, 0x32, 0x02, 0x2b, 0x5f, 0xa7, 0x20, 0x47, 0x7f, 0x5f, 0x66,
-	0x09, 0x1a, 0xcb, 0xce, 0xc7, 0x27, 0x1e, 0x2f, 0xa0, 0x6d, 0x96, 0x2f, 0xa9, 0x09, 0x53, 0xa8,
-	0x71, 0xe6, 0xf2, 0x94, 0xcd, 0x4d, 0x2d, 0xa2, 0x33, 0xd3, 0x9b, 0x5e, 0xc7, 0x79, 0x3c, 0xf6,
-	0x59, 0xcf, 0x4c, 0xda, 0x23, 0xdb, 0xb3, 0x02, 0x85, 0x62, 0xad, 0x14, 0xbc, 0xeb, 0xe8, 0x3d,
-	0xbb, 0x31, 0x19, 0xa1, 0x91, 0x7d, 0x66, 0xf2, 0xb4, 0x48, 0x31, 0xfd, 0x25, 0xa3, 0xcf, 0xbc,
-	0xa5, 0x59, 0xfa, 0xbc, 0xd7, 0xd8, 0x7a, 0x34, 0x07, 0x92, 0x3b, 0xdb, 0xab, 0xfd, 0x54, 0xe5,
-	0xb0, 0xb3, 0x2a, 0x53, 0x01, 0x5f, 0xfd, 0x1b, 0x00, 0x00, 0xff, 0xff, 0x9c, 0xef, 0x61, 0x86,
-	0xaf, 0x11, 0x00, 0x00,
-}
-
-// Reference imports to suppress errors if they are not otherwise used.
-var _ context.Context
-var _ grpc.ClientConn
-
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
-
-// AccessAPIClient is the client API for AccessAPI service.
-//
-// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type AccessAPIClient interface {
-	// Ping is used to check if the access node is alive and healthy.
-	Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error)
-	// GetLatestBlockHeader gets the latest sealed or unsealed block header.
-	GetLatestBlockHeader(ctx context.Context, in *GetLatestBlockHeaderRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
-	// GetBlockHeaderByID gets a block header by ID.
-	GetBlockHeaderByID(ctx context.Context, in *GetBlockHeaderByIDRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
-	// GetBlockHeaderByHeight gets a block header by height.
-	GetBlockHeaderByHeight(ctx context.Context, in *GetBlockHeaderByHeightRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
-	// GetLatestBlock gets the full payload of the latest sealed or unsealed block.
-	GetLatestBlock(ctx context.Context, in *GetLatestBlockRequest, opts ...grpc.CallOption) (*BlockResponse, error)
-	// GetBlockByID gets a full block by ID.
-	GetBlockByID(ctx context.Context, in *GetBlockByIDRequest, opts ...grpc.CallOption) (*BlockResponse, error)
-	// GetBlockByHeight gets a full block by height.
-	GetBlockByHeight(ctx context.Context, in *GetBlockByHeightRequest, opts ...grpc.CallOption) (*BlockResponse, error)
-	// GetCollectionByID gets a collection by ID.
-	GetCollectionByID(ctx context.Context, in *GetCollectionByIDRequest, opts ...grpc.CallOption) (*CollectionResponse, error)
-	// SendTransaction submits a transaction to the network.
-	SendTransaction(ctx context.Context, in *SendTransactionRequest, opts ...grpc.CallOption) (*SendTransactionResponse, error)
-	// GetTransaction gets a transaction by ID.
-	GetTransaction(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResponse, error)
-	// GetTransactionResult gets the result of a transaction.
-	GetTransactionResult(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error)
-	// GetAccount is an alias for GetAccountAtLatestBlock.
-	//
-	// Warning: this function is deprecated. It behaves identically to GetAccountAtLatestBlock and will be removed in a future version.
-	GetAccount(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*GetAccountResponse, error)
-	// GetAccountAtLatestBlock gets an account by address from the latest sealed execution state.
-	GetAccountAtLatestBlock(ctx context.Context, in *GetAccountAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountResponse, error)
-	// GetAccountAtBlockHeight gets an account by address at the given block height
-	GetAccountAtBlockHeight(ctx context.Context, in *GetAccountAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountResponse, error)
-	// ExecuteScriptAtLatestBlock executes a read-only Cadence script against the latest sealed execution state.
-	ExecuteScriptAtLatestBlock(ctx context.Context, in *ExecuteScriptAtLatestBlockRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
-	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
-	ExecuteScriptAtBlockID(ctx context.Context, in *ExecuteScriptAtBlockIDRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
-	// ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the execution state at the given block height.
-	ExecuteScriptAtBlockHeight(ctx context.Context, in *ExecuteScriptAtBlockHeightRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
-	// GetEventsForHeightRange retrieves events emitted within the specified block range.
-	GetEventsForHeightRange(ctx context.Context, in *GetEventsForHeightRangeRequest, opts ...grpc.CallOption) (*EventsResponse, error)
-	// GetEventsForBlockIDs retrieves events for the specified block IDs and event type.
-	GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*EventsResponse, error)
-	// GetNetworkParameters retrieves the Flow network details
-	GetNetworkParameters(ctx context.Context, in *GetNetworkParametersRequest, opts ...grpc.CallOption) (*GetNetworkParametersResponse, error)
-}
-
-type accessAPIClient struct {
-	cc *grpc.ClientConn
-}
-
-func NewAccessAPIClient(cc *grpc.ClientConn) AccessAPIClient {
-	return &accessAPIClient{cc}
-}
-
-func (c *accessAPIClient) Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error) {
-	out := new(PingResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/Ping", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetLatestBlockHeader(ctx context.Context, in *GetLatestBlockHeaderRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error) {
-	out := new(BlockHeaderResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetLatestBlockHeader", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetBlockHeaderByID(ctx context.Context, in *GetBlockHeaderByIDRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error) {
-	out := new(BlockHeaderResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetBlockHeaderByID", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetBlockHeaderByHeight(ctx context.Context, in *GetBlockHeaderByHeightRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error) {
-	out := new(BlockHeaderResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetBlockHeaderByHeight", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetLatestBlock(ctx context.Context, in *GetLatestBlockRequest, opts ...grpc.CallOption) (*BlockResponse, error) {
-	out := new(BlockResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetLatestBlock", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetBlockByID(ctx context.Context, in *GetBlockByIDRequest, opts ...grpc.CallOption) (*BlockResponse, error) {
-	out := new(BlockResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetBlockByID", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetBlockByHeight(ctx context.Context, in *GetBlockByHeightRequest, opts ...grpc.CallOption) (*BlockResponse, error) {
-	out := new(BlockResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetBlockByHeight", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetCollectionByID(ctx context.Context, in *GetCollectionByIDRequest, opts ...grpc.CallOption) (*CollectionResponse, error) {
-	out := new(CollectionResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetCollectionByID", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) SendTransaction(ctx context.Context, in *SendTransactionRequest, opts ...grpc.CallOption) (*SendTransactionResponse, error) {
-	out := new(SendTransactionResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/SendTransaction", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetTransaction(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResponse, error) {
-	out := new(TransactionResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetTransaction", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetTransactionResult(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error) {
-	out := new(TransactionResultResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetTransactionResult", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetAccount(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*GetAccountResponse, error) {
-	out := new(GetAccountResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetAccount", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetAccountAtLatestBlock(ctx context.Context, in *GetAccountAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountResponse, error) {
-	out := new(AccountResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetAccountAtLatestBlock", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetAccountAtBlockHeight(ctx context.Context, in *GetAccountAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountResponse, error) {
-	out := new(AccountResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetAccountAtBlockHeight", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) ExecuteScriptAtLatestBlock(ctx context.Context, in *ExecuteScriptAtLatestBlockRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error) {
-	out := new(ExecuteScriptResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/ExecuteScriptAtLatestBlock", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) ExecuteScriptAtBlockID(ctx context.Context, in *ExecuteScriptAtBlockIDRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error) {
-	out := new(ExecuteScriptResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/ExecuteScriptAtBlockID", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) ExecuteScriptAtBlockHeight(ctx context.Context, in *ExecuteScriptAtBlockHeightRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error) {
-	out := new(ExecuteScriptResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/ExecuteScriptAtBlockHeight", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetEventsForHeightRange(ctx context.Context, in *GetEventsForHeightRangeRequest, opts ...grpc.CallOption) (*EventsResponse, error) {
-	out := new(EventsResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetEventsForHeightRange", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*EventsResponse, error) {
-	out := new(EventsResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetEventsForBlockIDs", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetNetworkParameters(ctx context.Context, in *GetNetworkParametersRequest, opts ...grpc.CallOption) (*GetNetworkParametersResponse, error) {
-	out := new(GetNetworkParametersResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetNetworkParameters", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// AccessAPIServer is the server API for AccessAPI service.
-type AccessAPIServer interface {
-	// Ping is used to check if the access node is alive and healthy.
-	Ping(context.Context, *PingRequest) (*PingResponse, error)
-	// GetLatestBlockHeader gets the latest sealed or unsealed block header.
-	GetLatestBlockHeader(context.Context, *GetLatestBlockHeaderRequest) (*BlockHeaderResponse, error)
-	// GetBlockHeaderByID gets a block header by ID.
-	GetBlockHeaderByID(context.Context, *GetBlockHeaderByIDRequest) (*BlockHeaderResponse, error)
-	// GetBlockHeaderByHeight gets a block header by height.
-	GetBlockHeaderByHeight(context.Context, *GetBlockHeaderByHeightRequest) (*BlockHeaderResponse, error)
-	// GetLatestBlock gets the full payload of the latest sealed or unsealed block.
-	GetLatestBlock(context.Context, *GetLatestBlockRequest) (*BlockResponse, error)
-	// GetBlockByID gets a full block by ID.
-	GetBlockByID(context.Context, *GetBlockByIDRequest) (*BlockResponse, error)
-	// GetBlockByHeight gets a full block by height.
-	GetBlockByHeight(context.Context, *GetBlockByHeightRequest) (*BlockResponse, error)
-	// GetCollectionByID gets a collection by ID.
-	GetCollectionByID(context.Context, *GetCollectionByIDRequest) (*CollectionResponse, error)
-	// SendTransaction submits a transaction to the network.
-	SendTransaction(context.Context, *SendTransactionRequest) (*SendTransactionResponse, error)
-	// GetTransaction gets a transaction by ID.
-	GetTransaction(context.Context, *GetTransactionRequest) (*TransactionResponse, error)
-	// GetTransactionResult gets the result of a transaction.
-	GetTransactionResult(context.Context, *GetTransactionRequest) (*TransactionResultResponse, error)
-	// GetAccount is an alias for GetAccountAtLatestBlock.
-	//
-	// Warning: this function is deprecated. It behaves identically to GetAccountAtLatestBlock and will be removed in a future version.
-	GetAccount(context.Context, *GetAccountRequest) (*GetAccountResponse, error)
-	// GetAccountAtLatestBlock gets an account by address from the latest sealed execution state.
-	GetAccountAtLatestBlock(context.Context, *GetAccountAtLatestBlockRequest) (*AccountResponse, error)
-	// GetAccountAtBlockHeight gets an account by address at the given block height
-	GetAccountAtBlockHeight(context.Context, *GetAccountAtBlockHeightRequest) (*AccountResponse, error)
-	// ExecuteScriptAtLatestBlock executes a read-only Cadence script against the latest sealed execution state.
-	ExecuteScriptAtLatestBlock(context.Context, *ExecuteScriptAtLatestBlockRequest) (*ExecuteScriptResponse, error)
-	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
-	ExecuteScriptAtBlockID(context.Context, *ExecuteScriptAtBlockIDRequest) (*ExecuteScriptResponse, error)
-	// ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the execution state at the given block height.
-	ExecuteScriptAtBlockHeight(context.Context, *ExecuteScriptAtBlockHeightRequest) (*ExecuteScriptResponse, error)
-	// GetEventsForHeightRange retrieves events emitted within the specified block range.
-	GetEventsForHeightRange(context.Context, *GetEventsForHeightRangeRequest) (*EventsResponse, error)
-	// GetEventsForBlockIDs retrieves events for the specified block IDs and event type.
-	GetEventsForBlockIDs(context.Context, *GetEventsForBlockIDsRequest) (*EventsResponse, error)
-	// GetNetworkParameters retrieves the Flow network details
-	GetNetworkParameters(context.Context, *GetNetworkParametersRequest) (*GetNetworkParametersResponse, error)
-}
-
-// UnimplementedAccessAPIServer can be embedded to have forward compatible implementations.
-type UnimplementedAccessAPIServer struct {
-}
-
-func (*UnimplementedAccessAPIServer) Ping(ctx context.Context, req *PingRequest) (*PingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetLatestBlockHeader(ctx context.Context, req *GetLatestBlockHeaderRequest) (*BlockHeaderResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetLatestBlockHeader not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetBlockHeaderByID(ctx context.Context, req *GetBlockHeaderByIDRequest) (*BlockHeaderResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetBlockHeaderByID not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetBlockHeaderByHeight(ctx context.Context, req *GetBlockHeaderByHeightRequest) (*BlockHeaderResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetBlockHeaderByHeight not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetLatestBlock(ctx context.Context, req *GetLatestBlockRequest) (*BlockResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetLatestBlock not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetBlockByID(ctx context.Context, req *GetBlockByIDRequest) (*BlockResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetBlockByID not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetBlockByHeight(ctx context.Context, req *GetBlockByHeightRequest) (*BlockResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetBlockByHeight not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetCollectionByID(ctx context.Context, req *GetCollectionByIDRequest) (*CollectionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetCollectionByID not implemented")
-}
-func (*UnimplementedAccessAPIServer) SendTransaction(ctx context.Context, req *SendTransactionRequest) (*SendTransactionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SendTransaction not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetTransaction(ctx context.Context, req *GetTransactionRequest) (*TransactionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetTransaction not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetTransactionResult(ctx context.Context, req *GetTransactionRequest) (*TransactionResultResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionResult not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetAccount(ctx context.Context, req *GetAccountRequest) (*GetAccountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAccount not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetAccountAtLatestBlock(ctx context.Context, req *GetAccountAtLatestBlockRequest) (*AccountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAccountAtLatestBlock not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetAccountAtBlockHeight(ctx context.Context, req *GetAccountAtBlockHeightRequest) (*AccountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAccountAtBlockHeight not implemented")
-}
-func (*UnimplementedAccessAPIServer) ExecuteScriptAtLatestBlock(ctx context.Context, req *ExecuteScriptAtLatestBlockRequest) (*ExecuteScriptResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ExecuteScriptAtLatestBlock not implemented")
-}
-func (*UnimplementedAccessAPIServer) ExecuteScriptAtBlockID(ctx context.Context, req *ExecuteScriptAtBlockIDRequest) (*ExecuteScriptResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ExecuteScriptAtBlockID not implemented")
-}
-func (*UnimplementedAccessAPIServer) ExecuteScriptAtBlockHeight(ctx context.Context, req *ExecuteScriptAtBlockHeightRequest) (*ExecuteScriptResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ExecuteScriptAtBlockHeight not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetEventsForHeightRange(ctx context.Context, req *GetEventsForHeightRangeRequest) (*EventsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetEventsForHeightRange not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetEventsForBlockIDs(ctx context.Context, req *GetEventsForBlockIDsRequest) (*EventsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetEventsForBlockIDs not implemented")
-}
-func (*UnimplementedAccessAPIServer) GetNetworkParameters(ctx context.Context, req *GetNetworkParametersRequest) (*GetNetworkParametersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetNetworkParameters not implemented")
-}
-
-func RegisterAccessAPIServer(s *grpc.Server, srv AccessAPIServer) {
-	s.RegisterService(&_AccessAPI_serviceDesc, srv)
-}
-
-func _AccessAPI_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).Ping(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/Ping",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).Ping(ctx, req.(*PingRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetLatestBlockHeader_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetLatestBlockHeaderRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetLatestBlockHeader(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetLatestBlockHeader",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetLatestBlockHeader(ctx, req.(*GetLatestBlockHeaderRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetBlockHeaderByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetBlockHeaderByIDRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetBlockHeaderByID(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetBlockHeaderByID",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetBlockHeaderByID(ctx, req.(*GetBlockHeaderByIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetBlockHeaderByHeight_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetBlockHeaderByHeightRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetBlockHeaderByHeight(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetBlockHeaderByHeight",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetBlockHeaderByHeight(ctx, req.(*GetBlockHeaderByHeightRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetLatestBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetLatestBlockRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetLatestBlock(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetLatestBlock",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetLatestBlock(ctx, req.(*GetLatestBlockRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetBlockByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetBlockByIDRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetBlockByID(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetBlockByID",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetBlockByID(ctx, req.(*GetBlockByIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetBlockByHeight_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetBlockByHeightRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetBlockByHeight(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetBlockByHeight",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetBlockByHeight(ctx, req.(*GetBlockByHeightRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetCollectionByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetCollectionByIDRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetCollectionByID(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetCollectionByID",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetCollectionByID(ctx, req.(*GetCollectionByIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_SendTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SendTransactionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).SendTransaction(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/SendTransaction",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).SendTransaction(ctx, req.(*SendTransactionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTransactionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetTransaction(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetTransaction",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetTransaction(ctx, req.(*GetTransactionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetTransactionResult_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTransactionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetTransactionResult(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetTransactionResult",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetTransactionResult(ctx, req.(*GetTransactionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAccountRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetAccount(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetAccount",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetAccount(ctx, req.(*GetAccountRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetAccountAtLatestBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAccountAtLatestBlockRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetAccountAtLatestBlock(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetAccountAtLatestBlock",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetAccountAtLatestBlock(ctx, req.(*GetAccountAtLatestBlockRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetAccountAtBlockHeight_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAccountAtBlockHeightRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetAccountAtBlockHeight(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetAccountAtBlockHeight",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetAccountAtBlockHeight(ctx, req.(*GetAccountAtBlockHeightRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_ExecuteScriptAtLatestBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ExecuteScriptAtLatestBlockRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).ExecuteScriptAtLatestBlock(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/ExecuteScriptAtLatestBlock",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).ExecuteScriptAtLatestBlock(ctx, req.(*ExecuteScriptAtLatestBlockRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_ExecuteScriptAtBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ExecuteScriptAtBlockIDRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).ExecuteScriptAtBlockID(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/ExecuteScriptAtBlockID",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).ExecuteScriptAtBlockID(ctx, req.(*ExecuteScriptAtBlockIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_ExecuteScriptAtBlockHeight_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ExecuteScriptAtBlockHeightRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).ExecuteScriptAtBlockHeight(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/ExecuteScriptAtBlockHeight",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).ExecuteScriptAtBlockHeight(ctx, req.(*ExecuteScriptAtBlockHeightRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetEventsForHeightRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetEventsForHeightRangeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetEventsForHeightRange(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetEventsForHeightRange",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetEventsForHeightRange(ctx, req.(*GetEventsForHeightRangeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetEventsForBlockIDs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetEventsForBlockIDsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetEventsForBlockIDs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetEventsForBlockIDs",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetEventsForBlockIDs(ctx, req.(*GetEventsForBlockIDsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetNetworkParameters_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetNetworkParametersRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetNetworkParameters(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetNetworkParameters",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetNetworkParameters(ctx, req.(*GetNetworkParametersRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-var _AccessAPI_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "flow.access.AccessAPI",
-	HandlerType: (*AccessAPIServer)(nil),
-	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "Ping",
-			Handler:    _AccessAPI_Ping_Handler,
-		},
-		{
-			MethodName: "GetLatestBlockHeader",
-			Handler:    _AccessAPI_GetLatestBlockHeader_Handler,
-		},
-		{
-			MethodName: "GetBlockHeaderByID",
-			Handler:    _AccessAPI_GetBlockHeaderByID_Handler,
-		},
-		{
-			MethodName: "GetBlockHeaderByHeight",
-			Handler:    _AccessAPI_GetBlockHeaderByHeight_Handler,
-		},
-		{
-			MethodName: "GetLatestBlock",
-			Handler:    _AccessAPI_GetLatestBlock_Handler,
-		},
-		{
-			MethodName: "GetBlockByID",
-			Handler:    _AccessAPI_GetBlockByID_Handler,
-		},
-		{
-			MethodName: "GetBlockByHeight",
-			Handler:    _AccessAPI_GetBlockByHeight_Handler,
-		},
-		{
-			MethodName: "GetCollectionByID",
-			Handler:    _AccessAPI_GetCollectionByID_Handler,
-		},
-		{
-			MethodName: "SendTransaction",
-			Handler:    _AccessAPI_SendTransaction_Handler,
-		},
-		{
-			MethodName: "GetTransaction",
-			Handler:    _AccessAPI_GetTransaction_Handler,
-		},
-		{
-			MethodName: "GetTransactionResult",
-			Handler:    _AccessAPI_GetTransactionResult_Handler,
-		},
-		{
-			MethodName: "GetAccount",
-			Handler:    _AccessAPI_GetAccount_Handler,
-		},
-		{
-			MethodName: "GetAccountAtLatestBlock",
-			Handler:    _AccessAPI_GetAccountAtLatestBlock_Handler,
-		},
-		{
-			MethodName: "GetAccountAtBlockHeight",
-			Handler:    _AccessAPI_GetAccountAtBlockHeight_Handler,
-		},
-		{
-			MethodName: "ExecuteScriptAtLatestBlock",
-			Handler:    _AccessAPI_ExecuteScriptAtLatestBlock_Handler,
-		},
-		{
-			MethodName: "ExecuteScriptAtBlockID",
-			Handler:    _AccessAPI_ExecuteScriptAtBlockID_Handler,
-		},
-		{
-			MethodName: "ExecuteScriptAtBlockHeight",
-			Handler:    _AccessAPI_ExecuteScriptAtBlockHeight_Handler,
-		},
-		{
-			MethodName: "GetEventsForHeightRange",
-			Handler:    _AccessAPI_GetEventsForHeightRange_Handler,
-		},
-		{
-			MethodName: "GetEventsForBlockIDs",
-			Handler:    _AccessAPI_GetEventsForBlockIDs_Handler,
-		},
-		{
-			MethodName: "GetNetworkParameters",
-			Handler:    _AccessAPI_GetNetworkParameters_Handler,
-		},
-	},
-	Streams:  []grpc.StreamDesc{},
-	Metadata: "flow/access/access.proto",
+	// 1383 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x58, 0x5b, 0x73, 0xd3, 0x46,
+	0x1b, 0x1e, 0x3b, 0x21, 0x89, 0xdf, 0x38, 0x0e, 0x2c, 0x60, 0x6c, 0x85, 0x24, 0x66, 0x39, 0x7c,
+	0x01, 0x3e, 0x64, 0x9a, 0x76, 0xa6, 0x05, 0x7a, 0xd1, 0x90, 0x42, 0xc8, 0x0c, 0x87, 0x8c, 0xcc,
+	0x30, 0xd3, 0x03, 0xcd, 0xc8, 0xd2, 0x62, 0x6b, 0xb0, 0x25, 0x57, 0xbb, 0x0e, 0xa5, 0xd3, 0x0b,
+	0x7a, 0xdb, 0x7f, 0xd4, 0xff, 0xd3, 0x1f, 0xd2, 0xd1, 0x6a, 0x57, 0xd6, 0x4a, 0x2b, 0xd9, 0x53,
+	0x6e, 0x20, 0xbb, 0xfb, 0xbc, 0xcf, 0x7b, 0xda, 0x7d, 0xf5, 0x24, 0xd0, 0x7a, 0x37, 0x0a, 0x3e,
+	0x74, 0x6d, 0xc7, 0x21, 0x94, 0x8a, 0xff, 0xcc, 0x49, 0x18, 0xb0, 0x00, 0xad, 0x47, 0x27, 0x66,
+	0xbc, 0x65, 0x6c, 0x71, 0x18, 0xf1, 0x99, 0xc7, 0x3c, 0xc2, 0x81, 0xc1, 0xd4, 0x67, 0x31, 0xd2,
+	0xe8, 0xa8, 0x87, 0xfd, 0x51, 0xe0, 0xbc, 0x3f, 0x1d, 0x12, 0xdb, 0x25, 0xa1, 0x40, 0xb4, 0x35,
+	0x08, 0x71, 0xb4, 0xa3, 0x1e, 0x39, 0xc1, 0x68, 0x44, 0x1c, 0xe6, 0x05, 0xbe, 0xde, 0x94, 0x9c,
+	0x91, 0xc4, 0xef, 0x8d, 0xcc, 0xd1, 0x6f, 0xc4, 0x99, 0x46, 0x96, 0xa7, 0x21, 0xa1, 0xd3, 0x91,
+	0x44, 0xed, 0xaa, 0x28, 0x16, 0xda, 0x3e, 0xb5, 0xd3, 0x1e, 0x76, 0x07, 0x41, 0x30, 0x18, 0x91,
+	0x2e, 0x5f, 0xf5, 0xa7, 0xef, 0xba, 0xcc, 0x1b, 0x13, 0xca, 0xec, 0xf1, 0x24, 0x06, 0xe0, 0x0d,
+	0x58, 0x3f, 0xf1, 0xfc, 0x81, 0x45, 0x7e, 0x9d, 0x12, 0xca, 0x70, 0x03, 0xea, 0xf1, 0x92, 0x4e,
+	0x02, 0x9f, 0x12, 0xfc, 0x10, 0xb6, 0x8e, 0x08, 0x7b, 0x6e, 0x33, 0x42, 0xd9, 0xe3, 0x28, 0xb3,
+	0x67, 0x3c, 0x75, 0x01, 0x47, 0x5b, 0x50, 0xf3, 0xe8, 0x29, 0x25, 0xf6, 0x88, 0xb8, 0xad, 0x4a,
+	0xa7, 0xb2, 0xb7, 0x66, 0xad, 0x79, 0xb4, 0xc7, 0xd7, 0xf8, 0x2e, 0xb4, 0x8f, 0x48, 0xda, 0xea,
+	0xf1, 0xc7, 0xe3, 0xef, 0xa5, 0x65, 0x03, 0xaa, 0x5e, 0x6c, 0x52, 0xb7, 0xaa, 0x9e, 0x8b, 0xbf,
+	0x86, 0xed, 0x2c, 0xf8, 0x19, 0xf1, 0x06, 0x43, 0x26, 0x0d, 0x9a, 0xb0, 0x32, 0xe4, 0x1b, 0xdc,
+	0x68, 0xd9, 0x12, 0x2b, 0x7c, 0x04, 0x17, 0x95, 0xc0, 0xe2, 0xc0, 0xd1, 0x7d, 0x38, 0xc7, 0x3b,
+	0xc1, 0xd1, 0xeb, 0xfb, 0x86, 0xc9, 0x3b, 0x2e, 0x2b, 0x65, 0xa6, 0x4d, 0x62, 0x20, 0xfe, 0x0a,
+	0x2e, 0xab, 0xa9, 0x2e, 0x94, 0xe4, 0x4d, 0xb8, 0x28, 0xe3, 0x2e, 0x4b, 0xef, 0x0b, 0xb8, 0x32,
+	0x83, 0x2d, 0x96, 0xd8, 0x23, 0xd8, 0x10, 0x61, 0x88, 0x94, 0xee, 0xa8, 0x29, 0x5d, 0xd2, 0xa5,
+	0x24, 0x93, 0xb9, 0x03, 0xad, 0x23, 0xc2, 0x0e, 0x93, 0x0b, 0x57, 0x16, 0xdb, 0x2b, 0x40, 0x33,
+	0x60, 0xe2, 0xed, 0x01, 0xc0, 0xec, 0xbe, 0x0a, 0x97, 0xed, 0x8c, 0xcb, 0x94, 0x59, 0x0a, 0x8c,
+	0xdf, 0x40, 0xb3, 0x47, 0x7c, 0xf7, 0xf5, 0xec, 0x36, 0x4a, 0xd7, 0xdf, 0xc2, 0x7a, 0xea, 0x8e,
+	0x16, 0xf4, 0x26, 0x6d, 0x97, 0x86, 0xe3, 0xdb, 0x70, 0x25, 0xc7, 0x2b, 0xa2, 0xcd, 0xe6, 0xf4,
+	0x3f, 0xde, 0x4c, 0x4d, 0x04, 0x59, 0x60, 0x0f, 0x2e, 0xea, 0xf8, 0x3e, 0x2f, 0xd0, 0x7f, 0x2a,
+	0xd0, 0x56, 0x59, 0xa7, 0x23, 0x96, 0x70, 0x7f, 0x03, 0x2b, 0x94, 0xd9, 0x6c, 0x4a, 0x39, 0x6d,
+	0x63, 0xbf, 0x53, 0x4c, 0xdb, 0xe3, 0x38, 0x4b, 0xe0, 0xd1, 0x2e, 0xac, 0xc7, 0x3f, 0x9d, 0x3a,
+	0x81, 0x4b, 0x5a, 0xd5, 0x4e, 0x65, 0x6f, 0xc3, 0x82, 0x78, 0xeb, 0x30, 0x70, 0x09, 0xba, 0x0e,
+	0x1b, 0x24, 0x0c, 0x83, 0xf0, 0x74, 0x4c, 0x28, 0xb5, 0x07, 0xa4, 0xb5, 0xd4, 0xa9, 0xec, 0xd5,
+	0xac, 0x3a, 0xdf, 0x7c, 0x11, 0xef, 0xa1, 0xff, 0xc3, 0x0a, 0x9f, 0x34, 0xb4, 0xb5, 0xdc, 0x59,
+	0xd2, 0x5c, 0xa4, 0x27, 0xd1, 0xa1, 0x25, 0x30, 0xa8, 0x0d, 0x6b, 0xf1, 0xd0, 0xf3, 0xdc, 0xd6,
+	0x39, 0x5e, 0xb6, 0x55, 0xbe, 0x3e, 0x76, 0xf1, 0x3d, 0xb8, 0x70, 0x44, 0xd8, 0x41, 0x3c, 0x2f,
+	0x65, 0x81, 0x5b, 0xb0, 0x6a, 0xbb, 0x6e, 0x48, 0x28, 0x15, 0x55, 0x96, 0x4b, 0xfc, 0x14, 0x50,
+	0x1a, 0x9e, 0x3c, 0xd4, 0x55, 0x31, 0x71, 0x45, 0x95, 0x9b, 0x99, 0x70, 0xa4, 0x81, 0x84, 0xe1,
+	0x87, 0xb0, 0x33, 0xe3, 0x39, 0xd0, 0xbd, 0xd8, 0xe2, 0x18, 0x0e, 0x61, 0xf3, 0xf3, 0x03, 0x78,
+	0xab, 0x06, 0x20, 0x66, 0x49, 0xfa, 0x4d, 0x17, 0x06, 0x80, 0xae, 0x41, 0x5d, 0x7e, 0x43, 0xf8,
+	0x9b, 0xaf, 0xf2, 0x37, 0xbf, 0xde, 0x9f, 0x71, 0xe0, 0x1f, 0xe0, 0xda, 0x13, 0x3e, 0xee, 0x49,
+	0xcf, 0x09, 0xbd, 0x89, 0x3e, 0xc5, 0x26, 0xac, 0x50, 0x7e, 0x2a, 0x1c, 0x88, 0x15, 0xba, 0x0a,
+	0x35, 0x3b, 0x1c, 0x4c, 0xc7, 0xbc, 0xbf, 0xd5, 0xce, 0xd2, 0x5e, 0xdd, 0x9a, 0x6d, 0xe0, 0x09,
+	0x6c, 0x67, 0xa8, 0x39, 0xe9, 0x6c, 0x36, 0xa4, 0xbb, 0x5d, 0x51, 0xba, 0x9d, 0xf2, 0x58, 0x2d,
+	0xf6, 0xb8, 0x94, 0xf5, 0xf8, 0x47, 0x2e, 0x19, 0x4d, 0xb9, 0xb2, 0x45, 0xa9, 0xe4, 0x8a, 0xf2,
+	0x1f, 0xbd, 0xdf, 0x83, 0xcb, 0x8a, 0xf7, 0xa4, 0xe9, 0x97, 0xe0, 0xdc, 0x99, 0x3d, 0x9a, 0x12,
+	0x91, 0x64, 0xbc, 0xc0, 0x67, 0xbc, 0xb1, 0xfc, 0xfe, 0xd3, 0xa7, 0x41, 0x28, 0x82, 0xb4, 0xfd,
+	0x01, 0x91, 0x91, 0x22, 0x58, 0x66, 0x1f, 0x27, 0xb1, 0x59, 0xcd, 0xe2, 0x3f, 0x47, 0xd1, 0x53,
+	0x66, 0x87, 0x2c, 0xd3, 0x52, 0xbe, 0x27, 0xa2, 0xdf, 0x06, 0x20, 0xbe, 0x2b, 0x01, 0x4b, 0x1c,
+	0x50, 0x23, 0xbe, 0x2b, 0x3a, 0xfe, 0x92, 0x7f, 0x65, 0x13, 0xbf, 0xa2, 0x27, 0xb4, 0xcc, 0xe9,
+	0x16, 0xd4, 0x64, 0xa3, 0x64, 0x9f, 0xd7, 0x44, 0xa7, 0x28, 0xfe, 0xab, 0x0a, 0x8d, 0x98, 0x2d,
+	0x35, 0xd0, 0x56, 0x63, 0xe5, 0x10, 0xdd, 0xc8, 0xe8, 0xd5, 0x63, 0x33, 0xa5, 0x81, 0x4c, 0x15,
+	0x6d, 0x8a, 0x89, 0x25, 0x4d, 0x8c, 0xbf, 0x2b, 0xb0, 0x12, 0xef, 0x95, 0xdd, 0x90, 0xf9, 0x77,
+	0x3b, 0x35, 0x7b, 0x96, 0x16, 0x98, 0x3d, 0x87, 0xb0, 0x19, 0x13, 0x26, 0xaa, 0xa5, 0xb5, 0x2c,
+	0x26, 0x71, 0xac, 0x6b, 0x4c, 0xa9, 0x6b, 0xcc, 0xd7, 0x12, 0x61, 0x35, 0xb8, 0x49, 0xb2, 0xc6,
+	0xdb, 0xbc, 0xb8, 0x2f, 0x09, 0xfb, 0x10, 0x84, 0xef, 0x4f, 0xec, 0xd0, 0x1e, 0x13, 0x46, 0x42,
+	0x59, 0x5c, 0xfc, 0x00, 0xae, 0xea, 0x8f, 0x45, 0xe1, 0xda, 0xb0, 0xe6, 0x0c, 0x6d, 0xcf, 0x97,
+	0xf9, 0xd6, 0xac, 0x55, 0xbe, 0x3e, 0x8e, 0x3e, 0x32, 0x37, 0x13, 0xc5, 0x70, 0x12, 0x05, 0xe2,
+	0x04, 0xa3, 0x68, 0x62, 0x93, 0x9e, 0x6f, 0x4f, 0xe8, 0x30, 0x90, 0xf7, 0x1b, 0xbf, 0x82, 0xed,
+	0x82, 0x73, 0xe1, 0xc4, 0x04, 0x44, 0x49, 0xe8, 0xd9, 0x23, 0xef, 0x77, 0xe2, 0xca, 0x53, 0x51,
+	0x5e, 0xcd, 0x09, 0xfe, 0x0e, 0xae, 0x47, 0x17, 0x46, 0x8a, 0xc2, 0xb8, 0x35, 0xb3, 0x9b, 0x33,
+	0xff, 0x35, 0x63, 0x5f, 0xbe, 0x4b, 0xad, 0xb9, 0x08, 0xeb, 0x18, 0xce, 0x67, 0x85, 0xa7, 0x98,
+	0x91, 0x3b, 0xd9, 0xbe, 0xa9, 0x5c, 0xd6, 0x26, 0x51, 0x37, 0xf6, 0xff, 0xbc, 0x00, 0xb5, 0x03,
+	0x7e, 0xd7, 0x0e, 0x4e, 0x8e, 0xd1, 0x23, 0x58, 0x8e, 0x64, 0x26, 0x6a, 0x29, 0x97, 0x30, 0x25,
+	0x44, 0x8d, 0xb6, 0xe6, 0x44, 0x44, 0xd5, 0x87, 0x4b, 0x3a, 0x4d, 0x8a, 0xf6, 0x14, 0x93, 0x12,
+	0xd9, 0x6a, 0x74, 0x14, 0xa4, 0x4e, 0x3e, 0xfe, 0xc2, 0xbf, 0x55, 0x19, 0xed, 0x8a, 0x6e, 0x65,
+	0x3d, 0xe8, 0xc5, 0xed, 0x02, 0xfc, 0xef, 0xa0, 0xa9, 0x97, 0xbb, 0xe8, 0x4e, 0xa9, 0x0f, 0x65,
+	0x6e, 0x2e, 0xe0, 0xe7, 0x04, 0x1a, 0x6a, 0x21, 0x10, 0x2e, 0xa9, 0x92, 0xe4, 0x35, 0xf2, 0xbc,
+	0x09, 0xe3, 0x73, 0xa8, 0xa7, 0x05, 0x2f, 0xea, 0x68, 0xe3, 0x4d, 0x57, 0xa3, 0x8c, 0xed, 0x35,
+	0x9c, 0xcf, 0xea, 0x62, 0x74, 0xa3, 0x80, 0x51, 0xcd, 0xbd, 0x8c, 0xf5, 0x27, 0x2e, 0x4c, 0x54,
+	0xf5, 0x8b, 0x6e, 0x66, 0x69, 0xb5, 0xea, 0xd8, 0xd8, 0x55, 0x60, 0x1a, 0x61, 0xfc, 0x33, 0x6c,
+	0x66, 0x54, 0x28, 0xba, 0xae, 0xd8, 0xe8, 0xb5, 0xaf, 0x71, 0xa3, 0x1c, 0x24, 0xd8, 0xdf, 0xf0,
+	0x86, 0xa5, 0xc9, 0x73, 0x0d, 0xd3, 0x70, 0xab, 0x4d, 0xd0, 0xf1, 0xc6, 0x8f, 0x26, 0x27, 0x4a,
+	0x17, 0x62, 0xbf, 0x55, 0xc2, 0x9e, 0x16, 0xb6, 0x2f, 0x00, 0x66, 0xba, 0x08, 0xed, 0x64, 0x99,
+	0x55, 0xa1, 0x98, 0x29, 0xb4, 0x46, 0x19, 0xba, 0xfc, 0x77, 0x26, 0x9d, 0xce, 0x43, 0x77, 0x0b,
+	0x6c, 0x75, 0x52, 0xc9, 0xb8, 0xaa, 0x80, 0xe7, 0x78, 0x49, 0xa9, 0x93, 0x12, 0x2f, 0x79, 0x0d,
+	0x33, 0xc7, 0xcb, 0x04, 0x8c, 0x62, 0x4d, 0x87, 0x4c, 0xf5, 0x5b, 0x3c, 0x4f, 0xfc, 0x19, 0xb8,
+	0x18, 0x9f, 0x78, 0x1c, 0x42, 0x53, 0x2f, 0xf5, 0x32, 0x13, 0xa6, 0x54, 0x0f, 0x2e, 0xe4, 0x29,
+	0x9f, 0x5b, 0xba, 0x88, 0xe6, 0x5c, 0x6f, 0x6a, 0x1d, 0x17, 0xf1, 0xe8, 0xf0, 0x9e, 0xe9, 0x74,
+	0x5a, 0xbe, 0x67, 0x25, 0x6a, 0xce, 0xd8, 0x2a, 0xd1, 0x40, 0xe8, 0x2d, 0x7f, 0x31, 0x39, 0x51,
+	0x96, 0xff, 0xcc, 0x14, 0xe9, 0xb6, 0x72, 0xfa, 0xf7, 0x9c, 0x3e, 0xa7, 0x3b, 0xf2, 0xf4, 0x45,
+	0xca, 0xc5, 0xb8, 0xbd, 0x00, 0x52, 0x38, 0xfb, 0x54, 0xe1, 0xca, 0xb6, 0x44, 0xaa, 0xa0, 0x7d,
+	0xfd, 0x77, 0xa1, 0x4c, 0xd7, 0x18, 0xea, 0x4d, 0x2a, 0x97, 0x38, 0x9f, 0x2a, 0x5c, 0x68, 0x15,
+	0x8a, 0x0e, 0x74, 0x3f, 0x57, 0xd7, 0x39, 0xf2, 0xc6, 0xd0, 0x5d, 0xad, 0x12, 0x39, 0xf3, 0xf8,
+	0x39, 0x18, 0x41, 0x38, 0x30, 0x03, 0x9f, 0x9b, 0x25, 0xd2, 0x31, 0xb6, 0xff, 0xd1, 0x1c, 0x78,
+	0x6c, 0x38, 0xed, 0x9b, 0x4e, 0x30, 0xee, 0xc6, 0x90, 0x2e, 0xff, 0x27, 0xf9, 0xd3, 0xd9, 0x20,
+	0xe8, 0xa6, 0xfe, 0xa0, 0xd8, 0x5f, 0xe1, 0x07, 0x5f, 0xfe, 0x1b, 0x00, 0x00, 0xff, 0xff, 0x83,
+	0x46, 0x53, 0xca, 0x66, 0x14, 0x00, 0x00,
 }

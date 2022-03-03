@@ -1,0 +1,66 @@
+---
+title: Flow Access API rate limits on Dapper Labs Access nodes
+---
+
+#### Rate limits
+
+Following are the current rate limits for the [Access Node gRPC API](/access-api) in total across all Dapper Labs Access nodes. The actual limits are enforced by each individual node. If you are using a load balanced endpoint, the limits below are the max rate, and may vary depending on how your requests are routed.
+
+Once the limit has reached, the client will receive an RPC error `ResourceExhausted` in the gRPC response.
+
+Please note, these limits only apply to the access nodes hosted by Dapper Labs. Access nodes run by other node operators will have different rate limits.
+
+##### Mainnet
+
+|                 gRPC API                             | Total request per second per client IP        |
+|:-----------------------------------------------------|:---------------------------------------------:|
+| flow.access.AccessAPI/Ping                           |                   2000                        |
+| flow.access.AccessAPI/GetLatestBlockHeader           |                   2000                        |
+| flow.access.AccessAPI/GetBlockHeaderByID             |                   2000                        |
+| flow.access.AccessAPI/GetBlockHeaderByHeight         |                   2000                        |
+| flow.access.AccessAPI/GetLatestBlock                 |                   2000                        |
+| flow.access.AccessAPI/GetBlockByID                   |                   2000                        |
+| flow.access.AccessAPI/GetBlockByHeight               |                   2000                        |
+| flow.access.AccessAPI/GetCollectionByID              |                   2000                        |
+| flow.access.AccessAPI/SendTransaction                |                   2000                        |
+| flow.access.AccessAPI/GetTransaction                 |                   2000                        |
+| flow.access.AccessAPI/GetTransactionResult           |                   2000                        |
+| flow.access.AccessAPI/GetAccount                     |                   2000                        |
+| flow.access.AccessAPI/GetAccountAtLatestBlock        |                   2000                        |
+| flow.access.AccessAPI/GetAccountAtBlockHeight        |                   2000                        |
+| flow.access.AccessAPI/ExecuteScriptAtLatestBlock     |                    40                         |
+| flow.access.AccessAPI/ExecuteScriptAtBlockID         |                    40                         |
+| flow.access.AccessAPI/ExecuteScriptAtBlockHeight     |                    40                         |
+| flow.access.AccessAPI/GetEventsForHeightRange        |                   100                         |
+| flow.access.AccessAPI/GetEventsForBlockIDs           |                   2000                        |
+| flow.access.AccessAPI/GetNetworkParameters           |                   2000                        |
+| flow.access.AccessAPI/GetLatestProtocolStateSnapshot |                   2000                        |
+
+
+##### Testnet
+
+|                 gRPC API                             | Total request per second per IP               |
+|:-----------------------------------------------------|:---------------------------------------------:|
+| flow.access.AccessAPI/Ping                           |                   2000                        |
+| flow.access.AccessAPI/GetLatestBlockHeader           |                   2000                        |
+| flow.access.AccessAPI/GetBlockHeaderByID             |                   2000                        |
+| flow.access.AccessAPI/GetBlockHeaderByHeight         |                   2000                        |
+| flow.access.AccessAPI/GetLatestBlock                 |                   2000                        |
+| flow.access.AccessAPI/GetBlockByID                   |                   2000                        |
+| flow.access.AccessAPI/GetBlockByHeight               |                   2000                        |
+| flow.access.AccessAPI/GetCollectionByID              |                   2000                        |
+| flow.access.AccessAPI/SendTransaction                |                   2000                        |
+| flow.access.AccessAPI/GetTransaction                 |                   2000                        |
+| flow.access.AccessAPI/GetTransactionResult           |                   2000                        |
+| flow.access.AccessAPI/GetAccount                     |                   2000                        |
+| flow.access.AccessAPI/GetAccountAtLatestBlock        |                   2000                        |
+| flow.access.AccessAPI/GetAccountAtBlockHeight        |                   2000                        |
+| flow.access.AccessAPI/ExecuteScriptAtLatestBlock     |                   2000                        |
+| flow.access.AccessAPI/ExecuteScriptAtBlockID         |                   2000                        |
+| flow.access.AccessAPI/ExecuteScriptAtBlockHeight     |                   2000                        |
+| flow.access.AccessAPI/GetEventsForHeightRange        |                   100                         |
+| flow.access.AccessAPI/GetEventsForBlockIDs           |                   2000                        |
+| flow.access.AccessAPI/GetNetworkParameters           |                   2000                        |
+| flow.access.AccessAPI/GetLatestProtocolStateSnapshot |                   2000                        |
+
+_The rate limits are the same for the gRPC web interface_

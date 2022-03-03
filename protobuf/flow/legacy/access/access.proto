@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package access;
 
+option go_package = "github.com/onflow/flow/protobuf/go/flow/legacy/access";
+option java_package = "org.onflow.protobuf.legacy.access";
+
 import "flow/legacy/entities/account.proto";
 import "flow/legacy/entities/block_header.proto";
 import "flow/legacy/entities/block.proto";
@@ -11,74 +14,94 @@ import "flow/legacy/entities/transaction.proto";
 
 // AccessAPI is the public-facing API provided by access nodes.
 service AccessAPI {
-
   // Ping is used to check if the access node is alive and healthy.
-  rpc Ping (PingRequest) returns (PingResponse);
+  rpc Ping(PingRequest) returns (PingResponse);
 
   // Block Headers
 
   // GetLatestBlockHeader gets the latest sealed or unsealed block header.
-  rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderResponse);
+  rpc GetLatestBlockHeader(GetLatestBlockHeaderRequest)
+      returns (BlockHeaderResponse);
   // GetBlockHeaderByID gets a block header by ID.
-  rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse);
+  rpc GetBlockHeaderByID(GetBlockHeaderByIDRequest)
+      returns (BlockHeaderResponse);
   // GetBlockHeaderByHeight gets a block header by height.
-  rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderResponse);
+  rpc GetBlockHeaderByHeight(GetBlockHeaderByHeightRequest)
+      returns (BlockHeaderResponse);
 
   // Blocks
 
-  // GetLatestBlock gets the full payload of the latest sealed or unsealed block.
-  rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse);
+  // GetLatestBlock gets the full payload of the latest sealed or unsealed
+  // block.
+  rpc GetLatestBlock(GetLatestBlockRequest) returns (BlockResponse);
   // GetBlockByID gets a full block by ID.
-  rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse);
+  rpc GetBlockByID(GetBlockByIDRequest) returns (BlockResponse);
   // GetBlockByHeight gets a full block by height.
-  rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse);
+  rpc GetBlockByHeight(GetBlockByHeightRequest) returns (BlockResponse);
 
   // Collections
 
   // GetCollectionByID gets a collection by ID.
-  rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse);
+  rpc GetCollectionByID(GetCollectionByIDRequest) returns (CollectionResponse);
 
   // Transactions
 
   // SendTransaction submits a transaction to the network.
-  rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse);
+  rpc SendTransaction(SendTransactionRequest) returns (SendTransactionResponse);
   // GetTransaction gets a transaction by ID.
-  rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse);
+  rpc GetTransaction(GetTransactionRequest) returns (TransactionResponse);
   // GetTransactionResult gets the result of a transaction.
-  rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultResponse);
+  rpc GetTransactionResult(GetTransactionRequest)
+      returns (TransactionResultResponse);
 
   // Accounts
 
   // GetAccount is an alias for GetAccountAtLatestBlock.
   //
-  // Warning: this function is deprecated. It behaves identically to GetAccountAtLatestBlock and will be removed in a future version.
-  rpc GetAccount (GetAccountRequest) returns (GetAccountResponse);
-  // GetAccountAtLatestBlock gets an account by address from the latest sealed execution state.
-  rpc GetAccountAtLatestBlock (GetAccountAtLatestBlockRequest) returns (AccountResponse);
-  // GetAccountAtBlockHeight gets an account by address at the given block height
-  rpc GetAccountAtBlockHeight (GetAccountAtBlockHeightRequest) returns (AccountResponse);
+  // Warning: this function is deprecated. It behaves identically to
+  // GetAccountAtLatestBlock and will be removed in a future version.
+  rpc GetAccount(GetAccountRequest) returns (GetAccountResponse);
+  // GetAccountAtLatestBlock gets an account by address from the latest sealed
+  // execution state.
+  rpc GetAccountAtLatestBlock(GetAccountAtLatestBlockRequest)
+      returns (AccountResponse);
+  // GetAccountAtBlockHeight gets an account by address at the given block
+  // height
+  rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest)
+      returns (AccountResponse);
 
   // Scripts
 
-  // ExecuteScriptAtLatestBlock executes a read-only Cadence script against the latest sealed execution state.
-  rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse);
-  // ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
-  rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse);
-  // ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the execution state at the given block height.
-  rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse);
+  // ExecuteScriptAtLatestBlock executes a read-only Cadence script against the
+  // latest sealed execution state.
+  rpc ExecuteScriptAtLatestBlock(ExecuteScriptAtLatestBlockRequest)
+      returns (ExecuteScriptResponse);
+  // ExecuteScriptAtBlockID executes a ready-only Cadence script against the
+  // execution state at the block with the given ID.
+  rpc ExecuteScriptAtBlockID(ExecuteScriptAtBlockIDRequest)
+      returns (ExecuteScriptResponse);
+  // ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the
+  // execution state at the given block height.
+  rpc ExecuteScriptAtBlockHeight(ExecuteScriptAtBlockHeightRequest)
+      returns (ExecuteScriptResponse);
 
   // Events
 
-  // GetEventsForHeightRange retrieves events emitted within the specified block range.
-  rpc GetEventsForHeightRange (GetEventsForHeightRangeRequest) returns (EventsResponse);
+  // GetEventsForHeightRange retrieves events emitted within the specified block
+  // range.
+  rpc GetEventsForHeightRange(GetEventsForHeightRangeRequest)
+      returns (EventsResponse);
 
-  // GetEventsForBlockIDs retrieves events for the specified block IDs and event type.
-  rpc GetEventsForBlockIDs (GetEventsForBlockIDsRequest) returns (EventsResponse);
+  // GetEventsForBlockIDs retrieves events for the specified block IDs and event
+  // type.
+  rpc GetEventsForBlockIDs(GetEventsForBlockIDsRequest)
+      returns (EventsResponse);
 
   // NetworkParameters
 
   // GetNetworkParameters retrieves the Flow network details
-  rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParametersResponse);
+  rpc GetNetworkParameters(GetNetworkParametersRequest)
+      returns (GetNetworkParametersResponse);
 }
 
 message PingRequest {}

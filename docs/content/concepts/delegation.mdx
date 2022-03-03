@@ -1,0 +1,70 @@
+---
+title: Delegation
+---
+
+<Callout type="warning" title="Staking Transactions">
+  Staking transactions are referred to throughout this document but will not
+  exist in the described form for Beta Mainnet. At launch, node operators supply
+  the Flow team with their staking key directly to ensure they are included in
+  the genesis process. Staking transactions refer to a future state when nodes
+  are dynamically joining and leaving the network which will not be possible
+  until a later time. \n\nAll other mechanisms (smart contracts, rewards, etc.)
+  will work as described at launch.
+</Callout>
+
+## Separating Node Operation from Holding Stake
+
+Reliably operating a node on a decentralized network requires skill and commitment to the preservation of the integrity and security of that network. Providing the capital to pay for that security and earn a return for doing so requires a different set of skills but an equivalent responsibility and duty towards the maintenance of that network.
+
+In acknowledgment of these two critical and very different roles, it is important that Flow enables the participation of both groups in their own right. This separation of roles: capital from operation, is so clear and important that the protocol explicitly differentiates the key needed to operate the node (the Staking Key) from the key which manage the capital associated operating the node (Account Key). The account governed by the account key deposits the stake and receives the rewards. The staking key is used only for node operations and has no direct financial authority. You can learn more about Node Keys [here](doc:node-keys).
+
+### Account Key
+
+Signs the staking transactions for a node (i.e. the transaction that affirms the stake would like to participate in node operation - this is manual for the beta version of the network). Rewards from operating the node will then be deposited into the account governed by the account key. Distribution of the received rewards between the involved parties (node operator(s) and staking-capital provider(s)) can be managed by a smart contract. All accounts on Flow can contain smart contracts and the account governed by the account key is no exception - deploying a contract to that account to support additional logic around the distribution of rewards is straightforward and completely customizable.
+
+### Staking Key
+
+Is used by the node operator to sign protocol message (such as voting for blocks as a consensus node). The staking key signature on a message authenticates the original sender of that message and guarantees message integrity. In other words, the Staking Key is only relevant for the Flow-internal protocol but it cannot sign any transactions.
+
+You can learn more about this division of identity [here](https://docs.onflow.org/docs/nodes-network-identity).
+
+## Managing Rewards & Stake
+
+As mentioned above, the account key must authorize the initial staking transaction and the withdrawal of the staked FLOW tokens for participation in the protocol. As part of the staking transaction, the public staking key is supplied. If the staking transaction is successful, the stake is withdrawn from the Account governed by the Account Key and the node is authorized to participate in the network.
+
+The withdrawn funds are locked by the protocol for the duration of at least one epoch plus the unbonding period. The stake deposits of all nodes are protected by the strong security guarantees of Flow's Byzantine-Fault-Tolerant consensus algorithm. This means that no malicious actor can access the staking deposits. Thereby, Flow guarantees that the deposited stakes are managed in compliance with the protocol rules.
+
+By participating in the network, a node earns rewards, which are automatically deposited (weekly) into the Account governed by the Account Key. This account _can_ (optionally) also hold any information and logic (via smart contract(s)) around the management of these funds such as:
+
+- the stake commitments from any individuals who pooled their stake to run the node,
+- the weight of rewards for their respective stake,
+- the service fee (or reward portion) paid to the operator of the node (which Flow currently enforces to be a 10% commission on rewards for node operators)
+- the withdrawal terms of stake from the pool (if longer than/different from those enforced by the protocol), and
+- the liability for slashing.
+
+A template delegation contract will be provided by the Flow team initially to ensure the safety of delegators, but ultimately it's completely parameterizable by the agents providing the stake and the node operator.
+
+## Slashing
+
+So, who gets slashed? Severe slashing on Flow only takes place in the most nefarious of attacks. The protocol reserves slashing for maintaining the security of the protocol rather than its liveness. You can find more details on the conditions under which a node is slashed [here](doc:slashing-conditions).
+
+While a node is in operation and during the unbonding period thereafter, the consensus nodes hold the staked tokens. Slashable protocol violations must be adjudicated by a supermajority of more than 2/3 of the staked consensus nodes in order to take effect. If a node is found guilty of committing a slashable protocol violation, the consensus nodes directly deduct a fine from the node's stake. Of course, only the remaining stake is deposited back into the Account governed by the Account Key at the end of the unbonding period.
+
+## Process
+
+If you are a node operator, who is trying to pool capital to meet the minimum stake for operating a node, there are a couple of things you need to do:
+
+1. **Deploy the `Delegation Contract`** into your Account (in the Beta period, you'll need the Flow team to co-sign your smart-contract-deployment transaction).
+2. **Recruit folks who'd like to delegate** their stake to your services and submit the appropriate transactions to your contract to assign them their rights.
+3. **Run the node** (see [Node Operation Section](https://docs.onflow.org/docs/setting-up-a-node))
+4. **Receive Rewards** - you and your delegators will automatically receive rewards according to the payout schedule you defined in the contract.
+
+## FAQ
+
+#### Is the Stake Stored in a User Account?
+
+Unstaked tokens are indeed stored in an account held by the owner of those tokens. When those tokens are successfully staked, the staking amount is withdrawn from the account (which submitted the staking transaction and authorized the token withdrawal). The staked tokens are then:
+
+1.  entirely locked by the protocol (maintained by the Execution Nodes)
+2.  the stake is added to the Identity for the newly created node (the Identity Table is part of Flow's [_Protocol State_](doc:nodes-network-identity), which is maintained by the Consensus Nodes)
+3.  **At genesis, **Nodes are _initialized with the stake already accredited to their [Network Identity](doc:nodes-network-identity)_, which is external to the Node Operator's Account.

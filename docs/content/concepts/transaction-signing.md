@@ -99,7 +99,7 @@ the payload signatures.
 The transaction _payer_ is required to sign the authorization envelope. 
 These signatures are the **envelope signatures**.
 
-> ❗ Special case: if an account is both the _payer_ and either a _proposer_ or _authorizer_, it is only required to sign the envelope. 
+> ❗ Special case: if an account is both the _payer_ and either a _proposer_ or _authorizer_, it is required only to sign the envelope. 
 
 ### Payment Envelope
 
@@ -139,7 +139,7 @@ with full signing weight.
 
 | Account   | Key ID | Weight |
 |-----------|--------|--------|
-| `0x01`    | 1      | 1.0    |
+| `0x01`    | 1      | 1000   |
 
 ```javascript
 {	
@@ -171,8 +171,8 @@ uses weighted keys to achieve multi-sig functionality.
 
 | Account   | Key ID | Weight |
 |-----------|--------|--------|
-| `0x01`    | 1      | 0.5    |
-| `0x01`    | 2      | 0.5    |
+| `0x01`    | 1      | 500    |
+| `0x01`    | 2      | 500    |
 
 ```javascript
 {	
@@ -208,8 +208,8 @@ require at least one signature from each account.
 
 | Account   | Key ID | Weight |
 |-----------|--------|--------|
-| `0x01`    | 1      | 1.0    |
-| `0x02`    | 1      | 1.0    |
+| `0x01`    | 1      | 1000   |
+| `0x02`    | 1      | 1000   |
 
 ```javascript
 {	
@@ -247,10 +247,10 @@ use weighted keys to achieve multi-sig functionality.
 
 | Account   | Key ID | Weight |
 |-----------|--------|--------|
-| `0x01`    | 1      | 0.5    |
-| `0x01`    | 2      | 0.5    |
-| `0x02`    | 1      | 0.5    |
-| `0x02`    | 2      | 0.5    |
+| `0x01`    | 1      | 500    |
+| `0x01`    | 2      | 500    |
+| `0x02`    | 1      | 500    |
+| `0x02`    | 2      | 500    |
 
 ```javascript
 {	

@@ -1,9 +1,15 @@
-import React, { useContext } from "react";
 import styled from "@emotion/styled";
+
+import React, { useContext } from "react";
+
 import { NavItemsContext, NavItemDescription } from "gatsby-theme-flow";
+
 import { size } from "polished";
-import { MenuWrapper, MenuItem } from "./menu";
+
 import { getProjectIcon } from "gatsby-theme-flow/src/ui/icons";
+
+import { MenuWrapper, MenuItem } from "./menu";
+import TrackingLink from "./tracking-link";
 
 const AppIcon = styled.div({
   ...size("100%"),
@@ -18,15 +24,12 @@ const AppIcon = styled.div({
   },
 });
 
-const StyledLink = styled.a({
+const StyledTrackingLink = styled(TrackingLink)(() => ({
   color: "inherit",
   textDecoration: "none",
-  ":hover": {
-    textDecoration: "underline",
-  },
-});
+}));
 
-export default function DocsetMenu() {
+export default function DocsetMenu(props) {
   const navItems = useContext(NavItemsContext);
 
   return (
@@ -45,7 +48,18 @@ export default function DocsetMenu() {
                 }}
               />
             }
-            title={<StyledLink href={navItem.url}>{navItem.title}</StyledLink>}
+            title={
+              <StyledTrackingLink
+                href={navItem.url}
+                eventName={
+                  props.isSidebar
+                    ? `Homepage_nav_${navItem.url}_clicked`
+                    : `Homepage_link_${navItem.url}_clicked`
+                }
+              >
+                {navItem.title}
+              </StyledTrackingLink>
+            }
           >
             <NavItemDescription>{navItem.description}</NavItemDescription>
           </MenuItem>

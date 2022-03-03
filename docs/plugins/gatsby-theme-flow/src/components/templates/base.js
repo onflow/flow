@@ -1,17 +1,30 @@
-import CustomSEO from '../custom-seo';
-import Footer from '../footer';
-import PageContent from '../page-content';
-import PageHeader from '../page-header';
-import PropTypes from 'prop-types';
-import React, {Fragment} from 'react';
-import rehypeReact from 'rehype-react';
-import styled from '@emotion/styled';
-import ContentWrapper from '../content-wrapper';
-import {Markdown, components} from '../markdown';
+import styled from "@emotion/styled";
 
-const StyledContentWrapper = styled(ContentWrapper)({
-  paddingBottom: 0,
-  maxWidth: 1280,
+import PropTypes from "prop-types";
+
+import React, { Fragment } from "react";
+
+import rehypeReact from "rehype-react";
+
+import ContentWrapper from "../content-wrapper";
+import CustomSEO from "../custom-seo";
+import Footer from "../footer";
+import { Markdown, components } from "../markdown";
+import PageContent from "../page-content";
+import PageHeader from "../page-header";
+
+function paddedPage(path) {
+  if (path === "/http-api/") return false;
+  return true;
+}
+
+const StyledContentWrapper = styled(ContentWrapper)(({ path }) => {
+  return {
+    padding: paddedPage(path) ? null : 0,
+    paddingBottom: 0,
+    maxWidth: paddedPage(path) ? 1280 : "100%",
+    marginTop: paddedPage(path) ? 0 : "-22px"
+  };
 });
 
 const renderAst = new rehypeReact({
@@ -20,23 +33,19 @@ const renderAst = new rehypeReact({
 }).Compiler;
 
 export default function BaseTemplate(props) {
-  const {hash, pathname} = props.location;
-  const {file, site} = props.data;
-  const {frontmatter, headings, fields} = file.childMarkdownRemark || file.childMdx;
-  const {title, description} = site.siteMetadata;
-  const {
-    sidebar,
-    githubUrl,
-    discordUrl,
-    twitterUrl,
-    baseUrl
-  } = props.pageContext;
+  const { hash, pathname } = props.location;
+  const { file, site } = props.data;
+  const { frontmatter, headings, fields } =
+    file.childMarkdownRemark || file.childMdx;
+  const { title, description } = site.siteMetadata;
+  const { sidebar, githubUrl, discordUrl, discourseUrl, twitterUrl, baseUrl } =
+    props.pageContext;
 
   const allHeadings = headings.concat(props.extraHeadings || []);
 
   const pages = sidebar.contents
-    .reduce((acc, {pages}) => acc.concat(pages), [])
-    .filter(page => !page.anchor);
+    .reduce((acc, { pages }) => acc.concat(pages), [])
+    .filter((page) => !page.anchor);
 
   return (
     <Fragment>
@@ -47,10 +56,11 @@ export default function BaseTemplate(props) {
         baseUrl={baseUrl}
         image={fields.image}
         twitterUrl={twitterUrl}
+        twitterHandle={"flow_blockchain"}
       />
-      <StyledContentWrapper>
+      <StyledContentWrapper path={pathname}>
         <PageHeader {...frontmatter} />
-        <hr />
+        {frontmatter.title || frontmatter.description ? <hr /> : ""}
         <PageContent
           title={frontmatter.title}
           playgroundUrl={fields.playgroundUrl}
@@ -60,6 +70,7 @@ export default function BaseTemplate(props) {
           hash={hash}
           githubUrl={githubUrl}
           discordUrl={discordUrl}
+          discourseUrl={discourseUrl}
         >
           {file.childMdx ? (
             <Markdown>{file.childMdx.body}</Markdown>

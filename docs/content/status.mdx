@@ -1,0 +1,55 @@
+---
+title: Flow Network Status
+---
+
+import {
+  NetworkStatus,
+  MainnetSpork,
+  Announcements
+} from "../plugins/gatsby-theme-flow/src/components/flow-status";
+
+import { StatusContext } from "../plugins/gatsby-theme-flow/src/components/flow-status/context";
+
+import {
+  MAINNET,
+  TESTNET,
+  CANARYNET
+} from "../plugins/gatsby-theme-flow/src/components/flow-status/constants";
+
+## Chains
+
+<StatusContext.Consumer>
+  {({ mainnetStatus, testnetStatus, canaryNetStatus }) => (
+    <>
+      <NetworkStatus
+        status={mainnetStatus}
+        networkName={MAINNET}
+        networkVersion="16"
+        versionUrl=""
+        nextSporkDate="April, 2022"
+      />
+      <NetworkStatus
+        status={testnetStatus}
+        networkName={TESTNET}
+        networkVersion="33"
+        versionUrl=""
+        nextSporkDate="April, 2022"
+      />
+      <NetworkStatus
+      status={canaryNetStatus}
+        networkName={CANARYNET}
+        networkVersion="12"
+        versionUrl=""
+        nextSporkDate="March, 2022"
+      />
+    </>
+  )}
+</StatusContext.Consumer>
+
+## Upcoming Mainnet Spork
+
+<MainnetSpork />
+
+## Announcements
+
+<Announcements />

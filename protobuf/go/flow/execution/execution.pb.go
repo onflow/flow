@@ -4,13 +4,9 @@
 package execution
 
 import (
-	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	entities "github.com/onflow/flow/protobuf/go/flow/entities"
-	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -510,6 +506,225 @@ func (m *GetTransactionResultResponse) GetEvents() []*entities.Event {
 	return nil
 }
 
+type GetRegisterAtBlockIDRequest struct {
+	BlockId              []byte   `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
+	RegisterOwner        []byte   `protobuf:"bytes,2,opt,name=register_owner,json=registerOwner,proto3" json:"register_owner,omitempty"`
+	RegisterController   []byte   `protobuf:"bytes,3,opt,name=register_controller,json=registerController,proto3" json:"register_controller,omitempty"`
+	RegisterKey          []byte   `protobuf:"bytes,4,opt,name=register_key,json=registerKey,proto3" json:"register_key,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetRegisterAtBlockIDRequest) Reset()         { *m = GetRegisterAtBlockIDRequest{} }
+func (m *GetRegisterAtBlockIDRequest) String() string { return proto.CompactTextString(m) }
+func (*GetRegisterAtBlockIDRequest) ProtoMessage()    {}
+func (*GetRegisterAtBlockIDRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_699624211ed46c53, []int{10}
+}
+
+func (m *GetRegisterAtBlockIDRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetRegisterAtBlockIDRequest.Unmarshal(m, b)
+}
+func (m *GetRegisterAtBlockIDRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetRegisterAtBlockIDRequest.Marshal(b, m, deterministic)
+}
+func (m *GetRegisterAtBlockIDRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetRegisterAtBlockIDRequest.Merge(m, src)
+}
+func (m *GetRegisterAtBlockIDRequest) XXX_Size() int {
+	return xxx_messageInfo_GetRegisterAtBlockIDRequest.Size(m)
+}
+func (m *GetRegisterAtBlockIDRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetRegisterAtBlockIDRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetRegisterAtBlockIDRequest proto.InternalMessageInfo
+
+func (m *GetRegisterAtBlockIDRequest) GetBlockId() []byte {
+	if m != nil {
+		return m.BlockId
+	}
+	return nil
+}
+
+func (m *GetRegisterAtBlockIDRequest) GetRegisterOwner() []byte {
+	if m != nil {
+		return m.RegisterOwner
+	}
+	return nil
+}
+
+func (m *GetRegisterAtBlockIDRequest) GetRegisterController() []byte {
+	if m != nil {
+		return m.RegisterController
+	}
+	return nil
+}
+
+func (m *GetRegisterAtBlockIDRequest) GetRegisterKey() []byte {
+	if m != nil {
+		return m.RegisterKey
+	}
+	return nil
+}
+
+type GetRegisterAtBlockIDResponse struct {
+	Value                []byte   `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetRegisterAtBlockIDResponse) Reset()         { *m = GetRegisterAtBlockIDResponse{} }
+func (m *GetRegisterAtBlockIDResponse) String() string { return proto.CompactTextString(m) }
+func (*GetRegisterAtBlockIDResponse) ProtoMessage()    {}
+func (*GetRegisterAtBlockIDResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_699624211ed46c53, []int{11}
+}
+
+func (m *GetRegisterAtBlockIDResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetRegisterAtBlockIDResponse.Unmarshal(m, b)
+}
+func (m *GetRegisterAtBlockIDResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetRegisterAtBlockIDResponse.Marshal(b, m, deterministic)
+}
+func (m *GetRegisterAtBlockIDResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetRegisterAtBlockIDResponse.Merge(m, src)
+}
+func (m *GetRegisterAtBlockIDResponse) XXX_Size() int {
+	return xxx_messageInfo_GetRegisterAtBlockIDResponse.Size(m)
+}
+func (m *GetRegisterAtBlockIDResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetRegisterAtBlockIDResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetRegisterAtBlockIDResponse proto.InternalMessageInfo
+
+func (m *GetRegisterAtBlockIDResponse) GetValue() []byte {
+	if m != nil {
+		return m.Value
+	}
+	return nil
+}
+
+type GetLatestBlockHeaderRequest struct {
+	IsSealed             bool     `protobuf:"varint,1,opt,name=is_sealed,json=isSealed,proto3" json:"is_sealed,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetLatestBlockHeaderRequest) Reset()         { *m = GetLatestBlockHeaderRequest{} }
+func (m *GetLatestBlockHeaderRequest) String() string { return proto.CompactTextString(m) }
+func (*GetLatestBlockHeaderRequest) ProtoMessage()    {}
+func (*GetLatestBlockHeaderRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_699624211ed46c53, []int{12}
+}
+
+func (m *GetLatestBlockHeaderRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetLatestBlockHeaderRequest.Unmarshal(m, b)
+}
+func (m *GetLatestBlockHeaderRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetLatestBlockHeaderRequest.Marshal(b, m, deterministic)
+}
+func (m *GetLatestBlockHeaderRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetLatestBlockHeaderRequest.Merge(m, src)
+}
+func (m *GetLatestBlockHeaderRequest) XXX_Size() int {
+	return xxx_messageInfo_GetLatestBlockHeaderRequest.Size(m)
+}
+func (m *GetLatestBlockHeaderRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetLatestBlockHeaderRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetLatestBlockHeaderRequest proto.InternalMessageInfo
+
+func (m *GetLatestBlockHeaderRequest) GetIsSealed() bool {
+	if m != nil {
+		return m.IsSealed
+	}
+	return false
+}
+
+type GetBlockHeaderByIDRequest struct {
+	Id                   []byte   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetBlockHeaderByIDRequest) Reset()         { *m = GetBlockHeaderByIDRequest{} }
+func (m *GetBlockHeaderByIDRequest) String() string { return proto.CompactTextString(m) }
+func (*GetBlockHeaderByIDRequest) ProtoMessage()    {}
+func (*GetBlockHeaderByIDRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_699624211ed46c53, []int{13}
+}
+
+func (m *GetBlockHeaderByIDRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetBlockHeaderByIDRequest.Unmarshal(m, b)
+}
+func (m *GetBlockHeaderByIDRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetBlockHeaderByIDRequest.Marshal(b, m, deterministic)
+}
+func (m *GetBlockHeaderByIDRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetBlockHeaderByIDRequest.Merge(m, src)
+}
+func (m *GetBlockHeaderByIDRequest) XXX_Size() int {
+	return xxx_messageInfo_GetBlockHeaderByIDRequest.Size(m)
+}
+func (m *GetBlockHeaderByIDRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetBlockHeaderByIDRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetBlockHeaderByIDRequest proto.InternalMessageInfo
+
+func (m *GetBlockHeaderByIDRequest) GetId() []byte {
+	if m != nil {
+		return m.Id
+	}
+	return nil
+}
+
+type BlockHeaderResponse struct {
+	Block                *entities.BlockHeader `protobuf:"bytes,1,opt,name=block,proto3" json:"block,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
+}
+
+func (m *BlockHeaderResponse) Reset()         { *m = BlockHeaderResponse{} }
+func (m *BlockHeaderResponse) String() string { return proto.CompactTextString(m) }
+func (*BlockHeaderResponse) ProtoMessage()    {}
+func (*BlockHeaderResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_699624211ed46c53, []int{14}
+}
+
+func (m *BlockHeaderResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BlockHeaderResponse.Unmarshal(m, b)
+}
+func (m *BlockHeaderResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BlockHeaderResponse.Marshal(b, m, deterministic)
+}
+func (m *BlockHeaderResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BlockHeaderResponse.Merge(m, src)
+}
+func (m *BlockHeaderResponse) XXX_Size() int {
+	return xxx_messageInfo_BlockHeaderResponse.Size(m)
+}
+func (m *BlockHeaderResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_BlockHeaderResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BlockHeaderResponse proto.InternalMessageInfo
+
+func (m *BlockHeaderResponse) GetBlock() *entities.BlockHeader {
+	if m != nil {
+		return m.Block
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*PingRequest)(nil), "flow.execution.PingRequest")
 	proto.RegisterType((*PingResponse)(nil), "flow.execution.PingResponse")
@@ -522,280 +737,66 @@ func init() {
 	proto.RegisterType((*GetEventsForBlockIDsRequest)(nil), "flow.execution.GetEventsForBlockIDsRequest")
 	proto.RegisterType((*GetTransactionResultRequest)(nil), "flow.execution.GetTransactionResultRequest")
 	proto.RegisterType((*GetTransactionResultResponse)(nil), "flow.execution.GetTransactionResultResponse")
+	proto.RegisterType((*GetRegisterAtBlockIDRequest)(nil), "flow.execution.GetRegisterAtBlockIDRequest")
+	proto.RegisterType((*GetRegisterAtBlockIDResponse)(nil), "flow.execution.GetRegisterAtBlockIDResponse")
+	proto.RegisterType((*GetLatestBlockHeaderRequest)(nil), "flow.execution.GetLatestBlockHeaderRequest")
+	proto.RegisterType((*GetBlockHeaderByIDRequest)(nil), "flow.execution.GetBlockHeaderByIDRequest")
+	proto.RegisterType((*BlockHeaderResponse)(nil), "flow.execution.BlockHeaderResponse")
 }
 
 func init() { proto.RegisterFile("flow/execution/execution.proto", fileDescriptor_699624211ed46c53) }
 
 var fileDescriptor_699624211ed46c53 = []byte{
-	// 572 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0x5f, 0x73, 0xd2, 0x40,
-	0x10, 0x1f, 0x2c, 0x42, 0xd9, 0x04, 0x1e, 0x4e, 0x86, 0xa1, 0x01, 0x2b, 0xc6, 0x71, 0x86, 0xb1,
-	0x35, 0x75, 0xe8, 0x8c, 0xef, 0x54, 0xb1, 0xf2, 0x50, 0xad, 0xa7, 0x4f, 0xbe, 0x30, 0x69, 0xb2,
-	0xd2, 0x8c, 0x34, 0x47, 0x73, 0x97, 0x56, 0xbf, 0x86, 0x9f, 0xc0, 0xef, 0xe6, 0x17, 0x71, 0x72,
-	0x7b, 0x40, 0x8b, 0x01, 0xe1, 0x2d, 0xfb, 0xdb, 0x3f, 0xbf, 0xbd, 0xfd, 0xed, 0x06, 0xf6, 0xbf,
-	0x4d, 0xc4, 0xed, 0x11, 0xfe, 0xc0, 0x20, 0x55, 0x91, 0x88, 0x17, 0x5f, 0xde, 0x34, 0x11, 0x4a,
-	0xb0, 0x5a, 0xe6, 0xf7, 0xe6, 0xa8, 0xd3, 0xa2, 0xf8, 0x58, 0x45, 0x2a, 0x42, 0x79, 0xe4, 0x07,
-	0x81, 0x48, 0x63, 0x45, 0xc1, 0xce, 0xde, 0x7d, 0x27, 0xde, 0xe0, 0xcc, 0xe5, 0x56, 0xc1, 0x3a,
-	0x8f, 0xe2, 0x31, 0xc7, 0xeb, 0x14, 0xa5, 0x72, 0x6b, 0x60, 0x93, 0x29, 0xa7, 0x22, 0x96, 0xe8,
-	0x7e, 0x02, 0xe7, 0x14, 0x55, 0x9f, 0xaa, 0xf5, 0xd5, 0xc9, 0x44, 0x04, 0xdf, 0x87, 0x6f, 0x4d,
-	0x34, 0xdb, 0x83, 0xdd, 0x8b, 0x0c, 0x19, 0x45, 0x61, 0xb3, 0xd0, 0x29, 0x74, 0x6d, 0x5e, 0xd6,
-	0xf6, 0x30, 0x64, 0x4d, 0x28, 0xfb, 0x61, 0x98, 0xa0, 0x94, 0xcd, 0x07, 0xe4, 0x31, 0xa6, 0xfb,
-	0x11, 0x5a, 0xb9, 0x25, 0x89, 0x91, 0xbd, 0x82, 0xb2, 0x69, 0x5e, 0x97, 0xb4, 0x7a, 0x0d, 0x8f,
-	0x9e, 0x6a, 0xba, 0xf7, 0x4c, 0x26, 0x9f, 0x85, 0xb9, 0x53, 0x78, 0x3c, 0xd0, 0x73, 0xc0, 0xcf,
-	0x41, 0x12, 0x4d, 0xb7, 0x6a, 0xb3, 0x01, 0x25, 0xa9, 0x93, 0x4c, 0x97, 0xc6, 0x62, 0x6d, 0xa8,
-	0xf8, 0xc9, 0x38, 0xbd, 0xc2, 0x58, 0xc9, 0xe6, 0x4e, 0x67, 0xa7, 0x6b, 0xf3, 0x05, 0xe0, 0xbe,
-	0x86, 0xfd, 0x55, 0x8c, 0xe6, 0x15, 0x75, 0x78, 0x78, 0xe3, 0x4f, 0x52, 0x34, 0x7c, 0x64, 0xb8,
-	0x7f, 0x0a, 0xd0, 0x3e, 0x45, 0x35, 0xc8, 0xe6, 0x2f, 0xdf, 0x89, 0xc4, 0x64, 0xc9, 0x79, 0xda,
-	0x19, 0x94, 0x13, 0x94, 0xe9, 0x44, 0xc9, 0x66, 0xa1, 0xb3, 0xd3, 0xb5, 0x7a, 0xc7, 0xde, 0x7d,
-	0x9d, 0xbd, 0x75, 0xe9, 0x1e, 0xd7, 0xb9, 0x7c, 0x56, 0xc3, 0x51, 0x50, 0x22, 0x68, 0xdd, 0x08,
-	0x9e, 0x82, 0x4d, 0xae, 0x4b, 0x8c, 0xc6, 0x97, 0x34, 0x88, 0x22, 0xb7, 0x34, 0xf6, 0x5e, 0x43,
-	0xec, 0x10, 0x4a, 0x7a, 0x67, 0x68, 0x14, 0x56, 0xaf, 0xbe, 0x24, 0x89, 0xee, 0x88, 0x9b, 0x18,
-	0xf7, 0x83, 0x16, 0x38, 0xa7, 0x4b, 0x52, 0x83, 0x41, 0x51, 0xfd, 0x9c, 0xd2, 0x64, 0x2a, 0x5c,
-	0x7f, 0xb3, 0x16, 0x54, 0x66, 0xed, 0x65, 0xfb, 0x92, 0x8d, 0x7b, 0xd7, 0xf4, 0x27, 0xdd, 0x91,
-	0xae, 0xf7, 0x25, 0xf1, 0x63, 0xe9, 0x07, 0xd9, 0x10, 0xcc, 0x33, 0xff, 0xaf, 0xee, 0x73, 0xa8,
-	0xa9, 0x45, 0x5a, 0x16, 0x40, 0x2a, 0x57, 0xef, 0xa0, 0xc3, 0xd0, 0xfd, 0x45, 0xb2, 0xe4, 0x30,
-	0x18, 0x59, 0x9e, 0x80, 0x25, 0x95, 0xaf, 0x52, 0x39, 0x0a, 0x44, 0x48, 0x9d, 0x57, 0x39, 0x10,
-	0xf4, 0x46, 0x84, 0xc8, 0x9e, 0x41, 0x15, 0x93, 0x44, 0x24, 0xa3, 0x2b, 0x94, 0xd2, 0x1f, 0xa3,
-	0xe6, 0xa9, 0x70, 0x5b, 0x83, 0x67, 0x84, 0x6d, 0x37, 0xc5, 0xde, 0xef, 0x22, 0xd8, 0x83, 0x99,
-	0xec, 0xfd, 0xf3, 0x21, 0xeb, 0x43, 0x31, 0x3b, 0x4d, 0xd6, 0x5a, 0x5e, 0x89, 0x3b, 0xf7, 0xeb,
-	0xb4, 0xf3, 0x9d, 0xe6, 0x1d, 0x31, 0x3c, 0xca, 0x39, 0x3d, 0xf6, 0x22, 0x67, 0xc9, 0x56, 0x9c,
-	0xbc, 0x73, 0xb0, 0x51, 0xac, 0xe1, 0xbb, 0x85, 0x46, 0xfe, 0x9d, 0xb0, 0x97, 0xcb, 0x65, 0xd6,
-	0x5e, 0xb0, 0xe3, 0x6d, 0x1a, 0x6e, 0x88, 0xaf, 0xa1, 0x9e, 0xb7, 0x82, 0xec, 0x60, 0xb3, 0x73,
-	0x22, 0xd2, 0xc3, 0x6d, 0x6e, 0xcf, 0x50, 0xfe, 0xb3, 0x43, 0xb9, 0x94, 0xab, 0x76, 0x39, 0x97,
-	0x72, 0xe5, 0x5a, 0x9e, 0x58, 0x5f, 0x2b, 0xf3, 0xc8, 0x8b, 0x92, 0xfe, 0x9f, 0x1f, 0xff, 0x0d,
-	0x00, 0x00, 0xff, 0xff, 0x86, 0xe9, 0x3a, 0x0c, 0x39, 0x06, 0x00, 0x00,
-}
-
-// Reference imports to suppress errors if they are not otherwise used.
-var _ context.Context
-var _ grpc.ClientConn
-
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
-
-// ExecutionAPIClient is the client API for ExecutionAPI service.
-//
-// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type ExecutionAPIClient interface {
-	// Ping is used to check if the access node is alive and healthy.
-	Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error)
-	// GetAccountAtBlockID gets an account by address at the given block ID
-	GetAccountAtBlockID(ctx context.Context, in *GetAccountAtBlockIDRequest, opts ...grpc.CallOption) (*GetAccountAtBlockIDResponse, error)
-	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
-	ExecuteScriptAtBlockID(ctx context.Context, in *ExecuteScriptAtBlockIDRequest, opts ...grpc.CallOption) (*ExecuteScriptAtBlockIDResponse, error)
-	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
-	GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*GetEventsForBlockIDsResponse, error)
-	// GetTransactionResult gets the result of a transaction.
-	GetTransactionResult(ctx context.Context, in *GetTransactionResultRequest, opts ...grpc.CallOption) (*GetTransactionResultResponse, error)
-}
-
-type executionAPIClient struct {
-	cc *grpc.ClientConn
-}
-
-func NewExecutionAPIClient(cc *grpc.ClientConn) ExecutionAPIClient {
-	return &executionAPIClient{cc}
-}
-
-func (c *executionAPIClient) Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error) {
-	out := new(PingResponse)
-	err := c.cc.Invoke(ctx, "/flow.execution.ExecutionAPI/Ping", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *executionAPIClient) GetAccountAtBlockID(ctx context.Context, in *GetAccountAtBlockIDRequest, opts ...grpc.CallOption) (*GetAccountAtBlockIDResponse, error) {
-	out := new(GetAccountAtBlockIDResponse)
-	err := c.cc.Invoke(ctx, "/flow.execution.ExecutionAPI/GetAccountAtBlockID", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *executionAPIClient) ExecuteScriptAtBlockID(ctx context.Context, in *ExecuteScriptAtBlockIDRequest, opts ...grpc.CallOption) (*ExecuteScriptAtBlockIDResponse, error) {
-	out := new(ExecuteScriptAtBlockIDResponse)
-	err := c.cc.Invoke(ctx, "/flow.execution.ExecutionAPI/ExecuteScriptAtBlockID", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *executionAPIClient) GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*GetEventsForBlockIDsResponse, error) {
-	out := new(GetEventsForBlockIDsResponse)
-	err := c.cc.Invoke(ctx, "/flow.execution.ExecutionAPI/GetEventsForBlockIDs", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *executionAPIClient) GetTransactionResult(ctx context.Context, in *GetTransactionResultRequest, opts ...grpc.CallOption) (*GetTransactionResultResponse, error) {
-	out := new(GetTransactionResultResponse)
-	err := c.cc.Invoke(ctx, "/flow.execution.ExecutionAPI/GetTransactionResult", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// ExecutionAPIServer is the server API for ExecutionAPI service.
-type ExecutionAPIServer interface {
-	// Ping is used to check if the access node is alive and healthy.
-	Ping(context.Context, *PingRequest) (*PingResponse, error)
-	// GetAccountAtBlockID gets an account by address at the given block ID
-	GetAccountAtBlockID(context.Context, *GetAccountAtBlockIDRequest) (*GetAccountAtBlockIDResponse, error)
-	// ExecuteScriptAtBlockID executes a ready-only Cadence script against the execution state at the block with the given ID.
-	ExecuteScriptAtBlockID(context.Context, *ExecuteScriptAtBlockIDRequest) (*ExecuteScriptAtBlockIDResponse, error)
-	// GetEventsForBlockIDs retrieves events for all the specified block IDs that have the given type
-	GetEventsForBlockIDs(context.Context, *GetEventsForBlockIDsRequest) (*GetEventsForBlockIDsResponse, error)
-	// GetTransactionResult gets the result of a transaction.
-	GetTransactionResult(context.Context, *GetTransactionResultRequest) (*GetTransactionResultResponse, error)
-}
-
-// UnimplementedExecutionAPIServer can be embedded to have forward compatible implementations.
-type UnimplementedExecutionAPIServer struct {
-}
-
-func (*UnimplementedExecutionAPIServer) Ping(ctx context.Context, req *PingRequest) (*PingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
-}
-func (*UnimplementedExecutionAPIServer) GetAccountAtBlockID(ctx context.Context, req *GetAccountAtBlockIDRequest) (*GetAccountAtBlockIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAccountAtBlockID not implemented")
-}
-func (*UnimplementedExecutionAPIServer) ExecuteScriptAtBlockID(ctx context.Context, req *ExecuteScriptAtBlockIDRequest) (*ExecuteScriptAtBlockIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ExecuteScriptAtBlockID not implemented")
-}
-func (*UnimplementedExecutionAPIServer) GetEventsForBlockIDs(ctx context.Context, req *GetEventsForBlockIDsRequest) (*GetEventsForBlockIDsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetEventsForBlockIDs not implemented")
-}
-func (*UnimplementedExecutionAPIServer) GetTransactionResult(ctx context.Context, req *GetTransactionResultRequest) (*GetTransactionResultResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionResult not implemented")
-}
-
-func RegisterExecutionAPIServer(s *grpc.Server, srv ExecutionAPIServer) {
-	s.RegisterService(&_ExecutionAPI_serviceDesc, srv)
-}
-
-func _ExecutionAPI_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ExecutionAPIServer).Ping(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.execution.ExecutionAPI/Ping",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExecutionAPIServer).Ping(ctx, req.(*PingRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ExecutionAPI_GetAccountAtBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAccountAtBlockIDRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ExecutionAPIServer).GetAccountAtBlockID(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.execution.ExecutionAPI/GetAccountAtBlockID",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExecutionAPIServer).GetAccountAtBlockID(ctx, req.(*GetAccountAtBlockIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ExecutionAPI_ExecuteScriptAtBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ExecuteScriptAtBlockIDRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ExecutionAPIServer).ExecuteScriptAtBlockID(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.execution.ExecutionAPI/ExecuteScriptAtBlockID",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExecutionAPIServer).ExecuteScriptAtBlockID(ctx, req.(*ExecuteScriptAtBlockIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ExecutionAPI_GetEventsForBlockIDs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetEventsForBlockIDsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ExecutionAPIServer).GetEventsForBlockIDs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.execution.ExecutionAPI/GetEventsForBlockIDs",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExecutionAPIServer).GetEventsForBlockIDs(ctx, req.(*GetEventsForBlockIDsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _ExecutionAPI_GetTransactionResult_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTransactionResultRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ExecutionAPIServer).GetTransactionResult(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.execution.ExecutionAPI/GetTransactionResult",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExecutionAPIServer).GetTransactionResult(ctx, req.(*GetTransactionResultRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-var _ExecutionAPI_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "flow.execution.ExecutionAPI",
-	HandlerType: (*ExecutionAPIServer)(nil),
-	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "Ping",
-			Handler:    _ExecutionAPI_Ping_Handler,
-		},
-		{
-			MethodName: "GetAccountAtBlockID",
-			Handler:    _ExecutionAPI_GetAccountAtBlockID_Handler,
-		},
-		{
-			MethodName: "ExecuteScriptAtBlockID",
-			Handler:    _ExecutionAPI_ExecuteScriptAtBlockID_Handler,
-		},
-		{
-			MethodName: "GetEventsForBlockIDs",
-			Handler:    _ExecutionAPI_GetEventsForBlockIDs_Handler,
-		},
-		{
-			MethodName: "GetTransactionResult",
-			Handler:    _ExecutionAPI_GetTransactionResult_Handler,
-		},
-	},
-	Streams:  []grpc.StreamDesc{},
-	Metadata: "flow/execution/execution.proto",
+	// 806 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x56, 0xdd, 0x52, 0xe3, 0x36,
+	0x14, 0x9e, 0x90, 0x90, 0x9f, 0x93, 0x9f, 0x0b, 0xc1, 0x30, 0xc1, 0x01, 0x9a, 0x9a, 0x61, 0x86,
+	0x16, 0xea, 0xb4, 0xa1, 0xd3, 0x8b, 0xde, 0x05, 0x4a, 0x43, 0xa6, 0x65, 0x61, 0xcd, 0x5e, 0xed,
+	0x4d, 0xc6, 0xb1, 0x85, 0xe3, 0x21, 0x58, 0x41, 0x92, 0x61, 0xf3, 0x1a, 0xfb, 0x2a, 0xfb, 0x48,
+	0xbc, 0xc8, 0x8e, 0x25, 0x39, 0xbf, 0x4a, 0x36, 0xb9, 0xc9, 0x44, 0x47, 0xdf, 0x39, 0xdf, 0xf9,
+	0xd1, 0xf9, 0xc6, 0x70, 0xf4, 0x38, 0x20, 0x6f, 0x0d, 0xfc, 0x05, 0xbb, 0x11, 0x0f, 0x48, 0x38,
+	0xf9, 0x67, 0x0d, 0x29, 0xe1, 0x04, 0x55, 0xe2, 0x7b, 0x6b, 0x6c, 0x35, 0x6a, 0x12, 0x1f, 0xf2,
+	0x80, 0x07, 0x98, 0x35, 0x1c, 0xd7, 0x25, 0x51, 0xc8, 0x25, 0xd8, 0xa8, 0xcf, 0x5e, 0xf6, 0x06,
+	0xc4, 0x7d, 0xea, 0xf6, 0xb1, 0xe3, 0x61, 0xaa, 0x10, 0xfb, 0xb3, 0x08, 0xfc, 0x8a, 0x13, 0x67,
+	0xb3, 0x0c, 0xc5, 0xfb, 0x20, 0xf4, 0x6d, 0xfc, 0x12, 0x61, 0xc6, 0xcd, 0x0a, 0x94, 0xe4, 0x91,
+	0x0d, 0x49, 0xc8, 0xb0, 0xf9, 0x11, 0x8c, 0x36, 0xe6, 0x2d, 0xc9, 0xd7, 0xe2, 0x97, 0x71, 0xec,
+	0xce, 0x3f, 0x0a, 0x8d, 0xf6, 0x21, 0x2f, 0xd9, 0x02, 0xaf, 0x9a, 0xaa, 0xa7, 0x4e, 0x4b, 0x76,
+	0x4e, 0x9c, 0x3b, 0x1e, 0xaa, 0x42, 0xce, 0xf1, 0x3c, 0x8a, 0x19, 0xab, 0x6e, 0xc9, 0x1b, 0x75,
+	0x34, 0xef, 0xa0, 0xa6, 0x0d, 0x29, 0x19, 0xd1, 0xef, 0x90, 0x53, 0xe5, 0x89, 0x90, 0xc5, 0xe6,
+	0x9e, 0x25, 0x9b, 0xa1, 0xb2, 0xb7, 0x94, 0xa7, 0x9d, 0xc0, 0xcc, 0x21, 0x1c, 0x5e, 0x8b, 0x4e,
+	0xe1, 0x07, 0x97, 0x06, 0xc3, 0x8d, 0xd2, 0xdc, 0x83, 0x2c, 0x13, 0x4e, 0x2a, 0x4b, 0x75, 0x42,
+	0x07, 0x50, 0x70, 0xa8, 0x1f, 0x3d, 0xe3, 0x90, 0xb3, 0x6a, 0xba, 0x9e, 0x3e, 0x2d, 0xd9, 0x13,
+	0x83, 0xf9, 0x17, 0x1c, 0x2d, 0x63, 0x54, 0x55, 0xec, 0xc2, 0xf6, 0xab, 0x33, 0x88, 0xb0, 0xe2,
+	0x93, 0x07, 0xf3, 0x3d, 0x05, 0x07, 0x6d, 0xcc, 0xaf, 0xe3, 0xfe, 0xb3, 0x7f, 0x09, 0x55, 0x5e,
+	0x6c, 0xec, 0x76, 0x0b, 0x39, 0x8a, 0x59, 0x34, 0xe0, 0xac, 0x9a, 0xaa, 0xa7, 0x4f, 0x8b, 0xcd,
+	0x0b, 0x6b, 0xf6, 0x25, 0x58, 0xab, 0xdc, 0x2d, 0x5b, 0xf8, 0xda, 0x49, 0x0c, 0x83, 0x43, 0x56,
+	0x9a, 0x56, 0xb5, 0xe0, 0x67, 0x28, 0x25, 0x4f, 0x26, 0xf0, 0xfb, 0xb2, 0x11, 0x19, 0xbb, 0x28,
+	0x6c, 0x37, 0xc2, 0x84, 0xce, 0x21, 0x2b, 0xde, 0x8c, 0x6c, 0x45, 0xb1, 0xb9, 0x3b, 0x37, 0x12,
+	0x91, 0x91, 0xad, 0x30, 0xe6, 0x07, 0x31, 0x60, 0x4d, 0x96, 0x72, 0x1a, 0x08, 0x32, 0x7c, 0x34,
+	0x94, 0x9d, 0x29, 0xd8, 0xe2, 0x3f, 0xaa, 0x41, 0x21, 0x49, 0x2f, 0x7e, 0x2f, 0x71, 0xbb, 0xf3,
+	0x2a, 0x3f, 0x66, 0x76, 0x45, 0xbc, 0x4f, 0xd4, 0x09, 0x99, 0xe3, 0xc6, 0x4d, 0x50, 0x65, 0xfe,
+	0x78, 0xba, 0x27, 0x50, 0xe1, 0x13, 0xb7, 0x18, 0x20, 0xa7, 0x5c, 0x9e, 0xb2, 0x76, 0x3c, 0xf3,
+	0xab, 0x1c, 0x8b, 0x86, 0x41, 0x8d, 0xe5, 0x27, 0x28, 0x32, 0xee, 0xf0, 0x88, 0x75, 0x5d, 0xe2,
+	0xc9, 0xcc, 0xcb, 0x36, 0x48, 0xd3, 0x15, 0xf1, 0x30, 0x3a, 0x86, 0x32, 0xa6, 0x94, 0xd0, 0xee,
+	0x33, 0x66, 0xcc, 0xf1, 0xb1, 0xe0, 0x29, 0xd8, 0x25, 0x61, 0xbc, 0x95, 0xb6, 0x0d, 0xbb, 0xf8,
+	0x2d, 0x25, 0xca, 0xb6, 0xb1, 0x1f, 0x30, 0x8e, 0xe9, 0x26, 0x8f, 0xfa, 0x04, 0x2a, 0x54, 0xb9,
+	0x75, 0xc9, 0x5b, 0x88, 0x69, 0x52, 0x76, 0x62, 0xbd, 0x8b, 0x8d, 0xa8, 0x01, 0x3b, 0x63, 0x98,
+	0x4b, 0x42, 0x4e, 0xc9, 0x60, 0x80, 0x69, 0x35, 0x2d, 0xb0, 0x28, 0xb9, 0xba, 0x1a, 0xdf, 0xc4,
+	0x2f, 0x65, 0xec, 0xf0, 0x84, 0x47, 0xd5, 0x8c, 0x40, 0x16, 0x13, 0xdb, 0x7f, 0x78, 0x64, 0xfe,
+	0x29, 0x3a, 0xa9, 0x49, 0x7a, 0xe5, 0x5e, 0xfc, 0x2d, 0x4a, 0xfd, 0xdf, 0xe1, 0x98, 0x49, 0x8f,
+	0x1b, 0xa1, 0x5e, 0x49, 0xa9, 0x35, 0x28, 0x04, 0xac, 0xcb, 0xb0, 0x33, 0xc0, 0xb2, 0xd6, 0xbc,
+	0x9d, 0x0f, 0xd8, 0x83, 0x38, 0x9b, 0x67, 0xb0, 0xdf, 0xc6, 0xd3, 0x5e, 0x97, 0xa3, 0x49, 0x93,
+	0x2a, 0xb0, 0x35, 0x6e, 0xcf, 0x56, 0xe0, 0x99, 0x6d, 0xd8, 0x99, 0x89, 0x3f, 0xd6, 0x9c, 0x6d,
+	0xd1, 0x3b, 0xa5, 0x38, 0xc6, 0xdc, 0x60, 0xa6, 0x5d, 0x24, 0xb0, 0xf9, 0x9e, 0x85, 0xd2, 0x75,
+	0xb2, 0x94, 0xad, 0xfb, 0x0e, 0x6a, 0x41, 0x26, 0x16, 0x4e, 0x54, 0x9b, 0x5f, 0xd8, 0x29, 0x75,
+	0x35, 0x0e, 0xf4, 0x97, 0x2a, 0x8b, 0x10, 0x76, 0x34, 0xc2, 0x88, 0x7e, 0xd5, 0x48, 0xc0, 0x12,
+	0x41, 0x36, 0xce, 0xd6, 0xc2, 0x2a, 0xbe, 0x37, 0xd8, 0xd3, 0xab, 0x18, 0xfa, 0x6d, 0x3e, 0xcc,
+	0x4a, 0x7d, 0x35, 0xac, 0x75, 0xe1, 0x8a, 0xf8, 0x05, 0x76, 0x75, 0x02, 0x81, 0xce, 0xd6, 0x13,
+	0x3b, 0x49, 0x7a, 0xbe, 0x89, 0x32, 0x2a, 0xca, 0x85, 0x0d, 0xd7, 0x52, 0x2e, 0x53, 0x1a, 0x2d,
+	0xe5, 0x72, 0xd1, 0x90, 0x94, 0x0b, 0xab, 0xa0, 0xa5, 0x5c, 0xb6, 0xe5, 0x5a, 0xca, 0xe5, 0xdb,
+	0xd5, 0x17, 0x94, 0x0b, 0x7b, 0xa4, 0xa5, 0x5c, 0xb6, 0x6d, 0xc6, 0xf1, 0x3c, 0x58, 0xb7, 0x31,
+	0x1e, 0xa0, 0xc5, 0xad, 0x43, 0xbf, 0x68, 0x78, 0xf4, 0x9b, 0xb9, 0x16, 0xcb, 0xa5, 0x0d, 0x87,
+	0x84, 0xfa, 0x16, 0x09, 0x05, 0x56, 0x7c, 0xb0, 0xf4, 0xa2, 0xc7, 0x89, 0xd3, 0xe7, 0x3f, 0xfc,
+	0x80, 0xf7, 0xa3, 0x9e, 0xe5, 0x92, 0xe7, 0x86, 0x44, 0x35, 0xc4, 0x4f, 0x02, 0x6d, 0xf8, 0xa4,
+	0x31, 0xfb, 0xa9, 0xd5, 0xcb, 0x8a, 0xbb, 0x8b, 0xef, 0x01, 0x00, 0x00, 0xff, 0xff, 0x1b, 0x81,
+	0x37, 0x0a, 0x83, 0x09, 0x00, 0x00,
 }

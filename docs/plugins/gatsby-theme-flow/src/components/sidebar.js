@@ -1,10 +1,19 @@
-import Logo from "./logo";
-import PropTypes from "prop-types";
-import React, { Fragment } from "react";
 import styled from "@emotion/styled";
+
+import PropTypes from "prop-types";
+
+import React, { Fragment } from "react";
+
+import { Link } from "gatsby";
+
+import { transparentize } from "polished";
+
 import { theme } from "../colors";
 import breakpoints from "../utils/breakpoints";
-import { transparentize } from "polished";
+import TrackingLink from "../../../../content/components/tracking-link";
+
+import Logo from "./logo";
+import { StyledList, StyledListItem } from "./sidebar-nav";
 
 const Container = styled.aside({
   flexShrink: 0,
@@ -14,7 +23,7 @@ const Container = styled.aside({
   borderRight: `1px solid ${theme.divider}`,
   overflowY: "auto",
   position: "sticky",
-  top: 0,
+  top: 0
 });
 
 const ResponsiveContainer = styled(Container)((props) => ({
@@ -29,29 +38,32 @@ const ResponsiveContainer = styled(Container)((props) => ({
     transform: props.open ? "none" : "translateX(-100%)",
     transitionProperty: "transform, opacity, visibility",
     transitionDuration: "150ms",
-    transitionTimingFunction: "ease-in-out",
-  },
+    transitionTimingFunction: "ease-in-out"
+  }
 }));
 
 const Header = styled.div({
   display: "flex",
-  marginBottom: 24,
-});
-
-const StyledLink = styled.a({
-  color: theme.text1,
-  textDecoration: "none",
+  marginBottom: 24
 });
 
 const Sidebar = React.forwardRef((props, ref) => {
   const content = (
     <Fragment>
       <Header>
-        <StyledLink href={props.logoLink}>
+        <TrackingLink href={props.logoLink} eventName="Home_clicked">
           <Logo />
-        </StyledLink>
+        </TrackingLink>
       </Header>
-      <div className={props.className}>{props.children}</div>
+      <div className={props.className}>
+        {props.children || (
+          <StyledList>
+            <StyledListItem>
+              <Link to={"/"}>Home</Link>
+            </StyledListItem>
+          </StyledList>
+        )}
+      </div>
     </Fragment>
   );
 
@@ -73,11 +85,11 @@ Sidebar.propTypes = {
   open: PropTypes.bool,
   responsive: PropTypes.bool,
   logoLink: PropTypes.string,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 Sidebar.defaultProps = {
-  logoLink: "/",
+  logoLink: "/"
 };
 
 export default Sidebar;

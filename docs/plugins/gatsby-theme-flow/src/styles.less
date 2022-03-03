@@ -3,15 +3,15 @@
 html {
   font-size: 100%;
   line-height: 1.45;
-  overflow-y: auto;
 }
 
 body {
   color: @color-text2;
+  background-color:white;
 }
 
 @default-margin: 1.45rem;
-@header-height: 80px;
+@header-height: 100px;
 
 h1,
 h2,
@@ -56,31 +56,22 @@ h6 {
   font-weight: 700;
 }
 
-// TODO: enable to fix anchor links
-// .content-wrapper {
-//   // Extra padding is added to H1, H2 tags to offset the fixed header.
-//   // This allows the headings to be visible when clicking on anchor links.
-//   h1::before,
-//   h2::before {
-//     display: block;
-//     content: " ";
-//     margin-top: -(@header-height+10);
-//     height: @header-height+10;
-//     visibility: hidden;
-//     pointer-events: none;
-//   }
-// }
-
 h1 {
   font-size: 2.5rem;
 }
 
 h2 {
   font-size: 1.73286rem;
+  // h2 are anchor links. prevent scrolling underneath the
+  // fixed header by adding this margin.
+  scroll-margin-top: @header-height + 20;
 }
 
 h3 {
   font-size: 1.4427rem;
+  // h3 are anchor links. prevent scrolling underneath the
+  // fixed header by adding this margin.
+  scroll-margin-top: @header-height + 20;
 }
 
 h4,
@@ -166,4 +157,58 @@ p > pre.inline {
   100% {
     background-position: 300% 0;
   }
+}
+
+.spork-table {
+  table {
+    width: 100%;
+  }
+}
+
+.homepage-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: masonry;
+  grid-gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 960px) {
+  .homepage-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .grid-item.wide {
+    grid-column: span 2;
+  }
+}
+
+.grid-item {
+  padding: 1rem;
+  padding-top: 2rem;
+  border: 1px solid @color-text4;
+  border-radius: 4px;
+  box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.05);
+}
+
+.grid-item-list {
+  list-style: none;
+}
+
+.grid-item-list p {
+  font-size: 0.8rem;
+}
+
+.docs-site-omit {
+  display: none;
+}
+
+.redoc-wrap .api-content {
+  margin-left: 260px;
+}
+
+.redoc-wrap .menu-content {
+  top: 117px !important;
+  position: fixed;
+  height: calc(100vh) !important;
 }

@@ -1,4 +1,10 @@
 const path = require("path");
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config({
+    path: path.resolve(__dirname, "../.env.local")
+  });
+}
+
 const mapKeys = require("lodash/mapKeys");
 const remarkTypescript = require("remark-typescript");
 const { theme } = require("./src/colors");
@@ -31,63 +37,64 @@ module.exports = ({
   siteName,
   pageTitle,
   description,
+  sources,
   githubRepo,
   githubAccessToken,
   baseDir = "",
   contentDir = "content",
   versions = {},
   gaTrackingId,
-  ignore,
   checkLinksOptions,
-  repositories,
+  repositories
 }) => {
   const gatsbyRemarkPlugins = [
     {
       resolve: "gatsby-remark-autolink-headers",
       options: {
-        offsetY: HEADER_HEIGHT,
-      },
+        offsetY: HEADER_HEIGHT
+      }
     },
     {
       resolve: "gatsby-remark-copy-linked-files",
       options: {
-        ignoreFileExtensions: [],
-      },
+        ignoreFileExtensions: ["md", "mdx"]
+      }
     },
     "gatsby-remark-code-titles",
+    "gatsby-remark-relative-linker",
     {
       resolve: "gatsby-remark-vscode-flow",
       options: {
         languageScopes: {
-          'cadence': 'source.cadence',
-          'powershell': 'source.powershell',
-          'javascript': 'source.ts',
-          'typescript': 'source.ts',
-          'js': 'source.ts',
-          'ts': 'source.ts',
-          'shell': 'source.shell',
-          'sh': 'source.shell',
-          'go': 'source.go',
-          'json': 'source.json',
-          'protobuf': 'source.proto',
-          'proto': 'source.proto'
+          cadence: "source.cadence",
+          powershell: "source.powershell",
+          javascript: "source.ts",
+          typescript: "source.ts",
+          js: "source.ts",
+          ts: "source.ts",
+          shell: "source.shell",
+          sh: "source.shell",
+          go: "source.go",
+          json: "source.json",
+          protobuf: "source.proto",
+          proto: "source.proto"
         },
         grammarPaths: [
-          path.resolve(__dirname, 'cadence.tmGrammar.json'),
-          path.resolve(__dirname, 'powershell.tmLanguage.json'),
-          path.resolve(__dirname, 'ts.tmLanguage.json'),
-          path.resolve(__dirname, 'go.tmLanguage.json'),
-          path.resolve(__dirname, 'shell-unix-bash.tmLanguage.json'),
-          path.resolve(__dirname, 'json.tmLanguage.json'),
-          path.resolve(__dirname, 'proto3.tmLanguage.json'),
+          path.resolve(__dirname, "cadence.tmGrammar.json"),
+          path.resolve(__dirname, "powershell.tmLanguage.json"),
+          path.resolve(__dirname, "ts.tmLanguage.json"),
+          path.resolve(__dirname, "go.tmLanguage.json"),
+          path.resolve(__dirname, "shell-unix-bash.tmLanguage.json"),
+          path.resolve(__dirname, "json.tmLanguage.json"),
+          path.resolve(__dirname, "proto3.tmLanguage.json")
         ],
-        themePath: path.resolve(__dirname, 'light_vs.json'),
-      },
+        themePath: path.resolve(__dirname, "light_vs.json")
+      }
     },
     {
       resolve: "gatsby-remark-check-links",
-      options: checkLinksOptions,
-    },
+      options: checkLinksOptions
+    }
   ];
 
   const plugins = [
@@ -95,60 +102,43 @@ module.exports = ({
     "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
     {
-      resolve: "gatsby-plugin-less",
+      resolve: "gatsby-plugin-layout",
       options: {
-        modifyVars: mapKeys(theme, (value, key) => `color-${key}`),
-        lessOptions: {
-          relativeUrls: false,
-        },
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: path.join(root, "content"),
-        name: "docs",
-        ignore,
-      },
-    },
-    {
-      resolve: "gatsby-source-git",
-      options: {
-        name: "cadence",
-        remote: "https://github.com/onflow/cadence.git",
-        patterns: "docs/language/**/*"
+        component: path.resolve(__dirname, "src/components/layout.js")
       }
     },
+    {
+      resolve: "gatsby-plugin-less",
+      options: {
+        lessOptions: {
+          relativeUrls: false,
+          modifyVars: mapKeys(theme, (value, key) => `color-${key}`)
+        }
+      }
+    },
+    ...sources,
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "fonts",
-        path: path.resolve(__dirname, "src/assets/fonts"),
-      },
+        path: path.resolve(__dirname, "src/assets/fonts")
+      }
     },
     {
       resolve: "gatsby-transformer-remark",
       options: {
-        plugins: gatsbyRemarkPlugins,
-      },
+        plugins: gatsbyRemarkPlugins
+      }
     },
     {
       resolve: "gatsby-plugin-mdx",
       options: {
         gatsbyRemarkPlugins,
         remarkPlugins: [
-          [remarkTypescript, { wrapperComponent: "MultiCodeBlock" }],
-        ],
-      },
+          [remarkTypescript, { wrapperComponent: "MultiCodeBlock" }]
+        ]
+      }
     },
-    // {
-    //   resolve: "gatsby-plugin-printer",
-    //   options: {
-    //     puppeteerLaunchOptions: {
-    //       headless: true,
-    //     },
-    //   },
-    // },
     ...Object.entries(versions).map(([name, branch]) => ({
       resolve: "gatsby-source-git",
       options: {
@@ -158,27 +148,27 @@ module.exports = ({
         patterns: [
           path.join(baseDir, contentDir, "**"),
           path.join(baseDir, "gatsby-config.js"),
-          path.join(baseDir, "_config.yml"),
-        ],
-      },
+          path.join(baseDir, "_config.yml")
+        ]
+      }
     })),
     {
       resolve: "gatsby-source-github",
       options: {
         headers: {
-          Authorization: `Bearer ${githubAccessToken}`,
+          Authorization: `Bearer ${githubAccessToken}`
         },
-        queries: repositories.map((repository) => [getReleases, repository]),
-      },
-    },
+        queries: repositories.map((repository) => [getReleases, repository])
+      }
+    }
   ];
 
   if (gaTrackingId) {
     plugins.push({
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: gaTrackingId,
-      },
+        trackingId: gaTrackingId
+      }
     });
   }
 
@@ -186,8 +176,8 @@ module.exports = ({
     siteMetadata: {
       title: pageTitle || siteName,
       siteName,
-      description,
+      description
     },
-    plugins,
+    plugins
   };
 };

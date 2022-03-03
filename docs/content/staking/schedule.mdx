@@ -1,0 +1,189 @@
+---
+title: Epoch and Reward Schedule
+sidebar_title: Epoch and Reward Schedule
+description: How the Flow protocol manages the schedule of an epoch and rewards payments
+---
+
+<Callout type="warning">
+
+This information covers the current state of how epoch phases are ran and how
+rewards are calculated and distributed to node operators and delegators. 
+All of the information in the document is still being designed and is subject to change
+based on research and discussion by the Flow core team and community.
+If any changes are proposed, the Flow community will be notified in advance.
+</Callout>
+
+# Schedule
+
+![Flow Epoch Schedule](epoch-phase-diagram.png)
+
+An Epoch is a period of time when the node operators in the network are constant. At epoch 
+boundaries, newly staked node operators are able to join the network and existing node operators
+which have unstaked may exit the network.
+
+Each epoch lasts approximately a week, and the **Epoch Switchover** is defined as the point in time
+when one epoch ends and the next epoch begins, marking a possible change in the list of valid nodes.
+
+<Callout type="info">
+
+The exact timing of the epoch end is influenced by the number of blocks proposed during the epoch. 
+**All quoted epoch end times are estimates and subject to some variance (up to a few hours)**. See [Epoch Preparation Protocol](/staking/epoch-preparation/#epoch-length) for details. 
+
+</Callout>
+
+**Staking Operations will be disabled for the last day of an epoch**, typically around 12:00pm (7:00pm UTC) on Tuesday every, until the next day around the same time.
+
+**Epoch Switchovers will happen around 12:00 pm PT on Wednesday (7:00 pm UTC)** every week. 
+Please note exact epoch ending time vary based on the performance of the network & all staking operations that interact with staked tokens will be processed by the protocol at the start of each epoch. 
+
+## Rewards
+
+**Rewards are also paid at 12:00 pm PT on Wednesday (7:00 pm UTC)**, every week, to all users that have tokens staked.
+This is the same time as the Epoch Switchover. See the Rewards Distribution section below
+for more information about rewards calculation and schedule.
+
+## Staking Auction
+
+The first, and longest phase of an epoch is the staking auction.
+This phase is when nodes and delegators can register to stake and perform other staking operations
+such as staking more tokens or unstaking their existing tokens.
+None of these operations are fully executed until the **Epoch Switchover** though.
+
+**The Staking Auction lasts for at least the first 90% of the length of an Epoch**
+
+## Epoch Setup and Epoch Commit
+
+The Epoch Setup and Epoch Commit phases are the final phases of the epoch,
+when node operators who have been included in the next epoch perform important setup functionailty
+to prepare for the next epoch.
+
+**The Epoch Setup and Epoch Committed phases usually last less than 10% of the time of an epoch.**
+
+**Staking Operations will be rejected during the Epoch Setup and Epoch Commit phases.**
+This is because the staking information has been finalized in preparation for the next epoch
+and cannot be changed because these final phases rely on the staking information being constant.
+
+**The Staking Auction Ends every Tuesday at 12:00pm PT (7:00 pm UTC).**
+**This means that staking operations will be disabled for ALL users**
+**in the period between the end of the staking auction and the beginning of the next epoch, currently 24hrs.**
+
+## Rewards Distribution
+
+The rewards distribution schedule has been designed to ensure 
+there is enough liquid supply of FLOW available in the ecosystem 
+to empower a wide variety of use cases and promote fair and diverse participation in the Flow ecosystem.
+
+The numbers in this table represent the total amount of tokens that are paid 
+as staking rewards at each epoch to the entire pool of participants in the Flow network as a whole. 
+While total staking reward per epoch is known and fixed, individual rewards are variable depending on many factors. 
+
+The total rewards for each epoch are fixed for that epoch, but where those rewards come from can change.
+When the protocol pays rewards, it first pulls from the central pool of all the transaction fees
+that have been paid by every user in the network since the last rewards payment.
+Once that pool has been depleted, the protocol mints new tokens that are used as rewards.
+
+Please see the next section on how to calculate an individual staking reward.
+
+|                               | Dec 22         | Dec 29, Jan 5, 12, 19, 26 | Feb 2 weekly on Tuesdays until Dec 21, 2021 | Weeks 53+  |
+| ----------------------------- | -------------- | ------------------------- | ------------------------------------------- | ---------- |
+| Total Rewards % (Annual)      | 5%             | 20%                       | 5%                                          | TBD        |
+| Total Rewards Amount Per Week | ~1.2M FLOW     | ~4.4M FLOW                | ~1.2M FLOW                                  | TBD        |
+
+## Individual Calculation
+
+Each user gets a percentage of the total rewards during each epoch 
+that is proportional to their percentage of all the tokens that are staked by all participants.
+
+The full reward calculation on a per-user basis is equal to:	
+
+```	
+New Reward(user) = Tr  * (Sn / St)	
+```	
+
+where:	
+- `Tr` = Total staking rewards to be paid out during the current epoch. (See table above)
+- `Sn` = Amount of FLOW Staked by the target user for the current Epoch. (Different for each staker)
+- `St` = Sum of all the FLOW staked by all the participants in the network. (Changes every epoch)
+
+Rewards for delegators are also calculated in the exact same way that rewards for node operators are calculated, 
+with one difference in that 8% of the staking reward amount is given to the node operator being delegated to 
+(effected as a protocol layer fee, which is the same for all node operators). 
+The remaining 92% is awarded to the delegator. 
+Note: the 8% fee is only applied to the staking reward, not to the tokens delegated.
+
+With this calculation, the node you choose to run or delegate to 
+DOES NOT affect the amount of rewards you receive every week. 
+The only variable that you can control is the number of tokens you have staked. 
+The more tokens you stake, the more rewards you will receive.
+
+Because of the variable nature of the rewards calculation, we cannot provide an expected weekly/yearly return 
+for a single staker. You can plug your own numbers into the formula to see some sample calculations, 
+but you won't be able to know exactly what you will earn until the beginning 
+of the epoch in which you are participating in staking or delegation.
+
+## Rewards History
+
+| Epoch Start | Epoch End | Reward Payout Transaction ID |
+| ----------- | --------- | ------------------------------ | 
+| December 16, 2020 | December 22, 2020 | 1ab22491777fb3c75333135c82b90a9f56ede8e0d18d43ecf6c5589d06353f95 |
+| December 23, 2020 | December 29, 2020 | d7a8daca55dcadddd21dc9b63e71c515032584e9cf126b74744f676a1196e3c8 |
+| December 30, 2020 | January 5, 2021 | 9e377e6818d19b7a26d65b076120b2681d512111d397c617cac0843060437fc9 |
+| January 6, 2021 | January 12, 2021 | 29886f7cdbbb47b96dfa05ad277fcb3c8876c4ee32954269a926061aa4157af7 |
+| January 13, 2021 | January 19, 2021 | 83d585f3fa1368258cf317690e4bf82d4f841bfe2ccbc6c191838b73371b6e66 |
+| January 20, 2021 | January 26, 2021 | 487759099a09fc088943aac45909cca37d6b5bed418feab502ff37bd1b93346f |
+| January 27, 2021 | February 2, 2021 | c2f29629040ae6fca12e103f676bf112200f24f0fc8b4cb99c92f9287ce6195f |
+| February 3, 2021 | February 9, 2021 | e29a22e29297fcd8f67a030ae641405e14a889167a639f54b05f48fe1142bd5b |
+| February 10, 2021 | February 16, 2021 | d775735a1d9a8574faaa2b82b9dea0833d5bf48e43845c9c6bf5a42eb96414f2 |
+| February 17, 2021 | February 23, 2021 | eed4f38fe4fec2bf9b60eba7708ff7d41fa654942ccc20cb1fc86872813f5b93 |
+| February 24, 2021 | March 2, 2021 | 3650b50994719480b8358a507afa30d58c232a30a6cfd947a94b62a78d25c849 |
+| March 3, 2021 | March 9, 2021 | e4db187672cf545c865850840ff66d34c43cb298d8aae687c209c7f2fef44ea1 |
+| March 10, 2021 | March 16, 2021 | 2791557e2bdf4be66f69eeb919c5c3da94f2af4baf9c1e6953aedd887715bd7e |
+| March 17, 2021 | March 23, 2021 | 15ac2d8ee73eae3483da10370dcc6f432d928d4631be22f8c7f0f85a8a62e1fd |
+| March 24, 2021 | March 30, 2021 | a60e812b005100290a4657f7022f1e2d3dc4745e25a0373b82d807c77471e069 |
+| March 31, 2021 | April 6, 2021 | 7674a088faa2b30ace3c798c2273face4e2b41970ca1990ad9d96a1bb7e2c2b2 |
+| April 7, 2021 | April 13, 2021 | 4addbcc17f8a5e9ecf1eb0d78a5c59332cde9d11ce347da676009284247565dd |
+| April 14, 2021 | April 20, 2021 | 86917dcf3055d1aa21d898ccd4b8d1f55fd0924c7f5b7ce708dd92e69094e83d |
+| April 21, 2021 | April 27, 2021 | 5c46cc3ff35a522d9439f26023e11a0f8697bf04b418e9e019a95ab3f49231ce |
+| April 28, 2021 | May 4, 2021 | 7c79febe209178851e4c6b0c1d9bf89955f89783ea8f9ace65e4c442ddd16e7d |
+| May 4, 2021 | May 11, 2021 | df60fda0991410b871b80437840e461ecd5b35decc6da201a1e5d62ae23b0cec |
+| May 11, 2021 | May 18, 2021 | a0ea12fe8166b3d3b10cb221cbc3dd236dba5990274e9a90c32e6a904f72d96f |
+| May 18, 2021 | May 25, 2021 | 5a3093f7e577ba8e6dc3c6241c7b3a0c09d3068a91a684a477277d4f792e19da |
+| May 25, 2021 | June 1, 2021 | 6e97bf58f0261bbf06733c7b225f56f32032dd974e73aa8c2c72e2fddd6ab4f9 |
+| June 1, 2021 | June 8, 2021 | 8d06b6d75fd315cdbe0caf035fb42b8503aef5f12b875fb18c38b9329cf10b83 |
+| June 8, 2021 | June 15, 2021 | 9b86013070876210c5ff04c5518d7698d21be2c3d4525cf985a82b311e7bb217 |
+| June 15, 2021 | June 22, 2021 | 207f908a7e949c1094dee63f71bf9f8487e07d8a2d904265b358ee03dc59441a |
+| June 22, 2021 | June 29, 2021 | f9cc19931aa131511951ff339dd3c454cdc7d956611cf0271e68c0ed50f6fca2 |
+| June 29, 2021 | July 6, 2021 | 406c3fe36fb4eb05cb3ba830cb0a8b66b6fc6d6f3d56e237eef201fe3b7b9821 |
+| July 6, 2021 | July 13, 2021 | ade3ad62894c99798876b0c8fb9db84e978a14e23095944abcf76d614e5c018b |
+| July 13, 2021 | July 20, 2021 | 51dab505c0bd843af3c3e43d5502cdc21c2f6dbb5765383b0a285f0578f859d4 |
+| July 20, 2021 | July 27, 2021 | 8730f4ff3552ca1e47777e51eda0169f49880bf49da19106839a8e20ae6bbec6 |
+| July 27, 2021 | August 3, 2021 | d8a85bdd767f56a63bcb627bd74b1fe47f6e0d50b9c19b32c47895ca8373d208 |
+| August 3, 2021 | August 10, 2021 | 80366137eb2665d52480b6d9592decb11c98dcb38657633673173503d94db711 |
+| August 10, 2021 | August 17, 2021 | 38364caf7310ebac175d40fe99b9e3ac636eb0d370e9f647f92bb3fe938915ff |
+| August 17, 2021 | August 24, 2021 | 4a6a3c043f22661d32a1b894e89744d2427f35dfe590d7f563665502afd03075 |
+| August 24, 2021 | August 31, 2021 | 109838b1910c72484e2789b5e60cfbab2e2a75da354b5e378397dae72f97e73e |
+| August 31, 2021 | September 7, 2021 | 4bd3dc0284bfd077eb5eac7d39afd01df3e8125c45b07e2d3ea7e7e8512e09ef |
+| September 7, 2021 | September 14, 2021 | 1746c7cf8e39e292c779a7891d788b4b8848b8ce5c8432007b7787fa262e286d |
+| September 14, 2021 | September 21, 2021 | b5f214c3284e15b8e13f178582db069350ace98a81e086461da5977050a70962 |
+| September 21, 2021 | September 28, 2021 | a819c6ebd9bf8c969be0d43ce1f57a803c4fb4cba1e92ebd1de6403da73d426e |
+| September 28, 2021 | October 5, 2021 | 10fd2d7642ec87e61a8222491297c9462c6fdc3d331662ff7115a0e1becb3e21 |
+| October 5, 2021 | October 12, 2021 | 8f2d439ba31c7824989977b4883a1f5bd59adc347ab9d2f62d07a6639f59bd67 |
+| October 12, 2021 | October 19, 2021 | ab8380881604ceae332783fa283b925b49f1c071e3e0eab7da1298570ed44c90 |
+| October 19, 2021 | October 26, 2021 | f6fafde942e8b9538f1b92163e31f9752655fad6e69673cc1232829df81d5256 |
+| October 26, 2021 | November 2, 2021 | cd9ad3758e9a08a1e9eb7dc0e7028de96ead624419403a30464c481476165d2a |
+| November 2, 2021 | November 9, 2021 | 1cb1cf82f850d8f35d3e0114d9c5729dcfd7e9555e037ba4327bf7613263cf62 |
+| November 9, 2021 | November 16, 2021 | 993e78c383dc071d7d1bc10f4b387aed83a243115a77c3e1ff7f69cf0503cefe |
+| November 16, 2021 | November 23, 2021 | be839d4aab6a6443e1c6f16c77f7ee9134b3d923893c6ba8aa90b08647762bfe |
+| November 23, 2021 | November 30, 2021 | 8bf3cb26e1d0996811c5855f4b99e1cea0c5244400f4d4e69fcfea2ec6f847ae |
+| November 30, 2021 | December 7, 2021 | 044f8191fad43dd8b40554ed65781a0862e420d9c2c5640aa3166f8be791c84d |
+| December 7, 2021 | December 14, 2021 | df669cd5b615708e54d5589761906ca5137d4860f1f78a11ea3bed48ff458e82 |
+| December 14, 2021 | December 22, 2021 | 13ca79fc2fcb8adfb79cb7576bba5e7475e108f5c924083380b6958f5f56f58f |
+| December 22, 2021 | December 29, 2021 | 9dcc4fff71e99b94a3dd90a953ef024d0cd9928e76fff69394134b6ef841ae21 |
+| December 29, 2021 | January 5, 2022 | ae25c41e18a798e565c9cc1d0ed4afe46bd75cad5b7ce04d92ec8515314d85b3 |
+| January 5, 2022 | January 12, 2022 | c1541b18ddd377983be4eda812100fb4b4baf5face603e6616e0f7d0391f8ddb |
+| January 12, 2022 | January 19, 2022 | 96e5ecf9943aecdacc40c5b99fd0163bc917997d9da341d62364593c0ea729b3 |
+| January 19, 2022 | January 27, 2022 | 27c4302f4ff4ea9d50ec8f368705f77e897d20f83212ce5e6e1c58ecb784e853 |
+| January 27, 2022 | February 2, 2022 | e8d6f108901dfe67f89ea43e588e77e379bc465925dfb725bc07db5e665b0ab2 |
+| February 2, 2022 | February 9, 2022 | ba593876491dc3a53a8a33dd2709c25ce474e84a9d4d228d4309e1a7945a2e71 |
+| February 9, 2022 | February 16, 2022 | adc2c23f4a6e3c1bf2ba93d92adfc3dbbc7f9821226abb8576abf8f195d5a64e |
+| February 16, 2022 | February 23, 2022 | b8329b2c39141ec9ee2a0fc3ba1ab8372fabcac8864ba54bd39355df8df0c3ef |

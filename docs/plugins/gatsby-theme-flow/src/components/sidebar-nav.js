@@ -1,17 +1,26 @@
-import PropTypes from "prop-types";
-import React, { useRef, useState, useContext } from "react";
 import styled from "@emotion/styled";
+
+import PropTypes from "prop-types";
+
+import React, { useRef, useState, useContext } from "react";
+
+import { Link, withPrefix } from "gatsby";
+
+import { size } from "polished";
+
+import { useMixpanel } from "gatsby-plugin-mixpanel";
+
+import { theme, colors } from "../colors";
 import {
   IconExpandList,
   IconCollapseList,
   IconExternalLink,
   IconChevronUp,
-  getProjectIcon,
+  getProjectIcon
 } from "../ui/icons";
-import { Link, withPrefix } from "gatsby";
-import { theme, colors } from "../colors";
 import { smallCaps } from "../utils/typography";
-import { size } from "polished";
+import TrackingLink from "../../../../content/components/tracking-link";
+
 import { NavItemsContext } from "./page-layout";
 
 const ExpandAll = styled.button(smallCaps, {
@@ -22,45 +31,44 @@ const ExpandAll = styled.button(smallCaps, {
   border: 0,
   fontSize: 12,
   fontWeight: 600,
-  lineHeight: 1,
+  lineHeight: 1.23,
   background: "none",
   outline: "none",
   cursor: "pointer",
   color: "inherit",
   ":hover": {
-    opacity: theme.hoverOpacity,
+    opacity: theme.hoverOpacity
   },
   svg: {
     ...size(12),
-    marginRight: 8,
-  },
+    marginRight: 8
+  }
 });
 
-const StyledList = styled.ul({
+export const StyledList = styled.ul({
   marginLeft: 0,
   marginBottom: 32,
-  listStyle: "none",
+  listStyle: "none"
 });
 
-const StyledListItem = (props) => {
-  const LI = styled.li({
+export const StyledListItem = (props) => {
+  const Li = styled.li({
     ...props.extraStyles,
-    fontSize: "1rem",
-    lineHeight: 1.5,
-    marginBottom: "0.8125rem",
+    fontSize: "15px",
+    lineHeight: 1.23,
     a: {
       color: "inherit",
       textDecoration: "none",
       ":hover": {
-        opacity: theme.hoverOpacity,
+        opacity: theme.hoverOpacity
       },
       "&.active": {
         color: theme.primary,
-        pointerEvents: "none",
-      },
-    },
+        pointerEvents: "none"
+      }
+    }
   });
-  return <LI>{props.children}</LI>;
+  return <Li>{props.children}</Li>;
 };
 
 const Category = styled.div({
@@ -68,8 +76,8 @@ const Category = styled.div({
   zIndex: 0,
   [StyledList]: {
     position: "relative",
-    zIndex: 2,
-  },
+    zIndex: 2
+  }
 });
 
 const categoryTitleStyles = {
@@ -80,24 +88,24 @@ const categoryTitleStyles = {
   color: theme.text3,
   fontWeight: "bold",
   fontSize: 13,
-  lineHeight: "15px",
+  lineHeight: 1.23,
   ...smallCaps,
   svg: size(10),
   "&.active": {
-    color: theme.text3,
-  },
+    color: theme.text3
+  }
 };
 
 const CategoryTitle = styled.div(categoryTitleStyles);
 const CategoryLink = styled(Link)(categoryTitleStyles, {
   textDecoration: "none",
   ":hover": {
-    opacity: theme.hoverOpacity,
-  },
+    opacity: theme.hoverOpacity
+  }
 });
 
 const DocsetMenuWrapper = styled.div({
-  marginBottom: "2rem",
+  marginBottom: "2rem"
 });
 
 const StyledCheckbox = styled.input({
@@ -109,31 +117,31 @@ const StyledCheckbox = styled.input({
   opacity: 0,
   zIndex: 1,
   [`:hover ~ ${CategoryTitle}`]: {
-    opacity: theme.hoverOpacity,
+    opacity: theme.hoverOpacity
   },
   ":not(:checked) ~": {
     [`${CategoryTitle} svg`]: {
-      transform: "scaleY(-1)",
+      transform: "scaleY(-1)"
     },
     [StyledList]: {
-      display: "none",
-    },
-  },
+      display: "none"
+    }
+  }
 });
 
-const StyledLink = styled.a({
+const StyledTrackingLink = styled(TrackingLink)(() => ({
   color: "inherit",
   textDecoration: "none",
   ":hover": {
-    color: theme.text3,
-  },
-});
+    color: theme.text3
+  }
+}));
 
 const ProjectIcon = styled.div({
   backgroundSize: "100%",
   height: "1.5em",
   width: "1.5rem",
-  marginRight: "0.42rem",
+  marginRight: "0.42rem"
 });
 
 function ProjectLink(props) {
@@ -163,7 +171,7 @@ function ProjectLink(props) {
 const StyledOutlinkIcon = styled(IconExternalLink)(size(14), {
   verticalAlign: -1,
   marginLeft: 8,
-  color: theme.text3,
+  color: theme.text3
 });
 
 function isPageSelected(path, pathname) {
@@ -184,8 +192,8 @@ function getStylesForNavItem(page) {
         paddingLeft: "1rem",
         marginLeft: "-1rem",
         borderRadius: "1000px",
-        boxShadow: ` 20px 20x 60px #1b63b6, 
-        -20px -20px 60px #2587f6`,
+        boxShadow: ` 20px 20x 60px #1b63b6,
+        -20px -20px 60px #2587f6`
       };
     case "Node Operation Quick Guide":
       return {
@@ -194,20 +202,9 @@ function getStylesForNavItem(page) {
         paddingLeft: "1rem",
         marginLeft: "-1rem",
         borderRadius: "1000px",
-        boxShadow: ` 20px 20x 60px #1b63b6, 
+        boxShadow: ` 20px 20x 60px #1b63b6,
         -20px -20px 60px #2587f6`,
-        background: colors.blue.lightest,
-      };
-    case "Cadence Language Reference":
-      return {
-        color: colors.grey.dark,
-        padding: "0 0.2rem",
-        paddingLeft: "1rem",
-        marginLeft: "-1rem",
-        borderRadius: "1000px",
-        boxShadow: ` 20px 20x 60px #1b63b6, 
-          -20px -20px 60px #2587f6`,
-        background: colors.pink.lightest,
+        background: colors.blue.lightest
       };
     default:
       return {};
@@ -215,6 +212,7 @@ function getStylesForNavItem(page) {
 }
 
 function NavItems(props) {
+  const mixpanel = useMixpanel();
   return (
     <StyledList>
       {props.pages.map((page, index) => {
@@ -234,7 +232,10 @@ function NavItems(props) {
                 }
                 to={page.path}
                 title={page.description}
-                onClick={props.onLinkClick}
+                onClick={(e) => {
+                  mixpanel.track(`Homepage_nav_${page.path}_clicked`);
+                  props.onLinkClick && props.onLinkClick(e);
+                }}
               >
                 {pageTitle}
               </Link>
@@ -249,7 +250,7 @@ function NavItems(props) {
 NavItems.propTypes = {
   pages: PropTypes.array.isRequired,
   pathname: PropTypes.string.isRequired,
-  onLinkClick: PropTypes.func,
+  onLinkClick: PropTypes.func
 };
 
 export default function SidebarNav(props) {
@@ -292,24 +293,30 @@ export default function SidebarNav(props) {
 
   return (
     <>
-      {props.showMainNav &&
+      {props.showMainNav && (
         <DocsetMenuWrapper>
           {docset
             .filter((navItem) => {
               return !navItem.omitLandingPage;
             })
-            .map((navItem, index) => {
+            .map((navItem) => {
               return (
-                <ProjectLink
+                <StyledTrackingLink
                   key={navItem.url}
-                  icons={getProjectIcon(navItem.icon)}
+                  href={navItem.url}
+                  eventName={`Homepage_nav_${navItem.url}_clicked`}
                 >
-                  <StyledLink href={navItem.url}>{navItem.title}</StyledLink>
-                </ProjectLink>
+                  <ProjectLink
+                    key={navItem.url}
+                    icons={getProjectIcon(navItem.icon)}
+                  >
+                    {navItem.title}
+                  </ProjectLink>
+                </StyledTrackingLink>
               );
             })}
         </DocsetMenuWrapper>
-      }
+      )}
       {root && (
         <NavItems
           pages={root.pages}
@@ -369,5 +376,5 @@ SidebarNav.propTypes = {
   pathname: PropTypes.string.isRequired,
   onToggleAll: PropTypes.func,
   onToggleCategory: PropTypes.func,
-  onLinkClick: PropTypes.func,
+  onLinkClick: PropTypes.func
 };

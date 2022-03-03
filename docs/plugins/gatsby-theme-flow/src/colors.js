@@ -6,7 +6,7 @@ const colors = {
     base: "#f25cc1",
     light: "#ffa3e0",
     lighter: "#ffd4f1",
-    lightest: "#ffe6f7",
+    lightest: "#ffe6f7"
   },
 
   teal: {
@@ -16,7 +16,7 @@ const colors = {
     base: "#41d9d3",
     light: "#8bf6f2",
     lighter: "#c6fffd",
-    lightest: "#e6fffe",
+    lightest: "#e6fffe"
   },
 
   indigo: {
@@ -26,7 +26,7 @@ const colors = {
     base: "#7156d9",
     light: "#ad9bf6",
     lighter: "#d9cfff",
-    lightest: "#ebe6ff",
+    lightest: "#ebe6ff"
   },
 
   black: {
@@ -34,7 +34,7 @@ const colors = {
     dark: "#14171C",
     base: "#191C23",
     light: "#22262E",
-    lighter: "#2F353F",
+    lighter: "#2F353F"
   },
 
   grey: {
@@ -42,7 +42,7 @@ const colors = {
     dark: "#5A6270",
     base: "#777F8E",
     light: "#959DAA",
-    lighter: "#B2B9C3",
+    lighter: "#B2B9C3"
   },
 
   silver: {
@@ -51,7 +51,7 @@ const colors = {
     base: "#EBEEF0",
     light: "#E3E8ED",
     lighter: "#F4F6F8",
-    lightest: "#FCFDFF",
+    lightest: "#FCFDFF"
   },
 
   red: {
@@ -61,7 +61,7 @@ const colors = {
     base: "#d13b3b",
     light: "#f18686",
     lighter: "#ffc3c3",
-    lightest: "#ffe6e6",
+    lightest: "#ffe6e6"
   },
 
   green: {
@@ -71,7 +71,7 @@ const colors = {
     base: "#36ad68",
     light: "#7ed9a4",
     lighter: "#bef4d5",
-    lightest: "#e6fff0",
+    lightest: "#e6fff0"
   },
 
   blue: {
@@ -81,7 +81,7 @@ const colors = {
     base: "#2075d6",
     light: "#74b0f4",
     lighter: "#bbdbff",
-    lightest: "#f0f7ff",
+    lightest: "#f0f7ff"
   },
 
   orange: {
@@ -91,7 +91,7 @@ const colors = {
     base: "#f59140",
     light: "#ffc18f",
     lighter: "#ffe2ca",
-    lightest: "#fff1e6",
+    lightest: "#fff1e6"
   },
 
   yellow: {
@@ -101,7 +101,7 @@ const colors = {
     base: "#f4d03f",
     light: "#ffe88e",
     lighter: "#fff4ca",
-    lightest: "#fffae6",
+    lightest: "#fffae6"
   },
 
   purple: {
@@ -111,7 +111,7 @@ const colors = {
     base: "#a23df5",
     light: "#cd8fff",
     lighter: "#e8ccff",
-    lightest: "#f4e6ff",
+    lightest: "#f4e6ff"
   },
 
   blilet: {
@@ -121,7 +121,7 @@ const colors = {
     base: "#5168C2",
     light: "#7A92F0",
     lighter: "#B0BEF7",
-    lightest: "#E6EBFF",
+    lightest: "#E6EBFF"
   },
 
   midnight: {
@@ -131,10 +131,10 @@ const colors = {
     base: "#3D4B6A",
     light: "#566992",
     lighter: "#798FBB",
-    lightest: "#B4C3DB",
+    lightest: "#B4C3DB"
   },
 
-  white: "#ffffff",
+  white: "#ffffff"
 };
 
 exports.colors = colors;
@@ -142,7 +142,7 @@ exports.colors = colors;
 exports.theme = {
   primary: colors.green.base,
   primaryLight: colors.green.lighter,
-  secondary: colors.pink.base,
+  secondary: colors.blue.base,
   tertiary: colors.teal.dark,
   tertiaryLight: colors.teal.base,
   divider: colors.silver.dark,
@@ -154,9 +154,10 @@ exports.theme = {
   text3: colors.grey.light,
   text4: colors.silver.darker,
   warning: colors.yellow.base,
+  error: colors.red.light,
   shadow: colors.black.darker,
   highlight: colors.blue.base,
   highlight2: colors.blue.lighter,
   highlight3: colors.blue.lightest,
-  hoverOpacity: 0.8,
+  hoverOpacity: 0.8
 };

@@ -1,23 +1,30 @@
 /* global docsearch */
-import PropTypes from 'prop-types';
-import React, {Fragment, useEffect, useRef, useState} from 'react';
-import styled from '@emotion/styled';
-import useKey from 'react-use/lib/useKey';
-import {HEADER_HEIGHT} from '../utils';
-import {TextField} from '../ui/TextField';
-import {theme} from '../colors';
-import breakpoints from '../utils/breakpoints';
-import {smallCaps} from '../utils/typography';
-import {css} from '@emotion/core';
-import {position, size, transparentize} from 'polished';
-import {IconSearch} from '../ui/icons';
+import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+
+import PropTypes from "prop-types";
+
+import React, { Fragment, useEffect, useRef, useState } from "react";
+
+import useKey from "react-use/lib/useKey";
+
+import { position, size, transparentize } from "polished";
+
+import { useMixpanel } from "gatsby-plugin-mixpanel";
+
+import { theme } from "../colors";
+import { HEADER_HEIGHT } from "../utils";
+import { TextField } from "../ui/TextField";
+import { IconSearch } from "../ui/icons";
+import breakpoints from "../utils/breakpoints";
+import { smallCaps } from "../utils/typography";
 
 const borderRadius = 5;
 const border = `1px solid ${theme.dividerLight}`;
 const verticalAlign = css({
-  position: 'absolute',
-  top: '50%',
-  transform: 'translateY(-50%)'
+  position: "absolute",
+  top: "50%",
+  transform: "translateY(-50%)"
 });
 
 const Hotkey = styled.div(verticalAlign, size(24), {
@@ -25,161 +32,176 @@ const Hotkey = styled.div(verticalAlign, size(24), {
   borderColor: theme.text4,
   color: theme.text3,
   borderRadius,
-  textAlign: 'center',
+  textAlign: "center",
   lineHeight: 1.4,
-  fontSize: '0.9em',
+  fontSize: "0.9em",
   right: 10,
-  pointerEvents: 'none',
+  pointerEvents: "none",
   fontWeight: 600,
-  boxShadow: `0 1px 1px 0 #00000021`,
+  boxShadow: `0 1px 1px 0 #00000021`
 });
 
-const boxShadowColor = transparentize(0.9, 'black');
+const boxShadowColor = transparentize(0.9, "black");
 export const boxShadow = `${boxShadowColor} 0 2px 12px`;
 const Container = styled.div({
   flexGrow: 1,
   marginRight: 40,
   maxWidth: 930,
   color: theme.text2,
-  position: 'relative',
+  position: "relative",
   zIndex: 1,
   [breakpoints.md]: {
     marginRight: 0
   },
-  '.algolia-autocomplete': {
-    width: '100%',
-    '.ds-dropdown-menu': {
-      width: '100%',
-      maxWidth: '100%',
-      minWidth: 'auto',
+  ".algolia-autocomplete": {
+    width: "100%",
+    ".ds-dropdown-menu": {
+      width: "100%",
+      maxWidth: "100%",
+      minWidth: "auto",
       marginTop: 14,
       borderRadius,
       boxShadow,
-      '&::before': {
-        display: 'none'
+      "&::before": {
+        display: "none"
       },
-      '[class^=ds-dataset-]': {
+      "[class^=ds-dataset-]": {
         maxHeight: `calc(100vh - ${HEADER_HEIGHT}px - 32px)`,
         padding: 0,
         border,
-        borderRadius: 'inherit'
+        borderRadius: "inherit"
       },
-      '.ds-suggestions': {
+      ".ds-suggestions": {
         marginTop: 0
       },
-      '.ds-suggestion': {
-        padding: '20px 32px',
+      ".ds-suggestion": {
+        padding: "20px 32px",
         borderBottom: `1px solid ${theme.divider}`,
-        '&.ds-cursor': {
+        "&.ds-cursor": {
           backgroundColor: transparentize(0.5, theme.divider)
         }
       }
     },
-    '.algolia-docsearch-suggestion': {
+    ".algolia-docsearch-suggestion": {
       padding: 0,
-      color: 'inherit',
-      background: 'none',
-      textDecoration: 'none',
-      [['&--wrapper', '&--subcategory-column', '&--content']]: {
-        width: 'auto',
-        float: 'none'
+      color: "inherit",
+      background: "none",
+      textDecoration: "none",
+      [["&--wrapper", "&--subcategory-column", "&--content"]]: {
+        width: "auto",
+        float: "none"
       },
-      '&--wrapper': {
+      "&--wrapper": {
         paddingTop: 0
       },
-      '&--category-header': {
+      "&--category-header": {
         marginTop: 0,
         marginBottom: 4,
         borderBottom: 0,
         fontSize: 14,
-        color: 'inherit',
+        color: "inherit",
         ...smallCaps
       },
-      [['&--subcategory-column', '&--content']]: {
+      [["&--subcategory-column", "&--content"]]: {
         padding: 0,
-        '&::before': {
-          display: 'none'
+        "&::before": {
+          display: "none"
         }
       },
-      '&--subcategory-column': {
+      "&--subcategory-column": {
         marginBottom: 4,
         fontSize: 22,
         color: theme.text1,
-        textAlign: 'initial'
+        textAlign: "initial"
       },
-      '&--content': {
-        background: 'none !important'
+      "&--content": {
+        background: "none !important"
       },
-      '&--title': {
+      "&--title": {
         marginBottom: 0,
         fontSize: 18,
-        fontWeight: 'normal',
-        color: 'inherit'
+        fontWeight: "normal",
+        color: "inherit"
       },
-      '&--highlight': {
-        boxShadow: 'none !important',
+      "&--highlight": {
+        boxShadow: "none !important",
         color: `${theme.primary} !important`,
-        background: 'none !important'
+        background: "none !important"
       },
-      '&--no-results': {
+      "&--no-results": {
         padding: 32
       }
     },
-    '.algolia-docsearch-footer': {
+    ".algolia-docsearch-footer": {
       margin: 12
     }
   }
 });
 
 const Overlay = styled.div(
-  position('fixed', 0),
+  position("fixed", 0),
   props =>
     !props.visible && {
       opacity: 0,
-      visibility: 'hidden'
+      visibility: "hidden"
     },
   {
     backgroundColor: transparentize(0.5, theme.text2),
-    transitionProperty: 'opacity, visibility',
-    transitionDuration: '150ms',
-    transitionTimingFunction: 'ease-in-out',
+    transitionProperty: "opacity, visibility",
+    transitionDuration: "150ms",
+    transitionTimingFunction: "ease-in-out",
     zIndex: 1
   }
 );
 
 export default function Search(props) {
   const [focused, setFocused] = useState(false);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const inputRef = useRef(null);
-
-  useEffect(() => {
-    if (typeof docsearch !== 'undefined') {
-      docsearch({
-        apiKey: props.apiKey,
-        indexName: props.indexName,
-        inputSelector: '#input',
-        // debug: true, // keeps the results list open
-        algoliaOptions: {
-          hitsPerPage: 10
-        },
-        transformData: function (hits){
-          hits.forEach(hit => {
-            // replace origin so search results point to local (or vercel) deployment
-            // warning: any new or edited pages won't be correctly indexed
-            var url = new URL(hit.url);
-            url.host = window.location.host
-            url.protocol = window.location.protocol
-            hit.url = url.href
-          });
-        }
-      });
-    }
-  }, [props.apiKey, props.indexName]);
+  const mixpanel = useMixpanel();
+  useEffect(
+    () => {
+      if (typeof docsearch !== "undefined") {
+        docsearch({
+          apiKey: props.apiKey,
+          indexName: props.indexName,
+          inputSelector: "#input",
+          // debug: true, // keeps the results list open
+          algoliaOptions: {
+            hitsPerPage: 10,
+            distinct: 1
+          },
+          handleSelected: function(
+            input,
+            _event,
+            suggestion,
+            _datasetNumber,
+            _context
+          ) {
+            mixpanel.track("Searched", { text: input, selected: suggestion });
+            input.setVal("");
+            window.location.href = suggestion.url;
+          },
+          transformData: function(hits) {
+            hits.forEach(hit => {
+              // replace origin so search results point to local (or vercel) deployment
+              // warning: any new or edited pages won't be correctly indexed
+              var url = new URL(hit.url);
+              url.host = window.location.host;
+              url.protocol = window.location.protocol;
+              hit.url = url.href;
+            });
+          }
+        });
+      }
+    },
+    [props.apiKey, props.indexName, mixpanel]
+  );
 
   // focus the input when the slash key is pressed
   useKey(
     event =>
-      event.keyCode === 191 && event.target.tagName.toUpperCase() !== 'INPUT',
+      event.keyCode === 191 && event.target.tagName.toUpperCase() !== "INPUT",
     event => {
       event.preventDefault();
       inputRef.current.focus();
@@ -211,7 +233,7 @@ export default function Search(props) {
               id="input"
               style={{
                 fontSize: 16,
-                boxShadow: resultsShown ? boxShadow : 'none'
+                boxShadow: resultsShown ? boxShadow : "none"
               }}
             />
           }
@@ -219,7 +241,7 @@ export default function Search(props) {
           onBlur={onBlur}
           onChange={onChange}
           value={value}
-          icon={<IconSearch/>}
+          icon={<IconSearch />}
           placeholder={`Search documentation...`}
         />
         {!focused && !value && <Hotkey>/</Hotkey>}

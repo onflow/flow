@@ -1,0 +1,60 @@
+---
+title: Flow Testnet
+---
+
+## Accessing Flow Testnet
+
+Currently, there is an internal Testnet, available for access:
+
+- [access.testnet.nodes.onflow.org:9000](http://access.devnet.nodes.onflow.org:9000/)
+
+For example, to access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
+
+```go
+import "github.com/onflow/flow-go-sdk/client"
+
+func main() {
+  flowAccessAddress := "access.testnet.nodes.onflow.org:9000"
+  flowClient, _ := client.New(flowAccessAddress, grpc.WithInsecure())
+  // ...
+}
+```
+
+## Account Creation and Token Funding Requests
+
+Accounts and Tokens for testing are available by request through the [Flow Faucet](https://testnet-faucet-v2.onflow.org/)
+
+### Generate a Key Pair for the Faucet
+
+For Testnet, it's easy to generate a new key pair with the [Flow CLI](https://github.com/onflow/flow-cli):
+
+```sh
+flow keys generate
+```
+
+By default, this command generates an ECDSA key pair on the P-256 curve.
+
+**Note: this tool is intended for development purposes only and is not recommended for production use.**
+
+## Testnet Account Usage
+
+Once you receive your account, you'll be able make use of that account using our SDK. Some examples are available here in the SDK repo:
+
+- [https://github.com/onflow/flow-go-sdk/tree/master/examples](https://github.com/onflow/flow-go-sdk/tree/master/examples)
+
+Some of these examples
+
+- `create_account`
+- `deploy_contract`
+
+Transactions will now require fees in order to complete.
+
+## Important Testnet Smart Contract Addresses
+
+In order to access some of the contracts deployed to Flow Testnet, you can import them by using the following import addresses:
+
+```cadence
+import FungibleToken from 0x9a0766d93b6608b7
+import FlowToken from 0x7e60df042a9c0868
+import NonFungibleToken from 0x631e88ae7f1d7c20
+```

@@ -15,7 +15,7 @@ transaction(amount: UFix64, to: Address) {
 
     execute {
         getAccount(to)
-            .getCapability(/public/flowTokenReceiver)!
+            .getCapability(/public/flowTokenReceiver)
             .borrow<&{FungibleToken.Receiver}>()!
             .deposit(from: <-self.vault)
     }

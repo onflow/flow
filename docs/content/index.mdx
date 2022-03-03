@@ -1,36 +1,282 @@
 ---
-title: Getting Started
-description: "Welcome to the Flow Developer Portal"
+title: Welcome to the Flow Developer Docs
+description: "Your resource for everything you'll need to build the future on Flow"
 sidebar: false
 ---
 
-import DocsetMenu from "./components/docset-menu";
-import { MenuTitle } from "./components/menu";
 import { theme } from "gatsby-theme-flow/src/colors";
 
-Before starting your journey on Flow we recommend reading the <a href="https://www.onflow.org/primer">Flow Primer</a> where you will get a quick introduction to how the Flow blockchain works. It will be easier to understand the concepts in these tutorials if you have an idea of how Flow works.
+import DocsetMenu from "./components/docset-menu";
+import { MenuTitle } from "./components/menu";
+import TrackingLink from "./components/tracking-link";
+import {
+  IconGithub,
+  IconDiscord,
+  IconDiscourse
+} from "gatsby-theme-flow/src/ui/icons";
 
-## Install Flow
+‍Flow is a fast, decentralized, and developer-friendly blockchain, designed as the foundation for a new generation of games, apps, and the [digital assets](https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets) that power them. It is based on a unique, [multi-role architecture](https://www.onflow.org/primer), and designed to [scale without sharding](https://www.onflow.org/post/flow-blockchain-multi-node-architecture-advantages), allowing for massive improvements in speed and throughput while preserving a developer-friendly, ACID-compliant environment.
 
-To work with Flow locally you'll need to install the <a href="https://github.com/onflow/flow/blob/master/docs/cli.md#flow-cli">Flow CLI</a>.
-The Flow CLI is a command-line interface that provides useful utilities for building Flow applications, including the Flow Emulator.
+### Get Started
 
-<MenuTitle>OSX & Linux</MenuTitle>
+<div className="homepage-grid">
 
-```shell
-sh -ci "$(curl -fsSL https://storage.googleapis.com/flow-cli/install.sh)"
-```
+<div className="grid-item wide">
 
-<MenuTitle>Windows</MenuTitle>
 
-```powershell
-iex "& { $(irm 'https://storage.googleapis.com/flow-cli/install.ps1') }"
-```
+<h3> ⚡️
+<TrackingLink href="/http-api/" eventName="Homepage_link_/http-api/_clicked">
+  Flow Access Node HTTP API
+</TrackingLink>
+</h3>
+
+<ul className="grid-item-list">
+  <li>
+   The Flow access node API for REST clients. Usable with the <TrackingLink href="https://github.com/onflow/flow-emulator#configuration
+" eventName="Homepage_link_/flow-cli/_clicked">
+  Flow CLI (Emulator)
+</TrackingLink>
+ {" "}
+ and {" "}
+<TrackingLink href="https://github.com/onflow/fcl-js/blob/master/packages/sdk/CHANGELOG.md#0057-alpha1----2022-01-21
+" eventName="Homepage_link_/fcl/_clicked">
+  FCL (Flow Client Library)
+</TrackingLink>
+<br/>
+<br />
+
+<span>https://rest-testnet.onflow.org/v1/</span>
+<p>Testnet: <TrackingLink event="Homepage*link*/http-api-testnet/\_clicked" href="/http-api/">View Documentation</TrackingLink></p>
+
+<span>https://rest-mainnet.onflow.org/v1/</span>
+<p>Mainnet: <TrackingLink event="Homepage*link*/http-api-mainnet/\_clicked" href="/http-api/">View Documentation</TrackingLink></p>
+
+<p>
+  Oh, that's new. 
+</p>
+</li>
+</ul>
+
+</div>
+
+<div className="grid-item">
+<h3>🏃‍♂️ Example Code</h3>
+
+<ul className="grid-item-list">
+  <li>
+    <TrackingLink  href="/fcl/tutorials/flow-app-quickstart/" eventName="Homepage_link_/fcl/tutorials/flow-app-quickstart/_clicked">Flow App Quickstart</TrackingLink> <br/>
+    <p>a detailed guide covering how to use the <TrackingLink href="/flow-js-sdk/" eventName="Homepage_link_/flow-js-sdk/_clicked">FCL (Flow Client Library)</TrackingLink> to build a serverless app that connects to Flow, using React!</p>
+  </li>
+  <li>
+    <TrackingLink href="https://github.com/onflow/kitty-items" eventName="Homepage_link_/kitty-items/_clicked">
+    Kitty Items
+    </TrackingLink> <br/>
+    <p>The Kitty Items application is a full-featured NFT marketplace that demonstrates what a full-stack application can look like on Flow. It's designed to showcase the power of Cadence and Flow's client libraries.</p>
+  </li>
+  <li>
+    <TrackingLink href="https://github.com/onflow/flow-core-contracts" eventName="Homepage_link_/flow-core-contract/_clicked">
+    Flow Core Contracts
+    </TrackingLink> <br/>
+    <p>The smart contracts that define the core functionality of the Flow protocol.</p>
+  </li>
+  <li>
+    <TrackingLink href="https://github.com/flow-hydraulics/flow-wallet-api/tree/main/examples/nextjs-fusd-provider" eventName="Homepage_link_/flow-wallet-api-node-demo/_clicked">
+    Wallet API Demonstration App
+    </TrackingLink> <br/>
+    <p>A demonstration (written in TypeScript) of a RESTful API that implements a simple custodial wallet service for the Flow blockchain.</p>
+  </li>
+</ul>
+</div>
+
+<div className="grid-item">
+<h3>🛠 Developer Tools</h3>
+  <ul className="grid-item-list">
+  <li>
+    <TrackingLink href="/flow-cli/" eventName="Homepage_link_/flow-cli/_clicked">
+   Flow CLI
+    </TrackingLink> <br/>
+    <p>The Flow CLI includes several commands to interact with Flow networks, such as querying account information, or sending transactions. It also includes the Flow Emulator.</p>
+  </li>
+  <li>
+    <TrackingLink href="https://github.com/onflow/flow-emulator/blob/master/README.md" eventName="Homepage_link_/https://github.com/onflow/flow-emulator/blob/master/README.md/_clicked">Flow Emulator</TrackingLink> <br/>
+    <p>The Flow Emulator is a lightweight tool that emulates the behaviour of the real Flow network.
+      The emulator exposes a gRPC server that implements the Flow Access API, which is designed to have near feature parity with the real network API.</p>
+  </li>
+  <li>
+    <TrackingLink href="/vscode-extension/" eventName="Homepage_link_/vscode-extension/_clicked">
+    VSCode Flow
+    </TrackingLink> <br/>
+    <p>An extension for VSCode editor that integrates Cadence, the resource-oriented smart contract programming language of Flow, into Visual Studio Code. It provides features like syntax highlighting, type checking, code completion, etc.</p>
+  </li>
+  <li>
+    <TrackingLink href="https://github.com/onflow/fcl-dev-wallet" eventName="Homepage_link_/kitty-items/_clicked">
+    FCL Developer Wallet
+    </TrackingLink> <br/>
+    <p>An application that emulates Flow compatible wallets for use during local development. Click to view the project Github repository, or go to the Kitty Items project for instructions on how to use it while building your project.</p>
+  </li>
+</ul>
+
+</div>
+
+<div className="grid-item">
+  <h3>🤝 Community Code</h3>
+  <ul className="grid-item-list">
+  <li>
+    <TrackingLink
+      href="/flip-fest-winners/"
+      eventName="Homepage_link_/fcl/tutorials/flow-app-quickstart/_clicked"
+    >
+      FLIP Fest Winners!
+    </TrackingLink>
+    <br />
+    <p>
+     FLIP Fest was conducted over 3 months with over 100 developers participating in working on issues determined by
+      the Flow team and the community for reward bounties provided by Flow!
+    </p>
+    <p>
+      <TrackingLink
+        href="flip-fest-winners/#new-tools"
+        eventName="Homepage_link_FLIP-new-tools_clicked"
+      >
+       Tools
+      </TrackingLink>
+      <br />
+      <TrackingLink
+        href="flip-fest-winners/#new-features--improvements"
+        eventName="Homepage_link_FLIP-new-features_clicked">
+        Features & Improvements
+      </TrackingLink>
+      <br />
+      <TrackingLink
+        href="flip-fest-winners/#new-standards"
+        eventName="Homepage_link_FLIP-new-features_clicked"
+      >
+        Standards
+      </TrackingLink>
+    </p>
+  </li>
+  <li>
+    <TrackingLink
+      href="https://github.com/muttoni/gold-star-contracts"
+      eventName="Homepage_link_/gold-star-contracts/_clicked"
+    >
+     ⭐️ Gold Star Contracts
+    </TrackingLink>{" "}
+    <br />
+    <p>
+     A non-exhaustive list of Cadence contracts, scripts, transactions that exemplify best practices.
+     These contracts are so-called foundational because they are standard interfaces that any FT or NFT contract will implement. They introduce commonly seen resources such as Vaults, Collections as well as standard events.
+    </p>
+  </li>
+  <li>
+    <TrackingLink
+      href="https://github.com/ph0ph0/Get-The-Flow-Down"
+      eventName="Homepage_link_/get-the-flow-down/_clicked"
+    >
+      The 'Flow Down'
+    </TrackingLink>{" "}
+    <br />
+    <p>
+     Get the Flow Down is a curated collection of the best Flow blockchain tools, tutorials, articles and more! If you have come across an awesome tutorial, tool, community, blog or you have created one yourself, please create a PR!
+    </p>
+  </li>
+</ul>
+
+</div>
+
+<div className="grid-item">
+<h3>🏄🏼‍♂️ Learn Cadence</h3>
+
+  <ul className="grid-item-list">
+    <li>
+    <TrackingLink href="https://open-cadence.onflow.org/" eventName="Homepage_link_/https://open-cadence.onflow.org/
+/_clicked">Open Cadence</TrackingLink> <br/>
+    <p>A list of high-quality Cadence code to help you learn and implement your smart-contract ideas.</p>
+  </li>
+  <li>
+    <TrackingLink href="/cadence/tutorial/01-first-steps/" eventName="Homepage_link_/cadence/tutorial/01-first-steps/_clicked">Cadence Tutorials</TrackingLink> <br/>
+    <p>A detailed guide covering how to start using the Cadence smart contract programming language. This guide also covers how to create scripts and transactions in Cadence to interact with Flow.</p>
+  </li>
+  <li>
+    <TrackingLink href="/cadence/language/" eventName="Homepage_link_/cadence/language/_clicked">
+    Cadence Language Reference
+    </TrackingLink> <br/>
+    <p>The language definition for Cadence, covering Cadence syntax. Complete and up-to-date with examples.</p>
+  </li>
+  <li>
+    <TrackingLink href="/cadence/design-patterns/" eventName="Homepage_link_/cadence/design-patterns/_clicked">
+    Cadence Best Practices & Patterns
+    </TrackingLink> <br/>
+    <p>A collection of helpful best-practices for writing Cadence code, sourced from the Flow team and contributions from our community.</p>
+  </li>
+  <li>
+    <TrackingLink href="https://play.onflow.org/" eventName="Homepage_link_/https://play.onflow.org/_clicked">
+    Flow Playground
+    </TrackingLink> <br/>
+    <p>The Flow Playground is an interactive browser-based IDE for experimenting with Cadence code. It uses the Cadence language server for full type-checking and error reporting. The Playground is the fastest way to prototype your Cadence project and experiment with the language.</p>
+  </li>
+
+</ul>
+</div>
+
+<div className="grid-item wide">
+<h3>👩‍💻 Flow SDKs</h3>
+
+<ul className="grid-item-list">
+   <li>
+    <TrackingLink href="/sdk-guidelines/" eventName="Homepage_link_/sdk-guidelines/_clicked">
+    SDK Guidelines
+    </TrackingLink> <br/>
+    <p>Considering building an SDK for Flow? These guidelines will help light your path.</p>
+  </li>
+  <li>
+    <TrackingLink href="/fcl/" eventName="Homepage_link_/fcl/_clicked">
+    FCL (Flow Client Library)
+    </TrackingLink> <br/>
+    <p>Connect to the Flow blockchain from your JavaScript environment. Works in both browser and NodeJS.</p>
+  </li>
+  <li>
+    <TrackingLink href="/flow-go-sdk/" eventName="Homepage_link_/flow-go-sdk/_clicked">Flow GO SDK</TrackingLink> <br/>
+    <p>The Flow GO SDK is a powerful full-fetured set of tools for creating applications and services that leverage the Flow blockchain.</p>
+  </li>
+  <li>
+    <TrackingLink href="https://github.com/onflow/flow-jvm-sdk" eventName="Homepage_link_/conre-contracts/_clicked">
+    Flow JVM SDK
+    </TrackingLink> <br/>
+    <p>The Flow JVM SDK is a library for JVM languages (e.g. Java, Kotlin) that provides utilities to interact with the Flow blockchain.</p>
+  </li>
+ <li>
+    <TrackingLink href="/sdks/" eventName="Homepage_link_/sdks/_clicked">
+    Community SDKs
+    </TrackingLink> <br/>
+    <p>View all Available SDKs for Flow, including SDKs for Ruby, .NET, Elixir, Dart and others!</p>
+  </li>
+
+</ul>
+</div>
+</div>
 
 ---
 
-## Developer Tools
+## Join the Flow Developer Community
 
-Flow was designed for builders. It's a "batteries included" patform complete with developer tools you can use to start building right away.
+<TrackingLink
+  href="https://github.com/onflow"
+  eventName="Homepage_link_/github_link/_clicked"
+>
+  <IconGithub style={{ marginRight: 10 }} size={42} />
+</TrackingLink>
 
-<DocsetMenu />
+<TrackingLink
+  href="https://discord.gg/mDvccFPx"
+  eventName="Homepage_link_/discord_link/_clicked"
+>
+  <IconDiscord style={{ marginRight: 10 }} size={42} />
+</TrackingLink>
+
+<TrackingLink
+  href="https://forum.onflow.org/"
+  eventName="Homepage_link_/discourse_link/_clicked"
+>
+  <IconDiscourse style={{ marginRight: 10 }} size={42} />
+</TrackingLink>

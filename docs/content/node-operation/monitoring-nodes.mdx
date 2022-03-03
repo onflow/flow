@@ -1,6 +1,6 @@
 ---
 title: Monitoring Node Health
-sidebar_title: Monitoring node
+sidebar_title: Node Monitoring
 ---
 
 <Callout type="info" title="Logs">
@@ -9,7 +9,7 @@ Logs are emitted to `stdout` as JSON formed strings. Where these logs are availa
 
 </Callout>
 
-Flow node produce health metrics in the form of [Prometheus](https://prometheus.io) metrics, exposed from the node software on `/metrics`.
+Flow nodes produce health metrics in the form of [Prometheus](https://prometheus.io) metrics, exposed from the node software on `/metrics`.
 
 If you wish to make use of these metrics, you'll need to set up a Prometheus server to scrape your Nodes. Alternatively, you can deploy the Prometheus Server on top of your current Flow node to see the metrics without creating an additional server.
 
@@ -44,7 +44,7 @@ The flow-go application doesn't expose any metrics from the underlying host such
 3. (optional) Port forward to the node if you are not able to access port 9090 directly via the browser
    `ssh -L 9090:127.0.0.1:9090 YOUR_NODE`
 
-4. Open your broswer and go the URL `http://localhost:9090/graph` to load the Prometheus Dashboard
+4. Open your browser and go to the URL `http://localhost:9090/graph` to load the Prometheus Dashboard
 
 ## Key Metric Overview
 
@@ -57,3 +57,4 @@ The following are some important metrics produced by the node
 | consensus_hotstuff_busy_duration           | How long Hotstuff spends in a busy state before returning to idle |
 | consensus_hostuff_busy_second_total        | The total time Hotstuff has spent in a busy state                 |
 | consensus_hotstuff_view_of_newest_known_qc | The latest block known to Hotstuff                                |
+
