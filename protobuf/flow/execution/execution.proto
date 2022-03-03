@@ -42,7 +42,8 @@ service ExecutionAPI {
 
   // Registers
 
-  // GetRegisterAtBlockID collects a register at the block with the given ID (if available).
+  // GetRegisterAtBlockID collects a register at the block with the given ID (if
+  // available).
   rpc GetRegisterAtBlockID(GetRegisterAtBlockIDRequest)
       returns (GetRegisterAtBlockIDResponse);
 
@@ -54,7 +55,6 @@ service ExecutionAPI {
   // GetBlockHeaderByID gets a block header by ID.
   rpc GetBlockHeaderByID(GetBlockHeaderByIDRequest)
       returns (BlockHeaderResponse);
-
 }
 
 // Ping
@@ -115,7 +115,7 @@ message GetTransactionResultResponse {
   repeated entities.Event events = 3;
 }
 
-// Registers 
+// Registers
 
 message GetRegisterAtBlockIDRequest {
   bytes block_id = 1;
