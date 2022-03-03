@@ -42,8 +42,7 @@ service ExecutionAPI {
 
   // Registers
 
-  // GetRegisterAtBlockID collects a register at the block with the given ID (if
-  // available).
+  // GetRegisterAtBlockID collects a register at the block with the given ID (if available).
   rpc GetRegisterAtBlockID(GetRegisterAtBlockIDRequest)
       returns (GetRegisterAtBlockIDResponse);
 
