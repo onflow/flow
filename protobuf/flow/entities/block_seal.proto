@@ -11,4 +11,11 @@ message BlockSeal {
   repeated bytes execution_receipt_signatures = 3;
   repeated bytes result_approval_signatures = 4;
   bytes final_state = 5;
+  bytes result_id = 6;
+  repeated AggregatedSignature aggregated_approval_sigs = 7;
+}
+
+message AggregatedSignature {
+  bytes verifier_signatures = 1;
+  repeated bytes signer_ids = 2;
 }
