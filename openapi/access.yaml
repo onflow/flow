@@ -17,7 +17,7 @@ paths:
       tags:
         - Blocks
       parameters:
-        - description: A comma-separated list of block heights to get.
+        - description: A comma-separated list of block heights to get. This parameter is incompatible with `start_height` and `end_height`.
           name: height
           in: query
           schema:
@@ -179,7 +179,7 @@ paths:
                   description: Base64 encoded content of the Cadence script.
                 arguments:
                   type: array
-                  description: Array of Base64 encoded arguments with in [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
+                  description: An array containing arguments each encoded as Base64 passed in the [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
                   items:
                     type: string
                     format: base64
@@ -373,7 +373,7 @@ paths:
                   description: Base64 encoded content of the Cadence script.
                 arguments:
                   type: array
-                  description: Array of Base64 encoded arguments with in [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
+                  description: An array containing arguments each encoded as Base64 passed in the [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
                   items:
                     type: string
                     format: byte
