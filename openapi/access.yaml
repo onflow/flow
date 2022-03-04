@@ -701,13 +701,14 @@ components:
           $ref: '#/components/schemas/Links'
     TransactionExecution:
       type: string
-      description: Value indicating whether the transaction execution succeded or not, this value should be checked when determining transaction success. 
+      description: This value indicates whether the transaction execution succeded or not, this value should be checked when determining transaction success. 
       enum:
         - Pending
         - Success
         - Failure
     TransactionStatus:
       type: string
+      description: This value indicates the state of the transaction execution. Only sealed and expired are final and immutable states.
       enum:
         - Pending
         - Finalized
