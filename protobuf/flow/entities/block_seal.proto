@@ -16,6 +16,6 @@ message BlockSeal {
 }
 
 message AggregatedSignature {
-  bytes verifier_signatures = 1;
+  repeated bytes verifier_signatures = 1;
   repeated bytes signer_ids = 2;
 }
