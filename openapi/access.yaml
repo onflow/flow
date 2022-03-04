@@ -681,8 +681,8 @@ components:
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
-        result:
-          $ref: '#/components/schemas/TransactionResultStatus'
+        execution:
+          $ref: '#/components/schemas/TransactionExecution'
         status:
           $ref: '#/components/schemas/TransactionStatus'
         status_code:
@@ -699,8 +699,9 @@ components:
             $ref: '#/components/schemas/Event'
         _links:
           $ref: '#/components/schemas/Links'
-    TransactionResultStatus:
+    TransactionExecution:
       type: string
+      description: Value indicating whether the transaction execution succeded or not, this value should be checked when determining transaction success. 
       enum:
         - Pending
         - Success
