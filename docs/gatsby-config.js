@@ -81,7 +81,7 @@ const navConfig = {
     url: "/kitty-items/",
     icon: "kitty-items",
     description:
-      "Kitty Items, is a complete application to help you learn and understand how to easily develop on Flow. Kitty Items is a complete NFT marketplace modeled after CryptoKitties and built with Cadence.",
+      "Kitty Items, is a complete application to help you learn and understand how to easily develop on Flow. Kitty Items is a complete NFT marketplace built by the creators of CryptoKitties using Cadence.",
     linkText: "Kitty Items: A CryptoKitties Sample App",
   },
 };
@@ -685,10 +685,10 @@ const sections = [
       null: ["[Home](/)"],
       Overview: ["kitty-items/index"],
       Tutorial: [
-        "kitty-items/get-started",
-        "kitty-items/run-testnet",
+        "kitty-items/install",
+        "kitty-items/start",
         "kitty-items/modify",
-        "kitty-items/run-locally",
+        "kitty-items/upgrade",
         "kitty-items/next-steps",
       ],
     },
