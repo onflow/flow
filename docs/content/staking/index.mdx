@@ -74,8 +74,9 @@ This process repeats itself indefinitely, as long as the network remains functio
 
 To determine the list of nodes that are included as officially staked nodes in the next epoch,
 the protocol looks at the records of all the nodes that have committed tokens.
-It checks to make sure each node’s information is correct and that the node is running properly.
-Each node also has to have committed tokens above the minimum stake required for their node role.
+It checks to make sure each node's information is correct and that the node is running properly.
+Each node also has to have committed tokens above the minimum stake required for their node role
+and be authorized by the service account.
 If any of these checks are insufficient, the node is not included in the next epoch.
 
 Every epoch, some nodes also have to perform certain processes to initialize the state and communication
