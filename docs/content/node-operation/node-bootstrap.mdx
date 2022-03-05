@@ -226,221 +226,67 @@ $ ./boot-tools/bootstrap check-machine-account --access-address access.mainnet.n
 
 This command will detect and provide information about common misconfigurations, or confirm that the machine account is configured correctly.
 
-## Step 3 - Getting Ready to Start your Flow Node
+## Step 3 - Start Your Flow Node
 
-<Callout type="danger">
+Ensure you have configured your node using the [Node Setup guide](/node-operation/node-setup).
 
-Before proceeding to Step 3, ensure that Step 1 was completed successfully with the bootstrap directory handy (default: `/var/flow/bootstrap`)
+### Confirming authorization
 
-</Callout>
+You can confirm your node's successful registration and authorization by reading the [Staking Contract](/core-contracts/staking-contract-reference#contract).
+At the end of the `EpochStaking` phase, the members of the Proposed Identity Table are confirmed as authorized participants in the next epoch. 
+Therefore, if your node ID appears in the Proposed Identity Table during the `EpochStaking` phase, your node will be a participant in the next epoch.
 
-1. Expose TCP port **3569** on your firewall for both ingress and egress traffic
+You can read the current Proposed Identity Table using the [getProposedTable script](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_proposed_table.cdc).
 
-If you are running Flow Access node, Collection node or an Execution node you will also need to expose TCP port **9000** and **9001**.
+You can read the current epoch phase using the [getEpochPhase script](https://github.com/onflow/flow-core-contracts/blob/master/transactions/epoch/scripts/get_epoch_phase.cdc). (A return value of `0` indicates the `EpochStaking` phase.)
 
-Optionally, for any node type, if you would like to expose the node metrics you can open port 8000.
+### Trusted Root Snapshot
 
-2. Create the `data` directory if you have not previously created it and/or removed a previous version of it (default: `/var/flow/data`)
+Once your node has been registered and authorized by the service account, it can start running.
+
+A new node must bootstrap with a trusted root snapshot of the protocol state, where the node is a confirmed participant. 
+Since new nodes are confirmed at the end of the `EpochStaking` phase, this means that, if the node is registered to join at epoch `N+1`, it must use a root snapshot from within the `EpochSetup` phase of epoch `N`.
+
+### Dynamic Startup
+
+Flow provides a mechanism called Dynamic Startup to simplify the process of obtaining the root snapshot.
+When using Dynamic Startup, the node can be started at any time during the `EpochStaking` phase.
+The node will wait for the `EpochSetup` phase to begin, retrieve a valid root snapshot from a trusted Access Node, then bootstrap its state and join the network.
+This is the recommended way to start your node for the first time.
+
+1. Remove any `root-protocol-state-snapshot.json` file from your `bootstrap` folder. (If this file is present the node will attempt to bootstrap with it rather than Dynamic Startup.)
+2. Select a trusted Access Node to provide the root snapshot. You will need this node's **secure GRPC server address** and **Networking Public Key**.
+3. Configure Dynamic Startup by adding flags:
+```shell:title=ExampleDynamicStartupFlags
+  ... \
+  --dynamic-startup-access-address=access.flow.com:9001 \
+  --dynamic-startup-access-publickey=df6ca1cb2ad6cca2aebd49b4a198abc6aabfbd0720ab54b6af316e40655b54c1c49f79569525bb4cd84530d3f3a743579ad2a80a1232a8a37495d86ec362be40
+```
+4. Start your node (see [guide](/node-operation/node-setup/#start-the-node))
 
 <Callout type="info">
-
-$$TODO$$ does this make sense??
-You can choose to run your Flow Node either using `docker` or have `systemd` to manage Flow node. Please choose only **one** of these two options
-
+Once the node has bootstrapped, these flags may be removed.
 </Callout>
 
-### Systemd
+### Manually Provisioned Root Snapshot
 
-**If you are running your Flow Node via Docker, you can skip this step and go to the Docker section below.**
-
-1. Ensure that you pulled the latest changes from [flow-go repository](https://github.com/onflow/flow-go) via `git`
-
-```shell
-## Clone the repo if you haven't already done so
-git clone https://github.com/onflow/flow-go
-
-## Get latest changes
-cd flow-go
-git pull origin master
+You can also provision the root snapshot file manually, then start the node without configuring Dynamic Startup.
+A snapshot can be obtained from any Access Node using Flow CLI.
+```shell:title=RetrieveRootSnapshot
+flow snapshot save /path/to/root/snapshot --network mainnet
 ```
-
-2. Copy your respective [systemd unit file](https://github.com/onflow/flow-go/tree/master/deploy/systemd-docker) to: `/etc/systemd/system`
-
-3. Create directory `sudo mkdir /etc/flow`
-
-4. Copy the [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) file to: `/etc/flow/`
-
-5. Enable your service `sudo systemctl enable YOUR-FLOW-NODE.service`
-
-<Callout type="danger">Wait for the Flow team announcement before you proceed to Step 4</Callout>
-
-## Step 4 - Start Your Flow Node
-
-### Docker
 
 <Callout type="warning">
-	$$TODO$$ - we are using Docker v20 now...
-Please make sure you are running Docker version 19 (`docker --version`). There is currently an issue with Docker version 20.
-</Callout>
 
-**You can skip this section if you are running via systemd**
-
-1. Update your environment variables: `source /path/to/runtime-conf.env`
-2. Run the following `docker` command based on the Flow node that you are running:
-
-<Callout type="warning" title="Remember: update your docker volume mounting path">
-
-You'll need to update the path for `data` and `bootstrap` volumes in the following commands. Those paths are from step 2.2 and 2.3a.
+The snapshot must be within the `EpochSetup` phase.
 
 </Callout>
 
-### Access
+<Callout type="warning">
 
-```shell
-docker run --rm \
-	-v /path/to/bootstrap:/bootstrap:ro \
-	-v /path/to/data:/data:rw \
-	--name flow-go \
-	--network host \
-	gcr.io/flow-container-registry/access:v0.24.4 \
-	--nodeid=${FLOW_GO_NODE_ID} \
-	--bootstrapdir=/bootstrap \
-	--datadir=/data/protocol \
-	--secretsdir=/data/secrets \
-	--rpc-addr=0.0.0.0:9000 \
-	--http-addr=0.0.0.0:8000 \
-	--collection-ingress-port=9000 \
-	--script-addr=${FLOW_NETWORK_EXECUTION_NODE} \
-	--bind 0.0.0.0:3569 \
-	--loglevel=error
-```
+Since Collection and Consensus Nodes must start up in the first ~30mins of the EpochSetup phase (see [Timing](/node-operation/node-bootstrap/#timing)),
+the snapshot must be provisioned within this time window.
 
-### Collection
+</Callout>
 
-```shell
-docker run --rm \
-	-v /path/to/bootstrap:/bootstrap:ro \
-	-v /path/to/data:/data:rw \
-	--name flow-go \
-	--network host \
-	gcr.io/flow-container-registry/collection:v0.24.4 \
-	--nodeid=${FLOW_GO_NODE_ID} \
-	--bootstrapdir=/bootstrap \
-	--datadir=/data/protocol \
-	--secretsdir=/data/secrets \
-	--ingress-addr=0.0.0.0:9000 \
-	--bind 0.0.0.0:3569 \
-	--loglevel=error
-```
-
-### Consensus
-
-```shell
-docker run --rm \
-	-v /path/to/bootstrap:/bootstrap:ro \
-	-v /path/to/data:/data:rw \
-	--name flow-go \
-	--network host \
-	gcr.io/flow-container-registry/consensus:v0.24.4 \
-	--nodeid=${FLOW_GO_NODE_ID} \
-	--bootstrapdir=/bootstrap \
-	--datadir=/data/protocol \
-	--secretsdir=/data/secrets \
-	--bind 0.0.0.0:3569 \
-	--loglevel=error
-```
-
-### Execution
-
-```shell
-docker run --rm \
-	-v /path/to/bootstrap:/bootstrap:ro \
-	-v /path/to/data:/data:rw \
-	--name flow-go \
-	--network host \
-	gcr.io/flow-container-registry/execution:v0.24.4 \
-	--nodeid=${FLOW_GO_NODE_ID} \
-	--bootstrapdir=/bootstrap \
-	--datadir=/data/protocol \
-	--secretsdir=/data/secrets \
-	--triedir=/data/execution \
-	--rpc-addr=0.0.0.0:9000 \
-	--bind 0.0.0.0:3569 \
-	--loglevel=error
-```
-
-### Verification
-
-```shell
-docker run --rm \
-	-v /path/to/bootstrap:/bootstrap:ro \
-	-v /path/to/data:/data:rw \
-	--name flow-go \
-	--network host \
-	gcr.io/flow-container-registry/verification:v0.24.4 \
-	--nodeid=${FLOW_GO_NODE_ID} \
-	--bootstrapdir=/bootstrap \
-	--datadir=/data/protocol \
-	--secretsdir=/data/secrets \
-	--bind 0.0.0.0:3569 \
-	--loglevel=error
-```
-
-### Systemd
-
-**You can skip this section if you are running via docker**
-
-1. Check that your `runtime-conf.env` is at `/etc/flow/runtime-conf.env`
-2. Update your environment variables: `source /etc/flow/runtime-conf.env`
-3. Start your service: `sudo systemctl start flow`
-
-## Step 5 - Verify if your Node is Running
-
-Here are a few handy commands that you can use to check if your Flow node is up and running
-
-### Docker
-
-$$TODO$$ outdated
-- To get Flow logs: `sudo journalctl -u flow-YOUR_ROLE`
-- To get the status: `sudo docker ps`
-
-```shell
-$ sudo docker ps
-CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
-1dc5d43385b6 gcr.io/flow-container-registry/verification:candidate8 \"/bin/app --nodeid=4…\" 30 hours ago Up 30 hours flow-go
-```
-
-### Systemd
-
-- To get Flow logs: `sudo journalctl -u flow-YOUR_ROLE`
-- To get your Flow node status: `sudo systemctl status flow`
-
-```shell
-● flow-verification.service - Flow Access Node running with Docker
-Loaded: loaded (/etc/systemd/system/flow-verification.service; enabled; vendor preset: enabled)
-Active: active (running) since Wed 2020-05-20 18:18:13 UTC; 1 day 6h ago
-Process: 3207 ExecStartPre=/usr/bin/docker pull gcr.io/flow-container-registry/verification:${FLOW_GO_NODE_VERSION} (code=exited, status=0/SUCCESS)
-Main PID: 3228 (docker)
-Tasks: 10 (limit: 4915)
-Memory: 33.0M
-CGroup: /system.slice/flow-verification.service
-        └─3228 /usr/bin/docker run --rm -v /var/flow/bootstrap:/bootstrap:ro -v /var/flow/data:/data:rw --rm --name flow-go --network host gcr.io/flow-container-registry/verification:candidate8 --nodeid=489f8a4513d5bd8b8b093108fec00327b683db545b37b4ea9153f61b2c0c49dc --bootstrapdir=/bootstrap --datadir=/data/protocol --alpha=1 --bind 0.0.0.0:3569 --loglevel=error
-```
-
-## Step 6 - Monitoring and Metrics
-
-This is intended for operators who would like to see what their Flow nodes are currently doing. Head over to [Monitoring Node Health](/node-operation/monitoring-nodes/) to get setup.
-
-### Node Status
-
-The metrics for the node should be able to provide a good overview of the status of the node. If we want to get a quick snapshot of the status of the node, and if it's properly participating in the network, you can check the `consensus_compliance_finalized_height` or `consensus_compliance_sealed_height` metric, and ensure that it is not zero and strictly increasing.
-
-```shell
-curl localhost:8080/metrics | grep consensus_compliance_sealed_height
-
-# HELP consensus_compliance_sealed_height the last sealed height
-# TYPE consensus_compliance_sealed_height gauge
-consensus_compliance_sealed_height 1.132054e+06
-```
-
-
+Once a valid root snapshot file is downloaded to the node's bootstrap folder, it can be started (see [guide](/node-operation/node-setup/#start-the-node)))
