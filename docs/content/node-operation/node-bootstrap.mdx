@@ -1,7 +1,7 @@
 ---
 title: Node Bootstrap
 sidebar_title: Node Bootstrapping
-description: Running your own flow Node
+description: Running your own flow node
 ---
 
 ## Step 0 - Cleaning Up your Previous State
@@ -54,12 +54,12 @@ generate a unique ID by hashing your staking public key.
 
 ### Generate Your Node Keys
 
-#### Addresses
+#### Network Addresses
 
 <Callout type="info">
 
 You will need to have a real address, for example, a CNAME pointed at the
-node or just the IP address e.g. example.com:3569 or 189.23.42.12:3569.
+node e.g. example.com:3569 or 189.23.42.12:3569.
 
 </Callout>
 
@@ -98,14 +98,14 @@ $ ./boot-tools/bootstrap key --address \"${YOUR_NODE_ADDRESS}:3569\" --role ${YO
 ```
 
 ```shell:title=Example
-$./boot-tools/bootstrap key --address "198.123.42.10:3569" --role consensus  -o ./bootstrap
+$./boot-tools/bootstrap key --address "mydomain.com:3569" --role consensus  -o ./bootstrap
 <nil> DBG will generate networking key
 <nil> INF generated networking key
 <nil> DBG will generate staking key
 <nil> INF generated staking key
 <nil> DBG will generate db encryption key
 <nil> INF generated db encryption key
-<nil> DBG assembling node information address=198.123.42.10:3569
+<nil> DBG assembling node information address=mydomain.com:3569
 <nil> DBG encoded public staking and network keys networkPubKey=7f31ae79017a2a58a5e59af9184f440d08885a16614b2c4e361019fa72a9a1a42bf85b4e3f9674782f12ca06afd9782e9ccf19496baed069139385b82f8f40f6 stakingPubKey=829d086b292d84de8e7938fd2fafa8f51a6e025f429291835c20e59d9e25665febf24fa59de12a4df08be7e82c5413180cc7b1c73e01f26e05344506aaca4fa9cc009dc1c33f8ba3d7c7509e86d3d3e7341b43b9bf80bb9fba56ae0b3135dd72
 <nil> INF wrote file bootstrap/public-root-information/node-id
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-info.priv.json
@@ -113,7 +113,7 @@ $./boot-tools/bootstrap key --address "198.123.42.10:3569" --role consensus  -o 
 <nil> INF wrote file bootstrap/public-root-information/node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
 <nil> DBG will generate machine account key
 <nil> INF generated machine account key
-<nil> DBG assembling machine account information address=198.123.42.10:3569
+<nil> DBG assembling machine account information address=mydomain.com:3569
 <nil> INF encoded machine account public key for entry to Flow Port machineAccountPubKey=f847b8406e8969b869014cd1684770a8db02d01621dd1846cdf42fc2bca3444d2d55fe7abf740c548639cc8451bcae0cd6a489e6ff59bb6b38c2cfb83e095e81035e507b02038203e8
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-machine-account-key.priv.json
 
@@ -160,26 +160,6 @@ Copy the machine account public key somewhere safe. You will need it in a later 
 
 </Callout>
 
-### Upload your Public Keys
-
-<Callout type="warning">
-  
-  If you're running multiple nodes, you only need one token - it can be used to
-  generate multiple keys.
-
-  Please use the following pattern when generating your token `mainnet-16-yourname` (you can pick any name, it just helps us keep track of the most recent keys you've sent and would like us to include in the bootstrapping process)
-
-</Callout>
-
-```shell
-$ ./boot-tools/transit push -b ./bootstrap -t ${TOKEN} -r ${YOUR_NODE_ROLE}
-
-Running push
-Generating keypair
-Uploading ...
-Uploaded 400 bytes
-```
-
 ## Step 2 - Stake Your Node
 
 Stake your node via [Flow Port](https://port.onflow.org/)
@@ -190,7 +170,7 @@ The `node details` (`Node ID`, `Network Address`, `Networking Key` and `Staking 
 $cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
 {
   "Role": "consensus",
-  "Address": "198.123.42.10:3569",
+  "Address": "mydomain.com:3569",
   "NodeID": "39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a",
   "Stake": 1000,
   "NetworkPubKey": "d92e3d5880abe233cf9fe9104db34bbb31251468a541454722b3870c04156a1b0504aef443bcaad124b997384b8fe7052847ce1e6189af1392d865e6be69835b",
@@ -200,6 +180,12 @@ $cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e1299194
 
 If you are running a collection or consensus node, you will need to provide an additional field `Machine Account Public Key`.
 This value is found in the output of the `bootstrap key` command from Step 1.
+
+<Callout type="info">
+
+Please let us know your node id via discord or email.
+
+</Callout>
 
 ### Finalize Machine Account Setup
 
