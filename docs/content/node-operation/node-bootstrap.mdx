@@ -13,14 +13,14 @@ In order to join the network at epoch N+1, the node must be registered with suff
 authorized by the service account prior to the end of epoch N's Staking Auction Phase.
 Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](/staking/epoch-scripts-events/#epochsetup).
 
-Nodes registered for epoch N+1 are able to participate in network communication on a limited basis starting in the `EpochSetup` phase of epoch N. 
+Nodes registered for epoch N+1 are able to participate in network communication on a limited basis starting in the `Epoch Setup Phase` of epoch N. 
 
 ![Flow Epoch Schedule](https://storage.googleapis.com/flow-resources/documentation-assets/epoch-startup-order.png)
 
 Once registered and confirmed to join the network at epoch N+1, the node must start up **before** epoch N+1 begins.
-* Verification & Access nodes may start up any time during the `EpochSetup` phase.
+* Verification & Access nodes may start up any time during the `Epoch Setup Phase`.
 * Consensus & Collection nodes must start up within the first **1000 views (~30mins)**
-of the `EpochSetup` phase to participate in the [Epoch Preparation Protocol](/staking/epoch-preparation/#phase-1-epoch-setup).
+of the `Epoch Setup Phase` to participate in the [Epoch Preparation Protocol](/staking/epoch-preparation/#phase-1-epoch-setup).
 
 ## Step 1 - Run Genesis Bootstrap
 
@@ -234,12 +234,12 @@ Ensure you have configured your node using the [Node Setup guide](/node-operatio
 ### Confirming authorization
 
 You can confirm your node's successful registration and authorization by reading the [Staking Contract](/core-contracts/staking-contract-reference#contract).
-At the end of the `EpochStaking` phase, the members of the Proposed Identity Table are confirmed as authorized participants in the next epoch. 
-Therefore, if your node ID appears in the Proposed Identity Table during the `EpochStaking` phase, your node will be a participant in the next epoch.
+At the end of the `Staking Auction Phase`, the members of the Proposed Identity Table are confirmed as authorized participants in the next epoch. 
+Therefore, if your node ID appears in the Proposed Identity Table during the `Staking Auction Phase`, your node will be a participant in the next epoch.
 
 You can read the current Proposed Identity Table using the [getProposedTable script](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_proposed_table.cdc).
 
-You can read the current epoch phase using the [getEpochPhase script](https://github.com/onflow/flow-core-contracts/blob/master/transactions/epoch/scripts/get_epoch_phase.cdc). (A return value of `0` indicates the `EpochStaking` phase.)
+You can read the current epoch phase using the [getEpochPhase script](https://github.com/onflow/flow-core-contracts/blob/master/transactions/epoch/scripts/get_epoch_phase.cdc). (A return value of `0` indicates the `Staking Auction Phase`.)
 
 ### Trusted Root Snapshot
 
@@ -248,13 +248,13 @@ Once your node has been registered and authorized by the service account, it wil
 ![Flow Epoch Schedule](https://storage.googleapis.com/flow-resources/documentation-assets/epoch-startup-order.png)
 
 A new node must bootstrap with a trusted root snapshot of the protocol state, where the node is a confirmed participant. 
-Since new nodes are confirmed at the end of the `EpochStaking` phase, this means that, if the node is registered to join at epoch `N+1`, it must use a root snapshot from within the `EpochSetup` phase of epoch `N`.
+Since new nodes are confirmed at the end of the `Staking Auction Phase`, this means that, if the node is registered to join at epoch `N+1`, it must use a root snapshot from within the `Epoch Setup Phase` of epoch `N`.
 
 ### Dynamic Startup
 
 Flow provides a mechanism called Dynamic Startup to simplify the process of obtaining the root snapshot.
-When using Dynamic Startup, the node can be started **at any time during the `EpochStaking` phase**.
-The node will wait for the `EpochSetup` phase to begin, retrieve a valid root snapshot from a trusted Access Node, then bootstrap its state and join the network.
+When using Dynamic Startup, the node can be started **at any time during the `Staking Auction Phase`**.
+The node will wait for the `Epoch Setup Phase` to begin, retrieve a valid root snapshot from a trusted Access Node, then bootstrap its state and join the network.
 This is the recommended way to start your node for the first time.
 
 1. Remove any `root-protocol-state-snapshot.json` file from your `bootstrap` folder. (If this file is present the node will attempt to bootstrap with it rather than Dynamic Startup.)
@@ -281,13 +281,13 @@ flow snapshot save /path/to/root/snapshot --network mainnet
 
 <Callout type="warning">
 
-The snapshot must be within the `EpochSetup` phase.
+The snapshot must be within the `Epoch Setup Phase`.
 
 </Callout>
 
 <Callout type="warning">
 
-Since Collection and Consensus Nodes must start up in the first ~30mins of the EpochSetup phase (see [Timing](/node-operation/node-bootstrap/#timing)),
+Since Collection and Consensus Nodes must start up in the first ~30mins of the `Epoch Setup Phase` (see [Timing](/node-operation/node-bootstrap/#timing)),
 the snapshot must be provisioned within this time window.
 
 </Callout>
