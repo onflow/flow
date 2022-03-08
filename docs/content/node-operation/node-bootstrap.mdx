@@ -8,17 +8,18 @@ This guide is for getting a new node staked and running on Flow. For sporking do
 
 ## Timing
 
-New nodes are able to join the network each time a new epoch begins. In order to join the
-network at epoch N+1, the node must be registered with sufficient stake and 
+New nodes are able to join the network each time a new epoch begins. 
+In order to join the network at epoch N+1, the node must be registered with sufficient stake and 
 authorized by the service account prior to the end of epoch N's Staking Auction Phase.
 Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](/staking/epoch-scripts-events/#epochsetup).
 
-![Flow Epoch Schedule](https://storage.googleapis.com/flow-resources/documentation-assets/epoch-phase-diagram.png)
+Nodes registered for epoch N+1 are able to participate in network communication on a limited basis starting in the `EpochSetup` phase of epoch N. 
 
-Once registered and confirmed to join the network at epoch N+1, the node must start up
-**before**. 
+![Flow Epoch Schedule](https://storage.googleapis.com/flow-resources/documentation-assets/epoch-startup-order.png)
+
+Once registered and confirmed to join the network at epoch N+1, the node must start up **before** epoch N+1 begins.
 * Verification & Access nodes may start up any time during the `EpochSetup` phase.
-* Consensus & Collection nodes must start up within the first 1000 views (~30mins)
+* Consensus & Collection nodes must start up within the first **1000 views (~30mins)**
 of the `EpochSetup` phase to participate in the [Epoch Preparation Protocol](/staking/epoch-preparation/#phase-1-epoch-setup).
 
 ## Step 1 - Run Genesis Bootstrap
@@ -242,7 +243,9 @@ You can read the current epoch phase using the [getEpochPhase script](https://gi
 
 ### Trusted Root Snapshot
 
-Once your node has been registered and authorized by the service account, it can start running.
+Once your node has been registered and authorized by the service account, it will be able to participate in the next epoch.
+
+![Flow Epoch Schedule](https://storage.googleapis.com/flow-resources/documentation-assets/epoch-startup-order.png)
 
 A new node must bootstrap with a trusted root snapshot of the protocol state, where the node is a confirmed participant. 
 Since new nodes are confirmed at the end of the `EpochStaking` phase, this means that, if the node is registered to join at epoch `N+1`, it must use a root snapshot from within the `EpochSetup` phase of epoch `N`.
@@ -250,7 +253,7 @@ Since new nodes are confirmed at the end of the `EpochStaking` phase, this means
 ### Dynamic Startup
 
 Flow provides a mechanism called Dynamic Startup to simplify the process of obtaining the root snapshot.
-When using Dynamic Startup, the node can be started at any time during the `EpochStaking` phase.
+When using Dynamic Startup, the node can be started **at any time during the `EpochStaking` phase**.
 The node will wait for the `EpochSetup` phase to begin, retrieve a valid root snapshot from a trusted Access Node, then bootstrap its state and join the network.
 This is the recommended way to start your node for the first time.
 
