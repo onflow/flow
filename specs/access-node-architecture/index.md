@@ -48,11 +48,55 @@ Script execution delegation to ENs is an obvious low hanging fruit limiting Acce
 
 By managing all chain synchronization concerns `Blockchain Data Service` provides a unified set of functionality that `Access Node` and `Observer Service` are built on, and which can be used as a standalone component for following trusted chain state more generally.
 
+### Blockchain Core service
+
+- Follows protocol consensus and execution state sync
+- Serves the `State Streamer API`
+- Serves the `Protocol API`
+
 The new `Access Node` builds on the original node capabilities above: 
+### Access Node
+
+- Participates as a *staked* node within the Flow network
+- Maintains sync using `Blockchain Data Service`
+- Accepts new transactions, validates them, and forwards them to collection nodes.
+- Bridges the staked and public libp2p networks
+    - Provides access to the flow blockchain’s protocol and execution state via a public libp2p network that exposes the state sync and execution data sync protocols.
+    - Relays a subset of messages from the staked network to the public network
 
 `Observer Service` is named as such due to it’s non-participation in the protocol
+### Observer Service
+
+- Participates in the flow network as a consumer of public data without being staked or permissioned
+- Maintains sync using `Blockchain Data Service`
+- Accepts new transactions, validates them, and forwards them to `Access Nodes`
+- Is deployed as a stand-alone application, and does not strictly require `DPS` or the `Flow API Service` (though it would have limited utility without them)
+
+### Flow API Service
+
+- Deployed as a stand-alone service
+- Exposes the external Flow `Access API`s (gRPC/REST)
+- If `DPS` is deployed, it queries `DPS API` for execution state queries, otherwise returns an error.
+- Queries the downstream `Protocol API` on a node running `Blockchain Data Service` for protocol state
+- Proxies send transaction requests
+    - `Access Nodes` proxy transactions to the downstream `Protocol API`
+    - `Observer Services` proxy transactions to a downstream `Access Node`
 
 `DPS` has two limited changes proposed: extraction of consensus follower into `Blockchain Data Service`. Then deprecating GCP based execution state sync and switching all chain sync logic over to `State Streamer`. 
+
+### Data Provisioning Service (DPS)
+
+- Deployed as a stand-alone set of services
+- Connects to an `Access Node` or `Observer Service` using the `State Streamer`
+- Uses `State Streamer API` to subscribe to protocol and execution state updates
+
+### State Streamer and Streamer Registration API
+
+- Provides an API for subscribing to protocol and execution state updates
+- Served using 1:1 communication (likely gRPC over web sockets)
+- Permissioned (not intended to be exposed to the public, but also not authenticated)
+- Provides an abstraction layer so clients don’t need to interact with the Flow network directly
+- The API accesses data from the `Execution Data Service` and `Protocol State Service`
 
 # Refactoring detailed diagrams
 ### Starting Point
@@ -60,6 +104,10 @@ The new `Access Node` builds on the original node capabilities above:
 
 ### Refactor Step 1
 ![refactor-1.png](images/refactor-1.png)
+
+Non-structural considerations: 
+- Formalize State Client and State API specification
+- Establish correct libp2p network init at bootstrap based on configuration declaring either `Access Node` vs `Observer Service`
 
 ### Build `Blockchain Core Service`
 ![refactor-2.png](images/refactor-2.png)
