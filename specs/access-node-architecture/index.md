@@ -12,7 +12,7 @@ This new architecture separates DPS and the Flow API Service into standalone, op
 
 - Completely separate the existing Access Node code into un-staked `Observer Service` and the staked `Access Node`
 - Modularize the `Access API` from `Access Node` into its own process/service, which will be able to run against any `Blockchain Data Service`. We will refer to it as the `Flow API Service` going forward.
-- The `Blockchain Data Service` encapsulates the live synchronization concerns provided through consensus follower and execution state sync. It provides access to that state through the `Protocol API` and the `State Streamer` interfaces.
+- The `Blockchain Data Service` encapsulates the live synchronization systems provided through consensus follower and execution state sync. It provides access to that state through the `Protocol API` and the `State Streamer` interfaces.
 - The `State Streamer` interface is a generic component which can allow any consumer, such as the `DPS`, to access the state tracked by the `Blockchain Data Service`.
 
 # Non-goals
