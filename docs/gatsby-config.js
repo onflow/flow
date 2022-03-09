@@ -335,10 +335,8 @@ const sections = [
         "[Cadence Anti-Patterns](/cadence/anti-patterns/)",
         "[msg․sender Considered Harmful](/cadence/msg-sender/)",
         "[Measuring Time In Cadence](/cadence/measuring-time/)",
-        "[Subtyping](/cadence/subtyping/)",
         "[Migration Guide](/cadence/migration-guide/)",
         "[JSON-Cadence Data Interchange Format](/cadence/json-cadence-spec/)",
-        "[Syntax Highlighting](/cadence/syntax-highlighting/)"
       ],
       Tutorial: [
         "docs/tutorial/01-first-steps",
