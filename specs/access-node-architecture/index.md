@@ -118,10 +118,5 @@ Non-structural considerations:
 # Additional questions
 
 - Historical access
-    - This re-architecture does not support historical state since consensus follower is a live only concept. But this remains one of the most often mentioned requests.
-    - This is also something we are hoping via Optakt in the longer term.
-    - Effectively on ice.
+    - While this re-architecture doesn't support access to historical state directly in this initial architecture revision, it makes support possible in future and we are working with community partners to achieve this
 
-### Original diagrams
-
-Refactoring Phases: [https://app.diagrams.net/#G11AK8xmHLoiY0IfD2aZoWwvzi_5hVfm2r](https://app.diagrams.net/#G11AK8xmHLoiY0IfD2aZoWwvzi_5hVfm2r)
