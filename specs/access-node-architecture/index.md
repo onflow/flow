@@ -36,7 +36,6 @@ To date the implementation of the Access Node has provided the following:
 
 - Participates as a *staked* node within the Flow network
 - Participates in the staked gossip network to follow protocol state
-- Enforces rate limits and throttling of requests
 - Handling of requests to the Access API from public callers for current live spork and
     - Performs basic request validation
     - Delegates script execution to upstream Execution Nodes
