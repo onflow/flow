@@ -35,14 +35,14 @@ This new architecture separates DPS and the Flow API Service into standalone, op
 To date the implementation of the Access Node has provided the following: 
 
 - Participates as a *staked* node within the Flow network
-- Participates in the private gossip network to follow protocol state
+- Participates in the staked gossip network to follow protocol state
 - Enforces rate limits and throttling of requests
 - Handling of requests to the Access API from public callers for current live spork and
     - Performs basic request validation
     - Delegates script execution to upstream Execution Nodes
     - Delegates transactions to Collection Nodes for processing by the network
 
-Script execution delegation to ENs is an obvious low hanging fruit limiting Access Node scalability and impacting transaction throughput capacity. In addition, scaling of Access API request handling is constrained by tight coupling of code within Access Node. The introduction of the DPS took the first step towards queryable locally held state that could be leveraged to scale Access Node, initially for protocol state only. Subsequently execution state sync provided the missing piece of the blockchain sync story. 
+Script execution delegation to ENs is an obvious low hanging fruit limiting Access Node scalability and impacting transaction throughput capacity. In addition, scaling of Access API request handling is constrained by tight coupling of code within Access Node. The introduction of the DPS took the first step towards queryable locally held state that could be leveraged to scale Access Node. Subsequently, execution state sync provided a decentralized way to share execution state across the network. 
 
 ## Revised ownership and responsibility
 
@@ -61,13 +61,13 @@ The new `Access Node` builds on the original node capabilities above:
 - Maintains sync using `Blockchain Data Service`
 - Accepts new transactions, validates them, and forwards them to collection nodes.
 - Bridges the staked and public libp2p networks
-    - Provides access to the flow blockchain’s protocol and execution state via a public libp2p network that exposes the state sync and execution data sync protocols.
+    - Provides access to the Flow blockchain’s protocol and execution state via a public libp2p network that exposes the state sync and execution data sync protocols.
     - Relays a subset of messages from the staked network to the public network
 
-`Observer Service` is named as such due to it’s non-participation in the protocol
+`Observer Service` is named as such due to its non-participation in the protocol
 ### Observer Service
 
-- Participates in the flow network as a consumer of public data without being staked or permissioned
+- Participates in the Flow network as a consumer of public data without being staked or permissioned
 - Maintains sync using `Blockchain Data Service`
 - Accepts new transactions, validates them, and forwards them to `Access Nodes`
 - Is deployed as a stand-alone application, and does not strictly require `DPS` or the `Flow API Service` (though it would have limited utility without them)
@@ -94,7 +94,7 @@ The new `Access Node` builds on the original node capabilities above:
 
 - Provides an API for subscribing to protocol and execution state updates
 - Served using 1:1 communication (likely gRPC over web sockets)
-- Permissioned (not intended to be exposed to the public, but also not authenticated)
+- Permissioned (not intended to be exposed to the public)
 - Provides an abstraction layer so clients don’t need to interact with the Flow network directly
 - The API accesses data from the `Execution Data Service` and `Protocol State Service`
 
