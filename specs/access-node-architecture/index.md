@@ -28,7 +28,7 @@ This new architecture separates DPS and the Flow API Service into standalone, op
 
 # Design
 
-![architecture.jpg](images/architecture.jpg)
+![Architecture Diagram](images/architecture.png)
 
 # In detail
 
