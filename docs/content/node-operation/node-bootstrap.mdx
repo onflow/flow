@@ -232,6 +232,18 @@ $ ./boot-tools/bootstrap check-machine-account --access-address access.mainnet.n
 
 This command will detect and provide information about common misconfigurations, or confirm that the machine account is configured correctly.
 
+### Push transit keys (consensus node only)
+
+If you are running a consensus node, run the following command to push the transit keys. Use the token `mainnet-x-organization` e.g. `mainnet-17-companyname`.
+
+```shell:title=transit
+$ ./boot-tools/transit push-transit-key -b ./bootstrap -t mainnet-x-organization
+<nil> INF generating transit keys
+<nil> INF generating key pair
+<nil> INF attempting to push transit public key to the transit servers
+<nil> INF successfully pushed transit public key to the transit servers
+```
+
 ## Step 3 - Start Your Flow Node
 
 Ensure you have configured your node using the [Node Setup guide](/node-operation/node-setup).
