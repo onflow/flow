@@ -22,7 +22,7 @@ This new architecture separates DPS and the Flow API Service into standalone, op
 
 # Detail level objectives
 
-- The handling of received raw protocol and execution state data is managed in the `Blockchain Data Service`. This state is provided to callers via the `Protocol API` and streamed to consumers of the `State Streamer`.
+- The handling of raw protocol and execution state data received from the peer-to-peer network is managed in the `Blockchain Data Service`. This state is provided to callers via the `Protocol API` and streamed to consumers of the `State Streamer`.
 - `Blockchain Data Service` state is accessed using `State Streamer Registration API` and via `State Streamer` clients.
 - `DPS` indexes execution state that has been delivered live from the protocol by `State Streamer`. The indexed state is used to answer script execution requests from the `DPS API`.
 
