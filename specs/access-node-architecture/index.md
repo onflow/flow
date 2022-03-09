@@ -2,7 +2,7 @@
 
 # Context
 
-The Flow Access Node has not changed significantly since its launch, and has generally served its purpose as a gateway to Flow well. Even so, there are clear signs that the design of this part of Flow needs to evolve, whether to better support scalability or otherwise improve modularity of services and/or code. In addition, it has always been part of the vision to enable a permission-less and un-staked node type to simplify and democratize access to Flow for builders. 
+The Flow Access Node has not changed significantly since its launch, and has generally served its purpose well as the gateway to Flow. Even so, there are clear signs that the design of this part of Flow needs to evolve, to better support scalability and improve modularity of services and code. In addition, it has always been part of the vision to enable a permission-less and un-staked node type to simplify and democratize access to Flow for builders. 
 
 In this document we propose a re-architecture of the Access Node to enable permission-less operation. We leverage DPS ([Flow Data Provisioning Service](https://github.com/optakt/flow-dps)) for state indexing and local script execution, greatly reducing load on Execution Nodes. The proposed changes also enable significantly improved horizontal scaling options for Flow operations.
 
