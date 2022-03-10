@@ -4,11 +4,13 @@ description: Add an exclusive NFT collection
 sidebar_title: Modify
 ---
 
-The following steps will guide you through a simple modification of the Kitty Items project. You will add a new NFT kind, representing an exlusive collection of rare NFTs.
+The following steps will guide you through a simple modification of the Kitty Items project. You will add a new NFT kind, representing an exlusive collection of rare NFTs of sunglasses:
+
+![sunglasses](shades-nft.png)
 
 ## Start in emulator
 
-In the last step, you started the project on the testnet. For local development, however, it is recommended to emulate the blockchain network locally using the [Flow Emulator](/emulator/). Once changes are implemented and tested locally, you would deploy the updates to the testnet.
+In the last step, you started the project on the testnet. For local development, however, it is recommended to emulate the blockchain network locally using the [Flow Emulator](/emulator/). Once changes are implemented and tested locally, you will deploy the updates to the testnet.
 
 Let's start the project in the emulator by running the command below in the root project folder.
 
@@ -20,15 +22,37 @@ npm run dev:emulator
 
 You should see similar logs as in the last step. You may notice that you were not prompted for an account. This is because the local setup includes a [developer wallet](https://github.com/onflow/fcl-dev-wallet) that simulated user accounts.
 
-## Add NFT kind
+## Add new NFT collection
 
-Need to update 4 files.
+To add the new NFT collection, will have to make changes to several components of the project:
 
-### Web Application
+- Backend API: Add the new collection to the list of available collections
+- Web application: Define the new collection name and add it to the map of available collections
+- Cadence: Define the new collection name, add it to the map of available collections, set the content hash for the images ([stored on IPFS](/dapp-development/smart-contracts/#external-storage-networks))
+- Flow JS Tests: Add the new collection to the test suite
 
-You need to list the new kind in the map that defines the kinds in a map:
+To start making your changes, it is recommended to open the project in a code editor like [Visual Studio Code](https://code.visualstudio.com/).
 
-`/web/src/global/constants.js`: Add 6th item - the star
+> **Recommended**: Install the [VSCode extension for Cadence](https://docs.onflow.org/vscode-extension/) to get syntax highlighting, type checking, and code completion support.
+
+### Update the backend API
+
+Open the file `/api/src/services/kitty-items.ts` and add new element (`Shades`) at the bottom of the `Kind` enum:
+
+```js
+enum Kind {
+  Fishbowl = 0,
+  Fishhat,
+  Milkshake,
+  TukTuk,
+  Skateboard,
+  Shades
+}
+```
+
+### Update the web application
+
+Open the file `/web/src/global/constants.js` and add a new item (`Shades`) to the `ITEM_KIND_MAP` constant:
 
 ```js
 export const ITEM_KIND_MAP = {
@@ -38,121 +62,80 @@ export const ITEM_KIND_MAP = {
   3: "TukTuk",
   4: "Skateboard",
   5: "Shades",
-  6: "Star",
 };
 ```
 
-### Backend API
+To simplify this tutorial, we already added the images for the NFT collection to the project folder. If you were to add new NFTs on your own, you would also need to add images to the `web/public/images/kitty-items` folder.
 
-You need to add the new kind to the map of available kinds:
+### Update the Cadence smart contract
 
-`/api/src/services/kitty-items.ts`: Add new kind for star
+Open the `/cadence/contracts/KittyItems.cdc` file and make the following changes.
 
-```js
-enum Kind {
-  Fishbowl = 0,
-  Fishhat,
-  Milkshake,
-  TukTuk,
-  Skateboard,
-  Shades,
-  Star
-}
-```
+#### Add a new kind
 
-### Cadence
-
-> **TODO**: Add images for the star (4 colors, 4 sizes) + upload to IPFS?
-
-You need to add the new kind in several places:
-
-`/cadence/contracts/KittyItems.cdc`: Add new kind for star
+Locate the `enum Kind` object and add a new case (`shades`) to the bottom of the list:
 
 ```cadence
 pub enum Kind: UInt8 {
-        pub case fishbowl
-        pub case fishhat
-        pub case milkshake
-        pub case tuktuk
-        pub case skateboard
-        pub case shades
-        pub case star
-    }
-
-pub fun kindToString(_ kind: Kind): String {
-        switch kind {
-            case Kind.fishbowl:
-                return "Fishbowl"
-            case Kind.fishhat:
-                return "Fish Hat"
-            case Kind.milkshake:
-                return "Milkshake"
-            case Kind.tuktuk:
-                return "Tuk-Tuk"
-            case Kind.skateboard:
-                return "Skateboard"
-            case Kind.shades:
-                return "Shades"
-            case Kind.star:
-                return "Star:
-        }
-
-        return ""
-    }
-
-[...]
-
-        self.images = {
-            Kind.fishbowl: {
-                Rarity.blue: "bafybeibuqzhuoj6ychlckjn6cgfb5zfurggs2x7pvvzjtdcmvizu2fg6ga",
-                Rarity.green: "bafybeihbminj62owneu3fjhtqm7ghs7q2rastna6srqtysqmjcsicmn7oa",
-                Rarity.purple: "bafybeiaoja3gyoot4f5yxs4b7tucgaoj3kutu7sxupacddxeibod5hkw7m",
-                Rarity.gold: "bafybeid73gt3qduwn2hhyy4wzhsvt6ahzmutiwosfd3f6t5el6yjqqxd3u"
-            },
-            Kind.fishhat: {
-                Rarity.blue: "bafybeigu4ihzm7ujgpjfn24zut6ldrn7buzwqem27ncqupdovm3uv4h4oy",
-                Rarity.green: "bafybeih6eaczohx3ibv22bh2fsdalc46qaqty6qapums6zhelxet2gfc24",
-                Rarity.purple: "bafybeifbhcez3v5dj5qgndrx73twqleajz7r2mog4exd7abs3aof7w3hhe",
-                Rarity.gold: "bafybeid2r5q3vfrsluv7iaelqobkihfopw5t4sv4z2llxsoe3xqfynl73u"
-            },
-            Kind.milkshake: {
-                Rarity.blue: "bafybeialhf5ga6owaygebp6xt4vdybc7aowatrscwlwmxd444fvwyhcskq",
-                Rarity.green: "bafybeihjy4rcbvnw6bcz3zbirq5u454aagnyzjhlrffgkc25wgdcw4csoe",
-                Rarity.purple: "bafybeidbua4rigbcpwutpkqvd7spppvxemwn6o2ifhq6xam4sqlngzrfiq",
-                Rarity.gold: "bafybeigdrwjq4kge3bym2rbnek2olibdt5uvdbtnuwto36jb36cr3c4p5y"
-            },
-            Kind.tuktuk: {
-                Rarity.blue: "bafybeidjalsqnhj2jnisxucv6chlrfwtcrqyu2n6lpx3zpuuv2o3d3nwce",
-                Rarity.green: "bafybeiaeixpd4htnngycs7ebktdt6crztvhyiu2js4nwvuot35gzvszchi",
-                Rarity.purple: "bafybeihfcumxiobjullha23ov77wgd5cv5uqrebkik6y33ctr5tkt4eh2e",
-                Rarity.gold: "bafybeigdi6ableh5mvvrqdil233ucxip7cm3z4kpnpxhutfdncwhyl22my"
-            },
-            Kind.skateboard: {
-                Rarity.blue: "bafybeic55lpwfvucmgibbvaury3rpeoxmcgyqra3vdhjwp74wqzj6oqvpq",
-                Rarity.green: "bafybeic55lpwfvucmgibbvaury3rpeoxmcgyqra3vdhjwp74wqzj6oqvpq",
-                Rarity.purple: "bafybeiepqu75oknv2vertl5nbq7gqyac5tbpekqcfy73lyk2rcjgz7irpu",
-                Rarity.gold: "bafybeic5ehqovuhix4lyspxfawlegkrkp6aaloszyscmjvmjzsbxqm6s2i"
-            },
-            Kind.shades: {
-                Rarity.blue: "bafybeibtxvitlnvksnzwrwmsqdgnoznosknr3fx5jxjazjcerpa2qo4jy4",
-                Rarity.green: "bafybeicp5bagsziwkyarey76m5jkr6i3a5yrgr7r435qyuutbtlqxcdbwu",
-                Rarity.purple: "bafybeidjigkvt67dtuwrgrpdt2z4dojq2efpbw66ndnffkb6eyr4baml2i",
-                Rarity.gold: "bafybeibtxvitlnvksnzwrwmsqdgnoznosknr3fx5jxjazjcerpa2qo4jy4"
-            },
-            Kind.star: {
-                Rarity.blue: "tbd",
-                Rarity.green: "tbd",
-                Rarity.purple: "tbd",
-                Rarity.gold: "tbd"
-            }
-        }
+    pub case fishbowl
+    pub case fishhat
+    pub case milkshake
+    pub case tuktuk
+    pub case skateboard
+    pub case shades
+}
 ```
 
-### JS Tests
+#### Update the kindToString method
 
-You need to include the new kind in the Cadence tests, written in JavaScript:
+This method is used to set the name and description of a specified NFT. Locate the the `kindToString` method and add a new case (`Kind.shades`) to the bottom of the switch statement:
 
-`/cadence/tests/src/kitty-items.js`: Add new kind for star
+```cadence
+pub fun kindToString(_ kind: Kind): String {
+    switch kind {
+        case Kind.fishbowl:
+            return "Fishbowl"
+        case Kind.fishhat:
+            return "Fish Hat"
+        case Kind.milkshake:
+            return "Milkshake"
+        case Kind.tuktuk:
+            return "Tuk-Tuk"
+        case Kind.skateboard:
+            return "Skateboard"
+        case Kind.shades:
+            return "Shades"
+    }
+
+    return ""
+}
+```
+
+#### Update the images map
+
+This change will create the link between image hashes and the new NFT collection. Locate the `self.images` map and add a new `Kind.shades` object to the bottom:
+
+```cadence
+self.images = {
+    [...]
+    Kind.shades: {
+        Rarity.blue: "bafybeibtxvitlnvksnzwrwmsqdgnoznosknr3fx5jxjazjcerpa2qo4jy4",
+        Rarity.green: "bafybeicp5bagsziwkyarey76m5jkr6i3a5yrgr7r435qyuutbtlqxcdbwu",
+        Rarity.purple: "bafybeidjigkvt67dtuwrgrpdt2z4dojq2efpbw66ndnffkb6eyr4baml2i",
+        Rarity.gold: "bafybeibtxvitlnvksnzwrwmsqdgnoznosknr3fx5jxjazjcerpa2qo4jy4"
+    }
+}
+```
+
+You will notice that the new NFT collection will be available in four rarities, represented by the background color (blue, green, purple, and gold). Each of the hashes represent an IPFS resource that will be pulled up when the NFT will be displayed.
+
+If you were to add your own NFT, you would have to upload images to IPFS and store the new hashes instead.
+
+### Update Flow JS Tests
+
+It is generally recommended to write tests for Cadence contracts to avoid unintended behavior. Flow provides a [JS testing library](/flow-js-testing/) to make testing easier. The Kitty Items project comes preconfigured with this library and a set of tests.
+
+You need to ensure the existing tests account for the new NFT collection. To do that, open the `/cadence/tests/src/kitty-items.js` file and locate the `types` constant. Once located, add a new kind (`shades`) to the bottom of the list:
 
 ```js
 export const types = {
@@ -162,13 +145,14 @@ export const types = {
   tuktuk: 4,
   skateboard: 5,
   shades: 6,
-  star: 7,
 };
 ```
 
-## Test new code
+## Test Cadence changes
 
-Go into the following folder: `/cadence/tests` and install dependencies:
+Now that you completed all smart contract changes required to add a new NFT collection, you will run the tests to verfiy that everything works as intended.
+
+In your terminal, navigate to the following folder: `/cadence/tests`. You need to install the testing tooling to run the tests:
 
 ```sh
 cd /cadence/tests
@@ -176,14 +160,34 @@ cd /cadence/tests
 npm install
 ```
 
-Run tests:
+Once the installation is completed, you can run the tests in your terminal:
 
 ```sh
 npm run test
 ```
 
-Should pass all tests
+The test results should return the following:
 
-## Mint a new star
+```sh
+Kitty Items
+    ✔ should deploy KittyItems contract (1212 ms)
+    ✔ supply should be 0 after contract is deployed (1113 ms)
+    ✔ should be able to mint a kitty item (1126 ms)
+    ✔ should be able to create a new empty NFT Collection (1127 ms)
+    ✔ should not be able to withdraw an NFT that doesnt exist in a collection (1123 ms)
+    ✔ should be able to withdraw an NFT and deposit to another accounts collection (1104 ms)
+```
 
-Go to Kitty Items admin dashboard. Mint a new item a few times, until the star shows up!
+**Congratulations! You have completed all changes and your project now includes a new NFT collection for sunglasses.**
+
+## Mint the new sunglasses NFT
+
+To mint one of the new NFTs in your local environment, you will go to the Kitty Items admin dashboard.
+
+First, open the Kitty Items web application: [`http://localhost:3001/`](http://localhost:3001/)
+
+Next, click on the top banner to "Mint some Kitty Items". You will be prompted to enter a password. Enter `KittyItems` and hit "Log In". You should see the [admin dashboard](http://localhost:3001/admin/mint/):
+
+![admin-ui](admin-ui.png)
+
+Now, hit the "Mint Item" button and see a new NFT being generated. The generation of new NFTs is randomized, so you will have to **mint a few new NFTs** until you will see an NFT from your new sunglasses collection.

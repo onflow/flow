@@ -21,6 +21,3 @@ Kitty Items should be running on the testnet. Visit [`http://localhost:3001`](ht
 ## Mint a new star on testnet
 
 Go to Kitty Items admin dashboard. Mint a new item a few times, until the star shows up!
-
-TBD:
-- Idea: Get an NFT for completion
