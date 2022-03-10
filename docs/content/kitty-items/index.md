@@ -11,7 +11,7 @@ The following chapters use the project to explain the components and concepts of
 - deploy and upgrade smart contracts
 - mint and transfer NFTs
 - add a new kind of NFTs to the marketplace
-- interact with the Flow blcokchain from within a web application
+- interact with the Flow blockchain from within a web application
 
 ## Live Demo
 

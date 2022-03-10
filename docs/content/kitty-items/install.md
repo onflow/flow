@@ -6,7 +6,7 @@ sidebar_title: Install
 
 Follow the steps below to start your own version of Kitty Items.
 
-## Check pre-requisites
+## Check prerequisites
 
 Before moving to the next step, ensure you have the following tools installed:
 

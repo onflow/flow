@@ -10,7 +10,7 @@ Now that you implemented and tested your changes locally on the emulator, it is 
 
 ## Start on testnet
 
-Run the project on the testnet again. The script will use the account you intially created:
+Run the project on the testnet again. The script will use the account you initially created:
 
 ```sh
 npm run dev:testnet

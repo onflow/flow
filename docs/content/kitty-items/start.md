@@ -68,7 +68,7 @@ Once all services are started up, you will see the following:
 😸 Kitty Items has started! 😸
 ```
 
-Congratulations, your own instance of Kitty Items is now running locally and conneccting to the testnet.
+Congratulations, your own instance of Kitty Items is now running locally and connecting to the testnet.
 
 ## Open Kitty Items
 

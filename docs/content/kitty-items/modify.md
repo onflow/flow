@@ -4,7 +4,7 @@ description: Add an exclusive NFT collection
 sidebar_title: Modify
 ---
 
-The following steps will guide you through a simple modification of the Kitty Items project. You will add a new NFT kind, representing an exlusive collection of rare NFTs of sunglasses:
+The following steps will guide you through a simple modification of the Kitty Items project. You will add a new NFT kind, representing an exclusive collection of rare NFTs of sunglasses:
 
 ![sunglasses](shades-nft.png)
 
@@ -133,7 +133,7 @@ If you were to add your own NFT, you would have to upload images to IPFS and sto
 
 ### Update Flow JS Tests
 
-It is generally recommended to write tests for Cadence contracts to avoid unintended behavior. Flow provides a [JS testing library](/flow-js-testing/) to make testing easier. The Kitty Items project comes preconfigured with this library and a set of tests.
+It is generally recommended to write tests for Cadence contracts to avoid unintended behavior. Flow provides a [JS testing library](/flow-js-testing/) to make testing easier. The Kitty Items project comes pre-configured with this library and a set of tests.
 
 You need to ensure the existing tests account for the new NFT collection. To do that, open the `/cadence/tests/src/kitty-items.js` file and locate the `types` constant. Once located, add a new kind (`shades`) to the bottom of the list:
 
@@ -150,7 +150,7 @@ export const types = {
 
 ## Test Cadence changes
 
-Now that you completed all smart contract changes required to add a new NFT collection, you will run the tests to verfiy that everything works as intended.
+Now that you completed all smart contract changes required to add a new NFT collection, you will run the tests to verify that everything works as intended.
 
 In your terminal, navigate to the following folder: `/cadence/tests`. You need to install the testing tooling to run the tests:
 
@@ -180,7 +180,7 @@ Kitty Items
 
 **Congratulations! You have completed all changes and your project now includes a new NFT collection for sunglasses.**
 
-## Mint the new sunglasses NFT
+## Mint a new sunglasses NFT
 
 To mint one of the new NFTs in your local environment, you will go to the Kitty Items admin dashboard.
 
