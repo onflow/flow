@@ -47,7 +47,7 @@ Script execution delegation to ENs is an obvious low hanging fruit limiting Acce
 
 By managing all chain synchronization concerns `Blockchain Data Service` provides a unified set of functionality that `Access Node` and `Observer Service` are built on, and which can be used as a standalone component for following trusted chain state more generally.
 
-### Blockchain Core service
+### Blockchain Data Service
 
 - Follows protocol consensus and execution state sync
 - Serves the `State Streamer API`
