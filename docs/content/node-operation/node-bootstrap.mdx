@@ -4,7 +4,7 @@ sidebar_title: Node Bootstrapping
 description: How to get started running on node on Flow
 ---
 
-This guide is for getting a new node staked and running on Flow. For sporking documentation for existing operators, see [Spork Process](/node-operation/spork-process).
+This guide is for getting a new node staked and running on Flow. For sporking documentation for existing node operators, see [Spork Process](/node-operation/spork).
 
 ## Timing
 
@@ -49,12 +49,11 @@ a806ebf3f1b4d866bead61f8e8049f534c54006d0b903f0d5ea7045aa4bcd791  ./boot-tools/t
 
 ### Generate Your Node Keys
 
-#### Addresses
+#### Network Address
 
 <Callout type="info">
 
-You will need to have a real address, for example, a CNAME pointed at the
-node or just the IP address e.g. `example.com:3569` or `189.23.42.12:3569`.
+Use a fully qualified domain name for the network address. Please also include the port number in the network address e.g. `example.com:3569`
 
 </Callout>
 
@@ -86,7 +85,7 @@ cp -r /path/to/bootstrap /path/to/bootstrap.bak
 #########################################################
 # Generate Keys
 $ mkdir ./bootstrap
-# YOUR_NODE_ADDRESS: FQDN or IP address associated to your instance
+# YOUR_NODE_ADDRESS: FQDN associated to your instance
 # YOUR_NODE_ROLE: The Flow nodes that you wish to run, it should be ONE of the following - [ access, collection, consensus, execution, verification ]
 $ ./boot-tools/bootstrap key --address \"${YOUR_NODE_ADDRESS}:3569\" --role ${YOUR_NODE_ROLE} -o ./bootstrap
 
@@ -176,6 +175,12 @@ $cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e1299194
 If you are running a collection or consensus node, you will need to provide an additional field `Machine Account Public Key`.
 This value is found in the output of the `bootstrap key` command from Step 1.
 
+<Callout type="info">
+
+Please let us know your node id via discord or email.
+
+</Callout>
+
 ### Finalize Machine Account Setup
 
 <Callout type="warning">
@@ -227,6 +232,18 @@ $ ./boot-tools/bootstrap check-machine-account --access-address access.mainnet.n
 
 This command will detect and provide information about common misconfigurations, or confirm that the machine account is configured correctly.
 
+### Push transit keys (consensus node only)
+
+If you are running a consensus node, run the following command to push the transit keys. Use the token `mainnet-x-organization` e.g. `mainnet-17-companyname`.
+
+```shell:title=transit
+$ ./boot-tools/transit push-transit-key -b ./bootstrap -t mainnet-x-organization
+<nil> INF generating transit keys
+<nil> INF generating key pair
+<nil> INF attempting to push transit public key to the transit servers
+<nil> INF successfully pushed transit public key to the transit servers
+```
+
 ## Step 3 - Start Your Flow Node
 
 Ensure you have configured your node using the [Node Setup guide](/node-operation/node-setup).
@@ -262,8 +279,8 @@ This is the recommended way to start your node for the first time.
 3. Configure Dynamic Startup by adding flags:
 ```shell:title=ExampleDynamicStartupFlags
   ... \
-  --dynamic-startup-access-address=access.flow.com:9001 \
-  --dynamic-startup-access-publickey=df6ca1cb2ad6cca2aebd49b4a198abc6aabfbd0720ab54b6af316e40655b54c1c49f79569525bb4cd84530d3f3a743579ad2a80a1232a8a37495d86ec362be40
+  --dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
+  --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae
 ```
 4. Start your node (see [guide](/node-operation/node-setup/#start-the-node))
 
@@ -274,7 +291,7 @@ Once the node has bootstrapped, these flags may be removed.
 ### Manually Provisioned Root Snapshot
 
 You can also provision the root snapshot file manually, then start the node without configuring Dynamic Startup.
-A snapshot can be obtained from any Access Node using Flow CLI.
+A snapshot can be obtained from any Access Node using [Flow CLI](/flow-cli/).
 ```shell:title=RetrieveRootSnapshot
 flow snapshot save /path/to/root/snapshot --network mainnet
 ```
@@ -292,4 +309,4 @@ the snapshot must be provisioned within this time window.
 
 </Callout>
 
-Once a valid root snapshot file is downloaded to the node's bootstrap folder, it can be started (see [guide](/node-operation/node-setup/#start-the-node)))
+Once a valid root snapshot file is downloaded to the node's bootstrap folder, it can be started (see [guide](/node-operation/node-setup/#start-the-node))

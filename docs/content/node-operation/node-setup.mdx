@@ -142,7 +142,7 @@ If you are using some other system besides Systemd, you need to ensure that the 
 the appropriate key directories are mounted into the container, and that the container will
 automatically restart following a crash.
 
-The `systemd` files pull runtime setting from `/etc/flow/runtime-config.env` and any `.env`
+The `systemd` files pull runtime settings from `/etc/flow/runtime-config.env` and any `.env`
 files under `/etc/flow/conf.d`. Examples of these files are also available in the github repo.
 You will need to modify the runtime config file later.
 
@@ -166,7 +166,7 @@ git pull origin master
 2. Copy your respective [systemd unit file](https://github.com/onflow/flow-go/tree/master/deploy/systemd-docker) to: `/etc/systemd/system`
 3. Create directory `sudo mkdir /etc/flow`
 4. Copy the [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) file to: `/etc/flow/`
-5. Enable your service `sudo systemctl enable YOUR-FLOW-NODE.service`
+5. Enable your service `sudo systemctl enable flow-$ROLE.service` (replace `$ROLE` with your node role - eg. `collection`)
 
 ### Docker Configuration
 
