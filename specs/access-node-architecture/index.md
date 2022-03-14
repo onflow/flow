@@ -6,11 +6,16 @@ The Flow Access Node has not changed significantly since its launch, and has gen
 
 In this document we propose a re-architecture of the Access Node to enable permission-less operation. We leverage DPS ([Flow Data Provisioning Service](https://github.com/optakt/flow-dps)) for state indexing and local script execution, greatly reducing load on Execution Nodes. The proposed changes also enable significantly improved horizontal scaling options for Flow operations.
 
-This new architecture separates DPS and the Flow API Service into standalone, optional, components and enables more varied and flexible options for their assembly when deploying infrastructure. It makes possible the creation of an Access Node without a DPS and Flow API Service if needed, as well as other configurations enabling a wide range of use cases.
+This new architecture splits the existing Access Node monolith into the following components: 
+- **Flow Blockchain Data Service** - encapsulates all direct interaction with the Flow network and participation in state synchronization protocols, and provides APIs that allow auxiliary components to query the blockchain state and subscribe to updates.
+- **Flow Data Provisioning Service (DPS)** - consumes execution state updates from the Flow Blockchain Data Service to build a full execution state index that enables fast local script execution at arbitrary block heights.
+- **Flow API Service** - provides a user-friendly way to query the blockchain state and send transactions to the network.
+
+The Flow API Service and DPS become optional, auxiliary components, enabling more varied and flexible options for their assembly when deploying infrastructure.
 
 # Goals
 
-- Completely separate the existing Access Node code into un-staked `Observer Service` and the staked `Access Node`
+- Completely separate the existing Access Node code into un-staked `Observer Service` and the staked `Access Node`.
 - Modularize the `Access API` from `Access Node` into its own process/service, which will be able to run against any `Blockchain Data Service`. We will refer to it as the `Flow API Service` going forward.
 - The `Blockchain Data Service` encapsulates the live synchronization systems provided through consensus follower and execution state sync. It provides access to that state through the `Protocol API` and the `State Streamer` interfaces.
 - The `State Streamer` interface is a generic component which can allow any consumer, such as the `DPS`, to access the state tracked by the `Blockchain Data Service`.
@@ -45,7 +50,7 @@ Script execution delegation to ENs is an obvious low hanging fruit limiting Acce
 
 ## Revised ownership and responsibility
 
-By managing all chain synchronization concerns `Blockchain Data Service` provides a unified set of functionality that `Access Node` and `Observer Service` are built on, and which can be used as a standalone component for following trusted chain state more generally.
+By managing all chain synchronization concerns `Blockchain Data Service` provides a unified set of functionality that `Access Node` and `Observer Service` are built on, and which can be used as a standalone component for following trusted chain state more generally. 
 
 ### Blockchain Data Service
 
@@ -57,25 +62,24 @@ The new `Access Node` builds on the original node capabilities above:
 ### Access Node
 
 - Participates as a *staked* node within the Flow network
-- Maintains sync using `Blockchain Data Service`
-- Accepts new transactions, validates them, and forwards them to collection nodes.
+- Stays up to date with protocol state and execution data
+- Accepts new transactions, validates them, and forwards them to collection nodes
 - Bridges the staked and public libp2p networks
-    - Provides access to the Flow blockchain’s protocol and execution state via a public libp2p network that exposes the state sync and execution data sync protocols.
+    - Provides access to the Flow blockchain’s protocol and execution state via a public libp2p network that exposes the state sync and execution data sync protocols
     - Relays a subset of messages from the staked network to the public network
 
 `Observer Service` is named as such due to its non-participation in the protocol
 ### Observer Service
 
 - Participates in the Flow network as a consumer of public data without being staked or permissioned
-- Maintains sync using `Blockchain Data Service`
+- Stays up to date with protocol state and execution data
 - Accepts new transactions, validates them, and forwards them to `Access Nodes`
-- Is deployed as a stand-alone application, and does not strictly require `DPS` or the `Flow API Service` (though it would have limited utility without them)
 
 ### Flow API Service
 
 - Deployed as a stand-alone service
 - Exposes the external Flow `Access API`s (gRPC/REST)
-- If `DPS` is deployed, it queries `DPS API` for execution state queries, otherwise returns an error.
+- If `DPS` is deployed, it queries `DPS API` for execution state queries, otherwise returns an error
 - Queries the downstream `Protocol API` on a node running `Blockchain Data Service` for protocol state
 - Proxies send transaction requests
     - `Access Nodes` proxy transactions to the downstream `Protocol API`
@@ -86,7 +90,7 @@ The new `Access Node` builds on the original node capabilities above:
 ### Data Provisioning Service (DPS)
 
 - Deployed as a stand-alone set of services
-- Connects to an `Access Node` or `Observer Service` using the `State Streamer`
+- Connects to an `Access Node` or `Observer Service` via the `State Streamer API`
 - Uses `State Streamer API` to subscribe to protocol and execution state updates
 
 ### State Streamer and Streamer Registration API
@@ -95,7 +99,7 @@ The new `Access Node` builds on the original node capabilities above:
 - Served using 1:1 communication (likely gRPC over web sockets)
 - Permissioned (not intended to be exposed to the public)
 - Provides an abstraction layer so clients don’t need to interact with the Flow network directly
-- The API accesses data from the `Execution Data Service` and `Protocol State Service`
+- The API accesses data from the `Execution Data Module` and `Protocol State Module`
 
 # Refactoring detailed diagrams
 ### Starting Point
