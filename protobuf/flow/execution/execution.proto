@@ -40,6 +40,10 @@ service ExecutionAPI {
   rpc GetTransactionResult(GetTransactionResultRequest)
       returns (GetTransactionResultResponse);
 
+  // GetTransactionResultByIndex gets the result of a transaction at the index .
+  rpc GetTransactionResultByIndex(GetTransactionByIndexRequest)
+      returns (GetTransactionResultResponse);
+
   // Registers
 
   // GetRegisterAtBlockID collects a register at the block with the given ID (if available).
@@ -106,6 +110,11 @@ message GetEventsForBlockIDsRequest {
 message GetTransactionResultRequest {
   bytes block_id = 1;
   bytes transaction_id = 2;
+}
+
+message GetTransactionByIndexRequest {
+  bytes block_id = 1;
+  uint64 index = 2;
 }
 
 message GetTransactionResultResponse {
