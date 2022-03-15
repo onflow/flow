@@ -55,6 +55,9 @@ service AccessAPI {
   // GetTransactionResult gets the result of a transaction.
   rpc GetTransactionResult(GetTransactionRequest)
       returns (TransactionResultResponse);
+  // GetTransactionResultByIndex gets the result of a transaction at a specified block and index
+  rpc GetTransactionResultByIndex(GetTransactionByIndexRequest)
+      returns (TransactionResultResponse);
 
   // Accounts
 
@@ -185,6 +188,11 @@ message SendTransactionResponse {
 
 message GetTransactionRequest {
   bytes id = 1;
+}
+
+message GetTransactionByIndexRequest {
+  bytes block_id = 1;
+  uint64 index = 2;
 }
 
 message TransactionResponse {
