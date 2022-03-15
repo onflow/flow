@@ -191,7 +191,7 @@ message GetTransactionRequest {
 }
 
 message GetTransactionByIndexRequest {
-  bytes id = 1;
+  bytes block_id = 1;
   uint64 index = 2;
 }
 
