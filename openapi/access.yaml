@@ -17,7 +17,7 @@ paths:
       tags:
         - Blocks
       parameters:
-        - description: A comma-separated list of block heights to get.
+        - description: A comma-separated list of block heights to get. This parameter is incompatible with `start_height` and `end_height`.
           name: height
           in: query
           schema:
@@ -179,7 +179,7 @@ paths:
                   description: Base64 encoded content of the Cadence script.
                 arguments:
                   type: array
-                  description: Array of Base64 encoded arguments with in [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
+                  description: An array containing arguments each encoded as Base64 passed in the [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
                   items:
                     type: string
                     format: base64
@@ -373,7 +373,7 @@ paths:
                   description: Base64 encoded content of the Cadence script.
                 arguments:
                   type: array
-                  description: Array of Base64 encoded arguments with in [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
+                  description: An array containing arguments each encoded as Base64 passed in the [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
                   items:
                     type: string
                     format: byte
@@ -681,6 +681,8 @@ components:
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
+        execution:
+          $ref: '#/components/schemas/TransactionExecution'
         status:
           $ref: '#/components/schemas/TransactionStatus'
         status_code:
@@ -697,8 +699,16 @@ components:
             $ref: '#/components/schemas/Event'
         _links:
           $ref: '#/components/schemas/Links'
+    TransactionExecution:
+      type: string
+      description: This value indicates whether the transaction execution succeded or not, this value should be checked when determining transaction success. 
+      enum:
+        - Pending
+        - Success
+        - Failure
     TransactionStatus:
       type: string
+      description: This value indicates the state of the transaction execution. Only sealed and expired are final and immutable states.
       enum:
         - Pending
         - Finalized
