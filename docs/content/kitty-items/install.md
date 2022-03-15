@@ -37,8 +37,10 @@ Version: v0.28.x
 To get started, clone the project to your machine:
 
 ```sh
-git clone https://github.com/onflow/kitty-items.git
+git clone -b local/integration https://github.com/onflow/kitty-items.git
 ```
+
+> **Note**: You are cloning a version of the main project that is still in development.
 
 A new folder, `kitty-items`, will be created. You will work in this folder, so navigate into it:
 
