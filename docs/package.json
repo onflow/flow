@@ -65,7 +65,7 @@
     "remark": "^14.0.1",
     "remark-react": "^9.0.1",
     "remark-typescript": "^0.3.0",
-    "simple-git": "^2.7.0",
+    "simple-git": "^3.3.0",
     "source-sans-pro": "^3.6.0",
     "striptags": "^3.1.1",
     "styled-components": "^5.3.3",
