@@ -149,17 +149,17 @@ message BlockHeaderResponse {
 
 message GetLatestBlockRequest {
   bool is_sealed = 1;
-  optional bool full_block_response = 2;
+  bool full_block_response = 2;
 }
 
 message GetBlockByIDRequest {
   bytes id = 1;
-  optional bool full_block_response = 2;
+  bool full_block_response = 2;
 }
 
 message GetBlockByHeightRequest {
   uint64 height = 1;
-  optional bool full_block_response = 2;
+  bool full_block_response = 2;
 }
 
 message BlockResponse {
@@ -192,7 +192,7 @@ message GetTransactionRequest {
 
 message GetTransactionByIndexRequest {
   bytes block_id = 1;
-  uint64 index = 2;
+  uint32 index = 2;
 }
 
 message TransactionResponse {
