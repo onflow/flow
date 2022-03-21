@@ -37,10 +37,8 @@ Version: v0.28.x
 To get started, clone the project to your machine:
 
 ```sh
-git clone -b local/integration https://github.com/onflow/kitty-items.git
+git clone https://github.com/onflow/kitty-items.git
 ```
-
-> **Note**: You are cloning a version of the main project that is still in development.
 
 A new folder, `kitty-items`, will be created. You will work in this folder, so navigate into it:
 
@@ -58,4 +56,4 @@ npm install
 
 > **Note**: This process may take a few seconds and you will see some logs. This is expected.
 
-Once the installation is completed, you are ready start the project.
+Once the installation is completed, you are ready to start the project.

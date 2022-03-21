@@ -14,7 +14,7 @@ In the last step, you started the project on the testnet. For local development,
 
 Let's start the project in the emulator by running the command below in the root project folder.
 
-> **Note**: If you still have the previous process running, you should terminate it before running the command.
+> **Note**: If you still have the previous script running, you should terminate it before running the next command (with `Ctrl + C`).
 
 ```sh
 npm run dev:emulator
@@ -33,13 +33,13 @@ To add the new NFT collection, will have to make changes to several components o
 
 To start making your changes, it is recommended to open the project in a code editor like [Visual Studio Code](https://code.visualstudio.com/).
 
-> **Recommended**: Install the [VSCode extension for Cadence](https://docs.onflow.org/vscode-extension/) to get syntax highlighting, type checking, and code completion support.
+> **Recommended**: Install the [VSCode extension for Cadence](https://marketplace.visualstudio.com/items?itemName=onflow.cadence) to get syntax highlighting, type checking, and code completion support. If you have VSCode in your `$PATH`, you can use the CLI to install the extension: `flow cadence install-vscode-extension`.
 
 ### Update the backend API
 
 Open the file `/api/src/services/kitty-items.ts` and add new element (`Shades`) at the bottom of the `Kind` enum:
 
-```js
+```js:title=/api/src/services/kitty-items.ts
 enum Kind {
   Fishbowl = 0,
   Fishhat,
@@ -54,7 +54,7 @@ enum Kind {
 
 Open the file `/web/src/global/constants.js` and add a new item (`Shades`) to the `ITEM_KIND_MAP` constant:
 
-```js
+```js:title=/web/src/global/constants.js
 export const ITEM_KIND_MAP = {
   0: "Fishbowl",
   1: "Fish Hat",
@@ -75,7 +75,7 @@ Open the `/cadence/contracts/KittyItems.cdc` file and make the following changes
 
 Locate the `enum Kind` object and add a new case (`shades`) to the bottom of the list:
 
-```cadence
+```cadence:title=/cadence/contracts/KittyItems.cdc
 pub enum Kind: UInt8 {
     pub case fishbowl
     pub case fishhat
@@ -90,7 +90,7 @@ pub enum Kind: UInt8 {
 
 This method is used to set the name and description of a specified NFT. Locate the the `kindToString` method and add a new case (`Kind.shades`) to the bottom of the switch statement:
 
-```cadence
+```cadence:title=/cadence/contracts/KittyItems.cdc
 pub fun kindToString(_ kind: Kind): String {
     switch kind {
         case Kind.fishbowl:
@@ -115,7 +115,7 @@ pub fun kindToString(_ kind: Kind): String {
 
 This change will create the link between image hashes and the new NFT collection. Locate the `self.images` map and add a new `Kind.shades` object to the bottom:
 
-```cadence
+```cadence:title=/cadence/contracts/KittyItems.cdc
 self.images = {
     [...]
     Kind.shades: {
@@ -137,7 +137,7 @@ It is generally recommended to write tests for Cadence contracts to avoid uninte
 
 You need to ensure the existing tests account for the new NFT collection. To do that, open the `/cadence/tests/src/kitty-items.js` file and locate the `types` constant. Once located, add a new kind (`shades`) to the bottom of the list:
 
-```js
+```js:title=/cadence/tests/src/kitty-items.js
 export const types = {
   fishbowl: 1,
   fishhat: 2,
@@ -152,10 +152,10 @@ export const types = {
 
 Now that you completed all smart contract changes required to add a new NFT collection, you will run the tests to verify that everything works as intended.
 
-In your terminal, navigate to the following folder: `/cadence/tests`. You need to install the testing tooling to run the tests:
+In your terminal, navigate to the following folder: `cadence/tests`. You need to install the testing tooling to run the tests:
 
 ```sh
-cd /cadence/tests
+cd cadence/tests
 
 npm install
 ```

@@ -37,17 +37,17 @@ You will see newly generated keys and instructions to create and fund your new a
       (don't exit this terminal)
 ```
 
-Open up the link from the terminal, verify you are a human, and hit `Create Account` on the website.
+Open up the link to the testnet faucet page and verify that the Public Key field contains your key. Next, complete the captcha challenge and hit `Create Account`.
 
-> **Note**: This process will take a few seconds. You should see a loading indicator.
+> **Note**: This process will take a few seconds. You should see a loading indicator confirming your account is being generated.
 
-Once completed, the website will show your new account address - similar to `0x2f915dafac3bd7bf`. Hit the `Copy Address` button and return to the terminal and paste your address:
+Once completed, you will see your new account address (similar to `0x2f915dafac3bd7bf`) next to a confirmation that you received 1,000 FLOW tokens. Hit the `Copy Address` button and return to the terminal and paste your address:
 
 ```sh
 ? Enter your new testnet account address 0x2f915dafac3bd7bf
 ```
 
-Next, the script will download and configure the project for you. You will see several logs - this is expected. Some noteworthy ones are:
+Feel free to close the faucet page. The script will download and configure the project for you. You will see several logs - this is expected. Some noteworthy ones are:
 
 ```sh
 Testnet envronment config was written to: .env.testnet.local
@@ -58,7 +58,7 @@ Testnet envronment config was written to: .env.testnet.local
 ✔ Admin account initialized
 ```
 
-As indicated in the logs, your account details are stored in a new file: `.env.testnet.local`. This file will be used whenever you restart the service, so you don't have to handle account creation again.
+As indicated in the logs, your account details are stored in a new file: `.env.testnet.local`. This file will be used whenever you start the service, so you don't have to handle account creation again.
 
 > **Note**: Never commit this file to Git - it contains your private key!
 
@@ -66,9 +66,11 @@ Once all services are started up, you will see the following:
 
 ```sh
 😸 Kitty Items has started! 😸
+
+Visit: http://localhost:3001
 ```
 
-Congratulations, your own instance of Kitty Items is now running locally and connecting to the testnet.
+Congratulations! Your own instance of Kitty Items is now running locally and wired up to the Cadence contracts deployed to the testnet.
 
 ## Open Kitty Items
 
