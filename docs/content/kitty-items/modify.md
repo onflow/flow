@@ -24,7 +24,7 @@ You should see similar logs as in the last step. You may notice that you were no
 
 ## Add new NFT collection
 
-To add the new NFT collection, will have to make changes to several components of the project:
+To add the new NFT collection, we will have to make changes to several components of the project:
 
 - Backend API: Add the new collection to the list of available collections
 - Web application: Define the new collection name and add it to the map of available collections
