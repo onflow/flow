@@ -24,12 +24,12 @@ v14.x.x
 
 ### Flow CLI
 
-Ensure you installed the [Flow CLI](https://docs.onflow.org/flow-cli/install/). Version **0.28+** is required.
+Ensure you installed the [Flow CLI](https://docs.onflow.org/flow-cli/install/). Version **0.32.1+** is required.
 
 ```
 > flow version
 
-Version: v0.28.x
+Version: v0.32.1
 ```
 
 ## Clone the project
@@ -37,7 +37,7 @@ Version: v0.28.x
 To get started, clone the project to your machine:
 
 ```sh
-git clone https://github.com/onflow/kitty-items.git
+git clone -b mackenzie/removes-docker https://github.com/onflow/kitty-items.git
 ```
 
 A new folder, `kitty-items`, will be created. You will work in this folder, so navigate into it:
