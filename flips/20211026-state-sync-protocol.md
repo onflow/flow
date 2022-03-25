@@ -1,6 +1,6 @@
 # Execution State Synchronization Protocol
 
-| Status        | Proposed                                             |
+| Status        | Accepted                                             |
 :-------------- |:---------------------------------------------------- |
 | **Author(s)** | Simon Zhu (simon.zhu@dapperlabs.com)                 |
 | **Sponsor**   | Simon Zhu (simon.zhu@dapperlabs.com)                 |
