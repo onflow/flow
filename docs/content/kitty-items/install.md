@@ -12,24 +12,24 @@ Before moving to the next step, ensure you have the following tools installed:
 
 ### NodeJS
 
-Ensure you have NodeJS [installed](https://nodejs.org/en/). Version **14+** is required.
+Ensure you have NodeJS [installed](https://nodejs.org/en/). Version **16+** is required.
 
 ```
 > node -v
 
-v14.x.x
+v16.x.x
 ```
 
 > **📣 Tip**: Need to manage different versions of NodeJS? Try using [NVM](https://github.com/nvm-sh/nvm).
 
 ### Flow CLI
 
-Ensure you installed the [Flow CLI](https://docs.onflow.org/flow-cli/install/). Version **0.32.1+** is required.
+Ensure you installed the [Flow CLI](https://docs.onflow.org/flow-cli/install/). Version **0.32.3+** is required.
 
 ```
 > flow version
 
-Version: v0.32.1
+Version: v0.32.3
 ```
 
 ## Clone the project

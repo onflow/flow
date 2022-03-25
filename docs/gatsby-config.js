@@ -679,17 +679,25 @@ const sections = [
   },
   {
     sourceInstanceName: "docs",
-    patterns: ["kitty-items/**/*"],
+    patterns: ["kitty-items/**/*", "nft-marketplace/**/*"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
       Overview: ["kitty-items/index"],
-      Tutorial: [
+      "Kitty Items Tutorial": [
         "kitty-items/install",
         "kitty-items/start",
         "kitty-items/modify",
         "kitty-items/upgrade",
         "kitty-items/next-steps",
+      ],
+      "NFT Matketplace Guide": [
+        "nft-marketplace/index",
+        "nft-marketplace/building-blocks",
+        "nft-marketplace/handling-accounts",
+        "nft-marketplace/minting-nfts",
+        "nft-marketplace/selling-nfts",
+        "nft-marketplace/best-practices",
       ],
     },
   },

@@ -69,6 +69,8 @@ KITTY ITEMS HAS STARTED
 
 Congratulations! Your own instance of Kitty Items is now running locally and wired up to the Cadence contracts deployed to the testnet.
 
+> **Note**: Not seeing the success message? Take a look at the [troubleshooting FAQs](https://github.com/onflow/kitty-items#troubleshooting).
+
 ## Open Kitty Items
 
 Open up the web application by visiting [`http://localhost:3001`](http://localhost:3001). It should look like this:
