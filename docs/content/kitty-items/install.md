@@ -37,7 +37,7 @@ Version: v0.32.3
 To get started, clone the project to your machine:
 
 ```sh
-git clone -b mackenzie/removes-docker https://github.com/onflow/kitty-items.git
+git clone https://github.com/onflow/kitty-items.git
 ```
 
 A new folder, `kitty-items`, will be created. You will work in this folder, so navigate into it:

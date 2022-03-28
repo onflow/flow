@@ -11,7 +11,7 @@ An NFT marketplace can add support for minting NFTs on the Flow blockchain using
 A few important points to note:
 
 - Do implement your NFT contract to conform to the [NFT Metadata Standard](https://github.com/onflow/flow-nft/#nft-metadata). You should implement the “Display” view to provide the rendering information for the NFTs. This [code snippet](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc#L60) shows how to implement metadata in the NFT contract. Conforming to the metadata standard will facilitate rendering by wallets, tools, and other applications.
-- Do make sure to integrate with the [Alchemy API](https://gist.github.com/srinjoyc/0b7bb2153cea902de20d400cd56e3187). Doing so will ensure that wallets and other applications will easily render your NFTs. It will also guarantee the authenticity of NFTs minted by your application on other platforms.
+- Do make sure to integrate with the [Alchemy API](https://gist.github.com/srinjoyc/0b7bb2153cea902de20d400cd56e3187). Doing so will ensure that wallets and other applications will render your NFTs. It will also guarantee the authenticity of NFTs minted by your application on other platforms.
 - Individual collections per user are not currently supported. So NFTs for all the users will have to share the same contract. You can include a field in the contract indicating a collection name specific to a creator.
 
 ## ​​Lazy Minting

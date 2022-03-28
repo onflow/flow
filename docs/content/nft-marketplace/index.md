@@ -37,7 +37,7 @@ Allow users to upload images and other types of media to mint new NFTs. These NF
 
 ### Selling NFTs
 
-Enableing sales on an NFT marketplace requires ...
+Enabling sales on an NFT marketplace requires ...
 
 - Enabling users to list their NFTs for sale
 - Implement various sale methods, including auctions

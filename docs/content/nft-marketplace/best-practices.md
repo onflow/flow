@@ -8,7 +8,7 @@ Besides following the best practices of building a scalable web application that
 
 ## Maintain accuracy of displayed price
 
-NFT purchase ultimately settles on the blockchain, but NFT buyers see the prices of the NFTs for sale on the marketplace website. The marketplace platform should ensure that the price listed on the web page, their backend, and the blockchain are in synch. If that is not the case, it can lead to ugly surprises for the NFT buyers.
+NFT purchase ultimately settles on the blockchain, but NFT buyers see the prices of the NFTs for sale on the marketplace website. The marketplace platform should ensure that the price listed on the web page, their backend, and the blockchain are in sync. If that is not the case, it can lead to ugly surprises for the NFT buyers.
 
 ## Clean up stale NFT listings
 

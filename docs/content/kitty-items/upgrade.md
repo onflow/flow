@@ -31,7 +31,7 @@ You will notice that the script automatically deployed contracts from your local
 
 To verify that everything works as expected, you can mint one of the new NFTs on the testnet.
 
-Open the Kitty Items web application: [`http://localhost:3001/`](http://localhost:3001/). This time, the **web application is wired up to interact with testnet smart contracts** you just upgraded.
+Open the Kitty Items web application: [`http://localhost:3001/`](http://localhost:3001/). This time, the **web application is wired up to interact with testnet smart contracts** you upgraded.
 
 Click on the top banner to "Mint some Kitty Items". You will be prompted to enter a password. Enter `KittyItems` and hit "Log In". You should see the [admin dashboard](http://localhost:3001/admin/mint/):
 

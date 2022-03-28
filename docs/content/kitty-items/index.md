@@ -31,7 +31,7 @@ A true dapp, client-only web app. This is a complete web application built with 
 
 ### 2. Backend API
 
-We love decentralization, but servers are still very useful, and this one's no exception. The API helps preserve the separation of concerns, so that your process and business logic doesn't have to implemented on the front-end. Backend operations are neccessary to ensure secure handling of accounts and associated keys and to streamline blockchain interactions.
+We love decentralization, but servers are still very useful, and this one's no exception. The API helps preserve the separation of concerns, so that your process and business logic doesn't have to implemented on the front-end. Backend operations are necessary to ensure secure handling of accounts and associated keys and to streamline blockchain interactions.
 
 The code in this project demonstrates how to connect to Flow using [FCL](/fcl/) from a Node JS backend. It's also chalk-full of handy patterns you'll probably want to use for more complex and feature-rich blockchain applications, like storing and querying events using a SQL database (SQLite). The API demonstrates how to send transactions to the Flow blockchain, specifically for minting [Kitty Items](https://github.com/onflow/kitty-items/blob/master/cadence/contracts/KittyItems.cdc) (non-fungible tokens).
 

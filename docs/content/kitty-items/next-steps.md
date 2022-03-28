@@ -12,7 +12,7 @@ Dive deeper by reading the **[NFT Marketplace Guide](nft-marketplace/)**. It cov
 
 ## Improve your Kitty Items project
 
-Below is a list of features and updates you could make to your NFT markerplace.
+Below is a list of features and updates you could make to your NFT marketplace.
 
 ### Adjust rarity
 
@@ -34,7 +34,7 @@ The KittyItems NFTs on the marketplace do not have any utilitarian function. You
 
 ### Support naming service
 
-If an NFT is displayed, it shows who owns the NFT. This is mostly represented by a Flow account address, something that is cryptic and difficult to remember. Users will not be able to easily associate addresses with other people in the community, like their friends. That's the services like [.find](https://find.xyz/) come into play - they make it possible for users to claim usernames for their address. You could integrate with a naming service to display avatars and/or usernames instead of the cryptic addresses.
+If an NFT is displayed, it shows who owns the NFT. This is mostly represented by a Flow account address, something that is cryptic and difficult to remember. Users will not be able to associate addresses with other people in the community, like their friends. That's the services like [.find](https://find.xyz/) come into play - they make it possible for users to claim usernames for their address. You could integrate with a naming service to display avatars and/or usernames instead of the cryptic addresses.
 
 ### Cutting edge: Support royalties
 
