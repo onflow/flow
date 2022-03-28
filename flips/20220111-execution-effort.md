@@ -6,6 +6,42 @@
 | **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com)                      |
 | **Updated**   | 2022-01-13                                                                 |
 
+
+⚠️ 🚧 Under heavy re-work. 🚧 ⚠️ Expect an updated version soon
+
+## Table of Contents
+
+- [Variable Transaction Fees - Execution Effort I.](#variable-transaction-fees---execution-effort-i)
+  - [Table of Contents](#table-of-contents)
+  - [Abstract](#abstract)
+  - [Objective](#objective)
+  - [Motivation](#motivation)
+  - [Current state](#current-state)
+  - [Proposed Design](#proposed-design)
+    - [Generated transactions for data collection](#generated-transactions-for-data-collection)
+    - [Data Collection procedure](#data-collection-procedure)
+    - [Weights placement](#weights-placement)
+    - [Data analysis](#data-analysis)
+      - [Weight correlation](#weight-correlation)
+      - [Outliers and robust linear model fitting](#outliers-and-robust-linear-model-fitting)
+      - [Eliminating weights](#eliminating-weights)
+      - [Comparison with the current system](#comparison-with-the-current-system)
+    - [Final model proposal](#final-model-proposal)
+    - [Execution effort limit](#execution-effort-limit)
+    - [Execution Effort cost](#execution-effort-cost)
+    - [The future of the model](#the-future-of-the-model)
+      - [Known missing weights](#known-missing-weights)
+      - [Data collection](#data-collection)
+      - [Outlier analysis](#outlier-analysis)
+      - [Failing transactions](#failing-transactions)
+    - [Performance Implications](#performance-implications)
+    - [User Impact](#user-impact)
+  - [Questions and Discussion Topics](#questions-and-discussion-topics)
+  - [Appendices](#appendices)
+    - [Appendix 1: varying sample transactions max loop length](#appendix-1-varying-sample-transactions-max-loop-length)
+    - [Appendix 2: Jupyter + Mathematica](#appendix-2-jupyter--mathematica)
+    - [Appendix 3: Breakdown of the model according to different transaction types](#appendix-3-breakdown-of-the-model-according-to-different-transaction-types)
+
 ## Abstract
 
 This FLIP builds on the foundations of the [Variable Transaction fees FLIP](20211007-transaction-fees.md) and proposes a model for measuring the execution effort of transactions by choosing certain functions/operations, that are called during the execution of a transaction, to have a related execution effort cost. This FLIP explores a choice of functions/operations and uses data collected from sample transactions and a linear model fit to determine the cost of each chosen functions/operations, so that on average the execution effort of a transaction is proportional to the execution time of the transaction. This FLIP also explores the FLOW cost of a unit of execution effort.
@@ -14,7 +50,7 @@ This FLIP builds on the foundations of the [Variable Transaction fees FLIP](2021
 
 In the [Variable Transaction fees FLIP](20211007-transaction-fees.md) the transaction execution fees are defined as the part of the transaction fees that account for the resources (bandwidth, computing power) needed to execute the transactions' script, to verify the transaction execution and to handle the propagation of transaction execution results. The execution fees (<img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/A0hSAHHSW2.svg">) are defined as a execution effort cost function (<img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/sCA7cYTn4j.svg">) of the execution effort (<img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/WlYFrmB6Y8.svg">) of the transaction <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Uzsd7p4YBJ.svg">.
 
-The aim of this FLIP is to create a model for measuring the execution effort of transactions, that satisfies the following criteria:
+The aim of this FLIP is to create a model for measuring the execution effort of transactions that satisfies the following criteria:
 
 - The model must be better then the current model of measuring the execution effort.
 - The model must be straightforward to understand and implement.
@@ -33,9 +69,9 @@ As a consequence transactions that do little (e.g. transferring a (non)fungible 
 
 ## Current state
 
-As of [v0.23.6 release ](https://github.com/onflow/flow-go/tree/v0.23.6), execution effort is referenced to as computation cost. It is counted as 1 per every cadence function call or cadence loop made during the transaction. 
+As of [v0.23.6 release](https://github.com/onflow/flow-go/tree/v0.23.6), execution effort is coarsely approximated, where we charge 1 unit of effort per every cadence function call or cadence loop iteration. 
 
-If the execution effort exceeds the execution effort limit (also currently referenced to as gas limit or computation limit) the transaction fails. The state changes of that transaction are reverted, however the fees are still deducted for that transaction.
+If the execution effort exceeds the execution effort limit (also currently referenced to as gas limit or computation limit) the transaction fails. While the state changes of that transaction are discarded, however the fees are still deducted for that transaction.
 
 There is currently no connection from execution effort to transaction fees. Transaction fees are always a flat fee of `0.00001 FLOW` for all transactions, no matter the execution effort.
 
@@ -45,20 +81,24 @@ To improve the calculation of execution effort of a transaction, this FLIP propo
 
 The assumption here was that the processing cost of a running a single function <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4FLaqCTwtI.svg"> times scales linearly with <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4FLaqCTwtI.svg">. This assumption is made only for transactions where the execution effort of the transaction is not above the execution effort limit.
 
-By choosing correct functions for the weights we can find acceptable linear correlation between transaction execution time (<!-- $t$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/cbdkfkWybi.svg">) and it's execution effort <!-- $\frac{t}{E} = \textbf{const.}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/ujui9morSm.svg">.
+By choosing suitable the weights for the most relevant functions, we can find acceptable linear correlation between transaction execution time (<!-- $t$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/cbdkfkWybi.svg">) and it's execution effort  <!-- $\frac{t}{E} = \texttt{const}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/M5uS3sI1wA.svg">.
 
 This FLIP also makes the assumption that if one execution node on average runs one function <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower it will run all functions <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower. 
 
-This means that while the relationship <!-- $\frac{t}{E} = \textbf{const.}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/wAKzWYOybT.svg"> will still hold on all machines, the constant will be a different constant on each machine. This also means that we can chose the constant to be 1 when calibrating the weights, and if need be (if the machine where the calibration is done differs drastically from the execution node specs) multiply all weights by a single factor later.
+This means that while the relationship <!-- $\frac{t}{E} = \texttt{const}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/M5uS3sI1wA.svg"> will still hold on all machines, the constant will be a different constant on each machine. This also means that we can chose the constant to be 1 when calibrating the weights, and if need be (if the machine where the calibration is done differs drastically from the execution node specs) multiply all weights by a single factor later.
 
 With these assumptions the weights can be calibrated using data that was collected by running designed transactions while recording how many times each weight was hit, using the following linear model.
 
-- <!-- $w$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/zqZMMjc1Hx.svg"> a column vector of all weights.
-- <!-- $M$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/SmblEwKco6.svg"> a matrix with one row per transaction run. Each row is a count of how many times each weight was hit during that transaction (`m_i`).
-- <!-- $t$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/sgGbIK6FhD.svg"> a column vector of the time taken of each transaction.
-- <!-- $r$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/5tokpUE7hM.svg"> is a column vector of residuals (or error terms)
+- <!-- $\mathbf{w}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/oMhSdPZakP.svg"> a column vector of all weights.
+- <!-- $\mathbf{M}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/EAEejoxpkD.svg"> a matrix with one row per transaction run. Each row is a count of how many times each weight was hit during that transaction (`m_i`).
+- <!-- $\mathbf{t}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/cYmBfIeBZQ.svg"> a column vector of the time taken of each transaction.
+- <!-- $\mathbf{r}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/YSURmdSaWS.svg"> is a column vector of residuals (or error terms)
 
-<div align="center"><img style="background: white;" src="./20220111-execution-effort/eq/sS1rRPixbA.svg"></div>
+<!-- $$
+\mathbf{t} = \mathbf{M} * \mathbf{w} + \mathbf{r}
+$$ --> 
+
+<div align="center"><img style="background: white;" src="./20220111-execution-effort/eq/juJCpLYB40.svg"></div>
 
 Fitting a linear model means choosing the weights <!-- $w$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/zqZMMjc1Hx.svg"> so that the residuals <!-- $r$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/5tokpUE7hM.svg"> are as small as possible.
 
