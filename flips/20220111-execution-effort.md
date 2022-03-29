@@ -48,7 +48,7 @@ This FLIP builds on the foundations of the [Variable Transaction fees FLIP](2021
 
 In the [Variable Transaction fees FLIP](20211007-transaction-fees.md) the transaction execution fees are defined as the part of the transaction fees that account for the resources (bandwidth, computing power) needed to execute the transactions' script, to verify the transaction execution and to handle the propagation of transaction execution results. The execution fees (<img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/A0hSAHHSW2.svg">) are defined as a execution effort cost function (<img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/sCA7cYTn4j.svg">) of the execution effort (<img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/WlYFrmB6Y8.svg">) of the transaction <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Uzsd7p4YBJ.svg">.
 
-The aim of this FLIP is to create a model for measuring the execution effort of transactions that satisfies the following criteria:
+The aim of this FLIP is to propose a model for measuring the execution effort of transactions that satisfies the following criteria:
 
 - The model must be better then the current model of measuring the execution effort.
 - The model must be straightforward to understand and implement.
@@ -85,18 +85,31 @@ By choosing suitable weights for the most relevant features, we can approximate 
 
 Making the assumption that if one execution node on average runs one function <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower it will run all functions <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower, we can still say that the relationship <!-- $\frac{t}{E} = \texttt{const}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/M5uS3sI1wA.svg"> will  hold on all machines, but the constant will be different on each machine. This also means that we can chose a base machine (of certain specifications), where the constant will be 1.
 
+The base machine was chosen to be a machine with the same specs as the mainnet execution nodes. Doing this the execution effort can also be understood as the "estimated transaction execution time".
+
 ### Data Collection
 
 Two sets of data were used:
 
 1. A large set of data from two different machines running generated transactions.
+   1. `11032022-machine1-1.csv`
+   1. `11032022-machine1-2.csv`
+   1. `11032022-machine1-3.csv`
+   1. `11032022-machine1-4.csv`
+   1. `11032022-machine1-5.csv`
+   1. `11032022-machine2-1.csv`
+   1. `11032022-machine2-2.csv`
+   1. `11032022-machine2-3.csv`
+   1. `11032022-machine2-4.csv`
 2. A small set of data from transactions on testnet.
+   1. `11032022-testnet.csv`
+   2. `14032022-testnet.csv`
 
 All the data can be found can be found in the [flow repository](https://github.com/onflow/flow) next to this FLIP.
 
 #### Sample Transaction
 
-The generated transaction data was created by running a lot of sample transactions. Sample transactions were chosen with the following things in mind:
+The generated transaction data was created by running a lot of transactions generated from a small sample of transactions by varying the loop size in the sample transactions. Sample transactions were chosen with the following things in mind:
 
 - Each transaction should be distinct (the code path they go through should be different).
 - Transactions should not do a lot of different operations.
@@ -167,7 +180,7 @@ transaction(){
 }
 ```
 
-The number of iterations (`$ITERATIONS`) is randomly chosen from one to _max loop length_ which is varied during the run so that the transaction does not exceed 500 ms (generally) (See [Appendix 1: varying sample transactions max loop length](#appendix_1:_varying_sample_transactions_max_loop_length) for details). This is done so its easier to compare different types of transaction to each other. 
+The number of iterations (`$ITERATIONS`) is randomly chosen from one to _max loop length_ which is varied during the run so that the transaction does not exceed 500 ms (generally) (See [Appendix 1: varying sample transactions max loop length](#appendix-1-varying-sample-transactions-max-loop-length) for details). This is done so its easier to compare different types of transaction to each other. 
 
 <details>
 <summary>The names and bodies of the 25 different transaction types is collapsed for better readability.</summary>
@@ -326,8 +339,6 @@ The execution time of each sample transaction is then used to adapt that sample 
 
 A new execution state was created for every 100 blocks, clearing all state changes done by the previous transactions.
 
-The data was collected by running a total of 5000 blocks which contained a total of 144 901 transactions.
-
 The collected data has the following form:
 
 | Transaction type name     | Multiple columns of features                                                                                                                                                          | transaction execution time ("ms")                                                                                                              |
@@ -336,24 +347,26 @@ The collected data has the following form:
 
 #### Testnet Data
 
-Testnet data was collected by deploying modified code to one execution node, that logs all the feature intensities per transactions. This was done around March 19th 2022.
+Testnet data was collected by deploying modified code to one execution node, that logged all the feature intensities per transactions. This was done around March 11th 2022.
 ### Feature Placement
 
-A total of 26 different features were used.
-Of those 25 weights were placed in functions in `transactionEnv.go` which implements the interface between Cadence and the flow virtual machine (FVM).
+A total of 21 different features were originally used.
+Of those 20 weights were placed in functions in `transactionEnv.go` which implements the interface between Cadence and the flow virtual machine (FVM).
 
 The `function_or_loop_call` weight is an exception as that counts any cadence function (function calls in the cadence script) and any cadence loop. This is also the weight that is already currently in place, as discussed above.
 
 The weights `GetValue` and `SetValue` are also different, as instead of just counting the number of times a transaction calls those functions, they instead count how many bytes were read or written, when they are called.
 
-| Feature name               | Feature intensity (per feature call)                   | Intent of the code of the feature                                                                           |
+| Feature name               | Feature intensity <br> (per feature call)                   | Intent of the code of the feature                                                                           |
 | -------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| function_or_loop_call      | one per cadence invocation, function call or loop call | Called every time a cadence function is called a a loop is made in cadence                                  |
+| GetValue                   | Number of bytes read from a register                   | Get the value of a storage register                                                                         |
+| SetValue                   | Number of bytes saved to a register                    | Set a value to a storage register                                                                           |
+| CreateAccount              | 1                                                      | Called to create a new account                                                                              |
 | AddEncodedAccountKey       | 1                                                      | Add a public key to an account                                                                              |
 | AllocateStorageIndex       | 1                                                      | Allocates a new storage index (for slab storage)                                                            |
 | ContractFunctionInvoke     | 1                                                      | Called when a contract function is invoked by the FVM directly (fee deduction, getting account balance,...) |
-| CreateAccount              | 1                                                      | Called to create a new account                                                                              |
 | EmitEvent                  | 1                                                      | Called to emit an event                                                                                     |
-| function_or_loop_call      | one per cadence invocation, function call or loop call | Called every time a cadence function is called a a loop is made in cadence                                  |
 | GetAccountAvailableBalance | 1                                                      | Gets account available balance                                                                              |
 | GetAccountBalance          | 1                                                      | Gets account balance                                                                                        |
 | GetAccountContractCode     | 1                                                      | Gets accounts contract code (by name)                                                                       |
@@ -362,14 +375,8 @@ The weights `GetValue` and `SetValue` are also different, as instead of just cou
 | GetProgram                 | 1                                                      | Gets an interpreted program (contract)                                                                      |
 | GetStorageCapacity         | 1                                                      | Gets the storage capacity of an account                                                                     |
 | GetStorageUsed             | 1                                                      | Gets the storage used of an account                                                                         |
-| GetValue                   | Number of bytes read from a register                   | Get the value of a storage register                                                                         |
-| ProgramChecked             | 1                                                      | Cadence callback after a program (transaction/script/contract code) was checked                             |
-| ProgramInterpreted         | 1                                                      | Cadence callback after a program (transaction/script/contract code) was interpreted                         |
-| ProgramParsed              | 1                                                      | Cadence callback after a program (transaction/script/contract code) was parsed                              |
-| ResolveLocation            | 1                                                      | Called to resolve a location (most notably to resolve an import to a specific contract location)            |
 | RevokeEncodedAccountKey    | 1                                                      | Revokes an account's key                                                                                    |
 | SetProgram                 | 1                                                      | Caches an interpreted program (contract)                                                                    |
-| SetValue                   | Number of bytes saved to a register                    | Set a value to a storage register                                                                           |
 | UpdateAccountContractCode  | 1                                                      | Updates an account's contract                                                                               |
 | ValueExists                | 1                                                      | Checks if a certain register exists                                                                         |
 | ValueDecoded               | 1                                                      | Cadence callback after a value was decoded into a cadence type                                              |
