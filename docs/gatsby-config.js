@@ -471,7 +471,8 @@ const sections = [
         "[Proving Account Ownership](/fcl/reference/proving-authentication/)",
         "[Scripts](/fcl/reference/scripts/)",
         "[Transactions](/fcl/reference/transactions/)",
-        "[User Signatures](/fcl/reference/user-signatures/)"
+        "[User Signatures](/fcl/reference/user-signatures/)",
+        "[Wallet Discovery](/fcl/reference/discovery/)"
       ],
       Changelogs: [
         "[@onflow/fcl](/fcl/packages/fcl/CHANGELOG)",
