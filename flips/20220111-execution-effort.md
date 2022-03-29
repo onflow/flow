@@ -6,9 +6,6 @@
 | **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com) |
 | **Updated**   | 2022-03-29                                         |
 
-
-🚧 Under re-work. 🚧  The *Proposed Design* chapter will change a lot to reflect the improved math. Some numbers in the other chapters might also change slightly.
-
 ## Table of Contents
 
 - [Variable Transaction Fees - Execution Effort I.](#variable-transaction-fees---execution-effort-i)
@@ -24,11 +21,8 @@
       - [Testnet Data](#testnet-data)
     - [Feature Placement](#feature-placement)
     - [Data analysis](#data-analysis)
-      - [Weight correlation](#weight-correlation)
-      - [Outliers and robust linear model fitting](#outliers-and-robust-linear-model-fitting)
-      - [Eliminating weights](#eliminating-weights)
-      - [Comparison with the current system](#comparison-with-the-current-system)
-    - [Final model proposal](#final-model-proposal)
+      - [Performance fo the current model](#performance-fo-the-current-model)
+      - [Performance of the resulting model](#performance-of-the-resulting-model)
   - [Final Execution Effort Feature Weights and Maximum Execution Effort Limit](#final-execution-effort-feature-weights-and-maximum-execution-effort-limit)
   - [Execution Effort cost](#execution-effort-cost)
   - [The future of the model](#the-future-of-the-model)
@@ -383,75 +377,43 @@ The weights `GetValue` and `SetValue` are also different, as instead of just cou
 
 ### Data analysis
 
-The large amount of different weights chosen was intentional. This allows for better insight into which weights should actually be used.
+During data analysis the goals and challenges were:
 
-The Following chapters describe how the linear model fitting was done due to a significant amount of outliers in the data and how certain weights were eliminated, because they were either redundant (correlated with other weights), insignificant (had small or no impact on the correlation), or had a lot of noise.
+- Model should be in a linear form.
+- Model’s weights should all be positive.
+- Linear model is better to not have the intercept constant team (a transaction that does nothing should not have a non-zero execution effort cost).
+- The number of features used for the model should be as small as possible.
 
-A note on the `time to execute [ms]` vs `Execution effort` graphs. The closer the data is to the red dashed line which represents `time to execute = Execution effort` the better the fit of the model. Data that is to the right side of the graph, represents transactions that took longer than expected, and were thus charged less than they should be (but some variance and outliers are expected here). Data to the left side of the graph represents transactions where the execution did not take as long as the model predicted, and as a consequence those transactions will be charged more then they should be.
+The full data analysis report can be found in the [flow repository next to this FLIP](./20220111-execution-effort/Flow-execution-effort-prediction-model.docx.pdf). The following are just the results of that data analysis.
 
-#### Weight correlation
+Resulting model highlights: 
+- The proposed champion model achieve the better performance when compared to the current production benchmark model model in terms of goodness of fit.
+- Only 4 features in the model.
+- All weights are positive.
 
-Before using the data in a linear model, its important to note that the rank of the matrix of all weight data <!-- $M$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/SmblEwKco6.svg"> is smaller than the number of weights. This means that some wights are correlated to others. These are asy to spot by checking the correlation matrix where only the entries with 1 or -1 are highlighted.
+Resulting model:
 
-![Correlation1](./20220111-execution-effort/correlation1.png)
+`Execution effort = 'function_or_loop_call' * 0.0004789016465827949 + 'GetValue' * 0.0002466779730553598 + 'CreateAccount' * 0.8660748805785956 + 'SetValue' * 0.0002335080887671281`
 
-The pairs that are correlated are:
+#### Performance fo the current model
 
-- `ProgramChecked` / `ProgramParsed`
-- `GetCode` / `GetAccountContractCode`
-- `ValueExists` / `CreateAccount`
+On simulated transactions:
 
-These pairs of weights were cross checked with the implementation to confirm that they are always called together.
+![Current on simulated sample data](./20220111-execution-effort/current-data1.png)
 
-The columns with weights `ProgramChecked`, `GetCode` and `ValueExists` were removed from the weight data matrix <!-- $M$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/SmblEwKco6.svg">.
+On testnet transactions:
 
-#### Outliers and robust linear model fitting
+![Current on testnet data](./20220111-execution-effort/current-data2.png)
 
-The following is a linear model fit on the data and plotting the data on a graph of execution time taken (in milliseconds) vs execution effort.
+#### Performance of the resulting model
 
-![DemoFit](./20220111-execution-effort/demo-fit.png)
+On simulated transactions:
 
-This data has a proportional relation, but also has a lot of noise especially to the right of the graph. Noise to the right of the graph means that sometimes transactions take longer than expected (which could be due to gc pauses, or the machine doing something else, or cache misses, ...).
+![Champion on simulated sample data](./20220111-execution-effort/champion-data1.png)
 
-The outliers cause the goodness of the linear model fit to degrade. A way how to remedy this is described in detail in the [Wolfram documentation](https://reference.wolfram.com/applications/eda/RobustFitting.html) and can be described in short as using the residual (error) of each data point to tweak the weight of that data point, and then re-fitting the data with regard to those weights. This is done until the model converges. In the wolfram documentation this is called robust fitting.
+On testnet transactions:
 
-The function that converts the residual of a data point to its weight was chosen to be an asymmetrical function with a different cut-off to the left and to the right. This is because the outliers were mostly to the right of the graph, and the signal was to the left of the graph. The cut-off point was 16 times of the mean of the residuals while the cut-off point to the right was 10 times of the mean residual.
-
-![Residual2Weight](./20220111-execution-effort/residual-to-weight.png)
-
-The following chart illustrates the improvement to the final model fit when using robust fitting. The color of each data point represents the weight of that data point. The darker the color the lower the weight of the data point.
-
-![BetterFit](./20220111-execution-effort/better-fit.png)
-
-#### Eliminating weights
-
-Even with the weights with 1:1 correlation gone, the remaining weights still contained a lot of error.
-
-![ParametersFull](./20220111-execution-effort/parameters-full.png)
-
-Some weights also contain negative values. This is not unexpected as the data is noisy, but leaving weights as negative in the final model could be problematic, as there might be a way to construct transactions in a way to exploit that.
-
-Through a process of trial an error, weights with high error, a negative value or a small value were removed and the data re-fitted until a good fit was found.
-
-#### Comparison with the current system
-
-The collected data can be used to make a comparison with the current system. The weight `function_or_loop_call` is exactly what is currently used. Plotting a fit of `function_or_loop_call` to the execution times of transactions allows us to directly compare this graph to the final model.
-
-![BadFit](./20220111-execution-effort/bad-fit.png)
-
-The goodness-of-fit (<!-- $r^2$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/utSvouRK8p.svg">) for this is `0.532394`. Considerably lower than the final model.
-
-### Final model proposal
-
-This FLIP proposes using 8 weights:
-
-![ParametersGood](./20220111-execution-effort/parameters-good.png)
-
-The goodness-of-fit for this model is `0.862235`, considerably better than the current system `0.532394`.
-
-The graph of the model:
-
-![GoodFit](./20220111-execution-effort/good-fit.png)
+![Champion on testnet data](./20220111-execution-effort/champion-data2.png)
 
 ## Final Execution Effort Feature Weights and Maximum Execution Effort Limit
 
@@ -470,8 +432,7 @@ This gives us the following following feature weights that will be set on mainne
 | ------------------------------------------------------------------------------------ | --------------------------------------------- | ------------------- | ------------------- | -------------- |
 | Feature weight <br> compared to the total maximum <br>execution effort limit of 9999 | 0.023                                         | 0.0123              | 0.0117              | 43.2994        |
 
-See table in Appendix 2 for a overview of how that affects certain transactions.
-<!-- TODO link to appendix 2 -->
+See table in [Appendix 2](#appendix-2-table-of-changes-for-common-transactions) for a overview of how that affects certain transactions.
 
 ## Execution Effort cost
 
@@ -483,8 +444,7 @@ This FLIP proposes to change the static inclusion fees from `1e-5` FLOW to `1e-6
 
 This will make the most expensive transaction 50 times more expensive then before, but most transactions will become cheaper, or stay in the same range as before.
 
-See table in Appendix 2 for a overview of how that affects certain transactions.
-<!-- TODO link to appendix 2 -->
+See table in [Appendix 2](#appendix-2-table-of-changes-for-common-transactions) for a overview of how that affects certain transactions.
 ## The future of the model
 
 The model parameters will have to change if the execution code changes. Currently all code changes still happen during sporks. This means that before a spork new data collection and fitting will need to be done, to see if the feature weights need to be adjusted.
