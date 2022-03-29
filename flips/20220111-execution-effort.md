@@ -13,31 +13,31 @@
   - [Abstract](#abstract)
   - [Objective](#objective)
   - [Impact](#impact)
-  - [Current state](#current-state)
+  - [Current Implementation](#current-implementation)
   - [Proposed Design](#proposed-design)
     - [Data Collection](#data-collection)
       - [Sample Transaction](#sample-transaction)
       - [Sample Transaction Data Collection procedure](#sample-transaction-data-collection-procedure)
       - [Testnet Data](#testnet-data)
     - [Feature Placement](#feature-placement)
-    - [Data analysis](#data-analysis)
-      - [Performance fo the current model](#performance-fo-the-current-model)
-      - [Performance of the resulting model](#performance-of-the-resulting-model)
+    - [Data Analysis](#data-analysis)
+      - [Performance of the Current Model](#performance-of-the-current-model)
+      - [Performance of the Resulting Model](#performance-of-the-resulting-model)
   - [Final Execution Effort Feature Weights and Maximum Execution Effort Limit](#final-execution-effort-feature-weights-and-maximum-execution-effort-limit)
-  - [Execution Effort cost](#execution-effort-cost)
-  - [The future of the model](#the-future-of-the-model)
-    - [Known missing feature](#known-missing-feature)
-    - [Data collection](#data-collection-1)
-    - [Outlier analysis](#outlier-analysis)
-    - [Failing transactions](#failing-transactions)
+  - [Execution Effort Cost](#execution-effort-cost)
+  - [The Future of the Model](#the-future-of-the-model)
+    - [Known Missing Feature](#known-missing-feature)
+    - [Data Collection](#data-collection-1)
+    - [Outlier Analysis](#outlier-analysis)
+    - [Failing Transactions](#failing-transactions)
   - [Implementation](#implementation)
-    - [Code changes](#code-changes)
-    - [Release plan](#release-plan)
+    - [Code Changes](#code-changes)
+    - [Release Plan](#release-plan)
   - [Performance Implications](#performance-implications)
   - [User Impact](#user-impact)
   - [Questions and Discussion Topics](#questions-and-discussion-topics)
   - [Appendices](#appendices)
-    - [Appendix 1: varying sample transactions max loop length](#appendix-1-varying-sample-transactions-max-loop-length)
+    - [Appendix 1: Varying sample transactions max loop length](#appendix-1-varying-sample-transactions-max-loop-length)
     - [Appendix 2: Table of changes for common transactions](#appendix-2-table-of-changes-for-common-transactions)
 
 ## Abstract
@@ -67,9 +67,9 @@ By improving the model for the execution effort of transactions, transactions wi
 
 As a consequence transactions that do little (e.g. transferring a (non)fungible token) will cost less, while transactions that do a lot and require a lot of resources to execute (minting a large batch of NFTs) will cost more. Attacking the system with heavy transactions in order to overload it will become costlier and thus less viable.
 
-## Current state
+## Current Implementation
 
-As of [v0.23.6 release](https://github.com/onflow/flow-go/tree/v0.23.6), execution effort is coarsely approximated, where we charge 1 unit of effort per every cadence statement, loop iteration or function call. 
+As of [v0.23.6 release](https://github.com/onflow/flow-go/tree/v0.23.6), execution effort is coarsely approximated, where every cadence statement, loop iteration or function call represents 1 unit of execution effort, out of a maximum of 9999 *the maximum execution effort limit). 
 
 If the execution effort exceeds the execution effort limit (also currently referenced to as gas limit or computation limit) the transaction fails. While the state changes of that transaction are discarded, the fees for that transaction are still deducted.
 
@@ -77,15 +77,15 @@ As of [v0.23.6 release](https://github.com/onflow/flow-go/tree/v0.23.6) there is
 
 ## Proposed Design
 
-To improve the calculation of execution effort of transactions, this FLIP proposes to choose certain features (functions/operations) where weights <!-- $w_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4sadlnRWsG.svg"> will be placed. By counting the number of times each weight is hit (and with what intensity) during the execution of a transaction <!-- $m_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/J3058PgFuq.svg">, the execution effort of that transaction can be expressed as <!-- $E = \sum{m_i w_i}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/uaww76uH7S.svg">.
+To improve measuring of the execution effort of transactions, this FLIP proposes to choose certain features (functions/operations) where weights <!-- $w_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4sadlnRWsG.svg"> will be placed. By counting the number of times each weight is hit, and with what intensity, during the execution of a transaction <!-- $m_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/J3058PgFuq.svg">, the execution effort of that transaction can be expressed as <!-- $E = \sum{m_i w_i}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/uaww76uH7S.svg">.
 
 The assumption made here is that the processing cost of a running a single function <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4FLaqCTwtI.svg"> times scales linearly with <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4FLaqCTwtI.svg">. This assumption is made only for transactions where the execution effort of the transaction is not above the execution effort limit.
 
 By choosing suitable weights for the most relevant features, we can approximate a linear correlation between transaction execution time (<!-- $t$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/cbdkfkWybi.svg">) and the transaction's execution effort  <!-- $\frac{t}{E} = \texttt{const}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/M5uS3sI1wA.svg">.
 
-Making the assumption that if one execution node on average runs one function <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower it will run all functions <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower, we can still say that the relationship <!-- $\frac{t}{E} = \texttt{const}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/M5uS3sI1wA.svg"> will  hold on all machines, but the constant will be different on each machine. This also means that we can chose a base machine (of certain specifications), where the constant will be 1.
+Making the assumption that if one execution node on average runs one function <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower it will run all functions <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower, we can still say that the relationship <!-- $\frac{t}{E} = \texttt{const}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/M5uS3sI1wA.svg"> will  hold on all machines, but the constant will be different on each machine. This also means that we can chose a reference machine (of certain specifications), where the constant will be 1.
 
-The base machine was chosen to be a machine with the same specs as the mainnet execution nodes. Doing this the execution effort can also be understood as the "estimated transaction execution time".
+The reference machine was chosen to be a machine with the same specs as the mainnet execution nodes. Doing this the execution effort can also be understood as the "estimated transaction execution time".
 
 ### Data Collection
 
@@ -357,7 +357,7 @@ The `function_or_loop_call` weight is an exception as that counts any cadence fu
 
 The weights `GetValue` and `SetValue` are also different, as instead of just counting the number of times a transaction calls those functions, they instead count how many bytes were read or written, when they are called.
 
-| Feature name               | Feature intensity <br> (per feature call)                   | Intent of the code of the feature                                                                           |
+| Feature name               | Feature intensity <br> (per feature call)              | Intent of the code of the feature                                                                           |
 | -------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
 | function_or_loop_call      | one per cadence invocation, function call or loop call | Called every time a cadence function is called a a loop is made in cadence                                  |
 | GetValue                   | Number of bytes read from a register                   | Get the value of a storage register                                                                         |
@@ -382,7 +382,7 @@ The weights `GetValue` and `SetValue` are also different, as instead of just cou
 | ValueDecoded               | 1                                                      | Cadence callback after a value was decoded into a cadence type                                              |
 | ValueEncoded               | 1                                                      | Cadence callback after a cadence type was encoded into a cadence json                                       |
 
-### Data analysis
+### Data Analysis
 
 During data analysis the goals and challenges were:
 
@@ -402,7 +402,7 @@ Resulting model:
 
 `Execution effort = 'function_or_loop_call' * 0.0004789016465827949 + 'GetValue' * 0.0002466779730553598 + 'CreateAccount' * 0.8660748805785956 + 'SetValue' * 0.0002335080887671281`
 
-#### Performance fo the current model
+#### Performance of the Current Model
 
 On simulated transactions:
 
@@ -412,7 +412,7 @@ On testnet transactions:
 
 ![Current on testnet data](./20220111-execution-effort/current-data2.png)
 
-#### Performance of the resulting model
+#### Performance of the Resulting Model
 
 On simulated transactions:
 
@@ -425,58 +425,66 @@ On testnet transactions:
 ## Final Execution Effort Feature Weights and Maximum Execution Effort Limit
 
 Changing the maximum execution effort limit (a.k.a. gas limit) for end users which is 9999 would cause a lot of braking changes in SDKs and current user code.
-Instead we keep the maximum execution effort limit as is, and change the feature weights accordingly, so a desired estimated execution time is reached at 9999 execution effort.
+Instead this FLIP proposes to keep the maximum execution effort limit as is, and change the feature weights accordingly, so a desired estimated execution time is reached at 9999 execution effort.
 
-The feature weights from the previous section represent an estimated execution time on a base execution node. 
+This can be done, since the feature weights from the previous section model the estimated execution time for a transaction, when that transaction is run on a reference execution node. 
 
 🚧 The numbers in the following section might change 🚧
 
-The chosen maximum estimate execution time a transaction can take was chosen to be `200 ms`. This was chosen to be high to make the transition to variable execution fees easier, as it is less likely that a transaction that would previously pass would now reach the limit. This limit will be tweaked in the future when more data is available. For reference on average there is currently (March 2022) about 1 transaction per hour on mainnet that is above the 200ms limit mark.
+The chosen maximum estimated execution time a transaction can take was chosen to be `200 ms`. This was chosen to be high to make the transition to variable execution fees easier, as it is less likely that a transaction that would previously pass would now reach the limit. This limit will be tweaked in the future when more data is available. For reference, there is currently (March 2022) about 1 transaction per hour on mainnet on average that is above the 200ms limit mark.
 
-This gives us the following following feature weights that will be set on mainnet:
+This gives the following final feature weights that will be set on mainnet:
 
 |                                                                                      | Cadence invocation,<br> function call or loop | GetValue (per byte) | SetValue (per byte) | Create Account |
 | ------------------------------------------------------------------------------------ | --------------------------------------------- | ------------------- | ------------------- | -------------- |
 | Feature weight <br> compared to the total maximum <br>execution effort limit of 9999 | 0.023                                         | 0.0123              | 0.0117              | 43.2994        |
 
+
+Some facts that can be gleamed from this table:
+- A transaction that has a simple loop that does nothing (or nothing much), could only be `9999` iterations long before, but can now be `9999/0.023 = 434739` iterations long.
+- A transaction could create a maximum of around `9999/43.2994=231` new account accounts.
+- Reading data is slightly more expensive than writing data
+
 See table in [Appendix 2](#appendix-2-table-of-changes-for-common-transactions) for a overview of how that affects certain transactions.
 
-## Execution Effort cost
+Scripts are affected by the same limits.
 
-Execution effort cost was picked to better secure the network against heavy transactions, while making light transactions (FT/NFT transfers) cheaper. The transaction costs of even the most heavy transactions will still be very small. The costs will continue to be tweaked in the future in order to better secure the network.
+## Execution Effort Cost
+
+The cost of one unit of execution effort was picked in order to better secure the network against heavy transactions, while making still making light transactions (FT/NFT transfers) cheaper. The transaction costs of even the most heavy transactions will still be very small. The costs will continue to be tweaked in the future in order to better secure the network.
 
 🚧 The numbers in the following section might change 🚧
 
-This FLIP proposes to change the static inclusion fees from `1e-5` FLOW to `1e-6` FLOW and charging the execution effort cost from `0.0` FLOW per effort to `4.99E-08` FLOW per effort.
+This FLIP proposes to change the static inclusion fees from `1E-5` FLOW to `1E-6` FLOW and charging the execution effort cost from `0.0` FLOW per effort to `4.99E-08` FLOW per effort.
 
-This will make the most expensive transaction 50 times more expensive then before, but most transactions will become cheaper, or stay in the same range as before.
+This will make the most expensive transaction 50 times more expensive then before, but most transactions will become cheaper (up to 10 times), or stay in the same range as before.
 
 See table in [Appendix 2](#appendix-2-table-of-changes-for-common-transactions) for a overview of how that affects certain transactions.
-## The future of the model
+## The Future of the Model
 
 The model parameters will have to change if the execution code changes. Currently all code changes still happen during sporks. This means that before a spork new data collection and fitting will need to be done, to see if the feature weights need to be adjusted.
 
 The proposed model is also the first iteration on the path to pricing transactions fairly. This model needs to be further improved in the future. The following chapters address possible upgrade paths.
 
-### Known missing feature
+### Known Missing Feature
 
 More features could be added to the model by exploring the code further and seeing what could have an impact. Most features were selected on the FVM layer, but having features from the cadence layer in the model might capture something that the current features don't.
 
-### Data collection
+### Data Collection
 
 The majority of transaction measurements collected were simulated and might not represent transaction seen "in the wild". To improve the data set, more data could be collected from testnet and mainnet. To do this each transaction (or a sample of them) on mainnet would need to log feature intensities which is something that will be in place in the future.
 
-### Outlier analysis
+### Outlier Analysis
 
 The model can be improved by looking at the execution path of outliers, and trying to discern if any features are missing on those execution paths to make the model better.
 
-### Failing transactions
+### Failing Transactions
 
 The model did not cover costs of the FVM recovering after a failure. These should be minimal, but the avenue should be explored in the future.
 
 ## Implementation
 
-### Code changes
+### Code Changes
 
 The high level view of the code changes needed is:
 
@@ -488,7 +496,7 @@ The high level view of the code changes needed is:
 
 The code should allow mimicking the current way of metering execution effort if the feature weights are not set, or are set to certain values. This should be the default
 
-### Release plan
+### Release Plan
 
 After a spork when this code reaches mainnet the fees and the execution effort metering/limiting will still be unchanged.
 When the decision is made to apply the execution effort weights described in this FLIP, that will be done with a transaction from the service account.
@@ -515,7 +523,7 @@ There are two impacts to the users:
 
 ## Appendices
 
-### Appendix 1: varying sample transactions max loop length
+### Appendix 1: Varying sample transactions max loop length
 
 Sample transactions are run with a varying loop length that is randomly chosen between 1 and _max loop length_ for that transaction type. As an example a loop length of 100 means that the create account sample transaction will take about 2000 times longer than the reference sample transaction. This causes two problems:
 
@@ -568,12 +576,12 @@ def update_max_loop_length(loop_length, time_taken_to_execute):
 ### Appendix 2: Table of changes for common transactions
 
 			
-|                                    | Execution Effort Used Out of<br>  Maximum 9999 Available | Cost [1E-8 FLOW] | Cost compared to before |
-| :--------------------------------- | -------------------------------------------------------: | ---------------: | :---------------------: |
-| Empty Transaction                  |                                                        0 |              100 |           10%           |
-| Create 1 Account                   |                                                       43 |              315 |           31%           |
-| Create 10 accounts                 |                                                      433 |            2,261 |          226%           |
-| Add key to an account              |                                                        0 |              100 |           10%           |
-| FT transfer                        |                                                       17 |              185 |           18%           |
-| Deploying a contract that is ~50kb |                                                      574 |            2,965 |          296%           |
-| Mint a small NFT <br>(heavily depends on the NFT size)                          |                                                       18 |              190 |           19%           |
+|                                                        | Execution Effort Used Out of<br>  Maximum 9999 Available | Cost [1E-8 FLOW] | Cost compared to before |
+| :----------------------------------------------------- | -------------------------------------------------------: | ---------------: | :---------------------: |
+| Empty Transaction                                      |                                                        0 |              100 |           10%           |
+| Create 1 Account                                       |                                                       43 |              315 |           31%           |
+| Create 10 accounts                                     |                                                      433 |            2,261 |          226%           |
+| Add key to an account                                  |                                                        0 |              100 |           10%           |
+| FT transfer                                            |                                                       17 |              185 |           18%           |
+| Deploying a contract that is ~50kb                     |                                                      574 |            2,965 |          296%           |
+| Mint a small NFT <br>(heavily depends on the NFT size) |                                                       18 |              190 |           19%           |
