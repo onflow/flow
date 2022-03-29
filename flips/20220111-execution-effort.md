@@ -1,13 +1,13 @@
 # Variable Transaction Fees - Execution Effort I.
 
-| Status        | Proposed                                                                   |
-| :------------ | :------------------------------------------------------------------------- |
-| **FLIP #**    | [753](https://github.com/onflow/flow/pull/753) |
-| **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com)                      |
-| **Updated**   | 2022-01-13                                                                 |
+| Status        | Proposed                                           |
+| :------------ | :------------------------------------------------- |
+| **FLIP #**    | [753](https://github.com/onflow/flow/pull/753)     |
+| **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com) |
+| **Updated**   | 2022-03-29                                         |
 
 
-⚠️ 🚧 Under heavy re-work. 🚧 ⚠️ Expect an updated version soon
+🚧 Under re-work. 🚧  The *Proposed Design* chapter will change a lot to reflect the improved math. Some numbers in the other chapters might also change slightly.
 
 ## Table of Contents
 
@@ -15,36 +15,40 @@
   - [Table of Contents](#table-of-contents)
   - [Abstract](#abstract)
   - [Objective](#objective)
-  - [Motivation](#motivation)
+  - [Impact](#impact)
   - [Current state](#current-state)
   - [Proposed Design](#proposed-design)
-    - [Generated transactions for data collection](#generated-transactions-for-data-collection)
-    - [Data Collection procedure](#data-collection-procedure)
-    - [Weights placement](#weights-placement)
+    - [Data Collection](#data-collection)
+      - [Sample Transaction](#sample-transaction)
+      - [Sample Transaction Data Collection procedure](#sample-transaction-data-collection-procedure)
+      - [Testnet Data](#testnet-data)
+    - [Feature Placement](#feature-placement)
     - [Data analysis](#data-analysis)
       - [Weight correlation](#weight-correlation)
       - [Outliers and robust linear model fitting](#outliers-and-robust-linear-model-fitting)
       - [Eliminating weights](#eliminating-weights)
       - [Comparison with the current system](#comparison-with-the-current-system)
     - [Final model proposal](#final-model-proposal)
-    - [Execution effort limit](#execution-effort-limit)
-    - [Execution Effort cost](#execution-effort-cost)
-    - [The future of the model](#the-future-of-the-model)
-      - [Known missing weights](#known-missing-weights)
-      - [Data collection](#data-collection)
-      - [Outlier analysis](#outlier-analysis)
-      - [Failing transactions](#failing-transactions)
-    - [Performance Implications](#performance-implications)
-    - [User Impact](#user-impact)
+  - [Final Execution Effort Feature Weights and Maximum Execution Effort Limit](#final-execution-effort-feature-weights-and-maximum-execution-effort-limit)
+  - [Execution Effort cost](#execution-effort-cost)
+  - [The future of the model](#the-future-of-the-model)
+    - [Known missing feature](#known-missing-feature)
+    - [Data collection](#data-collection-1)
+    - [Outlier analysis](#outlier-analysis)
+    - [Failing transactions](#failing-transactions)
+  - [Implementation](#implementation)
+    - [Code changes](#code-changes)
+    - [Release plan](#release-plan)
+  - [Performance Implications](#performance-implications)
+  - [User Impact](#user-impact)
   - [Questions and Discussion Topics](#questions-and-discussion-topics)
   - [Appendices](#appendices)
     - [Appendix 1: varying sample transactions max loop length](#appendix-1-varying-sample-transactions-max-loop-length)
-    - [Appendix 2: Jupyter + Mathematica](#appendix-2-jupyter--mathematica)
-    - [Appendix 3: Breakdown of the model according to different transaction types](#appendix-3-breakdown-of-the-model-according-to-different-transaction-types)
+    - [Appendix 2: Table of changes for common transactions](#appendix-2-table-of-changes-for-common-transactions)
 
 ## Abstract
 
-This FLIP builds on the foundations of the [Variable Transaction fees FLIP](20211007-transaction-fees.md) and proposes a model for measuring the execution effort of transactions by choosing certain functions/operations, that are called during the execution of a transaction, to have a related execution effort cost. This FLIP explores a choice of functions/operations and uses data collected from sample transactions and a linear model fit to determine the cost of each chosen functions/operations, so that on average the execution effort of a transaction is proportional to the execution time of the transaction. This FLIP also explores the FLOW cost of a unit of execution effort.
+This FLIP builds on the foundations of the [Variable Transaction fees FLIP](20211007-transaction-fees.md) and proposes a model for measuring the execution effort of transactions by choosing certain functions/operations (features), that are called during the execution of a transaction, to have a related execution effort cost. This FLIP explores a choice of features and uses data collected from sample transactions and a linear model fit to determine the cost of each chosen features, so that on average the execution effort of a transaction is proportional to the execution time of the transaction. This FLIP also explores the FLOW cost of a unit of execution effort.
 
 ## Objective
 
@@ -55,60 +59,50 @@ The aim of this FLIP is to create a model for measuring the execution effort of 
 - The model must be better then the current model of measuring the execution effort.
 - The model must be straightforward to understand and implement.
 - The implementation of the model must not significantly degrade the execution time of transactions.
+- The model must be deterministic across nodes, i.e. all execution and verification nodes must measure the same execution effort for a transaction.
 - There must be a clear improvement path for the model.
+- The model must be byzantine compatible, i.e. hard to game / circumvent.
 
 This first iteration of the model will not account for any networking costs and will assume verification costs are the same as execution costs.
 
 Having a model like that, the secondary goal of this FLIP is to look at how each unit on execution effort would be priced.
 
-## Motivation
+## Impact
 
 By improving the model for the execution effort of transactions, transactions will be priced more fairly.
 
-As a consequence transactions that do little (e.g. transferring a (non)fungible token) will cost less, while transactions that do a lot and require a lot of resources to execute will cost more. Attacking the system with heavy transactions in order to overload it will become costlier and thus less viable.
+As a consequence transactions that do little (e.g. transferring a (non)fungible token) will cost less, while transactions that do a lot and require a lot of resources to execute (minting a large batch of NFTs) will cost more. Attacking the system with heavy transactions in order to overload it will become costlier and thus less viable.
 
 ## Current state
 
-As of [v0.23.6 release](https://github.com/onflow/flow-go/tree/v0.23.6), execution effort is coarsely approximated, where we charge 1 unit of effort per every cadence function call or cadence loop iteration. 
+As of [v0.23.6 release](https://github.com/onflow/flow-go/tree/v0.23.6), execution effort is coarsely approximated, where we charge 1 unit of effort per every cadence statement, loop iteration or function call. 
 
-If the execution effort exceeds the execution effort limit (also currently referenced to as gas limit or computation limit) the transaction fails. While the state changes of that transaction are discarded, however the fees are still deducted for that transaction.
+If the execution effort exceeds the execution effort limit (also currently referenced to as gas limit or computation limit) the transaction fails. While the state changes of that transaction are discarded, the fees for that transaction are still deducted.
 
-There is currently no connection from execution effort to transaction fees. Transaction fees are always a flat fee of `0.00001 FLOW` for all transactions, no matter the execution effort.
+As of [v0.23.6 release](https://github.com/onflow/flow-go/tree/v0.23.6) there is also no connection from execution effort to transaction fees. Transaction fees are always a flat fee of `0.00001 FLOW` for all transactions, no matter the execution effort.
 
 ## Proposed Design
 
-To improve the calculation of execution effort of a transaction, this FLIP proposes to choose certain functions/operations where weights <!-- $w_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4sadlnRWsG.svg"> will be placed. By counting the number of times each weight is hit during the execution of a transaction <!-- $m_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/J3058PgFuq.svg"> the execution effort of that transaction can be expressed as <!-- $E = \sum{m_i w_i}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/uaww76uH7S.svg">.
+To improve the calculation of execution effort of transactions, this FLIP proposes to choose certain features (functions/operations) where weights <!-- $w_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4sadlnRWsG.svg"> will be placed. By counting the number of times each weight is hit (and with what intensity) during the execution of a transaction <!-- $m_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/J3058PgFuq.svg">, the execution effort of that transaction can be expressed as <!-- $E = \sum{m_i w_i}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/uaww76uH7S.svg">.
 
-The assumption here was that the processing cost of a running a single function <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4FLaqCTwtI.svg"> times scales linearly with <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4FLaqCTwtI.svg">. This assumption is made only for transactions where the execution effort of the transaction is not above the execution effort limit.
+The assumption made here is that the processing cost of a running a single function <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4FLaqCTwtI.svg"> times scales linearly with <!-- $N$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/4FLaqCTwtI.svg">. This assumption is made only for transactions where the execution effort of the transaction is not above the execution effort limit.
 
-By choosing suitable the weights for the most relevant functions, we can find acceptable linear correlation between transaction execution time (<!-- $t$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/cbdkfkWybi.svg">) and it's execution effort  <!-- $\frac{t}{E} = \texttt{const}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/M5uS3sI1wA.svg">.
+By choosing suitable weights for the most relevant features, we can approximate a linear correlation between transaction execution time (<!-- $t$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/cbdkfkWybi.svg">) and the transaction's execution effort  <!-- $\frac{t}{E} = \texttt{const}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/M5uS3sI1wA.svg">.
 
-This FLIP also makes the assumption that if one execution node on average runs one function <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower it will run all functions <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower. 
+Making the assumption that if one execution node on average runs one function <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower it will run all functions <!-- $x$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/Cj3XAvtJtn.svg"> times slower, we can still say that the relationship <!-- $\frac{t}{E} = \texttt{const}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/M5uS3sI1wA.svg"> will  hold on all machines, but the constant will be different on each machine. This also means that we can chose a base machine (of certain specifications), where the constant will be 1.
 
-This means that while the relationship <!-- $\frac{t}{E} = \texttt{const}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/M5uS3sI1wA.svg"> will still hold on all machines, the constant will be a different constant on each machine. This also means that we can chose the constant to be 1 when calibrating the weights, and if need be (if the machine where the calibration is done differs drastically from the execution node specs) multiply all weights by a single factor later.
+### Data Collection
 
-With these assumptions the weights can be calibrated using data that was collected by running designed transactions while recording how many times each weight was hit, using the following linear model.
+Two sets of data were used:
 
-- <!-- $\mathbf{w}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/oMhSdPZakP.svg"> a column vector of all weights.
-- <!-- $\mathbf{M}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/EAEejoxpkD.svg"> a matrix with one row per transaction run. Each row is a count of how many times each weight was hit during that transaction (`m_i`).
-- <!-- $\mathbf{t}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/cYmBfIeBZQ.svg"> a column vector of the time taken of each transaction.
-- <!-- $\mathbf{r}$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/YSURmdSaWS.svg"> is a column vector of residuals (or error terms)
+1. A large set of data from two different machines running generated transactions.
+2. A small set of data from transactions on testnet.
 
-<!-- $$
-\mathbf{t} = \mathbf{M} * \mathbf{w} + \mathbf{r}
-$$ --> 
+All the data can be found can be found in the [flow repository](https://github.com/onflow/flow) next to this FLIP.
 
-<div align="center"><img style="background: white;" src="./20220111-execution-effort/eq/juJCpLYB40.svg"></div>
+#### Sample Transaction
 
-Fitting a linear model means choosing the weights <!-- $w$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/zqZMMjc1Hx.svg"> so that the residuals <!-- $r$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/5tokpUE7hM.svg"> are as small as possible.
-
-The code used for data collection can be found [here](https://github.com/onflow/flow-go/pull/1631).
-
-The Jupyter notebook using [Wolfram Language kernel for Jupyter notebooks](https://github.com/WolframResearch/WolframLanguageForJupyter) that was used for data analysis and the data collected can be found [here](./20220111-execution-effort)
-
-### Generated transactions for data collection
-
-Sample transactions were chosen with the following things in mind:
+The generated transaction data was created by running a lot of sample transactions. Sample transactions were chosen with the following things in mind:
 
 - Each transaction should be distinct (the code path they go through should be different).
 - Transactions should not do a lot of different operations.
@@ -161,7 +155,7 @@ Some setup is done before any transactions are run so that more diverse transact
   }
   ```
 
-All of the ample transactions have the same boilerplate body:
+All of the sample transactions have the same boilerplate body:
 
 ```cadence
 import FungibleToken from 0xFUNGIBLETOKEN
@@ -323,7 +317,7 @@ The number of iterations (`$ITERATIONS`) is randomly chosen from one to _max loo
 
 In order to get more varied data, mixed transactions were also simulated. Mixed transactions are created by taking two different sample transactions and running both in one transaction. Each of the sample transaction bodies are run between 1 and _max loop length_/2 times.
 
-### Data Collection procedure
+#### Sample Transaction Data Collection procedure
 
 The data was collected by simulating block execution. Each block had between 1 and 50 transactions (uniformly distributed).
 
@@ -340,51 +334,52 @@ A new execution state was created for every 100 blocks, clearing all state chang
 
 The data was collected by running a total of 5000 blocks which contained a total of 144 901 transactions.
 
-The collected data is a large matrix that has the following form:
+The collected data has the following form:
 
-<!-- generated with https://jsfiddle.net/kxLuj8c9/ -->
+| Transaction type name     | Multiple columns of features                                                                                                                                                          | transaction execution time ("ms")                                                                                                              |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type name per transaction | Total feature intensity per feature and transaction <!-- $m_i$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/J3058PgFuq.svg"> | execution time <!-- $t$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/cbdkfkWybi.svg"> |
 
-![TEF](./20220111-execution-effort/data-matrix-sketch.png)
+#### Testnet Data
 
-Matrix <!-- $M$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/SmblEwKco6.svg"> represents the weight data, vector <!-- $v$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/LwC51eYP1G.svg"> represents the execution times.
+Testnet data was collected by deploying modified code to one execution node, that logs all the feature intensities per transactions. This was done around March 19th 2022.
+### Feature Placement
 
-### Weights placement
-
-A total of 26 different weights were used.
+A total of 26 different features were used.
 Of those 25 weights were placed in functions in `transactionEnv.go` which implements the interface between Cadence and the flow virtual machine (FVM).
 
 The `function_or_loop_call` weight is an exception as that counts any cadence function (function calls in the cadence script) and any cadence loop. This is also the weight that is already currently in place, as discussed above.
 
 The weights `GetValue` and `SetValue` are also different, as instead of just counting the number of times a transaction calls those functions, they instead count how many bytes were read or written, when they are called.
 
-| Weight name                | Weight trigger                           | intent of that part of the code                                                                             |
-| -------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| AddEncodedAccountKey       | function calls                           | Add a public key to an account                                                                              |
-| AllocateStorageIndex       | function calls                           | Allocates a new storage index (for slab storage)                                                            |
-| ContractFunctionInvoke     | function calls                           | Called when a contract function is invoked by the FVM directly (fee deduction, getting account balance,...) |
-| CreateAccount              | function calls                           | Called to create a new account                                                                              |
-| EmitEvent                  | function calls                           | Called to emit an event                                                                                     |
-| function_or_loop_call      | every cadence function call or loop call | Called every time a cadence function is called a a loop is made in cadence                                  |
-| GetAccountAvailableBalance | function calls                           | Gets account available balance                                                                              |
-| GetAccountBalance          | function calls                           | Gets account balance                                                                                        |
-| GetAccountContractCode     | function calls                           | Gets accounts contract code (by name)                                                                       |
-| GetAccountContractNames    | function calls                           | Gets the names of all contracts deployed on an account                                                      |
-| GetCode                    | function calls                           | Gets accounts contract code (by name); called within GetAccountContractCode                                 |
-| GetProgram                 | function calls                           | Gets an interpreted program (contract)                                                                      |
-| GetStorageCapacity         | function calls                           | Gets the storage capacity of an account                                                                     |
-| GetStorageUsed             | function calls                           | Gets the storage used of an account                                                                         |
-| GetValue                   | the number of bytes read from a register | Get the value of a storage register                                                                         |
-| ProgramChecked             | function calls                           | Cadence callback after a program (transaction/script/contract code) was checked                             |
-| ProgramInterpreted         | function calls                           | Cadence callback after a program (transaction/script/contract code) was interpreted                         |
-| ProgramParsed              | function calls                           | Cadence callback after a program (transaction/script/contract code) was parsed                              |
-| ResolveLocation            | function calls                           | Called to resolve a location (most notably to resolve an import to a specific contract location)            |
-| RevokeEncodedAccountKey    | function calls                           | Revokes an account's key                                                                                    |
-| SetProgram                 | function calls                           | Caches an interpreted program (contract)                                                                    |
-| SetValue                   | the number of bytes saved to a register  | Set a value to a storage register                                                                           |
-| UpdateAccountContractCode  | function calls                           | Updates an account's contract                                                                               |
-| ValueExists                | function calls                           | Checks if a certain register exists                                                                         |
-| ValueDecoded               | function calls                           | Cadence callback after a value was decoded into a cadence type                                              |
-| ValueEncoded               | function calls                           | Cadence callback after a cadence type was encoded into a cadence json                                       |
+| Feature name               | Feature intensity (per feature call)                   | Intent of the code of the feature                                                                           |
+| -------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| AddEncodedAccountKey       | 1                                                      | Add a public key to an account                                                                              |
+| AllocateStorageIndex       | 1                                                      | Allocates a new storage index (for slab storage)                                                            |
+| ContractFunctionInvoke     | 1                                                      | Called when a contract function is invoked by the FVM directly (fee deduction, getting account balance,...) |
+| CreateAccount              | 1                                                      | Called to create a new account                                                                              |
+| EmitEvent                  | 1                                                      | Called to emit an event                                                                                     |
+| function_or_loop_call      | one per cadence invocation, function call or loop call | Called every time a cadence function is called a a loop is made in cadence                                  |
+| GetAccountAvailableBalance | 1                                                      | Gets account available balance                                                                              |
+| GetAccountBalance          | 1                                                      | Gets account balance                                                                                        |
+| GetAccountContractCode     | 1                                                      | Gets accounts contract code (by name)                                                                       |
+| GetAccountContractNames    | 1                                                      | Gets the names of all contracts deployed on an account                                                      |
+| GetCode                    | 1                                                      | Gets accounts contract code (by name); called within GetAccountContractCode                                 |
+| GetProgram                 | 1                                                      | Gets an interpreted program (contract)                                                                      |
+| GetStorageCapacity         | 1                                                      | Gets the storage capacity of an account                                                                     |
+| GetStorageUsed             | 1                                                      | Gets the storage used of an account                                                                         |
+| GetValue                   | Number of bytes read from a register                   | Get the value of a storage register                                                                         |
+| ProgramChecked             | 1                                                      | Cadence callback after a program (transaction/script/contract code) was checked                             |
+| ProgramInterpreted         | 1                                                      | Cadence callback after a program (transaction/script/contract code) was interpreted                         |
+| ProgramParsed              | 1                                                      | Cadence callback after a program (transaction/script/contract code) was parsed                              |
+| ResolveLocation            | 1                                                      | Called to resolve a location (most notably to resolve an import to a specific contract location)            |
+| RevokeEncodedAccountKey    | 1                                                      | Revokes an account's key                                                                                    |
+| SetProgram                 | 1                                                      | Caches an interpreted program (contract)                                                                    |
+| SetValue                   | Number of bytes saved to a register                    | Set a value to a storage register                                                                           |
+| UpdateAccountContractCode  | 1                                                      | Updates an account's contract                                                                               |
+| ValueExists                | 1                                                      | Checks if a certain register exists                                                                         |
+| ValueDecoded               | 1                                                      | Cadence callback after a value was decoded into a cadence type                                              |
+| ValueEncoded               | 1                                                      | Cadence callback after a cadence type was encoded into a cadence json                                       |
 
 ### Data analysis
 
@@ -458,66 +453,96 @@ The graph of the model:
 
 ![GoodFit](./20220111-execution-effort/good-fit.png)
 
-### Execution effort limit
+## Final Execution Effort Feature Weights and Maximum Execution Effort Limit
 
-Since the execution effort is defined to be in a 1 to 1 correlation with the execution time, choosing the execution effort limit means choosing the maximum allowed execution time.
+Changing the maximum execution effort limit (a.k.a. gas limit) for end users which is 9999 would cause a lot of braking changes in SDKs and current user code.
+Instead we keep the maximum execution effort limit as is, and change the feature weights accordingly, so a desired estimated execution time is reached at 9999 execution effort.
 
-Choosing the execution effort limit to be 100 means that if all transactions are at maximum that would currently result in a maximum of 10 transactions per second.
+The feature weights from the previous section represent an estimated execution time on a base execution node. 
 
-### Execution Effort cost
+🚧 The numbers in the following section might change 🚧
 
-Below is a table of different percentiles of transaction execution times from 5. Jan. 2022 to 13. Jan. 2022 (one week).
+The chosen maximum estimate execution time a transaction can take was chosen to be `200 ms`. This was chosen to be high to make the transition to variable execution fees easier, as it is less likely that a transaction that would previously pass would now reach the limit. This limit will be tweaked in the future when more data is available. For reference on average there is currently (March 2022) about 1 transaction per hour on mainnet that is above the 200ms limit mark.
 
-| Percentile | Execution time [ms] |
-| ---------- | ------------------- |
-| 99         | 29.7                |
-| 95         | 15.6                |
-| 90         | 14.4                |
-| 50         | 7.07                |
-| 25         | 5.39                |
+This gives us the following following feature weights that will be set on mainnet:
+
+|                                                                                      | Cadence invocation,<br> function call or loop | GetValue (per byte) | SetValue (per byte) | Create Account |
+| ------------------------------------------------------------------------------------ | --------------------------------------------- | ------------------- | ------------------- | -------------- |
+| Feature weight <br> compared to the total maximum <br>execution effort limit of 9999 | 0.023                                         | 0.0123              | 0.0117              | 43.2994        |
+
+See table in Appendix 2 for a overview of how that affects certain transactions.
+<!-- TODO link to appendix 2 -->
+
+## Execution Effort cost
+
+Execution effort cost was picked to better secure the network against heavy transactions, while making light transactions (FT/NFT transfers) cheaper. The transaction costs of even the most heavy transactions will still be very small. The costs will continue to be tweaked in the future in order to better secure the network.
+
+🚧 The numbers in the following section might change 🚧
+
+This FLIP proposes to change the static inclusion fees from `1e-5` FLOW to `1e-6` FLOW and charging the execution effort cost from `0.0` FLOW per effort to `4.99E-08` FLOW per effort.
+
+This will make the most expensive transaction 50 times more expensive then before, but most transactions will become cheaper, or stay in the same range as before.
+
+See table in Appendix 2 for a overview of how that affects certain transactions.
+<!-- TODO link to appendix 2 -->
+## The future of the model
+
+The model parameters will have to change if the execution code changes. Currently all code changes still happen during sporks. This means that before a spork new data collection and fitting will need to be done, to see if the feature weights need to be adjusted.
+
+The proposed model is also the first iteration on the path to pricing transactions fairly. This model needs to be further improved in the future. The following chapters address possible upgrade paths.
+
+### Known missing feature
+
+More features could be added to the model by exploring the code further and seeing what could have an impact. Most features were selected on the FVM layer, but having features from the cadence layer in the model might capture something that the current features don't.
+
+### Data collection
+
+The majority of transaction measurements collected were simulated and might not represent transaction seen "in the wild". To improve the data set, more data could be collected from testnet and mainnet. To do this each transaction (or a sample of them) on mainnet would need to log feature intensities which is something that will be in place in the future.
+
+### Outlier analysis
+
+The model can be improved by looking at the execution path of outliers, and trying to discern if any features are missing on those execution paths to make the model better.
+
+### Failing transactions
+
+The model did not cover costs of the FVM recovering after a failure. These should be minimal, but the avenue should be explored in the future.
+
+## Implementation
+
+### Code changes
+
+The high level view of the code changes needed is:
+
+- Add metering to a lot of functions in the fvm
+- The metering function takes a feature identifier and a unsigned intensity
+- When metering take note of each intensity. Multiply the intensity by the feature's weight and add it to the total execution effort used. If the total execution effort used is more that the execution effort limit return an error from the meter.
+- At the end of the transaction send the total metered execution effort to the fees calculation, but cap it at the transactions gas limit, so we never charge more than the gas limit.
+- If a certain condition is met (i.e.: debug logging) also log all feature intensities.
+
+The code should allow mimicking the current way of metering execution effort if the feature weights are not set, or are set to certain values. This should be the default
+
+### Release plan
+
+After a spork when this code reaches mainnet the fees and the execution effort metering/limiting will still be unchanged.
+When the decision is made to apply the execution effort weights described in this FLIP, that will be done with a transaction from the service account.
 
 
-The original goal described in the [Variable Transaction fees FLIP](20211007-transaction-fees.md) was that for 95% of transactions to be cheaper after the transition to variable transaction fees.
+After this first transaction the transaction execution effort limiting will change, and the `FlowFees.FeesDeducted` event will contain the new execution effort, but the execution effort will not yet influence fees (because the execution effort cost will still be set to 0).
+<!-- TODO: put this transaction in flow -core contracts and link it here -->
 
-This means that the 95th percentile execution time times the price of one unit of execution effort should be half of the current fixed fees (the other half will be inclusion effort):
+Another [transaction](https://github.com/onflow/flow-core-contracts/blob/master/transactions/FlowServiceAccount/set_tx_fee_parameters.cdc) is then needed to update the inclusion effort cost and the execution effort cost.
 
-```
-15.6 * price of one unit of execution effort = 0.000005
-```
+## Performance Implications
 
-This means that price of one unit of execution effort is <!-- $32 *10^{-8} \left[\frac{\textbf{FLOW}}{\textbf{unit of effort}}\right]$ --> <img style="transform: translateY(0.1em); background: white;" src="./20220111-execution-effort/eq/do5GxhVTjV.svg">
+The impact to performance is low. This only adds some addition and multiplication when certain functions are called.
 
-### The future of the model
+## User Impact
 
-This model needs to be further improved in the future. The following chapters address possible upgrade paths.
+There are two impacts to the users:
 
-#### Known missing weights
+1. The transaction fees will change, and will no longer be static. Light transactions will be up to 10 times cheaper and heavy transactions will be up to 50 times more expensive. The most expensive transaction will be `0.0005 FLOW`.
 
-Appendix 2 illustrates how the linear model works for the different transaction types. While it works great for many of them it performs poorly for certain transaction types.
-
-Adding different weighs to the model (from those that were in the data set) did not noticeably improve the fit for these transaction types. This means there there is one or multiple different functions/operations that need to have a weight added to them. More research is needed to find these functions, and improve the model.
-
-#### Data collection
-
-Transactions for data collections were designed and might not represent transaction seen "in the wild". To improve the data set the designed set of transactions could be combined with transactions seen on mainnet. To do this each transaction (or a sample of them) on mainnet would need to log how many times each weight is hit.
-
-#### Outlier analysis
-
-The model can be improved by looking at the execution path of outliers, and trying to discern if any weights are missing on those execution paths.
-
-#### Failing transactions
-
-The model did not cover costs of the FVM recovering after a failure. The avenue should be explored in order to price failing transactions fairly.
-
-### Performance Implications
-
-The impact to performance is low, as this would only add some addition and multiplication when certain functions were called.
-
-### User Impact
-
-The execution effort calculation could first be implemented without connecting it to fees. This would allow users to see how much execution effort their transactions are using and estimate how much their transactions would cost.
-
-The execution effort could then be included in the calculation of the transaction fees slightly later.
+2. The transaction execution limiting will change. Which might cause some transactions that were above the limit to now succeed. It will also cause some transactions that were previously below the limit to now fail. Limits were picked so that this will happen rarely.
 
 ## Questions and Discussion Topics
 
@@ -573,23 +598,15 @@ def update_max_loop_length(loop_length, time_taken_to_execute):
     l_max = t_max/k
 ```
 
-### Appendix 2: Jupyter + Mathematica
+### Appendix 2: Table of changes for common transactions
 
-[WolframScript](https://www.wolfram.com/wolframscript/) was used for data analysis. [Jupyter](https://jupyter.org/) with [WolframLanguageForJupyter](https://github.com/WolframResearch/WolframLanguageForJupyter) offers a convenient way to do this. The result was a Jupyter notebook that can be found [here](./20220111-execution-effort).
-
-The instructions on how to get these three things working together nicely are in the [WolframLanguageForJupyter](https://github.com/WolframResearch/WolframLanguageForJupyter) repository.
-
-### Appendix 3: Breakdown of the model according to different transaction types
-
-This chapter illustrates how the final model fits different transaction types.
-
-<details>
-<summary>Collapsed for readability.</summary>
-<p>
-
-![details1](./20220111-execution-effort/detail-1.png)
-
-![details2](./20220111-execution-effort/detail-16.png)
-
-</p>
-</details>
+			
+|                                    | Execution Effort Used Out of<br>  Maximum 9999 Available | Cost [1E-8 FLOW] | Cost compared to before |
+| :--------------------------------- | -------------------------------------------------------: | ---------------: | :---------------------: |
+| Empty Transaction                  |                                                        0 |              100 |           10%           |
+| Create 1 Account                   |                                                       43 |              315 |           31%           |
+| Create 10 accounts                 |                                                      433 |            2,261 |          226%           |
+| Add key to an account              |                                                        0 |              100 |           10%           |
+| FT transfer                        |                                                       17 |              185 |           18%           |
+| Deploying a contract that is ~50kb |                                                      574 |            2,965 |          296%           |
+| Mint a small NFT <br>(heavily depends on the NFT size)                          |                                                       18 |              190 |           19%           |
