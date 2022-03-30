@@ -14,13 +14,43 @@ In the last step, you started the project on the testnet. For local development,
 
 Let's start the project in the emulator by running the command below in the root project folder.
 
-> **Note**: If you still have the previous script running, you should terminate it before running the next command (with `Ctrl + C`).
-
 ```sh
 npm run dev:emulator
 ```
 
-You should see similar logs as in the last step. You may notice that you were not prompted for an account. This is because the local setup includes a [developer wallet](https://github.com/onflow/fcl-dev-wallet) that simulated user accounts.
+You should see similar logs as in the last step:
+
+```sh
+✔ Emulator started
+ℹ Flow Emulator is running at: http://localhost:8080
+ℹ View log output: npx pm2 logs emulator
+
+✔ Developer Wallet started
+ℹ FCL Dev Wallet running at: http://localhost:8701
+ℹ View log output: npx pm2 logs dev-wallet
+
+✔ Contracts deployed
+ℹ Contracts were deployed to: 0xf8d6e0586b0a20c7 (emulator)
+
+✔ Admin account initialized
+ℹ ./cadence/transactions/nftStorefront/setup_account.cdc was executed successfully.
+ℹ ./cadence/transactions/kittyItems/setup_account.cdc was executed successfully.
+
+✔ API server started
+ℹ Kitty Items API is running at: http://localhost:3000
+ℹ View log output: npx pm2 logs api
+
+✔ Storefront web app started
+ℹ Kitty Items Web App is running at: http://localhost:3001
+ℹ View log output: npx pm2 logs web
+
+KITTY ITEMS HAS STARTED
+
+
+Visit: http://localhost:3001
+```
+
+You may notice that you were not prompted for an account. This is because the local setup includes a [developer wallet](https://github.com/onflow/fcl-dev-wallet) that simulated user accounts.
 
 ## Add new NFT collection
 
@@ -65,7 +95,7 @@ export const ITEM_KIND_MAP = {
 };
 ```
 
-To simplify this tutorial, we already added the images for the NFT collection to the project folder. If you were to add new NFTs on your own, you would also need to add images to the `web/public/images/kitty-items` folder.
+> **Note**: To simplify this tutorial, we already added the images for the NFT collection to the project folder. If you were to add new NFTs on your own, you would also need to add images to the `web/public/images/kitty-items` folder.
 
 ### Update the Cadence smart contract
 
@@ -129,53 +159,32 @@ self.images = {
 
 You will notice that the new NFT collection will be available in four rarities, represented by the background color (blue, green, purple, and gold). Each of the hashes represent an IPFS resource that will be pulled up when the NFT will be displayed.
 
-If you were to add your own NFT, you would have to upload images to IPFS and store the new hashes instead.
+> **Note**: If you were to add your own NFT, you would have to upload images to IPFS and store the new hashes instead.
 
-### Update Flow JS Tests
+## Redeploy Cadence contract
 
-It is generally recommended to write tests for Cadence contracts to avoid unintended behavior. Flow provides a [JS testing library](/flow-js-testing/) to make testing easier. The Kitty Items project comes pre-configured with this library and a set of tests.
-
-You need to ensure the existing tests account for the new NFT collection. To do that, open the `/cadence/tests/src/kitty-items.js` file and locate the `types` constant. Once located, add a new kind (`shades`) to the bottom of the list:
-
-```js:title=/cadence/tests/src/kitty-items.js
-export const types = {
-  fishbowl: 1,
-  fishhat: 2,
-  milkshake: 3,
-  tuktuk: 4,
-  skateboard: 5,
-  shades: 6,
-};
-```
-
-## Test Cadence changes
-
-Now that you completed all smart contract changes required to add a new NFT collection, you will run the tests to verify that everything works as intended.
-
-In your terminal, navigate to the following folder: `cadence/tests`. You need to install the testing tooling to run the tests:
+TODO
 
 ```sh
-cd cadence/tests
-
-npm install
+# run in root folder of the project
+flow project deploy --update
 ```
 
-Once the installation is completed, you can run the tests in your terminal:
+Response:
 
 ```sh
-npm run test
-```
+Deploying 4 contracts for accounts: emulator-account
 
-The test results should return the following:
+NonFungibleToken -> 0xf8d6e0586b0a20c7 (33460a91c9d83ea518fb776d5c54bb440873c6beb91b5ea5c1b2f7f111fe6218)
 
-```sh
-Kitty Items
-    ✔ should deploy KittyItems contract (1212 ms)
-    ✔ supply should be 0 after contract is deployed (1113 ms)
-    ✔ should be able to mint a kitty item (1126 ms)
-    ✔ should be able to create a new empty NFT Collection (1127 ms)
-    ✔ should not be able to withdraw an NFT that doesnt exist in a collection (1123 ms)
-    ✔ should be able to withdraw an NFT and deposit to another accounts collection (1104 ms)
+NFTStorefront -> 0xf8d6e0586b0a20c7 (c0e64e01f4b64e51f6ef51307c415e3cd6b2c8cf35cf206bab8fc4d6aed3662b)
+
+MetadataViews -> 0xf8d6e0586b0a20c7 (e6c2cd6ad883a9209c4e3ebfc4e4b530818213dda7ac39c6f59087360decef11)
+
+KittyItems -> 0xf8d6e0586b0a20c7 (3610348aea10ca636649665bf29f3e7f0b31436bbbed8460491f9ff86e75dcdb)
+
+
+✨ All contracts deployed successfully
 ```
 
 **Congratulations! You have completed all changes and your project now includes a new NFT collection for sunglasses.**
@@ -191,3 +200,7 @@ Next, click on the top banner to "Mint some Kitty Items". You will be prompted t
 ![admin-ui](admin-ui.png)
 
 Now, hit the "Mint Item" button and see a new NFT being generated. The generation of new NFTs is randomized, so you will have to **mint a few new NFTs** until you will see an NFT from your new sunglasses collection.
+
+During the minting process, you should see the shades flash in the preview pane on the left side of the screen.
+
+> **Note**: It is best to hit the back button in your browser to get back to the "Mint a New Item" screen. You can jump to this screen by opening this URL: [`http://localhost:3001/admin/mint/`](http://localhost:3001/admin/mint/).

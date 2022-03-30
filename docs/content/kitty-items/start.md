@@ -8,7 +8,7 @@ The steps below will help you deploy Cadence smart contracts to the testnet - a 
 
 ## Start on testnet
 
-To start the project, with all of its services, run the following:
+To start the project, with all of its services, run the following in the root folder of the project:
 
 ```sh
 npm run dev:testnet

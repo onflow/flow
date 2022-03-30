@@ -58,9 +58,9 @@ npm install
 
 Once the installation is completed, you are ready to start the project.
 
-### M1 compatibility
+### Apple M1 compatibility
 
-In case you are on an [Apple M1 machine](https://en.wikipedia.org/wiki/Apple_M1), you should additionally install another package run the NextJS web app on your system. If you don't know if you are running on M1, skip this step.
+In case you are on an [Apple M1 machine](https://en.wikipedia.org/wiki/Apple_M1), you have to install another package run the NextJS web application on your system. If you don't know if you are running on Apple M1, skip this step.
 
 ```sh
 # move to the web folder
@@ -68,6 +68,9 @@ cd web/
 
 # install package
 npm i @next/swc-darwin-arm64
+
+# move back to the project root
+cd ..
 ```
 
-> **Note**: This installation will fail if you are not on an M1 machine
+> **Note**: This installation will fail if you are not on an Apple M1 machine
