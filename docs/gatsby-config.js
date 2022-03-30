@@ -688,7 +688,7 @@ const sections = [
         "kitty-items/install",
         "kitty-items/start",
         "kitty-items/modify",
-        "kitty-items/upgrade",
+        "kitty-items/update",
         "kitty-items/next-steps",
       ],
       "NFT Matketplace Guide": [

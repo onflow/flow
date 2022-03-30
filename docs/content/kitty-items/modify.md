@@ -50,7 +50,7 @@ KITTY ITEMS HAS STARTED
 Visit: http://localhost:3001
 ```
 
-You may notice that you were not prompted for an account. This is because the local setup includes a [developer wallet](https://github.com/onflow/fcl-dev-wallet) that simulated user accounts.
+You may notice that you were not prompted for an account. This is because the local setup includes a [developer wallet](https://github.com/onflow/fcl-dev-wallet) that simulates user accounts.
 
 ## Add new NFT collection
 
@@ -161,35 +161,30 @@ You will notice that the new NFT collection will be available in four rarities, 
 
 > **Note**: If you were to add your own NFT, you would have to upload images to IPFS and store the new hashes instead.
 
-## Redeploy Cadence contract
+## Update contract on the emulator
 
-TODO
+Because you changed the smart contract for Kitty Items, you have to redeploy it to the emulator. Run the following command in your terminal, inside the root folder:
 
 ```sh
-# run in root folder of the project
-flow project deploy --update
+npm run update:emulator
 ```
 
-Response:
+The script will update all contracts included in the project. The last one is the one you changed.
 
 ```sh
 Deploying 4 contracts for accounts: emulator-account
 
-NonFungibleToken -> 0xf8d6e0586b0a20c7 (33460a91c9d83ea518fb776d5c54bb440873c6beb91b5ea5c1b2f7f111fe6218)
-
-NFTStorefront -> 0xf8d6e0586b0a20c7 (c0e64e01f4b64e51f6ef51307c415e3cd6b2c8cf35cf206bab8fc4d6aed3662b)
-
-MetadataViews -> 0xf8d6e0586b0a20c7 (e6c2cd6ad883a9209c4e3ebfc4e4b530818213dda7ac39c6f59087360decef11)
-
-KittyItems -> 0xf8d6e0586b0a20c7 (3610348aea10ca636649665bf29f3e7f0b31436bbbed8460491f9ff86e75dcdb)
-
+NonFungibleToken -> 0xf8d6e0586b0a20c7 (3346...6218)
+NFTStorefront -> 0xf8d6e0586b0a20c7 (c0e6...662b)
+MetadataViews -> 0xf8d6e0586b0a20c7 (e6c2...ef11)
+KittyItems -> 0xf8d6e0586b0a20c7 (3612...dcdb)
 
 ✨ All contracts deployed successfully
 ```
 
 **Congratulations! You have completed all changes and your project now includes a new NFT collection for sunglasses.**
 
-## Mint a new sunglasses NFT
+## Mint new sunglasses NFT
 
 To mint one of the new NFTs in your local environment, you will go to the Kitty Items admin dashboard.
 
@@ -201,6 +196,6 @@ Next, click on the top banner to "Mint some Kitty Items". You will be prompted t
 
 Now, hit the "Mint Item" button and see a new NFT being generated. The generation of new NFTs is randomized, so you will have to **mint a few new NFTs** until you will see an NFT from your new sunglasses collection.
 
-During the minting process, you should see the shades flash in the preview pane on the left side of the screen.
+During the minting process, you should see the sunglasses flash in the preview pane on the left side of the screen.
 
-> **Note**: It is best to hit the back button in your browser to get back to the "Mint a New Item" screen. You can jump to this screen by opening this URL: [`http://localhost:3001/admin/mint/`](http://localhost:3001/admin/mint/).
+> **Note**: It is best to hit the back button in your browser to get back to the "Mint a New Item" screen. You can jump to this screen by opening the [admin dashboard](http://localhost:3001/admin/mint/) directly.

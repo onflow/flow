@@ -26,7 +26,7 @@ https://testnet-faucet.onflow.org/?key=096..a85&source=ki
 ⚠️  Don't exit this terminal.
 ```
 
-Open up the link to the testnet faucet page, complete the Captcha challenge, and hit `Create Account`.
+Open up the link to the testnet faucet page, complete the CAPTCHA challenge, and hit `Create Account`.
 
 > **Note**: This process will take a few seconds. You should see a loading indicator confirming your account is being generated.
 
@@ -59,9 +59,9 @@ Feel free to close the faucet page. Hit enter and the script will complete setti
 
 As indicated in the logs, your account details are stored in a new file: `.env.testnet.local`. This file will be used whenever you start the service, so you don't have to handle account creation again.
 
-> **Note**: Never commit this file to Git - it contains your private key!
+> **Note**: Never commit this file to your version control system - it contains your private key!
 
-Once all services are started up, you will see the following:
+Once all services are up and running, you will see the following:
 
 ```sh
 KITTY ITEMS HAS STARTED
@@ -88,3 +88,5 @@ Open up the web application by visiting [`http://localhost:3001`](http://localho
 ![welcome-ui](welcome-ui.png)
 
 As a first step, you can try minting your first NFT, aka a Kitty Item. Follow the instructions on the page.
+
+> **Note**: Not able to mint a Kitty Item? Take a look at the [troubleshooting FAQs](https://github.com/onflow/kitty-items#troubleshooting).
