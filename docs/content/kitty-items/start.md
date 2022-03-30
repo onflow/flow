@@ -14,13 +14,7 @@ To start the project, with all of its services, run the following:
 npm run dev:testnet
 ```
 
-You will be asked if you have an existing testnet account, enter `N` to generate a new one:
-
-```sh
-? Have you previously created a testnet account using npm run dev:testnet ? (y/N) N
-```
-
-You will see newly generated keys and instructions to create and fund your new account:
+The script will generate new keys and provide instructions to create and fund your new account:
 
 ```
 Next steps:
@@ -45,7 +39,14 @@ Once completed, you will see your new account address (similar to `0x2f915dafac3
 Feel free to close the faucet page. Hit enter and the script will complete setting up the project for you. You will see several logs:
 
 ```
-ℹ Testnet envronment config was written to: .env.testnet.local
+ℹ Testnet envronment config was written to: .env.testnet
+
+✔ Contracts deployed
+ℹ Contracts were deployed to: 0x9552bb890c4fc6ab (testnet)
+
+✔ Admin account initialized
+ℹ ./cadence/transactions/nftStorefront/setup_account.cdc was executed successfully.
+ℹ ./cadence/transactions/kittyItems/setup_account.cdc was executed successfully.
 
 ✔ API server started
 ℹ Kitty Items API is running at: http://localhost:3000
@@ -54,13 +55,6 @@ Feel free to close the faucet page. Hit enter and the script will complete setti
 ✔ Storefront web app started
 ℹ Kitty Items Web App is running at: http://localhost:3001
 ℹ View log output: npx pm2 logs web
-
-✔ Contracts deployed
-ℹ Contracts were deployed to: 0xff61db3c65da2fd0 (testnet)
-
-✔ Admin account initialized
-ℹ ./cadence/transactions/nftStorefront/setup_account.cdc was executed successfully.
-ℹ ./cadence/transactions/kittyItems/setup_account.cdc was executed successfully.
 ```
 
 As indicated in the logs, your account details are stored in a new file: `.env.testnet.local`. This file will be used whenever you start the service, so you don't have to handle account creation again.

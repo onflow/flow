@@ -8,7 +8,7 @@ By now, you have a fully-functioning NFT marketplace with your own, new exclusiv
 
 ## Learn more about NFT marketplaces
 
-Dive deeper by reading the **[NFT Marketplace Guide](nft-marketplace/)**. It covers topics like the building blocks of marketplaces, how to handle accounts, how to mint and sell NFTs, and best practices for production-readiness.
+Dive deeper by reading the **[NFT Marketplace Guide](/nft-marketplace/)**. It covers topics like the building blocks of marketplaces, how to handle accounts, how to mint and sell NFTs, and best practices for production-readiness.
 
 ## Improve your Kitty Items project
 

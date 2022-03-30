@@ -27,7 +27,7 @@ The project consists of 3 key components:
 
 ### 1. Web application
 
-A true dapp, client-only web app. This is a complete web application built with NextJS and React that demonstrates how to build a website that connects directly to the Flow blockchain using [FCL](/fcl/). FCL handles authentication and authorization of [Flow accounts](/concepts/accounts-and-keys/), [signing transactions](/concepts/transaction-signing/), and querying data using using Cadence scripts.
+A true client-only web app. This is a complete web application built with NextJS and React that demonstrates how to build a website that connects directly to the Flow blockchain using [FCL](/fcl/). FCL handles authentication and authorization of [Flow accounts](/concepts/accounts-and-keys/), [signing transactions](/concepts/transaction-signing/), and querying data using using Cadence scripts.
 
 ### 2. Backend API
 
