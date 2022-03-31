@@ -123,6 +123,9 @@ Frontend applications could fetch the configuration as a resource from the webse
 
 Backend applications should import the configuration and replace the imports based on the environment in which the backend application is being run.
 
+**Cadence**
+There is no change needed in the Cadence implementation as it already supports string locations (i.e. the syntax import "contract").
+
 ### Future-Proofing
 
 There is a good chance in the future there will be a decentralized index or name resolution service that would allow registering a name which would then be referenced in the contracts and the single source of truth will be that service. I believe the proposed syntax will work well with such an improvement. There is also a big chance we will be implementing a package manager for contracts and the proposed solution should work nicely with such a solution.
