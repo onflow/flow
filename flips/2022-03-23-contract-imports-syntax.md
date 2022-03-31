@@ -69,7 +69,7 @@ Source code is loaded and parsed with the Cadence library, the import statements
 
 **Imports referencing a placeholder**
 
-- Not a valid cadence syntax
+- Not a valid Cadence syntax
 - Impossible to know what contract is `0xFoo` really referencing by reading the contract code, the resolution of contract location is hidden in the complexity of the code
 
 ### The Current State
