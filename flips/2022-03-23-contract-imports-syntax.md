@@ -29,9 +29,6 @@ There are currently two import replacement mechanisms used in cadence contracts:
 
 `import <declarations to import> from 0x<placeholder>`
 
-Example:
-`import Bar from 0xBar`
-
 **Mechanics**
 
 Source code is loaded and searched for `0x<placeholder>` string and then replaced with configured value. Configuration is not specified but it's assumed to be handled by the software loading the contract.
@@ -47,9 +44,6 @@ Source code is loaded and searched for `0x<placeholder>` string and then replace
 **Import syntax**
 
 `import <declarations to import> from <relative path>` 
-
-Example:
-`import Bar from ./Bar.cdc`
 
 **Mechanics**
 
