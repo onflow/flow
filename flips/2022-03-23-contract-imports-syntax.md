@@ -21,7 +21,7 @@ switching betwen those environments hard.
 
 ### Declaring an Import
 
-There are currently two import replacement mechanisms used in cadence contracts:
+There are currently two import replacement mechanisms used in Cadence contracts:
 
 #### **Imports referencing a placeholder**
 
