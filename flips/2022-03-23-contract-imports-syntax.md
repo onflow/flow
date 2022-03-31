@@ -2,7 +2,7 @@
 
 | Status        | Proposed       |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | |
+| **FLIP #**    | 892 |
 | **Author(s)** | Gregor Gololicic @sideninja gregor.gololicic@dapperlabs.com |
 | **Sponsor**   | Gregor Gololicic @sideninja gregor.gololicic@dapperlabs.com |
 | **Updated**   | 2022-03-23                                           |
