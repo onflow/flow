@@ -10,7 +10,7 @@
 ## Objective
 Uniforming the import syntaxes that are used in Cadence contracts. Currently there are few established patterns in the community for how to 
 write imports that would then be replaced before deploying the code to the network. The replacement mechanism is needed because depending 
-on the network you develop on the addresses will change and in some cases it might even reference a local file.
+on the network you develop on, the addresses will change, and in some cases it might even reference a local file.
 
 ## Motivation
 Currently there is no single standard for how to solve this problem and hence few have been established which makes it super hard 
