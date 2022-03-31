@@ -179,7 +179,7 @@ paths:
                   description: Base64 encoded content of the Cadence script.
                 arguments:
                   type: array
-                  description: An array containing arguments each encoded as Base64 passed in the [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
+                  description: A list of arguments each encoded as Base64 passed in the [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
                   items:
                     type: string
                     format: base64
@@ -199,10 +199,12 @@ paths:
                     $ref: '#/components/schemas/Address'
                 payload_signatures:
                   type: array
+                  description: A list of Base64 encoded signatures.
                   items:
                     $ref: '#/components/schemas/TransactionSignature'
                 envelope_signatures:
                   type: array
+                  description: A list of Base64 encoded signatures.
                   items:
                     $ref: '#/components/schemas/TransactionSignature'
       responses:
@@ -373,7 +375,7 @@ paths:
                   description: Base64 encoded content of the Cadence script.
                 arguments:
                   type: array
-                  description: An array containing arguments each encoded as Base64 passed in the [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
+                  description: An list of arguments each encoded as Base64 passed in the [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
                   items:
                     type: string
                     format: byte
@@ -656,6 +658,7 @@ components:
           type: string
           format: uint64
     TransactionSignature:
+      description: Base64 encoded signature.
       type: object
       required:
         - address
