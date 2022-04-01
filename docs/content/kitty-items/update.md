@@ -12,6 +12,8 @@ Now that you implemented and tested your changes locally on the emulator, it is 
 
 Run the project on the testnet again. The script will use the account you initially created:
 
+> **Important**: You do not need to stop the previous process. By running the next command, existing services will be configured to communicate with the testnet instead of the emulator.
+
 ```sh
 npm run dev:testnet
 ```
@@ -19,7 +21,7 @@ npm run dev:testnet
 You will be asked if you want to use the existing account credentials. Enter `Y` to continue:
 
 ```sh
-? Use existing tesnet credentials in env.testnet ? (Y/n) Y
+? Use existing testnet credentials in env.testnet ? (Y/n) Y
 ```
 
 Once all services are up and running, you will see the same logs you saw in the [second step](/kitty-items/start/):
@@ -54,6 +56,8 @@ Keep this page open - we will get back to it once we are done!
 
 Next, redeploy the contracts to the testnet by running the following command in your terminal, inside the root folder of your project:
 
+> **Note**: You will notice that the previous script execution finished once all services successfully started. You do not need to stop the previous process. You can run the next command in the same terminal wihtout impact on the services running in the background.
+
 ```sh
 npm run update:testnet
 ```
@@ -78,7 +82,7 @@ Congratulation on completing this tutorial. You should now understand how to ..
 
 - deploy and update smart contracts
 - mint and transfer NFTs
-- add a new kind of NFTs to the marketplace
+- add a new kind of NFT to the marketplace
 - interact with the Flow blockchain from within a web application
 
 ## Optional: Mint new sunglasses NFT on testnet

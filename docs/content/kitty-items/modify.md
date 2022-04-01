@@ -14,6 +14,8 @@ In the last step, you started the project on the testnet. For local development,
 
 Let's start the project in the emulator by running the command below in the root project folder.
 
+> **Important**: You will notice that the previous script execution finished once all services successfully started. You **do not need to stop the previous process**. By running the next command, existing services will be configured to communicate with the emulator instead of the testnet.
+
 ```sh
 npm run dev:emulator
 ```
@@ -165,6 +167,8 @@ You will notice that the new NFT collection will be available in four rarities, 
 
 Because you changed the smart contract for Kitty Items, you have to redeploy it to the emulator. Run the following command in your terminal, inside the root folder:
 
+> **Note**: You will notice that the previous script execution finished once all services successfully started. You do not need to stop the previous process. You can run the next command in the same terminal wihtout impact on the services running in the background.
+
 ```sh
 npm run update:emulator
 ```
@@ -186,11 +190,9 @@ KittyItems -> 0xf8d6e0586b0a20c7 (3612...dcdb)
 
 ## Mint new sunglasses NFT
 
-To mint one of the new NFTs in your local environment, you will go to the Kitty Items admin dashboard.
+To mint one of the new NFTs in your local environment, you have to repeat the minting steps from the [last page](/kitty-items/start/#open-kitty-items).
 
-First, open the Kitty Items web application: [`http://localhost:3001/`](http://localhost:3001/)
-
-Next, click on the top banner to "Mint some Kitty Items". You will be prompted to enter a password. Enter `KittyItems` and hit "Log In". You should see the [admin dashboard](http://localhost:3001/admin/mint/):
+First, open the Kitty Items [admin dashboard](http://localhost:3001/admin/mint/). Keep in mind that the password is `KittyItems`.
 
 ![admin-ui](admin-ui.png)
 

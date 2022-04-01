@@ -24,7 +24,7 @@ v16.x.x
 
 ### Flow CLI
 
-Ensure you installed the [Flow CLI](https://docs.onflow.org/flow-cli/install/). Version **0.32.3+** is required.
+Ensure you have the [Flow CLI](https://docs.onflow.org/flow-cli/install/). Version **0.32.3+** is required.
 
 ```
 > flow version
@@ -60,7 +60,23 @@ Once the installation is completed, you are ready to start the project.
 
 ### Apple M1 compatibility
 
-In case you are on an [Apple M1 machine](https://en.wikipedia.org/wiki/Apple_M1), you have to install another package run the web application on your system. If you are not aware of the system you are running, you can skip this step.
+In case you are on an [Apple M1 machine](https://en.wikipedia.org/wiki/Apple_M1), you have to install another package to run the web application on your system.
+
+If you are not aware of the system you are running, run the following command in your terminal:
+
+```sh
+> npx envinfo --system
+
+npx: installed 1 in 1.161s
+
+  System:
+    OS: macOS 12.2.1
+    CPU: (8) x64 Apple M1 Pro
+    Memory: 29.95 MB / 16.00 GB
+    Shell: 5.8 - /bin/zsh
+```
+
+If the CPU mentions ‘M1’, you need to run this step.
 
 ```sh
 # move to the web folder

@@ -87,6 +87,14 @@ Open up the web application by visiting [`http://localhost:3001`](http://localho
 
 ![welcome-ui](welcome-ui.png)
 
-As a first step, you can try minting your first NFT, aka a Kitty Item. Follow the instructions on the page.
+As a first step, you can try minting your first NFT, aka a Kitty Item. Click on the "Mint your first Kitty Item" button. You will be prompted to enter a password:
+
+![admin-login](admin-login.png)
+
+Enter `KittyItems` and hit "Log In". You should see the [admin dashboard](http://localhost:3001/admin/mint/):
+
+![admin-ui](admin-ui.png)
+
+Now, hit the "Mint Item" button and see a new NFT being generated.
 
 > **Note**: Not able to mint a Kitty Item? Take a look at the [troubleshooting FAQs](https://github.com/onflow/kitty-items#troubleshooting).
