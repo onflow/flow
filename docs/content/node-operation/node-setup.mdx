@@ -102,7 +102,7 @@ As a rough benchmark for planning storage capacity, each Flow block will grow th
 Flow stores dynamically generated confidential data in a separate database. We strongly recommend enabling encryption
 for this database - see [this guide](/node-operation/db-encryption-existing-operator/) for instructions.
 
-Confidential information used by Flow is stored in the `private-root-information` subtree of the `bootstrap` folder. 
+Confidential information used by Flow is stored in the `private-root-information` subtree of the `bootstrap` folder.
 In particular:
 * the staking private key (`node-info.priv.json`)
 * the networking private key (`node-info.priv.json`)
@@ -133,10 +133,10 @@ Replace `$ROLE` with the node type you are planning to run. Valid options are:
 
 ## Prepare Your Node to Start
 
-Your nodes will need to boot at startup, and restart if they crash. 
+Your nodes will need to boot at startup, and restart if they crash.
 
-If you are running `systemd` you can use the service files provided by `flow-go`. 
-Find them in the [Flow Go](https://github.com/onflow/flow-go/tree/master/deploy). 
+If you are running `systemd` you can use the service files provided by `flow-go`.
+Find them in the [Flow Go](https://github.com/onflow/flow-go/tree/master/deploy).
 
 If you are using some other system besides Systemd, you need to ensure that the Flow container is started,
 the appropriate key directories are mounted into the container, and that the container will
@@ -186,7 +186,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/access:v0.24.4 \
+	gcr.io/flow-container-registry/access:v0.25.5 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -207,7 +207,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/collection:v0.24.4 \
+	gcr.io/flow-container-registry/collection:v0.25.5 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -225,7 +225,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/consensus:v0.24.4 \
+	gcr.io/flow-container-registry/consensus:v0.25.5 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -242,7 +242,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/execution:v0.24.4 \
+	gcr.io/flow-container-registry/execution:v0.25.5 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -261,7 +261,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/verification:v0.24.4 \
+	gcr.io/flow-container-registry/verification:v0.25.5 \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -280,7 +280,7 @@ Before starting your node, ensure it is [registered](/node-operation/node-bootst
 
 </Callout>
 
-Ensure you start your node at the appropriate time. 
+Ensure you start your node at the appropriate time.
 See [Spork Process](/node-operation/spork) for when to start up a node following a spork.
 See [Node Bootstrap](/node-operation/node-bootstrap#timing) for when to start up a newly registered node.
 
