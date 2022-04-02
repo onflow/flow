@@ -76,7 +76,7 @@ npx: installed 1 in 1.161s
     Shell: 5.8 - /bin/zsh
 ```
 
-If the CPU mentions ‘M1’, you need to run this step.
+If the CPU mentions `M1`, you need to run this step.
 
 ```sh
 # move to the web folder

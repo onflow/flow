@@ -61,7 +61,6 @@ To add the new NFT collection, we will have to make changes to several component
 - Backend API: Add the new collection to the list of available collections
 - Web application: Define the new collection name and add it to the map of available collections
 - Cadence: Define the new collection name, add it to the map of available collections, set the content hash for the images ([stored on IPFS](/dapp-development/smart-contracts/#external-storage-networks))
-- Flow JS Tests: Add the new collection to the test suite
 
 To start making your changes, it is recommended to open the project in a code editor like [Visual Studio Code](https://code.visualstudio.com/).
 
@@ -149,7 +148,7 @@ This change will create the link between image hashes and the new NFT collection
 
 ```cadence:title=/cadence/contracts/KittyItems.cdc
 self.images = {
-    [...]
+    [...],
     Kind.shades: {
         Rarity.blue: "bafybeibtxvitlnvksnzwrwmsqdgnoznosknr3fx5jxjazjcerpa2qo4jy4",
         Rarity.green: "bafybeicp5bagsziwkyarey76m5jkr6i3a5yrgr7r435qyuutbtlqxcdbwu",
@@ -159,13 +158,15 @@ self.images = {
 }
 ```
 
+> **Note**: In the code sample above, make sure to add a `,` to the last JSON object before pasting the new object. This is easy to overlook.
+
 You will notice that the new NFT collection will be available in four rarities, represented by the background color (blue, green, purple, and gold). Each of the hashes represent an IPFS resource that will be pulled up when the NFT will be displayed.
 
 > **Note**: If you were to add your own NFT, you would have to upload images to IPFS and store the new hashes instead.
 
 ## Update contract on the emulator
 
-Because you changed the smart contract for Kitty Items, you have to redeploy it to the emulator. Run the following command in your terminal, inside the root folder:
+Because you changed the smart contract for Kitty Items, you have to redeploy it to the emulator. Run the following command in your terminal, inside the root folder.
 
 > **Note**: You will notice that the previous script execution finished once all services successfully started. You do not need to stop the previous process. You can run the next command in the same terminal wihtout impact on the services running in the background.
 
