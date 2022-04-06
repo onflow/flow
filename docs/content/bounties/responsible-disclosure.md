@@ -11,7 +11,7 @@ If you believe you may have found a security vulnerability in one of our product
 ## Guidelines for Responsible Disclosure
 We ask that all researchers adhere to these guidelines.
 
-### Rules fo Engagement
+### Rules of Engagement
 
 - Make every effort to avoid unauthorized access, use, and disclosure of personal information.
 - Avoid actions which could impact user experience, disrupt production systems, change, or destroy data during security testing.
