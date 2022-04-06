@@ -26,7 +26,8 @@ No. The node addresses are baked-in as part of the identity table stored on-chai
 
 ### Can I bootstrap and run a node at any time?
 
-The node has to be included as part of the spork and only then will be part of the Flow protocol. Hence, a node can be bootstrapped only during a spork.
+Flow allows nodes to join/leave the network each time a new epoch begins (roughly once per week). 
+See [Staking & Epochs](/staking/#epochs) for general information and [Node Setup](/node-operation/node-bootstrap/#timing) for a guide to running a new node.
 
 ### Would it hurt the network to have a node that constantly spins up and down?
 
@@ -35,7 +36,7 @@ A way to prevent this is to check your equipment meets Flow's [recommended requi
 
 ### Will Flow have a regular schedule for Sporks?
 
-Yes, but the precise schedule will be somewhat variable and will also include protocol upgrades. (Currently, Flow has a Mainnet Spork and a Testnet Spork roughly every two weeks).
+Yes, see [Upcoming Sporks](/node-operation/upcoming-sporks/) for the latest schedule. Currently, Flow has a Mainnet Spork and a Testnet Spork roughly every two months.
 
 ### How do I update the Node Software?
 
@@ -54,6 +55,7 @@ To verify if a node is online, please [setup metrics](/node-operation/faq/#how-d
 ### Can I migrate a node to a new machine?
 
 Yes, as long as you retain the `boostrap` information which includes the node staking key, networking key, IP address and port from the old node to the new.
+More on this [here](/node-operation/node-migration)
 
 ### Is there a public node?
 
@@ -62,4 +64,4 @@ Yes, an access node is [publicly accesible](/concepts/accessing-testnet) to subm
 
 ### Where can I find how many nodes are currently running Flow?
 
-If you are running a node, then you most definitely have this information on your node in the file `<your bootstrap dir>/public-root-information/node-infos.pub.json`. If you are not running a node, you can just ask us :).
+If you are running a node, then you most definitely have this information on your node in the file `<your bootstrap dir>/public-root-information/node-infos.pub.json`. If you are not running a node, you can find this information by using a Cadence script to query the [Staking Smart Contract](/core-contracts/staking-contract-reference) (or check [Flowscan](https://flowscan.org/staking/overview))

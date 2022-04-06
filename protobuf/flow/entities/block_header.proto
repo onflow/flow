@@ -12,4 +12,11 @@ message BlockHeader {
   bytes parent_id = 2;
   uint64 height = 3;
   google.protobuf.Timestamp timestamp = 4;
+  bytes payload_hash = 5;
+  uint64 view = 6;
+  repeated bytes parent_voter_ids = 7;
+  bytes parent_voter_sig_data = 8;
+  bytes proposer_id = 9;
+  bytes proposer_sig_data = 10;
+  string chain_id = 11;
 }

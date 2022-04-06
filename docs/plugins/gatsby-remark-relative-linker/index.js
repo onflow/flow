@@ -1,5 +1,7 @@
 const visit = require("unist-util-visit");
-module.exports = ({ markdownAST }) => {
+const updateRelativeDepth = require("./functions");
+
+module.exports = ({ markdownAST, markdownNode }) => {
   visit(markdownAST, "link", (node) => {
     if (
       !node.url.startsWith("/") &&
@@ -7,23 +9,21 @@ module.exports = ({ markdownAST }) => {
       !node.url.startsWith("mailto:") &&
       !/^https?:\/\//.test(node.url)
     ) {
-      let foundNoPrefix = node.url.match(/^[\w-_]+/);
-      let foundDepth1 = node.url.match(/^\.\//);
-      let foundDepth2 = node.url.match(/^\.\.\//);
-      let foundDepth3 = node.url.match(/^\.\.\/\.\.\//);
+      const isIndex =
+        markdownNode.fileAbsolutePath.includes("index.md") ||
+        markdownNode.fileAbsolutePath.includes("README.md");
 
-      if (foundDepth1) {
-        node.url = node.url.replace(/^\.\//, "../");
-      } else if (foundDepth2) {
-        node.url = node.url.replace(/^\.\.\//, "../../");
-      } else if (foundDepth3) {
-        node.url = node.url.replace(/^\.\.\/\.\.\//, "../../../");
-      } else if (foundNoPrefix) {
-        // node.url = "../" + node.url;
-      }
+      node.url = updateRelativeDepth(node.url, isIndex);
 
       node.url = node.url.replace(/(?<=[^/])#/, "/#");
       node.url = node.url.replace(".mdx", "").replace(".md", "");
+
+      // Force trailing slashes for links,
+      // excpet in the case where the url ends with a hash link
+      // (Could make this configurable via the plugin interface)
+      if (!node.url.endsWith("/") && !node.url.includes("#")) {
+        node.url = node.url + "/";
+      }
     }
   });
 

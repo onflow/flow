@@ -1,25 +1,26 @@
 ---
 title: Node Bootstrap
 sidebar_title: Node Bootstrapping
-description: Running your own flow Node
+description: How to get started running on node on Flow
 ---
 
-## Step 0 - Cleaning Up your Previous State
+This guide is for getting a new node staked and running on Flow. For sporking documentation for existing node operators, see [Spork Process](/node-operation/spork).
 
-<Callout type="warning">
-You can skip this step if it is your first time running a node on Flow.
-</Callout>
+## Timing
 
-1. Stop your Flow node
-2. Clear the contents of your `data` directory that you have previously created. The default location is `/var/flow/data`. The `data` directory contains the Flow chain state.
+New nodes are able to join the network each time a new epoch begins.
+In order to join the network at epoch N+1, the node must be registered with sufficient stake and
+authorized by the service account prior to the end of epoch N's Staking Auction Phase.
+Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](/staking/epoch-scripts-events/#epochsetup).
 
-<Callout type="warning">
+Nodes registered for epoch N+1 are able to participate in network communication on a limited basis starting in the `Epoch Setup Phase` of epoch N.
 
-If you had a previous node running on **mainnet 14**, you’ll need to turn it
-off just before joining the updated network and re-start your node with the
-updated configuration.
+![Flow Epoch Schedule](https://storage.googleapis.com/flow-resources/documentation-assets/epoch-startup-order.png)
 
-</Callout>
+Once registered and confirmed to join the network at epoch N+1, the node must start up **before** epoch N+1 begins.
+* Verification & Access nodes may start up any time during the `Epoch Setup Phase`.
+* Consensus & Collection nodes must start up within the first **1000 views (~30mins)**
+of the `Epoch Setup Phase` to participate in the [Epoch Preparation Protocol](/staking/epoch-preparation/#phase-1-epoch-setup).
 
 ## Step 1 - Run Genesis Bootstrap
 
@@ -30,7 +31,7 @@ updated configuration.
 ### Download the Bootstrapping Kit
 
 <Callout type="warning">
-If you have downloaded the bootstrapping kit previously, ensure that you do this step again to get the latest copy of the bootstrapping kit since we have made some significant changes to it.
+If you have downloaded the bootstrapping kit previously, ensure you check the hash below still matches. If not, re-download to ensure you are using the most up-to-date version.
 </Callout>
 
 ```shell
@@ -40,30 +41,23 @@ tar -xvf boot-tools.tar
 
 ```shell:title=CheckSHA256
 sha256sum ./boot-tools/bootstrap
-03ef039014a7a598e5083b052bc7fd118ad1f4cbbd7812d3f82cb795f1c43281  ./boot-tools/bootstrap
+a0aae295497e8f3826d7f5b3b2e33857da27a2110d477c2494e0f3ffe81f17d6  ./boot-tools/bootstrap
 
 sha256sum ./boot-tools/transit
-9b75fc00f83126561a191c0c04e892dd7bfe935391ed7c69b3fdbe9b4f216043  ./boot-tools/transit
+2c7ed2621fac85dfa63f8f84f3d0ef0fbe7aac045418eb6197009f1a8e2612b4  ./boot-tools/transit
 ```
-
-### Generating your Node ID
-
-A node ID is a 32 byte string that is unique to every node in Flow. 
-When you register your node to stake with Flow, you will
-generate a unique ID by hashing your staking public key.
 
 ### Generate Your Node Keys
 
-#### Addresses
+#### Network Address
 
 <Callout type="info">
 
-You will need to have a real address, for example, a CNAME pointed at the
-node or just the IP address e.g. example.com:3569 or 189.23.42.12:3569.
+Use a fully qualified domain name for the network address. Please also include the port number in the network address e.g. `example.com:3569`
 
 </Callout>
 
-<Callout type="info">
+<Callout type="warning">
 
 Do not include in `http://` format.
 
@@ -91,21 +85,21 @@ cp -r /path/to/bootstrap /path/to/bootstrap.bak
 #########################################################
 # Generate Keys
 $ mkdir ./bootstrap
-# YOUR_NODE_ADDRESS: FQDN or IP address associated to your instance
+# YOUR_NODE_ADDRESS: FQDN associated to your instance
 # YOUR_NODE_ROLE: The Flow nodes that you wish to run, it should be ONE of the following - [ access, collection, consensus, execution, verification ]
 $ ./boot-tools/bootstrap key --address \"${YOUR_NODE_ADDRESS}:3569\" --role ${YOUR_NODE_ROLE} -o ./bootstrap
 
 ```
 
 ```shell:title=Example
-$./boot-tools/bootstrap key --address "198.123.42.10:3569" --role consensus  -o ./bootstrap
+$./boot-tools/bootstrap key --address "consensus-001.nodes.flow.com:3569" --role consensus  -o ./bootstrap
 <nil> DBG will generate networking key
 <nil> INF generated networking key
 <nil> DBG will generate staking key
 <nil> INF generated staking key
 <nil> DBG will generate db encryption key
 <nil> INF generated db encryption key
-<nil> DBG assembling node information address=198.123.42.10:3569
+<nil> DBG assembling node information address=consensus-001.nodes.flow.com:3569
 <nil> DBG encoded public staking and network keys networkPubKey=7f31ae79017a2a58a5e59af9184f440d08885a16614b2c4e361019fa72a9a1a42bf85b4e3f9674782f12ca06afd9782e9ccf19496baed069139385b82f8f40f6 stakingPubKey=829d086b292d84de8e7938fd2fafa8f51a6e025f429291835c20e59d9e25665febf24fa59de12a4df08be7e82c5413180cc7b1c73e01f26e05344506aaca4fa9cc009dc1c33f8ba3d7c7509e86d3d3e7341b43b9bf80bb9fba56ae0b3135dd72
 <nil> INF wrote file bootstrap/public-root-information/node-id
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-info.priv.json
@@ -113,7 +107,7 @@ $./boot-tools/bootstrap key --address "198.123.42.10:3569" --role consensus  -o 
 <nil> INF wrote file bootstrap/public-root-information/node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
 <nil> DBG will generate machine account key
 <nil> INF generated machine account key
-<nil> DBG assembling machine account information address=198.123.42.10:3569
+<nil> DBG assembling machine account information address=consensus-001.nodes.flow.com:3569
 <nil> INF encoded machine account public key for entry to Flow Port machineAccountPubKey=f847b8406e8969b869014cd1684770a8db02d01621dd1846cdf42fc2bca3444d2d55fe7abf740c548639cc8451bcae0cd6a489e6ff59bb6b38c2cfb83e095e81035e507b02038203e8
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-machine-account-key.priv.json
 
@@ -122,8 +116,8 @@ $tree ./bootstrap/
 ├── private-root-information
 │   └── private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9
 │       ├── node-info.priv.json
-│       └── node-machine-account-key.priv.json
-│       └── secretsdb-key
+│       ├── node-machine-account-key.priv.json
+│       └── secretsdb-key
 └── public-root-information
     ├── node-id
     └── node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
@@ -160,26 +154,6 @@ Copy the machine account public key somewhere safe. You will need it in a later 
 
 </Callout>
 
-### Upload your Public Keys
-
-<Callout type="warning">
-  
-  If you're running multiple nodes, you only need one token - it can be used to
-  generate multiple keys.
-
-  Please use the following pattern when generating your token `mainnet-15-yourname` (you can pick any name, it just helps us keep track of the most recent keys you've sent and would like us to include in the bootstrapping process)
-
-</Callout>
-
-```shell
-$ ./boot-tools/transit push -b ./bootstrap -t ${TOKEN} -r ${YOUR_NODE_ROLE}
-
-Running push
-Generating keypair
-Uploading ...
-Uploaded 400 bytes
-```
-
 ## Step 2 - Stake Your Node
 
 Stake your node via [Flow Port](https://port.onflow.org/)
@@ -190,9 +164,9 @@ The `node details` (`Node ID`, `Network Address`, `Networking Key` and `Staking 
 $cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
 {
   "Role": "consensus",
-  "Address": "198.123.42.10:3569",
+  "Address": "consensus-001.nodes.flow.com:3569",
   "NodeID": "39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a",
-  "Stake": 1000,
+  "Weight": 1000,
   "NetworkPubKey": "d92e3d5880abe233cf9fe9104db34bbb31251468a541454722b3870c04156a1b0504aef443bcaad124b997384b8fe7052847ce1e6189af1392d865e6be69835b",
   "StakingPubKey": "917826e018f056a00b778a58ae83054906957ffd4b6f1b7da083551f7a9f35e02b76ace50424ed7d2c9fc69207a59f0f08a031048f5641db94e77d0648b24d150dedd54bab7cd44b4aa60cfd54be418647b0b3965f8ae54c0bcb48ae9d705162"
 }
@@ -200,6 +174,12 @@ $cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e1299194
 
 If you are running a collection or consensus node, you will need to provide an additional field `Machine Account Public Key`.
 This value is found in the output of the `bootstrap key` command from Step 1.
+
+<Callout type="info">
+
+Please let us know your node id via discord or email.
+
+</Callout>
 
 ### Finalize Machine Account Setup
 
@@ -227,8 +207,8 @@ $tree ./bootstrap/
 │   └── private-node-info_d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160
 │       ├── node-info.priv.json
 │       ├── node-machine-account-info.priv.json
-│       └── node-machine-account-key.priv.json
-│       └── secretsdb-key
+│       ├── node-machine-account-key.priv.json
+│       └── secretsdb-key
 └── public-root-information
     ├── node-id
     └── node-info.pub.d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160.json
@@ -252,272 +232,81 @@ $ ./boot-tools/bootstrap check-machine-account --access-address access.mainnet.n
 
 This command will detect and provide information about common misconfigurations, or confirm that the machine account is configured correctly.
 
-## Step 3 - Getting Ready to Start your Flow Node
+### Push transit keys (consensus node only)
 
-<Callout type="danger">
+If you are running a consensus node, run the following command to push the transit keys. Use the token `mainnet-x-organization` e.g. `mainnet-17-companyname`.
 
-Before proceeding to Step 3, ensure that Step 1 was completed successfully with the bootstrap directory handy (default: `/var/flow/bootstrap`)
+```shell:title=transit
+$ ./boot-tools/transit push-transit-key -b ./bootstrap -t mainnet-x-organization
+<nil> INF generating transit keys
+<nil> INF generating key pair
+<nil> INF attempting to push transit public key to the transit servers
+<nil> INF successfully pushed transit public key to the transit servers
+```
 
-</Callout>
+## Step 3 - Start Your Flow Node
 
-1. Expose TCP port **3569** on your firewall for both ingress and egress traffic
+Ensure you have configured your node using the [Node Setup guide](/node-operation/node-setup).
 
-If you are running Flow Access node, Collection node or an Execution node you will also need to expose TCP port **9000**.
+### Confirming authorization
 
-Optionally, for any node type, if you would like to expose the node metrics you can open port 8000.
+You can confirm your node's successful registration and authorization by executing a Cadence script to query the [Staking Contract](/core-contracts/staking-contract-reference#contract).
+At the end of the `Staking Auction Phase`, the members of the Proposed Identity Table are confirmed as authorized participants in the next epoch.
+Therefore, if your node ID appears in the Proposed Identity Table during the `Staking Auction Phase`, your node will be a participant in the next epoch.
 
-2. Create the `data` directory if you have not previously created it and/or removed a previous version of it (default: `/var/flow/data`)
+You can read the current Proposed Identity Table using the [getProposedTable script](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_proposed_table.cdc).
+
+You can read the current epoch phase using the [getEpochPhase script](https://github.com/onflow/flow-core-contracts/blob/master/transactions/epoch/scripts/get_epoch_phase.cdc). (A return value of `0` indicates the `Staking Auction Phase`.)
+
+### Trusted Root Snapshot
+
+Once your node has been registered and authorized by the service account, it will be able to participate in the next epoch.
+
+![Flow Epoch Schedule](https://storage.googleapis.com/flow-resources/documentation-assets/epoch-startup-order.png)
+
+A new node must bootstrap with a trusted root snapshot of the protocol state, where the node is a confirmed participant.
+Since new nodes are confirmed at the end of the `Staking Auction Phase`, this means that, if the node is registered to join at epoch `N+1`, it must use a root snapshot from within the `Epoch Setup Phase` of epoch `N`.
+
+### Dynamic Startup
+
+Flow provides a mechanism called Dynamic Startup to simplify the process of obtaining the root snapshot.
+When using Dynamic Startup, the node can be started **at any time during the `Staking Auction Phase`**.
+The node will wait for the `Epoch Setup Phase` to begin, retrieve a valid root snapshot from a trusted Access Node, then bootstrap its state and join the network.
+This is the recommended way to start your node for the first time.
+
+1. Remove any `root-protocol-state-snapshot.json` file from your `bootstrap` folder. (If this file is present the node will attempt to bootstrap with it rather than Dynamic Startup.)
+2. Select a trusted Access Node to provide the root snapshot. You will need this node's **secure GRPC server address** and **Networking Public Key**.
+3. Configure Dynamic Startup by adding flags:
+```shell:title=ExampleDynamicStartupFlags
+  ... \
+  --dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
+  --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae
+```
+4. Start your node (see [guide](/node-operation/node-setup/#start-the-node))
 
 <Callout type="info">
-
-You can choose to run your Flow Node either using `docker` or have `systemd` to manage Flow node. Please choose only **one** of these two options
-
+Once the node has bootstrapped, these flags may be removed.
 </Callout>
 
-### Systemd
+### Manually Provisioned Root Snapshot
 
-**If you are running your Flow Node via Docker, you can skip this step and go to the Docker section below.**
-
-1. Ensure that you pulled the latest changes from [flow-go repository](https://github.com/onflow/flow-go) via `git`
-
-```shell
-## Clone the repo if you haven't already done so
-git clone https://github.com/onflow/flow-go
-
-## Get latest changes
-cd flow-go
-git pull origin master
+You can also provision the root snapshot file manually, then start the node without configuring Dynamic Startup.
+A snapshot can be obtained from any Access Node using [Flow CLI](/flow-cli/).
+```shell:title=RetrieveRootSnapshot
+flow snapshot save /path/to/root/snapshot --network mainnet
 ```
-
-2. Copy your respective [systemd unit file](https://github.com/onflow/flow-go/tree/master/deploy/systemd-docker) to: `/etc/systemd/system`
-
-3. Create directory `sudo mkdir /etc/flow`
-
-4. Copy the [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) file to: `/etc/flow/`
-
-5. Enable your service `sudo systemctl enable YOUR-FLOW-NODE.service`
-
-<Callout type="danger">Wait for the Flow team announcement before you proceed to Step 4</Callout>
-
-## Step 4 - Start Your Flow Node
-
-Once you receive an announcement from the Flow team that the network has been booted (via Discord), you will need to fetch the genesis info, update your runtime configuration and then boot your Flow node up!
 
 <Callout type="warning">
 
-The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info from. (Please do NOT use the original Token that you used in Step 1) The `YOUR_NODE_TYPE` must be the same ones that you used on [step 1 - generating your node keys](/node-operation/node-bootstrap/#generate-your-node-keys)
+The snapshot must be within the `Epoch Setup Phase`.
 
 </Callout>
-
-1. Run the transit script to fetch the new genesis info:
-   `./boot-tools/transit pull -b ./bootstrap -t ${PULL_TOKEN} -r ${YOUR_NODE_TYPE}`
-
-```shell:title=Example
-$ ./boot-tools/transit pull -b ./bootstrap -t mainnet-15  -r consensus
-Transit script Commit: a9f6522855e119ad832a97f8b7bce555a163e490
-2020/11/25 01:02:53 Running pull
-2020/11/25 01:02:53 Downloading bootstrap/public-root-information/node-infos.pub.json
-2020/11/25 01:02:54 Downloading bootstrap/public-root-information/root-protocol-snapshot.json
-2020/11/25 01:02:54 Downloading bootstrap/random-beacon.priv.json.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.enc
-2020/11/25 01:02:54 SHA256 of the root block is: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-
-$ tree ./bootstrap/
-  ./bootstrap/
-  ├── private-root-information
-  │   └── private-node-info_39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
-  │       └── node-info.priv.json
-  ├── public-root-information
-  │   ├── node-id
-  │   ├── node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
-  │   ├── node-infos.pub.json
-  │   └── root-protocol-snapshot.json
-  └── random-beacon.priv.json.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
-```
-
-2. Pull the latest changes from [flow-go repository](https://github.com/onflow/flow-go)
-3. Get your `node-id`, you can find it at `/path/to/bootstrap/public-genesis-information/node-id`
-4. Update the `FLOW_GO_NODE_ID` inside [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) to the `node-id` that you got from the previous step
-5. Start your Flow node via `docker` or `systemd`
-
-### Docker
 
 <Callout type="warning">
-Please make sure you are running Docker version 19 (`docker --version`). There is currently an issue with Docker version 20.
-</Callout>
 
-**You can skip this section if you are running via systemd**
-
-1. Update your environment variables: `source /path/to/runtime-conf.env`
-2. Run the following `docker` command based on the Flow node that you are running:
-
-<Callout type="warning" title="Remember: update your docker volume mounting path">
-
-You'll need to update the path for `data` and `bootstrap` volumes in the following commands. Those paths are from step 2.2 and 2.3a.
+Since Collection and Consensus Nodes must start up in the first ~30mins of the `Epoch Setup Phase` (see [Timing](/node-operation/node-bootstrap/#timing)),
+the snapshot must be provisioned within this time window.
 
 </Callout>
 
-### Access
-
-```shell
-docker run --rm \
-	-v /path/to/bootstrap:/bootstrap:ro \
-	-v /path/to/data:/data:rw \
-	--name flow-go \
-	--network host \
-	gcr.io/flow-container-registry/access:v0.23.3 \
-	--nodeid=${FLOW_GO_NODE_ID} \
-	--bootstrapdir=/bootstrap \
-	--datadir=/data/protocol \
-	--secretsdir=/data/secrets \
-	--rpc-addr=0.0.0.0:9000 \
-	--http-addr=0.0.0.0:8000 \
-	--collection-ingress-port=9000 \
-	--script-addr=${FLOW_NETWORK_EXECUTION_NODE} \
-	--bind 0.0.0.0:3569 \
-	--loglevel=error
-```
-
-### Collection
-
-```shell
-docker run --rm \
-	-v /path/to/bootstrap:/bootstrap:ro \
-	-v /path/to/data:/data:rw \
-	--name flow-go \
-	--network host \
-	gcr.io/flow-container-registry/collection:v0.23.3 \
-	--nodeid=${FLOW_GO_NODE_ID} \
-	--bootstrapdir=/bootstrap \
-	--datadir=/data/protocol \
-	--secretsdir=/data/secrets \
-	--ingress-addr=0.0.0.0:9000 \
-	--bind 0.0.0.0:3569 \
-	--loglevel=error
-```
-
-### Consensus
-
-```shell
-docker run --rm \
-	-v /path/to/bootstrap:/bootstrap:ro \
-	-v /path/to/data:/data:rw \
-	--name flow-go \
-	--network host \
-	gcr.io/flow-container-registry/consensus:v0.23.3 \
-	--nodeid=${FLOW_GO_NODE_ID} \
-	--bootstrapdir=/bootstrap \
-	--datadir=/data/protocol \
-	--secretsdir=/data/secrets \
-	--bind 0.0.0.0:3569 \
-	--loglevel=error
-```
-
-### Execution
-
-```shell
-docker run --rm \
-	-v /path/to/bootstrap:/bootstrap:ro \
-	-v /path/to/data:/data:rw \
-	--name flow-go \
-	--network host \
-	gcr.io/flow-container-registry/execution:v0.23.3 \
-	--nodeid=${FLOW_GO_NODE_ID} \
-	--bootstrapdir=/bootstrap \
-	--datadir=/data/protocol \
-	--secretsdir=/data/secrets \
-	--triedir=/data/execution \
-	--rpc-addr=0.0.0.0:9000 \
-	--bind 0.0.0.0:3569 \
-	--loglevel=error
-```
-
-### Verification
-
-```shell
-docker run --rm \
-	-v /path/to/bootstrap:/bootstrap:ro \
-	-v /path/to/data:/data:rw \
-	--name flow-go \
-	--network host \
-	gcr.io/flow-container-registry/verification:v0.23.3 \
-	--nodeid=${FLOW_GO_NODE_ID} \
-	--bootstrapdir=/bootstrap \
-	--datadir=/data/protocol \
-	--secretsdir=/data/secrets \
-	--bind 0.0.0.0:3569 \
-	--loglevel=error
-```
-
-### Systemd
-
-**You can skip this section if you are running via docker**
-
-1. Check that your `runtime-conf.env` is at `/etc/flow/runtime-conf.env`
-2. Update your environment variables: `source /etc/flow/runtime-conf.env`
-3. Start your service: `sudo systemctl start flow`
-
-## Step 5 - Verify if your Node is Running
-
-Here are a few handy commands that you can use to check if your Flow node is up and running
-
-### Docker
-
-- To get Flow logs: `sudo journalctl -u flow-YOUR_ROLE`
-- To get the status: `sudo docker ps`
-
-```shell
-$ sudo docker ps
-CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
-1dc5d43385b6 gcr.io/flow-container-registry/verification:candidate8 \"/bin/app --nodeid=4…\" 30 hours ago Up 30 hours flow-go
-```
-
-### Systemd
-
-- To get Flow logs: `sudo journalctl -u flow-YOUR_ROLE`
-- To get your Flow node status: `sudo systemctl status flow`
-
-```shell
-● flow-verification.service - Flow Access Node running with Docker
-Loaded: loaded (/etc/systemd/system/flow-verification.service; enabled; vendor preset: enabled)
-Active: active (running) since Wed 2020-05-20 18:18:13 UTC; 1 day 6h ago
-Process: 3207 ExecStartPre=/usr/bin/docker pull gcr.io/flow-container-registry/verification:${FLOW_GO_NODE_VERSION} (code=exited, status=0/SUCCESS)
-Main PID: 3228 (docker)
-Tasks: 10 (limit: 4915)
-Memory: 33.0M
-CGroup: /system.slice/flow-verification.service
-        └─3228 /usr/bin/docker run --rm -v /var/flow/bootstrap:/bootstrap:ro -v /var/flow/data:/data:rw --rm --name flow-go --network host gcr.io/flow-container-registry/verification:candidate8 --nodeid=489f8a4513d5bd8b8b093108fec00327b683db545b37b4ea9153f61b2c0c49dc --bootstrapdir=/bootstrap --datadir=/data/protocol --alpha=1 --bind 0.0.0.0:3569 --loglevel=error
-```
-
-## Step 6 (optional) - Monitoring and Metrics
-
-This is intended for operators who would like to see what their Flow nodes are currently doing. Head over to [Monitoring Node Health](/node-operation/monitoring-nodes/) to get setup.
-
-### Node Status
-
-The metrics for the node should be able to provide a good overview of the status of the node. If we want to get a quick snapshot of the status of the node, and if it's properly participating in the network, you can check the `consensus_compliance_finalized_height` or `consensus_compliance_sealed_height` metric, and ensure that it is not zero and strictly increasing.
-
-```shell
-curl localhost:8080/metrics | grep consensus_compliance_sealed_height
-
-# HELP consensus_compliance_sealed_height the last sealed height
-# TYPE consensus_compliance_sealed_height gauge
-consensus_compliance_sealed_height 1.132054e+06
-```
-
-## Common Issues
-
-### Error: cannot create connection
-
-```shell
-20T18:34:21Z","message":"could not create connection"}
-{"level":"error","node_role":"consensus","node_id":"6d3fac8675a1df96f4bb7a27305ae531b6f4d0d2bc13a233e37bb07ab6b852dc","target":"QmVcSQaCdhmk1CMeMN7HTgGiUY1i2KqgVE2vvEmQXK4gAA","error":"failed to dial : all dials failed
-  * [/ip4/155.138.151.101/tcp/3569] dial tcp4 155.138.151.101:3569: connect: connection refused","retry_attempt":2,"time":"2020-05-20T18:34:21Z","message":"could not create connection"}
-```
-
-This error is OK. Your fellow node operators have not turned on/joined the network yet. So no need to worry about it!
-
-### Flow Node Not Booting Up
-
-If your Flow node is not able to boot up, or it exits right after it boots up. You will need to do a [clean up of your state](/node-operation/node-bootstrap/#step-0---cleaning-up-your-previous-state).
-
-After cleaning up the state try booting it up again. If the problem persists, message a member from the Flow team on Discord.
+Once a valid root snapshot file is downloaded to the node's bootstrap folder, it can be started (see [guide](/node-operation/node-setup/#start-the-node))

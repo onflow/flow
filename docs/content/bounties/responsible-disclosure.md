@@ -9,7 +9,7 @@ If you believe you may have found a security vulnerability in one of our product
 </a>
 
 ## Guidelines for Responsible Disclosure
-We ask that all researchers adhere to these guidelines.
+We ask that all researchers adhere to these guidelines.
 
 ### Rules fo Engagement
 
@@ -32,7 +32,7 @@ Bottom line, we suggest that you limit your testing to infrastructure that is cl
 
 ### Out of Scope URIs
 
-The following base URIs are explicitly out of scope:
+The following base URIs are explicitly out of scope:
 
 - None
 
@@ -65,16 +65,13 @@ If you follow these guidelines when researching and reporting an issue to us, we
 
 ## Disclosure Acknowledgements
   
-  Security acknowledgements can be found at https://dapperlabs.com/security_nods.txt
+Security acknowledgements can be found at https://dapperlabs.com/security_nods.txt
 
 ## Reporting Security Findings
 
 Reports welcome! Please do reach out to us if you have a security concern. If you believe you may have found a security vulnerability in one of our products or platforms, send us an email: [security@dapperlabs.com](mailto:security@onflow.org?subject=Responsible%20disclosure)
 
-We encourage you to encrypt the information you send us using our PGP key at [keys.openpgp.org/security@onflow.org](keys.openpgp.org/security@onflow.org)
-
-
-
+We encourage you to encrypt the information you send us using our PGP key at [keys.openpgp.org/security@onflow.org](https://keys.openpgp.org/search?q=security%40onflow.org)
 
 **Please include the following details with your report:**
 

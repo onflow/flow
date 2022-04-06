@@ -41,6 +41,8 @@ type AccessAPIClient interface {
 	GetTransaction(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResponse, error)
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error)
+	// GetTransactionResultByIndex gets the result of a transaction at a specified block and index
+	GetTransactionResultByIndex(ctx context.Context, in *GetTransactionByIndexRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
 	//
 	// Warning: this function is deprecated. It behaves identically to
@@ -186,6 +188,15 @@ func (c *accessAPIClient) GetTransactionResult(ctx context.Context, in *GetTrans
 	return out, nil
 }
 
+func (c *accessAPIClient) GetTransactionResultByIndex(ctx context.Context, in *GetTransactionByIndexRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error) {
+	out := new(TransactionResultResponse)
+	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetTransactionResultByIndex", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *accessAPIClient) GetAccount(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*GetAccountResponse, error) {
 	out := new(GetAccountResponse)
 	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetAccount", in, out, opts...)
@@ -312,6 +323,8 @@ type AccessAPIServer interface {
 	GetTransaction(context.Context, *GetTransactionRequest) (*TransactionResponse, error)
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(context.Context, *GetTransactionRequest) (*TransactionResultResponse, error)
+	// GetTransactionResultByIndex gets the result of a transaction at a specified block and index
+	GetTransactionResultByIndex(context.Context, *GetTransactionByIndexRequest) (*TransactionResultResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
 	//
 	// Warning: this function is deprecated. It behaves identically to
@@ -386,6 +399,9 @@ func (UnimplementedAccessAPIServer) GetTransaction(context.Context, *GetTransact
 }
 func (UnimplementedAccessAPIServer) GetTransactionResult(context.Context, *GetTransactionRequest) (*TransactionResultResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionResult not implemented")
+}
+func (UnimplementedAccessAPIServer) GetTransactionResultByIndex(context.Context, *GetTransactionByIndexRequest) (*TransactionResultResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionResultByIndex not implemented")
 }
 func (UnimplementedAccessAPIServer) GetAccount(context.Context, *GetAccountRequest) (*GetAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccount not implemented")
@@ -626,6 +642,24 @@ func _AccessAPI_GetTransactionResult_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccessAPIServer).GetTransactionResult(ctx, req.(*GetTransactionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccessAPI_GetTransactionResultByIndex_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTransactionByIndexRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetTransactionResultByIndex(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.access.AccessAPI/GetTransactionResultByIndex",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetTransactionResultByIndex(ctx, req.(*GetTransactionByIndexRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -878,6 +912,10 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetTransactionResult",
 			Handler:    _AccessAPI_GetTransactionResult_Handler,
+		},
+		{
+			MethodName: "GetTransactionResultByIndex",
+			Handler:    _AccessAPI_GetTransactionResultByIndex_Handler,
 		},
 		{
 			MethodName: "GetAccount",

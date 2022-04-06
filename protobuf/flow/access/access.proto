@@ -55,6 +55,9 @@ service AccessAPI {
   // GetTransactionResult gets the result of a transaction.
   rpc GetTransactionResult(GetTransactionRequest)
       returns (TransactionResultResponse);
+  // GetTransactionResultByIndex gets the result of a transaction at a specified block and index
+  rpc GetTransactionResultByIndex(GetTransactionByIndexRequest)
+      returns (TransactionResultResponse);
 
   // Accounts
 
@@ -118,7 +121,6 @@ service AccessAPI {
   // and as usual, until sealed, this data can change
   rpc GetExecutionResultForBlockID(GetExecutionResultForBlockIDRequest)
       returns (ExecutionResultForBlockIDResponse);
-
 }
 
 message PingRequest {}
@@ -147,14 +149,17 @@ message BlockHeaderResponse {
 
 message GetLatestBlockRequest {
   bool is_sealed = 1;
+  bool full_block_response = 2;
 }
 
 message GetBlockByIDRequest {
   bytes id = 1;
+  bool full_block_response = 2;
 }
 
 message GetBlockByHeightRequest {
   uint64 height = 1;
+  bool full_block_response = 2;
 }
 
 message BlockResponse {
@@ -183,6 +188,11 @@ message SendTransactionResponse {
 
 message GetTransactionRequest {
   bytes id = 1;
+}
+
+message GetTransactionByIndexRequest {
+  bytes block_id = 1;
+  uint32 index = 2;
 }
 
 message TransactionResponse {

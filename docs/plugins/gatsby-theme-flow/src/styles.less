@@ -3,11 +3,11 @@
 html {
   font-size: 100%;
   line-height: 1.45;
-  scroll-behavior: smooth;
 }
 
 body {
   color: @color-text2;
+  background-color:white;
 }
 
 @default-margin: 1.45rem;
@@ -177,6 +177,10 @@ p > pre.inline {
   .homepage-grid {
     grid-template-columns: 1fr 1fr;
   }
+
+  .grid-item.wide {
+    grid-column: span 2;
+  }
 }
 
 .grid-item {
@@ -197,4 +201,14 @@ p > pre.inline {
 
 .docs-site-omit {
   display: none;
+}
+
+.redoc-wrap .api-content {
+  margin-left: 260px;
+}
+
+.redoc-wrap .menu-content {
+  top: 117px !important;
+  position: fixed;
+  height: calc(100vh) !important;
 }

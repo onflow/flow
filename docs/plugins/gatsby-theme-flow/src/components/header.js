@@ -11,7 +11,7 @@ const Wrapper = styled.header({
   position: "sticky",
   top: 0,
   left: 0,
-  zIndex: 1
+  zIndex: 2
 });
 
 const InnerWrapper = styled.div({

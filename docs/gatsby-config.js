@@ -29,7 +29,7 @@ const navConfig = {
     linkText: "Launch the Flow Playground"
   },
   "FCL (Flow Client Library)": {
-    url: "/fcl",
+    url: "/fcl/",
     icon: "js-sdk",
     description:
       "Interact with the Flow Blockchain, and user's wallets from browser based apps, and React Native.",
@@ -119,28 +119,28 @@ const sourceGithubRepos = {
 
 // sourceSlugTransformers maps a sourceInstanceName to slug transformation functions
 const sourceSlugTransformers = {
-  "cadence-github": (slug) => slug.replace(/^\/docs\//, "/cadence/"),
-  "fcl-github": (slug) =>
+  "cadence-github": slug => slug.replace(/^\/docs\//, "/cadence/"),
+  "fcl-github": slug =>
     slug
       .replace(/^\/docs\//, "/fcl/")
       .replace(/^\/packages\//, "/fcl/packages/"),
 
-  "flow-go-sdk-github": (slug) =>
+  "flow-go-sdk-github": slug =>
     slug
       .replace(/^\/docs\//, "/flow-go-sdk/")
       .replace(/^\/examples\//, "/flow-go-sdk/examples/"),
 
-  "flow-cli-github": (slug) => slug.replace(/^\/docs\//, "/flow-cli/"),
-  "flow-js-testing-github": (slug) =>
+  "flow-cli-github": slug => slug.replace(/^\/docs\//, "/flow-cli/"),
+  "flow-js-testing-github": slug =>
     slug.replace(/^\/docs\//, "/flow-js-testing/"),
-  "sdk-guidelines-github": (slug) =>
+  "sdk-guidelines-github": slug =>
     slug
       .replace(/^\/README\//, "/sdk-guidelines/")
       .replace(
         /^\/ubiquitous-language\//,
         "/sdk-guidelines/ubiquitous-language/"
       ),
-  "flow-emulator-github": (slug) => slug.replace(/^\/README\//, "/emulator/")
+  "flow-emulator-github": slug => slug.replace(/^\/README\//, "/emulator/")
 };
 
 const sources = [
@@ -214,31 +214,37 @@ const sources = [
       branch: "master",
       remote: "https://github.com/onflow/flow-cli.git",
       patterns: [
-        "docs/index.md",
-        "docs/install.md",
-        "docs/configuration.md",
-        "docs/initialize-configuration.md",
-        "docs/generate-keys.md",
-        "docs/create-accounts.md",
-        "docs/execute-scripts.md",
-        "docs/send-transactions.md",
-        "docs/get-transactions.md",
-        "docs/build-transactions.md",
-        "docs/sign-transaction.md",
-        "docs/send-signed-transactions.md",
-        "docs/get-transactions.md",
         "docs/account-add-contract.md",
-        "docs/account-update-contract.md",
         "docs/account-remove-contract.md",
-        "docs/project-contracts.md",
-        "docs/deploy-project-contracts.md",
         "docs/account-staking-info.md",
-        "docs/get-blocks.md",
-        "docs/get-events.md",
+        "docs/account-update-contract.md",
+        "docs/build-transactions.md",
+        "docs/complex-transactions.md",
+        "docs/configuration.md",
+        "docs/create-accounts.md",
+        "docs/decode-keys.md",
+        "docs/deploy-project-contracts.md",
+        "docs/execute-scripts.md",
+        "docs/generate-keys.md",
         "docs/get-accounts.md",
+        "docs/get-blocks.md",
         "docs/get-collections.md",
+        "docs/get-events.md",
         "docs/get-status.md",
+        "docs/get-transactions.md",
+        "docs/index.md",
+        "docs/initialize-configuration.md",
+        "docs/install.md",
+        "docs/manage-configuration.md",
+        "docs/project-app.md",
+        "docs/project-contracts.md",
         "docs/security.md",
+        "docs/send-signed-transactions.md",
+        "docs/send-transactions.md",
+        "docs/sign-transaction.md",
+        "docs/signature-generate.md",
+        "docs/signature-verify.md",
+        "docs/snapshot-save.md",
         "docs/start-emulator.md"
       ]
     }
@@ -277,7 +283,10 @@ const sections = [
       ],
       Reference: [
         "[Available Flow SDKs](/sdks/)",
-        "[Flow Access API](/access-api/)",
+        "[Flow HTTP API](/http-api/)",
+
+        "[Flow gRPC API](/access-api/)",
+
         "[Cadence Language Reference](/cadence/language/)",
         "[Testing Library Reference](/flow-js-testing/)",
         "[Core Protocol Smart Contracts](/core-contracts/)",
@@ -326,10 +335,8 @@ const sections = [
         "[Cadence Anti-Patterns](/cadence/anti-patterns/)",
         "[msg․sender Considered Harmful](/cadence/msg-sender/)",
         "[Measuring Time In Cadence](/cadence/measuring-time/)",
-        "[Subtyping](/cadence/subtyping/)",
         "[Migration Guide](/cadence/migration-guide/)",
         "[JSON-Cadence Data Interchange Format](/cadence/json-cadence-spec/)",
-        "[Syntax Highlighting](/cadence/syntax-highlighting/)"
       ],
       Tutorial: [
         "docs/tutorial/01-first-steps",
@@ -345,18 +352,12 @@ const sections = [
   },
   {
     sourceInstanceName: "flow-cli-github",
-    patterns: ["docs/**/*"],
+    patterns: ["docs/**/*.(md|mdx|png)"],
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      "Flow CLI": [
-        "docs/index",
-        "docs/install",
-        "docs/initialize-configuration",
-        "docs/configuration",
-        "docs/security"
-      ],
-      Keys: ["docs/generate-keys"],
+      "Flow CLI": ["docs/index", "docs/install"],
+      Keys: ["docs/generate-keys", "docs/decode-keys"],
       Accounts: [
         "docs/get-accounts",
         "docs/create-accounts",
@@ -372,17 +373,30 @@ const sections = [
       ],
       Scripts: ["docs/execute-scripts"],
       Transactions: [
+        "docs/complex-transactions",
         "docs/send-transactions",
         "docs/get-transactions",
         "docs/build-transactions",
         "docs/sign-transaction",
         "docs/send-signed-transactions"
       ],
+      "Flow.json": [
+        "docs/initialize-configuration",
+        "docs/configuration",
+        "docs/manage-configuration",
+        "docs/security"
+      ],
       "Get Flow data": [
         "docs/get-blocks",
         "docs/get-events",
         "docs/get-collections",
         "docs/get-status"
+      ],
+      Utils: [
+        "docs/project-app",
+        "docs/signature-generate",
+        "docs/signature-verify",
+        "docs/snapshot-save"
       ]
     }
   },
@@ -457,7 +471,8 @@ const sections = [
         "[Proving Account Ownership](/fcl/reference/proving-authentication/)",
         "[Scripts](/fcl/reference/scripts/)",
         "[Transactions](/fcl/reference/transactions/)",
-        "[User Signatures](/fcl/reference/user-signatures/)"
+        "[User Signatures](/fcl/reference/user-signatures/)",
+        "[Wallet Discovery](/fcl/reference/discovery/)"
       ],
       Changelogs: [
         "[@onflow/fcl](/fcl/packages/fcl/CHANGELOG)",
@@ -475,9 +490,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      Overview: [
-        "[API](/flow-js-testing/api/)"
-      ],
+      Overview: ["[API](/flow-js-testing/api/)"],
       Guides: [
         "[Install Flow Javascript Testing Framework](/flow-js-testing/install/)",
         "[Init](/flow-js-testing/init)",
@@ -505,13 +518,15 @@ const sections = [
         "core-contracts/fungible-token",
         "core-contracts/flow-token",
         "core-contracts/flow-fees",
+        "core-contracts/service-account",
         "core-contracts/staking-contract-reference",
         "core-contracts/epoch-contract-reference"
       ],
       "Other Important Contracts": [
         "core-contracts/locked-tokens",
         "core-contracts/staking-collection",
-        "core-contracts/non-fungible-token"
+        "core-contracts/non-fungible-token",
+        "core-contracts/nft-metadata"
       ]
     }
   },
@@ -582,6 +597,7 @@ const sections = [
       ],
       "Operator Guides": [
         "node-operation/node-bootstrap",
+        "node-operation/node-migration",
         "node-operation/machine-existing-operator",
         "node-operation/db-encryption-existing-operator",
         "node-operation/monitoring-nodes",
@@ -745,6 +761,10 @@ module.exports = {
           {
             pathname: "/flow-go-sdk",
             crumbLabel: "Flow GO SDK"
+          },
+          {
+            pathname: "/http-api",
+            crumbLabel: "HTTP API"
           }
         ]
       }

@@ -9,6 +9,8 @@ import "google/protobuf/timestamp.proto";
 
 import "flow/entities/collection.proto";
 import "flow/entities/block_seal.proto";
+import "flow/entities/execution_result.proto";
+import "flow/entities/block_header.proto";
 
 message Block {
   bytes id = 1;
@@ -18,4 +20,7 @@ message Block {
   repeated CollectionGuarantee collection_guarantees = 5;
   repeated BlockSeal block_seals = 6;
   repeated bytes signatures = 7;
+  repeated ExecutionReceiptMeta execution_receipt_metaList = 8;
+  repeated ExecutionResult execution_result_list = 9;
+  BlockHeader block_header = 10;
 }

@@ -13,4 +13,7 @@ message Collection {
 message CollectionGuarantee {
   bytes collection_id = 1;
   repeated bytes signatures = 2;
+  bytes reference_block_id = 3;
+  bytes signature = 4;
+  repeated bytes signer_ids = 5;
 }
