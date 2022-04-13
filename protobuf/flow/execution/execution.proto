@@ -8,6 +8,7 @@ option java_package = "org.onflow.protobuf.execution";
 import "flow/entities/account.proto";
 import "flow/entities/block_header.proto";
 import "flow/entities/event.proto";
+import "flow/entities/transaction.proto";
 
 // ExecutionAPI is the API provided by the execution nodes.
 service ExecutionAPI {
@@ -43,6 +44,11 @@ service ExecutionAPI {
   // GetTransactionResultByIndex gets the result of a transaction at the index .
   rpc GetTransactionResultByIndex(GetTransactionByIndexRequest)
       returns (GetTransactionResultResponse);
+
+  // GetTransactionResultByIndex gets the results of all transactions in the block
+  // ordered by transaction index
+  rpc GetTransactionResultsByBlockID(GetTransactionResultsByBlockIDRequest)
+      returns (GetTransactionResultsByBlockIDResponse);
 
   // Registers
 
@@ -121,6 +127,14 @@ message GetTransactionResultResponse {
   uint32 status_code = 1;
   string error_message = 2;
   repeated entities.Event events = 3;
+}
+
+message GetTransactionResultsByBlockIDRequest {
+  bytes block_id = 1;
+}
+
+message GetTransactionResultsByBlockIDResponse {
+  repeated entities.TransactionResult transactionResults = 1;
 }
 
 // Registers

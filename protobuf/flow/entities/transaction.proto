@@ -5,6 +5,9 @@ package flow.entities;
 option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
 option java_package = "org.onflow.protobuf.entities";
 
+import "flow/entities/event.proto";
+
+
 enum TransactionStatus {
   UNKNOWN = 0;
   PENDING = 1;
@@ -36,4 +39,10 @@ message Transaction {
   repeated bytes authorizers = 7;
   repeated Signature payload_signatures = 8;
   repeated Signature envelope_signatures = 9;
+}
+
+message TransactionResult {
+  uint32 status_code = 1;
+  string error_message = 2;
+  repeated Event events = 3;
 }
