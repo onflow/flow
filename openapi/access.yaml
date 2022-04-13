@@ -843,6 +843,8 @@ components:
         - id
         - block_id
         - events
+        - execution_data_id
+        - previous_result_id
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -852,6 +854,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
+        chunks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Chunk'
+        execution_data_id:
+          $ref: '#/components/schemas/Identifier'
+        previous_result_id:
+          $ref: '#/components/schemas/Identifier'
         _links:
           $ref: '#/components/schemas/Links'
     BlockEvents:
@@ -924,6 +934,44 @@ components:
           type: integer
         message:
           type: string
+    Chunk:
+      type: object
+      required:
+        - block_id
+        - collection_index
+        - end_state
+        - event_collection
+        - execution_data_id
+        - index
+        - number_of_transactions
+        - start_state
+        - total_computation_used
+      properties:
+        collection_index:
+          type: string
+          format: uint64
+        start_state:
+          type: string
+          format: byte
+        event_collection:
+          type: string
+          format: byte
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        total_computation_used:
+          type: string
+          format: uint64
+        number_of_transactions:
+          type: string
+          format: uint64
+        index:
+          type: string
+          format: uint64
+        end_state:
+          type: string
+          format: byte
+        execution_data_id:
+          $ref: '#/components/schemas/Identifier'
     Links:
       type: object
       properties:
