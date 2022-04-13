@@ -1,13 +1,15 @@
 # {{classname}}
 
-All URIs are relative to *https://rest-testnet.onflow.org/v1*
+All URIs are relative to *https://rest-canary.onflow.org/v1/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ScriptsPost**](ScriptsApi.md#ScriptsPost) | **Post** /scripts | Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block height.
+[**ScriptsPost**](ScriptsApi.md#ScriptsPost) | **Post** /scripts | Execute a Cadence Script
 
 # **ScriptsPost**
 > InlineResponse200 ScriptsPost(ctx, body, optional)
+Execute a Cadence Script
+
 Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block height.
 
 ### Required Parameters

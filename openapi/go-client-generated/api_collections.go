@@ -25,9 +25,10 @@ var (
 
 type CollectionsApiService service
 /*
-CollectionsApiService Gets a collection by ID.
+CollectionsApiService Gets a Collection by ID
+Get a collection by provided collection ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param id The ID of the collection to get.
+ * @param id The collection ID.
 @return Collection
 */
 func (a *CollectionsApiService) CollectionsIdGet(ctx context.Context, id string) (Collection, *http.Response, error) {

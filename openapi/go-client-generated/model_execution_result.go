@@ -12,5 +12,8 @@ type ExecutionResult struct {
 	Id string `json:"id"`
 	BlockId string `json:"block_id"`
 	Events []Event `json:"events"`
+	Chunks []Chunk `json:"chunks,omitempty"`
+	ExecutionDataId string `json:"execution_data_id"`
+	PreviousResultId string `json:"previous_result_id"`
 	Links *Links `json:"_links,omitempty"`
 }
