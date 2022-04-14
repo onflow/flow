@@ -843,7 +843,6 @@ components:
         - id
         - block_id
         - events
-        - execution_data_id
         - previous_result_id
       properties:
         id:
@@ -937,36 +936,36 @@ components:
       required:
         - block_id
         - collection_index
+        - start_state
         - end_state
         - event_collection
         - index
         - number_of_transactions
-        - start_state
         - total_computation_used
       properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
         collection_index:
           type: string
           format: uint64
         start_state:
           type: string
           format: byte
+        end_state:
+          type: string
+          format: byte
         event_collection:
           type: string
           format: byte
-        block_id:
-          $ref: '#/components/schemas/Identifier'
-        total_computation_used:
+        index:
           type: string
           format: uint64
         number_of_transactions:
           type: string
           format: uint64
-        index:
+        total_computation_used:
           type: string
           format: uint64
-        end_state:
-          type: string
-          format: byte
     Links:
       type: object
       properties:

@@ -1193,16 +1193,16 @@ components:
             _self: _self
           chunks:
           - start_state: ""
-            number_of_transactions: number_of_transactions
             index: index
+            number_of_transactions: number_of_transactions
             collection_index: collection_index
             end_state: ""
             event_collection: ""
             block_id: null
             total_computation_used: total_computation_used
           - start_state: ""
-            number_of_transactions: number_of_transactions
             index: index
+            number_of_transactions: number_of_transactions
             collection_index: collection_index
             end_state: ""
             event_collection: ""
@@ -1407,7 +1407,6 @@ components:
       required:
       - block_id
       - events
-      - execution_data_id
       - id
       - previous_result_id
       type: object
@@ -1433,16 +1432,16 @@ components:
           _self: _self
         chunks:
         - start_state: ""
-          number_of_transactions: number_of_transactions
           index: index
+          number_of_transactions: number_of_transactions
           collection_index: collection_index
           end_state: ""
           event_collection: ""
           block_id: null
           total_computation_used: total_computation_used
         - start_state: ""
-          number_of_transactions: number_of_transactions
           index: index
+          number_of_transactions: number_of_transactions
           collection_index: collection_index
           end_state: ""
           event_collection: ""
@@ -1567,33 +1566,33 @@ components:
       - total_computation_used
       type: object
       properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
         collection_index:
           type: string
           format: uint64
         start_state:
           type: string
           format: byte
+        end_state:
+          type: string
+          format: byte
         event_collection:
           type: string
           format: byte
-        block_id:
-          $ref: '#/components/schemas/Identifier'
-        total_computation_used:
+        index:
           type: string
           format: uint64
         number_of_transactions:
           type: string
           format: uint64
-        index:
+        total_computation_used:
           type: string
           format: uint64
-        end_state:
-          type: string
-          format: byte
       example:
         start_state: ""
-        number_of_transactions: number_of_transactions
         index: index
+        number_of_transactions: number_of_transactions
         collection_index: collection_index
         end_state: ""
         event_collection: ""

@@ -9,12 +9,12 @@
 package swagger
 
 type Chunk struct {
+	BlockId string `json:"block_id"`
 	CollectionIndex string `json:"collection_index"`
 	StartState string `json:"start_state"`
-	EventCollection string `json:"event_collection"`
-	BlockId string `json:"block_id"`
-	TotalComputationUsed string `json:"total_computation_used"`
-	NumberOfTransactions string `json:"number_of_transactions"`
-	Index string `json:"index"`
 	EndState string `json:"end_state"`
+	EventCollection string `json:"event_collection"`
+	Index string `json:"index"`
+	NumberOfTransactions string `json:"number_of_transactions"`
+	TotalComputationUsed string `json:"total_computation_used"`
 }
