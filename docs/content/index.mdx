@@ -12,7 +12,7 @@ import TrackingLink from "./components/tracking-link";
 import {
   IconGithub,
   IconDiscord,
-  IconDiscourse
+  IconDiscourse,
 } from "gatsby-theme-flow/src/ui/icons";
 
 ‍Flow is a fast, decentralized, and developer-friendly blockchain, designed as the foundation for a new generation of games, apps, and the [digital assets](https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets) that power them. It is based on a unique, [multi-role architecture](https://www.onflow.org/primer), and designed to [scale without sharding](https://www.onflow.org/post/flow-blockchain-multi-node-architecture-advantages), allowing for massive improvements in speed and throughput while preserving a developer-friendly, ACID-compliant environment.
@@ -23,11 +23,12 @@ import {
 
 <div className="grid-item wide">
 
-
-<h3> ⚡️
-<TrackingLink href="/http-api/" eventName="Homepage_link_/http-api/_clicked">
-  Flow Access Node HTTP API
-</TrackingLink>
+<h3>
+  {" "}
+  ⚡️
+  <TrackingLink href="/http-api/" eventName="Homepage_link_/http-api/_clicked">
+    Flow Access Node HTTP API
+  </TrackingLink>
 </h3>
 
 <ul className="grid-item-list">
@@ -46,10 +47,26 @@ import {
 <br />
 
 <span>https://rest-testnet.onflow.org/v1/</span>
-<p>Testnet: <TrackingLink event="Homepage*link*/http-api-testnet/\_clicked" href="/http-api/">View Documentation</TrackingLink></p>
+<p>
+  Testnet:{" "}
+  <TrackingLink
+    event="Homepage*link*/http-api-testnet/\_clicked"
+    href="/http-api/"
+  >
+    View Documentation
+  </TrackingLink>
+</p>
 
 <span>https://rest-mainnet.onflow.org/v1/</span>
-<p>Mainnet: <TrackingLink event="Homepage*link*/http-api-mainnet/\_clicked" href="/http-api/">View Documentation</TrackingLink></p>
+<p>
+  Mainnet:{" "}
+  <TrackingLink
+    event="Homepage*link*/http-api-mainnet/\_clicked"
+    href="/http-api/"
+  >
+    View Documentation
+  </TrackingLink>
+</p>
 
 <p>
   Oh, that's new. 
@@ -191,7 +208,37 @@ import {
     <li>
     <TrackingLink href="https://open-cadence.onflow.org/" eventName="Homepage_link_/https://open-cadence.onflow.org/
 /_clicked">Open Cadence</TrackingLink> <br/>
-    <p>A list of high-quality Cadence code to help you learn and implement your smart-contract ideas.</p>
+    <p>A list of high-quality Cadence code to help you learn and implement your smart-contract ideas. Highlights include:</p>
+    <p>
+      <TrackingLink
+        href="https://open-cadence.onflow.org/?preview=0"
+        eventName="Homepage_link_/https://open-cadence.onflow.org/?preview=0_clicked"
+      >
+       Mint an NFT
+      </TrackingLink>
+      <br />
+      <TrackingLink
+        href="https://open-cadence.onflow.org/?preview=3"
+        eventName="Homepage_link_/https://open-cadence.onflow.org/?preview=3_clicked"
+      >
+      Set NFT metadata
+      </TrackingLink>
+      <br />
+      <TrackingLink
+        href="https://open-cadence.onflow.org/?preview=19"
+        eventName="Homepage_link_/https://open-cadence.onflow.org/?preview=19_clicked"
+      >
+      Create an NFT marketplace
+      </TrackingLink>
+      <br />
+            <TrackingLink
+        href="https://open-cadence.onflow.org/?preview=21"
+        eventName="Homepage_link_/https://open-cadence.onflow.org/?preview=21_clicked"
+      >
+      Purchase an NFT on a marketplace
+      </TrackingLink>
+      <br />
+    </p>
   </li>
   <li>
     <TrackingLink href="/cadence/tutorial/01-first-steps/" eventName="Homepage_link_/cadence/tutorial/01-first-steps/_clicked">Cadence Tutorials</TrackingLink> <br/>
