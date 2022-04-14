@@ -32,10 +32,11 @@ type ExecutionAPIClient interface {
 	GetTransactionResult(ctx context.Context, in *GetTransactionResultRequest, opts ...grpc.CallOption) (*GetTransactionResultResponse, error)
 	// GetTransactionResultByIndex gets the result of a transaction at the index .
 	GetTransactionResultByIndex(ctx context.Context, in *GetTransactionByIndexRequest, opts ...grpc.CallOption) (*GetTransactionResultResponse, error)
-	// GetTransactionResultByIndex gets the results of all transactions in the block
-	// ordered by transaction index
-	GetTransactionResultsByBlockID(ctx context.Context, in *GetTransactionResultsByBlockIDRequest, opts ...grpc.CallOption) (*GetTransactionResultsByBlockIDResponse, error)
-	// GetRegisterAtBlockID collects a register at the block with the given ID (if available).
+	// GetTransactionResultByIndex gets the results of all transactions in the
+	// block ordered by transaction index
+	GetTransactionResultsByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*GetTransactionResultsResponse, error)
+	// GetRegisterAtBlockID collects a register at the block with the given ID (if
+	// available).
 	GetRegisterAtBlockID(ctx context.Context, in *GetRegisterAtBlockIDRequest, opts ...grpc.CallOption) (*GetRegisterAtBlockIDResponse, error)
 	// GetLatestBlockHeader gets the latest sealed or unsealed block header.
 	GetLatestBlockHeader(ctx context.Context, in *GetLatestBlockHeaderRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
@@ -105,8 +106,8 @@ func (c *executionAPIClient) GetTransactionResultByIndex(ctx context.Context, in
 	return out, nil
 }
 
-func (c *executionAPIClient) GetTransactionResultsByBlockID(ctx context.Context, in *GetTransactionResultsByBlockIDRequest, opts ...grpc.CallOption) (*GetTransactionResultsByBlockIDResponse, error) {
-	out := new(GetTransactionResultsByBlockIDResponse)
+func (c *executionAPIClient) GetTransactionResultsByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*GetTransactionResultsResponse, error) {
+	out := new(GetTransactionResultsResponse)
 	err := c.cc.Invoke(ctx, "/flow.execution.ExecutionAPI/GetTransactionResultsByBlockID", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -159,10 +160,11 @@ type ExecutionAPIServer interface {
 	GetTransactionResult(context.Context, *GetTransactionResultRequest) (*GetTransactionResultResponse, error)
 	// GetTransactionResultByIndex gets the result of a transaction at the index .
 	GetTransactionResultByIndex(context.Context, *GetTransactionByIndexRequest) (*GetTransactionResultResponse, error)
-	// GetTransactionResultByIndex gets the results of all transactions in the block
-	// ordered by transaction index
-	GetTransactionResultsByBlockID(context.Context, *GetTransactionResultsByBlockIDRequest) (*GetTransactionResultsByBlockIDResponse, error)
-	// GetRegisterAtBlockID collects a register at the block with the given ID (if available).
+	// GetTransactionResultByIndex gets the results of all transactions in the
+	// block ordered by transaction index
+	GetTransactionResultsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*GetTransactionResultsResponse, error)
+	// GetRegisterAtBlockID collects a register at the block with the given ID (if
+	// available).
 	GetRegisterAtBlockID(context.Context, *GetRegisterAtBlockIDRequest) (*GetRegisterAtBlockIDResponse, error)
 	// GetLatestBlockHeader gets the latest sealed or unsealed block header.
 	GetLatestBlockHeader(context.Context, *GetLatestBlockHeaderRequest) (*BlockHeaderResponse, error)
@@ -192,7 +194,7 @@ func (UnimplementedExecutionAPIServer) GetTransactionResult(context.Context, *Ge
 func (UnimplementedExecutionAPIServer) GetTransactionResultByIndex(context.Context, *GetTransactionByIndexRequest) (*GetTransactionResultResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionResultByIndex not implemented")
 }
-func (UnimplementedExecutionAPIServer) GetTransactionResultsByBlockID(context.Context, *GetTransactionResultsByBlockIDRequest) (*GetTransactionResultsByBlockIDResponse, error) {
+func (UnimplementedExecutionAPIServer) GetTransactionResultsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*GetTransactionResultsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionResultsByBlockID not implemented")
 }
 func (UnimplementedExecutionAPIServer) GetRegisterAtBlockID(context.Context, *GetRegisterAtBlockIDRequest) (*GetRegisterAtBlockIDResponse, error) {
@@ -325,7 +327,7 @@ func _ExecutionAPI_GetTransactionResultByIndex_Handler(srv interface{}, ctx cont
 }
 
 func _ExecutionAPI_GetTransactionResultsByBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTransactionResultsByBlockIDRequest)
+	in := new(GetTransactionsByBlockIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -337,7 +339,7 @@ func _ExecutionAPI_GetTransactionResultsByBlockID_Handler(srv interface{}, ctx c
 		FullMethod: "/flow.execution.ExecutionAPI/GetTransactionResultsByBlockID",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExecutionAPIServer).GetTransactionResultsByBlockID(ctx, req.(*GetTransactionResultsByBlockIDRequest))
+		return srv.(ExecutionAPIServer).GetTransactionResultsByBlockID(ctx, req.(*GetTransactionsByBlockIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

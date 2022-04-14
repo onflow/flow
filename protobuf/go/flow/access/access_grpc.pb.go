@@ -41,8 +41,14 @@ type AccessAPIClient interface {
 	GetTransaction(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResponse, error)
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(ctx context.Context, in *GetTransactionRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error)
-	// GetTransactionResultByIndex gets the result of a transaction at a specified block and index
+	// GetTransactionResultByIndex gets the result of a transaction at a specified
+	// block and index
 	GetTransactionResultByIndex(ctx context.Context, in *GetTransactionByIndexRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error)
+	// GetTransactionResultsByBlockID gets all the transaction results for a
+	// specified block
+	GetTransactionResultsByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*TransactionResultsResponse, error)
+	// GetTransactionsByBlockID gets all the transactions for a specified block
+	GetTransactionsByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*TransactionsResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
 	//
 	// Warning: this function is deprecated. It behaves identically to
@@ -197,6 +203,24 @@ func (c *accessAPIClient) GetTransactionResultByIndex(ctx context.Context, in *G
 	return out, nil
 }
 
+func (c *accessAPIClient) GetTransactionResultsByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*TransactionResultsResponse, error) {
+	out := new(TransactionResultsResponse)
+	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetTransactionResultsByBlockID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessAPIClient) GetTransactionsByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*TransactionsResponse, error) {
+	out := new(TransactionsResponse)
+	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetTransactionsByBlockID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *accessAPIClient) GetAccount(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*GetAccountResponse, error) {
 	out := new(GetAccountResponse)
 	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetAccount", in, out, opts...)
@@ -323,8 +347,14 @@ type AccessAPIServer interface {
 	GetTransaction(context.Context, *GetTransactionRequest) (*TransactionResponse, error)
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(context.Context, *GetTransactionRequest) (*TransactionResultResponse, error)
-	// GetTransactionResultByIndex gets the result of a transaction at a specified block and index
+	// GetTransactionResultByIndex gets the result of a transaction at a specified
+	// block and index
 	GetTransactionResultByIndex(context.Context, *GetTransactionByIndexRequest) (*TransactionResultResponse, error)
+	// GetTransactionResultsByBlockID gets all the transaction results for a
+	// specified block
+	GetTransactionResultsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*TransactionResultsResponse, error)
+	// GetTransactionsByBlockID gets all the transactions for a specified block
+	GetTransactionsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*TransactionsResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
 	//
 	// Warning: this function is deprecated. It behaves identically to
@@ -402,6 +432,12 @@ func (UnimplementedAccessAPIServer) GetTransactionResult(context.Context, *GetTr
 }
 func (UnimplementedAccessAPIServer) GetTransactionResultByIndex(context.Context, *GetTransactionByIndexRequest) (*TransactionResultResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionResultByIndex not implemented")
+}
+func (UnimplementedAccessAPIServer) GetTransactionResultsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*TransactionResultsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionResultsByBlockID not implemented")
+}
+func (UnimplementedAccessAPIServer) GetTransactionsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*TransactionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionsByBlockID not implemented")
 }
 func (UnimplementedAccessAPIServer) GetAccount(context.Context, *GetAccountRequest) (*GetAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccount not implemented")
@@ -664,6 +700,42 @@ func _AccessAPI_GetTransactionResultByIndex_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AccessAPI_GetTransactionResultsByBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTransactionsByBlockIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetTransactionResultsByBlockID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.access.AccessAPI/GetTransactionResultsByBlockID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetTransactionResultsByBlockID(ctx, req.(*GetTransactionsByBlockIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccessAPI_GetTransactionsByBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTransactionsByBlockIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetTransactionsByBlockID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.access.AccessAPI/GetTransactionsByBlockID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetTransactionsByBlockID(ctx, req.(*GetTransactionsByBlockIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _AccessAPI_GetAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAccountRequest)
 	if err := dec(in); err != nil {
@@ -916,6 +988,14 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetTransactionResultByIndex",
 			Handler:    _AccessAPI_GetTransactionResultByIndex_Handler,
+		},
+		{
+			MethodName: "GetTransactionResultsByBlockID",
+			Handler:    _AccessAPI_GetTransactionResultsByBlockID_Handler,
+		},
+		{
+			MethodName: "GetTransactionsByBlockID",
+			Handler:    _AccessAPI_GetTransactionsByBlockID_Handler,
 		},
 		{
 			MethodName: "GetAccount",
