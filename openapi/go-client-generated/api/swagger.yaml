@@ -1189,12 +1189,10 @@ components:
           height: height
           timestamp: 2000-01-23T04:56:07.000+00:00
         execution_result:
-          execution_data_id: null
           _links:
             _self: _self
           chunks:
-          - execution_data_id: null
-            start_state: ""
+          - start_state: ""
             number_of_transactions: number_of_transactions
             index: index
             collection_index: collection_index
@@ -1202,8 +1200,7 @@ components:
             event_collection: ""
             block_id: null
             total_computation_used: total_computation_used
-          - execution_data_id: null
-            start_state: ""
+          - start_state: ""
             number_of_transactions: number_of_transactions
             index: index
             collection_index: collection_index
@@ -1427,19 +1424,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Chunk'
-        execution_data_id:
-          $ref: '#/components/schemas/Identifier'
         previous_result_id:
           $ref: '#/components/schemas/Identifier'
         _links:
           $ref: '#/components/schemas/Links'
       example:
-        execution_data_id: null
         _links:
           _self: _self
         chunks:
-        - execution_data_id: null
-          start_state: ""
+        - start_state: ""
           number_of_transactions: number_of_transactions
           index: index
           collection_index: collection_index
@@ -1447,8 +1440,7 @@ components:
           event_collection: ""
           block_id: null
           total_computation_used: total_computation_used
-        - execution_data_id: null
-          start_state: ""
+        - start_state: ""
           number_of_transactions: number_of_transactions
           index: index
           collection_index: collection_index
@@ -1569,7 +1561,6 @@ components:
       - collection_index
       - end_state
       - event_collection
-      - execution_data_id
       - index
       - number_of_transactions
       - start_state
@@ -1599,10 +1590,7 @@ components:
         end_state:
           type: string
           format: byte
-        execution_data_id:
-          $ref: '#/components/schemas/Identifier'
       example:
-        execution_data_id: null
         start_state: ""
         number_of_transactions: number_of_transactions
         index: index

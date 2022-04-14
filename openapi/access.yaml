@@ -858,8 +858,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Chunk'
-        execution_data_id:
-          $ref: '#/components/schemas/Identifier'
         previous_result_id:
           $ref: '#/components/schemas/Identifier'
         _links:
@@ -941,7 +939,6 @@ components:
         - collection_index
         - end_state
         - event_collection
-        - execution_data_id
         - index
         - number_of_transactions
         - start_state
@@ -970,8 +967,6 @@ components:
         end_state:
           type: string
           format: byte
-        execution_data_id:
-          $ref: '#/components/schemas/Identifier'
     Links:
       type: object
       properties:

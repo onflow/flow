@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **BlockId** | **string** |  | [default to null]
 **Events** | [**[]Event**](Event.md) |  | [default to null]
 **Chunks** | [**[]Chunk**](Chunk.md) |  | [optional] [default to null]
-**ExecutionDataId** | **string** |  | [default to null]
 **PreviousResultId** | **string** |  | [default to null]
 **Links** | [***Links**](Links.md) |  | [optional] [default to null]
 

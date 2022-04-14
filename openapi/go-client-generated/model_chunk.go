@@ -17,5 +17,4 @@ type Chunk struct {
 	NumberOfTransactions string `json:"number_of_transactions"`
 	Index string `json:"index"`
 	EndState string `json:"end_state"`
-	ExecutionDataId string `json:"execution_data_id"`
 }
