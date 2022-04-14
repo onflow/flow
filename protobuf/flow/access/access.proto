@@ -222,7 +222,7 @@ message CollectionTransactions {
 }
 
 message TransactionsResponse {
-  repeated CollectionTransactions transactions = 1;
+  repeated entities.Transaction transactions = 1;
 }
 
 message TransactionResponse {
