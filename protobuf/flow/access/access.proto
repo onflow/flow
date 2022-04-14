@@ -235,6 +235,7 @@ message TransactionResultResponse {
   string error_message = 3;
   repeated entities.Event events = 4;
   bytes block_id = 5;
+  bytes transaction_id = 6;
 }
 
 // Accounts
