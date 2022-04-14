@@ -207,22 +207,12 @@ message GetTransactionsByBlockIDRequest {
   bytes block_id = 1;
 }
 
-message CollectionTransactionResults {
-  bytes collection_id = 1;
-  repeated TransactionResultResponse transaction_results = 2;
-}
-
 message TransactionResultsResponse {
-  repeated CollectionTransactionResults transaction_results = 1;
-}
-
-message CollectionTransactions {
-  bytes collection_id = 1;
-  repeated entities.Transaction transactions = 2;
+  repeated TransactionResultResponse transaction_results = 1;
 }
 
 message TransactionsResponse {
-  repeated CollectionTransactions transactions = 1;
+  repeated entities.Transaction transactions = 1;
 }
 
 message TransactionResponse {
@@ -236,6 +226,7 @@ message TransactionResultResponse {
   repeated entities.Event events = 4;
   bytes block_id = 5;
   bytes transaction_id = 6;
+  bytes collection_id = 7;
 }
 
 // Accounts
