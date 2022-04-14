@@ -213,7 +213,7 @@ message CollectionTransactionResults {
 }
 
 message TransactionResultsResponse {
-  repeated CollectionTransactionResults transaction_results = 1;
+  repeated TransactionResultResponse transaction_results = 1;
 }
 
 message CollectionTransactions {
