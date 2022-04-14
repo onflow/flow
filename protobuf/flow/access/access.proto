@@ -55,9 +55,17 @@ service AccessAPI {
   // GetTransactionResult gets the result of a transaction.
   rpc GetTransactionResult(GetTransactionRequest)
       returns (TransactionResultResponse);
-  // GetTransactionResultByIndex gets the result of a transaction at a specified block and index
+  // GetTransactionResultByIndex gets the result of a transaction at a specified
+  // block and index
   rpc GetTransactionResultByIndex(GetTransactionByIndexRequest)
       returns (TransactionResultResponse);
+  // GetTransactionResultsByBlockID gets all the transaction results for a
+  // specified block
+  rpc GetTransactionResultsByBlockID(GetTransactionsByBlockIDRequest)
+      returns (TransactionResultsResponse);
+  // GetTransactionsByBlockID gets all the transactions for a specified block
+  rpc GetTransactionsByBlockID(GetTransactionsByBlockIDRequest)
+      returns (TransactionsResponse);
 
   // Accounts
 
@@ -193,6 +201,28 @@ message GetTransactionRequest {
 message GetTransactionByIndexRequest {
   bytes block_id = 1;
   uint32 index = 2;
+}
+
+message GetTransactionsByBlockIDRequest {
+  bytes block_id = 1;
+}
+
+message CollectionTransactionResults {
+  bytes collection_id = 1;
+  repeated TransactionResultResponse transaction_results = 2;
+}
+
+message TransactionResultsResponse {
+  repeated CollectionTransactionResults transaction_results = 1;
+}
+
+message CollectionTransactions {
+  bytes collection_id = 1;
+  repeated entities.Transaction transactions = 2;
+}
+
+message TransactionsResponse {
+  repeated CollectionTransactions transactions = 1;
 }
 
 message TransactionResponse {

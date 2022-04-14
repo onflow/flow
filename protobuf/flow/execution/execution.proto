@@ -45,14 +45,15 @@ service ExecutionAPI {
   rpc GetTransactionResultByIndex(GetTransactionByIndexRequest)
       returns (GetTransactionResultResponse);
 
-  // GetTransactionResultByIndex gets the results of all transactions in the block
-  // ordered by transaction index
-  rpc GetTransactionResultsByBlockID(GetTransactionResultsByBlockIDRequest)
-      returns (GetTransactionResultsByBlockIDResponse);
+  // GetTransactionResultByIndex gets the results of all transactions in the
+  // block ordered by transaction index
+  rpc GetTransactionResultsByBlockID(GetTransactionsByBlockIDRequest)
+      returns (GetTransactionResultsResponse);
 
   // Registers
 
-  // GetRegisterAtBlockID collects a register at the block with the given ID (if available).
+  // GetRegisterAtBlockID collects a register at the block with the given ID (if
+  // available).
   rpc GetRegisterAtBlockID(GetRegisterAtBlockIDRequest)
       returns (GetRegisterAtBlockIDResponse);
 
@@ -129,12 +130,12 @@ message GetTransactionResultResponse {
   repeated entities.Event events = 3;
 }
 
-message GetTransactionResultsByBlockIDRequest {
+message GetTransactionsByBlockIDRequest {
   bytes block_id = 1;
 }
 
-message GetTransactionResultsByBlockIDResponse {
-  repeated entities.TransactionResult transactionResults = 1;
+message GetTransactionResultsResponse {
+  repeated GetTransactionResultResponse transaction_results = 1;
 }
 
 // Registers
