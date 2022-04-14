@@ -146,7 +146,7 @@ Cost estimation is a two-step process. First, you need to gather the execution e
 
 Execution effort is best determined by running a transaction and reviewing the emitted event details.
 
-#### Using Flow Emulator
+**Using Flow Emulator**
 
 You can [start the emulator using the Flow CLI](https://docs.onflow.org/emulator/#running-the-emulator-with-the-flow-cli). Run your transaction and take a look at the events emitted:
 
@@ -156,9 +156,9 @@ You can [start the emulator using the Flow CLI](https://docs.onflow.org/emulator
 
 You should see the `computationUsed` field. Take a note of the value, you will use it in the next step.
 
-#### On the testnet
+**On the testnet**
 
-Once a transaction is completed, you can use an explorer like [Flowscan](https://flowscan.org/) to review the transaction details and events emitted. For Flowscan, you can open the transaction in question and look for the event `FeesDeducted` from the `[FlowFees](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc)` contract:
+Once a transaction is completed, you can use an explorer like [Flowscan](https://flowscan.org/) to review the transaction details and events emitted. For Flowscan, you can open the transaction in question and look for the event `FeesDeducted` from the [`FlowFees`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc) contract:
 
 ![flowscan-fees](/flowscan-fees.png)
 
@@ -168,13 +168,13 @@ In the event data on the right side, you will see a set of fields representing [
 - inclusionEffort
 - executionEffort
 
-Take a note of the last value in the list - the`executionEffort` value. You will use it in the next step.
+Take a note of the last value in the list - the `executionEffort` value. You will use it in the next step.
 
 ### Calculating final costs
 
 The cost for transactions can be calculated using the following FCL scripts on mainnet/testnet respectively.
 
-#### On mainnet
+**On mainnet**
 
 ```cadence
 import FlowFees from 0xf919ee77447b7497
@@ -186,7 +186,7 @@ pub fun main(
 }
 ```
 
-#### On testnet
+**On testnet**
 
 ```cadence
 import FlowFees from 0x912d5440f7e3769e
@@ -206,7 +206,7 @@ FCL SDKs allow you to set the execution effort limit for each transaction. Based
 
 It is important to set a limit that isn’t too high or too low. If it is set too high, the payer needs to have more funds in their account before sending the transaction. If it is too low, the execution could fail and all state changes are dropped.
 
-#### Using FCL JS SDK
+**Using FCL JS SDK**
 
 You need to set the `limit` parameter for the `mutate` function, for example:
 
@@ -230,7 +230,7 @@ const transaction = await fcl.tx(transactionId).onceSealed();
 console.log(transaction;)
 ```
 
-### Using FCL Go SDK
+**Using FCL Go SDK**
 
 You need to call the `SetGasLimit` method to set the fee limit, for example:
 
@@ -257,7 +257,7 @@ tx := flow.NewTransaction().
 
 Several optimizations can lead to reduced execution time of transactions. Below is a list of some practices. This list is not exhaustive but rather exemplary.
 
-### Limit functions calls
+**Limit functions calls**
 
 Whenever you make function calls, make sure these are absolutely required. In some cases, you might be able to check prerequisites and avoid additional calls:
 
@@ -270,7 +270,7 @@ for obj in sampleList {
 }
 ```
 
-### Limit loops and iterations
+**Limit loops and iterations**
 
 Whenever you want to iterate over a list, make sure it is necessary to iterate through all elements as opposed to a subset. Avoid loops to grow in size too much over time. Limit loops when possible.
 
@@ -297,7 +297,7 @@ pub fun partialSum(list: [Int], start: Int, end: Int): Int {
 }
 ```
 
-### Understand the impact of function calls
+**Understand the impact of function calls**
 
 Some functions will require more execution efforts than others. You should carefully review what function calls are made and what execution they involve.
 
@@ -319,7 +319,7 @@ pub fun add(_ a: Int, _ b: Int): Int {
 }
 ```
 
-### Avoid excessive load and save operations
+**Avoid excessive load and save operations**
 
 Avoid costly loading and storage operations and [borrow references](https://docs.onflow.org/cadence/design-patterns/#avoid-excessive-load-and-save-storage-operations-prefer-in-place-mutations) where possible, for example:
 
@@ -342,11 +342,11 @@ transaction {
 
 > **Note**: If the requested resource does not exist, no reading costs are charged.
 
-### Limit accounts created per transaction
+**Limit accounts created per transaction**
 
 Creating accounts and adding keys are associated with costs. Try to only create accounts and keys when necessary.
 
-### Check user’s balance before executing transactions
+**Check user’s balance before executing transactions**
 
 You should ensure that the user’s balance has enough balance to cover the highest possible fees. For FT transfers, you need to cover the amount to transfer in addition to the highest possible fees.
 
@@ -356,15 +356,15 @@ Wallets will handle the presentation of the final transaction costs but you can 
 
 If your user is using non-custodial wallets, they may have to pay the transaction and want to understand the fees. Here are some suggestions.
 
-### Explain that costs can vary depending on the network usage
+**Explain that costs can vary depending on the network usage**
 
 Suggested message: “Fees improve the security of the network. They are flexible to ensure fair pricing based on the impact on the network.”
 
-### Explain that waiting for the network surge to pass is an option
+**Explain that waiting for the network surge to pass is an option**
 
 Inevitably, network surges will cause higher fees. Users who might want to submit a transaction while the network usage is surging should consider sending the transaction at a later time to reduce costs.
 
-### Explain that the wallet might not allow the transaction due to a lack of funds
+**Explain that the wallet might not allow the transaction due to a lack of funds**
 
 If dynamic fees increase to the highest possible level, the user’s fund might not be enough to execute the transaction. Let the users know that they should either add funds or try when the network is less busy.
 
@@ -372,42 +372,42 @@ If dynamic fees increase to the highest possible level, the user’s fund might 
 
 There are several places to learn more about transaction fees:
 
-    * [FLIP-660](https://github.com/onflow/flow/pull/660)
-    * [FLIP-753](https://github.com/onflow/flow/pull/753)
-    * [Flow Fees Contract](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc)
+- [FLIP-660](https://github.com/onflow/flow/pull/660)
+- [FLIP-753](https://github.com/onflow/flow/pull/753)
+- [Flow Fees Contract](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc)
 
 > **Note**: If you have thoughts on the implementation of transaction fees on Flow, you can [leave feedback on this forum post](https://forum.onflow.org/t/variable-transaction-fees-are-coming-to-flow/2941).
 
 ## FAQs
 
-### When will the fee update go into effect?
+**When will the fee update go into effect?**
 
 The updates were rolled out with the [Spork on April 6, 2022](https://docs.onflow.org/node-operation/past-sporks/#mainnet-17), but are pending enablement based on the timeline after the community vote on the topic.
 
-### Why are fees collected even when transactions fail?
+**Why are fees collected even when transactions fail?**
 
 Broadcasting and verifying a transaction requires execution, so costs are deducted appropriately.
 
-### What execution costs are considered above average?
+**What execution costs are considered above average?**
 
 There is no average for execution costs. Every function will vary significantly based on the logic implemented. You should review the optimization best practices to determine if you could reduce your costs.
 
-### Do hardware wallets like Ledger support variable fees?
+**Do hardware wallets like Ledger support variable fees?**
 
 Yes.
 
-### What is the lowest execution cost?
+**What is the lowest execution cost?**
 
 The lowest execution cost is 1. This means your transaction included one function call or loop that didn't read or write any date.
 
-### Can I determine how much a transaction will cost on mainnet without actually paying?
+**Can I determine how much a transaction will cost on mainnet without actually paying?**
 
 You can estimate the costs in a two-way process: 1) determine execution costs for transactions (emulator or testnet) and 2) use an FCL SDK method to calculate the final transaction fees.
 
-### How accurate will testnet fees be to mainnet fees?
+**How accurate will testnet fees be to mainnet fees?**
 
 Final fees are determined by the surge factor on the network. The surge factor for the testnet will be different from the factor for the mainnet, so you need to expect a variation between mainnet and testnet estimates.
 
-### I use Blocto and I haven't paid any fees yet. Why is that?
+**I use Blocto and I haven't paid any fees yet. Why is that?**
 
 That is because Blocto is acting as the payer for transactions. Non-custodial wallets may have the user pay the transaction. Additionally, apps can sponsor the transaction if they choose.
