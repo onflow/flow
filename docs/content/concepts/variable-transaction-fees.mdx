@@ -8,7 +8,7 @@ The guide will conclude with information on how to educate your users about fees
 
 > **Note**: Transaction cost implementation is based on a community-involved FLIP process. The work is currently ongoing. Jump to the “Learn More” section to participate in the process.
 
-## Understanding need for transaction fees
+## Understanding the need for transaction fees
 
 Variable fees are essential to ensure fair pricing based on the impact on the network. For instance, more heavy operations will require more resources to process and propagate transactions. Common operations, however, will stay reasonably priced.
 
@@ -126,21 +126,21 @@ Right now, the inclusion effort is always 1.0 and the inclusion effort cost is f
 
 > **Note**: Inclusion effort will always be calculable without executing the transaction code.
 
-In the future, costs for inclusion will be impacted by the byte size of transaction and the number of signatures required.
+In the future, costs for inclusion will be impacted by the byte size of the transaction and the number of signatures required.
 
 > **Note**: The changes to variable inclusion costs will be updated in [one of the upcoming sporks](https://docs.onflow.org/node-operation/upcoming-sporks/).
 
 ### Network surge
 
-In the future a network surge will be applied when the network is busy due to an increased influx of transactions required to be processed or a decrease in the ability to process transactions.. Right now, the network surge is fixed to `1.0`.
+In the future, a network surge will be applied when the network is busy due to an increased influx of transactions required to be processed or a decrease in the ability to process transactions. Right now, the network surge is fixed to `1.0`.
 
 ### Storage fees
 
-Storage fees are implemented differently to transaction fees. Read the [Storing Data on Flow guide](https://docs.onflow.org/concepts/storage/#storage-capacity) for more details. In summary, storage fees are a cost associated with storing data on chain.
+Storage fees are implemented differently from transaction fees. Read the [Storing Data on Flow guide](https://docs.onflow.org/concepts/storage/#storage-capacity) for more details. In summary, storage fees are a cost associated with storing data on-chain.
 
 ## Estimating transaction costs
 
-Cost estimation is a two-step process. First, you need to gather the execution effort with either the emulator or on the testnet. Second, you use the execution effort for a transaction to calculate the final fees using one the JavaScript or Go FCL SDKs.
+Cost estimation is a two-step process. First, you need to gather the execution effort with either the emulator or on the testnet. Second, you use the execution effort for a transaction to calculate the final fees using one of the JavaScript or Go FCL SDKs.
 
 ### Understanding execution effort
 
@@ -204,7 +204,7 @@ FCL SDKs allow you to set the execution effort limit for each transaction. Based
 
 > **Note**: Keep in mind that the limits are not for the final fees that the user will have to pay. The limits are for the execution efforts specifically.
 
-It is important to set a limit that isn’t too high or too low. If it is set too high, the payer needs to have more funds in their account before sending the transaction. If it is too low, the execution could fail and all state changes be dropped.
+It is important to set a limit that isn’t too high or too low. If it is set too high, the payer needs to have more funds in their account before sending the transaction. If it is too low, the execution could fail and all state changes are dropped.
 
 #### Using FCL JS SDK
 
@@ -255,7 +255,7 @@ tx := flow.NewTransaction().
 
 ## Optimizing Cadence code to reduce effort
 
-There are several optimizations that can lead to reduced execution time of transactions. Below is a list of some practices. This list is not exhaustive but rather exemplary.
+Several optimizations can lead to reduced execution time of transactions. Below is a list of some practices. This list is not exhaustive but rather exemplary.
 
 ### Limit functions calls
 
@@ -272,7 +272,7 @@ for obj in sampleList {
 
 ### Limit loops and iterations
 
-Whenever you want to iterate over a list, make sure it is absolutely necessary to iterate through all elements as opposed to a subset. Avoid loops to grow in size too much over time. Limit loops when possible.
+Whenever you want to iterate over a list, make sure it is necessary to iterate through all elements as opposed to a subset. Avoid loops to grow in size too much over time. Limit loops when possible.
 
 ```cadence
 // Iterating over long lists can be costly
@@ -297,7 +297,7 @@ pub fun partialSum(list: [Int], start: Int, end: Int): Int {
 }
 ```
 
-### Understand impact of function calls
+### Understand the impact of function calls
 
 Some functions will require more execution efforts than others. You should carefully review what function calls are made and what execution they involve.
 
@@ -344,7 +344,7 @@ transaction {
 
 ### Limit accounts created per transaction
 
-Creating accounts and adding keys is associated with costs. Try to only create accounts and keys when necessary.
+Creating accounts and adding keys are associated with costs. Try to only create accounts and keys when necessary.
 
 ### Check user’s balance before executing transactions
 
@@ -360,11 +360,11 @@ If your user is using non-custodial wallets, they may have to pay the transactio
 
 Suggested message: “Fees improve the security of the network. They are flexible to ensure fair pricing based on the impact on the network.”
 
-### Explain that waiting for network surge to pass is an option
+### Explain that waiting for the network surge to pass is an option
 
 Inevitably, network surges will cause higher fees. Users who might want to submit a transaction while the network usage is surging should consider sending the transaction at a later time to reduce costs.
 
-### Explain that the wallet might not allow the transaction due to lack of funds
+### Explain that the wallet might not allow the transaction due to a lack of funds
 
 If dynamic fees increase to the highest possible level, the user’s fund might not be enough to execute the transaction. Let the users know that they should either add funds or try when the network is less busy.
 
@@ -406,7 +406,7 @@ You can estimate the costs in a two-way process: 1) determine execution costs fo
 
 ### How accurate will testnet fees be to mainnet fees?
 
-Final fees are determined by the surge factor on the network. The surge factor for testnet will be different to the factor on mainnet, so you need to expect a variation between mainnet and testnet estimates.
+Final fees are determined by the surge factor on the network. The surge factor for the testnet will be different from the factor for the mainnet, so you need to expect a variation between mainnet and testnet estimates.
 
 ### I use Blocto and I haven't paid any fees yet. Why is that?
 
