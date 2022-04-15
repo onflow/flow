@@ -268,6 +268,7 @@ const sections = [
       "community-updates/*",
       "flow-port/**/*",
       "bounties/*",
+      "wallets/*",
     ],
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: false,

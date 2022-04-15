@@ -51,7 +51,7 @@ To ensure that Flow Mainnet works well for everyone in the early days, all smart
 
 **To submit your contract for review, use this: [Contract Review Submission Form](https://flowsolutionseng.zendesk.com/hc/en-us/requests/new?ticket_form_id=360001936012&tc_360045236671=b5ba92954c2f2692b56099fe653ac92d35c1e6e6)**
 
-After submission, a member of the review team will contact you to discuss how long the review will take, 
+After submission, a member of the review team will contact you to discuss how long the review will take,
 **though the minimum timeline is usually 2-3 weeks**.
 
 ### Deployment Process
@@ -63,6 +63,10 @@ When your application is approved for deployment, you'll need to make the Flow t
 - For projects requiring multiple contracts, you'll need to provide a deployment script and/or instructions explaining how to perform your multi-contract deployment correctly.
 
 Once this information has been provided the Flow team will deploy your project and notify you!
+
+### Mainnet NFT Discoverabilty
+
+You should follow the [steps listed in the Alchemy repository](https://github.com/alchemyplatform/alchemy-flow-contracts#adding-a-new-contract) to get your NFT disovered through the Alchemy API. Make sure you added files needed to support your NFT on mainnet specifically.
 
 ## Iterating on Mainnet
 

@@ -63,6 +63,10 @@ When your application is approved for deployment, you'll need to make the Flow t
 
 Once this information has been provided the Flow team will deploy your project and notify you!
 
+### Mainnet NFT Discoverabilty
+
+You should follow the [steps listed in the Alchemy repository](https://github.com/alchemyplatform/alchemy-flow-contracts#adding-a-new-contract) to get your NFT disovered through the Alchemy API. Make sure you added files needed to support your NFT on mainnet specifically.
+
 ## Iterating on Mainnet
 
 In the early days, Iterating (re-deploying) on Mainnet will be a manual process. Once your application is live, and you'd like to make updates or add features, you'll need to re-submit your updated smart contracts for review using the submission form, or by reaching out to your Flow point-of-contact directly.
