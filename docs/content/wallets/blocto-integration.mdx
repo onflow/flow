@@ -1,0 +1,87 @@
+---
+title: Blocto NFT Collection Integration
+sidebar_title: Introduction
+description: How to request listing your NFT collection on Blocto
+---
+
+## Introduction
+
+Out of the box, wallets do not support all NFT collections that are deployed on Flow. In order to get an NFT Collection to be supported by Blocto, you have to follow several steps. Once completed, Blocto will ...
+
+- show the NFTs in their user's balance view
+- make it easy to transfer of NFT
+
+> **Note**: You can display the NFT inside your application to confirm that users own a specific NFT. They might be confused by the Blocto UI because their NFTs wouldn't show up there automatically.
+
+Blocto leverages the [Alchemy API](https://alchemyapi.io/) in order to display NFT collections in their views.
+
+## Step 1: Prepare a new pull request
+
+You need to add your NFT collection to Blocto by submitting a Pull Request the following Alchemy GitHub project:
+
+```sh
+https://github.com/alchemyplatform/alchemy-flow-contracts
+```
+
+**Follow the steps defined in the ["Adding a new contract"](https://github.com/alchemyplatform/alchemy-flow-contracts#adding-a-new-contract) section.**
+
+### Testnet and mainnet
+
+You need to create `getNFTs.cdc` files for both the testnet and the mainnet. The files will be located in different folders.
+
+### Metadata
+
+The struct NFT object includes a parameter for `metadata`. It takes a dictionary type that is a `String` of `AnyStructs`.
+
+```cadence
+pub struct NFT {
+    pub let contract: Contract // contract defined bellow
+    pub let id: UInt64 // id of the nft usually just nft.id
+    pub let uuid: UInt64? // uuid of the nft usually just nft.uuid
+    pub let title: String? // title of the nft
+    pub let description: String? // description of the nft
+    pub let external_domain_view_url: String? // api for nft view resource
+    pub let media: Media? // media defined bellow used as avatar of nft
+    pub let alternate_media: [Media?] // alternative media to the primary media above
+    pub let metadata: {String: AnyStruct} // all the metadata in raw
+}
+```
+
+> **Note**: You can only use a String for the Struct. It cannot be any struct because the Alchemy API only returns Strings or Intereger
+
+Here is an example for the metadata parameter:
+
+```cadence
+return NFTData(
+    contract: contract,
+    id: nft.id,
+    uuid: nft.uuid,
+    title: editionMetadata.getMetadata()["title"] ?? setMetadata.getMetadata()["title"] ?? "",
+    description: editionMetadata.getMetadata()["description"] ?? setMetadata.getMetadata()["description"] ?? "", external_domain_view_url: "https://some.place",
+    token_uri: nil,
+    media: [
+        NFTMedia(uri: editionMetadata.getMetadata()["mediaURL"] ?? setMetadata.getMetadata()["mediaURL"] ?? "", mimet ],
+    metadata: {
+        "editionNumber": nft.editionNumber, //THIS CAN BE AN INTEGER OR A STRING
+        "editionCount": setMetadata.getMaxNumberOfEditions(),//THIS CAN BE AN INTEGER OR A STRING
+        "royaltyAddress": "0x8e2e0ebf3c03aa88",//THIS CAN BE AN INTEGER OR A STRING
+        "royaltyPercentage": "10.0"//THIS CAN BE AN INTEGER OR A STRING
+    }
+)
+```
+
+Make sure your metadata is a dictionary that contains a `string` of `integers`.
+
+## Step 2: Review pull request
+
+You can take a look at [this successfully merged PR](https://github.com/alchemyplatform/alchemy-flow-contracts/pull/67/files#diff52ac07a32e5823cea9908ece26d09760b30077a72260acc0cd237d9ab1cfac3aR2719-R272) to better understand what files are needed and what format you have to follow.
+
+## Step 3: Alchemy updates their API
+
+Once your pull request was merged by Alchemy, the need to update their API to use the latest Cadence scripts. This may take a couple of days.
+
+> **Note**: If it is taking longer please notify the Flow team at the email below.
+
+## Step 4: Verify Alchemy API support
+
+## Step 5: Request Blocto to list your NFT collection

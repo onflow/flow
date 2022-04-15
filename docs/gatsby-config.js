@@ -288,6 +288,7 @@ const sections = [
         "[Operate a Flow Node](/node-operation/)",
         "[Flow Port Staking Walkthrough](/flow-port/staking-guide/)",
         "[Staking Technical Guides](/staking/staking-options/)",
+        "[Blocto NFT Collection Integration](/wallets/blocto-integration/)",
       ],
       Reference: [
         "[Available Flow SDKs](/sdks/)",
