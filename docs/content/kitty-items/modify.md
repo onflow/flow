@@ -50,7 +50,11 @@ KITTY ITEMS HAS STARTED
 
 
 Visit: http://localhost:3001
+
+? Would you like to view the logs for all processes? (Y/n)
 ```
+
+Once again, you will be asked if you want to show all logs. You can enter `n` for now.
 
 You may notice that you were not prompted for an account. This is because the local setup includes a [developer wallet](https://github.com/onflow/fcl-dev-wallet) that simulates user accounts.
 
@@ -144,16 +148,21 @@ pub fun kindToString(_ kind: Kind): String {
 
 #### Create a transaction to update the list of images for your new kind
 
-We'll need to use a transaction to update the contract with the new UIRs to the images for the new NFT kind we created. 
-We can;t modify the list of images in the `init()` function directly because this function only run _the first time your contract is deployed_ and not on subsequet updates. This is an important behavious to understand. Uou can read more about here: <link>
+Next, you need to create a transaction to update the contract with new links to the images for the new NFT kind.
 
-1) Create a new transaction in `/cadence/transactions/kittyitems`
-2) Name the new file `add_nft_images_for_new_kind.cdc`
-3) Add the following code to the file: 
+> **Note**: You can't modify the list of images in the `init()` function directly because this function only runs _the first time your contract is deployed_ - not on subsequent updates. You can [read more about here](https://docs.onflow.org/cadence/language/contract-updatability/).
 
-```cadence:title=/cadence/transactions/kittyitems/add_nft_images_for_new_kind.cdc
+In the root directory of the project, run the following commands to create a new file for the transaction:
+
+```shell
+touch cadence/transactions/kittyItems/add_nft_images_for_new_kind.cdc
+```
+
+Navigate to the new file, open it, and paste the following code:
+
+```cadence:title=cadence/transactions/kittyItems/add_nft_images_for_new_kind.cdc
 import KittyItems from "../../contracts/KittyItems.cdc"
- 
+
 // This transction uses the NFTMinter resource to add new image URIs for a new Kind of KittyItems NFT.
 
 transaction {
@@ -166,10 +175,10 @@ transaction {
             ?? panic("Only authorized KittyItems NFT Minter can update KittyItems NFT...")
 
     let NewImages: { KittyItems.Kind: {KittyItems.Rarity: String}} = {
-      
-      // The image URIs are hardcoded here for demonstration, 
+
+      // The image URIs are hardcoded here for demonstration,
       // but could also be passed in to the transaction as arguments.
-      
+
       KittyItems.Kind.shades: {
         KittyItems.Rarity.blue: "bafybeibtxvitlnvksnzwrwmsqdgnoznosknr3fx5jxjazjcerpa2qo4jy4",
         KittyItems.Rarity.green: "bafybeicp5bagsziwkyarey76m5jkr6i3a5yrgr7r435qyuutbtlqxcdbwu",
@@ -179,24 +188,24 @@ transaction {
     }
 
     self.minter.addNewImagesForKind(from: signer, newImages: NewImages);
-  
+
   }
 
   execute {}
 }
 ```
 
-This transaction borrows the minter Resource from the signing account, and calls the `addNewImagesForKind` method on the minter Resource, passing in a struct containing the URIs to the new images for the `shades` kind we added.
+This transaction borrows the minter Resource from the signing account and calls the `addNewImagesForKind` method on the minter Resource. It passes a struct containing the links to the new images for the `shades` kind.
 
-If the signing account does not have the minter Resource thie transaction will fail. This is good, because we only want the account that mints NFTs to be able to modify the contract.
+> **Note**: If the signing account does not have the minter Resource, this transaction will fail. This is good, because we only want the account that mints NFTs to be able to modify the contract. Also keep in mind, that if you were to add your own NFT, you would have to upload images to IPFS and store the new hashes instead.
 
-> **Note**: If you were to add your own NFT, you would have to upload images to IPFS and store the new hashes instead.
+Make sure you saved the file before proceeding to the next step.
 
 ## Update contract on the emulator
 
 Because you changed the smart contract for Kitty Items, you have to redeploy it to the emulator. Run the following command in your terminal, inside the root folder.
 
-> **Note**: You will notice that the previous script execution finished once all services successfully started. You do not need to stop the previous process. You can run the next command in the same terminal wihtout impact on the services running in the background.
+> **Note**: You will notice that the previous script execution finished once all services successfully started. You do not need to stop the previous process. You can run the next command in the same terminal without impact on the services running in the background.
 
 ```sh
 npm run update:emulator
@@ -223,8 +232,35 @@ Run the following command to send the transaction to update the contract with th
 flow transactions send ./cadence/transactions/kittyItems/add_nft_images_for_new_kind.cdc -n emulator
 ```
 
-Once the trasnaction is sealed, you should be ready to mint your new KittyItems NFT!
+You should see the following response. Take note of the Status - it should be `✅ SEALED`.
 
+```shell
+Transaction ID: af76f20581a3923375fd52428cef078670673295c9d786a8ac9e616661a7f88e
+
+Status          ✅ SEALED
+ID              af76f20581a3923375fd52428cef078670673295c9d786a8ac9e616661a7f88e
+Payer           f8d6e0586b0a20c7
+Authorizers     [f8d6e0586b0a20c7]
+
+Proposal Key:
+    Address     f8d6e0586b0a20c7
+    Index       0
+    Sequence    15
+
+No Payload Signatures
+
+Envelope Signature 0: f8d6e0586b0a20c7
+Signatures (minimized, use --include signatures)
+
+Events:
+    Index       0
+    Type        A.f8d6e0586b0a20c7.KittyItems.ImagesAddedForNewKind
+    Tx ID       af76f20581a3923375fd52428cef078670673295c9d786a8ac9e616661a7f88e
+    Values
+                - kind (UInt8): 5
+```
+
+As indicated, the transaction was sealed and you are ready to mint your new KittyItems NFT.
 
 **Congratulations! You have completed all changes and your project now includes a new NFT collection for sunglasses.**
 

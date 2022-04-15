@@ -46,6 +46,8 @@ https://testnet.flowscan.org/account/0xa4c19ed9d691743c
 
 Explore your account here:
 https://flow-view-source.com/testnet/account/0xa4c19ed9d691743c
+
+? Would you like to view the logs for all processes? (Y/n)
 ```
 
 Open up the last link to explore your testnet account via flow-view-source. On the left side navigation, locate the Kitty Items contract.
@@ -56,7 +58,7 @@ Keep this page open - we will get back to it once we are done!
 
 Next, redeploy the contracts to the testnet by running the following command in your terminal, inside the root folder of your project:
 
-> **Note**: You will notice that the previous script execution finished once all services successfully started. You do not need to stop the previous process. You can run the next command in the same terminal wihtout impact on the services running in the background.
+> **Note**: You will notice that the previous script execution finished once all services successfully started. You do not need to stop the previous process. You can run the next command in the same terminal without impact on the services running in the background.
 
 ```sh
 npm run update:testnet
@@ -76,9 +78,69 @@ KittyItems -> 0x580b8132bc817403 (ba7f...bdc88)
 
 Go back to the flow-view-source page and refresh the contract view. Scroll down verify the changes you made to your contract. For instance, you should see `shades` case in the `Kind` enum.
 
-**If you see your changes your smart contract was updated successfully on the testnet!**
+## Run the update transaction on the testnet
 
-Congratulation on completing this tutorial. You should now understand how to ..
+Finally, run the following command to send the transaction to update the contract with the new `shades` images on the testnet.
+
+```shell
+npx dotenv -e .env.testnet -- flow transactions send --signer testnet-account ./cadence/transactions/kittyItems/add_nft_images_for_new_kind.cdc -f flow.json -f flow.testnet.json -n testnet
+```
+
+You should see the following response. Take note of the Status - it should be `✅ SEALED`.
+
+```shell
+Transaction ID: 60f0271a0ab31173f577300a058d644f5752f1fea844bc1ec6c89eafc8708737
+
+Status          ✅ SEALED
+ID              60f0271a0ab31173f577300a058d644f5752f1fea844bc1ec6c89eafc8708737
+Payer           36e0834a80d3a360
+Authorizers     [36e0834a80d3a360]
+
+Proposal Key:
+    Address     36e0834a80d3a360
+    Index       0
+    Sequence    5
+
+No Payload Signatures
+
+Envelope Signature 0: 36e0834a80d3a360
+Signatures (minimized, use --include signatures)
+
+Events:
+    Index       0
+    Type        A.36e0834a80d3a360.KittyItems.ImagesAddedForNewKind
+    Tx ID       60f0271a0ab31173f577300a058d644f5752f1fea844bc1ec6c89eafc8708737
+    Values
+                - kind (UInt8): 5
+
+    Index       1
+    Type        A.7e60df042a9c0868.FlowToken.TokensWithdrawn
+    Tx ID       60f0271a0ab31173f577300a058d644f5752f1fea844bc1ec6c89eafc8708737
+    Values
+                - amount (UFix64): 0.00001000
+                - from (Address?): 0x36e0834a80d3a360
+
+    Index       2
+    Type        A.7e60df042a9c0868.FlowToken.TokensDeposited
+    Tx ID       60f0271a0ab31173f577300a058d644f5752f1fea844bc1ec6c89eafc8708737
+    Values
+                - amount (UFix64): 0.00001000
+                - to (Address?): 0x912d5440f7e3769e
+
+    Index       3
+    Type        A.912d5440f7e3769e.FlowFees.FeesDeducted
+    Tx ID       60f0271a0ab31173f577300a058d644f5752f1fea844bc1ec6c89eafc8708737
+    Values
+                - amount (UFix64): 0.00001000
+                - inclusionEffort (UFix64): 1.00000000
+                - executionEffort (UFix64): 0.00000012
+```
+
+As indicated, the transaction was sealed and you are ready to mint your new KittyItems NFT on the testnet!
+
+**Congratulation on completing this tutorial**
+
+To summarize, you should now understand how to ...
 
 - deploy and update smart contracts
 - mint and transfer NFTs

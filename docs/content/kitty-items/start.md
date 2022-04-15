@@ -75,11 +75,17 @@ https://testnet.flowscan.org/account/0xff61db3c65da2fd0
 
 Explore your account here:
 https://flow-view-source.com/testnet/account/0xff61db3c65da2fd0
+
+? Would you like to view the logs for all processes? (Y/n)
 ```
+
+You will be asked if you want to view logs. These can be helpful if you want to understand better what the processes do. These logs are especially helpful if you face any issues. For now, we can enter `n`.
+
+> **Note**: If you face issues, you can run `npx pm2 logs` in a new terminal. The logs will help you troubleshoot any issues you might face. For example, if you already have services running on your machine that use the ports needed, you will be able to see it in the logs.
 
 Congratulations! Your own instance of Kitty Items is now running locally and wired up to the Cadence contracts deployed to the testnet.
 
-> **Note**: Not seeing the success message? Take a look at the [troubleshooting FAQs](https://github.com/onflow/kitty-items#troubleshooting).
+> **Note**: If you don't see the success message or if your script does not terminate, take a look at the [troubleshooting FAQs](https://github.com/onflow/kitty-items#troubleshooting).
 
 ## Open Kitty Items
 
