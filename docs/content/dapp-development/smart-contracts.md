@@ -1,6 +1,6 @@
 ---
 title: Smart Contracts for Flow Dapps
-sidebar_title: Smart Contracts 
+sidebar_title: Smart Contracts
 ---
 
 At its core, a decentralized application is defined by the [smart contracts](https://en.wikipedia.org/wiki/Smart_contract) it uses on the blockchain. Rather than relying on centralized application servers and databases, dapps model their core application logic using smart contracts, often referred to as the “on-chain” code.
@@ -13,21 +13,21 @@ Smart contracts on the Flow blockchain are implemented in [Cadence](https://gith
 
 ### Onboard to Cadence
 
-To get started with Cadence, we recommended covering the introductory tutorials available in the [Flow Playground](https://play.onflow.org/), a simple web IDE designed for learning Cadence. 
+To get started with Cadence, we recommended covering the introductory tutorials available in the [Flow Playground](https://play.onflow.org/), a simple web IDE designed for learning Cadence.
 
 ### Learn Through Examples
 
-After learning the basics, check out the [Kitty Items sample dapp](https://github.com/onflow/kitty-items) to see Cadence contracts being used by a real web application. Inspired by CryptoKitties, Kitty Items demonstrates a simple NFT application that supports NFT minting, sales, and peer-to-peer trading.
+After learning the basics, check out the [Kitty Items sample dapp](/kitty-items/) to see Cadence contracts being used by a real web application. Inspired by CryptoKitties, Kitty Items demonstrates a simple NFT application that supports NFT minting, sales, and peer-to-peer trading.
 
 ### Configure Your Local Environment
 
-To build confidently, you will want to set up the appropriate local environment and have an adequate test suite to ensure your smart contracts operate as intended. To do this, read the [Kitty Items local development instructions](https://github.com/onflow/kitty-items/blob/master/LOCAL_DEV.md) to familiarize yourself with the following tools:
+To build confidently, you will want to set up the appropriate local environment and have an adequate test suite to ensure your smart contracts operate as intended. To do this, familiarize yourself with the following tools:
 
-* [Flow CLI](/flow-cli/): A utility to directly interact with the chain and manage accounts and contracts.
-* [Flow Emulator](/emulator/): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
-* [FCL Dev Wallet](https://github.com/onflow/fcl-dev-wallet/): A utility to simulate user wallets in development.
-* [Visual Studio Code Extension](/vscode-extension/): An IDE integration for developing smart contracts.
-* [JS Testing Framework](https://github.com/onflow/flow-js-testing): A framework to easily test your smart contracts.
+- [Flow CLI](/flow-cli/): A utility to directly interact with the chain and manage accounts and contracts.
+- [Flow Emulator](/emulator/): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
+- [FCL Dev Wallet](https://github.com/onflow/fcl-dev-wallet/): A utility to simulate user wallets in development.
+- [Visual Studio Code Extension](/vscode-extension/): An IDE integration for developing smart contracts.
+- [JS Testing Framework](https://github.com/onflow/flow-js-testing): A framework to easily test your smart contracts.
 
 ## Storing Data on Flow
 
@@ -63,16 +63,16 @@ The Flow blockchain has existing smart contract standards for both fungible and 
 
 All NFTs on the Flow blockchain implement the [NonFungibleToken](/core-contracts/non-fungible-token/) interface, allowing them to be compatible with wallets, marketplaces and other cross-app experiences.
 
-* [Non-Fungible Token (NFT) contract interface](/core-contracts/non-fungible-token/)
+- [Non-Fungible Token (NFT) contract interface](/core-contracts/non-fungible-token/)
 
 ### NFT Sales and Trading {#nft-sales-and-trading}
 
 Flow has a standard contract to facilitate both the direct sales and peer-to-peer trading of NFTs. The NFT storefront contract is useful for dapps that want to provide an NFT marketplace experience.
 
-* [NFT Storefront contract](https://github.com/onflow/nft-storefront)
+- [NFT Storefront contract](https://github.com/onflow/nft-storefront)
 
 ### Fungible Tokens
 
 Fungible tokens (i.e. coins, currencies) on the Flow blockchain, including the default cryptocurrency token FLOW, implement the [FungibleToken](/core-contracts/fungible-token/) interface.
 
-* [Fungible Token contract interface](/core-contracts/fungible-token/)
+- [Fungible Token contract interface](/core-contracts/fungible-token/)
