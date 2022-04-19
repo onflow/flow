@@ -1,5 +1,5 @@
 ---
-title: Variable Transaction Fees
+title: Segmented Transaction Fees
 ---
 
 This guide will explain why transaction fees are important, how they are calculated, and how you can handle fees within your implementation. Specifically, it lays out how you can estimate the costs of a transaction, how you can set the limit for costs, and how you can optimize your Cadence code to reduce transaction costs where possible.
@@ -10,7 +10,7 @@ The guide will conclude with information on how to educate your users about fees
 
 ## Understanding the need for transaction fees
 
-Variable fees are essential to ensure fair pricing based on the impact on the network. For instance, more heavy operations will require more resources to process and propagate transactions. Common operations, however, will stay reasonably priced.
+Segmented transaction fees are essential to ensure fair pricing based on the impact on the network. For instance, more heavy operations will require more resources to process and propagate transactions. Common operations, however, will stay reasonably priced.
 
 Fees will improve the overall security of the network by making malicious actions (eg spam) on the network less viable.
 
@@ -392,7 +392,7 @@ Broadcasting and verifying a transaction requires execution, so costs are deduct
 
 There is no average for execution costs. Every function will vary significantly based on the logic implemented. You should review the optimization best practices to determine if you could reduce your costs.
 
-**Do hardware wallets like Ledger support variable fees?**
+**Do hardware wallets like Ledger support segemented fees?**
 
 Yes.
 
