@@ -392,7 +392,7 @@ Broadcasting and verifying a transaction requires execution, so costs are deduct
 
 There is no average for execution costs. Every function will vary significantly based on the logic implemented. You should review the optimization best practices to determine if you could reduce your costs.
 
-**Do hardware wallets like Ledger support segemented fees?**
+**Do hardware wallets like Ledger support segmented fees?**
 
 Yes.
 
