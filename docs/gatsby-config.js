@@ -692,7 +692,7 @@ const sections = [
         "kitty-items/update",
         "kitty-items/next-steps",
       ],
-      "NFT Matketplace Guide": [
+      "NFT Marketplace Guide": [
         "nft-marketplace/index",
         "nft-marketplace/building-blocks",
         "nft-marketplace/handling-accounts",
