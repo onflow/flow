@@ -138,7 +138,9 @@ Events:
 
 As indicated, the transaction was sealed and you are ready to mint your new KittyItems NFT on the testnet!
 
-**Congratulation on completing this tutorial**
+**🎉 Congratulations on completing this tutorial! Because you made it to the very end, we're rewarding you with a unique [FLOAT NFT](https://floats.city/andrea.find/event/198577460)!**
+
+> **Important**: To claim your NFT, open [this FLOAT event](https://floats.city/andrea.find/event/198577460). You will be asked to connect a wallet. Once done, you need to enter a **secret code**. Open the `add_nft_images_for_new_kind.cdc` file you created in [this previous step](/kitty-items/modify/#create-a-transaction-to-update-the-list-of-images-for-your-new-kind). Locate the comment before `execute{}`. Use this code to claim your NFT 🤫
 
 To summarize, you should now understand how to ...
 
