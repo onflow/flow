@@ -281,7 +281,7 @@ const sections = [
       ],
       "Guides & Walkthroughs": [
         "[Flow Concepts](/concepts/)",
-        "[Variable Transaction Fees](/concepts/variable-transaction-fees/)",
+        "[Segmented Transaction Fees](/concepts/segmented-transaction-fees/)",
         "[Cadence Best Practices](/cadence/)",
         "[Dapp Development Guide](/dapp-development/)",
         "[Using the Testing Library](/flow-js-testing/install/)",
