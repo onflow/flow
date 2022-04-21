@@ -4,10 +4,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | [default to null]
-**Script** | **string** |  | [default to null]
-**Arguments** | **[]string** |  | [default to null]
+**Script** | **string** | Base64 encoded Cadence script. | [default to null]
+**Arguments** | **[]string** | Array of Base64 encoded arguments with in [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/). | [default to null]
 **ReferenceBlockId** | **string** |  | [default to null]
-**GasLimit** | **string** |  | [default to null]
+**GasLimit** | **string** | The limit on the amount of computation a transaction is allowed to preform. | [default to null]
 **Payer** | **string** |  | [default to null]
 **ProposalKey** | [***ProposalKey**](ProposalKey.md) |  | [default to null]
 **Authorizers** | **[]string** |  | [default to null]

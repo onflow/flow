@@ -26,9 +26,10 @@ var (
 
 type TransactionsApiService service
 /*
-TransactionsApiService Gets a transaction result by ID.
+TransactionsApiService Get a Transaction Result by ID.
+Get transaction result by the transaction result ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param transactionId The transaction ID of the transaction result to get.
+ * @param transactionId The transaction ID of the transaction result.
  * @param optional nil or *TransactionsApiTransactionResultsTransactionIdGetOpts - Optional Parameters:
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
@@ -155,7 +156,8 @@ func (a *TransactionsApiService) TransactionResultsTransactionIdGet(ctx context.
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
-TransactionsApiService Gets a transaction by ID.
+TransactionsApiService Get a Transaction by ID.
+Get a transaction data by the provided transaction ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The ID of the transaction to get.
  * @param optional nil or *TransactionsApiTransactionsIdGetOpts - Optional Parameters:
@@ -284,7 +286,8 @@ func (a *TransactionsApiService) TransactionsIdGet(ctx context.Context, id strin
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
-TransactionsApiService Submits a transaction to the network.
+TransactionsApiService Submit a Transaction
+Send a new signed transaction payload to the network with [required transaction fields](https://docs.onflow.org/flow-go-sdk/#transactions).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body The transaction to submit.
 @return Transaction

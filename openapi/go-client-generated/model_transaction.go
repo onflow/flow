@@ -10,9 +10,12 @@ package swagger
 
 type Transaction struct {
 	Id string `json:"id"`
+	// Base64 encoded Cadence script.
 	Script string `json:"script"`
+	// Array of Base64 encoded arguments with in [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
 	Arguments []string `json:"arguments"`
 	ReferenceBlockId string `json:"reference_block_id"`
+	// The limit on the amount of computation a transaction is allowed to preform.
 	GasLimit string `json:"gas_limit"`
 	Payer string `json:"payer"`
 	ProposalKey *ProposalKey `json:"proposal_key"`

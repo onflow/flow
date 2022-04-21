@@ -17,21 +17,21 @@ import "./swagger"
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://rest-testnet.onflow.org/v1*
+All URIs are relative to *https://rest-canary.onflow.org/v1/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountsApi* | [**AccountsAddressGet**](docs/AccountsApi.md#accountsaddressget) | **Get** /accounts/{address} | Gets an account by address at the given block height.
-*BlocksApi* | [**BlocksGet**](docs/BlocksApi.md#blocksget) | **Get** /blocks | Gets full blocks by height.
-*BlocksApi* | [**BlocksIdGet**](docs/BlocksApi.md#blocksidget) | **Get** /blocks/{id} | Gets full blocks by ID.
-*CollectionsApi* | [**CollectionsIdGet**](docs/CollectionsApi.md#collectionsidget) | **Get** /collections/{id} | Gets a collection by ID.
-*EventsApi* | [**EventsGet**](docs/EventsApi.md#eventsget) | **Get** /events | 
-*ExecutionResultsApi* | [**ExecutionResultsGet**](docs/ExecutionResultsApi.md#executionresultsget) | **Get** /execution_results | Gets execution results by block ID.
-*ExecutionResultsApi* | [**ExecutionResultsIdGet**](docs/ExecutionResultsApi.md#executionresultsidget) | **Get** /execution_results/{id} | Gets an execution result by ID.
-*ScriptsApi* | [**ScriptsPost**](docs/ScriptsApi.md#scriptspost) | **Post** /scripts | Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block height.
-*TransactionsApi* | [**TransactionResultsTransactionIdGet**](docs/TransactionsApi.md#transactionresultstransactionidget) | **Get** /transaction_results/{transaction_id} | Gets a transaction result by ID.
-*TransactionsApi* | [**TransactionsIdGet**](docs/TransactionsApi.md#transactionsidget) | **Get** /transactions/{id} | Gets a transaction by ID.
-*TransactionsApi* | [**TransactionsPost**](docs/TransactionsApi.md#transactionspost) | **Post** /transactions | Submits a transaction to the network.
+*AccountsApi* | [**AccountsAddressGet**](docs/AccountsApi.md#accountsaddressget) | **Get** /accounts/{address} | Get an Account By Address
+*BlocksApi* | [**BlocksGet**](docs/BlocksApi.md#blocksget) | **Get** /blocks | Gets Blocks by Height
+*BlocksApi* | [**BlocksIdGet**](docs/BlocksApi.md#blocksidget) | **Get** /blocks/{id} | Get Blocks by ID.
+*CollectionsApi* | [**CollectionsIdGet**](docs/CollectionsApi.md#collectionsidget) | **Get** /collections/{id} | Gets a Collection by ID
+*EventsApi* | [**EventsGet**](docs/EventsApi.md#eventsget) | **Get** /events | Get Events
+*ExecutionResultsApi* | [**ExecutionResultsGet**](docs/ExecutionResultsApi.md#executionresultsget) | **Get** /execution_results | Get Execution Results by Block ID
+*ExecutionResultsApi* | [**ExecutionResultsIdGet**](docs/ExecutionResultsApi.md#executionresultsidget) | **Get** /execution_results/{id} | Get Execution Result by ID
+*ScriptsApi* | [**ScriptsPost**](docs/ScriptsApi.md#scriptspost) | **Post** /scripts | Execute a Cadence Script
+*TransactionsApi* | [**TransactionResultsTransactionIdGet**](docs/TransactionsApi.md#transactionresultstransactionidget) | **Get** /transaction_results/{transaction_id} | Get a Transaction Result by ID.
+*TransactionsApi* | [**TransactionsIdGet**](docs/TransactionsApi.md#transactionsidget) | **Get** /transactions/{id} | Get a Transaction by ID.
+*TransactionsApi* | [**TransactionsPost**](docs/TransactionsApi.md#transactionspost) | **Post** /transactions | Submit a Transaction
 
 ## Documentation For Models
 
@@ -46,6 +46,7 @@ Class | Method | HTTP request | Description
  - [BlockHeight](docs/BlockHeight.md)
  - [BlockPayload](docs/BlockPayload.md)
  - [BlockSeal](docs/BlockSeal.md)
+ - [Chunk](docs/Chunk.md)
  - [Collection](docs/Collection.md)
  - [CollectionExpandable](docs/CollectionExpandable.md)
  - [CollectionGuarantee](docs/CollectionGuarantee.md)
@@ -60,6 +61,7 @@ Class | Method | HTTP request | Description
  - [ScriptsBody](docs/ScriptsBody.md)
  - [SigningAlgorithm](docs/SigningAlgorithm.md)
  - [Transaction](docs/Transaction.md)
+ - [TransactionExecution](docs/TransactionExecution.md)
  - [TransactionExpandable](docs/TransactionExpandable.md)
  - [TransactionResult](docs/TransactionResult.md)
  - [TransactionSignature](docs/TransactionSignature.md)
