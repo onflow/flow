@@ -6,6 +6,10 @@ sidebar_title: Next steps
 
 By now, you have a fully-functioning NFT marketplace with your own, new exclusive NFT collection. You might ask yourself where to go from here. Here are some ideas to get you inspired!
 
+## Video Walkthrough
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/v-r1Ucg8hHk?start=503" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Learn more about NFT marketplaces
 
 Dive deeper by reading the **[NFT Marketplace Guide](/nft-marketplace/)**. It covers topics like the building blocks of marketplaces, how to handle accounts, how to mint and sell NFTs, and best practices for production-readiness.
