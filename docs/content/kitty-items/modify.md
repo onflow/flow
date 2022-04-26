@@ -8,6 +8,10 @@ The following steps will guide you through a modification of the Kitty Items pro
 
 ![sunglasses](shades-nft.png)
 
+## Video Walkthrough
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xLRI4F6X89I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Start in emulator
 
 In the last step, you started the project on the testnet. For local development, however, it is recommended to emulate the blockchain network locally using the [Flow Emulator](/emulator/). Once changes are implemented and tested locally, you will deploy the updates to the testnet.
