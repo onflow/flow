@@ -13,6 +13,10 @@ The following chapters use the project to explain the components and concepts of
 - add a new kind of NFT to the marketplace
 - interact with the Flow blockchain from within a web application
 
+## Video Walkthrough
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL0qVMKzYEBROIztSG9v7-_HiWEDMxz4Ve" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Live Demo
 
 By the end of the tutorial, you will have your own instance of Kitty Items. You can use our [deployed demo instance](https://kitty-items.onflow.org/) to explore the project.
@@ -38,3 +42,4 @@ The code in this project demonstrates how to connect to Flow using [FCL](/fcl/) 
 ### 3. Flow Network (Smart Contracts)
 
 [Cadence](/cadence) smart contracts, scripts & transactions for your viewing pleasure. This is where all of the blockchain logic for the marketplace application lives. Here you will find examples of [fungible token](https://github.com/onflow/flow-ft) and [non-fungible token (NFT)](https://github.com/onflow/flow-nft) smart contract implementations, as well as the scripts and transactions that interact with them. It also contains examples of how to _test_ your Cadence code.
+
