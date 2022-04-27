@@ -6,7 +6,7 @@ sidebar_title: Install
 
 Follow the steps below to start your own version of Kitty Items. 
 
-## Video Walkthrough (Optional)
+## Video Walkthrough
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hsDHUgH8E7o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
