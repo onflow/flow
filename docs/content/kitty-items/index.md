@@ -15,6 +15,8 @@ The following chapters use the project to explain the components and concepts of
 
 ## Video Walkthrough
 
+Below you'll find a 5-part video walkthrough that covers all the contents of this tutorial. You are welcome to watch or skip the video walkthrough depending on your style of learning. The embed below contains the whole series as a playlist, and the first video is dedicated to this introductory section. Each of the following pages will directly embed the corresponding video in the series.
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL0qVMKzYEBROIztSG9v7-_HiWEDMxz4Ve" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Live Demo
