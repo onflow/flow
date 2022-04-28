@@ -11,7 +11,7 @@ Check out the [Flow Access API specification](/docs/content/access-api.md).
 You can use [buf](https://github.com/bufbuild/buf) to generate gRPC client stubs in a variety of languages.
 Please make sure you have `protoc-gen-go-grpc` installed, for example using command
 ```shell script
-go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1.0
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
 ```
 
 Running the command below (in the current directory) will generate stubs for Go:
@@ -28,10 +28,10 @@ JVM support is in the alpha stage; many steps require manual intervention.
 
 ### Publishing
 
-`./gradlew publishToSonatype` prepares and publishes compiled classes into JAR and uploads to OSSRH staging repository. 
+`./gradlew publishToSonatype` prepares and publishes compiled classes into JAR and uploads to OSSRH staging repository.
 
-This requires signing artifacts which is done by [Signing Gradle plugin](https://docs.gradle.org/current/userguide/signing_plugin.html) - it requires 
-external configuration and appropriate GPG Keys. Please refer to plugin and [OSSRH](https://central.sonatype.org/pages/working-with-pgp-signatures.html) 
+This requires signing artifacts which is done by [Signing Gradle plugin](https://docs.gradle.org/current/userguide/signing_plugin.html) - it requires
+external configuration and appropriate GPG Keys. Please refer to plugin and [OSSRH](https://central.sonatype.org/pages/working-with-pgp-signatures.html)
 documentation.
-Uploading to staging repo requires an approved Sonatype account. Please refer to [Gradle Nexus Publish Plugin](https://github.com/gradle-nexus/publish-plugin) 
-documentation how to provide credentials. 
+Uploading to staging repo requires an approved Sonatype account. Please refer to [Gradle Nexus Publish Plugin](https://github.com/gradle-nexus/publish-plugin)
+documentation how to provide credentials.
