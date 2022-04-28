@@ -4,7 +4,11 @@ description: Set up the project locally
 sidebar_title: Install
 ---
 
-Follow the steps below to start your own version of Kitty Items.
+Follow the steps below to start your own version of Kitty Items. 
+
+## Video Walkthrough
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/hsDHUgH8E7o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Check prerequisites
 
