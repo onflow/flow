@@ -117,6 +117,7 @@
 | Metapurse | Consensus |1780288437c9aed5056836bfffcfe19334dd6e229607fccfb3fe9b1d4d24cdca
 | Metapurse | Verfication | dc3054cae816874d7dbbe838a41ef97c8a01b44643bffc82afe3a8228eed29fd
 | NFT42 | Verification | f8af31c7c3294b246f34040e5685c351e89f1c1edf6c64f93f7babd73d149951
+| NuFi | Verification| 88fbac6c7427f24b616aa8d8a6a18632f51b3411ad774a1d59c00c29ad5134fb
 | P2P | Verification | 78ef2e461a32df2278ae78baf7cf1a54fec3601fe4723a5833c49e1935dc4b7d
 | P2P | Consensus | 14faeb5538c8791827163074cd5fdbdcf70c44648a98d835c63ebb386d5c4745 
 | P2P | Collection | 79b43645fdf7c6597d8868b10c91d8cf343ab7d2cea0c98902d8f9456049918a
