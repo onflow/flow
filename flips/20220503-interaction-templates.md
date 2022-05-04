@@ -9,7 +9,7 @@
 
 ## Abstract
 
-This FLIP is a proposed standard for how identifiers and metadata (Interaction Templates) can be created for Flow transactions and scripts. Metadata can include: version information, human readable messages, argument messages, dependency information etc. This FLIP proposes a standard for how audits (Interaction Template Audits) of such metadata can be constructed by entities acting as auditors. These audits can be used by wallets to verify the validity and security of transactions and their metadata. Audited and then verified metadata can be used by wallets during transaction authorization, helping to increase security and promote better UX for their users. Applications can use transaction and script metadata (Interaction Templates) that conform to standardized interfaces (Interaction Template Interfaces) to interpret the intent and purpose of various transactions and scripts between applications.
+This FLIP proposes a new standard for how contract developers, wallets, users, auditors and applications, can create, audit and verify the intent, security and metadata of Flow scripts and transactions, with the goal to improve the understandability and security of authorizing transactions and promote patterns for change resilient composability of applications on Flow.
 
 ## Background
 
