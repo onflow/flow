@@ -1,8 +1,7 @@
 # Interaction Templates
 
-| Status        | Proposed      |
+| Status        | Draft      |
 :------------ | :----------------------------------------------------  |
-| **Status**  | Draft |
 | **FLIP #**         | [934](https://github.com/onflow/flow/pull/934) |
 | **Author(s)**  | Jeffrey Doyle (jeffrey.doyle@dapperlabs.com) |
 | **Sponsor**     | Jeffrey Doyle (jeffrey.doyle@dapperlabs.com)            |
@@ -10,11 +9,7 @@
 
 ## Abstract
 
-This FLIP is a proposal for how:
-- Templates of Flow transactions and scripts should be constructed.
-- Transaction and script templates should be audited.
-- Transaction and script template audits should be verified.
-- Applications might use a Flow transaction or script template to carry out their underlying functionality.
+This FLIP is a proposed standard for how identifiers and metadata (Interaction Templates) can be created for Flow transactions and scripts. Metadata can include: version information, human readable messages, argument messages, dependency information etc. This FLIP proposes a standard for how audits (Interaction Template Audits) of such metadata can be constructed by entities acting as auditors. These audits can be used by wallets to verify the validity and security of transactions and their metadata. Audited and then verified metadata can be used by wallets during transaction authorization, helping to increase security and promote better UX for their users. Applications can use transaction and script metadata (Interaction Templates) that conform to standardized interfaces (Interaction Template Interfaces) to interpret their intent and purpose of various transactions and scripts between applications.
 
 ## Background
 
