@@ -38,12 +38,12 @@ Currently, applications and wallets are left to come up with their own metadata 
 
 ## Objective
 
-Interaction Templates are a solution to a number of problems that exist for application developers, wallet developers and users on Flow. At a high level, Interaction Templates attempt to standardize the **auditing,  metadata,  identification and interpretation** of **transactions and scripts** on Flow.
+At a high level, Interaction Templates attempt to standardize how contract developers, wallets, users, auditors and applications, can create, audit and verify the intent, security and metadata of Flow scripts and transactions.
 
 ### Metadata Standardization
 By standardizing **Interaction Template Metadata**, the Flow community can start to build applications that can consume metadata, instead of having to come up with it themselves for each interaction they need to support. Since the format of the metadata would be consistent, this enables parties to support a much wider number of interactions, including any number of arbitrary interactions.
 
-Standardizing metadata helps all parties involved involved in the execution of an interaction to better understand what an interaction require and does. For applications, metadata allows them to understand and present the interaction to a user in an intuitive way. For wallets, metadata helps them understand what a transaction will do to an account, and give them tools to prevent undesirable outcomes and reject malicious transactions. For users, metadata helps to promote human readable understanding of the impacts of a transaction.
+Standardizing metadata helps all parties involved involved in the execution of an interaction to better understand what an interaction require and does. For applications, metadata allows them to understand and present the interaction to a user in an intuitive way. For wallets, metadata also helps them understand what a transaction will do to an account, and gives them tools to prevent undesirable outcomes and reject malicious transactions. For users, metadata helps to promote human readable understanding of the impacts of a transaction.
 
 ### Interaction Audits
 Interaction metadata must be correct in order to be valuable. Metadata that deceives about it's underlying interaction can have unfortunate effects for an end user. To prevent against this, standardizing **Interaction Template Audits** can help all parties that consume and produce Interaction Templates to verify and prove that the template is correct.
