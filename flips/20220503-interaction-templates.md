@@ -57,7 +57,7 @@ Many interactions aim to achieve the same class of action according to how that 
 
 For example, different marketplaces may have different mechanics behind how a user may "List" their asset on them, but across all implementations, the action "List" is what they all aim to do.
 
-Interaction Interfaces aim to standardize these actions by defining classes of actions, an a set of arguments that Interactions that implement these actions must consume.
+Interaction Interfaces aim to standardize these actions by defining classes of actions, and a set of arguments that Interactions that implement these actions must consume.
 
 Here is an example of an `InteractionTemplateInterface` for "Fungible Token Transfer":
 ```javascript
@@ -87,11 +87,11 @@ Here is an example of an `InteractionTemplateInterface` for "Fungible Token Tran
 These fields declare the data structure type and data structure version. The version instructs consumers of this data structure how to operate on it. It also allows the data structure to change in future versions.
 
 #### `id`
-This is a unique, content derived identifier for this interaction. Each ID is unique for each interaction.
+This is a unique, content derived identifier for this interaction interface. Each ID is unique for each interaction interface.
 This is created by hashing (SHA-256 hash represented as hex string) (TODO: Define serialization process of the data structure prior to hashing) over the `data` portion of the interaction template.
 
 #### `data.version`
-The semver version of the interface.
+The SemVer version of the interface.
 
 #### `data.flip`
 The FLIP number that this interface was established.
@@ -245,10 +245,10 @@ Either `transaction` or `script` , defining what type of interaction this corres
 The identifier of the interface this interaction template implements. Not all interaction templates should implement an interface, so this is field optional.
 
 #### `data.version`
-The semver version of the interaction.
+The SemVer version of the interaction.
 
 #### `data.messages`
-Internationalized, human readable messages explaining the interaction. For each message, there can be any number of translations provided. Translations should use [BCP 47](https://www.techonthenet.com/js/language_tags.php) language tags. Messages may also consume arguments, which correspond to the arguments supplied to the transaction.
+Internationalized, human readable messages explaining the interaction. For each message, there can be any number of translations provided. Translations should use [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tags. Messages may also consume arguments, which correspond to the arguments supplied to the transaction.
 
 #### `data.cadence`
 The cadence code the interaction executes.
@@ -277,7 +277,7 @@ let pin = hash(import_hash) // SHA-256 hash represented as hex string
 ```
 
 #### `data.arguments`
-Internationalized, human readable messages explaining each of the cadence arguments. For each message, there can be any number of translations provided. Translations should use [BCP 47](https://www.techonthenet.com/js/language_tags.php) language tags.
+Internationalized, human readable messages explaining each of the cadence arguments. For each message, there can be any number of translations provided. Translations should use [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tags.
 
 Arguments may correspond to a balance of a fungible or identifier of a non-fungible token. In this case, the balance or identifier the argument corresponds to should point to it's dependency identifier.
 
