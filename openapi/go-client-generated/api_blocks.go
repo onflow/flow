@@ -26,10 +26,11 @@ var (
 
 type BlocksApiService service
 /*
-BlocksApiService Gets full blocks by height.
+BlocksApiService Gets Blocks by Height
+Get block data by the provided height range or list of heights.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *BlocksApiBlocksGetOpts - Optional Parameters:
-     * @param "Height" (optional.Interface of []BlockHeight) -  A comma-separated list of block heights to get.
+     * @param "Height" (optional.Interface of []BlockHeight) -  A comma-separated list of block heights to get. This parameter is incompatible with &#x60;start_height&#x60; and &#x60;end_height&#x60;.
      * @param "StartHeight" (optional.Interface of BlockHeight) -  The start height of the block range to get. Must be used together with &#x60;end_height&#x60;. This parameter is incompatible with &#x60;height&#x60;.
      * @param "EndHeight" (optional.Interface of BlockHeight) -  The ending height of the block range to get. Must be used together with &#x60;start_height&#x60;. This parameter is incompatible with &#x60;height&#x60;.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
@@ -168,9 +169,10 @@ func (a *BlocksApiService) BlocksGet(ctx context.Context, localVarOptionals *Blo
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
-BlocksApiService Gets full blocks by ID.
+BlocksApiService Get Blocks by ID.
+Get a block data or list of blocks by the provided ID or list of IDs.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param id A comma-separated list of block IDs to get.
+ * @param id A block ID or comma-separated list of block IDs.
  * @param optional nil or *BlocksApiBlocksIdGetOpts - Optional Parameters:
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.

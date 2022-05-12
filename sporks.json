@@ -1,6 +1,50 @@
 {
   "networks": {
     "mainnet": {
+      "mainnet17": {
+        "id": 17,
+        "live": true,
+        "name": "Mainnet-17",
+        "sporkTime": "2022-04-06T18:20:00Z",
+        "rootHeight": "27341470",
+        "rootParentId": "dd7ed04e14559ed47ecc92896a5cb3dbb6b234065d9be7f816d99602238762aa",
+        "rootStateCommitment": "113e752ec0619b63187630b4fae308ec5405a00f56f25c2de0b139e283a95b14",
+        "gitCommitHash": "5226c35eb14890db024b9193793b0c49d1b5ad04",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-17-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-17-execution/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-17-execution/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-17-execution/public-root-information/node-infos.pub.json",
+            "executionStateBucket": "flow_public_mainnet17_execution_state"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": "flow-public-mainnet17-execution-state"
+          }
+        },
+        "tags": {
+          "flow-go": "v0.25.7",
+          "flow-dps": "v0.25",
+          "cadence": "v0.23.3",
+          "docker": "v0.25.7"
+        },
+        "seedNodes": [
+          {
+            "address": "access-007.mainnet17.nodes.onflow.org:3570",
+            "key": "28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae"
+          },
+          {
+            "address": "access-008.mainnet17.nodes.onflow.org:3570",
+            "key": "11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a"
+          }
+        ],
+        "accessNodes": [
+          "access.mainnet17.nodes.onflow.org:9000"
+        ]
+      },
       "mainnet16": {
         "id": 16,
         "live": true,
@@ -16,7 +60,11 @@
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-16-execution/public-root-information/root-protocol-state-snapshot.json",
             "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-16-execution/public-root-information/root-protocol-state-snapshot.json.asc",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-16-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": "flow_public_mainnet16_execution_state"
+            "executionStateBucket": "flow_public_mainnet16_execution_state",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet16/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet16/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet16/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet16/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -59,7 +107,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-15-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-15-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-15-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": "https://storage.googleapis.com/flow_public_mainnet15_execution_state"
+            "executionStateBucket": "https://storage.googleapis.com/flow_public_mainnet15_execution_state",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet15/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet15/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet15/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet15/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -93,7 +145,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-14-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-14-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-14-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": "flow_public_mainnet14_execution_state"
+            "executionStateBucket": "flow_public_mainnet14_execution_state",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet14/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet14/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet14/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet14/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -126,7 +182,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-13-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-13-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-13-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": "flow_public_mainnet13_execution_state"
+            "executionStateBucket": "flow_public_mainnet13_execution_state",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet13/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet13/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet13/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet13/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -159,7 +219,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-12-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-12-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-12-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet12/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet12/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet12/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet12/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -192,7 +256,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-11-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-11-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-11-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet11/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet11/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet11/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet11/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -225,7 +293,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-10-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-10-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-10-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet10/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet10/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet10/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet10/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -258,7 +330,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-9-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-9-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-9-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet9/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet9/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet9/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet9/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -291,7 +367,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-8-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-8-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-8-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet8/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet8/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet8/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet8/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -324,7 +404,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-7-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-7-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-7-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet7/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet7/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet7/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet7/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -357,7 +441,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-6-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-6-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet6/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet6/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet6/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet6/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -390,7 +478,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-5-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-6-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet5/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet5/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet5/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet5/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -424,7 +516,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-4-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-4-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet4/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet4/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet4/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet4/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -457,7 +553,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-3-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-3-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet3/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet3/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet3/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet3/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -490,7 +590,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-2-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-2-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet2/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet2/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet2/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet2/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -523,7 +627,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-1-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-1-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet1/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet1/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet1/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet1/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -556,7 +664,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-9-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-9-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/candidate9/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/candidate9/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/candidate9/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/candidate9/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -587,7 +699,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-8-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-8-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/candidate8/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/candidate8/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/candidate8/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/candidate8/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -618,7 +734,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-7-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-7-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/candidate7/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/candidate7/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/candidate7/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/candidate7/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -649,7 +769,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-6-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-6-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/candidate6/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/candidate6/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/candidate6/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/candidate6/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -680,7 +804,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-5-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/candidate-5-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/candidate5/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/candidate5/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/candidate5/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/candidate5/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -711,7 +839,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/candidate4/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/candidate4/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/candidate4/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/candidate4/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -730,10 +862,51 @@
       }
     },
     "testnet": {
+      "testnet34": {
+        "id": 34,
+        "live": true,
+        "name": "Testnet34",
+        "sporkTime": "2022-04-04T16:00:00Z",
+        "rootHeight": "64904846",
+        "rootParentId": "0cbb13d9e7ed7092b5f20d0a20a79d1cae96fd796fb2bc569b27ce49cc97d97e",
+        "rootStateCommitment": "f2e77e16628543e285be8bac677db06e17b37f49e53a107af1e6bf99fbc17b30",
+        "gitCommitHash": "32bda868ae651cd792f7f78dee31911141c5da8e",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-34-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-34/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-34/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-34/public-root-information/node-infos.pub.json"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": ""
+          }
+        },
+        "tags": {
+          "flow-go-tag": "v0.25.6",
+          "flow-dps-tag": "v0.24",
+          "cadence-tag": "v0.23.3",
+          "docker-tag": "v0.25.6"
+        },
+        "accessNodes": [],
+        "seedNodes": [
+          {
+            "address": "access-003.devnet34.nodes.onflow.org:3570",
+            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+          },
+          {
+            "address": "access-004.devnet34.nodes.onflow.org:3570",
+            "key": "0d1523612be854638b985fc658740fa55f009f3cd49b739961ab082dc91b178ed781ef5f66878613b4d34672039150abfd9c8cfdfe48c565bca053fa4db30bec"
+          }
+        ]
+      },
       "testnet33": {
         "id": 33,
-        "live": true,
-        "name": "Testnet32",
+        "live": false,
+        "name": "Testnet33",
         "sporkTime": "2021-02-07T16:00:00Z",
         "rootHeight": "59558934",
         "rootParentId": "099fbb7b645c3441ea830746ed67059bcc1091c88ff3fd78b331137cf917d15f",
@@ -745,7 +918,11 @@
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-33/public-root-information/root-protocol-state-snapshot.json",
             "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-33/public-root-information/root-protocol-state-snapshot.json.asc",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-33/public-root-information/node-infos.pub.json",
-            "executionStateBucket": "flow_public_devnet33_execution_state"
+            "executionStateBucket": "flow_public_devnet33_execution_state",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet33/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet33/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet33/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet33/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -785,7 +962,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-32-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-32-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-32-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": "flow_public_devnet32_execution_state"
+            "executionStateBucket": "flow_public_devnet32_execution_state",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet32/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet32/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet32/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet32/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -826,7 +1007,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-31-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-31-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-31-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": "flow_public_devnet31_execution_state"
+            "executionStateBucket": "flow_public_devnet31_execution_state",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet31/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet31/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet31/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet31/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -857,7 +1042,11 @@
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-30-execution/public-root-information/root.checkpoint",
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-30-execution/public-root-information/root-protocol-state-snapshot.json",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/devnet-30-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": "flow_public_devnet30_execution_state"
+            "executionStateBucket": "flow_public_devnet30_execution_state",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet30/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet30/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet30/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet30/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -888,7 +1077,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet29/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet29/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet29/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet29/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -919,7 +1112,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet28/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet28/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet28/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet28/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -952,7 +1149,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet27/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet27/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet27/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet27/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -983,7 +1184,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet26/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet26/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet26/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet26/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -1014,7 +1219,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet25/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet25/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet25/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet25/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -1045,7 +1254,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet24/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet24/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet24/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet24/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -1076,7 +1289,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet23/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet23/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet23/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet23/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -1107,7 +1324,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet22/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet22/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet22/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet22/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -1138,7 +1359,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet21/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet21/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet21/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet21/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -1169,7 +1394,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet20/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet20/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet20/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet20/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -1200,7 +1429,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet19/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet19/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet19/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet19/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -1231,7 +1464,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet18/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet18/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet18/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet18/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -1262,7 +1499,11 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": ""
+            "executionStateBucket": "",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/devnet17/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet17/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet17/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet17/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",

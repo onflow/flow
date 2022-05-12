@@ -17,7 +17,7 @@ paths:
       tags:
         - Blocks
       parameters:
-        - description: A comma-separated list of block heights to get.
+        - description: A comma-separated list of block heights to get. This parameter is incompatible with `start_height` and `end_height`.
           name: height
           in: query
           schema:
@@ -179,7 +179,7 @@ paths:
                   description: Base64 encoded content of the Cadence script.
                 arguments:
                   type: array
-                  description: Array of Base64 encoded arguments with in [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
+                  description: A list of arguments each encoded as Base64 passed in the [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
                   items:
                     type: string
                     format: base64
@@ -199,10 +199,12 @@ paths:
                     $ref: '#/components/schemas/Address'
                 payload_signatures:
                   type: array
+                  description: A list of Base64 encoded signatures.
                   items:
                     $ref: '#/components/schemas/TransactionSignature'
                 envelope_signatures:
                   type: array
+                  description: A list of Base64 encoded signatures.
                   items:
                     $ref: '#/components/schemas/TransactionSignature'
       responses:
@@ -373,7 +375,7 @@ paths:
                   description: Base64 encoded content of the Cadence script.
                 arguments:
                   type: array
-                  description: Array of Base64 encoded arguments with in [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
+                  description: An list of arguments each encoded as Base64 passed in the [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
                   items:
                     type: string
                     format: byte
@@ -395,7 +397,7 @@ paths:
   /events:
     get:
       summary: Get Events
-      description: Query on-chain events by their name in the specified blocks.
+      description: Query on-chain events by their name in the specified blocks heights or block IDs.
       tags:
         - Events
       responses:
@@ -435,7 +437,7 @@ paths:
             $ref: '#/components/schemas/BlockHeight'
           allowEmptyValue: false
         - name: block_ids
-          description: List of block IDs.
+          description: List of block IDs. Either provide this parameter or both height parameters. This parameter is incompatible with heights parameters.
           in: query
           style: form
           required: false
@@ -656,6 +658,7 @@ components:
           type: string
           format: uint64
     TransactionSignature:
+      description: Base64 encoded signature.
       type: object
       required:
         - address
@@ -681,6 +684,8 @@ components:
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
+        execution:
+          $ref: '#/components/schemas/TransactionExecution'
         status:
           $ref: '#/components/schemas/TransactionStatus'
         status_code:
@@ -697,8 +702,16 @@ components:
             $ref: '#/components/schemas/Event'
         _links:
           $ref: '#/components/schemas/Links'
+    TransactionExecution:
+      type: string
+      description: This value indicates whether the transaction execution succeded or not, this value should be checked when determining transaction success. 
+      enum:
+        - Pending
+        - Success
+        - Failure
     TransactionStatus:
       type: string
+      description: This value indicates the state of the transaction execution. Only sealed and expired are final and immutable states.
       enum:
         - Pending
         - Finalized
@@ -830,6 +843,7 @@ components:
         - id
         - block_id
         - events
+        - previous_result_id
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -839,6 +853,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
+        chunks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Chunk'
+        previous_result_id:
+          $ref: '#/components/schemas/Identifier'
         _links:
           $ref: '#/components/schemas/Links'
     BlockEvents:
@@ -911,6 +931,41 @@ components:
           type: integer
         message:
           type: string
+    Chunk:
+      type: object
+      required:
+        - block_id
+        - collection_index
+        - start_state
+        - end_state
+        - event_collection
+        - index
+        - number_of_transactions
+        - total_computation_used
+      properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        collection_index:
+          type: string
+          format: uint64
+        start_state:
+          type: string
+          format: byte
+        end_state:
+          type: string
+          format: byte
+        event_collection:
+          type: string
+          format: byte
+        index:
+          type: string
+          format: uint64
+        number_of_transactions:
+          type: string
+          format: uint64
+        total_computation_used:
+          type: string
+          format: uint64
     Links:
       type: object
       properties:

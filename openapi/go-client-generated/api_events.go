@@ -25,13 +25,14 @@ var (
 
 type EventsApiService service
 /*
-EventsApiService
+EventsApiService Get Events
+Query on-chain events by their name in the specified blocks heights or block IDs.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param type_ The event type is name-spaced with the address of the account and contract in which the event is declared.
+ * @param type_ The event type is [identifier of the event as defined here](https://docs.onflow.org/core-contracts/flow-token/#events).
  * @param optional nil or *EventsApiEventsGetOpts - Optional Parameters:
      * @param "StartHeight" (optional.Interface of BlockHeight) -  The start height of the block range for events. Must be used together with &#x60;end_height&#x60;. This parameter is incompatible with &#x60;block_ids&#x60;.
      * @param "EndHeight" (optional.Interface of BlockHeight) -  The end height of the block range for events. Must be used together with &#x60;start_height&#x60;. This parameter is incompatible with &#x60;block_ids&#x60;.
-     * @param "BlockIds" (optional.Interface of []string) - 
+     * @param "BlockIds" (optional.Interface of []string) -  List of block IDs. Either provide this parameter or both height parameters. This parameter is incompatible with heights parameters.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
 @return BlockEvents
 */

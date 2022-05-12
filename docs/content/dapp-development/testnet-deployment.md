@@ -109,14 +109,14 @@ Add the account created with the use of faucet above to the `accounts` property 
 }
 ```
 
-After adding account to the configuration you can use that account to fund the creation of more accounts by using 
+After adding account to the configuration you can use that account to fund the creation of more accounts by using
 [CLI account create](/flow-cli/create-accounts) command.
 
 ```
 > flow accounts create \
     --key a69c6986e846ba6d0....1397f5904cd319c3e01e96375d5777f1a47010 \
     --host access.testnet.nodes.onflow.org:9000 \
-    --signer my-testnet-account 
+    --signer my-testnet-account
 
 Address	 0x01cf0e2f2f715450
 Balance	 10000000
@@ -155,26 +155,28 @@ You can then specify your contracts you wish to deploy in the configuration like
 ```
 
 Here's a sketch of the contract source files:
+
 ```
-pub contract NonFungibleToken { 
+pub contract NonFungibleToken {
   // ...
 }
 ```
+
 ```
 import NonFungibleToken from "./NonFungibleToken.cdc"
 
-pub contract KittyItems { 
+pub contract KittyItems {
   // ...
 }
 ```
 
 You can now deploy all the contracts by running deploy command:
+
 ```
 flow project deploy
 ```
 
 Please read more about deployment in [the documentation](/flow-cli/deploy-project-contracts).
-
 
 ### Making Use of Core Contracts
 
@@ -190,3 +192,6 @@ If you discover your application is broken after an update, use the latest emula
 
 We kindly ask you to follow the steps listed in the [Testnet Testing Guidelines.](/dapp-deployment/testnet-testing) when redeploying your contracts.
 
+### Making Your NFT Discoverable
+
+Wallets like Blocto may use the [Alchemy API](https://alchemyapi.io/) to discover and display NFT collections on the Flow blockchain. In order to get your NFT listed on Alchemy, you should follow the [steps listed in the Alchemy repository](https://github.com/alchemyplatform/alchemy-flow-contracts#adding-a-new-contract).

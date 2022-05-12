@@ -1,22 +1,24 @@
 # {{classname}}
 
-All URIs are relative to *https://rest-testnet.onflow.org/v1*
+All URIs are relative to *https://rest-canary.onflow.org/v1/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ExecutionResultsGet**](ExecutionResultsApi.md#ExecutionResultsGet) | **Get** /execution_results | Gets execution results by block ID.
-[**ExecutionResultsIdGet**](ExecutionResultsApi.md#ExecutionResultsIdGet) | **Get** /execution_results/{id} | Gets an execution result by ID.
+[**ExecutionResultsGet**](ExecutionResultsApi.md#ExecutionResultsGet) | **Get** /execution_results | Get Execution Results by Block ID
+[**ExecutionResultsIdGet**](ExecutionResultsApi.md#ExecutionResultsIdGet) | **Get** /execution_results/{id} | Get Execution Result by ID
 
 # **ExecutionResultsGet**
 > []ExecutionResult ExecutionResultsGet(ctx, blockId)
-Gets execution results by block ID.
+Get Execution Results by Block ID
+
+Get execution result by provided block ID or multiple block IDs provided as comma-seperated list.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **blockId** | [**[]string**](string.md)| A comma-separated list of block IDs to get the execution results for. | 
+  **blockId** | [**[]string**](string.md)| Single ID or comma-separated list of block IDs. | 
 
 ### Return type
 
@@ -35,14 +37,16 @@ No authorization required
 
 # **ExecutionResultsIdGet**
 > ExecutionResult ExecutionResultsIdGet(ctx, id)
-Gets an execution result by ID.
+Get Execution Result by ID
+
+Get execution result by provided execution result ID.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **id** | [**string**](.md)| The ID of the execution result to get. | 
+  **id** | [**string**](.md)| The ID of the execution result. | 
 
 ### Return type
 

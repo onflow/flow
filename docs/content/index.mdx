@@ -12,7 +12,7 @@ import TrackingLink from "./components/tracking-link";
 import {
   IconGithub,
   IconDiscord,
-  IconDiscourse
+  IconDiscourse,
 } from "gatsby-theme-flow/src/ui/icons";
 
 ‍Flow is a fast, decentralized, and developer-friendly blockchain, designed as the foundation for a new generation of games, apps, and the [digital assets](https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets) that power them. It is based on a unique, [multi-role architecture](https://www.onflow.org/primer), and designed to [scale without sharding](https://www.onflow.org/post/flow-blockchain-multi-node-architecture-advantages), allowing for massive improvements in speed and throughput while preserving a developer-friendly, ACID-compliant environment.
@@ -23,11 +23,12 @@ import {
 
 <div className="grid-item wide">
 
-
-<h3> ⚡️
-<TrackingLink href="/http-api/" eventName="Homepage_link_/http-api/_clicked">
-  Flow Access Node HTTP API
-</TrackingLink>
+<h3>
+  {" "}
+  ⚡️
+  <TrackingLink href="/http-api/" eventName="Homepage_link_/http-api/_clicked">
+    Flow Access Node HTTP API
+  </TrackingLink>
 </h3>
 
 <ul className="grid-item-list">
@@ -46,10 +47,26 @@ import {
 <br />
 
 <span>https://rest-testnet.onflow.org/v1/</span>
-<p>Testnet: <TrackingLink event="Homepage*link*/http-api-testnet/\_clicked" href="/http-api/">View Documentation</TrackingLink></p>
+<p>
+  Testnet:{" "}
+  <TrackingLink
+    event="Homepage*link*/http-api-testnet/\_clicked"
+    href="/http-api/"
+  >
+    View Documentation
+  </TrackingLink>
+</p>
 
 <span>https://rest-mainnet.onflow.org/v1/</span>
-<p>Mainnet: <TrackingLink event="Homepage*link*/http-api-mainnet/\_clicked" href="/http-api/">View Documentation</TrackingLink></p>
+<p>
+  Mainnet:{" "}
+  <TrackingLink
+    event="Homepage*link*/http-api-mainnet/\_clicked"
+    href="/http-api/"
+  >
+    View Documentation
+  </TrackingLink>
+</p>
 
 <p>
   Oh, that's new. 
@@ -60,16 +77,27 @@ import {
 </div>
 
 <div className="grid-item">
-<h3>🏃‍♂️ Example Code</h3>
+<h3>🏃‍♂️ Sample Projects</h3>
 
 <ul className="grid-item-list">
   <li>
     <TrackingLink  href="/fcl/tutorials/flow-app-quickstart/" eventName="Homepage_link_/fcl/tutorials/flow-app-quickstart/_clicked">Flow App Quickstart</TrackingLink> <br/>
-    <p>a detailed guide covering how to use the <TrackingLink href="/flow-js-sdk/" eventName="Homepage_link_/flow-js-sdk/_clicked">FCL (Flow Client Library)</TrackingLink> to build a serverless app that connects to Flow, using React!</p>
+    <p>A detailed guide covering how to use the <TrackingLink href="/flow-js-sdk/" eventName="Homepage_link_/flow-js-sdk/_clicked">FCL (Flow Client Library)</TrackingLink> to build a serverless app that connects to Flow, using React!</p>
+    <p>Ready to jump right in? Use one of our quickstart projects:&nbsp;
+      <TrackingLink href="https://github.com/muttoni/fcl-sveltekit-quickstart" eventName="Homepage_link_/https://github.com/muttoni/fcl-sveltekit-quickstart/_clicked">
+      SvelteKit
+      </TrackingLink>,&nbsp;
+      <TrackingLink href="https://github.com/muttoni/fcl-nextjs-quickstart" eventName="Homepage_link_/https://github.com/muttoni/fcl-nextjs-quickstart/_clicked">
+      NextJS
+      </TrackingLink>,&nbsp;
+      <TrackingLink href="https://github.com/brunogonzales/fcl-nuxt-starter" eventName="Homepage_link_/https://github.com/brunogonzales/fcl-nuxt-starter/_clicked">
+      NuxtJS
+      </TrackingLink>
+    </p>
   </li>
   <li>
-    <TrackingLink href="https://github.com/onflow/kitty-items" eventName="Homepage_link_/kitty-items/_clicked">
-    Kitty Items
+    <TrackingLink href="/kitty-items/" eventName="Homepage_link_/kitty-items/_clicked">
+    🆕 Kitty Items
     </TrackingLink> <br/>
     <p>The Kitty Items application is a full-featured NFT marketplace that demonstrates what a full-stack application can look like on Flow. It's designed to showcase the power of Cadence and Flow's client libraries.</p>
   </li>
@@ -119,66 +147,149 @@ import {
 </div>
 
 <div className="grid-item">
-  <h3>🤝 Community Code</h3>
+  <h3>🚀 Trending in the community</h3>
   <ul className="grid-item-list">
-  <li>
-    <TrackingLink
-      href="/flip-fest-winners/"
-      eventName="Homepage_link_/fcl/tutorials/flow-app-quickstart/_clicked"
-    >
-      FLIP Fest Winners!
-    </TrackingLink>
+  <li><b>🏆 FLIP Fest Winners</b>
     <br />
     <p>
      FLIP Fest was conducted over 3 months with over 100 developers participating in working on issues determined by
-      the Flow team and the community for reward bounties provided by Flow!
-    </p>
-    <p>
+      the Flow team and the community for reward bounties provided by Flow! Check out&nbsp;
       <TrackingLink
         href="flip-fest-winners/#new-tools"
         eventName="Homepage_link_FLIP-new-tools_clicked"
       >
-       Tools
-      </TrackingLink>
-      <br />
+       tools, 
+      </TrackingLink>&nbsp;
       <TrackingLink
         href="flip-fest-winners/#new-features--improvements"
         eventName="Homepage_link_FLIP-new-features_clicked">
-        Features & Improvements
-      </TrackingLink>
-      <br />
+        features & improvements,
+      </TrackingLink>&nbsp; and&nbsp;
       <TrackingLink
         href="flip-fest-winners/#new-standards"
         eventName="Homepage_link_FLIP-new-features_clicked"
       >
-        Standards
-      </TrackingLink>
+        standards
+      </TrackingLink>.
     </p>
   </li>
   <li>
-    <TrackingLink
-      href="https://github.com/muttoni/gold-star-contracts"
-      eventName="Homepage_link_/gold-star-contracts/_clicked"
-    >
-     ⭐️ Gold Star Contracts
-    </TrackingLink>{" "}
+    <b>⭐️ Gold Star Contracts</b>
     <br />
     <p>
-     A non-exhaustive list of Cadence contracts, scripts, transactions that exemplify best practices.
+     A non-exhaustive list of &nbsp;
+         <TrackingLink
+      href="https://github.com/muttoni/gold-star-contracts"
+      eventName="Homepage_link_/gold-star-contracts/_clicked"
+    >Cadence contracts, scripts, transactions that exemplify best practices
+    </TrackingLink>.
      These contracts are so-called foundational because they are standard interfaces that any FT or NFT contract will implement. They introduce commonly seen resources such as Vaults, Collections as well as standard events.
     </p>
   </li>
   <li>
-    <TrackingLink
-      href="https://github.com/ph0ph0/Get-The-Flow-Down"
-      eventName="Homepage_link_/get-the-flow-down/_clicked"
-    >
-      The 'Flow Down'
-    </TrackingLink>{" "}
+    <b>📺 Videos</b>
     <br />
     <p>
-     Get the Flow Down is a curated collection of the best Flow blockchain tools, tutorials, articles and more! If you have come across an awesome tutorial, tool, community, blog or you have created one yourself, please create a PR!
+     Learn more about Flow and Cadence by watching videos ...
+     <br/>
+     <br />
+      <TrackingLink
+        href="https://www.youtube.com/watch?v=pRz7EzrWchs"
+        eventName="Homepage_link/https://www.youtube.com/watch?v=pRz7EzrWchs/_clicked"
+      >
+        Hello World on Flow
+      </TrackingLink>
+      <br/>
+      <TrackingLink
+        href="https://www.youtube.com/watch?v=OYXIr3LuclE"
+        eventName="Homepage_link/https://www.youtube.com/watch?v=OYXIr3LuclE/_clicked"
+      >
+        Resource Oriented Programming Paradigm
+      </TrackingLink>
+      <br/>
+      <TrackingLink
+        href="https://www.youtube.com/playlist?list=PLvcQxi9WyGdF32YuZABVTx-t3-FsBNCN2"
+        eventName="Homepage_link/https://www.youtube.com/playlist?list=PLvcQxi9WyGdF32YuZABVTx-t3-FsBNCN2/_clicked"
+      >
+        Series: Learn Cadence
+      </TrackingLink>
+      <br/>
+      <TrackingLink
+        href="https://www.youtube.com/playlist?list=PLvcQxi9WyGdGUx-a4rCsLWn_WKlA9YAXP"
+        eventName="Homepage_link/https://www.youtube.com/playlist?list=PLvcQxi9WyGdGUx-a4rCsLWn_WKlA9YAXP/_clicked"
+      >
+        Series: Build Flow apps
+      </TrackingLink>
+      <br/>
+      <TrackingLink
+        href="https://youtu.be/rgJRTozG3cw"
+        eventName="Homepage_link/https://youtu.be/rgJRTozG3cw/_clicked"
+      >
+        Flow's NFT Metadata Standard
+      </TrackingLink>
     </p>
+    <b>📜 Articles</b>
+    <br />
+    <p>
+     Read articles covering Flow and Cadence ...<br/>
+     <br/>
+      <TrackingLink
+        href="https://github.com/ph0ph0/Get-The-Flow-Down"
+        eventName="Homepage_link/https://github.com/ph0ph0/Get-The-Flow-Down/_clicked"
+      >
+        Get the Flow down (learning resources compilation)
+      </TrackingLink>
+      <br/>
+     <TrackingLink
+        href="https://jan-bernatik.medium.com/introduction-to-flow-blockchain-7532977c8af8"
+        eventName="Homepage_link/https://jan-bernatik.medium.com/introduction-to-flow-blockchain-7532977c8af8/_clicked"
+      >
+        Intro to Flow blockchain
+      </TrackingLink>
+      <br/>
+      <TrackingLink
+        href="https://medium.com/@ebner.benjamin/cadence-at-a-glance-4e685c34b544"
+        eventName="Homepage_link/https://medium.com/@ebner.benjamin/cadence-at-a-glance-4e685c34b544/_clicked"
+      >
+        Cadence at a glance
+      </TrackingLink>
+      <br/>
+      <TrackingLink
+        href="https://medium.com/coinmonks/how-cadence-and-flow-will-revolutionize-smart-contract-programming-607bd05b49b"
+        eventName="Homepage_link/https://medium.com/coinmonks/how-cadence-and-flow-will-revolutionize-smart-contract-programming-607bd05b49b/_clicked"
+      >
+        How Cadence and Flow will revolutionize smart contract programming
+      </TrackingLink>
+      <br/>
+        <TrackingLink
+        href="https://joshuahannan.medium.com/taking-your-first-steps-with-cadence-19dde86bbd0"
+        eventName="Homepage_link/https://joshuahannan.medium.com/taking-your-first-steps-with-cadence-19dde86bbd0/_clicked"
+      >
+        Taking your First Steps with Cadence
+      </TrackingLink>
+      <br/>
+      <TrackingLink
+        href="https://medium.com/pinata/how-to-create-nfts-like-nba-top-shot-with-flow-and-ipfs-701296944bf"
+        eventName="Homepage_link/https://medium.com/pinata/how-to-create-nfts-like-nba-top-shot-with-flow-and-ipfs-701296944bf/_clicked"
+      >
+        How to Create NFTs Like NBA Top Shot With Flow and IPFS
+      </TrackingLink>
+      <br/>
+      <TrackingLink
+        href="https://nftschool.dev/tutorial/flow-nft-marketplace/#prerequisites"
+        eventName="Homepage_link/https://nftschool.dev/tutorial/flow-nft-marketplace/#prerequisites/_clicked"
+      >
+        NFT School: How to build a Flow NFT pet store
+      </TrackingLink>
+      <br/>
+        <TrackingLink
+        href="https://github.com/jacob-tucker/Flow-Zero-to-Jacob"
+        eventName="Homepage_link/https://github.com/jacob-tucker/Flow-Zero-to-Jacob/_clicked"
+      >
+        Flow Zero to Jacob
+      </TrackingLink>
+      <br/>
+     </p>
   </li>
 </ul>
 
@@ -191,7 +302,37 @@ import {
     <li>
     <TrackingLink href="https://open-cadence.onflow.org/" eventName="Homepage_link_/https://open-cadence.onflow.org/
 /_clicked">Open Cadence</TrackingLink> <br/>
-    <p>A list of high-quality Cadence code to help you learn and implement your smart-contract ideas.</p>
+    <p>A list of high-quality Cadence code to help you learn and implement your smart-contract ideas. Highlights include:</p>
+    <p>
+      <TrackingLink
+        href="https://open-cadence.onflow.org/?preview=0"
+        eventName="Homepage_link_/https://open-cadence.onflow.org/?preview=0_clicked"
+      >
+       Mint an NFT
+      </TrackingLink>
+      <br />
+      <TrackingLink
+        href="https://open-cadence.onflow.org/?preview=3"
+        eventName="Homepage_link_/https://open-cadence.onflow.org/?preview=3_clicked"
+      >
+      Set NFT metadata
+      </TrackingLink>
+      <br />
+      <TrackingLink
+        href="https://open-cadence.onflow.org/?preview=19"
+        eventName="Homepage_link_/https://open-cadence.onflow.org/?preview=19_clicked"
+      >
+      Create an NFT marketplace
+      </TrackingLink>
+      <br />
+            <TrackingLink
+        href="https://open-cadence.onflow.org/?preview=21"
+        eventName="Homepage_link_/https://open-cadence.onflow.org/?preview=21_clicked"
+      >
+      Purchase an NFT on a marketplace
+      </TrackingLink>
+      <br />
+    </p>
   </li>
   <li>
     <TrackingLink href="/cadence/tutorial/01-first-steps/" eventName="Homepage_link_/cadence/tutorial/01-first-steps/_clicked">Cadence Tutorials</TrackingLink> <br/>

@@ -1,22 +1,97 @@
 ---
 title: Spork Process
-description: Information about the sporking process
+description: What to do during a spork
 ---
 
-## What is a Spork?
+## Overview
 
-In the mature Flow, new nodes can be staked and un-staked as the protocol advances from epoch to epoch. However, we are not there yet.
-Hence, currently every couple of weeks we turn-off the network, update the identity list to include (and exclude) nodes and then turn the network back on again.
-We call this process a **Spork**.
+A spork is a coordinated network upgrade process where node operators upgrade their node software and
+re-initialize with a consolidated representation of the previous spork's state. This enables rapid development
+on the Flow Protocol and minimizes the impact of breaking changes. 
 
-Also, as Flow evolves, we are continuously adding new features and discovering and fixing bugs in the Flow node software.
-We also utilize a Spork as an opportunity to update the nodes with the latest releases.
+The Flow network sporks approximately once every two months.  Upcoming sporks
+are announced in advance on the `#flow-validators-announcements` **Discord** channel
+and in [Upcoming Sporks](/node-operation/upcoming-sporks). The `#flow-validators-announcements` channel is 
+also used to coordinate during the spork process.
 
-## How frequently do we Spork?
+This guide is for existing operators participating in a spork. See [Node Bootstrap](/node-operation/node-bootstrap)
+for a guide to joining the network for the first time. 
 
-The Flow network sporks approximately once per month. Upcoming sporks are announced in advance on the `#flow-validators-announcements` **Discord** channel.
+## Step 1 - Cleaning Up Previous Spork State
 
-## Past and upcoming Sporks
+Once the spork start has been announced on, stop your node and clear your database. The node should stay stopped for the duration of the spork.
 
-- [Past Mainnet & Testnet Sporks](/node-operation/past-sporks)
-- [Upcoming Sporks](/node-operation/upcoming-sporks)
+<Callout type="warning">
+You can skip this step if it is your first time running a node on Flow.
+</Callout>
+
+1. Stop your Flow node
+2. Clear the contents of your `data` directory that you have previously created. The default location is `/var/flow/data`. The `data` directory contains the Flow chain state.
+
+<Callout type="warning">
+
+If you had a previous node running on **mainnet 16**, you'll need to turn it
+off just before joining the updated network and re-start your node with the
+updated configuration. Refer to Discord communications for guidance during the spork.
+
+</Callout>
+
+## Step 2 - Start Your Node
+
+Once you receive an announcement from the Flow team that the spork process is complete (via Discord), you will need to fetch the genesis info, update your runtime configuration and then boot your Flow node up!
+
+<Callout type="warning">
+
+The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info from. (Please do NOT use the original Token that you used in Step 1) The `YOUR_NODE_TYPE` must be the same ones that you used when initially [setting up your node](/node-operation/node-bootstrap/#generate-your-node-keys)
+
+</Callout>
+
+1. Run the transit script to fetch the new genesis info:
+   `./boot-tools/transit pull -b ./bootstrap -t ${PULL_TOKEN} -r ${YOUR_NODE_TYPE}`
+
+```shell:title=Example
+$ ./boot-tools/transit pull -b ./bootstrap -t mainnet-16  -r consensus
+Transit script Commit: a9f6522855e119ad832a97f8b7bce555a163e490
+2020/11/25 01:02:53 Running pull
+2020/11/25 01:02:53 Downloading bootstrap/public-root-information/node-infos.pub.json
+2020/11/25 01:02:54 Downloading bootstrap/public-root-information/root-protocol-snapshot.json
+2020/11/25 01:02:54 Downloading bootstrap/random-beacon.priv.json.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.enc
+2020/11/25 01:02:54 SHA256 of the root block is: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+$ tree ./bootstrap/
+  ./bootstrap/
+  ├── private-root-information
+  │   └── private-node-info_39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
+  │       └── node-info.priv.json
+  ├── public-root-information
+  │   ├── node-id
+  │   ├── node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
+  │   ├── node-infos.pub.json
+  │   └── root-protocol-snapshot.json
+  └── random-beacon.priv.json.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
+```
+
+2. Pull the latest changes from [flow-go repository](https://github.com/onflow/flow-go)
+3. Get your `node-id`, you can find it at `/path/to/bootstrap/public-genesis-information/node-id`
+4. Update the `FLOW_GO_NODE_ID` inside [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) to the `node-id` that you got from the previous step
+5. Start your Flow node via `docker` or `systemd`
+
+See [Node Bootstrap](/node-operation/node-bootstrap) for detailed information on Docker/Systemd configuration.
+
+## Common Issues
+
+### Error: cannot create connection
+
+```shell
+20T18:34:21Z","message":"could not create connection"}
+{"level":"error","node_role":"consensus","node_id":"6d3fac8675a1df96f4bb7a27305ae531b6f4d0d2bc13a233e37bb07ab6b852dc","target":"QmVcSQaCdhmk1CMeMN7HTgGiUY1i2KqgVE2vvEmQXK4gAA","error":"failed to dial : all dials failed
+  * [/ip4/155.138.151.101/tcp/3569] dial tcp4 155.138.151.101:3569: connect: connection refused","retry_attempt":2,"time":"2020-05-20T18:34:21Z","message":"could not create connection"}
+```
+
+This error is OK. Your fellow node operators have not turned on/joined the network yet. So no need to worry about it!
+
+### Flow Node Not Booting Up
+
+If your Flow node is not able to boot up, or it exits right after it boots up. You will need to do a [clean up of your state](/node-operation/node-bootstrap/#step-0---cleaning-up-your-previous-state).
+
+After cleaning up the state try booting it up again. If the problem persists, message a member from the Flow team on Discord.

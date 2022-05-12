@@ -25,9 +25,10 @@ var (
 
 type ExecutionResultsApiService service
 /*
-ExecutionResultsApiService Gets execution results by block ID.
+ExecutionResultsApiService Get Execution Results by Block ID
+Get execution result by provided block ID or multiple block IDs provided as comma-seperated list.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param blockId A comma-separated list of block IDs to get the execution results for.
+ * @param blockId Single ID or comma-separated list of block IDs.
 @return []ExecutionResult
 */
 func (a *ExecutionResultsApiService) ExecutionResultsGet(ctx context.Context, blockId []string) ([]ExecutionResult, *http.Response, error) {
@@ -142,9 +143,10 @@ func (a *ExecutionResultsApiService) ExecutionResultsGet(ctx context.Context, bl
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
-ExecutionResultsApiService Gets an execution result by ID.
+ExecutionResultsApiService Get Execution Result by ID
+Get execution result by provided execution result ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param id The ID of the execution result to get.
+ * @param id The ID of the execution result.
 @return ExecutionResult
 */
 func (a *ExecutionResultsApiService) ExecutionResultsIdGet(ctx context.Context, id string) (ExecutionResult, *http.Response, error) {

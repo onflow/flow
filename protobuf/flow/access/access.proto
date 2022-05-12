@@ -55,6 +55,17 @@ service AccessAPI {
   // GetTransactionResult gets the result of a transaction.
   rpc GetTransactionResult(GetTransactionRequest)
       returns (TransactionResultResponse);
+  // GetTransactionResultByIndex gets the result of a transaction at a specified
+  // block and index
+  rpc GetTransactionResultByIndex(GetTransactionByIndexRequest)
+      returns (TransactionResultResponse);
+  // GetTransactionResultsByBlockID gets all the transaction results for a
+  // specified block
+  rpc GetTransactionResultsByBlockID(GetTransactionsByBlockIDRequest)
+      returns (TransactionResultsResponse);
+  // GetTransactionsByBlockID gets all the transactions for a specified block
+  rpc GetTransactionsByBlockID(GetTransactionsByBlockIDRequest)
+      returns (TransactionsResponse);
 
   // Accounts
 
@@ -118,7 +129,6 @@ service AccessAPI {
   // and as usual, until sealed, this data can change
   rpc GetExecutionResultForBlockID(GetExecutionResultForBlockIDRequest)
       returns (ExecutionResultForBlockIDResponse);
-
 }
 
 message PingRequest {}
@@ -147,14 +157,17 @@ message BlockHeaderResponse {
 
 message GetLatestBlockRequest {
   bool is_sealed = 1;
+  bool full_block_response = 2;
 }
 
 message GetBlockByIDRequest {
   bytes id = 1;
+  bool full_block_response = 2;
 }
 
 message GetBlockByHeightRequest {
   uint64 height = 1;
+  bool full_block_response = 2;
 }
 
 message BlockResponse {
@@ -185,6 +198,23 @@ message GetTransactionRequest {
   bytes id = 1;
 }
 
+message GetTransactionByIndexRequest {
+  bytes block_id = 1;
+  uint32 index = 2;
+}
+
+message GetTransactionsByBlockIDRequest {
+  bytes block_id = 1;
+}
+
+message TransactionResultsResponse {
+  repeated TransactionResultResponse transaction_results = 1;
+}
+
+message TransactionsResponse {
+  repeated entities.Transaction transactions = 1;
+}
+
 message TransactionResponse {
   entities.Transaction transaction = 1;
 }
@@ -195,6 +225,8 @@ message TransactionResultResponse {
   string error_message = 3;
   repeated entities.Event events = 4;
   bytes block_id = 5;
+  bytes transaction_id = 6;
+  bytes collection_id = 7;
 }
 
 // Accounts
