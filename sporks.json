@@ -888,9 +888,9 @@
         },
         "tags": {
           "flow-go-tag": "v0.25.6",
-          "flow-dps-tag": "v0.24",
+          "flow-dps-tag": "v0.25",
           "cadence-tag": "v0.23.3",
-          "docker-tag": "v0.25.6"
+          "docker-tag": "v0.25.13"
         },
         "accessNodes": [],
         "seedNodes": [
