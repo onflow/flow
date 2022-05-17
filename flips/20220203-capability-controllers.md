@@ -8,7 +8,7 @@
 
 ## Preface
 
-Cadence encourages a [capability-based security](https://en.wikipedia.org/wiki/Capability-based_security) model as described on the Flow [doc site](https://docs.onflow.org/cadence/language/capability-based-access-control). Capabilities are themselves a new concept that most Cadence programmers need to understand, but the API for syntax around Capabilities (especially the notion of “links” and “linking”), and the associated concepts of the public and private storage domains, lead to Capabilities being make this concept even more confusing and awkward to use. This proposal suggests that we could get rid of links entirely, and replace them with Capability Controllers (henceforth referred to as CapCons) which could make Capabilities easier to understand, and easier to work with.
+Cadence encourages a [capability-based security](https://en.wikipedia.org/wiki/Capability-based_security) model as described on the Flow [doc site](https://docs.onflow.org/cadence/language/capability-based-access-control). Capabilities are themselves a new concept that most Cadence programmers need to understand, but the API for syntax around Capabilities (especially the notion of “links” and “linking”), and the associated concepts of the public and private storage domains, lead to Capabilities being even more confusing and awkward to use. This proposal suggests that we could get rid of links entirely, and replace them with Capability Controllers (henceforth referred to as CapCons) which could make Capabilities easier to understand, and easier to work with.
 
 The following is a quick refresher of the current state of the Capabilities API (from the [flow doc site](https://docs.onflow.org/cadence/language/capability-based-access-control)).
 
@@ -30,10 +30,10 @@ pub resource Counter: HasCount {
 }
 ```
 
-The _issuer_ (authAccount) has also created an instance of this resource and saved it in its private storage.
+The _issuer_ (`AuthAccount`) has also created an instance of this resource and saved it in its private storage.
 
 ```cadence
-authAccount.save(<-create Counter(count: 42), to: /storage/counter)
+AuthAccount.save(<-create Counter(count: 42), to: /storage/counter)
 ```
 
 ### Public Capabilities
@@ -41,12 +41,12 @@ authAccount.save(<-create Counter(count: 42), to: /storage/counter)
 To allow anyone (read) access to the `count` field on the counter, the _issuer_ needs to create a public typed link at a chosen path that points to their stored counter resource.
 
 ```cadence
-authAccount.link<&{HasCount}>(/public/hasCount, target: /storage/counter)
+AuthAccount.link<&{HasCount}>(/public/hasCount, target: /storage/counter)
 ```
 
 Anyone can now read the `count` of the counter resource via the `HasCount` interface. This can be done by
 
-- getting the PublicAccount object of the issuer (using the issuers address),
+- getting the `PublicAccount` object of the issuer (using the issuers address),
 - then getting a typed capability from the chosen path,
 - then finally calling borrow on that capability to get a reference to the instance of the counter (constrained by the `HasCount` interface)
 
@@ -62,7 +62,7 @@ countRef.count
 To allow only certain accounts/resources (read) access to the `count` field on the counter, the _issuer_ needs to create a private typed link at a chosen path that points to their stored counter resource.
 
 ```cadence
-authAccount.link<&{HasCount}>(/private/hasCount, target: /storage/counter)
+AuthAccount.link<&{HasCount}>(/private/hasCount, target: /storage/counter)
 ```
 
 The receiving party needs to offer a public way to receive `&{HasCount}` capabilities.
@@ -117,9 +117,9 @@ There are two requirements of the capability system that must be satisfied.
 
 Revocation can be currently done by using the `unlink` function.
 
-In the public example this would mean calling `authAccount.unlink&lt;&{HasCount}>(/public/hasCount)` which would invalidate (break) all capabilities created from this public path (both those created before unlink was called and those created after unlink was called).
+In the public example this would mean calling `authAccount.unlink<&{HasCount}>(/public/hasCount)` which would invalidate (break) all capabilities created from this public path (both those created before unlink was called and those created after unlink was called).
 
-In the private example the call would change to `authAccount.unlink&lt;&{HasCount}>(/private/hasCount`. It is important to note that if the issuer wants to have the ability to revoke/redirect capabilities in a more granular way (instead of doing them all at once), the solution is to create multiple private linked paths (e.g. `/private/hasCountAlice`, `/private/hasCountBob`).
+In the private example the call would change to `authAccount.unlink<&{HasCount}>(/private/hasCount)`. It is important to note that if the issuer wants to have the ability to revoke/redirect capabilities in a more granular way (instead of doing them all at once), the solution is to create multiple private linked paths (e.g. `/private/hasCountAlice`, `/private/hasCountBob`).
 
 If a path that was unlinked is linked again all the capabilities created from that path resume working. This can be used to redirect a capability to a different object, but can also be dangerous if done unintentionally, reviving a previously revoked capability.
 
@@ -153,9 +153,9 @@ The suggested change addresses these pain points by:
 
 ### Capabilities as Resources
 
-Changing capabilities into resources is trying to address two problems.
+Changing capabilities into resources attempts to address two problems.
 
-The first problem is that capabilities as resources would not be able to be copied. While a reference to a capability can still be created and passed on, this is a more explicit process than just simply creating a duplicate of a capability.
+The first problem is that, as resources, capabilities would not be able to be copied. While a reference to a capability can still be created and passed on, this is a more explicit process than just simply creating a duplicate of a capability.
 
 The second problem is a revocation problem. With capabilities as values the following scenario can happen:
 
@@ -166,7 +166,6 @@ Alice created capabilities B and C and gave them to Bob and Charlie respectively
 - Dan has capability B’
 
 Revoking C yields the expected result that Charlie can no longer use his capability. However, revoking B also revokes all copies of B, so both Bob’s and Dan’s capabilities are revoked. This is not very intuitive at first glance, as there is little differnce between the capabilities
-
 B and C, but Dan’s ability to use his capability depends on which copy he has.
 
 With capabilities as resources this scenario would not have occurred as there is no way to copy B to create B’. If Dan also needs this capability, Alice must create a capability D to give to him. However this also means that there is no way for Bob to directly grant this capability to someone else (without losing his own).
@@ -175,7 +174,7 @@ Dan could also have a reference to the capability B (&B), but in this case Dan k
 
 ### Accounts public domain as a capability storage
 
-This part of the change proposes that accounts can store capabilities in their public domain. Capabilities would be borrowed by anyone that needs to use them. The `borrowCapability `method would be added to the PublicAccount which would be equivalent to borrowing the capability then calling borrow on it.
+This part of the change proposes that accounts can store capabilities in their public domain. Capabilities would be borrowed by anyone that needs to use them. The `borrowCapability `method would be added to the PublicAccount which would be equivalent to how we currently get the capability then call `borrow` on it.
 
 ```cadence
 let publicAccount = getAccount(issuerAddress)
@@ -240,7 +239,7 @@ fun getLinkTarget(_ path: CapabilityPath): Path?
 fun unlink(_ path: CapabilityPath)
 ```
 
-The` `method`getCapability`would be renamed to `issueCapability `to reflect the fact that a new capability is created every time.
+The method `getCapability` would be renamed to `issueCapability `to reflect the fact that a new capability is created every time.
 
 And also from the PublicAccount:
 
@@ -310,7 +309,7 @@ This example assumes that the capability id is known. This is always the case fo
 
 In certain situations it is required that an issuer delegates issuing capabilities to someone else. In this case the following approach can be used.
 
-Let's assume that the issuer defined a `AdminInterface` resource interface and a `Main` resource (besides the `Counter` and `HasCount` from previous examples).
+Let's assume that the issuer defined an `AdminInterface` resource interface and a `Main` resource (besides the `Counter` and `HasCount` from previous examples).
 
 ```cadence
 public resource interface AdminInterface {
