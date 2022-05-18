@@ -43,7 +43,7 @@ At a high level, Interaction Templates attempt to standardize how contract devel
 ### Metadata Standardization
 By standardizing **Interaction Template Metadata**, the Flow community can start to build applications that can consume metadata, instead of having to come up with it themselves for each interaction they need to support. Since the format of the metadata would be consistent, this enables parties to support a much wider number of interactions, including any number of arbitrary interactions.
 
-Standardizing metadata helps all parties involved involved in the execution of an interaction to better understand what an interaction require and does. For applications, metadata allows them to understand and present the interaction to a user in an intuitive way. For wallets, metadata also helps them understand what a transaction will do to an account, and gives them tools to prevent undesirable outcomes and reject malicious transactions. For users, metadata helps to promote human readable understanding of the impacts of a transaction.
+Standardizing metadata helps all parties involved in the execution of an interaction to better understand what the interaction requires and does. For applications, metadata allows them to understand and present the interaction to a user in an intuitive way. For wallets, metadata also helps them understand what a transaction will do to an account, and gives them paths to prevent undesirable outcomes and reject malicious transactions. For users, metadata helps to promote human readable understanding of the impacts of a transaction.
 
 ### Interaction Audits
 Interaction metadata must be correct in order to be valuable. Metadata that deceives about it's underlying interaction can have unfortunate effects for an end user. To prevent against this, standardizing **Interaction Template Audits** can help all parties that consume and produce Interaction Templates to verify and prove that the template is correct.
@@ -118,7 +118,7 @@ Interaction Templates are both metadata and the Cadence for a transaction or scr
 
 Interaction Templates at their core are just data. The format of the data for this example is JSON, however it could be possible that in the future Interaction Templates could be represented in other formats.
 
-Here is an example Interaction Template for a "Transfer FLOW" transaction:
+Here is an example `InteractionTemplate` for a "Transfer FLOW" transaction:
 
 ```javascript
 {
@@ -167,17 +167,19 @@ Here is an example Interaction Template for a "Transfer FLOW" transaction:
         `,
         dependencies: {
             "0xFUNGIBLETOKENADDRESS": { // Network (mainnet || testnet) dependent locations for 0xFUNGIBLETOKENADDRESS contract.
-                mainnet: {
-                    address: "0xf233dcee88fe0abe", // Address of the account the contract is located.
-                    fq_address: "A.0xf233dcee88fe0abe.FungibleToken", // Fully qualified contract identifier.
-                    pin: "asdfasdfasdfasdfasdfasdfsadf123123123123", // Unique identifier of the interactions dependency tree.
-                    pin_block_height: 10123123123 // Block height the pin was generated against.
-                },
-                testnet: {
-                    address: "0x9a0766d93b6608b7",
-                    fq_address: "A.0x9a0766d93b6608b7.FungibleToken",
-                    pin: "asdfasdfasdfasdfasdfasdfsadf123123123123",
-                    pin_block_height: 10123123123
+                "FungibleToken" : {
+                    mainnet: {
+                        address: "0xf233dcee88fe0abe", // Address of the account the contract is located.
+                        fq_address: "A.0xf233dcee88fe0abe.FungibleToken", // Fully qualified contract identifier.
+                        pin: "asdfasdfasdfasdfasdfasdfsadf123123123123", // Unique identifier of the interactions dependency tree.
+                        pin_block_height: 10123123123 // Block height the pin was generated against.
+                    },
+                    testnet: {
+                        address: "0x9a0766d93b6608b7",
+                        fq_address: "A.0x9a0766d93b6608b7.FungibleToken",
+                        pin: "asdfasdfasdfasdfasdfasdfsadf123123123123",
+                        pin_block_height: 10123123123
+                    }
                 }
             }
         },
@@ -297,7 +299,7 @@ An Interaction Audit represents a trusted entity vouching for the correctness an
 
 Consumers such as wallets or applications can verify Interaction Template Audits produced by entities they trust. If verified, the consumer can then have greater confidence in the correctness and security of the Interaction Template it corresponds to.
 
-Here is an example of some Interaction Template Audits:
+Here is an example of some `InteractionTemplateAudit`:
 
 ```javascript
 {
