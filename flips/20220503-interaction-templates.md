@@ -203,7 +203,7 @@ Here is an example `InteractionTemplate` for a "Transfer FLOW" transaction:
                         }
                     }
                 },
-                balance: "0xFUNGIBLETOKENADDRESS" // The token this argument acts upon.
+                balance: "0xFUNGIBLETOKENADDRESS.FungibleToken" // The token this argument acts upon.
             },
             to: {
                 index: 1,
