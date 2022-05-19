@@ -50,7 +50,7 @@ means that `&v` will create a reference to the value `v`, while `*p` will obtain
 by the pointer `p`. Confusingly, C uses the `*` postfix to denote a pointer type, so if `v` has an `int`
 type, then `&v` has type `int*`.
 
-Other languagues derived from C like Rust have also chosen this syntax, although in Rust's case for a
+Other languagues derived from C like Rust or Go have also chosen this syntax, although in Rust's case for a
 pointer type the `*` appears at the beginning of the type instead of the end, like `*int`.
 
 ### SML/OCaml/F#
@@ -115,6 +115,15 @@ resource R { /* ... */ }
 
 let r <- create R() // r has type @R
 let p = &r as auth &R // p has type auth &R
+```
+
+or:
+
+```cadence
+resource R { /* ... */ }
+
+let r <- create R() // r has type @R
+let p: auth &R = &r // p has type auth &R
 ```
 
 ### Implementation Details
