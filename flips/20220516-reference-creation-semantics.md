@@ -2,7 +2,7 @@
 
 | Status        | (Proposed)       |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
+| **FLIP #**    | [941](https://github.com/onflow/flow/pull/941)|
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Updated**   | 2022-05-19                                           |
