@@ -5,7 +5,7 @@
 | **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
-| **Updated**   | 2022-05-12                                           |
+| **Updated**   | 2022-05-19                                           |
 
 ## Objective
 
@@ -75,51 +75,13 @@ instances of code written as `&v as &T` will simply be interpreted as first
 taking the reference `&v`, and then casting that expression to `&T`, which 
 has exactly the existing behavior. 
 
-As an example, the following code would create a reference to a struct value `s`:
-
-```cadence
-struct S { /* ... */ }
-
-let s = s() // s has type S
-let r = &s // r has type &S
-```
-
-There are a few caveats to this basic idea.
-
-We will need to add a different operator, however, for creating an authorized
-reference, as `&v as auth &T` would not be a legal cast if `&v` was 
-interpreted as an unauthorized reference. This FLIP proposes adding the `auth &` operator
-to produce an authorized reference, written like so: `auth &v`.
-
-The above example, except creating an authorized reference, would look like so:
-
-```cadence
-struct S { /* ... */ }
-
-let s = s() // s has type S
-let r = auth &s // r has type auth &S
-```
-
-When references were first added to Cadence, a primary concern was that they could
+However, when references were first added to Cadence, a primary concern was that they could
 expose functionality of resources by allowing references to those resources to be distributed
 to others. The original `as` cast-like syntax for references was used to require references
 to be given an explicit type to make it less likely for developers to unintentionally 
-expose the internals of their resources. We would like to preserve this safeguard for 
-resource references, so we will also add a new check to the checker requiring that `&v` 
-and `auth &v` be given an explicit type when `v` is resource-kinded. So, for example,
-this code would result in a type error:
-
-
-```cadence
-resource R { /* ... */ }
-
-let r <- create R() // r has type @R
-let p = &r // type error: `&r` does not have a type provided
-```
-
-Users can resolve this in one of two ways. They can cast their resource reference 
-to the type they would like it to be (note how this resembles the existing
-reference syntax):
+expose the internals of their resources. We would like to preserve this safeguard, so we will 
+also add a new check to the checker requiring that `&v` be given an explicit type.
+As an example, the following code would create a reference to a value `r`:
 
 ```cadence
 resource R { /* ... */ }
@@ -128,8 +90,7 @@ let r <- create R() // r has type @R
 let p = &r as &R // p has type &R
 ```
 
-Alternatively, if they are assigning the reference to a variable (as opposed to passing 
-it as a function argument, for example), they can annotate the variable with the type:
+This code would do the same thing:
 
 ```cadence
 resource R { /* ... */ }
@@ -138,13 +99,22 @@ let r <- create R() // r has type @R
 let p: &R = &r // p has type &R
 ```
 
-The same principle would apply with `auth` references:
+Meanwhile, this code would have a type error:
 
 ```cadence
 resource R { /* ... */ }
 
 let r <- create R() // r has type @R
-let p = auth &r as auth &R // p has type auth &R
+let p = &r // type error: `&r` does not have a type provided
+```
+
+Authorized references can be created the same way by using the `auth` keyword as normal.
+
+```cadence
+resource R { /* ... */ }
+
+let r <- create R() // r has type @R
+let p = &r as auth &R // p has type auth &R
 ```
 
 ### Implementation Details
@@ -154,12 +124,11 @@ checker, and interpreter. In the parser, references would no longer expect the `
 operator as part of the expression; the reference expression is now simply `&` 
 followed by another expression. Of course, because the reference expression is an
 expression like any other, it can be followed part of a cast (or any other expression). 
-We would also need to add parsing support for the new `auth &` operator as well. 
 
 In the checker, we would need to change how the type of reference expressions are computed, 
 to ensure that any possible cast that was previously possible under the old model would 
 still be valid in the new one. Additionally we would need to add a check to ensure that all
-resource-kinded references are properly annotated or cast. This check is similar to one
+references are properly annotated or cast. This check is similar to one
 that already exists for empty collections (`[]` or `{}`), so it should be familiar to users
 already.
 
@@ -168,18 +137,6 @@ the provided type will need to be separated in the interpreter, while ensuring t
 semantics of the combined operations are the same as in the original reference semantics. 
 
 ### Drawbacks
-
-The primary drawbacks of this proposal are how it handles authorized references:
-
-First is the additional verbosity added for creating authorized references: 
-`auth &v as auth &T` duplicates both the `auth` keyword and the `&` symbol. 
-
-The other is that because unauthorized references cannot be cast to authorized 
-ones, any places where users create authorized references will need to be 
-updated (see the Compatibility section below).
-
-However, authorized references are significantly less common than unauthorized ones, 
-so the drawbacks of this approach apply primarily to the uncommon case. 
 
 ### Alternatives Considered
 
@@ -208,61 +165,26 @@ Under the new design, these are now distinct, separable operations. However,
 existing code will still perform both, so there should be no change to the
 performance of the interpreter.
 
-In the checker, the additional check performed for resource references will 
+In the checker, the additional check performed for references will 
 add a very small additional cost, but it is a simple check, and all existing code will 
 pass it by definition. 
 
 ### Best Practices
 
-The best practices for how references are used or created should not change much; in most 
-cases the same type annotations will be required on references (since most references are
-to resources) that were previously necessary. The only change is that developers will
-not need to explicitly specify the type on any struct-kinded references they create, and 
-we will likely suggest not annotating such references redundantly in order to reduce 
-unnecessary code. So, for example, the following would be discourage, since the cast 
-has no effect:
-
-```cadence
-struct S { /* ... */ }
-
-let s = s() // s has type S
-let r = &s as &S // r has type &S
-```
-
-However, the following would be fine, since it does change the type with which `r`
-can be accessed:
-
-```cadence
-struct S { /* ... */ }
-
-let s = s() // s has type S
-let r = &s as &AnyStruct // r has type &AnyStruct
-```
+The best practices for how references are used or created should not change much;
+the same type annotations will be required on references that were previously necessary.
 
 ### Compatibility
 
-Existing (and previously-working) code that does not use `auth` references 
-should continue to work correctly; as all currently functioning references
-will include a cast with `as` by definition. It is only `auth` references 
-that will not be backwards compatible. To see why, consider:
-
-```cadence
-let x = &v as auth &T
-```
-
-Under the new design, `&v` would create a (non-authorized) reference to `v`, 
-which is then cast to the type `auth &T`. However, because `&v` is not 
-authorized, it cannot be cast to `auth &T`, so this will fail to typecheck. 
-Authorized references that were previously created this way will need to use
-the new `auth &` operator like so:
-
-```cadence
-let x = auth &v as auth &T
-```
+Existing (and previously-working) code  should continue to work correctly; 
+as all currently functioning references will include a cast with `as` by definition. 
+However, code that previously (incorrectly) tried to use `as!` and `as?` to create
+a reference will need to change, as we will now report a missing type error in these
+cases. 
 
 ### User Impact
 
-Users will need to update any code where they created `auth` references
+Users will need to update any code where they incorrectly created references
 in order to roll out this change. After that, however, there should be 
 dramatically less confusion about the differences between referencing
 and casting, as they will no longer be conflated by sharing an operator. 
