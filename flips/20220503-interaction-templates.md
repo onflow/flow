@@ -89,7 +89,7 @@ These fields declare the data structure type and data structure version. The ver
 
 #### `id`
 This is a unique, content derived identifier for this interaction interface. Each ID is unique for each interaction interface.
-This is created by hashing (SHA-256 hash represented as hex string) (TODO: Define serialization process of the data structure prior to hashing) over the `data` portion of the interaction template.
+This is created by hashing (SHA3-256 hash represented as hex string) (TODO: Define serialization process of the data structure prior to hashing) over the `data` portion of the interaction template.
 
 #### `data.version`
 The SemVer version of the interface.
@@ -234,7 +234,7 @@ These fields declare the data structure type and data structure version. The ver
 
 #### `id`
 This is a unique, content derived identifier for this interaction. Each ID is unique for each interaction.
-This is created by hashing (SHA-256 hash represented as hex string) (TODO: Define serialization process of the data structure prior to hashing) over the `data` portion of the interaction template.
+This is created by hashing (SHA3-256 hash represented as hex string) (TODO: Define serialization process of the data structure prior to hashing) over the `data` portion of the interaction template.
 
 #### `data`
 The content of the interaction template.
@@ -266,7 +266,7 @@ let import_hash = ""
 
 for contract in horizen {
   let contract_code = getContract(contract)
-  let contract_hash = hash(contract_code) // SHA-256 hash represented as hex string
+  let contract_hash = hash(contract_code) // SHA3-256 hash represented as hex string
   let contract_imports = getContractImports(contract_code)
 
   import_hash = import_hash + contract_hash
@@ -276,7 +276,7 @@ for contract in horizen {
   }
 }
 
-let pin = hash(import_hash) // SHA-256 hash represented as hex string
+let pin = hash(import_hash) // SHA3-256 hash represented as hex string
 ```
 
 #### `data.arguments`
