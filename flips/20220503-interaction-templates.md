@@ -341,6 +341,23 @@ Information about the entity that produced the audit. The data structure contain
 
 The signature is produced by signing over the `data.id` identifier of the Interaction Template the audit corresponds to.
 
+### Interaction Audit Revocation
+An auditor may want to revoke an audit they previously produced.
+
+To do so, the auditor will execute a transaction to revoke the key corresponding to `key_id` on the account corresponding to `address` on the `data.signer` of the Interaction Template Audit.
+
+### Interaction Audit Creation
+When an auditor creates an Interaction Template Audit, they do so by creating a signature over the `data.id` of the Interaction Template they're auditing. The key used to generate this signature corresponds to a key on an on-chain account the auditor maintains.
+
+When generating this signature, the auditor may choose to use a unique key pair to do so. They may alternatively choose to use a key pair thats previously been used to create signatures for other Interaction Template Audits.
+
+If the auditor chooses a unique key pair for each Interaction Template Audit, they can revoke this individual key at a future time, thereby revoking a single audit. If a key was used to produce multiple Interaction Template Audits, the revocation of the single key would revoke multiple audits.
+
+An auditor can choose to "bundle" Interaction Template Audits to keys used to generate them in any number of ways.
+
+### Interaction Audits Verification
+A verifier of an Interaction Template Audit should first check that the `key_id` on the account corresponding to `address` on the `data.signer` is not revoked. Then the verifier should check that the `signature` is valid for the `key_id` on the account corresponding to `address` on the `data.signer`. If both checks pass, the Interaction Template Audit should be considered valid.
+
 ### Proposed Workflow
 
 The following diagram illustrates how a Contract Developer, Auditor, Application and Wallet might work together, in conjunction with an Interaction Template and Interaction Template Audit to carry out a "Purchase NFT" transaction.
