@@ -52,7 +52,7 @@ to make these fields private with accessor methods instead.
 
 https://github.com/onflow/flow/pull/703 proposes to solve a related, but not identical,
 problem, that of public fields being mutable outside of their defining scope. It is 
-possible that should this FLIP be approved and merged, this FLIP will no longer be nsecessary.
+possible that should this FLIP be approved and merged, this FLIP will no longer be necessary.
 However, it is not certain that the footguns associated with public mutable fields overlap
 with those associated with public resource fields; and as such this FLIP may still have value. 
 
