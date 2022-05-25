@@ -33,7 +33,7 @@ A pattern that has emerged in the Flow community is for contract developers to h
 ### Interaction Metadata
 A cadence script or transaction alone does not contain metadata about itself. Often, application and wallet developers may display a _human readable_ title or description about a transaction before requesting it to be signed by a user. They may wish to display a title and description about each argument it needs to collect from the user, or information about how the transaction will impact the user's account and assets. The metadata a developer might consume in their application could take many forms and be used for many purposes.
 
-An application or wallet may also want to know what a transaction will _do_ to protect against performing actions that will produce an undesirable result. For example, an application / wallet may wish to prevent a user from executing a transaction that sends more FLOW tokens from their account than they have, because that transaction will fail. An application / wallet may also want to know what version of an interaction's dependency tree it was created against, since because contracts on Flow are mutable, interaction may change in functionality if their dependencies change.
+An application or wallet may also want to know what a transaction will _do_ to protect against performing actions that will produce an undesirable result. For example, an application / wallet may wish to prevent a user from executing a transaction that sends more FLOW tokens from their account than they have, because that transaction will fail. An application / wallet may also want to know what version of an interaction's dependency tree it was created against, since because contracts on Flow are mutable, an interaction may change in functionality if its dependencies change.
 
 Currently, applications and wallets are left to come up with their own metadata around the transactions they support. For example, on Flow Port, for each transaction it supports, it has included a title and description for it, along with titles and descriptions of each argument. Contract developers do not yet have a standardized way to provide metadata around their interactions that can be consumable by the applications and wallets that engage with them.
 
@@ -47,7 +47,7 @@ By standardizing **Interaction Template Metadata**, the Flow community can start
 Standardizing metadata helps all parties involved in the execution of an interaction to better understand what the interaction requires and does. For applications, metadata allows them to understand and present the interaction to a user in an intuitive way. For wallets, metadata also helps them understand what a transaction will do to an account, and gives them paths to prevent undesirable outcomes and reject malicious transactions. For users, metadata helps to promote human readable understanding of the impacts of a transaction.
 
 ### Interaction Audits
-Interaction metadata must be correct in order to be valuable. Metadata that deceives about it's underlying interaction can have unfortunate effects for an end user. To prevent against this, standardizing **Interaction Template Audits** can help all parties that consume and produce Interaction Templates to verify and prove that the template is correct.
+Interaction metadata must be correct in order to be valuable. Metadata that deceives about its underlying interaction can have unfortunate effects for an end user. To prevent against this, standardizing **Interaction Template Audits** can help all parties that consume and produce Interaction Templates to verify and prove that the template is correct.
 
 Creating a mechanic that allows trusted entities to act as auditors, to produce a proof that vouches for the correctness and safety of a Interaction Template; and a mechanic for verifiers (applications, wallets, etc) to prove an audit was created by an auditor they trust, will improve the overall safety and security of the use of Interaction Templates on Flow.
 
@@ -64,7 +64,7 @@ Here is an example of an `InteractionTemplateInterface` for "Fungible Token Tran
 ```javascript
 {
     f_type: "InteractionTemplateInterface",
-    f_vsn: "1.0.0",
+    f_version: "1.0.0",
     id: "asadf23234...fas234234", // Unique ID for the data structure.
     data: {
         version: "1.0.1",
@@ -84,7 +84,7 @@ Here is an example of an `InteractionTemplateInterface` for "Fungible Token Tran
 }
 ```
 
-#### `f_type & f_vsn`
+#### `f_type & f_version`
 These fields declare the data structure type and data structure version. The version instructs consumers of this data structure how to operate on it. It also allows the data structure to change in future versions.
 
 #### `id`
@@ -124,7 +124,7 @@ Here is an example `InteractionTemplate` for a "Transfer FLOW" transaction:
 ```javascript
 {
     f_type: "InteractionTemplate", // Data Type
-    f_vsn: "1.0.0", // Data Type Version
+    f_version: "1.0.0", // Data Type Version
     id: "a2b2d73def...aabc5472d2", // Unique ID for the data structure.
     data: {
         type: "transaction", // "transaction" || "script"
@@ -133,16 +133,16 @@ Here is an example `InteractionTemplate` for a "Transfer FLOW" transaction:
         messages: {
             title: {
                 i18n: { // Internationalised (BCP-47) set of human readable messages about the interaction
-                    en-US: "Transfer FLOW",
-                    fr-FR: "FLOW de transfert",
-                    zh-CN: "转移流程",
+                    "en-US": "Transfer FLOW",
+                    "fr-FR": "FLOW de transfert",
+                    "zh-CN": "转移流程",
                 }
             },
             description: {
                 i18n: { // Internationalised (BCP-47) set of human readable messages about the interaction
-                    en-US: "Transfer {amount} FLOW to {to}", // Messages might consume arguments.
-                    fr-FR: "Transférez {amount} FLOW à {to}",
-                    zh-CN: "将 {amount} FLOW 转移到 {to}"
+                    "en-US": "Transfer {amount} FLOW to {to}", // Messages might consume arguments.
+                    "fr-FR": "Transférez {amount} FLOW à {to}",
+                    "zh-CN": "将 {amount} FLOW 转移到 {to}"
                 }
             }
         },
@@ -154,7 +154,7 @@ Here is an example `InteractionTemplate` for a "Transfer FLOW" transaction:
             prepare(signer: AuthAccount) {
                 %%self.vault <- signer
                 .borrow<&{FungibleToken.Provider}>(from: /storage/flowTokenVault)!
-                .withdraw(amount: amount)%%ount)
+                .withdraw(amount: amount)
             
                 self.vault <- FungibleToken.getVault(signer)
             }
@@ -190,16 +190,16 @@ Here is an example `InteractionTemplate` for a "Transfer FLOW" transaction:
                 messages: { // Set of human readable messages about the argument
                     title: {
                         i18n: { // Internationalised (BCP-47) set of human readable messages about the argument
-                            en-US: "Amount",
-                            fr-FR: "Montant",
-                            zh-CN: "数量",
+                            "en-US": "Amount",
+                            "fr-FR": "Montant",
+                            "zh-CN": "数量",
                         }
                     },
                     description: {
                         i18n: { // Internationalised (BCP-47) set of human readable messages about the argument
-                            en-US: "Amount of FLOW token to transfer",
-                            fr-FR: "Quantité de token FLOW à transférer",
-                            zh-CN: "要转移的 FLOW 代币数量"
+                            "en-US": "Amount of FLOW token to transfer",
+                            "fr-FR": "Quantité de token FLOW à transférer",
+                            "zh-CN": "要转移的 FLOW 代币数量"
                         }
                     }
                 },
@@ -210,16 +210,16 @@ Here is an example `InteractionTemplate` for a "Transfer FLOW" transaction:
                 messages: { // Set of human readable messages about the argument
                     title: {
                         i18n: { // Internationalised (BCP-47) set of human readable messages about the argument
-                            en-US: "To",
-                            fr-FR: "Pour",
-                            zh-CN: "到",
+                            "en-US": "To",
+                            "fr-FR": "Pour",
+                            "zh-CN": "到",
                         }
                     },
                     description: {
                         i18n: { // Internationalised (BCP-47) set of human readable messages about the argument
-                            en-US: "Amount of FLOW token to transfer",
-                            fr-FR: "Le compte vers lequel transférer les jetons FLOW",
-                            zh-CN: "将 FLOW 代币转移到的帐户"
+                            "en-US": "Amount of FLOW token to transfer",
+                            "fr-FR": "Le compte vers lequel transférer les jetons FLOW",
+                            "zh-CN": "将 FLOW 代币转移到的帐户"
                         }
                     }
                 } 
@@ -229,7 +229,7 @@ Here is an example `InteractionTemplate` for a "Transfer FLOW" transaction:
 }
 ```
 
-#### `f_type & f_vsn`
+#### `f_type & f_version`
 These fields declare the data structure type and data structure version. The version instructs consumers of this data structure how to operate on it. It also allows the data structure to change in future versions.
 
 #### `id`
@@ -282,7 +282,42 @@ let pin = hash(import_hash) // SHA3-256 hash represented as hex string
 #### `data.arguments`
 Internationalized, human readable messages explaining each of the cadence arguments. For each message, there can be any number of translations provided. Translations should use [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tags.
 
-Arguments may correspond to a balance of a fungible or identifier of a non-fungible token. In this case, the balance or identifier the argument corresponds to should point to it's dependency identifier.
+Arguments may correspond to a balance of a fungible or identifier of a non-fungible token. In this case, the balance or identifier the argument corresponds to should point to its dependency identifier.
+
+#### Arbitrary Execution Phase
+
+A powerful feature of Cadence is the ability for transactions to have well defined `pre` and `post` conditions. These conditions must be true for the transaction these conditions are included in to not be reverted. An Interaction Template for a transaction could include a Cadence transaction without an execution block, along with sufficiently defined pre and post conditions. Consumers of this Interaction Template (applications / wallets) could use such a template while carrying out a transaction with their own filled in execution phases. If the pre and post conditions are sufficiently defined, the execution phase of the transaction could be arbitrary, and the Interaction Template for it be valid.
+
+Example "Transfer Token" transaction cadence code with an unfilled in execution phase:
+```text
+import FungibleToken from 0xFUNGIBLETOKENADDRESS
+transaction(amount: UFix64, to: Address) {
+    let vault: @FungibleToken.Vault
+    let receiverBalanceBefore: UFix64
+    let senderBalanceBefore: UFix64
+    let from: Address
+    prepare(signer: AuthAccount) {
+        self.receiverBalanceBefore = getAccount(to).balance
+        self.senderBalanceBefore = signer.balance
+        self.from = signer.address
+
+        self.vault <- signer
+        .borrow<&{FungibleToken.Provider}>(from: /storage/flowTokenVault)!
+        .withdraw(amount: amount)
+    
+        self.vault <- FungibleToken.getVault(signer)
+    }
+    pre {
+        self.vault.balance == amount
+    }
+    post {
+        getAccount(to).balance == self.receiverBalanceBefore + amount
+        getAccount(from).balance = self.senderBalanceBefore - amount
+    }
+}
+```
+
+For more on transaction phases, see [here](https://docs.onflow.org/cadence/language/transactions).
 
 #### Interaction Template Discovery
 Contract developers should make available their Interaction Templates to others who wish to use them. They can do this through providing them using a webserver, and have consumers query them. They may also choose to store them on-chain. They may even choose to store them on IPFS. Since Interaction Templates are just data, they could be serialized and stored on any platform.
@@ -298,14 +333,16 @@ Consumers of this Interaction Template could query the static identifier, and al
 ### Interaction Audits
 An Interaction Audit represents a trusted entity vouching for the correctness and safety of an Interaction Template.
 
-Consumers such as wallets or applications can verify Interaction Template Audits produced by entities they trust. If verified, the consumer can then have greater confidence in the correctness and security of the Interaction Template it corresponds to.
+Any entity can act as an Auditor and produce Interaction Template Audits.
+
+Consumers such as wallets or applications can verify Interaction Template Audits produced by entities they choose to trust. If verified, the consumer can then have greater confidence in the correctness and security of the Interaction Template it corresponds to.
 
 Here is an example of some `InteractionTemplateAudit`:
 
 ```javascript
 {
     f_type: "InteractionTemplateAudit",
-    f_vsn: "1.0.0",
+    f_version: "1.0.0",
     data: {
         id: "a2b2d73def...aabc5472d2", // InteractionTemplate ID
         signer: {
@@ -318,7 +355,7 @@ Here is an example of some `InteractionTemplateAudit`:
  
 {
     f_type: "InteractionTemplateAudit",
-    f_vsn: "1.0.0",
+    f_version: "1.0.0",
     data: {
         id: "a2b2d73def...aabc5472d2", // InteractionTemplate ID
         signer: {
@@ -330,7 +367,7 @@ Here is an example of some `InteractionTemplateAudit`:
 }    
 ```
 
-#### `f_type & f_vsn`
+#### `f_type & f_version`
 These fields declare the data structure type and data structure version. The version instructs consumers of this data structure how to operate on it. It also allows the data structure to change in future versions.
 
 #### `data.id`
