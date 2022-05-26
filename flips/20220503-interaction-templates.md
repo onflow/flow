@@ -449,7 +449,7 @@ Instead, if the templates are made available on an external location, developers
 EXAMPLE:
 ```javascript
 await fcl.exec({
-    template: "DNS:transfer-flow.interactions.onflow.org",
+    template: "dns://transfer-flow.interactions.onflow.org",
     args: (arg, t) => [arg("1.0", t.UFix64), arg("0xABC123DEF456", t.Address)]
 })
 ```
@@ -457,7 +457,7 @@ await fcl.exec({
 EXAMPLE:
 ```javascript
 await fcl.query({
-    template: "IPFS:64EC88CA00B268E5BA1A35678A1B5316D212F4F366B2477232534A8AECA37F3C",
+    template: "ipfs://64EC88CA00B268E5BA1A35678A1B5316D212F4F366B2477232534A8AECA37F3C",
     args: (arg, t) => [arg("0xABC123DEF456", t.Address)]
 })
 ```
@@ -479,5 +479,278 @@ Wallets who chose to support Interaction Templates will need to modify their aut
 - Could the emergence of use of common Cadence contract & resource interfaces across projects reduce the ecosystems dependency on this solution?
 
 ## FLIP TODOs:
-- Create JSON Schema for `InteractionTemplate` , `InteractionTemplateInterface` and `InteractionTemplateAudit`
 - Define serialization process prior to hashing when generating identifiers for `InteractionTemplate` and `InteractionTemplateInterface`.
+
+## Data Structure JSON Schemas
+
+### `InteractionTemplate`
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "f_type": {
+      "type": "string"
+    },
+    "f_version": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "interface": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "object",
+              "properties": {
+                "i18n": {
+                  "type": "object",
+                  "patternProperties": {
+                    ".*": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "i18n"
+              ],
+            },
+          },
+        },
+        "cadence": {
+          "type": "string"
+        },
+        "dependencies": {
+          "type": "object",
+          "description": "Account address placeholder",
+          "patternProperties": {
+            ".*": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "object",
+                  "description": "Contract on account",
+                  "patternProperties": {
+                    ".*": {
+                      "type": "object",
+                      "description": "Network specific dependency (mainnet, testnet, canarynet etc)",
+                      "properties": {
+                        "address": {
+                            "type": "string"
+                        },
+                        "fq_address": {
+                            "type": "string"
+                        },
+                        "pin": {
+                            "type": "string"
+                        },
+                        "pin_block_height": {
+                            "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "address",
+                        "fq_address",
+                        "pin",
+                        "pin_block_height"
+                      ]
+                    }
+                  },
+                }
+              },
+            }
+          },
+        },
+        "arguments": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "object",
+              "properties": {
+                "index": {
+                  "type": "integer"
+                },
+                "messages": {
+                  "type": "object",
+                  "patternProperties": {
+                    ".*": {
+                      "type": "object",
+                      "properties": {
+                        "i18n": {
+                          "type": "object",
+                          "patternProperties": {
+                            ".*": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "balance": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "i18n"
+                      ]
+                    }
+                  }
+                }
+              },
+              "required": [
+                "index",
+                "messages"
+              ]
+            }
+          }
+        }
+      },
+      "required": [
+        "type",
+        "version",
+        "messages",
+        "cadence",
+        "dependencies",
+        "arguments"
+      ]
+    }
+  },
+  "required": [
+    "f_type",
+    "f_version",
+    "id",
+    "data"
+  ]
+}
+```
+
+### `InteractionTemplateAudit`
+
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "f_type": {
+      "type": "string"
+    },
+    "f_version": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "signer": {
+          "type": "object",
+          "properties": {
+            "account": {
+              "type": "string"
+            },
+            "key_id": {
+              "type": "integer"
+            },
+            "signature": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "account",
+            "key_id",
+            "signature"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "signer"
+      ]
+    }
+  },
+  "required": [
+    "f_type",
+    "f_version",
+    "data"
+  ]
+}
+```
+
+### `InteractionTemplateInterface`
+
+```javascript
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "f_type": {
+      "type": "string"
+    },
+    "f_version": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "flip": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "arguments": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "object",
+              "properties": {
+                "index": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "index",
+                "type"
+              ]
+            }
+          }
+        }
+      },
+      "required": [
+        "version",
+        "flip",
+        "title",
+        "arguments"
+      ]
+    }
+  },
+  "required": [
+    "f_type",
+    "f_version",
+    "id",
+    "data"
+  ]
+}
+```
