@@ -20,6 +20,7 @@ message BlockHeader {
   bytes proposer_sig_data = 10;
   string chain_id = 11;
   bytes parent_voter_indices = 12;
+  TimeoutCertificate last_view_tc = 13;
 }
 
 message TimeoutCertificate {
