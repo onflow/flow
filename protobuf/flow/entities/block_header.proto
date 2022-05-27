@@ -27,13 +27,13 @@ message TimeoutCertificate {
   uint64 view = 1;
 	repeated uint64 high_qc_views = 2;
 	QuorumCertificate highest_qc = 3;
-	repeated bytes signer_indices = 4;
+	bytes signer_indices = 4;
 	bytes sig_data = 5;
 }
 
 message QuorumCertificate {
   uint64 view = 1;
   bytes block_id = 2;
-	repeated bytes signer_indices = 3;
+	bytes signer_indices = 3;
 	bytes sig_data = 4;
 }
