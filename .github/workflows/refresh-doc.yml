@@ -1,0 +1,28 @@
+# This workflow is contained in a centralized repository (onflow/flow), and is called when there are changes pushed in any documentation repository
+name: refresh-doc
+on:
+  workflow_call:
+    inputs:
+      contentPaths:
+        required: true
+        type: string
+      repository:
+        required: true
+        type: string
+      commitSha:
+        required: true
+        type: string
+
+jobs:
+  reusable_refresh_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 📞 Call refresh endpoint
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://flow-docs-staging.fly.dev/action/refresh'
+        method: 'POST'
+        data: '{ "auth":"authToken", "repo":"${{ inputs.repository }}", "commitSha":"${{ inputs.commitSha }}", "contentPaths":["${{ inputs.contentPaths }}"] }'
+        ignoreStatusCodes: '404'
+        
+       
