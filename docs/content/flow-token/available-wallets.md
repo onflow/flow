@@ -1,66 +1,17 @@
 ---
-title: Flow Wallets
-sidebar_title: Flow Wallets
-description: Managing your Flow account and digital assets
+title: FLOW Available Wallets
+sidebar_title: FLOW Wallets
+description: How to use your FLOW tokens
 ---
 
-# Overview
 
-You need a wallet to manage your Flow account and digital assets like NFTs or crypto currencies.
-
-## What is a wallet?
-
-Flow Wallets are applications that give access to your Flow accounts, allow you to send and receive funds, and enable you to interact with Flow applications.
-
-## What features do wallets provide?
-
-A variety of wallets are available. Most commonly, they allow you to …
-
-- Create Flow accounts
-- Read address, balance, and transaction history
-- Transfer tokens from one account to another
-- Display NFTs and discover NFT collections
-- Authenticate with Flow applications
-- Send transactions
-
-## What types of wallets exist?
-
-A wallet is only a tool to manage your Flow account. You can manage your account from different wallets.
-
-A wallet is build for a specific platform:
-
-- A hardware wallet is a physical device that lets you keep your crypto offline
-- A web wallet allows you to manage your account through the web browser. It is either integrated into a website or into your web browser itself. Web browser wallets need to be installed separately (Chrome, Firefox, or Opera)
-- A desktop wallet allows you to manage your account on your computer (macOS, Windows or Linux)
-- A mobile wallet makes your account accessible on your mobile device (Android or iOS)
-
-Wallets come in different ownership models:
-
-- Some wallets will require you to be the “Custodian” (aka “non-custodial”). With that, you have the responsibility to securely store your private key, which is used to control your Flow account. If you lose your key, there is no-one that can retrieve them for you.
-- Other wallets are “custodial”. In that case, the secure account storage is handled by the wallet provider on behalf of the account owner. You will create an account with login credentials - very similar to traditional web applications. If you forget your account credentials, you can reach out to the customer support of the wallet provider to retrieve your account.
-
-## What wallets can I choose from?
-
-There are different Flow wallets you can choose from. They all serve the same purpose, but each one takes a different approach, supports different features, and makes different tradeoffs.
-
-- [Blocto](https://blocto.portto.io/en/) is a custodial web, iOS and Android wallet
-- [Ledger](https://www.ledger.com/) offers hardware wallets
-- [Dapper Wallet](https://www.meetdapper.com/) is a custodial web wallet
-- [Lilico](https://lilico.app/) is a non-custodial web wallet focused on NFTs
-- [Finoa](https://www.finoa.io/flow/) offers a institutional-grade custodial wallet
-
-# How Tos
-
-The following sectiong explain how to use a specific wallet.
-
-## How to use Blocto
+## Blocto
 
 You can create a Blocto account to hold FLOW in 2 different ways:
-
-1.  Through Flow Port
-2.  Through Blocto's mobile application.
-
-Both of these options are shown below.
+ 1) Through Flow Port 
+ 2) Through Blocto's mobile application. 
+ 
+ Both of these options are shown below.
 
 ### Creating Account through Flow Port: Navigate to Flow Port
 
@@ -79,7 +30,7 @@ Both of these options are shown below.
 5.  After you create your account, you should be logged into Flow Port. You can now see your account address in Flow Port:
 
 ![](https://storage.googleapis.com/flow-resources/documentation-assets/token%20delivery%20assets/FlowPortMyAccount.png)
-
+ 
 ### Creating an Account through Blocto's Mobile Application
 
 1.  Sign-up for a Blocto account. This will be done through Blocto's phone app. Blocto download link: https://blocto.app.link/download
@@ -94,7 +45,7 @@ Both of these options are shown below.
 
 - a.) If you have any questions regarding the process of generating your FLOW address on Blocto, you can reach out to our support team here: support@blocto.app.
 
-## How to use Ledger
+## Ledger
 
 ### Before You Start
 
@@ -153,7 +104,7 @@ Both of these options are shown below.
 
     ![](https://storage.googleapis.com/flow-resources/documentation-assets/token%20delivery%20assets/Screen%20Shot%202020-12-02%20at%2010.03.50%20AM.png)
 
-## How to use Finoa
+## Finoa
 
 1. If you do not have a Finoa account already, you can create one [here](https://finoa.io/flow).
 
@@ -163,7 +114,7 @@ Both of these options are shown below.
 
 4. Once onboarded, Finoa will provide you with your personal FLOW deposit address.
 
-## How to use Kraken
+## Kraken
 
 _Please note: claiming and staking of FLOW will not be available with Kraken for residents of the US or Canada._
 
@@ -179,4 +130,6 @@ Follow these steps to receive and use FLOW in your Kraken account:
 
 4. Select GENERATE NEW ADDRESS to create your deposit wallet address.
    ![](https://storage.googleapis.com/flow-resources/documentation-assets/token%20delivery%20assets/Kraken3.png)
-5. If you have any further questions regarding the process of generating your FLOW address on Kraken, you can reach out to the support team [here](https://support.kraken.com/hc/en-us/requests/new).
+   
+6. If you have any further questions regarding the process of generating your FLOW address on Kraken, you can reach out to the support team [here](https://support.kraken.com/hc/en-us/requests/new).
+
