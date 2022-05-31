@@ -59,7 +59,7 @@ You can create a Blocto account to hold FLOW in 2 different ways:
 
 2.  With choosing Ledger, please be aware that if you lose your Ledger Device, we will not be able to support any type of device recovery. Refer to Ledger supported documentation in case of any questions:
 
-    - a.) [Recovery Phase Information](https://www.ledger.com/academy/crypto/what-is-a-recovery-phrase)
+    - a.) [Recovery Phrase Information](https://www.ledger.com/academy/crypto/what-is-a-recovery-phrase)
 
 ### Install the Flow App
 
