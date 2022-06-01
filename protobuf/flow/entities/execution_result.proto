@@ -11,6 +11,7 @@ message ExecutionResult {
   repeated Chunk chunks = 3;
   repeated ServiceEvent service_events = 4;
   bytes execution_data_id = 5 [deprecated = true];
+  uint64 block_height = 6;
 }
 
 message Chunk {
