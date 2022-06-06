@@ -115,7 +115,7 @@ After adding account to the configuration you can use that account to fund the c
 ```
 > flow accounts create \
     --key a69c6986e846ba6d0....1397f5904cd319c3e01e96375d5777f1a47010 \
-    --host access.testnet.nodes.onflow.org:9000 \
+    --host access.devnet.nodes.onflow.org:9000 \
     --signer my-testnet-account
 
 Address	 0x01cf0e2f2f715450

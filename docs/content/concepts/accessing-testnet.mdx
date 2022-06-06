@@ -1,12 +1,15 @@
 ---
 title: Flow Testnet
+description: Guide to testnet access
 ---
 
-## Accessing Flow Testnet
+## Accessing Flow testnet
 
-Currently, there is an internal Testnet, available for access:
+The Flow testnet is available for access on this URL:
 
-- [access.testnet.nodes.onflow.org:9000](http://access.devnet.nodes.onflow.org:9000/)
+```
+access.devnet.nodes.onflow.org:9000
+```
 
 For example, to access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
 
@@ -14,44 +17,37 @@ For example, to access the network using the [Flow Go SDK](https://github.com/on
 import "github.com/onflow/flow-go-sdk/client"
 
 func main() {
-  flowAccessAddress := "access.testnet.nodes.onflow.org:9000"
+  flowAccessAddress := "access.devnet.nodes.onflow.org:9000"
   flowClient, _ := client.New(flowAccessAddress, grpc.WithInsecure())
   // ...
 }
 ```
 
-## Account Creation and Token Funding Requests
+### Generating testnet key pair
 
-Accounts and Tokens for testing are available by request through the [Flow Faucet](https://testnet-faucet-v2.onflow.org/)
-
-### Generate a Key Pair for the Faucet
-
-For Testnet, it's easy to generate a new key pair with the [Flow CLI](https://github.com/onflow/flow-cli):
+You can generate a new key pair with the [Flow CLI](https://github.com/onflow/flow-cli) as follows:
 
 ```sh
-flow keys generate
+> flow keys generate
+
+🙏 If you want to create an account on testnet with the generated keys use this link:
+https://testnet-faucet.onflow.org/?key= cc1c3d72...
+
+
+🔴️ Store private key safely and don't share with anyone!
+Private Key      246256f3...
+Public Key       cc1c3d72...
 ```
 
-By default, this command generates an ECDSA key pair on the P-256 curve.
+**Note: By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind, this tool is intended for development purposes only and is not recommended for production use.**
 
-**Note: this tool is intended for development purposes only and is not recommended for production use.**
+## Account creation and token funding requests
 
-## Testnet Account Usage
+Accounts and tokens for testing can be obtained through the [testnet faucet](https://testnet-faucet.onflow.org/). If you generated the keypair through the CLI, you can click on the URL provided to create an account and request testnet FLOW tokens.
 
-Once you receive your account, you'll be able make use of that account using our SDK. Some examples are available here in the SDK repo:
+## Important smart contract addresses
 
-- [https://github.com/onflow/flow-go-sdk/tree/master/examples](https://github.com/onflow/flow-go-sdk/tree/master/examples)
-
-Some of these examples
-
-- `create_account`
-- `deploy_contract`
-
-Transactions will now require fees in order to complete.
-
-## Important Testnet Smart Contract Addresses
-
-In order to access some of the contracts deployed to Flow Testnet, you can import them by using the following import addresses:
+In order to access some of the contracts deployed to the testnet, you can import them by using the following import addresses:
 
 ```cadence
 import FungibleToken from 0x9a0766d93b6608b7
