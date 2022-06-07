@@ -22,7 +22,6 @@ Submitted projects should have instructions describing how to run tests locally.
 There are currently JavaScript and Go testing frameworks you can use to create tests for your smart contract code:
 
 - [https://github.com/onflow/flow-js-testing](https://github.com/onflow/flow-js-testing)
-- [https://github.com/onflow/cadence-testing-go](https://github.com/onflow/cadence-testing-go) (Coming soon)
 
 ### Stress Testing Live Applications Before Mainnet
 

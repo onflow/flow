@@ -3,7 +3,7 @@ title: Testnet Testing Guidelines
 sidebar_title: 3. Testnet Testing
 ---
 
-> **Important**: The following instructions will change as soon as Flow rolled out [permissionless deployment (summer 2022)](https://readymag.com/tanookilabs/3705127/).
+> **Important**: The following instructions will change as soon as Flow rolled out [permissionless deployment (ETA summer 2022)](https://permissionless.onflow.org/).
 
 Early adopters wishing to deploy applications to Flow Mainnet are required to have their applications tested first on Testnet before they are able to submit their smart contracts to the Flow team for review.
 

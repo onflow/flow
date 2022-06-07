@@ -29,10 +29,6 @@ Unlike Flow Testnet, once your application is launched on Flow Mainnet, your use
 
 You can read about Transaction fees here: [https://docs.onflow.org/flow-token/concepts/#fees](https://docs.onflow.org/flow-token/concepts/#fees)
 
-### Ongoing Development
-
-The goal of the Flow project is to become decentralized and community-operated, over time. In the early stages of the network, the Flow core team will be primarily responsible for the stability of the network, adding protocol features included in the node software...etc. The stability of the network will increase over time, as more nodes join and begin to participate in the protocol, however, there are still "unknown-unknowns" (an apt idiom from a regrettable source). Early adopters of Flow are test pilots attempting to break blockchain barriers of the past, and we're asking all early-adopters for their help flagging issues with the Flow core team.
-
 ## Deploying on Mainnet
 
 Currently, deploying to Mainnet requires manual intervention from the Flow team. To make your deployment as fast and as smooth as possible please use the steps in the guide to prepare your project.

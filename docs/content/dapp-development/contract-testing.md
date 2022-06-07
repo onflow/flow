@@ -13,7 +13,7 @@ Finally, unstructured closed testing with a limited audience on testnet can gain
 
 ## Testing Requirements
 
-> **Important**: The following requirements will not be relevant as soon as Flow rolled out [permissionless deployment (summer 2022)](https://readymag.com/tanookilabs/3705127/).
+> **Important**: The following requirements will not be relevant as soon as Flow rolled out [permissionless deployment (ETA summer 2022)](https://permissionless.onflow.org/).
 
 If you are submitting your new contract for review prior to permissionless deployments were enabled, Dapper Labs requires the following to be included in the code repository that we receive containing the smart contracts to be reviewed:
 

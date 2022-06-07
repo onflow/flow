@@ -11,15 +11,11 @@ When the Flow protocol is updated or a new version of Cadence is released, those
 
 ### Breaking Changes
 
-In these early days of Flow, version updates to Cadence, Flow node software, and the Flow SDKs will often contain important updates as well as breaking changes.
+The Flow blockchain is improved continously and thus version updates to Cadence, Flow node software, and the Flow SDKs will contain important updates as well as breaking changes.
 
-Breaking changes will be a fact of life for early adopters of Flow's development stack, and you may often need to manually redeploy your application's contracts after updates. The Flow core team is always available to you help with this process.
+You should anticipate future updates and join the community ([Forum](https://forum.onflow.org/) or [Discord](https://www.onflow.org/discord)) to stay tuned on important announcements. The community will aim to provide notices and guidelines for changes as early as possible.
 
-Please see [Redeploying Your Application](#redeploying-your-application) below for more information.
-
-<!-- ### Version Compatibility
-
-A version compatibility table can be found here. This will help you navigate version compatibility between Emulator, SDK, and Network Node (flow-go) versions. -->
+> **Note**: In some instances, you might need to [redeploy Your Application](#redeploying-your-application).
 
 ### Testnet Sporking
 
@@ -188,9 +184,9 @@ Once your accounts are set up and you're ready to develop, you can look over som
 
 ### Redeploying Your Application
 
-If you discover your application is broken after an update, use the latest emulator to test changes to your application. Once you are satisfied that you've patched any breaking changes, you'll need to get in touch with the Flow core team to redeploy your contracts to Testnet.
+If you discover your application is broken after an update, use the latest emulator to test changes to your application. Once you are satisfied that you've patched any breaking changes, you'll need to [redeploy your contracts to Testnet](/dapp-development/testnet-deployment/#deploying-a-contract).
 
-We kindly ask you to follow the steps listed in the [Testnet Testing Guidelines](/dapp-deployment/testnet-testing) when redeploying your contracts.
+> **Note**: Make sure to follow the steps listed in the [Testnet Testing Guidelines](/dapp-deployment/testnet-testing)
 
 ### Making Your NFT Discoverable
 

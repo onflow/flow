@@ -182,11 +182,11 @@ Once your accounts are set up and you're ready to develop, you can look over som
 
 ### Redeploying Your Application
 
-> **Important**: The following steps will change as soon as Flow rolled out [permissionless deployment (summer 2022)](https://readymag.com/tanookilabs/3705127/).
+> **Important**: The redeployment process will change as soon as Flow rolled out [permissionless deployment (ETA summer 2022)](https://permissionless.onflow.org/)
 
 If you discover your application is broken after an update, use the latest emulator to test changes to your application. Once you are satisfied that you've patched any breaking changes, you'll need to get in touch with the Flow core team to redeploy your contracts to Testnet.
 
-We kindly ask you to follow the steps listed in the [Testnet Testing Guidelines.](/dapp-deployment/testnet-testing) when redeploying your contracts.
+> **Note**: Make sure to follow the steps listed in the [Testnet Testing Guidelines](/dapp-deployment/testnet-testing)
 
 ### Making Your NFT Discoverable
 
