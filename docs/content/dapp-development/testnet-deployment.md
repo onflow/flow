@@ -17,10 +17,6 @@ Breaking changes will be a fact of life for early adopters of Flow's development
 
 Please see [Redeploying Your Application](#redeploying-your-application) below for more information.
 
-<!-- ### Version Compatibility
-
-A version compatibility table can be found here. This will help you navigate version compatibility between Emulator, SDK, and Network Node (flow-go) versions. -->
-
 ### Testnet Sporking
 
 "Sporking" (soft forking) is the process of upgrading the Flow network node software and migrating the chain state from one version to another.
@@ -47,13 +43,11 @@ For Testnet, it's easy to generate a new key pair with the [Flow CLI](/flow-cli)
 flow keys generate
 ```
 
-By default, this command generates an ECDSA key pair on the P-256 curve.
-
-**Note: this tool is intended for development purposes only and is not recommended for production use.**
+**Note: By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind, this tool is intended for development purposes only and is not recommended for production use.**
 
 #### Request Your Account
 
-Once you've generated a key pair, visit the [Faucet](https://testnet-faucet-v2.onflow.org/) and input the _public key_ into the "Create Account" form at the top of the page.
+Once you've generated a key pair, visit the [Faucet](https://testnet-faucet.onflow.org/) and input the _public key_ into the "Create Account" form at the top of the page.
 
 Flow isn't responsible for securing and storing the private keys for testnet accounts. You must store your private key in a safe place so that you can later use it to sign transactions that you submit to Testnet.
 
@@ -187,6 +181,8 @@ Once your accounts are set up and you're ready to develop, you can look over som
 - [https://github.com/onflow/flow-go-sdk/tree/master/examples](https://github.com/onflow/flow-go-sdk/tree/master/examples)
 
 ### Redeploying Your Application
+
+> **Important**: The following steps will change as soon as Flow rolled out [permissionless deployment (summer 2022)](https://readymag.com/tanookilabs/3705127/).
 
 If you discover your application is broken after an update, use the latest emulator to test changes to your application. Once you are satisfied that you've patched any breaking changes, you'll need to get in touch with the Flow core team to redeploy your contracts to Testnet.
 

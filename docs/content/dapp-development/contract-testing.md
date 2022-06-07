@@ -13,7 +13,9 @@ Finally, unstructured closed testing with a limited audience on testnet can gain
 
 ## Testing Requirements
 
-For code that is being evaluated for deployment on the Flow mainnet, Dapper Labs requires the following be included in the code repository that we receive containing the smart contracts to be reviewed:
+> **Important**: The following requirements will not be relevant as soon as Flow rolled out [permissionless deployment (summer 2022)](https://readymag.com/tanookilabs/3705127/).
+
+If you are submitting your new contract for review prior to permissionless deployments were enabled, Dapper Labs requires the following to be included in the code repository that we receive containing the smart contracts to be reviewed:
 
 - Every publicly exposed feature of a contract and its resources should have unit tests that check both for success with correct input _and_ for failure with incorrect input.
   These tests should be capable of being run locally with the Flow emulator, with no or minimal extra resources or configuration, and with a single command.
