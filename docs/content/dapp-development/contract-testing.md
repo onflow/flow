@@ -13,9 +13,9 @@ Finally, unstructured closed testing with a limited audience on testnet can gain
 
 ## Testing Requirements
 
-> **Important**: The following requirements will not be relevant as soon as Flow rolled out [permissionless deployment (ETA summer 2022)](https://permissionless.onflow.org/).
+> **Important**: This chapter will not be relevant as soon as Flow rolled out [permissionless deployment (ETA summer 2022)](https://permissionless.onflow.org/). Once rolled out, you can deploy to the mainnet directly without going through a review process. However, good testing practices are important and should be followed as a best practice.
 
-If you are submitting your new contract for review prior to permissionless deployments were enabled, Dapper Labs requires the following to be included in the code repository that we receive containing the smart contracts to be reviewed:
+If you are submitting your new contract for review prior to permissionless deployments rolled out, Dapper Labs requires the following to be included in the code repository that we receive containing the smart contracts to be reviewed:
 
 - Every publicly exposed feature of a contract and its resources should have unit tests that check both for success with correct input _and_ for failure with incorrect input.
   These tests should be capable of being run locally with the Flow emulator, with no or minimal extra resources or configuration, and with a single command.
@@ -33,15 +33,9 @@ In both cases, the code will need to deploy the contracts, configure accounts to
 
 Tests in Go can be written using [flow-go-sdk](https://github.com/onflow/flow-go-sdk) and the go test command.
 
-You can find examples of Go tests in the following projects:
+You can find examples of Go tests in the following projects: [flow-core-contracts](https://github.com/onflow/flow-core-contracts/tree/master/lib/go/test), [flow-nft](https://github.com/onflow/flow-nft/tree/master/lib/go/test), [flow-ft](https://github.com/onflow/flow-ft/tree/master/lib/go/test).
 
-[https://github.com/onflow/flow-core-contracts/tree/master/lib/go/test](https://github.com/onflow/flow-core-contracts/tree/master/lib/go/test)
-
-[https://github.com/onflow/flow-nft/tree/master/lib/go/test](https://github.com/onflow/flow-nft/tree/master/lib/go/test),
-
-[https://github.com/onflow/flow-ft/tree/master/lib/go/test](https://github.com/onflow/flow-ft/tree/master/lib/go/test).
-
-Note that these tests are tied to the emulator but it is simple to refactor tests to run on testnet as well.
+> **Note**: These tests are tied to the emulator but it is simple to refactor tests to run on testnet
 
 ### JavaScript Tests
 
