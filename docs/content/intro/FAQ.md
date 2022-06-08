@@ -6,7 +6,6 @@ title: Developer FAQ
 
 We recommend reading the Flow Primer, Cadence Introduction and first few Cadence tutorials before you read this, it will help with understanding some of the concepts.
 
-
 ### How does the network verify that the execution was performed correctly?
 
 Flow utilizes a new blockchain architecture that allows for decentralized computation that is verified by other nodes in the network. Execution nodes run the transactions and update the state and verification nodes use complex cryptography to verify that these were performed correctly. See the Flow node types documentation for more details.
@@ -33,7 +32,7 @@ The main purpose of allowing multiple signers of a transaction is to be able to 
 
 ### Is there a publicly available API endpoint (gRPC, JSON-RPC..) we can send the transactions to?
 
-To send transactions to the network, you must submit your transactions to a public access node to be included. See the [dapp deployment guide for more info](../dapp-deployment/index)
+To send transactions to the network, you must submit your transactions to a public access node to be included. See the [dapp deployment guide for more info](/dapp-development/deployment/)
 
 ## Cadence General FAQ
 
@@ -114,8 +113,6 @@ transaction {
   }
 }
 ```
-
-
 
 ### What is the difference between `Void` and `nil` ?
 

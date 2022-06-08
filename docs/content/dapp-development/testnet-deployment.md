@@ -171,7 +171,7 @@ Once your accounts are set up and you're ready to develop, you can look over [so
 
 If you discover your application is broken after an update, use the latest emulator to test changes to your application. Once you are satisfied that you've patched any breaking changes, you'll need to [redeploy your contracts to Testnet](/dapp-development/testnet-deployment/#deploying-a-contract).
 
-> **Note**: Make sure to follow the steps listed in the [Testnet Testing Guidelines](/dapp-deployment/testnet-testing)
+> **Note**: Make sure to follow the steps listed in the [Testnet Testing Guidelines](/dapp-development/testnet-testing)
 
 ### Making Your NFT Discoverable
 
