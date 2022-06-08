@@ -187,6 +187,7 @@ Here is an example `InteractionTemplate` for a "Transfer FLOW" transaction:
         arguments: {
             amount: {
                 index: 0,
+                type: "UFix64",
                 messages: { // Set of human readable messages about the argument
                     title: {
                         i18n: { // Internationalised (BCP-47) set of human readable messages about the argument
@@ -207,6 +208,7 @@ Here is an example `InteractionTemplate` for a "Transfer FLOW" transaction:
             },
             to: {
                 index: 1,
+                type: "Address",
                 messages: { // Set of human readable messages about the argument
                     title: {
                         i18n: { // Internationalised (BCP-47) set of human readable messages about the argument
@@ -583,6 +585,9 @@ Wallets who chose to support Interaction Templates will need to modify their aut
               "properties": {
                 "index": {
                   "type": "integer"
+                },
+                "type": {
+                  "type": "string",
                 },
                 "messages": {
                   "type": "object",
