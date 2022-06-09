@@ -1,7 +1,9 @@
 ---
 title: Mainnet Deployment Guidelines
-sidebar_title: 4. Deploy to Mainnet
+sidebar_title: 5. Mainnet Deployment
 ---
+
+> **Important**: The mainnet deployment process will change as soon as Flow rolled out [permissionless deployment (ETA summer 2022)](https://permissionless.onflow.org/). Once rolled out, you can deploy directly to mainnet without going through a review process.
 
 In the early days of the Flow network, applications deployed to the Flow Mainnet are required to be review and tested by the Flow team. For details about the testing and approval process, please read through our guide [Testnet Testing Guidelines](/dapp-development/testnet-testing/) If your app has passed the review process you're ready to deploy on Flow's Mainnet!
 

@@ -446,6 +446,7 @@ const sections = [
         "dapp-development/contract-testing",
         "dapp-development/testnet-deployment",
         "dapp-development/testnet-testing",
+        "dapp-development/mainnet-account-setup",
         "dapp-development/mainnet-deployment",
       ],
     },
