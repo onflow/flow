@@ -5,7 +5,7 @@ sidebar_title: 5. Mainnet Deployment
 
 > **Important**: The mainnet deployment process will change as soon as Flow rolled out [permissionless deployment (ETA summer 2022)](https://permissionless.onflow.org/). Once rolled out, you can deploy directly to mainnet without going through a review process.
 
-## After Permissionless
+## After Permissionless: Deploy directly
 
 ### Prerequisites
 
@@ -22,7 +22,7 @@ First, you need to configure the `flow.json` file to add your mainnet account de
 ...
   "accounts": {
     "my-mainnet-account": {
-      "address": "ADDRESS_FROM_FLOW_PORT",
+      "address": "ADDRESS_FROM_PREVIOUS_STEP",
       "key": "PRIVATE_KEY_GENERATED_IN_PREVIOUS_STEP"
     }
   }
@@ -49,12 +49,53 @@ Next, you need to set the [deployment target configuration](http://localhost:800
 With the configuration changes completed, run the [Flow CLI deployment command](http://localhost:8000/flow-cli/deploy-project-contracts):
 
 ```sh
-flow project deploy --network=mainnet
+> flow project deploy --network=mainnet
+
+Deploying 2 contracts for accounts: my-mainnet-account
+
+Foo -> 0xab7... (1e8fdb973...90b7ee38b8)
+
+Bar -> 0xab7... (6c243d09e...b878111098)
+
+
+✨ All contracts deployed successfully
 ```
 
-> **Note**: This command automatically deploys your project's contracts based on the configuration defined in your `flow.json` file. If you encounter any errors, review the configuration.
+> **Note**: This command automatically deploys your project's contracts based on the configuration defined in your `flow.json` file. If you encounter any errors, review the configuration first.
 
-## Before Permissionless
+> **Important**: If you see `Error Code: 1056`, you are trying to deploy contracts before the permissionless rollout was completed. In that case, you need to submit a review (as described below)
+
+### Re-deployment using CLI
+
+You can use the [Flow CLI contract update command](/flow-cli/account-update-contract/) to re-deploy an updated version of your contract:
+
+```sh
+> flow accounts update-contract Foo ./Foo.cdc --signer=my-mainnet-account --network=mainnet
+
+Transaction ID: e0728170165ce...6956785be50
+Contract 'Foo' updated on the account 'ab7...'.
+
+Address  0xab7...
+Balance  1000.00099677
+Keys     1
+
+Key 0   Public Key               39a097c....
+        Weight                   1000
+        Signature Algorithm      ECDSA_P256
+        Hash Algorithm           SHA3_256
+        Revoked                  false
+        Sequence Number          3
+        Index                    0
+
+Contracts Deployed: 2
+Contract: 'Foo'
+Contract: 'Bar'
+
+
+Contracts (hidden, use --include contracts)
+```
+
+## Before permissionless: Submit for review
 
 Prior to the permissionless rollout, deploying to Mainnet requires manual intervention from the Flow team. To make your deployment as fast and as smooth as possible please use the steps in the guide to prepare your project.
 

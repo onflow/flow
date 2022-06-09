@@ -45,7 +45,7 @@ Next, click on "Create New Account".
 
 ### Step 2: Generate non-custodial account
 
-A non-custodial account will make sure you are the only one holding the keys to your account. It is strongly adviced to use non-custodial accounts for deployment to the mainnet.
+A non-custodial account will make sure you are the only one holding the keys to your account.
 
 To generate a new key pair with the [Flow CLI](https://github.com/onflow/flow-cli), run the following command:
 
@@ -77,4 +77,4 @@ Next, scroll down to the events section and locate the `flow.AccountCreated` eve
 
 ![event](port-event.png)
 
-**Make sure to take a note of the address - you will need it for the next step**. If you want to verify the public key for this address, you can visit [flow-view-source](https://flow-view-source.com/).
+**Make sure to take a note of the address - you will need it for the next step**. If you want to verify the public key for this address, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](/flow-cli/get-accounts/).
