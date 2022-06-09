@@ -5,35 +5,58 @@ sidebar_title: 5. Mainnet Deployment
 
 > **Important**: The mainnet deployment process will change as soon as Flow rolled out [permissionless deployment (ETA summer 2022)](https://permissionless.onflow.org/). Once rolled out, you can deploy directly to mainnet without going through a review process.
 
-In the early days of the Flow network, applications deployed to the Flow Mainnet are required to be review and tested by the Flow team. For details about the testing and approval process, please read through our guide [Testnet Testing Guidelines](/dapp-development/testnet-testing/) If your app has passed the review process you're ready to deploy on Flow's Mainnet!
+## After Permissionless
 
-## Risks for Early Adopters
+### Prerequisites
 
-### Breaking Changes
+- [Flow CLI](https://github.com/onflow/flow-cli): You have the CLI installed and ran `flow init` in your project folder, generating a `flow.json` file
+- Testnet testing: You tested your contracts throroughly [locally](/dapp-development/contract-testing) and [on the testnet](/dapp-development/testnet-testing)
+- Mainnet account: You completed the [mainnet account setup](/dapp-development/mainnet-account-setup) and have your key pair and mainnet address ready
 
-In these early days of Flow, version updates to Cadence, Flow Node software, and the Flow SDKs will often contain important updates as well as breaking changes.
+### Configuration
 
-Breaking changes will be a fact of life for early adopters of Flow's development stack, and you may often need to manually re-deploy your application's contracts after updates. But that's OK we're here to help!
+First, you need to configure the `flow.json` file to add your mainnet account details:
 
-### Version Compatibility
+```js:title=flow.json
+{
+...
+  "accounts": {
+    "my-mainnet-account": {
+      "address": "ADDRESS_FROM_FLOW_PORT",
+      "key": "PRIVATE_KEY_GENERATED_IN_PREVIOUS_STEP"
+    }
+  }
+...
+}
+```
 
-A version compatibility table can be found here. This will help you navigate version compatibility between Emulator, SDK, and Network Node (flow-go) versions.
+Next, you need to set the [deployment target configuration](http://localhost:8000/flow-cli/project-contracts/#define-contract-deployment-targets) for the mainnet:
 
-### Mainnet Sporking
+```js:title=flow.json
+{
+...
+"deployments": {
+    "mainnet": {
+      "my-mainnet-account": ["Foo", "Bar"]
+    }
+  }
+...
+}
+```
 
-"Sporking" (soft forking) is the process of upgrading Flow network node software, and migrating the state from the previous version.
+### Deployment using CLI
 
-Currently, **historical event data is not migrated between sporks,** so you'll need to design your application with this in mind. We recognize the usefulness of historical event data and plan on adding a means of accessing it in the near future.
+With the configuration changes completed, run the [Flow CLI deployment command](http://localhost:8000/flow-cli/deploy-project-contracts):
 
-### "Real Value" on Mainnet
+```sh
+flow project deploy --network=mainnet
+```
 
-Unlike Flow Testnet, once your application is launched on Flow Mainnet, your users will be exchanging real value in the form of FLOW tokens (The Flow blockchain's native token) or other resources which have been made available. You or your user will also be responsible for paying transaction fees using FLOW tokens.
+> **Note**: This command automatically deploys your project's contracts based on the configuration defined in your `flow.json` file. If you encounter any errors, review the configuration.
 
-You can read about Transaction fees here: [https://docs.onflow.org/flow-token/concepts/#fees](https://docs.onflow.org/flow-token/concepts/#fees)
+## Before Permissionless
 
-## Deploying on Mainnet
-
-Currently, deploying to Mainnet requires manual intervention from the Flow team. To make your deployment as fast and as smooth as possible please use the steps in the guide to prepare your project.
+Prior to the permissionless rollout, deploying to Mainnet requires manual intervention from the Flow team. To make your deployment as fast and as smooth as possible please use the steps in the guide to prepare your project.
 
 ### Prerequisites
 
@@ -61,12 +84,36 @@ When your application is approved for deployment, you'll need to make the Flow t
 
 Once this information has been provided the Flow team will deploy your project and notify you!
 
-### Mainnet NFT Discoverabilty
+### Re-reployment process
+
+Iterating (re-deploying) on Mainnet will be a manual process. Once your application is live, and you'd like to make updates or add features, you'll need to re-submit your updated smart contracts for review using the submission form, or by reaching out to your Flow point-of-contact directly.
+
+Depending on the scope of the changes you're making, the team may be able to re-deploy them quickly, as long as all the required tests are in place. However, it may be the case that you'll need to test your updates on Testnet again. Decisions about re-deployment and re-testing as well as timelines for each will be made by the reviewing team on a case-by-case basis.
+
+## NFT Discoverabilty
 
 You should follow the [steps listed in the Alchemy repository](https://github.com/alchemyplatform/alchemy-flow-contracts#adding-a-new-contract) to get your NFT disovered through the Alchemy API. Make sure you added files needed to support your NFT on mainnet specifically.
 
-## Iterating on Mainnet
+## Risks for Early Adopters
 
-In the early days, Iterating (re-deploying) on Mainnet will be a manual process. Once your application is live, and you'd like to make updates or add features, you'll need to re-submit your updated smart contracts for review using the submission form, or by reaching out to your Flow point-of-contact directly.
+### Breaking Changes
 
-Depending on the scope of the changes you're making, the team may be able to re-deploy them quickly, as long as all the required tests are in place. However, it may be the case that you'll need to test your updates on Testnet again. Decisions about re-deployment and re-testing as well as timelines for each will be made by the reviewing team on a case-by-case basis.
+In these early days of Flow, version updates to Cadence, Flow Node software, and the Flow SDKs will often contain important updates as well as breaking changes.
+
+Breaking changes will be a fact of life for early adopters of Flow's development stack, and you may often need to manually re-deploy your application's contracts after updates. But that's OK we're here to help!
+
+### Version Compatibility
+
+A version compatibility table can be found here. This will help you navigate version compatibility between Emulator, SDK, and Network Node (flow-go) versions.
+
+### Mainnet Sporking
+
+"Sporking" (soft forking) is the process of upgrading Flow network node software, and migrating the state from the previous version.
+
+Currently, **historical event data is not migrated between sporks,** so you'll need to design your application with this in mind. We recognize the usefulness of historical event data and plan on adding a means of accessing it in the near future.
+
+### "Real Value" on Mainnet
+
+Unlike Flow Testnet, once your application is launched on Flow Mainnet, your users will be exchanging real value in the form of FLOW tokens (The Flow blockchain's native token) or other resources which have been made available. You or your user will also be responsible for paying transaction fees using FLOW tokens.
+
+You can read about Transaction fees here: [https://docs.onflow.org/flow-token/concepts/#fees](https://docs.onflow.org/flow-token/concepts/#fees)

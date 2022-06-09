@@ -1,6 +1,6 @@
 ---
 title: Mainnet Account Setup Guidelines
-sidebar_title: 4. Set up Mainnet Account
+sidebar_title: 4. Mainnet Account Setup
 ---
 
 In order to deploy your smart contracts to the mainnet, you need to register, fund, and setup a new account.
@@ -77,4 +77,4 @@ Next, scroll down to the events section and locate the `flow.AccountCreated` eve
 
 ![event](port-event.png)
 
-Make sure to take a note of the address. If you want to verify the public key for this address, you can visit [flow-view-source](https://flow-view-source.com/).
+**Make sure to take a note of the address - you will need it for the next step**. If you want to verify the public key for this address, you can visit [flow-view-source](https://flow-view-source.com/).
