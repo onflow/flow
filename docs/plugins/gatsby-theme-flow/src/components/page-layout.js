@@ -34,12 +34,12 @@ import { useResponsiveSidebar } from "./responsive-sidebar";
 import Search from "./search";
 import Sidebar from "./sidebar";
 import SidebarNav from "./sidebar-nav";
-
-import { StatusContextProvider } from "./flow-status/context";
 import AnnouncementBanner from "./AnnouncementBanner";
 
+import { StatusContextProvider } from "./flow-status/context";
+
 const Main = styled.main({
-  flexGrow: 1,
+  flexGrow: 1
 });
 
 const MobileNav = styled.div({
@@ -47,14 +47,14 @@ const MobileNav = styled.div({
   [breakpoints.md]: {
     display: "flex",
     alignItems: "center",
-    color: theme.text1,
-  },
+    color: theme.text1
+  }
 });
 
 export const NavItemTitle = styled.h4({
   marginBottom: 8,
   fontWeight: 600,
-  color: "inherit",
+  color: "inherit"
 });
 
 export const NavItemDescription = styled.p({
@@ -62,7 +62,7 @@ export const NavItemDescription = styled.p({
   fontSize: 15,
   lineHeight: 1.5,
   color: theme.text3,
-  transition: "color 150ms ease-in-out",
+  transition: "color 150ms ease-in-out"
 });
 
 const BreadcrumbWrapper = styled.div({
@@ -75,16 +75,16 @@ const BreadcrumbWrapper = styled.div({
   ".breadcrumb__separator": {
     fontSize: "0.8rem",
     display: "flex",
-    alignItems: "center",
+    alignItems: "center"
   },
   ".breadcrumb__link, .breadcrumb__link__disabled": {
     fontWeight: 500,
     fontSize: "0.8rem",
     color: theme.text3,
     "&:hover": {
-      color: theme.primary,
-    },
-  },
+      color: theme.primary
+    }
+  }
 });
 
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
@@ -93,7 +93,7 @@ function handleToggleAll(expanded) {
   trackCustomEvent({
     category: GA_EVENT_CATEGORY_SIDEBAR,
     action: "Toggle all",
-    label: expanded ? "expand" : "collapse",
+    label: expanded ? "expand" : "collapse"
   });
 }
 
@@ -102,7 +102,7 @@ function handleToggleCategory(label, expanded) {
     category: GA_EVENT_CATEGORY_SIDEBAR,
     action: "Toggle category",
     label,
-    value: Number(expanded),
+    value: Number(expanded)
   });
 }
 
@@ -127,7 +127,7 @@ export default function PageLayout(props) {
     openSidebar,
     sidebarOpen,
     handleWrapperClick,
-    handleSidebarNavLinkClick,
+    handleSidebarNavLinkClick
   } = useResponsiveSidebar();
 
   const selectedLanguageState = useLocalStorage("docs-lang");
@@ -137,21 +137,21 @@ export default function PageLayout(props) {
   const {
     subtitle,
     sidebar,
-    breadcrumb: { crumbs },
+    breadcrumb: { crumbs }
   } = props.pageContext;
 
   const {
     navConfig = {},
     logoLink,
     algoliaApiKey,
-    algoliaIndexName,
+    algoliaIndexName
   } = props.pluginOptions;
 
   const navItems = useMemo(
     () =>
       Object.entries(navConfig).map(([title, navItem]) => ({
         ...navItem,
-        title,
+        title
       })),
     [navConfig]
   );
@@ -176,7 +176,7 @@ export default function PageLayout(props) {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
       </Helmet>
-      <div className="">
+      <div>
         <AnnouncementBanner />
         <FlexWrapper onClick={handleWrapperClick}>
           <StatusContextProvider>
@@ -222,7 +222,7 @@ export default function PageLayout(props) {
                     <motion.div
                       initial={{ height: 0 }}
                       animate={{
-                        height: "auto",
+                        height: "auto"
                       }}
                       exit={{ height: 0, transition: { delay: 0.2 } }}
                       style={{ width: "100%" }}
@@ -242,7 +242,7 @@ export default function PageLayout(props) {
                               "/community-updates",
                               "/tutorial",
                               "/fcl/packages",
-                              "/flow-go-sdk/examples",
+                              "/flow-go-sdk/examples"
                             ]}
                           />
                         </motion.div>
@@ -270,5 +270,5 @@ PageLayout.propTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
-  pluginOptions: PropTypes.object.isRequired,
+  pluginOptions: PropTypes.object.isRequired
 };
