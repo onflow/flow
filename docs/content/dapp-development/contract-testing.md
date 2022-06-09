@@ -15,7 +15,7 @@ Finally, unstructured closed testing with a limited audience on testnet can gain
 
 > **Important**: This chapter will not be relevant as soon as Flow rolled out [permissionless deployment (ETA summer 2022)](https://permissionless.onflow.org/). Once rolled out, you can deploy to the mainnet directly without going through a review process. However, good testing practices are important and should be followed as a best practice.
 
-If you are submitting your new contract for review prior to permissionless deployments rolled out, Dapper Labs requires the following to be included in the code repository that we receive containing the smart contracts to be reviewed:
+If you are submitting your new contract for review prior to permissionless deployments rolled out, the following has to be included in the code repository containing the smart contracts to be reviewed:
 
 - Every publicly exposed feature of a contract and its resources should have unit tests that check both for success with correct input _and_ for failure with incorrect input.
   These tests should be capable of being run locally with the Flow emulator, with no or minimal extra resources or configuration, and with a single command.

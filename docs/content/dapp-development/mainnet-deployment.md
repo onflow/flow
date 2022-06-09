@@ -97,7 +97,7 @@ Contracts (hidden, use --include contracts)
 
 ## Before permissionless: Submit for review
 
-Prior to the permissionless rollout, deploying to Mainnet requires manual intervention from the Flow team. To make your deployment as fast and as smooth as possible please use the steps in the guide to prepare your project.
+Prior to the permissionless rollout, deploying to Mainnet requires manual review. To make your deployment as fast and as smooth as possible please use the steps in the guide to prepare your project.
 
 ### Prerequisites
 
@@ -109,7 +109,7 @@ Your reviewers will be using the following criterion when assessing your project
 
 ### Smart Contract Review
 
-To ensure that Flow Mainnet works well for everyone in the early days, all smart contracts being deployed will be reviewed by the Flow team. The aim of the review process is to attempt to discover any issues that may affect your users or the operation of the network before your application is live.
+To ensure that Flow Mainnet works well for everyone in the early days, all smart contracts being deployed will be reviewed. The aim of the review process is to attempt to discover any issues that may affect your users or the operation of the network before your application is live.
 
 **To submit your contract for review, use this: [Contract Review Submission Form](https://flowsolutionseng.zendesk.com/hc/en-us/requests/new?ticket_form_id=360001936012&tc_360045236671=b5ba92954c2f2692b56099fe653ac92d35c1e6e6)**
 
@@ -117,13 +117,13 @@ Once your contract has been submitted for review a member of the reviewing team 
 
 ### Deployment Process
 
-When your application is approved for deployment, you'll need to make the Flow team aware of some important information:
+When your application is approved for deployment, you'll need to share some important information:
 
 - Provide a git tag pointing to the source code of the smart contracts you would like to deploy, so the team can perform a checkout of the correct version.
 - Provide all the required public keys for all necessary Mainnet accounts.
 - For projects requiring multiple contracts, you'll need to provide a deployment script and/or instructions explaining how to perform your multi-contract deployment correctly.
 
-Once this information has been provided the Flow team will deploy your project and notify you!
+Once this information has been provided, the project will be deployed and you will be notified!
 
 ### Re-reployment process
 
