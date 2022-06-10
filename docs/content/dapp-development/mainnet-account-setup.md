@@ -7,7 +7,7 @@ In order to deploy your smart contracts to the mainnet, you need to register, fu
 
 At the time of writing, the most convenient way to setup a new mainnet account is by using [Flow Port](/flow-port/).
 
-> **Note**: This account will be used for production purposes. Make sure you handle keys appropriately.
+> **Note**: This account will be used for production purposes. Make sure you handle keys appropriately. Using a Key Management Service is the best practice.
 
 ## Prerequisites
 
@@ -57,7 +57,7 @@ Private Key      5b438...
 Public Key       1bdc5...
 ```
 
-> **Note**: By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind the CLI is intended for development purposes only and is not recommended for production use.
+> **Note**: By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind the CLI is intended for development purposes only and is not recommended for production use. Handling keys using a Key Management Service is the best practice.
 
 Take a note of the public key and go back to the ["Create a new account" screen](https://port.onflow.org/transaction?hash=a0a78aa7821144efd5ebb974bb52ba04609ce76c3863af9d45348db93937cf98&showcode=false&weight=1000&halg=3) on Flow Port.
 
