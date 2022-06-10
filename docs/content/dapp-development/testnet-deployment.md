@@ -32,7 +32,7 @@ Public Key       2a56a24a63...
 
 ```
 
-> **Note**: By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind, this tool is intended for development purposes only and is not recommended for production use.
+> **Note**: By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind, the CLI is intended for development purposes only and is not recommended for production use.
 
 #### Create Your Account
 

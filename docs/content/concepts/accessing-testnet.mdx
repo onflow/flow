@@ -5,7 +5,7 @@ description: Guide to testnet access
 
 ## Accessing Flow testnet
 
-The Flow testnet is available for access on this URL:
+The Flow testnet is available for access at this URL:
 
 ```
 access.devnet.nodes.onflow.org:9000
@@ -39,7 +39,7 @@ Private Key      246256f3...
 Public Key       cc1c3d72...
 ```
 
-**Note: By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind, this tool is intended for development purposes only and is not recommended for production use.**
+**Note: By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind, the CLI is intended for development purposes only and is not recommended for production use.**
 
 ## Account creation and token funding requests
 
@@ -47,10 +47,4 @@ Accounts and tokens for testing can be obtained through the [testnet faucet](htt
 
 ## Important smart contract addresses
 
-In order to access some of the contracts deployed to the testnet, you can import them by using the following import addresses:
-
-```cadence
-import FungibleToken from 0x9a0766d93b6608b7
-import FlowToken from 0x7e60df042a9c0868
-import NonFungibleToken from 0x631e88ae7f1d7c20
-```
+You can review [all available core contracts](/core-contracts/) deployed to the Mainnet to identify which ones you want to import.

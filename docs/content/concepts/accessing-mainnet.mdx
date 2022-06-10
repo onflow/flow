@@ -5,7 +5,7 @@ description: Guide to mainnet access
 
 ## Accessing Flow mainnet
 
-The Flow Mainnet is available for access on this URL:
+The Flow Mainnet is available for access at this URL:
 
 ```
 access.mainnet.nodes.onflow.org:9000
@@ -27,11 +27,21 @@ func main() {
 
 You can follow the [Flow Port account creation steps](https://docs.onflow.org/flow-port/#blocto) to create a new mainnet account.
 
-> **Note**: If you prefer watching a video, check out [this tutorial by Jacob Tucker](https://www.youtube.com/watch?v=vXui7uO4cIQ)
+If you prefer watching a video, check out this tutorial:
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/vXui7uO4cIQ"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
 
 ## Generating a non-custodial account
 
-A non-custodial account will make sure you are the only one holding the keys to your account. It is strongly adviced to use non-custodial accounts for deployment to the mainnet.
+A non-custodial account will make sure you are the only one holding the keys to your account.
 
 You can follow the following steps to add a non-custodial account:
 
@@ -45,7 +55,7 @@ Private Key      5b438...
 Public Key       1bdc5...
 ```
 
-> **Note**: By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind this tool is intended for development purposes only and is not recommended for production use.
+> **Note**: By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind the CLI is intended for development purposes only and is not recommended for production use.
 
 Take a note of the public key and go back to Flow Port. Open the ["Create a new account" page](https://port.onflow.org/transaction?hash=a0a78aa7821144efd5ebb974bb52ba04609ce76c3863af9d45348db93937cf98&showcode=false&weight=1000&halg=3).
 
@@ -61,10 +71,4 @@ Make sure to take a note of the address. If you want to verify the public key fo
 
 ## Important Mainnet Smart Contract Addresses
 
-In order to access some of the contracts deployed to the mainnet, you can import them by using the following import addresses:
-
-```cadence
-import FungibleToken from 0xf233dcee88fe0abe
-import FlowToken from 0x1654653399040a61
-import NonFungibleToken from 0x1d7e57aa55817448
-```
+You can review [all available core contracts](/core-contracts/) deployed to the Mainnet to identify which ones you want to import.

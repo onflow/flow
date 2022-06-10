@@ -21,7 +21,7 @@ Learn how to use the Flow toolchain to deploy your dapp to Testnet.
 
 **3. [Testnet Testing](/dapp-development/testnet-testing/)**
 
-> **Important**: This section will not be required as soon as Flow rolled out [permissionless deployment (ETA summer 2022)](https://permissionless.onflow.org/). However, it is critical to test your applications and contracts thoroughly on the testnet as part of your road to the mainnet.
+> **Important**: This section will change as soon as [permissionless deployment](https://permissionless.onflow.org/) rolls out on Flow (ETA summer 2022). Keep in mind, it is critical to test your applications and contracts thoroughly on the testnet as part of your road to the mainnet.
 
 Testnet is the closest you will get to the real thing.
 In order to uncover bugs that may only appear on a real network,
@@ -33,8 +33,8 @@ As soon as you are ready for mainnet, you need to create and setup a mainnet acc
 
 **5. [Mainnet Deployment](/dapp-development/mainnet-deployment/)**
 
-> **Important**: The mainnet deployment process will change as soon as Flow rolled out [permissionless deployment (ETA summer 2022)](https://permissionless.onflow.org/). Once rolled out, you can deploy directly to mainnet without going through a review process.
+> **Important**: The mainnet deployment process will change as soon as [permissionless deployment](https://permissionless.onflow.org/) rolls out on Flow (ETA summer 2022). Once rolled out, you can deploy directly to mainnet without going through a review process.
 
-Until permissionless deployment is rolled out, your dapp must go through a review process before it can be deployed to Mainnet.
+Until permissionless deployment rolls out, your dapp must go through a review process before it can be deployed to Mainnet.
 This is to ensure a smooth and safe experience for Flow users, developers, and maintainers while the network is still maturing.
 Learn about the steps you will need to take to promote your dapp from Testnet to Mainnet.

@@ -3,7 +3,7 @@ title: Mainnet Deployment Guidelines
 sidebar_title: 5. Mainnet Deployment
 ---
 
-> **Important**: The mainnet deployment process will change as soon as Flow rolled out [permissionless deployment (ETA summer 2022)](https://permissionless.onflow.org/). Once rolled out, you can deploy directly to mainnet without going through a review process.
+> **Important**: The mainnet deployment process will change as soon as [permissionless deployment](https://permissionless.onflow.org/) rolls out on Flow (ETA summer 2022). Once rolled out, you can deploy directly to mainnet without going through a review process.
 
 ## After Permissionless: Deploy directly
 
@@ -44,7 +44,7 @@ Next, you need to set the [deployment target configuration](http://localhost:800
 }
 ```
 
-### Deployment using CLI
+### Deploy a contract on mainnet using the CLI
 
 With the configuration changes completed, run the [Flow CLI deployment command](http://localhost:8000/flow-cli/deploy-project-contracts):
 
@@ -69,7 +69,7 @@ Bar -> 0xab7... (6c243d09e...b878111098)
 
 Once all your contracts are deployed, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](/flow-cli/get-accounts/) to confirm the deployment.
 
-### Re-deployment using CLI
+### Update/Re-deploy a contract on mainnet using the CLI
 
 You can use the [Flow CLI contract update command](/flow-cli/account-update-contract/) to re-deploy an updated version of your contract:
 

@@ -13,7 +13,7 @@ At the time of writing, the most convenient way to setup a new mainnet account i
 
 What you need before you start:
 
-- Blocto account: You need a Blocto to interact with [Flow Port](https://port.onflow.org/)
+- Blocto account: You need an account on Blocto in order to interact with [Flow Port](https://port.onflow.org/)
 - FLOW tokens: The default amount of the FLOW token (0.001) in Blocto accounts is **NOT** sufficient to create an additional Flow account. You should at least have 0.002 FLOW in your Blocto account
 - [Flow CLI](https://github.com/onflow/flow-cli): You need the CLI to generate a non-custodial key pair
 
@@ -21,7 +21,7 @@ What you need before you start:
 
 ## Step by step guide
 
-> **Note**: If you prefer watching a video, check out [this tutorial by Jacob Tucker](https://www.youtube.com/watch?v=vXui7uO4cIQ)
+> **Note**: If you prefer watching a video for step 1 and 2, check out [this tutorial by Jacob Tucker](https://www.youtube.com/watch?v=vXui7uO4cIQ). Keep in mind, the last step is not covered in the video
 
 ### Step 1: Access Flow Port
 
