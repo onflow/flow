@@ -20,7 +20,7 @@ This would involve calling the node or delegator registration functions directly
 contract and storing the staking objects directly in account storage.
 
 This is probably the simplest way to do it, but it is not very flexible
-and not what the Flow team recommends.
+and not recommended.
 
 The basic staking guide is detailed [here](/staking/unlocked-staking-guide/)
 
@@ -28,11 +28,11 @@ The basic staking guide is detailed [here](/staking/unlocked-staking-guide/)
 
 This method is what almost all of the participants in the Flow Community sale originally used for staking.
 It involves creating a secondary account that holds the user's locked tokens from the sale.
-A capability is created for the secondary account that allows the user's main account to 
-register to stake and perform staking actions with the locked tokens 
+A capability is created for the secondary account that allows the user's main account to
+register to stake and perform staking actions with the locked tokens
 without allowing them to actually withdraw any of the locked tokens to their primary account.
 
-The locked account setup is detailed in the [locked account setup page](/flow-token/locked-account-setup/) 
+The locked account setup is detailed in the [locked account setup page](/flow-token/locked-account-setup/)
 and the [locked account staking guide.](/staking/locked-staking-guide/)
 
 This version is only recommended if you are dealing with locked tokens,
@@ -42,7 +42,7 @@ then use the staking collection for managing staking objects.
 # Staking Collection
 
 A Staking Collection is a resource that allows its owner to manage multiple staking
-objects in a single account via a single storage path, and perform staking actions 
+objects in a single account via a single storage path, and perform staking actions
 using both locked and unlocked Flow. It also supports machine accounts,
 a necessary feature for Flow epoch node operation.
 
@@ -50,5 +50,3 @@ The staking collection paradigm is the most flexible of the three choices
 and will receive the most support in the future. It is the set-up that Flow Port uses.
 
 The staking collection setup and guide is detailed in the [staking collection guide.](/staking/staking-collection)
-
-

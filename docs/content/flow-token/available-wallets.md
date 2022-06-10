@@ -149,7 +149,7 @@ Both of these options are shown below.
 
 6.  Once your account address is created, you will be automatically logged into Flow Port.
 
-7.  You can easily copy it from the ‘Dashboard’ screen, as shown below:
+7.  You can copy it from the ‘Dashboard’ screen, as shown below:
 
     ![](https://storage.googleapis.com/flow-resources/documentation-assets/token%20delivery%20assets/Screen%20Shot%202020-12-02%20at%2010.03.50%20AM.png)
 
