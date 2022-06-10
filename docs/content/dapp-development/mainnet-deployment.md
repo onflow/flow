@@ -65,6 +65,10 @@ Bar -> 0xab7... (6c243d09e...b878111098)
 
 > **Important**: If you see `Error Code: 1056`, you are trying to deploy contracts before the permissionless rollout was completed. In that case, you need to submit a review (as described below)
 
+> **Important**: If you see `Error Code: 1103`, your new account does not have enough funds to complete the transaction. Make sure you have enough FLOW (e.g. by [sending some from your Blocto account](/dapp-development/mainnet-account-setup/#step-3-send-flow-to-non-custodial-account)).
+
+Once all your contracts are deployed, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](/flow-cli/get-accounts/) to confirm the deployment.
+
 ### Re-deployment using CLI
 
 You can use the [Flow CLI contract update command](/flow-cli/account-update-contract/) to re-deploy an updated version of your contract:
