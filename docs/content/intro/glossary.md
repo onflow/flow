@@ -109,7 +109,7 @@ In Cadence, optionals are the solution. You can denote an object as an optional 
 let token: Vault?
 ```
 
-An optional is simply an enum with two cases: the presence of a value, or the absence of a value, as denoted by `nil`.
+An optional is an enum with two cases: the presence of a value, or the absence of a value, as denoted by `nil`.
 
 Optionals protect the programmer from potentially incorrect assumptions about whether a value exists or not. If code wants to do something with an object that is an optional, the language requires that the programmer must first handle the possibility that the optional is `nil`.
 

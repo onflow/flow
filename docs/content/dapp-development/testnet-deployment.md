@@ -17,7 +17,7 @@ Anybody can use the [Testnet Faucet](https://testnet-faucet-v2.onflow.org/) to c
 
 To start, you'll need to generate an asymmetric cryptographic key pair (see [Accounts & Keys](/concepts/accounts-and-keys) for a list of supported algorithms).
 
-For Testnet, it's easy to generate a new key pair with the [Flow CLI](/flow-cli):
+For Testnet, you can generate a new key pair with the [Flow CLI](/flow-cli):
 
 ```sh
 > flow keys generate
@@ -48,7 +48,7 @@ Submit your testnet address through the "Funding an Account" form on the [Faucet
 
 ### Accessing Flow Testnet
 
-Use the following host address to programmatically connect to Flow Testnet:
+Use the following address to programmatically connect to Flow Testnet:
 
 ```sh
 access.devnet.nodes.onflow.org:9000
@@ -181,7 +181,7 @@ Wallets like Blocto may use the [Alchemy API](https://alchemyapi.io/) to discove
 
 ### Breaking Changes
 
-The Flow blockchain is improved continously and thus version updates to Cadence, Flow node software, and the Flow SDKs will contain important updates as well as breaking changes.
+The Flow blockchain is improved continuously and thus version updates to Cadence, Flow node software, and the Flow SDKs will contain important updates as well as breaking changes.
 
 You should anticipate future updates and join the community ([Forum](https://forum.onflow.org/) or [Discord](https://www.onflow.org/discord)) to stay tuned on important announcements. Notices and guidelines for changes will be provided as early as possible.
 

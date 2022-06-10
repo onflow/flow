@@ -5,7 +5,7 @@ sidebar_title: 1. Smart Contract Testing
 
 Achieving good test coverage is vital for assuring the quality of code written to be deployed on the Flow blockchain.
 
-Automated tests can be run locally in the Flow emulator, and on the Flow testnet. These tests should include both unit tests; to exercise each feature of a contract, and integration tests; to exercise the behaviour of different parts of the project as a whole.
+Automated tests can be run locally in the Flow emulator, and on the Flow testnet. These tests should include both unit tests; to exercise each feature of a contract, and integration tests; to exercise the behavior of different parts of the project as a whole.
 
 Human-driven tests, in which individual testers work manually through user stories via the project's user interface or custom transactions, can also be performed locally. Tests with groups of testers can be performed similarly on testnet in a similar manner.
 
@@ -35,10 +35,8 @@ Tests in Go can be written using [flow-go-sdk](https://github.com/onflow/flow-go
 
 You can find examples of Go tests in the following projects: [flow-core-contracts](https://github.com/onflow/flow-core-contracts/tree/master/lib/go/test), [flow-nft](https://github.com/onflow/flow-nft/tree/master/lib/go/test), [flow-ft](https://github.com/onflow/flow-ft/tree/master/lib/go/test).
 
-> **Note**: These tests are tied to the emulator but it is simple to refactor tests to run on testnet
+> **Note**: These tests are tied to the emulator but can be refactored to run on testnet
 
 ### JavaScript Tests
 
-Tests in JavaScript can be written using [fcl](https://github.com/onflow/flow-js-sdk) and [flow-js-testing](https://github.com/onflow/flow-js-testing).
-
-flow-js-testing is a newer addition so we do not have any examples using it yet.
+Tests in JavaScript can be written using [flow-js-testing](https://github.com/onflow/flow-js-testing).

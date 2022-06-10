@@ -10,7 +10,7 @@ sidebar_title: 5. Mainnet Deployment
 ### Prerequisites
 
 - [Flow CLI](https://github.com/onflow/flow-cli): You have the CLI installed and ran `flow init` in your project folder, generating a `flow.json` file
-- Testnet testing: You tested your contracts throroughly [locally](/dapp-development/contract-testing) and [on the testnet](/dapp-development/testnet-testing)
+- Testnet testing: You tested your contracts thoroughly [locally](/dapp-development/contract-testing) and [on the testnet](/dapp-development/testnet-testing)
 - Mainnet account: You completed the [mainnet account setup](/dapp-development/mainnet-account-setup) and have your key pair and mainnet address ready
 
 ### Configuration
@@ -137,7 +137,7 @@ Depending on the scope of the changes you're making, the team may be able to re-
 
 ## NFT Discoverabilty
 
-You should follow the [steps listed in the Alchemy repository](https://github.com/alchemyplatform/alchemy-flow-contracts#adding-a-new-contract) to get your NFT disovered through the Alchemy API. Make sure you added files needed to support your NFT on mainnet specifically.
+You should follow the [steps listed in the Alchemy repository](https://github.com/alchemyplatform/alchemy-flow-contracts#adding-a-new-contract) to get your NFT discovered through the Alchemy API. Make sure you added files needed to support your NFT on mainnet specifically.
 
 ## Risks for Early Adopters
 

@@ -9,7 +9,7 @@ At the time of writing, the most convenient way to setup a new mainnet account i
 
 > **Note**: This account will be used for production purposes. Make sure you handle keys appropriately.
 
-## Pre-requisites
+## Prerequisites
 
 What you need before you start:
 
@@ -33,9 +33,9 @@ Next, select "Blocto" as the provider and follow the instructions to either sign
 
 ![select-wallet](/select-wallet.png)
 
-> **Note**: If you have an exsiting account, you will be asked to confirm your login request. If you create a new account, you will need to complete a transaction to prepare your account for Flow Port usage.
+> **Note**: If you have an existing account, you will be asked to confirm your login request. If you create a new account, you will need to complete a transaction to prepare your account for Flow Port usage.
 
-Once you successfully logged in, you will see the dashboard. Locate the left side naviagtion and open the "Advanced" menu.
+Once you successfully logged in, you will see the dashboard. Locate the left side navigation and open the "Advanced" menu.
 
 ![dashboard](/port-dashboard.png)
 
@@ -67,7 +67,7 @@ Enter your public key from the CLI, ensure the hash algorithm is set to `SHA3_25
 
 > **Important**: Your account needs to have at least 0.002 FLOW for the account creation. More details can be found [in this guide](https://docs.onflow.org/flow-token/concepts/#storageaccount-fees).
 
-You will be prompted to confirm the transaciont, hit "Approve".
+You will be prompted to confirm the transaction, hit "Approve".
 
 ![approve](port-approve.png)
 
@@ -91,6 +91,6 @@ On the next screen, enter the non-custodial address you generated in the previou
 
 ![send](port-send.png)
 
-A Blocto view will show up, review the details and hit "Approve". The transaction will be broadcasted and processed - this may take a few seconds.
+A Blocto view will show up, review the details and hit "Approve". The transaction will be broadcast and processed - this may take a few seconds.
 
 Finally, a screen confirmation will be displayed with the status `Transaction Sealed - Transaction Complete`. You can verify the correctness by reviewing the events. Locate the event type `FlowToken.TokensDeposited` and confirm the recipient, it should be your non-custodial address.
