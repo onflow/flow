@@ -15,7 +15,7 @@ What you need before you start:
 
 - Blocto account: You need an account on Blocto in order to interact with [Flow Port](https://port.onflow.org/)
 - FLOW tokens: The default amount of the FLOW token (0.001) in Blocto accounts is **NOT** sufficient to create an additional Flow account. You should at least have 0.002 FLOW in your Blocto account
-- [Flow CLI](https://github.com/onflow/flow-cli): You need the CLI to generate a non-custodial key pair
+- [Flow CLI](https://github.com/onflow/flow-cli): You need the CLI to [generate a non-custodial key pair](/flow-cli/generate-keys/)
 
 > **Note**: If you do not have enough FLOW, please refer to the [Buy FLOW instructions](https://flow.com/#buyflow).
 
