@@ -572,7 +572,7 @@
           "cadence": "v0.10.2",
           "docker": "v0.12.6"
         },
-        "accessNode": [
+        "accessNodes": [
           "access-001.mainnet3.nodes.onflow.org:9000"
         ]
       },
