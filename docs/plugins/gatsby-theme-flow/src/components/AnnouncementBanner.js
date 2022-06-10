@@ -25,7 +25,7 @@ export default function AnnouncementBanner() {
   return (
     <Banner>
       <div>
-        Permissionless deployment is coming to Flow! Read more{" "}
+        Are your contracts ready for Secure Cadence? Read more{" "}
         <Link href="https://permissionless.onflow.org/" target="_blank">
           here
         </Link>
