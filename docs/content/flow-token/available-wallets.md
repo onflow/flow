@@ -96,6 +96,12 @@ Both of these options are shown below.
 
 ## How to use Ledger
 
+### Note for users of Flow Ledger before v0.10.0
+The June 15th Secure Cadence Spork changes two transactions in a way that will make them no longer compatible with the Ledger app with version before v0.10.0. At the time of the spork, v0.10.0 is yet to be released to the Ledger Live app store, and as such the following transactions will be unsupported until the time it is released.
+
+1. Staking Collection - Register Node
+2. Staking Collection - Create Machine Account
+
 ### Before You Start
 
 1.  Ensure you have:
