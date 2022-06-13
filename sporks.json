@@ -90,7 +90,7 @@
           }
         ],
         "accessNodes": [
-          "access.mainnet16.nodes.onflow.org:9000"
+          "access-001.mainnet16.nodes.onflow.org:9000"
         ]
       },
       "mainnet15": {
