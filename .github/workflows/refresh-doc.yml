@@ -20,7 +20,7 @@ jobs:
     - name: 📞 Call refresh endpoint
       uses: fjogeleit/http-request-action@v1
       with:
-        url: 'https://flow-docs-staging.fly.dev/action/refresh'
+        url: 'https://flow-docs.fly.dev/action/refresh'
         method: 'POST'
         data: '{ "auth":"authToken", "repo":"${{ inputs.repository }}", "commitSha":"${{ inputs.commitSha }}", "contentPaths":["${{ inputs.contentPaths }}"] }'
         ignoreStatusCodes: '404'
