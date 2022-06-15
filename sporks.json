@@ -5,7 +5,7 @@
         "id": 18,
         "live": true,
         "name": "Mainnet-18",
-        "sporkTime": "2022-06-16T18:00:00Z",
+        "sporkTime": "2022-06-15T18:00:00Z",
         "rootHeight": "31735955",
         "rootParentId": "716d54edbb3d9b2ad290709a516f1ffe4290c7b7b33a49bd0480e0b193a45884",
         "rootStateCommitment": "5bdae9f5fb4cc5d63075547df5502e2bc3cb20707452389fb89ebbe71ecf7b68",
