@@ -89,7 +89,7 @@ This is a great way to implement on-chain transactions while preventing bots and
 
 However, this 2-step process may be too much friction for some NFT buyers, which may limit your NFT sales.
 Additionally, the voucher system is imperfect, and there may be an unauthorized secondary market for your project's vouchers.
-Real-world examples of this strategy include [JAMBB]() and [RoundLabs/Faze]().
+Real-world examples of this strategy include [JAMBB](https://www.jambb.com/) and [RoundLabs/Faze](https://www.onflow.org/post/alpha-innovation-series-round-labs-on-cadence-and-building-on-flow).
 ![On-chain NFT with vouchers diagram](NFTimages/image6.png)
 
 ## Conclusion
