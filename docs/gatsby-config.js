@@ -440,6 +440,8 @@ const sections = [
         "dapp-development/in-dapp-payments",
         "dapp-development/smart-contracts",
         "dapp-development/dapp-infrastructure",
+        "dapp-development/DappArchitectures",
+        "dapp-development/NFT-drop-styles",
       ],
       "Deploying Your Dapp": [
         "dapp-development/deployment",
