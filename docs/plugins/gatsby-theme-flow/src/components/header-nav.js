@@ -67,7 +67,7 @@ export default function HeaderNav() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Flow Developer Portal (preview)
+        onflow.org
       </StyledLink>
       <Divide />
       <StyledLink
