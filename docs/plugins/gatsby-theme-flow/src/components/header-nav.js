@@ -63,7 +63,7 @@ export default function HeaderNav() {
   return (
     <Container>
       <StyledLink
-        href="https://developers.onflow.org/"
+        href="https://onflow.org/"
         target="_blank"
         rel="noopener noreferrer"
       >
