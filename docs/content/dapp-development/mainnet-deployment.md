@@ -30,7 +30,7 @@ First, you need to configure the `flow.json` file to add your mainnet account de
 }
 ```
 
-Next, you need to set the [deployment target configuration](http://localhost:8000/flow-cli/project-contracts/#define-contract-deployment-targets) for the mainnet:
+Next, you need to set the [deployment target configuration](https://docs.onflow.org/flow-cli/project-contracts/#define-contract-deployment-targets) for the mainnet:
 
 ```js:title=flow.json
 {
@@ -46,7 +46,7 @@ Next, you need to set the [deployment target configuration](http://localhost:800
 
 ### Deploy a contract on mainnet using the CLI
 
-With the configuration changes completed, run the [Flow CLI deployment command](http://localhost:8000/flow-cli/deploy-project-contracts):
+With the configuration changes completed, run the [Flow CLI deployment command](https://docs.onflow.org/flow-cli/deploy-project-contracts):
 
 ```sh
 > flow project deploy --network=mainnet
