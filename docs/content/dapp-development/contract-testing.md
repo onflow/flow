@@ -13,7 +13,7 @@ Finally, unstructured closed testing with a limited audience on testnet can gain
 
 ## Testing Requirements
 
-> **Important**: This chapter will not be relevant as soon as [permissionless deployment](https://permissionless.onflow.org/) rolls out on Flow (ETA summer 2022). Once rolled out, you can deploy to the mainnet directly without going through a review process. However, good testing practices are important and should be followed as a best practice.
+> **Important**: This chapter will change as soon as [permissionless deployment](https://permissionless.onflow.org/) rolls out on Flow (ETA summer 2022). Once rolled out, you can deploy to the mainnet directly without going through a review process. However, good testing practices are critical for a successful mainnet experience, and this chapter provides general guidelines.
 
 If you are submitting your new contract for review prior to permissionless deployment being rolled out, the following has to be included in the code repository containing the smart contracts to be reviewed:
 

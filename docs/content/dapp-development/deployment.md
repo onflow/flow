@@ -33,7 +33,7 @@ As soon as you are ready for mainnet, you need to create and setup a mainnet acc
 
 **5. [Mainnet Deployment](/dapp-development/mainnet-deployment/)**
 
-> **Important**: The mainnet deployment process will change as soon as [permissionless deployment](https://permissionless.onflow.org/) rolls out on Flow (ETA summer 2022). Once rolled out, you can deploy directly to mainnet without going through a review process.
+> **Important**: The mainnet deployment process is changing! As soon as **[permissionless deployment](https://permissionless.onflow.org/)** is rolled out (ETA summer 2022), you will be able to deploy *new contracts* directly to mainnet without going through a review process. Furthermore, following the mainnet spork on June 15th, the network will already be permissionless for all *existing* contracts - this means you will be able to update your existing contracts without requiring any review. Please see [this page](https://docs.onflow.org/dapp-development/mainnet-deployment/#updatere-deploy-a-contract-on-mainnet-using-the-cli) or [this video](https://www.youtube.com/watch?v=tufIo8V_f2c) for information on how to update mainnet contracts after the spork. Please check [this page](https://permissionless.onflow.org/) for all the most up to date information.
 
 Until permissionless deployment rolls out, your dapp must go through a review process before it can be deployed to Mainnet.
 This is to ensure a smooth and safe experience for Flow users, developers, and maintainers while the network is still maturing.

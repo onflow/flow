@@ -3,7 +3,7 @@ title: Mainnet Deployment Guidelines
 sidebar_title: 5. Mainnet Deployment
 ---
 
-> **Important**: The mainnet deployment process will change as soon as [permissionless deployment](https://permissionless.onflow.org/) rolls out on Flow (ETA summer 2022). Once rolled out, you can deploy directly to mainnet without going through a review process.
+> **Important**: The mainnet deployment process is changing! As soon as **[permissionless deployment](https://permissionless.onflow.org/)** is rolled out (ETA summer 2022), you will be able to deploy *new contracts* directly to mainnet without going through a review process. Furthermore, following the mainnet spork on June 15th, the network will already be permissionless for all *existing* contracts - this means you will be able to update your existing contracts without requiring any review. Please see [this page](https://docs.onflow.org/dapp-development/mainnet-deployment/#updatere-deploy-a-contract-on-mainnet-using-the-cli) or [this video](https://www.youtube.com/watch?v=tufIo8V_f2c) for information on how to update mainnet contracts after the spork. Please check [this page](https://permissionless.onflow.org/) for all the most up to date information.
 
 ## After Permissionless: Deploy directly
 
@@ -30,7 +30,7 @@ First, you need to configure the `flow.json` file to add your mainnet account de
 }
 ```
 
-Next, you need to set the [deployment target configuration](http://localhost:8000/flow-cli/project-contracts/#define-contract-deployment-targets) for the mainnet:
+Next, you need to set the [deployment target configuration](https://docs.onflow.org/flow-cli/project-contracts/#define-contract-deployment-targets) for the mainnet:
 
 ```js:title=flow.json
 {
@@ -46,7 +46,7 @@ Next, you need to set the [deployment target configuration](http://localhost:800
 
 ### Deploy a contract on mainnet using the CLI
 
-With the configuration changes completed, run the [Flow CLI deployment command](http://localhost:8000/flow-cli/deploy-project-contracts):
+With the configuration changes completed, run the [Flow CLI deployment command](https://docs.onflow.org/flow-cli/deploy-project-contracts):
 
 ```sh
 > flow project deploy --network=mainnet

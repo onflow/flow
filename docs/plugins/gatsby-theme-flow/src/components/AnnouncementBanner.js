@@ -10,11 +10,7 @@ const Banner = styled.div`
   padding: 0.5rem;
   font-weight: 500;
   background: rgb(2, 239, 139);
-  background: linear-gradient(
-    55deg,
-    rgba(2, 239, 139, 1) 0%,
-    rgba(0, 254, 255, 1) 100%
-  );
+  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%)
 `;
 
 const Link = styled.a`
