@@ -2,7 +2,7 @@
 
 | Status        | (Proposed)       |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
+| **FLIP #1006**    | [1006](https://github.com/onflow/flow/pull/1006)|
 | **Author** | Álvaro Lillo Igualada (alvaro.lillo@dapperlabs.com) |
 | **Sponsor**   | Josh Hannan (josh.hannan@dapperlabs.com)             |
 | **Updated**   | 2022-06-23                                           | 
