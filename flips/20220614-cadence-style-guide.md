@@ -53,7 +53,7 @@ The style guide will include code snippets showing how each point of the guide w
 
 ### User Impact
 
-It will not be compulsory, but highly recomended for Cadence developers to update their existing projects to satisfy the acorded guidelines. 
+It will not be compulsory, but highly reccomended for Cadence developers to update their existing projects to satisfy the guidelines. 
 
 ## Related Issues
 
