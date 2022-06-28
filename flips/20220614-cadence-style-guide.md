@@ -18,7 +18,7 @@ As the Cadence developer base extends, we need to unificate the coding style to 
 
 ## User Benefit
 
-Having unified rules when writting Cadence code will help Cadence learners understanding code and all kind of Cadence based projects not wasting time deciding how to present their code.
+Having unified standards when writting Cadence code will help Cadence learners understand code better. All kinds of Cadence-based projects will be able to avoid wasting time deciding how to present their code.
 
 ## Design Proposal
 
