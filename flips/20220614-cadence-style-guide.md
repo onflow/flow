@@ -61,7 +61,7 @@ Guidelines on how to write tests for Cadence code should be addressed on a diffe
 
 ## Prior Art
 
-Almost any programming language have defined style guides, we will be paying attention to some of then in order to elaborate our document, such as: 
+Almost any programming language have defined style guides, we will be paying attention to some of them in order to build our document, such as: 
 * https://www.swift.org/documentation/api-design-guidelines/
 * https://kotlinlang.org/docs/coding-conventions.html
 * https://doc.rust-lang.org/1.0.0/style/
