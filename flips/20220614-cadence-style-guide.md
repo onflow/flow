@@ -36,7 +36,7 @@ There are several points we need to address for defining the Cadence Style Guide
 
 ### Drawbacks
 
-Having a defined set of style rules when writting Cadende code should not have any comebacks, as long as we agree on a sufficient wide set of rules and they are flexible enought to cover most cases.
+Having a defined set of style rules when writting Cadende code should not have any drawbacks, as long as we agree on a sufficiently wide set of rules that are flexible enough to cover most cases.
 
 
 ### Engineering Impact
