@@ -476,9 +476,12 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      "API Documentation": [
-        "[Quick Reference](/fcl/reference/api/)",
+      "Getting Started": [
+        "[Introduction](/fcl/reference/introduction/)",
+        "[How It Works](/fcl/reference/how-it-works/)",
+        "[Installation](/fcl/reference/installation/)",
         "[Configuration](/fcl/reference/configure-fcl/)",
+        "[SDK Reference](/fcl/reference/api/)",
         "[Authentication](/fcl/reference/authentication/)",
         "[Proving Account Ownership](/fcl/reference/proving-authentication/)",
         "[Scripts](/fcl/reference/scripts/)",
