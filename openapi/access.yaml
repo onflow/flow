@@ -675,6 +675,7 @@ components:
     TransactionResult:
       type: object
       required:
+        - block_height
         - block_id
         - status
         - status_code
@@ -682,6 +683,8 @@ components:
         - computation_used
         - events
       properties:
+        block_height:
+          $ref: '#/components/schemas/BlockHeight'
         block_id:
           $ref: '#/components/schemas/Identifier'
         execution:
