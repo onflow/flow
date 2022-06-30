@@ -1,6 +1,6 @@
 # Title of FLIP
 
-| Status        | (Proposed)       |
+| Status        | (Accepted)       |
 :-------------- |:---------------------------------------------------- |
 | **FLIP #**    | [941](https://github.com/onflow/flow/pull/941)|
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
