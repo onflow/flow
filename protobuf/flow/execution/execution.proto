@@ -143,7 +143,7 @@ message GetTransactionResultsResponse {
 message GetRegisterAtBlockIDRequest {
   bytes block_id = 1;
   bytes register_owner = 2;
-  bytes register_controller = 3;
+  // bytes register_controller = 3; @depricated
   bytes register_key = 4;
 }
 
