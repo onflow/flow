@@ -481,13 +481,13 @@ const sections = [
         "[How It Works](/fcl/reference/how-it-works/)",
         "[Installation](/fcl/reference/installation/)",
         "[Configuration](/fcl/reference/configure-fcl/)",
-        "[SDK Reference](/fcl/reference/api/)",
-        "[Authentication](/fcl/reference/authentication/)",
-        "[Proving Account Ownership](/fcl/reference/proving-authentication/)",
-        "[Scripts](/fcl/reference/scripts/)",
+        "[Query](/fcl/reference/scripts/)",
         "[Transactions](/fcl/reference/transactions/)",
-        "[User Signatures](/fcl/reference/user-signatures/)",
         "[Wallet Discovery](/fcl/reference/discovery/)",
+        "[SDK Reference](/fcl/reference/api/)",
+        "[FCL Features](/fcl/reference/authentication/)",
+        "[Proving Account Ownership](/fcl/reference/proving-authentication/)",
+       
       ],
       Changelogs: [
         "[@onflow/fcl](/fcl/packages/fcl/CHANGELOG)",
