@@ -140,7 +140,7 @@ Storage fees are implemented differently from transaction fees. Read the [Storin
 
 ## Estimating transaction costs
 
-Cost estimation is a two-step process. First, you need to gather the execution effort with either the emulator or on the testnet. Second, you use the execution effort for a transaction to calculate the final fees using one of the JavaScript or Go FCL SDKs.
+Cost estimation is a two-step process. First, you need to gather the execution effort with either the emulator, on testnet, or on mainnet. Second, you use the execution effort for a transaction to calculate the final fees using one of the JavaScript or Go FCL SDKs.
 
 ### Understanding execution effort
 
@@ -156,7 +156,7 @@ You can [start the emulator using the Flow CLI](https://docs.onflow.org/emulator
 
 You should see the `computationUsed` field. Take a note of the value, you will use it in the next step.
 
-**On the testnet**
+**On testnet or mainnet**
 
 Once a transaction is completed, you can use an explorer like [Flowscan](https://flowscan.org/) to review the transaction details and events emitted. For Flowscan, you can open the transaction in question and look for the event `FeesDeducted` from the [`FlowFees`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc) contract:
 
