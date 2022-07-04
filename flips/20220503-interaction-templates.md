@@ -67,6 +67,10 @@ Here is an example of an `InteractionTemplateInterface` for "Fungible Token Tran
     f_version: "1.0.0",
     id: "asadf23234...fas234234", // Unique ID for the data structure.
     data: {
+<<<<<<< HEAD
+=======
+        version: "1.0.1",
+>>>>>>> e350990c666994dbdc8da3bdfc4acab3d6e4fbed
         flip: "FLIP-XXXX",
         title: "Fungible Token Transfer",
         arguments: {
@@ -90,6 +94,12 @@ These fields declare the data structure type and data structure version. The ver
 This is a unique, content derived identifier for this interaction interface. Each ID is unique for each interaction interface.
 This is created by hashing (SHA3-256 hash represented as hex string) (TODO: Define serialization process of the data structure prior to hashing) over the `data` portion of the interaction template.
 
+<<<<<<< HEAD
+=======
+#### `data.version`
+The SemVer version of the interface.
+
+>>>>>>> e350990c666994dbdc8da3bdfc4acab3d6e4fbed
 #### `data.flip`
 The FLIP number that this interface was established.
 
@@ -125,6 +135,10 @@ Here is an example `InteractionTemplate` for a "Transfer FLOW" transaction:
     data: {
         type: "transaction", // "transaction" || "script"
         interface: "asadf23234...fas234234", // ID of InteractionTemplateInterface this conforms to.
+<<<<<<< HEAD
+=======
+        version: "1.23.0", // Semver version of this Interaction
+>>>>>>> e350990c666994dbdc8da3bdfc4acab3d6e4fbed
         messages: {
             title: {
                 i18n: { // Internationalised (BCP-47) set of human readable messages about the interaction
@@ -244,6 +258,12 @@ Either `transaction` or `script` , defining what type of interaction this corres
 #### `data.interface`
 The identifier of the interface this interaction template implements. Not all interaction templates should implement an interface, so this is field optional.
 
+<<<<<<< HEAD
+=======
+#### `data.version`
+The SemVer version of the interaction.
+
+>>>>>>> e350990c666994dbdc8da3bdfc4acab3d6e4fbed
 #### `data.messages`
 Internationalized, human readable messages explaining the interaction. For each message, there can be any number of translations provided. Translations should use [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tags. Messages may also consume arguments, which correspond to the arguments supplied to the transaction.
 
@@ -475,6 +495,7 @@ Wallets who chose to support Interaction Templates will need to modify their aut
 ## FLIP TODOs:
 - Define serialization process prior to hashing when generating identifiers for `InteractionTemplate` and `InteractionTemplateInterface`.
 
+<<<<<<< HEAD
 ## Data Structure Serialization & Identifier Generation
 
 A deterministic serialization algorithm is required to be applied prior to hashing its result to produce identifiers for the `InteractionTemplate`, `InteractionTemplateInterface` and `InteractionTemplateAudit` data structures.
@@ -636,6 +657,8 @@ sha3(MESSAGE)
     Is the Keccak256 hash function.
 ```
 
+=======
+>>>>>>> e350990c666994dbdc8da3bdfc4acab3d6e4fbed
 ## Data Structure JSON Schemas
 
 ### `InteractionTemplate`

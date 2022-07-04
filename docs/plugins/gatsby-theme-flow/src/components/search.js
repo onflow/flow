@@ -140,7 +140,7 @@ const Container = styled.div({
 
 const Overlay = styled.div(
   position("fixed", 0),
-  props =>
+  (props) =>
     !props.visible && {
       opacity: 0,
       visibility: "hidden"
@@ -159,50 +159,50 @@ export default function Search(props) {
   const [value, setValue] = useState("");
   const inputRef = useRef(null);
   const mixpanel = useMixpanel();
-  useEffect(
-    () => {
-      if (typeof docsearch !== "undefined") {
-        docsearch({
-          apiKey: props.apiKey,
-          indexName: props.indexName,
-          inputSelector: "#input",
-          // debug: true, // keeps the results list open
-          algoliaOptions: {
-            hitsPerPage: 10,
-            distinct: 1
-          },
-          handleSelected: function(
-            input,
-            _event,
-            suggestion,
-            _datasetNumber,
-            _context
-          ) {
-            mixpanel.track("Searched", { text: input, selected: suggestion });
-            input.setVal("");
-            window.location.href = suggestion.url;
-          },
-          transformData: function(hits) {
-            hits.forEach(hit => {
-              // replace origin so search results point to local (or vercel) deployment
-              // warning: any new or edited pages won't be correctly indexed
-              var url = new URL(hit.url);
-              url.host = window.location.host;
-              url.protocol = window.location.protocol;
-              hit.url = url.href;
-            });
-          }
-        });
-      }
-    },
-    [props.apiKey, props.indexName, mixpanel]
-  );
+  useEffect(() => {
+    if (typeof docsearch !== "undefined") {
+      docsearch({
+        apiKey: props.apiKey,
+        indexName: props.indexName,
+        inputSelector: "#input",
+        // debug: true, // keeps the results list open
+        algoliaOptions: {
+          hitsPerPage: 10,
+          distinct: 1
+        },
+        handleSelected: function (
+          input,
+          _event,
+          suggestion,
+          _datasetNumber,
+          _context
+        ) {
+          mixpanel.track("Searched", {
+            text: input.getVal(),
+            selected: suggestion
+          });
+          input.setVal("");
+          window.location.href = suggestion.url;
+        },
+        transformData: function (hits) {
+          hits.forEach((hit) => {
+            // replace origin so search results point to local (or vercel) deployment
+            // warning: any new or edited pages won't be correctly indexed
+            var url = new URL(hit.url);
+            url.host = window.location.host;
+            url.protocol = window.location.protocol;
+            hit.url = url.href;
+          });
+        }
+      });
+    }
+  }, [props.apiKey, props.indexName, mixpanel]);
 
   // focus the input when the slash key is pressed
   useKey(
-    event =>
+    (event) =>
       event.keyCode === 191 && event.target.tagName.toUpperCase() !== "INPUT",
-    event => {
+    (event) => {
       event.preventDefault();
       inputRef.current.focus();
     }

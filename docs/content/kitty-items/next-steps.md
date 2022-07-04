@@ -46,6 +46,10 @@ If you want to work on a cutting edge feature, you can explore how to support ro
 
 The Flow community is [currently working on the royalty standard](https://github.com/onflow/flow-nft/issues/53). Check it out and chime in if you have any thoughts!
 
+## Deploy your Kitty Items project to the mainnet
+
+You successfully deployed your project to the testnet, which is helpful to test against a live network of the Flow blockchain. However, once you've improved your project and are ready to transfer it to a production environment, you need to deploy your contracts to the mainnet. [Follow the Mainnet Deployment guide](/dapp-development/mainnet-deployment/) to accomplish that.
+
 ## Get inspired by other projects
 
 If you need even more inspiration, check out some of the [existing NFT marketplace on Flow](https://www.flowverse.co/projects).

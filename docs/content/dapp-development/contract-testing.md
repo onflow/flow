@@ -5,7 +5,7 @@ sidebar_title: 1. Smart Contract Testing
 
 Achieving good test coverage is vital for assuring the quality of code written to be deployed on the Flow blockchain.
 
-Automated tests can be run locally in the Flow emulator, and on the Flow testnet. These tests should include both unit tests; to exercise each feature of a contract, and integration tests; to exercise the behaviour of different parts of the project as a whole.
+Automated tests can be run locally in the Flow emulator, and on the Flow testnet. These tests should include both unit tests; to exercise each feature of a contract, and integration tests; to exercise the behavior of different parts of the project as a whole.
 
 Human-driven tests, in which individual testers work manually through user stories via the project's user interface or custom transactions, can also be performed locally. Tests with groups of testers can be performed similarly on testnet in a similar manner.
 
@@ -13,7 +13,9 @@ Finally, unstructured closed testing with a limited audience on testnet can gain
 
 ## Testing Requirements
 
-For code that is being evaluated for deployment on the Flow mainnet, Dapper Labs requires the following be included in the code repository that we receive containing the smart contracts to be reviewed:
+> **Important**: This chapter will change as soon as [permissionless deployment](https://permissionless.onflow.org/) rolls out on Flow (ETA summer 2022). Once rolled out, you can deploy to the mainnet directly without going through a review process. However, good testing practices are critical for a successful mainnet experience, and this chapter provides general guidelines.
+
+If you are submitting your new contract for review prior to permissionless deployment being rolled out, the following has to be included in the code repository containing the smart contracts to be reviewed:
 
 - Every publicly exposed feature of a contract and its resources should have unit tests that check both for success with correct input _and_ for failure with incorrect input.
   These tests should be capable of being run locally with the Flow emulator, with no or minimal extra resources or configuration, and with a single command.
@@ -31,18 +33,10 @@ In both cases, the code will need to deploy the contracts, configure accounts to
 
 Tests in Go can be written using [flow-go-sdk](https://github.com/onflow/flow-go-sdk) and the go test command.
 
-You can find examples of Go tests in the following projects:
+You can find examples of Go tests in the following projects: [flow-core-contracts](https://github.com/onflow/flow-core-contracts/tree/master/lib/go/test), [flow-nft](https://github.com/onflow/flow-nft/tree/master/lib/go/test), [flow-ft](https://github.com/onflow/flow-ft/tree/master/lib/go/test).
 
-[https://github.com/onflow/flow-core-contracts/tree/master/lib/go/test](https://github.com/onflow/flow-core-contracts/tree/master/lib/go/test)
-
-[https://github.com/onflow/flow-nft/tree/master/lib/go/test](https://github.com/onflow/flow-nft/tree/master/lib/go/test),
-
-[https://github.com/onflow/flow-ft/tree/master/lib/go/test](https://github.com/onflow/flow-ft/tree/master/lib/go/test).
-
-Note that these tests are tied to the emulator but it is simple to refactor tests to run on testnet as well.
+> **Note**: These tests are tied to the emulator but can be refactored to run on testnet
 
 ### JavaScript Tests
 
-Tests in JavaScript can be written using [fcl](https://github.com/onflow/flow-js-sdk) and [flow-js-testing](https://github.com/onflow/flow-js-testing).
-
-flow-js-testing is a newer addition so we do not have any examples using it yet.
+Tests in JavaScript can be written using [flow-js-testing](https://github.com/onflow/flow-js-testing).

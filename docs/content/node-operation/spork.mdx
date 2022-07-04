@@ -7,22 +7,22 @@ description: What to do during a spork
 
 A spork is a coordinated network upgrade process where node operators upgrade their node software and
 re-initialize with a consolidated representation of the previous spork's state. This enables rapid development
-on the Flow Protocol and minimizes the impact of breaking changes. 
+on the Flow Protocol and minimizes the impact of breaking changes.
 
-The Flow network sporks approximately once every two months.  Upcoming sporks
+The Flow network sporks approximately once every two months. Upcoming sporks
 are announced in advance on the `#flow-validators-announcements` **Discord** channel
-and in [Upcoming Sporks](/node-operation/upcoming-sporks). The `#flow-validators-announcements` channel is 
+and in [Upcoming Sporks](/node-operation/upcoming-sporks). The `#flow-validators-announcements` channel is
 also used to coordinate during the spork process.
 
 This guide is for existing operators participating in a spork. See [Node Bootstrap](/node-operation/node-bootstrap)
-for a guide to joining the network for the first time. 
+for a guide to joining the network for the first time.
 
 ## Step 1 - Cleaning Up Previous Spork State
 
 Once the spork start has been announced on, stop your node and clear your database. The node should stay stopped for the duration of the spork.
 
 <Callout type="warning">
-You can skip this step if it is your first time running a node on Flow.
+  You can skip this step if it is your first time running a node on Flow.
 </Callout>
 
 1. Stop your Flow node
@@ -38,7 +38,7 @@ updated configuration. Refer to Discord communications for guidance during the s
 
 ## Step 2 - Start Your Node
 
-Once you receive an announcement from the Flow team that the spork process is complete (via Discord), you will need to fetch the genesis info, update your runtime configuration and then boot your Flow node up!
+Once you receive an announcement that the spork process is complete (via Discord), you will need to fetch the genesis info, update your runtime configuration and then boot your Flow node up!
 
 <Callout type="warning">
 

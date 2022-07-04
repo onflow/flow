@@ -140,7 +140,7 @@ Storage fees are implemented differently from transaction fees. Read the [Storin
 
 ## Estimating transaction costs
 
-Cost estimation is a two-step process. First, you need to gather the execution effort with either the emulator or on the testnet. Second, you use the execution effort for a transaction to calculate the final fees using one of the JavaScript or Go FCL SDKs.
+Cost estimation is a two-step process. First, you need to gather the execution effort with either the emulator, on testnet, or on mainnet. Second, you use the execution effort for a transaction to calculate the final fees using one of the JavaScript or Go FCL SDKs.
 
 ### Understanding execution effort
 
@@ -156,7 +156,7 @@ You can [start the emulator using the Flow CLI](https://docs.onflow.org/emulator
 
 You should see the `computationUsed` field. Take a note of the value, you will use it in the next step.
 
-**On the testnet**
+**On testnet or mainnet**
 
 Once a transaction is completed, you can use an explorer like [Flowscan](https://flowscan.org/) to review the transaction details and events emitted. For Flowscan, you can open the transaction in question and look for the event `FeesDeducted` from the [`FlowFees`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc) contract:
 
@@ -382,7 +382,7 @@ There are several places to learn more about transaction fees:
 
 **When will the fee update go into effect?**
 
-The updates were rolled out with the [Spork on April 6, 2022](https://docs.onflow.org/node-operation/past-sporks/#mainnet-17), but are pending enablement based on the timeline after the community vote on the topic.
+The updates were rolled out with the [Spork on April 6, 2022](https://docs.onflow.org/node-operation/past-sporks/#mainnet-17), and were enabled on [June 1st](https://forum.onflow.org/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
 
 **Why are fees collected even when transactions fail?**
 
