@@ -141,9 +141,10 @@ message GetTransactionResultsResponse {
 // Registers
 
 message GetRegisterAtBlockIDRequest {
+  reserved 3;
   bytes block_id = 1;
   bytes register_owner = 2;
-  // bytes register_controller = 3; @depricated
+  // bytes register_controller = 3; @deprecated
   bytes register_key = 4;
 }
 
