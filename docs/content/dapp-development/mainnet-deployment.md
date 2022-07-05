@@ -3,17 +3,15 @@ title: Mainnet Deployment Guidelines
 sidebar_title: 5. Mainnet Deployment
 ---
 
-> **Important**: The mainnet deployment process is changing! As soon as **[permissionless deployment](https://permissionless.onflow.org/)** is rolled out (ETA summer 2022), you will be able to deploy *new contracts* directly to mainnet without going through a review process. Furthermore, following the mainnet spork on June 15th, the network will already be permissionless for all *existing* contracts - this means you will be able to update your existing contracts without requiring any review. Please see [this page](https://docs.onflow.org/dapp-development/mainnet-deployment/#updatere-deploy-a-contract-on-mainnet-using-the-cli) or [this video](https://www.youtube.com/watch?v=tufIo8V_f2c) for information on how to update mainnet contracts after the spork. Please check [this page](https://permissionless.onflow.org/) for all the most up to date information.
+> **Note**: Anyone can deploy and update contracts on mainnet. [Smart contract reviews](https://flowsolutionseng.zendesk.com/hc/en-us/requests/new?ticket_form_id=360001936012&tc_360045236671=b5ba92954c2f2692b56099fe653ac92d35c1e6e6) (to discover any issues that may affect your users) are still provided upon request. However, they are not mandatory.
 
-## After Permissionless: Deploy directly
+## Prerequisites
 
-### Prerequisites
-
+- Testnet testing: Smart contracts include test coverage and follow any additional guidelines set out here: [Smart Contract Testing Guidelines](/dapp-development/contract-testing). Application live on testnet and handling real world traffic for an extended period of time as suggested here: [Testnet Testing Guidelines](/dapp-development/testnet-testing)
 - [Flow CLI](https://github.com/onflow/flow-cli): You have the CLI installed and ran `flow init` in your project folder, generating a `flow.json` file
-- Testnet testing: You tested your contracts thoroughly [locally](/dapp-development/contract-testing) and [on the testnet](/dapp-development/testnet-testing)
 - Mainnet account: You completed the [mainnet account setup](/dapp-development/mainnet-account-setup) and have your key pair and mainnet address ready
 
-### Configuration
+## Configuration
 
 First, you need to configure the `flow.json` file to add your mainnet account details:
 
@@ -44,7 +42,7 @@ Next, you need to set the [deployment target configuration](https://docs.onflow.
 }
 ```
 
-### Deploy a contract on mainnet using the CLI
+## Deploy a contract on mainnet using the CLI
 
 With the configuration changes completed, run the [Flow CLI deployment command](https://docs.onflow.org/flow-cli/deploy-project-contracts):
 
@@ -63,13 +61,11 @@ Bar -> 0xab7... (6c243d09e...b878111098)
 
 > **Note**: This command automatically deploys your project's contracts based on the configuration defined in your `flow.json` file. If you encounter any errors, review the configuration first.
 
-> **Important**: If you see `Error Code: 1056`, you are trying to deploy contracts before the permissionless rollout was completed. In that case, you need to submit a review (as described below)
-
 > **Important**: If you see `Error Code: 1103`, your new account does not have enough funds to complete the transaction. Make sure you have enough FLOW (e.g. by [sending some from your Blocto account](/dapp-development/mainnet-account-setup/#step-3-send-flow-to-non-custodial-account)).
 
 Once all your contracts are deployed, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](/flow-cli/get-accounts/) to confirm the deployment.
 
-### Update/Re-deploy a contract on mainnet using the CLI
+## Update/Re-deploy a contract on mainnet using the CLI
 
 You can use the [Flow CLI contract update command](/flow-cli/account-update-contract/) to re-deploy an updated version of your contract:
 
@@ -99,42 +95,6 @@ Contract: 'Bar'
 Contracts (hidden, use --include contracts)
 ```
 
-## Before permissionless: Submit for review
-
-Prior to the permissionless rollout, deploying to Mainnet requires manual review. To make your deployment as fast and as smooth as possible please use the steps in the guide to prepare your project.
-
-### Prerequisites
-
-Before considering your application for deployment to Mainnet, it has to have been live on Testnet handling real world traffic for a fixed period of time as suggested here: [Testnet Testing Guidelines](/dapp-development/testnet-testing).
-
-Your project's smart contracts should include test coverage and follow any additional guidelines set out here: [Smart Contract Testing Guidelines](/dapp-development/contract-testing).
-
-Your reviewers will be using the following criterion when assessing your project: [Flow Project Technical Analysis](/dapp-development/contract-testing) Keeping these points in mind while developing your project will help speed up the review and deployment process.
-
-### Smart Contract Review
-
-To ensure that Flow Mainnet works well for everyone in the early days, all smart contracts being deployed will be reviewed. The aim of the review process is to attempt to discover any issues that may affect your users or the operation of the network before your application is live.
-
-**To submit your contract for review, use this: [Contract Review Submission Form](https://flowsolutionseng.zendesk.com/hc/en-us/requests/new?ticket_form_id=360001936012&tc_360045236671=b5ba92954c2f2692b56099fe653ac92d35c1e6e6)**
-
-Once your contract has been submitted for review a member of the reviewing team will contact you and discuss how long the review might take. The timeliness of the review process will be different for every project, though the minimum timeline is usually 2-3 weeks.
-
-### Deployment Process
-
-When your application is approved for deployment, you'll need to share some important information:
-
-- Provide a git tag pointing to the source code of the smart contracts you would like to deploy, so the team can perform a checkout of the correct version.
-- Provide all the required public keys for all necessary Mainnet accounts.
-- For projects requiring multiple contracts, you'll need to provide a deployment script and/or instructions explaining how to perform your multi-contract deployment correctly.
-
-Once this information has been provided, the project will be deployed and you will be notified!
-
-### Re-reployment process
-
-Iterating (re-deploying) on Mainnet will be a manual process. Once your application is live, and you'd like to make updates or add features, you'll need to re-submit your updated smart contracts for review using the submission form, or by reaching out to your Flow point-of-contact directly.
-
-Depending on the scope of the changes you're making, the team may be able to re-deploy them quickly, as long as all the required tests are in place. However, it may be the case that you'll need to test your updates on Testnet again. Decisions about re-deployment and re-testing as well as timelines for each will be made by the reviewing team on a case-by-case basis.
-
 ## NFT Discoverabilty
 
 You should follow the [steps listed in the Alchemy repository](https://github.com/alchemyplatform/alchemy-flow-contracts#adding-a-new-contract) to get your NFT discovered through the Alchemy API. Make sure you added files needed to support your NFT on mainnet specifically.
@@ -145,7 +105,7 @@ You should follow the [steps listed in the Alchemy repository](https://github.co
 
 In these early days of Flow, version updates to Cadence, Flow Node software, and the Flow SDKs will often contain important updates as well as breaking changes.
 
-Breaking changes will be a fact of life for early adopters of Flow's development stack, and you may often need to manually re-deploy your application's contracts after updates. But that's OK we're here to help!
+Breaking changes will be a fact of life for early adopters of Flow's development stack, and you may often need to manually re-deploy your application's contracts after updates.
 
 ### Version Compatibility
 
