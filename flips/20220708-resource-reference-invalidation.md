@@ -76,6 +76,11 @@ ref.id = 2
 This proposal would avoid a potential foot-gun of gaining/giving/retaining unintended access to resources through
 references.
 
+## Implementation Benefit
+The current implementation of Cadence resource reference tracking requires a lot of bookkeeping in order to ensure
+that the references to resources point to the correct resource, when the referred-to resource value is moved around.
+With this proposal, such bookkeeping would no longer be required and the implementation complexity could be eliminated.
+
 ## Design Proposal
 The proposed solution in this FLIP is to invalidate a reference, if the underlying resource is transferred from its
 original location where the reference was taken.
