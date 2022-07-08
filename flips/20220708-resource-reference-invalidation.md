@@ -9,9 +9,13 @@
 
 ## Objective
 
-This proposal is to introduce an invalidation for ephemeral reference values, if the referring resource is transferred
-after the reference was created. The objective is to avoid a potential foot-gun of accidentally gaining/retaining
-access to a resource that a user does not own.
+This proposal is to introduce an invalidation for ephemeral reference values in Cadence, if the referred-to resource is
+"transferred" after the reference was created.
+Transferring is the act of moving a resource from outside account storage (stack) into account storage, moving from
+the storage of one account to the storage of another account, or moving out of account storage (to the stack).
+
+The objective is to avoid a potential foot-gun of accidentally gaining/retaining access to a resource that a user
+does not own.
 
 ## Motivation
 
@@ -93,7 +97,7 @@ ref.id = 2    // Will produce a run-time error
 ```
 
 ### Drawbacks
-- This is a breaking change, and developers will have to update their codes. Many existing contracts maybe affected.
+- This is a breaking change, and developers will have to update their codes. Many existing contracts may be affected.
 
 ### User Impact
 
