@@ -65,7 +65,7 @@ All NFTs on the Flow blockchain implement the [NonFungibleToken](/core-contracts
 
 - [Non-Fungible Token (NFT) contract interface](/core-contracts/non-fungible-token/)
 
-### NFT Sales and Trading {#nft-sales-and-trading}
+### NFT Sales and Trading
 
 Flow has a standard contract to facilitate both the direct sales and peer-to-peer trading of NFTs. The NFT storefront contract is useful for dapps that want to provide an NFT marketplace experience.
 
