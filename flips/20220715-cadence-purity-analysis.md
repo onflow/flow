@@ -102,44 +102,44 @@ within its body. Operations with side effects for the purpose of this analysis a
 * Mutating or modifying a value that was declared outside the scope of the function body (including the parameters themselves). Variables 
 that are entirely local to the function may be modified as normal. So, for example, this code would be allowed:
 
-```cadence
-pure fun foo(): Int {
+    ```cadence
+    pure fun foo(): Int {
+        let a: [Int] = []
+        a.append(3)
+        return a.length
+    }
+    ```
+
+    while the following are not:
+
+    ```cadence
+    pure fun foo(a: [Int]): Int {
+        a.append(3)
+        return a.length
+    }
+    ```
+
+    ```cadence
     let a: [Int] = []
-    a.append(3)
-    return a.length
-}
-```
+    pure fun foo(): Int {
+        a.append(3)
+        return a.length
+    }
+    ```
 
-while the following are not:
-
-```cadence
-pure fun foo(a: [Int]): Int {
-    a.append(3)
-    return a.length
-}
-```
-
-```cadence
-let a: [Int] = []
-pure fun foo(): Int {
-    a.append(3)
-    return a.length
-}
-```
-
-Note that it is not always possible to determine statically whether or not a mutation is occuring on a locally or externally scoped variable, 
+    Note that it is not always possible to determine statically whether or not a mutation is occuring on a locally or externally scoped variable, 
 as in this case, for example:
 
-```cadence
-pure fun foo(a: [Int], i: Int): Int {
-    let b: [Int] = []
-    let c = [a, b]
-    c[i].append(4) // it is impossible to tell statically whether it is `a` or `b` that is receiving the write here
-    return a.length
-}
-```
+    ```cadence
+    pure fun foo(a: [Int], i: Int): Int {
+        let b: [Int] = []
+        let c = [a, b]
+        c[i].append(4) // it is impossible to tell statically whether it is `a` or `b` that is receiving the write here
+        return a.length
+    }
+    ```
 
-Cases like this will have to be rejected statically for safety.
+    Cases like this will have to be rejected statically for safety.
 
 * Writing to storage. This includes operations like `save` and `load` (since if a resource is loaded it will be moved out of storage), as well as `unlink`, but
 not operations like `copy`, `borrow`, `type`, or `getCapability`.
@@ -148,16 +148,16 @@ not operations like `copy`, `borrow`, `type`, or `getCapability`.
 
 * Mutating a reference. Any writes to references will have to be rejected, as it is generally not possible to know what value is being referenced. Consider code like the following:
 
-```cadence
-pure fun foo(a: [Int], b: bool): Int {
-    let c: [Int] = &[] as &[Int]
-    if b {
-        c = &a as &[Int]
+    ```cadence
+    pure fun foo(a: [Int], b: bool): Int {
+        let c: [Int] = &[] as &[Int]
+        if b {
+            c = &a as &[Int]
+        }
+        c.append(4) // it is impossible to tell statically whether `a` is receiving the write here
+        return a.length
     }
-    c.append(4) // it is impossible to tell statically whether `a` is receiving the write here
-    return a.length
-}
-```
+    ```
 
 Any function declared to be `pure` will enforce that none of these operations occur in their bodies. If such an operation does occur, then the checker will report
 an error identifying the impure operation. Impure function declarations have no additional typechecking behavior; any operations are permitted.
@@ -188,28 +188,28 @@ When explicit purity annotations are not provided, we can attempt to infer a pur
 
 * Private functions and methods:
 
-On a private method, or a function that is local to the scope it is defined in, purity annotations are not required. If they are present, then the expected purity will be enforced 
+    On a private method, or a function that is local to the scope it is defined in, purity annotations are not required. If they are present, then the expected purity will be enforced 
 by the checker, but when they are absent, the checker will attempt to infer the purity of the function based on the content of its body. If a function is declared without a purity 
 annotation, the checker will inspect all the statements and expressions in the body of the function, and if no impure operations occur, then we can determine that the function is
 pure. If an impure operation does occur, then the function will be marked as impure. 
 
-This analysis is done on a best effort basis, and in cases where purity cannot be inferred, the type checker will ask for a purity annotation to solve the ambiguity. A common
+    This analysis is done on a best effort basis, and in cases where purity cannot be inferred, the type checker will ask for a purity annotation to solve the ambiguity. A common
 example of where this might occur is in recursive or mutually recursive functions: e.g.
 
-```cadence
-fun foo(): Int {
-    return bar()
-}
-fun bar(): Int {
-    return foo()
-}
-```
+    ```cadence
+    fun foo(): Int {
+        return bar()
+    }
+    fun bar(): Int {
+        return foo()
+    }
+    ```
 
-Here the purity of these functions cannot be inferred, so the checker would ask the programmer to explicitly annotate `foo` and `bar` with purity annotations. 
+    Here the purity of these functions cannot be inferred, so the checker would ask the programmer to explicitly annotate `foo` and `bar` with purity annotations. 
 
 * Public functions and methods:
 
-Unlike private functions that cannot be viewed from outside the structure that contains them, public functions and methods will not do any inference on their purity. 
+    Unlike private functions that cannot be viewed from outside the structure that contains them, public functions and methods will not do any inference on their purity. 
 If a `pure` annotation is provided, then the purity of the function will be enforced, but in cases where no annotation is provided the type will simply default to `impure`.
 This is important because public functions can by definition be seen from outside the contract that defined them; and as if they inferred their purity when no annotation was given, 
 then upstream changes to the purity of a function you import into your contract could cause your code to fail typechecking. Preventing inference on public functions keeps the scope
@@ -217,7 +217,7 @@ of the purity analysis manageable.
 
 * Composite initializers:
 
-Unlike other public functions, these default to `pure` when no annotation is provided, since it is common in these functions to simply assign the inputs
+    Unlike other public functions, these default to `pure` when no annotation is provided, since it is common in these functions to simply assign the inputs
 to the fields of the composite being created. This way the common case requires no additional annotation, and users who wish to modify program state from
 within a composite initializer can add an `impure` annotation to their `init` declaration. 
 
@@ -239,7 +239,7 @@ so this will need to be optimized.
 
 ### Best Practices
 
-* In order to make use of this new analysis, users should be encourage to add `pure` annotations to public functions wherever possible, so that other 
+In order to make use of this new analysis, users should be encourage to add `pure` annotations to public functions wherever possible, so that other 
 users who would like to import their contract can use these functions in `pure` contexts. (Perhaps we could add a lint to warn when a function is 
 treated as impure despite performing no impure operations). Users updating their code to have `pure` annotations where appropriate would also position 
 them to better make use of any future analyses relying on purity. 
