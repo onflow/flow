@@ -490,9 +490,9 @@ By serializing each data structure into a specific format, then [RLP encoding](h
 ```text
 template-message-key-content   = UTF-8 string content of the message
 template-message-key-bcp47-tag = BCP-47 language tag
-template-message-translation   = [ template-message-key-bcp47-tag, template-message-key-content ]
+template-message-translation   = [ sha3_256(template-message-key-bcp47-tag), sha3_256(template-message-key-content) ]
 template-message-key           = Key for a template message (eg: "title", "description" etc)
-template-message               = [ template-message-key, [ ...template-message-translation ] ]
+template-message               = [ sha3_256(template-message-key), [ ...template-message-translation ] ]
 
 template-dependency-contract-pin-block-height = Network block height the pin was generated against.
 template-dependency-contract-pin              = Pin of contract
@@ -500,46 +500,49 @@ template-dependency-contract-fq-addr          = Fully qualified contract identif
 template-dependency-network-address           = Address of an account
 template-dependency-network                   = "mainnet" | "testnet" | "emulator" | Custom Network Tag
 template-dependency-contract-network          = [ 
-    template-dependency-network, 
+    sha3_256(template-dependency-network), 
     [ 
-        template-dependency-network-address,
-        template-dependency-contract-name,
-        template-dependency-contract-fq-address,
-        template-dependency-contract-pin,
-        template-dependency-contract-pin-block-height 
+        sha3_256(template-dependency-network-address),
+        sha3_256(template-dependency-contract-name),
+        sha3_256(template-dependency-contract-fq-address),
+        sha3_256(template-dependency-contract-pin),
+        sha3_256(template-dependency-contract-pin-block-height) 
     ]
 ]
 template-dependency-contract-name    = Name of a contract
 template-dependency-contract         = [ 
-    template-dependency-contract-name, 
+    sha3_256(template-dependency-contract-name), 
     [ ...template-dependency-contract-network ]
 ]
 template-dependency-addr-placeholder = Placeholder address
 template-dependency                  = [ 
-    template-dependency-addr-placeholder, 
+    sha3_256(template-dependency-addr-placeholder), 
     [ ...template-dependency-contract ]
 ]
 
 
 template-argument-content-message-key-content   = UTF-8 string content of the message
 template-argument-content-message-key-bcp47-tag = BCP-47 language tag
-template-argument-content-message-translation   = [ template-argument-content-message-key-bcp47-tag, template-argument-content-message-key-content ]
+template-argument-content-message-translation   = [ 
+  sha3_256(template-argument-content-message-key-bcp47-tag),
+  sha3_256(template-argument-content-message-key-content) 
+]
 template-argument-content-message-key           = Key for a template message (eg: "title", "description" etc)
 template-argument-content-message = [
-    template-argument-content-message-key,
+    sha3_256(template-argument-content-message-key),
     [ ...template-argument-content-message-translation ]
 ]
 template-argument-content-index   = Cadence type of argument
 template-argument-content-index   = Index of argument in cadence transaction or script
 template-argument-content-balance = Fully qualified contract identifier of a token this argument acts upon | ""
 template-argument-content         = [ 
-    template-argument-content-index,
-    template-argument-content-type,
-    template-argument-content-balance, 
+    sha3_256(template-argument-content-index),
+    sha3_256(template-argument-content-type),
+    sha3_256(template-argument-content-balance), 
     [ ...template-argument-content-message ]
 ]
 template-argument-label         = Label for an argument
-template-argument               = [ template-argument-label, [ ...template-argument-content ]]
+template-argument               = [ sha3_256(template-argument-label), [ ...template-argument-content ]]
 
 template-type                 = "transaction" | "script"
 template-interface            = ID of the InteractionTemplateInterface this template implements | ""
@@ -549,17 +552,17 @@ template-dependencies         = [ ...template-dependency ] | []
 template-arguments            = [ ...template-argument ] | []
 
 template-encoded              = RLP([ 
-    template-type , 
-    template-interface, 
+    sha3_256(template-type), 
+    sha3_256(template-interface), 
     template-messages, 
-    template-cadence, 
+    sha3_256(template-cadence), 
     template-dependencies, 
     template-arguments
 ])
 
 template-encoded-hex          = hex( template-encoded )
 
-template-id                   = sha3( template-encoded-hex )
+template-id                   = sha3_256( template-encoded-hex )
 
 WHERE:
 
@@ -569,8 +572,8 @@ RLP([ X, Y, Z, ... ])
     Denotes RLP encoding of [X, Y, Z, ...]
 hex(MESSAGE)
     Denotes transform of message into Hex string.
-sha3(MESSAGE)
-    Is the Keccak256 hash function.
+sha3_256(MESSAGE)
+    Is the SHA3-256 hash function.
 ...
     Denotes multiple of a symbol
 ```
@@ -582,22 +585,22 @@ interface-argument-type        = Cadence type of the argument
 interface-argument-index       = Index of the argument
 interface-argument-label       = Label of the argument
 interface-argument             = [ 
-    interface-argument-label,
-    interface-argument-index,
-    interface-argument-type 
+    sha3_256(interface-argument-label),
+    sha3_256(interface-argument-index),
+    sha3_256(interface-argument-type)
 ]
 
 interface-flip                 = FLIP the interface was established in (eg: "FLIP-XXXX")
 interface-arguments            = [ ...interface-argument ] | [] 
 
 interface-encoded              = RLP([ 
-    interface-flip, 
+    sha3_256(interface-flip), 
     interface-arguments
 ])
 
 interface-encoded-hex          = hex( interface-encoded )
 
-interface-id                   = sha3( interface-encoded-hex )
+interface-id                   = sha3_256( interface-encoded-hex )
 
 WHERE:
 
@@ -607,8 +610,8 @@ RLP([ X, Y, Z, ... ])
     Denotes RLP encoding of [X, Y, Z, ...]
 hex(MESSAGE)
     Denotes transform of message into Hex string.
-sha3(MESSAGE)
-    Is the Keccak256 hash function.
+sha3_256(MESSAGE)
+    Is the SHA3-256 hash function.
 ...
     Denotes multiple of a symbol
 ```
@@ -622,15 +625,15 @@ auditor-account            = Address of the auditors account
 template-id                = ID of the InteractionTemplate this audit was produced for
 
 audit-encoded              = RLP([ 
-    template-id,
-    auditor-account,
-    auditor-account-key-id,
-    audit-signature
+    sha3_256(template-id),
+    sha3_256(auditor-account),
+    sha3_256(auditor-account-key-id),
+    sha3_256(audit-signature)
 ])
 
 audit-encoded-hex          = hex( audit-encoded )
 
-audit-id                   = sha3( audit-encoded-hex )
+audit-id                   = sha3_256( audit-encoded-hex )
 
 WHERE:
 
@@ -638,8 +641,8 @@ RLP([ X, Y, Z, ... ])
     Denotes RLP encoding of [X, Y, Z, ...]
 hex(MESSAGE)
     Denotes transform of message into Hex string.
-sha3(MESSAGE)
-    Is the Keccak256 hash function.
+sha3_256(MESSAGE)
+    Is the SHA3-256 hash function.
 ```
 
 ## Data Structure JSON Schemas
