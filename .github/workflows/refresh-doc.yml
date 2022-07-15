@@ -17,12 +17,30 @@ jobs:
   reusable_refresh_job:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/github-script@v4
+      id: stringifyEvent
+      with:
+        script: |
+          const contributorCommitCount = context.payload.commits.reduce((contributorCommitCount, commit) => {
+            const author = commit.author.username
+            if (commit.author.username in contributorCommitCount) contributorCommitCount[author] += 1
+            else contributorCommitCount[author] = 1
+            return contributorCommitCount
+          }, {})
+
+          const contributionCountArr = Object.entries(contributorCommitCount).map(([contributor, commitCount]) => ({
+            contributor,
+            commitCount
+          }))
+          return JSON.stringify(contributionCountArr)
+        result-encoding: string
+
     - name: 📞 Call refresh endpoint
       uses: fjogeleit/http-request-action@v1
       with:
         url: 'https://flow-docs.fly.dev/action/refresh'
         method: 'POST'
-        data: '{ "auth":"authToken", "repo":"${{ inputs.repository }}", "commitSha":"${{ inputs.commitSha }}", "contentPaths":["${{ inputs.contentPaths }}"] }'
+        data: '{ "auth":"authToken", "repo":"${{ inputs.repository }}", "commitSha":"${{ inputs.commitSha }}", "contentPaths":["${{ inputs.contentPaths }}"], "contributions": ${{ steps.stringifyEvent.outputs.result }} }'
         ignoreStatusCodes: '404'
         
        
