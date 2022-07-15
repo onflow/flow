@@ -171,7 +171,7 @@ Purity also interacts covariantly with function subtyping: `pure` functions are 
     let a: (pure (): Void) = pure fun() {}
     let b: ((): Void) = pure fun() {}
     let c: ((): Void) = impure fun() {}
-	let d: (((pure (): Void)): Void) = fun foo(x:(impure (): Void)) {} // contravariance
+    let d: (((pure (): Void)): Void) = fun foo(x:(impure (): Void)) {} // contravariance
 ```
 
 while these would not: 
