@@ -6,7 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check for @nocommit
-      uses: itsvs/no-merge-action@releases/v0.2
+      uses: bthaile/no-merge-action-msg@v0.4
       with:
         github-token: ${{github.token}}
         keyword: "flow/flips"
+        message: "updates @ the onflow/flips repo"
