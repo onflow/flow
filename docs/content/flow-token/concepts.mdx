@@ -12,15 +12,14 @@ There are two types of fees that occur on the Flow blockchain: variable transact
 ### Segmented Transaction Fees
 
 Transaction fees are applied only once per transaction, at time of execution.
+
 Transactions without a valid payer signature will fail and not be included in a block, prior to when the fee would be charged.
 If there is no one to charge, the transaction never goes through.
 
 If a transaction fails for some other reason, you will still be charged. The fee covers the cost of the network looking at the transaction
 and thus must be paid even if no change to your account is made.
 
-Currently, all transaction fees are charged at a flat rate of 0.00001 FLOW. As of the April 6th, 2022 spork Flow supports a new fee structure called Segmented Transaction Fees. A [community vote to enable this new transaction fee methodology is in progress](https://forum.onflow.org/t/first-flow-community-vote-live-now-until-april-22/3013/3). If the proposal is accepted the new segmented transaction fee structure would be enabled in late May, 2022.
-
-More information: [Segmented Transaction Fees on Flow](/concepts/variable-transaction-fees)
+Transaction fees are charged based upon how much work is done by the transaction during execution, including creating accounts, reading and updating state, and executing of cadence logic. For more information, see [Segmented Transaction Fees on Flow](/concepts/variable-transaction-fees).
 
 ### Storage/Account Fees
 
