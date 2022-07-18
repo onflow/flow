@@ -1,0 +1,12 @@
+name: "Block @nocommit Merges"
+on: [pull_request]
+
+jobs:
+  check_pr:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check for @nocommit
+      uses: itsvs/no-merge-action@releases/v0.2
+      with:
+        github-token: ${{github.token}}
+        keyword: "flow/flips"
