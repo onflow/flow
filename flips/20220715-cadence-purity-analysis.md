@@ -35,7 +35,7 @@ perform `pure` operations or are passed to `pure` functions.
 
 Certain re-entrancy attacks are enabled by mutating public contract fields. It has been suggested to ban these fields entirely,
 but if we could enforce immutability on these fields statically, we could prevent these kinds of attacks without having to ban
-public fields entirely. 
+public fields entirely by preventing impure methods from being called on contract fields. 
 
 An [issue](https://github.com/onflow/cadence/issues/1805) with function pre- and post-conditions allows arbitrary functions to be
 called in these condition blocks, which can allow implementers to write underhanded code by modifying state inside of a condition. We 
