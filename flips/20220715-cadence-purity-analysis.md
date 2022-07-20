@@ -110,14 +110,7 @@ that are entirely local to the function may be modified as normal. So, for examp
     }
     ```
 
-    while the following are not:
-
-    ```cadence
-    pure fun foo(a: [Int]): Int {
-        a.append(3)
-        return a.length
-    }
-    ```
+    while this would not:
 
     ```cadence
     let a: [Int] = []
@@ -131,7 +124,8 @@ that are entirely local to the function may be modified as normal. So, for examp
 as in this case, for example:
 
     ```cadence
-    pure fun foo(a: [Int], i: Int): Int {
+    let a: [Int] = []
+    pure fun foo(i: Int): Int {
         let b: [Int] = []
         let c = [a, b]
         c[i].append(4) // it is impossible to tell statically whether it is `a` or `b` that is receiving the write here
