@@ -1,0 +1,318 @@
+---
+title: Glossary
+---
+
+# Flow Glossary
+
+## All words and definitions related to Blockchain and Flow
+
+## **A**
+
+## Authentication
+[Authentication](https://docs.onflow.org/fcl/reference/authentication/#gatsby-focus-wrapper) connects users to their wallets, 
+and the wallet provides the account information and services through FCL.
+
+## Authorization
+Authorization is a process by which a server determines if the client has permission to use a resource or access a file. In FCL, 
+An authorization service knows the Account and the Key to sign the transaction when the service is sent to FCL during authentication.
+
+## Authorization Envelope
+The transaction authorization envelope contains both the [transaction payload](https://docs.onflow.org/concepts/transaction-signing/#payload) and the payload signatures.
+
+## Authorizers
+[Authorizers](https://docs.onflow.org/flow-go-sdk/#transactions) are accounts that authorize a transaction to read and mutate their 
+resources. A transaction can specify zero or more authorizers, depending on how many accounts the transaction needs to access.
+
+## Account
+An [account](https://docs.onflow.org/flow-token/concepts/#segmented-transaction-fees) on Flow is a record in the chain state that holds 
+the address, balance, public keys, code, and storage.
+
+## Account Balance
+In Flow, the [account balance](https://docs.onflow.org/concepts/accounts-and-keys/#accounts) is the number of tokens available in your 
+wallet. 
+
+## Account storage
+The area of the [account](https://docs.onflow.org/cadence/language/accounts/#account-storage) used to store resource assets
+
+## Address
+A blockchain address is like a bank account for crypto assets. Every address is unique, and they are 26-35 alphanumeric characters in length. 
+They are generated from the private key, which is required to send or receive data from one address to another.
+
+## Access node
+[Access nodes](https://docs.onflow.org/node-operation/node-roles/#access) act as a proxy to the Flow network. The Access node routes 
+transactions to the correct Collection node and routes state queries to available nodes (while likely caching state to answer queries 
+on time in the future).
+
+## **B**
+
+## Block
+Blocks are data structures within the blockchain database, where transaction data in a cryptocurrency blockchain are permanently recorded.
+
+## Blocto
+[Blocto](https://portto.com/) is a new smart contract wallet meant to address long-standing issues with private key management, 
+gas fees, and complicated wallet addresses.
+
+## Blockchain
+Blockchain is an organized collection of information that typically encrypts and stores its data in block form and then chains them 
+together, making it difficult to hack, change, or cheat because everyone accesses it.
+
+## Block explorer
+Block explorer is an interface that allows users to search for information from and about a blockchain,
+which includes retrieving individual transactions, activity associated with specific addresses, 
+and information about the network. There are two block explorers live today, which are  [Flowscan](https://flowscan.org/) 
+and [Bigdipper](https://flow.bigdipper.live/).
+
+## **C**
+
+## Cadence
+[Cadence](https://docs.onflow.org/cadence/) is a resource-oriented programming language for developing smart contracts on the 
+Flow Blockchain.
+
+## Capability
+[Capability](https://docs.onflow.org/cadence/tutorial/04-capabilities/#gatsby-focus-wrapper) in Flow makes it easy for anyone to access 
+specific fields and functions of a stored object. 
+
+## CLI
+A command-line interpreter or command-line processor uses a command-line interface (CLI) to receive commands from a user through lines of 
+text.
+
+## Contract
+A [contract](https://docs.onflow.org/cadence/language/contracts/#gatsby-focus-wrapper) in Cadence is a collection of type definitions of 
+interfaces, structs, resources, data (its state), and code (its functions) that lives in the contract storage area of an account in Flow.
+
+## Collection
+[Collection](https://docs.onflow.org/node-operation/node-roles/#collection) nodes are bandwidth-optimized nodes divided by the protocol 
+into several cooperating Clusters.
+
+## Consensus
+[Consensus](https://docs.onflow.org/node-operation/node-roles/#consensus) nodes form and propose blocks like traditionally-structured 
+proof-of-stake blockchains, using the HotStuff consensus algorithm to create a globally consistent chain of blocks.
+
+## Custodial model
+The [custodial model](https://docs.onflow.org/nft-marketplace/#custodial-vs-non-custodial-model) for an NFT marketplace is where the 
+platform controls all the user accounts, the associated private keys, and, therefore, the assets in those accounts.
+
+## **D**
+
+## Dapper wallet
+The [Dapper wallet](https://www.meetdapper.com/) is a digital wallet that allows users to store and manage their Flow tokens.
+
+## Dapp
+A decentralized application (dapp) is a distributed open-source software application that runs on a peer-to-peer (P2P) blockchain network 
+rather than a single computer.
+
+## **E**
+
+## Execution nodes
+[Execution](https://docs.onflow.org/node-operation/node-roles/#execution) nodes are the most resource-intensive nodes on the Flow network,
+responsible for executing transactions and maintaining the Execution State ( a cryptographically-verifiable data store for all user accounts) 
+and smart contract states ( as well as responding to queries related to it).
+
+## Event
+[Events](https://docs.onflow.org/cadence/language/events/#gatsby-focus-wrapper) are special values that can be emitted during the 
+execution of a program.
+
+## **F**
+
+## FCL
+[Flow Client Library](https://docs.onflow.org/fcl/#what-is-fcl) (FCL) enables applications to easily integrate with all 
+FCL-compatible wallets and other services (e.g., profiles, private information, notifications).
+
+## FCL Developer Wallet
+The [FCL dev wallet](https://github.com/onflow/fcl-dev-wallet) is a mock Flow wallet that simulates the protocols 
+used by [FCL](https://docs.onflow.org/fcl/) to interact with the Flow blockchain on behalf of simulated user accounts.
+
+## FIAT
+FIAT money is a legal tender, a currency declared legal by the government, and its value is backed by the issuer (the government).
+
+## FLIP (Flow Improvement Proposals)
+[FLIP](https://docs.onflow.org/flip-fest-winners/#gatsby-focus-wrapper) is a way for Flow developers and users to provide direct 
+feedback about the improvements they would like to see in Flow.
+
+## Flow
+[Flow](https://www.onflow.org/) is a fast, decentralized, and developer-friendly blockchain designed as the foundation for a new generation of games, apps, 
+and the [digital assets](https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets) that power them.
+
+## Flow CLI
+[Flow CLI](https://docs.onflow.org/flow-cli/) includes several commands to interact with Flow networks, such as querying account 
+information or sending transactions. It also includes the Flow Emulator.
+
+## Flow Emulator
+The [Flow emulator](https://docs.onflow.org/emulator/) is a lightweight tool that emulates the behavior of the real Flow network.
+
+## Flowepoch
+The [FlowEpoch](https://docs.onflow.org/core-contracts/epoch-contract-reference/#gatsby-focus-wrapper) contract is the state machine that 
+manages Epoch phases and emits service events.
+
+## Flow fees
+The [Flow Fees](https://docs.onflow.org/core-contracts/flow-fees/#gatsby-focus-wrapper) contract is where all the collected flow fees are gathered.
+
+## Flow Playground
+The [Flow Playground](https://docs.onflow.org/cadence/tutorial/01-first-steps/#what-is-the-flow-developer-playground) is an interactive 
+browser-based IDE for experimenting with Cadence code. It uses the Cadence language server for full type-checking and error reporting. 
+
+## Flow Service Account
+The [Flow service account](https://docs.onflow.org/flow-token/concepts/#flow-service-account) is a special flow account with special permissions to manage system contracts.
+
+## Fungible token
+Physical money and cryptocurrencies are [fungible](https://docs.onflow.org/dapp-development/smart-contracts/#fungible-tokens), 
+meaning they can be traded or exchanged for one another.  
+
+## Faucet
+A faucet is a way to distribute small amounts of a token to its users for testing and development purposes.
+
+## FUSD
+[FUSD](https://docs.onflow.org/fusd/) is a USD-backed stablecoin issued as a fungible token on the Flow network. 
+
+
+## **H**
+
+## Hash
+A hash is a function that meets the encrypted demands needed to solve a blockchain computation.
+
+## **I**
+
+## **IPFS**
+IPFS is a distributed system for storing and accessing files, websites, applications, and data.
+
+
+## **K**
+
+## **Kittyitems**
+[Kitty Items](https://docs.onflow.org/kitty-items/#gatsby-focus-wrapper) is a complete NFT marketplace inspired by [CryptoKitties](https://www.cryptokitties.co/),
+a web3 game that put NFTs on the map. 
+
+## **L**
+
+## **Ledger**
+[Ledger's](https://www.ledger.com/) the smartest way to secure, buy, exchange, and grow your crypto assets.
+
+## Lilico wallet
+[Lilico](https://chrome.google.com/webstore/detail/lilico/hpclkefagolihohboafpheddmmgdffjm) is the first non-custodial extension wallet on 
+the Flow blockchain. As a Flow Client Library (FCL) compatible wallet, Lilico enables you to access Web 3.0, NFTs, tokens, and dapps.
+
+## **M**
+
+## Mutate
+[Mutate](https://docs.onflow.org/fcl/reference/api/#mutate) in Flow allows you to potentially submit transactions to the blockchain to change the state.
+
+## Mainnet
+Mainnet is the term used to describe when a blockchain protocol is fully developed and deployed.
+
+## Metadata
+ 
+Metadata is data that provides information about other data; in the case of an NFT, it describes NFT's essential properties, including its name, description, and anything else its creator feels is important.
+
+## NFT Marketplace
+An [NFT marketplace](https://docs.onflow.org/cadence/tutorial/08-marketplace-compose/#gatsby-focus-wrapper) is the platform where users will be able to buy and sell NFTs. 
+
+## Mint
+[Minting](https://docs.onflow.org/nft-marketplace/minting-nfts/#gatsby-focus-wrapper) an NFT means converting digital data into crypto collections or digital assets recorded on the blockchain. 
+
+## **N**
+
+## Nodes
+Nodes are network stakeholders; their devices are authorized to keep track of the distributed ledger and serve as communication hubs for various network tasks.
+
+## Non-fungible token(NFT)
+NFTs are cryptographic assets on a blockchain with unique identification codes and metadata that distinguish them from each other.
+
+## Nonce
+A Nonce is an abbreviation for `number only used once,` which is a number added to a hashed—or encrypted—block in a blockchain that, when rehashed, meets the difficulty level restrictions.
+
+## Non-Custodial model
+The [non-custodial model](https://docs.onflow.org/nft-marketplace/#custodial-vs-non-custodial-model) for an NFT marketplace is where users control their assets and use their wallets to perform activities in the marketplace.
+
+## **P**
+
+## Payer
+A [payer](https://docs.onflow.org/flow-go-sdk/#transactions) is an account that is paying for the transaction fees.
+
+## Payment Envelope
+The outermost portion of the transaction, which contains the payload and envelope signatures, is the [payment envelope](https://docs.onflow.org/concepts/transaction-signing/#payment-envelope).
+
+## Payload
+The transaction [payload](https://docs.onflow.org/concepts/transaction-signing/#payload) is the innermost portion of a transaction and contains the data that uniquely identifies the operations applied by the transaction.
+
+## Public keys
+A [public key](https://docs.onflow.org/cadence/language/crypto/#publickey) allows you to receive cryptocurrency transactions. It's a cryptographic code that's paired with a private key. 
+
+
+## Private keys
+Private keys are used for both encrypting and decrypting sensitive data. It is shared between the sender and receiver of encrypted data.
+
+## Proving account ownership
+[Proving ownership](https://docs.onflow.org/fcl/reference/proving-authentication/#gatsby-focus-wrapper) of an on-chain account is a way to authenticate a user with an application backend. 
+
+## Proposer
+The proposer is an account that specifies a [proposal key](https://docs.onflow.org/concepts/accounts-and-keys/#proposal-key).
+
+## **Q**
+
+## Query
+[Query](https://docs.onflow.org/fcl/reference/scripts/) allows you to submit scripts to query the blockchain.
+
+## **R**
+
+## Resources
+A [resource](https://docs.onflow.org/cadence/language/resources/#gatsby-focus-wrapper) is an ownable piece of data and functionality that can live in the user's account storage.
+
+## Resources oriented programming
+Resource-oriented programming is a new pattern that pairs linear types with object capabilities to create a secure and declarative model for digital ownership. Therefore, ensuring that resources (used to represent scarce digital assets) can only exist in one location at a time and cannot be copied, accidentally lost, or deleted.
+
+## **S**
+
+## Service account
+The [service account](https://docs.onflow.org/core-contracts/service-account/#gatsby-focus-wrapper) is the account that manages the core protocol requirements of Flow.
+
+## Script
+[Scripts](https://docs.onflow.org/flow-js-testing/execute-scripts/#gatsby-focus-wrapper) let you run non-permanent Cadence scripts on the Flow blockchain. 
+
+## Signature
+Digital signatures are a fundamental building block in blockchains, used mainly to authenticate transactions.
+
+## SDK
+A software development toolkit (SDK) is a set of software tools and programs provided by hardware and software vendors that developers can use to build applications for specific platforms. 
+
+## Smart contract
+A smart contract is a computer program stored in a decentralized network like a blockchain that verifies and executes the performance of a contract without the need for any trusted third party anywhere in the process because the code itself is trusted.
+
+## **T**
+
+## Transactions
+[Transactions](https://docs.onflow.org/cadence/language/transactions/) are objects signed by one or more accounts and sent to the chain to interact with them.
+
+## Transactions fees
+[Transaction fees](https://docs.onflow.org/flow-token/concepts/#segmented-transaction-fees) are applied only once per transaction at the time of execution.
+
+## Testnet
+A testnet is an instance of a blockchain powered by the same or a newer version of the underlying software to be used for testing and experimentation without risk to real funds or the main chain.
+
+## **U**
+
+## User signature
+A user signature proves the authorization of transactions for an address without exposing its private key. Cryptographic signatures are a key part of the blockchain.
+
+## User Wallet
+A [user wallet](https://docs.onflow.org/dapp-development/flow-dapp-anatomy/#user-wallet) is a software or hardware that controls access to a user’s account on the blockchain. The application client typically connects to the user’s wallet to send transactions to the blockchain.
+
+## **V**
+
+## Verification nodes
+[Verification nodes](https://docs.onflow.org/node-operation/node-roles/#verification) are responsible for confirming the correctness of the work done by Execution nodes.
+
+## Vscode Flow
+Vscode Flow is an extension for the VSCode editor that integrates Cadence into [Visual Studio Code](https://docs.onflow.org/vscode-extension/). 
+It provides syntax highlighting, type checking, code completion, etc.
+
+## **W**
+
+## Wallet discovery
+[FCL's discovery](https://docs.onflow.org/fcl/reference/discovery/#wallet-discovery) mechanism relieves the burden of integrating with Flow compatible wallets and lets developers focus on building their dapp and providing their users as many options as possible.
+
+## Wallet providers
+[Wallet providers](https://docs.onflow.org/fcl/#fcl-for-wallet-providers) on Flow have the flexibility to build their user interactions and UI in two ways, which are `Front channel communication` via Iframe, pop-up, tab, or extension, and` Back channel communication` via HTTP.
+
+## Wallet
+[Flow Wallets](https://docs.onflow.org/flow-token/available-wallets/#gatsby-focus-wrapper) are applications that give access to your Flow accounts, allow you to send and receive funds, and enable you to interact with Flow applications.
+

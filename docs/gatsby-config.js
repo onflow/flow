@@ -273,6 +273,9 @@ const sections = [
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: false,
     sidebar: {
+      Glossary: [
+        "[Glossary](/glossary/glossary)"
+      ],
       Tutorials: [
         "[Flow App Quickstart](/fcl/tutorials/flow-app-quickstart)",
         "[Introduction to Cadence](/cadence/tutorial/01-first-steps)",
