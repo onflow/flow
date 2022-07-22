@@ -1,21 +1,42 @@
 ---
-title: Hello Node Operator!
+title: Flow Node
 sidebar_title: Introduction
-description: How to run your own Flow node
+description: Introduction Flow node
 ---
 
-To run a node in the Flow network, the node must:
-* be registered with sufficient stake
-* be authorized by the service account
+The Flow node is the vital component that supports the network and enables you to participate in the Flow decentralized blockchain.
+A blockchain network is a collection of interconnected nodes working together to validate transactions and blocks using consensus.
+Therefore, you are contributing to the network as a node operator by running a Flow node.
 
-Before proceeding, ensure you have the stake required for your new node and that your node will be authorized by the service account (apply [here](https://www.onflow.org/node-validators)).
+## What are nodes
+Blockchain nodes are network contributors, and as such, their device is authorized 
+to maintain the distributed ledger and act as 
+a central point of contact for a variety of network operations.
+In addition, a blockchain node's primary responsibility is verifying the 
+legitimacy of each new block of network transactions. 
 
-To set up a new Flow node you will need to complete the following steps:
+## Functions of nodes
+A block broadcast is sent to all network nodes when a node operator tries adding to the blockchain a new block of transactions. However, a node can accept or reject a block depending on its validity (validity of signatures and transactions). Nodes accomplish the following in essence:
+Nodes evaluate the legitimacy of a block of transactions and either accept or reject it.
+Nodes are responsible for saving and storing blocks of transactions on top of the older blocks when it accepts a new block of transactions.
+Nodes broadcast and distribute transaction history to other nodes that may need to synchronize with the blockchain.
 
-1. [Provision](/node-operation/node-setup) the machine on which your node will run.
+> Updates on transaction history are important
 
-2. [Generate and register](/node-operation/node-bootstrap) your node identity.
+## Node operator
+A node operator runs software that broadcasts transactions across the network and maintains a complete copy of the blockchain. The operation of blockchains requires nodes.
+An operator ensures that nodes have enough resources to run smoothly and efficiently. Therefore, nodes require sufficient RAM, disk space, and bandwidth to function and support the network.
 
-3. [Start](/node-operation/node-bootstrap#step-2---getting-ready-to-start-your-flow-node) your node!
+## Who can run a node?
 
+Any individual or organization should be able to run one or more nodes(FAQ link here). Currently, however as the Flow protocol matures, anyone interested in running a node must present a case for how they will add unique value to the network. 
 
+## Flow Port 
+The Flow Port is your portal to the decentralized world of Flow. It gives you access to your Flow account, interacts with the blockchain, and manages your assets. Also, you will need two key items to be able to access and use the Flow port.
+
+- FCL wallet providers
+- Valid Flow address
+
+## Flow Staking
+Staking offers Flow holders a way of putting their digital assets to work and earning passive income without needing to sell them. Therefore, you can think of staking as the Flow equivalent of putting money in a savings account. When you deposit funds in a savings account, the bank takes that money and lends it to others. 
+In return for locking up that money with the bank, you receive a portion of the interest earned from lending, although it is usually small.
