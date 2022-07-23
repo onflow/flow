@@ -44,7 +44,7 @@ See PR for examples and changed docs
 
 ### User Impact
 
-A user will be able to call `authAccount.identity` and get something that can verify that account but cannot be obtained any other way
+A user will be able to call `authAccount.identity` and get a token representing the ability to access to an account, without it being obtainable any other way, i.e. it cannot be forged, as there is no constructor function for the  `AuthAccount.Identity` type.
 
 
 ## Related Issues
