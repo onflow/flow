@@ -30,7 +30,7 @@ https://github.com/onflow/cadence/pull/1363/files
 
 ### Drawbacks
 
-It makes it possible to do something that it is documented is not best practice. Should this documentation be changed?
+Currently the documentation states that this pattern is not a best practice. Should this documentation be changed?
 
 
 ### Best Practices
