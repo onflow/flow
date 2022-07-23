@@ -11,9 +11,9 @@
 
 One of the most asked questions in the discord server is "how do i know what user called this method". In solidty the answer is "msg.sender", that pattern does not work on flow and it is not recommended to do things that way. 
 
-One of the reasons it is not recommended is that there is no secure way of doing that. 
+One of the reasons it is not recommended is that there is no secure way of doing that.  This FLIP aims to create a way to do it securely.
 
-This FLIP aims to create an way to do it securely. Note that the FLIP does not cover when you should use this instead of other patterns for identifying the sender, it only covers that _if_ you need to do it you have a save way to do si.
+*Note: This FLIP does not cover __when__ you should use this instead of other patterns for identifying the sender, it only provides a way to do it safely  _if_ you need to do it.
 
 ## Motivation
 
