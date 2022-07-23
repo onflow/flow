@@ -21,7 +21,7 @@ Add a secure to identify if  a particular auth account signed a transaction.
 
 ## User Benefit
 
-It makes it possible to use patterns that are common to solidity developers in flow
+It makes it possible to use patterns that are common to Solidity developers in Flow.
 
 ## Design Proposal
 
