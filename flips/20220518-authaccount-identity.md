@@ -17,7 +17,7 @@ One of the reasons it is not recommended is that there is no secure way of doing
 
 ## Motivation
 
-Make is secure to identify that a particular auth account signed a transaction
+Add a secure to identify if  a particular auth account signed a transaction. 
 
 ## User Benefit
 
