@@ -9,7 +9,8 @@
 
 ## Objective
 
-One of the most asked questions in the discord server is "how do i know what user called this method". In solidty the answer is "msg.sender", that pattern does not work on flow and it is not recommended to do things that way. 
+One of the most asked questions regarding access control in Cadence is: "How do I know what user called this method?". In Solidity the answer is `msg.sender`. 
+However, [this pattern has several problems](https://docs.onflow.org/cadence/msg-sender/) and it is not recommended.
 
 One of the reasons it is not recommended is that there is no secure way of doing that.  This FLIP aims to create a way to do it securely.
 
