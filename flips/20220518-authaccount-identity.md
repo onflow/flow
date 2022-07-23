@@ -53,4 +53,4 @@ https://github.com/onflow/cadence/pull/1363/files
 
 ## Prior Art
 
-Solidity user msg.sender to identify who as signed a transaction
+Solidity provides the `msg.sender` field which allows identifying who signed the currently running transaction.
