@@ -253,6 +253,7 @@ const sources = [
         "docs/signature-verify.md",
         "docs/snapshot-save.md",
         "docs/start-emulator.md",
+        "docs/tools.md",
       ],
     },
   },
