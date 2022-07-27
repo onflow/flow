@@ -9,12 +9,12 @@ title: Glossary
 ## **A**
 
 ## Authentication
-[Authentication](https://docs.onflow.org/fcl/reference/authentication/#gatsby-focus-wrapper) connects users to their wallets, 
-and the wallet provides the account information and services through FCL.
+[Authentication](https://docs.onflow.org/fcl/reference/authentication/) is the mechanism to verify that a given user is who they claim 
+to be. Wallets perform this check. FCL facilitates auth on Flow.
 
 ## Authorization
-Authorization is a process by which a server determines if the client has permission to use a resource or access a file. In FCL, 
-An authorization service knows the Account and the Key to sign the transaction when the service is sent to FCL during authentication.
+Authorization is the mechanism that verifies that the user intends a prompted user action. The user has to authorize an action to create/update a record on the blockchain. 
+FCL helps with authorization by facilitating the transaction signing process
 
 ## Authorization Envelope
 The transaction authorization envelope contains both the [transaction payload](https://docs.onflow.org/concepts/transaction-signing/#payload) and the payload signatures.
@@ -24,15 +24,15 @@ The transaction authorization envelope contains both the [transaction payload](h
 resources. A transaction can specify zero or more authorizers, depending on how many accounts the transaction needs to access.
 
 ## Account
-An [account](https://docs.onflow.org/flow-token/concepts/#segmented-transaction-fees) on Flow is a record in the chain state that holds 
-the address, balance, public keys, code, and storage.
+An [account](https://docs.onflow.org/concepts/accounts-and-keys/#accounts) on Flow is a record in the chain state that holds 
+the address, balance, public keys, Cadence contracts deployed to the account, and storage.
 
 ## Account Balance
-In Flow, the [account balance](https://docs.onflow.org/concepts/accounts-and-keys/#accounts) is the number of tokens available in your 
+The [account balance](https://docs.onflow.org/concepts/accounts-and-keys/#accounts) is the number of tokens available in your 
 wallet. 
 
 ## Account storage
-The area of the [account](https://docs.onflow.org/cadence/language/accounts/#account-storage) used to store resource assets
+The area of the [account](https://docs.onflow.org/cadence/language/accounts/#account-storage) used to store resource assets.
 
 ## Address
 A blockchain address is like a bank account for crypto assets. Every address is unique, and they are 26-35 alphanumeric characters in length. 
@@ -46,15 +46,15 @@ on time in the future).
 ## **B**
 
 ## Block
-Blocks are data structures within the blockchain database, where transaction data in a cryptocurrency blockchain are permanently recorded.
+Blocks are data structures within the blockchain, where transaction data in a blockchain are permanently recorded.
 
 ## Blocto
-[Blocto](https://portto.com/) is a new smart contract wallet meant to address long-standing issues with private key management, 
-gas fees, and complicated wallet addresses.
+[Blocto](https://portto.com/) is a wallet that can handle authentication and authorization and is meant to address long-standing issues with private key management, 
+transaction fees, and complicated wallet addresses.
 
 ## Blockchain
 Blockchain is an organized collection of information that typically encrypts and stores its data in block form and then chains them 
-together, making it difficult to hack, change, or cheat because everyone accesses it.
+together, making it difficult to hack, change, or cheat; also, it is immutable.
 
 ## Block explorer
 Block explorer is an interface that allows users to search for information from and about a blockchain,
@@ -69,7 +69,7 @@ and [Bigdipper](https://flow.bigdipper.live/).
 Flow Blockchain.
 
 ## Capability
-[Capability](https://docs.onflow.org/cadence/tutorial/04-capabilities/#gatsby-focus-wrapper) in Flow makes it easy for anyone to access 
+[Capability](https://docs.onflow.org/cadence/tutorial/04-capabilities/) in Flow makes it easy for anyone to access 
 specific fields and functions of a stored object. 
 
 ## CLI
@@ -77,7 +77,7 @@ A command-line interpreter or command-line processor uses a command-line interfa
 text.
 
 ## Contract
-A [contract](https://docs.onflow.org/cadence/language/contracts/#gatsby-focus-wrapper) in Cadence is a collection of type definitions of 
+A [contract](https://docs.onflow.org/cadence/language/contracts/) in Cadence is a collection of type definitions of 
 interfaces, structs, resources, data (its state), and code (its functions) that lives in the contract storage area of an account in Flow.
 
 ## Collection
@@ -109,7 +109,7 @@ responsible for executing transactions and maintaining the Execution State ( a c
 and smart contract states ( as well as responding to queries related to it).
 
 ## Event
-[Events](https://docs.onflow.org/cadence/language/events/#gatsby-focus-wrapper) are special values that can be emitted during the 
+[Events](https://docs.onflow.org/cadence/language/events/) are special values that can be emitted during the 
 execution of a program.
 
 ## **F**
@@ -141,7 +141,7 @@ information or sending transactions. It also includes the Flow Emulator.
 The [Flow emulator](https://docs.onflow.org/emulator/) is a lightweight tool that emulates the behavior of the real Flow network.
 
 ## Flowepoch
-The [FlowEpoch](https://docs.onflow.org/core-contracts/epoch-contract-reference/#gatsby-focus-wrapper) contract is the state machine that 
+The [FlowEpoch](https://docs.onflow.org/core-contracts/epoch-contract-reference/) contract is the state machine that 
 manages Epoch phases and emits service events.
 
 ## Flow fees
@@ -179,7 +179,7 @@ IPFS is a distributed system for storing and accessing files, websites, applicat
 ## **K**
 
 ## **Kittyitems**
-[Kitty Items](https://docs.onflow.org/kitty-items/#gatsby-focus-wrapper) is a complete NFT marketplace inspired by [CryptoKitties](https://www.cryptokitties.co/),
+[Kitty Items](https://docs.onflow.org/kitty-items/) is a complete NFT marketplace inspired by [CryptoKitties](https://www.cryptokitties.co/),
 a web3 game that put NFTs on the map. 
 
 ## **L**
@@ -204,10 +204,10 @@ Mainnet is the term used to describe when a blockchain protocol is fully develop
 Metadata is data that provides information about other data; in the case of an NFT, it describes NFT's essential properties, including its name, description, and anything else its creator feels is important.
 
 ## NFT Marketplace
-An [NFT marketplace](https://docs.onflow.org/cadence/tutorial/08-marketplace-compose/#gatsby-focus-wrapper) is the platform where users will be able to buy and sell NFTs. 
+An [NFT marketplace](https://docs.onflow.org/cadence/tutorial/08-marketplace-compose/) is the platform where users will be able to buy and sell NFTs. 
 
 ## Mint
-[Minting](https://docs.onflow.org/nft-marketplace/minting-nfts/#gatsby-focus-wrapper) an NFT means converting digital data into crypto collections or digital assets recorded on the blockchain. 
+[Minting](https://docs.onflow.org/nft-marketplace/minting-nfts/) an NFT means converting digital data into crypto collections or digital assets recorded on the blockchain. 
 
 ## **N**
 
@@ -242,7 +242,7 @@ A [public key](https://docs.onflow.org/cadence/language/crypto/#publickey) allow
 Private keys are used for both encrypting and decrypting sensitive data. It is shared between the sender and receiver of encrypted data.
 
 ## Proving account ownership
-[Proving ownership](https://docs.onflow.org/fcl/reference/proving-authentication/#gatsby-focus-wrapper) of an on-chain account is a way to authenticate a user with an application backend. 
+[Proving ownership](https://docs.onflow.org/fcl/reference/proving-authentication/) of an on-chain account is a way to authenticate a user with an application backend. 
 
 ## Proposer
 The proposer is an account that specifies a [proposal key](https://docs.onflow.org/concepts/accounts-and-keys/#proposal-key).
@@ -255,7 +255,7 @@ The proposer is an account that specifies a [proposal key](https://docs.onflow.o
 ## **R**
 
 ## Resources
-A [resource](https://docs.onflow.org/cadence/language/resources/#gatsby-focus-wrapper) is an ownable piece of data and functionality that can live in the user's account storage.
+A [resource](https://docs.onflow.org/cadence/language/resources/) is an ownable piece of data and functionality that can live in the user's account storage.
 
 ## Resources oriented programming
 Resource-oriented programming is a new pattern that pairs linear types with object capabilities to create a secure and declarative model for digital ownership. Therefore, ensuring that resources (used to represent scarce digital assets) can only exist in one location at a time and cannot be copied, accidentally lost, or deleted.
@@ -263,10 +263,10 @@ Resource-oriented programming is a new pattern that pairs linear types with obje
 ## **S**
 
 ## Service account
-The [service account](https://docs.onflow.org/core-contracts/service-account/#gatsby-focus-wrapper) is the account that manages the core protocol requirements of Flow.
+The [service account](https://docs.onflow.org/core-contracts/service-account/) is the account that manages the core protocol requirements of Flow.
 
 ## Script
-[Scripts](https://docs.onflow.org/flow-js-testing/execute-scripts/#gatsby-focus-wrapper) let you run non-permanent Cadence scripts on the Flow blockchain. 
+[Scripts](https://docs.onflow.org/flow-js-testing/execute-scripts/) let you run non-permanent Cadence scripts on the Flow blockchain. 
 
 ## Signature
 Digital signatures are a fundamental building block in blockchains, used mainly to authenticate transactions.
@@ -294,7 +294,7 @@ A testnet is an instance of a blockchain powered by the same or a newer version 
 A user signature proves the authorization of transactions for an address without exposing its private key. Cryptographic signatures are a key part of the blockchain.
 
 ## User Wallet
-A [user wallet](https://docs.onflow.org/dapp-development/flow-dapp-anatomy/#user-wallet) is a software or hardware that controls access to a user’s account on the blockchain. The application client typically connects to the user’s wallet to send transactions to the blockchain.
+A [user wallet](https://docs.onflow.org/dapp-development/flow-dapp-anatomy/#user-wallet) is a software or hardware that controls access to a user's account on the blockchain. The application client typically connects to the user's wallet to send transactions to the blockchain.
 
 ## **V**
 
@@ -314,5 +314,5 @@ It provides syntax highlighting, type checking, code completion, etc.
 [Wallet providers](https://docs.onflow.org/fcl/#fcl-for-wallet-providers) on Flow have the flexibility to build their user interactions and UI in two ways, which are `Front channel communication` via Iframe, pop-up, tab, or extension, and` Back channel communication` via HTTP.
 
 ## Wallet
-[Flow Wallets](https://docs.onflow.org/flow-token/available-wallets/#gatsby-focus-wrapper) are applications that give access to your Flow accounts, allow you to send and receive funds, and enable you to interact with Flow applications.
+[Flow Wallets](https://docs.onflow.org/flow-token/available-wallets/) are applications that give access to your Flow accounts, allow you to send and receive funds, and enable you to interact with Flow applications.
 

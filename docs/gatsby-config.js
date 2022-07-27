@@ -274,7 +274,7 @@ const sections = [
     sidebarAlwaysExpanded: false,
     sidebar: {
       Glossary: [
-        "[Glossary](/glossary/glossary)"
+        "[Glossary](/glossary/index)"
       ],
       Tutorials: [
         "[Flow App Quickstart](/fcl/tutorials/flow-app-quickstart)",
