@@ -9,15 +9,16 @@ title: Glossary
 ## **A**
 
 ## Authentication
-[Authentication](https://docs.onflow.org/fcl/reference/authentication/) is the mechanism to verify that a given user is who they claim 
-to be. Wallets perform this check. FCL facilitates auth on Flow.
+[Authentication](https://docs.onflow.org/fcl/reference/authentication/)  verifies whether someone is who they say they are. Once verified, the user gains access to their wallet. 
+FCL supports authentication so users can connect to Flow apps with their wallets.
 
 ## Authorization
-Authorization is the mechanism that verifies that the user intends a prompted user action. The user has to authorize an action to create/update a record on the blockchain. 
-FCL helps with authorization by facilitating the transaction signing process
+Authorization is a process by which a server determines if the client has permission to use a resource or access a file. 
+Users can authorize actions by signing transactions. FCL supports transaction signing.
 
 ## Authorization Envelope
-The transaction authorization envelope contains both the [transaction payload](https://docs.onflow.org/concepts/transaction-signing/#payload) and the payload signatures.
+The authorization of a transaction is captured in an “authorization envelope”, which 
+contains both the [transaction payload](https://docs.onflow.org/concepts/transaction-signing/#payload) and the payload signatures.
 
 ## Authorizers
 [Authorizers](https://docs.onflow.org/flow-go-sdk/#transactions) are accounts that authorize a transaction to read and mutate their 
@@ -27,7 +28,7 @@ resources. A transaction can specify zero or more authorizers, depending on how 
 An [account](https://docs.onflow.org/concepts/accounts-and-keys/#accounts) on Flow is a record in the chain state that holds 
 the address, balance, public keys, Cadence contracts deployed to the account, and storage.
 
-## Account Balance
+## Account balance
 The [account balance](https://docs.onflow.org/concepts/accounts-and-keys/#accounts) is the number of tokens available in your 
 wallet. 
 
@@ -79,7 +80,7 @@ A command-line interpreter can  receive commands from a user through lines of te
 A [contract](https://docs.onflow.org/cadence/language/contracts/) in Cadence is a collection of type definitions of 
 interfaces, structs, resources, data (its state), and code (its functions) that lives in the contract storage area of an account in Flow.
 
-## Collection
+## Collection nodes
 [Collection](https://docs.onflow.org/node-operation/node-roles/#collection) nodes are bandwidth-optimized nodes divided by the protocol 
 into several cooperating Clusters.
 
@@ -116,7 +117,7 @@ and smart contract states ( as well as responding to queries related to it).
 [Flow Client Library](https://docs.onflow.org/fcl/#what-is-fcl) (FCL) enables applications to easily integrate with all 
 FCL-compatible wallets and other services (e.g., profiles, private information, notifications).
 
-## FCL Developer Wallet
+## FCL developer wallet
 The [FCL developer wallet](https://github.com/onflow/fcl-dev-wallet) is a mock Flow wallet to make development on Flow easier. 
 It simulates the protocols used by [FCL](https://docs.onflow.org/fcl/) to interact with the Flow blockchain on behalf of simulated user accounts.
 
@@ -139,9 +140,6 @@ The [Flow emulator](https://docs.onflow.org/emulator/) is a lightweight tool tha
 
 ## Epoch
 [Epoch](https://docs.onflow.org/staking/epoch-terminology/) is the period between changes in the identity table and reward payments.
-
-## Fees
-The [Flow Fees](https://docs.onflow.org/core-contracts/flow-fees/#gatsby-focus-wrapper) contract is where all the collected flow fees are gathered.
 
 ## Flow Playground
 The [Flow Playground](https://docs.onflow.org/cadence/tutorial/01-first-steps/#what-is-the-flow-developer-playground) is an interactive 
@@ -181,7 +179,7 @@ IPFS is a distributed system for storing and accessing files, websites, applicat
 ## **L**
 
 ## **Ledger**
-[Ledger's](https://www.ledger.com/) the smartest way to secure, buy, exchange, and grow your crypto assets.
+This is a [hardware wallet](https://www.ledger.com/) that supports Flow. You can also integrate it with the Flow port.
 
 ## Lilico wallet
 [Lilico](https://chrome.google.com/webstore/detail/lilico/hpclkefagolihohboafpheddmmgdffjm) is the first non-custodial extension wallet on 
@@ -232,6 +230,10 @@ The outermost portion of the transaction, which contains the payload and envelop
 ## Payload
 The transaction [payload](https://docs.onflow.org/concepts/transaction-signing/#payload) is the innermost portion of a transaction and contains the data that uniquely identifies the operations applied by the transaction.
 
+## Permissionless
+A network is [permissionless](https://www.onflow.org/post/permissionless-smart-contract-deployment-flow-blockchain) if key actions can be completed without approval by a central entity. Key actions include running nodes, deploying and updating contracts, and much more. On Flow, 
+everyone can deploy and update contracts to the mainnet without approval since the summer of 2022
+
 ## Public keys
 A [public key](https://docs.onflow.org/cadence/language/crypto/#publickey) allows you to receive cryptocurrency transactions. It's a cryptographic code that's paired with a private key. 
 
@@ -274,7 +276,11 @@ See [user signatures](https://docs.onflow.org/fcl/reference/user-signatures/#ver
 A software development toolkit (SDK) is a set of software tools and programs provided by hardware and software vendors that developers can use to build applications for specific platforms. 
 
 ## Smart contract
-A smart contract is a computer program stored in a decentralized network like a blockchain that verifies and executes the performance of a contract without the need for any trusted third party anywhere in the process because the code itself is trusted.
+A [Smart Contracts](https://docs.onflow.org/dapp-development/smart-contracts/) is a collection of code, deployed to a permanent location on the blockchain, that defines the core logic for a dapp.
+
+## Spork
+A spork is a coordinated network upgrade process where node operators upgrade their node software and re-initialize with a 
+consolidated representation of the previous spork's state. 
 
 ## **T**
 
@@ -304,10 +310,8 @@ It provides syntax highlighting, type checking, code completion, etc.
 ## **W**
 
 ## Wallet discovery
-[FCL's discovery](https://docs.onflow.org/fcl/reference/discovery/#wallet-discovery) mechanism relieves the burden of integrating with Flow compatible wallets and lets developers focus on building their dapp and providing their users as many options as possible.
-
-## Wallet providers
-[Wallet providers](https://docs.onflow.org/fcl/#fcl-for-wallet-providers) on Flow have the flexibility to build their user interactions and UI in two ways, which are `Front channel communication` via Iframe, pop-up, tab, or extension, and` Back channel communication` via HTTP.
+[FCL's discovery](https://docs.onflow.org/fcl/reference/discovery/#wallet-discovery) mechanism relieves the burden of integrating with 
+Flow compatible wallets and lets developers focus on building their dapp and providing their users as many options as possible.
 
 ## Wallet
 [Flow Wallets](https://docs.onflow.org/flow-token/available-wallets/) are applications that give access to your Flow accounts, allow you to send and receive funds, and enable you to interact with Flow applications.
