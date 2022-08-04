@@ -326,6 +326,10 @@ GET interactions.nft-project.com/purchase-nft -> InteractionTemplate
 
 Consumers of this Interaction Template could query the static identifier, and always get the most up to date Interaction Template stored there.
 
+Repositories of Interaction Templates could be created to store Interaction Templates from various projects. Developers of Interaction Temaplates could choose to submit their Interaction Templates to such repositories. 
+
+Systems for Interaction Template discovery could proxy requests for an Interaction Template to the repository it's known to exist in. Since Interaction Templates are just data, they could be cached and distributed amongst such repositories as desired.
+
 ### Interaction Audits
 An Interaction Audit represents a trusted entity vouching for the correctness and safety of an Interaction Template.
 
@@ -391,34 +395,48 @@ An auditor can choose to "bundle" Interaction Template Audits to keys used to ge
 ### Interaction Audits Verification
 A verifier of an Interaction Template Audit should first check that the `key_id` on the account corresponding to `address` on the `data.signer` is not revoked. Then the verifier should check that the `signature` is valid for the `key_id` on the account corresponding to `address` on the `data.signer`. If both checks pass, the Interaction Template Audit should be considered valid.
 
-### Proposed Workflow
-
-The following diagram illustrates how a Contract Developer, Auditor, Application and Wallet might work together, in conjunction with an Interaction Template and Interaction Template Audit to carry out a "Purchase NFT" transaction.
-
-![ixtemplate-entity-diagram-2](https://user-images.githubusercontent.com/14852344/166585075-5894a27d-a344-4526-9370-0b93445873e7.png)
-
-Wallets may choose to trust the same auditor, which makes `InteractionTemplateAudit` produced by such an auditor usable by as many entities that choose to trust it. This presents a more scalable pattern than exists prior to this FLIP, where each wallet independently audits transactions should they choose to do so.
-
-![ixtemplates-sharedauditor](https://user-images.githubusercontent.com/14852344/177349302-9c1ecb51-b054-4719-b26c-9a86ac0758c0.png)
-
-Should a wallet trust multiple auditors, they can query from each for any `InteractionTemplateAudit` produced for a given `InteractionTemplate`. Since auditors may not have each audited the same InteractionTemplate, trusting multiple auditors can allow wallets to have greater audit coverage over possible InteractionTemplate they may receive.
-
-![IxTemplates-Multiauditor](https://user-images.githubusercontent.com/14852344/177350587-2fc5a37a-3b0c-4f96-be51-312e50ab16b4.png)
-
-## Dependencies
-Interaction Templates depend on contract developers producing and making available Interaction Templates for their contracts. Interaction Template Interfaces depend on the Flow developer community coming to consensus on interfaces for interactions they implement. Interaction Template Audits depend on trusted entities producing and making available audits of Interaction Templates.
-
-### Template, Interface and Audit Tooling
-To make the production of InteractionTemplate, InteractionTemplateInterface and InteractionTemplateAudit simpler for developers, support for generating these could be added to a CLI tool or webapp interface. Making these data structures easy to create will be essential for promoting this new pattern.
-
-### Auditor Support
-Audits will need to create a mechanic for contract developers to submit their Interaction Templates for review.
+### Audit Discovery
+Auditors will need to create a mechanic for contract developers to submit their Interaction Templates for review.
 
 Once reviewed, auditors will then make available their Interaction Template Audits in some queryable way. For example, an auditor may choose to host a web-server which can return audits produced for a given template id:
 
 ```
 GET audits.trusted-auditor.com/id/{template_id} -> InteractionTemplateAudit
 ```
+
+Like with Interaction Templates, repositories of Interaction Template Audits could be created to store Interaction Template Audits produced by various auditors. Auditors could choose to submit their Interaction Template Audits to such repositories. 
+
+Systems for Interaction Template Audit discovery could proxy requests for an Interaction Template Audit to the repository it's known to exist in. Since Interaction Templates Audits are just data, they could be cached and distributed amongst such repositories as desired.
+
+### Proposed Workflow
+
+The following diagram illustrates how a Contract Developer, Auditor, Application and Wallet might work together, in conjunction with an Interaction Template and Interaction Template Audit to carry out a "Purchase NFT" transaction.
+
+In this example, the Contract Developer makes available their Interaction Template in a queryable way for both the Application and Wallet, and the Auditor makes available their Interaction Template Audit in a queryable way for the Wallet.
+
+![ixtemplate-enitity-diagram4-nodiscovery](https://user-images.githubusercontent.com/14852344/182946116-c3aad9cc-fa05-4ed5-9f04-3441577a3509.png)
+
+Alternatively, there could exist an Interaction Template and Interaction Template Audit discovery service, which could cache and make available the Interaction Template and Interaction Template Audit data strcutures produced by the Contract Developer and Auditor respectively. In this system, the Application and Wallet can query from the discovery service, instead of needing to be able to potentially query from multiple sources.
+
+![ixtemplate-enitity-diagram3](https://user-images.githubusercontent.com/14852344/182943297-d4cbc753-5bf5-40ac-9712-5722c17fe0dc.png)
+
+Wallets may choose to trust the same auditor, which makes each Interaction Template Audit produced by such an auditor usable by as many entities that choose to trust it. This presents a more scalable pattern than exists prior to this FLIP, where each wallet needed to independently audit each transaction should they choose to do so.
+
+![ixtemplates-sharedauditor](https://user-images.githubusercontent.com/14852344/177349302-9c1ecb51-b054-4719-b26c-9a86ac0758c0.png)
+
+Should a wallet trust multiple auditors, they can query from each for any Interaction Template Audit produced for a given Interaction Template. Since auditors may not have each audited the same Interaction Template, trusting multiple auditors can allow wallets to have greater audit coverage over possible Interaction Template they may receive.
+
+![IxTemplates-Multiauditor](https://user-images.githubusercontent.com/14852344/177350587-2fc5a37a-3b0c-4f96-be51-312e50ab16b4.png)
+
+If wallets choose to query from a discovery service for Interaction Template Audits, the wallet can rely on the discovery service to know how to query from each individual auditor, meaning the wallet can query for Interaction Template Audits from a single source. The wallet could select from the audits returned from the discovery service for those produced by auditor the wallet chooses to trust.
+
+![IxTemplates-Multiauditor2](https://user-images.githubusercontent.com/14852344/182947809-bfa89457-b589-4232-8717-5163cf360c7e.png)
+
+## Dependencies
+Interaction Templates depend on contract developers producing and making available Interaction Templates for their contracts. Interaction Template Interfaces depend on the Flow developer community coming to consensus on interfaces for interactions they implement. Interaction Template Audits depend on trusted entities producing and making available audits of Interaction Templates.
+
+### Template, Interface and Audit Tooling
+To make the production of InteractionTemplate, InteractionTemplateInterface and InteractionTemplateAudit simpler for developers, support for generating these could be added to a CLI tool or webapp interface. Making these data structures easy to create will be essential for promoting this new pattern.
 
 ### FCL Integration
 FCL `mutate` and `query` could be modified to accept an Interaction Template, and use the Interaction Template to execute the underlying transaction or script:
