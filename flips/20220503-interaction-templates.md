@@ -346,7 +346,8 @@ Here is an example of some `InteractionTemplateAudit`:
     data: {
         id: "a2b2d73def...aabc5472d2", // InteractionTemplate ID
         signer: {
-            account: "0xABC123", // TRUSTED_AUDITOR
+            network: "mainnet" // "mainnet" | "testnet" | "emulator"
+            address: "0xABC123", // TRUSTED_AUDITOR
             key_id: 1,
             signature: "aa5s617dty7a8wer7wer781239"
         }
@@ -359,7 +360,8 @@ Here is an example of some `InteractionTemplateAudit`:
     data: {
         id: "a2b2d73def...aabc5472d2", // InteractionTemplate ID
         signer: {
-            account: "0xDEF456", // FLOW_TEAM
+            network: "testnet" // "mainnet" | "testnet" | "emulator"
+            address: "0xDEF456", // FLOW_TEAM
             key_id: 2,
             signature: "sdfasdf123123asdfasdfasdf234"
         }
@@ -374,7 +376,7 @@ These fields declare the data structure type and data structure version. The ver
 The id of the Interaction Template the audit was produced for.
 
 #### `data.signer`
-Information about the entity that produced the audit. The data structure contains an on-chain `address` and `key_id` corresponding to the entity. The `signature` is produced by the private key maintained by the auditor, and can be verified by the public key corresponding to the `key_id` on the account corresponding to `address`.
+Information about the entity that produced the audit. The data structure contains an on-chain `address` and `key_id` corresponding to the entity. The data structure also contains the network the signer account exists on. The `signature` is produced by the private key maintained by the auditor, and can be verified by the public key corresponding to the `key_id` on the account corresponding to `address`.
 
 The signature is produced by signing over the `data.id` identifier of the Interaction Template the audit corresponds to.
 
@@ -637,14 +639,16 @@ sha3_256(MESSAGE)
 ### `InteractionTemplateAudit`
 
 ```text
+auditor-network              = "mainnet" | "testnet" | "emulator"
 audit-signature            = Audit signature
 auditor-account-key-id     = Key ID of the public key on the auditor account that can be used to verify the audit 
-auditor-account            = Address of the auditors account
+auditor-address            = Address of the auditors account
 template-id                = ID of the InteractionTemplate this audit was produced for
 
 audit-encoded              = RLP([ 
     sha3_256(template-id),
-    sha3_256(auditor-account),
+    sha3_256(auditor-network),
+    sha3_256(auditor-address),
     sha3_256(auditor-account-key-id),
     sha3_256(audit-signature)
 ])
@@ -843,7 +847,10 @@ sha3_256(MESSAGE)
         "signer": {
           "type": "object",
           "properties": {
-            "account": {
+            "network": {
+              "type": "string"
+            },
+            "address": {
               "type": "string"
             },
             "key_id": {
@@ -854,7 +861,8 @@ sha3_256(MESSAGE)
             }
           },
           "required": [
-            "account",
+            "network",
+            "address",
             "key_id",
             "signature"
           ]
