@@ -416,7 +416,7 @@ In this example, the Contract Developer makes available their Interaction Templa
 
 ![ixtemplate-enitity-diagram4-nodiscovery](https://user-images.githubusercontent.com/14852344/182946116-c3aad9cc-fa05-4ed5-9f04-3441577a3509.png)
 
-Alternatively, there could exist an Interaction Template and Interaction Template Audit discovery service, which could cache and make available the Interaction Template and Interaction Template Audit data strcutures produced by the Contract Developer and Auditor respectively. In this system, the Application and Wallet can query from the discovery service, instead of needing to be able to potentially query from multiple sources.
+Alternatively, there could exist an Interaction Template and Interaction Template Audit discovery service, which could cache and make available the Interaction Template and Interaction Template Audit data strcutures produced by the Contract Developer and Auditor respectively. The discovery service could aggregate and cache Interaction Templates and Interaction Template Audits stored accross various repositories of them. In this system, the Application and Wallet can query from the discovery service, instead of needing to be able to potentially query from multiple sources.
 
 ![ixtemplate-enitity-diagram3](https://user-images.githubusercontent.com/14852344/182943297-d4cbc753-5bf5-40ac-9712-5722c17fe0dc.png)
 
@@ -428,7 +428,7 @@ Should a wallet trust multiple auditors, they can query from each for any Intera
 
 ![IxTemplates-Multiauditor](https://user-images.githubusercontent.com/14852344/177350587-2fc5a37a-3b0c-4f96-be51-312e50ab16b4.png)
 
-If wallets choose to query from a discovery service for Interaction Template Audits, the wallet can rely on the discovery service to know how to query from each individual auditor, meaning the wallet can query for Interaction Template Audits from a single source. The wallet could select from the audits returned from the discovery service for those produced by auditor the wallet chooses to trust.
+If wallets choose to query from a discovery service for Interaction Template Audits, the wallet can rely on the discovery service to know how to query from each individual auditor, meaning the wallet can query for Interaction Template Audits from a single source. The wallet could select from the audits returned from the discovery service for those produced by auditors the wallet chooses to trust.
 
 ![IxTemplates-Multiauditor2](https://user-images.githubusercontent.com/14852344/182947809-bfa89457-b589-4232-8717-5163cf360c7e.png)
 
