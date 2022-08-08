@@ -34,7 +34,6 @@ import { useResponsiveSidebar } from "./responsive-sidebar";
 import Search from "./search";
 import Sidebar from "./sidebar";
 import SidebarNav from "./sidebar-nav";
-import AnnouncementBanner from "./AnnouncementBanner";
 
 import { StatusContextProvider } from "./flow-status/context";
 
@@ -177,7 +176,6 @@ export default function PageLayout(props) {
         />
       </Helmet>
       <div>
-        <AnnouncementBanner />
         <FlexWrapper onClick={handleWrapperClick}>
           <StatusContextProvider>
             <Sidebar

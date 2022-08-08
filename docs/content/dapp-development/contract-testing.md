@@ -13,15 +13,14 @@ Finally, unstructured closed testing with a limited audience on testnet can gain
 
 ## Testing Requirements
 
-> **Important**: This chapter will change as soon as [permissionless deployment](https://permissionless.onflow.org/) rolls out on Flow (ETA summer 2022). Once rolled out, you can deploy to the mainnet directly without going through a review process. However, good testing practices are critical for a successful mainnet experience, and this chapter provides general guidelines.
-
-If you are submitting your new contract for review prior to permissionless deployment being rolled out, the following has to be included in the code repository containing the smart contracts to be reviewed:
+It is suggested to follow the following best practices:
 
 - Every publicly exposed feature of a contract and its resources should have unit tests that check both for success with correct input _and_ for failure with incorrect input.
   These tests should be capable of being run locally with the Flow emulator, with no or minimal extra resources or configuration, and with a single command.
 - Each user story or workflow that uses the smart contracts should have an integration test that ensures that the series of steps required to complete it does so successfully with test data.
 
-For manual testing prior to approval for deployment to mainnet the code must be deployed on testnet and used for two weeks. This is to test the code in conditions as close to those it will be used in on mainnet if and when it is deployed there.
+Make sure you test all contracts - and the integration into your application extensively before proceeding to the mainnet.
+You should aim to replicate all conditions as closely as possible to the usage patterns on mainnet.
 
 ## Writing Tests
 

@@ -253,6 +253,7 @@ const sources = [
         "docs/signature-verify.md",
         "docs/snapshot-save.md",
         "docs/start-emulator.md",
+        "docs/tools.md",
       ],
     },
   },
@@ -273,6 +274,9 @@ const sections = [
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: false,
     sidebar: {
+      Glossary: [
+        "[Glossary](/glossary/index/)"
+      ],
       Tutorials: [
         "[Flow App Quickstart](/fcl/tutorials/flow-app-quickstart)",
         "[Introduction to Cadence](/cadence/tutorial/01-first-steps)",
@@ -357,8 +361,8 @@ const sections = [
         "docs/tutorial/06-fungible-tokens",
         "docs/tutorial/07-marketplace-setup",
         "docs/tutorial/08-marketplace-compose",
-        "docs/tutorial/10-resources-compose",
         "docs/tutorial/09-voting",
+        "docs/tutorial/10-resources-compose",
       ],
     },
   },
