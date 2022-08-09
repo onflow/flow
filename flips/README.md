@@ -1,3 +1,7 @@
+*__Notice:__ FLIPs are in the process of being [migrated to their own repository](https://github.com/onflow/flips). Please refer to this new repository when submitting new FLIPs as PRs opened against this current repository will be closed.*
+
+---
+
 # Flow Improvement Proposals (FLIPs)
 
 The purpose of a FLIP is to engage the Flow community in development by 
@@ -24,12 +28,12 @@ will solve it. Specifically, the FLIP will:
 
 * be formatted according to the FLIP template
 * be submitted as a pull request to the
-  [onflow/flow/flips](https://github.com/onflow/flow/tree/master/flips) directory
+  [onflow/flips](https://github.com/onflow/flips) repository, in the proper directory depending upon the topic.
 * be subject to discussion and a review meeting prior to acceptance
 
 ## FLIP process
 
-Before submitting a new FLIP, check for prior proposals in the `flips` directory, the [Flow community forum](https://forum.onflow.org/) and ask in the [Discord server](https://discord.gg/flow). The idea may have been proposed before or may be in active discussion. Consider contributing or giving feedback to existing proposals.
+Before submitting a new FLIP, check for prior proposals, the [Flow community forum](https://forum.onflow.org/) and ask in the [Discord server](https://discord.gg/flow). The idea may have been proposed before or may be in active discussion. Consider contributing or giving feedback to existing proposals.
 
 If a new proposal is appropriate, propose a rough sketch of the idea in the forum [Flow community forum](https://forum.onflow.org/) and engage in discussion with the community, project contributors, and maintainers, to get early feedback. Continue to expand the rough sketch into a draft using the FLIP template and further refine the proposal on the forums.
 
