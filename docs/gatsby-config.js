@@ -606,6 +606,7 @@ const sections = [
     sidebar: {
       null: ["[Home](/)"],
       Overview: [
+        "[nodes](/index)",
         "node-operation/index",
         "node-operation/node-setup",
         "node-operation/node-roles",
