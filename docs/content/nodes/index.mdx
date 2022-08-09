@@ -1,0 +1,45 @@
+---
+title: Flow Nodes
+sidebar_title: Introduction
+description: Introduction Flow Nodes
+---
+
+The Flow nodes are the vital component that supports the network and enables you to participate in the Flow blockchain.
+A blockchain network is a collection of interconnected nodes working together to validate transactions and blocks using consensus a algorithm.
+Therefore, you are contributing to the network as a node operator by running the Flow nodes.
+
+## What are nodes
+Blockchain nodes are network contributors, and as such, their device is authorized 
+to maintain the distributed ledger and act as 
+a central point of contact for a variety of network operations.
+
+## Functions of Flow nodes
+Flow has [four nodes](https://docs.onflow.org/node-operation/node-roles/) that fulfill a specific role in the operation of the network.
+- **Collection:** manages the transaction pool and collects well-formed transactions to propose to Consensus nodes.
+- **Consensus:** form and propose blocks like traditionally-structured proof-of-stake blockchains, using the HotStuff consensus algorithm to create a globally consistent chain of blocks.
+- **Execution:** are Flow network's most resource-intensive nodes, responsible for executing transactions, maintaining the Execution State, and responding to related queries. 
+- **Verification:** are responsible for confirming the correctness of the work done by Execution nodes.
+- **Access:** routes transactions to the correct Collection node and routes state queries to available nodes. 
+
+## Node operator
+A node operator runs software that broadcasts transactions across the network and maintains a complete copy of the blockchain. The operation of blockchains requires nodes.
+An operator ensures that nodes have enough resources to run smoothly and efficiently. Therefore, nodes require sufficient RAM, disk space, and bandwidth to function and support the network.
+
+## Who can run a node?
+
+Any individual or organization should be able to run one or more [nodes](https://docs.onflow.org/node-operation/faq/). Currently, however as the Flow protocol matures, 
+anyone interested in running a node must present a case for how they will add unique value to the network. 
+
+## Flow Port 
+The [Flow Port](https://docs.onflow.org/flow-port/staking-guide/) is your portal to the decentralized world of Flow. It gives you access to your Flow account, interacts with the blockchain,
+and manages your assets. Also, it is used to stake your FLOW tokens and start earning rewards. So, to run your nodes, you can stake them 
+on the Flow port, and Flow Port only supports staking or delegating using tokens held in Blocto or Ledger wallets.
+
+## Flow Staking
+[Staking](https://developers.onflow.org/nodes/staking) is the act of depositing your Flow tokens as a nodes operator, and you'll be 
+responsible for storing data, processing transactions, and adding new blocks to the blockchain.
+This will keep Flow secure for everyone, and you earn your rewards in new Flow tokens. 
+Running a Flow node and staking FLOW tokens through the node is one way to participate in the network, and the node is called a staked node.
+The node could be any one of the four types in Flow: `Collection`, `Consensus`, `Execution`, or `Verification`. Such a staked node participates 
+in the Flow protocol by performing its function based on its type, and the network periodically rewards the node for its contribution. 
+However, the network could also punish the node by taking away some of the staked tokens if it violates certain rules.
