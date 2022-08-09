@@ -15,7 +15,7 @@ The following chapters summarize the content in this section. Read on more for d
 
 ## Dapp Development
 
-The [development guide](https://docs.onflow.org/dapp-development/) covers the Flow core concepts, including:
+The [development guide](/dapp-development/) covers the Flow core concepts, including:
 
 - **Dapp Client:** The dapp client is the interface through which users interact with your dapp. Web and mobile applications are typical examples of dapp clients.
 - **Smart Contract:** A smart contract is a collection of code deployed to a permanent location on the blockchain that defines the core logic for a dapp.
@@ -27,7 +27,7 @@ The [development guide](https://docs.onflow.org/dapp-development/) covers the Fl
 
 ## Core Contracts
 
-The Flow blockchain implements core functionality using its own smart contract language, Cadence. The core functionality is split into a set of contracts, so-called [core contracts](https://docs.onflow.org/core-contracts/):
+The Flow blockchain implements core functionality using its own smart contract language, Cadence. The core functionality is split into a set of contracts, so-called [core contracts](/core-contracts/):
 
 - **Fungible Token:** The FungibleToken contract implements the Fungible Token Standard. It is the second contract ever deployed on Flow.
 - **Flow Token:** The FlowToken contract defines the FLOW network token.
@@ -38,8 +38,8 @@ The Flow blockchain implements core functionality using its own smart contract l
 
 ## FLOW Token
 
-The [FLOW](https://docs.onflow.org/flow-token/) token is the native currency for the Flow network. Developers and users can use FLOW to transact on the network. Developers can integrate FLOW directly into their apps for peer-to-peer payments, service charges, or consumer rewards. Flow can be held, transferred, or transacted peer-to-peer.
+The [FLOW](/flow-token/) token is the native currency for the Flow network. Developers and users can use FLOW to transact on the network. Developers can integrate FLOW directly into their apps for peer-to-peer payments, service charges, or consumer rewards. Flow can be held, transferred, or transacted peer-to-peer.
 
 ## NFT marketplace
 
-A unique digital asset known as an NFT represents a real-world item, such as artwork, music, in-game items, or films. They can be purchased and sold online via an [NFT marketplace](https://docs.onflow.org/kitty-items/next-steps/#learn-more-about-nft-marketplaces).
+A unique digital asset known as an NFT represents a real-world item, such as artwork, music, in-game items, or films. They can be purchased and sold online via an [NFT marketplace](/kitty-items/next-steps/#learn-more-about-nft-marketplaces).
