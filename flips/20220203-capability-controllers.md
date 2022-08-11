@@ -33,7 +33,7 @@ pub resource Counter: HasCount {
 The _issuer_ (`AuthAccount`) has also created an instance of this resource and saved it in its private storage.
 
 ```cadence
-AuthAccount.save(<-create Counter(count: 42), to: /storage/counter)
+issuer.save(<-create Counter(count: 42), to: /storage/counter)
 ```
 
 ### Public Capabilities
@@ -41,7 +41,7 @@ AuthAccount.save(<-create Counter(count: 42), to: /storage/counter)
 To allow anyone (read) access to the `count` field on the counter, the _issuer_ needs to create a public typed link at a chosen path that points to their stored counter resource.
 
 ```cadence
-AuthAccount.link<&{HasCount}>(/public/hasCount, target: /storage/counter)
+issuer.link<&{HasCount}>(/public/hasCount, target: /storage/counter)
 ```
 
 Anyone can now read the `count` of the counter resource via the `HasCount` interface. This can be done by
@@ -59,10 +59,10 @@ countRef.count
 
 ### Private Capabilities
 
-To allow only certain accounts/resources (read) access to the `count` field on the counter, the _issuer_ needs to create a private typed link at a chosen path that points to their stored counter resource.
+To allow only certain accounts/resources (read) access to the `count` field on the counter, the _issuer_ (of type `AuthAccount`) needs to create a private typed link at a chosen path that points to their stored counter resource.
 
 ```cadence
-AuthAccount.link<&{HasCount}>(/private/hasCount, target: /storage/counter)
+issuer.link<&{HasCount}>(/private/hasCount, target: /storage/counter)
 ```
 
 The receiving party needs to offer a public way to receive `&{HasCount}` capabilities.
@@ -98,7 +98,7 @@ receivingPartyAuthAccount.link<&{HasCountReceiverPublic}>(/public/hasCountReceiv
 With this in place the _issuer_ can create a capability from its private link and send it to this receiver.
 
 ```cadence
-let countCap = authAccount.getCapability<&{HasCount}>(/private/hasCount)
+let countCap = issuer.getCapability<&{HasCount}>(/private/hasCount)
 
 let publicAccount = getAccount(receivingPartyAddress)
 let countReceiverCap = publicAccount.getCapability<&{HasCountReceiverPublic}>(/public/hasCountReceiver)
@@ -117,9 +117,9 @@ There are two requirements of the capability system that must be satisfied.
 
 Revocation can be currently done by using the `unlink` function.
 
-In the public example this would mean calling `authAccount.unlink<&{HasCount}>(/public/hasCount)` which would invalidate (break) all capabilities created from this public path (both those created before unlink was called and those created after unlink was called).
+In the public example this would mean calling `issuer.unlink<&{HasCount}>(/public/hasCount)` which would invalidate (break) all capabilities created from this public path (both those created before unlink was called and those created after unlink was called).
 
-In the private example the call would change to `authAccount.unlink<&{HasCount}>(/private/hasCount)`. It is important to note that if the issuer wants to have the ability to revoke/redirect capabilities in a more granular way (instead of doing them all at once), the solution is to create multiple private linked paths (e.g. `/private/hasCountAlice`, `/private/hasCountBob`).
+In the private example the call would change to `issuer.unlink<&{HasCount}>(/private/hasCount)`. It is important to note that if the issuer wants to have the ability to revoke/redirect capabilities in a more granular way (instead of doing them all at once), the solution is to create multiple private linked paths (e.g. `/private/hasCountAlice`, `/private/hasCountBob`).
 
 If a path that was unlinked is linked again all the capabilities created from that path resume working. This can be used to redirect a capability to a different object, but can also be dangerous if done unintentionally, reviving a previously revoked capability.
 
@@ -194,8 +194,8 @@ The definition of the `CapabilityController` .
 
 ```cadence
 // CapabilityController can be retrieved via:
-// - authAccount.getControllers(path: StoragePath): [CapabilityController]
-// - authAccount.getController(capabilityId: UInt64): CapabilityController?
+// - AuthAccount.getControllers(path: StoragePath): [CapabilityController]
+// - AuthAccount.getController(capabilityId: UInt64): CapabilityController?
 struct CapabilityController {
    // The block height when the capability was created.
    let issueHeight: UInt64
@@ -231,7 +231,7 @@ fun getControllers(path: StoragePath): [CapabilityController]
 fun getController(capabilityId: UInt64): CapabilityController?
 ```
 
-Some methods would be removed from the AuthAccount object as they are no longer needed:
+Some methods would be removed from the `AuthAccount` object as they are no longer needed:
 
 ```cadence
 fun link<T: &Any>(_ newCapabilityPath: CapabilityPath, target: Path): Capability<T>?
@@ -287,14 +287,14 @@ Consuming private capabilities would change in the way that capabilities are res
 There would be more change on the issuer's side. Most notably creating a public capability would look like this.
 
 ```cadence
-let countCap <- authAccount.issueCapability<&{HasCount}>(/storage/counter)
-authAccount.save(<- countCap, to: /public/hasCount)
+let countCap <- issuer.issueCapability<&{HasCount}>(/storage/counter)
+issuer.save(<- countCap, to: /public/hasCount)
 ```
 
 Unlinking and relinking issued capabilities would change to getting a CapCon and calling the appropriate methods.
 
 ```cadence
-let capCon = authAccount.getController(capabilityId: capabilityId)
+let capCon = issuer.getController(capabilityId: capabilityId)
 
 capCon.revoke()
 // or
@@ -303,7 +303,7 @@ capCon.restore()
 capCon.relink(target: /storage/counter2)
 ```
 
-This example assumes that the capability id is known. This is always the case for capabilities in the accounts public domain, since the account has access to those directly. For private capabilities that were given to someone else this can be achieved by keeping an on-chain or an off-chain list of capability ids and some extra identifying information (for example the address of the receiver of the capability). If no such list was kept, the issuer can use the information on the CapCons retrieved through`authAccount.getControllers(path: StoragePath)`to find the right id.
+This example assumes that the capability id is known. This is always the case for capabilities in the accounts public domain, since the account has access to those directly. For private capabilities that were given to someone else this can be achieved by keeping an on-chain or an off-chain list of capability ids and some extra identifying information (for example the address of the receiver of the capability). If no such list was kept, the issuer can use the information on the CapCons retrieved through `issuer.getControllers(path: StoragePath)`to find the right id.
 
 #### Capability Minters
 
@@ -325,8 +325,8 @@ public resource Main : AdminInterface {
 The issuer can then store a `Main` resource in their storage and give the capability to call it to a trusted party. The trusted party can then create `&{HasCount} `capabilities at will.
 
 ```cadence
-authAccount.save(<-create Main(), to: /storage/counterMinter)
-let countMinterCap <- authAccount.getCapability(/storage/counterMinter)
+issuer.save(<-create Main(), to: /storage/counterMinter)
+let countMinterCap <- issuer.getCapability(/storage/counterMinter)
 countMinterCap //give this to a trusted party
 ```
 
