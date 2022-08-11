@@ -65,7 +65,7 @@ To allow only certain accounts/resources (read) access to the `count` field on t
 issuer.link<&{HasCount}>(/private/hasCount, target: /storage/counter)
 ```
 
-The receiving party needs to offer a public way to receive `&{HasCount}` capabilities.
+The _receivingParty_ (`AuthAccount`) needs to offer a public way to receive `&{HasCount}` capabilities, and store them for later use.
 
 ```cadence
 // this would probably be defined on the same contract as `HasCount`
@@ -90,8 +90,8 @@ pub resource HasCountReceiver: HasCountReceiverPublic {
 // this is the receiver account setup
 let hasCountReceiver <- HasCountReceiver()
 
-receivingPartyAuthAccount.save(<-hasCountReceiver, to: /storage/hasCountReceiver)
-receivingPartyAuthAccount.link<&{HasCountReceiverPublic}>(/public/hasCountReceiver,
+receivingParty.save(<-hasCountReceiver, to: /storage/hasCountReceiver)
+receivingParty.link<&{HasCountReceiverPublic}>(/public/hasCountReceiver,
    target: /storage/hasCountReceive)
 ```
 
@@ -195,13 +195,13 @@ The definition of the `CapabilityController` .
 ```cadence
 // CapabilityController can be retrieved via:
 // - AuthAccount.getControllers(path: StoragePath): [CapabilityController]
-// - AuthAccount.getController(capabilityId: UInt64): CapabilityController?
+// - AuthAccount.getController(capabilityID: UInt64): CapabilityController?
 struct CapabilityController {
    // The block height when the capability was created.
    let issueHeight: UInt64
    // The id of the related capability
-   // This is the UUiD of the created capability
-   let capabilityId: UInt64
+   // This is the UUID of the created capability
+   let capabilityID: UInt64
 
    // Is the capability revoked.
    fun isRevoked(): Bool
@@ -228,7 +228,7 @@ fun getControllers(path: StoragePath): [CapabilityController]
 // Get capability controller for capability with the specified id
 // If the id does not reference an existing capability
 // or the capability does not target a storage path on this address, return nil
-fun getController(capabilityId: UInt64): CapabilityController?
+fun getController(capabilityID: UInt64): CapabilityController?
 ```
 
 Some methods would be removed from the `AuthAccount` object as they are no longer needed:
@@ -294,7 +294,7 @@ issuer.save(<- countCap, to: /public/hasCount)
 Unlinking and relinking issued capabilities would change to getting a CapCon and calling the appropriate methods.
 
 ```cadence
-let capCon = issuer.getController(capabilityId: capabilityId)
+let capCon = issuer.getController(capabilityID: capabilityID)
 
 capCon.revoke()
 // or
