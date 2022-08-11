@@ -4,30 +4,6 @@ title: Node Roles
 
 Unlike most blockchains, not all Flow nodes are equal. Flow nodes all specialize and fulfill a specific role in the operation of the network.
 
-<!-- [block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/cd9a005-flow-diagram.gif",
-        "flow-diagram.gif",
-        900,
-        900,
-        "#f8f4f1"
-      ],
-      "caption": "",
-      "sizing": "smart"
-    }
-  ]
-}
-[/block] -->
-
-<!-- [block:api-header]
-{
-  "title": "Node Roles"
-}
-[/block] -->
-
 ## Collection
 
 Collection nodes are bandwidth-optimized nodes divided by the protocol into several cooperating Clusters. Their first task is managing the transaction pool and collecting well-formed transactions to propose to Consensus nodes. Transactions are assigned to a cluster pseudorandomly by transaction hash. A well-formed transaction must include credentials from the guarantor of the transaction. When a Collection Node sees a well-formed transaction, it hashes the text of that transaction and signs the transaction to indicate two things: first, that it is well-formed; and second, that it will commit to storing the transaction text until the Execution nodes have finished processing it. Each cluster collects transactions, assembles them into Collections and submits a Collection Guarantee signed by a super-majority of the cluster to the Consensus nodes.
@@ -67,12 +43,3 @@ Verification nodes are required to stake a minimum of 135,000 FLOW to be a confi
 ## Access
 
 Access nodes act as a proxy to the Flow network. The Access node routes transactions to the correct Collection node and routes state queries to available nodes (while likely caching state to answer queries in a timely manner in the future). Anyone can run an Access node — these nodes are not staked but are based on a reputation system. Dapps and user agents can submit their transactions to any Access node or run their own if they can't find a service provider they're happy with.
-
-<!-- [block:callout]
-{
-  "type": "info",
-  "title": "Resource Requirements",
-  "body": "See [Setting Up a Node](doc:setting-up-a-node) for the expected resource use of each node type"
-}
-[/block] -->
-
