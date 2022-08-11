@@ -1,8 +1,8 @@
 # Cadence Style Guide
 
-| Status        | (Proposed)       |
+| Status        | Proposed       |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #tbd**    | [tbd](tbd)|
+| **FLIP #1087**    | [1087](https://github.com/onflow/flow/pull/1087)|
 | **Author** | Álvaro Lillo Igualada (alvaro.lillo@dapperlabs.com) |
 | **Sponsor**   | Josh Hannan (joshua.hannan@dapperlabs.com)             |
 | **Updated**   | 2022-08-11                                           | 
