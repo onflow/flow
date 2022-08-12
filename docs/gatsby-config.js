@@ -373,7 +373,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      "Flow CLI": ["docs/index", "docs/install"],
+      "Flow CLI": ["docs/index", "docs/install", "docs/data-collection"],
       Keys: ["docs/generate-keys", "docs/decode-keys"],
       Accounts: [
         "docs/get-accounts",
@@ -414,6 +414,7 @@ const sections = [
         "docs/signature-generate",
         "docs/signature-verify",
         "docs/snapshot-save",
+        "docs/tools",
       ],
     },
   },
