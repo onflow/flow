@@ -254,6 +254,7 @@ const sources = [
         "docs/snapshot-save.md",
         "docs/start-emulator.md",
         "docs/tools.md",
+        "docs/data-collection.md",
       ],
     },
   },
