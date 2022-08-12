@@ -1,6 +1,6 @@
-# Cadence Style Guide
+# Fungible Tokens Metadata
 
-| Status        | Proposed       |
+| Status        | Draft       |
 :-------------- |:---------------------------------------------------- |
 | **FLIP #1087**    | [1087](https://github.com/onflow/flow/pull/1087)|
 | **Author** | Álvaro Lillo Igualada (alvaro.lillo@dapperlabs.com) |
@@ -21,7 +21,7 @@ TBD
 
 ## Design Proposal
 
-The core of this proposal is to add the following interface and have the `FungibleToken.Vault`s implement it. This is the same interface that can be found in the NFTs metadata contract.
+The core of this proposal is to add the following interface and have any `FungibleToken.Vault` implement it. This is the same interface that can be found in the NFTs metadata contract.
 
 ```cadence
     /// Provides access to a set of metadata views. A struct or 
@@ -183,11 +183,13 @@ This proposal builds on the existing FT interface defined [here](https://github.
 
 ### Engineering Impact
 
-When the style guide is defined, we should update all existing Cadence code to fullfil the agreed patterns.
+Adhering to this standard will require contract authors to implement a few new methods as part of their FT. They will also likely need to import standard types into their contracts.
+
+There may also need to be a committee, process, and code repository put in place for managing the standard metadata types.
 
 ### Best Practices
 
-Fungible Token issuers should implement (as much as possible?) views to achieve the maximum ecosystem compatibility possible. 
+Fungible Token issuers should implement the `FTView` to achieve the as much ecosystem compatibility as possible.
 
 ### Tutorials and Examples
 
@@ -207,12 +209,12 @@ TBD
 
 ## Prior Art
 
-None.
+The already working NFT Metadata views [standard](https://github.com/onflow/flow/blob/master/flips/20210916-nft-metadata.md) has been used as the main source for this proposal.
 
 ## Questions and Discussion Topics
 
 Main friction point will be if we want this standard to be in a new different contract of if we want it to be part of the existent `MetadataViews.cdc` contract.
 
-Am I missing any core views that should be mandatory from the beginning?
+Are we missing any core views that should be mandatory from the beginning?
 
 Could there be some view, like serial, that differentiates tokens from the same `Vault` depending for instance of when they where minted? (think of different years coins with the same value) Would that make them NFT rather than FT? Would ever any developer want to do that? How could we keep track of a single balance which contains slightly different tokens? Would that introduce an unnecessary complication when transferring tokens? (of course it would). This could make sense along with the [streamlined tokens proposal new `FungibleToken.Balance` interface that exposes a `getBalance()` function rather than a field just in case the FT owner wants to compute the balance](https://forum.onflow.org/t/streamlined-token-standards-proposal/3075)
