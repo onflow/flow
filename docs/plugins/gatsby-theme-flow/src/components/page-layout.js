@@ -175,90 +175,91 @@ export default function PageLayout(props) {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
       </Helmet>
-      <FlexWrapper onClick={handleWrapperClick}>
-        <StatusContextProvider>
-          <Sidebar
-            responsive
-            className="sidebar"
-            open={sidebarOpen}
-            ref={sidebarRef}
-            title={siteName}
-            logoLink={logoLink}
-          >
-            {sidebar && (
-              <NavItemsContext.Provider value={navItems}>
-                <SidebarNav
-                  contents={sidebar.contents}
-                  pathname={pathname}
-                  onToggleAll={handleToggleAll}
-                  onToggleCategory={handleToggleCategory}
-                  onLinkClick={handleSidebarNavLinkClick}
-                  showMainNav={sidebar.showMainNav}
-                  alwaysExpanded={sidebar.alwaysExpanded}
-                />
-              </NavItemsContext.Provider>
-            )}
-          </Sidebar>
-          <Main>
-            <Header title={title}>
-              <MobileNav>
-                <MobileLogo />
-                <MenuButton onClick={openSidebar} />
-              </MobileNav>
-              <StatusWidget />
-              {algoliaApiKey && algoliaIndexName && (
-                <Search
-                  siteName={siteName}
-                  apiKey={algoliaApiKey}
-                  indexName={algoliaIndexName}
-                />
+      <div>
+        <FlexWrapper onClick={handleWrapperClick}>
+          <StatusContextProvider>
+            <Sidebar
+              responsive
+              className="sidebar"
+              open={sidebarOpen}
+              ref={sidebarRef}
+              title={siteName}
+              logoLink={logoLink}
+            >
+              {sidebar && (
+                <NavItemsContext.Provider value={navItems}>
+                  <SidebarNav
+                    contents={sidebar.contents}
+                    pathname={pathname}
+                    onToggleAll={handleToggleAll}
+                    onToggleCategory={handleToggleCategory}
+                    onLinkClick={handleSidebarNavLinkClick}
+                    showMainNav={sidebar.showMainNav}
+                    alwaysExpanded={sidebar.alwaysExpanded}
+                  />
+                </NavItemsContext.Provider>
               )}
-              <HeaderNav />
-              <AnimatePresence>
-                {props.path !== "/" ? (
-                  <motion.div
-                    initial={{ height: 0 }}
-                    animate={{
-                      height: "auto"
-                    }}
-                    exit={{ height: 0, transition: { delay: 0.2 } }}
-                    style={{ width: "100%" }}
-                  >
-                    <BreadcrumbWrapper>
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                      >
-                        <Breadcrumb
-                          crumbs={dacrumbs}
-                          hiddenCrumbs={["/intro"]}
-                          disableLinks={[
-                            "/flow-port",
-                            "/faq",
-                            "/community-updates",
-                            "/tutorial",
-                            "/fcl/packages",
-                            "/flow-go-sdk/examples"
-                          ]}
-                        />
-                      </motion.div>
-                    </BreadcrumbWrapper>
-                  </motion.div>
-                ) : (
-                  ""
+            </Sidebar>
+            <Main>
+              <Header title={title}>
+                <MobileNav>
+                  <MobileLogo />
+                  <MenuButton onClick={openSidebar} />
+                </MobileNav>
+                <StatusWidget />
+                {algoliaApiKey && algoliaIndexName && (
+                  <Search
+                    siteName={siteName}
+                    apiKey={algoliaApiKey}
+                    indexName={algoliaIndexName}
+                  />
                 )}
-              </AnimatePresence>
-            </Header>
-
-            <SelectedLanguageContext.Provider value={selectedLanguageState}>
-              <NavItemsContext.Provider value={navItems}>
-                {props.children}
-              </NavItemsContext.Provider>
-            </SelectedLanguageContext.Provider>
-          </Main>
-        </StatusContextProvider>
-      </FlexWrapper>
+                <HeaderNav />
+                <AnimatePresence>
+                  {props.path !== "/" ? (
+                    <motion.div
+                      initial={{ height: 0 }}
+                      animate={{
+                        height: "auto"
+                      }}
+                      exit={{ height: 0, transition: { delay: 0.2 } }}
+                      style={{ width: "100%" }}
+                    >
+                      <BreadcrumbWrapper>
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                        >
+                          <Breadcrumb
+                            crumbs={dacrumbs}
+                            hiddenCrumbs={["/intro"]}
+                            disableLinks={[
+                              "/flow-port",
+                              "/faq",
+                              "/community-updates",
+                              "/tutorial",
+                              "/fcl/packages",
+                              "/flow-go-sdk/examples"
+                            ]}
+                          />
+                        </motion.div>
+                      </BreadcrumbWrapper>
+                    </motion.div>
+                  ) : (
+                    ""
+                  )}
+                </AnimatePresence>
+              </Header>
+              <SelectedLanguageContext.Provider value={selectedLanguageState}>
+                <NavItemsContext.Provider value={navItems}>
+                  {props.children}
+                </NavItemsContext.Provider>
+              </SelectedLanguageContext.Provider>
+            </Main>
+          </StatusContextProvider>
+        </FlexWrapper>
+      </div>
     </Layout>
   );
 }

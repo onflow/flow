@@ -21,57 +21,44 @@ import {
 
 <div className="homepage-grid">
 
-<div className="grid-item wide">
+<div className="grid-item wide" style="background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);">
 
-<h3>
+<h3 align="center">
   {" "}
   ⚡️
-  <TrackingLink href="/http-api/" eventName="Homepage_link_/http-api/_clicked">
-    Flow Access Node HTTP API
+  <TrackingLink target="_blank" href="https://developers.onflow.org" eventName="Homepage_link_/dev_portal_home/_clicked">
+    Preview our new Flow Developer Portal
   </TrackingLink>
+    {" "}
+  ⚡️
 </h3>
 
 <ul className="grid-item-list">
   <li>
-   The Flow access node API for REST clients. Usable with the <TrackingLink href="https://github.com/onflow/flow-emulator#configuration
-" eventName="Homepage_link_/flow-cli/_clicked">
-  Flow CLI (Emulator)
-</TrackingLink>
- {" "}
- and {" "}
-<TrackingLink href="https://github.com/onflow/fcl-js/blob/master/packages/sdk/CHANGELOG.md#0057-alpha1----2022-01-21
-" eventName="Homepage_link_/fcl/_clicked">
-  FCL (Flow Client Library)
-</TrackingLink>
-<br/>
-<br />
-
-<span>https://rest-testnet.onflow.org/v1/</span>
-<p>
-  Testnet:{" "}
-  <TrackingLink
-    event="Homepage*link*/http-api-testnet/\_clicked"
-    href="/http-api/"
-  >
-    View Documentation
+   With the growing number of developers, tools, and content in the Flow ecosystem, we are creating a new experience to 
+   help developers not only find and discover what they need, but also have new ways to connect and contribute with the community.<br/> 
+   We are launching the full experience in <b>July 2022</b> but you can preview the new design, layout and content here: <br/>
+   <TrackingLink href="https://developers.onflow.org" eventName="Homepage_link_/dev_portal_home/_clicked">
+    Homepage
+  </TrackingLink> 
+  <br/>
+  <TrackingLink href="https://developers.onflow.org/getting-started" eventName="Homepage_link_/dev_portal_start/_clicked">
+    Getting Started
   </TrackingLink>
-</p>
-
-<span>https://rest-mainnet.onflow.org/v1/</span>
-<p>
-  Mainnet:{" "}
-  <TrackingLink
-    event="Homepage*link*/http-api-mainnet/\_clicked"
-    href="/http-api/"
-  >
-    View Documentation
+  <br/>
+  <TrackingLink href="https://developers.onflow.org/tools" eventName="Homepage_link_/dev_portal_tools/_clicked">
+    Developer Tools
   </TrackingLink>
-</p>
-
-<p>
-  Oh, that's new. 
-</p>
-</li>
+  <br/>
+  <TrackingLink href="https://developers.onflow.org/community" eventName="Homepage_link_/dev_portal_community/_clicked">
+    Community
+  </TrackingLink>
+  <br/>
+  <TrackingLink href="https://developers.onflow.org/learn" eventName="Homepage_link_/dev_portal_learn/_clicked">
+    Learn
+  </TrackingLink>
+  <br/>
+  </li>
 </ul>
 
 </div>
@@ -81,8 +68,10 @@ import {
 
 <ul className="grid-item-list">
   <li>
-    <TrackingLink  href="/fcl/tutorials/flow-app-quickstart/" eventName="Homepage_link_/fcl/tutorials/flow-app-quickstart/_clicked">Flow App Quickstart</TrackingLink> <br/>
-    <p>A detailed guide covering how to use the <TrackingLink href="/flow-js-sdk/" eventName="Homepage_link_/flow-js-sdk/_clicked">FCL (Flow Client Library)</TrackingLink> to build a serverless app that connects to Flow, using React!</p>
+    <TrackingLink href="/fcl/tutorials/flow-app-quickstart/" eventName="Homepage_link_/fcl/tutorials/flow-app-quickstart/_clicked">Flow App Quickstart</TrackingLink> <br/>
+    <p>
+      A detailed guide covering how to use the <TrackingLink href="/flow-js-sdk/" eventName="Homepage_link_/flow-js-sdk/_clicked">FCL (Flow Client Library)</TrackingLink> to build a serverless app that connects to Flow, using React!
+    </p>
     <p>Ready to jump right in? Use one of our quickstart projects:&nbsp;
       <TrackingLink href="https://github.com/muttoni/fcl-sveltekit-quickstart" eventName="Homepage_link_/https://github.com/muttoni/fcl-sveltekit-quickstart/_clicked">
       SvelteKit
@@ -152,8 +141,7 @@ import {
   <li><b>🏆 FLIP Fest Winners</b>
     <br />
     <p>
-     FLIP Fest was conducted over 3 months with over 100 developers participating in working on issues determined by
-      the Flow team and the community for reward bounties provided by Flow! Check out&nbsp;
+     FLIP Fest was conducted over 3 months with over 100 developers participating in working on issues for reward bounties provided by Flow! Check out&nbsp;
       <TrackingLink
         href="flip-fest-winners/#new-tools"
         eventName="Homepage_link_FLIP-new-tools_clicked"
@@ -348,7 +336,7 @@ import {
     <TrackingLink href="/cadence/design-patterns/" eventName="Homepage_link_/cadence/design-patterns/_clicked">
     Cadence Best Practices & Patterns
     </TrackingLink> <br/>
-    <p>A collection of helpful best-practices for writing Cadence code, sourced from the Flow team and contributions from our community.</p>
+    <p>A collection of helpful best-practices for writing Cadence code, sourced from Flow contributions.</p>
   </li>
   <li>
     <TrackingLink href="https://play.onflow.org/" eventName="Homepage_link_/https://play.onflow.org/_clicked">
@@ -369,6 +357,17 @@ import {
     SDK Guidelines
     </TrackingLink> <br/>
     <p>Considering building an SDK for Flow? These guidelines will help light your path.</p>
+  </li>
+   <li>
+    <TrackingLink
+      event="Homepage*link*/http-api-testnet/\_clicked"
+      href="/http-api/"
+    >
+      Access Node - HTTP API 
+    </TrackingLink> <br/>
+    <p>Flow Access Nodes now have an HTTP API.</p>
+    <p> <span>Mainnet: https://rest-mainnet.onflow.org/v1/</span> </p>
+    <p> <span>Testnet: https://rest-testnet.onflow.org/v1/</span></p>
   </li>
   <li>
     <TrackingLink href="/fcl/" eventName="Homepage_link_/fcl/_clicked">

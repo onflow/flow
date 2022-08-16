@@ -19,7 +19,7 @@ We ask that all researchers adhere to these guidelines.
 - Use our provided communication channels to securely report vulnerability information to us.
 - Keep information about any bug or vulnerability you discover confidential between us until we publicly disclose it.
 - Please don’t use scanners to crawl us and hammer endpoints. They’re noisy and we already do this. If you find anything this way, we have likely already identified it.
-- Never attempt non-technical attacks such as social-engineering, phishing, or phisucal attcks on our employees, users, or infrastructure.
+- Never attempt non-technical attacks such as social-engineering, phishing, or physical attacks on our employees, users, or infrastructure.
 
 
 

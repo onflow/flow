@@ -6,7 +6,6 @@ title: Developer FAQ
 
 We recommend reading the Flow Primer, Cadence Introduction and first few Cadence tutorials before you read this, it will help with understanding some of the concepts.
 
-
 ### How does the network verify that the execution was performed correctly?
 
 Flow utilizes a new blockchain architecture that allows for decentralized computation that is verified by other nodes in the network. Execution nodes run the transactions and update the state and verification nodes use complex cryptography to verify that these were performed correctly. See the Flow node types documentation for more details.
@@ -33,7 +32,7 @@ The main purpose of allowing multiple signers of a transaction is to be able to 
 
 ### Is there a publicly available API endpoint (gRPC, JSON-RPC..) we can send the transactions to?
 
-To send transactions to the network, you must submit your transactions to a public access node to be included. See the [dapp deployment guide for more info](../dapp-deployment/index)
+To send transactions to the network, you must submit your transactions to a public access node to be included. See the [dapp deployment guide for more info](/dapp-development/deployment/)
 
 ## Cadence General FAQ
 
@@ -55,7 +54,7 @@ Currently, there is no explicit protection against re-entrancy, but we are final
 
 ### As only the public endpoint is a reference to the contract storage, can anyone access/read the contract code and verify it once published?
 
-When a contract is deployed, all of its public types, fields, and methods are available for anyone to call. Of course, if the methods are declared as part of a Resource type, then you must have an instance of that Resource type in order to call those methods.
+When a contract is deployed, all of its public types, fields, and methods are available for anyone to call. If the methods are declared as part of a Resource type, then you must have an instance of that Resource type in order to call those methods.
 
 In Cadence, almost all access control is managed through Capability-Based Security. Instead of restricting access based on “who you are” (via access control lists, or `msg.sender`), Cadence typically restricts access based on “what you have” (via Resource types and capabilities).
 
@@ -87,7 +86,7 @@ Transactions are divided into three phases, `prepare`, `execute`, and `post`.
 2. The `execute` phase does not have access to account storage and thus can only modify the objects that were removed in the `prepare` phase and call function on external contracts and objects.
 3. The `post` phase is where the function can perform any condition checks to ensure that the actions were all performed correctly and the desired outcome was achieved.
 
-Transactions are split up this way primarily because by not allowing the execute phase to access account storage, we can statically verify which assets and areas of the signer's storage a given transaction can modify. This ability can be used by wallets or applications that are submitting transactions for users to be able to clearly show what a transaction could be potentially altering. When submitting application-generated transactions, users can have more confidence that they aren't getting fed a malicious or dangerous transaction.
+Transactions are split up this way primarily because by not allowing the execute phase to access account storage, we can statically verify which assets and areas of the signer's storage a given transaction can modify. This ability can be used by wallets or applications that are submitting transactions for users to be able to show what a transaction could be potentially altering. When submitting application-generated transactions, users can have more confidence that they aren't getting fed a malicious or dangerous transaction.
 
 As an example: This transaction could statically know that nothing besides functions that are exposed with the `Provider` interface will be called:
 
@@ -115,8 +114,6 @@ transaction {
 }
 ```
 
-
-
 ### What is the difference between `Void` and `nil` ?
 
 - `Void`: is a type used to indicate that a function returns nothing. It is optional to include in a function definition.
@@ -128,7 +125,7 @@ Currently, the upgrading process for smart contracts is relatively basic. You ca
 
 The general idea is that as long as you control the private keys to an account, you can upgrade the contract code by deploying new code. This will be possible at launch, but it is still a risky process because you need to make sure that the new code is still compatible with resources in user's accounts.
 
-When you decide that you are ready for the contract to be immutable, you can simply revoke the keys to your account and the contract becomes immutable.
+When you decide that you are ready for the contract to be immutable, you can revoke the keys to your account and the contract becomes immutable.
 
 In the early versions of Flow, the strict decentralization rules will not all be implemented, so upgrading is something that can be handled manually by conferring with the node operators, but the network will transition to a completely decentralized model after a few months and a more formal way of upgrading will be designed by then.
 
@@ -161,7 +158,7 @@ We are also working on designing safer schemes to use in smart contracts.
 
 ### How will an Oracle work in Cadence?
 
-Oracles can work in Cadence just like they do in other blockchain environments. You can make a smart contract that registers events and give an authorization resource to an account that an oracle can send transactions to log off-chain events.
+Oracles can work in Cadence like they do in other blockchain environments. You can make a smart contract that registers events and give an authorization resource to an account that an oracle can send transactions to log off-chain events.
 
 ## Resources FAQs
 
@@ -204,13 +201,13 @@ If there is a vulnerability in the smart contract code, it would need to be expl
 
 Resources also are protected by Cadence's strong static type system to ensure that resources can never be duplicated or lost by accident or by malice.
 
-### What is stopping someone from just creating a bunch of `Vault` resources out of thin air and having infinite money?
+### What is stopping someone from creating a bunch of `Vault` resources out of thin air and having infinite money?
 
 Resource creation is restricted to the context in which it was defined, meaning that only code defined within the same contract as the resource can create new resources. This ensures that users can know upfront what code will be able to create new Vaults and the restrictions that are put on that code. This is why the fungible token contracts define a function for creating empty Vaults that users can call.
 
 ### Why do arrays and dictionaries behave differently when they have a resource stored in them?
 
-If you want to store a resource within an array or dictionary, then that array or dictionary needs to have to same protections built into it that resources have, because it contains one! The array becomes a resource type and all the rules that apply to resource now apply to the array. We wouldn't want to accidentally lose or destroy a resource just because we put it in an array!
+If you want to store a resource within an array or dictionary, then that array or dictionary needs to have to same protections built into it that resources have, because it contains one! The array becomes a resource type and all the rules that apply to resource now apply to the array. We wouldn't want to accidentally lose or destroy a resource because we put it in an array!
 
 ### On Ethereum, if I want to know what tokens someone owns, I call ownerOf() on all the tokens, and see which ones return the person in question. Can I call ownerOf() on Flow?
 
@@ -226,17 +223,17 @@ The Cadence Resource model would allow us to attach each birthing fee _to the Ki
 
 But when you have this flexible ownership model, where Resources can own Resources (who can, in turn, own more Resources), what does it mean to say "Who owns this token?"
 
-In the Ethereum ledger model, we can clearly say that the CK smart contract owns that 8.5 ETH, and then we leave it up to the CK smart contract to correctly divvy up that ETH per Kitty.
+In the Ethereum ledger model, we can say that the CK smart contract owns that 8.5 ETH, and then we leave it up to the CK smart contract to correctly divvy up that ETH per Kitty.
 
 But (secret shame time!) it turns out that the way we manage that birthing fee has a small bug in it: If we change the birthing fee, the updated fee _retroactively_ applies to previously initiated births.
 
-In practice, we've only had to change the birthing fee a few times (in response to the crazy gas prices we helped to create!), but that miscalculation error is there, and we have to be pretty careful not to change the fee too abruptly because of it.
+In practice, we've only had to change the birthing fee a few times (in response to the high gas prices we helped to create!), but that miscalculation error is there, and we have to be pretty careful not to change the fee too abruptly because of it.
 
 If we used the Cadence Resource model, and that birthing fee was attached to the pregnant cat it is associated with, that bug would be impossible.
 
 And it would be impossible because the CK smart contract wouldn't own that fee; the cat itself would own that fee.
 
-So when you ask the question "Who owns these coins?", and those coins are attached to Sally's CryptoKitty, what should the answer be? The Kitty? Well, that's not an account. Surely the answer to "Who owns this?" should be an account. Should it be Sally? Well, Sally owns the cat, and the cat owns the coins, so that kind of seems correct, but Sally doesn't have any control over how those coins are spent. She can't get them out of her cat! So saying she owns them isn't really correct either.
+So when you ask the question "Who owns these coins?", and those coins are attached to Sally's CryptoKitty, what should the answer be? The Kitty? Well, that's not an account. Surely the answer to "Who owns this?" should be an account. Should it be Sally? Well, Sally owns the cat, and the cat owns the coins, so that kind of seems correct, but Sally doesn't have any control over how those coins are spent. They can't get them out of their cat! So saying they own them isn't really correct either.
 
 So how _should_ we think about this then?
 
@@ -250,15 +247,15 @@ Finally, we note that the reason we have to ask "Who owns this NFT?" in Ethereum
 
 In Cadence, you ask what I consider to be the more natural question: What tokens do _you_ own?
 
-We ensure that asking that question is efficient and _for the vast majority of use cases_, this is the question we actually want to ask! I assume that OpenSea works just like CryptoKitties does: We ask the blockchain "Who owns this NFT?" a million times and cache (or filter) for individual owners, because there is no way to directly get a list of tokens by owner.
+We ensure that asking that question is efficient and _for the vast majority of use cases_, this is the question we actually want to ask! I assume that OpenSea works like CryptoKitties does: We ask the blockchain "Who owns this NFT?" a million times and cache (or filter) for individual owners, because there is no way to directly get a list of tokens by owner.
 
 So, we then might ask the question: Okay, I can get a list of all of my NFTs, or I can query a list of all of Sally's NFTs, but if I have an off chain cache of this ownership data for efficiency reasons, how do I know when that list has changed or not?
 
 The _standard_ mechanism for holding your NFT collection is to have a Resource object which represents your collection, and it posts an event whenever an NFT is added or removed from that collection.
 
-So, if you run a website that Sally uses to look at her NFT collection, you just watch for events announcing NFTs moving in and out of her Collection, and you'll always be up-to-date.
+So, if you run a website that Sally uses to look at their NFT collection, you watch for events announcing NFTs moving in and out of their Collection, and you'll always be up-to-date.
 
-It's true that an NFT might leave her Collection and end up somewhere else (maybe not even in _anyones_ Collection!), but that doesn't change the fact that you have an accurate and up-to-date reflection of Sally's Collection without having to re-query it each time.
+It's true that an NFT might leave their Collection and end up somewhere else (maybe not even in _anyones_ Collection!), but that doesn't change the fact that you have an accurate and up-to-date reflection of Sally's Collection without having to re-query it each time.
 
 ## Capability Security FAQs
 

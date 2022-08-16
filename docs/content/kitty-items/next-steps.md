@@ -40,11 +40,21 @@ The KittyItems NFTs on the marketplace do not have any utilitarian function. You
 
 If an NFT is displayed, it shows who owns the NFT. This is mostly represented by a Flow account address, something that is cryptic and difficult to remember. Users will not be able to associate addresses with other people in the community, like their friends. That's the services like [.find](https://find.xyz/) come into play - they make it possible for users to claim usernames for their address. You could integrate with a naming service to display avatars and/or usernames instead of the cryptic addresses.
 
+### Use production-ready database
+
+The Kitty Items project uses [SQLite](https://www.sqlite.org/index.html) to store listings on the marketplace. This engine was used to help you ramp up quickly without the need to think about your own database instance. However, for production-ready applications you should consider replacing SQLite with a database that fits your specific needs and preferences.
+
+If you are looking for a step by step tutorial specifically for Kitty Items, you might be interested in [this blog post from the Fauna team](https://dev.to/fauna/shrink-your-dapps-server-footprint-with-fauna-2598).
+
 ### Cutting edge: Support royalties
 
 If you want to work on a cutting edge feature, you can explore how to support royalties that live alongside the NFT itself. With that, you can ensure that an NFT creator will receive a share from secondary sales.
 
 The Flow community is [currently working on the royalty standard](https://github.com/onflow/flow-nft/issues/53). Check it out and chime in if you have any thoughts!
+
+## Deploy your Kitty Items project to the mainnet
+
+You successfully deployed your project to the testnet, which is helpful to test against a live network of the Flow blockchain. However, once you've improved your project and are ready to transfer it to a production environment, you need to deploy your contracts to the mainnet. [Follow the Mainnet Deployment guide](/dapp-development/mainnet-deployment/) to accomplish that.
 
 ## Get inspired by other projects
 

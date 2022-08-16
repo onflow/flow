@@ -253,6 +253,8 @@ const sources = [
         "docs/signature-verify.md",
         "docs/snapshot-save.md",
         "docs/start-emulator.md",
+        "docs/tools.md",
+        "docs/data-collection.md",
       ],
     },
   },
@@ -273,6 +275,9 @@ const sections = [
     sidebarShowMainNav: true,
     sidebarAlwaysExpanded: false,
     sidebar: {
+      Glossary: [
+        "[Glossary](/glossary/index/)"
+      ],
       Tutorials: [
         "[Flow App Quickstart](/fcl/tutorials/flow-app-quickstart)",
         "[Introduction to Cadence](/cadence/tutorial/01-first-steps)",
@@ -350,12 +355,15 @@ const sections = [
       Tutorial: [
         "docs/tutorial/01-first-steps",
         "docs/tutorial/02-hello-world",
-        "docs/tutorial/03-fungible-tokens",
-        "docs/tutorial/04-non-fungible-tokens",
-        "docs/tutorial/05-marketplace-setup",
-        "docs/tutorial/06-marketplace-compose",
-        "docs/tutorial/07-resources-compose",
-        "docs/tutorial/08-voting",
+        "docs/tutorial/03-resources",
+        "docs/tutorial/04-capabilities",
+        "docs/tutorial/05-non-fungible-tokens-1",
+        "docs/tutorial/05-non-fungible-tokens-2",
+        "docs/tutorial/06-fungible-tokens",
+        "docs/tutorial/07-marketplace-setup",
+        "docs/tutorial/08-marketplace-compose",
+        "docs/tutorial/09-voting",
+        "docs/tutorial/10-resources-compose",
       ],
     },
   },
@@ -365,7 +373,7 @@ const sections = [
     sidebarAlwaysExpanded: true,
     sidebar: {
       null: ["[Home](/)"],
-      "Flow CLI": ["docs/index", "docs/install"],
+      "Flow CLI": ["docs/index", "docs/install", "docs/data-collection"],
       Keys: ["docs/generate-keys", "docs/decode-keys"],
       Accounts: [
         "docs/get-accounts",
@@ -406,6 +414,7 @@ const sections = [
         "docs/signature-generate",
         "docs/signature-verify",
         "docs/snapshot-save",
+        "docs/tools",
       ],
     },
   },
@@ -440,12 +449,15 @@ const sections = [
         "dapp-development/in-dapp-payments",
         "dapp-development/smart-contracts",
         "dapp-development/dapp-infrastructure",
+        "dapp-development/DappArchitectures",
+        "dapp-development/NFT-drop-styles",
       ],
       "Deploying Your Dapp": [
         "dapp-development/deployment",
         "dapp-development/contract-testing",
         "dapp-development/testnet-deployment",
         "dapp-development/testnet-testing",
+        "dapp-development/mainnet-account-setup",
         "dapp-development/mainnet-deployment",
       ],
     },

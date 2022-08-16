@@ -1,0 +1,13 @@
+name: "Block @nocommit Merges"
+on: [pull_request]
+
+jobs:
+  check_pr:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check for @nocommit
+      uses: bthaile/no-merge-action-msg@v0.5
+      with:
+        github-token: ${{github.token}}
+        keyword: "flow/flips"
+        message: "FLIP additions and updates should be submitted to https://github.com/onflow/flips"

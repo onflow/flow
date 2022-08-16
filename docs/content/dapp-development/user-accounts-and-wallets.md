@@ -19,14 +19,14 @@ For example, to purchase an NFT from an artist on the [Versus auction website](h
 
 ### Flow Client Library (FCL)
 
-The Flow Client Library (FCL) is a framework that [standardizes and simplifies the way dapps and wallets interact with each other](https://www.onflow.org/post/inside-flow-the-power-of-simplicity-with-fcl). By using FCL, a dapp developer can support a variety of wallet providers with just several lines of code.
+The Flow Client Library (FCL) is a framework that [standardizes and simplifies the way dapps and wallets interact with each other](https://www.onflow.org/post/inside-flow-the-power-of-simplicity-with-fcl). By using FCL, a dapp developer can support a variety of wallet providers with a few lines of code.
 
 FCL provides the following functionality out of the box:
 
 * User registration and login
 * Transaction signing and submission
 
-FCL-powered dapps are free to construct transactions which are then passed to the user’s wallet for signing, all without gaining access to the user’s private key. Users can easily onboard themselves to any FCL-enabled dapp in the Flow blockchain ecosystem and can use the same wallet provider across different dapps.
+FCL-powered dapps are free to construct transactions which are then passed to the user’s wallet for signing, all without gaining access to the user’s private key. Users can onboard themselves to any FCL-enabled dapp in the Flow blockchain ecosystem and can use the same wallet provider across different dapps.
 
 In addition to the above, FCL-powered dapps have the following benefits:
 
