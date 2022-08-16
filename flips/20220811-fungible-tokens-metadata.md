@@ -5,7 +5,7 @@
 | **FLIP #1087**    | [1087](https://github.com/onflow/flow/pull/1087)|
 | **Author** | Álvaro Lillo Igualada (alvaro.lillo@dapperlabs.com) |
 | **Sponsor**   | Josh Hannan (joshua.hannan@dapperlabs.com)             |
-| **Updated**   | 2022-08-11                                           | 
+| **Updated**   | 2022-08-16                                           | 
 
 ## Objective
 
@@ -13,11 +13,11 @@ This proposal, in a similar fashion as the NFT Metadata, will make possible to c
 
 ## Motivation
 
-TBD
+As the Flow ecosystem continues growing the need of assuring contract and external apps interoperability increases. The development of the NFT Metadata standards brought awareness of how important is the way any token on Flow is able to communicate its features to other dapps, and of the advantages of doing so in a standardized way.
 
 ## User Benefit
 
-TBD
+The creation of a Metadata standard for fungible tokens will bring two major user benefits, discoverability and interoperability. It will make way easier to any FT to be presented on any app that would want to feature several FT and also will ease how those FT can be used by an user programmatically.
 
 ## Design Proposal
 
@@ -42,11 +42,11 @@ Also, based on the experience acquired developing the NFT views a `FTView` that 
     /// view.
     ///
     pub struct FTView {
-        pub let ftDisplay: FTDisplay?     
-        pub let vaultData: FTVaultData?
+        pub let ftDisplay: FTDisplay
+        pub let vaultData: FTVaultData
         init(
-            ftDisplay : FTDisplay?,
-            vaultData : FTVaultData?
+            ftDisplay : FTDisplay,
+            vaultData : FTVaultData
         ) {
             self.ftDisplay = ftDisplay
             self.vaultData = vaultData
@@ -66,42 +66,32 @@ The views contained on the `FTView` will be two; `FTDisplay` that will help retr
         pub let name: String
 
         // Description that should be used to give an overview of this FT.
-        pub let description: String
+        pub let description: String?
 
         /// A small logo that represents the FT.
         ///
         /// This field should be a web-friendly file (i.e JPEG, PNG)
         /// that can be displayed in lists, link previews, etc.
-        pub let logo: AnyStruct{File}
+        pub let logo: AnyStruct{File}?
 
-        // External link to a URL to view more information about this collection.
-        pub let externalURL: ExternalURL
+        // External link to a URL to view more information about this token.
+        pub let externalURL: ExternalURL?
 
-        // Square-sized image to represent this collection.
-        pub let squareImage: Media
-
-        // Banner-sized image for this collection, recommended to have a size near 1200x630.
-        pub let bannerImage: Media
-
-        // Social links to reach this collection's social homepages.
+        // Social links to reach this token's social homepages.
         // Possible keys may be "instagram", "twitter", "discord", etc.
-        pub let socials: {String: ExternalURL}
+        pub let socials: {String: ExternalURL}?
 
         init(
             name: String,
-            description: String,
-            logo: AnyStruct{File},
-            externalURL: ExternalURL,
-            squareImage: Media,
-            bannerImage: Media,
-            socials: {String: ExternalURL}
+            description: String?,
+            logo: AnyStruct{File}?,
+            externalURL: ExternalURL?,
+            socials: {String: ExternalURL}?
         ) {
             self.name = name
             self.description = description
             self.logo = logo
             self.externalURL = externalURL
-            self.squareImage = squareImage
-            self.bannerImage = bannerImage
             self.socials = socials
         }
     }
@@ -167,7 +157,7 @@ In order to be able to use the `FTDisplay` we will need to re-use or re-implemen
 
 ### Drawbacks
 
-TBD
+Main drawback could came from inefficient implementations of views from fungible token contracts.
 
 ### Alternatives Considered
 
@@ -205,7 +195,7 @@ This feature can be rolled out with no fear of changes to the user. However docu
 
 ## Related Issues
 
-TBD
+
 
 ## Prior Art
 
