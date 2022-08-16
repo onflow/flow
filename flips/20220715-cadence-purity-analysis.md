@@ -10,8 +10,8 @@
 ## Objective
 
 This FLIP proposes to add a new syntax and accompanying semantic analysis to determine or 
-enforce that a given function or method is "pure", that is, lacking in side effects. This
-would allow additional checker rules to enforce immutability in function conditions. 
+enforce that a given function or method is "pure", that is, lacking in side effects. We would
+then add an additional checker rules to enforce purity in function conditions. 
 
 ## Motivation and User Benefit
 
@@ -152,6 +152,9 @@ while these would not:
     let x: (pure (): Void) = fun() {}
     let y: ((((): Void)): Void) = fun foo(f:(pure (): Void)) {} // contravariance
 ```
+
+Once purity is enforced in functions with `pure` annotations, in order to require it in function conditions we can 
+simply treat pre-conditions and post-conditions as pure contexts as if they had `pure` annotations themselves. 
 
 ### Drawbacks
 
