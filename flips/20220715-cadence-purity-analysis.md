@@ -2,10 +2,10 @@
 
 | Status        | (Proposed)       |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | [1056](https://github.com/onflow/flow/pull/1056) |
+| **FLIP #**    | [1056](https://github.com/onflow/flow/pull/1056)     |
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
-| **Updated**   | 2022-07-29                                           |
+| **Updated**   | 2022-08-16                                           |
 
 ## Objective
 
@@ -53,7 +53,7 @@ pub resource interface R {
 }
 ```
 
-Any functions that do not have a `pure` annotations will be considered impure. 
+Any function that does not have a `pure` annotation will be considered impure. 
 
 Function types can also have purity annotations, to be placed after the opening parenthesis but before the parameter list. So, for example, these are valid
 types:
@@ -67,7 +67,7 @@ Any function types without an explicit purity annotation will be considered impu
 
 ### Type Checking
 
-A function that is `pure` (if it was explicitly declared with the `pure` keyword) may not perform any operations with side effects 
+A function that is `pure` (it was explicitly declared with the `pure` keyword) may not perform any operations with side effects 
 within its body. Operations with side effects for the purpose of this analysis are:
 
 * Calling a function that is not `pure`
@@ -106,12 +106,16 @@ as in this case, for example:
     }
     ```
 
-    Cases like this will have to be rejected statically for safety.
+    Cases like this will have to be rejected statically for safety. Field reads, of course, will remain valid, as they do not modify any state. 
 
 * Writing to storage. This includes operations like `save` and `load` (since if a resource is loaded it will be moved out of storage), as well as `unlink`, but
 not operations like `copy`, `borrow`, `type`, or `getCapability`.
 
 * Writing to account state. This includes operations like adding, updating or removing a contract and adding, updating or removing account keys.
+
+* Logging data (calling the `log` function)
+
+* Emitting events
 
 * Mutating a reference. Any writes to references will have to be rejected, as it is generally not possible to know what value is being referenced. Consider code like the following:
 
@@ -126,7 +130,7 @@ not operations like `copy`, `borrow`, `type`, or `getCapability`.
     }
     ```
 
-Any function declared to be `pure` will enforce that none of these operations occur in their bodies. If such an operation does occur, then the checker will report
+Any functions declared to be `pure` will enforce that none of these operations occur in their bodies. If such an operation does occur, then the checker will report
 an error identifying the impure operation. Impure function declarations have no additional typechecking behavior; any operations are permitted.
 
 Note that the current design allows both emitting events and logging data from within a pure function. These are traditionally considered side effects, but 
@@ -202,10 +206,6 @@ the large amount of existing code in Cadence however, adoption will be easier by
 is the default assumption. 
 
 ## Questions and Discussion Topics
-
-* Should `pure` functions be allowed to emit events and log data? These are technically side effects, but
-they are not problematic for the specific use cases we have identified for this analysis. Are there any other
-potential use cases for this analysis that would require events and logging to be restricted in `pure` contexts?
 
 * Given that `pure` in Cadence is closer to `view` in Solidity, a language with which our users may be familiar, 
 should we instead consider using `view` instead of `pure` in our implementation of this feature?
