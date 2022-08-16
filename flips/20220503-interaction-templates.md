@@ -276,8 +276,8 @@ The cadence code the interaction executes.
 For each dependency of the interaction (each contract that is imported in the cadence of the interaction), there must be network keyed (mainnet || testnet) dependency information. The information for each network should contain the address of the account where the contract is deployed, the fully qualified identifier for the contract, dependency tree pin and block height the pin was preformed at. The dependency tree pin is performed by the following pseudocode:
 
 ```javascript
-let contracts_imported_in_interaction_cadence = [...]
-let horizen = contracts_imported_in_interaction_cadence
+let contract_imported_in_interaction_cadence = ...
+let horizen = [contract_imported_in_interaction_cadence]
 let import_hash = ""
 
 for contract in horizen {
@@ -353,117 +353,39 @@ Repositories of Interaction Templates could be created to store Interaction Temp
 
 Systems for Interaction Template discovery could proxy requests for an Interaction Template to the repository it's known to exist in. Since Interaction Templates are just data, they could be cached and distributed amongst such repositories as desired.
 
-### Interaction Audits
+### Interaction Template Audits
 
-An Interaction Audit represents a trusted entity vouching for the correctness and safety of an Interaction Template.
+An Interaction Template Audit represents a trusted entity vouching for the correctness and safety of an Interaction Template.
 
 Any entity can act as an Auditor and produce Interaction Template Audits.
 
-Consumers such as wallets or applications can verify Interaction Template Audits produced by entities they choose to trust. If verified, the consumer can then have greater confidence in the correctness and security of the Interaction Template it corresponds to.
+Consumers such as wallets or applications can query for Interaction Template Audits produced by entities they choose to trust. If found that an auditor has audited a given Interaction Template, the consumer can then have greater confidence in it's correctness and security.
 
-Here is an example of some `InteractionTemplateAudit`:
+Auditors will first add an Interaction Template Audit Manager resource to their account. The resource will maintain a map of `Interaction Template ID -> isAudited`. This map should be queryable, so a consumer can check if a given auditor with an Interaction Template Audit Manager resource has audited a given Interaction Template.
 
-```javascript
-{
-    f_type: "InteractionTemplateAudit",
-    f_version: "1.0.0",
-    data: {
-        id: "a2b2d73def...aabc5472d2", // InteractionTemplate ID
-        signer: {
-            network: "mainnet" // "mainnet" | "testnet" | "emulator"
-            address: "0xABC123", // TRUSTED_AUDITOR
-            key_id: 1,
-            signature: "aa5s617dty7a8wer7wer781239"
-        }
-    }
-}
+An auditor should be able to add and revoke audits from their Interaction Template Audit Manager resource.
 
-{
-    f_type: "InteractionTemplateAudit",
-    f_version: "1.0.0",
-    data: {
-        id: "a2b2d73def...aabc5472d2", // InteractionTemplate ID
-        signer: {
-            network: "testnet" // "mainnet" | "testnet" | "emulator"
-            address: "0xDEF456", // FLOW_TEAM
-            key_id: 2,
-            signature: "sdfasdf123123asdfasdfasdf234"
-        }
-    }
-}
-```
-
-#### `f_type & f_version`
-
-These fields declare the data structure type and data structure version. The version instructs consumers of this data structure how to operate on it. It also allows the data structure to change in future versions.
-
-#### `data.id`
-
-The id of the Interaction Template the audit was produced for.
-
-#### `data.signer`
-
-Information about the entity that produced the audit. The data structure contains an on-chain `address` and `key_id` corresponding to the entity. The data structure also contains the network the signer account exists on. The `signature` is produced by the private key maintained by the auditor, and can be verified by the public key corresponding to the `key_id` on the account corresponding to `address`.
-
-The signature is produced by signing over the `data.id` identifier of the Interaction Template the audit corresponds to.
-
-### Interaction Audit Revocation
-
-An auditor may want to revoke an audit they previously produced.
-
-To do so, the auditor will execute a transaction to revoke the key corresponding to `key_id` on the account corresponding to `address` on the `data.signer` of the Interaction Template Audit.
-
-### Interaction Audit Creation
-
-When an auditor creates an Interaction Template Audit, they do so by creating a signature over the `data.id` of the Interaction Template they're auditing. The key used to generate this signature corresponds to a key on an on-chain account the auditor maintains.
-
-When generating this signature, the auditor may choose to use a unique key pair to do so. They may alternatively choose to use a key pair thats previously been used to create signatures for other Interaction Template Audits.
-
-If the auditor chooses a unique key pair for each Interaction Template Audit, they can revoke this individual key at a future time, thereby revoking a single audit. If a key was used to produce multiple Interaction Template Audits, the revocation of the single key would revoke multiple audits.
-
-An auditor can choose to "bundle" Interaction Template Audits to keys used to generate them in any number of ways.
-
-### Interaction Audits Verification
-
-A verifier of an Interaction Template Audit should first check that the `key_id` on the account corresponding to `address` on the `data.signer` is not revoked. Then the verifier should check that the `signature` is valid for the `key_id` on the account corresponding to `address` on the `data.signer`. If both checks pass, the Interaction Template Audit should be considered valid.
-
-### Audit Discovery
-
-Auditors will need to create a mechanic for contract developers to submit their Interaction Templates for review.
-
-Once reviewed, auditors will then make available their Interaction Template Audits in some queryable way. For example, an auditor may choose to host a web-server which can return audits produced for a given template id:
-
-```
-GET audits.trusted-auditor.com/id/{template_id} -> InteractionTemplateAudit
-```
-
-Like with Interaction Templates, repositories of Interaction Template Audits could be created to store Interaction Template Audits produced by various auditors. Auditors could choose to submit their Interaction Template Audits to such repositories.
-
-Systems for Interaction Template Audit discovery could proxy requests for an Interaction Template Audit to the repository it's known to exist in. Since Interaction Templates Audits are just data, they could be cached and distributed amongst such repositories as desired.
+The Interaction Template Audit Manager should emit events when an audit is added by a given auditor, and when an audit is revoked by a given auditor.
 
 ### Proposed Workflow
 
 The following diagram illustrates how a Contract Developer, Auditor, Application and Wallet might work together, in conjunction with an Interaction Template and Interaction Template Audit to carry out a "Purchase NFT" transaction.
 
-In this example, the Contract Developer makes available their Interaction Template in a queryable way for both the Application and Wallet, and the Auditor makes available their Interaction Template Audit in a queryable way for the Wallet.
+In this example, the Contract Developer makes available their Interaction Template in a queryable way for both the Application and Wallet, and the Auditor adds their audit to their Interaction Template Audit Manager resource on the account they control.
 
-![ixtemplate-enitity-diagram4-nodiscovery](https://user-images.githubusercontent.com/14852344/182946116-c3aad9cc-fa05-4ed5-9f04-3441577a3509.png)
+![ixtemplate-enitity-diagram5-nodiscovery](https://user-images.githubusercontent.com/14852344/184948691-29240855-37d4-4200-8fe0-2bf692041184.png)
 
-Alternatively, there could exist an Interaction Template and Interaction Template Audit discovery service, which could cache and make available the Interaction Template and Interaction Template Audit data strcutures produced by the Contract Developer and Auditor respectively. The discovery service could aggregate and cache Interaction Templates and Interaction Template Audits stored accross various repositories of them. In this system, the Application and Wallet can query from the discovery service, instead of needing to be able to potentially query from multiple sources.
+Alternatively, there could exist an Interaction Template discovery service, which could cache and make available the Interaction Template data strcutures produced by Contract Developers. The discovery service could aggregate and cache Interaction Templates stored accross various repositories. In this system, the Application and Wallet can query from the discovery service, instead of needing to be able to potentially query from multiple sources.
 
-![ixtemplate-enitity-diagram3](https://user-images.githubusercontent.com/14852344/182943297-d4cbc753-5bf5-40ac-9712-5722c17fe0dc.png)
+![ixtemplate-enitity-diagram4](https://user-images.githubusercontent.com/14852344/184948670-9c33ee5e-9a0f-4779-b3d2-1cb2401aee14.png)
 
-Wallets may choose to trust the same auditor, which makes each Interaction Template Audit produced by such an auditor usable by as many entities that choose to trust it. This presents a more scalable pattern than exists prior to this FLIP, where each wallet needed to independently audit each transaction should they choose to do so.
+Wallets may choose to trust the same auditor, which makes each audit produced by such an auditor usable by as many entities that choose to trust it. This presents a more scalable pattern than exists prior to this FLIP, where each wallet needed to independently audit each transaction should they choose to do so.
 
-![ixtemplates-sharedauditor](https://user-images.githubusercontent.com/14852344/177349302-9c1ecb51-b054-4719-b26c-9a86ac0758c0.png)
+![ixtemplates-sharedauditor2](https://user-images.githubusercontent.com/14852344/184949891-cfc746ef-8335-4f96-ba7b-df0932d6b492.png)
 
-Should a wallet trust multiple auditors, they can query from each for any Interaction Template Audit produced for a given Interaction Template. Since auditors may not have each audited the same Interaction Template, trusting multiple auditors can allow wallets to have greater audit coverage over possible Interaction Template they may receive.
+Should a wallet trust multiple auditors, they can query from each for audits produced for a given Interaction Template. Since auditors may not have each audited the same Interaction Template, trusting multiple auditors can allow wallets to have greater audit coverage over possible Interaction Template they may receive.
 
-![IxTemplates-Multiauditor](https://user-images.githubusercontent.com/14852344/177350587-2fc5a37a-3b0c-4f96-be51-312e50ab16b4.png)
-
-If wallets choose to query from a discovery service for Interaction Template Audits, the wallet can rely on the discovery service to know how to query from each individual auditor, meaning the wallet can query for Interaction Template Audits from a single source. The wallet could select from the audits returned from the discovery service for those produced by auditors the wallet chooses to trust.
-
-![IxTemplates-Multiauditor2](https://user-images.githubusercontent.com/14852344/182947809-bfa89457-b589-4232-8717-5163cf360c7e.png)
+![IxTemplates-Multiauditor3](https://user-images.githubusercontent.com/14852344/184950498-cb290905-1fbb-4f3b-918a-7df211a26c54.png)
 
 ## Dependencies
 
@@ -471,7 +393,7 @@ Interaction Templates depend on contract developers producing and making availab
 
 ### Template, Interface and Audit Tooling
 
-To make the production of InteractionTemplate, InteractionTemplateInterface and InteractionTemplateAudit simpler for developers, support for generating these could be added to a CLI tool or webapp interface. Making these data structures easy to create will be essential for promoting this new pattern.
+To make the production of Interaction Template, Interaction Template Interface and Interaction Template Audits simpler for developers, support for generating these could be added to a CLI tool or webapp interface. Making these data structures easy to create will be essential for promoting this new pattern.
 
 ### FCL Integration
 
@@ -505,7 +427,7 @@ EXAMPLE:
 
 ```javascript
 await fcl.mutate({
-  template: "dns://transfer-flow.interactions.onflow.org",
+  template: "https://transfer-flow.interactions.onflow.org",
   args: (arg, t) => [arg("1.0", t.UFix64), arg("0xABC123DEF456", t.Address)],
 });
 ```
@@ -540,7 +462,7 @@ Wallets who chose to support Interaction Templates will need to modify their aut
 
 ## Data Structure Serialization & Identifier Generation
 
-A deterministic serialization algorithm is required to be applied prior to hashing its result to produce identifiers for the `InteractionTemplate`, `InteractionTemplateInterface` and `InteractionTemplateAudit` data structures.
+A deterministic serialization algorithm is required to be applied prior to hashing its result to produce identifiers for the `InteractionTemplate` and `InteractionTemplateInterface` data structures.
 
 By serializing each data structure into a specific format, then [RLP encoding](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/) that format, then hashing that encoding, we can generate identifiers for each data structure.
 
@@ -681,41 +603,6 @@ sha3_256(MESSAGE)
     Is the SHA3-256 hash function.
 ...
     Denotes multiple of a symbol
-```
-
-### `InteractionTemplateAudit` f_version 1.0.0
-
-```text
-audit-f-version            = Version of the InteractionTemplateAudit data structure being serialized.
-audit-f-type               = "InteractionTemplateAudit"
-auditor-network            = "mainnet" | "testnet" | "emulator"
-audit-signature            = Audit signature
-auditor-account-key-id     = Key ID of the public key on the auditor account that can be used to verify the audit
-auditor-address            = Address of the auditors account
-template-id                = ID of the InteractionTemplate this audit was produced for
-
-audit-encoded              = RLP([
-    sha3_256(audit-f-type),
-    sha3_256(audit-f-version),
-    sha3_256(template-id),
-    sha3_256(auditor-network),
-    sha3_256(auditor-address),
-    sha3_256(auditor-account-key-id),
-    sha3_256(audit-signature)
-])
-
-audit-encoded-hex          = hex( audit-encoded )
-
-audit-id                   = sha3_256( audit-encoded-hex )
-
-WHERE:
-
-RLP([ X, Y, Z, ... ])
-    Denotes RLP encoding of [X, Y, Z, ...]
-hex(MESSAGE)
-    Denotes transform of message into Hex string.
-sha3_256(MESSAGE)
-    Is the SHA3-256 hash function.
 ```
 
 ## Data Structure JSON Schemas
@@ -872,63 +759,6 @@ sha3_256(MESSAGE)
     "f_type",
     "f_version",
     "id",
-    "data"
-  ]
-}
-```
-
-### `InteractionTemplateAudit`
-
-```javascript
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "f_type": {
-      "type": "string"
-    },
-    "f_version": {
-      "type": "string"
-    },
-    "data": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "signer": {
-          "type": "object",
-          "properties": {
-            "network": {
-              "type": "string"
-            },
-            "address": {
-              "type": "string"
-            },
-            "key_id": {
-              "type": "integer"
-            },
-            "signature": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "network",
-            "address",
-            "key_id",
-            "signature"
-          ]
-        }
-      },
-      "required": [
-        "id",
-        "signer"
-      ]
-    }
-  },
-  "required": [
-    "f_type",
-    "f_version",
     "data"
   ]
 }
