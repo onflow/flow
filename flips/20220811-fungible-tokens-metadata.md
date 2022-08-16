@@ -42,11 +42,11 @@ Also, based on the experience acquired developing the NFT views a `FTView` that 
     /// view.
     ///
     pub struct FTView {
-        pub let ftDisplay: FTDisplay
-        pub let vaultData: FTVaultData
+        pub let ftDisplay: FTDisplay?
+        pub let vaultData: FTVaultData?
         init(
-            ftDisplay : FTDisplay,
-            vaultData : FTVaultData
+            ftDisplay : FTDisplay?,
+            vaultData : FTVaultData?
         ) {
             self.ftDisplay = ftDisplay
             self.vaultData = vaultData
@@ -153,11 +153,7 @@ The views contained on the `FTView` will be two; `FTDisplay` that will help retr
     }
 ```
 
-In order to be able to use the `FTDisplay` we will need to re-use or re-implement (depending on if this ends up being part of the original `MetadataViews.cdc` contract or having its own contract) the following views: `ExternalURL`, `File`, `HTTPFile`, `IPFSFile`, `Media` and `Medias`. 
-
-### Drawbacks
-
-Main drawback could came from inefficient implementations of views from fungible token contracts.
+In order to be able to use the `FTDisplay` we will need to use or import (depending on if this ends up being part of the original `MetadataViews.cdc` contract or having its own contract) the following views: `ExternalURL`, `File`, `HTTPFile`, `IPFSFile`, `Media` and `Medias`. 
 
 ### Alternatives Considered
 
@@ -193,10 +189,6 @@ Fungible Token contract owners will need to update them to add implementations f
 
 This feature can be rolled out with no fear of changes to the user. However documentation should be provided on how they can change their contracts and add views.
 
-## Related Issues
-
-
-
 ## Prior Art
 
 The already working NFT Metadata views [standard](https://github.com/onflow/flow/blob/master/flips/20210916-nft-metadata.md) has been used as the main source for this proposal.
@@ -204,7 +196,3 @@ The already working NFT Metadata views [standard](https://github.com/onflow/flow
 ## Questions and Discussion Topics
 
 Main friction point will be if we want this standard to be in a new different contract of if we want it to be part of the existent `MetadataViews.cdc` contract.
-
-Are we missing any core views that should be mandatory from the beginning?
-
-Could there be some view, like serial, that differentiates tokens from the same `Vault` depending for instance of when they where minted? (think of different years coins with the same value) Would that make them NFT rather than FT? Would ever any developer want to do that? How could we keep track of a single balance which contains slightly different tokens? Would that introduce an unnecessary complication when transferring tokens? (of course it would). This could make sense along with the [streamlined tokens proposal new `FungibleToken.Balance` interface that exposes a `getBalance()` function rather than a field just in case the FT owner wants to compute the balance](https://forum.onflow.org/t/streamlined-token-standards-proposal/3075)
