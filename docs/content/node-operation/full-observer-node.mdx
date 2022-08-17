@@ -51,6 +51,8 @@ $ cat flow_observer/bootstrap/network.key
 1fc3d962ec947bcc9d8dfae6b1e2b54dbdd208bbca0c7af094d5d52c7991257f
 ```
 
+### Step 3 Start the node
+
 The observer node can be run as a docker container
 
 ### Observer for Flow Mainnet
@@ -95,34 +97,27 @@ docker run --rm \
  --observer-networking-key-path=/bootstrap/network.key
 ```
 
-#### Docker parameters
-
+_if running on mac, replace `--network host` with `-p 9000:9000`
 
 The observer node acts as a DHT client and bootstraps from upstream access nodes which run the DHT server.
 The upstream bootstrap server is specified using the `bootstrap-node-addresses` which is the comma separated list of hostnames of the access nodes.
 The `bootstrap-node-public-keys` are the corresponding networking public key of those nodes.
 
-It also delegates many of the API calls to the upstream access node.
+The observer node delegates many of the API calls to the upstream access nodes.
+The `upstream-node-addresses` is the list of access node hostnames to which this observer node can delegate to. The list can be different from the boostrap node list.
+The `bootstrap-node-public-key` are the corresponding networking public key of those nodes.
 
-The upstream access node address needs to be specified for
-The observer node can run as a docker container
+In the above docker commands, the Flow community access nodes are being used as the upstream access nodes.
 
-### Data Provisioning Service
+By default, the Observer node will serve the gRPC API on port 9000. To change this port use the parameter, `--rpc-addr` e.g. `--rpc-addr 9005`
+Other parameters can be found [here](https://github.com/onflow/flow-go/blob/82da35141ff095fbf75ce2c950efec240ad38565/cmd/access/node_builder/access_node_builder.go#L523)
 
-The [Flow DPS](https://github.com/optakt/flow-dps/) was built by the [Optakt](https://www.optakt.io/) team
-and greatly streamlines use cases that require archival data.
-It provides a scalable and efficient way to access the history of the Flow execution state,
-both for current live [sporks](./spork) and for [past sporks](./past-sporks).
 
-For more information on the Flow DPS, see their [documentation](https://github.com/optakt/flow-dps/blob/master/README.md).
+The node should now be up and running.
 
-The full observer node functionality is provided by the [Flow DPS live indexer](https://github.com/optakt/flow-dps/tree/master/cmd/flow-dps-live),
-which consumes live state updates from the Flow network by acting as a consensus follower.
+You can use the [flow cli](https://developers.flow.com/tools/flow-cli), to query the node for blocks, transaction etc. similar to an access node.
 
-Once fully synchronized, the Flow DPS live indexer serves the [Flow DPS API](https://github.com/optakt/flow-dps/blob/master/docs/dps-api.md)
-for the active execution state in real time.
-The [Flow DPS Access API](https://github.com/optakt/flow-dps-access) can be run on top of the live indexer to enable use of the data for Access API clients.
-
-### Custom Implementations
-
-Here is an example implementation using the consensus follower library: https://github.com/onflow/full-observer-node-example
+e.g.
+```
+flow blocks get latest --host localhost:9000
+```
