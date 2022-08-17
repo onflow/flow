@@ -107,7 +107,8 @@ The observer node delegates many of the API calls to the upstream access nodes.
 The `upstream-node-addresses` is the list of access node hostnames to which this observer node can delegate to. The list can be different from the boostrap node list.
 The `bootstrap-node-public-key` are the corresponding networking public key of those nodes.
 
-In the above docker commands, the Flow community access nodes are being used as the upstream access nodes.
+_In the above docker commands, the Flow community access nodes are being used as the upstream access nodes.
+However, any other Flow access node that supports an observer node can be used_
 
 By default, the Observer node will serve the gRPC API on port 9000. To change this port use the parameter, `--rpc-addr` e.g. `--rpc-addr 9005`
 Other parameters can be found [here](https://github.com/onflow/flow-go/blob/82da35141ff095fbf75ce2c950efec240ad38565/cmd/access/node_builder/access_node_builder.go#L523)
