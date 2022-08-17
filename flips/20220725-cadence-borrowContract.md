@@ -27,8 +27,7 @@ if one of the important contracts cease to exist.
 
 - It makes it possible to use patterns that are common to Solidity developers 
 in Flow. 
-- It allows importing and using Contracts with name collision https://github.com
-/onflow/cadence/issues/1171
+- It allows importing and using contracts with name collision. See https://github.com/onflow/cadence/issues/1171
 - It will prevent single contract breaking the ecosystem
 
 ## Design Proposal
