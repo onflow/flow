@@ -5,14 +5,107 @@ description: Running an observer node locally
 ---
 
 
-A full observer node is an unstaked access node that follows the flow consensus
-and serves the Access API using local data. This allows anyone to setup an access
-node for local queries without the need for staking.
+An observer node is similar to an access node and provides a locally accessible, continuously updated and verified copy of the block data.
+It can be easily run on any consumer-grade computer which has enough disk space.
 
 ## Running a node
 
-The full observer node was built in collaboration with the Optakt team.
-The primary way to run a full observer node is with the Flow Data Provisioning Service (DPS).
+
+### Step 1 Generate the node directory structure
+The observer node requires the following directory structure,
+```
+$ tree flow_observer/
+flow_observer/
+├── bootstrap
+│         ├── network.key (file containing the node private network key)
+│         └── public-root-information
+│             └── root-protocol-state-snapshot.json (the genesis data of the current spork)
+└── data (directory used by the observer node to store block data)
+```
+
+Create the parent and the sub-directories
+e.g.
+```
+mkdir flow_observer
+mkdir flow_observer/bootstrap
+mkdir flow_observer/bootstrap/public-root-information
+mkdir flow_observer/data
+```
+
+### Step 2 Generate the network key
+
+Like any other Flow node, the observer also needs a networking ECDSA key to talk to the network.
+The [Flow cli](https://developers.flow.com/tools/flow-cli/install) can be used to generate this key.
+
+e.g.
+```
+flow keys generate
+Private Key  1fc3d962ec947bcc9d8dfae6b1e2b54dbdd208bbca0c7af094d5d52c7991257f
+Public Key   774e3812f031d57f767a0afa79bd2cfad8a99b3d20b039f6583f82a5dbc5a208be70aa616ddfa1c7676ccac0b4e4e7da78ebdac6ab0d47cbae1efec95f66a7a5
+```
+
+Store the private key in a file under the bootstrap subdirectory
+e.g.
+```
+$ cat flow_observer/bootstrap/network.key
+1fc3d962ec947bcc9d8dfae6b1e2b54dbdd208bbca0c7af094d5d52c7991257f
+```
+
+The observer node can be run as a docker container
+
+### Observer for Flow Mainnet
+
+```
+docker run --rm \
+ -v /var/flow/bootstrap:/bootstrap:ro  \
+ -v /var/flow/data:/data:rw \
+ --name flow_observer \
+ --network host  \
+ gcr.io/flow-container-registry/observer:v0.27.1 \
+ --bootstrapdir=/bootstrap \
+ --datadir=/data/protocol \
+ --bind 0.0.0.0:3569  \
+ --loglevel=info \
+ --secretsdir=/data/secrets  \
+ --upstream-node-addresses=access-008.mainnet18.nodes.onflow.org:9001 \
+ --upstream-node-public-keys=11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a \
+ --bootstrap-node-addresses=access-008.mainnet18.nodes.onflow.org:3570  \
+ --bootstrap-node-public-keys=11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a \
+ --observer-networking-key-path=/bootstrap/network.key
+```
+
+### Observer for Flow Testnet
+
+```
+docker run --rm \
+ -v /var/flow/bootstrap:/bootstrap:ro  \
+ -v /var/flow/data:/data:rw \
+ --name flow_observer \
+ --network host  \
+ --gcr.io/flow-container-registry/observer:v0.27.1 \
+ --bootstrapdir=/bootstrap \
+ --datadir=/data/protocol \
+ --bind 0.0.0.0:3569  \
+ --loglevel=info \
+ --secretsdir=/data/secrets  \
+ --upstream-node-addresses=access-003.devnet37.nodes.onflow.org:9001 \
+ --upstream-node-public-keys=b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7 \
+ --bootstrap-node-addresses=access-003.devnet37.nodes.onflow.org:3570  \
+ --bootstrap-node-public-keys=b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7 \
+ --observer-networking-key-path=/bootstrap/network.key
+```
+
+#### Docker parameters
+
+
+The observer node acts as a DHT client and bootstraps from upstream access nodes which run the DHT server.
+The upstream bootstrap server is specified using the `bootstrap-node-addresses` which is the comma separated list of hostnames of the access nodes.
+The `bootstrap-node-public-keys` are the corresponding networking public key of those nodes.
+
+It also delegates many of the API calls to the upstream access node.
+
+The upstream access node address needs to be specified for
+The observer node can run as a docker container
 
 ### Data Provisioning Service
 
