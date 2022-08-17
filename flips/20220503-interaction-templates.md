@@ -444,11 +444,9 @@ await fcl.query({
 
 Since a URL can remain static, while the Interaction Template it corresponds to dynamic and able to change, this allows developers to always request the most up to date implementation of an interaction - enabling a mechanic for contract developers to modify their contracts and interactions while helping to prevent any downstream breaking changes.
 
-FCL will also need to be modified to send the Interaction Template, if provided, to the wallet as part of a transaction voucher during signing.
-
 ### Wallet Integration
 
-Wallets who chose to support Interaction Templates will need to modify their authorization service to consume an Interaction Template from the signable voucher sent to it. Wallets will then need to query from the auditors they trust for Interaction Template Audits for this template, and use those audits to gain confidence in the security and correctness of the Interaction Template.
+Wallets who chose to support Interaction Templates will need to modify their authorization service to query for Interaction Templates that match the cadence recieved in the signable voucher. Wallets will then need to query from the auditors they trust for Interaction Template Audits for this template, and use those audits to gain confidence in the security and correctness of the Interaction Template.
 
 ## Prior Art
 
