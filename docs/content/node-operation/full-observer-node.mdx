@@ -4,11 +4,31 @@ sidebar_title: Observer Node
 description: Running an observer node locally
 ---
 
+An observer node is similar to an access node and provides a locally accessible, continuously updated and verified copy of the block data. It serves the Access gRPC API but, unlike an access node, an observer node does not need to be staked and **anyone** can run it without being added to the approved list of nodes.
 
-An observer node is similar to an access node and provides a locally accessible, continuously updated and verified copy of the block data.
-It can be easily run on any consumer-grade computer which has enough disk space.
+The observer node bootstraps by connecting to an access node and becoming part of the public network comprised of access nodes and other observer nodes. It then continuously receives blocks that are being added to the chain either directly from the access node or from other observer nodes that are part of the public network.
+However, it makes no trust assumption of the upstream access node or the observer node which is providing the block and locally verifies that the blocks that are received are the correct extension of the chain e.g After receiving valid blocks A, B and C when it receives block D, it verifies that block D is indeed signed by the consensus nodes and is a valid next block. The block data that is received is indexed and made available via the Access gRPC API. For Collection, Transactions and Account queries, it delegates those requests to the upstream access node. Similarly, transactions and scripts sent to an observer node are also forwarded to the upstream access node. Future versions of the observer node will be able to serve this data locally as well.
+
+Since the observer node is not staked, it does not produce or execute blocks but instead serves as an _unstaked access node_ that can be easily run on any consumer-grade computer which has enough disk space.
+
+## Who should run an observer Node?
+
+The observer node provides an alternative to running an access node. Hence it is ideal for Dapps that need access to latest block data available locally e.g a wallet application that needs to track the latest block ID and height. In addition to that, access node operators who want to scale their access nodes endpoints geographically can spin up geographically dispersed observer nodes which can talk to their staked access node and to each other.
 
 ## Running a node
+
+### Hardware
+
+In general, any consumer-grade computer with a decent network connection and sufficient disk space should be able to run an observer node.
+
+Minimum requirements
+
+- CPU with 2+ cores
+- 4 GB RAM minimum
+- 300 GB SSD disk
+- 10Mbps network connection
+
+### Steps to run an observer node
 
 ### Step 1 Generate the node directory structure
 The observer node requires the following directory structure,
@@ -136,7 +156,7 @@ docker run --rm \
  --observer-networking-key-path=/bootstrap/network.key
 ```
 
-_if running on mac, replace `--network host` with `-p 9000:9000`_
+_if running on a mac, replace `--network host` with `-p 9000:9000`_
 
 The observer node acts as a DHT client and bootstraps from upstream access nodes which run the DHT server.
 The upstream bootstrap server is specified using the `bootstrap-node-addresses` which is the comma separated list of hostnames of the access nodes.
