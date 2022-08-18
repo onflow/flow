@@ -13,7 +13,7 @@ Since the observer node is not staked, it does not produce or execute blocks but
 
 ## Who should run an observer Node?
 
-The observer node provides an alternative to running an access node. Hence it is ideal for Dapps that need access to latest block data available locally e.g a wallet application that needs to track the latest block ID and height. In addition to that, access node operators who want to scale their access nodes endpoints geographically can spin up geographically dispersed observer nodes which can talk to their staked access node and to each other.
+The observer node provides an alternative to running an access node. Hence, it is ideal for Dapps that need access to the latest block data available locally e.g a wallet application that needs to track the latest block ID and height. In addition to that, access node operators who want to scale their access nodes endpoints geographically can spin up geographically dispersed observer nodes which can talk to their staked access node and to each other.
 
 ## Running a node
 
@@ -108,6 +108,18 @@ gpg: WARNING: This key is not certified with a trusted signature!
 gpg:          There is no indication that the signature belongs to the owner.
 Primary key fingerprint: 7D23 8D1A E6D3 2A71 8ECD  8611 CB52 64F7 FD4C DD27
      Subkey fingerprint: 40CD 9571 7AC4 63E6 1EE3  B285 B718 CA31 0EDB 542F
+```
+
+Alternately, if you don't care about the blocks before the current block, you can download the current root-snapshot file via the flow-cli.
+
+For mainnet
+```
+flow snapshot save ./bootstrap/public-root-information/root-protocol-state-snapshot.json --network mainnet
+```
+
+For testnet
+```
+flow snapshot save ./bootstrap/public-root-information/root-protocol-state-snapshot.json --network testnet
 ```
 
 ### Step 4 Start the node
