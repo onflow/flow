@@ -15,7 +15,7 @@ Since the observer node is not staked, it does not produce or execute blocks but
 
 The observer node provides an alternative to running an access node. Hence, it is ideal for Dapps that need access to the latest block data available locally e.g a wallet application that needs to track the latest block ID and height. In addition to that, access node operators who want to scale their access nodes endpoints geographically can spin up geographically dispersed observer nodes which can talk to their staked access node and to each other.
 
-## Running a node
+## Running an observer node
 
 ### Hardware
 
@@ -210,9 +210,9 @@ By default, the Observer node will serve the gRPC API on port 9000. To change th
 Other parameters can be found [here](https://github.com/onflow/flow-go/blob/82da35141ff095fbf75ce2c950efec240ad38565/cmd/access/node_builder/access_node_builder.go#L523)
 
 
-The node should now be up and running :rocket:
+:rocket: The node should now be up and running
 
-You can use the [flow cli](https://developers.flow.com/tools/flow-cli), to query the node for blocks, transaction etc. similar to an access node.
+You can use the [flow cli](https://developers.flow.com/tools/flow-cli), to query the node for blocks, transaction etc. similar to how you would query an access node.
 
 e.g.
 ```
