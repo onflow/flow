@@ -45,29 +45,19 @@ flow_observer/
 Create the parent and the sub-directories
 e.g.
 ```
-mkdir flow_observer
-mkdir flow_observer/bootstrap
-mkdir flow_observer/bootstrap/public-root-information
+mkdir -p flow_observer/bootstrap/public-root-information
 mkdir flow_observer/data
 ```
 
 ### Step 2 Generate the network key
 
 Like any other Flow node, the observer also needs a networking ECDSA key to talk to the network.
-The [Flow cli](https://developers.flow.com/tools/flow-cli/install) can be used to generate this key.
+Download the Bootstrapping kit, and generate the observer networking key.
 
-e.g.
 ```
-flow keys generate
-Private Key  1fc3d962ec947bcc9d8dfae6b1e2b54dbdd208bbca0c7af094d5d52c7991257f
-Public Key   774e3812f031d57f767a0afa79bd2cfad8a99b3d20b039f6583f82a5dbc5a208be70aa616ddfa1c7676ccac0b4e4e7da78ebdac6ab0d47cbae1efec95f66a7a5
-```
-
-Store the private key in a file under the bootstrap subdirectory
-e.g.
-```
-$ cat flow_observer/bootstrap/network.key
-1fc3d962ec947bcc9d8dfae6b1e2b54dbdd208bbca0c7af094d5d52c7991257f
+curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
+tar -xvf boot-tools.tar
+./boot-tools/bootstrap observer-network-key  --output-file  ./flow_observer/bootstrap/network.key
 ```
 
 ### Step 3 Download the root-protocol-state-snapshot.json file for the current spork
@@ -77,14 +67,14 @@ It is published and made available after each spork. The download location is sp
 
 For mainnet-18
 ```
-wget -P bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-18-execution/public-root-information/root-protocol-state-snapshot.json
-wget -P bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-18-execution/public-root-information/root-protocol-state-snapshot.json.asc
+wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-18-execution/public-root-information/root-protocol-state-snapshot.json
+wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-18-execution/public-root-information/root-protocol-state-snapshot.json.asc
 ```
 
 For testnet-37
 ```
-wget -P bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/testnet-37/public-root-information/root-protocol-state-snapshot.json
-wget -P bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/testnet-37/public-root-information/root-protocol-state-snapshot.json.asc
+wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/testnet-37/public-root-information/root-protocol-state-snapshot.json
+wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/testnet-37/public-root-information/root-protocol-state-snapshot.json.asc
 ```
 
 #### Verify the PGP signature
@@ -96,10 +86,8 @@ gpg --keyserver keys.openpgp.org --search-keys flow-signer@onflow.org
 
 Verify the root-snapshot file
 ```
-gpg --verify bootstrap/public-root-information/root-protocol-state-snapshot.json.asc
-```
+gpg --verify ./flow_observer/bootstrap/public-root-information/root-protocol-state-snapshot.json.asc
 
-```
 gpg: assuming signed data in 'bootstrap/public-root-information/root-protocol-state-snapshot.json'
 gpg: Signature made Wed Sep 15 11:34:33 2021 PDT
 gpg:                using ECDSA key 40CD95717AC463E61EE3B285B718CA310EDB542F
@@ -110,16 +98,16 @@ Primary key fingerprint: 7D23 8D1A E6D3 2A71 8ECD  8611 CB52 64F7 FD4C DD27
      Subkey fingerprint: 40CD 9571 7AC4 63E6 1EE3  B285 B718 CA31 0EDB 542F
 ```
 
-Alternately, if you don't care about the blocks before the current block, you can request the current root-snapshot file via the flow-cli.
+Alternately, if you don't care about the blocks before the current block, you can request the current root-snapshot file via the [Flow CLI](https://developers.flow.com/tools/flow-cli).
 
 For mainnet
 ```
-flow snapshot save ./bootstrap/public-root-information/root-protocol-state-snapshot.json --network mainnet
+ flow snapshot save ./flow_observer/bootstrap/public-root-information/root-protocol-state-snapshot.json --host access-008.mainnet18.nodes.onflow.org:9001 --network-key 11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a
 ```
 
 For testnet
 ```
-flow snapshot save ./bootstrap/public-root-information/root-protocol-state-snapshot.json --network testnet
+flow snapshot save ./flow_observer/bootstrap/public-root-information/root-protocol-state-snapshot.json --host access-003.devnet37.nodes.onflow.org:9001 --network-key b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7
 ```
 
 ### Step 4 Start the node
@@ -130,11 +118,14 @@ The observer node can be run as a docker container
 
 ```
 docker run --rm \
- -v /var/flow/bootstrap:/bootstrap:ro  \
- -v /var/flow/data:/data:rw \
+ -v $PWD/flow_observer/bootstrap:/bootstrap:ro  \
+ -v $PWD/flow_observer/data:/data:rw \
  --name flow_observer \
- --network host  \
- gcr.io/flow-container-registry/observer:v0.27.1 \
+ -p 8071:8071 \
+ -p 3569:3569 \
+ -p 9000:9000 \
+ -p 9001:9001 \
+ gcr.io/flow-container-registry/observer:v0.27.2 \
  --bootstrapdir=/bootstrap \
  --datadir=/data/protocol \
  --bind 0.0.0.0:3569  \
@@ -151,15 +142,19 @@ docker run --rm \
 
 ```
 docker run --rm \
- -v /var/flow/bootstrap:/bootstrap:ro  \
- -v /var/flow/data:/data:rw \
+ -v $PWD/flow_observer/bootstrap:/bootstrap:ro  \
+ -v $PWD/flow_observer/data:/data:rw \
  --name flow_observer \
- --network host  \
- --gcr.io/flow-container-registry/observer:v0.27.1 \
+ -p 8071:8071 \
+ -p 3569:3569 \
+ -p 9000:9000 \
+ -p 9001:9001 \
+ gcr.io/flow-container-registry/observer:v0.27.2 \
  --bootstrapdir=/bootstrap \
  --datadir=/data/protocol \
  --bind 0.0.0.0:3569  \
- --loglevel=info \
+ --rest-addr=0.0.0.0:8071 \
+ --loglevel=error \
  --secretsdir=/data/secrets  \
  --upstream-node-addresses=access-003.devnet37.nodes.onflow.org:9001 \
  --upstream-node-public-keys=b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7 \
@@ -167,8 +162,6 @@ docker run --rm \
  --bootstrap-node-public-keys=b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7 \
  --observer-networking-key-path=/bootstrap/network.key
 ```
-
-_if running on a mac, replace `--network host` with `-p 9000:9000`_
 
 The observer node acts as a DHT client and bootstraps from upstream access nodes which run the DHT server.
 The upstream bootstrap server is specified using the `bootstrap-node-addresses` which is the comma separated list of hostnames of the access nodes.
@@ -213,9 +206,14 @@ Other parameters can be found [here](https://github.com/onflow/flow-go/blob/82da
 
 :rocket: The node should now be up and running
 
-You can use the [flow cli](https://developers.flow.com/tools/flow-cli), to query the node for blocks, transaction etc. similar to how you would query an access node.
+You can now query the node for blocks, transaction etc. similar to how you would query an access node.
 
-e.g.
+e.g querying the gRPC API endpoint using Flow CLI
 ```
 flow blocks get latest --host localhost:9000
+```
+
+e.g querying the REST API endpoint using curl
+```
+curl "localhost:8071/v1/blocks?height=final"
 ```
