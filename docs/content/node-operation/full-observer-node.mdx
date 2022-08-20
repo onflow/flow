@@ -33,7 +33,7 @@ Minimum requirements
 ### Step 1 Generate the node directory structure
 The observer node requires the following directory structure,
 ```
-$ tree flow_observer/
+$ tree flow_observer
 flow_observer/
 ├── bootstrap
 │         ├── network.key (file containing the node private network key)
@@ -65,10 +65,10 @@ tar -xvf boot-tools.tar
 The `root-protocol-state-snapshot.json` is generated for each [spork](https://developers.flow.com/nodes/node-operation/spork) and contains the genesis data for that spork.
 It is published and made available after each spork. The download location is specified [here](https://github.com/onflow/flow/blob/master/sporks.json) under [rootProtocolStateSnapshot](https://github.com/onflow/flow/blob/master/sporks.json#L16) and can be downloaded as follows,
 
-For mainnet-18
+For mainnet-19
 ```
-wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-18-execution/public-root-information/root-protocol-state-snapshot.json
-wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-18-execution/public-root-information/root-protocol-state-snapshot.json.asc
+wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-19-execution/public-root-information/root-protocol-state-snapshot.json
+wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-19-execution/public-root-information/root-protocol-state-snapshot.json.asc
 ```
 
 For testnet-37
@@ -102,7 +102,7 @@ Alternately, if you don't care about the blocks before the current block, you ca
 
 For mainnet
 ```
- flow snapshot save ./flow_observer/bootstrap/public-root-information/root-protocol-state-snapshot.json --host access-008.mainnet18.nodes.onflow.org:9001 --network-key 11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a
+ flow snapshot save ./flow_observer/bootstrap/public-root-information/root-protocol-state-snapshot.json --host access-008.mainnet19.nodes.onflow.org:9001 --network-key 11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a
 ```
 
 For testnet
@@ -131,9 +131,9 @@ docker run --rm \
  --bind 0.0.0.0:3569  \
  --loglevel=info \
  --secretsdir=/data/secrets  \
- --upstream-node-addresses=access-008.mainnet18.nodes.onflow.org:9001 \
+ --upstream-node-addresses=access-008.mainnet19.nodes.onflow.org:9001 \
  --upstream-node-public-keys=11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a \
- --bootstrap-node-addresses=access-008.mainnet18.nodes.onflow.org:3570  \
+ --bootstrap-node-addresses=access-008.mainnet19.nodes.onflow.org:3570  \
  --bootstrap-node-public-keys=11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a \
  --observer-networking-key-path=/bootstrap/network.key
 ```
