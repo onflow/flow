@@ -4,16 +4,15 @@ sidebar_title: Observer Node
 description: Running an observer node locally
 ---
 
-An observer node is similar to an access node and provides a locally accessible, continuously updated and verified copy of the block data. It serves the Access API ([gRPC](https://github.com/onflow/flow/blob/master/docs/content/access-api.md) and [REST](https://developers.flow.com/http-api/)) but, unlike an access node, an observer node does not need to be staked and **anyone** can run it without being added to the approved list of nodes.
+An observer node is similar to an access node and provides a locally accessible, continuously updated, verified copy of the block data. It serves the Access API ([gRPC](https://github.com/onflow/flow/blob/master/docs/content/access-api.md) and [REST](https://developers.flow.com/http-api/)) but unlike an access node, an observer node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
 
-The observer node bootstraps by connecting to an access node and becoming part of the public network comprised of access nodes and other observer nodes. It then continuously receives blocks that are being added to the chain either directly from the access node or from other observer nodes that are part of the public network.
-However, it makes no trust assumption of the upstream access node or the observer node which is providing the block and locally verifies that the blocks that are received are the correct extension of the chain e.g After receiving valid blocks A, B and C when it receives block D, it verifies that block D is indeed signed by the consensus nodes and is a valid next block. The block data that is received is indexed and made available via the Access API. For Collection, Transactions and Account queries, it delegates those requests to the upstream access node. Similarly, transactions and scripts sent to an observer node are also forwarded to the upstream access node. Future versions of the observer node will be able to serve this data locally as well.
+The observer node bootstraps by connecting to an access node and becoming part of the public network comprised of access nodes and other observer nodes. It then continuously receives blocks that are being added to the chain either directly from the access node or from other observer nodes that are part of the public network. However, it makes no trust assumption of the upstream access node or the observer node which is providing the block and locally verifies that the blocks that are received are the correct extension of the chain e.g After receiving valid blocks A, B and C when it receives block D, it verifies that block D is indeed signed by the consensus nodes and is a valid next block. The received block data is indexed and made available via the Access API. For Collection, Transactions and Account queries, it delegates those requests to the upstream access node. Similarly, transactions and scripts sent to an observer node are also forwarded to the upstream access node. Future versions of the observer node will be able to serve this data locally as well.
 
 Since the observer node is not staked, it does not produce or execute blocks but instead serves as an _unstaked access node_ that can be easily run on any consumer-grade computer which has enough disk space.
 
 ## Who should run an observer Node?
 
-The observer node provides an alternative to running an access node. Hence, it is ideal for Dapps that need access to the latest block data available locally e.g a wallet application that needs to track the latest block ID and height. In addition to that, access node operators who want to scale their access nodes endpoints geographically can spin up geographically dispersed observer nodes which can talk to their staked access node and to each other.
+The observer node provides an alternative to running an access node. Hence, it is ideal for Dapps that need access to the latest block data available locally e.g a wallet application that needs to track the latest block ID and height. In addition to that, access node operators who want to scale their access node endpoints geographically can spin up geographically dispersed observer nodes which can talk to their staked access node and to each other.
 
 ## Running an observer node
 
@@ -164,12 +163,12 @@ docker run --rm \
 ```
 
 The observer node acts as a DHT client and bootstraps from upstream access nodes which run the DHT server.
-The upstream bootstrap server is specified using the `bootstrap-node-addresses` which is the comma separated list of hostnames of the access nodes.
-The `bootstrap-node-public-keys` are the corresponding networking public key of those nodes.
+The upstream bootstrap server is specified using the `bootstrap-node-addresses` which is the comma-separated list of hostnames of the access nodes.
+The `bootstrap-node-public-keys` is the list of the corresponding networking public key of those nodes.
 
 The observer node delegates many of the API calls to the upstream access nodes.
-The `upstream-node-addresses` is the list of access node hostnames to which this observer node can delegate to. The list can be different from the boostrap node list.
-The `bootstrap-node-public-key` are the corresponding networking public key of those nodes.
+The `upstream-node-addresses` is the list of access node hostnames to which this observer node can delegate to. The list can be different from the bootstrap node list.
+The `bootstrap-node-public-key` is the list of the corresponding networking public key of those nodes.
 
 _In the above docker commands, the Flow community access nodes are being used as the upstream access nodes.
 However, any other Flow access node that supports an observer node can be used_
@@ -217,7 +216,7 @@ curl "localhost:8071/v1/blocks?height=final"
 
 ### FAQs
 
-1. Does the observer node needs to be staked?
+1. Does the observer node need to be staked?
 
 No, the observer node is not a staked node.
 
@@ -225,7 +224,7 @@ No, the observer node is not a staked node.
 
 No, only Access nodes which have explicitly turned ON support for observer nodes can be used to bootstrap an observer node.
 
-The public access nodes that support observer nodes are listed above. Apart from these, other public access nodes run by node operators other than DapperLabs may choose to support observer node.
+The public access nodes that support observer nodes are listed above. Apart from these, other public access nodes run by node operators other than DapperLabs may choose to support observer nodes.
 
 3. How can an access node turn ON support for observer node?
 
