@@ -190,19 +190,19 @@ e.g. querying the REST API endpoint using curl
 curl "localhost:8071/v1/blocks?height=final"
 ```
 
-### FAQs
+## FAQs
 
-#### Does the observer node need to be staked?
+### Does the observer node need to be staked?
 
 No, the observer node is not a staked node.
 
-#### Can any access be used to bootstrap an observer node?
+### Can any access be used to bootstrap an observer node?
 
 No, only Access nodes which have explicitly turned ON support for observer nodes can be used to bootstrap an observer node.
 
 The public access nodes that support observer nodes are listed below. Apart from these, other public access nodes run by node operators other than DapperLabs may choose to support observer nodes.
 
-#### How can an access node turn ON support for observer node?
+### How can an access node turn ON support for observer node?
 
 An access node can support an observer node by passing in the following two parameters when starting the access node
 ```
@@ -210,7 +210,7 @@ An access node can support an observer node by passing in the following two para
 ```
 `public-network-address` is the address the observer nodes will connect to.
 
-#### Are observer nodes subject to rate limits?
+### Are observer nodes subject to rate limits?
 
 The observer serves all the [Block related queries](https://github.com/onflow/flow/blob/master/protobuf/flow/access/access.proto#L24-L42) from is local database. These are not subjected to any rate limits.
 
