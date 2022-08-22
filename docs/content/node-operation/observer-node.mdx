@@ -31,7 +31,7 @@ Minimum requirements
 
 ### Steps to run an observer node
 
-#### Step 1 Generate the node directory structure
+#### Step 1 - Generate the node directory structure
 The observer node requires the following directory structure,
 ```shell
 $ tree flow_observer
@@ -50,9 +50,9 @@ mkdir -p flow_observer/bootstrap/public-root-information
 mkdir flow_observer/data
 ```
 
-#### Step 2 Generate the network key
+#### Step 2 - Generate the network key
 
-Like any other Flow node, the observer also needs a networking ECDSA key to talk to the network.
+Like any other Flow node, the observer also needs a networking [ECDSA key](https://github.com/onflow/flow-go/blob/master/cmd/bootstrap/utils/key_generation.go#L52-L54) to talk to the network.
 Download the Bootstrapping kit, and generate the observer networking key.
 
 ```shell
@@ -61,7 +61,9 @@ tar -xvf boot-tools.tar
 ./boot-tools/bootstrap observer-network-key  --output-file  ./flow_observer/bootstrap/network.key
 ```
 
-#### Step 3 Download the root-protocol-state-snapshot.json file for the current spork
+_If you are running on a mac, download `storage.googleapis.com/flow-genesis-bootstrap/boot-tools-m1.tar` for M1 and `storage.googleapis.com/flow-genesis-bootstrap/boot-tools-intel-mac.tar` for Intel mac._
+
+#### Step 3 - Download the root-protocol-state-snapshot.json file for the current spork
 
 The `root-protocol-state-snapshot.json` is generated for each [spork](https://developers.flow.com/nodes/node-operation/spork) and contains the genesis data for that spork.
 It is published and made available after each spork. The download location is specified [here](https://github.com/onflow/flow/blob/master/sporks.json) under [rootProtocolStateSnapshot](https://github.com/onflow/flow/blob/master/sporks.json#L16) and can be downloaded as follows,
@@ -83,6 +85,11 @@ wget -P ./flow_observer/bootstrap/public-root-information https://storage.google
 Add the `flow-signer@onflow.org` public key
 ```shell
 gpg --keyserver keys.openpgp.org --search-keys flow-signer@onflow.org
+
+gpg: data source: http://keys.openpgp.org:11371
+(1)	Flow Team (Flow Full Observer node snapshot verification master key) <
+	  256 bit ECDSA key CB5264F7FD4CDD27, created: 2021-09-15
+Keys 1-1 of 1 for "flow-signer@onflow.org".  Enter number(s), N)ext, or Q)uit > 1
 ```
 
 Verify the root-snapshot file
@@ -111,7 +118,7 @@ For testnet
 flow snapshot save ./flow_observer/bootstrap/public-root-information/root-protocol-state-snapshot.json --host access-003.devnet37.nodes.onflow.org:9001 --network-key b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7
 ```
 
-#### Step 4 Start the node
+#### Step 4 - Start the node
 
 The observer node can be run as a docker container
 
