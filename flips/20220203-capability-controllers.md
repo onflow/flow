@@ -4,11 +4,11 @@
 | :------------ | :------------------------------------------------- |
 | **FLIP #**    | [798](https://github.com/onflow/flow/pull/798)     |
 | **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com) |
-| **Updated**   | 2022-02-03                                         |
+| **Updated**   | 2022-08-22                                         |
 
 ## Preface
 
-Cadence encourages a [capability-based security](https://en.wikipedia.org/wiki/Capability-based_security) model as described on the Flow [doc site](https://docs.onflow.org/cadence/language/capability-based-access-control). Capabilities are themselves a new concept that most Cadence programmers need to understand, but the API for syntax around Capabilities (especially the notion of “links” and “linking”), and the associated concepts of the public and private storage domains, lead to Capabilities being even more confusing and awkward to use. This proposal suggests that we could get rid of links entirely, and replace them with Capability Controllers (henceforth referred to as CapCons) which could make Capabilities easier to understand, and easier to work with.
+Cadence encourages a [capability-based security](d be clearer to Charlie that he received a capability t) model as described on the Flow [doc site](https://docs.onflow.org/cadence/language/capability-based-access-control). Capabilities are themselves a new concept that most Cadence programmers need to understand, but the API for syntax around Capabilities (especially the notion of “links” and “linking”), and the associated concepts of the public and private storage domains, lead to Capabilities being even more confusing and awkward to use. This proposal suggests that we could get rid of links entirely, and replace them with Capability Controllers (henceforth referred to as CapCons) which could make Capabilities easier to understand, and easier to work with.
 
 The following is a quick refresher of the current state of the Capabilities API (from the [flow doc site](https://docs.onflow.org/cadence/language/capability-based-access-control)).
 
@@ -145,32 +145,10 @@ The suggested change addresses these pain points by:
 
 - Removing (or abstracting away) the concept of links.
 - Making it easier to create new capabilities (with individual links).
-- Making capabilities resources, so that it is more difficult to give unintended access to third parties.
 - Offering a way to iterate through capabilities on a storage path.
 - Removing the need to have a `/private/`domain.
 - Changing the `/public/` domain to be able to store capabilities (and only capabilities).
 - Introducing Capability Controllers (CapCons) that handle management of capabilities.
-
-### Capabilities as Resources
-
-Changing capabilities into resources attempts to address two problems.
-
-The first problem is that, as resources, capabilities would not be able to be copied. While a reference to a capability can still be created and passed on, this is a more explicit process than just simply creating a duplicate of a capability.
-
-The second problem is a revocation problem. With capabilities as values the following scenario can happen:
-
-Alice created capabilities B and C and gave them to Bob and Charlie respectively. Bob then also copied his capability (marked as B’) and gave it to Dan. The picture now looks like this.
-
-- Bob has capability B
-- Charlie has capability C
-- Dan has capability B’
-
-Revoking C yields the expected result that Charlie can no longer use his capability. However, revoking B also revokes all copies of B, so both Bob’s and Dan’s capabilities are revoked. This is not very intuitive at first glance, as there is little differnce between the capabilities
-B and C, but Dan’s ability to use his capability depends on which copy he has.
-
-With capabilities as resources this scenario would not have occurred as there is no way to copy B to create B’. If Dan also needs this capability, Alice must create a capability D to give to him. However this also means that there is no way for Bob to directly grant this capability to someone else (without losing his own).
-
-Dan could also have a reference to the capability B (&B), but in this case Dan knows that his capability is just a reference, and that if B is revoked it makes sense that his reference to B also stops working.
 
 ### Accounts public domain as a capability storage
 
@@ -199,6 +177,8 @@ The definition of the `CapabilityController` .
 struct CapabilityController {
    // The block height when the capability was created.
    let issueHeight: UInt64
+   // The Type of the capability
+   let CapabilityType: Type
    // The id of the related capability
    // This is the UUID of the created capability
    let capabilityID: UInt64
@@ -287,8 +267,8 @@ Consuming private capabilities would change in the way that capabilities are res
 There would be more change on the issuer's side. Most notably creating a public capability would look like this.
 
 ```cadence
-let countCap <- issuer.issueCapability<&{HasCount}>(/storage/counter)
-issuer.save(<- countCap, to: /public/hasCount)
+let countCap = issuer.issueCapability<&{HasCount}>(/storage/counter)
+issuer.save(countCap, to: /public/hasCount)
 ```
 
 Unlinking and relinking issued capabilities would change to getting a CapCon and calling the appropriate methods.
@@ -307,22 +287,33 @@ This example assumes that the capability id is known. This is always the case fo
 
 #### Capability Minters
 
-In certain situations it is required that an issuer delegates issuing capabilities to someone else. In this case the following approach can be used.
+In certain situations it is required that an issuer delegates issuing and revoking capabilities to someone else. In this case the following approach can be used.
 
 Let's assume that the issuer defined an `AdminInterface` resource interface and a `Main` resource (besides the `Counter` and `HasCount` from previous examples).
 
 ```cadence
 public resource interface AdminInterface {
-   fun createCountCap(): @Capability<&{HasCount}>
+   fun createCountCap(): Capability<&{HasCount}>
+   fun revokeCountCap(capabilityID: UInt64): Bool
 }
 public resource Main : AdminInterface {
-   fun createCountCap(): @Capability<&{HasCount}> {
-       return <- self.account.getCapability<&{HasCount}>(/storage/counter)
+   fun createCountCap(): Capability<&{HasCount}> {
+       return self.account.getCapability<&{HasCount}>(/storage/counter)
+   }
+
+   fun revokeCountCap(capabilityID: UInt64): Bool {
+      if let capCon = self.account.getController(capabilityID: capabilityID) {
+         if capCon.Type != Type<&{HasCount}>() {
+            return false // we have only delegated the issuance/revocation of &{HasCount} capabilities
+         }
+         return capCon.revoke()
+      }
+      return false
    }
 }
 ```
 
-The issuer can then store a `Main` resource in their storage and give the capability to call it to a trusted party. The trusted party can then create `&{HasCount} `capabilities at will.
+The issuer can then store a `Main` resource in their storage and give the capability to call it to a trusted party. The trusted party can then create and revoke `&{HasCount}` capabilities at will.
 
 ```cadence
 issuer.save(<-create Main(), to: /storage/counterMinter)
@@ -330,7 +321,54 @@ let countMinterCap <- issuer.getCapability(/storage/counterMinter)
 countMinterCap //give this to a trusted party
 ```
 
-It is worth noting that everytime the `AdminInterface` is used a CapCon is created in the issuers storage taking up some resources.
+It is worth noting that every time the `AdminInterface` is used a CapCon is created in the issuers storage taking up some resources. Revoking capabilities does not free any storage.
+
+## Issues not addressed in this FLIP
+
+### Unexpected revocation
+
+If the issuer creates a capability **A** and gives it to Alice and creates a capability **B** and gives it to Bob. Alice then copies her capability creating **A'** and gives it to Charlie, creating the following situation:
+
+- Alice: has **A**
+- Bob: has **B**
+- Charlie: has **A'**
+
+If the issuer decides to revoke **B**, Bob will no longer be able to use his capability. If the issuer revokes **A** Alice will not be able to use her capability, but perhaps unexpected to Charlie, he will also not be able to use **A'**.
+
+Addressing this issue so that it would be clearer to Charlie that he received a capability that is a copy of Alice's, and not his own instance is not in the scope of this FLIP. 
+
+This could perhaps be addressed by:
+- adding extra descriptors to capabilities (names)
+- off chain tracking of capabilities
+
+Or can be addressed if the issuer creates a wrapper for the capability that the receiver unwraps.
+
+```cadence
+pub resource WrappedCapability {
+    priv let unwraper: Address
+    priv let cap: Capability<&AnyResource>
+
+    pub fun unwrap(unwraper: AuthAccount): Capability<&AnyResource>? {
+        if unwraper.address == self.unwraper {
+            return self.cap
+        }
+        return nil
+    }
+
+    pub fun capabilityAddress(): Address {
+        return self.cap.address
+    }
+
+    pub fun unwraperAddress(): Address {
+        return self.unwraper
+    }
+
+    init(unwraper: Address, cap: Capability<&AnyResource>){
+        self.unwraper = unwraper
+        self.cap =cap
+    }
+}
+```
 
 ## Sources
 
