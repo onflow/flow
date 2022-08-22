@@ -60,7 +60,13 @@ tar -xvf boot-tools.tar
 ./boot-tools/bootstrap observer-network-key  --output-file  ./flow_observer/bootstrap/network.key
 ```
 
-_If you are running on a mac, download `storage.googleapis.com/flow-genesis-bootstrap/boot-tools-m1.tar` for M1 and `storage.googleapis.com/flow-genesis-bootstrap/boot-tools-intel-mac.tar` for Intel mac._
+_If you are running on a mac, download the boot-tools for mac to generate the key_
+```shell
+# For M1
+curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools-m1.tar
+# For Intel Mac
+curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools-intel-mac.tar
+```
 
 #### Step 3 - Download the root-protocol-state-snapshot.json file for the current spork
 
