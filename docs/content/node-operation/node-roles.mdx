@@ -45,6 +45,8 @@ Verification nodes are required to stake a minimum of 135,000 FLOW to be a confi
 
 Access nodes act as a proxy to the Flow network. The Access node routes transactions to the correct Collection node and routes state queries to available nodes (while likely caching state to answer queries in a timely manner in the future). Dapps and user agents can submit their transactions to any Access node or run their own if they can't find a service provider they're happy with.
 
+Access nodes are required to stake a 0 FLOW to be a confirmed node operator.
+
 ## Observer
 
 An observer node is similar to an access node and provides a locally accessible, continuously updated, verified copy of the block data. It serves the Access API but unlike an access node, an observer node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
