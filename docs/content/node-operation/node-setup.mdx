@@ -10,12 +10,12 @@ First you'll need to provision a machine or virtual machine to run your node sof
 The hardware your Node will need varies depending on the role your Node will play in the Flow network. For an overview of the differences see the [Node Roles Overview](/node-operation/node-roles).
 
 | Node Type | CPU | Memory | Disk | Example GCP Instance |
-|:----------------:| --------:| ------:| ------:|:------------:|
-| **Collection**   |  4 cores | 32 GB  | 200 GB | n2-highmem-4  |
-| **Consensus**    |  2 cores | 16 GB  | 200 GB | n2-standard-4 |
-| **Execution**    | 64 cores | 512 GB |   9 TB | n2-highmem-64 |
-| **Verification** |  2 cores | 16 GB  | 200 GB | n2-highmem-2  |
-| **Access**       |  2 cores | 16 GB  | 200 GB | n2-highmem-2  |
+|:----------------:| ---------:| ------:| ------:|:--------------:|
+| **Collection**   |  4 cores  | 32 GB  | 200 GB | n2-highmem-4   |
+| **Consensus**    |  2 cores  | 16 GB  | 200 GB | n2-standard-4  |
+| **Execution**    | 64 cores  | 800 GB |  9 TB  | n2-highmem-128 |
+| **Verification** |  2 cores  | 16 GB  | 200 GB | n2-highmem-2   |
+| **Access**       |  16 cores | 64 GB  | 900 GB | n2-standard-16 |
 
 _Note: The above numbers represent our current best estimate for the state of the network. These will be actively updated as we continue benchmarking the network's performance._
 
