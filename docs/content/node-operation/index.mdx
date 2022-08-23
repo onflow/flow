@@ -4,7 +4,17 @@ sidebar_title: Introduction
 description: How to run your own Flow node
 ---
 
-To run a node in the Flow network, the node must:
+Flow multirole architecture makes it more scalable and provides several options for anyone who wants to participate in the network by running a node.
+
+As a node operator, depending on your use case, you can choose to run any of the different types of nodes which are described [here](/nodeoperation/node-roles).
+
+## Which node should you run?
+
+### Staked node
+If you want to contribute to the security of the network by staking your FLOW tokens, then you should run one of the four node roles which are staked and participate in the Flow protocol.
+These are Collection node, Consensus node, Execution node and Verification node. These four nodes also receive staking rewards.
+
+To run a staked node, the node must:
 * be registered with sufficient stake
 * be authorized by the service account
 
@@ -16,6 +26,18 @@ To set up a new Flow node you will need to complete the following steps:
 
 2. [Generate and register](/node-operation/node-bootstrap) your node identity.
 
-3. [Start](/node-operation/node-bootstrap#step-2---getting-ready-to-start-your-flow-node) your node!
+3. [Start](/node-operation/node-bootstrap#step-3---start-your-flow-node) your node!
+
+### Access node
+If you want local access to the protocol state data (blocks, collections, transactions) and do not want to use one of the community access nodes you can run an access node.
+An access node is staked as well but with 0 FLOW and does not receive any staking rewards.
+Dapp developers, chain explorers, chain analytics etc. who want exclusive access to chain data and not be subject to the rate-limits on the community access node can choose to run an access node.
+
+### Observer node
+The observer node provides a non-staked alternative to running an access node.
+It is ideal for Dapps that need access to latest block data available locally e.g a wallet application that needs to track the latest block ID and height.
+In addition to that, access node operators who want to scale their access nodes' endpoints geographically can spin up geographically dispersed observer nodes which can talk to their staked access nodes and to each other.
+To run an observer node, follow this [guide](/nodeoeration/observer-node).
+
 
 
