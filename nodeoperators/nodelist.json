@@ -7,7 +7,6 @@
         "NetworkPubKey": "e0c141fc192cfdced2a3c8d28ab016a31ae3165d0df43e59200187e36ba079d55e7d38cf7a082c7550af716bca27238ef388260e53257802869120f7df2f4dfb",
         "StakingPubKey": "b8da9ac086419ca4d1755a9ef8a94001969fc3b13796324832490dae627d4dcdb5179cf19995ba90406f0d9031056deb08ddb205b75bfa8208861ce53821c6d1b54214b76356c7f55abe8055c91b32e456fb4c2e674acb917609a8394f32c60a"
     },
-    
     {
         "Role": "collection",
         "Address": "collection-039.mainnet6.nodes.onflow.org:3569",
