@@ -6,11 +6,15 @@ description: Frequently Asked Questions
 
 ### Can anybody run a node? What is the approval process?
 
-Individuals can go through an application process that involves asking about their background and experience contributing to decentralized projects. To pursue an application, please visit [the Flow website here to apply](https://www.onflow.org/node-validators).
+Anyone can run an [observer node](/node-operation/observer-node).
+
+Very soon, Access nodes too will be permissionless and anyone will be able to run one.
+
+For the other node types, individuals can go through an application process that involves asking about their background and experience contributing to decentralized projects. To pursue an application, please visit [the Flow website here to apply](https://www.onflow.org/node-validators).
 
 Pending approval, new node operators will be onboarded and invited to join a webinar to meet the team and share more about how they’ll grow the community. Node Operators are invited to join and participate in Flow's Node Validator Discord channel for setup questions and network announcements.
 
-In the long-term, anyone can become a Node Validator on Flow.
+In the long-term, anyone can become can run a node validator on Flow.
 
 ### How do I generate keys?
 
@@ -20,10 +24,6 @@ Please follow the instructions provided here: [Generate Your Node Keys](/node-op
 
 Please follow the instructions provided here: [Monitoring nodes](/node-operation/monitoring-nodes)
 
-### Can the node address (IP or hostname) be changed after a spork?
-
-No. The node addresses are baked-in as part of the identity table stored on-chain and hence cannot be changed after a spork. It can be changed at the next spork.
-
 ### Can I bootstrap and run a node at any time?
 
 Flow allows nodes to join/leave the network each time a new epoch begins (roughly once per week). 
@@ -31,10 +31,10 @@ See [Staking & Epochs](/staking/#epochs) for general information and [Node Setup
 
 ### Would it hurt the network to have a node that constantly spins up and down?
 
-A node needs to be part of the genesis block. The node can bounce after that and while that may not break the Flow protocol, it will cause severe degradation of overall performance.
+All staked nodes except access nodes, have to be online at all time. A staked node, other than an access node, which is not online can cause severe degradation of network performance and will be subjected to slashing of rewards.
 A way to prevent this is to check your equipment meets Flow's [recommended requirements](/node-operation/node-setup/#hardware-requirements), periodically checking for updates and announcements in Discord but also using a node monitoring system for when your node does go offline.
 
-### Will Flow have a regular schedule for Sporks?
+### Does Flow has a regular schedule for Sporks?
 
 Yes, see [Upcoming Sporks](/node-operation/upcoming-sporks/) for the latest schedule. Currently, Flow has a Mainnet Spork and a Testnet Spork roughly every two months.
 
@@ -42,11 +42,6 @@ Yes, see [Upcoming Sporks](/node-operation/upcoming-sporks/) for the latest sche
 
 One of the reasons for a [spork](/node-operation/spork) is to make sure all nodes update to the latest software version. Hence, you should have the latest software update as long as you are participating in each spork.
 However, if we do release any software update in between a Spork (e.g. an emergency patch) we will announce it on Discord.
-
-### Can anybody run a node? What is the approval process?
-
-In the long-term, yes — any individual or organization should be able to run one or more nodes. Currently, however as the Flow protocol matures, anyone interested in running a node must present a case for how they will add unique value to the network. There will be an application process. Applicants will be asked to submit some information, including background information and any experience contributing to decentralized projects.
-They then join a webinar to meet the team and share more about how they’ll grow the community. The top applicants, in terms of community impact, will be granted a spot to run a node.
 
 ### Is there any way to know if a node is currently online?
 
@@ -56,11 +51,6 @@ To verify if a node is online, please [setup metrics](/node-operation/faq/#how-d
 
 Yes, as long as you retain the `boostrap` information which includes the node staking key, networking key, IP address and port from the old node to the new.
 More on this [here](/node-operation/node-migration)
-
-### Is there a public node?
-
-Yes, an access node is [publicly accesible](/concepts/accessing-testnet) to submit transactions and read data from the blockchain using the
-[Access API](/access-api).
 
 ### Where can I find how many nodes are currently running Flow?
 
