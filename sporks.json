@@ -1,6 +1,50 @@
 {
   "networks": {
     "mainnet": {
+      "mainnet19": {
+        "id": 19,
+        "live": true,
+        "name": "Mainnet-17",
+        "sporkTime": "2022-08-24T17:00:00Z",
+        "rootHeight": "35858811",
+        "rootParentId": "5c030d4125f8ace0e0ab8255880143190d58aca4ddb7c4720c28eaf497adcae1",
+        "rootStateCommitment": "96ff0d9a2b7d8264ea8727d4a104d7372efcfe18dc0c9111aff5c46b688eff04",
+        "gitCommitHash": "b6e9a988514d13e1e1ecd0802d7e02f9e9b1415b",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-19-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-19-execution/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-19-execution/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-19-execution/public-root-information/node-infos.pub.json",
+            "executionStateBucket": "flow_public_mainnet19_execution_state"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": "flow-public-mainnet18-execution-state"
+          }
+        },
+        "tags": {
+          "flow-go": "v0.27.4",
+          "flow-dps": "v0.27",
+          "cadence": "v0.25.0",
+          "docker": "v0.27.4"
+        },
+        "seedNodes": [
+          {
+            "address": "access-007.mainnet19.nodes.onflow.org:3570",
+            "key": "28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae"
+          },
+          {
+            "address": "access-008.mainnet19.nodes.onflow.org:3570",
+            "key": "11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a"
+          }
+        ],
+        "accessNodes": [
+          "access.mainnet19.nodes.onflow.org:9000"
+        ]
+      },
       "mainnet18": {
         "id": 18,
         "live": true,
