@@ -142,7 +142,8 @@ docker run --rm \
  --bootstrapdir=/bootstrap \
  --datadir=/data/protocol \
  --bind 0.0.0.0:3569  \
- --loglevel=info \
+ --rest-addr=0.0.0.0:8071 \
+ --loglevel=error \
  --secretsdir=/data/secrets  \
  --upstream-node-addresses=access-008.mainnet19.nodes.onflow.org:9001 \
  --upstream-node-public-keys=11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a \
