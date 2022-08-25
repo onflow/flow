@@ -1,7 +1,6 @@
 ---
 title: Observer Node
 sidebar_title: Observer Node
-description: Running an observer node locally
 ---
 
 An observer node is similar to an access node and provides a locally accessible, continuously updated, verified copy of the block data. It serves the Access API ([gRPC](https://github.com/onflow/flow/blob/master/docs/content/access-api.md) and [REST](https://developers.flow.com/http-api/)) but unlike an access node, an observer node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
@@ -61,7 +60,13 @@ tar -xvf boot-tools.tar
 ./boot-tools/bootstrap observer-network-key  --output-file  ./flow_observer/bootstrap/network.key
 ```
 
-_If you are running on a mac, download `storage.googleapis.com/flow-genesis-bootstrap/boot-tools-m1.tar` for M1 and `storage.googleapis.com/flow-genesis-bootstrap/boot-tools-intel-mac.tar` for Intel mac._
+_If you are running on a mac, download the boot-tools for mac to generate the key_
+```shell
+# For M1
+curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools-m1.tar
+# For Intel Mac
+curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools-intel-mac.tar
+```
 
 #### Step 3 - Download the root-protocol-state-snapshot.json file for the current spork
 
@@ -196,6 +201,8 @@ e.g. querying the REST API endpoint using curl
 ```shell
 curl "localhost:8071/v1/blocks?height=final"
 ```
+
+The observer node, like the other type of Flow nodes, also produces Prometheus metrics that can be used to monitor node health. More on that [here](/node-operation/node-setup#monitoring-and-metrics)
 
 ## FAQs
 
