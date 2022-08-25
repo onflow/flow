@@ -3,6 +3,7 @@ title: Node Roles
 ---
 
 Unlike most blockchains, not all Flow nodes are equal. Flow nodes all specialize and fulfill a specific role in the operation of the network.
+Collection, consensus, execution, verification and access nodes are all staked nodes while the observer node is not staked.
 
 ## Collection
 
@@ -42,4 +43,8 @@ Verification nodes are required to stake a minimum of 135,000 FLOW to be a confi
 
 ## Access
 
-Access nodes act as a proxy to the Flow network. The Access node routes transactions to the correct Collection node and routes state queries to available nodes (while likely caching state to answer queries in a timely manner in the future). Anyone can run an Access node — these nodes are not staked but are based on a reputation system. Dapps and user agents can submit their transactions to any Access node or run their own if they can't find a service provider they're happy with.
+Access nodes act as a proxy to the Flow network. The Access node routes transactions to the correct Collection node and routes state queries to available nodes (while likely caching state to answer queries in a timely manner in the future). Dapps and user agents can submit their transactions to any Access node or run their own if they can't find a service provider they're happy with.
+
+## Observer
+
+An observer node is similar to an access node and provides a locally accessible, continuously updated, verified copy of the block data. It serves the Access API but unlike an access node, an observer node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
