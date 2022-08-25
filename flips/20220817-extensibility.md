@@ -83,8 +83,12 @@ pub extension E for S: I {
 In this case, `E`'s declaration conforms to `I` because type of `S` with the extension `E` applied produces a type that conforms to `I`. 
 
 Any additional fields that are declared in an extension must be initialized, just as any fields declared in a composite must be. An extension
-that declares fields must declare an additional (partial) initializer, which is run when the extension is created. The same
-checks on normal initializers apply to extension initializers; namely that all the fields declared in the extensions must receive a value in the
+that declares fields must declare an additional (partial) initializer, which is run when the extension is created. For this reason, the `init`
+method in an extension cannot make reference to any fields or methods of the base type, as it will be run before extension is attached to that type. It is
+recommended that users simply initialize any fields as simply as possible here, and save any complex set-up for the extension's `attach` method (explained
+later in this section).
+
+The same checks on normal initializers apply to extension initializers; namely that all the fields declared in the extensions must receive a value in the
 extension's initializer. So, the following would be a legal extension:
 
 ```cadence
@@ -114,11 +118,15 @@ pub extension E for S {
 
 Any resource fields (which are only legal when extending resources) must also be explicitly handled in a `destroy` method, which is run either when
 the extension is destroyed, or when the combined extended resource type is destroyed. In the latter case, destructors are run opposite to the 
-order that the extensions were added to the original type if there are multiple extensions, ending with the original resource's destructor. 
+order that the extensions were added to the original type if there are multiple extensions, ending with the original resource's destructor. Like `init`,
+because `destroy` may be run when the extension is not attached to a base type, it may not reference any fields or methods of its base type, and should
+simply destroy any resources declared on the extension itself. 
 
 Extensions may also declare two special methods: `fun attach() { ... }` and `fun remove() { ... }` that are not considered conflicting when attaching
 multiple extensions to a single value. The `attach` method is automatically run after the extension is attached to a type, while the `remove` method
-is run automatically when the extension is removed from a value (before the removal occurs). 
+is run automatically when the extension is removed from a value (before the removal occurs). These functions exist to perform any necessary setup
+and teardown for the extended type that requires using values from the base type, and thus cannot be performed in `init` or `destroy`. It is also recommended that 
+users check any pre-conditions or post-conditions they would like to hold before or after the extended type is created in these functions. 
 
 ### Extended Types
 
@@ -385,6 +393,11 @@ they own?
 extensions for already extended types? Is supporting something like `pub extension E2 for R with E1` necessary in order to require that
 `E2` be attached to `R` after `E1` has already been attached? Or would we instead prefer users not to so tightly couple their
 extensions this way?
+
+* Having user-defineable type aliases would be very helpful for types that are multiply-extended. If we could write something like
+`type T = X with Y`, then we could also write a type like `T with Z` instead of `X with Y, Z` or `X with Y with Z`, which is much 
+easier to read and understand. It also enables abstractions where users can use an (aliased) type without even having to know that
+it was created using an extension. Would adding support for type aliases be in scope for this FLIP?
 
 * Do we want to add the ability to dynamically get a list of all the current extensions on a type? This may provide some utility,
 but it comes at the cost of weakening abstractions and composability, as without such an ability there is no observable difference
