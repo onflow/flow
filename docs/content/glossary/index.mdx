@@ -40,7 +40,7 @@ A blockchain address is like a bank account for crypto assets. Every address is 
 They are generated from the private key, which is required to send or receive data from one address to another.
 
 ## Access node
-[Access nodes](https://docs.onflow.org/node-operation/node-roles/#access) act as a proxy to the Flow network. The Access node routes 
+[Access nodes](https://docs.onflow.org/nodes/nodes/node-operation/node-roles/#access) act as a proxy to the Flow network. The Access node routes
 transactions to the correct Collection node and routes state queries to available nodes (while likely caching state to answer queries 
 on time in the future).
 
@@ -81,11 +81,11 @@ A [contract](https://docs.onflow.org/cadence/language/contracts/) in Cadence is 
 interfaces, structs, resources, data (its state), and code (its functions) that lives in the contract storage area of an account in Flow.
 
 ## Collection nodes
-[Collection](https://docs.onflow.org/node-operation/node-roles/#collection) nodes are bandwidth-optimized nodes divided by the protocol 
+[Collection](https://docs.onflow.org/nodes/node-operation/node-roles/#collection) nodes are bandwidth-optimized nodes divided by the protocol
 into several cooperating Clusters.
 
 ## Consensus
-[Consensus](https://docs.onflow.org/node-operation/node-roles/#consensus) nodes form and propose blocks like traditionally-structured 
+[Consensus](https://docs.onflow.org/nodes/node-operation/node-roles/#consensus) nodes form and propose blocks like traditionally-structured
 proof-of-stake blockchains, using the HotStuff consensus algorithm to create a globally consistent chain of blocks.
 
 ## Custodial model
@@ -104,7 +104,7 @@ rather than a single computer.
 ## **E**
 
 ## Execution nodes
-[Execution](https://docs.onflow.org/node-operation/node-roles/#execution) nodes are the most resource-intensive nodes on the Flow network,
+[Execution](https://docs.onflow.org/nodes/node-operation/node-roles/#execution) nodes are the most resource-intensive nodes on the Flow network,
 responsible for executing transactions and maintaining the Execution State ( a cryptographically-verifiable data store for all user accounts) 
 and smart contract states ( as well as responding to queries related to it).
 
@@ -301,7 +301,7 @@ A user signature proves the authorization of transactions for an address without
 ## **V**
 
 ## Verification nodes
-[Verification nodes](https://docs.onflow.org/node-operation/node-roles/#verification) are responsible for confirming the correctness of the work done by Execution nodes.
+[Verification nodes](https://docs.onflow.org/nodes/node-operation/node-roles/#verification) are responsible for confirming the correctness of the work done by Execution nodes.
 
 ## VSCode Flow
 Vscode Flow is an extension for the VSCode editor that integrates Cadence into [Visual Studio Code](https://docs.onflow.org/vscode-extension/). 
