@@ -7,8 +7,11 @@ description: How to run your own Flow node
 
 ## Why run a node?
 
-Running a node lets you participate in the network and contribute to the security and decentralization of the network.
-A node also gives you direct access to the evolving state of the network.
+A node is a piece of software that is connected to the blockchain.
+By running your own node, you have direct access to the evolving state of the network, without having to rely on third parties.
+This increases privacy and security, reduces reliance on external servers, and helps balance load distribution.
+By running a node, you also directly contribute to the security and decentralization of the whole network.
+
 Flow multirole architecture makes it more scalable and provides several node types that you as a node operator can pick and choose from.
 
 
@@ -24,12 +27,12 @@ To run an observer node, follow this [guide](/node-operation/observer-node).
 
 ### Access node
 If you want local access to the protocol state data (blocks, collections, transactions) and do not want to use one of the community access nodes you can run an access node.
-An access node is staked but since it does not participate in the core Flow protocol, it does not receive any staking rewards.
 Dapp developers, chain explorers, chain analytics etc. who want exclusive access to chain data and not be subject to the rate-limits on the community access node can choose to run an access node.
+An access node is staked but since it does not participate in the core Flow protocol, it does not receive any staking rewards.
 
 ### Collection, Consensus, Verification and Execution node
-If you want to contribute to the security of the network by staking your FLOW tokens, then you should run one of these four node roles.
-Nodes with these roles are staked and participate in the Flow protocol. These four nodes also receive staking rewards.
+If you want your node to participate in the nitty-gritty of Flow protocol and help in block or collection creation, transaction execution, result verification or block verification then you should run one of these four node roles.
+Nodes with these roles are staked and also receive staking rewards.
 
 To run a staked node, the node must:
 * be registered with sufficient stake
