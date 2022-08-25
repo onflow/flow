@@ -21,17 +21,21 @@ The different types of nodes are described [here](/node-operation/node-roles). A
 
 ### Observer node
 The observer node is one of the easiest node to spin up and can be run by Dapp developers who need the latest block data available locally e.g. a wallet application that needs to track the latest block ID and height.
-The observer node is not staked but still provides the same API as the access node.
 In addition to supporting dapps, an observer node can also be run by access node operators who want to scale their access nodes' endpoints. Access node operators can spin up geographically dispersed observer nodes which can talk to their staked access nodes and to each other.
+
+The observer node is not staked but still provides the same API as the access node.
+
 To run an observer node, follow this [guide](/node-operation/observer-node).
 
 ### Access node
 If you want local access to the protocol state data (blocks, collections, transactions) and do not want to use one of the community access nodes you can run an access node.
 Dapp developers, chain explorers, chain analytics etc. who want exclusive access to chain data and not be subject to the rate-limits on the community access node can choose to run an access node.
+
 An access node is staked but since it does not participate in the core Flow protocol, it does not receive any staking rewards.
 
 ### Collection, Consensus, Verification and Execution node
 If you want your node to participate in the nitty-gritty of Flow protocol and help in block or collection creation, transaction execution, result verification or block verification then you should run one of these four node roles.
+
 Nodes with these roles are staked and also receive staking rewards.
 
 To run a staked node, the node must:
