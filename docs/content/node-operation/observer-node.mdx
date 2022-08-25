@@ -11,7 +11,7 @@ Since the observer node is not staked, it does not produce or execute blocks but
 
 ![Observer nodes](observer.png)
 
-## Who should run an observer Node?
+## Who should run an observer node?
 
 The observer node provides an alternative to running an access node. Hence, it is ideal for Dapps that need access to the latest block data available locally e.g. a wallet application that needs to track the latest block ID and height. In addition to that, access node operators who want to scale their access node endpoints geographically can spin up geographically dispersed observer nodes which can talk to their staked access node and to each other.
 
@@ -142,7 +142,8 @@ docker run --rm \
  --bootstrapdir=/bootstrap \
  --datadir=/data/protocol \
  --bind 0.0.0.0:3569  \
- --loglevel=info \
+ --rest-addr=0.0.0.0:8071 \
+ --loglevel=error \
  --secretsdir=/data/secrets  \
  --upstream-node-addresses=access-008.mainnet19.nodes.onflow.org:9001 \
  --upstream-node-public-keys=11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a \
@@ -203,6 +204,9 @@ curl "localhost:8071/v1/blocks?height=final"
 ```
 
 The observer node, like the other type of Flow nodes, also produces Prometheus metrics that can be used to monitor node health. More on that [here](/node-operation/node-setup#monitoring-and-metrics)
+
+
+> [Here](https://www.loom.com/share/990a725531754106b91d8ccec6244219) is video walk-though of these steps.
 
 ## FAQs
 
