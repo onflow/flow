@@ -128,6 +128,12 @@ is run automatically when the extension is removed from a value (before the remo
 and teardown for the extended type that requires using values from the base type, and thus cannot be performed in `init` or `destroy`. It is also recommended that 
 users check any pre-conditions or post-conditions they would like to hold before or after the extended type is created in these functions. 
 
+Some may wonder why `init` and `attach` are separate functions (and have a similar question about `destroy` and `remove`). The primary reason for this
+is to allow extensions to be re-used across multiple instances of the same base type. By separating `init` and `attach` (and `destroy` and `remove`), 
+we can have separate code that runs once when the extension is created (destroyed), and then multiple times each time the extension is attached to (removed from) 
+a base type. A motivating example for this would be a hat for a CryptoKitty: by separating the code to initialize the hat and the code to "equip" a Kitty with the 
+hat, the hat can be added and removed from various Kitties, as well as sold and traded independently of the Kitties themselves.  
+
 ### Extended Types
 
 The `with` type operator can be used to describe the type of an extended composite. Hence, given some resource `R` and an extension `E` defined as such:
