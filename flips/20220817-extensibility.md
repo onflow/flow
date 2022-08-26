@@ -116,17 +116,18 @@ pub extension E for S {
 }
 ```
 
-Any resource fields (which are only legal when extending resources) must also be explicitly handled in a `destroy` method, which is run either when
-the extension is destroyed, or when the combined extended resource type is destroyed. In the latter case, destructors are run opposite to the 
-order that the extensions were added to the original type if there are multiple extensions, ending with the original resource's destructor. Like `init`,
-because `destroy` may be run when the extension is not attached to a base type, it may not reference any fields or methods of its base type, and should
-simply destroy any resources declared on the extension itself. 
+Any resource fields (which are only legal when extending resources) must also be explicitly handled in a `destroy` method, which is run when
+the extension is destroyed. Like `init`, because `destroy` may be run when the extension is not attached to a base type, it may not reference 
+any fields or methods of its base type, and should simply destroy any resources declared on the extension itself. 
 
 Extensions may also declare two special methods: `fun attach() { ... }` and `fun remove() { ... }` that are not considered conflicting when attaching
 multiple extensions to a single value. The `attach` method is automatically run after the extension is attached to a type, while the `remove` method
 is run automatically when the extension is removed from a value (before the removal occurs). These functions exist to perform any necessary setup
 and teardown for the extended type that requires using values from the base type, and thus cannot be performed in `init` or `destroy`. It is also recommended that 
 users check any pre-conditions or post-conditions they would like to hold before or after the extended type is created in these functions. 
+
+If a resource type with attached extensions is `destroy`ed, the extensions will be implicitly `remove`d and then `destroy`ed in the reverse order to which they were
+attached, finishing with the `destroy` method of the base type. 
 
 Some may wonder why `init` and `attach` are separate functions (and have a similar question about `destroy` and `remove`). The primary reason for this
 is to allow extensions to be re-used across multiple instances of the same base type. By separating `init` and `attach` (and `destroy` and `remove`), 
@@ -167,7 +168,10 @@ lists in these types: `T with E1, E2` is equivalent to `T with E1 with E2`. With
 subtype of `T`, `T with E1` and `T with E2`. 
 
 The order of the extensions in the type are not interchangeable: `T with E1, E2` is a different type than `T with E2, E1`, despite them both being
-subtypes of `T`, `T with E1` and `T with E2`. This is because if the combined type is destroyed, the `destroy` functions on the base type
+subtypes of `T`, `T with E1` and `T with E2`. This is because these two types do not permit the same operations; `let x, y <- remove E2 from e` is
+legal when `e` has type `T with E1, E2`, but not when `e` has type `T with E2, E1` (see the section on removing extensions from types below).
+
+Additionally, if the combined type is destroyed, the `destroy` functions on the base type
 and the destructors will be called in a different order. Consider (see the sections below for details on the `extend` syntax):
 
 ```cadence
@@ -305,6 +309,10 @@ In order to typecheck, if `t` is the name of some type `T2`, `e` must have type 
 `T2`'s `remove` method will be executed. After the expression executes, `x` will contain a value of type `T1`, while `y` will 
 contain an extension with type `T2`. If these are resource-kinded, these values will have been moved out of `e`, so any alias 
 to the resource with type `T1 with T2` will be invalidated. 
+
+Extensions must be removed from a type in the reverse order to which they were attached, forming an implicit "stack" of extensions on a type.
+This is to prevent users from implicitly breaking invariants of extended types by removing extensions from the "middle" of this stack and not performing
+the proper teardown required. In addition, this also allows potential future support for extensions on already-extended types. 
 
 ### References to Extended Resources
 
