@@ -2,7 +2,7 @@
 
 | Status        | Proposed                                                  |
 |---------------|:--------------------------------------------------------- |
-| **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN)            |
+| **FLIP #**    | [1097](https://github.com/onflow/flow/pull/1097)            |
 | **Author(s)** | Deniz Mert Edincik (deniz@edincik.com)                    |
 |               | Austin Kline (austin@flowty.io)                           | 
 | **Sponsor**   |                                                           |
@@ -36,7 +36,7 @@ Each of these workarounds come with their downsides.
 
 We propose to add the ability to define new optional fields, and the assignment of default values to fields in
 structs and resources. All fields added after the first deployment of a contract must be either optional or have
-a default parameter assigned so that initialization of existing instances of these objects can be properly
+a default value assigned so that initialization of existing instances of these objects can be properly
 initialized.
 
 ```cadence
