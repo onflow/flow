@@ -65,7 +65,7 @@
             "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet18/protocol-db.tar.gz.sha256",
             "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet18/execution-state.tar.gz",
             "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet18/execution-state.tar.gz.sha256"
-          }
+
           },
           "s3": {
             "rootCheckpointFile": "",
