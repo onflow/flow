@@ -20,6 +20,6 @@ Some blockchains have super high gas fees. That compels NFT platforms, especiall
 
 Flow blockchain's mission is to make blockchain accessible for the masses. We will never expect to see high transaction fees on the Flow blockchain.
 
-> **Note**: You can check the details on Flow fees [here](flow-token/concepts/#fees).
+> **Note**: You can check the details on Flow fees [here](../flow-token/concepts/#fees).
 
 Based on current and future low fees on the Flow blockchain, NFT marketplaces do not need to implement lazy minting.
