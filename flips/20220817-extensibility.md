@@ -5,7 +5,7 @@
 | **FLIP #**    | [1101](https://github.com/onflow/flow/pull/1101) |
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
-| **Updated**   | 2022-08-25                                           |
+| **Updated**   | 2022-08-30                                           |
 
 ## Objective
 
@@ -47,7 +47,8 @@ priv extension Baz for MyResource: MyOtherInterface, MyThirdInterface {
 }
 ```
 
-Specifying the kind (struct or resource) of an extension is not necessary, as its kind will necessarily be the same as the type it is extending. 
+Specifying the kind (struct or resource) of an extension is not necessary, as its kind will necessarily be the same as the type it is extending. At this time,
+extensions can only be defined for a resource or struct composite type. 
 
 The access modifier defines the scope in which the extension can be used: a `pub` extension can extend its original type anywhere that imports it, 
 while an `access(contract)` extension can only be used within the contract that defines it.  Note that this access is different than the access 
@@ -126,8 +127,12 @@ is run automatically when the extension is removed from a value (before the remo
 and teardown for the extended type that requires using values from the base type, and thus cannot be performed in `init` or `destroy`. It is also recommended that 
 users check any pre-conditions or post-conditions they would like to hold before or after the extended type is created in these functions. 
 
-If a resource type with attached extensions is `destroy`ed, the extensions will be implicitly `remove`d and then `destroy`ed in the reverse order to which they were
-attached, finishing with the `destroy` method of the base type. 
+If a resource type with attached extensions is `destroy`ed, the extensions will be implicitly `remove`d and then `destroy`ed. For reasons that will be further
+detailed in the Extended Types section below, there are no guarantees made about the order in which the `remove` and `destroy` methods will be run in the case
+of destroying a resource type with multiple extensions attached, other than that a) `destroy` on the base type will always be the last method run, and b) the
+`remove` method for an extension will always be run before the `destroy` method of that same extension. If developers wish to enforce that `remove`s and `destroy`s
+run in a specific order, it is recommended that they explicitly `remove` extensions from a resource and `destroy` them, rather than `destroy`ing the entire extended
+resource type all at once. 
 
 Some may wonder why `init` and `attach` are separate functions (and have a similar question about `destroy` and `remove`). The primary reason for this
 is to allow extensions to be re-used across multiple instances of the same base type. By separating `init` and `attach` (and `destroy` and `remove`), 
@@ -167,36 +172,8 @@ and `E2`. However, because this syntax has the potential for unneccessary verbos
 lists in these types: `T with E1, E2` is equivalent to `T with E1 with E2`. With the subtyping rules described above, `T with E1, E2`, is a
 subtype of `T`, `T with E1` and `T with E2`. 
 
-The order of the extensions in the type are not interchangeable: `T with E1, E2` is a different type than `T with E2, E1`, despite them both being
-subtypes of `T`, `T with E1` and `T with E2`. This is because these two types do not permit the same operations; `let x, y <- remove E2 from e` is
-legal when `e` has type `T with E1, E2`, but not when `e` has type `T with E2, E1` (see the section on removing extensions from types below).
-
-Additionally, if the combined type is destroyed, the `destroy` functions on the base type
-and the destructors will be called in a different order. Consider (see the sections below for details on the `extend` syntax):
-
-```cadence
-var lastDestructorCalled = 0
-resource R {
-    destroy() {}
-}
-extension E1 for R {
-    destroy() {
-        lastDestructorCalled = 1
-    }
-}
-extension E2 for R {
-    destroy() {
-        lastDestructorCalled = 2
-    }
-}
-
-let r1: @R with E1, E2 <- extend <-create R() with <-create E1() and <-create E2()
-let r2: @R with E2, E1 <- extend <-create R() with <-create E2() and <-create E1()
-destroy r1
-// lastDestructorCalled is now 2, because E2 was attached last
-destroy r2
-// lastDestructorCalled is now 1, because E1 was attached last
-```
+The order of the extensions in the type are interchangeable: `T with E1, E2` is the same type as `T with E2, E1`, and both are 
+subtypes of `T`, `T with E1` and `T with E2`. 
 
 ### Creating Extensions
 
@@ -277,25 +254,26 @@ let se = extend S(x: "foo") with E(y: 3)
 ```
 
 Values can be extended more than once; given resource `R` and extensions `E1` and `E2` of `R`, `extend <-r with <-create E2()` is 
-valid whether `r` has type `@R` or `@R with E1`. In the latter case, the type of that expression would be `@R with E1, E2`, 
-or equivalently `@R with E1 with E2`. Note, however, that if `E1` and `E2` declare any fields or methods with the same name, 
-this extension will fail statically, as this would result in conflicts between the two extended types. 
+valid whether `r` has type `@R` or `@R with E1`, since both are subtypes of `@R` which `E2` extends. 
+In the latter case, the type of that expression would be `@R with E1, E2`,  or equivalently `@R with E1 with E2`. Note, however, 
+that if `E1` and `E2` declare any fields or methods with the same name, this extension will fail statically, as this would result 
+in conflicts between the two extended types. 
 
-At runtime, fields and methods are namespaced, so if `E1` and `E2` both declare a field named `foo`, so while a type `@R with E1 and E2`
-cannot be created, `E1` and `E2` can still both be attached to `@R` at the same time at runtime:
+At runtime, fields and methods are namespaced, so if `E1` and `E2` both declare a field named `foo`, so while a type `S with E1 and E2`
+cannot be created, `E1` and `E2` can still both be attached to `S` at the same time at runtime:
 
 ```cadence
-let r <- create R()
-let r2 <- extend <-r with <-create E1(foo: 3)
-let r3 <- r2 as @R
-let r4 <- extend <-r3 with <- create E2(foo: 3)
+let s = S()
+let s2 = extend s with E1(foo: 3)
+let s3 = s2 as S
+let s4 = extend s3 with E2(foo: 3)
 ``` 
 
-Because `r3` has type `@R` statically, the extra data added by extending it with `E1` is "hidden" from view and not accessible, and
-then extending that value with `E2` to create `r4` will create a value of type `@R with E2`. The two `foo` fields are namespaced, 
-and do not interact. Referencing `r4.foo` will access the `foo` defined in `E2`, while referencing `r2.foo` will access the `foo`
-defined in `E1`. Attempting to cast `r4` to `@R with E1 and E2` would fail at runtime, as despite how it may otherwise appear, 
-that type is not a subtype of `@R with E2` because it is not a valid type. 
+Because `s3` has type `S` statically, the extra data added by extending it with `E1` is "hidden" from view and not accessible, and
+then extending that value with `E2` to create `s4` will create a value of type `S with E2`. The two `foo` fields are namespaced, 
+and do not interact. Referencing `s4.foo` will access the `foo` defined in `E2`, while referencing `s2.foo` will access the `foo`
+defined in `E1`. Attempting to downcast `s4` to `S with E1 and E2` would fail at runtime, as despite how it may otherwise appear, 
+that type is not a subtype of `S with E2` because it is not a valid type. 
 
 If people wish to extend a resource with multiple extensions at once, in order to avoid necessitating expressions like
 `extend extend <-r with <-e1 with <-e2` or similar, we allow the use of the `and` keyword to declare multiple extensions at once:
@@ -310,9 +288,10 @@ In order to typecheck, if `t` is the name of some type `T2`, `e` must have type 
 contain an extension with type `T2`. If these are resource-kinded, these values will have been moved out of `e`, so any alias 
 to the resource with type `T1 with T2` will be invalidated. 
 
-Extensions must be removed from a type in the reverse order to which they were attached, forming an implicit "stack" of extensions on a type.
-This is to prevent users from implicitly breaking invariants of extended types by removing extensions from the "middle" of this stack and not performing
-the proper teardown required. In addition, this also allows potential future support for extensions on already-extended types. 
+Extensions may be removed from a multiply extended type in any order, as multiple extensions on the same base type cannot interact. 
+Users should still take care however not to design any extensions that rely on specific behaviors of other extensions, as there is no
+way in this proposal to require that an extension depend on another or to require that a type has a given extension when another extension 
+is present. 
 
 ### References to Extended Resources
 
@@ -370,12 +349,53 @@ This is backwards compatible, as it does not invalidate any existing Cadence cod
 
 ## Related Issues
 
+In the interest of keeping this proposal tractable, we are keeping the scope deliberately limited, and a number
+of useful features beyond the basic ones for extension are deliberately out of scope for this FLIP. 
+
 Adding extensions for structs and resources implies the ability to extend contracts, transactions, interfaces or enumerations as well, 
 but these extensions are out of scope for this proposal. 
 
 Some types may wish to require that they be extended; i.e. users may wish to define a set of methods on a type
 that define a base functionality, but in order for the type to be used it should be extended with additional features. The
 ability to require an extension on a type may be added in a future proposal, but is out of scope for this one. 
+
+Similarly, some types may wish to prevent themselves from being extended; users may wish to prevent derivative works of an NFT, for
+example. Such a restriction might be added in a future proposal with an `inextensible` or `final` keyword, for example. 
+
+A future proposal may wish to add the ability to dynamically get a list of all the current extensions on a type. 
+
+Having user-defineable type aliases would be very helpful for types that are multiply-extended. If we could write something like
+`type T = X with Y`, then we could also write a type like `T with Z` instead of `X with Y, Z` or `X with Y with Z`, which is much 
+easier to read and understand. It also enables abstractions where users can use an (aliased) type without even having to know that
+it was created using an extension. We should propose this in a future FLIP to complement this one. 
+
+Currently, users can only declare extensions for a base resource or struct type, and extensions for the same type cannot interact with
+or depend on each other. The benefit of this is that the order that extensions were added to the base type does not matter, and they 
+can be removed in any order interchangeably. However, allowing users to build extensions on top of each other to create dependency chains, 
+e.g. to declare an extension `E2 for R with E1`, where `E2` is able to rely both on the fields/methods of `R` and those of `E1` would enable
+powerful new use cases. A future proposal that adds this ability would need to contend with the order of these extensions and how they would be added
+and removed. 
+
+## Alternatives
+
+In the comments of the PR where this FLIP was added, @turbolent proposed an alternative wherein every resource or struct has an implicit
+`extensions` field that contains all of the extensions that are added to that composite. The extensions on a resource or struct would be 
+accessible, addable and removeable without changing the static type of that composite, and accessing the fields on an extension would require
+accessing the specific extension from the base type and then accessing the field from that extension specifically. This has the nice property 
+that there would be no potential for naming conflicts between the base type and the extensions, as every method or field access on an 
+extension is always fully qualified. 
+
+The downside of this alternative is that it does not provide any static typing guarantees. The proposal in the FLIP has the nice property 
+that the extensions present on a value are expressed in the type of that value; this makes it possible for a contract developer to write an 
+application that is designed to work with, say, CryptoKitties with Hats, and statically require its inputs to be of that extended type. If 
+extensions are stored on the base type like in the alternative though, expressing the type of a CryptoKitty with a Hat statically is no 
+longer possible, and the author of such an application would only be able to statically require its inputs be CryptoKitties, and then would 
+need to dynamically validate that the Hat extension is present on each of them.
+
+Simply requiring fields to be fully qualified on an extended type, even when the extensions are also reflected in the static type, also breaks
+a nice property that the current proposal upholds, which is that the resulting type of extending `R with E` is equivalent to a composite type `RE`
+that contains the fields and methods of both `R` and `E` on it. This makes extended values "first-class" similar to resources and structs, and 
+makes them more user-friendly to work with. 
 
 ## Prior Art
 
@@ -400,19 +420,3 @@ additional methods, computed properties and initializers.
 ergonomic by simply making the return of the `remove from` expression a tuple, or to make the expression return multiple values.
 We would then not need to special cast the bindings created from this expression. 
 
-* Should users be able to create unremovable extensions? Does it make sense to limit what an account can do with a resource that
-they own?
-
-* Currently extensions can only be declared `for` a base struct or resource type. Do we need/want to support declaring 
-extensions for already extended types? Is supporting something like `pub extension E2 for R with E1` necessary in order to require that
-`E2` be attached to `R` after `E1` has already been attached? Or would we instead prefer users not to so tightly couple their
-extensions this way?
-
-* Having user-defineable type aliases would be very helpful for types that are multiply-extended. If we could write something like
-`type T = X with Y`, then we could also write a type like `T with Z` instead of `X with Y, Z` or `X with Y with Z`, which is much 
-easier to read and understand. It also enables abstractions where users can use an (aliased) type without even having to know that
-it was created using an extension. Would adding support for type aliases be in scope for this FLIP?
-
-* Do we want to add the ability to dynamically get a list of all the current extensions on a type? This may provide some utility,
-but it comes at the cost of weakening abstractions and composability, as without such an ability there is no observable difference
-between a resource `R1` extended with `E` and a resource `R2` that declares the same public interface as the combined extended type.
