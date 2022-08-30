@@ -172,21 +172,21 @@ After this event the `epochTokenPayout` is equal to the new value.
 
 ### NewStakingMinimums
 
-```cadence
-pub event NewStakingMinimums(newMinimums: {UInt8: UFix64})
-```
+
+`pub event NewStakingMinimums(newMinimums: {UInt8: UFix64})`
+
 
 | Field           | Type            | Description                                                  |
 | --------------- | --------------- | ------------------------------------------------------------ |
-| newRequirements | {UInt8: UFix64} | The new minimum staking requirements for all the node types. |
+| newRequirements | `{UInt8: UFix64}` | The new minimum staking requirements for all the node types. |
 
 Emitted by `FlowIDTableStaking.Admin.setMinimumStakeRequirements()` when the Admin changes the minimum requirements for node types.
 
 ### NewDelegatorCutPercentage
 
-```cadence
-pub event NewDelegatorCutPercentage(newCutPercentage: UFix64)
-```
+
+`pub event NewDelegatorCutPercentage(newCutPercentage: UFix64)`
+
 
 | Field            | Type   | Description                                                         |
 | ---------------- | ------ | ------------------------------------------------------------------- |
