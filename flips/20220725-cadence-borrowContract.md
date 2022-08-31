@@ -10,8 +10,7 @@
 
 ## Objective
 
-This proposed change will allow dynamic import of contracts from an address, by
-using a well known `borrow` dynamic.
+This proposal will allow Cadence programs to import contracts dynamically from an address.
 
 ## Motivation
 
