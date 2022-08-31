@@ -145,10 +145,10 @@ The `FTView` contains two sub-views:
                 publicLinkedType.isSubtype(of: Type<&{FungibleToken.Receiver, FungibleToken.Balance, Resolver}>()): "Public type must include FungibleToken.Receiver, FungibleToken.Balance and FungibleMetadataViews.Resolver interfaces."
                 providerLinkedType.isSubtype(of: Type<&{FungibleToken.Provider, Resolver}>()): "Provider type must include NonFungibleToken.Provider and FungibleMetadataViews.Resolver interface."
             }
-            self.storagePath=storagePath
-            self.publicPath=publicPath
+            self.storagePath = storagePath
+            self.publicPath = publicPath
             self.providerPath = providerPath
-            self.publicLinkedType=publicLinkedType
+            self.publicLinkedType = publicLinkedType
             self.providerLinkedType = providerLinkedType
             self.createEmptyVault = createEmptyVaultFunction
         }
@@ -193,8 +193,8 @@ This feature can be rolled out with no fear of changes to the user. However docu
 
 ## Prior Art
 
-The already working NFT Metadata views [standard](https://github.com/onflow/flow/blob/master/flips/20210916-nft-metadata.md) has been used as the main source for this proposal.
+The existing [NFT Metadata views standard](https://github.com/onflow/flow/blob/master/flips/20210916-nft-metadata.md) has been used as the main inspiration for this proposal.
 
 ## Questions and Discussion Topics
 
-Main friction point will be if we want this standard to be in a new different contract of if we want it to be part of the existent `MetadataViews.cdc` contract.
+We should agree on which views, new ones and existing ones, should be needed to implement by any `Fungible Token` adopting the standard. 
