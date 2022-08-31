@@ -9,19 +9,19 @@
 
 ## Objective
 
-This proposal, in a similar fashion as the NFT Metadata, will make possible to create generic solutions that will interoperate through views rather than through hard-coded types. This will allow better interoperability between fungible tokens and external applications. 
+The goal of this proposal is to allow Fungible Tokens (FT) to provide metadata, in a similar fashion as the [NFT Metadata Standard, FLIP 636](https://github.com/onflow/flow/blob/master/flips/20210916-nft-metadata.md). This will allow better interoperability between fungible tokens and external applications. 
 
 ## Motivation
 
-As the Flow ecosystem continues growing the need of assuring contract and external apps interoperability increases. The development of the NFT Metadata standards brought awareness of how important is the way any token on Flow is able to communicate its features to other dapps, and of the advantages of doing so in a standardized way.
+As the Flow ecosystem continues to grow, the need of assuring contract and external apps interoperability increases. The development of the NFT Metadata standard showed how important it is for NFTs on Flow to be able to communicate their features to other dapps, and the advantages of doing so in a standardized way.
 
 ## User Benefit
 
-The creation of a Metadata standard for fungible tokens will bring two major user benefits, discoverability and interoperability. It will make way easier to any FT to be presented on any app that would want to feature several FT and also will ease how those FT can be used by an user programmatically.
+The creation of a Metadata standard for fungible tokens will bring two major user benefits: discoverability and interoperability. It will make it easier for any FT to be presented in any app that displays fungible tokens, and will also allow those FTs to communicate how they can be used programmatically.
 
 ## Design Proposal
 
-The core of this proposal is to add the following interface and have any `FungibleToken.Vault` implement it. This is the same interface that can be found in the NFTs metadata contract.
+The core of this proposal is to add the following interface and have any `FungibleToken.Vault` implement it. This is the same interface that can be found in the NFT metadata contract.
 
 ```cadence
     /// Provides access to a set of metadata views. A struct or 
@@ -34,7 +34,7 @@ The core of this proposal is to add the following interface and have any `Fungib
     }
 ```
 
-Also, based on the experience acquired developing the NFT views a `FTView` that gives a fill picture of the FT, wrapping other views, is considered necessary
+Also, based on the experience gained from the NFT metadata standard, implementations are required to provide an  `FTView` view, which provides a full picture of the FT. It wraps the `FTDisplay` and `FTVaultData` views.
 
 ```cadence
     /// FTView wraps FTDisplay and FTVaultData, and is used 
@@ -45,8 +45,8 @@ Also, based on the experience acquired developing the NFT views a `FTView` that 
         pub let ftDisplay: FTDisplay?
         pub let vaultData: FTVaultData?
         init(
-            ftDisplay : FTDisplay?,
-            vaultData : FTVaultData?
+            ftDisplay: FTDisplay?,
+            vaultData: FTVaultData?
         ) {
             self.ftDisplay = ftDisplay
             self.vaultData = vaultData
@@ -54,7 +54,9 @@ Also, based on the experience acquired developing the NFT views a `FTView` that 
     }
 ```
 
-The views contained on the `FTView` will be two; `FTDisplay` that will help retrieving all the "human readable" information about the FT and the `FTVaultData` that will expose the data needed to interact with the FT (paths, types linked to those paths, similar to `NFTCollectionData`) 
+The `FTView` contains two sub-views: 
+- `FTDisplay`, which provides the "human readable" information about the fungible token; and
+- `FTVaultData`, which provides the data needed to interact with the fungible token (paths, types linked to those paths, similar to `NFTCollectionData`)
 
 ```cadence
     /// View to expose the information needed to showcase this FT. 
@@ -62,10 +64,10 @@ The views contained on the `FTView` will be two; `FTDisplay` that will help retr
     /// graphics of the FT.
     ///
     pub struct FTDisplay {
-        // Name that should be used when displaying this FT.
+        /// Name that should be used when displaying this FT.
         pub let name: String
 
-        // Description that should be used to give an overview of this FT.
+        /// Description that should be used to give an overview of this FT.
         pub let description: String?
 
         /// A small logo that represents the FT.
@@ -74,11 +76,11 @@ The views contained on the `FTView` will be two; `FTDisplay` that will help retr
         /// that can be displayed in lists, link previews, etc.
         pub let logo: AnyStruct{File}?
 
-        // External link to a URL to view more information about this token.
+        /// External link to a URL to view more information about this token.
         pub let externalURL: ExternalURL?
 
-        // Social links to reach this token's social homepages.
-        // Possible keys may be "instagram", "twitter", "discord", etc.
+        /// Social links to reach this token's social homepages.
+        /// Possible keys may be "instagram", "twitter", "discord", etc.
         pub let socials: {String: ExternalURL}?
 
         init(
@@ -157,7 +159,7 @@ In order to be able to use the `FTDisplay` we will need to use or import (depend
 
 ### Alternatives Considered
 
-Since the `MetadataViews` contract has been a successful solution for increasing NFT interoperability no alternatives have been considered for the FT. 
+Since the `MetadataViews` contract has been a successful solution for increasing NFT interoperability, no alternatives have been considered.
 
 ### Performance Implications
 
@@ -165,7 +167,7 @@ Due to the potentially dynamic nature of this proposal, the methods that return 
 
 ### Dependencies
 
-This proposal builds on the existing FT interface defined [here](https://github.com/onflow/flow-ft).
+This proposal builds on the [existing FT interface](https://github.com/onflow/flow-ft).
 
 ### Engineering Impact
 
