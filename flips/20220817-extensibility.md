@@ -5,7 +5,7 @@
 | **FLIP #**    | [1101](https://github.com/onflow/flow/pull/1101) |
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
-| **Updated**   | 2022-08-30                                           |
+| **Updated**   | 2022-08-31                                           |
 
 ## Objective
 
@@ -121,7 +121,7 @@ Any resource fields (which are only legal when extending resources) must also be
 the extension is destroyed. Like `init`, because `destroy` may be run when the extension is not attached to a base type, it may not reference 
 any fields or methods of its base type, and should simply destroy any resources declared on the extension itself. 
 
-Extensions may also declare two special methods: `fun attach() { ... }` and `fun remove() { ... }` that are not considered conflicting when attaching
+Extensions may also declare two special methods: `attach() { ... }` and `remove() { ... }` that are not considered conflicting when attaching
 multiple extensions to a single value. The `attach` method is automatically run after the extension is attached to a type, while the `remove` method
 is run automatically when the extension is removed from a value (before the removal occurs). These functions exist to perform any necessary setup
 and teardown for the extended type that requires using values from the base type, and thus cannot be performed in `init` or `destroy`. It is also recommended that 
