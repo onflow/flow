@@ -149,12 +149,12 @@ resource R {}
 extension E for R {}
 ```
 
-The type `@R with E` describes the type of `R` extended with `E`. An extension can only appear on the right side of the `with` type operator 
+The type `@R with @E` describes the type of `R` extended with `E`. An extension can only appear on the right side of the `with` type operator 
 when it is a valid extension for the type on the left. 
 
 The extension type itself also can be referenced with just `E`, but no operations can be performed on a value of type `E` other than to 
 move it around or to attach it to a value using `extend` syntax (see below). That is to say, a method or field defined in the declaration of `E` 
-exists on values of type `@R with E`, not on values of type `E`. 
+exists on values of type `@R with @E`, not on values of type `E`. 
 
 If the extension has any interface conformances, then the extended `with` type conforms to those interfaces. Hence, given these declarations:
 
@@ -163,7 +163,7 @@ resource R {}
 extension E for R: I {}
 ```
 
-`@R with E` conforms to `I`. 
+`@R with @E` conforms to `I`. 
 
 The original type is always a supertype of any extended versions of itself; i.e. `T` is a supertype of `T with E`. 
 
@@ -185,7 +185,7 @@ methods defined in the extension cannot be used on those values; the extension m
 
 An extension can be attached to a base type using the `extend e1 with e2` expression. This expression requires that `e1` have a struct
 or resource type, and that `e2` be a valid extension of that type. It will fail to typecheck otherwise. If `e1` has type `@R` and `e2` 
-has type `E`, then a successfully checking expression of this form will have type `@R with E`, and then `E`'s `attach` method will be run.
+has type `@E`, then a successfully checking expression of this form will have type `@R with @E`, and then `E`'s `attach` method will be run.
 So, given resource definition:
 
 ```cadence
@@ -193,7 +193,7 @@ resource R {}
 extension E for R {}
 ```
 
-The following would be valid ways to create `@R with E`:
+The following would be valid ways to create `@R with @E`:
 
 ```cadence 
 let r <- create R()
@@ -254,8 +254,8 @@ let se = extend S(x: "foo") with E(y: 3)
 ```
 
 Values can be extended more than once; given resource `R` and extensions `E1` and `E2` of `R`, `extend <-r with <-create E2()` is 
-valid whether `r` has type `@R` or `@R with E1`, since both are subtypes of `@R` which `E2` extends. 
-In the latter case, the type of that expression would be `@R with E1, E2`,  or equivalently `@R with E1 with E2`. Note, however, 
+valid whether `r` has type `@R` or `@R with @E1`, since both are subtypes of `@R` which `@E2` extends. 
+In the latter case, the type of that expression would be `@R with @E1, @E2`,  or equivalently `@R with @E1 with @E2`. Note, however, 
 that if `E1` and `E2` declare any fields or methods with the same name, this extension will fail statically, as this would result 
 in conflicts between the two extended types. 
 
