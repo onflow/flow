@@ -7,7 +7,7 @@ First you'll need to provision a machine or virtual machine to run your node sof
 
 ## Hardware Requirements
 
-The hardware your Node will need varies depending on the role your Node will play in the Flow network. For an overview of the differences see the [Node Roles Overview](/node-operation/node-roles).
+The hardware your Node will need varies depending on the role your Node will play in the Flow network. For an overview of the differences see the [Node Roles Overview](/nodes/node-operation/node-roles).
 
 | Node Type | CPU | Memory | Disk | Example GCP Instance |
 |:----------------:| ---------:| ------:| ------:|:--------------:|
@@ -16,8 +16,11 @@ The hardware your Node will need varies depending on the role your Node will pla
 | **Execution**    | 64 cores  | 800 GB |  9 TB  | n2-highmem-128 |
 | **Verification** |  2 cores  | 16 GB  | 200 GB | n2-highmem-2   |
 | **Access**       |  16 cores | 64 GB  | 900 GB | n2-standard-16 |
+| **Observer**     |  2 cores  | 4 GB   | 300 GB | n2-standard-4  |
 
 _Note: The above numbers represent our current best estimate for the state of the network. These will be actively updated as we continue benchmarking the network's performance._
+
+> To run an Observer node, follow this [guide](/nodes/node-operation/observer-node).
 
 ## Networking Requirements
 
@@ -100,7 +103,7 @@ As a rough benchmark for planning storage capacity, each Flow block will grow th
 ### Confidential Data & Files
 
 Flow stores dynamically generated confidential data in a separate database. We strongly recommend enabling encryption
-for this database - see [this guide](/node-operation/db-encryption-existing-operator/) for instructions.
+for this database - see [this guide](/nodes/node-operation/db-encryption-existing-operator/) for instructions.
 
 Confidential information used by Flow is stored in the `private-root-information` subtree of the `bootstrap` folder.
 In particular:
@@ -276,13 +279,13 @@ Now that your node is provisioned and configured, it can be started.
 
 <Callout type="warning">
 
-Before starting your node, ensure it is [registered](/node-operation/node-bootstrap/#step-2---stake-your-node) and [authorized](https://flow-docs-8kbrufdlq-onflow.vercel.app/node-operation/node-bootstrap/#confirming-authorization).
+Before starting your node, ensure it is [registered](/nodes/node-operation/node-bootstrap/#step-2---stake-your-node) and [authorized](https://flow-docs-8kbrufdlq-onflow.vercel.app/nodes/node-operation/node-bootstrap/#confirming-authorization).
 
 </Callout>
 
 Ensure you start your node at the appropriate time.
-See [Spork Process](/node-operation/spork) for when to start up a node following a spork.
-See [Node Bootstrap](/node-operation/node-bootstrap#timing) for when to start up a newly registered node.
+See [Spork Process](/nodes/node-operation/spork) for when to start up a node following a spork.
+See [Node Bootstrap](/nodes/node-operation/node-bootstrap#timing) for when to start up a newly registered node.
 
 ### Systemd
 
@@ -325,7 +328,7 @@ CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 
 ## Monitoring and Metrics
 
-This is intended for operators who would like to see what their Flow nodes are currently doing. Head over to [Monitoring Node Health](/node-operation/monitoring-nodes/) to get setup.
+This is intended for operators who would like to see what their Flow nodes are currently doing. Head over to [Monitoring Node Health](/nodes/node-operation/monitoring-nodes/) to get setup.
 
 ### Node Status
 
