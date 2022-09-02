@@ -1,17 +1,17 @@
-# Function Purity 
+# View Functions 
 
-| Status        | (Proposed)       |
+| Status        | (Accepted)       |
 :-------------- |:---------------------------------------------------- |
 | **FLIP #**    | [1056](https://github.com/onflow/flow/pull/1056)     |
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
-| **Updated**   | 2022-08-25                                           |
+| **Updated**   | 2022-09-02                                           |
 
 ## Objective
 
 This FLIP proposes to add a new syntax and accompanying semantic analysis to determine or 
 enforce that a given function or method is "view", that is, lacking in side effects.
- We would then add an additional checker rule to enforce that function conditions only call view functions.
+We would then add an additional checker rule to enforce that function conditions only call view functions.
 
 ## Motivation and User Benefit
 
@@ -62,7 +62,7 @@ Function types can also have a `view` annotations, to be placed after the openin
     let h: (view (): (view (): Void)) = ...
 ```
 
-Any function types without an explicit purity annotation will be considered impure.
+Any function types without an explicit view annotation will be considered non-view.
 
 ### Type Checking
 
@@ -130,12 +130,12 @@ not operations like `copy`, `borrow`, `type`, or `getCapability`.
     ```
 
 Any functions declared to be `view` will enforce that none of these operations occur in their bodies. If such an operation does occur, then the checker will report
-an error identifying the impure operation. Impure function declarations have no additional typechecking behavior; any operations are permitted.
+an error identifying the mutating operation. Non-view function declarations have no additional typechecking behavior; any operations are permitted.
 
 Note that the current design allows both emitting events and logging data from within a view function. These are traditionally considered side effects, but 
 it is perhaps worth some discussion on whether or not these should be allowed in `view` functions.  
 
-Purity also interacts covariantly with function subtyping: `view` functions are a subtype of impure functions. So, the following declarations would typecheck:
+Purity also interacts covariantly with function subtyping: `view` functions are a subtype of non-view functions. So, the following declarations would typecheck:
 
 ```cadence
     let a: (view (): Void) = view fun() {}
@@ -151,6 +151,8 @@ while these would not:
     let x: (view (): Void) = fun() {}
     let y: (((): Void): Void) = fun foo(f: (view (): Void)) {} // function parameters are contravariant
 ```
+
+For this reason, when checking interface conformances, all `view` functions in interfaces must be implemented with `view` functions in composites. 
 
 Once purity is enforced in functions with `view` annotations, in order to require it in function conditions we can 
 simply treat pre-conditions and post-conditions as view contexts as if they had `view` annotations themselves. 
