@@ -5,7 +5,7 @@
 | **FLIP #**    | [1101](https://github.com/onflow/flow/pull/1101) |
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
-| **Updated**   | 2022-08-31                                           |
+| **Updated**   | 2022-09-02                                           |
 
 ## Objective
 
@@ -55,7 +55,8 @@ while an `access(contract)` extension can only be used within the contract that 
 of the fields or methods within the extension itself; a `pub` extension can declare a `priv` field, for example. 
 
 Within the extension, fields and methods can be defined the same way they would be in a struct or resource declaration, with an access modifier and 
-a declaration kind. Note, however, that extensions only have access to the same fields and functions as other code declared in the same place would have; 
+a declaration kind. Any fields and methods on the original type would be accessible to the extension on the `self` value. 
+Note, however, that extensions only have access to the same fields and functions as other code declared in the same place would have; 
 i.e. an extension defined in the same contract as its original type would have access to `pub` and `access(contract)` fields and methods, but not `priv` fields
 or methods, while an extension defined in a different contract and account to its original type would only be able to reference `pub` fields and methods on its 
 original type. Extensions may also not override or overload fields or methods on the original type, even if the original fields are not accessible to the extension. 
