@@ -10,8 +10,8 @@
 ## Objective
 
 This FLIP proposes to add a new syntax and accompanying semantic analysis to determine or 
-enforce that a given function or method is "view", that is, lacking in side effects. We would
-then add an additional checker rule to enforce purity in function conditions. 
+enforce that a given function or method is "view", that is, lacking in side effects.
+ We would then add an additional checker rule to enforce that function conditions only call view functions.
 
 ## Motivation and User Benefit
 
@@ -53,10 +53,9 @@ pub resource interface R {
 }
 ```
 
-Any function that does not have a `view` annotation will be considered impure. 
+Any function that does not have a `view` annotation will be considered a non-view function. 
 
-Function types can also have purity annotations, to be placed after the opening parenthesis but before the parameter list. So, for example, these are valid
-types:
+Function types can also have a `view` annotations, to be placed after the opening parenthesis but before the parameter list. So, for example, these are valid types:
 
 ```cadence
     let f: (view (Int): Int) = ...
@@ -142,7 +141,7 @@ Purity also interacts covariantly with function subtyping: `view` functions are 
     let a: (view (): Void) = view fun() {}
     let b: ((): Void) = view fun() {}
     let c: ((): Void) = fun() {}
-    let d: (((view (): Void)): Void) = fun foo(x:((): Void)) {} // contravariance
+    let d: ((view (): Void): Void) = fun foo(f: ((): Void)) {} // function parameters are contravariant
 ```
 
 while these would not: 
@@ -150,7 +149,7 @@ while these would not:
 
 ```cadence
     let x: (view (): Void) = fun() {}
-    let y: ((((): Void)): Void) = fun foo(f:(view (): Void)) {} // contravariance
+    let y: (((): Void): Void) = fun foo(f: (view (): Void)) {} // function parameters are contravariant
 ```
 
 Once purity is enforced in functions with `view` annotations, in order to require it in function conditions we can 
@@ -158,9 +157,11 @@ simply treat pre-conditions and post-conditions as view contexts as if they had 
 
 ### Drawbacks
 
-This adds additional complexity to the langauge; users will need to think about the purity of their functions and how they interact with each other in order 
-to use the new `view` annotations. However, these annotations are unlikely to be frequently required; they will only be necessary for functions that are 
-called from conditions (and functions called by those functions). Users will not need to interact with this system most of the time. 
+The proposed feature adds additional complexity to the language; 
+users will need to think about the side-effects of their functions and how they interact with each other in order  to use the new `view` annotation.
+However, this annotation is unlikely to be frequently required; it will only be necessary for functions that are 
+called from conditions (and functions called by those functions). 
+Users will not need to interact with this language feature most of the time. 
 
 ### Alternatives Considered
 
