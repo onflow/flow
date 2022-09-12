@@ -5,26 +5,36 @@
 | **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
-| **Updated**   | 2022-09-09                                           |
+| **Updated**   | 2022-09-12                                           |
 | **Obsoletes** | https://github.com/onflow/flow/pull/945              |
 
 ## Objective
 
-What are we doing and why? What problem will this solve? What are the goals and
-non-goals? This is your executive summary; keep it short, elaborate below.
+This adds two new functions that allow users to publish values for specific other
+users to claim, while ensuring that other users cannot claim these values. In particular, 
+this dramatically simplifies the use case for bootstraping capabilities. 
 
 ## Motivation
 
-Why is this a valuable problem to solve? What background information is needed
-to show how this design addresses the problem?
+https://github.com/onflow/flow/pull/945 proposed to add an `identity` resource-typed field
+on `AuthAccount` objects, to allow users to verify the identity of an account. In particular, 
+this was intended to enable sharing values to specific users, and to simplify the capability bootstrapping
+usecase. In this use case, the owner of a resource, which we can call the Provider,
+wants to share a capability to that resource with another account, which we can call the Recipient.
 
-Which users are affected by the problem? Why is it a problem? What data supports
-this? What related work exists?
+Currently the best way to do this in Cadence is for the Provider and the Recipient to co-sign a transaction
+in which the Provider creates the capability and then stores it in the Recipient's account. However, 
+this is awkward because it requires the Provider and the Recipient to both sign the transaction within a specific
+time window, which can be difficult in highly asynchronous environments, e.g. collaboration between distant time-zones. 
+
+This FLIP is designed to enable an alternative solution, in which the Provider can create the capability and place it somewhere
+where the Recipient can securely claim it at their leisure, without any pressure to do so within a specific time window and with 
+no worry that someone else may come along and interfere. 
 
 ## User Benefit
 
-How will users (or other contributors) benefit from this work? What would be the
-headline in the release notes or blog post?
+This will dramatically simplify the capability bootstrapping use case, as well as generally making it easier for users
+to share specific values directly with another account. 
 
 ## Design Proposal
 
@@ -40,6 +50,8 @@ The `publish` function takes a `value` argument, a `name` string that identifies
 and a `recipient` address that specifies which account should be allowed to `claim` the 
 published `value` later. When `publish` is called, `value` and its intended `recipient` are stored
 in a publishing dictionary on the calling account (not accessible to users), with the `name` as its key.
+Note that this means any values that have been `publish`ed but have yet to be `claim`ed will count towards
+the `publish`ing account's storage usage. 
 
 The `claim` function takes the `name` of the value to be claimed and an `provider` address that
 specifies which account is providing the value, as well as a type argument `T` that specifies
@@ -49,7 +61,7 @@ publishing dictionary for the `name` key. If the key does not exist on the map, 
 If the key does exist, then `claim` compares the stored `recipient` (from the original call to `publish`) 
 to see if it matches the address of the account calling `claim`. If it does not, then `claim` returns `nil`. 
 If it does match, then the runtime type of the published `value` compared against the type argument `T`. If 
-it does not match, then `claim` returns `nil`. If it does, `value` is removed from the `provider`'s dictionary and 
+it does not match, then `claim` returns `nil`. If it does match, `value` is removed from the `provider`'s dictionary and 
 returned to the `claim` calling account. In effect, this means that a `publish`ed value can only be `claim`ed once. 
 
 An example of how this might look, when bootstrapping a capability to a resource owned by 0x1:
@@ -85,85 +97,33 @@ transaction() {
 }
 ```
 
-### Drawbacks
-
-Why should this *not* be done? What negative impact does it have? 
-
 ### Alternatives Considered
 
-* Make sure to discuss the relative merits of alternatives to your proposal.
-
-### Performance Implications
-
-* Do you expect any (speed / memory)? How will you confirm?
-* There should be microbenchmarks. Are there?
-* There should be end-to-end tests and benchmarks. If there are not 
-(since this is still a design), how will you track that these will be created?
-
-### Dependencies
-
-* Dependencies: does this proposal add any new dependencies to Flow?
-* Dependent projects: are there other areas of Flow or things that use Flow 
-(Access API, Wallets, SDKs, etc.) that this affects? 
-How have you identified these dependencies and are you sure they are complete? 
-If there are dependencies, how are you managing those changes?
-
-### Engineering Impact
-
-* Do you expect changes to binary size / build time / test times?
-* Who will maintain this code? Is this code in its own buildable unit? 
-Can this code be tested in its own? 
-Is visibility suitably restricted to only a small API surface for others to use?
+* The largest point of considering is whether or not `publish` and `claim` should be generalized
+to work with all values (as in the current proposal), or whether they should be limited to only 
+publishing/claiming capabilities. While the generalized versions are strictly more powerful, if we
+want to encourage users to use capabilities to objects rather than directly sending them back and forth, 
+we may not want to have such powerful alternatives available. 
 
 ### Best Practices
 
-* Does this proposal change best practices for some aspect of using/developing Flow? 
-How will these changes be communicated/enforced?
-
-### Tutorials and Examples
-
-* If design changes existing API or creates new ones, the design owner should create 
-end-to-end examples (ideally, a tutorial) which reflects how new feature will be used. 
-Some things to consider related to the tutorial:
-    - It should show the usage of the new feature in an end to end example 
-    (i.e. from the browser to the execution node). 
-    Many new features have unexpected effects in parts far away from the place of 
-    change that can be found by running through an end-to-end example.
-    - This should be written as if it is documentation of the new feature, 
-    i.e., consumable by a user, not a Flow contributor. 
-    - The code does not need to work (since the feature is not implemented yet) 
-    but the expectation is that the code does work before the feature can be merged. 
+* This will change the best practices for bootstrapping capabilities, which was previously only
+possible by cosigning a transaction. Instead, users should be encouraged to use the `publish`/`claim` pattern
+in order to handle any cases where they would like to pass a value directly from their account to a specific
+other. 
 
 ### Compatibility
 
-* Does the design conform to the backwards & forwards compatibility [requirements](../docs/compatibility.md)?
-* How will this proposal interact with other parts of the Flow Ecosystem?
-    - How will it work with FCL?
-    - How will it work with the Emulator?
-    - How will it work with existing Flow SDKs?
+This will be backwards-compatible from the Cadence perspective, but will add a new field to 
+every account (the dictionary of published objects). To support this we would need a storage migration
+to add empty dictionaries to all accounts during the spork that adds support for this feature. 
 
 ### User Impact
 
-* What are the user-facing changes? How will this feature be rolled out?
-
-## Related Issues
-
-What related issues do you consider out of scope for this proposal, 
-but could be addressed independently in the future?
-
-## Prior Art
-
-Does the proposed idea/feature exist in other systems and 
-what experience has their community had?
-
-This section is intended to encourage you as an author to think about the 
-lessons learned from other projects and provide readers of the proposal 
-with a fuller picture.
-
-It's fine if there is no prior art; your ideas are interesting regardless of 
-whether or not they are based on existing work.
-
+* This should have no direct impact on users; it will not break any existing contracts. 
 ## Questions and Discussion Topics
 
-Seed this with open questions you require feedback on from the FLIP process. 
-What parts of the design still need to be defined?
+* The API currently provides a way for users to `claim` values that have been published for them, 
+but once a value is `publish`ed, the only way to remove it from the account that published it is for
+the intended recipient to `claim` it. Is it worth having an `unpublish` function that will remove the
+entry for the value?
