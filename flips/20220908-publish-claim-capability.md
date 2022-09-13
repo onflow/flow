@@ -5,7 +5,7 @@
 | **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
-| **Updated**   | 2022-09-12                                           |
+| **Updated**   | 2022-09-13                                           |
 | **Obsoletes** | https://github.com/onflow/flow/pull/945              |
 
 ## Objective
@@ -38,10 +38,12 @@ to share specific values directly with another account.
 
 ## Design Proposal
 
-This adds two new functions to `AuthAccount`s:
+This adds three new functions to `AuthAccount`s:
 
 ```cadence
 fun publish(_ value: Any, name: String, recipient: Address)
+
+fun unpublish<T : Any>(_ name: String): T?
 
 fun claim<T: Any>(_ name: String, provider: Address): T?
 ```
@@ -96,6 +98,13 @@ transaction() {
   }
 }
 ```
+
+The `unpublish` function exists so that a provider can remove a published value from their storage, so that it
+stops taking up space if it goes un`claim`ed by its intended recipient. The calling account (the original provider
+of the value) calls `unpublish` with the same `name` that the value was originally stored with. If a value with that 
+`name` is present in the account's publishing dictionary, and the provided type argument to `unpublish` is a supertype
+of that value's runtime type, then the function will return that value and remove it from the dictionary. Otherwise, 
+the function returns `nil`. 
 
 ### Alternatives Considered
 
