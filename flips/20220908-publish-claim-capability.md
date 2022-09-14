@@ -2,17 +2,17 @@
 
 | Status        | (Proposed / Rejected / Accepted / Implemented)       |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | [NNN](https://github.com/onflow/flow/pull/NNN) (update when you have PR #)|
+| **FLIP #**    | [1122](https://github.com/onflow/flow/pull/1122)     |
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
-| **Updated**   | 2022-09-13                                           |
+| **Updated**   | 2022-09-14                                           |
 | **Obsoletes** | https://github.com/onflow/flow/pull/945              |
 
 ## Objective
 
 This adds two new functions that allow users to publish values for specific other
 users to claim, while ensuring that other users cannot claim these values. In particular, 
-this dramatically simplifies the use case for bootstraping capabilities. 
+this dramatically simplifies the use case for bootstrapping capabilities. 
 
 ## Motivation
 
@@ -38,22 +38,41 @@ to share specific values directly with another account.
 
 ## Design Proposal
 
-This adds three new functions to `AuthAccount`s:
+This adds a new field `inbox` to `AuthAccount`, that has a new `Inbox` struct type
+defined as a nested composite on `AuthAccount`:
 
 ```cadence
-fun publish(_ value: Any, name: String, recipient: Address)
+struct Inbox {
+    let allowlist: [Address]
 
-fun unpublish<T : Any>(_ name: String): T?
+    fun permit(_ provider: Address)
 
-fun claim<T: Any>(_ name: String, provider: Address): T?
+    fun unpermit(_ provider: Address)
+
+    fun publish(_ value: Any, name: String, recipient: Address): Bool
+
+    fun unpublish<T : Any>(_ name: String): T?
+
+    fun claim<T: Any>(_ name: String, provider: Address): T?
+}
 ```
+
+The `inbox` tracks an `allowlist` that keeps track of all the addresses that are allowed to 
+`publish` values to it. An recipient account can `permit` a provider account to send values to its `inbox`
+by calling `permit`, and revoke that permission using `unpermit`. 
+
+On `PublicAccount`, the `Inbox` type only contains the `allowlist` so that a prospective `provider` that would like
+to `publish` a value to a `recipient` can inspect the `recipient` account's `allowlist` to check whether they are
+`permit`ted to do so by checking whether the `provider`'s address appears in the `recipient`'s `allowlist`.
 
 The `publish` function takes a `value` argument, a `name` string that identifies it, 
 and a `recipient` address that specifies which account should be allowed to `claim` the 
 published `value` later. When `publish` is called, `value` and its intended `recipient` are stored
 in a publishing dictionary on the calling account (not accessible to users), with the `name` as its key.
 Note that this means any values that have been `publish`ed but have yet to be `claim`ed will count towards
-the `publish`ing account's storage usage. 
+the `publish`ing account's storage usage. An account can only `publish` values to other accounts that have
+`permit`ted it to do so; if the calling account does not have permission to `publish` a value to the `recipient`, 
+`publish` will return `false`. Otherwise, it will return `true`. 
 
 The `claim` function takes the `name` of the value to be claimed and an `provider` address that
 specifies which account is providing the value, as well as a type argument `T` that specifies
@@ -79,7 +98,7 @@ transaction() {
     // not involve linking to a concrete path, but at the moment the only way to create
     // a capability is via `link` 
     let cap = acct.link<&MyIntf>(/private/myCapability, target: /storage/myResource)
-    acct.publish(cap, name: "yourCapability", recipient: 0x2)
+    acct.inbox.publish(cap, name: "yourCapability", recipient: 0x2)
   }
 }
 ```
@@ -90,7 +109,7 @@ import MyIntf from 0x1
 
 transaction() {
   prepare(acct: AuthAccount) {
-    let cap = acct.claim<Capability<MyIntf>>("yourCapability", provider: 0x1)
+    let cap = acct.inbox.claim<Capability<MyIntf>>("yourCapability", provider: 0x1)
     // if we successfully obtain the capability, store it on our account
     if cap != nil {
         acct.save(cap, to: /storage/myCapability)
