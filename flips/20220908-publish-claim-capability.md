@@ -49,11 +49,11 @@ struct Inbox {
 
     fun unpermit(_ provider: Address)
 
-    fun publish(_ value: Capability<&Any>, name: String, recipient: Address): Bool
+    fun publish(_ value: Capability<Any>, name: String, recipient: Address): Bool
 
-    fun unpublish<T : &Any>(_ name: String): Capability<T>?
+    fun unpublish<T : Any>(_ name: String): Capability<T>?
 
-    fun claim<T: &Any>(_ name: String, provider: Address): Capability<T>?
+    fun claim<T: Any>(_ name: String, provider: Address): Capability<T>?
 }
 ```
 
