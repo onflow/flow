@@ -5,7 +5,7 @@
 | **FLIP #**    | [1122](https://github.com/onflow/flow/pull/1122)     |
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
 | **Sponsor**   | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
-| **Updated**   | 2022-09-14                                           |
+| **Updated**   | 2022-09-16                                           |
 | **Obsoletes** | https://github.com/onflow/flow/pull/945              |
 
 ## Objective
@@ -49,11 +49,11 @@ struct Inbox {
 
     fun unpermit(_ provider: Address)
 
-    fun publish(_ value: Any, name: String, recipient: Address): Bool
+    fun publish(_ value: Capability<&Any>, name: String, recipient: Address): Bool
 
-    fun unpublish<T : Any>(_ name: String): T?
+    fun unpublish<T : &Any>(_ name: String): Capability<T>?
 
-    fun claim<T: Any>(_ name: String, provider: Address): T?
+    fun claim<T: &Any>(_ name: String, provider: Address): Capability<T>?
 }
 ```
 
@@ -82,7 +82,7 @@ publishing dictionary for the `name` key. If the key does not exist on the map, 
 If the key does exist, then `claim` compares the stored `recipient` (from the original call to `publish`) 
 to see if it matches the address of the account calling `claim`. If it does not, then `claim` returns `nil`. 
 If it does match, then the runtime type of the published `value` compared against the type argument `T`. If 
-it does not match, then `claim` returns `nil`. If it does match, `value` is removed from the `provider`'s dictionary and 
+it does not match, then `claim` will produce an error. If it does match, `value` is removed from the `provider`'s dictionary and 
 returned to the `claim` calling account. In effect, this means that a `publish`ed value can only be `claim`ed once. 
 
 An example of how this might look, when bootstrapping a capability to a resource owned by 0x1:
@@ -123,15 +123,14 @@ stops taking up space if it goes un`claim`ed by its intended recipient. The call
 of the value) calls `unpublish` with the same `name` that the value was originally stored with. If a value with that 
 `name` is present in the account's publishing dictionary, and the provided type argument to `unpublish` is a supertype
 of that value's runtime type, then the function will return that value and remove it from the dictionary. Otherwise, 
-the function returns `nil`. 
+the function returns `nil`. The type comparison is a force-cast like `load` and `claim`, so if the types do not match
+the program will fail. 
 
 ### Alternatives Considered
 
-* The largest point of considering is whether or not `publish` and `claim` should be generalized
-to work with all values (as in the current proposal), or whether they should be limited to only 
-publishing/claiming capabilities. While the generalized versions are strictly more powerful, if we
-want to encourage users to use capabilities to objects rather than directly sending them back and forth, 
-we may not want to have such powerful alternatives available. 
+* The original proposal for this flip generalized `publish` and `claim` to work with resources, as well as Capabilities.
+While the generalized version was strictly more powerful, we felt that it was too likely to encourage users
+to write code in the `msg.sender` pattern instead of using it for the capability bootstrapping usecase.
 
 ### Best Practices
 
@@ -149,9 +148,3 @@ to add empty dictionaries to all accounts during the spork that adds support for
 ### User Impact
 
 * This should have no direct impact on users; it will not break any existing contracts. 
-## Questions and Discussion Topics
-
-* The API currently provides a way for users to `claim` values that have been published for them, 
-but once a value is `publish`ed, the only way to remove it from the account that published it is for
-the intended recipient to `claim` it. Is it worth having an `unpublish` function that will remove the
-entry for the value?
