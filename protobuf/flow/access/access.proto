@@ -330,7 +330,7 @@ message GetExecutionDataByBlockIDRequest {
 }
 
 message GetExecutionDataByBlockIDResponse {
-  entities.BlockExecutionData block_execution_data = 2;
+  entities.BlockExecutionData block_execution_data = 1;
 }
 
 // Execution Results
