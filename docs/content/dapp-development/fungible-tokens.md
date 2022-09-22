@@ -42,7 +42,7 @@ For example, your users could be categorized in any of the following, non-exhaus
 
 You can also draw inspiration from this map of the Flow ecosystem. 
 
-![flow ecosystem](./images/flow-ecosystem.png)
+![flow ecosystem](flow-ecosystem.png)
 
 Write down the list that is most relevant to your dApp and for each type of user, outline succinctly what behavior is expected of them, and what will incentivize them to display this behavior. A good way to summarize the way users interact with your dApp (and with one another) is to draw up a flowchart showing the flow of incentives and behaviors for each user type. For now, ignore the token and only focus on the high-level behaviors/incentives.
 
