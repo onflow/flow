@@ -165,11 +165,11 @@ While there are a number of ways you can split your token allocation. We have re
 - **Team**: 5-20%
 - **Advisors**: 0-5%
 
-![token allocation](./images/token-allocation.png)
+![token allocation](token-allocation.png)
 
 Importantly, this type of pie chart only captures **half** of the allocation picture. The other half consists of showing how each slice of the pie receives that allocation **over time**. This is where vesting/unlock comes in. Typically we see, an allocation over time that looks something like this:
 
-![token distribution](./images/token-distribution.png)
+![token distribution](token-distribution.png)
 
 In the example above, we’re using a 100 million fixed token supply model, and distributing the tokens on a 6-year timeline. The x-axis represents the years since launch, and the y-axis represents the token supply in circulation. As you can see, the number of tokens in circulating supply increases gradually over time and starts to taper off as we get closer to the 6-year mark. Token allocations for team members, investors, and advisors start vesting a year after launch at the cliff date, while airdrop, public sale, and community allocations unlock right at launch, at year zero.
 
