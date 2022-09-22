@@ -81,7 +81,6 @@ type AccessAPIClient interface {
 	// snapshot. Used by Flow nodes joining the network to bootstrap a
 	// space-efficient local state.
 	GetLatestProtocolStateSnapshot(ctx context.Context, in *GetLatestProtocolStateSnapshotRequest, opts ...grpc.CallOption) (*ProtocolStateSnapshotResponse, error)
-	GetExecutionDataByBlockID(ctx context.Context, in *GetExecutionDataByBlockIDRequest, opts ...grpc.CallOption) (*GetExecutionDataByBlockIDResponse, error)
 	// GetExecutionResultForBlockID returns Execution Result for a given block.
 	// At present, Access Node might not have execution results for every block
 	// and as usual, until sealed, this data can change
@@ -312,15 +311,6 @@ func (c *accessAPIClient) GetLatestProtocolStateSnapshot(ctx context.Context, in
 	return out, nil
 }
 
-func (c *accessAPIClient) GetExecutionDataByBlockID(ctx context.Context, in *GetExecutionDataByBlockIDRequest, opts ...grpc.CallOption) (*GetExecutionDataByBlockIDResponse, error) {
-	out := new(GetExecutionDataByBlockIDResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetExecutionDataByBlockID", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *accessAPIClient) GetExecutionResultForBlockID(ctx context.Context, in *GetExecutionResultForBlockIDRequest, opts ...grpc.CallOption) (*ExecutionResultForBlockIDResponse, error) {
 	out := new(ExecutionResultForBlockIDResponse)
 	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetExecutionResultForBlockID", in, out, opts...)
@@ -397,7 +387,6 @@ type AccessAPIServer interface {
 	// snapshot. Used by Flow nodes joining the network to bootstrap a
 	// space-efficient local state.
 	GetLatestProtocolStateSnapshot(context.Context, *GetLatestProtocolStateSnapshotRequest) (*ProtocolStateSnapshotResponse, error)
-	GetExecutionDataByBlockID(context.Context, *GetExecutionDataByBlockIDRequest) (*GetExecutionDataByBlockIDResponse, error)
 	// GetExecutionResultForBlockID returns Execution Result for a given block.
 	// At present, Access Node might not have execution results for every block
 	// and as usual, until sealed, this data can change
@@ -479,9 +468,6 @@ func (UnimplementedAccessAPIServer) GetNetworkParameters(context.Context, *GetNe
 }
 func (UnimplementedAccessAPIServer) GetLatestProtocolStateSnapshot(context.Context, *GetLatestProtocolStateSnapshotRequest) (*ProtocolStateSnapshotResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLatestProtocolStateSnapshot not implemented")
-}
-func (UnimplementedAccessAPIServer) GetExecutionDataByBlockID(context.Context, *GetExecutionDataByBlockIDRequest) (*GetExecutionDataByBlockIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetExecutionDataByBlockID not implemented")
 }
 func (UnimplementedAccessAPIServer) GetExecutionResultForBlockID(context.Context, *GetExecutionResultForBlockIDRequest) (*ExecutionResultForBlockIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetExecutionResultForBlockID not implemented")
@@ -930,24 +916,6 @@ func _AccessAPI_GetLatestProtocolStateSnapshot_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AccessAPI_GetExecutionDataByBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetExecutionDataByBlockIDRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetExecutionDataByBlockID(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetExecutionDataByBlockID",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetExecutionDataByBlockID(ctx, req.(*GetExecutionDataByBlockIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _AccessAPI_GetExecutionResultForBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetExecutionResultForBlockIDRequest)
 	if err := dec(in); err != nil {
@@ -1068,10 +1036,6 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetLatestProtocolStateSnapshot",
 			Handler:    _AccessAPI_GetLatestProtocolStateSnapshot_Handler,
-		},
-		{
-			MethodName: "GetExecutionDataByBlockID",
-			Handler:    _AccessAPI_GetExecutionDataByBlockID_Handler,
 		},
 		{
 			MethodName: "GetExecutionResultForBlockID",

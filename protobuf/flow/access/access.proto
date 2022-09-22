@@ -6,7 +6,6 @@ option go_package = "github.com/onflow/flow/protobuf/go/flow/access";
 option java_package = "org.onflow.protobuf.access";
 
 import "flow/entities/account.proto";
-import "flow/entities/block_execution_data.proto";
 import "flow/entities/block_header.proto";
 import "flow/entities/block.proto";
 import "flow/entities/collection.proto";
@@ -124,13 +123,6 @@ service AccessAPI {
   // space-efficient local state.
   rpc GetLatestProtocolStateSnapshot(GetLatestProtocolStateSnapshotRequest)
       returns (ProtocolStateSnapshotResponse);
-
-  // ExecutionState
-  // GetExecutionDataByBlockID returns the execution_data object. Currently for
-  // use by the archive node to update its execution state.
-
-  rpc GetExecutionDataByBlockID(GetExecutionDataByBlockIDRequest)
-      returns (GetExecutionDataByBlockIDResponse);
 
   // GetExecutionResultForBlockID returns Execution Result for a given block.
   // At present, Access Node might not have execution results for every block
@@ -321,16 +313,6 @@ message GetLatestProtocolStateSnapshotRequest {}
 
 message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
-}
-
-// Execution State
-
-message GetExecutionDataByBlockIDRequest {
-  bytes block_id = 1;
-}
-
-message GetExecutionDataByBlockIDResponse {
-  entities.BlockExecutionData block_execution_data = 1;
 }
 
 // Execution Results
