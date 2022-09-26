@@ -113,13 +113,13 @@ the program will fail.
 This FLIP also adds two new events to Cadence:
 
 ```cadence
-event InboxValuePublished(provider: Address, name: String, type: Type) 
+event InboxValuePublished(provider: Address, recipient: Address, name: String, type: Type) 
 
 event InboxValueRemoved(provider: Address, remover: Address, name: String)
 ```
 
 These events are emitted whenever a value is added or removed from an inbox's publishing dictionary. When `publish` is called,
-`InboxValuePublished` is emitted containing the address of the `provider`, the `name` the value was published with, and the runtime
+`InboxValuePublished` is emitted containing the address of the `provider` and the `recipient`, the `name` the value was published with, and the runtime
 `type` it was published with. When a value is `claim`ed or `unpublish`ed, `InboxValueRemoved` is emitted, including the address the value was
 originally published from (`provider`), the address of the `remover` (in the case of `claim`, this is the recipient's address, in the case of 
 `unpublish` it is the same as the `provider`), and the `name` of the removed event. 
