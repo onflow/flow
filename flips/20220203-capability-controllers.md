@@ -172,15 +172,15 @@ The definition of the `CapabilityController` .
 
 ```cadence
 // CapabilityController can be retrieved via:
-// - AuthAccount.getControllers(path: StoragePath): [CapabilityController]
-// - AuthAccount.getController(capabilityID: UInt64): CapabilityController?
+// - AuthAccount::getControllers(path: StoragePath): [CapabilityController]
+// - AuthAccount::getController(capabilityID: UInt64): CapabilityController?
 struct CapabilityController {
    // The block height when the capability was created.
    let issueHeight: UInt64
-   // The Type of the capability
+   // The Type of the capability.
    let CapabilityType: Type
-   // The id of the related capability
-   // This is the UUID of the created capability
+   // The id of the related capability.
+   // This is the UUID of the created capability.
    let capabilityID: UInt64
 
    // Is the capability revoked.
@@ -188,15 +188,11 @@ struct CapabilityController {
    // The target storage path.
    fun target(): StoragePath
    // Revoke the capability.
-   // Returns true if successfully revoked.
-   fun revoke(): Bool
-   // Restore the capability.
-   // Returns true if successfully restored.
-   fun restore(): Bool
+   fun revoke()
    // Retarget the capability.
-   // Returns if successfully restored.
-   // This would move the CapCon from one CapCon array to another
-   fun retarget(target: StoragePath): Bool
+   // This would move the CapCon from one CapCon array to another.
+   // If the new target is not a valid target this will panic.
+   fun retarget(target: StoragePath)
 }
 ```
 
@@ -271,19 +267,35 @@ let countCap = issuer.issueCapability<&{HasCount}>(/storage/counter)
 issuer.save(countCap, to: /public/hasCount)
 ```
 
-Unlinking and relinking issued capabilities would change to getting a CapCon and calling the appropriate methods.
+Unlinking and retargeting issued capabilities would change to getting a CapCon and calling the appropriate methods.
 
 ```cadence
 let capCon = issuer.getController(capabilityID: capabilityID)
 
 capCon.revoke()
 // or
-capCon.restore()
-// or
-capCon.relink(target: /storage/counter2)
+capCon.retarget(target: /storage/counter2)
 ```
 
 This example assumes that the capability id is known. This is always the case for capabilities in the accounts public domain, since the account has access to those directly. For private capabilities that were given to someone else this can be achieved by keeping an on-chain or an off-chain list of capability ids and some extra identifying information (for example the address of the receiver of the capability). If no such list was kept, the issuer can use the information on the CapCons retrieved through `issuer.getControllers(path: StoragePath)`to find the right id.
+
+#### Pet names for issued capabilities
+
+If needed the `account.getCapability<T>(path)` can be wrapped into a smart contract function, so that the issuer can more easily keep track of what was issued.
+
+```cadence
+// inside the Counter contract
+access(account) petNames: {String; UInt64}
+
+access(account) issueHasCount(petName: String): Capability<&{HasCount}> {
+   // for brevity this function is not handling pet name collision
+   let cap = self.account.issueCapability<&{HasCount}>(/storage/counter)
+   self.petNames[petName] = cap.capabilityID
+   return cap
+}
+```
+
+This allows the account to later access `petNames` when it needs to revoke/retarget a specific capability. This can also be used not just for pet names, but to add other metadata to issued capabilities.
 
 #### Capability Minters
 
@@ -301,14 +313,13 @@ public resource Main : AdminInterface {
        return self.account.getCapability<&{HasCount}>(/storage/counter)
    }
 
-   fun revokeCountCap(capabilityID: UInt64): Bool {
+   fun revokeCountCap(capabilityID: UInt64) {
       if let capCon = self.account.getController(capabilityID: capabilityID) {
          if capCon.Type != Type<&{HasCount}>() {
             return false // we have only delegated the issuance/revocation of &{HasCount} capabilities
          }
-         return capCon.revoke()
+         capCon.revoke()
       }
-      return false
    }
 }
 ```
@@ -322,6 +333,37 @@ countMinterCap //give this to a trusted party
 ```
 
 It is worth noting that every time the `AdminInterface` is used a CapCon is created in the issuers storage taking up some resources. Revoking capabilities does not free any storage.
+
+In this example the delegatee with the `Capability<&{AdminInterface}>` can revoke any capability of type `&{HasCount}` even those that someone else created. This is sometimes desired (IT admins with the capability to issue purchase_hardware capabilities should have the ability to revoke what other IT admins issued), but sometimes we would like the delegatee to only revoke what it issued. If that is the case, another resource can be created `ScopedMain` that serves to limit which capabilities can be revoked.
+
+```cadence
+public resource ScopedMain : AdminInterface {
+   public delegatorTag: String
+   public inner: Capability<&{AdminInterface}>
+   public issued: {UInt64:Bool}
+
+   public init(inner: Capability<&{AdminInterface}>, delegatorTag: String) {
+      self.delegatorTag = delegatorTag
+      self.inner = inner
+      self.issued = {}
+   }
+
+
+   fun createCountCap(): Capability<&{HasCount}> {
+      let capability = self.inner.createCountCap()
+      self.issued[capability.capabilityID] = true
+      return capability
+   }
+
+   fun revokeCountCap(capabilityID: UInt64) {
+      if self.issued.containsKey(capabilityID) {
+         self.issued.remove(key: capabilityID)
+         self.inner.revokeCountCap()
+      }
+   }
+}
+```
+
 
 ## Issues not addressed in this FLIP
 
