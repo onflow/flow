@@ -5,8 +5,8 @@ package flow.entities;
 option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
 option java_package = "org.onflow.protobuf.entities";
 
-import "flow/entities/collection.proto";
 import "flow/entities/event.proto";
+import "flow/entities/transaction.proto";
 
 message BlockExecutionData {
   bytes block_id = 1;
@@ -14,9 +14,13 @@ message BlockExecutionData {
 }
 
 message ChunkExecutionData {
-  Collection collection = 1;
+  ExecutionDataCollection collection = 1;
   repeated Event events = 2;
   TrieUpdate trieUpdates = 3;
+}
+
+message ExecutionDataCollection {
+  repeated Transaction transactions = 1;
 }
 
 message TrieUpdate {
