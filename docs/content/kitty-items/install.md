@@ -94,3 +94,5 @@ cd ..
 ```
 
 > **Note**: This installation will fail if you are not on an Apple M1 machine. If you are on an Apple M1 machine and skip this step, your web application will not start successfully.
+
+🚀
