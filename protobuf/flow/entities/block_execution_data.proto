@@ -16,7 +16,7 @@ message BlockExecutionData {
 message ChunkExecutionData {
   ExecutionDataCollection collection = 1;
   repeated Event events = 2;
-  TrieUpdate trieUpdates = 3;
+  TrieUpdate trieUpdate = 3;
 }
 
 message ExecutionDataCollection {
