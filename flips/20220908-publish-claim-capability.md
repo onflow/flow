@@ -43,13 +43,7 @@ defined as a nested composite on `AuthAccount`:
 
 ```cadence
 struct Inbox {
-    let allowlist: [Address]
-
-    fun permit(_ provider: Address)
-
-    fun unpermit(_ provider: Address)
-
-    fun publish(_ value: Capability<Any>, name: String, recipient: Address): Bool
+    fun publish(_ value: Capability<Any>, name: String, recipient: Address)
 
     fun unpublish<T : Any>(_ name: String): Capability<T>?
 
@@ -57,22 +51,12 @@ struct Inbox {
 }
 ```
 
-The `inbox` tracks an `allowlist` that keeps track of all the addresses that are allowed to 
-`publish` values to it. An recipient account can `permit` a provider account to send values to its `inbox`
-by calling `permit`, and revoke that permission using `unpermit`. 
-
-On `PublicAccount`, the `Inbox` type only contains the `allowlist` so that a prospective `provider` that would like
-to `publish` a value to a `recipient` can inspect the `recipient` account's `allowlist` to check whether they are
-`permit`ted to do so by checking whether the `provider`'s address appears in the `recipient`'s `allowlist`.
-
 The `publish` function takes a `value` argument, a `name` string that identifies it, 
 and a `recipient` address that specifies which account should be allowed to `claim` the 
 published `value` later. When `publish` is called, `value` and its intended `recipient` are stored
 in a publishing dictionary on the calling account (not accessible to users), with the `name` as its key.
 Note that this means any values that have been `publish`ed but have yet to be `claim`ed will count towards
-the `publish`ing account's storage usage. An account can only `publish` values to other accounts that have
-`permit`ted it to do so; if the calling account does not have permission to `publish` a value to the `recipient`, 
-`publish` will return `false`. Otherwise, it will return `true`. 
+the `publish`ing account's storage usage.
 
 The `claim` function takes the `name` of the value to be claimed and an `provider` address that
 specifies which account is providing the value, as well as a type argument `T` that specifies
@@ -126,11 +110,26 @@ of that value's runtime type, then the function will return that value and remov
 the function returns `nil`. The type comparison is a force-cast like `load` and `claim`, so if the types do not match
 the program will fail. 
 
+This FLIP also adds two new events to Cadence:
+
+```cadence
+event InboxValuePublished(provider: Address, name: String, type: Type) 
+
+event InboxValueRemoved(provider: Address, remover: Address, name: String)
+```
+
+These events are emitted whenever a value is added or removed from an inbox's publishing dictionary. When `publish` is called,
+`InboxValuePublished` is emitted containing the address of the `provider`, the `name` the value was published with, and the runtime
+`type` it was published with. When a value is `claim`ed or `unpublish`ed, `InboxValueRemoved` is emitted, including the address the value was
+originally published from (`provider`), the address of the `remover` (in the case of `claim`, this is the recipient's address, in the case of 
+`unpublish` it is the same as the `provider`), and the `name` of the removed event. 
+
 ### Alternatives Considered
 
 * The original proposal for this flip generalized `publish` and `claim` to work with resources, as well as Capabilities.
 While the generalized version was strictly more powerful, we felt that it was too likely to encourage users
-to write code in the `msg.sender` pattern instead of using it for the capability bootstrapping usecase.
+to write code in the `msg.sender` pattern instead of using it for the capability bootstrapping usecase. We have decided to
+restrict the API to capabilities for now, with the understanding that it is possible in the future to expand the API without breaking anything. 
 
 ### Best Practices
 
