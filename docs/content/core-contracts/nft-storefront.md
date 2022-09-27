@@ -1,3 +1,7 @@
+---
+title: NFT Storefront Smart Contract
+---
+
 ## Primer
 The `NFTStorefrontV2` contract lets you create a *non-custodial Resource (NFT) marketplace* on the FLOW blockchain. 
 
