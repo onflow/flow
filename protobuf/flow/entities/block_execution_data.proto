@@ -30,6 +30,11 @@ message TrieUpdate {
 }
 
 message Payload {
-  bytes enc_key = 1;
+  KeyPart keyPart = 1;
+  bytes value = 2;
+}
+
+message KeyPart {
+  uint32 type = 1;
   bytes value = 2;
 }
