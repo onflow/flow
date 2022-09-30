@@ -1,6 +1,6 @@
 # Publish/Claim Capability
 
-| Status        | (Proposed / Rejected / Accepted / Implemented)       |
+| Status        | (Accepted)       |
 :-------------- |:---------------------------------------------------- |
 | **FLIP #**    | [1122](https://github.com/onflow/flow/pull/1122)     |
 | **Author(s)** | Daniel Sainati (daniel.sainati@dapperlabs.com)       |
