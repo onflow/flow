@@ -43,7 +43,7 @@ defined as a nested composite on `AuthAccount`:
 
 ```cadence
 struct Inbox {
-    fun publish(_ value: Capability<Any>, name: String, recipient: Address)
+    fun publish(_ value: Capability, name: String, recipient: Address)
 
     fun unpublish<T : Any>(_ name: String): Capability<T>?
 
