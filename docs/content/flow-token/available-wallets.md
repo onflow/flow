@@ -94,9 +94,32 @@ Both of these options are shown below.
 
 - a.) If you have any questions regarding the process of generating your FLOW address on Blocto, you can reach out to our support team here: support@blocto.app.
 
+## How to use Dapper Wallet
+
+You can create a Dapper account to purchase and display NFTs from some of the top marketplaces on Flow, like NBA Top Shot, NFL ALL DAY, UFC Strike and more.
+
+Follow these steps to create your Dapper account
+
+Visit www.meetdapper.com and click “Continue to Dapper”
+
+![dapper-web](dapper-web.png)
+
+Sign-up with an email address or your Google account
+
+![dapper-login](dapper-login.png)
+
+Once your account is created, it is strongly recommended that you take the following actions to get the most out of Dapper:
+
+- Complete your identity check
+- Add a payment method, such as a bank account or credit card
+- Secure your account with 2-step verification
+
+> **Note**: If you encounter any issues during account creation or afterwards, you should [file a ticket with the Dapper support team](https://support.meetdapper.com/hc/en-us/requests/new?)
+
 ## How to use Ledger
 
 ### Note for users of Flow Ledger before v0.10.0
+
 The June 15th Secure Cadence Spork changes two transactions in a way that will make them no longer compatible with the Ledger app with version before v0.10.0. At the time of the spork, v0.10.0 is yet to be released to the Ledger Live app store, and as such the [following transactions will be unsupported](https://github.com/onflow/ledger-app-flow/pull/83) until the time it is released.
 
 1. Staking Collection - Register Node

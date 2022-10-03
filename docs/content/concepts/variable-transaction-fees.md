@@ -45,74 +45,16 @@ The execution effort for a transaction is determined by the code path the transa
 
 To provide you a better understanding of the cost ranges, here are some common transaction types and their associated execution costs, given the current `executionEffortCost` and `inclusionEffortCost` parameters:
 
-<table>
-  <tr>
-   <td><strong>Transaction Type</strong>
-   </td>
-   <td><strong>Estimated cost (FLOW)</strong>
-   </td>
-   <td><strong>Relative cost to FT transfer</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>FT transfer
-   </td>
-   <td>0.00000185
-   </td>
-   <td>1 (baseline)
-   </td>
-  </tr>
-  <tr>
-   <td>Mint a small NFT
-<p>
-(heavily depends on the NFT size)
-   </td>
-   <td>0.0000019
-   </td>
-   <td>1
-   </td>
-  </tr>
-  <tr>
-   <td>Empty Transaction
-   </td>
-   <td>0.000001
-   </td>
-   <td>0.5
-   </td>
-  </tr>
-  <tr>
-   <td>Add key to an account
-   </td>
-   <td>0.000001
-   </td>
-   <td>0.5
-   </td>
-  </tr>
-  <tr>
-   <td>Create 1 Account
-   </td>
-   <td>0.00000315
-   </td>
-   <td>1.7
-   </td>
-  </tr>
-  <tr>
-   <td>Create 10 accounts
-   </td>
-   <td>0.00002261
-   </td>
-   <td>12.2
-   </td>
-  </tr>
-  <tr>
-   <td>Deploying a contract that is ~50kb
-   </td>
-   <td>0.00002965
-   </td>
-   <td>16
-   </td>
-  </tr>
-</table>
+| Transaction Type | Estimated cost (FLOW) | Relative cost to FT transfer |
+| ---------------- | :--------------------- | :---------------------------- |
+| FT transfer      | 0.00000185            | 1 (baseline)               |
+| Mint a small NFT (heavily depends on the NFT size) | 0.0000019    | 1 |
+| Empty Transaction| 0.000001 | 0.5 |
+| Add key to an account | 0.000001 | 0.5 |
+| Create 1 Account | 0.00000315 | 1.7 | 
+| Create 10 accounts | 0.00002261 | 12.2 |
+| Deploying a contract that is ~50kb | 0.00002965 | 16 |
+
 
 ### Inclusion costs
 
@@ -128,7 +70,7 @@ Right now, the inclusion effort is always 1.0 and the inclusion effort cost is f
 
 In the future, costs for inclusion will be impacted by the byte size of the transaction and the number of signatures required.
 
-> **Note**: The changes to variable inclusion costs will be updated in [one of the upcoming sporks](https://docs.onflow.org/node-operation/upcoming-sporks/).
+> **Note**: The changes to variable inclusion costs will be updated in [one of the upcoming sporks](https://docs.onflow.org/nodes/node-operation/upcoming-sporks/).
 
 ### Network surge
 
@@ -382,7 +324,7 @@ There are several places to learn more about transaction fees:
 
 **When will the fee update go into effect?**
 
-The updates were rolled out with the [Spork on April 6, 2022](https://docs.onflow.org/node-operation/past-sporks/#mainnet-17), and were enabled on [June 1st](https://forum.onflow.org/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
+The updates were rolled out with the [Spork on April 6, 2022](https://docs.onflow.org/nodes/node-operation/past-sporks/#mainnet-17), and were enabled on [June 1st](https://forum.onflow.org/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
 
 **Why are fees collected even when transactions fail?**
 
