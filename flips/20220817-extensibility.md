@@ -82,7 +82,7 @@ pub extension E for S: I {
 }
 ```
 
-In this case, `E`'s declaration conforms to `I` because type of `S` with the extension `E` applied produces a type that conforms to `I`. 
+In this case, S does not conform to `I`, but `E`'s declaration does conform to `I` because type of `S` with the extension `E` applied produces a type that conforms to `I`. 
 
 Any additional fields that are declared in an extension must be initialized, just as any fields declared in a composite must be. An extension
 that declares fields must declare an additional (partial) initializer, which is run when the extension is created. For this reason, the `init`
@@ -104,7 +104,7 @@ pub extension E for S {
 }
 ```
 
-while this would not:
+while these would not:
 
 ```cadence
 pub struct S {}
@@ -114,6 +114,21 @@ pub extension E for S {
     pub let y: String
     init(_ x: String) {
         self.x = x
+    }
+}
+```
+
+```cadence
+pub struct S {
+    pub let y: String
+     init(_ y: String) {
+        self.y = y
+    }
+}
+
+pub extension E for S {
+    init(_ y: String) {
+        self.y = y // E cannot reference S's fields in the initializer
     }
 }
 ```
