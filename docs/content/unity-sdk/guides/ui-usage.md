@@ -170,7 +170,9 @@ For both of the API calls, the dropdown in the bottom left will populate with a 
 
 For both of these API calls, the Event Type is a fully qualified type in the following format:
 
+```
 A.{contract address}.{contract name}.{event name}
+```
 
 Contract address – the account that the Smart Contract which defines the event is deployed to.   
 Contract name – the name of the Smart Contract which defines the event.   
