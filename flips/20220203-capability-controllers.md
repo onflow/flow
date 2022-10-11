@@ -256,8 +256,6 @@ let countRef = publicAccount.borrowCapability<&{HasCount}>(/public/hasCount)!
 countRef.count
 ```
 
-Consuming private capabilities would change in the way that capabilities are resources and must be stored as such. The borrowing part would be the same.
-
 #### Changes for capability issuers
 
 There would be more change on the issuer's side. Most notably creating a public capability would look like this.
@@ -382,35 +380,6 @@ Addressing this issue so that it would be clearer to Charlie that he received a 
 This could perhaps be addressed by:
 - adding extra descriptors to capabilities (names)
 - off chain tracking of capabilities
-
-Or can be addressed if the issuer creates a wrapper for the capability that the receiver unwraps.
-
-```cadence
-pub resource WrappedCapability {
-    priv let unwraper: Address
-    priv let cap: Capability<&AnyResource>
-
-    pub fun unwrap(unwraper: AuthAccount): Capability<&AnyResource>? {
-        if unwraper.address == self.unwraper {
-            return self.cap
-        }
-        return nil
-    }
-
-    pub fun capabilityAddress(): Address {
-        return self.cap.address
-    }
-
-    pub fun unwraperAddress(): Address {
-        return self.unwraper
-    }
-
-    init(unwraper: Address, cap: Capability<&AnyResource>){
-        self.unwraper = unwraper
-        self.cap =cap
-    }
-}
-```
 
 ## Sources
 
