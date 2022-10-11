@@ -49,7 +49,7 @@ It is completely up to you, the developer, to decide how much data\\logic you wa
 
 Once you have obtained the Flow SDK from the Unity Asset Store, you can add it to your project via the Package Manager.
 
-See: <https://docs.unity3d.com/Manual/upm-ui-install.html>
+See: [https://docs.unity3d.com/Manual/upm-ui-install.html](https://docs.unity3d.com/Manual/upm-ui-install.html)
 
 ## Samples
 
