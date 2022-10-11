@@ -15,7 +15,7 @@ The Access Nodes hosted by DapperLabs are accessible at:
 
 #### Current Mainnet
 `access.mainnet.nodes.onflow.org:9000`
-##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](/node-operation/spork/#mainnet)
+##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](/nodes/node-operation/spork/#mainnet)
 
 #### Testnet
 
@@ -60,23 +60,23 @@ rpc Ping(PingRequest) returns (PingResponse)
 
 If a ping request returns an error or times out, it can be assumed that the Access API is unavailable.
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message PingRequest {}
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message PingResponse {}
 ```
 
-</details>
+
 
 ---
 
@@ -92,8 +92,8 @@ The following methods query information about [block headers](#block-header).
 rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetLatestBlockHeaderRequest {
@@ -101,10 +101,10 @@ message GetLatestBlockHeaderRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message BlockHeaderResponse {
@@ -112,7 +112,7 @@ message BlockHeaderResponse {
 }
 ```
 
-</details>
+
 
 ### GetBlockHeaderByID
 
@@ -122,8 +122,8 @@ message BlockHeaderResponse {
 rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetBlockHeaderByIDRequest {
@@ -131,10 +131,10 @@ message GetBlockHeaderByIDRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message BlockHeaderResponse {
@@ -142,7 +142,7 @@ message BlockHeaderResponse {
 }
 ```
 
-</details>
+
 
 ### GetBlockHeaderByHeight
 
@@ -152,8 +152,8 @@ message BlockHeaderResponse {
 rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetBlockHeaderByHeightRequest {
@@ -161,10 +161,10 @@ message GetBlockHeaderByHeightRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message BlockHeaderResponse {
@@ -172,7 +172,7 @@ message BlockHeaderResponse {
 }
 ```
 
-</details>
+
 
 ---
 
@@ -188,8 +188,8 @@ The following methods query information about [full blocks](#block).
 rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetLatestBlockRequest {
@@ -197,10 +197,10 @@ message GetLatestBlockRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message BlockResponse {
@@ -208,7 +208,7 @@ message BlockResponse {
 }
 ```
 
-</details>
+
 
 ### GetBlockByID
 
@@ -218,8 +218,8 @@ message BlockResponse {
 rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetBlockByIDRequest {
@@ -227,10 +227,10 @@ message GetBlockByIDRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message BlockResponse {
@@ -238,7 +238,7 @@ message BlockResponse {
 }
 ```
 
-</details>
+
 
 ### GetBlockByHeight
 
@@ -248,8 +248,8 @@ message BlockResponse {
 rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetBlockByHeightRequest {
@@ -257,10 +257,10 @@ message GetBlockByHeightRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message BlockResponse {
@@ -268,7 +268,7 @@ message BlockResponse {
 }
 ```
 
-</details>
+
 
 ---
 
@@ -284,8 +284,8 @@ The following methods query information about [collections](#collection).
 rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetCollectionByIDRequest {
@@ -293,10 +293,10 @@ message GetCollectionByIDRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message CollectionResponse {
@@ -304,7 +304,7 @@ message CollectionResponse {
 }
 ```
 
-</details>
+
 
 ---
 
@@ -322,8 +322,8 @@ rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse)
 
 `SendTransaction` determines the correct cluster of collection nodes that is responsible for collecting the transaction based on the hash of the transaction and forwards the transaction to that cluster.
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 `SendTransactionRequest` message contains the transaction that is being request to be executed.
 
@@ -333,10 +333,10 @@ message SendTransactionRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 `SendTransactionResponse` message contains the ID of the submitted transaction.
 
@@ -346,7 +346,7 @@ message SendTransactionResponse {
 }
 ```
 
-</details>
+
 
 ### GetTransaction
 
@@ -360,8 +360,8 @@ _Currently, only transactions within the current epoch can be queried._
 rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 `GetTransactionRequest` contains the ID of the transaction that is being queried.
 
@@ -371,10 +371,10 @@ message GetTransactionRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 `TransactionResponse` contains the basic information about a transaction, but does not include post-execution results.
 
@@ -384,7 +384,7 @@ message TransactionResponse {
 }
 ```
 
-</details>
+
 
 ### GetTransactionResult
 
@@ -394,8 +394,8 @@ message TransactionResponse {
 rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetTransactionRequest {
@@ -403,10 +403,10 @@ message GetTransactionRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message TransactionResultResponse {
@@ -417,7 +417,7 @@ message TransactionResultResponse {
 }
 ```
 
-</details>
+
 
 ---
 
@@ -433,8 +433,8 @@ message TransactionResultResponse {
 rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetAccountRequest {
@@ -442,10 +442,10 @@ message GetAccountRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message GetAccountResponse {
@@ -453,7 +453,7 @@ message GetAccountResponse {
 }
 ```
 
-</details>
+
 
 ### GetAccountAtLatestBlock
 
@@ -465,8 +465,8 @@ The access node queries an execution node for the account details, which are sto
 rpc GetAccountAtLatestBlock(GetAccountAtLatestBlockRequest) returns (AccountResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetAccountAtLatestBlockRequest {
@@ -474,10 +474,10 @@ message GetAccountAtLatestBlockRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message AccountResponse {
@@ -485,7 +485,7 @@ message AccountResponse {
 }
 ```
 
-</details>
+
 
 ### GetAccountAtBlockHeight
 
@@ -497,8 +497,8 @@ The access node queries an execution node for the account details, which are sto
 rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (AccountResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetAccountAtBlockHeightRequest {
@@ -507,10 +507,10 @@ message GetAccountAtBlockHeightRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message AccountResponse {
@@ -518,7 +518,7 @@ message AccountResponse {
 }
 ```
 
-## </details>
+## 
 
 ## Scripts
 
@@ -539,8 +539,8 @@ header = GetLatestBlockHeader()
 value = ExecuteScriptAtBlockID(header.ID, script)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message ExecuteScriptAtLatestBlockRequest {
@@ -548,10 +548,10 @@ message ExecuteScriptAtLatestBlockRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message ExecuteScriptResponse {
@@ -559,7 +559,7 @@ message ExecuteScriptResponse {
 }
 ```
 
-</details>
+
 
 ### ExecuteScriptAtBlockID
 
@@ -571,8 +571,8 @@ This method can be used to read account state from the blockchain. The script is
 rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message ExecuteScriptAtBlockIDRequest {
@@ -581,10 +581,10 @@ message ExecuteScriptAtBlockIDRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message ExecuteScriptResponse {
@@ -592,7 +592,7 @@ message ExecuteScriptResponse {
 }
 ```
 
-</details>
+
 
 ### ExecuteScriptAtBlockHeight
 
@@ -604,8 +604,8 @@ This method can be used to read account state from the blockchain. The script is
 rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message ExecuteScriptAtBlockHeightRequest {
@@ -614,10 +614,10 @@ message ExecuteScriptAtBlockHeightRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message ExecuteScriptResponse {
@@ -625,7 +625,7 @@ message ExecuteScriptResponse {
 }
 ```
 
-</details>
+
 
 ---
 
@@ -651,8 +651,8 @@ The event results are grouped by block, with each group specifying a block ID, h
 
 Event types are name-spaced with the address of the account and contract in which they are declared.
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetEventsForHeightRangeRequest {
@@ -662,10 +662,10 @@ message GetEventsForHeightRangeRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message EventsResponse {
@@ -679,7 +679,7 @@ message EventsResponse {
 }
 ```
 
-</details>
+
 
 ### GetEventsForBlockIDs
 
@@ -693,8 +693,8 @@ Events can be requested for a list of block IDs via the `block_ids` field and fu
 
 The event results are grouped by block, with each group specifying a block ID, height and block timestamp.
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetEventsForBlockIDsRequest {
@@ -703,10 +703,10 @@ message GetEventsForBlockIDsRequest {
 }
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message EventsResponse {
@@ -720,7 +720,7 @@ message EventsResponse {
 }
 ```
 
-</details>
+
 
 ---
 
@@ -737,17 +737,17 @@ The following method can be used to query for network parameters.
 rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParametersResponse)
 ```
 
-<details>
-<summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetNetworkParametersRequest {}
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message GetNetworkParametersResponse {
@@ -759,7 +759,7 @@ message GetNetworkParametersResponse {
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | chain_id | Chain ID helps identify the Flow network. It can be one of `flow-mainnet`, `flow-testnet` or `flow-emulator` |
 
-</details>
+
 
 ---
 
@@ -776,24 +776,24 @@ It is used by Flow nodes joining the network to bootstrap a space-efficient loca
 rpc GetLatestProtocolStateSnapshot (GetLatestProtocolStateSnapshotRequest) returns (ProtocolStateSnapshotResponse);
 ```
 
-<details>
-  <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetLatestProtocolStateSnapshotRequest {}
 ```
 
-</details>
 
-<details>
-  <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
 }
 ```
-</details>
+
 
 ## Execution results
 
@@ -809,18 +809,18 @@ Particularly, it contains `EventsCollection` hash for every chunk which can be u
 rpc GetExecutionResultForBlockID(GetExecutionResultForBlockIDRequest) returns (ExecutionResultForBlockIDResponse);
 ```
 
-<details>
-    <summary>Request</summary>
+
+#### Request
 
 ```protobuf
 message GetExecutionResultForBlockIDRequest {
   bytes block_id = 1;
 }
 ```
-</details>
 
-<details>
-    <summary>Response</summary>
+
+
+#### Response
 
 ```protobuf
 message ExecutionResultForBlockIDResponse {
@@ -828,7 +828,7 @@ message ExecutionResultForBlockIDResponse {
 }
 ```
 
-</details>
+
 
 
 ## Entities

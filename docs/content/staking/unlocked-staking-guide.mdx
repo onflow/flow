@@ -22,7 +22,7 @@ for staking with locked tokens from the Flow community sale.
 
 ### Register a New Staked Node
 
-To register as a node operator with unlocked FLOW, the token holder can use the **Register Node** ([SC.11](/core-contracts/flow-id-table-staking/#staking))
+To register as a node operator with unlocked FLOW, the token holder can use the **Register Node** ([SC.11](/core-contracts/staking-contract-reference/#staking))
 transaction with the following arguments:
 
 | Argument              | Type     | Description |
@@ -51,7 +51,7 @@ The token holder can stake additional tokens at any time.
 
 _Note: this transaction stakes additional tokens to the same node that was registered in the setup phase._
 
-To stake new tokens, the token holder can use the **Stake New Locked FLOW** ([SC.12](/core-contracts/flow-id-table-staking/#staking)) 
+To stake new tokens, the token holder can use the **Stake New Locked FLOW** ([SC.12](/core-contracts/staking-contract-reference/#staking)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -64,7 +64,7 @@ This transaction commits tokens to stake from the token holder's account.
 
 After tokens become unstaked, the token holder can choose to re-stake the unstaked tokens to the same node.
 
-To staked unstaked tokens, the token holder can use the **Re-stake Unstaked FLOW** ([SC.13](/core-contracts/flow-id-table-staking/#staking)) 
+To staked unstaked tokens, the token holder can use the **Re-stake Unstaked FLOW** ([SC.13](/core-contracts/staking-contract-reference/#staking)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -75,7 +75,7 @@ transaction with the following arguments:
 
 After earning rewards from staking, the token holder can choose to re-stake the rewarded tokens to the same node.
 
-To stake rewarded tokens, the token holder can use the **Re-stake Rewarded FLOW** ([SC.14](/core-contracts/flow-id-table-staking/#staking)) 
+To stake rewarded tokens, the token holder can use the **Re-stake Rewarded FLOW** ([SC.14](/core-contracts/staking-contract-reference/#staking)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -88,7 +88,7 @@ The token holder can submit a request to unstake some of their tokens at any tim
 If the tokens aren't staked yet, they will be uncommitted and available to withdraw.
 
 To request to unstake staked tokens, the token holder can use 
-the **Request Unstaking** ([SC.15](/core-contracts/flow-id-table-staking/#staking)) transaction.
+the **Request Unstaking** ([SC.15](/core-contracts/staking-contract-reference/#staking)) transaction.
 
 | Argument   | Type     | Description |
 |------------|----------|-------------|
@@ -108,7 +108,7 @@ The token holder can submit a request to unstake all their tokens at any time.
 If the tokens aren't staked yet, they will be uncommitted and available to withdraw.
 
 To unstake all staked tokens, the token holder can use 
-the **Unstake All FLOW** ([SC.16](/core-contracts/flow-id-table-staking/#staking)) transaction.
+the **Unstake All FLOW** ([SC.16](/core-contracts/staking-contract-reference/#staking)) transaction.
 
 This transaction requires no arguments.
 
@@ -120,7 +120,7 @@ from users that are delegating FLOW to the node.**
 After tokens become unstaked, the token holder can withdraw them from the central staking contract.
 
 To withdraw unstaked tokens, 
-the token holder can use the **Withdraw Unstaked FLOW** ([SC.17](/core-contracts/flow-id-table-staking/#staking)) 
+the token holder can use the **Withdraw Unstaked FLOW** ([SC.17](/core-contracts/staking-contract-reference/#staking)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -134,7 +134,7 @@ This transaction moves the unstaked tokens back into the `FlowToken.Vault` owned
 After earning rewards from staking, the token holder can withdraw them from the central staking contract.
 
 To withdraw rewarded tokens, 
-the token holder can use the **Withdraw Rewarded FLOW** ([SC.18](/core-contracts/flow-id-table-staking/#staking)) 
+the token holder can use the **Withdraw Rewarded FLOW** ([SC.18](/core-contracts/staking-contract-reference/#staking)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -160,7 +160,7 @@ but this would require small changes to these transactions to use the new storag
 
 ## Register as a Delegator
 
-To register as a delegator, the token holder can use the **Register Delegator** ([SC.19](/core-contracts/flow-id-table-staking/#delegating))
+To register as a delegator, the token holder can use the **Register Delegator** ([SC.19](/core-contracts/staking-contract-reference/#delegating))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -179,7 +179,7 @@ The token holder can delegate additional tokens after registering as a delegator
 _Note: this transaction delegates additional tokens to the same node that was registered in the setup phase._
 
 To delegate new tokens, 
-the token holder can use the **Delegate New FLOW** ([SC.20](/core-contracts/flow-id-table-staking/#delegating)) 
+the token holder can use the **Delegate New FLOW** ([SC.20](/core-contracts/staking-contract-reference/#delegating)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -191,7 +191,7 @@ transaction with the following arguments:
 After delegated tokens become unstaked, the token holder can choose to re-delegate the unstaked tokens to the same node.
 
 To delegate unstaked tokens, 
-the token holder can use the **Re-delegate Unstaked FLOW** ([SC.21](/core-contracts/flow-id-table-staking/#delegating))
+the token holder can use the **Re-delegate Unstaked FLOW** ([SC.21](/core-contracts/staking-contract-reference/#delegating))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -203,7 +203,7 @@ transaction with the following arguments:
 After earning rewards from delegation, the token holder can choose to re-delegate the rewarded tokens to the same node.
 
 To delegate rewarded tokens, 
-the token holder can use the **Re-delegate Rewarded FLOW** ([SC.22](/core-contracts/flow-id-table-staking/#delegating))
+the token holder can use the **Re-delegate Rewarded FLOW** ([SC.22](/core-contracts/staking-contract-reference/#delegating))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -216,7 +216,7 @@ The token holder can submit a request to unstake their delegated tokens at any t
 If the tokens aren't staked yet, they will be uncommitted and available to withdraw.
 
 To unstake delegated tokens, 
-the token holder can use the **Unstake Delegated FOW** ([SC.23](/core-contracts/flow-id-table-staking/#delegating))
+the token holder can use the **Unstake Delegated FOW** ([SC.23](/core-contracts/staking-contract-reference/#delegating))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -233,7 +233,7 @@ they can be claimed via the [Withdraw Unstaked Tokens](#withdraw-unstaked-tokens
 After delegated tokens become unstaked, the token holder can withdraw them from the central staking contract.
 
 To withdraw unstaked tokens, 
-the token holder can use the **Withdraw Unstaked FLOW** ([SC.24](/core-contracts/flow-id-table-staking/#delegating))
+the token holder can use the **Withdraw Unstaked FLOW** ([SC.24](/core-contracts/staking-contract-reference/#delegating))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -247,7 +247,7 @@ This transaction moves the unstaked tokens back into the `FlowToken.Vault` owned
 After earning rewards from delegation, the token holder can withdraw them from the central staking contract.
 
 To withdraw rewarded tokens, 
-the token holder can use the **Withdraw Rewarded FLOW** ([SC.25](/core-contracts/flow-id-table-staking/#delegating))
+the token holder can use the **Withdraw Rewarded FLOW** ([SC.25](/core-contracts/staking-contract-reference/#delegating))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |

@@ -29,7 +29,7 @@ Hence, the network address of the node must stay the same between epochs otherwi
 A change to the node network address (IP or a hostname) can only be done during the spork process.
 
 To change the networking address:
-1. A day before the [upcoming mainnet spork](/node-operation/upcoming-sporks), change the network address for the nodes in Flow Port (using the update network address feature).
+1. A day before the [upcoming mainnet spork](/nodes/node-operation/upcoming-sporks), change the network address for the nodes in Flow Port (using the update network address feature).
 The change will not take effect till an epoch transition happens.
 2. Change the addresses in the `/var/flow/bootstrap/private-root-information/private-node-info_<nodeid>/node-info.priv.json` json file on the node.
 3. A spork also causes an epoch transition, and the new addresses will take effect after the spork immediately.
@@ -40,7 +40,7 @@ If the node after migration will be using new staking or networking keys then it
 
 1. Unstake the node via Flow Port.
 2. Register the new node via Flow Port with the new staking information.
-3. Run the new node with the new keys and network address. It should be able to join the network at the next epoch (see [timing](/node-operation/node-bootstrap#timing))
+3. Run the new node with the new keys and network address. It should be able to join the network at the next epoch (see [timing](/nodes/node-operation/node-bootstrap#timing))
 
 <Callout type="warning">
 Unstaking a node will result in the node [not earning rewards](staking/technical-overview/#staking-operations-available-to-all-stakers) for the next epoch.

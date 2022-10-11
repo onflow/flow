@@ -6,8 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check for @nocommit
-      uses: bthaile/no-merge-action-msg@v0.5
+      uses: bthaile/no-merge-action-msg@v0.6
       with:
         github-token: ${{github.token}}
-        keyword: "flow/flips"
+        keyword: "flips/"
         message: "FLIP additions and updates should be submitted to https://github.com/onflow/flips"

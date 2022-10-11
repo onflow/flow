@@ -43,7 +43,7 @@ with the following arguments:
 | ---------- | -------- | -------------------------------------- |
 | **nodeID** | `String` | The node ID of the node to search for. |
 
-You can also query the info from an address by using the **Get Node Info From Address**([SC.26](/core-contracts/flow-id-table-staking/#getting-staking-info)) script
+You can also query the info from an address by using the **Get Node Info From Address**([SC.26](/core-contracts/staking-contract-reference/#getting-staking-info)) script
 with the following arguments:
 
 | Argument    | Type      | Description                                       |
@@ -88,7 +88,7 @@ script with the following arguments:
 | **nodeID**      | `String` | The node ID that the delegator delegates to. |
 | **delegatorID** | `String` | The ID of the delegator to search for.       |
 
-You can also query the info from an address by using the **Get Delegator Info From Address**([SC.27](/core-contracts/flow-id-table-staking/#getting-staking-info)) script
+You can also query the info from an address by using the **Get Delegator Info From Address**([SC.27](/core-contracts/staking-contract-reference/#getting-staking-info)) script
 with the following arguments:
 
 | Argument    | Type      | Description                                            |
@@ -99,7 +99,7 @@ with the following arguments:
 
 `FlowIDTableStaking.getRewardCutPercentage(): UFix64`: Returns a `UFix64` number for the cut of delegator rewards that each node operator takes.
 
-You can use the **Get Cut Percentage**([SC.01](/core-contracts/flow-id-table-staking/#getting-staking-info)) script to retrieve this info.
+You can use the **Get Cut Percentage**([SC.01](/core-contracts/staking-contract-reference/#getting-staking-info)) script to retrieve this info.
 
 This script requires no arguments.
 
@@ -172,21 +172,21 @@ After this event the `epochTokenPayout` is equal to the new value.
 
 ### NewStakingMinimums
 
-```cadence
-pub event NewStakingMinimums(newMinimums: {UInt8: UFix64})
-```
+
+`pub event NewStakingMinimums(newMinimums: {UInt8: UFix64})`
+
 
 | Field           | Type            | Description                                                  |
 | --------------- | --------------- | ------------------------------------------------------------ |
-| newRequirements | {UInt8: UFix64} | The new minimum staking requirements for all the node types. |
+| newRequirements | `{UInt8: UFix64}` | The new minimum staking requirements for all the node types. |
 
 Emitted by `FlowIDTableStaking.Admin.setMinimumStakeRequirements()` when the Admin changes the minimum requirements for node types.
 
 ### NewDelegatorCutPercentage
 
-```cadence
-pub event NewDelegatorCutPercentage(newCutPercentage: UFix64)
-```
+
+`pub event NewDelegatorCutPercentage(newCutPercentage: UFix64)`
+
 
 | Field            | Type   | Description                                                         |
 | ---------------- | ------ | ------------------------------------------------------------------- |
