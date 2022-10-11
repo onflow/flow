@@ -2,7 +2,7 @@
 
 | Status        | (**Draft** / Proposed / Rejected / Accepted / Implemented)       |
 :-------------- |:---------------------------------------------------- |
-| **FLIP #**    | [??](https://github.com/onflow/flow/pull/??)     |
+| **FLIP #**    | [#1130](https://github.com/onflow/flow/pull/1130)     |
 | **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com)       |
 | **Sponsor**   | Janez Podhostnik (janez.podhostnik@dapperlabs.com)       |
 | **Updated**   | 2022-09-27                                           |
@@ -13,7 +13,7 @@ This FLIP proposes an alternative to `Paths` in Cadence that use the type of the
 
 ## Motivation
 
-This FLIP assumes that the private domain no longer exists due to it being removed as suggested in the Capability Controllers FLIP. But it could also extend to the private domain if needed.
+Note: This FLIP assumes that the private domain no longer exists due to it being removed as suggested in the [Capability Controllers FLIP](https://github.com/onflow/flow/pull/798). But it could also extend to the private domain if needed.
 
 The current way of specifying paths is not the best fit for the current use cases:
 
@@ -24,7 +24,7 @@ The current way of specifying paths is not the best fit for the current use case
 
 ## Design Proposal
 
-Replace the path addressing `(domain,path)` with `(domain,type,name)` addressing, where the domain is always implicitly know from the method you are using (i.e.: `save` always interacts with storage, `link` always links storage with the public domain). The name is a limited size free text `String` that can be empty and must be unique per type. The Functions getting things from storage would also be split into a **Named** and normal variety (e.i.: `load` -> `load` and `loadNamed`). The empty string name would be a special name, which signifies that if there are multiple objects of the same type take that one when addressing without a name.
+Replace the path addressing `(domain,path)` with `(domain,type,name)` addressing, where the domain is always implicitly know from the method you are using (i.e.: `save` always interacts with storage, `link` always links storage with the public domain). The name is a limited size free text `String` that can be empty and must be unique per type. The Functions getting things from storage would also be split into a **Default** and normal variety (e.i.: `load` -> `loadDefault` and `load`). The empty string name would be a special name, which signifies that if there are multiple objects of the same type take that one when addressing without a name.
 
 ```cadence
 // current save function on AuthAccount
@@ -38,7 +38,7 @@ fun load<T>(from: StoragePath): T?
 // proposed save function on AuthAccount
 fun save<T>(_ value: T, name: String)
 // current load function on AuthAccount
-fun loadNamed<T>(name: String): T? {
+fun load<T>(name: String): T? {
     // ... some pseudo-code how loadNamed would work ...
     // if there are no things of type T stored
     //     return null
@@ -48,7 +48,7 @@ fun loadNamed<T>(name: String): T? {
     // otherwise
     //     return null
 }
-fun load<T>(): T? {
+fun loadDefault<T>(): T? {
     // ... some pseudo-code how load would work ...
     // if there are no things of type T stored
     //     return null
