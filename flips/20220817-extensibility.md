@@ -246,7 +246,7 @@ struct S {
 
 extension E for S {
     pub let y: Int 
-    init(y:Int) {
+    init(y: Int) {
         self.y = y
     }
 }
