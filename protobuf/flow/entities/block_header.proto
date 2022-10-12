@@ -21,6 +21,7 @@ message BlockHeader {
   string chain_id = 11;
   bytes parent_voter_indices = 12;
   TimeoutCertificate last_view_tc = 13;
+  uint64 parent_view = 14;
 }
 
 message TimeoutCertificate {
