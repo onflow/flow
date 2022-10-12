@@ -4,7 +4,7 @@
       "mainnet19": {
         "id": 19,
         "live": true,
-        "name": "Mainnet-17",
+        "name": "Mainnet-19",
         "sporkTime": "2022-08-24T17:00:00Z",
         "rootHeight": "35858811",
         "rootParentId": "5c030d4125f8ace0e0ab8255880143190d58aca4ddb7c4720c28eaf497adcae1",
@@ -22,7 +22,7 @@
             "rootCheckpointFile": "",
             "rootProtocolStateSnapshot": "",
             "nodeInfo": "",
-            "executionStateBucket": "flow-public-mainnet18-execution-state"
+            "executionStateBucket": "flow-public-mainnet19-execution-state"
           }
         },
         "tags": {
