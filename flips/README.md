@@ -1,4 +1,8 @@
-# Flow Improvement Proposals (FLIPs)
+### :bangbang: NOTE: PLEASE SUBMIT NEW FLIPS TO [the FLIPS repository](https://github.com/onflow/flips). New flips submitted here will be closed.
+
+----
+
+## Flow Improvement Proposals (FLIPs)
 
 The purpose of a FLIP is to engage the Flow community in development by 
 leveraging the collective ideas, insights, and experience of contributors and 
