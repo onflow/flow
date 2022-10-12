@@ -20,4 +20,4 @@ Follow [these steps](https://docs.onflow.org/flow-cli/install/) to install the F
 ## Usage
 
 To learn more about using the Emulator,
-have a look at [the README of the repository](https://github.com/onflow/flow-emulator/blob/master/README.md#starting-the-server).
+have a look at [the README of the repository](https://github.com/onflow/flow-emulator/#starting-the-server).
