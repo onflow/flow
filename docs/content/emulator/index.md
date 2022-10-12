@@ -11,7 +11,7 @@ which is designed to have near feature parity with the real network API.
 
 ## Running the emulator with the Flow CLI
 
-The emulator is bundled with the [Flow CLI](/flow-cli), a command-line interface for working with Flow.
+The emulator is bundled with the [Flow CLI](https://developers.flow.com/tools/flow-cli), a command-line interface for working with Flow.
 
 ### Installation
 
