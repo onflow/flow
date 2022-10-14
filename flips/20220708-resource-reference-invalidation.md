@@ -1,11 +1,11 @@
 # Invalidate References to Transferred Resources
 
-| Status         | Accepted                                     |
+| Status         | Proposed                                     |
 |:---------------|:---------------------------------------------|
 | **FLIP #**     | https://github.com/onflow/cadence/pull/1999  |
 | **Author(s)**  | Supun Setunga (supun.setunga@dapperlabs.com) |
 | **Sponsor**    | Supun Setunga (supun.setunga@dapperlabs.com) |
-| **Updated**    | 2022-10-14                                   |
+| **Updated**    | 2022-10-03                                   |
 
 ## Objective
 
