@@ -80,7 +80,7 @@ Finally we need to multiply the transaction fees by a (unit-less) surge factor t
 - <img src="https://render.githubusercontent.com/render/math?math=F_I"> : Inclusion part of the transaction fees.
 - <img src="https://render.githubusercontent.com/render/math?math=F_E"> : Execution part of the transaction fees.
 - <img src="https://render.githubusercontent.com/render/math?math=I">: Inclusion effort; The time invariant effort required to handle this transaction (include it into a collection, check signatures are valid, check that the payer can pay, transfer the transaction over the wire,...). The inclusion effort is known before the transaction is executed.
-- <img src="https://render.githubusercontent.com/render/math?math=E">: Execution effort; The time invariant effort required to execute this transaction (run the script, process the results, send results to verification node, verify the results, ...). The Execution effort cannot be know without executing the 
+- <img src="https://render.githubusercontent.com/render/math?math=E">: Execution effort; The time invariant effort required to execute this transaction (run the script, process the results, send results to verification node, verify the results, ...). The Execution effort cannot be know without executing the transaction.
 - <img src="https://render.githubusercontent.com/render/math?math=E%5E%7B%5Ctext%7Bmax%7D%7D">: Maximum execution effort (gas/computation limit).
 - <img src="https://render.githubusercontent.com/render/math?math=p_E(E)"> or <img src="https://render.githubusercontent.com/render/math?math=p_I(I)">: Flow cost of effort. In general execution and inclusion effort can be priced differently.
 
