@@ -4,7 +4,7 @@
 :-------------- |:---------------------------------------------------- |
 | **FLIP 660**  | [660](https://github.com/onflow/flow/pull/660)       |
 | **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com)   |
-| **Updated**   | 2022-03-23                                           |
+| **Updated**   | 2022-10-18                                           |
 
 ## Objective
 
