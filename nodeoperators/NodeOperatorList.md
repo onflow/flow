@@ -112,6 +112,7 @@
 | Foundry | Consensus | 56e97c4cd4079caeb97d2a8f8950437107813436d5964f22a1f459eb8cf73a71
 | Foundry | Collection | bd368122b0ccf67ebdd59d7f9b75edfa85106c3af41854c946ad0fa46e5c3ddd
 | Foundry | Verification | e74d0ca7afed2b5bfd612f3c75010adb229d632ca4ab3b77d178ee226d7ec2a2
+| HashQuark | Verification | 55069e7e8926867bee8094bd31786f8f6b65c8c3bde468ae2275f33dc1245dc1
 | Huobi | Verification | 6944b7968594f277c4c051d83ced4bab6ed87ed992d831f31ffb6a7b5926e298
 | Metapurse | Collection |da27c0fc2a4fe12c04bd70058252c5a26cfe41485bf6ea6aba1c724b7a07542d
 | Metapurse | Consensus |1780288437c9aed5056836bfffcfe19334dd6e229607fccfb3fe9b1d4d24cdca
@@ -137,4 +138,3 @@
 | VCC | Collection | fe14c6a722212e19af1c143008d46413d4cea5097714a3720c67f356fb7c2982
 | versus-flow.art | Verification | 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e
 | Yonsei | Verification | 5dc67a4f47ea9ce55d1b63ebe04cc68d8b29c41e40ab5cdc63b108ce292139a0
-| HashQuark | Verification | 55069e7e8926867bee8094bd31786f8f6b65c8c3bde468ae2275f33dc1245dc1
