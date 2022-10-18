@@ -1,10 +1,9 @@
-# Capability controllers
+| status: Proposed
+| flip: [798](https://github.com/onflow/flow/pull/798)
+| author: Janez Podhostnik (janez.podhostnik@dapperlabs.com)
+| updated: 2022-10-18
 
-| Status        | Proposed                                           |
-| :------------ | :------------------------------------------------- |
-| **FLIP #**    | [798](https://github.com/onflow/flow/pull/798)     |
-| **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com) |
-| **Updated**   | 2022-08-22                                         |
+# Capability controllers
 
 ## Preface
 
@@ -38,7 +37,7 @@ issuer.save(<-create Counter(count: 42), to: /storage/counter)
 
 ### Public Capabilities
 
-To allow anyone (read) access to the `count` field on the counter, the _issuer_ needs to create a public typed link at a chosen path that points to their stored counter resource.
+To allow anyone (read) access to the `count` field on the counter (during a transaction), the _issuer_ needs to create a public typed link at a chosen path that points to their stored counter resource.
 
 ```cadence
 issuer.link<&{HasCount}>(/public/hasCount, target: /storage/counter)
@@ -147,18 +146,7 @@ The suggested change addresses these pain points by:
 - Making it easier to create new capabilities (with individual links).
 - Offering a way to iterate through capabilities on a storage path.
 - Removing the need to have a `/private/`domain.
-- Changing the `/public/` domain to be able to store capabilities (and only capabilities).
 - Introducing Capability Controllers (CapCons) that handle management of capabilities.
-
-### Accounts public domain as a capability storage
-
-This part of the change proposes that accounts can store capabilities in their public domain. Capabilities would be borrowed by anyone that needs to use them. The `borrowCapability `method would be added to the PublicAccount which would be equivalent to how we currently get the capability then call `borrow` on it.
-
-```cadence
-let publicAccount = getAccount(issuerAddress)
-let countCap = publicAccount.borrowCapability<&{HasCount}>(/public/hasCount)!
-countRef.count
-```
 
 ### Capability Controllers (CapCons)
 
@@ -225,6 +213,26 @@ fun getLinkTarget(_ path: CapabilityPath): Path?
 ```
 
 This would remove all references to `Link`s.
+
+### Borrow Capability
+
+. The `borrowCapability `method would be added to the PublicAccount which would be a shorthand to how we currently get the capability then call `borrow` on it.
+
+```cadence
+// this:
+
+var publicAccount = getAccount(issuerAddress)
+var cap = getCapability<&{CounterContract.HasCount}>(/public/counter)
+var countCap = cap.borrow()!
+countCap.count
+
+
+// become this:
+
+let publicAccount = getAccount(issuerAddress)
+let countCap = publicAccount.borrowCapability<&{HasCount}>(/public/hasCount)!
+countRef.count
+```
 
 ### Impact of the solution
 
@@ -360,6 +368,57 @@ public resource ScopedMain : AdminInterface {
       }
    }
 }
+```
+
+## Deployment options
+
+Just making a breaking change by removing the linking API and adding the CapCons API might cause some headaches. In order to make the transition to CapCons smother, the CapCons API could temporarily work in parallel with the current linking API.
+
+The rollout process would have 2 steps:
+
+1. Add CapCons and still have linking.
+2. After a transition period remove linking.
+
+To make this FLIP compatible with this rollout, the requirement to removing the private domain needs to be addressed While both APIs are still active, the private domain still needs to exist in order to do private linking for private capabilities. The private domain can be removed at step 2.
+
+During step 1. all existing links should also become CapCons (most likely with a storage migration). The linking API will still be available, but will actually operate with CapCons in the background. Below is a implementation of the linking API with the CapCons API.
+
+```cadence
+// link
+// issuer.link<T>(publicOrPrivatePath, target: storagePath)
+
+let cap = issuer.issueCapability<T>(storagePath)
+issuer.save(cap, to: publicOrPrivatePath)
+```
+
+```cadence 
+// unlink
+// issuer.unlink(publicOrPrivatePath)
+
+let cap = issuer.getCapability<T>(publicOrPrivatePath)
+let capabilityID = cap.capabilityID
+let capCon = issuer.getController(capabilityID: capabilityID)
+
+capCon.revoke()
+```
+
+```cadence
+// relink
+// issuer.unlink(publicOrPrivatePath)
+// issuer.link<&{CounterContract.HasCount}>(publicOrPrivatePath, target: storagePath2)
+
+// 1. unlink
+
+let cap = issuer.getCapability<T>(publicOrPrivatePath)
+let capabilityID = cap.capabilityID
+let capCon = issuer.getController(capabilityID: capabilityID)
+
+capCon.revoke()
+
+// 2. link
+
+let cap = issuer.issueCapability<T>(storagePath2)
+issuer.save(cap, to: publicOrPrivatePath)
 ```
 
 
