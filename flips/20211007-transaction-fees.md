@@ -85,11 +85,11 @@ Finally we need to multiply the transaction fees by a (unit-less) surge factor t
 
 The transaction fees equation can then be written in the following form:
 
-$F = s \left[ F_I + F_E \right] = s \left[ p_I(I) + p_E(E) \right]$
+$$F = s \left[ F_I + F_E \right] = s \left[ p_I(I) + p_E(E) \right]$$
 
 The maximum fees a transaction can incur can be written with the equation below: 
 
-$F^{\text{max}} = s \left[ p_I(I) + p_E(E^{\text{max}}) \right]$
+$$F^{\text{max}} = s \left[ p_I(I) + p_E(E^{\text{max}}) \right]$$
 
 ### Surge factor
 
@@ -156,7 +156,7 @@ If the transaction execution effort limit is reached during the execution of the
 ### Keeping the cost of transaction fees stable to a FIAT currency
 If desired, the price of transaction fees could be kept relatively stable according to a FIAT currency. To achieve this, the FIAT to FLOW ratio ( $r$ ) would be added to the fee equation:
 
-$F = s r \left[F_I + F_e\right]$
+$$F = s r \left[F_I + F_e\right]$$
 
 This would require a periodic job to run and check the FIAT value of FLOW, then update the ratio ( $r$ ) that would be stored in a smart contract on chain.
 
@@ -212,7 +212,7 @@ When turning on variable transaction fees, a smooth transition to the new system
 
 Inclusion fees would be defined as a linear function of the byte size ( $b$ ) of a transaction (with coefficient $k$ and constant term $n$ ).
 
-$F_I = p_I ( k*b + n )$
+$$F_I = p_I ( k*b + n )$$
 
 To get the terms of this linear function, we need a way to quantify the impact of the transaction byte size on the network. This can be done by taking a reference transaction that is at the 95th percentile of transaction byte sizes currently seen on mainnet, and does very little computation. This transaction should have inclusion fees of half of the current static fees. We then see how many transactions like this the network can handle per second before it runs into problems. We can define this as the saturation point. The transaction's saturation point is inversely proportionate to the fees that should be charged for the transaction. If the network can handle half as many transactions $T_1$ as transactions $T_2$, then $T_1$ should be twice as expensive as $T_2$. Using this relation and getting the saturation points for a few transactions of different sizes, we can calibrate the linear dependency.
 
