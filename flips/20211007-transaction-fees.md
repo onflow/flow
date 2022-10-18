@@ -75,22 +75,22 @@ Finally we need to multiply the transaction fees by a (unit-less) surge factor t
 
 ### Terminology
 
-- <img src="https://render.githubusercontent.com/render/math?math=F"> : Total transaction fees.
-- <img src="https://render.githubusercontent.com/render/math?math=s"> : Surge factor; unit-less factor that is higher if the network is experiencing heavy load.
-- <img src="https://render.githubusercontent.com/render/math?math=F_I"> : Inclusion part of the transaction fees.
-- <img src="https://render.githubusercontent.com/render/math?math=F_E"> : Execution part of the transaction fees.
-- <img src="https://render.githubusercontent.com/render/math?math=I">: Inclusion effort; The time invariant effort required to handle this transaction (include it into a collection, check signatures are valid, check that the payer can pay, transfer the transaction over the wire,...). The inclusion effort is known before the transaction is executed.
-- <img src="https://render.githubusercontent.com/render/math?math=E">: Execution effort; The time invariant effort required to execute this transaction (run the script, process the results, send results to verification node, verify the results, ...). The Execution effort cannot be know without executing the transaction.
-- <img src="https://render.githubusercontent.com/render/math?math=E%5E%7B%5Ctext%7Bmax%7D%7D">: Maximum execution effort (gas/computation limit).
-- <img src="https://render.githubusercontent.com/render/math?math=p_E(E)"> or <img src="https://render.githubusercontent.com/render/math?math=p_I(I)">: Flow cost of effort. In general execution and inclusion effort can be priced differently.
+- $F$: Total transaction fees.
+- $s$: Surge factor; unit-less factor that is higher if the network is experiencing heavy load.
+- $F_I$: Inclusion part of the transaction fees.
+- $F_E$: Execution part of the transaction fees.
+- $I$: Inclusion effort; The time invariant effort required to handle this transaction (include it into a collection, check signatures are valid, check that the payer can pay, transfer the transaction over the wire,...). The inclusion effort is known before the transaction is executed.
+- $E$: Execution effort; The time invariant effort required to execute this transaction (run the script, process the results, send results to verification node, verify the results, ...). The Execution effort cannot be know without executing the transaction.
+- $E^{\text{max}}$: Maximum execution effort (gas/computation limit).
+- $p_E(E)$ or $p_I(I)$: Flow cost of effort. In general execution and inclusion effort can be priced differently.
 
 The transaction fees equation can then be written in the following form.
 
-<img src="https://render.githubusercontent.com/render/math?math=F%20%3D%20s%20%5Cleft%5B%20F_I%20%2B%20F_E%20%5Cright%5D%20%3D%20s%20%5Cleft%5B%20p_I(I)%20%2B%20p_E(E)%20%5Cright%5D">
+$F = s \left[ F_I + F_E \right] = s \left[ p_I(I) + p_E(E) \right]$
 
 The maximum fees a transaction can incur can be written with the equation below. 
 
-<img src="https://render.githubusercontent.com/render/math?math=F%5E%7B%5Ctext%7Bmax%7D%7D%20%3D%20s%20%5Cleft%5B%20p_I(I)%20%2B%20p_E(E%5E%7B%5Ctext%7Bmax%7D%7D)%20%5Cright%5D">
+$F^{\text{max}} = s \left[ p_I(I) + p_E(E^{\text{max}}) \right]$
 
 ### Surge factor
 
@@ -103,11 +103,11 @@ A first automated solution might be for the execution nodes to look at how full 
 When automation will be in place for adjusting the surge factor, the surge factor could be adjusted frequently (in the span it takes to run a few blocks and detect a surge), but it should not change too drastically otherwise users cannot respond to the change.
 ### Effort cost
 
-In general there would be two different effort cost functions, one for inclusion fees <img src="https://render.githubusercontent.com/render/math?math=F_I%20%3D%20p_I(I)"> and one for execution fees <img src="https://render.githubusercontent.com/render/math?math=F_E%20%3D%20p_E(E)">. This would allow for fine tuning what kind of transactions are the most cost optimal transactions. For example if the execution effort cost function is just a linear function, it makes sense to pack as much execution effort into one transaction as possible, but if the execution effort cost becomes quadratic at a certain effort threshold, it would make sense for users to break transactions into smaller transactions (if possible) that use effort up to that threshold.
+In general there would be two different effort cost functions, one for inclusion fees $F_I = p_I(I)$ and one for execution fees $F_E = p_E(E)$. This would allow for fine tuning what kind of transactions are the most cost optimal transactions. For example if the execution effort cost function is just a linear function, it makes sense to pack as much execution effort into one transaction as possible, but if the execution effort cost becomes quadratic at a certain effort threshold, it would make sense for users to break transactions into smaller transactions (if possible) that use effort up to that threshold.
 
 <!-- TODO: graph for the paragraph above! -->
 
-In the first iteration of variable transaction fees the effort cost functions can simply be constant coefficients: <img src="https://render.githubusercontent.com/render/math?math=F_E%20%3D%20p_E%20*%20E"> and <img src="https://render.githubusercontent.com/render/math?math=F_I%20%3D%20p_I%20*%20I">. The coefficients are referred to as the inclusion effort cost parameter and the execution effort cost parameter, or together as effort cost parameters.
+In the first iteration of variable transaction fees the effort cost functions can simply be constant coefficients: $F_E = p_E * E$ and $F_I = p_I * I$. The coefficients are referred to as the inclusion effort cost parameter and the execution effort cost parameter, or together as effort cost parameters.
 
 The effort cost parameters should be defined on a smart contract and adjustable via the service account admin resource and should be accessible for everyone to read. 
 
@@ -150,17 +150,17 @@ This model should be replaced so that the execution effort better correlates wit
 
 The way execution effort is defined, means that the lower bound for execution effort is 0. Any constant part would just get counted under the inclusion effort.
 
-The upper bound of the execution fees (and thus also for transaction fees; assuming the inclusion fees are known) is indirectly set in the transaction by setting the maximum execution effort limit (<img src="https://render.githubusercontent.com/render/math?math=E_c%5E%5Ctext%7Bmax%7D">) (in the current implementation this is known as the gas limit or computation limit). 
+The upper bound of the execution fees (and thus also for transaction fees; assuming the inclusion fees are known) is indirectly set in the transaction by setting the maximum execution effort limit ( $E_c^\text{max}$ ) (in the current implementation this is known as the gas limit or computation limit). 
 
 If the transaction execution effort limit is reached during the execution of the transaction the execution stops and the state changes made up to that point are dropped. The transaction fees for this transaction are still collected at the maximum execution effort limit.
 
 ### Keeping the cost of transaction fees stable to a FIAT currency
 
-If desired the price of transaction fees could be kept relatively stable according to a FIAT currency. To achieved this the FIAT to FLOW ratio (<img src="https://render.githubusercontent.com/render/math?math=r">) would be added to the fee equation:
+If desired the price of transaction fees could be kept relatively stable according to a FIAT currency. To achieved this the FIAT to FLOW ratio ( $r$ ) would be added to the fee equation:
 
-<img src="https://render.githubusercontent.com/render/math?math=F%20%3D%20s%20r%20%5Cleft%5B%20F_I%20%2B%20F_e%5Cright%5D">
+$F = s r \left[ F_I + F_e\right]$
 
-This would require a periodic job to run and check the FIAT value of FLOW then update ratio (<img src="https://render.githubusercontent.com/render/math?math=r">) that would be stored in a smart contract on chain.
+This would require a periodic job to run and check the FIAT value of FLOW then update ratio ( $r$ ) that would be stored in a smart contract on chain.
 
 ### Preventing malicious actors
 
@@ -168,7 +168,7 @@ The purpose of fees is to prevent malicious actors sending transactions with the
 
 To achieve this the following checks should happen on the access node, before the transaction is even included in a collection: 
 - Is the payers signature valid.
-- Can the payer pay for the transaction. The payers default FLOW vault should have at least <img src="https://render.githubusercontent.com/render/math?math=F%5E%5Ctext%7Bmax%7D"> FLOW.
+- Can the payer pay for the transaction. The payers default FLOW vault should have at least $F^\text{max}$ FLOW.
 
 It might still happen that this transaction will get included in a collection, either due to a bug or malicious behaviour from the access node, or due to the access node not having up to date information of the balance of the payer. In case it does still get included in a collection, even though it does not meet the condition, this check should be repeated in the execution node, and if the check fails on the execution node, the transaction fees should be deducted from the access nodes account instead of the payers account.
 
@@ -212,13 +212,13 @@ When turning on variable transaction fees, a smooth transition to the new system
 
 #### Inclusion fees
 
-Inclusion fees would be defined as a linear function of the byte size (<img src="https://render.githubusercontent.com/render/math?math=b">) of a transaction (with coefficient <img src="https://render.githubusercontent.com/render/math?math=k"> and constant term <img src="https://render.githubusercontent.com/render/math?math=n"> ). 
+Inclusion fees would be defined as a linear function of the byte size ( $b$ ) of a transaction (with coefficient $k$ and constant term $n$ ). 
 
-<img src="https://render.githubusercontent.com/render/math?math=F_I%20%3D%20p_I%20(%20k*b%20%2B%20n%20)">
+$F_I = p_I ( k*b + n )$
 
-To get the terms of this linear function we need a way to quantify the impact of the transaction byte size on the network. This can be done by taking a reference transaction that is at the 95th percentile of transaction byte sizes currently seen on mainnet, and does very little computation. This transaction should have inclusion fees of half of the current static fees. We then see how many transactions like this the network can handle per second before it runs into problems. We can define this as the saturation point. The transaction's saturation point is inversely proportionate to the fees that should be charged for the transaction. If the network can handle half as many transactions <img src="https://render.githubusercontent.com/render/math?math=T_1"> as transactions <img src="https://render.githubusercontent.com/render/math?math=T_2"> than <img src="https://render.githubusercontent.com/render/math?math=T_1"> should be twice as expensive as <img src="https://render.githubusercontent.com/render/math?math=T_2">. Using this relation and getting the saturation points for a few transactions of different sizes, we can calibrate the linear dependency.
+To get the terms of this linear function we need a way to quantify the impact of the transaction byte size on the network. This can be done by taking a reference transaction that is at the 95th percentile of transaction byte sizes currently seen on mainnet, and does very little computation. This transaction should have inclusion fees of half of the current static fees. We then see how many transactions like this the network can handle per second before it runs into problems. We can define this as the saturation point. The transaction's saturation point is inversely proportionate to the fees that should be charged for the transaction. If the network can handle half as many transactions $T_1$ as transactions $T_2$ than $T_1$ should be twice as expensive as $T_2$. Using this relation and getting the saturation points for a few transactions of different sizes, we can calibrate the linear dependency.
 
-The inclusion effort cost parameter is a free variable in the inclusion fees equation, so we can define the inclusion effort cost parameter such that the coefficient <img src="https://render.githubusercontent.com/render/math?math=k"> is 1/1000. This means the Inclusion fees can be interpreted as some base fee, plus 1 <img src="https://render.githubusercontent.com/render/math?math=p_I"> for each kilobyte.
+The inclusion effort cost parameter is a free variable in the inclusion fees equation, so we can define the inclusion effort cost parameter such that the coefficient $k$ is 1/1000. This means the Inclusion fees can be interpreted as some base fee, plus 1 $p_I$ for each kilobyte.
 
 #### Execution fees
 
