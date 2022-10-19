@@ -1,4 +1,4 @@
-# Developer Portal Overview
+# Contributing to the Developer Portal
 
 Reading this document carefully will help you understand how to contribute your own content to the Developer Portal, and avoid problems along the way.
 
@@ -234,18 +234,6 @@ Content versioning is in progress here:
 
 [https://docs.google.com/document/d/1Au9A0eEGJE_VhVYBcAKVUdwkJn2SsGOVfj2u-ckcTHY/edit#heading=h.qvb387e4t234](https://docs.google.com/document/d/1Au9A0eEGJE_VhVYBcAKVUdwkJn2SsGOVfj2u-ckcTHY/edit#heading=h.qvb387e4t234)
 
-## FAQ & Gotchas
-
-### onflow/flow special-case repo
-
-[https://github.com/onflow/flow/tree/master/docs/content](https://github.com/onflow/flow/tree/master/docs/content)
-
-The Developer Portal maintains a strict “one repo per docset” system. This means, each Repo represents a single set or URLs. FOr example, `onflow/cadence` contains docs relating only to Cadence, and all of this content is available under `/cadence` on the Developer Portal, eg: [https://developers.flow.com/cadence/design-patterns](https://developers.flow.com/cadence/design-patterns)
-
-However, there is a special-case repo: `onflow/flow` that contains legacy content, and content not related to a specific tool or repository contents. The documents in the repository can be found at different URLs on the Developer Portal.
-
-The content here is also located in a non-standard folder: `docs/content`
-
 ---
 
 ## Troubleshooting
@@ -263,4 +251,19 @@ I don’t see a preview
 I can’t merge my PR because of checks
 
 -
+
+---
+
+## FAQ & Gotchas
+
+### onflow/flow special-case repo
+
+[https://github.com/onflow/flow/tree/master/docs/content](https://github.com/onflow/flow/tree/master/docs/content)
+
+The Developer Portal maintains a strict “one repo per docset” system. This means, each Repo represents a single set or URLs. FOr example, `onflow/cadence` contains docs relating only to Cadence, and all of this content is available under `/cadence` on the Developer Portal, eg: [https://developers.flow.com/cadence/design-patterns](https://developers.flow.com/cadence/design-patterns)
+
+However, there is a special-case repo: `onflow/flow` that contains legacy content, and content not related to a specific tool or repository contents. The documents in the repository can be found at different URLs on the Developer Portal.
+
+The content here is also located in a non-standard folder: `docs/content`
+
 
