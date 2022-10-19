@@ -1,4 +1,4 @@
-# Developer Portal Documentation
+# Developer Portal Overview
 
 Reading this document carefully will help you understand how to contribute your own content to the Developer Portal, and avoid problems along the way.
 
