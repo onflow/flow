@@ -1,11 +1,11 @@
-# FlowControl scripting example
+# FlowControl Quickstart Guide
 This example shows how to use FlowControl to perform common tasks purely from C#, without using
 the FlowControl editor interface.  This will ignore any of the GUI related code and focus on
 using the FlowControl and Flow SDK.
 
 ## Prerequisites
 Ensure you have flow-cli installed.  This will allow us to use an emulated flow environment.
-You can install it by following the instructions at https://developers.flow.com/tools/flow-cli/install
+You can install it by following the instructions at [https://developers.flow.com/tools/flow-cli/install](https://developers.flow.com/tools/flow-cli/install)
 
 ## Sample walk through
 You can follow along in FlowControlExample.cs
@@ -60,7 +60,7 @@ to run scripts.
 ## Running scripts
 
 Next, we'll use this account to run a script on the emulator.  Scripts on Flow are written in Cadence.
-More information is available at https://developers.flow.com/cadence/language/index
+More information is available at [https://developers.flow.com/cadence/language/index](https://developers.flow.com/cadence/language/index)
 
 First we'll define the script that we want to run:
 
