@@ -6,7 +6,7 @@ After installing the Unity Flow SDK, open the FlowControl Manager window by clic
 
 This will open the FlowControl Manager window.  It will also add a Flow Control object to your scene and create a FlowControlData resource to store your data if they are not already present.  You can have multiple FlowControlData resources to act as presets and switch between them as needed.
 
-### FlowControl Emulator Settings
+## FlowControl Emulator Settings
 
 The first panel that displays will be your emulator settings.
 
@@ -28,7 +28,7 @@ emulator state (flowdb), and your initial emulator configuration (flow.json).  T
 **Show Emulator Log** button:  This opens the Emulator Output window.  You can use this to verify that scripts you run against the emulator execute 
 properly and will display debug messages if something goes wrong.  You can also open the log using Window->Flow->Emulator Output
 
-### Advanced Options
+## Advanced Options
 
 Some options are not exposed in the Flow Control Manager, but can be changed directly in the FlowControlData asset.
 ![FlowControlData asset](../media/FlowControlDataAsset.png)
@@ -41,7 +41,7 @@ Some options are not exposed in the Flow Control Manager, but can be changed dir
 
 **Verbose:**  This controls the verbosity of emulator output.  Verbose output is usually desired, but if you would like non-verbose output for any reason, this allows you to control that setting.
 
-### FlowControl Accounts
+## FlowControl Accounts
 
 The Accounts panel allows you to store account information for easy access at runtime.
 ***Note:  Adding accounts to this panel does not create accounts on the blockchain***
@@ -54,7 +54,7 @@ The emulator_service_account account will be created/updated each time you start
 
 If it is a Testnet account, a link to the Testnet Flowscan page for that account will be provided.  Clicking on it will open the page in your default browser.
 
-### FlowControl Text Replacement
+## FlowControl Text Replacement
 
 ![FlowControl Text Replacement](../media/FlowControlTextReplacement.png)
 
@@ -72,13 +72,13 @@ The Active checkbox indicates if this text replacement should be performed.
 
 Accounts must meet both the account and gateway requirements for a text replacement to take place.  If an account is listed in the accounts list, but uses a gateway that is not in the gateways list, the replacement will not be processed and vice-versa.
 
-### FlowControl Tools
+## FlowControl Tools
 
 The FlowControl Tools panel can be used to deploy contracts and create accounts.
 
 ![FlowControl Tools](../media/FlowControlTools.png)
 
-#### Manage Contracts
+### Manage Contracts
 
 The Contract Name is the name of the contract as it will appear on the blockchain.  It must match the contract name in the contract file.  Text replacements are done on the contract file before deploying.
 
@@ -93,17 +93,17 @@ The Update Contract button will attempt to update an existing contract.  There a
 The Remove Contract button will attempt to delete the contract with the given name from the specified account.  Once a contract is deleted, a new contract with the same name can not be created on the same account.  When using the emulator, clearing the database will allow you to recreate the contract.  When using testnet or mainnet, that contract name will become unavailable for the account.  This is done to prevent bypassing the contract update rules by deleting and recreating a contract with incompatible changes.
 
 
-#### Transactions
+### Transactions
 
 This section will allow you to execute a transaction against the gateway associated with the Signer account.  Currently it does not allow you to pass arguments to the transaction, but you can use a Text Replacement to work around this.
 
 
-#### Create New Account
+### Create New Account
 
 The Paying account is the account that will initially fund the new account.  The new account name is not stored on the blockchain, and is only used to identify the new account in the Accounts panel.  After the account is created, the account information will be added to the Accounts panel.  Make sure to save a copy of this information somewhere.  If the private key is lost, that account will not be accessible.  You can change the account Name in the Accounts panel.  Note that changing the Address or Private Key fields will not change these on the blockchain.
 
 
-### FlowControl inspector
+## FlowControl inspector
 ![FlowControl Inspector](../media/FlowControlInspector.png)
 
 Clicking the FlowControl object in your scene will give you access to the inspector.  This will allow you to select which FlowControlData resource you would like to use
