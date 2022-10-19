@@ -1,11 +1,11 @@
-# FlowControl Quickstart Guide
+﻿# FlowControl scripting example
 This example shows how to use FlowControl to perform common tasks purely from C#, without using
 the FlowControl editor interface.  This will ignore any of the GUI related code and focus on
 using the FlowControl and Flow SDK.
 
 ## Prerequisites
 Ensure you have flow-cli installed.  This will allow us to use an emulated flow environment.
-You can install it by following the instructions at [https://developers.flow.com/tools/flow-cli/install](https://developers.flow.com/tools/flow-cli/install)
+You can install it by following the instructions at https://developers.flow.com/tools/flow-cli/install
 
 ## Sample walk through
 You can follow along in FlowControlExample.cs
@@ -60,7 +60,7 @@ to run scripts.
 ## Running scripts
 
 Next, we'll use this account to run a script on the emulator.  Scripts on Flow are written in Cadence.
-More information is available at [https://developers.flow.com/cadence/language/index](https://developers.flow.com/cadence/language/index)
+More information is available at https://developers.flow.com/cadence/language/index
 
 First we'll define the script that we want to run:
 
@@ -137,7 +137,7 @@ the blockchain.  This will also demonstrate how you can use both FlowControl and
 together.
 
 ```csharp
- SdkAccount emulatorSdkAccount = FlowControl.GetSdkAccountByName("emulator_service_account");
+SdkAccount emulatorSdkAccount = FlowControl.GetSdkAccountByName("emulator_service_account");
 if (emulatorSdkAccount == null)
 {
     Debug.LogError("Error getting SdkAccount for emulator_service_account");
@@ -160,6 +160,25 @@ for that and stop execution if it fails.
 Now we'll use this new SdkAccount object to create a new Flow account on the emulated blockchain.
 
 ```csharp
+FlowSDK.RegisterWalletProvider(ScriptableObject.CreateInstance<DevWalletProvider>());
+
+string authAddress = "";
+FlowSDK.GetWalletProvider().Authenticate("", (string address) =>
+{
+    authAddress = address;
+}, null);
+
+yield return new WaitUntil(() => { return authAddress != ""; });
+
+//Convert FlowAccount to SdkAccount
+SdkAccount emulatorSdkAccount = FlowControl.GetSdkAccountByAddress(authAddress);
+if (emulatorSdkAccount == null)
+{
+    Debug.LogError("Error getting SdkAccount for emulator_service_account");
+    yield break;
+}
+
+//Create a new account with the name "User"
 Task<SdkAccount> newAccountTask = CommonTransactions.CreateAccount("User", emulatorSdkAccount);
 yield return new WaitUntil(() => newAccountTask.IsCompleted);
 
@@ -169,8 +188,19 @@ if (newAccountTask.Result.Error != null)
     yield break;
 }
 
+outputText.text += "DONE\n\n";
+
+//Here we have an SdkAccount
 SdkAccount userSdkAccount = newAccountTask.Result;
+
 ```
+First we create and register a new `DevWalletProvider`.  Any time a transaction is run, it calls the provided wallet provider.  The `DevWalletProvider`
+is an implementation of IWallet that shows a simulated wallet interface.  It will allow you to view and authorize the submitted transaction.
+
+After creating and registering the wallet provider, we call `Authenticate` to display a popup that will allow you to select any of the accounts in the FlowControl
+Accounts tab.  You should choose emulator_service_account when prompted when running the demo.
+
+We then wait until the user has selected an account.
 
 `CommonTransactions` contains some utility functions to make performing frequent operations a little easier.
 One of these is `CreateAccount`.  It expects a `Name`, which is not placed on the blockchain, and the SdkAccount
@@ -230,9 +260,11 @@ We won't discuss how to write Flow contracts in depth here, but simply put this 
 function that will emit an event and return the string "Hello World!" when run.
 
 Then we use the same pattern we've used before to deploy this contract using the `CommonTransaction.DeployContract`
-function.
+function.  Note that we should register a new wallet provider since we are changing the account we want to run the transaction
+as.
 
 ```csharp
+FlowSDK.GetWalletProvider().Authenticate(userAccount.AccountConfig["Address"], null, null);
 Task<FlowTransactionResponse> deployContractTask = 
     CommonTransactions.DeployContract("HelloWorld", contractCode, userSdkAccount);
 
@@ -244,6 +276,8 @@ if (deployContractTask.Result.Error != null)
     yield break;
 }
 ```
+We'll reauthenticate with the wallet provider to tell it to use the new newly created account.  Because we pass in an address this time, it
+won't display the select account pop-up.
 
 The first argument to `DeployContract` is the contract name.  This must match the name in the contract
 data itself.  The second argument is the Cadence code that defines the contract, and the third argument
