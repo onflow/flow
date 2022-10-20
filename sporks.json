@@ -986,12 +986,12 @@
       "testnet38": {
         "id": 38,
         "live": true,
-        "name": "Testnet39",
+        "name": "Testnet38",
         "sporkTime": "2022-10-19T02:00:00Z",
         "rootHeight": "83007730",
         "rootParentId": "1b914363c9a34c46b93974adeefb10c546578d7f3f4ac9291e01d746d2c84226",
         "rootStateCommitment": "79df428bc27f22d38c233777610d93d33e180f23cfbc640a95d144a508e0f080",
-        "gitCommitHash": "2373799f83f2744100dc29ca11bce2a13c3cb5e9",
+        "gitCommitHash": "3aae289f8f390f58ac481fd694254ea0e48960a8",
         "stateArtefacts": {
           "gcp": {
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-38-execution/public-root-information/root.checkpoint",
@@ -1007,10 +1007,10 @@
           }
         },
         "tags": {
-          "flow-go-tag": "v0.28.3",
+          "flow-go-tag": "v0.28.4",
           "flow-dps-tag": "v0.24",
           "cadence-tag": "v0.28.0",
-          "docker-tag": "v0.28.3"
+          "docker-tag": "v0.28.4"
         },
         "accessNodes": [],
         "seedNodes": [
