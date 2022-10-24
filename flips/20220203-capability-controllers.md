@@ -7,7 +7,7 @@
 
 ## Preface
 
-Cadence encourages a [capability-based security](d be clearer to Charlie that he received a capability t) model as described on the Flow [doc site](https://docs.onflow.org/cadence/language/capability-based-access-control). Capabilities are themselves a new concept that most Cadence programmers need to understand, but the API for syntax around Capabilities (especially the notion of “links” and “linking”), and the associated concepts of the public and private storage domains, lead to Capabilities being even more confusing and awkward to use. This proposal suggests that we could get rid of links entirely, and replace them with Capability Controllers (henceforth referred to as CapCons) which could make Capabilities easier to understand, and easier to work with.
+Cadence encourages a [capability-based security](https://en.wikipedia.org/wiki/Capability-based_security) model as described on the Flow [doc site](https://docs.onflow.org/cadence/language/capability-based-access-control). Capabilities are themselves a new concept that most Cadence programmers need to understand, but the API for syntax around Capabilities (especially the notion of “links” and “linking”), and the associated concepts of the public and private storage domains, lead to Capabilities being even more confusing and awkward to use. This proposal suggests that we could get rid of links entirely, and replace them with Capability Controllers (henceforth referred to as CapCons) which could make Capabilities easier to understand, and easier to work with.
 
 The following is a quick refresher of the current state of the Capabilities API (from the [flow doc site](https://docs.onflow.org/cadence/language/capability-based-access-control)).
 
