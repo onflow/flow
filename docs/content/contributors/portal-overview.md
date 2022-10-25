@@ -8,23 +8,23 @@ The aim of the Developer Portal is to allow repo owners to publish their content
 
 ### Information Design
 
-The developer portal is divided into 4 top-level sections, containing a specific category of documentation within. All content should be published under one of these sections.
+The developer portal is divided into 4 top-level sections, containing a specific category of documentation within. All content should be published under one of these sections:
 
 #### Learn
 
-This section contain tutorials, guides and conceptual documentation. It does not contain  learning content related to *specific* tools.
+- This section contain tutorials, guides and conceptual documentation. It does not contain  learning content related to *specific* tools.
 
 #### Tools
 
-All software, SDKs and other *tools* used to build on Flow are published in this section eg. FCL, `flow-cli` … et. This section includes learning content related to these *specific* tools.
+- All software, SDKs and other *tools* used to build on Flow are published in this section eg. FCL, `flow-cli` … et. This section includes learning content related to these *specific* tools.
 
 #### Community
 
-This section is for documents related to community activity on Flow: FLIPS, events, Flow Ecosystem fund, forum content, community built apps … etc.
+- This section is for documents related to community activity on Flow: FLIPS, events, Flow Ecosystem fund, forum content, community built apps … etc.
 
 #### Cadence
 
-This section is for content related *specifically* to Cadence.
+- This section is for content related *specifically* to Cadence.
 
 Each of these sections has an individual landing page that [can be customized](#flow-docs-json).
 

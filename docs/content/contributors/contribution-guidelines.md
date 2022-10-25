@@ -230,7 +230,6 @@ The PR will serve as a place to exchange messages and update progress while the 
 
 ## General Troubleshooting
 
-- TODO
 
 ---
 
