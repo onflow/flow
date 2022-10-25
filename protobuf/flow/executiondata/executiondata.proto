@@ -7,7 +7,8 @@ option java_package = "org.onflow.protobuf.access";
 
 import "flow/entities/block_execution_data.proto";
 
-// ExecutionDataAPI is the API for providing Execution state sync data, currently from Access Nodes
+// ExecutionDataAPI is the API for providing Execution state sync data,
+// currently from Access Nodes
 service ExecutionDataAPI {
   // ExecutionState
   // GetExecutionDataByBlockID returns the execution_data object. Currently for
