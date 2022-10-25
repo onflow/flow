@@ -10,19 +10,7 @@ Before you can contribute to the Developer Portal, you’ll need a GitHub Accoun
 
 If you don’t have a GitHub account [go here](https://www.notion.so/Contributing-Content-to-the-Developer-Portal-35900becfeaa474598f5db2b3dd1eb91) and sign-up. Once you have a GitHub account you can proceed with the following steps.
 
-### Types of Contributors, Is This You?
-
-How can I contribute if I am a:
-
-- **Developer from the Open Source Community**
-    - [I want to list a new developer-tool or SDK on the Developer Portal](https://www.notion.so/Contributing-Content-to-the-Developer-Portal-35900becfeaa474598f5db2b3dd1eb91)
-- **A developer member of Dapper Labs or Flow**
-    - [I want to make updates to my project’s documentation](https://www.notion.so/Contributing-Content-to-the-Developer-Portal-35900becfeaa474598f5db2b3dd1eb91)
-    - [I want to integrate a new repository into the Developer Portal](https://www.notion.so/Contributing-Content-to-the-Developer-Portal-35900becfeaa474598f5db2b3dd1eb91)
-    - [I want to submit improvements to a page on the Developer Portal](https://www.notion.so/Contributing-Content-to-the-Developer-Portal-35900becfeaa474598f5db2b3dd1eb91)
-- **A non-developer member of the Flow or Dapper Labs teams**
-    - [I want to submit improvements to the documentation on the Developer Portal](https://www.notion.so/Contributing-Content-to-the-Developer-Portal-35900becfeaa474598f5db2b3dd1eb91)
-    - [I want to contribute new content to the Developer Portal](https://www.notion.so/Contributing-Content-to-the-Developer-Portal-35900becfeaa474598f5db2b3dd1eb91)
+---
 
 ### Basic Contribution Workflow
 
@@ -52,7 +40,7 @@ If you require help integrating your documentation updates, you can make a reque
 
 Contributing to the Developer Portal is as easy as making a PR to a GitHub repository. To update existing content, look for the “Edit on Github” link in the right-hand side of each page, in the header. Here is what the header looks like. 
 
-![editheader.png](Contributing%20Content%20to%20the%20Developer%20Portal%2035900becfeaa474598f5db2b3dd1eb91/editheader.png)
+![editheader.png]()
 
 Clicking the “Edit in GitHub” link will take you directly to the source code of the document you are viewing.
 
