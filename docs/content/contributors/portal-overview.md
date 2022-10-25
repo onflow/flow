@@ -10,21 +10,21 @@ The aim of the Developer Portal is to allow repo owners to publish their content
 
 The developer portal is divided into 4 top-level sections, containing a specific category of documentation within. All content should be published under one of these sections:
 
-#### Learn
+-  **Learn**
 
-- This section contain tutorials, guides and conceptual documentation. It does not contain  learning content related to *specific* tools.
+     - This section contain tutorials, guides and conceptual documentation. It does not contain  learning content related to *specific* tools.
 
-#### Tools
+-  **Tools**
 
-- All software, SDKs and other *tools* used to build on Flow are published in this section eg. FCL, `flow-cli` … et. This section includes learning content related to these *specific* tools.
+     - All software, SDKs and other *tools* used to build on Flow are published in this section eg. FCL, `flow-cli` … et. This section includes learning content related to these *specific* tools.
 
-#### Community
+-  **Community**
 
-- This section is for documents related to community activity on Flow: FLIPS, events, Flow Ecosystem fund, forum content, community built apps … etc.
+     - This section is for documents related to community activity on Flow: FLIPS, events, Flow Ecosystem fund, forum content, community built apps … etc.
 
-#### Cadence
+-  **Cadence**
 
-- This section is for content related *specifically* to Cadence.
+     - This section is for content related *specifically* to Cadence.
 
 Each of these sections has an individual landing page that [can be customized](#flow-docs-json).
 
@@ -34,7 +34,7 @@ The Flow Developer Portal downloads and displays markdown documents and other as
 
 Repositories outside `onflow` GitHub organization are not supported at this time.
 
-**Q**: How can I integrate my repository into the Developer Portal?
+**Q**: How can I integrate my repository into the Developer Portal? <br/>
 **A**: See the [contribution guidelines](./contribution-guidelines.md).
 
 ### Content Integration Options
@@ -134,8 +134,6 @@ Table of contents (right-hand side menus) are generated automatically, using ava
 
 Linking to images or other media in folders *within* the `docs` folder of your repo is possible using relative URLs. If your media is viewable in GitHub, then it should display on the Developer Portal.
 
-Here is an example: [TODO](./TODO)
-
 Linking to images or other media stored in the same repository, but *outside* the `docs` folder, requires using a fully qualified URL, eg:
 
 `![image](https://github.com/onflow/cadence/images/image.png)`
@@ -154,9 +152,9 @@ Writing links in your documents is easy if you follow this rule-of-thumb: If it 
 
 Many landing pages have callouts and special sections, eg: 
 
-![TODO](./TODO)
+![tools-callout](./images/tools-callout.png)
 
-FOr more information about which special sections you can modify, and the process for adding and updating callouts is described in the [Contribution Guidelines](./contribution-guidelines.md)
+For more information about which special sections you can modify, and the process for adding and updating callouts is described in the [Contribution Guidelines](./contribution-guidelines.md)
 
 ---
 
@@ -174,7 +172,7 @@ Currently, the Developer Portal validates content using the following conditions
 
 Here is an example of check run output when validation fails.
 
-![check-run-screenshot](./TODO)
+![check-run-screenshot](./images/check-run-screenshot.png)
 
 ### Dead Links Checks
 
@@ -190,7 +188,7 @@ Links to content relative to the current document within the containing repo are
 
 Here is an example of link validation hinting:
 
-![link-validation-hinting](./TODO)
+![link-validation-hinting](./images/link-check-screenshot.png)
 
 👆 Here, the output “Did you mean `images`?” is caused by an invalid *relative* link to a folder that does not exist (`api`) as a sibling of the folder of the document where this link is found.
 
@@ -202,7 +200,7 @@ The validation will always be correct, but the hints might not always be helpful
 
 *Note: some links may not resolve within a given timeout and are hinted as warnings, eg:
 
-![link-validation-hint-example](./TODO)
+![link-validation-hint-example](./images/link-hint-screenshot.png)
 
 These links should be considered *invalid* and should be manually verified by content authors.
 
@@ -222,13 +220,13 @@ Previews are generated against the **Staging instance of the Developer Portal**,
 
 Here is an example of preview output for changed documents in a PR
 
-![portal-content-check-screenshot](./TODO)
+![portal-content-check-screenshot](./images/check-run-screenshot.png)
 
 When previewing content, you should see a banner indicating you’re viewing an unpublished version of your page.
 
 Here is an example of a preview page, with banner indicating this page is unpublished:
 
-![preview-banner-screenshot](./TODO)
+![preview-banner-screenshot](./images/preview-banner-screenshot.png)
 
 When you merge updates to documents in your PR, previews will update immediately.
 
