@@ -26,7 +26,7 @@ This section is for documents related to community activity on Flow: FLIPS, even
 
 This section is for content related *specifically* to Cadence.
 
-Each of these sections has an individual landing page that [can be customized](./TODO).
+Each of these sections has an individual landing page that [can be customized](#flow-docs-json).
 
 ### Content Aggregation
 
@@ -37,7 +37,7 @@ Repositories outside `onflow` GitHub organization are not supported at this time
 **Q**: How can I integrate my repository into the Developer Portal?
 **A**: See the [contribution guidelines](./contribution-guidelines.md).
 
-### Content Integration Configuration
+### Content Integration Options
 
 By default, the Developer Portal will display documents from the `docs` folder in the `main` branch your repository.  Once content is merged into the `main` branch of your repository it will be available immediately on [https://developers.flow.com](https://developers.flow.com)
 
@@ -57,7 +57,7 @@ Repository owners use `flow-docs.json` to control aspects of their documentation
   - Left hand navigation is configured under the `sidebars` property.
   - Individual sidebars can be created for any valid route (path to a document) in your documentation.
 - **Optional landing-page content:** `headings`
-  - Landing page layout similar to [https://developers.flow.com/cadence](https://developers.flow.com/cadence) can be enables by adding valid objects under the `headings` property. Similar to left-hand navigation, a custom landing page header can be enabled for any valid route (path to a document) in your documentation.
+  - Landing page layout similar to [https://developers.flow.com/cadence](https://developers.flow.com/cadence) can be enabled by adding valid objects under the `headings` property. Similar to left-hand navigation, a custom landing page header can be enabled for any valid route (path to a document) in your documentation.
 - **Content redirects:** `redirects`
   - In specific cases, you may want to customize the URL for s given document. This can be done using a valid entry under the `redirects` property. Users must provide the desired URL, as well as the document name to be made available at that URL.
 
@@ -74,15 +74,21 @@ Or, `developers.flow.com/{subsection}/{repo}/{subfolder name}/{document name}`
 
 Notice the `docs` folder is not included in the final URL.
 
+Make sure your filenames are URL friendly. This will soon be enforced automaticall by the content-checking backend. This means your filename should: 
+
+- Have no uppercase letters
+- Have no special characters
+- use “kebab-case” when spaces are required, eg: `smart-contracts.md`
+
 There is no limit to the depth of folders within `docs` although it’s recommended to try to keep your information hierarchy as flat as possible, for simplicity.
 
 ### Renaming Files & Redirects
 
-Since filenames determine URLs, if you **rename** a file, a redirect from the old (URL) file name to the new (URL) file name *must* be provided.
+Since filenames determine URLs, if you **rename** a file, a redirect from the old (URL) filename to the new (URL) filename *must* be provided.
 
 Don’t worry. When you push content to your repository, the Developer Portal will automatically warn you about this.
 
-More about this in the [Document Validation](./TODO) section.
+More about this in the [Document Validation](./contribution-guidelines.md) section.
 
 ### Customizing URLs
 
@@ -150,6 +156,8 @@ Many landing pages have callouts and special sections, eg:
 
 ![TODO](./TODO)
 
+FOr more information about which special sections you can modify, and the process for adding and updating callouts is described in the [Contribution Guidelines](./contribution-guidelines.md)
+
 ---
 
 ## Content Validation
@@ -166,7 +174,7 @@ Currently, the Developer Portal validates content using the following conditions
 
 Here is an example of check run output when validation fails.
 
-![Screen Shot 2022-10-17 at 11.15.12 AM.png](Developer%20Portal%20Documentation%202c3d12f60bd6482bab9b73fd34f2dd19/Screen_Shot_2022-10-17_at_11.15.12_AM.png)
+![check-run-screenshot](./TODO)
 
 ### Dead Links Checks
 
@@ -174,7 +182,7 @@ The Developer Portal automatically scans the links in *all your documents* when 
 
 #### External Links
 
-Links to external websites are checked to see if they return a non-error code.
+Links to external websites are fetched to see if they return a non-error HTTP status code.
 
 #### Internal Links
 
@@ -182,7 +190,7 @@ Links to content relative to the current document within the containing repo are
 
 Here is an example of link validation hinting:
 
-![Screen Shot 2022-10-17 at 11.16.35 AM.png](./TODO)
+![link-validation-hinting](./TODO)
 
 👆 Here, the output “Did you mean `images`?” is caused by an invalid *relative* link to a folder that does not exist (`api`) as a sibling of the folder of the document where this link is found.
 
@@ -194,7 +202,7 @@ The validation will always be correct, but the hints might not always be helpful
 
 *Note: some links may not resolve within a given timeout and are hinted as warnings, eg:
 
-![Screen Shot 2022-10-17 at 11.25.36 AM.png](./TODO)
+![link-validation-hint-example](./TODO)
 
 These links should be considered *invalid* and should be manually verified by content authors.
 
@@ -214,13 +222,13 @@ Previews are generated against the **Staging instance of the Developer Portal**,
 
 Here is an example of preview output for changed documents in a PR
 
-![Screen Shot 2022-10-17 at 11.38.50 AM.png](./TODO)
+![portal-content-check-screenshot](./TODO)
 
 When previewing content, you should see a banner indicating you’re viewing an unpublished version of your page.
 
 Here is an example of a preview page, with banner indicating this page is unpublished:
 
-![Screen Shot 2022-10-17 at 11.42.11 AM.png](./TODO)
+![preview-banner-screenshot](./TODO)
 
 When you merge updates to documents in your PR, previews will update immediately.
 
@@ -237,20 +245,6 @@ Content versioning is in progress here:
 ---
 
 ## Troubleshooting
-
-TODO
-
-My Content didn’t deploy
-
--
-
-I don’t see a preview
-
--
-
-I can’t merge my PR because of checks
-
--
 
 ---
 
