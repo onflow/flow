@@ -87,7 +87,7 @@ To make your content easy for users to find, you’ll place your Callout under o
 
 Here is an example of a Callout section featuring available SDKs, on the `/tools` landing page:
 
-![callout specific.png](Contributing%20Content%20to%20the%20Developer%20Portal%2035900becfeaa474598f5db2b3dd1eb91/callout_specific.png)
+![callout specific.png](./images/tools-callout.png)
 
 Data for these sections is currently part of the Developer Portal source code and can be found here: [https://github.com/onflow/developer-portal/blob/main/app/data/tools/index.ts](https://github.com/onflow/developer-portal/blob/main/app/data/tools/index.ts)
 To add a link to your too you’ll need to create an object in this file that conforms to the object type defined for listing tools.
