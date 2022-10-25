@@ -8,7 +8,7 @@ In most cases you should be able to iterate and deploy changes to your documenta
 
 Before you can contribute to the Developer Portal, you’ll need a GitHub Account, and you’ll need to be logged into GitHub.
 
-If you don’t have a GitHub account [go here](https://www.notion.so/Contributing-Content-to-the-Developer-Portal-35900becfeaa474598f5db2b3dd1eb91) and sign-up. Once you have a GitHub account you can proceed with the following steps.
+If you don’t have a GitHub account [go here](https://github.com) and sign-up. Once you have a GitHub account you can proceed with the following steps.
 
 ---
 
@@ -40,7 +40,7 @@ If you require help integrating your documentation updates, you can make a reque
 
 Contributing to the Developer Portal is as easy as making a PR to a GitHub repository. To update existing content, look for the “Edit on Github” link in the right-hand side of each page, in the header. Here is what the header looks like. 
 
-![editheader.png]()
+![editheader.png](./images/edit-header.png)
 
 Clicking the “Edit in GitHub” link will take you directly to the source code of the document you are viewing.
 
@@ -73,7 +73,7 @@ Documentation for SDKs and other tools belongs under the “tools” section in 
 
 ### **Adding Your SDK Documentation**
 
-If you are familiar with Github, please follow the rest of this guide, starting with the [Basic Contribution Workflow](https://www.notion.so/Contributing-Content-to-the-Developer-Portal-35900becfeaa474598f5db2b3dd1eb91)
+If you are familiar with Github, please follow the rest of this guide, starting with the [Basic Contribution Workflow](#basic-contribution-workflow)
 
 ### **Adding Callouts on Feature (Landing) Pages**
 
@@ -81,9 +81,9 @@ The Developer Portal has special sections used to “call out” specific tools 
 
 To make your content easy for users to find, you’ll place your Callout under one of the following categories, seen here in the top-level page navigation: 
 
-![callouts.png](Contributing%20Content%20to%20the%20Developer%20Portal%2035900becfeaa474598f5db2b3dd1eb91/callouts.png)
+![callouts.png](./images/header-callouts.png)
 
- (See [this reference](https://www.notion.so/Onsite-22-Retro-03b402e1c6cb40d6b493968bd1019130) for a list of the specific landing pages and sections available on the Developer Portal) 
+ (See [this reference](./contribution-guidelines.md#basic-contribution-workflow) for a list of the specific landing pages and sections available on the Developer Portal) 
 
 Here is an example of a Callout section featuring available SDKs, on the `/tools` landing page:
 
@@ -120,19 +120,19 @@ New content can be added in the for of a link to an external or internal page th
 
 **Linking to existing Content**
 
-- To link to existing content, follow the steps under [Linking To New Content](https://www.notion.so/Contributing-Content-to-the-Developer-Portal-35900becfeaa474598f5db2b3dd1eb91)
+- To link to existing content, follow the steps under [Linking To New Content](#linking-to-content)
 
 **Adding New Content**
 
 - New learning content, not hosted in your own repository can be submitted as markdown files here: [https://github.com/onflow/flow/tree/master/docs/content](https://github.com/onflow/flow/tree/master/docs/content). Create a subfolder when necessary. The name of your folder / files will determine the URLs of your content.
 
-- You’ll follow the basic contribution workflow for submitting your content. Once your documents have been integrated, you’ll link to existing content by following the steps under [Linking To New Content](https://www.notion.so/Contributing-Content-to-the-Developer-Portal-35900becfeaa474598f5db2b3dd1eb91)
+- You’ll follow the basic contribution workflow for submitting your content. Once your documents have been integrated, you’ll link to existing content by following the steps under [Linking To New Content](#linking-to-content)
 
 ### Linking to Content
 
 To submit a link to learning content to be like the content below, you’ll need to create a new object here: [https://github.com/onflow/developer-portal/blob/main/app/data/articles/index.ts](https://github.com/onflow/developer-portal/blob/main/app/data/articles/index.ts)
 
-![Screen Shot 2022-10-21 at 11.06.34 AM.png](Contributing%20Content%20to%20the%20Developer%20Portal%2035900becfeaa474598f5db2b3dd1eb91/Screen_Shot_2022-10-21_at_11.06.34_AM.png)
+![learning-content](./images/learn-links.png)
 
 Once a link to your content has been added, it can be added to the page by importing it here and adding it to the appropriate collection: 
 
@@ -151,13 +151,13 @@ New content can be added in the for of a link to an external or internal page th
 **Adding New Content**
 
 - New learning content, not hosted in your own repository can be submitted as markdown files to this folder in this repository: [https://github.com/onflow/flow/tree/master/docs/content](https://github.com/onflow/flow/tree/master/docs/content)
-- You’ll follow the basic contribution workflow for submitting your content. Once your documents have been integrated, you’ll link to existing content by following the steps under [Linking To New Content](https://www.notion.so/Contributing-Content-to-the-Developer-Portal-35900becfeaa474598f5db2b3dd1eb91)
+- You’ll follow the basic contribution workflow for submitting your content. Once your documents have been integrated, you’ll link to existing content by following the steps under [Linking To New Content](#linking-to-content)
 
 ### Linking to Content
 
 **Featured Initiatives on the /community Home Page:**
 
-![Screen Shot 2022-10-24 at 11.23.17 AM.png](Contributing%20Content%20to%20the%20Developer%20Portal%2035900becfeaa474598f5db2b3dd1eb91/Screen_Shot_2022-10-24_at_11.23.17_AM.png)
+![community-initiatives](./images/community-iniatives.png)
 
 To submit your content as a “Featured Initiative” on the community page, you can submit an update PR to the following file: [https://github.com/onflow/developer-portal/blob/main/app/data/pages/community.ts#L49](https://github.com/onflow/developer-portal/blob/main/app/data/pages/community.ts#L49). 
 
@@ -173,7 +173,7 @@ Currently there are 2 link feature lists available on the site.
 
 This list appears on  `/getting-started`
 
-![Screen Shot 2022-10-21 at 12.16.43 PM.png](Contributing%20Content%20to%20the%20Developer%20Portal%2035900becfeaa474598f5db2b3dd1eb91/Screen_Shot_2022-10-21_at_12.16.43_PM.png)
+![try-learn-build](./images/try-learn-build.png)
 
 To submit your content as a link in this list, you can submit an update PR to the following file: 
 
@@ -181,18 +181,19 @@ To submit your content as a link in this list, you can submit an update PR to th
 
 ## Updating the Main Navigation Menu
 
-![Screen Shot 2022-10-25 at 2.21.24 PM.png](Contributing%20Content%20to%20the%20Developer%20Portal%2035900becfeaa474598f5db2b3dd1eb91/Screen_Shot_2022-10-25_at_2.21.24_PM.png)
+![main-navigation](./images/main-nav.png)
 
 Adding links to your documentation in the main menu, can be done by submitting a PR to update one of the following files: 
 
-”****************************Developers” Top Nav Menu****************************
+**"Developers" Top Nav Menu**
+
 [https://github.com/onflow/developer-portal/blob/main/app/data/nav/documentationTabData.tsx](https://github.com/onflow/developer-portal/blob/main/app/data/nav/documentationTabData.tsx)
 
-**“Community” Top Nav Menu**
+**"Community" Top Nav Menu**
 
 [https://github.com/onflow/developer-portal/blob/main/app/data/nav/communityTabData.tsx](https://github.com/onflow/developer-portal/blob/main/app/data/nav/communityTabData.tsx)
 
-Us existing contents of these files to understand how to integrate a link to your documentation into the main navigation of the Developer Portal.
+Use existing contents of these files to understand how to integrate a link to your documentation into the main navigation of the Developer Portal.
 
 ---
 
@@ -210,7 +211,7 @@ To start your integration, create a `/docs` folder in the root of your repositor
 
 The first step to integrating your documentation into the Developer Portal is adding a `flow-docs.json` configuration file in the folder in your repo containing your documentation. This is `/docs` by default. 
 
- [Read more here](https://www.notion.so/c0875eef334e4818b112566996d226f5) about available configuration options.
+ [Read more here](./portal-overview.md#flow-docsjson) about available configuration options.
 
 ### Create a PR With Your Integration Proposal
 
@@ -220,7 +221,7 @@ Currently, repositories must be approved and configured manually by the Develope
 
 **Include the following information:** 
 
-- Which section to locate your docs; [Read about the information hierarchy here.](https://www.notion.so/Contributing-Content-to-the-Developer-Portal-35900becfeaa474598f5db2b3dd1eb91)
+- Which section to locate your docs; read about the information hierarchy [here](./portal-overview.md#information-design).
 - A brief section outlining your plans for updating and maintaining your documentation.
 - Anything else you think might be relavent to the integration, including questions.
 
@@ -229,11 +230,6 @@ The PR will serve as a place to exchange messages and update progress while the 
 ---
 
 ## General Troubleshooting
-
-
----
-
-## FAQ
 
 - I want to add a link to my content but there are no instructions.
     - Not all sections of the site are customizable by users. Adding links to content is accessible to all, but updating feature sections, main navigation and page headers is the purview of the Developer Portal product team and is being restricted, for the time being.

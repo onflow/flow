@@ -16,7 +16,7 @@ The developer portal is divided into 4 top-level sections, containing a specific
 
 -  **Tools**
 
-     - All software, SDKs and other *tools* used to build on Flow are published in this section eg. FCL, `flow-cli` … et. This section includes learning content related to these *specific* tools.
+     - All software, SDKs and other *tools* used to build on Flow are published in this section eg. FCL, `flow-cli` … etc. This section includes learning content related to these *specific* tools.
 
 -  **Community**
 
@@ -26,7 +26,8 @@ The developer portal is divided into 4 top-level sections, containing a specific
 
      - This section is for content related *specifically* to Cadence.
 
-Each of these sections has an individual landing page that [can be customized](#flow-docs-json).
+Each of these sections has an individual landing page that [can be customized](#flow-docsjson
+).
 
 ### Content Aggregation
 
@@ -35,7 +36,7 @@ The Flow Developer Portal downloads and displays markdown documents and other as
 Repositories outside `onflow` GitHub organization are not supported at this time.
 
 **Q**: How can I integrate my repository into the Developer Portal? <br/>
-**A**: See the [contribution guidelines](./contribution-guidelines.md).
+**A**: See the [contribution guidelines](./contribution-guidelines.md#integrating-a-new-repository).
 
 ### Content Integration Options
 
@@ -88,7 +89,7 @@ Since filenames determine URLs, if you **rename** a file, a redirect from the ol
 
 Don’t worry. When you push content to your repository, the Developer Portal will automatically warn you about this.
 
-More about this in the [Document Validation](./contribution-guidelines.md) section.
+More about this in the [document validation](#content-validation) section.
 
 ### Customizing URLs
 
@@ -154,13 +155,14 @@ Many landing pages have callouts and special sections, eg:
 
 ![tools-callout](./images/tools-callout.png)
 
-For more information about which special sections you can modify, and the process for adding and updating callouts is described in the [Contribution Guidelines](./contribution-guidelines.md)
+For more information about which special sections you can modify, and the process for adding and updating callouts is described in the [Contribution Guidelines](./contribution-guidelines.md#adding-callouts-on-feature-landing-pages)
 
 ---
 
 ## Content Validation
 
-Content is validated each time a PR is submitted to your repository that touches any files in the `docs` folder. This is configured when your repository is integrated into the Developer Portal. Want to integrate your repo? [Go here](./contribution-guidelines.md)
+Content is validated each time a PR is submitted to your repository that touches any files in the `docs` folder. This is configured when your repository is integrated into the Developer Portal. Want to integrate your repo? [Go here](./contribution-guidelines.md#integrating-a-new-repository
+)
 
 Validation status is available in the **check run output** for your PR on GitHub.
 
@@ -242,13 +244,7 @@ Content versioning is in progress here:
 
 ---
 
-## Troubleshooting
-
----
-
-## FAQ & Gotchas
-
-### onflow/flow special-case repo
+## onflow/flow special-case repo
 
 [https://github.com/onflow/flow/tree/master/docs/content](https://github.com/onflow/flow/tree/master/docs/content)
 
@@ -258,4 +254,3 @@ However, there is a special-case repo: `onflow/flow` that contains legacy conten
 
 The content here is also located in a non-standard folder: `docs/content`
 
-HAPPY HACKING
