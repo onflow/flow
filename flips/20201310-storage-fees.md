@@ -1,6 +1,6 @@
 # Storage Fees
 
-| Status        | Proposed                                             |
+| Status        | Implemented                                             |
 :-------------- |:---------------------------------------------------- |
 | **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com)   |
 | **Sponsor**   | Janez Podhostnik (janez.podhostnik@dapperlabs.com)   |
