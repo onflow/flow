@@ -17,6 +17,9 @@ The first panel that displays will be your emulator settings.
 **Emulator Data Directory:**  This field is required if you wish to control the emulator from FlowControl.  Set this to the **directory** where you would like to store your persisted 
 emulator state (flowdb), and your initial emulator configuration (flow.json).  This should typically be outside your project folder.  The folder must exist.
 
+**Emulator endpoint:**  If you want to connect to an emulator running on a different computer, such as when testing on mobile devices or several clients all connecting
+to the same emulator instance, you can specify an emulator endpoint address here.
+
 **Run emulator in play mode?**  This determines if the emulator should automatically start when you enter play mode.
 
 **Start Emulator** button:  This will start the emulator in the background to allow you to interact with it in edit mode.
