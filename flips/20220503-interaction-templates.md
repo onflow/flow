@@ -1,6 +1,6 @@
-# Interaction Templates [DRAFT]
+# Interaction Templates
 
-| Status        | Draft                                                          |
+| Status        | Accepted                                                       |
 | :------------ | :------------------------------------------------------------- |
 | **FLIP #**    | [934](https://github.com/onflow/flow/pull/934)                 |
 | **Forum**     | https://forum.onflow.org/t/flip-934-interaction-templates/3080 |
