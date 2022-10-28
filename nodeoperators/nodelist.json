@@ -2376,14 +2376,6 @@
         "StakingPubKey": "8e23536c6a879ee2318982dca1c4da9c561679528a314536240a201d9a94fcc5e3905a2fa203579569b1bbc0e994f7e6169a2f8cfcf01d6774242171be56eb829fd9c59a269251708ee0c8f7189c08835b4f65ac51d6b57cd416a2713dbfb868"
     },
     {
-        "Role": "consensus",
-        "Address": "consensus.flow.forbole.com:3569",
-        "NodeID": "237a7a04ecf88b7c21001589ecc277190a6f7cd6e56a296a203552ade6db0927",
-        "Stake": 1000,
-        "NetworkPubKey": "8f00e679c95e0d2f11a29c25a92ae7486902d94a5f69c19b11a03bc721f0d7807f5e6b780d36576f8f9f740001b653419671c15e81fd967a7b66c56183d24603",
-        "StakingPubKey": "a85608e84baadcc9123dcbbd1291ef448dcae641e579c038f0b713f18b91f165240424a548e0fba556d5d35b69fce04717fa77eadb78646ec5238c466aa142adf43a7853b6c11f2d6a4704db0d13571de709eb80185b9ae3e044dd7c9e43e28d"
-    },
-    {
         "Role": "access",
         "Address": "access.flow.forbole.com:3569",
         "NodeID": "f173d44e5a038180fd01a51b6358d1c13249d7da57fe431ad679c2c19f05e2fc",
@@ -2696,22 +2688,6 @@
         "StakingPubKey": "87d827de3e1b3541c394dcbbb6d76d98e3a7710d6740d28122c468b83f41002625e7a5788cabfcd6ce76b188f7f60de614364d4ab2932dfe0ed6f2d602bd551606ea31045ca2ccde9658a175ccd73da859ab17e56ad81ca4f6ef982c5968a7cb"
     },
     {
-        "Role": "consensus",
-        "Address": "p2p.ae9d5889-efcc-4f90-953e-a5c61585b20b.flow.herd.run:3569",
-        "NodeID": "1780288437c9aed5056836bfffcfe19334dd6e229607fccfb3fe9b1d4d24cdca",
-        "Stake": 1000,
-        "NetworkPubKey": "8b3c2cbd107eca3804c64fdfb79cef73af5a8a2e6768ba31a913327328ad08d35f8351ae918ebf4145599e6cd34979a5e5451e2520782a5b3e1c365181df9e0d",
-        "StakingPubKey": "81f1f4bd7c8fe50abe08b5dfd6a7cd0c1004ef24391473953d73b47e0cf909865f3816f70093c303ffcb4613846e3eba0149323287b361ac9cc806e4791d920521168a5951a54b6ab7e1778d73151109aa8d5c94dd97d9e83d95a6a756638496"
-    },
-    {
-        "Role": "collection",
-        "Address": "p2p.d2d9931e-d67c-4164-93e4-13d2d6441727.flow.herd.run:3569",
-        "NodeID": "da27c0fc2a4fe12c04bd70058252c5a26cfe41485bf6ea6aba1c724b7a07542d",
-        "Stake": 1000,
-        "NetworkPubKey": "6bcdcd81b0c4b759144010ef59c04539fdea6805c576b3356c5ded9981432509cca29adb43c3855f603bc01578cf48e6d2782cc9ed17fab95275a10c37f9032d",
-        "StakingPubKey": "8512dea374684d1bbbc0c457e22b18ceaf52cc1ccd68f7fe5d17463181f0b09def44e041a673513c95bf4d976d11e45e084ce28a69cfefeef0eaf0e2e4fbd5c9c98c0b39035544eba7a4e7d053bceb6d0c4f41f048d718a6012cabb728699c2b"
-    },
-    {
         "Role": "verification",
         "Address": "p2p.9aac28cc-4e59-4be8-9bab-5944c280f0c3.flow.herd.run:3569",
         "NodeID": "dc3054cae816874d7dbbe838a41ef97c8a01b44643bffc82afe3a8228eed29fd",
@@ -2841,7 +2817,7 @@
     },
     {
         "Role": "verification",
-        "Address": "152.32.169.88:3569",
+        "Address": "flow.hashquark.io:3569",
         "NodeID": "55069e7e8926867bee8094bd31786f8f6b65c8c3bde468ae2275f33dc1245dc1",
         "Stake": 1000,
         "NetworkPubKey": "94aabc1693c8f3a8383b898c93b72b5d3807a69742b45ab629ceea721da60a2c7248fcbe74ecd4de1f1c970bd7e30af0adfb5fd06a1fa8e6cfe1c3c17530b3de",

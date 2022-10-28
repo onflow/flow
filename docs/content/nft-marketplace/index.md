@@ -6,7 +6,7 @@ sidebar_title: Overview
 
 This guide provides the required information to the development teams looking to build NFT marketplaces on the Flow blockchain.
 
-Developers should read this guide in conjunction with the other materials for developers looking to build on the Flow blockchain, especially the [official developer onboarding guide](https://docs.onflow.org/dapp-development/).
+Developers should read this guide in conjunction with the other materials for developers looking to build on the Flow blockchain, especially the [official developer onboarding guide](/dapp-development).
 
 ## Custodial vs. non-Custodial model
 
@@ -27,13 +27,13 @@ Let users connect their wallets and ...
 - Display the list of NFTs belonging to the user so that they can browse through to decide which ones to list for sale
 - Display crypto balance of the user account
 
-> **Note**: Want to jump right in? Open the [handling accounts guide](/nft-marketplace/handling-accounts).
+> **Note**: Want to jump right in? Open the [handling accounts guide](./handling-accounts.md).
 
 ### Minting NFTs
 
 Allow users to upload images and other types of media to mint new NFTs. These NFTs, in turn, can be listed for sale by the users.
 
-> **Note**: Want to jump right in? Open the [minting NFTs guide](/nft-marketplace/minting-nfts).
+> **Note**: Want to jump right in? Open the [minting NFTs guide](./minting-nfts.md).
 
 ### Selling NFTs
 
@@ -46,4 +46,4 @@ Enabling sales on an NFT marketplace requires ...
 - Facilitating payment between buyers and sellers
 - Facilitating royalty payments to the creators/IP-holders
 
-> **Note**: Want to jump right in? Open the [selling NFTs guide](/nft-marketplace/selling-nfts).
+> **Note**: Want to jump right in? Open the [selling NFTs guide](./selling-nfts.md).

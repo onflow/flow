@@ -4,7 +4,7 @@ sidebar_title: Node Bootstrapping
 description: How to get started running on node on Flow
 ---
 
-This guide is for getting a new node staked and running on Flow. For sporking documentation for existing node operators, see [Spork Process](/node-operation/spork).
+This guide is for getting a new node staked and running on Flow. For sporking documentation for existing node operators, see [Spork Process](/nodes/node-operation/spork).
 
 ## Timing
 
@@ -41,10 +41,10 @@ tar -xvf boot-tools.tar
 
 ```shell:title=CheckSHA256
 sha256sum ./boot-tools/bootstrap
-d41920b7afa43cfd03398ee74a6b05fb010df315bd61f67c843573982fc4eb58  ./boot-tools/bootstrap
+7ecab6488ddde7ef248f129080702214da6aea379ba464cf3226c7457a25cf9b  ./boot-tools/bootstrap
 
 sha256sum ./boot-tools/transit
-300b2b2c1a6c425121fddd8b95359df81d84f8cf38e44243770740a0260da9ec  ./boot-tools/transit
+c519c919f652f97a42b82cc649802c4ad1daabc08be25061287d9dea22cb4446  ./boot-tools/transit
 ```
 
 ### Generate Your Node Keys
@@ -246,7 +246,7 @@ $ ./boot-tools/transit push-transit-key -b ./bootstrap -t mainnet-x-organization
 
 ## Step 3 - Start Your Flow Node
 
-Ensure you have configured your node using the [Node Setup guide](/node-operation/node-setup).
+Ensure you have configured your node using the [Node Setup guide](/nodes/node-operation/node-setup).
 
 ### Confirming authorization
 
@@ -282,7 +282,7 @@ This is the recommended way to start your node for the first time.
   --dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
   --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae
 ```
-4. Start your node (see [guide](/node-operation/node-setup/#start-the-node))
+4. Start your node (see [guide](/nodes/node-operation/node-setup/#start-the-node))
 
 <Callout type="info">
 Once the node has bootstrapped, these flags may be removed.
@@ -304,9 +304,9 @@ The snapshot must be within the `Epoch Setup Phase`.
 
 <Callout type="warning">
 
-Since Collection and Consensus Nodes must start up in the first ~30mins of the `Epoch Setup Phase` (see [Timing](/node-operation/node-bootstrap/#timing)),
+Since Collection and Consensus Nodes must start up in the first ~30mins of the `Epoch Setup Phase` (see [Timing](/nodes/node-operation/node-bootstrap/#timing)),
 the snapshot must be provisioned within this time window.
 
 </Callout>
 
-Once a valid root snapshot file is downloaded to the node's bootstrap folder, it can be started (see [guide](/node-operation/node-setup/#start-the-node))
+Once a valid root snapshot file is downloaded to the node's bootstrap folder, it can be started (see [guide](/nodes/node-operation/node-setup/#start-the-node))

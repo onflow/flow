@@ -56,7 +56,7 @@ Following are typical ways NFT marketplaces can enable fiat payments for P2P sal
 - Using crypto on-ramps like Moonpay: With this approach, the NFT marketplace facilitates NFT sales on-chain but leverages crypto on-ramps such as Moonpay/Wyre to help NFT buyers obtain crypto to make the purchase. The downside is that the crypto on-ramps charge hefty fees, and NFT sellers still need to find off-ramps for the proceeds of the crypto sale.
 - Using a payment gateway to maintain user fund balances: This is the approach that NBA Topshot/Dapper wallet follows. The marketplace uses a payment gateway like Circle where users use fiat payment methods to maintain fund balances. The marketplace also maintains a custodial wallet for each user. It makes the on-chain NFT purchase on behalf of users if sufficient fund balance is maintained with the payment gateway. Fund balances with the payment gateway are updated based on sale/purchase activity on the blockchain. The downside of this approach is that it requires the marketplace to maintain a custodial wallet service. Additionally, the marketplace must incorporate multiple operational checks and balances to comply with the payment/AML regulations and protect against chargeback/fraud risks.
 
-See this [section](dapp-development/in-dapp-payments/) in the developer onboarding guide as well.
+See this [section](../dapp-development/in-dapp-payments/) in the developer onboarding guide as well.
 
 ## Royalty payments
 
