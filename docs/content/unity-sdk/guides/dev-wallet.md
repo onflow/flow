@@ -15,7 +15,7 @@ The initial v1.0.0 release of the Flow SDK for Unity does not provide a producti
 
 A wallet is a piece of software or hardware that stores the private key associated with a Flow account. The term *custodian* is used to refer to the party that stores the private key. Hardware Wallets (eg Ledger), typically USB devices, allow users to be their own custodian, whereas hosted software wallets (eg Dapper Wallet) act as the custodian on behalf of the user. 
 
-For more information about Wallets and Flow accounts, see <https://developers.flow.com/flow/dapp-development/user-accounts-and-wallets>. 
+For more information about Wallets and Flow accounts, see [https://developers.flow.com/flow/dapp-development/user-accounts-and-wallets](https://developers.flow.com/flow/dapp-development/user-accounts-and-wallets). 
 
 ## What is a Wallet Provider? 
 
@@ -25,7 +25,7 @@ As of v1.0.0, the Flow SDK for Unity only contains a single wallet provider - De
 
 ## How to use Dev Wallet
 
-Dev Wallet uses the accounts listed in the Accounts tab of the Flow Control Window. You can "authenticate" as one of these accounts, then sign transactions with that account. For more information on setting up these accounts, see <https://developers.flow.com/tools/unity-sdk/guides/flow-control#flowcontrol-accounts>. 
+Dev Wallet uses the accounts listed in the Accounts tab of the Flow Control Window. You can "authenticate" as one of these accounts, then sign transactions with that account. For more information on setting up these accounts, see [https://developers.flow.com/tools/unity-sdk/guides/flow-control#flowcontrol-accounts](https://developers.flow.com/tools/unity-sdk/guides/flow-control#flowcontrol-accounts). 
 
 ### Registering
 
@@ -97,7 +97,7 @@ public Task<byte[]> SignTransactionPayload(FlowTransaction txn);
 public Task<byte[]> SignTransactionEnvelope(FlowTransaction txn);
 ```
 
-In Flow, there are two parts of a transaction that can be signed - the Payload and the Authorization Envelope. The envelope must always be signed, and is the last thing to be signed by the Payer of the transaction fees. The Payload is only signed by the Proposer and\or the Authorizers IF they are not also the Payer (i.e. nobody signs the transaction twice). For more information on transaction signing, see <https://developers.flow.com/learn/concepts/transaction-signing>. 
+In Flow, there are two parts of a transaction that can be signed - the Payload and the Authorization Envelope. The envelope must always be signed, and is the last thing to be signed by the Payer of the transaction fees. The Payload is only signed by the Proposer and\or the Authorizers IF they are not also the Payer (i.e. nobody signs the transaction twice). For more information on transaction signing, see [https://developers.flow.com/learn/concepts/transaction-signing](https://developers.flow.com/learn/concepts/transaction-signing). 
 
 The following is an example of how to call `SignTransactionPayload`, but as mentioned, this is automatically done by the SDK's `Transactions.Submit` function. It's an asynchronous so is therefore `await`ed, and returns the signature as a byte array. 
 
