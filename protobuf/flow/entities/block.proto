@@ -12,6 +12,13 @@ import "flow/entities/block_seal.proto";
 import "flow/entities/execution_result.proto";
 import "flow/entities/block_header.proto";
 
+enum BlockStatus {
+  BLOCK_UNKNOWN = 0;
+  BLOCK_FINALIZED = 1;
+  BLOCK_EXECUTED = 2;
+  BLOCK_SEALED = 3;
+}
+
 message Block {
   bytes id = 1;
   bytes parent_id = 2;

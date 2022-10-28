@@ -172,7 +172,7 @@ message GetBlockByHeightRequest {
 
 message BlockResponse {
   entities.Block block = 1;
-  uint32 block_status = 2;
+  entities.BlockStatus block_status = 2;
 }
 
 // Collections
