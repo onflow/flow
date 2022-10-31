@@ -15,10 +15,11 @@ The community hosts access node endpoints which are free for everyone to use in 
 
 If you would like to run your own access node nodes please use the application [here](https://flow.com/node-validators).
 
-Alternately, you can also run an [Observer node](https://developers.flow.com/nodes/node-operation/observer-node) which also provides this gRPC Access API
+Alternately, you can also run an [Observer node](../node-operation/observer-node.md) which also provides this gRPC Access API
 
 #### Current Mainnet
 `access.mainnet.nodes.onflow.org:9000`
+
 ##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](/nodes/node-operation/spork/#mainnet)
 
 #### Testnet
@@ -31,7 +32,7 @@ Alternately, you can also run an [Observer node](https://developers.flow.com/nod
 
 #### Rate limits for Dapper Labs access nodes
 
-Access nodes operated by Dapper Labs are [rate limited](/access-api-rate-limits).
+Access nodes operated by Dapper Labs are [rate limited](./access-api-rate-limits.md).
 
 ---
 
@@ -511,7 +512,7 @@ message AccountResponse {
 
 `ExecuteScriptAtLatestBlock` executes a read-only Cadence script against the latest sealed execution state.
 
-This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec/).
+This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://developers.flow.com/cadence/json-cadence-spec).
 
 ```protobuf
 rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse)
@@ -550,7 +551,7 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockID` executes a ready-only Cadence script against the execution state at the block with the given ID.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec/).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://developers.flow.com/cadence/json-cadence-spec).
 
 ```protobuf
 rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
@@ -583,7 +584,7 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockHeight` executes a ready-only Cadence script against the execution state at the given block height.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec/).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://developers.flow.com/cadence/json-cadence-spec).
 
 ```protobuf
 rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
@@ -956,17 +957,17 @@ message TransactionSignature {
 | authorizers                   | Addresses of the transaction authorizers                                                             |
 | signatures                    | [Signatures](#transaction-signatures) from all signer accounts                                       |
 
-The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](/concepts/transaction-signing).
+The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](../concepts/transaction-signing.md).
 
 ### Proposal Key
 
-The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](/concepts/accounts-and-keys#sequence-numbers).
+The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](../concepts/accounts-and-keys.md#sequence-numbers).
 
 | Field           | Description                                                                          |
 | --------------- | ------------------------------------------------------------------------------------ |
 | address         | Address of proposer account                                                          |
 | key_id          | ID of proposal key on the proposal account                                           |
-| sequence_number | [Sequence number](/concepts/accounts-and-keys#sequence-numbers) for the proposal key |
+| sequence_number | [Sequence number](../concepts/accounts-and-keys.md#sequence-numbers) for the proposal key |
 
 ### Transaction Signature
 
@@ -1022,7 +1023,7 @@ message Account {
 
 The `code` and `contracts` fields contain the raw Cadence source code, encoded as UTF-8 bytes.
 
-More information on accounts can be found [here](/concepts/accounts-and-keys/).
+More information on accounts can be found [here](../concepts/accounts-and-keys).
 
 ### Account Key
 
@@ -1044,13 +1045,13 @@ message AccountKey {
 | --------------- | --------------------------------------------------------------------------------------- |
 | id              | Index of the key within the account, used as a unique identifier                        |
 | public_key      | Public key encoded as bytes                                                             |
-| sign_algo       | [Signature algorithm](/concepts/accounts-and-keys#supported-signature--hash-algorithms) |
-| hash_algo       | [Hash algorithm](/concepts/accounts-and-keys#supported-signature--hash-algorithms)      |
-| weight          | [Weight assigned to the key](/concepts/accounts-and-keys#weighted-keys)                 |
-| sequence_number | [Sequence number for the key](/concepts/accounts-and-keys#sequence-numbers)             |
+| sign_algo       | [Signature algorithm](../concepts/accounts-and-keys.md#supported-signature--hash-algorithms) |
+| hash_algo       | [Hash algorithm](../concepts/accounts-and-keys.md#supported-signature--hash-algorithms)      |
+| weight          | [Weight assigned to the key](../concepts/accounts-and-keys.md#weighted-keys)                 |
+| sequence_number | [Sequence number for the key](../concepts/accounts-and-keys.md#sequence-numbers)             |
 | revoked         | Flag indicating whether or not the key has been revoked                                 |
 
-More information on account keys, key weights and sequence numbers can be found [here](/concepts/accounts-and-keys/).
+More information on account keys, key weights and sequence numbers can be found [here](../concepts/accounts-and-keys.md).
 
 ## Event
 
