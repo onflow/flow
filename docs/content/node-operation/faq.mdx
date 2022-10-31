@@ -32,7 +32,7 @@ See [Staking & Epochs](https://developers.flow.com/nodes/staking/epoch-scripts-e
 ### Would it hurt the network to have a node that constantly spins up and down?
 
 All staked nodes except access nodes, have to be online at all time. A staked node, other than an access node, which is not online can cause severe degradation of network performance and will be subjected to slashing of rewards.
-A way to prevent this is to check your equipment meets Flow's [recommended requirements](/nodes/node-operation/node-setup/#hardware-requirements), periodically checking for updates and announcements in Discord but also using a node monitoring system for when your node does go offline.
+A way to prevent this is to check your equipment meets Flow's [recommended requirements](node-setup.mdx#hardware-requirements), periodically checking for updates and announcements in Discord but also using a node monitoring system for when your node does go offline.
 
 ### Does Flow has a regular schedule for Sporks?
 
@@ -54,4 +54,4 @@ More on this [here](node-migration.mdx)
 
 ### Where can I find how many nodes are currently running Flow?
 
-If you are running a node, then you most definitely have this information on your node in the file `<your bootstrap dir>/public-root-information/node-infos.pub.json`. If you are not running a node, you can find this information by using a Cadence script to query the [Staking Smart Contract](/core-contracts/staking-contract-reference) (or check [Flowscan](https://flowscan.org/staking/overview))
+If you are running a node, then you most definitely have this information on your node in the file `<your bootstrap dir>/public-root-information/node-infos.pub.json`. If you are not running a node, you can find this information by using a Cadence script to query the [Staking Smart Contract](../core-contracts/staking-contract-reference) (or check [Flowscan](https://flowscan.org/staking/overview))
