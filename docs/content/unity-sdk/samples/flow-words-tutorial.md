@@ -1,24 +1,5 @@
 # Tutorial - How to Build FlowWords
 
-## Table of Contents
-
--   [Outline](##outline)
--   [Requirements](##requirements)
--   [Step 1 – Configure the FlowSDK and local emulator](##step-1--configure-the-flowsdk-and-local-emulator)
--   [Step 2 – Deploy Contracts, create Accounts and run Transactions](##step-2--deploy-contracts-create-accounts-and-run-transactions)
-    -   [Set up Text Replacements](##set-up-text-replacements)
-        -   [Create User Accounts](##create-user-accounts)
-        -   [Deploy the Contract](##deploy-the-contract)
-        -   [Submit Transactions](##submit-transactions)
--   [Step 3 – Incorporate Flow Accounts, Transactions and Scripts into Code](##step-3--incorporate-flow-accounts-transactions-and-scripts-into-code)
-    -   [Login](##login)
-        -   [Logout](##logout)
-        -   [GetGameDataFromChain](##getgamedatafromchain)
-        -   [SubmitGuess](##submitguess)
-        -   [LoadHighScoresFromChain](##loadhighscoresfromchain)
--   [Step 5 – Play FlowWords!](##step-5--play-flowwords)
--   [Step 6 – Further Experimentation](##step-6--further-experimentation)
-
 ## Outline
 
 The FlowWords tutorial example project is the complete FlowWords game, with the FlowSDK and any SDK related code removed.
