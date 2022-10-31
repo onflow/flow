@@ -950,7 +950,7 @@ message TransactionSignature {
 | Field                         | Description                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------- |
 | script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes                                         |
-| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](/cadence/json-cadence-spec/) bytes |
+| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](https://developers.flow.com/cadence/json-cadence-spec) bytes |
 | reference_block_id            | Block ID used to determine transaction expiry                                                        |
 | [proposal_key](#proposal-key) | Account key used to propose the transaction                                                          |
 | payer                         | Address of the payer account                                                                         |
@@ -1073,7 +1073,7 @@ message Event {
 | transaction_id    | ID of the transaction the event was emitted from                           |
 | transaction_index | Zero-based index of the transaction within the block                       |
 | event_index       | Zero-based index of the event within the transaction                       |
-| payload           | Event fields encoded as [JSON-Cadence values](/cadence/json-cadence-spec/) |
+| payload           | Event fields encoded as [JSON-Cadence values](https://developers.flow.com/cadence/json-cadence-spec/) |
 
 ## Execution Result
 
