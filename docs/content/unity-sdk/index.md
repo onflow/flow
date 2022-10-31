@@ -59,4 +59,4 @@ To add any of the SDKs Samples, click the related import button, from the Flow S
 
 The Flow SDK is compatible with Unity version 2021.3 or higher.
 
-Supported Platforms: Windows, OSX, Linux, Android
+Supported Platforms: Windows, OSX, Android
