@@ -66,3 +66,5 @@ Please note, these limits only apply to the access nodes hosted by Dapper Labs. 
 _The rate limits are the same for the gRPC web interface_
 
 _The rate limits for ALL the REST API is **40** request per second per client IP_
+
+Please note: The rate limits are applied by each of the access node behind a load balancer and limits listed here are the aggregate total of all the access nodes. Actual limits may be somewhat less depending on how the requests are routed.
