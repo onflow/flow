@@ -15,8 +15,7 @@ import "flow/entities/block_header.proto";
 enum BlockStatus {
   BLOCK_UNKNOWN = 0;
   BLOCK_FINALIZED = 1;
-  BLOCK_EXECUTED = 2;
-  BLOCK_SEALED = 3;
+  BLOCK_SEALED = 2;
 }
 
 message Block {
