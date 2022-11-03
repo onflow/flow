@@ -5,7 +5,7 @@ description: Technical Overview of the Flow Epoch Protocol
 ---
 
 <Callout type="warning">
-  If you haven't read the Introduction, please read that
+  If you haven't read the staking introduction, please read that
   first. That document provides a non-technical overview of staking on Flow for
   all users and is a necessary prerequisite to this document.
 </Callout>
@@ -16,15 +16,21 @@ description: Technical Overview of the Flow Epoch Protocol
 
 # Epochs
 
-The epoch preparation protocol defines how information about the next epoch is determined and propagated to the protocol state.
+The epoch preparation protocol defines how information about the next epoch
+is determined and propagated to the protocol state.
 
 There are two primary actors in this protocol, the Epoch Smart Contracts, and the Consensus Committee:
 
 - [`Epoch Smart Contracts`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs) - the smart contracts that manage epochs:
-    - `FlowClusterQC` : Manages the quorum certificate generation for bootstrapping the hotstuff consensus algorithm for each collector cluster.
-    - `FlowDKG` : Manages the Distributed Key Generation that consensus nodes participate in to initialize the random beacon for each epoch.
-    - `FlowIDTableStaking` : Manages the source of truth for the identity table, and enforces rules related to staking FLOW, delegating, paying rewards, and allocating token movements between epochs.
-    - `FlowEpoch` : Ties all of the previously mentioned contracts together to manage the high level epoch lifecycle. `FlowEpoch` acts as a state machine that transitions between different epoch phases when specific conditions from the other contracts are met and triggers important operations in the other smart contracts when phase changes happen.
+    - `FlowClusterQC` : Manages the quorum certificate generation for bootstrapping
+      the hotstuff consensus algorithm for each collector cluster.
+    - `FlowDKG` : Manages the Distributed Key Generation that consensus nodes participate
+      in to initialize the random beacon for each epoch.
+    - `FlowIDTableStaking` : Manages the source of truth for the identity table,
+      and enforces rules related to staking FLOW, delegating, paying rewards, and allocating token movements between epochs.
+    - `FlowEpoch` : Ties all of the previously mentioned contracts together to manage
+      the high level epoch lifecycle. `FlowEpoch` acts as a state machine that transitions
+      between different epoch phases when specific conditions from the other contracts are met and triggers important operations in the other smart contracts when phase changes happen.
 - `Consensus Committee` - the committee of consensus nodes for the current epoch
 
 This document describes the communication protocol between these two actors and the impact on the protocol state.
@@ -211,7 +217,7 @@ in the next Epoch and submit a vote for the root block to a specialized smart co
 - The Random Beacon Committee for the next Epoch (currently all consensus nodes)
 will run the DKG through a specialized smart contract, `FlowDKG`.
 
-Epoch Smart Contract
+Epoch Smart Contract:
 
 - The `FlowEpoch` Smart Contract is responsible for ensuring that Epoch Setup transactions
 are only executed during the Epoch Setup phase and fail otherwise.
@@ -251,5 +257,5 @@ the primary includes an update to the protocol state in the block. Specifically,
 
 # Query Information from the Epoch Contract
 
-See the epoch scripts and events document for detailed documentation about
+See the [epoch scripts and events document](/staking/epoch-scripts-events) for detailed documentation about
 you can use scripts events to learn information about the state of the epoch contracts.

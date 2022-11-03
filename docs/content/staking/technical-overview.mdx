@@ -40,8 +40,8 @@ directory. You can see the text of all the transactions used to interact with th
 ## Smart Contract Summary
 
 The Flow staking smart contract manages a record of stakers who have staked tokens for the network.
-Users who want to stake can register with the staking contract at any time, and their tokens will
-be locked for staking until they request to unstake them.
+Users who want to stake can register with the staking contract at any time during the staking auction,
+and their tokens will be locked for staking until they request to unstake them.
 
 You should already understand from reading the [epoch documentation](/staking/epoch-preparation)
 that an epoch lasts roughly a week. The `FlowIDTableStaking` contract focuses on the identity table
@@ -58,11 +58,16 @@ Epoch Schedule from the perspective of the `FlowIDTableStaking` contract:
    until the start of the next epoch/staking auction.
 4. **Remove Insufficiently Staked Nodes:** All node operators who don't meet the minimum
    or are not operating their node properly will be removed.
-5. **Rewards Calculation:** Calculate rewards for all the node operators staked in the current epoch.
-6. **Move tokens between pools.** (See the token pools section for the order of movements)
-7. **Rewards Payout:** Pay rewards to all the node operators staked
+5. **Randomly Assign Nodes to New Slots:** Each node type has a configurable
+   number of nodes that can operate during any given epoch.
+   The contract will randomly select nodes from the list of newly staked and approved nodes
+   to add them to the ID table. Once all the slots have been filled, the remaining nodes are refunded
+   and can apply again for the next epoch.
+6. **Rewards Calculation:** Calculate rewards for all the node operators staked in the current epoch.
+7. **Move tokens between pools.** (See the token pools section for the order of movements)
+8. **Rewards Payout:** Pay rewards to all the node operators staked
    from the previous epoch using the calculation from earlier in the epoch.
-8. **End Epoch:** Set the reward payout for the upcoming epoch and go to the top of this list.
+9. **End Epoch:** Set the reward payout for the upcoming epoch and go to the top of this list.
 
 The `FlowIDTableStaking` contract manages the identity table, and all of these phases.
 Initially, control of these phases is controlled by the `FlowIDTableStaking.Admin` resource
@@ -73,7 +78,7 @@ and democratically by all the stakers in the network.
 ## Staking as a Node Operator
 
 For a node to stake, node operators first need to generate their staking key,
-networking address, and networking key.
+staking key proof-of-possesion, networking address, and networking key.
 
 The [node operation guide](/node-operation)
 describes how to run a node and generate node information.
@@ -96,6 +101,7 @@ Once the info has been determined:
 - Networking Address: `String` (Length must be less than 510 characters and be a properly formatted IP address or hostname)
 - Networking Key: 64 byte `String` (128 hex characters, must be a valid ECDSA-P256 Key)
 - Staking Key: 96 byte `String` (192 hex characters, must be a valid BLS key)
+- Staking Key Proof of Possesion: (48 byte (96 hex characters) string)
 
 The node operator is ready to register their node.
 
@@ -114,6 +120,11 @@ This registers the node in the Flow node identity table
 and commits the specified tokens to stake during the next epoch.
 This also returns a special node operator object that is stored in the node operator's account.
 This object is used for staking, unstaking, and withdrawing rewards.
+
+Consensus and Collection nodes also need to create a separate machine account
+for use in the DKG and QC proccesses, respectively. This machine account creation
+is handled automatically by the staking collection smart contract.
+More information is in the [machine account documentation](/staking/machine-account).
 
 Every node operator will run the same transaction to register their node at any time throughout the staking auction.
 
@@ -142,7 +153,9 @@ their committed tokens are moved to their unstaked pool, which they can withdraw
 
 Nodes who did have enough tokens committed and are approved will have their
 [committed tokens moved to the staked state](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L923-L927)
-at the end of the epoch.
+at the end of the epoch if they are selected as a node operator
+by the random node slot filling algorithm.
+There is a configurable cap on the number of nodes of each type.
 
 If a node operator has users delegating to them, they cannot withdraw their own tokens
 such that their own staked tokens would fall below the minimum requirement for that node type.
