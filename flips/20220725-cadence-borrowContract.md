@@ -71,7 +71,7 @@ The proposed change can affect how users write their smart contracts, which can 
 
 ## Prior Art & Related Features 
 
-- Dynamically resolving import addresses [https://github.com/onflow/cadence/issues/550] 
+- Dynamically resolving import addresses https://github.com/onflow/cadence/issues/550
 - Solidity has a way to import and call contracts from an address. 
 
 
