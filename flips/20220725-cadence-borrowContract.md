@@ -38,7 +38,7 @@ fun borrow<T: &Any>(name: String): &T?
 ```
 
 ```cadence 
-if let contract = getAccount(0x1).contracts.borrow("ExampleFT") {
+if let contract = getAccount(0x1).contracts.borrow<&FungibleToken>("ExampleFT") {
 	let emptyVault <- contract.createEmptyVault()
 }
 ```
