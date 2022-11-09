@@ -145,7 +145,7 @@ The suggested change addresses these pain points by:
 - Removing (or abstracting away) the concept of links.
 - Making it easier to create new capabilities (with individual links).
 - Offering a way to iterate through capabilities on a storage path.
-- Removing the need to have a `/private/`domain.
+- Removing the need to have a `/private` domain.
 - Introducing Capability Controllers (CapCons) that handle management of capabilities.
 
 ### Capability Controllers (CapCons)
@@ -166,13 +166,13 @@ struct CapabilityController {
    // The block height when the capability was created.
    let issueHeight: UInt64
    // The Type of the capability.
-   let CapabilityType: Type
+   let capabilityType: Type
    // The id of the related capability.
    // This is the UUID of the created capability.
    let capabilityID: UInt64
 
    // Is the capability revoked.
-   fun isRevoked(): Bool
+   let isRevoked: Bool
    // The target storage path.
    fun target(): StoragePath
    // Revoke the capability.
@@ -184,7 +184,7 @@ struct CapabilityController {
 }
 ```
 
-The auth account would get new methods to get CapCons in order to manage capabilities:
+The `AuthAccount` would get new methods to get CapCons in order to manage capabilities:
 
 ```cadence
 // Get all capability controllers for capabilities that target this storage path
@@ -216,13 +216,13 @@ This would remove all references to `Link`s.
 
 ### Borrow Capability
 
-. The `borrowCapability `method would be added to the PublicAccount which would be a shorthand to how we currently get the capability then call `borrow` on it.
+The `borrowCapability` method would be added to the `PublicAccount` which would be a shorthand to how we currently get the capability then call `borrow` on it.
 
 ```cadence
 // this:
 
 var publicAccount = getAccount(issuerAddress)
-var cap = getCapability<&{CounterContract.HasCount}>(/public/counter)
+var cap = publicAccount.getCapability<&{CounterContract.HasCount}>(/public/counter)
 var countCap = cap.borrow()!
 countCap.count
 
@@ -230,7 +230,7 @@ countCap.count
 // become this:
 
 let publicAccount = getAccount(issuerAddress)
-let countCap = publicAccount.borrowCapability<&{HasCount}>(/public/hasCount)!
+let countRef = publicAccount.borrowCapability<&{HasCount}>(/public/hasCount)!
 countRef.count
 ```
 
@@ -310,11 +310,11 @@ In certain situations it is required that an issuer delegates issuing and revoki
 Let's assume that the issuer defined an `AdminInterface` resource interface and a `Main` resource (besides the `Counter` and `HasCount` from previous examples).
 
 ```cadence
-public resource interface AdminInterface {
+pub resource interface AdminInterface {
    fun createCountCap(): Capability<&{HasCount}>
    fun revokeCountCap(capabilityID: UInt64): Bool
 }
-public resource Main : AdminInterface {
+pub resource Main : AdminInterface {
    fun createCountCap(): Capability<&{HasCount}> {
        return self.account.getCapability<&{HasCount}>(/storage/counter)
    }
@@ -335,20 +335,20 @@ The issuer can then store a `Main` resource in their storage and give the capabi
 ```cadence
 issuer.save(<-create Main(), to: /storage/counterMinter)
 let countMinterCap <- issuer.getCapability(/storage/counterMinter)
-countMinterCap //give this to a trusted party
+countMinterCap // give this to a trusted party
 ```
 
-It is worth noting that every time the `AdminInterface` is used a CapCon is created in the issuers storage taking up some resources. Revoking capabilities does not free any storage.
+It is worth noting that every time the `AdminInterface` is used, a CapCon is created in the issuer's storage, taking up some resources. Therefore revoking capabilities does not free any storage.
 
 In this example the delegatee with the `Capability<&{AdminInterface}>` can revoke any capability of type `&{HasCount}` even those that someone else created. This is sometimes desired (IT admins with the capability to issue purchase_hardware capabilities should have the ability to revoke what other IT admins issued), but sometimes we would like the delegatee to only revoke what it issued. If that is the case, another resource can be created `ScopedMain` that serves to limit which capabilities can be revoked.
 
 ```cadence
-public resource ScopedMain : AdminInterface {
-   public delegatorTag: String
-   public inner: Capability<&{AdminInterface}>
-   public issued: {UInt64:Bool}
+pub resource ScopedMain : AdminInterface {
+   pub delegatorTag: String
+   pub inner: Capability<&{AdminInterface}>
+   pub issued: {UInt64:Bool}
 
-   public init(inner: Capability<&{AdminInterface}>, delegatorTag: String) {
+   pub init(inner: Capability<&{AdminInterface}>, delegatorTag: String) {
       self.delegatorTag = delegatorTag
       self.inner = inner
       self.issued = {}
@@ -372,16 +372,16 @@ public resource ScopedMain : AdminInterface {
 
 ## Deployment options
 
-Just making a breaking change by removing the linking API and adding the CapCons API might cause some headaches. In order to make the transition to CapCons smother, the CapCons API could temporarily work in parallel with the current linking API.
+Just making a breaking change by removing the linking API and adding the CapCons API might cause some headaches. In order to make the transition to CapCons smoother, the CapCons API could temporarily work in parallel with the current linking API.
 
 The rollout process would have 2 steps:
 
 1. Add CapCons and still have linking.
 2. After a transition period remove linking.
 
-To make this FLIP compatible with this rollout, the requirement to removing the private domain needs to be addressed While both APIs are still active, the private domain still needs to exist in order to do private linking for private capabilities. The private domain can be removed at step 2.
+To make this FLIP compatible with this rollout, the requirement of removing the private domain needs to be addressed. While both APIs are still active, the private domain still needs to exist in order to do private linking for private capabilities. The private domain can be removed at step 2.
 
-During step 1. all existing links should also become CapCons (most likely with a storage migration). The linking API will still be available, but will actually operate with CapCons in the background. Below is a implementation of the linking API with the CapCons API.
+During step 1, all existing links should also become CapCons (most likely with a storage migration). The linking API will still be available, but will actually operate with CapCons in the background. Below is an implementation of the linking API with the CapCons API.
 
 ```cadence
 // link
@@ -426,7 +426,7 @@ issuer.save(cap, to: publicOrPrivatePath)
 
 ### Unexpected revocation
 
-If the issuer creates a capability **A** and gives it to Alice and creates a capability **B** and gives it to Bob. Alice then copies her capability creating **A'** and gives it to Charlie, creating the following situation:
+Let's say the issuer creates a capability **A** and gives it to Alice then creates a capability **B** and gives it to Bob. Alice then copies her capability creating **A'** and gives it to Charlie, creating the following situation:
 
 - Alice: has **A**
 - Bob: has **B**
@@ -434,7 +434,7 @@ If the issuer creates a capability **A** and gives it to Alice and creates a cap
 
 If the issuer decides to revoke **B**, Bob will no longer be able to use his capability. If the issuer revokes **A** Alice will not be able to use her capability, but perhaps unexpected to Charlie, he will also not be able to use **A'**.
 
-Addressing this issue so that it would be clearer to Charlie that he received a capability that is a copy of Alice's, and not his own instance is not in the scope of this FLIP. 
+Addressing this issue so that it would be clearer to Charlie that he received a capability that is a copy of Alice's, and not his own instance, is not in the scope of this FLIP. 
 
 This could perhaps be addressed by:
 - adding extra descriptors to capabilities (names)
