@@ -46,6 +46,7 @@ There are different Flow wallets you can choose from. They all serve the same pu
 - [Blocto](https://blocto.portto.io/en/) is a custodial web, iOS and Android wallet
 - [Ledger](https://www.ledger.com/) offers hardware wallets
 - [Dapper Wallet](https://www.meetdapper.com/) is a custodial web wallet
+- [NuFi](https://nu.fi/) is a non-custodial wallet with NFT, staking and Ledger support
 - [Lilico](https://lilico.app/) is a non-custodial web wallet focused on NFTs
 - [Finoa](https://www.finoa.io/flow/) offers a institutional-grade custodial wallet
 
