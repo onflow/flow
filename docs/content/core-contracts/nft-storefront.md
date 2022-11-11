@@ -428,4 +428,4 @@ A entitled receiver has not been paid during the sale of the NFT.
 
 ## Glossary
 
-<a name="saleCut"></a>SaleCut - A struct consists a recipient and amount of token ,i.e. cut that must be sent to recipient when a NFT get sold.
+SaleCut - A struct consists a recipient and amount of token ,i.e. cut that must be sent to recipient when a NFT get sold.
