@@ -18,7 +18,7 @@
 | Accomplice | Verification | 79949f163dac6b72ab72c1d12b9677d71dd9367f7331d59425b485050c8712d9
 | Alxo | Verification | f7422f2d3296ede4d1efb36ec55e3fd93702c061f7ee627881f0b3007beff2ed
 | Artemis | Verification | a67ca1afd47c58358c656dffa2e5585d80b01371866e5634b68dcbab090b9b6f 
-| Binance | Verification | 7c589e6cc38508b27545d052073ab3aa84a35425bd2881205d778cca95f10a7b
+| Binance Staking | Verification | 7c589e6cc38508b27545d052073ab3aa84a35425bd2881205d778cca95f10a7b
 | Bitcoin Louie | Verification | fffba108a52e4ca8f5d30658c3f03f47ad1cc13a0995435c0532336236813218
 | Blockchain at Berkeley | Verification | 8f8d77ba98d1606b19fce8f6d35908bfc29ea171c02879162f6755c05e0ca1ee
 | Blockchain Coalition/Block Venture | Verification | 16036263d71f64d65f84542e9f7678e578482a107b61e45b88759ebea2c7451d
