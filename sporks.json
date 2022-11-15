@@ -60,7 +60,34 @@
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-19-execution/public-root-information/root-protocol-state-snapshot.json",
             "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-19-execution/public-root-information/root-protocol-state-snapshot.json.asc",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-19-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": "flow_public_mainnet19_execution_state"
+            "executionStateBucket": "flow_public_mainnet19_execution_state",
+            "protocolDBArchives": [
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-aa",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-aa.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet17/protocol-db.tar.gz.part-ab",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ab.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ac",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ac.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ad",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ad.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ae",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ae.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-af",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-af.sha256"
+              }
+            ]
+          },
           },
           "s3": {
             "rootCheckpointFile": "",
