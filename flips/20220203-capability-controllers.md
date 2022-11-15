@@ -13,7 +13,7 @@ The following is a quick refresher of the current state of the Capabilities API 
 
 ### Example Resource definition
 
-In the following examples let's assume that the following interface and resource type that implements the interface are defined.
+In the following examples, let's assume that the following interface and resource type that implements the interface are defined.
 
 ```cadence
 pub resource interface HasCount {
@@ -128,15 +128,15 @@ Capabilities are a value type. This means that any capability that an account ha
 
 ## Problem statement
 
-There are two potential pain points in the current capability API.
+The current capability API has a few pain points: 
 
-The first one is that capabilities/linking/revoking/redirecting are hard to understand for new developers that are coming to Flow, as that is a lot of new concepts to grasp before one can get started.
+- The concepts capabilities/linking/revoking/redirecting are hard to understand for new developers that are coming to Flow, as that is a lot of new concepts to grasp before one can get started.
 
-The second is that issuing and managing private capabilities that can be revoked at a granular level, by creating a custom private linked path for each capability, is difficult.
+- Issuing and managing private capabilities that can be revoked at a granular level, by creating a custom private linked path for each capability, is difficult.
 
 - Unless the path name includes some hints, there is no way to know when a path was created, thus making it more difficult to remember why a certain capability was issued.
+
 - If an old path (that has been unlinked) is accidentally reused and re-linked, this will revive a capability that is supposed to be revoked.
-- Copying a capability is easy (since it is a value type) but doing so might give unintended access to third parties.
 
 ## Suggested change
 
@@ -150,18 +150,13 @@ The suggested change addresses these pain points by:
 
 ### Capability Controllers (CapCons)
 
-Each Capability would have an associated CapCon that would be created together with the Capability (Capabilities and Capability Controllers are in a 1 to 1 relation). The data associated with CapCons would be stored in arrays, so that each storage path on an account has an array of CapCons of Capabilities issued from that storage path.
+Each Capability would have an associated CapCon that would be responsible for managing the Capability. The CapCon would be created when the Capability is issued (created). If the Capability is copied (since it is a value type) it shares the CapCon with the original (i.e.: calling revoke on the CapCon revokes all copies of the associated capability).
 
-CapCons are a non-storable object.
+The data associated with CapCons would be stored in arrays, so that each storage path on an account has an array of CapCons of Capabilities issued from that storage path. CapCons are a non-storable object (similar to AuthAccounts).
 
-Capabilities also have an address field and a target field. The target field is the storage path of the targeted object. Creating a capability from a capability should be illegal.
-
-The definition of the `CapabilityController` .
+The definition of the `CapabilityController`.
 
 ```cadence
-// CapabilityController can be retrieved via:
-// - AuthAccount::getControllers(path: StoragePath): [CapabilityController]
-// - AuthAccount::getController(capabilityID: UInt64): CapabilityController?
 struct CapabilityController {
    // The block height when the capability was created.
    let issueHeight: UInt64
@@ -169,69 +164,84 @@ struct CapabilityController {
    let capabilityType: Type
    // The id of the related capability.
    // This is the UUID of the created capability.
+   // All copies of the same capability will have the same UUID
    let capabilityID: UInt64
-
    // Is the capability revoked.
    let isRevoked: Bool
-   // The target storage path.
+
+   // Returns the targeted storage path of the capability.
    fun target(): StoragePath
-   // Revoke the capability.
+   // Revoke the capability making it no longer usable.
+   // When borrowing from a revoked capability the borrow returns nil.
    fun revoke()
    // Retarget the capability.
-   // This would move the CapCon from one CapCon array to another.
+   // This moves the CapCon from one CapCon array to another.
    // If the new target is not a valid target this will panic.
    fun retarget(target: StoragePath)
 }
 ```
 
-The `AuthAccount` would get new methods to get CapCons in order to manage capabilities:
+The capability related methods in the `AuthAccount` and in the `PublicAccount` would be moved to a `capabilities` namespace, similar to how the contract methods are in the [contracts namespace](https://developers.flow.com/cadence/language/accounts).
+
+The `AuthAccount` would get new methods to create or get or iterate through capabilities and to get or iterate through CapCons in order to manage capabilities. Methods used for (un)linking would be removed as they are no longer needed.
 
 ```cadence
-// Get all capability controllers for capabilities that target this storage path
-fun getControllers(path: StoragePath): [CapabilityController]
-// Get capability controller for capability with the specified id
-// If the id does not reference an existing capability
-// or the capability does not target a storage path on this address, return nil
-fun getController(capabilityID: UInt64): CapabilityController?
+struct AuthAccount {
+   // ...
+   // removed: fun link<T: &Any>(_ newCapabilityPath: CapabilityPath, target: Path): Capability<T>?
+   // removed: fun getLinkTarget(_ path: CapabilityPath): Path?
+   // removed: fun unlink(_ path: CapabilityPath)
+   // moved & renamed: fun getCapability<T>(_ path: CapabilityPath): Capability<T>
+   // moved & renamed: fun forEachPublic(_ function: ((PublicPath, Type): Bool))
+   let capabilities: AuthAccount.Capabilities
+   struct Capabilities {
+      // get returns the capability at the public path.
+      fun get<T>(_ path: PublicPath): Capability<T>
+      // borrow is equivalent to `get(path).borrow()`
+      fun borrow<T>(_ path: PublicPath): T?
+      // For each iterates through all the public capabilities of the public account.
+      // If function returns false, the iteration ends.
+      fun forEach(_ function: ((PublicPath, Type): Bool))
+
+      // Get capability controller for capability with the specified id
+      // If the id does not reference an existing capability
+      // or the capability does not target a storage path on this address, return nil
+      fun getController(byCapabilityID: UInt64): CapabilityController?
+
+      // Get all capability controllers for capabilities that target this storage path
+      fun getControllers(forPath: StoragePath): [CapabilityController]
+
+      // Iterate through all capability controllers for capabilities that target this storage path.
+      // Returning false from the function stops the iteration.
+      fun forEachController(forPath: StoragePath, function: ((CapabilityController): Bool))
+
+      // Issue/create a new capability.
+      fun issue<T>(_ path: StoragePath): Capability<T>
+   }
+}
 ```
 
-Some methods would be removed from the `AuthAccount` object as they are no longer needed:
+The `PublicAccount` would get similar changes, but only for capabilities, as CapCons are not meant to be accessible outside of `AuthAccount`.
+
 
 ```cadence
-fun link<T: &Any>(_ newCapabilityPath: CapabilityPath, target: Path): Capability<T>?
-fun getLinkTarget(_ path: CapabilityPath): Path?
-fun unlink(_ path: CapabilityPath)
-```
+struct PublicAccount {
+   // ...
+   // removed: fun getCapability<T>(_ path: PublicPath): Capability<T> 
+   // removed: fun getLinkTarget(_ path: CapabilityPath): Path?
+   // removed: fun forEachPublic(_ function: ((PublicPath, Type): Bool))
 
-The method `getCapability` would be renamed to `issueCapability `to reflect the fact that a new capability is created every time.
-
-And also from the PublicAccount:
-
-```cadence
-fun getCapability<T>(_ path: PublicPath): Capability<T>
-fun getLinkTarget(_ path: CapabilityPath): Path?
-```
-
-This would remove all references to `Link`s.
-
-### Borrow Capability
-
-The `borrowCapability` method would be added to the `PublicAccount` which would be a shorthand to how we currently get the capability then call `borrow` on it.
-
-```cadence
-// this:
-
-var publicAccount = getAccount(issuerAddress)
-var cap = publicAccount.getCapability<&{CounterContract.HasCount}>(/public/counter)
-var countCap = cap.borrow()!
-countCap.count
-
-
-// become this:
-
-let publicAccount = getAccount(issuerAddress)
-let countRef = publicAccount.borrowCapability<&{HasCount}>(/public/hasCount)!
-countRef.count
+   let capabilities: PublicAccount.Capabilities
+   struct Capabilities {
+      // get returns the capability at the public path.
+      fun get<T>(_ path: PublicPath): Capability<T>
+      // borrow is equivalent to `get(path).borrow()`
+      fun borrow<T>(_ path: PublicPath): T?
+      // For each iterates through all the public capabilities of the public account.
+      // If function returns false, the iteration ends.
+      fun forEach(_ function: ((PublicPath, Type): Bool))
+   }
+}
 ```
 
 ### Impact of the solution
@@ -251,16 +261,16 @@ Would change to:
 
 ```cadence
 let publicAccount = getAccount(issuerAddress)
-let countCap = publicAccount.borrow<Capability<&{HasCount}>>(/public/hasCount)!
+let countCap = publicAccount.capabilities.get<&{HasCount}>(/public/hasCount)
 let countRef = countCap.borrow()!
 countRef.count
 ```
 
-Or using the `borrowCapability `shorthand:
+Or using the `borrow` shorthand:
 
 ```cadence
 let publicAccount = getAccount(issuerAddress)
-let countRef = publicAccount.borrowCapability<&{HasCount}>(/public/hasCount)!
+let countRef = publicAccount.capabilities.borrow<&{HasCount}>(/public/hasCount)!
 countRef.count
 ```
 
@@ -269,25 +279,25 @@ countRef.count
 There would be more change on the issuer's side. Most notably creating a public capability would look like this.
 
 ```cadence
-let countCap = issuer.issueCapability<&{HasCount}>(/storage/counter)
+let countCap = issuer.capabilities.issue<&{HasCount}>(/storage/counter)
 issuer.save(countCap, to: /public/hasCount)
 ```
 
 Unlinking and retargeting issued capabilities would change to getting a CapCon and calling the appropriate methods.
 
 ```cadence
-let capCon = issuer.getController(capabilityID: capabilityID)
+let capCon = issuer.capabilities.getController(byCapabilityID: capabilityID)
 
 capCon.revoke()
 // or
 capCon.retarget(target: /storage/counter2)
 ```
 
-This example assumes that the capability id is known. This is always the case for capabilities in the accounts public domain, since the account has access to those directly. For private capabilities that were given to someone else this can be achieved by keeping an on-chain or an off-chain list of capability ids and some extra identifying information (for example the address of the receiver of the capability). If no such list was kept, the issuer can use the information on the CapCons retrieved through `issuer.getControllers(path: StoragePath)`to find the right id.
+This example assumes that the capability id is known. This is always the case for capabilities in the accounts public domain, since the account has access to those directly. For private capabilities that were given to someone else this can be achieved by keeping an on-chain or an off-chain list of capability ids and some extra identifying information (for example the address of the receiver of the capability). If no such list was kept, the issuer can use the information on the CapCons retrieved through `issuer.capabilities.getControllers(path: StoragePath)`to find the right id.
 
 #### Pet names for issued capabilities
 
-If needed the `account.getCapability<T>(path)` can be wrapped into a smart contract function, so that the issuer can more easily keep track of what was issued.
+If needed the `account.capabilities.issue<T>(path)` can be wrapped into a smart contract function, so that the issuer can more easily keep track of what was issued.
 
 ```cadence
 // inside the Counter contract
@@ -295,7 +305,7 @@ access(account) petNames: {String; UInt64}
 
 access(account) issueHasCount(petName: String): Capability<&{HasCount}> {
    // for brevity this function is not handling pet name collision
-   let cap = self.account.issueCapability<&{HasCount}>(/storage/counter)
+   let cap = self.account.capabilities.issue<&{HasCount}>(/storage/counter)
    self.petNames[petName] = cap.capabilityID
    return cap
 }
@@ -316,11 +326,11 @@ pub resource interface AdminInterface {
 }
 pub resource Main : AdminInterface {
    fun createCountCap(): Capability<&{HasCount}> {
-       return self.account.getCapability<&{HasCount}>(/storage/counter)
+       return self.account.capabilities.issue<&{HasCount}>(/storage/counter)
    }
 
    fun revokeCountCap(capabilityID: UInt64) {
-      if let capCon = self.account.getController(capabilityID: capabilityID) {
+      if let capCon = self.account.capabilities.getController(byCapabilityID: capabilityID) {
          if capCon.Type != Type<&{HasCount}>() {
             return false // we have only delegated the issuance/revocation of &{HasCount} capabilities
          }
@@ -334,7 +344,7 @@ The issuer can then store a `Main` resource in their storage and give the capabi
 
 ```cadence
 issuer.save(<-create Main(), to: /storage/counterMinter)
-let countMinterCap <- issuer.getCapability(/storage/counterMinter)
+let countMinterCap <- issuer.capabilities.issue<&{AdminInterface}>(/storage/counterMinter)
 countMinterCap // give this to a trusted party
 ```
 
@@ -387,7 +397,7 @@ During step 1, all existing links should also become CapCons (most likely with a
 // link
 // issuer.link<T>(publicOrPrivatePath, target: storagePath)
 
-let cap = issuer.issueCapability<T>(storagePath)
+let cap = issuer.capabilities.issue<T>(storagePath)
 issuer.save(cap, to: publicOrPrivatePath)
 ```
 
@@ -395,9 +405,9 @@ issuer.save(cap, to: publicOrPrivatePath)
 // unlink
 // issuer.unlink(publicOrPrivatePath)
 
-let cap = issuer.getCapability<T>(publicOrPrivatePath)
+let cap = issuer.capabilities.get<T>(publicOrPrivatePath)
 let capabilityID = cap.capabilityID
-let capCon = issuer.getController(capabilityID: capabilityID)
+let capCon = issuer.capabilities.getController(capabilityID: capabilityID)
 
 capCon.revoke()
 ```
@@ -409,18 +419,17 @@ capCon.revoke()
 
 // 1. unlink
 
-let cap = issuer.getCapability<T>(publicOrPrivatePath)
+let cap = issuer.capabilities.get<T>(publicOrPrivatePath)
 let capabilityID = cap.capabilityID
-let capCon = issuer.getController(capabilityID: capabilityID)
+let capCon = issuer.capabilities.getController(capabilityID: capabilityID)
 
 capCon.revoke()
 
 // 2. link
 
-let cap = issuer.issueCapability<T>(storagePath2)
+let cap = issuer.capabilities.issue<T>(storagePath2)
 issuer.save(cap, to: publicOrPrivatePath)
 ```
-
 
 ## Issues not addressed in this FLIP
 
