@@ -49,6 +49,7 @@ There are different Flow wallets you can choose from. They all serve the same pu
 - [NuFi](https://nu.fi/) is a non-custodial wallet with NFT, staking and Ledger support
 - [Lilico](https://lilico.app/) is a non-custodial web wallet focused on NFTs
 - [Finoa](https://www.finoa.io/flow/) offers a institutional-grade custodial wallet
+- [Flipper](https://flipper.org) is a non-custodial browser extension wallet
 
 # How Tos
 
