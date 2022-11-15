@@ -196,7 +196,7 @@ The June 15th Secure Cadence Spork changes two transactions in a way that will m
 
 ## How to use Flipper
 
-- [Video guide for creating a new wallet using Flipper](https://twitter.com/i/status/1587821841544089602)
+- [Video guide for creating a new wallet using Flipper](https://twitter.com/flipper/status/1587821841544089602)
 - [Video guide for importing an existing wallet using Flipper](https://twitter.com/flipper/status/1590358560558432262)
 
 ## How to use Kraken
