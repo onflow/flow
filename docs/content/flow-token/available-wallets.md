@@ -49,6 +49,7 @@ There are different Flow wallets you can choose from. They all serve the same pu
 - [NuFi](https://nu.fi/) is a non-custodial wallet with NFT, staking and Ledger support
 - [Lilico](https://lilico.app/) is a non-custodial web wallet focused on NFTs
 - [Finoa](https://www.finoa.io/flow/) offers a institutional-grade custodial wallet
+- [Flipper](https://flipper.org) is a non-custodial browser extension wallet
 
 # How Tos
 
@@ -192,6 +193,11 @@ The June 15th Secure Cadence Spork changes two transactions in a way that will m
 3. If you have any further questions regarding the process of generating your FLOW address on Finoa, you can reach out to their support team at support@finoa.io.
 
 4. Once onboarded, Finoa will provide you with your personal FLOW deposit address.
+
+## How to use Flipper
+
+- [Video guide for creating a new wallet using Flipper](https://twitter.com/flipper/status/1587821841544089602)
+- [Video guide for importing an existing wallet using Flipper](https://twitter.com/flipper/status/1590358560558432262)
 
 ## How to use Kraken
 
