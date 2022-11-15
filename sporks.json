@@ -89,7 +89,7 @@
             ],
             "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet19/execution-state.tar.gz",
             "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/execution-state.tar.gz.sha256"
-          },
+          }
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -1054,6 +1054,52 @@
         },
         "accessNodes": []
       }
+    },
+  "sandboxnet": {
+    "sandboxnet2": {
+      "id": 2,
+      "live": true,
+      "name": "Sandboxnet-2",
+      "sporkTime": "2022-11-03T17:00:00Z",
+      "rootHeight": "9692140",
+      "rootParentId": "b034d7d41478df23b7970690a65e8c65fd9e088828488b69a7f742467bea921f",
+      "rootStateCommitment": "f7800ce60766163b6fa713df9587bda2fa81fbaf1587e8fa52a4afda72550335",
+      "gitCommitHash": "b9b941db9a3949db0e299a40264d852980d35ddd",
+      "stateArtefacts": {
+        "gcp": {
+          "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/sandboxnet-2-execution/public-root-information/root.checkpoint",
+          "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/sandboxnet-2-execution/public-root-information/root-protocol-state-snapshot.json",
+          "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/sandboxnet-2-execution/public-root-information/root-protocol-state-snapshot.json.asc",
+          "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/sandboxnet-2-execution/public-root-information/node-infos.pub.json",
+          "executionStateBucket": "flow_public_sandboxnet2_execution_state"
+        },
+        "s3": {
+          "rootCheckpointFile": "",
+          "rootProtocolStateSnapshot": "",
+          "nodeInfo": "",
+          "executionStateBucket": "flow-public-sandboxnet2-execution-state"
+        }
+      },
+      "tags": {
+        "flow-go": "v0.28.6",
+        "flow-dps": "v0.28",
+        "cadence": "v0.28.0",
+        "docker": "v0.28.6"
+      },
+      "seedNodes": [
+        {
+          "address": "access-003.sandboxnet2.nodes.onflow.org:3570",
+          "key": "95b876da6a9798e9f4186cbbac1276d7139c17ee28f48adcce67c43cc7109b54adb638c057cc1ebc500b5aaa933ee47aa06ab108cce163372a78625a5339bd11"
+        },
+        {
+          "address": "access-004.sandboxnet2.nodes.onflow.org:3570",
+          "key": "6412ec2a714bc532529b21f1b836a7db33062a391c74a4d7995006fc5a0cfa52017c3a4632fbd2de515d6e36e97c6be05ef0f9b75921622c21edae7999289d6f"
+        }
+      ],
+      "accessNodes": [
+        "access.sanboxnet.nodes.onflow.org:9000"
+      ]
+     }
     },
     "testnet": {
       "testnet38": {
