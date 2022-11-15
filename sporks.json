@@ -86,7 +86,9 @@
                 "data": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-af",
                 "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-af.sha256"
               }
-            ]
+            ],
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet19/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/execution-state.tar.gz.sha256"
           },
           },
           "s3": {
