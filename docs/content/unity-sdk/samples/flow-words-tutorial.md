@@ -18,7 +18,7 @@ This tutorial assumes you have created a blank project, and installed the FlowSD
 
 ## Step 1 – Configure the FlowSDK and local emulator
 
-1.  Open the scene at Assets\\Samples\\Flow SDK\\1.0.0\\Flow Words Tutorial Assets\\Scenes\\Game.unity
+1.  Open the scene at Assets\\Samples\\Flow SDK\\\<version>\\Flow Words Tutorial Assets\\Scenes\\Game.unity
 
     ![Open Game scene example](../media/bac9d81383b8aeacab6e2f757f6c5f1c.png)
 
