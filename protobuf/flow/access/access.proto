@@ -151,6 +151,7 @@ message GetBlockHeaderByHeightRequest {
 
 message BlockHeaderResponse {
   entities.BlockHeader block = 1;
+  entities.BlockStatus block_status = 2;
 }
 
 // Blocks
