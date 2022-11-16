@@ -14,11 +14,11 @@ In this tutorial, you will learn how to;
 
 FlowWords Tutorial has been tested on Unity version 2021.3.6f1
 
-This tutorial assumes you have created a blank project, and installed the FlowSDK and FlowWords Tutorial Sample packages from the Asset Store here.
+This tutorial assumes you have created a blank project, and installed the FlowSDK package from the Unity Asset Store, and FlowWords Tutorial Sample.
 
 ## Step 1 – Configure the FlowSDK and local emulator
 
-1.  Open the scene at Assets\\Scenes\\Game.unity
+1.  Open the scene at Assets\\Samples\\Flow SDK\\1.0.0\\Flow Words Tutorial Assets\\Scenes\\Game.unity
 
     ![Open Game scene example](../media/bac9d81383b8aeacab6e2f757f6c5f1c.png)
 
@@ -45,7 +45,7 @@ This tutorial assumes you have created a blank project, and installed the FlowSD
 
     ![Flow Control Manager Accounts final state](../media/6279d33bd3d9eea312ef2f9b05000dbf.png)
 
-7.  Back on the Emulator tab, you can click Show Emulator Log, to view the output.
+7.  Back on the Emulator Settings tab, you can click Show Emulator Log, to view the output.
 
     ![Flow Emulator Output example](../media/d4ef2f464230b54400ff46b92f2eb01e.png)
 
@@ -151,7 +151,7 @@ These have been provided for you, and can be found in the Resources\\scripts fol
 
 ![Resources folder example](../media/e6a3c62a95440af5c38b47c9efa27a72.png)
 
-FlowInterface.cs has a number of Serialized TextAsset fields, which can be populated via the Unity inspector. Select the GameFlowInterface gameobject in the Game.unity scene, and populate the fields as follows, using the scripts and transactions in the aforementioned folders;
+FlowInterface.cs has a number of Serialized TextAsset fields, which can be populated via the Unity inspector. Select the GameFlowInterface gameobject in the Game.unity scene, and populate the fields as follows, using the scripts and transactions in the aforementioned folders; (you may find these have already been populated for you)
 
 ![GameFlowInterface script assignment final state example](../media/5569416d261ff8e9d05b53c082c8a1b1.png)
 
@@ -166,10 +166,11 @@ At the top of the file, add the following using statements to grant us easy acce
 using DapperLabs.Flow.Sdk;
 using DapperLabs.Flow.Sdk.Cadence;
 using DapperLabs.Flow.Sdk.DataObjects;
+using DapperLabs.Flow.Sdk.DevWallet;
 using DapperLabs.Flow.Sdk.Unity;
 ```
 
-Then declare our Flow account object on line 15. This will hold the credentials of the currently logged in player for use by all of our FlowInterface functons.
+Then declare our Flow account object on line 19. This will hold the credentials of the currently logged in player for use by all of our FlowInterface functons.
 
 ```cs
 public FlowControl.Account FLOW_ACCOUNT = null;
@@ -177,22 +178,25 @@ public FlowControl.Account FLOW_ACCOUNT = null;
 
 Your file should now look like this:
 
-![FlowInterface.cs using directive block final state example](../media/999cca57ee98b89bfe5f012ee445766c.png)
+![FlowInterface.cs FLOW_ACCOUNT definition example](../media/999cca57ee98b89bfe5f012ee445766c.png)
 
-First we have to register a wallet provider with the Flow SDK. We are going to use DevWallet, which comes with the Flow SDK, and is only intended for development purposes on emulator and testnet. Add the following to the `Start` function:
+We now have to register a wallet provider with the Flow SDK. We are going to use DevWallet, which comes with the Flow SDK, and is only intended for development purposes on emulator and testnet. Add the following to the `Start` function:
 
 ```cs
 // Register DevWallet
 FlowSDK.RegisterWalletProvider(ScriptableObject.CreateInstance<DevWalletProvider>());
 ```
+Your Start function should now look like this:
 
-**NOTE:** Do not use DevWallet in production builds. It is only intended for development purposes and is NOT secure.  
+![FlowInterface.cs Start function final state example](../media/999cca57ee98b89bfe5f012ee445766d.png)
+
+> **NOTE:** Do not use DevWallet in production builds. It is only intended for development purposes and is NOT secure.  
 
 Next, we will fill out the body of the Login function.
 
 ![Login function blank state example](../media/079fee6ed2cb0777c5ee99322d3d6039.png)
 
-First, we have to invoke the wallet provider to authenticate the user and get their flow address;
+First, we have to invoke the wallet provider to authenticate the user and get their flow address. Add the following code to the Login function;
 
 ```cs
 // Authenticate an account with DevWallet
@@ -202,38 +206,29 @@ FlowSDK.GetWalletProvider().Authenticate(
     onFailureCallback);
 ```
 
-The first parameter is a username which corresponds to the name of an account in the Accounts tab. If you leave this string blank (as above), a dialog will be shown to the user to select an account from the Accounts tab. 
+The Authenticate function takes parameters as follows;
 
-The second parameter is a success callback for `Authenticate()`. We pass in a lambda function which starts a coroutine to run our async function `OnAuthSuccess`. This takes the flow address that we got from `Authenticate()`, as well as a few other parameters. 
+-	The first parameter is a username which corresponds to the name of an account in the Accounts tab. If you leave this string blank (as above), a dialog will be shown to the user to select an account from the Accounts tab. 
+-	The second parameter is a success callback for `Authenticate()`. We pass in a lambda function which starts a coroutine to run our async function `OnAuthSuccess`. This takes the flow address that we got from `Authenticate()`, as well as a few other parameters. 
+-	The third parameter is a callback for if `Authenticate()` fails. We pass through the fail callback that was passed to Login. 
 
-The third parameter is a callback for if `Authenticate()` fails. We pass through the fail callback that was passed to Login. 
+Your completed Login function should look as follows; 
+
+![Login function completed state example](../media/079fee6ed2cb0777c5ee99322d3d6040.png)
 
 Now we need to implement the `OnAuthSuccess` function for when we successfully authenticate our user and get their flow address. 
 
-```cs
-private IEnumerator OnAuthSuccess(string username, string flowAddress, System.Action<string, string> onSuccessCallback, System.Action onFailureCallback)
-{
-    // get flow account from address
-
-    // execute log in transaction on chain
-
-    // check for error. if there was an error, break.
-
-    // login successful!
-
-    yield return null;
-}
-```
+![OnAuthSuccess function blank state example](../media/079fee6ed2cb0777c5ee99322d3d6041.png)
 
 To sign transactions we need to assign a FlowControl.Account object, which we get from FlowControl using the flow address that the wallet provider's `Authenticate` gave us. 
 With this information, we can now easily sign any transaction we like for the account in question.
 
 ```cs
-// get flow account
+// get FLOW account from address
 FLOW_ACCOUNT = FlowControl.Data.Accounts.FirstOrDefault(x => x.AccountConfig["Address"] == flowAddress);
 ```
 
-WARNING: Having the Address and Private Keys to a blockchain account gives your application full access to all of that account’s funds and storage. They should be treated with extreme care.
+> **WARNING:** Having the Address and Private Keys to a blockchain account gives your application full access to all of that account’s funds and storage. They should be treated with extreme care.
 
 Now that we have an Account object, we can use it to Submit our login.cdc transaction.  
 Add the following code beneath the Flow Account object creation code;
@@ -285,8 +280,10 @@ Add the following code to the bottom of the login function to call the onSuccess
 
 ```cs
 // login successful!
-onSuccessCallback(username, address);
+onSuccessCallback(username, flowAddress);
 ```
+
+You may also remove the final `yield return null` if you wish.
 
 Your entire OnAuthSuccess function should now look as follows;
 
@@ -671,6 +668,8 @@ Next, we parse the detailed statistics for the current player.
 Each of these results are a simple cast of the Result.Value to a CadenceNumber, which we then parse to an unsigned integer. The final statistic follows the same idea, but uses some LINQ trickery to process all of the elements of a CadenceArray in a single line.
 
 Finally, we call the onSuccess callback, passing in all of our parsed results.  
+You may also remove the final `yield return null` statement at this point, if you wish.
+
 Once complete, your function should look as follows;
 
 ![Completed LoadHighScoresFromChain Code](../media/6d1ca6e13da7d1c65496fd803a3c5f78.png)
