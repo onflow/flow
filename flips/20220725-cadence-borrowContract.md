@@ -1,6 +1,6 @@
 # borrowContract function for PublicAccount
 
-| Status        | Proposed    												  |
+| Status        | Approved    												  |
 :-------------- |:------------------------------------------------------------|
 | **FLIP #**    | [1071](https://github.com/onflow/flow/pull/1071)  	 	  |
 | **Author(s)** | Deniz Mert Edincik (deniz@edincik.com)  					  |
