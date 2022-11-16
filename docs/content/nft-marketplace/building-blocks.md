@@ -22,14 +22,14 @@ If you are coming from Ethereum, the following list shows corresponding modules 
 
 | Resource                            | Ethereum                | Flow                                                                                                  |
 | ----------------------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------- |
-| Smart Contract Programming Language | Solidity                | [Cadence](cadence/)                                                                                   |
+| Smart Contract Programming Language | Solidity                | [Cadence](https://developers.flow.com/cadence)                                                                                   |
 | Fungible Token Standard             | ERC-20                  | [Flow Fungible Token Standard](https://github.com/onflow/flow-ft)                                     |
 | NFT Standard                        | ERC-721/ERC-1155        | [Flow NFT Token Standard](https://github.com/onflow/flow-nft)                                         |
 | NFT Metadata Standard               | ERC-721                 | [Flow NFT Metadata Standard](https://github.com/onflow/flow-nft/#nft-metadata)                        |
-| Native Crypto Currency              | ETH                     | [FLOW](flow-token/)                                                                                   |
-| Stablecoins                         | USDC/DAI/USDT           | [FUSD](fusd/), tUSDT, USDC                                                                            |
-| Wallet Interaction Library          | web3.js                 | [Flow Client Library (FCL)](fcl/)                                                                     |
-| Blockchain Interaction SDK          | web3.js                 | [Flow Client Library (FCL)](fcl/), [Flow Go SDK](flow-go-sdk/), and [many others](flip-fest-winners/) |
+| Native Crypto Currency              | ETH                     | [FLOW](https://docs.onflow.org/flow-token/)                                                                                   |
+| Stablecoins                         | USDC/DAI/USDT           | [FUSD](https://docs.onflow.org/fusd/), tUSDT, USDC                                                                            |
+| Wallet Interaction Library          | web3.js                 | [Flow Client Library (FCL)](https://github.com/onflow/fcl-js)                                                                     |
+| Blockchain Interaction SDK          | web3.js                 | [Flow Client Library (FCL)](https://github.com/onflow/fcl-js), [Flow Go SDK](https://github.com/onflow/flow-go-sdk), and [many others](https://github.com/onflow/flip-fest/blob/main/winners.md) |
 | Block Explorer                      | Etherscan               | Flowscan                                                                                              |
-| Node Service Providers              | Infura                  | [Official Flow Access Nodes](access-api/), [Alchemy](https://www.alchemy.com/)                        |
+| Node Service Providers              | Infura                  | [Official Flow Access Nodes](https://flowscan.org/staking/nodes), [Alchemy](https://www.alchemy.com/)                        |
 | Wallets                             | Metamask, WalletConnect | [Blocto](https://portto.com/), [Dapper Wallet](https://www.meetdapper.com/)                           |
