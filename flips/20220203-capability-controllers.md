@@ -160,8 +160,8 @@ The definition of the `CapabilityController`.
 struct CapabilityController {
    // The block height when the capability was created.
    let issueHeight: UInt64
-   // The Type of the capability.
-   let capabilityType: Type
+   // The Type of the capability, i.e.: the T in Capability<T>.
+   let borrowType: Type
    // The id of the related capability.
    // This is the UUID of the created capability.
    // All copies of the same capability will have the same UUID
@@ -195,9 +195,9 @@ struct AuthAccount {
    // moved & renamed: fun forEachPublic(_ function: ((PublicPath, Type): Bool))
    let capabilities: AuthAccount.Capabilities
    struct Capabilities {
-      // get returns the capability at the public path.
-      fun get<T>(_ path: PublicPath): Capability<T>
-      // borrow is equivalent to `get(path).borrow()`
+      // get returns the capability at the public path, if one was stored there.
+      fun get<T>(_ path: PublicPath): Capability<T>?
+      // borrow is equivalent to `get(path)!.borrow()` if `get(path)` exists `nil` otherwise
       fun borrow<T>(_ path: PublicPath): T?
       // For each iterates through all the public capabilities of the public account.
       // If function returns false, the iteration ends.
@@ -233,9 +233,9 @@ struct PublicAccount {
 
    let capabilities: PublicAccount.Capabilities
    struct Capabilities {
-      // get returns the capability at the public path.
-      fun get<T>(_ path: PublicPath): Capability<T>
-      // borrow is equivalent to `get(path).borrow()`
+      // get returns the capability at the public path, if one was stored there.
+      fun get<T>(_ path: PublicPath): Capability<T>?
+      // borrow is equivalent to `get(path)!.borrow()` if `get(path)` exists `nil` otherwise
       fun borrow<T>(_ path: PublicPath): T?
       // For each iterates through all the public capabilities of the public account.
       // If function returns false, the iteration ends.
@@ -261,7 +261,7 @@ Would change to:
 
 ```cadence
 let publicAccount = getAccount(issuerAddress)
-let countCap = publicAccount.capabilities.get<&{HasCount}>(/public/hasCount)
+let countCap = publicAccount.capabilities.get<&{HasCount}>(/public/hasCount)!
 let countRef = countCap.borrow()!
 countRef.count
 ```
@@ -401,13 +401,13 @@ let cap = issuer.capabilities.issue<T>(storagePath)
 issuer.save(cap, to: publicOrPrivatePath)
 ```
 
-```cadence 
+```cadence
 // unlink
 // issuer.unlink(publicOrPrivatePath)
 
-let cap = issuer.capabilities.get<T>(publicOrPrivatePath)
+let cap = issuer.capabilities.get<T>(publicOrPrivatePath)!
 let capabilityID = cap.capabilityID
-let capCon = issuer.capabilities.getController(capabilityID: capabilityID)
+let capCon = issuer.capabilities.getController(byCapabilityID: capabilityID)
 
 capCon.revoke()
 ```
@@ -419,9 +419,9 @@ capCon.revoke()
 
 // 1. unlink
 
-let cap = issuer.capabilities.get<T>(publicOrPrivatePath)
+let cap = issuer.capabilities.get<T>(publicOrPrivatePath)!
 let capabilityID = cap.capabilityID
-let capCon = issuer.capabilities.getController(capabilityID: capabilityID)
+let capCon = issuer.capabilities.getController(byCapabilityID: capabilityID)
 
 capCon.revoke()
 
@@ -443,7 +443,7 @@ Let's say the issuer creates a capability **A** and gives it to Alice then creat
 
 If the issuer decides to revoke **B**, Bob will no longer be able to use his capability. If the issuer revokes **A** Alice will not be able to use her capability, but perhaps unexpected to Charlie, he will also not be able to use **A'**.
 
-Addressing this issue so that it would be clearer to Charlie that he received a capability that is a copy of Alice's, and not his own instance, is not in the scope of this FLIP. 
+Addressing this issue so that it would be clearer to Charlie that he received a capability that is a copy of Alice's, and not his own instance, is not in the scope of this FLIP.
 
 This could perhaps be addressed by:
 - adding extra descriptors to capabilities (names)
