@@ -1,14 +1,14 @@
 ---
-title: Flow Testnet
-description: Guide to testnet access
+title: Flow Sandboxnet
+description: Guide to sandboxnet access
 ---
 
-## Accessing Flow testnet
+## Accessing Flow sandboxnet
 
-The Flow testnet is available for access at this URL:
+The Flow sandboxnet is available for access at this URL:
 
 ```
-access.devnet.nodes.onflow.org:9000
+access.sandboxnet.nodes.onflow.org:9000
 ```
 
 For example, to access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
@@ -17,21 +17,21 @@ For example, to access the network using the [Flow Go SDK](https://github.com/on
 import "github.com/onflow/flow-go-sdk/client"
 
 func main() {
-  flowAccessAddress := "access.devnet.nodes.onflow.org:9000"
+  flowAccessAddress := "access.sandboxnet.nodes.onflow.org:9000"
   flowClient, _ := client.New(flowAccessAddress, grpc.WithInsecure())
   // ...
 }
 ```
 
-### Generating testnet key pair
+### Generating sandboxnet key pair
 
 You can generate a new key pair with the [Flow CLI](https://github.com/onflow/flow-cli) as follows:
 
 ```sh
 > flow keys generate
 
-🙏 If you want to create an account on testnet with the generated keys use this link:
-https://testnet-faucet.onflow.org/?key= cc1c3d72...
+🙏 If you want to create an account on sandboxnet with the generated keys use this link:
+https://sandboxnet-faucet.onflow.org/?key= cc1c3d72...
 
 
 🔴️ Store private key safely and don't share with anyone!
@@ -43,8 +43,8 @@ Public Key       cc1c3d72...
 
 ## Account creation and token funding requests
 
-Accounts and tokens for testing can be obtained through the [testnet faucet](https://testnet-faucet.onflow.org/). If you generated the keypair through the CLI, you can click on the URL provided to create an account and request testnet FLOW tokens.
+Accounts and tokens for testing can be obtained through the [sandboxnet faucet](https://sandboxnet-faucet.onflow.org/). If you generated the keypair through the CLI, you can click on the URL provided to create an account and request sandboxnet FLOW tokens.
 
 ## Important smart contract addresses
 
-You can review [all available core contracts](/core-contracts/) deployed to the testnet to identify which ones you want to import.
+You can review [all available core contracts](/core-contracts/) deployed to the sandboxnet to identify which ones you want to import.
