@@ -9,6 +9,6 @@ Sandboxnet is upgraded roughly at the same time the Flow mainnet is upgraded and
 
 ## How to access these networks?
 
-[Flow Testnet](/accessing-testnet)
-[Flow Sandboxnet](/accessing-mainnet)
-[Flow Mainnet](/accessing-mainnet)
+[Flow Testnet](/concepts/accessing-testnet)
+[Flow Sandboxnet](/concepts/accessing-mainnet)
+[Flow Mainnet](/concepts/accessing-mainnet)
