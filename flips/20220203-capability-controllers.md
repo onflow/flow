@@ -301,7 +301,7 @@ If needed the `account.capabilities.issue<T>(path)` can be wrapped into a smart 
 
 ```cadence
 // inside the Counter contract
-access(account) petNames: {String; UInt64}
+access(account) petNames: {String: UInt64}
 
 access(account) issueHasCount(petName: String): Capability<&{HasCount}> {
    // for brevity this function is not handling pet name collision
