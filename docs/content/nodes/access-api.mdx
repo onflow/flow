@@ -31,7 +31,7 @@ The Access Nodes hosted by DapperLabs are accessible at:
 
 #### Rate limits for Dapper Labs access nodes
 
-Access nodes operated by Dapper Labs are [rate limited](/access-api-rate-limits).
+Access nodes operated by Dapper Labs are [rate limited](/nodes/access-api-rate-limits).
 
 ---
 
@@ -511,7 +511,7 @@ message AccountResponse {
 
 `ExecuteScriptAtLatestBlock` executes a read-only Cadence script against the latest sealed execution state.
 
-This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec/).
+This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec).
 
 ```protobuf
 rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse)
@@ -550,7 +550,7 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockID` executes a ready-only Cadence script against the execution state at the block with the given ID.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec/).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec).
 
 ```protobuf
 rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
@@ -583,7 +583,7 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockHeight` executes a ready-only Cadence script against the execution state at the given block height.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec/).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec).
 
 ```protobuf
 rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
@@ -949,7 +949,7 @@ message TransactionSignature {
 | Field                         | Description                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------- |
 | script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes                                         |
-| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](/cadence/json-cadence-spec/) bytes |
+| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](/cadence/json-cadence-spec) bytes |
 | reference_block_id            | Block ID used to determine transaction expiry                                                        |
 | [proposal_key](#proposal-key) | Account key used to propose the transaction                                                          |
 | payer                         | Address of the payer account                                                                         |
@@ -1072,7 +1072,7 @@ message Event {
 | transaction_id    | ID of the transaction the event was emitted from                           |
 | transaction_index | Zero-based index of the transaction within the block                       |
 | event_index       | Zero-based index of the event within the transaction                       |
-| payload           | Event fields encoded as [JSON-Cadence values](/cadence/json-cadence-spec/) |
+| payload           | Event fields encoded as [JSON-Cadence values](/cadence/json-cadence-spec) |
 
 ## Execution Result
 
