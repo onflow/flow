@@ -181,6 +181,10 @@ Do not run your node using `docker run` command directly without a mechanism for
 to automatically restart following a crash.
 </Callout>
 
+<Callout type="info">
+    The actual Docker image tag can be found [here](https://developers.flow.com/nodes/node-operation/past-sporks) for appropriate spork.
+</Callout>
+
 ### Access
 
 ```shell
@@ -189,7 +193,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/access:v0.25.7 \
+	gcr.io/flow-container-registry/access:<applicable docker tag> \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -210,7 +214,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/collection:v0.25.7 \
+	gcr.io/flow-container-registry/collection:<applicable docker tag> \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -228,7 +232,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/consensus:v0.25.7 \
+	gcr.io/flow-container-registry/consensus:<applicable docker tag> \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -245,7 +249,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/execution:v0.25.7 \
+	gcr.io/flow-container-registry/execution:<applicable docker tag> \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
@@ -264,7 +268,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	gcr.io/flow-container-registry/verification:v0.25.7 \
+	gcr.io/flow-container-registry/verification:<applicable docker tag> \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
