@@ -152,6 +152,8 @@ The suggested change addresses these pain points by:
 
 Each Capability would have an associated CapCon that would be responsible for managing the Capability. The CapCon would be created when the Capability is issued (created). If the Capability is copied (since it is a value type) it shares the CapCon with the original (i.e.: calling revoke on the CapCon revokes all copies of the associated capability).
 
+A CapCon and all the copies of the Capability that CapCon controls would have the same ID. Capability/CapCon ids are unique per account.   
+
 The data associated with CapCons would be stored in arrays, so that each storage path on an account has an array of CapCons of Capabilities issued from that storage path. CapCons are a non-storable object (similar to AuthAccounts).
 
 The definition of the `CapabilityController`.
@@ -180,6 +182,8 @@ struct CapabilityController {
    fun retarget(target: StoragePath)
 }
 ```
+
+Capabilities would expose the new id field `let id: UInt64` in addition to the account field they already expose.
 
 The capability related methods in the `AuthAccount` and in the `PublicAccount` would be moved to a `capabilities` namespace, similar to how the contract methods are in the [contracts namespace](https://developers.flow.com/cadence/language/accounts).
 
