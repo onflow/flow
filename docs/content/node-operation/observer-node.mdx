@@ -75,16 +75,17 @@ curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools-intel-mac.t
 The `root-protocol-state-snapshot.json` is generated for each [spork](https://developers.flow.com/nodes/node-operation/spork) and contains the genesis data for that spork.
 It is published and made available after each spork. The download location is specified [here](https://github.com/onflow/flow/blob/master/sporks.json) under [rootProtocolStateSnapshot](https://github.com/onflow/flow/blob/master/sporks.json#L16) and can be downloaded as follows,
 
-For mainnet-20
+For mainnet find  the latest spork version from [sporks.json](https://github.com/onflow/flow/blob/master/sporks.json) and then download the `root-protocol-state-snapshot.json` and the signature file for it.
+
 ```shell
-wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-20-execution/public-root-information/root-protocol-state-snapshot.json
-wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-20-execution/public-root-information/root-protocol-state-snapshot.json.asc
+wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-<spork version>-execution/public-root-information/root-protocol-state-snapshot.json
+wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-<spork version>-execution/public-root-information/root-protocol-state-snapshot.json.asc
 ```
 
-For testnet-38
+Similarly, for testnet find  the latest spork version from [sporks.json](https://github.com/onflow/flow/blob/master/sporks.json) and then download the `root-protocol-state-snapshot.json` and the signature file for it.
 ```shell
-wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/testnet-38/public-root-information/root-protocol-state-snapshot.json
-wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/testnet-38/public-root-information/root-protocol-state-snapshot.json.asc
+wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/testnet-<spork version>/public-root-information/root-protocol-state-snapshot.json
+wget -P ./flow_observer/bootstrap/public-root-information https://storage.googleapis.com/flow-genesis-bootstrap/testnet-<spork version>/public-root-information/root-protocol-state-snapshot.json.asc
 ```
 
 ##### Verify the PGP signature
