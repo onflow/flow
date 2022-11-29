@@ -1,0 +1,34 @@
+---
+title: Flow Archive Access API rate limits on Dapper Labs Archive nodes
+---
+
+#### Rate limits
+
+Following are the current rate limits for the [Archive Access Node gRPC API](archive-access-api) in total across all Dapper Labs Access nodes. The actual limits are enforced by each individual node. If you are using a load balanced endpoint, the limits below are the max rate, and may vary depending on how your requests are routed.
+
+Once the limit has reached, the client will receive an RPC error `ResourceExhausted` in the gRPC response.
+
+Please note, these limits only apply to the access nodes hosted by Dapper Labs. Access nodes run by other node operators will have different rate limits.
+
+##### Mainnet
+
+|                 gRPC API                             | Total request per second per client IP        |
+|:-----------------------------------------------------|:---------------------------------------------:|
+| flow.access.AccessAPI/GetAccountAtBlockHeight        |                   1                           |
+| flow.access.AccessAPI/ExecuteScriptAtBlockID         |                   1                           |
+| flow.access.AccessAPI/ExecuteScriptAtBlockHeight     |                   1                           |
+
+
+##### Testnet and Sandboxnet
+
+|                 gRPC API                             | Total request per second per IP               |
+|:-----------------------------------------------------|:---------------------------------------------:|
+| flow.access.AccessAPI/GetAccountAtLatestBlock        |                   1                           |
+| flow.access.AccessAPI/ExecuteScriptAtBlockID         |                   1                           |
+| flow.access.AccessAPI/ExecuteScriptAtBlockHeight     |                   1                           |
+
+_The rate limits are the same for the gRPC web interface_
+
+_The rate limits for ALL the REST API is **40** request per second per client IP_
+
+Please note: The rate limits are applied by each of the access nodes behind a load balancer and limits listed here are the aggregate total from all the archive nodes. Actual limits may be somewhat less depending on how the requests are routed.
