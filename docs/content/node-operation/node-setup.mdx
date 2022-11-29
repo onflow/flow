@@ -274,6 +274,29 @@ docker run --rm \
 	--loglevel=error
 ```
 
+### Archive
+
+```shell
+ docker run --rm \
+	-v /path/to/data:/data:rw \
+	--network host \
+	--label=project=flow \
+	--label=network=mainnet
+	--label=app=dps
+	--label=version=v0.26
+	--name flow-dps gcr.io/flow-container-registry/flow-dps-live:v0.26.1
+	--address 0.0.0.0:5005
+	--index /data/index
+	--bootstrap /data/bootstrap
+	--checkpoint /data/bootstrap/root.checkpoint
+	--data /data/protocol
+	--level debug
+	--metrics 0.0.0.0:8080
+	--bucket bucket_name
+	--seed-address=access_node_address
+	--seed-key=seed_key
+```
+
 ## Start the Node
 
 Now that your node is provisioned and configured, it can be started.
