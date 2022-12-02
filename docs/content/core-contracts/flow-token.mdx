@@ -7,11 +7,12 @@ The `FlowToken` contract defines the FLOW network token.
 
 Source: [FlowToken.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowToken.cdc)
 
-| Network  | Contract Address     |
-| -------- | -------------------- |
-| Emulator | `0x0ae53cb6e3f42a79` |
-| Testnet  | `0x7e60df042a9c0868` |
-| Mainnet  | `0x1654653399040a61` |
+| Network     | Contract Address     |
+| ----------- | -------------------- |
+| Emulator    | `0x0ae53cb6e3f42a79` |
+| Testnet     | `0x7e60df042a9c0868` |
+| Sandboxnet  | `0x0661ab7d6696a460` |
+| Mainnet     | `0x1654653399040a61` |
 
 # Transactions
 
@@ -29,9 +30,11 @@ and are made to emit the events documented below. You can read about the [core c
 and view their source code and event definitions.
 
 Events emitted from core contracts follow a standard format:
+
 ```
 A.{contract address}.{contract name}.{event name}
 ```
+
 The components of the format are:
 - `contract address` - the address of the account the contract has been deployed to
 - `contract name` - the name of the contract in the source code
@@ -75,7 +78,7 @@ pub event TokensWithdrawn(amount: UFix64, from: Address?)
 | Field             | Type   | Description                                                            |
 | ----------------- | ------ | ---------------------------------------------------------------------- |
 | amount       | UFix64 | The amount of tokens withdrawn |
-| from       | Address? | Optional address of the account that owns the vault where tokens were withdrawn from. `nil` if the vault is not in an account's storage
+| from       | Address? | Optional address of the account that owns the vault where tokens were withdrawn from. `nil` if the vault is not in an account's storage |
 
 
 ### Tokens Deposited

@@ -29,7 +29,7 @@ Once you have connected to an access node, you can fetch information regarding a
 
 #### Accounts, Contracts, Blocks, Collections, Transactions, Events
 
-These types are documented on the [Access API](https://docs.onflow.org/access-api) page.
+These types are documented on the [Access API](https://developers.flow.com/http-api) page.
 
 The SDKs expose Flow data as types. For example the Go Flow Block data type implementation can be found here:
 
@@ -57,6 +57,7 @@ You can download the FCL (Flow Client Library) here:
 
 To connect to an access node you will need to provide a URL to the SDK.
 **testnet: https://access-testnet.onflow.org
+sandboxnet: https://access-sandboxnet.onflow.org
 mainnet: https://access.onflow.org**
 
 Here are examples of querying an access node at the bottom of this page:
@@ -69,7 +70,7 @@ Here are examples of creating a script and Cadence data types:
 
 And here are examples of parsing script output:
 
-[https://github.com/onflow/fcl-js/tree/master/packages/decode](https://github.com/onflow/fcl-js/tree/master/packages/decode)
+[https://github.com/onflow/fcl-js/tree/master/packages/decode](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/decode)
 
 #### Go
 
@@ -79,6 +80,7 @@ You can download the Go SDK here:
 
 To connect to an access node you will need to provide a URL to the SDK.
 **testnet: access.devnet.nodes.onflow.org:9000
+sanxboxnet: access.sandboxnet.nodes.onflow.org:9000
 mainnet: access.mainnet.nodes.onflow.org:9000**
 
 You can find examples of querying an access node at the bottom of this page:
@@ -87,7 +89,7 @@ You can find examples of querying an access node at the bottom of this page:
 
 You can find examples using the emulator that can be adapted to use an access node here:
 
-[https://github.com/onflow/flow-go-sdk/blob/master/examples/query_events/main.go](https://github.com/onflow/flow-go-sdk/blob/master/examples/query_events/main.go)
+[https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events/main.go](https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events/main.go)
 
 And here is an example of using a script:
 
@@ -130,7 +132,7 @@ This is documented here:
 
 And there is an example of usage here:
 
-[https://github.com/onflow/flow-go-sdk/tree/master/examples/query_events](https://github.com/onflow/flow-go-sdk/tree/master/examples/query_events)
+[https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events)](https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events)
 
 ### Using JavaScript
 
@@ -141,7 +143,7 @@ This is documented here:
 [https://github.com/onflow/fcl-js/tree/master/packages/sdk#getevents-usage](https://github.com/onflow/fcl-js/tree/master/packages/sdk#getevents-usage)
 And there is an example of usage here:
 
-[https://github.com/onflow/kitty-items/tree/master/kitty-items-js/src/workers](https://github.com/onflow/kitty-items/tree/master/kitty-items-js/src/workers)
+[https://github.com/onflow/kitty-items/tree/master/api/src/workers](https://github.com/onflow/kitty-items/tree/master/api/src/workers)
 
 ### Using Other Programming Languages
 
@@ -184,15 +186,15 @@ Details: [https://docs.onflow.org/concepts/accounts-and-keys](https://docs.onflo
 
 ## How do I create a Flow account if I do not have a service account?
 
-Instructions to generate an address are here: [https://docs.onflow.org/flow-go-sdk/creating-accounts](https://docs.onflow.org/flow-go-sdk/creating-accounts). You don't need a service account.
+Instructions to generate an address are here: [https://developers.flow.com/tools/flow-go-sdk#create-accounts](https://developers.flow.com/tools/flow-go-sdk#create-accounts). You don't need a service account.
 
 ## Can you query events between a block range?
 
-You can query the access API to get events for a block range. See Access API spec here: [https://docs.onflow.org/access-api](https://docs.onflow.org/access-api).
+You can query the access API to get events for a block range. See Access API spec here: [https://developers.flow.com/http-api](https://developers.flow.com/http-api).
 
 ## Where can I follow feature releases on Flow?
 
 You can follow Flow node software releases here: [https://github.com/onflow/flow-go/releases](https://github.com/onflow/flow-go/releases).
 
 ## How do I run a Flow node and become a node operator?
-See the dedicated section on node operation: [https://docs.onflow.org/node-operation/](https://docs.onflow.org/node-operation/)
+See the dedicated section on node operation: [https://docs.onflow.org/nodes/node-operation/](https://docs.onflow.org/nodes/node-operation/)

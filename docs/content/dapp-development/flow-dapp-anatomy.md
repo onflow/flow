@@ -34,3 +34,5 @@ A user wallet is software or hardware that controls access to a user’s account
 ## Flow Client Library (FCL)
 
 The Flow Client Library is a framework that provides a standard interface to connect client applications and user wallets.
+
+THanks for reading and happy hacking! 🚀

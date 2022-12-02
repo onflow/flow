@@ -7,6 +7,8 @@ servers:
     description: Flow Canary
   - url: https://rest-testnet.onflow.org/v1
     description: Flow Testnet
+  - url: https://rest-sandboxnet.onflow.org/v1
+    description: Flow Sandboxnet
   - url: https://rest-mainnet.onflow.org/v1
     description: Flow Mainnet
 paths:
@@ -451,6 +453,25 @@ paths:
             maxItems: 50
             uniqueItems: true
         - $ref: '#/components/parameters/selectParam'
+  /network/parameters:
+    get:
+      summary: Get Network Parameters
+      description: Get network-wide parameters of the blockchain
+      tags:
+        - Network
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkParameters'
+          description: OK
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
 components:
   parameters:
     expandParam:
@@ -970,6 +991,13 @@ components:
       type: object
       properties:
         _self:
+          type: string
+    NetworkParameters:
+      type: object
+      required:
+        - chain_id
+      properties:
+        chain_id:
           type: string
   responses:
     400BadRequest:

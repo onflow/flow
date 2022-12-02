@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package flow.entities;
+
+option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
+option java_package = "org.onflow.protobuf.entities";
+
+import "flow/entities/event.proto";
+import "flow/entities/transaction.proto";
+
+message BlockExecutionData {
+  bytes block_id = 1;
+  repeated ChunkExecutionData chunk_execution_data = 2;
+}
+
+message ChunkExecutionData {
+  ExecutionDataCollection collection = 1;
+  repeated Event events = 2;
+  TrieUpdate trieUpdate = 3;
+}
+
+message ExecutionDataCollection {
+  repeated Transaction transactions = 1;
+}
+
+message TrieUpdate {
+  bytes root_hash = 1;
+  repeated bytes paths = 2;
+  repeated Payload payloads = 3;
+}
+
+message Payload {
+  repeated KeyPart keyPart = 1;
+  bytes value = 2;
+}
+
+message KeyPart {
+  uint32 type = 1;
+  bytes value = 2;
+}

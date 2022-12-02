@@ -46,8 +46,10 @@ There are different Flow wallets you can choose from. They all serve the same pu
 - [Blocto](https://blocto.portto.io/en/) is a custodial web, iOS and Android wallet
 - [Ledger](https://www.ledger.com/) offers hardware wallets
 - [Dapper Wallet](https://www.meetdapper.com/) is a custodial web wallet
+- [NuFi](https://nu.fi/) is a non-custodial wallet with NFT, staking and Ledger support
 - [Lilico](https://lilico.app/) is a non-custodial web wallet focused on NFTs
 - [Finoa](https://www.finoa.io/flow/) offers a institutional-grade custodial wallet
+- [Flipper](https://flipper.org) is a non-custodial browser extension wallet
 
 # How Tos
 
@@ -94,9 +96,32 @@ Both of these options are shown below.
 
 - a.) If you have any questions regarding the process of generating your FLOW address on Blocto, you can reach out to our support team here: support@blocto.app.
 
+## How to use Dapper Wallet
+
+You can create a Dapper account to purchase and display NFTs from some of the top marketplaces on Flow, like NBA Top Shot, NFL ALL DAY, UFC Strike and more.
+
+Follow these steps to create your Dapper account
+
+Visit www.meetdapper.com and click “Continue to Dapper”
+
+![dapper-web](dapper-web.png)
+
+Sign-up with an email address or your Google account
+
+![dapper-login](dapper-login.png)
+
+Once your account is created, it is strongly recommended that you take the following actions to get the most out of Dapper:
+
+- Complete your identity check
+- Add a payment method, such as a bank account or credit card
+- Secure your account with 2-step verification
+
+> **Note**: If you encounter any issues during account creation or afterwards, you should [file a ticket with the Dapper support team](https://support.meetdapper.com/hc/en-us/requests/new?)
+
 ## How to use Ledger
 
 ### Note for users of Flow Ledger before v0.10.0
+
 The June 15th Secure Cadence Spork changes two transactions in a way that will make them no longer compatible with the Ledger app with version before v0.10.0. At the time of the spork, v0.10.0 is yet to be released to the Ledger Live app store, and as such the [following transactions will be unsupported](https://github.com/onflow/ledger-app-flow/pull/83) until the time it is released.
 
 1. Staking Collection - Register Node
@@ -168,6 +193,11 @@ The June 15th Secure Cadence Spork changes two transactions in a way that will m
 3. If you have any further questions regarding the process of generating your FLOW address on Finoa, you can reach out to their support team at support@finoa.io.
 
 4. Once onboarded, Finoa will provide you with your personal FLOW deposit address.
+
+## How to use Flipper
+
+- [Video guide for creating a new wallet using Flipper](https://twitter.com/flipper/status/1587821841544089602)
+- [Video guide for importing an existing wallet using Flipper](https://twitter.com/flipper/status/1590358560558432262)
 
 ## How to use Kraken
 

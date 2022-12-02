@@ -10,7 +10,16 @@ It is deployed at the same address as the `NonFungibleToken` contract interface.
 
 Source: [MetadataViews.cdc](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc)
 
-| Network | Contract Address     |
-| ------- | -------------------- |
-| Testnet | `0x631e88ae7f1d7c20` |
-| Mainnet | `0x1d7e57aa55817448` |
+| Network    | Contract Address     |
+| ---------- | -------------------- |
+| Testnet    | `0x631e88ae7f1d7c20` |
+| Sandboxnet | `0x83ade3a54eb3870c` |
+| Mainnet    | `0x1d7e57aa55817448` |
+
+There exists a tool, [Flow NFT Catalog](https://flow-nft-catalog.com), which enables dapp developers the ability to unlock interoperability of your NFT collection across the Flow ecosystem. This will help make your NFT collection’s metadata more discoverable and interoperable.
+
+To optimize your NFT collections for this catalog, you’ll need to:
+
+1. Update your NFT contract to support MetadataView with implementation of the [core NFT views](https://github.com/onflow/flow-nft/pull/103/files#diff-a7af41cf43e29d0e6028827c3d5f305326677661bf65d79539d59ed1056c0a84R38).
+2. Deploy the updated contract to both testnet and mainnet.
+3. Afterwards, onboard your NFT to the Flow NFT catalog at [https://flow-nft-catalog.com](https://flow-nft-catalog.com).

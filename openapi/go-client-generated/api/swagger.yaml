@@ -675,6 +675,37 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /network/parameters:
+    get:
+      tags:
+      - Network
+      summary: Get Network Parameters
+      description: Get network-wide parameters of the blockchain
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkParameters'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Account:
@@ -1717,6 +1748,15 @@ components:
       example:
         payload: payload
         execution_result: http://example.com/aeiou
+    NetworkParameters:
+      required:
+      - chain_id
+      type: object
+      properties:
+        chain_id:
+          type: string
+      example:
+        chain_id: mainnet
   responses:
     "400BadRequest":
       description: Bad Request

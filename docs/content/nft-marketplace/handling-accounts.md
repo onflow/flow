@@ -10,7 +10,7 @@ On many blockchains, decentralized apps offer the Connect Wallet button to let u
 
 Sign-in/up functionality is implemented using [FCL](fcl/). The following documentation provides details on how to implement this functionality on the application frontend:
 
-- [FCL Authentication Functionality](fcl/reference/authentication/)
+- [FCL Authentication Functionality](https://developers.flow.com/tools/fcl-js/reference/authentication)
 - [Sign-in/up using FCL with Blocto Wallet](https://docs.blocto.app/blocto-sdk/flow/login-register)
 
 Using FCL, you can get the authenticated account information for your users.
@@ -31,4 +31,4 @@ For an NFT project not integrated with the Alchemy API, to find out the NFTs own
 
 Alchemy NFT API also provides rendering information for the NFTs. Check the [getNFTMetadata API](https://docs.alchemy.com/flow/documentation/flow-nft-apis/getnftmetadata-api).
 
-All newer NFT projects will conform to the [NFT Metadata Standard](https://github.com/onflow/flow-nft/#nft-metadata). You can use the Display view to get the rendering information from the NFTs conforming to the metadata standard. [Here](https://github.com/onflow/flow-nft/tree/nft-metadata#how-to-read-metadata) is the code example on how to do that.
+All newer NFT projects will conform to the [NFT Metadata Standard](https://github.com/onflow/flow-nft/#nft-metadata). You can use the Display view to get the rendering information from the NFTs conforming to the metadata standard. [Here](https://github.com/onflow/flow-nft#nft-metadata) is the code example on how to do that.

@@ -28,6 +28,7 @@ Class | Method | HTTP request | Description
 *EventsApi* | [**EventsGet**](docs/EventsApi.md#eventsget) | **Get** /events | Get Events
 *ExecutionResultsApi* | [**ExecutionResultsGet**](docs/ExecutionResultsApi.md#executionresultsget) | **Get** /execution_results | Get Execution Results by Block ID
 *ExecutionResultsApi* | [**ExecutionResultsIdGet**](docs/ExecutionResultsApi.md#executionresultsidget) | **Get** /execution_results/{id} | Get Execution Result by ID
+*NetworkApi* | [**NetworkParametersGet**](docs/NetworkApi.md#networkparametersget) | **Get** /network/parameters | Get Network Parameters
 *ScriptsApi* | [**ScriptsPost**](docs/ScriptsApi.md#scriptspost) | **Post** /scripts | Execute a Cadence Script
 *TransactionsApi* | [**TransactionResultsTransactionIdGet**](docs/TransactionsApi.md#transactionresultstransactionidget) | **Get** /transaction_results/{transaction_id} | Get a Transaction Result by ID.
 *TransactionsApi* | [**TransactionsIdGet**](docs/TransactionsApi.md#transactionsidget) | **Get** /transactions/{id} | Get a Transaction by ID.
@@ -56,7 +57,7 @@ Class | Method | HTTP request | Description
  - [InlineResponse200](docs/InlineResponse200.md)
  - [Links](docs/Links.md)
  - [ModelError](docs/ModelError.md)
- - [OneOfBlockHeight](docs/OneOfBlockHeight.md)
+ - [NetworkParameters](docs/NetworkParameters.md)
  - [ProposalKey](docs/ProposalKey.md)
  - [ScriptsBody](docs/ScriptsBody.md)
  - [SigningAlgorithm](docs/SigningAlgorithm.md)
