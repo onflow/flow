@@ -47,9 +47,21 @@ It is completely up to you, the developer, to decide how much data\\logic you wa
 
 ## Adding the Flow SDK
 
-Once you have obtained the Flow SDK from the Unity Asset Store, you can add it to your project via the Package Manager.
+The Flow SDK for Unity is hosted on github here: [https://github.com/onflow/UnityFlowSDK](https://github.com/onflow/UnityFlowSDK)
 
-See: [https://docs.unity3d.com/Manual/upm-ui-install.html](https://docs.unity3d.com/Manual/upm-ui-install.html)
+To add it to your Unity project:
+
+1. In the Unity Editor, go to Window -> Package Manager. 
+2. Click the + dropdown in the top left corner. 
+4. Select "Add package from git URL" and enter `https://github.com/onflow/UnityFlowSDK.git`. 
+
+## Updating the Flow SDK
+
+Check the Package Manager regularly for updates to the Flow SDK. 
+
+1. In the Unity Editor, go to Window -> Package Manager. 
+2. Under Packages - Dapper Labs, select Flow SDK. 
+3. Click Update. If there is no Update button then you are already up to date. 
 
 ## Samples
 
@@ -60,3 +72,9 @@ To add any of the SDKs Samples, click the related import button, from the Flow S
 The Flow SDK is compatible with Unity version 2021.3 or higher.
 
 Supported Platforms: Windows, OSX, Android
+
+## Support
+
+Email: unity-sdk-support@dapperlabs.com
+
+Discord: https://onflow.org/discord
