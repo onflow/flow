@@ -51,7 +51,7 @@ The Flow SDK for Unity is hosted on github here: [https://github.com/onflow/Unit
 
 To add it to your Unity project:
 
-1. In the Unity Editor, go to Window -> Package Manager. 
+1. In the Unity Editor, go to Window, Package Manager. 
 2. Click the + dropdown in the top left corner. 
 4. Select "Add package from git URL" and enter `https://github.com/onflow/UnityFlowSDK.git`. 
 
@@ -59,7 +59,7 @@ To add it to your Unity project:
 
 Check the Package Manager regularly for updates to the Flow SDK. 
 
-1. In the Unity Editor, go to Window -> Package Manager. 
+1. In the Unity Editor, go to Window, Package Manager. 
 2. Under Packages - Dapper Labs, select Flow SDK. 
 3. Click Update. If there is no Update button then you are already up to date. 
 
