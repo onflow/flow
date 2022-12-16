@@ -12,7 +12,7 @@ NFT purchase ultimately settles on the blockchain, but NFT buyers see the prices
 
 ## Clean up stale NFT listings
 
-Often, sellers change their listing price for the NFT on sale. That can lead to multiple listings on the chain. After a price change, marketplace platforms should ensure that any lower price listings are deleted from the chain. Also, once the NFT is sold, the marketplace should clean up all sale listings for that NFT.
+Often, sellers change their listing price for the NFT on sale. That can lead to multiple listings on the chain. After a price change, marketplace platforms should ensure that any lower price listings are deleted from the chain. Also, once the NFT is sold, the marketplace should [clean up](https://github.com/onflow/nft-storefront/blob/main/transactions/cleanup_purchased_listings.cdc) all sale listings for that NFT.
 
 ## Provide rich filtering/search capabilities
 
