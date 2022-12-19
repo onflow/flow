@@ -6,6 +6,9 @@ option go_package = "github.com/onflow/flow/protobuf/go/flow/access";
 option java_package = "org.onflow.protobuf.access";
 
 import "flow/entities/block_execution_data.proto";
+import "flow/entities/block_header.proto";
+import "flow/entities/event.proto";
+import "google/protobuf/timestamp.proto";
 
 // ExecutionDataAPI is the API for providing Execution state sync data, currently from Access Nodes
 service ExecutionDataAPI {
@@ -15,6 +18,12 @@ service ExecutionDataAPI {
 
   rpc GetExecutionDataByBlockID(GetExecutionDataByBlockIDRequest)
       returns (GetExecutionDataByBlockIDResponse);
+
+  rpc SubscribeExecutionData(SubscribeExecutionDataRequest)
+      returns (stream SubscribeExecutionDataResponse);
+
+  rpc SubscribeEvents(SubscribeEventsRequest)
+      returns (stream SubscribeEventsResponse);
 }
 
 // Execution State
@@ -25,4 +34,34 @@ message GetExecutionDataByBlockIDRequest {
 
 message GetExecutionDataByBlockIDResponse {
   entities.BlockExecutionData block_execution_data = 1;
+}
+
+message SubscribeExecutionDataRequest {
+  bytes start_block_id = 1;
+  uint64 start_block_height = 2;
+}
+
+message SubscribeExecutionDataResponse {
+  uint64 block_height = 1;
+  entities.BlockExecutionData block_execution_data = 2;
+  google.protobuf.Timestamp block_timestamp = 3;
+}
+
+message SubscribeEventsRequest {
+  bytes start_block_id = 1;
+  uint64 start_block_height = 2;
+  EventFilter filter = 3;
+}
+
+message SubscribeEventsResponse {
+  bytes block_id = 1;
+  uint64 block_height = 2;
+  repeated entities.Event events = 3;
+  google.protobuf.Timestamp block_timestamp = 4;
+}
+
+message EventFilter {
+  repeated string event_type = 1;
+  repeated string address = 2;
+  repeated string contract = 3;
 }

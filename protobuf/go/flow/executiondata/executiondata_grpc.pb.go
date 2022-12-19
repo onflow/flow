@@ -23,6 +23,8 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ExecutionDataAPIClient interface {
 	GetExecutionDataByBlockID(ctx context.Context, in *GetExecutionDataByBlockIDRequest, opts ...grpc.CallOption) (*GetExecutionDataByBlockIDResponse, error)
+	SubscribeExecutionData(ctx context.Context, in *SubscribeExecutionDataRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataClient, error)
+	SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error)
 }
 
 type executionDataAPIClient struct {
@@ -42,11 +44,77 @@ func (c *executionDataAPIClient) GetExecutionDataByBlockID(ctx context.Context, 
 	return out, nil
 }
 
+func (c *executionDataAPIClient) SubscribeExecutionData(ctx context.Context, in *SubscribeExecutionDataRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[0], "/flow.access.ExecutionDataAPI/SubscribeExecutionData", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &executionDataAPISubscribeExecutionDataClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ExecutionDataAPI_SubscribeExecutionDataClient interface {
+	Recv() (*SubscribeExecutionDataResponse, error)
+	grpc.ClientStream
+}
+
+type executionDataAPISubscribeExecutionDataClient struct {
+	grpc.ClientStream
+}
+
+func (x *executionDataAPISubscribeExecutionDataClient) Recv() (*SubscribeExecutionDataResponse, error) {
+	m := new(SubscribeExecutionDataResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *executionDataAPIClient) SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[1], "/flow.access.ExecutionDataAPI/SubscribeEvents", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &executionDataAPISubscribeEventsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ExecutionDataAPI_SubscribeEventsClient interface {
+	Recv() (*SubscribeEventsResponse, error)
+	grpc.ClientStream
+}
+
+type executionDataAPISubscribeEventsClient struct {
+	grpc.ClientStream
+}
+
+func (x *executionDataAPISubscribeEventsClient) Recv() (*SubscribeEventsResponse, error) {
+	m := new(SubscribeEventsResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // ExecutionDataAPIServer is the server API for ExecutionDataAPI service.
 // All implementations should embed UnimplementedExecutionDataAPIServer
 // for forward compatibility
 type ExecutionDataAPIServer interface {
 	GetExecutionDataByBlockID(context.Context, *GetExecutionDataByBlockIDRequest) (*GetExecutionDataByBlockIDResponse, error)
+	SubscribeExecutionData(*SubscribeExecutionDataRequest, ExecutionDataAPI_SubscribeExecutionDataServer) error
+	SubscribeEvents(*SubscribeEventsRequest, ExecutionDataAPI_SubscribeEventsServer) error
 }
 
 // UnimplementedExecutionDataAPIServer should be embedded to have forward compatible implementations.
@@ -55,6 +123,12 @@ type UnimplementedExecutionDataAPIServer struct {
 
 func (UnimplementedExecutionDataAPIServer) GetExecutionDataByBlockID(context.Context, *GetExecutionDataByBlockIDRequest) (*GetExecutionDataByBlockIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetExecutionDataByBlockID not implemented")
+}
+func (UnimplementedExecutionDataAPIServer) SubscribeExecutionData(*SubscribeExecutionDataRequest, ExecutionDataAPI_SubscribeExecutionDataServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeExecutionData not implemented")
+}
+func (UnimplementedExecutionDataAPIServer) SubscribeEvents(*SubscribeEventsRequest, ExecutionDataAPI_SubscribeEventsServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeEvents not implemented")
 }
 
 // UnsafeExecutionDataAPIServer may be embedded to opt out of forward compatibility for this service.
@@ -86,6 +160,48 @@ func _ExecutionDataAPI_GetExecutionDataByBlockID_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ExecutionDataAPI_SubscribeExecutionData_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeExecutionDataRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ExecutionDataAPIServer).SubscribeExecutionData(m, &executionDataAPISubscribeExecutionDataServer{stream})
+}
+
+type ExecutionDataAPI_SubscribeExecutionDataServer interface {
+	Send(*SubscribeExecutionDataResponse) error
+	grpc.ServerStream
+}
+
+type executionDataAPISubscribeExecutionDataServer struct {
+	grpc.ServerStream
+}
+
+func (x *executionDataAPISubscribeExecutionDataServer) Send(m *SubscribeExecutionDataResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _ExecutionDataAPI_SubscribeEvents_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeEventsRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ExecutionDataAPIServer).SubscribeEvents(m, &executionDataAPISubscribeEventsServer{stream})
+}
+
+type ExecutionDataAPI_SubscribeEventsServer interface {
+	Send(*SubscribeEventsResponse) error
+	grpc.ServerStream
+}
+
+type executionDataAPISubscribeEventsServer struct {
+	grpc.ServerStream
+}
+
+func (x *executionDataAPISubscribeEventsServer) Send(m *SubscribeEventsResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 // ExecutionDataAPI_ServiceDesc is the grpc.ServiceDesc for ExecutionDataAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -98,6 +214,17 @@ var ExecutionDataAPI_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ExecutionDataAPI_GetExecutionDataByBlockID_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "SubscribeExecutionData",
+			Handler:       _ExecutionDataAPI_SubscribeExecutionData_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeEvents",
+			Handler:       _ExecutionDataAPI_SubscribeEvents_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "flow/executiondata/executiondata.proto",
 }
