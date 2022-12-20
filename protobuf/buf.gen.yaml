@@ -1,10 +1,12 @@
-version: v1beta1
+version: v1
 plugins:
-  - name: go
+  # renovate: datasource=github-releases depName=protocolbuffers/protobuf-go
+  - remote: buf.build/protocolbuffers/plugins/go:v1.28.1-1
     out: go
     opt:
       - paths=source_relative
-  - name: go-grpc
+  # renovate: datasource=github-releases depName=grpc/plugins/go
+  - remote: buf.build/grpc/plugins/go:v1.2.0-1
     out: go
     opt:
       - paths=source_relative

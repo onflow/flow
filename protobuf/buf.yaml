@@ -1,16 +1,15 @@
-version: v1beta1
+version: v1
 deps:
   - buf.build/googleapis/googleapis
 build:
-  roots:
-    - ./
   excludes:
-    - build/ # exclude Gradle build dir
+    # exclude Gradle build dir
+    - build/
+breaking:
+  use:
+    - FILE
 lint:
   use:
     - DEFAULT
   enum_zero_value_suffix: UNKNOWN
   service_suffix: API
-breaking:
-  use:
-    - FILE
