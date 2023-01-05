@@ -1100,6 +1100,47 @@
       }
     },
     "testnet": {
+      "testnet39": {
+        "id": 39,
+        "live": true,
+        "name": "Testnet39",
+        "sporkTime": "2023-01-04T01:00:00Z",
+        "rootHeight": "90595736",
+        "rootParentId": "3d09b9703019b40a065787fff3dd62e28eafa5efcfb69efbc2d713d73034cf38",
+        "rootStateCommitment": "afd47ff2a8e73efd51f0cbe7f572eefda25a66e77f1e6b9c4f3f4e7cdc46568f",
+        "gitCommitHash": "e1c172aaee7da9e33828429757b44f51e59368a2",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-39-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-39/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-39/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-39/public-root-information/node-infos.pub.json"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": ""
+          }
+        },
+        "tags": {
+          "flow-go-tag": "v0.29.3",
+          "flow-dps-tag": "v0.29.1",
+          "cadence-tag": "v0.31.1",
+          "docker-tag": "v0.29.3"
+        },
+        "accessNodes": [],
+        "seedNodes": [
+          {
+            "address": "access-003.devnet39.nodes.onflow.org:3570",
+            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+          },
+          {
+            "address": "access-004.devnet39.nodes.onflow.org:3570",
+            "key": "0d1523612be854638b985fc658740fa55f009f3cd49b739961ab082dc91b178ed781ef5f66878613b4d34672039150abfd9c8cfdfe48c565bca053fa4db30bec"
+          }
+        ]
+      },
       "testnet38": {
         "id": 38,
         "live": true,
