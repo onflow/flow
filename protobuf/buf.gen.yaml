@@ -1,12 +1,12 @@
 version: v1
 plugins:
-  # renovate: datasource=github-releases depName=protocolbuffers/protobuf-go
-  - remote: buf.build/protocolbuffers/plugins/go:v1.28.1-1
+  # renovate: datasource=github-releases depName=protocolbuffers/go
+  - plugin: buf.build/protocolbuffers/go:v1.28.1
     out: go
     opt:
       - paths=source_relative
-  # renovate: datasource=github-releases depName=grpc/plugins/go
-  - remote: buf.build/grpc/plugins/go:v1.2.0-1
+  # renovate: datasource=github-releases depName=grpc/go
+  - plugin: buf.build/grpc/go:v1.2.0
     out: go
     opt:
       - paths=source_relative
