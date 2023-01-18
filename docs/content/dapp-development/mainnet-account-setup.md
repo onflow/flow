@@ -15,7 +15,7 @@ What you need before you start:
 
 - Blocto account: You need an account on Blocto in order to interact with [Flow Port](https://port.onflow.org/)
 - FLOW tokens: The default amount of the FLOW token (0.001) in Blocto accounts is **NOT** sufficient to create an additional Flow account. You should at least have 0.002 FLOW in your Blocto account
-- [Flow CLI](https://github.com/onflow/flow-cli): You need the CLI to [generate a non-custodial key pair](/tools/flow-cli/generate-keys)
+- [Flow CLI](https://github.com/onflow/flow-cli): You need the CLI to [generate a non-custodial key pair](https://developers.flow.com/tools/flow-cli/generate-keys)
 
 > **Note**: If you do not have enough FLOW, please refer to the [Buy FLOW instructions](https://flow.com/#buyflow).
 
@@ -75,13 +75,11 @@ Once the transaction is sealed, you will see a confirmation: `Transaction Sealed
 
 Next, scroll down to the events section and locate the `flow.AccountCreated` event with the newly generated address.
 
-![event](port-event.png)
-
-**Make sure to take a note of the address - you will need it for the next step**. If you want to verify the public key for this address, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](/tools/flow-cli/get-accounts).
+**Make sure to take a note of the address - you will need it for the next step**. If you want to verify the public key for this address, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](https://developers.flow.com/tools/flow-cli/get-accounts).
 
 ### Step 3: Send FLOW to non-custodial account
 
-You will use your new non-custodial account to deploy smart contracts to the mainnet. This action will require you to pay a transaction fee ([more details on fees](/concepts/variable-transaction-fees)). The fees you will have to pay are dependent on the amount and size of the contracts. Deploying a single contract that is ~50kb will cost ~0.00002965 FLOW.
+You will use your new non-custodial account to deploy smart contracts to the mainnet. This action will require you to pay a transaction fee ([more details on fees](https://developers.flow.com/concepts/variable-transaction-fees)). The fees you will have to pay are dependent on the amount and size of the contracts. Deploying a single contract that is ~50kb will cost ~0.00002965 FLOW.
 
 Determine the minimum FLOW amount for your needs and transfer as follows.
 
