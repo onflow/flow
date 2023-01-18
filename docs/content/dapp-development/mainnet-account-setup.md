@@ -5,7 +5,7 @@ sidebar_title: 4. Mainnet Account Setup
 
 In order to deploy your smart contracts to the mainnet, you need to register, fund, and setup a new account.
 
-At the time of writing, the most convenient way to setup a new mainnet account is by using [Flow Port](/flow-port/).
+At the time of writing, the most convenient way to setup a new mainnet account is by using [Flow Port](https://developers.flow.com/nodes/flow-port).
 
 > **Note**: This account will be used for production purposes. Make sure you handle keys appropriately. Using a Key Management Service is the best practice.
 
@@ -15,7 +15,7 @@ What you need before you start:
 
 - Blocto account: You need an account on Blocto in order to interact with [Flow Port](https://port.onflow.org/)
 - FLOW tokens: The default amount of the FLOW token (0.001) in Blocto accounts is **NOT** sufficient to create an additional Flow account. You should at least have 0.002 FLOW in your Blocto account
-- [Flow CLI](https://github.com/onflow/flow-cli): You need the CLI to [generate a non-custodial key pair](/flow-cli/generate-keys/)
+- [Flow CLI](https://github.com/onflow/flow-cli): You need the CLI to [generate a non-custodial key pair](/tools/flow-cli/generate-keys)
 
 > **Note**: If you do not have enough FLOW, please refer to the [Buy FLOW instructions](https://flow.com/#buyflow).
 
@@ -77,7 +77,7 @@ Next, scroll down to the events section and locate the `flow.AccountCreated` eve
 
 ![event](port-event.png)
 
-**Make sure to take a note of the address - you will need it for the next step**. If you want to verify the public key for this address, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](/flow-cli/get-accounts/).
+**Make sure to take a note of the address - you will need it for the next step**. If you want to verify the public key for this address, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](/tools/flow-cli/get-accounts).
 
 ### Step 3: Send FLOW to non-custodial account
 
