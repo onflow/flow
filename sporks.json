@@ -1,6 +1,50 @@
 {
   "networks": {
     "mainnet": {
+      "mainnet21": {
+        "id": 21,
+        "live": true,
+        "name": "Mainnet-21",
+        "sporkTime": "2023-01-18T17:00:00Z",
+        "rootHeight": "44950207",
+        "rootParentId": "52004adfa7854b1a515d0d905dd5317dc7f77a8dbb56058e04dde01e53e80a92",
+        "rootStateCommitment": "905c5e9a576ba2cbe49b5fe5f64ae84c2dee1bc26a3e81932e573e06a722d08a",
+        "gitCommitHash": "7f02a642bb437b45326c4ace54a7f033b32832f8",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-21-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-21-execution/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-21-execution/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-21-execution/public-root-information/node-infos.pub.json",
+            "executionStateBucket": "flow_public_mainnet21_execution_state"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": "flow-public-mainnet21-execution-state"
+          }
+        },
+        "tags": {
+          "flow-go": "v0.29.6",
+          "flow-dps": "v0.29",
+          "cadence": "v0.29.0",
+          "docker": "v0.29.6"
+        },
+        "seedNodes": [
+          {
+            "address": "access-007.mainnet21.nodes.onflow.org:3570",
+            "key": "28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae"
+          },
+          {
+            "address": "access-008.mainnet21.nodes.onflow.org:3570",
+            "key": "11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a"
+          }
+        ],
+        "accessNodes": [
+          "access.mainnet.nodes.onflow.org:9000"
+        ]
+      },
       "mainnet20": {
         "id": 20,
         "live": true,
@@ -42,7 +86,7 @@
           }
         ],
         "accessNodes": [
-          "access.mainnet20.nodes.onflow.org:9000"
+          "access-001.mainnet20.nodes.onflow.org:9000"
         ]
       },
       "mainnet19": {
@@ -114,7 +158,7 @@
           }
         ],
         "accessNodes": [
-          "access.mainnet19.nodes.onflow.org:9000"
+          "access-001.mainnet19.nodes.onflow.org:9000"
         ]
       },
       "mainnet18": {
@@ -162,7 +206,7 @@
           }
         ],
         "accessNodes": [
-          "access.mainnet18.nodes.onflow.org:9000"
+          "access-001.mainnet18.nodes.onflow.org:9000"
         ]
       },
       "mainnet17": {
@@ -234,7 +278,7 @@
           }
         ],
         "accessNodes": [
-          "access.mainnet17.nodes.onflow.org:9000"
+          "access-001.mainnet17.nodes.onflow.org:9000"
         ]
       },
       "mainnet16": {
