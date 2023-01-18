@@ -1,6 +1,6 @@
 # Variable Transaction Fees - Execution Effort I.
 
-| Status        | Proposed                                           |
+| Status        | Implemented (0.25.x)                               |
 | :------------ | :------------------------------------------------- |
 | **FLIP #**    | [753](https://github.com/onflow/flow/pull/753)     |
 | **Author(s)** | Janez Podhostnik (janez.podhostnik@dapperlabs.com) |
