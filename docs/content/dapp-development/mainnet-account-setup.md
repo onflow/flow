@@ -37,7 +37,7 @@ Next, select "Blocto" as the provider and follow the instructions to either sign
 
 Once you successfully logged in, you will see the dashboard. Locate the left side navigation and open the "Advanced" menu.
 
-##### Dashboard
+#### Dashboard
 
 Next, click on "Create New Account".
 
