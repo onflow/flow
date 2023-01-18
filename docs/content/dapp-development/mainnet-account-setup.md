@@ -27,17 +27,17 @@ What you need before you start:
 
 Open [Flow Port](https://port.onflow.org/) on your browser and "Sign In" using Blocto.
 
-![login](/port-login.png)
+
 
 Next, select "Blocto" as the provider and follow the instructions to either sign up or sign in to your existing account.
 
-![select-wallet](/select-wallet.png)
+
 
 > **Note**: If you have an existing account, you will be asked to confirm your login request. If you create a new account, you will need to complete a transaction to prepare your account for Flow Port usage.
 
 Once you successfully logged in, you will see the dashboard. Locate the left side navigation and open the "Advanced" menu.
 
-![dashboard](/port-dashboard.png)
+
 
 Next, click on "Create New Account".
 
