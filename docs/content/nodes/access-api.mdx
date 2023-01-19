@@ -844,7 +844,7 @@ message Block {
 | block_seals           | List of [block seals](#block-seal)                                                                                                                                                                                                                                                                                |
 | signatures            | BLS signatures of consensus nodes                                                                                                                                                                                                                                                                                 |
 
-The detailed semantics of block formation are covered in the [block formation guide](/concepts/transaction-lifecycle#block-formation).
+The detailed semantics of block formation are covered in the [block formation guide](https://developers.flow.com/learn/concepts/transaction-lifecycle#block-formation).
 
 ## Block Header
 
@@ -956,17 +956,17 @@ message TransactionSignature {
 | authorizers                   | Addresses of the transaction authorizers                                                             |
 | signatures                    | [Signatures](#transaction-signatures) from all signer accounts                                       |
 
-The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](/concepts/transaction-signing).
+The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](https://developers.flow.com/learn/concepts//concepts/transaction-signing).
 
 ### Proposal Key
 
-The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](/concepts/accounts-and-keys#sequence-numbers).
+The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](https://developers.flow.com/learn/concepts//concepts/accounts-and-keys#sequence-numbers).
 
 | Field           | Description                                                                          |
 | --------------- | ------------------------------------------------------------------------------------ |
 | address         | Address of proposer account                                                          |
 | key_id          | ID of proposal key on the proposal account                                           |
-| sequence_number | [Sequence number](/concepts/accounts-and-keys#sequence-numbers) for the proposal key |
+| sequence_number | [Sequence number](https://developers.flow.com/learn/concepts//concepts/accounts-and-keys#sequence-numbers) for the proposal key |
 
 ### Transaction Signature
 
@@ -1022,7 +1022,7 @@ message Account {
 
 The `code` and `contracts` fields contain the raw Cadence source code, encoded as UTF-8 bytes.
 
-More information on accounts can be found [here](/concepts/accounts-and-keys/).
+More information on accounts can be found [here](https://developers.flow.com/learn/concepts//concepts/accounts-and-keys/).
 
 ### Account Key
 
@@ -1044,13 +1044,13 @@ message AccountKey {
 | --------------- | --------------------------------------------------------------------------------------- |
 | id              | Index of the key within the account, used as a unique identifier                        |
 | public_key      | Public key encoded as bytes                                                             |
-| sign_algo       | [Signature algorithm](/concepts/accounts-and-keys#supported-signature--hash-algorithms) |
-| hash_algo       | [Hash algorithm](/concepts/accounts-and-keys#supported-signature--hash-algorithms)      |
-| weight          | [Weight assigned to the key](/concepts/accounts-and-keys#weighted-keys)                 |
-| sequence_number | [Sequence number for the key](/concepts/accounts-and-keys#sequence-numbers)             |
+| sign_algo       | [Signature algorithm](https://developers.flow.com/learn/concepts/accounts-and-keys#supported-signature--hash-algorithms) |
+| hash_algo       | [Hash algorithm](https://developers.flow.com/learn/concepts/accounts-and-keys#supported-signature--hash-algorithms)      |
+| weight          | [Weight assigned to the key](https://developers.flow.com/learn/concepts/accounts-and-keys#weighted-keys)                 |
+| sequence_number | [Sequence number for the key](https://developers.flow.com/learn/concepts/accounts-and-keys#sequence-numbers)             |
 | revoked         | Flag indicating whether or not the key has been revoked                                 |
 
-More information on account keys, key weights and sequence numbers can be found [here](/concepts/accounts-and-keys/).
+More information on account keys, key weights and sequence numbers can be found [here](https://developers.flow.com/learn/concepts/accounts-and-keys/).
 
 ## Event
 
