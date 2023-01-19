@@ -5,7 +5,7 @@ sidebar_title: 4. Mainnet Account Setup
 
 In order to deploy your smart contracts to the mainnet, you need to register, fund, and setup a new account.
 
-At the time of writing, the most convenient way to setup a new mainnet account is by using [Flow Port](/flow-port/).
+At the time of writing, the most convenient way to setup a new mainnet account is by using [Flow Port](https://developers.flow.com/nodes/flow-port).
 
 > **Note**: This account will be used for production purposes. Make sure you handle keys appropriately. Using a Key Management Service is the best practice.
 
@@ -15,7 +15,7 @@ What you need before you start:
 
 - Blocto account: You need an account on Blocto in order to interact with [Flow Port](https://port.onflow.org/)
 - FLOW tokens: The default amount of the FLOW token (0.001) in Blocto accounts is **NOT** sufficient to create an additional Flow account. You should at least have 0.002 FLOW in your Blocto account
-- [Flow CLI](https://github.com/onflow/flow-cli): You need the CLI to [generate a non-custodial key pair](/flow-cli/generate-keys/)
+- [Flow CLI](https://github.com/onflow/flow-cli): You need the CLI to [generate a non-custodial key pair](https://developers.flow.com/tools/flow-cli/generate-keys)
 
 > **Note**: If you do not have enough FLOW, please refer to the [Buy FLOW instructions](https://flow.com/#buyflow).
 
@@ -27,17 +27,17 @@ What you need before you start:
 
 Open [Flow Port](https://port.onflow.org/) on your browser and "Sign In" using Blocto.
 
-![login](/port-login.png)
+#### Login
 
 Next, select "Blocto" as the provider and follow the instructions to either sign up or sign in to your existing account.
 
-![select-wallet](/select-wallet.png)
+#### Select Wallet
 
 > **Note**: If you have an existing account, you will be asked to confirm your login request. If you create a new account, you will need to complete a transaction to prepare your account for Flow Port usage.
 
 Once you successfully logged in, you will see the dashboard. Locate the left side navigation and open the "Advanced" menu.
 
-![dashboard](/port-dashboard.png)
+#### Dashboard
 
 Next, click on "Create New Account".
 
@@ -75,13 +75,11 @@ Once the transaction is sealed, you will see a confirmation: `Transaction Sealed
 
 Next, scroll down to the events section and locate the `flow.AccountCreated` event with the newly generated address.
 
-![event](port-event.png)
-
-**Make sure to take a note of the address - you will need it for the next step**. If you want to verify the public key for this address, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](/flow-cli/get-accounts/).
+**Make sure to take a note of the address - you will need it for the next step**. If you want to verify the public key for this address, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](https://developers.flow.com/tools/flow-cli/get-accounts).
 
 ### Step 3: Send FLOW to non-custodial account
 
-You will use your new non-custodial account to deploy smart contracts to the mainnet. This action will require you to pay a transaction fee ([more details on fees](/concepts/variable-transaction-fees)). The fees you will have to pay are dependent on the amount and size of the contracts. Deploying a single contract that is ~50kb will cost ~0.00002965 FLOW.
+You will use your new non-custodial account to deploy smart contracts to the mainnet. This action will require you to pay a transaction fee ([more details on fees](https://developers.flow.com/concepts/variable-transaction-fees)). The fees you will have to pay are dependent on the amount and size of the contracts. Deploying a single contract that is ~50kb will cost ~0.00002965 FLOW.
 
 Determine the minimum FLOW amount for your needs and transfer as follows.
 
