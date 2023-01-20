@@ -31,9 +31,9 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 
  1. Ensure you have:
 
-     - a.) [Ledger Live](https://support.ledger.com/hc/en-us/articles/360006395553) installed on your computer
+     - a.) [Ledger Live](https://www.ledger.com/ledger-live) installed on your computer
 
-     - b.) [Initialized](https://support.ledger.com/hc/en-us/articles/360000613793) your Ledger Device.
+     - b.) [Initialized](https://support.ledger.com/hc/en-us/articles/360017362160-Flow-FLOW-?support=true) your Ledger Device.
 
 #### Install the Flow App
 
