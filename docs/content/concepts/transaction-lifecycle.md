@@ -2,8 +2,8 @@
 
 This document walks through each stage of a transaction's lifecycle as it moves through the Flow network.
 
-/** START doctoc generated TOC please keep comment here to allow auto update */
-/** DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE */
+<!--- START doctoc generated TOC please keep comment here to allow auto update --->
+<!--- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE --->
 **Table of Contents**
 
 - [Transaction Lifecycle](#transaction-lifecycle)
@@ -19,7 +19,7 @@ This document walks through each stage of a transaction's lifecycle as it moves 
 	- [Verification](#verification)
 	- [Sealing](#sealing)
 
-/** END doctoc generated TOC please keep comment here to allow auto update */
+<!--- END doctoc generated TOC please keep comment here to allow auto update --->
 
 ## Submission
 
