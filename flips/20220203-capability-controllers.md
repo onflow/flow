@@ -374,7 +374,7 @@ access(account) petNames: {String: UInt64}
 access(account) issueHasCount(petName: String): Capability<&{HasCount}> {
    // for brevity this function is not handling pet name collision
    let cap = self.account.capabilities.issue<&{HasCount}>(/storage/counter)
-   self.petNames[petName] = cap.capabilityID
+   self.petNames[petName] = cap.id
    return cap
 }
 ```
@@ -444,7 +444,7 @@ pub resource ScopedMain : AdminInterface {
 
    fun createCountCap(): Capability<&{HasCount}> {
       let capability = self.inner.createCountCap()
-      self.issued[capability.capabilityID] = true
+      self.issued[capability.id] = true
       return capability
    }
 
@@ -488,8 +488,7 @@ issuer.save(cap, to: publicOrPrivatePath)
 // issuer.unlink(publicOrPrivatePath)
 
 let cap = issuer.capabilities.get<T>(publicOrPrivatePath)!
-let capabilityID = cap.capabilityID
-let capCon = issuer.capabilities.getController(byCapabilityID: capabilityID)
+let capCon = issuer.capabilities.getController(byCapabilityID: cap.id)
 
 capCon.revoke()
 ```
@@ -502,8 +501,7 @@ capCon.revoke()
 // 1. unlink
 
 let cap = issuer.capabilities.get<T>(publicOrPrivatePath)!
-let capabilityID = cap.capabilityID
-let capCon = issuer.capabilities.getController(byCapabilityID: capabilityID)
+let capCon = issuer.capabilities.getController(byCapabilityID: cap.id)
 
 capCon.revoke()
 
