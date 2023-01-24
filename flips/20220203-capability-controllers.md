@@ -180,6 +180,8 @@ struct CapabilityController {
    // This moves the CapCon from one CapCon array to another.
    // If the new target is not a valid target this will panic.
    fun retarget(target: StoragePath)
+
+    fun getCapability<T>(): Capability<T>?
 }
 ```
 
@@ -201,7 +203,9 @@ struct AuthAccount {
    struct Capabilities {
       // get returns the capability at the public path, if one was stored there.
       fun get<T>(_ path: PublicPath): Capability<T>?
-      // borrow is equivalent to `get(path)!.borrow()` if `get(path)` exists `nil` otherwise
+      // borrow gets the capability at the given path, and borrows the capability if it exists.
+      // Returns `nil` if the capability does not exist or cannot be borrowed using the given type.
+      // The function is equivalent to `get(path)?.borrow()`.
       fun borrow<T>(_ path: PublicPath): T?
       // For each iterates through all the public capabilities of the public account.
       // If function returns false, the iteration ends.
@@ -239,7 +243,9 @@ struct PublicAccount {
    struct Capabilities {
       // get returns the capability at the public path, if one was stored there.
       fun get<T>(_ path: PublicPath): Capability<T>?
-      // borrow is equivalent to `get(path)!.borrow()` if `get(path)` exists `nil` otherwise
+      // borrow gets the capability at the given path, and borrows the capability if it exists.
+      // Returns `nil` if the capability does not exist or cannot be borrowed using the given type.
+      // The function is equivalent to `get(path)?.borrow()`.
       fun borrow<T>(_ path: PublicPath): T?
       // For each iterates through all the public capabilities of the public account.
       // If function returns false, the iteration ends.
@@ -335,7 +341,7 @@ pub resource Main : AdminInterface {
 
    fun revokeCountCap(capabilityID: UInt64) {
       if let capCon = self.account.capabilities.getController(byCapabilityID: capabilityID) {
-         if capCon.Type != Type<&{HasCount}>() {
+         if capCon.borrowType != Type<&{HasCount}>() {
             return false // we have only delegated the issuance/revocation of &{HasCount} capabilities
          }
          capCon.revoke()
