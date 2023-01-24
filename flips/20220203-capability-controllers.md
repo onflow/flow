@@ -255,7 +255,7 @@ struct AuthAccount {
         fun borrow<T>(_ path: PublicPath): T?
  
         // For each iterates through all the public capabilities of the public account.
-        // If function returns false, the iteration ends.
+        // Returning false from the function stops the iteration.
         fun forEach(_ function: ((PublicPath, Type): Bool))
 
         // Get capability controller for capability with the specified id
@@ -299,7 +299,7 @@ struct PublicAccount {
         fun borrow<T>(_ path: PublicPath): T?
 
         // For each iterates through all the public capabilities of the public account.
-        // If function returns false, the iteration ends.
+        // Returning false from the function stops the iteration.
         fun forEach(_ function: ((PublicPath, Type): Bool))
     }
 }
