@@ -1,10 +1,13 @@
 ---
-title: Node Bootstrap
-sidebar_title: Node Bootstrapping
-description: How to get started running a node on Flow
+title: Setting Up a Flow Access Node
+sidebar_title: Access Node Setup
+description: How to run a Permissionless Access node
 ---
 
-This guide is for getting a new node staked and running on Flow other than a permissionless Access node. For running a permissionless Access node see [Access node setup](https://developers.flow.com/nodes/node-operation/access-node-setup). For sporking documentation for existing node operators, see [Spork Process](/nodes/node-operation/spork).
+This guide is for running a Permissonless Access node on Flow. If you are planning to run a different type of staked node then see [node bootstrap](https://developers.flow.com/nodes/node-operation/node-bootstrap).
+
+First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](https://developers.flow.com/nodes/node-operation/node-provisioning) guide for it.
+
 
 ## Timing
 
@@ -25,13 +28,13 @@ of the `Epoch Setup Phase` to participate in the [Epoch Preparation Protocol](/s
 ## Step 1 - Run Genesis Bootstrap
 
 <Callout type="info">
-  You will need to run this process for each node that you are operating
+    You will need to run this process for each node that you are operating
 </Callout>
 
 ### Download the Bootstrapping Kit
 
 <Callout type="warning">
-If you have downloaded the bootstrapping kit previously, ensure you check the hash below still matches. If not, re-download to ensure you are using the most up-to-date version.
+    If you have downloaded the bootstrapping kit previously, ensure you check the hash below still matches. If not, re-download to ensure you are using the most up-to-date version.
 </Callout>
 
 ```shell
@@ -53,27 +56,27 @@ b05324a42d80ad2d9cd7ff2aeb47b0d2fb0d57ace9d447928b27a93286868873  ./boot-tools/t
 
 <Callout type="info">
 
-Use a fully qualified domain name for the network address. Please also include the port number in the network address e.g. `example.com:3569`
+    Use a fully qualified domain name for the network address. Please also include the port number in the network address e.g. `example.com:3569`
 
 </Callout>
 
 <Callout type="warning">
 
-Do not include in `http://` format.
+    Do not include in `http://` format.
 
 </Callout>
 
 <Callout type="info">
 
-If you are running multiple nodes, please
-ensure you have different addresses for each node.
+    If you are running multiple nodes, please
+    ensure you have different addresses for each node.
 
 </Callout>
 
 <Callout type="warning">
 
-All your current keys and Flow genesis files should be in the `bootstrap`
-folder created earlier. Please take a back up of the entire folder.
+    All your current keys and Flow genesis files should be in the `bootstrap`
+    folder created earlier. Please take a back up of the entire folder.
 
 </Callout>
 
@@ -127,8 +130,8 @@ $tree ./bootstrap/
 
 <Callout type="info">
 
-For `consensus` and `collection` node types an additional key will be created for the Machine Account.
-For all other node types this will not be needed.
+    For `consensus` and `collection` node types an additional key will be created for the Machine Account.
+    For all other node types this will not be needed.
 
 </Callout>
 
@@ -150,7 +153,7 @@ $./boot-tools/bootstrap key --address ${YOUR_NODE_ADDRESS} --role ${YOUR_NODE_RO
 
 <Callout type="warning">
 
-Copy the machine account public key somewhere safe. You will need it in a later step.
+    Copy the machine account public key somewhere safe. You will need it in a later step.
 
 </Callout>
 
@@ -177,7 +180,7 @@ This value is found in the output of the `bootstrap key` command from Step 1.
 
 <Callout type="info">
 
-Please let us know your node id via discord or email.
+    Please let us know your node id via discord or email.
 
 </Callout>
 
@@ -185,7 +188,7 @@ Please let us know your node id via discord or email.
 
 <Callout type="warning">
 
-If you are not running a collection or consensus node, you can skip this step.
+    If you are not running a collection or consensus node, you can skip this step.
 
 </Callout>
 
@@ -285,7 +288,7 @@ This is the recommended way to start your node for the first time.
 4. Start your node (see [guide](/nodes/node-operation/node-setup/#start-the-node))
 
 <Callout type="info">
-Once the node has bootstrapped, these flags may be removed.
+    Once the node has bootstrapped, these flags may be removed.
 </Callout>
 
 ### Manually Provisioned Root Snapshot
@@ -298,14 +301,14 @@ flow snapshot save /path/to/root/snapshot --network mainnet
 
 <Callout type="warning">
 
-The snapshot must be within the `Epoch Setup Phase`.
+    The snapshot must be within the `Epoch Setup Phase`.
 
 </Callout>
 
 <Callout type="warning">
 
-Since Collection and Consensus Nodes must start up in the first ~30mins of the `Epoch Setup Phase` (see [Timing](/nodes/node-operation/node-bootstrap/#timing)),
-the snapshot must be provisioned within this time window.
+    Since Collection and Consensus Nodes must start up in the first ~30mins of the `Epoch Setup Phase` (see [Timing](/nodes/node-operation/node-bootstrap/#timing)),
+    the snapshot must be provisioned within this time window.
 
 </Callout>
 
