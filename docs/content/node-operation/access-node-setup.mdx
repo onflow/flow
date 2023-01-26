@@ -1,119 +1,15 @@
 ---
 title: Setting Up a Flow Access Node
 sidebar_title: Access Node Setup
-description: How to run a permissionless Access node
+description: How to run a Permissionless Access node
 ---
 
-This guide is for running a permissonless Access node on Flow. If you are planning to run a different type of staked node then see [node bootstrap](node-bootstrap).
+This guide is for running a Permissonless Access node on Flow. If you are planning to run a different type of staked node then see [node bootstrap](https://developers.flow.com/nodes/node-operation/node-bootstrap).
 
-At a high level, to run a permissionless Access node, you will have to do the following steps:
-1. Generate the node information (private and public keys, node ID etc.) using a utility.
-2. Stake the node with 100 FLOW by EOD Tuesday (date TBD) by providing the node information generated in step 1.
-3. Wait for the staking auction to complete on Wednesday morning.
-4. Check if your node ID got selected by the random on-chain selection process.
-5. If your node ID got selected, provision and start running the node. If your node didn't get selected, your staked tokens you can stake try again in the next epoch. Your staked tokens will be returned in that case.
-
-Following is how to execute each of these five steps in details:
-
-## Step  1 - Generate node information
-
-<Callout type="info">
-    You will need to run this step for each access node that you would like to run.
-</Callout>
-
-### Download the Bootstrapping Kit
-
-<Callout type="warning">
-    If you have downloaded the bootstrapping kit previously, ensure you check the hash below still matches. If not, re-download to ensure you are using the most up-to-date version.
-</Callout>
-
-```shell
-curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
-tar -xvf boot-tools.tar
-```
-
-```shell:title=CheckSHA256
-sha256sum ./boot-tools/bootstrap
-0d2cb2d0edb659880ae729e9d849a98535414af33690dad545d9892268167bcf  ./boot-tools/bootstrap
-```
-
-### Generate Your Node Keys
-
-#### Network Address
-
-<Callout type="info">
-
-    Use a fully qualified domain name for the network address. Please also include the port number in the network address e.g. `example.com:3569`
-
-</Callout>
-
-<Callout type="warning">
-
-    Do not include in `http://` format.
-
-</Callout>
-
-<Callout type="info">
-
-    If you would like to run multiple access nodes, please ensure you use a different networking addresses for each node.
-
-</Callout>
-
-<Callout type="warning">
-
-    All your private keys should be in the `bootstrap` folder created earlier. Please take a back up of the entire folder.
-
-</Callout>
-
-
-```shell
-#########################################################
-# Generate Keys
-$ mkdir ./bootstrap
-# YOUR_NODE_ADDRESS: FQDN associated to your instance
-$ ./boot-tools/bootstrap key --address "<YOUR_NODE_ADDRESS_GOES_HERE>:3569" --role access -o ./bootstrap
-```
-
-```shell:title=Example
-$./boot-tools/bootstrap key --address "flowaccess.mycompany.com:3569" --role access  -o ./bootstrap
-<nil> DBG will generate networking key
-<nil> INF generated networking key
-<nil> DBG will generate staking key
-<nil> INF generated staking key
-<nil> DBG will generate db encryption key
-<nil> INF generated db encryption key
-<nil> DBG assembling node information address=consensus-001.nodes.flow.com:3569
-<nil> DBG encoded public staking and network keys networkPubKey=7f31ae79017a2a58a5e59af9184f440d08885a16614b2c4e361019fa72a9a1a42bf85b4e3f9674782f12ca06afd9782e9ccf19496baed069139385b82f8f40f6 stakingPubKey=829d086b292d84de8e7938fd2fafa8f51a6e025f429291835c20e59d9e25665febf24fa59de12a4df08be7e82c5413180cc7b1c73e01f26e05344506aaca4fa9cc009dc1c33f8ba3d7c7509e86d3d3e7341b43b9bf80bb9fba56ae0b3135dd72
-<nil> INF wrote file bootstrap/public-root-information/node-id
-<nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-info.priv.json
-<nil> INF wrote file bootstrap/private-root-information/private-node-info_5e44ad5598bb0acb44784f629e84000ffea34d5552427247d9008ccf147fb87f/secretsdb-key
-<nil> INF wrote file bootstrap/public-root-information/node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
-<nil> DBG will generate machine account key
-<nil> INF generated machine account key
-<nil> DBG assembling machine account information address=consensus-001.nodes.flow.com:3569
-<nil> INF encoded machine account public key for entry to Flow Port machineAccountPubKey=f847b8406e8969b869014cd1684770a8db02d01621dd1846cdf42fc2bca3444d2d55fe7abf740c548639cc8451bcae0cd6a489e6ff59bb6b38c2cfb83e095e81035e507b02038203e8
-<nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-machine-account-key.priv.json
-
-$tree ./bootstrap/
-./bootstrap
-├── private-root-information
-│   └── private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9
-│       ├── node-info.priv.json
-│       ├── node-machine-account-key.priv.json
-│       └── secretsdb-key
-└── public-root-information
-    ├── node-id
-    └── node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
-
-3 directories, 4 files
-```
-
-
-First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](node-provisioning) guide for it.
+First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](https://developers.flow.com/nodes/node-operation/node-provisioning) guide for it.
 
 
 ## Generate keys
-
 
 ## Staking the node with 100 FLOW
 
