@@ -5,9 +5,9 @@ description: How to run a Collection, Consensus, Verification and Execution node
 ---
 
 This guide is for running a Collection, Consensus, Verification and Execution node.
-If you are planning to run an Access node then refer to [access node setup](https://developers.flow.com/nodes/node-operation/access-node-setup.mdx).
+If you are planning to run an Access node then refer to [access node setup](access-node-setup).
 
-First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](https://developers.flow.com/nodes/node-operation/node-provisioning) guide for it.
+First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](node-provisioning) guide for it.
 
 ## Pull the Flow Images
 
@@ -201,13 +201,13 @@ Now that your node is provisioned and configured, it can be started.
 
 <Callout type="warning">
 
-Before starting your node, ensure it is [registered](https://developers.flow.com/nodes/node-operation/node-bootstrap/#step-2---stake-your-node) and [authorized](https://developers.flow.com/nodes/node-operation/node-bootstrap#confirming-authorization).
+Before starting your node, ensure it is [registered](node-bootstrap#step-2---stake-your-node) and [authorized](node-bootstrap#confirming-authorization).
 
 </Callout>
 
 Ensure you start your node at the appropriate time.
-See [Spork Process](https://developers.flow.com/nodes/node-operation/spork) for when to start up a node following a spork.
-See [Node Bootstrap](https://developers.flow.com/nodes/node-operation/node-bootstrap#timing) for when to start up a newly registered node.
+See [Spork Process](spork) for when to start up a node following a spork.
+See [Node Bootstrap](node-bootstrap#timing) for when to start up a newly registered node.
 
 ### Systemd
 
@@ -250,7 +250,7 @@ CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 
 ## Monitoring and Metrics
 
-This is intended for operators who would like to see what their Flow nodes are currently doing. Head over to [Monitoring Node Health](https://developers.flow.com/nodes/node-operation/monitoring-nodes/) to get setup.
+This is intended for operators who would like to see what their Flow nodes are currently doing. Head over to [Monitoring Node Health](monitoring-nodes) to get setup.
 
 ### Node Status
 
