@@ -11,9 +11,16 @@ The protocol reserves slashing for maintaining the security of the protocol rath
 You can find more details on the conditions under which a node is slashed
 in the [Flow whitepapers](https://www.onflow.org/technical-paper).
 
-Slashing is not currently enforced by the staking contract.
+Direct stake slashing is not currently enforced by the protocol and staking contract.
 It will be handled on a case-by-case basis for the foreseeable future
 to ensure network participants have time to participate in the testing and rollout of slashing.
+
+There is a very basic form of slashing that is currently used, where
+nodes who have liveness issues during an epoch may have their rewards 
+and their delegators' rewards reduced by a pre-determinded amount based on
+the severity of the liveness infractions. This amount is often 50%
+and is only taken from the stakers' rewards for a given epoch.
+Their staked FLOW is not touched at all.
 
 When slashing is enforced, slashable protocol violations must be adjudicated by a supermajority
 of more than 2/3 of the staked consensus nodes in order to take effect.
