@@ -956,17 +956,17 @@ message TransactionSignature {
 | authorizers                   | Addresses of the transaction authorizers                                                             |
 | signatures                    | [Signatures](#transaction-signatures) from all signer accounts                                       |
 
-The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](https://developers.flow.com/learn/concepts//concepts/transaction-signing).
+The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](https://developers.flow.com/learn/concepts/transaction-signing).
 
 ### Proposal Key
 
-The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](https://developers.flow.com/learn/concepts//concepts/accounts-and-keys#sequence-numbers).
+The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](https://developers.flow.com/learn/concepts/accounts-and-keys#sequence-numbers).
 
 | Field           | Description                                                                          |
 | --------------- | ------------------------------------------------------------------------------------ |
 | address         | Address of proposer account                                                          |
 | key_id          | ID of proposal key on the proposal account                                           |
-| sequence_number | [Sequence number](https://developers.flow.com/learn/concepts//concepts/accounts-and-keys#sequence-numbers) for the proposal key |
+| sequence_number | [Sequence number](https://developers.flow.com/learn/concepts/accounts-and-keys#sequence-numbers) for the proposal key |
 
 ### Transaction Signature
 
@@ -1022,7 +1022,7 @@ message Account {
 
 The `code` and `contracts` fields contain the raw Cadence source code, encoded as UTF-8 bytes.
 
-More information on accounts can be found [here](https://developers.flow.com/learn/concepts//concepts/accounts-and-keys/).
+More information on accounts can be found [here](https://developers.flow.com/learn/concepts/accounts-and-keys/).
 
 ### Account Key
 
