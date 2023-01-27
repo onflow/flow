@@ -6,22 +6,6 @@ description: How to get started running a node on Flow
 
 This guide is for getting a new node staked and running on Flow other than a permissionless Access node. For running a permissionless Access node see [Access node setup](access-node-setup.mdx). For sporking documentation for existing node operators, see [Spork Process](/nodes/node-operation/spork).
 
-## Timing
-
-New nodes are able to join the network each time a new epoch begins.
-In order to join the network at epoch N+1, the node must be registered with sufficient stake and
-authorized by the service account prior to the end of epoch N's Staking Auction Phase.
-Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](/staking/epoch-scripts-events/#epochsetup).
-
-Nodes registered for epoch N+1 are able to participate in network communication on a limited basis starting in the `Epoch Setup Phase` of epoch N.
-
-![Flow Epoch Schedule](https://storage.googleapis.com/flow-resources/documentation-assets/epoch-startup-order.png)
-
-Once registered and confirmed to join the network at epoch N+1, the node must start up **before** epoch N+1 begins.
-* Verification & Access nodes may start up any time during the `Epoch Setup Phase`.
-* Consensus & Collection nodes must start up within the first **1000 views (~30mins)**
-of the `Epoch Setup Phase` to participate in the [Epoch Preparation Protocol](/staking/epoch-preparation/#phase-1-epoch-setup).
-
 ## Step 1 - Run Genesis Bootstrap
 
 <Callout type="info">
