@@ -195,30 +195,30 @@ The definition of the `CapabilityController`.
 
 ```cadence
 struct CapabilityController {
-    // The block height when the capability was created.
+    /// The block height when the capability was created.
     let issueHeight: UInt64
    
-    // The Type of the capability, i.e.: the T in Capability<T>.
+    /// The Type of the capability, i.e.: the T in Capability<T>.
     let borrowType: Type
    
-    // The id of the related capability.
-    // This is the UUID of the created capability.
-    // All copies of the same capability will have the same UUID
+    /// The id of the related capability.
+    /// This is the UUID of the created capability.
+    /// All copies of the same capability will have the same UUID
     let capabilityID: UInt64
    
-    // Is the capability revoked.
+    /// Is the capability revoked.
     let isRevoked: Bool
 
-    // Returns the targeted storage path of the capability.
+    /// Returns the targeted storage path of the capability.
     fun target(): StoragePath
    
-    // Revoke the capability making it no longer usable.
-    // When borrowing from a revoked capability the borrow returns nil.
+    /// Revoke the capability making it no longer usable.
+    /// When borrowing from a revoked capability the borrow returns nil.
     fun revoke()
    
-    // Retarget the capability.
-    // This moves the CapCon from one CapCon array to another.
-    // If the new target is not a valid target this will panic.
+    /// Retarget the capability.
+    /// This moves the CapCon from one CapCon array to another.
+    /// If the new target is not a valid target this will panic.
     fun retarget(target: StoragePath)
 
     fun getCapability<T>(): Capability<T>?
@@ -246,31 +246,31 @@ struct AuthAccount {
     let capabilities: AuthAccount.Capabilities
 
     struct Capabilities {
-        // get returns the capability at the public path, if one was stored there.
+        /// get returns the capability at the public path, if one was stored there.
         fun get<T>(_ path: PublicPath): Capability<T>?
 
-        // borrow gets the capability at the given path, and borrows the capability if it exists.
-        // Returns `nil` if the capability does not exist or cannot be borrowed using the given type.
-        // The function is equivalent to `get(path)?.borrow()`.
+        /// borrow gets the capability at the given path, and borrows the capability if it exists.
+        /// Returns `nil` if the capability does not exist or cannot be borrowed using the given type.
+        /// The function is equivalent to `get(path)?.borrow()`.
         fun borrow<T>(_ path: PublicPath): T?
  
-        // For each iterates through all the public capabilities of the public account.
-        // Returning false from the function stops the iteration.
+        /// For each iterates through all the public capabilities of the public account.
+        /// Returning false from the function stops the iteration.
         fun forEach(_ function: ((PublicPath, Type): Bool))
 
-        // Get capability controller for capability with the specified id
-        // If the id does not reference an existing capability
-        // or the capability does not target a storage path on this address, return nil
+        /// Get capability controller for capability with the specified id
+        /// If the id does not reference an existing capability
+        /// or the capability does not target a storage path on this address, return nil
         fun getController(byCapabilityID: UInt64): CapabilityController?
 
-        // Get all capability controllers for capabilities that target this storage path
+        /// Get all capability controllers for capabilities that target this storage path
         fun getControllers(forPath: StoragePath): [CapabilityController]
 
-        // Iterate through all capability controllers for capabilities that target this storage path.
-        // Returning false from the function stops the iteration.
+        /// Iterate through all capability controllers for capabilities that target this storage path.
+        /// Returning false from the function stops the iteration.
         fun forEachController(forPath: StoragePath, function: ((CapabilityController): Bool))
 
-        // Issue/create a new capability.
+        /// Issue/create a new capability.
         fun issue<T>(_ path: StoragePath): Capability<T>
     }
 }
@@ -290,16 +290,16 @@ struct PublicAccount {
     let capabilities: PublicAccount.Capabilities
    
     struct Capabilities {
-        // get returns the capability at the public path, if one was stored there.
+        /// get returns the capability at the public path, if one was stored there.
         fun get<T>(_ path: PublicPath): Capability<T>?
 
-        // borrow gets the capability at the given path, and borrows the capability if it exists.
-        // Returns `nil` if the capability does not exist or cannot be borrowed using the given type.
-        // The function is equivalent to `get(path)?.borrow()`.
+        /// borrow gets the capability at the given path, and borrows the capability if it exists.
+        /// Returns `nil` if the capability does not exist or cannot be borrowed using the given type.
+        /// The function is equivalent to `get(path)?.borrow()`.
         fun borrow<T>(_ path: PublicPath): T?
 
-        // For each iterates through all the public capabilities of the public account.
-        // Returning false from the function stops the iteration.
+        /// For each iterates through all the public capabilities of the public account.
+        /// Returning false from the function stops the iteration.
         fun forEach(_ function: ((PublicPath, Type): Bool))
     }
 }
