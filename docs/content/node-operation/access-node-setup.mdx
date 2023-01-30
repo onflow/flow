@@ -152,7 +152,9 @@ Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSe
 
 ## Step 3 - Verify if your node ID was selected
 
-How to check? What scripts to run?
+There are two main ways to verify if your node was selected. If you can monitor events, look for [the epoch setup event](/staking/epoch-scripts-events/#epochsetup) that gets emitted by the epoch contract. That event is emitted at the end of epoch N's staking auction and contains a list of node IDs that are confirmed for the next epoch.
+
+Another way to verify is the query the information directly. After the staking auction ends, you can use the [get node info script](/staking/epoch-scripts-events#get-all-of-the-info-associated-with-a-single-node-staker) to get the information about your node. If your tokens are shown in the `tokensCommitted` or `tokensStaked` balance, you are confirmed for the next epoch. If the tokens are in the `tokensUnstaked` balance, then your node was not chosen.
 
 ## Step 4 - Start your node
 
