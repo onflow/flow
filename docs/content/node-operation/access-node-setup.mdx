@@ -186,8 +186,8 @@ The access node can be run as a docker container with the following command by r
 
 ```shell
 docker run --rm \
-  -v $PWD/flow_observer/bootstrap:/bootstrap:ro  \
-  -v $PWD/flow_observer/data:/data:rw \
+  -v $PWD/bootstrap:/bootstrap:ro  \
+  -v $PWD/data:/data:rw \
   --rm \
   --name flow-go \
   --network host \
@@ -210,8 +210,8 @@ docker run --rm \
 Example, for the Node ID e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5, the docker command be the following,
 ```shell:title=Example
 docker run --rm \
-  -v $PWD/flow_observer/bootstrap:/bootstrap:ro  \
-  -v $PWD/flow_observer/data:/data:rw \
+  -v $PWD/bootstrap:/bootstrap:ro  \
+  -v $PWD/data:/data:rw \
   --rm \
   --name flow-go \
   --network host \
