@@ -18,6 +18,7 @@ This is a preliminary implementation of full permissionless node operation.
 Full functionality requires staking auctions to be implemented, which is still an upgrade planned for the future.
 Hence, for this initial phase, exactly **five** slots in total will be opened for access nodes. If there are more than five staked access nodes at the end of the staking phase on 14th Feb 2023, five of those will be selected by an on-chain random selection process and no other permissionless ANs can join until others unstake.
 More slots will be opened in the future if this goes well.
+
 ## How to run a Permissionless Access node?
 
 <Callout type="info">
@@ -170,153 +171,34 @@ Another way to verify is the query the information directly. After the staking a
 ## Step 4 - Start your node
 
 If your node has gotten selected as part of Step 3, you can now start your node.
+
 First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](node-provisioning.mdx) guide for it.
 
-## Pull the Flow Images
-
-The `flow-go` binaries are distributed as container images, and need to be pulled down to your host with your image management tool of choice.
-
-Replace `$ROLE` with the node type you are planning to run. Valid options are:
-
-- collection
-- consensus
-- execution
-- verification
-- access
-
-```shell
-  # Docker
-  docker pull gcr.io/flow-container-registry/${ROLE}:alpha-v0.0.1
-
-  # Containerd
-  ctr images pull gcr.io/flow-container-registry/${ROLE}:alpha-v0.0.1",
-```
-
-## Prepare Your Node to Start
-
-Your nodes will need to boot at startup, and restart if they crash.
-
-If you are running `systemd` you can use the service files provided by `flow-go`.
-Find them in the [Flow Go](https://github.com/onflow/flow-go/tree/master/deploy).
-
-If you are using some other system besides Systemd, you need to ensure that the Flow container is started,
-the appropriate key directories are mounted into the container, and that the container will
-automatically restart following a crash.
-
-The `systemd` files pull runtime settings from `/etc/flow/runtime-config.env` and any `.env`
-files under `/etc/flow/conf.d`. Examples of these files are also available in the github repo.
-You will need to modify the runtime config file later.
-
-### Systemd
-
-<Callout type="info">
-    If you are not using Systemd, you can skip this step
-</Callout>
-
-1. Ensure that you pulled the latest changes from [flow-go repository](https://github.com/onflow/flow-go) via `git`
-
-```shell
-## Clone the repo if you haven't already done so
-git clone https://github.com/onflow/flow-go
-
-## Get latest changes
-cd flow-go
-git pull origin master
-```
-
-2. Copy your respective [systemd unit file](https://github.com/onflow/flow-go/tree/master/deploy/systemd-docker) to: `/etc/systemd/system`
-3. Create directory `sudo mkdir /etc/flow`
-4. Copy the [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) file to: `/etc/flow/`
-5. Enable your service `sudo systemctl enable flow-$ROLE.service` (replace `$ROLE` with your node role - eg. `collection`)
-
-### Docker Configuration
-
-If you are not using Systemd, sample commands for running each Docker container are below.
-Be sure to replace `/path/to/data` and `/path/to/bootstrap` with the appropriate paths you are using.
-
-<Callout type="warning">
-    Do not run your node using `docker run` command directly without a mechanism for the node
-    to automatically restart following a crash.
-</Callout>
-
-<Callout type="info">
-    The actual Docker image tag can be found [here](https://developers.flow.com/nodes/node-operation/past-sporks) for appropriate spork.
-</Callout>
-
+The access node can be run as a docker container with the following command.
 
 ```shell
 docker run --rm \
-	-v /path/to/bootstrap:/bootstrap:ro \
-	-v /path/to/data:/data:rw \
-	--name flow-go \
-	--network host \
-	gcr.io/flow-container-registry/access:<applicable docker tag> \
-	--nodeid=${FLOW_GO_NODE_ID} \
-	--bootstrapdir=/bootstrap \
-	--datadir=/data/protocol \
-	--secretsdir=/data/secrets \
-	--rpc-addr=0.0.0.0:9000 \
-	--http-addr=0.0.0.0:8000 \
-	--collection-ingress-port=9000 \
-	--script-addr=${FLOW_NETWORK_EXECUTION_NODE} \
-	--bind 0.0.0.0:3569 \
-	--loglevel=error
+  -v $PWD/flow_observer/bootstrap:/bootstrap:ro  \
+  -v $PWD/flow_observer/data:/data:rw \
+  --rm \
+  --name flow-go \
+  --network host \
+  gcr.io/flow-container-registry/access:v0.29.7 \
+  --nodeid=[Insert you NODE ID here] \
+  --bootstrapdir=/bootstrap \
+  --datadir=/data/protocol \
+  --secretsdir=/data/secrets  \
+  --rpc-addr=0.0.0.0:9099 \
+  --http-addr=0.0.0.0:8088 \
+  --rest-addr=0.0.0.0:8071 \
+  --rpc-metrics-enabled=true \
+  --bind 0.0.0.0:3569 \
+  --dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
+  --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
+  --loglevel=error
 ```
 
-### Start the Node
-
-Now that your node is provisioned and configured, it can be started.
-
-<Callout type="warning">
-
-    Before starting your node, ensure it is [registered](node-bootstrap#step-2---stake-your-node) and [authorized](node-bootstrap#confirming-authorization).
-
-</Callout>
-
-Ensure you start your node at the appropriate time.
-See [Spork Process](spork) for when to start up a node following a spork.
-See [Node Bootstrap](node-bootstrap#timing) for when to start up a newly registered node.
-
-### Systemd
-
-1. Check that your `runtime-conf.env` is at `/etc/flow/runtime-conf.env`
-2. Update your environment variables: `source /etc/flow/runtime-conf.env`
-3. Start your service: `sudo systemctl start flow`
-
-## Verify your Node is Running
-
-
-Here are a few handy commands that you can use to check if your Flow node is up and running
-
-### Systemd
-
-- To get Flow logs: `sudo journalctl -u flow-YOUR_ROLE`
-- To get the status: `sudo systemctl status flow`
-
-```shell
-● flow-verification.service - Flow Access Node running with Docker
-Loaded: loaded (/etc/systemd/system/flow-verification.service; enabled; vendor preset: enabled)
-Active: active (running) since Wed 2020-05-20 18:18:13 UTC; 1 day 6h ago
-Process: 3207 ExecStartPre=/usr/bin/docker pull gcr.io/flow-container-registry/verification:${FLOW_GO_NODE_VERSION} (code=exited, status=0/SUCCESS)
-Main PID: 3228 (docker)
-Tasks: 10 (limit: 4915)
-Memory: 33.0M
-CGroup: /system.slice/flow-verification.service
-        └─3228 /usr/bin/docker run --rm -v /var/flow/bootstrap:/bootstrap:ro -v /var/flow/data:/data:rw --rm --name flow-go --network host gcr.io/flow-container-registry/verification:candidate8 --nodeid=489f8a4513d5bd8b8b093108fec00327b683db545b37b4ea9153f61b2c0c49dc --bootstrapdir=/bootstrap --datadir=/data/protocol --alpha=1 --bind 0.0.0.0:3569 --loglevel=error
-```
-
-### Docker
-
-- To get Flow logs: `sudo docker logs flow-go`
-- To get the status: `sudo docker ps`
-
-```shell
-$ sudo docker ps
-CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
-1dc5d43385b6 gcr.io/flow-container-registry/verification:candidate8 \"/bin/app --nodeid=4…\" 30 hours ago Up 30 hours flow-go
-```
-
-
+For a more mature setup, it is recommended that you run the container using systemd as described [here](node-setup#systemd)
 
 ## Monitoring and Metrics
 
