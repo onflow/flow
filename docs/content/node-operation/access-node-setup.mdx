@@ -238,3 +238,19 @@ curl localhost:8080/metrics | grep consensus_compliance_sealed_height
 # TYPE consensus_compliance_sealed_height gauge
 consensus_compliance_sealed_height 1.132054e+06
 ```
+
+## FAQs
+
+### Will the access node receive rewards?
+
+No, the access node do not receive any rewards.
+
+### Why is there a 100 FLOW token minimum?
+
+`TODO:Update link to FLIP`
+As mentioned in the [FLIP](https://github.com/onflow/flips/pull/57/files), the minimum is required to prevent certain vulnerabilities
+in the smart contract that are a result of having a zero minimum stake requirement.
+
+### Can the Access node be unstaked?
+
+Yes, like any other staked node, the Access node can be unstaked. The staked tokens will be moved to the unstaked bucket in the subsequent epoch.
