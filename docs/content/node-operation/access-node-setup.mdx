@@ -14,15 +14,15 @@ Node operators can also run their own permissionless access node and provide acc
 Chain analytics, audit and exploration applications can run such an access node and do not have to rely on third parties for the state of the network.
 
 ## Limitations
-This is a preliminary implementation of full permissionless node operation.
-Full functionality requires staking auctions to be implemented, which is still an upgrade planned for the future.
-Hence, for this initial phase, exactly **five** slots in total will be opened for access nodes. If there are more than five staked access nodes at the end of the staking phase on 14th Feb 2023, five of those will be selected by an on-chain random selection process and no other permissionless ANs can join until others unstake.
+This is a preliminary implementation of full permissionless node operation and there will be exactly **five** slots in total that will be opened for access nodes.
+If there are more than five staked access nodes at the end of the staking phase on 14th Feb 2023 EOD PT, five of those will be selected by an on-chain random selection process and no other permissionless ANs can join until others unstake in the next epoch.
 More slots will be opened in the future if this goes well.
+Support unlimited access nodes requires staking auctions to be implemented, which is still an upgrade planned for the future.
 
 ## How to run a Permissionless Access node?
 
 <Callout type="info">
-To run an access node you will need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](node-provisioning.mdx) guide for it.
+To run an access node you will need to provision a machine or virtual machine to run your node software. Please follow the [node-provisioning](node-provisioning.mdx) guide for it.
 You can provision the machine before or after your node has been chosen.
 </Callout>
 
@@ -174,7 +174,7 @@ If your node has gotten selected as part of Step 3, you can now start your node.
 
 First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](node-provisioning.mdx) guide for it.
 
-The access node can be run as a docker container with the following command.
+The access node can be run as a docker container with the following command by replacing nodeid with your node ID.
 
 ```shell
 docker run --rm \
@@ -197,6 +197,29 @@ docker run --rm \
   --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
   --loglevel=error
 ```
+
+Example, for the Node ID e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5, the docker command be the following,
+```shell:title=Example
+docker run --rm \
+  -v $PWD/flow_observer/bootstrap:/bootstrap:ro  \
+  -v $PWD/flow_observer/data:/data:rw \
+  --rm \
+  --name flow-go \
+  --network host \
+  gcr.io/flow-container-registry/access:v0.29.7 \
+  --nodeid=e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5 \
+  --bootstrapdir=/bootstrap \
+  --datadir=/data/protocol \
+  --secretsdir=/data/secrets  \
+  --rpc-addr=0.0.0.0:9099 \
+  --http-addr=0.0.0.0:8088 \
+  --rest-addr=0.0.0.0:8071 \
+  --rpc-metrics-enabled=true \
+  --bind 0.0.0.0:3569 \
+  --dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
+  --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
+  --loglevel=error
+````
 
 For a more mature setup, it is recommended that you run the container using systemd as described [here](node-setup#systemd)
 
