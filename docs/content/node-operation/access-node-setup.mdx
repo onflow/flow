@@ -26,7 +26,7 @@ Support for unlimited access nodes requires staking auctions to be implemented, 
 
 ## How to run a Permissionless Access node?
 
->Note: To run an access node you will need to provision a machine or virtual machine to run your node software. Please follow the [node-provisioning](node-provisioning.mdx) guide for it.
+> Note: To run an access node you will need to provision a machine or virtual machine to run your node software. Please follow the [node-provisioning](node-provisioning.mdx) guide for it.
 You can provision the machine before or after your node has been chosen.
 
 At a high level, to run a permissionless Access node, you will have to do the following steps:
@@ -39,7 +39,7 @@ The following guidance outlines the process to register a staking request for yo
 
 ## Step  1 - Generate node information
 
->Note: You will need to run this step for each access node that you would like to run.
+> Note: You will need to run this step for each access node that you would like to run.
 
 ### Download the Bootstrapping Kit
 
@@ -53,7 +53,7 @@ sha256sum ./boot-tools/bootstrap
 0d2cb2d0edb659880ae729e9d849a98535414af33690dad545d9892268167bcf  ./boot-tools/bootstrap
 ```
 
->If you have downloaded the bootstrapping kit previously, ensure the SHA256 hash for it still matches. If not, re-download to ensure you are using the most up-to-date version.
+> If you have downloaded the bootstrapping kit previously, ensure the SHA256 hash for it still matches. If not, re-download to ensure you are using the most up-to-date version.
 
 ### Generate Your Node Identity
 
@@ -95,7 +95,7 @@ $tree ./bootstrap/
 
 > Note: Use a fully qualified domain name for the network address. Please also include the port number in the network address e.g. `flowaccess.mycompany.com:3569`
 > Do not include in `http://` in the network address.
->If you would like to stake multiple access nodes, please ensure you generate a unique identity for each node.
+> If you would like to stake multiple access nodes, please ensure you generate a unique identity for each node.
 
 Your node identity has now been generated. Your <b>node ID</b> can be found in the file `./bootstrap/public-root-information/node-id`.
 
@@ -104,9 +104,7 @@ $cat ./bootstrap/public-root-information/node-id
 e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5
 ```
 
-<Callout type="warning">
-    All your private keys should be in the `bootstrap` folder created earlier. Please take a back up of the entire folder.
-</Callout>
+> All your private keys should be in the `bootstrap` folder created earlier. Please take a back up of the entire folder.
 
 ## Step  2 - Stake the node
 
