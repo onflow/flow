@@ -259,14 +259,14 @@ struct AuthAccount {
         /// Get capability controller for capability with the specified id
         /// If the id does not reference an existing capability
         /// or the capability does not target a storage path on this address, return nil
-        fun getController(byCapabilityID: UInt64): CapabilityController?
+        fun getController(byCapabilityID: UInt64): &CapabilityController?
 
         /// Get all capability controllers for capabilities that target this storage path
-        fun getControllers(forPath: StoragePath): [CapabilityController]
+        fun getControllers(forPath: StoragePath): [&CapabilityController]
 
         /// Iterate through all capability controllers for capabilities that target this storage path.
         /// Returning false from the function stops the iteration.
-        fun forEachController(forPath: StoragePath, function: ((CapabilityController): Bool))
+        fun forEachController(forPath: StoragePath, function: ((&CapabilityController): Bool))
 
         /// Issue/create a new capability.
         fun issue<T>(_ path: StoragePath): Capability<T>
