@@ -218,7 +218,6 @@ struct CapabilityController {
    
     /// Retarget the capability.
     /// This moves the CapCon from one CapCon array to another.
-    /// If the new target is not a valid target this will panic.
     fun retarget(target: StoragePath)
 
 }
