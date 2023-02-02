@@ -221,7 +221,6 @@ struct CapabilityController {
     /// If the new target is not a valid target this will panic.
     fun retarget(target: StoragePath)
 
-    fun getCapability<T>(): Capability<T>?
 }
 ```
 
