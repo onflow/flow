@@ -195,6 +195,12 @@ tx := flow.NewTransaction().
     SetPayer(myAddress)
 ```
 
+### Maximum transaction fees of a transaction
+
+The maximum possible fees the payer could pay for a transaction can be calculated as the inclusion cost plus the execution cost as if the transaction was executed with execution effort equal to the transactions specified execution effort limit.
+
+The payer will never pay more than this amount for the transaction.
+
 ## Optimizing Cadence code to reduce effort
 
 Several optimizations can lead to reduced execution time of transactions. Below is a list of some practices. This list is not exhaustive but rather exemplary.
