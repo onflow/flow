@@ -1,0 +1,32 @@
+---
+title: Byzantine node attack response
+sidebar_title: Byzantine attack response
+description: How to respond to a byzantine node attack on the network
+---
+
+Flow, like any blockchain, forms an open decentralized peer-to-peer network between all the nodes of the network.
+Hence, there exist an attack vector where one (or more than one) of the nodes is malicious (in other words byzantine) and intentionally tries to harm the network.
+There exist several protections within the node software to deal with invalid messages - checking message signatures, checking message payload etc. are just some of them.
+These protections guard the network against any security attack. However, there could still be a byzantine node that spams the other nodes in the network with invalid data and slows them down.
+While this will not compromise the security of the network, it could hurt network liveliness.
+
+This guide explains how to detect such a node and what actions you should take a node operator to deal with such byzantine nodes.
+
+## Detection
+
+TODO
+
+## Action
+
+The response to an attack from a byzantine node is a three-pronged response.
+It entails first and foremost, blocking traffic coming from the byzantine node to your node.
+Then, raising a governance FLIP to remove the node from the network as described in this [FLIP](https://github.com/onflow/flips/blob/main/governance/20230105-identify-errant-node.md).
+And finally, a service account transaction to set the node weight to 0.
+This guide focuses mainly on the first action.
+
+### Admin command
+
+What does the admin command do?
+
+How to use if to block a node?
+
