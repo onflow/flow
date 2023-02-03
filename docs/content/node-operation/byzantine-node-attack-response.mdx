@@ -7,8 +7,8 @@ description: How to respond to a byzantine node attack on the network
 Flow, like any blockchain, forms an open decentralized peer-to-peer network between all the nodes of the network.
 Hence, there exists an attack vector where one (or more than one) of the nodes is malicious (in other words byzantine) and intentionally tries to harm the network.
 There exist several protections within the node software to deal with invalid messages - checking message signatures, checking message payload etc. are just some of them.
-These protections guard the network against any security attack. However, there could still be a byzantine node that spams the other nodes in the network with invalid data and slows them down.
-While this will not compromise the security of the network, it could hurt network liveliness.
+These protections guard the network against attacks. However, there could still be a byzantine node that spams the other nodes in the network with invalid data at volumes that are intended to impact node performance.
+While this will not compromise the security of the network it could impact network liveness.
 
 This guide explains how to detect such a node and what actions you should take a node operator to deal with such byzantine nodes.
 
