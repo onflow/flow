@@ -4,7 +4,7 @@ title: Storing Data on Flow
 
 ## Overview
 
-Each Flow account has an associated storage used. The account's storage used is the byte size of all of the data stored in the account's storage. Accounts also have a storage capacity, which is directly tied to the amount of Flow tokens an account has. The account can, without any additional cost, use any amount of storage up to its storage capacity. **If a transaction would put an account over storage capacity, that transaction fails and is reverted. Likewise, if a transaction would drop an account's balance below 0.001 Flow tokens, which is the minimum an account can have, the transaction would also fail.**
+Each Flow account has an associated storage used. The account's storage used is the byte size of all the data stored in the account's storage. Accounts also have a storage capacity, which is directly tied to the amount of Flow tokens an account has. The account can, without any additional cost, use any amount of storage up to its storage capacity. **If a transaction puts an account over storage capacity, that transaction fails and is reverted. Likewise, if a transaction would drop an account's balance below 0.001 Flow tokens, which is the minimum an account can have, the transaction would also fail.**
 
 ## Storage Capacity
 
@@ -18,6 +18,12 @@ The exact amount of storage capacity an account has is the amount of FLOW the ac
 - 100 kB per 0.001 reserved FLOW.
 
 Any account can increase the storage capacity of an account by depositing more FLOW to the account.
+
+If the accounts balance is below the minimum account balance, the account's storage capacity is considered to be 0.
+
+### Storage Capacity of the Payer
+
+The storage capacity of the Payer of a transaction is generally computed the same way as the capacity of any other account, however the system needs to account for the transaction fees the payer will incur at the end of the transaction. The final amount of transaction fees is not yet fully known at the step when accounts are being checked for storage compliance (if their storage used is below their storage capacity). Because of this, the payer's balance is conservatively considered to be lower by the maximum possible transaction fees, when checking for storage compliance. The maximum transaction fee of a specific transaction is the transaction fee as if the transaction would have used up all of its execution effort limit.
 
 ## Storage Used
 

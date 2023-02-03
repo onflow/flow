@@ -58,6 +58,7 @@ All FCL compatible wallets can be easily configured to also receive FUSD.
 
 FCL compatible wallets currently supporting FUSD include:
 - [Blocto](https://blocto.portto.io/)
+- [NuFi](https://nu.fi/)
 
 You can configure your Blocto wallet to hold FUSD in one of two ways:
 - **On mobile:** In the Blocto mobile app, add "Flow USD" as a token asset in the "Wallet" tab.

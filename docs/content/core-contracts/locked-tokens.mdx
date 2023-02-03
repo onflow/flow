@@ -8,11 +8,12 @@ used to store locked FLOW tokens owned by a token holder.
 
 Source: [LockedTokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/LockedTokens.cdc)
 
-| Network    | Contract Address     |
-| ---------- | -------------------- |
-| Testnet    | `0x95e019a17d0e23d7` |
-| Sandboxnet | `0xf4527793ee68aede` |
-| Mainnet    | `0x8d0e87b65159ae63` |
+| Network         | Contract Address     |
+| --------------- | -------------------- |
+| Emulator/Canary | `0xf8d6e0586b0a20c7` |
+| Testnet         | `0x95e019a17d0e23d7` |
+| Sandboxnet      | `0xf4527793ee68aede` |
+| Mainnet         | `0x8d0e87b65159ae63` |
 
 ## StakingProxy
 
@@ -21,11 +22,12 @@ and **node operators** perform staking operations with locked FLOW.
 
 Source: [StakingProxy.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/StakingProxy.cdc)
 
-| Network    | Contract Address     |
-| ---------- | -------------------- |
-| Testnet    | `0x7aad92e5a0715d21` |
-| Sandboxnet | `0xf4527793ee68aede` |
-| Mainnet    | `0x62430cf28c26d095` |
+| Network         | Contract Address     |
+| --------------- | -------------------- |
+| Emulator/Canary | `0xf8d6e0586b0a20c7` |
+| Testnet         | `0x7aad92e5a0715d21` |
+| Sandboxnet      | `0xf4527793ee68aede` |
+| Mainnet         | `0x62430cf28c26d095` |
 
 # Transactions
 
@@ -55,7 +57,6 @@ accounts to hold locked FLOW.
 
 | ID          | Name                    | Source                                                                                                                                                                              |
 | ----------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`TA.01`** | Set Up Admin Account    | [lockedTokens/admin/create_admin_collection.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/create_admin_collection.cdc)             |
 | **`TA.02`** | Created Shared Account  | [lockedTokens/admin/admin_create_shared_accounts.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/admin_create_shared_accounts.cdc)   |
 | **`TA.04`** | Deposit Locked Tokens   | [lockedTokens/admin/deposit_locked_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/deposit_locked_tokens.cdc)                 |
 | **`TA.05`** | Unlock Tokens           | [lockedTokens/admin/unlock_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/lockedTokens/admin/unlock_tokens.cdc)                                 |
