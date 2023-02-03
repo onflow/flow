@@ -18,10 +18,11 @@ TODO
 
 ## Action
 
-The response to an attack from a byzantine node is a three-pronged response.
-It entails first and foremost, blocking traffic coming from the byzantine node to your node.
-Then, raising a governance FLIP to remove the node from the network as described in this [FLIP](https://github.com/onflow/flips/blob/main/governance/20230105-identify-errant-node.md).
-And finally, a service account transaction to set the node weight to 0.
+Responding to an attack from a byzantine node requires the following: 
+
+1. Immediate action to blocking network traffic routed from the byzantine node to your node.
+2. Raising a governance FLIP to remove the node from the network as described in this [FLIP](https://github.com/onflow/flips/blob/main/governance/20230105-identify-errant-node.md).
+3. A service account transaction to set the node weight to 0.
 This guide focuses mainly on the first action.
 
 ### Admin command
