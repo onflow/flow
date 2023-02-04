@@ -16,13 +16,40 @@ Node operators can also run their own permissionless access node and provide acc
 
 Chain analytics, audit and exploration applications can run such an access node and do not have to rely on third parties for the state of the network.
 
+
+## Timing
+
+New nodes are able to join the network each time a new epoch begins.
+An epoch is a period of time (approximately one week) when the node operators in the network are constant.
+At epoch boundaries, newly staked node operators are able to join the network and existing node operators which have unstaked may exit the network.
+You can read more about epochs [here](https://developers.flow.com/nodes/staking/schedule).
+
+
+In order to join the network at epoch N+1, the access node **must** be registered with at least 100 FLOW staked prior to the end of epoch N's Staking Auction Phase.
+Currently on mainnet, the staking auction starts every Wednesday at around 17:30 UTC and ends on the next Wednesday at 8:30 UTC. Hence, the node should be staked by Wednesday, 08:30 UTC to be able to join the network in the next epoch.
+
+Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](/staking/epoch-scripts-events/#epochsetup).
+
+
+![Flow Epoch Schedule](https://storage.googleapis.com/flow-resources/documentation-assets/epoch-startup-order.png)
+
 ## Limitations
 This is a preliminary implementation of full permissionless node operation and there will be exactly **five** slots in total that will be opened for access nodes.
-If there are more than five staked candidate access nodes at the end of the staking phase on 14th Feb 2023 EOD PT, five of those will be selected by an on-chain random selection process and no other permissionless ANs can join until others unstake in a future epoch.
+If there are more than five staked candidate access nodes at the end of the staking phase of that first epoch, five of those will be selected by an on-chain random selection process and no other permissionless ANs can join until others unstake in a future epoch.
 
 More slots will be opened in the future if this goes well.
 
 Support for unlimited access nodes requires staking auctions to be implemented, which is still an upgrade planned for the future.
+
+To summarize,
+
+|  **Date**  |  **Time** | **Epoch** |     **Epoch Phase**    |                                                     |
+|:----------:|:---------:|:---------:|:----------------------:|:---------------------------------------------------:|
+| 02/08/2023 | 17:30 UTC | n         | Staking auction starts | Stake your access nodes                             |
+| 02/15/2023 | 08:00 UTC | n         | Staking auction ends   | No more access nodes can be staked for epoch n+1    |
+| 02/15/2023 | 17:30 UTC | n+1       | Epoch n+1 starts       | 5 randomly chosen access nodes can join the network |
+
+> Please ensure that you have staked the access node by **15th Feb, 2023 Wednesday 8:0 AM UTC** if you wish to run the node in the next epoch.
 
 ## How to run a Permissionless Access node?
 
@@ -31,8 +58,8 @@ You can provision the machine before or after your node has been chosen.
 
 At a high level, to run a permissionless Access node, you will have to do the following steps:
 1. Generate the node identity (private and public keys, node ID etc.).
-2. Stake the node with 100 FLOW by **EOD Tuesday, 14th February 2023 Pacific time (02/14/2023 11:59 PM or 02/15/2023 7:59 AM UTC)** (see [timing](#timing)) by providing the node information generated in step 1.
-3. You can verify if your node ID was selected by the on-chain random selection process on the next day, Wednesday (15th February 2023).
+2. Stake the node with 100 FLOW by the end of the staking phase of the current epoch (see [timing](#timing)) by providing the node information generated in step 1.
+3. You can verify if your node ID was selected by the on-chain random selection process on Wednesday at around 17:30 UTC when the next epoch starts.
 4. If your node ID was selected, you can provision and start running the node. If your node wasn't selected, your tokens will have been refunded to your unstaked bucket in the staking smart contract. When the next epoch begins, you can try committing tokens again in a future epoch to get a new spot.
 
 Following is a detail explanation of these four steps.
@@ -148,24 +175,11 @@ On the next screen, ensure that you stake 100 FLOW token.
 
 Submit the Transaction.
 
-### Timing
-
-New nodes are able to join the network each time a new epoch begins.
-An epoch is a period of time (approximately one week) when the node operators in the network are constant.
-At epoch boundaries, newly staked node operators are able to join the network and existing node operators which have unstaked may exit the network.
-You can read more about epochs [here](https://developers.flow.com/nodes/staking/schedule).
-
-
-In order to join the network at epoch N+1, the node **must** be registered with at least 100 FLOW staked prior to the end of epoch N's Staking Auction Phase.
-Currently, an epoch transition on mainnet starts on Wednesday (Pacific time) early morning. Hence, the node should be staked by EOD Tuesday (Pacific time) to be able to join the network starting on Wednesday.
-
-Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](/staking/epoch-scripts-events/#epochsetup).
-
-![Flow Epoch Schedule](https://storage.googleapis.com/flow-resources/documentation-assets/epoch-startup-order.png)
-
 ## Step 3 - Verify that your node ID was selected
 
-On Wednesday, 15th Feb 2023 at ~3:30 AM Pacific (11:30 AM UTC), the staking auction for the current epoch will end and five nodes from candidate list of nodes will be chosen at random by the staking contract to be part of the next epoch.
+On Wednesday at 17:30 AM UTC, the staking auction for the current epoch will end and five nodes from candidate list of nodes will be chosen at random by the staking contract to be part of the next epoch.
+
+>Note: If all 5 slots have been taken from the previous epoch, the no new access nodes will be chosen (see #limitations)
 
 There are several ways to verify whether your node was chosen as explained below.
 
@@ -173,7 +187,7 @@ When you stake the node, the tokens will show up under the `tokensCommitted` buc
 If the node is not selected, the tokens are moved to the `tokensUnstaked` bucket.
 
 ### Check using Flow Port
-You can check these balances on Flow Port before and after the epoch transition that will occur on the EOD (Pacific) on 14th Feb.
+You can check these balances on Flow Port before and after the epoch transition that will occur on Wednesday (see [timing](#Timing)).
 
 When you stake the node, you should see the following on Flow Port under `Stake & Delegate`
 
@@ -325,3 +339,13 @@ The list can be retrieved from the chain by executing the [get_candidate_nodes](
 ```shell
 $ flow scripts execute  ./transactions/idTableStaking/scripts/get_candidate_nodes.cdc -n mainnet
 ```
+
+### How to check the availability of open access nodes slots for the next epoch?
+
+The limits for the open slots are defined in the staking contract and can be queried from the chain by executing the [get_candidate_limit](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_candidate_limits.cdc) script.
+
+```shell
+$ flow scripts execute ./transactions/idTableStaking/scripts/get_candidate_limits.cdc -n mainnet
+Result: {1: 1, 4: 1, 2: 1, 3: 1, 5: 5}
+```
+Node types are defined [here](https://github.com/onflow/flow-core-contracts/blob/5696ec5e3e6aa5fc10762cbfeb42b9c5c0b8ddbe/contracts/FlowIDTableStaking.cdc#L114-L119)
