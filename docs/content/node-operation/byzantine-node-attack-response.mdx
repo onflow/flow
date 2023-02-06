@@ -12,22 +12,71 @@ While this will not compromise the security of the network it could impact netwo
 
 This guide explains how to detect such a node and what actions you should take a node operator to deal with such byzantine nodes.
 
-## Detection
-
-TODO
-
-## Action
-
-Responding to an attack from a byzantine node requires the following: 
+Responding to an attack from a byzantine node requires the following:
 
 1. Immediate action to blocking network traffic routed from the byzantine node to your node.
 2. Raising a governance FLIP to remove the node from the network as described in this [FLIP](https://github.com/onflow/flips/blob/main/governance/20230105-identify-errant-node.md).
 3. A service account transaction to set the node weight to 0.
-This guide focuses mainly on the first action.
 
-### Admin command
+This guide focuses on the first action.
 
-What does the admin command do?
+## Admin command
 
-How to use if to block a node?
+Flow nodes have an admin server which exposes a simple REST API for interacting with the node. See the [README](https://github.com/onflow/flow-go/blob/master/admin/README.md) for some useful examples.
+It is disabled by default.
 
+### Enable the admin server
+
+To enable to admin server,
+
+1. Add the following option to the docker parameters.
+```
+--admin-addr=localhost:9002
+```
+
+> Note: The port does not has to be 9002 and you can choose any free port
+
+> ⚠️ Do NOT expose the port outside the machine and always use <b>localhost</b>:port
+
+2. Reboot the node to apply the new setting. You can then verify it’s logging into the machine via ssh and running,
+
+```
+curl localhost:9002
+```
+
+This should return a json response message as below.
+```
+{"code":5,"message":"Not Found","details":[]}
+```
+
+If you instead get a connection rejected message then it’s not configured correctly.
+
+## Detecting a byzantine node
+
+The node will log any message any suspicious message with the label `"suspicious":true` along with the sender's node ID.
+
+For example,
+```
+{"level":"error","node_role":"verification",
+"node_id":"aaa4bd649d08ecb5afb7023a0c5e8bb10ce56659399665da8cc9d517e7982fff",
+"component":"connection_gater","peer_id":"QmaPwhw324ghiLcFRQXSzYfYFht7mVNvLArH3QaXKQmAnk",
+"remote_address":"...",
+"error":"failed to get identity of unknown peer with peer id QmaPwhw324ghiLcFRQXSzYfYFht7mVNvLArH3QaXKQmAnk",
+"local_address":"...",
+"suspicious":true,
+"time":"2023-02-02T05:41:12.764002432Z",
+"message":"rejected inbound connection"}
+```
+
+## Blocking a byzantine node
+
+If you see such a log message, the sender can be blockes using the following admin command,
+
+```
+curl localhost: 9002/admin/run_command \
+-H 'Content-Type: application/json' \
+-d '{"commandName": "set-config","data": {"network-id-provider-blocklist": ["<suspcious node id>"]}}
+```
+
+
+After blocking the node, all traffic coming from the node will be rejected and you should no longer see any logs about that node ID.
