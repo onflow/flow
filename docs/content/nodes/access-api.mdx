@@ -94,6 +94,7 @@ message GetLatestBlockHeaderRequest {
 ```protobuf
 message BlockHeaderResponse {
   flow.BlockHeader block
+  flow.BlockStatus block_status
 }
 ```
 
@@ -124,6 +125,7 @@ message GetBlockHeaderByIDRequest {
 ```protobuf
 message BlockHeaderResponse {
   flow.BlockHeader block
+  flow.BlockStatus block_status
 }
 ```
 
@@ -154,6 +156,7 @@ message GetBlockHeaderByHeightRequest {
 ```protobuf
 message BlockHeaderResponse {
   flow.BlockHeader block
+  flow.BlockStatus block_status
 }
 ```
 
@@ -190,6 +193,7 @@ message GetLatestBlockRequest {
 ```protobuf
 message BlockResponse {
   flow.Block block
+  flow.BlockStatus block_status
 }
 ```
 
@@ -220,6 +224,7 @@ message GetBlockByIDRequest {
 ```protobuf
 message BlockResponse {
   flow.Block block
+  flow.BlockStatus block_status
 }
 ```
 
@@ -250,6 +255,7 @@ message GetBlockByHeightRequest {
 ```protobuf
 message BlockResponse {
   flow.Block block
+  flow.BlockStatus block_status
 }
 ```
 
@@ -884,6 +890,22 @@ message BlockSeal {
 | execution_receipt_signatures | BLS signatures of verification nodes on the execution receipt contents |
 | result_approval_signatures   | BLS signatures of verification nodes on the result approval contents   |
 
+## Block Status
+
+```protobuf
+enum BlockStatus {
+  UNKNOWN = 0;
+  FINALIZED = 1;
+  SEALED = 2;
+}
+```
+
+| Value     | Description                                              |
+| --------- | -------------------------------------------------------- |
+| UNKNOWN   | The block status is not known.                           |
+| FINALIZED | The consensus nodes have finalized the block             |
+| SEALED    | The verification nodes have verified the block           |
+
 ## Collection
 
 A collection is a batch of [transactions](#transaction) that have been included in a block. Collections are used to improve consensus throughput by increasing the number of transactions per block.
@@ -1136,3 +1158,4 @@ message ServiceEvent {
 | ------- | ----------------------------------- |
 | type    | Type of an event                    |
 | payload | JSON-serialized content of an event |
+
