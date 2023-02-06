@@ -1,0 +1,90 @@
+{
+    "$schema": "https://developers.flow.com/schemas/flow-docs.json",
+    "displayName": "Flow Nodes",
+    "sidebars": {
+      "": [
+        {
+          "title": "Overview",
+          "items": [
+            {
+              "title": "Introduction",
+              "href": ""
+            },
+            {
+              "title": "Node Setup",
+              "href": "node-operation/node-setup"
+            },
+            {
+              "title": "Node Roles",
+              "href": "node-operation/node-roles"
+            },
+            {
+              "title": "Access API",
+              "href": "access-api"
+            },
+            {
+              "title": "Access API Rate Limits",
+              "href": "access-api-rate-limits"
+            },
+            {
+              "title": "Archive Access API",
+              "href": "archive-access-api"
+            },
+            {
+              "title": "Archive Access API Rate Limits",
+              "href": "archive-api-rate-limits"
+            },
+            {
+              "title": "Operator FAQs",
+              "href": "node-operation/faq"
+            }
+          ]
+        },
+        {
+          "title": "Operator Guides",
+          "items": [
+            {
+              "title": "Node Bootstrapping",
+              "href": "node-operation/node-bootstrap"
+            },
+            {
+              "title": "Node Provisioning",
+              "href": "node-operation/node-provisioning"
+            },
+            {
+              "title": "Node Migration",
+              "href": "node-operation/node-migration"
+            },
+            {
+              "title": "Machine Accounts for Existing Node Operators",
+              "href": "node-operation/machine-existing-operator"
+            },
+            {
+              "title": "Database Encryption for Existing Node Operators",
+              "href": "node-operation/db-encryption-existing-operator"
+            },
+            {
+              "title": "Node Monitoring",
+              "href": "node-operation/monitoring-nodes"
+            },
+            {
+              "title": "Observer Node",
+              "href": "node-operation/observer-node"
+            },
+            {
+              "title": "Spork Process",
+              "href": "node-operation/spork"
+            },
+            {
+              "title": "Past Spork Info",
+              "href": "node-operation/past-sporks"
+            },
+            {
+              "title": "Upcoming Sporks",
+              "href": "node-operation/upcoming-sporks"
+            }
+          ]
+        }
+      ]
+    }
+  }
