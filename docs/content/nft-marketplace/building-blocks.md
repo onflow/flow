@@ -31,5 +31,5 @@ If you are coming from Ethereum, the following list shows corresponding modules 
 | Wallet Interaction Library          | web3.js                 | [Flow Client Library (FCL)](https://github.com/onflow/fcl-js)                                                                     |
 | Blockchain Interaction SDK          | web3.js                 | [Flow Client Library (FCL)](https://github.com/onflow/fcl-js), [Flow Go SDK](https://github.com/onflow/flow-go-sdk), and [many others](https://github.com/onflow/flip-fest/blob/main/winners.md) |
 | Block Explorer                      | Etherscan               | Flowscan                                                                                              |
-| Node Service Providers              | Infura                  | [Official Flow Access Nodes](https://flowscan.org/staking/nodes), [Alchemy](https://www.alchemy.com/)                        |
+| Node Service Providers              | Infura                  | [Official Flow Access Nodes](https://flowscan.org/staking/nodes)                        |
 | Wallets                             | Metamask, WalletConnect | [Blocto](https://portto.com/), [Dapper Wallet](https://www.meetdapper.com/)                           |
