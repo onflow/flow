@@ -68,9 +68,14 @@ For example,
 "message":"rejected inbound connection"}
 ```
 
+## Reporting the byzantine node
+
+Report the suspicious node on Discord on the `#flow-validators` channel.
+All other node operators will be informed about the suspicious node via that channel.
+
 ## Blocking a byzantine node
 
-If you see such a log message, the sender can be blockes using the following admin command,
+Once a consensus is reached about the suspicious node on Discord, the suspicious node can be blocked using the admin command.
 
 ```
 curl localhost: 9002/admin/run_command \
