@@ -70,18 +70,17 @@ For example,
 
 ## Reporting the byzantine node
 
-Report the suspicious node on Discord on the `#flow-validators` channel.
+Report the suspicious node on Discord on the `#flow-validators` channel along with all the evidence (log messages, other networking related metrics etc.)
 All other node operators will be informed about the suspicious node via that channel.
 
 ## Blocking a byzantine node
 
-Once a consensus is reached about the suspicious node on Discord, the suspicious node can be blocked using the admin command.
+Once a consensus is reached about the suspicious node on Discord amond the node operators, the suspicious node can be blocked using the admin command.
 
 ```
 curl localhost: 9002/admin/run_command \
 -H 'Content-Type: application/json' \
 -d '{"commandName": "set-config","data": {"network-id-provider-blocklist": ["<suspcious node id>"]}}
 ```
-
 
 After blocking the node, all traffic coming from the node will be rejected and you should no longer see any logs about that node ID.
