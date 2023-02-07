@@ -1,10 +1,10 @@
 {
     "$schema": "https://developers.flow.com/schemas/flow-docs.json",
-    "displayName": "Documentation",
+    "displayName": "Tools",
     "sidebars": {
       "": [
         {
-          "title": "Documentation",
+          "title": "Tools",
           "items": [
             {
               "title": "Overview",
