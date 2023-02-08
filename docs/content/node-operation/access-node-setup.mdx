@@ -343,10 +343,15 @@ $ flow scripts execute  ./transactions/idTableStaking/scripts/get_candidate_node
 
 ### How to check the availability of open access nodes slots for the next epoch?
 
-The limits for the open slots are defined in the staking contract and can be queried from the chain by executing the [get_candidate_limit](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_candidate_limits.cdc) script.
+The limits for the open slots are defined in the staking contract and can be queried from the chain by executing the [get_slot_limit](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_slot_limits.cdc) script.
+
+Node types are defined [here](https://github.com/onflow/flow-core-contracts/blob/5696ec5e3e6aa5fc10762cbfeb42b9c5c0b8ddbe/contracts/FlowIDTableStaking.cdc#L114-L119)
 
 ```shell
-$ flow scripts execute ./transactions/idTableStaking/scripts/get_candidate_limits.cdc -n mainnet
-Result: {1: 1, 4: 1, 2: 1, 3: 1, 5: 5}
+
+$ flow scripts execute  ./transactions/idTableStaking/scripts/get_slot_limits.cdc --args-json  '[{ "type":"UInt8", "value":"5"}]'  -n mainnet
+Result: 118
 ```
-Node types are defined [here](https://github.com/onflow/flow-core-contracts/blob/5696ec5e3e6aa5fc10762cbfeb42b9c5c0b8ddbe/contracts/FlowIDTableStaking.cdc#L114-L119)
+
+Currently, there are 113 access nodes already part of the network. Hence, the total number of new nodes that can join are 118 - 113 = 5.
+
