@@ -202,8 +202,8 @@ struct CapabilityController {
     let borrowType: Type
    
     /// The id of the related capability.
-    /// This is the UUID of the created capability.
-    /// All copies of the same capability will have the same UUID
+    /// This is the ID of the created capability.
+    /// All copies of the same capability will have the same ID
     let capabilityID: UInt64
    
     /// Is the capability revoked.
