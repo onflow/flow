@@ -80,6 +80,15 @@ to automatically restart following a crash.
     The actual Docker image tag can be found [here](https://developers.flow.com/nodes/node-operation/past-sporks) for appropriate spork.
 </Callout>
 
+### System Configuration
+
+Flow nodes create connections to other nodes on the network, which are represented as file descriptors by the OS. Depending on the default
+limits for your machine, you may need to increase the soft limit available to the node software.
+
+Make sure the soft limit is at least `8192`.
+
+You can configure the ulimit for the node's docker container. See the [Docker documentation](https://docs.docker.com/engine/reference/commandline/run/#ulimit) for more details.
+
 ### Access
 
 ```shell
@@ -88,6 +97,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
+	--ulimit nofile=8192 \
 	gcr.io/flow-container-registry/access:<applicable docker tag> \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
@@ -109,6 +119,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
+	--ulimit nofile=8192 \
 	gcr.io/flow-container-registry/collection:<applicable docker tag> \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
@@ -127,6 +138,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
+	--ulimit nofile=8192 \
 	gcr.io/flow-container-registry/consensus:<applicable docker tag> \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
@@ -144,6 +156,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
+	--ulimit nofile=8192 \
 	gcr.io/flow-container-registry/execution:<applicable docker tag> \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
@@ -163,6 +176,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
+	--ulimit nofile=8192 \
 	gcr.io/flow-container-registry/verification:<applicable docker tag> \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
