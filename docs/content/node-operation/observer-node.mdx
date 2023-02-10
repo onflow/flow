@@ -3,7 +3,7 @@ title: Observer Node
 sidebar_title: Observer Node
 ---
 
-An observer node is similar to an access node and provides a locally accessible, continuously updated, verified copy of the block data. It serves the Access API ([gRPC](https://developers.flow.com/nodes/access-api.md) and [REST](https://developers.flow.com/http-api/)) but unlike an access node, an observer node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
+An observer node is similar to an access node and provides a locally accessible, continuously updated, verified copy of the block data. It serves the [gRPC Access API](https://developers.flow.com/nodes/access-api.md) but unlike an access node, an observer node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
 
 The observer node bootstraps by connecting to an access node and becoming part of the public network comprised of access nodes and other observer nodes. It then continuously receives blocks that are being added to the chain either directly from the access node or from other observer nodes that are part of the public network. However, it makes no trust assumption of the upstream access node or the observer node which is providing the block and locally verifies that the blocks that are received are the correct extension of the chain e.g. after receiving valid blocks A, B and C when it receives block D, it verifies that block D is indeed signed by the consensus nodes and is a valid next block. The received block data is indexed and made available via the Access API. For Collection, Transactions and Account queries, it delegates those requests to the upstream access node. Similarly, transactions and scripts sent to an observer node are also forwarded to the upstream access node. Future versions of the observer node will be able to serve this data locally as well.
 
@@ -145,7 +145,6 @@ docker run --rm \
  --bootstrapdir=/bootstrap \
  --datadir=/data/protocol \
  --bind 0.0.0.0:3569  \
- --rest-addr=0.0.0.0:8071 \
  --loglevel=error \
  --secretsdir=/data/secrets  \
  --upstream-node-addresses=access-008.mainnet20.nodes.onflow.org:9001 \
@@ -170,7 +169,6 @@ docker run --rm \
  --bootstrapdir=/bootstrap \
  --datadir=/data/protocol \
  --bind 0.0.0.0:3569  \
- --rest-addr=0.0.0.0:8071 \
  --loglevel=error \
  --secretsdir=/data/secrets  \
  --upstream-node-addresses=access-003.devnet37.nodes.onflow.org:9001 \
@@ -201,10 +199,7 @@ e.g. querying the gRPC API endpoint using Flow CLI
 flow blocks get latest --host localhost:9000
 ```
 
-e.g. querying the REST API endpoint using curl
-```shell
-curl "localhost:8071/v1/blocks?height=final"
-```
+> REST API is currently not support
 
 The observer node, like the other type of Flow nodes, also produces Prometheus metrics that can be used to monitor node health. More on that [here](/nodes/node-operation/node-setup#monitoring-and-metrics)
 
