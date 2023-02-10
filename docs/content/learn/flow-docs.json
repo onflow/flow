@@ -13,14 +13,31 @@
           ]
         },
         {
-          "title": "Another Section",
+          "title": "Accounts & Ownership",
           "items": [
             {
-              "title": "Overview",
+              "title": "Account Model",
               "href": "index"
             }
           ]
-        }        
+        }  
+           {
+          "title": "The Modern Stack",
+          "items": [
+            {
+              "title": "Flow Virtual Machine",
+              "href": "index"
+            }
+          ]
+        }   {
+          "title": "Composability",
+          "items": [
+            {
+              "title": "Composability Intro",
+              "href": "index"
+            }
+          ]
+        }  
       ]
     }
   }
