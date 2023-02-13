@@ -58,7 +58,7 @@ _Documentation coming soon..._
 ## Transaction Results
 From the [Access API](https://github.com/onflow/flow-go/blob/master/cmd/access/README.md)
 
-[GetTransactionResult](https://developers.flow.com/flow/access-api#gettransaction): an execution node is requested for events for the transaction and the transaction status is derived as follows:
+[GetTransactionResult](/nodes/access-api#gettransaction): an execution node is requested for events for the transaction and the transaction status is derived as follows:
 * If the collection containing the transaction and the block containing that collection is found locally, but the transaction has expired then its status is returned as `expired`.
 * If either the collection or the block is not found locally, but the transaction has not expired, then its status is returned as `pending`
 If the transaction has neither expired nor is it pending, but the execution node has not yet executed the transaction, then the status of the transaction is returned as `finalized`.
