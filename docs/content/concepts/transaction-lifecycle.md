@@ -23,8 +23,8 @@ This document walks through each stage of a transaction's lifecycle as it moves 
 
 ## Submission
 
-Transactions are submitted to the Flow network via Access Nodes. The Access Node provides a single point of contact to interact with the Flow network, accessible [here](https://developers.flow.com/nodes/access-api#current-mainnet). It implements the [Access API](https://docs.onflow.org/access-api/).
-Transactions are received by the Access Node via the [SendTransaction API call](https://developers.flow.com/flow/access-api#sendtransaction).
+Transactions are submitted to the Flow network via Access Nodes. The Access Node provides a single point of contact to interact with the Flow network, accessible [here](/nodes/access-api#current-mainnet). It implements the [Access API](/nodes/access-api/).
+Transactions are received by the Access Node via the [SendTransaction API call](/nodes/access-api#sendtransaction).
 
 ### Validation
 <!-- add explanation of how txs are checked andd how assignment to Cluster is determined (explain "to which this transaction belongs" point below) -->
