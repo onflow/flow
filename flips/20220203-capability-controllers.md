@@ -129,7 +129,7 @@ There are two requirements of the capability system that must be satisfied.
 - **Revocation**: Any capability must be revocable by the issuer.
 - **Redirection**: The issuer should have the ability to redirect the capability to a different (compatible) object.
 
-Revocation can be currently done by using the `unlink` function.
+Capabilities can currently be revoked by using the `unlink` function.
 
 In the public example this would mean calling `issuer.unlink<&{HasCount}>(/public/hasCount)`,
 which would invalidate (break) all capabilities created from this public path 
@@ -182,7 +182,7 @@ The suggested change addresses these pain points by:
 Each Capability would have an associated CapCon that would be responsible for managing the Capability. 
 The CapCon would be created when the Capability is issued (created). 
 If the Capability is copied (since it is a value type) it shares the CapCon with the original 
-(i.e., calling revoke on the CapCon revokes all copies of the associated capability).
+(i.e., calling `delete` on the CapCon revokes all copies of the associated capability).
 
 A CapCon and all the copies of the Capability that CapCon controls would have the same ID.
 Capability/CapCon ids are unique per account.   
@@ -195,26 +195,31 @@ The definition of the `CapabilityController`.
 
 ```cadence
 struct CapabilityController {
-    /// The block height when the capability was created.
+    /// The block height when the controlled capability was created.
     let issueHeight: UInt64
    
-    /// The Type of the capability, i.e.: the T in Capability<T>.
+    /// The type of the controlled capability, i.e. the T in `Capability<T>`.
     let borrowType: Type
    
-    /// The id of the related capability.
-    /// This is the ID of the created capability.
-    /// All copies of the same capability will have the same ID
+    /// The identifier of the controlled capability.
+    /// All copies of a capability have the same ID.
     let capabilityID: UInt64
    
-    /// Is the capability revoked.
-    let isRevoked: Bool
-
-    /// Returns the targeted storage path of the capability.
+    /// Returns the targeted storage path of the controlled capability.
     fun target(): StoragePath
-   
-    /// Revoke the capability making it no longer usable.
-    /// When borrowing from a revoked capability the borrow returns nil.
-    fun revoke()
+
+    /// Delete this capability controller,
+    /// and disable the controlled capability and its copies.
+    ///
+    /// The controller will be deleted from storage,
+    /// but the controlled capability and its copies remain.
+    ///
+    /// Once this function returns, the controller is no longer usable,
+    /// all further operations on the controller will panic.
+    ///
+    /// Borrowing from the controlled capability or its copies will return nil.
+    ///
+    fun delete()
    
     /// Retarget the capability.
     /// This moves the CapCon from one CapCon array to another.
@@ -402,7 +407,7 @@ pub resource Main : AdminInterface {
          if capCon.borrowType != Type<&{HasCount}>() {
             return false // we have only delegated the issuance/revocation of &{HasCount} capabilities
          }
-         capCon.revoke()
+         capCon.delete()
       }
    }
 }
@@ -417,8 +422,8 @@ let countMinterCap <- issuer.capabilities.issue<&{AdminInterface}>(/storage/coun
 countMinterCap // give this to a trusted party
 ```
 
-It is worth noting that every time the `AdminInterface` is used, a CapCon is created in the issuer's storage, taking up some resources. 
-Therefore revoking capabilities does not free any storage.
+It is worth noting that every time the `AdminInterface` is used, a CapCon is created in the issuer's storage, taking up some storage space. 
+Revoking a capability by deleting its controller frees up the storage for the controller, but not for the capability and its copies.
 
 In this example the delegatee with the `Capability<&{AdminInterface}>` can revoke any capability of type `&{HasCount}`,
 even those that someone else created. 
@@ -488,7 +493,7 @@ issuer.save(cap, to: publicOrPrivatePath)
 let cap = issuer.capabilities.get<T>(publicOrPrivatePath)!
 let capCon = issuer.capabilities.getController(byCapabilityID: cap.id)
 
-capCon.revoke()
+capCon.delete()
 ```
 
 ```cadence
@@ -501,7 +506,7 @@ capCon.revoke()
 let cap = issuer.capabilities.get<T>(publicOrPrivatePath)!
 let capCon = issuer.capabilities.getController(byCapabilityID: cap.id)
 
-capCon.revoke()
+capCon.delete()
 
 // 2. link
 
