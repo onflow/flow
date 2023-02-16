@@ -253,8 +253,14 @@ struct AuthAccount {
         fun get<T>(_ path: PublicPath): Capability<T>?
 
         /// borrow gets the capability at the given path, and borrows the capability if it exists.
-        /// Returns `nil` if the capability does not exist or cannot be borrowed using the given type.
-        /// The function is equivalent to `get(path)?.borrow()`.
+        /// Returns a reference to the object targeted by the capability.
+        ///
+        /// If no object is stored at the target path, the function returns nil.
+        ///
+        /// If there is an object stored, a reference is returned as an optional, provided it can be borrowed using the given type.
+        /// If the stored object cannot be borrowed using the given type, the function panics.
+        ///
+        /// The function is equivalent to `get<T>(path)?.borrow()`.
         fun borrow<T: &Any>(_ path: PublicPath): T?
  
         /// For each iterates through all the public capabilities of the public account.
