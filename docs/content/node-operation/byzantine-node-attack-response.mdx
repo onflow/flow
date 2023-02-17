@@ -1,0 +1,177 @@
+---
+title: Byzantine node attack response
+sidebar_title: Byzantine attack response
+description: How to respond to a byzantine node attack on the network
+---
+
+Flow, like most blockchains, forms an open decentralized peer-to-peer network between all of the nodes
+on the network. Due to its decentralized nature, there is a potential for nodes to behave maliciously
+(byzantine) and intentionally try to harm the network. There are a variety of protections within the
+node software to deal with invalid messages - message signatures, sender authorization, payload
+validation, etc. These protections guard the network against many types of attacks. However, there
+could still be a byzantine node that spams other nodes in the network with invalid messages at volumes
+that are intended to impact node performance. While this will not compromise the security of the
+network it could impact network liveness.
+
+This guide explains how to detect such a node and what actions you should take as a node operator
+to deal with such byzantine nodes.
+
+Responding to an attack from a byzantine node requires the following:
+
+1. Immediate action to block network traffic originating from the byzantine node to your node.
+2. Raising a governance FLIP to remove the node from the network as described in this [FLIP](https://github.com/onflow/flips/blob/main/governance/20230105-identify-errant-node.md).
+3. A service account transaction to set the node weight to 0.
+
+This guide focuses on the first action.
+
+## Admin server
+
+Flow nodes have an admin server which exposes a simple REST API for interacting with the node.
+See the [README](https://github.com/onflow/flow-go/blob/master/admin/README.md) for some useful examples.
+It is disabled by default.
+
+### Enable the admin server
+
+To enable to admin server,
+
+1. Add the following option to the node's CLI flags.
+```
+--admin-addr=localhost:9002
+```
+
+> Note: The port does not have to be 9002. You can choose any free port.
+
+> ⚠️ Do NOT expose the port outside the machine and always use <b>localhost</b>:port
+
+2. Reboot the node to apply the new setting. You can then verify it’s working by logging into
+the machine via ssh and running,
+
+```
+curl localhost:9002
+```
+
+This should return a json response message as below.
+```
+{"code":5,"message":"Not Found","details":[]}
+```
+
+If you instead get a connection rejected message then it’s not configured correctly.
+
+## Detecting a byzantine node
+
+There are 2 general categories of byzantine attacks:
+1. Safety attacks - are attacks where a node attempts to corrupt or modify the state of the
+blockchain outside of normal protocol rules.
+2. Liveness attacks - sometimes called spamming attacks, are when a node attempts to disrupt the
+network by abusing their access to waste network and node resources. This generally results in
+degraded performance.
+
+Flow nodes are protected against safety attacks, but liveness attacks are extremely difficult to
+completely prevent. To close the gap, we rely on coordination between node operators to detect
+and block abusive nodes.
+
+### Metrics
+
+Flow nodes generate a variety of metrics that can be used to measure the node's performance and
+identify abnormal behavior. Most metrics are only useful in the context of "normal" operation,
+so it is a good idea to regularly review them to build an understanding of what is "normal".
+
+Metrics to watch:
+* CPU, memory, network connections, network I/O, file descriptors
+* `network_authorization_*` - counts the number of unauthorized/invalid messages received
+* `network_queue_message_queue_size` - measures the number of incoming messages waiting to be processed
+* `network_engine_messages_received_total` - measures the number of messages received from the network
+
+There are many other metrics, but these are a good starting point. If you notice any anomalous trends,
+review the logs for additional context.
+
+### Logs
+
+Log events related to suspicious activity are logged with the label `"suspicious":true`. This is
+helpful to identify the most relevant logs, but there are legitimate cases when these logs are
+emitted, so they cannot be used as a definitive indicator of malicious activity. Two examples of
+expected log messages are:
+* `rejected inbound connection` - You may see this error if an operator unstaked their node between
+sporks, but never shut it down. The node will continue to operate as usual, but peers will not have
+it in their identity table and will (correctly) reject incoming connections.
+* `middleware does not have subscription for the channel ID indicated in the unicast message received` -
+This is commonly logged during node startup when receiving messages before all of the components
+have finished registering their channels with the network layer. It is NOT expected after startup.
+
+The following is an example of a log message indicating an Access node attempted to send a message it
+is not authorized to send:
+```
+{
+    "level": "error",
+    "node_role": "collection",
+    "node_id": "4a6f7264616e20536368616c6d00a875801849f2b5bea9e9d2c9603f00e5d533",
+    "module": "network_slashing_consumer",
+    "peer_id": "QmY2kby3xt3ugu2QqJP5w24rP4HSakYgDFpAJy1ifSRkF7",
+    "networking_offense": "unauthorized_sender",
+    "message_type": "messages.BlockProposal",
+    "channel": "sync-committee",
+    "protocol": "publish",
+    "suspicious": true,
+    "role": "access",
+    "sender_id": "f9237c896507b8d654165c36b61c9a3080e6dd042dea562a4a494fbd73133634",
+    "time": "2023-01-24T21:10:32.74684667Z",
+    "message": "potential slashable offense: sender role not authorized to send message on channel"
+}
+```
+
+### Identifying the source of malicious traffic
+
+Most log messages include either the node ID or peer ID. Peer ID is the ID used to identify nodes on
+by the libp2p library. Peer IDs are derived from the node's networking public key, so there is a 1:1
+mapping between node ID and peer ID.
+
+The two simplest ways to match a node ID to a peer ID:
+1. `inbound connection established` and `outbound connection established` log messages contain both
+the node and peer IDs
+2. The following admin command will return the node info for a given peer ID:
+```
+curl localhost:9002/admin/run_command \
+  -H 'Content-Type: application/json' \
+  -d '{"commandName": "get-latest-identity", "data": { "peer_id": "QmY2kby3xt3ugu2QqJP5w24rP4HSakYgDFpAJy1ifSRkF7" }}'
+```
+
+If you cannot find any log messages at the current log level, you may need to enable debug logging.
+See the admin server's [README](https://github.com/onflow/flow-go/blob/master/admin/README.md) for
+an example.
+
+## Reporting the byzantine node
+
+Report the suspicious node on Discord in the `#flow-validators-alerts` channel along with all the
+evidence you have collected (log messages, other networking related metrics, etc).
+This will alert other node operators who can review their nodes to corroborate the report. Using
+evidence from multiple operators, a consensus can be reached about the suspicious node, and
+appropriate action can be taken.
+
+## Blocking a byzantine node
+
+Once a consensus is reached about the suspicious node on Discord among the node operators, the
+suspicious node can be blocked using the admin command.
+
+```
+curl localhost: 9002/admin/run_command \
+  -H 'Content-Type: application/json' \
+  -d '{"commandName": "set-config","data": {"network-id-provider-blocklist": ["<suspcious node id>"]}}
+```
+
+After blocking the node, all traffic coming from the node will be rejected and you should only see
+logs about reject messages and connections for that node ID.
+
+## Unblocking a node
+
+If you need to unblock a node, you can use the same command to remove the node ID from the blocklist.
+Simply run it again with an empty list to remove all blocked nodes, or an existing list with the
+specific node ID you want to unblock removed.
+
+The following command returns a list of the currently blocked nodes.
+```
+curl localhost: 9002/admin/run_command \
+  -H 'Content-Type: application/json' \
+  -d '{"commandName": "get-config", "data": "network-id-provider-blocklist"}
+```
+
+After unblocking the node, connections and traffic coming from the node should resume.
