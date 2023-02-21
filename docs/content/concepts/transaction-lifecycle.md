@@ -41,7 +41,7 @@ Collection Nodes pass the transaction collections to the Consensus Nodes for the
 
 Once the transaction reaches the execution node as part of a collection it is validated and processed by the Flow Virtual Machine (FVM) following steps illustrated by the image below.
 
-![Transaction Execution](fvm-transaction-execuiton.png)
+![Transaction Execution](fvm-transaction-execution.png)
 
 ### Pre-execution validation step
 
