@@ -11,13 +11,13 @@
             "title": "Account Model",
             "tags": ["guide", "account-linking"],
             "description": "Learn about the account model enables through Account Linking",
-            "href": "/account-linking/guides/account-model"
+            "href": "guides/account-model"
           },
           {
             "title": "Explore Walletless Onboarding",
             "tags": ["guide", "account-linking"],
             "description": "Learn how to build a walletless onboarding experience in your app",
-            "href": "/account-linking/guides/walletless-onboarding"
+            "href": "guides/walletless-onboarding"
           },
           {
             "title": "Walletless Onboarding Example",
@@ -45,15 +45,15 @@
             },
             {
               "title": "Account Model & Implementation",
-              "href": "/account-linking/guides/account-model"
+              "href": "guides/account-model"
             },
             {
               "title": "Linking Accounts",
-              "href": "/account-linking/guides/linking-accounts"
+              "href": "guides/linking-accounts"
             },
             {
               "title": "Walletless Onboarding",
-              "href": "/account-linking/guides/walletless-onboarding"
+              "href": "guides/walletless-onboarding"
             }
           ]
         },
