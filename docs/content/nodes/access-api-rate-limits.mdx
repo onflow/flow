@@ -4,7 +4,7 @@ title: Flow Access API rate limits on Dapper Labs Access nodes
 
 #### Rate limits
 
-Following are the current rate limits for the [Access Node gRPC API](/access-api) in total across all Dapper Labs Access nodes. The actual limits are enforced by each individual node. If you are using a load balanced endpoint, the limits below are the max rate, and may vary depending on how your requests are routed.
+Following are the current rate limits for the [Access Node gRPC API](access-api) in total across all Dapper Labs Access nodes. The actual limits are enforced by each individual node. If you are using a load balanced endpoint, the limits below are the max rate, and may vary depending on how your requests are routed.
 
 Once the limit has reached, the client will receive an RPC error `ResourceExhausted` in the gRPC response.
 
@@ -37,7 +37,7 @@ Please note, these limits only apply to the access nodes hosted by Dapper Labs. 
 | flow.access.AccessAPI/GetLatestProtocolStateSnapshot |                   4                           |
 
 
-##### Testnet
+##### Testnet and Sandboxnet
 
 |                 gRPC API                             | Total request per second per IP               |
 |:-----------------------------------------------------|:---------------------------------------------:|

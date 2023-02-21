@@ -7,6 +7,8 @@ servers:
     description: Flow Canary
   - url: https://rest-testnet.onflow.org/v1
     description: Flow Testnet
+  - url: https://rest-sandboxnet.onflow.org/v1
+    description: Flow Sandboxnet
   - url: https://rest-mainnet.onflow.org/v1
     description: Flow Mainnet
 paths:
