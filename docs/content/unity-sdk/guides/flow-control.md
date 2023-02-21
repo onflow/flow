@@ -12,7 +12,7 @@ The first panel that displays will be your emulator settings.
 
 ![FlowControl Emulator Settings](../media/FlowControlEmulator.png)
 
-**Installation Detection:**  FlowControl will attempt to find the flow binary in your path.  If it can't detect it, it will display a button linking you to the install instructions.
+**Installation Detection:**  FlowControl will attempt to find the flow binary in your path.  If it can't detect it, it will display a button with the label "Install" linking you to the install instructions.
 
 **Emulator Data Directory:**  This field is required if you wish to control the emulator from FlowControl.  Set this to the **directory** where you would like to store your persisted 
 emulator state (flowdb), and your initial emulator configuration (flow.json).  This should typically be outside your project folder.  The folder must exist.
