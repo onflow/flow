@@ -10,7 +10,7 @@
           {
             "title": "Account Model",
             "tags": ["guide", "account-linking"],
-            "description": "Learn about the account model enables through Account Linking",
+            "description": "Learn about the account model that is enabled through Account Linking",
             "href": "guides/account-model"
           },
           {
@@ -20,15 +20,15 @@
             "href": "guides/walletless-onboarding"
           },
           {
-            "title": "Walletless Onboarding Example",
+            "title": "Walletless Onboarding Example Apps",
             "tags": ["sample", "account-linking"],
-            "description": "Learn how to build a walletless onboarding experience in your app",
+            "description": "Example of a walletless onboarding experience using Account Linking",
             "href": "https://github.com/onflow/walletless-arcade-example"
           },
           {
             "title": "Child Account Contract",
             "tags": ["smart-contracts", "account-linking"],
-            "description": "Smart contract for Child Account on testnet",
+            "description": "Smart contract for Child Account on Testnet",
             "href": "https://f.dnz.dev/0x1b655847a90e644a/ChildAccount"
           }
         ]
