@@ -17,9 +17,9 @@ In this doc, we’ll dive into a progressive onboarding flow, including the Cade
 
 # Terminology
 
-**Parent-Child accounts** - For the moment, we’ll call the account created by the dApp the “child” account and the account receiving its AuthAccount Capability the “parent” account. Existing methods of account access & delegation (i.e. keys) still imply ownership over the account, but insofar as linked accounts are concerned, the account to which both the user and the dApp share access via AuthAccount Capability will be considered the “child” account. This naming is a topic of community discussion and may be subject to change
+**Parent-Child accounts** - For the moment, we’ll call the account created by the dApp the “child” account and the account receiving its AuthAccount Capability the “parent” account. Existing methods of account access & delegation (i.e. keys) still imply ownership over the account, but insofar as linked accounts are concerned, the account to which both the user and the dApp share access via AuthAccount Capability will be considered the “child” account. This naming is a topic of community discussion and may be subject to change.
 
-**Walletless onboarding** - An onboarding flow whereby a dApp creates an account for a user, onboarding them to the dApp, obviating the need for user wallet authentication
+**Walletless onboarding** - An onboarding flow whereby a dApp creates an account for a user, onboarding them to the dApp, obviating the need for user wallet authentication.
 
 **Blockchain-native onboarding** - Similar to the already familiar Web3 onboarding flow where a user authenticates with their existing wallet, a dApp onboards a user via wallet authentication while additionally creating a dApp account and linking it with the authenticated account, resulting in a hybrid custody model.
 
@@ -37,9 +37,9 @@ Given the ability to establish an account and later delegate access to a user, d
 
 ### Account Creation
 
-| ![walletless-account-creation.png](resources/walletless-account-creation.png) | 
-|:--:| 
-| *In this account creation scenario, a local dApp makes an API call to its backend account providing a public key along with the call. The backend account creates a new account using its `ChildAccountCreator` resource, funding its creation, and adding the provided public key to the new account.* |
+![walletless-account-creation.png](resources/walletless-account-creation.png)
+
+*In this account creation scenario, a local dApp makes an API call to its backend account providing a public key along with the call. The backend account creates a new account using its `ChildAccountCreator` resource, funding its creation, and adding the provided public key to the new account.*
 
 The following transaction creates an account using the signer's ChildAccountCreator, funding creation via the signing account and adding the provided public key. A ChildAccountTag resource is saved in the new account, identifying it as an account created under this construction. This resource also holds metadata related to the purpose of this account. Additionally, the ChildAccountCreator maintains a mapping of addresses created by it indexed on the originatingpublic key. This enables dApps to lookup the address for which they hold a public key.
 
@@ -258,9 +258,9 @@ transaction(
 # Account Linking
 Linking an account is the process of delegating account access via AuthAccount Capability. Of course, we want to do this in a way that allows the receiving account to maintain that Capability and allows easy identification of the accounts on either end of the linkage - the parent & child accounts. This is accomplished in the (still in flux) `ChildAccount` contract which we'll continue to use in this guidance.
 
-| ![linked-accounts-diagram.png](resources/linked-accounts-diagram.png) | 
-|:--:| 
-| *In this scenario, a user custodies a key for their main account which has a `ChildAccountManager` within it. Their `ChildAccountManager` maintains an AuthAccount Capability to the child account, which the dApp maintains access to via the account’s key.* |
+![linked-accounts-diagram.png](resources/linked-accounts-diagram.png)
+
+*In this scenario, a user custodies a key for their main account which has a `ChildAccountManager` within it. Their `ChildAccountManager` maintains an AuthAccount Capability to the child account, which the dApp maintains access to via the account’s key.*
 
 Linking accounts can be done in one of two ways. Put simply, the child account needs to get the parent account its AuthAccount Capability, and the parent needs to save that Capability in its `ChildAccountManager` in a manner that represents the linked accounts and their relative associations. We can achieve this in a multisig transaction signed by both the the child account & the parent account, or we can leverage Cadence’s `AuthAccount.Inbox` to publish the Capability from the child account & have the parent claim the Capability in a separate transaction. Let’s take a look at both.
 
