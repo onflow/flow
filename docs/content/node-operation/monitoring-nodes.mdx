@@ -19,10 +19,10 @@ The flow-go application doesn't expose any metrics from the underlying host such
 
 1. Copy the following Prometheus configuration into your current flow node
    ```yml:title=prometheus.yml
-   global:
-   scrape_interval: 15s # By default, scrape targets every 15 seconds.
+  global:
+    scrape_interval: 15s # By default, scrape targets every 15 seconds.
 
-   scrape_configs:
+  scrape_configs:
     # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
     - job_name: 'prometheus'
 
@@ -30,7 +30,7 @@ The flow-go application doesn't expose any metrics from the underlying host such
     scrape_interval: 5s
 
     static_configs:
-     - targets: ['localhost:8080']
+      - targets: ['localhost:8080']
    ```
 
 2. Start Prometheus server
