@@ -1,0 +1,607 @@
+# Composability Chronicles #2: How to build a new experience on top of NFTs with Flowcase
+
+## Introduction
+
+Composability is one of the key concepts behind the Flow blockchain. It allows developers to create new experiences by building on top of existing contracts and NFTs. With composability, developers can leverage the full power of the Flow network to create innovative and engaging experiences.
+
+In this guide, we will walk through the process of building a composable app called `Flowcase`. Flowcase will be will be an app that allows users to make showcases for any of their NFT collections on Flow, and store them on-chain for anyone to view. This is similar to NBATopShot showcases, with the added benefit that these showcases will let you select NFTs from any Flow collection, and all of the data of what you want to show will be available on-chain without any backend needed. This type of app which does not require hosting a backend of your own is sometimes referred to as a Serverless On-chain Distributed Applications (SODA), where we can take full advantage of Flow’s capabilities along with the composability afforded to us by Flow’s NFT design.
+
+We will cover setting up the development environment, writing the contracts and building the front-end. By the end of this guide, you will have a solid understanding of how to build a composable app on Flow and what is required to make an application that can make use of NFTs that already exist on flow. This guide will assume that you have a beginner level understanding of cadence and a beginner level understanding of front-end development. It is suggested that you first go through the following guide on how to create a basic, composable NFT before going continuing with this guide, because a lot of the same concepts are used.
+
+All of the resulting code from this guide is available [here](https://github.com/aishairzay/Flow-Serverless-React-Boilerplate/tree/flowcase).
+
+## Getting Started
+
+Before we begin building our composable app, we need to set up the development environment.
+
+1. Download and install NodeJS (version 16.15.0) using the instructions [here](https://nodejs.dev/en/download/).
+2. Download and install the Flow CLI, a command-line tool used to interact with the Flow blockchain. You can find the instructions for installing it [here](https://developers.flow.com/tools/flow-cli/install).
+3. Using git, clone the [https://github.com/aishairzay/Flow-Serverless-React-Boilerplate](https://github.com/aishairzay/Flow-Serverless-React-Boilerplate) repository as a starting point.
+4. Navigate to the newly created `Flow-Serverless-React-Boilerplate` folder with `cd Flow-Serverless-React-Boilerplate` or open the folder with a text editor of your choice (i.e. VSCode).
+
+The `Flow-Serverless-React-Boilerplate` will create a new starter project which will provide us with all the necessary boilerplate to build a Flow app without needing a backend. The folder structure is organized as follows:
+
+- `/flow.json` - Configuration file to help manage local, testnet, and mainnet Flow deployments of contracts from the `/cadence` folder.
+- `/cadence`
+    - `/contracts` - Smart contracts that can be deployed to the Flow blockchain.
+    - `/transactions` - Transactions that can perform changes to data on the Flow blockchain.
+    - `/scripts` - Scripts that can provide read-only access to data on the Flow blockchain.
+- `/web` - A simple create-react-app that is integrated with the `Flow Client Library` (FCL) to allow a user to log in with their Flow account and execute scripts and transactions from the aforementioned transactions and scripts folders.
+
+Once you have installed and configured these tools, you are ready to start building your composable app on Flow. The next step is to write the contracts that will serve as the foundation for the app.
+
+## Cadence Development
+
+In this section, we will walk through the process of creating a Cadence contract for a showcase, and how to interact with that contract using transactions and scripts.
+
+### Contract Creation
+
+The next step in building our composable app is to write a new contract for `Flowcase`. This contract will serve as the foundation for the app and provide a way for users to create and interact with our new NFT showcases.
+
+1. The Flowcase contract
+
+In the `flowcase/cadence/contracts` folder, create a new empty File named `flowcase.cdc`. Fill in the contract with the following to start:
+
+```go
+import NonFungibleToken from "./NonFungibleToken.cdc"
+
+public contract Flowcase {
+	/* Initialization */
+  init() {}
+
+	/* Structs and Resources */
+
+}
+```
+
+Our showcase will serve as a read-only grouping of NFTs stored in a user’s Flow account. Since we don’t plan to  move around the actual NFTs in our showcase, we can use a struct to represent our `Showcase` data store, and hold a list of `NFTPointer` structs to reference to where in the account the showcase NFTs exist. 
+
+Below the comment that says `Structs and Resources`, we can implement our `Showcase` and `NFTPointer` like the following:
+
+```go
+pub struct NFTPointer {
+    pub let id: UInt64
+    pub let collection: Capability<&{NonFungibleToken.CollectionPublic}>
+
+    init(id: UInt64, collection: Capability<&{NonFungibleToken.CollectionPublic}>) {
+        self.id = id
+        self.collection = collection
+    }
+}
+
+pub struct Showcase {
+    pub let name: String
+    priv let nfts: [NFTPointer]
+
+    init(name: String, nfts: [NFTPointer]) {
+        self.name = name
+        self.nfts = nfts
+    }
+
+    pub fun getNFTs(): [NFTPointer] {
+        return self.nfts
+    }
+}
+```
+
+The `NFTPointer` struct consists of two fields. The `collection` field is a capability that points to a user's public NFT collection, while the `id` field represents the specific NFT ID within that collection.
+
+The `Showcase` struct includes a name and description for display purposes, as well as a list of `NFTPointer` structs to represent the NFTs in the showcase.
+
+However, since we can't store structs directly on a Flow account, we'll need to create a `resource` called `ShowcaseCollection` to manage and store the `Showcase` structs. This resource will be responsible for handling the creation and deletion of showcases, as well as adding and removing NFTs from them.
+
+After defining the `Showcase` struct, we can create a resource named `ShowcaseCollection` that manages and stores the showcases in a user's account.
+
+The `ShowcaseCollection` resource has a similar implementation to an NFT collection resource, but there are some differences to note:
+
+- The type for showcases in this collection is `{String: Showcase}`, which means that we use the showcase's name as a key to ensure uniqueness within a single showcase collection. Unlike NFT collections, we don't need to use the `@` notation to store the data because our `Showcase` struct is not a resource.
+- Instead of `deposit` and `withdraw` functions, we have `addShowcase` and `removeShowcase` functions to modify the showcases stored in the collection.
+- We use a `ShowcaseCollectionPublic` resource interface to expose public capabilities that allow others to view the details of the showcases.
+
+Here is the code for the `ShowcaseCollection` resource:
+
+```go
+pub event ShowcaseAdded(name: String, to: Address?)
+pub event ShowcaseRemoved(name: String)
+
+pub resource interface ShowcaseCollectionPublic {
+    pub fun getShowcases(): {String: Showcase}
+    pub fun getShowcase(name: String): Showcase?
+}
+
+pub resource ShowcaseCollection: ShowcaseCollectionPublic {
+    pub let showcases: {String: Showcase}
+
+    init() {
+        self.showcases = {}
+    }
+
+    pub fun addShowcase(name: String, nfts: [NFTPointer]) {
+        emit ShowcaseAdded(name: name, to: self.owner?.address)
+        self.showcases[name] = Showcase(name: name, nfts: nfts)
+    }
+
+    pub fun removeShowcase(name: String) {
+        self.showcases.remove(key: name)
+    }
+
+    pub fun getShowcases(): {String: Showcase} {
+        return self.showcases
+    }
+
+    pub fun getShowcase(name: String): Showcase? {
+        return self.showcases[name]
+    }
+}
+
+pub fun createShowcaseCollection(): @ShowcaseCollection {
+    return <-create ShowcaseCollection()
+}
+```
+
+With the `Showcase`struct and `ShowcaseCollection` resource, we now have everything we need to create and store showcases in a Flow account.
+
+### Flowcase Transactions
+
+Add Showcase
+
+To allow any user to  create a new showcase, create a new file in the `cadence/transactions` folder named `createShowcase.cdc` and fill it in with the following:
+
+```go
+import NonFungibleToken from 0xNONFUNGIBLETOKEN
+import Flowcase from 0xFLOWCASE
+
+transaction(showcaseName: String, publicPaths: [PublicPath], nftIDs: [UInt64]) {
+    let showcaseCollection: &Flowcase.ShowcaseCollection
+    let showcaseAccount: PublicAccount
+
+    prepare(signer: AuthAccount) {
+        /* Initialization code goes here */
+    }
+
+    execute {
+        /* Execution code goes here */
+    }
+}
+```
+
+This transaction allows any user to create a new showcase, which can store NFTs from different collections. To enable this, we're importing two contracts: the `NonFungibleToken` contract that we'll use to interact with NFTs, and our own `Flowcase` contract that we'll use to create and store showcases.
+
+The `createShowcase` transaction takes three arguments:
+
+- `showcaseName`: a unique label for the new showcase.
+- `publicPaths`: an array of `PublicPath` objects representing the NFT collection paths where the NFTs that will be added to the showcase are stored.
+- `nftIDs`: an array of UInt64 values representing the IDs of the NFTs that will be added to the showcase.
+
+In the `prepare` statement, the `signer` AuthAccount is available as a parameter. This means the transaction expects a single user to sign it, and whoever signs the transaction will be providing the account where the new showcase will be stored.
+
+To initialize data for the prepare statement, we can replace the `/* Initialization code goes here */` code with the following:
+
+```go
+// Initialize data for the prepare statement
+if signer.borrow<&Flowcase.ShowcaseCollection>(from: /storage/flowcaseCollection) == nil {
+    // If the showcase collection does not exist for this account, create a new one
+    let collection <- Flowcase.createShowcaseCollection()
+    signer.save(<-collection, to: /storage/flowcaseCollection)
+}
+
+// Expose the showcase collection publicly so it can be queried
+signer.link<&{Flowcase.ShowcaseCollectionPublic}>(/public/flowcaseCollection, target: /storage/flowcaseCollection)
+
+// Borrow a reference to the showcase collection
+self.showcaseCollection = signer.borrow<&Flowcase.ShowcaseCollection>(from: /storage/flowcaseCollection) ??
+    panic("Could not borrow a reference to the Flowcase ShowcaseCollection")
+
+// Get the signer's account
+self.showcaseAccount = getAccount(signer.address)
+```
+
+In the prepare statement, we first check if the `showcaseCollection` exists for the signer's account, and if it doesn't, we create a new one. The `createShowcaseCollection` function is a custom function defined in the `Flowcase` contract that creates a new `ShowcaseCollection` resource. We then save this new `ShowcaseCollection` resource to the signer's account storage.
+
+Next, we expose the `ShowcaseCollectionPublic` interface publicly so that anyone can query the showcase collection using the account's public address.
+
+After that, we borrow a reference to the `ShowcaseCollection` resource from storage so that we can add new showcases to it.
+
+Finally, we get the `showcaseAccount` of the signer, which is the account that will be used to store the new showcase.
+
+Overall, this code is responsible for setting up the `showcaseCollection` and `showcaseAccount` for the transaction, and exposing the necessary functionality so that the transaction can create new showcases.
+
+For the `/* Execution here */` block, we can replace it with the following:
+
+```go
+// initialize an array to hold the NFTs that will be included in the showcase
+var showcaseNFTs: [Flowcase.NFTPointer] = []
+
+// iterate over the list of public paths and corresponding NFT IDs
+var i = 0
+while (i < publicPaths.length) {
+    let publicPath = publicPaths[i]
+    let nftID = nftIDs[i]
+
+		// Add a new NFTPointer struct to the array of NFTs
+    showcaseNFTs.append(Flowcase.NFTPointer(id: nftID, collection: self.showcaseAccount.getCapability<&{NonFungibleToken.CollectionPublic}>(publicPath)))
+    i = i + 1
+}
+
+self.showcaseCollection.addShowcase(name: showcaseName, nfts: showcaseNFTs)
+```
+
+In this section, we initialize an empty array called `showcaseNFTs`, which will hold the `NFTPointer`structs that make up the showcase's NFTs. Then we iterate over the `publicPaths`
+ and `nftIDs`parameters to create new `NFTPointer`structs for each NFT to be added to the showcase. Finally, we call the `addShowcase`function on the `showcaseCollection`to create the new showcase and add the NFTs to it.
+
+Remove Showcase
+
+To remove a showcase, we can create a new transaction in the `cadence/transactions` folder named `removeShowcase.cdc`. This transaction can be filled in with the following code:
+
+```go
+import Flowcase from 0xFLOWCASE
+
+transaction(showcaseName: String) {
+    let flowcase: &Flowcase.ShowcaseCollection
+
+    prepare(signer: AuthAccount) {
+				// Get a reference to the signed account's stored showcase collection
+        self.flowcase = signer.borrow<&Flowcase.ShowcaseCollection>(from: /storage/flowcaseCollection) ??
+            panic("Could not borrow a reference to the Flowcase")
+    }
+
+    execute {
+				// Call removeShowcase on the stored showcase collection reference
+        self.flowcase.removeShowcase(name: showcaseName)
+    }
+}
+```
+
+In this script, we accept a `showcaseName`parameter as input. We get a reference to the signed account's stored `Flowcase.ShowcaseCollection` in the `prepare`block. In the `execute`
+ block, we call the `removeShowcase` function on the stored `showcaseCollectionRef` using the inputted `showcaseName`. This will remove the showcase with the inputted name from the stored `Flowcase.ShowcaseCollection`.
+
+### Flowcase scripts
+
+     Get Showcases Script
+
+In the `cadence/scripts` folder, create a new file called `getShowcases.cdc`
+
+We can use the following code to fill in `getShowcases.cdc` in order to retrieve showcase information from an account:
+
+```go
+import NonFungibleToken from 0xNONFUNGIBLETOKENADDRESS
+import MetadataViews from 0xMETADATAVIEWSADDRESS
+import Flowcase from 0xFLOWCASEADDRESS
+
+pub fun main(address: Address): {String: [AnyStruct]}? {
+    let account = getAccount(address)
+    var nfts: [AnyStruct] = []
+    let flowcaseCap = account.getCapability<&{Flowcase.ShowcaseCollectionPublic}>(/public/flowcaseCollection)
+        .borrow()
+
+    if flowcaseCap != nil {
+        let showcases = flowcaseCap!.getShowcases()
+        let allShowcases: {String: [AnyStruct]} = {}
+        for showcaseName in showcases.keys {
+            let nfts: [AnyStruct] = []
+            let showcase = showcases[showcaseName]!
+            let nftCaps = showcase.getNFTs()
+            for nftPointer in nftCaps {
+                let borrowedNFT = nftPointer.collection.borrow()!.borrowNFT(id: nftPointer.id)
+                let displayView = borrowedNFT.resolveView(Type<MetadataViews.Display>())
+                let nftView: AnyStruct = {
+                    "nftID": borrowedNFT.id,
+                    "display": displayView,
+                    "type": borrowedNFT.getType().identifier
+                }
+                nfts.append(nftView)
+            }
+            allShowcases[showcaseName] = nfts
+        }
+        return allShowcases
+    }
+    return {}
+}
+```
+
+This script takes in an account address and will retrieve the public ShowcaseCollection we had initialized earlier in the createShowcase transaction. If it doesn’t exist in the passed in account, the script will simply return an empty map, indicating an empty showcase collection.
+
+If there is a showcase, the script will navigate into the showcase, extract all of the NFTs from it, and try to get the details of the contained NFTs with the following: `let borrowedNFT = nftPointer.collection.borrow()!.borrowNFT(id: nftPointer.id)`
+
+The script then aggregates all of the results in a dictionary data store to create a structure that looks like the following:
+
+```go
+{
+   "My Showcase's Name!": [
+	    {
+	      "nftID": 1234,
+        "display": {
+					"title": "NFT's display title will show here"
+					"thumbnail": { "url": "URL to NFT's image here" }
+				},
+				"type": "A.41231234.MyFunNFT.NFT"
+      },
+			...
+   ]
+```
+
+Here, `nftID` represents the ID of the NFT, `display` is a struct with the NFT’s display information (title and thumbnail), and `type` represents the NFT's type.
+
+### Flow Configuration
+
+In the root directory of the project, you will find a file called `flow.json`. This file provides configurations that tell the flow CLI and other programs how to find the contracts you’ve created and how they should be deployed.
+
+To add the `Flowcase`contract that we created earlier, we need to update the `contracts`
+ section of `flow.json`. You can do this by adding the following configuration:
+
+```go
+{
+	"contracts": {
+		"Flowcase": {
+			"source": "cadence/contracts/Flowcase.cdc",
+			"aliases": {
+				"testnet": "0xad34354eb0c6ab2a"
+			}
+		},
+		"MyFunNFT": ...
+	 },
+	 ...
+}
+```
+
+Here, we define `Flowcase` as a smart contract and specify that its source code is located in `cadence/contracts/Flowcase.cdc`. Additionally, we define an `alias` for `Flowcase`, which is an optional configuration that tells the Flow CLI and other programs to use a specific address for the contract when deploying or interacting with it. In this case, we're using the address `0xad34354eb0c6ab2a` for the `testnet` environment. If you're using a different network or want to deploy the `Flowcase` contract to a different address, you'll need to update this configuration accordingly.
+
+With this configuration in place, the Flow CLI and other programs will be able to find and interact with the `Flowcase` contract that we created.
+
+## Front-End Development
+
+Now that we have all of the necessary contracts, transactions, and scripts in place, we can begin building a front-end application. The starter template provides a basic React application in the `web` folder. To get started with adding showcases to the front-end, navigate to the `web` folder with the command `cd web` and install the required dependencies using `npm install`.
+
+Once the installation is complete, run `npm start` to start a local server hosting the front-end. This should start a web server running on `localhost:3000`. Open a web browser and go to [http://localhost:3000](http://localhost:3000/) to view the front-end that we will be working on.
+
+In the starter template, the React app is set up to point to the testnet and allows you to connect a testnet Flow wallet. Click on "Connect Wallet" to connect a wallet of your choice. For example, you can use Blocto for a first-time use.
+
+After you have connected your wallet, you will see a button that allows you to mint a new NFT. Click the button and follow the steps to mint a new NFT. Repeat this step at least twice to create multiple NFTs in your account, which will be useful when we create showcases.
+
+After running the transactions to mint NFTs, you can refresh the page to see your new NFTs listed under the `My NFTs` header. All of the code that powers this page can be found in the `App` component located in `web/src/App.js`.
+
+### Creating a new showcase
+
+Let's modify the `App.js` file to support creating a new showcase using the NFTs that are minted in the current wallet.
+
+First, replace the following import at the top of the `App.js` file:
+
+```go
+import { getNFTsFromAccount } from './cadut/scripts';
+import { mintNFT } from './cadut/transactions';
+```
+
+with the following:
+
+```jsx
+import { mintNFT, createShowcase } from './cadut/transactions';
+```
+
+This will import our previously created `createShowcase` transaction from the `cadut` folder to the React app. The template that we are using will automatically copy over the transactions and scripts we created earlier into the `cadut` folder using the open source `[flow-cadut](https://github.com/onflow/flow-cadut)` module.
+
+To create our showcase, we need to provide three parameters to `createShowcase`, which are:
+
+```go
+transaction(showcaseName: String, publicPaths: [PublicPath], nftIDs: [UInt64])
+```
+
+We need to get a name for the new showcase from the user and allow them to select one or many of their owned NFTs to provide values for `publicPaths` and `nftIDs`.
+
+Here are the steps to create a new showcase:
+
+1. First, we need to add a state to hold the showcase name. We can create an initial state for showcase name at the top of our `App` function:
+    
+    ```jsx
+    function App() {
+      const [showcaseName, setShowcaseName] = useState("");
+      // ...
+    }
+    ```
+    
+2. Next, we need to modify the `myNFTs` array to include a `selected` field that we will use to allow the user to select which NFTs they want to include in the showcase. To do this, we can modify the `setMyNFTs` call in the `useEffect` hook to include the `selected` field:
+    
+    ```jsx
+    setMyNFTs(myNFTs[0].map(nft => ({ ...nft, selected: false })));
+    ```
+    
+    This initializes all NFTs in `myNFTs` with a `selected` field set to `false`.
+    
+3. We now need to add a checkbox for each NFT that allows the user to select which NFTs they want to include in the showcase. To do this, we can modify the code that renders the NFTs:
+    
+    ```jsx
+    myNFTs.map((curNFT, i) => {
+      return 
+        <div key={i}>
+          <h4 style={{ marginBottom: "2px" }}>NFT {i + 1}</h4>
+          <NFTView {...curNFT} />
+          <label>
+            <input
+              type="checkbox"
+              checked={myNFTs[i].selected}
+              onChange={e => {
+                const newNFTs = [...myNFTs];
+                newNFTs[i].selected = e.target.checked;
+                setMyNFTs(newNFTs);
+              }}
+            />
+            Select for showcase
+          </label>
+        </div>
+      );
+    });
+    ```
+    
+    This adds a checkbox for each NFT that is initially unchecked. When a checkbox is clicked, the corresponding `selected` field for the NFT is updated.
+    
+4. Below the above code for NFTs, we can place the following to set a showcaseName and create a new showcase:
+    
+    ```jsx
+    <form>
+      <br />
+      <input type="text" value={showcaseName} onChange={(e) => setShowcaseName(e.target.value)} placeholder="Enter Showcase Name" />
+      <button type="button" onClick={async () => {
+          const selectedNFTs = myNFTs.filter((nft) => {
+            return nft.selected
+          })
+          await createShowcase({
+            args: [
+              showcaseName,
+              selectedNFTs.map((nft) => `/public/${nft.publicPath.identifier}`),
+              selectedNFTs.map((nft) => nft.nftID)
+            ],
+            signers: [fcl.authz],
+            payer: fcl.authz,
+            proposer: fcl.authz
+          })
+        }}
+      >
+        Create Showcase
+      </button>
+    </form>
+    ```
+    
+    The input will allow for a showcase name to be set by the user, and when the `Create Showcase` button is clicked, we will filter our NFT list for the selected ones to fill in our createShowcase arguments. Additionally, we use the default `fcl.authz` to fill in signers, payer, and proposer arguments to our createShowcase transaction to allow the user’s wallet to run the transaction.
+    
+5. We now have everything needed to create a showcase. The user can select some NFTs they minted, set a name for their showcase, and run the `createShowcase` transaction by clicking the “Create Showcase” button.
+
+### View Showcases
+
+Now that we can create a showcase, we don’t have a way to view that the showcase was created, so next up we will figure out how to view showcases for an account. For viewing showcases, we can follow these steps:
+
+1. Create a new React component called `Showcases.js` in the `web/src` folder. This component will be responsible for displaying all showcases owned by an account and will also allow the user to delete a showcase. Add the following code to the component file, and we can go over what’s going on in the following sections:
+
+```jsx
+import { useState, useEffect } from 'react';
+import * as fcl from "@onflow/fcl";
+import { getShowcases } from './cadut/scripts';
+import { removeShowcase } from './cadut/transactions';
+import NFTView from './NFTView';
+
+function Showcases({ user }) {
+  const [showcases, setShowcases] = useState([]);
+
+  return (
+    <div>
+      <h3>Showcases:</h3>
+    </div>
+  );
+}
+
+export default Showcases
+```
+
+This snippet will import our getShowcases and removeShowcase script and transaction which we can use to populate the page with created showcases from an account and later allow for deletion of a showcase. It also will set up a value for an input called `showcaseInput`, which will be where we can store a user inputted Flow account address we want to view showcases from. The `showcases` state variable will be used to store all resulting showcases coming out of the given address.
+
+1. Back in `App.js`, lets add the following below our “Create Showcase” form to show our new showcases component:
+
+```jsx
+...
+<hr />
+<Showcases user={user} />
+...
+```
+
+1. Return back to `Showcases.js`. Below our state initialization, we can use the following code to help us retrieve some initial showcases for the logged in account:
+
+```go
+...
+const [showcases, setShowcases] = useState([])
+
+useEffect(() => {
+  const run = async () => {
+    if (user.loggedIn) {
+      getShowcasesForAddress(fcl.withPrefix(user.addr))
+    }
+  }
+  run()
+}, [user])
+
+const getShowcasesForAddress = async (address) => {
+  const showcases = await getShowcases({
+    args: [address],
+  });
+  setShowcases(showcases[0] || [])
+}
+
+...
+```
+
+The `useEffect` above will make it so if a user connects their wallet, we will set the address we want to retrieve to that user’s address. Additionally, we will call `getShowcasesForAddress` 
+
+`getShowcasesForAddress` is a new function that calls our previously written cadence script and provides the given address as an argument. Our result from the script is then stored in the `showcases` object with the `setShowcases` call.
+
+Now we have a way to retrieve showcases given our logged in flow account, and we are retrieving showcases from the chain when a user connects their wallet.
+
+1. To finish off, we need a way to show the retrieved showcases on the page. To do this, we can replace the piece of code with `<h3>Showcases:</h3>` with the following snippet:
+
+```go
+<h3>Showcases:</h3>
+<div>
+  {
+    Object.keys(showcases).map((showcaseName, i) => {
+      return (
+        <div key={showcaseName}>
+          <h4 style={{marginBottom: '2px'}}>
+            Showcase {i+1} - {showcaseName}
+            <br />
+            {Object.keys(showcases[showcaseName]).length} NFTs
+          </h4>
+          {
+            showcases[showcaseName].map((nft, i) => {
+              return <NFTView key={`${showcaseName}-${i}`} { ...nft }/>
+            })
+          }
+        </div>
+      )
+    })
+  }
+  {Object.keys(showcases).length === 0 && <div>No showcases in account</div>}
+</div>
+```
+
+This code will loop through our resulting showcases, and display the name of the showcase followed by looping through the nfts within the showcase, and showcasing them using the already existing `NFTView` provided by the template. 
+
+If no showcases were found and our showcase object does not have any data in it, we will let the user know that there were no showcases.
+
+Now if you refresh your page, you should see the showcase created earlier populated on the screen, and the last feature we need to support on this UI is a way to remove a showcase from our account.
+
+### Removing a showcase
+
+To remove a showcase from the marketplace, you can use the `removeShowcase`
+ transaction function you have previously imported in the Showcase component. To enable the removal of a showcase, you can add a "Remove showcase" button next to each showcase view using the following code snippet:
+
+```go
+Object.keys(showcases).map((showcaseName, i) => {
+	return (
+	  <div key={showcaseName}>
+	    <h4 style={{marginBottom: '2px'}}>
+	      Showcase {i+1} - {showcaseName}
+	      <br />
+	      {Object.keys(showcases[showcaseName]).length} NFTs
+	    </h4>
+	    {
+	      showcases[showcaseName].map((nft, i) => {
+	        return <NFTView key={`${showcaseName}-${i}`} { ...nft }/>
+	      })
+	    }
+	    <button onClick={async () => {
+	      await removeShowcase({
+	        args: [showcaseName],
+	        signers: [fcl.authz],
+	        payer: fcl.authz,
+	        proposer: fcl.authz
+	      })
+	
+	    }}>
+	      Delete this showcase
+	    </button>
+	  </div>
+	)
+})
+```
+
+This code will iterate through each showcase and add a "Remove showcase" button next to it. When a user clicks the button, the `removeShowcase` function is called with the name of the showcase as an argument. This function will call the `removeShowcase`transaction defined earlier in the component, passing in the showcase name, and removing it from the marketplace. Note that the `removeShowcase`function now takes only one argument, the showcase name. The transaction object containing the signers, payer and proposer can be defined within the `removeShowcase`function itself.
+
+## Conclusion
+
+In this tutorial, we've walked through the process of building a showcase application on Flow, from writing a smart contract for the showcases to implementing transactions to add and remove showcases. We also showed how to retrieve showcases in a script and add, view, and remove showcases from the front-end. With this knowledge, you now have a solid foundation for building composable applications on Flow, where you can leverage existing contracts and functionality to build your own applications.
