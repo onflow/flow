@@ -18,7 +18,7 @@ The flow-go application doesn't expose any metrics from the underlying host such
 </Callout>
 
 1. Copy the following Prometheus configuration into your current flow node
-   ```yml:title=prometheus.yml
+   ```
   global:
     scrape_interval: 15s # By default, scrape targets every 15 seconds.
 
@@ -34,7 +34,7 @@ The flow-go application doesn't expose any metrics from the underlying host such
    ```
 
 2. Start Prometheus server
-```shell:
+```shell
    docker run \
    --network=host \
    -p 9090:9090 \
