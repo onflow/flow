@@ -91,7 +91,7 @@ In case any metering limits were hit during execution, the execution would conti
 
 #### Check accounts' storage limits
 
-In this step the all accounts whose storage was changed during the transaction execution will be checked that their [storage capacity](/concepts/storage#storage-capacity-of-the-payer) does not exceed their [storage used](/concepts/storage#storage-used). If it does, an error is produced and the transaction continues with the [Execution error step](#execution-error-step).
+In this step, all accounts whose storage was changed during the transaction execution, will be checked to ensure their [storage capacity](/concepts/storage#storage-capacity-of-the-payer) does not exceed their [storage used](/concepts/storage#storage-used). If it does, an error is produced and the transaction continues with the [Execution error step](#execution-error-step).
 
 If and error occurs anywhere during this step the execution will continue with the [Execution error step](#execution-error-step).
 
