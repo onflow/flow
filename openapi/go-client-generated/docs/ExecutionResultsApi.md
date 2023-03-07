@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**ExecutionResultsIdGet**](ExecutionResultsApi.md#ExecutionResultsIdGet) | **Get** /execution_results/{id} | Get Execution Result by ID
 
 # **ExecutionResultsGet**
-> []ExecutionResult ExecutionResultsGet(ctx, blockId)
+> []ExecutionResult ExecutionResultsGet(ctx, blockId, optional)
 Get Execution Results by Block ID
 
 Get execution result by provided block ID or multiple block IDs provided as comma-seperated list.
@@ -19,6 +19,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **blockId** | [**[]string**](string.md)| Single ID or comma-separated list of block IDs. | 
+ **optional** | ***ExecutionResultsApiExecutionResultsGetOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ExecutionResultsApiExecutionResultsGetOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
 
 ### Return type
 
@@ -36,7 +44,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ExecutionResultsIdGet**
-> ExecutionResult ExecutionResultsIdGet(ctx, id)
+> ExecutionResult ExecutionResultsIdGet(ctx, id, optional)
 Get Execution Result by ID
 
 Get execution result by provided execution result ID.
@@ -47,6 +55,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **id** | [**string**](.md)| The ID of the execution result. | 
+ **optional** | ***ExecutionResultsApiExecutionResultsIdGetOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ExecutionResultsApiExecutionResultsIdGetOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
 
 ### Return type
 

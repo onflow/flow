@@ -239,6 +239,8 @@ paths:
             $ref: '#/components/schemas/Identifier'
           required: true
           description: The collection ID.
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
       responses:
         '200':
           description: OK
@@ -271,6 +273,7 @@ paths:
           explode: false
           style: form
           required: true
+        - $ref: '#/components/parameters/selectParam'
       responses:
         '200':
           description: OK
@@ -299,6 +302,7 @@ paths:
             $ref: '#/components/schemas/Identifier'
           required: true
           description: The ID of the execution result.
+        - $ref: '#/components/parameters/selectParam'
       responses:
         '200':
           description: OK
@@ -331,6 +335,8 @@ paths:
             $ref: '#/components/schemas/BlockHeight'
           required: false
           description: The block height to query for the account details at the "sealed" is used by default.
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
       responses:
         '200':
           description: OK
