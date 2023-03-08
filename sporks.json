@@ -16,7 +16,11 @@
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-21-execution/public-root-information/root-protocol-state-snapshot.json",
             "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-21-execution/public-root-information/root-protocol-state-snapshot.json.asc",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-21-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": "flow_public_mainnet21_execution_state"
+            "executionStateBucket": "flow_public_mainnet21_execution_state",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet21/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet21/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet21/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet21/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
