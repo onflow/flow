@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check for @nocommit
-      uses: bthaile/no-merge-action-msg@v0.6
+      uses: bthaile/no-merge-action-msg@v0.7
       with:
         github-token: ${{github.token}}
         keyword: "flips/"

@@ -5,12 +5,6 @@ title: Node Roles
 Unlike most blockchains, not all Flow nodes are equal. Flow nodes all specialize and fulfill a specific role in the operation of the network.
 Collection, consensus, execution, verification and access nodes are all staked nodes while the observer node is not staked.
 
-## Observer 🆕
-
-An observer node provides locally accessible, continuously updated, verified copy of the block data. It serves the Access API but unlike an access node, an observer node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
-
-[Get started running an observer node](https://developers.flow.com/nodes/node-operation/observer-node)
-
 ## Collection
 
 Collection nodes are bandwidth-optimized nodes divided by the protocol into several cooperating Clusters. Their first task is managing the transaction pool and collecting well-formed transactions to propose to Consensus nodes. Transactions are assigned to a cluster pseudorandomly by transaction hash. A well-formed transaction must include credentials from the guarantor of the transaction. When a Collection Node sees a well-formed transaction, it hashes the text of that transaction and signs the transaction to indicate two things: first, that it is well-formed; and second, that it will commit to storing the transaction text until the Execution nodes have finished processing it. Each cluster collects transactions, assembles them into Collections and submits a Collection Guarantee signed by a super-majority of the cluster to the Consensus nodes.
@@ -49,9 +43,15 @@ Verification nodes are required to stake a minimum of 135,000 FLOW to be a confi
 
 ## Access
 
-Access nodes act as a proxy to the Flow network. The Access node routes transactions to the correct Collection node and routes state queries to available nodes (while likely caching state to answer queries in a timely manner in the future). Dapps and user agents can submit their transactions to any Access node or run their own if they can't find a service provider they're happy with.
+Access nodes act as a proxy to the Flow network. The Access node routes transactions to the correct collection node and routes state queries to execution nodes (while likely caching state to answer queries in a timely manner in the future). Clients submit their transactions to any Access node or run their own if they can't find a service provider they're happy with.
 
-Access nodes are required to stake a 0 FLOW to be a confirmed node operator.
+Access nodes are required to stake 100 FLOW to be a confirmed node operator. However, since an access node does not participate in block production, it does not receive any staking rewards.
+
+## Observer
+
+An observer node provides locally accessible, continuously updated, verified copy of the block data. It serves the Access API but unlike an access node, an observer node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
+
+[Get started running an observer node](https://developers.flow.com/nodes/node-operation/observer-node)
 
 ## Archive
 
@@ -60,3 +60,17 @@ The Archive node provides a scalable and efficient way to access the history of 
 This node can be run by anyone without being staked or added to the approved list of nodes. The Archive node follows the chain, stores and indexes both protocol and execution state, and allows retrieval of blocks, collections, transactions and events from the genesis of the current spork.
 
 It also allows script execution and other read-only queries that require the execution state to be read.
+
+##
+
+Here is a comparison of the different node roles,
+
+| Role            | Staked  | Recives Rewards | Permissioned |
+| :---------------|:---------------:| :---------------:|:---------------:|
+| Collection      | Yes             | Yes              | Yes             |
+| Consensus       | Yes             | Yes              | Yes             |
+| Execution       | Yes             | Yes              | Yes             |
+| Verification    | Yes             | Yes              | Yes             |
+| Access          | Yes             | No               | No 🆕           |
+| Observer        | No              | No               | No              |
+| Archive         | No              | No               | No              |

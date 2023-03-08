@@ -1,0 +1,26 @@
+{
+    "$schema": "https://developers.flow.com/schemas/flow-docs.json",
+    "displayName": "Quickstart",
+    "sidebars": {
+      "": [
+        {
+          "title": "Quickstart",
+          "items": [
+            {
+              "title": "Overview",
+              "href": "index"
+            }
+          ]
+        },
+        {
+          "title": "Another Section",
+          "items": [
+            {
+              "title": "Overview",
+              "href": "index"
+            }
+          ]
+        }        
+      ]
+    }
+  }

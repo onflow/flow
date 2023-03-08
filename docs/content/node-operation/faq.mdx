@@ -55,3 +55,10 @@ More on this [here](/nodes/node-operation/node-migration)
 ### Where can I find how many nodes are currently running Flow?
 
 If you are running a node, then you most definitely have this information on your node in the file `<your bootstrap dir>/public-root-information/node-infos.pub.json`. If you are not running a node, you can find this information by using a Cadence script to query the [Staking Smart Contract](/core-contracts/staking-contract-reference) (or check [Flowscan](https://flowscan.org/staking/overview))
+
+### Why do I need to update my node's ulimit?
+
+Flow nodes create network connections to other nodes on the network to participate in the protocol. The node's operating system represents
+these connections as file descriptors, and uses soft and hard limits to control the number of open files. The node software uses these limits
+to manage how many connections it will open and accept from other nodes. If the limit is too low, the node will not be able to communicate
+with its peers, preventing it from functioning properly.

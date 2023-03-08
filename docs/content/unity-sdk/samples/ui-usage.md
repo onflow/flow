@@ -261,7 +261,7 @@ For more information about Cadence programming, see [https://developers.flow.com
 
 **Signing In**
 
-To sign transactions, you must sign-in to a wallet provider. This sample uses DevWallet, an example wallet provider specifically made for development. For more information about DevWallet, see [https://developers.flow.com/tools/unity-sdk/dev-wallet](https://developers.flow.com/tools/unity-sdk/dev-wallet).
+To sign transactions, you must sign-in to a wallet provider. This sample uses DevWallet, an example wallet provider specifically made for development. For more information about DevWallet, see [https://developers.flow.com/tools/unity-sdk/guides/dev-wallet](https://developers.flow.com/tools/unity-sdk/guides/dev-wallet).
 
 Click the Sign In button. This will open a dialog asking to select an account to sign in with. The list of accounts is populated from the Accounts tab of the Flow Control Window. Select an account and click Ok. The address of the account you select will show underneath "Signed in as". You can now run the three transaction tests. 
 
