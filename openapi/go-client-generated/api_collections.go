@@ -16,6 +16,7 @@ import (
 	"net/url"
 	"strings"
 	"fmt"
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -29,9 +30,18 @@ CollectionsApiService Gets a Collection by ID
 Get a collection by provided collection ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The collection ID.
+ * @param optional nil or *CollectionsApiCollectionsIdGetOpts - Optional Parameters:
+     * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
+     * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
 @return Collection
 */
-func (a *CollectionsApiService) CollectionsIdGet(ctx context.Context, id string) (Collection, *http.Response, error) {
+
+type CollectionsApiCollectionsIdGetOpts struct {
+    Expand optional.Interface
+    Select_ optional.Interface
+}
+
+func (a *CollectionsApiService) CollectionsIdGet(ctx context.Context, id string, localVarOptionals *CollectionsApiCollectionsIdGetOpts) (Collection, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -48,6 +58,12 @@ func (a *CollectionsApiService) CollectionsIdGet(ctx context.Context, id string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
+		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
+		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
