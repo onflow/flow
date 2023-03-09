@@ -302,13 +302,7 @@ message EventsResponse {
 }
 
 message EventsRangeResponse {
-  message Result {
-    bytes block_id = 1;
-    uint64 block_height = 2;
-    repeated entities.Event events = 3;
-    google.protobuf.Timestamp block_timestamp = 4;
-  }
-  repeated Result results = 1;
+  repeated EventsResponse.Result results = 1;
 
   // Height of first block searched in the range
   uint64 start_height = 2;
