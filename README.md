@@ -6,3 +6,4 @@ Flow is a fast, secure, and developer-friendly blockchain built to support the n
 - Details about the protocol can be found in the [technical papers](https://www.flow.com/technical-paper).
 - For more documentation and tutorials, check out [developer portal](https://developers.flow.com).
 
+Find out more about Flow Improvement Proposals (FLIPs) in [Flow FLIPs](https://github.com/onflow/flips)

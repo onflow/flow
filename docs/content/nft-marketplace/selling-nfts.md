@@ -32,15 +32,15 @@ The sale listing specifies the fungible token the NFT is sold in. Typical fungib
 
 Flow blockchain has a feature that unless an account is setup to receive a particular NFT type, they can not receive NFTs of that type. That is why users need to authorize a transaction through their account to receive a specific NFT type. See [this](https://github.com/StarlyIO/flowfest-contracts/blob/master/transactions/setup_account.cdc#L218) for an example of a transaction code doing that.
 
-An NFT marketplace should enable users to set up their accounts to receive an NFT before purchasing that NFT. [Alchemy NFT API](https://github.com/alchemyplatform/alchemy-flow-contracts#running-the-code) can provide the storage path information to let platforms craft such account set up transactions.
+An NFT marketplace should enable users to set up their accounts to receive an NFT before purchasing that NFT. [Flow NFT Catalog](https://github.com/dapperlabs/nft-catalog) can provide the storage path information to let platforms craft such account set up transactions.
 
-After the NFT purchase operation is complete on the blockchain, The NFT marketplace platform should explicitly remove the sale listings. Leaving dangling sale listings is not a good practice.
+After the NFT purchase operation is complete on the blockchain, the NFT marketplace platform should explicitly [remove](https://github.com/onflow/nft-storefront/blob/main/transactions/cleanup_purchased_listings.cdc) the sale listings. Leaving dangling sale listings is not a good practice.
 
 ## Payment options
 
 Currently, for the on-chain sale of NFTs, the most common option is to let sellers list NFTs for sale in fungible tokens like FUSD or FLOW.
 
-The marketplace will have the NFT owner sign a transaction like [this](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) to create the sale listing. The transaction [specifies](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc#L16) the type of fungible token the NFT seller will accept.
+The marketplace will have the NFT owner sign a transaction like [this](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) to create the sale listing. The transaction [specifies](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc#L35) the type of fungible token the NFT seller will accept.
 
 If accepting any fungible token other than FLOW like FUSD, the seller needs to set up their account to accept that token. Here is a [setup transaction](https://github.com/onflow/fusd/blob/main/transactions/setup_fusd_vault.cdc) for FUSD that the marketplace needs the seller to sign.
 

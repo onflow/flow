@@ -15,7 +15,11 @@ The Access Nodes hosted by DapperLabs are accessible at:
 
 #### Current Mainnet
 `access.mainnet.nodes.onflow.org:9000`
-##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](/nodes/node-operation/spork/#mainnet)
+##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](https://developers.flow.com/nodes/node-operation/spork#mainnet)
+
+#### Sandboxnet
+
+`access.sandboxnet.nodes.onflow.org:9000`
 
 #### Testnet
 
@@ -27,7 +31,7 @@ The Access Nodes hosted by DapperLabs are accessible at:
 
 #### Rate limits for Dapper Labs access nodes
 
-Access nodes operated by Dapper Labs are [rate limited](/access-api-rate-limits).
+Access nodes operated by Dapper Labs are [rate limited](https://developers.flow.com/nodes/access-api-rate-limits).
 
 ---
 
@@ -90,6 +94,7 @@ message GetLatestBlockHeaderRequest {
 ```protobuf
 message BlockHeaderResponse {
   flow.BlockHeader block
+  flow.BlockStatus block_status
 }
 ```
 
@@ -120,6 +125,7 @@ message GetBlockHeaderByIDRequest {
 ```protobuf
 message BlockHeaderResponse {
   flow.BlockHeader block
+  flow.BlockStatus block_status
 }
 ```
 
@@ -150,6 +156,7 @@ message GetBlockHeaderByHeightRequest {
 ```protobuf
 message BlockHeaderResponse {
   flow.BlockHeader block
+  flow.BlockStatus block_status
 }
 ```
 
@@ -186,6 +193,7 @@ message GetLatestBlockRequest {
 ```protobuf
 message BlockResponse {
   flow.Block block
+  flow.BlockStatus block_status
 }
 ```
 
@@ -216,6 +224,7 @@ message GetBlockByIDRequest {
 ```protobuf
 message BlockResponse {
   flow.Block block
+  flow.BlockStatus block_status
 }
 ```
 
@@ -246,6 +255,7 @@ message GetBlockByHeightRequest {
 ```protobuf
 message BlockResponse {
   flow.Block block
+  flow.BlockStatus block_status
 }
 ```
 
@@ -499,7 +509,7 @@ message AccountResponse {
 }
 ```
 
-## 
+##
 
 ## Scripts
 
@@ -507,7 +517,7 @@ message AccountResponse {
 
 `ExecuteScriptAtLatestBlock` executes a read-only Cadence script against the latest sealed execution state.
 
-This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec/).
+This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://developers.flow.com/cadence/json-cadence-spec).
 
 ```protobuf
 rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse)
@@ -546,7 +556,7 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockID` executes a ready-only Cadence script against the execution state at the block with the given ID.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec/).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://developers.flow.com/cadence/json-cadence-spec).
 
 ```protobuf
 rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
@@ -579,7 +589,7 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockHeight` executes a ready-only Cadence script against the execution state at the given block height.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](/cadence/json-cadence-spec/).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://developers.flow.com/cadence/json-cadence-spec).
 
 ```protobuf
 rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
@@ -783,7 +793,7 @@ The following method can be used to query the for [execution results](https://gi
 ### GetExecutionResultForBlockID
 
 `GetExecutionResultForBlockID` retrieves execution result for given block. It is different from Transaction Results,
-and contain data about chunks/collection level execution results rather than particular transactions. 
+and contain data about chunks/collection level execution results rather than particular transactions.
 Particularly, it contains `EventsCollection` hash for every chunk which can be used to verify the events for a block.
 
 ```protobuf
@@ -840,7 +850,7 @@ message Block {
 | block_seals           | List of [block seals](#block-seal)                                                                                                                                                                                                                                                                                |
 | signatures            | BLS signatures of consensus nodes                                                                                                                                                                                                                                                                                 |
 
-The detailed semantics of block formation are covered in the [block formation guide](/concepts/transaction-lifecycle#block-formation).
+The detailed semantics of block formation are covered in the [block formation guide](https://developers.flow.com/learn/concepts/transaction-lifecycle#block-formation).
 
 ## Block Header
 
@@ -879,6 +889,22 @@ message BlockSeal {
 | execution_receipt_id         | ID execution receipt being sealed                                      |
 | execution_receipt_signatures | BLS signatures of verification nodes on the execution receipt contents |
 | result_approval_signatures   | BLS signatures of verification nodes on the result approval contents   |
+
+## Block Status
+
+```protobuf
+enum BlockStatus {
+  UNKNOWN = 0;
+  FINALIZED = 1;
+  SEALED = 2;
+}
+```
+
+| Value     | Description                                              |
+| --------- | -------------------------------------------------------- |
+| UNKNOWN   | The block status is not known.                           |
+| FINALIZED | The consensus nodes have finalized the block             |
+| SEALED    | The verification nodes have verified the block           |
 
 ## Collection
 
@@ -945,24 +971,24 @@ message TransactionSignature {
 | Field                         | Description                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------- |
 | script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes                                         |
-| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](/cadence/json-cadence-spec/) bytes |
+| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](https://developers.flow.com/cadence/json-cadence-spec) bytes |
 | reference_block_id            | Block ID used to determine transaction expiry                                                        |
 | [proposal_key](#proposal-key) | Account key used to propose the transaction                                                          |
 | payer                         | Address of the payer account                                                                         |
 | authorizers                   | Addresses of the transaction authorizers                                                             |
 | signatures                    | [Signatures](#transaction-signatures) from all signer accounts                                       |
 
-The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](/concepts/transaction-signing).
+The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](https://developers.flow.com/learn/concepts/transaction-signing).
 
 ### Proposal Key
 
-The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](/concepts/accounts-and-keys#sequence-numbers).
+The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](https://developers.flow.com/learn/concepts/accounts-and-keys#sequence-numbers).
 
 | Field           | Description                                                                          |
 | --------------- | ------------------------------------------------------------------------------------ |
 | address         | Address of proposer account                                                          |
 | key_id          | ID of proposal key on the proposal account                                           |
-| sequence_number | [Sequence number](/concepts/accounts-and-keys#sequence-numbers) for the proposal key |
+| sequence_number | [Sequence number](https://developers.flow.com/learn/concepts/accounts-and-keys#sequence-numbers) for the proposal key |
 
 ### Transaction Signature
 
@@ -1018,7 +1044,7 @@ message Account {
 
 The `code` and `contracts` fields contain the raw Cadence source code, encoded as UTF-8 bytes.
 
-More information on accounts can be found [here](/concepts/accounts-and-keys/).
+More information on accounts can be found [here](https://developers.flow.com/learn/concepts/accounts-and-keys/).
 
 ### Account Key
 
@@ -1040,13 +1066,13 @@ message AccountKey {
 | --------------- | --------------------------------------------------------------------------------------- |
 | id              | Index of the key within the account, used as a unique identifier                        |
 | public_key      | Public key encoded as bytes                                                             |
-| sign_algo       | [Signature algorithm](/concepts/accounts-and-keys#supported-signature--hash-algorithms) |
-| hash_algo       | [Hash algorithm](/concepts/accounts-and-keys#supported-signature--hash-algorithms)      |
-| weight          | [Weight assigned to the key](/concepts/accounts-and-keys#weighted-keys)                 |
-| sequence_number | [Sequence number for the key](/concepts/accounts-and-keys#sequence-numbers)             |
+| sign_algo       | [Signature algorithm](https://developers.flow.com/learn/concepts/accounts-and-keys#supported-signature--hash-algorithms) |
+| hash_algo       | [Hash algorithm](https://developers.flow.com/learn/concepts/accounts-and-keys#supported-signature--hash-algorithms)      |
+| weight          | [Weight assigned to the key](https://developers.flow.com/learn/concepts/accounts-and-keys#weighted-keys)                 |
+| sequence_number | [Sequence number for the key](https://developers.flow.com/learn/concepts/accounts-and-keys#sequence-numbers)             |
 | revoked         | Flag indicating whether or not the key has been revoked                                 |
 
-More information on account keys, key weights and sequence numbers can be found [here](/concepts/accounts-and-keys/).
+More information on account keys, key weights and sequence numbers can be found [here](https://developers.flow.com/learn/concepts/accounts-and-keys/).
 
 ## Event
 
@@ -1068,7 +1094,7 @@ message Event {
 | transaction_id    | ID of the transaction the event was emitted from                           |
 | transaction_index | Zero-based index of the transaction within the block                       |
 | event_index       | Zero-based index of the event within the transaction                       |
-| payload           | Event fields encoded as [JSON-Cadence values](/cadence/json-cadence-spec/) |
+| payload           | Event fields encoded as [JSON-Cadence values](https://developers.flow.com/cadence/json-cadence-spec) |
 
 ## Execution Result
 
@@ -1132,3 +1158,4 @@ message ServiceEvent {
 | ------- | ----------------------------------- |
 | type    | Type of an event                    |
 | payload | JSON-serialized content of an event |
+

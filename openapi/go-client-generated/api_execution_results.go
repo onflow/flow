@@ -16,6 +16,7 @@ import (
 	"net/url"
 	"strings"
 	"fmt"
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -29,9 +30,16 @@ ExecutionResultsApiService Get Execution Results by Block ID
 Get execution result by provided block ID or multiple block IDs provided as comma-seperated list.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param blockId Single ID or comma-separated list of block IDs.
+ * @param optional nil or *ExecutionResultsApiExecutionResultsGetOpts - Optional Parameters:
+     * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
 @return []ExecutionResult
 */
-func (a *ExecutionResultsApiService) ExecutionResultsGet(ctx context.Context, blockId []string) ([]ExecutionResult, *http.Response, error) {
+
+type ExecutionResultsApiExecutionResultsGetOpts struct {
+    Select_ optional.Interface
+}
+
+func (a *ExecutionResultsApiService) ExecutionResultsGet(ctx context.Context, blockId []string, localVarOptionals *ExecutionResultsApiExecutionResultsGetOpts) ([]ExecutionResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -51,6 +59,9 @@ func (a *ExecutionResultsApiService) ExecutionResultsGet(ctx context.Context, bl
 	}
 
 	localVarQueryParams.Add("block_id", parameterToString(blockId, "csv"))
+	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
+		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -147,9 +158,16 @@ ExecutionResultsApiService Get Execution Result by ID
 Get execution result by provided execution result ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The ID of the execution result.
+ * @param optional nil or *ExecutionResultsApiExecutionResultsIdGetOpts - Optional Parameters:
+     * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
 @return ExecutionResult
 */
-func (a *ExecutionResultsApiService) ExecutionResultsIdGet(ctx context.Context, id string) (ExecutionResult, *http.Response, error) {
+
+type ExecutionResultsApiExecutionResultsIdGetOpts struct {
+    Select_ optional.Interface
+}
+
+func (a *ExecutionResultsApiService) ExecutionResultsIdGet(ctx context.Context, id string, localVarOptionals *ExecutionResultsApiExecutionResultsIdGetOpts) (ExecutionResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -166,6 +184,9 @@ func (a *ExecutionResultsApiService) ExecutionResultsIdGet(ctx context.Context, 
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
+		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 

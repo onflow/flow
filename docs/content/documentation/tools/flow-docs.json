@@ -1,0 +1,26 @@
+{
+    "$schema": "https://developers.flow.com/schemas/flow-docs.json",
+    "displayName": "Tools",
+    "sidebars": {
+      "": [
+        {
+          "title": "Tools",
+          "items": [
+            {
+              "title": "Overview",
+              "href": "index"
+            }
+          ]
+        },
+        {
+          "title": "Another Section",
+          "items": [
+            {
+              "title": "Overview",
+              "href": "index"
+            }
+          ]
+        }        
+      ]
+    }
+  }

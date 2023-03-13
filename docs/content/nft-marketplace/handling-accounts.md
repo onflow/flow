@@ -19,16 +19,10 @@ Using FCL, you can get the authenticated account information for your users.
 
 ## Displaying NFTs belonging to the User
 
-[Alchemy NFT API ](https://docs.alchemy.com/flow/documentation/flow-nft-apis)is the best way to get the list of all NFTs owned by a user.
+NFT marketplaces can use the [Flow NFT Catalog](https://github.com/dapperlabs/nft-catalog), an on-chain registry of NFTs, to obtain the list of NFTs owned by an account and obtain display metadata for those NFTs and their collections. Developers should use the [example scripts](https://github.com/dapperlabs/nft-catalog#using-the-catalog-for-marketplaces-and-other-nft-applications) in conjunction with the [NFT Metadata Standard](https://github.com/onflow/flow-nft/#nft-metadata).
 
-To be precise, Alchemy API returns information about only the NFT projects integrated with Alchemy. Also, Alchemy API needs the Flow address as an input.
-
-The Sign-in/up step should provide the information about the user’s Flow address to the application.
-
-For an NFT project not integrated with the Alchemy API, to find out the NFTs owned by an account, you need to know the public path of that NFT’s collection. See [this](https://github.com/onflow/flow-nft#list-nfts-in-an-account) for more information.
+For an NFT project that is not yet present in the [Flow NFT Catalog](https://github.com/dapperlabs/nft-catalog), to find out the NFTs owned by an account, you need to know the public path of that NFT’s collection. See [this](https://github.com/onflow/flow-nft#list-nfts-in-an-account) for more information.
 
 ### Rendering NFTs
 
-Alchemy NFT API also provides rendering information for the NFTs. Check the [getNFTMetadata API](https://docs.alchemy.com/flow/documentation/flow-nft-apis/getnftmetadata-api).
-
-All newer NFT projects will conform to the [NFT Metadata Standard](https://github.com/onflow/flow-nft/#nft-metadata). You can use the Display view to get the rendering information from the NFTs conforming to the metadata standard. [Here](https://github.com/onflow/flow-nft/tree/nft-metadata#how-to-read-metadata) is the code example on how to do that.
+All newer NFT projects will conform to the [NFT Metadata Standard](https://github.com/onflow/flow-nft/#nft-metadata). You can use the Display view to get the rendering information from the NFTs conforming to the metadata standard. [Here](https://github.com/onflow/flow-nft#how-to-read-metadata) is the code example on how to do that.

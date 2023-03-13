@@ -1,0 +1,43 @@
+{
+    "$schema": "https://developers.flow.com/schemas/flow-docs.json",
+    "displayName": "Learn",
+    "sidebars": {
+      "": [
+        {
+          "title": "Learn",
+          "items": [
+            {
+              "title": "Overview",
+              "href": "index"
+            }
+          ]
+        },
+        {
+          "title": "Accounts & Ownership",
+          "items": [
+            {
+              "title": "Account Model",
+              "href": "index"
+            }
+          ]
+        }  
+           {
+          "title": "The Modern Stack",
+          "items": [
+            {
+              "title": "Flow Virtual Machine",
+              "href": "index"
+            }
+          ]
+        }   {
+          "title": "Composability",
+          "items": [
+            {
+              "title": "Composability Intro",
+              "href": "index"
+            }
+          ]
+        }  
+      ]
+    }
+  }

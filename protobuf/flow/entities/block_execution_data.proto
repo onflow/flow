@@ -30,7 +30,7 @@ message TrieUpdate {
 }
 
 message Payload {
-  KeyPart keyPart = 1;
+  repeated KeyPart keyPart = 1;
   bytes value = 2;
 }
 

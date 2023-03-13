@@ -1,9 +1,101 @@
 {
   "networks": {
     "mainnet": {
+      "mainnet22": {
+        "id": 22,
+        "live": true,
+        "name": "Mainnet-22",
+        "sporkTime": "2023-02-22T17:00:00Z",
+        "rootHeight": "47169687",
+        "rootParentId": "60a976d4cc36d0a5150d3f81ede85809916d4af9eb791d9190af0a12c1fd8a17",
+        "rootStateCommitment": "c9c9d3da3fe059a616b13768da2374275bd1a35f94d753ee8e41c538a3cc92d8",
+        "gitCommitHash": "e644427a8e83e8cd2a307c40e4c8fd3066008cae",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-22-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-22-execution/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-22-execution/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-22-execution/public-root-information/node-infos.pub.json",
+            "executionStateBucket": "flow_public_mainnet22_execution_state"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": "flow-public-mainnet22-execution-state"
+          }
+        },
+        "tags": {
+          "flow-go": "v0.29.13",
+          "flow-dps": "v0.29.6",
+          "cadence": "v0.31.3",
+          "docker": "v0.29.13"
+        },
+        "seedNodes": [
+          {
+            "address": "access-007.mainnet22.nodes.onflow.org:3570",
+            "key": "28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae"
+          },
+          {
+            "address": "access-008.mainnet22.nodes.onflow.org:3570",
+            "key": "11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a"
+          }
+        ],
+        "accessNodes": [
+          "access.mainnet.nodes.onflow.org:9000"
+        ]
+      },
+      "mainnet21": {
+        "id": 21,
+        "live": false,
+        "name": "Mainnet-21",
+        "sporkTime": "2023-01-18T17:00:00Z",
+        "rootHeight": "44950207",
+        "rootParentId": "52004adfa7854b1a515d0d905dd5317dc7f77a8dbb56058e04dde01e53e80a92",
+        "rootStateCommitment": "905c5e9a576ba2cbe49b5fe5f64ae84c2dee1bc26a3e81932e573e06a722d08a",
+        "gitCommitHash": "7f02a642bb437b45326c4ace54a7f033b32832f8",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-21-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-21-execution/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-21-execution/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-21-execution/public-root-information/node-infos.pub.json",
+            "executionStateBucket": "flow_public_mainnet21_execution_state",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet21/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet21/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet21/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet21/execution-state.tar.gz.sha256"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": "flow-public-mainnet21-execution-state"
+          }
+        },
+        "tags": {
+          "flow-go": "v0.29.6",
+          "flow-dps": "v0.29",
+          "cadence": "v0.29.0",
+          "docker": "v0.29.6"
+        },
+        "seedNodes": [
+          {
+            "address": "access-007.mainnet21.nodes.onflow.org:3570",
+            "key": "28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae"
+          },
+          {
+            "address": "access-008.mainnet21.nodes.onflow.org:3570",
+            "key": "11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a"
+          }
+        ],
+        "accessNodes": [
+          "access-001.mainnet21.nodes.onflow.org:9000"
+        ]
+      },
       "mainnet20": {
         "id": 20,
-        "live": true,
+        "live": false,
         "name": "Mainnet-20",
         "sporkTime": "2022-11-02T17:00:00Z",
         "rootHeight": "40171634",
@@ -16,7 +108,11 @@
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-20-execution/public-root-information/root-protocol-state-snapshot.json",
             "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-20-execution/public-root-information/root-protocol-state-snapshot.json.asc",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-20-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": "flow_public_mainnet20_execution_state"
+            "executionStateBucket": "flow_public_mainnet20_execution_state",
+            "protocolDBArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet20/protocol-db.tar.gz",
+            "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet20/protocol-db.tar.gz.sha256",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet20/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet20/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -42,12 +138,12 @@
           }
         ],
         "accessNodes": [
-          "access.mainnet20.nodes.onflow.org:9000"
+          "access-001.mainnet20.nodes.onflow.org:9000"
         ]
       },
       "mainnet19": {
         "id": 19,
-        "live": true,
+        "live": false,
         "name": "Mainnet-19",
         "sporkTime": "2022-08-24T17:00:00Z",
         "rootHeight": "35858811",
@@ -60,7 +156,35 @@
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-19-execution/public-root-information/root-protocol-state-snapshot.json",
             "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-19-execution/public-root-information/root-protocol-state-snapshot.json.asc",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-19-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": "flow_public_mainnet19_execution_state"
+            "executionStateBucket": "flow_public_mainnet19_execution_state",
+            "protocolDBArchives": [
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-aa",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-aa.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet17/protocol-db.tar.gz.part-ab",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ab.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ac",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ac.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ad",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ad.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ae",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-ae.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-af",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/protocol-db.tar.gz.part-af.sha256"
+              }
+            ],
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet19/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet19/execution-state.tar.gz.sha256"
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -86,12 +210,12 @@
           }
         ],
         "accessNodes": [
-          "access.mainnet19.nodes.onflow.org:9000"
+          "access-001.mainnet19.nodes.onflow.org:9000"
         ]
       },
       "mainnet18": {
         "id": 18,
-        "live": true,
+        "live": false,
         "name": "Mainnet-18",
         "sporkTime": "2022-06-15T18:00:00Z",
         "rootHeight": "31735955",
@@ -109,7 +233,6 @@
             "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet18/protocol-db.tar.gz.sha256",
             "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet18/execution-state.tar.gz",
             "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet18/execution-state.tar.gz.sha256"
-
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -135,12 +258,12 @@
           }
         ],
         "accessNodes": [
-          "access.mainnet18.nodes.onflow.org:9000"
+          "access-001.mainnet18.nodes.onflow.org:9000"
         ]
       },
       "mainnet17": {
         "id": 17,
-        "live": true,
+        "live": false,
         "name": "Mainnet-17",
         "sporkTime": "2022-04-06T18:20:00Z",
         "rootHeight": "27341470",
@@ -207,12 +330,12 @@
           }
         ],
         "accessNodes": [
-          "access.mainnet17.nodes.onflow.org:9000"
+          "access-001.mainnet17.nodes.onflow.org:9000"
         ]
       },
       "mainnet16": {
         "id": 16,
-        "live": true,
+        "live": false,
         "name": "Mainnet-16",
         "sporkTime": "2022-02-09T16:00:00Z",
         "rootHeight": "23830813",
@@ -1026,7 +1149,176 @@
         "accessNodes": []
       }
     },
+    "sandboxnet": {
+      "sandboxnet2": {
+        "id": 2,
+        "live": true,
+        "name": "Sandboxnet-2",
+        "sporkTime": "2022-11-03T17:00:00Z",
+        "rootHeight": "9692140",
+        "rootParentId": "b034d7d41478df23b7970690a65e8c65fd9e088828488b69a7f742467bea921f",
+        "rootStateCommitment": "f7800ce60766163b6fa713df9587bda2fa81fbaf1587e8fa52a4afda72550335",
+        "gitCommitHash": "b9b941db9a3949db0e299a40264d852980d35ddd",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/sandboxnet-2-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/sandboxnet-2-execution/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/sandboxnet-2-execution/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/sandboxnet-2-execution/public-root-information/node-infos.pub.json",
+            "executionStateBucket": "flow_public_sandboxnet2_execution_state"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": "flow-public-sandboxnet2-execution-state"
+          }
+        },
+        "tags": {
+          "flow-go": "v0.28.6",
+          "flow-dps": "v0.28",
+          "cadence": "v0.28.0",
+          "docker": "v0.28.6"
+        },
+        "seedNodes": [
+          {
+            "address": "access-003.sandboxnet2.nodes.onflow.org:3570",
+            "key": "95b876da6a9798e9f4186cbbac1276d7139c17ee28f48adcce67c43cc7109b54adb638c057cc1ebc500b5aaa933ee47aa06ab108cce163372a78625a5339bd11"
+          },
+          {
+            "address": "access-004.sandboxnet2.nodes.onflow.org:3570",
+            "key": "6412ec2a714bc532529b21f1b836a7db33062a391c74a4d7995006fc5a0cfa52017c3a4632fbd2de515d6e36e97c6be05ef0f9b75921622c21edae7999289d6f"
+          }
+        ],
+        "accessNodes": [
+          "access.sanboxnet.nodes.onflow.org:9000"
+        ]
+      }
+    },
     "testnet": {
+      "testnet41": {
+        "id": 41,
+        "live": true,
+        "name": "Testnet41",
+        "sporkTime": "2023-01-30T13:05:00Z",
+        "rootHeight": "93156994",
+        "rootParentId": "26ff2f7f2948a05c63e723eb42946565809b47dbef87079a8f0bae0cc36a0478",
+        "rootStateCommitment": "08d712b4f7ed838d53b8699e2fd94d0ad010c4b1fa45735b6e80083ff8ef08ff",
+        "gitCommitHash": "a7f2cd0ddd9fc7e1e56187327a84fec9efdc3c9d",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-41-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-41/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-41/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-41/public-root-information/node-infos.pub.json"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": ""
+          }
+        },
+        "tags": {
+          "flow-go-tag": "v0.29.8",
+          "flow-dps-tag": "v0.29.6",
+          "cadence-tag": "v0.31.3",
+          "docker-tag": "v0.29.8"
+        },
+        "accessNodes": [],
+        "seedNodes": [
+          {
+            "address": "access-003.devnet41.nodes.onflow.org:3570",
+            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+          },
+          {
+            "address": "access-004.devnet41.nodes.onflow.org:3570",
+            "key": "0d1523612be854638b985fc658740fa55f009f3cd49b739961ab082dc91b178ed781ef5f66878613b4d34672039150abfd9c8cfdfe48c565bca053fa4db30bec"
+          }
+        ]
+      },
+      "testnet40": {
+        "id": 40,
+        "live": true,
+        "name": "Testnet40",
+        "sporkTime": "2023-01-23T01:11:00Z",
+        "rootHeight": "92473965",
+        "rootParentId": "7c9812f414d9e9795c1cd7dbd27fc45baf880391452e0e948aaa80ba86dfc77d",
+        "rootStateCommitment": "0068a04843d2c8e007086abaaee90c8c8cae8aa78f240048cd4d43aeb0376d0b",
+        "gitCommitHash": "7f02a642bb437b45326c4ace54a7f033b32832f8",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-40-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-40/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-40/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-40/public-root-information/node-infos.pub.json"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": ""
+          }
+        },
+        "tags": {
+          "flow-go-tag": "v0.29.6",
+          "flow-dps-tag": "v0.29.6",
+          "cadence-tag": "v0.31.3",
+          "docker-tag": "v0.29.6"
+        },
+        "accessNodes": [],
+        "seedNodes": [
+          {
+            "address": "access-003.devnet40.nodes.onflow.org:3570",
+            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+          },
+          {
+            "address": "access-004.devnet40.nodes.onflow.org:3570",
+            "key": "0d1523612be854638b985fc658740fa55f009f3cd49b739961ab082dc91b178ed781ef5f66878613b4d34672039150abfd9c8cfdfe48c565bca053fa4db30bec"
+          }
+        ]
+      },
+      "testnet39": {
+        "id": 39,
+        "live": true,
+        "name": "Testnet39",
+        "sporkTime": "2023-01-04T01:00:00Z",
+        "rootHeight": "90595736",
+        "rootParentId": "3d09b9703019b40a065787fff3dd62e28eafa5efcfb69efbc2d713d73034cf38",
+        "rootStateCommitment": "afd47ff2a8e73efd51f0cbe7f572eefda25a66e77f1e6b9c4f3f4e7cdc46568f",
+        "gitCommitHash": "e1c172aaee7da9e33828429757b44f51e59368a2",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-39-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-39/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-39/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-39/public-root-information/node-infos.pub.json"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": ""
+          }
+        },
+        "tags": {
+          "flow-go-tag": "v0.29.3",
+          "flow-dps-tag": "v0.29.1",
+          "cadence-tag": "v0.31.1",
+          "docker-tag": "v0.29.3"
+        },
+        "accessNodes": [],
+        "seedNodes": [
+          {
+            "address": "access-003.devnet39.nodes.onflow.org:3570",
+            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+          },
+          {
+            "address": "access-004.devnet39.nodes.onflow.org:3570",
+            "key": "0d1523612be854638b985fc658740fa55f009f3cd49b739961ab082dc91b178ed781ef5f66878613b4d34672039150abfd9c8cfdfe48c565bca053fa4db30bec"
+          }
+        ]
+      },
       "testnet38": {
         "id": 38,
         "live": true,
@@ -1128,7 +1420,6 @@
             "protocolDBArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet36/protocol-db.tar.gz.sha256",
             "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/devnet36/execution-state.tar.gz",
             "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/devnet36/execution-state.tar.gz.sha256"
-
           },
           "s3": {
             "rootCheckpointFile": "",
@@ -1290,7 +1581,8 @@
             "key": "0d1523612be854638b985fc658740fa55f009f3cd49b739961ab082dc91b178ed781ef5f66878613b4d34672039150abfd9c8cfdfe48c565bca053fa4db30bec"
           }
         ]
-      },"devnet32": {
+      },
+      "devnet32": {
         "id": 32,
         "live": false,
         "name": "Devnet32",
