@@ -10,20 +10,20 @@ All of the resulting code from this guide is available [here](https://github.com
 
 ## Preparation
 
-Before we begin building our composable NFT, we need to set up the development environment. 
+Before we begin building our composable NFT, we need to set up the development environment.
 
 1. To start, download and install the Flow CLI [here](https://developers.flow.com/tools/flow-cli/install)
 2. It is highly recommended to go through the basic NFT tutorial [here](https://developers.flow.com/cadence/tutorial/05-non-fungible-tokens-1). This is a more advanced one.
 3. Using git, clone the [https://github.com/bshahid331/my-nft-project/tree/skeleton](https://github.com/bshahid331/my-nft-project/tree/skeleton) repository as a starting point.
-4. Navigate to the newly created my-nft-project folder, the my-nft-project  folder with a text editor of your choice (i.e. VSCode)
+4. Navigate to the newly created my-nft-project folder, the my-nft-project folder with a text editor of your choice (i.e. VSCode)
 
 The repo has multiple folder which will provide us with a starting point for all needed boilerplate to build a Flow NFT
 
-- `/flow.json` - Configuration file to help manage local, testnet, and mainnet flow deployments of contracts from the `/cadence` folder
-- `/cadence`
-    - `/contracts` - Smart contracts that can be deployed to the Flow chain
-    - `/transactions` - Transactions that can perform changes to data on the Flow blockchain
-    - `/scripts` - Scripts that can provide read-only access to data on the Flow blockchain
+-   `/flow.json` - Configuration file to help manage local, testnet, and mainnet flow deployments of contracts from the `/cadence` folder
+-   `/cadence`
+    -   `/contracts` - Smart contracts that can be deployed to the Flow chain
+    -   `/transactions` - Transactions that can perform changes to data on the Flow blockchain
+    -   `/scripts` - Scripts that can provide read-only access to data on the Flow blockchain
 
 ### Standard Contracts
 
@@ -75,7 +75,7 @@ pub contract MyFunNFT: NonFungibleToken {
             emit Burned(id: self.id)
         }
     }
-    
+
 
      pub resource interface MyFunNFTCollectionPublic {
         pub fun deposit(token: @NonFungibleToken.NFT)
@@ -88,49 +88,49 @@ pub contract MyFunNFT: NonFungibleToken {
             }
         }
     }
-    
+
     pub resource Collection: MyFunNFTCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
-        
+
         /// A dictionary of all NFTs in this collection indexed by ID.
         ///
         pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
-    
+
         init () {
             self.ownedNFTs <- {}
         }
-    
+
         /// Remove an NFT from the collection and move it to the caller.
         ///
         pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
-            let token <- self.ownedNFTs.remove(key: withdrawID) 
+            let token <- self.ownedNFTs.remove(key: withdrawID)
                 ?? panic("Requested NFT to withdraw does not exist in this collection")
-    
+
             emit Withdraw(id: token.id, from: self.owner?.address)
-    
+
             return <- token
         }
-    
+
         /// Deposit an NFT into this collection.
         ///
         pub fun deposit(token: @NonFungibleToken.NFT) {
             let token <- token as! @MyFunNFT.NFT
-    
+
             let id: UInt64 = token.id
-    
+
             // add the new token to the dictionary which removes the old one
             let oldToken <- self.ownedNFTs[id] <- token
-    
+
             emit Deposit(id: id, to: self.owner?.address)
-    
+
             destroy oldToken
         }
-    
+
         /// Return an array of the NFT IDs in this collection.
         ///
         pub fun getIDs(): [UInt64] {
             return self.ownedNFTs.keys
         }
-    
+
         /// Return a reference to an NFT in this collection.
         ///
         /// This function panics if the NFT does not exist in this collection.
@@ -138,7 +138,7 @@ pub contract MyFunNFT: NonFungibleToken {
         pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
             return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
         }
-    
+
         /// Return a reference to an NFT in this collection
         /// typed as MyFunNFT.NFT.
         ///
@@ -149,10 +149,10 @@ pub contract MyFunNFT: NonFungibleToken {
                 let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
                 return ref as! &MyFunNFT.NFT
             }
-    
+
             return nil
         }
-    
+
         destroy() {
             destroy self.ownedNFTs
         }
@@ -274,7 +274,7 @@ This is a fundamental struct that we will employ to represent "Editions" within 
 
 ```go
 pub struct Metadata {
-    
+
         pub let name: String
         pub let description: String
 
@@ -337,7 +337,7 @@ pub fun mintNFT(editionID: UInt64): @MyFunNFT.NFT {
 
 The updated `mintNFT()`function now receives an edition ID for the NFT to be minted. It validates the ID and creates the NFT by incrementing the serial number. It then updates the global variables to reflect the new size and returns the new NFT.
 
-Excellent progress! We can now mint new NFTs for a specific edition. However, we need to enable the creation of new editions. To accomplish this, we will add  function that allows anyone to create an edition (although in a real-world scenario, this would typically be a capability reserved for admin-level users). Please note that for the purposes of this example, we will make this function public.
+Excellent progress! We can now mint new NFTs for a specific edition. However, we need to enable the creation of new editions. To accomplish this, we will add function that allows anyone to create an edition (although in a real-world scenario, this would typically be a capability reserved for admin-level users). Please note that for the purposes of this example, we will make this function public.
 
 ```go
 
@@ -360,7 +360,7 @@ pub fun createEdition(
             // Save the edition
             MyFunNFT.editions[edition.id] = edition
 
-            emit EditionCreated(edition: edition) 
+            emit EditionCreated(edition: edition)
 
             return edition.id
 }
@@ -371,7 +371,7 @@ pub fun getEdition(id: UInt64): Edition? {
 
 ```
 
-followed by adding the getEdition helper method. 
+followed by adding the getEdition helper method.
 
 Let’s also add the new event:
 
@@ -411,7 +411,7 @@ pub contract MyFunNFT: NonFungibleToken {
     access(self) let editions: {UInt64: Edition}
 
     pub struct Metadata {
-    
+
         pub let name: String
         pub let description: String
 
@@ -494,7 +494,7 @@ pub contract MyFunNFT: NonFungibleToken {
             emit Burned(id: self.id)
         }
     }
-    
+
 
      pub resource interface MyFunNFTCollectionPublic {
         pub fun deposit(token: @NonFungibleToken.NFT)
@@ -507,49 +507,49 @@ pub contract MyFunNFT: NonFungibleToken {
             }
         }
     }
-    
+
     pub resource Collection: MyFunNFTCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
-        
+
         /// A dictionary of all NFTs in this collection indexed by ID.
         ///
         pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
-    
+
         init () {
             self.ownedNFTs <- {}
         }
-    
+
         /// Remove an NFT from the collection and move it to the caller.
         ///
         pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
-            let token <- self.ownedNFTs.remove(key: withdrawID) 
+            let token <- self.ownedNFTs.remove(key: withdrawID)
                 ?? panic("Requested NFT to withdraw does not exist in this collection")
-    
+
             emit Withdraw(id: token.id, from: self.owner?.address)
-    
+
             return <- token
         }
-    
+
         /// Deposit an NFT into this collection.
         ///
         pub fun deposit(token: @NonFungibleToken.NFT) {
             let token <- token as! @MyFunNFT.NFT
-    
+
             let id: UInt64 = token.id
-    
+
             // add the new token to the dictionary which removes the old one
             let oldToken <- self.ownedNFTs[id] <- token
-    
+
             emit Deposit(id: id, to: self.owner?.address)
-    
+
             destroy oldToken
         }
-    
+
         /// Return an array of the NFT IDs in this collection.
         ///
         pub fun getIDs(): [UInt64] {
             return self.ownedNFTs.keys
         }
-    
+
         /// Return a reference to an NFT in this collection.
         ///
         /// This function panics if the NFT does not exist in this collection.
@@ -557,7 +557,7 @@ pub contract MyFunNFT: NonFungibleToken {
         pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
             return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
         }
-    
+
         /// Return a reference to an NFT in this collection
         /// typed as MyFunNFT.NFT.
         ///
@@ -568,10 +568,10 @@ pub contract MyFunNFT: NonFungibleToken {
                 let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
                 return ref as! &MyFunNFT.NFT
             }
-    
+
             return nil
         }
-    
+
         destroy() {
             destroy self.ownedNFTs
         }
@@ -596,7 +596,7 @@ pub contract MyFunNFT: NonFungibleToken {
             // Save the edition
             MyFunNFT.editions[edition.id] = edition
 
-            emit EditionCreated(edition: edition) 
+            emit EditionCreated(edition: edition)
 
             return edition.id
     }
@@ -646,46 +646,46 @@ Now that we have the contract we need to create `transactions` that can be calle
 Create these in your `transactions` folder.
 
 1. `createEdition.cdc`
-    
+
     ```
     import MyFunNFT from "../contracts/MyFunNFT.cdc"
-    
+
     transaction(
         name: String,
         description: String,
     ) {
-    
+
         prepare(signer: AuthAccount) {
         }
-    
-        execute {        
+
+        execute {
             MyFunNFT.createEdition(name: name, description: description)
         }
     }
     ```
-    
+
     This transaction takes in a name and description and creates a new edition with it.
-    
+
 2. `mintNFT.cdc`
-    
+
     ```
     import MyFunNFT from "../contracts/MyFunNFT.cdc"
     import MetadataViews from "../contracts/MetadataViews.cdc"
     import NonFungibleToken from "../contracts/NonFungibleToken.cdc"
-    
+
     transaction(
         editionID: UInt64,
     ) {
         let MyFunNFTCollection: &MyFunNFT.Collection{MyFunNFT.MyFunNFTCollectionPublic,NonFungibleToken.CollectionPublic,NonFungibleToken.Receiver,MetadataViews.ResolverCollection}
-    
+
         prepare(signer: AuthAccount) {
             if signer.borrow<&MyFunNFT.Collection>(from: MyFunNFT.CollectionStoragePath) == nil {
                 // Create a new empty collection
                 let collection <- MyFunNFT.createEmptyCollection()
-    
+
                 // save it to the account
                 signer.save(<-collection, to: MyFunNFT.CollectionStoragePath)
-    
+
                 // create a public capability for the collection
                 signer.link<&{NonFungibleToken.CollectionPublic, MyFunNFT.MyFunNFTCollectionPublic, MetadataViews.ResolverCollection}>(
                     MyFunNFT.CollectionPublicPath,
@@ -694,14 +694,13 @@ Create these in your `transactions` folder.
             }
             self.MyFunNFTCollection = signer.borrow<&MyFunNFT.Collection{MyFunNFT.MyFunNFTCollectionPublic,NonFungibleToken.CollectionPublic,NonFungibleToken.Receiver,MetadataViews.ResolverCollection}>(from: MyFunNFT.CollectionStoragePath)!
         }
-    
-        execute {        
+
+        execute {
             let item <- MyFunNFT.mintNFT(editionID: editionID)
             self.MyFunNFTCollection.deposit(token: <-item)
         }
     }
     ```
-    
 
 This transaction verifies whether a `MyFunNFT` collection exists for the user by checking the presence of a setup. If no such collection is found, the transaction sets it up. Subsequently, the transaction mints a new NFT and deposits it in the user's collection.
 
@@ -725,15 +724,15 @@ Now we need to have our NFT resource extend the `MetadataViews.Resolver` interfa
 
 Now we must implement `getViews` and `resolveView`. The function `getViews` tells anyone which views this NFT supports and `resolveView` takes in a view type and returns the view itself. Some common views are:
 
-*ExternalURL* - A website / link for an NFT
+_ExternalURL_ - A website / link for an NFT
 
-*NFT Collection Data* - Data on how to setup this NFT collection in a users account
+_NFT Collection Data_ - Data on how to setup this NFT collection in a users account
 
-*Display View* - How to display this NFT on a website
+_Display View_ - How to display this NFT on a website
 
-*Royalties View* - Any royalties that should be adhered to for a marketplace transaction
+_Royalties View_ - Any royalties that should be adhered to for a marketplace transaction
 
-*NFT Collection Display View* - How to display the NFT collection on a website
+_NFT Collection Display View_ - How to display the NFT collection on a website
 
 Let’s add the following `getViews` implementation to our `NFT` resource.
 
@@ -758,7 +757,7 @@ These function helps inform what specific views this NFT supports. In the same N
 ```go
 pub fun resolveView(_ view: Type): AnyStruct? {
             let edition = self.getEdition()
-            
+
             switch view {
                 case Type<MetadataViews.Display>():
                     return self.resolveDisplay(edition.metadata)
@@ -793,6 +792,7 @@ pub fun resolveDisplay(_ metadata: Metadata): MetadataViews.Display {
 ```
 
 1\. This creates a display view and takes in the edition data to populate the name and description. I included a dummy image but you would want to include a unique thumbnail
+
 ```go
 pub fun resolveExternalURL(): MetadataViews.ExternalURL {
             let collectionURL = "www.flow-nft-catalog.com"
@@ -808,7 +808,7 @@ pub fun resolveNFTCollectionDisplay(): MetadataViews.NFTCollectionDisplay {
                 file: MetadataViews.HTTPFile(url: "https://assets-global.website-files.com/5f734f4dbd95382f4fdfa0ea/63ce603ae36f46f6bb67e51e_flow-logo.svg"),
                 mediaType: "image"
             )
-        
+
             return MetadataViews.NFTCollectionDisplay(
                 name: "MyFunNFT",
                 description: "The open interopable NFT",
@@ -880,7 +880,7 @@ pub fun borrowViewResolver(id: UInt64): &AnyResource{MetadataViews.Resolver} {
  }
 ```
 
-Now your NFT is interoperable! 
+Now your NFT is interoperable!
 
 Your final NFT contract should look something like [this](https://github.com/bshahid331/my-nft-project/blob/main/cadence/contracts/MyFunNFT.cdc).
 
@@ -900,47 +900,47 @@ Copy and replace your `flow.json` with the following:
 
 ```json
 {
-	"contracts": {
-		"NonFungibleToken": {
-			"source": "./cadence/contracts/NonFungibleToken.cdc",
-			"aliases": {
-				"testnet": "0x631e88ae7f1d7c20",
-				"mainnet": "0x1d7e57aa55817448"
-			}
-		},
-		"MetadataViews": {
-			"source": "./cadence/contracts/MetadataViews.cdc",
-			"aliases": {
-				"testnet": "0x631e88ae7f1d7c20",
-				"mainnet": "0x1d7e57aa55817448"
-			}
-		},
-		"FungibleToken": {
-			"source": "./cadence/contracts/FungibleToken.cdc",
-			"aliases": {
-				"emulator": "0xee82856bf20e2aa6",
-				"testnet": "0x9a0766d93b6608b7",
-				"mainnet": "0xf233dcee88fe0abe"
-			}
-		},
-		"MyFunNFT": "./cadence/contracts/MyFunNFT.cdc"
-	},
-	"networks": {
-		"emulator": "127.0.0.1:3569",
-		"mainnet": "access.mainnet.nodes.onflow.org:9000",
-		"testnet": "access.devnet.nodes.onflow.org:9000"
-	},
-	"accounts": {
-		"emulator-account": {
-			"address": "f8d6e0586b0a20c7",
-			"key": "6d12eebfef9866c9b6fa92b97c6e705c26a1785b1e7944da701fc545a51d4673"
-		},
-		"testnet-account": {
-			"address": "0x503b9841a6e501eb",
-			"key": "$MYFUNNFT_TESTNET_PRIVATEKEY"
-		}
-	},
-	"deployments": {
+    "contracts": {
+        "NonFungibleToken": {
+            "source": "./cadence/contracts/NonFungibleToken.cdc",
+            "aliases": {
+                "testnet": "0x631e88ae7f1d7c20",
+                "mainnet": "0x1d7e57aa55817448"
+            }
+        },
+        "MetadataViews": {
+            "source": "./cadence/contracts/MetadataViews.cdc",
+            "aliases": {
+                "testnet": "0x631e88ae7f1d7c20",
+                "mainnet": "0x1d7e57aa55817448"
+            }
+        },
+        "FungibleToken": {
+            "source": "./cadence/contracts/FungibleToken.cdc",
+            "aliases": {
+                "emulator": "0xee82856bf20e2aa6",
+                "testnet": "0x9a0766d93b6608b7",
+                "mainnet": "0xf233dcee88fe0abe"
+            }
+        },
+        "MyFunNFT": "./cadence/contracts/MyFunNFT.cdc"
+    },
+    "networks": {
+        "emulator": "127.0.0.1:3569",
+        "mainnet": "access.mainnet.nodes.onflow.org:9000",
+        "testnet": "access.devnet.nodes.onflow.org:9000"
+    },
+    "accounts": {
+        "emulator-account": {
+            "address": "f8d6e0586b0a20c7",
+            "key": "6d12eebfef9866c9b6fa92b97c6e705c26a1785b1e7944da701fc545a51d4673"
+        },
+        "testnet-account": {
+            "address": "0x503b9841a6e501eb",
+            "key": "$MYFUNNFT_TESTNET_PRIVATEKEY"
+        }
+    },
+    "deployments": {
         "emulator": {
             "emulator-account": [
                 "NonFungibleToken",
@@ -949,9 +949,7 @@ Copy and replace your `flow.json` with the following:
             ]
         },
         "testnet": {
-            "testnet-account": [
-                "MyFunNFT"
-            ]
+            "testnet-account": ["MyFunNFT"]
         }
     }
 }
@@ -961,19 +959,19 @@ This is a file that is meant to be pushed so we don’t want to expose our priva
 
 `export MYFUNNFT_TESTNET_PRIVATEKEY=<YOUR_PRIVATE_KEY_HERE>`
 
-This is telling Flow where to find the contracts NonFungibleToken, MetadataViews, FungibleToken. For `MyFunNFT` it’s specifying where to deploy it, being `testnet-account`. Run `flow project deploy --network=testnet` and your contract should be deployed on `testnet`! 
+This is telling Flow where to find the contracts NonFungibleToken, MetadataViews, FungibleToken. For `MyFunNFT` it’s specifying where to deploy it, being `testnet-account`. Run `flow project deploy --network=testnet` and your contract should be deployed on `testnet`!
 
 You can see mine here: [https://flow-view-source.com/testnet/account/0x503b9841a6e501eb/contract/MyFunNFT](https://flow-view-source.com/testnet/account/0x503b9841a6e501eb/contract/MyFunNFT).
 
 ## Creating and minting an NFT
 
-Let’s mint an NFT to an account. We will run the transactions from before.  I’m using my `testnet` blocto wallet with the address: `0xf5e9719fa6bba61a`. The newly minted NFT will go into this account.
+Let’s mint an NFT to an account. We will run the transactions from before. I’m using my `testnet` blocto wallet with the address: `0xf5e9719fa6bba61a`. The newly minted NFT will go into this account.
 
-Check out these links to see what I ran. 
+Check out these links to see what I ran.
 
- [Edition Creation](https://runflow.pratikpatel.io?code=aW1wb3J0IE15RnVuTkZUIGZyb20gMHg1MDNiOTg0MWE2ZTUwMWViCgp0cmFuc2FjdGlvbigKICAgIG5hbWU6IFN0cmluZywKICAgIGRlc2NyaXB0aW9uOiBTdHJpbmcsCikgewoKICAgIHByZXBhcmUoc2lnbmVyOiBBdXRoQWNjb3VudCkgewogICAgfQoKICAgIGV4ZWN1dGUgeyAgICAgICAgCiAgICAgICAgTXlGdW5ORlQuY3JlYXRlRWRpdGlvbihuYW1lOiBuYW1lLCBkZXNjcmlwdGlvbjogZGVzY3JpcHRpb24pCiAgICB9Cn0%3D&network=testnet&args=eyJuYW1lIjoiVGhlIEZpcnN0IEVkaXRpb24iLCJkZXNjcmlwdGlvbiI6IlRoaXMgaXMgdGhlIGZpcnN0IGVkaXRpb24gc28gaXQncyB0aGUgYmVzdC4ifQ%3D%3D)
+[Edition Creation](https://runflow.pratikpatel.io?code=aW1wb3J0IE15RnVuTkZUIGZyb20gMHg1MDNiOTg0MWE2ZTUwMWViCgp0cmFuc2FjdGlvbigKICAgIG5hbWU6IFN0cmluZywKICAgIGRlc2NyaXB0aW9uOiBTdHJpbmcsCikgewoKICAgIHByZXBhcmUoc2lnbmVyOiBBdXRoQWNjb3VudCkgewogICAgfQoKICAgIGV4ZWN1dGUgeyAgICAgICAgCiAgICAgICAgTXlGdW5ORlQuY3JlYXRlRWRpdGlvbihuYW1lOiBuYW1lLCBkZXNjcmlwdGlvbjogZGVzY3JpcHRpb24pCiAgICB9Cn0%3D&network=testnet&args=eyJuYW1lIjoiVGhlIEZpcnN0IEVkaXRpb24iLCJkZXNjcmlwdGlvbiI6IlRoaXMgaXMgdGhlIGZpcnN0IGVkaXRpb24gc28gaXQncyB0aGUgYmVzdC4ifQ%3D%3D)
 
- [Minting an NFT](https://runflow.pratikpatel.io?code=aW1wb3J0IE15RnVuTkZUIGZyb20gMHg1MDNiOTg0MWE2ZTUwMWViCmltcG9ydCBNZXRhZGF0YVZpZXdzIGZyb20gMHg2MzFlODhhZTdmMWQ3YzIwCmltcG9ydCBOb25GdW5naWJsZVRva2VuIGZyb20gMHg2MzFlODhhZTdmMWQ3YzIwCgp0cmFuc2FjdGlvbigKICAgIGVkaXRpb25JRDogVUludDY0LAopIHsKICAgIGxldCBNeUZ1bk5GVENvbGxlY3Rpb246ICZNeUZ1bk5GVC5Db2xsZWN0aW9ue015RnVuTkZULk15RnVuTkZUQ29sbGVjdGlvblB1YmxpYyxOb25GdW5naWJsZVRva2VuLkNvbGxlY3Rpb25QdWJsaWMsTm9uRnVuZ2libGVUb2tlbi5SZWNlaXZlcixNZXRhZGF0YVZpZXdzLlJlc29sdmVyQ29sbGVjdGlvbn0KCiAgICBwcmVwYXJlKHNpZ25lcjogQXV0aEFjY291bnQpIHsKICAgICAgICBpZiBzaWduZXIuYm9ycm93PCZNeUZ1bk5GVC5Db2xsZWN0aW9uPihmcm9tOiBNeUZ1bk5GVC5Db2xsZWN0aW9uU3RvcmFnZVBhdGgpID09IG5pbCB7CiAgICAgICAgICAgIC8vIENyZWF0ZSBhIG5ldyBlbXB0eSBjb2xsZWN0aW9uCiAgICAgICAgICAgIGxldCBjb2xsZWN0aW9uIDwtIE15RnVuTkZULmNyZWF0ZUVtcHR5Q29sbGVjdGlvbigpCgogICAgICAgICAgICAvLyBzYXZlIGl0IHRvIHRoZSBhY2NvdW50CiAgICAgICAgICAgIHNpZ25lci5zYXZlKDwtY29sbGVjdGlvbiwgdG86IE15RnVuTkZULkNvbGxlY3Rpb25TdG9yYWdlUGF0aCkKCiAgICAgICAgICAgIC8vIGNyZWF0ZSBhIHB1YmxpYyBjYXBhYmlsaXR5IGZvciB0aGUgY29sbGVjdGlvbgogICAgICAgICAgICBzaWduZXIubGluazwme05vbkZ1bmdpYmxlVG9rZW4uQ29sbGVjdGlvblB1YmxpYywgTXlGdW5ORlQuTXlGdW5ORlRDb2xsZWN0aW9uUHVibGljLCBNZXRhZGF0YVZpZXdzLlJlc29sdmVyQ29sbGVjdGlvbn0%2BKAogICAgICAgICAgICAgICAgTXlGdW5ORlQuQ29sbGVjdGlvblB1YmxpY1BhdGgsCiAgICAgICAgICAgICAgICB0YXJnZXQ6IE15RnVuTkZULkNvbGxlY3Rpb25TdG9yYWdlUGF0aAogICAgICAgICAgICApCiAgICAgICAgfQogICAgICAgIHNlbGYuTXlGdW5ORlRDb2xsZWN0aW9uID0gc2lnbmVyLmJvcnJvdzwmTXlGdW5ORlQuQ29sbGVjdGlvbntNeUZ1bk5GVC5NeUZ1bk5GVENvbGxlY3Rpb25QdWJsaWMsTm9uRnVuZ2libGVUb2tlbi5Db2xsZWN0aW9uUHVibGljLE5vbkZ1bmdpYmxlVG9rZW4uUmVjZWl2ZXIsTWV0YWRhdGFWaWV3cy5SZXNvbHZlckNvbGxlY3Rpb259Pihmcm9tOiBNeUZ1bk5GVC5Db2xsZWN0aW9uU3RvcmFnZVBhdGgpIQogICAgfQoKICAgIGV4ZWN1dGUgeyAgICAgICAgCiAgICAgICAgbGV0IGl0ZW0gPC0gTXlGdW5ORlQubWludE5GVChlZGl0aW9uSUQ6IGVkaXRpb25JRCkKICAgICAgICBzZWxmLk15RnVuTkZUQ29sbGVjdGlvbi5kZXBvc2l0KHRva2VuOiA8LWl0ZW0pCiAgICB9Cn0%3D&network=testnet&args=eyJlZGl0aW9uSUQiOjF9)
+[Minting an NFT](https://runflow.pratikpatel.io?code=aW1wb3J0IE15RnVuTkZUIGZyb20gMHg1MDNiOTg0MWE2ZTUwMWViCmltcG9ydCBNZXRhZGF0YVZpZXdzIGZyb20gMHg2MzFlODhhZTdmMWQ3YzIwCmltcG9ydCBOb25GdW5naWJsZVRva2VuIGZyb20gMHg2MzFlODhhZTdmMWQ3YzIwCgp0cmFuc2FjdGlvbigKICAgIGVkaXRpb25JRDogVUludDY0LAopIHsKICAgIGxldCBNeUZ1bk5GVENvbGxlY3Rpb246ICZNeUZ1bk5GVC5Db2xsZWN0aW9ue015RnVuTkZULk15RnVuTkZUQ29sbGVjdGlvblB1YmxpYyxOb25GdW5naWJsZVRva2VuLkNvbGxlY3Rpb25QdWJsaWMsTm9uRnVuZ2libGVUb2tlbi5SZWNlaXZlcixNZXRhZGF0YVZpZXdzLlJlc29sdmVyQ29sbGVjdGlvbn0KCiAgICBwcmVwYXJlKHNpZ25lcjogQXV0aEFjY291bnQpIHsKICAgICAgICBpZiBzaWduZXIuYm9ycm93PCZNeUZ1bk5GVC5Db2xsZWN0aW9uPihmcm9tOiBNeUZ1bk5GVC5Db2xsZWN0aW9uU3RvcmFnZVBhdGgpID09IG5pbCB7CiAgICAgICAgICAgIC8vIENyZWF0ZSBhIG5ldyBlbXB0eSBjb2xsZWN0aW9uCiAgICAgICAgICAgIGxldCBjb2xsZWN0aW9uIDwtIE15RnVuTkZULmNyZWF0ZUVtcHR5Q29sbGVjdGlvbigpCgogICAgICAgICAgICAvLyBzYXZlIGl0IHRvIHRoZSBhY2NvdW50CiAgICAgICAgICAgIHNpZ25lci5zYXZlKDwtY29sbGVjdGlvbiwgdG86IE15RnVuTkZULkNvbGxlY3Rpb25TdG9yYWdlUGF0aCkKCiAgICAgICAgICAgIC8vIGNyZWF0ZSBhIHB1YmxpYyBjYXBhYmlsaXR5IGZvciB0aGUgY29sbGVjdGlvbgogICAgICAgICAgICBzaWduZXIubGluazwme05vbkZ1bmdpYmxlVG9rZW4uQ29sbGVjdGlvblB1YmxpYywgTXlGdW5ORlQuTXlGdW5ORlRDb2xsZWN0aW9uUHVibGljLCBNZXRhZGF0YVZpZXdzLlJlc29sdmVyQ29sbGVjdGlvbn0%2BKAogICAgICAgICAgICAgICAgTXlGdW5ORlQuQ29sbGVjdGlvblB1YmxpY1BhdGgsCiAgICAgICAgICAgICAgICB0YXJnZXQ6IE15RnVuTkZULkNvbGxlY3Rpb25TdG9yYWdlUGF0aAogICAgICAgICAgICApCiAgICAgICAgfQogICAgICAgIHNlbGYuTXlGdW5ORlRDb2xsZWN0aW9uID0gc2lnbmVyLmJvcnJvdzwmTXlGdW5ORlQuQ29sbGVjdGlvbntNeUZ1bk5GVC5NeUZ1bk5GVENvbGxlY3Rpb25QdWJsaWMsTm9uRnVuZ2libGVUb2tlbi5Db2xsZWN0aW9uUHVibGljLE5vbkZ1bmdpYmxlVG9rZW4uUmVjZWl2ZXIsTWV0YWRhdGFWaWV3cy5SZXNvbHZlckNvbGxlY3Rpb259Pihmcm9tOiBNeUZ1bk5GVC5Db2xsZWN0aW9uU3RvcmFnZVBhdGgpIQogICAgfQoKICAgIGV4ZWN1dGUgeyAgICAgICAgCiAgICAgICAgbGV0IGl0ZW0gPC0gTXlGdW5ORlQubWludE5GVChlZGl0aW9uSUQ6IGVkaXRpb25JRCkKICAgICAgICBzZWxmLk15RnVuTkZUQ29sbGVjdGlvbi5kZXBvc2l0KHRva2VuOiA8LWl0ZW0pCiAgICB9Cn0%3D&network=testnet&args=eyJlZGl0aW9uSUQiOjF9)
 
 ## Adding the NFT collection to the Catalog
 
@@ -983,15 +981,15 @@ What is the Flow NFT Catalog?
 
 The Flow NFT Catalog is a repository of NFT’s on Flow that adhere to the Metadata standard and implement at least the core views. The core views being
 
-*External URL*
+_External URL_
 
-*NFT Collection Data*
+_NFT Collection Data_
 
-*NFT Collection Display*
+_NFT Collection Display_
 
-*Display*
+_Display_
 
-*Royalties*
+_Royalties_
 
 When proposing an NFT to the catalog, it will make sure you have implemented these views correctly. Once added your NFT will easily be discoverable and other ecosystem developers can feel confident that your NFT has implemented the core views and build on top of your NFT using the Metadata views we implemented earlier!
 
@@ -999,16 +997,24 @@ Now go to [www.flow-nft-catalog.com](http://www.flow-nft-catalog.com) and click 
 
 1\. It starts off by asking for the NFT contract. This is where the contract is deployed so what is in your flow.json and what we created via the faucet.
 
-![Screen Shot 2023-02-09 at 11.27.04 PM.png](Composability%20Chronicles%20#1%20How%20to%20build%20your%20Flow%209bce963939a14a37954748cfa193a38b/Screen_Shot_2023-02-09_at_11.27.04_PM.png)
+<img
+    width="1509"
+    alt="step-1"
+    src="https://raw.githubusercontent.com/bshahid331/my-nft-project/skeleton/content/step-1.png"
+/>
 
 2\. Now we need to enter the storage path. In our NFT it is `/storage/MyFunNFT_Collection` as well as an account that holds the NFT. This is `0xf5e9719fa6bba61a` for me.
 
-![Screen Shot 2023-02-09 at 11.28.34 PM.png](Composability%20Chronicles%20#1%20How%20to%20build%20your%20Flow%209bce963939a14a37954748cfa193a38b/Screen_Shot_2023-02-09_at_11.28.34_PM.png)
+<img
+    width="1509"
+    alt="step-2"
+    src="https://raw.githubusercontent.com/bshahid331/my-nft-project/skeleton/content/step-2.png"
+/>
 
 3\. Now you should screen that verifies that you have implemented the “core” nft views correctly and you can also see the actual data being returned from the chain.
-    
-    ![Screen Shot 2023-02-09 at 11.29.01 PM.png](Composability%20Chronicles%20#1%20How%20to%20build%20your%20Flow%209bce963939a14a37954748cfa193a38b/Screen_Shot_2023-02-09_at_11.29.01_PM.png)
-    
+
+    <img width="1509" alt="step-3" src="https://raw.githubusercontent.com/bshahid331/my-nft-project/skeleton/content/step-3.png" />
+
     In the last step you can submit your collection to the NFT catalog and voila, you have created an NFT on Flow that can easily be discovered and supported on any Dapp in the Flow ecosystem!
 
 # Conclusion
