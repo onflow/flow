@@ -200,8 +200,6 @@ Therefore, there are two kinds of Capability Controllers:
 
 ```cadence
 struct StorageCapabilityController {
-    /// The block height when the controlled capability was created.
-    let issueHeight: UInt64
 
     /// The type of the controlled capability, i.e. the T in `Capability<T>`.
     let borrowType: Type
@@ -234,8 +232,6 @@ struct StorageCapabilityController {
 
 ```cadence
 struct AccountCapabilityController {
-    /// The block height when the controlled capability was created.
-    let issueHeight: UInt64
 
     /// The type of the controlled capability, i.e. the T in `Capability<T>`.
     let borrowType: Type
