@@ -550,6 +550,21 @@ let cap = issuer.storageCapabilities.issue<T>(storagePath2)
 issuer.save(cap, to: publicOrPrivatePath)
 ```
 
+## Migration of existing data
+
+Existing links and capabilities need to be migrated.
+
+All existing storage links and all storage capabilities will get grouped by path,
+and a CapCon with a unique ID will be generated for each group.
+
+This behaviour is similar to how unlinking revokes and relinking retargets all capabilities with the same path.
+
+For all existing account links and account capabilities
+a separate CapCon with a unique ID will be generated.
+
+Capabilities do not currently have an ID.
+Existing capabilities will get assigned the ID of the associated CapCon.
+
 ## Issues not addressed in this FLIP
 
 ### Unexpected revocation
