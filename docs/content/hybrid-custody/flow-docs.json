@@ -29,7 +29,7 @@
           "title": "Get Started with Account Linking",
           "tags": [
             "guide",
-            "walletless-onboarding"
+            "account-linking"
           ],
           "description": "Link walletless onboarded accounts, unlocking Hybrid Custody in your app",
           "href": "guides/linking-accounts"
@@ -60,7 +60,7 @@
             "href": "/hybrid-custody/guides/walletless-onboarding"
           },
           {
-            "title": "Linking Accounts",
+            "title": "Account Linking & Delegation",
             "href": "/hybrid-custody/guides/linking-accounts"
           },
           {
