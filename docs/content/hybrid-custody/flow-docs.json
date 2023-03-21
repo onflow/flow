@@ -73,11 +73,15 @@
         "title": "References",
         "items": [
           {
+            "title": "LinkedAccounts Cadence Suite",
+            "href": "https://github.com/onflow/linked-accounts"
+          },
+          {
             "title": "Walletless Onboarding Sample Apps",
             "href": "https://github.com/onflow/walletless-arcade-example"
           },
           {
-            "title": "LinkedAccounts Contract",
+            "title": "LinkedAccounts Contract [Testnet]",
             "href": "https://f.dnz.dev/0x1b655847a90e644a/ChildAccount"
           }
         ]
