@@ -57,15 +57,19 @@
           },
           {
             "title": "Walletless Onboarding",
-            "href": "/hybrid-custody/guides/walletless-onboarding"
+            "href": "guides/walletless-onboarding"
           },
           {
             "title": "Account Linking & Delegation",
-            "href": "/hybrid-custody/guides/linking-accounts"
+            "href": "guides/linking-accounts"
           },
           {
             "title": "Hybrid Custody Account Model",
-            "href": "/hybrid-custody/guides/account-model"
+            "href": "guides/account-model"
+          },
+          {
+            "title": "Account Abstraction",
+            "href": "/guides/account-abstraction"
           }
         ]
       },
