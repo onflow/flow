@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developers.flow.com/schemas/flow-docs.json",
+  "displayName": "Hybrid Custody",
+  "headers": {
+    "": {
+      "icon": "cadence",
+      "title": "Hybrid Custody",
+      "description": "Create superior user experiences unlocking seamless onboarding, real ownership, and self-sovereignty on Flow",
+      "headerCards": [
+        {
+          "title": "Overview",
+          "tags": [
+            "guide",
+            "hybrid-custody"
+          ],
+          "description": "Understand the Hybrid Custody Model from a bird's eye view",
+          "href": ""
+        },
+        {
+          "title": "Explore Walletless Onboarding",
+          "tags": [
+            "guide",
+            "walletless-onboarding"
+          ],
+          "description": "Learn how to build a walletless onboarding experience in your app",
+          "href": "guides/walletless-onboarding"
+        },
+        {
+          "title": "Get Started with Account Linking",
+          "tags": [
+            "guide",
+            "account-linking"
+          ],
+          "description": "Link walletless onboarded accounts, unlocking Hybrid Custody in your app",
+          "href": "guides/linking-accounts"
+        },
+        {
+          "title": "Walletless Onboarding Example",
+          "tags": [
+            "sample",
+            "walletless-onboarding"
+          ],
+          "description": "Check out a Hybrid Custody app leveraging walletless onboarding & account linking",
+          "href": "https://github.com/onflow/walletless-arcade-example"
+        }
+      ]
+    }
+  },
+  "sidebars": {
+    "": [
+      {
+        "title": " Developer Guides",
+        "items": [
+          {
+            "title": "Hybrid Custody Overview",
+            "href": ""
+          },
+          {
+            "title": "Walletless Onboarding",
+            "href": "guides/walletless-onboarding"
+          },
+          {
+            "title": "Account Linking & Delegation",
+            "href": "guides/linking-accounts"
+          },
+          {
+            "title": "Hybrid Custody Account Model",
+            "href": "guides/account-model"
+          },
+          {
+            "title": "Account Abstraction Overview",
+            "href": "/guides/account-abstraction"
+          }
+        ]
+      },
+      {
+        "title": "References",
+        "items": [
+          {
+            "title": "LinkedAccounts Cadence Suite",
+            "href": "https://github.com/onflow/linked-accounts"
+          },
+          {
+            "title": "Walletless Onboarding Sample Apps",
+            "href": "https://github.com/onflow/walletless-arcade-example"
+          },
+          {
+            "title": "LinkedAccounts Contract [Testnet]",
+            "href": "https://f.dnz.dev/0x1b655847a90e644a/ChildAccount"
+          }
+        ]
+      }
+    ]
+  }
+}
