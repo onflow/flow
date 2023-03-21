@@ -1,0 +1,75 @@
+{
+    "$schema": "https://developers.flow.com/schemas/flow-docs.json",
+    "displayName": "Account Linking",
+    "headers": {
+      "": {
+        "icon": "cadence",
+        "title": "Account Linking",
+        "description": "Create superior onboarding experiences that enable real ownership and self-sovereignty on Flow",
+        "headerCards": [
+          {
+            "title": "Account Model",
+            "tags": ["guide", "account-linking"],
+            "description": "Learn about the account model that is enabled through Account Linking",
+            "href": "guides/account-model"
+          },
+          {
+            "title": "Explore Walletless Onboarding",
+            "tags": ["guide", "account-linking"],
+            "description": "Learn how to build a walletless onboarding experience in your app",
+            "href": "guides/walletless-onboarding"
+          },
+          {
+            "title": "Walletless Onboarding Example Apps",
+            "tags": ["sample", "account-linking"],
+            "description": "Example of a walletless onboarding experience using Account Linking",
+            "href": "https://github.com/onflow/walletless-arcade-example"
+          },
+          {
+            "title": "Child Account Contract",
+            "tags": ["smart-contracts", "account-linking"],
+            "description": "Smart contract for Child Account on Testnet",
+            "href": "https://f.dnz.dev/0x1b655847a90e644a/ChildAccount"
+          }
+        ]
+      }
+    },
+    "sidebars": {
+      "": [
+        {
+          "title": " Developer Guides",
+          "items": [
+            {
+              "title": "Account Linking Overview",
+              "href": ""
+            },
+            {
+              "title": "Account Model & Implementation",
+              "href": "guides/account-model"
+            },
+            {
+              "title": "Linking Accounts",
+              "href": "guides/linking-accounts"
+            },
+            {
+              "title": "Walletless Onboarding",
+              "href": "guides/walletless-onboarding"
+            }
+          ]
+        },
+        {
+          "title": "References",
+          "items": [
+            {
+              "title": "Walletless Onboarding Sample Apps",
+              "href": "https://github.com/onflow/walletless-arcade-example"
+            },
+            {
+              "title": "Child Account Contract",
+              "href": "https://f.dnz.dev/0x1b655847a90e644a/ChildAccount"
+            }
+          ]
+        }
+      ]
+    }
+  }
