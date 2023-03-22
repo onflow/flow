@@ -25,7 +25,7 @@ In this doc, we’ll dive into a progressive onboarding flow, including the Cade
 
 **Hybrid Custody Model** - A custodial pattern in which a dApp and a user maintain access to a dApp created account and user access to that account has been mediated by account linking.
 
-**Account Linking** - Technically speaking, account linking in our context consists of giving some other account an AuthAccount Capability from the granting account. This Capability is maintained in (soon to be standard) resource called a `ChildAccountManager`, providing its owning user access to any and all of their linked accounts.
+**Account Linking** - Technically speaking, account linking in our context consists of giving some other account an AuthAccount Capability from the granting account. This Capability is maintained in (soon to be standard) resource called a `LinkedAccounts.Collection`, providing its owning user access to any and all of their linked accounts.
 
 **Progressive Onboarding** - An onboarding flow that walks a user up to self-custodial ownership, starting with walletless onboarding and later linking the dApp account with the user’s authenticated wallet once the user chooses to do so.
 
@@ -418,7 +418,7 @@ transaction(parentAddress: Address, authAccountPathSuffix: String) {
 
 ### Claim
 
-On the other side, the receiving account claims the published AuthAccount Capability, adding it to the signer's `ChildAccountManager`.
+On the other side, the receiving account claims the published AuthAccount Capability, adding it to the signer's `LinkedAccounts.Collection`.
 
 ```jsx
 import MetadataViews from "../../contracts/utility/MetadataViews.cdc"
