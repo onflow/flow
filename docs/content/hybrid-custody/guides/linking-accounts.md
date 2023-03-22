@@ -15,6 +15,40 @@ In this doc, we’ll dive into a progressive onboarding flow, including the Cade
 - View Fungible and NonFungible Token metadata relating to assets across all of a user’s associated accounts - their wallet-mediated “parent” account and any hybrid custody model “child” accounts
 - Facilitate transactions acting on assets in child accounts
 
+# Point of Clarity
+
+Before diving in, let's make a distinction between **"account linking"** and **"linking accounts"**.
+
+## Account Linking
+
+Very simply, account linking is a [feature in Cadence](https://github.com/onflow/flips/pull/53) that let's an [AuthAccount](https://developers.flow.com/cadence/language/accounts#authaccount) create a [Capability](https://developers.flow.com/cadence/language/capability-based-access-control) on itself. You can do so in the following transaction:
+
+```js
+#allowAccountLinking
+
+transaction(linkPathSuffix: String) {
+    prepare(signer: AuthAccount) {
+        // Create the PrivatePath where we'll create the link
+        let linkPath = PrivatePath(identifier: linkPathSuffix)
+            ?? panic("Could not construct PrivatePath from given identifier: ".concat(linkPathSuffix))
+        // Check if an AuthAccount Capability already exists at the specified path
+        if !signer.getCapability<&AuthAccount>(linkPath).check() {
+            // If not, unlink anything that may be there and link the AuthAccount Capability
+            signer.unlink(linkpath)
+            signer.linkAccount(linkPath)
+        }
+    }
+}
+```
+
+From there, the signing account can retrieve the privately linked AuthAccount Capability and delegate it to another account, unlinking the Capability if they wish to revoke delegated access.
+
+Note that in order to link an account, a transaction must state the `#allowAccountLinking` as a pragme in the top line of the transaction. This is an interim safety measure so that wallet providers can notify users they're about to sign a transaction that may create and use a Capability on their AuthAccount.
+
+## Linking Accounts
+
+Linking accounts uses an account link, otherwise known as an **AuthAccount Capability**, and encapsulates it in an object that is then kept in the a collection of linked account. The [components and actions](https://github.com/onflow/flips/pull/72) involved in this process - what the Capabity is encapsulated in, the collection that holds those encapsulations, etc. is what we'll dive into in this doc.
+
 # Terminology
 
 **Parent-Child accounts** - For the moment, we’ll call the account created by the dApp the “child” account and the account receiving its AuthAccount Capability the “parent” account. Existing methods of account access & delegation (i.e. keys) still imply ownership over the account, but insofar as linked accounts are concerned, the account to which both the user and the dApp share access via AuthAccount Capability will be considered the “child” account. This naming is a topic of community discussion and may be subject to change.
