@@ -29,7 +29,7 @@ How does this delegation occur? Typically when we think of shared account access
 
 We’ve leveraged this feature in a (proposed) standard so that dapps can implement a hybrid custody model whereby the dapp creates an account it controls, then later delegates authority over that account to the user once they’ve authenticate with their wallet. All related constructs are defined in the `LinkedAccounts` contract. The delegation of that account authority is mediated by the parent account's `Collection`, and `Handler`, residing in the linked child account. 
 
-<img src="resources/child-account-manager.jpg" width =800>
+![resources/child-account-manager.jpg](resources/child-account-manager.jpg)
 
 Therefore, the presence of a `Collection` in an account implies there are potentially associated accounts for which the owning account has delegated authority. This resource is intended to be configured with a pubic Capability enabling querying of an accounts child account addresses via `getLinkedAccountAddresses()`.
 
@@ -39,7 +39,7 @@ A wallet or marketplace wishing to discover all of a user’s accounts and asset
 
 To clarify, insofar as the standard is concerned, an account is a parent account if it contains a `Collection` resource, and an account is a child account if it contains a `Handler` resource.
 
-<img src="resources/account-hierarchy.jpg" width =800>
+![resources/account-hierarchy.jpg](resources/account-hierarchy.jpg)
 
 We can see that the user’s `Collection.linkedAccounts` point to the address of its child account. Likewise, the child account’s `Handler.parentAddress` point to the user’s account as its parent address. This makes it easy to both identify whether an account is a parent, child, or both, and its associated parent/child account(s).
 
@@ -50,7 +50,7 @@ Do note that this construction does not prevent an account from having multiple 
 We believe it would be unlikely for a use case to demand a user delegates authority over their main account (in fact we’d discourage such constructions), but delegating access between child accounts could be useful. As an example, consider a set of local game clients across mobile and web platforms, each with self-custodied app accounts having delegated authority to each other while both are child accounts of the user’s main account.
 
 
-<img src="resources/user-account.jpeg" width =800>
+![resources/user-account.jpeg](resources/user-account.jpeg)
 
 The user’s account is the root parent account while both child accounts have delegated access to each other. This allows assets to be easily transferable between dapp accounts without the need of a user signature to facilitate transfer.
 
@@ -77,7 +77,7 @@ And with respect to acting on the assets of child accounts and managing child ac
 
 This script will return `true` if a `LinkedAccounts.Collection` is stored and `false` otherwise
 
-```
+```js
 import MetadataViews from "../contracts/utility/MetadataViews.cdc"
 import NonFungibleToken from "../contracts/utility/NonFungibleToken.cdc"
 import LinkedAccounts from "../contracts/LinkedAccounts.cdc"
@@ -113,7 +113,7 @@ pub fun main(address: Address): Bool {
 
 The following script will return an array addresses associated with a given account’s address, inclusive of the provided address.
 
-```
+```js
 import LinkedAccounts from "../contracts/LinkedAccounts.cdc"
 
 pub fun main(address: Address): [Address] {
@@ -142,7 +142,7 @@ While it is possible to iterate over the storage of all associated accounts in a
 1. Get all associated account addresses (see above)
 2. Looping over each associated account address client-side, get each address’s owned NFT metadata
 
-```
+```js
 import NonFungibleToken from "../contracts/utility/NonFungibleToken.cdc"
 import MetadataViews from "../contracts/utility/MetadataViews.cdc"
 import LinkedAccounts from "../contracts/LinkedAccounts.cdc"
@@ -281,7 +281,7 @@ Similar to the previous example, we recommend breaking up this task due to memor
 1. Get all linked account addresses (see above)
 2. Looping over each associated account address client-side, get each address’s owned FungibleToken Vault metadata
 
-```
+```js
 import FungibleToken from "../contracts/utility/FungibleToken.cdc"
 import FungibleTokenMetadataViews from "../contracts/utility/FungibleTokenMetadataViews.cdc"
 import MetadataViews from "../contracts/utility/MetadataViews.cdc"
@@ -419,7 +419,7 @@ The returned data at the end of address iteration should be sufficient to achiev
 
 A user with tokens in one of their linked accounts will likely want to utilize said tokens. In this example, the user will sign a transaction a transaction with their authenticated account that retrieves a reference to a linked account’s Flow Provider, enabling withdrawal from the linked account having signed with the main account.
 
-```
+```js
 import FungibleToken from "../../contracts/utility/FungibleToken.cdc"
 import FlowToken from "../../contracts/FlowToken.cdc"
 import LinkedAccounts from "../../contracts/LinkedAccounts.cdc"
@@ -464,7 +464,7 @@ Things are not as straightforward respect to AuthAccount Capabilities, at least 
 
 As mentioned above, if a user no longer wishes to share access with another party, it’s recommended that desired assets be transferred from that account to either their main account or other linked accounts and the linked account be removed from their `LinkedAccounts.Collection`. Let’s see how to complete that removal.
 
-```
+```js
 import LinkedAccounts from "../../contracts/LinkedAccounts.cdc"
 
 /// This transaction removes access to a linked account from the signer's LinkedAccounts Collection.
