@@ -39,7 +39,7 @@ Given the ability to establish an account and later delegate access to a user, d
 
 The following transaction creates an account, funding creation via the signer and adding the provided public key. You'll notice this transaction is pretty much your standard account creation. The magic for you will be how you custody the key for this account (locally, KMS, wallet service, etc.) in a manner that allows your dapp to mediate on-chain interactions on behalf of your user.
 
-```jsx
+```
 import FlowToken from "../../contracts/utility/FlowToken.cdc"
 import FungibleToken from "../../contracts/utility/FungibleToken.cdc"
 
@@ -106,7 +106,7 @@ Compared to walletless onboarding where a user does not have a Flow account, blo
 After this transaction, both the custodial party (presumably the client/dApp) and the signing parent account will have access to the newly created account - the custodial party via key access and the parent account via their `LinkedAccounts.Collection` maintaining the new account's AuthAccount Capability.
 
 ### Account Creation & Linking
-```jsx
+```
 #allowAccountLinking
 
 import FungibleToken from "../../contracts/utility/FungibleToken.cdc"
@@ -269,7 +269,7 @@ Linking accounts can be done in one of two ways. Put simply, the child account n
 
 ### Multisig Transaction
 
-```jsx
+```
 #allowAccountLinking
 
 import MetadataViews from "../../contracts/utility/MetadataViews.cdc"
@@ -389,7 +389,7 @@ transaction(
 
 Here, the account delegating access to itself links its AuthAccount Capability, and publishes it to be claimed by the account it will be linked to.
 
-```jsx
+```
 #allowAccountLinking
 
 /// Signing account publishes a Capability to its AuthAccount for
@@ -420,7 +420,7 @@ transaction(parentAddress: Address, authAccountPathSuffix: String) {
 
 On the other side, the receiving account claims the published AuthAccount Capability, adding it to the signer's `LinkedAccounts.Collection`.
 
-```jsx
+```
 import MetadataViews from "../../contracts/utility/MetadataViews.cdc"
 import NonFungibleToken from "../../contracts/utility/NonFungibleToken.cdc"
 import LinkedAccountMetadataViews from "../../contracts/LinkedAccountMetadataViews.cdc"

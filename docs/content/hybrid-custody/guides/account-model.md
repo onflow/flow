@@ -77,7 +77,7 @@ And with respect to acting on the assets of child accounts and managing child ac
 
 This script will return `true` if a `LinkedAccounts.Collection` is stored and `false` otherwise
 
-```jsx
+```
 import MetadataViews from "../contracts/utility/MetadataViews.cdc"
 import NonFungibleToken from "../contracts/utility/NonFungibleToken.cdc"
 import LinkedAccounts from "../contracts/LinkedAccounts.cdc"
@@ -113,7 +113,7 @@ pub fun main(address: Address): Bool {
 
 The following script will return an array addresses associated with a given account’s address, inclusive of the provided address.
 
-```jsx
+```
 import LinkedAccounts from "../contracts/LinkedAccounts.cdc"
 
 pub fun main(address: Address): [Address] {
@@ -142,7 +142,7 @@ While it is possible to iterate over the storage of all associated accounts in a
 1. Get all associated account addresses (see above)
 2. Looping over each associated account address client-side, get each address’s owned NFT metadata
 
-```jsx
+```
 import NonFungibleToken from "../contracts/utility/NonFungibleToken.cdc"
 import MetadataViews from "../contracts/utility/MetadataViews.cdc"
 import LinkedAccounts from "../contracts/LinkedAccounts.cdc"
@@ -281,7 +281,7 @@ Similar to the previous example, we recommend breaking up this task due to memor
 1. Get all linked account addresses (see above)
 2. Looping over each associated account address client-side, get each address’s owned FungibleToken Vault metadata
 
-```jsx
+```
 import FungibleToken from "../contracts/utility/FungibleToken.cdc"
 import FungibleTokenMetadataViews from "../contracts/utility/FungibleTokenMetadataViews.cdc"
 import MetadataViews from "../contracts/utility/MetadataViews.cdc"
@@ -419,7 +419,7 @@ The returned data at the end of address iteration should be sufficient to achiev
 
 A user with tokens in one of their linked accounts will likely want to utilize said tokens. In this example, the user will sign a transaction a transaction with their authenticated account that retrieves a reference to a linked account’s Flow Provider, enabling withdrawal from the linked account having signed with the main account.
 
-```jsx
+```
 import FungibleToken from "../../contracts/utility/FungibleToken.cdc"
 import FlowToken from "../../contracts/FlowToken.cdc"
 import LinkedAccounts from "../../contracts/LinkedAccounts.cdc"
@@ -464,7 +464,7 @@ Things are not as straightforward respect to AuthAccount Capabilities, at least 
 
 As mentioned above, if a user no longer wishes to share access with another party, it’s recommended that desired assets be transferred from that account to either their main account or other linked accounts and the linked account be removed from their `LinkedAccounts.Collection`. Let’s see how to complete that removal.
 
-```jsx
+```
 import LinkedAccounts from "../../contracts/LinkedAccounts.cdc"
 
 /// This transaction removes access to a linked account from the signer's LinkedAccounts Collection.
