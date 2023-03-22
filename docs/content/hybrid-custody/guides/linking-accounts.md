@@ -37,317 +37,350 @@ Given the ability to establish an account and later delegate access to a user, d
 
 ### Account Creation
 
-![walletless-account-creation.png](resources/walletless-account-creation.png)
-
-*In this account creation scenario, a local dApp makes an API call to its backend account providing a public key along with the call. The backend account creates a new account using its `ChildAccountCreator` resource, funding its creation, and adding the provided public key to the new account.*
-
-The following transaction creates an account using the signer's ChildAccountCreator, funding creation via the signing account and adding the provided public key. A ChildAccountTag resource is saved in the new account, identifying it as an account created under this construction. This resource also holds metadata related to the purpose of this account. Additionally, the ChildAccountCreator maintains a mapping of addresses created by it indexed on the originatingpublic key. This enables dApps to lookup the address for which they hold a public key.
-
-Note that this is just one way to make an account on Flow, and your dApp doesn't necessarily have to implement a `ChildAccountCreator` to support a walletless onboarding flow. Any account can be linked in the 
+The following transaction creates an account, funding creation via the signer and adding the provided public key. You'll notice this transaction is pretty much your standard account creation. The magic for you will be how you custody the key for this account (locally, KMS, wallet service, etc.) in a manner that allows your dapp to mediate on-chain interactions on behalf of your user.
 
 ```jsx
-import ChildAccount from "../contracts/ChildAccount.cdc"
-import MetadataViews from "../../contracts/utility/MetadataViews.cdc"
+import FlowToken from "../../contracts/utility/FlowToken.cdc"
+import FungibleToken from "../../contracts/utility/FungibleToken.cdc"
 
+/// Taken from the onflow/linked-accounts repo
+/// https://github.com/onflow/linked-accounts
+///
 transaction(
     pubKey: String,
-    fundingAmt: UFix64,
-    childAccountName: String,
-    childAccountDescription: String,
-    clientIconURL: String,
-    clientExternalURL: String
+    initialFundingAmt: UFix64,
   ) {
 	
 	prepare(signer: AuthAccount) {
-    // Save a ChildAccountCreator if none exists
-    if signer.borrow<&ChildAccount.ChildAccountCreator>(from: ChildAccount.ChildAccountCreatorStoragePath) == nil {
-      signer.save(<-ChildAccount.createChildAccountCreator(), to: ChildAccount.ChildAccountCreatorStoragePath)
-    }
-    // Link the public Capability so signer can query address on public key
-    if !signer.getCapability<
-        &ChildAccount.ChildAccountCreator{ChildAccount.ChildAccountCreatorPublic}
-      >(ChildAccount.ChildAccountCreatorPublicPath).check() {
-      // Unlink & Link
-      signer.unlink(ChildAccount.ChildAccountCreatorPublicPath)
-      signer.link<
-        &ChildAccount.ChildAccountCreator{ChildAccount.ChildAccountCreatorPublic}
-      >(
-        ChildAccount.ChildAccountCreatorPublicPath,
-        target: ChildAccount.ChildAccountCreatorStoragePath
-      )
-    }
-    // Get a reference to the ChildAccountCreator
-    let creatorRef = signer.borrow<&ChildAccount.ChildAccountCreator>(
-        from: ChildAccount.ChildAccountCreatorStoragePath
-      ) ?? panic("Problem getting a ChildAccountCreator reference!")
-    // Construct the ChildAccountInfo metadata struct
-    let info = ChildAccount.ChildAccountInfo(
-        name: childAccountName,
-        description: childAccountDescription,
-        clientIconURL: MetadataViews.HTTPFile(url: clientIconURL),
-        clienExternalURL: MetadataViews.ExternalURL(clientExternalURL),
-        originatingPublicKey: pubKey
-      )
-    // Create the account, passing signer AuthAccount to fund account creation
-    // and add initialFundingAmount in Flow if desired
-    let newAccount: AuthAccount = creatorRef.createChildAccount(
-        signer: signer,
-        initialFundingAmount: fundingAmt,
-        childAccountInfo: info
-      )
-    // At this point, the newAccount can further be configured as suitable for
-    // use in your dApp (e.g. Setup a Collection, Mint NFT, Configure Vault, etc.)
-    // ...
-    }
-}
-```
 
-### Query Account Address
+		/* --- Account Creation (your dApp may choose to separate creation depending on your custodial model) --- */
+		//
+		// Create the child account, funding via the signer
+		let newAccount = AuthAccount(payer: signer)
+		// Create a public key for the proxy account from string value in the provided arg
+		// **NOTE:** You may want to specify a different signature algo for your use case
+		let key = PublicKey(
+			publicKey: pubKey.decodeHex(),
+			signatureAlgorithm: SignatureAlgorithm.ECDSA_P256
+		)
+		// Add the key to the new account
+		// **NOTE:** You may want to specify a different hash algo & weight best for your use case
+		newAccount.keys.add(
+			publicKey: key,
+			hashAlgorithm: HashAlgorithm.SHA3_256,
+			weight: 1000.0
+		)
 
-As mentioned above, the address of any accounts created via the `ChildAccountCreator` are saved  in its mapping, indexed on the originating public key. This feature was included because there is not currently a mechanism to determine a new account’s address without listening for account creation events.
+		/* --- (Optional) Additional Account Funding --- */
+		//
+		// Fund the new account if specified
+		if initialFundingAmt > 0.0 {
+			// Get a vault to fund the new account
+			let fundingProvider = signer.borrow<&FlowToken.Vault{FungibleToken.Provider}>(
+					from: /storage/flowTokenVault
+				)!
+			// Fund the new account with the initialFundingAmount specified
+			newAccount.getCapability<&FlowToken.Vault{FungibleToken.Receiver}>(
+				/public/flowTokenReceiver
+			).borrow()!
+			.deposit(
+				from: <-fundingProvider.withdraw(
+					amount: initialFundingAmt
+				)
+			)
+		}
 
-With the `ChildAccountCreatorPublic` Capability configured, we can query the creating `ChildAccountCreator` with the public key we have to determine the corresponding account’s address. For a dApp querying for an address corresponding to a custodied key pair, it’s also relevant to know whether the key is still active (in other words has not been revoked). This is relevant in a situation where another party shares access to the account and has the ability to revoke the dApp’s keys.
-
-```jsx
-import ChildAccount from "../contracts/ChildAccount.cdc"
-
-/// Returns the child address associated with a public key if account
-/// was created by the ChildAccountCreator at the specified Address and
-/// the provided public key is still active on the account.
-///
-pub fun main(creatorAddress: Address, pubKey: String): Address? {
-  // Get a reference to the ChildAccountCreatorPublic Capability from creatorAddress
-  if let creatorRef = getAccount(creatorAddress).getCapability<
-      &ChildAccount.ChildAccountCreator{ChildAccount.ChildAccountCreatorPublic}
-    >(ChildAccount.ChildAccountCreatorPublicPath).borrow() {
-    // Get the address created by the given public key if it exists
-    if let address = creatorRef.getAddressFromPublicKey(publicKey: pubKey) {
-      // Also check that the given key has not been revoked
-      if ChildAccount.isKeyActiveOnAccount(publicKey: pubKey, address: address) {
-        return address
-      }
-    }
-    return nil
-  }
-  return nil
+		/* Continue with use case specific setup */
+		//
+		// At this point, the newAccount can further be configured as suitable for
+		// use in your dapp (e.g. Setup a Collection, Mint NFT, Configure Vault, etc.)
+		// ...
+	}
 }
 ```
 
 ## Blockchain-Native Onboarding
+
 Compared to walletless onboarding where a user does not have a Flow account, blockchain-native onboarding assumes a user already has a wallet configured and immediately links it with a newly created dApp account. This enables the dApp to sign transactions on the user's behalf via the new child account while immediately delegating control of that account to the onboarding user's main account.
+
+After this transaction, both the custodial party (presumably the client/dApp) and the signing parent account will have access to the newly created account - the custodial party via key access and the parent account via their `LinkedAccounts.Collection` maintaining the new account's AuthAccount Capability.
 
 ### Account Creation & Linking
 ```jsx
-import ChildAccount from "../contracts/ChildAccount.cdc"
-import MetadataViews from "../contracts/utility/MetadataViews.cdc"
+#allowAccountLinking
 
-/// This transaction creates an account using the client's ChildAccountCreator,
-/// funding creation via the signing account and adding the provided public key.
-/// A ChildAccountTag resource is saved in the new account, identifying it as an
-/// account created under this construction. This resource also holds metadata
-/// related to the purpose of this account.
-/// Additionally, the ChildAccountCreator maintains a mapping of addresses created
-/// by it indexed on the originatingpublic key. This enables dApps to lookup the
-/// address for which they hold a public key. 
+import FungibleToken from "../../contracts/utility/FungibleToken.cdc"
+import FlowToken from "../../contracts/utility/FlowToken.cdc"
+import MetadataViews from "../../contracts/utility/MetadataViews.cdc"
+import NonFungibleToken from "../../contracts/utility/NonFungibleToken.cdc"
+import LinkedAccountMetadataViews from "../../contracts/LinkedAccountMetadataViews.cdc"
+import LinkedAccounts from "../../contracts/LinkedAccounts.cdc"
+
+/// Taken from the onflow/linked-accounts repo
+/// https://github.com/onflow/linked-accounts
 ///
 transaction(
     pubKey: String,
     fundingAmt: UFix64,
-    childAccountName: String,
-    childAccountDescription: String,
-    clientIconURL: String,
-    clientExternalURL: String
+    linkedAccountName: String,
+    linkedAccountDescription: String,
+    clientThumbnailURL: String,
+    clientExternalURL: String,
+    authAccountPathSuffix: String,
+    handlerPathSuffix: String
   ) {
 
-  let managerRef: &ChildAccount.ChildAccountManager
-  let info: ChildAccount.ChildAccountInfo
-  let childAccountCap: Capability<&AuthAccount>
+	let collectionRef: &LinkedAccounts.Collection
+    let info: LinkedAccountMetadataViews.AccountInfo
+    let authAccountCap: Capability<&AuthAccount>
+	let newAccountAddress: Address
 	
 	prepare(parent: AuthAccount, client: AuthAccount) {
+		
+		/* --- Account Creation (your dApp may choose to handle creation differently depending on your custodial model) --- */
+		//
+		// Create the child account, funding via the signer
+		let newAccount = AuthAccount(payer: client)
+		// Create a public key for the proxy account from string value in the provided arg
+		// **NOTE:** You may want to specify a different signature algo for your use case
+		let key = PublicKey(
+			publicKey: pubKey.decodeHex(),
+			signatureAlgorithm: SignatureAlgorithm.ECDSA_P256
+		)
+		// Add the key to the new account
+		// **NOTE:** You may want to specify a different hash algo & weight best for your use case
+		newAccount.keys.add(
+			publicKey: key,
+			hashAlgorithm: HashAlgorithm.SHA3_256,
+			weight: 1000.0
+		)
 
-    /* --- Get a ChildAccountCreator reference from client's account --- */
-    //
-    // Save a ChildAccountCreator if none exists
-    if client.borrow<&ChildAccount.ChildAccountCreator>(from: ChildAccount.ChildAccountCreatorStoragePath) == nil {
-      client.save(<-ChildAccount.createChildAccountCreator(), to: ChildAccount.ChildAccountCreatorStoragePath)
-    }
-    // Link the public Capability so signer can query address on public key
-    if !client.getCapability<
-        &ChildAccount.ChildAccountCreator{ChildAccount.ChildAccountCreatorPublic}
-      >(ChildAccount.ChildAccountCreatorPublicPath).check() {
-      // Link Cap
-      client.unlink(ChildAccount.ChildAccountCreatorPublicPath)
-      client.link<
-        &ChildAccount.ChildAccountCreator{ChildAccount.ChildAccountCreatorPublic}
-      >(
-        ChildAccount.ChildAccountCreatorPublicPath,
-        target: ChildAccount.ChildAccountCreatorStoragePath
-      )
-    }
-    // Get a reference to the ChildAccountCreator
-    let creatorRef = client.borrow<&ChildAccount.ChildAccountCreator>(
-        from: ChildAccount.ChildAccountCreatorStoragePath
-      ) ?? panic("Problem getting a ChildAccountCreator reference!")
+		/* (Optional) Additional Account Funding */
+		//
+		// Fund the new account if specified
+		if fundingAmt > 0.0 {
+			// Get a vault to fund the new account
+			let fundingProvider = client.borrow<&FlowToken.Vault{FungibleToken.Provider}>(
+					from: /storage/flowTokenVault
+				)!
+			// Fund the new account with the initialFundingAmount specified
+			newAccount.getCapability<&FlowToken.Vault{FungibleToken.Receiver}>(
+				/public/flowTokenReceiver
+			).borrow()!
+			.deposit(
+				from: <-fundingProvider.withdraw(
+					amount: fundingAmt
+				)
+			)
+		}
+		self.newAccountAddress = newAccount.address
 
-    /* --- Create the new account --- */
-    //
-    // Construct the ChildAccountInfo metadata struct
-    self.info = ChildAccount.ChildAccountInfo(
-      name: childAccountName,
-      description: childAccountDescription,
-      clientIconURL: MetadataViews.HTTPFile(url: clientIconURL),
-      clienExternalURL: MetadataViews.ExternalURL(clientExternalURL),
-      originatingPublicKey: pubKey
-      )
-    // Create the account, passing signer AuthAccount to fund account creation
-    // and add initialFundingAmount in Flow if desired
-    let newAccount: AuthAccount = creatorRef.createChildAccount(
-      signer: client,
-      initialFundingAmount: fundingAmt,
-      childAccountInfo: info
-      )
-    // At this point, the newAccount can further be configured as suitable for
-    // use in your dApp (e.g. Setup a Collection, Mint NFT, Configure Vault, etc.)
-    // ...
+		// At this point, the newAccount can further be configured as suitable for
+		// use in your dapp (e.g. Setup a Collection, Mint NFT, Configure Vault, etc.)
+		// ...
 
-    /* --- Setup parent's ChildAccountManager --- */
-    //
-    // Check the parent account for a ChildAccountManager
-    if parent.borrow<
-        &ChildAccount.ChildAccountManager
-      >(from: ChildAccount.ChildAccountManagerStoragePath) == nil {
-      // Save a ChildAccountManager to the signer's account
-      parent.save(<-ChildAccount.createChildAccountManager(), to: ChildAccount.ChildAccountManagerStoragePath)
-      }
-    // Ensure ChildAccountManagerViewer is linked properly
-    if !parent.getCapability<
-        &ChildAccount.ChildAccountManager{ChildAccount.ChildAccountManagerViewer}
-      >(ChildAccount.ChildAccountManagerPublicPath).check() {
-      // Link Cap
-      parent.unlink(ChildAccount.ChildAccountManagerPublicPath)
-      parent.link<
-          &ChildAccount.ChildAccountManager{ChildAccount.ChildAccountManagerViewer}
-      >(
-          ChildAccount.ChildAccountManagerPublicPath,
-          target: ChildAccount.ChildAccountManagerStoragePath
-      )
-    }
-    // Get ChildAccountManager reference from signer
-    self.managerRef = parent.borrow<
-        &ChildAccount.ChildAccountManager
-      >(from: ChildAccount.ChildAccountManagerStoragePath)!
-    // Link the new account's AuthAccount Capability
-    self.childAccountCap = newAccount.linkAccount(ChildAccount.AuthAccountCapabilityPath)
-  }
+		/* --- Setup parent's LinkedAccounts.Collection --- */
+		//
+		// Check that Collection is saved in storage
+        if parent.type(at: LinkedAccounts.CollectionStoragePath) == nil {
+            parent.save(
+                <-LinkedAccounts.createEmptyCollection(),
+                to: LinkedAccounts.CollectionStoragePath
+            )
+        }
+        // Link the public Capability
+        if !parent.getCapability<
+                &LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, MetadataViews.ResolverCollection}
+            >(LinkedAccounts.CollectionPublicPath).check() {
+            parent.unlink(LinkedAccounts.CollectionPublicPath)
+            parent.link<&LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, MetadataViews.ResolverCollection}>(
+                LinkedAccounts.CollectionPublicPath,
+                target: LinkedAccounts.CollectionStoragePath
+            )
+        }
+        // Link the private Capability
+        if !parent.getCapability<
+                &LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, NonFungibleToken.CollectionPublic, NonFungibleToken.Receiver, NonFungibleToken.Provider, MetadataViews.ResolverCollection}
+            >(LinkedAccounts.CollectionPrivatePath).check() {
+            parent.unlink(LinkedAccounts.CollectionPrivatePath)
+            parent.link<
+                &LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, NonFungibleToken.CollectionPublic, NonFungibleToken.Receiver, NonFungibleToken.Provider, MetadataViews.ResolverCollection}
+            >(
+                LinkedAccounts.CollectionPrivatePath,
+                target: LinkedAccounts.CollectionStoragePath
+            )
+        }
+		// Assign a reference to the Collection we now know is correctly configured
+		self.collectionRef = parent.borrow<&LinkedAccounts.Collection>(from: LinkedAccounts.CollectionStoragePath)!
 
-  execute {
-    /* --- Link the parent & child accounts --- */
-    //
-    // Add account as child to the ChildAccountManager
-    self.managerRef.addAsChildAccount(childAccountCap: self.childAccountCap, childAccountInfo: self.info)
-  }
+		/* --- Link the child account's AuthAccount Capability & assign --- */
+        //
+		// Assign the PrivatePath where we'll link the AuthAccount Capability
+        let authAccountPath: PrivatePath = PrivatePath(identifier: authAccountPathSuffix)
+            ?? panic("Could not construct PrivatePath from given suffix: ".concat(authAccountPathSuffix))
+		// Link the new account's AuthAccount Capability
+		self.authAccountCap = newAccount.linkAccount(authAccountPath)
+		
+		/** --- Construct metadata --- */
+        //
+        // Construct linked account metadata from given arguments
+        self.info = LinkedAccountMetadataViews.AccountInfo(
+            name: linkedAccountName,
+            description: linkedAccountDescription,
+            thumbnail: MetadataViews.HTTPFile(url: clientThumbnailURL),
+            externalURL: MetadataViews.ExternalURL(clientExternalURL)
+        )
+	}
 
-  post {
-    // Make sure new account was linked to parent's successfully
-    self.managerRef.getChildAccountAddresses().contains(self.newAccountAddress):
-      "Problem linking accounts!"
-  }
+	execute {
+		/* --- Link the parent & child accounts --- */
+		//
+		// Add the child account
+		self.collectionRef.addAsChildAccount(
+			linkedAccountCap: self.authAccountCap,
+			linkedAccountMetadata: self.info,
+			linkedAccountMetadataResolver: nil,
+			handlerPathSuffix: handlerPathSuffix
+		)
+	}
+
+	post {
+		// Make sure new account was linked to parent's successfully
+		self.collectionRef.getLinkedAccountAddresses().contains(self.newAccountAddress):
+			"Problem linking accounts!"
+	}
 }
+
 ```
 
 # Account Linking
-Linking an account is the process of delegating account access via AuthAccount Capability. Of course, we want to do this in a way that allows the receiving account to maintain that Capability and allows easy identification of the accounts on either end of the linkage - the parent & child accounts. This is accomplished in the (still in flux) `ChildAccount` contract which we'll continue to use in this guidance.
 
-![linked-accounts-diagram.png](resources/linked-accounts-diagram.png)
+Linking an account is the process of delegating account access via AuthAccount Capability. Of course, we want to do this in a way that allows the receiving account to maintain that Capability and allows easy identification of the accounts on either end of the linkage - the user's main "parent" account and the linked "child" account. This is accomplished in the (still in flux) `LinkedAccounts` contract which we'll continue to use in this guidance.
 
-*In this scenario, a user custodies a key for their main account which has a `ChildAccountManager` within it. Their `ChildAccountManager` maintains an AuthAccount Capability to the child account, which the dApp maintains access to via the account’s key.*
+> :warning: Note that since account linking is a sensitive action, transactions where an account may be linked are designated by a topline pragma `#allowAccountLinking`. This lets wallet providers inform users that their account may be linked in the signing transaction.
 
-Linking accounts can be done in one of two ways. Put simply, the child account needs to get the parent account its AuthAccount Capability, and the parent needs to save that Capability in its `ChildAccountManager` in a manner that represents the linked accounts and their relative associations. We can achieve this in a multisig transaction signed by both the the child account & the parent account, or we can leverage Cadence’s `AuthAccount.Inbox` to publish the Capability from the child account & have the parent claim the Capability in a separate transaction. Let’s take a look at both.
+<img src="resources/linked-accounts-diagram.jpg" width =600>
 
-A consideration during the linking process is whether you would like the parent account to be configured with some resources or Capabilities relevant to your dApp. For example, if your dApp deals with specific NFTs, you may want to configure the parent account with Collections for those NFTs so the user can easily transfer them between their linked accounts.
+*In this scenario, a user custodies a key for their main account which has a `LinkedAccounts.Collection` within it. Their `LinkedAccounts.NFT` maintains an AuthAccount Capability to the child account, which the dApp maintains access to via the account’s key and within which a `LinkedAccounts.Handler`.*
+
+Linking accounts can be done in one of two ways. Put simply, the child account needs to get the parent account its AuthAccount Capability, and the parent needs to save that Capability in its `LinkedAccounts.Collection` in a manner that represents the linked accounts and their relative associations. We can achieve this in a multisig transaction signed by both the the accounts on either side of the link, or we can leverage Cadence’s `AuthAccount.Inbox` to publish the Capability from the child account & have the parent claim the Capability in a separate transaction. Let’s take a look at both.
+
+> A consideration during the linking process is whether you would like the parent account to be configured with some resources or Capabilities relevant to your dApp. For example, if your dApp deals with specific NFTs, you may want to configure the parent account with Collections for those NFTs so the user can easily transfer them between their linked accounts.
 
 ### Multisig Transaction
 
 ```jsx
-import ChildAccount from "../../contracts/ChildAccount.cdc"
+#allowAccountLinking
 
-/// Adds the labeled child account as a Child Account in the parent accounts'
-/// ChildAccountManager resource. The parent maintains an AuthAccount Capability
-/// on the child's account.
-/// Note that this transaction assumes we're linking an account created by a
-/// ChildAccountCreator and the child account already has a ChildAccountTag.
+import MetadataViews from "../../contracts/utility/MetadataViews.cdc"
+import NonFungibleToken from "../../contracts/utility/NonFungibleToken.cdc"
+import LinkedAccountMetadataViews from "../../contracts/LinkedAccountMetadataViews.cdc"
+import LinkedAccounts from "../../contracts/LinkedAccounts.cdc"
+
+/// Links thie signing accounts as labeled, with the child's AuthAccount Capability
+/// maintained in the parent's LinkedAccounts.Collection
 ///
-transaction {
+transaction(
+    linkedAccountName: String,
+    linkedAccountDescription: String,
+    clientThumbnailURL: String,
+    clientExternalURL: String,
+    authAccountPathSuffix: String,
+    handlerPathSuffix: String
+) {
 
-  let authAccountCap: Capability<&AuthAccount>
-  let managerRef: &ChildAccount.ChildAccountManager
-  let info: ChildAccount.ChildAccountInfo
+    let collectionRef: &LinkedAccounts.Collection
+    let info: LinkedAccountMetadataViews.AccountInfo
+    let authAccountCap: Capability<&AuthAccount>
+    let linkedAccountAddress: Address
 
-  prepare(parent: AuthAccount, child: AuthAccount) {
-      
-    /* --- Configure parent's ChildAccountManager --- */
-    //
-    // Get ChildAccountManager Capability, linking if necessary
-    if parent.borrow<
-        &ChildAccount.ChildAccountManager
-      >(from: ChildAccount.ChildAccountManagerStoragePath) == nil {
-      // Save
-      parent.save(<-ChildAccount.createChildAccountManager(), to: ChildAccount.ChildAccountManagerStoragePath)
+    prepare(parent: AuthAccount, child: AuthAccount) {
+        
+        /** --- Configure Collection & get ref --- */
+        //
+        // Check that Collection is saved in storage
+        if parent.type(at: LinkedAccounts.CollectionStoragePath) == nil {
+            parent.save(
+                <-LinkedAccounts.createEmptyCollection(),
+                to: LinkedAccounts.CollectionStoragePath
+            )
+        }
+        // Link the public Capability
+        if !parent.getCapability<
+                &LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, MetadataViews.ResolverCollection}
+            >(LinkedAccounts.CollectionPublicPath).check() {
+            parent.unlink(LinkedAccounts.CollectionPublicPath)
+            parent.link<&LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, MetadataViews.ResolverCollection}>(
+                LinkedAccounts.CollectionPublicPath,
+                target: LinkedAccounts.CollectionStoragePath
+            )
+        }
+        // Link the private Capability
+        if !parent.getCapability<
+                &LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, NonFungibleToken.CollectionPublic, NonFungibleToken.Receiver, NonFungibleToken.Provider, MetadataViews.ResolverCollection}
+            >(LinkedAccounts.CollectionPrivatePath).check() {
+            parent.unlink(LinkedAccounts.CollectionPrivatePath)
+            parent.link<
+                &LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, NonFungibleToken.CollectionPublic, NonFungibleToken.Receiver, NonFungibleToken.Provider, MetadataViews.ResolverCollection}
+            >(
+                LinkedAccounts.CollectionPrivatePath,
+                target: LinkedAccounts.CollectionStoragePath
+            )
+        }
+        // Get Collection reference from signer
+        self.collectionRef = parent.borrow<
+                &LinkedAccounts.Collection
+            >(
+                from: LinkedAccounts.CollectionStoragePath
+            )!
+
+        /* --- Link the child account's AuthAccount Capability & assign --- */
+        //
+        // Assign the PrivatePath where we'll link the AuthAccount Capability
+        let authAccountPath: PrivatePath = PrivatePath(identifier: authAccountPathSuffix)
+            ?? panic("Could not construct PrivatePath from given suffix: ".concat(authAccountPathSuffix))
+        // Get the AuthAccount Capability, linking if necessary
+        if !child.getCapability<&AuthAccount>(authAccountPath).check() {
+            // Unlink any Capability that may be there
+            child.unlink(authAccountPath)
+            // Link & assign the AuthAccount Capability
+            self.authAccountCap = child.linkAccount(authAccountPath)!
+        } else {
+            // Assign the AuthAccount Capability
+            self.authAccountCap = child.getCapability<&AuthAccount>(authAccountPath)
+        }
+        self.linkedAccountAddress = self.authAccountCap.borrow()?.address ?? panic("Problem with retrieved AuthAccount Capability")
+
+        /** --- Construct metadata --- */
+        //
+        // Construct linked account metadata from given arguments
+        self.info = LinkedAccountMetadataViews.AccountInfo(
+            name: linkedAccountName,
+            description: linkedAccountDescription,
+            thumbnail: MetadataViews.HTTPFile(url: clientThumbnailURL),
+            externalURL: MetadataViews.ExternalURL(clientExternalURL)
+        )
     }
-    // Ensure ChildAccountManagerViewer is linked properly
-    if !parent.getCapability<
-        &ChildAccount.ChildAccountManager{ChildAccount.ChildAccountManagerViewer}
-      >(ChildAccount.ChildAccountManagerPublicPath).check() {
-      parent.unlink(ChildAccount.ChildAccountManagerPublicPath)
-      // Link
-      parent.link<
-        &ChildAccount.ChildAccountManager{ChildAccount.ChildAccountManagerViewer}
-      >(
-        ChildAccount.ChildAccountManagerPublicPath,
-        target: ChildAccount.ChildAccountManagerStoragePath
-      )
-    }
-    // Get a reference to the ChildAccountManager resource
-    self.managerRef = parent.borrow<
-        &ChildAccount.ChildAccountManager
-      >(from: ChildAccount.ChildAccountManagerStoragePath)!
 
-    /* --- Link the child account's AuthAccount Capability & assign --- */
-    //
-    // Get the AuthAccount Capability, linking if necessary
-    if !child.getCapability<&AuthAccount>(ChildAccount.AuthAccountCapabilityPath).check() {
-      // Unlink any Capability that may be there
-      child.unlink(ChildAccount.AuthAccountCapabilityPath)
-      // Link & assign the AuthAccount Capability
-      self.authAccountCap = child.linkAccount(
-          ChildAccount.AuthAccountCapabilityPath
-        )!
-    } else {
-      // Assign the AuthAccount Capability
-      self.authAccountCap = child.getCapability<&AuthAccount>(ChildAccount.AuthAccountCapabilityPath)
+    execute {
+        // Add child account if it's parent-child accounts aren't already linked
+        if !self.collectionRef.getLinkedAccountAddresses().contains(self.linkedAccountAddress) {
+            // Add the child account
+            self.collectionRef.addAsChildAccount(
+                linkedAccountCap: self.authAccountCap,
+                linkedAccountMetadata: self.info,
+                linkedAccountMetadataResolver: nil,
+                handlerPathSuffix: handlerPathSuffix
+            )
+        }
     }
 
-    // Get the child account's Metadata which should have been configured on 
-    // creation in context of this dApp
-    let childTagRef = child.borrow<
-        &ChildAccount.ChildAccountTag
-      >(
-        from: ChildAccount.ChildAccountTagStoragePath
-      ) ?? panic("Could not borrow reference to ChildAccountTag in account ".concat(child.address.toString()))
-    self.info = childTagRef.info
-
-  execute {
-    // Add child account if it's parent-child accounts aren't already linked
-    let childAddress = self.authAccountCap.borrow()!.address
-    if !self.managerRef.getChildAccountAddresses().contains(childAddress) {
-      // Add the child account
-      self.managerRef.addAsChildAccount(
-        childAccountCap: self.authAccountCap,
-        childAccountInfo: self.info
-      )
+    post {
+        self.collectionRef.getLinkedAccountAddresses().contains(self.linkedAccountAddress):
+            "Problem linking accounts!"
     }
-  }
 }
+
 ```
 
 ## Publish & Claim
@@ -357,21 +390,25 @@ transaction {
 Here, the account delegating access to itself links its AuthAccount Capability, and publishes it to be claimed by the account it will be linked to.
 
 ```jsx
-import ChildAccount from "../../contracts/ChildAccount.cdc"
+#allowAccountLinking
 
 /// Signing account publishes a Capability to its AuthAccount for
 /// the specified parentAddress to claim
 ///
-transaction(parentAddress: Address) {
+transaction(parentAddress: Address, authAccountPathSuffix: String) {
 
     let authAccountCap: Capability<&AuthAccount>
 
     prepare(signer: AuthAccount) {
+        // Assign the PrivatePath where we'll link the AuthAccount Capability
+        let authAccountPath: PrivatePath = PrivatePath(identifier: authAccountPathSuffix)
+            ?? panic("Could not construct PrivatePath from given suffix: ".concat(authAccountPathSuffix))
         // Get the AuthAccount Capability, linking if necessary
-        if !signer.getCapability<&AuthAccount>(ChildAccount.AuthAccountCapabilityPath).check() {
-            self.authAccountCap = signer.linkAccount(ChildAccount.AuthAccountCapabilityPath)!
+        if !signer.getCapability<&AuthAccount>(authAccountPath).check() {
+            signer.unlink(authAccountPath)
+            self.authAccountCap = signer.linkAccount(authAccountPath)!
         } else {
-            self.authAccountCap = signer.getCapability<&AuthAccount>(ChildAccount.AuthAccountCapabilityPath)
+            self.authAccountCap = signer.getCapability<&AuthAccount>(authAccountPath)
         }
         // Publish for the specified Address
         signer.inbox.publish(self.authAccountCap!, name: "AuthAccountCapability", recipient: parentAddress)
@@ -384,99 +421,121 @@ transaction(parentAddress: Address) {
 On the other side, the receiving account claims the published AuthAccount Capability, adding it to the signer's `ChildAccountManager`.
 
 ```jsx
-import ChildAccount from "../../contracts/ChildAccount.cdc"
 import MetadataViews from "../../contracts/utility/MetadataViews.cdc"
+import NonFungibleToken from "../../contracts/utility/NonFungibleToken.cdc"
+import LinkedAccountMetadataViews from "../../contracts/LinkedAccountMetadataViews.cdc"
+import LinkedAccounts from "../../contracts/LinkedAccounts.cdc"
 
 /// Signing account claims a Capability to specified Address's AuthAccount
-/// and adds it as a child account in its ChildAccountManager, allowing it 
+/// and adds it as a child account in its LinkedAccounts.Collection, allowing it 
 /// to maintain the claimed Capability
-/// Note that this transaction assumes we're linking an account created by a
-/// ChildAccountCreator and the child account already has a ChildAccountTag.
 ///
 transaction(
-    pubKey: String,
-    childAddress: Address,
-    childAccontName: String,
-    childAccountDescription: String,
-    clientIconURL: String,
-    clientExternalURL: String
-  ) {
+        linkedAccountAddress: Address,
+        linkedAccountName: String,
+        linkedAccountDescription: String,
+        clientThumbnailURL: String,
+        clientExternalURL: String,
+        handlerPathSuffix: String
+    ) {
 
-  let managerRef: &ChildAccount.ChildAccountManager
-  let info: ChildAccount.ChildAccountInfo
-  let childAccountCap: Capability<&AuthAccount>
+    let collectionRef: &LinkedAccounts.Collection
+    let info: LinkedAccountMetadataViews.AccountInfo
+    let authAccountCap: Capability<&AuthAccount>
 
-  prepare(signer: AuthAccount) {
-    // Get ChildAccountManager Capability, linking if necessary
-    if signer.borrow<
-        &ChildAccount.ChildAccountManager
-      >(
-        from: ChildAccount.ChildAccountManagerStoragePath
-      ) == nil {
-      // Save a ChildAccountManager to the signer's account
-      signer.save(
-        <-ChildAccount.createChildAccountManager(),
-        to: ChildAccount.ChildAccountManagerStoragePath
-      )
+    prepare(signer: AuthAccount) {
+        /** --- Configure Collection & get ref --- */
+        //
+        // Check that Collection is saved in storage
+        if signer.type(at: LinkedAccounts.CollectionStoragePath) == nil {
+            signer.save(
+                <-LinkedAccounts.createEmptyCollection(),
+                to: LinkedAccounts.CollectionStoragePath
+            )
+        }
+        // Link the public Capability
+        if !signer.getCapability<
+                &LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, MetadataViews.ResolverCollection}
+            >(LinkedAccounts.CollectionPublicPath).check() {
+            signer.unlink(LinkedAccounts.CollectionPublicPath)
+            signer.link<&LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, MetadataViews.ResolverCollection}>(
+                LinkedAccounts.CollectionPublicPath,
+                target: LinkedAccounts.CollectionStoragePath
+            )
+        }
+        // Link the private Capability
+        if !signer.getCapability<
+                &LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, NonFungibleToken.CollectionPublic, NonFungibleToken.Receiver, NonFungibleToken.Provider, MetadataViews.ResolverCollection}
+            >(LinkedAccounts.CollectionPrivatePath).check() {
+            signer.unlink(LinkedAccounts.CollectionPrivatePath)
+            signer.link<
+                &LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, NonFungibleToken.CollectionPublic, NonFungibleToken.Receiver, NonFungibleToken.Provider, MetadataViews.ResolverCollection}
+            >(
+                LinkedAccounts.CollectionPrivatePath,
+                target: LinkedAccounts.CollectionStoragePath
+            )
+        }
+        // Get Collection reference from signer
+        self.collectionRef = signer.borrow<
+                &LinkedAccounts.Collection
+            >(
+                from: LinkedAccounts.CollectionStoragePath
+            )!
+        
+        /** --- Prep to link account --- */
+        //
+        // Claim the previously published AuthAccount Capability from the given Address
+        self.authAccountCap = signer.inbox.claim<&AuthAccount>(
+                "AuthAccountCapability",
+                provider: linkedAccountAddress
+            ) ?? panic(
+                "No AuthAccount Capability available from given provider"
+                .concat(linkedAccountAddress.toString())
+                .concat(" with name ")
+                .concat("AuthAccountCapability")
+            )
+        
+        /** --- Construct metadata --- */
+        //
+        // Construct linked account metadata from given arguments
+        self.info = LinkedAccountMetadataViews.AccountInfo(
+            name: linkedAccountName,
+            description: linkedAccountDescription,
+            thumbnail: MetadataViews.HTTPFile(url: clientThumbnailURL),
+            externalURL: MetadataViews.ExternalURL(clientExternalURL)
+        )
     }
-    // Ensure ChildAccountManagerViewer is linked properly
-    if !signer.getCapability<
-        &ChildAccount.ChildAccountManager{ChildAccount.ChildAccountManagerViewer}
-      >(ChildAccount.ChildAccountManagerPublicPath).check() {
-      // Link
-      signer.link<
-        &ChildAccount.ChildAccountManager{ChildAccount.ChildAccountManagerViewer}
-      >(
-        ChildAccount.ChildAccountManagerPublicPath,
-        target: ChildAccount.ChildAccountManagerStoragePath
-      )
-    }
-    // Get ChildAccountManager reference from signer
-    self.managerRef = signer.borrow<
-        &ChildAccount.ChildAccountManager
-      >(from: ChildAccount.ChildAccountManagerStoragePath)!
-    // Claim the previously published AuthAccount Capability from the given Address
-    self.childAccountCap = signer.inbox.claim<&AuthAccount>(
-        "AuthAccountCapability",
-        provider: childAddress
-      ) ?? panic(
-        "No AuthAccount Capability available from given provider"
-        .concat(childAddress.toString())
-        .concat(" with name ")
-        .concat("AuthAccountCapability")
-      )
-    // Construct ChildAccountInfo struct from given arguments
-    self.info = ChildAccount.ChildAccountInfo(
-      name: childAccountName,
-      description: childAccountDescription,
-      clientIconURL: MetadataViews.HTTPFile(url: clientIconURL),
-      clienExternalURL: MetadataViews.ExternalURL(clientExternalURL),
-      originatingPublicKey: pubKey
-    )
-  }
 
-  execute {
-    // Add account as child to the ChildAccountManager
-    self.managerRef.addAsChildAccount(childAccountCap: self.childAccountCap, childAccountInfo: self.info)
-  }
+    execute {
+        // Add account as child to the signer's LinkedAccounts.Collection
+        self.collectionRef.addAsChildAccount(
+            linkedAccountCap: self.authAccountCap,
+            linkedAccountMetadata: self.info,
+            linkedAccountMetadataResolver: nil,
+            handlerPathSuffix: handlerPathSuffix
+        )
+    }
 }
+ 
 ```
 
 # Funding & Custody Patterns
 
-Aside from implementing onboarding flows & account linking, you'll want to also consider the account funding & custodial pattern appropriate for the dApp you're building. The only one compatible with walletless onboarding (and therefore the only one showcased above) is one in which the dApp custodies the child account's key, funds account creation and uses its `ChildAccountCreator` resource to initiate account creation.
+Aside from implementing onboarding flows & account linking, you'll want to also consider the account funding & custodial pattern appropriate for the dApp you're building. The only one compatible with walletless onboarding (and therefore the only one showcased above) is one in which the dApp custodies the child account's key and funds account creation.
 
 In general, the funding pattern for account creation will determine to some extent the backend infrastructure needed to support your dApp and the onboarding flow your dApp can support. For example, if you want to to create a service-less client (a totally local dApp without backend infrastructure), you could forego walletless onboarding in favor of a user-funded blockchain-native onboarding to achieve a hybrid custody model. Your dApp maintains the keys to the dApp account to sign on behalf of the user, and the user funds the creation of the the account, linking to their main account on account creation. This would be a **user-funded, dApp custodied** pattern.
+
+Again, custody may deserve some regulatory insight depending on your jurisdiction. If building for production, you'll likely want to consider these non-technical implications in your technical decision-making. Such is the nature of building in crypto...
 
 Here are the patterns you might consider:
 
 ## DApp-Funded, DApp-Custodied
 
-If you want to implement walletless onboarding, you can stop here as this is the only compatible pattern. In this scenario, a backend dApp account funds the creation of a new account and the dApp custodies the key for said account either on the user's device or some backend KMS. Creation can occur the same as any Flow account or with the help of the `ChildAccountCreator` resource.
+If you want to implement walletless onboarding, you can stop here as this is the only compatible pattern. In this scenario, a backend dApp account funds the creation of a new account and the dApp custodies the key for said account either on the user's device or some backend KMS.
 
 ## DApp-Funded, User-Custodied
 
-In this case, the backend dApp account funds account creation, but adds a key to the account which the user custodies. In order for the dApp to act on the user's behalf, it has to be delegated access via AuthAccount Capability which the backend dApp account would maintain in a `ChildAccountManager`. This means that the new account would have two parent accounts - the user's and the dApp. While not comparatively useful now, once `SuperAuthAccount` is ironed out and implemented, this pattern will be the most secure in that the custodying user will have ultimate authority over the child account. Also note that this and the following patterns are incompatible with walletless onboarding in that the user must have a wallet.
+In this case, the backend dApp account funds account creation, but adds a key to the account which the user custodies. In order for the dApp to act on the user's behalf, it has to be delegated access via AuthAccount Capability which the backend dApp account would maintain in a `LinkedAccounts.Collection`. This means that the new account would have two parent accounts - the user's and the dApp. While not comparatively useful now, once [`SuperAuthAccount`](https://forum.onflow.org/t/super-user-account/4088) is ironed out and implemented, this pattern will be the most secure in that the custodying user will have ultimate authority over the child account. Also note that this and the following patterns are incompatible with walletless onboarding in that the user must have a wallet.
 
 ## User-Funded, DApp-Custodied
 
@@ -490,5 +549,5 @@ While perhaps not useful for most dApps, this pattern may be desirable for advan
 
 You can find additional Cadence examples in context at the following repos:
 
-- [ChildAccount contract & supporting scripts & transactions](https://github.com/onflow/linked-accounts)
+- [LinkedAccounts contract & supporting scripts & transactions](https://github.com/onflow/linked-accounts)
 - [Using ChildAccount paradigm in an on-chain Rock, Paper, Scissors game](https://github.com/onflow/sc-eng-gaming/tree/sisyphusSmiling/child-account-auth-acct-cap)
