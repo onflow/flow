@@ -316,7 +316,7 @@ struct AuthAccount {
         fun forEachController(_ function: ((&AccountCapabilityController): Bool))
 
         /// Issue/create a new account capability.
-        fun issue(): Capability<&AuthAccount>
+        fun issue<T: &AuthAccount>(): Capability<T>
     }
 }
 ```
