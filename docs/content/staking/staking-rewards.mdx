@@ -8,8 +8,9 @@ description: How to check the staking and delegation rewards
 
 Every week, the Flow governance committee executes the reward payout transaction.
 When the transaction executes, it generates events for the rewards paid to each node and delegator.
+To check the staking and delegation rewards, that transaction should be queried.
 
-Example
+Example using [Flow cli](https://developers.flow.com/tools/flow-cli)
 ```
 $ flow transactions get 84eca4ff612ef70047d60510710cca872c8a17c1bd9f63686e74852b6382cc84 -n mainnet
 
@@ -75,6 +76,52 @@ Events:
    ...
    ...
    <clipped for brevity>
+```
+
+Example using [Flow Go SDK](https://developers.flow.com/tools/flow-go-sdk)
+```
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/onflow/flow-go-sdk"
+	client "github.com/onflow/flow-go-sdk/access/grpc"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
+)
+
+func main() {
+
+	// the Flow mainnet community Access node API endpoint
+	accessNodeAddress := "access.mainnet.nodes.onflow.org:9000"
+
+	maxGRPCMessageSize := 1024 * 1024 * 20 // to accommodate for the large transaction payload
+
+	// create a gRPC client for the Access node
+	accessNodeClient, err := client.NewClient(accessNodeAddress,
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
+		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(maxGRPCMessageSize)))
+	if err != nil {
+		fmt.Println("err:", err.Error())
+		panic(err)
+	}
+
+	ctx := context.Background()
+
+	txID := flow.HexToID("84eca4ff612ef70047d60510710cca872c8a17c1bd9f63686e74852b6382cc84")
+
+	rewardsTxResult, err := accessNodeClient.GetTransactionResult(ctx, txID)
+	if err != nil {
+		panic(err)
+	}
+
+	for _, event := range rewardsTxResult.Events {
+		fmt.Println("Event type: " + event.Type)
+		fmt.Println("Event: " + event.Value.String())
+		fmt.Println("Event payload: " + string(event.Payload))
+	}
+}
 ```
 
 ## New method to check staking rewards
@@ -154,4 +201,47 @@ Events Block #96961750:
     ...
     ...
    <clipped for brevity>
+```
+
+Example using [Flow Go SDK](https://developers.flow.com/tools/flow-go-sdk)
+```
+package main
+
+import (
+	"context"
+	"fmt"
+	client "github.com/onflow/flow-go-sdk/access/grpc"
+)
+
+func main() {
+
+	// the Flow testnet community Access node API endpoint
+	accessNodeAddress := "access.testnet.nodes.onflow.org:9000"
+
+	// create a gRPC client for the Access node
+	accessNodeClient, err := client.NewClient(accessNodeAddress)
+	if err != nil {
+		fmt.Println("err:", err.Error())
+		panic(err)
+	}
+
+	ctx := context.Background()
+
+	blockEvents, err := accessNodeClient.GetEventsForHeightRange(ctx,
+		"A.9eca2b38b18b5dfe.FlowIDTableStaking.RewardsPaid",
+		96961750,
+		96961750)
+	if err != nil {
+		panic(err)
+	}
+
+	for _, blockEvent := range blockEvents {
+		fmt.Println("Block: " + blockEvent.BlockID.String())
+		for _, event := range blockEvent.Events {
+			fmt.Println("\tEvent type: " + event.Type)
+			fmt.Println("\tEvent: " + event.Value.String())
+			fmt.Println("\tEvent payload: " + string(event.Payload))
+		}
+	}
+}
 ```
