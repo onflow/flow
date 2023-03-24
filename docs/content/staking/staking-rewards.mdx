@@ -127,7 +127,7 @@ func main() {
 ## New method to check staking rewards
 
 As part of the new method, rewards payout will happen automatically after the end of the epoch and without the need of an explicit transaction being submitted by the service account.
-Instead of a separate reward payout transaction, the reward payout events will be recorded in the system chunk in the block that is produced at the time of the epoch transition.
+Instead of a separate reward payout transaction, the reward payout events will be recorded in the system chunk in the block that is produced at the time of the epoch transition without creating a regular transaction ID.
 
 The rewards payout can be queried by querying the block which contains the system chunk that contains the reward payout events.
 ```
