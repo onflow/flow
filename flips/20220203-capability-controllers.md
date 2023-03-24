@@ -1,7 +1,7 @@
 | status: Proposed
 | flip: [798](https://github.com/onflow/flow/pull/798)
-| author: Janez Podhostnik (janez.podhostnik@dapperlabs.com)
-| updated: 2022-10-18
+| author: Janez Podhostnik (janez.podhostnik@dapperlabs.com), Bastian Müller (bastian@dapperlabs.com)
+| updated: 2023-03-24
 
 # Capability controllers
 
