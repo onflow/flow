@@ -971,7 +971,9 @@
           "cadence-tag": "v0.8.2",
           "docker-tag": "v0.9.3"
         },
-        "accessNodes": []
+        "accessNodes": [
+          "access-001.candidate9.nodes.onflow.org:9000"
+        ]
       },
       "candidate8": {
         "id": 0.8,
@@ -1006,7 +1008,9 @@
           "cadence": "",
           "docker": ""
         },
-        "accessNodes": []
+        "accessNodes": [
+          "access-001.candidate8.nodes.onflow.org:9000"
+        ]
       },
       "candidate7": {
         "id": 0.7,
@@ -1041,7 +1045,9 @@
           "cadence-tag": "v0.8.0",
           "docker-tag": "v0.7.2"
         },
-        "accessNodes": []
+        "accessNodes": [
+          "access-001.candidate7.nodes.onflow.org:9000"
+        ]
       },
       "candidate6": {
         "id": 0.6,
@@ -1076,7 +1082,9 @@
           "cadence-tag": "",
           "docker-tag": ""
         },
-        "accessNodes": []
+        "accessNodes": [
+          "access-001.candidate6.nodes.onflow.org:9000"
+        ]
       },
       "candidate5": {
         "id": 0.5,
@@ -1111,7 +1119,9 @@
           "cadence-tag": "",
           "docker-tag": ""
         },
-        "accessNodes": []
+        "accessNodes": [
+          "access-001.candidate5.nodes.onflow.org:9000"
+        ]
       },
       "candidate4": {
         "id": 0.4,
@@ -1146,7 +1156,9 @@
           "cadence-tag": "",
           "docker-tag": ""
         },
-        "accessNodes": []
+        "accessNodes": [
+          "access-001.candidate4.nodes.onflow.org:9000"
+        ]
       }
     },
     "sandboxnet": {
