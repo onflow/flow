@@ -64,4 +64,5 @@ message EventFilter {
   repeated string event_type = 1;
   repeated string address = 2;
   repeated string contract = 3;
+  repeated string event_name = 4;
 }
