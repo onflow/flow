@@ -207,7 +207,6 @@ message GetTransactionRequest {
 message GetTransactionByIndexRequest {
   bytes block_id = 1;
   uint32 index = 2;
-  entities.LastFinalizedBlock last_finalized_block = 3;
 }
 
 message GetTransactionsByBlockIDRequest {
@@ -306,7 +305,6 @@ message EventsResponse {
     uint64 block_height = 2;
     repeated entities.Event events = 3;
     google.protobuf.Timestamp block_timestamp = 4;
-    entities.LastFinalizedBlock last_finalized_block = 5;
   }
   repeated Result results = 1;
 }
