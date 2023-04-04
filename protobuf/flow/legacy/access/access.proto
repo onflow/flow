@@ -124,6 +124,7 @@ message GetBlockHeaderByHeightRequest {
 
 message BlockHeaderResponse {
   entities.BlockHeader block = 1;
+  uint64 last_finalized_block_height = 2;
 }
 
 // Blocks
@@ -142,6 +143,7 @@ message GetBlockByHeightRequest {
 
 message BlockResponse {
   entities.Block block = 1;
+  uint64 last_finalized_block_height = 2;
 }
 
 // Collections
@@ -152,6 +154,7 @@ message GetCollectionByIDRequest {
 
 message CollectionResponse {
   entities.Collection collection = 1;
+  uint64 last_finalized_block_height = 2;
 }
 
 // Transactions
@@ -170,6 +173,7 @@ message GetTransactionRequest {
 
 message TransactionResponse {
   entities.Transaction transaction = 1;
+  uint64 last_finalized_block_height = 2;
 }
 
 message TransactionResultResponse {
@@ -187,6 +191,7 @@ message GetAccountRequest {
 
 message GetAccountResponse {
   entities.Account account = 1;
+  uint64 last_finalized_block_height = 2;
 }
 
 message GetAccountAtLatestBlockRequest {
@@ -195,6 +200,7 @@ message GetAccountAtLatestBlockRequest {
 
 message AccountResponse {
   entities.Account account = 1;
+  uint64 last_finalized_block_height = 2;
 }
 
 message GetAccountAtBlockHeightRequest {
