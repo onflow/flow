@@ -89,6 +89,18 @@ Make sure the soft limit is at least `8192`.
 
 You can configure the ulimit for the node's docker container. See the [Docker documentation](https://docs.docker.com/engine/reference/commandline/run/#ulimit) for more details.
 
+### Admin Server
+
+Each node can be configured with an admin server, which allows you to control some of the node's configuration, as well as view some of its internal state. You can find
+a few of the commands in the Admin Server [README]](https://github.com/onflow/flow-go/blob/master/admin/README.md). Two commands to highlight are:
+
+* `list-commands`: which returns a list of all of the available commands for your node
+* `set-log-level`: which allows you to change the log level of your node at runtime
+
+You can enable the admin server by passing the `--admin-addr` flag with an interface and port.
+
+> ⚠️ _IMPORANT: The admin server can modify your node's configuration. DO NOT allow access to untrusted clients._
+
 ### Access
 
 ```shell
@@ -105,6 +117,7 @@ docker run --rm \
 	--secretsdir=/data/secrets \
 	--rpc-addr=0.0.0.0:9000 \
 	--http-addr=0.0.0.0:8000 \
+	--admin-addr=0.0.0.0:9002 \
 	--collection-ingress-port=9000 \
 	--script-addr=${FLOW_NETWORK_EXECUTION_NODE} \
 	--bind 0.0.0.0:3569 \
@@ -126,6 +139,7 @@ docker run --rm \
 	--datadir=/data/protocol \
 	--secretsdir=/data/secrets \
 	--ingress-addr=0.0.0.0:9000 \
+	--admin-addr=0.0.0.0:9002 \
 	--bind 0.0.0.0:3569 \
 	--loglevel=error
 ```
@@ -144,6 +158,7 @@ docker run --rm \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
 	--secretsdir=/data/secrets \
+	--admin-addr=0.0.0.0:9002 \
 	--bind 0.0.0.0:3569 \
 	--loglevel=error
 ```
@@ -164,6 +179,7 @@ docker run --rm \
 	--secretsdir=/data/secrets \
 	--triedir=/data/execution \
 	--rpc-addr=0.0.0.0:9000 \
+	--admin-addr=0.0.0.0:9002 \
 	--bind 0.0.0.0:3569 \
 	--loglevel=error
 ```
@@ -182,6 +198,7 @@ docker run --rm \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
 	--secretsdir=/data/secrets \
+	--admin-addr=0.0.0.0:9002 \
 	--bind 0.0.0.0:3569 \
 	--loglevel=error
 ```
