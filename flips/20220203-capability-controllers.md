@@ -284,7 +284,7 @@ struct AuthAccount {
 
         /// borrow gets the storage capability at the given path, and borrows the capability if it exists.
         /// Returns nil if the capability does not exist or cannot be borrowed using the given type.
-        /// The function is equivalent to `getCapability(path)?.borrow()`.
+        /// The function is equivalent to `get(path)?.borrow()`.
         fun borrow<T: &Any>(_ path: PublicPath): T?
 
         /// Get the storage capability controller for the capability with the specified ID.
@@ -338,7 +338,7 @@ struct PublicAccount {
 
         /// borrow gets the storage capability at the given path, and borrows the capability if it exists.
         /// Returns nil if the capability does not exist or cannot be borrowed using the given type.
-        /// The function is equivalent to `getCapability(path)?.borrow()`.
+        /// The function is equivalent to `get(path)?.borrow()`.
         fun borrow<T: &Any>(_ path: PublicPath): T?
     }
 }
@@ -361,18 +361,18 @@ Would change to:
 
 ```cadence
 let publicAccount = getAccount(issuerAddress)
-let countCap = publicAccount.getCapability<&{HasCount}>(/public/hasCount)!
+let countCap = publicAccount.storageCapabilities.get<&{HasCount}>(/public/hasCount)!
 let countRef = countCap.borrow()!
 countRef.count
 ```
 
-(Note how the `getCapability` function returns an optional now.)
+(Note how the `get` function returns an optional now.)
 
-Or using the `borrowCapability` shorthand:
+Or using the `borrow` convenience function:
 
 ```cadence
 let publicAccount = getAccount(issuerAddress)
-let countRef = publicAccount.borrowCapability<&{HasCount}>(/public/hasCount)!
+let countRef = publicAccount.storageCapabilities.borrow<&{HasCount}>(/public/hasCount)!
 countRef.count
 ```
 
