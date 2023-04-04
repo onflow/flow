@@ -11,6 +11,7 @@ import "flow/entities/block.proto";
 import "flow/entities/collection.proto";
 import "flow/entities/event.proto";
 import "flow/entities/execution_result.proto";
+import "flow/entities/last_finalized_block.proto";
 import "flow/entities/transaction.proto";
 import "google/protobuf/timestamp.proto";
 
@@ -152,7 +153,7 @@ message GetBlockHeaderByHeightRequest {
 message BlockHeaderResponse {
   entities.BlockHeader block = 1;
   entities.BlockStatus block_status = 2;
-  uint64 last_finalized_block_height = 3;
+  entities.LastFinalizedBlock last_finalized_block = 3;
 }
 
 // Blocks
@@ -175,7 +176,7 @@ message GetBlockByHeightRequest {
 message BlockResponse {
   entities.Block block = 1;
   entities.BlockStatus block_status = 2;
-  uint64 last_finalized_block_height = 3;
+  entities.LastFinalizedBlock last_finalized_block = 3;
 }
 
 // Collections
@@ -186,7 +187,7 @@ message GetCollectionByIDRequest {
 
 message CollectionResponse {
   entities.Collection collection = 1;
-  uint64 last_finalized_block_height = 2;
+  entities.LastFinalizedBlock last_finalized_block = 2;
 }
 
 // Transactions
@@ -206,7 +207,7 @@ message GetTransactionRequest {
 message GetTransactionByIndexRequest {
   bytes block_id = 1;
   uint32 index = 2;
-  uint64 last_finalized_block_height = 3;
+  entities.LastFinalizedBlock last_finalized_block = 3;
 }
 
 message GetTransactionsByBlockIDRequest {
@@ -219,12 +220,12 @@ message TransactionResultsResponse {
 
 message TransactionsResponse {
   repeated entities.Transaction transactions = 1;
-  uint64 last_finalized_block_height = 2;
+  entities.LastFinalizedBlock last_finalized_block = 2;
 }
 
 message TransactionResponse {
   entities.Transaction transaction = 1;
-  uint64 last_finalized_block_height = 2;
+  entities.LastFinalizedBlock last_finalized_block = 2;
 }
 
 message TransactionResultResponse {
@@ -246,7 +247,7 @@ message GetAccountRequest {
 
 message GetAccountResponse {
   entities.Account account = 1;
-  uint64 last_finalized_block_height = 2;
+  entities.LastFinalizedBlock last_finalized_block = 2;
 }
 
 message GetAccountAtLatestBlockRequest {
@@ -255,7 +256,7 @@ message GetAccountAtLatestBlockRequest {
 
 message AccountResponse {
   entities.Account account = 1;
-  uint64 last_finalized_block_height = 2;
+  entities.LastFinalizedBlock last_finalized_block = 2;
 }
 
 message GetAccountAtBlockHeightRequest {
@@ -305,7 +306,7 @@ message EventsResponse {
     uint64 block_height = 2;
     repeated entities.Event events = 3;
     google.protobuf.Timestamp block_timestamp = 4;
-    uint64 last_finalized_block_height = 5;
+    entities.LastFinalizedBlock last_finalized_block = 5;
   }
   repeated Result results = 1;
 }
