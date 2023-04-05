@@ -307,6 +307,7 @@ message EventsResponse {
     google.protobuf.Timestamp block_timestamp = 4;
   }
   repeated Result results = 1;
+  entities.LastFinalizedBlock last_finalized_block = 2;
 }
 
 // Network Parameters
@@ -323,6 +324,7 @@ message GetLatestProtocolStateSnapshotRequest {}
 
 message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
+  entities.LastFinalizedBlock last_finalized_block = 2;
 }
 
 // Execution Results
@@ -333,4 +335,5 @@ message GetExecutionResultForBlockIDRequest {
 
 message ExecutionResultForBlockIDResponse {
   entities.ExecutionResult execution_result = 1;
+  entities.LastFinalizedBlock last_finalized_block = 2;
 }

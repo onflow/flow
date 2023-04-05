@@ -7,5 +7,5 @@ option java_package = "org.onflow.protobuf.entities";
 
 message LastFinalizedBlock {
   bytes id = 1;
-  uint64 height = 5;
+  uint64 height = 2;
 }
