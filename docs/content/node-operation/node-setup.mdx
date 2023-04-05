@@ -115,6 +115,7 @@ docker run --rm \
 	--bootstrapdir=/bootstrap \
 	--datadir=/data/protocol \
 	--secretsdir=/data/secrets \
+	--execution-data-dir=/data/execution_data \
 	--rpc-addr=0.0.0.0:9000 \
 	--http-addr=0.0.0.0:8000 \
 	--admin-addr=0.0.0.0:9002 \
@@ -178,6 +179,7 @@ docker run --rm \
 	--datadir=/data/protocol \
 	--secretsdir=/data/secrets \
 	--triedir=/data/execution \
+	--execution-data-dir=/data/execution_data \
 	--rpc-addr=0.0.0.0:9000 \
 	--admin-addr=0.0.0.0:9002 \
 	--bind 0.0.0.0:3569 \
