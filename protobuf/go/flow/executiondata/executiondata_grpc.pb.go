@@ -22,8 +22,18 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ExecutionDataAPIClient interface {
+	// GetExecutionDataByBlockID returns execution data for a specific block ID.
 	GetExecutionDataByBlockID(ctx context.Context, in *GetExecutionDataByBlockIDRequest, opts ...grpc.CallOption) (*GetExecutionDataByBlockIDResponse, error)
+	// SubscribeExecutionData streams execution data for all blocks starting at the requested start
+	// block, up until the latest available block. Once the latest is reached, the stream will remain
+	// open and responses are sent for each new execution data as it becomes available.
 	SubscribeExecutionData(ctx context.Context, in *SubscribeExecutionDataRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataClient, error)
+	// SubscribeEvents streams events for all blocks starting at the requested start block, up until
+	// the latest available block. Once the latest is reached, the stream will remain open and responses
+	// are sent for each new block as it becomes available.
+	//
+	// Events within each block are filtered by the provided EventFilter, and only those events that
+	// match the filter are returned. If no filter is provided, all events are returned.
 	SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error)
 }
 
@@ -112,8 +122,18 @@ func (x *executionDataAPISubscribeEventsClient) Recv() (*SubscribeEventsResponse
 // All implementations should embed UnimplementedExecutionDataAPIServer
 // for forward compatibility
 type ExecutionDataAPIServer interface {
+	// GetExecutionDataByBlockID returns execution data for a specific block ID.
 	GetExecutionDataByBlockID(context.Context, *GetExecutionDataByBlockIDRequest) (*GetExecutionDataByBlockIDResponse, error)
+	// SubscribeExecutionData streams execution data for all blocks starting at the requested start
+	// block, up until the latest available block. Once the latest is reached, the stream will remain
+	// open and responses are sent for each new execution data as it becomes available.
 	SubscribeExecutionData(*SubscribeExecutionDataRequest, ExecutionDataAPI_SubscribeExecutionDataServer) error
+	// SubscribeEvents streams events for all blocks starting at the requested start block, up until
+	// the latest available block. Once the latest is reached, the stream will remain open and responses
+	// are sent for each new block as it becomes available.
+	//
+	// Events within each block are filtered by the provided EventFilter, and only those events that
+	// match the filter are returned. If no filter is provided, all events are returned.
 	SubscribeEvents(*SubscribeEventsRequest, ExecutionDataAPI_SubscribeEventsServer) error
 }
 
