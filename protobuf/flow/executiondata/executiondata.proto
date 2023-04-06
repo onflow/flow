@@ -13,12 +13,23 @@ import "google/protobuf/timestamp.proto";
 service ExecutionDataAPI {
 
   // GetExecutionDataByBlockID returns execution data for a specific block ID.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid block ID.
+  // - NotFound is returned if the start block or execution data are not currently available on the
+  //   node. This may happen if the block was from a previous spork, or if the block has yet not been
+  //   received.
   rpc GetExecutionDataByBlockID(GetExecutionDataByBlockIDRequest)
       returns (GetExecutionDataByBlockIDResponse);
 
   // SubscribeExecutionData streams execution data for all blocks starting at the requested start
   // block, up until the latest available block. Once the latest is reached, the stream will remain
   // open and responses are sent for each new execution data as it becomes available.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid start block.
+  // - NotFound is returned if the start block is not currently available on the node. This may
+  //   happen if the block was from a previous spork, or if the block has yet not been received.
   rpc SubscribeExecutionData(SubscribeExecutionDataRequest)
       returns (stream SubscribeExecutionDataResponse);
 
@@ -28,6 +39,16 @@ service ExecutionDataAPI {
   //
   // Events within each block are filtered by the provided EventFilter, and only those events that
   // match the filter are returned. If no filter is provided, all events are returned.
+  //
+  // Responses are returned for each block containing at least one event that matches the filter.
+  // Additionally, heatbeat responses (SubscribeEventsResponse with no events) are returned
+  // periodically to allow clients to track which blocks were searched. Clients can use this
+  // information to determine which block to start from when reconnecting.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid EventFilter or start block.
+  // - NotFound is returned if the start block is not currently available on the node. This may
+  //   happen if the block was from a previous spork, or if the block has yet not been received.
   rpc SubscribeEvents(SubscribeEventsRequest)
       returns (stream SubscribeEventsResponse);
 }
@@ -47,13 +68,13 @@ message GetExecutionDataByBlockIDResponse {
 // The request for SubscribeExecutionData
 message SubscribeExecutionDataRequest {
   // Block ID of the first block to get execution data for.
-  // Only one of start_block_id and start_block_height may be provided. If neither are provided,
-  // the latest sealed block is used.
+  // Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
+  // error is returned. If neither are provided, the latest sealed block is used.
   bytes start_block_id = 1;
 
   // Block height of the first block to get execution data for.
-  // Only one of start_block_id and start_block_height may be provided. If neither are provided,
-  // the latest sealed block is used.
+  // Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
+  // error is returned. If neither are provided, the latest sealed block is used.
   uint64 start_block_height = 2;
 }
 
@@ -63,6 +84,7 @@ message SubscribeExecutionDataResponse {
   uint64 block_height = 1;
 
   // BlockExecutionData for the block.
+  // Note: The block's ID is included within the BlockExecutionData.
   entities.BlockExecutionData block_execution_data = 2;
 
   // Timestamp from the block containing the execution data.
@@ -72,13 +94,13 @@ message SubscribeExecutionDataResponse {
 // The request for SubscribeEvents
 message SubscribeEventsRequest {
   // Block ID of the first block to search for events.
-  // Only one of start_block_id and start_block_height may be provided. If neither are provided,
-  // the latest sealed block is used.
+  // Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
+  // error is returned. If neither are provided, the latest sealed block is used.
   bytes start_block_id = 1;
 
   // Block height of the first block to search for events.
-  // Only one of start_block_id and start_block_height may be provided. If neither are provided,
-  // the latest sealed block is used.
+  // Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
+  // error is returned. If neither are provided, the latest sealed block is used.
   uint64 start_block_height = 2;
 
   // Filter to apply to events for each block searched.
@@ -87,8 +109,11 @@ message SubscribeEventsRequest {
 
   // Interval in block heights at which the server should return a heartbeat message to the client.
   // The heartbeat is a normal SubscribeEventsResponse with no events, and allows clients to track
-  // which blocks were searched. Client can use this information to determine which block to start
+  // which blocks were searched. Clients can use this information to determine which block to start
   // from when reconnecting.
+  //
+  // The interval is calculated from the last response returned, which could be either another
+  // heartbeat or a response containing events.
   uint64 heartbeat_interval = 4;
 }
 

@@ -107,12 +107,12 @@ func (m *GetExecutionDataByBlockIDResponse) GetBlockExecutionData() *entities.Bl
 // The request for SubscribeExecutionData
 type SubscribeExecutionDataRequest struct {
 	// Block ID of the first block to get execution data for.
-	// Only one of start_block_id and start_block_height may be provided. If neither are provided,
-	// the latest sealed block is used.
+	// Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
+	// error is returned. If neither are provided, the latest sealed block is used.
 	StartBlockId []byte `protobuf:"bytes,1,opt,name=start_block_id,json=startBlockId,proto3" json:"start_block_id,omitempty"`
 	// Block height of the first block to get execution data for.
-	// Only one of start_block_id and start_block_height may be provided. If neither are provided,
-	// the latest sealed block is used.
+	// Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
+	// error is returned. If neither are provided, the latest sealed block is used.
 	StartBlockHeight     uint64   `protobuf:"varint,2,opt,name=start_block_height,json=startBlockHeight,proto3" json:"start_block_height,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -163,6 +163,7 @@ type SubscribeExecutionDataResponse struct {
 	// Block height of the block containing the execution data.
 	BlockHeight uint64 `protobuf:"varint,1,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
 	// BlockExecutionData for the block.
+	// Note: The block's ID is included within the BlockExecutionData.
 	BlockExecutionData *entities.BlockExecutionData `protobuf:"bytes,2,opt,name=block_execution_data,json=blockExecutionData,proto3" json:"block_execution_data,omitempty"`
 	// Timestamp from the block containing the execution data.
 	BlockTimestamp       *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=block_timestamp,json=blockTimestamp,proto3" json:"block_timestamp,omitempty"`
@@ -220,20 +221,23 @@ func (m *SubscribeExecutionDataResponse) GetBlockTimestamp() *timestamppb.Timest
 // The request for SubscribeEvents
 type SubscribeEventsRequest struct {
 	// Block ID of the first block to search for events.
-	// Only one of start_block_id and start_block_height may be provided. If neither are provided,
-	// the latest sealed block is used.
+	// Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
+	// error is returned. If neither are provided, the latest sealed block is used.
 	StartBlockId []byte `protobuf:"bytes,1,opt,name=start_block_id,json=startBlockId,proto3" json:"start_block_id,omitempty"`
 	// Block height of the first block to search for events.
-	// Only one of start_block_id and start_block_height may be provided. If neither are provided,
-	// the latest sealed block is used.
+	// Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
+	// error is returned. If neither are provided, the latest sealed block is used.
 	StartBlockHeight uint64 `protobuf:"varint,2,opt,name=start_block_height,json=startBlockHeight,proto3" json:"start_block_height,omitempty"`
 	// Filter to apply to events for each block searched.
 	// If no filter is provided, all events are returned.
 	Filter *EventFilter `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Interval in block heights at which the server should return a heartbeat message to the client.
 	// The heartbeat is a normal SubscribeEventsResponse with no events, and allows clients to track
-	// which blocks were searched. Client can use this information to determine which block to start
+	// which blocks were searched. Clients can use this information to determine which block to start
 	// from when reconnecting.
+	//
+	// The interval is calculated from the last response returned, which could be either another
+	// heartbeat or a response containing events.
 	HeartbeatInterval    uint64   `protobuf:"varint,4,opt,name=heartbeat_interval,json=heartbeatInterval,proto3" json:"heartbeat_interval,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
