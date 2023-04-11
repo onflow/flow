@@ -195,7 +195,7 @@ message GetAccountAtLatestBlockRequest {
 
 message AccountResponse {
   entities.Account account = 1;
- }
+}
 
 message GetAccountAtBlockHeightRequest {
   bytes address = 1;
