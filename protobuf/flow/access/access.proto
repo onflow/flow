@@ -103,7 +103,7 @@ service AccessAPI {
   // GetEventsForHeightRange retrieves events emitted within the specified block
   // range.
   rpc GetEventsForHeightRange(GetEventsForHeightRangeRequest)
-      returns (EventsRangeResponse);
+      returns (EventsResponse);
 
   // GetEventsForBlockIDs retrieves events for the specified block IDs and event
   // type.
@@ -299,17 +299,6 @@ message EventsResponse {
     google.protobuf.Timestamp block_timestamp = 4;
   }
   repeated Result results = 1;
-}
-
-message EventsRangeResponse {
-  repeated EventsResponse.Result results = 1;
-
-  // Height of first block searched in the range
-  uint64 start_height = 2;
-
-  // Height of last block searched in the range
-  // Note: this may be different from end_height in the request.
-  uint64 end_height = 3;
 }
 
 // Network Parameters
