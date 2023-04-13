@@ -24,6 +24,9 @@ const _ = grpc.SupportPackageIsVersion7
 type AccessAPIClient interface {
 	// Ping is used to check if the access node is alive and healthy.
 	Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error)
+	// GetNodeVersionInfo return node version information, such as semver,
+	// commit, sporkID and protocol version.
+	GetNodeVersionInfo(ctx context.Context, in *GetNodeVersionInfoRequest, opts ...grpc.CallOption) (*GetNodeVersionInfoResponce, error)
 	// GetLatestBlockHeader gets the latest sealed or unsealed block header.
 	GetLatestBlockHeader(ctx context.Context, in *GetLatestBlockHeaderRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
 	// GetBlockHeaderByID gets a block header by ID.
@@ -102,6 +105,15 @@ func NewAccessAPIClient(cc grpc.ClientConnInterface) AccessAPIClient {
 func (c *accessAPIClient) Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error) {
 	out := new(PingResponse)
 	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/Ping", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessAPIClient) GetNodeVersionInfo(ctx context.Context, in *GetNodeVersionInfoRequest, opts ...grpc.CallOption) (*GetNodeVersionInfoResponce, error) {
+	out := new(GetNodeVersionInfoResponce)
+	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetNodeVersionInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -330,6 +342,9 @@ func (c *accessAPIClient) GetExecutionResultForBlockID(ctx context.Context, in *
 type AccessAPIServer interface {
 	// Ping is used to check if the access node is alive and healthy.
 	Ping(context.Context, *PingRequest) (*PingResponse, error)
+	// GetNodeVersionInfo return node version information, such as semver,
+	// commit, sporkID and protocol version.
+	GetNodeVersionInfo(context.Context, *GetNodeVersionInfoRequest) (*GetNodeVersionInfoResponce, error)
 	// GetLatestBlockHeader gets the latest sealed or unsealed block header.
 	GetLatestBlockHeader(context.Context, *GetLatestBlockHeaderRequest) (*BlockHeaderResponse, error)
 	// GetBlockHeaderByID gets a block header by ID.
@@ -403,6 +418,9 @@ type UnimplementedAccessAPIServer struct {
 
 func (UnimplementedAccessAPIServer) Ping(context.Context, *PingRequest) (*PingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+}
+func (UnimplementedAccessAPIServer) GetNodeVersionInfo(context.Context, *GetNodeVersionInfoRequest) (*GetNodeVersionInfoResponce, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetNodeVersionInfo not implemented")
 }
 func (UnimplementedAccessAPIServer) GetLatestBlockHeader(context.Context, *GetLatestBlockHeaderRequest) (*BlockHeaderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLatestBlockHeader not implemented")
@@ -502,6 +520,24 @@ func _AccessAPI_Ping_Handler(srv interface{}, ctx context.Context, dec func(inte
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccessAPIServer).Ping(ctx, req.(*PingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccessAPI_GetNodeVersionInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetNodeVersionInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetNodeVersionInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.access.AccessAPI/GetNodeVersionInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetNodeVersionInfo(ctx, req.(*GetNodeVersionInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -948,6 +984,10 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Ping",
 			Handler:    _AccessAPI_Ping_Handler,
+		},
+		{
+			MethodName: "GetNodeVersionInfo",
+			Handler:    _AccessAPI_GetNodeVersionInfo_Handler,
 		},
 		{
 			MethodName: "GetLatestBlockHeader",
