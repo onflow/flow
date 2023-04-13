@@ -199,14 +199,14 @@ Therefore, there are two kinds of Capability Controllers:
 `StorageCapabilityController` and `AccountCapabilityController`.
 
 ```cadence
-struct StorageCapabilityController {
+pub struct StorageCapabilityController {
 
     /// The type of the controlled capability, i.e. the T in `Capability<T>`.
-    let borrowType: Type
+    pub let borrowType: Type
 
     /// The identifier of the controlled capability.
     /// All copies of a capability have the same ID.
-    let capabilityID: UInt64
+    pub let capabilityID: UInt64
 
     /// Delete this capability controller,
     /// and disable the controlled capability and its copies.
@@ -219,26 +219,26 @@ struct StorageCapabilityController {
     ///
     /// Borrowing from the controlled capability or its copies will return nil.
     ///
-    fun delete()
+    pub fun delete()
 
     /// Returns the targeted storage path of the controlled capability.
-    fun target(): StoragePath
+    pub fun target(): StoragePath
 
     /// Retarget the capability.
     /// This moves the CapCon from one CapCon array to another.
-    fun retarget(target: StoragePath)
+    pub fun retarget(target: StoragePath)
 }
 ```
 
 ```cadence
-struct AccountCapabilityController {
+pub struct AccountCapabilityController {
 
     /// The type of the controlled capability, i.e. the T in `Capability<T>`.
-    let borrowType: Type
+    pub let borrowType: Type
 
     /// The identifier of the controlled capability.
     /// All copies of a capability have the same ID.
-    let capabilityID: UInt64
+    pub let capabilityID: UInt64
 
     /// Delete this capability controller,
     /// and disable the controlled capability and its copies.
@@ -251,7 +251,7 @@ struct AccountCapabilityController {
     ///
     /// Borrowing from the controlled capability or its copies will return nil.
     ///
-    fun delete()
+    pub fun delete()
 }
 ```
 
@@ -267,56 +267,71 @@ similar to how the contract management functions are in a nested [`contracts` ob
 Functions related to linking will be removed, as they are no longer needed.
 
 ```cadence
-struct AuthAccount {
+pub struct AuthAccount {
     // ...
     // removed: fun link<T: &Any>(_ newCapabilityPath: CapabilityPath, target: Path): Capability<T>?
     // removed: fun unlink(_ path: CapabilityPath)
     // removed: fun getLinkTarget(_ path: CapabilityPath): Path?
-    // moved and renamed: fun getCapability<T: &Any>(_ path: CapabilityPath): Capability<T>
+    // changed: fun getCapability<T: &Any>(_ path: CapabilityPath): Capability<T>
 
-    let storageCapabilities: &AuthAccount.StorageCapabilities
-    let accountCapabilities: &AuthAccount.AccountCapabilities
+    /// Returns the capability at the given public path.
+    /// Returns nil if the capability does not exist,
+    /// or if the given type is not a supertype of the capability's borrow type.
+    pub fun getCapability<T: &Any>(_ path: PublicPath): Capability<T>?
 
-    struct StorageCapabilities {
+    /// Borrows the capability at the given public path.
+    /// Returns nil if the capability does not exist, or cannot be borrowed using the given type.
+    /// The function is equivalent to `getCapability(path)?.borrow()`.
+    pub fun borrowCapability<T: &Any>(_ path: PublicPath): T?
 
-        /// get returns the storage capability at the given path, if one was stored there.
-        fun get<T: &Any>(_ path: PublicPath): Capability<T>?
+    pub let storageCapabilities: &AuthAccount.StorageCapabilities
+    pub let accountCapabilities: &AuthAccount.AccountCapabilities
 
-        /// borrow gets the storage capability at the given path, and borrows the capability if it exists.
-        /// Returns nil if the capability does not exist or cannot be borrowed using the given type.
-        /// The function is equivalent to `get(path)?.borrow()`.
-        fun borrow<T: &Any>(_ path: PublicPath): T?
+    /// Publish the capability at the given public path.
+    ///
+    /// If there is already a capability published under the given path, the program aborts.
+    ///
+    /// The path must be a public path, i.e., only the domain `public` is allowed.
+    pub fun publishCapability(_ capability: Capability, at: PublicPath)
+
+    /// Unpublishes the capability published at the given path.
+    ///
+    /// Returns the capability if one was published at the path.
+    /// Returns nil if no capability was published at the path.
+    pub fun unpublishCapability(_ path: PublicPath): Capability?
+
+    pub struct StorageCapabilities {
 
         /// Get the storage capability controller for the capability with the specified ID.
         /// Returns nil if the ID does not reference an existing storage capability.
-        fun getController(byCapabilityID: UInt64): &StorageCapabilityController?
+        pub fun getController(byCapabilityID: UInt64): &StorageCapabilityController?
 
         /// Get all storage capability controllers for capabilities that target this storage path
-        fun getControllers(forPath: StoragePath): [&StorageCapabilityController]
+        pub fun getControllers(forPath: StoragePath): [&StorageCapabilityController]
 
         /// Iterate through all storage capability controllers for capabilities that target this storage path.
         /// Returning false from the function stops the iteration.
-        fun forEachController(forPath: StoragePath, function: ((&StorageCapabilityController): Bool))
+        pub fun forEachController(forPath: StoragePath, function: ((&StorageCapabilityController): Bool))
 
         /// Issue/create a new storage capability.
-        fun issue<T: &Any>(_ path: StoragePath): Capability<T>
+        pub fun issue<T: &Any>(_ path: StoragePath): Capability<T>
     }
 
-     struct AccountCapabilities {
+    pub struct AccountCapabilities {
 
         /// Get capability controller for capability with the specified ID.
         /// Returns nil if the ID does not reference an existing account capability.
-        fun getController(byCapabilityID: UInt64): &AccountCapabilityController?
+        pub fun getController(byCapabilityID: UInt64): &AccountCapabilityController?
 
         /// Get all capability controllers for all account capabilities.
-        fun getControllers(): [&AccountCapabilityController]
+        pub fun getControllers(): [&AccountCapabilityController]
 
         /// Iterate through all account capability controllers for all account capabilities.
         /// Returning false from the function stops the iteration.
-        fun forEachController(_ function: ((&AccountCapabilityController): Bool))
+        pub fun forEachController(_ function: ((&AccountCapabilityController): Bool))
 
         /// Issue/create a new account capability.
-        fun issue<T: &AuthAccount>(): Capability<T>
+        pub fun issue<T: &AuthAccount>(): Capability<T>
     }
 }
 ```
@@ -324,23 +339,20 @@ struct AuthAccount {
 ### PublicAccount Type
 
 ```cadence
-struct PublicAccount {
+pub struct PublicAccount {
     // ...
     // removed: fun getLinkTarget(_ path: CapabilityPath): Path?
-    // moved and renamed: fun getCapability<T: &Any>(_ path: PublicPath): Capability<T>
+    // changed: fun getCapability<T: &Any>(_ path: PublicPath): Capability<T>
 
-    let storageCapabilities: &PublicAccount.StorageCapabilities
+    /// Returns the capability at the given public path.
+    /// Returns nil if the capability does not exist,
+    /// or if the given type is not a supertype of the capability's borrow type.
+    pub fun getCapability<T: &Any>(_ path: PublicPath): Capability<T>?
 
-    struct StorageCapabilities {
-
-        /// get returns the storage capability at the given path, if one was stored there.
-        fun get<T: &Any>(_ path: PublicPath): Capability<T>?
-
-        /// borrow gets the storage capability at the given path, and borrows the capability if it exists.
-        /// Returns nil if the capability does not exist or cannot be borrowed using the given type.
-        /// The function is equivalent to `get(path)?.borrow()`.
-        fun borrow<T: &Any>(_ path: PublicPath): T?
-    }
+    /// Borrows the capability at the given public path.
+    /// Returns nil if the capability does not exist, or cannot be borrowed using the given type.
+    /// The function is equivalent to `getCapability(path)?.borrow()`.
+    pub fun borrowCapability<T: &Any>(_ path: PublicPath): T?
 }
 ```
 
@@ -361,18 +373,18 @@ Would change to:
 
 ```cadence
 let publicAccount = getAccount(issuerAddress)
-let countCap = publicAccount.storageCapabilities.get<&{HasCount}>(/public/hasCount)!
+let countCap = publicAccount.getCapability<&{HasCount}>(/public/hasCount)!
 let countRef = countCap.borrow()!
 countRef.count
 ```
 
-(Note how the `get` function returns an optional now.)
+(Note how the `getCapability` function returns an optional now.)
 
-Or using the `borrow` convenience function:
+Or using the new `borrowCapability` convenience function:
 
 ```cadence
 let publicAccount = getAccount(issuerAddress)
-let countRef = publicAccount.storageCapabilities.borrow<&{HasCount}>(/public/hasCount)!
+let countRef = publicAccount.borrowCapability<&{HasCount}>(/public/hasCount)!
 countRef.count
 ```
 
@@ -528,7 +540,7 @@ issuer.save(cap, to: publicOrPrivatePath)
 // unlink
 // issuer.unlink(publicOrPrivatePath)
 
-let cap = issuer.storageCapabilities.get<T>(publicOrPrivatePath)!
+let cap = issuer.getCapability<T>(publicOrPrivatePath)!
 let capCon = issuer.storageCapabilities.getController(byCapabilityID: cap.id)
 capCon.delete()
 ```
@@ -540,7 +552,7 @@ capCon.delete()
 
 // 1. unlink
 
-let cap = issuer.storageCapabilities.get<T>(publicOrPrivatePath)!
+let cap = issuer.getCapability<T>(publicOrPrivatePath)!
 let capCon = issuer.storageCapabilities.getController(byCapabilityID: cap.id)
 capCon.delete()
 
