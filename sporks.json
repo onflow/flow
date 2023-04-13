@@ -1213,7 +1213,7 @@
         "live": true,
         "name": "Testnet43",
         "sporkTime": "2023-04-12T15:00:00Z",
-        "rootHeight": "99452066",
+        "rootHeight": "99452067",
         "rootParentId": "0e6bae31b2f34ffb0d64d4e1a33c2fbcebd80c936d77d70d2f5dd9321dc92393",
         "rootStateCommitment": "7cd69bb0a4448566dce42808efa8b1d03f322135f0bfce6f18037fca1294984c",
         "gitCommitHash": "a7f2cd0ddd9fc7e1e56187327a84fec9efdc3c9d",
