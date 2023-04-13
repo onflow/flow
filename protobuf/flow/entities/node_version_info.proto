@@ -7,7 +7,7 @@ option java_package = "org.onflow.protobuf.entities";
 
 message NodeVersionInfo {
     string semver = 1;
-    bytes commit = 2;
+    string commit = 2;
     bytes spork_id = 3;
     uint32 protocol_version = 4;
 }
