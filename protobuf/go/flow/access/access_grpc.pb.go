@@ -75,7 +75,7 @@ type AccessAPIClient interface {
 	ExecuteScriptAtBlockHeight(ctx context.Context, in *ExecuteScriptAtBlockHeightRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
 	// GetEventsForHeightRange retrieves events emitted within the specified block
 	// range.
-	GetEventsForHeightRange(ctx context.Context, in *GetEventsForHeightRangeRequest, opts ...grpc.CallOption) (*EventsRangeResponse, error)
+	GetEventsForHeightRange(ctx context.Context, in *GetEventsForHeightRangeRequest, opts ...grpc.CallOption) (*EventsResponse, error)
 	// GetEventsForBlockIDs retrieves events for the specified block IDs and event
 	// type.
 	GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*EventsResponse, error)
@@ -279,8 +279,8 @@ func (c *accessAPIClient) ExecuteScriptAtBlockHeight(ctx context.Context, in *Ex
 	return out, nil
 }
 
-func (c *accessAPIClient) GetEventsForHeightRange(ctx context.Context, in *GetEventsForHeightRangeRequest, opts ...grpc.CallOption) (*EventsRangeResponse, error) {
-	out := new(EventsRangeResponse)
+func (c *accessAPIClient) GetEventsForHeightRange(ctx context.Context, in *GetEventsForHeightRangeRequest, opts ...grpc.CallOption) (*EventsResponse, error) {
+	out := new(EventsResponse)
 	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetEventsForHeightRange", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -381,7 +381,7 @@ type AccessAPIServer interface {
 	ExecuteScriptAtBlockHeight(context.Context, *ExecuteScriptAtBlockHeightRequest) (*ExecuteScriptResponse, error)
 	// GetEventsForHeightRange retrieves events emitted within the specified block
 	// range.
-	GetEventsForHeightRange(context.Context, *GetEventsForHeightRangeRequest) (*EventsRangeResponse, error)
+	GetEventsForHeightRange(context.Context, *GetEventsForHeightRangeRequest) (*EventsResponse, error)
 	// GetEventsForBlockIDs retrieves events for the specified block IDs and event
 	// type.
 	GetEventsForBlockIDs(context.Context, *GetEventsForBlockIDsRequest) (*EventsResponse, error)
@@ -461,7 +461,7 @@ func (UnimplementedAccessAPIServer) ExecuteScriptAtBlockID(context.Context, *Exe
 func (UnimplementedAccessAPIServer) ExecuteScriptAtBlockHeight(context.Context, *ExecuteScriptAtBlockHeightRequest) (*ExecuteScriptResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteScriptAtBlockHeight not implemented")
 }
-func (UnimplementedAccessAPIServer) GetEventsForHeightRange(context.Context, *GetEventsForHeightRangeRequest) (*EventsRangeResponse, error) {
+func (UnimplementedAccessAPIServer) GetEventsForHeightRange(context.Context, *GetEventsForHeightRangeRequest) (*EventsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetEventsForHeightRange not implemented")
 }
 func (UnimplementedAccessAPIServer) GetEventsForBlockIDs(context.Context, *GetEventsForBlockIDsRequest) (*EventsResponse, error) {
