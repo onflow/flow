@@ -272,33 +272,40 @@ pub struct AuthAccount {
     // removed: fun link<T: &Any>(_ newCapabilityPath: CapabilityPath, target: Path): Capability<T>?
     // removed: fun unlink(_ path: CapabilityPath)
     // removed: fun getLinkTarget(_ path: CapabilityPath): Path?
-    // changed: fun getCapability<T: &Any>(_ path: CapabilityPath): Capability<T>
+    // moved and renamed:
+    //   old: fun getCapability<T: &Any>(_ path: CapabilityPath): Capability<T>
+    //   new: fun Capabilities.get<T: &Any>(_ path: CapabilityPath): Capability<T>?
 
-    /// Returns the capability at the given public path.
-    /// Returns nil if the capability does not exist,
-    /// or if the given type is not a supertype of the capability's borrow type.
-    pub fun getCapability<T: &Any>(_ path: PublicPath): Capability<T>?
+    pub let capabilities: &AuthAccount.Capabilities
 
-    /// Borrows the capability at the given public path.
-    /// Returns nil if the capability does not exist, or cannot be borrowed using the given type.
-    /// The function is equivalent to `getCapability(path)?.borrow()`.
-    pub fun borrowCapability<T: &Any>(_ path: PublicPath): T?
+    pub struct Capabilities {
 
-    pub let storageCapabilities: &AuthAccount.StorageCapabilities
-    pub let accountCapabilities: &AuthAccount.AccountCapabilities
+        /// Returns the capability at the given public path.
+        /// Returns nil if the capability does not exist,
+        /// or if the given type is not a supertype of the capability's borrow type.
+        pub fun get<T: &Any>(_ path: PublicPath): Capability<T>?
 
-    /// Publish the capability at the given public path.
-    ///
-    /// If there is already a capability published under the given path, the program aborts.
-    ///
-    /// The path must be a public path, i.e., only the domain `public` is allowed.
-    pub fun publishCapability(_ capability: Capability, at: PublicPath)
+        /// Borrows the capability at the given public path.
+        /// Returns nil if the capability does not exist, or cannot be borrowed using the given type.
+        /// The function is equivalent to `get(path)?.borrow()`.
+        pub fun borrow<T: &Any>(_ path: PublicPath): T?
 
-    /// Unpublishes the capability published at the given path.
-    ///
-    /// Returns the capability if one was published at the path.
-    /// Returns nil if no capability was published at the path.
-    pub fun unpublishCapability(_ path: PublicPath): Capability?
+        pub let storage: &AuthAccount.StorageCapabilities
+        pub let account: &AuthAccount.AccountCapabilities
+
+        /// Publish the capability at the given public path.
+        ///
+        /// If there is already a capability published under the given path, the program aborts.
+        ///
+        /// The path must be a public path, i.e., only the domain `public` is allowed.
+        pub fun publish(_ capability: Capability, at: PublicPath)
+
+        /// Unpublish the capability published at the given path.
+        ///
+        /// Returns the capability if one was published at the path.
+        /// Returns nil if no capability was published at the path.
+        pub fun unpublish(_ path: PublicPath): Capability?
+    }
 
     pub struct StorageCapabilities {
 
@@ -342,17 +349,24 @@ pub struct AuthAccount {
 pub struct PublicAccount {
     // ...
     // removed: fun getLinkTarget(_ path: CapabilityPath): Path?
-    // changed: fun getCapability<T: &Any>(_ path: PublicPath): Capability<T>
+    // moved and renamed:
+    //   old: fun getCapability<T: &Any>(_ path: CapabilityPath): Capability<T>
+    //   new: fun Capabilities.get<T: &Any>(_ path: CapabilityPath): Capability<T>?
 
-    /// Returns the capability at the given public path.
-    /// Returns nil if the capability does not exist,
-    /// or if the given type is not a supertype of the capability's borrow type.
-    pub fun getCapability<T: &Any>(_ path: PublicPath): Capability<T>?
+    pub let capabilities: &PublicAccount.Capabilities
 
-    /// Borrows the capability at the given public path.
-    /// Returns nil if the capability does not exist, or cannot be borrowed using the given type.
-    /// The function is equivalent to `getCapability(path)?.borrow()`.
-    pub fun borrowCapability<T: &Any>(_ path: PublicPath): T?
+    pub struct Capabilities {
+
+        /// Returns the capability at the given public path.
+        /// Returns nil if the capability does not exist,
+        /// or if the given type is not a supertype of the capability's borrow type.
+        pub fun get<T: &Any>(_ path: PublicPath): Capability<T>?
+
+        /// Borrows the capability at the given public path.
+        /// Returns nil if the capability does not exist, or cannot be borrowed using the given type.
+        /// The function is equivalent to `get(path)?.borrow()`.
+        pub fun borrow<T: &Any>(_ path: PublicPath): T?
+    }
 }
 ```
 
@@ -373,18 +387,18 @@ Would change to:
 
 ```cadence
 let publicAccount = getAccount(issuerAddress)
-let countCap = publicAccount.getCapability<&{HasCount}>(/public/hasCount)!
+let countCap = publicAccount.capabilities.get<&{HasCount}>(/public/hasCount)!
 let countRef = countCap.borrow()!
 countRef.count
 ```
 
-(Note how the `getCapability` function returns an optional now.)
+(Note how the `get` function returns an optional now.)
 
-Or using the new `borrowCapability` convenience function:
+Or using the new `borrow` convenience function:
 
 ```cadence
 let publicAccount = getAccount(issuerAddress)
-let countRef = publicAccount.borrowCapability<&{HasCount}>(/public/hasCount)!
+let countRef = publicAccount.capabilities.borrow<&{HasCount}>(/public/hasCount)!
 countRef.count
 ```
 
@@ -393,14 +407,14 @@ countRef.count
 There would be more change on the issuer's side. Most notably creating a public capability would look like this.
 
 ```cadence
-let countCap = issuer.storageCapabilities.issue<&{HasCount}>(/storage/counter)
-issuer.save(countCap, to: /public/hasCount)
+let countCap = issuer.capabilities.storage.issue<&{HasCount}>(/storage/counter)
+issuer.capabilities.publish(countCap, to: /public/hasCount)
 ```
 
 Unlinking and retargeting issued capabilities would change to getting a CapCon and calling the appropriate functions.
 
 ```cadence
-let capCon = issuer.storageCapabilities.getController(byCapabilityID: capabilityID)
+let capCon = issuer.capabilities.storage.getController(byCapabilityID: capabilityID)
 
 capCon.revoke()
 // or
@@ -413,7 +427,7 @@ For private capabilities that were given to someone else this can be achieved
 by keeping an on-chain or an off-chain list of capability ids and some extra identifying information
 (for example the address of the receiver of the capability).
 If no such list was kept, the issuer can use the information on the CapCons,
-retrieved through e.g. `issuer.storageCapabilities.getControllers(path: StoragePath)`, to find the right ID.
+retrieved through e.g. `issuer.capabilities.storage.getControllers(path: StoragePath)`, to find the right ID.
 
 ### Pet names for issued capabilities
 
@@ -426,7 +440,7 @@ access(account) petNames: {String: UInt64}
 
 access(account) issueHasCount(petName: String): Capability<&{HasCount}> {
    // for brevity this function is not handling pet name collision
-   let cap = self.account.storageCapabilities.issue<&{HasCount}>(/storage/counter)
+   let cap = self.account.capabilities.storage.issue<&{HasCount}>(/storage/counter)
    self.petNames[petName] = cap.id
    return cap
 }
@@ -449,11 +463,11 @@ pub resource interface AdminInterface {
 }
 pub resource Main : AdminInterface {
    fun createCountCap(): Capability<&{HasCount}> {
-       return self.account.storageCapabilities.issue<&{HasCount}>(/storage/counter)
+       return self.account.capabilities.storage.issue<&{HasCount}>(/storage/counter)
    }
 
    fun revokeCountCap(capabilityID: UInt64) {
-      if let capCon = self.account.storageCapabilities.getController(byCapabilityID: capabilityID) {
+      if let capCon = self.account.capabilities.storage.getController(byCapabilityID: capabilityID) {
          if capCon.borrowType != Type<&{HasCount}>() {
             return false // we have only delegated the issuance/revocation of &{HasCount} capabilities
          }
@@ -468,7 +482,7 @@ The trusted party can then create and revoke `&{HasCount}` capabilities at will.
 
 ```cadence
 issuer.save(<-create Main(), to: /storage/counterMinter)
-let countMinterCap <- issuer.storageCapabilities.issue<&{AdminInterface}>(/storage/counterMinter)
+let countMinterCap <- issuer.capabilities.storage.issue<&{AdminInterface}>(/storage/counterMinter)
 countMinterCap // give this to a trusted party
 ```
 
@@ -532,16 +546,16 @@ Below is an implementation of the linking API with the CapCons API.
 // link
 // issuer.link<T>(publicOrPrivatePath, target: storagePath)
 
-let cap = issuer.storageCapabilities.issue<T>(storagePath)
-issuer.save(cap, to: publicOrPrivatePath)
+let cap = issuer.capabilities.storage.issue<T>(storagePath)
+issuer.capabilities.publish(cap, to: publicOrPrivatePath)
 ```
 
 ```cadence
 // unlink
 // issuer.unlink(publicOrPrivatePath)
 
-let cap = issuer.getCapability<T>(publicOrPrivatePath)!
-let capCon = issuer.storageCapabilities.getController(byCapabilityID: cap.id)
+let cap = issuer.capabilities.get<T>(publicOrPrivatePath)!
+let capCon = issuer.capabilities.storage.getController(byCapabilityID: cap.id)
 capCon.delete()
 ```
 
@@ -552,14 +566,14 @@ capCon.delete()
 
 // 1. unlink
 
-let cap = issuer.getCapability<T>(publicOrPrivatePath)!
-let capCon = issuer.storageCapabilities.getController(byCapabilityID: cap.id)
+let cap = issuer.capabilities.get<T>(publicOrPrivatePath)!
+let capCon = issuer.capabilities.storage.getController(byCapabilityID: cap.id)
 capCon.delete()
 
 // 2. link
 
-let cap = issuer.storageCapabilities.issue<T>(storagePath2)
-issuer.save(cap, to: publicOrPrivatePath)
+let cap = issuer.capabilities.storage.issue<T>(storagePath2)
+issuer.capabilities.publish(cap, to: publicOrPrivatePath)
 ```
 
 ## Migration of existing data
