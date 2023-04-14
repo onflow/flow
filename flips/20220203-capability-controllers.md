@@ -280,6 +280,9 @@ pub struct AuthAccount {
 
     pub struct Capabilities {
 
+        pub let storage: &AuthAccount.StorageCapabilities
+        pub let account: &AuthAccount.AccountCapabilities
+
         /// Returns the capability at the given public path.
         /// Returns nil if the capability does not exist,
         /// or if the given type is not a supertype of the capability's borrow type.
@@ -289,9 +292,6 @@ pub struct AuthAccount {
         /// Returns nil if the capability does not exist, or cannot be borrowed using the given type.
         /// The function is equivalent to `get(path)?.borrow()`.
         pub fun borrow<T: &Any>(_ path: PublicPath): T?
-
-        pub let storage: &AuthAccount.StorageCapabilities
-        pub let account: &AuthAccount.AccountCapabilities
 
         /// Publish the capability at the given public path.
         ///
