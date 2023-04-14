@@ -9,5 +9,5 @@ message NodeVersionInfo {
     string semver = 1;
     string commit = 2;
     bytes spork_id = 3;
-    uint32 protocol_version = 4;
+    uint64 protocol_version = 4;
 }

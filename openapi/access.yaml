@@ -478,6 +478,25 @@ paths:
           $ref: '#/components/responses/404NotFound'
         '500':
           $ref: '#/components/responses/500InternalServerError'
+  /network/node_version_info:
+    get:
+      summary: Get Node Version Information
+      description: Get node version information, such as semver, commit, sporkID and protocol version.
+      tags:
+        - NodeVersionInfo
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeVersionInfo'
+          description: OK
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
 components:
   parameters:
     expandParam:
@@ -1005,6 +1024,23 @@ components:
       properties:
         chain_id:
           type: string
+    NodeVersionInfo:
+      type: object
+      required:
+        - semver
+        - commit
+        - spork_id
+        - protocol_version
+      properties:
+        semver:
+          type: string
+        commit:
+          type: string
+        spork_id:
+          $ref: '#/components/schemas/Identifier'
+        protocol_version:
+          type: string
+          format: uint64
   responses:
     400BadRequest:
       description: Bad Request

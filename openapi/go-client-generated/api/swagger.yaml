@@ -786,6 +786,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /network/node_version_info:
+    get:
+      tags:
+      - NodeVersionInfo
+      summary: Get Node Version Information
+      description: "Get node version information, such as semver, commit, sporkID\
+        \ and protocol version."
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeVersionInfo'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Account:
@@ -1725,6 +1757,28 @@ components:
           type: string
       example:
         chain_id: chain_id
+    NodeVersionInfo:
+      required:
+      - commit
+      - protocol_version
+      - semver
+      - spork_id
+      type: object
+      properties:
+        semver:
+          type: string
+        commit:
+          type: string
+        spork_id:
+          $ref: '#/components/schemas/Identifier'
+        protocol_version:
+          type: string
+          format: uint64
+      example:
+        protocol_version: protocol_version
+        semver: semver
+        commit: commit
+        spork_id: spork_id
     transactions_body:
       required:
       - arguments
