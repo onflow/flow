@@ -26,7 +26,7 @@ type AccessAPIClient interface {
 	Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error)
 	// GetNodeVersionInfo return node version information, such as semver,
 	// commit, sporkID and protocol version.
-	GetNodeVersionInfo(ctx context.Context, in *GetNodeVersionInfoRequest, opts ...grpc.CallOption) (*GetNodeVersionInfoResponce, error)
+	GetNodeVersionInfo(ctx context.Context, in *GetNodeVersionInfoRequest, opts ...grpc.CallOption) (*GetNodeVersionInfoResponse, error)
 	// GetLatestBlockHeader gets the latest sealed or unsealed block header.
 	GetLatestBlockHeader(ctx context.Context, in *GetLatestBlockHeaderRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
 	// GetBlockHeaderByID gets a block header by ID.
@@ -111,8 +111,8 @@ func (c *accessAPIClient) Ping(ctx context.Context, in *PingRequest, opts ...grp
 	return out, nil
 }
 
-func (c *accessAPIClient) GetNodeVersionInfo(ctx context.Context, in *GetNodeVersionInfoRequest, opts ...grpc.CallOption) (*GetNodeVersionInfoResponce, error) {
-	out := new(GetNodeVersionInfoResponce)
+func (c *accessAPIClient) GetNodeVersionInfo(ctx context.Context, in *GetNodeVersionInfoRequest, opts ...grpc.CallOption) (*GetNodeVersionInfoResponse, error) {
+	out := new(GetNodeVersionInfoResponse)
 	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetNodeVersionInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -344,7 +344,7 @@ type AccessAPIServer interface {
 	Ping(context.Context, *PingRequest) (*PingResponse, error)
 	// GetNodeVersionInfo return node version information, such as semver,
 	// commit, sporkID and protocol version.
-	GetNodeVersionInfo(context.Context, *GetNodeVersionInfoRequest) (*GetNodeVersionInfoResponce, error)
+	GetNodeVersionInfo(context.Context, *GetNodeVersionInfoRequest) (*GetNodeVersionInfoResponse, error)
 	// GetLatestBlockHeader gets the latest sealed or unsealed block header.
 	GetLatestBlockHeader(context.Context, *GetLatestBlockHeaderRequest) (*BlockHeaderResponse, error)
 	// GetBlockHeaderByID gets a block header by ID.
@@ -419,7 +419,7 @@ type UnimplementedAccessAPIServer struct {
 func (UnimplementedAccessAPIServer) Ping(context.Context, *PingRequest) (*PingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
 }
-func (UnimplementedAccessAPIServer) GetNodeVersionInfo(context.Context, *GetNodeVersionInfoRequest) (*GetNodeVersionInfoResponce, error) {
+func (UnimplementedAccessAPIServer) GetNodeVersionInfo(context.Context, *GetNodeVersionInfoRequest) (*GetNodeVersionInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetNodeVersionInfo not implemented")
 }
 func (UnimplementedAccessAPIServer) GetLatestBlockHeader(context.Context, *GetLatestBlockHeaderRequest) (*BlockHeaderResponse, error) {

@@ -22,7 +22,7 @@ service AccessAPI {
 
   // GetNodeVersionInfo return node version information, such as semver,
   // commit, sporkID and protocol version.
-  rpc GetNodeVersionInfo(GetNodeVersionInfoRequest) returns (GetNodeVersionInfoResponce);
+  rpc GetNodeVersionInfo(GetNodeVersionInfoRequest) returns (GetNodeVersionInfoResponse);
 
   // Block Headers
 
@@ -142,7 +142,7 @@ message PingResponse {}
 
 message GetNodeVersionInfoRequest {}
 
-message GetNodeVersionInfoResponce {
+message GetNodeVersionInfoResponse {
   entities.NodeVersionInfo info = 1;
 }
 
