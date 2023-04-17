@@ -478,7 +478,7 @@ paths:
           $ref: '#/components/responses/404NotFound'
         '500':
           $ref: '#/components/responses/500InternalServerError'
-  /network/node_version_info:
+  /node_version_info:
     get:
       summary: Get Node Version Information
       description: Get node version information, such as semver, commit, sporkID and protocol version.

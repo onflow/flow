@@ -29,7 +29,7 @@ Class | Method | HTTP request | Description
 *ExecutionResultsApi* | [**ExecutionResultsGet**](docs/ExecutionResultsApi.md#executionresultsget) | **Get** /execution_results | Get Execution Results by Block ID
 *ExecutionResultsApi* | [**ExecutionResultsIdGet**](docs/ExecutionResultsApi.md#executionresultsidget) | **Get** /execution_results/{id} | Get Execution Result by ID
 *NetworkApi* | [**NetworkParametersGet**](docs/NetworkApi.md#networkparametersget) | **Get** /network/parameters | Get Network Parameters
-*NodeVersionInfoApi* | [**NetworkNodeVersionInfoGet**](docs/NodeVersionInfoApi.md#networknodeversioninfoget) | **Get** /network/node_version_info | Get Node Version Information
+*NodeVersionInfoApi* | [**NodeVersionInfoGet**](docs/NodeVersionInfoApi.md#nodeversioninfoget) | **Get** /node_version_info | Get Node Version Information
 *ScriptsApi* | [**ScriptsPost**](docs/ScriptsApi.md#scriptspost) | **Post** /scripts | Execute a Cadence Script
 *TransactionsApi* | [**TransactionResultsTransactionIdGet**](docs/TransactionsApi.md#transactionresultstransactionidget) | **Get** /transaction_results/{transaction_id} | Get a Transaction Result by ID.
 *TransactionsApi* | [**TransactionsIdGet**](docs/TransactionsApi.md#transactionsidget) | **Get** /transactions/{id} | Get a Transaction by ID.

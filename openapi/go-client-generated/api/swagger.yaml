@@ -786,7 +786,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /network/node_version_info:
+  /node_version_info:
     get:
       tags:
       - NodeVersionInfo

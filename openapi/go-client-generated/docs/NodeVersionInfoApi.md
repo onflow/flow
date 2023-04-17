@@ -4,10 +4,10 @@ All URIs are relative to *https://rest-canary.onflow.org/v1/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**NetworkNodeVersionInfoGet**](NodeVersionInfoApi.md#NetworkNodeVersionInfoGet) | **Get** /network/node_version_info | Get Node Version Information
+[**NodeVersionInfoGet**](NodeVersionInfoApi.md#NodeVersionInfoGet) | **Get** /node_version_info | Get Node Version Information
 
-# **NetworkNodeVersionInfoGet**
-> NodeVersionInfo NetworkNodeVersionInfoGet(ctx, )
+# **NodeVersionInfoGet**
+> NodeVersionInfo NodeVersionInfoGet(ctx, )
 Get Node Version Information
 
 Get node version information, such as semver, commit, sporkID and protocol version.

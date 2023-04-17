@@ -29,7 +29,7 @@ Get node version information, such as semver, commit, sporkID and protocol versi
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return NodeVersionInfo
 */
-func (a *NodeVersionInfoApiService) NetworkNodeVersionInfoGet(ctx context.Context) (NodeVersionInfo, *http.Response, error) {
+func (a *NodeVersionInfoApiService) NodeVersionInfoGet(ctx context.Context) (NodeVersionInfo, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -39,7 +39,7 @@ func (a *NodeVersionInfoApiService) NetworkNodeVersionInfoGet(ctx context.Contex
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/network/node_version_info"
+	localVarPath := a.client.cfg.BasePath + "/node_version_info"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
