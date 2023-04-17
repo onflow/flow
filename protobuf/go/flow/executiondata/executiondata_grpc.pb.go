@@ -20,6 +20,8 @@ const _ = grpc.SupportPackageIsVersion7
 
 const (
 	ExecutionDataAPI_GetExecutionDataByBlockID_FullMethodName = "/flow.access.ExecutionDataAPI/GetExecutionDataByBlockID"
+	ExecutionDataAPI_SubscribeExecutionData_FullMethodName    = "/flow.access.ExecutionDataAPI/SubscribeExecutionData"
+	ExecutionDataAPI_SubscribeEvents_FullMethodName           = "/flow.access.ExecutionDataAPI/SubscribeEvents"
 )
 
 // ExecutionDataAPIClient is the client API for ExecutionDataAPI service.
@@ -80,7 +82,7 @@ func (c *executionDataAPIClient) GetExecutionDataByBlockID(ctx context.Context, 
 }
 
 func (c *executionDataAPIClient) SubscribeExecutionData(ctx context.Context, in *SubscribeExecutionDataRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataClient, error) {
-	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[0], "/flow.access.ExecutionDataAPI/SubscribeExecutionData", opts...)
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[0], ExecutionDataAPI_SubscribeExecutionData_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -112,7 +114,7 @@ func (x *executionDataAPISubscribeExecutionDataClient) Recv() (*SubscribeExecuti
 }
 
 func (c *executionDataAPIClient) SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[1], "/flow.access.ExecutionDataAPI/SubscribeEvents", opts...)
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[1], ExecutionDataAPI_SubscribeEvents_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
