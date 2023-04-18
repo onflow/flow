@@ -50,7 +50,7 @@ Do note that this construction does not prevent an account from having multiple 
 We believe it would be unlikely for a use case to demand a user delegates authority over their main account (in fact we’d discourage such constructions), but delegating access between child accounts could be useful. As an example, consider a set of local game clients across mobile and web platforms, each with self-custodied app accounts having delegated authority to each other while both are child accounts of the user’s main account.
 
 
-![resources/user-account.jpeg](resources/user-account.jpeg)
+![resources/user-account.jpg](resources/user-account.jpg)
 
 The user’s account is the root parent account while both child accounts have delegated access to each other. This allows assets to be easily transferable between dapp accounts without the need of a user signature to facilitate transfer.
 
