@@ -197,6 +197,22 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Identifier'
+      - name: blockId
+        in: query
+        description: A block ID optional parameter
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: collectionId
+        in: query
+        description: A collection ID optional parameter.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Identifier'
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -261,6 +277,22 @@ paths:
         required: true
         style: simple
         explode: false
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: blockId
+        in: query
+        description: A block ID optional parameter
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: collectionId
+        in: query
+        description: A collection ID optional parameter.
+        required: false
+        style: form
+        explode: true
         schema:
           $ref: '#/components/schemas/Identifier'
       - name: expand
@@ -1885,3 +1917,21 @@ components:
         type: array
         items:
           type: string
+    blockIdParam:
+      name: blockId
+      in: query
+      description: A block ID optional parameter
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: '#/components/schemas/Identifier'
+    collectionIdParam:
+      name: collectionId
+      in: query
+      description: A collection ID optional parameter.
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: '#/components/schemas/Identifier'

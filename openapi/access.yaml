@@ -108,6 +108,8 @@ paths:
           schema:
             $ref: '#/components/schemas/Identifier'
           required: true
+        - $ref: '#/components/parameters/blockIdParam'
+        - $ref: '#/components/parameters/collectionIdParam'
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:
@@ -136,6 +138,8 @@ paths:
           schema:
             $ref: '#/components/schemas/Identifier'
           required: true
+        - $ref: '#/components/parameters/blockIdParam'
+        - $ref: '#/components/parameters/collectionIdParam'
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:
@@ -505,6 +509,20 @@ components:
         uniqueItems: true
       explode: false
       style: form
+      required: false
+    blockIdParam:
+      description: A block ID optional parameter
+      name: blockId
+      in: query
+      schema:
+        $ref: '#/components/schemas/Identifier'
+      required: false
+    collectionIdParam:
+      description: A collection ID optional parameter.
+      name: collectionId
+      in: query
+      schema:
+        $ref: '#/components/schemas/Identifier'
       required: false
   schemas:
     Account:
