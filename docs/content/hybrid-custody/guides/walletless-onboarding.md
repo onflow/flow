@@ -5,6 +5,9 @@ title: Walletless Onboarding
 Walletless onboarding is an approach through which developers can meet new users where they are in their Web3 journey, delivering a familiar experience while they progressively expose new users to the benefits of Web3. On Flow, developers can help users realize the benefits of both custodial and non-custodial experiences with a seamless path to real ownership and self-sovereignty at a user’s own pace.
 
 ## Overview
+
+> :warning: Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final implementation. Builders should be aware that breaking changes will deploy between current state and the stable version. Interested in shaping the conversation? [Join in!](https://github.com/onflow/flips/pull/72)
+
 At a high level, implementing walletless onboarding is effectively a process of abstracting away the complexities of getting started in Web3. Your app will handle account creation, key management, and transaction signing behind a familiar Web2 authentication scheme and fiat denominated payments.
 
 There are a number of business & regulatory considerations that come along with the totality of that abstraction, and this doc will seek to highlight those considerations and provide guidance as well as point to existing tools and services where possible.
