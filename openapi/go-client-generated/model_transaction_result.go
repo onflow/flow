@@ -10,6 +10,7 @@ package swagger
 
 type TransactionResult struct {
 	BlockId string `json:"block_id"`
+	CollectionId string `json:"collection_id"`
 	Execution *TransactionExecution `json:"execution,omitempty"`
 	Status *TransactionStatus `json:"status"`
 	StatusCode int32 `json:"status_code"`

@@ -63,10 +63,10 @@ func (a *TransactionsApiService) TransactionResultsTransactionIdGet(ctx context.
 	localVarFormParams := url.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.BlockId.IsSet() {
-		localVarQueryParams.Add("blockId", parameterToString(localVarOptionals.BlockId.Value(), ""))
+		localVarQueryParams.Add("block_id", parameterToString(localVarOptionals.BlockId.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.CollectionId.IsSet() {
-		localVarQueryParams.Add("collectionId", parameterToString(localVarOptionals.CollectionId.Value(), ""))
+		localVarQueryParams.Add("collection_id", parameterToString(localVarOptionals.CollectionId.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
 		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
@@ -203,10 +203,10 @@ func (a *TransactionsApiService) TransactionsIdGet(ctx context.Context, id strin
 	localVarFormParams := url.Values{}
 
 	if localVarOptionals != nil && localVarOptionals.BlockId.IsSet() {
-		localVarQueryParams.Add("blockId", parameterToString(localVarOptionals.BlockId.Value(), ""))
+		localVarQueryParams.Add("block_id", parameterToString(localVarOptionals.BlockId.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.CollectionId.IsSet() {
-		localVarQueryParams.Add("collectionId", parameterToString(localVarOptionals.CollectionId.Value(), ""))
+		localVarQueryParams.Add("collection_id", parameterToString(localVarOptionals.CollectionId.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
 		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))

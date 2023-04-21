@@ -512,14 +512,14 @@ components:
       required: false
     blockIdParam:
       description: A block ID optional parameter
-      name: blockId
+      name: block_id
       in: query
       schema:
         $ref: '#/components/schemas/Identifier'
       required: false
     collectionIdParam:
       description: A collection ID optional parameter.
-      name: collectionId
+      name: collection_id
       in: query
       schema:
         $ref: '#/components/schemas/Identifier'
@@ -721,6 +721,7 @@ components:
       type: object
       required:
         - block_id
+        - collection_id
         - status
         - status_code
         - error_message
@@ -728,6 +729,8 @@ components:
         - events
       properties:
         block_id:
+          $ref: '#/components/schemas/Identifier'
+        collection_id:
           $ref: '#/components/schemas/Identifier'
         execution:
           $ref: '#/components/schemas/TransactionExecution'
