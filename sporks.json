@@ -1216,7 +1216,7 @@
         "rootHeight": "99452067",
         "rootParentId": "0e6bae31b2f34ffb0d64d4e1a33c2fbcebd80c936d77d70d2f5dd9321dc92393",
         "rootStateCommitment": "7cd69bb0a4448566dce42808efa8b1d03f322135f0bfce6f18037fca1294984c",
-        "gitCommitHash": "a7f2cd0ddd9fc7e1e56187327a84fec9efdc3c9d",
+        "gitCommitHash": "d55ca8f48167e9669bdb1dc3173253936863e31e",
         "stateArtefacts": {
           "gcp": {
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-43-execution/public-root-information/root.checkpoint",
@@ -1256,8 +1256,8 @@
         "sporkTime": "2023-04-12T13:00:00Z",
         "rootHeight": "99444465",
         "rootParentId": "a3788d5c0ff1c45db38bca2625bf18bfc562e1bfdc9ebb7dc83ef080be31e697",
-        "rootStateCommitment": "a6e5bfc16a39109ef86caad4dab77ec3752680ef3813c3449f239d84fddc5aa1",
-        "gitCommitHash": "a7f2cd0ddd9fc7e1e56187327a84fec9efdc3c9d",
+        "rootStateCommitment": "b32d42c14d2149dd32a481b18a8d695aa93539133eba92d72872b4c6bb61b38d",
+        "gitCommitHash": "d55ca8f48167e9669bdb1dc3173253936863e31e",
         "stateArtefacts": {
           "gcp": {
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-42-execution/public-root-information/root.checkpoint",
