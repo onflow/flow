@@ -25,6 +25,7 @@ message Chunk {
   uint64 index = 7;     // chunk index inside the ER (starts from zero)
   bytes end_state = 8;  // EndState inferred from next chunk or from the ER
   bytes execution_data_id = 9;
+  bytes state_delta_commitment = 10; // a commitment over sorted list of register changes
 }
 
 message ServiceEvent {

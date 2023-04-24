@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package flow.entities;
+
+option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
+option java_package = "org.onflow.protobuf.entities";
+
+message Metadata {
+  bytes latest_finalized_block_id = 1;
+  uint64 latest_finalized_height = 2;
+  bytes node_id = 3;
+}

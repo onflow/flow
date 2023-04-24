@@ -10,6 +10,8 @@ A new user will no longer need a preconfigured wallet to interact with Flow. Whe
 
 In order to realize a multi-account world that makes sense to users - one where they don’t have to concern themselves with managing assets across their network of accounts - we’re relying on Flow builders to cast their abstractive magic. Consider this your grimoire, fellow builder, where we’ll continue from the perspective of a wallet or marketplace dapp seeking to facilitate a unified account experience, abstracting away the partitioned access between accounts into a single dashboard for user interactions on all their owned assets.
 
+> :warning: Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final implementation. Builders should be aware that breaking changes will deploy between current state and the stable version. Interested in shaping the conversation? [Join in!](https://github.com/onflow/flips/pull/72)
+
 # Objective
 
 - Understand the linked account model
