@@ -9,6 +9,8 @@ The full Hybrid Custody model is enabled by three core components:
 - Account Linking - App custodied accounts delegate access to wallet-authenticated users
 - LinkedAccounts contract - A standard contract enabling users to view and manage their linked accounts
 
+> :warning: Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final implementation. Builders should be aware that breaking changes will deploy between current state and the stable version. Interested in shaping the conversation? [Join in!](https://github.com/onflow/flips/pull/72)
+
 ### The Path to Hybrid Custody
 
 1. The app creates, funds, and manages access to a Flow account initialized on user onboarding. This enables the app to abstract away the complexities of interacting with smart contract powered applications, and focus on creating slick user experiences behind familiar Web2 authentication and fiat denominated payments.
