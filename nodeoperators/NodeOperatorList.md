@@ -115,6 +115,7 @@
 | Foundry | Verification | e74d0ca7afed2b5bfd612f3c75010adb229d632ca4ab3b77d178ee226d7ec2a2
 | HashQuark | Verification | 55069e7e8926867bee8094bd31786f8f6b65c8c3bde468ae2275f33dc1245dc1
 | Huobi | Verification | 6944b7968594f277c4c051d83ced4bab6ed87ed992d831f31ffb6a7b5926e298
+| Lilico | Verification | 3c6519ba8be35e338df7273a895ad3abaeb0c232eb908ee7b05462018c112fe1
 | Metapurse | Collection |da27c0fc2a4fe12c04bd70058252c5a26cfe41485bf6ea6aba1c724b7a07542d
 | Metapurse | Consensus |1780288437c9aed5056836bfffcfe19334dd6e229607fccfb3fe9b1d4d24cdca
 | Metapurse | Verfication | dc3054cae816874d7dbbe838a41ef97c8a01b44643bffc82afe3a8228eed29fd

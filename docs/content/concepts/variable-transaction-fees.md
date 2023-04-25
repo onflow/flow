@@ -102,7 +102,7 @@ You should see the `computationUsed` field. Take a note of the value, you will u
 
 Once a transaction is completed, you can use an explorer like [Flowscan](https://flowscan.org/) to review the transaction details and events emitted. For Flowscan, you can open the transaction in question and look for the event `FeesDeducted` from the [`FlowFees`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc) contract:
 
-![flowscan-fees](flowscan-fees.png)
+![flowscan-fees](./flowscan-fees.png)
 
 In the event data on the right side, you will see a set of fields representing [FeeParameters](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc#L58):
 

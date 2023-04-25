@@ -1,0 +1,110 @@
+# NPM Module
+
+We exposed an interface to the catalog via a consumable NPM module. This library will expose a number of methods that can be called to interact with the catalog.
+
+## Methods
+
+Method signatures and their associating parameters/responses can be found in the `cadence/` folder of this repo.
+
+### Scripts
+
+```
+checkForRecommendedV1Views
+genTx
+getAllNftsInAccount
+getExamplenftCollectionLength
+getExamplenftType
+getNftCatalog
+getNftCatalogProposals
+getNftCollectionsForNftType
+getNftIdsInAccount
+getNftInAccount
+getNftInAccountFromPath
+getNftMetadataForCollectionIdentifier
+getNftProposalForId
+getNftsCountInAccount
+getNftsInAccount
+getNftsInAccountFromIds
+getNftsInAccountFromPath
+getSupportedGeneratedTransactions
+hasAdminProxy
+isCatalogAdmin
+```
+
+### Transactions
+
+```
+addToNftCatalog
+addToNftCatalogAdmin
+approveNftCatalogProposal
+mintExampleNft
+mintNonstandardNft
+proposeNftToCatalog
+rejectNftCatalogProposal
+removeFromNftCatalog
+removeNftCatalogProposal
+sendAdminCapabilityToProxy
+setupExamplenftCollection
+setupNftCatalogAdminProxy
+setupNonstandardnftCollection
+setupStorefront
+transferExamplenft
+updateNftCatalogEntry
+withdrawNftProposalFromCatalog
+```
+
+## Installation
+
+```
+npm install flow-catalog
+```
+
+or
+
+```
+yarn add flow-catalog
+```
+
+## Usage
+
+Methods can be imported as follows, all nested methods live under the `scripts` or `transactions` variable.
+
+NOTE: In order to properly bootstrap the method, you will need to run and `await` on the `getAddressMaps()` method, passing it into all of the methods as shown below.
+
+```
+import { getAddressMaps, scripts } from "flow-catalog";
+
+const main = async () => {
+    const addressMap = await getAddressMaps();
+    console.log(await scripts.getNftCatalog(addressMap));
+};
+
+main();
+```
+
+The response of any method is a tuple-array, with the first element being the result, and the second being the error (if applicable).
+
+For example, the result of the method above would look like -
+
+```
+[
+  {
+    BILPlayerCollection: {
+      contractName: 'Player',
+      contractAddress: '0x9e6cdb88e34fa1f3',
+      nftType: [Object],
+      collectionData: [Object],
+      collectionDisplay: [Object]
+    },
+    ...
+    SoulMadeComponent: {
+      contractName: 'SoulMadeComponent',
+      contractAddress: '0x421c19b7dc122357',
+      nftType: [Object],
+      collectionData: [Object],
+      collectionDisplay: [Object]
+    }
+  },
+  null
+]
+```

@@ -10,6 +10,8 @@ servers:
   description: Flow Canary
 - url: https://rest-testnet.onflow.org/v1
   description: Flow Testnet
+- url: https://rest-sandboxnet.onflow.org/v1
+  description: Flow Sandboxnet
 - url: https://rest-mainnet.onflow.org/v1
   description: Flow Mainnet
 paths:
@@ -368,6 +370,32 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Identifier'
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
       responses:
         "200":
           description: OK
@@ -413,6 +441,19 @@ paths:
           type: array
           items:
             $ref: '#/components/schemas/Identifier'
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
       responses:
         "200":
           description: OK
@@ -456,6 +497,19 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Identifier'
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
       responses:
         "200":
           description: OK
@@ -506,6 +560,32 @@ paths:
         explode: true
         schema:
           $ref: '#/components/schemas/BlockHeight'
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
       responses:
         "200":
           description: OK
@@ -1636,6 +1716,15 @@ components:
           type: string
       example:
         _self: _self
+    NetworkParameters:
+      required:
+      - chain_id
+      type: object
+      properties:
+        chain_id:
+          type: string
+      example:
+        chain_id: chain_id
     transactions_body:
       required:
       - arguments
@@ -1748,15 +1837,6 @@ components:
       example:
         payload: payload
         execution_result: http://example.com/aeiou
-    NetworkParameters:
-      required:
-      - chain_id
-      type: object
-      properties:
-        chain_id:
-          type: string
-      example:
-        chain_id: mainnet
   responses:
     "400BadRequest":
       description: Bad Request

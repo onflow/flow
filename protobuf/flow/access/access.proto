@@ -11,6 +11,7 @@ import "flow/entities/block.proto";
 import "flow/entities/collection.proto";
 import "flow/entities/event.proto";
 import "flow/entities/execution_result.proto";
+import "flow/entities/metadata.proto";
 import "flow/entities/transaction.proto";
 import "google/protobuf/timestamp.proto";
 
@@ -152,6 +153,7 @@ message GetBlockHeaderByHeightRequest {
 message BlockHeaderResponse {
   entities.BlockHeader block = 1;
   entities.BlockStatus block_status = 2;
+  entities.Metadata metadata = 3;
 }
 
 // Blocks
@@ -174,6 +176,7 @@ message GetBlockByHeightRequest {
 message BlockResponse {
   entities.Block block = 1;
   entities.BlockStatus block_status = 2;
+  entities.Metadata metadata = 3;
 }
 
 // Collections
@@ -184,6 +187,7 @@ message GetCollectionByIDRequest {
 
 message CollectionResponse {
   entities.Collection collection = 1;
+  entities.Metadata metadata = 2;
 }
 
 // Transactions
@@ -194,6 +198,7 @@ message SendTransactionRequest {
 
 message SendTransactionResponse {
   bytes id = 1;
+  entities.Metadata metadata = 2;
 }
 
 message GetTransactionRequest {
@@ -211,14 +216,17 @@ message GetTransactionsByBlockIDRequest {
 
 message TransactionResultsResponse {
   repeated TransactionResultResponse transaction_results = 1;
+  entities.Metadata metadata = 2;
 }
 
 message TransactionsResponse {
   repeated entities.Transaction transactions = 1;
+  entities.Metadata metadata = 2;
 }
 
 message TransactionResponse {
   entities.Transaction transaction = 1;
+  entities.Metadata metadata = 2;
 }
 
 message TransactionResultResponse {
@@ -230,6 +238,7 @@ message TransactionResultResponse {
   bytes transaction_id = 6;
   bytes collection_id = 7;
   uint64 block_height = 8;
+  entities.Metadata metadata = 9;
 }
 
 // Accounts
@@ -240,6 +249,7 @@ message GetAccountRequest {
 
 message GetAccountResponse {
   entities.Account account = 1;
+  entities.Metadata metadata = 2;
 }
 
 message GetAccountAtLatestBlockRequest {
@@ -248,6 +258,7 @@ message GetAccountAtLatestBlockRequest {
 
 message AccountResponse {
   entities.Account account = 1;
+  entities.Metadata metadata = 2;
 }
 
 message GetAccountAtBlockHeightRequest {
@@ -276,6 +287,7 @@ message ExecuteScriptAtBlockHeightRequest {
 
 message ExecuteScriptResponse {
   bytes value = 1;
+  entities.Metadata metadata = 2;
 }
 
 // Events
@@ -299,6 +311,7 @@ message EventsResponse {
     google.protobuf.Timestamp block_timestamp = 4;
   }
   repeated Result results = 1;
+  entities.Metadata metadata = 2;
 }
 
 // Network Parameters
@@ -315,6 +328,7 @@ message GetLatestProtocolStateSnapshotRequest {}
 
 message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
+  entities.Metadata metadata = 2;
 }
 
 // Execution Results
@@ -325,4 +339,5 @@ message GetExecutionResultForBlockIDRequest {
 
 message ExecutionResultForBlockIDResponse {
   entities.ExecutionResult execution_result = 1;
+  entities.Metadata metadata = 2;
 }
