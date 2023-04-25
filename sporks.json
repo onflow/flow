@@ -1208,9 +1208,50 @@
       }
     },
     "testnet": {
+      "testnet44": {
+        "id": 44,
+        "live": true,
+        "name": "Testnet44",
+        "sporkTime": "2023-04-25T00:42:00Z",
+        "rootHeight": "100675451",
+        "rootParentId": "298854580771edc6ec2e2bbc8da3990ff7f746e2fc5cfe16e550d577bdd4bc5b",
+        "rootStateCommitment": "2a062531331b8214de4e900a26ff0f76c578481b4ce22b4b5d8e55bd9535abda",
+        "gitCommitHash": "b5b65c9d43bf6bd12766eef06e870990c3963b7c",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-44-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-44/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-44/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-44/public-root-information/node-infos.pub.json"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": ""
+          }
+        },
+        "tags": {
+          "flow-go-tag": "v0.30.6",
+          "flow-dps-tag": "v0.30.6",
+          "cadence-tag": "v0.38.1",
+          "docker-tag": "v0.30.6"
+        },
+        "accessNodes": [],
+        "seedNodes": [
+          {
+            "address": "access-003.devnet44.nodes.onflow.org:3570",
+            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+          },
+          {
+            "address": "access-004.devnet44.nodes.onflow.org:3570",
+            "key": "0d1523612be854638b985fc658740fa55f009f3cd49b739961ab082dc91b178ed781ef5f66878613b4d34672039150abfd9c8cfdfe48c565bca053fa4db30bec"
+          }
+        ]
+      },
       "testnet43": {
         "id": 43,
-        "live": true,
+        "live": false,
         "name": "Testnet43",
         "sporkTime": "2023-04-12T15:00:00Z",
         "rootHeight": "99452067",
