@@ -1251,7 +1251,7 @@
       },
       "testnet43": {
         "id": 43,
-        "live": true,
+        "live": false,
         "name": "Testnet43",
         "sporkTime": "2023-04-12T15:00:00Z",
         "rootHeight": "99452067",
