@@ -31,12 +31,16 @@ Get transaction result by the transaction result ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param transactionId The transaction ID of the transaction result.
  * @param optional nil or *TransactionsApiTransactionResultsTransactionIdGetOpts - Optional Parameters:
+     * @param "BlockId" (optional.Interface of string) -  A block ID optional parameter
+     * @param "CollectionId" (optional.Interface of string) -  A collection ID optional parameter.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
 @return TransactionResult
 */
 
 type TransactionsApiTransactionResultsTransactionIdGetOpts struct {
+    BlockId optional.Interface
+    CollectionId optional.Interface
     Expand optional.Interface
     Select_ optional.Interface
 }
@@ -58,6 +62,12 @@ func (a *TransactionsApiService) TransactionResultsTransactionIdGet(ctx context.
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.BlockId.IsSet() {
+		localVarQueryParams.Add("block_id", parameterToString(localVarOptionals.BlockId.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.CollectionId.IsSet() {
+		localVarQueryParams.Add("collection_id", parameterToString(localVarOptionals.CollectionId.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
 		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
 	}
@@ -161,12 +171,16 @@ Get a transaction data by the provided transaction ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id The ID of the transaction to get.
  * @param optional nil or *TransactionsApiTransactionsIdGetOpts - Optional Parameters:
+     * @param "BlockId" (optional.Interface of string) -  A block ID optional parameter
+     * @param "CollectionId" (optional.Interface of string) -  A collection ID optional parameter.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
 @return Transaction
 */
 
 type TransactionsApiTransactionsIdGetOpts struct {
+    BlockId optional.Interface
+    CollectionId optional.Interface
     Expand optional.Interface
     Select_ optional.Interface
 }
@@ -188,6 +202,12 @@ func (a *TransactionsApiService) TransactionsIdGet(ctx context.Context, id strin
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.BlockId.IsSet() {
+		localVarQueryParams.Add("block_id", parameterToString(localVarOptionals.BlockId.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.CollectionId.IsSet() {
+		localVarQueryParams.Add("collection_id", parameterToString(localVarOptionals.CollectionId.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
 		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
 	}

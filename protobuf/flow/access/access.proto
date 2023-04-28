@@ -214,6 +214,8 @@ message SendTransactionResponse {
 
 message GetTransactionRequest {
   bytes id = 1;
+  bytes block_id = 2;
+  bytes collection_id = 3;
 }
 
 message GetTransactionByIndexRequest {

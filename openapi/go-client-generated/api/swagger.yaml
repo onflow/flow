@@ -197,6 +197,22 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Identifier'
+      - name: block_id
+        in: query
+        description: A block ID optional parameter
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: collection_id
+        in: query
+        description: A collection ID optional parameter.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Identifier'
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -261,6 +277,22 @@ paths:
         required: true
         style: simple
         explode: false
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: block_id
+        in: query
+        description: A block ID optional parameter
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: collection_id
+        in: query
+        description: A collection ID optional parameter.
+        required: false
+        style: form
+        explode: true
         schema:
           $ref: '#/components/schemas/Identifier'
       - name: expand
@@ -955,6 +987,7 @@ components:
           payer: payer
           script: script
           result:
+            collection_id: null
             error_message: error_message
             execution: Pending
             status_code: 0
@@ -1003,6 +1036,7 @@ components:
           payer: payer
           script: script
           result:
+            collection_id: null
             error_message: error_message
             execution: Pending
             status_code: 0
@@ -1113,6 +1147,7 @@ components:
         payer: payer
         script: script
         result:
+          collection_id: null
           error_message: error_message
           execution: Pending
           status_code: 0
@@ -1197,6 +1232,7 @@ components:
     TransactionResult:
       required:
       - block_id
+      - collection_id
       - computation_used
       - error_message
       - events
@@ -1205,6 +1241,8 @@ components:
       type: object
       properties:
         block_id:
+          $ref: '#/components/schemas/Identifier'
+        collection_id:
           $ref: '#/components/schemas/Identifier'
         execution:
           $ref: '#/components/schemas/TransactionExecution'
@@ -1225,6 +1263,7 @@ components:
         _links:
           $ref: '#/components/schemas/Links'
       example:
+        collection_id: null
         error_message: error_message
         execution: Pending
         status_code: 0
@@ -1939,3 +1978,21 @@ components:
         type: array
         items:
           type: string
+    blockIdParam:
+      name: block_id
+      in: query
+      description: A block ID optional parameter
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: '#/components/schemas/Identifier'
+    collectionIdParam:
+      name: collection_id
+      in: query
+      description: A collection ID optional parameter.
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: '#/components/schemas/Identifier'
