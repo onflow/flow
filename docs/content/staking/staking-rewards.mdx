@@ -139,7 +139,7 @@ where block height is the height of the block containing the rewards payout even
 Example (using testnet instead of mainnet)
 
 ```
-$ flow events get A.8624b52f9ddcd04a.FlowIDTableStaking.RewardsPaid --start 51753700 --end 51753921 -n mainnet
+$ flow events get A.8624b52f9ddcd04a.FlowIDTableStaking.RewardsPaid --start 51753836 --end 51753836 -n mainnet
 
 Events Block #51753836:
     Index	6
@@ -207,8 +207,8 @@ func main() {
 
 	blockEvents, err := accessNodeClient.GetEventsForHeightRange(ctx,
 		"A.8624b52f9ddcd04a.FlowIDTableStaking.RewardsPaid",
-		51753700,
-		51753921)
+		51753836,
+		51753836)
 	if err != nil {
 		panic(err)
 	}
