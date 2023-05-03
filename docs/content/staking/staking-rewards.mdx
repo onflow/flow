@@ -131,12 +131,12 @@ Instead of a separate reward payout transaction, the reward payout events will b
 
 The rewards payout can be queried by querying the block which contains the system chunk that contains the reward payout events.
 ```
-flow events get A.8624b52f9ddcd04a.FlowIDTableStaking.RewardsPaid --start <block Height> --end <block height> -n mainnet
+flow events get A.8624b52f9ddcd04a.FlowIDTableStaking.RewardsPaid A.8624b52f9ddcd04a.FlowIDTableStaking.DelegatorRewardsPaid --start <block Height> --end <block height> -n mainnet
 
 where block height is the height of the block containing the rewards payout events
 ```
 
-Example (using testnet instead of mainnet)
+Example
 
 ```
 $ flow events get A.8624b52f9ddcd04a.FlowIDTableStaking.RewardsPaid --start 51753836 --end 51753836 -n mainnet
