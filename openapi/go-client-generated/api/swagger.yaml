@@ -197,6 +197,22 @@ paths:
         explode: false
         schema:
           $ref: '#/components/schemas/Identifier'
+      - name: block_id
+        in: query
+        description: A block ID optional parameter
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: collection_id
+        in: query
+        description: A collection ID optional parameter.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Identifier'
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -261,6 +277,22 @@ paths:
         required: true
         style: simple
         explode: false
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: block_id
+        in: query
+        description: A block ID optional parameter
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: collection_id
+        in: query
+        description: A collection ID optional parameter.
+        required: false
+        style: form
+        explode: true
         schema:
           $ref: '#/components/schemas/Identifier'
       - name: expand
@@ -786,6 +818,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /node_version_info:
+    get:
+      tags:
+      - NodeVersionInfo
+      summary: Get Node Version Information
+      description: "Get node version information, such as semver, commit, sporkID\
+        \ and protocol version."
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeVersionInfo'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Account:
@@ -923,6 +987,7 @@ components:
           payer: payer
           script: script
           result:
+            collection_id: null
             error_message: error_message
             execution: Pending
             status_code: 0
@@ -971,6 +1036,7 @@ components:
           payer: payer
           script: script
           result:
+            collection_id: null
             error_message: error_message
             execution: Pending
             status_code: 0
@@ -1081,6 +1147,7 @@ components:
         payer: payer
         script: script
         result:
+          collection_id: null
           error_message: error_message
           execution: Pending
           status_code: 0
@@ -1165,6 +1232,7 @@ components:
     TransactionResult:
       required:
       - block_id
+      - collection_id
       - computation_used
       - error_message
       - events
@@ -1173,6 +1241,8 @@ components:
       type: object
       properties:
         block_id:
+          $ref: '#/components/schemas/Identifier'
+        collection_id:
           $ref: '#/components/schemas/Identifier'
         execution:
           $ref: '#/components/schemas/TransactionExecution'
@@ -1193,6 +1263,7 @@ components:
         _links:
           $ref: '#/components/schemas/Links'
       example:
+        collection_id: null
         error_message: error_message
         execution: Pending
         status_code: 0
@@ -1725,6 +1796,28 @@ components:
           type: string
       example:
         chain_id: chain_id
+    NodeVersionInfo:
+      required:
+      - commit
+      - protocol_version
+      - semver
+      - spork_id
+      type: object
+      properties:
+        semver:
+          type: string
+        commit:
+          type: string
+        spork_id:
+          $ref: '#/components/schemas/Identifier'
+        protocol_version:
+          type: string
+          format: uint64
+      example:
+        protocol_version: protocol_version
+        semver: semver
+        commit: commit
+        spork_id: spork_id
     transactions_body:
       required:
       - arguments
@@ -1885,3 +1978,21 @@ components:
         type: array
         items:
           type: string
+    blockIdParam:
+      name: block_id
+      in: query
+      description: A block ID optional parameter
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: '#/components/schemas/Identifier'
+    collectionIdParam:
+      name: collection_id
+      in: query
+      description: A collection ID optional parameter.
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: '#/components/schemas/Identifier'

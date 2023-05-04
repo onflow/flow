@@ -12,6 +12,7 @@ import "flow/entities/collection.proto";
 import "flow/entities/event.proto";
 import "flow/entities/execution_result.proto";
 import "flow/entities/metadata.proto";
+import "flow/entities/node_version_info.proto";
 import "flow/entities/transaction.proto";
 import "google/protobuf/timestamp.proto";
 
@@ -19,6 +20,10 @@ import "google/protobuf/timestamp.proto";
 service AccessAPI {
   // Ping is used to check if the access node is alive and healthy.
   rpc Ping(PingRequest) returns (PingResponse);
+
+  // GetNodeVersionInfo return node version information, such as semver,
+  // commit, sporkID and protocol version.
+  rpc GetNodeVersionInfo(GetNodeVersionInfoRequest) returns (GetNodeVersionInfoResponse);
 
   // Block Headers
 
@@ -136,6 +141,12 @@ message PingRequest {}
 
 message PingResponse {}
 
+message GetNodeVersionInfoRequest {}
+
+message GetNodeVersionInfoResponse {
+  entities.NodeVersionInfo info = 1;
+}
+
 // Block Headers
 
 message GetLatestBlockHeaderRequest {
@@ -203,6 +214,8 @@ message SendTransactionResponse {
 
 message GetTransactionRequest {
   bytes id = 1;
+  bytes block_id = 2;
+  bytes collection_id = 3;
 }
 
 message GetTransactionByIndexRequest {

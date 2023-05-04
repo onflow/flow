@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BlockId** | **string** |  | [default to null]
+**CollectionId** | **string** |  | [default to null]
 **Execution** | [***TransactionExecution**](TransactionExecution.md) |  | [optional] [default to null]
 **Status** | [***TransactionStatus**](TransactionStatus.md) |  | [default to null]
 **StatusCode** | **int32** |  | [default to null]
