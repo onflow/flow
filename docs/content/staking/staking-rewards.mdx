@@ -139,7 +139,7 @@ where block height is the height of the block containing the rewards payout even
 Example
 
 ```
-$ flow events get A.8624b52f9ddcd04a.FlowIDTableStaking.RewardsPaid --start 51753836 --end 51753836 -n mainnet
+$ flow events get A.8624b52f9ddcd04a.FlowIDTableStaking.RewardsPaid A.8624b52f9ddcd04a.FlowIDTableStaking.DelegatorRewardsPaid --start 51753836 --end 51753836 -n mainnet
 
 Events Block #51753836:
     Index	6
@@ -179,6 +179,23 @@ Events Block #51753836:
     ...
     ...
    <clipped for brevity>
+    ...
+    ...
+    Index	50115
+    Type	A.8624b52f9ddcd04a.FlowIDTableStaking.DelegatorRewardsPaid
+    Tx ID	f31815934bff124e332b3c8be5e1c7a949532707251a9f2f81def8cc9f3d1458
+    Values
+		- nodeID (String): "95ffacf0c05757cff71a4ee49e025d5a6d1103a3aa7d91253079e1bfb7c22458"
+		- delegatorID (UInt32): 23
+		- amount (UFix64): 0.10424555
+
+    Index	50118
+    Type	A.8624b52f9ddcd04a.FlowIDTableStaking.DelegatorRewardsPaid
+    Tx ID	f31815934bff124e332b3c8be5e1c7a949532707251a9f2f81def8cc9f3d1458
+    Values
+		- nodeID (String): "95ffacf0c05757cff71a4ee49e025d5a6d1103a3aa7d91253079e1bfb7c22458"
+		- delegatorID (UInt32): 18
+		- amount (UFix64): 17.31047712
 ```
 
 Example using [Flow Go SDK](https://developers.flow.com/tools/flow-go-sdk)
