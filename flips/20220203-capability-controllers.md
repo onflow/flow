@@ -188,7 +188,10 @@ it shares the CapCon with the original capability
 The Capability, and all copies of that Capability, have the same ID.
 Capability IDs are unique per account.
 
-CapCons are not storable (similar to e.g. AuthAccounts).
+CapCons are stored inside of accounts.
+However, they are not first-class values:
+their creation, storage, and deletion is managed by the language,
+through the usage of the CapCon API as described below.
 
 There are two kinds of capabilities:
 - Storage capability: Targets a storage path in an account
