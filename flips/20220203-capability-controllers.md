@@ -204,6 +204,11 @@ Therefore, there are two kinds of Capability Controllers:
 ```cadence
 pub struct StorageCapabilityController {
 
+    /// An arbitrary "tag" for the controller.
+    /// For example, it could be used to describe the purpose of the capability.
+    /// Empty by default.
+    pub var tag: String
+
     /// The type of the controlled capability, i.e. the T in `Capability<T>`.
     pub let borrowType: Type
 
@@ -235,6 +240,11 @@ pub struct StorageCapabilityController {
 
 ```cadence
 pub struct AccountCapabilityController {
+
+    /// An arbitrary "tag" for the controller.
+    /// For example, it could be used to describe the purpose of the capability.
+    /// Empty by default.
+    pub var tag: String
 
     /// The type of the controlled capability, i.e. the T in `Capability<T>`.
     pub let borrowType: Type
@@ -432,25 +442,12 @@ by keeping an on-chain or an off-chain list of capability ids and some extra ide
 If no such list was kept, the issuer can use the information on the CapCons,
 retrieved through e.g. `issuer.capabilities.storage.getControllers(path: StoragePath)`, to find the right ID.
 
-### Pet names for issued capabilities
+### Tagging of issued capabilities
 
-If needed the capability issuing functions can be wrapped into a contract function,
-so that the issuer can more easily keep track of what was issued.
+Capability Controllers can be tagged with an arbitrary string through the `tag` field.
 
-```cadence
-// inside the Counter contract
-access(account) petNames: {String: UInt64}
-
-access(account) issueHasCount(petName: String): Capability<&{HasCount}> {
-   // for brevity this function is not handling pet name collision
-   let cap = self.account.capabilities.storage.issue<&{HasCount}>(/storage/counter)
-   self.petNames[petName] = cap.id
-   return cap
-}
-```
-
-This allows the account to later access `petNames` when it needs to revoke/retarget a specific capability.
-This can also be used not just for pet names, but to add other metadata to issued capabilities.
+For example, it can be used to describe the purpose or reason for the capability,
+or it can be used to give the capability a [petname](https://en.wikipedia.org/wiki/Petname).
 
 ### Capability Minters
 
