@@ -1,7 +1,7 @@
 | status: Proposed
 | flip: [798](https://github.com/onflow/flow/pull/798)
 | author: Janez Podhostnik (janez.podhostnik@dapperlabs.com), Bastian Müller (bastian@dapperlabs.com)
-| updated: 2023-03-24
+| updated: 2023-05-04
 
 # Capability controllers
 
@@ -524,66 +524,41 @@ pub resource ScopedMain : AdminInterface {
 }
 ```
 
-## Deployment options
+## Deployment
 
-Just making a breaking change by removing the linking API and adding the CapCons API might cause some headaches.
-In order to make the transition to CapCons smoother, the CapCons API could temporarily work in parallel with the current linking API.
+Replacing the linking API with the CapCons API is a breaking change.
+In order to make the transition to CapCons as smooth as possible,
+the CapCons API is going to be introduced before the linking API is going to be removed.
+This transition period will allow developers to migrate links to CapCons
+and migrate from using the linking API to the CapCons API.
 
-The rollout process would have 2 steps:
+During the transition period, both APIs will work side-by-side,
+as two separate and alternative APIs for creating, accessing, and managing capabilities.
+This means that links cannot be managed using the CapCons API,
+and vice-versa, CapCons cannot be managed using the linking API.
 
-1. Add CapCons and still have linking.
-2. After a transition period remove linking.
-
-To make this FLIP compatible with this rollout, the requirement of removing the private domain needs to be addressed.
-While both APIs are still active, the private domain still needs to exist in order to do private linking for private capabilities.
-The private domain can be removed at step 2.
-
-During step 1, all existing links should also become CapCons (most likely with a storage migration).
-The linking API will still be available, but will actually operate with CapCons in the background.
-Below is an implementation of the linking API with the CapCons API.
-
-```cadence
-// link
-// issuer.link<T>(publicOrPrivatePath, target: storagePath)
-
-let cap = issuer.capabilities.storage.issue<T>(storagePath)
-issuer.capabilities.publish(cap, to: publicOrPrivatePath)
-```
-
-```cadence
-// unlink
-// issuer.unlink(publicOrPrivatePath)
-
-let cap = issuer.capabilities.get<T>(publicOrPrivatePath)!
-let capCon = issuer.capabilities.storage.getController(byCapabilityID: cap.id)
-capCon.delete()
-```
-
-```cadence
-// relink
-// issuer.unlink(publicOrPrivatePath)
-// issuer.link<&{CounterContract.HasCount}>(publicOrPrivatePath, target: storagePath2)
-
-// 1. unlink
-
-let cap = issuer.capabilities.get<T>(publicOrPrivatePath)!
-let capCon = issuer.capabilities.storage.getController(byCapabilityID: cap.id)
-capCon.delete()
-
-// 2. link
-
-let cap = issuer.capabilities.storage.issue<T>(storagePath2)
-issuer.capabilities.publish(cap, to: publicOrPrivatePath)
-```
+However, to provide some support for backward-compatibility,
+capabilities which are published using the CapCons API
+will be accessible through the linking API function `getCapability`.
 
 ## Migration of existing data
 
 Existing links and capabilities need to be migrated.
 
-All existing storage links and all storage capabilities will get grouped by path,
+All existing storage links and all storage capabilities will get grouped by *target storage path* (`/storage`),
 and a CapCon with a unique ID will be generated for each group.
 
-This behaviour is similar to how unlinking revokes and relinking retargets all capabilities with the same path.
+To determine the target storage path, the link's *source capability path* (`/public` or `/private`) is followed
+until a storage path is encountered.
+
+If the link is broken at the time of migration, e.g. because of a broken link,
+then the capability cannot be successfully migrated.
+In that case, the capability is assigned a unique capability ID,
+which is effectively equivalent to a CapCon having existed for the capability at some point, but it was deleted.
+
+Note that it is not necessary for the storage path to contain any value at the time of migration.
+
+Public links (`/public`) are replaced with capabilities.
 
 For all existing account links and account capabilities
 a separate CapCon with a unique ID will be generated.
