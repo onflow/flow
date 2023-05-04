@@ -27,6 +27,8 @@ Optional parameters are passed through a pointer to a TransactionsApiTransaction
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **blockId** | [**optional.Interface of string**](.md)| A block ID optional parameter | 
+ **collectionId** | [**optional.Interface of string**](.md)| A collection ID optional parameter. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
 
@@ -64,6 +66,8 @@ Optional parameters are passed through a pointer to a TransactionsApiTransaction
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **blockId** | [**optional.Interface of string**](.md)| A block ID optional parameter | 
+ **collectionId** | [**optional.Interface of string**](.md)| A collection ID optional parameter. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
 

@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion7
 
 const (
 	AccessAPI_Ping_FullMethodName                           = "/flow.access.AccessAPI/Ping"
+	AccessAPI_GetNodeVersionInfo_FullMethodName             = "/flow.access.AccessAPI/GetNodeVersionInfo"
 	AccessAPI_GetLatestBlockHeader_FullMethodName           = "/flow.access.AccessAPI/GetLatestBlockHeader"
 	AccessAPI_GetBlockHeaderByID_FullMethodName             = "/flow.access.AccessAPI/GetBlockHeaderByID"
 	AccessAPI_GetBlockHeaderByHeight_FullMethodName         = "/flow.access.AccessAPI/GetBlockHeaderByHeight"
@@ -52,6 +53,9 @@ const (
 type AccessAPIClient interface {
 	// Ping is used to check if the access node is alive and healthy.
 	Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error)
+	// GetNodeVersionInfo return node version information, such as semver,
+	// commit, sporkID and protocol version.
+	GetNodeVersionInfo(ctx context.Context, in *GetNodeVersionInfoRequest, opts ...grpc.CallOption) (*GetNodeVersionInfoResponse, error)
 	// GetLatestBlockHeader gets the latest sealed or unsealed block header.
 	GetLatestBlockHeader(ctx context.Context, in *GetLatestBlockHeaderRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
 	// GetBlockHeaderByID gets a block header by ID.
@@ -130,6 +134,15 @@ func NewAccessAPIClient(cc grpc.ClientConnInterface) AccessAPIClient {
 func (c *accessAPIClient) Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error) {
 	out := new(PingResponse)
 	err := c.cc.Invoke(ctx, AccessAPI_Ping_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessAPIClient) GetNodeVersionInfo(ctx context.Context, in *GetNodeVersionInfoRequest, opts ...grpc.CallOption) (*GetNodeVersionInfoResponse, error) {
+	out := new(GetNodeVersionInfoResponse)
+	err := c.cc.Invoke(ctx, AccessAPI_GetNodeVersionInfo_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -358,6 +371,9 @@ func (c *accessAPIClient) GetExecutionResultForBlockID(ctx context.Context, in *
 type AccessAPIServer interface {
 	// Ping is used to check if the access node is alive and healthy.
 	Ping(context.Context, *PingRequest) (*PingResponse, error)
+	// GetNodeVersionInfo return node version information, such as semver,
+	// commit, sporkID and protocol version.
+	GetNodeVersionInfo(context.Context, *GetNodeVersionInfoRequest) (*GetNodeVersionInfoResponse, error)
 	// GetLatestBlockHeader gets the latest sealed or unsealed block header.
 	GetLatestBlockHeader(context.Context, *GetLatestBlockHeaderRequest) (*BlockHeaderResponse, error)
 	// GetBlockHeaderByID gets a block header by ID.
@@ -431,6 +447,9 @@ type UnimplementedAccessAPIServer struct {
 
 func (UnimplementedAccessAPIServer) Ping(context.Context, *PingRequest) (*PingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+}
+func (UnimplementedAccessAPIServer) GetNodeVersionInfo(context.Context, *GetNodeVersionInfoRequest) (*GetNodeVersionInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetNodeVersionInfo not implemented")
 }
 func (UnimplementedAccessAPIServer) GetLatestBlockHeader(context.Context, *GetLatestBlockHeaderRequest) (*BlockHeaderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLatestBlockHeader not implemented")
@@ -530,6 +549,24 @@ func _AccessAPI_Ping_Handler(srv interface{}, ctx context.Context, dec func(inte
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccessAPIServer).Ping(ctx, req.(*PingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccessAPI_GetNodeVersionInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetNodeVersionInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetNodeVersionInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccessAPI_GetNodeVersionInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetNodeVersionInfo(ctx, req.(*GetNodeVersionInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -976,6 +1013,10 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Ping",
 			Handler:    _AccessAPI_Ping_Handler,
+		},
+		{
+			MethodName: "GetNodeVersionInfo",
+			Handler:    _AccessAPI_GetNodeVersionInfo_Handler,
 		},
 		{
 			MethodName: "GetLatestBlockHeader",
