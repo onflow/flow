@@ -31,9 +31,9 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 
  1. Ensure you have:
 
-     - a.) [Ledger Live](https://support.ledger.com/hc/en-us/articles/360006395553) installed on your computer
+     - a.) [Ledger Live](https://www.ledger.com/ledger-live) installed on your computer
 
-     - b.) [Initialized](https://support.ledger.com/hc/en-us/articles/360000613793) your Ledger Device.
+     - b.) [Initialized](https://support.ledger.com/hc/en-us/articles/360017362160-Flow-FLOW-?support=true) your Ledger Device.
 
 #### Install the Flow App
 
@@ -97,7 +97,7 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
 
   3. Input the amount of Flow you wish to stake with that node. You must stake at least the minimum in order for your stake request to be successfully processed. You are able to provide the minimum stake across multiple transactions. Meaning, you could execute your stake transaction with half of the minumum required. Then, before the next epoch, you can choose to 'Add Flow' to that pending stake to get it to the minimum stake required.
 
-  4. Run the [bootstrapping instructions](https://docs.onflow.org/node-operation/node-bootstrap/) and provide the remaining technical details needed to stake a node.
+  4. Run the [bootstrapping instructions](https://docs.onflow.org/nodes/node-operation/node-bootstrap/) and provide the remaining technical details needed to stake a node.
 
 ### Delegating
   1. Once you have navigated to the staking/delegating page in Flow Port, click on the Delegate option.
@@ -118,7 +118,7 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
   - Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this action will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next [Epoch](/staking/#epochs).
   - Withdraw Rewards and send your earnings to other accounts. If you decide that you want to withdraw your rewards and send those earnings to other accounts via the 'Send FLOW' function, you will need to follow a multi-step process. First, you should withdraw your rewards. Once you successfully execute this transaction, you will now see the amount you withdrew in your wallet. That amount now needs to be transferred to your 'Unlocked Account'. You can do this by navigating to your Dashboard, clicking on 'Show Breakdown' next to your balance, and then clicking on the 'Move to Unlocked Account' link. Here you can input the amount that you want to transfer to your unlocked account. Once you execute this, you are free to send these funds to any other account via the 'Send FLOW' option.
   - Request to be unstaked from the network. The unstake request will sit in a pending status for two epochs. Once it is processed, the amount that has been unstaked will sit in your unstaked FLOW amount and can now be withdrawn or re-staked.
-  - Change the node you are staked/delegated to. If your staked/delegated node has no FLOW actively staked and you have completely withdrawn all unstaked amounts and rewards associated with the node, then you can move your stake to a different node. Simply click on the `Change Node` button to initiate this process. Please note that this feature is only visible once you get your active stake/delegate into the appropriate status.
+  - Change the node you are staked/delegated to. If your staked/delegated node has no FLOW actively staked and you have completely withdrawn all unstaked amounts and rewards associated with the node, then you can move your stake to a different node. Click on the `Change Node` button to initiate this process. Please note that this feature is only visible once you get your active stake/delegate into the appropriate status.
 
 ## FAQs
   1. Why do I have multiple 'Keys' on my account?
@@ -150,7 +150,7 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
 
   6. Do I need to use my Ledger device to view information about my account (e.g. my balance and current staked or delegated FLOW)?
 
-       - a.) No you do not! You only need your Ledger device to sign transactions. If you simply want to view your account, you can do so without your Ledger. You can do this by navigating directly to the appropriate desired page URL, while inputting your address into the URL itself. For easy reference, below is a list of these URLs and where you would input your address:
+       - a.) No you do not! You only need your Ledger device to sign transactions. If you want to view your account, you can do so without your Ledger. You can do this by navigating directly to the appropriate desired page URL, while inputting your address into the URL itself. For quick reference, below is a list of these URLs and where you would input your address:
        - Dashboard: https://port.onflow.org/account/[AccountAddress]
        - Stake & Delegate: https://port.onflow.org/stake-delegate/[AccountAddress]
 

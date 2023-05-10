@@ -1,115 +1,13 @@
 ---
 title: Setting Up a Flow Node
 sidebar_title: Node Setup
+description: How to run a Collection, Consensus, Verification and Execution node
 ---
 
-First you'll need to provision a machine or virtual machine to run your node software.
+This guide is for running a Collection, Consensus, Verification and Execution node.
+If you are planning to run an Access node then refer to [access node setup](access-node-setup.mdx).
 
-## Hardware Requirements
-
-The hardware your Node will need varies depending on the role your Node will play in the Flow network. For an overview of the differences see the [Node Roles Overview](/node-operation/node-roles).
-
-| Node Type | CPU | Memory | Disk | Example GCP Instance |
-|:----------------:| --------:| ------:| ------:|:------------:|
-| **Collection**   |  4 cores | 32 GB  | 200 GB | n2-highmem-4  |
-| **Consensus**    |  2 cores | 16 GB  | 200 GB | n2-standard-4 |
-| **Execution**    | 64 cores | 512 GB |   9 TB | n2-highmem-64 |
-| **Verification** |  2 cores | 16 GB  | 200 GB | n2-highmem-2  |
-| **Access**       |  2 cores | 16 GB  | 200 GB | n2-highmem-2  |
-
-_Note: The above numbers represent our current best estimate for the state of the network. These will be actively updated as we continue benchmarking the network's performance._
-
-## Networking Requirements
-
-Most of the load on your nodes will be messages sent back and forth between other nodes on the network. Make sure you have a sufficiently fast connection; we recommend at _least_ 1Gbps, and 5Gbps is better.
-
-Each node will require either a static IPv4 address or a fixed DNS name. Either works, and we'll refer to this more generally as your 'Node Address' from here on out.
-
-<Callout type="info" title="Node Address Requirements">
-  Your Node Address must be a publicly routable IPv4 address or valid DNS name
-  that points to your node. This is how other nodes in the network will
-  communicate with you.
-</Callout>
-
-While both a static IPv4 and a domain name are possible, we prefer and recommend that node operators register their node under a domain that they control. This gives the Flow network more options for resiliency and resistance to adverse network conditions.
-
-<Callout type="warning" title="Registering a domain name for your Flow Node">
-Crash recovery and denial of service attacks are two concerns that operators can mitigate relying on each of DNS indirection and IP routing. The later requires more involvement.
-
-Running a node behind an operator-controlled hostname (rather than "just" an IP) is a simple and cheap measure that:
-
-- offers additional technical pathways to let operators improve resiliency and security,
-- lets them opt in to those measures as a reaction to an attack,
-- does not preclude any lower-level IP-based resiliency approaches.
-
-</Callout>
-
-Your firewalls must expose **TCP/3569** for Node communication. If you are running an Access Node, you must also expose the GRPC port **9000**.
-
-![Flow Architecture](flow-architecture.png)
-
-## Operating System Requirements
-
-The Flow node code is distributed as a Linux container image, so your node must be running an OS with a container runtime like [docker](https://docker.com) or [containerd](https://containerd.io).
-
-The bootstrapping scripts we'll use later are compiled binaries targeting an `amd64` architecture, so your system must be 64-bit. Some of these scripts are bash based hence a shell interpreter that is bash compatible will also be needed.
-
-Flow also provides `systemd` service and unit files as a template for installation, though `systemd` is not required to run Flow.
-
-<Callout type="info" title="Choose Your Own Adventure">
-  Flow is distributed in such a way that makes it very system agnostic. You are
-  free to build your own orchestration around how you run your nodes and manage
-  your keys.
-  <br />
-  <br />
-  For the remainder of this guide, we cover the most simple case, a single node being
-  hand deployed. This should give you a good sense of what's needed, and you can
-  modify to suit your needs from there.
-  <br />
-  <br />
-  The Flow team has tested running nodes on Ubuntu 18.04 and GCP's Container
-  Optimized OS, which is based on Chromium OS. If you are unsure where to start,
-  those are good choices.
-</Callout>
-
-## Time synchronization
-
-You should also ensure you run **time synchronization** on the machine hosting the container, to avoid clock drift. In practice, this means configuring a client for the NTP protocol, and making sure it runs as a daemon. `ntpd` is one recommended example. To configure it, you just have to point it to an NTP server to query periodically. A default from your Linux distribution or cloud operator may already be set, and in the interest of decentralization, our recommendation would be to use it unless you have a specific reason to do otherwise.
-
-<Callout type="info" title="Time synchronization FAQ">
-
-- **Leap-smearing**: Leap-smearing time servers and non-leap-smearing time servers are both acceptable for the magnitude of our time precision requirements - though considering very few providers offer leap smearing time servers, a "regular" time server helps ensure our pool of time providers is more diverse.
-
-- **Why not do it in the container itself? Why do we need to do this?**:  Without special privileges and in all major container runtimes, a container will not run with the `CAP_SYS_TIME` capability. For Flow, this means that the node software itself cannot change the time of the host machine, making the in-container use of standard time synchronization protocols ineffective.
-
-- **Why does time matter in Flow?**: Time information comes up in consensus and in smart contracts. The consensus algorithm of Flow allows nodes to exit the influence of a corrupt or ineffective "leader" node by collectively deciding to switch to the next "phase" of the protocol at the right time. The smart contract language also allows developer access to block time stamps, which provide an approximation of time. To resist manipulation in each case, honest nodes must compute timing values from an aggregate of the information provided by all nodes. That approach, though resilient, is still sensitive to inaccurate time information. In other words, a node subject to clock drift but otherwise honest will not stop the consensus, but might make it slower.
-
-</Callout>
-
-## Setup Data Directories & Disks
-
-Flow stores protocol state on disk, as well as execution state in the case of execution nodes.
-
-Where the data is stored is up to you. By default, the `systemd` files that ship with Flow use `/var/flow/data`.
-This is where the vast majority of Flow's disk usage comes from, so you may wish to mount this directory on a separate disk from the OS.
-The performance of this disk IO is also a major bottleneck for certain node types.
-While all nodes need to make use of this disk, if you are running an execution node, you should make sure this is a high performing SSD.
-
-As a rough benchmark for planning storage capacity, each Flow block will grow the data directory by 3-5KiB.
-
-### Confidential Data & Files
-
-Flow stores dynamically generated confidential data in a separate database. We strongly recommend enabling encryption
-for this database - see [this guide](/node-operation/db-encryption-existing-operator/) for instructions.
-
-Confidential information used by Flow is stored in the `private-root-information` subtree of the `bootstrap` folder. 
-In particular:
-* the staking private key (`node-info.priv.json`)
-* the networking private key (`node-info.priv.json`)
-* the encryption key for the secrets database (`secretsdb-key`)
-* (if applicable) the initial random beacon private key (`random-beacon.priv.json`)
-
-These files contain confidential data, and must be stored and accessed securely.
+First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](node-provisioning.mdx) guide for it.
 
 ## Pull the Flow Images
 
@@ -131,16 +29,270 @@ Replace `$ROLE` with the node type you are planning to run. Valid options are:
   ctr images pull gcr.io/flow-container-registry/${ROLE}:alpha-v0.0.1",
 ```
 
-## Set Your Node to Start
+## Prepare Your Node to Start
 
-Your nodes will need to boot at startup, and come back to life if they crash.
+Your nodes will need to boot at startup, and restart if they crash.
 
-If you are running `systemd` you can use the service files provided by `flow-go`. Find them in the [Flow Go](https://github.com/onflow/flow-go/tree/master/deploy)
+If you are running `systemd` you can use the service files provided by `flow-go`.
+Find them in the [Flow Go](https://github.com/onflow/flow-go/tree/master/deploy).
+
+If you are using some other system besides Systemd, you need to ensure that the Flow container is started,
+the appropriate key directories are mounted into the container, and that the container will
+automatically restart following a crash.
+
+The `systemd` files pull runtime settings from `/etc/flow/runtime-config.env` and any `.env`
+files under `/etc/flow/conf.d`. Examples of these files are also available in the github repo.
+You will need to modify the runtime config file later.
+
+### Systemd
+
+<Callout type="info">
+If you are not using Systemd, you can skip this step
+</Callout>
+
+1. Ensure that you pulled the latest changes from [flow-go repository](https://github.com/onflow/flow-go) via `git`
 
 ```shell
- mv ~/flow-${ROLE}.service /etc/systemd/system/.\n\nsystemctl enable flow
+## Clone the repo if you haven't already done so
+git clone https://github.com/onflow/flow-go
+
+## Get latest changes
+cd flow-go
+git pull origin master
 ```
 
-If you are using some other system, you need to ensure that the Flow container is started, and the appropriate key directories are mounted into the container.
+2. Copy your respective [systemd unit file](https://github.com/onflow/flow-go/tree/master/deploy/systemd-docker) to: `/etc/systemd/system`
+3. Create directory `sudo mkdir /etc/flow`
+4. Copy the [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) file to: `/etc/flow/`
+5. Enable your service `sudo systemctl enable flow-$ROLE.service` (replace `$ROLE` with your node role - eg. `collection`)
 
-The `systemd` files pull runtime setting from `/etc/flow/runtime-config.env` and any `.env` files under `/etc/flow/conf.d`. Examples of these files are also available in the github repo. You will need to modify the runtime config file later.
+### Docker Configuration
+
+If you are not using Systemd, sample commands for running each Docker container are below.
+Be sure to replace `/path/to/data` and `/path/to/bootstrap` with the appropriate paths you are using.
+
+<Callout type="warning">
+Do not run your node using `docker run` command directly without a mechanism for the node
+to automatically restart following a crash.
+</Callout>
+
+<Callout type="info">
+    The actual Docker image tag can be found [here](https://developers.flow.com/nodes/node-operation/past-sporks) for appropriate spork.
+</Callout>
+
+### System Configuration
+
+Flow nodes create connections to other nodes on the network, which are represented as file descriptors by the OS. Depending on the default
+limits for your machine, you may need to increase the soft limit available to the node software.
+
+Make sure the soft limit is at least `8192`.
+
+You can configure the ulimit for the node's docker container. See the [Docker documentation](https://docs.docker.com/engine/reference/commandline/run/#ulimit) for more details.
+
+### Admin Server
+
+Each node can be configured with an admin server, which allows you to control some of the node's configuration, as well as view some of its internal state. You can find
+a few of the commands in the Admin Server [README](https://github.com/onflow/flow-go/blob/master/admin/README.md). Two commands to highlight are:
+
+* `list-commands`: which returns a list of all of the available commands for your node
+* `set-log-level`: which allows you to change the log level of your node at runtime
+
+You can enable the admin server by passing the `--admin-addr` flag with an interface and port.
+
+> ⚠️ _IMPORANT: The admin server can modify your node's configuration. DO NOT allow access to untrusted clients._
+
+### Access
+
+```shell
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	--ulimit nofile=8192 \
+	gcr.io/flow-container-registry/access:<applicable docker tag> \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--secretsdir=/data/secrets \
+	--execution-data-dir=/data/execution_data \
+	--rpc-addr=0.0.0.0:9000 \
+	--http-addr=0.0.0.0:8000 \
+	--admin-addr=0.0.0.0:9002 \
+	--collection-ingress-port=9000 \
+	--script-addr=${FLOW_NETWORK_EXECUTION_NODE} \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Collection
+
+```shell
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	--ulimit nofile=8192 \
+	gcr.io/flow-container-registry/collection:<applicable docker tag> \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--secretsdir=/data/secrets \
+	--ingress-addr=0.0.0.0:9000 \
+	--admin-addr=0.0.0.0:9002 \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Consensus
+
+```shell
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	--ulimit nofile=8192 \
+	gcr.io/flow-container-registry/consensus:<applicable docker tag> \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--secretsdir=/data/secrets \
+	--admin-addr=0.0.0.0:9002 \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Execution
+
+```shell
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	--ulimit nofile=8192 \
+	gcr.io/flow-container-registry/execution:<applicable docker tag> \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--secretsdir=/data/secrets \
+	--triedir=/data/execution \
+	--execution-data-dir=/data/execution_data \
+	--rpc-addr=0.0.0.0:9000 \
+	--admin-addr=0.0.0.0:9002 \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Verification
+
+```shell
+docker run --rm \
+	-v /path/to/bootstrap:/bootstrap:ro \
+	-v /path/to/data:/data:rw \
+	--name flow-go \
+	--network host \
+	--ulimit nofile=8192 \
+	gcr.io/flow-container-registry/verification:<applicable docker tag> \
+	--nodeid=${FLOW_GO_NODE_ID} \
+	--bootstrapdir=/bootstrap \
+	--datadir=/data/protocol \
+	--secretsdir=/data/secrets \
+	--admin-addr=0.0.0.0:9002 \
+	--bind 0.0.0.0:3569 \
+	--loglevel=error
+```
+
+### Archive
+
+```shell
+ docker run --rm \
+	-v /path/to/data:/data:rw \
+	--network host \
+	--label=project=flow \
+	--label=network=mainnet
+	--label=app=dps
+	--label=version=v0.26
+	--name flow-dps gcr.io/flow-container-registry/flow-dps-live:v0.26.1
+	--address 0.0.0.0:5005
+	--index /data/index
+	--bootstrap /data/bootstrap
+	--checkpoint /data/bootstrap/root.checkpoint
+	--data /data/protocol
+	--level debug
+	--metrics 0.0.0.0:8080
+	--bucket bucket_name
+	--seed-address=access_node_address
+	--seed-key=seed_key
+```
+
+## Start the Node
+
+Now that your node is provisioned and configured, it can be started.
+
+<Callout type="warning">
+
+Before starting your node, ensure it is [registered](node-bootstrap#step-2---stake-your-node) and [authorized](node-bootstrap#confirming-authorization).
+
+</Callout>
+
+Ensure you start your node at the appropriate time.
+See [Spork Process](spork) for when to start up a node following a spork.
+See [Node Bootstrap](node-bootstrap#timing) for when to start up a newly registered node.
+
+### Systemd
+
+1. Check that your `runtime-conf.env` is at `/etc/flow/runtime-conf.env`
+2. Update your environment variables: `source /etc/flow/runtime-conf.env`
+3. Start your service: `sudo systemctl start flow`
+
+## Verify your Node is Running
+
+
+Here are a few handy commands that you can use to check if your Flow node is up and running
+
+### Systemd
+
+- To get Flow logs: `sudo journalctl -u flow-YOUR_ROLE`
+- To get the status: `sudo systemctl status flow`
+
+```shell
+● flow-verification.service - Flow Access Node running with Docker
+Loaded: loaded (/etc/systemd/system/flow-verification.service; enabled; vendor preset: enabled)
+Active: active (running) since Wed 2020-05-20 18:18:13 UTC; 1 day 6h ago
+Process: 3207 ExecStartPre=/usr/bin/docker pull gcr.io/flow-container-registry/verification:${FLOW_GO_NODE_VERSION} (code=exited, status=0/SUCCESS)
+Main PID: 3228 (docker)
+Tasks: 10 (limit: 4915)
+Memory: 33.0M
+CGroup: /system.slice/flow-verification.service
+        └─3228 /usr/bin/docker run --rm -v /var/flow/bootstrap:/bootstrap:ro -v /var/flow/data:/data:rw --rm --name flow-go --network host gcr.io/flow-container-registry/verification:candidate8 --nodeid=489f8a4513d5bd8b8b093108fec00327b683db545b37b4ea9153f61b2c0c49dc --bootstrapdir=/bootstrap --datadir=/data/protocol --alpha=1 --bind 0.0.0.0:3569 --loglevel=error
+```
+
+### Docker
+
+- To get Flow logs: `sudo docker logs flow-go`
+- To get the status: `sudo docker ps`
+
+```shell
+$ sudo docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+1dc5d43385b6 gcr.io/flow-container-registry/verification:candidate8 \"/bin/app --nodeid=4…\" 30 hours ago Up 30 hours flow-go
+```
+
+## Monitoring and Metrics
+
+This is intended for operators who would like to see what their Flow nodes are currently doing. Head over to [Monitoring Node Health](monitoring-nodes) to get setup.
+
+### Node Status
+
+The metrics for the node should be able to provide a good overview of the status of the node. If we want to get a quick snapshot of the status of the node, and if it's properly participating in the network, you can check the `consensus_compliance_finalized_height` or `consensus_compliance_sealed_height` metric, and ensure that it is not zero and strictly increasing.
+
+```shell
+curl localhost:8080/metrics | grep consensus_compliance_sealed_height
+
+# HELP consensus_compliance_sealed_height the last sealed height
+# TYPE consensus_compliance_sealed_height gauge
+consensus_compliance_sealed_height 1.132054e+06
+```

@@ -25,7 +25,7 @@ Once you have connected to an access node, you can fetch information regarding a
 
 #### Accounts, Contracts, Blocks, Collections, Transactions, Events
 
-These types are documented on the [Access API](https://docs.onflow.org/access-api) page.
+These types are documented on the [Access API](https://developers.flow.com/http-api) page.
 
 The SDKs expose Flow data as types. For example the Go Flow Block data type implementation can be found here:
 
@@ -52,8 +52,7 @@ You can download FCL (Flow Client Library) here:
 [https://github.com/onflow/fcl-js](https://github.com/onflow/fcl-js)
 
 To connect to an access node you will need to provide a URL to the SDK.
-**testnet: https://access-testnet.onflow.org
-mainnet: https://access.onflow.org**
+[testnet and mainnet](https://developers.flow.com/nodes/access-api)
 
 Here are examples of querying an access node at the bottom of this page:
 
@@ -83,7 +82,7 @@ You can find examples of querying an access node at the bottom of this page:
 
 You can find examples using the emulator that can be adapted to use an access node here:
 
-[https://github.com/onflow/flow-go-sdk/blob/master/examples/query_events/main.go](https://github.com/onflow/flow-go-sdk/blob/master/examples/query_events/main.go)
+[https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events/main.go](https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events/main.go)
 
 And here is an example of using a script:
 
@@ -125,8 +124,8 @@ This is documented here:
 [https://github.com/onflow/flow-go-sdk#querying-events](https://github.com/onflow/flow-go-sdk#querying-events)
 
 And there is an example of usage here:
-
-[https://github.com/onflow/flow-go-sdk/tree/master/examples/query_events](https://github.com/onflow/flow-go-sdk/tree/master/examples/query_events)
+https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events/main.go
+[https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events](https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events)
 
 ### Using JavaScript
 
@@ -156,9 +155,9 @@ With FCL, you can:
 
 ## How do I access mainnet?
 
-You can find details about accessing Flow mainnet here [https://docs.onflow.org/access-api](https://docs.onflow.org/access-api).
+You can find details about accessing Flow mainnet here [https://developers.flow.com/http-api](https://developers.flow.com/http-api).
 
-The access is via a GRPC interface. Transactions can also be submitted using the GRPC [SendTransaction call](https://docs.onflow.org/access-api#sendtransaction). A GRPC client written in any language should be able to talk via the Access API. We have a [Go SDK](https://github.com/onflow/flow-go-sdk) and [FCL-JS (Flow Client Library)](https://github.com/onflow/fcl-js) that can be used if you are using a Go based or a JS based client respectively.
+The access is via a GRPC interface. Transactions can also be submitted using the GRPC [SendTransaction call](https://developers.flow.com/http-api#tag/Transactions/paths/~1transactions/post). A GRPC client written in any language should be able to talk via the Access API. We have a [Go SDK](https://github.com/onflow/flow-go-sdk) and [FCL-JS (Flow Client Library)](https://github.com/onflow/fcl-js) that can be used if you are using a Go based or a JS based client respectively.
 
 ## What's the difference between a mainnet spork and testnet spork? How do sporks affect TopShot?
 
@@ -170,32 +169,29 @@ Currently NBA Top Shot runs on Mainnet and NBA Top Shot test app runs on Flow Te
 
 Starting on October 16, 2021 at 7:30am PT (2:30pm UTC), there will be a flat fee of 0.00001 FLOW applied to every transaction submitted to the network. Transaction Fees are subject to change. In the event that a change does occur, the community will be informed ahead of implementation. These fees are for spam prevention and will be low and fixed for all transactions.
 
-## When will devs be able to deploy on mainnet? How can I create my first account for mainnet?
-
-During the beta period, you will need to submit your contract to the Flow team for review and then you’ll be able to submit it to the network. As soon as you’ve tested your dapp on devnet and the Flow team has reviewed your contracts, you can deploy!
-
-Info here: [https://docs.onflow.org/dapp-deployment](https://docs.onflow.org/dapp-deployment)
-
 ## How can I deploy a contract?
 
-During the beta period, you will need to submit your contract to the Flow team for review and then you’ll be able to submit it to the network.
+To deploy a contract, please follow the steps outlined in the [Dapp Deployment guide](https://developers.flow.com/flow/dapp-development/deployment).
 
-Smart contract review link here: [https://flowsolutionseng.zendesk.com/hc/en-us/requests/new?ticket_form_id=360001936012&tc_360045236671=b5ba92954c2f2692b56099fe653ac92d35c1e6e6](https://flowsolutionseng.zendesk.com/hc/en-us/requests/new?ticket_form_id=360001936012&tc_360045236671=b5ba92954c2f2692b56099fe653ac92d35c1e6e6)
+## How can I create my first account for mainnet?
 
-After submission, a member of the review team will contact you to discuss how long the review will take, 
-**though the minimum timeline is usually 2-3 weeks**.
+New accounts can be created using Flow Port. You can [follow these guidelines to get a new mainnet account](https://developers.flow.com/nodes/flow-port/index#creating-an-account).
+
+## How can I deploy a contract to mainnet?
+
+Please review the [Dapp Deployment guide](https://docs.onflow.org/dapp-deployment) for all details.
 
 ## Is there a testnet/devnet?
 
-There is an access node for you to develop against on the testnet/devnet. You can learn more about it here [https://docs.onflow.org/dapp-deployment/testnet-deployment#accessing-flow-testnet](/dapp-deployment/testnet-deployment#accessing-flow-testnet)
+There is an access node for you to develop against on the testnet/devnet. You can learn more about it here [https://developers.flow.com/flow/dapp-development/testnet-deployment#accessing-flow-testnet](https://developers.flow.com/flow/dapp-development/testnet-deployment#accessing-flow-testnet)
 
 ## Is there a public node?
 
-Yes, an access node is publicly accessible to submit transactions and read data from the blockchain. If you’d like to access the devnet access node to build against, you can do so [here](/concepts/accessing-testnet)
+Yes, an access node is publicly accessible to submit transactions and read data from the blockchain. If you’d like to access the devnet access node to build against, you can do so [here](https://developers.flow.com/learn/concepts/accessing-testnet#accessing-flow-testnet)
 
 ## Is it possible to add multiple public keys to a given account/address so that it can be controlled by more than one private key?
 
-Yes, accounts support multiple, weighted keys, [here](/cadence/language/accounts)
+Yes, accounts support multiple, weighted keys, [here](https://developers.flow.com/cadence/language/accounts)
 using `AuthAccount`’s `fun addPublicKey(_ publicKey: [UInt8])`and <br/>`fun removePublicKey(_ index: Int)` functions.
 
 ## How do keys and accounts work on Flow?
@@ -204,7 +200,7 @@ Accounts are created with associated keys. There can be multiple keys on an acco
 
 FLOW supports a variety of signature schemes for adding keys to an account.
 
-Details: [https://docs.onflow.org/concepts/accounts-and-keys](/concepts/accounts-and-keys)
+Details: [https://developers.flow.com/learn/concepts/accounts-and-keys](https://developers.flow.com/learn/concepts/accounts-and-keys)
 
 ## How can I see what Fungible-Tokens an account has?
 
@@ -212,7 +208,7 @@ If you know the /public/ storage path to the FungibleToken.Balance capability fo
 
 ## How can I see what NFTs an account has?
 
-If you know the /public/ storage path to the NonFungibleToken.CollectionPublic capability for a particular NFT type, you can borrow that and call getIDs() on it. If you wish to know which token collections an account has, you will currently have to check a list of well-known paths. There is an issue that may help with this in future - [https://github.com/onflow/cadence/issues/208](ttps://github.com/onflow/cadence/issues/208)
+If you know the /public/ storage path to the NonFungibleToken.CollectionPublic capability for a particular NFT type, you can borrow that and call getIDs() on it. If you wish to know which token collections an account has, you will currently have to check a list of well-known paths. There is an issue that may help with this in future - [https://github.com/onflow/cadence/issues/208](https://github.com/onflow/cadence/issues/208)
 
 ## How can I see what resources an account has?
 
@@ -220,15 +216,15 @@ Flow doesn't yet provide functionality to inspect all of the resources on an acc
 
 ## How do I create a Flow account if I do not have a service account?
 
-Instructions to generate an address are here: [https://docs.onflow.org/flow-go-sdk/creating-accounts](/flow-go-sdk/creating-accounts). You don't need a service account.
+Instructions to generate an address are here: [https://developers.flow.com/tools/flow-go-sdk#create-accounts](https://developers.flow.com/tools/flow-go-sdk#create-accounts). You don't need a service account.
 
 ## Is there a tutorial about how to access flow testnet? From scratch, getting testnet, Flow token etc..?
 
-Yes: [https://docs.onflow.org/dapp-deployment/testnet-deployment/](/dapp-deployment/testnet-deployment/)
+Yes: [https://docs.onflow.org/dapp-development/testnet-deployment](https://developers.flow.com/flow/dapp-development/testnet-deployment)
 
 ## Can you query events between a block range?
 
-You can query the access API to get events for a block range. See Access API spec here: [https://docs.onflow.org/access-api](/access-api).
+You can query the access API to get events for a block range. See Access API spec here: [https://developers.flow.com/http-api](https://developers.flow.com/http-api).
 
 ## Where can I follow feature releases on Flow?
 

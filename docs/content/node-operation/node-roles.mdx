@@ -3,30 +3,7 @@ title: Node Roles
 ---
 
 Unlike most blockchains, not all Flow nodes are equal. Flow nodes all specialize and fulfill a specific role in the operation of the network.
-
-<!-- [block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/cd9a005-flow-diagram.gif",
-        "flow-diagram.gif",
-        900,
-        900,
-        "#f8f4f1"
-      ],
-      "caption": "",
-      "sizing": "smart"
-    }
-  ]
-}
-[/block] -->
-
-<!-- [block:api-header]
-{
-  "title": "Node Roles"
-}
-[/block] -->
+Collection, consensus, execution, verification and access nodes are all staked nodes while the observer node is not staked.
 
 ## Collection
 
@@ -66,13 +43,34 @@ Verification nodes are required to stake a minimum of 135,000 FLOW to be a confi
 
 ## Access
 
-Access nodes act as a proxy to the Flow network. The Access node routes transactions to the correct Collection node and routes state queries to available nodes (while likely caching state to answer queries in a timely manner in the future). Anyone can run an Access node — these nodes are not staked but are based on a reputation system. Dapps and user agents can submit their transactions to any Access node or run their own if they can't find a service provider they're happy with.
+Access nodes act as a proxy to the Flow network. The Access node routes transactions to the correct collection node and routes state queries to execution nodes (while likely caching state to answer queries in a timely manner in the future). Clients submit their transactions to any Access node or run their own if they can't find a service provider they're happy with.
 
-<!-- [block:callout]
-{
-  "type": "info",
-  "title": "Resource Requirements",
-  "body": "See [Setting Up a Node](doc:setting-up-a-node) for the expected resource use of each node type"
-}
-[/block] -->
+Access nodes are required to stake 100 FLOW to be a confirmed node operator. However, since an access node does not participate in block production, it does not receive any staking rewards.
 
+## Observer
+
+An observer node provides locally accessible, continuously updated, verified copy of the block data. It serves the Access API but unlike an access node, an observer node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
+
+[Get started running an observer node](https://developers.flow.com/nodes/node-operation/observer-node)
+
+## Archive
+
+The Archive node provides a scalable and efficient way to access the history of Flow protocol and the execution state for the current spork.
+
+This node can be run by anyone without being staked or added to the approved list of nodes. The Archive node follows the chain, stores and indexes both protocol and execution state, and allows retrieval of blocks, collections, transactions and events from the genesis of the current spork.
+
+It also allows script execution and other read-only queries that require the execution state to be read.
+
+##
+
+Here is a comparison of the different node roles,
+
+| Role            | Staked  | Recives Rewards | Permissioned |
+| :---------------|:---------------:| :---------------:|:---------------:|
+| Collection      | Yes             | Yes              | Yes             |
+| Consensus       | Yes             | Yes              | Yes             |
+| Execution       | Yes             | Yes              | Yes             |
+| Verification    | Yes             | Yes              | Yes             |
+| Access          | Yes             | No               | No 🆕           |
+| Observer        | No              | No               | No              |
+| Archive         | No              | No               | No              |

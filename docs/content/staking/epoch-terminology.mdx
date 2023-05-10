@@ -5,7 +5,7 @@ description: Important Definitions for Epochs
 ---
 
 <Callout type="warning">
-  If you haven't read the Introduction, please read that
+  If you haven't read the staking introduction, please read that
   first. That document provides a non-technical overview of staking on Flow for
   all users and is a necessary prerequisite to this document.
 </Callout>
@@ -31,6 +31,8 @@ object they store in their account to perform staking operations.
   - **Networking Key:** The 64 byte ECDSA-P256 node operator public key for networking.
   - **Staking Key:** The 96 byte BLS12-381 public key for the node. 
     Used to sign node messages and votes for Quorum Certificate generation.
+  - **Proof of Possession:** A 48 byte (96 hex characters) string that acts as cryptographic
+    proof of ownership of the node's staking key.
 
 **Delegator:** A user who delegates tokens to a node operator and receives rewards for their staked tokens, minus a fee
 taken by the node operator. Each delegator stores a unique delegator resource object in their account
@@ -59,7 +61,8 @@ rewards are paid to those who are currently staked, committed tokens are marked 
 unstaking tokens are marked as unstaked, and unstaking requests are changed from staked to unstaking.
 
 **Consensus View:** A internal detail that the Flow consensus algorithm, HotStuff, uses to measure time.
-Views count the number of rounds in the consensus algorithm. Each round/view the counter is incremented and a new block may be proposed.
+Views count the number of rounds in the consensus algorithm.
+Each round/view the counter is incremented and a new block may be proposed.
 
 **Seat:** The right to participate in the network as a node of a certain type for a specific Epoch.
 
@@ -91,10 +94,10 @@ Service events are not any different that other Cadence events, except in the fa
 Flow nodes treat them differently because they are being emitted by the service account.
 
 **Node and Delegator Staked Token Tracking Terms:**
-  - **Tokens Committed:** The tokens that a user has committed to stake in the next epoch.
+  - **Tokens Committed:** The tokens that a user has committed to stake in the next epoch, but that aren't currently staked.
   - **Tokens Staked:** The tokens that a user has staked in the current epoch.
   - **Tokens Requested to Unstake:** The amount of tokens that a user has requested to be unstaked
-    at the end of the current epoch.
+    at the end of the current epoch (to be removed from the **tokens staked** pool).
   - **Tokens Unstaking:** The tokens that were unstaked at the beginning of the current epoch and
     are being held for an additional epoch holding period before being released.
   - **Tokens Unstaked:** Tokens that used to be committed or staked and have been unstaked.
@@ -103,7 +106,7 @@ Flow nodes treat them differently because they are being emitted by the service 
 **Delegation Rewards Cut:** The percentage of a delegator's rewards that the node operators take. Initially set to 8%.
 
 **Epoch Payout:** The total amount of tokens paid in rewards at the end of an epoch.
-This value will change as the supply of FLOW changes. See the [rewards page](staking/schedule/) for more details.
+This value will change as the supply of FLOW changes. See the [rewards page](./schedule) for more details.
 
 **Minimum Stake Requirement:** Each node type has a requirement for the minimum number of FLOW
 they have to commit to stake to be considered a valid node and receive rewards. If a node operator
@@ -115,5 +118,5 @@ Delegators are not subject to minimum stake requirements.
 - Execution Nodes: 1,250,000 FLOW
 - Verification Nodes: 135,000 FLOW
 
-There is no maximum stake limit
+There is no maximum stake limit.
 

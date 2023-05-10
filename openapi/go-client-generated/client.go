@@ -54,6 +54,10 @@ type APIClient struct {
 
 	ExecutionResultsApi *ExecutionResultsApiService
 
+	NetworkApi *NetworkApiService
+
+	NodeVersionInfoApi *NodeVersionInfoApiService
+
 	ScriptsApi *ScriptsApiService
 
 	TransactionsApi *TransactionsApiService
@@ -80,6 +84,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CollectionsApi = (*CollectionsApiService)(&c.common)
 	c.EventsApi = (*EventsApiService)(&c.common)
 	c.ExecutionResultsApi = (*ExecutionResultsApiService)(&c.common)
+	c.NetworkApi = (*NetworkApiService)(&c.common)
+	c.NodeVersionInfoApi = (*NodeVersionInfoApiService)(&c.common)
 	c.ScriptsApi = (*ScriptsApiService)(&c.common)
 	c.TransactionsApi = (*TransactionsApiService)(&c.common)
 

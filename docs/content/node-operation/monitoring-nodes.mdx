@@ -3,58 +3,64 @@ title: Monitoring Node Health
 sidebar_title: Node Monitoring
 ---
 
-<Callout type="info" title="Logs">
+A Flow node generates logs and publishes metrics as it runs. These logs and metrics can be used to gain insights into the health of the node.
+
+## Logs
 
 Logs are emitted to `stdout` as JSON formed strings. Where these logs are available on your system depends on how you launch your containers. On `systemd` systems for example, the logs will be sent to the system journal daemon `journald`. Other systems may log to `/var/log`.
 
-</Callout>
+## Metrics
 
 Flow nodes produce health metrics in the form of [Prometheus](https://prometheus.io) metrics, exposed from the node software on `/metrics`.
 
 If you wish to make use of these metrics, you'll need to set up a Prometheus server to scrape your Nodes. Alternatively, you can deploy the Prometheus Server on top of your current Flow node to see the metrics without creating an additional server.
 
-<Callout type="info" title="Host Metrics">
-The flow-go application doesn't expose any metrics from the underlying host such as CPU, network, or disk usages. It is recommended you collect these metrics in addition to the ones provided by flow using a tool like node exporter (https://github.com/prometheus/node_exporter)
-</Callout>
+> The flow-go application doesn't expose any metrics from the underlying host such as CPU, network, or disk usages. It is recommended you collect these metrics in addition to the ones provided by flow using a tool like node exporter (https://github.com/prometheus/node_exporter)
 
 1. Copy the following Prometheus configuration into your current flow node
-   ```yml:title=prometheus.yml
-   global:
-   scrape_interval: 15s # By default, scrape targets every 15 seconds.
-
-   scrape_configs:
-    # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-    - job_name: 'prometheus'
-
-    # Override the global default and scrape targets from this job every 5 seconds.
-    scrape_interval: 5s
-
-    static_configs:
-     - targets: ['localhost:8080']
+   ```yaml
+      global:
+        scrape_interval: 15s # By default, scrape targets every 15 seconds.
+    
+      scrape_configs:
+        # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+        - job_name: 'prometheus'
+    
+        # Override the global default and scrape targets from this job every 5 seconds.
+        scrape_interval: 5s
+    
+        static_configs:
+          - targets: ['localhost:8080']
    ```
 
 2. Start Prometheus server
-```shell:
-   docker run \
-   --network=host \
-   -p 9090:9090 \
-   -v /path/to/prometheus.yml:/etc/prometheus/prometheus.yml \
-   prom/prometheus"
-```
+    ```shell
+       docker run \
+       --network=host \
+       -p 9090:9090 \
+       -v /path/to/prometheus.yml:/etc/prometheus/prometheus.yml \
+       prom/prometheus"
+    ```
 3. (optional) Port forward to the node if you are not able to access port 9090 directly via the browser
    `ssh -L 9090:127.0.0.1:9090 YOUR_NODE`
 
 4. Open your browser and go to the URL `http://localhost:9090/graph` to load the Prometheus Dashboard
 
-## Key Metric Overview
+### Key Metric Overview
 
-The following are some important metrics produced by the node
+The following are some important metrics produced by the node.
 
 | Metric Name                                | Description                                                       |
 |--------------------------------------------|-------------------------------------------------------------------|
 | go_*                                       | Go runtime metrics                                                |
-| consensus_finalized_blocks                 | Number of blocks this node has finalized                          |
-| consensus_hotstuff_busy_duration           | How long Hotstuff spends in a busy state before returning to idle |
-| consensus_hostuff_busy_second_total        | The total time Hotstuff has spent in a busy state                 |
-| consensus_hotstuff_view_of_newest_known_qc | The latest block known to Hotstuff                                |
+| consensus_compliance_finalized_height      | Latest height finalized by this node; should increase at a constant rate. |
+| consensus_compliance_sealed_height         | Latest height sealed by this node; should increase at a constant rate. |
+| consensus_hotstuff_cur_view                | Current view of the HotStuff consensus algorith; Consensus/Collection only; should increase at a constant rate. |
+| consensus_hotstuff_timeout_seconds         | How long it takes to timeout failed rounds; Consensus/Collection only; values consistently larger than 5s are abnormal. |
 
+
+## Monitoring a Flow node using Metrika Monitoring
+
+Metrika has developed the Flow node monitoring service and is the recommended way of monitoring a Flow node.
+It is a free tool that uses the logs and metrics published by the node and provides access to private node-specific dashboards.
+Follow this [link](https://app.metrika.co/flow/node/install-agent) to setup the Metrika monitoring for your node.

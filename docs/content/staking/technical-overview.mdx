@@ -8,13 +8,13 @@ description: Technical Overview of the Flow Staking Auction Phase
   NOTE: The details of the transactions described in this document are for
   regular interaction with the staking smart contracts. If you or your users
   have locked tokens from the FLOW token sale and want to stake them, please see
-  the locked tokens and staking collection section of the documentation to learn the process for
-  staking as a node or delegator.
+  the locked tokens and staking collection section of the documentation to learn
+  the process for staking as a node or delegator.
 </Callout>
 <Callout type="warning">
-  If you haven't read the Introduction, please read that
-  first. That document provides a non-technical overview of staking on Flow for
-  all users and is a necessary prerequisite to this document.
+  If you haven't read the Introduction, please read that first. That document
+  provides a non-technical overview of staking on Flow for all users and is a
+  necessary prerequisite to this document.
 </Callout>
 <Callout type="warning">
   This document assumes you have some technical knowledge about the Flow
@@ -27,7 +27,7 @@ This document describes the functionality of the
 [core identity table and staking smart contract](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc).
 It gives an overview of the process of epochs, staking as a node, and delegation. It is an important prerequisite
 to understand before proceeding with any other technical integration or interaction with the Flow Protocol,
-but does not provide step-by-step instructions for how to perform specific actions. See the 
+but does not provide step-by-step instructions for how to perform specific actions. See the
 [Staking Collection Docs for instructions](/staking/staking-collection/)
 
 This document also describes how to read public staking data from the contract.
@@ -40,12 +40,12 @@ directory. You can see the text of all the transactions used to interact with th
 ## Smart Contract Summary
 
 The Flow staking smart contract manages a record of stakers who have staked tokens for the network.
-Users who want to stake can register with the staking contract at any time, and their tokens will
-be locked for staking until they request to unstake them.
+Users who want to stake can register with the staking contract at any time during the staking auction,
+and their tokens will be locked for staking until they request to unstake them.
 
 You should already understand from reading the [epoch documentation](/staking/epoch-preparation)
 that an epoch lasts roughly a week. The `FlowIDTableStaking` contract focuses on the identity table
-and staking part of the epoch schedule. 
+and staking part of the epoch schedule.
 
 Epoch Schedule from the perspective of the `FlowIDTableStaking` contract:
 
@@ -54,16 +54,20 @@ Epoch Schedule from the perspective of the `FlowIDTableStaking` contract:
 2. **Staking Auction:** Stakers can perform any action they want to manage their stake, like
    initially registering, staking new tokens, unstaking tokens, or withdrawing rewards.
    This phase takes up the vast majority of time in the epoch.
-3. **End Staking Auction:** Stakers cannot perform any more staking actions 
+3. **End Staking Auction:** Stakers cannot perform any more staking actions
    until the start of the next epoch/staking auction.
 4. **Remove Insufficiently Staked Nodes:** All node operators who don't meet the minimum
    or are not operating their node properly will be removed.
-5. **Rewards Calculation:** Calculate rewards for all the node operators staked in the current epoch.
-6. **Move tokens between pools.** (See the token pools section for the order of movements)
-7. **Rewards Payout:** Pay rewards to all the node operators staked 
+5. **Randomly Assign Nodes to New Slots:** Each node type has a configurable
+   number of nodes that can operate during any given epoch.
+   The contract will randomly select nodes from the list of newly staked and approved nodes
+   to add them to the ID table. Once all the slots have been filled, the remaining nodes are refunded
+   and can apply again for the next epoch.
+6. **Rewards Calculation:** Calculate rewards for all the node operators staked in the current epoch.
+7. **Move tokens between pools.** (See the token pools section for the order of movements)
+8. **Rewards Payout:** Pay rewards to all the node operators staked
    from the previous epoch using the calculation from earlier in the epoch.
-8. **End Epoch:** Set the reward payout for the upcoming epoch and go to the top of this list.
-
+9. **End Epoch:** Set the reward payout for the upcoming epoch and go to the top of this list.
 
 The `FlowIDTableStaking` contract manages the identity table, and all of these phases.
 Initially, control of these phases is controlled by the `FlowIDTableStaking.Admin` resource
@@ -74,7 +78,7 @@ and democratically by all the stakers in the network.
 ## Staking as a Node Operator
 
 For a node to stake, node operators first need to generate their staking key,
-networking address, and networking key.
+staking key proof-of-possesion, networking address, and networking key.
 
 The [node operation guide](/node-operation)
 describes how to run a node and generate node information.
@@ -97,14 +101,15 @@ Once the info has been determined:
 - Networking Address: `String` (Length must be less than 510 characters and be a properly formatted IP address or hostname)
 - Networking Key: 64 byte `String` (128 hex characters, must be a valid ECDSA-P256 Key)
 - Staking Key: 96 byte `String` (192 hex characters, must be a valid BLS key)
+- Staking Key Proof of Possesion: (48 byte (96 hex characters) string)
 
 The node operator is ready to register their node.
 
 <Callout type="warning">
-  NOTE: The staking smart contract validates that the strings for the keys are valid public keys.
-  The staking admin and node software also checks the keys and networking address to make
-  sure they are valid and if they are not, the registered node will not be
-  eligible to stake.
+  NOTE: The staking smart contract validates that the strings for the keys are
+  valid public keys. The staking admin and node software also checks the keys
+  and networking address to make sure they are valid and if they are not, the
+  registered node will not be eligible to stake.
 </Callout>
 
 To register a node, the node operator calls the
@@ -116,19 +121,26 @@ and commits the specified tokens to stake during the next epoch.
 This also returns a special node operator object that is stored in the node operator's account.
 This object is used for staking, unstaking, and withdrawing rewards.
 
+Consensus and Collection nodes also need to create a separate machine account
+for use in the DKG and QC proccesses, respectively. This machine account creation
+is handled automatically by the staking collection smart contract.
+More information is in the [machine account documentation](/staking/machine-account/#creation).
+
 Every node operator will run the same transaction to register their node at any time throughout the staking auction.
 
 <Callout type="warning">
   The register node transaction only needs to be submitted once per node. A node
   does not need to register every epoch. A registration cannot be used to manage
-  multiple nodes. Multiple nodes need to be registered separately (with the Staking Collection).
+  multiple nodes. Multiple nodes need to be registered separately (with the
+  Staking Collection).
 </Callout>
 
 <Callout type="warning">
-  Once a node operator has registered their node and its metadata, the metadata cannot be modified.
-  The only exception is the networking address, which can me modified with the Update Networking Address transaction.
-  If a node operator wants to update any of their other metadata such as ID, keys, or role, they need to unstake, withdraw their tokens,
-  and register a completely new node.
+  Once a node operator has registered their node and its metadata, the metadata
+  cannot be modified. The only exception is the networking address, which can me
+  modified with the Update Networking Address transaction. If a node operator
+  wants to update any of their other metadata such as ID, keys, or role, they
+  need to unstake, withdraw their tokens, and register a completely new node.
 </Callout>
 
 Once node operators have registered and have the special node object, they will be able
@@ -139,16 +151,18 @@ When the staking auction ends, if a node operator has committed less than the mi
 [or if their node information is invalid and they haven't been approved by the network,](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L788)
 their committed tokens are moved to their unstaked pool, which they can withdraw from at any time.
 
-Nodes who did have enough tokens committed and are approved will have their 
+Nodes who did have enough tokens committed and are approved will have their
 [committed tokens moved to the staked state](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L923-L927)
-at the end of the epoch.
+at the end of the epoch if they are selected as a node operator
+by the random node slot filling algorithm.
+There is a configurable cap on the number of nodes of each type.
 
 If a node operator has users delegating to them, they cannot withdraw their own tokens
 such that their own staked tokens would fall below the minimum requirement for that node type.
 If they have delegators and try to submit [an unstaking transaction](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L510-L514)
 that would put their stake below the minimum, it will fail.
 
-If they want to unstake below the minimum, they must unstake all of their tokens using the special 
+If they want to unstake below the minimum, they must unstake all of their tokens using the special
 [`unstakeAll` method,](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L538)
 which also unstakes all of the tokens that have been delegated to them.
 
@@ -160,14 +174,14 @@ Every staked node in the Flow network is eligible for delegation by any other us
 The user only needs to know the node ID of the node they want to delegate to.
 
 To register as a delegator, the delegator submits a **Register Delegator**
-transaction that calls the [`registerNewDelegator function`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L1053), 
+transaction that calls the [`registerNewDelegator function`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L1053),
 providing the ID of the node operator they want to delegate to.
 This transaction should store the `NodeDelegator` object
 in the user's account, which is what they use to perform staking operations.
 
 Users are able to get a list of possible node IDs to delegate to via on-chain scripts.
 This information will also be provided off-chain, directly from the node operators or via
-third-party services. The Flow team lists [available node IDs in a public repo.](https://github.com/onflow/flow/blob/master/nodeoperators/NodeOperatorList.md)
+third-party services. [Available node IDs are listed in a public repo.](https://github.com/onflow/flow/blob/master/nodeoperators/NodeOperatorList.md)
 
 The fee that node operators take from the rewards their delegators receive is 8%.
 A node operator cannot be delegated to unless the total tokens they have committed to stake
@@ -181,7 +195,7 @@ and the delegator's rewards are deposited in the delegator's reward pool.
 ## Staking Operations Available to All Stakers
 
 Regardless of whether they are a node operator or delegator, a staker has access
-to all the same staking operations, outlined below. 
+to all the same staking operations, outlined below.
 Specific implementations of these transactions are detailed in the [Staking Collection Docs](/staking/staking-collection/)
 
 ### Stake More Tokens

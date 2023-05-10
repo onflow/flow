@@ -14,7 +14,7 @@ All data written to the blockchain happens in a transaction. For user-facing dap
 User transactions are transactions that are authorized by the users of your dapp. These transactions originate from the user’s wallet, as mentioned in the 
 [User Accounts & Wallets](/dapp-development/user-accounts-and-wallets) section. For example, a user may sign a transaction to purchase an NFT from your dapp.
 
-A user transaction is initialized by your dapp (e.g. by a button click) through FCL, which then passes the transaction to the user’s wallet, which in turn signs the transaction and submits it to Flow. This all happens from the dapp client, typically a browser app. By using FCL, your dapp does not need to be involved in the transaction signing -- it simply constructs the transaction, passes it to the wallet, and then waits for the final result.
+A user transaction is initialized by your dapp (e.g. by a button click) through FCL, which then passes the transaction to the user’s wallet, which in turn signs the transaction and submits it to Flow. This all happens from the dapp client, typically a browser app. By using FCL, your dapp does not need to be involved in the transaction signing -- it constructs the transaction, passes it to the wallet, and then waits for the final result.
 
 ### Admin Transactions
 
@@ -23,8 +23,6 @@ Admin transactions are transactions that originate from the backend of your dapp
 For example, you may send an admin transaction that mints a batch of NFTs for purchase, or a transaction that adds an additional gameplay level to your game.
 
 For one-off administrative actions that do not require automation, such as contract deployment, you can use the [Flow CLI](/flow-cli/).
-
-If you are building a backend server that needs to automatically sign and submit transactions to Flow (e.g. to mint NFTs), we recommend using one of the existing [Flow SDKs](/sdks/). Kitty Items demonstrates how to use the [JavaScript SDK to submit admin transactions.](https://github.com/onflow/kitty-items/blob/master/api/src/services/kitty-items.ts#L43-L67)
 
 ## Reading Data From Flow
 
@@ -45,8 +43,6 @@ Some applications, especially those with existing backend servers, opt to store 
 * **Unified on and off-chain state**. For dapps that rely on both on and off-chain state, it’s useful to store all data in a central database to allow for atomic queries (i.e. ACID) and high scalability.
 * **Fast and flexible queries.** Database systems can be tuned and optimized (e.g. using indices) to best serve the data needs of your dapp, whereas the blockchain itself does not provide this level of customization.
 
-Kitty Items demonstrates how to [poll for blockchain events and update a Postgres database](https://github.com/onflow/kitty-items/blob/master/api/src/workers/sale-offer-handler.ts) when new events are received.
-
 #### Event Providers
 
 Third-party event providers, such as [Graffle](https://graffle.io/), can simplify event filtering and stream events directly to your frontend or backend infrastructure.
@@ -55,6 +51,6 @@ Third-party event providers, such as [Graffle](https://graffle.io/), can simplif
 
 At any point, your dapp can execute a query to read the state of your contracts. This is done using Cadence scripts, which are written similarly to transactions, but are read-only and cannot mutate the blockchain state. 
 
-Events follow a push model, whereas script queries follow a pull model. Your dapp may need to check the state of your contracts without waiting for an event to be emitted. Kitty Items demonstrates how to execute script queries from both a [React application](https://github.com/onflow/kitty-items/blob/master/web/src/flow/script.get-market-item.js) using FCL and a [Node.js backend server](https://github.com/onflow/kitty-items/blob/master/api/src/services/market.ts#L48-L63) using the JavaScript SDK.
+Events follow a push model, whereas script queries follow a pull model. Your dapp may need to check the state of your contracts without waiting for an event to be emitted. 
 
 You can execute scripts through the Flow Access API using the available [Flow SDKs](/sdks/). Like events, script results are returned in [JSON-Cadence format](/cadence/json-cadence-spec/).

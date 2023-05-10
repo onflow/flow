@@ -6,18 +6,26 @@ externalDocs:
   description: Find out more about the Access API
   url: https://docs.onflow.org/access-api/
 servers:
+- url: https://rest-canary.onflow.org/v1/
+  description: Flow Canary
 - url: https://rest-testnet.onflow.org/v1
   description: Flow Testnet
+- url: https://rest-sandboxnet.onflow.org/v1
+  description: Flow Sandboxnet
+- url: https://rest-mainnet.onflow.org/v1
+  description: Flow Mainnet
 paths:
   /blocks:
     get:
       tags:
       - Blocks
-      summary: Gets full blocks by height.
+      summary: Gets Blocks by Height
+      description: Get block data by the provided height range or list of heights.
       parameters:
       - name: height
         in: query
-        description: A comma-separated list of block heights to get.
+        description: A comma-separated list of block heights to get. This parameter
+          is incompatible with `start_height` and `end_height`.
         required: false
         style: form
         explode: false
@@ -103,11 +111,13 @@ paths:
     get:
       tags:
       - Blocks
-      summary: Gets full blocks by ID.
+      summary: Get Blocks by ID.
+      description: Get a block data or list of blocks by the provided ID or list of
+        IDs.
       parameters:
       - name: id
         in: path
-        description: A comma-separated list of block IDs to get.
+        description: A block ID or comma-separated list of block IDs.
         required: true
         style: simple
         explode: true
@@ -176,7 +186,8 @@ paths:
     get:
       tags:
       - Transactions
-      summary: Gets a transaction by ID.
+      summary: Get a Transaction by ID.
+      description: Get a transaction data by the provided transaction ID.
       parameters:
       - name: id
         in: path
@@ -184,6 +195,22 @@ paths:
         required: true
         style: simple
         explode: false
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: block_id
+        in: query
+        description: A block ID optional parameter
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: collection_id
+        in: query
+        description: A collection ID optional parameter.
+        required: false
+        style: form
+        explode: true
         schema:
           $ref: '#/components/schemas/Identifier'
       - name: expand
@@ -241,14 +268,31 @@ paths:
     get:
       tags:
       - Transactions
-      summary: Gets a transaction result by ID.
+      summary: Get a Transaction Result by ID.
+      description: Get transaction result by the transaction result ID.
       parameters:
       - name: transaction_id
         in: path
-        description: The transaction ID of the transaction result to get.
+        description: The transaction ID of the transaction result.
         required: true
         style: simple
         explode: false
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: block_id
+        in: query
+        description: A block ID optional parameter
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: collection_id
+        in: query
+        description: A collection ID optional parameter.
+        required: false
+        style: form
+        explode: true
         schema:
           $ref: '#/components/schemas/Identifier'
       - name: expand
@@ -306,7 +350,9 @@ paths:
     post:
       tags:
       - Transactions
-      summary: Submits a transaction to the network.
+      summary: Submit a Transaction
+      description: "Send a new signed transaction payload to the network with [required\
+        \ transaction fields](https://docs.onflow.org/flow-go-sdk/#transactions)."
       requestBody:
         description: The transaction to submit.
         content:
@@ -345,16 +391,43 @@ paths:
     get:
       tags:
       - Collections
-      summary: Gets a collection by ID.
+      summary: Gets a Collection by ID
+      description: Get a collection by provided collection ID.
       parameters:
       - name: id
         in: path
-        description: The ID of the collection to get.
+        description: The collection ID.
         required: true
         style: simple
         explode: false
         schema:
           $ref: '#/components/schemas/Identifier'
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
       responses:
         "200":
           description: OK
@@ -384,12 +457,13 @@ paths:
     get:
       tags:
       - Execution Results
-      summary: Gets execution results by block ID.
+      summary: Get Execution Results by Block ID
+      description: Get execution result by provided block ID or multiple block IDs
+        provided as comma-seperated list.
       parameters:
       - name: block_id
         in: query
-        description: A comma-separated list of block IDs to get the execution results
-          for.
+        description: Single ID or comma-separated list of block IDs.
         required: true
         style: form
         explode: false
@@ -399,6 +473,19 @@ paths:
           type: array
           items:
             $ref: '#/components/schemas/Identifier'
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
       responses:
         "200":
           description: OK
@@ -431,16 +518,30 @@ paths:
     get:
       tags:
       - Execution Results
-      summary: Gets an execution result by ID.
+      summary: Get Execution Result by ID
+      description: Get execution result by provided execution result ID.
       parameters:
       - name: id
         in: path
-        description: The ID of the execution result to get.
+        description: The ID of the execution result.
         required: true
         style: simple
         explode: false
         schema:
           $ref: '#/components/schemas/Identifier'
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
       responses:
         "200":
           description: OK
@@ -470,11 +571,13 @@ paths:
     get:
       tags:
       - Accounts
-      summary: Gets an account by address at the given block height.
+      summary: Get an Account By Address
+      description: Get an account data by provided address in latest "sealed" block
+        or by provided block height.
       parameters:
       - name: address
         in: path
-        description: The address of the account to get.
+        description: The address of the account.
         required: true
         style: simple
         explode: false
@@ -482,12 +585,39 @@ paths:
           $ref: '#/components/schemas/Address'
       - name: block_height
         in: query
-        description: The block height to query for the account details at.
-        required: true
+        description: The block height to query for the account details at the "sealed"
+          is used by default.
+        required: false
         style: form
         explode: true
         schema:
           $ref: '#/components/schemas/BlockHeight'
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
       responses:
         "200":
           description: OK
@@ -517,9 +647,10 @@ paths:
     post:
       tags:
       - Scripts
-      summary: "Executes a read-only Cadence script against the execution state at\
-        \ the given block height or ID. If block height or ID is not specified, then\
-        \ the script is executed at the latest sealed block height."
+      summary: Execute a Cadence Script
+      description: "Executes a read-only Cadence script against the execution state\
+        \ at the given block height or ID. If block height or ID is not specified,\
+        \ then the script is executed at the latest sealed block height."
       parameters:
       - name: block_id
         in: query
@@ -566,15 +697,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
   /events:
-    summary: Query on-chain events in specified blocks.
     get:
       tags:
       - Events
+      summary: Get Events
+      description: Query on-chain events by their name in the specified blocks heights
+        or block IDs.
       parameters:
       - name: type
         in: query
-        description: The event type is name-spaced with the address of the account
-          and contract in which the event is declared.
+        description: "The event type is [identifier of the event as defined here](https://docs.onflow.org/core-contracts/flow-token/#events)."
         required: true
         deprecated: false
         allowEmptyValue: false
@@ -604,6 +736,8 @@ paths:
           $ref: '#/components/schemas/BlockHeight'
       - name: block_ids
         in: query
+        description: List of block IDs. Either provide this parameter or both height
+          parameters. This parameter is incompatible with heights parameters.
         required: false
         allowEmptyValue: false
         style: form
@@ -653,6 +787,69 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /network/parameters:
+    get:
+      tags:
+      - Network
+      summary: Get Network Parameters
+      description: Get network-wide parameters of the blockchain
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkParameters'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /node_version_info:
+    get:
+      tags:
+      - NodeVersionInfo
+      summary: Get Node Version Information
+      description: "Get node version information, such as semver, commit, sporkID\
+        \ and protocol version."
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeVersionInfo'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Account:
@@ -666,6 +863,7 @@ components:
           $ref: '#/components/schemas/Address'
         balance:
           type: string
+          description: Flow balance of the account.
           format: uint64
         keys:
           minItems: 1
@@ -720,22 +918,27 @@ components:
       properties:
         index:
           type: string
+          description: Index of the public key.
           format: uint64
         public_key:
           type: string
-          format: bytes
+          description: Hex encoded public key.
+          format: hex
         signing_algorithm:
           $ref: '#/components/schemas/SigningAlgorithm'
         hashing_algorithm:
           $ref: '#/components/schemas/HashingAlgorithm'
         sequence_number:
           type: string
+          description: Current account sequence number.
           format: uint64
         weight:
           type: string
+          description: Weight of the key.
           format: uint64
         revoked:
           type: boolean
+          description: Flag indicating whether the key is active or not.
       example:
         public_key: public_key
         sequence_number: sequence_number
@@ -782,9 +985,12 @@ components:
         - _links: null
           reference_block_id: null
           payer: payer
-          script: ""
+          script: script
           result:
+            collection_id: null
             error_message: error_message
+            execution: Pending
+            status_code: 0
             _links:
               _self: _self
             block_id: null
@@ -828,9 +1034,12 @@ components:
         - _links: null
           reference_block_id: null
           payer: payer
-          script: ""
+          script: script
           result:
+            collection_id: null
             error_message: error_message
+            execution: Pending
+            status_code: 0
             _links:
               _self: _self
             block_id: null
@@ -894,9 +1103,12 @@ components:
           $ref: '#/components/schemas/Identifier'
         script:
           type: string
-          format: byte
+          description: Base64 encoded Cadence script.
+          format: base64
         arguments:
           type: array
+          description: "Array of Base64 encoded arguments with in [JSON-Cadence interchange\
+            \ format](https://docs.onflow.org/cadence/json-cadence-spec/)."
           items:
             type: string
             format: byte
@@ -904,6 +1116,8 @@ components:
           $ref: '#/components/schemas/Identifier'
         gas_limit:
           type: string
+          description: The limit on the amount of computation a transaction is allowed
+            to preform.
           format: uint64
         payer:
           $ref: '#/components/schemas/Address'
@@ -931,9 +1145,12 @@ components:
         _links: null
         reference_block_id: null
         payer: payer
-        script: ""
+        script: script
         result:
+          collection_id: null
           error_message: error_message
+          execution: Pending
+          status_code: 0
           _links:
             _self: _self
           block_id: null
@@ -1007,6 +1224,7 @@ components:
           format: uint64
         signature:
           $ref: '#/components/schemas/Signature'
+      description: Base64 encoded signature.
       example:
         address: null
         signature: ""
@@ -1014,18 +1232,27 @@ components:
     TransactionResult:
       required:
       - block_id
+      - collection_id
       - computation_used
       - error_message
       - events
       - status
+      - status_code
       type: object
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
+        collection_id:
+          $ref: '#/components/schemas/Identifier'
+        execution:
+          $ref: '#/components/schemas/TransactionExecution'
         status:
           $ref: '#/components/schemas/TransactionStatus'
+        status_code:
+          type: integer
         error_message:
           type: string
+          description: Provided transaction error in case the transaction wasn't successful.
         computation_used:
           type: string
           format: uint64
@@ -1036,7 +1263,10 @@ components:
         _links:
           $ref: '#/components/schemas/Links'
       example:
+        collection_id: null
         error_message: error_message
+        execution: Pending
+        status_code: 0
         _links:
           _self: _self
         block_id: null
@@ -1053,8 +1283,18 @@ components:
           type: type
           event_index: event_index
         status: Pending
+    TransactionExecution:
+      type: string
+      description: "This value indicates whether the transaction execution succeded\
+        \ or not, this value should be checked when determining transaction success."
+      enum:
+      - Pending
+      - Success
+      - Failure
     TransactionStatus:
       type: string
+      description: This value indicates the state of the transaction execution. Only
+        sealed and expired are final and immutable states.
       enum:
       - Pending
       - Finalized
@@ -1133,7 +1373,25 @@ components:
         execution_result:
           _links:
             _self: _self
+          chunks:
+          - start_state: ""
+            index: index
+            number_of_transactions: number_of_transactions
+            collection_index: collection_index
+            end_state: ""
+            event_collection: ""
+            block_id: null
+            total_computation_used: total_computation_used
+          - start_state: ""
+            index: index
+            number_of_transactions: number_of_transactions
+            collection_index: collection_index
+            end_state: ""
+            event_collection: ""
+            block_id: null
+            total_computation_used: total_computation_used
           id: null
+          previous_result_id: null
           block_id: null
           events:
           - transaction_id: null
@@ -1332,6 +1590,7 @@ components:
       - block_id
       - events
       - id
+      - previous_result_id
       type: object
       properties:
         id:
@@ -1342,12 +1601,36 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
+        chunks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Chunk'
+        previous_result_id:
+          $ref: '#/components/schemas/Identifier'
         _links:
           $ref: '#/components/schemas/Links'
       example:
         _links:
           _self: _self
+        chunks:
+        - start_state: ""
+          index: index
+          number_of_transactions: number_of_transactions
+          collection_index: collection_index
+          end_state: ""
+          event_collection: ""
+          block_id: null
+          total_computation_used: total_computation_used
+        - start_state: ""
+          index: index
+          number_of_transactions: number_of_transactions
+          collection_index: collection_index
+          end_state: ""
+          event_collection: ""
+          block_id: null
+          total_computation_used: total_computation_used
         id: null
+        previous_result_id: null
         block_id: null
         events:
         - transaction_id: null
@@ -1453,6 +1736,50 @@ components:
           type: integer
         message:
           type: string
+    Chunk:
+      required:
+      - block_id
+      - collection_index
+      - end_state
+      - event_collection
+      - index
+      - number_of_transactions
+      - start_state
+      - total_computation_used
+      type: object
+      properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        collection_index:
+          type: string
+          format: uint64
+        start_state:
+          type: string
+          format: byte
+        end_state:
+          type: string
+          format: byte
+        event_collection:
+          type: string
+          format: byte
+        index:
+          type: string
+          format: uint64
+        number_of_transactions:
+          type: string
+          format: uint64
+        total_computation_used:
+          type: string
+          format: uint64
+      example:
+        start_state: ""
+        index: index
+        number_of_transactions: number_of_transactions
+        collection_index: collection_index
+        end_state: ""
+        event_collection: ""
+        block_id: null
+        total_computation_used: total_computation_used
     Links:
       type: object
       properties:
@@ -1460,6 +1787,37 @@ components:
           type: string
       example:
         _self: _self
+    NetworkParameters:
+      required:
+      - chain_id
+      type: object
+      properties:
+        chain_id:
+          type: string
+      example:
+        chain_id: chain_id
+    NodeVersionInfo:
+      required:
+      - commit
+      - protocol_version
+      - semver
+      - spork_id
+      type: object
+      properties:
+        semver:
+          type: string
+        commit:
+          type: string
+        spork_id:
+          $ref: '#/components/schemas/Identifier'
+        protocol_version:
+          type: string
+          format: uint64
+      example:
+        protocol_version: protocol_version
+        semver: semver
+        commit: commit
+        spork_id: spork_id
     transactions_body:
       required:
       - arguments
@@ -1475,16 +1833,21 @@ components:
       properties:
         script:
           type: string
-          format: byte
+          description: Base64 encoded content of the Cadence script.
+          format: base64
         arguments:
           type: array
+          description: "A list of arguments each encoded as Base64 passed in the [JSON-Cadence\
+            \ interchange format](https://docs.onflow.org/cadence/json-cadence-spec/)."
           items:
             type: string
-            format: byte
+            format: base64
         reference_block_id:
           $ref: '#/components/schemas/Identifier'
         gas_limit:
           type: string
+          description: The limit on the amount of computation a transaction is allowed
+            to preform.
           format: uint64
         payer:
           $ref: '#/components/schemas/Address'
@@ -1496,10 +1859,12 @@ components:
             $ref: '#/components/schemas/Address'
         payload_signatures:
           type: array
+          description: A list of Base64 encoded signatures.
           items:
             $ref: '#/components/schemas/TransactionSignature'
         envelope_signatures:
           type: array
+          description: A list of Base64 encoded signatures.
           items:
             $ref: '#/components/schemas/TransactionSignature'
     scripts_body:
@@ -1507,9 +1872,12 @@ components:
       properties:
         script:
           type: string
-          format: byte
+          description: Base64 encoded content of the Cadence script.
+          format: base64
         arguments:
           type: array
+          description: "An list of arguments each encoded as Base64 passed in the\
+            \ [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/)."
           items:
             type: string
             format: byte
@@ -1610,3 +1978,21 @@ components:
         type: array
         items:
           type: string
+    blockIdParam:
+      name: block_id
+      in: query
+      description: A block ID optional parameter
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: '#/components/schemas/Identifier'
+    collectionIdParam:
+      name: collection_id
+      in: query
+      description: A collection ID optional parameter.
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: '#/components/schemas/Identifier'

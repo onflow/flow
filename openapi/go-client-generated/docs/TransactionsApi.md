@@ -1,23 +1,25 @@
 # {{classname}}
 
-All URIs are relative to *https://rest-testnet.onflow.org/v1*
+All URIs are relative to *https://rest-canary.onflow.org/v1/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**TransactionResultsTransactionIdGet**](TransactionsApi.md#TransactionResultsTransactionIdGet) | **Get** /transaction_results/{transaction_id} | Gets a transaction result by ID.
-[**TransactionsIdGet**](TransactionsApi.md#TransactionsIdGet) | **Get** /transactions/{id} | Gets a transaction by ID.
-[**TransactionsPost**](TransactionsApi.md#TransactionsPost) | **Post** /transactions | Submits a transaction to the network.
+[**TransactionResultsTransactionIdGet**](TransactionsApi.md#TransactionResultsTransactionIdGet) | **Get** /transaction_results/{transaction_id} | Get a Transaction Result by ID.
+[**TransactionsIdGet**](TransactionsApi.md#TransactionsIdGet) | **Get** /transactions/{id} | Get a Transaction by ID.
+[**TransactionsPost**](TransactionsApi.md#TransactionsPost) | **Post** /transactions | Submit a Transaction
 
 # **TransactionResultsTransactionIdGet**
 > TransactionResult TransactionResultsTransactionIdGet(ctx, transactionId, optional)
-Gets a transaction result by ID.
+Get a Transaction Result by ID.
+
+Get transaction result by the transaction result ID.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **transactionId** | [**string**](.md)| The transaction ID of the transaction result to get. | 
+  **transactionId** | [**string**](.md)| The transaction ID of the transaction result. | 
  **optional** | ***TransactionsApiTransactionResultsTransactionIdGetOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -25,6 +27,8 @@ Optional parameters are passed through a pointer to a TransactionsApiTransaction
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **blockId** | [**optional.Interface of string**](.md)| A block ID optional parameter | 
+ **collectionId** | [**optional.Interface of string**](.md)| A collection ID optional parameter. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
 
@@ -45,7 +49,9 @@ No authorization required
 
 # **TransactionsIdGet**
 > Transaction TransactionsIdGet(ctx, id, optional)
-Gets a transaction by ID.
+Get a Transaction by ID.
+
+Get a transaction data by the provided transaction ID.
 
 ### Required Parameters
 
@@ -60,6 +66,8 @@ Optional parameters are passed through a pointer to a TransactionsApiTransaction
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **blockId** | [**optional.Interface of string**](.md)| A block ID optional parameter | 
+ **collectionId** | [**optional.Interface of string**](.md)| A collection ID optional parameter. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
 
@@ -80,7 +88,9 @@ No authorization required
 
 # **TransactionsPost**
 > Transaction TransactionsPost(ctx, body)
-Submits a transaction to the network.
+Submit a Transaction
+
+Send a new signed transaction payload to the network with [required transaction fields](https://docs.onflow.org/flow-go-sdk/#transactions).
 
 ### Required Parameters
 

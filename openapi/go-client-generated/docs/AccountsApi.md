@@ -1,22 +1,33 @@
 # {{classname}}
 
-All URIs are relative to *https://rest-testnet.onflow.org/v1*
+All URIs are relative to *https://rest-canary.onflow.org/v1/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AccountsAddressGet**](AccountsApi.md#AccountsAddressGet) | **Get** /accounts/{address} | Gets an account by address at the given block height.
+[**AccountsAddressGet**](AccountsApi.md#AccountsAddressGet) | **Get** /accounts/{address} | Get an Account By Address
 
 # **AccountsAddressGet**
-> Account AccountsAddressGet(ctx, address, blockHeight)
-Gets an account by address at the given block height.
+> Account AccountsAddressGet(ctx, address, optional)
+Get an Account By Address
+
+Get an account data by provided address in latest \"sealed\" block or by provided block height.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **address** | [**string**](.md)| The address of the account to get. | 
-  **blockHeight** | [**BlockHeight**](.md)| The block height to query for the account details at. | 
+  **address** | [**string**](.md)| The address of the account. | 
+ **optional** | ***AccountsApiAccountsAddressGetOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a AccountsApiAccountsAddressGetOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **blockHeight** | [**optional.Interface of BlockHeight**](.md)| The block height to query for the account details at the \&quot;sealed\&quot; is used by default. | 
+ **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
+ **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
 
 ### Return type
 

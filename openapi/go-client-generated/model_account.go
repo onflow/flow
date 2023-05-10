@@ -10,6 +10,7 @@ package swagger
 
 type Account struct {
 	Address string `json:"address"`
+	// Flow balance of the account.
 	Balance string `json:"balance"`
 	Keys []AccountPublicKey `json:"keys,omitempty"`
 	Contracts map[string]string `json:"contracts,omitempty"`

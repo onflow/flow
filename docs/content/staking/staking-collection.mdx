@@ -3,8 +3,10 @@ title: Manage a Staking Collection
 sidebar_title: Staking Collection Guide
 ---
 
-This document outlines the steps a token holder can take to stake using [the `FlowIDTableStaking` contract](/core-contracts/flow-id-table-staking/)
-and [the `FlowStakingCollection` contract.](/core-contracts/staking-collection/) This is the recommended and most supported way to stake FLOW.
+This document outlines the steps a token holder can take to stake
+using [the `FlowIDTableStaking` contract](/core-contracts/staking-contract-reference/)
+and [the `FlowStakingCollection` contract.](/core-contracts/staking-collection/)
+This is the recommended and most supported way to stake FLOW.
 It supports any number of nodes and delegators per account, supports locked and unlocked FLOW,
 and supports easily interaction with a node's machine account for collector and consensus nodes.
 
@@ -182,6 +184,7 @@ transaction with the following arguments:
 | **networkingAddress** | `String`    | The IP address of the new node. |
 | **networkingKey**     | `String`    | The networking public key as a hex-encoded string. |
 | **stakingKey**        | `String`    | The staking public key as a hex-encoded string. |
+| **stakingKeyPoP**     | `String`    | The staking key Proof-of-Possesion as a hex-encoded string. |
 | **amount**            | `UFix64`    | The number of FLOW tokens to stake. |
 | **publicKeys**        | `[String]?` | The public keys to add to the machine account. `nil` if no machine account |
 

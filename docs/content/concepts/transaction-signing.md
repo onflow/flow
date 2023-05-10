@@ -289,3 +289,5 @@ use weighted keys to achieve multi-sig functionality.
   ]
 }
 ```
+
+Thanks for reading and happy hacking! 🚀

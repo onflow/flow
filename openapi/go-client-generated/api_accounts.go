@@ -16,6 +16,7 @@ import (
 	"net/url"
 	"strings"
 	"fmt"
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -25,13 +26,24 @@ var (
 
 type AccountsApiService service
 /*
-AccountsApiService Gets an account by address at the given block height.
+AccountsApiService Get an Account By Address
+Get an account data by provided address in latest \&quot;sealed\&quot; block or by provided block height.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param address The address of the account to get.
- * @param blockHeight The block height to query for the account details at.
+ * @param address The address of the account.
+ * @param optional nil or *AccountsApiAccountsAddressGetOpts - Optional Parameters:
+     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The block height to query for the account details at the \&quot;sealed\&quot; is used by default.
+     * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
+     * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
 @return Account
 */
-func (a *AccountsApiService) AccountsAddressGet(ctx context.Context, address string, blockHeight BlockHeight) (Account, *http.Response, error) {
+
+type AccountsApiAccountsAddressGetOpts struct {
+    BlockHeight optional.Interface
+    Expand optional.Interface
+    Select_ optional.Interface
+}
+
+func (a *AccountsApiService) AccountsAddressGet(ctx context.Context, address string, localVarOptionals *AccountsApiAccountsAddressGetOpts) (Account, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -48,7 +60,15 @@ func (a *AccountsApiService) AccountsAddressGet(ctx context.Context, address str
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	localVarQueryParams.Add("block_height", parameterToString(blockHeight, ""))
+	if localVarOptionals != nil && localVarOptionals.BlockHeight.IsSet() {
+		localVarQueryParams.Add("block_height", parameterToString(localVarOptionals.BlockHeight.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
+		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
+		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 

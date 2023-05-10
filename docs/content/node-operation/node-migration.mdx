@@ -1,0 +1,48 @@
+---
+title: Node Migration
+description: How to migrate a Flow node from one machine to another
+---
+
+There are a few different methods to migrate a running Flow node from one machine to the other.
+
+Choose the method depending upon what part of the staking data of the node is changing.
+
+### Method 1 - No change to the node staking data
+
+If there is no change to the network address or the staking and networking keys and only the hardware the node is running needs to be changed then do the following:
+1. Stop the Flow node.
+2. Copy over the bootstrap data (typically under `/var/flow/bootstrap`) which contains the node private key to the new machine.
+3. Copy over the data folder (typically under `/var/flow/data`) which contains the state data.
+4. Start the new node on the same network address as the old one.
+
+<Callout type="warning">
+Please ensure that there is minimal downtime during this migration.
+</Callout>
+
+<Callout type="warning">
+The network address is currently part of the staking data that was submitted for the node. It is how other nodes in the network discover this node.
+Hence, the network address of the node must stay the same between epochs otherwise the node will become unreachable for the other nodes and stop functioning.
+</Callout>
+
+### Method 2 - Network address change
+
+A change to the node network address (IP or a hostname) can only be done during the spork process.
+
+To change the networking address:
+1. A day before the [upcoming mainnet spork](/nodes/node-operation/upcoming-sporks), change the network address for the nodes in Flow Port (using the update network address feature).
+The change will not take effect till an epoch transition happens.
+2. Change the addresses in the `/var/flow/bootstrap/private-root-information/private-node-info_<nodeid>/node-info.priv.json` json file on the node.
+3. A spork also causes an epoch transition, and the new addresses will take effect after the spork immediately.
+
+### Method 3 - Staking or networking key change
+
+If the node after migration will be using new staking or networking keys then it needs to be unstaked and then re-staked with the new keys.
+
+1. Unstake the node via Flow Port.
+2. Register the new node via Flow Port with the new staking information.
+3. Run the new node with the new keys and network address. It should be able to join the network at the next epoch (see [timing](/nodes/node-operation/node-bootstrap#timing))
+
+<Callout type="warning">
+Unstaking a node will result in the node [not earning rewards](staking/technical-overview/#staking-operations-available-to-all-stakers) for the next epoch.
+Delegators to the old node will have their tokens unstaked automatically. They will also stop earning rewards unless they withdraw their unstaked tokens and delegate them to a different node.
+</Callout>

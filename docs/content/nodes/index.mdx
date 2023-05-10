@@ -1,0 +1,57 @@
+---
+title: Hello Node Operator!
+sidebar_title: Introduction
+---
+
+Flow nodes are vital components of the Flow blockchain. These nodes are responsible for a variety of network operations to maintain the distributed ledger.
+
+## Why run a node?
+
+By running your own node, you have direct access to the evolving state of the network, without having to rely on third parties.
+This increases privacy and security, reduces reliance on external servers, and helps balance load distribution.
+By running a node, you also directly contribute to the security and decentralization of the whole network.
+
+Flow multirole architecture makes it more scalable and provides several node types that you as a node operator can pick and choose from.
+
+
+## Which node should you run?
+
+The different types of nodes are described [here](/nodes/node-operation/node-roles). As node operator, you can choose to run any of the different types of node that best fits your needs.
+
+### Observer node
+The observer node is one of the easiest node to spin up and can be run by Dapp developers who need the latest block data available locally e.g. a wallet application that needs to track the latest block ID and height.
+In addition to supporting dapps, an observer node can also be run by access node operators who want to scale their access nodes' endpoints. Access node operators can spin up geographically dispersed observer nodes which can talk to their staked access nodes and to each other.
+
+The observer node is not staked but still provides the same API as the access node.
+
+To run an observer node, follow this [guide](/nodes/node-operation/observer-node).
+
+### Access node
+If you want local access to the protocol state data (blocks, collections, transactions) and do not want to use one of the community access nodes you can run an access node.
+Dapp developers, chain explorers, chain analytics etc. who want exclusive access to chain data and not be subject to the rate-limits on the community access node can choose to run an access node.
+
+An access node is staked but since it does not participate in the core Flow protocol, it does not receive any staking rewards.
+To run an access node, see the [Running a staked node](#running-a-staked-node) section below.
+
+Alternately, instead of running your access node, you can use the [Flow community](/nodes/access-api.mdx) access nodes or the ones run by any of the other node operators.
+
+### Collection, Consensus, Verification and Execution node
+If you want your node to participate in the nitty-gritty of Flow protocol and help in block or collection creation, transaction execution, result verification or block verification then you should run one of these four node roles.
+
+Nodes with these roles are staked and also receive staking rewards.
+
+### Running a staked node
+
+To run a staked node (node type access, collection, consensus, verification or execution) the node must:
+* be registered with sufficient stake
+* be authorized by the service account
+
+Before proceeding, ensure you have the stake required for your new node and that your node will be authorized by the service account (apply [here](https://www.onflow.org/node-validators)).
+
+To set up a new Flow node you will need to complete the following steps:
+
+1. [Provision](/nodes/node-operation/node-setup) the machine on which your node will run.
+
+2. [Generate and register](/nodes/node-operation/node-bootstrap) your node identity.
+
+3. [Start](/nodes/node-operation/node-bootstrap#step-3---start-your-flow-node) your node!

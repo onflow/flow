@@ -1,0 +1,175 @@
+syntax = "proto3";
+
+package flow.access;
+
+option go_package = "github.com/onflow/flow/protobuf/go/flow/access";
+option java_package = "org.onflow.protobuf.access";
+
+import "flow/entities/block_execution_data.proto";
+import "flow/entities/event.proto";
+import "google/protobuf/timestamp.proto";
+
+// Execution Data API provides access to execution data from the Flow network
+service ExecutionDataAPI {
+
+  // GetExecutionDataByBlockID returns execution data for a specific block ID.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid block ID.
+  // - NotFound is returned if the start block or execution data are not currently available on the
+  //   node. This may happen if the block was from a previous spork, or if the block has yet not been
+  //   received.
+  rpc GetExecutionDataByBlockID(GetExecutionDataByBlockIDRequest)
+      returns (GetExecutionDataByBlockIDResponse);
+
+  // SubscribeExecutionData streams execution data for all blocks starting at the requested start
+  // block, up until the latest available block. Once the latest is reached, the stream will remain
+  // open and responses are sent for each new execution data as it becomes available.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid start block.
+  // - NotFound is returned if the start block is not currently available on the node. This may
+  //   happen if the block was from a previous spork, or if the block has yet not been received.
+  rpc SubscribeExecutionData(SubscribeExecutionDataRequest)
+      returns (stream SubscribeExecutionDataResponse);
+
+  // SubscribeEvents streams events for all blocks starting at the requested start block, up until
+  // the latest available block. Once the latest is reached, the stream will remain open and responses
+  // are sent for each new block as it becomes available.
+  //
+  // Events within each block are filtered by the provided EventFilter, and only those events that
+  // match the filter are returned. If no filter is provided, all events are returned.
+  //
+  // Responses are returned for each block containing at least one event that matches the filter.
+  // Additionally, heatbeat responses (SubscribeEventsResponse with no events) are returned
+  // periodically to allow clients to track which blocks were searched. Clients can use this
+  // information to determine which block to start from when reconnecting.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid EventFilter or start block.
+  // - NotFound is returned if the start block is not currently available on the node. This may
+  //   happen if the block was from a previous spork, or if the block has yet not been received.
+  rpc SubscribeEvents(SubscribeEventsRequest)
+      returns (stream SubscribeEventsResponse);
+}
+
+// The request for GetExecutionDataByBlockID
+message GetExecutionDataByBlockIDRequest {
+  // Block ID of the block to get execution data for.
+  bytes block_id = 1;
+}
+
+// The response for GetExecutionDataByBlockID
+message GetExecutionDataByBlockIDResponse {
+  // BlockExecutionData for the block.
+  entities.BlockExecutionData block_execution_data = 1;
+}
+
+// The request for SubscribeExecutionData
+message SubscribeExecutionDataRequest {
+  // Block ID of the first block to get execution data for.
+  // Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
+  // error is returned. If neither are provided, the latest sealed block is used.
+  bytes start_block_id = 1;
+
+  // Block height of the first block to get execution data for.
+  // Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
+  // error is returned. If neither are provided, the latest sealed block is used.
+  uint64 start_block_height = 2;
+}
+
+// The response for SubscribeExecutionData
+message SubscribeExecutionDataResponse {
+  // Block height of the block containing the execution data.
+  uint64 block_height = 1;
+
+  // BlockExecutionData for the block.
+  // Note: The block's ID is included within the BlockExecutionData.
+  entities.BlockExecutionData block_execution_data = 2;
+
+  // Timestamp from the block containing the execution data.
+  google.protobuf.Timestamp block_timestamp = 3;
+}
+
+// The request for SubscribeEvents
+message SubscribeEventsRequest {
+  // Block ID of the first block to search for events.
+  // Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
+  // error is returned. If neither are provided, the latest sealed block is used.
+  bytes start_block_id = 1;
+
+  // Block height of the first block to search for events.
+  // Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
+  // error is returned. If neither are provided, the latest sealed block is used.
+  uint64 start_block_height = 2;
+
+  // Filter to apply to events for each block searched.
+  // If no filter is provided, all events are returned.
+  EventFilter filter = 3;
+
+  // Interval in block heights at which the server should return a heartbeat message to the client.
+  // The heartbeat is a normal SubscribeEventsResponse with no events, and allows clients to track
+  // which blocks were searched. Clients can use this information to determine which block to start
+  // from when reconnecting.
+  //
+  // The interval is calculated from the last response returned, which could be either another
+  // heartbeat or a response containing events.
+  uint64 heartbeat_interval = 4;
+}
+
+// The response for SubscribeEvents
+message SubscribeEventsResponse {
+  // Block ID of the block containing the events.
+  bytes block_id = 1;
+
+  // Block height of the block containing the events.
+  uint64 block_height = 2;
+
+  // Events matching the EventFilter in the request.
+  // The API may return no events which signals a periodic heartbeat. This allows clients to track
+  // which blocks were searched. Client can use this information to determine which block to start
+  // from when reconnecting.
+  repeated entities.Event events = 3;
+
+  // Timestamp from the block containing the events.
+  google.protobuf.Timestamp block_timestamp = 4;
+}
+
+// EventFilter defines the filter to apply to block events.
+// Filters are applied as an OR operation, i.e. any event matching any of the filters is returned.
+// If no filters are provided, all events are returned.
+// If there are any invalid filters, the API will return an InvalidArgument error.
+message EventFilter {
+  // A list of full event types to include.
+  //
+  // All events exactly matching any of the provided event types will be returned.
+  //
+  // Event types have 2 formats:
+  // - Protocol events:
+  //     flow.[event name]
+  // - Smart contract events:
+  //     A.[contract address].[contract name].[event name]
+  repeated string event_type = 1;
+
+  // A list of contracts who's events should be included.
+  //
+  // All events emitted by any of the provided contracts will be returned.
+  //
+  // Contracts have the following name formats:
+  // - Protocol events:
+  //     flow
+  // - Smart contract events:
+  //     A.[contract address].[contract name]
+  //
+  // This filter matches on the full contract including its address, not just the contract's name.
+  repeated string contract = 2;
+
+  // A list of addresses who's events should be included.
+  //
+  // All events emitted by any contract held by any of the provided addresses will be returned.
+  //
+  // Addresses must be Flow account addresses in hex format and valid for the network the node
+  // is connected to. i.e. only a mainnet address is valid for a mainnet node.
+  // Addresses may optionally include the 0x prefix.
+  repeated string address = 3;
+}

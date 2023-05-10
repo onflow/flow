@@ -1,15 +1,17 @@
 # {{classname}}
 
-All URIs are relative to *https://rest-testnet.onflow.org/v1*
+All URIs are relative to *https://rest-canary.onflow.org/v1/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BlocksGet**](BlocksApi.md#BlocksGet) | **Get** /blocks | Gets full blocks by height.
-[**BlocksIdGet**](BlocksApi.md#BlocksIdGet) | **Get** /blocks/{id} | Gets full blocks by ID.
+[**BlocksGet**](BlocksApi.md#BlocksGet) | **Get** /blocks | Gets Blocks by Height
+[**BlocksIdGet**](BlocksApi.md#BlocksIdGet) | **Get** /blocks/{id} | Get Blocks by ID.
 
 # **BlocksGet**
 > []Block BlocksGet(ctx, optional)
-Gets full blocks by height.
+Gets Blocks by Height
+
+Get block data by the provided height range or list of heights.
 
 ### Required Parameters
 
@@ -22,7 +24,7 @@ Name | Type | Description  | Notes
 Optional parameters are passed through a pointer to a BlocksApiBlocksGetOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **height** | [**optional.Interface of []BlockHeight**](BlockHeight.md)| A comma-separated list of block heights to get. | 
+ **height** | [**optional.Interface of []BlockHeight**](BlockHeight.md)| A comma-separated list of block heights to get. This parameter is incompatible with &#x60;start_height&#x60; and &#x60;end_height&#x60;. | 
  **startHeight** | [**optional.Interface of BlockHeight**](.md)| The start height of the block range to get. Must be used together with &#x60;end_height&#x60;. This parameter is incompatible with &#x60;height&#x60;. | 
  **endHeight** | [**optional.Interface of BlockHeight**](.md)| The ending height of the block range to get. Must be used together with &#x60;start_height&#x60;. This parameter is incompatible with &#x60;height&#x60;. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
@@ -45,14 +47,16 @@ No authorization required
 
 # **BlocksIdGet**
 > []Block BlocksIdGet(ctx, id, optional)
-Gets full blocks by ID.
+Get Blocks by ID.
+
+Get a block data or list of blocks by the provided ID or list of IDs.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **id** | [**[]string**](string.md)| A comma-separated list of block IDs to get. | 
+  **id** | [**[]string**](string.md)| A block ID or comma-separated list of block IDs. | 
  **optional** | ***BlocksApiBlocksIdGetOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters

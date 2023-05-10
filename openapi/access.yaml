@@ -3,16 +3,23 @@ info:
   version: "1.0.0"
   title: "Access API"
 servers:
+  - url: https://rest-canary.onflow.org/v1/
+    description: Flow Canary
   - url: https://rest-testnet.onflow.org/v1
     description: Flow Testnet
+  - url: https://rest-sandboxnet.onflow.org/v1
+    description: Flow Sandboxnet
+  - url: https://rest-mainnet.onflow.org/v1
+    description: Flow Mainnet
 paths:
   /blocks:
     get:
-      summary: Gets full blocks by height.
+      summary: Gets Blocks by Height
+      description: Get block data by the provided height range or list of heights.
       tags:
         - Blocks
       parameters:
-        - description: A comma-separated list of block heights to get.
+        - description: A comma-separated list of block heights to get. This parameter is incompatible with `start_height` and `end_height`.
           name: height
           in: query
           schema:
@@ -54,11 +61,12 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /blocks/{id}:
     get:
-      summary: Gets full blocks by ID.
+      summary: Get Blocks by ID.
+      description: Get a block data or list of blocks by the provided ID or list of IDs.
       tags:
         - Blocks
       parameters:
-        - description: A comma-separated list of block IDs to get.
+        - description: A block ID or comma-separated list of block IDs.
           name: id
           in: path
           schema:
@@ -89,7 +97,8 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /transactions/{id}:
     get:
-      summary: Gets a transaction by ID.
+      summary: Get a Transaction by ID.
+      description: Get a transaction data by the provided transaction ID.
       tags:
         - Transactions
       parameters:
@@ -99,6 +108,8 @@ paths:
           schema:
             $ref: '#/components/schemas/Identifier'
           required: true
+        - $ref: '#/components/parameters/blockIdParam'
+        - $ref: '#/components/parameters/collectionIdParam'
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:
@@ -116,16 +127,19 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /transaction_results/{transaction_id}:
     get:
-      summary: Gets a transaction result by ID.
+      summary: Get a Transaction Result by ID.
+      description: Get transaction result by the transaction result ID.
       tags:
         - Transactions
       parameters:
-        - description: The transaction ID of the transaction result to get.
+        - description: The transaction ID of the transaction result.
           name: transaction_id
           in: path
           schema:
             $ref: '#/components/schemas/Identifier'
           required: true
+        - $ref: '#/components/parameters/blockIdParam'
+        - $ref: '#/components/parameters/collectionIdParam'
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:
@@ -143,7 +157,8 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /transactions:
     post:
-      summary: Submits a transaction to the network.
+      summary: Submit a Transaction
+      description: Send a new signed transaction payload to the network with [required transaction fields](https://docs.onflow.org/flow-go-sdk/#transactions).
       tags:
         - Transactions
       requestBody:
@@ -166,17 +181,20 @@ paths:
               properties:
                 script:
                   type: string
-                  format: byte
+                  format: base64
+                  description: Base64 encoded content of the Cadence script.
                 arguments:
                   type: array
+                  description: A list of arguments each encoded as Base64 passed in the [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
                   items:
                     type: string
-                    format: byte
+                    format: base64
                 reference_block_id:
                   $ref: '#/components/schemas/Identifier'
                 gas_limit:
                   type: string
                   format: uint64
+                  description: The limit on the amount of computation a transaction is allowed to preform.
                 payer:
                   $ref: '#/components/schemas/Address'
                 proposal_key:
@@ -187,10 +205,12 @@ paths:
                     $ref: '#/components/schemas/Address'
                 payload_signatures:
                   type: array
+                  description: A list of Base64 encoded signatures.
                   items:
                     $ref: '#/components/schemas/TransactionSignature'
                 envelope_signatures:
                   type: array
+                  description: A list of Base64 encoded signatures.
                   items:
                     $ref: '#/components/schemas/TransactionSignature'
       responses:
@@ -212,7 +232,8 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /collections/{id}:
     get:
-      summary: Gets a collection by ID.
+      summary: Gets a Collection by ID
+      description: Get a collection by provided collection ID.
       tags:
         - Collections
       parameters:
@@ -221,7 +242,9 @@ paths:
           schema:
             $ref: '#/components/schemas/Identifier'
           required: true
-          description: The ID of the collection to get.
+          description: The collection ID.
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
       responses:
         '200':
           description: OK
@@ -237,11 +260,12 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /execution_results:
     get:
-      summary: Gets execution results by block ID.
+      summary: Get Execution Results by Block ID
+      description: Get execution result by provided block ID or multiple block IDs provided as comma-seperated list.
       tags:
         - Execution Results
       parameters:
-        - description: A comma-separated list of block IDs to get the execution results for.
+        - description: Single ID or comma-separated list of block IDs.
           name: block_id
           in: query
           schema:
@@ -253,6 +277,7 @@ paths:
           explode: false
           style: form
           required: true
+        - $ref: '#/components/parameters/selectParam'
       responses:
         '200':
           description: OK
@@ -270,7 +295,8 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /execution_results/{id}:
     get:
-      summary: Gets an execution result by ID.
+      summary: Get Execution Result by ID
+      description: Get execution result by provided execution result ID.
       tags:
         - Execution Results
       parameters:
@@ -279,7 +305,8 @@ paths:
           schema:
             $ref: '#/components/schemas/Identifier'
           required: true
-          description: The ID of the execution result to get.
+          description: The ID of the execution result.
+        - $ref: '#/components/parameters/selectParam'
       responses:
         '200':
           description: OK
@@ -295,7 +322,8 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /accounts/{address}:
     get:
-      summary: Gets an account by address at the given block height.
+      summary: Get an Account By Address
+      description: Get an account data by provided address in latest "sealed" block or by provided block height.
       tags:
         - Accounts
       parameters:
@@ -304,13 +332,15 @@ paths:
           schema:
             $ref: '#/components/schemas/Address'
           required: true
-          description: The address of the account to get.
+          description: The address of the account.
         - name: block_height
           in: query
           schema:
             $ref: '#/components/schemas/BlockHeight'
-          required: true
-          description: The block height to query for the account details at.
+          required: false
+          description: The block height to query for the account details at the "sealed" is used by default.
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
       responses:
         '200':
           description: OK
@@ -326,7 +356,8 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /scripts:
     post:
-      summary: Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block height.
+      summary: Execute a Cadence Script
+      description: Executes a read-only Cadence script against the execution state at the given block height or ID. If block height or ID is not specified, then the script is executed at the latest sealed block height.
       tags:
         - Scripts
       parameters:
@@ -352,9 +383,11 @@ paths:
               properties:
                 script:
                   type: string
-                  format: byte
+                  format: base64
+                  description: Base64 encoded content of the Cadence script.
                 arguments:
                   type: array
+                  description: An list of arguments each encoded as Base64 passed in the [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
                   items:
                     type: string
                     format: byte
@@ -374,8 +407,9 @@ paths:
         '500':
           $ref: '#/components/responses/500InternalServerError'
   /events:
-    summary: Query on-chain events in specified blocks.
     get:
+      summary: Get Events
+      description: Query on-chain events by their name in the specified blocks heights or block IDs.
       tags:
         - Events
       responses:
@@ -394,7 +428,7 @@ paths:
       parameters:
         - name: type
           in: query
-          description: The event type is name-spaced with the address of the account and contract in which the event is declared.
+          description: The event type is [identifier of the event as defined here](https://docs.onflow.org/core-contracts/flow-token/#events).
           required: true
           deprecated: false
           schema:
@@ -415,6 +449,7 @@ paths:
             $ref: '#/components/schemas/BlockHeight'
           allowEmptyValue: false
         - name: block_ids
+          description: List of block IDs. Either provide this parameter or both height parameters. This parameter is incompatible with heights parameters.
           in: query
           style: form
           required: false
@@ -428,6 +463,44 @@ paths:
             maxItems: 50
             uniqueItems: true
         - $ref: '#/components/parameters/selectParam'
+  /network/parameters:
+    get:
+      summary: Get Network Parameters
+      description: Get network-wide parameters of the blockchain
+      tags:
+        - Network
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkParameters'
+          description: OK
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
+  /node_version_info:
+    get:
+      summary: Get Node Version Information
+      description: Get node version information, such as semver, commit, sporkID and protocol version.
+      tags:
+        - NodeVersionInfo
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeVersionInfo'
+          description: OK
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
 components:
   parameters:
     expandParam:
@@ -456,6 +529,20 @@ components:
       explode: false
       style: form
       required: false
+    blockIdParam:
+      description: A block ID optional parameter
+      name: block_id
+      in: query
+      schema:
+        $ref: '#/components/schemas/Identifier'
+      required: false
+    collectionIdParam:
+      description: A collection ID optional parameter.
+      name: collection_id
+      in: query
+      schema:
+        $ref: '#/components/schemas/Identifier'
+      required: false
   schemas:
     Account:
       type: object
@@ -469,6 +556,7 @@ components:
         balance:
           type: string
           format: uint64
+          description: Flow balance of the account.
         keys:
           type: array
           items:
@@ -503,9 +591,11 @@ components:
         index:
           type: string
           format: uint64
+          description: Index of the public key.
         public_key:
           type: string
-          format: bytes
+          format: hex
+          description: Hex encoded public key.
         signing_algorithm:
           $ref: '#/components/schemas/SigningAlgorithm'
         hashing_algorithm:
@@ -513,11 +603,14 @@ components:
         sequence_number:
           type: string
           format: uint64
+          description: Current account sequence number.
         weight:
           type: string
           format: uint64
+          description: Weight of the key.
         revoked:
           type: boolean
+          description: Flag indicating whether the key is active or not.
     SigningAlgorithm:
       type: string
       enum:
@@ -573,9 +666,11 @@ components:
           $ref: '#/components/schemas/Identifier'
         script:
           type: string
-          format: byte
+          format: base64
+          description: Base64 encoded Cadence script.
         arguments:
           type: array
+          description: Array of Base64 encoded arguments with in [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
           items:
             type: string
             format: byte
@@ -584,6 +679,7 @@ components:
         gas_limit:
           type: string
           format: uint64
+          description: The limit on the amount of computation a transaction is allowed to preform.
         payer:
           $ref: '#/components/schemas/Address'
         proposal_key:
@@ -626,6 +722,7 @@ components:
           type: string
           format: uint64
     TransactionSignature:
+      description: Base64 encoded signature.
       type: object
       required:
         - address
@@ -643,17 +740,26 @@ components:
       type: object
       required:
         - block_id
+        - collection_id
         - status
+        - status_code
         - error_message
         - computation_used
         - events
       properties:
         block_id:
           $ref: '#/components/schemas/Identifier'
+        collection_id:
+          $ref: '#/components/schemas/Identifier'
+        execution:
+          $ref: '#/components/schemas/TransactionExecution'
         status:
           $ref: '#/components/schemas/TransactionStatus'
+        status_code:
+          type: integer
         error_message:
           type: string
+          description: Provided transaction error in case the transaction wasn't successful.
         computation_used:
           type: string
           format: uint64
@@ -663,8 +769,16 @@ components:
             $ref: '#/components/schemas/Event'
         _links:
           $ref: '#/components/schemas/Links'
+    TransactionExecution:
+      type: string
+      description: This value indicates whether the transaction execution succeded or not, this value should be checked when determining transaction success. 
+      enum:
+        - Pending
+        - Success
+        - Failure
     TransactionStatus:
       type: string
+      description: This value indicates the state of the transaction execution. Only sealed and expired are final and immutable states.
       enum:
         - Pending
         - Finalized
@@ -796,6 +910,7 @@ components:
         - id
         - block_id
         - events
+        - previous_result_id
       properties:
         id:
           $ref: '#/components/schemas/Identifier'
@@ -805,6 +920,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
+        chunks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Chunk'
+        previous_result_id:
+          $ref: '#/components/schemas/Identifier'
         _links:
           $ref: '#/components/schemas/Links'
     BlockEvents:
@@ -877,11 +998,70 @@ components:
           type: integer
         message:
           type: string
+    Chunk:
+      type: object
+      required:
+        - block_id
+        - collection_index
+        - start_state
+        - end_state
+        - event_collection
+        - index
+        - number_of_transactions
+        - total_computation_used
+      properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        collection_index:
+          type: string
+          format: uint64
+        start_state:
+          type: string
+          format: byte
+        end_state:
+          type: string
+          format: byte
+        event_collection:
+          type: string
+          format: byte
+        index:
+          type: string
+          format: uint64
+        number_of_transactions:
+          type: string
+          format: uint64
+        total_computation_used:
+          type: string
+          format: uint64
     Links:
       type: object
       properties:
         _self:
           type: string
+    NetworkParameters:
+      type: object
+      required:
+        - chain_id
+      properties:
+        chain_id:
+          type: string
+    NodeVersionInfo:
+      type: object
+      required:
+        - semver
+        - commit
+        - spork_id
+        - protocol_version
+      properties:
+        semver:
+          type: string
+        commit:
+          type: string
+        spork_id:
+          $ref: '#/components/schemas/Identifier'
+        protocol_version:
+          type: string
+          format: uint64
   responses:
     400BadRequest:
       description: Bad Request
