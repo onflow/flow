@@ -329,8 +329,16 @@ pub struct AuthAccount {
         /// Get all storage capability controllers for capabilities that target this storage path
         pub fun getControllers(forPath: StoragePath): [&StorageCapabilityController]
 
-        /// Iterate through all storage capability controllers for capabilities that target this storage path.
-        /// Returning false from the function stops the iteration.
+        /// Iterate over all storage capability controllers for capabilities that target this storage path,
+        /// passing a reference to each controller to the provided callback function.
+        ///
+        /// Iteration is stopped early if the callback function returns `false`.
+        ///
+        /// If a new storage capability controller is issued for the path,
+        /// an existing storage capability controller for the path is deleted,
+        /// or a storage capability controller is retargeted from or to the path,
+        /// then the callback must stop iteration by returning false.
+        /// Otherwise, iteration aborts.
         pub fun forEachController(forPath: StoragePath, _ function: ((&StorageCapabilityController): Bool))
 
         /// Issue/create a new storage capability.
@@ -346,8 +354,15 @@ pub struct AuthAccount {
         /// Get all capability controllers for all account capabilities.
         pub fun getControllers(): [&AccountCapabilityController]
 
-        /// Iterate through all account capability controllers for all account capabilities.
-        /// Returning false from the function stops the iteration.
+        /// Iterate over all account capability controllers for all account capabilities,
+        /// passing a reference to each controller to the provided callback function.
+        ///
+        /// Iteration is stopped early if the callback function returns `false`.
+        ///
+        /// If a new account capability controller is issued for the account,
+        /// or an existing account capability controller for the account is deleted,
+        /// then the callback must stop iteration by returning false.
+        /// Otherwise, iteration aborts.
         pub fun forEachController(_ function: ((&AccountCapabilityController): Bool))
 
         /// Issue/create a new account capability.
