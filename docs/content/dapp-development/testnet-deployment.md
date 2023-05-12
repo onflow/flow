@@ -74,7 +74,7 @@ It may be necessary to create additional accounts for testing purposes and you c
 First you need to initialize the configuration:
 
 ```
-> flow project init
+> flow init
 ```
 
 Add the account created with the use of faucet above to the `accounts` property in configuration, like so:
