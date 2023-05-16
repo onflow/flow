@@ -1,5 +1,3 @@
-# API Reference
+# This document has been moved to a new location:
 
-Click on the following link to view the API Reference for the Flow SDK for Unity. 
-
-[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](https://unity-flow-sdk-api-docs.vercel.app/)
+https://github.com/onflow/docs/tree/main/docs/tooling/unity-sdk/api-reference.md
