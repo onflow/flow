@@ -11,44 +11,54 @@ import "google/protobuf/timestamp.proto";
 
 // Execution Data API provides access to execution data from the Flow network
 service ExecutionDataAPI {
-
   // GetExecutionDataByBlockID returns execution data for a specific block ID.
   //
   // Errors:
   // - InvalidArgument is returned if the request contains an invalid block ID.
-  // - NotFound is returned if the start block or execution data are not currently available on the
-  //   node. This may happen if the block was from a previous spork, or if the block has yet not been
-  //   received.
+  // - NotFound is returned if the start block or execution data are not
+  // currently available on the
+  //   node. This may happen if the block was from a previous spork, or if the
+  //   block has yet not been received.
   rpc GetExecutionDataByBlockID(GetExecutionDataByBlockIDRequest)
       returns (GetExecutionDataByBlockIDResponse);
 
-  // SubscribeExecutionData streams execution data for all blocks starting at the requested start
-  // block, up until the latest available block. Once the latest is reached, the stream will remain
-  // open and responses are sent for each new execution data as it becomes available.
+  // SubscribeExecutionData streams execution data for all blocks starting at
+  // the requested start block, up until the latest available block. Once the
+  // latest is reached, the stream will remain open and responses are sent for
+  // each new execution data as it becomes available.
   //
   // Errors:
-  // - InvalidArgument is returned if the request contains an invalid start block.
-  // - NotFound is returned if the start block is not currently available on the node. This may
-  //   happen if the block was from a previous spork, or if the block has yet not been received.
+  // - InvalidArgument is returned if the request contains an invalid start
+  // block.
+  // - NotFound is returned if the start block is not currently available on the
+  // node. This may
+  //   happen if the block was from a previous spork, or if the block has yet
+  //   not been received.
   rpc SubscribeExecutionData(SubscribeExecutionDataRequest)
       returns (stream SubscribeExecutionDataResponse);
 
-  // SubscribeEvents streams events for all blocks starting at the requested start block, up until
-  // the latest available block. Once the latest is reached, the stream will remain open and responses
-  // are sent for each new block as it becomes available.
+  // SubscribeEvents streams events for all blocks starting at the requested
+  // start block, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
   //
-  // Events within each block are filtered by the provided EventFilter, and only those events that
-  // match the filter are returned. If no filter is provided, all events are returned.
+  // Events within each block are filtered by the provided EventFilter, and only
+  // those events that match the filter are returned. If no filter is provided,
+  // all events are returned.
   //
-  // Responses are returned for each block containing at least one event that matches the filter.
-  // Additionally, heatbeat responses (SubscribeEventsResponse with no events) are returned
-  // periodically to allow clients to track which blocks were searched. Clients can use this
+  // Responses are returned for each block containing at least one event that
+  // matches the filter. Additionally, heatbeat responses
+  // (SubscribeEventsResponse with no events) are returned periodically to allow
+  // clients to track which blocks were searched. Clients can use this
   // information to determine which block to start from when reconnecting.
   //
   // Errors:
-  // - InvalidArgument is returned if the request contains an invalid EventFilter or start block.
-  // - NotFound is returned if the start block is not currently available on the node. This may
-  //   happen if the block was from a previous spork, or if the block has yet not been received.
+  // - InvalidArgument is returned if the request contains an invalid
+  // EventFilter or start block.
+  // - NotFound is returned if the start block is not currently available on the
+  // node. This may
+  //   happen if the block was from a previous spork, or if the block has yet
+  //   not been received.
   rpc SubscribeEvents(SubscribeEventsRequest)
       returns (stream SubscribeEventsResponse);
 }
@@ -68,13 +78,15 @@ message GetExecutionDataByBlockIDResponse {
 // The request for SubscribeExecutionData
 message SubscribeExecutionDataRequest {
   // Block ID of the first block to get execution data for.
-  // Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
-  // error is returned. If neither are provided, the latest sealed block is used.
+  // Only one of start_block_id and start_block_height may be provided,
+  // otherwise an InvalidArgument error is returned. If neither are provided,
+  // the latest sealed block is used.
   bytes start_block_id = 1;
 
   // Block height of the first block to get execution data for.
-  // Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
-  // error is returned. If neither are provided, the latest sealed block is used.
+  // Only one of start_block_id and start_block_height may be provided,
+  // otherwise an InvalidArgument error is returned. If neither are provided,
+  // the latest sealed block is used.
   uint64 start_block_height = 2;
 }
 
@@ -94,26 +106,29 @@ message SubscribeExecutionDataResponse {
 // The request for SubscribeEvents
 message SubscribeEventsRequest {
   // Block ID of the first block to search for events.
-  // Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
-  // error is returned. If neither are provided, the latest sealed block is used.
+  // Only one of start_block_id and start_block_height may be provided,
+  // otherwise an InvalidArgument error is returned. If neither are provided,
+  // the latest sealed block is used.
   bytes start_block_id = 1;
 
   // Block height of the first block to search for events.
-  // Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
-  // error is returned. If neither are provided, the latest sealed block is used.
+  // Only one of start_block_id and start_block_height may be provided,
+  // otherwise an InvalidArgument error is returned. If neither are provided,
+  // the latest sealed block is used.
   uint64 start_block_height = 2;
 
   // Filter to apply to events for each block searched.
   // If no filter is provided, all events are returned.
   EventFilter filter = 3;
 
-  // Interval in block heights at which the server should return a heartbeat message to the client.
-  // The heartbeat is a normal SubscribeEventsResponse with no events, and allows clients to track
-  // which blocks were searched. Clients can use this information to determine which block to start
-  // from when reconnecting.
+  // Interval in block heights at which the server should return a heartbeat
+  // message to the client. The heartbeat is a normal SubscribeEventsResponse
+  // with no events, and allows clients to track which blocks were searched.
+  // Clients can use this information to determine which block to start from
+  // when reconnecting.
   //
-  // The interval is calculated from the last response returned, which could be either another
-  // heartbeat or a response containing events.
+  // The interval is calculated from the last response returned, which could be
+  // either another heartbeat or a response containing events.
   uint64 heartbeat_interval = 4;
 }
 
@@ -126,9 +141,9 @@ message SubscribeEventsResponse {
   uint64 block_height = 2;
 
   // Events matching the EventFilter in the request.
-  // The API may return no events which signals a periodic heartbeat. This allows clients to track
-  // which blocks were searched. Client can use this information to determine which block to start
-  // from when reconnecting.
+  // The API may return no events which signals a periodic heartbeat. This
+  // allows clients to track which blocks were searched. Client can use this
+  // information to determine which block to start from when reconnecting.
   repeated entities.Event events = 3;
 
   // Timestamp from the block containing the events.
@@ -136,13 +151,14 @@ message SubscribeEventsResponse {
 }
 
 // EventFilter defines the filter to apply to block events.
-// Filters are applied as an OR operation, i.e. any event matching any of the filters is returned.
-// If no filters are provided, all events are returned.
-// If there are any invalid filters, the API will return an InvalidArgument error.
+// Filters are applied as an OR operation, i.e. any event matching any of the
+// filters is returned. If no filters are provided, all events are returned. If
+// there are any invalid filters, the API will return an InvalidArgument error.
 message EventFilter {
   // A list of full event types to include.
   //
-  // All events exactly matching any of the provided event types will be returned.
+  // All events exactly matching any of the provided event types will be
+  // returned.
   //
   // Event types have 2 formats:
   // - Protocol events:
@@ -161,15 +177,17 @@ message EventFilter {
   // - Smart contract events:
   //     A.[contract address].[contract name]
   //
-  // This filter matches on the full contract including its address, not just the contract's name.
+  // This filter matches on the full contract including its address, not just
+  // the contract's name.
   repeated string contract = 2;
 
   // A list of addresses who's events should be included.
   //
-  // All events emitted by any contract held by any of the provided addresses will be returned.
+  // All events emitted by any contract held by any of the provided addresses
+  // will be returned.
   //
-  // Addresses must be Flow account addresses in hex format and valid for the network the node
-  // is connected to. i.e. only a mainnet address is valid for a mainnet node.
-  // Addresses may optionally include the 0x prefix.
+  // Addresses must be Flow account addresses in hex format and valid for the
+  // network the node is connected to. i.e. only a mainnet address is valid for
+  // a mainnet node. Addresses may optionally include the 0x prefix.
   repeated string address = 3;
 }
