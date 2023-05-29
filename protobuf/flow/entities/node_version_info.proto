@@ -6,8 +6,8 @@ option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
 option java_package = "org.onflow.protobuf.entities";
 
 message NodeVersionInfo {
-  string semver = 1;
-  string commit = 2;
-  bytes spork_id = 3;
-  uint64 protocol_version = 4;
+    string semver = 1;
+    string commit = 2;
+    bytes spork_id = 3;
+    uint64 protocol_version = 4;
 }

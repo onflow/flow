@@ -107,12 +107,14 @@ func (m *GetExecutionDataByBlockIDResponse) GetBlockExecutionData() *entities.Bl
 // The request for SubscribeExecutionData
 type SubscribeExecutionDataRequest struct {
 	// Block ID of the first block to get execution data for.
-	// Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
-	// error is returned. If neither are provided, the latest sealed block is used.
+	// Only one of start_block_id and start_block_height may be provided,
+	// otherwise an InvalidArgument error is returned. If neither are provided,
+	// the latest sealed block is used.
 	StartBlockId []byte `protobuf:"bytes,1,opt,name=start_block_id,json=startBlockId,proto3" json:"start_block_id,omitempty"`
 	// Block height of the first block to get execution data for.
-	// Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
-	// error is returned. If neither are provided, the latest sealed block is used.
+	// Only one of start_block_id and start_block_height may be provided,
+	// otherwise an InvalidArgument error is returned. If neither are provided,
+	// the latest sealed block is used.
 	StartBlockHeight     uint64   `protobuf:"varint,2,opt,name=start_block_height,json=startBlockHeight,proto3" json:"start_block_height,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -221,23 +223,26 @@ func (m *SubscribeExecutionDataResponse) GetBlockTimestamp() *timestamppb.Timest
 // The request for SubscribeEvents
 type SubscribeEventsRequest struct {
 	// Block ID of the first block to search for events.
-	// Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
-	// error is returned. If neither are provided, the latest sealed block is used.
+	// Only one of start_block_id and start_block_height may be provided,
+	// otherwise an InvalidArgument error is returned. If neither are provided,
+	// the latest sealed block is used.
 	StartBlockId []byte `protobuf:"bytes,1,opt,name=start_block_id,json=startBlockId,proto3" json:"start_block_id,omitempty"`
 	// Block height of the first block to search for events.
-	// Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument
-	// error is returned. If neither are provided, the latest sealed block is used.
+	// Only one of start_block_id and start_block_height may be provided,
+	// otherwise an InvalidArgument error is returned. If neither are provided,
+	// the latest sealed block is used.
 	StartBlockHeight uint64 `protobuf:"varint,2,opt,name=start_block_height,json=startBlockHeight,proto3" json:"start_block_height,omitempty"`
 	// Filter to apply to events for each block searched.
 	// If no filter is provided, all events are returned.
 	Filter *EventFilter `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
-	// Interval in block heights at which the server should return a heartbeat message to the client.
-	// The heartbeat is a normal SubscribeEventsResponse with no events, and allows clients to track
-	// which blocks were searched. Clients can use this information to determine which block to start
-	// from when reconnecting.
+	// Interval in block heights at which the server should return a heartbeat
+	// message to the client. The heartbeat is a normal SubscribeEventsResponse
+	// with no events, and allows clients to track which blocks were searched.
+	// Clients can use this information to determine which block to start from
+	// when reconnecting.
 	//
-	// The interval is calculated from the last response returned, which could be either another
-	// heartbeat or a response containing events.
+	// The interval is calculated from the last response returned, which could be
+	// either another heartbeat or a response containing events.
 	HeartbeatInterval    uint64   `protobuf:"varint,4,opt,name=heartbeat_interval,json=heartbeatInterval,proto3" json:"heartbeat_interval,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -304,9 +309,9 @@ type SubscribeEventsResponse struct {
 	// Block height of the block containing the events.
 	BlockHeight uint64 `protobuf:"varint,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
 	// Events matching the EventFilter in the request.
-	// The API may return no events which signals a periodic heartbeat. This allows clients to track
-	// which blocks were searched. Client can use this information to determine which block to start
-	// from when reconnecting.
+	// The API may return no events which signals a periodic heartbeat. This
+	// allows clients to track which blocks were searched. Client can use this
+	// information to determine which block to start from when reconnecting.
 	Events []*entities.Event `protobuf:"bytes,3,rep,name=events,proto3" json:"events,omitempty"`
 	// Timestamp from the block containing the events.
 	BlockTimestamp       *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=block_timestamp,json=blockTimestamp,proto3" json:"block_timestamp,omitempty"`
@@ -369,13 +374,14 @@ func (m *SubscribeEventsResponse) GetBlockTimestamp() *timestamppb.Timestamp {
 }
 
 // EventFilter defines the filter to apply to block events.
-// Filters are applied as an OR operation, i.e. any event matching any of the filters is returned.
-// If no filters are provided, all events are returned.
-// If there are any invalid filters, the API will return an InvalidArgument error.
+// Filters are applied as an OR operation, i.e. any event matching any of the
+// filters is returned. If no filters are provided, all events are returned. If
+// there are any invalid filters, the API will return an InvalidArgument error.
 type EventFilter struct {
 	// A list of full event types to include.
 	//
-	// All events exactly matching any of the provided event types will be returned.
+	// All events exactly matching any of the provided event types will be
+	// returned.
 	//
 	// Event types have 2 formats:
 	//   - Protocol events:
@@ -393,15 +399,17 @@ type EventFilter struct {
 	//   - Smart contract events:
 	//     A.[contract address].[contract name]
 	//
-	// This filter matches on the full contract including its address, not just the contract's name.
+	// This filter matches on the full contract including its address, not just
+	// the contract's name.
 	Contract []string `protobuf:"bytes,2,rep,name=contract,proto3" json:"contract,omitempty"`
 	// A list of addresses who's events should be included.
 	//
-	// All events emitted by any contract held by any of the provided addresses will be returned.
+	// All events emitted by any contract held by any of the provided addresses
+	// will be returned.
 	//
-	// Addresses must be Flow account addresses in hex format and valid for the network the node
-	// is connected to. i.e. only a mainnet address is valid for a mainnet node.
-	// Addresses may optionally include the 0x prefix.
+	// Addresses must be Flow account addresses in hex format and valid for the
+	// network the node is connected to. i.e. only a mainnet address is valid for
+	// a mainnet node. Addresses may optionally include the 0x prefix.
 	Address              []string `protobuf:"bytes,3,rep,name=address,proto3" json:"address,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

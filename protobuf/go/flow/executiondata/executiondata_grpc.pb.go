@@ -21,36 +21,50 @@ type ExecutionDataAPIClient interface {
 	// GetExecutionDataByBlockID returns execution data for a specific block ID.
 	//
 	// Errors:
-	//   - InvalidArgument is returned if the request contains an invalid block ID.
-	//   - NotFound is returned if the start block or execution data are not currently available on the
-	//     node. This may happen if the block was from a previous spork, or if the block has yet not been
-	//     received.
+	// - InvalidArgument is returned if the request contains an invalid block ID.
+	// - NotFound is returned if the start block or execution data are not
+	// currently available on the
+	//
+	//	node. This may happen if the block was from a previous spork, or if the
+	//	block has yet not been received.
 	GetExecutionDataByBlockID(ctx context.Context, in *GetExecutionDataByBlockIDRequest, opts ...grpc.CallOption) (*GetExecutionDataByBlockIDResponse, error)
-	// SubscribeExecutionData streams execution data for all blocks starting at the requested start
-	// block, up until the latest available block. Once the latest is reached, the stream will remain
-	// open and responses are sent for each new execution data as it becomes available.
+	// SubscribeExecutionData streams execution data for all blocks starting at
+	// the requested start block, up until the latest available block. Once the
+	// latest is reached, the stream will remain open and responses are sent for
+	// each new execution data as it becomes available.
 	//
 	// Errors:
-	//   - InvalidArgument is returned if the request contains an invalid start block.
-	//   - NotFound is returned if the start block is not currently available on the node. This may
-	//     happen if the block was from a previous spork, or if the block has yet not been received.
+	// - InvalidArgument is returned if the request contains an invalid start
+	// block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may
+	//
+	//	happen if the block was from a previous spork, or if the block has yet
+	//	not been received.
 	SubscribeExecutionData(ctx context.Context, in *SubscribeExecutionDataRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataClient, error)
-	// SubscribeEvents streams events for all blocks starting at the requested start block, up until
-	// the latest available block. Once the latest is reached, the stream will remain open and responses
-	// are sent for each new block as it becomes available.
+	// SubscribeEvents streams events for all blocks starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
-	// Events within each block are filtered by the provided EventFilter, and only those events that
-	// match the filter are returned. If no filter is provided, all events are returned.
+	// Events within each block are filtered by the provided EventFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
 	//
-	// Responses are returned for each block containing at least one event that matches the filter.
-	// Additionally, heatbeat responses (SubscribeEventsResponse with no events) are returned
-	// periodically to allow clients to track which blocks were searched. Clients can use this
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heatbeat responses
+	// (SubscribeEventsResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
-	//   - InvalidArgument is returned if the request contains an invalid EventFilter or start block.
-	//   - NotFound is returned if the start block is not currently available on the node. This may
-	//     happen if the block was from a previous spork, or if the block has yet not been received.
+	// - InvalidArgument is returned if the request contains an invalid
+	// EventFilter or start block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may
+	//
+	//	happen if the block was from a previous spork, or if the block has yet
+	//	not been received.
 	SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error)
 }
 
@@ -142,36 +156,50 @@ type ExecutionDataAPIServer interface {
 	// GetExecutionDataByBlockID returns execution data for a specific block ID.
 	//
 	// Errors:
-	//   - InvalidArgument is returned if the request contains an invalid block ID.
-	//   - NotFound is returned if the start block or execution data are not currently available on the
-	//     node. This may happen if the block was from a previous spork, or if the block has yet not been
-	//     received.
+	// - InvalidArgument is returned if the request contains an invalid block ID.
+	// - NotFound is returned if the start block or execution data are not
+	// currently available on the
+	//
+	//	node. This may happen if the block was from a previous spork, or if the
+	//	block has yet not been received.
 	GetExecutionDataByBlockID(context.Context, *GetExecutionDataByBlockIDRequest) (*GetExecutionDataByBlockIDResponse, error)
-	// SubscribeExecutionData streams execution data for all blocks starting at the requested start
-	// block, up until the latest available block. Once the latest is reached, the stream will remain
-	// open and responses are sent for each new execution data as it becomes available.
+	// SubscribeExecutionData streams execution data for all blocks starting at
+	// the requested start block, up until the latest available block. Once the
+	// latest is reached, the stream will remain open and responses are sent for
+	// each new execution data as it becomes available.
 	//
 	// Errors:
-	//   - InvalidArgument is returned if the request contains an invalid start block.
-	//   - NotFound is returned if the start block is not currently available on the node. This may
-	//     happen if the block was from a previous spork, or if the block has yet not been received.
+	// - InvalidArgument is returned if the request contains an invalid start
+	// block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may
+	//
+	//	happen if the block was from a previous spork, or if the block has yet
+	//	not been received.
 	SubscribeExecutionData(*SubscribeExecutionDataRequest, ExecutionDataAPI_SubscribeExecutionDataServer) error
-	// SubscribeEvents streams events for all blocks starting at the requested start block, up until
-	// the latest available block. Once the latest is reached, the stream will remain open and responses
-	// are sent for each new block as it becomes available.
+	// SubscribeEvents streams events for all blocks starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
-	// Events within each block are filtered by the provided EventFilter, and only those events that
-	// match the filter are returned. If no filter is provided, all events are returned.
+	// Events within each block are filtered by the provided EventFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
 	//
-	// Responses are returned for each block containing at least one event that matches the filter.
-	// Additionally, heatbeat responses (SubscribeEventsResponse with no events) are returned
-	// periodically to allow clients to track which blocks were searched. Clients can use this
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heatbeat responses
+	// (SubscribeEventsResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
-	//   - InvalidArgument is returned if the request contains an invalid EventFilter or start block.
-	//   - NotFound is returned if the start block is not currently available on the node. This may
-	//     happen if the block was from a previous spork, or if the block has yet not been received.
+	// - InvalidArgument is returned if the request contains an invalid
+	// EventFilter or start block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may
+	//
+	//	happen if the block was from a previous spork, or if the block has yet
+	//	not been received.
 	SubscribeEvents(*SubscribeEventsRequest, ExecutionDataAPI_SubscribeEventsServer) error
 }
 
