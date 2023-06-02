@@ -134,6 +134,7 @@ message GetTransactionResultResponse {
   uint32 status_code = 1;
   string error_message = 2;
   repeated entities.Event events = 3;
+  EventEncodingVersion event_encoding_version = 4;
 }
 
 message GetTransactionsByBlockIDRequest {
@@ -142,6 +143,7 @@ message GetTransactionsByBlockIDRequest {
 
 message GetTransactionResultsResponse {
   repeated GetTransactionResultResponse transaction_results = 1;
+  EventEncodingVersion event_encoding_version = 2;
 }
 
 // Registers
