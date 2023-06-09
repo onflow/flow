@@ -1235,7 +1235,7 @@
           "flow-go-tag": "v0.31.4",
           "flow-dps-tag": "v0.31.4",
           "cadence-tag": "v0.39.5",
-          "docker-tag": "v0.30.6"
+          "docker-tag": "v0.31.4"
         },
         "accessNodes": [],
         "seedNodes": [
@@ -1276,7 +1276,7 @@
           "flow-go-tag": "v0.31.2",
           "flow-dps-tag": "v0.31.4",
           "cadence-tag": "v0.39.1",
-          "docker-tag": "v0.30.6"
+          "docker-tag": "v0.31.2"
         },
         "accessNodes": [],
         "seedNodes": [
@@ -1292,7 +1292,7 @@
       },
       "testnet44": {
         "id": 44,
-        "live": true,
+        "live": false,
         "name": "Testnet44",
         "sporkTime": "2023-04-25T00:42:00Z",
         "rootHeight": "100675451",
