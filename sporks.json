@@ -1216,7 +1216,7 @@
         "rootHeight": "105155067",
         "rootParentId": "daced0cdeed95cf143320db50ac904ed17dabe04898e988264af2a71e0d1ca48",
         "rootStateCommitment": "e8c39b7a1672cb3f5f70da6f1d71a3a0322d3d6c3d7ebf8092ae2ae40d12c30b",
-        "gitCommitHash": "b5b65c9d43bf6bd12766eef06e870990c3963b7c",
+        "gitCommitHash": "3d4159e93c92cc6331e69708b8c3270d40c09c5f",
         "stateArtefacts": {
           "gcp": {
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-46-execution/public-root-information/root.checkpoint",
@@ -1233,7 +1233,7 @@
         },
         "tags": {
           "flow-go-tag": "v0.31.4",
-          "flow-dps-tag": "v0.30.6",
+          "flow-dps-tag": "v0.31.4",
           "cadence-tag": "v0.39.5",
           "docker-tag": "v0.30.6"
         },
@@ -1251,13 +1251,13 @@
       },
       "testnet45": {
         "id": 45,
-        "live": true,
+        "live": false,
         "name": "Testnet45",
         "sporkTime": "2023-06-07T00:45:00Z",
         "rootHeight": "105032150",
         "rootParentId": "71df56106ee1492c055a60e2d951a6a8d1b7d1483b903f10146cec912e793e82",
         "rootStateCommitment": "0e2e053ca4436a4881f65acc031e12820b5260ef616446950650a1bc8fc9be2f",
-        "gitCommitHash": "b5b65c9d43bf6bd12766eef06e870990c3963b7c",
+        "gitCommitHash": "8d32e5ea087fcceb0d1aa923c56be1d5a2d6538a",
         "stateArtefacts": {
           "gcp": {
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-45-execution/public-root-information/root.checkpoint",
@@ -1274,7 +1274,7 @@
         },
         "tags": {
           "flow-go-tag": "v0.31.2",
-          "flow-dps-tag": "v0.30.6",
+          "flow-dps-tag": "v0.31.4",
           "cadence-tag": "v0.39.1",
           "docker-tag": "v0.30.6"
         },
