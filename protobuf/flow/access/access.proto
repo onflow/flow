@@ -135,6 +135,10 @@ service AccessAPI {
   // and as usual, until sealed, this data can change
   rpc GetExecutionResultForBlockID(GetExecutionResultForBlockIDRequest)
       returns (ExecutionResultForBlockIDResponse);
+
+  // GetExecutionResultByID returns Execution Result by its ID.
+  rpc GetExecutionResultByID(GetExecutionResultByIDRequest)
+      returns (ExecutionResultByIDResponse);
 }
 
 message PingRequest {}
@@ -351,6 +355,15 @@ message GetExecutionResultForBlockIDRequest {
 }
 
 message ExecutionResultForBlockIDResponse {
+  entities.ExecutionResult execution_result = 1;
+  entities.Metadata metadata = 2;
+}
+
+message GetExecutionResultByIDRequest {
+  bytes id = 1;
+}
+
+message ExecutionResultByIDResponse {
   entities.ExecutionResult execution_result = 1;
   entities.Metadata metadata = 2;
 }
