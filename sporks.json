@@ -86,7 +86,7 @@
           }
         ],
         "accessNodes": [
-          "access.mainnet.nodes.onflow.org:9000"
+          "access-001.mainnet22.nodes.onflow.org:9000"
         ]
       },
       "mainnet21": {
