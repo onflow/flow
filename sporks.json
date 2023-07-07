@@ -60,7 +60,51 @@
             "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-22-execution/public-root-information/root-protocol-state-snapshot.json",
             "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-22-execution/public-root-information/root-protocol-state-snapshot.json.asc",
             "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-22-execution/public-root-information/node-infos.pub.json",
-            "executionStateBucket": "flow_public_mainnet22_execution_state"
+            "executionStateBucket": "flow_public_mainnet22_execution_state",
+            "executionStateArchive": "https://storage.googleapis.com/flow-execution-archive/mainnet22/execution-state.tar.gz",
+            "executionStateArchiveChecksum": "https://storage.googleapis.com/flow-execution-archive/mainnet22/execution-state.tar.gz.sha256",
+            "protocolDBArchives": [
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partaa",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partaa.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partab",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partab.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partac",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partac.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partad",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partad.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partae",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partae.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partaf",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partaf.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partag",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partag.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partah",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partah.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partai",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partai.sha256"
+              },
+              {
+                "data": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partaj",
+                "checksum": "https://storage.googleapis.com/flow-execution-archive/mainnet22/protocol-db.tar.gz.partaj.sha256"
+              }
+            ]
           },
           "s3": {
             "rootCheckpointFile": "",
