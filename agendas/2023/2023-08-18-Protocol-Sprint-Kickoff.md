@@ -122,7 +122,7 @@
 - https://github.com/dapperlabs/flow-go/issues/6801
 - https://github.com/dapperlabs/flow-go/issues/6802
 - https://github.com/dapperlabs/flow-go/issues/5514
-- Creating static identity model, a huge refactoring of `flow.Identity`
+- Creating static identity model, a huge refactoring of`flow.Identity`
     - https://github.com/dapperlabs/flow-go/issues/6232
 - https://github.com/dapperlabs/flow-go/issues/5529
 
