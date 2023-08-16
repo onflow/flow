@@ -1,6 +1,6 @@
 # Team Wins 🎉
 
--### **Performance Pod Sprint Objective - Jan Bernatik**
+### **Performance Pod Sprint Objective - Jan Bernatik**
 
 **Done last sprint**
 
