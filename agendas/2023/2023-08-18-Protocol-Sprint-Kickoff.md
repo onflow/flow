@@ -123,7 +123,15 @@
 
 
 **This sprint**
+- Reviews of the following (Jordan S)
+  - https://github.com/onflow/flow-go/pull/4579 (Yurii)
+  - https://github.com/onflow/flow-go/pull/4597 (Yurii)
+  - https://github.com/onflow/flow-go/pull/4613 (Yurii)
+  - https://github.com/onflow/flow-go/pull/4625 (Yurii)
+  - https://github.com/onflow/flow-go/pull/4545 (Yurii)
+  - https://github.com/onflow/flow-go/pull/4559 (Yurii)
 
+**On Hold (Yurii OOO)**
 - https://github.com/dapperlabs/flow-go/issues/6801
 - https://github.com/dapperlabs/flow-go/issues/6802
 - https://github.com/dapperlabs/flow-go/issues/5514
