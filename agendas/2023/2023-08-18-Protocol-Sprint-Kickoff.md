@@ -120,7 +120,7 @@
 ### Consensus (Dynamic Protocol State) **- Jerome P**
 
 **Done last sprint**
-
+- Continuing work on Dynamic Protocol State, PR merges waiting on reviews
 
 **This sprint**
 - Reviews of the following (Jordan S)
