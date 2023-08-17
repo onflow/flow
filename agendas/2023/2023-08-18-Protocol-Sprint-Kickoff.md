@@ -1,9 +1,12 @@
 # Team Wins 🎉
 
-### **Performance Pod Sprint Objective - Jan Bernatik**
+- ...
+
+### **Performance Pod Sprint Objective - Jan B**
 
 **Done last sprint**
 
+-
 
 **This sprint**
 
@@ -30,7 +33,7 @@
 
 ### Cadence
 
-### **Stable Cadence - Jan Bernatik**
+### **Stable Cadence - Jan B**
 
 <aside>
 💡 **Objective:** long-term support release of Cadence with no expected breaking changes
@@ -38,6 +41,8 @@
 </aside>
 
 **Done last sprint**
+
+-
 
 **This sprint**
 
@@ -63,24 +68,24 @@
 - https://github.com/onflow/cadence/issues/2157
 
 
-### Access & Data Availability **- Peter Argue**
+### Access & Data Availability **- Peter A**
 
 **Done last sprint**
-
+- Deployed and fixed RN script execution in testnet (Amlandeep)
+- Collected data comparing the EN and RN results (100% match!) and fixed Exec data sync bugs (Amlandeep)
+- Started design doc for consolidating RN features to the AN (Amlandeep)
 
 **This sprint**
 
-- Continue working with KROK on Access PRs
 - Archive Node V2
-    - Complete script execution validation between RN/ENs
-    - https://github.com/onflow/flow-go/issues/4606
-- [OKR] Complete Execution Data Improvements
-    - https://github.com/onflow/flow-go/issues/2120
-    - https://github.com/onflow/flow-go/issues/4455
+    - https://github.com/onflow/flow-go/issues/4606 (Amlandeep)
+    - https://github.com/onflow/flow-go/issues/4631 (Amlandeep)
+- [OKR] On hold (Peter OOO): Execution Data Improvements
+    - https://github.com/onflow/flow-go/issues/2120 (Peter)
+    - https://github.com/onflow/flow-go/issues/4455 (Peter)
 
 **Active Epics**
 
-- https://github.com/dapperlabs/flow-internal/issues/1745
 - https://github.com/onflow/flow-go/issues/4410
 
 **On Hold**
@@ -90,7 +95,7 @@
 - [OKR] Enable Execution Sync on Public Network
     - On hold until execution data improvements are complete
 
-### **Permissionless Network - Kan Zhang**
+### **Permissionless Network - Kan Z**
 
 **Done last sprint**
 
@@ -112,13 +117,21 @@
 - BN2 https://github.com/dapperlabs/flow-go/issues/6341
 - TPS  https://github.com/dapperlabs/flow-go/issues/6296
 
-### Consensus (Dynamic Protocol State) **- Jerome Pimmel**
+### Consensus (Dynamic Protocol State) **- Jerome P**
 
 **Done last sprint**
 
 
 **This sprint**
+- Reviews of the following (Jordan S)
+  - https://github.com/onflow/flow-go/pull/4579 (Yurii)
+  - https://github.com/onflow/flow-go/pull/4597 (Yurii)
+  - https://github.com/onflow/flow-go/pull/4613 (Yurii)
+  - https://github.com/onflow/flow-go/pull/4625 (Yurii)
+  - https://github.com/onflow/flow-go/pull/4545 (Yurii)
+  - https://github.com/onflow/flow-go/pull/4559 (Yurii)
 
+**On Hold (Yurii OOO)**
 - https://github.com/dapperlabs/flow-go/issues/6801
 - https://github.com/dapperlabs/flow-go/issues/6802
 - https://github.com/dapperlabs/flow-go/issues/5514
@@ -126,7 +139,7 @@
     - https://github.com/dapperlabs/flow-go/issues/6232
 - https://github.com/dapperlabs/flow-go/issues/5529
 
-### **Infra - Sjon-Paul Brown**
+### **Infra - JP**
 
 
 **Done last sprint**
