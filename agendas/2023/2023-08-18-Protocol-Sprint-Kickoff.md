@@ -144,20 +144,35 @@
 
 **Done last sprint**
 
+**Cast**
+- Assisted with CAST staging deployment & configuration
+- Updated CAST infra in preparation for external team
+- Removed unnecessary read replicats for CAST infra
+
+**Node Hosting**
+- Onboarded external nodes to Canary network for automation & infra testing
+- Increased Mainnet EN disk sizes
+- Asissted with the Devnet47 spork infra, config, & cleanup
+- Collected granular node hosting costs for nodes
+- Scale down Sandboxnet in preparation for full depracation
+
+**Quick Node**
+- Fully shifted Devnet traffic to QuickNode
+- Began shifting Mainnet gRPC traffic to QuickNode
+
+**Flow DevEx**
+- Created records & redirects for https://cookbook.onflow.org/ to https://cookbook.flow.com
+- Created staging records for staging playground on flow.com domain
+
 **********************This Sprint**********************
-
-******Dapper Flow Node******
-
-- Onboard Dapper nodes to Canary & Devnet
 
 **********************Quick Node**********************
 
 - Assist with Quick Node Migration
 
-************Cast FYI************
+************Node Hosting************
 
-- Assist with the deployment & management of Cast FYI
-
-********************Flow DevEx********************
-
-- Discovering & propose solution for migrating away from K8s for DevEx & Cast applications
+- Fully deprecate Sandboxnet by snapshotting and validating restoration
+- Scale down Devnet to ideal size
+- Scale down Canary to ideal size
+- Execute infra clean up tasks
