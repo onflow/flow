@@ -1,6 +1,6 @@
 # Team Wins 🎉
 
-- ...
+- Added Andrii S from KROK team residents to the onflow/flow-go repo as a reviewer
 
 ### **Performance Pod Sprint Objective - Jan B**
 
