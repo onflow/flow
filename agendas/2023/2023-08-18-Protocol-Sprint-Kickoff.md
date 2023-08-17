@@ -1,6 +1,6 @@
 # Team Wins 🎉
 
-- ...
+- Added Andrii S from KROK team residents to the onflow/flow-go repo as a reviewer
 
 ### **Performance Pod Sprint Objective - Jan B**
 
@@ -120,7 +120,7 @@
 ### Consensus (Dynamic Protocol State) **- Jerome P**
 
 **Done last sprint**
-
+- Continuing work on Dynamic Protocol State, PR merges waiting on reviews
 
 **This sprint**
 - Reviews of the following (Jordan S)
