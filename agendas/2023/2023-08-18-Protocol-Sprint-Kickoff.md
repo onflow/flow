@@ -4,6 +4,9 @@
 - Closed 3 FLIPs in Cadence LDM ([built-in mutability entitlements](https://github.com/onflow/flips/pull/86), [Account type refactor](https://github.com/onflow/flips/pull/92), [Nested Types Requirements removal](https://github.com/onflow/flips/pull/118)).
 - Found [solution](https://github.com/onflow/flow-go/pull/4618) for mitigating the protocol state growth problem on Execution nodes.
 - Completed implementation of 3 Stable Cadence features ([External Mutability Improvements](https://github.com/onflow/cadence/issues/2638), [Type Requirements Removal](https://github.com/onflow/cadence/issues/1283) and [Declare events in interface](https://github.com/onflow/cadence/issues/2602))
+- CAST
+  - CAST [staging environment](https://fe.staging.cast.dapperlabs.com/#/) is live again.
+  - BuildSquad's first PR to change CAST look'n'feel is live on [production](https://cast.fyi/)
 
 ### **Performance Pod Sprint Objective - Jan B**
 
