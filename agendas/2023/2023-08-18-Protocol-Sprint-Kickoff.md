@@ -147,15 +147,19 @@ Chores
 ### **Permissionless Network - Kan Z**
 
 **Done last sprint**
+- https://github.com/onflow/flow-go/pull/4627
+- https://github.com/onflow/flow-go/pull/4629
+- https://github.com/onflow/flow-go/pull/4635
+- https://github.com/onflow/flow-go/pull/4485 
 
 **This sprint**
-
 - Baseline protections
-    - https://github.com/onflow/flow-go/pull/4574
-    - https://github.com/dapperlabs/flow-go/issues/6819
-    - https://github.com/dapperlabs/flow-internal/issues/1892
-    - https://github.com/dapperlabs/flow-go/issues/6472
-    - https://github.com/dapperlabs/flow-go/issues/6798
+    - [Refactoring Networking Layer for Improved Structure and Maintainability](https://github.com/dapperlabs/flow-go/issues/6819) [PR4627](https://github.com/onflow/flow-go/pull/4627) [PR4629](https://github.com/onflow/flow-go/pull/4629) [PR4635](https://github.com/onflow/flow-go/pull/4635) (continue)
+    - [Simplify Application-Specific RPC Inspector for Control Messages](https://github.com/dapperlabs/flow-go/issues/6819) (finish)
+    - [Benchnet E2E testing - RPC validation Inspector & ALSP](https://github.com/dapperlabs/flow-internal/issues/1892) (start) 
+    - https://github.com/dapperlabs/flow-go/issues/6472 (wrapping up, [PR](https://github.com/onflow/flow-go/pull/4574) is under review)
+    - https://github.com/dapperlabs/flow-go/issues/6798 (start)
+    - https://github.com/dapperlabs/flow-go/issues/6812 (continue)
 
 **Active Epics**
 
