@@ -23,14 +23,13 @@ chores
 
 **This sprint**
 
-- Continue Atree register inlining:
-  https://github.com/onflow/atree/issues/292
-- Complete data collection of script execution on RN
-- Storehouse design (execution state on disk)
-- execution state scaling POC: https://github.com/onflow/flow-go/issues/3809
+- [Continue Atree register inlining](https://github.com/onflow/atree/issues/292)
+- continue testing [Atree register inlining migration](https://github.com/onflow/flow-go/pull/4633)
+- Start imlementation of Storehouse design (execution state on disk)
+- Deploy protocol state growth mitigation
+
 - Investigations:
     - Go Routine Leak
-    - Disc space usage
 
 **On Hold**
 
@@ -102,24 +101,19 @@ Chores
 
 - Bugfixes
     - Internal issue #139
-    - https://github.com/onflow/cadence/issues/2458
+- Needed dependency for Atree register inlining: [Add tests for child container being mutated while parent container is iterated](https://github.com/onflow/cadence/issues/2663)
 - Continue work on Stable Cadence preview release
-- Continue implementation of Account Type refactoring
-    - https://github.com/onflow/cadence/issues/2641
-    - https://github.com/onflow/flips/pull/92
+- Continue implementation of [Account Type refactoring](https://github.com/onflow/cadence/issues/2641)
 - Continuing with Stable Cadence scope / discussions
-    - Ongoing FLIPs: [Stable Cadence FLIPs status summary](https://www.notion.so/Stable-Cadence-FLIPs-status-summary-c58a5d5c408047dba59321e4d3a0cef1?pvs=21)
-        - [External mutability restrictions](https://www.notion.so/Stable-Cadence-FLIPs-status-summary-c58a5d5c408047dba59321e4d3a0cef1?pvs=21)
-        - [Account Type Refactoring](https://github.com/onflow/flips/pull/92)
-        - [Removing Type Requirements](https://github.com/onflow/flips/pull/118)
+    - Ongoing FLIPs:
+        - Blocking preview release: [Relaxing interface conformance restrictions](https://github.com/onflow/flips/pull/134)
     - Continue to work on a proposal for [Attachments trolling attack](https://www.notion.so/Stable-Cadence-FLIPs-status-summary-c58a5d5c408047dba59321e4d3a0cef1?pvs=21)
-    - Resume discussion of the re-entrancy edge cases
+ 
+**On Hold**
+- Discussion of the re-entrancy edge cases
 
 **Active Epics**
-
-- https://github.com/dapperlabs/cadence-private-issues/issues/6
-    - https://github.com/onflow/cadence/issues/2091
-- https://github.com/onflow/cadence/issues/2157
+- [Stable Cadence (aka Cadence 1.0)](https://github.com/onflow/cadence/issues/2642)
 
 
 ### Access & Data Availability **- Peter A**
@@ -132,8 +126,9 @@ Chores
 **This sprint**
 
 - Archive Node V2
-    - https://github.com/onflow/flow-go/issues/4606 (Amlandeep)
-    - https://github.com/onflow/flow-go/issues/4631 (Amlandeep)
+    - [Create FVM runtime with new pebble register database as store](https://github.com/onflow/flow-go/issues/4632) (Amlandeep)
+    - [Move register DB in Archive node to Access Node](https://github.com/onflow/flow-go/issues/4606) (Amlandeep)
+    - [Make use of Execution state sync data for Access node API requests](https://github.com/onflow/flow-go/issues/4631) (Amlandeep)
 - [OKR] On hold (Peter OOO): Execution Data Improvements
     - https://github.com/onflow/flow-go/issues/2120 (Peter)
     - https://github.com/onflow/flow-go/issues/4455 (Peter)
