@@ -81,7 +81,7 @@ Features
 - [Remove linking based capability API and associated code](https://github.com/onflow/cadence/pull/2595)
 
 Stable Cadence PReview release
-- [\[LS\] Update to Cadence v0.40.0]https://github.com/onflow/cadence-tools/issues/189)
+- [[LS] Update to Cadence v0.40.0](https://github.com/onflow/cadence-tools/issues/189)
 - [Update to Cadence v0.40.0](https://github.com/onflow/flow-cli/issues/1158)
 - [Sync Stable Cadence branch with master](https://github.com/onflow/cadence/issues/2701)
 - ...
