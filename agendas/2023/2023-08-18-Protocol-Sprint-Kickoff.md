@@ -174,7 +174,9 @@ Chores
 - https://github.com/onflow/flow-go/pull/4627
 - https://github.com/onflow/flow-go/pull/4629
 - https://github.com/onflow/flow-go/pull/4635
-- https://github.com/onflow/flow-go/pull/4485 
+- https://github.com/onflow/flow-go/pull/4485
+- https://github.com/onflow/flow-go/pull/4574
+- https://github.com/onflow/flow-go/pull/4642
 
 **This sprint**
 - Baseline protections
