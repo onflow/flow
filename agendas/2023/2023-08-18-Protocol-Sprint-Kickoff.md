@@ -30,11 +30,14 @@
 Atree Register Inlining
 - [Reduce encoded size of map and bump version](https://github.com/onflow/atree/pull/331)
 - [Bump safer-golangci-lint to 1.52.2](https://github.com/onflow/atree/pull/304)
+
 Issues
 - [Add aditional authorizer for the service transaction](https://github.com/onflow/flow-go/issues/4291)
-    - [Remove dual authorizers for system transaction](https://github.com/onflow/flow-go/pull/4554)   
+    - [Remove dual authorizers for system transaction](https://github.com/onflow/flow-go/pull/4554)
+
 Archive node script execution
 - [Create validation mode for script exec on RN/EN](https://github.com/onflow/flow-go/pull/4573)
+
 chores
 - [backport v0.31 store chunk data separate dir](https://github.com/onflow/flow-go/pull/4621)
 - [Port conversion fix v0.31](https://github.com/onflow/flow-go/pull/4595)
@@ -64,11 +67,7 @@ chores
 ### Cadence
 
 ### **Stable Cadence - Jan B**
-
-<aside>
-💡 **Objective:** long-term support release of Cadence with no expected breaking changes
-
-</aside>
+Objective: long-term support release of Cadence with no expected breaking changes
 
 **Done last sprint**
 
@@ -80,11 +79,13 @@ Features
     - [Allow default functions to co-exist with conditions in interface conformance](https://github.com/onflow/cadence/pull/2697)
 - [Remove type requirements](https://github.com/onflow/cadence/issues/1283)
 - [Remove linking based capability API and associated code](https://github.com/onflow/cadence/pull/2595)
+
 Stable Cadence PReview release
-- [[LS] Update to Cadence v0.40.0]https://github.com/onflow/cadence-tools/issues/189)
+- [[LS] Update to Cadence v0.40.0](https://github.com/onflow/cadence-tools/issues/189)
 - [Update to Cadence v0.40.0](https://github.com/onflow/flow-cli/issues/1158)
 - [Sync Stable Cadence branch with master](https://github.com/onflow/cadence/issues/2701)
 - ...
+
 Tech Debt / Improvements
 - [Add purity annotations to newly added functions](https://github.com/onflow/cadence/issues/2466)
     - [Add purity/view annotations](https://github.com/onflow/cadence/pull/2728)
@@ -92,10 +93,12 @@ Tech Debt / Improvements
 - [Update storage iteration value check and related tests](https://github.com/onflow/cadence/issues/2702)
 - [Improve view annotations for AuthAccount and PublicAccount](https://github.com/onflow/cadence/issues/2698)
     - [Improve view annotations for account type functions](https://github.com/onflow/cadence/pull/2699)
+
 Bugfixes
 - [Hex encode user input in error to avoid invalid UTF-8](https://github.com/onflow/cadence/pull/2704
 - [Properly meter the creation of entitlement static types](https://github.com/onflow/cadence/issues/2723)
 - [Reference invalidation doesn't track inner resource moves](https://github.com/onflow/cadence/issues/2458)
+
 Minor improvements
     Atree docs:
       - [Update README.md to describe Atree](https://github.com/onflow/atree/pull/332)
@@ -107,10 +110,13 @@ Minor improvements
       - [Add new Cadence types and values to CDDL](https://github.com/fxamacker/ccf_draft/pull/98)
       - [Improve Why CBOR section](https://github.com/fxamacker/ccf_draft/pull/96)
       - [Improve and shorten Introduction](https://github.com/fxamacker/ccf_draft/pull/95)
+
 Tests
 - [Add test for borrowing as inherited interface](https://github.com/onflow/cadence/issues/2722)
+
 Docs
 - [Remove type requirement docs](https://github.com/onflow/docs/issues/170)
+
 Chores
 - [Update mutability restrictions feature branch](https://github.com/onflow/cadence/issues/2714)
 
