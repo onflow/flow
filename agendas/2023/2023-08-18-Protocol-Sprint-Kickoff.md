@@ -4,6 +4,24 @@
 - Closed 3 FLIPs in Cadence LDM ([built-in mutability entitlements](https://github.com/onflow/flips/pull/86), [Account type refactor](https://github.com/onflow/flips/pull/92), [Nested Types Requirements removal](https://github.com/onflow/flips/pull/118)).
 - Found [solution](https://github.com/onflow/flow-go/pull/4618) for mitigating the protocol state growth problem on Execution nodes.
 - Completed implementation of 3 Stable Cadence features ([External Mutability Improvements](https://github.com/onflow/cadence/issues/2638), [Type Requirements Removal](https://github.com/onflow/cadence/issues/1283) and [Declare events in interface](https://github.com/onflow/cadence/issues/2602))
+- CAST
+  - CAST [staging environment](https://fe.staging.cast.dapperlabs.com/#/) is live again.
+  - BuildSquad's first PR to change CAST look'n'feel is live on [production](https://cast.fyi/)
+- QuickNode endpoints were successfully tested with all of testnet traffic
+
+### Mainnet Uptime SLO - Last 14 days (8/3 to 8/17)
+
+|                         | Target | Current Score | Error budget used |
+|:------------------------|:------:|:-------------:|:-----------------:|
+| Collection Finalizatoin | 99.9%  |    99.98%     |       19.8%       |
+| Block Finalization      | 99.9%  |    99.98%     |       19.8%       |
+| Transaction Execution   | 99.9%  |    99.98%     |       24.8%       |
+| Block Sealing           | 99.9%  |    99.91%     |       89.3%       |
+| Access API Liveness     | 99.9%  |    99.91%     |       90.0%       |
+
+*99.9% translates to a maximum allowed downtime of ~20m8s for a 14-day window.*
+
+*99% translates to a maximum allowed downtime of ~3hr20min for a 14-day window.*
 
 ### **Performance Pod Sprint Objective - Jan B**
 
@@ -221,7 +239,7 @@ Chores
 
 **********************Quick Node**********************
 
-- Assist with Quick Node Migration
+- Assist with Quick Node mainnet Migration
 
 ************Node Hosting************
 
@@ -229,3 +247,9 @@ Chores
 - Scale down Devnet to ideal size
 - Scale down Canary to ideal size
 - Execute infra clean up tasks
+
+### Key Release Dates & Breaking Changes
+
+- Mainnet/Testnet Spork dates 
+  - Next spork - Late October or early November
+  - Exact dates TBD
