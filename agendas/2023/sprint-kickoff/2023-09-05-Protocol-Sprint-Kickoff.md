@@ -112,15 +112,23 @@ Objective: long-term support release of Cadence with no expected breaking change
 ### **Permissionless Network - Kan Z**
 
 **Done last sprint**
+- Fixed flakey tests and improved BFT testing CI job https://github.com/onflow/flow-go/pull/4652 https://github.com/onflow/flow-go/pull/4651 https://github.com/onflow/flow-go/pull/4647
+- Substantially Refactored Networking Layer for Improved Structure and Maintainability https://github.com/dapperlabs/flow-go/issues/6851 https://github.com/onflow/flow-go/pull/4664 https://github.com/onflow/flow-go/pull/4635
+- Finished `SyncRequest` spam protection (Application Layer Spam Prevention) for Sync Engine (1st version) https://github.com/onflow/flow-go/pull/4590
+- Finished iWant Flooding mitigation https://github.com/onflow/flow-go/pull/4574/
+- Completed Simplifying RPC inspector Validation Logic https://github.com/onflow/flow-go/pull/4642
+- Started "GossipSub Spam Mitigation For Invalid Topics" https://github.com/dapperlabs/flow-go/issues/6798
 
 **This sprint**
-- Baseline protections
-    - [Refactoring Networking Layer for Improved Structure and Maintainability](https://github.com/dapperlabs/flow-go/issues/6819) [PR4627](https://github.com/onflow/flow-go/pull/4627) [PR4629](https://github.com/onflow/flow-go/pull/4629) [PR4635](https://github.com/onflow/flow-go/pull/4635) (continue)
-    - [Simplify Application-Specific RPC Inspector for Control Messages](https://github.com/dapperlabs/flow-go/issues/6819) (finish)
-    - [Benchnet E2E testing - RPC validation Inspector & ALSP](https://github.com/dapperlabs/flow-internal/issues/1892) (start) 
-    - https://github.com/dapperlabs/flow-go/issues/6472 (wrapping up, [PR](https://github.com/onflow/flow-go/pull/4574) is under review)
-    - https://github.com/dapperlabs/flow-go/issues/6798 (start)
-    - https://github.com/dapperlabs/flow-go/issues/6812 (continue)
+- Continue on GossipSub message forensic proposal (was postponed due to other emergency issues) https://github.com/dapperlabs/flow-go/issues/6462 (next week)
+- Review Krok Team proposal on QUIC transport https://github.com/onflow/flow-go/issues/4280
+- Review Krok Team proposal on Encoding https://github.com/onflow/flow-go/issues/4281
+- Start "Addressing the security vulnerability in dialing procedure” https://github.com/dapperlabs/flow-go/issues/6556
+- Start `RangeRequest` spam protection (Application Layer Spam Prevention) for Sync Engine https://github.com/onflow/flow-go/pull/4665
+- Improve `network` unit test CI to split up the network testing package
+- Publish RFP for academic researchers to create attack scenarios with BFTun
+- Continue on "GossipSub Spam Mitigation For Invalid Topics" https://github.com/dapperlabs/flow-go/issues/6798
+- Start "GossipSub Spam Mitigation Through Unknown Identities (Sybil Attack)" https://github.com/dapperlabs/flow-go/issues/6460
 
 **Active Epics**
 
