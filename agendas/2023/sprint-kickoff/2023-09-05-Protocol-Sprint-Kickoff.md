@@ -186,4 +186,3 @@ Objective: long-term support release of Cadence with no expected breaking change
   - Next spork
      - Testnet: 11th October
      - Mainnet: 25th October 
-  - Exact dates TBD
