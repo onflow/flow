@@ -20,8 +20,7 @@
 **Done last sprint**
 
 Atree Register Inlining
-- [Reduce encoded size of map and bump version](https://github.com/onflow/atree/pull/331)
-- [Bump safer-golangci-lint to 1.52.2](https://github.com/onflow/atree/pull/304)
+- Continue updating atree design, implementing atree inlining, and adding tests
 
 Issues
 - [Add aditional authorizer for the service transaction](https://github.com/onflow/flow-go/issues/4291)
@@ -34,15 +33,19 @@ chores
 - [backport v0.31 store chunk data separate dir](https://github.com/onflow/flow-go/pull/4621)
 - [Port conversion fix v0.31](https://github.com/onflow/flow-go/pull/4595)
 
+Execution Disk space growth mitigation
+- Deployed v0.31.15 to mainnet ENs
+- It slows the data disk growth by 85% by periodically pruning the chunk data pack folder.
+
+Storehouse
+- [Design doc published ](https://dapperlabs.notion.site/Storehouse-Design-Whiteboard-2f38e27891fc4e3e91415dbce240f175)
+- Milestones created, started implementing storehouse [for the first milestone ](https://github.com/onflow/flow-go/issues/4682)
+
 **This sprint**
 
 - [Continue Atree register inlining](https://github.com/onflow/atree/issues/292)
-- continue testing [Atree register inlining migration](https://github.com/onflow/flow-go/pull/4633)
-- Start imlementation of Storehouse design (execution state on disk)
-- Deploy protocol state growth mitigation
-
-- Investigations:
-    - Go Routine Leak
+- Continue testing [Atree register inlining migration](https://github.com/onflow/flow-go/pull/4633)
+- Start implementation of [Storehouse first milestone](https://github.com/onflow/flow-go/issues/4682) (execution state on disk)
 
 **On Hold**
 
