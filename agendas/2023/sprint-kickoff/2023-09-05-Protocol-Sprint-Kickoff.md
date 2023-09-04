@@ -1,15 +1,15 @@
 # Team Wins 🎉
-
+- Migrated 100% mainnet gRPC traffic to QuickNode
 
 ### Mainnet Uptime SLO - Last 14 days (8/3 to 8/17)
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalizatoin | 99.9%  |    99.98%     |       19.8%       |
-| Block Finalization      | 99.9%  |    99.98%     |       19.8%       |
-| Transaction Execution   | 99.9%  |    99.98%     |       24.8%       |
-| Block Sealing           | 99.9%  |    99.91%     |       89.3%       |
-| Access API Liveness     | 99.9%  |    99.91%     |       90.0%       |
+| Collection Finalizatoin | 99.9%  |    99.985%    |       14.9%       |
+| Block Finalization      | 99.9%  |    99.975%    |       24.8%       |
+| Transaction Execution   | 99.9%  |    99.98%     |       19.8%       |
+| Block Sealing           | 99.9%  |    99.94%     |       59.5%       |
+| Access API Liveness     | 99.9%  |    99.97%     |       29.8%       |
 
 *99.9% translates to a maximum allowed downtime of ~20m8s for a 14-day window.*
 
@@ -183,5 +183,7 @@ Objective: long-term support release of Cadence with no expected breaking change
 ### Key Release Dates & Breaking Changes
 
 - Mainnet/Testnet Spork dates 
-  - Next spork - Late October or early November
+  - Next spork
+     - Testnet: 11th October
+     - Mainnet: 25th October 
   - Exact dates TBD
