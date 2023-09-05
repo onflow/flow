@@ -88,27 +88,27 @@ Objective: long-term support release of Cadence with no expected breaking change
 
 
 ### Access & Data Availability **- Peter A**
+Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
 **This sprint**
-
-- Archive Node V2
-    - [Create FVM runtime with new pebble register database as store](https://github.com/onflow/flow-go/issues/4632) (Amlandeep)
+- [OKR] Script Exec on ANs
+    - [[Script Execution] Define the index database interface](https://github.com/onflow/flow-go/issues/4667) (Gregor)
+    - [[Script Execution] State Data Indexer Module](https://github.com/onflow/flow-go/issues/4638) (Gregor)
     - [Move register DB in Archive node to Access Node](https://github.com/onflow/flow-go/issues/4606) (Amlandeep)
-    - [Make use of Execution state sync data for Access node API requests](https://github.com/onflow/flow-go/issues/4631) (Amlandeep)
-- [OKR] On hold (Peter OOO): Execution Data Improvements
-    - https://github.com/onflow/flow-go/issues/2120 (Peter)
-    - https://github.com/onflow/flow-go/issues/4455 (Peter)
+    - [[Script Execution] Ingest initial state snapshot](https://github.com/onflow/flow-go/issues/4673) (Amlandeep)
+- [OKR] Execution Data Improvements
+    - [[State Sync] Verification of Execution Data ID](https://github.com/onflow/flow-go/issues/2120) (Peter)
+    - [[State Sync] Add Transaction Results into BlockExecutionData](https://github.com/onflow/flow-go/issues/4455) (Peter)
 
 **Active Epics**
 
-- https://github.com/onflow/flow-go/issues/4410
+- [[State Sync] Add TxResults and Verification for Execution Data](https://github.com/onflow/flow-go/issues/4410)
+- [Script Execution on Access Node](https://github.com/onflow/flow-go/issues/4637)
 
 **On Hold**
 
-- [OKR] Working towards Execution data indexer & script execution on Access nodes
-    - On hold until Archive V2 work complete
 - [OKR] Enable Execution Sync on Public Network
     - On hold until execution data improvements are complete
 
