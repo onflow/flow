@@ -1050,6 +1050,8 @@ components:
         - commit
         - spork_id
         - protocol_version
+        - spork_root_block_height
+        - node_root_block_height
       properties:
         semver:
           type: string
@@ -1058,6 +1060,12 @@ components:
         spork_id:
           $ref: '#/components/schemas/Identifier'
         protocol_version:
+          type: string
+          format: uint64
+        spork_root_block_height:
+          type: string
+          format: uint64
+        node_root_block_height:
           type: string
           format: uint64
   responses:
