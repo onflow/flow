@@ -2,6 +2,7 @@
 - Migrated 100% mainnet gRPC traffic to QuickNode
 - Published [Storehouse Design Doc](https://dapperlabs.notion.site/Storehouse-Design-Whiteboard-2f38e27891fc4e3e91415dbce240f175) so that it is accessible by the commnity.
 - Successfully deployed fix to mitigate protocol state growth on execution nodes by periodically pruning chuck data packs for sealed blocks.
+- Seucessful release of [Stable Cadence preview](https://github.com/onflow/flow-cli/releases/tag/v1.5.0-stable-cadence.1)
 
 ### Mainnet Uptime SLO - Last 14 days (8/18 to 9/1)
 
@@ -33,8 +34,8 @@ Storehouse
 - Milestones created, started implementing storehouse [for the first milestone ](https://github.com/onflow/flow-go/issues/4682)
 
 Other fixes
-- (Fix verification cadende runtime settings)[https://github.com/onflow/flow-go/pull/4676]
-- (Pass zerolog by value)[https://github.com/onflow/flow-go/issues/4644]
+- [Fix verification cadende runtime settings](https://github.com/onflow/flow-go/pull/4676)
+- [Pass zerolog by value](https://github.com/onflow/flow-go/issues/4644)
 
 **This sprint**
 
@@ -61,19 +62,39 @@ Objective: long-term support release of Cadence with no expected breaking change
 
 **Done last sprint**
 
+- Work on marketing materials (cadence-lang.org)
+Features / Improvements:
+- [Entitlement mapping composition](https://github.com/onflow/cadence/issues/2643)
+    - [update account type mappings to include identity](https://github.com/onflow/cadence/pull/2761)
+    - [Composition of entitlement mappings](https://github.com/onflow/cadence/pull/2743)
+- [Order entitlements in entitlement sets in runtime types](https://github.com/onflow/cadence/issues/2749)
+    - [sort entitlement sets alphabetically when generating strings](https://github.com/onflow/cadence/pull/2754)
+- [Refactor Account Types](https://github.com/onflow/cadence/issues/2641)
+    - [Implement Account type](https://github.com/onflow/cadence/issues/2641)
+- [Allow use of type code generator in any package, refactor RLP and BLS contracts](https://github.com/onflow/cadence/pull/2753)
+- [Improve composite and interface static types](https://github.com/onflow/cadence/pull/2751)
+- [Avoid unnecessary static to sema type conversions for `Type`](https://github.com/onflow/cadence/pull/2750)
+- [add suggestions for missing entitlements in access errors](https://github.com/onflow/cadence/pull/2736)
+Testing:
+- [Add tests for invalidation of references created with index/field-access](https://github.com/onflow/cadence/pull/2758)
+- [Add test for inner container mutation while iterating outer](https://github.com/onflow/cadence/pull/2733)
+- [Add test for attachment on built-in composite](https://github.com/onflow/cadence/pull/2732)
+Tech debt:
+- [Clean up intersection types](https://github.com/onflow/cadence/pull/2757)
+- [Improve and fix static types and their ID and string functions](https://github.com/onflow/cadence/pull/2756)
+- [Add `cadence-tools/test` as a dependency to the language server](https://github.com/onflow/cadence/pull/2742)
+Chores:
+- [Sync Stable Cadence feature branch](https://github.com/onflow/cadence/pull/2755)
+- [Sync `feature/range-type` branch with `master`](https://github.com/onflow/cadence/pull/2747)
 
   
 **This sprint**
 
-- Bugfixes
-    - Internal issue #139
-- Needed dependency for Atree register inlining: [Add tests for child container being mutated while parent container is iterated](https://github.com/onflow/cadence/issues/2663)
-- Continue work on Stable Cadence preview release
-- Continue implementation of [Account Type refactoring](https://github.com/onflow/cadence/issues/2641)
+- Continue work on Stable Cadence preview release - update to latest Stable Cadence branch
 - Continuing with Stable Cadence scope / discussions
     - Ongoing FLIPs:
         - Blocking preview release: [Relaxing interface conformance restrictions](https://github.com/onflow/flips/pull/134)
-    - Continue to work on a proposal for [Attachments trolling attack](https://www.notion.so/Stable-Cadence-FLIPs-status-summary-c58a5d5c408047dba59321e4d3a0cef1?pvs=21)
+    - [Flip for removal of custom destructors](https://github.com/onflow/flips/pull/131)
  
 **On Hold**
 - Discussion of the re-entrancy edge cases
