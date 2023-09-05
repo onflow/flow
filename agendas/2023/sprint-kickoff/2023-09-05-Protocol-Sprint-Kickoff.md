@@ -1,5 +1,7 @@
 # Team Wins 🎉
 - Migrated 100% mainnet gRPC traffic to QuickNode
+- Published [Storehouse Design Doc](https://dapperlabs.notion.site/Storehouse-Design-Whiteboard-2f38e27891fc4e3e91415dbce240f175) so that it is accessible by the commnity.
+- Successfully deployed fix to mitigate protocol state growth on execution nodes by periodically pruning chuck data packs for sealed blocks.
 
 ### Mainnet Uptime SLO - Last 14 days (8/18 to 9/1)
 
@@ -22,17 +24,6 @@
 Atree Register Inlining
 - Continue updating atree design, implementing atree inlining, and adding tests
 
-Issues
-- [Add aditional authorizer for the service transaction](https://github.com/onflow/flow-go/issues/4291)
-    - [Remove dual authorizers for system transaction](https://github.com/onflow/flow-go/pull/4554)
-
-Archive node script execution
-- [Create validation mode for script exec on RN/EN](https://github.com/onflow/flow-go/pull/4573)
-
-chores
-- [backport v0.31 store chunk data separate dir](https://github.com/onflow/flow-go/pull/4621)
-- [Port conversion fix v0.31](https://github.com/onflow/flow-go/pull/4595)
-
 Execution Disk space growth mitigation
 - Deployed v0.31.15 to mainnet ENs
 - It slows the data disk growth by 85% by periodically pruning the chunk data pack folder.
@@ -40,6 +31,10 @@ Execution Disk space growth mitigation
 Storehouse
 - [Design doc published ](https://dapperlabs.notion.site/Storehouse-Design-Whiteboard-2f38e27891fc4e3e91415dbce240f175)
 - Milestones created, started implementing storehouse [for the first milestone ](https://github.com/onflow/flow-go/issues/4682)
+
+Other fixes
+- (Fix verification cadende runtime settings)[https://github.com/onflow/flow-go/pull/4676]
+- (Pass zerolog by value)[https://github.com/onflow/flow-go/issues/4644]
 
 **This sprint**
 
@@ -52,12 +47,12 @@ Storehouse
 - Plan removal of concurrent storage bottlenecks
     - Transaction fee deduction
     - [Cadence Type checker is not reentrant](https://dapperlabs.slack.com/archives/CG0B7CJAJ/p1684434997197079) (type comparison depends on consistent pointer used by programs cache, program cache needs to always return the same pointer to the same type)
-- https://github.com/onflow/flow-go/issues/3548
+- [Execution stack refactor - clear separation of ingestion engine and block computer](https://github.com/onflow/flow-go/issues/4077)
+- [Automated Performance Tests](https://github.com/onflow/flow-go/issues/3548)
 
 **Active Epics**
 
-- https://github.com/onflow/atree/issues/292
-- https://github.com/onflow/flow-go/issues/4077
+- [Atree register inlining](https://github.com/onflow/atree/issues/292)
 
 ### Cadence
 
