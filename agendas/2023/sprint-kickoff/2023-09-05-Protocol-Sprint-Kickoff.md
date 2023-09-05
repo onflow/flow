@@ -63,6 +63,7 @@ Objective: long-term support release of Cadence with no expected breaking change
 **Done last sprint**
 
 - Work on marketing materials (cadence-lang.org)
+
 Features / Improvements:
 - [Entitlement mapping composition](https://github.com/onflow/cadence/issues/2643)
     - [update account type mappings to include identity](https://github.com/onflow/cadence/pull/2761)
@@ -75,14 +76,17 @@ Features / Improvements:
 - [Improve composite and interface static types](https://github.com/onflow/cadence/pull/2751)
 - [Avoid unnecessary static to sema type conversions for `Type`](https://github.com/onflow/cadence/pull/2750)
 - [add suggestions for missing entitlements in access errors](https://github.com/onflow/cadence/pull/2736)
+
 Testing:
 - [Add tests for invalidation of references created with index/field-access](https://github.com/onflow/cadence/pull/2758)
 - [Add test for inner container mutation while iterating outer](https://github.com/onflow/cadence/pull/2733)
 - [Add test for attachment on built-in composite](https://github.com/onflow/cadence/pull/2732)
+
 Tech debt:
 - [Clean up intersection types](https://github.com/onflow/cadence/pull/2757)
 - [Improve and fix static types and their ID and string functions](https://github.com/onflow/cadence/pull/2756)
 - [Add `cadence-tools/test` as a dependency to the language server](https://github.com/onflow/cadence/pull/2742)
+
 Chores:
 - [Sync Stable Cadence feature branch](https://github.com/onflow/cadence/pull/2755)
 - [Sync `feature/range-type` branch with `master`](https://github.com/onflow/cadence/pull/2747)
