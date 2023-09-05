@@ -163,6 +163,18 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
+************Node Hosting************
+
+- Fully deprecate Sandboxnet by snapshotting and validating restoration
+- Scale down Canary network to realize savings
+
+************Node Hosting************
+
+- Assist with DevEx support
+
+**********************Quick Node**********************
+
+- Assist with Quick Node mainnet Migration
 
 
 **This Sprint**
@@ -173,10 +185,9 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 ************Node Hosting************
 
-- Fully deprecate Sandboxnet by snapshotting and validating restoration
+- Onboard Dapper nodes to Devnet
 - Scale down Devnet to ideal size
 - Scale down Canary to ideal size
-- Execute infra clean up tasks
 
 ### Key Release Dates & Breaking Changes
 
