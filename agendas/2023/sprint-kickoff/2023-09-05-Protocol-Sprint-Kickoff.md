@@ -1,7 +1,7 @@
 # Team Wins 🎉
 - Migrated 100% mainnet gRPC traffic to QuickNode
 
-### Mainnet Uptime SLO - Last 14 days (8/3 to 8/17)
+### Mainnet Uptime SLO - Last 14 days (8/18 to 9/1)
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
