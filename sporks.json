@@ -1382,7 +1382,7 @@
           "docker-tag": "v0.31.4"
         },
         "accessNodes": [
-          "access.testnet.nodes.onflow.org:9000"
+          "access-001.devnet46.nodes.onflow.org:9000"
         ],
         "seedNodes": [
           {
