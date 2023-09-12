@@ -14,7 +14,7 @@ message NodeVersionInfo {
     bytes spork_id = 3;
     // The protocol version of the currently running node software.
     uint64 protocol_version = 4;
-    // The spork root block height. This is the height of first sealed block in the spork network.
+    // The spork root block height. This is the height of the first sealed block in the spork network.
     uint64 spork_root_block_height = 5;
     // The node's root block height. This is the first sealed block in the node's protocol database.
     // If the node started at the beginning of the spork, it is the same as the spork root block height.
