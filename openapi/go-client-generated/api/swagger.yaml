@@ -180,6 +180,72 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /blocks/{id}/payload:
+    get:
+      tags:
+      - Blocks
+      summary: Get Block Payload by Block ID.
+      description: Get a block payload data by the provided block ID.
+      parameters:
+      - name: id
+        in: path
+        description: A block ID.
+        required: true
+        style: simple
+        explode: true
+        schema:
+          $ref: '#/components/schemas/Identifier'
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockPayload'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /transactions/{id}:
     get:
       tags:
@@ -623,6 +689,92 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /accounts/{address}/keys/{index}:
+    get:
+      tags:
+      - Accounts
+      summary: Get an individual Account Key By Address and Index
+      description: Get an account data by provided address in latest "sealed" block
+        or by provided block height.
+      parameters:
+      - name: address
+        in: path
+        description: The address of the account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/Address'
+      - name: index
+        in: path
+        description: The index of the account key.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: Index of the public key.
+          format: uint64
+      - name: block_height
+        in: query
+        description: The block height to query for the account details at the "sealed"
+          is used by default.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/BlockHeight'
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPublicKey'
         "400":
           description: Bad Request
           content:

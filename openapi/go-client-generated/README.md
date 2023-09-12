@@ -22,8 +22,10 @@ All URIs are relative to *https://rest-canary.onflow.org/v1/*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountsApi* | [**AccountsAddressGet**](docs/AccountsApi.md#accountsaddressget) | **Get** /accounts/{address} | Get an Account By Address
+*AccountsApi* | [**AccountsAddressKeysIndexGet**](docs/AccountsApi.md#accountsaddresskeysindexget) | **Get** /accounts/{address}/keys/{index} | Get an individual Account Key By Address and Index
 *BlocksApi* | [**BlocksGet**](docs/BlocksApi.md#blocksget) | **Get** /blocks | Gets Blocks by Height
 *BlocksApi* | [**BlocksIdGet**](docs/BlocksApi.md#blocksidget) | **Get** /blocks/{id} | Get Blocks by ID.
+*BlocksApi* | [**BlocksIdPayloadGet**](docs/BlocksApi.md#blocksidpayloadget) | **Get** /blocks/{id}/payload | Get Block Payload by Block ID.
 *CollectionsApi* | [**CollectionsIdGet**](docs/CollectionsApi.md#collectionsidget) | **Get** /collections/{id} | Gets a Collection by ID
 *EventsApi* | [**EventsGet**](docs/EventsApi.md#eventsget) | **Get** /events | Get Events
 *ExecutionResultsApi* | [**ExecutionResultsGet**](docs/ExecutionResultsApi.md#executionresultsget) | **Get** /execution_results | Get Execution Results by Block ID

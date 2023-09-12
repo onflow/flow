@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**BlocksGet**](BlocksApi.md#BlocksGet) | **Get** /blocks | Gets Blocks by Height
 [**BlocksIdGet**](BlocksApi.md#BlocksIdGet) | **Get** /blocks/{id} | Get Blocks by ID.
+[**BlocksIdPayloadGet**](BlocksApi.md#BlocksIdPayloadGet) | **Get** /blocks/{id}/payload | Get Block Payload by Block ID.
 
 # **BlocksGet**
 > []Block BlocksGet(ctx, optional)
@@ -70,6 +71,43 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]Block**](Block.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **BlocksIdPayloadGet**
+> BlockPayload BlocksIdPayloadGet(ctx, id, optional)
+Get Block Payload by Block ID.
+
+Get a block payload data by the provided block ID.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | [**string**](.md)| A block ID. | 
+ **optional** | ***BlocksApiBlocksIdPayloadGetOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a BlocksApiBlocksIdPayloadGetOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
+ **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
+
+### Return type
+
+[**BlockPayload**](BlockPayload.md)
 
 ### Authorization
 

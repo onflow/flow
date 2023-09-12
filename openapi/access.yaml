@@ -93,6 +93,35 @@ paths:
           $ref: '#/components/responses/404NotFound'
         '500':
           $ref: '#/components/responses/500InternalServerError'
+  /blocks/{id}/payload:
+    get:
+      summary: Get Block Payload by Block ID.
+      description: Get a block payload data by the provided block ID.
+      tags:
+        - Blocks
+      parameters:
+        - description: A block ID.
+          name: id
+          in: path
+          schema:
+            $ref: '#/components/schemas/Identifier'
+          explode: true
+          required: true
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockPayload'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
   /transactions/{id}:
     get:
       summary: Get a Transaction by ID.
@@ -346,6 +375,48 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
+  /accounts/{address}/keys/{index}:
+    get:
+      summary: Get an individual Account Key By Address and Index
+      description: Get an account data by provided address in latest "sealed" block or by provided block height.
+      tags:
+        - Accounts
+      parameters:
+        - name: address
+          in: path
+          schema:
+            $ref: '#/components/schemas/Address'
+          required: true
+          description: The address of the account.
+        - name: index
+          in: path
+          schema:
+            type: string
+            format: uint64
+            description: Index of the public key.
+          required: true
+          description: The index of the account key.
+        - name: block_height
+          in: query
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
+          required: false
+          description: The block height to query for the account details at the "sealed" is used by default.
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPublicKey'
         '400':
           $ref: '#/components/responses/400BadRequest'
         '404':
