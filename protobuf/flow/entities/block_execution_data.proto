@@ -97,8 +97,8 @@ message ExecutionDataTransactionResult {
   // Transaction ID of the transaction that was executed.
   bytes transaction_id = 1;
 
-  // Boolean indicating whether or not an error was encountered during execution.
-  bool has_error = 2;
+  // Boolean indicating whether or not the transaction's execution failed with an error.
+  bool failed = 2;
 
   // Amount of computation used during execution.
   uint64 computation_used = 3;
