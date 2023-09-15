@@ -58,7 +58,7 @@ message ExecutionDataCollection {
 // TrieUpdates contain a list of registers that were modified during chunk execution. The value
 // included is the new value of the register.
 message TrieUpdate {
-  // RootHash is the root hash of the trie that included the contained updates.
+  // RootHash is the root hash of the trie before the update is applied.
   bytes root_hash = 1;
 
   // List of register paths updated.
@@ -74,9 +74,10 @@ message TrieUpdate {
   repeated Payload payloads = 3;
 }
 
-// Payload represents the value of a register.
+// Payload represents the key-value pair of a register.
 message Payload {
   // List of key parts that make up the register key.
+  // Can be converted into register id.
   repeated KeyPart keyPart = 1;
 
   // Value of the register.
