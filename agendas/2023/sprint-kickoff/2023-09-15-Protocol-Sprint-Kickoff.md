@@ -114,6 +114,9 @@ Objective: Make execution data and script execution available on Edge nodes.
 **Next sprint**
 - [Continue] Addressing Security Vulnerabilities In Dialing Procedure [6556](https://github.com/dapperlabs/flow-go/issues/6556).
 - Optimizing GossipSub RPC inspection CPU and Memory intensive operations (incident response) [6870](https://github.com/dapperlabs/flow-go/issues/6870).
+- Application Layer Spam Protection (ALSP) integration for `BatchRequest` for Sync Engine.
+- GossipSub Sybil Attack Mitigation [6460](https://github.com/dapperlabs/flow-go/issues/6460).
+- Application Layer Spam Protection (ALSP) support for cluster channels [1889](https://github.com/dapperlabs/flow-internal/issues/1889).
 
 **Active Epics**
 
