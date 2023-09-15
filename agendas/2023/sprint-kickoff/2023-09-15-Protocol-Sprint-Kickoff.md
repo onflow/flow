@@ -203,9 +203,6 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### **Infra - JP**
 
 **Done last sprint**
-- 
-
-**This Sprint**
 
 **********************Quick Node**********************
 
@@ -213,9 +210,31 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 ************Node Hosting************
 
-- Onboard Dapper nodes to Devnet
 - Scale down Devnet to ideal size
 - Scale down Canary to ideal size
+
+************Infrastructure Savings************
+
+- Delete unnecessary Canary Snapshots
+- Review Mainnet historical node snapshots
+
+**This Sprint**
+
+**********************Quick Node**********************
+
+- Monitor & evaluate latency on Quick Node nodes
+
+************Node Hosting************
+
+- Onboard Dapper nodes to Devnet
+
+************Infrastructure Savings************
+
+- Create new final snapshots for Mainnet historical nodes
+- Delete unnecessary Mainnet historical snapshots
+- Remove tracing nodes from networks to save on Compute
+- Disable tracing on nodes to save on egress & Tempo storage
+- Update Prometheus scrape interval to save money on Metrics egress & storage
 
 ### Key Release Dates & Breaking Changes
 
