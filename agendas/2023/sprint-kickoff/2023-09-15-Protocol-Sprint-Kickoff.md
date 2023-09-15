@@ -199,7 +199,9 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### Consensus (Dynamic Protocol State) - **Jerome P**
 
 **Done last sprint**
-- Sync master to feature branch: https://github.com/onflow/flow-go/pull/4694
+- Merge all outstanding PRs for Dynamic Protocol State initial implementation
+- Begin description and safety argument for identity-changing operation validation rules (https://www.notion.so/dapperlabs/Identity-Changing-Operations-610bb2d3b63f4d3dae12e405d3c5a097?pvs=4) (WIP)
+- Create design document for smart-contract-specified epoch switchover times (https://www.notion.so/dapperlabs/Proposal-Smart-Contract-Specified-Epoch-Switchover-Timing-12a0002cbc374f30b7b128219c9ba5f2?pvs=4)
 
 **Next sprint**
 - Continue ProtocolStateEntry refactoring: https://github.com/onflow/flow-go/pull/4721
