@@ -77,7 +77,7 @@ Features
 - Capabilities improvement [Add an exists function, allows checking if capability exists/is published](https://github.com/onflow/cadence/pull/2778)
 - Dependency for contract update mechanism [Add contract update method that doesn't panic](https://github.com/onflow/cadence/issues/2700)
     - [Add tryUpdate method to Account.Contracts](https://github.com/onflow/cadence/pull/2769)
-- [Entitlement mapping compositio](https://github.com/onflow/cadence/issues/2643)
+- [Entitlement mapping composition](https://github.com/onflow/cadence/issues/2643)
     - [update account type mappings to include identity](https://github.com/onflow/cadence/pull/2761)
 
 Bugfix
