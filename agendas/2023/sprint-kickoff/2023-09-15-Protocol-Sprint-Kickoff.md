@@ -1,12 +1,13 @@
 # Team Wins 🎉
-- Cacence Compact Format [updated to RC3](https://github.com/onflow/ccf/issues/4) (Jan)
+- Cadence Compact Format [updated to RC3](https://github.com/onflow/ccf/issues/4) (Jan)
 - [Random Function Cadence FLIP](https://github.com/onflow/flips/pull/120) approved in Cadence Language Design Meeting on Sep 12th. (Jan)
+- Enabling REST API for Observer nodes was completed and merged by KROK team
 
 ### Mainnet Uptime SLO - Last 14 days (9/1 to 9/14)
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalizatoin | 99.9%  |    99.921%    |       79.4%       |
+| Collection Finalization | 99.9%  |    99.921%    |       79.4%       |
 | Block Finalization      | 99.9%  |    99.921%    |       79.4%       |
 | Transaction Execution   | 99.9%  |    99.916%    |       84.3%       |
 | Block Sealing           | 99.9%  |    99.921%    |       79.4%       |
@@ -195,10 +196,15 @@ Objective: Make execution data and script execution available on Edge nodes.
 - BN2 https://github.com/dapperlabs/flow-go/issues/6341
 - TPS  https://github.com/dapperlabs/flow-go/issues/6296
 
-### Consensus (Dynamic Protocol State) **- Jerome P**
+### Consensus (Dynamic Protocol State) - **Jerome P**
 
 **Done last sprint**
--
+- Sync master to feature branch: https://github.com/onflow/flow-go/pull/4694
+
+**Next sprint**
+- Continue ProtocolStateEntry refactoring: https://github.com/onflow/flow-go/pull/4721
+- Refactor ProtocolStateEntry to increase code clarity https://github.com/onflow/flow-go/issues/4719
+- Wrapping up first integration pass of Dynamic Protocol state
 
 ### **Infra - JP**
 
