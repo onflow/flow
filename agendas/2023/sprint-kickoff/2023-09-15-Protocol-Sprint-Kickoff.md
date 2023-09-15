@@ -109,7 +109,7 @@ Objective: Make execution data and script execution available on Edge nodes.
 - [Complete] Comprehensive test coverage for GossipSub control message inspection [PR4695](https://github.com/onflow/flow-go/pull/4695).
 - [Under Review] GossipSub Message Forensic FLIP [PR195](https://github.com/onflow/flips/pull/195)
 - [Under Review] Mitigating Unknown Topic Spam Attack on GossipSub [6798](https://github.com/dapperlabs/flow-go/issues/6798).
-- [In Progress] Addressing Security Vulnerabilities In Dialing Procedure [6556](https://github.com/dapperlabs/flow-go/issues/6556) (paused due to incident debugging).
+- [In Progress] Addressing Security Vulnerabilities In Dialing Procedure [6556](https://github.com/dapperlabs/flow-go/issues/6556).
 
 **Next sprint**
 - [Continue] Addressing Security Vulnerabilities In Dialing Procedure [6556](https://github.com/dapperlabs/flow-go/issues/6556).
