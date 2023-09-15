@@ -1,19 +1,23 @@
 # Team Wins 🎉
 -
 
-### Mainnet Uptime SLO - Last 14 days (8/18 to 9/1)
+### Mainnet Uptime SLO - Last 14 days (9/1 to 9/14)
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalizatoin | 99.9%  |    99.985%    |       14.9%       |
-| Block Finalization      | 99.9%  |    99.975%    |       24.8%       |
-| Transaction Execution   | 99.9%  |    99.98%     |       19.8%       |
-| Block Sealing           | 99.9%  |    99.94%     |       59.5%       |
-| Access API Liveness     | 99.9%  |    99.97%     |       29.8%       |
+| Collection Finalizatoin | 99.9%  |    99.921%    |       79.4%       |
+| Block Finalization      | 99.9%  |    99.921%    |       79.4%       |
+| Transaction Execution   | 99.9%  |    99.916%    |       84.3%       |
+| Block Sealing           | 99.9%  |    99.921%    |       79.4%       |
+| Access API Liveness     | 99.9%  |    99.545%    |       455%        |
 
 *99.9% translates to a maximum allowed downtime of ~20m8s for a 14-day window.*
 
 *99% translates to a maximum allowed downtime of ~3hr20min for a 14-day window.*
+
+- Sev-2 Incident: Public Access nodes went down between 5:20 pm to 6:00 pm on Wednesday 9/13
+     - Root cause: ANs were not started after a hardware upgrade by the AN operator
+     - Fix: Auto-restart has since been added; More observability on the ANs will be added soon.
 
 ### **Performance Pod Sprint Objective - Jan B**
 
@@ -153,5 +157,6 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 - Mainnet/Testnet Spork dates 
   - Next spork
-     - Testnet: 11th October
-     - Mainnet: 25th October 
+     - Testnet: 18th October ~~11th October~~
+     - Mainnet: 1st Nov ~~25th October~~
+     - This time the spork will take longer (~2 to 3 hrs)
