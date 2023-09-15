@@ -1,7 +1,7 @@
 # Team Wins 🎉
 - Cadence Compact Format [updated to RC3](https://github.com/onflow/ccf/issues/4) (Jan)
 - [Random Function Cadence FLIP](https://github.com/onflow/flips/pull/120) approved in Cadence Language Design Meeting on Sep 12th. (Jan)
-- Enabling streaming for REST API for Observer nodes was completed and merged by KROK team
+- Enabling streaming for REST API for Access nodes was completed and merged by KROK team
 
 ### Mainnet Uptime SLO - Last 14 days (9/1 to 9/14)
 
