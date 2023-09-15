@@ -139,9 +139,10 @@ Objective: Make execution data and script execution available on Edge nodes.
 **Done last sprint**
 - [Script Execution] Move register DB in Archive node to Access Node - [Issue 4606](https://github.com/onflow/flow-go/issues/4606), [PR 4671](https://github.com/onflow/flow-go/pull/4671)
 - [Script Execution] Define the index database interface - [Issue 4667](https://github.com/onflow/flow-go/issues/4667), [PR 4656](https://github.com/onflow/flow-go/pull/4656)
-- [Script Execution] Optimize the script execution engine required interfaces - [Issue 4666](https://github.com/onflow/flow-go/issues/4666), [PR 4668](https://github.com/onflow/flow-go/pull/4668), - [PR 4685](https://github.com/onflow/flow-go/pull/4685)
+- [Script Execution] Optimize the script execution engine required interfaces - [Issue 4666](https://github.com/onflow/flow-go/issues/4666), [PR 4668](https://github.com/onflow/flow-go/pull/4668), [PR 4685](https://github.com/onflow/flow-go/pull/4685)
 - [State Sync] Verify of Execution Data ID - [Issue 2120](https://github.com/onflow/flow-go/issues/2120), [PR 4586](https://github.com/onflow/flow-go/pull/4586)
 - [State Sync] Add Tx Results to execution data - [Issue 4706](https://github.com/onflow/flow-go/issues/4706), [PR 4699](https://github.com/onflow/flow-go/pull/4699)
+- [State Sync] Update Access API protobuf and converters for updated BlockExecutionData - [Issue 4707](https://github.com/onflow/flow-go/issues/4707), [PR 4710](https://github.com/onflow/flow-go/pull/4710), [PR 1382](https://github.com/onflow/flow/pull/1382)
 - [Testing] Refactor chunkVerifier unit tests - [PR 4698](https://github.com/onflow/flow-go/pull/4698)
 - [Testing] Update metrics and logging images to latest versions - [PR 4672](https://github.com/onflow/flow-go/pull/4672)
 - [Testing] Small improvements to the benchnet loader to support exec data testing - [PR 4675](https://github.com/onflow/flow-go/pull/4675)
@@ -155,7 +156,6 @@ Objective: Make execution data and script execution available on Edge nodes.
     - [Script Execution] Ingest initial state snapshot - [Issue 4673](https://github.com/onflow/flow-go/issues/4673)
 - [OKR] Execution Data Improvements
     - [State Sync] Add Transaction Results into BlockExecutionData - [Issue 4455](https://github.com/onflow/flow-go/issues/4455)
-    - [State Sync] Update Access API protobuf and converters for updated BlockExecutionData - [Issue 4707](https://github.com/onflow/flow-go/issues/4707)
     - [State Sync] Test decoding BlockExecutionData with new format - [Issue 4708](https://github.com/onflow/flow-go/issues/4708)
     - [State Sync] Regression test ExecutionData changes - [Issue 4408](https://github.com/onflow/flow-go/issues/4408)
 
