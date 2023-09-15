@@ -1,5 +1,6 @@
 # Team Wins 🎉
--
+- Cacence Compact Format [updated to RC3](https://github.com/onflow/ccf/issues/4) (Jan)
+- [Random Function Cadence FLIP](https://github.com/onflow/flips/pull/120) approved in Cadence Language Design Meeting on Sep 12th. (Jan)
 
 ### Mainnet Uptime SLO - Last 14 days (9/1 to 9/14)
 
@@ -24,25 +25,34 @@
 **Done last sprint**
 
 Atree Register Inlining
-- Continue updating atree design, implementing atree inlining, and adding tests
+- [Optimize atree to reduce Flow's mtrie size and reduce number of reads](https://github.com/onflow/atree/issues/292)
+    - [Omit empty next slab ID in encoded map data slab](https://github.com/onflow/atree/pull/340)
+    - [Omit empty next slab ID in encoded array data slab](https://github.com/onflow/atree/issues/339)
+    - [Refactor encoding version and flag to add more flags](https://github.com/onflow/atree/pull/338)
+    - [Fix slab size when resetting mutable storable in OrderedMap](https://github.com/onflow/atree/pull/337)
+    - [Fix slab size when resetting mutable storable in Array](https://github.com/onflow/atree/pull/336)
 
-Execution Disk space growth mitigation
-- Deployed v0.31.15 to mainnet ENs
-- It slows the data disk growth by 85% by periodically pruning the chunk data pack folder.
+Atree Register Inlining migration
+- Continued with [migration](https://github.com/onflow/flow-go/pull/4633) troubleshooting, succesfuly completed the migration of Mainnet checkpoint on m1-ultramem-160 instance. Continuing with migration optimization.
+
+Random Function update (including Cadence varsion update in flow-go)
+- [Upgrade cadence and change to ReadRandom](https://github.com/onflow/flow-go/pull/4679)
 
 Storehouse
-- [Design doc published ](https://dapperlabs.notion.site/Storehouse-Design-Whiteboard-2f38e27891fc4e3e91415dbce240f175)
-- Milestones created, started implementing storehouse [for the first milestone ](https://github.com/onflow/flow-go/issues/4682)
+- Continuing implementation
 
 Other fixes
-- [Fix verification cadende runtime settings](https://github.com/onflow/flow-go/pull/4676)
-- [Pass zerolog by value](https://github.com/onflow/flow-go/issues/4644)
+- [clean up ingestion engine by removing unused dependencies](https://github.com/onflow/flow-go/pull/4689)
+- [log num txs and state changed in block executed log](https://github.com/onflow/flow-go/pull/4683)
+- [Pass zerolog by value](https://github.com/onflow/flow-go/pull/4644)
+- [Add cmd checkpoint trie stats](https://github.com/onflow/flow-go/issues/4636)
+- [adjust block execution time buckets](https://github.com/onflow/flow-go/pull/4505)
 
 **This sprint**
 
 - [Continue Atree register inlining](https://github.com/onflow/atree/issues/292)
-- Continue testing [Atree register inlining migration](https://github.com/onflow/flow-go/pull/4633)
-- Start implementation of [Storehouse first milestone](https://github.com/onflow/flow-go/issues/4682) (execution state on disk)
+- Continue testing and optimizing [Atree register inlining migration](https://github.com/onflow/flow-go/pull/4633)
+- Continue implementation of [Storehouse first milestone](https://github.com/onflow/flow-go/issues/4682) (execution state on disk)
 
 **On Hold**
 
@@ -62,15 +72,59 @@ Other fixes
 Objective: long-term support release of Cadence with no expected breaking changes
 
 **Done last sprint**
-- 
+
+Features
+- Capabilities improvement [Add an exists function, allows checking if capability exists/is published](https://github.com/onflow/cadence/pull/2778)
+- Dependency for contract update mechanism [Add contract update method that doesn't panic](https://github.com/onflow/cadence/issues/2700)
+    - [Add tryUpdate method to Account.Contracts](https://github.com/onflow/cadence/pull/2769)
+- [Entitlement mapping compositio](https://github.com/onflow/cadence/issues/2643)
+    - [update account type mappings to include identity](https://github.com/onflow/cadence/pull/2761)
+
+Bugfix
+- [Fix doc (pretty printing) for function declaration without function block](https://github.com/onflow/cadence/pull/2774)
+
+Tech Debt
+- [Add purity annotations to newly added functions](https://github.com/onflow/cadence/issues/2466)
+    - [Add view annotations to newly added array functions](https://github.com/onflow/cadence/pull/2771)
+
+Other Improvements
+- [Implement split and join for String ](https://github.com/onflow/cadence/issues/2752)
+    - [Eagerly normalize String and Character values at construction time](https://github.com/onflow/cadence/pull/2781)
+- [Use bimaps in the elaboration](https://github.com/onflow/cadence/pull/2779)
+- [Replace simpleTypeIDByType with a bimap](https://github.com/onflow/cadence/pull/2775)
+- cosmetic [Improve capability API](https://github.com/onflow/cadence/pull/2772)
+- [Suggested fix for removed access modifiers, pub and priv](https://github.com/onflow/cadence/issues/2741)
+    - [Suggested fixes for pub and priv parser errors](https://github.com/onflow/cadence/pull/2767)
+- [Add entitlement CopyValue and require it for Account.Storage.copyValue](https://github.com/onflow/cadence/pull/2765)
+- [Better error messages for use of old restricted types](https://github.com/onflow/cadence/pull/2764)
+- [Improve and fix static types and their ID and string functions](https://github.com/onflow/cadence/pull/2756)
+- [Allow use of type code generator in any package, refactor RLP and BLS contracts](https://github.com/onflow/cadence/pull/2753)
+
+Tests
+- [Add tests for invalidation of references created with index/field-access](https://github.com/onflow/cadence/pull/2758)
+
+Docs
+- [Improve the access control page](https://github.com/onflow/docs/pull/262)
+- [Update capabilities documentation for Stable Cadence](https://github.com/onflow/docs/pull/251)
+- [Continue update to Stable Cadence ](https://github.com/onflow/docs/pull/244)
+- [Split the accounts page, continue update to Stable Cadence](https://github.com/onflow/docs/pull/243)
+- [Update account documentation for Stable Cadence](https://github.com/onflow/docs/pull/239)
+
+cadence-lang.org
+- [Update intro](https://github.com/onflow/cadence-lang.org/pull/7)
+
+Chores
+- [Merge master into Stable Cadence](https://github.com/onflow/cadence/pull/2770)
   
 **This sprint**
 
 - Continue work on Stable Cadence preview release - update to latest Stable Cadence branch
 - Continuing with Stable Cadence scope / discussions
     - Ongoing FLIPs:
-        - Blocking preview release: [Relaxing interface conformance restrictions](https://github.com/onflow/flips/pull/134)
-    - [Flip for removal of custom destructors](https://github.com/onflow/flips/pull/131)
+        - [Relaxing interface conformance restrictions](https://github.com/onflow/flips/pull/134) - addressing remaiing questions async as agree in LAngiage Design MEeting (LDM) on 12th Sep.
+    - [Flip for removal of custom destructors](https://github.com/onflow/flips/pull/131) - Breakout session on 19th Sep!
+- Reference Implementation of custom destructor removal
+- Continue Stable Cadence Docs update and knocking tasks off the [tech debt list](https://github.com/onflow/cadence/issues/2642)
  
 **On Hold**
 - Discussion of the re-entrancy edge cases
