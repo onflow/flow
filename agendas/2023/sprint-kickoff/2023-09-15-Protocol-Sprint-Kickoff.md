@@ -104,7 +104,16 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### **Permissionless Network - Kan Z**
 
 **Done last sprint**
--
+- [Complete] Investigated and fix CPU-intensive libp2p (incident response) [6869](https://github.com/dapperlabs/flow-go/issues/6869) [PR4702](https://github.com/onflow/flow-go/pull/4702) [PR4703](https://github.com/onflow/flow-go/pull/4703).
+- [Complete] Application Layer Spam Protection (ALSP) integration for `RangeRequest` for Sync Engine [PR4665](https://github.com/onflow/flow-go/pull/4665).
+- [Complete] Comprehensive test coverage for GossipSub control message inspection [PR4695](https://github.com/onflow/flow-go/pull/4695).
+- [Under Review] GossipSub Message Forensic FLIP [PR195](https://github.com/onflow/flips/pull/195)
+- [Under Review] Mitigating Unknown Topic Spam Attack on GossipSub [6798](https://github.com/dapperlabs/flow-go/issues/6798).
+- [In Progress] Addressing Security Vulnerabilities In Dialing Procedure [6556](https://github.com/dapperlabs/flow-go/issues/6556) (paused due to incident debugging).
+
+**Next sprint**
+- [Continue] Addressing Security Vulnerabilities In Dialing Procedure [6556](https://github.com/dapperlabs/flow-go/issues/6556).
+- Optimizing GossipSub RPC inspection CPU and Memory intensive operations (incident response) [6870](https://github.com/dapperlabs/flow-go/issues/6870).
 
 **Active Epics**
 
