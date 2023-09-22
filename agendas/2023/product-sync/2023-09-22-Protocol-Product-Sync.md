@@ -6,4 +6,5 @@ Please add your topics of discussion here
 2. Logging
    - https://github.com/onflow/flow-go/pull/4736/files
    - Error vs Info
+3. Spork operator for the next round of sporks
 
