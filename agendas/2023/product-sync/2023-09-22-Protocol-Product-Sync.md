@@ -1,4 +1,4 @@
-Please add your topics of discussion here
+Please add your topics of discussion here.
 
 1. Spork downtime updates
    - Any update on the state migration duration?
@@ -7,4 +7,5 @@ Please add your topics of discussion here
    - https://github.com/onflow/flow-go/pull/4736/files
    - Error vs Info
 3. Spork operator for the next round of sporks
+4. Keeping AN-EN up for the current network during the spork.
 
