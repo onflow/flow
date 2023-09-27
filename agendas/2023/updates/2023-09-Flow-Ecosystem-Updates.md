@@ -1,4 +1,4 @@
-# Flow Ecosystem Updates Sept 4th to Sept 15th
+# Flow Ecosystem Updates, September 2023
 
 ## Announcements and Wins! 🎉
 * 
