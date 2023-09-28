@@ -113,11 +113,16 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### Consensus (Dynamic Protocol State) - **Jerome P**
 
 **Done last sprint**
+- Consolidated safety and consistency proofs: [Identity-Changing Operations](https://www.notion.so/dapperlabs/Identity-Changing-Operations-610bb2d3b63f4d3dae12e405d3c5a097?pvs=4) (mostly done)
+- refactoring and refining the interfaces and data structures for clarity (described in [epic #4649](https://github.com/onflow/flow-go/issues/4649))
+   - data structure for snapshotting protocol state: [PR #4721](https://github.com/onflow/flow-go/pull/4721)
 
 **Next sprint**
-- Continue ProtocolStateEntry refactoring: https://github.com/onflow/flow-go/pull/4721
-- Refactor ProtocolStateEntry to increase code clarity https://github.com/onflow/flow-go/issues/4719
-- Wrapping up first integration pass of Dynamic Protocol state
+- Wrapping up safety and consistency proofs
+- consolidating exploratory research documents to reflect final design
+- refactoring and refining the interfaces and data structures for clarity (👉 [epic #4649](https://github.com/onflow/flow-go/issues/4649))
+   - completing new structure of Epoch Service Events: [PR 4719](https://github.com/onflow/flow-go/issues/4719)
+
 
 ### **Infra - JP**
 
