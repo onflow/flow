@@ -1,4 +1,5 @@
 # Team Wins 🎉
+- Since August, through network scaledowns/deprecation, snapshot cleanup, and node cleanup, we have reduced our infra bill by $25k a month.
 
 - Metrika has built a [new dashboard](https://app.metrika.co/flow/dashboard/slas?tr=YTD) specifically for network SLAs.
 
@@ -131,23 +132,34 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
-**This Sprint**
-
-**********************Quick Node**********************
-
-- Monitor & evaluate latency on Quick Node nodes
-
-************Node Hosting************
-
-- Onboard Dapper nodes to Devnet
-
 ************Infrastructure Savings************
 
 - Create new final snapshots for Mainnet historical nodes
 - Delete unnecessary Mainnet historical snapshots
-- Remove tracing nodes from networks to save on Compute
-- Disable tracing on nodes to save on egress & Tempo storage
-- Update Prometheus scrape interval to save money on Metrics egress & storage
+- Removed tracing nodes from historical networks & Canary
+- Snapshot & cleanup old unused disks 
+- Snapshot and validate recovery of  Devnet historical nodes before cleanup
+- Snapshot & delet unnecessary Mainnet historical nodes
+- Scale down Ansible nodes
+
+************Node Hosting************
+- Update Ansible configuration to configure EXT4 file systems with less reserved space to save money
+- Update Devnet & Mainnet file systems to use less reserved space 
+- Update Envoy Ansible configuration to reduce log sampling to reduce log storage
+
+************Support************
+- Assisted with deployments & HCU
+- Increase Studio rate limits for Devnet
+- Update BN2 to leverage bootstrap configuration from GCP bucket rather than K8s secrets
+
+**This Sprint**
+
+************Node Hosting************
+
+- Onboard Dapper nodes to Devnet
+- Assist with Canary Spork
+- Assist with Devnet Spork
+- Prepare Dapper infra/keys for Mainnet spork
 
 ### Key Release Dates & Breaking Changes
 
