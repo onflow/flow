@@ -1,22 +1,24 @@
 # Team Wins 🎉
 
-### Mainnet Uptime SLO - Last 14 days (9/1 to 9/14)
+- Metrika has built a [new dashboard](https://app.metrika.co/flow/dashboard/slas?tr=YTD) specifically for network SLAs.
+
+### Mainnet Uptime SLO - Last 14 days (9/14 to 9/29)
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%  |    99.921%    |       79.4%       |
-| Block Finalization      | 99.9%  |    99.921%    |       79.4%       |
-| Transaction Execution   | 99.9%  |    99.916%    |       84.3%       |
-| Block Sealing           | 99.9%  |    99.921%    |       79.4%       |
-| Access API Liveness     | 99.9%  |    99.545%    |       455%        |
+| Collection Finalization | 99.9%  |    99.911%    |       89.3%       |
+| Block Finalization      | 99.9%  |    99.911%    |       89.3%       |
+| Transaction Execution   | 99.9%  |    99.866%    |       134%        |
+| Block Sealing           | 99.9%  |    99.856%    |       144%        |
+| Access API Liveness     | 99.9%  |    99.917%    |       83.4%       |
+
+- Scheduled downtime: Height coordinated upgrade on 9/19.
 
 *99.9% translates to a maximum allowed downtime of ~20m8s for a 14-day window.*
 
 *99% translates to a maximum allowed downtime of ~3hr20min for a 14-day window.*
 
-- Sev-2 Incident: Public Access nodes went down between 5:20 pm to 6:00 pm on Wednesday 9/13
-     - Root cause: ANs were not started after a hardware upgrade by the AN operator
-     - Fix: Auto-restart has since been added; More observability on the ANs will be added soon.
+
 
 ### **Performance Pod Sprint Objective - Jan B**
 
