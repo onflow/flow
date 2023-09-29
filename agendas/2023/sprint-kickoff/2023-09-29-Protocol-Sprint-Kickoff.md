@@ -6,13 +6,14 @@
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%  |    99.911%    |       89.3%       |
-| Block Finalization      | 99.9%  |    99.911%    |       89.3%       |
-| Transaction Execution   | 99.9%  |    99.866%    |       134%        |
-| Block Sealing           | 99.9%  |    99.856%    |       144%        |
-| Access API Liveness     | 99.9%  |    99.917%    |       83.4%       |
+| Collection Finalization | 99.9%  |    100%       |       0%          |
+| Block Finalization      | 99.9%  |    100%       |       0%          |
+| Transaction Execution   | 99.9%  |    99.95%     |       49.7%       |
+| Block Sealing           | 99.9%  |    99.945%    |       54.6%       |
+| Access API Liveness     | 99.9%  |    99.965%    |       35.4%       |
 
-- Scheduled downtime: Height coordinated upgrade on 9/19.
+#### Incidents
+- Scheduled downtime: Height coordinated upgrade on 9/19 that took ~13 mins
 
 *99.9% translates to a maximum allowed downtime of ~20m8s for a 14-day window.*
 
