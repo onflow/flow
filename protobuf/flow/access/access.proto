@@ -220,15 +220,18 @@ message GetTransactionRequest {
   bytes id = 1;
   bytes block_id = 2;
   bytes collection_id = 3;
+  int32 eventEncodingVersion = 4;
 }
 
 message GetTransactionByIndexRequest {
   bytes block_id = 1;
   uint32 index = 2;
+  int32 eventEncodingVersion = 3;
 }
 
 message GetTransactionsByBlockIDRequest {
   bytes block_id = 1;
+  int32 eventEncodingVersion = 2;
 }
 
 message TransactionResultsResponse {
@@ -313,11 +316,13 @@ message GetEventsForHeightRangeRequest {
   string type = 1;
   uint64 start_height = 2;
   uint64 end_height = 3;
+  int32 eventEncodingVersion = 4;
 }
 
 message GetEventsForBlockIDsRequest {
   string type = 1;
   repeated bytes block_ids = 2;
+  int32 eventEncodingVersion = 3;
 }
 
 message EventsResponse {
