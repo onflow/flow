@@ -98,12 +98,20 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
+Focused on implementing new features.
+- Addressed security vulnerabilities in dialing and stream creation process [6556](https://github.com/dapperlabs/flow-go/issues/6556) [PR4743](https://github.com/onflow/flow-go/pull/4743).
+- Sync Engine has been _Application Layer **Spam-Proofed**_ with all permissionless message request types [6812](https://github.com/dapperlabs/flow-go/issues/6812) [Last PR for `BatchRequest`](https://github.com/onflow/flow-go/pull/4704).
+- Addressed GossipSub Sybil Attack Mitigation Vulnerability [6460](https://github.com/dapperlabs/flow-go/issues/6460) [PR4773](https://github.com/onflow/flow-go/pull/4773).
+- Addressed GossipSub Spam Vulnerability on Unknown Topics [6798](https://github.com/dapperlabs/flow-go/issues/6798) [PR4720](https://github.com/onflow/flow-go/pull/4720).
+
 **Next sprint**
-- [Continue] Addressing Security Vulnerabilities In Dialing Procedure [6556](https://github.com/dapperlabs/flow-go/issues/6556).
+
+Our focus for the next sprint is on fixing some reported issues and debugging flakey tests.
 - Optimizing GossipSub RPC inspection CPU and Memory intensive operations (incident response) [6870](https://github.com/dapperlabs/flow-go/issues/6870).
-- Application Layer Spam Protection (ALSP) integration for `BatchRequest` for Sync Engine.
-- GossipSub Sybil Attack Mitigation [6460](https://github.com/dapperlabs/flow-go/issues/6460).
-- Application Layer Spam Protection (ALSP) support for cluster channels [1889](https://github.com/dapperlabs/flow-internal/issues/1889).
+- Investigating and fixing LibP2P DHT goroutine leakage (incident response) [6871](https://github.com/dapperlabs/flow-go/issues/6871).
+- Debugging GossipSub Scoring Flakey Tests [1903](https://github.com/dapperlabs/flow-internal/issues/1903).
+- ALSP integration for cluster-prefix topics [1889](https://github.com/dapperlabs/flow-internal/issues/1889).
+- Addressing remaining technical debts with SyncEngine ALSP integration (unchecked parts) [6812](https://github.com/dapperlabs/flow-go/issues/6812).
 
 **Active Epics**
 
