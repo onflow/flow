@@ -10,6 +10,10 @@ enum EventEncodingVersion {
     CCF_V0 = 1;
 }
 
+message EventEncodingVersionValue {
+  EventEncodingVersion value = 1;
+}
+
 message Event {
   string type = 1;
   bytes transaction_id = 2;
