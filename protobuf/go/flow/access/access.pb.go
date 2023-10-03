@@ -698,7 +698,7 @@ type GetTransactionRequest struct {
 	Id                   []byte   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	BlockId              []byte   `protobuf:"bytes,2,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
 	CollectionId         []byte   `protobuf:"bytes,3,opt,name=collection_id,json=collectionId,proto3" json:"collection_id,omitempty"`
-	EventEncodingVersion int32    `protobuf:"varint,4,opt,name=eventEncodingVersion,proto3" json:"eventEncodingVersion,omitempty"`
+	EventEncodingVersion uint32   `protobuf:"varint,4,opt,name=eventEncodingVersion,proto3" json:"eventEncodingVersion,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -750,7 +750,7 @@ func (m *GetTransactionRequest) GetCollectionId() []byte {
 	return nil
 }
 
-func (m *GetTransactionRequest) GetEventEncodingVersion() int32 {
+func (m *GetTransactionRequest) GetEventEncodingVersion() uint32 {
 	if m != nil {
 		return m.EventEncodingVersion
 	}
@@ -760,7 +760,7 @@ func (m *GetTransactionRequest) GetEventEncodingVersion() int32 {
 type GetTransactionByIndexRequest struct {
 	BlockId              []byte   `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
 	Index                uint32   `protobuf:"varint,2,opt,name=index,proto3" json:"index,omitempty"`
-	EventEncodingVersion int32    `protobuf:"varint,3,opt,name=eventEncodingVersion,proto3" json:"eventEncodingVersion,omitempty"`
+	EventEncodingVersion uint32   `protobuf:"varint,3,opt,name=eventEncodingVersion,proto3" json:"eventEncodingVersion,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -805,7 +805,7 @@ func (m *GetTransactionByIndexRequest) GetIndex() uint32 {
 	return 0
 }
 
-func (m *GetTransactionByIndexRequest) GetEventEncodingVersion() int32 {
+func (m *GetTransactionByIndexRequest) GetEventEncodingVersion() uint32 {
 	if m != nil {
 		return m.EventEncodingVersion
 	}
@@ -814,7 +814,7 @@ func (m *GetTransactionByIndexRequest) GetEventEncodingVersion() int32 {
 
 type GetTransactionsByBlockIDRequest struct {
 	BlockId              []byte   `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
-	EventEncodingVersion int32    `protobuf:"varint,2,opt,name=eventEncodingVersion,proto3" json:"eventEncodingVersion,omitempty"`
+	EventEncodingVersion uint32   `protobuf:"varint,2,opt,name=eventEncodingVersion,proto3" json:"eventEncodingVersion,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -852,7 +852,7 @@ func (m *GetTransactionsByBlockIDRequest) GetBlockId() []byte {
 	return nil
 }
 
-func (m *GetTransactionsByBlockIDRequest) GetEventEncodingVersion() int32 {
+func (m *GetTransactionsByBlockIDRequest) GetEventEncodingVersion() uint32 {
 	if m != nil {
 		return m.EventEncodingVersion
 	}
@@ -1530,7 +1530,7 @@ type GetEventsForHeightRangeRequest struct {
 	Type                 string   `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 	StartHeight          uint64   `protobuf:"varint,2,opt,name=start_height,json=startHeight,proto3" json:"start_height,omitempty"`
 	EndHeight            uint64   `protobuf:"varint,3,opt,name=end_height,json=endHeight,proto3" json:"end_height,omitempty"`
-	EventEncodingVersion int32    `protobuf:"varint,4,opt,name=eventEncodingVersion,proto3" json:"eventEncodingVersion,omitempty"`
+	EventEncodingVersion uint32   `protobuf:"varint,4,opt,name=eventEncodingVersion,proto3" json:"eventEncodingVersion,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1582,7 +1582,7 @@ func (m *GetEventsForHeightRangeRequest) GetEndHeight() uint64 {
 	return 0
 }
 
-func (m *GetEventsForHeightRangeRequest) GetEventEncodingVersion() int32 {
+func (m *GetEventsForHeightRangeRequest) GetEventEncodingVersion() uint32 {
 	if m != nil {
 		return m.EventEncodingVersion
 	}
@@ -1592,7 +1592,7 @@ func (m *GetEventsForHeightRangeRequest) GetEventEncodingVersion() int32 {
 type GetEventsForBlockIDsRequest struct {
 	Type                 string   `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 	BlockIds             [][]byte `protobuf:"bytes,2,rep,name=block_ids,json=blockIds,proto3" json:"block_ids,omitempty"`
-	EventEncodingVersion int32    `protobuf:"varint,3,opt,name=eventEncodingVersion,proto3" json:"eventEncodingVersion,omitempty"`
+	EventEncodingVersion uint32   `protobuf:"varint,3,opt,name=eventEncodingVersion,proto3" json:"eventEncodingVersion,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1637,7 +1637,7 @@ func (m *GetEventsForBlockIDsRequest) GetBlockIds() [][]byte {
 	return nil
 }
 
-func (m *GetEventsForBlockIDsRequest) GetEventEncodingVersion() int32 {
+func (m *GetEventsForBlockIDsRequest) GetEventEncodingVersion() uint32 {
 	if m != nil {
 		return m.EventEncodingVersion
 	}
@@ -2165,7 +2165,7 @@ var fileDescriptor_4382e32bb8e3e8e5 = []byte{
 	0xd3, 0x23, 0xb1, 0x3b, 0x2d, 0x7e, 0x11, 0x2a, 0x51, 0x22, 0xd8, 0x16, 0x8a, 0xaf, 0x19, 0x93,
 	0xb8, 0x6e, 0x5a, 0xe4, 0x32, 0x4c, 0xf7, 0xf7, 0x2f, 0xa4, 0x97, 0x91, 0x5e, 0xeb, 0x7f, 0x6c,
 	0x5a, 0x64, 0x0b, 0xe6, 0xf1, 0x41, 0xb9, 0xef, 0xb4, 0x5c, 0xcb, 0x76, 0xda, 0xec, 0xa2, 0xac,
-	0x8f, 0x35, 0x94, 0x8d, 0x71, 0x43, 0x4a, 0xd3, 0xbe, 0x53, 0x60, 0x59, 0xb4, 0x6e, 0xe7, 0xac,
+	0x8f, 0x35, 0x94, 0x8d, 0x69, 0x43, 0x4a, 0xd3, 0xbe, 0x53, 0x60, 0x59, 0xb4, 0x6e, 0xe7, 0xac,
 	0xe9, 0x58, 0xf4, 0x15, 0x37, 0x32, 0x69, 0x94, 0x22, 0x1a, 0x35, 0x0f, 0xe3, 0x76, 0x08, 0x45,
 	0x63, 0xa7, 0x8d, 0x68, 0x91, 0x6b, 0x45, 0xb9, 0xc0, 0x8a, 0x2e, 0xac, 0x89, 0x46, 0xf8, 0x3b,
 	0x67, 0x98, 0xf0, 0xfd, 0xac, 0x2c, 0xb0, 0x23, 0x4f, 0x63, 0xa9, 0x40, 0xe3, 0x1b, 0x05, 0x54,
@@ -2175,7 +2175,7 @@ var fileDescriptor_4382e32bb8e3e8e5 = []byte{
 	0x2d, 0xa1, 0x83, 0xdb, 0x57, 0x94, 0xfa, 0x02, 0x7e, 0x34, 0x6b, 0x7e, 0x50, 0x60, 0x4e, 0x76,
 	0x5a, 0xfe, 0xd6, 0x31, 0x1c, 0xd1, 0x94, 0x32, 0x2c, 0xe6, 0xee, 0x3f, 0xf9, 0x2f, 0x4c, 0xb0,
 	0x2b, 0x55, 0xc1, 0x2b, 0xb5, 0x91, 0x6f, 0x0b, 0xbb, 0x58, 0x19, 0x9e, 0xac, 0xc1, 0x54, 0xf4,
-	0xd7, 0x41, 0xcb, 0xb5, 0x28, 0xcb, 0x6f, 0x88, 0x3e, 0xdd, 0x73, 0x2d, 0x1a, 0x9e, 0x47, 0xea,
+	0xd7, 0x41, 0xcb, 0xb5, 0x28, 0x4b, 0x24, 0x88, 0x3e, 0xdd, 0x73, 0x2d, 0x1a, 0x9e, 0x47, 0xea,
 	0x79, 0xae, 0x77, 0x70, 0x4a, 0x7d, 0xdf, 0x6c, 0x53, 0xcc, 0xee, 0xaa, 0x51, 0xc3, 0x8f, 0x8f,
 	0xa2, 0x6f, 0xe4, 0x26, 0x4c, 0x60, 0xee, 0xf9, 0xf5, 0x31, 0x8c, 0x4b, 0xfa, 0x15, 0xb8, 0x1f,
 	0x12, 0x0d, 0x86, 0x11, 0x12, 0x7c, 0x5c, 0x4c, 0xf0, 0x75, 0x98, 0x49, 0x66, 0xa3, 0x6d, 0xd5,
@@ -2239,5 +2239,5 @@ var fileDescriptor_4382e32bb8e3e8e5 = []byte{
 	0x2c, 0x99, 0x77, 0x1e, 0x82, 0xea, 0x7a, 0x6d, 0xdd, 0x75, 0x90, 0x21, 0x6e, 0xd3, 0x22, 0xce,
 	0xcf, 0xf4, 0xb6, 0x1d, 0x1c, 0xf7, 0x0e, 0xf5, 0x96, 0x7b, 0xba, 0x19, 0x41, 0x36, 0xf1, 0x9f,
 	0xf8, 0xa7, 0xdb, 0xb6, 0xbb, 0x99, 0xf8, 0x55, 0xfc, 0x70, 0x02, 0x09, 0xb7, 0xff, 0x0a, 0x00,
-	0x00, 0xff, 0xff, 0x2f, 0xcd, 0xdf, 0x29, 0x2b, 0x1f, 0x00, 0x00,
+	0x00, 0xff, 0xff, 0xa8, 0xf7, 0xe5, 0x1d, 0x2b, 0x1f, 0x00, 0x00,
 }
