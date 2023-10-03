@@ -123,10 +123,12 @@ Script execution
 - Pebble checkpoint ingestion - [PR 4727](https://github.com/onflow/flow-go/pull/4727)
 - Pebble height tracking implementation - [PR 4714](https://github.com/onflow/flow-go/issues/4714)
 - Index Execution Data - [PR 4653](https://github.com/onflow/flow-go/issues/4653)
+
 Index execution state
 - Index tx results and events - [PR 4772](https://github.com/onflow/flow-go/pull/4772)
 - Create light tx result storage - [PR 4735](https://github.com/onflow/flow-go/pull/4735)
 - Update chunk execution data serializer header version - [PR 4722](https://github.com/onflow/flow-go/pull/4722)
+
 Other Access
 - Fix panic condition in client connection cache - [PR 4731](https://github.com/onflow/flow-go/pull/4731)
 - Cleanup access connection management - [PR 4730](https://github.com/onflow/flow-go/pull/4730)
