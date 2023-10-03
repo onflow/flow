@@ -67,6 +67,11 @@ service ExecutionAPI {
       returns (BlockHeaderResponse);
 }
 
+enum EventEncodingVersion {
+    JSON_CDC_V0 = 0;
+    CCF_V0 = 1;
+}
+
 // Ping
 
 message PingRequest {}
@@ -105,7 +110,7 @@ message GetEventsForBlockIDsResponse {
     repeated entities.Event events = 3;
   }
   repeated Result results = 1;
-  entities.EventEncodingVersion event_encoding_version = 2;
+  EventEncodingVersion event_encoding_version = 2;
 }
 
 message GetEventsForBlockIDsRequest {
@@ -129,7 +134,7 @@ message GetTransactionResultResponse {
   uint32 status_code = 1;
   string error_message = 2;
   repeated entities.Event events = 3;
-  entities.EventEncodingVersion event_encoding_version = 4;
+  EventEncodingVersion event_encoding_version = 4;
 }
 
 message GetTransactionsByBlockIDRequest {
@@ -138,7 +143,7 @@ message GetTransactionsByBlockIDRequest {
 
 message GetTransactionResultsResponse {
   repeated GetTransactionResultResponse transaction_results = 1;
-  entities.EventEncodingVersion event_encoding_version = 2;
+  EventEncodingVersion event_encoding_version = 2;
 }
 
 // Registers
