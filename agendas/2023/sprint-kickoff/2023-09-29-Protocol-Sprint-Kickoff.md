@@ -26,6 +26,23 @@
 
 **Done last sprint**
 
+Storehouse
+- [add pebble db init](https://github.com/onflow/flow-go/issues/4771)
+- [Refactor ingestion engine test cases](https://github.com/onflow/flow-go/pull/4758)
+- [Refactor provider broadcast](https://github.com/onflow/flow-go/pull/4744)
+- [Extract BlockLoader from execution Ingestion engine](https://github.com/onflow/flow-go/pull/4718)
+- [Extract Ingestion Engine CollectionFetcher into a separate module](https://github.com/onflow/flow-go/issues/4713)
+
+Concurrent execution
+- [Fix Interpreter Issue on Concurrent TX Execution](https://github.com/onflow/flow-go/pull/4669)
+
+Other improvements
+- [Creating conversion functions for Path, Key and RegisterID](https://github.com/onflow/flow-go/issues/4658)
+    - [Move ledger key to register id conversions](https://github.com/onflow/flow-go/pull/4766)
+- [Backport Moving of libP2P logs to debug level to v0.31 branch] (https://github.com/onflow/flow-go/pull/4746)
+- [Move libP2P logs to debug level](https://github.com/onflow/flow-go/pull/4736)
+- [CI - v0.31 PORT - Rename without_netgo tag to without-netgo](https://github.com/onflow/flow-go/pull/4725)
+- [log num txns and collections](https://github.com/onflow/flow-go/pull/4716/commits)
 
 **This sprint**
 
@@ -52,15 +69,41 @@ Objective: long-term support release of Cadence with no expected breaking change
 
 **Done last sprint**
 
+Features
+- [Check native function declarations](https://github.com/onflow/cadence/pull/2821)
+- Flex dep. [Add support for injecting types into the environment](https://github.com/onflow/cadence/pull/2811)
+
+Iprovements
+- [1.0 - Extend type code generator](https://github.com/onflow/cadence/pull/2806)
+- [1.0 - Add helpers to get constructor and initializer function type for composite type](https://github.com/onflow/cadence/pull/2805)
+- tech debt - [1.0 - Remove unused composite type to interface type conversion function](https://github.com/onflow/cadence/pull/2804)
+- [1.0 - Refactor runtime test helpers into separate, reusable package](https://github.com/onflow/cadence/pull/2800)
+
+Bugfix
+- [1.0 - properly access-check optional chaining with entitlements](https://github.com/onflow/cadence/pull/2825)
+- [1.0 - meter and deduplicate included entitlement relations](https://github.com/onflow/cadence/pull/2810)
+- [1.0 - Fix Test framework's TestAccount's type name](https://github.com/onflow/cadence/pull/2802)
+- [Properly check removed expression for resource loss](https://github.com/onflow/cadence/pull/2798)
+- [Port internal #143](https://github.com/onflow/cadence/pull/2793)
+- [Fix capability controller deletion](https://github.com/onflow/cadence/pull/2788)
+
+Chores
+- [Sync Stable Cadence](https://github.com/onflow/cadence/issues/2820)
+- [CLI - Update to Cadence v1.0.0-preview.1](https://github.com/onflow/flow-cli/pull/1207)
+- [EMULATOR - Update to Cadence v1.0.0-preview.1](https://github.com/onflow/flow-emulator/issues/477)
+- [CLI - Update to latest stable cadence](https://github.com/onflow/flow-cli/issues/1204)
+- [Sync Stable Cadence](https://github.com/onflow/cadence/issues/2796)
+- [EMULATOR - Update to latest stable Cadence](https://github.com/onflow/flow-emulator/issues/471)
+- [SDK - Update to latest stable Cadence](https://github.com/onflow/flow-go-sdk/issues/468)
 
 **This sprint**
 
-- Continue work on Stable Cadence preview release - update to latest Stable Cadence branch
+- Security issue fix / rollout
+- Flex
 - Continuing with Stable Cadence scope / discussions
     - Ongoing FLIPs:
-        - [Relaxing interface conformance restrictions](https://github.com/onflow/flips/pull/134) - addressing remaiing questions async as agree in LAngiage Design MEeting (LDM) on 12th Sep.
-    - [Flip for removal of custom destructors](https://github.com/onflow/flips/pull/131) - Breakout session on 19th Sep!
-- Reference Implementation of custom destructor removal
+        - [Relaxing interface conformance restrictions](https://github.com/onflow/flips/pull/134)
+    - [Flip for removal of custom destructors](https://github.com/onflow/flips/pull/131)
 - Continue Stable Cadence Docs update and knocking tasks off the [tech debt list](https://github.com/onflow/cadence/issues/2642)
  
 **On Hold**
@@ -74,6 +117,12 @@ Objective: long-term support release of Cadence with no expected breaking change
 Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
+
+Script execution
+- [Create bootstrap checkpoint](https://github.com/onflow/flow-go/pull/4759)
+- [Pebble checkpoint ingestion](https://github.com/onflow/flow-go/pull/4727)
+- [Pebble height tracking implementation](https://github.com/onflow/flow-go/issues/4714)
+- [Index Execution Data](https://github.com/onflow/flow-go/issues/4653)
 
 **This sprint**
 - [OKR] Script Execution on ANs
