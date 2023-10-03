@@ -79,7 +79,7 @@ Iprovements
 - tech debt - [1.0 - Remove unused composite type to interface type conversion function](https://github.com/onflow/cadence/pull/2804)
 - [1.0 - Refactor runtime test helpers into separate, reusable package](https://github.com/onflow/cadence/pull/2800)
 
-Bugfix
+Bugfixes
 - [1.0 - properly access-check optional chaining with entitlements](https://github.com/onflow/cadence/pull/2825)
 - [1.0 - meter and deduplicate included entitlement relations](https://github.com/onflow/cadence/pull/2810)
 - [1.0 - Fix Test framework's TestAccount's type name](https://github.com/onflow/cadence/pull/2802)
