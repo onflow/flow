@@ -236,5 +236,5 @@ Our focus for the next sprint is on fixing some reported issues and debugging fl
 - Mainnet/Testnet Spork dates 
   - Next spork
      - Testnet: 18th October
-     - Mainnet: 1st Nov
+     - Mainnet: 1st Nov or 8th Nov (will be confirmed by EOD)
      - This time the spork will take longer (~2 to 3 hrs)
