@@ -119,24 +119,31 @@ Objective: Make execution data and script execution available on Edge nodes.
 **Done last sprint**
 
 Script execution
-- [Create bootstrap checkpoint](https://github.com/onflow/flow-go/pull/4759)
-- [Pebble checkpoint ingestion](https://github.com/onflow/flow-go/pull/4727)
-- [Pebble height tracking implementation](https://github.com/onflow/flow-go/issues/4714)
-- [Index Execution Data](https://github.com/onflow/flow-go/issues/4653)
+- Create bootstrap checkpoint - [PR 4759](https://github.com/onflow/flow-go/pull/4759)
+- Pebble checkpoint ingestion - [PR 4727](https://github.com/onflow/flow-go/pull/4727)
+- Pebble height tracking implementation - [PR 4714](https://github.com/onflow/flow-go/issues/4714)
+- Index Execution Data - [PR 4653](https://github.com/onflow/flow-go/issues/4653)
+Index execution state
+- Index tx results and events - [PR 4772](https://github.com/onflow/flow-go/pull/4772)
+- Create light tx result storage - [PR 4735](https://github.com/onflow/flow-go/pull/4735)
+- Update chunk execution data serializer header version - [PR 4722](https://github.com/onflow/flow-go/pull/4722)
+Other Access
+- Fix panic condition in client connection cache - [PR 4731](https://github.com/onflow/flow-go/pull/4731)
+- Cleanup access connection management - [PR 4730](https://github.com/onflow/flow-go/pull/4730)
+
 
 **This sprint**
 - [OKR] Script Execution on ANs
-    - [Script Execution] State Data Indexer Module - [Issue 4638](https://github.com/onflow/flow-go/issues/4638)
-    - [Script Execution] Ingest initial state snapshot - [Issue 4673](https://github.com/onflow/flow-go/issues/4673)
-- [OKR] Execution Data Improvements
-    - [State Sync] Add Transaction Results into BlockExecutionData - [Issue 4455](https://github.com/onflow/flow-go/issues/4455)
-    - [State Sync] Test decoding BlockExecutionData with new format - [Issue 4708](https://github.com/onflow/flow-go/issues/4708)
-    - [State Sync] Regression test ExecutionData changes - [Issue 4408](https://github.com/onflow/flow-go/issues/4408)
+    - Benchnet testing of indexers
+    - Load indexer and register db in node bootstrap - [Issue 4778](https://github.com/onflow/flow-go/issues/4778)
+    - Configure script execution engine - [Issue 4640](https://github.com/onflow/flow-go/issues/4640)
+    - Integrate local script execution into Access API - [Issue 4781](https://github.com/onflow/flow-go/issues/4781)
+    - Add GetRegisters API endpoint to ExecutionData API - [Issue 4756](https://github.com/onflow/flow-go/issues/4756)
 
 **Active Epics**
 
-- [[State Sync] Add TxResults and Verification for Execution Data](https://github.com/onflow/flow-go/issues/4410)
-- [Script Execution on Access Node](https://github.com/onflow/flow-go/issues/4637)
+- Script Execution on Access Node - [Issue 4637](https://github.com/onflow/flow-go/issues/4637)
+- Integrate local execution state indexes into Access API - [Issue 4750](https://github.com/onflow/flow-go/issues/4750)
 
 **On Hold**
 
