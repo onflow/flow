@@ -174,16 +174,20 @@ Our focus for the next sprint is on fixing some reported issues and debugging fl
 ### Consensus (Dynamic Protocol State) - **Jerome P**
 
 **Done last sprint**
-- Consolidated safety and consistency proofs: [Identity-Changing Operations](https://www.notion.so/dapperlabs/Identity-Changing-Operations-610bb2d3b63f4d3dae12e405d3c5a097?pvs=4) (mostly done)
-- refactoring and refining the interfaces and data structures for clarity (described in [epic #4649](https://github.com/onflow/flow-go/issues/4649))
+- Completed identity-changing operations safety proof document and updated old documentation: [Identity-Changing Operations](https://www.notion.so/dapperlabs/Identity-Changing-Operations-610bb2d3b63f4d3dae12e405d3c5a097?pvs=4) (mostly done)
+- Refactoring and refining the interfaces and data structures for clarity (described in [epic #4649](https://github.com/onflow/flow-go/issues/4649))
    - data structure for snapshotting protocol state: [PR #4721](https://github.com/onflow/flow-go/pull/4721)
+- Blog post for the "Why Cadence" series
+- BLST Benchnet testing
+- BLST code review
 
 **Next sprint**
 - Wrapping up safety and consistency proofs
-- consolidating exploratory research documents to reflect final design
-- refactoring and refining the interfaces and data structures for clarity (👉 [epic #4649](https://github.com/onflow/flow-go/issues/4649))
-   - completing new structure of Epoch Service Events: [PR 4719](https://github.com/onflow/flow-go/issues/4719)
-
+- Consolidating exploratory research documents to reflect final design
+- Refactoring and refining the interfaces and data structures for clarity (👉 [epic #4649](https://github.com/onflow/flow-go/issues/4649))
+   - Completing new structure of Epoch Service Events: [PR 4719](https://github.com/onflow/flow-go/issues/4719)
+- Creating a FLIP for Smart-contract-specified Epoch switchover timing
+- Investigating Aptos/Sui claims of permissionless node operation
 
 ### **Infra - JP**
 
