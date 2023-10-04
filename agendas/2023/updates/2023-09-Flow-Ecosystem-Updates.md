@@ -26,6 +26,9 @@
 ### Cadence and smart contract updates
 * 
 
+### Innovation, composability and advanced concepts
+* 
+
 ### CI/CD and Testing
 *
 
