@@ -199,7 +199,7 @@ func (m *ExecutionDataCollection) GetTransactions() []*Transaction {
 // TrieUpdates contain a list of registers that were modified during chunk execution. The value
 // included is the new value of the register.
 type TrieUpdate struct {
-	// RootHash is the root hash of the trie that included the contained updates.
+	// RootHash is the root hash of the trie before the update is applied.
 	RootHash []byte `protobuf:"bytes,1,opt,name=root_hash,json=rootHash,proto3" json:"root_hash,omitempty"`
 	// List of register paths updated.
 	//
@@ -262,9 +262,10 @@ func (m *TrieUpdate) GetPayloads() []*Payload {
 	return nil
 }
 
-// Payload represents the value of a register.
+// Payload represents the key-value pair of a register.
 type Payload struct {
 	// List of key parts that make up the register key.
+	// Can be converted into register id.
 	KeyPart []*KeyPart `protobuf:"bytes,1,rep,name=keyPart,proto3" json:"keyPart,omitempty"`
 	// Value of the register.
 	Value                []byte   `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
