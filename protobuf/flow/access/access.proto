@@ -311,14 +311,12 @@ message ExecuteScriptResponse {
 }
 
 message GetRegisterValuesRequest {
-  bytes block_id = 1;
+  uint64 block_height = 1;
   repeated bytes register_ids = 2;
 }
 
 message GetRegisterValuesResponse {
-  repeated bytes paths = 1;
-  repeated bytes keys = 2;
-  repeated bytes values = 3;
+  repeated bytes values = 1;
 }
 
 // Events
