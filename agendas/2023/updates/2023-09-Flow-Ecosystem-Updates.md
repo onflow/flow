@@ -53,7 +53,7 @@
   * [Cadence competition](https://flow.com/post/september-2023-cadence-competition) launched!
   * Launched FLOATS 2.0! https://floats.city/
     * You can now log in using Apple or Google sign in. Simply click "Connect" -> "Blocto" and you will see both options!
-    * Now also supports Animated FlOATs!
+    * Now also supports Animated FLOATs!
   * Added 5 new code snippets on Account Linking
     * Setup a child account: https://academy.ecdao.org/en/snippets/cadence-set-up-child-account
     * Publish a child account: https://academy.ecdao.org/en/snippets/cadence-publish-a-child-account
