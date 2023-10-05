@@ -103,9 +103,6 @@ service AccessAPI {
   // execution state at the given block height.
   rpc ExecuteScriptAtBlockHeight(ExecuteScriptAtBlockHeightRequest)
       returns (ExecuteScriptResponse);
-  // GetRegisterValues gets the register values for the given Ids as of the given block height
-  rpc GetRegisterValues(GetRegisterValuesRequest)
-      returns (GetRegisterValuesResponse);
 
   // Events
 
@@ -308,15 +305,6 @@ message ExecuteScriptAtBlockHeightRequest {
 message ExecuteScriptResponse {
   bytes value = 1;
   entities.Metadata metadata = 2;
-}
-
-message GetRegisterValuesRequest {
-  uint64 block_height = 1;
-  repeated bytes register_ids = 2;
-}
-
-message GetRegisterValuesResponse {
-  repeated bytes values = 1;
 }
 
 // Events

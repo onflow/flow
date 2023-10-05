@@ -61,6 +61,10 @@ service ExecutionDataAPI {
   //   not been received.
   rpc SubscribeEvents(SubscribeEventsRequest)
       returns (stream SubscribeEventsResponse);
+
+  // GetRegisterValues gets the register values for the given Ids as of the given block height
+  rpc GetRegisterValues(GetRegisterValuesRequest)
+      returns (GetRegisterValuesResponse);
 }
 
 // The request for GetExecutionDataByBlockID
@@ -190,4 +194,13 @@ message EventFilter {
   // network the node is connected to. i.e. only a mainnet address is valid for
   // a mainnet node. Addresses may optionally include the 0x prefix.
   repeated string address = 3;
+}
+
+message GetRegisterValuesRequest {
+  uint64 block_height = 1;
+  repeated bytes register_ids = 2;
+}
+
+message GetRegisterValuesResponse {
+  repeated bytes values = 1;
 }

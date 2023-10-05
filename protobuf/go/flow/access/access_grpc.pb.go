@@ -72,8 +72,6 @@ type AccessAPIClient interface {
 	// ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the
 	// execution state at the given block height.
 	ExecuteScriptAtBlockHeight(ctx context.Context, in *ExecuteScriptAtBlockHeightRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
-	// GetRegisterValues gets the register values for the given Ids as of the given block height
-	GetRegisterValues(ctx context.Context, in *GetRegisterValuesRequest, opts ...grpc.CallOption) (*GetRegisterValuesResponse, error)
 	// GetEventsForHeightRange retrieves events emitted within the specified block
 	// range.
 	GetEventsForHeightRange(ctx context.Context, in *GetEventsForHeightRangeRequest, opts ...grpc.CallOption) (*EventsResponse, error)
@@ -291,15 +289,6 @@ func (c *accessAPIClient) ExecuteScriptAtBlockHeight(ctx context.Context, in *Ex
 	return out, nil
 }
 
-func (c *accessAPIClient) GetRegisterValues(ctx context.Context, in *GetRegisterValuesRequest, opts ...grpc.CallOption) (*GetRegisterValuesResponse, error) {
-	out := new(GetRegisterValuesResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetRegisterValues", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *accessAPIClient) GetEventsForHeightRange(ctx context.Context, in *GetEventsForHeightRangeRequest, opts ...grpc.CallOption) (*EventsResponse, error) {
 	out := new(EventsResponse)
 	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetEventsForHeightRange", in, out, opts...)
@@ -412,8 +401,6 @@ type AccessAPIServer interface {
 	// ExecuteScriptAtBlockHeight executes a ready-only Cadence script against the
 	// execution state at the given block height.
 	ExecuteScriptAtBlockHeight(context.Context, *ExecuteScriptAtBlockHeightRequest) (*ExecuteScriptResponse, error)
-	// GetRegisterValues gets the register values for the given Ids as of the given block height
-	GetRegisterValues(context.Context, *GetRegisterValuesRequest) (*GetRegisterValuesResponse, error)
 	// GetEventsForHeightRange retrieves events emitted within the specified block
 	// range.
 	GetEventsForHeightRange(context.Context, *GetEventsForHeightRangeRequest) (*EventsResponse, error)
@@ -500,9 +487,6 @@ func (UnimplementedAccessAPIServer) ExecuteScriptAtBlockID(context.Context, *Exe
 }
 func (UnimplementedAccessAPIServer) ExecuteScriptAtBlockHeight(context.Context, *ExecuteScriptAtBlockHeightRequest) (*ExecuteScriptResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteScriptAtBlockHeight not implemented")
-}
-func (UnimplementedAccessAPIServer) GetRegisterValues(context.Context, *GetRegisterValuesRequest) (*GetRegisterValuesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetRegisterValues not implemented")
 }
 func (UnimplementedAccessAPIServer) GetEventsForHeightRange(context.Context, *GetEventsForHeightRangeRequest) (*EventsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetEventsForHeightRange not implemented")
@@ -912,24 +896,6 @@ func _AccessAPI_ExecuteScriptAtBlockHeight_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AccessAPI_GetRegisterValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetRegisterValuesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetRegisterValues(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/flow.access.AccessAPI/GetRegisterValues",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetRegisterValues(ctx, req.(*GetRegisterValuesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _AccessAPI_GetEventsForHeightRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetEventsForHeightRangeRequest)
 	if err := dec(in); err != nil {
@@ -1128,10 +1094,6 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ExecuteScriptAtBlockHeight",
 			Handler:    _AccessAPI_ExecuteScriptAtBlockHeight_Handler,
-		},
-		{
-			MethodName: "GetRegisterValues",
-			Handler:    _AccessAPI_GetRegisterValues_Handler,
 		},
 		{
 			MethodName: "GetEventsForHeightRange",

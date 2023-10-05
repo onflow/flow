@@ -70,6 +70,8 @@ type ExecutionDataAPIClient interface {
 	//	happen if the block was from a previous spork, or if the block has yet
 	//	not been received.
 	SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error)
+	// GetRegisterValues gets the register values for the given Ids as of the given block height
+	GetRegisterValues(ctx context.Context, in *GetRegisterValuesRequest, opts ...grpc.CallOption) (*GetRegisterValuesResponse, error)
 }
 
 type executionDataAPIClient struct {
@@ -153,6 +155,15 @@ func (x *executionDataAPISubscribeEventsClient) Recv() (*SubscribeEventsResponse
 	return m, nil
 }
 
+func (c *executionDataAPIClient) GetRegisterValues(ctx context.Context, in *GetRegisterValuesRequest, opts ...grpc.CallOption) (*GetRegisterValuesResponse, error) {
+	out := new(GetRegisterValuesResponse)
+	err := c.cc.Invoke(ctx, "/flow.access.ExecutionDataAPI/GetRegisterValues", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ExecutionDataAPIServer is the server API for ExecutionDataAPI service.
 // All implementations should embed UnimplementedExecutionDataAPIServer
 // for forward compatibility
@@ -205,6 +216,8 @@ type ExecutionDataAPIServer interface {
 	//	happen if the block was from a previous spork, or if the block has yet
 	//	not been received.
 	SubscribeEvents(*SubscribeEventsRequest, ExecutionDataAPI_SubscribeEventsServer) error
+	// GetRegisterValues gets the register values for the given Ids as of the given block height
+	GetRegisterValues(context.Context, *GetRegisterValuesRequest) (*GetRegisterValuesResponse, error)
 }
 
 // UnimplementedExecutionDataAPIServer should be embedded to have forward compatible implementations.
@@ -219,6 +232,9 @@ func (UnimplementedExecutionDataAPIServer) SubscribeExecutionData(*SubscribeExec
 }
 func (UnimplementedExecutionDataAPIServer) SubscribeEvents(*SubscribeEventsRequest, ExecutionDataAPI_SubscribeEventsServer) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeEvents not implemented")
+}
+func (UnimplementedExecutionDataAPIServer) GetRegisterValues(context.Context, *GetRegisterValuesRequest) (*GetRegisterValuesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRegisterValues not implemented")
 }
 
 // UnsafeExecutionDataAPIServer may be embedded to opt out of forward compatibility for this service.
@@ -292,6 +308,24 @@ func (x *executionDataAPISubscribeEventsServer) Send(m *SubscribeEventsResponse)
 	return x.ServerStream.SendMsg(m)
 }
 
+func _ExecutionDataAPI_GetRegisterValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRegisterValuesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExecutionDataAPIServer).GetRegisterValues(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.access.ExecutionDataAPI/GetRegisterValues",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExecutionDataAPIServer).GetRegisterValues(ctx, req.(*GetRegisterValuesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ExecutionDataAPI_ServiceDesc is the grpc.ServiceDesc for ExecutionDataAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -302,6 +336,10 @@ var ExecutionDataAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetExecutionDataByBlockID",
 			Handler:    _ExecutionDataAPI_GetExecutionDataByBlockID_Handler,
+		},
+		{
+			MethodName: "GetRegisterValues",
+			Handler:    _ExecutionDataAPI_GetRegisterValues_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
