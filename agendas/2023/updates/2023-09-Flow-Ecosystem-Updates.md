@@ -48,9 +48,9 @@
 ------------------------------------------
 ## Community updates 
 
-* **[Emerald City DAO]** - so many updates! Jacob Tucker is on 🔥
-* Several [updates](https://docs.ecdao.org/products/emerald-bot/dapper-sports/nba-wnba-topshot) to Emerald Discord bot to allow you to create challenges for NBA Topshot, NFL All Day or UFC Strike directly in Discord!
-  * [Cadence competition]((https://flow.com/post/september-2023-cadence-competition)) launched!
+* Emerald City DAO - so many updates! Jacob Tucker is on 🔥
+  * Several [updates](https://docs.ecdao.org/products/emerald-bot/dapper-sports/nba-wnba-topshot) to Emerald Discord bot to allow you to create challenges for NBA Topshot, NFL All Day or UFC Strike directly in Discord!
+  * [Cadence competition](https://flow.com/post/september-2023-cadence-competition) launched!
   * Launched FLOATS 2.0! https://floats.city/
     * You can now log in using Apple or Google sign in. Simply click "Connect" -> "Blocto" and you will see both options!
     * Now also supports Animated FlOATs!
@@ -60,7 +60,7 @@
     * Redeem a child account: https://academy.ecdao.org/en/snippets/cadence-redeem-a-child-account
     * Remove a child account: https://academy.ecdao.org/en/snippets/cadence-remove-a-child-account
     * Remove a parent account: https://academy.ecdao.org/en/snippets/cadence-remove-a-parent-account   
-* **[LearnWeb3 Hackathon]** LearnWeb3 started a [Hackathon](https://learnweb3.io/hackathons/decentralized-intelligence-season-1) with a prize sponsored by Flow
+* LearnWeb3 started a [Hackathon](https://learnweb3.io/hackathons/decentralized-intelligence-season-1) with a prize sponsored by Flow
 
 ------------------------------------------
 ## Other misc items and updates
