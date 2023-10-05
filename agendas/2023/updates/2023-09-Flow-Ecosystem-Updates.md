@@ -8,7 +8,7 @@
 ## 🗒 Flow Updates: 
 
 ### Educational, learning resources, tutorials and documentation
-* Flow Developer Docs site has been getting a huge overhaul. Everyone on the Flow DevEx has been helping out! Some highlights include:
+* Flow [Developer Docs](https://developers.flow.com/) site has been getting a huge overhaul. Everyone on the Flow DevEx has been helping out! Some highlights include:
   * Simplified navigation and structure and addressing inconsistencies 
   * Revamped Hello World tutorials
   * New embedded Script Quickstart
