@@ -462,8 +462,11 @@ func (m *EventFilter) GetAddress() []string {
 	return nil
 }
 
+// request for GetRegisterValues
 type GetRegisterValuesRequest struct {
-	BlockHeight          uint64   `protobuf:"varint,1,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
+	// Block height of the execution state being queried.
+	BlockHeight uint64 `protobuf:"varint,1,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
+	// Register IDs of the Ledger.RegisterID format with an owner and key.
 	RegisterIds          [][]byte `protobuf:"bytes,2,rep,name=register_ids,json=registerIds,proto3" json:"register_ids,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -509,7 +512,9 @@ func (m *GetRegisterValuesRequest) GetRegisterIds() [][]byte {
 	return nil
 }
 
+// response for GetRegisterValues
 type GetRegisterValuesResponse struct {
+	// raw register values at the given height.
 	Values               [][]byte `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

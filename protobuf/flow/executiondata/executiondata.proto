@@ -62,7 +62,7 @@ service ExecutionDataAPI {
   rpc SubscribeEvents(SubscribeEventsRequest)
       returns (stream SubscribeEventsResponse);
 
-  // GetRegisterValues gets the register values for the given Ids as of the given block height
+  // GetRegisterValues gets the values for the given register IDs as of the given block height
   rpc GetRegisterValues(GetRegisterValuesRequest)
       returns (GetRegisterValuesResponse);
 }
@@ -196,11 +196,19 @@ message EventFilter {
   repeated string address = 3;
 }
 
+// request for GetRegisterValues
 message GetRegisterValuesRequest {
+
+  // Block height of the execution state being queried.
   uint64 block_height = 1;
+
+  // Register IDs of the Ledger.RegisterID format with an owner and key.
   repeated bytes register_ids = 2;
 }
 
+// response for GetRegisterValues
 message GetRegisterValuesResponse {
+
+  // raw register values at the given height.
   repeated bytes values = 1;
 }
