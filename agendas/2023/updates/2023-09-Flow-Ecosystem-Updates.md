@@ -28,7 +28,7 @@
 ### Cadence and smart contract updates
 * Cadence Compact Format was [updated to RC3](https://github.com/onflow/ccf/issues/4)
 * [Random Function Cadence FLIP](https://github.com/onflow/flips/pull/120) was approved!
-* Released DexSyncSwap smart contract standard to [testnet](https://testnet.contractbrowser.com/A.1892acb0b380cc30.DexSyncSwap) 
+* Released [DexSyncSwap](https://forum.onflow.org/t/dex-standard-on-flow/4607) smart contract standard to [testnet](https://testnet.contractbrowser.com/A.1892acb0b380cc30.DexSyncSwap) 
 
 ### Innovation, composability and advanced concepts
 * 
