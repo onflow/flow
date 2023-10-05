@@ -1,8 +1,9 @@
 # Flow Ecosystem Updates, September 2023
 
 ## Announcements and Wins! 🎉
-* 
-*
+* Flow announced it's [EVM interoperability plan](https://forum.onflow.org/t/evm-on-flow-beyond-solidity/5260) - check it out!
+  * [Slides](https://docs.google.com/presentation/d/1_rHKDeMfU07HZldAk-vzwlWKABNeu9CGAdksHEwGlNk/edit#slide=id.g241b055a5c0_0_91) from Dete's talk at EthMilan 
+* Flow & Magic.link [integration](https://flow.com/post/flow-magic-integration) is live and available to use!
 
 ## 🗒 Flow Updates: 
 
@@ -17,8 +18,7 @@
 * Added documentation to help understand [transaction time](https://developers.flow.com/build/advanced-concepts/transaction-time)
 
 ### Tooling, infrastructure and other software for builders
-* Metrika released a new [dashboard](https://app.metrika.co/flow/dashboard/slas?tr=YTD) to monitor Flow network SLA
-* FCL-discovery features for wallets 
+* [FCL-discovery feature for wallets](https://github.com/onflow/fcl-discovery/pull/161) - if an application requires Account Linking, it informs the user if their wallet supports it
 
 ### Protocol, core contracts and node updates
 * Event streaming REST API for Access nodes was completed. Currently on canarynet, scheduled for next spork releases to testnet/mainnet
@@ -35,13 +35,14 @@
 ### CI/CD and Testing
 *
 
-### Mainnet, sporks, uptime/SLO
+### Mainnet, Sporks, uptime/SLO
 * Next spork: Nov 8th
+* Metrika released a new [dashboard](https://app.metrika.co/flow/dashboard/slas?tr=YTD) to monitor Flow network SLA
 
 ------------------------------------------
 
 ## Grant project updates
-* 
+* Cadence testing framework has been getting a lot of [updates](https://forum.onflow.org/t/major-uplift-for-cadence-testing-framework/5232/4)! Check out the [updated docs](https://developers.flow.com/guides/smart-contracts/testing) and start testing Cadence with Cadence!
 * 
 
 ------------------------------------------
@@ -50,6 +51,7 @@
 * **[ECDAO]** Updates on discord bot - [LINK](https://discord.com/channels/906264258189332541/906267779437568040/1151529840579727460)
 * **[ECDAO]** Cadence competition launched - [LINK1](https://discord.com/channels/906264258189332541/906267779437568040/1151550386742771773) [LINK2](https://flow.com/post/september-2023-cadence-competition)
 * **[Hackathon]** LearnWeb3 started a Hackathon with a prize sponsored by Flow - [LINK](https://learnweb3.io/hackathons/decentralized-intelligence-season-1)
+* Emerald Academy launched FLOATS 2.0! https://floats.city/ 
 * Emerald Academy added 5 snippets on Account Linking
   * Setup a child account: https://academy.ecdao.org/en/snippets/cadence-set-up-child-account
   * Publish a child account: https://academy.ecdao.org/en/snippets/cadence-publish-a-child-account
