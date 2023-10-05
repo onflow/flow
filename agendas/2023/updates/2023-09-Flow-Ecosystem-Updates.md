@@ -17,7 +17,7 @@
 * Added documentation to help understand [transaction time](https://developers.flow.com/build/advanced-concepts/transaction-time)
 
 ### Tooling, infrastructure and other software for builders
-* Metrika released a new [dashboard](https://app.metrika.co/flow/dashboard/slas?tr=YTD) to monitor Flow netowrk SLA
+* Metrika released a new [dashboard](https://app.metrika.co/flow/dashboard/slas?tr=YTD) to monitor Flow network SLA
 * FCL-discovery features for wallets 
 
 ### Protocol, core contracts and node updates
