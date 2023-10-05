@@ -28,7 +28,7 @@
 ### Cadence and smart contract updates
 * Cadence Compact Format was [updated to RC3](https://github.com/onflow/ccf/issues/4)
 * [Random Function Cadence FLIP](https://github.com/onflow/flips/pull/120) was approved!
-* Releases DexSyncSwap smart contract standard to [testnet](https://testnet.contractbrowser.com/A.1892acb0b380cc30.DexSyncSwap) 
+* Released DexSyncSwap smart contract standard to [testnet](https://testnet.contractbrowser.com/A.1892acb0b380cc30.DexSyncSwap) 
 
 ### Innovation, composability and advanced concepts
 * 
@@ -44,23 +44,24 @@
 
 ## Grant project updates
 * Cadence testing framework has been getting a lot of [updates](https://forum.onflow.org/t/major-uplift-for-cadence-testing-framework/5232/4)! Check out the [updated docs](https://developers.flow.com/guides/smart-contracts/testing) and start testing Cadence with Cadence!
-* 
 
 ------------------------------------------
 ## Community updates 
 
-* **[ECDAO]** Updates on discord bot - [LINK](https://discord.com/channels/906264258189332541/906267779437568040/1151529840579727460)
-* **[ECDAO]** Cadence competition launched - [LINK1](https://discord.com/channels/906264258189332541/906267779437568040/1151550386742771773) [LINK2](https://flow.com/post/september-2023-cadence-competition)
-* **[Hackathon]** LearnWeb3 started a Hackathon with a prize sponsored by Flow - [LINK](https://learnweb3.io/hackathons/decentralized-intelligence-season-1)
-* Emerald Academy launched FLOATS 2.0! https://floats.city/ 
-* Emerald Academy added 5 snippets on Account Linking
-  * Setup a child account: https://academy.ecdao.org/en/snippets/cadence-set-up-child-account
-  * Publish a child account: https://academy.ecdao.org/en/snippets/cadence-publish-a-child-account
-  * Redeem a child account: https://academy.ecdao.org/en/snippets/cadence-redeem-a-child-account
-  * Remove a child account: https://academy.ecdao.org/en/snippets/cadence-remove-a-child-account
-  * Remove a parent account: https://academy.ecdao.org/en/snippets/cadence-remove-a-parent-account   
+* **[Emerald City DAO]** - so many updates! Jacob Tucker is on 🔥
+* Several [updates](https://docs.ecdao.org/products/emerald-bot/dapper-sports/nba-wnba-topshot) to Emerald Discord bot to allow you to create challenges for NBA Topshot, NFL All Day or UFC Strike directly in Discord!
+  * [Cadence competition]((https://flow.com/post/september-2023-cadence-competition)) launched!
+  * Launched FLOATS 2.0! https://floats.city/
+    * You can now log in using Apple or Google sign in. Simply click "Connect" -> "Blocto" and you will see both options!
+    * Now also supports Animated FlOATs!
+  * Added 5 new code snippets on Account Linking
+    * Setup a child account: https://academy.ecdao.org/en/snippets/cadence-set-up-child-account
+    * Publish a child account: https://academy.ecdao.org/en/snippets/cadence-publish-a-child-account
+    * Redeem a child account: https://academy.ecdao.org/en/snippets/cadence-redeem-a-child-account
+    * Remove a child account: https://academy.ecdao.org/en/snippets/cadence-remove-a-child-account
+    * Remove a parent account: https://academy.ecdao.org/en/snippets/cadence-remove-a-parent-account   
+* **[LearnWeb3 Hackathon]** LearnWeb3 started a [Hackathon](https://learnweb3.io/hackathons/decentralized-intelligence-season-1) with a prize sponsored by Flow
 
 ------------------------------------------
 ## Other misc items and updates
 * ICYMI: Helpful [cheat sheet](https://gist.github.com/chasefleming/0d5e21606cf8c9a3d5584a0625544c29) for Cadence syntax and conventions
-* 
