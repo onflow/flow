@@ -22,7 +22,6 @@
 * [FCL-discovery feature for wallets](https://github.com/onflow/fcl-discovery/pull/161) - if an application requires Account Linking, it informs the user if their wallet supports it
 
 ### Protocol, core contracts and node updates
-* Event streaming REST API for Access nodes was completed. Currently on canarynet, scheduled for next spork releases to testnet/mainnet
 * Completed identity-changing operations [safety proof document](https://www.notion.so/dapperlabs/Identity-Changing-Operations-610bb2d3b63f4d3dae12e405d3c5a097)
 
 ### Cadence and smart contract updates
