@@ -33,8 +33,8 @@
 ### Innovation, composability and advanced concepts
 * 
 
-### Mainnet, Sporks, uptime/SLO
-* Next spork: Nov 8th
+### Mainnet, Sporks
+* Next mainnet spork: Nov 8th
 * Metrika released a new [dashboard](https://app.metrika.co/flow/dashboard/slas?tr=YTD) to monitor Flow network SLA
 
 ------------------------------------------
