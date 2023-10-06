@@ -44,6 +44,7 @@
 
 ## Grant project updates
 * Cadence testing framework has been getting a lot of [updates](https://forum.onflow.org/t/major-uplift-for-cadence-testing-framework/5232/4)! Check out the [updated docs](https://developers.flow.com/guides/smart-contracts/testing) and start testing Cadence with Cadence!
+* finalized Request for Proposal (RFP) for BFT Testing Framework ([BFTune](https://github.com/onflow/bftune)) and are actively looking for academic researchers to work with us to find BFT attack vulnerabilities in Flow
 
 ------------------------------------------
 ## Community updates 
