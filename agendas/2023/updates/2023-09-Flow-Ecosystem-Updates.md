@@ -59,6 +59,16 @@
     * Remove a child account: https://academy.ecdao.org/en/snippets/cadence-remove-a-child-account
     * Remove a parent account: https://academy.ecdao.org/en/snippets/cadence-remove-a-parent-account   
 * LearnWeb3 started a [Hackathon](https://learnweb3.io/hackathons/decentralized-intelligence-season-1) with a prize sponsored by Flow
+* [Flowty](https://www.flowty.io/) - Account Linking, Developer Docs, and volume milestones!
+  * Account Linking is live on Flowty!
+    * [Account Linking](https://docs.flowty.io/developer-docs/hybrid-custody) is a revolutionary feature that introduces exciting functionality today and opens up a world of opportunity for users, creators, builders, and stakeholders in the future
+    * Flowty users are now able to sign in with a single account and list NFTs from any linked account. This will enable users to take out a loan using NFTs in a Dapper Wallet (a feature previously restricted to non-Dapper Wallets), pay for an NFT with one account while receiving the NFT in a second account and much more
+    * Learn more by visiting [Flowty's Account Linking Hub](https://flowtyio.substack.com/p/account-linking-on-flowty?r=2lscjn&utm_campaign=post&utm_medium=web) and [Flow's Account Linking Post](https://flow.com/post/account-linking-the-future-of-flow)
+  * Flowty published NFT Metadata Standard Developer Documents
+    * In an effort to move Flow forward and promote a composable, open ecosystem, Flowty published [NFT metadata standard developer docs](https://docs.flowty.io/developer-docs/)
+  * Flowty crossed $1 million in secondary sales volume
+    * With a [$23k sale of a LeBron James Cosmic NBA Top Shot Moment](https://twitter.com/flowty_io/status/1709963736943857873?s=20), Flowty crossed $1 million in secondary sales
+    * Flowty celebrated by running a [$500 Flowty Shopping Spree giveaway](https://twitter.com/flowty_io/status/1709997911407296938?s=20)
 
 ------------------------------------------
 ## Other misc items and updates
