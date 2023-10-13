@@ -94,15 +94,20 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### **Permissionless Network - Kan Z**
 
 **Done last sprint**
+- Flow offsite participation.
+- [Offsite Planning] [Zero Quarantined Networking Layer Tests Epic](https://github.com/onflow/flow-go/issues/4816)
+- [Offsite Technical Discussions Summary] [Exploring Unicast-based Pubsub](https://www.notion.so/dapperlabs/Publish-through-Unicast-11-Oct-2023-OffSite-93d090d77ee7453d90fb29c45dc5ac20) 
+- [In Progress] Optimizing GossipSub RPC inspection CPU and Memory intensive operations (incident response) [6870](https://github.com/dapperlabs/flow-go/issues/6870).
+- [In Progress] Investigating and fixing LibP2P DHT goroutine leakage (incident response) [6871](https://github.com/dapperlabs/flow-go/issues/6871).
+- [In Progress] Debugging GossipSub Scoring Flakey Tests [1903](https://github.com/dapperlabs/flow-internal/issues/1903).
+
 
 **Next sprint**
-
-Our focus for the next sprint is on fixing some reported issues and debugging flakey tests.
-- Optimizing GossipSub RPC inspection CPU and Memory intensive operations (incident response) [6870](https://github.com/dapperlabs/flow-go/issues/6870).
-- Investigating and fixing LibP2P DHT goroutine leakage (incident response) [6871](https://github.com/dapperlabs/flow-go/issues/6871).
-- Debugging GossipSub Scoring Flakey Tests [1903](https://github.com/dapperlabs/flow-internal/issues/1903).
-- ALSP integration for cluster-prefix topics [1889](https://github.com/dapperlabs/flow-internal/issues/1889).
-- Addressing remaining technical debts with SyncEngine ALSP integration (unchecked parts) [6812](https://github.com/dapperlabs/flow-go/issues/6812).
+- [In Progress] Optimizing GossipSub RPC inspection CPU and Memory intensive operations (incident response) [6870](https://github.com/dapperlabs/flow-go/issues/6870).
+- [In Progress] Investigating and fixing LibP2P DHT goroutine leakage (incident response) [6871](https://github.com/dapperlabs/flow-go/issues/6871).
+- [In Progress] Debugging GossipSub Scoring Flakey Tests [1903](https://github.com/dapperlabs/flow-internal/issues/1903).
+- [Start] ALSP integration for cluster-prefix topics [1889](https://github.com/dapperlabs/flow-internal/issues/1889).
+- [Start] Addressing remaining technical debts with SyncEngine ALSP integration (unchecked parts) [6812](https://github.com/dapperlabs/flow-go/issues/6812).
 
 **Active Epics**
 
@@ -112,6 +117,7 @@ Our focus for the next sprint is on fixing some reported issues and debugging fl
 - BFT https://github.com/dapperlabs/flow-go/issues/6398
 - BN2 https://github.com/dapperlabs/flow-go/issues/6341
 - TPS  https://github.com/dapperlabs/flow-go/issues/6296
+- [Zero Quarantined Networking Layer Tests Epic](https://github.com/onflow/flow-go/issues/4816)
 
 ### Consensus (Dynamic Protocol State) - **Jerome P**
 
