@@ -29,4 +29,5 @@ message Block {
   repeated ExecutionReceiptMeta execution_receipt_metaList = 8;
   repeated ExecutionResult execution_result_list = 9;
   BlockHeader block_header = 10;
+  bytes protocol_state_id = 11;
 }
