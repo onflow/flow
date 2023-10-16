@@ -31,9 +31,6 @@
 * [Random Function Cadence FLIP](https://github.com/onflow/flips/pull/120) was approved!
 * Released [DexSyncSwap](https://forum.onflow.org/t/dex-standard-on-flow/4607) smart contract standard to [testnet](https://testnet.contractbrowser.com/A.1892acb0b380cc30.DexSyncSwap) 
 
-### Innovation, composability and advanced concepts
-* 
-
 ### Mainnet, Sporks
 * Next mainnet spork: Nov 8th
 * Metrika released a new [dashboard](https://app.metrika.co/flow/dashboard/slas?tr=YTD) to monitor Flow network SLA
