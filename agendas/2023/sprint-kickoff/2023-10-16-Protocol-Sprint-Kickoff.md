@@ -111,24 +111,32 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
+Script Execution
+
+- Script execution module - [PR 4747](https://github.com/onflow/flow-go/pull/4747)
+- Bootstrap register db and start indexer - [PR 4780](https://github.com/onflow/flow-go/pull/4780)
+- Adjust logging in checkpoint loading - [PR 4797](https://github.com/onflow/flow-go/pull/4797)
+- Add metrics to execution state indexer - [PR 4801](https://github.com/onflow/flow-go/pull/4801)
+- Create GetRegisterValues proto definition - [PR 1389](https://github.com/onflow/flow/pull/1389)
+
+Misc
+
+- Update state stream API to return json-cdc encoded events - backport - [PR 4803](https://github.com/onflow/flow-go/pull/4803)
+- Upgrade to grpc - [PR 4810](https://github.com/onflow/flow-go/pull/4810)
 
 **This sprint**
+
 - [OKR] Script Execution on ANs
-    - Benchnet testing of indexers
-    - Load indexer and register db in node bootstrap - [Issue 4778](https://github.com/onflow/flow-go/issues/4778)
-    - Configure script execution engine - [Issue 4640](https://github.com/onflow/flow-go/issues/4640)
-    - Integrate local script execution into Access API - [Issue 4781](https://github.com/onflow/flow-go/issues/4781)
-    - Add GetRegisters API endpoint to ExecutionData API - [Issue 4756](https://github.com/onflow/flow-go/issues/4756)
+  - Integrate local script execution into Access API - [Issue 4781](https://github.com/onflow/flow-go/issues/4781)
+  - Add GetRegisters API endpoint to ExecutionData API - [Issue 4756](https://github.com/onflow/flow-go/issues/4756)
+  - Verify checkpoint matches root block - [Issue 4806](https://github.com/onflow/flow-go/issues/4806)
+  - Testing an analysis after Testnet spork
 
 **Active Epics**
 
 - Script Execution on Access Node - [Issue 4637](https://github.com/onflow/flow-go/issues/4637)
 - Integrate local execution state indexes into Access API - [Issue 4750](https://github.com/onflow/flow-go/issues/4750)
 
-**On Hold**
-
-- [OKR] Enable Execution Sync on Public Network
-    - On hold until execution data improvements are complete
 
 ### **Permissionless Network - Kan Z**
 
