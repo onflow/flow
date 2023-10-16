@@ -189,5 +189,5 @@ Objective: Make execution data and script execution available on Edge nodes.
 - Mainnet/Testnet Spork dates 
   - Next spork
      - Testnet: 18th October
-     - Mainnet: 1st Nov or 8th Nov (will be confirmed by EOD)
-     - This time the spork will take longer (~2 to 3 hrs)
+     - Mainnet: **8th Nov**
+       - This time the spork will take longer (~2 to 3 hrs)
