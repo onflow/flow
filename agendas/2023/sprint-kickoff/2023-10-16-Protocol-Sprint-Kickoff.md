@@ -176,6 +176,15 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
+************Node Hosting Support************
+
+- Increased Disk Space on 
+- Rolled out & validated changes to `v0.31.21` release to address HTTP/2 protocol vuln
+
+************Spork************
+
+- Assisted with Canary Sporks
+- Updated spork automation to support execution state on ANs
 
 **This Sprint**
 
