@@ -2,7 +2,7 @@
 
 - Atree register inlining - all Atree work merged and tested, migration optimized form 9 to just under 5 hours. (Jan)
 - Fixed 6 bugs in Cadence 1.0 branch, some of those coming from community and Security review. (Jan)
-- Storehouse runing on localnet now! (Jan)
+- Storehouse running on localnet now! (Jan)
 
 
 ### Mainnet Uptime SLO - Last 14 days (10/3 to 10/16)
@@ -107,7 +107,7 @@ Chores
 - [Stable Cadence (aka Cadence 1.0)](https://github.com/onflow/cadence/issues/2642)
 
 
-### Access & Data Availability **- Peter A**
+### **Access & Data Availability - Peter A**
 Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
@@ -167,7 +167,7 @@ Misc
 - TPS  https://github.com/dapperlabs/flow-go/issues/6296
 - [Zero Quarantined Networking Layer Tests Epic](https://github.com/onflow/flow-go/issues/4816)
 
-### Consensus (Dynamic Protocol State) - **Jerome P**
+### **Consensus (Dynamic Protocol State) - Jerome P**
 
 **Done last sprint**
 - Investigating Aptos/Sui claims of permissionless node operation
@@ -179,6 +179,7 @@ Misc
 - Consolidating exploratory research documents to reflect final design
 - Refactoring and refining the interfaces and data structures for clarity (👉 [epic #4649](https://github.com/onflow/flow-go/issues/4649))
 - Creating a FLIP for Smart-contract-specified Epoch switchover timing
+- Finish BFT guarantees for protocol state updates. Implementation is ready, currently working on tests, docs and some cleanup.
 
 
 ### **Infra - JP**
