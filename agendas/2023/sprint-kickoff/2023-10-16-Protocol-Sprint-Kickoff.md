@@ -1,5 +1,8 @@
 # Team Wins 🎉
 
+- Atree register inlining - all Atree work merged and tested, migration optimized form 9 to just under 5 hours.
+- Fixed 6 bugs in Cadence 1.0 branch, some of those coming from community and Security review.
+
 
 ### Mainnet Uptime SLO - Last 14 days (9/14 to 9/29)
 
@@ -30,6 +33,11 @@
   - [Update smoke test for atree inlining](https://github.com/onflow/atree/pull/348) (ran 200+ hours)
   - [Make smoke tests check recently added data deduplication feature](https://github.com/onflow/atree/pull/348) (unmerged, but ran 100+ hours)
 
+- Other improvements
+  - [Tiny QoL makefile update for updating dependencies](https://github.com/onflow/flow-go/pull/4813)
+  - [Log stop height] (https://github.com/onflow/flow-go/pull/4786)
+
+
 **This sprint**
 
 - [Continue Cadence integration to use Atree register inlining](https://github.com/onflow/cadence/issues/2809)
@@ -55,14 +63,38 @@ Objective: long-term support release of Cadence with no expected breaking change
 
 **Done last sprint**
 
+Rolled-out critical security fix (v0.31.21-patch.1) on Testnet and Mainnet.
+
+Features
+- [Master - Allow native functions to have type parameters](https://github.com/onflow/cadence/pull/2850)
+
+Bugfixes
+- [Master - Port internal fix 145: Prevent re-deploy in same transaction](https://github.com/onflow/cadence/pull/2846)
+- [Master - Port internal 144: Fix swap statement evaluation](https://github.com/onflow/cadence/pull/2845)
+- [Master - Port internal 141: Fix swapping in resource array](https://github.com/onflow/cadence/pull/2844)
+- [0.39 - Port internal fix 145: Prevent re-deploy in same transaction](https://github.com/onflow/cadence/pull/2843)
+- [0.39 - Port internal 144: Fix swap statement evaluation](https://github.com/onflow/cadence/pull/2842)
+- [0.39 - Port internal 141: Fix swapping in resource array] (https://github.com/onflow/cadence/pull/2841)
+- [1.0 - Fix field assignment via references](https://github.com/onflow/cadence/pull/2868)
+- [1.0 - Properly set base on loaded attachments during attachment iteration](https://github.com/onflow/cadence/pull/2847)
+- [1.0 - Require full codomain of map when assigning to mapped field](https://github.com/onflow/cadence/pull/2840)
+- [1.0 - Skip adding malformed entitlement relations to maps](https://github.com/onflow/cadence/pull/2838)
+- [1.0 - Check before statements in view contexts](https://github.com/onflow/cadence/pull/2835)
+- [1.0 - Fix memory metering for loading stored values](https://github.com/onflow/cadence/pull/2509)
+
+Chores
+- [Sync Stable Cadence](https://github.com/onflow/cadence/issues/2854)
+- [flow-go - Update to Cadence v0.39.16](https://github.com/onflow/flow-go/issues/4799)
+
+
 **This sprint**
 
-- Security issue fix / rollout
-- Flex
+- continue support EVM on FLow initiative.
 - Continuing with Stable Cadence scope / discussions
     - Ongoing FLIPs:
         - [Relaxing interface conformance restrictions](https://github.com/onflow/flips/pull/134)
     - [Flip for removal of custom destructors](https://github.com/onflow/flips/pull/131)
+- Resume work on Cadence 1.0 migrations.
 - Continue Stable Cadence Docs update and knocking tasks off the [tech debt list](https://github.com/onflow/cadence/issues/2642)
  
 **On Hold**
