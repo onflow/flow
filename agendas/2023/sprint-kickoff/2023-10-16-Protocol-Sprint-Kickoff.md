@@ -74,7 +74,7 @@ Bugfixes
 - [Master - Port internal 141: Fix swapping in resource array](https://github.com/onflow/cadence/pull/2844)
 - [0.39 - Port internal fix 145: Prevent re-deploy in same transaction](https://github.com/onflow/cadence/pull/2843)
 - [0.39 - Port internal 144: Fix swap statement evaluation](https://github.com/onflow/cadence/pull/2842)
-- [0.39 - Port internal 141: Fix swapping in resource array] (https://github.com/onflow/cadence/pull/2841)
+- [0.39 - Port internal 141: Fix swapping in resource array](https://github.com/onflow/cadence/pull/2841)
 - [1.0 - Fix field assignment via references](https://github.com/onflow/cadence/pull/2868)
 - [1.0 - Properly set base on loaded attachments during attachment iteration](https://github.com/onflow/cadence/pull/2847)
 - [1.0 - Require full codomain of map when assigning to mapped field](https://github.com/onflow/cadence/pull/2840)
