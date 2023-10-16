@@ -4,18 +4,20 @@
 - Fixed 6 bugs in Cadence 1.0 branch, some of those coming from community and Security review.
 
 
-### Mainnet Uptime SLO - Last 14 days (9/14 to 9/29)
+### Mainnet Uptime SLO - Last 14 days (10/3 to 10/16)
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%  |    100%       |       0%          |
-| Block Finalization      | 99.9%  |    100%       |       0%          |
-| Transaction Execution   | 99.9%  |    99.95%     |       49.7%       |
-| Block Sealing           | 99.9%  |    99.945%    |       54.6%       |
-| Access API Liveness     | 99.9%  |    99.965%    |       35.4%       |
+| Block Finalization      | 99.9%  |    99.781%    |       219%        |
+| Transaction Execution   | 99.9%  |    99.846%    |       154%        |
+| Block Sealing           | 99.9%  |    99.691%    |       309%        |
+| Access API Liveness     | 99.9%  |    99.817%    |       183%        |
 
 #### Incidents
-- Scheduled downtime: Height coordinated upgrade on 9/19 that took ~13 mins
+- 15 Consensus nodes run by an operator were reset to the start of the spork and fell behind.
+  - Flow mainnet is now in the Epoch fallback mode.
+- Public access nodes became inaccessible due to a DNS change by the operator.
 
 *99.9% translates to a maximum allowed downtime of ~20m8s for a 14-day window.*
 
