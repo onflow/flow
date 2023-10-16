@@ -172,6 +172,7 @@ Misc
 **Done last sprint**
 - Investigating Aptos/Sui claims of permissionless node operation
 - Completing new structure of Epoch Service Events: [PR 4719](https://github.com/onflow/flow-go/issues/4719)
+- Firefighting EECC consensus node issue Thurs/Fri last week due to operator node resets
 
 **Ongoing** (last & next sprint)
 
