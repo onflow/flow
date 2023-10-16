@@ -24,10 +24,15 @@
 
 **Done last sprint**
 
+- Atree Register Inlining (merged 20+ KLOC, ran 200+ hours of smoke tests)
+  - [Atree Register Inlining and Data Deduplication](https://github.com/onflow/atree/pull/342)
+  - [Add readonly iterators and support value mutations only from non-readonly iterators](https://github.com/onflow/atree/pull/345)
+  - [Update smoke test for atree inlining](https://github.com/onflow/atree/pull/348) (ran 200+ hours)
+  - [Make smoke tests check recently added data deduplication feature](https://github.com/onflow/atree/pull/348) (unmerged, but ran 100+ hours)
 
 **This sprint**
 
-- [Continue Atree register inlining](https://github.com/onflow/atree/issues/292)
+- [Continue Cadence integration to use Atree register inlining](https://github.com/onflow/cadence/issues/2809)
 - Continue testing and optimizing [Atree register inlining migration](https://github.com/onflow/flow-go/pull/4633)
 - Continue implementation of [Storehouse first milestone](https://github.com/onflow/flow-go/issues/4682) (execution state on disk)
 
