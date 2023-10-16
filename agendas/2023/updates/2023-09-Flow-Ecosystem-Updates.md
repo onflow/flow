@@ -3,6 +3,7 @@
 ## Announcements and Wins! 🎉
 * Flow announced it's [EVM interoperability plan](https://forum.onflow.org/t/evm-on-flow-beyond-solidity/5260) - check it out!
   * [Slides](https://docs.google.com/presentation/d/1_rHKDeMfU07HZldAk-vzwlWKABNeu9CGAdksHEwGlNk/edit#slide=id.g241b055a5c0_0_91) from Dete's talk at EthMilan
+* Flow released [Account Linking](https://flow.com/post/account-linking-the-future-of-flow) to mainnet! 
 * Flow Reference Wallet was [released](https://flow.com/post/flow-reference-wallet-unlocking-flows-potential-with-a-fully-open-source-reference-wallet-for-builders)! This wallet showcases some of the advanced features of Flow's Account Abstraction model including support for Account Linking
 * Flow & Magic.link [integration](https://flow.com/post/flow-magic-integration) is live and available to use!
 
