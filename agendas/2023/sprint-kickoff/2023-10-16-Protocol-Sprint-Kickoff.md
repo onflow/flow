@@ -1,7 +1,8 @@
 # Team Wins 🎉
 
-- Atree register inlining - all Atree work merged and tested, migration optimized form 9 to just under 5 hours.
-- Fixed 6 bugs in Cadence 1.0 branch, some of those coming from community and Security review.
+- Atree register inlining - all Atree work merged and tested, migration optimized form 9 to just under 5 hours. (Jan)
+- Fixed 6 bugs in Cadence 1.0 branch, some of those coming from community and Security review. (Jan)
+- Storehouse runing on localnet now! (Jan)
 
 
 ### Mainnet Uptime SLO - Last 14 days (10/3 to 10/16)
