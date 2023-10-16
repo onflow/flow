@@ -161,14 +161,16 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### Consensus (Dynamic Protocol State) - **Jerome P**
 
 **Done last sprint**
+- Investigating Aptos/Sui claims of permissionless node operation
+- Completing new structure of Epoch Service Events: [PR 4719](https://github.com/onflow/flow-go/issues/4719)
 
-**Next sprint**
+**Ongoing** (last & next sprint)
+
 - Wrapping up safety and consistency proofs
 - Consolidating exploratory research documents to reflect final design
 - Refactoring and refining the interfaces and data structures for clarity (👉 [epic #4649](https://github.com/onflow/flow-go/issues/4649))
-   - Completing new structure of Epoch Service Events: [PR 4719](https://github.com/onflow/flow-go/issues/4719)
 - Creating a FLIP for Smart-contract-specified Epoch switchover timing
-- Investigating Aptos/Sui claims of permissionless node operation
+
 
 ### **Infra - JP**
 
