@@ -1477,7 +1477,7 @@ components:
       - Expired
     EventEncodingVersion:
       type: string
-      description: This value indicates preferred events payload encoding for responces.
+      description: This value indicates preferred events payload encoding for responses.
       enum:
       - Default
       - JsonCdcV0
