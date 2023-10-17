@@ -139,6 +139,7 @@ paths:
         - $ref: '#/components/parameters/collectionIdParam'
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/eventEncodingVersion'
       responses:
         '200':
           description: OK
@@ -169,6 +170,7 @@ paths:
         - $ref: '#/components/parameters/collectionIdParam'
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/eventEncodingVersion'
       responses:
         '200':
           description: OK
@@ -532,6 +534,7 @@ paths:
             maxItems: 50
             uniqueItems: true
         - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/eventEncodingVersion'
   /network/parameters:
     get:
       summary: Get Network Parameters
@@ -611,6 +614,15 @@ components:
       in: query
       schema:
         $ref: '#/components/schemas/Identifier'
+      required: false
+    eventEncodingVersion:
+      description: A event encoding version optional parameter
+      name: event_encoding_version
+      in: query
+      style: form
+      explode: true
+      schema:
+        $ref: '#/components/schemas/EventEncodingVersion'
       required: false
   schemas:
     Account:
@@ -854,6 +866,13 @@ components:
         - Executed
         - Sealed
         - Expired
+    EventEncodingVersion:
+      type: string
+      description: This value indicates preferred events payload encoding for responces.
+      enum:
+      - Default
+      - JsonCdcV0
+      - CcfV0
     Block:
       type: object
       required:

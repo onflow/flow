@@ -34,6 +34,7 @@ Query on-chain events by their name in the specified blocks heights or block IDs
      * @param "EndHeight" (optional.Interface of BlockHeight) -  The end height of the block range for events. Must be used together with &#x60;start_height&#x60;. This parameter is incompatible with &#x60;block_ids&#x60;.
      * @param "BlockIds" (optional.Interface of []string) -  List of block IDs. Either provide this parameter or both height parameters. This parameter is incompatible with heights parameters.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
+     * @param "EventEncodingVersion" (optional.Interface of EventEncodingVersion) -  A event encoding version optional parameter
 @return BlockEvents
 */
 
@@ -42,6 +43,7 @@ type EventsApiEventsGetOpts struct {
     EndHeight optional.Interface
     BlockIds optional.Interface
     Select_ optional.Interface
+    EventEncodingVersion optional.Interface
 }
 
 func (a *EventsApiService) EventsGet(ctx context.Context, type_ string, localVarOptionals *EventsApiEventsGetOpts) (BlockEvents, *http.Response, error) {
@@ -72,6 +74,9 @@ func (a *EventsApiService) EventsGet(ctx context.Context, type_ string, localVar
 	}
 	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
 		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.EventEncodingVersion.IsSet() {
+		localVarQueryParams.Add("event_encoding_version", parameterToString(localVarOptionals.EventEncodingVersion.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}

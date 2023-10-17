@@ -35,6 +35,7 @@ Get transaction result by the transaction result ID.
      * @param "CollectionId" (optional.Interface of string) -  A collection ID optional parameter.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
+     * @param "EventEncodingVersion" (optional.Interface of EventEncodingVersion) -  A event encoding version optional parameter
 @return TransactionResult
 */
 
@@ -43,6 +44,7 @@ type TransactionsApiTransactionResultsTransactionIdGetOpts struct {
     CollectionId optional.Interface
     Expand optional.Interface
     Select_ optional.Interface
+    EventEncodingVersion optional.Interface
 }
 
 func (a *TransactionsApiService) TransactionResultsTransactionIdGet(ctx context.Context, transactionId string, localVarOptionals *TransactionsApiTransactionResultsTransactionIdGetOpts) (TransactionResult, *http.Response, error) {
@@ -73,6 +75,9 @@ func (a *TransactionsApiService) TransactionResultsTransactionIdGet(ctx context.
 	}
 	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
 		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.EventEncodingVersion.IsSet() {
+		localVarQueryParams.Add("event_encoding_version", parameterToString(localVarOptionals.EventEncodingVersion.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -175,6 +180,7 @@ Get a transaction data by the provided transaction ID.
      * @param "CollectionId" (optional.Interface of string) -  A collection ID optional parameter.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
+     * @param "EventEncodingVersion" (optional.Interface of EventEncodingVersion) -  A event encoding version optional parameter
 @return Transaction
 */
 
@@ -183,6 +189,7 @@ type TransactionsApiTransactionsIdGetOpts struct {
     CollectionId optional.Interface
     Expand optional.Interface
     Select_ optional.Interface
+    EventEncodingVersion optional.Interface
 }
 
 func (a *TransactionsApiService) TransactionsIdGet(ctx context.Context, id string, localVarOptionals *TransactionsApiTransactionsIdGetOpts) (Transaction, *http.Response, error) {
@@ -213,6 +220,9 @@ func (a *TransactionsApiService) TransactionsIdGet(ctx context.Context, id strin
 	}
 	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
 		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.EventEncodingVersion.IsSet() {
+		localVarQueryParams.Add("event_encoding_version", parameterToString(localVarOptionals.EventEncodingVersion.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}

@@ -31,6 +31,7 @@ Name | Type | Description  | Notes
  **collectionId** | [**optional.Interface of string**](.md)| A collection ID optional parameter. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
+ **eventEncodingVersion** | [**optional.Interface of EventEncodingVersion**](.md)| A event encoding version optional parameter | 
 
 ### Return type
 
@@ -70,6 +71,7 @@ Name | Type | Description  | Notes
  **collectionId** | [**optional.Interface of string**](.md)| A collection ID optional parameter. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
+ **eventEncodingVersion** | [**optional.Interface of EventEncodingVersion**](.md)| A event encoding version optional parameter | 
 
 ### Return type
 

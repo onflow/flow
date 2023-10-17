@@ -55,6 +55,7 @@ Class | Method | HTTP request | Description
  - [CollectionExpandable](docs/CollectionExpandable.md)
  - [CollectionGuarantee](docs/CollectionGuarantee.md)
  - [Event](docs/Event.md)
+ - [EventEncodingVersion](docs/EventEncodingVersion.md)
  - [ExecutionResult](docs/ExecutionResult.md)
  - [HashingAlgorithm](docs/HashingAlgorithm.md)
  - [InlineResponse200](docs/InlineResponse200.md)

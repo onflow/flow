@@ -29,6 +29,7 @@ Name | Type | Description  | Notes
  **endHeight** | [**optional.Interface of BlockHeight**](.md)| The end height of the block range for events. Must be used together with &#x60;start_height&#x60;. This parameter is incompatible with &#x60;block_ids&#x60;. | 
  **blockIds** | [**optional.Interface of []string**](string.md)| List of block IDs. Either provide this parameter or both height parameters. This parameter is incompatible with heights parameters. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
+ **eventEncodingVersion** | [**optional.Interface of EventEncodingVersion**](.md)| A event encoding version optional parameter | 
 
 ### Return type
 
