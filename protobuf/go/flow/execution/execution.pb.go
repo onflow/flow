@@ -307,7 +307,7 @@ func (m *GetEventsForBlockIDsResponse) GetEventEncodingVersion() entities.EventE
 	if m != nil {
 		return m.EventEncodingVersion
 	}
-	return entities.EventEncodingVersion_JSON_CDC_V0
+	return entities.EventEncodingVersion_DEFAULT
 }
 
 type GetEventsForBlockIDsResponse_Result struct {
@@ -566,7 +566,7 @@ func (m *GetTransactionResultResponse) GetEventEncodingVersion() entities.EventE
 	if m != nil {
 		return m.EventEncodingVersion
 	}
-	return entities.EventEncodingVersion_JSON_CDC_V0
+	return entities.EventEncodingVersion_DEFAULT
 }
 
 type GetTransactionsByBlockIDRequest struct {
@@ -652,7 +652,7 @@ func (m *GetTransactionResultsResponse) GetEventEncodingVersion() entities.Event
 	if m != nil {
 		return m.EventEncodingVersion
 	}
-	return entities.EventEncodingVersion_JSON_CDC_V0
+	return entities.EventEncodingVersion_DEFAULT
 }
 
 type GetRegisterAtBlockIDRequest struct {
