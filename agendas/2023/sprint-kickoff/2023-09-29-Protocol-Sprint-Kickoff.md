@@ -26,6 +26,23 @@
 
 **Done last sprint**
 
+Storehouse
+- [add pebble db init](https://github.com/onflow/flow-go/issues/4771)
+- [Refactor ingestion engine test cases](https://github.com/onflow/flow-go/pull/4758)
+- [Refactor provider broadcast](https://github.com/onflow/flow-go/pull/4744)
+- [Extract BlockLoader from execution Ingestion engine](https://github.com/onflow/flow-go/pull/4718)
+- [Extract Ingestion Engine CollectionFetcher into a separate module](https://github.com/onflow/flow-go/issues/4713)
+
+Concurrent execution
+- [Fix Interpreter Issue on Concurrent TX Execution](https://github.com/onflow/flow-go/pull/4669)
+
+Other improvements
+- [Creating conversion functions for Path, Key and RegisterID](https://github.com/onflow/flow-go/issues/4658)
+    - [Move ledger key to register id conversions](https://github.com/onflow/flow-go/pull/4766)
+- [Backport Moving of libP2P logs to debug level to v0.31 branch] (https://github.com/onflow/flow-go/pull/4746)
+- [Move libP2P logs to debug level](https://github.com/onflow/flow-go/pull/4736)
+- [CI - v0.31 PORT - Rename without_netgo tag to without-netgo](https://github.com/onflow/flow-go/pull/4725)
+- [log num txns and collections](https://github.com/onflow/flow-go/pull/4716/commits)
 
 **This sprint**
 
@@ -52,15 +69,41 @@ Objective: long-term support release of Cadence with no expected breaking change
 
 **Done last sprint**
 
+Features
+- [Check native function declarations](https://github.com/onflow/cadence/pull/2821)
+- Flex dep. [Add support for injecting types into the environment](https://github.com/onflow/cadence/pull/2811)
+
+Iprovements
+- [1.0 - Extend type code generator](https://github.com/onflow/cadence/pull/2806)
+- [1.0 - Add helpers to get constructor and initializer function type for composite type](https://github.com/onflow/cadence/pull/2805)
+- tech debt - [1.0 - Remove unused composite type to interface type conversion function](https://github.com/onflow/cadence/pull/2804)
+- [1.0 - Refactor runtime test helpers into separate, reusable package](https://github.com/onflow/cadence/pull/2800)
+
+Bugfixes
+- [1.0 - properly access-check optional chaining with entitlements](https://github.com/onflow/cadence/pull/2825)
+- [1.0 - meter and deduplicate included entitlement relations](https://github.com/onflow/cadence/pull/2810)
+- [1.0 - Fix Test framework's TestAccount's type name](https://github.com/onflow/cadence/pull/2802)
+- [Properly check removed expression for resource loss](https://github.com/onflow/cadence/pull/2798)
+- [Port internal #143](https://github.com/onflow/cadence/pull/2793)
+- [Fix capability controller deletion](https://github.com/onflow/cadence/pull/2788)
+
+Chores
+- [Sync Stable Cadence](https://github.com/onflow/cadence/issues/2820)
+- [CLI - Update to Cadence v1.0.0-preview.1](https://github.com/onflow/flow-cli/pull/1207)
+- [EMULATOR - Update to Cadence v1.0.0-preview.1](https://github.com/onflow/flow-emulator/issues/477)
+- [CLI - Update to latest stable cadence](https://github.com/onflow/flow-cli/issues/1204)
+- [Sync Stable Cadence](https://github.com/onflow/cadence/issues/2796)
+- [EMULATOR - Update to latest stable Cadence](https://github.com/onflow/flow-emulator/issues/471)
+- [SDK - Update to latest stable Cadence](https://github.com/onflow/flow-go-sdk/issues/468)
 
 **This sprint**
 
-- Continue work on Stable Cadence preview release - update to latest Stable Cadence branch
+- Security issue fix / rollout
+- Flex
 - Continuing with Stable Cadence scope / discussions
     - Ongoing FLIPs:
-        - [Relaxing interface conformance restrictions](https://github.com/onflow/flips/pull/134) - addressing remaiing questions async as agree in LAngiage Design MEeting (LDM) on 12th Sep.
-    - [Flip for removal of custom destructors](https://github.com/onflow/flips/pull/131) - Breakout session on 19th Sep!
-- Reference Implementation of custom destructor removal
+        - [Relaxing interface conformance restrictions](https://github.com/onflow/flips/pull/134)
+    - [Flip for removal of custom destructors](https://github.com/onflow/flips/pull/131)
 - Continue Stable Cadence Docs update and knocking tasks off the [tech debt list](https://github.com/onflow/cadence/issues/2642)
  
 **On Hold**
@@ -75,19 +118,34 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
+Script execution
+- Create bootstrap checkpoint - [PR 4759](https://github.com/onflow/flow-go/pull/4759)
+- Pebble checkpoint ingestion - [PR 4727](https://github.com/onflow/flow-go/pull/4727)
+- Pebble height tracking implementation - [PR 4714](https://github.com/onflow/flow-go/issues/4714)
+- Index Execution Data - [PR 4653](https://github.com/onflow/flow-go/issues/4653)
+
+Index execution state
+- Index tx results and events - [PR 4772](https://github.com/onflow/flow-go/pull/4772)
+- Create light tx result storage - [PR 4735](https://github.com/onflow/flow-go/pull/4735)
+- Update chunk execution data serializer header version - [PR 4722](https://github.com/onflow/flow-go/pull/4722)
+
+Other Access
+- Fix panic condition in client connection cache - [PR 4731](https://github.com/onflow/flow-go/pull/4731)
+- Cleanup access connection management - [PR 4730](https://github.com/onflow/flow-go/pull/4730)
+
+
 **This sprint**
 - [OKR] Script Execution on ANs
-    - [Script Execution] State Data Indexer Module - [Issue 4638](https://github.com/onflow/flow-go/issues/4638)
-    - [Script Execution] Ingest initial state snapshot - [Issue 4673](https://github.com/onflow/flow-go/issues/4673)
-- [OKR] Execution Data Improvements
-    - [State Sync] Add Transaction Results into BlockExecutionData - [Issue 4455](https://github.com/onflow/flow-go/issues/4455)
-    - [State Sync] Test decoding BlockExecutionData with new format - [Issue 4708](https://github.com/onflow/flow-go/issues/4708)
-    - [State Sync] Regression test ExecutionData changes - [Issue 4408](https://github.com/onflow/flow-go/issues/4408)
+    - Benchnet testing of indexers
+    - Load indexer and register db in node bootstrap - [Issue 4778](https://github.com/onflow/flow-go/issues/4778)
+    - Configure script execution engine - [Issue 4640](https://github.com/onflow/flow-go/issues/4640)
+    - Integrate local script execution into Access API - [Issue 4781](https://github.com/onflow/flow-go/issues/4781)
+    - Add GetRegisters API endpoint to ExecutionData API - [Issue 4756](https://github.com/onflow/flow-go/issues/4756)
 
 **Active Epics**
 
-- [[State Sync] Add TxResults and Verification for Execution Data](https://github.com/onflow/flow-go/issues/4410)
-- [Script Execution on Access Node](https://github.com/onflow/flow-go/issues/4637)
+- Script Execution on Access Node - [Issue 4637](https://github.com/onflow/flow-go/issues/4637)
+- Integrate local execution state indexes into Access API - [Issue 4750](https://github.com/onflow/flow-go/issues/4750)
 
 **On Hold**
 
@@ -98,12 +156,20 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
+Focused on implementing new features.
+- Addressed security vulnerabilities in dialing and stream creation process [6556](https://github.com/dapperlabs/flow-go/issues/6556) [PR4743](https://github.com/onflow/flow-go/pull/4743).
+- Sync Engine has been _Application Layer **Spam-Proofed**_ with all permissionless message request types [6812](https://github.com/dapperlabs/flow-go/issues/6812) [Last PR for `BatchRequest`](https://github.com/onflow/flow-go/pull/4704).
+- Addressed GossipSub Sybil Attack Mitigation Vulnerability [6460](https://github.com/dapperlabs/flow-go/issues/6460) [PR4773](https://github.com/onflow/flow-go/pull/4773).
+- Addressed GossipSub Spam Vulnerability on Unknown Topics [6798](https://github.com/dapperlabs/flow-go/issues/6798) [PR4720](https://github.com/onflow/flow-go/pull/4720).
+
 **Next sprint**
-- [Continue] Addressing Security Vulnerabilities In Dialing Procedure [6556](https://github.com/dapperlabs/flow-go/issues/6556).
+
+Our focus for the next sprint is on fixing some reported issues and debugging flakey tests.
 - Optimizing GossipSub RPC inspection CPU and Memory intensive operations (incident response) [6870](https://github.com/dapperlabs/flow-go/issues/6870).
-- Application Layer Spam Protection (ALSP) integration for `BatchRequest` for Sync Engine.
-- GossipSub Sybil Attack Mitigation [6460](https://github.com/dapperlabs/flow-go/issues/6460).
-- Application Layer Spam Protection (ALSP) support for cluster channels [1889](https://github.com/dapperlabs/flow-internal/issues/1889).
+- Investigating and fixing LibP2P DHT goroutine leakage (incident response) [6871](https://github.com/dapperlabs/flow-go/issues/6871).
+- Debugging GossipSub Scoring Flakey Tests [1903](https://github.com/dapperlabs/flow-internal/issues/1903).
+- ALSP integration for cluster-prefix topics [1889](https://github.com/dapperlabs/flow-internal/issues/1889).
+- Addressing remaining technical debts with SyncEngine ALSP integration (unchecked parts) [6812](https://github.com/dapperlabs/flow-go/issues/6812).
 
 **Active Epics**
 
@@ -117,16 +183,20 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### Consensus (Dynamic Protocol State) - **Jerome P**
 
 **Done last sprint**
-- Consolidated safety and consistency proofs: [Identity-Changing Operations](https://www.notion.so/dapperlabs/Identity-Changing-Operations-610bb2d3b63f4d3dae12e405d3c5a097?pvs=4) (mostly done)
-- refactoring and refining the interfaces and data structures for clarity (described in [epic #4649](https://github.com/onflow/flow-go/issues/4649))
+- Completed identity-changing operations safety proof document and updated old documentation: [Identity-Changing Operations](https://www.notion.so/dapperlabs/Identity-Changing-Operations-610bb2d3b63f4d3dae12e405d3c5a097?pvs=4) (mostly done)
+- Refactoring and refining the interfaces and data structures for clarity (described in [epic #4649](https://github.com/onflow/flow-go/issues/4649))
    - data structure for snapshotting protocol state: [PR #4721](https://github.com/onflow/flow-go/pull/4721)
+- Blog post for the "Why Cadence" series
+- BLST Benchnet testing
+- BLST code review
 
 **Next sprint**
 - Wrapping up safety and consistency proofs
-- consolidating exploratory research documents to reflect final design
-- refactoring and refining the interfaces and data structures for clarity (👉 [epic #4649](https://github.com/onflow/flow-go/issues/4649))
-   - completing new structure of Epoch Service Events: [PR 4719](https://github.com/onflow/flow-go/issues/4719)
-
+- Consolidating exploratory research documents to reflect final design
+- Refactoring and refining the interfaces and data structures for clarity (👉 [epic #4649](https://github.com/onflow/flow-go/issues/4649))
+   - Completing new structure of Epoch Service Events: [PR 4719](https://github.com/onflow/flow-go/issues/4719)
+- Creating a FLIP for Smart-contract-specified Epoch switchover timing
+- Investigating Aptos/Sui claims of permissionless node operation
 
 ### **Infra - JP**
 
@@ -166,5 +236,5 @@ Objective: Make execution data and script execution available on Edge nodes.
 - Mainnet/Testnet Spork dates 
   - Next spork
      - Testnet: 18th October
-     - Mainnet: 1st Nov
+     - Mainnet: 1st Nov or 8th Nov (will be confirmed by EOD)
      - This time the spork will take longer (~2 to 3 hrs)

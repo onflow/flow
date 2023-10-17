@@ -61,6 +61,10 @@ service ExecutionDataAPI {
   //   not been received.
   rpc SubscribeEvents(SubscribeEventsRequest)
       returns (stream SubscribeEventsResponse);
+
+  // GetRegisterValues gets the values for the given register IDs as of the given block height
+  rpc GetRegisterValues(GetRegisterValuesRequest)
+      returns (GetRegisterValuesResponse);
 }
 
 // The request for GetExecutionDataByBlockID
@@ -211,4 +215,21 @@ message EventFilter {
   // network the node is connected to. i.e. only a mainnet address is valid for
   // a mainnet node. Addresses may optionally include the 0x prefix.
   repeated string address = 3;
+}
+
+// request for GetRegisterValues
+message GetRegisterValuesRequest {
+
+  // Block height of the execution state being queried.
+  uint64 block_height = 1;
+
+  // Register IDs of the Ledger.RegisterID format with an owner and key.
+  repeated bytes register_ids = 2;
+}
+
+// response for GetRegisterValues
+message GetRegisterValuesResponse {
+
+  // raw register values at the given height.
+  repeated bytes values = 1;
 }
