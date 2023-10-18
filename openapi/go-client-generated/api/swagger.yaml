@@ -303,14 +303,6 @@ paths:
           type: array
           items:
             type: string
-      - name: event_encoding_version
-        in: query
-        description: A event encoding version optional parameter
-        required: false
-        style: form
-        explode: true
-        schema:
-          $ref: '#/components/schemas/EventEncodingVersion'
       responses:
         "200":
           description: OK
@@ -393,14 +385,6 @@ paths:
           type: array
           items:
             type: string
-      - name: event_encoding_version
-        in: query
-        description: A event encoding version optional parameter
-        required: false
-        style: form
-        explode: true
-        schema:
-          $ref: '#/components/schemas/EventEncodingVersion'
       responses:
         "200":
           description: OK
@@ -928,14 +912,6 @@ paths:
           type: array
           items:
             type: string
-      - name: event_encoding_version
-        in: query
-        description: A event encoding version optional parameter
-        required: false
-        style: form
-        explode: true
-        schema:
-          $ref: '#/components/schemas/EventEncodingVersion'
       responses:
         "200":
           description: OK
@@ -1475,13 +1451,6 @@ components:
       - Executed
       - Sealed
       - Expired
-    EventEncodingVersion:
-      type: string
-      description: This value indicates preferred events payload encoding for responses.
-      enum:
-      - Default
-      - JsonCdcV0
-      - CcfV0
     Block:
       required:
       - _expandable
@@ -2187,12 +2156,3 @@ components:
       explode: true
       schema:
         $ref: '#/components/schemas/Identifier'
-    eventEncodingVersion:
-      name: event_encoding_version
-      in: query
-      description: A event encoding version optional parameter
-      required: false
-      style: form
-      explode: true
-      schema:
-        $ref: '#/components/schemas/EventEncodingVersion'

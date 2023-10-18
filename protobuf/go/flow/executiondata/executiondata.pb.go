@@ -73,7 +73,7 @@ func (m *GetExecutionDataByBlockIDRequest) GetEventEncodingVersion() entities.Ev
 	if m != nil {
 		return m.EventEncodingVersion
 	}
-	return entities.EventEncodingVersion_DEFAULT
+	return entities.EventEncodingVersion_JSON_CDC_V0
 }
 
 // The response for GetExecutionDataByBlockID
@@ -183,7 +183,7 @@ func (m *SubscribeExecutionDataRequest) GetEventEncodingVersion() entities.Event
 	if m != nil {
 		return m.EventEncodingVersion
 	}
-	return entities.EventEncodingVersion_DEFAULT
+	return entities.EventEncodingVersion_JSON_CDC_V0
 }
 
 // The response for SubscribeExecutionData
@@ -338,7 +338,7 @@ func (m *SubscribeEventsRequest) GetEventEncodingVersion() entities.EventEncodin
 	if m != nil {
 		return m.EventEncodingVersion
 	}
-	return entities.EventEncodingVersion_DEFAULT
+	return entities.EventEncodingVersion_JSON_CDC_V0
 }
 
 // The response for SubscribeEvents
