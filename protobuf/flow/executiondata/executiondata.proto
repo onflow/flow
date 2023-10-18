@@ -71,6 +71,11 @@ service ExecutionDataAPI {
 message GetExecutionDataByBlockIDRequest {
   // Block ID of the block to get execution data for.
   bytes block_id = 1;
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 2;
 }
 
 // The response for GetExecutionDataByBlockID
@@ -92,6 +97,12 @@ message SubscribeExecutionDataRequest {
   // otherwise an InvalidArgument error is returned. If neither are provided,
   // the latest sealed block is used.
   uint64 start_block_height = 2;
+
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 3;
 }
 
 // The response for SubscribeExecutionData
@@ -134,6 +145,13 @@ message SubscribeEventsRequest {
   // The interval is calculated from the last response returned, which could be
   // either another heartbeat or a response containing events.
   uint64 heartbeat_interval = 4;
+
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 5;
+
 }
 
 // The response for SubscribeEvents
