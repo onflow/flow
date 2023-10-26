@@ -121,16 +121,21 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
+- Increase data disk sizes
+- Onboard Dapper nodes to Devnet
+- Assist with Canary Sporks
+- Assist with Devnet Spork
+- Assist with HCU
+- Assist with forum migration
 
 **This Sprint**
+- Update Ansible automation for Dapper nodes
+- Prepare monitoring & alerting for Dapper Nodes
+- Prepare Dapper infra/keys for Mainnet spork
+- Create Flow Foundation infrastructure & configuration for Mainnet spork
+- Create Dapper infrastructure & configuration for Mainnet spork
 
 ************Node Hosting************
-
-- Onboard Dapper nodes to Devnet
-- Assist with Canary Spork
-- Assist with Devnet Spork
-- Prepare Dapper infra/keys for Mainnet spork
-
 ### Key Release Dates & Breaking Changes
 
 - Mainnet/Testnet Spork dates 
