@@ -1313,8 +1313,8 @@
         "id": 48,
         "live": true,
         "name": "Testnet48",
-        "sporkTime": "2023-10-25T14:30:00Z",
-        "rootHeight": "127720465",
+        "sporkTime": "2023-10-25T15:21:04Z",
+        "rootHeight": "127720466",
         "rootParentId": "2b30e75bd857f898456dcb296bea4b8bc8001cab7062eeee9e47876411b36d76",
         "rootStateCommitment": "f2e5ebfca2fd519e49f7bd85bea81e92eeaa85a705b3376d8534e9c9649da710",
         "gitCommitHash": "692969b1718b3d21f95ee7f66e5061623d99e599",
@@ -1339,11 +1339,11 @@
           "docker-tag": "v0.32.3"
         },
         "accessNodes": [
-          "access-001.devnet48.nodes.onflow.org:9000"
+          "access.devnet.nodes.onflow.org:9000"
         ],
         "seedNodes": [
           {
-            "address": "access-001.devnet48.nodes.onflow.org:3570",
+            "address": "access-003.devnet48.nodes.onflow.org:3570",
             "key": "ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d"
           }
         ]
