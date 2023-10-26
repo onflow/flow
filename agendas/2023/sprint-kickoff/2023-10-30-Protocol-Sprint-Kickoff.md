@@ -122,9 +122,11 @@ Objective: Make execution data and script execution available on Edge nodes.
 **Done last sprint**
 
 - Increase data disk sizes
-- Onboard Dapper nodes to Devnet
 - Assist with Canary Sporks
+- Create account, fund account, and generate keys for Dapper Devnet nodes
+- Create infrastructure & configuratioan for Devnet48 spork
 - Assist with Devnet Spork
+- Scale down Devnet47 infrastructure
 - Assist with HCU
 - Assist with forum migration
 
