@@ -90,7 +90,7 @@ Objective: Make execution data and script execution available on Edge nodes.
 - Integrate local execution state indexes into Access API - [Issue 4750](https://github.com/onflow/flow-go/issues/4750)
 
 
-### **Permissionless Network - Kan Z**
+### **Permissionless Network - Yahya H**
 
 **Done last sprint**
 
