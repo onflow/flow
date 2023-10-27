@@ -93,7 +93,7 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### **Permissionless Network - Yahya H**
 
 **Done last sprint**
-- [Investigating and fixing goroutine leakage on `mainnet23`](https://github.com/dapperlabs/flow-go/issues/6871) [PR4846](https://github.com/onflow/flow-go/pull/4846
+- [Investigating and fixing goroutine leakage on `mainnet23`](https://github.com/dapperlabs/flow-go/issues/6871) [PR4846](https://github.com/onflow/flow-go/pull/4846)
 - [Addressing technical debts for sync engine ALSP integration](https://github.com/onflow/flow-go/pull/4842) 
 
 **Ongoing (last and next sprint)**
