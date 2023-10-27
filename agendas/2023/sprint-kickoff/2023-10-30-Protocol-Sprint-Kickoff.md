@@ -93,6 +93,21 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### **Permissionless Network - Yahya H**
 
 **Done last sprint**
+- [Investigating and fixing goroutine leakage on `mainnet23`](https://github.com/dapperlabs/flow-go/issues/6871) [PR4846](https://github.com/onflow/flow-go/pull/4846
+- [Addressing technical debts for sync engine ALSP integration](https://github.com/onflow/flow-go/pull/4842) 
+
+**Ongoing (last and next sprint)**
+- [Investigated and fixed AN-LN streaming issue on `mainnet23`](https://github.com/dapperlabs/flow-go/issues/6895) [PR4875](https://github.com/onflow/flow-go/pull/4875)
+- [Optimizing memory-intensive RPC inspection operations](https://github.com/dapperlabs/flow-go/issues/6870)
+- [Gossip scoring to support additional cluster prefixed control messages](https://github.com/dapperlabs/flow-internal/issues/1889) [PR4857](https://github.com/onflow/flow-go/pull/4857)
+- [Implement Specific Decay per Peer ID in GossipSubSpamRecord for Improved Spam Mitigation](https://github.com/dapperlabs/flow-go/issues/6662)
+
+**Next Sprint**
+- [Balancing the inbound and outbound resource limits with backpressure](https://github.com/dapperlabs/flow-go/issues/6896)
+- [Apply Penalty to Misbehaving Peers Based on Count and Err in InvCtrlMsgNotif](https://github.com/dapperlabs/flow-go/issues/6664)
+- [Increase test coverage for BFTune ingress unit tests](https://github.com/dapperlabs/flow-go/issues/6883)
+- [[BFT Testing] Refactor Orchestrator lock contension to use worker pools](https://github.com/dapperlabs/flow-go/issues/6884)
+- [[CI][Testing] Increase GitHub CI runners for resource intensive tests](https://github.com/dapperlabs/flow-go/issues/6894)
 
 **Active Epics**
 
