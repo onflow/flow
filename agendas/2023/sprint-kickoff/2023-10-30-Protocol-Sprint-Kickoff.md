@@ -196,6 +196,9 @@ Community (highlighting work from community members)
 ### **Consensus (Dynamic Protocol State) - Alex H**
 
 **Done last sprint**
+- Finished structural changes to the `EpochSetup` participants. Refactored utility methods for flow identities to be generic. [PR](https://github.com/onflow/flow-go/pull/4726).
+- Updated how protocol state keeps track of active identities of each epoch. In the model we clearly separate identities that are allowed to participate in given epoch by a new storage model. [PR](https://github.com/onflow/flow-go/pull/4834)
+- Prepared [PR](https://github.com/onflow/flow-go/pull/4868) for including protocol state ID in each block payload which guarantees that replicas can properly validate block and included service events.
 
 **Ongoing** (last & next sprint)
 
@@ -203,7 +206,7 @@ Community (highlighting work from community members)
 - Consolidating exploratory research documents to reflect final design
 - Refactoring and refining the interfaces and data structures for clarity (👉 [epic #4649](https://github.com/onflow/flow-go/issues/4649))
 - Creating a FLIP for Smart-contract-specified Epoch switchover timing
-- Finish BFT guarantees for protocol state updates. Implementation is ready, currently working on tests, docs and some cleanup.
+- Handle high priority [TODOs](https://github.com/onflow/flow-go/issues/4649), specifically: change how protocol state behaves in case of invalid state transition and replace dynamic weight with participation status.
 
 
 ### **Infra - JP**
