@@ -21,9 +21,8 @@
 | Access API Liveness     | 99.9%  |    99.722%    |       278%        |
 
 #### Incidents
-- 15 Consensus nodes run by an operator were reset to the start of the spork and fell behind.
-  - Flow mainnet is now in the Epoch fallback mode.
-- Public access nodes became inaccessible due to a DNS change by the operator.
+- One HCU on 26th Oct
+- Public Access nodes falling behind in collection.
 
 *99.9% translates to a maximum allowed downtime of ~20m8s for a 14-day window.*
 
@@ -236,5 +235,4 @@ Community (highlighting work from community members)
   - Next spork
      - Testnet: 25th October ✔️ Done
      - Mainnet: **8th Nov**
-       - ~~This time the spork will take longer (~2 to 3 hrs)~~
        - The spork is expected to take ~30 minutes.
