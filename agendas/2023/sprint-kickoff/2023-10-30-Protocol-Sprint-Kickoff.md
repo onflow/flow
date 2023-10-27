@@ -15,10 +15,10 @@
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%  |    100%       |       0%          |
-| Block Finalization      | 99.9%  |    99.781%    |       219%        |
-| Transaction Execution   | 99.9%  |    99.846%    |       154%        |
-| Block Sealing           | 99.9%  |    99.691%    |       309%        |
-| Access API Liveness     | 99.9%  |    99.817%    |       183%        |
+| Block Finalization      | 99.9%  |    99.896%    |       104%        |
+| Transaction Execution   | 99.9%  |    99.906%    |       94.3%       |
+| Block Sealing           | 99.9%  |    99.816%    |       174%        |
+| Access API Liveness     | 99.9%  |    99.722%    |       278%        |
 
 #### Incidents
 - 15 Consensus nodes run by an operator were reset to the start of the spork and fell behind.
@@ -234,6 +234,7 @@ Community (highlighting work from community members)
 
 - Mainnet/Testnet Spork dates 
   - Next spork
-     - Testnet: 25th October
+     - Testnet: 25th October ✔️ Done
      - Mainnet: **8th Nov**
-       - This time the spork will take longer (~2 to 3 hrs)
+       - ~~This time the spork will take longer (~2 to 3 hrs)~~
+       - The spork is expected to take ~30 minutes.
