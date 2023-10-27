@@ -8,7 +8,7 @@
 * Cadence - fixed and deployed critical security issue (MN23 HCU 4 on Oct 26).
 * Execution data indexing live on all (FF) testnet ANs, script execution on one (Peter)
 * 15 Access PRs from community teams merged into flow-go in the last 4 months (Peter)
-
+* Coinbase successfully running Rosetta against testnet 48 spork (Misha)
 
 ### Mainnet Uptime SLO - Last 14 days (10/3 to 10/16)
 
