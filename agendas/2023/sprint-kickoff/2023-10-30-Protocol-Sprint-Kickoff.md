@@ -44,14 +44,14 @@ Storehouse
 - [Validate checkpoint root hash](https://github.com/onflow/flow-go/pull/4825)
 - [Refactor checkpoint reader with WithFile](https://github.com/onflow/flow-go/pull/4815)
 - [read trie root hash from checkpoint](https://github.com/onflow/flow-go/pull/4811)
+- [Ledger: update ledger.Set to remove empty update case](https://github.com/onflow/flow-go/pull/4837)
 
 On-Chain randomness history for commit-reveal schemes
 - [Add RandomBeaconHistory contract to system transaction](https://github.com/onflow/flow-go/pull/4582)
 - Core Contracts - [RandomBeaconHistory contract](https://github.com/onflow/flow-core-contracts/issues/375)
 
 Other improvements / Tech debt
-- [JobQueue - Move the DefaultIndex from Start method to constructor](https://github.com/onflow/flow-go/pull/4843)
-- [[Ledger] update ledger.Set to remove empty update case](https://github.com/onflow/flow-go/pull/4837)
+- Script execution: [JobQueue - Move the DefaultIndex from Start method to constructor](https://github.com/onflow/flow-go/pull/4843)
 - [Tiny QoL makefile update for updating dependencies](https://github.com/onflow/flow-go/pull/4813)
 - [Remove required Chain flag from execution-state-extract](https://github.com/onflow/flow-go/issues/4770)
 - [Add version subcommand to util](https://github.com/onflow/flow-go/issues/4610)
