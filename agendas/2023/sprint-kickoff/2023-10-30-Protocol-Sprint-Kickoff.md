@@ -1,11 +1,14 @@
 # Team Wins 🎉
 
-- We have another spork operator - Janez has done his first Testnet Spork
-- Successful Cadence Language Design Meeting (LDM) on Tue.
-  - We accepted 5 FLIPs ([134](https://github.com/onflow/flips/pull/134), [210](https://github.com/onflow/flips/pull/210), [197](https://github.com/onflow/flips/pull/197), [212](https://github.com/onflow/flips/pull/212), [131](https://github.com/onflow/flips/pull/131)) - This means ALL open FLIP for Cadence 1.0 are closed now.
-  - We made a decision about an issue with Attachments gaining elevated permissions on the base resource through entitlements (see notes [here](https://github.com/onflow/cadence/blob/master/meetings/2023-10-24.md)) - this will be final FLIP to be opened for Cadence 1.0, no more features / improvements are in the pipeline.
-  - Really good community presence helped us make decisions quickly (we had .find, IncrementFi, Flowty, BlueSign ...).
-- Cadence - fixed and deployed critical security issue (MN23 HCU 4 on Oct 26).
+* We have another spork operator - Janez has done his first Testnet Spork
+* Successful Cadence Language Design Meeting (LDM) on Tue.
+  * We accepted 5 FLIPs ([134](https://github.com/onflow/flips/pull/134), [210](https://github.com/onflow/flips/pull/210), [197](https://github.com/onflow/flips/pull/197), [212](https://github.com/onflow/flips/pull/212), [131](https://github.com/onflow/flips/pull/131)) - This means ALL open FLIP for Cadence 1.0 are closed now.
+  * We made a decision about an issue with Attachments gaining elevated permissions on the base resource through entitlements (see notes [here](https://github.com/onflow/cadence/blob/master/meetings/2023-10-24.md)) - this will be final FLIP to be opened for Cadence 1.0, no more features / improvements are in the pipeline.
+  * Really good community presence helped us make decisions quickly (we had .find, IncrementFi, Flowty, BlueSign ...).
+* Cadence - fixed and deployed critical security issue (MN23 HCU 4 on Oct 26).
+* Execution data indexing live on all (FF) testnet ANs, script execution on one (Peter)
+* 15 Access PRs from community teams merged into flow-go in the last 4 months (Peter)
+
 
 ### Mainnet Uptime SLO - Last 14 days (10/3 to 10/16)
 
@@ -130,13 +133,30 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
+Script Execution
+
+- Add script execution to Access API - [PR 4791](https://github.com/onflow/flow-go/pull/4791)
+- Validate checkpoint's root hash - [PR 4830](https://github.com/onflow/flow-go/pull/4830)
+- Fix race condition in jobqueue - [PR 4840](https://github.com/onflow/flow-go/pull/4840)
+- Update execution data protobuf to new namespace - [PR 4827](https://github.com/onflow/flow-go/pull/4827)
+
+Misc
+
+- Index collections from execution data when behind - [PR 4877](https://github.com/onflow/flow-go/pull/4877)
+
+Community (highlighting work from community members)
+
+- Add heartbeat responses to event streaming API - [PR 4812](https://github.com/onflow/flow-go/pull/4812) (KROK)
+- Enable grpc compression - [PR 4804](https://github.com/onflow/flow-go/pull/4804) (KROK)
+- Make CCF encoded events optional via request parameter (protobuf) - [PR 1391](https://github.com/onflow/flow-go/pull/1391) (KROK)
+- Fix executiondata proto pkg - [PR 1353](https://github.com/onflow/flow-go/pull/1353) (QuickNode)
+
 **This sprint**
 
 - [OKR] Script Execution on ANs
-  - Integrate local script execution into Access API - [Issue 4781](https://github.com/onflow/flow-go/issues/4781)
   - Add GetRegisters API endpoint to ExecutionData API - [Issue 4756](https://github.com/onflow/flow-go/issues/4756)
-  - Verify checkpoint matches root block - [Issue 4806](https://github.com/onflow/flow-go/issues/4806)
-  - Testing an analysis after Testnet spork
+  - Bug fixes from testnet [4824](https://github.com/onflow/flow-go/issues/4824), [4881](https://github.com/onflow/flow-go/issues/4881), [4880](https://github.com/onflow/flow-go/issues/4880)
+  - Continue testing and analysis after Testnet spork
 
 **Active Epics**
 
@@ -144,9 +164,24 @@ Objective: Make execution data and script execution available on Edge nodes.
 - Integrate local execution state indexes into Access API - [Issue 4750](https://github.com/onflow/flow-go/issues/4750)
 
 
-### **Permissionless Network - Kan Z**
+### **Permissionless Network - Yahya H**
 
 **Done last sprint**
+- [Investigating and fixing goroutine leakage on `mainnet23`](https://github.com/dapperlabs/flow-go/issues/6871) [PR4846](https://github.com/onflow/flow-go/pull/4846)
+- [Addressing technical debts for sync engine ALSP integration](https://github.com/onflow/flow-go/pull/4842) 
+
+**Ongoing (last and next sprint)**
+- [Investigated and fixed AN-LN streaming issue on `mainnet23`](https://github.com/dapperlabs/flow-go/issues/6895) [PR4875](https://github.com/onflow/flow-go/pull/4875)
+- [Optimizing memory-intensive RPC inspection operations](https://github.com/dapperlabs/flow-go/issues/6870)
+- [Gossip scoring to support additional cluster prefixed control messages](https://github.com/dapperlabs/flow-internal/issues/1889) [PR4857](https://github.com/onflow/flow-go/pull/4857)
+- [Implement Specific Decay per Peer ID in GossipSubSpamRecord for Improved Spam Mitigation](https://github.com/dapperlabs/flow-go/issues/6662)
+
+**Next Sprint**
+- [Balancing the inbound and outbound resource limits with backpressure](https://github.com/dapperlabs/flow-go/issues/6896)
+- [Apply Penalty to Misbehaving Peers Based on Count and Err in InvCtrlMsgNotif](https://github.com/dapperlabs/flow-go/issues/6664)
+- [Increase test coverage for BFTune ingress unit tests](https://github.com/dapperlabs/flow-go/issues/6883)
+- [[BFT Testing] Refactor Orchestrator lock contension to use worker pools](https://github.com/dapperlabs/flow-go/issues/6884)
+- [[CI][Testing] Increase GitHub CI runners for resource intensive tests](https://github.com/dapperlabs/flow-go/issues/6894)
 
 **Active Epics**
 
@@ -175,16 +210,23 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
+- Increase data disk sizes
+- Assist with Canary Sporks
+- Create account, fund account, and generate keys for Dapper Devnet nodes
+- Create infrastructure & configuratioan for Devnet48 spork
+- Assist with Devnet Spork
+- Scale down Devnet47 infrastructure
+- Assist with HCU
+- Assist with forum migration
 
 **This Sprint**
+- Update Ansible automation for Dapper nodes
+- Prepare monitoring & alerting for Dapper Nodes
+- Prepare Dapper infra/keys for Mainnet spork
+- Create Flow Foundation infrastructure & configuration for Mainnet spork
+- Create Dapper infrastructure & configuration for Mainnet spork
 
 ************Node Hosting************
-
-- Onboard Dapper nodes to Devnet
-- Assist with Canary Spork
-- Assist with Devnet Spork
-- Prepare Dapper infra/keys for Mainnet spork
-
 ### Key Release Dates & Breaking Changes
 
 - Mainnet/Testnet Spork dates 
