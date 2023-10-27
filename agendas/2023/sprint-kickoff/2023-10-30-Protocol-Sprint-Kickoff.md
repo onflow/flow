@@ -85,7 +85,7 @@ Objective: long-term support release of Cadence with no expected breaking change
 Features
 - EVM: [Allow declaration of values in specific locations](https://github.com/onflow/cadence/issues/2874)
   - [Allow injection of functions into composite values, refactor PublicKey based on it](https://github.com/onflow/cadence/pull/2878)
-- master: [Allow different base activations per location in checker and interpreter](https://github.com/onflow/cadence/pull/2887)
+  - [Allow different base activations per location in checker and interpreter](https://github.com/onflow/cadence/pull/2887)
 - Cadence 1.0: [FLIP 210: propose an improvement to entitlement mapping syntax](https://github.com/onflow/flips/pull/210)
   - [Add required mapping keyword to entitlement mapping usages](https://github.com/onflow/cadence/pull/2883)
 - Cadence 1.0: [Support using references in loops](https://github.com/onflow/cadence/issues/2784)
