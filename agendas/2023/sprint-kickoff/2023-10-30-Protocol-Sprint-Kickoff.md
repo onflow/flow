@@ -1,5 +1,7 @@
 # Team Wins 🎉
 
+* Execution data indexing live on all (FF) testnet ANs, script execution on one (Peter)
+* 15 Access PRs from community teams merged into flow-go in the last 4 months (Peter)
 
 ### Mainnet Uptime SLO - Last 14 days (10/3 to 10/16)
 
@@ -76,13 +78,30 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
+Script Execution
+
+- Add script execution to Access API - [PR 4791](https://github.com/onflow/flow-go/pull/4791)
+- Validate checkpoint's root hash - [PR 4830](https://github.com/onflow/flow-go/pull/4830)
+- Fix race condition in jobqueue - [PR 4840](https://github.com/onflow/flow-go/pull/4840)
+- Update execution data protobuf to new namespace - [PR 4827](https://github.com/onflow/flow-go/pull/4827)
+
+Misc
+
+- Index collections from execution data when behind - [PR 4877](https://github.com/onflow/flow-go/pull/4877)
+
+Community (highlighting work from community members)
+
+- Add heartbeat responses to event streaming API - [PR 4812](https://github.com/onflow/flow-go/pull/4812) (KROK)
+- Enable grpc compression - [PR 4804](https://github.com/onflow/flow-go/pull/4804) (KROK)
+- Make CCF encoded events optional via request parameter (protobuf) - [PR 1391](https://github.com/onflow/flow-go/pull/1391) (KROK)
+- Fix executiondata proto pkg - [PR 1353](https://github.com/onflow/flow-go/pull/1353) (QuickNode)
+
 **This sprint**
 
 - [OKR] Script Execution on ANs
-  - Integrate local script execution into Access API - [Issue 4781](https://github.com/onflow/flow-go/issues/4781)
   - Add GetRegisters API endpoint to ExecutionData API - [Issue 4756](https://github.com/onflow/flow-go/issues/4756)
-  - Verify checkpoint matches root block - [Issue 4806](https://github.com/onflow/flow-go/issues/4806)
-  - Testing an analysis after Testnet spork
+  - Bug fixes from testnet [4824](https://github.com/onflow/flow-go/issues/4824), [4881](https://github.com/onflow/flow-go/issues/4881), [4880](https://github.com/onflow/flow-go/issues/4880)
+  - Continue testing and analysis after Testnet spork
 
 **Active Epics**
 
