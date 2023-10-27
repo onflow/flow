@@ -22,7 +22,7 @@
 
 #### Incidents
 - One HCU on 26th Oct
-- Public Access nodes falling behind in collection.
+- Public Access nodes falling behind in collections
 
 *99.9% translates to a maximum allowed downtime of ~20m8s for a 14-day window.*
 
