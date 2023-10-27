@@ -1,7 +1,14 @@
 # Team Wins 🎉
 
+* We have another spork operator - Janez has done his first Testnet Spork
+* Successful Cadence Language Design Meeting (LDM) on Tue.
+  * We accepted 5 FLIPs ([134](https://github.com/onflow/flips/pull/134), [210](https://github.com/onflow/flips/pull/210), [197](https://github.com/onflow/flips/pull/197), [212](https://github.com/onflow/flips/pull/212), [131](https://github.com/onflow/flips/pull/131)) - This means ALL open FLIP for Cadence 1.0 are closed now.
+  * We made a decision about an issue with Attachments gaining elevated permissions on the base resource through entitlements (see notes [here](https://github.com/onflow/cadence/blob/master/meetings/2023-10-24.md)) - this will be final FLIP to be opened for Cadence 1.0, no more features / improvements are in the pipeline.
+  * Really good community presence helped us make decisions quickly (we had .find, IncrementFi, Flowty, BlueSign ...).
+* Cadence - fixed and deployed critical security issue (MN23 HCU 4 on Oct 26).
 * Execution data indexing live on all (FF) testnet ANs, script execution on one (Peter)
 * 15 Access PRs from community teams merged into flow-go in the last 4 months (Peter)
+
 
 ### Mainnet Uptime SLO - Last 14 days (10/3 to 10/16)
 
@@ -28,11 +35,32 @@
 
 **Done last sprint**
 
+Atree register inlining
+- [Remove ContainerStorable.EncodeAsElement](https://github.com/onflow/atree/pull/354)
+- [Update for Cadence integration for atree inlining and deduplication](https://github.com/onflow/atree/pull/352)
+- [Make smoke tests check recently added data deduplication feature](https://github.com/onflow/atree/issues/350)
+
+Storehouse
+- [Validate checkpoint root hash](https://github.com/onflow/flow-go/pull/4825)
+- [Refactor checkpoint reader with WithFile](https://github.com/onflow/flow-go/pull/4815)
+- [read trie root hash from checkpoint](https://github.com/onflow/flow-go/pull/4811)
+
+On-Chain randomness history for commit-reveal schemes
+- [Add RandomBeaconHistory contract to system transaction](https://github.com/onflow/flow-go/pull/4582)
+- Core Contracts - [RandomBeaconHistory contract](https://github.com/onflow/flow-core-contracts/issues/375)
+
+Other improvements / Tech debt
+- [JobQueue - Move the DefaultIndex from Start method to constructor](https://github.com/onflow/flow-go/pull/4843)
+- [[Ledger] update ledger.Set to remove empty update case](https://github.com/onflow/flow-go/pull/4837)
+- [Tiny QoL makefile update for updating dependencies](https://github.com/onflow/flow-go/pull/4813)
+- [Remove required Chain flag from execution-state-extract](https://github.com/onflow/flow-go/issues/4770)
+- [Add version subcommand to util](https://github.com/onflow/flow-go/issues/4610)
+  - [Add version cmd to utils](https://github.com/onflow/flow-go/issues/4614)
 
 **This sprint**
 
 - [Continue Cadence integration to use Atree register inlining](https://github.com/onflow/cadence/issues/2809)
-- Continue testing and optimizing [Atree register inlining migration](https://github.com/onflow/flow-go/pull/4633)
+- Continue testing [Atree register inlining migration](https://github.com/onflow/flow-go/pull/4633)
 - Continue implementation of [Storehouse first milestone](https://github.com/onflow/flow-go/issues/4682) (execution state on disk)
 
 **On Hold**
@@ -54,6 +82,34 @@ Objective: long-term support release of Cadence with no expected breaking change
 
 **Done last sprint**
 
+Features
+- EVM: [Allow declaration of values in specific locations](https://github.com/onflow/cadence/issues/2874)
+  - [Allow injection of functions into composite values, refactor PublicKey based on it](https://github.com/onflow/cadence/pull/2878)
+- master: [Allow different base activations per location in checker and interpreter](https://github.com/onflow/cadence/pull/2887)
+- Cadence 1.0: [FLIP 210: propose an improvement to entitlement mapping syntax](https://github.com/onflow/flips/pull/210)
+  - [Add required mapping keyword to entitlement mapping usages](https://github.com/onflow/cadence/pull/2883)
+- Cadence 1.0: [Support using references in loops](https://github.com/onflow/cadence/issues/2784)
+  - [Add support iterating references to iterables](https://github.com/onflow/cadence/pull/2876)
+- Cadence 1.0: [Restrict capabilities.publish to account's own capabilities](https://github.com/onflow/cadence/issues/2768)
+  - [Restrict capabilities.publish to account's own capabilities](https://github.com/onflow/cadence/pull/2782)
+
+Improvement / Tech debt
+- Master: [Meter computation in new stdlib functions](https://github.com/onflow/cadence/issues/2879)
+  - [Add computation metering to the new stdlib functions](https://github.com/onflow/cadence/pull/2880)
+  - [Use ComputationKindLoop for internal array-value iterations](https://github.com/onflow/cadence/pull/2891)
+- Cadence 1.0: [Allow default functions to co-exist with empty function declarations](https://github.com/onflow/cadence/pull/2725)
+- Cadence 1.0: [Improve test runtime interface](https://github.com/onflow/cadence/issues/2894)
+
+Bugfix
+- master: [Fix string atree value comparison: handle storage as slab](https://github.com/onflow/cadence/pull/2895)
+- Cadence 1.0: [Removing an attachment is an impure operation](https://github.com/onflow/cadence/pull/2890)
+- Cadence 1.0: [Entitlement mapping escape fixes](https://github.com/onflow/cadence/pull/2877)
+
+Chores
+- [Sync stable cadence branch with master](https://github.com/onflow/cadence/issues/2899)
+- flow-go: [v0.32 - Update cadence to v0.42.1-patch.1](https://github.com/dapperlabs/flow-go/issues/6891)
+- flow-go-sdk: [Update to Cadence v0.42.1](https://github.com/onflow/flow-go-sdk/issues/495)
+- flow-go-sdk: [v0.41 Update to Cadence v0.42.1](https://github.com/onflow/flow-go-sdk/issues/494)
 
 
 **This sprint**
@@ -61,9 +117,8 @@ Objective: long-term support release of Cadence with no expected breaking change
 - continue support EVM on FLow initiative.
 - Continuing with Stable Cadence scope / discussions
     - Ongoing FLIPs:
-        - [Relaxing interface conformance restrictions](https://github.com/onflow/flips/pull/134)
-    - [Flip for removal of custom destructors](https://github.com/onflow/flips/pull/131)
-- Resume work on Cadence 1.0 migrations.
+        - Last FLIP to be opened - Update on entitlements on Attachments
+- Continue work on Cadence 1.0 migrations.
 - Continue Stable Cadence Docs update and knocking tasks off the [tech debt list](https://github.com/onflow/cadence/issues/2642)
  
 **On Hold**
