@@ -200,11 +200,11 @@ Community (highlighting work from community members)
 - Updated how protocol state keeps track of active identities of each epoch. In the model we clearly separate identities that are allowed to participate in given epoch by a new storage model. [PR](https://github.com/onflow/flow-go/pull/4834)
 - Prepared [PR](https://github.com/onflow/flow-go/pull/4868) for including protocol state ID in each block payload which guarantees that replicas can properly validate block and included service events.
 - Creating a FLIP for Smart-contract-specified Epoch switchover timing (approved+merged)
+- Wrapping up safety and consistency proofs
 
 **Ongoing** (last & next sprint)
 
-- Wrapping up safety and consistency proofs
-- Consolidating exploratory research documents to reflect final design
+- Consolidating exploratory research documents to reflect final design (requires change to reflect removal of dynamic weight)
 - Refactoring and refining the interfaces and data structures for clarity (👉 [epic #4649](https://github.com/onflow/flow-go/issues/4649))
 - Handle high priority [TODOs](https://github.com/onflow/flow-go/issues/4649), specifically: change how protocol state behaves in case of invalid state transition and replace dynamic weight with participation status.
 
