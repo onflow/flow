@@ -348,6 +348,14 @@ message GetNetworkParametersResponse {
 
 message GetLatestProtocolStateSnapshotRequest {}
 
+message GetProtocolStateSnapshotByBlockIDRequest {
+  bytes block_id = 1;
+}
+
+message GetProtocolStateSnapshotByHeightRequest {
+  uint64 block_height = 1;
+}
+
 message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
   entities.Metadata metadata = 2;
