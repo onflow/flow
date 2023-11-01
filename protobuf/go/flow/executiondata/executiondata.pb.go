@@ -30,7 +30,6 @@ type GetExecutionDataByBlockIDRequest struct {
 	// Possible variants:
 	// 1. CCF
 	// 2. JSON-CDC
-	// 3. DEFAULT, which is JSON-CDC
 	EventEncodingVersion entities.EventEncodingVersion `protobuf:"varint,2,opt,name=event_encoding_version,json=eventEncodingVersion,proto3,enum=flow.entities.EventEncodingVersion" json:"event_encoding_version,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
 	XXX_unrecognized     []byte                        `json:"-"`
@@ -133,7 +132,6 @@ type SubscribeExecutionDataRequest struct {
 	// Possible variants:
 	// 1. CCF
 	// 2. JSON-CDC
-	// 3. DEFAULT, which is JSON-CDC
 	EventEncodingVersion entities.EventEncodingVersion `protobuf:"varint,3,opt,name=event_encoding_version,json=eventEncodingVersion,proto3,enum=flow.entities.EventEncodingVersion" json:"event_encoding_version,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
 	XXX_unrecognized     []byte                        `json:"-"`
@@ -274,7 +272,6 @@ type SubscribeEventsRequest struct {
 	// Possible variants:
 	// 1. CCF
 	// 2. JSON-CDC
-	// 3. DEFAULT, which is JSON-CDC
 	EventEncodingVersion entities.EventEncodingVersion `protobuf:"varint,5,opt,name=event_encoding_version,json=eventEncodingVersion,proto3,enum=flow.entities.EventEncodingVersion" json:"event_encoding_version,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
 	XXX_unrecognized     []byte                        `json:"-"`
