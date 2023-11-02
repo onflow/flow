@@ -50,6 +50,11 @@ service ExecutionAPI {
   rpc GetTransactionResultsByBlockID(GetTransactionsByBlockIDRequest)
       returns (GetTransactionResultsResponse);
 
+  // GetTransactionErrorMessagesByBlockID gets the error messages of all failed transactions in the
+  // block ordered by transaction index
+  rpc GetTransactionErrorMessagesByBlockID(GetTransactionsByBlockIDRequest)
+    returns (GetTransactionErrorMessagesResponse);
+
   // Registers
 
   // GetRegisterAtBlockID collects a register at the block with the given ID (if
@@ -139,6 +144,10 @@ message GetTransactionsByBlockIDRequest {
 message GetTransactionResultsResponse {
   repeated GetTransactionResultResponse transaction_results = 1;
   entities.EventEncodingVersion event_encoding_version = 2;
+}
+
+message GetTransactionErrorMessagesResponse {
+  repeated string error_messages = 1;
 }
 
 // Registers
