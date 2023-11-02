@@ -1314,7 +1314,7 @@
         "name": "Testnet49",
         "sporkTime": "2023-11-02T08:00:00Z",
         "rootHeight": "129578013",
-        "rootParentId": "f89f502e9b57a419f4ea12e90b9018ca63a7714f3e08733496d952f2c99eaf6d",
+        "rootParentId": "91b039c1a5caf25776948270a6355017b8841bfb329c87460bfc3cf5189eba6f",
         "rootStateCommitment": "e10d3c53608a1f195b7969fbc06763285281f64595be491630a1e1bdfbe69161",
         "gitCommitHash": "fce4ae31c8c90c6a21de9856a319c379bb797fc5",
         "stateArtefacts": {
