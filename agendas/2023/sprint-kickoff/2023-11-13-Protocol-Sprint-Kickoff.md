@@ -141,10 +141,11 @@ Misc:
 ### **Consensus (Dynamic Protocol State) - Alex H**
 
 **Done last sprint**
+- Update [Identity-Changing Operations doc](https://www.notion.so/dapperlabs/Identity-Changing-Operations-610bb2d3b63f4d3dae12e405d3c5a097?pvs=4) to remove dynamically changing weight
 
 **Ongoing** (last & next sprint)
 
-- Consolidating exploratory research documents to reflect final design (requires change to reflect removal of dynamic weight)
+- Begin implementing [FLIP 204]([url](https://github.com/onflow/flow-go/issues/4948))
 - Refactoring and refining the interfaces and data structures for clarity (👉 [epic #4649](https://github.com/onflow/flow-go/issues/4649))
 - Handle high priority [TODOs](https://github.com/onflow/flow-go/issues/4649), specifically: change how protocol state behaves in case of invalid state transition and replace dynamic weight with participation status.
 
