@@ -112,21 +112,30 @@ Misc:
 ### **Permissionless Network - Yahya H**
 
 **Done last sprint**
-- [Investigating and fixing goroutine leakage on `mainnet23`](https://github.com/dapperlabs/flow-go/issues/6871) [PR4846](https://github.com/onflow/flow-go/pull/4846)
-- [Addressing technical debts for sync engine ALSP integration](https://github.com/onflow/flow-go/pull/4842) 
+- [Balanced the inbound and outbound resource limits with backpressure](https://github.com/dapperlabs/flow-go/issues/6896) [PR4929](https://github.com/onflow/flow-go/pull/4929)
+- [Discovered the root cause of AN-LN peer blocking issue on mainnet23](https://github.com/dapperlabs/flow-go/issues/6895)
+  - [Short-term fix deployed](https://github.com/onflow/flow-go/pull/4915)
+  - [Long-term fix is halfway in progress- Part 1 under review](https://github.com/onflow/flow-go/pull/4951)
+
 
 **Ongoing (last and next sprint)**
-- [Investigated and fixed AN-LN streaming issue on `mainnet23`](https://github.com/dapperlabs/flow-go/issues/6895) [PR4875](https://github.com/onflow/flow-go/pull/4875)
+- [Part-2 and -3 of the long term fix for AN-LN peer blocking issue on mainnet23](https://github.com/dapperlabs/flow-go/issues/6895)
 - [Optimizing memory-intensive RPC inspection operations](https://github.com/dapperlabs/flow-go/issues/6870)
+  - [Optimizing Subscription Validator Memory Usage](https://github.com/onflow/flow-go/pull/4988)
+  - Optimizing RPC ID Computation (Not Started)
+  - Cache-based Application-Specific Score (Not Started)
 - [Gossip scoring to support additional cluster prefixed control messages](https://github.com/dapperlabs/flow-internal/issues/1889) [PR4857](https://github.com/onflow/flow-go/pull/4857)
 - [Implement Specific Decay per Peer ID in GossipSubSpamRecord for Improved Spam Mitigation](https://github.com/dapperlabs/flow-go/issues/6662)
+- [Apply Penalty to Misbehaving Peers Based on Count and Err in InvCtrlMsgNotif](https://github.com/dapperlabs/flow-go/issues/6664) [PR4978](https://github.com/onflow/flow-go/pull/4978)
+- [[CI][Testing] Increase GitHub CI runners for resource intensive tests](https://github.com/dapperlabs/flow-go/issues/6894) [PR4906](https://github.com/onflow/flow-go/pull/4906)
 
 **Next Sprint**
-- [Balancing the inbound and outbound resource limits with backpressure](https://github.com/dapperlabs/flow-go/issues/6896)
-- [Apply Penalty to Misbehaving Peers Based on Count and Err in InvCtrlMsgNotif](https://github.com/dapperlabs/flow-go/issues/6664)
+- [GossipSub Message Replay Attack Mitigation](https://github.com/dapperlabs/flow-go/issues/6809)
+- [Concluding GossipSub Message Forensics FLIP and planning the development](https://github.com/onflow/flips/pull/195)
+- [Implement a Configurable Silence Period to Prevent False-Positive Node Penalties at Startup](https://github.com/onflow/flow-go/issues/4979)
 - [Increase test coverage for BFTune ingress unit tests](https://github.com/dapperlabs/flow-go/issues/6883)
 - [[BFT Testing] Refactor Orchestrator lock contension to use worker pools](https://github.com/dapperlabs/flow-go/issues/6884)
-- [[CI][Testing] Increase GitHub CI runners for resource intensive tests](https://github.com/dapperlabs/flow-go/issues/6894)
+
 
 **Active Epics**
 
