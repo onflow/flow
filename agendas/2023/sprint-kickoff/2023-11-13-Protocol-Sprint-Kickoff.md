@@ -1,5 +1,7 @@
 # Team Wins 🎉
 
+- safe randomness tools are deployed and working on Mainnet - launch page, documentation and first tutorial are live 🎲
+
 
 ### Mainnet Uptime SLO - Last 14 days (10/13 to 10/27)
 
