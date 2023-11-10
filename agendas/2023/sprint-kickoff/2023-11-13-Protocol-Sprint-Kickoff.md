@@ -9,6 +9,8 @@
 - Lots of AccessAPI quality of life improvements deployed to mainnet. (grpc compression, optional CCF, historic AN tx result cache)
 - Community approved [Staged contract update FLIP](https://github.com/onflow/flips/pull/179) for Cadence 1.0 release
 - Shared first proposal draft for cadence 1.0 release milestones with community
+- Flow mainnet upgrade (spork) done
+- DapperLabs and FlowFoundation nodes have been split.
 
 ### Mainnet Uptime SLO - Last 14 days (10/13 to 10/27)
 
