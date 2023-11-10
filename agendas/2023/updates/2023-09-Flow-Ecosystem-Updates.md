@@ -3,6 +3,7 @@
 ## Announcements and Wins! 🎉
 * Flow announced it's [EVM interoperability plan](https://forum.onflow.org/t/evm-on-flow-beyond-solidity/5260) - check it out!
   * [Slides](https://docs.google.com/presentation/d/1_rHKDeMfU07HZldAk-vzwlWKABNeu9CGAdksHEwGlNk/edit#slide=id.g241b055a5c0_0_91) from Dete's talk at EthMilan
+* Flow released [Account Linking](https://flow.com/post/account-linking-the-future-of-flow) to mainnet! 
 * Flow Reference Wallet was [released](https://flow.com/post/flow-reference-wallet-unlocking-flows-potential-with-a-fully-open-source-reference-wallet-for-builders)! This wallet showcases some of the advanced features of Flow's Account Abstraction model including support for Account Linking
 * Flow & Magic.link [integration](https://flow.com/post/flow-magic-integration) is live and available to use!
 
@@ -29,9 +30,6 @@
 * Cadence Compact Format was [updated to RC3](https://github.com/onflow/ccf/issues/4)
 * [Random Function Cadence FLIP](https://github.com/onflow/flips/pull/120) was approved!
 * Released [DexSyncSwap](https://forum.onflow.org/t/dex-standard-on-flow/4607) smart contract standard to [testnet](https://testnet.contractbrowser.com/A.1892acb0b380cc30.DexSyncSwap) 
-
-### Innovation, composability and advanced concepts
-* 
 
 ### Mainnet, Sporks
 * Next mainnet spork: Nov 8th

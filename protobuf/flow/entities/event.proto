@@ -5,6 +5,11 @@ package flow.entities;
 option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
 option java_package = "org.onflow.protobuf.entities";
 
+enum EventEncodingVersion {
+    JSON_CDC_V0 = 0;
+    CCF_V0 = 1;
+}
+
 message Event {
   string type = 1;
   bytes transaction_id = 2;

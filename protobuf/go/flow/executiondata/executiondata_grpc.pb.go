@@ -4,7 +4,7 @@
 // - protoc             (unknown)
 // source: flow/executiondata/executiondata.proto
 
-package access
+package executiondata
 
 import (
 	context "context"
@@ -81,7 +81,7 @@ func NewExecutionDataAPIClient(cc grpc.ClientConnInterface) ExecutionDataAPIClie
 
 func (c *executionDataAPIClient) GetExecutionDataByBlockID(ctx context.Context, in *GetExecutionDataByBlockIDRequest, opts ...grpc.CallOption) (*GetExecutionDataByBlockIDResponse, error) {
 	out := new(GetExecutionDataByBlockIDResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.ExecutionDataAPI/GetExecutionDataByBlockID", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/flow.executiondata.ExecutionDataAPI/GetExecutionDataByBlockID", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,7 +89,7 @@ func (c *executionDataAPIClient) GetExecutionDataByBlockID(ctx context.Context, 
 }
 
 func (c *executionDataAPIClient) SubscribeExecutionData(ctx context.Context, in *SubscribeExecutionDataRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataClient, error) {
-	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[0], "/flow.access.ExecutionDataAPI/SubscribeExecutionData", opts...)
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[0], "/flow.executiondata.ExecutionDataAPI/SubscribeExecutionData", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -121,7 +121,7 @@ func (x *executionDataAPISubscribeExecutionDataClient) Recv() (*SubscribeExecuti
 }
 
 func (c *executionDataAPIClient) SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[1], "/flow.access.ExecutionDataAPI/SubscribeEvents", opts...)
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[1], "/flow.executiondata.ExecutionDataAPI/SubscribeEvents", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -154,7 +154,7 @@ func (x *executionDataAPISubscribeEventsClient) Recv() (*SubscribeEventsResponse
 
 func (c *executionDataAPIClient) GetRegisterValues(ctx context.Context, in *GetRegisterValuesRequest, opts ...grpc.CallOption) (*GetRegisterValuesResponse, error) {
 	out := new(GetRegisterValuesResponse)
-	err := c.cc.Invoke(ctx, "/flow.access.ExecutionDataAPI/GetRegisterValues", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/flow.executiondata.ExecutionDataAPI/GetRegisterValues", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -252,7 +252,7 @@ func _ExecutionDataAPI_GetExecutionDataByBlockID_Handler(srv interface{}, ctx co
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/flow.access.ExecutionDataAPI/GetExecutionDataByBlockID",
+		FullMethod: "/flow.executiondata.ExecutionDataAPI/GetExecutionDataByBlockID",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ExecutionDataAPIServer).GetExecutionDataByBlockID(ctx, req.(*GetExecutionDataByBlockIDRequest))
@@ -312,7 +312,7 @@ func _ExecutionDataAPI_GetRegisterValues_Handler(srv interface{}, ctx context.Co
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/flow.access.ExecutionDataAPI/GetRegisterValues",
+		FullMethod: "/flow.executiondata.ExecutionDataAPI/GetRegisterValues",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ExecutionDataAPIServer).GetRegisterValues(ctx, req.(*GetRegisterValuesRequest))
@@ -324,7 +324,7 @@ func _ExecutionDataAPI_GetRegisterValues_Handler(srv interface{}, ctx context.Co
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ExecutionDataAPI_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "flow.access.ExecutionDataAPI",
+	ServiceName: "flow.executiondata.ExecutionDataAPI",
 	HandlerType: (*ExecutionDataAPIServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
