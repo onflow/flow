@@ -10,20 +10,22 @@
 - Community approved [Staged contract update FLIP](https://github.com/onflow/flips/pull/179) for Cadence 1.0 release
 - Shared first proposal draft for cadence 1.0 release milestones with community
 - Flow mainnet upgrade (spork) done
+- Mainnet is no longer in the epoch fallback mode.
 - DapperLabs and FlowFoundation nodes have been split.
+- Public access nodes were available during the spork (except Send Transaction)
 
-### Mainnet Uptime SLO - Last 14 days (10/13 to 10/27)
+### Mainnet Uptime SLO - Last 14 days (11/30 to 11/10)
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%  |    100%       |       0%          |
-| Block Finalization      | 99.9%  |    99.896%    |       104%        |
-| Transaction Execution   | 99.9%  |    99.906%    |       94.3%       |
-| Block Sealing           | 99.9%  |    99.816%    |       174%        |
-| Access API Liveness     | 99.9%  |    99.722%    |       278%        |
+| Collection Finalization | 99.9%  |    99.26%     |       7.4%        |
+| Block Finalization      | 99.9%  |    99.26%     |       7.4%        |
+| Transaction Execution   | 99.9%  |    99.26%     |       7.4%        |
+| Block Sealing           | 99.9%  |    99.26%     |       7.4%        |
+| Access API Liveness     | 99.9%  |    100%       |       0%          |
 
 #### Incidents
-
+- Mainnet network upgrade (spork). Duration: 2.5 hrs
 
 
 ### **Performance Pod Sprint Objective - Jan B**
