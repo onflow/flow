@@ -1,7 +1,9 @@
 # Team Wins 🎉
 
 - safe randomness tools are deployed and live on Mainnet 🎲 
-  launch page [Flow VRF](https://developers.flow.com/build/advanced-concepts/randomness) on Dev Portal, [Cadence documentation](https://cadence-lang.org/docs/1.0/language/built-in-functions), [_Random Coin Toss_ as first tutorial](https://github.com/onflow/random-coin-toss)
+  - launch page [_Flow VRF_](https://developers.flow.com/build/advanced-concepts/randomness) on Dev Portal
+  - [_Cadence documentation_](https://cadence-lang.org/docs/1.0/language/built-in-functions)
+  - [_Random Coin Toss_ as first tutorial](https://github.com/onflow/random-coin-toss)
 - Script execution working on devnet! Will enable on mainnet this sprint.
 - Event streaming available for REST on mainnet. (working with 4d on fcl integration)
 - Lots of AccessAPI quality of life improvements deployed to mainnet. (grpc compression, optional CCF, historic AN tx result cache)
