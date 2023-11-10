@@ -7,6 +7,8 @@
 - Script execution working on devnet! Will enable on mainnet this sprint.
 - Event streaming available for REST on mainnet. (working with 4d on fcl integration)
 - Lots of AccessAPI quality of life improvements deployed to mainnet. (grpc compression, optional CCF, historic AN tx result cache)
+- Community approved [Staged contract update FLIP](https://github.com/onflow/flips/pull/179) for Cadence 1.0 release
+- Shared first proposal draft for cadence 1.0 release milestones with community
 
 ### Mainnet Uptime SLO - Last 14 days (10/13 to 10/27)
 
@@ -26,12 +28,36 @@
 
 **Done last sprint**
 
+Atree Register Inlining
+- Finished investigation of smoke tests failure (in the end the test failure was a false positive)
+- Completed local setup for migration testing, ready to test the migration with Atree integrated with Cadence
+- [Add atRoot parameter to Value.DeepRemove](https://github.com/onflow/cadence/pull/2920)
+
+Storehouse
+- Continued breaking down Storehouse M1 implementation into PRs, ~30% of the M1 is now reviewed and merged
+- [Storehouse - add PayloadToRegister](https://github.com/onflow/flow-go/pull/4955)
+- [Storehouse Bootstrap - make worker count as option for indexing checkpoint](https://github.com/onflow/flow-go/pull/4884)
+- [Storehouse - Add storehouse interfaces](https://github.com/onflow/flow-go/pull/4835)
+
+EVM support
+- Continued reviewing EVM PRs
+
+Other Improvements & fixes
+[Switch to always using the 0th partition for UUID generation](https://github.com/onflow/flow-go/pull/4893)
+[Node operation improvement - Make path configs to be usable by container by default](https://github.com/onflow/flow-go/pull/4885)
+
+Flow Network Ugrade support
+[[Backport] Make path configs to be usable by container by default](https://github.com/onflow/flow-go/pull/4905)
+[\[Util\] make chunk-data-pack-dir optional for non-execution node](https://github.com/onflow/flow-go/pull/4896)
+[Update cadence to v0.42.2-patch.1](https://github.com/dapperlabs/flow-go/pull/6897)
 
 **This sprint**
 
-- [Continue Cadence integration to use Atree register inlining](https://github.com/onflow/cadence/issues/2809)
-- Continue testing [Atree register inlining migration](https://github.com/onflow/flow-go/pull/4633)
+- Test [migration](https://github.com/onflow/flow-go/pull/4633) of [integrated solution for Atree register inlining](https://github.com/onflow/cadence/issues/2809)
 - Continue implementation of [Storehouse first milestone](https://github.com/onflow/flow-go/issues/4682) (execution state on disk)
+- EVM support
+  - Continue with PR reviews
+  - Start benchmarking setup
 
 **On Hold**
 
@@ -52,14 +78,42 @@ Objective: long-term support release of Cadence with no expected breaking change
 
 **Done last sprint**
 
+Features
+- [v0.42 - Port adding new `revertibleRandom` function]
+
+Cadence 1.0
+  features
+  - [Implement Custom Destructor Removal](https://github.com/onflow/cadence/issues/2790)
+    - [Interpreting for default events](https://github.com/onflow/cadence/issues/2817)
+    - [Type checking for default events](https://github.com/onflow/cadence/issues/2812)
+    - [Support for parsing default destroy events](https://github.com/onflow/cadence/issues/2799)
+    - [Remove support for custom destructors](https://github.com/onflow/cadence/issues/2789)
+  Improvements
+  - [Refactor resource-reference tracking](https://github.com/onflow/cadence/pull/2916)
+  FLIPs
+  - [FLIP 95: proposal for entitlements migration](https://github.com/onflow/flips/issues/95)
+
+Security Fixes (port to public repo)
+[Fix nested resource moves](https://github.com/onflow/cadence/issues/2931)
+[v0.42 - Fix nested resource moves](https://github.com/onflow/cadence/issues/2930)
+[v0.42 - Fix AuthAccount creation](https://github.com/onflow/cadence/issues/2932)
+
+EVM Support
+- [FVM EVM: Refactor stdlib to use new approach](https://github.com/onflow/flow-go/issues/4876)
+
+Updates of Downstream dependencies
+- Go SDK: [Update to Cadence v0.42.3](https://github.com/onflow/flow-go-sdk/issues/499)
+
+
 **This sprint**
 
 - continue support EVM on FLow initiative.
 - Continuing with Stable Cadence scope / discussions
     - Ongoing FLIPs:
-        - Last FLIP to be opened - Update on entitlements on Attachments
+        - [FLIP for new behavior for attachments with entitlements](https://github.com/onflow/flips/pull/213)
 - Continue work on Cadence 1.0 migrations.
 - Continue Stable Cadence Docs update and knocking tasks off the [tech debt list](https://github.com/onflow/cadence/issues/2642)
+- Continue work on Cadence 1.0 release plan
  
 **On Hold**
 - Discussion of the re-entrancy edge cases
