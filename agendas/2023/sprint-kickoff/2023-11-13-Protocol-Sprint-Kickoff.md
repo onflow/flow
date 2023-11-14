@@ -231,7 +231,7 @@ Misc:
 
 
 **Next Sprint**
-- Getting large framework iteration over finish line ([PR #4868](https://github.com/onflow/flow-go/pull/4868))
+- Block payload contains Hash commitment of protocol state for child block(s) ([PR #4868](https://github.com/onflow/flow-go/pull/4868))
 - continue on Epoch Fallback Mode [PR #4931](https://github.com/onflow/flow-go/pull/4931)
 - Removing dynamic weight from protocol state, as this is no longer needed
 - Long list remaining tech todos [epic #4649](https://github.com/onflow/flow-go/issues/4649))
