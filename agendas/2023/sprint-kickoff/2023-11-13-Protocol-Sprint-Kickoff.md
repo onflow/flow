@@ -15,6 +15,7 @@
 - Public access nodes were available during the spork (except Send Transaction)
 - New hosting pattern has been successfully implemented for securely & managing running Dapper Nodes
 - Benchnet2 testing has validated support and pattern for running large networks
+- [CI improved](https://github.com/onflow/flow-go/pull/4906) with upgraded runners, faster runs and less flaky
 
 ### Mainnet Uptime SLO - Last 14 days (11/30 to 11/10)
 
