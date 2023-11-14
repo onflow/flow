@@ -96,6 +96,7 @@ Cadence 1.0
     - [Remove support for custom destructors](https://github.com/onflow/cadence/issues/2789)
   Improvements
   - [Refactor resource-reference tracking](https://github.com/onflow/cadence/pull/2916)
+  
   FLIPs
   - [FLIP 95: proposal for entitlements migration](https://github.com/onflow/flips/issues/95)
 
