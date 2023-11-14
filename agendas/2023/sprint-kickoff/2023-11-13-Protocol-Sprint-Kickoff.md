@@ -85,7 +85,7 @@ Objective: long-term support release of Cadence with no expected breaking change
 **Done last sprint**
 
 Features
-- [v0.42 - Port adding new `revertibleRandom` function]
+- [v0.42 - Port adding new `revertibleRandom` function](https://github.com/onflow/cadence/pull/2910)
 
 Cadence 1.0
   features
