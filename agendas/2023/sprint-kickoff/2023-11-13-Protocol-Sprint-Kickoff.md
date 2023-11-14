@@ -101,9 +101,9 @@ Cadence 1.0
   - [FLIP 95: proposal for entitlements migration](https://github.com/onflow/flips/issues/95)
 
 Security Fixes (port to public repo)
-[Fix nested resource moves](https://github.com/onflow/cadence/issues/2931)
-[v0.42 - Fix nested resource moves](https://github.com/onflow/cadence/issues/2930)
-[v0.42 - Fix AuthAccount creation](https://github.com/onflow/cadence/issues/2932)
+- [Fix nested resource moves](https://github.com/onflow/cadence/issues/2931)
+- [v0.42 - Fix nested resource moves](https://github.com/onflow/cadence/issues/2930)
+- [v0.42 - Fix AuthAccount creation](https://github.com/onflow/cadence/issues/2932)
 
 EVM Support
 - [FVM EVM: Refactor stdlib to use new approach](https://github.com/onflow/flow-go/issues/4876)
