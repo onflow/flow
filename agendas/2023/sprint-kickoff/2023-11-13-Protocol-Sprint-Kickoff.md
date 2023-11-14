@@ -49,7 +49,7 @@ EVM support
 - Continued reviewing EVM PRs
 
 Other Improvements & fixes
-- [\[v0.32-ONLY!!\]Switch to always using the 0th partition for UUID generation](https://github.com/onflow/flow-go/pull/4893)
+- v0.32 ONLY: [Switch to always using the 0th partition for UUID generation](https://github.com/onflow/flow-go/pull/4893)
 - [Node operation improvement - Make path configs to be usable by container by default](https://github.com/onflow/flow-go/pull/4885)
 
 Flow Network Ugrade support
