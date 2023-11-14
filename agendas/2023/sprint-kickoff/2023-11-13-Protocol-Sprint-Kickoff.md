@@ -13,6 +13,8 @@
 - Mainnet is no longer in the epoch fallback mode.
 - DapperLabs and FlowFoundation nodes have been split.
 - Public access nodes were available during the spork (except Send Transaction)
+- New hosting pattern has been successfully implemented for securely & managing running Dapper Nodes
+- Benchnet2 testing has validated support and pattern for running large networks
 
 ### Mainnet Uptime SLO - Last 14 days (11/30 to 11/10)
 
@@ -232,15 +234,30 @@ Misc:
 ### **Infra - JP**
 
 **Done last sprint**
-
-**This Sprint**
 - Update Ansible automation for Dapper nodes
-- Prepare monitoring & alerting for Dapper Nodes
+- Prepare monitoring, alerting, and pager dudty group for Dapper Node monitoring
 - Prepare Dapper infra/keys for Mainnet spork
 - Create Flow Foundation infrastructure & configuration for Mainnet spork
 - Create Dapper infrastructure & configuration for Mainnet spork
+- Scale down networks following s
+- Assist with sporks & HCUs
+- Update logrotate for Dapper nodes
+- Assist with BN2 testing
+
+**This Sprint**
 
 ************Node Hosting************
+- Continue to monitor system configuratiton for Dapper Nodes
+- Prepare execution & protocol state archives for Mainnet23
+- Scale down Mainnet23 AN & EN
+- Unstake & deprecate Dapper Nodes on Devnet49
+- Clean up unneeded DPS nodes
+
+************Support************
+- Evaluate migration path for GCP projects and resources
+- Continue to support Benchnet2 with updates to Helm chart
+- Work with DevEx team to unblock migration of workloads to 
+
 ### Key Release Dates & Breaking Changes
 
 - Mainnet/Testnet Spork dates 
