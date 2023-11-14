@@ -20,10 +20,10 @@
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%  |    99.26%     |       7.4%        |
-| Block Finalization      | 99.9%  |    99.26%     |       7.4%        |
-| Transaction Execution   | 99.9%  |    99.26%     |       7.4%        |
-| Block Sealing           | 99.9%  |    99.26%     |       7.4%        |
+| Collection Finalization | 99.9%  |    99.26%     |       744%        |
+| Block Finalization      | 99.9%  |    99.26%     |       744%        |
+| Transaction Execution   | 99.9%  |    99.26%     |       744%        |
+| Block Sealing           | 99.9%  |    99.26%     |       744%        |
 | Access API Liveness     | 99.9%  |    100%       |       0%          |
 
 #### Incidents
