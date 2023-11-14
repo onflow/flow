@@ -49,13 +49,13 @@ EVM support
 - Continued reviewing EVM PRs
 
 Other Improvements & fixes
-[Switch to always using the 0th partition for UUID generation](https://github.com/onflow/flow-go/pull/4893)
-[Node operation improvement - Make path configs to be usable by container by default](https://github.com/onflow/flow-go/pull/4885)
+- [Switch to always using the 0th partition for UUID generation](https://github.com/onflow/flow-go/pull/4893)
+- [Node operation improvement - Make path configs to be usable by container by default](https://github.com/onflow/flow-go/pull/4885)
 
 Flow Network Ugrade support
-[[Backport] Make path configs to be usable by container by default](https://github.com/onflow/flow-go/pull/4905)
-[\[Util\] make chunk-data-pack-dir optional for non-execution node](https://github.com/onflow/flow-go/pull/4896)
-[Update cadence to v0.42.2-patch.1](https://github.com/dapperlabs/flow-go/pull/6897)
+- [\[Backport\] Make path configs to be usable by container by default](https://github.com/onflow/flow-go/pull/4905)
+- [\[Util\] make chunk-data-pack-dir optional for non-execution node](https://github.com/onflow/flow-go/pull/4896)
+- [Update cadence to v0.42.2-patch.1](https://github.com/dapperlabs/flow-go/pull/6897)
 
 **This sprint**
 
