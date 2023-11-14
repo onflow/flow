@@ -216,16 +216,19 @@ Misc:
 
 ### **Consensus (Dynamic Protocol State) - Alex H**
 
-**Done last sprint**
+**Done last sprint for Dynamic Protocol State**
 
 - multiple iterations on the framework code ([PR #4834](https://github.com/onflow/flow-go/pull/4834), [PR #4868](https://github.com/onflow/flow-go/pull/4868)) wrt modularization, maintainability, documentation
 - working on code for Epoch Fallback Mode (same functionality as currently, implemented in the new framework): [PR #4931](https://github.com/onflow/flow-go/pull/4931)
-- Secure Randomness [Flow Dev Portal → Flow VRF](https://developers.flow.com/build/advanced-concepts/randomness) & GH repo: [Random Coin Toss in Cadence](https://github.com/onflow/random-coin-toss), [Flow VRF: Secure Randomness for Cadence - Executive summary](https://www.notion.so/dapperlabs/Flow-VRF-Secure-Randomness-for-Cadence-Executive-summary-601d0f45680b42b7bd751d440d068aac?pvs=4) (marketing)
-- Jordan working on important automation of Cruise Control system ([FLIP 204]([url](https://github.com/onflow/flow-go/issues/4948))), to run Block-Time controller on networks other than mainnet 
 - Explorations on integrating Epoch Fallback Mode: [PR #4931](https://github.com/onflow/flow-go/pull/4931)
  [PR #4922](https://github.com/onflow/flow-go/pull/4922)
 
   noticed potential avenue for leaving Epoch Fallback Mode without spork utilizing Dynamic Protocol State
+
+**Done last sprint (other topics)**
+- Secure Randomness [Flow Dev Portal → Flow VRF](https://developers.flow.com/build/advanced-concepts/randomness) & GH repo: [Random Coin Toss in Cadence](https://github.com/onflow/random-coin-toss), [Flow VRF: Secure Randomness for Cadence - Executive summary](https://www.notion.so/dapperlabs/Flow-VRF-Secure-Randomness-for-Cadence-Executive-summary-601d0f45680b42b7bd751d440d068aac?pvs=4) (marketing)
+- Jordan working on important automation of Cruise Control system ([FLIP 204]([url](https://github.com/onflow/flow-go/issues/4948))), to run Block-Time controller on networks other than mainnet 
+
 
 **Next Sprint**
 - Getting large framework iteration over finish line ([PR #4868](https://github.com/onflow/flow-go/pull/4868))
