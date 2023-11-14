@@ -4,6 +4,7 @@
   - launch page [_Flow VRF_](https://developers.flow.com/build/advanced-concepts/randomness) on Dev Portal
   - [_Cadence documentation_](https://cadence-lang.org/docs/1.0/language/built-in-functions)
   - [_Random Coin Toss_ as first tutorial](https://github.com/onflow/random-coin-toss)
+  - tentative forum post [_Secure random number generator for Flow’s smart contracts_](https://forum.flow.com/t/secure-random-number-generator-for-flow-s-smart-contracts/5110) (will be published as blog)
 - Script execution working on devnet! Will enable on mainnet this sprint.
 - Event streaming available for REST on mainnet. (working with 4d on fcl integration)
 - Lots of AccessAPI quality of life improvements deployed to mainnet. (grpc compression, optional CCF, historic AN tx result cache)
