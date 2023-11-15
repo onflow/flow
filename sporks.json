@@ -1,9 +1,53 @@
 {
   "networks": {
     "mainnet": {
+      "mainnet24": {
+        "id": 24,
+        "live": true,
+        "name": "Mainnet-24",
+        "sporkTime": "2023-11-08T16:00:00Z",
+        "rootHeight": "65264619",
+        "rootParentId": "aace2d9b6e66067989d0f71c2efff38fe30d88da61e3d80946c7e7b4ee2bbc2f",
+        "rootStateCommitment": "3982471046dba55a6f4d58a81db6da830e8aeb138c7a5ceba88cfe6a2e87630f",
+        "gitCommitHash": " da42bac0e9f29fe43c4498d0d6795eb0a197730b",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-24-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-24-execution/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-24-execution/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-24-execution/public-root-information/node-infos.pub.json",
+            "executionStateBucket": "flow_public_mainnet24_execution_state"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": "flow-public-mainnet24-execution-state"
+          }
+        },
+        "tags": {
+          "flow-go": "v0.32.6-patch.2",
+          "flow-dps": "v0.32.6-patch.2",
+          "cadence": "v0.42.3-patch.2",
+          "docker": "v0.32.6-patch.2"
+        },
+        "seedNodes": [
+          {
+            "address": "access-007.mainnet24.nodes.onflow.org:3570",
+            "key": "28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae"
+          },
+          {
+            "address": "access-008.mainnet24.nodes.onflow.org:3570",
+            "key": "11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a"
+          }
+        ],
+        "accessNodes": [
+          "access.mainnet.nodes.onflow.org:9000"
+        ]
+      },
       "mainnet23": {
         "id": 23,
-        "live": true,
+        "live": false,
         "name": "Mainnet-23",
         "sporkTime": "2023-06-21T16:27:13Z",
         "rootHeight": "55114467",
@@ -33,16 +77,12 @@
         },
         "seedNodes": [
           {
-            "address": "access-007.mainnet23.nodes.onflow.org:3570",
-            "key": "28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae"
-          },
-          {
-            "address": "access-008.mainnet23.nodes.onflow.org:3570",
-            "key": "11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a"
+            "address": "access-001.mainnet23.nodes.onflow.org:3570",
+            "key": "ba530d6e593947d1dd2d7f8afcf122efac9070043ce7ffdc62b4c4be9899f9a3b7e57c4c975d484386b4c5ad25a2ede097cbd497942a759a6391ba9cf724f6d9"
           }
         ],
         "accessNodes": [
-          "access.mainnet.nodes.onflow.org:9000"
+          "access-001.mainnet23.nodes.onflow.org:9000"
         ]
       },
       "mainnet22": {
