@@ -34,14 +34,18 @@ type ExecutionAPIClient interface {
 	GetEventsForBlockIDs(ctx context.Context, in *GetEventsForBlockIDsRequest, opts ...grpc.CallOption) (*GetEventsForBlockIDsResponse, error)
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(ctx context.Context, in *GetTransactionResultRequest, opts ...grpc.CallOption) (*GetTransactionResultResponse, error)
-	// GetTransactionResultByIndex gets the result of a transaction at the index .
+	// GetTransactionResultByIndex gets the result of a transaction at the index.
 	GetTransactionResultByIndex(ctx context.Context, in *GetTransactionByIndexRequest, opts ...grpc.CallOption) (*GetTransactionResultResponse, error)
 	// GetTransactionResultByIndex gets the results of all transactions in the
-	// block ordered by transaction index
+	// block ordered by transaction index.
 	GetTransactionResultsByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*GetTransactionResultsResponse, error)
+	// GetTransactionErrorMessage gets the error messages of a failed transaction by id.
+	GetTransactionErrorMessage(ctx context.Context, in *GetTransactionErrorMessageRequest, opts ...grpc.CallOption) (*GetTransactionErrorMessagesResponse, error)
+	// GetTransactionErrorMessageByIndex gets the error messages of a failed transaction at the index.
+	GetTransactionErrorMessageByIndex(ctx context.Context, in *GetTransactionErrorMessageByIndexRequest, opts ...grpc.CallOption) (*GetTransactionErrorMessagesResponse, error)
 	// GetTransactionErrorMessagesByBlockID gets the error messages of all failed transactions in the
-	// block ordered by transaction index
-	GetTransactionErrorMessagesByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*GetTransactionErrorMessagesResponse, error)
+	// block ordered by transaction index.
+	GetTransactionErrorMessagesByBlockID(ctx context.Context, in *GetTransactionErrorMessagesByBlockIDRequest, opts ...grpc.CallOption) (*GetTransactionErrorMessagesResponse, error)
 	// GetRegisterAtBlockID collects a register at the block with the given ID (if
 	// available).
 	GetRegisterAtBlockID(ctx context.Context, in *GetRegisterAtBlockIDRequest, opts ...grpc.CallOption) (*GetRegisterAtBlockIDResponse, error)
@@ -122,7 +126,25 @@ func (c *executionAPIClient) GetTransactionResultsByBlockID(ctx context.Context,
 	return out, nil
 }
 
-func (c *executionAPIClient) GetTransactionErrorMessagesByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*GetTransactionErrorMessagesResponse, error) {
+func (c *executionAPIClient) GetTransactionErrorMessage(ctx context.Context, in *GetTransactionErrorMessageRequest, opts ...grpc.CallOption) (*GetTransactionErrorMessagesResponse, error) {
+	out := new(GetTransactionErrorMessagesResponse)
+	err := c.cc.Invoke(ctx, "/flow.execution.ExecutionAPI/GetTransactionErrorMessage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *executionAPIClient) GetTransactionErrorMessageByIndex(ctx context.Context, in *GetTransactionErrorMessageByIndexRequest, opts ...grpc.CallOption) (*GetTransactionErrorMessagesResponse, error) {
+	out := new(GetTransactionErrorMessagesResponse)
+	err := c.cc.Invoke(ctx, "/flow.execution.ExecutionAPI/GetTransactionErrorMessageByIndex", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *executionAPIClient) GetTransactionErrorMessagesByBlockID(ctx context.Context, in *GetTransactionErrorMessagesByBlockIDRequest, opts ...grpc.CallOption) (*GetTransactionErrorMessagesResponse, error) {
 	out := new(GetTransactionErrorMessagesResponse)
 	err := c.cc.Invoke(ctx, "/flow.execution.ExecutionAPI/GetTransactionErrorMessagesByBlockID", in, out, opts...)
 	if err != nil {
@@ -174,14 +196,18 @@ type ExecutionAPIServer interface {
 	GetEventsForBlockIDs(context.Context, *GetEventsForBlockIDsRequest) (*GetEventsForBlockIDsResponse, error)
 	// GetTransactionResult gets the result of a transaction.
 	GetTransactionResult(context.Context, *GetTransactionResultRequest) (*GetTransactionResultResponse, error)
-	// GetTransactionResultByIndex gets the result of a transaction at the index .
+	// GetTransactionResultByIndex gets the result of a transaction at the index.
 	GetTransactionResultByIndex(context.Context, *GetTransactionByIndexRequest) (*GetTransactionResultResponse, error)
 	// GetTransactionResultByIndex gets the results of all transactions in the
-	// block ordered by transaction index
+	// block ordered by transaction index.
 	GetTransactionResultsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*GetTransactionResultsResponse, error)
+	// GetTransactionErrorMessage gets the error messages of a failed transaction by id.
+	GetTransactionErrorMessage(context.Context, *GetTransactionErrorMessageRequest) (*GetTransactionErrorMessagesResponse, error)
+	// GetTransactionErrorMessageByIndex gets the error messages of a failed transaction at the index.
+	GetTransactionErrorMessageByIndex(context.Context, *GetTransactionErrorMessageByIndexRequest) (*GetTransactionErrorMessagesResponse, error)
 	// GetTransactionErrorMessagesByBlockID gets the error messages of all failed transactions in the
-	// block ordered by transaction index
-	GetTransactionErrorMessagesByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*GetTransactionErrorMessagesResponse, error)
+	// block ordered by transaction index.
+	GetTransactionErrorMessagesByBlockID(context.Context, *GetTransactionErrorMessagesByBlockIDRequest) (*GetTransactionErrorMessagesResponse, error)
 	// GetRegisterAtBlockID collects a register at the block with the given ID (if
 	// available).
 	GetRegisterAtBlockID(context.Context, *GetRegisterAtBlockIDRequest) (*GetRegisterAtBlockIDResponse, error)
@@ -216,7 +242,13 @@ func (UnimplementedExecutionAPIServer) GetTransactionResultByIndex(context.Conte
 func (UnimplementedExecutionAPIServer) GetTransactionResultsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*GetTransactionResultsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionResultsByBlockID not implemented")
 }
-func (UnimplementedExecutionAPIServer) GetTransactionErrorMessagesByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*GetTransactionErrorMessagesResponse, error) {
+func (UnimplementedExecutionAPIServer) GetTransactionErrorMessage(context.Context, *GetTransactionErrorMessageRequest) (*GetTransactionErrorMessagesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionErrorMessage not implemented")
+}
+func (UnimplementedExecutionAPIServer) GetTransactionErrorMessageByIndex(context.Context, *GetTransactionErrorMessageByIndexRequest) (*GetTransactionErrorMessagesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionErrorMessageByIndex not implemented")
+}
+func (UnimplementedExecutionAPIServer) GetTransactionErrorMessagesByBlockID(context.Context, *GetTransactionErrorMessagesByBlockIDRequest) (*GetTransactionErrorMessagesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionErrorMessagesByBlockID not implemented")
 }
 func (UnimplementedExecutionAPIServer) GetRegisterAtBlockID(context.Context, *GetRegisterAtBlockIDRequest) (*GetRegisterAtBlockIDResponse, error) {
@@ -366,8 +398,44 @@ func _ExecutionAPI_GetTransactionResultsByBlockID_Handler(srv interface{}, ctx c
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ExecutionAPI_GetTransactionErrorMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTransactionErrorMessageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExecutionAPIServer).GetTransactionErrorMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.execution.ExecutionAPI/GetTransactionErrorMessage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExecutionAPIServer).GetTransactionErrorMessage(ctx, req.(*GetTransactionErrorMessageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ExecutionAPI_GetTransactionErrorMessageByIndex_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTransactionErrorMessageByIndexRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExecutionAPIServer).GetTransactionErrorMessageByIndex(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.execution.ExecutionAPI/GetTransactionErrorMessageByIndex",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExecutionAPIServer).GetTransactionErrorMessageByIndex(ctx, req.(*GetTransactionErrorMessageByIndexRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ExecutionAPI_GetTransactionErrorMessagesByBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTransactionsByBlockIDRequest)
+	in := new(GetTransactionErrorMessagesByBlockIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -379,7 +447,7 @@ func _ExecutionAPI_GetTransactionErrorMessagesByBlockID_Handler(srv interface{},
 		FullMethod: "/flow.execution.ExecutionAPI/GetTransactionErrorMessagesByBlockID",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExecutionAPIServer).GetTransactionErrorMessagesByBlockID(ctx, req.(*GetTransactionsByBlockIDRequest))
+		return srv.(ExecutionAPIServer).GetTransactionErrorMessagesByBlockID(ctx, req.(*GetTransactionErrorMessagesByBlockIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -472,6 +540,14 @@ var ExecutionAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetTransactionResultsByBlockID",
 			Handler:    _ExecutionAPI_GetTransactionResultsByBlockID_Handler,
+		},
+		{
+			MethodName: "GetTransactionErrorMessage",
+			Handler:    _ExecutionAPI_GetTransactionErrorMessage_Handler,
+		},
+		{
+			MethodName: "GetTransactionErrorMessageByIndex",
+			Handler:    _ExecutionAPI_GetTransactionErrorMessageByIndex_Handler,
 		},
 		{
 			MethodName: "GetTransactionErrorMessagesByBlockID",

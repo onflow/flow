@@ -41,18 +41,26 @@ service ExecutionAPI {
   rpc GetTransactionResult(GetTransactionResultRequest)
       returns (GetTransactionResultResponse);
 
-  // GetTransactionResultByIndex gets the result of a transaction at the index .
+  // GetTransactionResultByIndex gets the result of a transaction at the index.
   rpc GetTransactionResultByIndex(GetTransactionByIndexRequest)
       returns (GetTransactionResultResponse);
 
   // GetTransactionResultByIndex gets the results of all transactions in the
-  // block ordered by transaction index
+  // block ordered by transaction index.
   rpc GetTransactionResultsByBlockID(GetTransactionsByBlockIDRequest)
       returns (GetTransactionResultsResponse);
 
+  // GetTransactionErrorMessage gets the error messages of a failed transaction by id.
+  rpc GetTransactionErrorMessage(GetTransactionErrorMessageRequest)
+    returns (GetTransactionErrorMessagesResponse);
+
+  // GetTransactionErrorMessageByIndex gets the error messages of a failed transaction at the index.
+  rpc GetTransactionErrorMessageByIndex(GetTransactionErrorMessageByIndexRequest)
+    returns (GetTransactionErrorMessagesResponse);
+
   // GetTransactionErrorMessagesByBlockID gets the error messages of all failed transactions in the
-  // block ordered by transaction index
-  rpc GetTransactionErrorMessagesByBlockID(GetTransactionsByBlockIDRequest)
+  // block ordered by transaction index.
+  rpc GetTransactionErrorMessagesByBlockID(GetTransactionErrorMessagesByBlockIDRequest)
     returns (GetTransactionErrorMessagesResponse);
 
   // Registers
@@ -146,8 +154,27 @@ message GetTransactionResultsResponse {
   entities.EventEncodingVersion event_encoding_version = 2;
 }
 
+message GetTransactionErrorMessageRequest {
+  bytes block_id = 1;
+  bytes transaction_id = 2;
+}
+
+message GetTransactionErrorMessageByIndexRequest {
+  bytes block_id = 1;
+  uint32 index = 2;
+}
+
+message GetTransactionErrorMessagesByBlockIDRequest {
+  bytes block_id = 1;
+}
+
 message GetTransactionErrorMessagesResponse {
-  repeated string error_messages = 1;
+  message Result {
+    bytes transaction_id = 1;
+    uint32 index = 2;
+    string error_message = 3;
+  }
+  repeated Result results = 1;
 }
 
 // Registers
