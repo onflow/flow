@@ -222,10 +222,7 @@ message GetRegisterValuesRequest {
   uint64 block_height = 1;
 
   // Register IDs of the Ledger.RegisterID format with an owner and key.
-  repeated bytes register_ids = 2; // deprecated!
-
-  // Register IDs of the Ledger.RegisterID format with an owner and key.
-  repeated  entities.RegisterID register_ids_v2 = 3;
+  repeated entities.RegisterID register_ids = 2;
 }
 
 // response for GetRegisterValues
