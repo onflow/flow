@@ -24,9 +24,8 @@ type ExecutionDataAPIClient interface {
 	// - InvalidArgument is returned if the request contains an invalid block ID.
 	// - NotFound is returned if the start block or execution data are not
 	// currently available on the
-	//
-	//	node. This may happen if the block was from a previous spork, or if the
-	//	block has yet not been received.
+	//   node. This may happen if the block was from a previous spork, or if the
+	//   block has yet not been received.
 	GetExecutionDataByBlockID(ctx context.Context, in *GetExecutionDataByBlockIDRequest, opts ...grpc.CallOption) (*GetExecutionDataByBlockIDResponse, error)
 	// SubscribeExecutionData streams execution data for all blocks starting at
 	// the requested start block, up until the latest available block. Once the
@@ -38,9 +37,8 @@ type ExecutionDataAPIClient interface {
 	// block.
 	// - NotFound is returned if the start block is not currently available on the
 	// node. This may
-	//
-	//	happen if the block was from a previous spork, or if the block has yet
-	//	not been received.
+	//   happen if the block was from a previous spork, or if the block has yet
+	//   not been received.
 	SubscribeExecutionData(ctx context.Context, in *SubscribeExecutionDataRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataClient, error)
 	// SubscribeEvents streams events for all blocks starting at the requested
 	// start block, up until the latest available block. Once the latest is
@@ -62,9 +60,8 @@ type ExecutionDataAPIClient interface {
 	// EventFilter or start block.
 	// - NotFound is returned if the start block is not currently available on the
 	// node. This may
-	//
-	//	happen if the block was from a previous spork, or if the block has yet
-	//	not been received.
+	//   happen if the block was from a previous spork, or if the block has yet
+	//   not been received.
 	SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error)
 	// GetRegisterValues gets the values for the given register IDs as of the given block height
 	GetRegisterValues(ctx context.Context, in *GetRegisterValuesRequest, opts ...grpc.CallOption) (*GetRegisterValuesResponse, error)
@@ -170,9 +167,8 @@ type ExecutionDataAPIServer interface {
 	// - InvalidArgument is returned if the request contains an invalid block ID.
 	// - NotFound is returned if the start block or execution data are not
 	// currently available on the
-	//
-	//	node. This may happen if the block was from a previous spork, or if the
-	//	block has yet not been received.
+	//   node. This may happen if the block was from a previous spork, or if the
+	//   block has yet not been received.
 	GetExecutionDataByBlockID(context.Context, *GetExecutionDataByBlockIDRequest) (*GetExecutionDataByBlockIDResponse, error)
 	// SubscribeExecutionData streams execution data for all blocks starting at
 	// the requested start block, up until the latest available block. Once the
@@ -184,9 +180,8 @@ type ExecutionDataAPIServer interface {
 	// block.
 	// - NotFound is returned if the start block is not currently available on the
 	// node. This may
-	//
-	//	happen if the block was from a previous spork, or if the block has yet
-	//	not been received.
+	//   happen if the block was from a previous spork, or if the block has yet
+	//   not been received.
 	SubscribeExecutionData(*SubscribeExecutionDataRequest, ExecutionDataAPI_SubscribeExecutionDataServer) error
 	// SubscribeEvents streams events for all blocks starting at the requested
 	// start block, up until the latest available block. Once the latest is
@@ -208,9 +203,8 @@ type ExecutionDataAPIServer interface {
 	// EventFilter or start block.
 	// - NotFound is returned if the start block is not currently available on the
 	// node. This may
-	//
-	//	happen if the block was from a previous spork, or if the block has yet
-	//	not been received.
+	//   happen if the block was from a previous spork, or if the block has yet
+	//   not been received.
 	SubscribeEvents(*SubscribeEventsRequest, ExecutionDataAPI_SubscribeEventsServer) error
 	// GetRegisterValues gets the values for the given register IDs as of the given block height
 	GetRegisterValues(context.Context, *GetRegisterValuesRequest) (*GetRegisterValuesResponse, error)
