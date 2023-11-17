@@ -26,10 +26,10 @@
           }
         },
         "tags": {
-          "flow-go": "v0.32.6-patch.2",
+          "flow-go": "v0.32.9",
           "flow-dps": "v0.32.6-patch.2",
           "cadence": "v0.42.3-patch.2",
-          "docker": "v0.32.6-patch.2"
+          "docker": "v0.32.9"
         },
         "seedNodes": [
           {
