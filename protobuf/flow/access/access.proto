@@ -72,6 +72,12 @@ service AccessAPI {
   // GetTransactionsByBlockID gets all the transactions for a specified block
   rpc GetTransactionsByBlockID(GetTransactionsByBlockIDRequest)
       returns (TransactionsResponse);
+  // GetSystemTransaction gets a system transaction
+  rpc GetSystemTransaction(GetSystemTransactionRequest) returns (TransactionResponse);
+  // GetSystemTransactionResult gets a system transaction result for a
+  // specified block
+  rpc GetSystemTransactionResult(GetSystemTransactionResultRequest) returns (TransactionResultResponse);
+
 
   // Accounts
 
@@ -233,6 +239,12 @@ message GetTransactionRequest {
   bytes block_id = 2;
   bytes collection_id = 3;
   entities.EventEncodingVersion event_encoding_version = 4;
+}
+
+message GetSystemTransactionRequest {}
+
+message GetSystemTransactionResultRequest {
+  bytes block_id = 1;
 }
 
 message GetTransactionByIndexRequest {
