@@ -130,6 +130,18 @@ service AccessAPI {
   rpc GetLatestProtocolStateSnapshot(GetLatestProtocolStateSnapshotRequest)
       returns (ProtocolStateSnapshotResponse);
 
+  // GetProtocolStateSnapshotByBlockID retrieves the latest sealed protocol state
+  // snapshot by block ID. Used by Flow nodes joining the network to bootstrap a
+  // space-efficient local state.
+  rpc GetProtocolStateSnapshotByBlockID(GetProtocolStateSnapshotByBlockIDRequest)
+      returns (ProtocolStateSnapshotResponse);
+
+  // GetProtocolStateSnapshotByHeight retrieves the latest sealed protocol state
+  // snapshot by block height. Used by Flow nodes joining the network to bootstrap a
+  // space-efficient local state.
+  rpc GetProtocolStateSnapshotByHeight(GetProtocolStateSnapshotByHeightRequest)
+      returns (ProtocolStateSnapshotResponse);
+
   // GetExecutionResultForBlockID returns Execution Result for a given block.
   // At present, Access Node might not have execution results for every block
   // and as usual, until sealed, this data can change
@@ -347,6 +359,14 @@ message GetNetworkParametersResponse {
 // Protocol State
 
 message GetLatestProtocolStateSnapshotRequest {}
+
+message GetProtocolStateSnapshotByBlockIDRequest {
+  bytes block_id = 1;
+}
+
+message GetProtocolStateSnapshotByHeightRequest {
+  uint64 block_height = 1;
+}
 
 message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
