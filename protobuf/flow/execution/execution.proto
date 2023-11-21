@@ -52,11 +52,11 @@ service ExecutionAPI {
 
   // GetTransactionErrorMessage gets the error messages of a failed transaction by id.
   rpc GetTransactionErrorMessage(GetTransactionErrorMessageRequest)
-    returns (GetTransactionErrorMessagesResponse);
+    returns (GetTransactionErrorMessageResponse);
 
   // GetTransactionErrorMessageByIndex gets the error messages of a failed transaction at the index.
   rpc GetTransactionErrorMessageByIndex(GetTransactionErrorMessageByIndexRequest)
-    returns (GetTransactionErrorMessagesResponse);
+    returns (GetTransactionErrorMessageResponse);
 
   // GetTransactionErrorMessagesByBlockID gets the error messages of all failed transactions in the
   // block ordered by transaction index.
@@ -162,6 +162,11 @@ message GetTransactionErrorMessageRequest {
 message GetTransactionErrorMessageByIndexRequest {
   bytes block_id = 1;
   uint32 index = 2;
+}
+
+message GetTransactionErrorMessageResponse {
+  bytes transaction_id = 1;
+  string error_message = 2;
 }
 
 message GetTransactionErrorMessagesByBlockIDRequest {
