@@ -245,6 +245,7 @@ message GetSystemTransactionRequest {}
 
 message GetSystemTransactionResultRequest {
   bytes block_id = 1;
+  entities.EventEncodingVersion event_encoding_version = 2;
 }
 
 message GetTransactionByIndexRequest {
