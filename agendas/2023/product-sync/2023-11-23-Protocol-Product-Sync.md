@@ -49,3 +49,14 @@ In context of Dynamic Protocol State:
 ### Governance update @vishalchangrani
 
 ### Path forward for script execution on public ANs given HCUs @peterargue
+- AN should stop executing past blocks from blocks before the HCU.
+  - consume service event and recognize the height for HCU.   
+- HCU next week means we will have to pause script execution on mainnet till we have a solution implemented for the point above.
+- We could use compare mode instead of fail-over mode for AN script execution.
+- Vishal to find current use cases for historical data.
+  ## HCU
+  - Lead up to HCU should be longer (~1 week)
+  - Gradually move node operators to always upgrade immediately.
+  - Using a standard tag "mainnet24" for all HCU builds.
+  - Mid-Jan 2024 - tag master as the next HCU and do a full network upgrade (not spork but a rolling upgrade)
+    
