@@ -44,4 +44,6 @@ In context of Dynamic Protocol State:
   * "ghost nodes"?
 * Do we have a use case for zero-weight nodes:
   * essentially means that node can listen and request information according to its role
-  * cannot actively participate in _extending_ the chain / continuing the protocol 
+  * cannot actively participate in _extending_ the chain / continuing the protocol
+ 
+  ### Governance update @vishalchangrani
