@@ -46,4 +46,6 @@ In context of Dynamic Protocol State:
   * essentially means that node can listen and request information according to its role
   * cannot actively participate in _extending_ the chain / continuing the protocol
  
-  ### Governance update @vishalchangrani
+### Governance update @vishalchangrani
+
+### Path forward for script execution on public ANs given HCUs
