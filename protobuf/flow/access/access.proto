@@ -241,7 +241,9 @@ message GetTransactionRequest {
   entities.EventEncodingVersion event_encoding_version = 4;
 }
 
-message GetSystemTransactionRequest {}
+message GetSystemTransactionRequest {
+  bytes block_id = 1;
+}
 
 message GetSystemTransactionResultRequest {
   bytes block_id = 1;
