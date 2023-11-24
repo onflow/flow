@@ -56,6 +56,11 @@ type AccessAPIClient interface {
 	GetTransactionResultsByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*TransactionResultsResponse, error)
 	// GetTransactionsByBlockID gets all the transactions for a specified block
 	GetTransactionsByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*TransactionsResponse, error)
+	// GetSystemTransaction gets a system transaction
+	GetSystemTransaction(ctx context.Context, in *GetSystemTransactionRequest, opts ...grpc.CallOption) (*TransactionResponse, error)
+	// GetSystemTransactionResult gets a system transaction result for a
+	// specified block
+	GetSystemTransactionResult(ctx context.Context, in *GetSystemTransactionResultRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
 	//
 	// Warning: this function is deprecated. It behaves identically to
@@ -247,6 +252,24 @@ func (c *accessAPIClient) GetTransactionsByBlockID(ctx context.Context, in *GetT
 	return out, nil
 }
 
+func (c *accessAPIClient) GetSystemTransaction(ctx context.Context, in *GetSystemTransactionRequest, opts ...grpc.CallOption) (*TransactionResponse, error) {
+	out := new(TransactionResponse)
+	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetSystemTransaction", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessAPIClient) GetSystemTransactionResult(ctx context.Context, in *GetSystemTransactionResultRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error) {
+	out := new(TransactionResultResponse)
+	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetSystemTransactionResult", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *accessAPIClient) GetAccount(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*GetAccountResponse, error) {
 	out := new(GetAccountResponse)
 	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetAccount", in, out, opts...)
@@ -411,6 +434,11 @@ type AccessAPIServer interface {
 	GetTransactionResultsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*TransactionResultsResponse, error)
 	// GetTransactionsByBlockID gets all the transactions for a specified block
 	GetTransactionsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*TransactionsResponse, error)
+	// GetSystemTransaction gets a system transaction
+	GetSystemTransaction(context.Context, *GetSystemTransactionRequest) (*TransactionResponse, error)
+	// GetSystemTransactionResult gets a system transaction result for a
+	// specified block
+	GetSystemTransactionResult(context.Context, *GetSystemTransactionResultRequest) (*TransactionResultResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
 	//
 	// Warning: this function is deprecated. It behaves identically to
@@ -507,6 +535,12 @@ func (UnimplementedAccessAPIServer) GetTransactionResultsByBlockID(context.Conte
 }
 func (UnimplementedAccessAPIServer) GetTransactionsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*TransactionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionsByBlockID not implemented")
+}
+func (UnimplementedAccessAPIServer) GetSystemTransaction(context.Context, *GetSystemTransactionRequest) (*TransactionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSystemTransaction not implemented")
+}
+func (UnimplementedAccessAPIServer) GetSystemTransactionResult(context.Context, *GetSystemTransactionResultRequest) (*TransactionResultResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSystemTransactionResult not implemented")
 }
 func (UnimplementedAccessAPIServer) GetAccount(context.Context, *GetAccountRequest) (*GetAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccount not implemented")
@@ -832,6 +866,42 @@ func _AccessAPI_GetTransactionsByBlockID_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AccessAPI_GetSystemTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSystemTransactionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetSystemTransaction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.access.AccessAPI/GetSystemTransaction",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetSystemTransaction(ctx, req.(*GetSystemTransactionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccessAPI_GetSystemTransactionResult_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSystemTransactionResultRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetSystemTransactionResult(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.access.AccessAPI/GetSystemTransactionResult",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetSystemTransactionResult(ctx, req.(*GetSystemTransactionResultRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _AccessAPI_GetAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAccountRequest)
 	if err := dec(in); err != nil {
@@ -1150,6 +1220,14 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetTransactionsByBlockID",
 			Handler:    _AccessAPI_GetTransactionsByBlockID_Handler,
+		},
+		{
+			MethodName: "GetSystemTransaction",
+			Handler:    _AccessAPI_GetSystemTransaction_Handler,
+		},
+		{
+			MethodName: "GetSystemTransactionResult",
+			Handler:    _AccessAPI_GetSystemTransactionResult_Handler,
 		},
 		{
 			MethodName: "GetAccount",
