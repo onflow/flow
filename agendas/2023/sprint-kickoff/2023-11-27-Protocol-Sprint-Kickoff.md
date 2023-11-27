@@ -241,3 +241,4 @@ Misc:
 
 - Mainnet/Testnet Spork dates 
   - Next spork - TBD (~Q1 2024)
+- Second [Governance Working Group](https://github.com/onflow/gwg) meeting 9/28 (Tuesday)
