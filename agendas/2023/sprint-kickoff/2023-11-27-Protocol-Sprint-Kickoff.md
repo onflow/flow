@@ -161,29 +161,26 @@ Misc:
 ### **Permissionless Network - Yahya H**
 
 **Done last sprint**
-- [Balanced the inbound and outbound resource limits with backpressure](https://github.com/dapperlabs/flow-go/issues/6896) [PR4929](https://github.com/onflow/flow-go/pull/4929)
-- [Discovered the root cause of AN-LN peer blocking issue on mainnet23](https://github.com/dapperlabs/flow-go/issues/6895)
-  - [Short-term fix deployed](https://github.com/onflow/flow-go/pull/4915)
-  - [Long-term fix is halfway in progress- Part 1 under review](https://github.com/onflow/flow-go/pull/4951)
-
-
-**Ongoing (last and next sprint)**
-- [Part-2 and -3 of the long term fix for AN-LN peer blocking issue on mainnet23](https://github.com/dapperlabs/flow-go/issues/6895)
 - [Optimizing memory-intensive RPC inspection operations](https://github.com/dapperlabs/flow-go/issues/6870)
-  - [Optimizing Subscription Validator Memory Usage](https://github.com/onflow/flow-go/pull/4988)
-  - Optimizing RPC ID Computation (Not Started)
-  - Cache-based Application-Specific Score (Not Started)
-- [Gossip scoring to support additional cluster prefixed control messages](https://github.com/dapperlabs/flow-internal/issues/1889) [PR4857](https://github.com/onflow/flow-go/pull/4857)
-- [Implement Specific Decay per Peer ID in GossipSubSpamRecord for Improved Spam Mitigation](https://github.com/dapperlabs/flow-go/issues/6662)
-- [Apply Penalty to Misbehaving Peers Based on Count and Err in InvCtrlMsgNotif](https://github.com/dapperlabs/flow-go/issues/6664) [PR4978](https://github.com/onflow/flow-go/pull/4978)
-- [[CI][Testing] Increase GitHub CI runners for resource intensive tests](https://github.com/dapperlabs/flow-go/issues/6894) [PR4906](https://github.com/onflow/flow-go/pull/4906)
+  - Part-1: [Optimizing Subscription Validator Memory Usage](https://github.com/onflow/flow-go/pull/4988)
+  - Part-2: [Worker Pool RPC Id Computation](https://github.com/onflow/flow-go/pull/5025)
+- Concluded PR feedbacks
+  - **[GossipSub Spam Mitigation- Dynamic Decay Speed](https://github.com/onflow/flow-go/pull/4891)**
+  - **[Add leniency to control message misbehaviors on cluster prefixed topics](https://github.com/onflow/flow-go/pull/4857)**
+  - **[Apply GossipSub Spam Penalty to Misbehaving Peers Based on `Count` and `Err` in `InvCtrlMsgNotif`](https://github.com/onflow/flow-go/pull/4978)**
+  - [Gossipsub Replay Attack Mitigation](https://github.com/onflow/flow-go/pull/5058)
 
-**Next Sprint**
-- [GossipSub Message Replay Attack Mitigation](https://github.com/dapperlabs/flow-go/issues/6809)
-- [Concluding GossipSub Message Forensics FLIP and planning the development](https://github.com/onflow/flips/pull/195)
-- [Implement a Configurable Silence Period to Prevent False-Positive Node Penalties at Startup](https://github.com/onflow/flow-go/issues/4979)
-- [Increase test coverage for BFTune ingress unit tests](https://github.com/dapperlabs/flow-go/issues/6883)
-- [[BFT Testing] Refactor Orchestrator lock contension to use worker pools](https://github.com/dapperlabs/flow-go/issues/6884)
+**Still in Progress**
+  - [mainnet24` peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913)
+  - Part-3: [Caching GossipSub Application Specific Score](https://github.com/onflow/flow-go/pull/5045) of [Optimizing memory-intensive RPC inspection operations](https://github.com/dapperlabs/flow-go/issues/6870)
+  - [Part-2 and -3 of the long term fix for AN-LN peer blocking issue on mainnet23](https://github.com/dapperlabs/flow-go/issues/6895)
+  - [GossipSub Message Replay Attack](https://github.com/dapperlabs/flow-go/issues/6809) [PR5058](https://github.com/onflow/flow-go/pull/5058)
+
+**Starting Next Sprint**:
+  - [Concluding GossipSub Message Forensics FLIP and planning the development](https://github.com/onflow/flips/pull/195)
+  - [[BFT Testing] Refactor Orchestrator lock contension to use worker pools](https://github.com/dapperlabs/flow-go/issues/6884)
+  - [Determining an appropriate retention rate for historical scoring data](https://github.com/dapperlabs/flow-go/issues/6466)
+  - [Decision Making for Persisting or Non-Persisting Spamming Records of Peers in GossipSub](https://github.com/dapperlabs/flow-go/issues/6663)
 
 
 **Active Epics**
