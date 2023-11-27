@@ -1,5 +1,7 @@
 # Team Wins 🎉
 
+- Status page updates (incidents and maintenance) now show up on Discord and Slack.
+
 ### Mainnet Uptime SLO - Last 14 days (11/10 to 11/24)
 
 |                         | Target | Current Score | Error budget used |
