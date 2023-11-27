@@ -1,17 +1,18 @@
 # Team Wins 🎉
 
-### Mainnet Uptime SLO - Last 14 days (11/30 to 11/10)
+### Mainnet Uptime SLO - Last 14 days (11/10 to 11/24)
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%  |    99.26%     |       744%        |
-| Block Finalization      | 99.9%  |    99.26%     |       744%        |
-| Transaction Execution   | 99.9%  |    99.26%     |       744%        |
-| Block Sealing           | 99.9%  |    99.26%     |       744%        |
+| Collection Finalization | 99.9%  |    100%       |       0%          |
+| Block Finalization      | 99.9%  |    100%       |       0%          |
+| Transaction Execution   | 99.9%  |    100%       |       0%          |
+| Block Sealing           | 99.9%  |    100%       |       0%          |
 | Access API Liveness     | 99.9%  |    100%       |       0%          |
 
 #### Incidents
-- Mainnet network upgrade (spork). Duration: 2.5 hrs
+- Degraded Performance - 11/23 9:30 AM Pacific to 3:30 PM Pacific
+  - Collection finalization rate dropped and was choppy.
 
 
 ### **Performance Pod Sprint Objective - Jan B**
