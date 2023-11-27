@@ -121,38 +121,25 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
-Script Execution:
+- [Access] Make script exec configurable - [PR 5037](https://github.com/onflow/flow-go/pull/5037)
+- [Access] Handle script canceled and timeout errors - [PR 5036](https://github.com/onflow/flow-go/pull/5036)
+- [Access] Update websockets event streaming to return JSON-CDC encoded events - [PR 5048](https://github.com/onflow/flow-go/pull/5048)
 
-- [Ledger] Add special handling for global register keys - [PR 4942](https://github.com/onflow/flow-go/pull/4942)
-- [Execution] Return OutOfRange instead of Internal when account block is not cached - [PR 4917](https://github.com/onflow/flow-go/pull/4917)
-- [Access] Allow get blocks script calls - [PR 4894](https://github.com/onflow/flow-go/pull/4894)
-- [Access] Script execution coded errors - [PR 4895](https://github.com/onflow/flow-go/pull/4895)
-- [Access] Get account bugfix with tests - [PR 4862](https://github.com/onflow/flow-go/pull/4862)
-- [Access] Validate addresses match network in rest api - [PR 4930](https://github.com/onflow/flow-go/pull/4930)
-- [Access] Add metrics for script exec failure from missing data - [PR 4907](https://github.com/onflow/flow-go/pull/4907)
-- [Access] Improve logging and validation in local script exec - [PR 4920](https://github.com/onflow/flow-go/pull/4920)
-- [Access] Improve script exec compare logging - [PR 4936](https://github.com/onflow/flow-go/pull/4936)
-- [Access] Cleanup script execution comparisons - [PR 4956](https://github.com/onflow/flow-go/pull/4956)
+Community Contributions:
 
-Access API:
-
-- [Access] Allow all origins by default on websockets connections - [PR 4954](https://github.com/onflow/flow-go/pull/4954)
-- [Flow-Go-SDK] Use CCF encoding when requesting events from AccessAPI - [PR 501](https://github.com/onflow/flow-go-sdk/pull/501)
-
-Misc:
-
-- [Access] Add wait in integration tests for index to be synced - [PR 4902](https://github.com/onflow/flow-go/pull/4902)
-- [Collection] Make QC Voter more resiliant to access node instability - [PR 4924](https://github.com/onflow/flow-go/pull/4924)
+- [Protobuf] Get protocol snapshot by block id and block height - [PR 1401](https://github.com/onflow/flow/pull/1401)
+- [Protobuf] Get Block endpoint is missing the system collection - [PR 1406](https://github.com/onflow/flow/pull/1406)
+- [Protobuf] Add endpoints to Execution nodes to support getting Transaction Result error messages - [PR 1398](https://github.com/onflow/flow/pull/1398), [1407](https://github.com/onflow/flow/pull/1407)
+- [Access] Add endpoints to Execution nodes to support getting Transaction Result error messages - [PR 5042](https://github.com/onflow/flow-go/pull/5042)
 
 **This sprint**
 
 - Script Execution on ANs
+  - Use version beacon to ensure correct version for script exec - [Issue 5040](https://github.com/onflow/flow-go/issues/5040)
   - Add GetRegisters API endpoint to ExecutionData API - [Issue 4756](https://github.com/onflow/flow-go/issues/4756)
-  - Analyze performance issues observed on devnet - [Issue 4953](https://github.com/onflow/flow-go/issues/4953)
-  - Deploy to mainnet (in comparison mode) and continue analyzing results and performance issues as they come up.
+  - Work with QuickNode to setup script exec in compare mode on public ANs
 - Misc
   - Work with 4d on getting event streaming and CCF into libraries.
-  - Validate new features (historic result cache, compression, etc)
 
 **Active Epics**
 
