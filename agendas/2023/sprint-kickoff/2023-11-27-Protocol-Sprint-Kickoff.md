@@ -218,29 +218,25 @@ Misc:
 ### **Infra - JP**
 
 **Done last sprint**
-- Update Ansible automation for Dapper nodes
-- Prepare monitoring, alerting, and pager dudty group for Dapper Node monitoring
-- Prepare Dapper infra/keys for Mainnet spork
-- Create Flow Foundation infrastructure & configuration for Mainnet spork
-- Create Dapper infrastructure & configuration for Mainnet spork
-- Scale down networks following s
-- Assist with sporks & HCUs
-- Update logrotate for Dapper nodes
-- Assist with BN2 testing
+- Update log rotate configuration for Dapper Mainnet nodes
+- Scale down Mainnet23 AN & ENs
+- Unstake & deprecate Dapper Nodes on Devnet49
+- Clean up unnecessary DPS nodes across all networks
+- Update BN2 configuration to stabilize node shutdown
+- Assist with Canary sporks
 
 **This Sprint**
 
 ************Node Hosting************
-- Continue to monitor system configuratiton for Dapper Nodes
-- Prepare execution & protocol state archives for Mainnet23
-- Scale down Mainnet23 AN & EN
-- Unstake & deprecate Dapper Nodes on Devnet49
-- Clean up unneeded DPS nodes
+- Assist with Canary Sporks
+- As needed, assist with HCU
+- Create documentation for managing Dapper nodes
+- Create automation for managing Dapper nodes
 
-************Support************
-- Evaluate migration path for GCP projects and resources
-- Continue to support Benchnet2 with updates to Helm chart
-- Work with DevEx team to unblock migration of workloads to 
+************FF Migration************
+- Create strategy for observability migration
+- Discover and configure tool for multi-destination logging
+- Create strategy for GCP project migration to new GCP account
 
 ### Key Release Dates & Breaking Changes
 
