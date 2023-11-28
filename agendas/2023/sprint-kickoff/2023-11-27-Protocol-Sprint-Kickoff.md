@@ -1,6 +1,8 @@
 # Team Wins 🎉
 
 - Status page updates (incidents and maintenance) now show up on Discord and Slack.
+- Tested Atree register inlining migration of full checkpoint - confirms ~40% reduction of overall state size and ~60% reduction of nodes.
+- Completed first benchmark of EVM.
 
 ### Mainnet Uptime SLO - Last 14 days (11/10 to 11/24)
 
@@ -22,35 +24,35 @@
 **Done last sprint**
 
 Atree Register Inlining
-- Finished investigation of smoke tests failure (in the end the test failure was a false positive)
-- Completed local setup for migration testing, ready to test the migration with Atree integrated with Cadence
-- [Add atRoot parameter to Value.DeepRemove](https://github.com/onflow/cadence/pull/2920)
+
 
 Storehouse
-- Continued breaking down Storehouse M1 implementation into PRs, ~30% of the M1 is now reviewed and merged
-- [Storehouse - add PayloadToRegister](https://github.com/onflow/flow-go/pull/4955)
-- [Storehouse Bootstrap - make worker count as option for indexing checkpoint](https://github.com/onflow/flow-go/pull/4884)
-- [Storehouse - Add storehouse interfaces](https://github.com/onflow/flow-go/pull/4835)
+- Continued breaking down Storehouse [M1 implementation](https://github.com/onflow/flow-go/issues/4682) into PRs, ~30% of the M1 is now reviewed and merged
+  - [Execution State - Update IsBlockExecuted](https://github.com/onflow/flow-go/issues/5044)
+  - [Add CreateStorageSnapshot to Execution state](https://github.com/onflow/flow-go/issues/5031)
+  - [Update committer](https://github.com/onflow/flow-go/issues/5029)
+  - [Unfinalized blocks loader](https://github.com/onflow/flow-go/issues/5028)
+  - [Add Extending block snapshot](https://github.com/onflow/flow-go/issues/5008)
+  - [Blockend Snapshot](https://github.com/onflow/flow-go/issues/4985)
+  - [Add Finalized Reader](https://github.com/onflow/flow-go/issues/4977)
+  - [Implement Register store](https://github.com/onflow/flow-go/issues/4940)
 
 EVM support
 - Continued reviewing EVM PRs
 
 Other Improvements & fixes
-- v0.32 ONLY: [Switch to always using the 0th partition for UUID generation](https://github.com/onflow/flow-go/pull/4893)
-- [Node operation improvement - Make path configs to be usable by container by default](https://github.com/onflow/flow-go/pull/4885)
+- [FVM - Refactor event emission code](https://github.com/onflow/flow-go/issues/4982)
+- [FVM - bugfix bench test random](https://github.com/onflow/flow-go/issues/4833)
+- [Add transaction ms per computation metrics](https://github.com/onflow/flow-go/issues/4615)
 
-Flow Network Ugrade support
-- [\[Backport\] Make path configs to be usable by container by default](https://github.com/onflow/flow-go/pull/4905)
-- [\[Util\] make chunk-data-pack-dir optional for non-execution node](https://github.com/onflow/flow-go/pull/4896)
-- [Update cadence to v0.42.2-patch.1](https://github.com/dapperlabs/flow-go/pull/6897)
 
 **This sprint**
 
-- Test [migration](https://github.com/onflow/flow-go/pull/4633) of [integrated solution for Atree register inlining](https://github.com/onflow/cadence/issues/2809)
+- Validate [migration](https://github.com/onflow/flow-go/pull/4633) of [integrated solution for Atree register inlining](https://github.com/onflow/cadence/issues/2809)
 - Continue implementation of [Storehouse first milestone](https://github.com/onflow/flow-go/issues/4682) (execution state on disk)
 - EVM support
   - Continue with PR reviews
-  - Start benchmarking setup
+  - Continue with benchmarking data collection
 
 **On Hold**
 
@@ -71,36 +73,30 @@ Objective: long-term support release of Cadence with no expected breaking change
 
 **Done last sprint**
 
-Features
-- [v0.42 - Port adding new `revertibleRandom` function](https://github.com/onflow/cadence/pull/2910)
-
 Cadence 1.0
-  features
-  - [Implement Custom Destructor Removal](https://github.com/onflow/cadence/issues/2790)
-    - [Interpreting for default events](https://github.com/onflow/cadence/issues/2817)
-    - [Type checking for default events](https://github.com/onflow/cadence/issues/2812)
-    - [Support for parsing default destroy events](https://github.com/onflow/cadence/issues/2799)
-    - [Remove support for custom destructors](https://github.com/onflow/cadence/issues/2789)
-  Improvements
-  - [Refactor resource-reference tracking](https://github.com/onflow/cadence/pull/2916)
-  
-  FLIPs
-  - [FLIP 95: proposal for entitlements migration](https://github.com/onflow/flips/issues/95)
+- Bugfix: [Include interface conformances when computing the supported entitlements of an interface](https://github.com/onflow/cadence/pull/2946)
 
 Security Fixes (port to public repo)
-- [Fix nested resource moves](https://github.com/onflow/cadence/issues/2931)
-- [v0.42 - Fix nested resource moves](https://github.com/onflow/cadence/issues/2930)
-- [v0.42 - Fix AuthAccount creation](https://github.com/onflow/cadence/issues/2932)
+- Prepared multiple security fixes to bedeployed (internal repo PRs: 166, 165, 164, 161, 159, 158, 155, 153, 152)
+
+Improvements / Bugfixes
+- [AST improvements](https://github.com/onflow/cadence/pull/2949)
+- tools - Language Server [Ensure the LS binaries (native and wasm) can be built](https://github.com/onflow/cadence-tools/issues/244)
+
 
 EVM Support
-- [FVM EVM: Refactor stdlib to use new approach](https://github.com/onflow/flow-go/issues/4876)
+- [FVM - beyond EVM part 6.5: Improve and test deposit and withdrawal](https://github.com/onflow/flow-go/issues/4986)
+- [FVM - beyond EVM part 6.4 - Fix EVM contract tests](https://github.com/onflow/flow-go/issues/4941)
+- [FVM - beyond EVM part 6.3 - Implement EVM.BridgedAccount.deploy](https://github.com/onflow/flow-go/issues/4897)
+- [FVM - beyond EVM part 6.2 - Implement EVM.BridgedAccount.withdraw](https://github.com/onflow/flow-go/issues/4890)
+- [FVM - beyond EVM part 6.1 - Implement EVMAddress.deposit](https://github.com/onflow/flow-go/issues/4889)
 
 Updates of Downstream dependencies
-- Go SDK: [Update to Cadence v0.42.3](https://github.com/onflow/flow-go-sdk/issues/499)
-
+- CLI: [Update to Cadence v0.42.5](https://github.com/onflow/flow-cli/issues/1264)
+- [Update core contracts to latest stable cadence](https://github.com/onflow/flow-core-contracts/issues/382)
 
 **This sprint**
-
+- Deploy security fixes to TN and MN, port to public repo, publish disclosure
 - continue support EVM on FLow initiative.
 - Continuing with Stable Cadence scope / discussions
     - Ongoing FLIPs:
