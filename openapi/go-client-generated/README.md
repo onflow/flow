@@ -33,6 +33,7 @@ Class | Method | HTTP request | Description
 *NetworkApi* | [**NetworkParametersGet**](docs/NetworkApi.md#networkparametersget) | **Get** /network/parameters | Get Network Parameters
 *NodeVersionInfoApi* | [**NodeVersionInfoGet**](docs/NodeVersionInfoApi.md#nodeversioninfoget) | **Get** /node_version_info | Get Node Version Information
 *ScriptsApi* | [**ScriptsPost**](docs/ScriptsApi.md#scriptspost) | **Post** /scripts | Execute a Cadence Script
+*SubscribeEventsApi* | [**SubscribeEventsGet**](docs/SubscribeEventsApi.md#subscribeeventsget) | **Get** /subscribe_events | Subscribe events
 *TransactionsApi* | [**TransactionResultsTransactionIdGet**](docs/TransactionsApi.md#transactionresultstransactionidget) | **Get** /transaction_results/{transaction_id} | Get a Transaction Result by ID.
 *TransactionsApi* | [**TransactionsIdGet**](docs/TransactionsApi.md#transactionsidget) | **Get** /transactions/{id} | Get a Transaction by ID.
 *TransactionsApi* | [**TransactionsPost**](docs/TransactionsApi.md#transactionspost) | **Post** /transactions | Submit a Transaction
@@ -65,6 +66,7 @@ Class | Method | HTTP request | Description
  - [ProposalKey](docs/ProposalKey.md)
  - [ScriptsBody](docs/ScriptsBody.md)
  - [SigningAlgorithm](docs/SigningAlgorithm.md)
+ - [SubscribeEvents](docs/SubscribeEvents.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionExecution](docs/TransactionExecution.md)
  - [TransactionExpandable](docs/TransactionExpandable.md)
