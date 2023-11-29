@@ -609,6 +609,7 @@ paths:
           description: Interval in block heights at which the server should return a heartbeat message to the client.
           in: query
           required: false
+          allowEmptyValue: false
           schema:
             type: string
             format: uint64

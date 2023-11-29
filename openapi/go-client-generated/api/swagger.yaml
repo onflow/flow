@@ -1036,6 +1036,7 @@ paths:
         description: Interval in block heights at which the server should return a
           heartbeat message to the client.
         required: false
+        allowEmptyValue: false
         style: form
         explode: true
         schema:
