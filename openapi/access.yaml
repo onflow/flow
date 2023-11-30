@@ -570,6 +570,82 @@ paths:
           $ref: '#/components/responses/404NotFound'
         '500':
           $ref: '#/components/responses/500InternalServerError'
+  /subscribe_events:
+    get:
+      summary: Subscribe events
+      description: Streaming on-chain events for all blocks starting at the requested start block, up until the latest available block. Once the latest is reached, the stream will remain open and responses are sent for each new block as it becomes available.
+      tags:
+        - Subscribe events
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscribeEvents'
+          description: OK
+        '1001':
+          $ref: '#/components/responses/1001CloseGoingAway'
+        '1003':
+          $ref: '#/components/responses/1003CloseUnsupportedData'
+        '1011':
+          $ref: '#/components/responses/1011CloseInternalServerError'
+        '1013':
+          $ref: '#/components/responses/1013CloseTryAgaitLater'
+      parameters:
+        - name: start_height
+          in: query
+          description: The block height of the events being streamed. Either provide this parameter or `start_block_id` parameter. This parameter is incompatible with `start_block_id` parameter.
+          required: false
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
+          allowEmptyValue: false
+        - name: start_block_id
+          description: The block id of the events being streamed. Either provide this parameter or `start_height` parameter. This parameter is incompatible with `start_height` parameter.
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/Identifier'
+        - name: heartbeat_interval
+          description: Interval in block heights at which the server should return a heartbeat message to the client.
+          in: query
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: string
+            format: uint64
+        - name: event_types
+          in: query
+          description: A comma-separated list of events type to include.
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/EventType'
+            minItems: 1
+            uniqueItems: true
+        - name: addresses
+          in: query
+          description: A comma-separated list of addresses who's events should be included.
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: array
+            items:
+              type: string
+            minItems: 1
+            uniqueItems: true
+        - name: contracts
+          in: query
+          description: A comma-separated list of contracts who's events should be included.
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: array
+            items:
+              type: string
+            minItems: 1
+            uniqueItems: true
 components:
   parameters:
     expandParam:
@@ -1139,6 +1215,17 @@ components:
         node_root_block_height:
           type: string
           format: uint64
+    SubscribeEvents:
+      type: object
+      properties:
+        BlockId:
+          $ref: '#/components/schemas/Identifier'
+        Height:
+          type: string
+        Events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
   responses:
     400BadRequest:
       description: Bad Request
@@ -1154,6 +1241,30 @@ components:
             $ref: '#/components/schemas/Error'
     500InternalServerError:
       description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    1001CloseGoingAway:
+      description: Going Away
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    1003CloseUnsupportedData:
+      description: Unsupported Data
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    1011CloseInternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    1013CloseTryAgaitLater:
+      description: Try Agait Later
       content:
         application/json:
           schema:
