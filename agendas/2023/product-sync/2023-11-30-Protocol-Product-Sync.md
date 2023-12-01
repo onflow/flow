@@ -8,8 +8,10 @@
 
   Dynamic Protocol State includes **breaking changes** (data base layout), i.e. must be deployed during Network Upgrade (formerly Spork)
 
-  - important Go/No-Go item for next Network Upgrade
-  - marketing initiative desired? Extend? 
+  - important Go/No-Go item for next Network Upgrade - @vishal - Add this to the Go/No-Go review.
+  - marketing initiative desired? Extend? - @alex to mention this is the document for network decentralization (OKR)
+     - should be marketed as a major technical improvement showcasing the engineering accomplishment.
+     - Vishal to sync with Luke.
 
   **Next evolution step**
    - leaving Epoch Fallback Mode [EFM] _without_ spork
@@ -17,4 +19,5 @@
      -  implementation scope largely still unknown
    - target deployment _after_ Q1 2024 Upgrade
  
-* Update: Automatic AN slot addition going live next week.
+* Update: Automatic AN slot addition is going live next week.
+     
