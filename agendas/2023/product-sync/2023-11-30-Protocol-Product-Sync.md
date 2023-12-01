@@ -16,3 +16,5 @@
      -  exploratory work required for design
      -  implementation scope largely still unknown
    - target deployment _after_ Q1 2024 Upgrade
+ 
+  * Update: Automatic AN slot addition going live next week.
