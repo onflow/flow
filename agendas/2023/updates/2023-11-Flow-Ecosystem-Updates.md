@@ -5,12 +5,18 @@
 ## 🗒 Flow Updates: 
 
 ### Educational, learning resources, tutorials and documentation
+1. Documentation overhaul underway with massive restructuring and new docs added including [NFT MetadataViews](https://developers.flow.com/build/advanced-concepts/metadata-views) and a primer for [onchain randomness](https://developers.flow.com/build/advanced-concepts/randomness)
 
 ### Tooling, infrastructure and other software for builders
+1. [Contract Browser](https://contractbrowser.com/blog/introducing-v2) V2 launched which makes discovering, interacting and viewing smart contracts seamless as well as massively supporting composability. 
 
 ### Protocol, core contracts and node updates
 
 ### Cadence and smart contract updates
+1. Hosted community Smart Contract engineering open houses that collaborated with the ecosystem to finalize designs and plans for the Hybrid custody smart contract standard and the V2 token standards.
+2. [FLIP 179](https://github.com/onflow/flips/pull/179) covering scheduled contract updates was approved and will be used for Cadence 1.0 migrations
+Randomness made its way to Mainnet with indefinite random source history running on [RandomBeaconHistory].
+3. (https://contractbrowser.com/A.e467b9dd11fa00df.RandomBeaconHistory) and an example pseudo-random number generator deployed [here](https://contractbrowser.com/A.45caec600164c9e6.Xorshift128plus).
 
 ### Innovation, composability and advanced concepts
 
@@ -33,6 +39,7 @@ Overhauled Cookbook - The Cadence Cookbook got a major overhaul led by [Lea](lea
 
 ------------------------------------------
 ## Community updates 
+1. Affiliated Accounts project by [Giovanni](https://github.com/sisyphusSmiling), an early beta app which links one's ETH account to their Flow account using [ETH signatures + validation](https://contractbrowser.com/A.f3c8bba150be9074.ETHAffiliatedAccounts).
 
 ------------------------------------------
 ## Other misc items and updates
