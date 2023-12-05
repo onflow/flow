@@ -35,7 +35,7 @@ The Nov 8th mainnet network upgrade includes several important updates.
 
 Articles and Content - [Fullstackpho](https://github.com/ph0ph0) wrote an articles on [Flow Node types](https://fullstackpho.com/types-of-node-on-flow-blockchain) as well as created a [guide and starter project](https://fullstackpho.com/how-to-use-shell-scripts-to-speed-up-cadence-development-on-flow-blockchain) for using shell scripts to super charge Cadence development and testing.
 
-Overhauled Cookbook - The Cadence Cookbook got a major overhaul led by [Lea](lealobanov (Lea Lobanov)) with a brand new modern UI, better process for community members creating their own recipies and integrated tests. 
+Overhauled Cookbook - The Cadence Cookbook got a major overhaul led by [Lea](lealobanov (Lea Lobanov)) with a brand new modern UI and recipe architecture, improved contribution flow for adding recipes, integrated front-end and Cadence testing, and SEO updates. Release of Cookbook updates is targeted for the first week of December.
 
 ------------------------------------------
 ## Community updates 
