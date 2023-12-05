@@ -39,7 +39,7 @@ Overhauled Cookbook - The Cadence Cookbook got a major overhaul led by [Lea](lea
 
 ------------------------------------------
 ## Community updates 
-1. Affiliated Accounts project by [Giovanni](https://github.com/sisyphusSmiling), an early beta app which links one's ETH account to their Flow account using [ETH signatures + validation](https://contractbrowser.com/A.f3c8bba150be9074.ETHAffiliatedAccounts).
+1. [Affiliated Accounts](https://flow-x-eth.on.fleek.co/) project by [Giovanni](https://github.com/sisyphusSmiling), an early beta app which links one's ETH account to their Flow account using [ETH signatures + validation](https://contractbrowser.com/A.f3c8bba150be9074.ETHAffiliatedAccounts).
 
 ------------------------------------------
 ## Other misc items and updates
