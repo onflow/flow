@@ -8,7 +8,8 @@
 1. Documentation overhaul underway with massive restructuring and new docs added including [NFT MetadataViews](https://developers.flow.com/build/advanced-concepts/metadata-views) and a primer for [onchain randomness](https://developers.flow.com/build/advanced-concepts/randomness)
 
 ### Tooling, infrastructure and other software for builders
-1. [Contract Browser](https://contractbrowser.com/blog/introducing-v2) V2 launched which makes discovering, interacting and viewing smart contracts seamless as well as massively supporting composability. 
+1. [Contract Browser](https://contractbrowser.com/blog/introducing-v2) V2 launched which makes discovering, interacting and viewing smart contracts seamless as well as massively supporting composability.
+2. [FlowComponents](http://github.com/Forge4Flow/FlowComponents) Beta an open-source SwiftUI library tailored to simplify the development of decentralized applications (DApps) on the Flow Blockchain. This comprehensive library comprises reusable SwiftUI views, modifiers, and extensions, offering an intuitive and feature-rich toolkit for crafting user interfaces specifically designed for Flow-based projects.
 
 ### Protocol, core contracts and node updates
 
