@@ -40,6 +40,11 @@ Overhauled Cookbook - The Cadence Cookbook got a major overhaul led by [Lea](lea
 ------------------------------------------
 ## Community updates 
 1. [Affiliated Accounts](https://flow-x-eth.on.fleek.co/) project by [Giovanni](https://github.com/sisyphusSmiling), an early beta app which links one's ETH account to their Flow account using [ETH signatures + validation](https://contractbrowser.com/A.f3c8bba150be9074.ETHAffiliatedAccounts).
+2. [24karat](https://www.24karat.io/) made various moves in November including:
+   - The 24kZAP app now connects with Metamask and Blocto wallets so users can connect the NFTs they already have to token gating and community experiences. 
+   - Brands can now showcase posts from directly from Instagram.
+   - Community voting feature is now live.
+   - TV Asahi has just joined their ecosystem to start a basketball community.
 
 ------------------------------------------
 ## Other misc items and updates
