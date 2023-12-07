@@ -72,6 +72,12 @@ service AccessAPI {
   // GetTransactionsByBlockID gets all the transactions for a specified block
   rpc GetTransactionsByBlockID(GetTransactionsByBlockIDRequest)
       returns (TransactionsResponse);
+  // GetSystemTransaction gets a system transaction
+  rpc GetSystemTransaction(GetSystemTransactionRequest) returns (TransactionResponse);
+  // GetSystemTransactionResult gets a system transaction result for a
+  // specified block
+  rpc GetSystemTransactionResult(GetSystemTransactionResultRequest) returns (TransactionResultResponse);
+
 
   // Accounts
 
@@ -128,6 +134,18 @@ service AccessAPI {
   // snapshot. Used by Flow nodes joining the network to bootstrap a
   // space-efficient local state.
   rpc GetLatestProtocolStateSnapshot(GetLatestProtocolStateSnapshotRequest)
+      returns (ProtocolStateSnapshotResponse);
+
+  // GetProtocolStateSnapshotByBlockID retrieves the latest sealed protocol state
+  // snapshot by block ID. Used by Flow nodes joining the network to bootstrap a
+  // space-efficient local state.
+  rpc GetProtocolStateSnapshotByBlockID(GetProtocolStateSnapshotByBlockIDRequest)
+      returns (ProtocolStateSnapshotResponse);
+
+  // GetProtocolStateSnapshotByHeight retrieves the latest sealed protocol state
+  // snapshot by block height. Used by Flow nodes joining the network to bootstrap a
+  // space-efficient local state.
+  rpc GetProtocolStateSnapshotByHeight(GetProtocolStateSnapshotByHeightRequest)
       returns (ProtocolStateSnapshotResponse);
 
   // GetExecutionResultForBlockID returns Execution Result for a given block.
@@ -221,6 +239,15 @@ message GetTransactionRequest {
   bytes block_id = 2;
   bytes collection_id = 3;
   entities.EventEncodingVersion event_encoding_version = 4;
+}
+
+message GetSystemTransactionRequest {
+  bytes block_id = 1;
+}
+
+message GetSystemTransactionResultRequest {
+  bytes block_id = 1;
+  entities.EventEncodingVersion event_encoding_version = 2;
 }
 
 message GetTransactionByIndexRequest {
@@ -347,6 +374,14 @@ message GetNetworkParametersResponse {
 // Protocol State
 
 message GetLatestProtocolStateSnapshotRequest {}
+
+message GetProtocolStateSnapshotByBlockIDRequest {
+  bytes block_id = 1;
+}
+
+message GetProtocolStateSnapshotByHeightRequest {
+  uint64 block_height = 1;
+}
 
 message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;

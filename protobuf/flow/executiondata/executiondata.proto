@@ -7,6 +7,7 @@ option java_package = "org.onflow.protobuf.executiondata";
 
 import "flow/entities/block_execution_data.proto";
 import "flow/entities/event.proto";
+import "flow/entities/register.proto";
 import "google/protobuf/timestamp.proto";
 
 // Execution Data API provides access to execution data from the Flow network
@@ -221,7 +222,7 @@ message GetRegisterValuesRequest {
   uint64 block_height = 1;
 
   // Register IDs of the Ledger.RegisterID format with an owner and key.
-  repeated bytes register_ids = 2;
+  repeated entities.RegisterID register_ids = 2;
 }
 
 // response for GetRegisterValues

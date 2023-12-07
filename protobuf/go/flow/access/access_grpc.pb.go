@@ -56,6 +56,11 @@ type AccessAPIClient interface {
 	GetTransactionResultsByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*TransactionResultsResponse, error)
 	// GetTransactionsByBlockID gets all the transactions for a specified block
 	GetTransactionsByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*TransactionsResponse, error)
+	// GetSystemTransaction gets a system transaction
+	GetSystemTransaction(ctx context.Context, in *GetSystemTransactionRequest, opts ...grpc.CallOption) (*TransactionResponse, error)
+	// GetSystemTransactionResult gets a system transaction result for a
+	// specified block
+	GetSystemTransactionResult(ctx context.Context, in *GetSystemTransactionResultRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
 	//
 	// Warning: this function is deprecated. It behaves identically to
@@ -88,6 +93,14 @@ type AccessAPIClient interface {
 	// snapshot. Used by Flow nodes joining the network to bootstrap a
 	// space-efficient local state.
 	GetLatestProtocolStateSnapshot(ctx context.Context, in *GetLatestProtocolStateSnapshotRequest, opts ...grpc.CallOption) (*ProtocolStateSnapshotResponse, error)
+	// GetProtocolStateSnapshotByBlockID retrieves the latest sealed protocol state
+	// snapshot by block ID. Used by Flow nodes joining the network to bootstrap a
+	// space-efficient local state.
+	GetProtocolStateSnapshotByBlockID(ctx context.Context, in *GetProtocolStateSnapshotByBlockIDRequest, opts ...grpc.CallOption) (*ProtocolStateSnapshotResponse, error)
+	// GetProtocolStateSnapshotByHeight retrieves the latest sealed protocol state
+	// snapshot by block height. Used by Flow nodes joining the network to bootstrap a
+	// space-efficient local state.
+	GetProtocolStateSnapshotByHeight(ctx context.Context, in *GetProtocolStateSnapshotByHeightRequest, opts ...grpc.CallOption) (*ProtocolStateSnapshotResponse, error)
 	// GetExecutionResultForBlockID returns Execution Result for a given block.
 	// At present, Access Node might not have execution results for every block
 	// and as usual, until sealed, this data can change
@@ -239,6 +252,24 @@ func (c *accessAPIClient) GetTransactionsByBlockID(ctx context.Context, in *GetT
 	return out, nil
 }
 
+func (c *accessAPIClient) GetSystemTransaction(ctx context.Context, in *GetSystemTransactionRequest, opts ...grpc.CallOption) (*TransactionResponse, error) {
+	out := new(TransactionResponse)
+	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetSystemTransaction", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessAPIClient) GetSystemTransactionResult(ctx context.Context, in *GetSystemTransactionResultRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error) {
+	out := new(TransactionResultResponse)
+	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetSystemTransactionResult", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *accessAPIClient) GetAccount(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*GetAccountResponse, error) {
 	out := new(GetAccountResponse)
 	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetAccount", in, out, opts...)
@@ -329,6 +360,24 @@ func (c *accessAPIClient) GetLatestProtocolStateSnapshot(ctx context.Context, in
 	return out, nil
 }
 
+func (c *accessAPIClient) GetProtocolStateSnapshotByBlockID(ctx context.Context, in *GetProtocolStateSnapshotByBlockIDRequest, opts ...grpc.CallOption) (*ProtocolStateSnapshotResponse, error) {
+	out := new(ProtocolStateSnapshotResponse)
+	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetProtocolStateSnapshotByBlockID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessAPIClient) GetProtocolStateSnapshotByHeight(ctx context.Context, in *GetProtocolStateSnapshotByHeightRequest, opts ...grpc.CallOption) (*ProtocolStateSnapshotResponse, error) {
+	out := new(ProtocolStateSnapshotResponse)
+	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetProtocolStateSnapshotByHeight", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *accessAPIClient) GetExecutionResultForBlockID(ctx context.Context, in *GetExecutionResultForBlockIDRequest, opts ...grpc.CallOption) (*ExecutionResultForBlockIDResponse, error) {
 	out := new(ExecutionResultForBlockIDResponse)
 	err := c.cc.Invoke(ctx, "/flow.access.AccessAPI/GetExecutionResultForBlockID", in, out, opts...)
@@ -385,6 +434,11 @@ type AccessAPIServer interface {
 	GetTransactionResultsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*TransactionResultsResponse, error)
 	// GetTransactionsByBlockID gets all the transactions for a specified block
 	GetTransactionsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*TransactionsResponse, error)
+	// GetSystemTransaction gets a system transaction
+	GetSystemTransaction(context.Context, *GetSystemTransactionRequest) (*TransactionResponse, error)
+	// GetSystemTransactionResult gets a system transaction result for a
+	// specified block
+	GetSystemTransactionResult(context.Context, *GetSystemTransactionResultRequest) (*TransactionResultResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
 	//
 	// Warning: this function is deprecated. It behaves identically to
@@ -417,6 +471,14 @@ type AccessAPIServer interface {
 	// snapshot. Used by Flow nodes joining the network to bootstrap a
 	// space-efficient local state.
 	GetLatestProtocolStateSnapshot(context.Context, *GetLatestProtocolStateSnapshotRequest) (*ProtocolStateSnapshotResponse, error)
+	// GetProtocolStateSnapshotByBlockID retrieves the latest sealed protocol state
+	// snapshot by block ID. Used by Flow nodes joining the network to bootstrap a
+	// space-efficient local state.
+	GetProtocolStateSnapshotByBlockID(context.Context, *GetProtocolStateSnapshotByBlockIDRequest) (*ProtocolStateSnapshotResponse, error)
+	// GetProtocolStateSnapshotByHeight retrieves the latest sealed protocol state
+	// snapshot by block height. Used by Flow nodes joining the network to bootstrap a
+	// space-efficient local state.
+	GetProtocolStateSnapshotByHeight(context.Context, *GetProtocolStateSnapshotByHeightRequest) (*ProtocolStateSnapshotResponse, error)
 	// GetExecutionResultForBlockID returns Execution Result for a given block.
 	// At present, Access Node might not have execution results for every block
 	// and as usual, until sealed, this data can change
@@ -474,6 +536,12 @@ func (UnimplementedAccessAPIServer) GetTransactionResultsByBlockID(context.Conte
 func (UnimplementedAccessAPIServer) GetTransactionsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*TransactionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionsByBlockID not implemented")
 }
+func (UnimplementedAccessAPIServer) GetSystemTransaction(context.Context, *GetSystemTransactionRequest) (*TransactionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSystemTransaction not implemented")
+}
+func (UnimplementedAccessAPIServer) GetSystemTransactionResult(context.Context, *GetSystemTransactionResultRequest) (*TransactionResultResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSystemTransactionResult not implemented")
+}
 func (UnimplementedAccessAPIServer) GetAccount(context.Context, *GetAccountRequest) (*GetAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccount not implemented")
 }
@@ -503,6 +571,12 @@ func (UnimplementedAccessAPIServer) GetNetworkParameters(context.Context, *GetNe
 }
 func (UnimplementedAccessAPIServer) GetLatestProtocolStateSnapshot(context.Context, *GetLatestProtocolStateSnapshotRequest) (*ProtocolStateSnapshotResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLatestProtocolStateSnapshot not implemented")
+}
+func (UnimplementedAccessAPIServer) GetProtocolStateSnapshotByBlockID(context.Context, *GetProtocolStateSnapshotByBlockIDRequest) (*ProtocolStateSnapshotResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProtocolStateSnapshotByBlockID not implemented")
+}
+func (UnimplementedAccessAPIServer) GetProtocolStateSnapshotByHeight(context.Context, *GetProtocolStateSnapshotByHeightRequest) (*ProtocolStateSnapshotResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProtocolStateSnapshotByHeight not implemented")
 }
 func (UnimplementedAccessAPIServer) GetExecutionResultForBlockID(context.Context, *GetExecutionResultForBlockIDRequest) (*ExecutionResultForBlockIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetExecutionResultForBlockID not implemented")
@@ -792,6 +866,42 @@ func _AccessAPI_GetTransactionsByBlockID_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AccessAPI_GetSystemTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSystemTransactionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetSystemTransaction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.access.AccessAPI/GetSystemTransaction",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetSystemTransaction(ctx, req.(*GetSystemTransactionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccessAPI_GetSystemTransactionResult_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSystemTransactionResultRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetSystemTransactionResult(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.access.AccessAPI/GetSystemTransactionResult",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetSystemTransactionResult(ctx, req.(*GetSystemTransactionResultRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _AccessAPI_GetAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAccountRequest)
 	if err := dec(in); err != nil {
@@ -972,6 +1082,42 @@ func _AccessAPI_GetLatestProtocolStateSnapshot_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AccessAPI_GetProtocolStateSnapshotByBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProtocolStateSnapshotByBlockIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetProtocolStateSnapshotByBlockID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.access.AccessAPI/GetProtocolStateSnapshotByBlockID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetProtocolStateSnapshotByBlockID(ctx, req.(*GetProtocolStateSnapshotByBlockIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccessAPI_GetProtocolStateSnapshotByHeight_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProtocolStateSnapshotByHeightRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetProtocolStateSnapshotByHeight(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flow.access.AccessAPI/GetProtocolStateSnapshotByHeight",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetProtocolStateSnapshotByHeight(ctx, req.(*GetProtocolStateSnapshotByHeightRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _AccessAPI_GetExecutionResultForBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetExecutionResultForBlockIDRequest)
 	if err := dec(in); err != nil {
@@ -1076,6 +1222,14 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AccessAPI_GetTransactionsByBlockID_Handler,
 		},
 		{
+			MethodName: "GetSystemTransaction",
+			Handler:    _AccessAPI_GetSystemTransaction_Handler,
+		},
+		{
+			MethodName: "GetSystemTransactionResult",
+			Handler:    _AccessAPI_GetSystemTransactionResult_Handler,
+		},
+		{
 			MethodName: "GetAccount",
 			Handler:    _AccessAPI_GetAccount_Handler,
 		},
@@ -1114,6 +1268,14 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetLatestProtocolStateSnapshot",
 			Handler:    _AccessAPI_GetLatestProtocolStateSnapshot_Handler,
+		},
+		{
+			MethodName: "GetProtocolStateSnapshotByBlockID",
+			Handler:    _AccessAPI_GetProtocolStateSnapshotByBlockID_Handler,
+		},
+		{
+			MethodName: "GetProtocolStateSnapshotByHeight",
+			Handler:    _AccessAPI_GetProtocolStateSnapshotByHeight_Handler,
 		},
 		{
 			MethodName: "GetExecutionResultForBlockID",

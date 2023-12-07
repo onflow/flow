@@ -4,6 +4,7 @@
   - launch page [_Flow VRF_](https://developers.flow.com/build/advanced-concepts/randomness) on Dev Portal
   - [_Cadence documentation_](https://cadence-lang.org/docs/1.0/language/built-in-functions)
   - [_Random Coin Toss_ as first tutorial](https://github.com/onflow/random-coin-toss)
+  - tentative forum post [_Secure random number generator for Flow’s smart contracts_](https://forum.flow.com/t/secure-random-number-generator-for-flow-s-smart-contracts/5110) (will be published as blog)
 - Script execution working on devnet! Will enable on mainnet this sprint.
 - Event streaming available for REST on mainnet. (working with 4d on fcl integration)
 - Lots of AccessAPI quality of life improvements deployed to mainnet. (grpc compression, optional CCF, historic AN tx result cache)
@@ -13,15 +14,19 @@
 - Mainnet is no longer in the epoch fallback mode.
 - DapperLabs and FlowFoundation nodes have been split.
 - Public access nodes were available during the spork (except Send Transaction)
+- New hosting pattern has been successfully implemented for securely & managing running Dapper Nodes
+- Benchnet2 testing has validated support and pattern for running large networks
+- [CI improved](https://github.com/onflow/flow-go/pull/4906) with upgraded runners, faster runs and less flaky
+- Coinbase Rosetta mainnet upgrade (spork) done, no issues
 
 ### Mainnet Uptime SLO - Last 14 days (11/30 to 11/10)
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%  |    99.26%     |       7.4%        |
-| Block Finalization      | 99.9%  |    99.26%     |       7.4%        |
-| Transaction Execution   | 99.9%  |    99.26%     |       7.4%        |
-| Block Sealing           | 99.9%  |    99.26%     |       7.4%        |
+| Collection Finalization | 99.9%  |    99.26%     |       744%        |
+| Block Finalization      | 99.9%  |    99.26%     |       744%        |
+| Transaction Execution   | 99.9%  |    99.26%     |       744%        |
+| Block Sealing           | 99.9%  |    99.26%     |       744%        |
 | Access API Liveness     | 99.9%  |    100%       |       0%          |
 
 #### Incidents
@@ -47,13 +52,13 @@ EVM support
 - Continued reviewing EVM PRs
 
 Other Improvements & fixes
-[Switch to always using the 0th partition for UUID generation](https://github.com/onflow/flow-go/pull/4893)
-[Node operation improvement - Make path configs to be usable by container by default](https://github.com/onflow/flow-go/pull/4885)
+- v0.32 ONLY: [Switch to always using the 0th partition for UUID generation](https://github.com/onflow/flow-go/pull/4893)
+- [Node operation improvement - Make path configs to be usable by container by default](https://github.com/onflow/flow-go/pull/4885)
 
 Flow Network Ugrade support
-[[Backport] Make path configs to be usable by container by default](https://github.com/onflow/flow-go/pull/4905)
-[\[Util\] make chunk-data-pack-dir optional for non-execution node](https://github.com/onflow/flow-go/pull/4896)
-[Update cadence to v0.42.2-patch.1](https://github.com/dapperlabs/flow-go/pull/6897)
+- [\[Backport\] Make path configs to be usable by container by default](https://github.com/onflow/flow-go/pull/4905)
+- [\[Util\] make chunk-data-pack-dir optional for non-execution node](https://github.com/onflow/flow-go/pull/4896)
+- [Update cadence to v0.42.2-patch.1](https://github.com/dapperlabs/flow-go/pull/6897)
 
 **This sprint**
 
@@ -83,7 +88,7 @@ Objective: long-term support release of Cadence with no expected breaking change
 **Done last sprint**
 
 Features
-- [v0.42 - Port adding new `revertibleRandom` function]
+- [v0.42 - Port adding new `revertibleRandom` function](https://github.com/onflow/cadence/pull/2910)
 
 Cadence 1.0
   features
@@ -94,13 +99,14 @@ Cadence 1.0
     - [Remove support for custom destructors](https://github.com/onflow/cadence/issues/2789)
   Improvements
   - [Refactor resource-reference tracking](https://github.com/onflow/cadence/pull/2916)
+  
   FLIPs
   - [FLIP 95: proposal for entitlements migration](https://github.com/onflow/flips/issues/95)
 
 Security Fixes (port to public repo)
-[Fix nested resource moves](https://github.com/onflow/cadence/issues/2931)
-[v0.42 - Fix nested resource moves](https://github.com/onflow/cadence/issues/2930)
-[v0.42 - Fix AuthAccount creation](https://github.com/onflow/cadence/issues/2932)
+- [Fix nested resource moves](https://github.com/onflow/cadence/issues/2931)
+- [v0.42 - Fix nested resource moves](https://github.com/onflow/cadence/issues/2930)
+- [v0.42 - Fix AuthAccount creation](https://github.com/onflow/cadence/issues/2932)
 
 EVM Support
 - [FVM EVM: Refactor stdlib to use new approach](https://github.com/onflow/flow-go/issues/4876)
@@ -210,19 +216,22 @@ Misc:
 
 ### **Consensus (Dynamic Protocol State) - Alex H**
 
-**Done last sprint**
+**Done last sprint for Dynamic Protocol State**
 
 - multiple iterations on the framework code ([PR #4834](https://github.com/onflow/flow-go/pull/4834), [PR #4868](https://github.com/onflow/flow-go/pull/4868)) wrt modularization, maintainability, documentation
 - working on code for Epoch Fallback Mode (same functionality as currently, implemented in the new framework): [PR #4931](https://github.com/onflow/flow-go/pull/4931)
-- Secure Randomness [Flow Dev Portal → Flow VRF](https://developers.flow.com/build/advanced-concepts/randomness) & GH repo: [Random Coin Toss in Cadence](https://github.com/onflow/random-coin-toss), [Flow VRF: Secure Randomness for Cadence - Executive summary](https://www.notion.so/dapperlabs/Flow-VRF-Secure-Randomness-for-Cadence-Executive-summary-601d0f45680b42b7bd751d440d068aac?pvs=4) (marketing)
-- Jordan working on important automation of Cruise Control system ([FLIP 204]([url](https://github.com/onflow/flow-go/issues/4948))), to run Block-Time controller on networks other than mainnet 
 - Explorations on integrating Epoch Fallback Mode: [PR #4931](https://github.com/onflow/flow-go/pull/4931)
  [PR #4922](https://github.com/onflow/flow-go/pull/4922)
 
   noticed potential avenue for leaving Epoch Fallback Mode without spork utilizing Dynamic Protocol State
 
+**Done last sprint (other topics)**
+- Secure Randomness [Flow Dev Portal → Flow VRF](https://developers.flow.com/build/advanced-concepts/randomness) & GH repo: [Random Coin Toss in Cadence](https://github.com/onflow/random-coin-toss), [Flow VRF: Secure Randomness for Cadence - Executive summary](https://www.notion.so/dapperlabs/Flow-VRF-Secure-Randomness-for-Cadence-Executive-summary-601d0f45680b42b7bd751d440d068aac?pvs=4) (marketing)
+- Jordan working on important automation of Cruise Control system ([FLIP 204]([url](https://github.com/onflow/flow-go/issues/4948))), to run Block-Time controller on networks other than mainnet 
+
+
 **Next Sprint**
-- Getting large framework iteration over finish line ([PR #4868](https://github.com/onflow/flow-go/pull/4868))
+- Block payload contains Hash commitment of protocol state for child block(s) ([PR #4868](https://github.com/onflow/flow-go/pull/4868))
 - continue on Epoch Fallback Mode [PR #4931](https://github.com/onflow/flow-go/pull/4931)
 - Removing dynamic weight from protocol state, as this is no longer needed
 - Long list remaining tech todos [epic #4649](https://github.com/onflow/flow-go/issues/4649))
@@ -232,15 +241,30 @@ Misc:
 ### **Infra - JP**
 
 **Done last sprint**
-
-**This Sprint**
 - Update Ansible automation for Dapper nodes
-- Prepare monitoring & alerting for Dapper Nodes
+- Prepare monitoring, alerting, and pager dudty group for Dapper Node monitoring
 - Prepare Dapper infra/keys for Mainnet spork
 - Create Flow Foundation infrastructure & configuration for Mainnet spork
 - Create Dapper infrastructure & configuration for Mainnet spork
+- Scale down networks following s
+- Assist with sporks & HCUs
+- Update logrotate for Dapper nodes
+- Assist with BN2 testing
+
+**This Sprint**
 
 ************Node Hosting************
+- Continue to monitor system configuratiton for Dapper Nodes
+- Prepare execution & protocol state archives for Mainnet23
+- Scale down Mainnet23 AN & EN
+- Unstake & deprecate Dapper Nodes on Devnet49
+- Clean up unneeded DPS nodes
+
+************Support************
+- Evaluate migration path for GCP projects and resources
+- Continue to support Benchnet2 with updates to Helm chart
+- Work with DevEx team to unblock migration of workloads to 
+
 ### Key Release Dates & Breaking Changes
 
 - Mainnet/Testnet Spork dates 
