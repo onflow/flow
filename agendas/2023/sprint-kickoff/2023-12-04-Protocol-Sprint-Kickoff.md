@@ -50,9 +50,9 @@ Other Improvements
 - E-E tests
   - [Fix storage fees test](https://github.com/onflow/flow-e2e-tests/issues/50)
   - [Update e2e tests with new flow-go](https://github.com/onflow/flow-e2e-tests/issues/49)
-Emulator
-- [Unify core contracts address definitions](https://github.com/onflow/flow-go/pull/5033)
-- [Use core contract list from flow-go](https://github.com/onflow/flow-emulator/issues/513)
+- Emulator
+  - [Unify core contracts address definitions](https://github.com/onflow/flow-go/pull/5033)
+  - [Use core contract list from flow-go](https://github.com/onflow/flow-emulator/issues/513)
 
 
 **This sprint**
