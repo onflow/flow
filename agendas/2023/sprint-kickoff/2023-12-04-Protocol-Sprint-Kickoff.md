@@ -1,5 +1,8 @@
 # Team Wins 🎉
 
+- Merged last Cadence 1.0 feature
+- Completed merging of all major Storehouse M1 PRs to flow-go master (behind a feature flag) & starting to benchmark storehouse on Testnet.
+- Deployed [multiple security fixes](https://github.com/onflow/cadence/pull/2955) on Mainnet
 
 
 ### Mainnet Uptime SLO - Last 14 days (11/10 to 11/24)
@@ -21,14 +24,45 @@
 
 **Done last sprint**
 
+Storehouse M1
+- [Fix getting highest executed block ID when storehouse is enabled](https://github.com/onflow/flow-go/pull/5109)
+- [Fix storage snapshot](https://github.com/onflow/flow-go/pull/5107)
+- [Optimize finalized reader to cache last finalized height](https://github.com/onflow/flow-go/pull/5056)
+- [Adding flag to enable storehouse](https://github.com/onflow/flow-go/issues/5054)
+- [Optimization: Reduce finalized block call](https://github.com/onflow/flow-go/pull/5053)
+
+EVM
+- [Events emitted from EVM are not encoded as other FVM events](https://github.com/onflow/flow-go/issues/5079)
+  - [Emit events as Cadence events](https://github.com/onflow/flow-go/pull/5090)
+- [Add a transaction test](https://github.com/onflow/flow-emulator/issues/515)
+- [Transaction execution fails](https://github.com/onflow/flow-go/issues/5068)
+  - [Fix the setup process](https://github.com/onflow/flow-go/pull/5069)
+- [Add EVM transactions to FVM benchmark tests](https://github.com/onflow/flow-go/pull/5061)
+
+Atree register inlining
+- Run migration program modified to use atree inlining (inlined checkpoint files reduced migration peak RAM by ~330GB and inlined checkpoint file is 215GB vs 348GB)
+- [Add feature to support mutation of primitive values returned by iterators](https://github.com/onflow/atree/issues/356)
+- [Handle edge cases needed to support mutation of inlined maps and arrays during iteration](https://github.com/onflow/atree/issues/356)
+  - Ready for review: [Add feature to support mutation for array and map iterators](https://github.com/onflow/atree/pull/359)
+
+
+Other Improvements
+- E-E tests
+  - [Fix storage fees test](https://github.com/onflow/flow-e2e-tests/issues/50)
+  - [Update e2e tests with new flow-go](https://github.com/onflow/flow-e2e-tests/issues/49)
+Emulator
+- [Unify core contracts address definitions](https://github.com/onflow/flow-go/pull/5033)
+- [Use core contract list from flow-go](https://github.com/onflow/flow-emulator/issues/513)
+
 
 **This sprint**
 
-- Validate [migration](https://github.com/onflow/flow-go/pull/4633) of [integrated solution for Atree register inlining](https://github.com/onflow/cadence/issues/2809)
-- Continue implementation of [Storehouse first milestone](https://github.com/onflow/flow-go/issues/4682) (execution state on disk)
-- EVM support
-  - Continue with PR reviews
-  - Continue with benchmarking data collection
+- Atree register inlining
+  - Merge the [Atree inlining integration with Cadence](https://github.com/onflow/cadence/pull/2882)
+  - Continue work on validating [migration](https://github.com/onflow/flow-go/pull/4633) of [integrated solution for Atree register inlining](https://github.com/onflow/cadence/issues/2809)
+  - Refactor the migration using [mutable iterator](https://github.com/onflow/atree/pull/359)
+- Continue testing / benchmarking of [Storehouse first milestone](https://github.com/onflow/flow-go/issues/4682) (execution state on disk) on Testnet.
+- EVM support & development
 
 **On Hold**
 
@@ -49,15 +83,49 @@ Objective: long-term support release of Cadence with no expected breaking change
 
 **Done last sprint**
 
+Feature
+- [New Behavior for Attachments and Entitlements](https://github.com/onflow/cadence/issues/2921)
+
+FLIP
+- [FLIP for new behavior for attachments with entitlements](https://github.com/onflow/flips/issues/213)
+
+Improvements
+- 1.0: [References to references are not properly checked](https://github.com/onflow/cadence/issues/2873)
+  - [throw error on the creation of a nested reference](https://github.com/onflow/cadence/pull/2965)
+- 1.0: [Generalize the migrations and make common codes re-usable](https://github.com/onflow/cadence/issues/2942)
+- master: [Improve resource-reference tracking](https://github.com/onflow/cadence/pull/2958)
+
+1.0 Migrations
+- [Add String normalizing migration](https://github.com/onflow/cadence/issues/2937)
+- [Add account type migration](https://github.com/onflow/cadence/issues/2923)
+
+Bugfixes
+- [Port bug fixes from v0.42.5-patch.1](https://github.com/onflow/cadence/issues/2956)
+
+Tech-debt
+- [Remove unsafeRandom](https://github.com/onflow/cadence/issues/2909)
+
+Tests
+- [Add test for container mutation while iterating](https://github.com/onflow/cadence/issues/2960)
+
+Docs
+- [Remove references to destructors and add docs for default destroy events](https://github.com/onflow/cadence-lang.org/issues/31)
+- [Rewrite entitlements and attachments docs for new changes](https://github.com/onflow/cadence-lang.org/issues/30)
+- [Document Account.Capabilities.exists](https://github.com/onflow/cadence-lang.org/issues/29)
+- [Remove incorrect statements about reentrancy](https://github.com/onflow/cadence-lang.org/issues/28)
+
+Updating Downstream dependencies
+- SDK [Update cadence to v0.42.6](https://github.com/onflow/flow-go-sdk/issues/529)
+- flow-go [Update to Cadence v0.42.5-patch.1](https://github.com/dapperlabs/flow-go/issues/6914)
+
 **This sprint**
-- Deploy security fixes to TN and MN, port to public repo, publish disclosure
-- continue support EVM on FLow initiative.
-- Continuing with Stable Cadence scope / discussions
-    - Ongoing FLIPs:
-        - [FLIP for new behavior for attachments with entitlements](https://github.com/onflow/flips/pull/213)
+- Merge Cadence 1.0 feature branch to Cadence master
+- Release Cadence 1.0 RC1
+- Release Emulator based on Cadence 1.0 RC1 release
+- Continue support EVM on FLow initiative.
 - Continue work on Cadence 1.0 migrations.
 - Continue Stable Cadence Docs update and knocking tasks off the [tech debt list](https://github.com/onflow/cadence/issues/2642)
-- Continue work on Cadence 1.0 release plan
+- Publish Cadence 1.0 release plan on forum
  
 **On Hold**
 - Discussion of the re-entrancy edge cases
