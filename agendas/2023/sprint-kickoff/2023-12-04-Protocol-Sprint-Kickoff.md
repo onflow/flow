@@ -238,7 +238,7 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 ### FLIPs Tracker - Kshitij
 
-|                         | Application | Cadence | Governance | Proposal | Misc | Total |  
+|                         | Application | Cadence | Governance | Protocol | Misc | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|:-----------------:|
 | Drafted | 5  |    6       |       0          |       6          |        0          |        **17**          | 
 | Proposed      | 1  |    1       |       2          |       0          |        1          |        **5**          | 
