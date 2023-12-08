@@ -40,7 +40,7 @@ EVM
 - [Add EVM transactions to FVM benchmark tests](https://github.com/onflow/flow-go/pull/5061)
 
 Atree register inlining
-- Run migration program modified to use atree inlining (inlined checkpoint files reduced migration peak RAM by ~330GB and inlined checkpoint file is 215GB vs 348GB)
+- Run migration program modified to use atree inlining. Inlined checkpoint file is 215GB (was 348GB).  Also, tests indicate that using inlined checkpoint file as input can reduce future migration durations and peak RAM use. Need to test on larger vm with more RAM to confirm durations, etc.
 - [Add feature to support mutation of primitive values returned by iterators](https://github.com/onflow/atree/issues/356)
 - [Handle edge cases needed to support mutation of inlined maps and arrays during iteration](https://github.com/onflow/atree/issues/356)
   - Ready for review: [Add feature to support mutation for array and map iterators](https://github.com/onflow/atree/pull/359)
