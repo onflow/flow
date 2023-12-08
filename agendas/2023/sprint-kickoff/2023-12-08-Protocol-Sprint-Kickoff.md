@@ -4,7 +4,7 @@
 - Merged last Cadence 1.0 feature
 - Deployed [multiple security fixes](https://github.com/onflow/cadence/pull/2955) on Mainnet
 - Staking contract changes to ensure there are always three open Permissionless Access node slots available.
-- completed automation of Cruise Control system [PR #5071](https://github.com/onflow/flow-go/pull/5071) / [FLIP 204](https://github.com/onflow/flips/blob/main/protocol/20231003-service-account-specified-epoch-switchover.md.md)
+- completed automation of Cruise Control system [feature branch PR #5071](https://github.com/onflow/flow-go/pull/5071) / [FLIP 204](https://github.com/onflow/flips/blob/main/protocol/20231003-service-account-specified-epoch-switchover.md.md)
 
 ### Mainnet Uptime SLO - Last 14 days (11/24 to 12/08)
 
