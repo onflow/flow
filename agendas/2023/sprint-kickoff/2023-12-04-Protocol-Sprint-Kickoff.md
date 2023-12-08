@@ -202,19 +202,40 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
+************Node Hosting************
+- Assist with Canary Sporks
+- Assist with HCU
+- Create automation for managing Dapper nodes
+- Increase Devnet Data disks
+- Create new Canary EN for storehouse testing in shadow mode
+- Create infrastructure & configuration for Crescendo network
+
+************FF Migration************
+- Create new KMS key for mgmt of Dapper nodes
+- Create strategy for observability migration
+- Create automation for dashboard migration
+- Create automation for enabling multi-destination loggging
+- Create promtehus configuration for enabling multi-destination metrics
+- Work with Grafana team in prepration for migration
+
+************Benchnet************
+- Grant additional access to K8s cluster and executing cleanup
 
 **This Sprint**
 
 ************Node Hosting************
-- Assist with Canary Sporks
-- As needed, assist with HCU
-- Create documentation for managing Dapper nodes
-- Create automation for managing Dapper nodes
+- Execute spork for Crescendo network
+- Configure load balancer for Crescendo network
+- Remove unnecessary Dapper nodes that have been migrated
 
 ************FF Migration************
-- Create strategy for observability migration
-- Discover and configure tool for multi-destination logging
-- Create strategy for GCP project migration to new GCP account
+- Create automation for migrating alerts 
+- Create strategy and autoamtion for moving to IRM
+- Configure all nodes to deliver logs to both destinations
+- Configure all prometheus instances to deliver metrics to both destinations
+
+************Benchnet************
+- Create documentation for leveraging additional access to benchnet 
 
 ### Key Release Dates & Breaking Changes
 
