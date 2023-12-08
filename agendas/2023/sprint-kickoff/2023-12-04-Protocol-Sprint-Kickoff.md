@@ -238,5 +238,5 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 ### Key Release Dates & Breaking Changes
 
-- Mainnet/Testnet Spork dates 
-  - Next spork - TBD (~Q1 2024)
+- Next Mainnet/Testnet network upgrade (spork) dates: ~Q1 2024
+- Crescendo network going live on Wednesday, 12/13
