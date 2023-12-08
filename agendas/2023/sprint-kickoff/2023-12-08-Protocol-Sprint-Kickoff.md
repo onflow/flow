@@ -157,20 +157,22 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### **Permissionless Network - Yahya H**
 
 **Done last sprint**
+  - Implemented the last part (part-3) of the [Optimizing memory-intensive RPC inspection operations](https://github.com/dapperlabs/flow-go/issues/6870), it is about [caching the application-specific score](https://github.com/onflow/flow-go/pull/5045) (under review).
+  - Developed the last part of the solution to `mainnet23` [nodes blocking issue](https://github.com/dapperlabs/flow-go/issues/6895), the [last PR](https://github.com/onflow/flow-go/pull/5115) (under-review).
+  - Fixed Flakey **`TestGossipSubSpamMitigationIntegration`** [test](https://github.com/dapperlabs/flow-go/issues/6915) [PR 5095](https://github.com/onflow/flow-go/pull/5095).
+  - Addressed the issue where nodes will penalize each other during startup due to the network not being completely ready causing scoring penalty false positives by implementing a silence period for GossipSuB [PR 5084](https://github.com/onflow/flow-go/pull/5084) (under review).
+  - Concluded the [multi-error invalid control message](https://github.com/dapperlabs/flow-go/issues/6664) notification [PR 4978](https://github.com/onflow/flow-go/pull/4978) (under review).
 
 
 **Still in Progress**
-  - [mainnet24` peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913)
-  - Part-3: [Caching GossipSub Application Specific Score](https://github.com/onflow/flow-go/pull/5045) of [Optimizing memory-intensive RPC inspection operations](https://github.com/dapperlabs/flow-go/issues/6870)
-  - [Part-2 and -3 of the long term fix for AN-LN peer blocking issue on mainnet23](https://github.com/dapperlabs/flow-go/issues/6895)
-  - [GossipSub Message Replay Attack](https://github.com/dapperlabs/flow-go/issues/6809) [PR5058](https://github.com/onflow/flow-go/pull/5058)
+  - Debugging the `mainnet24` [peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913). Our first investigator PR is under review, [which extends GossipSub router telemetry](https://github.com/onflow/flow-go/pull/5083).
+  - GossipSub Replay attack, implementing testing and updating base branch to contain new config file refactoring. [PR 5058](https://github.com/onflow/flow-go/pull/5058)
+
 
 **Starting Next Sprint**:
   - [Concluding GossipSub Message Forensics FLIP and planning the development](https://github.com/onflow/flips/pull/195)
-  - [[BFT Testing] Refactor Orchestrator lock contension to use worker pools](https://github.com/dapperlabs/flow-go/issues/6884)
-  - [Determining an appropriate retention rate for historical scoring data](https://github.com/dapperlabs/flow-go/issues/6466)
-  - [Decision Making for Persisting or Non-Persisting Spamming Records of Peers in GossipSub](https://github.com/dapperlabs/flow-go/issues/6663)
-
+  - [Fixing flakey `TestGossipSubIHaveBrokenPromises_Below_Threshold` (and Above Threshold) ([Zero Quarantined Networking Layer Tests Epic](https://github.com/onflow/flow-go/issues/4816))
+  - Fixing flakey tests fixture control message validation inspector test failures ([Zero Quarantined Networking Layer Tests Epic](https://github.com/onflow/flow-go/issues/4816))
 
 **Active Epics**
 
