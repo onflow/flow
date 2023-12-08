@@ -5,20 +5,18 @@
 - Deployed [multiple security fixes](https://github.com/onflow/cadence/pull/2955) on Mainnet
 
 
-### Mainnet Uptime SLO - Last 14 days (11/10 to 11/24)
+### Mainnet Uptime SLO - Last 14 days (11/24 to 12/08)
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%  |    100%       |       0%          |
 | Block Finalization      | 99.9%  |    100%       |       0%          |
-| Transaction Execution   | 99.9%  |    100%       |       0%          |
-| Block Sealing           | 99.9%  |    100%       |       0%          |
-| Access API Liveness     | 99.9%  |    100%       |       0%          |
+| Transaction Execution   | 99.9%  |    99.96%     |       39.7%       |
+| Block Sealing           | 99.9%  |    99.96%     |       39.7%       |
+| Access API Liveness     | 99.9%  |    99.973%    |       27.3%       |
 
 #### Incidents
-- Degraded Performance - 11/23 9:30 AM Pacific to 3:30 PM Pacific
-  - Collection finalization rate dropped and was choppy.
-
+- HCU on 11/29
 
 ### **Performance Pod Sprint Objective - Jan B**
 
@@ -241,4 +239,3 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 - Mainnet/Testnet Spork dates 
   - Next spork - TBD (~Q1 2024)
-- Second [Governance Working Group](https://github.com/onflow/gwg) meeting 9/28 (Tuesday)
