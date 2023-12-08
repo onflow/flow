@@ -185,17 +185,15 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### **Consensus (Dynamic Protocol State) - Alex H**
 
 **Done last sprint for Dynamic Protocol State**
-
-
+- completed most of remaining tech todos for Dynamic Protocol State ([epic #4649](https://github.com/onflow/flow-go/issues/4649))
 
 **Done last sprint (other topics)**
-
-
+- largely completed automation of Cruise Control system [PR #5071](https://github.com/onflow/flow-go/pull/5071) / [FLIP 204](https://github.com/onflow/flips/blob/main/protocol/20231003-service-account-specified-epoch-switchover.md.md)
 
 **Next Sprint**
-- Long list remaining tech todos for Dynamic Protocol State ([epic #4649](https://github.com/onflow/flow-go/issues/4649))
-- continue automation of Cruise Control system
-
+- last few clean ups for Dynamic Protocol State
+- Integration testing for Dynamic Protocol State
+- potentially: exploring system-event-driven recovery from Epoch Fallback Mode [EFM] 
 
 ### **Infra - JP**
 
