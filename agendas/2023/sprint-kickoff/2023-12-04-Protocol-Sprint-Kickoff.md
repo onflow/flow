@@ -234,7 +234,19 @@ Objective: Make execution data and script execution available on Edge nodes.
 - Configure all prometheus instances to deliver metrics to both destinations
 
 ************Benchnet************
-- Create documentation for leveraging additional access to benchnet 
+- Create documentation for leveraging additional access to benchnet
+
+### FLIPs Tracker - Kshitij
+
+|                         | Application | Cadence | Governance | Proposal | Misc | Total |  
+|:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|:-----------------:|
+| Drafted | 5  |    6       |       0          |       6          |        0          |        **17**          | 
+| Proposed      | 1  |    1       |       2          |       0          |        1          |        **5**          | 
+| Accepted   | 2  |    1     |       1       |       1          |        0          |        **5**          | 
+| Rejected           | 0  |    0     |       1       |       0          |        0          |        **1**          | 
+| Implemented     | 1  |    19    |       1       |       0          |        0          |        **21**          | 
+| Released     | 4  |    0    |       2       |       4          |        0          |        **10**          | 
+| Total     | **13**  |    **27**    |       **7**       |       **11**          |        **1**          |        **59**          | 
 
 ### Key Release Dates & Breaking Changes
 
