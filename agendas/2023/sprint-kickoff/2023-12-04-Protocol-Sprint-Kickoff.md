@@ -236,7 +236,7 @@ Objective: Make execution data and script execution available on Edge nodes.
 ************Benchnet************
 - Create documentation for leveraging additional access to benchnet
 
-### FLIPs Tracker - Kshitij
+### FLIPs Tracker (🆕 section) - Kshitij
 
 |                         | Application | Cadence | Governance | Protocol | Misc | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|:-----------------:|
