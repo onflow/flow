@@ -1,7 +1,7 @@
 # Team Wins 🎉
 
-- Merged last Cadence 1.0 feature
 - Completed merging of all major Storehouse M1 PRs to flow-go master (behind a feature flag) & starting to benchmark storehouse on Testnet.
+- Merged last Cadence 1.0 feature
 - Deployed [multiple security fixes](https://github.com/onflow/cadence/pull/2955) on Mainnet
 
 
