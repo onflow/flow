@@ -238,15 +238,15 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 ### FLIPs Tracker (🆕 section) - Kshitij
 
-|                         | Application | Cadence | Governance | Protocol | Misc | Total |  
-|:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted | 5  |    6       |       0          |       6          |        0          |        **17**          | 
-| Proposed      | 1  |    1       |       2          |       0          |        1          |        **5**          | 
-| Accepted   | 2  |    1     |       1       |       1          |        0          |        **5**          | 
-| Rejected           | 0  |    0     |       1       |       0          |        0          |        **1**          | 
-| Implemented     | 1  |    19    |       1       |       0          |        0          |        **21**          | 
-| Released     | 4  |    0    |       2       |       4          |        0          |        **10**          | 
-| Total     | **13**  |    **27**    |       **7**       |       **11**          |        **1**          |        **59**          | 
+|                         | Application | Cadence | Governance | Protocol | Total |  
+|:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
+| Drafted | 5  |    6       |       0          |       6          |        **17**          | 
+| Proposed      | 1  |    2       |       2          |       0          |        **5**          | 
+| Accepted   | 2  |    1     |       1       |       1          |        **5**          | 
+| Rejected           | 0  |    0     |       1       |       0          |        **1**          | 
+| Implemented     | 1  |    19    |       1       |       0          |        **21**          | 
+| Released     | 4  |    0    |       2       |       4          |        **10**          | 
+| Total     | **13**  |    **28**    |       **7**       |       **11**          |        **59**          | 
 
 ### Key Release Dates & Breaking Changes
 
