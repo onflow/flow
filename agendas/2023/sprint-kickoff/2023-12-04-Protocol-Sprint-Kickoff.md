@@ -3,6 +3,7 @@
 - Completed merging of all major Storehouse M1 PRs to flow-go master (behind a feature flag) & starting to benchmark storehouse on Testnet.
 - Merged last Cadence 1.0 feature
 - Deployed [multiple security fixes](https://github.com/onflow/cadence/pull/2955) on Mainnet
+- Staking contract changes to ensure there are always three open Permissionless Access node slots available.
 
 
 ### Mainnet Uptime SLO - Last 14 days (11/24 to 12/08)
