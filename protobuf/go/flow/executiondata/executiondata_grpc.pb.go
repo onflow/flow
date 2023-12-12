@@ -28,8 +28,9 @@ type ExecutionDataAPIClient interface {
 	// - InvalidArgument is returned if the request contains an invalid block ID.
 	// - NotFound is returned if the start block or execution data are not
 	// currently available on the
-	//   node. This may happen if the block was from a previous spork, or if the
-	//   block has yet not been received.
+	//
+	//	node. This may happen if the block was from a previous spork, or if the
+	//	block has yet not been received.
 	GetExecutionDataByBlockID(ctx context.Context, in *GetExecutionDataByBlockIDRequest, opts ...grpc.CallOption) (*GetExecutionDataByBlockIDResponse, error)
 	// SubscribeExecutionData streams execution data for all blocks starting at
 	// the requested start block, up until the latest available block. Once the
@@ -41,8 +42,9 @@ type ExecutionDataAPIClient interface {
 	// block.
 	// - NotFound is returned if the start block is not currently available on the
 	// node. This may
-	//   happen if the block was from a previous spork, or if the block has yet
-	//   not been received.
+	//
+	//	happen if the block was from a previous spork, or if the block has yet
+	//	not been received.
 	SubscribeExecutionData(ctx context.Context, in *SubscribeExecutionDataRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataClient, error)
 	// SubscribeEvents streams events for all blocks starting at the requested
 	// start block, up until the latest available block. Once the latest is
@@ -64,11 +66,28 @@ type ExecutionDataAPIClient interface {
 	// EventFilter or start block.
 	// - NotFound is returned if the start block is not currently available on the
 	// node. This may
-	//   happen if the block was from a previous spork, or if the block has yet
-	//   not been received.
+	//
+	//	happen if the block was from a previous spork, or if the block has yet
+	//	not been received.
 	SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error)
 	// GetRegisterValues gets the values for the given register IDs as of the given block height
 	GetRegisterValues(ctx context.Context, in *GetRegisterValuesRequest, opts ...grpc.CallOption) (*GetRegisterValuesResponse, error)
+	// SubscribeBlocks streams finalized or sealed blocks starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Each block are filtered by the provided block status, and only
+	// those blocks that match the status are returned. If no block status is provided,
+	// sealed blocks are returned.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid
+	// start block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork, or if the block has yet
+	// not been received.
+	SubscribeBlocks(ctx context.Context, in *SubscribeBlocksRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeBlocksClient, error)
 }
 
 type executionDataAPIClient struct {
@@ -161,6 +180,38 @@ func (c *executionDataAPIClient) GetRegisterValues(ctx context.Context, in *GetR
 	return out, nil
 }
 
+func (c *executionDataAPIClient) SubscribeBlocks(ctx context.Context, in *SubscribeBlocksRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeBlocksClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[2], "/flow.executiondata.ExecutionDataAPI/SubscribeBlocks", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &executionDataAPISubscribeBlocksClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ExecutionDataAPI_SubscribeBlocksClient interface {
+	Recv() (*SubscribeBlocksResponse, error)
+	grpc.ClientStream
+}
+
+type executionDataAPISubscribeBlocksClient struct {
+	grpc.ClientStream
+}
+
+func (x *executionDataAPISubscribeBlocksClient) Recv() (*SubscribeBlocksResponse, error) {
+	m := new(SubscribeBlocksResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // ExecutionDataAPIServer is the server API for ExecutionDataAPI service.
 // All implementations should embed UnimplementedExecutionDataAPIServer
 // for forward compatibility
@@ -171,8 +222,9 @@ type ExecutionDataAPIServer interface {
 	// - InvalidArgument is returned if the request contains an invalid block ID.
 	// - NotFound is returned if the start block or execution data are not
 	// currently available on the
-	//   node. This may happen if the block was from a previous spork, or if the
-	//   block has yet not been received.
+	//
+	//	node. This may happen if the block was from a previous spork, or if the
+	//	block has yet not been received.
 	GetExecutionDataByBlockID(context.Context, *GetExecutionDataByBlockIDRequest) (*GetExecutionDataByBlockIDResponse, error)
 	// SubscribeExecutionData streams execution data for all blocks starting at
 	// the requested start block, up until the latest available block. Once the
@@ -184,8 +236,9 @@ type ExecutionDataAPIServer interface {
 	// block.
 	// - NotFound is returned if the start block is not currently available on the
 	// node. This may
-	//   happen if the block was from a previous spork, or if the block has yet
-	//   not been received.
+	//
+	//	happen if the block was from a previous spork, or if the block has yet
+	//	not been received.
 	SubscribeExecutionData(*SubscribeExecutionDataRequest, ExecutionDataAPI_SubscribeExecutionDataServer) error
 	// SubscribeEvents streams events for all blocks starting at the requested
 	// start block, up until the latest available block. Once the latest is
@@ -207,11 +260,28 @@ type ExecutionDataAPIServer interface {
 	// EventFilter or start block.
 	// - NotFound is returned if the start block is not currently available on the
 	// node. This may
-	//   happen if the block was from a previous spork, or if the block has yet
-	//   not been received.
+	//
+	//	happen if the block was from a previous spork, or if the block has yet
+	//	not been received.
 	SubscribeEvents(*SubscribeEventsRequest, ExecutionDataAPI_SubscribeEventsServer) error
 	// GetRegisterValues gets the values for the given register IDs as of the given block height
 	GetRegisterValues(context.Context, *GetRegisterValuesRequest) (*GetRegisterValuesResponse, error)
+	// SubscribeBlocks streams finalized or sealed blocks starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Each block are filtered by the provided block status, and only
+	// those blocks that match the status are returned. If no block status is provided,
+	// sealed blocks are returned.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid
+	// start block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork, or if the block has yet
+	// not been received.
+	SubscribeBlocks(*SubscribeBlocksRequest, ExecutionDataAPI_SubscribeBlocksServer) error
 }
 
 // UnimplementedExecutionDataAPIServer should be embedded to have forward compatible implementations.
@@ -229,6 +299,9 @@ func (UnimplementedExecutionDataAPIServer) SubscribeEvents(*SubscribeEventsReque
 }
 func (UnimplementedExecutionDataAPIServer) GetRegisterValues(context.Context, *GetRegisterValuesRequest) (*GetRegisterValuesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRegisterValues not implemented")
+}
+func (UnimplementedExecutionDataAPIServer) SubscribeBlocks(*SubscribeBlocksRequest, ExecutionDataAPI_SubscribeBlocksServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlocks not implemented")
 }
 
 // UnsafeExecutionDataAPIServer may be embedded to opt out of forward compatibility for this service.
@@ -320,6 +393,27 @@ func _ExecutionDataAPI_GetRegisterValues_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ExecutionDataAPI_SubscribeBlocks_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlocksRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ExecutionDataAPIServer).SubscribeBlocks(m, &executionDataAPISubscribeBlocksServer{stream})
+}
+
+type ExecutionDataAPI_SubscribeBlocksServer interface {
+	Send(*SubscribeBlocksResponse) error
+	grpc.ServerStream
+}
+
+type executionDataAPISubscribeBlocksServer struct {
+	grpc.ServerStream
+}
+
+func (x *executionDataAPISubscribeBlocksServer) Send(m *SubscribeBlocksResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 // ExecutionDataAPI_ServiceDesc is the grpc.ServiceDesc for ExecutionDataAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -345,6 +439,11 @@ var ExecutionDataAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "SubscribeEvents",
 			Handler:       _ExecutionDataAPI_SubscribeEvents_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeBlocks",
+			Handler:       _ExecutionDataAPI_SubscribeBlocks_Handler,
 			ServerStreams: true,
 		},
 	},
