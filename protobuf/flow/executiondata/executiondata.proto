@@ -277,5 +277,5 @@ message SubscribeBlocksRequest {
 message SubscribeBlocksResponse {
   // The sealed or finalized blocks according to the block status
   // in the request.
-  repeated access.BlockResponse block_response = 1;
+  entities.Block block = 1;
 }
