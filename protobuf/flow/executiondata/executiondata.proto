@@ -68,24 +68,6 @@ service ExecutionDataAPI {
   // GetRegisterValues gets the values for the given register IDs as of the given block height
   rpc GetRegisterValues(GetRegisterValuesRequest)
       returns (GetRegisterValuesResponse);
-
-  // SubscribeBlocks streams finalized or sealed blocks starting at the requested
-  // start block, up until the latest available block. Once the latest is
-  // reached, the stream will remain open and responses are sent for each new
-  // block as it becomes available.
-  //
-  // Each block are filtered by the provided block status, and only
-  // those blocks that match the status are returned. If no block status is provided,
-  // sealed blocks are returned.
-  //
-  // Errors:
-  // - InvalidArgument is returned if the request contains an invalid
-  // start block.
-  // - NotFound is returned if the start block is not currently available on the
-  // node. This may happen if the block was from a previous spork, or if the block has yet
-  // not been received.
-  rpc SubscribeBlocks(SubscribeBlocksRequest)
-      returns (stream SubscribeBlocksResponse);    
 }
 
 // The request for GetExecutionDataByBlockID
@@ -250,32 +232,4 @@ message GetRegisterValuesResponse {
 
   // raw register values at the given height.
   repeated bytes values = 1;
-}
-
-// The request for SubscribeBlocks
-message SubscribeBlocksRequest {
-  // Block ID of the first block to subscribe.
-  // Only one of start_block_id and start_block_height may be provided,
-  // otherwise an InvalidArgument error is returned. If neither are provided,
-  // the latest sealed block is used.
-  bytes start_block_id = 1;
-
-  // Block height of the first block to subscribe.
-  // Only one of start_block_id and start_block_height may be provided,
-  // otherwise an InvalidArgument error is returned. If neither are provided,
-  // the latest sealed block is used.
-  uint64 start_block_height = 2;
-
-  // Preferred block status of the block payload.
-  // Possible variants:
-  // 1. BLOCK_FINALIZED
-  // 2. BLOCK_SEALED
-  entities.BlockStatus block_status = 3;
-}
-
-// The response for SubscribeBlocks
-message SubscribeBlocksResponse {
-  // The sealed or finalized blocks according to the block status
-  // in the request.
-  entities.Block block = 1;
 }

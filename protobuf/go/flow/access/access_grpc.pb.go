@@ -107,6 +107,22 @@ type AccessAPIClient interface {
 	GetExecutionResultForBlockID(ctx context.Context, in *GetExecutionResultForBlockIDRequest, opts ...grpc.CallOption) (*ExecutionResultForBlockIDResponse, error)
 	// GetExecutionResultByID returns Execution Result by its ID.
 	GetExecutionResultByID(ctx context.Context, in *GetExecutionResultByIDRequest, opts ...grpc.CallOption) (*ExecutionResultByIDResponse, error)
+	// SubscribeBlocks streams finalized or sealed blocks starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Each block are filtered by the provided block status, and only
+	// those blocks that match the status are returned. If no block status is provided,
+	// sealed blocks are returned.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid
+	// start block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork, or if the block has yet
+	// not been received.
+	SubscribeBlocks(ctx context.Context, in *SubscribeBlocksRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksClient, error)
 }
 
 type accessAPIClient struct {
@@ -396,6 +412,38 @@ func (c *accessAPIClient) GetExecutionResultByID(ctx context.Context, in *GetExe
 	return out, nil
 }
 
+func (c *accessAPIClient) SubscribeBlocks(ctx context.Context, in *SubscribeBlocksRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[0], "/flow.access.AccessAPI/SubscribeBlocks", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlocksClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlocksClient interface {
+	Recv() (*SubscribeBlocksResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlocksClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlocksClient) Recv() (*SubscribeBlocksResponse, error) {
+	m := new(SubscribeBlocksResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // AccessAPIServer is the server API for AccessAPI service.
 // All implementations should embed UnimplementedAccessAPIServer
 // for forward compatibility
@@ -485,6 +533,22 @@ type AccessAPIServer interface {
 	GetExecutionResultForBlockID(context.Context, *GetExecutionResultForBlockIDRequest) (*ExecutionResultForBlockIDResponse, error)
 	// GetExecutionResultByID returns Execution Result by its ID.
 	GetExecutionResultByID(context.Context, *GetExecutionResultByIDRequest) (*ExecutionResultByIDResponse, error)
+	// SubscribeBlocks streams finalized or sealed blocks starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Each block are filtered by the provided block status, and only
+	// those blocks that match the status are returned. If no block status is provided,
+	// sealed blocks are returned.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid
+	// start block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork, or if the block has yet
+	// not been received.
+	SubscribeBlocks(*SubscribeBlocksRequest, AccessAPI_SubscribeBlocksServer) error
 }
 
 // UnimplementedAccessAPIServer should be embedded to have forward compatible implementations.
@@ -583,6 +647,9 @@ func (UnimplementedAccessAPIServer) GetExecutionResultForBlockID(context.Context
 }
 func (UnimplementedAccessAPIServer) GetExecutionResultByID(context.Context, *GetExecutionResultByIDRequest) (*ExecutionResultByIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetExecutionResultByID not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlocks(*SubscribeBlocksRequest, AccessAPI_SubscribeBlocksServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlocks not implemented")
 }
 
 // UnsafeAccessAPIServer may be embedded to opt out of forward compatibility for this service.
@@ -1154,6 +1221,27 @@ func _AccessAPI_GetExecutionResultByID_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AccessAPI_SubscribeBlocks_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlocksRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlocks(m, &accessAPISubscribeBlocksServer{stream})
+}
+
+type AccessAPI_SubscribeBlocksServer interface {
+	Send(*SubscribeBlocksResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlocksServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlocksServer) Send(m *SubscribeBlocksResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 // AccessAPI_ServiceDesc is the grpc.ServiceDesc for AccessAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1286,6 +1374,12 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AccessAPI_GetExecutionResultByID_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "SubscribeBlocks",
+			Handler:       _AccessAPI_SubscribeBlocks_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "flow/access/access.proto",
 }
