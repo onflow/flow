@@ -158,6 +158,8 @@ service AccessAPI {
   rpc GetExecutionResultByID(GetExecutionResultByIDRequest)
       returns (ExecutionResultByIDResponse);
 
+  // Subscriptions
+  
   // SubscribeBlocks streams finalized or sealed blocks starting at the requested
   // start block, up until the latest available block. Once the latest is
   // reached, the stream will remain open and responses are sent for each new
@@ -174,7 +176,11 @@ service AccessAPI {
   // node. This may happen if the block was from a previous spork, or if the block has yet
   // not been received.
   rpc SubscribeBlocks(SubscribeBlocksRequest)
-      returns (stream SubscribeBlocksResponse);        
+      returns (stream SubscribeBlocksResponse);
+
+  // SendAndSubscribeTransactionStatuses TBD
+  rpc SendAndSubscribeTransactionStatuses(SendAndSubscribeTransactionStatusesRequest)
+      returns (stream SendAndSubscribeTransactionStatusesResponse);            
 }
 
 message PingRequest {}
@@ -426,6 +432,8 @@ message ExecutionResultByIDResponse {
   entities.Metadata metadata = 2;
 }
 
+// Subscriptions
+
 // The request for SubscribeBlocks
 message SubscribeBlocksRequest {
   // Block ID of the first block to subscribe.
@@ -452,4 +460,14 @@ message SubscribeBlocksResponse {
   // The sealed or finalized blocks according to the block status
   // in the request.
   entities.Block block = 1;
+}
+
+message SendAndSubscribeTransactionStatusesRequest {
+  entities.Transaction transaction = 1;
+}
+
+message SendAndSubscribeTransactionStatusesResponse {
+  bytes id = 1;
+  entities.TransactionStatus status = 2;
+  string error_message = 3;
 }

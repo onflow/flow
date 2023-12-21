@@ -123,6 +123,8 @@ type AccessAPIClient interface {
 	// node. This may happen if the block was from a previous spork, or if the block has yet
 	// not been received.
 	SubscribeBlocks(ctx context.Context, in *SubscribeBlocksRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksClient, error)
+	// SendAndSubscribeTransactionStatuses TBD
+	SendAndSubscribeTransactionStatuses(ctx context.Context, in *SendAndSubscribeTransactionStatusesRequest, opts ...grpc.CallOption) (AccessAPI_SendAndSubscribeTransactionStatusesClient, error)
 }
 
 type accessAPIClient struct {
@@ -444,6 +446,38 @@ func (x *accessAPISubscribeBlocksClient) Recv() (*SubscribeBlocksResponse, error
 	return m, nil
 }
 
+func (c *accessAPIClient) SendAndSubscribeTransactionStatuses(ctx context.Context, in *SendAndSubscribeTransactionStatusesRequest, opts ...grpc.CallOption) (AccessAPI_SendAndSubscribeTransactionStatusesClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[1], "/flow.access.AccessAPI/SendAndSubscribeTransactionStatuses", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISendAndSubscribeTransactionStatusesClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SendAndSubscribeTransactionStatusesClient interface {
+	Recv() (*SendAndSubscribeTransactionStatusesResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISendAndSubscribeTransactionStatusesClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISendAndSubscribeTransactionStatusesClient) Recv() (*SendAndSubscribeTransactionStatusesResponse, error) {
+	m := new(SendAndSubscribeTransactionStatusesResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // AccessAPIServer is the server API for AccessAPI service.
 // All implementations should embed UnimplementedAccessAPIServer
 // for forward compatibility
@@ -549,6 +583,8 @@ type AccessAPIServer interface {
 	// node. This may happen if the block was from a previous spork, or if the block has yet
 	// not been received.
 	SubscribeBlocks(*SubscribeBlocksRequest, AccessAPI_SubscribeBlocksServer) error
+	// SendAndSubscribeTransactionStatuses TBD
+	SendAndSubscribeTransactionStatuses(*SendAndSubscribeTransactionStatusesRequest, AccessAPI_SendAndSubscribeTransactionStatusesServer) error
 }
 
 // UnimplementedAccessAPIServer should be embedded to have forward compatible implementations.
@@ -650,6 +686,9 @@ func (UnimplementedAccessAPIServer) GetExecutionResultByID(context.Context, *Get
 }
 func (UnimplementedAccessAPIServer) SubscribeBlocks(*SubscribeBlocksRequest, AccessAPI_SubscribeBlocksServer) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeBlocks not implemented")
+}
+func (UnimplementedAccessAPIServer) SendAndSubscribeTransactionStatuses(*SendAndSubscribeTransactionStatusesRequest, AccessAPI_SendAndSubscribeTransactionStatusesServer) error {
+	return status.Errorf(codes.Unimplemented, "method SendAndSubscribeTransactionStatuses not implemented")
 }
 
 // UnsafeAccessAPIServer may be embedded to opt out of forward compatibility for this service.
@@ -1242,6 +1281,27 @@ func (x *accessAPISubscribeBlocksServer) Send(m *SubscribeBlocksResponse) error 
 	return x.ServerStream.SendMsg(m)
 }
 
+func _AccessAPI_SendAndSubscribeTransactionStatuses_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SendAndSubscribeTransactionStatusesRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SendAndSubscribeTransactionStatuses(m, &accessAPISendAndSubscribeTransactionStatusesServer{stream})
+}
+
+type AccessAPI_SendAndSubscribeTransactionStatusesServer interface {
+	Send(*SendAndSubscribeTransactionStatusesResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISendAndSubscribeTransactionStatusesServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISendAndSubscribeTransactionStatusesServer) Send(m *SendAndSubscribeTransactionStatusesResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 // AccessAPI_ServiceDesc is the grpc.ServiceDesc for AccessAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1378,6 +1438,11 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "SubscribeBlocks",
 			Handler:       _AccessAPI_SubscribeBlocks_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SendAndSubscribeTransactionStatuses",
+			Handler:       _AccessAPI_SendAndSubscribeTransactionStatuses_Handler,
 			ServerStreams: true,
 		},
 	},
