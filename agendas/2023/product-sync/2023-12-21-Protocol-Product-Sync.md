@@ -1,4 +1,3 @@
-Please add discussion topics below
 
 **Update on Epoch Fallback Mode** [EFM] **Recovery**:
 * currenlty working full time on 
