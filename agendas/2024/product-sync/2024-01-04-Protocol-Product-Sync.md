@@ -2,7 +2,7 @@ Please add below topics you would like to discuss during the call
 
 **Update on Dynamic Protocol State V1**:
 * mature, full tested version v1 ready to be merged to master
-* aligned on marketing strategy (Sean, Luke, Alex):
+* aligned on marketing strategy (Sean, Luke, Alex :point_right: [Dynamic Protocol State](https://www.notion.so/dapperlabs/Dynamic-Protocol-State-675ec3c2e8cc49df9e534fb8e112aae0?pvs=4)):
   - rollout as part of Q1 Spork
   - framing:
      - one step towards permissionless participation / permissionless Consensus Nodes
