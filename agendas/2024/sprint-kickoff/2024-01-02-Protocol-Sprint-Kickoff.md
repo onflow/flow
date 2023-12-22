@@ -180,7 +180,7 @@ Objective: Make execution data and script execution available on Edge nodes.
 - TPS  https://github.com/dapperlabs/flow-go/issues/6296
 - [Zero Quarantined Networking Layer Tests Epic](https://github.com/onflow/flow-go/issues/4816)
 
-### **Consensus (Dynamic Protocol State) - Alex H**
+### **Consensus (Dynamic Protocol State) - Yurii**
 
 **Dynamic Protocol State v1 ready for mainnet** :tada:
 - last remaining cleanups done
