@@ -134,15 +134,24 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
+* Use local events for AccessAPI get events endpoints - [PR 4851](https://github.com/onflow/flow-go/pull/4851)
+* Use local events for event streaming API - [PR 5160](https://github.com/onflow/flow-go/pull/5160)
+* Index collections from execution data - [PR 5163](https://github.com/onflow/flow-go/pull/5163)
+* Refactor NewRegisterID to accept address - [PR 5144](https://github.com/onflow/flow-go/pull/5144)
+* Fix GetRegisterValues input types - [PR 5138](https://github.com/onflow/flow-go/pull/5138)
+* Update RegisterID protobuf to use bytes - [PR 1417](https://github.com/onflow/flow/pull/1417)
+* Add support for event streaming API - [SDK PR 417](https://github.com/onflow/flow-go-sdk/pull/417)
 
 **This sprint**
 
 - Script Execution on ANs
   - Use version beacon to ensure correct version for script exec - [Issue 5040](https://github.com/onflow/flow-go/issues/5040)
-  - Add GetRegisters API endpoint to ExecutionData API - [Issue 4756](https://github.com/onflow/flow-go/issues/4756)
   - Work with QuickNode to setup script exec in compare mode on public ANs
-- Misc
-  - Work with 4d on getting event streaming and CCF into libraries.
+  - Validate event API changes working with testnet/mainnet data
+- Support KROK team with
+  - Use local index for Transaction Results in Access API - [Issue 4753](https://github.com/onflow/flow-go/issues/4753)
+  - Enable execution state sync on observers - [Issue 5186](https://github.com/onflow/flow-go/issues/5186)
+  - Add execution state sync to public network - [Issue 2795](https://github.com/onflow/flow-go/issues/2795)
 
 **Active Epics**
 
