@@ -152,23 +152,22 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 ### **Permissionless Network - Yahya H**
 
-**Done last sprint**
-  - Implemented the last part (part-3) of the [Optimizing memory-intensive RPC inspection operations](https://github.com/dapperlabs/flow-go/issues/6870), it is about [caching the application-specific score](https://github.com/onflow/flow-go/pull/5045) (under review).
-  - Developed the last part of the solution to `mainnet23` [nodes blocking issue](https://github.com/dapperlabs/flow-go/issues/6895), the [last PR](https://github.com/onflow/flow-go/pull/5115) (under-review).
-  - Fixed Flakey **`TestGossipSubSpamMitigationIntegration`** [test](https://github.com/dapperlabs/flow-go/issues/6915) [PR 5095](https://github.com/onflow/flow-go/pull/5095).
-  - Addressed the issue where nodes will penalize each other during startup due to the network not being completely ready causing scoring penalty false positives by implementing a silence period for GossipSuB [PR 5084](https://github.com/onflow/flow-go/pull/5084) (under review).
-  - Concluded the [multi-error invalid control message](https://github.com/dapperlabs/flow-go/issues/6664) notification [PR 4978](https://github.com/onflow/flow-go/pull/4978) (under review).
+- **Done last sprint:**
+    - Fixed flakey `TestGossipSubIHaveBrokenPromises_Below_Threshold` and `TestGossipSubIHaveBrokenPromises_Above_Threshold` [PR5145](https://github.com/onflow/flow-go/pull/5145)
+    - Debugged the `mainnet24` [peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913).
+        - The short term plan deployed on a single node [5180](https://github.com/onflow/flow-go/pull/5180), [5176](https://github.com/onflow/flow-go/pull/5176), [5172](https://github.com/onflow/flow-go/pull/5172)
+        - The long term plan is in progress [6924](https://github.com/dapperlabs/flow-go/issues/6924), [6923](https://github.com/dapperlabs/flow-go/issues/6923)
+    - Update open PR’s with new file structure and config structure
+        - [Apply GossipSub Spam Penalty to Misbehaving Peers Based on Count and Err in InvCtrlMsgNotif](https://github.com/onflow/flow-go/pull/4978)
+        - Implements a silence period for GossipSub peer scoring [PR5084](https://github.com/onflow/flow-go/pull/5084)
+        - GossipSub Replay Message Mitigation [PR5058](https://github.com/onflow/flow-go/pull/5058)
 
+- **Next sprint:**
+    - Concluding the `mainnet24` [peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913)
+    - Scoring Parameters Config and Relaxed Behavioral Penalty [Issue6923](https://github.com/dapperlabs/flow-go/issues/6923)
+    - [Issue6923](https://github.com/dapperlabs/flow-go/issues/6923)
+    - Improve RPC control message inspector error metrics [Issue1905](https://github.com/dapperlabs/flow-internal/issues/1905)
 
-**Still in Progress**
-  - Debugging the `mainnet24` [peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913). Our first investigator PR is under review, [which extends GossipSub router telemetry](https://github.com/onflow/flow-go/pull/5083).
-  - GossipSub Replay attack, implementing testing and updating base branch to contain new config file refactoring. [PR 5058](https://github.com/onflow/flow-go/pull/5058)
-
-
-**Starting Next Sprint**:
-  - [Concluding GossipSub Message Forensics FLIP and planning the development](https://github.com/onflow/flips/pull/195)
-  - [Fixing flakey `TestGossipSubIHaveBrokenPromises_Below_Threshold` (and Above Threshold) ([Zero Quarantined Networking Layer Tests Epic](https://github.com/onflow/flow-go/issues/4816))
-  - Fixing flakey tests fixture control message validation inspector test failures ([Zero Quarantined Networking Layer Tests Epic](https://github.com/onflow/flow-go/issues/4816))
 
 **Active Epics**
 
