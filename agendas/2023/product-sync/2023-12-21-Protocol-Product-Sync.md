@@ -1,6 +1,6 @@
 
 **Update on Epoch Fallback Mode** [EFM] **Recovery**:
-* currenlty working full time on 
+* currently working full time on 
   - rough design and estimating EFM Recovery
   - testing Dynamic Protocol State
 * this is not clearly covered in any of the OKR objectives right now; and maybe a little late in the cycle to change the objective
