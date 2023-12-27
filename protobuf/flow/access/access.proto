@@ -453,6 +453,9 @@ message SubscribeBlocksRequest {
   // 1. BLOCK_FINALIZED
   // 2. BLOCK_SEALED
   entities.BlockStatus block_status = 3;
+
+  // Boolean value determining the response: 'full' if `true`, 'light' otherwise.
+  bool full_block_response = 4;
 }
 
 // The response for SubscribeBlocks
