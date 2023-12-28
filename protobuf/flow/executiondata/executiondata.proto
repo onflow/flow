@@ -48,7 +48,7 @@ service ExecutionDataAPI {
   // all events are returned.
   //
   // Responses are returned for each block containing at least one event that
-  // matches the filter. Additionally, heatbeat responses
+  // matches the filter. Additionally, heartbeat responses
   // (SubscribeEventsResponse with no events) are returned periodically to allow
   // clients to track which blocks were searched. Clients can use this
   // information to determine which block to start from when reconnecting.
@@ -66,6 +66,30 @@ service ExecutionDataAPI {
   // GetRegisterValues gets the values for the given register IDs as of the given block height
   rpc GetRegisterValues(GetRegisterValuesRequest)
       returns (GetRegisterValuesResponse);
+
+  // SubscribeAccountStatuses streams account statuses for all blocks starting at the requested
+  // start block, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
+  //
+  // Events within each block are filtered by the provided StatusFilter, and only
+  // those events that match the filter are returned. If no filter is provided,
+  // all events are returned.
+  //
+  // Responses are returned for each block containing at least one event that
+  // matches the filter. Additionally, heartbeat responses
+  // (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+  // clients to track which blocks were searched. Clients can use this
+  // information to determine which block to start from when reconnecting.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid
+  // StatusFilter or start block.
+  // - NotFound is returned if the start block is not currently available on the
+  // node. This may happen if the block was from a previous spork, or if the block has yet
+  //   not been received.
+  rpc SubscribeAccountStatuses(SubscribeAccountStatusesRequest)
+      returns (stream SubscribeAccountStatusesResponse);
 }
 
 // The request for GetExecutionDataByBlockID
