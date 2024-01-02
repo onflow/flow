@@ -6,6 +6,6 @@ option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
 option java_package = "org.onflow.protobuf.entities";
 
 message RegisterID {
-  string owner = 1;
-  string key = 2;
+  bytes owner = 1;
+  bytes key = 2;
 }
