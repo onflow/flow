@@ -8,12 +8,12 @@
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%  |    100%       |       0%          |
 | Block Finalization      | 99.9%  |    100%       |       0%          |
-| Transaction Execution   | 99.9%  |    99.96%     |       39.7%       |
-| Block Sealing           | 99.9%  |    99.96%     |       39.7%       |
-| Access API Liveness     | 99.9%  |    99.973%    |       27.3%       |
+| Transaction Execution   | 99.9%  |    100%       |       0%          |
+| Block Sealing           | 99.9%  |    100%       |       0%          |
+| Access API Liveness     | 99.9%  |    100%       |       0%          |
 
 #### Incidents
-- HCU on 11/29
+- N/A
 
 ### **Performance Pod Sprint Objective - Jan B**
 
