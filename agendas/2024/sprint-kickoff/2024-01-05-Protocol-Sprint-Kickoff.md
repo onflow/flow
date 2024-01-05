@@ -6,7 +6,7 @@
 - [Released CLI & Emulator](https://forum.flow.com/t/update-on-cadence-1-0/5197/7?u=jan) based on Cadence 1.0 RC1 release - this completes [Cadence 1.0 launch plan Milestone 1](https://github.com/orgs/onflow/projects/35/views/5).
 - Published [Cadence 1.0 release plan](https://forum.flow.com/t/cadence-1-0-upgrade-plan/5477) on forum.
 - Serving events endpoints from local data on devnet
-- QuickNode running ANs with script execution in compare mode on devnet/testnet
+- QuickNode running ANs with script execution in compare mode on mainnet & testnet
 
 ### Mainnet Uptime SLO - Last 14 days (11/24 to 12/08)
 
