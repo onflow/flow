@@ -51,7 +51,7 @@ Atree register inlining
 
 - Atree register inlining
   - Merge the [Atree inlining integration with Cadence](https://github.com/onflow/cadence/pull/2882)
-  - Complete validation of [migration](https://github.com/onflow/flow-go/pull/4633) of [integrated solution for Atree register inlining](https://github.com/onflow/cadence/issues/2809)
+  - Opened [PR 5204](https://github.com/onflow/flow-go/pull/5204) to replace hash-based validation used by [migration](https://github.com/onflow/flow-go/pull/4633) in order to prepare for [integrating Atree register inlining](https://github.com/onflow/cadence/issues/2809)
   - Starting Refactoring of the migration using [mutable iterator](https://github.com/onflow/atree/pull/359)
 - Continue testing / benchmarking of [Storehouse first milestone](https://github.com/onflow/flow-go/issues/4682) (execution state on disk) on Testnet.
 - EVM support & development
