@@ -8,15 +8,15 @@
 - Serving events endpoints from local data on devnet
 - QuickNode running ANs with script execution in compare mode on mainnet & testnet
 
-### Mainnet Uptime SLO - Last 14 days (11/24 to 12/08)
+### Mainnet Uptime SLO - Last 14 days (12/23/23 to 1/5/24)
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%  |    100%       |       0%          |
 | Block Finalization      | 99.9%  |    100%       |       0%          |
-| Transaction Execution   | 99.9%  |    100%       |       0%          |
-| Block Sealing           | 99.9%  |    100%       |       0%          |
-| Access API Liveness     | 99.9%  |    100%       |       0%          |
+| Transaction Execution (Dashboard is off)   | 99.9%  |    100%       |       0%          |
+| Block Sealing (Dasbhoard is off)           | 99.9%  |    100%       |       0%          |
+| Access API Liveness     | 99.936%  |    100%       |       64.5%          |
 
 #### Incidents
 - N/A
@@ -237,39 +237,44 @@ Objective: Make execution data and script execution available on Edge nodes.
 **Done last sprint**
 
 ************Node Hosting************
-- Assist with Canary Sporks
-- Assist with HCU
-- Create automation for managing Dapper nodes
-- Increase Devnet Data disks
-- Create new Canary EN for storehouse testing in shadow mode
-- Create infrastructure & configuration for Crescendo network
+- Create Crescendo network configuration 
+- Create Crescendo network infrastructure
+- Execute Crescendo spork from Devnet
+- Configure load balancer for Crescendo network
+- Upgrade data disks on Mainnet & Devnet Nodes
 
 ************FF Migration************
-- Create new KMS key for mgmt of Dapper nodes
-- Create strategy for observability migration
-- Create automation for dashboard migration
-- Create automation for enabling multi-destination loggging
-- Create promtehus configuration for enabling multi-destination metrics
-- Work with Grafana team in prepration for migration
+- Terraform Grafana Dashboards for migration 
+- Terraform Grafana protocol & resource alerts for migration 
+- Terraform Grafana contact points & notification policies for migration 
+- Terraform Grafana teams for migration from PagerDuty to Grafana OnCall 
+- Terraform Synthetic monitors for migration from PagerDuty to Grafana OnCall 
+
+************Support************
+- Assist with the creation of isolated Devnet EN for storehouse testing 
+- Assist with the creation of isolated Mainnet EN for storehouse testing 
+- Provided support for Flow DevEx migration efforts 
+- Update Prometheus Node to include additional QuickNode IPs to be scraped
 
 ************Benchnet************
-- Grant additional access to K8s cluster and executing cleanup
+- Create documentation for leveraging additional access to benchnet
+- Update Benchnet creation workflow to execute bootstrapping in parallel to docker builds
+
+************Automation************
+- Update Docker build workflows to leverage deploy keys rather than PATs to pull private dependencies
+- Update Docker sync workflows to leverage deploy keys rather than PATs to fix broken sync 
 
 **This Sprint**
 
 ************Node Hosting************
-- Execute spork for Crescendo network
-- Configure load balancer for Crescendo network
 - Remove unnecessary Dapper nodes that have been migrated
+- Assist with HCU
 
 ************FF Migration************
-- Create automation for migrating alerts
-- Create strategy and autoamtion for moving to IRM
-- Configure all nodes to deliver logs to both destinations
-- Configure all prometheus instances to deliver metrics to both destinations
-
-************Benchnet************
-- Create documentation for leveraging additional access to benchnet
+- Terraform synthetic monitor alerts
+- Onboard users into new Grafana stack
+- Configure all nodes to deliver logs to both Grafana stacks
+- Configure all prometheus instances to deliver metrics to both Grafana stacks 
 
 ### FLIPs Tracker (🆕 section) - Kshitij
 
