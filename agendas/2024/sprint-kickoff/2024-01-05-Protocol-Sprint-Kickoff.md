@@ -40,7 +40,7 @@ EVM
 - [Setup EVM account Flow vault during bootstrap](https://github.com/onflow/flow-go/pull/5070)
 
 Atree register inlining
-- Continued work on migration validation using Equal().
+- Continued work on replacing hash-based migration validation using Equal() instead.
 - Optimization of execution state migration, reducing memory usage: [Migrate payloads by reference](https://github.com/onflow/flow-go/pull/5123)
 - Improved migration progress logging: [Change progress log to be more verbose](https://github.com/onflow/flow-go/pull/5122)
 
@@ -142,7 +142,7 @@ Chores
 **This sprint**
 
 - Continue support EVM on FLow initiative.
-- Completed enabling of [contract upgrade testing in emulator](https://github.com/onflow/cadence/issues/2947)
+- Complete enabling of [contract upgrade testing in emulator](https://github.com/onflow/cadence/issues/2947)
 - Start [More permissive contract upgrade checker for 1.0 network upgrade](https://github.com/onflow/cadence/issues/2865)
 - Complete [integrating Cadence 1.0 migrations with FVM](https://github.com/onflow/cadence/issues/2990) and Atree regster inlining migration and start testing the integrated migration.
 - Continue Stable Cadence Docs update and knocking tasks off the [tech debt list](https://github.com/onflow/cadence/issues/2642)
