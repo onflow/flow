@@ -202,6 +202,7 @@ Objective: Make execution data and script execution available on Edge nodes.
 - **Next sprint:**
     - Concluding the `mainnet24` [peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913)
       - Scoring Parameters Config and Relaxed Behavioral Penalty [Issue6923](https://github.com/dapperlabs/flow-go/issues/6923)
+      - Enhance Gossipsub Scoring Mechanism for Configurable RPC Inspection enable/disable via configs [Issue6390](https://github.com/dapperlabs/flow-go/issues/6930)
     - Duplicate Topic in IHAVE Control Message in GossipSub (potential internal bug of GossipSub) [Issue6927](https://github.com/dapperlabs/flow-go/issues/6927)
     - Atomic `AdjustWithInit` and `GetWithInit` for Backend mempools [Issue6929](https://github.com/dapperlabs/flow-go/issues/6929)
     - Improve RPC control message inspector error metrics [Issue1905](https://github.com/dapperlabs/flow-internal/issues/1905)
