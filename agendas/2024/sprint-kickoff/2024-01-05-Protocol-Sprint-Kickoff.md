@@ -5,6 +5,8 @@
 - Merged Cadence 1.0 feature branch to Cadence master
 - [Released CLI & Emulator](https://forum.flow.com/t/update-on-cadence-1-0/5197/7?u=jan) based on Cadence 1.0 RC1 release - this completes [Cadence 1.0 launch plan Milestone 1](https://github.com/orgs/onflow/projects/35/views/5).
 - Published [Cadence 1.0 release plan](https://forum.flow.com/t/cadence-1-0-upgrade-plan/5477) on forum.
+- Serving events endpoints from local data on devnet
+- QuickNode running ANs with script execution in compare mode on devnet/testnet
 
 ### Mainnet Uptime SLO - Last 14 days (11/24 to 12/08)
 
@@ -172,8 +174,8 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 - Script Execution on ANs
   - Use version beacon to ensure correct version for script exec - [Issue 5040](https://github.com/onflow/flow-go/issues/5040)
-  - Work with QuickNode to setup script exec in compare mode on public ANs
-  - Validate event API changes working with testnet/mainnet data
+  - Analyze results from QuickNode running script exec in compare mode on public nodes
+  - Debug high CPU scripts/accounts on devnet
 - Support KROK team with
   - Use local index for Transaction Results in Access API - [Issue 4753](https://github.com/onflow/flow-go/issues/4753)
   - Enable execution state sync on observers - [Issue 5186](https://github.com/onflow/flow-go/issues/5186)
