@@ -14,8 +14,12 @@ Please add below topics you would like to discuss during the call
    
 2. FYI - upcoming HCUs
   - Release notes - Vishal to start.
+  - Crypto improvements may result in block rate improvements.
+    - can be highlighted in crescendo network release.
+    - data analysis task.@Alex.
 
 3. FYI - OKR planning end of next week
+   
 
 
 
