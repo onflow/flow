@@ -87,12 +87,12 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### **Permissionless Network - Yahya H**
 
 - **Done last sprint:**
-- Duplicate Topic in IHAVE Control Message in GossipSub (edge-case of GossipSub) [Issue6927](https://github.com/dapperlabs/flow-go/issues/6927)
-- [Enhance RPC Inspection with Configurable Thresholds and Granular Metrics Collection](https://github.com/onflow/flow-go/pull/5234)
-- [Atomic AdjustWithInit and GetWithInit for Backend mempools](https://github.com/onflow/flow-go/pull/5206)
-- [Configurable GossipSub Peer Scoring Parameters](https://github.com/onflow/flow-go/pull/5210)
-- [Implementing a silence period for GossipSub peer scoring](https://github.com/onflow/flow-go/pull/5084)
-- [Apply GossipSub Spam Penalty to Misbehaving Peers Based on Count and Err in InvCtrlMsgNotif](https://github.com/onflow/flow-go/pull/4978)
+  - Duplicate Topic in IHAVE Control Message in GossipSub (edge-case of GossipSub) [Issue6927](https://github.com/dapperlabs/flow-go/issues/6927)
+  - [Enhance RPC Inspection with Configurable Thresholds and Granular Metrics Collection](https://github.com/onflow/flow-go/pull/5234)
+  - [Atomic AdjustWithInit and GetWithInit for Backend mempools](https://github.com/onflow/flow-go/pull/5206)
+  - [Configurable GossipSub Peer Scoring Parameters](https://github.com/onflow/flow-go/pull/5210)
+  - [Implementing a silence period for GossipSub peer scoring](https://github.com/onflow/flow-go/pull/5084)
+  - [Apply GossipSub Spam Penalty to Misbehaving Peers Based on Count and Err in InvCtrlMsgNotif](https://github.com/onflow/flow-go/pull/4978)
 
 - **Next sprint:**
     - Wrapping up the `mainnet24` [peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913)
