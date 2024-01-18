@@ -7,7 +7,7 @@
 | Collection Finalization | 99.9%  |    100%       |       0%          |
 | Block Finalization      | 99.9%  |    100%       |       0%          |
 | Transaction Execution (Dashboard is off)   | 99.9%  |    100%       |       0%          |
-| Block Sealing (Dasbhoard is off)           | 99.9%  |    100%       |       0%          |
+| Block Sealing (Dashboard is off)           | 99.9%  |    100%       |       0%          |
 | Access API Liveness     | 99.936%  |    100%       |       64.5%          |
 
 #### Incidents
