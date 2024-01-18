@@ -87,14 +87,19 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### **Permissionless Network - Yahya H**
 
 - **Done last sprint:**
+- Duplicate Topic in IHAVE Control Message in GossipSub (edge-case of GossipSub) [Issue6927](https://github.com/dapperlabs/flow-go/issues/6927)
+- [Enhance RPC Inspection with Configurable Thresholds and Granular Metrics Collection](https://github.com/onflow/flow-go/pull/5234)
+- [Atomic AdjustWithInit and GetWithInit for Backend mempools](https://github.com/onflow/flow-go/pull/5206)
+- [Configurable GossipSub Peer Scoring Parameters](https://github.com/onflow/flow-go/pull/5210)
+- [Implementing a silence period for GossipSub peer scoring](https://github.com/onflow/flow-go/pull/5084)
+- [Apply GossipSub Spam Penalty to Misbehaving Peers Based on Count and Err in InvCtrlMsgNotif](https://github.com/onflow/flow-go/pull/4978)
 
 - **Next sprint:**
-    - Concluding the `mainnet24` [peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913)
-      - Scoring Parameters Config and Relaxed Behavioral Penalty [Issue6923](https://github.com/dapperlabs/flow-go/issues/6923)
-      - Enhance Gossipsub Scoring Mechanism for Configurable RPC Inspection enable/disable via configs [Issue6390](https://github.com/dapperlabs/flow-go/issues/6930)
-    - Duplicate Topic in IHAVE Control Message in GossipSub (potential internal bug of GossipSub) [Issue6927](https://github.com/dapperlabs/flow-go/issues/6927)
-    - Atomic `AdjustWithInit` and `GetWithInit` for Backend mempools [Issue6929](https://github.com/dapperlabs/flow-go/issues/6929)
-    - Improve RPC control message inspector error metrics [Issue1905](https://github.com/dapperlabs/flow-internal/issues/1905)
+    - Wrapping up the `mainnet24` [peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913)
+    - [Enhancing Gossipsub Scoring Mechanism for Configurable RPC Inspection enable/disable via configs](https://github.com/dapperlabs/flow-go/issues/6930)
+    - [Creating comprehensive GossipSub forensics dashboard](https://github.com/dapperlabs/flow-go/issues/6933)
+    - [Configurable invalid topic id threshold for GossipSub RPC inspection](https://github.com/dapperlabs/flow-go/issues/6934)
+    - [Fixing flakey `TestSubscriptionValidator_Integration`](https://github.com/dapperlabs/flow-go/issues/6932)
 
 
 **Active Epics**
