@@ -1,5 +1,7 @@
 # Team Wins 🎉
 
+- Very quick turnaround on migration gaps needed for v2 token standards - in ~1week we came up with a clear plan on what needs to be added in Cadence migrations to support the updated v2 token standards (targetting next week to close the discussion and approve the standards).
+
 ### Mainnet Uptime SLO - Last 14 days (1/5/24 to 1/18/24) - Vishal
 
 |                         | Target | Current Score | Error budget used |
@@ -20,15 +22,37 @@
 
 **Done last sprint**
 
+- Storehouse
+  - Ingestion engine refactoring (Tech debt)
+    - [Remove module.Local from ingestion engine](https://github.com/onflow/flow-go/pull/5243)
+
+Atree Register Inlining migration
+- [Replace hash-based validation of migrated Cadence values to use Equal()](https://github.com/onflow/flow-go/pull/5204)
+- [Remove cricket moments references from atree migration](https://github.com/onflow/flow-go/pull/5242)
+- [Deduplicate contract names migration](https://github.com/onflow/flow-go/pull/5143)
+- [Migrate-by-account changes](https://github.com/onflow/flow-go/pull/5128)
+
+EVM Core
+- [evm non-fatal runtime errors are not handled properly by FVM](https://github.com/onflow/flow-go/issues/5149)
+  - [Handle EVM errors](https://github.com/onflow/flow-go/pull/5216)
+- [Update EVM test](https://github.com/onflow/flow-go/pull/5215)
+- [Storage account Flow reserve](https://github.com/onflow/flow-go/issues/5105)
+  - [Add storage limit check exception for EVM address](https://github.com/onflow/flow-go/pull/5106)
+
+Other Improvements
+- [Checker engine can't do the proper check when execution is behind finalization](https://github.com/onflow/flow-go/issues/5173)
+  - [Refactor Checker Engine](https://github.com/onflow/flow-go/pull/5184)
+
+
 **This sprint**
 
 - Atree register inlining
   - Merge the [Atree inlining integration with Cadence](https://github.com/onflow/cadence/pull/2882)
-  - Opened [PR 5204](https://github.com/onflow/flow-go/pull/5204) to replace hash-based validation used by [migration](https://github.com/onflow/flow-go/pull/4633) in order to prepare for [integrating Atree register inlining](https://github.com/onflow/cadence/issues/2809)
-  - Starting Refactoring of the migration using [mutable iterator](https://github.com/onflow/atree/pull/359)
+  - Merge [integrating Atree register inlining](https://github.com/onflow/cadence/issues/2809)
+  - Continue Refactoring of the migration using [mutable iterator](https://github.com/onflow/atree/pull/359)
 - Continue testing / benchmarking of [Storehouse first milestone](https://github.com/onflow/flow-go/issues/4682) (execution state on disk) on Testnet.
 - EVM support & development
-- Help with Cadence 1.0 migratons and DevEx tooling
+- Support Cadence 1.0 migratons and DevEx tooling
 
 **On Hold**
 
@@ -48,6 +72,52 @@
 Objective: long-term support release of Cadence with no expected breaking changes
 
 **Done last sprint**
+
+Cadence 1.0 migrations
+- [Migration for core contracts](https://github.com/onflow/cadence/issues/2989)
+  - [Add Change Contract Code Migration](https://github.com/onflow/flow-go/pull/5191)
+- [Fix the entitlements migration](https://github.com/onflow/cadence/issues/3026)
+- [Improve error handling in migrations](https://github.com/onflow/cadence/issues/3001)
+- [Entitlements Migration](https://github.com/onflow/cadence/pull/2951)
+
+Cadence 1.0 new Features
+- Standard Library: [Add a Range<T: Integer> type and allow in for-loop](https://github.com/onflow/cadence/issues/2482)
+- [Lift * to optional references](https://github.com/onflow/cadence/issues/3005)
+  - [Add support for dereferencing optional references](https://github.com/onflow/cadence/pull/3008)
+- Pre-requisite for Atree Register Inlining migration validation: [Add getter for field count to composite value](https://github.com/onflow/cadence/pull/3002)
+
+Cadence 1.0 Improvements
+- [Improve parsing for backward compatibility rules](https://github.com/onflow/cadence/pull/3021)
+- [Reserve more keywords for future proofing](https://github.com/onflow/cadence/issues/3019)
+- [Allow use of run-time types for capability functions](https://github.com/onflow/cadence/issues/1617)
+  - [Allow issuing capability controllers using type values](https://github.com/onflow/cadence/pull/3018)
+- [Improve code related to new InclusiveRange type](https://github.com/onflow/cadence/issues/3017)
+- [Use legacy hashing function for key removal](https://github.com/onflow/cadence/pull/3013)
+- [Defensively check the dereferenced value is not a resource](https://github.com/onflow/cadence/issues/3010)
+
+Cadence 1.0 Bugfixes
+- [Fix revertibleRandom with module test](https://github.com/onflow/cadence/pull/3025)
+- [prevent creation of nested storage references](https://github.com/onflow/cadence/pull/3020)
+- [Fix incorrect type inference for InclusiveRange](https://github.com/onflow/cadence/pull/3009)
+- [Fix incorrect type inference for InclusiveRange](https://github.com/onflow/cadence/issues/2886)
+  - [Improve type inference](https://github.com/onflow/cadence/pull/3004)
+- [Prevent use of non-attachment type names in default arguments](https://github.com/onflow/cadence/issues/3000)
+- [Prevent use of `base` variable in default destroy event arguments outside attachments](https://github.com/onflow/cadence/issues/2999)\
+- [Statically prevent referenced-typed subexpressions in default arguments to destroy events](https://github.com/onflow/cadence/issues/2996)
+
+Docs
+- [Fix styling](https://github.com/onflow/cadence-lang.org/issues/40)
+- [Create documentation for InclusiveRange](https://github.com/onflow/cadence-lang.org/issues/39)
+
+Chores
+- [Update emulator to Cadence 1.0 preview 2](https://github.com/onflow/flow-emulator/issues/550)
+- [Update flow-go to Cadence 1.0 preview 2](https://github.com/onflow/flow-go/issues/5246)
+- [Update flow-go-sdk to Cadence 1.0 preview 2](https://github.com/onflow/flow-go-sdk/issues/557)
+- [v0.42: Port #3002](https://github.com/onflow/cadence/issues/3003)
+- [Sync `feature/range-type` branch with `master`](https://github.com/onflow/cadence/issues/2995)
+- [Flow-go: Update to cadence 0.42.7-patch.1](https://github.com/dapperlabs/flow-go/issues/6931)
+- [Flow-go-sdk: update to cadence v0.42.7](https://github.com/onflow/flow-go-sdk/issues/550)
+- [Flow-go: Update Cadence to v0.42.7](https://github.com/onflow/flow-go/issues/5205)
 
 **This sprint**
 
