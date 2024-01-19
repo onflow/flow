@@ -140,13 +140,16 @@ Chores
 Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
+* Optimize header ID calculation in get events - [PR 5214](https://github.com/onflow/flow-go/pull/5214)
+* Log script exec mismatches as error - [PR 5194](https://github.com/onflow/flow-go/pull/5194)
+* Deployed local events and collection indexing to devnet/mainnet
+* Analyzed errors from QuickNode script execution.
 
 **This sprint**
 
 - Script Execution on ANs
-  - Use version beacon to ensure correct version for script exec - [Issue 5040](https://github.com/onflow/flow-go/issues/5040)
-  - Analyze results from QuickNode running script exec in compare mode on public nodes
-  - Debug high CPU scripts/accounts on devnet
+  - Debug performance issues seen on devnet and mainnet
+  - Address outstanding issues [Issue 5250](https://github.com/onflow/flow-go/issues/5250), [Issue 5251](https://github.com/onflow/flow-go/issues/5251)
 - Support KROK team with
   - Use local index for Transaction Results in Access API - [Issue 4753](https://github.com/onflow/flow-go/issues/4753)
   - Enable execution state sync on observers - [Issue 5186](https://github.com/onflow/flow-go/issues/5186)
