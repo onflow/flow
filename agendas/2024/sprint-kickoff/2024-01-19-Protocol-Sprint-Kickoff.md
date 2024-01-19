@@ -158,4 +158,7 @@ Objective: Make execution data and script execution available on Edge nodes.
 ### Key Release Dates & Breaking Changes
 
 - Next Mainnet/Testnet network upgrade (spork) dates: ~Q1 2024
-- Crescendo network going live on Wednesday, 12/13
+- HCU
+  Canary  - 1/19 (today) and on 1/22 (Monday)
+  Testnet - 1/24 (Wednesday)
+  Mainnet - 2/7 (Wednesday)
