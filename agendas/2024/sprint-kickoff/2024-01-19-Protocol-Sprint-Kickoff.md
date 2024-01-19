@@ -155,6 +155,9 @@ Objective: Make execution data and script execution available on Edge nodes.
 | Released    | 4  |    0     |       2       |       4          |        **10**          |
 | Total       | **17**  |    **32**    |       **7**       |       **12**          |        **68**          |
 
+- 9 new Flips were added across Application, Cadence and Protocol in Drafter or Proposed state.
+- Number of Accepted, Implemented and Released FLIPs stayed the same.
+  
 ### Key Release Dates & Breaking Changes
 
 - Next Mainnet/Testnet network upgrade (spork) dates: ~Q1 2024
