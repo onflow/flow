@@ -205,17 +205,32 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 **Done last sprint**
 
-**This Sprint**
-
-************Node Hosting************
-- Remove unnecessary Dapper nodes that have been migrated
-- Assist with HCU
+************Node Hosting************ 
+- Remove unstaked Consensus Nodes from Dapperlabs network  
+- Increase data disk sizes accross networks 
 
 ************FF Migration************
 - Terraform synthetic monitor alerts
+- Terraform synthetic monitors
+- Add Google auth to new Grafana stack
 - Onboard users into new Grafana stack
+  
+************Support************
+- Add rate limiting support to Envoy on Collection Nodes 
+- Assist with Flow DevEx migration to Cloud Run 
+- Assist IT with flow.com DNS configuration 
+
+**This Sprint**
+
+************Node Hosting************
+- Assist with HCU
+
+************FF Migration************
 - Configure all nodes to deliver logs to both Grafana stacks
 - Configure all prometheus instances to deliver metrics to both Grafana stacks 
+
+************Support************
+- Assist with Flow DevEx migration to Cloud Run 
 
 ### FLIPs Tracker - Vishal
 
