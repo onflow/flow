@@ -251,6 +251,6 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 - Next Mainnet/Testnet network upgrade (spork) dates: ~Q1 2024
 - HCU
-  Canary  - 1/19 (today) and on 1/22 (Monday)
-  Testnet - 1/24 (Wednesday)
-  Mainnet - 2/7 (Wednesday)
+  - Canary  - 1/19 (today) and on 1/22 (Monday)
+  - Testnet - 1/24 (Wednesday)
+  - Mainnet - 2/7 (Wednesday)
