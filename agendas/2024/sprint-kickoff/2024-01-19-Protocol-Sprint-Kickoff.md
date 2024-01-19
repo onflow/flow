@@ -121,10 +121,11 @@ Chores
 
 **This sprint**
 
-- Continue support EVM on FLow initiative.
+- Complete implementation of [migrations needed for v2 token standards](https://github.com/onflow/cadence/issues/3007)
 - Complete enabling of [contract upgrade testing in emulator](https://github.com/onflow/cadence/issues/2947)
 - Start [More permissive contract upgrade checker for 1.0 network upgrade](https://github.com/onflow/cadence/issues/2865)
 - Complete [integrating Cadence 1.0 migrations with FVM](https://github.com/onflow/cadence/issues/2990) and Atree regster inlining migration and start testing the integrated migration.
+- Continue support EVM on FLow initiative.
 - Continue Stable Cadence Docs update and knocking tasks off the [tech debt list](https://github.com/onflow/cadence/issues/2642)
 
 
