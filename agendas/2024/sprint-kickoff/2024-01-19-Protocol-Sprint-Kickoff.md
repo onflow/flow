@@ -143,17 +143,17 @@ Objective: Make execution data and script execution available on Edge nodes.
 - Configure all nodes to deliver logs to both Grafana stacks
 - Configure all prometheus instances to deliver metrics to both Grafana stacks 
 
-### FLIPs Tracker (🆕 section) - Kshitij
+### FLIPs Tracker - Vishal
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted | 5  |    6       |       0          |       6          |        **17**          |
-| Proposed      | 1  |    2       |       2          |       0          |        **5**          |
-| Accepted   | 2  |    1     |       1       |       1          |        **5**          |
-| Rejected           | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented     | 1  |    19    |       1       |       0          |        **21**          |
-| Released     | 4  |    0    |       2       |       4          |        **10**          |
-| Total     | **13**  |    **28**    |       **7**       |       **11**          |        **59**          |
+| Drafted     | 8  |    10    |       0          |       6          |        **24**          |
+| Proposed    | 2  |    2     |       2          |       1          |        **7**          |
+| Accepted    | 2  |    1     |       1       |       1          |        **5**          |
+| Rejected    | 0  |    0     |       1       |       0          |        **1**          |
+| Implemented | 1  |    19    |       1       |       0          |        **21**          |
+| Released    | 4  |    0     |       2       |       4          |        **10**          |
+| Total       | **17**  |    **32**    |       **7**       |       **12**          |        **68**          |
 
 ### Key Release Dates & Breaking Changes
 
