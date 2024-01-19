@@ -1,17 +1,20 @@
 # Team Wins 🎉
 
-### Mainnet Uptime SLO - Last 14 days (12/23/23 to 1/5/24)
+### Mainnet Uptime SLO - Last 14 days (1/5/24 to 1/18/24)
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%  |    100%       |       0%          |
-| Block Finalization      | 99.9%  |    100%       |       0%          |
-| Transaction Execution (Dashboard is off)   | 99.9%  |    100%       |       0%          |
-| Block Sealing (Dashboard is off)           | 99.9%  |    100%       |       0%          |
-| Access API Liveness     | 99.936%  |    100%       |       64.5%          |
+| Collection Finalization | 99.9%   |    100%       |       0%         |
+| Block Finalization      | 99.9%   |    100%       |       0%         |
+| Transaction Execution   | 99.9%   |    100%       |       0%         |
+| Block Sealing           | 99.9%   |    100%       |       0%         |
+| Access API Liveness     | 99.9%  |     99.96%     |       39.7%      |
 
 #### Incidents
-- N/A
+- 4 incidents on the public access nodes occurred on 1/12 (Friday)
+  - Root cause for two of them were the APAC region public AN nodes/edge being slow
+  - Still investigating the other two.
+  - Retro available [here](https://www.notion.so/dapperlabs/Mainnet-24-QN-AN-Fancraze-Finoa-issue-01-12-2024-c7a8c6bedd4345e5a72e9571ec01891e#4685bc247c624bf09b00478d3bf239eb)
 
 ### **Performance Pod Sprint Objective - Jan B**
 
