@@ -16,7 +16,10 @@ Possible OKRs for next cycle
 1. Zero downtime upgrade
     *  Figure out the approach.
     *  Zero downtime Execution environment
-    *  Zero downtime HCU for all other nodes - protocol state update
+    *  Zero downtime HCU for all other nodes.
+
+       Tech dimension: we are currenlty planning to build this as an extension on top of the Dynamic Protocol State.
+       In particular, we want to add a generic key-value store, where some of the entries are used for informing nodes about upcoming software version changes. This would be a much more robust and generally applicable design compared to the current MVP of the version beacon for the execution nodes.
     *  Design, POC could be the next OKR deliverable.
     *  Circle requirement to have fewer upgrades
 3. CI/CD for CLI, SDKs, and emulator to build from the latest flow-go
