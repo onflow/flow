@@ -2817,7 +2817,7 @@
     },
     {
         "Role": "verification",
-        "Address": "flow.hashquark.io:3569",
+        "Address": "flow.hashkey.cloud:3569",
         "NodeID": "55069e7e8926867bee8094bd31786f8f6b65c8c3bde468ae2275f33dc1245dc1",
         "Stake": 1000,
         "NetworkPubKey": "94aabc1693c8f3a8383b898c93b72b5d3807a69742b45ab629ceea721da60a2c7248fcbe74ecd4de1f1c970bd7e30af0adfb5fd06a1fa8e6cfe1c3c17530b3de",
