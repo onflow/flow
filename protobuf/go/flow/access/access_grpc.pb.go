@@ -123,7 +123,8 @@ type AccessAPIClient interface {
 	// node. This may happen if the block was from a previous spork, or if the block has yet
 	// not been received.
 	SubscribeBlocks(ctx context.Context, in *SubscribeBlocksRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksClient, error)
-	// SendAndSubscribeTransactionStatuses TBD
+	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
+	// is streamed back until the block containing the transaction becomes sealed.
 	SendAndSubscribeTransactionStatuses(ctx context.Context, in *SendAndSubscribeTransactionStatusesRequest, opts ...grpc.CallOption) (AccessAPI_SendAndSubscribeTransactionStatusesClient, error)
 }
 
@@ -583,7 +584,8 @@ type AccessAPIServer interface {
 	// node. This may happen if the block was from a previous spork, or if the block has yet
 	// not been received.
 	SubscribeBlocks(*SubscribeBlocksRequest, AccessAPI_SubscribeBlocksServer) error
-	// SendAndSubscribeTransactionStatuses TBD
+	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
+	// is streamed back until the block containing the transaction becomes sealed.
 	SendAndSubscribeTransactionStatuses(*SendAndSubscribeTransactionStatusesRequest, AccessAPI_SendAndSubscribeTransactionStatusesServer) error
 }
 

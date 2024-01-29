@@ -178,9 +178,10 @@ service AccessAPI {
   rpc SubscribeBlocks(SubscribeBlocksRequest)
       returns (stream SubscribeBlocksResponse);
 
-  // SendAndSubscribeTransactionStatuses TBD
+  // SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
+  // is streamed back until the block containing the transaction becomes sealed.
   rpc SendAndSubscribeTransactionStatuses(SendAndSubscribeTransactionStatusesRequest)
-      returns (stream SendAndSubscribeTransactionStatusesResponse);            
+        returns (stream SendAndSubscribeTransactionStatusesResponse);
 }
 
 message PingRequest {}
@@ -465,12 +466,24 @@ message SubscribeBlocksResponse {
   entities.Block block = 1;
 }
 
+// Request message for sending a transaction and subscribing to its status changes.
 message SendAndSubscribeTransactionStatusesRequest {
-  entities.Transaction transaction = 1;
+    // The transaction to be sent and tracked for status changes.
+    entities.Transaction transaction = 1;
 }
 
+// Response message for transaction status changes.
 message SendAndSubscribeTransactionStatusesResponse {
-  bytes id = 1;
-  entities.TransactionStatus status = 2;
-  string error_message = 3;
+    // The ID of the tracked transaction.
+    bytes id = 1;
+    // The status of the tracked transaction
+    // Possible transaction statuses are:
+    // - TransactionStatusPending
+    // - TransactionStatusFinalized
+    // - TransactionStatusExecuted
+    // - TransactionStatusSealed
+    // - `TransactionStatusExpired
+    entities.TransactionStatus status = 2;
+    // The message index of the response message. Used by the client to ensure they received all messages. Starts from "0".
+    uint64 message_index = 3;
 }
