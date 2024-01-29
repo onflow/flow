@@ -9,8 +9,6 @@ import "flow/entities/block_execution_data.proto";
 import "flow/entities/event.proto";
 import "flow/entities/register.proto";
 import "google/protobuf/timestamp.proto";
-import "flow/access/access.proto";
-import "flow/entities/block.proto";
 
 // Execution Data API provides access to execution data from the Flow network
 service ExecutionDataAPI {
