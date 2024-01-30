@@ -113,15 +113,7 @@ type AccessAPIClient interface {
 	// block as it becomes available.
 	//
 	// Each block are filtered by the provided block status, and only
-	// those blocks that match the status are returned. If no block status is provided,
-	// sealed blocks are returned.
-	//
-	// Errors:
-	// - InvalidArgument is returned if the request contains an invalid
-	// start block.
-	// - NotFound is returned if the start block is not currently available on the
-	// node. This may happen if the block was from a previous spork, or if the block has yet
-	// not been received.
+	// those blocks that match the status are returned.
 	SubscribeBlocks(ctx context.Context, in *SubscribeBlocksRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksClient, error)
 	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
 	// is streamed back until the block containing the transaction becomes sealed.
@@ -574,15 +566,7 @@ type AccessAPIServer interface {
 	// block as it becomes available.
 	//
 	// Each block are filtered by the provided block status, and only
-	// those blocks that match the status are returned. If no block status is provided,
-	// sealed blocks are returned.
-	//
-	// Errors:
-	// - InvalidArgument is returned if the request contains an invalid
-	// start block.
-	// - NotFound is returned if the start block is not currently available on the
-	// node. This may happen if the block was from a previous spork, or if the block has yet
-	// not been received.
+	// those blocks that match the status are returned.
 	SubscribeBlocks(*SubscribeBlocksRequest, AccessAPI_SubscribeBlocksServer) error
 	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
 	// is streamed back until the block containing the transaction becomes sealed.
