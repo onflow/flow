@@ -2,7 +2,7 @@
 
 - 
 
-### Mainnet Uptime SLO - Last 14 days (DD/MM/YY to DD/MM/YY) - Vishal
+### Mainnet Uptime - Last 14 days (DD/MM/YY to DD/MM/YY) - Vishal
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
@@ -20,22 +20,24 @@ Objective:
 
 **Done last sprint**
 
-- 
+- General description of completed items
+- List of Closed issues
 
 
 **This sprint**
 
--
+- General description of sprint goal
+- List of issues to be worked on
 
 
 **On Hold**
 
--
+- List of issues on hold
 
 
 **Active Epics**
 
--
+- Main epics that are being tackled, and currently active for this working group
 
 ---
 
@@ -44,19 +46,24 @@ Objective:
 
 **Done last sprint**
 
--
+- General description of completed items
+- List of Closed issues
+
 
 **This sprint**
 
--
+- General description of sprint goal
+- List of issues to be worked on
+
 
 **On Hold**
 
--
+- List of issues on hold
+
 
 **Active Epics**
 
--
+- Main epics that are being tackled, and currently active for this working group
 
 ---
 
@@ -65,19 +72,24 @@ Objective:
 
 **Done last sprint**
 
--
+- General description of completed items
+- List of Closed issues
+
 
 **This sprint**
 
--
+- General description of sprint goal
+- List of issues to be worked on
+
 
 **On Hold**
 
--
+- List of issues on hold
+
 
 **Active Epics**
 
--
+- Main epics that are being tackled, and currently active for this working group
 
 ---
 
@@ -86,19 +98,24 @@ Objective:
 
 **Done last sprint**
 
--
+- General description of completed items
+- List of Closed issues
+
 
 **This sprint**
 
--
+- General description of sprint goal
+- List of issues to be worked on
+
 
 **On Hold**
 
--
+- List of issues on hold
+
 
 **Active Epics**
 
--
+- Main epics that are being tackled, and currently active for this working group
 
 ---
 
@@ -107,30 +124,51 @@ Objective:
 
 **Done last sprint**
 
--
+- General description of completed items
+- List of Closed issues
+
 
 **This sprint**
 
--
+- General description of sprint goal
+- List of issues to be worked on
+
 
 **On Hold**
 
--
+- List of issues on hold
+
 
 **Active Epics**
 
--
+- Main epics that are being tackled, and currently active for this working group
 
 ---
 
 
 ### **Infra - JP**
+Objective: 
 
 **Done last sprint**
 
+- General description of completed items
+- List of Closed issues
+
+
 **This sprint**
 
--
+- General description of sprint goal
+- List of issues to be worked on
+
+
+**On Hold**
+
+- List of issues on hold
+
+
+**Active Epics**
+
+- Main epics that are being tackled, and currently active for this working group
 
 ---
 
@@ -139,19 +177,24 @@ Objective:
 
 **Done last sprint**
 
--
+- General description of completed items
+- List of Closed issues
+
 
 **This sprint**
 
--
+- General description of sprint goal
+- List of issues to be worked on
+
 
 **On Hold**
 
--
+- List of issues on hold
+
 
 **Active Epics**
 
--
+- Main epics that are being tackled, and currently active for this working group
 
 ---
 
