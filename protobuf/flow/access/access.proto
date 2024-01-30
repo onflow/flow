@@ -303,6 +303,7 @@ message TransactionResultResponse {
   bytes collection_id = 7;
   uint64 block_height = 8;
   entities.Metadata metadata = 9;
+  uint64 computation_usage = 10;
 }
 
 // Accounts
@@ -352,6 +353,7 @@ message ExecuteScriptAtBlockHeightRequest {
 message ExecuteScriptResponse {
   bytes value = 1;
   entities.Metadata metadata = 2;
+  uint64 computation_usage = 3;
 }
 
 // Events
