@@ -107,6 +107,7 @@ message ExecuteScriptAtBlockIDRequest {
 
 message ExecuteScriptAtBlockIDResponse {
   bytes value = 1;
+  uint64 computation_usage = 2;
 }
 
 // Events
@@ -143,6 +144,7 @@ message GetTransactionResultResponse {
   string error_message = 2;
   repeated entities.Event events = 3;
   entities.EventEncodingVersion event_encoding_version = 4;
+  uint64 computation_usage = 5;
 }
 
 message GetTransactionsByBlockIDRequest {

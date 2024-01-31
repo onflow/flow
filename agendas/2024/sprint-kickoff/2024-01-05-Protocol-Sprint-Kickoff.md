@@ -1,16 +1,22 @@
 # Team Wins 🎉
 
 - Dynamic Protocol State v1 ready for mainnet deployment (next spork)
+- Completed all Cadence 1.0 migrations.
+- Merged Cadence 1.0 feature branch to Cadence master
+- [Released CLI & Emulator](https://forum.flow.com/t/update-on-cadence-1-0/5197/7?u=jan) based on Cadence 1.0 RC1 release - this completes [Cadence 1.0 launch plan Milestone 1](https://github.com/orgs/onflow/projects/35/views/5).
+- Published [Cadence 1.0 release plan](https://forum.flow.com/t/cadence-1-0-upgrade-plan/5477) on forum.
+- Serving events endpoints from local data on devnet
+- QuickNode running ANs with script execution in compare mode on mainnet & testnet
 
-### Mainnet Uptime SLO - Last 14 days (11/24 to 12/08)
+### Mainnet Uptime SLO - Last 14 days (12/23/23 to 1/5/24)
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%  |    100%       |       0%          |
 | Block Finalization      | 99.9%  |    100%       |       0%          |
-| Transaction Execution   | 99.9%  |    100%       |       0%          |
-| Block Sealing           | 99.9%  |    100%       |       0%          |
-| Access API Liveness     | 99.9%  |    100%       |       0%          |
+| Transaction Execution (Dashboard is off)   | 99.9%  |    100%       |       0%          |
+| Block Sealing (Dasbhoard is off)           | 99.9%  |    100%       |       0%          |
+| Access API Liveness     | 99.936%  |    100%       |       64.5%          |
 
 #### Incidents
 - N/A
@@ -19,45 +25,37 @@
 
 **Done last sprint**
 
-Storehouse M1
-- [Fix getting highest executed block ID when storehouse is enabled](https://github.com/onflow/flow-go/pull/5109)
-- [Fix storage snapshot](https://github.com/onflow/flow-go/pull/5107)
-- [Optimize finalized reader to cache last finalized height](https://github.com/onflow/flow-go/pull/5056)
-- [Adding flag to enable storehouse](https://github.com/onflow/flow-go/issues/5054)
-- [Optimization: Reduce finalized block call](https://github.com/onflow/flow-go/pull/5053)
+Storehouse
+- [Optimize finalized reader to use block id index](https://github.com/onflow/flow-go/pull/5175)
+- [Use unfinalized loader when storehouse is enabled](https://github.com/onflow/flow-go/pull/5151)
+- [Improve InMemoryRegisterStore's IsBlockExecuted method](https://github.com/onflow/flow-go/pull/5125)
+- [Improving logging](https://github.com/onflow/flow-go/issues/5124)
+- [Add tests for storehouse-backed execution state](https://github.com/onflow/flow-go/pull/5086)
+- [M1 - Add metrics for register store](https://github.com/onflow/flow-go/issues/5170)
+- [M1 - Fix dynamic bootstrapping for storehouse](https://github.com/onflow/flow-go/pull/5165)
 
 EVM
-- [Events emitted from EVM are not encoded as other FVM events](https://github.com/onflow/flow-go/issues/5079)
-  - [Emit events as Cadence events](https://github.com/onflow/flow-go/pull/5090)
-- [Add a transaction test](https://github.com/onflow/flow-emulator/issues/515)
-- [Transaction execution fails](https://github.com/onflow/flow-go/issues/5068)
-  - [Fix the setup process](https://github.com/onflow/flow-go/pull/5069)
-- [Add EVM transactions to FVM benchmark tests](https://github.com/onflow/flow-go/pull/5061)
+- [Add balance to the account stdlib](https://github.com/onflow/flow-go/issues/5096)
+  - [Bridged account balance function](https://github.com/onflow/flow-go/pull/5098)
+- [Benchmarking: analyze EVM state database](https://github.com/onflow/flow-go/issues/5018)
+  - [Benchmark state transitions](https://github.com/onflow/flow-go/pull/5032)
+- [Setup EVM account Flow vault during bootstrap](https://github.com/onflow/flow-go/pull/5070)
 
 Atree register inlining
-- Run migration program modified to use atree inlining. Inlined checkpoint file is 215GB (was 348GB).  Also, tests indicate that using inlined checkpoint file as input can reduce future migration durations and peak RAM use. Need to test on larger vm with more RAM to confirm durations, etc.
-- [Add feature to support mutation of primitive values returned by iterators](https://github.com/onflow/atree/issues/356)
-- [Handle edge cases needed to support mutation of inlined maps and arrays during iteration](https://github.com/onflow/atree/issues/356)
-  - Ready for review: [Add feature to support mutation for array and map iterators](https://github.com/onflow/atree/pull/359)
-
-
-Other Improvements
-- E-E tests
-  - [Fix storage fees test](https://github.com/onflow/flow-e2e-tests/issues/50)
-  - [Update e2e tests with new flow-go](https://github.com/onflow/flow-e2e-tests/issues/49)
-- Emulator
-  - [Unify core contracts address definitions](https://github.com/onflow/flow-go/pull/5033)
-  - [Use core contract list from flow-go](https://github.com/onflow/flow-emulator/issues/513)
+- Continued work on replacing hash-based migration validation using Equal() instead.
+- Optimization of execution state migration, reducing memory usage: [Migrate payloads by reference](https://github.com/onflow/flow-go/pull/5123)
+- Improved migration progress logging: [Change progress log to be more verbose](https://github.com/onflow/flow-go/pull/5122)
 
 
 **This sprint**
 
 - Atree register inlining
   - Merge the [Atree inlining integration with Cadence](https://github.com/onflow/cadence/pull/2882)
-  - Continue work on validating [migration](https://github.com/onflow/flow-go/pull/4633) of [integrated solution for Atree register inlining](https://github.com/onflow/cadence/issues/2809)
-  - Refactor the migration using [mutable iterator](https://github.com/onflow/atree/pull/359)
+  - Opened [PR 5204](https://github.com/onflow/flow-go/pull/5204) to replace hash-based validation used by [migration](https://github.com/onflow/flow-go/pull/4633) in order to prepare for [integrating Atree register inlining](https://github.com/onflow/cadence/issues/2809)
+  - Starting Refactoring of the migration using [mutable iterator](https://github.com/onflow/atree/pull/359)
 - Continue testing / benchmarking of [Storehouse first milestone](https://github.com/onflow/flow-go/issues/4682) (execution state on disk) on Testnet.
 - EVM support & development
+- Help with Cadence 1.0 migratons and DevEx tooling
 
 **On Hold**
 
@@ -78,49 +76,79 @@ Objective: long-term support release of Cadence with no expected breaking change
 
 **Done last sprint**
 
-Feature
-- [New Behavior for Attachments and Entitlements](https://github.com/onflow/cadence/issues/2921)
+! Breaking Changes
+- [Remove deprecated constant from the crypto contract](https://github.com/onflow/cadence/issues/1447)
+  - [Remove deprecated domain separation tag from Crypto contract](https://github.com/onflow/cadence/pull/2984)
 
-FLIP
-- [FLIP for new behavior for attachments with entitlements](https://github.com/onflow/flips/issues/213)
+1.0 Network Upgrade tasks
+- Enabling staged contract update mechanism on Cadence 0.42: [Port tryUpdate method to Cadence v0.42 version](https://github.com/onflow/cadence/issues/2963)
+- Type value migration improvement: [Use old hash/ID generation to remove keys](https://github.com/onflow/cadence/pull/2987)
+- flow-nft: [v2: Remove resource destructor from Example NFT contract](https://github.com/onflow/flow-nft/issues/197)
+- [Add state migration for removing all values from private domain](https://github.com/onflow/cadence/pull/2974)
+- [Migration - Capability Controllers](https://github.com/onflow/cadence/issues/2875)
+  - [Capability controllers migration](https://github.com/onflow/cadence/pull/2912)
 
 Improvements
-- 1.0: [References to references are not properly checked](https://github.com/onflow/cadence/issues/2873)
-  - [throw error on the creation of a nested reference](https://github.com/onflow/cadence/pull/2965)
-- 1.0: [Generalize the migrations and make common codes re-usable](https://github.com/onflow/cadence/issues/2942)
-- master: [Improve resource-reference tracking](https://github.com/onflow/cadence/pull/2958)
-
-1.0 Migrations
-- [Add String normalizing migration](https://github.com/onflow/cadence/issues/2937)
-- [Add account type migration](https://github.com/onflow/cadence/issues/2923)
+- [Extend pragma expressions](https://github.com/onflow/cadence/pull/2993)
+- [Report bespoke error for restricted types parsed as type arguments](https://github.com/onflow/cadence/pull/2985)
+- [Various improvements in migrations, performance and error handling / reporting](https://github.com/onflow/cadence/pull/2979)
+- [Improve Account type migration](https://github.com/onflow/cadence/issues/2973)
+- [Make entitlement set access incomparable](https://github.com/onflow/cadence/pull/2972)
+- emulator: [Various improvements](https://github.com/onflow/flow-emulator/issues/527)
 
 Bugfixes
-- [Port bug fixes from v0.42.5-patch.1](https://github.com/onflow/cadence/issues/2956)
+- [Dictionaries key'd by type are order-dependent](https://github.com/onflow/cadence/issues/2681)
+  - [State migration for type values with two or more interfaces](https://github.com/onflow/cadence/pull/2981)
+- emulator: [Fix system chunk transaction](https://github.com/onflow/flow-emulator/issues/533)
+- [Fix GetNativeCompositeValueComputedFields](https://github.com/onflow/cadence/issues/2977)
+- [References to references are not properly checked](https://github.com/onflow/cadence/issues/2873)
+  - [Static check to prevent nested references](https://github.com/onflow/cadence/pull/2970)
 
 Tech-debt
-- [Remove unsafeRandom](https://github.com/onflow/cadence/issues/2909)
+- [Define what a "Primitive Type" is in Cadence](https://github.com/onflow/cadence/issues/2929)
+  - [Use IsPrimitiveType to check default destructor params](https://github.com/onflow/cadence/pull/2980)
+- [Cleanup reference tracking](https://github.com/onflow/cadence/issues/2969)
 
 Tests
-- [Add test for container mutation while iterating](https://github.com/onflow/cadence/issues/2960)
+- [Test type order insignificance](https://github.com/onflow/cadence/issues/2967)
 
 Docs
-- [Remove references to destructors and add docs for default destroy events](https://github.com/onflow/cadence-lang.org/issues/31)
-- [Rewrite entitlements and attachments docs for new changes](https://github.com/onflow/cadence-lang.org/issues/30)
-- [Document Account.Capabilities.exists](https://github.com/onflow/cadence-lang.org/issues/29)
-- [Remove incorrect statements about reentrancy](https://github.com/onflow/cadence-lang.org/issues/28)
+- [add documentation for new string functions](https://github.com/onflow/cadence-lang.org/issues/36)
+- [Improve formatting of access modifiers in documentation](https://github.com/onflow/cadence-lang.org/issues/35)
+- [Misc documentation improvements](https://github.com/onflow/cadence-lang.org/issues/34)
+- [Add view annotations to view library functions](https://github.com/onflow/cadence-lang.org/issues/33)
 
-Updating Downstream dependencies
-- SDK [Update cadence to v0.42.6](https://github.com/onflow/flow-go-sdk/issues/529)
-- flow-go [Update to Cadence v0.42.5-patch.1](https://github.com/dapperlabs/flow-go/issues/6914)
+Chores
+- Dependency updates, flow-go
+  - [Update Cadence 1.0 feature branch](https://github.com/onflow/flow-go/issues/5171)
+  - [Update Cadence 1.0 branch](https://github.com/onflow/flow-go/issues/5102)
+  - [Update cadence to v0.42.6](https://github.com/onflow/flow-go/issues/5093)
+  - [v0.32 - Update cadence to v0.42.6](https://github.com/onflow/flow-go/issues/5092)
+- Dependency upgrade, CLI:
+  - [Fix installation of gocov-html and mockery](https://github.com/onflow/flow-cli/issues/1314)
+  - [Update to Cadence 1.0 RC1](https://github.com/onflow/flow-cli/issues/1313)
+- Dependency update, emulator:
+  - [pre Cadence 1.0 - Update to latest flow-go master](https://github.com/onflow/flow-emulator/pull/541)
+  - [Update to latest flow-go feature/stable-cadence](https://github.com/onflow/flow-emulator/issues/540)
+  - [Update to Cadence 1.0](https://github.com/onflow/flow-emulator/issues/536)
+  - [Update Cadence 1.0 feature branch to latest Cadence version](https://github.com/onflow/flow-emulator/issues/532)
+- Dependency upgrade, Language Server: [LS Update to Cadence 1.0 RC1](https://github.com/onflow/cadence-tools/issues/260)
+- Dependency upgrade, cadence tools, tests: [Update to Cadence 0ff20e15e7e1](https://github.com/onflow/cadence-tools/issues/259)
+- Dependency upgrade, cadence tools, lint: [Update to Cadence 1.0 RC1](https://github.com/onflow/cadence-tools/issues/258)
+- [FLIP 89: Fix header levels](https://github.com/onflow/flips/issues/231)
+- [Update status of Cadence FLIPs](https://github.com/onflow/flips/issues/230)
+- [Merge Stable Cadence branch into master](https://github.com/onflow/cadence/issues/2971)
+- [Sync stable-cadence branch with master](https://github.com/onflow/cadence/issues/2968)
+
 
 **This sprint**
-- Merge Cadence 1.0 feature branch to Cadence master
-- Release Cadence 1.0 RC1
-- Release Emulator based on Cadence 1.0 RC1 release
+
 - Continue support EVM on FLow initiative.
-- Continue work on Cadence 1.0 migrations.
+- Complete enabling of [contract upgrade testing in emulator](https://github.com/onflow/cadence/issues/2947)
+- Start [More permissive contract upgrade checker for 1.0 network upgrade](https://github.com/onflow/cadence/issues/2865)
+- Complete [integrating Cadence 1.0 migrations with FVM](https://github.com/onflow/cadence/issues/2990) and Atree regster inlining migration and start testing the integrated migration.
 - Continue Stable Cadence Docs update and knocking tasks off the [tech debt list](https://github.com/onflow/cadence/issues/2642)
-- Publish Cadence 1.0 release plan on forum
+
 
 **On Hold**
 - Discussion of the re-entrancy edge cases
@@ -146,8 +174,8 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 - Script Execution on ANs
   - Use version beacon to ensure correct version for script exec - [Issue 5040](https://github.com/onflow/flow-go/issues/5040)
-  - Work with QuickNode to setup script exec in compare mode on public ANs
-  - Validate event API changes working with testnet/mainnet data
+  - Analyze results from QuickNode running script exec in compare mode on public nodes
+  - Debug high CPU scripts/accounts on devnet
 - Support KROK team with
   - Use local index for Transaction Results in Access API - [Issue 4753](https://github.com/onflow/flow-go/issues/4753)
   - Enable execution state sync on observers - [Issue 5186](https://github.com/onflow/flow-go/issues/5186)
@@ -173,7 +201,10 @@ Objective: Make execution data and script execution available on Edge nodes.
 
 - **Next sprint:**
     - Concluding the `mainnet24` [peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913)
-    - Scoring Parameters Config and Relaxed Behavioral Penalty [Issue6923](https://github.com/dapperlabs/flow-go/issues/6923)
+      - Scoring Parameters Config and Relaxed Behavioral Penalty [Issue6923](https://github.com/dapperlabs/flow-go/issues/6923)
+      - Enhance Gossipsub Scoring Mechanism for Configurable RPC Inspection enable/disable via configs [Issue6390](https://github.com/dapperlabs/flow-go/issues/6930)
+    - Duplicate Topic in IHAVE Control Message in GossipSub (potential internal bug of GossipSub) [Issue6927](https://github.com/dapperlabs/flow-go/issues/6927)
+    - Atomic `AdjustWithInit` and `GetWithInit` for Backend mempools [Issue6929](https://github.com/dapperlabs/flow-go/issues/6929)
     - Improve RPC control message inspector error metrics [Issue1905](https://github.com/dapperlabs/flow-internal/issues/1905)
 
 
@@ -207,39 +238,44 @@ Objective: Make execution data and script execution available on Edge nodes.
 **Done last sprint**
 
 ************Node Hosting************
-- Assist with Canary Sporks
-- Assist with HCU
-- Create automation for managing Dapper nodes
-- Increase Devnet Data disks
-- Create new Canary EN for storehouse testing in shadow mode
-- Create infrastructure & configuration for Crescendo network
+- Create Crescendo network configuration 
+- Create Crescendo network infrastructure
+- Execute Crescendo spork from Devnet
+- Configure load balancer for Crescendo network
+- Upgrade data disks on Mainnet & Devnet Nodes
 
 ************FF Migration************
-- Create new KMS key for mgmt of Dapper nodes
-- Create strategy for observability migration
-- Create automation for dashboard migration
-- Create automation for enabling multi-destination loggging
-- Create promtehus configuration for enabling multi-destination metrics
-- Work with Grafana team in prepration for migration
+- Terraform Grafana Dashboards for migration 
+- Terraform Grafana protocol & resource alerts for migration 
+- Terraform Grafana contact points & notification policies for migration 
+- Terraform Grafana teams for migration from PagerDuty to Grafana OnCall 
+- Terraform Synthetic monitors for migration from PagerDuty to Grafana OnCall 
+
+************Support************
+- Assist with the creation of isolated Devnet EN for storehouse testing 
+- Assist with the creation of isolated Mainnet EN for storehouse testing 
+- Provided support for Flow DevEx migration efforts 
+- Update Prometheus Node to include additional QuickNode IPs to be scraped
 
 ************Benchnet************
-- Grant additional access to K8s cluster and executing cleanup
+- Create documentation for leveraging additional access to benchnet
+- Update Benchnet creation workflow to execute bootstrapping in parallel to docker builds
+
+************Automation************
+- Update Docker build workflows to leverage deploy keys rather than PATs to pull private dependencies
+- Update Docker sync workflows to leverage deploy keys rather than PATs to fix broken sync 
 
 **This Sprint**
 
 ************Node Hosting************
-- Execute spork for Crescendo network
-- Configure load balancer for Crescendo network
 - Remove unnecessary Dapper nodes that have been migrated
+- Assist with HCU
 
 ************FF Migration************
-- Create automation for migrating alerts
-- Create strategy and autoamtion for moving to IRM
-- Configure all nodes to deliver logs to both destinations
-- Configure all prometheus instances to deliver metrics to both destinations
-
-************Benchnet************
-- Create documentation for leveraging additional access to benchnet
+- Terraform synthetic monitor alerts
+- Onboard users into new Grafana stack
+- Configure all nodes to deliver logs to both Grafana stacks
+- Configure all prometheus instances to deliver metrics to both Grafana stacks 
 
 ### FLIPs Tracker (🆕 section) - Kshitij
 
