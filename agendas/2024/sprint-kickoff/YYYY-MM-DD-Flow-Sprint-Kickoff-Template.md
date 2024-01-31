@@ -85,9 +85,7 @@ Cycle Objective(s):
 
 **This sprint**
 
-- General description of sprint goal
-- List of issues to be worked on
-
+- Complete Band Protocol docs and examples and publish to community. This enables broader testing on testnet
 
 **On Hold**
 
