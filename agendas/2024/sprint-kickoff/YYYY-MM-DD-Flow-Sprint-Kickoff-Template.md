@@ -1,6 +1,8 @@
 # Overview
 
  ### Team Wins 🎉
+ 
+ * ABI.encode/decode() functional subset of EVM work was deployed to testnet to unblock Axelar integration
 
 - 
 
