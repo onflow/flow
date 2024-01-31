@@ -94,8 +94,8 @@ Cycle Objective(s):
 
 **Active Epics**
 
-- Main epics that are being tackled, and currently active for this working group
-
+- Launch oracle network feeds on Flow 
+- Launch second token bridge on Flow
 ---
 
 ### **User Experience** Greg
