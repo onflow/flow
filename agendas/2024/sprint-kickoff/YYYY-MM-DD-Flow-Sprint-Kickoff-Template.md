@@ -51,6 +51,9 @@ Cycle Objective(s):
 ### **Core Protocol** Jerome
 Cycle Objective(s): 
 
+* Continue with adding BFT mitigations to enable 10 permissionless ANs
+* Continue design of Dynamic Protocol 
+
 **Done last sprint**
 
 - General description of completed items
