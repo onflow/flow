@@ -16,7 +16,7 @@
 - 
 
 ### **Cadence and Virtual Machine** Jan
-Objective: 
+Cycle Objective(s): 
 
 **Done last sprint**
 
@@ -42,7 +42,7 @@ Objective:
 ---
 
 ### **Core Protocol** Jerome
-Objective: 
+Cycle Objective(s): 
 
 **Done last sprint**
 
@@ -68,7 +68,7 @@ Objective:
 ---
 
 ### **DeFi** Jerome
-Objective: 
+Cycle Objective(s): 
 
 **Done last sprint**
 
@@ -94,7 +94,7 @@ Objective:
 ---
 
 ### **User Experience** Greg
-Objective: 
+Cycle Objective(s): 
 
 **Done last sprint**
 
@@ -120,7 +120,7 @@ Objective:
 ---
 
 ### **Wallet** Jeff
-Objective: 
+Cycle Objective(s): 
 
 **Done last sprint**
 
@@ -147,7 +147,7 @@ Objective:
 
 
 ### **Infra - JP**
-Objective: 
+Cycle Objective(s): 
 
 **Done last sprint**
 
@@ -173,7 +173,7 @@ Objective:
 ---
 
 ### **Governance and Tokenomics** Vishal
-Objective: 
+Cycle Objective(s): 
 
 **Done last sprint**
 
