@@ -12,7 +12,7 @@ You can use [buf](https://github.com/bufbuild/buf) to generate gRPC client stubs
 Please make sure you have `protoc-gen-go-grpc` installed, for example using command
 ```shell script
 go install github.com/golang/protobuf/protoc-gen-go@v1.3.2
-go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
 ```
 
 Running the command below (in the current directory) will generate stubs for Go:
