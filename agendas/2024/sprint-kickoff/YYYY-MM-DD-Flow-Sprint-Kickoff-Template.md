@@ -79,8 +79,8 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-- General description of completed items
-- List of Closed issues
+- Band Protocol contracts and integration released on testnet
+- Axelar unblocked to wrap up their bridge contracts after ABI.encode/decode() support also released on testnet
 
 
 **This sprint**
