@@ -91,7 +91,7 @@ Cycle Objective(s):
 
 **On Hold**
 
-- List of issues on hold
+- N/A
 
 
 **Active Epics**
