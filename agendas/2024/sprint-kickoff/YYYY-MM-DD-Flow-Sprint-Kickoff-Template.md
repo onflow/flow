@@ -91,6 +91,7 @@ Cycle Objective(s):
 **This sprint**
 
 - Complete Band Protocol docs and examples and publish to community. This enables broader testing on testnet
+- USDC contracts update to Cadence 1.0 starting (@joshuahannan)
 
 **On Hold**
 
