@@ -109,8 +109,9 @@ Cycle Objective(s):
 
 **Active Epics**
 
-- Launch oracle network feeds on Flow 
-- Launch second token bridge on Flow
+- Establish Defi/Liquidity infrastructure for Cadence 1.0 update
+- Ensure Flow has best-in-class on- and off-ramps for USDC liquidity across DeFi ecosystem
+- Expand Flow DeFi ecosystem primitives and protocols
 ---
 
 ### **User Experience** Greg
