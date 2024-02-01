@@ -56,9 +56,10 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-- General description of completed items
-- List of Closed issues
-
+-  [Design - Dynamic Protocol State Key-Value Store](https://www.notion.so/dapperlabs/Protocol-state-key-value-storage-497326ff9cf44ff4a70610a0dad329b3?pvs=4) - generalizing Dynamic Protocol State beyond identity table changes 
+  - Finalized the design, created and estimated epic issues
+  - Added details for how to use KVStore for height-coordinated upgrade of Protocol State Machine
+- Draft blog post for Dynamic Protocol State release
 
 **This sprint**
 
