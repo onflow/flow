@@ -93,7 +93,8 @@ Cycle Objective(s):
 
 - Band Protocol contracts and integration released on testnet
 - Axelar unblocked to wrap up their bridge contracts after ABI.encode/decode() support also released on testnet
-- IncrementFi contract 1.0 upgrade on track
+- Started upgrade of Flow JVM SDK to support Flow DeFi partners (@lealobanov)
+- IncrementFi confirmed their Cadence 1.0 upgrade plan is on track
 
 
 **This sprint**
