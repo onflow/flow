@@ -63,8 +63,11 @@ Cycle Objective(s):
 
 **This sprint**
 
-- General description of sprint goal
-- List of issues to be worked on
+- [Design - Sporkless Epoch Fallback Recovery](https://www.notion.so/dapperlabs/Spork-less-Epoch-Fallback-Recovery-Design-II-Epoch-Extensions-a7673e45e9064d12b6b48aa517bd1763?pvs=4) - enabling recovery from EFM via governance multisig and without spork
+  - Review and iteration on latest design
+- Begin implementing KV Store
+
+
 
 
 **On Hold**
