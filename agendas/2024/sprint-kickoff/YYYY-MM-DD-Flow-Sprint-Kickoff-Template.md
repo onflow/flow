@@ -60,6 +60,8 @@ Cycle Objective(s):
   - Finalized the design, created and estimated epic issues
   - Added details for how to use KVStore for height-coordinated upgrade of Protocol State Machine
 - Draft blog post for Dynamic Protocol State release
+- Resolved mainnet24 [peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913)
+- Added [comprehensive documentation](https://github.com/onflow/flow-go/pull/5308) for libp2p resource management operators guidance
 
 **This sprint**
 
