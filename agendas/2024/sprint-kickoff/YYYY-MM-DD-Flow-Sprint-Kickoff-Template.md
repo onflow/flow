@@ -219,7 +219,7 @@ Cycle Objective(s):
 
 ---
 
-### FLIPs Tracker - Vishal
+### FLIPs Tracker - Kshitij
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
