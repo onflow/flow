@@ -77,7 +77,12 @@ Cycle Objective(s):
 
 **Active Epics**
 
-- Main epics that are being tackled, and currently active for this working group
+- Reinforcing Flow’s commitment to full protocol autonomy and scalability
+- Improve network performance
+- Improve network availability 
+- Simplify community contributions to core protocol and maintainability
+- Improve network reliability and data availability for dApp developers
+- Data-driven Prioritization and Scaling Engineering
 
 ---
 
