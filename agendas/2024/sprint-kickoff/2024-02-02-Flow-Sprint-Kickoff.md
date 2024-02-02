@@ -113,10 +113,18 @@ Cycle Objective(s):
   - port of: [Use correct EVM address in tests and transient networks](https://github.com/onflow/flow-go/pull/5255) and [Add feature flag for deploying EVM contract only with ABI functionality](https://github.com/onflow/flow-go/pull/5230): [Add feature flag for deploying EVM contract only with ABI functionality](https://github.com/onflow/flow-go/pull/5264)
 
 - EVM
-  - Work towards:[Add support for other chains to RootAccountAddress](https://github.com/onflow/flow-go/issues/4964) and [Improvements to EVM bootstrap setup](https://github.com/onflow/flow-go/issues/4959)
-    - [Use correct EVM address in tests and transient networks](https://github.com/onflow/flow-go/pull/5255)
-  - [Empty ParentBlockHash for new blocks](https://github.com/onflow/flow-go/issues/5219)
-  - [Add EVM event type](https://github.com/onflow/flow-go/issues/5232)
+  - [Flow EVM Core Implementation](https://github.com/onflow/flow-go/issues/5241)
+    - [adding toAttoFlow method to EVM.Balance](https://github.com/onflow/flow-go/issues/4961)
+    - [Investigate possibility of use Flow block random seed for the EVM PREVRANDAO](https://github.com/onflow/flow-go/issues/5207)
+    - [deposit calls to regular smart contracts expects different behaviour](https://github.com/onflow/flow-go/issues/5227)
+    - [new address allocation for the bridged accounts](https://github.com/onflow/flow-go/issues/5179)
+    - [mix use of uint64 and *big.Int for tracking balances](https://github.com/onflow/flow-go/issues/5222)
+    - [Update stateDB code storage to store by hash](https://github.com/onflow/flow-go/issues/5198)
+    - [Expose core FVM functions as a precompile contract](https://github.com/onflow/flow-go/issues/5199)
+    - Work towards:[Add support for other chains to RootAccountAddress](https://github.com/onflow/flow-go/issues/4964) and [Improvements to EVM bootstrap setup](https://github.com/onflow/flow-go/issues/4959)
+      - [Use correct EVM address in tests and transient networks](https://github.com/onflow/flow-go/pull/5255)
+    - [Empty ParentBlockHash for new blocks](https://github.com/onflow/flow-go/issues/5219)
+    - [Add EVM event type](https://github.com/onflow/flow-go/issues/5232)
 
 - Ingestion engine refactoring
   - [Remove module.Local from ingestion engine](https://github.com/onflow/flow-go/pull/5243)
@@ -127,6 +135,9 @@ Cycle Objective(s):
 - New Execution node utility: [Find block ID by state commitment](https://github.com/onflow/flow-go/pull/5240)
 
 - Adding tooling for spamming attack defence to collection node: [Rate limiting transaction by payer](https://github.com/onflow/flow-go/issues/5218)
+
+- Exposing computation usage for scripts:
+  - [expose computation usage for scripts](https://github.com/onflow/flow-go/pull/5299)
 
 - chores
   - [Canary test fix](https://github.com/onflow/flow-e2e-tests/issues/51)
