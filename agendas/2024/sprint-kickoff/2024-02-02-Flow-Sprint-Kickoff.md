@@ -377,15 +377,17 @@ Cycle Objective(s):
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 8  |    10    |       0          |       6          |        **24**          |
-| Proposed    | 2  |    2     |       2          |       1          |        **7**          |
-| Accepted    | 2  |    1     |       1       |       1          |        **5**          |
+| Drafted     | 7  |    6    |       0          |       5          |        **18**          |
+| Proposed    | 3  |    1     |       2          |       1          |        **7**          |
+| Accepted    | 2  |    1     |       1       |       2          |        **6**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
 | Implemented | 1  |    19    |       1       |       0          |        **21**          |
 | Released    | 4  |    0     |       2       |       4          |        **10**          |
-| Total       | **17**  |    **32**    |       **7**       |       **12**          |        **68**          |
+| Total       | **17**  |    **27**    |       **7**       |       **12**          |        **63**          |
 
-- 
+- Overall FLIPs went up by 4 vis-a-vis last month (2 new application FLIP was drafted, while 2 moved from proposed status)
+- Some FLIPs are still not reflected in the project tracker. **Remember**: FLIP process starts with an issue creation.
+(https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
   
 ### Key Release Dates & Breaking Changes
 
