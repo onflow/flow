@@ -7,7 +7,7 @@
  * Dependency Manager MVP Release (add and install commands)
  * FLIX Continually Improving community engagement
 
-- 
+--- 
 
 ### Mainnet Uptime - Last 14 days (DD/MM/YY to DD/MM/YY) - Vishal
 
@@ -20,7 +20,9 @@
 | Access API Liveness     | 99.9%   |    100%       |       0%         |
 
 #### Incidents
-- 
+* 
+
+---
 
 
 # Working Group Updates
