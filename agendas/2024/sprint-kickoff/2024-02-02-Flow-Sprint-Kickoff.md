@@ -157,14 +157,14 @@ Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on develop
 - KR3: Launch EVM on Crescendo Testnet
   - [Flow EVM Core Implementation](https://github.com/onflow/flow-go/issues/5241)
     - [Benchmark transactions running EVM operations on benchnet](https://github.com/onflow/flow-go/issues/5099)
-    - [add an intergration test for selfdestruct contract call](https://github.com/onflow/flow-go/issues/5224)
+    - [add an integration test for selfdestruct contract call](https://github.com/onflow/flow-go/issues/5224)
     - [Calibrate a conversion factor between EVM gas and FVM computation effort](https://github.com/onflow/flow-go/issues/5094)
-    - [add an intergration test for selfdestruct contract call](https://github.com/onflow/flow-go/issues/5224)
+    - [add an integration test for selfdestruct contract call](https://github.com/onflow/flow-go/issues/5224)
   - [JSON-RPC Gateway launch implementation](https://github.com/onflow/flow-evm-gateway/issues/12)
   - [Indexer Implementation](https://github.com/onflow/flow-evm-gateway/issues/14)
     - [Setup persistent storage](https://github.com/onflow/flow-evm-gateway/issues/17)
     - [Implement querying events by topic](https://github.com/onflow/flow-evm-gateway/issues/28)
-    - [Implement event consumer](https://github.com/onflow/flow-evm-gateway/issues/15)
+    - [Implement event consumer](https://github.com/onflow/flow-evm-gateway/issues/15) 
 
 
 Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
@@ -197,7 +197,10 @@ Objective 3: Analyze execution runtime trends and risks to plan next set of scal
 ### **Core Protocol** Jerome
 Cycle Objective(s): 
 
-* Continue with adding BFT mitigations to enable 10 permissionless ANs
+* Translate crypto performance improvements to consensus block rate increase
+* Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node
+* Reduce CPU usage on Execution node by 30%
+* Continue BFT mitigations to enable 10 permissionless ANs
 * Continue design of Dynamic Protocol 
 
 **Done last sprint**
@@ -225,9 +228,7 @@ Cycle Objective(s):
 - Add register cache for script executions
 
 **On Hold**
-
-- List of issues on hold
-
+* Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
 
 **Active Epics**
 
@@ -241,7 +242,11 @@ Cycle Objective(s):
 ---
 
 ### **DeFi** Jerome
+
 Cycle Objective(s): 
+- Resolving Circle's existing engineering improvements for USDC on Flow
+- DEX Prep - IncrementFi
+- Bridge Prep - Axelar
 
 **Done last sprint**
 
@@ -253,19 +258,19 @@ Cycle Objective(s):
 
 **This sprint**
 
-- Complete Band Protocol docs and examples and publish to community. This enables broader testing on testnet
+- Complete Band Protocol docs and examples and publish to community (@alilloig). This unlocks community testing on testnet
 - USDC contracts update to Cadence 1.0 starting (@joshuahannan)
+- Release updated emulator with latest EVM changes (@sideninja)
 
 **On Hold**
-
 - N/A
-
 
 **Active Epics**
 
 - Establish Defi/Liquidity infrastructure for Cadence 1.0 update
 - Ensure Flow has best-in-class on- and off-ramps for USDC liquidity across DeFi ecosystem
 - Expand Flow DeFi ecosystem primitives and protocols
+
 ---
 
 ### **User Experience** Greg
