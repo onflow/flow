@@ -27,7 +27,7 @@
 
 # Working Group Updates
 
-### **Cadence and Virtual Machine** Jan
+### **Cadence and Virtual Machine** \[Jan]
 Cycle Objective(s):
 
 1) Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
@@ -199,7 +199,7 @@ Objective 3: Analyze execution runtime trends and risks to plan next set of scal
 
 ---
 
-### **Core Protocol** Jerome
+### **Core Protocol** \[Jerome]
 Cycle Objective(s): 
 
 * Translate crypto performance improvements to consensus block rate increase
@@ -259,7 +259,7 @@ Cycle Objective(s):
 
 ---
 
-### **DeFi** Jerome
+### **DeFi** \[Jerome]
 
 Cycle Objective(s): 
 - Resolving Circle's existing engineering improvements for USDC on Flow
@@ -291,7 +291,8 @@ Cycle Objective(s):
 
 ---
 
-### **User Experience** Greg
+### **User Experience** \[Greg]
+
 Cycle Objective(s): 
 - Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
 - Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
@@ -324,10 +325,10 @@ Cycle Objective(s):
 
 - [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
 
-
 ---
 
-### **Wallet** Jeff
+### **Wallet** \[Jeff]
+
 Cycle Objective(s): 
 
 - Ensure there exists a wallet ecosystem supports FlowEVM
@@ -376,7 +377,7 @@ Cycle Objective(s):
 ---
 
 
-### **Infra - JP**
+### **Infra** \[JP]
 Cycle Objective(s): 
 
 **Done last sprint**
@@ -402,7 +403,7 @@ Cycle Objective(s):
 
 ---
 
-### **Governance and Tokenomics** Vishal
+### **Governance and Tokenomics** \[Vishal]
 Cycle Objective(s): 
 
 **Done last sprint**
@@ -428,7 +429,7 @@ Cycle Objective(s):
 
 ---
 
-### FLIPs Tracker - Kshitij
+### FLIPs Tracker \[Kshitij]
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
