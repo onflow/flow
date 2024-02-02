@@ -3,6 +3,9 @@
  ### Team Wins 🎉
  
  * ABI.encode/decode() functional subset of EVM work was deployed to testnet to unblock Axelar integration
+ * Cloudrun Migrations for all services (Playground API, Public Key Indexer)
+ * Dependency Manager MVP Release (add and install commands)
+ * FLIX Continually Improving community engagement
 
 - 
 
@@ -270,27 +273,37 @@ Cycle Objective(s):
 
 ### **User Experience** Greg
 Cycle Objective(s): 
+- Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
+- Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
+- Use the Crescendo Release grow Flow's developer base and network activity
 
 **Done last sprint**
 
-- General description of completed items
-- List of Closed issues
+- Testing fcl-js PR to support verification of v1.1.0 FLIX
+- Released Emulator key to use private/public key pairing instead of plaintext
+- Released Dependency Manager (beta)
+- Add remote notifications at extension startup (Cadence 1.0)
+- Update Dev Wallet to Cadence 1.0
+- Add Cadence 1.0 landing page to flow.com
 
 
 **This sprint**
 
-- General description of sprint goal
-- List of issues to be worked on
+**Sprint goal focusing on adding docs and tool support for Crescendo network and Cadence 1.0**
+
+- [Add Crescendo network support to FCL Discovery](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=50332654)
+- [Add Crescendo Network to CLI (config, cmds, docs, etc)](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=50297186)
+- [Add/Publish Initial EVM Docs](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51952883)
+- [Docs Revamp v3](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=49327073)
+- [Add C1.0 Rules to Cadence Linter](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51952640)
+- [Update Playground to support Cadence 1.0](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=49844013)
+- [Stable Cadence Installation Workflow](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51951905)
 
 
 **On Hold**
 
-- List of issues on hold
+- [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
 
-
-**Active Epics**
-
-- Main epics that are being tackled, and currently active for this working group
 
 ---
 
