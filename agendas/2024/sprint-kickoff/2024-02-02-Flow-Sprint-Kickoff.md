@@ -210,27 +210,40 @@ Cycle Objective(s):
 
 **Done last sprint**
 
--  [Design - Dynamic Protocol State Key-Value Store](https://www.notion.so/dapperlabs/Protocol-state-key-value-storage-497326ff9cf44ff4a70610a0dad329b3?pvs=4) - generalizing Dynamic Protocol State beyond identity table changes 
-  - Finalized the design, created and estimated epic issues
-  - Added details for how to use KVStore for height-coordinated upgrade of Protocol State Machine
-- Draft blog post for Dynamic Protocol State release
-- Resolved mainnet24 [peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913)
-- Added [comprehensive documentation](https://github.com/onflow/flow-go/pull/5308) for libp2p resource management operators guidance
+- Dynamic Protocol State
+   -  [Design - Dynamic Protocol State Key-Value Store](https://www.notion.so/dapperlabs/Protocol-state-key-value-storage-497326ff9cf44ff4a70610a0dad329b3?pvs=4) - generalizing Dynamic Protocol State beyond identity table changes 
+      - Finalized the design, created and estimated epic issues
+      - Added details for how to use KVStore for height-coordinated upgrade of Protocol State Machine
+   - Draft blog post for Dynamic Protocol State release
+- BFT Mitigations  
+   - Resolved mainnet24 [peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913)
+   - Added [comprehensive documentation](https://github.com/onflow/flow-go/pull/5308) for libp2p resource management operators guidance
+   - Peer scoring startup silence period: https://github.com/onflow/flow-go/pull/5084
+   - Configurable peer scoring parameters: https://github.com/onflow/flow-go/pull/5210
+   - Enhance Gossipsub sscoring, enable/disable RPC inspection via runtime flags: https://github.com/onflow/flow-go/pull/5257
 - Data Availability
-  - Added support for error trees in FVM
-  - Fixed race condition in local event streaming
+   - Added support for error trees in FVM
+   - Fixed race condition in local event streaming
 
 **This sprint**
 
-- [Design - Sporkless Epoch Fallback Recovery](https://www.notion.so/dapperlabs/Spork-less-Epoch-Fallback-Recovery-Design-II-Epoch-Extensions-a7673e45e9064d12b6b48aa517bd1763?pvs=4) - enabling recovery from EFM via governance multisig and without spork
-  - Review and iteration on latest design
-- Begin implementing KV Store
-- Create [GossipSub forensics dashboard](https://github.com/dapperlabs/flow-go/issues/6933)
-- Identify remaining technical gaps in the GH issues for the upcoming OKR
-- Implement incident management runbook for networking layer
-- [upgrade libp2p version to v0.32.0](https://github.com/onflow/flow-go/issues/4934)
-- Fix Access connection cache race condition
-- Add register cache for script executions
+- Dynamic Protocol State
+   - [Design - Sporkless Epoch Fallback Recovery](https://www.notion.so/dapperlabs/Spork-less-Epoch-Fallback-Recovery-Design-II-Epoch-Extensions-a7673e45e9064d12b6b48aa517bd1763?pvs=4) - enabling recovery from EFM via governance multisig and without spork
+      - Review and iteration on latest design
+      - Begin implementing KV Store
+- BFT Mitigations    
+   - Create [GossipSub forensics dashboard](https://github.com/dapperlabs/flow-go/issues/6933)
+   - Identify remaining technical gaps in the GH issues for the upcoming OKR
+   - Implement incident management runbook for networking layer
+   - [Flakey Test]: Fix TestSubscriptionValidator_Integration https://github.com/dapperlabs/flow-go/issues/6932
+   - More improvements to stability of Gossipsub scoring
+      - Event-based test refactoring for GossipSub RPC inspection: https://github.com/dapperlabs/flow-go/issues/6935
+      - Configurable invalid topic id threshold for GossipSub RPC inspection: https://github.com/dapperlabs/flow-go/issues/6934
+- DHT Memory Leak investigation
+   - [upgrade libp2p version to v0.32.0](https://github.com/onflow/flow-go/issues/4934)
+- Access Node
+   - Fix Access connection cache race condition
+   - Add register cache for script executions
 
 **On Hold**
 * Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
