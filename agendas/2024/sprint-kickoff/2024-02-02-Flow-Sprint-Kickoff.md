@@ -400,30 +400,35 @@ Cycle Objective(s):
 
 ---
 
-### **Infra** \[JP]
+### **Infra - JP**
 Cycle Objective(s): 
+- Migrate Flow metrics & logs to Flow Foundation grafana account to reduce cost on DapperLabs
 
 **Done last sprint**
 
-- General description of completed items
-- List of Closed issues
-
+- Assisted with Flow DevEx migration
+- Assisted with HCUs & Canary Sporks
+- Assisted with flow.com mail configuration
+- Onboarded Flow Protocol users to new Grafana Account
+- Evaluated Grafana metrics and logs usage
+- Updated Flow Foundation log & metric ingestion rates to align with old rates
+- Updated and migrated Flow Protocol metrics, dashboards, alerts, synthethics, and notification policies 
+- Upgraded disk sizes for networks
 
 **This sprint**
 
-- General description of sprint goal
-- List of issues to be worked on
+**Goal of Sprint is to migrate from DapperLabs account to FlowFoundation account** 
 
+- Assist with Flow DevEx migration to Cloud Run 
+- Update DapperLabs nodes to error logging
+- Disable logs & metrics for Historical networks
+- Assist with Mainnet HCU on FF nodes & DapperLabs nodes
+- ** Migrate all live Flow network metrics & logs to Flow Foundation account** 
+- Evaluate & optimize metrics for cost savings
+- Migrate Benchnet2 logs & metrics to Flow Foundation account
 
 **On Hold**
-
-- List of issues on hold
-
-
 **Active Epics**
-
-- Main epics that are being tackled, and currently active for this working group
-
 
 ---
 
