@@ -444,11 +444,11 @@ Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inf
 
 **On Hold**
 
-- List of issues on hold
+- N/A
 
 
 **Active Epics**
 
-- Main epics that are being tackled, and currently active for this working group
+- N/A
 
 
