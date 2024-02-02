@@ -62,15 +62,21 @@ Cycle Objective(s):
 - Draft blog post for Dynamic Protocol State release
 - Resolved mainnet24 [peer scoring incident](https://github.com/dapperlabs/flow-go/issues/6913)
 - Added [comprehensive documentation](https://github.com/onflow/flow-go/pull/5308) for libp2p resource management operators guidance
+- Data Availability
+  - Added support for error trees in FVM
+  - Fixed race condition in local event streaming
 
 **This sprint**
 
 - [Design - Sporkless Epoch Fallback Recovery](https://www.notion.so/dapperlabs/Spork-less-Epoch-Fallback-Recovery-Design-II-Epoch-Extensions-a7673e45e9064d12b6b48aa517bd1763?pvs=4) - enabling recovery from EFM via governance multisig and without spork
   - Review and iteration on latest design
 - Begin implementing KV Store
-
-
-
+- Create [GossipSub forensics dashboard](https://github.com/dapperlabs/flow-go/issues/6933)
+- Identify remaining technical gaps in the GH issues for the upcoming OKR
+- Implement incident management runbook for networking layer
+- [upgrade libp2p version to v0.32.0](https://github.com/onflow/flow-go/issues/4934)
+- Fix Access connection cache race condition
+- Add register cache for script executions
 
 **On Hold**
 
