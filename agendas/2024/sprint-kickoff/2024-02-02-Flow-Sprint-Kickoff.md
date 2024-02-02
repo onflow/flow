@@ -428,7 +428,7 @@ Cycle Objective(s):
 ---
 
 ### **Governance and Tokenomics** \[Vishal]
-Cycle Objective(s): 
+Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
 **Done last sprint**
 
