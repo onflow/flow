@@ -432,14 +432,14 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-- General description of completed items
-- List of Closed issues
+- Working group formation
+- Delegation to node operator.
 
 
 **This sprint**
 
-- General description of sprint goal
-- List of issues to be worked on
+- Research transaction fees on other L1s
+- Research Transaction fees for Flow EVM.
 
 
 **On Hold**
