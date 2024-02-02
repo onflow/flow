@@ -9,7 +9,7 @@
 
 --- 
 
-### Mainnet Uptime - Last 14 days (DD/MM/YY to DD/MM/YY) \[Vishal]
+### Mainnet Uptime - Last 14 days (01/19/24 to 02/01/24) \[Vishal]
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
@@ -17,7 +17,7 @@
 | Block Finalization      | 99.9%   |    100%       |       0%         |
 | Transaction Execution   | 99.9%   |    100%       |       0%         |
 | Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    100%       |       0%         |
+| Access API Liveness     | 99.9%   |    99.97%     |       32.2%      |
 
 #### Incidents
 * 
