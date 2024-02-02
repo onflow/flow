@@ -297,26 +297,48 @@ Cycle Objective(s):
 ### **Wallet** Jeff
 Cycle Objective(s): 
 
+- Ensure there exists a wallet ecosystem supports FlowEVM
+  - Release version 2.2 of Flow Wallet which supports FlowEVM
+    - Support Authn / Authz / User Sign with Web3.js and WalletConnect
+    - Support FT and NFT management cross VMs
+    - FlowEVM onboarding and COA creation
+  - Ensure commitments from key EVM wallet providers to support FlowEVM
+    - Secure FlowEVM as an option in the network selector list for MetaMask.
+    - Reach out to Coinbase wallet for a commitment to support FlowEVM
+  - Ensure commitments from key EVM wallet providers to support FlowEVM
+    - Reach out to Privy for a commitment to support FlowEVM
+    - Reach out to Bastion for a commitment to support FlowEVM
+    - Ensure awareness for existing Cadence aware wallet (aside from Flow Wallet) to support FlowEVM
+  - Provide a design document outlining the steps existing Cadence aware wallets can take to support FlowEVM.
+    - Reach out to Blocto for a commitment to support FlowEVM
+    - Reach out to Shadow wallet for a commitment to support FlowEVM
+    - Reach out to Magic for a commitment to support FlowEVM
+
+- Promote safe, human readable transaction authorization on Flow
+  - Secure a partnership with Blockaid to integrate their transaction simulation and security platform with FlowEVM.
+  - Ensure the existing MetaMask Blockaid integration is compatible with FlowEVM.
+
+- Modernize and improve FCL Discovery
+  - Create a PRD and associated community bounty/grant for UI/UX improvements and analytics additions to FCL Discovery.
+
 **Done last sprint**
 
-- General description of completed items
-- List of Closed issues
-
+- N/A
 
 **This sprint**
 
-- General description of sprint goal
-- List of issues to be worked on
-
+- Begin creating developer documentation highlighting FlowEVM
+- Updating cadence transactions / scripts for Cadence 1.0
+- Begin executing on FlowEVM updates to Flow Wallet
+- Scheduled calls with MetaMask and Coinbase Wallet teams to intro FlowEVM and gather their requirements.
 
 **On Hold**
 
-- List of issues on hold
-
+- N/A
 
 **Active Epics**
 
-- Main epics that are being tackled, and currently active for this working group
+- TBD
 
 ---
 
