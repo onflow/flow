@@ -42,7 +42,7 @@
   
 ### Key Release Dates & Breaking Changes
 
-- Next Mainnet/Testnet network upgrade (spork): End of Feb - Crescnedo update, Testnet and mainnet sporks TBD.
+- Next Mainnet/Testnet network upgrade (spork): End of Feb - Crescendo update, Testnet and mainnet sporks TBD.
 - Next Mainnet/Testnet HCU: Testnet HCU - Monday, 5th Feb, Mainnet HCU - Wednesday, 7th Feb.
 - End of Cycle:
 
