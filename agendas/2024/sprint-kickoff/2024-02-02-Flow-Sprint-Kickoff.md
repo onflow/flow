@@ -131,20 +131,55 @@ Cycle Objective(s):
 - chores
   - [Canary test fix](https://github.com/onflow/flow-e2e-tests/issues/51)
   - CBOR: [Refactor map encoding to prep for Go version bump](https://github.com/fxamacker/cbor/issues/473)
+
 **This sprint**
 
-- General description of sprint goal
-- List of issues to be worked on
+Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
+- KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
+  - [More permissive contract upgrade checker for 1.0 network upgrade](https://github.com/onflow/cadence/issues/2865)
+  - [Enable testing of contract update to Cadence 1.0 in Emulator](https://github.com/onflow/cadence/issues/2947)
+  - [Migrations for core contract changes](https://github.com/onflow/cadence/issues/3007)
+  - [Enable state migration on emulator](https://github.com/onflow/cadence/issues/3063)
+- KR2: Launch Cadence 1.0 on Crescendo Testnet
+  - [Integrate Atree inlining and Cadence v0.42.x with flow-go](https://github.com/onflow/flow-go/issues/5296)
+  - [Add contract supporting contract staging under contract migration plan](https://github.com/onflow/contract-updater/issues/13)
+- KR3: Launch EVM on Crescendo Testnet
+  - [Flow EVM Core Implementation](https://github.com/onflow/flow-go/issues/5241)
+    - [Benchmark transactions running EVM operations on benchnet](https://github.com/onflow/flow-go/issues/5099)
+    - [add an intergration test for selfdestruct contract call](https://github.com/onflow/flow-go/issues/5224)
+    - [Calibrate a conversion factor between EVM gas and FVM computation effort](https://github.com/onflow/flow-go/issues/5094)
+    - [add an intergration test for selfdestruct contract call](https://github.com/onflow/flow-go/issues/5224)
+  - [JSON-RPC Gateway launch implementation](https://github.com/onflow/flow-evm-gateway/issues/12)
+  - [Indexer Implementation](https://github.com/onflow/flow-evm-gateway/issues/14)
+    - [Setup persistent storage](https://github.com/onflow/flow-evm-gateway/issues/17)
+    - [Implement querying events by topic](https://github.com/onflow/flow-evm-gateway/issues/28)
+    - [Implement event consumer](https://github.com/onflow/flow-evm-gateway/issues/15)
 
+
+Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
+- KR1: Measure execution state growth trends, identify future bottlenecks and prioritize by urgency
+  - Kick off the analysis
+
+Other
+Closing from previous cycle:
+  - [Storehouse - Benchmark RegisterStore](https://github.com/onflow/flow-go/issues/5101)
+  - [Refactor ingestion engine mempool](https://github.com/onflow/flow-go/issues/5297)
 
 **On Hold**
 
-- List of issues on hold
+Objective 2: Calibrate Transaction fees so that they accurately reflect resource usage during execution and deploy as part of Crescendo to avoid future disruption
+- KR1: Update weights for the execution operations on TN and MN
+  - [Execution effort recalibration - data collection](https://github.com/onflow/flow-go/issues/5026)
 
 
 **Active Epics**
 
-- Main epics that are being tackled, and currently active for this working group
+Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
+- KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
+- KR2: Launch Cadence 1.0 on Crescendo Testnet
+- KR3: Launch EVM on Crescendo Testnet
+Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
+- KR1: Measure execution state growth trends, identify future bottlenecks and prioritize by urgency
 
 ---
 
