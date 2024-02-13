@@ -303,7 +303,11 @@ message SubscribeAccountStatusesResponse {
   // The API may return no events which signals a periodic heartbeat. This
   // allows clients to track which blocks were searched. Client can use this
   // information to determine which block to start from when reconnecting.
-  string status = 3;
+  repeated entities.Event events = 3;
+
+  // The MessageIndex of the response message.
+  // Used by the client to ensure they received all messages.
+  uint64 messageIndex = 4;
 }
 
 // StatusesFilter defines the filter to apply to block events.
