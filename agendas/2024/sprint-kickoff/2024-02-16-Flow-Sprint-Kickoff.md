@@ -98,11 +98,20 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* 
+- Dynamic Protocol State
+   -  [Design - Dynamic Protocol State Key-Value Store](https://www.notion.so/dapperlabs/Protocol-state-key-value-storage-497326ff9cf44ff4a70610a0dad329b3?pvs=4) - generalizing Dynamic Protocol State beyond identity table changes 
+      - Finalized the design, created and estimated epic issues
+      - Took final pass over the document
+      - Started implemention of KV store, issues completed:
+          - [Implemented core types for KV store models](https://github.com/onflow/flow-go/issues/5305)
+          - [Implemented storage layer for KV store snapshots](https://github.com/onflow/flow-go/issues/5292)
 
 **This sprint**
 
-* 
+- Dynamic Protocol State
+   - [Design - Sporkless Epoch Fallback Recovery](https://www.notion.so/dapperlabs/Spork-less-Epoch-Fallback-Recovery-Design-II-Epoch-Extensions-a7673e45e9064d12b6b48aa517bd1763?pvs=4) - enabling recovery from EFM via governance multisig and without spork
+      - Review and iteration on latest design
+   - Continue implementation of KV store
 
 **On Hold**
 - N/A
