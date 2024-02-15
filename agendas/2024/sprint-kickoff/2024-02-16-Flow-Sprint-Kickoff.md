@@ -63,7 +63,7 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* 
+* Release EVM and JSON-RPC early access version including EVM Core, CLI and JSON-RPC to emulator and CrescendoNet
 
 **This sprint**
 
@@ -105,7 +105,7 @@ Cycle Objective(s):
 * 
 
 **On Hold**
-* Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
+- N/A
 
 **Active Epics**
 
@@ -127,14 +127,17 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* 
+* Continued with doc revisions for Band Oracle
+* Met with Pyth team who will report back on feasibility and timeline for EVM oracle integration
+* Completed LayerZero intake process 
 
 **This sprint**
 
-*
+* Complete final revision on Band Oracle docs and announce to community
+
 
 **On Hold**
-- N/A
+- Waiting on Axelar changes to unblock launch at end of Q1
 
 **Active Epics**
 
@@ -229,7 +232,7 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* 
+* Completed initial EVM JSON-RPC infra standup for CrescendoNet
 
 **This sprint**
 
