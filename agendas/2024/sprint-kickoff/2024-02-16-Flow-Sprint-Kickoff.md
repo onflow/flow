@@ -63,7 +63,7 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* Release EVM and JSON-RPC early access version including EVM Core, CLI and JSON-RPC to emulator and CrescendoNet
+* Release EVM early access including EVM Core, CLI and JSON-RPC to emulator and CrescendoNet
 
 **This sprint**
 
@@ -138,7 +138,8 @@ Cycle Objective(s):
 
 * Continued with doc revisions for Band Oracle
 * Met with Pyth team who will report back on feasibility and timeline for EVM oracle integration
-* Completed LayerZero intake process 
+* Completed LayerZero intake process
+* Continue Flow JVM-SDK update 
 
 **This sprint**
 
