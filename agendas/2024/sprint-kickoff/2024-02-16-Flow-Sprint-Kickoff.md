@@ -33,8 +33,12 @@
 | Released    | 4  |    0     |       2       |       4          |        **10**          |
 | Total       | **17**  |    **27**    |       **7**       |       **12**          |        **63**          |
 
-- Overall FLIPs went up by 4 vis-a-vis last month (2 new application FLIP was drafted, while 2 moved from proposed status)
-- Some FLIPs are still not reflected in the project tracker. **Remember**: FLIP process starts with an issue creation.
+- No FLIPs on the project tracker since first week Feb
+- Some FLIPs are still not reflected in the project tracker. Examples -
+    * FLIP 245: Cadence Date and Time - no issue
+    * FLIP 198: Authorized Call - no issue
+    * [Networking] FLIP: Message Forensic (MF) System #195 - no issue
+- **Remember**: FLIP process starts with an issue creation.
 (https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
   
 ### Key Release Dates & Breaking Changes
