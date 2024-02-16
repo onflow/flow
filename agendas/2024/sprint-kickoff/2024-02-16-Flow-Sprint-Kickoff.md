@@ -345,9 +345,11 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+- Met with Blockaid and began the process of securing a partnership to support FlowEVM.
 - Had an intro conversations MetaMask & WalletConnect about supporting FlowEVM.
-- Created & shipped initial developer documentation for FlowEVM.
-- Had the first Wallet Working Group where we introduced FlowEVM for wallet developers
+- Reached out to Coinbase wallet to begin conversation about supporting FlowEVM.
+- Created & shipped initial developer documentation for FlowEVM, live on the doc site.
+- Had the first Wallet Working Group where we introduced FlowEVM for wallet developers.
 - Shipped a wallet integration guide for FlowEVM.
 - Introduced Passkey initiative for Flow Reference Wallet.
 - Started UI updates to Flow Reference Wallet for FlowEVM support.
@@ -357,6 +359,7 @@ Cycle Objective(s):
 - Continue updating cadence transactions / scripts for Cadence 1.0.
 - Continue Flow Reference Wallet UI updates for FlowEVM.
 - Prepare MSCOW planning to ensure we meet our commited release timelines.
+- Continue conversations with targeted partners for FlowEVM launch.
 
 **On Hold**
 
