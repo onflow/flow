@@ -387,7 +387,7 @@ Cycle Objective(s):
 - Grafana Migration 
     - [Work with team to identify metrics to drop to realize series savings](https://www.notion.so/dapperlabs/Observability-Savings-ff0b5320cbd54f8b958aedecf1f8a011)
     - [Update cloud-init configurations to support new logging endpoint](https://github.com/dapperlabs/terraform/pull/4138) 
-    - [Update historical Devnet logging configurations](httpr://github.com/dapperlabs/terraform/pull/4143)
+    - [Update historical Devnet logging configurations](https://github.com/dapperlabs/terraform/pull/4143)
     - [Update prometheus to use new credentials and endpoint](https://github.com/dapperlabs/dapper-flow-hosting/pull/1453)
     - [Update historical node configuration to use to use new credentials and reduce logging](https://github.com/dapperlabs/dapper-flow-hosting/pull/1450)
 
