@@ -47,12 +47,12 @@
     * [Networking] FLIP: Message Forensic (MF) System #195 - no issue
 - **Remember**: FLIP process starts with an issue creation.
 (https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
-  
+
 ### Key Release Dates & Breaking Changes
 
-- Next Mainnet/Testnet network upgrade (spork): End of Feb - Crescendo update, Testnet and mainnet sporks TBD.
-- Next Mainnet/Testnet HCU: Testnet HCU - Monday, 5th Feb, Mainnet HCU - Wednesday, 7th Feb.
-- End of Cycle:
+- End of Feb - Previewnet (separate network for FlowEVM and Cadence 1.0).
+- Testnet and mainnet sporks TBD.
+
 
 ---
 
