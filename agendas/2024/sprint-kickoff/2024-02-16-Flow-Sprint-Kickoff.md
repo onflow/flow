@@ -379,6 +379,7 @@ Cycle Objective(s):
 - Protocol Support
     - [Create KMS Keys for staging contracts](https://github.com/dapperlabs/terraform/pull/4139) 
     - [Grant Flow Devex access to support hardware wallet migration](https://github.com/dapperlabs/terraform/pull/4146)
+    - Assisted with Canary, Devnet, and Mainnet HCUs for DL & FF nodes
 - Node Hosting Support
     - [Update instance sizes on Crescendo & Devnet](https://github.com/dapperlabs/terraform/pull/4137) 
     - [Update disk space for nodes on Crescendo](https://github.com/dapperlabs/terraform/pull/4136)
