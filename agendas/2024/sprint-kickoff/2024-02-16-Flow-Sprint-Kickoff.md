@@ -161,33 +161,55 @@ Cycle Objective(s):
 
 ---
 
-### **User Experience** \[Greg]
+### **User Experience [G]**
 
-Cycle Objective(s): 
+**Cycle Objective(s):**
+
 - Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
 - Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
 - Use the Crescendo Release grow Flow's developer base and network activity
 
 **Done last sprint**
 
-*
+**Team Wins**
+- Launched initial EVM docs
+- Cadence Extension Linter
+
+**Docs**
+
+- Updated CLI Quickstart to use new commands like “generate”
+- Add/Update Cadence 1.0 Messaging across sites (Cadence 1.0 banner on Playground, Docs, Cadence-lang, and NFT catalog)
+- MVP Doc Changes v3.0
+- [Add FT/NFT Migration Guides and Best Practices Docs](https://github.com/onflow/docs/issues/529)
+
+**Development**
+
+- Setup FCL Discovery for Crescendo
+- Completing work on Staged Contract Manager for Crescendo and Testnet
+- Implemented feature to switch between current CLI and C1 CLI
+- [Auto-fixes and warnings in VSCode for code incompatible with C1.0](https://github.com/onflow/vscode-cadence/issues/501)
+- [Add C1.0 Rules to Cadence Linter](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51952640)
 
 **This sprint**
 
-**Sprint goal focusing on adding docs and tool support for Crescendo network and Cadence 1.0**
+**Sprint Goal**
+- Support Crescendo and EVM launch at ETH Denver with tools, documentation, demos.
 
-- [Add Crescendo network support to FCL Discovery](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=50332654)
-- [Add Crescendo Network to CLI (config, cmds, docs, etc)](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=50297186)
-- [Add/Publish Initial EVM Docs](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51952883)
-- [Docs Revamp v3](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=49327073)
-- [Add C1.0 Rules to Cadence Linter](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51952640)
-- [Update Playground to support Cadence 1.0](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=49844013)
-- [Stable Cadence Installation Workflow](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51951905)
-
+**List of Issues to be worked on**
+- Updating the Crescendo Faucet to enable Testnet Flow deposits to both Cadence and EVM accounts [#69](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=52049956)
+- Update Crescendo network details (name, chain-id) across docs/tools [#1350](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=50297186)
+- Add C1.0 linter command to CLI [#1395](https://github.com/onflow/flow-cli/issues/1395)
+- Flow contract migration manager
+  - Staging - [#1375](https://github.com/onflow/flow-cli/issues/1375)
+  - Migration - Emulator command for migrating contracts/state to Cadence 1.0 [#571](https://github.com/onflow/flow-emulator/issues/571)
+- Add Cadence Logo to VSCode Extension [#537](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=53419793)
+- Active Contract Cluster Discovery and Report
 
 **On Hold**
+- 
 
-- [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
+**Active Epics**
+- 
 
 ---
 
