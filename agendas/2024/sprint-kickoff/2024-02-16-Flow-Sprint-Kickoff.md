@@ -126,7 +126,7 @@ E2E tests
 **This sprint**
 
 EVM
-* Release EVM early access including EVM Core, CLI and JSON-RPC to emulator and Crescendo PReview Net
+* O1_KR3: Release EVM early access including EVM Core, CLI and JSON-RPC to emulator and Crescendo PReview Net
 
 Cadence Language
 * O1_KR2: Release Cadence 1.0 RC1 on Crescendo Preview network
