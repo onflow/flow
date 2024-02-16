@@ -384,12 +384,19 @@ Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inf
 
 **Done last sprint**
 
+- Market research on Flow transaction fees vs other networks
+- Assessed gas to computation ratio - fixed at 1000:1 for crescendo network launch
+- Handed over grant management and commitment projection tracker
+- Impact of 10x vs 100x transaction fee on partners’ annual costs
+
 *
 
 **This sprint**
 
-- Research transaction fees on other L1s
-- Research Transaction fees for Flow EVM.
+- Research on inflation strategy
+- Investigate the impact of computation limit increase
+- Present Tokenomics proposals to GWG (27 Feb) - computation limit, g2c ratio, txn fee
+- Publish Tokenomics & Governance Roadmap
 
 
 **On Hold**
