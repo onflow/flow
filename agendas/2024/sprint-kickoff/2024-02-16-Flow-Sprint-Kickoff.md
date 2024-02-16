@@ -188,7 +188,7 @@ Cycle Objective(s):
   - [Simplifying RPC inspection misbehavior notification handling](https://github.com/onflow/flow-go/pull/5398)
   - [GossipSub RPC inspection documentation](https://github.com/onflow/flow-go/pull/5362)
 - Access Nodes
-  - KROK completed a PR to enable execution sync on the public network
+  - [State Sync] Enable execution state sync to public network - KROK Team (https://github.com/onflow/flow-go/pull/5253)
 
     
 **This sprint**
