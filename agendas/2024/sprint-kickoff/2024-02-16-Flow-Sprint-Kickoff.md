@@ -350,6 +350,7 @@ Cycle Objective(s):
 ### **Infra - JP**
 Cycle Objective(s): 
 - Migrate Flow metrics & logs to Flow Foundation grafana account to reduce cost on DapperLabs
+- Support launch of PreviewNet (Crescendo) and EVM 
 
 **Done last sprint**
 
