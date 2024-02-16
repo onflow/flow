@@ -187,6 +187,11 @@ Cycle Objective(s):
 - BFT Mitigations
   - [Simplifying RPC inspection misbehavior notification handling](https://github.com/onflow/flow-go/pull/5398)
   - [GossipSub RPC inspection documentation](https://github.com/onflow/flow-go/pull/5362)
+  - [Invalid topic ID threshold](https://github.com/onflow/flow-go/pull/5391)
+  - Flakey test debug and fix
+      - https://github.com/onflow/flow-go/pull/5374
+      - https://github.com/onflow/flow-go/pull/5355
+      - https://github.com/onflow/flow-go/pull/5323
 - Access Nodes
   - [State Sync] Enable execution state sync to public network - KROK Team (https://github.com/onflow/flow-go/pull/5253)
 
@@ -199,6 +204,10 @@ Cycle Objective(s):
    - Continue implementation of KV store
 - Execution state sync
    - [upgrading libp2p version to v0.32.0](https://github.com/onflow/flow-go/issues/4934)
+- BFT Mitigations
+   - Continue to stabilize networking tests (debug, fix, upgrade) and add further improvements to the RPC inspector
+      - [Reject entire RPC from unstaked peer](https://github.com/dapperlabs/flow-internal/issues/1909)
+      - [Add deduplication to RPC inspector queue and update tests](https://github.com/dapperlabs/flow-internal/issues/1910)
 - Access Nodes
    - Working on register caching for script exec
    - Fixing an issue with event order in streaming API and rolling local events in Access API to QN
