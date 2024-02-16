@@ -359,7 +359,7 @@ Cycle Objective(s):
 
 - Continue updating cadence transactions / scripts for Cadence 1.0.
 - Continue Flow Reference Wallet UI updates for FlowEVM.
-- Prepare MSCOW planning to ensure we meet our commited release timelines.
+- MSCOW planning to ensure we meet our commited release timeline for Flow Reference Wallet.
 - Continue conversations with targeted partners for FlowEVM launch.
 
 **On Hold**
