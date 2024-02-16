@@ -187,6 +187,9 @@ Cycle Objective(s):
 - BFT Mitigations
   - [Simplifying RPC inspection misbehavior notification handling](https://github.com/onflow/flow-go/pull/5398)
   - [GossipSub RPC inspection documentation](https://github.com/onflow/flow-go/pull/5362)
+- Access Nodes
+  - KROK completed a PR to enable execution sync on the public network
+
     
 **This sprint**
 
@@ -199,7 +202,6 @@ Cycle Objective(s):
 - Access Nodes
    - Working on register caching for script exec
    - Fixing an issue with event order in streaming API and rolling local events in Access API to QN
-   - KROK completed a PR to enable execution sync on the public network
   
 **On Hold**
 - N/A
@@ -224,15 +226,14 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* Continued with doc revisions for Band Oracle
+* Completed doc revisions for Band Oracle
 * Met with Pyth team who will report back on feasibility and timeline for EVM oracle integration
 * Completed LayerZero intake process
 * Continue Flow JVM-SDK update 
 
 **This sprint**
 
-* Complete final revision on Band Oracle docs and announce to community
-
+* 
 
 **On Hold**
 - Waiting on Axelar changes to unblock launch at end of Q1
