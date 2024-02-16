@@ -4,6 +4,7 @@
  
  * Released [CLI preview with Cadence 1.0 M7](https://forum.flow.com/t/update-on-cadence-1-0/5197/9?u=jan)
  * Cadence 1.0 migrations completed successfuly on Emulator state
+ * Migration of core contracts upgraded to 1.0 now passed through the updated contract upgrade checker.
 
 --- 
 
