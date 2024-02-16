@@ -9,6 +9,7 @@
  * Delivered transaction manifest file updated to Cadence 1.0 to VacuumLabs, so they can finish the ledger app update.
  * HCU rolled out new cryptography module to mainnet. ([HCU release notes](https://github.com/onflow/flow-go/releases/tag/v0.33.8))
  * Working group calls started with two UX WG calls and a Wallet WG call. Defi WG call later today.
+ * EVM infra setup for Crescendo PreviewNet is complete
 
 --- 
 
