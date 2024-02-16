@@ -2,7 +2,8 @@
 
  ### Team Wins 🎉
  
- * 
+ * Released [CLI preview with Cadence 1.0 M7](https://forum.flow.com/t/update-on-cadence-1-0/5197/9?u=jan)
+ * Cadence 1.0 migrations completed successfuly on Emulator state
 
 --- 
 
@@ -52,7 +53,7 @@
 
 # Working Group Updates
 
-### **Cadence and Virtual Machine** \[Jan]
+### **Cadence Language and Execution** \[Jan]
 Cycle Objective(s):
 
 1) Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
@@ -67,11 +68,75 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* Release EVM early access including EVM Core, CLI and JSON-RPC to emulator and CrescendoNet
+Cadence Language 
+
+- 1.0 release
+  - Updating dependencies:
+    - [Update configuration of downstream dependencies](https://github.com/onflow/cadence/pull/3095)
+    - flowkit: [1](https://github.com/onflow/cadence/pull/3109), [2](https://github.com/onflow/flixkit-go/pull/42), [3](https://github.com/onflow/flowkit/pull/12), [4](https://github.com/onflow/flowkit/pull/10)
+    - cadence-tools: [1](https://github.com/onflow/cadence-tools/pull/291), [2](https://github.com/onflow/cadence-tools/pull/290), [3](https://github.com/onflow/cadence-tools/pull/289), [4](https://github.com/onflow/cadence-tools/pull/288)
+    - [CLI](https://github.com/onflow/flow-cli/pull/1412), [flixkit](https://github.com/onflow/flixkit-go/pull/40), [flow-go](https://github.com/onflow/flow-go/pull/5393)
+    - go sdk[1](https://github.com/onflow/flow-go-sdk/pull/579), [2](https://github.com/onflow/flow-go-sdk/pull/573)
+    - emulator: [1]](https://github.com/onflow/flow-emulator/pull/573), [2](https://github.com/onflow/flow-emulator/pull/570)
+    - flow-go feature branch updates / syncs with master: [1](https://github.com/onflow/flow-go/pull/5377), [2](https://github.com/onflow/flow-go/pull/5376), [3](https://github.com/onflow/flow-go/pull/5361), [4](https://github.com/onflow/flow-go/pull/5360), [5](https://github.com/onflow/flow-go/pull/5356)
+
+  - Bugfixes:
+    - [FunctionType.Equal() needs to check Purity equality ](https://github.com/onflow/cadence/issues/3104)
+    - [Cadence 1.0 migration does not support decoding published values with path capability values](https://github.com/onflow/cadence/issues/3102)
+    - [NPE when swapping a resource to itself](https://github.com/dapperlabs/cadence-internal/issues/207)
+    - [CheckIntersectionType: also include interface conformances' members](https://github.com/onflow/cadence/issues/3091)
+    - [Restricted types / intersection types do not allow contract interfaces](https://github.com/onflow/cadence/issues/3088)
+    - [Make capability ID mapping thread-safe](https://github.com/onflow/cadence/pull/3085)
+    - [Fix intersection type migration: also migrate interface types](https://github.com/onflow/cadence/pull/3084)
+    - porting internal fixes: [1](https://github.com/onflow/cadence/pull/3078)
+
+  - Improvements:
+    - [Improve member resolvers](https://github.com/onflow/cadence/pull/3092)
+    - [Unify the requirement for all interface types to have to occur in intersection types](https://github.com/onflow/cadence/pull/3090)
+
+  - Migrations
+    - fixes and improvements: [1](https://github.com/onflow/cadence/pull/3073), [2](https://github.com/onflow/cadence/pull/3072), [3](https://github.com/onflow/flow-go/pull/5353)
+    - [Enable state migration on emulator](https://github.com/onflow/cadence/issues/3063)
+
+  - To help with Cadence 1.0 migrations, we created a utility program that extracts payloads by account address for creating a subset of execution state, useful for debuggin / testing migrations with much shorter iterations: [Add utility to extract payloads by addresses](https://github.com/onflow/flow-go/pull/5389)
+
+- Tooling: [Replace existing tool to fetch network contracts with Flowdiver-based one](https://github.com/onflow/cadence/pull/3058)
+
+- v0.42
+  - bringing back a fix that was reverted in the public branch for MN24 HCU2 (did not make it to the prvate build): [v0.42 Handle optional storage references](https://github.com/onflow/cadence/pull/3094)
+  - security fixes (deployed in MN 24 HCU 2): [1](https://github.com/dapperlabs/cadence-internal/pull/206), [2](https://github.com/dapperlabs/cadence-internal/pull/204), [3](https://github.com/dapperlabs/cadence-internal/pull/201), [4](https://github.com/dapperlabs/cadence-internal/pull/199)
+  - [porting ofinternal fixes](https://github.com/onflow/cadence/pull/3076)
+  - MN HCU build prep: [1](https://github.com/dapperlabs/flow-go/pull/6946)
+
+EVM
+- [Add COA ownership proofs](https://github.com/onflow/flow-go/issues/5197)
+- [Set nonce for direct calls](https://github.com/onflow/flow-go/pull/5373)
+- [Smart contract deployment for COAs](https://github.com/onflow/flow-go/pull/5269)
+- [Benchmark transactions running EVM operations on benchnet](https://github.com/onflow/flow-go/issues/5099)
+- Indexer: [Decode the events into relevant types](https://github.com/onflow/flow-evm-gateway/issues/16)
+
+Cadence Execution
+
+- Reviving Batchscan to use for new performance & scalability metrics (for analyzing in-depth state data): [Upgrade dependencies](https://github.com/onflow/flow-batch-scan/pull/36)
+- Improved EN startup sequence tracking: [Log progress of loading wal segment file](https://github.com/onflow/flow-go/pull/5367), [Log read segment](https://github.com/onflow/wal/pull/3)
+
+E2E tests
+- bugfixes: [BUG Random-related tests fail](https://github.com/onflow/flow-e2e-tests/issues/54), [Fix port of localnet host](https://github.com/onflow/flow-e2e-tests/pull/55)
 
 **This sprint**
 
-* 
+EVM
+* Release EVM early access including EVM Core, CLI and JSON-RPC to emulator and Crescendo PReview Net
+
+Cadence Language
+* O1_KR2: Release Cadence 1.0 RC1 on Crescendo Preview network
+* O1_KR1: Complete C1.0 migrations testing on Testnet State
+* O1_KR1: Release Flow CLI with contract migration testing enabled, including first version of updated upgrade checker
+* O1_KR6: Review draft of disaster recovery plan
+
+Cadence Execution
+* O3_KR1: Collect data on state growth
+* O4_KR2: Continue "unstaked execution node test environment" POC.
 
 **On Hold**
 
