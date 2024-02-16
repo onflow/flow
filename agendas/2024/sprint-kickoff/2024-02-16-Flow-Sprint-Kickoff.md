@@ -177,8 +177,8 @@ Cycle Objective(s):
           - [Implemented core types for KV store models](https://github.com/onflow/flow-go/issues/5305)
           - [Implemented storage layer for KV store snapshots](https://github.com/onflow/flow-go/issues/5292)
 - BFT Mitigations
-  - (Simplifying RPC inspection misbehavior notification handling)[https://github.com/onflow/flow-go/pull/5398]0
-  - (GossipSub RPC inspection documentation)[https://github.com/onflow/flow-go/pull/5362]
+  - [Simplifying RPC inspection misbehavior notification handling](https://github.com/onflow/flow-go/pull/5398)
+  - [GossipSub RPC inspection documentation](https://github.com/onflow/flow-go/pull/5362)
     
 **This sprint**
 
@@ -187,7 +187,7 @@ Cycle Objective(s):
       - Review and iteration on latest design
    - Continue implementation of KV store
 - Execution state sync
-   - (upgrading libp2p version to v0.32.0)[https://github.com/onflow/flow-go/issues/4934]
+   - [upgrading libp2p version to v0.32.0](https://github.com/onflow/flow-go/issues/4934)
 - Access Nodes
    - Working on register caching for script exec
    - Fixing an issue with event order in streaming API and rolling local events in Access API to QN
