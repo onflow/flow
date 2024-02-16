@@ -7,6 +7,7 @@
  * Migration of core contracts upgraded to 1.0 now passed through the updated contract upgrade checker.
  * EVM Gateway end-end tests are passing now !
  * Delivered transaction manifest file updated to Cadence 1.0 to VacuumLabs, so they can finish the ledger app update.
+ * HCU rolled out new cryptography module to mainnet. ([HCU release notes](https://github.com/onflow/flow-go/releases/tag/v0.33.8))
 
 --- 
 
@@ -24,7 +25,7 @@
 
 #### Incidents
 * HCU on 7th Feb that took ~12 mins.
-* Resource identifier changes ([respective](https://www.notion.so/dapperlabs/Resource-Identifier-changes-02-07-2024-f1ee35bf9575485a914d508aaa260c36))
+* Resource identifier changes ([retrospective](https://www.notion.so/dapperlabs/Resource-Identifier-changes-02-07-2024-f1ee35bf9575485a914d508aaa260c36))
 
 ---
 
