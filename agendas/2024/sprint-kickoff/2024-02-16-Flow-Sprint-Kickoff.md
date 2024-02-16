@@ -368,8 +368,31 @@ Cycle Objective(s):
 Cycle Objective(s): 
 - Migrate Flow metrics & logs to Flow Foundation grafana account to reduce cost on DapperLabs
 - Support launch of PreviewNet (Crescendo) and EVM 
+- Reduce observability costs
 
 **Done last sprint**
+- Crescendo Previewnet
+    - [Create infrastructure for Crescendo Previewnet](https://github.com/dapperlabs/terraform/pull/4148) 
+    - [Create configuration for Crescendo Previewnet](https://github.com/dapperlabs/dapper-flow-hosting/pull/1455)
+- DapperLabs Node Support
+    - [Update nodes to reduce logging](https://github.com/dapperlabs/dapper-flow-hosting/pull/1447) 
+- Protocol Support
+    - [Create KMS Keys for staging contracts](https://github.com/dapperlabs/terraform/pull/4139) 
+    - [Grant Flow Devex access to support hardware wallet migration](https://github.com/dapperlabs/terraform/pull/4146)
+- Node Hosting Support
+    - [Update instance sizes on Crescendo & Devnet](https://github.com/dapperlabs/terraform/pull/4137) 
+    - [Update disk space for nodes on Crescendo](https://github.com/dapperlabs/terraform/pull/4136)
+    - [Update Crescendo AN nodes sizes](https://github.com/dapperlabs/terraform/pull/4140)
+    - [Increase Devnet LN & VN disk sizes](https://github.com/dapperlabs/terraform/pull/4141)
+- Grafana Migration 
+    - [Work with team to identify metrics to drop to realize series savings](https://www.notion.so/dapperlabs/Observability-Savings-ff0b5320cbd54f8b958aedecf1f8a011)
+    - [Update cloud-init configurations to support new logging endpoint](https://github.com/dapperlabs/terraform/pull/4138) 
+    - [Update historical Devnet logging configurations](httpr://github.com/dapperlabs/terraform/pull/4143)
+    - [Update prometheus to use new credentials and endpoint](https://github.com/dapperlabs/dapper-flow-hosting/pull/1453)
+    - [Update historical node configuration to use to use new credentials and reduce logging](https://github.com/dapperlabs/dapper-flow-hosting/pull/1450)
+
+- Crescendo Previewnet
+    - 
 
 - Completed initial EVM JSON-RPC infra standup for Crescendo PreviewNet
    - [Setup improvements for running the Flow EVM Gateway](https://github.com/onflow/flow-evm-gateway/pull/46)
