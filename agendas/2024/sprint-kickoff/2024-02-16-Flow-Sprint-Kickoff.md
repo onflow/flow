@@ -8,6 +8,7 @@
  * EVM Gateway end-end tests are passing now !
  * Delivered transaction manifest file updated to Cadence 1.0 to VacuumLabs, so they can finish the ledger app update.
  * HCU rolled out new cryptography module to mainnet. ([HCU release notes](https://github.com/onflow/flow-go/releases/tag/v0.33.8))
+ * Working group calls started with two UX WG calls and a Wallet WG call. Defi WG call later today.
 
 --- 
 
@@ -393,10 +394,8 @@ Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inf
 
 - Market research on Flow transaction fees vs other networks
 - Assessed gas to computation ratio - fixed at 1000:1 for crescendo network launch
-- Handed over grant management and commitment projection tracker
+- Grant management and commitment projection tracker handoff to Michele from Kshtijij
 - Impact of 10x vs 100x transaction fee on partners’ annual costs
-
-*
 
 **This sprint**
 
