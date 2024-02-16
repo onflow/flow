@@ -115,8 +115,16 @@ EVM
 - [Set nonce for direct calls](https://github.com/onflow/flow-go/pull/5373)
 - [Smart contract deployment for COAs](https://github.com/onflow/flow-go/pull/5269)
 - [Benchmark transactions running EVM operations on benchnet](https://github.com/onflow/flow-go/issues/5099)
-- Indexer: [Decode the events into relevant types](https://github.com/onflow/flow-evm-gateway/issues/16)
-
+- JSON-RPC
+    - [Implement the eth_getBlockReceipts JSON-RPC endpoint](https://github.com/onflow/flow-evm-gateway/pull/44)
+    - [Add more block & tx related endpoints](https://github.com/onflow/flow-evm-gateway/pull/43)
+    - [Implement the eth_getBalance JSON-RPC endpoint](https://github.com/onflow/flow-evm-gateway/pull/42)
+    - [Make value returned by eth_gasPrice configurable](https://github.com/onflow/flow-evm-gateway/pull/39)
+    - [Update to latest additions in flow-go and cadence](https://github.com/onflow/flow-evm-gateway/pull/48)
+    - [Implement API endpoints which store and index transactions plus other tx-related endpoints](https://github.com/onflow/flow-evm-gateway/issues/4)
+    - Indexer
+       - [Decode the events into relevant types](https://github.com/onflow/flow-evm-gateway/issues/16) 
+  
 Cadence Execution
 
 - Reviving Batchscan to use for new performance & scalability metrics (for analyzing in-depth state data): [Upgrade dependencies](https://github.com/onflow/flow-batch-scan/pull/36)
@@ -344,7 +352,10 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* Completed initial EVM JSON-RPC infra standup for CrescendoNet
+- Completed initial EVM JSON-RPC infra standup for Crescendo PreviewNet
+   - [Setup improvements for running the Flow EVM Gateway](https://github.com/onflow/flow-evm-gateway/pull/46)
+   - [Fix build errors](https://github.com/onflow/flow-evm-gateway/pull/50)
+   - [Setup terraform automation for Crescendo JSON-RPC node](https://github.com/onflow/flow-evm-gateway/pull/45)
 
 **This sprint**
 
