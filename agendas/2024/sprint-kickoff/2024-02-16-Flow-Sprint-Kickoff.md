@@ -9,18 +9,19 @@
 
 --- 
 
-### Mainnet Uptime - Last 14 days (xx/xx/24 to xx/xx/24) \[Vishal]
+### Mainnet Uptime - Last 14 days (02/02/24 to 02/16/24) \[Vishal]
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%   |    100%       |       0%         |
 | Block Finalization      | 99.9%   |    100%       |       0%         |
-| Transaction Execution   | 99.9%   |    100%       |       0%         |
-| Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    99.97%     |       32.2%      |
+| Transaction Execution   | 99.9%   |    99.94%     |       59.5%       |
+| Block Sealing           | 99.9%   |    99.94%     |       59.5%      |
+| Access API Liveness (02/02/24 to 02/16/24)    | 99.9%   |    99.97%      |       29.8%      |
 
 #### Incidents
-* 
+* HCU on 7th Feb that took ~12 mins.
+* Resource identifier changes ([respective](https://www.notion.so/dapperlabs/Resource-Identifier-changes-02-07-2024-f1ee35bf9575485a914d508aaa260c36))
 
 ---
 
