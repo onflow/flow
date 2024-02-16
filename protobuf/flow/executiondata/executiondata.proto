@@ -270,9 +270,12 @@ message SubscribeAccountStatusesRequest {
   // the latest sealed block is used.
   uint64 start_block_height = 2;
 
+  // Unique identifier for the account being streamed
+  bytes address = 3;
+
   // Filter to apply to events for each block searched.
   // If no filter is provided, all statuses are returned.
-  StatusFilter filter = 3;
+  StatusFilter filter = 4;
 
   // Interval in block heights at which the server should return a heartbeat
   // message to the client. The heartbeat is a normal SubscribeAccountStatusesResponse
@@ -282,13 +285,13 @@ message SubscribeAccountStatusesRequest {
   //
   // The interval is calculated from the last response returned, which could be
   // either another heartbeat or a response containing events.
-  uint64 heartbeat_interval = 4;
+  uint64 heartbeat_interval = 5;
 
   // Preferred event encoding version of the block events payload.
   // Possible variants:
   // 1. CCF
   // 2. JSON-CDC
-  entities.EventEncodingVersion event_encoding_version = 5;
+  entities.EventEncodingVersion event_encoding_version = 6;
 }
 
 // The response for SubscribeAccountStatuses
