@@ -391,22 +391,18 @@ Cycle Objective(s):
     - [Update prometheus to use new credentials and endpoint](https://github.com/dapperlabs/dapper-flow-hosting/pull/1453)
     - [Update historical node configuration to use to use new credentials and reduce logging](https://github.com/dapperlabs/dapper-flow-hosting/pull/1450)
 
-- Crescendo Previewnet
-    - 
-
 - Completed initial EVM JSON-RPC infra standup for Crescendo PreviewNet
    - [Setup improvements for running the Flow EVM Gateway](https://github.com/onflow/flow-evm-gateway/pull/46)
    - [Fix build errors](https://github.com/onflow/flow-evm-gateway/pull/50)
    - [Setup terraform automation for Crescendo JSON-RPC node](https://github.com/onflow/flow-evm-gateway/pull/45)
 
-**This sprint**
 
-**Goal of Sprint is to migrate from DapperLabs account to FlowFoundation account** 
-
-* 
-
-**On Hold**
-**Active Epics**
+**Goal of Sprint is to prepare for GCP migration to FF account** 
+**This Sprint**
+- Support Crescendo Previewnet by enabling alerting, observability, and configuration
+- Begin preparing for GCP migration of accounts
+- Migrate a single account to evaluate process of migration and rollback
+- Begin dropping high cardinality metrics to reduce observability costs
 
 ---
 
