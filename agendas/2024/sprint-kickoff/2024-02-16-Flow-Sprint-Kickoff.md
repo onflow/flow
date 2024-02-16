@@ -6,6 +6,7 @@
  * Cadence 1.0 migrations completed successfuly on Emulator state
  * Migration of core contracts upgraded to 1.0 now passed through the updated contract upgrade checker.
  * EVM Gateway end-end tests are passing now !
+ * Delivered transaction manifest file updated to Cadence 1.0 to VacuumLabs, so they can finish the ledger app update.
 
 --- 
 
