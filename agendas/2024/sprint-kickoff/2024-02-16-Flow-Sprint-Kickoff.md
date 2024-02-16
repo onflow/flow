@@ -19,6 +19,8 @@
 | Block Sealing           | 99.9%   |    99.94%     |       59.5%      |
 | Access API Liveness (02/02/24 to 02/16/24)    | 99.9%   |    99.97%      |       29.8%      |
 
+[YTD SLA](https://app.metrika.co/flow/dashboard/slas?tr=YTD): 99.99%
+
 #### Incidents
 * HCU on 7th Feb that took ~12 mins.
 * Resource identifier changes ([respective](https://www.notion.so/dapperlabs/Resource-Identifier-changes-02-07-2024-f1ee35bf9575485a914d508aaa260c36))
