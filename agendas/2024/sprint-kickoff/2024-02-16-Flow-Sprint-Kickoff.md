@@ -104,7 +104,9 @@ Cadence Language
 
 - v0.42
   - bringing back a fix that was reverted in the public branch for MN24 HCU2 (did not make it to the prvate build): [v0.42 Handle optional storage references](https://github.com/onflow/cadence/pull/3094)
-  - security fixes (deployed in MN 24 HCU 2): [1](https://github.com/dapperlabs/cadence-internal/pull/206), [2](https://github.com/dapperlabs/cadence-internal/pull/204), [3](https://github.com/dapperlabs/cadence-internal/pull/201), [4](https://github.com/dapperlabs/cadence-internal/pull/199)
+  - security fixes:
+    - (deployed in MN 24 HCU 2): [1](https://github.com/dapperlabs/cadence-internal/pull/201), [2](https://github.com/dapperlabs/cadence-internal/pull/199)
+    - [3](https://github.com/dapperlabs/cadence-internal/pull/206), [4](https://github.com/dapperlabs/cadence-internal/pull/204)
   - [porting ofinternal fixes](https://github.com/onflow/cadence/pull/3076)
   - MN HCU build prep: [1](https://github.com/dapperlabs/flow-go/pull/6946)
 
