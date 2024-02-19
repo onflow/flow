@@ -170,6 +170,28 @@ service AccessAPI {
   rpc SubscribeBlocks(SubscribeBlocksRequest)
       returns (stream SubscribeBlocksResponse);
 
+  // SubscribeBlockHeaders streams finalized or sealed block headers starting at the requested
+  // start block, up until the latest available block header. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block header as it becomes available.
+  //
+  // Each block header are filtered by the provided block status, and only
+  // those block headers that match the status are returned.
+  //
+  // This is a lighter version of `SubscribeBlocks` as it will never include the heavy `BlockPayload`.
+  rpc SubscribeBlockHeaders(SubscribeBlockHeadersRequest)
+      returns (stream SubscribeBlockHeadersResponse);
+
+  // SubscribeBlockDigests streams finalized or sealed lightweight block starting at the requested
+  // start block, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
+  //
+  // Each lightweight block are filtered by the provided block status, and only
+  // those blocks that match the status are returned.
+  rpc SubscribeBlockDigests(SubscribeBlockDigestsRequest)
+      returns (stream SubscribeBlockDigestsResponse);     
+
   // SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
   // is streamed back until the block containing the transaction becomes sealed.
   rpc SendAndSubscribeTransactionStatuses(SendAndSubscribeTransactionStatusesRequest)
@@ -458,6 +480,68 @@ message SubscribeBlocksResponse {
   // The sealed or finalized blocks according to the block status
   // in the request.
   entities.Block block = 1;
+}
+
+// The request for SubscribeBlockHeaders
+message SubscribeBlockHeadersRequest {
+  // Block ID of the first block header to subscribe.
+  // Only one of start_block_id and start_block_height may be provided,
+  // otherwise an InvalidArgument error is returned. If neither are provided,
+  // the latest sealed block header is used.
+  bytes start_block_id = 1;
+
+  // Block height of the first block header to subscribe.
+  // Only one of start_block_id and start_block_height may be provided,
+  // otherwise an InvalidArgument error is returned. If neither are provided,
+  // the latest sealed block header is used.
+  uint64 start_block_height = 2;
+
+  // Preferred block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 3;
+}
+
+// The response for SubscribeBlockHeaders
+message SubscribeBlockHeadersResponse {
+  // The sealed or finalized block headers according to the block status
+  // in the request.
+  entities.BlockHeader header = 1;
+}
+
+// The request for SubscribeBlockDigests
+message SubscribeBlockDigestsRequest {
+  // Block ID of the first block to subscribe.
+  // Only one of start_block_id and start_block_height may be provided,
+  // otherwise an InvalidArgument error is returned. If neither are provided,
+  // the latest sealed lightweight block is used.
+  bytes start_block_id = 1;
+
+  // Block height of the first block to subscribe.
+  // Only one of start_block_id and start_block_height may be provided,
+  // otherwise an InvalidArgument error is returned. If neither are provided,
+  // the latest sealed lightweight block is used.
+  uint64 start_block_height = 2;
+
+  // Preferred block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 3;
+}
+
+// The response for SubscribeBlockDigests
+message SubscribeBlockDigestsResponse {
+  // The block ID of the new sealed or finalized block according to the block status
+  // in the request.
+  bytes block_id = 1;
+  // The block height of the new sealed or finalized block according to the block status
+  // in the request.
+  uint64 block_height = 2;
+  // The timestamp of the new sealed or finalized block according to the block status
+  // in the request.
+  google.protobuf.Timestamp block_timestamp = 3;
 }
 
 // Request message for sending a transaction and subscribing to its status changes.

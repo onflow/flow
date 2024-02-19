@@ -51,6 +51,8 @@ const (
 	AccessAPI_GetExecutionResultForBlockID_FullMethodName        = "/flow.access.AccessAPI/GetExecutionResultForBlockID"
 	AccessAPI_GetExecutionResultByID_FullMethodName              = "/flow.access.AccessAPI/GetExecutionResultByID"
 	AccessAPI_SubscribeBlocks_FullMethodName                     = "/flow.access.AccessAPI/SubscribeBlocks"
+	AccessAPI_SubscribeBlockHeaders_FullMethodName               = "/flow.access.AccessAPI/SubscribeBlockHeaders"
+	AccessAPI_SubscribeBlockDigests_FullMethodName               = "/flow.access.AccessAPI/SubscribeBlockDigests"
 	AccessAPI_SendAndSubscribeTransactionStatuses_FullMethodName = "/flow.access.AccessAPI/SendAndSubscribeTransactionStatuses"
 )
 
@@ -151,6 +153,24 @@ type AccessAPIClient interface {
 	// Each block are filtered by the provided block status, and only
 	// those blocks that match the status are returned.
 	SubscribeBlocks(ctx context.Context, in *SubscribeBlocksRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksClient, error)
+	// SubscribeBlockHeaders streams finalized or sealed block headers starting at the requested
+	// start block, up until the latest available block header. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block header as it becomes available.
+	//
+	// Each block header are filtered by the provided block status, and only
+	// those block headers that match the status are returned.
+	//
+	// This is a lighter version of `SubscribeBlocks` as it will never include the heavy `BlockPayload`.
+	SubscribeBlockHeaders(ctx context.Context, in *SubscribeBlockHeadersRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersClient, error)
+	// SubscribeBlockDigests streams finalized or sealed lightweight block starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Each lightweight block are filtered by the provided block status, and only
+	// those blocks that match the status are returned.
+	SubscribeBlockDigests(ctx context.Context, in *SubscribeBlockDigestsRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsClient, error)
 	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
 	// is streamed back until the block containing the transaction becomes sealed.
 	SendAndSubscribeTransactionStatuses(ctx context.Context, in *SendAndSubscribeTransactionStatusesRequest, opts ...grpc.CallOption) (AccessAPI_SendAndSubscribeTransactionStatusesClient, error)
@@ -475,8 +495,72 @@ func (x *accessAPISubscribeBlocksClient) Recv() (*SubscribeBlocksResponse, error
 	return m, nil
 }
 
+func (c *accessAPIClient) SubscribeBlockHeaders(ctx context.Context, in *SubscribeBlockHeadersRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[1], AccessAPI_SubscribeBlockHeaders_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlockHeadersClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlockHeadersClient interface {
+	Recv() (*SubscribeBlockHeadersResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlockHeadersClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlockHeadersClient) Recv() (*SubscribeBlockHeadersResponse, error) {
+	m := new(SubscribeBlockHeadersResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *accessAPIClient) SubscribeBlockDigests(ctx context.Context, in *SubscribeBlockDigestsRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[2], AccessAPI_SubscribeBlockDigests_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlockDigestsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlockDigestsClient interface {
+	Recv() (*SubscribeBlockDigestsResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlockDigestsClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlockDigestsClient) Recv() (*SubscribeBlockDigestsResponse, error) {
+	m := new(SubscribeBlockDigestsResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 func (c *accessAPIClient) SendAndSubscribeTransactionStatuses(ctx context.Context, in *SendAndSubscribeTransactionStatusesRequest, opts ...grpc.CallOption) (AccessAPI_SendAndSubscribeTransactionStatusesClient, error) {
-	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[1], AccessAPI_SendAndSubscribeTransactionStatuses_FullMethodName, opts...)
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[3], AccessAPI_SendAndSubscribeTransactionStatuses_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -604,6 +688,24 @@ type AccessAPIServer interface {
 	// Each block are filtered by the provided block status, and only
 	// those blocks that match the status are returned.
 	SubscribeBlocks(*SubscribeBlocksRequest, AccessAPI_SubscribeBlocksServer) error
+	// SubscribeBlockHeaders streams finalized or sealed block headers starting at the requested
+	// start block, up until the latest available block header. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block header as it becomes available.
+	//
+	// Each block header are filtered by the provided block status, and only
+	// those block headers that match the status are returned.
+	//
+	// This is a lighter version of `SubscribeBlocks` as it will never include the heavy `BlockPayload`.
+	SubscribeBlockHeaders(*SubscribeBlockHeadersRequest, AccessAPI_SubscribeBlockHeadersServer) error
+	// SubscribeBlockDigests streams finalized or sealed lightweight block starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Each lightweight block are filtered by the provided block status, and only
+	// those blocks that match the status are returned.
+	SubscribeBlockDigests(*SubscribeBlockDigestsRequest, AccessAPI_SubscribeBlockDigestsServer) error
 	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
 	// is streamed back until the block containing the transaction becomes sealed.
 	SendAndSubscribeTransactionStatuses(*SendAndSubscribeTransactionStatusesRequest, AccessAPI_SendAndSubscribeTransactionStatusesServer) error
@@ -708,6 +810,12 @@ func (UnimplementedAccessAPIServer) GetExecutionResultByID(context.Context, *Get
 }
 func (UnimplementedAccessAPIServer) SubscribeBlocks(*SubscribeBlocksRequest, AccessAPI_SubscribeBlocksServer) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeBlocks not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlockHeaders(*SubscribeBlockHeadersRequest, AccessAPI_SubscribeBlockHeadersServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlockHeaders not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlockDigests(*SubscribeBlockDigestsRequest, AccessAPI_SubscribeBlockDigestsServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlockDigests not implemented")
 }
 func (UnimplementedAccessAPIServer) SendAndSubscribeTransactionStatuses(*SendAndSubscribeTransactionStatusesRequest, AccessAPI_SendAndSubscribeTransactionStatusesServer) error {
 	return status.Errorf(codes.Unimplemented, "method SendAndSubscribeTransactionStatuses not implemented")
@@ -1303,6 +1411,48 @@ func (x *accessAPISubscribeBlocksServer) Send(m *SubscribeBlocksResponse) error 
 	return x.ServerStream.SendMsg(m)
 }
 
+func _AccessAPI_SubscribeBlockHeaders_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlockHeadersRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlockHeaders(m, &accessAPISubscribeBlockHeadersServer{stream})
+}
+
+type AccessAPI_SubscribeBlockHeadersServer interface {
+	Send(*SubscribeBlockHeadersResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlockHeadersServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlockHeadersServer) Send(m *SubscribeBlockHeadersResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _AccessAPI_SubscribeBlockDigests_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlockDigestsRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlockDigests(m, &accessAPISubscribeBlockDigestsServer{stream})
+}
+
+type AccessAPI_SubscribeBlockDigestsServer interface {
+	Send(*SubscribeBlockDigestsResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlockDigestsServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlockDigestsServer) Send(m *SubscribeBlockDigestsResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 func _AccessAPI_SendAndSubscribeTransactionStatuses_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(SendAndSubscribeTransactionStatusesRequest)
 	if err := stream.RecvMsg(m); err != nil {
@@ -1460,6 +1610,16 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "SubscribeBlocks",
 			Handler:       _AccessAPI_SubscribeBlocks_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeBlockHeaders",
+			Handler:       _AccessAPI_SubscribeBlockHeaders_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeBlockDigests",
+			Handler:       _AccessAPI_SubscribeBlockDigests_Handler,
 			ServerStreams: true,
 		},
 		{
