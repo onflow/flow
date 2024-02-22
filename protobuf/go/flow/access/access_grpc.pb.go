@@ -150,16 +150,16 @@ type AccessAPIClient interface {
 	// reached, the stream will remain open and responses are sent for each new
 	// block as it becomes available.
 	//
-	// Each block are filtered by the provided block status, and only
-	// those blocks that match the status are returned.
+	// Blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed blocks will be returned.
 	SubscribeBlocks(ctx context.Context, in *SubscribeBlocksRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksClient, error)
 	// SubscribeBlockHeaders streams finalized or sealed block headers starting at the requested
 	// start block, up until the latest available block header. Once the latest is
 	// reached, the stream will remain open and responses are sent for each new
 	// block header as it becomes available.
 	//
-	// Each block header are filtered by the provided block status, and only
-	// those block headers that match the status are returned.
+	// Block headers are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed block headres will be returned.
 	//
 	// This is a lighter version of `SubscribeBlocks` as it will never include the heavy `BlockPayload`.
 	SubscribeBlockHeaders(ctx context.Context, in *SubscribeBlockHeadersRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersClient, error)
@@ -168,8 +168,8 @@ type AccessAPIClient interface {
 	// reached, the stream will remain open and responses are sent for each new
 	// block as it becomes available.
 	//
-	// Each lightweight block are filtered by the provided block status, and only
-	// those blocks that match the status are returned.
+	// Lightweight blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed lightweight blocks will be returned.
 	SubscribeBlockDigests(ctx context.Context, in *SubscribeBlockDigestsRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsClient, error)
 	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
 	// is streamed back until the block containing the transaction becomes sealed.
@@ -685,16 +685,16 @@ type AccessAPIServer interface {
 	// reached, the stream will remain open and responses are sent for each new
 	// block as it becomes available.
 	//
-	// Each block are filtered by the provided block status, and only
-	// those blocks that match the status are returned.
+	// Blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed blocks will be returned.
 	SubscribeBlocks(*SubscribeBlocksRequest, AccessAPI_SubscribeBlocksServer) error
 	// SubscribeBlockHeaders streams finalized or sealed block headers starting at the requested
 	// start block, up until the latest available block header. Once the latest is
 	// reached, the stream will remain open and responses are sent for each new
 	// block header as it becomes available.
 	//
-	// Each block header are filtered by the provided block status, and only
-	// those block headers that match the status are returned.
+	// Block headers are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed block headres will be returned.
 	//
 	// This is a lighter version of `SubscribeBlocks` as it will never include the heavy `BlockPayload`.
 	SubscribeBlockHeaders(*SubscribeBlockHeadersRequest, AccessAPI_SubscribeBlockHeadersServer) error
@@ -703,8 +703,8 @@ type AccessAPIServer interface {
 	// reached, the stream will remain open and responses are sent for each new
 	// block as it becomes available.
 	//
-	// Each lightweight block are filtered by the provided block status, and only
-	// those blocks that match the status are returned.
+	// Lightweight blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed lightweight blocks will be returned.
 	SubscribeBlockDigests(*SubscribeBlockDigestsRequest, AccessAPI_SubscribeBlockDigestsServer) error
 	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
 	// is streamed back until the block containing the transaction becomes sealed.

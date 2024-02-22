@@ -2270,7 +2270,7 @@ type SubscribeBlocksRequest struct {
 	// otherwise an InvalidArgument error is returned. If neither are provided,
 	// the latest sealed block is used.
 	StartBlockHeight uint64 `protobuf:"varint,2,opt,name=start_block_height,json=startBlockHeight,proto3" json:"start_block_height,omitempty"`
-	// Preferred block status of the block payload.
+	// Required block status of the block payload.
 	// Possible variants:
 	// 1. BLOCK_FINALIZED
 	// 2. BLOCK_SEALED
@@ -2389,7 +2389,7 @@ type SubscribeBlockHeadersRequest struct {
 	// otherwise an InvalidArgument error is returned. If neither are provided,
 	// the latest sealed block header is used.
 	StartBlockHeight uint64 `protobuf:"varint,2,opt,name=start_block_height,json=startBlockHeight,proto3" json:"start_block_height,omitempty"`
-	// Preferred block status of the block payload.
+	// Required block status of the block payload.
 	// Possible variants:
 	// 1. BLOCK_FINALIZED
 	// 2. BLOCK_SEALED
@@ -2499,7 +2499,7 @@ type SubscribeBlockDigestsRequest struct {
 	// otherwise an InvalidArgument error is returned. If neither are provided,
 	// the latest sealed lightweight block is used.
 	StartBlockHeight uint64 `protobuf:"varint,2,opt,name=start_block_height,json=startBlockHeight,proto3" json:"start_block_height,omitempty"`
-	// Preferred block status of the block payload.
+	// Required block status of the block payload.
 	// Possible variants:
 	// 1. BLOCK_FINALIZED
 	// 2. BLOCK_SEALED
