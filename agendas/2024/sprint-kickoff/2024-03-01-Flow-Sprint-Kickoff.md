@@ -127,17 +127,18 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* Completed milestone #3 for Flow JVM SDK updates
+* Completed milestone #3 for Flow JVM SDK updates (@lealobanov)
   * Missing unit tests and previously reported issues now resolved.
   * Updated GH workflows to run integration tests and publish test results (pull request, snapshot, release workflows
 * Completed initial draft revision of USDC Cadence 1.0 update. Waiting for further confirmation from Circle for next steps
 
 **This sprint**
 
-* Start milestones 4 & 5 of Flow JVM SDK update
+* Start milestones 4 & 5 of Flow JVM SDK update (@lealobanov)
+* Start Axelar Cadence 1.0 upgrades (AnChain team)
 
 **On Hold**
-- Final work on USDC on hold pending confirmation from Circle on migration plan
+- Remaining work on USDC on hold pending confirmation from Circle on migration plan
 
 **Active Epics**
 
