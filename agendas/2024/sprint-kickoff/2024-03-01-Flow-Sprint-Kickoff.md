@@ -127,7 +127,7 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* Completed milestones #3 for Flow JVM SDK updates
+* Completed milestone #3 for Flow JVM SDK updates
   * Missing unit tests and previously reported issues now resolved.
   * Updated GH workflows to run integration tests and publish test results (pull request, snapshot, release workflows
 * Completed initial draft revision of USDC Cadence 1.0 update. Waiting for further confirmation from Circle for next steps
@@ -137,7 +137,7 @@ Cycle Objective(s):
 * Start milestones 4 & 5 of Flow JVM SDK update
 
 **On Hold**
-- N/A
+- Final work on USDC on hold pending confirmation from Circle on migration plan
 
 **Active Epics**
 
