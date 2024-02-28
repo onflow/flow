@@ -29,11 +29,11 @@
 | Proposed    | 3  |    1     |       2          |       1          |        **7**          |
 | Accepted    | 2  |    1     |       1       |       2          |        **6**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 1  |    19    |       1       |       0          |        **21**          |
+| Implemented | 1  |    19    |       2       |       0          |        **22**          |
 | Released    | 4  |    0     |       2       |       4          |        **10**          |
-| Total       | **17**  |    **27**    |       **7**       |       **12**          |        **63**          |
+| Total       | **17**  |    **27**    |       **7**       |       **12**          |        **64**          |
 
-- Overall FLIPs went up by 4 vis-a-vis last month (2 new application FLIP was drafted, while 2 moved from proposed status)
+- Overall, 1 new governance FLIP was published and implementated.
 - Some FLIPs are still not reflected in the project tracker. **Remember**: FLIP process starts with an issue creation.
 (https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
   
