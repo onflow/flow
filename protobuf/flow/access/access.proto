@@ -451,26 +451,33 @@ message ExecutionResultByIDResponse {
 
 // Subscriptions
 
-// The request for SubscribeBlocks
-message SubscribeBlocksRequest {
+// Define StartBlock as a start point to subscribe.
+message StartBlock {
   // Only one of block_id and block_height may be provided,
   // otherwise the last set value as determined by the order in the proto will overwrite all previous ones.
-  // If neither are provided, the latest sealed block is used.
   oneof start_block {
     // Block ID of the first block to subscribe.
     bytes block_id = 1;
     // Block height of the first block to subscribe.
     uint64 block_height = 2;
   }
+}
+
+// The request for SubscribeBlocks
+message SubscribeBlocksRequest {
+  // Only one of block_id and block_height may be provided,
+  // otherwise the last set value as determined by the order in the proto will overwrite all previous ones.
+  // If neither are provided, the latest sealed block is used.
+  StartBlock start_block = 1;
 
   // Required block status of the block payload.
   // Possible variants:
   // 1. BLOCK_FINALIZED
   // 2. BLOCK_SEALED
-  entities.BlockStatus block_status = 3;
+  entities.BlockStatus block_status = 2;
 
   // Boolean value determining the response: 'full' if `true`, 'light' otherwise.
-  bool full_block_response = 4;
+  bool full_block_response = 3;
 }
 
 // The response for SubscribeBlocks
@@ -485,18 +492,13 @@ message SubscribeBlockHeadersRequest {
   // Only one of block_id and block_height may be provided,
   // otherwise the last set value as determined by the order in the proto will overwrite all previous ones. 
   // If neither are provided, the latest sealed block header is used.
-  oneof start_block_header {
-    // Block ID of the first block header to subscribe.
-    bytes block_id = 1;
-    // Block height of the first block header to subscribe.
-    uint64 block_height = 2;
-  }
+  StartBlock start_block_header = 1;
 
   // Required block status of the block payload.
   // Possible variants:
   // 1. BLOCK_FINALIZED
   // 2. BLOCK_SEALED
-  entities.BlockStatus block_status = 3;
+  entities.BlockStatus block_status = 2;
 }
 
 // The response for SubscribeBlockHeaders
@@ -511,18 +513,13 @@ message SubscribeBlockDigestsRequest {
   // Only one of block_id and block_height may be provided,
   // otherwise the last set value as determined by the order in the proto will overwrite all previous ones.
   // If neither are provided, the latest sealed lightweight block is used.
-  oneof start_block {
-    // Block ID of the first block to subscribe.
-    bytes block_id = 1;
-    // Block height of the first block to subscribe.
-    uint64 block_height = 2;
-  }
+  StartBlock start_block = 1;
 
   // Required block status of the block payload.
   // Possible variants:
   // 1. BLOCK_FINALIZED
   // 2. BLOCK_SEALED
-  entities.BlockStatus block_status = 3;
+  entities.BlockStatus block_status = 2;
 }
 
 // The response for SubscribeBlockDigests
