@@ -455,6 +455,7 @@ message ExecutionResultByIDResponse {
 message StartBlock {
   // Only one of block_id and block_height may be provided,
   // otherwise the last set value as determined by the order in the proto will overwrite all previous ones.
+  // If neither are provided, the latest sealed block is used.
   oneof start_block {
     // Block ID of the first block to subscribe.
     bytes block_id = 1;
@@ -465,9 +466,7 @@ message StartBlock {
 
 // The request for SubscribeBlocks
 message SubscribeBlocksRequest {
-  // Only one of block_id and block_height may be provided,
-  // otherwise the last set value as determined by the order in the proto will overwrite all previous ones.
-  // If neither are provided, the latest sealed block is used.
+  // The first block to subscribe.
   StartBlock start_block = 1;
 
   // Required block status of the block payload.
@@ -489,9 +488,7 @@ message SubscribeBlocksResponse {
 
 // The request for SubscribeBlockHeaders
 message SubscribeBlockHeadersRequest {
-  // Only one of block_id and block_height may be provided,
-  // otherwise the last set value as determined by the order in the proto will overwrite all previous ones. 
-  // If neither are provided, the latest sealed block header is used.
+  // The first block header to subscribe.
   StartBlock start_block_header = 1;
 
   // Required block status of the block payload.
@@ -510,9 +507,7 @@ message SubscribeBlockHeadersResponse {
 
 // The request for SubscribeBlockDigests
 message SubscribeBlockDigestsRequest {
-  // Only one of block_id and block_height may be provided,
-  // otherwise the last set value as determined by the order in the proto will overwrite all previous ones.
-  // If neither are provided, the latest sealed lightweight block is used.
+  // The first block to subscribe.
   StartBlock start_block = 1;
 
   // Required block status of the block payload.

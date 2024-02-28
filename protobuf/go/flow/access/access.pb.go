@@ -2262,6 +2262,7 @@ func (m *ExecutionResultByIDResponse) GetMetadata() *entities.Metadata {
 type StartBlock struct {
 	// Only one of block_id and block_height may be provided,
 	// otherwise the last set value as determined by the order in the proto will overwrite all previous ones.
+	// If neither are provided, the latest sealed block is used.
 	//
 	// Types that are valid to be assigned to StartBlock:
 	//
@@ -2345,9 +2346,7 @@ func (*StartBlock) XXX_OneofWrappers() []interface{} {
 
 // The request for SubscribeBlocks
 type SubscribeBlocksRequest struct {
-	// Only one of block_id and block_height may be provided,
-	// otherwise the last set value as determined by the order in the proto will overwrite all previous ones.
-	// If neither are provided, the latest sealed block is used.
+	// The first block to subscribe.
 	StartBlock *StartBlock `protobuf:"bytes,1,opt,name=start_block,json=startBlock,proto3" json:"start_block,omitempty"`
 	// Required block status of the block payload.
 	// Possible variants:
@@ -2451,9 +2450,7 @@ func (m *SubscribeBlocksResponse) GetBlock() *entities.Block {
 
 // The request for SubscribeBlockHeaders
 type SubscribeBlockHeadersRequest struct {
-	// Only one of block_id and block_height may be provided,
-	// otherwise the last set value as determined by the order in the proto will overwrite all previous ones.
-	// If neither are provided, the latest sealed block header is used.
+	// The first block header to subscribe.
 	StartBlockHeader *StartBlock `protobuf:"bytes,1,opt,name=start_block_header,json=startBlockHeader,proto3" json:"start_block_header,omitempty"`
 	// Required block status of the block payload.
 	// Possible variants:
@@ -2548,9 +2545,7 @@ func (m *SubscribeBlockHeadersResponse) GetHeader() *entities.BlockHeader {
 
 // The request for SubscribeBlockDigests
 type SubscribeBlockDigestsRequest struct {
-	// Only one of block_id and block_height may be provided,
-	// otherwise the last set value as determined by the order in the proto will overwrite all previous ones.
-	// If neither are provided, the latest sealed lightweight block is used.
+	// The first block to subscribe.
 	StartBlock *StartBlock `protobuf:"bytes,1,opt,name=start_block,json=startBlock,proto3" json:"start_block,omitempty"`
 	// Required block status of the block payload.
 	// Possible variants:
