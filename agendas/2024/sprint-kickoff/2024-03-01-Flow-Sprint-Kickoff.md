@@ -101,6 +101,9 @@ Cycle Objective(s):
 * Dynamic Protocol
   * [Implemented storage layer types and capabilities for Key-Value Store](https://github.com/onflow/flow-go/issues/5292)
   * [Partially implemented of state machine for Key-Value Store](https://github.com/onflow/flow-go/issues/5312)
+  * Create protocol version upgrade service event
+    * Wrapping up [KV Store - ProtocolStateVersionUpgrade Service Event](https://github.com/onflow/flow-go/pull/5428)
+    * Started [Add ProtocolStateVersionUpgrade service event](https://github.com/onflow/flow-core-contracts/pull/411)
 * New crypto lib
   * Transition of repos emulator/sdk/core-contract to use the new crypto lib (CLI is partially transitioned)
   * Fix emulator build with cross-compilation - fix CLI build with cross compilation (with help of 4d-ux)
@@ -117,6 +120,10 @@ Cycle Objective(s):
 * Dynamic Protocol
   * Continue to ramp up EFM recovery and dynamic protocol state
   * Finish implementation of state machine and continue with development of next issues
+  * Continue [Add ProtocolStateVersionUpgrade service event](https://github.com/onflow/flow-core-contracts/pull/411)
+  * Continue [integration test for protocol version upgrade](https://github.com/onflow/flow-go/pull/5477)
+  * Once state machine is done, continue with version upgrade integration
+Some time helping with Previewnet setup
 * New crypto lib
   * Continue testing ArtBlocks node image (requires BN2)
   * Work with IT for node access to troubleshoot problematic CPU type and investigate the issue
