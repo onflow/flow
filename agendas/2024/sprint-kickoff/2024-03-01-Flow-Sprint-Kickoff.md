@@ -273,12 +273,21 @@ Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inf
 
 **Done last sprint**
 
-*
+* EVM to gas computation ratio set at 1000:1 for PreviewNet launch. Evaluating a higher 3000:1 ratio based on Flow's ability to execute higher gas transactions.
+* Built developer docs (and internal doc) on FlowEVM gas fee
+* Evaluated Flow fee for 5 key txn types
+* Drafted note on inflation and levers to pull
+* Higher level governance overarching strategy
+* Computation limit increase impact being evaluated
 
 **This sprint**
 
-- Research transaction fees on other L1s
-- Research Transaction fees for Flow EVM.
+- Execution effort estimation for FlowEVM transactions; determine ratios/ differences between Flow cadence & FlowEVM txn fee
+- Decide on computation limit increase
+- GWG meeting and community updates on changes
+- Publish forum post for computation limit and transaction fee increase
+- Partner outreach for upcoming transaction fee increase
+- Research on Storage fee on EVM 
 
 
 **On Hold**
