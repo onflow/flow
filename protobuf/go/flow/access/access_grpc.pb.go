@@ -19,37 +19,41 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	AccessAPI_Ping_FullMethodName                              = "/flow.access.AccessAPI/Ping"
-	AccessAPI_GetNodeVersionInfo_FullMethodName                = "/flow.access.AccessAPI/GetNodeVersionInfo"
-	AccessAPI_GetLatestBlockHeader_FullMethodName              = "/flow.access.AccessAPI/GetLatestBlockHeader"
-	AccessAPI_GetBlockHeaderByID_FullMethodName                = "/flow.access.AccessAPI/GetBlockHeaderByID"
-	AccessAPI_GetBlockHeaderByHeight_FullMethodName            = "/flow.access.AccessAPI/GetBlockHeaderByHeight"
-	AccessAPI_GetLatestBlock_FullMethodName                    = "/flow.access.AccessAPI/GetLatestBlock"
-	AccessAPI_GetBlockByID_FullMethodName                      = "/flow.access.AccessAPI/GetBlockByID"
-	AccessAPI_GetBlockByHeight_FullMethodName                  = "/flow.access.AccessAPI/GetBlockByHeight"
-	AccessAPI_GetCollectionByID_FullMethodName                 = "/flow.access.AccessAPI/GetCollectionByID"
-	AccessAPI_SendTransaction_FullMethodName                   = "/flow.access.AccessAPI/SendTransaction"
-	AccessAPI_GetTransaction_FullMethodName                    = "/flow.access.AccessAPI/GetTransaction"
-	AccessAPI_GetTransactionResult_FullMethodName              = "/flow.access.AccessAPI/GetTransactionResult"
-	AccessAPI_GetTransactionResultByIndex_FullMethodName       = "/flow.access.AccessAPI/GetTransactionResultByIndex"
-	AccessAPI_GetTransactionResultsByBlockID_FullMethodName    = "/flow.access.AccessAPI/GetTransactionResultsByBlockID"
-	AccessAPI_GetTransactionsByBlockID_FullMethodName          = "/flow.access.AccessAPI/GetTransactionsByBlockID"
-	AccessAPI_GetSystemTransaction_FullMethodName              = "/flow.access.AccessAPI/GetSystemTransaction"
-	AccessAPI_GetSystemTransactionResult_FullMethodName        = "/flow.access.AccessAPI/GetSystemTransactionResult"
-	AccessAPI_GetAccount_FullMethodName                        = "/flow.access.AccessAPI/GetAccount"
-	AccessAPI_GetAccountAtLatestBlock_FullMethodName           = "/flow.access.AccessAPI/GetAccountAtLatestBlock"
-	AccessAPI_GetAccountAtBlockHeight_FullMethodName           = "/flow.access.AccessAPI/GetAccountAtBlockHeight"
-	AccessAPI_ExecuteScriptAtLatestBlock_FullMethodName        = "/flow.access.AccessAPI/ExecuteScriptAtLatestBlock"
-	AccessAPI_ExecuteScriptAtBlockID_FullMethodName            = "/flow.access.AccessAPI/ExecuteScriptAtBlockID"
-	AccessAPI_ExecuteScriptAtBlockHeight_FullMethodName        = "/flow.access.AccessAPI/ExecuteScriptAtBlockHeight"
-	AccessAPI_GetEventsForHeightRange_FullMethodName           = "/flow.access.AccessAPI/GetEventsForHeightRange"
-	AccessAPI_GetEventsForBlockIDs_FullMethodName              = "/flow.access.AccessAPI/GetEventsForBlockIDs"
-	AccessAPI_GetNetworkParameters_FullMethodName              = "/flow.access.AccessAPI/GetNetworkParameters"
-	AccessAPI_GetLatestProtocolStateSnapshot_FullMethodName    = "/flow.access.AccessAPI/GetLatestProtocolStateSnapshot"
-	AccessAPI_GetProtocolStateSnapshotByBlockID_FullMethodName = "/flow.access.AccessAPI/GetProtocolStateSnapshotByBlockID"
-	AccessAPI_GetProtocolStateSnapshotByHeight_FullMethodName  = "/flow.access.AccessAPI/GetProtocolStateSnapshotByHeight"
-	AccessAPI_GetExecutionResultForBlockID_FullMethodName      = "/flow.access.AccessAPI/GetExecutionResultForBlockID"
-	AccessAPI_GetExecutionResultByID_FullMethodName            = "/flow.access.AccessAPI/GetExecutionResultByID"
+	AccessAPI_Ping_FullMethodName                                = "/flow.access.AccessAPI/Ping"
+	AccessAPI_GetNodeVersionInfo_FullMethodName                  = "/flow.access.AccessAPI/GetNodeVersionInfo"
+	AccessAPI_GetLatestBlockHeader_FullMethodName                = "/flow.access.AccessAPI/GetLatestBlockHeader"
+	AccessAPI_GetBlockHeaderByID_FullMethodName                  = "/flow.access.AccessAPI/GetBlockHeaderByID"
+	AccessAPI_GetBlockHeaderByHeight_FullMethodName              = "/flow.access.AccessAPI/GetBlockHeaderByHeight"
+	AccessAPI_GetLatestBlock_FullMethodName                      = "/flow.access.AccessAPI/GetLatestBlock"
+	AccessAPI_GetBlockByID_FullMethodName                        = "/flow.access.AccessAPI/GetBlockByID"
+	AccessAPI_GetBlockByHeight_FullMethodName                    = "/flow.access.AccessAPI/GetBlockByHeight"
+	AccessAPI_GetCollectionByID_FullMethodName                   = "/flow.access.AccessAPI/GetCollectionByID"
+	AccessAPI_SendTransaction_FullMethodName                     = "/flow.access.AccessAPI/SendTransaction"
+	AccessAPI_GetTransaction_FullMethodName                      = "/flow.access.AccessAPI/GetTransaction"
+	AccessAPI_GetTransactionResult_FullMethodName                = "/flow.access.AccessAPI/GetTransactionResult"
+	AccessAPI_GetTransactionResultByIndex_FullMethodName         = "/flow.access.AccessAPI/GetTransactionResultByIndex"
+	AccessAPI_GetTransactionResultsByBlockID_FullMethodName      = "/flow.access.AccessAPI/GetTransactionResultsByBlockID"
+	AccessAPI_GetTransactionsByBlockID_FullMethodName            = "/flow.access.AccessAPI/GetTransactionsByBlockID"
+	AccessAPI_GetSystemTransaction_FullMethodName                = "/flow.access.AccessAPI/GetSystemTransaction"
+	AccessAPI_GetSystemTransactionResult_FullMethodName          = "/flow.access.AccessAPI/GetSystemTransactionResult"
+	AccessAPI_GetAccount_FullMethodName                          = "/flow.access.AccessAPI/GetAccount"
+	AccessAPI_GetAccountAtLatestBlock_FullMethodName             = "/flow.access.AccessAPI/GetAccountAtLatestBlock"
+	AccessAPI_GetAccountAtBlockHeight_FullMethodName             = "/flow.access.AccessAPI/GetAccountAtBlockHeight"
+	AccessAPI_ExecuteScriptAtLatestBlock_FullMethodName          = "/flow.access.AccessAPI/ExecuteScriptAtLatestBlock"
+	AccessAPI_ExecuteScriptAtBlockID_FullMethodName              = "/flow.access.AccessAPI/ExecuteScriptAtBlockID"
+	AccessAPI_ExecuteScriptAtBlockHeight_FullMethodName          = "/flow.access.AccessAPI/ExecuteScriptAtBlockHeight"
+	AccessAPI_GetEventsForHeightRange_FullMethodName             = "/flow.access.AccessAPI/GetEventsForHeightRange"
+	AccessAPI_GetEventsForBlockIDs_FullMethodName                = "/flow.access.AccessAPI/GetEventsForBlockIDs"
+	AccessAPI_GetNetworkParameters_FullMethodName                = "/flow.access.AccessAPI/GetNetworkParameters"
+	AccessAPI_GetLatestProtocolStateSnapshot_FullMethodName      = "/flow.access.AccessAPI/GetLatestProtocolStateSnapshot"
+	AccessAPI_GetProtocolStateSnapshotByBlockID_FullMethodName   = "/flow.access.AccessAPI/GetProtocolStateSnapshotByBlockID"
+	AccessAPI_GetProtocolStateSnapshotByHeight_FullMethodName    = "/flow.access.AccessAPI/GetProtocolStateSnapshotByHeight"
+	AccessAPI_GetExecutionResultForBlockID_FullMethodName        = "/flow.access.AccessAPI/GetExecutionResultForBlockID"
+	AccessAPI_GetExecutionResultByID_FullMethodName              = "/flow.access.AccessAPI/GetExecutionResultByID"
+	AccessAPI_SubscribeBlocks_FullMethodName                     = "/flow.access.AccessAPI/SubscribeBlocks"
+	AccessAPI_SubscribeBlockHeaders_FullMethodName               = "/flow.access.AccessAPI/SubscribeBlockHeaders"
+	AccessAPI_SubscribeBlockDigests_FullMethodName               = "/flow.access.AccessAPI/SubscribeBlockDigests"
+	AccessAPI_SendAndSubscribeTransactionStatuses_FullMethodName = "/flow.access.AccessAPI/SendAndSubscribeTransactionStatuses"
 )
 
 // AccessAPIClient is the client API for AccessAPI service.
@@ -141,6 +145,35 @@ type AccessAPIClient interface {
 	GetExecutionResultForBlockID(ctx context.Context, in *GetExecutionResultForBlockIDRequest, opts ...grpc.CallOption) (*ExecutionResultForBlockIDResponse, error)
 	// GetExecutionResultByID returns Execution Result by its ID.
 	GetExecutionResultByID(ctx context.Context, in *GetExecutionResultByIDRequest, opts ...grpc.CallOption) (*ExecutionResultByIDResponse, error)
+	// SubscribeBlocks streams finalized or sealed blocks starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed blocks will be returned.
+	SubscribeBlocks(ctx context.Context, in *SubscribeBlocksRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksClient, error)
+	// SubscribeBlockHeaders streams finalized or sealed block headers starting at the requested
+	// start block, up until the latest available block header. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block header as it becomes available.
+	//
+	// Block headers are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed block headres will be returned.
+	//
+	// This is a lighter version of `SubscribeBlocks` as it will never include the heavy `BlockPayload`.
+	SubscribeBlockHeaders(ctx context.Context, in *SubscribeBlockHeadersRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersClient, error)
+	// SubscribeBlockDigests streams finalized or sealed lightweight block starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Lightweight blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed lightweight blocks will be returned.
+	SubscribeBlockDigests(ctx context.Context, in *SubscribeBlockDigestsRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsClient, error)
+	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
+	// is streamed back until the block containing the transaction becomes sealed.
+	SendAndSubscribeTransactionStatuses(ctx context.Context, in *SendAndSubscribeTransactionStatusesRequest, opts ...grpc.CallOption) (AccessAPI_SendAndSubscribeTransactionStatusesClient, error)
 }
 
 type accessAPIClient struct {
@@ -430,6 +463,134 @@ func (c *accessAPIClient) GetExecutionResultByID(ctx context.Context, in *GetExe
 	return out, nil
 }
 
+func (c *accessAPIClient) SubscribeBlocks(ctx context.Context, in *SubscribeBlocksRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[0], AccessAPI_SubscribeBlocks_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlocksClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlocksClient interface {
+	Recv() (*SubscribeBlocksResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlocksClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlocksClient) Recv() (*SubscribeBlocksResponse, error) {
+	m := new(SubscribeBlocksResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *accessAPIClient) SubscribeBlockHeaders(ctx context.Context, in *SubscribeBlockHeadersRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[1], AccessAPI_SubscribeBlockHeaders_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlockHeadersClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlockHeadersClient interface {
+	Recv() (*SubscribeBlockHeadersResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlockHeadersClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlockHeadersClient) Recv() (*SubscribeBlockHeadersResponse, error) {
+	m := new(SubscribeBlockHeadersResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *accessAPIClient) SubscribeBlockDigests(ctx context.Context, in *SubscribeBlockDigestsRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[2], AccessAPI_SubscribeBlockDigests_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlockDigestsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlockDigestsClient interface {
+	Recv() (*SubscribeBlockDigestsResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlockDigestsClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlockDigestsClient) Recv() (*SubscribeBlockDigestsResponse, error) {
+	m := new(SubscribeBlockDigestsResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *accessAPIClient) SendAndSubscribeTransactionStatuses(ctx context.Context, in *SendAndSubscribeTransactionStatusesRequest, opts ...grpc.CallOption) (AccessAPI_SendAndSubscribeTransactionStatusesClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[3], AccessAPI_SendAndSubscribeTransactionStatuses_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISendAndSubscribeTransactionStatusesClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SendAndSubscribeTransactionStatusesClient interface {
+	Recv() (*SendAndSubscribeTransactionStatusesResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISendAndSubscribeTransactionStatusesClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISendAndSubscribeTransactionStatusesClient) Recv() (*SendAndSubscribeTransactionStatusesResponse, error) {
+	m := new(SendAndSubscribeTransactionStatusesResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // AccessAPIServer is the server API for AccessAPI service.
 // All implementations should embed UnimplementedAccessAPIServer
 // for forward compatibility
@@ -519,6 +680,35 @@ type AccessAPIServer interface {
 	GetExecutionResultForBlockID(context.Context, *GetExecutionResultForBlockIDRequest) (*ExecutionResultForBlockIDResponse, error)
 	// GetExecutionResultByID returns Execution Result by its ID.
 	GetExecutionResultByID(context.Context, *GetExecutionResultByIDRequest) (*ExecutionResultByIDResponse, error)
+	// SubscribeBlocks streams finalized or sealed blocks starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed blocks will be returned.
+	SubscribeBlocks(*SubscribeBlocksRequest, AccessAPI_SubscribeBlocksServer) error
+	// SubscribeBlockHeaders streams finalized or sealed block headers starting at the requested
+	// start block, up until the latest available block header. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block header as it becomes available.
+	//
+	// Block headers are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed block headres will be returned.
+	//
+	// This is a lighter version of `SubscribeBlocks` as it will never include the heavy `BlockPayload`.
+	SubscribeBlockHeaders(*SubscribeBlockHeadersRequest, AccessAPI_SubscribeBlockHeadersServer) error
+	// SubscribeBlockDigests streams finalized or sealed lightweight block starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Lightweight blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed lightweight blocks will be returned.
+	SubscribeBlockDigests(*SubscribeBlockDigestsRequest, AccessAPI_SubscribeBlockDigestsServer) error
+	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
+	// is streamed back until the block containing the transaction becomes sealed.
+	SendAndSubscribeTransactionStatuses(*SendAndSubscribeTransactionStatusesRequest, AccessAPI_SendAndSubscribeTransactionStatusesServer) error
 }
 
 // UnimplementedAccessAPIServer should be embedded to have forward compatible implementations.
@@ -617,6 +807,18 @@ func (UnimplementedAccessAPIServer) GetExecutionResultForBlockID(context.Context
 }
 func (UnimplementedAccessAPIServer) GetExecutionResultByID(context.Context, *GetExecutionResultByIDRequest) (*ExecutionResultByIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetExecutionResultByID not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlocks(*SubscribeBlocksRequest, AccessAPI_SubscribeBlocksServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlocks not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlockHeaders(*SubscribeBlockHeadersRequest, AccessAPI_SubscribeBlockHeadersServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlockHeaders not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlockDigests(*SubscribeBlockDigestsRequest, AccessAPI_SubscribeBlockDigestsServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlockDigests not implemented")
+}
+func (UnimplementedAccessAPIServer) SendAndSubscribeTransactionStatuses(*SendAndSubscribeTransactionStatusesRequest, AccessAPI_SendAndSubscribeTransactionStatusesServer) error {
+	return status.Errorf(codes.Unimplemented, "method SendAndSubscribeTransactionStatuses not implemented")
 }
 
 // UnsafeAccessAPIServer may be embedded to opt out of forward compatibility for this service.
@@ -1188,6 +1390,90 @@ func _AccessAPI_GetExecutionResultByID_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AccessAPI_SubscribeBlocks_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlocksRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlocks(m, &accessAPISubscribeBlocksServer{stream})
+}
+
+type AccessAPI_SubscribeBlocksServer interface {
+	Send(*SubscribeBlocksResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlocksServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlocksServer) Send(m *SubscribeBlocksResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _AccessAPI_SubscribeBlockHeaders_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlockHeadersRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlockHeaders(m, &accessAPISubscribeBlockHeadersServer{stream})
+}
+
+type AccessAPI_SubscribeBlockHeadersServer interface {
+	Send(*SubscribeBlockHeadersResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlockHeadersServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlockHeadersServer) Send(m *SubscribeBlockHeadersResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _AccessAPI_SubscribeBlockDigests_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlockDigestsRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlockDigests(m, &accessAPISubscribeBlockDigestsServer{stream})
+}
+
+type AccessAPI_SubscribeBlockDigestsServer interface {
+	Send(*SubscribeBlockDigestsResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlockDigestsServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlockDigestsServer) Send(m *SubscribeBlockDigestsResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _AccessAPI_SendAndSubscribeTransactionStatuses_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SendAndSubscribeTransactionStatusesRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SendAndSubscribeTransactionStatuses(m, &accessAPISendAndSubscribeTransactionStatusesServer{stream})
+}
+
+type AccessAPI_SendAndSubscribeTransactionStatusesServer interface {
+	Send(*SendAndSubscribeTransactionStatusesResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISendAndSubscribeTransactionStatusesServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISendAndSubscribeTransactionStatusesServer) Send(m *SendAndSubscribeTransactionStatusesResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 // AccessAPI_ServiceDesc is the grpc.ServiceDesc for AccessAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1320,6 +1606,27 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AccessAPI_GetExecutionResultByID_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "SubscribeBlocks",
+			Handler:       _AccessAPI_SubscribeBlocks_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeBlockHeaders",
+			Handler:       _AccessAPI_SubscribeBlockHeaders_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeBlockDigests",
+			Handler:       _AccessAPI_SubscribeBlockDigests_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SendAndSubscribeTransactionStatuses",
+			Handler:       _AccessAPI_SendAndSubscribeTransactionStatuses_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "flow/access/access.proto",
 }

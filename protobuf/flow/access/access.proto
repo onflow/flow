@@ -157,6 +157,45 @@ service AccessAPI {
   // GetExecutionResultByID returns Execution Result by its ID.
   rpc GetExecutionResultByID(GetExecutionResultByIDRequest)
       returns (ExecutionResultByIDResponse);
+
+  // Subscriptions
+  
+  // SubscribeBlocks streams finalized or sealed blocks starting at the requested
+  // start block, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
+  //
+  // Blocks are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed blocks will be returned.
+  rpc SubscribeBlocks(SubscribeBlocksRequest)
+      returns (stream SubscribeBlocksResponse);
+
+  // SubscribeBlockHeaders streams finalized or sealed block headers starting at the requested
+  // start block, up until the latest available block header. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block header as it becomes available.
+  //
+  // Block headers are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed block headres will be returned.
+  //
+  // This is a lighter version of `SubscribeBlocks` as it will never include the heavy `BlockPayload`.
+  rpc SubscribeBlockHeaders(SubscribeBlockHeadersRequest)
+      returns (stream SubscribeBlockHeadersResponse);
+
+  // SubscribeBlockDigests streams finalized or sealed lightweight block starting at the requested
+  // start block, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
+  //
+  // Lightweight blocks are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed lightweight blocks will be returned.
+  rpc SubscribeBlockDigests(SubscribeBlockDigestsRequest)
+      returns (stream SubscribeBlockDigestsResponse);     
+
+  // SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
+  // is streamed back until the block containing the transaction becomes sealed.
+  rpc SendAndSubscribeTransactionStatuses(SendAndSubscribeTransactionStatusesRequest)
+        returns (stream SendAndSubscribeTransactionStatusesResponse);
 }
 
 message PingRequest {}
@@ -408,4 +447,107 @@ message GetExecutionResultByIDRequest {
 message ExecutionResultByIDResponse {
   entities.ExecutionResult execution_result = 1;
   entities.Metadata metadata = 2;
+}
+
+// Subscriptions
+
+// Define StartBlock as a start point to subscribe.
+message StartBlock {
+  // Only one of block_id and block_height may be provided,
+  // otherwise the last set value as determined by the order in the proto will overwrite all previous ones.
+  // If neither are provided, the latest sealed block is used.
+  oneof start_block {
+    // Block ID of the first block to subscribe.
+    bytes block_id = 1;
+    // Block height of the first block to subscribe.
+    uint64 block_height = 2;
+  }
+}
+
+// The request for SubscribeBlocks
+message SubscribeBlocksRequest {
+  // The first block to subscribe.
+  StartBlock start_block = 1;
+
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 2;
+
+  // Boolean value determining the response: 'full' if `true`, 'light' otherwise.
+  bool full_block_response = 3;
+}
+
+// The response for SubscribeBlocks
+message SubscribeBlocksResponse {
+  // The sealed or finalized blocks according to the block status
+  // in the request.
+  entities.Block block = 1;
+}
+
+// The request for SubscribeBlockHeaders
+message SubscribeBlockHeadersRequest {
+  // The first block header to subscribe.
+  StartBlock start_block = 1;
+
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 2;
+}
+
+// The response for SubscribeBlockHeaders
+message SubscribeBlockHeadersResponse {
+  // The sealed or finalized block headers according to the block status
+  // in the request.
+  entities.BlockHeader header = 1;
+}
+
+// The request for SubscribeBlockDigests
+message SubscribeBlockDigestsRequest {
+  // The first block to subscribe.
+  StartBlock start_block = 1;
+
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 2;
+}
+
+// The response for SubscribeBlockDigests
+message SubscribeBlockDigestsResponse {
+  // The block ID of the new sealed or finalized block according to the block status
+  // in the request.
+  bytes block_id = 1;
+  // The block height of the new sealed or finalized block according to the block status
+  // in the request.
+  uint64 block_height = 2;
+  // The timestamp of the new sealed or finalized block according to the block status
+  // in the request.
+  google.protobuf.Timestamp block_timestamp = 3;
+}
+
+// Request message for sending a transaction and subscribing to its status changes.
+message SendAndSubscribeTransactionStatusesRequest {
+    // The transaction to be sent and tracked for status changes.
+    entities.Transaction transaction = 1;
+}
+
+// Response message for transaction status changes.
+message SendAndSubscribeTransactionStatusesResponse {
+    // The ID of the tracked transaction.
+    bytes id = 1;
+    // The status of the tracked transaction
+    // Possible transaction statuses are:
+    // - TransactionStatusPending
+    // - TransactionStatusFinalized
+    // - TransactionStatusExecuted
+    // - TransactionStatusSealed
+    // - `TransactionStatusExpired
+    entities.TransactionStatus status = 2;
+    // The message index of the response message. Used by the client to ensure they received all messages. Starts from "0".
+    uint64 message_index = 3;
 }
