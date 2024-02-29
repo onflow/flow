@@ -5,10 +5,11 @@
 * Guides added for deploying Solidity to Flow Previewnet (Hardhat, Remix)
 * Previewnet support (CLI, Faucet, FCL Discovery)
 * FT/NFT Migration Guides (Cadence 1.0)
+ * PreviewNet Launch of the Crescendo Release! Cadence 1.0 + EVM
 
 ---
 
-### Mainnet Uptime - Last 14 days (xx/xx/24 to xx/xx/24) \[Vishal]
+### Mainnet Uptime - Last 14 days (2/16/24 to 3/1/24) \[Vishal]
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
@@ -16,10 +17,12 @@
 | Block Finalization      | 99.9%   |    100%       |       0%         |
 | Transaction Execution   | 99.9%   |    100%       |       0%         |
 | Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    99.97%     |       32.2%      |
+| Access API Liveness     | 99.9%   |    99.895%    |       105%       |
+
+#### YTD SLA: [99.99%](https://app.metrika.co/flow/dashboard/slas?tr=YTD)
 
 #### Incidents
-* 
+* No incidents
 
 ---
 
@@ -41,9 +44,9 @@
   
 ### Key Release Dates & Breaking Changes
 
-- Next Mainnet/Testnet network upgrade (spork): End of Feb - Crescendo update, Testnet and mainnet sporks TBD.
-- Next Mainnet/Testnet HCU: Testnet HCU - Monday, 5th Feb, Mainnet HCU - Wednesday, 7th Feb.
-- End of Cycle:
+- Next Mainnet/Testnet network upgrade (spork): Testnet and mainnet sporks TBD.
+- Next Mainnet/Testnet HCU: TBD
+- End of Cycle: TBD
 
 ---
 
@@ -65,11 +68,12 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+* Launched Cadence 1.0 & EVM into PreviewNet!
 * 
 
 **This sprint**
 
-* 
+* Continue with EVM Gateway development for testnet readiness
 
 **On Hold**
 
@@ -103,6 +107,9 @@ Cycle Objective(s):
 * Dynamic Protocol
   * [Implemented storage layer types and capabilities for Key-Value Store](https://github.com/onflow/flow-go/issues/5292)
   * [Partially implemented of state machine for Key-Value Store](https://github.com/onflow/flow-go/issues/5312)
+  * Create protocol version upgrade service event
+    * Wrapping up [KV Store - ProtocolStateVersionUpgrade Service Event](https://github.com/onflow/flow-go/pull/5428)
+    * Started [Add ProtocolStateVersionUpgrade service event](https://github.com/onflow/flow-core-contracts/pull/411)
 * New crypto lib
   * Transition of repos emulator/sdk/core-contract to use the new crypto lib (CLI is partially transitioned)
   * Fix emulator build with cross-compilation - fix CLI build with cross compilation (with help of 4d-ux)
@@ -119,6 +126,10 @@ Cycle Objective(s):
 * Dynamic Protocol
   * Continue to ramp up EFM recovery and dynamic protocol state
   * Finish implementation of state machine and continue with development of next issues
+  * Continue [Add ProtocolStateVersionUpgrade service event](https://github.com/onflow/flow-core-contracts/pull/411)
+  * Continue [integration test for protocol version upgrade](https://github.com/onflow/flow-go/pull/5477)
+  * Once state machine is done, continue with version upgrade integration
+Some time helping with Previewnet setup
 * New crypto lib
   * Continue testing ArtBlocks node image (requires BN2)
   * Work with IT for node access to troubleshoot problematic CPU type and investigate the issue
@@ -284,17 +295,26 @@ Cycle Objective(s):
 
 ---
 
-### **Governance and Tokenomics** \[Vishal]
+### **Governance and Tokenomics** \[Kshitij]
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
 **Done last sprint**
 
-*
+* Gas to computation ratio set at 1000:1 for the PreviewNet launch, with a consideration for evaluating a higher ratio of 3000:1 based on Flow's capacity to handle higher gas transactions. See [internal doc](https://www.notion.so/dapperlabs/Gas-fees-on-Flow-EVM-b7419203c5054562a0be7fd91fc9fc66#c43bbd475a6b44b7a8bc25f9e357e720) for more explanation.
+* Developer documentation (including internal documentation) for FlowEVM gas fees created.
+* Flow fees for five key transaction types have been evaluated. See [worksheet 3](https://docs.google.com/spreadsheets/d/1PPxxAotsIYLzydAnuBAgQe1BmEcamiuSQUmsDtrpaKs/edit#gid=0)
+* Drove research on inflation and levers to reduce it via a combination of reward rate and transaction fee increase, with the goal of keeping APY comeptitive. The ideas will be presented to the GWG in the coming sprint. See [draft note](https://www.notion.so/dapperlabs/FLOW-Inflation-forum-post-for-community-ideation-3f256d4e1b5b48b6adaabb22d6b22567)
+* WIP - A high-level governance strategy is under development 
+* WIP - The impact of increasing the computation limit is being assessed
 
 **This sprint**
 
-- Research transaction fees on other L1s
-- Research Transaction fees for Flow EVM.
+* Estimation of execution effort for FlowEVM transactions and determining the ratios and differences between Flow Cadence and FlowEVM transaction fees (for better comms)
+* Finalize the decision regarding increasing the computation limit
+* Drive GWG meeting and provide community updates on recent changes
+* Publish forum post detailing the computation limit and transaction fee increases and invite feedback
+* Outreach to partners regarding the upcoming transaction fee increase
+* Conduct research on storage fees related to EVM
 
 
 **On Hold**
