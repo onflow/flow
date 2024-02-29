@@ -63,11 +63,12 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+* Launched Cadence 1.0 & EVM into PreviewNet!
 * 
 
 **This sprint**
 
-* 
+* Continue with EVM Gateway development for testnet readiness
 
 **On Hold**
 
