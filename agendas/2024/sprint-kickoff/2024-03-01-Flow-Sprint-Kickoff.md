@@ -93,7 +93,6 @@ Cycle Objective(s):
 * Translate crypto performance improvements to consensus block rate increase
 * Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node
 * Reduce CPU usage on Execution node by 30%
-* Continue BFT mitigations to enable 10 permissionless ANs
 * Continue design of Dynamic Protocol 
 
 **Done last sprint**
@@ -102,6 +101,11 @@ Cycle Objective(s):
 * Dynamic Protocol
   * [Implemented storage layer types and capabilities for Key-Value Store](https://github.com/onflow/flow-go/issues/5292)
   * [Partially implemented of state machine for Key-Value Store](https://github.com/onflow/flow-go/issues/5312)
+* New crypto lib
+  * Transition of repos emulator/sdk/core-contract to use the new crypto lib (CLI is partially transitioned)
+  * Fix emulator build with cross-compilation - fix CLI build with cross compilation (with help of 4d-ux)
+  * Investigate issues with partner nodes
+* Randomness-on chain contract: investigate issue caused by epoch contract update - issues and solution discussed 
     
 **This sprint**
 
@@ -113,9 +117,14 @@ Cycle Objective(s):
 * Dynamic Protocol
   * Continue to ramp up EFM recovery and dynamic protocol state
   * Finish implementation of state machine and continue with development of next issues
+* New crypto lib
+  * Continue testing ArtBlocks node image (requires BN2)
+  * Work with IT for node access to troubleshoot problematic CPU type and investigate the issue
+* Randomness-on chain contract: implement the contract fix (with @bluesign)
  
 **On Hold**
-* Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
+* BFT mitigations to enable 20 permissionless ANs
+* Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow
 
 **Active Epics**
 
