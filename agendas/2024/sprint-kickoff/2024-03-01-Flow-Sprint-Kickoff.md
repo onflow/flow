@@ -2,9 +2,12 @@
 
  ### Team Wins 🎉
  
+* Guides added for deploying Solidity to Flow Previewnet (Hardhat, Remix)
+* Previewnet support (CLI, Faucet, FCL Discovery)
+* FT/NFT Migration Guides (Cadence 1.0)
  * PreviewNet Launch of the Crescendo Release! Cadence 1.0 + EVM
 
---- 
+---
 
 ### Mainnet Uptime - Last 14 days (2/16/24 to 3/1/24) \[Vishal]
 
@@ -182,31 +185,45 @@ Cycle Objective(s):
 
 ### **User Experience** \[Greg]
 
-Cycle Objective(s): 
-- Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
-- Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
-- Use the Crescendo Release grow Flow's developer base and network activity
+**Cycle Objective(s):**
+
+* Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
+* Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
+* Use the Crescendo Release to grow Flow's developer base and network activity
 
 **Done last sprint**
 
-*
+* CLI Preview Release using Emulator v1.0.0-M3 with latest Cadence 1.0 and EVM updates [CLI v1.12.0-cadence-v1.0.0-M8-2 Pre-release](https://github.com/onflow/flow-cli/releases/tag/v1.12.0-cadence-v1.0.0-M8-2)
+* Add Guides and Reference documentation for deploying Solidity to Flow Previewnet (Connecting to FlowEVM, Guides: Hardhat HelloWorld, Remix (+video tutorial)) Launch
+* Stable Cadence Installation Workflow to allow multiple binaries [#1374](https://github.com/onflow/flow-cli/issues/1374)
+* [Add FT/NFT Migration Guides and Best Practices Docs](https://cadence-lang.org/docs/cadence_migration_guide/nft-guide)
+* Updated first few Cadence tutorials for Cadence 1.0
+* Faucet setup to support funding Previewnet
+* Build improved to support cross compilation with new crypto library on Stable Cadence CLI
+* Discovery setup for Previewnet support
+* CLI Previewnet support
+* CLI cheatsheet docs and help menu
 
 **This sprint**
+**Sprint goal focusing on unblocking and documenting Dev Path for Cadence 1.0 staging and migration**
 
-**Sprint goal focusing on adding docs and tool support for Crescendo network and Cadence 1.0**
+* Add Guides and Reference documentation for FlowEVM (Clients: web3.js, ethers.js, viem)
+* Hardhat video tutorial
+* Release Contract Migration Manager and support documentation for local contract staging and migration (Cadence 1.0)
+* Add Cadence Linter to  [#1395](https://github.com/onflow/flow-cli/issues/1395)
+* Urgent SEO issues - Fix developer docs broken links, markup and errors from Flow.com
+* Audit and Update Docs for Cadence 1.0 [#531](https://github.com/onflow/docs/issues/531)
+* CLI bugfixes and top issues
 
-- [Add Crescendo network support to FCL Discovery](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=50332654)
-- [Add Crescendo Network to CLI (config, cmds, docs, etc)](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=50297186)
-- [Add/Publish Initial EVM Docs](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51952883)
-- [Docs Revamp v3](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=49327073)
-- [Add C1.0 Rules to Cadence Linter](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51952640)
-- [Update Playground to support Cadence 1.0](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=49844013)
-- [Stable Cadence Installation Workflow](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51951905)
+**Active Epics**
 
+* [Contract Migration Manager](https://github.com/onflow/flow-cli/issues/1375)
+* [FlowEVM Docs for Launch](https://github.com/onflow/docs/issues/568)
 
 **On Hold**
 
-- [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
+* [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
+* Update Playground for Cadence 1.0
 
 ---
 
