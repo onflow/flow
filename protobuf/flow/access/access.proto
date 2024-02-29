@@ -489,7 +489,7 @@ message SubscribeBlocksResponse {
 // The request for SubscribeBlockHeaders
 message SubscribeBlockHeadersRequest {
   // The first block header to subscribe.
-  StartBlock start_block_header = 1;
+  StartBlock start_block = 1;
 
   // Required block status of the block payload.
   // Possible variants:
