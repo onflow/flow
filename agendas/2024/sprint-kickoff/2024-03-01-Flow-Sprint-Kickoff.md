@@ -283,21 +283,21 @@ Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inf
 
 **Done last sprint**
 
-* EVM to gas computation ratio set at 1000:1 for PreviewNet launch. Evaluating a higher 3000:1 ratio based on Flow's ability to execute higher gas transactions.
-* Built developer docs (and internal doc) on FlowEVM gas fee
-* Evaluated Flow fee for 5 key txn types
-* Drafted note on inflation and levers to pull
-* Higher level governance overarching strategy
-* Computation limit increase impact being evaluated
+* Gas to computation ratio set at 1000:1 for the PreviewNet launch, with a consideration for evaluating a higher ratio of 3000:1 based on Flow's capacity to handle higher gas transactions. See [internal doc](https://www.notion.so/dapperlabs/Gas-fees-on-Flow-EVM-b7419203c5054562a0be7fd91fc9fc66#c43bbd475a6b44b7a8bc25f9e357e720) for more explanation.
+* Developer documentation (including internal documentation) for FlowEVM gas fees created.
+* Flow fees for five key transaction types have been evaluated. See [worksheet 3](https://docs.google.com/spreadsheets/d/1PPxxAotsIYLzydAnuBAgQe1BmEcamiuSQUmsDtrpaKs/edit#gid=0)
+* Drove research on inflation and levers to reduce it via a combination of reward rate and transaction fee increase, with the goal of keeping APY comeptitive. The ideas will be presented to the GWG in the coming sprint. See [draft note](https://www.notion.so/dapperlabs/FLOW-Inflation-forum-post-for-community-ideation-3f256d4e1b5b48b6adaabb22d6b22567)
+* WIP - A high-level governance strategy is under development 
+* WIP - The impact of increasing the computation limit is being assessed
 
 **This sprint**
 
-- Execution effort estimation for FlowEVM transactions; determine ratios/ differences between Flow cadence & FlowEVM txn fee
-- Decide on computation limit increase
-- GWG meeting and community updates on changes
-- Publish forum post for computation limit and transaction fee increase
-- Partner outreach for upcoming transaction fee increase
-- Research on Storage fee on EVM 
+* Estimation of execution effort for FlowEVM transactions and determining the ratios and differences between Flow Cadence and FlowEVM transaction fees (for better comms)
+* Finalize the decision regarding increasing the computation limit
+* Drive GWG meeting and provide community updates on recent changes
+* Publish forum post detailing the computation limit and transaction fee increases and invite feedback
+* Outreach to partners regarding the upcoming transaction fee increase
+* Conduct research on storage fees related to EVM
 
 
 **On Hold**
