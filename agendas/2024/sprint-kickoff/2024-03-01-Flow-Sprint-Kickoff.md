@@ -6,7 +6,7 @@
 
 --- 
 
-### Mainnet Uptime - Last 14 days (xx/xx/24 to xx/xx/24) \[Vishal]
+### Mainnet Uptime - Last 14 days (2/16/24 to 3/1/24) \[Vishal]
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
@@ -14,10 +14,12 @@
 | Block Finalization      | 99.9%   |    100%       |       0%         |
 | Transaction Execution   | 99.9%   |    100%       |       0%         |
 | Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    99.97%     |       32.2%      |
+| Access API Liveness     | 99.9%   |    99.895%    |       105%       |
+
+#### YTD SLA: [99.99%](https://app.metrika.co/flow/dashboard/slas?tr=YTD)
 
 #### Incidents
-* 
+* No incidents
 
 ---
 
