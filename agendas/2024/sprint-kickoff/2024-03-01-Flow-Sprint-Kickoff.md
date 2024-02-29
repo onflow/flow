@@ -98,12 +98,16 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* 
-
+* Networking project handover w/ Yahya
+    
 **This sprint**
 
-* 
-
+* Merge open PRs from previous sprint
+  * [Reject Gossipsub RPC from unstaked peers](https://github.com/onflow/flow-go/pull/5449)
+  * [Herostore message entity nonce](https://github.com/onflow/flow-go/pull/5452)
+* [Update github actions improve networking test runners](https://github.com/dapperlabs/flow-go/issues/6949) 
+* Continue to ramp up EFM recovery  and dynamic protocol state.
+ 
 **On Hold**
 * Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
 
