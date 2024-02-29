@@ -99,14 +99,20 @@ Cycle Objective(s):
 **Done last sprint**
 
 * Networking project handover w/ Yahya
+* Dynamic Protocol
+  * [Implemented storage layer types and capabilities for Key-Value Store](https://github.com/onflow/flow-go/issues/5292)
+  * [Partially implemented of state machine for Key-Value Store](https://github.com/onflow/flow-go/issues/5312)
     
 **This sprint**
 
-* Merge open PRs from previous sprint
-  * [Reject Gossipsub RPC from unstaked peers](https://github.com/onflow/flow-go/pull/5449)
-  * [Herostore message entity nonce](https://github.com/onflow/flow-go/pull/5452)
-* [Update github actions improve networking test runners](https://github.com/dapperlabs/flow-go/issues/6949) 
-* Continue to ramp up EFM recovery  and dynamic protocol state.
+* Networking
+  * Merge open PRs from previous sprint
+    * [Reject Gossipsub RPC from unstaked peers](https://github.com/onflow/flow-go/pull/5449)
+    * [Herostore message entity nonce](https://github.com/onflow/flow-go/pull/5452)
+  * [Update github actions improve networking test runners](https://github.com/dapperlabs/flow-go/issues/6949) 
+* Dynamic Protocol
+  * Continue to ramp up EFM recovery and dynamic protocol state
+  * Finish implementation of state machine and continue with development of next issues
  
 **On Hold**
 * Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
@@ -134,7 +140,7 @@ Cycle Objective(s):
 * Flow JVM SDK updates (@lealobanov)
   * Completed milestone #3
     * Missing unit tests and previously reported issues now resolved.
-    * Updated GH workflows to triger integration tests and publish test results (pull request, snapshot, release workflows)
+    * Updated GH workflows to trigger integration tests and publish test results (pull request, snapshot, release workflows)
   * Started milestone #4
     * Implement CI + test automation, add integration testing 
 * Completed initial draft revision of USDC Cadence 1.0 update. Waiting for further confirmation from Circle for next steps
