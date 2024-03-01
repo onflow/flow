@@ -2,10 +2,10 @@
 
  ### Team Wins 🎉
  
-* Guides added for deploying Solidity to Flow Previewnet (Hardhat, Remix)
+* Published Guides for deploying Solidity to Flow Previewnet (Hardhat, Remix)
 * Previewnet support (CLI, Faucet, FCL Discovery)
 * FT/NFT Migration Guides (Cadence 1.0)
- * PreviewNet Launch of the Crescendo Release! Cadence 1.0 + EVM
+* PreviewNet Launch of the Crescendo Release! Cadence 1.0 + EVM
 * [Performance benchmark](https://dapperlabs.grafana.net/d/BLSHi8ZVz/flow-performance-benchmarks?orgId=1&var-branch=All&var-env=All&var-type=All&from=now-90d&to=now&viewPanel=4) now includes account creation, EVM token swap and ledger-heavy loads
 * CCF supports all Cadence 1.0 values
 * Found and fixed an issue with data pruner in EN, which reduced startup time by ~50 seconds
@@ -312,7 +312,7 @@ Cycle Objective(s):
 * Add Guides and Reference documentation for deploying Solidity to Flow Previewnet (Connecting to FlowEVM, Guides: Hardhat HelloWorld, Remix (+video tutorial)) Launch
 * Stable Cadence Installation Workflow to allow multiple binaries [#1374](https://github.com/onflow/flow-cli/issues/1374)
 * [Add FT/NFT Migration Guides and Best Practices Docs](https://cadence-lang.org/docs/cadence_migration_guide/nft-guide)
-* Updated first few Cadence tutorials for Cadence 1.0
+* Updated Cadence tutorials for Cadence 1.0
 * Faucet setup to support funding Previewnet
 * Build improved to support cross compilation with new crypto library on Stable Cadence CLI
 * Discovery setup for Previewnet support
@@ -322,11 +322,16 @@ Cycle Objective(s):
 **This sprint**
 **Sprint goal focusing on unblocking and documenting Dev Path for Cadence 1.0 staging and migration**
 
+**Education and Adoption Working Group**
 * Add Guides and Reference documentation for FlowEVM (Clients: web3.js, ethers.js, viem)
-* Hardhat video tutorial
+* Hardhat video tutorials
+* Urgent SEO issues - Fix developer docs broken links, markup and errors from Flow.com
+* Audit and Update Docs for Cadence 1.0 [#531](https://github.com/onflow/docs/issues/531)
+* [USDC Fiat Token Contract](https://github.com/flow-usdc/flow-usdc) Update for Cadence 1.0
+
+**Dev Tools Working Group**
 * Release Contract Migration Manager and support documentation for local contract staging and migration (Cadence 1.0)
 * Add Cadence Linter to  [#1395](https://github.com/onflow/flow-cli/issues/1395)
-* Urgent SEO issues - Fix developer docs broken links, markup and errors from Flow.com
 * Audit and Update Docs for Cadence 1.0 [#531](https://github.com/onflow/docs/issues/531)
 * CLI bugfixes and top issues
 
