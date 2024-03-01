@@ -72,7 +72,6 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* Launched Cadence 1.0 & EVM into PreviewNet!
 * Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
  * KR2: Launch Cadence 1.0 on Crescendo Testnet
 * Objective 4: Expand testing capability of storehouse so that we can validate execution correctness and benchmark performance on Mainnet data
