@@ -145,7 +145,7 @@ Cadence Execution
 - [Add checkpoint size metrics](https://github.com/onflow/flow-go/issues/5395)
 - [Add logs for EN startup monitoring](https://github.com/onflow/flow-go/issues/5435)
 - Performance benchmark now includes account creation and EVM token swap [Add additional loads to the load generator](https://github.com/onflow/flow-go/issues/5394)
-- Improve our ability to analyze anomalies / utliers in execution operation metering [Add normalised time per computation logs to transaction execution](https://github.com/onflow/flow-go/pull/5385)
+- Improve our ability to analyze anomalies / outliers in execution operation metering [Add normalised time per computation logs to transaction execution](https://github.com/onflow/flow-go/pull/5385)
 - Bugix: [remove duplicate definitions of default FVM context options per chain](https://github.com/onflow/flow-go/issues/5249)
 - Testing 
   - [improvement - Adding "failfast" flag to fail the integration tests on the first failure](https://github.com/onflow/flow-go/pull/5474)
