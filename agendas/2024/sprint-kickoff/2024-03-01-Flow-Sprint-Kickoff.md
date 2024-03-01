@@ -9,6 +9,7 @@
 * [Performance benchmark](https://dapperlabs.grafana.net/d/BLSHi8ZVz/flow-performance-benchmarks?orgId=1&var-branch=All&var-env=All&var-type=All&from=now-90d&to=now&viewPanel=4) now includes account creation, EVM token swap and ledger-heavy loads
 * CCF supports all Cadence 1.0 values
 * Found and fixed an issue with data pruner in EN, which reduced startup time by ~50 seconds
+* Completed Execution node test environment (pulling data from data sync and executing latest blocks without affecting network)
 
 ---
 
@@ -74,6 +75,9 @@ Cycle Objective(s):
 * Launched Cadence 1.0 & EVM into PreviewNet!
 Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
 - KR2: Launch Cadence 1.0 on Crescendo Testnet
+
+Objective 4: Expand testing capability of storehouse so that we can validate execution correctness and benchmark performance on Mainnet data
+- KR2: [Execution node can execute live data without impacting the network (i.e. execution fork)](https://github.com/onflow/flow-go/issues/5118)
 
 Cadence 1.0
 - [Testnet state migration](https://github.com/onflow/cadence/issues/3096)
@@ -142,6 +146,7 @@ EVM GW
 
 Cadence Execution
 
+- [Creating test environment for execution node that can follow and execute latest blocks](https://github.com/onflow/flow-go/issues/5118)
 - Data Pruner fix - reduces EN boot time by ~50 secs
   - [Execution Data storage tracker blocks startup](https://github.com/onflow/flow-go/issues/5457)
 - [Add checkpoint size metrics](https://github.com/onflow/flow-go/issues/5395)
