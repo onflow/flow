@@ -212,7 +212,14 @@ Cycle Objective(s):
   * Fix emulator build with cross-compilation - fix CLI build with cross compilation (with help of 4d-ux)
   * Investigate issues with partner nodes
 * Randomness-on chain contract: investigate issue caused by epoch contract update - issues and solution discussed 
-    
+* Data Availability
+  * Fixed sorting bug in streamed events ([PR 5404](https://github.com/onflow/flow-go/pull/5404))
+  * Rolled out local event queries to 35% of QN ANs
+  * Deployed register caching on devnet, 1 FF mainnet AN ([Issue 5277](https://github.com/onflow/flow-go/issues/5277))
+  * Fixed race condition in AN connection cache ([PR 5334](https://github.com/onflow/flow-go/pull/5334))
+  * Implemented local transaction result queries on ANs (KROK) ([PR 5306](https://github.com/onflow/flow-go/pull/5306))
+  * Defined proto changes for streaming blocks and tx statuses (KROK) ([PR 1422](https://github.com/onflow/flow/pull/1422))
+
 **This sprint**
 
 * Networking
@@ -231,6 +238,16 @@ Some time helping with Previewnet setup
   * Continue testing ArtBlocks node image (requires BN2)
   * Work with IT for node access to troubleshoot problematic CPU type and investigate the issue
 * Randomness-on chain contract: implement the contract fix (with @bluesign)
+* Data Availability
+  * Deploy register caching to QN AN ([Issue 5277](https://github.com/onflow/flow-go/issues/5277))
+  * Add programs cache ([Issue 5278](https://github.com/onflow/flow-go/issues/5278))
+  * Continue work on in-progress PRs from KROK:
+    * Indexing execution data on Observers ([PR 5256](https://github.com/onflow/flow-go/pull/5256))
+    * Add state streaming APIs on Observers ([PR 5368](https://github.com/onflow/flow-go/pull/5368))
+    * Add support for serving queries from local data on Observers ([PR 5358](https://github.com/onflow/flow-go/pull/5358))
+    * Streaming Blocks ([PR 5307](https://github.com/onflow/flow-go/pull/5307))
+    * Streaming TX statuses ([PR 5310](https://github.com/onflow/flow-go/pull/5310))
+    * Streaming Account statuses ([PR 5406](https://github.com/onflow/flow-go/pull/5406))
  
 **On Hold**
 * BFT mitigations to enable 20 permissionless ANs
