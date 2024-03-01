@@ -279,22 +279,33 @@ Cycle Objective(s):
 ### **Infra - JP**
 Cycle Objective(s): 
 - Migrate Flow metrics & logs to Flow Foundation grafana account to reduce cost on DapperLabs
+- Support launch of PreviewNet (Crescendo) and EVM 
+- Reduce observability costs
 
 **Done last sprint**
-
-* 
-
-**This sprint**
-
-**Goal of Sprint is to migrate from DapperLabs account to FlowFoundation account** 
-
-* 
-
-**On Hold**
-**Active Epics**
-
+- EVM Gateway
+    - [Create EVM Gateway Infrastructure](https://github.com/dapperlabs/terraform/pull/4163)
+    - [Create EVM Gateway Configuration](https://github.com/dapperlabs/dapper-flow-hosting/pull/1461)
+    - [Create faucet record for previewnet](https://github.com/dapperlabs/terraform/pull/4162)
+    - [Create EVM Gateway workflow for builds](https://github.com/onflow/flow-evm-gateway/pull/106)
+    - [Delete EVM Gateway workflow for deploys](https://github.com/onflow/flow-evm-gateway/pull/120)
+    - [Create public repository for EVM Gateway](https://github.com/dapperlabs/flow-devex-infrastructure/pull/129)
+- Node Hosting Support
+  - [Delete Crescendo Network](https://github.com/dapperlabs/terraform/pull/4157)
+  - [Delete Crescendo Configuration](https://github.com/dapperlabs/dapper-flow-hosting/pull/1459)
+- Observability Cost Reduction
+  - Turn off Canary VMs
+  - [Configure Prometheus to Drop unnecessary metrics](https://github.com/dapperlabs/dapper-flow-hosting/pull/1457)
+  - [Migrate DL nodes to error logging](https://github.com/dapperlabs/dapper-flow-hosting/pull/1458)
+- FF GCP Migration
+  - Migrated single project & validate migration process
+  - Identify all resources/projects to be moved
+**Goal of Sprint is to prepare for GCP migration to FF account** 
+**This Sprint**
+- Assist with Previewnet & EVM Gateway
+- Monitor Observability
+- Begin preparing for GCP migration of project
 ---
-
 ### **Governance and Tokenomics** \[Kshitij]
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
