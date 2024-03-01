@@ -239,6 +239,7 @@ Some time helping with Previewnet setup
   * Work with IT for node access to troubleshoot problematic CPU type and investigate the issue
 * Randomness-on chain contract: implement the contract fix (with @bluesign)
 * Data Availability
+  * Rollout local event queries to remaining QN ANs
   * Deploy register caching to QN AN ([Issue 5277](https://github.com/onflow/flow-go/issues/5277))
   * Add programs cache ([Issue 5278](https://github.com/onflow/flow-go/issues/5278))
   * Continue work on in-progress PRs from KROK:
