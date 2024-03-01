@@ -72,6 +72,8 @@ Cycle Objective(s):
 **Done last sprint**
 
 * Launched Cadence 1.0 & EVM into PreviewNet!
+Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
+- KR2: Launch Cadence 1.0 on Crescendo Testnet
 
 Cadence 1.0
 - [Testnet state migration](https://github.com/onflow/cadence/issues/3096)
@@ -152,15 +154,20 @@ Cadence Execution
   - Prevent infinite loop in tests: [Remove db close in execution state sync tests](https://github.com/onflow/flow-go/pull/5465)
   - [Add system TX hash to test](https://github.com/onflow/flow-go/pull/5466)
 
-
 **This sprint**
 
+Objective 1, KR 1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
 * Complete emulator release with contract upgrade testing enabled (blocker: [Loading values from a migrated emulator state fails](https://github.com/onflow/cadence/issues/3143))
 * Continue debugging [ full Cadence 1.0 migration run on TN state](https://github.com/onflow/cadence/issues/3096)
+
+Objective 1, KR4: Testnet Upgrade to Crescendo Release
 * Continue with EVM Gateway development for testnet readiness
-* Complete Atree optimization: [Reduce RAM and persistent storage by deduplicating inlined dict type info](https://github.com/onflow/atree/pull/369)
+
+Objective 4, KR1: Execution node handles restart from spork root block reguardless of how many blocks it is behind
 * Continue refactoring of Ingestion engine to [prevent EN entering crash loop](https://github.com/onflow/flow-go/issues/5298)
 
+* Complete Atree optimization: [Reduce RAM and persistent storage by deduplicating inlined dict type info](https://github.com/onflow/atree/pull/369)
+  
 **On Hold**
 
 Objective 2: Calibrate Transaction fees so that they accurately reflect resource usage during execution and deploy as part of Crescendo to avoid future disruption
@@ -172,10 +179,14 @@ Objective 2: Calibrate Transaction fees so that they accurately reflect resource
 
 Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
 - KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
-- KR2: Launch Cadence 1.0 on Crescendo Testnet
-- KR3: Launch EVM on Crescendo Testnet
+- KR4: Testnet Upgrade to Crescendo Release
+
 Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
 - KR1: Measure execution state growth trends, identify future bottlenecks and prioritize by urgency
+
+Objective 4: Expand testing capability of storehouse so that we can validate execution correctness and benchmark performance on Mainnet data
+- KR1: Execution node handles restart from spork root block reguardless of how many blocks it is behind
+- KR2: Execution node can execute live data without impacting the network (i.e. execution fork)
 
 ---
 
