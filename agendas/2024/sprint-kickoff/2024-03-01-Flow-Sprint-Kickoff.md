@@ -6,6 +6,9 @@
 * Previewnet support (CLI, Faucet, FCL Discovery)
 * FT/NFT Migration Guides (Cadence 1.0)
  * PreviewNet Launch of the Crescendo Release! Cadence 1.0 + EVM
+* [Performance benchmark](https://dapperlabs.grafana.net/d/BLSHi8ZVz/flow-performance-benchmarks?orgId=1&var-branch=All&var-env=All&var-type=All&from=now-90d&to=now&viewPanel=4) now includes account creation, EVM token swap and ledger-heavy loads
+* CCF supports all Cadence 1.0 values
+* Found and fixed an issue with data pruner in EN, which reduced startup time by ~50 seconds
 
 ---
 
@@ -69,11 +72,95 @@ Cycle Objective(s):
 **Done last sprint**
 
 * Launched Cadence 1.0 & EVM into PreviewNet!
-* 
+
+Cadence 1.0
+- [Testnet state migration](https://github.com/onflow/cadence/issues/3096)
+    - [Add logs to merge](https://github.com/onflow/flow-go/pull/5484)
+    - [Add test for nested container value migration](https://github.com/onflow/cadence/pull/3142)
+    - [Migrate static types of arrays and dictionaries](https://github.com/onflow/cadence/pull/3141)
+    - flow-go utility [Add sub-command to generate addresses for a chain](https://github.com/onflow/flow-go/pull/5453)
+    - Prevent accidental use of partial state for network upgrade [Add version, checksum, and partial state indicator to intermediate migration payload file](https://github.com/onflow/flow-go/issues/5437)
+    - [Add value migration test for untyped capabilities](https://github.com/onflow/flow-go/pull/5434)
+    - [Migration needs to convert untyped path capability values](https://github.com/onflow/cadence/issues/3119)
+    - [handle references to optionals](https://github.com/onflow/cadence/issues/3122)
+    - [Improve migration of intersection types](https://github.com/onflow/cadence/issues/3112)
+    - [Improve account-based migration error handling](https://github.com/onflow/flow-go/issues/5364)
+    - [Improve migration](https://github.com/onflow/cadence/pull/3110)
+    - [Improve Cadence 1.0 migration](https://github.com/onflow/flow-go/pull/5388)
+    - Migration optimization [Add flag to state extraction program to output intermediate format instead of migrated checkpoint](https://github.com/onflow/flow-go/issues/5231)
+- Emulator contract migration testing
+    - [Export migrator runtime constructor](https://github.com/onflow/flow-go/pull/5475)
+    - [Restrict the entitlements allowed by the contract update validator](https://github.com/onflow/cadence/issues/3128)
+    - [Integrate staged contract migration with the on-chain logic](https://github.com/onflow/cadence/issues/3050)
+    - [Add FT/NFT type change rules for contract update validator](https://github.com/onflow/flow-go/pull/5415)
+    - [More permissive contract upgrade checker for 1.0 network upgrade](https://github.com/onflow/cadence/issues/2865)
+- Features
+    - Language breaking change: [Reject container mutation while iterating](https://github.com/onflow/cadence/issues/2961)
+    - Language breaking change: [Reject container mutation while iterating](https://github.com/onflow/cadence/issues/2961)
+    - CCF now supports all Cadence 1.0 values [Update CCF codec to support recently added types/values](https://github.com/onflow/cadence/issues/2379)
+    - [Support function-purity annotations in CCF](https://github.com/onflow/cadence/issues/2457)
+- Bugfix
+    - [EntitlementSetAuthorization.Equal() should ignore the order of elements](https://github.com/onflow/cadence/issues/3136)
+- Tooling 
+    - Cadence update tool [Improve update tool: Allow releasing a particular branch](https://github.com/onflow/cadence/pull/3124)
+
+EVM Core
+- [expose code/codeHash and nonce for the EVM account](https://github.com/onflow/flow-go/issues/5458)
+- [return empty string when deployed address is empty](https://github.com/onflow/flow-go/pull/5456)
+- [fix tx hash bug for direct calls: deposit, withdraw](https://github.com/onflow/flow-go/pull/5454)
+- [implement tryRun endpoint](https://github.com/onflow/flow-go/issues/5268)
+- [add blockHash and txHash to tx executed events](https://github.com/onflow/flow-go/pull/5387)
+- [rename all reference of bridged account to COA](https://github.com/onflow/flow-go/issues/5380)
+- [improvements to COA proof verification](https://github.com/onflow/flow-go/pull/5379)
+- [investigate ways to allow the cadence env handle evm errors](https://github.com/onflow/flow-go/issues/5225)
+- [Fix return type](https://github.com/onflow/flow-go/pull/5450)
+- [Fix block hash calculation](https://github.com/onflow/flow-go/issues/5407)
+- [Change direct call hash calculation](https://github.com/onflow/flow-go/issues/5370)
+- [add an intergration test for selfdestruct contract call](https://github.com/onflow/flow-go/issues/5224)
+
+EVM GW
+- [Implement a key-rotation mechanism to allow parallel calls of eth_sendRawTransaction](https://github.com/onflow/flow-evm-gateway/issues/61)
+- [Improve bootstrap](https://github.com/onflow/flow-evm-gateway/issues/107)
+- [Use nonce from the network](https://github.com/onflow/flow-evm-gateway/pull/105)
+- [Reboot config](https://github.com/onflow/flow-evm-gateway/pull/103)
+- [Bootstrap previewnet](https://github.com/onflow/flow-evm-gateway/pull/100)
+- [Fix gas estimation with configured account](https://github.com/onflow/flow-evm-gateway/pull/99)
+- [Revert "Populate COAKey config value"](https://github.com/onflow/flow-evm-gateway/pull/98)
+- [Configure key-rotation deployment](https://github.com/onflow/flow-evm-gateway/pull/92)
+- [General improvements and fixes found during testing](https://github.com/onflow/flow-evm-gateway/issues/72)
+- [Indexer - Track and map Cadence and EVM heights](https://github.com/onflow/flow-evm-gateway/issues/69)
+- CLI: [Add a command that starts up the Flow EVM Gateway](https://github.com/onflow/flow-cli/issues/1419)
+- [Indexer - General improvements and fixes](https://github.com/onflow/flow-evm-gateway/issues/66)
+- [Indexer - E2E API testing](https://github.com/onflow/flow-evm-gateway/issues/55)
+- [Indexer - nonce tracking](https://github.com/onflow/flow-evm-gateway/issues/54)
+- [Indexer - Refactor Flow interactions](https://github.com/onflow/flow-evm-gateway/issues/59)
+- [Indexer - Pebble storage implementation](https://github.com/onflow/flow-evm-gateway/issues/17)
+- [Decode the events into relevant types](https://github.com/onflow/flow-evm-gateway/issues/16)
+- [Implement event consumer](https://github.com/onflow/flow-evm-gateway/issues/15)
+- [Implement querying events by topic](https://github.com/onflow/flow-evm-gateway/issues/28)
+
+Cadence Execution
+
+- Data Pruner fix - reduces EN boot time by ~50 secs
+  - [Execution Data storage tracker blocks startup](https://github.com/onflow/flow-go/issues/5457)
+- [Add checkpoint size metrics](https://github.com/onflow/flow-go/issues/5395)
+- [Add logs for EN startup monitoring](https://github.com/onflow/flow-go/issues/5435)
+- Performance benchmark now includes account creation and EVM token swap [Add additional loads to the load generator](https://github.com/onflow/flow-go/issues/5394)
+- Improve our ability to analyze anomalies / utliers in execution operation metering [Add normalised time per computation logs to transaction execution](https://github.com/onflow/flow-go/pull/5385)
+- Bugix: [remove duplicate definitions of default FVM context options per chain](https://github.com/onflow/flow-go/issues/5249)
+- Testing 
+  - [improvement - Adding "failfast" flag to fail the integration tests on the first failure](https://github.com/onflow/flow-go/pull/5474)
+  - Prevent infinite loop in tests: [Remove db close in execution state sync tests](https://github.com/onflow/flow-go/pull/5465)
+  - [Add system TX hash to test](https://github.com/onflow/flow-go/pull/5466)
+
 
 **This sprint**
 
+* Complete emulator release with contract upgrade testing enabled (blocker: [Loading values from a migrated emulator state fails](https://github.com/onflow/cadence/issues/3143))
+* Continue debugging [ full Cadence 1.0 migration run on TN state](https://github.com/onflow/cadence/issues/3096)
 * Continue with EVM Gateway development for testnet readiness
+* Complete Atree optimization: [Reduce RAM and persistent storage by deduplicating inlined dict type info](https://github.com/onflow/atree/pull/369)
+* Continue refactoring of Ingestion engine to [prevent EN entering crash loop](https://github.com/onflow/flow-go/issues/5298)
 
 **On Hold**
 
