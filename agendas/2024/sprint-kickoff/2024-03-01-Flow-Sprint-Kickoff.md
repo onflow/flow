@@ -60,22 +60,22 @@
 ### **Cadence Language and Execution** \[Jan]
 Cycle Objective(s):
 
-1) [In Progress] Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
-2) [In Progress] Calibrate Transaction fees so that they accurately reflect resource usage during execution and deploy as part of Crescendo to avoid future disruption.
-3) [In Progress] Analyze execution runtime trends and risks to plan next set of scalability OKRs.
+1) **[In Progress]** Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
+2) **[In Progress]** Calibrate Transaction fees so that they accurately reflect resource usage during execution and deploy as part of Crescendo to avoid future disruption.
+3) **[In Progress]** Analyze execution runtime trends and risks to plan next set of scalability OKRs.
 
 * Stretch-goals:
-4) [In Progress] Expand testing capability of storehouse so that we can validate execution correctness and benchmark performance on Mainnet data
-5) [Not Started] Design a new Trie to improve performance of update operation, reduce memory usage and size of proofs and to support more flexible proof queries.
-6) [Not Started] Enable Concurrent Execution on one EN on Mainnet to validate correctness of the implementation (Detect execution forks)
-7) [Not Started] Improve execution performance to mitigate the impact of adding metadata to token standards
+4) **[In Progress]** Expand testing capability of storehouse so that we can validate execution correctness and benchmark performance on Mainnet data
+5) **[Not Started]** Design a new Trie to improve performance of update operation, reduce memory usage and size of proofs and to support more flexible proof queries.
+6) **[Not Started]** Enable Concurrent Execution on one EN on Mainnet to validate correctness of the implementation (Detect execution forks)
+7) **[Not Started]** Improve execution performance to mitigate the impact of adding metadata to token standards
 
 **Done last sprint**
 
 * Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
- * KR2: Launch Cadence 1.0 on Crescendo Testnet
+  - KR2: Launch Cadence 1.0 on Crescendo Testnet
 * Objective 4: Expand testing capability of storehouse so that we can validate execution correctness and benchmark performance on Mainnet data
- * KR2: [Execution node can execute live data without impacting the network (i.e. execution fork)](https://github.com/onflow/flow-go/issues/5118)
+  - KR2: [Execution node can execute live data without impacting the network (i.e. execution fork)](https://github.com/onflow/flow-go/issues/5118)
 
 Cadence 1.0
 - [Testnet state migration](https://github.com/onflow/cadence/issues/3096)
@@ -162,6 +162,7 @@ Cadence Execution
 Objective 1, KR 1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
 * Complete emulator release with contract upgrade testing enabled (blocker: [Loading values from a migrated emulator state fails](https://github.com/onflow/cadence/issues/3143))
 * Continue debugging [ full Cadence 1.0 migration run on TN state](https://github.com/onflow/cadence/issues/3096)
+* Build migration diff utility to help debug migration issues
 
 Objective 1, KR4: Testnet Upgrade to Crescendo Release
 * Continue with EVM Gateway development for testnet readiness
