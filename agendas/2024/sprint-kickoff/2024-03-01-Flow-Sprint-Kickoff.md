@@ -57,7 +57,7 @@
 
 # Working Group Updates
 
-### **Cadence and Virtual Machine** \[Jan]
+### **Cadence Language and Execution** \[Jan]
 Cycle Objective(s):
 
 1) Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
