@@ -96,7 +96,6 @@ Cadence 1.0
     - [More permissive contract upgrade checker for 1.0 network upgrade](https://github.com/onflow/cadence/issues/2865)
 - Features
     - Language breaking change: [Reject container mutation while iterating](https://github.com/onflow/cadence/issues/2961)
-    - Language breaking change: [Reject container mutation while iterating](https://github.com/onflow/cadence/issues/2961)
     - CCF now supports all Cadence 1.0 values [Update CCF codec to support recently added types/values](https://github.com/onflow/cadence/issues/2379)
     - [Support function-purity annotations in CCF](https://github.com/onflow/cadence/issues/2457)
 - Bugfix
