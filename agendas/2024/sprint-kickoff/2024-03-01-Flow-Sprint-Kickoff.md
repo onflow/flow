@@ -28,6 +28,12 @@
 #### Incidents
 * No incidents
 
+### Key Release Dates & Breaking Changes
+
+- Next Mainnet/Testnet network upgrade (spork): Testnet and mainnet sporks TBD.
+- Next Mainnet/Testnet HCU: TBD
+- End of Cycle: TBD
+  
 ---
 
 ### FLIPs Tracker \[Kshitij]
@@ -46,12 +52,6 @@
 - Some FLIPs are still not reflected in the project tracker. **Remember**: FLIP process starts with an issue creation.
 (https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
   
-### Key Release Dates & Breaking Changes
-
-- Next Mainnet/Testnet network upgrade (spork): Testnet and mainnet sporks TBD.
-- Next Mainnet/Testnet HCU: TBD
-- End of Cycle: TBD
-
 ---
 
 
