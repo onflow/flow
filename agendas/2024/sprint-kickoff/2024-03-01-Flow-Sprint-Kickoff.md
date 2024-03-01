@@ -73,12 +73,10 @@ Cycle Objective(s):
 **Done last sprint**
 
 * Launched Cadence 1.0 & EVM into PreviewNet!
-  
-Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
-- KR2: Launch Cadence 1.0 on Crescendo Testnet
-
-Objective 4: Expand testing capability of storehouse so that we can validate execution correctness and benchmark performance on Mainnet data
-- KR2: [Execution node can execute live data without impacting the network (i.e. execution fork)](https://github.com/onflow/flow-go/issues/5118)
+* Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
+ * KR2: Launch Cadence 1.0 on Crescendo Testnet
+* Objective 4: Expand testing capability of storehouse so that we can validate execution correctness and benchmark performance on Mainnet data
+ * KR2: [Execution node can execute live data without impacting the network (i.e. execution fork)](https://github.com/onflow/flow-go/issues/5118)
 
 Cadence 1.0
 - [Testnet state migration](https://github.com/onflow/cadence/issues/3096)
