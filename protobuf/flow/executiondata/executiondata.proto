@@ -281,7 +281,7 @@ message EventFilter {
   // All events emitted by any contract held by any of the provided addresses
   // will be returned.
   //
-  // Addresses must be Flow account addresses in hex format and valid for the
+  // Addresses must be Flgit ow account addresses in hex format and valid for the
   // network the node is connected to. i.e. only a mainnet address is valid for
   // a mainnet node. Addresses may optionally include the 0x prefix.
   repeated string address = 3;
