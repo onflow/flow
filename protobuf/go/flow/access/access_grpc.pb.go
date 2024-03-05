@@ -167,11 +167,8 @@ type AccessAPIClient interface {
 	// Blocks are only returned when they have reached the provided block status. For example,
 	// if the status is "sealed", only sealed blocks will be returned.
 	SubscribeBlocksFromStartHeight(ctx context.Context, in *SubscribeBlocksFromStartHeightRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksFromStartHeightClient, error)
-	// SubscribeBlocksFromLatest streams finalized or sealed blocks starting of the latest finalized or sealed
+	// SubscribeBlocksFromLatest streams sealed blocks starting from the latest sealed
 	// block. The stream will remain open and responses are sent for each new block as it becomes available.
-	//
-	// Blocks are only returned when they have reached the provided block status. For example,
-	// if the status is "sealed", only sealed blocks will be returned.
 	SubscribeBlocksFromLatest(ctx context.Context, in *SubscribeBlocksFromLatestRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksFromLatestClient, error)
 	// SubscribeBlockHeadersFromStartBlockID streams finalized or sealed block headers starting at the requested
 	// start block id, up until the latest available block. Once the latest is
@@ -189,11 +186,8 @@ type AccessAPIClient interface {
 	// Block headers are only returned when they have reached the provided block status. For example,
 	// if the status is "sealed", only sealed block headers will be returned.
 	SubscribeBlockHeadersFromStartHeight(ctx context.Context, in *SubscribeBlockHeadersFromStartHeightRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersFromStartHeightClient, error)
-	// SubscribeBlockHeadersFromLatest streams finalized or sealed block headers starting of the latest finalized or sealed
+	// SubscribeBlockHeadersFromLatest streams sealed block headers starting from the latest sealed
 	// block. The stream will remain open and responses are sent for each new block header as it becomes available.
-	//
-	// Block headers are only returned when they have reached the provided block status. For example,
-	// if the status is "sealed", only sealed block headers will be returned.
 	SubscribeBlockHeadersFromLatest(ctx context.Context, in *SubscribeBlockHeadersFromLatestRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersFromLatestClient, error)
 	// SubscribeBlockDigestsFromStartBlockID streams finalized or sealed lightweight block starting at the requested
 	// start block id, up until the latest available block. Once the latest is
@@ -211,11 +205,8 @@ type AccessAPIClient interface {
 	// Lightweight blocks are only returned when they have reached the provided block status. For example,
 	// if the status is "sealed", only sealed lightweight blocks will be returned.
 	SubscribeBlockDigestsFromStartHeight(ctx context.Context, in *SubscribeBlockDigestsFromStartHeightRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsFromStartHeightClient, error)
-	// SubscribeBlockDigestsFromLatest streams finalized or sealed lightweight block headers starting of the latest finalized or sealed
+	// SubscribeBlockDigestsFromLatest streams sealed lightweight block headers starting of the latest sealed
 	// block. The stream will remain open and responses are sent for each new lightweight block as it becomes available.
-	//
-	// Lightweight blocks are only returned when they have reached the provided block status. For example,
-	// if the status is "sealed", only sealed lightweight blocks will be returned.
 	SubscribeBlockDigestsFromLatest(ctx context.Context, in *SubscribeBlockDigestsFromLatestRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsFromLatestClient, error)
 	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
 	// is streamed back until the block containing the transaction becomes sealed.
@@ -525,7 +516,7 @@ func (c *accessAPIClient) SubscribeBlocksFromStartBlockID(ctx context.Context, i
 }
 
 type AccessAPI_SubscribeBlocksFromStartBlockIDClient interface {
-	Recv() (*SubscribeBlocksFromStartBlockIDResponse, error)
+	Recv() (*SubscribeBlocksResponse, error)
 	grpc.ClientStream
 }
 
@@ -533,8 +524,8 @@ type accessAPISubscribeBlocksFromStartBlockIDClient struct {
 	grpc.ClientStream
 }
 
-func (x *accessAPISubscribeBlocksFromStartBlockIDClient) Recv() (*SubscribeBlocksFromStartBlockIDResponse, error) {
-	m := new(SubscribeBlocksFromStartBlockIDResponse)
+func (x *accessAPISubscribeBlocksFromStartBlockIDClient) Recv() (*SubscribeBlocksResponse, error) {
+	m := new(SubscribeBlocksResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -557,7 +548,7 @@ func (c *accessAPIClient) SubscribeBlocksFromStartHeight(ctx context.Context, in
 }
 
 type AccessAPI_SubscribeBlocksFromStartHeightClient interface {
-	Recv() (*SubscribeBlocksFromStartHeightResponse, error)
+	Recv() (*SubscribeBlocksResponse, error)
 	grpc.ClientStream
 }
 
@@ -565,8 +556,8 @@ type accessAPISubscribeBlocksFromStartHeightClient struct {
 	grpc.ClientStream
 }
 
-func (x *accessAPISubscribeBlocksFromStartHeightClient) Recv() (*SubscribeBlocksFromStartHeightResponse, error) {
-	m := new(SubscribeBlocksFromStartHeightResponse)
+func (x *accessAPISubscribeBlocksFromStartHeightClient) Recv() (*SubscribeBlocksResponse, error) {
+	m := new(SubscribeBlocksResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -589,7 +580,7 @@ func (c *accessAPIClient) SubscribeBlocksFromLatest(ctx context.Context, in *Sub
 }
 
 type AccessAPI_SubscribeBlocksFromLatestClient interface {
-	Recv() (*SubscribeBlocksFromLatestResponse, error)
+	Recv() (*SubscribeBlocksResponse, error)
 	grpc.ClientStream
 }
 
@@ -597,8 +588,8 @@ type accessAPISubscribeBlocksFromLatestClient struct {
 	grpc.ClientStream
 }
 
-func (x *accessAPISubscribeBlocksFromLatestClient) Recv() (*SubscribeBlocksFromLatestResponse, error) {
-	m := new(SubscribeBlocksFromLatestResponse)
+func (x *accessAPISubscribeBlocksFromLatestClient) Recv() (*SubscribeBlocksResponse, error) {
+	m := new(SubscribeBlocksResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -621,7 +612,7 @@ func (c *accessAPIClient) SubscribeBlockHeadersFromStartBlockID(ctx context.Cont
 }
 
 type AccessAPI_SubscribeBlockHeadersFromStartBlockIDClient interface {
-	Recv() (*SubscribeBlockHeadersFromStartBlockIDResponse, error)
+	Recv() (*SubscribeBlockHeadersResponse, error)
 	grpc.ClientStream
 }
 
@@ -629,8 +620,8 @@ type accessAPISubscribeBlockHeadersFromStartBlockIDClient struct {
 	grpc.ClientStream
 }
 
-func (x *accessAPISubscribeBlockHeadersFromStartBlockIDClient) Recv() (*SubscribeBlockHeadersFromStartBlockIDResponse, error) {
-	m := new(SubscribeBlockHeadersFromStartBlockIDResponse)
+func (x *accessAPISubscribeBlockHeadersFromStartBlockIDClient) Recv() (*SubscribeBlockHeadersResponse, error) {
+	m := new(SubscribeBlockHeadersResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -653,7 +644,7 @@ func (c *accessAPIClient) SubscribeBlockHeadersFromStartHeight(ctx context.Conte
 }
 
 type AccessAPI_SubscribeBlockHeadersFromStartHeightClient interface {
-	Recv() (*SubscribeBlockHeadersFromStartHeightResponse, error)
+	Recv() (*SubscribeBlockHeadersResponse, error)
 	grpc.ClientStream
 }
 
@@ -661,8 +652,8 @@ type accessAPISubscribeBlockHeadersFromStartHeightClient struct {
 	grpc.ClientStream
 }
 
-func (x *accessAPISubscribeBlockHeadersFromStartHeightClient) Recv() (*SubscribeBlockHeadersFromStartHeightResponse, error) {
-	m := new(SubscribeBlockHeadersFromStartHeightResponse)
+func (x *accessAPISubscribeBlockHeadersFromStartHeightClient) Recv() (*SubscribeBlockHeadersResponse, error) {
+	m := new(SubscribeBlockHeadersResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -685,7 +676,7 @@ func (c *accessAPIClient) SubscribeBlockHeadersFromLatest(ctx context.Context, i
 }
 
 type AccessAPI_SubscribeBlockHeadersFromLatestClient interface {
-	Recv() (*SubscribeBlockHeadersFromLatestResponse, error)
+	Recv() (*SubscribeBlockHeadersResponse, error)
 	grpc.ClientStream
 }
 
@@ -693,8 +684,8 @@ type accessAPISubscribeBlockHeadersFromLatestClient struct {
 	grpc.ClientStream
 }
 
-func (x *accessAPISubscribeBlockHeadersFromLatestClient) Recv() (*SubscribeBlockHeadersFromLatestResponse, error) {
-	m := new(SubscribeBlockHeadersFromLatestResponse)
+func (x *accessAPISubscribeBlockHeadersFromLatestClient) Recv() (*SubscribeBlockHeadersResponse, error) {
+	m := new(SubscribeBlockHeadersResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -717,7 +708,7 @@ func (c *accessAPIClient) SubscribeBlockDigestsFromStartBlockID(ctx context.Cont
 }
 
 type AccessAPI_SubscribeBlockDigestsFromStartBlockIDClient interface {
-	Recv() (*SubscribeBlockDigestsFromStartBlockIDResponse, error)
+	Recv() (*SubscribeBlockDigestsResponse, error)
 	grpc.ClientStream
 }
 
@@ -725,8 +716,8 @@ type accessAPISubscribeBlockDigestsFromStartBlockIDClient struct {
 	grpc.ClientStream
 }
 
-func (x *accessAPISubscribeBlockDigestsFromStartBlockIDClient) Recv() (*SubscribeBlockDigestsFromStartBlockIDResponse, error) {
-	m := new(SubscribeBlockDigestsFromStartBlockIDResponse)
+func (x *accessAPISubscribeBlockDigestsFromStartBlockIDClient) Recv() (*SubscribeBlockDigestsResponse, error) {
+	m := new(SubscribeBlockDigestsResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -749,7 +740,7 @@ func (c *accessAPIClient) SubscribeBlockDigestsFromStartHeight(ctx context.Conte
 }
 
 type AccessAPI_SubscribeBlockDigestsFromStartHeightClient interface {
-	Recv() (*SubscribeBlockDigestsFromStartHeightResponse, error)
+	Recv() (*SubscribeBlockDigestsResponse, error)
 	grpc.ClientStream
 }
 
@@ -757,8 +748,8 @@ type accessAPISubscribeBlockDigestsFromStartHeightClient struct {
 	grpc.ClientStream
 }
 
-func (x *accessAPISubscribeBlockDigestsFromStartHeightClient) Recv() (*SubscribeBlockDigestsFromStartHeightResponse, error) {
-	m := new(SubscribeBlockDigestsFromStartHeightResponse)
+func (x *accessAPISubscribeBlockDigestsFromStartHeightClient) Recv() (*SubscribeBlockDigestsResponse, error) {
+	m := new(SubscribeBlockDigestsResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -781,7 +772,7 @@ func (c *accessAPIClient) SubscribeBlockDigestsFromLatest(ctx context.Context, i
 }
 
 type AccessAPI_SubscribeBlockDigestsFromLatestClient interface {
-	Recv() (*SubscribeBlockDigestsFromLatestResponse, error)
+	Recv() (*SubscribeBlockDigestsResponse, error)
 	grpc.ClientStream
 }
 
@@ -789,8 +780,8 @@ type accessAPISubscribeBlockDigestsFromLatestClient struct {
 	grpc.ClientStream
 }
 
-func (x *accessAPISubscribeBlockDigestsFromLatestClient) Recv() (*SubscribeBlockDigestsFromLatestResponse, error) {
-	m := new(SubscribeBlockDigestsFromLatestResponse)
+func (x *accessAPISubscribeBlockDigestsFromLatestClient) Recv() (*SubscribeBlockDigestsResponse, error) {
+	m := new(SubscribeBlockDigestsResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -934,11 +925,8 @@ type AccessAPIServer interface {
 	// Blocks are only returned when they have reached the provided block status. For example,
 	// if the status is "sealed", only sealed blocks will be returned.
 	SubscribeBlocksFromStartHeight(*SubscribeBlocksFromStartHeightRequest, AccessAPI_SubscribeBlocksFromStartHeightServer) error
-	// SubscribeBlocksFromLatest streams finalized or sealed blocks starting of the latest finalized or sealed
+	// SubscribeBlocksFromLatest streams sealed blocks starting from the latest sealed
 	// block. The stream will remain open and responses are sent for each new block as it becomes available.
-	//
-	// Blocks are only returned when they have reached the provided block status. For example,
-	// if the status is "sealed", only sealed blocks will be returned.
 	SubscribeBlocksFromLatest(*SubscribeBlocksFromLatestRequest, AccessAPI_SubscribeBlocksFromLatestServer) error
 	// SubscribeBlockHeadersFromStartBlockID streams finalized or sealed block headers starting at the requested
 	// start block id, up until the latest available block. Once the latest is
@@ -956,11 +944,8 @@ type AccessAPIServer interface {
 	// Block headers are only returned when they have reached the provided block status. For example,
 	// if the status is "sealed", only sealed block headers will be returned.
 	SubscribeBlockHeadersFromStartHeight(*SubscribeBlockHeadersFromStartHeightRequest, AccessAPI_SubscribeBlockHeadersFromStartHeightServer) error
-	// SubscribeBlockHeadersFromLatest streams finalized or sealed block headers starting of the latest finalized or sealed
+	// SubscribeBlockHeadersFromLatest streams sealed block headers starting from the latest sealed
 	// block. The stream will remain open and responses are sent for each new block header as it becomes available.
-	//
-	// Block headers are only returned when they have reached the provided block status. For example,
-	// if the status is "sealed", only sealed block headers will be returned.
 	SubscribeBlockHeadersFromLatest(*SubscribeBlockHeadersFromLatestRequest, AccessAPI_SubscribeBlockHeadersFromLatestServer) error
 	// SubscribeBlockDigestsFromStartBlockID streams finalized or sealed lightweight block starting at the requested
 	// start block id, up until the latest available block. Once the latest is
@@ -978,11 +963,8 @@ type AccessAPIServer interface {
 	// Lightweight blocks are only returned when they have reached the provided block status. For example,
 	// if the status is "sealed", only sealed lightweight blocks will be returned.
 	SubscribeBlockDigestsFromStartHeight(*SubscribeBlockDigestsFromStartHeightRequest, AccessAPI_SubscribeBlockDigestsFromStartHeightServer) error
-	// SubscribeBlockDigestsFromLatest streams finalized or sealed lightweight block headers starting of the latest finalized or sealed
+	// SubscribeBlockDigestsFromLatest streams sealed lightweight block headers starting of the latest sealed
 	// block. The stream will remain open and responses are sent for each new lightweight block as it becomes available.
-	//
-	// Lightweight blocks are only returned when they have reached the provided block status. For example,
-	// if the status is "sealed", only sealed lightweight blocks will be returned.
 	SubscribeBlockDigestsFromLatest(*SubscribeBlockDigestsFromLatestRequest, AccessAPI_SubscribeBlockDigestsFromLatestServer) error
 	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
 	// is streamed back until the block containing the transaction becomes sealed.
@@ -1695,7 +1677,7 @@ func _AccessAPI_SubscribeBlocksFromStartBlockID_Handler(srv interface{}, stream 
 }
 
 type AccessAPI_SubscribeBlocksFromStartBlockIDServer interface {
-	Send(*SubscribeBlocksFromStartBlockIDResponse) error
+	Send(*SubscribeBlocksResponse) error
 	grpc.ServerStream
 }
 
@@ -1703,7 +1685,7 @@ type accessAPISubscribeBlocksFromStartBlockIDServer struct {
 	grpc.ServerStream
 }
 
-func (x *accessAPISubscribeBlocksFromStartBlockIDServer) Send(m *SubscribeBlocksFromStartBlockIDResponse) error {
+func (x *accessAPISubscribeBlocksFromStartBlockIDServer) Send(m *SubscribeBlocksResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -1716,7 +1698,7 @@ func _AccessAPI_SubscribeBlocksFromStartHeight_Handler(srv interface{}, stream g
 }
 
 type AccessAPI_SubscribeBlocksFromStartHeightServer interface {
-	Send(*SubscribeBlocksFromStartHeightResponse) error
+	Send(*SubscribeBlocksResponse) error
 	grpc.ServerStream
 }
 
@@ -1724,7 +1706,7 @@ type accessAPISubscribeBlocksFromStartHeightServer struct {
 	grpc.ServerStream
 }
 
-func (x *accessAPISubscribeBlocksFromStartHeightServer) Send(m *SubscribeBlocksFromStartHeightResponse) error {
+func (x *accessAPISubscribeBlocksFromStartHeightServer) Send(m *SubscribeBlocksResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -1737,7 +1719,7 @@ func _AccessAPI_SubscribeBlocksFromLatest_Handler(srv interface{}, stream grpc.S
 }
 
 type AccessAPI_SubscribeBlocksFromLatestServer interface {
-	Send(*SubscribeBlocksFromLatestResponse) error
+	Send(*SubscribeBlocksResponse) error
 	grpc.ServerStream
 }
 
@@ -1745,7 +1727,7 @@ type accessAPISubscribeBlocksFromLatestServer struct {
 	grpc.ServerStream
 }
 
-func (x *accessAPISubscribeBlocksFromLatestServer) Send(m *SubscribeBlocksFromLatestResponse) error {
+func (x *accessAPISubscribeBlocksFromLatestServer) Send(m *SubscribeBlocksResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -1758,7 +1740,7 @@ func _AccessAPI_SubscribeBlockHeadersFromStartBlockID_Handler(srv interface{}, s
 }
 
 type AccessAPI_SubscribeBlockHeadersFromStartBlockIDServer interface {
-	Send(*SubscribeBlockHeadersFromStartBlockIDResponse) error
+	Send(*SubscribeBlockHeadersResponse) error
 	grpc.ServerStream
 }
 
@@ -1766,7 +1748,7 @@ type accessAPISubscribeBlockHeadersFromStartBlockIDServer struct {
 	grpc.ServerStream
 }
 
-func (x *accessAPISubscribeBlockHeadersFromStartBlockIDServer) Send(m *SubscribeBlockHeadersFromStartBlockIDResponse) error {
+func (x *accessAPISubscribeBlockHeadersFromStartBlockIDServer) Send(m *SubscribeBlockHeadersResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -1779,7 +1761,7 @@ func _AccessAPI_SubscribeBlockHeadersFromStartHeight_Handler(srv interface{}, st
 }
 
 type AccessAPI_SubscribeBlockHeadersFromStartHeightServer interface {
-	Send(*SubscribeBlockHeadersFromStartHeightResponse) error
+	Send(*SubscribeBlockHeadersResponse) error
 	grpc.ServerStream
 }
 
@@ -1787,7 +1769,7 @@ type accessAPISubscribeBlockHeadersFromStartHeightServer struct {
 	grpc.ServerStream
 }
 
-func (x *accessAPISubscribeBlockHeadersFromStartHeightServer) Send(m *SubscribeBlockHeadersFromStartHeightResponse) error {
+func (x *accessAPISubscribeBlockHeadersFromStartHeightServer) Send(m *SubscribeBlockHeadersResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -1800,7 +1782,7 @@ func _AccessAPI_SubscribeBlockHeadersFromLatest_Handler(srv interface{}, stream 
 }
 
 type AccessAPI_SubscribeBlockHeadersFromLatestServer interface {
-	Send(*SubscribeBlockHeadersFromLatestResponse) error
+	Send(*SubscribeBlockHeadersResponse) error
 	grpc.ServerStream
 }
 
@@ -1808,7 +1790,7 @@ type accessAPISubscribeBlockHeadersFromLatestServer struct {
 	grpc.ServerStream
 }
 
-func (x *accessAPISubscribeBlockHeadersFromLatestServer) Send(m *SubscribeBlockHeadersFromLatestResponse) error {
+func (x *accessAPISubscribeBlockHeadersFromLatestServer) Send(m *SubscribeBlockHeadersResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -1821,7 +1803,7 @@ func _AccessAPI_SubscribeBlockDigestsFromStartBlockID_Handler(srv interface{}, s
 }
 
 type AccessAPI_SubscribeBlockDigestsFromStartBlockIDServer interface {
-	Send(*SubscribeBlockDigestsFromStartBlockIDResponse) error
+	Send(*SubscribeBlockDigestsResponse) error
 	grpc.ServerStream
 }
 
@@ -1829,7 +1811,7 @@ type accessAPISubscribeBlockDigestsFromStartBlockIDServer struct {
 	grpc.ServerStream
 }
 
-func (x *accessAPISubscribeBlockDigestsFromStartBlockIDServer) Send(m *SubscribeBlockDigestsFromStartBlockIDResponse) error {
+func (x *accessAPISubscribeBlockDigestsFromStartBlockIDServer) Send(m *SubscribeBlockDigestsResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -1842,7 +1824,7 @@ func _AccessAPI_SubscribeBlockDigestsFromStartHeight_Handler(srv interface{}, st
 }
 
 type AccessAPI_SubscribeBlockDigestsFromStartHeightServer interface {
-	Send(*SubscribeBlockDigestsFromStartHeightResponse) error
+	Send(*SubscribeBlockDigestsResponse) error
 	grpc.ServerStream
 }
 
@@ -1850,7 +1832,7 @@ type accessAPISubscribeBlockDigestsFromStartHeightServer struct {
 	grpc.ServerStream
 }
 
-func (x *accessAPISubscribeBlockDigestsFromStartHeightServer) Send(m *SubscribeBlockDigestsFromStartHeightResponse) error {
+func (x *accessAPISubscribeBlockDigestsFromStartHeightServer) Send(m *SubscribeBlockDigestsResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -1863,7 +1845,7 @@ func _AccessAPI_SubscribeBlockDigestsFromLatest_Handler(srv interface{}, stream 
 }
 
 type AccessAPI_SubscribeBlockDigestsFromLatestServer interface {
-	Send(*SubscribeBlockDigestsFromLatestResponse) error
+	Send(*SubscribeBlockDigestsResponse) error
 	grpc.ServerStream
 }
 
@@ -1871,7 +1853,7 @@ type accessAPISubscribeBlockDigestsFromLatestServer struct {
 	grpc.ServerStream
 }
 
-func (x *accessAPISubscribeBlockDigestsFromLatestServer) Send(m *SubscribeBlockDigestsFromLatestResponse) error {
+func (x *accessAPISubscribeBlockDigestsFromLatestServer) Send(m *SubscribeBlockDigestsResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 

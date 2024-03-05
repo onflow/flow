@@ -170,7 +170,7 @@ service AccessAPI {
   // Blocks are only returned when they have reached the provided block status. For example,
   // if the status is "sealed", only sealed blocks will be returned.
   rpc SubscribeBlocksFromStartBlockID(SubscribeBlocksFromStartBlockIDRequest)
-      returns (stream SubscribeBlocksFromStartBlockIDResponse);
+      returns (stream SubscribeBlocksResponse);
 
   // SubscribeBlocksFromStartHeight streams finalized or sealed blocks starting at the requested
   // start block height, up until the latest available block. Once the latest is
@@ -180,15 +180,12 @@ service AccessAPI {
   // Blocks are only returned when they have reached the provided block status. For example,
   // if the status is "sealed", only sealed blocks will be returned.
   rpc SubscribeBlocksFromStartHeight(SubscribeBlocksFromStartHeightRequest)
-      returns (stream SubscribeBlocksFromStartHeightResponse);
+      returns (stream SubscribeBlocksResponse);
 
-  // SubscribeBlocksFromLatest streams finalized or sealed blocks starting from the latest finalized or sealed
+  // SubscribeBlocksFromLatest streams sealed blocks starting from the latest sealed
   // block. The stream will remain open and responses are sent for each new block as it becomes available.
-  //
-  // Blocks are only returned when they have reached the provided block status. For example,
-  // if the status is "sealed", only sealed blocks will be returned.
   rpc SubscribeBlocksFromLatest(SubscribeBlocksFromLatestRequest)
-      returns (stream SubscribeBlocksFromLatestResponse);
+      returns (stream SubscribeBlocksResponse);
   
   // Subscribe block headers
 
@@ -200,7 +197,7 @@ service AccessAPI {
   // Block headers are only returned when they have reached the provided block status. For example,
   // if the status is "sealed", only sealed block headers will be returned.
   rpc SubscribeBlockHeadersFromStartBlockID(SubscribeBlockHeadersFromStartBlockIDRequest)
-      returns (stream SubscribeBlockHeadersFromStartBlockIDResponse);
+      returns (stream SubscribeBlockHeadersResponse);
 
   // SubscribeBlockHeadersFromStartHeight streams finalized or sealed block headers starting at the requested
   // start block height, up until the latest available block. Once the latest is
@@ -210,15 +207,12 @@ service AccessAPI {
   // Block headers are only returned when they have reached the provided block status. For example,
   // if the status is "sealed", only sealed block headers will be returned.
   rpc SubscribeBlockHeadersFromStartHeight(SubscribeBlockHeadersFromStartHeightRequest)
-      returns (stream SubscribeBlockHeadersFromStartHeightResponse);
+      returns (stream SubscribeBlockHeadersResponse);
 
-  // SubscribeBlockHeadersFromLatest streams finalized or sealed block headers starting from the latest finalized or sealed
+  // SubscribeBlockHeadersFromLatest streams sealed block headers starting from the latest sealed
   // block. The stream will remain open and responses are sent for each new block header as it becomes available.
-  //
-  // Block headers are only returned when they have reached the provided block status. For example,
-  // if the status is "sealed", only sealed block headers will be returned.
   rpc SubscribeBlockHeadersFromLatest(SubscribeBlockHeadersFromLatestRequest)
-      returns (stream SubscribeBlockHeadersFromLatestResponse);
+      returns (stream SubscribeBlockHeadersResponse);
 
   // Subscribe block digests
 
@@ -230,7 +224,7 @@ service AccessAPI {
   // Lightweight blocks are only returned when they have reached the provided block status. For example,
   // if the status is "sealed", only sealed lightweight blocks will be returned.
   rpc SubscribeBlockDigestsFromStartBlockID(SubscribeBlockDigestsFromStartBlockIDRequest)
-      returns (stream SubscribeBlockDigestsFromStartBlockIDResponse);
+      returns (stream SubscribeBlockDigestsResponse);
 
   // SubscribeBlockDigestsFromStartHeight streams finalized or sealed lightweight block starting at the requested
   // start block height, up until the latest available block. Once the latest is
@@ -240,15 +234,12 @@ service AccessAPI {
   // Lightweight blocks are only returned when they have reached the provided block status. For example,
   // if the status is "sealed", only sealed lightweight blocks will be returned.
   rpc SubscribeBlockDigestsFromStartHeight(SubscribeBlockDigestsFromStartHeightRequest)
-      returns (stream SubscribeBlockDigestsFromStartHeightResponse);
+      returns (stream SubscribeBlockDigestsResponse);
 
-  // SubscribeBlockDigestsFromLatest streams finalized or sealed lightweight block headers starting of the latest finalized or sealed
+  // SubscribeBlockDigestsFromLatest streams sealed lightweight block headers starting of the latest sealed
   // block. The stream will remain open and responses are sent for each new lightweight block as it becomes available.
-  //
-  // Lightweight blocks are only returned when they have reached the provided block status. For example,
-  // if the status is "sealed", only sealed lightweight blocks will be returned.
   rpc SubscribeBlockDigestsFromLatest(SubscribeBlockDigestsFromLatestRequest)
-      returns (stream SubscribeBlockDigestsFromLatestResponse);
+      returns (stream SubscribeBlockDigestsResponse);
 
   // Subscribe transaction statuses
 
@@ -528,13 +519,6 @@ message SubscribeBlocksFromStartBlockIDRequest {
   bool full_block_response = 3;
 }
 
-// The response for SubscribeBlocksFromStartBlockID
-message SubscribeBlocksFromStartBlockIDResponse {
-  // The sealed or finalized blocks according to the block status
-  // in the request.
-  entities.Block block = 1;
-}
-
 // The request for SubscribeBlocksFromStartHeight
 message SubscribeBlocksFromStartHeightRequest {
   // Block height of the first block to subscribe.
@@ -550,27 +534,14 @@ message SubscribeBlocksFromStartHeightRequest {
   bool full_block_response = 3;
 }
 
-// The response for SubscribeBlocksFromStartHeight
-message SubscribeBlocksFromStartHeightResponse {
-  // The sealed or finalized blocks according to the block status
-  // in the request.
-  entities.Block block = 1;
-}
-
 // The request for SubscribeBlocksFromLatest
 message SubscribeBlocksFromLatestRequest {
-  // Required block status of the block payload.
-  // Possible variants:
-  // 1. BLOCK_FINALIZED
-  // 2. BLOCK_SEALED
-  entities.BlockStatus block_status = 1;
-
   // Boolean value determining the response: 'full' if `true`, 'light' otherwise.
-  bool full_block_response = 2;
+  bool full_block_response = 1;
 }
 
-// The response for SubscribeBlocksFromLatest
-message SubscribeBlocksFromLatestResponse {
+// The response for SubscribeBlocksFromStartBlockID, SubscribeBlocksFromStartHeight, SubscribeBlocksFromLatest
+message SubscribeBlocksResponse {
   // The sealed or finalized blocks according to the block status
   // in the request.
   entities.Block block = 1;
@@ -590,13 +561,6 @@ message SubscribeBlockHeadersFromStartBlockIDRequest {
   entities.BlockStatus block_status = 2;
 }
 
-// The response for SubscribeBlockHeadersFromStartBlockID
-message SubscribeBlockHeadersFromStartBlockIDResponse {
-  // The sealed or finalized block headers according to the block status
-  // in the request.
-  entities.BlockHeader header = 1;
-}
-
 // The request for SubscribeBlockHeadersFromStartHeight
 message SubscribeBlockHeadersFromStartHeightRequest {
   // Block height of the first block header to subscribe.
@@ -609,24 +573,12 @@ message SubscribeBlockHeadersFromStartHeightRequest {
   entities.BlockStatus block_status = 2;
 }
 
-// The response for SubscribeBlockHeadersFromStartHeight
-message SubscribeBlockHeadersFromStartHeightResponse {
-  // The sealed or finalized block headers according to the block status
-  // in the request.
-  entities.BlockHeader header = 1;
-}
-
 // The request for SubscribeBlockHeadersFromLatest
 message SubscribeBlockHeadersFromLatestRequest {
-  // Required block status of the block payload.
-  // Possible variants:
-  // 1. BLOCK_FINALIZED
-  // 2. BLOCK_SEALED
-  entities.BlockStatus block_status = 1;
 }
 
-// The response for SubscribeBlockHeadersFromLatest
-message SubscribeBlockHeadersFromLatestResponse {
+// The response for SubscribeBlockHeadersFromStartBlockID, SubscribeBlockHeadersFromStartHeight, SubscribeBlockHeadersFromLatest
+message SubscribeBlockHeadersResponse {
   // The sealed or finalized block headers according to the block status
   // in the request.
   entities.BlockHeader header = 1;
@@ -646,19 +598,6 @@ message SubscribeBlockDigestsFromStartBlockIDRequest {
   entities.BlockStatus block_status = 2;
 }
 
-// The response for SubscribeBlockDigestsFromStartBlockID
-message SubscribeBlockDigestsFromStartBlockIDResponse {
-  // The block ID of the new sealed or finalized block according to the block status
-  // in the request.
-  bytes block_id = 1;
-  // The block height of the new sealed or finalized block according to the block status
-  // in the request.
-  uint64 block_height = 2;
-  // The timestamp of the new sealed or finalized block according to the block status
-  // in the request.
-  google.protobuf.Timestamp block_timestamp = 3;
-}
-
 // The request for SubscribeBlockDigestsFromStartHeight
 message SubscribeBlockDigestsFromStartHeightRequest {
   // Block height of the first block to subscribe.
@@ -671,30 +610,12 @@ message SubscribeBlockDigestsFromStartHeightRequest {
   entities.BlockStatus block_status = 2;
 }
 
-// The response for SubscribeBlockDigestsFromStartHeight
-message SubscribeBlockDigestsFromStartHeightResponse {
-  // The block ID of the new sealed or finalized block according to the block status
-  // in the request.
-  bytes block_id = 1;
-  // The block height of the new sealed or finalized block according to the block status
-  // in the request.
-  uint64 block_height = 2;
-  // The timestamp of the new sealed or finalized block according to the block status
-  // in the request.
-  google.protobuf.Timestamp block_timestamp = 3;
-}
-
 // The request for SubscribeBlockDigestsFromLatest
 message SubscribeBlockDigestsFromLatestRequest {
-  // Required block status of the block payload.
-  // Possible variants:
-  // 1. BLOCK_FINALIZED
-  // 2. BLOCK_SEALED
-  entities.BlockStatus block_status = 2;
 }
 
-// The response for SubscribeBlockDigestsFromLatest
-message SubscribeBlockDigestsFromLatestResponse {
+// The response for SubscribeBlockDigestsFromStartBlockID, SubscribeBlockDigestsFromStartHeight, SubscribeBlockDigestsFromLatest
+message SubscribeBlockDigestsResponse {
   // The block ID of the new sealed or finalized block according to the block status
   // in the request.
   bytes block_id = 1;
