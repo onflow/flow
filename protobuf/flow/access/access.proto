@@ -182,8 +182,11 @@ service AccessAPI {
   rpc SubscribeBlocksFromStartHeight(SubscribeBlocksFromStartHeightRequest)
       returns (stream SubscribeBlocksResponse);
 
-  // SubscribeBlocksFromLatest streams sealed blocks starting from the latest sealed
+  // SubscribeBlocksFromLatest streams finalized or sealed blocks starting from the latest finalized or sealed
   // block. The stream will remain open and responses are sent for each new block as it becomes available.
+  //
+  // Blocks are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed blocks will be returned.
   rpc SubscribeBlocksFromLatest(SubscribeBlocksFromLatestRequest)
       returns (stream SubscribeBlocksResponse);
   
@@ -209,8 +212,11 @@ service AccessAPI {
   rpc SubscribeBlockHeadersFromStartHeight(SubscribeBlockHeadersFromStartHeightRequest)
       returns (stream SubscribeBlockHeadersResponse);
 
-  // SubscribeBlockHeadersFromLatest streams sealed block headers starting from the latest sealed
+  // SubscribeBlockHeadersFromLatest streams finalized or sealed block headers starting from the latest finalized or sealed
   // block. The stream will remain open and responses are sent for each new block header as it becomes available.
+  //
+  // Block headers are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed block headers will be returned.
   rpc SubscribeBlockHeadersFromLatest(SubscribeBlockHeadersFromLatestRequest)
       returns (stream SubscribeBlockHeadersResponse);
 
@@ -236,8 +242,11 @@ service AccessAPI {
   rpc SubscribeBlockDigestsFromStartHeight(SubscribeBlockDigestsFromStartHeightRequest)
       returns (stream SubscribeBlockDigestsResponse);
 
-  // SubscribeBlockDigestsFromLatest streams sealed lightweight block headers starting of the latest sealed
+  // SubscribeBlockDigestsFromLatest streams finalized or sealed lightweight block headers starting of the latest finalized or sealed
   // block. The stream will remain open and responses are sent for each new lightweight block as it becomes available.
+  //
+  // Lightweight blocks are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed lightweight blocks will be returned.
   rpc SubscribeBlockDigestsFromLatest(SubscribeBlockDigestsFromLatestRequest)
       returns (stream SubscribeBlockDigestsResponse);
 
@@ -536,8 +545,14 @@ message SubscribeBlocksFromStartHeightRequest {
 
 // The request for SubscribeBlocksFromLatest
 message SubscribeBlocksFromLatestRequest {
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 1;
+
   // Boolean value determining the response: 'full' if `true`, 'light' otherwise.
-  bool full_block_response = 1;
+  bool full_block_response = 2;
 }
 
 // The response for SubscribeBlocksFromStartBlockID, SubscribeBlocksFromStartHeight, SubscribeBlocksFromLatest
@@ -575,6 +590,11 @@ message SubscribeBlockHeadersFromStartHeightRequest {
 
 // The request for SubscribeBlockHeadersFromLatest
 message SubscribeBlockHeadersFromLatestRequest {
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 1;
 }
 
 // The response for SubscribeBlockHeadersFromStartBlockID, SubscribeBlockHeadersFromStartHeight, SubscribeBlockHeadersFromLatest
@@ -612,6 +632,11 @@ message SubscribeBlockDigestsFromStartHeightRequest {
 
 // The request for SubscribeBlockDigestsFromLatest
 message SubscribeBlockDigestsFromLatestRequest {
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 1;
 }
 
 // The response for SubscribeBlockDigestsFromStartBlockID, SubscribeBlockDigestsFromStartHeight, SubscribeBlockDigestsFromLatest
