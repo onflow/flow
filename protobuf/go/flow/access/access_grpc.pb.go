@@ -167,8 +167,11 @@ type AccessAPIClient interface {
 	// Blocks are only returned when they have reached the provided block status. For example,
 	// if the status is "sealed", only sealed blocks will be returned.
 	SubscribeBlocksFromStartHeight(ctx context.Context, in *SubscribeBlocksFromStartHeightRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksFromStartHeightClient, error)
-	// SubscribeBlocksFromLatest streams sealed blocks starting from the latest sealed
+	// SubscribeBlocksFromLatest streams finalized or sealed blocks starting from the latest finalized or sealed
 	// block. The stream will remain open and responses are sent for each new block as it becomes available.
+	//
+	// Blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed blocks will be returned.
 	SubscribeBlocksFromLatest(ctx context.Context, in *SubscribeBlocksFromLatestRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksFromLatestClient, error)
 	// SubscribeBlockHeadersFromStartBlockID streams finalized or sealed block headers starting at the requested
 	// start block id, up until the latest available block. Once the latest is
@@ -186,8 +189,11 @@ type AccessAPIClient interface {
 	// Block headers are only returned when they have reached the provided block status. For example,
 	// if the status is "sealed", only sealed block headers will be returned.
 	SubscribeBlockHeadersFromStartHeight(ctx context.Context, in *SubscribeBlockHeadersFromStartHeightRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersFromStartHeightClient, error)
-	// SubscribeBlockHeadersFromLatest streams sealed block headers starting from the latest sealed
+	// SubscribeBlockHeadersFromLatest streams finalized or sealed block headers starting from the latest finalized or sealed
 	// block. The stream will remain open and responses are sent for each new block header as it becomes available.
+	//
+	// Block headers are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed block headers will be returned.
 	SubscribeBlockHeadersFromLatest(ctx context.Context, in *SubscribeBlockHeadersFromLatestRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersFromLatestClient, error)
 	// SubscribeBlockDigestsFromStartBlockID streams finalized or sealed lightweight block starting at the requested
 	// start block id, up until the latest available block. Once the latest is
@@ -205,8 +211,11 @@ type AccessAPIClient interface {
 	// Lightweight blocks are only returned when they have reached the provided block status. For example,
 	// if the status is "sealed", only sealed lightweight blocks will be returned.
 	SubscribeBlockDigestsFromStartHeight(ctx context.Context, in *SubscribeBlockDigestsFromStartHeightRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsFromStartHeightClient, error)
-	// SubscribeBlockDigestsFromLatest streams sealed lightweight block headers starting of the latest sealed
+	// SubscribeBlockDigestsFromLatest streams finalized or sealed lightweight block headers starting of the latest finalized or sealed
 	// block. The stream will remain open and responses are sent for each new lightweight block as it becomes available.
+	//
+	// Lightweight blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed lightweight blocks will be returned.
 	SubscribeBlockDigestsFromLatest(ctx context.Context, in *SubscribeBlockDigestsFromLatestRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsFromLatestClient, error)
 	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
 	// is streamed back until the block containing the transaction becomes sealed.
@@ -925,8 +934,11 @@ type AccessAPIServer interface {
 	// Blocks are only returned when they have reached the provided block status. For example,
 	// if the status is "sealed", only sealed blocks will be returned.
 	SubscribeBlocksFromStartHeight(*SubscribeBlocksFromStartHeightRequest, AccessAPI_SubscribeBlocksFromStartHeightServer) error
-	// SubscribeBlocksFromLatest streams sealed blocks starting from the latest sealed
+	// SubscribeBlocksFromLatest streams finalized or sealed blocks starting from the latest finalized or sealed
 	// block. The stream will remain open and responses are sent for each new block as it becomes available.
+	//
+	// Blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed blocks will be returned.
 	SubscribeBlocksFromLatest(*SubscribeBlocksFromLatestRequest, AccessAPI_SubscribeBlocksFromLatestServer) error
 	// SubscribeBlockHeadersFromStartBlockID streams finalized or sealed block headers starting at the requested
 	// start block id, up until the latest available block. Once the latest is
@@ -944,8 +956,11 @@ type AccessAPIServer interface {
 	// Block headers are only returned when they have reached the provided block status. For example,
 	// if the status is "sealed", only sealed block headers will be returned.
 	SubscribeBlockHeadersFromStartHeight(*SubscribeBlockHeadersFromStartHeightRequest, AccessAPI_SubscribeBlockHeadersFromStartHeightServer) error
-	// SubscribeBlockHeadersFromLatest streams sealed block headers starting from the latest sealed
+	// SubscribeBlockHeadersFromLatest streams finalized or sealed block headers starting from the latest finalized or sealed
 	// block. The stream will remain open and responses are sent for each new block header as it becomes available.
+	//
+	// Block headers are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed block headers will be returned.
 	SubscribeBlockHeadersFromLatest(*SubscribeBlockHeadersFromLatestRequest, AccessAPI_SubscribeBlockHeadersFromLatestServer) error
 	// SubscribeBlockDigestsFromStartBlockID streams finalized or sealed lightweight block starting at the requested
 	// start block id, up until the latest available block. Once the latest is
@@ -963,8 +978,11 @@ type AccessAPIServer interface {
 	// Lightweight blocks are only returned when they have reached the provided block status. For example,
 	// if the status is "sealed", only sealed lightweight blocks will be returned.
 	SubscribeBlockDigestsFromStartHeight(*SubscribeBlockDigestsFromStartHeightRequest, AccessAPI_SubscribeBlockDigestsFromStartHeightServer) error
-	// SubscribeBlockDigestsFromLatest streams sealed lightweight block headers starting of the latest sealed
+	// SubscribeBlockDigestsFromLatest streams finalized or sealed lightweight block headers starting of the latest finalized or sealed
 	// block. The stream will remain open and responses are sent for each new lightweight block as it becomes available.
+	//
+	// Lightweight blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed lightweight blocks will be returned.
 	SubscribeBlockDigestsFromLatest(*SubscribeBlockDigestsFromLatestRequest, AccessAPI_SubscribeBlockDigestsFromLatestServer) error
 	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
 	// is streamed back until the block containing the transaction becomes sealed.
