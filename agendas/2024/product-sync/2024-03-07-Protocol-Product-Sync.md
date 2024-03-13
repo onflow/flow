@@ -10,4 +10,4 @@
    3. Governance multi-sig and possible an update of the Epoch smart contract to deploy the new parameter set for Cruise Control [DRI: Vishal]
    4. some technical background content for marketing.
   
-  When do we want to deploy consensus speedup? Timed with Crescendo? Or earlier? 
+   When do we want to deploy consensus speedup? Timed with Crescendo? Or earlier? 
