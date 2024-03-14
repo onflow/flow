@@ -154,7 +154,7 @@ Cycle Objective(s):
 * Start milestones #5 & #6 of JVM SDK update to update example repo, then analyze scope of work for subsequent grant 
 
 **On Hold**
-- N/A
+- Axelar release waiting confirmation of new timeline, no engineering ongoing
 
 **Active Epics**
 
