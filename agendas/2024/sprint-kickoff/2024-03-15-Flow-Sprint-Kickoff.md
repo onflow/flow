@@ -134,11 +134,12 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* 
+* Completed milestone #4 of JVM SDK update concluding all needs for testing
+* Completed most of USDC Cadence 1.0 contract update, but currently in holding pattern waiting for confirmation from Circle on next steps
 
 **This sprint**
 
-*
+* Start milestones #5 & #6 of JVM SDK update to update example repo, then analyze scope of work for subsequent grant 
 
 **On Hold**
 - N/A
