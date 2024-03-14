@@ -148,6 +148,7 @@ Cycle Objective(s):
 
 * Completed milestone #4 of JVM SDK update concluding all needs for testing
 * Completed most of USDC Cadence 1.0 contract update, but currently in holding pattern waiting for confirmation from Circle on next steps
+* IncrementFi Cadence 1.0 contract updates are completed and ready for testing
 
 **This sprint**
 
