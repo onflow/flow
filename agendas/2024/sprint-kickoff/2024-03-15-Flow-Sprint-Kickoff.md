@@ -101,6 +101,13 @@ Cycle Objective(s):
   * Finished implementation of the KV store state machine. Aligned with team about design questions and possible improvements. Currently incorporating previously discussed changes: https://github.com/onflow/flow-go/pull/5513
   * Finished and merged adding KV Store service event https://github.com/onflow/flow-go/pull/5428
   * Writeup on protocol version upgrade status, base for discussion in a future working group https://forum.flow.com/t/protocol-version-upgrade-mechanisms-discussion/5717
+* Data Availability
+  * KROK team
+    * [Add implementation for usage of the local transaction result in Access API](https://github.com/onflow/flow-go/pull/5306)
+    * [Add support for indexing execution data on Observers](https://github.com/onflow/flow-go/pull/5256)
+    * [Add state streaming API to observers](https://github.com/onflow/flow-go/pull/5368)
+    * [Implement gRPC streaming endpoint SubscribeBlocks](https://github.com/onflow/flow-go/pull/5307)
+    * [Emulator - Subscribe endpoint is missing](https://github.com/onflow/flow-emulator/pull/593)
 
 **This sprint**
 
@@ -109,6 +116,11 @@ Cycle Objective(s):
   * Integrate state machine with the higher level logic: https://github.com/onflow/flow-go/issues/5319
   * Integrating KV Store state machine into upgrade integration tests (extending https://github.com/onflow/flow-go/pull/5477)
   * Finalizing smart contract changes https://github.com/onflow/flow-core-contracts/pull/411
+* Data Availability
+  * KROK team - merge remaining Event streaming PRs which are nearly done
+    * [SendAndSubscribeTransactionStatuses endpoint implementation for Access Streaming API](https://github.com/onflow/flow-go/pull/5310)
+    * [Add standard Access API implementations on Observer](https://github.com/onflow/flow-go/pull/5358)
+    * [Benchmark testing and analysis of execution data indexing on Observers](https://github.com/onflow/flow-go/issues/4849)
 
 **On Hold**
 * Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
