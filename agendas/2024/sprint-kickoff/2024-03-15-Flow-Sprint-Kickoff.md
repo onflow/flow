@@ -93,19 +93,26 @@ Cycle Objective(s):
 * Translate crypto performance improvements to consensus block rate increase
 * Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node
 * Reduce CPU usage on Execution node by 30%
-* Continue BFT mitigations to enable 10 permissionless ANs
-* Continue design of Dynamic Protocol 
+* Continue design and implementation of Sporkless Epoch Fallback Recovery solution
 
 **Done last sprint**
 
-* 
+* EFM Recovery
+  * Finished implementation of the KV store state machine. Aligned with team about design questions and possible improvements. Currently incorporating previously discussed changes: https://github.com/onflow/flow-go/pull/5513
+  * Finished and merged adding KV Store service event https://github.com/onflow/flow-go/pull/5428
+  * Writeup on protocol version upgrade status, base for discussion in a future working group https://forum.flow.com/t/protocol-version-upgrade-mechanisms-discussion/5717
 
 **This sprint**
 
-* 
+* EFM Recovery
+  * Merge KV store state machine PR
+  * Integrate state machine with the higher level logic: https://github.com/onflow/flow-go/issues/5319
+  * Integrating KV Store state machine into upgrade integration tests (extending https://github.com/onflow/flow-go/pull/5477)
+  * Finalizing smart contract changes https://github.com/onflow/flow-core-contracts/pull/411
 
 **On Hold**
 * Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
+* Implement BFT mitigations to enable 20 permissionless ANs
 
 **Active Epics**
 
