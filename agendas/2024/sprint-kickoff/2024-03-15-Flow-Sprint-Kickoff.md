@@ -428,14 +428,20 @@ Cycle Objective(s):
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
 **Done last sprint**
-
-*
+- Estimation of execution effort for EVM transactions on Flow and determining the ratios and differences between Flow Cadence and Flow EVM transaction fees
+- Evaluation of the impact of EIP 4844 on L2 transaction fees and Flow's planned 100x increase [see document](https://docs.google.com/spreadsheets/d/1PPxxAotsIYLzydAnuBAgQe1BmEcamiuSQUmsDtrpaKs/edit#gid=1064090175)
+- Assessed how much computation can fit into a block and thus decided to raise the computation limit by 5x
+- Finalized computation conversion ratio of 5000:1, and a 100x transaction fee increase - forum post and FLIP to follow
+- Drove GWG meeting and provided community updates on recent changes
 
 **This sprint**
 
-- Research transaction fees on other L1s
-- Research Transaction fees for Flow EVM.
-
+- Publish forum post detailing the computation limit, gas to compute conversion, and the transaction fee increase
+- EIP 4844 vs Flow analysis - create self explanatory publicly available spreadsheets, write a blog post
+- Partner outreach regarding the upcoming transaction fee increase
+- Model inflation reduction via two methods - (1) a planned reduction in reward rate over time like sol, and (2) a capped reward number that reduces inflation over time when the cap hits in future
+- Finalize cresendo related governance and tokenomics plan
+- Consneus node rebalancing exercise to maintain decentralization
 
 **On Hold**
 
