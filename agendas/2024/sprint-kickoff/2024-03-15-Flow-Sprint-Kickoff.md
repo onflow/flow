@@ -442,7 +442,7 @@ Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inf
 - Partner outreach regarding the upcoming transaction fee increase
 - Model inflation reduction via two methods - (1) a planned reduction in reward rate over time like sol, and (2) a capped reward number that reduces inflation over time when the cap hits in future
 - Finalize cresendo related governance and tokenomics plan
-- Consneus node rebalancing exercise to maintain decentralization
+- Consensus node rebalancing exercise to maintain decentralization
 
 **On Hold**
 
