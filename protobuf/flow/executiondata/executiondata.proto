@@ -398,14 +398,14 @@ message SubscribeAccountStatusesResponse {
   uint64 messageIndex = 3;
 
   message Result {
-      // Unique identifier for the account being streamed
+        // Unique identifier for the account being streamed
         bytes address = 1;
         // Events matching the StatusFilter in the request.
-        // The API may return no events which signals a periodic heartbeat. This
-        // allows clients to track which blocks were searched. Client can use this
-        // information to determine which block to start from when reconnecting.
         repeated entities.Event events = 2;
   }
+  // The API may return no results which signals a periodic heartbeat. This
+  // allows clients to track which blocks were searched. Client can use this
+  // information to determine which block to start from when reconnecting.
   repeated Result results = 4;
 }
 
