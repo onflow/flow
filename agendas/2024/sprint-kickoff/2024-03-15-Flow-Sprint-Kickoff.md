@@ -3,7 +3,7 @@
  ### Team Wins 🎉
  
 * [CLI release](https://github.com/onflow/flow-cli/releases/tag/v1.12.0-cadence-v1.0.0-preview.9) that enables local contract migration testing to Cadence 1.0 with emulator is going through [last round of testing](https://github.com/onflow/cadence/issues/3098).
-* Great progress on the C1.0 migrations, now passes on full TN state, taking ~4 hours on m1-ultramem-160.
+* Great progress on the C1.0 migrations, now passes on full TN state, taking ~7.5 hours on m1-ultramem-160.
 * C1.0 TN migration environment - successfully started the network from migrated TN state and executed system transaction.
 * Bluesign helping with migration, found 2 optimizations - community power!
 * Completed another Atree optimization that reduces RAM and persistent storage usage on ENs: [Deduplicating Cadence dictionary type info](https://github.com/onflow/atree/issues/358)
