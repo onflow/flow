@@ -2,7 +2,10 @@
 
  ### Team Wins 🎉
  
- * 
+ * Great progress on the C1.0 migration, now passes on full TN state, taking ~4 hours on m1-ultramem-160.
+ * C1.0 TN migration environment - successfully started the network from migrated TN state and executed system transaction.
+ * Bluesign helping with migration, found 2 optimizations - community power!
+ * Completed another Atree optimization that reduces RAM and persistent storage usage on ENs: [Deduplicating Cadence dictionary type info](https://github.com/onflow/atree/issues/358)
 
 --- 
 
@@ -63,11 +66,109 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* 
+Cadence 1.0 migration testing with emulator
+- [Assert payloads before migration](https://github.com/onflow/flow-emulator/pull/615)
+- [Loading values from a migrated emulator state fails](https://github.com/onflow/cadence/issues/3143)
+
+Cadence 1.0 TN migration environment
+- improved tooling
+    - [Add feature to migration program to show diff of Cadence values before and after migration](https://github.com/onflow/flow-go/issues/5483)
+    - [Add Atree storage health checks to migrations](https://github.com/onflow/cadence/issues/3149)
+- [Run full Cadence 1.0 migration on TN state](https://github.com/onflow/cadence/issues/3096)
+    - [Optimize string migration: only return new value if needed](https://github.com/onflow/cadence/pull/3173)
+    - [Improve migration](https://github.com/onflow/cadence/pull/3169)
+    - [Improve static type and entitlements migrations: Update array/dictionary type directly](https://github.com/onflow/cadence/pull/3158)
+    - [Optimize storage migration: Allow skipping of values](https://github.com/onflow/cadence/issues/3157)
+    - [Improve errors in state migration](https://github.com/onflow/cadence/issues/3154)
+    - bugfix: [Payload grouping has data races](https://github.com/onflow/flow-go/issues/5485)
+    - [Add util command to generate payloads for bootsrapped execution state](https://github.com/onflow/flow-go/pull/5487)
+    - [Improve Migration](https://github.com/onflow/flow-go/pull/5479)
+    - [Optimize deployment migration](https://github.com/onflow/flow-go/pull/5470)
+    - [Fix migrating values with empty intersection type](https://github.com/onflow/cadence/pull/3138)
+- [Cadence 1.0 state migration fixes and improvements](https://github.com/onflow/cadence/issues/3162)
+    - [Fix intersection type's legacy type getting converted to intersection type](https://github.com/onflow/cadence/pull/3166)
+    - [Cadence 1.0 Improve migrations](https://github.com/onflow/flow-go/pull/5533)
+    - [Cadence 1.0 ledger - Add missing rule for NonFungibleToken.Collection type](https://github.com/onflow/flow-go/issues/5541)
+    - [Handle legacy type getting converted to intersection type](https://github.com/onflow/cadence/pull/3164)
+- Atree features needed for migration
+    - [Add support for changing type info of atree maps](https://github.com/onflow/atree/pull/377)
+    - [Allow updating static types of Array](https://github.com/onflow/atree/issues/372)
+    - [Allow updating static types of OrderedMap](https://github.com/onflow/atree/issues/373)
+
+Cadence 1.0 features & improvements
+- breaking change: [Cannot take a reference to a nested-optional](https://github.com/onflow/cadence/issues/2541)
+- [Meter computation in new stdlib functions](https://github.com/onflow/cadence/issues/2879)
+- [Improve type inference for authorized references](https://github.com/onflow/cadence/issues/2826)
+- bugfix: [Implicitly track composite reference in attachment iteration](https://github.com/onflow/cadence/pull/3168)
+- bugfix: [Check invalidation of the looped reference](https://github.com/onflow/cadence/pull/3160)
+- bugfix: [SupportedEntitlements implementations are non thread-safe](https://github.com/onflow/cadence/issues/3121)
+- bugfix: [Fix location ranges](https://github.com/onflow/cadence/pull/3151)
+- bugfix: [Creating reference to type-erased reference errors at run-time](https://github.com/onflow/cadence/issues/3011)
+- [Improve update tool](https://github.com/onflow/cadence/pull/3163)
+- check-tidy fix: [Update version](https://github.com/onflow/cadence/pull/3161)
+
+Docs
+- [Add CLI installation instructions to the emulator migration guide](https://github.com/onflow/cadence-lang.org/pull/68)
+- [Add emulator state migration guide](https://github.com/onflow/cadence-lang.org/issues/66)
+- [Document extended update checker rules for Cadence 1.0 migration](https://github.com/onflow/cadence/issues/3155)
+- [Improve emulator installation instructions](https://github.com/onflow/cadence-lang.org/pull/61)
+- FLip update: [Add note about migration changes to entitlements migration](https://github.com/onflow/flips/issues/252)
+- [Add example for reference with disjoint entitlement set](https://github.com/onflow/cadence-lang.org/issues/57)
+- [Upgrade guide for types](https://github.com/onflow/cadence-lang.org/issues/53)
+
+Cadence 1.0 dependency updates
+- flow-go: [1](https://github.com/onflow/flow-go/pull/5546), [2](https://github.com/onflow/flow-go/issues/5543), [3](https://github.com/onflow/flow-go/issues/5540), [4](https://github.com/onflow/flow-go/issues/5539), [5](https://github.com/onflow/flow-go/issues/5529), [6](https://github.com/onflow/flow-go/issues/5498), [7](https://github.com/onflow/flow-go/issues/5493)
+- flow-go-sdk: [1](https://github.com/onflow/flow-go-sdk/issues/606), [2](https://github.com/onflow/flow-go-sdk/issues/605), [3](https://github.com/onflow/flow-go-sdk/issues/604), [4](https://github.com/onflow/flow-go-sdk/issues/600), [5](https://github.com/onflow/flow-go-sdk/issues/594)
+- flow-cli: [1](https://github.com/onflow/flow-cli/issues/1452), [2](https://github.com/onflow/flow-cli/issues/1450)
+- flixkit-go: [1](https://github.com/onflow/flixkit-go/issues/49), [2](https://github.com/onflow/flixkit-go/issues/48)
+- cadence-tools: [1](https://github.com/onflow/cadence-tools/issues/312), [2](https://github.com/onflow/cadence-tools/issues/311), [3](https://github.com/onflow/cadence-tools/issues/310), [4](https://github.com/onflow/cadence-tools/issues/308), [5](https://github.com/onflow/cadence-tools/issues/305), [6](https://github.com/onflow/cadence-tools/issues/304), [7](https://github.com/onflow/cadence-tools/issues/303)
+- flowkit: [1](https://github.com/onflow/flowkit/issues/28), [2](https://github.com/onflow/flowkit/issues/27)
+- flow-emulator: [1](https://github.com/onflow/flow-emulator/issues/610), [2](https://github.com/onflow/flow-emulator/issues/608), [3](https://github.com/onflow/flow-emulator/issues/596)
+
+Cadence Execution
+- Atree: [Additional memory and storage savings are possible by deduplicating Cadence dictionary type info](https://github.com/onflow/atree/issues/358)
+- [test environment for execution node that can follow and execute latest blocks](https://github.com/onflow/flow-go/issues/5118)
+- [Meter (and charge for) the transaction storage check](https://github.com/onflow/flow-go/issues/3834)
+- minor fixes
+    - [public execution state sync port to v0.33](https://github.com/onflow/flow-go/pull/5530)
+    - [Fix integration test](https://github.com/onflow/flow-go/pull/5510)
+
+EVM Gateway productization
+    - [Engine restart logic](https://github.com/onflow/flow-evm-gateway/issues/85)
+    - avoid persisting data on error conditions - [Batch database operations](https://github.com/onflow/flow-evm-gateway/issues/116)
+    - [General improvements and tech-debt](https://github.com/onflow/flow-evm-gateway/pull/121)
+minor fixes:
+    - [Fix logging IDs when numbers](https://github.com/onflow/flow-evm-gateway/pull/151)
+    - [Log bugfix values](https://github.com/onflow/flow-evm-gateway/pull/150)
+    - [Request response value logging](https://github.com/onflow/flow-evm-gateway/pull/149)
+    - [Configuration for logs](https://github.com/onflow/flow-evm-gateway/pull/147)
+    - [Log improvements](https://github.com/onflow/flow-evm-gateway/pull/128)
+
+EVM Core
+- [Provide toHexString and fromHexString for evm address](https://github.com/onflow/flow-go/issues/5459)
+- [Add extra safeguards to EVM handler](https://github.com/onflow/flow-go/pull/5516)
+- [Make deposit available for any EVM address](https://github.com/onflow/flow-go/issues/5468)
+- [Adding integration test cases](https://github.com/onflow/flow-go/issues/5228)
+- bugfix: [Use EVM chain ID for mainnet when deployed on mainnet](https://github.com/onflow/flow-go/issues/5441)
+- bugfix: [missing uuid on vault returned by the withdraw method](https://github.com/onflow/flow-go/issues/5514)
+
+TPS Loader
+- [EVM load test fix](https://github.com/onflow/flow-go/issues/5491)
+    - [Bootstrap with EVM by default](https://github.com/onflow/flow-go/pull/5482)
 
 **This sprint**
 
-* 
+Objective 1, KR 1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
+* [Emulator release is ready](https://github.com/onflow/flow-cli/releases/tag/v1.12.0-cadence-v1.0.0-preview.9), going through last [testing](https://github.com/onflow/cadence/issues/3098) before we announce it.
+* Testnet migration completed, moving on to adding [Atree register inlining](https://github.com/onflow/cadence/pull/3048) migration and validating migrated state on the TN migration environment.
+
+Objective 1, KR4: Testnet Upgrade to Crescendo Release
+* Continue with [EVM Gateway development](https://github.com/onflow/flow-evm-gateway/issues/126) and [EVM Core development](https://github.com/onflow/flow-go/issues/5536) for production readiness.
+
+Objective 4, KR1: Execution node handles restart from spork root block reguardless of how many blocks it is behind
+* Continue refactoring of Ingestion engine to [prevent EN entering crash loop](https://github.com/onflow/flow-go/issues/5298)
+
+* Start Atree optimization: [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
 
 **On Hold**
 
