@@ -390,7 +390,7 @@ message SubscribeAccountStatusesResponse {
   // Block ID of the block containing the events.
   bytes block_id = 1;
 
-  // Block ID of the block containing the events.
+  // Block height of the block containing the events.
   uint64 block_height = 2;
 
   // The MessageIndex of the response message.
@@ -410,23 +410,25 @@ message SubscribeAccountStatusesResponse {
 }
 
 // StatusesFilter defines the filter to apply to block events.
-// Filters are applied as an OR operation, i.e. any event matching any of the
-// filters is returned. If no filters are provided, all events are returned. If
-// there are any invalid filters, the API will return an InvalidArgument error.
+// Filters match for events with types in the included event_type list, that are
+// related to at least one address from the provided address list. An event who's
+// type matches but address does not is ignored, and vice versa.
+// If no event_types are provided, all account related protocol event types are matched.
+// If no addresses are provided, any address matches.
+// If there are any invalid filters, the API will return an InvalidArgument error.
 message StatusFilter {
   // A list of full event types to include.
   //
   // All events exactly matching any of the provided event types will be
   // returned.
   //
-  // Event types have 2 formats:
-  // - Protocol events:
+  // Event types must be protocol events. e.g.
   //     flow.[event name]
   repeated string event_type = 1;
   // A list of addresses who's events should be included.
   //
-  // All events emitted by any contract held by any of the provided addresses
-  // will be returned.
+  // All events matching the provided event_types that are related to any of the provided addresses
+  // will be returned. If no addresses are provided, all events matching event_types will be returned.
   //
   // Addresses must be Flow account addresses in hex format and valid for the
   // network the node is connected to. i.e. only a mainnet address is valid for
