@@ -7,6 +7,7 @@
  * C1.0 TN migration environment - successfully started the network from migrated TN state and executed system transaction.
  * Bluesign helping with migration, found 2 optimizations - community power!
  * Completed another Atree optimization that reduces RAM and persistent storage usage on ENs: [Deduplicating Cadence dictionary type info](https://github.com/onflow/atree/issues/358)
+ * Cross-VM bridge contract changes now locked in and moving ahead with delivery
 
 --- 
 
@@ -207,6 +208,8 @@ Cycle Objective(s):
   * Finished implementation of the KV store state machine. Aligned with team about design questions and possible improvements. Currently incorporating previously discussed changes: https://github.com/onflow/flow-go/pull/5513
   * Finished and merged adding KV Store service event https://github.com/onflow/flow-go/pull/5428
   * Writeup on protocol version upgrade status, base for discussion in a future working group https://forum.flow.com/t/protocol-version-upgrade-mechanisms-discussion/5717
+  * Reading docs ramping up
+  * [Started EFM data recovery](https://github.com/dapperlabs/flow-go/issues/6957)
 * Data Availability
   * [Add register cache to AN](https://github.com/onflow/flow-go/pull/5347) (deployed to mainnet & QuickNode)
   * [Handle system transaction in local result mode](https://github.com/onflow/flow-go/pull/5532)
@@ -222,9 +225,12 @@ Cycle Objective(s):
 
 * EFM Recovery
   * Merge KV store state machine PR
-  * Integrate state machine with the higher level logic: https://github.com/onflow/flow-go/issues/5319
-  * Integrating KV Store state machine into upgrade integration tests (extending https://github.com/onflow/flow-go/pull/5477)
-  * Finalizing smart contract changes https://github.com/onflow/flow-core-contracts/pull/411
+  * [Integrate state machine with the higher level logic](https://github.com/onflow/flow-go/issues/5319)
+  * [Integrating KV Store state machine into upgrade integration tests](extending https://github.com/onflow/flow-go/pull/5477)
+  * [Finalizing smart contract changes](https://github.com/onflow/flow-core-contracts/pull/411)
+  * [Complete EFM data recovery](https://github.com/dapperlabs/flow-go/issues/6957)
+  * Wrap up reading and knowledge ramp up for Khalil
+  * [Start EFM recovery transaction](https://github.com/dapperlabs/flow-go/issues/6956)
 * Data Availability
   * [Enable programs cache on AN](https://github.com/onflow/flow-go/issues/5278) - finish and deploy to devnet
   * [Debug unusual disk usage on ANs](https://github.com/onflow/flow-go/issues/5549)
