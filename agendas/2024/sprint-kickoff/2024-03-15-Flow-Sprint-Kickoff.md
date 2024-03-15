@@ -225,6 +225,16 @@ Cycle Objective(s):
     * [Add state streaming API to observers](https://github.com/onflow/flow-go/pull/5368)
     * [Implement gRPC streaming endpoint SubscribeBlocks](https://github.com/onflow/flow-go/pull/5307)
     * [Emulator - Subscribe endpoint is missing](https://github.com/onflow/flow-emulator/pull/593)
+* Crypto
+  * New crypto lib
+    * Artblock CPU issue: tested, validated and simulated
+    * Investigate CPU issue
+      * [fix potential issue in the image build](https://github.com/onflow/flow-go/pull/5525)
+      * Worked with Figment to borrow a machine
+  * BN2
+    * [Minor fixes](https://github.com/onflow/flow-go/pull/5528) and documentation of the process 
+  * [Emulator pre Cadence 1.0 branch required for flow-go](https://github.com/onflow/flow-emulator/pull/592)
+  * Randomness-on chain contract: investigate issue caused by epoch contract update - minor progress
 
 **This sprint**
 
@@ -243,6 +253,11 @@ Cycle Objective(s):
     * [SendAndSubscribeTransactionStatuses endpoint implementation for Access Streaming API](https://github.com/onflow/flow-go/pull/5310)
     * [Add standard Access API implementations on Observer](https://github.com/onflow/flow-go/pull/5358)
     * [Benchmark testing and analysis of execution data indexing on Observers](https://github.com/onflow/flow-go/issues/4849)
+* Crypto
+  * New crypto lib
+    * Continue following up with ArtBlocks and make sure their node work
+    * [Reproducing CPU issue on similar CPUs from gcloud](https://github.com/onflow/flow-go/pull/5471)
+  * Randomness-on chain contract: get back to the contract fix  
 
 **On Hold**
 * Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
