@@ -107,6 +107,75 @@ type AccessAPIClient interface {
 	GetExecutionResultForBlockID(ctx context.Context, in *GetExecutionResultForBlockIDRequest, opts ...grpc.CallOption) (*ExecutionResultForBlockIDResponse, error)
 	// GetExecutionResultByID returns Execution Result by its ID.
 	GetExecutionResultByID(ctx context.Context, in *GetExecutionResultByIDRequest, opts ...grpc.CallOption) (*ExecutionResultByIDResponse, error)
+	// SubscribeBlocksFromStartBlockID streams finalized or sealed blocks starting at the requested
+	// start block id, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed blocks will be returned.
+	SubscribeBlocksFromStartBlockID(ctx context.Context, in *SubscribeBlocksFromStartBlockIDRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksFromStartBlockIDClient, error)
+	// SubscribeBlocksFromStartHeight streams finalized or sealed blocks starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed blocks will be returned.
+	SubscribeBlocksFromStartHeight(ctx context.Context, in *SubscribeBlocksFromStartHeightRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksFromStartHeightClient, error)
+	// SubscribeBlocksFromLatest streams finalized or sealed blocks starting from the latest finalized or sealed
+	// block. The stream will remain open and responses are sent for each new block as it becomes available.
+	//
+	// Blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed blocks will be returned.
+	SubscribeBlocksFromLatest(ctx context.Context, in *SubscribeBlocksFromLatestRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksFromLatestClient, error)
+	// SubscribeBlockHeadersFromStartBlockID streams finalized or sealed block headers starting at the requested
+	// start block id, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block header as it becomes available.
+	//
+	// Block headers are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed block headers will be returned.
+	SubscribeBlockHeadersFromStartBlockID(ctx context.Context, in *SubscribeBlockHeadersFromStartBlockIDRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersFromStartBlockIDClient, error)
+	// SubscribeBlockHeadersFromStartHeight streams finalized or sealed block headers starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block header as it becomes available.
+	//
+	// Block headers are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed block headers will be returned.
+	SubscribeBlockHeadersFromStartHeight(ctx context.Context, in *SubscribeBlockHeadersFromStartHeightRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersFromStartHeightClient, error)
+	// SubscribeBlockHeadersFromLatest streams finalized or sealed block headers starting from the latest finalized or sealed
+	// block. The stream will remain open and responses are sent for each new block header as it becomes available.
+	//
+	// Block headers are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed block headers will be returned.
+	SubscribeBlockHeadersFromLatest(ctx context.Context, in *SubscribeBlockHeadersFromLatestRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersFromLatestClient, error)
+	// SubscribeBlockDigestsFromStartBlockID streams finalized or sealed lightweight block starting at the requested
+	// start block id, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// lightweight block as it becomes available.
+	//
+	// Lightweight blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed lightweight blocks will be returned.
+	SubscribeBlockDigestsFromStartBlockID(ctx context.Context, in *SubscribeBlockDigestsFromStartBlockIDRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsFromStartBlockIDClient, error)
+	// SubscribeBlockDigestsFromStartHeight streams finalized or sealed lightweight block starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// lightweight block as it becomes available.
+	//
+	// Lightweight blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed lightweight blocks will be returned.
+	SubscribeBlockDigestsFromStartHeight(ctx context.Context, in *SubscribeBlockDigestsFromStartHeightRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsFromStartHeightClient, error)
+	// SubscribeBlockDigestsFromLatest streams finalized or sealed lightweight block headers starting of the latest finalized or sealed
+	// block. The stream will remain open and responses are sent for each new lightweight block as it becomes available.
+	//
+	// Lightweight blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed lightweight blocks will be returned.
+	SubscribeBlockDigestsFromLatest(ctx context.Context, in *SubscribeBlockDigestsFromLatestRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsFromLatestClient, error)
+	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
+	// is streamed back until the block containing the transaction becomes sealed.
+	SendAndSubscribeTransactionStatuses(ctx context.Context, in *SendAndSubscribeTransactionStatusesRequest, opts ...grpc.CallOption) (AccessAPI_SendAndSubscribeTransactionStatusesClient, error)
 }
 
 type accessAPIClient struct {
@@ -396,6 +465,326 @@ func (c *accessAPIClient) GetExecutionResultByID(ctx context.Context, in *GetExe
 	return out, nil
 }
 
+func (c *accessAPIClient) SubscribeBlocksFromStartBlockID(ctx context.Context, in *SubscribeBlocksFromStartBlockIDRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksFromStartBlockIDClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[0], "/flow.access.AccessAPI/SubscribeBlocksFromStartBlockID", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlocksFromStartBlockIDClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlocksFromStartBlockIDClient interface {
+	Recv() (*SubscribeBlocksResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlocksFromStartBlockIDClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlocksFromStartBlockIDClient) Recv() (*SubscribeBlocksResponse, error) {
+	m := new(SubscribeBlocksResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *accessAPIClient) SubscribeBlocksFromStartHeight(ctx context.Context, in *SubscribeBlocksFromStartHeightRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksFromStartHeightClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[1], "/flow.access.AccessAPI/SubscribeBlocksFromStartHeight", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlocksFromStartHeightClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlocksFromStartHeightClient interface {
+	Recv() (*SubscribeBlocksResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlocksFromStartHeightClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlocksFromStartHeightClient) Recv() (*SubscribeBlocksResponse, error) {
+	m := new(SubscribeBlocksResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *accessAPIClient) SubscribeBlocksFromLatest(ctx context.Context, in *SubscribeBlocksFromLatestRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksFromLatestClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[2], "/flow.access.AccessAPI/SubscribeBlocksFromLatest", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlocksFromLatestClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlocksFromLatestClient interface {
+	Recv() (*SubscribeBlocksResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlocksFromLatestClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlocksFromLatestClient) Recv() (*SubscribeBlocksResponse, error) {
+	m := new(SubscribeBlocksResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *accessAPIClient) SubscribeBlockHeadersFromStartBlockID(ctx context.Context, in *SubscribeBlockHeadersFromStartBlockIDRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersFromStartBlockIDClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[3], "/flow.access.AccessAPI/SubscribeBlockHeadersFromStartBlockID", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlockHeadersFromStartBlockIDClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlockHeadersFromStartBlockIDClient interface {
+	Recv() (*SubscribeBlockHeadersResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlockHeadersFromStartBlockIDClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlockHeadersFromStartBlockIDClient) Recv() (*SubscribeBlockHeadersResponse, error) {
+	m := new(SubscribeBlockHeadersResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *accessAPIClient) SubscribeBlockHeadersFromStartHeight(ctx context.Context, in *SubscribeBlockHeadersFromStartHeightRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersFromStartHeightClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[4], "/flow.access.AccessAPI/SubscribeBlockHeadersFromStartHeight", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlockHeadersFromStartHeightClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlockHeadersFromStartHeightClient interface {
+	Recv() (*SubscribeBlockHeadersResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlockHeadersFromStartHeightClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlockHeadersFromStartHeightClient) Recv() (*SubscribeBlockHeadersResponse, error) {
+	m := new(SubscribeBlockHeadersResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *accessAPIClient) SubscribeBlockHeadersFromLatest(ctx context.Context, in *SubscribeBlockHeadersFromLatestRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockHeadersFromLatestClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[5], "/flow.access.AccessAPI/SubscribeBlockHeadersFromLatest", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlockHeadersFromLatestClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlockHeadersFromLatestClient interface {
+	Recv() (*SubscribeBlockHeadersResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlockHeadersFromLatestClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlockHeadersFromLatestClient) Recv() (*SubscribeBlockHeadersResponse, error) {
+	m := new(SubscribeBlockHeadersResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *accessAPIClient) SubscribeBlockDigestsFromStartBlockID(ctx context.Context, in *SubscribeBlockDigestsFromStartBlockIDRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsFromStartBlockIDClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[6], "/flow.access.AccessAPI/SubscribeBlockDigestsFromStartBlockID", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlockDigestsFromStartBlockIDClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlockDigestsFromStartBlockIDClient interface {
+	Recv() (*SubscribeBlockDigestsResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlockDigestsFromStartBlockIDClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlockDigestsFromStartBlockIDClient) Recv() (*SubscribeBlockDigestsResponse, error) {
+	m := new(SubscribeBlockDigestsResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *accessAPIClient) SubscribeBlockDigestsFromStartHeight(ctx context.Context, in *SubscribeBlockDigestsFromStartHeightRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsFromStartHeightClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[7], "/flow.access.AccessAPI/SubscribeBlockDigestsFromStartHeight", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlockDigestsFromStartHeightClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlockDigestsFromStartHeightClient interface {
+	Recv() (*SubscribeBlockDigestsResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlockDigestsFromStartHeightClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlockDigestsFromStartHeightClient) Recv() (*SubscribeBlockDigestsResponse, error) {
+	m := new(SubscribeBlockDigestsResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *accessAPIClient) SubscribeBlockDigestsFromLatest(ctx context.Context, in *SubscribeBlockDigestsFromLatestRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlockDigestsFromLatestClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[8], "/flow.access.AccessAPI/SubscribeBlockDigestsFromLatest", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISubscribeBlockDigestsFromLatestClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SubscribeBlockDigestsFromLatestClient interface {
+	Recv() (*SubscribeBlockDigestsResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISubscribeBlockDigestsFromLatestClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISubscribeBlockDigestsFromLatestClient) Recv() (*SubscribeBlockDigestsResponse, error) {
+	m := new(SubscribeBlockDigestsResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *accessAPIClient) SendAndSubscribeTransactionStatuses(ctx context.Context, in *SendAndSubscribeTransactionStatusesRequest, opts ...grpc.CallOption) (AccessAPI_SendAndSubscribeTransactionStatusesClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[9], "/flow.access.AccessAPI/SendAndSubscribeTransactionStatuses", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &accessAPISendAndSubscribeTransactionStatusesClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type AccessAPI_SendAndSubscribeTransactionStatusesClient interface {
+	Recv() (*SendAndSubscribeTransactionStatusesResponse, error)
+	grpc.ClientStream
+}
+
+type accessAPISendAndSubscribeTransactionStatusesClient struct {
+	grpc.ClientStream
+}
+
+func (x *accessAPISendAndSubscribeTransactionStatusesClient) Recv() (*SendAndSubscribeTransactionStatusesResponse, error) {
+	m := new(SendAndSubscribeTransactionStatusesResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // AccessAPIServer is the server API for AccessAPI service.
 // All implementations should embed UnimplementedAccessAPIServer
 // for forward compatibility
@@ -485,6 +874,75 @@ type AccessAPIServer interface {
 	GetExecutionResultForBlockID(context.Context, *GetExecutionResultForBlockIDRequest) (*ExecutionResultForBlockIDResponse, error)
 	// GetExecutionResultByID returns Execution Result by its ID.
 	GetExecutionResultByID(context.Context, *GetExecutionResultByIDRequest) (*ExecutionResultByIDResponse, error)
+	// SubscribeBlocksFromStartBlockID streams finalized or sealed blocks starting at the requested
+	// start block id, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed blocks will be returned.
+	SubscribeBlocksFromStartBlockID(*SubscribeBlocksFromStartBlockIDRequest, AccessAPI_SubscribeBlocksFromStartBlockIDServer) error
+	// SubscribeBlocksFromStartHeight streams finalized or sealed blocks starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed blocks will be returned.
+	SubscribeBlocksFromStartHeight(*SubscribeBlocksFromStartHeightRequest, AccessAPI_SubscribeBlocksFromStartHeightServer) error
+	// SubscribeBlocksFromLatest streams finalized or sealed blocks starting from the latest finalized or sealed
+	// block. The stream will remain open and responses are sent for each new block as it becomes available.
+	//
+	// Blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed blocks will be returned.
+	SubscribeBlocksFromLatest(*SubscribeBlocksFromLatestRequest, AccessAPI_SubscribeBlocksFromLatestServer) error
+	// SubscribeBlockHeadersFromStartBlockID streams finalized or sealed block headers starting at the requested
+	// start block id, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block header as it becomes available.
+	//
+	// Block headers are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed block headers will be returned.
+	SubscribeBlockHeadersFromStartBlockID(*SubscribeBlockHeadersFromStartBlockIDRequest, AccessAPI_SubscribeBlockHeadersFromStartBlockIDServer) error
+	// SubscribeBlockHeadersFromStartHeight streams finalized or sealed block headers starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block header as it becomes available.
+	//
+	// Block headers are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed block headers will be returned.
+	SubscribeBlockHeadersFromStartHeight(*SubscribeBlockHeadersFromStartHeightRequest, AccessAPI_SubscribeBlockHeadersFromStartHeightServer) error
+	// SubscribeBlockHeadersFromLatest streams finalized or sealed block headers starting from the latest finalized or sealed
+	// block. The stream will remain open and responses are sent for each new block header as it becomes available.
+	//
+	// Block headers are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed block headers will be returned.
+	SubscribeBlockHeadersFromLatest(*SubscribeBlockHeadersFromLatestRequest, AccessAPI_SubscribeBlockHeadersFromLatestServer) error
+	// SubscribeBlockDigestsFromStartBlockID streams finalized or sealed lightweight block starting at the requested
+	// start block id, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// lightweight block as it becomes available.
+	//
+	// Lightweight blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed lightweight blocks will be returned.
+	SubscribeBlockDigestsFromStartBlockID(*SubscribeBlockDigestsFromStartBlockIDRequest, AccessAPI_SubscribeBlockDigestsFromStartBlockIDServer) error
+	// SubscribeBlockDigestsFromStartHeight streams finalized or sealed lightweight block starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// lightweight block as it becomes available.
+	//
+	// Lightweight blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed lightweight blocks will be returned.
+	SubscribeBlockDigestsFromStartHeight(*SubscribeBlockDigestsFromStartHeightRequest, AccessAPI_SubscribeBlockDigestsFromStartHeightServer) error
+	// SubscribeBlockDigestsFromLatest streams finalized or sealed lightweight block headers starting of the latest finalized or sealed
+	// block. The stream will remain open and responses are sent for each new lightweight block as it becomes available.
+	//
+	// Lightweight blocks are only returned when they have reached the provided block status. For example,
+	// if the status is "sealed", only sealed lightweight blocks will be returned.
+	SubscribeBlockDigestsFromLatest(*SubscribeBlockDigestsFromLatestRequest, AccessAPI_SubscribeBlockDigestsFromLatestServer) error
+	// SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
+	// is streamed back until the block containing the transaction becomes sealed.
+	SendAndSubscribeTransactionStatuses(*SendAndSubscribeTransactionStatusesRequest, AccessAPI_SendAndSubscribeTransactionStatusesServer) error
 }
 
 // UnimplementedAccessAPIServer should be embedded to have forward compatible implementations.
@@ -583,6 +1041,36 @@ func (UnimplementedAccessAPIServer) GetExecutionResultForBlockID(context.Context
 }
 func (UnimplementedAccessAPIServer) GetExecutionResultByID(context.Context, *GetExecutionResultByIDRequest) (*ExecutionResultByIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetExecutionResultByID not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlocksFromStartBlockID(*SubscribeBlocksFromStartBlockIDRequest, AccessAPI_SubscribeBlocksFromStartBlockIDServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlocksFromStartBlockID not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlocksFromStartHeight(*SubscribeBlocksFromStartHeightRequest, AccessAPI_SubscribeBlocksFromStartHeightServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlocksFromStartHeight not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlocksFromLatest(*SubscribeBlocksFromLatestRequest, AccessAPI_SubscribeBlocksFromLatestServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlocksFromLatest not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlockHeadersFromStartBlockID(*SubscribeBlockHeadersFromStartBlockIDRequest, AccessAPI_SubscribeBlockHeadersFromStartBlockIDServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlockHeadersFromStartBlockID not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlockHeadersFromStartHeight(*SubscribeBlockHeadersFromStartHeightRequest, AccessAPI_SubscribeBlockHeadersFromStartHeightServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlockHeadersFromStartHeight not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlockHeadersFromLatest(*SubscribeBlockHeadersFromLatestRequest, AccessAPI_SubscribeBlockHeadersFromLatestServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlockHeadersFromLatest not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlockDigestsFromStartBlockID(*SubscribeBlockDigestsFromStartBlockIDRequest, AccessAPI_SubscribeBlockDigestsFromStartBlockIDServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlockDigestsFromStartBlockID not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlockDigestsFromStartHeight(*SubscribeBlockDigestsFromStartHeightRequest, AccessAPI_SubscribeBlockDigestsFromStartHeightServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlockDigestsFromStartHeight not implemented")
+}
+func (UnimplementedAccessAPIServer) SubscribeBlockDigestsFromLatest(*SubscribeBlockDigestsFromLatestRequest, AccessAPI_SubscribeBlockDigestsFromLatestServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeBlockDigestsFromLatest not implemented")
+}
+func (UnimplementedAccessAPIServer) SendAndSubscribeTransactionStatuses(*SendAndSubscribeTransactionStatusesRequest, AccessAPI_SendAndSubscribeTransactionStatusesServer) error {
+	return status.Errorf(codes.Unimplemented, "method SendAndSubscribeTransactionStatuses not implemented")
 }
 
 // UnsafeAccessAPIServer may be embedded to opt out of forward compatibility for this service.
@@ -1154,6 +1642,216 @@ func _AccessAPI_GetExecutionResultByID_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AccessAPI_SubscribeBlocksFromStartBlockID_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlocksFromStartBlockIDRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlocksFromStartBlockID(m, &accessAPISubscribeBlocksFromStartBlockIDServer{stream})
+}
+
+type AccessAPI_SubscribeBlocksFromStartBlockIDServer interface {
+	Send(*SubscribeBlocksResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlocksFromStartBlockIDServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlocksFromStartBlockIDServer) Send(m *SubscribeBlocksResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _AccessAPI_SubscribeBlocksFromStartHeight_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlocksFromStartHeightRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlocksFromStartHeight(m, &accessAPISubscribeBlocksFromStartHeightServer{stream})
+}
+
+type AccessAPI_SubscribeBlocksFromStartHeightServer interface {
+	Send(*SubscribeBlocksResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlocksFromStartHeightServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlocksFromStartHeightServer) Send(m *SubscribeBlocksResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _AccessAPI_SubscribeBlocksFromLatest_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlocksFromLatestRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlocksFromLatest(m, &accessAPISubscribeBlocksFromLatestServer{stream})
+}
+
+type AccessAPI_SubscribeBlocksFromLatestServer interface {
+	Send(*SubscribeBlocksResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlocksFromLatestServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlocksFromLatestServer) Send(m *SubscribeBlocksResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _AccessAPI_SubscribeBlockHeadersFromStartBlockID_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlockHeadersFromStartBlockIDRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlockHeadersFromStartBlockID(m, &accessAPISubscribeBlockHeadersFromStartBlockIDServer{stream})
+}
+
+type AccessAPI_SubscribeBlockHeadersFromStartBlockIDServer interface {
+	Send(*SubscribeBlockHeadersResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlockHeadersFromStartBlockIDServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlockHeadersFromStartBlockIDServer) Send(m *SubscribeBlockHeadersResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _AccessAPI_SubscribeBlockHeadersFromStartHeight_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlockHeadersFromStartHeightRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlockHeadersFromStartHeight(m, &accessAPISubscribeBlockHeadersFromStartHeightServer{stream})
+}
+
+type AccessAPI_SubscribeBlockHeadersFromStartHeightServer interface {
+	Send(*SubscribeBlockHeadersResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlockHeadersFromStartHeightServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlockHeadersFromStartHeightServer) Send(m *SubscribeBlockHeadersResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _AccessAPI_SubscribeBlockHeadersFromLatest_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlockHeadersFromLatestRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlockHeadersFromLatest(m, &accessAPISubscribeBlockHeadersFromLatestServer{stream})
+}
+
+type AccessAPI_SubscribeBlockHeadersFromLatestServer interface {
+	Send(*SubscribeBlockHeadersResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlockHeadersFromLatestServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlockHeadersFromLatestServer) Send(m *SubscribeBlockHeadersResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _AccessAPI_SubscribeBlockDigestsFromStartBlockID_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlockDigestsFromStartBlockIDRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlockDigestsFromStartBlockID(m, &accessAPISubscribeBlockDigestsFromStartBlockIDServer{stream})
+}
+
+type AccessAPI_SubscribeBlockDigestsFromStartBlockIDServer interface {
+	Send(*SubscribeBlockDigestsResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlockDigestsFromStartBlockIDServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlockDigestsFromStartBlockIDServer) Send(m *SubscribeBlockDigestsResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _AccessAPI_SubscribeBlockDigestsFromStartHeight_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlockDigestsFromStartHeightRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlockDigestsFromStartHeight(m, &accessAPISubscribeBlockDigestsFromStartHeightServer{stream})
+}
+
+type AccessAPI_SubscribeBlockDigestsFromStartHeightServer interface {
+	Send(*SubscribeBlockDigestsResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlockDigestsFromStartHeightServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlockDigestsFromStartHeightServer) Send(m *SubscribeBlockDigestsResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _AccessAPI_SubscribeBlockDigestsFromLatest_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeBlockDigestsFromLatestRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SubscribeBlockDigestsFromLatest(m, &accessAPISubscribeBlockDigestsFromLatestServer{stream})
+}
+
+type AccessAPI_SubscribeBlockDigestsFromLatestServer interface {
+	Send(*SubscribeBlockDigestsResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISubscribeBlockDigestsFromLatestServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISubscribeBlockDigestsFromLatestServer) Send(m *SubscribeBlockDigestsResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _AccessAPI_SendAndSubscribeTransactionStatuses_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SendAndSubscribeTransactionStatusesRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(AccessAPIServer).SendAndSubscribeTransactionStatuses(m, &accessAPISendAndSubscribeTransactionStatusesServer{stream})
+}
+
+type AccessAPI_SendAndSubscribeTransactionStatusesServer interface {
+	Send(*SendAndSubscribeTransactionStatusesResponse) error
+	grpc.ServerStream
+}
+
+type accessAPISendAndSubscribeTransactionStatusesServer struct {
+	grpc.ServerStream
+}
+
+func (x *accessAPISendAndSubscribeTransactionStatusesServer) Send(m *SendAndSubscribeTransactionStatusesResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 // AccessAPI_ServiceDesc is the grpc.ServiceDesc for AccessAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1286,6 +1984,57 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AccessAPI_GetExecutionResultByID_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "SubscribeBlocksFromStartBlockID",
+			Handler:       _AccessAPI_SubscribeBlocksFromStartBlockID_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeBlocksFromStartHeight",
+			Handler:       _AccessAPI_SubscribeBlocksFromStartHeight_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeBlocksFromLatest",
+			Handler:       _AccessAPI_SubscribeBlocksFromLatest_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeBlockHeadersFromStartBlockID",
+			Handler:       _AccessAPI_SubscribeBlockHeadersFromStartBlockID_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeBlockHeadersFromStartHeight",
+			Handler:       _AccessAPI_SubscribeBlockHeadersFromStartHeight_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeBlockHeadersFromLatest",
+			Handler:       _AccessAPI_SubscribeBlockHeadersFromLatest_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeBlockDigestsFromStartBlockID",
+			Handler:       _AccessAPI_SubscribeBlockDigestsFromStartBlockID_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeBlockDigestsFromStartHeight",
+			Handler:       _AccessAPI_SubscribeBlockDigestsFromStartHeight_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeBlockDigestsFromLatest",
+			Handler:       _AccessAPI_SubscribeBlockDigestsFromLatest_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SendAndSubscribeTransactionStatuses",
+			Handler:       _AccessAPI_SendAndSubscribeTransactionStatuses_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "flow/access/access.proto",
 }
