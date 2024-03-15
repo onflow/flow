@@ -7,7 +7,7 @@
  * C1.0 TN migration environment - successfully started the network from migrated TN state and executed system transaction.
  * Bluesign helping with migration, found 2 optimizations - community power!
  * Completed another Atree optimization that reduces RAM and persistent storage usage on ENs: [Deduplicating Cadence dictionary type info](https://github.com/onflow/atree/issues/358)
- * Cross-VM bridge contract changes now locked in and moving ahead with delivery
+ * Cross-VM bridge design changes now locked in and moving ahead with delivery
 
 --- 
 
@@ -291,7 +291,7 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-*
+* Cross-VM bridge design changes now locked in and moving ahead with delivery
 
 **This sprint**
 
