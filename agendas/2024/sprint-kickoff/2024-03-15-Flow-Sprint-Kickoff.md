@@ -367,14 +367,15 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-- N/A
+- Completed UI components for EVM support in Flow Wallet 
+- Completed Web3.js integration with Flow Wallet (Not with COA, with EOA to start)
 
 **This sprint**
 
-- Begin creating developer documentation highlighting FlowEVM
-- Updating cadence transactions / scripts for Cadence 1.0
-- Begin executing on FlowEVM updates to Flow Wallet
-- Scheduled calls with MetaMask and Coinbase Wallet teams to intro FlowEVM and gather their requirements.
+- CTD cadence transactions / scripts for Cadence 1.0
+- COA integration (including Web3.js integration with COA)
+- VM Bridge integration, meeting scheduled for Monday.
+- CTD: Outreach with Coinbase Wallet, MetaMask, Shadow Wallet and Blocto
 
 **On Hold**
 
