@@ -386,20 +386,39 @@ Cycle Objective(s):
 
 ### **Infra - JP**
 Cycle Objective(s): 
-- Migrate Flow metrics & logs to Flow Foundation grafana account to reduce cost on DapperLabs
+- Finish GCP project migration to the Flow Foundation org
 
 **Done last sprint**
+- QuickNode
+  - Worked with QuickNode team to configure profiling agent for ANs
+- Previewnet Setup
+  - Enabled alerts for previewnet
+- Migration Network
+  - [Create Ansible configuration for migration network](https://github.com/dapperlabs/dapper-flow-hosting/pull/1467)
+  - [Create infra for migration network](https://github.com/dapperlabs/terraform/pull/4179)
+  - Support the configuration & bootstrapping of the migration network
+- Node Hosting Support
+  - [Increase MN & TN disk sizes](https://github.com/dapperlabs/terraform/pull/4180/files)
+  - [Increase MN24 Access Node disk sizes](https://github.com/dapperlabs/terraform/pull/4166)
+  - [Upgrade Devnet49 AN3 to increase memory](https://github.com/dapperlabs/terraform/pull/4171)
+  - [Increase LN disk size for DL nodes](https://github.com/dapperlabs/dapper-flow-nodes-infrastructure/pull/15)
+  - Prune CDP on Mainnet Execution Nodes to reduce costs
+  - Prune boot disks for access nodes on Devnet
+- FF GCP Migration
+  - Migrated all projects except for those hosting mainnet nodes and account keys
+  - [Updated Ansible config to avoid issues with project migration](https://github.com/dapperlabs/dapper-flow-hosting/pull/1471)
+- DevEx Migration
+  - Supported the DevEx migration to Cloud Run effort
+  - [Assisted in enabling a load balancer in front of the services](https://github.com/dapperlabs/flow-devex-infrastructure/pull/136)
 
-* 
-
-**This sprint**
-
-**Goal of Sprint is to migrate from DapperLabs account to FlowFoundation account** 
-
-* 
-
-**On Hold**
-**Active Epics**
+**Goal of Sprint is to prepare for GCP migration to FF account** 
+**This Sprint**
+- Finish migrating all GCP projects and shift billing accounts for these projects
+- Enable FF groups in the GCP projects for IAM shift
+- Evaluate best path forward for Terraform management
+- Create plan for CloudFlare account migration
+- Continue suppporting migration network initiative
+- Continue supporting Cloud Run migration initiative
 
 ---
 
