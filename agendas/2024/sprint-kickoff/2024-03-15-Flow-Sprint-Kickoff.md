@@ -208,6 +208,9 @@ Cycle Objective(s):
   * Finished and merged adding KV Store service event https://github.com/onflow/flow-go/pull/5428
   * Writeup on protocol version upgrade status, base for discussion in a future working group https://forum.flow.com/t/protocol-version-upgrade-mechanisms-discussion/5717
 * Data Availability
+  * [Add register cache to AN](https://github.com/onflow/flow-go/pull/5347) (deployed to mainnet & QuickNode)
+  * [Handle system transaction in local result mode](https://github.com/onflow/flow-go/pull/5532)
+  * [Enable forked mainnet in emulator using AN](https://github.com/onflow/flow-emulator/pull/594)
   * KROK team
     * [Add implementation for usage of the local transaction result in Access API](https://github.com/onflow/flow-go/pull/5306)
     * [Add support for indexing execution data on Observers](https://github.com/onflow/flow-go/pull/5256)
@@ -223,6 +226,8 @@ Cycle Objective(s):
   * Integrating KV Store state machine into upgrade integration tests (extending https://github.com/onflow/flow-go/pull/5477)
   * Finalizing smart contract changes https://github.com/onflow/flow-core-contracts/pull/411
 * Data Availability
+  * [Enable programs cache on AN](https://github.com/onflow/flow-go/issues/5278) - finish and deploy to devnet
+  * [Debug unusual disk usage on ANs](https://github.com/onflow/flow-go/issues/5549)
   * KROK team - merge remaining Event streaming PRs which are nearly done
     * [SendAndSubscribeTransactionStatuses endpoint implementation for Access Streaming API](https://github.com/onflow/flow-go/pull/5310)
     * [Add standard Access API implementations on Observer](https://github.com/onflow/flow-go/pull/5358)
