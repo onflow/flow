@@ -185,8 +185,9 @@ Objective 2: Calibrate Transaction fees so that they accurately reflect resource
 
 Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
 - KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
-- KR2: Launch Cadence 1.0 on Crescendo Testnet
-- KR3: Launch EVM on Crescendo Testnet
+- KR4: Testnet Upgrade to Crescendo Release
+- KR6: Develop & share with community a disaster recovery plan to address potential issues after migration to Crescendo Release.
+- KR7: Decision on how to deal with contracts that have not been upgraded to Cadence 1.0 by developers.
 Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
 - KR1: Measure execution state growth trends, identify future bottlenecks and prioritize by urgency
 
