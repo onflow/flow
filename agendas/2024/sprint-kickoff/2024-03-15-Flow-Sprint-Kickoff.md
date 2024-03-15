@@ -38,15 +38,15 @@
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 7  |    6    |       0          |       5          |        **18**          |
-| Proposed    | 3  |    1     |       2          |       1          |        **7**          |
+| Drafted     | 7  |    8 (+2)   |       0          |       5          |        **20** (+2)          |
+| Proposed    | 3  |    2 (+1)     |       2          |       1          |        **8** (+1)          |
 | Accepted    | 2  |    1     |       1       |       2          |        **6**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 1  |    19    |       1       |       0          |        **21**          |
-| Released    | 4  |    0     |       2       |       4          |        **10**          |
-| Total       | **17**  |    **27**    |       **7**       |       **12**          |        **63**          |
+| Implemented | 1  |    19    |       2       |       0          |        **22**          |
+| Released    | 4  |    0     |       3 (+1)       |       4          |        **11** (+1)          |
+| Total       | **17**  |    **30** (+3)    |       **9** (+1)       |       **12**          |        **68** (+4)          |
 
-- Overall FLIPs went up by 4 vis-a-vis last month (2 new application FLIP was drafted, while 2 moved from proposed status)
+- Overall FLIPs went up by 4 in the last sprint. 3 new Cadence FLIPs were drafted and proposed; 1 new Governance FLIP was drafted, implemented and released during the sprint.
 - Some FLIPs are still not reflected in the project tracker. **Remember**: FLIP process starts with an issue creation.
 (https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
   
