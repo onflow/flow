@@ -2,14 +2,17 @@
 
  ### Team Wins 🎉
  
- * [CLI release](https://github.com/onflow/flow-cli/releases/tag/v1.12.0-cadence-v1.0.0-preview.9) that enables local contract migration testing to Cadence 1.0 with emulator is going through [last round of testing](https://github.com/onflow/cadence/issues/3098).
- * Great progress on the C1.0 migrations, now passes on full TN state, taking ~4 hours on m1-ultramem-160.
- * C1.0 TN migration environment - successfully started the network from migrated TN state and executed system transaction.
- * Bluesign helping with migration, found 2 optimizations - community power!
- * Completed another Atree optimization that reduces RAM and persistent storage usage on ENs: [Deduplicating Cadence dictionary type info](https://github.com/onflow/atree/issues/358)
- * Cross-VM bridge design changes now locked in and moving ahead with delivery
+* [CLI release](https://github.com/onflow/flow-cli/releases/tag/v1.12.0-cadence-v1.0.0-preview.9) that enables local contract migration testing to Cadence 1.0 with emulator is going through [last round of testing](https://github.com/onflow/cadence/issues/3098).
+* Great progress on the C1.0 migrations, now passes on full TN state, taking ~4 hours on m1-ultramem-160.
+* C1.0 TN migration environment - successfully started the network from migrated TN state and executed system transaction.
+* Bluesign helping with migration, found 2 optimizations - community power!
+* Completed another Atree optimization that reduces RAM and persistent storage usage on ENs: [Deduplicating Cadence dictionary type info](https://github.com/onflow/atree/issues/358)
+* Cross-VM bridge design changes now locked in and moving ahead with delivery
+* Cadence contracts test boilerplate now included in CLI `generate` command
+* CLI updates - Cadence lint command added, New CLI build addressing crypto library changes now supported on master and stable cadence branches, `flow dev` command now starts emulator automatically
+* Documentation - Cadence 1.0 Staging and state migration docs added
 
---- 
+---
 
 ### Mainnet Uptime - Last 14 days (xx/xx/24 to xx/xx/24) \[Vishal]
 
@@ -284,31 +287,51 @@ Cycle Objective(s):
 
 ### **User Experience** \[Greg]
 
-Cycle Objective(s): 
-- Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
-- Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
-- Use the Crescendo Release grow Flow's developer base and network activity
+Cycle Objective(s):
+
+* Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
+* Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
+* Use the Crescendo Release grow Flow's developer base and network activity
 
 **Done last sprint**
 
-* Cross-VM bridge design changes now locked in and moving ahead with delivery
+* flow dev command now starts emulator automatically
+* Flow evm networks configurations added to viem
+* Shipped CI onto flixkit-go to ensure proper testing done on each merge
+* Add latest EVM Contracts to CLI
+* Update Discovery docs with Previenet network
+* [Fix dependency issues for Cadence 1.0](https://github.com/onflow/flow-cli/issues/1371)
+* [Urgent SEO issues fixed flow.com](https://github.com/onflow/docs/issues/593)
+* [EPIC - Flow Contract Migration Manager](https://github.com/onflow/flow-cli/issues/1375)
+* [Add VSCode Test Runner information to Cadence testing docs](https://github.com/onflow/docs/issues/497)
+* [Previewnet Faucet improvements](https://github.com/onflow/faucet/issues/94)
+* [FlowEVM Video Demo](https://github.com/onflow/docs/issues/581)
+* [Generate tests from flow generate contract](https://github.com/onflow/flow-cli/issues/1394)
+* [Add core contract deployment addresses for Previewnet](https://github.com/onflow/docs/issues/569)
+* [Implement WaitServer in flowkit](https://github.com/onflow/flowkit/issues/22)
+* [Expose Cadence 1.0 CLI Install/Usage docs](https://github.com/onflow/docs/issues/660)
+* [Update standards, simplify COA bridging interface](https://github.com/onflow/flow-evm-bridge/pull/14)
+* [Add Migration Guide to all versions of the Cadence Lang docs](https://github.com/onflow/docs/issues/634)
 
 **This sprint**
+**Sprint goal focusing on updating EVM docs, tooling support, and examples for Cadence 1.0**
 
-**Sprint goal focusing on adding docs and tool support for Crescendo network and Cadence 1.0**
-
-- [Add Crescendo network support to FCL Discovery](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=50332654)
-- [Add Crescendo Network to CLI (config, cmds, docs, etc)](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=50297186)
-- [Add/Publish Initial EVM Docs](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51952883)
-- [Docs Revamp v3](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=49327073)
-- [Add C1.0 Rules to Cadence Linter](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51952640)
-- [Update Playground to support Cadence 1.0](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=49844013)
-- [Stable Cadence Installation Workflow](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51951905)
-
+* EVM Docs v2
+* Add viem guide (EVM)
+* Update Access Node Docs
+* Create video to demonstrate local upgrade, staging, and state migration
+* [Add dependencies from Dependency Manager to a deployment account](https://github.com/onflow/flow-cli/issues/1362)
+* [Allow adding alias when adding a contract with Dependency Manager](https://github.com/onflow/flow-cli/issues/1363)
+* [QA full Cadence 1.0 state migration in Emulator](https://github.com/onflow/cadence/issues/3098)
+* [Add Linter and Cadence checker to CLI stage command](https://github.com/onflow/flow-cli/issues/1454)
+* [Review Code Changes for New Token Standards #648](https://github.com/onflow/docs/issues/648)
+* Create Cadence 1.0 Project Upgrade demo repo
+* [New Dev Docs Landing Page](https://github.com/onflow/docs/issues/509)
 
 **On Hold**
 
-- [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
+* [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
+* [Update Playground to support Cadence 1.0](https://github.com/onflow/flow-playground/issues/760)
 
 ---
 
