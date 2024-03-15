@@ -839,11 +839,14 @@ func (m *SubscribeAccountStatusesFromLatestBlockRequest) GetEventEncodingVersion
 type SubscribeAccountStatusesResponse struct {
 	// Block ID of the block containing the events.
 	BlockId []byte `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
-	// Block ID of the block containing the events.
+	// Block height of the block containing the events.
 	BlockHeight uint64 `protobuf:"varint,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
 	// The MessageIndex of the response message.
 	// Used by the client to ensure they have received all messages.
-	MessageIndex         uint64                                     `protobuf:"varint,3,opt,name=messageIndex,proto3" json:"messageIndex,omitempty"`
+	MessageIndex uint64 `protobuf:"varint,3,opt,name=messageIndex,proto3" json:"messageIndex,omitempty"`
+	// The API may return no results which signals a periodic heartbeat. This
+	// allows clients to track which blocks were searched. Client can use this
+	// information to determine which block to start from when reconnecting.
 	Results              []*SubscribeAccountStatusesResponse_Result `protobuf:"bytes,4,rep,name=results,proto3" json:"results,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                   `json:"-"`
 	XXX_unrecognized     []byte                                     `json:"-"`
@@ -907,9 +910,6 @@ type SubscribeAccountStatusesResponse_Result struct {
 	// Unique identifier for the account being streamed
 	Address []byte `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
 	// Events matching the StatusFilter in the request.
-	// The API may return no events which signals a periodic heartbeat. This
-	// allows clients to track which blocks were searched. Client can use this
-	// information to determine which block to start from when reconnecting.
 	Events               []*entities.Event `protobuf:"bytes,2,rep,name=events,proto3" json:"events,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
@@ -958,23 +958,26 @@ func (m *SubscribeAccountStatusesResponse_Result) GetEvents() []*entities.Event 
 }
 
 // StatusesFilter defines the filter to apply to block events.
-// Filters are applied as an OR operation, i.e. any event matching any of the
-// filters is returned. If no filters are provided, all events are returned. If
-// there are any invalid filters, the API will return an InvalidArgument error.
+// Filters match for events with types in the included event_type list, that are
+// related to at least one address from the provided address list. An event who's
+// type matches but address does not is ignored, and vice versa.
+// If no event_types are provided, all account related protocol event types are matched.
+// If no addresses are provided, any address matches.
+// If there are any invalid filters, the API will return an InvalidArgument error.
 type StatusFilter struct {
 	// A list of full event types to include.
 	//
 	// All events exactly matching any of the provided event types will be
 	// returned.
 	//
-	// Event types have 2 formats:
-	//   - Protocol events:
-	//     flow.[event name]
+	// Event types must be protocol events. e.g.
+	//
+	//	flow.[event name]
 	EventType []string `protobuf:"bytes,1,rep,name=event_type,json=eventType,proto3" json:"event_type,omitempty"`
 	// A list of addresses who's events should be included.
 	//
-	// All events emitted by any contract held by any of the provided addresses
-	// will be returned.
+	// All events matching the provided event_types that are related to any of the provided addresses
+	// will be returned. If no addresses are provided, all events matching event_types will be returned.
 	//
 	// Addresses must be Flow account addresses in hex format and valid for the
 	// network the node is connected to. i.e. only a mainnet address is valid for
