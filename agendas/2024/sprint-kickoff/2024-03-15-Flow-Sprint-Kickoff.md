@@ -2,7 +2,8 @@
 
  ### Team Wins 🎉
  
- * Great progress on the C1.0 migration, now passes on full TN state, taking ~4 hours on m1-ultramem-160.
+ * [CLI release](https://github.com/onflow/flow-cli/releases/tag/v1.12.0-cadence-v1.0.0-preview.9) that enables local contract migration testing to Cadence 1.0 with emulator is going through [last round of testing](https://github.com/onflow/cadence/issues/3098).
+ * Great progress on the C1.0 migrations, now passes on full TN state, taking ~4 hours on m1-ultramem-160.
  * C1.0 TN migration environment - successfully started the network from migrated TN state and executed system transaction.
  * Bluesign helping with migration, found 2 optimizations - community power!
  * Completed another Atree optimization that reduces RAM and persistent storage usage on ENs: [Deduplicating Cadence dictionary type info](https://github.com/onflow/atree/issues/358)
@@ -134,15 +135,15 @@ Cadence Execution
     - [Fix integration test](https://github.com/onflow/flow-go/pull/5510)
 
 EVM Gateway productization
-    - [Engine restart logic](https://github.com/onflow/flow-evm-gateway/issues/85)
-    - avoid persisting data on error conditions - [Batch database operations](https://github.com/onflow/flow-evm-gateway/issues/116)
-    - [General improvements and tech-debt](https://github.com/onflow/flow-evm-gateway/pull/121)
+- [Engine restart logic](https://github.com/onflow/flow-evm-gateway/issues/85)
+- avoid persisting data on error conditions - [Batch database operations](https://github.com/onflow/flow-evm-gateway/issues/116)
+- [General improvements and tech-debt](https://github.com/onflow/flow-evm-gateway/pull/121)
 minor fixes:
-    - [Fix logging IDs when numbers](https://github.com/onflow/flow-evm-gateway/pull/151)
-    - [Log bugfix values](https://github.com/onflow/flow-evm-gateway/pull/150)
-    - [Request response value logging](https://github.com/onflow/flow-evm-gateway/pull/149)
-    - [Configuration for logs](https://github.com/onflow/flow-evm-gateway/pull/147)
-    - [Log improvements](https://github.com/onflow/flow-evm-gateway/pull/128)
+  - [Fix logging IDs when numbers](https://github.com/onflow/flow-evm-gateway/pull/151)
+  - [Log bugfix values](https://github.com/onflow/flow-evm-gateway/pull/150)
+  - [Request response value logging](https://github.com/onflow/flow-evm-gateway/pull/149)
+  - [Configuration for logs](https://github.com/onflow/flow-evm-gateway/pull/147)
+  - [Log improvements](https://github.com/onflow/flow-evm-gateway/pull/128)
 
 EVM Core
 - [Provide toHexString and fromHexString for evm address](https://github.com/onflow/flow-go/issues/5459)
@@ -167,6 +168,9 @@ Objective 1, KR4: Testnet Upgrade to Crescendo Release
 
 Objective 4, KR1: Execution node handles restart from spork root block reguardless of how many blocks it is behind
 * Continue refactoring of Ingestion engine to [prevent EN entering crash loop](https://github.com/onflow/flow-go/issues/5298)
+
+Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
+* Continue work on making [Make TPS loader input more flexible](https://github.com/onflow/flow-go/issues/5490) for better analysis and tracking of performance data.
 
 * Start Atree optimization: [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
 
