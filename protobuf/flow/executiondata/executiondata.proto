@@ -63,6 +63,55 @@ service ExecutionDataAPI {
   rpc SubscribeEvents(SubscribeEventsRequest)
       returns (stream SubscribeEventsResponse);
 
+  // SubscribeEventsFromStartBlockID streams events for all blocks starting at the requested
+  // start block id, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
+  //
+  // Events within each block are filtered by the provided EventFilter, and only
+  // those events that match the filter are returned. If no filter is provided,
+  // all events are returned.
+  //
+  // Responses are returned for each block containing at least one event that
+  // matches the filter. Additionally, heatbeat responses
+  // (SubscribeEventsResponse with no events) are returned periodically to allow
+  // clients to track which blocks were searched. Clients can use this
+  // information to determine which block to start from when reconnecting.
+  rpc SubscribeEventsFromStartBlockID(SubscribeEventsFromStartBlockIDRequest)
+      returns (stream SubscribeEventsResponse);
+
+  // SubscribeEventsFromStartHeight streams events for all blocks starting at the requested
+  // start block height, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
+  //
+  // Events within each block are filtered by the provided EventFilter, and only
+  // those events that match the filter are returned. If no filter is provided,
+  // all events are returned.
+  //
+  // Responses are returned for each block containing at least one event that
+  // matches the filter. Additionally, heatbeat responses
+  // (SubscribeEventsResponse with no events) are returned periodically to allow
+  // clients to track which blocks were searched. Clients can use this
+  // information to determine which block to start from when reconnecting.
+  rpc SubscribeEventsFromStartHeight(SubscribeEventsFromStartHeightRequest)
+      returns (stream SubscribeEventsResponse);
+
+  // SubscribeEventsFromLatest streams events for all blocks starting from the latest sealed
+  // block. The stream will remain open and responses are sent for each new block as it becomes available.
+  //
+  // Events within each block are filtered by the provided EventFilter, and only
+  // those events that match the filter are returned. If no filter is provided,
+  // all events are returned.
+  //
+  // Responses are returned for each block containing at least one event that
+  // matches the filter. Additionally, heatbeat responses
+  // (SubscribeEventsResponse with no events) are returned periodically to allow
+  // clients to track which blocks were searched. Clients can use this
+  // information to determine which block to start from when reconnecting.
+  rpc SubscribeEventsFromLatest(SubscribeEventsFromLatestRequest)
+      returns (stream SubscribeEventsResponse);    
+
   // GetRegisterValues gets the values for the given register IDs as of the given block height
   rpc GetRegisterValues(GetRegisterValuesRequest)
       returns (GetRegisterValuesResponse);
@@ -153,6 +202,81 @@ message SubscribeEventsRequest {
   // 2. JSON-CDC
   entities.EventEncodingVersion event_encoding_version = 5;
 
+}
+
+// The request for SubscribeEventsFromStartBlockID
+message SubscribeEventsFromStartBlockIDRequest {
+  // Block ID of the first block to search for events.
+  bytes start_block_id = 1;
+
+  // Filter to apply to events for each block searched.
+  // If no filter is provided, all events are returned.
+  EventFilter filter = 2;
+
+  // Interval in block heights at which the server should return a heartbeat
+  // message to the client. The heartbeat is a normal SubscribeEventsResponse
+  // with no events, and allows clients to track which blocks were searched.
+  // Clients can use this information to determine which block to start from
+  // when reconnecting.
+  //
+  // The interval is calculated from the last response returned, which could be
+  // either another heartbeat or a response containing events.
+  uint64 heartbeat_interval = 3;
+
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 4;
+}
+
+// The request for SubscribeEventsFromStartHeight
+message SubscribeEventsFromStartHeightRequest {
+  // Block height of the first block to search for events.
+  uint64 start_block_height = 1;
+
+  // Filter to apply to events for each block searched.
+  // If no filter is provided, all events are returned.
+  EventFilter filter = 2;
+
+  // Interval in block heights at which the server should return a heartbeat
+  // message to the client. The heartbeat is a normal SubscribeEventsResponse
+  // with no events, and allows clients to track which blocks were searched.
+  // Clients can use this information to determine which block to start from
+  // when reconnecting.
+  //
+  // The interval is calculated from the last response returned, which could be
+  // either another heartbeat or a response containing events.
+  uint64 heartbeat_interval = 3;
+
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 4;
+}
+
+// The request for SubscribeEventsFromLatest
+message SubscribeEventsFromLatestRequest {
+  // Filter to apply to events for each block searched.
+  // If no filter is provided, all events are returned.
+  EventFilter filter = 1;
+
+  // Interval in block heights at which the server should return a heartbeat
+  // message to the client. The heartbeat is a normal SubscribeEventsResponse
+  // with no events, and allows clients to track which blocks were searched.
+  // Clients can use this information to determine which block to start from
+  // when reconnecting.
+  //
+  // The interval is calculated from the last response returned, which could be
+  // either another heartbeat or a response containing events.
+  uint64 heartbeat_interval = 2;
+
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 3;
 }
 
 // The response for SubscribeEvents
