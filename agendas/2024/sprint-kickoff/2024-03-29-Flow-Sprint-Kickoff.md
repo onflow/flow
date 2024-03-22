@@ -1,0 +1,320 @@
+# Overview
+
+ ### Team Wins 🎉
+ 
+*
+
+---
+
+### Mainnet Uptime - Last 7 days (3/9/24 to 3/15/24) \[Vishal]
+
+|                         | Target | Current Score | Error budget used |
+|:------------------------|:------:|:-------------:|:-----------------:|
+| Collection Finalization | 99.9%   |    100%       |       0%         |
+| Block Finalization      | 99.9%   |    100%       |       0%         |
+| Transaction Execution   | 99.9%   |    100%       |       0%         |
+| Block Sealing           | 99.9%   |    100%       |       0%         |
+| Access API Liveness     | 99.9%   |    99.92%     |       79.0       |
+
+[SLO dashboards](https://flowfoundation.grafana.net/d/hgW3l-m4k/slo-dashboard?orgId=1&from=now-2w&to=now) are now live again on FF Grafana
+
+[YTD SLA: 100%](https://app.metrika.co/flow/dashboard/slas?tr=YTD)
+
+## Incidents
+N/A
+
+### Key Release Dates & Breaking Changes
+
+- Next Mainnet/Testnet network upgrade (spork): TBD
+
+---
+
+### FLIPs Tracker \[Kshitij]
+
+|                         | Application | Cadence | Governance | Protocol | Total |  
+|:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
+| Drafted     | 7  |    8 (+2)   |       0          |       5          |        **20** (+2)          |
+| Proposed    | 3  |    2 (+1)     |       2          |       1          |        **8** (+1)          |
+| Accepted    | 2  |    1     |       1       |       2          |        **6**          |
+| Rejected    | 0  |    0     |       1       |       0          |        **1**          |
+| Implemented | 1  |    19    |       2       |       0          |        **22**          |
+| Released    | 4  |    0     |       3 (+1)       |       4          |        **11** (+1)          |
+| Total       | **17**  |    **30** (+3)    |       **9** (+1)       |       **12**          |        **68** (+4)          |
+
+- Overall FLIPs went up by 4 in the last sprint. 3 new Cadence FLIPs were drafted and proposed; 1 new Governance FLIP was drafted, implemented and released during the sprint.
+- Some FLIPs are still not reflected in the project tracker. **Remember**: FLIP process starts with an issue creation.
+(https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
+  
+---
+
+
+# Working Group Updates
+
+### **Cadence and Virtual Machine** \[Jan]
+Cycle Objective(s):
+
+1) Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
+2) Calibrate Transaction fees so that they accurately reflect resource usage during execution and deploy as part of Crescendo to avoid future disruption.
+3) Analyze execution runtime trends and risks to plan next set of scalability OKRs.
+
+* Stretch-goals:
+4) Expand testing capability of storehouse so that we can validate execution correctness and benchmark performance on Mainnet data
+5) Design a new Trie to improve performance of update operation, reduce memory usage and size of proofs and to support more flexible proof queries.
+6) Enable Concurrent Execution on one EN on Mainnet to validate correctness of the implementation (Detect execution forks)
+7) Improve execution performance to mitigate the impact of adding metadata to token standards
+
+**Done last sprint**
+
+Cadence 1.0 migration testing with emulator
+
+Cadence 1.0 TN migration environment
+
+Cadence 1.0 features & improvements
+
+Cadence 1.0 dependency updates
+
+Cadence Execution
+
+EVM Gateway productization
+
+EVM Core
+
+
+**This sprint**
+
+Objective 1, KR 1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
+* [Emulator release is ready](https://github.com/onflow/flow-cli/releases/tag/v1.12.0-cadence-v1.0.0-preview.9), going through last [testing](https://github.com/onflow/cadence/issues/3098) before we announce it.
+* Testnet migration completed, moving on to adding [Atree register inlining](https://github.com/onflow/cadence/pull/3048) migration and validating migrated state on the TN migration environment.
+
+Objective 1, KR4: Testnet Upgrade to Crescendo Release
+* Continue with [EVM Gateway development](https://github.com/onflow/flow-evm-gateway/issues/126) and [EVM Core development](https://github.com/onflow/flow-go/issues/5536) for production readiness.
+
+Objective 4, KR1: Execution node handles restart from spork root block reguardless of how many blocks it is behind
+* Continue refactoring of Ingestion engine to [prevent EN entering crash loop](https://github.com/onflow/flow-go/issues/5298)
+
+Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
+* Continue work on making [Make TPS loader input more flexible](https://github.com/onflow/flow-go/issues/5490) for better analysis and tracking of performance data.
+
+* Start Atree optimization: [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
+
+**On Hold**
+
+Objective 2: Calibrate Transaction fees so that they accurately reflect resource usage during execution and deploy as part of Crescendo to avoid future disruption
+- KR1: Update weights for the execution operations on TN and MN
+  - [Execution effort recalibration - data collection](https://github.com/onflow/flow-go/issues/5026)
+
+
+**Active Epics**
+
+Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
+- KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
+- KR4: Testnet Upgrade to Crescendo Release
+- KR6: Develop & share with community a disaster recovery plan to address potential issues after migration to Crescendo Release.
+- KR7: Decision on how to deal with contracts that have not been upgraded to Cadence 1.0 by developers.
+Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
+- KR1: Measure execution state growth trends, identify future bottlenecks and prioritize by urgency
+
+---
+
+### **Core Protocol** \[Jerome]
+Cycle Objective(s): 
+
+* Translate crypto performance improvements to consensus block rate increase
+* Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node
+* Reduce CPU usage on Execution node by 30%
+* Continue design and implementation of Sporkless Epoch Fallback Recovery solution
+
+**Done last sprint**
+
+* 
+
+**This sprint**
+
+* EFM Recovery
+  * Merge KV store state machine PR
+  * [Integrate state machine with the higher level logic](https://github.com/onflow/flow-go/issues/5319)
+  * [Integrating KV Store state machine into upgrade integration tests](extending https://github.com/onflow/flow-go/pull/5477)
+  * [Finalizing smart contract changes](https://github.com/onflow/flow-core-contracts/pull/411)
+  * [Complete EFM data recovery](https://github.com/dapperlabs/flow-go/issues/6957)
+  * Wrap up reading and knowledge ramp up for Khalil
+  * [Start EFM recovery transaction](https://github.com/dapperlabs/flow-go/issues/6956)
+* Data Availability
+  * [Enable programs cache on AN](https://github.com/onflow/flow-go/issues/5278) - finish and deploy to devnet
+  * [Debug unusual disk usage on ANs](https://github.com/onflow/flow-go/issues/5549)
+  * KROK team - merge remaining Event streaming PRs which are nearly done
+    * [SendAndSubscribeTransactionStatuses endpoint implementation for Access Streaming API](https://github.com/onflow/flow-go/pull/5310)
+    * [Add standard Access API implementations on Observer](https://github.com/onflow/flow-go/pull/5358)
+    * [Benchmark testing and analysis of execution data indexing on Observers](https://github.com/onflow/flow-go/issues/4849)
+* Crypto
+  * New crypto lib
+    * Continue following up with ArtBlocks and make sure their node work
+    * [Reproducing CPU issue on similar CPUs from gcloud](https://github.com/onflow/flow-go/pull/5471)
+  * Randomness-on chain contract: get back to the contract fix  
+
+**On Hold**
+* Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
+* Implement BFT mitigations to enable 20 permissionless ANs
+
+**Active Epics**
+
+- Reinforcing Flow’s commitment to full protocol autonomy and scalability
+- Improve network performance
+- Improve network availability 
+- Simplify community contributions to core protocol and maintainability
+- Improve network reliability and data availability for dApp developers
+- Data-driven Prioritization and Scaling Engineering
+
+---
+
+### **DeFi** \[Jerome]
+
+Cycle Objective(s): 
+- Resolving Circle's existing engineering improvements for USDC on Flow
+- DEX Prep - IncrementFi
+- Bridge Prep - Axelar
+
+**Done last sprint**
+
+* 
+
+**This sprint**
+
+* Start milestones #5 & #6 of JVM SDK update to update example repo, then analyze scope of work for subsequent grant 
+
+**On Hold**
+- Axelar release waiting confirmation of new timeline, no engineering ongoing
+
+**Active Epics**
+
+- Establish Defi/Liquidity infrastructure for Cadence 1.0 update
+- Ensure Flow has best-in-class on- and off-ramps for USDC liquidity across DeFi ecosystem
+- Expand Flow DeFi ecosystem primitives and protocols
+
+---
+
+### **User Experience** \[Greg]
+
+Cycle Objective(s):
+
+* Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
+* Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
+* Use the Crescendo Release grow Flow's developer base and network activity
+
+**Done last sprint**
+
+* 
+
+**This sprint**
+**Sprint goal focusing on updating EVM docs, tooling support, and examples for Cadence 1.0**
+
+* EVM Docs v2
+* Add viem guide (EVM)
+* Update Access Node Docs
+* Create video to demonstrate local upgrade, staging, and state migration
+* [Add dependencies from Dependency Manager to a deployment account](https://github.com/onflow/flow-cli/issues/1362)
+* [Allow adding alias when adding a contract with Dependency Manager](https://github.com/onflow/flow-cli/issues/1363)
+* [QA full Cadence 1.0 state migration in Emulator](https://github.com/onflow/cadence/issues/3098)
+* [Add Linter and Cadence checker to CLI stage command](https://github.com/onflow/flow-cli/issues/1454)
+* [Review Code Changes for New Token Standards #648](https://github.com/onflow/docs/issues/648)
+* Create Cadence 1.0 Project Upgrade demo repo
+* [New Dev Docs Landing Page](https://github.com/onflow/docs/issues/509)
+
+**On Hold**
+
+* [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
+* [Update Playground to support Cadence 1.0](https://github.com/onflow/flow-playground/issues/760)
+
+---
+
+### **Wallet** \[Jeff]
+
+Cycle Objective(s): 
+
+- Ensure there exists a wallet ecosystem supports FlowEVM
+  - Release version 2.2 of Flow Wallet which supports FlowEVM
+    - Support Authn / Authz / User Sign with Web3.js and WalletConnect
+    - Support FT and NFT management cross VMs
+    - FlowEVM onboarding and COA creation
+  - Ensure commitments from key EVM wallet providers to support FlowEVM
+    - Secure FlowEVM as an option in the network selector list for MetaMask.
+    - Reach out to Coinbase wallet for a commitment to support FlowEVM
+  - Ensure commitments from key EVM wallet providers to support FlowEVM
+    - Reach out to Privy for a commitment to support FlowEVM
+    - Reach out to Bastion for a commitment to support FlowEVM
+    - Ensure awareness for existing Cadence aware wallet (aside from Flow Wallet) to support FlowEVM
+  - Provide a design document outlining the steps existing Cadence aware wallets can take to support FlowEVM.
+    - Reach out to Blocto for a commitment to support FlowEVM
+    - Reach out to Shadow wallet for a commitment to support FlowEVM
+    - Reach out to Magic for a commitment to support FlowEVM
+
+- Promote safe, human readable transaction authorization on Flow
+  - Secure a partnership with Blockaid to integrate their transaction simulation and security platform with FlowEVM.
+  - Ensure the existing MetaMask Blockaid integration is compatible with FlowEVM.
+
+- Modernize and improve FCL Discovery
+  - Create a PRD and associated community bounty/grant for UI/UX improvements and analytics additions to FCL Discovery.
+
+**Done last sprint**
+
+* 
+
+**This sprint**
+
+- CTD cadence transactions / scripts for Cadence 1.0
+- COA integration (including Web3.js integration with COA)
+- VM Bridge integration, meeting scheduled for Monday.
+- CTD: Outreach with Coinbase Wallet, MetaMask, Shadow Wallet and Blocto
+
+**On Hold**
+
+- N/A
+
+**Active Epics**
+
+- TBD
+
+---
+
+### **Infra - JP**
+Cycle Objective(s): 
+- Finish GCP project migration to the Flow Foundation org
+
+**Done last sprint**
+
+*
+
+**Goal of Sprint is to prepare for GCP migration to FF account** 
+**This Sprint**
+- Finish migrating all GCP projects and shift billing accounts for these projects
+- Enable FF groups in the GCP projects for IAM shift
+- Evaluate best path forward for Terraform management
+- Create plan for CloudFlare account migration
+- Continue suppporting migration network initiative
+- Continue supporting Cloud Run migration initiative
+
+---
+
+### **Governance and Tokenomics** \[Kshitij]
+Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
+
+**Done last sprint**
+
+*
+
+**This sprint**
+
+- Publish forum post detailing the computation limit, gas to compute conversion, and the transaction fee increase
+- EIP 4844 vs Flow analysis - create self explanatory publicly available spreadsheets, write a blog post
+- Partner outreach regarding the upcoming transaction fee increase
+- Model inflation reduction via two methods - (1) a planned reduction in reward rate over time like sol, and (2) a capped reward number that reduces inflation over time when the cap hits in future
+- Finalize cresendo related governance and tokenomics plan
+- Consensus node rebalancing exercise to maintain decentralization
+
+**On Hold**
+
+- N/A
+
+
+**Active Epics**
+
+- N/A
