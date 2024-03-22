@@ -65,19 +65,33 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-Cadence 1.0 migration testing with emulator
-
-Cadence 1.0 TN migration environment
-
-Cadence 1.0 features & improvements
+Cadence 1.0 migration testing with emulator & TN migration environment
+- [Make contract update validation thread safe](https://github.com/onflow/flow-go/issues/5565)
+- [Improve cadence migrations](https://github.com/onflow/flow-go/issues/5564)
+- [Relax interface conformance changes in contract update validator](https://github.com/onflow/cadence/pull/3184)
+- [Fix import resolving during staged contract updates](https://github.com/onflow/flow-go/issues/5551)
 
 Cadence 1.0 dependency updates
+- CLI: [1](https://github.com/onflow/flow-cli/issues/1470), [2](https://github.com/onflow/flow-cli/issues/1462)
+- EVM Gateway: [1](https://github.com/onflow/flow-evm-gateway/issues/175), [2](https://github.com/onflow/flow-evm-gateway/issues/165)
+- flixkit-go: [1](https://github.com/onflow/flixkit-go/issues/52), [2](https://github.com/onflow/flixkit-go/issues/51)
+- cadence-tools: [1](https://github.com/onflow/cadence-tools/issues/323), [2](https://github.com/onflow/cadence-tools/issues/322), [3](https://github.com/onflow/cadence-tools/issues/320), [4](https://github.com/onflow/cadence-tools/issues/318), [5](https://github.com/onflow/cadence-tools/issues/316)
+- flowkit: [1](https://github.com/onflow/flowkit/issues/32), [2](https://github.com/onflow/flowkit/issues/31), [3](https://github.com/onflow/flowkit/issues/30)
+- emulator: [1](https://github.com/onflow/flow-emulator/issues/622), [2](https://github.com/onflow/flow-emulator/issues/621), [3](https://github.com/onflow/flow-emulator/issues/618)
+- flow-go-sdk: [1](https://github.com/onflow/flow-go-sdk/issues/610), [2](https://github.com/onflow/flow-go-sdk/issues/609)
+- flow-go: [1](https://github.com/onflow/flow-go/issues/5555)
+
+Cadence 1.0 features & improvements
 
 Cadence Execution
 
 EVM Gateway productization
 
 EVM Core
+- [Populate receiptRoot in the block](https://github.com/onflow/flow-go/issues/5509)
+- [Add flow token bridge events](https://github.com/onflow/flow-go/issues/5537)
+- [Fix the possibility of concurrent Precompile setup calls](https://github.com/onflow/flow-go/issues/5512)
+- Go-ethereum: [Update internal package references](https://github.com/onflow/go-ethereum/pull/5)
 
 
 **This sprint**
