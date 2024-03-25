@@ -295,6 +295,9 @@ message SubscribeEventsResponse {
 
   // Timestamp from the block containing the events.
   google.protobuf.Timestamp block_timestamp = 4;
+
+  // The message index of the response message. Used by the client to ensure they received all messages. Starts from "0".
+  uint64 message_index = 5;
 }
 
 // EventFilter defines the filter to apply to block events.
