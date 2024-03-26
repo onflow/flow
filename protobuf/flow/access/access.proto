@@ -660,16 +660,8 @@ message SendAndSubscribeTransactionStatusesRequest {
 
 // Response message for transaction status changes.
 message SendAndSubscribeTransactionStatusesResponse {
-    // The ID of the tracked transaction.
-    bytes id = 1;
-    // The status of the tracked transaction
-    // Possible transaction statuses are:
-    // - TransactionStatusPending
-    // - TransactionStatusFinalized
-    // - TransactionStatusExecuted
-    // - TransactionStatusSealed
-    // - `TransactionStatusExpired
-    entities.TransactionStatus status = 2;
+    // Transaction result of the tracked transaction
+    TransactionResultResponse transaction_results = 1;
     // The message index of the response message. Used by the client to ensure they received all messages. Starts from "0".
-    uint64 message_index = 3;
+    uint64 message_index = 2;
 }
