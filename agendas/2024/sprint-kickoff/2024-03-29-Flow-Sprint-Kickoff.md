@@ -236,7 +236,10 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* 
+* Blocto, Metapier, Celer have not started upgrading to C1.0, encouraging them to start asap. IncrementFi started but blocked on merging FT Standard
+* Axelar is set to deploy on EVM
+* Circle update contract and USDC
+* IncrementFi lending, borrowing and staking multisig
 
 **This sprint**
 
