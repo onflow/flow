@@ -66,6 +66,15 @@ Cycle Objective(s):
 **Done last sprint**
 
 Cadence 1.0 migration testing with emulator & TN migration environment
+- [State migration fails in some cases](https://github.com/onflow/cadence/issues/3192)
+    - [Handle unparameterized Capability static types](https://github.com/onflow/cadence/pull/3196)
+- [Make custom contract update rules mandatory](https://github.com/onflow/cadence/issues/3187)
+- Fix for the Migration environment using tons of compute after migration to C1.0
+    - [Don't copy dictionary in getEpochMetadata](https://github.com/onflow/flow-core-contracts/pull/413)
+    - [Update Core Contracts](https://github.com/onflow/flow-go/pull/5579)
+- [Make ExampleNFT compatible for contract update](https://github.com/onflow/flow-nft/pull/205)
+- [Optimise merge registers for migrations](https://github.com/onflow/flow-go/pull/5522)
+- new tool: [Storage Explorer](https://github.com/onflow/cadence/pull/3147)
 - [Make contract update validation thread safe](https://github.com/onflow/flow-go/issues/5565)
 - [Improve cadence migrations](https://github.com/onflow/flow-go/issues/5564)
 - [Relax interface conformance changes in contract update validator](https://github.com/onflow/cadence/pull/3184)
@@ -82,6 +91,8 @@ Cadence 1.0 dependency updates
 - flow-go: [1](https://github.com/onflow/flow-go/issues/5555)
 
 Cadence 1.0 features & improvements
+- bugfix: [Crasher when converting integer to opional address](https://github.com/onflow/cadence/issues/3194)
+- Docs: [Improve development documentation](https://github.com/onflow/cadence/pull/3189)
 
 Cadence Execution
 
