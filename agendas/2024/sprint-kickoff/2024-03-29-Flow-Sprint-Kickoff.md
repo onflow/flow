@@ -156,7 +156,7 @@ Objective 3: Analyze execution runtime trends and risks to plan next set of scal
 
 ---
 
-### **Core Protocol** \[Jerome]
+### **Core Protocol** \[Yurii]
 Cycle Objective(s): 
 
 * Translate crypto performance improvements to consensus block rate increase
@@ -164,32 +164,53 @@ Cycle Objective(s):
 * Reduce CPU usage on Execution node by 30%
 * Continue design and implementation of Sporkless Epoch Fallback Recovery solution
 
-**Done last sprint**
+**Significant Progress Last Sprint:**
 
-* 
+* <ins>Zero-downtime Upgrades of Node Software:</ins>
+  - Integrated Key-Value Store into Dynamic Protocol State and added framework for independent state machines to update values in Key-Value Store ([PR #5513](https://github.com/onflow/flow-go/pull/5513) merged)
+  - [proof of concept] used Key-Value in Dynamic Protocol State for upgrading protocol; 
+  
+    confirmed with tests on prototype code ([draft PR #5477](https://github.com/onflow/flow-go/pull/5477)): 
+    - upgrading Protocol at a coordinated view without downtime works 
+    - Nodes that don't support new version yet will halt at specified view (tested on prototype code)
+
+  - large refactoring for cleanup (ongoing) 
+  - Smart contract to coordinate protocol upgrade ([PR #411](https://github.com/onflow/flow-core-contracts/pull/411) in progress)
+
+
+* <ins>EFM Recovery</ins>
+  * Khalil onboarded
+  * Tooling to generate data for EFM recovery ([PR #5576](https://github.com/onflow/flow-go/pull/5576) in progress)
+
+
+* <ins>Cryptography</ins>
+  - Randomness-on chain contract: aligning on solution + implemented proposal + implemented tests ([PR #416](https://github.com/onflow/flow-core-contracts/pull/416) in progress)
+  - New cryptography stack: 
+    - further optimization and build docs ([PR #5](https://github.com/onflow/crypto/pull/5) merged)
+    - investigate root cause of CPU-compatability issue that `Figment` encountered (ongoing)
+
+
+* <ins>Consensus speedup:</ins>
+  - completed analysis ([notion](https://www.notion.so/flowfoundation/Cruise-Control-headroom-for-speedups-46dc17e07ae14462b03341e4432a907d?pvs=4))
 
 **This sprint**
 
-* EFM Recovery
-  * Merge KV store state machine PR
-  * [Integrate state machine with the higher level logic](https://github.com/onflow/flow-go/issues/5319)
-  * [Integrating KV Store state machine into upgrade integration tests](extending https://github.com/onflow/flow-go/pull/5477)
-  * [Finalizing smart contract changes](https://github.com/onflow/flow-core-contracts/pull/411)
-  * [Complete EFM data recovery](https://github.com/dapperlabs/flow-go/issues/6957)
-  * Wrap up reading and knowledge ramp up for Khalil
-  * [Start EFM recovery transaction](https://github.com/dapperlabs/flow-go/issues/6956)
-* Data Availability
-  * [Enable programs cache on AN](https://github.com/onflow/flow-go/issues/5278) - finish and deploy to devnet
-  * [Debug unusual disk usage on ANs](https://github.com/onflow/flow-go/issues/5549)
-  * KROK team - merge remaining Event streaming PRs which are nearly done
-    * [SendAndSubscribeTransactionStatuses endpoint implementation for Access Streaming API](https://github.com/onflow/flow-go/pull/5310)
-    * [Add standard Access API implementations on Observer](https://github.com/onflow/flow-go/pull/5358)
-    * [Benchmark testing and analysis of execution data indexing on Observers](https://github.com/onflow/flow-go/issues/4849)
-* Crypto
-  * New crypto lib
-    * Continue following up with ArtBlocks and make sure their node work
-    * [Reproducing CPU issue on similar CPUs from gcloud](https://github.com/onflow/flow-go/pull/5471)
-  * Randomness-on chain contract: get back to the contract fix  
+* <ins>Zero-downtime Upgrades of Node Software:</ins>
+  - Cleanup and fix tests (large!)
+  - Finish smart contract to coordinate protocol upgrade ([PR #411](https://github.com/onflow/flow-core-contracts/pull/411))
+  - Continue on integration tests ([draft PR #5477](https://github.com/onflow/flow-go/pull/5477))
+
+
+* <ins>EFM Recovery</ins>
+  - Generate data for EFM recovery (complete [PR #5576](https://github.com/onflow/flow-go/pull/5576) and potential follow-up)
+  - Start on [Governance Transaction to initiate EFM recovery](https://github.com/dapperlabs/flow-go/issues/6956)
+
+
+* <ins>Cryptography</ins>
+   - Randomness-on chain contract: finish the implementation and update the contracts onchain
+   - new cryptography stack: 
+      - continue on CPU-compatability issue
+      - extra build docs in all repos
 
 **On Hold**
 * Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
