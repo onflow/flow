@@ -1,8 +1,22 @@
 # Overview
 
- ### Team Wins 🎉
+
+### Team Wins 🎉
+
+- Emulator state migration of NFT example to Cadence 1.0 finally successful!
+- 
+
+### General updates
+
+- Starting to move towards Grafana Incident Management, as well as a split EU/NA schedule during the work week. Feel free to take a look at the current setup [here](https://flowfoundation.grafana.net/a/grafana-oncall-app/schedules/S8X18TEALX93Z?p=1)
+- Open to discussion, how the weekends should be handled (EU/NA split, or standard rotation)
+- Reminder for US folks to submit their 83(b) forms before tomorrow
+
+### OOO
+- [Full List](https://www.notion.so/flowfoundation/de89aa4e79364216a665888335a1cdee?v=4de18b26f60d4bae8f62724dddcce260)
+- Starting Next Week:
+  - G - April 1st to April 15th
  
-*
 
 ---
 
@@ -26,6 +40,7 @@ N/A
 ### Key Release Dates & Breaking Changes
 
 - Next Mainnet/Testnet network upgrade (spork): TBD
+- First Testnet Migration test run: April 3rd
 
 ---
 
