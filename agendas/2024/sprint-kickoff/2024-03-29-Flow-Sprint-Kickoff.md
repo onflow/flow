@@ -186,8 +186,8 @@ Cycle Objective(s):
 * <ins>Cryptography</ins>
   - Randomness-on chain contract: aligning on solution + implemented proposal + implemented tests ([PR #416](https://github.com/onflow/flow-core-contracts/pull/416) in progress)
   - New cryptography stack: 
-    - further optimization and build docs ([PR #5](https://github.com/onflow/crypto/pull/5) merged)
-    - investigate root cause of CPU-compatability issue that `Figment` encountered (ongoing)
+    - fix CPU-compatability issue: `Artblocks` are unblocked, root cause and long-term solutions are still ongoing (requires `Figment`'s help)
+    - further optimization and docs clarifications ([PR #5](https://github.com/onflow/crypto/pull/5) merged)
 
 
 * <ins>Consensus speedup:</ins>
