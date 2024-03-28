@@ -37,12 +37,14 @@
 ## Incidents
 
 ### Mainnet
-1. March 25th 5:14 AM Pacific: EN1 memory leak observed by JP and mitigated by a restart ([slack thread](https://dapperlabs.slack.com/archives/C014WBGR1J9/p1711323881744749)) - Root cause: https://github.com/onflow/flow-go/issues/5150
-2. March 25th 10:45 PM Paficic: AN9 went OOM ([slack thread](https://dapperlabs.slack.com/archives/CUU2KQL4A/p1711386932706579)) - Same root cause as 1.
-3. QN Public EU-based ANs went offline for 10 mins. ([RCA](https://discord.com/channels/613813861610684416/1162086721471647874/1223025960769818799]))
+1. March 24th 4:45 PM Pacific: EN1 memory leak observed by JP and mitigated by a restart ([slack thread](https://dapperlabs.slack.com/archives/C014WBGR1J9/p1711323881744749)) - Root cause: https://github.com/onflow/flow-go/issues/5150
+2. March 25th 10:15 AM Pacific: AN9 went OOM ([slack thread](https://dapperlabs.slack.com/archives/CUU2KQL4A/p1711386932706579)) - Same root cause as 1.
+3. March 25th 7:50 AM Pacific: QN Public EU-based ANs went offline for 10 minutes. ([RCA](https://discord.com/channels/613813861610684416/1162086721471647874/1223025960769818799]))
+4. March 27th 0:00 AM Pacific: TTF spiked on QN public Access nodes. Root cause is yet to be determined.
 
 ### Testnet
-1. 
+1. March 20th 11:12 AM: Sealing halt ([slack thread](https://dapperlabs.slack.com/archives/C015ABLUV41/p1710914042806219)) - Root cause: EN3 had failed to start after a move/restart.
+2. March 28th 11:28 AM: EN1 deleted ([slack thread](https://dapperlabs.slack.com/archives/C015ABLUV41/p1711650523244509) - Root cause: human error.
 
 ### Key Release Dates & Breaking Changes
 
