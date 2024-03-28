@@ -351,19 +351,45 @@ Cycle Objective(s):
 ### **Infra - JP**
 Cycle Objective(s): 
 - Finish GCP project migration to the Flow Foundation org
+- Start planning CloudFlare migration
+- Finish DevEx migration to Cloud Run
 
 **Done last sprint**
 
-*
+**CloudFlare Migration**
+- [Develop load balancer solution for migrating existing ingresses](https://github.com/dapperlabs/terraform/pull/4187)
+
+**DevEx Migration
+- [Update module to support load balancer services and apply to staging service](https://github.com/dapperlabs/flow-devex-infrastructure/pull/138)
+
+**GCP Project Migration**
+- Migrate project containing Mainnet nodes to FF org
+- Validate IAM access to nodes following migration 
+
+**Grafana OnCall migration**
+- Created Grafana teams for Grafana OnCall
+- Created Esalatiton policies for Grafana OnCall
+- Created on-call schedules for Grafana OnCall
+- Designed split schedules for protocol team to enable flexible coverage
+
+**Node Hosting**
+- Pruned chunk data packs on Devnet ENs to reclaim disk space
+- Executed dynamic bootstrap on Devnet EN3 to get node caught up 
+- Pruned Devnet node logs to clean up boot disks 
+- [Increase Devnet LN disk sizes](https://github.com/dapperlabs/terraform/pull/4189)
+- [Update SN disk sizes for Mainnet](https://github.com/dapperlabs/terraform/pull/4189)
+
+**Support**
+- Generate credentials for QN
+- Generate new KMS keys for new accounts
+- Support migration network setup
 
 **Goal of Sprint is to prepare for GCP migration to FF account** 
 **This Sprint**
 - Finish migrating all GCP projects and shift billing accounts for these projects
 - Enable FF groups in the GCP projects for IAM shift
-- Evaluate best path forward for Terraform management
-- Create plan for CloudFlare account migration
-- Continue suppporting migration network initiative
-- Continue supporting Cloud Run migration initiative
+- Start eveluating & planning CloudFlare migration
+- Finish migration to Cloud Run & deprecate clusters
 
 ---
 
