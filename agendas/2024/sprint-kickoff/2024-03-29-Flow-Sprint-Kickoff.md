@@ -156,7 +156,7 @@ Objective 3: Analyze execution runtime trends and risks to plan next set of scal
 
 ---
 
-### **Core Protocol** \[Yurii]
+### **Core Protocol** \[Yurii & Peter]
 Cycle Objective(s): 
 
 * Translate crypto performance improvements to consensus block rate increase
