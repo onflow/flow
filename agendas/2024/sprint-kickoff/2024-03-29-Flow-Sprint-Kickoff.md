@@ -35,11 +35,18 @@
 [YTD SLA: 100%](https://app.metrika.co/flow/dashboard/slas?tr=YTD)
 
 ## Incidents
-N/A
+
+### Mainnet
+1. March 25th 5:14 AM Pacific: EN1 memory leak observed by JP and mitigated by a restart ([slack thread](https://dapperlabs.slack.com/archives/C014WBGR1J9/p1711323881744749)) - Root cause: https://github.com/onflow/flow-go/issues/5150
+2. March 25th 10:45 PM Paficic: AN9 went OOM ([slack thread](https://dapperlabs.slack.com/archives/CUU2KQL4A/p1711386932706579)) - Same root cause as 1.
+3. QN Public EU-based ANs went offline for 10 mins. ([RCA](https://discord.com/channels/613813861610684416/1162086721471647874/1223025960769818799]))
+
+### Testnet
+1. 
 
 ### Key Release Dates & Breaking Changes
 
-- Next Mainnet/Testnet network upgrade (spork): TBD
+- Next Mainnet/Testnet network upgrade (spork): ~End of April/ early May.
 - First Testnet Migration test run: April 3rd
 
 ---
