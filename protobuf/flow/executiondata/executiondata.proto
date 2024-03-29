@@ -38,6 +38,9 @@ service ExecutionDataAPI {
   rpc SubscribeExecutionData(SubscribeExecutionDataRequest)
       returns (stream SubscribeExecutionDataResponse);
 
+  // Warning: this function is deprecated and will be removed in a future version.
+  // Use SubscribeEventsFromStartBlockID, SubscribeEventsFromStartHeight or SubscribeEventsFromLatest.
+  //
   // SubscribeEvents streams events for all blocks starting at the requested
   // start block, up until the latest available block. Once the latest is
   // reached, the stream will remain open and responses are sent for each new
@@ -77,6 +80,12 @@ service ExecutionDataAPI {
   // (SubscribeEventsResponse with no events) are returned periodically to allow
   // clients to track which blocks were searched. Clients can use this
   // information to determine which block to start from when reconnecting.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid block ID or EventFilter.
+  // - NotFound is returned if the start block id or execution data are not
+  // currently available on the node. This may happen if the block was from a previous spork, or if the
+  // block has yet not been received.
   rpc SubscribeEventsFromStartBlockID(SubscribeEventsFromStartBlockIDRequest)
       returns (stream SubscribeEventsResponse);
 
@@ -94,6 +103,12 @@ service ExecutionDataAPI {
   // (SubscribeEventsResponse with no events) are returned periodically to allow
   // clients to track which blocks were searched. Clients can use this
   // information to determine which block to start from when reconnecting.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid EventFilter.
+  // - NotFound is returned if the start block height or execution data are not
+  // currently available on the node. This may happen if the block was from a previous spork, or if the
+  // block has yet not been received.
   rpc SubscribeEventsFromStartHeight(SubscribeEventsFromStartHeightRequest)
       returns (stream SubscribeEventsResponse);
 
@@ -109,6 +124,9 @@ service ExecutionDataAPI {
   // (SubscribeEventsResponse with no events) are returned periodically to allow
   // clients to track which blocks were searched. Clients can use this
   // information to determine which block to start from when reconnecting.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid EventFilter.
   rpc SubscribeEventsFromLatest(SubscribeEventsFromLatestRequest)
       returns (stream SubscribeEventsResponse);    
 
