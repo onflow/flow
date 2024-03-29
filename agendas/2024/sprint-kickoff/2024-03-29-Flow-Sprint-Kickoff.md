@@ -345,6 +345,7 @@ Cycle Objective(s):
 - Add WAGMI / viem guides (EVM)
 - Write new doc on Sponsored Transactions under Advanced Topics [#692](https://github.com/onflow/docs/issues/692)
 - Create video to demonstrate local upgrade, staging, and state migration
+- Create new staking banner explaining epoch transition window [#168](https://github.com/onflow/flow-port/issues/168)
 
 **On Hold**
 
