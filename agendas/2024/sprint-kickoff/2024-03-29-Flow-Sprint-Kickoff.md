@@ -371,14 +371,17 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* 
+- Completed COA integration, creation and management
+- Completed Web3.js integration, authentication
+- Shipped Flow Ref Wallet extension with previewnet support! 🎉
+- Scoped and began work on VM bridge integration 
 
 **This sprint**
 
-- CTD cadence transactions / scripts for Cadence 1.0
-- COA integration (including Web3.js integration with COA)
-- VM Bridge integration, meeting scheduled for Monday.
+- Complete Web3.js integration, authorization
+- VM Bridge integration, moving FT and NFT in app.
 - CTD: Outreach with Coinbase Wallet, MetaMask, Shadow Wallet and Blocto
+- CTD: Working with Apple on app approval & release
 
 **On Hold**
 
