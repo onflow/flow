@@ -5,6 +5,7 @@
 
 - Emulator state migration of NFT example to Cadence 1.0 finally successful!
 - Successfully bootstrapped and run TN Migration environment from TN stated migrated to Cadence 1.0 (Fixed [issue with epoch contract](https://github.com/onflow/flow-core-contracts/pull/413) that caused ENs on migration network to hog CPU)
+- [New CLI released](https://github.com/onflow/flow-cli/releases/tag/v1.15.0-cadence-v1.0.0-preview.14) with updated Cadence 1.0 (preview 18), supporting testig of contract upgrade to C1.0.
 
 ### General updates
 
