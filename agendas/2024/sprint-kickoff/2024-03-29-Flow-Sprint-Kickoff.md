@@ -6,6 +6,7 @@
 - Emulator state migration of NFT example to Cadence 1.0 finally successful!
 - Successfully bootstrapped and run TN Migration environment from TN stated migrated to Cadence 1.0 (Fixed [issue with epoch contract](https://github.com/onflow/flow-core-contracts/pull/413) that caused ENs on migration network to hog CPU)
 - [New CLI released](https://github.com/onflow/flow-cli/releases/tag/v1.15.0-cadence-v1.0.0-preview.14) with updated Cadence 1.0 (preview 18), supporting testig of contract upgrade to C1.0.
+- Finished deploying local events APIs on mainnet (FF/Dapper/QN). 50% reduction in event queries handled by ENs
 
 ### General updates
 
@@ -220,6 +221,17 @@ Cycle Objective(s):
 * <ins>Consensus speedup:</ins>
   - completed analysis ([notion](https://www.notion.so/flowfoundation/Cruise-Control-headroom-for-speedups-46dc17e07ae14462b03341e4432a907d?pvs=4))
 
+
+* <ins>Data Availability:</ins>
+  - Completed rollout of local events to all QuickNode/FF/Dapper ANs
+  - Completed testing of local tx results on TN & MN and deployed to 2 nodes on each network
+  - Fix discarded event encoding ([PR #5582](https://github.com/onflow/flow-go/pull/5582))
+  - Added support for CPU Profiles in admin server ([PR #5545](https://github.com/onflow/flow-go/pull/5545))
+  - KROK Team
+    - Add streaming SendAndSubscribe for tx ([PR #5310](https://github.com/onflow/flow-go/pull/5310))
+    - Add standard Access API implementations on Observer ([PR #5358](https://github.com/onflow/flow-go/pull/5358))
+    - Benchmark testing and analysis of execution data indexing on Observers ([PR #4849](https://github.com/onflow/flow-go/issues/4849))
+
 **This sprint**
 
 * <ins>Zero-downtime Upgrades of Node Software:</ins>
@@ -238,6 +250,18 @@ Cycle Objective(s):
    - new cryptography stack: 
       - continue on CPU-compatability issue
       - extra build docs in all repos
+
+
+* <ins>Data Availability:</ins>
+  - Rollout local tx results to QuickNode ANs
+  - Work with QN to get profile collection deployed - support debugging script exec
+  - Enable programs cache on AN (Continue [PR #5585](https://github.com/onflow/flow-go/pull/5585) and testing)
+  - KROK Team
+    - Complete streaming account statuses endpoint ([PR #5406](https://github.com/onflow/flow-go/pull/5406))
+    - Add tx results to streaming SendAndSubscribe response ([PR #5566](https://github.com/onflow/flow-go/issues/5566))
+    - Unify Events API with new interfaces ([Issue #5557](https://github.com/onflow/flow-go/issues/5557))
+    - Add integration tests for streaming blocks and observer APIs ([PR #5572](https://github.com/onflow/flow-go/issues/5572), [PR #5573](https://github.com/onflow/flow-go/issues/5573))
+
 
 **On Hold**
 * Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
