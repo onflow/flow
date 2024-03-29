@@ -149,7 +149,7 @@ EVM Gateway
 **This sprint**
 
 Objective 1, KR 1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
-* [Emulator release is ready](https://github.com/onflow/flow-cli/releases/tag/v1.12.0-cadence-v1.0.0-preview.9), going through last [testing](https://github.com/onflow/cadence/issues/3098) before we announce it.
+* [Emulator release is ready](https://github.com/onflow/flow-cli/releases/tag/v1.15.0-cadence-v1.0.0-preview.14), support devs that are teting migration, monitor Discord questions.
 * Testnet migration completed, moving on to adding [Atree register inlining](https://github.com/onflow/cadence/pull/3048) migration and validating migrated state on the TN migration environment.
 
 Objective 1, KR4: Testnet Upgrade to Crescendo Release
