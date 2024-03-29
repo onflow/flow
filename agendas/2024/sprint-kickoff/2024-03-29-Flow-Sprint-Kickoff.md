@@ -5,7 +5,7 @@
 
 - Emulator state migration of NFT example to Cadence 1.0 finally successful!
 - Successfully bootstrapped and run TN Migration environment from TN stated migrated to Cadence 1.0 (Fixed [issue with epoch contract](https://github.com/onflow/flow-core-contracts/pull/413) that caused ENs on migration network to hog CPU)
-- [New CLI released](https://github.com/onflow/flow-cli/releases/tag/v1.15.0-cadence-v1.0.0-preview.14) with updated Cadence 1.0 (preview 18), supporting testig of contract upgrade to C1.0.
+- [New CLI released](https://github.com/onflow/flow-cli/releases/tag/v1.15.0-cadence-v1.0.0-preview.14) with updated Cadence 1.0 (preview 18), supporting testing of contract upgrade to C1.0.
 - Finished deploying local events APIs on mainnet (FF/Dapper/QN). 50% reduction in event queries handled by ENs
 
 ### General updates
@@ -41,12 +41,12 @@
 ### Mainnet
 1. March 24th 4:45 PM Pacific: EN1 memory leak observed by JP and mitigated by a restart ([slack thread](https://dapperlabs.slack.com/archives/C014WBGR1J9/p1711323881744749)) - Root cause: https://github.com/onflow/flow-go/issues/5150
 2. March 25th 10:15 AM Pacific: AN9 went OOM ([slack thread](https://dapperlabs.slack.com/archives/CUU2KQL4A/p1711386932706579)) - Same root cause as 1.
-3. March 25th 7:50 AM Pacific: QN Public EU-based ANs went offline for 10 minutes. ([RCA](https://discord.com/channels/613813861610684416/1162086721471647874/1223025960769818799]))
+3. March 25th 7:50 AM Pacific: QN Public EU-based ANs went offline for 10 minutes. ([RCA shared by QN](https://discord.com/channels/613813861610684416/1162086721471647874/1223025960769818799]))
 4. March 27th 0:00 AM Pacific: TTF spiked on QN public Access nodes. Root cause is yet to be determined.
 
 ### Testnet
 1. March 20th 11:12 AM: Sealing halt ([slack thread](https://dapperlabs.slack.com/archives/C015ABLUV41/p1710914042806219)) - Root cause: EN3 had failed to start after a move/restart.
-2. March 28th 11:28 AM: EN1 deleted ([slack thread](https://dapperlabs.slack.com/archives/C015ABLUV41/p1711650523244509) - Root cause: human error.
+2. March 28th 11:28 AM: EN1 deleted ([slack thread](https://dapperlabs.slack.com/archives/C015ABLUV41/p1711650523244509)) - Root cause: human error.
 
 ### Key Release Dates & Breaking Changes
 
