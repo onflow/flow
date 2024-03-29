@@ -440,16 +440,21 @@ Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inf
 
 **Done last sprint**
 
-*
+* Forum post detailing the computation limit, gas to compute conversion, and the transaction fee increase was drafted; currently under review. See [draft](https://www.notion.so/flowfoundation/Forum-post-Proposing-Flow-fees-and-computation-limit-related-changes-e1793d993ed1412f968229dc58217b21)
+* Two inflation reduction strategies were considered and modeled - see [here](https://docs.google.com/spreadsheets/d/1jr-P9ZQB3hDEZFh3pjktRnhIe0jFrMz4hn4_EFGHfK4/edit#gid=991805613). Option 1: Reduce reward rate in a predictable way over time until a baseline cut-off (like solana). Option 2: Cap the maximum absolute value of weekly issuance to drive lower inflation in future when that cap hits. Summary available in this [draft deck](https://docs.google.com/presentation/d/1EBYqB8FwxHtOwaQMHiId0ZZv4bRNThNYrgF5-CZeI8M/edit#slide=id.g26c5efcb5cb_0_280)
+* Cresendo related governance and tokenomics plan put togethe. See [here](https://www.notion.so/flowfoundation/a6eb68ded7b548138cc414caa4a3b224?v=20ffb677a9da49f4bc2da33e2e0501e4)
+* Transaction fee comparison between EIP-4844 vs Flow was finalized, available [here](https://docs.google.com/spreadsheets/d/1PPxxAotsIYLzydAnuBAgQe1BmEcamiuSQUmsDtrpaKs/edit#gid=1064090175). tldr - after a 100x increase in txn fee, Flow will remain between 2-12x cheaper than rollups like Polygon, Base, Optimism, etc.
+* Decentralization situation was asssesed (see [here](https://docs.google.com/spreadsheets/d/1iII_X8hC5Vzx3jNz3oyIZtaW_aDpdeuOrulknPvV2oY/edit#gid=804968775)) after a16z pulled out from the plan to move nodes to BD. Tldr of new strategy - consolidate a16z stake across fewer CB nodes, spin up new FF/DL nodes, onboard new operators.
 
 **This sprint**
 
-- Publish forum post detailing the computation limit, gas to compute conversion, and the transaction fee increase
-- EIP 4844 vs Flow analysis - create self explanatory publicly available spreadsheets, write a blog post
+- Publish forum post and gather community feedback
 - Partner outreach regarding the upcoming transaction fee increase
-- Model inflation reduction via two methods - (1) a planned reduction in reward rate over time like sol, and (2) a capped reward number that reduces inflation over time when the cap hits in future
-- Finalize cresendo related governance and tokenomics plan
-- Consensus node rebalancing exercise to maintain decentralization
+- Draft and share FLIP on computation limit, G2C ratio and transaction fee increase for review
+- Build consensus within Flow core team on which inflation strategy to employ
+- Draft and share forum post on Inflation (stretch)
+- Start node rebalancing to maintain decentralization (work with a16z, evaluate new operators)
+- Keep the community updated (monthly GWG)    
 
 **On Hold**
 
