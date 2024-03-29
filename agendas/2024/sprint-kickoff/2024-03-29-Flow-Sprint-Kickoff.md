@@ -9,6 +9,7 @@
 - Finished deploying local events APIs on mainnet (FF/Dapper/QN). 50% reduction in event queries handled by ENs
 - Dependency Manager: Allow adding found dependencies to deployments interactively
 - New Dev Docs Landing Page Design
+- [Flow Runner](https://run.dnz.dev/) updated to support previewnet
 
 ### General updates
 
