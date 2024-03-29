@@ -4,7 +4,7 @@
 ### Team Wins 🎉
 
 - Emulator state migration of NFT example to Cadence 1.0 finally successful!
-- 
+- Successfully bootstrapped and run TN Migration environment from TN stated migrated to Cadence 1.0 (Fixed [issue with epoch contract](https://github.com/onflow/flow-core-contracts/pull/413) that caused ENs on migration network to hog CPU)
 
 ### General updates
 
@@ -90,6 +90,14 @@ Cycle Objective(s):
 **Done last sprint**
 
 Cadence 1.0 migration testing with emulator & TN migration environment
+- [Contract update fails if there were enums as type-requirements](https://github.com/onflow/cadence/issues/3186)
+- [Run existing tests for C1.0 contract update validator](https://github.com/onflow/cadence/issues/3188)
+- [State migration fails in some cases](https://github.com/onflow/cadence/issues/3192)
+    - [Only encode reference static type in legacy format if it was decoded as such](https://github.com/onflow/cadence/pull/3199)
+    - [Name storage migration, include in error](https://github.com/onflow/cadence/pull/3198)
+    - [Optionally check atree storage health before migration](https://github.com/onflow/flow-go/pull/5591)
+- [Improve error printing in contract validator](https://github.com/onflow/flow-go/pull/5596)
+    - dependency for ^: [Simplify AuthorizationMismatchError](https://github.com/onflow/cadence/pull/3201)
 - [State migration fails in some cases](https://github.com/onflow/cadence/issues/3192)
     - [Handle unparameterized Capability static types](https://github.com/onflow/cadence/pull/3196)
 - [Make custom contract update rules mandatory](https://github.com/onflow/cadence/issues/3187)
@@ -104,29 +112,38 @@ Cadence 1.0 migration testing with emulator & TN migration environment
 - [Relax interface conformance changes in contract update validator](https://github.com/onflow/cadence/pull/3184)
 - [Fix import resolving during staged contract updates](https://github.com/onflow/flow-go/issues/5551)
 
-Cadence 1.0 dependency updates
-- CLI: [1](https://github.com/onflow/flow-cli/issues/1470), [2](https://github.com/onflow/flow-cli/issues/1462)
-- EVM Gateway: [1](https://github.com/onflow/flow-evm-gateway/issues/175), [2](https://github.com/onflow/flow-evm-gateway/issues/165)
-- flixkit-go: [1](https://github.com/onflow/flixkit-go/issues/52), [2](https://github.com/onflow/flixkit-go/issues/51)
-- cadence-tools: [1](https://github.com/onflow/cadence-tools/issues/323), [2](https://github.com/onflow/cadence-tools/issues/322), [3](https://github.com/onflow/cadence-tools/issues/320), [4](https://github.com/onflow/cadence-tools/issues/318), [5](https://github.com/onflow/cadence-tools/issues/316)
-- flowkit: [1](https://github.com/onflow/flowkit/issues/32), [2](https://github.com/onflow/flowkit/issues/31), [3](https://github.com/onflow/flowkit/issues/30)
-- emulator: [1](https://github.com/onflow/flow-emulator/issues/622), [2](https://github.com/onflow/flow-emulator/issues/621), [3](https://github.com/onflow/flow-emulator/issues/618)
-- flow-go-sdk: [1](https://github.com/onflow/flow-go-sdk/issues/610), [2](https://github.com/onflow/flow-go-sdk/issues/609)
-- flow-go: [1](https://github.com/onflow/flow-go/issues/5555)
-
 Cadence 1.0 features & improvements
+- bugfix: [Enums in Contract Interfaces cannot be updated to Cadence 1.0](https://github.com/onflow/cadence/issues/3182)
 - bugfix: [Crasher when converting integer to opional address](https://github.com/onflow/cadence/issues/3194)
 - Docs: [Improve development documentation](https://github.com/onflow/cadence/pull/3189)
+- Docs: [Improve Cadence 1.0 migration guide](https://github.com/onflow/cadence-lang.org/pull/74)
+
+Cadence 1.0 dependency updates
+- CLI: [1](https://github.com/onflow/flow-cli/issues/1470), [2](https://github.com/onflow/flow-cli/issues/1462), [3](https://github.com/onflow/flow-cli/pull/1480)
+- EVM Gateway: [1](https://github.com/onflow/flow-evm-gateway/issues/175), [2](https://github.com/onflow/flow-evm-gateway/issues/165)
+- flixkit-go: [1](https://github.com/onflow/flixkit-go/issues/52), [2](https://github.com/onflow/flixkit-go/issues/51), [3](https://github.com/onflow/flixkit-go/pull/53)
+- cadence-tools: [1](https://github.com/onflow/cadence-tools/issues/323), [2](https://github.com/onflow/cadence-tools/issues/322), [3](https://github.com/onflow/cadence-tools/issues/320), [4](https://github.com/onflow/cadence-tools/issues/318), [5](https://github.com/onflow/cadence-tools/issues/316), [6](https://github.com/onflow/cadence-tools/pull/328), [7](https://github.com/onflow/cadence-tools/pull/327), [8](https://github.com/onflow/cadence-tools/pull/326)
+- flowkit: [1](https://github.com/onflow/flowkit/issues/32), [2](https://github.com/onflow/flowkit/issues/31), [3](https://github.com/onflow/flowkit/issues/30), [4](https://github.com/onflow/flowkit/pull/33)
+- emulator: [1](https://github.com/onflow/flow-emulator/issues/622), [2](https://github.com/onflow/flow-emulator/issues/621), [3](https://github.com/onflow/flow-emulator/issues/618), [4](https://github.com/onflow/flow-emulator/pull/626)
+- flow-go-sdk: [1](https://github.com/onflow/flow-go-sdk/issues/610), [2](https://github.com/onflow/flow-go-sdk/issues/609), [3](https://github.com/onflow/flow-go-sdk/pull/612), [4](https://github.com/onflow/flow-go-sdk/pull/611)
+- flow-go: [1](https://github.com/onflow/flow-go/issues/5555), [2](https://github.com/onflow/flow-go/pull/5600)
 
 Cadence Execution
-
-EVM Gateway productization
+- [Bump atree version in Cadence v1.0 for new features (e.g. deduplication of Cadence dictionary type info)](https://github.com/onflow/cadence/pull/3178)
+- Test bugfix: [Fix data races in tests](https://github.com/onflow/flow-go/pull/5599)
+- Reverting migration optimization causing unstable test behaviour: [Revert "Optimise merge registers for migrations"](https://github.com/onflow/flow-go/pull/5594)
 
 EVM Core
+- [[Flow EVM] supporting evm.batchRun](https://github.com/onflow/flow-go/issues/5501)
+    - work towards ^: [prepare the StateDB and the Emulator to support batch run operations](https://github.com/onflow/flow-go/pull/5577)
 - [Populate receiptRoot in the block](https://github.com/onflow/flow-go/issues/5509)
 - [Add flow token bridge events](https://github.com/onflow/flow-go/issues/5537)
 - [Fix the possibility of concurrent Precompile setup calls](https://github.com/onflow/flow-go/issues/5512)
 - Go-ethereum: [Update internal package references](https://github.com/onflow/go-ethereum/pull/5)
+
+EVM Gateway
+- [Implement filter management](https://github.com/onflow/flow-evm-gateway/issues/7)
+- [Support polling new data since filter changes](https://github.com/onflow/flow-evm-gateway/issues/141)
 
 
 **This sprint**
