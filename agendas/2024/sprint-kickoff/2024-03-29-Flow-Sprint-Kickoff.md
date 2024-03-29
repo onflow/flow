@@ -7,6 +7,9 @@
 - Successfully bootstrapped and run TN Migration environment from TN stated migrated to Cadence 1.0 (Fixed [issue with epoch contract](https://github.com/onflow/flow-core-contracts/pull/413) that caused ENs on migration network to hog CPU)
 - [New CLI released](https://github.com/onflow/flow-cli/releases/tag/v1.15.0-cadence-v1.0.0-preview.14) with updated Cadence 1.0 (preview 18), supporting testing of contract upgrade to C1.0.
 - Finished deploying local events APIs on mainnet (FF/Dapper/QN). 50% reduction in event queries handled by ENs
+- Dependency Manager: Allow adding found dependencies to deployments interactively
+- New Dev Docs Landing Page Design
+- [Flow Runner](https://run.dnz.dev/) updated to support previewnet
 
 ### General updates
 
@@ -18,7 +21,6 @@
 - [Full List](https://www.notion.so/flowfoundation/de89aa4e79364216a665888335a1cdee?v=4de18b26f60d4bae8f62724dddcce260)
 - Starting Next Week:
   - G - April 1st to April 15th
- 
 
 ---
 
@@ -311,33 +313,44 @@ Cycle Objective(s):
 
 Cycle Objective(s):
 
-* Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
-* Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
-* Use the Crescendo Release grow Flow's developer base and network activity
+- Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
+- Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
+- Use the Crescendo Release grow Flow's developer base and network activity
 
 **Done last sprint**
 
-* 
+- [New Dev Docs Landing Page](https://github.com/onflow/docs/issues/509)
+- Cadence Lint (CLI) [Documentation](https://developers.flow.com/tools/flow-cli/lint)
+- Add network table to Flow Networks page [#696](https://github.com/onflow/docs/issues/696)
+- Added feature to CLI migrator to check if staged contract is validated
+- Added output of CLI dependency versions in command
+- Cadence VSCode Extension can switch between C1.0 & pre-C1.0 mode
+- QA full Cadence 1.0 state migration in Emulator [#3098](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=56503639) (Successful state migrationion using CLI )
+- FCL v1.10.0 released with GetNodeVersionInfo RPC [[FEATURE] Support GetNodeVersionInfo Interaction #1854](https://github.com/onflow/fcl-js/issues/1854)
+- Add Cadence 1.0 Update Checker to Stage Command [#1453](https://github.com/onflow/flow-cli/issues/1453)
+- Add dependencies from Dependency Manager to a deployment account [#1362](https://github.com/onflow/flow-cli/issues/1362)
+- Add migration validation to CLI [add isValidated on staging migration #1478](https://github.com/onflow/flow-cli/issues/1478)
+- Use .zip archives for Windows releases [#1473](https://github.com/onflow/flow-cli/pull/1473)
+- Add some dependency versions to the CLI [#1465](https://github.com/onflow/flow-cli/issues/1465)
+- Switch hardcoded core contracts to come from package [#1406](https://github.com/onflow/flow-cli/issues/1406)
+- flow test logs are suppressed [#1460](https://github.com/onflow/flow-cli/issues/1460)
 
 **This sprint**
-**Sprint goal focusing on updating EVM docs, tooling support, and examples for Cadence 1.0**
+**Sprint goal focusing on updating EVM docs, tooling support, CLI Interactive Setup**
 
-* EVM Docs v2
-* Add viem guide (EVM)
-* Update Access Node Docs
-* Create video to demonstrate local upgrade, staging, and state migration
-* [Add dependencies from Dependency Manager to a deployment account](https://github.com/onflow/flow-cli/issues/1362)
-* [Allow adding alias when adding a contract with Dependency Manager](https://github.com/onflow/flow-cli/issues/1363)
-* [QA full Cadence 1.0 state migration in Emulator](https://github.com/onflow/cadence/issues/3098)
-* [Add Linter and Cadence checker to CLI stage command](https://github.com/onflow/flow-cli/issues/1454)
-* [Review Code Changes for New Token Standards #648](https://github.com/onflow/docs/issues/648)
-* Create Cadence 1.0 Project Upgrade demo repo
-* [New Dev Docs Landing Page](https://github.com/onflow/docs/issues/509)
+- [[EPIC] EVM Docs #654](https://github.com/onflow/docs/issues/654)
+- [EPIC] FlowEVM Docs - Cadence Dev [#575](https://github.com/onflow/docs/issues/575)
+- [EPIC] Enhance CLI init Command with Interactive Setup, Config Automation, and Default Project Structure [#1390](https://github.com/onflow/flow-cli/issues/1390)
+- [EPIC] Update Internal Tools and Repos for C1.0 Support [#530](https://github.com/onflow/docs/issues/530)
+- Add WAGMI / viem guides (EVM)
+- Write new doc on Sponsored Transactions under Advanced Topics [#692](https://github.com/onflow/docs/issues/692)
+- Create video to demonstrate local upgrade, staging, and state migration
+- Create new staking banner explaining epoch transition window [#168](https://github.com/onflow/flow-port/issues/168)
 
 **On Hold**
 
-* [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
-* [Update Playground to support Cadence 1.0](https://github.com/onflow/flow-playground/issues/760)
+- [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
+- [Update Playground to support Cadence 1.0](https://github.com/onflow/flow-playground/issues/760)
 
 ---
 
