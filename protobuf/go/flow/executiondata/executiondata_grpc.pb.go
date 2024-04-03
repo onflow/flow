@@ -59,6 +59,7 @@ type ExecutionDataAPIClient interface {
 	//	happen if the block was from a previous spork, or if the block has yet
 	//	not been received.
 	SubscribeExecutionData(ctx context.Context, in *SubscribeExecutionDataRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataClient, error)
+	// Deprecated: Do not use.
 	// Warning: this function is deprecated and will be removed in a future version.
 	// Use SubscribeEventsFromStartBlockID, SubscribeEventsFromStartHeight or SubscribeEventsFromLatest.
 	//
@@ -266,6 +267,7 @@ func (x *executionDataAPISubscribeExecutionDataClient) Recv() (*SubscribeExecuti
 	return m, nil
 }
 
+// Deprecated: Do not use.
 func (c *executionDataAPIClient) SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error) {
 	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[1], ExecutionDataAPI_SubscribeEvents_FullMethodName, opts...)
 	if err != nil {
@@ -527,6 +529,7 @@ type ExecutionDataAPIServer interface {
 	//	happen if the block was from a previous spork, or if the block has yet
 	//	not been received.
 	SubscribeExecutionData(*SubscribeExecutionDataRequest, ExecutionDataAPI_SubscribeExecutionDataServer) error
+	// Deprecated: Do not use.
 	// Warning: this function is deprecated and will be removed in a future version.
 	// Use SubscribeEventsFromStartBlockID, SubscribeEventsFromStartHeight or SubscribeEventsFromLatest.
 	//

@@ -64,7 +64,9 @@ service ExecutionDataAPI {
   //   happen if the block was from a previous spork, or if the block has yet
   //   not been received.
   rpc SubscribeEvents(SubscribeEventsRequest)
-      returns (stream SubscribeEventsResponse);
+      returns (stream SubscribeEventsResponse) {
+      option deprecated = true;
+  };
 
   // SubscribeEventsFromStartBlockID streams events for all blocks starting at the requested
   // start block id, up until the latest available block. Once the latest is
