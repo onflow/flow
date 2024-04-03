@@ -48,7 +48,7 @@ service ExecutionDataAPI {
   // all events are returned.
   //
   // Responses are returned for each block containing at least one event that
-  // matches the filter. Additionally, heatbeat responses
+  // matches the filter. Additionally, heartbeat responses
   // (SubscribeEventsResponse with no events) are returned periodically to allow
   // clients to track which blocks were searched. Clients can use this
   // information to determine which block to start from when reconnecting.
@@ -66,6 +66,78 @@ service ExecutionDataAPI {
   // GetRegisterValues gets the values for the given register IDs as of the given block height
   rpc GetRegisterValues(GetRegisterValuesRequest)
       returns (GetRegisterValuesResponse);
+
+  // SubscribeAccountStatusesFromStartBlockID streams account statuses for all blocks starting at the requested
+  // start block ID, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
+  //
+  // Events within each block are filtered by the provided StatusFilter, and only
+  // those events that match the filter are returned. If no filter is provided,
+  // all events are returned.
+  //
+  // Responses are returned for each block containing at least one event that
+  // matches the filter. Additionally, heartbeat responses
+  // (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+  // clients to track which blocks were searched. Clients can use this
+  // information to determine which block to start from when reconnecting.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid
+  // StatusFilter or start block.
+  // - NotFound is returned if the start block is not currently available on the
+  // node. This may happen if the block was from a previous spork, or if the block has yet
+  //   not been received.
+  rpc SubscribeAccountStatusesFromStartBlockID(SubscribeAccountStatusesFromStartBlockIDRequest)
+      returns (stream SubscribeAccountStatusesResponse);
+
+  // SubscribeAccountStatusesFromStartHeight streams account statuses for all blocks starting at the requested
+  // start block height, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
+  //
+  // Events within each block are filtered by the provided StatusFilter, and only
+  // those events that match the filter are returned. If no filter is provided,
+  // all events are returned.
+  //
+  // Responses are returned for each block containing at least one event that
+  // matches the filter. Additionally, heartbeat responses
+  // (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+  // clients to track which blocks were searched. Clients can use this
+  // information to determine which block to start from when reconnecting.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid
+  // StatusFilter or start block.
+  // - NotFound is returned if the start block is not currently available on the
+  // node. This may happen if the block was from a previous spork, or if the block has yet
+  //   not been received.
+  rpc SubscribeAccountStatusesFromStartHeight(SubscribeAccountStatusesFromStartHeightRequest)
+      returns (stream SubscribeAccountStatusesResponse);
+
+  // SubscribeAccountStatusesFromLatestBlock streams account statuses for all blocks starting
+  // at the last sealed block, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
+  //
+  // Events within each block are filtered by the provided StatusFilter, and only
+  // those events that match the filter are returned. If no filter is provided,
+  // all events are returned.
+  //
+  // Responses are returned for each block containing at least one event that
+  // matches the filter. Additionally, heartbeat responses
+  // (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+  // clients to track which blocks were searched. Clients can use this
+  // information to determine which block to start from when reconnecting.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid
+  // StatusFilter or start block.
+  // - NotFound is returned if the start block is not currently available on the
+  // node. This may happen if the block was from a previous spork, or if the block has yet
+  //   not been received.
+  rpc SubscribeAccountStatusesFromLatestBlock(SubscribeAccountStatusesFromLatestBlockRequest)
+      returns (stream SubscribeAccountStatusesResponse);
 }
 
 // The request for GetExecutionDataByBlockID
@@ -231,3 +303,136 @@ message GetRegisterValuesResponse {
   // raw register values at the given height.
   repeated bytes values = 1;
 }
+
+// The request for SubscribeAccountStatusesFromStartBlockID
+message SubscribeAccountStatusesFromStartBlockIDRequest {
+  // Block ID of the first block to search for events.
+  // Only one of start_block_id and start_block_height may be provided,
+  // otherwise an InvalidArgument error is returned. If neither are provided,
+  // the latest sealed block is used.
+  bytes start_block_id = 1;
+
+  // Filter to apply to events for each block searched.
+  // If no filter is provided, all statuses are returned.
+  StatusFilter filter = 2;
+
+  // Interval in block heights at which the server should return a heartbeat
+  // message to the client. The heartbeat is a normal SubscribeAccountStatusesResponse
+  // with no events, and allows clients to track which blocks were searched.
+  // Clients can use this information to determine which block to start from
+  // when reconnecting.
+  //
+  // The interval is calculated from the last response returned, which could be
+  // either another heartbeat or a response containing events.
+  uint64 heartbeat_interval = 3;
+
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 4;
+}
+
+// The request for SubscribeAccountStatusesFromStartHeight
+message SubscribeAccountStatusesFromStartHeightRequest {
+  // Block height of the first block to search for events.
+  // Only one of start_block_id and start_block_height may be provided,
+  // otherwise an InvalidArgument error is returned. If neither are provided,
+  // the latest sealed block is used.
+  uint64 start_block_height = 1;
+
+  // Filter to apply to events for each block searched.
+  // If no filter is provided, all statuses are returned.
+  StatusFilter filter = 2;
+
+  // Interval in block heights at which the server should return a heartbeat
+  // message to the client. The heartbeat is a normal SubscribeAccountStatusesResponse
+  // with no events, and allows clients to track which blocks were searched.
+  // Clients can use this information to determine which block to start from
+  // when reconnecting.
+  //
+  // The interval is calculated from the last response returned, which could be
+  // either another heartbeat or a response containing events.
+  uint64 heartbeat_interval = 3;
+
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 4;
+}
+
+// The request for SubscribeAccountStatusesFromLatestBlock
+message SubscribeAccountStatusesFromLatestBlockRequest {
+  // Filter to apply to events for each block searched.
+  // If no filter is provided, all statuses are returned.
+  StatusFilter filter = 1;
+
+  // Interval in block heights at which the server should return a heartbeat
+  // message to the client. The heartbeat is a normal SubscribeAccountStatusesResponse
+  // with no events, and allows clients to track which blocks were searched.
+  // Clients can use this information to determine which block to start from
+  // when reconnecting.
+  //
+  // The interval is calculated from the last response returned, which could be
+  // either another heartbeat or a response containing events.
+  uint64 heartbeat_interval = 2;
+
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 3;
+}
+
+// The response for SubscribeAccountStatuses
+message SubscribeAccountStatusesResponse {
+  // Block ID of the block containing the events.
+  bytes block_id = 1;
+
+  // Block height of the block containing the events.
+  uint64 block_height = 2;
+
+  // The MessageIndex of the response message.
+  // Used by the client to ensure they have received all messages.
+  uint64 messageIndex = 3;
+
+  message Result {
+        // Unique identifier for the account being streamed
+        bytes address = 1;
+        // Events matching the StatusFilter in the request.
+        repeated entities.Event events = 2;
+  }
+  // The API may return no results which signals a periodic heartbeat. This
+  // allows clients to track which blocks were searched. Client can use this
+  // information to determine which block to start from when reconnecting.
+  repeated Result results = 4;
+}
+
+// StatusesFilter defines the filter to apply to block events.
+// Filters match for events with types in the included event_type list, that are
+// related to at least one address from the provided address list. An event who's
+// type matches but address does not is ignored, and vice versa.
+// If no event_types are provided, all account related protocol event types are matched.
+// If no addresses are provided, any address matches.
+// If there are any invalid filters, the API will return an InvalidArgument error.
+message StatusFilter {
+  // A list of full event types to include.
+  //
+  // All events exactly matching any of the provided event types will be
+  // returned.
+  //
+  // Event types must be protocol events. e.g.
+  //     flow.[event name]
+  repeated string event_type = 1;
+  // A list of addresses who's events should be included.
+  //
+  // All events matching the provided event_types that are related to any of the provided addresses
+  // will be returned. If no addresses are provided, all events matching event_types will be returned.
+  //
+  // Addresses must be Flow account addresses in hex format and valid for the
+  // network the node is connected to. i.e. only a mainnet address is valid for
+  // a mainnet node. Addresses may optionally include the 0x prefix.
+  repeated string address = 3;
+}
+
