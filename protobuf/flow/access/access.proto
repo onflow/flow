@@ -656,6 +656,8 @@ message SubscribeBlockDigestsResponse {
 message SendAndSubscribeTransactionStatusesRequest {
     // The transaction to be sent and tracked for status changes.
     entities.Transaction transaction = 1;
+    // The encoding for events in transaction result
+    entities.EventEncodingVersion event_encoding_version = 2;
 }
 
 // Response message for transaction status changes.
