@@ -38,6 +38,9 @@ service ExecutionDataAPI {
   rpc SubscribeExecutionData(SubscribeExecutionDataRequest)
       returns (stream SubscribeExecutionDataResponse);
 
+  // Warning: this function is deprecated and will be removed in a future version.
+  // Use SubscribeEventsFromStartBlockID, SubscribeEventsFromStartHeight or SubscribeEventsFromLatest.
+  //
   // SubscribeEvents streams events for all blocks starting at the requested
   // start block, up until the latest available block. Once the latest is
   // reached, the stream will remain open and responses are sent for each new
@@ -61,7 +64,73 @@ service ExecutionDataAPI {
   //   happen if the block was from a previous spork, or if the block has yet
   //   not been received.
   rpc SubscribeEvents(SubscribeEventsRequest)
+      returns (stream SubscribeEventsResponse) {
+      option deprecated = true;
+  };
+
+  // SubscribeEventsFromStartBlockID streams events for all blocks starting at the requested
+  // start block id, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
+  //
+  // Events within each block are filtered by the provided EventFilter, and only
+  // those events that match the filter are returned. If no filter is provided,
+  // all events are returned.
+  //
+  // Responses are returned for each block containing at least one event that
+  // matches the filter. Additionally, heatbeat responses
+  // (SubscribeEventsResponse with no events) are returned periodically to allow
+  // clients to track which blocks were searched. Clients can use this
+  // information to determine which block to start from when reconnecting.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid block ID or EventFilter.
+  // - NotFound is returned if the start block id or execution data are not
+  // currently available on the node. This may happen if the block was from a previous spork, or if the
+  // block has yet not been received.
+  rpc SubscribeEventsFromStartBlockID(SubscribeEventsFromStartBlockIDRequest)
       returns (stream SubscribeEventsResponse);
+
+  // SubscribeEventsFromStartHeight streams events for all blocks starting at the requested
+  // start block height, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
+  //
+  // Events within each block are filtered by the provided EventFilter, and only
+  // those events that match the filter are returned. If no filter is provided,
+  // all events are returned.
+  //
+  // Responses are returned for each block containing at least one event that
+  // matches the filter. Additionally, heatbeat responses
+  // (SubscribeEventsResponse with no events) are returned periodically to allow
+  // clients to track which blocks were searched. Clients can use this
+  // information to determine which block to start from when reconnecting.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid EventFilter.
+  // - NotFound is returned if the start block height or execution data are not
+  // currently available on the node. This may happen if the block was from a previous spork, or if the
+  // block has yet not been received.
+  rpc SubscribeEventsFromStartHeight(SubscribeEventsFromStartHeightRequest)
+      returns (stream SubscribeEventsResponse);
+
+  // SubscribeEventsFromLatest streams events for all blocks starting from the latest sealed
+  // block. The stream will remain open and responses are sent for each new block as it becomes available.
+  //
+  // Events within each block are filtered by the provided EventFilter, and only
+  // those events that match the filter are returned. If no filter is provided,
+  // all events are returned.
+  //
+  // Responses are returned for each block containing at least one event that
+  // matches the filter. Additionally, heatbeat responses
+  // (SubscribeEventsResponse with no events) are returned periodically to allow
+  // clients to track which blocks were searched. Clients can use this
+  // information to determine which block to start from when reconnecting.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid EventFilter.
+  rpc SubscribeEventsFromLatest(SubscribeEventsFromLatestRequest)
+      returns (stream SubscribeEventsResponse);    
 
   // GetRegisterValues gets the values for the given register IDs as of the given block height
   rpc GetRegisterValues(GetRegisterValuesRequest)
@@ -227,6 +296,81 @@ message SubscribeEventsRequest {
 
 }
 
+// The request for SubscribeEventsFromStartBlockID
+message SubscribeEventsFromStartBlockIDRequest {
+  // Block ID of the first block to search for events.
+  bytes start_block_id = 1;
+
+  // Filter to apply to events for each block searched.
+  // If no filter is provided, all events are returned.
+  EventFilter filter = 2;
+
+  // Interval in block heights at which the server should return a heartbeat
+  // message to the client. The heartbeat is a normal SubscribeEventsResponse
+  // with no events, and allows clients to track which blocks were searched.
+  // Clients can use this information to determine which block to start from
+  // when reconnecting.
+  //
+  // The interval is calculated from the last response returned, which could be
+  // either another heartbeat or a response containing events.
+  uint64 heartbeat_interval = 3;
+
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 4;
+}
+
+// The request for SubscribeEventsFromStartHeight
+message SubscribeEventsFromStartHeightRequest {
+  // Block height of the first block to search for events.
+  uint64 start_block_height = 1;
+
+  // Filter to apply to events for each block searched.
+  // If no filter is provided, all events are returned.
+  EventFilter filter = 2;
+
+  // Interval in block heights at which the server should return a heartbeat
+  // message to the client. The heartbeat is a normal SubscribeEventsResponse
+  // with no events, and allows clients to track which blocks were searched.
+  // Clients can use this information to determine which block to start from
+  // when reconnecting.
+  //
+  // The interval is calculated from the last response returned, which could be
+  // either another heartbeat or a response containing events.
+  uint64 heartbeat_interval = 3;
+
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 4;
+}
+
+// The request for SubscribeEventsFromLatest
+message SubscribeEventsFromLatestRequest {
+  // Filter to apply to events for each block searched.
+  // If no filter is provided, all events are returned.
+  EventFilter filter = 1;
+
+  // Interval in block heights at which the server should return a heartbeat
+  // message to the client. The heartbeat is a normal SubscribeEventsResponse
+  // with no events, and allows clients to track which blocks were searched.
+  // Clients can use this information to determine which block to start from
+  // when reconnecting.
+  //
+  // The interval is calculated from the last response returned, which could be
+  // either another heartbeat or a response containing events.
+  uint64 heartbeat_interval = 2;
+
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 3;
+}
+
 // The response for SubscribeEvents
 message SubscribeEventsResponse {
   // Block ID of the block containing the events.
@@ -243,6 +387,9 @@ message SubscribeEventsResponse {
 
   // Timestamp from the block containing the events.
   google.protobuf.Timestamp block_timestamp = 4;
+
+  // The message index of the response message. Used by the client to ensure they received all messages. Starts from "0".
+  uint64 message_index = 5;
 }
 
 // EventFilter defines the filter to apply to block events.
