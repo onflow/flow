@@ -5,8 +5,11 @@
 
 - Emulator state migration of NFT example to Cadence 1.0 finally successful!
 - Successfully bootstrapped and run TN Migration environment from TN stated migrated to Cadence 1.0 (Fixed [issue with epoch contract](https://github.com/onflow/flow-core-contracts/pull/413) that caused ENs on migration network to hog CPU)
-- [New CLI released](https://github.com/onflow/flow-cli/releases/tag/v1.15.0-cadence-v1.0.0-preview.14) with updated Cadence 1.0 (preview 18), supporting testig of contract upgrade to C1.0.
+- [New CLI released](https://github.com/onflow/flow-cli/releases/tag/v1.15.0-cadence-v1.0.0-preview.14) with updated Cadence 1.0 (preview 18), supporting testing of contract upgrade to C1.0.
 - Finished deploying local events APIs on mainnet (FF/Dapper/QN). 50% reduction in event queries handled by ENs
+- Dependency Manager: Allow adding found dependencies to deployments interactively
+- New Dev Docs Landing Page Design
+- [Flow Runner](https://run.dnz.dev/) updated to support previewnet
 
 ### General updates
 
@@ -18,7 +21,6 @@
 - [Full List](https://www.notion.so/flowfoundation/de89aa4e79364216a665888335a1cdee?v=4de18b26f60d4bae8f62724dddcce260)
 - Starting Next Week:
   - G - April 1st to April 15th
- 
 
 ---
 
@@ -41,12 +43,12 @@
 ### Mainnet
 1. March 24th 4:45 PM Pacific: EN1 memory leak observed by JP and mitigated by a restart ([slack thread](https://dapperlabs.slack.com/archives/C014WBGR1J9/p1711323881744749)) - Root cause: https://github.com/onflow/flow-go/issues/5150
 2. March 25th 10:15 AM Pacific: AN9 went OOM ([slack thread](https://dapperlabs.slack.com/archives/CUU2KQL4A/p1711386932706579)) - Same root cause as 1.
-3. March 25th 7:50 AM Pacific: QN Public EU-based ANs went offline for 10 minutes. ([RCA](https://discord.com/channels/613813861610684416/1162086721471647874/1223025960769818799]))
+3. March 25th 7:50 AM Pacific: QN Public EU-based ANs went offline for 10 minutes. ([RCA shared by QN](https://discord.com/channels/613813861610684416/1162086721471647874/1223025960769818799]))
 4. March 27th 0:00 AM Pacific: TTF spiked on QN public Access nodes. Root cause is yet to be determined.
 
 ### Testnet
 1. March 20th 11:12 AM: Sealing halt ([slack thread](https://dapperlabs.slack.com/archives/C015ABLUV41/p1710914042806219)) - Root cause: EN3 had failed to start after a move/restart.
-2. March 28th 11:28 AM: EN1 deleted ([slack thread](https://dapperlabs.slack.com/archives/C015ABLUV41/p1711650523244509) - Root cause: human error.
+2. March 28th 11:28 AM: EN1 deleted ([slack thread](https://dapperlabs.slack.com/archives/C015ABLUV41/p1711650523244509)) - Root cause: human error.
 
 ### Key Release Dates & Breaking Changes
 
@@ -59,15 +61,15 @@
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 7  |    8 (+2)   |       0          |       5          |        **20** (+2)          |
-| Proposed    | 3  |    2 (+1)     |       2          |       1          |        **8** (+1)          |
+| Drafted     | 7  |    8   |       0          |       5          |        **20**          |
+| Proposed    | 3  |    2     |       2          |       1          |        **8**          |
 | Accepted    | 2  |    1     |       1       |       2          |        **6**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
 | Implemented | 1  |    19    |       2       |       0          |        **22**          |
-| Released    | 4  |    0     |       3 (+1)       |       4          |        **11** (+1)          |
-| Total       | **17**  |    **30** (+3)    |       **9** (+1)       |       **12**          |        **68** (+4)          |
+| Released    | 4  |    0     |       3       |       4          |        **11**          |
+| Total       | **17**  |    **30**    |       **9**       |       **12**          |        **68**          |
 
-- Overall FLIPs went up by 4 in the last sprint. 3 new Cadence FLIPs were drafted and proposed; 1 new Governance FLIP was drafted, implemented and released during the sprint.
+- No new FLIPs during the sprint
 - Some FLIPs are still not reflected in the project tracker. **Remember**: FLIP process starts with an issue creation.
 (https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
   
@@ -311,33 +313,44 @@ Cycle Objective(s):
 
 Cycle Objective(s):
 
-* Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
-* Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
-* Use the Crescendo Release grow Flow's developer base and network activity
+- Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
+- Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
+- Use the Crescendo Release grow Flow's developer base and network activity
 
 **Done last sprint**
 
-* 
+- [New Dev Docs Landing Page](https://github.com/onflow/docs/issues/509)
+- Cadence Lint (CLI) [Documentation](https://developers.flow.com/tools/flow-cli/lint)
+- Add network table to Flow Networks page [#696](https://github.com/onflow/docs/issues/696)
+- Added feature to CLI migrator to check if staged contract is validated
+- Added output of CLI dependency versions in command
+- Cadence VSCode Extension can switch between C1.0 & pre-C1.0 mode
+- QA full Cadence 1.0 state migration in Emulator [#3098](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=56503639) (Successful state migrationion using CLI )
+- FCL v1.10.0 released with GetNodeVersionInfo RPC [[FEATURE] Support GetNodeVersionInfo Interaction #1854](https://github.com/onflow/fcl-js/issues/1854)
+- Add Cadence 1.0 Update Checker to Stage Command [#1453](https://github.com/onflow/flow-cli/issues/1453)
+- Add dependencies from Dependency Manager to a deployment account [#1362](https://github.com/onflow/flow-cli/issues/1362)
+- Add migration validation to CLI [add isValidated on staging migration #1478](https://github.com/onflow/flow-cli/issues/1478)
+- Use .zip archives for Windows releases [#1473](https://github.com/onflow/flow-cli/pull/1473)
+- Add some dependency versions to the CLI [#1465](https://github.com/onflow/flow-cli/issues/1465)
+- Switch hardcoded core contracts to come from package [#1406](https://github.com/onflow/flow-cli/issues/1406)
+- flow test logs are suppressed [#1460](https://github.com/onflow/flow-cli/issues/1460)
 
 **This sprint**
-**Sprint goal focusing on updating EVM docs, tooling support, and examples for Cadence 1.0**
+**Sprint goal focusing on updating EVM docs, tooling support, CLI Interactive Setup**
 
-* EVM Docs v2
-* Add viem guide (EVM)
-* Update Access Node Docs
-* Create video to demonstrate local upgrade, staging, and state migration
-* [Add dependencies from Dependency Manager to a deployment account](https://github.com/onflow/flow-cli/issues/1362)
-* [Allow adding alias when adding a contract with Dependency Manager](https://github.com/onflow/flow-cli/issues/1363)
-* [QA full Cadence 1.0 state migration in Emulator](https://github.com/onflow/cadence/issues/3098)
-* [Add Linter and Cadence checker to CLI stage command](https://github.com/onflow/flow-cli/issues/1454)
-* [Review Code Changes for New Token Standards #648](https://github.com/onflow/docs/issues/648)
-* Create Cadence 1.0 Project Upgrade demo repo
-* [New Dev Docs Landing Page](https://github.com/onflow/docs/issues/509)
+- [[EPIC] EVM Docs #654](https://github.com/onflow/docs/issues/654)
+- [EPIC] FlowEVM Docs - Cadence Dev [#575](https://github.com/onflow/docs/issues/575)
+- [EPIC] Enhance CLI init Command with Interactive Setup, Config Automation, and Default Project Structure [#1390](https://github.com/onflow/flow-cli/issues/1390)
+- [EPIC] Update Internal Tools and Repos for C1.0 Support [#530](https://github.com/onflow/docs/issues/530)
+- Add WAGMI / viem guides (EVM)
+- Write new doc on Sponsored Transactions under Advanced Topics [#692](https://github.com/onflow/docs/issues/692)
+- Create video to demonstrate local upgrade, staging, and state migration
+- Create new staking banner explaining epoch transition window [#168](https://github.com/onflow/flow-port/issues/168)
 
 **On Hold**
 
-* [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
-* [Update Playground to support Cadence 1.0](https://github.com/onflow/flow-playground/issues/760)
+- [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
+- [Update Playground to support Cadence 1.0](https://github.com/onflow/flow-playground/issues/760)
 
 ---
 
@@ -371,14 +384,17 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* 
+- Completed COA integration, creation and management
+- Completed Web3.js integration, authentication
+- Shipped Flow Ref Wallet extension with previewnet support! 🎉
+- Scoped and began work on VM bridge integration 
 
 **This sprint**
 
-- CTD cadence transactions / scripts for Cadence 1.0
-- COA integration (including Web3.js integration with COA)
-- VM Bridge integration, meeting scheduled for Monday.
+- Complete Web3.js integration, authorization
+- VM Bridge integration, moving FT and NFT in app.
 - CTD: Outreach with Coinbase Wallet, MetaMask, Shadow Wallet and Blocto
+- CTD: Working with Apple on app approval & release
 
 **On Hold**
 
@@ -440,16 +456,21 @@ Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inf
 
 **Done last sprint**
 
-*
+* Forum post detailing the computation limit, gas to compute conversion, and the transaction fee increase was drafted; currently under review. See [draft](https://www.notion.so/flowfoundation/Forum-post-Proposing-Flow-fees-and-computation-limit-related-changes-e1793d993ed1412f968229dc58217b21)
+* Two inflation reduction strategies were considered and modeled - see [here](https://docs.google.com/spreadsheets/d/1jr-P9ZQB3hDEZFh3pjktRnhIe0jFrMz4hn4_EFGHfK4/edit#gid=991805613). Option 1: Reduce reward rate in a predictable way over time until a baseline cut-off (like solana). Option 2: Cap the maximum absolute value of weekly issuance to drive lower inflation in future when that cap hits. Summary available in this [draft deck](https://docs.google.com/presentation/d/1EBYqB8FwxHtOwaQMHiId0ZZv4bRNThNYrgF5-CZeI8M/edit#slide=id.g26c5efcb5cb_0_280)
+* Cresendo related governance and tokenomics plan was put together. See [here](https://www.notion.so/flowfoundation/a6eb68ded7b548138cc414caa4a3b224?v=20ffb677a9da49f4bc2da33e2e0501e4)
+* Transaction fee comparison between EIP-4844 vs Flow was finalized, available [here](https://docs.google.com/spreadsheets/d/1PPxxAotsIYLzydAnuBAgQe1BmEcamiuSQUmsDtrpaKs/edit#gid=1064090175). tldr - after a 100x increase in txn fee, Flow will remain between 2-12x cheaper than rollups like Polygon, Base, Optimism, etc.
+* Decentralization situation was asssesed (see [here](https://docs.google.com/spreadsheets/d/1iII_X8hC5Vzx3jNz3oyIZtaW_aDpdeuOrulknPvV2oY/edit#gid=804968775)) after a16z pulled out from the plan to move nodes to BD. Tldr of new strategy - consolidate a16z stake across fewer CB nodes, spin up new FF/DL nodes, onboard new operators.
 
 **This sprint**
 
-- Publish forum post detailing the computation limit, gas to compute conversion, and the transaction fee increase
-- EIP 4844 vs Flow analysis - create self explanatory publicly available spreadsheets, write a blog post
+- Publish forum post and gather community feedback
 - Partner outreach regarding the upcoming transaction fee increase
-- Model inflation reduction via two methods - (1) a planned reduction in reward rate over time like sol, and (2) a capped reward number that reduces inflation over time when the cap hits in future
-- Finalize cresendo related governance and tokenomics plan
-- Consensus node rebalancing exercise to maintain decentralization
+- Draft and share FLIP on computation limit, G2C ratio and transaction fee increase for review
+- Build consensus within Flow core team on which inflation strategy to employ
+- Draft and share forum post on Inflation (stretch)
+- Start node rebalancing to maintain decentralization (work with a16z, evaluate new operators)
+- Keep the community updated (monthly GWG)    
 
 **On Hold**
 
