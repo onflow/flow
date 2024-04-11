@@ -28,7 +28,7 @@
 [YTD SLA: 100%](https://app.metrika.co/flow/dashboard/slas?tr=YTD)
 
 ## Incidents
-
+- Sev-3: Go routine leak on AN3 and EN1. Fixed with the libp2p DHT update. (slack [thread](https://dapperlabs.slack.com/archives/C014WBGR1J9/p1712074091594089))
 
 ### Key Release Dates & Breaking Changes
 
