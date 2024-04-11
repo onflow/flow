@@ -95,9 +95,6 @@
 | Figment                | Consensus    | f6fe4e61b17b6e45ba64690fa83ca0b4a3898d2f3732c8c60a985c85f7295a88 |
 | Figment                | Consensus    | fc16709e4a2d04ddc27ad6ecbe9411c0962beaf749c03d667187b9c394e13237 |
 | Flipside               | Collection   | 581525fa93d8fe4b334c179698c6e72baccb802593e55e40da61d24e589d85be |
-| Foundry                | Consensus    | 56e97c4cd4079caeb97d2a8f8950437107813436d5964f22a1f459eb8cf73a71 |
-| Foundry                | Verification | e74d0ca7afed2b5bfd612f3c75010adb229d632ca4ab3b77d178ee226d7ec2a2 |
-| Foundry                | Collection   | bd368122b0ccf67ebdd59d7f9b75edfa85106c3af41854c946ad0fa46e5c3ddd |
 | Google                 | Execution    | a58b8447337b73dc58d1095dfe0a71a50097969377c6c86b68ec63bee1358ace |
 | Hasquark               | Verification | 55069e7e8926867bee8094bd31786f8f6b65c8c3bde468ae2275f33dc1245dc1 |
 | Huobi                  | Verification | 6944b7968594f277c4c051d83ced4bab6ed87ed992d831f31ffb6a7b5926e298 |
