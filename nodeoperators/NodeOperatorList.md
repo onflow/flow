@@ -122,6 +122,5 @@
 | Ubisoft                | Verification | 6d0f707f944b024179553d9e31486beb7915148d86cfda43c85ecc33f4b9afc7 |
 | Usopp.club             | Verification | d12b80ad9a9be6dbf86f8a7824739d9b2193836e5df226e063528dae33be3a4a |
 | VCC                    | Collection   | fe14c6a722212e19af1c143008d46413d4cea5097714a3720c67f356fb7c2982 |
-| Vaccumlabs             | Verification | 88fbac6c7427f24b616aa8d8a6a18632f51b3411ad774a1d59c00c29ad5134fb |
 | Yonsei                 | Verification | 5dc67a4f47ea9ce55d1b63ebe04cc68d8b29c41e40ab5cdc63b108ce292139a0 |
 | versus-flow.art        | Verification | 093132ae6b090b3cf3b14d5da282e8a9cc6e5158342a83354c4fd27d5263416e |
