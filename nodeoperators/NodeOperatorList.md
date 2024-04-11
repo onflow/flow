@@ -103,6 +103,7 @@
 | Huobi                  | Verification | 6944b7968594f277c4c051d83ced4bab6ed87ed992d831f31ffb6a7b5926e298 |
 | Lilco                  | Verification | 3c6519ba8be35e338df7273a895ad3abaeb0c232eb908ee7b05462018c112fe1 |
 | NFT42                  | Verification | f8af31c7c3294b246f34040e5685c351e89f1c1edf6c64f93f7babd73d149951 |
+| NuFi                   | Verification | 88fbac6c7427f24b616aa8d8a6a18632f51b3411ad774a1d59c00c29ad5134fb |
 | P2P                    | Consensus    | 14faeb5538c8791827163074cd5fdbdcf70c44648a98d835c63ebb386d5c4745 |
 | P2P                    | Collection   | 79b43645fdf7c6597d8868b10c91d8cf343ab7d2cea0c98902d8f9456049918a |
 | Quantstamp             | Verification | cecdc27e710c1d78fed522e0dbf32fd88d383d5c0ffc735acc657c25f4989b56 |
