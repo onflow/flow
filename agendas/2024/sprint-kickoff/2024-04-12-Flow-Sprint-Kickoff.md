@@ -322,11 +322,11 @@ Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inf
 **This sprint**
 
 - For decentralization efforts, work with a16z to consolidate three nodes, and with Coinbase to reduce one node they operate on leased stake
-- Automation of grafana decentralization dashboard to send messages when critical thresholds are crossed
+- Automation of decentralization dashboard to send messages when critical thresholds are crossed
 - Gather and respond to community feedback on the forum post
 - Draft FLIP on EVM gas to compute ratio and compute limit hike
 - Update FLIP on transaction fee to suggest a transaction fee multiplier closely tied to FLOW token's market price
-- Continue research on Inflation (new strategies, other networks, validator impact, etc.) and sync with Dete again. Note that Inflation Reduction plan might take longer to achieve and might not tie with the Crescendo launch [TBD]
+- Continue research on Inflation (new strategies, other networks, validator impact, etc.) and sync with Dete again
   
 
 **On Hold**
