@@ -229,24 +229,37 @@ Cycle Objective(s):
 - Use the Crescendo Release grow Flow's developer base and network activity
 
 **Done last sprint**
-
+- Updated in-depth Migration Guide live.
+- Kapa AI updated with latest sources from Forum/EVM/Cadence lang docs
+- End-to-end video on upgrade process, steps and timeline.
+- FUSD, USDC changes for C1.0 completed (in review).
+- Flow JS Testing updated to Cadence 1.0 & released.
+- Staging being tracked hourly now on active contracts list.
+- Fungible Token bridging
+- Successful Local smart contract state migration with emulator
+- EVM chains updated to ethereum chain list repository
+- Flow evm previewnet added to viem repository
+- Create new staking banner explaining epoch transition window [#168](https://github.com/onflow/flow-port/issues/168)
 
 **This sprint**
 **Sprint goal focusing on updating EVM docs, tooling support, CLI Interactive Setup**
 
-- [[EPIC] EVM Docs #654](https://github.com/onflow/docs/issues/654)
+- [EPIC] EVM Docs #654](https://github.com/onflow/docs/issues/654)
 - [EPIC] FlowEVM Docs - Cadence Dev [#575](https://github.com/onflow/docs/issues/575)
 - [EPIC] Enhance CLI init Command with Interactive Setup, Config Automation, and Default Project Structure [#1390](https://github.com/onflow/flow-cli/issues/1390)
 - [EPIC] Update Internal Tools and Repos for C1.0 Support [#530](https://github.com/onflow/docs/issues/530)
-- Add WAGMI / viem guides (EVM)
 - Write new doc on Sponsored Transactions under Advanced Topics [#692](https://github.com/onflow/docs/issues/692)
-- Create video to demonstrate local upgrade, staging, and state migration
-- Create new staking banner explaining epoch transition window [#168](https://github.com/onflow/flow-port/issues/168)
+- [Testing Ledger Cadence v1.0 transactions](https://github.com/onflow/fcl-six/issues/20)
+- [Testing complex contracts deployment to previewnet EVM](https://github.com/onflow/docs/issues/713)
+- Stage and test core contracts
+- Circle USDC contract changes and integrations
+- [Add newsletter signup to developer landing page](https://github.com/onflow/docs/issues/717)
+
 
 **On Hold**
 
 - [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
-- [Update Playground to support Cadence 1.0](https://github.com/onflow/flow-playground/issues/760)
+- Blocked: [Update Playground to support Cadence 1.0](https://github.com/onflow/flow-playground/issues/760)
 
 ---
 
