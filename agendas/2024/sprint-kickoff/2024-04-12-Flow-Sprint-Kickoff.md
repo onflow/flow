@@ -8,8 +8,8 @@
 - Local transaction results deployed to all public ANs. Saw 50% reduction in requests to ENs - Vishal
 - Released [CLI preview.19](https://github.com/onflow/flow-cli/releases/tag/v1.17.0-cadence-v1.0.0-preview.19), unblocking local contract migration testing KR. - Jan
 - Cadence 1.0 migrations - all migrations completed for valid data, now working on handling of 2 broken state edge-cases. - Jan
-- Ready to start testing the Atree register inliing + Cadence 1.0 migrations together. - Jan
-- Kicked off first Mainnet state imgration to C1.0 to test the performance and identified number of optimizations we are working on. - Jan
+- Ready to start testing the Atree register inlining + Cadence 1.0 migrations together. - Jan
+- Kicked off first Mainnet state migration to C1.0 to test the performance and identified number of optimizations we are working on. - Jan
 - New utility that generates data for dynamic bootstrapping without  the need to create EN disk snapshot (enables [generating a protocol snapshot file for specified execution state checkpoint[(https://github.com/onflow/flow-go/issues/5580)]). - Jan
 - Added emulator fuctionality now makes it possible to [run an emulator using existing checkpoint file](https://github.com/onflow/flow-emulator/pull/620). - Jan
 - CodeRabbit AI PRs reviews / summaries are [cool](https://github.com/onflow/flow-evm-gateway/pull/186#issuecomment-2039857061)! - Jan
