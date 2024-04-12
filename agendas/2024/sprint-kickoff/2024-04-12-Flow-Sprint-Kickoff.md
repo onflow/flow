@@ -12,6 +12,7 @@
 - New utility that generates data for dynamic bootstrapping without  the need to create EN disk snapshot (enables [generating a protocol snapshot file for specified execution state checkpoint[(https://github.com/onflow/flow-go/issues/5580)]). - Jan
 - Added emulator fuctionality now makes it possible to [run an emulator using existing checkpoint file](https://github.com/onflow/flow-emulator/pull/620). - Jan
 - CodeRabbit AI PRs reviews / summaries are [cool](https://github.com/onflow/flow-evm-gateway/pull/186#issuecomment-2039857061)! - Jan
+- Long running Go routine leak that had been a thorn in our side for some time now fixed thanks to lilbp2p update (Jerome)
 
 ### General updates
 
