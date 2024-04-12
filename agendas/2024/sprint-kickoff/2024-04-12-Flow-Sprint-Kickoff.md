@@ -68,7 +68,6 @@
 (https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
 ### Untagged FLIPs -
 - https://github.com/onflow/flips/pull/246 
-- https://github.com/onflow/flips/pull/195
 - https://github.com/onflow/flips/pull/250
 - https://github.com/onflow/flips/pull/256
   
