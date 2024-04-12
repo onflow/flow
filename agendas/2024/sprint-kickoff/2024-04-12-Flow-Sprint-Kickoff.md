@@ -3,7 +3,8 @@
 
 ### Team Wins 🎉
 - Integrated QuickNode Access node profiler with our Grafana [dashboard](https://flowfoundation.grafana.net/explore?schemaVersion=1&panes=%7B%222hf%22%3A%7B%22datasource%22%3A%22ddhnnosc07gn4e%22%2C%22queries%22%3A%5B%7B%22groupBy%22%3A%5B%5D%2C%22labelSelector%22%3A%22%7B%7D%22%2C%22spanSelector%22%3A%5B%5D%2C%22queryType%22%3A%22both%22%2C%22refId%22%3A%22A%22%2C%22datasource%22%3A%7B%22type%22%3A%22grafana-pyroscope-datasource%22%2C%22uid%22%3A%22ddhnnosc07gn4e%22%7D%2C%22profileTypeId%22%3A%22process_cpu%3Acpu%3Ananoseconds%3Acpu%3Ananoseconds%22%7D%5D%2C%22range%22%3A%7B%22from%22%3A%22now-1h%22%2C%22to%22%3A%22now%22%7D%7D%7D&orgId=1) - Vishal
-- Local script execution successfully deployed to NFL ANs. Saw 35% reduction p50 request times. - Vishal
+- Local script execution successfully deployed to NFL ANs. Saw 35% reduction p90 request times. - Vishal
+- Local script execution successfully tested for Fnacraze. Saw 50% reduction p90 request times. - Vishal
 - Local transaction results deployed to all public ANs. Saw 50% reduction in requests to ENs - Vishal
 - Released [CLI preview.19](https://github.com/onflow/flow-cli/releases/tag/v1.17.0-cadence-v1.0.0-preview.19), unblocking local contract migration testing KR. - Jan
 - Cadence 1.0 migrations - all migrations completed for valid data, now working on handling of 2 broken state edge-cases. - Jan
