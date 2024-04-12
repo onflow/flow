@@ -3,6 +3,8 @@
 
 ### Team Wins 🎉
 - Integrated QuickNode Access node profiler with our Grafana [dashboard](https://flowfoundation.grafana.net/explore?schemaVersion=1&panes=%7B%222hf%22%3A%7B%22datasource%22%3A%22ddhnnosc07gn4e%22%2C%22queries%22%3A%5B%7B%22groupBy%22%3A%5B%5D%2C%22labelSelector%22%3A%22%7B%7D%22%2C%22spanSelector%22%3A%5B%5D%2C%22queryType%22%3A%22both%22%2C%22refId%22%3A%22A%22%2C%22datasource%22%3A%7B%22type%22%3A%22grafana-pyroscope-datasource%22%2C%22uid%22%3A%22ddhnnosc07gn4e%22%7D%2C%22profileTypeId%22%3A%22process_cpu%3Acpu%3Ananoseconds%3Acpu%3Ananoseconds%22%7D%5D%2C%22range%22%3A%7B%22from%22%3A%22now-1h%22%2C%22to%22%3A%22now%22%7D%7D%7D&orgId=1) - Vishal
+- Local script execution successfully deployed to NFL ANs. Saw 35% reduction p50 request times. - Vishal
+- Local transaction results deployed to all public ANs. Saw 50% reduction in requests to ENs - Vishal
 
 ### General updates
 
@@ -146,7 +148,16 @@ Cycle Objective(s):
 
 
 * <ins>Data Availability:</ins>
+  - Deployed local script exec to 40% FF nodes, 22% QN nodes
+  - Deployed local tx results to all public nodes
+  - Tested programs cache on mainnet ANs
+  - Profiling enabled on one QN AN
+  - Fix string concatination bottleneck discovered with new profiles ([PR #5592](https://github.com/onflow/flow-go/pull/5592))
+  - Upgrade libp2p on mainnet/testnet ([PR #5642](https://github.com/onflow/flow-go/pull/5642))
   - KROK Team
+    - Streaming account statuses endpoint ([PR #5406](https://github.com/onflow/flow-go/pull/5406))
+    - Unify Events API with new interfaces ([PR #5602](https://github.com/onflow/flow-go/pull/5602))
+    - Add integration tests for streaming blocks and observer APIs ([PR #5624](https://github.com/onflow/flow-go/pull/5624), [PR #5612](https://github.com/onflow/flow-go/pull/5612))
 
 **This sprint**
 
@@ -169,14 +180,14 @@ Cycle Objective(s):
 
 
 * <ins>Data Availability:</ins>
-  - Rollout local tx results to QuickNode ANs
-  - Work with QN to get profile collection deployed - support debugging script exec
-  - Enable programs cache on AN (Continue [PR #5585](https://github.com/onflow/flow-go/pull/5585) and testing)
+  - Continue to rollout local script exec to additional QN ANs
+  - Test local script exec with remaining studio nodes
+  - Enable programs cache on AN (complete [PR #5585](https://github.com/onflow/flow-go/pull/5585))
   - KROK Team
-    - Complete streaming account statuses endpoint ([PR #5406](https://github.com/onflow/flow-go/pull/5406))
-    - Add tx results to streaming SendAndSubscribe response ([PR #5566](https://github.com/onflow/flow-go/issues/5566))
-    - Unify Events API with new interfaces ([Issue #5557](https://github.com/onflow/flow-go/issues/5557))
-    - Add integration tests for streaming blocks and observer APIs ([PR #5572](https://github.com/onflow/flow-go/issues/5572), [PR #5573](https://github.com/onflow/flow-go/issues/5573))
+    - Complete adding tx results to streaming SendAndSubscribe response ([PR #5566](https://github.com/onflow/flow-go/issues/5566))
+    - Fix race condition in Access ingestion engine ([Issue #5420](https://github.com/onflow/flow-go/issues/5420))
+    - Support enabling indexing on Dynamic bootstrapped AN ([Issue #5423](https://github.com/onflow/flow-go/issues/5423))
+    - Event streaming blog post
 
 
 **On Hold**
