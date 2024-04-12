@@ -13,7 +13,7 @@
 - Added emulator fuctionality now makes it possible to [run an emulator using existing checkpoint file](https://github.com/onflow/flow-emulator/pull/620). - Jan
 - CodeRabbit AI PRs reviews / summaries are [cool](https://github.com/onflow/flow-evm-gateway/pull/186#issuecomment-2039857061)! - Jan
 - Long running Go routine leak that had been a thorn in our side for some time now fixed thanks to lilbp2p update - Jerome
-- Fixed CPU compatibility issue for ArtBlocks node resolving the last remaining crypto upgrade compatibility problem
+- Fixed CPU compatibility issue for ArtBlocks node resolving the last remaining crypto upgrade compatibility problem - Jerome
 
 ### General updates
 
@@ -218,7 +218,7 @@ Cycle Objective(s):
 * Translate crypto performance improvements to consensus block rate increase
 * Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node
 * Reduce CPU usage on Execution node by 30%
-* Continue design and implementation of Sporkless Epoch Fallback Recovery solution
+* Continue design and implementation of Sporkless Epoch Fallback Recovery solution [DONE]
 
 **Done last Sprint:**
 
@@ -309,14 +309,16 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* Completed milestone #6 of JVM SDK update to analyze scope of work for subsequent update phase 
+* Completed milestone #6 of JVM SDK update to analyze scope of work for subsequent update phase
+* Continued discussions with Circle about migration to EVM based USDC from Cadence
 
 **This sprint**
 
-* Start milestones #5 & #6 of JVM SDK update to update example repo, then analyze scope of work for subsequent grant 
+* Review plan/proposal for next phase of JVM SDK update to bring it back to feature parity after years of being overlooked
+* Start ramping [DeBridge](https://docs.debridge.finance/) integration for EVM
 
 **On Hold**
-- Axelar release waiting confirmation of new timeline, no engineering ongoing
+- Axelar bridge release waiting confirmation of new timeline, no engineering ongoing
 
 **Active Epics**
 
