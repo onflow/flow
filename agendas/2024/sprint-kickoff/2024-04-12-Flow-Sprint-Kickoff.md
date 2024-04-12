@@ -423,11 +423,37 @@ Cycle Objective(s):
 ### **Infra - JP**
 Cycle Objective(s): 
 - Finish GCP project migration to the Flow Foundation org
-- Start planning CloudFlare migration
-- Finish DevEx migration to Cloud Run
+- Remove dependency on Gen2 cluster resources for CloudFlare migration
+- Continue assisting with DevEx migration to Cloud Run
 
 **Done last sprint**
 
+**CloudFlare Migration**
+- Evaluate performance of TLS termination & processing with GCP load balancing
+- Delete unnecessary resources from Gen2 cluster 
+- Remove CloudFlare dependency for flow webflow endpoints
+- [Create infra & automation for hardware wallet api migration](https://github.com/dapperlabs/flow-devex-infrastructure)
+
+**DevEx Migration**
+- Assist with troubleshooting key indexer on Cloud Run
+
+**Observability & OnCall**
+- Work with QuickNode to enable continous profiling on ANs
+- Enable & validate delivery of alerts to both Grafana OnCall & Pagerduty
+
+**Node Hosting**
+- [Asissted DHT fix deployment to all FF & DL nodes](https://www.notion.so/flowfoundation/Mainne24-v0-33-14-upgrades-0dcd60bb4ea64d338caf907562e47440)
+- [Pruned Devnet & Mainnet node logs to clean up boot disks](https://www.notion.so/flowfoundation/AN-Boot-Disk-Cleanup-on-TN-MN-535aaa3c2eb944edae02a196f0bd85f4)
+
+**Support**
+- [Create development instance for Krok team](https://github.com/dapperlabs/terraform/pull/4208)
+- [Create additional KMS keys for token distribution](https://github.com/dapperlabs/terraform/pull/4207)
+- Created initial PRs for migrating to Flow Foundation VPN services
+
+**Goal of Sprint is to continue migration efforts** 
+**This Sprint**
+- Finish Gen2 cluster clean up and migration to GCP load balancing
+- Move GCP projects to Flow Foundation as needed
 
 ---
 
