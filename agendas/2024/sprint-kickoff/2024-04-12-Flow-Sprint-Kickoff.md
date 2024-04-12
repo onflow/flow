@@ -21,7 +21,8 @@
 
 ### OOO
 - [Full List](https://www.notion.so/flowfoundation/de89aa4e79364216a665888335a1cdee?v=4de18b26f60d4bae8f62724dddcce260)
-- Starting Next Week:
+- Starting this week:
+   - Kshitij [4/12 - 4-19]
 
 ---
 
