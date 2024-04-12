@@ -457,24 +457,24 @@ Cycle Objective(s):
 
 ---
 
-### **Governance and Tokenomics** \[Kshitij]
+### **Governance and Tokenomics** \[Vishal]
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
 **Done last sprint**
-- Forum post regarding proposals on EVM gas and transaction fee reviewed, published, and shared on Discord. Working groups were briefed to disseminate details of the proposed changes to the community in upcoming meetings. See the post [here](https://forum.flow.com/t/proposing-transaction-fee-changes-and-flow-evm-gas-charges-for-flow-crescendo-launch/5817)
-- Modeled inflation reduction options including the impact on validator incentives. Discussed pros and cons with Dete; additional research is needed on new potential options that surfaced aimed at minimizing impact on validators, token holders, and network security. See deck [here](https://docs.google.com/presentation/d/1EBYqB8FwxHtOwaQMHiId0ZZv4bRNThNYrgF5-CZeI8M/edit?pli=1#slide=id.g26c5efcb5cb_0_280)
+- Forum [post](https://forum.flow.com/t/proposing-transaction-fee-changes-and-flow-evm-gas-charges-for-flow-crescendo-launch/5817) regarding proposals on EVM gas and transaction fee published.
+- Modeled inflation reduction and had the first round of internal discussion; additional research is needed on new potential options.See deck [here](https://docs.google.com/presentation/d/1EBYqB8FwxHtOwaQMHiId0ZZv4bRNThNYrgF5-CZeI8M/edit?pli=1#slide=id.g26c5efcb5cb_0_280)
 - Impact of transaction fee increase on partner costs was assessed by pulling latest data for top 20 transaction payers on Flow. Discussions held with BD/partnership team, and the timeline for partner outreach is set for mid-May. See research [here](https://docs.google.com/spreadsheets/d/1PPxxAotsIYLzydAnuBAgQe1BmEcamiuSQUmsDtrpaKs/edit#gid=1414811201)
-- Working Groups convened to address challenges related to hosting working groups, particularly the formalization of WGs that have transitioned them into more structured townhall-style meetings rather than informal participatory sessions where tangible work was accomplished. Going forward, WGs wouldn't overtly concern themselves with formalization and structures except keeping GitHub pages updated after meetings
-- Monthly Governance Working Group meeting was convened - Governance OKR updates were shared along with current status of FLIPs; also invited new community operators to set up consensus nodes (to maintain decentralization)
+- Working Groups convened to address challenges related to hosting working groups, particularly the formalization of WGs that have transitioned them into more structured townhall-style meetings rather than informal participatory sessions where tangible work was accomplished.
+- Ran the monthly Governance Working Group meeting and gave Governance OKR updates, update on current status of FLIPs and announced availability of 5 new consensus node slots (to maintain decentralization)
 
 **This sprint**
 
-- For decentralization efforts, work with a16z to consolidate three nodes, and with Coinbase to reduce one node they operate on leased stake
-- Automation of decentralization dashboard to send messages when critical thresholds are crossed
 - Gather and respond to community feedback on the forum post
-- Draft FLIP on EVM gas to compute ratio and compute limit hike
+- For decentralization efforts, work with a16z to consolidate three nodes, and with Coinbase to reduce one node they operate on leased stake
+- Continue work on automation of the decentralization dashboard to send messages when critical thresholds are crossed
+- Draft FLIP on EVM gas to compute ratio and compute limit hike.
 - Update FLIP on transaction fee to suggest a transaction fee multiplier closely tied to FLOW token's market price
-- Continue research on Inflation (new strategies, other networks, validator impact, etc.) and sync with Dete again
+- Continue research on Inflation (new strategies, other networks, validator impact, etc.) and have a second round of review.
   
 
 **On Hold**
