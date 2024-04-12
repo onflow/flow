@@ -406,6 +406,9 @@ Cycle Objective(s):
 
 - Complete Web3.js integration, authorization
 - VM Bridge integration, moving FT and NFT in app.
+- Product scoping for next cycle:
+  - Identifying needed polish + bug fixes
+  - Next product opportunities
 - CTD: Outreach with Coinbase Wallet, MetaMask, Shadow Wallet and Blocto
 - CTD: Working with Apple on app approval & release
 
