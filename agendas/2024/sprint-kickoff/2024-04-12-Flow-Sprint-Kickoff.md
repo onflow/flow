@@ -463,9 +463,8 @@ Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inf
 **Done last sprint**
 - Forum [post](https://forum.flow.com/t/proposing-transaction-fee-changes-and-flow-evm-gas-charges-for-flow-crescendo-launch/5817) regarding proposals on EVM gas and transaction fee published.
 - Modeled inflation reduction options and had the first round of internal discussion; additional research is needed on new potential options. See deck [here](https://docs.google.com/presentation/d/1EBYqB8FwxHtOwaQMHiId0ZZv4bRNThNYrgF5-CZeI8M/edit?pli=1#slide=id.g26c5efcb5cb_0_280)
-- Impact of transaction fee increase on partner costs was assessed by pulling latest data for top 20 transaction payers on Flow. Discussions held with BD/partnership team, and the timeline for partner outreach is set for mid-May. See research [here](https://docs.google.com/spreadsheets/d/1PPxxAotsIYLzydAnuBAgQe1BmEcamiuSQUmsDtrpaKs/edit#gid=1414811201)
-- Working Groups convened to address challenges related to hosting working groups, particularly the formalization of WGs that have transitioned them into more structured townhall-style meetings rather than informal participatory sessions where tangible work was accomplished.
-- Ran the monthly Governance Working Group meeting and gave Governance OKR updates, update on current status of FLIPs and announced availability of 5 new consensus node slots (to maintain decentralization)
+- Impact of transaction fee increase on partner costs was assessed by pulling the latest data for the top 20 transaction payers on Flow. Discussions were held with BD/partnership team, and the timeline for partner outreach is set for mid-May. See research [here](https://docs.google.com/spreadsheets/d/1PPxxAotsIYLzydAnuBAgQe1BmEcamiuSQUmsDtrpaKs/edit#gid=1414811201)
+- Ran the monthly Governance Working Group meeting and gave Governance OKR updates, updated on the current status of FLIPs and announced the availability of 5 new consensus node slots (to maintain decentralization)
 
 **This sprint**
 
