@@ -12,7 +12,8 @@
 - New utility that generates data for dynamic bootstrapping without  the need to create EN disk snapshot (enables [generating a protocol snapshot file for specified execution state checkpoint[(https://github.com/onflow/flow-go/issues/5580)]). - Jan
 - Added emulator fuctionality now makes it possible to [run an emulator using existing checkpoint file](https://github.com/onflow/flow-emulator/pull/620). - Jan
 - CodeRabbit AI PRs reviews / summaries are [cool](https://github.com/onflow/flow-evm-gateway/pull/186#issuecomment-2039857061)! - Jan
-- Long running Go routine leak that had been a thorn in our side for some time now fixed thanks to lilbp2p update (Jerome)
+- Long running Go routine leak that had been a thorn in our side for some time now fixed thanks to lilbp2p update - Jerome
+- Fixed CPU compatibility issue for ArtBlocks node resolving the last remaining crypto upgrade compatibility problem
 
 ### General updates
 
@@ -223,20 +224,19 @@ Cycle Objective(s):
 
 * <ins>Zero-downtime Upgrades of Node Software:</ins>
   - Smart contract to coordinate protocol upgrade ([PR #411](https://github.com/onflow/flow-core-contracts/pull/411) in progress)
-
-
+  - Completed large [refactoring of Dynamic Protocol State](https://github.com/onflow/flow-go/pull/5616) supporting decomposition of whole state to sub-states with orthogonal processing state machines
+  - [Continued adding support changing protocol state ID in protocol snapshot](https://github.com/onflow/flow-go/pull/5656)
+    
 * <ins>EFM Recovery</ins>
-  * Tooling to generate data for EFM recovery ([PR #5576](https://github.com/onflow/flow-go/pull/5576) in progress)
-
+  * Tooling to generate data for EFM recovery ([PR #5576](https://github.com/onflow/flow-go/pull/5576) merging)
 
 * <ins>Cryptography</ins>
   - Randomness-on chain contract: aligning on solution + implemented proposal + implemented tests ([PR #416](https://github.com/onflow/flow-core-contracts/pull/416) in progress)
   - New cryptography stack: 
     - fix CPU-compatability issue: `Artblocks` are unblocked, root cause and long-term solutions are still ongoing (requires `Figment`'s help)
-
-
+  
 * <ins>Consensus speedup:</ins>
-
+  - (Working group) Consensus Speedup - created [plan to increase block rate](https://www.notion.so/flowfoundation/Cruise-Control-headroom-for-speedups-46dc17e07ae14462b03341e4432a907d?pvs=4#2e10de62e6454402ba6b7ee350f98e10)
 
 * <ins>Data Availability:</ins>
   - Deployed local script exec to 40% FF nodes, 22% QN nodes
@@ -253,15 +253,19 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Zero-downtime Upgrades of Node Software:</ins>
+  - [Finalize and merge PR for querying of KV Store](https://github.com/onflow/flow-go/pull/5650)
   - Cleanup and fix tests (large!)
   - Finish smart contract to coordinate protocol upgrade ([PR #411](https://github.com/onflow/flow-core-contracts/pull/411))
   - Continue on integration tests ([draft PR #5477](https://github.com/onflow/flow-go/pull/5477))
-
+  - Implementation and PR reviews of remaining loose ends for KV Store integration
+  - Completing https://github.com/onflow/flow-go/pull/5656
+  - Version upgrade protocol integration test will be unblocked, [preparing for review](https://github.com/onflow/flow-go/pull/5477)
 
 * <ins>EFM Recovery</ins>
   - Generate data for EFM recovery (complete [PR #5576](https://github.com/onflow/flow-go/pull/5576) and potential follow-up)
   - Start on [Governance Transaction to initiate EFM recovery](https://github.com/dapperlabs/flow-go/issues/6956)
-
+  - [Wrap up cadence changes](https://github.com/onflow/flow-go/issues/5638)
+  - [EFM recovery e2e integration tests](https://github.com/onflow/flow-go/issues/5639)
 
 * <ins>Cryptography</ins>
    - Randomness-on chain contract: finish the implementation and update the contracts onchain
