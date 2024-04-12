@@ -269,10 +269,8 @@ Cycle Objective(s):
   - [EFM recovery e2e integration tests](https://github.com/onflow/flow-go/issues/5639)
 
 * <ins>Cryptography</ins>
-   - Randomness-on chain contract: finish the implementation and update the contracts onchain
-   - new cryptography stack: 
-      - continue on CPU-compatability issue
-      - extra build docs in all repos
+   - Randomness-on chain contract: merge then deploy contracts onchain
+   - BLS proof of possession: check the state of old epic and remaining work
 
 
 * <ins>Data Availability:</ins>
