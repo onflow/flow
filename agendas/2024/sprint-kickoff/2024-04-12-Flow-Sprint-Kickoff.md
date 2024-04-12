@@ -450,7 +450,7 @@ Cycle Objective(s):
 - [Create additional KMS keys for token distribution](https://github.com/dapperlabs/terraform/pull/4207)
 - Created initial PRs for migrating to Flow Foundation VPN services
 
-**Goal of Sprint is to continue migration efforts** 
+**Goal of this Sprint is to continue migration efforts** 
 **This Sprint**
 - Finish Gen2 cluster clean up and migration to GCP load balancing
 - Move GCP projects to Flow Foundation as needed
