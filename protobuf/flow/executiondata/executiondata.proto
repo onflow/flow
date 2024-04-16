@@ -23,6 +23,10 @@ service ExecutionDataAPI {
   rpc GetExecutionDataByBlockID(GetExecutionDataByBlockIDRequest)
       returns (GetExecutionDataByBlockIDResponse);
 
+  // Warning: this endpoint is deprecated and will be removed in future versions.
+  // Use SubscribeExecutionDataFromStartBlockID, SubscribeExecutionDataFromStartBlockHeight
+  // or SubscribeExecutionDataFromLatest.
+  //
   // SubscribeExecutionData streams execution data for all blocks starting at
   // the requested start block, up until the latest available block. Once the
   // latest is reached, the stream will remain open and responses are sent for
@@ -32,13 +36,54 @@ service ExecutionDataAPI {
   // - InvalidArgument is returned if the request contains an invalid start
   // block.
   // - NotFound is returned if the start block is not currently available on the
-  // node. This may
-  //   happen if the block was from a previous spork, or if the block has yet
-  //   not been received.
+  // node. This may happen if the block was from a previous spork, or if the block
+  // has yet not been received.
   rpc SubscribeExecutionData(SubscribeExecutionDataRequest)
+      returns (stream SubscribeExecutionDataResponse) {
+      option deprecated = true;
+  };
+
+  // SubscribeExecutionDataFromStartBlockID streams execution data for all blocks
+  // starting at the requested start block, up until the latest available block.
+  // Once the latest is reached, the stream will remain open and responses are
+  // sent for each new execution data as it becomes available.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid start
+  // block.
+  // - NotFound is returned if the start block is not currently available on the
+  // node. This may happen if the block was from a previous spork,
+  // or if the block has yet not been received.
+  rpc SubscribeExecutionDataFromStartBlockID(
+      SubscribeExecutionDataFromStartBlockIDRequest)
       returns (stream SubscribeExecutionDataResponse);
 
-  // Warning: this function is deprecated and will be removed in a future version.
+  // SubscribeExecutionDataFromStartBlockHeight streams execution data for all blocks
+  // starting at the requested start block, up until the latest available block.
+  // Once the latest is reached, the stream will remain open and responses are
+  // sent for each new execution data as it becomes available.
+  //
+  // Errors:
+  // - InvalidArgument is returned if the request contains an invalid start
+  // block.
+  // - NotFound is returned if the start block is not currently available on the
+  // node. This may happen if the block was from a previous spork,
+  // or if the block has yet not been received.
+  rpc SubscribeExecutionDataFromStartBlockHeight(
+      SubscribeExecutionDataFromStartBlockHeightRequest)
+      returns (stream SubscribeExecutionDataResponse);
+
+  // SubscribeExecutionDataFromStartBlockHeight streams execution data for all blocks
+  // starting from the latest block.
+  //
+  // Errors:
+  // - NotFound is returned if the start block is not currently available on the
+  // node. This may happen if the block was from a previous spork,
+  // or if the block has yet not been received.
+  rpc SubscribeExecutionDataFromLatest(SubscribeExecutionDataFromLatestRequest)
+      returns (stream SubscribeExecutionDataResponse);
+
+  // Warning: this endpoint is deprecated and will be removed in future versions.
   // Use SubscribeEventsFromStartBlockID, SubscribeEventsFromStartHeight or SubscribeEventsFromLatest.
   //
   // SubscribeEvents streams events for all blocks starting at the requested
@@ -130,7 +175,7 @@ service ExecutionDataAPI {
   // Errors:
   // - InvalidArgument is returned if the request contains an invalid EventFilter.
   rpc SubscribeEventsFromLatest(SubscribeEventsFromLatestRequest)
-      returns (stream SubscribeEventsResponse);    
+      returns (stream SubscribeEventsResponse);
 
   // GetRegisterValues gets the values for the given register IDs as of the given block height
   rpc GetRegisterValues(GetRegisterValuesRequest)
@@ -258,6 +303,39 @@ message SubscribeExecutionDataResponse {
 
   // Timestamp from the block containing the execution data.
   google.protobuf.Timestamp block_timestamp = 3;
+}
+
+// The request for SubscribeExecutionDataFromStartBlockIDRequest
+message SubscribeExecutionDataFromStartBlockIDRequest {
+  // Block ID of the first block to get execution data for.
+  bytes start_block_id = 1;
+
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 2;
+}
+
+// The request for SubscribeExecutionDataFromStartBlockHeightRequest
+message SubscribeExecutionDataFromStartBlockHeightRequest {
+  // Block height of the first block to get execution data for.
+  uint64 start_block_height = 1;
+
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 2;
+}
+
+// The request for SubscribeExecutionDataFromLatestRequest
+message SubscribeExecutionDataFromLatestRequest {
+  // Preferred event encoding version of the block events payload.
+  // Possible variants:
+  // 1. CCF
+  // 2. JSON-CDC
+  entities.EventEncodingVersion event_encoding_version = 1;
 }
 
 // The request for SubscribeEvents
