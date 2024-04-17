@@ -573,7 +573,10 @@ paths:
   /subscribe_events:
     get:
       summary: Subscribe events
-      description: Streaming on-chain events for all blocks starting at the requested start block, up until the latest available block. Once the latest is reached, the stream will remain open and responses are sent for each new block as it becomes available.
+      description: |
+        IMPORTANT NOTE: This is a WebSocket connection, so the `ws://` or `wss://` schema should be used to subscribe to this endpoint.
+
+        This endpoint streams on-chain events for all blocks starting at the requested start block, up until the latest available block. Once the latest block is reached, the stream will remain open, and responses will be sent for each new block as it becomes available.
       tags:
         - Subscribe events
       responses:
@@ -1261,7 +1264,7 @@ components:
       description: |
         Bad Request
       
-        As OpenAPI does not support websocket description, this error code actually \"1003\" and is returned in a close message.
+        As OpenAPI does not support WebSocket description, the error code (1003) is actually returned in a close message instead of (400).
       content:
         application/json:
           schema:
@@ -1270,7 +1273,7 @@ components:
       description: |
         Server Timeout
         
-        As OpenAPI does not support websocket description, this error code actually \"1001\" and return in a close message.
+        As OpenAPI does not support WebSocket description, this error code (1001) is actually returned in a close message instead of (408).
       content:
         application/json:
           schema:
@@ -1279,7 +1282,7 @@ components:
       description: |
         Internal Server Error
         
-        As OpenAPI does not support websocket description, this error code actually \"1011\" and return in a close message.
+        As OpenAPI does not support WebSocket description, this error code (1011) is actually returned in a close message instead of (500).
       content:
         application/json:
           schema:
@@ -1288,7 +1291,7 @@ components:
       description: |
         Service Unavailable
         
-        As OpenAPI does not support websocket description, this error code actually \"1013\" and return in a close message.
+        As OpenAPI does not support WebSocket description, this error code (1013) is actually returned in a close message instead of (503).
       content:
         application/json:
           schema:
