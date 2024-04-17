@@ -137,7 +137,7 @@ func (a *SubscribeEventsApiService) SubscribeEventsGet(ctx context.Context, loca
 				newErr.model = v
 				return localVarReturnValue, localVarHttpResponse, newErr
 		}
-		if localVarHttpResponse.StatusCode == 1001 {
+		if localVarHttpResponse.StatusCode == 400 {
 			var v ModelError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
@@ -147,7 +147,7 @@ func (a *SubscribeEventsApiService) SubscribeEventsGet(ctx context.Context, loca
 				newErr.model = v
 				return localVarReturnValue, localVarHttpResponse, newErr
 		}
-		if localVarHttpResponse.StatusCode == 1003 {
+		if localVarHttpResponse.StatusCode == 408 {
 			var v ModelError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
@@ -157,7 +157,7 @@ func (a *SubscribeEventsApiService) SubscribeEventsGet(ctx context.Context, loca
 				newErr.model = v
 				return localVarReturnValue, localVarHttpResponse, newErr
 		}
-		if localVarHttpResponse.StatusCode == 1011 {
+		if localVarHttpResponse.StatusCode == 500 {
 			var v ModelError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
@@ -167,7 +167,7 @@ func (a *SubscribeEventsApiService) SubscribeEventsGet(ctx context.Context, loca
 				newErr.model = v
 				return localVarReturnValue, localVarHttpResponse, newErr
 		}
-		if localVarHttpResponse.StatusCode == 1013 {
+		if localVarHttpResponse.StatusCode == 503 {
 			var v ModelError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
