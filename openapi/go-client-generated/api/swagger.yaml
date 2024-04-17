@@ -1089,37 +1089,41 @@ paths:
               schema:
                 $ref: '#/components/schemas/SubscribeEvents'
         "400":
-          description: Bad Request
+          description: |
+            Bad Request
+
+            As OpenAPI does not support websocket description, this error code actually \"1003\" and is returned in a close message.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          x-comments: "As OpenAPI does not support websocket description, this error\
-            \ code actually \"1003\" and return in a close message"
         "408":
-          description: Server Timeout
+          description: |
+            Server Timeout
+
+            As OpenAPI does not support websocket description, this error code actually \"1001\" and return in a close message.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          x-comments: "As OpenAPI does not support websocket description, this error\
-            \ code actually \"1001\" and return in a close message"
         "500":
-          description: Internal Server Error
+          description: |
+            Internal Server Error
+
+            As OpenAPI does not support websocket description, this error code actually \"1011\" and return in a close message.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          x-comments: "As OpenAPI does not support websocket description, this error\
-            \ code actually \"1011\" and return in a close message"
         "503":
-          description: Service Unavailable
+          description: |
+            Service Unavailable
+
+            As OpenAPI does not support websocket description, this error code actually \"1013\" and return in a close message.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          x-comments: "As OpenAPI does not support websocket description, this error\
-            \ code actually \"1013\" and return in a close message"
 components:
   schemas:
     Account:
@@ -2267,37 +2271,41 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
     "400BadRequestWS":
-      description: Bad Request
+      description: |
+        Bad Request
+
+        As OpenAPI does not support websocket description, this error code actually \"1003\" and is returned in a close message.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-      x-comments: "As OpenAPI does not support websocket description, this error code\
-        \ actually \"1003\" and return in a close message"
     "408ServerTimeoutWS":
-      description: Server Timeout
+      description: |
+        Server Timeout
+
+        As OpenAPI does not support websocket description, this error code actually \"1001\" and return in a close message.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-      x-comments: "As OpenAPI does not support websocket description, this error code\
-        \ actually \"1001\" and return in a close message"
     "500InternalServerErrorWS":
-      description: Internal Server Error
+      description: |
+        Internal Server Error
+
+        As OpenAPI does not support websocket description, this error code actually \"1011\" and return in a close message.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-      x-comments: "As OpenAPI does not support websocket description, this error code\
-        \ actually \"1011\" and return in a close message"
     "503ServiceUnavailableWS":
-      description: Service Unavailable
+      description: |
+        Service Unavailable
+
+        As OpenAPI does not support websocket description, this error code actually \"1013\" and return in a close message.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-      x-comments: "As OpenAPI does not support websocket description, this error code\
-        \ actually \"1013\" and return in a close message"
   parameters:
     expandParam:
       name: expand
