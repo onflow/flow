@@ -32,6 +32,9 @@
 
 ## Incidents
 
+1. April 18th - Sev 2: The average response time for all API requests served by the public access nodes increased significantly. Incident report available [here](https://www.notion.so/flowfoundation/High-response-time-on-Access-Nodes-04-18-2024-d70e8e08bd894c3a814a030eb7469d63).
+   
+2. April 19th - Sev 3: After the rolling deployment of v0.33.17 several verification nodes ran out of disk space due to spikes in disk usage caused by badger compaction. [slack thread](https://dapperlabs.slack.com/archives/CUU2KQL4A/p1713544909496029)
 
 ### Key Release Dates & Breaking Changes
 
