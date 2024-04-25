@@ -151,7 +151,6 @@ EVM
 
 Cadence 1.0 Contract updates
 - [Continued working through contract standards](https://github.com/onflow/docs/issues/716)
-- [FLIP 262: Require matching access modifiers for interface implementation members](https://github.com/onflow/flips/pull/263)
 - Spent time reviewing various Cadence 1.0 upgrade PRs for DL and in the community
 - [Update V2 FT standard to move Withdrawn event to Vault and add balanceAfter params](https://github.com/onflow/flow-ft/pull/158)
 
