@@ -3,6 +3,8 @@
 
 ### Team Wins 🎉
 
+- First TN state migrated with both Atree inlining and C1.0 bootstrapped on Migration Testnet & passed Epoch transition. Atree inlining reduced the EN memory usage from ~280GB to 132GB - 54% reduction in memory usage!
+
 ### General updates
 
 
@@ -78,6 +80,69 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+State migration to Crescendo release
+- [Atree Inlining & Deduplication with Cadence v1.0](https://github.com/onflow/flow-go/pull/5554)
+- [Use existing storage health check](https://github.com/onflow/flow-go/pull/5756)
+- [Add migration to fix refs to non-existent registers](https://github.com/onflow/flow-go/pull/5755)
+- [Remove unused parameter from contract validator](https://github.com/onflow/cadence/pull/3278)
+- [Entitlement inference in entitlement migration grants too many entitlements](https://github.com/onflow/cadence/issues/3253)
+- [Add a migration which detects and filters out unreferenced slabs](https://github.com/onflow/flow-go/pull/5653)
+    - Related Atree feature: [Enable migrations to fix references to non-existent registers](https://github.com/onflow/atree/pull/387)
+        - [Add PersistentSlabStorage.GetAllChildReferences()](https://github.com/onflow/atree/pull/391)
+- [Tool for converting staged contracts migration report from JSON to Markdown](https://github.com/onflow/cadence/pull/3249)
+- [Run migration to fix up storage-used at the end](https://github.com/onflow/flow-go/pull/5676)
+- [Improve JSON encoding of reporter entries](https://github.com/onflow/flow-go/pull/5675)
+- [Improve program checking in Cadence 1.0 migration](https://github.com/onflow/cadence/issues/3233)
+- [Only log failed staged updates if verbose logging is enabled](https://github.com/onflow/flow-go/pull/5665)
+- [Collect staged contracts from the storage itself](https://github.com/onflow/flow-go/pull/5659)
+- [Improve migrations](https://github.com/onflow/flow-go/pull/5657)
+- [Improve naming for migrator runtime](https://github.com/onflow/flow-go/pull/5652)
+- [Add flag for verbose error output to migrations](https://github.com/onflow/flow-go/pull/5645)
+- Performance optimizations:
+    - [create snapshot map with multiple goroutines](https://github.com/onflow/flow-go/pull/5646)
+    - [Cache results of entitlement type conversion](https://github.com/onflow/cadence/pull/3232)
+    - [Optimise merge registers for migrations](https://github.com/onflow/flow-go/pull/5613)
+
+Cadence 1.0 improvements & bugixes
+- [FLIP 262 Implementation - Require matching access modifiers for interface implementation members](https://github.com/onflow/cadence/issues/3245)
+- [FLIP 242 Implementation - Improve Public Capability Acquisition](https://github.com/onflow/cadence/pull/3252)
+- [Improve dictionary key conflict handling](https://github.com/onflow/cadence/pull/3240)
+- [Improve supported entitlements](https://github.com/onflow/cadence/pull/3251)
+- [Conformance mismatch errors are not descriptive/helpful enough](https://github.com/onflow/cadence/issues/3275)
+- [Improve conformance mismatch error](https://github.com/onflow/cadence/pull/3274)
+- [Optional Reference Types and References to Optional Types are represented with the same TypeID](https://github.com/onflow/cadence/issues/3248)
+- Security fixes: [1](https://github.com/onflow/cadence/pull/3267), [2](https://github.com/onflow/cadence/pull/3257), [3](https://github.com/onflow/cadence/pull/3235)
+
+Crescendo release chores
+- Depencdency updates
+    - Cadence: [1](https://github.com/onflow/cadence/pull/3270), [2](https://github.com/onflow/cadence/pull/3259), [3](https://github.com/onflow/cadence/pull/3258), [4](https://github.com/onflow/cadence/pull/3256), [4](https://github.com/onflow/cadence/pull/3255), [5](https://github.com/onflow/cadence/pull/3254)
+    - flow-go: [1](https://github.com/onflow/flow-go/pull/5775), [2](https://github.com/onflow/flow-go/pull/5766), [3](https://github.com/onflow/flow-go/pull/5765), [4](https://github.com/onflow/flow-go/pull/5758), [5](https://github.com/onflow/flow-go/pull/5743), [6](https://github.com/onflow/flow-go/pull/5741), [7](https://github.com/onflow/flow-go/pull/5738), [8](https://github.com/onflow/flow-go/pull/5736), [9](https://github.com/onflow/flow-go/pull/5734), [10](https://github.com/onflow/flow-go/pull/5669), [11](https://github.com/onflow/flow-go/pull/5667), [12](https://github.com/onflow/flow-go/pull/5654)
+    - flow-go-sdk: [1](https://github.com/onflow/flow-go-sdk/pull/634), [2](https://github.com/onflow/flow-go-sdk/pull/625), [3](https://github.com/onflow/flow-go-sdk/pull/618)
+    - Other chores related to releasing:
+        - [Adjust branches of downstream dependency checks](https://github.com/onflow/cadence/pull/3280)
+        - [Update atree register inlining for Cadence v1.0 feature branch](https://github.com/onflow/flow-go/pull/5768)
+
+Cadence Execution
+- Race condition bugfix: [Fix block queue edge case](https://github.com/onflow/flow-go/pull/5753)
+- [Log the checkpoint file when using generating protocol snapshot from](https://github.com/onflow/flow-go/pull/5680)
+- Fix for potential execution fork on dynamically-bootstrapped EN:
+    - [limit the height range when querying getBlock in FVM](https://github.com/onflow/flow-go/pull/5607)
+    - [v0.33 adjust extra blocks in sealing segment](https://github.com/onflow/flow-go/pull/5673)
+- bugfix: [Fix unsafeTraverse error handling](https://github.com/onflow/flow-go/pull/5661)
+- Creating protocol snapshot from checkpoint file:
+    - [Checkpoint - validate the header file and sub file when reading root hashes](https://github.com/onflow/flow-go/issues/5623)
+- Progress towards: [Ingestion engine does not handle EN falling far behind](https://github.com/onflow/flow-go/issues/5298)
+    - [Add ingestion throttle](https://github.com/onflow/flow-go/pull/5337)
+    - [Refactor ingestion engine mempool](https://github.com/onflow/flow-go/issues/5297)
+        - [add ingestion core](https://github.com/onflow/flow-go/pull/5288)
+
+EVM
+- [populate EVM block timestamp](https://github.com/onflow/flow-go/issues/5610)
+- [Fix EVM load test](https://github.com/onflow/flow-go/pull/5737)
+- [Clean up EVM environment setup](https://github.com/onflow/flow-go/pull/5668)
+
+Other
+- [ Make TPS loader input more flexible](https://github.com/onflow/flow-go/issues/5490)
 
 **This sprint**
 
@@ -85,7 +150,7 @@ Objective 1, KR 1: Enable Developers and the Flow Foundation to simulate Cadence
 * [Emulator release is ready](https://github.com/onflow/flow-cli/releases/tag/v1.17.0-cadence-v1.0.0-preview.19), support devs that are teting migration, monitor Discord questions.
 
 Objective 1, KR4: Testnet Upgrade to Crescendo Release
-* Testnet migration completed, moving on to adding [Atree register inlining](https://github.com/onflow/cadence/pull/3048) migration and validating migrated state on the TN migration environment.
+* Completed Testnet migration with both Atree inlining and Cadence 1.0.
 * Continue work on migration optimizations.
 * Continue with [EVM Gateway development](https://github.com/onflow/flow-evm-gateway/issues/126) and [EVM Core development](https://github.com/onflow/flow-go/issues/5536) for production readiness.
 
