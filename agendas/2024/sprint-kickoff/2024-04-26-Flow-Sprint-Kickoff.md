@@ -385,16 +385,39 @@ Cycle Objective(s):
 
 ### **Infra - JP**
 Cycle Objective(s): 
-- Finish GCP project migration to the Flow Foundation org
-- Remove dependency on Gen2 cluster resources for CloudFlare migration
+- Solidify CloudFlare Migration plan and continue preparing for migration
 - Continue assisting with DevEx migration to Cloud Run
 
 **Done last sprint**
 
+**Observability**
+- Worked with QN to receive system metrics
+- Configured new data source for accessing QN metrics in Grafana
+
+**Node Hosting**
+- [Increased Devnet Disk sizes](https://github.com/dapperlabs/terraform/pull/4215)
+- [Increased Mainnet Disk sizes](https://github.com/dapperlabs/terraform/pull/4215)
+- [Updated dedicated DL ANs to increase memory](https://github.com/dapperlabs/terraform/pull/4215)
+- [Added support for dynamic docker run flags on VMs](https://github.com/dapperlabs/dapper-flow-hosting/pull/)
+- Reclaimed disk space on DL EN by deleting CDPs1482)
+
+**FF Migration**
+- [Migrate Gen2 ingresses to GCP load balancer](https://github.com/dapperlabs/terraform/pull/4216)
+- Update & tested firewalls with new FF VPN IPs
+
+**Support**
+- [Assisted in troubleshooting CI jobs hanging](https://github.com/onflow/flow-go/pull/5770)
+- [Assisted with Previewnet updates](https://github.com/dapperlabs/dapper-flow-hosting/pull/1481)
+- [Update TPS Automation Instance Shape](https://github.com/dapperlabs/terraform/pull/4216)
+- Assisted with QuickNode performance issues
+- Executed rolling upgrade of `v0.33.17` to FF & DL Mainnet nodes
+- Increased Buildjet limits to improve concurrent execution of CI jobs
+
 **Goal of this Sprint is to continue migration efforts** 
 **This Sprint**
-- Finish Gen2 cluster clean up and migration to GCP load balancing
-- Move GCP projects to Flow Foundation as needed
+- Solidify CloudFlare Migration plan and continue preparing for migration
+- Continue assisting with DevEx migration to Cloud Run
+- Improve synthetic alerting 
 
 ---
 
