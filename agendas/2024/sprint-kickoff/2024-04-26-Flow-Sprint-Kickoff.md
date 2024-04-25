@@ -3,7 +3,9 @@
 
 ### Team Wins 🎉
 
-- First TN state migrated with both Atree inlining and C1.0 bootstrapped on Migration Testnet & passed Epoch transition. Atree inlining reduced the EN memory usage from ~280GB to 132GB - 54% reduction in memory usage!
+- First TN state migrated with both Atree inlining and C1.0 bootstrapped on Migration Testnet & passed Epoch transition. Atree inlining reduced the EN memory usage from ~280GB to 132GB - 54% reduction in memory usage! [Jan]
+- Cross-VM bridge is code complete (save for more testing) and also deployed to PreviewNet! Contract audit starts next Monday! [Greg]
+- 
 
 ### General updates
 
@@ -194,28 +196,24 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>Zero-downtime Upgrades of Node Software:</ins>
+  - PRs necessary for KVStore [M2] Milestone 2: Minimal Upgrade Mechanism deployment are completed or in review
+    - [Support changing protocol state ID in sealing segment - in review](https://github.com/onflow/flow-go/pull/5656#top)
+    - [Integration test for version upgrade - in review](https://github.com/onflow/flow-go/pull/5477/files#top)
+    - [Reducing duplicated data in the Snapshot data structure \(remove EncodableEpoch\) - in review](https://github.com/onflow/flow-go/pull/5682#top)
+
 
 **This sprint**
 
 * <ins>Zero-downtime Upgrades of Node Software:</ins>
-  - [Finalize and merge PR for querying of KV Store](https://github.com/onflow/flow-go/pull/5650)
-  - Cleanup and fix tests (large!)
-  - Finish smart contract to coordinate protocol upgrade ([PR #411](https://github.com/onflow/flow-core-contracts/pull/411))
-  - Continue on integration tests ([draft PR #5477](https://github.com/onflow/flow-go/pull/5477))
-  - Implementation and PR reviews of remaining loose ends for KV Store integration
-  - Completing https://github.com/onflow/flow-go/pull/5656
-  - Version upgrade protocol integration test will be unblocked, [preparing for review](https://github.com/onflow/flow-go/pull/5477)
-
+  - [Dynamic Protocol State - todos, suggested revisions and tech debt](https://github.com/onflow/flow-go/issues/5666#top)
+    
 * <ins>EFM Recovery</ins>
-  - Generate data for EFM recovery (complete [PR #5576](https://github.com/onflow/flow-go/pull/5576) and potential follow-up)
-  - Start on [Governance Transaction to initiate EFM recovery](https://github.com/dapperlabs/flow-go/issues/6956)
-  - [Wrap up cadence changes](https://github.com/onflow/flow-go/issues/5638)
-  - [EFM recovery e2e integration tests](https://github.com/onflow/flow-go/issues/5639)
+  -
+
 
 * <ins>Cryptography</ins>
-   - Randomness-on chain contract: merge then deploy contracts onchain
-   - BLS proof of possession: check the state of old epic and remaining work
-
+   - N/A this sprint as Tarak was OOO
 
 * <ins>Data Availability:</ins>
   - Continue to rollout local script exec to additional QN ANs
@@ -251,14 +249,16 @@ Cycle Objective(s):
 - Bridge Prep - Axelar
 
 **Done last sprint**
+* Supported Pyth with their initial efforts to onboard to EVM
+* Confirmed with Anchain and Axelar that development for Axelar Cadence bridge will likely resume in early May
 
 **This sprint**
 
-* Review plan/proposal for next phase of JVM SDK update to bring it back to feature parity after years of being overlooked
-* Start ramping [DeBridge](https://docs.debridge.finance/) integration for EVM
+* Review plan/proposal for next phase of JVM SDK update and get contract and timelines agreed
+* Review IncrementFi Cadence 1.0 contract upgrades
 
 **On Hold**
-- Axelar Cadence bridge release waiting confirmation of new timeline, no engineering ongoing
+- Axelar Cadence bridge release waiting confirmation of build partners, costs and timelines for EVM release, no engineering ongoing
 
 **Active Epics**
 
