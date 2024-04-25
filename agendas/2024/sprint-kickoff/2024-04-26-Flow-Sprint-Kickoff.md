@@ -41,7 +41,7 @@
 - Next Mainnet/Testnet network upgrade (spork):
   - Testnet: 5/22/24
   - Mainnet: June/July 2024 (exact date TBD)
-- Two testnet migration test runs completed
+- Testnet migration test runs conducted every week.
 
 ---
 
