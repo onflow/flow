@@ -16,7 +16,7 @@
 
 ---
 
-### Mainnet Uptime - Last 7 days (xx/yy/24 to xx/yy/24) \[Vishal]
+### Mainnet Uptime - Last 14 days (04/12/24 to 04/26/24) \[Vishal]
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
