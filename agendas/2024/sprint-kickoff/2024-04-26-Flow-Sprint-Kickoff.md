@@ -245,17 +245,19 @@ Cycle Objective(s):
 
 Cycle Objective(s): 
 - Resolving Circle's existing engineering improvements for USDC on Flow
-- DEX Prep - IncrementFi
+- Cadence 1.0 DEX Prep - IncrementFi
+- EVM partner onboarding: Pyth, DeBridge
 - Bridge Prep - Axelar
 
 **Done last sprint**
 * Supported Pyth with their initial efforts to onboard to EVM
 * Confirmed with Anchain and Axelar that development for Axelar Cadence bridge will likely resume in early May
+* Conducted initial review of IncrementFi Cadence 1.0 contract updates, provided feedback
 
 **This sprint**
 
 * Review plan/proposal for next phase of JVM SDK update and get contract and timelines agreed
-* Review IncrementFi Cadence 1.0 contract upgrades
+* Continue review of IncrementFi Cadence 1.0 contract upgrades
 
 **On Hold**
 - Axelar Cadence bridge release waiting confirmation of build partners, costs and timelines for EVM release, no engineering ongoing
