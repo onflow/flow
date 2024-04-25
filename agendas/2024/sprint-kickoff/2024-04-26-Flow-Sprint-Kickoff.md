@@ -147,6 +147,13 @@ EVM
 - [populate EVM block timestamp](https://github.com/onflow/flow-go/issues/5610)
 - [Fix EVM load test](https://github.com/onflow/flow-go/pull/5737)
 - [Clean up EVM environment setup](https://github.com/onflow/flow-go/pull/5668)
+- Continued reviewing VM Bridge PRs
+
+Cadence 1.0 Contract updates
+- [Continued working through contract standards](https://github.com/onflow/docs/issues/716)
+- [FLIP 262: Require matching access modifiers for interface implementation members](https://github.com/onflow/flips/pull/263)
+- Spent time reviewing various Cadence 1.0 upgrade PRs for DL and in the community
+- [Update V2 FT standard to move Withdrawn event to Vault and add balanceAfter params](https://github.com/onflow/flow-ft/pull/158)
 
 Other
 - [ Make TPS loader input more flexible](https://github.com/onflow/flow-go/issues/5490)
@@ -172,6 +179,12 @@ Objective 3: Analyze execution runtime trends and risks to plan next set of scal
 
 * Start Atree optimization: [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
 
+Cadence 1.0 Contract updates
+- [Continue working through contract standards](https://github.com/onflow/docs/issues/716)
+- More reviews of bridge PRs and Cadence 1.0 changes 
+- Writing additional tests for recent Cadence FLIP changes
+- [Audit and update docs and tutorials for Cadence 1.0](https://github.com/onflow/docs/issues/531)
+
 **On Hold**
 
 Objective 2: Calibrate Transaction fees so that they accurately reflect resource usage during execution and deploy as part of Crescendo to avoid future disruption
@@ -194,7 +207,7 @@ Objective 3: Analyze execution runtime trends and risks to plan next set of scal
 ### **Core Protocol** \[Jerome]
 Cycle Objective(s): 
 
-* Translate crypto performance improvements to consensus block rate increase
+* Translate crypto performance improvements to consensus block rate increase [DONE]
 * Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node
 * Reduce CPU usage on Execution node by 30%
 * Continue design and implementation of Sporkless Epoch Fallback Recovery solution [DONE]
@@ -208,6 +221,17 @@ Cycle Objective(s):
     - [Reducing duplicated data in the Snapshot data structure \(remove EncodableEpoch\) - in review](https://github.com/onflow/flow-go/pull/5682#top)
     - [API safety improvements and documentation - in review](https://github.com/onflow/flow-go/pull/5644#top)
 
+* <ins>Core contracts:</ins>
+  - Source of Randomness
+    - [SoR history updates](https://github.com/onflow/flow-core-contracts/pull/416), released to testnet and mainnet
+    - [Update multisig to upgrade RandomBeacon history](https://github.com/onflow/service-account/pull/290)
+  - [Prepped and executed service account transaction to fix id table](https://github.com/onflow/service-account/pull/289)
+  - [Add entitlement for locked account creator](https://github.com/onflow/flow-core-contracts/pull/423)
+
+
+
+* <ins>Other misc:</ins>
+  - Completed initial planning review for Protocol priorities for next OKR cycle
 
 **This sprint**
 
@@ -218,8 +242,8 @@ Cycle Objective(s):
   -
 
 
-* <ins>Cryptography</ins>
-   - N/A this sprint as Tarak was OOO
+* <ins>Cryptography:</ins>
+   - N/A this sprint as Tarak was out-of-office
 
 * <ins>Data Availability:</ins>
   - Continue to rollout local script exec to additional QN ANs
@@ -252,13 +276,14 @@ Cycle Objective(s):
 Cycle Objective(s): 
 - Resolving Circle's existing engineering improvements for USDC on Flow
 - Cadence 1.0 DEX Prep - IncrementFi
-- EVM partner onboarding: Pyth, DeBridge
-- Bridge Prep - Axelar
+- EVM partner onboarding: Pyth, DeBridge, Coinmetrics
+- Deliver Axelar bridge
 
 **Done last sprint**
 * Supported Pyth with their initial efforts to onboard to EVM
 * Confirmed with Anchain and Axelar that development for Axelar Cadence bridge will likely resume in early May
 * Conducted initial review of IncrementFi Cadence 1.0 contract updates, provided feedback
+* [Proposed USDC Cadence 1.0 changes](https://github.com/flow-usdc/flow-usdc/pull/82) - Josh
 
 **This sprint**
 
