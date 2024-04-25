@@ -150,7 +150,7 @@ EVM
 - Continued reviewing VM Bridge PRs
 
 Cadence 1.0 Contract updates
-- [Continued working through contract standards](https://github.com/onflow/docs/issues/716)
+- [Continued working through contract standards needing upgrade to C1.0](https://github.com/onflow/docs/issues/716)
 - Spent time reviewing various Cadence 1.0 upgrade PRs for DL and in the community
 - [Update V2 FT standard to move Withdrawn event to Vault and add balanceAfter params](https://github.com/onflow/flow-ft/pull/158)
 
@@ -179,7 +179,7 @@ Objective 3: Analyze execution runtime trends and risks to plan next set of scal
 * Start Atree optimization: [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
 
 Cadence 1.0 Contract updates
-- [Continue working through contract standards](https://github.com/onflow/docs/issues/716)
+- [Continue working through contract standards needing upgrade to C1.0](https://github.com/onflow/docs/issues/716)
 - More reviews of bridge PRs and Cadence 1.0 changes 
 - Writing additional tests for recent Cadence FLIP changes
 - [Audit and update docs and tutorials for Cadence 1.0](https://github.com/onflow/docs/issues/531)
