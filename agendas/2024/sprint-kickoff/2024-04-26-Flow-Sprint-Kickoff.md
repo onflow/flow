@@ -36,6 +36,8 @@
    
 2. April 19th - Sev 3: After the rolling deployment of v0.33.17 several verification nodes ran out of disk space due to spikes in disk usage caused by badger compaction. [slack thread](https://dapperlabs.slack.com/archives/CUU2KQL4A/p1713544909496029)
 
+(Sev [definition](https://www.notion.so/dapperlabs/Incident-Priorities-Severity-Levels-b65d7682336c46baa025ee512fd3efa3))
+
 ### Key Release Dates & Breaking Changes
 
 - Next Mainnet/Testnet network upgrade (spork):
