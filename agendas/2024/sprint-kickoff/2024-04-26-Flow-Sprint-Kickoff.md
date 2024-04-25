@@ -204,8 +204,9 @@ Cycle Objective(s):
 * <ins>Zero-downtime Upgrades of Node Software:</ins>
   - PRs necessary for KVStore [M2] Milestone 2: Minimal Upgrade Mechanism deployment are completed or in review
     - [Support changing protocol state ID in sealing segment - in review](https://github.com/onflow/flow-go/pull/5656#top)
-    - [Integration test for version upgrade - in review](https://github.com/onflow/flow-go/pull/5477/files#top)
+    - [Integration test for version upgrade - in review](https://github.com/onflow/flow-go/pull/5477#top)
     - [Reducing duplicated data in the Snapshot data structure \(remove EncodableEpoch\) - in review](https://github.com/onflow/flow-go/pull/5682#top)
+    - [API safety improvements and documentation - in review](https://github.com/onflow/flow-go/pull/5644#top)
 
 
 **This sprint**
