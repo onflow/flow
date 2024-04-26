@@ -500,6 +500,7 @@ Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inf
 
 **This sprint**
 
+- Test governance changes (gas to evm ratio, 5x compute limit, 100x fee) on PreviewNet 
 - Review inflation strategies with the team, get feedback, remodel, conclude on the way forward
 - Draft FLIP on EVM gas to compute ratio and compute limit hike
 - Update transaction fee 100x FLIP to suggest a new transaction fee multipler, also update the market comps per the latest exchange rates to get it ready for reintroduction
