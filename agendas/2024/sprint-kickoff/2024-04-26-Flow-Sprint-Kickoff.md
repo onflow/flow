@@ -1,14 +1,15 @@
 # Overview
 
-
 ### Team Wins 🎉
 
 - First TN state migrated with both Atree inlining and C1.0 bootstrapped on Migration Testnet & passed Epoch transition. Atree inlining reduced the EN memory usage from ~280GB to 132GB - 54% reduction in memory usage! [Jan]
 - Cross-VM bridge is code complete (save for more testing) and also deployed to PreviewNet! Contract audit starts next Monday! [Greg]
-- 
+- Simplified CLI Quickstarts with Dependency Manager
+- Deployed hardware-wallet-api to cloudrun
+- Kicked-off newsletter subscription for developers
+- Cadence-lang.org Improvements & New Features Page
 
 ### General updates
-
 
 ### OOO
 - [Full List](https://www.notion.so/flowfoundation/de89aa4e79364216a665888335a1cdee?v=4de18b26f60d4bae8f62724dddcce260)
@@ -310,25 +311,43 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+- [Update CLI Quickstart to Use Dependency Manager #731](https://github.com/onflow/docs/issues/731)
+- [Update Flownaut on developer landing page with CryptoKitties: Arcade #743](https://github.com/onflow/docs/issues/743)
+- [Wagmi Tutorial #729](https://github.com/onflow/docs/issues/729)
+- [Add Newsletter sign up to developer docs landing page #717](https://github.com/onflow/docs/issues/717)
+- [Documentaion for Cadence Owned Accounts (COAs) #682](https://github.com/onflow/docs/issues/682)
+- [Use GitHub reports for is-validated command #1508](https://github.com/onflow/flow-cli/issues/1508)
+- [access(account) bug in contract update validator #1524](https://github.com/onflow/flow-cli/issues/1524)
+- [Embedded flags work in tests but not manually #1519](https://github.com/onflow/flow-cli/issues/1519)
+- [Add Dependency Manager messaging for when no actions were completed #1535](https://github.com/onflow/flow-cli/issues/1535)
+- [Add new text input and refactor for reusability #1526](https://github.com/onflow/flow-cli/issues/1526)
+- [Make sure in setup deployments prompt happens for dependency manager #1522](https://github.com/onflow/flow-cli/issues/1522)
+- [Create new select option and refactor to have separate prompt package and files #1520](https://github.com/onflow/flow-cli/issues/1520)
+- [flow init should ask what core contracts you'd like installed with dependency manager #1482](https://github.com/onflow/flow-cli/issues/1482)
+- [Deploy bridge contracts to Previewnet #9](https://github.com/onflow/flow-evm-bridge/issues/9)
+- [Map serialized EVM address to associated types #33](https://github.com/onflow/flow-evm-bridge/issues/33)
+- [Add support for batch onboarding txn & queries #34](https://github.com/onflow/flow-evm-bridge/issues/34)
+- [Update EVM contract interface #38](https://github.com/onflow/flow-evm-bridge/issues/38)
+- [Integrate existing Previewnet bridge deployment with updated EVM contract #40](https://github.com/onflow/flow-evm-bridge/issues/40)
+- [Transaction crashing go sdk when calling ID() #631](https://github.com/onflow/flow-go-sdk/issues/631)
+
 **This sprint**
-**Sprint goal focusing on updating EVM docs, tooling support, CLI Interactive Setup**
+**Sprint goal focusing on: Flow Port Asset Bridge and Token Transfer, Splitting Dev Docs (Cadence 1.0/Legacy), and adding EVM docs for Cadence Devs**
 
+- [EPIC] Flow Port Asset Bridge [#284](https://github.com/onflow/flow-port/issues/284)
 - [EPIC] EVM Docs [#654](https://github.com/onflow/docs/issues/654)
-- [EPIC] FlowEVM Docs - Cadence Dev [#575](https://github.com/onflow/docs/issues/575)
-- [EPIC] Enhance CLI init Command with Interactive Setup, Config Automation, and Default Project Structure [#1390](https://github.com/onflow/flow-cli/issues/1390)
-- [EPIC] Update Internal Tools and Repos for C1.0 Support [#530](https://github.com/onflow/docs/issues/530)
-- Write new doc on Sponsored Transactions under Advanced Topics [#692](https://github.com/onflow/docs/issues/692)
-- Testing Ledger Cadence v1.0 transactions [#20](https://github.com/onflow/fcl-six/issues/20)
-- Testing complex contracts deployment to previewnet EVM [#713](https://github.com/onflow/docs/issues/713)
-- Stage and test core contracts 
-- Circle USDC contract changes and integrations
-- Add newsletter signup to developer landing page [#717](https://github.com/onflow/docs/issues/717)
+- [EPIC] Flow EVM Docs - Cadence Dev [#575](https://github.com/onflow/docs/issues/575)
+- [EPIC] Spilt Dev Docs into Cadence 1.0 and Legacy [#738](https://github.com/onflow/docs/issues/738)
 
+#### Smart Contract WG
+
+- Reviews for Increment.fi
+- NFTStorefront v1 & v2 Cadence 1.0 Refactor [#89](https://github.com/onflow/nft-storefront/pull/89)
+- EVM Bridge prep for deployment and Audit
 
 **On Hold**
 
 - Update Flow port for Cadence Crescendo instance [#279](https://github.com/onflow/flow-port/issues/279)
-- Blocked: Update Playground to support Cadence 1.0 [#760](https://github.com/onflow/flow-playground/issues/760)
 
 ---
 
