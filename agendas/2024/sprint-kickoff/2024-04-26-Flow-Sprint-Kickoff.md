@@ -54,22 +54,29 @@
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 7  |    8   |       0          |       5          |        **20**          |
-| Proposed    | 3  |    2     |       2          |       1          |        **8**          |
-| Accepted    | 2  |    1     |       1       |       2          |        **6**          |
+| Drafted     | 6 (-1)  |    8   |       0          |       7 (+2)          |        **21** (+1)          |
+| Proposed    | 1 (-2)  |    2     |       2          |       0 (-1)          |        **5** (-3)          |
+| Accepted    | 2  |    1     |       1       |       1          |        **5** (-1)          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 1  |    19    |       2       |       0          |        **22**          |
-| Released    | 4  |    0     |       3       |       4          |        **11**          |
-| Total       | **17**  |    **30**    |       **9**       |       **12**          |        **68**          |
+| Implemented | 3 (+2) |    21 (+2)    |       2       |       1 (+1)          |        **7** (+5)          |
+| Released    | 4  |    0     |       3       |       6 (+2)          |        **13** (+2)          |
+| Total       | **16** (-1)  |    **32** (+2)    |       **9**       |       **15** (+3)          |        **72** (+4)          |
 
-- No new FLIPs or changes during the sprint
-- Some FLIPs are still not reflected in the project tracker. **Remember**: FLIP process starts with an issue creation.
-(https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
-### Untagged FLIPs -
-- https://github.com/onflow/flips/pull/246 
-- https://github.com/onflow/flips/pull/250
-- https://github.com/onflow/flips/pull/256
-  
+**New FLIPs tracked now**
+* [Protocol] Message Forensic (MF) System - protocol FLIP
+* [Protocol] Passkey Support - protocol FLIP
+
+**Marked as Released**
+* [Protocol] On-Chain randomness history for commit-reveal schemes
+* [Protocol] Expand Access Streaming API with new endpoints
+
+**Implemented**
+* [Cadence] random function
+* [Cadence] Require matching access modifiers for interface implementation members (yesterday)
+* [Protocol] FVM supporting EVM
+* [Application] Flow EVM Gateway
+* [Application] FlowEVM VM Bridge
+
 ---
 
 
