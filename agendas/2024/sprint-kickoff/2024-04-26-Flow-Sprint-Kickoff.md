@@ -238,8 +238,12 @@ Cycle Objective(s):
     - [Integration test for version upgrade - in review](https://github.com/onflow/flow-go/pull/5477#top)
     - [Reducing duplicated data in the Snapshot data structure \(remove EncodableEpoch\) - in review](https://github.com/onflow/flow-go/pull/5682#top)
     - [API safety improvements and documentation - in review](https://github.com/onflow/flow-go/pull/5644#top)
+    - [Merged PR necessary for M2](https://github.com/onflow/flow-go/pull/5650)
+    - Discussions about finalizing M2 and future scope of work
+    - Prepared [PR](https://github.com/onflow/flow-go/pull/5681) with test to catch an edge case
+    - Started implementation of EFM recovery protocol part. Started PR for [injecting epoch extensions](https://github.com/onflow/flow-go/pull/5773) 
 
-* <ins>Core contracts:</ins>
+* <ins>Core Protocol contracts:</ins>
   - Source of Randomness
     - [SoR history updates](https://github.com/onflow/flow-core-contracts/pull/416), released to testnet and mainnet
     - [Update multisig to upgrade RandomBeacon history](https://github.com/onflow/service-account/pull/290)
@@ -263,6 +267,8 @@ Cycle Objective(s):
 
 * <ins>Zero-downtime Upgrades of Node Software:</ins>
   - [Dynamic Protocol State - todos, suggested revisions and tech debt](https://github.com/onflow/flow-go/issues/5666#top)
+  - Reviews for open M2 PRs, priority to close the milestone
+  - Apply comments and finalize https://github.com/onflow/flow-go/pull/5773
     
 * <ins>EFM Recovery</ins>
 
