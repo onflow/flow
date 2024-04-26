@@ -114,6 +114,11 @@ State migration to Crescendo release
     - [Cache results of entitlement type conversion](https://github.com/onflow/cadence/pull/3232)
     - [Optimise merge registers for migrations](https://github.com/onflow/flow-go/pull/5613)
 
+Cadence 1.0 Contract updates
+- [Continued working through contract standards needing upgrade to C1.0](https://github.com/onflow/docs/issues/716)
+- Spent time reviewing various Cadence 1.0 upgrade PRs for DL and in the community
+- [Update V2 FT standard to move Withdrawn event to Vault and add balanceAfter params](https://github.com/onflow/flow-ft/pull/158)
+  
 Cadence 1.0 improvements & bugixes
 - [FLIP 262 Implementation - Require matching access modifiers for interface implementation members](https://github.com/onflow/cadence/issues/3245)
 - [FLIP 242 Implementation - Improve Public Capability Acquisition](https://github.com/onflow/cadence/pull/3252)
