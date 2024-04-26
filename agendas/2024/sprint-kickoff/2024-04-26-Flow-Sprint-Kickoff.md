@@ -490,8 +490,8 @@ Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inf
 **Done last sprint**
 - Inflation research -
    -    synced and brainstormed with Dete
-   -    modeled new options - stake vs APY to consider lowering overall stake to reduce inflation; exlored segregated delegation as an option; Researched target staking ratio methodology to control inflation [see [worksheet](https://docs.google.com/spreadsheets/d/1jr-P9ZQB3hDEZFh3pjktRnhIe0jFrMz4hn4_EFGHfK4/edit#gid=2070083906)]
-- 3 key Crescendo Governance changes
+   -    modeled new options - stake vs APY to consider lowering overall stake to reduce inflation; explored segregated delegation as an option; Researched target staking ratio methodology to control inflation [see [worksheet](https://docs.google.com/spreadsheets/d/1jr-P9ZQB3hDEZFh3pjktRnhIe0jFrMz4hn4_EFGHfK4/edit#gid=2070083906)]
+- 3 key Governance updates for Crescendo
    -    Receiving and responding to Forum post feedback 
    -    Suggested Transaction fee multipler to implement 100x increase 
    -    Updated Transaction fee impact analysis on partners
