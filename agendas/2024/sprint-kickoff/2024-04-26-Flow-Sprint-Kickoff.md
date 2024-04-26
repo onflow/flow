@@ -27,7 +27,7 @@
 | Block Finalization      | 99.9%   |    100%       |       0%         |
 | Transaction Execution   | 99.9%   |    100%       |       0%         |
 | Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    99.99%    |       9.82%       |
+| Access API Liveness     | 99.9%   |    99.99%     |       12.1%      |
 
 [SLO dashboards](https://flowfoundation.grafana.net/d/hgW3l-m4k/slo-dashboard?orgId=1&from=now-2w&to=now)
 
