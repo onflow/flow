@@ -266,8 +266,8 @@ Cycle Objective(s):
    - N/A this sprint as Tarak was out-of-office
 
 * <ins>Data Availability:</ins>
-  - Continue to roll out local script exec to additional QN ANs
   - Test local script exec with remaining studio nodes
+  - Continue to debug slow response time on mainnet QN ANs
   - Continue to debug high memory usage on previewnet ANs
   - KROK Team
     - Continue work to support enabling indexing on Dynamic bootstrapped AN ([Issue #5423](https://github.com/onflow/flow-go/issues/5423))
