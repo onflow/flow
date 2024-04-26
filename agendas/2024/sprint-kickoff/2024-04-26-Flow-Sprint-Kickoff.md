@@ -248,8 +248,11 @@ Cycle Objective(s):
     - [Merged PR necessary for M2](https://github.com/onflow/flow-go/pull/5650)
     - Discussions about finalizing M2 and future scope of work
     - Prepared [PR](https://github.com/onflow/flow-go/pull/5681) with test to catch an edge case
-    - Started implementation of EFM recovery protocol part. Started PR for [injecting epoch extensions](https://github.com/onflow/flow-go/pull/5773) 
-
+    - Started implementation of EFM recovery protocol part. Started PR for [injecting epoch extensions](https://github.com/onflow/flow-go/pull/5773)
+      
+* <ins>EFM Recovery</ins>
+  - Wrapped up EFM Recovery cadence changes https://github.com/onflow/flow-core-contracts/pull/420
+    
 * <ins>Core Protocol contracts:</ins>
   - Source of Randomness
     - [SoR history updates](https://github.com/onflow/flow-core-contracts/pull/416), released to testnet and mainnet
@@ -278,6 +281,8 @@ Cycle Objective(s):
   - Apply comments and finalize https://github.com/onflow/flow-go/pull/5773
     
 * <ins>EFM Recovery</ins>
+  - [EFM Recovery integration tests](https://github.com/onflow/flow-go/issues/5639)
+  - [Cancel in progress root QC voting](https://github.com/onflow/flow-go/issues/5733)
 
 
 * <ins>Cryptography:</ins>
