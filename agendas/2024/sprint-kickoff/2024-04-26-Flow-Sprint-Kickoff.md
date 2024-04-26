@@ -3,7 +3,7 @@
 ### Team Wins 🎉
 
 - First TN state migrated with both Atree inlining and C1.0 bootstrapped on Migration Testnet & passed Epoch transition. Atree inlining reduced the EN memory usage from ~280GB to 132GB - 54% reduction in memory usage! [Jan]
-- [Cadence release 22](https://github.com/onflow/cadence/releases/tag/v1.0.0-preview.22) addressed all remaining planned breaking changes. [Jan]
+- [Cadence 1.0 preview release 22](https://github.com/onflow/cadence/releases/tag/v1.0.0-preview.22) addressed all remaining planned breaking changes. [Jan]
 - EVM - 2 big features landed this week, EVM.batchRun & Revertible Randomness. [Jan]
 - Cross-VM bridge is code complete (save for more testing) and also deployed to PreviewNet! Contract audit starts next Monday! [Greg]
 - Simplified CLI Quickstarts with Dependency Manager
