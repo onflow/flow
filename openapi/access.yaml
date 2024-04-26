@@ -573,7 +573,10 @@ paths:
   /subscribe_events:
     get:
       summary: Subscribe events
-      description: Streaming on-chain events for all blocks starting at the requested start block, up until the latest available block. Once the latest is reached, the stream will remain open and responses are sent for each new block as it becomes available.
+      description: |
+        IMPORTANT NOTE: This is a WebSocket connection, so the `ws://` or `wss://` schema should be used to subscribe to this endpoint.
+
+        This endpoint streams on-chain events for all blocks starting at the requested start block, up until the latest available block. Once the latest block is reached, the stream will remain open, and responses will be sent for each new block as it becomes available.
       tags:
         - Subscribe events
       responses:
@@ -583,14 +586,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/SubscribeEvents'
           description: OK
-        '1001':
-          $ref: '#/components/responses/1001CloseGoingAway'
-        '1003':
-          $ref: '#/components/responses/1003CloseUnsupportedData'
-        '1011':
-          $ref: '#/components/responses/1011CloseInternalServerError'
-        '1013':
-          $ref: '#/components/responses/1013CloseTryAgaitLater'
+        '400':
+          $ref: '#/components/responses/400BadRequestWS'
+        '408':
+          $ref: '#/components/responses/408ServerTimeoutWS'
+        '500':
+          $ref: '#/components/responses/500InternalServerErrorWS'
+        '503':
+          $ref: '#/components/responses/503ServiceUnavailableWS'
       parameters:
         - name: start_height
           in: query
@@ -1239,32 +1242,56 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    408ServerTimeout:
+      description: Server Timeout
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     500InternalServerError:
       description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    1001CloseGoingAway:
-      description: Going Away
+    503ServiceUnavailable:
+      description: Service Unavailable
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    1003CloseUnsupportedData:
-      description: Unsupported Data
+    400BadRequestWS:
+      description: |
+        Bad Request
+      
+        As OpenAPI does not support WebSocket description, the error code (1003) is actually returned in a close message instead of (400).
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    1011CloseInternalServerError:
-      description: Internal Server Error
+    408ServerTimeoutWS:
+      description: |
+        Server Timeout
+        
+        As OpenAPI does not support WebSocket description, this error code (1001) is actually returned in a close message instead of (408).
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    1013CloseTryAgaitLater:
-      description: Try Agait Later
+    500InternalServerErrorWS:
+      description: |
+        Internal Server Error
+        
+        As OpenAPI does not support WebSocket description, this error code (1011) is actually returned in a close message instead of (500).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    503ServiceUnavailableWS:
+      description: |
+        Service Unavailable
+        
+        As OpenAPI does not support WebSocket description, this error code (1013) is actually returned in a close message instead of (503).
       content:
         application/json:
           schema:

@@ -26,7 +26,7 @@ var (
 type SubscribeEventsApiService service
 /*
 SubscribeEventsApiService Subscribe events
-Streaming on-chain events for all blocks starting at the requested start block, up until the latest available block. Once the latest is reached, the stream will remain open and responses are sent for each new block as it becomes available.
+IMPORTANT NOTE: This is a WebSocket connection, so the &#x60;ws://&#x60; or &#x60;wss://&#x60; schema should be used to subscribe to this endpoint.  This endpoint streams on-chain events for all blocks starting at the requested start block, up until the latest available block. Once the latest block is reached, the stream will remain open, and responses will be sent for each new block as it becomes available. 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *SubscribeEventsApiSubscribeEventsGetOpts - Optional Parameters:
      * @param "StartHeight" (optional.Interface of BlockHeight) -  The block height of the events being streamed. Either provide this parameter or &#x60;start_block_id&#x60; parameter. This parameter is incompatible with &#x60;start_block_id&#x60; parameter.
@@ -137,7 +137,7 @@ func (a *SubscribeEventsApiService) SubscribeEventsGet(ctx context.Context, loca
 				newErr.model = v
 				return localVarReturnValue, localVarHttpResponse, newErr
 		}
-		if localVarHttpResponse.StatusCode == 1001 {
+		if localVarHttpResponse.StatusCode == 400 {
 			var v ModelError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
@@ -147,7 +147,7 @@ func (a *SubscribeEventsApiService) SubscribeEventsGet(ctx context.Context, loca
 				newErr.model = v
 				return localVarReturnValue, localVarHttpResponse, newErr
 		}
-		if localVarHttpResponse.StatusCode == 1003 {
+		if localVarHttpResponse.StatusCode == 408 {
 			var v ModelError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
@@ -157,7 +157,7 @@ func (a *SubscribeEventsApiService) SubscribeEventsGet(ctx context.Context, loca
 				newErr.model = v
 				return localVarReturnValue, localVarHttpResponse, newErr
 		}
-		if localVarHttpResponse.StatusCode == 1011 {
+		if localVarHttpResponse.StatusCode == 500 {
 			var v ModelError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
@@ -167,7 +167,7 @@ func (a *SubscribeEventsApiService) SubscribeEventsGet(ctx context.Context, loca
 				newErr.model = v
 				return localVarReturnValue, localVarHttpResponse, newErr
 		}
-		if localVarHttpResponse.StatusCode == 1013 {
+		if localVarHttpResponse.StatusCode == 503 {
 			var v ModelError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
