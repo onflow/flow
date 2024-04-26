@@ -228,7 +228,15 @@ Cycle Objective(s):
   - [Prepped and executed service account transaction to fix id table](https://github.com/onflow/service-account/pull/289)
   - [Add entitlement for locked account creator](https://github.com/onflow/flow-core-contracts/pull/423)
 
-
+* <ins>Data Availability:</ins>
+  - Debugging slow response time on mainnet QN ANs
+    - Local tx results rolled back on public nodes, on hold for now
+  - Debugging high memory usage on previewnet ANs, upgraded `ipfs/boxo` libs ([PR #5774](https://github.com/onflow/flow-go/pull/5774))
+  - KROK Team
+    - Add tx result into `SendAndSubscribeTransactionStatuses` responses ([PR #5620](https://github.com/onflow/flow-go/pull/5620))
+    - Cleanup tech debt ([PR #5619](https://github.com/onflow/flow-go/pull/5619), [PR #5632](https://github.com/onflow/flow-go/pull/5632))
+    - Improve streaming API testing ([PR #5612](https://github.com/onflow/flow-go/pull/5612), [PR #5624](https://github.com/onflow/flow-go/pull/5624))
+    - Published [blog post](https://medium.com/@thekrokcompany/how-to-use-flow-event-subscription-23992f445ed0) on using event streaming with fcl
 
 * <ins>Other misc:</ins>
   - Completed initial planning review for Protocol priorities for next OKR cycle
@@ -239,21 +247,21 @@ Cycle Objective(s):
   - [Dynamic Protocol State - todos, suggested revisions and tech debt](https://github.com/onflow/flow-go/issues/5666#top)
     
 * <ins>EFM Recovery</ins>
-  -
 
 
 * <ins>Cryptography:</ins>
    - N/A this sprint as Tarak was out-of-office
 
 * <ins>Data Availability:</ins>
-  - Continue to rollout local script exec to additional QN ANs
+  - Continue to roll out local script exec to additional QN ANs
   - Test local script exec with remaining studio nodes
-  - Enable programs cache on AN (complete [PR #5585](https://github.com/onflow/flow-go/pull/5585))
+  - Continue to debug high memory usage on previewnet ANs
   - KROK Team
-    - Complete adding tx results to streaming SendAndSubscribe response ([PR #5566](https://github.com/onflow/flow-go/issues/5566))
-    - Fix race condition in Access ingestion engine ([Issue #5420](https://github.com/onflow/flow-go/issues/5420))
-    - Support enabling indexing on Dynamic bootstrapped AN ([Issue #5423](https://github.com/onflow/flow-go/issues/5423))
-    - Event streaming blog post
+    - Continue work to support enabling indexing on Dynamic bootstrapped AN ([Issue #5423](https://github.com/onflow/flow-go/issues/5423))
+    - Complete work to fix race condition in Access ingestion engine ([Issue #5420](https://github.com/onflow/flow-go/issues/5420))
+    - Update rosetta for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52))
+    - Address tech debt in APIs ([Issue #5558](https://github.com/onflow/flow-go/issues/5558), [Issue #5757](https://github.com/onflow/flow-go/issues/5757))
+    - Add support for version beacon events to control script execution ([Issue #5757](https://github.com/onflow/flow-go/issues/5757))
 
 
 **On Hold**

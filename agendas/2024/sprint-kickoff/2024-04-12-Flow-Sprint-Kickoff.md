@@ -244,7 +244,7 @@ Cycle Objective(s):
   - Deployed local tx results to all public nodes
   - Tested programs cache on mainnet ANs
   - Profiling enabled on one QN AN
-  - Fix string concatination bottleneck discovered with new profiles ([PR #5592](https://github.com/onflow/flow-go/pull/5592))
+  - Fix string concatenation bottleneck discovered with new profiles ([PR #5592](https://github.com/onflow/flow-go/pull/5592))
   - Upgrade libp2p on mainnet/testnet ([PR #5642](https://github.com/onflow/flow-go/pull/5642))
   - KROK Team
     - Streaming account statuses endpoint ([PR #5406](https://github.com/onflow/flow-go/pull/5406))
