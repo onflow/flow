@@ -10,6 +10,7 @@
 - Deployed hardware-wallet-api to cloudrun
 - Kicked-off newsletter subscription for developers
 - Cadence-lang.org Improvements & New Features Page
+- Successfully deployed Uniswap v4 to Previewnet
 
 ### General updates
 
