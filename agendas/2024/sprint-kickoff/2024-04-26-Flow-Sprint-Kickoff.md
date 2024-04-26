@@ -63,16 +63,16 @@
 | Total       | **16** (-1)  |    **32** (+2)    |       **9**       |       **15** (+3)          |        **72** (+4)          |
 
 **New FLIPs tracked now**
-* [Protocol] Message Forensic (MF) System - protocol FLIP
-* [Protocol] Passkey Support - protocol FLIP
+* [Protocol] Message Forensic (MF) System
+* [Protocol] Passkey Support
 
 **Marked as Released**
 * [Protocol] On-Chain randomness history for commit-reveal schemes
 * [Protocol] Expand Access Streaming API with new endpoints
 
 **Implemented**
-* [Cadence] random function
-* [Cadence] Require matching access modifiers for interface implementation members (yesterday)
+* [Cadence] Random function
+* [Cadence] Require matching access modifiers for interface implementation members
 * [Protocol] FVM supporting EVM
 * [Application] Flow EVM Gateway
 * [Application] FlowEVM VM Bridge
@@ -488,16 +488,24 @@ Cycle Objective(s):
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
 **Done last sprint**
+- Inflation research -
+   -    synced and brainstormed with Dete
+   -    modeled new options - stake vs APY to consider lowering overall stake to reduce inflation; exlored segregated delegation as an option; Researched target staking ratio methodology to control inflation [see [worksheet](https://docs.google.com/spreadsheets/d/1jr-P9ZQB3hDEZFh3pjktRnhIe0jFrMz4hn4_EFGHfK4/edit#gid=2070083906)]
+- 3 key Crescendo Governance changes
+   -    Receiving and responding to Forum post feedback 
+   -    Suggested Transaction fee multipler to implement 100x increase 
+   -    Updated Transaction fee impact analysis on partners
+   -    Shared changes during Protocol working group monthly meeting
+   -    Planned PreviewNet testing of changes
 
 **This sprint**
 
-- Gather and respond to community feedback on the forum post
-- For decentralization efforts, work with a16z to consolidate three nodes, and with Coinbase to reduce one node they operate on leased stake
-- Continue work on automation of the decentralization dashboard to send messages when critical thresholds are crossed
-- Draft FLIP on EVM gas to compute ratio and compute limit hike.
-- Update FLIP on transaction fee to suggest a transaction fee multiplier closely tied to FLOW token's market price
-- Continue research on Inflation (new strategies, other networks, validator impact, etc.) and have a second round of review.
-  
+- Review inflation strategies with the team, get feedback, remodel, conclude on the way forward
+- Draft FLIP on EVM gas to compute ratio and compute limit hike
+- Update transaction fee 100x FLIP to suggest a new transaction fee multipler, also update the market comps per the latest exchange rates to get it ready for reintroduction
+- Consolidate node operator data; assess which operator use lease tokens versus self-stake
+- Continue working on node operator branding and logos with .find team
+- Continue decentralization efforts - work with a16z to consolidate three nodes; with Coinbase to reduce one node they operate on leased stake; Continue work on automation of the decentralization dashboard to send messages when critical thresholds are crossed
 
 **On Hold**
 
