@@ -466,7 +466,7 @@ message SubscribeEventsResponse {
   // Timestamp from the block containing the events.
   google.protobuf.Timestamp block_timestamp = 4;
 
-  // The message index of the response message. Used by the client to ensure they received all messages. Starts from "0".
+  // The message index of the response message. Used by the client to ensure they received all messages. Starts from "1".
   uint64 message_index = 5;
 }
 
@@ -618,9 +618,8 @@ message SubscribeAccountStatusesResponse {
   // Block height of the block containing the events.
   uint64 block_height = 2;
 
-  // The MessageIndex of the response message.
-  // Used by the client to ensure they have received all messages.
-  uint64 messageIndex = 3;
+  // The message index of the response message. Used by the client to ensure they received all messages. Starts from "1".
+  uint64 message_index = 3;
 
   message Result {
         // Unique identifier for the account being streamed
