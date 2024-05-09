@@ -27,10 +27,10 @@
 
 ## Incidents
 
-1. Sev 3: 26th April: Public access nodes run by QuickNode in EU falling behind [slack thread](https://dapperlabs.slack.com/archives/C03HP6MAFGE/p1714139880086399)
-2. Sev 3: 26th April: Public access nodes run by QuickNode in EU falling behind [slack thread](https://dapperlabs.slack.com/archives/C03HP6MAFGE/p1714757713793539)
-3. Sev 3: 4th May: NBA stuck on continously retrying a script on a block heigh [slack thread](https://dapperlabs.slack.com/archives/CTGAW0TM2/p1714866679734789)
-4. Sev 3: 8th May: NBA getting timeout when fetching transactions on mainnet [slack thread](https://dapperlabs.slack.com/archives/CTGAW0TM2/p1715199157704169)
+1. Sev 3: 26th April: Public access nodes run by QuickNode in EU falling behind. [slack thread](https://dapperlabs.slack.com/archives/C03HP6MAFGE/p1714139880086399)
+2. Sev 3: 3rd May: High response time on Public ANs in North America. [slack thread](https://dapperlabs.slack.com/archives/C03HP6MAFGE/p1714757713793539)
+3. Sev 3: 4th May: NBA stuck on continuously retrying a script on a block height. [slack thread](https://dapperlabs.slack.com/archives/CTGAW0TM2/p1714866679734789)
+4. Sev 3: 8th May: NBA getting timeout when fetching transactions on mainnet. [slack thread](https://dapperlabs.slack.com/archives/CTGAW0TM2/p1715199157704169)
 
 (Sev [definition](https://www.notion.so/dapperlabs/Incident-Priorities-Severity-Levels-b65d7682336c46baa025ee512fd3efa3))
 
