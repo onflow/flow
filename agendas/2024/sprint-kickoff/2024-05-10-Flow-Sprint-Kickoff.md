@@ -3,6 +3,7 @@
 ### Team Wins 🎉
 
 - Unblocked JVM SDK artifact publishing GH automation which took several fiddly days of back and forth to figure out
+- Added one of the FF nodes to the QuickNode load balancer to enable easier testing and debugging of new Access node features with real user traffic.
 
 ### General updates
 
