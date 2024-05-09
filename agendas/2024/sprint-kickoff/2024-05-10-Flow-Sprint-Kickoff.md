@@ -145,6 +145,18 @@ Cycle Objective(s):
 * Continue design and implementation of Sporkless Epoch Fallback Recovery solution [DONE]
 
 **Done last Sprint:**
+* <ins>Zero-downtime Upgrades of Node Software:</ins>
+  - Merged [kvstore branch](https://github.com/onflow/flow-go/pull/5840) with master and Cadence 1.0 and successfully tested on Benchnet
+  - Extended tests for edge case in Dynamic Protocol State: https://github.com/onflow/flow-go/pull/5681
+  - Follow-up on KVStore
+    - [Fixing a KVStore encoding edge case](https://github.com/onflow/flow-go/pull/5854)
+    - [Simplifying snapshot model](https://github.com/onflow/flow-go/pull/5682)
+    
+* <ins>EFM Recovery</ins>
+  - [Applied suggestions and finalized first Dynamic Protocol State issue for EFM recovery](https://github.com/onflow/flow-go/pull/5773)
+  - PR reviews to finalize M2
+  - [Epoch Recover integration test](https://github.com/onflow/flow-go/issues/5886)
+  - [Investigate network/p2p flakey tests](https://github.com/onflow/flow-go/issues/5886) 
 
 
 **This sprint**
@@ -155,9 +167,10 @@ Cycle Objective(s):
   - Apply comments and finalize https://github.com/onflow/flow-go/pull/5773
     
 * <ins>EFM Recovery</ins>
-  - [EFM Recovery integration tests](https://github.com/onflow/flow-go/issues/5639)
+  - [Fix & re-enable flakey tests](https://github.com/onflow/flow-go/issues/5886)
+  - [Address Recover Epoch cadence PR feedback](https://github.com/onflow/flow-core-contracts/pull/420)
+  - [Wrap up integration test](https://github.com/onflow/flow-go/issues/5886)
   - [Cancel in progress root QC voting](https://github.com/onflow/flow-go/issues/5733)
-
 
 * <ins>Cryptography:</ins>
    - N/A this sprint as Tarak was out-of-office
