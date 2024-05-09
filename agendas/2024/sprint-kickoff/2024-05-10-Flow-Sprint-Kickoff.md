@@ -36,10 +36,11 @@
 (Sev [definition](https://www.notion.so/dapperlabs/Incident-Priorities-Severity-Levels-b65d7682336c46baa025ee512fd3efa3))
 
 ### Key Release Dates & Breaking Changes
-
+- Testnet HCU: 7th May ✔️
+- Mainnet HCU: 9th May ✔️
 - Next Mainnet/Testnet network upgrade (spork):
-  - Testnet: 5/22/24
-  - Mainnet: June/July 2024 (exact date TBD)
+  - Testnet: ~~5/22/24~~ 6/19/24
+  - Mainnet: July 2024 (exact date TBD)
 - Testnet migration test runs conducted every week.
 
 ---
