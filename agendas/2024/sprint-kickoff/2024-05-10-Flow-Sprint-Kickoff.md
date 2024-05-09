@@ -2,7 +2,7 @@
 
 ### Team Wins 🎉
 
-- 
+- Unblocked JVM SDK artifact publishing GH automation which took several fiddly days of back and forth to figure out
 
 ### General updates
 
@@ -194,16 +194,19 @@ Cycle Objective(s):
 Cycle Objective(s): 
 - Resolving Circle's existing engineering improvements for USDC on Flow
 - Cadence 1.0 DEX Prep - IncrementFi
-- EVM partner onboarding: Pyth, DeBridge, Coinmetrics
+- EVM partner onboarding: Pyth, DeBridge, Covalent, Etherscan
 - Deliver Axelar bridge
 
 **Done last sprint**
-
+- Onboarded DeBridge to PreviewNet
+- Unblocked JVM SDK artifact publishing GH automation which took several fiddly days of back and forth to figure out
+- Approved and funded proposal for second phase of JVM SDK upgrade to start bringing it to parity with the Go SDK
 
 **This sprint**
-
-* Review plan/proposal for next phase of JVM SDK update and get contract and timelines agreed
-* Continue review of IncrementFi Cadence 1.0 contract upgrades
+* Update JVM SDK examples repo now that latest version artifact successfully published
+* Implement multi-sig solution for Circle to help with USDC migration to EVM
+* Upgrade Band protocol contract to C1.0
+* Continue review of IncrementFi Cadence 1.0 contract upgrades (couldn't get to it in past sprint)
 
 **On Hold**
 - Axelar Cadence bridge release waiting confirmation of build partners, costs and timelines for EVM release, no engineering ongoing
@@ -225,6 +228,7 @@ Cycle Objective(s):
 - Use the Crescendo Release grow Flow's developer base and network activity
 
 **Done last sprint**
+-
 
 **This sprint**
 **Sprint goal focusing on: Flow Port Asset Bridge and Token Transfer, Splitting Dev Docs (Cadence 1.0/Legacy), and adding EVM docs for Cadence Devs**
