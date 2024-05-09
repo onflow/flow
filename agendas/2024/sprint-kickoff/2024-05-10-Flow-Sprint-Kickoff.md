@@ -27,9 +27,10 @@
 
 ## Incidents
 
-1. April 18th - Sev 2: The average response time for all API requests served by the public access nodes increased significantly. Incident report available [here](https://www.notion.so/flowfoundation/High-response-time-on-Access-Nodes-04-18-2024-d70e8e08bd894c3a814a030eb7469d63).
-   
-2. April 19th - Sev 3: After the rolling deployment of v0.33.17 several verification nodes ran out of disk space due to spikes in disk usage caused by badger compaction. [slack thread](https://dapperlabs.slack.com/archives/CUU2KQL4A/p1713544909496029)
+1. Sev 3: 26th April: Public access nodes run by QuickNode in EU falling behind [slack thread](https://dapperlabs.slack.com/archives/C03HP6MAFGE/p1714139880086399)
+2. Sev 3: 26th April: Public access nodes run by QuickNode in EU falling behind [slack thread](https://dapperlabs.slack.com/archives/C03HP6MAFGE/p1714757713793539)
+3. Sev 3: 4th May: NBA stuck on continously retrying a script on a block heigh [slack thread](https://dapperlabs.slack.com/archives/CTGAW0TM2/p1714866679734789)
+4. Sev 3: 8th May: NBA getting timeout when fetching transactions on mainnet [slack thread](https://dapperlabs.slack.com/archives/CTGAW0TM2/p1715199157704169)
 
 (Sev [definition](https://www.notion.so/dapperlabs/Incident-Priorities-Severity-Levels-b65d7682336c46baa025ee512fd3efa3))
 
