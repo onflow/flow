@@ -162,6 +162,17 @@ Cycle Objective(s):
   - [Epoch Recover integration test](https://github.com/onflow/flow-go/issues/5886)
   - [Investigate network/p2p flakey tests](https://github.com/onflow/flow-go/issues/5886) 
 
+* <ins>Data Availability:</ins>
+  - Add support for programs cache on access nodes ([PR #5585](https://github.com/onflow/flow-go/pull/5585))
+  - Failover script execution to EN when computation limit exceeded ([PR #5877](https://github.com/onflow/flow-go/pull/5877))
+  - Add options to disable DHT and bitswap reproviding ([PR #5827](https://github.com/onflow/flow-go/pull/5827))
+  - Log configuration at error level (help communicate configs on QN nodes) ([PR #5785](https://github.com/onflow/flow-go/pull/5785))
+  - Convert Ping engine to component ([PR #5649](https://github.com/onflow/flow-go/pull/5649))
+  - KROK Team
+    - Refactor ingestion engine to prevent lost data ([PR #5714](https://github.com/onflow/flow-go/pull/5714))
+    - Update ingestion engine to use consumer progress ([PR #5752](https://github.com/onflow/flow-go/pull/5752))
+    - Align ExecutionData API with new endpoints ([PR #5672](https://github.com/onflow/flow-go/pull/5672))
+    - Finished testing to support enabling indexing on Dynamic bootstrapped AN ([Issue #5423](https://github.com/onflow/flow-go/issues/5423))
 
 **This sprint**
 
@@ -180,14 +191,13 @@ Cycle Objective(s):
    - N/A this sprint as Tarak was out-of-office
 
 * <ins>Data Availability:</ins>
-  - Test local script exec with remaining studio nodes
-  - Continue to debug slow response time on mainnet QN ANs
-  - Continue to debug high memory usage on previewnet ANs
+  - Test local script exec with lower compute limit
+  - Continue debugging resource issues observed on QuickNode
   - KROK Team
-    - Continue work to support enabling indexing on Dynamic bootstrapped AN ([Issue #5423](https://github.com/onflow/flow-go/issues/5423))
-    - Complete work to fix race condition in Access ingestion engine ([Issue #5420](https://github.com/onflow/flow-go/issues/5420))
+    - Fix retries when using preferred-execution-nodes list ([Issue #5810](https://github.com/onflow/flow-go/issues/5810))
+    - Merge changes to support enabling indexing on Dynamic bootstrapped AN ([Issue #5423](https://github.com/onflow/flow-go/issues/5423) - PR in review)
     - Update rosetta for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52))
-    - Address tech debt in APIs ([Issue #5558](https://github.com/onflow/flow-go/issues/5558), [Issue #5757](https://github.com/onflow/flow-go/issues/5757))
+    - Address tech debt in APIs ([Issue #5757](https://github.com/onflow/flow-go/issues/5757) - PR in review)
     - Add support for version beacon events to control script execution ([Issue #5757](https://github.com/onflow/flow-go/issues/5757))
 
 
