@@ -4,6 +4,11 @@
 
 - Unblocked JVM SDK artifact publishing GH automation which took several fiddly days of back and forth to figure out
 - Added one of the FF nodes to the QuickNode load balancer to enable easier testing and debugging of new Access node features with real user traffic.
+- After over a year of development, flow-go stable-cadence (Cadence 1.0) branch [merged to master](https://github.com/onflow/flow-go/pull/5856)!
+- All planned and requested breaking changes in C1.0 delivered in the latest preview release, unblocking devs to test they migration to C1.0.
+- Fixed all known issues with C1.0 and Atree inlining state migrations. 
+- EVM updated to latest release and functional on Previewnet - All EVM changes needed for Testnet upgrade to Crescendo completed.
+- Positive community feedback on new proposal for Testnet upgrade process to Crescendo, using transaction failure mode for transactions importing unstaged contracts.
 
 ### General updates
 
@@ -93,16 +98,123 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+State migration to Crescendo release
+- [Unskip migration of Testnet accounts with broken data](https://github.com/onflow/flow-go/pull/5759)
+- [Mainnet state migration crashes on preview.22 build](https://github.com/onflow/cadence/issues/3287)
+    - [Handle missing staged contracts](https://github.com/onflow/flow-go/pull/5796)
+- [Testnet state migration preview.22 health check after migration error](https://github.com/onflow/cadence/issues/3288)
+    - [Add reproducer as test for Cadence 1.0 migration issue](https://github.com/onflow/cadence/pull/3314)
+    - [Fix Cadence 1.0 migration of dictionary values when using atree inlined data](https://github.com/onflow/cadence/pull/3316)
+    - [Improve dictionary migration](https://github.com/onflow/cadence/pull/3318)
+- [Improve migration logging, reports, and export broken slabs that were fixed to a new payloads file](https://github.com/onflow/flow-go/pull/5803)
+    - [port](https://github.com/onflow/flow-go/pull/5805)
+- [Test the migration of &NonFungibleToken.Provider](https://github.com/onflow/flow-go/pull/5807)
+- [Add predicate function and test for atree's PersistentSlabStorage.FixLoadedBrokenReferences](https://github.com/onflow/cadence/pull/3300)
+- [Update Cadence 1.0 Contract Upgrade Validator to reject unrepresentable entitlement sets](https://github.com/onflow/cadence/issues/3296)
+    - [Produce a validator error when contracts would produce unrepresentable entitlements sets in the migration](https://github.com/onflow/cadence/pull/3304)
+- [Use Cadence's predicate function to determine if given broken value should be fixed](https://github.com/onflow/flow-go/pull/5831)
+- [Migration optimization](https://github.com/onflow/cadence/issues/3297)
+    - [Reuse static type cache across migrations in different accounts](https://github.com/onflow/flow-go/pull/5847)
+    - [Make static type cache an interface](https://github.com/onflow/cadence/pull/3315)
+    - [Make migration error stacktrace configurable](https://github.com/onflow/cadence/pull/3322)
+    - [Cache results of migrations, e.g. static types, entitlements, etc.](https://github.com/onflow/cadence/issues/3326)
+        - [Add/improve caching in static type and entitlements migration](https://github.com/onflow/cadence/pull/3329)
+- Atree
+    - [Fix the migration feature that filters unreferenced slabs](https://github.com/onflow/atree/issues/395)
+        - [Fix migration filter for old unreferenced slabs](https://github.com/onflow/atree/pull/396)
+        - [Port](https://github.com/onflow/atree/pull/399)
+    - [SlabIterator should include nested storage ID](https://github.com/onflow/atree/issues/397)
+        - [Fix SlabIterator to include nested storage ID](https://github.com/onflow/atree/pull/398)
+
+Cadence Features / Improvements
+- Go API Breaking changes:
+    - [Remove access to fields by index](https://github.com/onflow/cadence/issues/2952)
+        - [Unexport fields to prevent access by index](https://github.com/onflow/cadence/pull/3290)
+    - [Remove Value.ToGoValue and NewValue](https://github.com/onflow/cadence/pull/3291)
+- [Enable attachments on mainnet](https://github.com/onflow/flow-go/pull/5866)
+- [Fuzzer - update the C1.0](https://github.com/dapperlabs/cadence-fuzzer/pull/43)
+- Security fixes: [1](https://github.com/dapperlabs/cadence-internal/pull/224), [2](https://github.com/dapperlabs/cadence-internal/pull/226), [3](https://github.com/dapperlabs/cadence-internal/pull/227)
+- Security improvements
+    - [Add runtime check for transaction value moves](https://github.com/onflow/cadence/pull/3298)
+    - [Add test for untyped optional nested-reference creation](https://github.com/onflow/cadence/pull/3317)
+- Bugfixes
+    - [Capability created with invalid ID when unrelated contract field is accessed](https://github.com/onflow/cadence/issues/3323)
+        - [Remove invalid ID capability error](https://github.com/onflow/cadence/pull/3325)
+    - [panic occurs when borrowing a contract interface from account](https://github.com/onflow/cadence/issues/3241)
+        - [Fix borrowing of contract interface](https://github.com/onflow/cadence/pull/3327)
+- Docs
+    - [Clean up entitlements docs](https://github.com/onflow/cadence-lang.org/pull/97)
+- Util: [Add a command to generate a mermaid diagram](https://github.com/onflow/cadence/pull/3307)
+
+
+Crescendo release chores
+- flow-go: [1](https://github.com/onflow/flow-go/pull/5887), [2](https://github.com/onflow/flow-go/pull/5792), [3](https://github.com/onflow/flow-go/pull/5793), [4](https://github.com/onflow/flow-go/pull/5806), [5](https://github.com/onflow/flow-go/pull/5817), [6](https://github.com/onflow/flow-go/pull/5820), [7](https://github.com/onflow/flow-go/pull/5829), [8](https://github.com/onflow/flow-go/pull/5830), [9](https://github.com/onflow/flow-go/pull/5834), [10](https://github.com/onflow/flow-go/pull/5835), [11](https://github.com/dapperlabs/flow-go/pull/6962), [12](https://github.com/dapperlabs/flow-go/pull/6963)
+- Cadence: [1](https://github.com/onflow/cadence/pull/3293), [2](https://github.com/onflow/cadence/pull/3294), [3](https://github.com/onflow/cadence/pull/3295), [4](https://github.com/onflow/cadence/pull/3301), [5](https://github.com/onflow/cadence/pull/3306)
+- flowkit: [1](https://github.com/onflow/flowkit/pull/38), [2](https://github.com/onflow/flowkit/pull/40)
+- Cadence Tools: [1](https://github.com/onflow/cadence-tools/pull/351), [2](https://github.com/onflow/cadence-tools/pull/356), [3](https://github.com/onflow/cadence-tools/pull/357), [4](https://github.com/onflow/cadence-tools/pull/358), [5](https://github.com/onflow/cadence-tools/pull/362)
+- EVM GW: [1](https://github.com/onflow/flow-evm-gateway/pull/218), [2](https://github.com/onflow/flow-evm-gateway/pull/227)
+- flixkit-go: [1](https://github.com/onflow/flixkit-go/pull/59), [2](https://github.com/onflow/flixkit-go/pull/61)
+- flow-go-sdk: [1](https://github.com/onflow/flow-go-sdk/pull/635), [2](https://github.com/onflow/flow-go-sdk/pull/640), [3](https://github.com/onflow/flow-go-sdk/pull/642)
+- tool config: [1](https://github.com/onflow/cadence/pull/3292)
+- emulator: [1](https://github.com/onflow/flow-emulator/pull/650), [2](https://github.com/onflow/flow-emulator/pull/652), [3](https://github.com/onflow/flow-emulator/pull/654), [4](https://github.com/onflow/flow-emulator/pull/659)
+- CLI: [1](https://github.com/onflow/flow-cli/pull/1564)
+
+Cadence Execution
+- [Completed new Ingestion engine implementation](https://github.com/onflow/flow-go/pull/5593)
+    - [Use compnent manager](https://github.com/onflow/flow-go/pull/5611)
+    - [Check local collection exists before fetching](https://github.com/onflow/flow-go/pull/5838)
+    - [Fix throttle](https://github.com/onflow/flow-go/pull/5863)
+    - [v0.33 backport](https://github.com/onflow/flow-go/pull/5787)
+- [Util feature - find the first result that mismatch with the sealed result](https://github.com/onflow/flow-go/pull/5883)
+- [EN1 Missing events for some blocks](https://github.com/dapperlabs/flow-go/issues/6959)
+    - Helper to detect the problem in the future - [adding checks when a block has no events](https://github.com/onflow/flow-go/pull/5764)
+    - [update error message when events hash mismatch](https://github.com/onflow/flow-go/pull/5804)
+- Performance testing
+    - [Add a TPS test that does multiple token transfers per transaction to the performance benchmark](https://github.com/onflow/flow-go/issues/5329)
+        - [Add new TPS loader load type](https://github.com/onflow/flow-go/pull/5864)
+- Bug: [Cadence 1.0 getBlock errors when querying outside of queriable range](https://github.com/onflow/flow-go/issues/5852)
+    - [Do not return an error when block is unavailable due to expiry](https://github.com/onflow/flow-go/pull/5853)
+- CBOR: [Refactor to reuse functions and improve code coverage](https://github.com/fxamacker/cbor/pull/531)
+- [Minor TPS benchmark fixes](https://github.com/onflow/flow-go/pull/5780)
+
+EVM
+- Core
+    - [Support evm.batchRun](https://github.com/onflow/flow-go/issues/5501)
+        - [Batch run transactions](https://github.com/onflow/flow-go/pull/5614)
+        - [Add batch run to EVM FLIP](https://github.com/onflow/flips/pull/257)
+    - [Gas estimation](https://github.com/onflow/flow-go/issues/5603)
+        - [Dry-run function](https://github.com/onflow/flow-go/pull/5749)
+    - [block overhead optimization](https://github.com/onflow/flow-go/issues/5504)
+    - [Change transaction event field name](https://github.com/onflow/flow-go/issues/5760)
+    - [Add total gas used to block](https://github.com/onflow/flow-go/issues/5628)
+        - [Optimize event data](https://github.com/onflow/flow-go/pull/5779)
+    - [Bridged account creation event consolidation](https://github.com/onflow/flow-go/issues/5414)
+        - [Remove special EVM type](https://github.com/onflow/flow-go/pull/5791)
+    - [Skip nonce check on dry runs](https://github.com/onflow/flow-go/pull/5816)
+    - [Add transaction index to result](https://github.com/onflow/flow-go/pull/5818)
+    - [Result.deployedContract field is not assignable](https://github.com/onflow/flow-go/issues/5842)
+        - [Fix EVM.Result.deployedContract](https://github.com/onflow/flow-go/pull/5844)
+    - [Support decoding blocks without timestamp](https://github.com/onflow/flow-go/issues/5846)
+        - [Add decoder for blocks without timestamp](https://github.com/onflow/flow-go/pull/5848)
+- Bridge
+    - [Add bridging interface to EVM contract - stable cadence port](https://github.com/onflow/flow-go/pull/5716)
+- Gateway
+    - [Add support for batched transactions](https://github.com/onflow/flow-evm-gateway/issues/224)
+        - [Support batched transactions](https://github.com/onflow/flow-evm-gateway/pull/223)
+    - [Allow specifying init Cadence height](https://github.com/onflow/flow-evm-gateway/pull/226)
+    - [Add force set height flag](https://github.com/onflow/flow-evm-gateway/pull/232)
+    - [Set fixed height flag](https://github.com/onflow/flow-evm-gateway/pull/233)
+    - [Fix decoding issues with previous formats](https://github.com/onflow/flow-evm-gateway/pull/237)
 
 **This sprint**
 
 Objective 1, KR 1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
-* [Emulator release is ready](https://github.com/onflow/flow-emulator/releases/tag/v1.0.0-preview.19), support devs that are teting migration, monitor Discord questions.
+* All breaking changed released in a new CLI: v1.18.0-cadence-v1.0.0-preview.23
 
 Objective 1, KR4: Testnet Upgrade to Crescendo Release
 * Completed Testnet migration with both Atree inlining and Cadence 1.0.
+* Completed [EVM Gateway development](https://github.com/onflow/flow-evm-gateway/issues/126) and [EVM Core development](https://github.com/onflow/flow-go/issues/5536) production readiness EPICs.
 * Continue work on migration optimizations.
-* Complete [EVM Gateway development](https://github.com/onflow/flow-evm-gateway/issues/126) and [EVM Core development](https://github.com/onflow/flow-go/issues/5536) production readiness EPICs.
 
 Objective 2, KR 1: Update transaction fees weights for the execution operations on TN and MN
 * Continue work on [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
