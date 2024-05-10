@@ -452,14 +452,15 @@ Cycle Objective(s):
 
 **This sprint**
 
-- Complete Web3.js integration, authorization
-- VM Bridge integration, moving FT and NFT in app.
-- Product scoping for next cycle:
-  - Identifying needed polish + bug fixes
-  - Next product opportunities
-- CTD: Outreach with Coinbase Wallet, MetaMask, Shadow Wallet and Blocto
-- CTD: Working with Apple on app approval & release
-
+- Completing VM-Bridge integration, NFT transfer
+- UI / UX / Bug updates. Working through a large list of tracked bugs / UI updates required:
+  - Improving SE account creation workflow.
+  - Profile account recovery / social recovery.
+  - Account recovery from multiple sources.
+  - Asset display issues (NFT and FT).
+  - Supporting additional token types (eg: Those created by toucans)
+  - Misc copy updates / fixes.
+ 
 **On Hold**
 
 - N/A
