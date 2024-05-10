@@ -2,7 +2,6 @@
 
 ### Team Wins 🎉
 
-- Unblocked JVM SDK artifact publishing GH automation which took several fiddly days of back and forth to figure out
 - Added one of the FF nodes to the QuickNode load balancer to enable easier testing and debugging of new Access node features with real user traffic.
 - After over a year of development, flow-go stable-cadence (Cadence 1.0) branch [merged to master](https://github.com/onflow/flow-go/pull/5856)!
 - All planned and requested breaking changes in C1.0 delivered in the latest preview release, unblocking devs to test they migration to C1.0.
@@ -12,6 +11,7 @@
 - Published [“Interacting with COAs with Cadence”](https://developers.flow.com/evm/cadence/interacting-with-coa) Guide
 - CLI Interactive Init Demo in prep for release
 - Merged feature branches in flow-ft and flow-nft
+- Unblocked JVM SDK artifact publishing GH automation which took several fiddly days of back and forth to figure out
 
 ### General updates
 
