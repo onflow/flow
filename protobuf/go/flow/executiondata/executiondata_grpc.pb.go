@@ -180,7 +180,8 @@ type ExecutionDataAPIClient interface {
 	// clients to track which blocks were searched. Clients can use this
 	// information to determine which block to start from when reconnecting.
 	//
-	// No errors are expected during normal operation.
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid EventFilter.
 	SubscribeEventsFromLatest(ctx context.Context, in *SubscribeEventsFromLatestRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsFromLatestClient, error)
 	// GetRegisterValues gets the values for the given register IDs as of the given block height
 	GetRegisterValues(ctx context.Context, in *GetRegisterValuesRequest, opts ...grpc.CallOption) (*GetRegisterValuesResponse, error)
@@ -781,7 +782,8 @@ type ExecutionDataAPIServer interface {
 	// clients to track which blocks were searched. Clients can use this
 	// information to determine which block to start from when reconnecting.
 	//
-	// No errors are expected during normal operation.
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid EventFilter.
 	SubscribeEventsFromLatest(*SubscribeEventsFromLatestRequest, ExecutionDataAPI_SubscribeEventsFromLatestServer) error
 	// GetRegisterValues gets the values for the given register IDs as of the given block height
 	GetRegisterValues(context.Context, *GetRegisterValuesRequest) (*GetRegisterValuesResponse, error)
