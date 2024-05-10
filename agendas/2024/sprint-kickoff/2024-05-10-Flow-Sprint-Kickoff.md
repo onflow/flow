@@ -303,7 +303,6 @@ Cycle Objective(s):
   - Wrapping up the KVStore M2 items going into this spork
     
 * <ins>EFM Recovery</ins>
-  - [Fix & re-enable flakey tests](https://github.com/onflow/flow-go/issues/5886)
   - [Address Recover Epoch cadence PR feedback](https://github.com/onflow/flow-core-contracts/pull/420)
   - [Wrap up integration test](https://github.com/onflow/flow-go/issues/5886)
   - [Cancel in progress root QC voting](https://github.com/onflow/flow-go/issues/5733)
