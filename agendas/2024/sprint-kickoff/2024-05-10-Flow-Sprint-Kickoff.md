@@ -308,10 +308,6 @@ Cycle Objective(s):
   - [Wrap up integration test](https://github.com/onflow/flow-go/issues/5886)
   - [Cancel in progress root QC voting](https://github.com/onflow/flow-go/issues/5733)
 
-* <ins>Cryptography:</ins>
-   - BFT - proof of possession epic : continue updating old PRs - scope the Ledger wallet work with VaccumLabs
-   - SPoCK aggregation: revisit the SPoCK security proof
-
 * <ins>Data Availability:</ins>
   - Test local script exec with lower compute limit
   - Continue debugging resource issues observed on QuickNode
@@ -321,6 +317,10 @@ Cycle Objective(s):
     - Update rosetta for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52))
     - Address tech debt in APIs ([Issue #5757](https://github.com/onflow/flow-go/issues/5757) - PR in review)
     - Add support for version beacon events to control script execution ([Issue #5757](https://github.com/onflow/flow-go/issues/5757))
+
+* <ins>Cryptography:</ins>
+   - BFT - proof of possession epic : continue updating old PRs - scope the Ledger wallet work with VaccumLabs
+   - SPoCK aggregation: revisit the SPoCK security proof
 
 
 **On Hold**
