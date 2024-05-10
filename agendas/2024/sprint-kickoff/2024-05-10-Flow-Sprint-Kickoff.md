@@ -289,12 +289,19 @@ Cycle Objective(s):
     - Align ExecutionData API with new endpoints ([PR #5672](https://github.com/onflow/flow-go/pull/5672))
     - Finished testing to support enabling indexing on Dynamic bootstrapped AN ([Issue #5423](https://github.com/onflow/flow-go/issues/5423))
 
+* <ins>Cryptography:</ins>
+   - Randomness core-contract fix: updated on TN and MN (Josh) - confirmed the update fixed the broken state - e2e tests updated
+   - DKG: investigate papers for potential security reduction of Pedersen output keys
+   - BFT: pick-up the proof of possession of staking private keys epic (check current state - update old open PRs)
+   - core-contracts: use new Cadence’s modulo argument to fix uniformity in random distributions
+
 **This sprint**
 
 * <ins>Zero-downtime Upgrades of Node Software:</ins>
   - [Dynamic Protocol State - todos, suggested revisions and tech debt](https://github.com/onflow/flow-go/issues/5666#top)
-  - Reviews for open M2 PRs, priority to close the milestone
   - Apply comments and finalize https://github.com/onflow/flow-go/pull/5773
+  - Reviews for open M2 PRs, priority to close the milestone
+  - Wrapping up the KVStore M2 items going into this spork
     
 * <ins>EFM Recovery</ins>
   - [Fix & re-enable flakey tests](https://github.com/onflow/flow-go/issues/5886)
@@ -303,7 +310,8 @@ Cycle Objective(s):
   - [Cancel in progress root QC voting](https://github.com/onflow/flow-go/issues/5733)
 
 * <ins>Cryptography:</ins>
-   - N/A this sprint as Tarak was out-of-office
+   - BFT - proof of possession epic : continue updating old PRs - scope the Ledger wallet work with VaccumLabs
+   - SPoCK aggregation: revisit the SPoCK security proof
 
 * <ins>Data Availability:</ins>
   - Test local script exec with lower compute limit
