@@ -370,16 +370,34 @@ Cycle Objective(s):
 - Use the Crescendo Release grow Flow's developer base and network activity
 
 **Done last sprint**
+
+**Tools**
 - Fixed issues with Cadence decoding with backwards compatibility. Confirmed working https://github.com/onflow/cadence/issues/3250
-- FCL compatibility with Cadence 1.0 JSON-CDC changes 
+- FCL compatibility with Cadence 1.0 JSON-CDC changes
+- [Windows CI not working as expected](https://github.com/onflow/flow-cli/issues/1556)
+- [Disable logs in generate for setup](https://github.com/onflow/flow-cli/issues/1554)
+- [Improve emojis across Windows versions in Dependency Manager output headers](https://github.com/onflow/flow-cli/issues/1557)
+- [Add message if conflicting contract on dependency install](https://github.com/onflow/flow-cli/issues/1560)
+- [Setup project for flow dev](https://github.com/onflow/flow-cli/issues/1575)
+- [Start emulator flag on flow dev errors for gas limit ](https://github.com/onflow/flow-cli/issues/1577)
+- [flow dev should run emulator without flag](https://github.com/onflow/flow-cli/issues/1579)
+- [Change paths in flow.json to relative](https://github.com/onflow/flow-cli/issues/1532)
+- [Keep any project creation from saving until completion in case of cancellation](https://github.com/onflow/flow-cli/issues/1531)
+- [Change "Flow Ref" References to "Flow"](https://github.com/onflow/fcl-discovery/issues/181)
+- [Update JSON-CDC encoding for Cadence 1.0](https://github.com/onflow/fcl-js/issues/1861)
+- [Broken flow.json when deploying contract with [String] as init arg](https://github.com/onflow/flow-cli/issues/1352)
+- [flow test configuration and default behaviour](https://github.com/onflow/flow-cli/issues/1378)
+
+**Education and Adoption**
 - Published [“Interacting with COAs with Cadence”](https://developers.flow.com/evm/cadence/interacting-with-coa) Guide
 - Spilt Dev Docs into Cadence 1.0 and Legacy [#738](https://github.com/onflow/docs/issues/738)
-- [Update JSON-CDC encoding for Cadence 1.0](https://github.com/onflow/fcl-js/issues/1861)
-- [Windows CI not working as expected](https://github.com/onflow/flow-cli/issues/1556)
-- [Broken flow.json when deploying contract with [String] as init arg](https://github.com/onflow/flow-cli/issues/1352)
-- [Deploying contracts with Address init args breaks config](https://github.com/onflow/flow-cli/issues/1427)
-- [flow test configuration and default behaviour](https://github.com/onflow/flow-cli/issues/1378)
 - [Transferring Flow between Cadence and EVM](https://github.com/onflow/docs/issues/686)
+- [Replace all references for Flow Reference Wallet in the docs to Flow Wallet](https://github.com/onflow/docs/issues/699)
+- [Cadence Direct Calls to the EVM Ref Doc](https://github.com/onflow/docs/issues/684)
+
+**Smart Contracts**
+- [Deploying contracts with Address init args breaks config](https://github.com/onflow/flow-cli/issues/1427)
+- [Update flow-nft contracts to comply with Stable Cadence changes](https://github.com/onflow/flow-nft/issues/133)
 - [Add EVM Bridge README](https://github.com/onflow/flow-evm-bridge/issues/49)
 - [Restructure repo for organization and enhanced implicit clarity ](https://github.com/onflow/flow-evm-bridge/issues/50)
 - [Add EVMBridgedMetadata implementation into ExampleNFT](https://github.com/onflow/flow-nft/issues/213)
@@ -387,23 +405,9 @@ Cycle Objective(s):
 - [Update flow-ft contracts to comply with Stable Cadence changes](https://github.com/onflow/flow-ft/issues/96)
 - [Impossible to count number of NFTs in large collections and get the IDs](https://github.com/onflow/flow-nft/issues/184)
 - [Adding support in MetadataViews to support viewing nested resources](https://github.com/onflow/flow-nft/issues/146)
-- [Update flow-nft contracts to comply with Stable Cadence changes](https://github.com/onflow/flow-nft/issues/133)
-- [Replace all references for Flow Reference Wallet in the docs to Flow Wallet](https://github.com/onflow/docs/issues/699)
-- [Cadence Direct Calls to the EVM Ref Doc](https://github.com/onflow/docs/issues/684)
-- [Change paths in flow.json to relative](https://github.com/onflow/flow-cli/issues/1532)
-- [Keep any project creation from saving until completion in case of cancellation](https://github.com/onflow/flow-cli/issues/1531)
-- [Change "Flow Ref" References to "Flow"](https://github.com/onflow/fcl-discovery/issues/181)
-- [Disable logs in generate for setup](https://github.com/onflow/flow-cli/issues/1554)
-- [Improve emojis across Windows versions in Dependency Manager output headers](https://github.com/onflow/flow-cli/issues/1557)
-- [Add message if conflicting contract on dependency install](https://github.com/onflow/flow-cli/issues/1560)
-- [Setup project for flow dev](https://github.com/onflow/flow-cli/issues/1575)
-- [Start emulator flag on flow dev errors for gas limit ](https://github.com/onflow/flow-cli/issues/1577)
-- [flow dev should run emulator without flag](https://github.com/onflow/flow-cli/issues/1579)
-
-
 
 **This sprint**
-**Sprint goal focusing on: Flow Port Asset Bridge and Token Transfer, Splitting Dev Docs (Cadence 1.0/Legacy), and adding EVM docs for Cadence Devs**
+**Sprint goal focusing on: Flow Port Asset Bridge and Token Transfer, FCL x WalletConnect Improvements, shipping new CLI version, EVM randomness**
 
 - [EPIC] Flow Port Asset Bridge [#284](https://github.com/onflow/flow-port/issues/284)
 - [EPIC] EVM Docs [#654](https://github.com/onflow/docs/issues/654)
@@ -413,8 +417,10 @@ Cycle Objective(s):
 #### Smart Contract WG
 
 - Reviews for Increment.fi
+- Circle Support
 - Update Tutorials for Cadence 1.0 [#769](https://github.com/onflow/docs/issues/769)
-- EVM Bridge
+- Add Solidity implementation using EVM randomness
+- [FEATURE] Update Core Contracts [#756](https://github.com/onflow/docs/issues/756)
 
 **On Hold**
 
