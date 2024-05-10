@@ -51,6 +51,8 @@ service AccessAPI {
 
   // GetCollectionByID gets a collection by ID.
   rpc GetCollectionByID(GetCollectionByIDRequest) returns (CollectionResponse);
+  // GetFullCollectionByID gets a collection by ID.
+  rpc GetFullCollectionByID(GetFullCollectionByIDRequest) returns (FullCollectionResponse);
 
   // Transactions
 
@@ -189,7 +191,7 @@ service AccessAPI {
   // if the status is "sealed", only sealed blocks will be returned.
   rpc SubscribeBlocksFromLatest(SubscribeBlocksFromLatestRequest)
       returns (stream SubscribeBlocksResponse);
-  
+
   // Subscribe block headers
 
   // SubscribeBlockHeadersFromStartBlockID streams finalized or sealed block headers starting at the requested
@@ -317,8 +319,17 @@ message GetCollectionByIDRequest {
   bytes id = 1;
 }
 
+message GetFullCollectionByIDRequest {
+  bytes id = 1;
+}
+
 message CollectionResponse {
   entities.Collection collection = 1;
+  entities.Metadata metadata = 2;
+}
+
+message FullCollectionResponse {
+  repeated entities.Transaction transactions = 1;
   entities.Metadata metadata = 2;
 }
 
