@@ -11,7 +11,6 @@
 - Published [“Interacting with COAs with Cadence”](https://developers.flow.com/evm/cadence/interacting-with-coa) Guide
 - CLI Interactive Init Demo in prep for release
 - Merged feature branches in flow-ft and flow-nft
-- Unblocked JVM SDK artifact publishing GH automation which took several fiddly days of back and forth to figure out
 
 ### General updates
 
