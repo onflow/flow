@@ -10,7 +10,7 @@
 - Positive community feedback on new proposal for Testnet upgrade process to Crescendo, using transaction failure mode for transactions importing unstaged contracts.
 - Published [“Interacting with COAs with Cadence”](https://developers.flow.com/evm/cadence/interacting-with-coa) Guide
 - CLI Interactive Init Demo in prep for release
-- Merged feature branches in flow-ft and flow-nft
+- Merged Cadence 1.0 feature branches in flow-ft and flow-nft
 
 ### General updates
 
