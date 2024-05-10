@@ -57,29 +57,16 @@
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 6 (-1)  |    8   |       0          |       7 (+2)          |        **21** (+1)          |
-| Proposed    | 1 (-2)  |    2     |       2          |       0 (-1)          |        **5** (-3)          |
-| Accepted    | 2  |    1     |       1       |       1          |        **5** (-1)          |
+| Drafted     | 6  |    8   |       1         |       7          |        **22** (+1)          |
+| Proposed    | 1  |    2     |       2          |       0           |        **5**          |
+| Accepted    | 2  |    1     |       1       |       1          |        **5**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 3 (+2) |    21 (+2)    |       2       |       1 (+1)          |        **7** (+5)          |
-| Released    | 4  |    0     |       3       |       6 (+2)          |        **13** (+2)          |
-| Total       | **16** (-1)  |    **32** (+2)    |       **9**       |       **15** (+3)          |        **72** (+4)          |
+| Implemented | 3 |    21    |       2       |       1           |        **7**          |
+| Released    | 4  |    0     |       3       |       6          |        **13**          |
+| Total       | **16**  |    **32**  |       **10** (+1)      |       **15**          |        **73** (+1)          |
 
-**New FLIPs tracked now**
-* [Protocol] Message Forensic (MF) System
-* [Protocol] Passkey Support
-
-**Marked as Released**
-* [Protocol] On-Chain randomness history for commit-reveal schemes
-* [Protocol] Expand Access Streaming API with new endpoints
-
-**Implemented**
-* [Cadence] Random function
-* [Cadence] Require matching access modifiers for interface implementation members
-* [Protocol] FVM supporting EVM
-* [Application] Flow EVM Gateway
-* [Application] FlowEVM VM Bridge
-
+**New FLIPs**
+* [Governance] - 5X Computation Limit Hike (Drafted)
 ---
 
 
@@ -525,17 +512,26 @@ Cycle Objective(s):
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
 **Done last sprint**
+- Tested governance changes (gas to evm ratio, 5x compute limit, 100x fee) on PreviewNet
+- Review various inflation reduction strategies with the team - see slide 2 on [this deck](https://docs.google.com/presentation/d/1EBYqB8FwxHtOwaQMHiId0ZZv4bRNThNYrgF5-CZeI8M/edit?pli=1#slide=id.g26c5efcb5cb_0_280) for a summary
+- Monthly Flow Governance Working Group meeting
+- Computation Limit Hike [PR](https://github.com/onflow/flips/pull/268)
+- Transaction fee multiplioer [PR](https://github.com/onflow/flips/pull/265) and Data update [PR](https://github.com/onflow/flips/pull/266)
+- Consolidated node operator data; assessed which operator use lease tokens versus self-stake; revoked leases
+- Research on shock-absorbers ("responsible liquidation smart contract") to FLOW volatility and as a burn-alternative
+- Synced with new potential consensus node operators
+- Updated market comps data; TPS, fees, multiple vis a vis Flow. summary [here](https://docs.google.com/spreadsheets/d/1XvGvIRegRg7HJDmCRpOnP97Ozbb6gKVNPBnolbfqbKY/edit#gid=0)
 
 **This sprint**
-
-- Test governance changes (gas to evm ratio, 5x compute limit, 100x fee) on PreviewNet 
-- Review inflation strategies with the team, get feedback, remodel, conclude on the way forward
-- Draft FLIP on EVM gas to compute ratio and compute limit hike
-- Update transaction fee 100x FLIP to suggest a new transaction fee multipler, also update the market comps per the latest exchange rates to get it ready for reintroduction
-- Consolidate node operator data; assess which operator use lease tokens versus self-stake
+- Continue chats with potential consensus node operators and finalize lease discussions
+- Onboard 8 new SNs - contracts, lease transfers, stake and setup assistance 
+- Review, finalize and merge Tokenomics PRs
+- Transaction fee partner impact discussion and way forward with FF leadership
+- Map and evaluate post crescendo Flow scenarios regarding tps, fees and inflation
+- R&D and planning with Dete on post Crescendo surge pricing [already kicked off]
+- Metrics planning for foundation’s financials and network Tokenomics
 - Continue working on node operator branding and logos with .find team
-- Continue decentralization efforts - work with a16z to consolidate three nodes; with Coinbase to reduce one node they operate on leased stake; Continue work on automation of the decentralization dashboard to send messages when critical thresholds are crossed
-
+  
 **On Hold**
 
 
