@@ -355,7 +355,6 @@ Cycle Objective(s):
 * Update JVM SDK examples repo now that latest version artifact successfully published
 * Implement multi-sig solution for Circle to help with USDC migration to EVM
 * Upgrade Band protocol contract to C1.0
-* Continue review of IncrementFi Cadence 1.0 contract upgrades (couldn't get to it in past sprint)
 
 **On Hold**
 - Axelar Cadence bridge release waiting confirmation of build partners, costs and timelines for EVM release, no engineering ongoing
@@ -428,6 +427,7 @@ Cycle Objective(s):
 - Update Tutorials for Cadence 1.0 [#769](https://github.com/onflow/docs/issues/769)
 - Add Solidity implementation using EVM randomness
 - [FEATURE] Update Core Contracts [#756](https://github.com/onflow/docs/issues/756)
+- VM Bridge audit startd May 13th
 
 **On Hold**
 
