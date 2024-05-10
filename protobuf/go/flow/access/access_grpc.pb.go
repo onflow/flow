@@ -28,6 +28,7 @@ const (
 	AccessAPI_GetBlockByID_FullMethodName                          = "/flow.access.AccessAPI/GetBlockByID"
 	AccessAPI_GetBlockByHeight_FullMethodName                      = "/flow.access.AccessAPI/GetBlockByHeight"
 	AccessAPI_GetCollectionByID_FullMethodName                     = "/flow.access.AccessAPI/GetCollectionByID"
+	AccessAPI_GetFullCollectionByID_FullMethodName                 = "/flow.access.AccessAPI/GetFullCollectionByID"
 	AccessAPI_SendTransaction_FullMethodName                       = "/flow.access.AccessAPI/SendTransaction"
 	AccessAPI_GetTransaction_FullMethodName                        = "/flow.access.AccessAPI/GetTransaction"
 	AccessAPI_GetTransactionResult_FullMethodName                  = "/flow.access.AccessAPI/GetTransactionResult"
@@ -86,6 +87,8 @@ type AccessAPIClient interface {
 	GetBlockByHeight(ctx context.Context, in *GetBlockByHeightRequest, opts ...grpc.CallOption) (*BlockResponse, error)
 	// GetCollectionByID gets a collection by ID.
 	GetCollectionByID(ctx context.Context, in *GetCollectionByIDRequest, opts ...grpc.CallOption) (*CollectionResponse, error)
+	// GetFullCollectionByID gets a collection by ID.
+	GetFullCollectionByID(ctx context.Context, in *GetFullCollectionByIDRequest, opts ...grpc.CallOption) (*FullCollectionResponse, error)
 	// SendTransaction submits a transaction to the network.
 	SendTransaction(ctx context.Context, in *SendTransactionRequest, opts ...grpc.CallOption) (*SendTransactionResponse, error)
 	// GetTransaction gets a transaction by ID.
@@ -305,6 +308,15 @@ func (c *accessAPIClient) GetBlockByHeight(ctx context.Context, in *GetBlockByHe
 func (c *accessAPIClient) GetCollectionByID(ctx context.Context, in *GetCollectionByIDRequest, opts ...grpc.CallOption) (*CollectionResponse, error) {
 	out := new(CollectionResponse)
 	err := c.cc.Invoke(ctx, AccessAPI_GetCollectionByID_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessAPIClient) GetFullCollectionByID(ctx context.Context, in *GetFullCollectionByIDRequest, opts ...grpc.CallOption) (*FullCollectionResponse, error) {
+	out := new(FullCollectionResponse)
+	err := c.cc.Invoke(ctx, AccessAPI_GetFullCollectionByID_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -853,6 +865,8 @@ type AccessAPIServer interface {
 	GetBlockByHeight(context.Context, *GetBlockByHeightRequest) (*BlockResponse, error)
 	// GetCollectionByID gets a collection by ID.
 	GetCollectionByID(context.Context, *GetCollectionByIDRequest) (*CollectionResponse, error)
+	// GetFullCollectionByID gets a collection by ID.
+	GetFullCollectionByID(context.Context, *GetFullCollectionByIDRequest) (*FullCollectionResponse, error)
 	// SendTransaction submits a transaction to the network.
 	SendTransaction(context.Context, *SendTransactionRequest) (*SendTransactionResponse, error)
 	// GetTransaction gets a transaction by ID.
@@ -1019,6 +1033,9 @@ func (UnimplementedAccessAPIServer) GetBlockByHeight(context.Context, *GetBlockB
 }
 func (UnimplementedAccessAPIServer) GetCollectionByID(context.Context, *GetCollectionByIDRequest) (*CollectionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCollectionByID not implemented")
+}
+func (UnimplementedAccessAPIServer) GetFullCollectionByID(context.Context, *GetFullCollectionByIDRequest) (*FullCollectionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFullCollectionByID not implemented")
 }
 func (UnimplementedAccessAPIServer) SendTransaction(context.Context, *SendTransactionRequest) (*SendTransactionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendTransaction not implemented")
@@ -1286,6 +1303,24 @@ func _AccessAPI_GetCollectionByID_Handler(srv interface{}, ctx context.Context, 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccessAPIServer).GetCollectionByID(ctx, req.(*GetCollectionByIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccessAPI_GetFullCollectionByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetFullCollectionByIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetFullCollectionByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccessAPI_GetFullCollectionByID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetFullCollectionByID(ctx, req.(*GetFullCollectionByIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1938,6 +1973,10 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetCollectionByID",
 			Handler:    _AccessAPI_GetCollectionByID_Handler,
+		},
+		{
+			MethodName: "GetFullCollectionByID",
+			Handler:    _AccessAPI_GetFullCollectionByID_Handler,
 		},
 		{
 			MethodName: "SendTransaction",
