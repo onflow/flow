@@ -291,12 +291,38 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**CloudFlare Migration**
+- [ Migrated Hardware wallet API to Cloud Run](https://github.com/dapperlabs/flow-devex-infrastructure/pull/153)
+- Backed up & removed unnecessary resources from Gen2 cluster
+- Identified CloudFlare resources 
+- Started process with CloudFlare to create new account & get quotes
+
+**Sporks**
+- [Created infrastructure for Devnet50 spork](https://github.com/dapperlabs/terraform/pull/4242)
+- [Create Ansible Configuration](https://github.com/dapperlabs/dapper-flow-hosting/pull/1501)
+- [Scale down Devnet49 network](https://github.com/dapperlabs/terraform/pull/4245)
+- Assisted with Devnet50 spork execution
+- Assisted with Previewnet spork(s) execution
+
+**Node Hosting**
+- [Scale up Mainnet Studio ANs to alleviate memory issues](https://github.com/dapperlabs/terraform/pull/4235)
+- [Scale up Mainnet ANs to alleviate memory issues](https://github.com/dapperlabs/terraform/pull/4246)
+
+**EVM Gateway**
+- [Update Prometheus to scrape EVM Gateway]((https://github.com/dapperlabs/dapper-flow-hosting/pull/1507)
+- [Updated EVM Gateway firewall to allow envoy scraping](https://github.com/dapperlabs/terraform/pull/4247)
+
+**Support**
+- [Create new KMS key for node operations](https://github.com/dapperlabs/terraform/pull/4240)
+- [Migrate port.onflow.org to port.flow.com](https://github.com/dapperlabs/terraform/pull/4248)
+- [Redirect port.onflow.org to port.flow.com](https://github.com/dapperlabs/terraform/pull/4249)
 
 **Goal of this Sprint is to continue migration efforts** 
 **This Sprint**
-- Solidify CloudFlare Migration plan and continue preparing for migration
+- Continue removing dependencies on CloudFlare & assist with account creation
 - Continue assisting with DevEx migration to Cloud Run
 - Improve synthetic alerting 
+- Assist with migration and spork prep efforts
 
 ---
 
