@@ -335,8 +335,36 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**Docs**
+Add Foundry Guide
+Update Viem Guide
+[Update banners across Cadence, Dev Docs, and Playground for Messaging Update](https://github.com/onflow/docs/issues/781)
+**CLI**
+[Prompt yes/no if you'd like to install core contracts](https://github.com/onflow/flow-cli/issues/1586)
+[Add config only flag to init to just generate flow.json](https://github.com/onflow/flow-cli/issues/1588)
+[Add/Use Counter as default contract](https://github.com/onflow/flow-cli/issues/1587)
+[Gracefully recovery from C1.0 contract update validation panics](https://github.com/onflow/flow-cli/issues/1602)
+[Add ability to stage all contracts](https://github.com/onflow/flow-cli/issues/1559)
+[Notify when longer valid staged contracts in CLI](https://github.com/onflow/flow-cli/issues/1543)
+[Dependency Manager repeats the inquiry for extra dependencies](https://github.com/onflow/flow-cli/issues/1569)
+[Init project with default contract, scripts, and transaction](https://github.com/onflow/flow-cli/issues/1575)
+[[IMPROVEMENT] Allow for private key to be created in a target directory](https://github.com/onflow/flowkit/issues/47)
+[[IMPROVEMENT] Add target directory option for emulator key generation](https://github.com/onflow/flow-cli/issues/1583)
+[[BUG] Fix dependencies/contracts conflict check](https://github.com/onflow/flow-cli/issues/1599)
+**SC**
+[Update Core Contracts Pages](https://github.com/onflow/docs/issues/756)
+[Enable Minting FUSD and USDC on previewnet](https://github.com/onflow/docs/issues/773)
+[Include NFTStorefrontV2 in migrations](https://github.com/onflow/flow-go/issues/5963)
+**FCL**
+[[BUG] util-actor breaks if multiple versions of the library are installed at the same time](https://github.com/onflow/fcl-js/issues/1885)
+[[BUG] Cannot send transaction with no authorizers](https://github.com/onflow/fcl-js/issues/1878)
+[[BUG] Access API Error after upgrading fcl-js](https://github.com/onflow/fcl-js/issues/1877)
+[Invariant is missing TypeScript assertion](https://github.com/onflow/fcl-js/issues/1873)
+[Remove WalletConnect services from clientServices](https://github.com/onflow/fcl-js/issues/1871)
+[Stage FCLCryptoContract](https://github.com/onflow/fcl-js/issues/1865)
+
 **This sprint**
-**Sprint goal focusing on: Flow Port Asset Bridge and Token Transfer, FCL x WalletConnect Improvements, shipping new CLI version, EVM randomness**
+**Sprint goal focusing on: Flow Port Asset Bridge and Token Transfer, FCL x WalletConnect Improvements, Crescendo Rewards**
 
 - [EPIC] Flow Port Asset Bridge [#284](https://github.com/onflow/flow-port/issues/284)
 - [EPIC] EVM Docs [#654](https://github.com/onflow/docs/issues/654)
@@ -347,10 +375,8 @@ Cycle Objective(s):
 
 - Reviews for Increment.fi
 - Circle Support
-- Update Tutorials for Cadence 1.0 [#769](https://github.com/onflow/docs/issues/769)
 - Add Solidity implementation using EVM randomness
-- [FEATURE] Update Core Contracts [#756](https://github.com/onflow/docs/issues/756)
-- VM Bridge audit startd May 13th
+- Discovery Design Inbox Standard
 
 **On Hold**
 
