@@ -298,6 +298,7 @@ Cycle Objective(s):
 * <ins>Data Availability:</ins>
   - Redeploy local index and script exec on QN bare metal instances
   - Start design work for DB pruning
+  - Finish review of Event Streaming blog authored by KROK
   - KROK Team
     - Fix retries when using preferred-execution-nodes list ([Issue #5810](https://github.com/onflow/flow-go/issues/5810))
     - Add support for version beacon events to control script execution ([Issue #5757](https://github.com/onflow/flow-go/issues/5757))
