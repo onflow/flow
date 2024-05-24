@@ -27,16 +27,22 @@
 
 ## Incidents
 
-## Access Node incidents
+## Core protocol incidents
+
+### Mainnet
+- May 10th: Sev-2 - Execution stopped on FlowFoundation execution nodes for ~5 mins. Root cause: All FF nodes in `us-central` seem to have gone down for a few minutes. Postmortem available [here](https://www.notion.so/flowfoundation/Mainnet-GCP-Network-Outage-5-10-f2c2380ab5454481b8170836bf64db6c?pvs=4#f7981c0fc3b54ccc9c64ae8470b9788f)
+- May 10th: Sev-3 - EN1 failed to restart (part of the same issue ☝️)
+- May 19th: Sev-3 - EN1 crashed. Currently being investigated: https://github.com/onflow/flow-go/issues/5956.
+
+### Testnet
+- May 20th: Sev-1 - ENs on testnet forked and sealing halted. Testnet underwent a network upgrade (spork) [Slack thread](https://dapperlabs.slack.com/archives/CUU2KQL4A/p1716230568407649)
 
 (Sev [definition](https://www.notion.so/dapperlabs/Incident-Priorities-Severity-Levels-b65d7682336c46baa025ee512fd3efa3))
 
 ### Key Release Dates & Breaking Changes
 - Next Mainnet/Testnet network upgrade (spork):
-  - Testnet: 6/19/24
-  - Mainnet: July 2024 (exact date TBD)
-- Testnet migration test runs conducted every week.
-
+  - Testnet: 20th June 2024
+  - Mainnet: 29th July 2024
 ---
 
 ### FLIPs Tracker \[Kshitij]
