@@ -17,6 +17,7 @@
 - CLI Staging Imjprovements: Added ability to stage & validate entire project in one command to CLI, Warn users if staged contracts are no longer valid in the CLI when running commands
 - Protocol State Snapshot updated -> can be constructed from any reference block
 - Development on Zero-downtime Upgrades of Node Software are complete, ready to deploy in next network update
+- Took delivery of initial implementation of Rosetta for Flow EVM which is needed for CB integration with EVM 
 
 
 ### General updates
