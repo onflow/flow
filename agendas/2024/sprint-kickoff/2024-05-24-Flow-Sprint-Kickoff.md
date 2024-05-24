@@ -9,6 +9,13 @@
 - Deployed new execution node ingestion engine to Mainnet (enabled on one EN) and so far running successfully for the last ~2 weeks. This enables us to boot EN anywhere in the spork and it will catch up, while previously it would crash if it was too far behind.
 - Successfully upgraded previewnet to latest flow-go master and got EVM working End-End.
 - Successfully got the EVM Gateway working on Migration environment.
+- Released Foundry guide for EVM
+- Deployed multicall smartcontract to EVM previewnet and integrated it with viem
+- Proved out onboarding and bridging EVM FT to Cadence and bridging Cadence FT to EVM in Flow Port.
+- Updated  FT, NFT, and metadata views guides to Cadence 1.0
+- Finished Cadence 1.0 changes for NFTStorefront and included it in testnet migrations
+- CLI Staging Imjprovements: Added ability to stage & validate entire project in one command to CLI, Warn users if staged contracts are no longer valid in the CLI when running commands
+
 
 
 ### General updates
