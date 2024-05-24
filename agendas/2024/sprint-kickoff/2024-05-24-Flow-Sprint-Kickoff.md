@@ -194,6 +194,11 @@ EVM Core
 - Bugfix
   - [EVM.dryRun method inconsistent behavior for certain errors](https://github.com/onflow/flow-go/issues/5902)
 
+Cadence 1.0 Contract updates
+  - Follow up reviews for [dependency audit contract](https://github.com/onflow/contract-updater/pull/33), NFT Catalog and FT/NFT guide updates
+  - [Bridge standup script](https://github.com/onflow/flow-evm-bridge/pull/76)
+  - Completed VM bridge deployment runbook
+
 **This sprint**
 
 DONE: Objective 1, KR 1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
@@ -275,6 +280,11 @@ Cycle Objective(s):
     - Review randomness on Flow EVM
     - SPoCK aggregation: revisit single SPoCK proof (but the KOSK proof)
       
+* <ins>Rosetta:</ins>   
+  - Cadence Rosetta Crescendo compatibility: [Started Rosetta event hash check](https://github.com/onflow/rosetta/pull/60)
+  - Took delivery of Flow EVM Rosetta implementation from contract developer
+
+      
 **This sprint**
 
 * <ins>EFM Recovery</ins>
@@ -289,8 +299,6 @@ Cycle Objective(s):
   - Start design work for DB pruning
   - KROK Team
     - Fix retries when using preferred-execution-nodes list ([Issue #5810](https://github.com/onflow/flow-go/issues/5810))
-    - Update rosetta for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52))
-    - Fix rosetta event hash check ([Issue #41]( https://github.com/onflow/rosetta/issues/41))
     - Add support for version beacon events to control script execution ([Issue #5757](https://github.com/onflow/flow-go/issues/5757))
     - Fix Access integration test ([Issue #5825](https://github.com/onflow/flow-go/issues/5825) - PR in review)
     - Add indexed height indicator in grpc metadata response ([Issue #4757](https://github.com/onflow/flow-go/issues/4757) - PR in review)
@@ -298,6 +306,11 @@ Cycle Objective(s):
 * <ins>Cryptography:</ins>
    - SPoCK aggregation: deeper look at the KOSK model
    - content piece on secure enclaves
+
+* <ins>Rosetta:</ins>   
+  - [Finish Rosetta event hash check](https://github.com/onflow/rosetta/issues/41)
+  - [Continue Cadence Rosetta updates for Crescendo compatibility](https://github.com/onflow/rosetta/issues/41)
+  - Review Flow EVM Rosetta implementation from contract developer
 
 **On Hold**
 * Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
@@ -323,12 +336,11 @@ Cycle Objective(s):
 - Deliver Axelar bridge
 
 **Done last sprint**
-
+* Started backfill of missing crypto algos to JVM SDK
+* Started multi-sig solution for Circle to help with USDC migration to EVM
 
 **This sprint**
-* Update JVM SDK examples repo now that latest version artifact successfully published
-* Implement multi-sig solution for Circle to help with USDC migration to EVM
-* Upgrade Band protocol contract to C1.0
+* Continue backfill of missing crypto primitives in JVM SDK
 
 **On Hold**
 - Axelar Cadence bridge release waiting confirmation of build partners, costs and timelines for EVM release, no engineering ongoing
