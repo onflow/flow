@@ -63,16 +63,17 @@
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 6  |    8   |       1         |       7          |        **22** (+1)          |
-| Proposed    | 1  |    2     |       2          |       0           |        **5**          |
+| Drafted     | 7 (+1)  |    8   |       0 (-1)         |       7          |        **22**        |
+| Proposed    | 1  |    2     |       3 (+1)          |       0           |        **6** (+1)        |
 | Accepted    | 2  |    1     |       1       |       1          |        **5**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
 | Implemented | 3 |    21    |       2       |       1           |        **7**          |
 | Released    | 4  |    0     |       3       |       6          |        **13**          |
-| Total       | **16**  |    **32**  |       **10** (+1)      |       **15**          |        **73** (+1)          |
+| Total       | **17** (+1)  |    **32**  |       **10** (+1)      |       **15**          |        **74** (+1)          |
 
-**New FLIPs**
-* [Governance] - 5X Computation Limit Hike (Drafted)
+**Updates**
+* [Application] - FLIP 270: FCL `ServiceProvider` v1.1.0 (new)
+* [Governance] - 5X Computation Limit Hike (moved from drafted to proposed)
 ---
 
 
