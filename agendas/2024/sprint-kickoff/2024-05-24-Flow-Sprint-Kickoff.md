@@ -16,6 +16,7 @@
 - Finished Cadence 1.0 changes for NFTStorefront and included it in testnet migrations
 - CLI Staging Imjprovements: Added ability to stage & validate entire project in one command to CLI, Warn users if staged contracts are no longer valid in the CLI when running commands
 - Protocol State Snapshot updated -> can be constructed from any reference block
+- Development on Zero-downtime Upgrades of Node Software are complete, ready to deploy in next network update
 
 
 ### General updates
@@ -248,25 +249,40 @@ Cycle Objective(s):
 * Continue design and implementation of Sporkless Epoch Fallback Recovery solution [DONE]
 
 **Done last Sprint:**
-
 * <ins>Data Availability:</ins>
   - KROK Team
     - Add increment method for monotonic counter ([PR #5814](https://github.com/onflow/flow-go/pull/5814))
     - Support serving system tx result from local index ([PR #5802](https://github.com/onflow/flow-go/pull/5802))
     - Allow dynamic bootstrapped ANs to index execution data ([PR #5888](https://github.com/onflow/flow-go/pull/5888))
 
-**This sprint**
-
 * <ins>Zero-downtime Upgrades of Node Software:</ins>
-  - [Dynamic Protocol State - todos, suggested revisions and tech debt](https://github.com/onflow/flow-go/issues/5666#top)
-  - Apply comments and finalize https://github.com/onflow/flow-go/pull/5773
-  - Reviews for open M2 PRs, priority to close the milestone
-  - Wrapping up the KVStore M2 items going into this spork
+  - [InitialProtocolState refactor and epoch protocol sub-state rename](https://github.com/onflow/flow-go/pull/5968)
+  - [Use Dynamic Protocol State API to compute events / metrics](https://github.com/onflow/flow-go/pull/5923)
+  - [Remove duplicated top-level EncodableSnapshot fields](https://github.com/onflow/flow-go/pull/5884)
     
 * <ins>EFM Recovery</ins>
-  - [Address Recover Epoch cadence PR feedback](https://github.com/onflow/flow-core-contracts/pull/420)
-  - [Wrap up integration test](https://github.com/onflow/flow-go/issues/5886)
-  - [Cancel in progress root QC voting](https://github.com/onflow/flow-go/issues/5733)
+  - [Added EpochRecover go service event that maps from Cadence](https://github.com/onflow/flow-go/pull/5943)
+  - [Implementing transition to already committed epoch in EFM](https://github.com/onflow/flow-go/pull/5898)
+  - [Made good progress on epoch recovery, currently working on last tests](https://github.com/onflow/flow-go/issues/5727)
+  - [Epoch manager QC voting changes](https://github.com/onflow/flow-go/issues/5733)
+  - [Address PR feedback EpochRecover cadence transaction](https://github.com/onflow/flow-core-contracts/pull/420)
+
+* <ins>Cryptography:</ins>
+  - BFT - proof of possession epic:
+    - [inished updating old PRs (core-contract/flow-go/flow-mgmt)
+    - Only ledger-app PR remains - aligned with team and VacuumLabs on the remaining work
+    - WASM build of emulator: fix an issue in flow-go related to crypto
+    - Review randomness on Flow EVM
+    - SPoCK aggregation: revisit single SPoCK proof (but the KOSK proof)
+      
+**This sprint**
+
+* <ins>EFM Recovery</ins>
+  - Finish https://github.com/onflow/flow-go/issues/5727
+  - Onboard Jordan to EFM tasks
+  - [Finish Epoch manager QC voting changes](https://github.com/onflow/flow-go/issues/5733) (implementing tests)
+  - Ongoing review by SC team: [EpochRecover cadence transaction](https://github.com/onflow/flow-core-contracts/pull/420)
+  - [Start Blocktime controller EFM changes])(https://github.com/onflow/flow-go/issues/5732)
 
 * <ins>Data Availability:</ins>
   - Redeploy local index and script exec on QN bare metal instances
@@ -280,9 +296,8 @@ Cycle Objective(s):
     - Add indexed height indicator in grpc metadata response ([Issue #4757](https://github.com/onflow/flow-go/issues/4757) - PR in review)
 
 * <ins>Cryptography:</ins>
-   - BFT - proof of possession epic : continue updating old PRs - scope the Ledger wallet work with VaccumLabs
-   - SPoCK aggregation: revisit the SPoCK security proof
-
+   - SPoCK aggregation: deeper look at the KOSK model
+   - content piece on secure enclaves
 
 **On Hold**
 * Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
