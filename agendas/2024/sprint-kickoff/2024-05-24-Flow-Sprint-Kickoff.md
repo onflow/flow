@@ -281,7 +281,8 @@ Cycle Objective(s):
     - SPoCK aggregation: revisit single SPoCK proof (but the KOSK proof)
       
 * <ins>Rosetta:</ins>   
-  - Cadence Rosetta Crescendo compatibility: [Started Rosetta event hash check](https://github.com/onflow/rosetta/pull/60)
+  - Cadence Rosetta Crescendo compatibility
+    - KROK [Started Rosetta event hash check](https://github.com/onflow/rosetta/pull/60)
   - Took delivery of Flow EVM Rosetta implementation from contract developer
 
       
@@ -308,8 +309,8 @@ Cycle Objective(s):
    - content piece on secure enclaves
 
 * <ins>Rosetta:</ins>   
-  - [Finish Rosetta event hash check](https://github.com/onflow/rosetta/issues/41)
-  - [Continue Cadence Rosetta updates for Crescendo compatibility](https://github.com/onflow/rosetta/issues/41)
+  - KROK [Finish Rosetta event hash check](https://github.com/onflow/rosetta/issues/41)
+  - KROK [Continue Cadence Rosetta updates for Crescendo compatibility](https://github.com/onflow/rosetta/issues/41)
   - Review Flow EVM Rosetta implementation from contract developer
 
 **On Hold**
