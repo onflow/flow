@@ -518,7 +518,7 @@ Cycle Objective(s):
 ### **Governance and Tokenomics** \[Kshitij]
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
-**Done last sprin**
+**Done last sprint**
 - Chats with potential consensus node operators around leases, contracts and running SNs
 - FF staked 1 new consensus node (via Figment) with 500K FLOW stake
 - Finalized contract, account setup for Flowty and transferred the lease
