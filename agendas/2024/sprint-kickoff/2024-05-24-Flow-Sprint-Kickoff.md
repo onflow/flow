@@ -15,7 +15,7 @@
 - Updated  FT, NFT, and metadata views guides to Cadence 1.0
 - Finished Cadence 1.0 changes for NFTStorefront and included it in testnet migrations
 - CLI Staging Imjprovements: Added ability to stage & validate entire project in one command to CLI, Warn users if staged contracts are no longer valid in the CLI when running commands
-
+- Protocol State Snapshot updated -> can be constructed from any reference block
 
 
 ### General updates
