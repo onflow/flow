@@ -499,15 +499,22 @@ Cycle Objective(s):
 ### **Governance and Tokenomics** \[Kshitij]
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
+**Done last sprin**
+- Chats with potential consensus node operators around leases, contracts and running SNs
+- FF staked 1 new consensus node (via Figment) with 500K FLOW stake
+- Finalized contract, account setup for Flowty and transferred the lease
+- Published Computation Limit hike FLIP; addressing feedback
+- Transaction fee impact discussion with working group DRIs
+- Drove early surge pricing research
 
 **This sprint**
-- Continue chats with potential consensus node operators and finalize lease discussions
-- Onboard 8 new SNs - contracts, lease transfers, stake and setup assistance 
-- Review, finalize and merge Tokenomics PRs
+- Set up 3 FF nodes via Figment
+- Onboard Doodles and Cryptotoys as SN operators
+- Kick off Flowty's consensus node
+- Assess decentralization situation and the way forward
+- Review, finalize and take a decision on computation limit FLIP 
 - Transaction fee partner impact discussion and way forward with FF leadership
-- Map and evaluate post crescendo Flow scenarios regarding tps, fees and inflation
-- R&D and planning with Dete on post Crescendo surge pricing [already kicked off]
-- Metrics planning for foundation’s financials and network Tokenomics
+- R&D and planning with Dete on post Crescendo surge pricing
 - Continue working on node operator branding and logos with .find team
   
 **On Hold**
