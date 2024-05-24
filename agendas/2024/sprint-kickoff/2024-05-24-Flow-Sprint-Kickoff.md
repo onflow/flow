@@ -113,7 +113,7 @@ State migration for Crescendo release
   - [Update or deploy EVM contract, depending on chain](https://github.com/onflow/flow-go/pull/5915)
   - [Include NFTStorefrontV2 in the testnet migrations](https://github.com/onflow/flow-go/issues/5963)
       - [Stage contract update for NFTStorefrontV2 on Testnet](https://github.com/onflow/flow-go/pull/5964)
--Bugfixes
+- Bugfixes
   - [Fix string formatting for values](https://github.com/onflow/cadence/pull/3370)
   - [Handle missing interfaces in Cadence 1.0 contract update validator](https://github.com/onflow/cadence/pull/3337)
   - [Fix Cadence 1.0 migration error when address is used as register owner](https://github.com/onflow/flow-go/pull/5929)
