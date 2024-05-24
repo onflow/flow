@@ -221,6 +221,10 @@ ON HOLD: Objective 3: Analyze execution runtime trends and risks to plan next se
 
 ON HOLD: * Start Atree optimization: [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
 
+IN PROGRESS: EVM GW stability - investigating
+
+ON HOLD: EVM GW Debug endpoint implementation
+
 Cadence 1.0 Contract updates
 - [Continue working through contract standards needing upgrade to C1.0](https://github.com/onflow/docs/issues/716)
 - More reviews of bridge PRs and Cadence 1.0 changes 
