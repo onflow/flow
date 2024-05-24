@@ -241,6 +241,11 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>Data Availability:</ins>
+  - KROK Team
+    - Add increment method for monotonic counter ([PR #5814](https://github.com/onflow/flow-go/pull/5814))
+    - Support serving system tx result from local index ([PR #5802](https://github.com/onflow/flow-go/pull/5802))
+    - Allow dynamic bootstrapped ANs to index execution data ([PR #5888](https://github.com/onflow/flow-go/pull/5888))
 
 **This sprint**
 
@@ -256,14 +261,15 @@ Cycle Objective(s):
   - [Cancel in progress root QC voting](https://github.com/onflow/flow-go/issues/5733)
 
 * <ins>Data Availability:</ins>
-  - Test local script exec with lower compute limit
-  - Continue debugging resource issues observed on QuickNode
+  - Redeploy local index and script exec on QN bare metal instances
+  - Start design work for DB pruning
   - KROK Team
     - Fix retries when using preferred-execution-nodes list ([Issue #5810](https://github.com/onflow/flow-go/issues/5810))
-    - Merge changes to support enabling indexing on Dynamic bootstrapped AN ([Issue #5423](https://github.com/onflow/flow-go/issues/5423) - PR in review)
     - Update rosetta for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52))
-    - Address tech debt in APIs ([Issue #5757](https://github.com/onflow/flow-go/issues/5757) - PR in review)
+    - Fix rosetta event hash check ([Issue #41]( https://github.com/onflow/rosetta/issues/41))
     - Add support for version beacon events to control script execution ([Issue #5757](https://github.com/onflow/flow-go/issues/5757))
+    - Fix Access integration test ([Issue #5825](https://github.com/onflow/flow-go/issues/5825) - PR in review)
+    - Add indexed height indicator in grpc metadata response ([Issue #4757](https://github.com/onflow/flow-go/issues/4757) - PR in review)
 
 * <ins>Cryptography:</ins>
    - BFT - proof of possession epic : continue updating old PRs - scope the Ledger wallet work with VaccumLabs
