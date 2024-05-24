@@ -87,48 +87,51 @@ Cycle Objective(s):
 **Done last sprint**
 
 State migration for Crescendo release
-Optimizatins
-- [Add Payload.Address() to allow migrations, etc. to reduce overhead](https://github.com/onflow/flow-go/pull/5948)
-- [Disable spock proof generation for migrations](https://github.com/onflow/flow-go/pull/5920)
-- [Use faster atree funcs to speedup Cadence 1.0 migration](https://github.com/onflow/flow-go/pull/5916)
-- [Add Storage.NondeterministicCommit for faster migrations](https://github.com/onflow/cadence/pull/3348)
-- [Optimize creation of new payloads](https://github.com/onflow/flow-go/pull/5914)
-- [Optimize Cadence v0.42 + atree inlining migration](https://github.com/onflow/flow-go/pull/5913)
-- [Optimize the Cadence 1.0 migration](https://github.com/onflow/flow-go/pull/5897)
-- [Improve scheduling in account-based migration](https://github.com/onflow/flow-go/pull/5901)
-- Atree - [Add NonderterministicFastCommit to speed up migrations when ordering isn't required](https://github.com/onflow/atree/pull/403)
-- Atree - [Add BatchPreload to decode slabs in parallel and cache](https://github.com/onflow/atree/pull/404)
-Updates
-- [Update or deploy EVM contract, depending on chain](https://github.com/onflow/flow-go/pull/5915)
-- [Include NFTStorefrontV2 in the testnet migrations](https://github.com/onflow/flow-go/issues/5963)
-    - [Stage contract update for NFTStorefrontV2 on Testnet](https://github.com/onflow/flow-go/pull/5964)
-Bugfixes
-- [Fix string formatting for values](https://github.com/onflow/cadence/pull/3370)
-- [Handle missing interfaces in Cadence 1.0 contract update validator](https://github.com/onflow/cadence/pull/3337)
-- [Fix Cadence 1.0 migration error when address is used as register owner](https://github.com/onflow/flow-go/pull/5929)
-- [Gracefully recover from panics encountered during contract update validation](https://github.com/onflow/flow-go/pull/5935)
-- [Allow export of global registers (owner is empty string)](https://github.com/onflow/flow-go/pull/5939)
-Testing
-- [Test registers data structure](https://github.com/onflow/flow-go/pull/5949)
+
+- Optimizatins
+  - [Add Payload.Address() to allow migrations, etc. to reduce overhead](https://github.com/onflow/flow-go/pull/5948)
+  - [Disable spock proof generation for migrations](https://github.com/onflow/flow-go/pull/5920)
+  - [Use faster atree funcs to speedup Cadence 1.0 migration](https://github.com/onflow/flow-go/pull/5916)
+  - [Add Storage.NondeterministicCommit for faster migrations](https://github.com/onflow/cadence/pull/3348)
+  - [Optimize creation of new payloads](https://github.com/onflow/flow-go/pull/5914)
+  - [Optimize Cadence v0.42 + atree inlining migration](https://github.com/onflow/flow-go/pull/5913)
+  - [Optimize the Cadence 1.0 migration](https://github.com/onflow/flow-go/pull/5897)
+  - [Improve scheduling in account-based migration](https://github.com/onflow/flow-go/pull/5901)
+  - Atree - [Add NonderterministicFastCommit to speed up migrations when ordering isn't required](https://github.com/onflow/atree/pull/403)
+  - Atree - [Add BatchPreload to decode slabs in parallel and cache](https://github.com/onflow/atree/pull/404)
+- Updates
+  - [Update or deploy EVM contract, depending on chain](https://github.com/onflow/flow-go/pull/5915)
+  - [Include NFTStorefrontV2 in the testnet migrations](https://github.com/onflow/flow-go/issues/5963)
+      - [Stage contract update for NFTStorefrontV2 on Testnet](https://github.com/onflow/flow-go/pull/5964)
+-Bugfixes
+  - [Fix string formatting for values](https://github.com/onflow/cadence/pull/3370)
+  - [Handle missing interfaces in Cadence 1.0 contract update validator](https://github.com/onflow/cadence/pull/3337)
+  - [Fix Cadence 1.0 migration error when address is used as register owner](https://github.com/onflow/flow-go/pull/5929)
+  - [Gracefully recover from panics encountered during contract update validation](https://github.com/onflow/flow-go/pull/5935)
+  - [Allow export of global registers (owner is empty string)](https://github.com/onflow/flow-go/pull/5939)
+- Testing
+-   [Test registers data structure](https://github.com/onflow/flow-go/pull/5949)
 
 Cadence Language
-Improvement
-- Language breaking change: [Return a copy for enum-typed members, during member-access via references](https://github.com/onflow/cadence/pull/3357)
-- [Allow construction of paths with syntactically invalid identifiers](https://github.com/onflow/cadence/pull/3338)
-- [Add invalidation for storage references](https://github.com/onflow/cadence/pull/3343)
-Security Improvements
-- Language breaking change: [Resource methods can be separated/moved-around as a function pointer](https://github.com/dapperlabs/cadence-internal/issues/213)
-- Language breaking change: [Moving of contract and transaction variable is not statically rejected](https://github.com/dapperlabs/cadence-internal/issues/217)
-Bugfix
-- [Fix restricted type checking in contract-update-validator](https://github.com/onflow/cadence/pull/3352)
-- [Check dictionary keys when checking the ability for dereferencing](https://github.com/onflow/cadence/pull/3339)
-- [Wrap host-function typed member-values with a bound-function](https://github.com/onflow/cadence/pull/3342)
-Docs
-- [Update section about validator entitlement computation](https://github.com/onflow/cadence-lang.org/pull/104)
-Testing
-- [Add back transaction execute tests](https://github.com/onflow/cadence/pull/3345)
+
+- Improvement
+  - Language breaking change: [Return a copy for enum-typed members, during member-access via references](https://github.com/onflow/cadence/pull/3357)
+  - [Allow construction of paths with syntactically invalid identifiers](https://github.com/onflow/cadence/pull/3338)
+  - [Add invalidation for storage references](https://github.com/onflow/cadence/pull/3343)
+- Security Improvements
+  - Language breaking change: [Resource methods can be separated/moved-around as a function pointer](https://github.com/dapperlabs/cadence-internal/issues/213)
+  - Language breaking change: [Moving of contract and transaction variable is not statically rejected](https://github.com/dapperlabs/cadence-internal/issues/217)
+- Bugfix
+  - [Fix restricted type checking in contract-update-validator](https://github.com/onflow/cadence/pull/3352)
+  - [Check dictionary keys when checking the ability for dereferencing](https://github.com/onflow/cadence/pull/3339)
+  - [Wrap host-function typed member-values with a bound-function](https://github.com/onflow/cadence/pull/3342)
+- Docs
+  - [Update section about validator entitlement computation](https://github.com/onflow/cadence-lang.org/pull/104)
+- Testing
+  - [Add back transaction execute tests](https://github.com/onflow/cadence/pull/3345)
 
 Cadence Execution
+
 - [Transaction audit / failure mode for missing staged contract](https://github.com/onflow/flow-go/issues/5858)
     - [Add a dependency check for cadence imports](https://github.com/onflow/flow-go/pull/5908)
     - bugfixes
@@ -138,47 +141,49 @@ Cadence Execution
     - [Add get full collection by id api](https://github.com/onflow/flow/pull/1463)
 - New Ingestion engine
     - [Add ingestion core tests](https://github.com/onflow/flow-go/pull/5871)
-Improvements
-- Atree: [Allow detection and logging on mutation of elements returned by readonly iterators](https://github.com/onflow/atree/issues/409)
-- [Fix missing mock generation](https://github.com/onflow/flow-go/pull/5928)
-- [move FlowClient to grpcclient package](https://github.com/onflow/flow-go/pull/5962)
-Bugfixes
-    - Long running bug causing execution to stall [Fix requester engine's optimization](https://github.com/onflow/flow-go/pull/5941)
-    - [Fix get highest executed and finalized height](https://github.com/onflow/flow-go/pull/5903)
-    - [Fix Util to find execution result mismatch](https://github.com/onflow/flow-go/pull/5890)
-chores
-- Spork/HCU prep: [1](https://github.com/onflow/flow-go/pull/5895), [2](https://github.com/onflow/flow-go/pull/5896), [3](https://github.com/onflow/flow-go/pull/5889), [4](https://github.com/onflow/flow-go/pull/5940)
-- Dependency updates
-    - Cadence: [1](https://github.com/onflow/cadence/pull/3344), [2](https://github.com/onflow/cadence/pull/3346), [3](https://github.com/onflow/cadence/pull/3347), [4](https://github.com/onflow/cadence/pull/3351), [5](https://github.com/onflow/cadence/pull/3359), [6](https://github.com/onflow/cadence/pull/3364), [7](https://github.com/onflow/cadence/pull/3365)
-    - flow-go: [1](https://github.com/onflow/flow-go/pull/5921), [2](https://github.com/onflow/flow-go/pull/5925), [3](https://github.com/onflow/flow-go/pull/5926), [4](https://github.com/onflow/flow-go/pull/5930), [5](https://github.com/onflow/flow-go/pull/5931), [6](https://github.com/onflow/flow-go/pull/5946), [7](https://github.com/onflow/flow-go/pull/5950), [8](https://github.com/onflow/flow-go/pull/5965), [9](https://github.com/onflow/flow-go/pull/5966)
-    - flow-go-sdk: [1](https://github.com/onflow/flow-go-sdk/pull/653), [2](https://github.com/onflow/flow-go-sdk/pull/654), [3](https://github.com/onflow/flow-go-sdk/pull/655)
-    - cadence tools: [1](https://github.com/onflow/cadence-tools/pull/369), [2](https://github.com/onflow/cadence-tools/pull/370), [3](https://github.com/onflow/cadence-tools/pull/371)
-    - emulator: [1](https://github.com/onflow/flow-emulator/pull/678)
-    - flowkit: [1](https://github.com/onflow/flowkit/pull/51)
-    - flixkit-go: [1](https://github.com/onflow/flixkit-go/pull/66)
-    - evm-gw: [1](https://github.com/onflow/flow-evm-gateway/pull/252)
-    - CLI: [1](https://github.com/onflow/flow-cli/pull/1608)
+- Improvements
+  - Atree: [Allow detection and logging on mutation of elements returned by readonly iterators](https://github.com/onflow/atree/issues/409)
+  - [Fix missing mock generation](https://github.com/onflow/flow-go/pull/5928)
+  - [move FlowClient to grpcclient package](https://github.com/onflow/flow-go/pull/5962)
+- Bugfixes
+  - Long running bug causing execution to stall [Fix requester engine's optimization](https://github.com/onflow/flow-go/pull/5941)
+  - [Fix get highest executed and finalized height](https://github.com/onflow/flow-go/pull/5903)
+  - [Fix Util to find execution result mismatch](https://github.com/onflow/flow-go/pull/5890)
+- chores
+  - Spork/HCU prep: [1](https://github.com/onflow/flow-go/pull/5895), [2](https://github.com/onflow/flow-go/pull/5896), [3](https://github.com/onflow/flow-go/pull/5889), [4](https://github.com/onflow/flow-go/pull/5940)
+  - Dependency updates
+      - Cadence: [1](https://github.com/onflow/cadence/pull/3344), [2](https://github.com/onflow/cadence/pull/3346), [3](https://github.com/onflow/cadence/pull/3347), [4](https://github.com/onflow/cadence/pull/3351), [5](https://github.com/onflow/cadence/pull/3359), [6](https://github.com/onflow/cadence/pull/3364), [7](https://github.com/onflow/cadence/pull/3365)
+      - flow-go: [1](https://github.com/onflow/flow-go/pull/5921), [2](https://github.com/onflow/flow-go/pull/5925), [3](https://github.com/onflow/flow-go/pull/5926), [4](https://github.com/onflow/flow-go/pull/5930), [5](https://github.com/onflow/flow-go/pull/5931), [6](https://github.com/onflow/flow-go/pull/5946), [7](https://github.com/onflow/flow-go/pull/5950), [8](https://github.com/onflow/flow-go/pull/5965), [9](https://github.com/onflow/flow-go/pull/5966)
+      - flow-go-sdk: [1](https://github.com/onflow/flow-go-sdk/pull/653), [2](https://github.com/onflow/flow-go-sdk/pull/654), [3](https://github.com/onflow/flow-go-sdk/pull/655)
+      - cadence tools: [1](https://github.com/onflow/cadence-tools/pull/369), [2](https://github.com/onflow/cadence-tools/pull/370), [3](https://github.com/onflow/cadence-tools/pull/371)
+      - emulator: [1](https://github.com/onflow/flow-emulator/pull/678)
+      - flowkit: [1](https://github.com/onflow/flowkit/pull/51)
+      - flixkit-go: [1](https://github.com/onflow/flixkit-go/pull/66)
+      - evm-gw: [1](https://github.com/onflow/flow-evm-gateway/pull/252)
+      - CLI: [1](https://github.com/onflow/flow-cli/pull/1608)
 
 EVM Gateway
-Features
-- [Handle cross-spork access](https://github.com/onflow/flow-evm-gateway/issues/229)
-    - [Multi-spork client access support](https://github.com/onflow/flow-evm-gateway/pull/230)
-Hardening / Improvements
--[Multi-key account creation process improvements](https://github.com/onflow/flow-evm-gateway/pull/249)
-- [Improve event testing](https://github.com/onflow/flow-evm-gateway/pull/240)
-- [Improve crash reporting](https://github.com/onflow/flow-evm-gateway/issues/236)
-bugfix
-- [Fix decoding blocks with no total gas used](https://github.com/onflow/flow-go/pull/5872)
-Ops chores
-- [1](https://github.com/dapperlabs/dapper-flow-hosting/pull/1500), [2](https://github.com/onflow/flow-evm-gateway/pull/255), [3](https://github.com/onflow/flow-evm-gateway/pull/257), [4](https://github.com/onflow/flow-evm-gateway/pull/258)
+
+- Features
+  - [Handle cross-spork access](https://github.com/onflow/flow-evm-gateway/issues/229)
+      - [Multi-spork client access support](https://github.com/onflow/flow-evm-gateway/pull/230)
+- Hardening / Improvements
+  - [Multi-key account creation process improvements](https://github.com/onflow/flow-evm-gateway/pull/249)
+  - [Improve event testing](https://github.com/onflow/flow-evm-gateway/pull/240)
+  - [Improve crash reporting](https://github.com/onflow/flow-evm-gateway/issues/236)
+- bugfix
+  - [Fix decoding blocks with no total gas used](https://github.com/onflow/flow-go/pull/5872)
+- Ops chores
+  - [1](https://github.com/dapperlabs/dapper-flow-hosting/pull/1500), [2](https://github.com/onflow/flow-evm-gateway/pull/255), [3](https://github.com/onflow/flow-evm-gateway/pull/257), [4](https://github.com/onflow/flow-evm-gateway/pull/258)
 
 EVM Core
+
 - [Add support for revertible random](https://github.com/onflow/flow-go/issues/5862)
-Hardening / Improvements
-- [Use hex-encoded address as event values for better readability](https://github.com/onflow/flow-go/issues/5911)
-- [Support decoding of all previous block types](https://github.com/onflow/flow-go/pull/5875)
-Bugfix
-- [EVM.dryRun method inconsistent behavior for certain errors](https://github.com/onflow/flow-go/issues/5902)
+- Hardening / Improvements
+  - [Use hex-encoded address as event values for better readability](https://github.com/onflow/flow-go/issues/5911)
+  - [Support decoding of all previous block types](https://github.com/onflow/flow-go/pull/5875)
+- Bugfix
+  - [EVM.dryRun method inconsistent behavior for certain errors](https://github.com/onflow/flow-go/issues/5902)
 
 **This sprint**
 
