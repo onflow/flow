@@ -152,7 +152,7 @@ Cycle Objective(s):
 
 * <ins>Rosetta:</ins>   
   - KROK Team
-    - [Finish Rosetta event hash check](https://github.com/onflow/rosetta/issues/41)
+    - [Rosetta event hash check](https://github.com/onflow/rosetta/issues/41)
 
 * <ins>Other:</ins>   
   - Started high level 2-pager of public roadmap & vision for protocol decentralization & permissionless consensus on Flow
