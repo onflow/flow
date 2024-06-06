@@ -310,12 +310,36 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**CloudFlare Migration**
+- [Created workflows for deploying CAST to Cloud Run](https://github.com/onflow/CAST/pull/28)
+- [Created infrastructure for running CAST on Cloud Run](https://github.com/dapperlabs/flow-devex-infrastructure/pull/155)
+- Backed up resources from CAST Cluster
+- Continued working with reps to get quotes for new plan
+ 
+**Node Hosting**
+- [Update Mainnet AN instance sizes](https://github.com/dapperlabs/terraform/pull/4246)
+- Reclaim disk space through CDP deletion on Mainnet DL nodes
+- Reclaim disk space through CDP deletion on Previewnet nodes
+
+**Sporks**
+- [Scale down Devnet49 & Snapshot disks](https://github.com/dapperlabs/terraform/pull/4251)
+
+**EVM Gateway**
+- [Create bucket for execution traces](https://github.com/dapperlabs/terraform/pull/4258)
+- [Add rate limiting support to EVM Gateway](https://github.com/dapperlabs/dapper-flow-hosting/pull/1509)
+
+**Support**
+- [Remove unnecessary scrape job from Prometheus](https://github.com/dapperlabs/dapper-flow-hosting/pull/1518)
+- [Remove Krok instance](https://github.com/dapperlabs/terraform/pull/4255)
+- Assist with creation and configuration isolated Devnet EN for testing
+- Assist with creation and configuration isolated Mainnet EN for testing
+- Assist with configuration of script execution on Studio nodes
+
 **Goal of this Sprint is to continue migration efforts** 
 **This Sprint**
+- Assist with migration and spork prep efforts
 - Continue removing dependencies on CloudFlare & assist with account creation
 - Continue assisting with DevEx migration to Cloud Run
-- Improve synthetic alerting 
-- Assist with migration and spork prep efforts
 
 ---
 
