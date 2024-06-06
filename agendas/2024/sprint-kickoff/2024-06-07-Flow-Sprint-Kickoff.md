@@ -130,13 +130,21 @@ Objective 3: Analyze execution runtime trends and risks to plan next set of scal
 ### **Core Protocol** \[Jerome]
 Cycle Objective(s): 
 
-* Translate crypto performance improvements to consensus block rate increase [DONE]
 * Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node
-* Reduce CPU usage on Execution node by 30%
+* Reduce CPU usage on Execution node by 30% [GOAL MODIFIED]
+* Translate crypto performance improvements to consensus block rate increase [DONE]
 * Continue design and implementation of Sporkless Epoch Fallback Recovery solution [DONE]
 
 **Done last Sprint:**
+
+* <ins>EFM Recovery</ins>
+  - Continued https://github.com/onflow/flow-go/issues/5727
+  - [Continued Epoch manager QC voting changes](https://github.com/onflow/flow-go/issues/5733) (implementing tests)
+  - Ongoing review by SC team: [EpochRecover cadence transaction](https://github.com/onflow/flow-core-contracts/pull/420)
+  - [EpochRecover service event processing](https://github.com/onflow/flow-go/issues/5727) 
+
 * <ins>Data Availability:</ins>
+  - [Started RegistersDB pruning design](https://github.com/onflow/flow-go/issues/5761)
   - KROK Team
     - Fix event hashing CCF ([PR #53](https://github.com/onflow/rosetta/pull/53), [PR #62](https://github.com/onflow/rosetta/pull/62))
     - Add indexed height to API response metadata ([PR #5832](https://github.com/onflow/flow-go/pull/5832))
@@ -146,16 +154,22 @@ Cycle Objective(s):
   - KROK Team
     - [Finish Rosetta event hash check](https://github.com/onflow/rosetta/issues/41)
 
+* <ins>Other:</ins>   
+  - Started high level 2-pager of public roadmap & vision for protocol decentralization & permissionless consensus on Flow
+  - Resumed detailed technical content piece for public roadmap & vision for protocol decentralization; current challenges and upcoming updates for permissionless consensus on Flow.
+
 **This sprint**
 
 * <ins>EFM Recovery</ins>
   - Finish https://github.com/onflow/flow-go/issues/5727
   - [Finish Epoch manager QC voting changes](https://github.com/onflow/flow-go/issues/5733) (implementing tests)
   - Ongoing review by SC team: [EpochRecover cadence transaction](https://github.com/onflow/flow-core-contracts/pull/420)
-  - [Start Blocktime controller EFM changes])(https://github.com/onflow/flow-go/issues/5732)
+  - [Blocktime controller EFM changes])(https://github.com/onflow/flow-go/issues/5732)
+  - [`epochs.FallbackStateMachine` only tolerates narrow unexpected behaviour](https://github.com/onflow/flow-go/issues/6018)
+  - [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
 
 * <ins>Data Availability:</ins>
-  - Complete RegistersDB pruning design, start on protocol db design
+  - [Complete RegistersDB pruning design, start on protocol db design](https://github.com/onflow/flow-go/issues/5761)
   - Continue redeploy of local index and script exec on QN bare metal instances
   - KROK Team
     - Fix retries when using preferred-execution-nodes list ([Issue #5810](https://github.com/onflow/flow-go/issues/5810) - PR in review)
@@ -169,11 +183,14 @@ Cycle Objective(s):
    - SPoCK aggregation: deeper look at the KOSK model
    - content piece on secure enclaves
 
-* <ins>Rosetta:</ins>   
-  - Update rosetta for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52), [Issue #54](https://github.com/onflow/rosetta/issues/54) - PRs in review)
+* <ins>Rosetta (KROK Team):</ins>   
+  - Last items Rosetta Cadence updates for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52), [Issue #54](https://github.com/onflow/rosetta/issues/54) - PRs in review)
+
+* <ins>Other:</ins>   
+  - Complete high level 2-pager of public roadmap & vision for protocol decentralization & permissionless consensus on Flow
+  - Continue content piece for public roadmap & vision for protocol decentralization; current challenges and upcoming updates for permissionless consensus on Flow.
 
 **On Hold**
-* Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
 * Implement BFT mitigations to enable 20 permissionless ANs
 
 **Active Epics**
