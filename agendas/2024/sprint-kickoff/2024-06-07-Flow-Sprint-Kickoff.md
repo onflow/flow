@@ -136,35 +136,41 @@ Cycle Objective(s):
 * Continue design and implementation of Sporkless Epoch Fallback Recovery solution [DONE]
 
 **Done last Sprint:**
+* <ins>Data Availability:</ins>
+  - KROK Team
+    - Fix event hashing CCF ([PR #53](https://github.com/onflow/rosetta/pull/53), [PR #62](https://github.com/onflow/rosetta/pull/62))
+    - Add indexed height to API response metadata ([PR #5832](https://github.com/onflow/flow-go/pull/5832))
+    - Fix flaky access tests([PR #6014](https://github.com/onflow/flow-go/pull/6014), [PR #5953](https://github.com/onflow/flow-go/pull/5953))
 
-      
+* <ins>Rosetta:</ins>   
+  - KROK Team
+    - [Finish Rosetta event hash check](https://github.com/onflow/rosetta/issues/41)
+
 **This sprint**
 
 * <ins>EFM Recovery</ins>
   - Finish https://github.com/onflow/flow-go/issues/5727
-  - Onboard Jordan to EFM tasks
   - [Finish Epoch manager QC voting changes](https://github.com/onflow/flow-go/issues/5733) (implementing tests)
   - Ongoing review by SC team: [EpochRecover cadence transaction](https://github.com/onflow/flow-core-contracts/pull/420)
   - [Start Blocktime controller EFM changes])(https://github.com/onflow/flow-go/issues/5732)
 
 * <ins>Data Availability:</ins>
-  - Redeploy local index and script exec on QN bare metal instances
-  - Start design work for DB pruning
-  - Finish review of Event Streaming blog authored by KROK
+  - Complete RegistersDB pruning design, start on protocol db design
+  - Continue redeploy of local index and script exec on QN bare metal instances
   - KROK Team
-    - Fix retries when using preferred-execution-nodes list ([Issue #5810](https://github.com/onflow/flow-go/issues/5810))
-    - Add support for version beacon events to control script execution ([Issue #5757](https://github.com/onflow/flow-go/issues/5757))
-    - Fix Access integration test ([Issue #5825](https://github.com/onflow/flow-go/issues/5825) - PR in review)
-    - Add indexed height indicator in grpc metadata response ([Issue #4757](https://github.com/onflow/flow-go/issues/4757) - PR in review)
+    - Fix retries when using preferred-execution-nodes list ([Issue #5810](https://github.com/onflow/flow-go/issues/5810) - PR in review)
+    - Add support for version beacon events to control script execution ([Issue #5788](https://github.com/onflow/flow-go/issues/5788), [Issue #5789](https://github.com/onflow/flow-go/issues/5789), [Issue #5790](https://github.com/onflow/flow-go/issues/5790))
+    - Expose separate endpoints for getting account balance and keys ([Issue #5894](https://github.com/onflow/flow-go/issues/5894), [Issue #5999](https://github.com/onflow/flow-go/issues/5999))
+    - Create proof of concept of transaction payer balance checks ([Issue #5823](https://github.com/onflow/flow-go/issues/5823))
+    - Add support for pruning execution data db on ANs ([Issue #6002](https://github.com/onflow/flow-go/issues/6002))
+    - Add support for storing exec data using pebble db ([Issue #6017](https://github.com/onflow/flow-go/issues/6017))
 
 * <ins>Cryptography:</ins>
    - SPoCK aggregation: deeper look at the KOSK model
    - content piece on secure enclaves
 
 * <ins>Rosetta:</ins>   
-  - KROK [Finish Rosetta event hash check](https://github.com/onflow/rosetta/issues/41)
-  - KROK [Continue Cadence Rosetta updates for Crescendo compatibility](https://github.com/onflow/rosetta/issues/41)
-  - Review Flow EVM Rosetta implementation from contract developer
+  - Update rosetta for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52), [Issue #54](https://github.com/onflow/rosetta/issues/54) - PRs in review)
 
 **On Hold**
 * Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
