@@ -8,6 +8,11 @@
 - Published [Crescendo bug bounty](https://flow.com/bounty-program).
 - Transaction audit mode ready to be deployed on Mainnet next week (Tue) via HCU.
 - Resumed Storehouse testing using new Unstaked EN (executing latest MN blocks).
+- Flow Port updates: Fungible transfers, onboarding and bridging, Dynamic FLOW token transfers
+- Fixed public key indexer incremental and bulk loading
+- First round of reports for incorrect public function exposure for Cadence 1.0 was sent. We’re set to run this tool every week hoping to plug security holes
+- Got all the basic Cadence Tutorials updated to Cadence 1.0
+
 
 
 ### General updates
@@ -349,6 +354,33 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**Crescendo Rewards**
+- Deployed Crescendo Rewards BE to cloudrun
+- Setup next application with component library: https://github.com/onflow/crescendo-rewards/issues/2
+- Create header component: https://github.com/onflow/crescendo-rewards/issues/3
+- Create total rewards component with mock data: https://github.com/onflow/crescendo-rewards/issues/4
+- Create days until launch component: https://github.com/onflow/crescendo-rewards/issues/5
+- Create leaderboard component with mock data: https://github.com/onflow/crescendo-rewards/issues/6
+- Create navigation and hook up routes: https://github.com/onflow/crescendo-rewards/issues/7
+- Create home page: https://github.com/onflow/crescendo-rewards/issues/8
+- Create rewards page: https://github.com/onflow/crescendo-rewards/issues/9
+- Create rewards earned component with mock data: https://github.com/onflow/crescendo-rewards/issues/10
+- Create lock more component with mock data: https://github.com/onflow/crescendo-rewards/issues/11
+- Create partner page with mock data: https://github.com/onflow/crescendo-rewards/issues/12
+- Create partner card component with mock data: https://github.com/onflow/crescendo-rewards/issues/13 
+- Setup fastify server: https://github.com/onflow/crescendo-rewards-be/issues/2
+- Setup drizzle orm with postgres: https://github.com/onflow/crescendo-rewards-be/issues/3
+**Flow Port**
+Flow Port, FLOW transfers https://github.com/onflow/flow-port/issues/289
+Flow Port, FLOW Token balances, https://github.com/onflow/flow-port/issues/285
+**Docs**
+- Updated basic Cadence tutorials to 1.0: https://github.com/onflow/docs/issues/769
+**Misc Bugs and Issues**
+- Bug: fix preview chain not known https://github.com/onflow/flow-cli/issues/1592 
+- "Commit" broken in flow version https://github.com/onflow/flow-cli/issues/1639 
+- Cadence plugin failed to be activated in the latest VSCode https://github.com/onflow/vscode-cadence/issues/626
+- Cannot start EVM gateway https://github.com/onflow/flow-cli/issues/1620 
+- Fix for CLI Version https://github.com/onflow/flow-cli/issues/1626
 
 **This sprint**
 **Sprint goal focusing on: Flow Port Asset Bridge and Token Transfer, FCL x WalletConnect Improvements, Crescendo Rewards**
@@ -356,8 +388,12 @@ Cycle Objective(s):
 - [EPIC] Flow Port Asset Bridge [#284](https://github.com/onflow/flow-port/issues/284)
 - [EPIC] EVM Docs [#654](https://github.com/onflow/docs/issues/654)
 - [EPIC] Flow EVM Docs - Cadence Dev [#575](https://github.com/onflow/docs/issues/575)
-- [EPIC]: Update Flow port for Cadence v1.0 instance [#279](https://github.com/onflow/flow-port/issues/279)
+- [EPIC] Update Flow port for Cadence v1.0 instance [#279](https://github.com/onflow/flow-port/issues/279)
 - [EPIC] FCL WalletConnect Improvements https://github.com/onflow/fcl-js/issues/1872
+- [EPIC] Crescendo Rewards Portal
+  - [FE](https://github.com/onflow/crescendo-rewards/issues/1 )
+  - [BE](https://github.com/onflow/crescendo-rewards-be/issues/1)
+  - [SC](https://github.com/onflow/crescendo-rewards-sc/issues/7)
 
 #### Smart Contract WG
 
