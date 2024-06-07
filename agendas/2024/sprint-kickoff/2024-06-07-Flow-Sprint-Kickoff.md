@@ -98,7 +98,7 @@ State migration for Crescendo release
         - [Remove incorrect caching from migrations](https://github.com/onflow/cadence/pull/3375)
         - [Improve dictionary key migration](https://github.com/onflow/cadence/pull/3386)
     - [Use Cadence func to decide which testnet data to fix during atree migration](https://github.com/onflow/flow-go/pull/6038)
-- Improvement
+- Improvements
     - Cadence 1.0 migration optimization:
         - [Cache results of static types migration and entitlements migration](https://github.com/onflow/cadence/pull/3396)
         - [Use errgroup for concurrent account migration](https://github.com/onflow/flow-go/pull/5986)
@@ -118,7 +118,7 @@ Cadence Language
     - [Forbid interface removals](https://github.com/onflow/cadence/pull/3380)
     - [Remove stacktrace from errors](https://github.com/onflow/cadence/pull/3392)
     - [Improve update tool](https://github.com/onflow/cadence/pull/3395)
-- Bugfix
+- Bugfixes
     - [Fix error message](https://github.com/onflow/cadence/pull/3379)
     - [Don't short circuit references on member access when entitlements are involved](https://github.com/onflow/cadence/pull/3387)
 - Docs
@@ -160,14 +160,14 @@ EVM Core
 - Feature
     - [Support for transactions debug](https://github.com/onflow/flow-go/issues/5952)
         - [Transaction tracer support ](https://github.com/onflow/flow-go/pull/6016)
-- Improvement
+- Improvements
     - [TotalGasUsed is 0 for blocks with direct calls and batch txs](https://github.com/onflow/flow-go/issues/5951)
         - [Calculate EVM.BlockExecuted.TotalGasUsed for Tx batch runs and COA calls](https://github.com/onflow/flow-go/pull/6015)
     - [Add the `GetErrorForCode` helper method](https://github.com/onflow/flow-go/pull/5907)
     - [EVM setup cleanup](https://github.com/onflow/flow-go/pull/5978)
 
 EVM Gateway
-- Feature
+- Features
     - transaction pool (handling of pending transactions) 
         - [Empty transaction pool](https://github.com/onflow/flow-evm-gateway/pull/259)
         - [Report Cadence transaction status](https://github.com/onflow/flow-evm-gateway/pull/270)
@@ -181,7 +181,7 @@ EVM Gateway
     - [Requester accept EVM height](https://github.com/onflow/flow-evm-gateway/pull/268)
     - [Overwrite source address with logging](https://github.com/onflow/flow-evm-gateway/pull/272)
     - [Add request limits for JSON-RPC batch calls](https://github.com/onflow/flow-evm-gateway/pull/277)
-- Bugfixes
+- Bugfix
     - [Bugfix deadlock in the code](https://github.com/onflow/flow-evm-gateway/pull/269)
 - Testing
     - [Improve tests for batched transactions](https://github.com/onflow/flow-evm-gateway/pull/239)
