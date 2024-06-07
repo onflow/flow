@@ -58,17 +58,17 @@ None
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 7 (+1)  |    8   |       0 (-1)         |       7          |        **22**        |
-| Proposed    | 1  |    2     |       3 (+1)          |       0           |        **6** (+1)        |
-| Accepted    | 2  |    1     |       1       |       1          |        **5**          |
+| Drafted     | 7  |    9 (+1)  |       0         |       7          |        **23** (+1)       |
+| Proposed    | 1  |    2     |       2 (-1)          |       0           |        **5** (-1)        |
+| Accepted    | 2  |    1     |       2 (+1       |       1          |        **6** (+1)          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
 | Implemented | 3 |    21    |       2       |       1           |        **7**          |
 | Released    | 4  |    0     |       3       |       6          |        **13**          |
-| Total       | **17** (+1)  |    **32**  |       **10** (+1)      |       **15**          |        **74** (+1)          |
+| Total       | **17**  |    **33** (+1)  |       **10**      |       **15**          |        **75** (+1)          |
 
 **Updates**
-* [Application] - FLIP 270: FCL `ServiceProvider` v1.1.0 (new)
-* [Governance] - 5X Computation Limit Hike (moved from drafted to proposed)
+* [Cadence] - Type Removal In Contract Updates (FLIP 275) was drafted
+* [Governance] - Computation Limit hike (FLIP 267) was accepted
 ---
 
 
