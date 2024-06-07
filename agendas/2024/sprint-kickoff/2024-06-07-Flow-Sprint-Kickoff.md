@@ -447,8 +447,16 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+- Completed version 2.2 of Flow Wallet with EVM Support! 🎉
+  - Releasing early next week
 
 **This sprint**
+
+- Continue to better support Secure Enclave
+  - User migration from Extension (seed phrase) to mobile (secure enclave) wallet security
+  - New account creation UI explaining the benefits of SE
+  - Explain any UI differences between seed phrase / SE wallets
+  - Profile account recovery - one backup to a users multiple primary accounts
  
 **On Hold**
 
