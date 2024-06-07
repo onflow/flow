@@ -14,8 +14,6 @@
 - First round of reports for incorrect public function exposure for Cadence 1.0 was sent. We’re set to run this tool every week hoping to plug security holes
 - Got all the basic Cadence Tutorials updated to Cadence 1.0
 
-
-
 ### General updates
 
 ### OOO
@@ -270,6 +268,11 @@ Cycle Objective(s):
   - KROK Team
     - [Rosetta event hash check](https://github.com/onflow/rosetta/issues/41)
 
+* <ins>Cryptography:</ins>
+   - SPoCK aggregation: looked into zk KOSK and its role in the security proof
+   - Reviewed crypto updates on go v1.22 and update the crypto repo
+   - Reviewed last details on EVM randomness
+
 * <ins>Other:</ins>   
   - Started high level 2-pager of public roadmap & vision for protocol decentralization & permissionless consensus on Flow
   - Resumed detailed technical content piece for public roadmap & vision for protocol decentralization; current challenges and upcoming updates for permissionless consensus on Flow.
@@ -296,8 +299,7 @@ Cycle Objective(s):
     - Add support for storing exec data using pebble db ([Issue #6017](https://github.com/onflow/flow-go/issues/6017))
 
 * <ins>Cryptography:</ins>
-   - SPoCK aggregation: deeper look at the KOSK model
-   - content piece on secure enclaves
+   - SPoCK aggregation: from BLS security proof to BLS aggregation security proof (more than a sprint)
 
 * <ins>Rosetta (KROK Team):</ins>   
   - Last items Rosetta Cadence updates for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52), [Issue #54](https://github.com/onflow/rosetta/issues/54) - PRs in review)
@@ -325,14 +327,16 @@ Cycle Objective(s):
 Cycle Objective(s): 
 - Resolving Circle's existing engineering improvements for USDC on Flow
 - Cadence 1.0 DEX Prep - IncrementFi
-- EVM partner onboarding: Pyth, DeBridge, Covalent, Etherscan
-- Deliver Axelar bridge
+- EVM partner onboarding: Moralis, Covalent, Ankr
+- Deliver Axelar bridge [PAUSED]
 
 **Done last sprint**
 * PR to backfill of missing crypto algos to JVM SDK ready for review
+* Reviewed BLS PR for JVM-SDK
 
 **This sprint**
 * Backfill missing API methods to JVM SDK
+* Review of new hash additions PR for JVM-SDK
 
 **On Hold**
 - Axelar Cadence bridge release waiting confirmation of build partners, costs and timelines for EVM release, no engineering ongoing
