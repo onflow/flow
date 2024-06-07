@@ -267,6 +267,8 @@ Cycle Objective(s):
 * <ins>Rosetta:</ins>   
   - KROK Team
     - [Rosetta event hash check](https://github.com/onflow/rosetta/issues/41)
+  - DistributedLab
+    - Completed initial review of Rosetta for EVM on Flow
 
 * <ins>Cryptography:</ins>
    - SPoCK aggregation: looked into zk KOSK and its role in the security proof
@@ -301,9 +303,12 @@ Cycle Objective(s):
 * <ins>Cryptography:</ins>
    - SPoCK aggregation: from BLS security proof to BLS aggregation security proof (more than a sprint)
 
-* <ins>Rosetta (KROK Team):</ins>   
-  - Last items Rosetta Cadence updates for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52), [Issue #54](https://github.com/onflow/rosetta/issues/54) - PRs in review)
-
+* <ins>Rosetta:</ins>
+  - KROK: 
+    - Last items Rosetta Cadence updates for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52), [Issue #54](https://github.com/onflow/rosetta/issues/54) - PRs in review)
+  - DistributedLab: 
+    - Continue with remaining updates for Rosetta for EVM on Flow 
+    
 * <ins>Other:</ins>   
   - Complete high level 2-pager of public roadmap & vision for protocol decentralization & permissionless consensus on Flow
   - Continue content piece for public roadmap & vision for protocol decentralization; current challenges and upcoming updates for permissionless consensus on Flow.
@@ -333,6 +338,7 @@ Cycle Objective(s):
 **Done last sprint**
 * PR to backfill of missing crypto algos to JVM SDK ready for review
 * Reviewed BLS PR for JVM-SDK
+* Onboarding kickoff meeting for ANKR for Liquid Staking on EBM
 
 **This sprint**
 * Backfill missing API methods to JVM SDK
