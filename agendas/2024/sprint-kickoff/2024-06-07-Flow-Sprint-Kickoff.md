@@ -8,6 +8,7 @@
 - Published [Crescendo bug bounty](https://flow.com/bounty-program).
 - Transaction audit mode ready to be deployed on Mainnet next week (Tue) via HCU.
 - Resumed Storehouse testing using new Unstaked EN (executing latest MN blocks).
+- Updated Ledger app audit approved by 3rd-party reviewer.
 - Flow Port updates: Fungible transfers, onboarding and bridging, Dynamic FLOW token transfers
 - Fixed public key indexer incremental and bulk loading
 - First round of reports for incorrect public function exposure for Cadence 1.0 was sent. We’re set to run this tool every week hoping to plug security holes
