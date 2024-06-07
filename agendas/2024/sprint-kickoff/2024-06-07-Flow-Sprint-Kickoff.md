@@ -515,16 +515,19 @@ Cycle Objective(s):
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
 **Done last sprint**
+- Kicked off Flowty's consensus node and 4 FF nodes - all operated via Figment
+- Computation limit FLIP discussed and accepted
+- Transaction fee partner impact discussion with working group leaders and partners. See [go/no-go doc](https://www.notion.so/flowfoundation/Go-No-go-on-transaction-fee-100x-15e70eebe0254aefb4bf78bf901edc75)
+- Data crunching for post-Crescendo fee estimates for typical NFT transfer. See [sheet](https://docs.google.com/spreadsheets/d/1XRZD65Ni9CaSNbcWYERdLRwf85ALN5ArBOYFV1LV9LY/edit#gid=0)
+- Governance monthly working group meeting
 
 **This sprint**
-- Set up 3 FF nodes via Figment
-- Onboard Doodles and Cryptotoys as SN operators
-- Kick off Flowty's consensus node
-- Assess decentralization situation and the way forward
-- Review, finalize and take a decision on computation limit FLIP 
-- Transaction fee partner impact discussion and way forward with FF leadership
+- Work with Doodles, Cryptotoys and Edgevana for new nodes; Blockdaemon for continued operations via lease formalization
+- Work on node operator branding and logos with .find team
+- Finalize and publish Flow EVM documentation on docsite
+- Discussion and decision on txn fee hike timeline
 - R&D and planning with Dete on post Crescendo surge pricing
-- Continue working on node operator branding and logos with .find team
+- Plan next cycle OKRs for governance
   
 **On Hold**
 
