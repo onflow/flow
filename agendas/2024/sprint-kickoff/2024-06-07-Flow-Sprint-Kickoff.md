@@ -27,9 +27,9 @@
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%   |    100%       |       0%         |
 | Block Finalization      | 99.9%   |    100%       |       0%         |
-| Transaction Execution   | 99.9%   |    99.95%     |       49.6%      |
+| Transaction Execution   | 99.9%   |    100%       |       0%         |
 | Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    99.919%    |       81.0%      |
+| Access API Liveness     | 99.9%   |    100%       |       0%         |
 
 [SLO dashboards](https://flowfoundation.grafana.net/d/hgW3l-m4k/slo-dashboard?orgId=1&from=now-2w&to=now)
 
@@ -37,7 +37,8 @@
 
 ## Incidents
 
-## Core protocol incidents
+None
+
 
 ### Mainnet
 
@@ -47,8 +48,10 @@
 
 ### Key Release Dates & Breaking Changes
 - Next Mainnet/Testnet network upgrade (spork):
+  - Testnet and mainnet HCU next week.
   - Testnet: 20th June 2024
-  - Mainnet: 29th July 2024
+  - Mainnet: 31st July 2024
+
 ---
 
 ### FLIPs Tracker \[Kshitij]
