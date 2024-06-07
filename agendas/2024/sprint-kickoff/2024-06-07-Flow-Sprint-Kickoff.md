@@ -3,7 +3,7 @@
 ### Team Wins 🎉
 
 - Crescendo migration - is now deterministic + all remaining blockers are completed.
-- Fixes EVM Gateway stability issue (intermittent request timeouts).
+- EVM Gateway stability issue is fixed (intermittent request timeouts).
 - Completed development of EVM trace debug endpoint, unblocking EVM integrators after deployed on previewnet.
 - Published [Crescendo bug bounty](https://flow.com/bounty-program).
 - Transaction audit mode ready to be deployed on Mainnet next week (Tue) via HCU.
