@@ -19,7 +19,7 @@ version = when {
 }
 
 plugins {
-    id("com.google.protobuf") version "0.8.15"
+    id("com.google.protobuf") version "0.9.4"
     kotlin("jvm") version "1.9.22"
     `java-library`
     `maven-publish`
@@ -31,9 +31,50 @@ plugins {
 val protobufVersion = "3.14.0"
 val grpcVersion = "1.35.0"
 
+dependencies {
+    api("com.google.protobuf:protobuf-java:$protobufVersion")
+    api("io.grpc:grpc-netty-shaded:$grpcVersion")
+    api("io.grpc:grpc-protobuf:$grpcVersion")
+    api("io.grpc:grpc-stub:$grpcVersion")
+    api("javax.annotation:javax.annotation-api:1.3.2")
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_20
     targetCompatibility = JavaVersion.VERSION_20
+}
+
+tasks {
+    mavenPublishing {
+        publishToMavenCentral(SonatypeHost.DEFAULT, true)
+
+        coordinates(group.toString(), "flow-jvm-sdk", version.toString())
+
+        signAllPublications()
+
+        pom {
+            licenses {
+                license {
+                    name.set("The Apache License, Version 2.0")
+                    url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                }
+            }
+            name.set(project.name)
+            url.set("https://onflow.org")
+            description.set("The Flow Blockchain")
+            scm {
+                url.set("https://github.com/onflow/flow")
+                connection.set("scm:git:git@github.com/onflow/flow.git")
+                developerConnection.set("scm:git:git@github.com/onflow/flow.git")
+            }
+            developers {
+                developer {
+                    name.set("Flow Developers")
+                    url.set("https://onflow.org")
+                }
+            }
+        }
+    }
 }
 
 protobuf {
@@ -49,51 +90,6 @@ protobuf {
         all().forEach {
             it.plugins {
                 id("grpc")
-            }
-        }
-    }
-}
-
-dependencies {
-    api("com.google.protobuf:protobuf-java:$protobufVersion")
-    api("io.grpc:grpc-netty-shaded:$grpcVersion")
-    api("io.grpc:grpc-protobuf:$grpcVersion")
-    api("io.grpc:grpc-stub:$grpcVersion")
-    api("javax.annotation:javax.annotation-api:1.3.2")
-}
-
-nexusPublishing {
-    repositories {
-        sonatype()
-    }
-}
-
-mavenPublishing {
-    publishToMavenCentral(SonatypeHost.DEFAULT, true)
-
-    coordinates(group.toString(), "flow-jvm-sdk", version.toString())
-
-    signAllPublications()
-
-    pom {
-        licenses {
-            license {
-                name.set("The Apache License, Version 2.0")
-                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-            }
-        }
-        name.set(project.name)
-        url.set("https://onflow.org")
-        description.set("The Flow Blockchain")
-        scm {
-            url.set("https://github.com/onflow/flow")
-            connection.set("scm:git:git@github.com/onflow/flow.git")
-            developerConnection.set("scm:git:git@github.com/onflow/flow.git")
-        }
-        developers {
-            developer {
-                name.set("Flow Developers")
-                url.set("https://onflow.org")
             }
         }
     }
