@@ -33,4 +33,4 @@ jobs:
 
       - name: Build
         id: build
-        run: ./gradlew --warning-mode all check build
+        run: cd protobuf && ./gradlew --warning-mode all check build
