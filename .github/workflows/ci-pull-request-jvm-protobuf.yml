@@ -1,4 +1,4 @@
-name: Build Pull Request
+name: Build Pull Request - JVM Protobuf
 on: pull_request
 
 jobs:
