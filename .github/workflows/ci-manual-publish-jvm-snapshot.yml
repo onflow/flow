@@ -38,11 +38,11 @@ jobs:
           distribution: 'adopt'
 
       - name: Make gradle executable
-        run: chmod +x ./gradlew
+        run: chmod +x ./protobuf/gradlew
 
       - name: Build
         id: build
-        run: ./gradlew --warning-mode all check build
+        run: cd protobuf && ./gradlew --warning-mode all check build
 
       - name: Publish snapshot
         env:
@@ -53,6 +53,7 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.FLOW_JVM_SDK_SIGNING_PASSWORD }}
 
         run: |
+          cd protobuf
           if [[ "${{ secrets.FLOW_JVM_SDK_CICD_PUBLISH_ENABLED }}" != "true" ]];
           then
             exit 0;
