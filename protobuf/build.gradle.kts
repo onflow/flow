@@ -47,6 +47,7 @@ java {
 tasks.named("generateProto") {
     dependsOn(tasks.named("processResources"))
     dependsOn(tasks.named("extractIncludeTestProto"))
+    dependsOn(tasks.named("extractTestProto"))
 }
 
 tasks {
