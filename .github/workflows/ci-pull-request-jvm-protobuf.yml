@@ -21,9 +21,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Change to protobuf directory
-        run: cd ./protobuf
-
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
@@ -32,7 +29,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Make gradle executable
-        run: chmod +x ./gradlew
+        run: chmod +x ./protobuf/gradlew
 
       - name: Build
         id: build
