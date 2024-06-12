@@ -48,7 +48,7 @@ tasks {
     mavenPublishing {
         publishToMavenCentral(SonatypeHost.DEFAULT, true)
 
-        coordinates(group.toString(), "flow-jvm-sdk", version.toString())
+        coordinates(group.toString(), "flow", version.toString())
 
         signAllPublications()
 
