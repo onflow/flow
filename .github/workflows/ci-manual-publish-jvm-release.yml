@@ -1,4 +1,4 @@
-name: Manually Publish Release
+name: Manually Publish Release - JVM Protobuf
 on:
   workflow_dispatch:
     branches:

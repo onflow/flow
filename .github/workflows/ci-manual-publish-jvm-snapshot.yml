@@ -1,4 +1,4 @@
-name: Manually Publish Snapshot
+name: Manually Publish Snapshot - JVM Protobuf
 on:
   workflow_dispatch:
     branches:
