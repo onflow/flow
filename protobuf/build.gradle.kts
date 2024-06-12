@@ -44,6 +44,10 @@ java {
     targetCompatibility = JavaVersion.VERSION_20
 }
 
+tasks.named("generateProto") {
+    dependsOn(tasks.named("processResources"))
+}
+
 tasks {
     mavenPublishing {
         publishToMavenCentral(SonatypeHost.DEFAULT, true)
