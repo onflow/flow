@@ -37,15 +37,12 @@ jobs:
           java-package: jdk
           distribution: 'adopt'
 
-      - name: Install flow emulator
-        run: sh -ci "$(curl -fsSL https://storage.googleapis.com/flow-cli/install.sh)"
-
       - name: Make gradle executable
         run: chmod +x ./gradlew
 
       - name: Build
         id: build
-        run: ./gradlew --warning-mode all check build -x test -x integrationTest
+        run: ./gradlew --warning-mode all check build
 
       - name: Publish release
         env:
