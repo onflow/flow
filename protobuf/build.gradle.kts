@@ -50,6 +50,12 @@ tasks.named("generateProto") {
     dependsOn(tasks.named("extractTestProto"))
 }
 
+afterEvaluate {
+    tasks.named("generateProto") {
+        dependsOn(tasks.findByName("generatePomFileForMavenPublication"))
+    }
+}
+
 tasks {
     mavenPublishing {
         publishToMavenCentral(SonatypeHost.DEFAULT, true)
