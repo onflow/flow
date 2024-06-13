@@ -44,6 +44,7 @@ java {
     targetCompatibility = JavaVersion.VERSION_20
 }
 
+
 tasks.named("generateProto") {
     dependsOn(tasks.named("processResources"))
     dependsOn(tasks.named("extractIncludeTestProto"))
@@ -59,8 +60,13 @@ tasks.whenTaskAdded {
     if (name == "generateMetadataFileForMavenPublication") {
         tasks.named("generateMetadataFileForMavenPublication") {
             dependsOn(tasks.findByName("kotlinSourcesJar"))
-            dependsOn(tasks.findByName("plainJavadocJar"))
         }
+    }
+}
+
+afterEvaluate {
+    tasks.named("generateMetadataFileForMavenPublication") {
+        dependsOn(tasks.findByName("plainJavadocJar"))
     }
 }
 
