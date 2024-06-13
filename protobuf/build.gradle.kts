@@ -50,9 +50,11 @@ tasks.named("generateProto") {
     dependsOn(tasks.named("extractTestProto"))
 }
 
-afterEvaluate {
-    tasks.named("generateProto") {
-        dependsOn(tasks.findByName("generatePomFileForMavenPublication"))
+tasks.whenTaskAdded {
+    if (name == "generatePomFileForMavenPublication") {
+        tasks.named("generateProto") {
+            dependsOn(this@whenTaskAdded)
+        }
     }
 }
 
