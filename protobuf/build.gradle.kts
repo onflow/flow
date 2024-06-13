@@ -56,6 +56,11 @@ tasks.whenTaskAdded {
             dependsOn(this@whenTaskAdded)
         }
     }
+    if (name == "generateMetadataFileForMavenPublication") {
+        tasks.named("generateMetadataFileForMavenPublication") {
+            dependsOn(tasks.findByName("kotlinSourcesJar"))
+        }
+    }
 }
 
 tasks {
