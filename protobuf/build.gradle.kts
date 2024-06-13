@@ -142,11 +142,6 @@ sourceSets {
     }
 }
 
-java {
-    withJavadocJar()
-    withSourcesJar()
-}
-
 repositories {
     mavenCentral()
 }
