@@ -48,6 +48,7 @@ tasks.named("generateProto") {
     dependsOn(tasks.named("processResources"))
     dependsOn(tasks.named("extractIncludeTestProto"))
     dependsOn(tasks.named("extractTestProto"))
+    dependsOn(tasks.named("generatePomFileForMavenPublication"))
 }
 
 tasks {
