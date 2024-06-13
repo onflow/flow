@@ -52,7 +52,7 @@ tasks.named("generateProto") {
 
 afterEvaluate {
     tasks.named("generateProto") {
-        dependsOn tasks.findByName("generatePomFileForMavenPublication")
+        dependsOn(tasks.findByName("generatePomFileForMavenPublication"))
     }
 }
 
