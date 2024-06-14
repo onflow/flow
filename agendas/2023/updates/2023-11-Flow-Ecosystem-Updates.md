@@ -38,6 +38,8 @@ Articles and Content - [Fullstackpho](https://github.com/ph0ph0) wrote an articl
 
 Overhauled Cookbook - The Cadence Cookbook got a major overhaul led by [Lea](lealobanov (Lea Lobanov)) with a brand new modern UI and recipe architecture, improved contribution flow for adding recipes, integrated front-end and Cadence testing, and SEO updates. Release of Cookbook updates is targeted for the first week of December.
 
+Wonder Arena - [Wonderland](https://bbwonderland.com/) a gamified social experience for Web3 NFTs has launched for the top Flow collections [Flovatar](https://flovatar.com/) & [Basic Beasts](https://www.basicbeasts.io/). Holders can now send their NFTs on quests and receive weekly rewards. Rewards have different rarities & unlock new digital experiences for holders. Furthermore, the team behind Wonder Arena is launching a free mint of [$LIBZ a brc-20 token](https://twitter.com/LIBZ_BRC20) to bring Flow's composability to Bitcoin Ordinals & degen culture to Flow. Both initiatives have shown promising traction with hundreds of NFTs being quested on Wonderland & 23,200 users being waitlisted & allowlisted for the free mint of $LIBZ within 2 weeks. Updates on both projects can be followed on [@OrdinalsGlobal_](https://twitter.com/OrdinalsGlobal_) & [@bz_bbclub](https://twitter.com/bz_bbclub)
+
 ------------------------------------------
 ## Community updates 
 1. [Affiliated Accounts](https://flow-x-eth.on.fleek.co/) project by [Giovanni](https://github.com/sisyphusSmiling), an early beta app which links one's ETH account to their Flow account using [ETH signatures + validation](https://contractbrowser.com/A.f3c8bba150be9074.ETHAffiliatedAccounts).
