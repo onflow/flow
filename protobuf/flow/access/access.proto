@@ -97,6 +97,28 @@ service AccessAPI {
   rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest)
       returns (AccountResponse);
 
+  // GetAccountBalance gets an account balance by address.
+  rpc GetAccountBalance(GetAccountBalanceRequest) returns (AccountBalanceResponse);
+  // GetAccountBalanceAtLatestBlock gets an account balance by address from the latest sealed
+  // execution state.
+  rpc GetAccountBalanceAtLatestBlock(GetAccountBalanceAtLatestBlockRequest)
+      returns (AccountBalanceResponse);
+  // GetAccountBalanceAtBlockHeight gets an account balance by address at the given block
+  // height
+  rpc GetAccountBalanceAtBlockHeight(GetAccountAtBlockHeightRequest)
+      returns (AccountBalanceResponse);
+
+  // GetAccountKeys gets an account public keys by address.
+  rpc GetAccountKeys(GetAccountKeysRequest) returns (AccountBalanceResponse);
+  // GetAccountKeysAtLatestBlock gets an account public keys by address from the latest sealed
+  // execution state.
+  rpc GetAccountKeysAtLatestBlock(GetAccountKeysAtLatestBlockRequest)
+      returns (AccountBalanceResponse);
+  // GetAccountKeysAtBlockHeight gets an account public keys by address at the given block
+  // height
+  rpc GetAccountKeysAtBlockHeight(GetAccountKeysAtBlockHeightRequest)
+      returns (AccountBalanceResponse);
+
   // Scripts
 
   // ExecuteScriptAtLatestBlock executes a read-only Cadence script against the
@@ -422,6 +444,42 @@ message AccountResponse {
 message GetAccountAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
+}
+
+message GetAccountBalanceRequest {
+  bytes address = 1;
+}
+
+message GetAccountBalanceAtLatestBlockRequest {
+  bytes address = 1;
+}
+
+message GetAccountBalanceAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+}
+
+message AccountBalanceResponse {
+  uint64 account_balance = 1;
+  entities.Metadata metadata = 2;
+}
+
+message GetAccountKeysRequest {
+  bytes address = 1;
+}
+
+message GetAccountKeysAtLatestBlockRequest {
+  bytes address = 1;
+}
+
+message GetAccountKeysAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+}
+
+message AccountKeysResponse {
+  repeated entities.AccountKey account_keys = 1;
+  entities.Metadata metadata = 2;
 }
 
 // Scripts
