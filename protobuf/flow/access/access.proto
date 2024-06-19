@@ -109,15 +109,15 @@ service AccessAPI {
       returns (AccountBalanceResponse);
 
   // GetAccountKeys gets an account public keys by address.
-  rpc GetAccountKeys(GetAccountKeysRequest) returns (AccountBalanceResponse);
+  rpc GetAccountKeys(GetAccountKeysRequest) returns (AccountKeysResponse);
   // GetAccountKeysAtLatestBlock gets an account public keys by address from the latest sealed
   // execution state.
   rpc GetAccountKeysAtLatestBlock(GetAccountKeysAtLatestBlockRequest)
-      returns (AccountBalanceResponse);
+      returns (AccountKeysResponse);
   // GetAccountKeysAtBlockHeight gets an account public keys by address at the given block
   // height
   rpc GetAccountKeysAtBlockHeight(GetAccountKeysAtBlockHeightRequest)
-      returns (AccountBalanceResponse);
+      returns (AccountKeysResponse);
 
   // Scripts
 

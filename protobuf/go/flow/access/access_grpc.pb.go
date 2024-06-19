@@ -134,13 +134,13 @@ type AccessAPIClient interface {
 	// height
 	GetAccountBalanceAtBlockHeight(ctx context.Context, in *GetAccountAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error)
 	// GetAccountKeys gets an account public keys by address.
-	GetAccountKeys(ctx context.Context, in *GetAccountKeysRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error)
+	GetAccountKeys(ctx context.Context, in *GetAccountKeysRequest, opts ...grpc.CallOption) (*AccountKeysResponse, error)
 	// GetAccountKeysAtLatestBlock gets an account public keys by address from the latest sealed
 	// execution state.
-	GetAccountKeysAtLatestBlock(ctx context.Context, in *GetAccountKeysAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error)
+	GetAccountKeysAtLatestBlock(ctx context.Context, in *GetAccountKeysAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountKeysResponse, error)
 	// GetAccountKeysAtBlockHeight gets an account public keys by address at the given block
 	// height
-	GetAccountKeysAtBlockHeight(ctx context.Context, in *GetAccountKeysAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error)
+	GetAccountKeysAtBlockHeight(ctx context.Context, in *GetAccountKeysAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountKeysResponse, error)
 	// ExecuteScriptAtLatestBlock executes a read-only Cadence script against the
 	// latest sealed execution state.
 	ExecuteScriptAtLatestBlock(ctx context.Context, in *ExecuteScriptAtLatestBlockRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
@@ -471,8 +471,8 @@ func (c *accessAPIClient) GetAccountBalanceAtBlockHeight(ctx context.Context, in
 	return out, nil
 }
 
-func (c *accessAPIClient) GetAccountKeys(ctx context.Context, in *GetAccountKeysRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error) {
-	out := new(AccountBalanceResponse)
+func (c *accessAPIClient) GetAccountKeys(ctx context.Context, in *GetAccountKeysRequest, opts ...grpc.CallOption) (*AccountKeysResponse, error) {
+	out := new(AccountKeysResponse)
 	err := c.cc.Invoke(ctx, AccessAPI_GetAccountKeys_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -480,8 +480,8 @@ func (c *accessAPIClient) GetAccountKeys(ctx context.Context, in *GetAccountKeys
 	return out, nil
 }
 
-func (c *accessAPIClient) GetAccountKeysAtLatestBlock(ctx context.Context, in *GetAccountKeysAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error) {
-	out := new(AccountBalanceResponse)
+func (c *accessAPIClient) GetAccountKeysAtLatestBlock(ctx context.Context, in *GetAccountKeysAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountKeysResponse, error) {
+	out := new(AccountKeysResponse)
 	err := c.cc.Invoke(ctx, AccessAPI_GetAccountKeysAtLatestBlock_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -489,8 +489,8 @@ func (c *accessAPIClient) GetAccountKeysAtLatestBlock(ctx context.Context, in *G
 	return out, nil
 }
 
-func (c *accessAPIClient) GetAccountKeysAtBlockHeight(ctx context.Context, in *GetAccountKeysAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error) {
-	out := new(AccountBalanceResponse)
+func (c *accessAPIClient) GetAccountKeysAtBlockHeight(ctx context.Context, in *GetAccountKeysAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountKeysResponse, error) {
+	out := new(AccountKeysResponse)
 	err := c.cc.Invoke(ctx, AccessAPI_GetAccountKeysAtBlockHeight_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -982,13 +982,13 @@ type AccessAPIServer interface {
 	// height
 	GetAccountBalanceAtBlockHeight(context.Context, *GetAccountAtBlockHeightRequest) (*AccountBalanceResponse, error)
 	// GetAccountKeys gets an account public keys by address.
-	GetAccountKeys(context.Context, *GetAccountKeysRequest) (*AccountBalanceResponse, error)
+	GetAccountKeys(context.Context, *GetAccountKeysRequest) (*AccountKeysResponse, error)
 	// GetAccountKeysAtLatestBlock gets an account public keys by address from the latest sealed
 	// execution state.
-	GetAccountKeysAtLatestBlock(context.Context, *GetAccountKeysAtLatestBlockRequest) (*AccountBalanceResponse, error)
+	GetAccountKeysAtLatestBlock(context.Context, *GetAccountKeysAtLatestBlockRequest) (*AccountKeysResponse, error)
 	// GetAccountKeysAtBlockHeight gets an account public keys by address at the given block
 	// height
-	GetAccountKeysAtBlockHeight(context.Context, *GetAccountKeysAtBlockHeightRequest) (*AccountBalanceResponse, error)
+	GetAccountKeysAtBlockHeight(context.Context, *GetAccountKeysAtBlockHeightRequest) (*AccountKeysResponse, error)
 	// ExecuteScriptAtLatestBlock executes a read-only Cadence script against the
 	// latest sealed execution state.
 	ExecuteScriptAtLatestBlock(context.Context, *ExecuteScriptAtLatestBlockRequest) (*ExecuteScriptResponse, error)
@@ -1171,13 +1171,13 @@ func (UnimplementedAccessAPIServer) GetAccountBalanceAtLatestBlock(context.Conte
 func (UnimplementedAccessAPIServer) GetAccountBalanceAtBlockHeight(context.Context, *GetAccountAtBlockHeightRequest) (*AccountBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountBalanceAtBlockHeight not implemented")
 }
-func (UnimplementedAccessAPIServer) GetAccountKeys(context.Context, *GetAccountKeysRequest) (*AccountBalanceResponse, error) {
+func (UnimplementedAccessAPIServer) GetAccountKeys(context.Context, *GetAccountKeysRequest) (*AccountKeysResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountKeys not implemented")
 }
-func (UnimplementedAccessAPIServer) GetAccountKeysAtLatestBlock(context.Context, *GetAccountKeysAtLatestBlockRequest) (*AccountBalanceResponse, error) {
+func (UnimplementedAccessAPIServer) GetAccountKeysAtLatestBlock(context.Context, *GetAccountKeysAtLatestBlockRequest) (*AccountKeysResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountKeysAtLatestBlock not implemented")
 }
-func (UnimplementedAccessAPIServer) GetAccountKeysAtBlockHeight(context.Context, *GetAccountKeysAtBlockHeightRequest) (*AccountBalanceResponse, error) {
+func (UnimplementedAccessAPIServer) GetAccountKeysAtBlockHeight(context.Context, *GetAccountKeysAtBlockHeightRequest) (*AccountKeysResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountKeysAtBlockHeight not implemented")
 }
 func (UnimplementedAccessAPIServer) ExecuteScriptAtLatestBlock(context.Context, *ExecuteScriptAtLatestBlockRequest) (*ExecuteScriptResponse, error) {
