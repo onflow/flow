@@ -132,7 +132,7 @@ type AccessAPIClient interface {
 	GetAccountBalanceAtLatestBlock(ctx context.Context, in *GetAccountBalanceAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error)
 	// GetAccountBalanceAtBlockHeight gets an account balance by address at the given block
 	// height
-	GetAccountBalanceAtBlockHeight(ctx context.Context, in *GetAccountAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error)
+	GetAccountBalanceAtBlockHeight(ctx context.Context, in *GetAccountBalanceAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error)
 	// GetAccountKeys gets an account public keys by address.
 	GetAccountKeys(ctx context.Context, in *GetAccountKeysRequest, opts ...grpc.CallOption) (*AccountKeysResponse, error)
 	// GetAccountKeysAtLatestBlock gets an account public keys by address from the latest sealed
@@ -462,7 +462,7 @@ func (c *accessAPIClient) GetAccountBalanceAtLatestBlock(ctx context.Context, in
 	return out, nil
 }
 
-func (c *accessAPIClient) GetAccountBalanceAtBlockHeight(ctx context.Context, in *GetAccountAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error) {
+func (c *accessAPIClient) GetAccountBalanceAtBlockHeight(ctx context.Context, in *GetAccountBalanceAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error) {
 	out := new(AccountBalanceResponse)
 	err := c.cc.Invoke(ctx, AccessAPI_GetAccountBalanceAtBlockHeight_FullMethodName, in, out, opts...)
 	if err != nil {
@@ -980,7 +980,7 @@ type AccessAPIServer interface {
 	GetAccountBalanceAtLatestBlock(context.Context, *GetAccountBalanceAtLatestBlockRequest) (*AccountBalanceResponse, error)
 	// GetAccountBalanceAtBlockHeight gets an account balance by address at the given block
 	// height
-	GetAccountBalanceAtBlockHeight(context.Context, *GetAccountAtBlockHeightRequest) (*AccountBalanceResponse, error)
+	GetAccountBalanceAtBlockHeight(context.Context, *GetAccountBalanceAtBlockHeightRequest) (*AccountBalanceResponse, error)
 	// GetAccountKeys gets an account public keys by address.
 	GetAccountKeys(context.Context, *GetAccountKeysRequest) (*AccountKeysResponse, error)
 	// GetAccountKeysAtLatestBlock gets an account public keys by address from the latest sealed
@@ -1168,7 +1168,7 @@ func (UnimplementedAccessAPIServer) GetAccountBalance(context.Context, *GetAccou
 func (UnimplementedAccessAPIServer) GetAccountBalanceAtLatestBlock(context.Context, *GetAccountBalanceAtLatestBlockRequest) (*AccountBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountBalanceAtLatestBlock not implemented")
 }
-func (UnimplementedAccessAPIServer) GetAccountBalanceAtBlockHeight(context.Context, *GetAccountAtBlockHeightRequest) (*AccountBalanceResponse, error) {
+func (UnimplementedAccessAPIServer) GetAccountBalanceAtBlockHeight(context.Context, *GetAccountBalanceAtBlockHeightRequest) (*AccountBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountBalanceAtBlockHeight not implemented")
 }
 func (UnimplementedAccessAPIServer) GetAccountKeys(context.Context, *GetAccountKeysRequest) (*AccountKeysResponse, error) {
@@ -1670,7 +1670,7 @@ func _AccessAPI_GetAccountBalanceAtLatestBlock_Handler(srv interface{}, ctx cont
 }
 
 func _AccessAPI_GetAccountBalanceAtBlockHeight_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAccountAtBlockHeightRequest)
+	in := new(GetAccountBalanceAtBlockHeightRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1682,7 +1682,7 @@ func _AccessAPI_GetAccountBalanceAtBlockHeight_Handler(srv interface{}, ctx cont
 		FullMethod: AccessAPI_GetAccountBalanceAtBlockHeight_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetAccountBalanceAtBlockHeight(ctx, req.(*GetAccountAtBlockHeightRequest))
+		return srv.(AccessAPIServer).GetAccountBalanceAtBlockHeight(ctx, req.(*GetAccountBalanceAtBlockHeightRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

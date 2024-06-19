@@ -105,7 +105,7 @@ service AccessAPI {
       returns (AccountBalanceResponse);
   // GetAccountBalanceAtBlockHeight gets an account balance by address at the given block
   // height
-  rpc GetAccountBalanceAtBlockHeight(GetAccountAtBlockHeightRequest)
+  rpc GetAccountBalanceAtBlockHeight(GetAccountBalanceAtBlockHeightRequest)
       returns (AccountBalanceResponse);
 
   // GetAccountKeys gets an account public keys by address.
