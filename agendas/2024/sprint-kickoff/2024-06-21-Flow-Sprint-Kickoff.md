@@ -17,9 +17,9 @@
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%   |    100%       |       0%         |
 | Block Finalization      | 99.9%   |    100%       |       0%         |
-| Transaction Execution   | 99.9%   |    100%       |       0%         |
-| Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    100%       |       0%         |
+| Transaction Execution   | 99.9%   |    99.95%     |       49.6%      |
+| Block Sealing           | 99.9%   |    99.90%     |       99.3%      |
+| Access API Liveness     | 99.9%   |    ?          |       ?          |
 
 [SLO dashboards](https://flowfoundation.grafana.net/d/hgW3l-m4k/slo-dashboard?orgId=1&from=now-2w&to=now)
 
@@ -27,20 +27,17 @@
 
 ## Incidents
 
-None
-
-
 ### Mainnet
+- June 13th: Sev-1 - Execution fork during the mainnet HCU - [Postmortem](https://www.notion.so/flowfoundation/Retro-on-execution-fork-01504b970441477ebfc0174d14dcb269)
 
-### Testnet
 
 (Sev [definition](https://www.notion.so/dapperlabs/Incident-Priorities-Severity-Levels-b65d7682336c46baa025ee512fd3efa3))
 
 ### Key Release Dates & Breaking Changes
 - Next Mainnet/Testnet network upgrade (spork):
   - Testnet and mainnet HCU next week.
-  - Testnet: 20th June 2024
-  - Mainnet: 31st July 2024
+  - Testnet: Q3
+  - Mainnet: Q3 (see [announcement](https://flow.com/post/update-on-testnet-crescendo-network-upgrade))
 
 ---
 
