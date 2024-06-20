@@ -1,6 +1,7 @@
 # Overview
 
 ### Team Wins 🎉
+- Deprecated K8s clusters that will result in $6.5k per month in infra savings (JP)
 - Script execution on the access node turned on for NBA nodes successfully.
 - Script execution turned on 50% of the public access node.
 
@@ -11,7 +12,7 @@
 
 ---
 
-### Mainnet Uptime - Last 14 days (06/7/24 to 06/20/24) \[JP]
+### Mainnet Uptime - Last 14 days (05/25/24 to 06/07/24) \[JP]
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
@@ -297,10 +298,39 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+CloudFlare Migration
+
+- Worked with Sales rep to get new account quote
+- Deprecated K8s dependencies on CloudFlare
+
+DevEx Migration
+- [Migrate CAST applications to Cloud Run](https://github.com/dapperlabs/flow-devex-infrastructure/pull/163)
+- [Deleted old CAST K8s cluster(s)](https://github.com/dapperlabs/cast-infrastructure/pull/60)
+- [Deleted old DevEx K8s cluster(s)](https://github.com/dapperlabs/flow-devex-infrastructure/pull/178)
+- [Deleted K8s config](https://github.com/dapperlabs/flow-devex-infrastructure/pull/179)
+- [Update Cloud Run services to limit scaling](https://github.com/dapperlabs/flow-devex-infrastructure/pull/173)
+- [Update Cloud Run module to limit unnecessary deploys](https://github.com/dapperlabs/flow-devex-infrastructure/pull/180)
+
+Node Hosting
+- Assisted with Mainnet HCUs
+- [Addressed bugs in historical node setup used for EN testing](https://github.com/dapperlabs/dapper-flow-hosting/pull/1435)
+- [Increased Devnet Disk sizes](https://github.com/dapperlabs/terraform/pull/4272)
+
+Migration Testing
+- [Created mainnet migration network infra ](https://github.com/dapperlabs/terraform/pull/4256)
+- [Created mainnet migration configuration](https://github.com/dapperlabs/dapper-flow-hosting/pull/1514)
+
+EVM Gateway
+- [Created bucket & granted access for trace uploads ](https://github.com/dapperlabs/terraform/pull/4258)
+- [Created KMS keys & granted access for EVM Gateway](https://github.com/dapperlabs/terraform/pull/4268)
+
+Support
+- Prepared for movement of single Mainnet VN to India
+
 **This Sprint**
 - Assist with migration and spork prep efforts
 - Continue removing dependencies on CloudFlare & assist with account creation
-- Continue assisting with DevEx migration to Cloud Run
+- Begin prep work to migration to new CloudFlare account
 
 ---
 
