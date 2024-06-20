@@ -35,7 +35,6 @@
 
 ### Key Release Dates & Breaking Changes
 - Next Mainnet/Testnet network upgrade (spork):
-  - Testnet and mainnet HCU next week.
   - Testnet: Q3
   - Mainnet: Q3 (see [announcement](https://flow.com/post/update-on-testnet-crescendo-network-upgrade))
 
