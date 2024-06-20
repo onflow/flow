@@ -1,6 +1,8 @@
 # Overview
 
 ### Team Wins 🎉
+- Script execution on the access node turned on for NBA nodes successfully.
+- Script execution turned on 50% of the public access node.
 
 ### General updates
 
