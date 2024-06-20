@@ -23,7 +23,7 @@
 
 [SLO dashboards](https://flowfoundation.grafana.net/d/hgW3l-m4k/slo-dashboard?orgId=1&from=now-2w&to=now)
 
-[YTD SLA: 100%](https://app.metrika.co/flow/dashboard/slas?tr=YTD)
+[YTD SLA: 99.919%](https://app.metrika.co/flow/dashboard/slas?tr=YTD)
 
 ## Incidents
 
