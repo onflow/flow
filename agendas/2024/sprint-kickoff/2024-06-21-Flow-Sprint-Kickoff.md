@@ -274,7 +274,7 @@ Cycle Objective(s):
   - [Add epoch fallback phase](https://github.com/onflow/flow-go/issues/6092)
   - [Update consensus committee EFM processing](https://github.com/onflow/flow-go/issues/5730)
   - Review by SC team: [EpochRecover cadence transaction](https://github.com/onflow/flow-core-contracts/pull/420)
-  - Finish [Blocktime controller EFM changes])(https://github.com/onflow/flow-go/issues/5732)
+  - Finish [Blocktime controller EFM changes](https://github.com/onflow/flow-go/issues/5732)
   - Finish [`epochs.FallbackStateMachine` only tolerates narrow unexpected behaviour](https://github.com/onflow/flow-go/issues/6018)
   - Finish [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
   - [Update epoch lookup component](https://github.com/onflow/flow-go/issues/5763)
