@@ -401,9 +401,14 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+- Shipped Flow Wallet with EVM support! 🎉
+- Completed "Homepage 2.0", releasing soon to testflight.
+
 **This sprint**
 
-- Continue to better support Secure Enclave
+- Add support for MigrationNet to Flow Wallet Extension
+- Refine "Homepage 2.0" UI/UX
+- Continue to best support Secure Enclave
   - User migration from Extension (seed phrase) to mobile (secure enclave) wallet security
   - New account creation UI explaining the benefits of SE
   - Explain any UI differences between seed phrase / SE wallets
