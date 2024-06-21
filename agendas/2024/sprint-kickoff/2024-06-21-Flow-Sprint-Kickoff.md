@@ -138,12 +138,12 @@ Cadence Language
     - [Update command for CLI installation](https://github.com/onflow/cadence-lang.org/pull/122)
 
 Cadence tooling
-    - Lint feature: [Report unused results](https://github.com/onflow/cadence-tools/issues/9)
-        - [Add analyzer which detects unused results](https://github.com/onflow/cadence-tools/pull/383)
-    - updater tool
-        - [Improve parsing of commit from Go's pseudo-version in update tool](https://github.com/onflow/cadence/pull/3418)
-        - [Update config](https://github.com/onflow/cadence/pull/3435)
-    - [Add command to dump all hard keywords](https://github.com/onflow/cadence/pull/3431)
+- Lint feature: [Report unused results](https://github.com/onflow/cadence-tools/issues/9)
+    - [Add analyzer which detects unused results](https://github.com/onflow/cadence-tools/pull/383)
+- updater tool
+    - [Improve parsing of commit from Go's pseudo-version in update tool](https://github.com/onflow/cadence/pull/3418)
+    - [Update config](https://github.com/onflow/cadence/pull/3435)
+- [Add command to dump all hard keywords](https://github.com/onflow/cadence/pull/3431)
 
 
 Cadence Execution
@@ -219,11 +219,6 @@ IN PROGRESS: Objective 2, KR 1: Update transaction fees weights for the executio
 DONE: Objective 4, KR1: Execution node handles restart from spork root block reguardless of how many blocks it is behind
 * Completed refactoring of Ingestion engine to [prevent EN entering crash loop](https://github.com/onflow/flow-go/issues/5298)
 
-ON HOLD: Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
-* Continue work on making [Make TPS loader input more flexible](https://github.com/onflow/flow-go/issues/5490) for better analysis and tracking of performance data.
-
-ON HOLD: * Start Atree optimization: [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
-
 Cadence 1.0 Contract updates
 - [Continue working through contract standards needing upgrade to C1.0](https://github.com/onflow/docs/issues/716)
 - More reviews of bridge PRs and Cadence 1.0 changes 
@@ -232,20 +227,13 @@ Cadence 1.0 Contract updates
 
 **On Hold**
 
-Objective 2: Calibrate Transaction fees so that they accurately reflect resource usage during execution and deploy as part of Crescendo to avoid future disruption
-- KR1: Update weights for the execution operations on TN and MN
-  - [Execution effort recalibration - data collection](https://github.com/onflow/flow-go/issues/5026)
+ON HOLD: Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
+* Continue work on making [Make TPS loader input more flexible](https://github.com/onflow/flow-go/issues/5490) for better analysis and tracking of performance data.
 
+ON HOLD: * Start Atree optimization: [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
 
 **Active Epics**
 
-Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
-- KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
-- KR4: Testnet Upgrade to Crescendo Release
-- KR6: Develop & share with community a disaster recovery plan to address potential issues after migration to Crescendo Release.
-- KR7: Decision on how to deal with contracts that have not been upgraded to Cadence 1.0 by developers.
-Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
-- KR1: Measure execution state growth trends, identify future bottlenecks and prioritize by urgency
 
 ---
 
