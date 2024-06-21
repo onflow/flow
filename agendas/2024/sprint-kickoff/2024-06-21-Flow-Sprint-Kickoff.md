@@ -53,17 +53,16 @@
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 7  |    9 (+1)  |       0         |       7          |        **23** (+1)       |
-| Proposed    | 1  |    2     |       2 (-1)          |       0           |        **5** (-1)        |
-| Accepted    | 2  |    1     |       2 (+1       |       1          |        **6** (+1)          |
+| Drafted     | 7  |    9  |       0         |       7          |        **23**       |
+| Proposed    | 1  |    3 (+1)    |       2          |       0           |        **6** (+1)        |
+| Accepted    | 2  |    1     |       2       |       1          |        **6**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 3 |    21    |       2       |       1           |        **7**          |
+| Implemented | 3 |    21    |       2       |       1           |        **27**          |
 | Released    | 4  |    0     |       3       |       6          |        **13**          |
-| Total       | **17**  |    **33** (+1)  |       **10**      |       **15**          |        **75** (+1)          |
+| Total       | **17**  |    **34** (+1)  |       **10**      |       **15**          |        **76** (+1)          |
 
 **Updates**
-* [Cadence] - Type Removal In Contract Updates (FLIP 275) was drafted
-* [Governance] - Computation Limit hike (FLIP 267) was accepted
+* [Cadence] - FLIP for changing import statement semantics (FLIP-277) proposed
 ---
 
 
