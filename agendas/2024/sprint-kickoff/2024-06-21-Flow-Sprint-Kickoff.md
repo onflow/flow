@@ -243,13 +243,13 @@ Cycle Objective(s):
 **Done last Sprint:**
 
 * <ins>EFM Recovery</ins>
-  - [Epoch recover service evnet processing](https://github.com/onflow/flow-go/issues/5727)
+  - [Epoch recover service event processing](https://github.com/onflow/flow-go/issues/5727)
   - [Epoch manager QC voting changes](https://github.com/onflow/flow-go/issues/5733)
   - [Avoid reading the sealing segment in the scaffold](https://github.com/onflow/flow-go/pull/6100)
   - [Revert sealing segment length changes from #5673](https://github.com/onflow/flow-go/pull/6086)
   - [Add EpochExtended and EpochFallbackModeExited events ](https://github.com/onflow/flow-go/pull/6062)
   - [Flaky Tests: Testing adjusting safety threshold and block time variables](https://github.com/onflow/flow-go/pull/6061/files)
-  - Continued [Blocktime controller EFM changes])(https://github.com/onflow/flow-go/issues/5732)
+  - Continued [Blocktime controller EFM changes](https://github.com/onflow/flow-go/issues/5732)
   - Continued [`epochs.FallbackStateMachine` only tolerates narrow unexpected behaviour](https://github.com/onflow/flow-go/issues/6018)
   - Continued [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
   - Awaiting review by SC team: [EpochRecover cadence transaction](https://github.com/onflow/flow-core-contracts/pull/420)
