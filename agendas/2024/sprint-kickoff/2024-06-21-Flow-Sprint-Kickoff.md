@@ -220,12 +220,6 @@ IN PROGRESS: Objective 2, KR 1: Update transaction fees weights for the executio
 DONE: Objective 4, KR1: Execution node handles restart from spork root block reguardless of how many blocks it is behind
 * Completed refactoring of Ingestion engine to [prevent EN entering crash loop](https://github.com/onflow/flow-go/issues/5298)
 
-Cadence 1.0 Contract updates
-- [Continue working through contract standards needing upgrade to C1.0](https://github.com/onflow/docs/issues/716)
-- More reviews of bridge PRs and Cadence 1.0 changes 
-- Writing additional tests for recent Cadence FLIP changes
-- [Audit and update docs and tutorials for Cadence 1.0](https://github.com/onflow/docs/issues/531)
-
 **On Hold**
 
 ON HOLD: Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
