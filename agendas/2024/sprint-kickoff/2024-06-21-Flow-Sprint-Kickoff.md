@@ -248,23 +248,44 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>EFM Recovery</ins>
+  - [Epoch recover service evnet processing](https://github.com/onflow/flow-go/issues/5727)
+  - [Epoch manager QC voting changes](https://github.com/onflow/flow-go/issues/5733)
+  - [Avoid reading the sealing segment in the scaffold](https://github.com/onflow/flow-go/pull/6100)
+  - [Revert sealing segment length changes from #5673](https://github.com/onflow/flow-go/pull/6086)
+  - [Add EpochExtended and EpochFallbackModeExited events ](https://github.com/onflow/flow-go/pull/6062)
+  - [Flaky Tests: Testing adjusting safety threshold and block time variables](https://github.com/onflow/flow-go/pull/6061/files)
+  - Continued [Blocktime controller EFM changes])(https://github.com/onflow/flow-go/issues/5732)
+  - Continued [`epochs.FallbackStateMachine` only tolerates narrow unexpected behaviour](https://github.com/onflow/flow-go/issues/6018)
+  - Continued [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
+  - Awaiting review by SC team: [EpochRecover cadence transaction](https://github.com/onflow/flow-core-contracts/pull/420)
+
 * <ins>Data Availability:</ins>
   - Finished RegistersDB pruning design ([Issue #6065](https://github.com/onflow/flow-go/issues/6065))
   - Started ProtocolDB pruning design
   - KROK Team
     - Expose FVM methods to get Account balance and keys ([PR #6028](https://github.com/onflow/flow-go/pull/6028))
     - Fix retries when using preferred-execution-nodes list ([PR #5969](https://github.com/onflow/flow-go/pull/5969))
+
+* <ins>Rosetta:</ins>
+  - KROK: 
     - Update Rosetta for v0.35 upgrade (still needs Cadence 1.0 contract updates) ([PR #59](https://github.com/onflow/rosetta/pull/59))
+  - DistributedLab: 
+    - Added integration tests for EVM on Flow Rosetta integration, updarted README and added network config options
 
 **This sprint**
 
 * <ins>EFM Recovery</ins>
-  - Finish https://github.com/onflow/flow-go/issues/5727
-  - [Finish Epoch manager QC voting changes](https://github.com/onflow/flow-go/issues/5733) (implementing tests)
-  - Ongoing review by SC team: [EpochRecover cadence transaction](https://github.com/onflow/flow-core-contracts/pull/420)
-  - [Blocktime controller EFM changes])(https://github.com/onflow/flow-go/issues/5732)
-  - [`epochs.FallbackStateMachine` only tolerates narrow unexpected behaviour](https://github.com/onflow/flow-go/issues/6018)
+  - [Update Ansible automation for Mainnet25 Dynamic Protocol state changes](https://github.com/onflow/flow-go/issues/5156)
+  - [Add epoch fallback phase](https://github.com/onflow/flow-go/issues/6092)
+  - [Update consensus committee EFM processing](https://github.com/onflow/flow-go/issues/5730)
+  - Review by SC team: [EpochRecover cadence transaction](https://github.com/onflow/flow-core-contracts/pull/420)
+  - Finish [Blocktime controller EFM changes])(https://github.com/onflow/flow-go/issues/5732)
+  - Finish [`epochs.FallbackStateMachine` only tolerates narrow unexpected behaviour](https://github.com/onflow/flow-go/issues/6018)
+  - Finish [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
+  - [Update epoch lookup component](https://github.com/onflow/flow-go/issues/5763)
   - [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
+  - [EFM Recovery benchnet testing](https://github.com/onflow/flow-go/issues/5945)
 
 * <ins>Data Availability:</ins>
   - Complete ProtocolDB pruning design
@@ -282,12 +303,11 @@ Cycle Objective(s):
 
 * <ins>Rosetta:</ins>
   - KROK: 
-    - Last items Rosetta Cadence updates for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52), [Issue #54](https://github.com/onflow/rosetta/issues/54) - PRs in review)
+    - Rosetta Cadence updates for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52), [Issue #54](https://github.com/onflow/rosetta/issues/54) - PRs in review)
   - DistributedLab: 
     - Continue with remaining updates for Rosetta for EVM on Flow 
     
 * <ins>Other:</ins>   
-  - Complete high level 2-pager of public roadmap & vision for protocol decentralization & permissionless consensus on Flow
   - Continue content piece for public roadmap & vision for protocol decentralization; current challenges and upcoming updates for permissionless consensus on Flow.
 
 **On Hold**
@@ -313,10 +333,12 @@ Cycle Objective(s):
 - Deliver Axelar bridge [PAUSED]
 
 **Done last sprint**
-
+* [Backfill missing API endpoints to JVM SDK}(https://github.com/onflow/flow-jvm-sdk/pull/55) currently in review
+* Confirmed contract and scope of Celer C1.0 upgrades and signed contractor 
 
 **This sprint**
-* Backfill missing API methods to JVM SDK
+* [Backfill missing Access API subscription endpoints to JVM SDK](https://github.com/onflow/flow-jvm-sdk/pull/58)
+* Start Celer C1.0 upgrades
 * Review of new hash additions PR for JVM-SDK
 
 **On Hold**
