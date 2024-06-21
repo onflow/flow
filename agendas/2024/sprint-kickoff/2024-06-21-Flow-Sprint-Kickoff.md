@@ -247,6 +247,13 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>Data Availability:</ins>
+  - Finished RegistersDB pruning design ([Issue #6065](https://github.com/onflow/flow-go/issues/6065))
+  - Started ProtocolDB pruning design
+  - KROK Team
+    - Expose FVM methods to get Account balance and keys ([PR #6028](https://github.com/onflow/flow-go/pull/6028))
+    - Fix retries when using preferred-execution-nodes list ([PR #5969](https://github.com/onflow/flow-go/pull/5969))
+    - Update Rosetta for v0.35 upgrade (still needs Cadence 1.0 contract updates) ([PR #59](https://github.com/onflow/rosetta/pull/59))
 
 **This sprint**
 
@@ -259,15 +266,15 @@ Cycle Objective(s):
   - [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
 
 * <ins>Data Availability:</ins>
-  - [Complete RegistersDB pruning design, start on protocol db design](https://github.com/onflow/flow-go/issues/5761)
-  - Continue redeploy of local index and script exec on QN bare metal instances
+  - Complete ProtocolDB pruning design
+  - Continue rollout of local script execution on QuickNode
   - KROK Team
-    - Fix retries when using preferred-execution-nodes list ([Issue #5810](https://github.com/onflow/flow-go/issues/5810) - PR in review)
-    - Add support for version beacon events to control script execution ([Issue #5788](https://github.com/onflow/flow-go/issues/5788), [Issue #5789](https://github.com/onflow/flow-go/issues/5789), [Issue #5790](https://github.com/onflow/flow-go/issues/5790))
-    - Expose separate endpoints for getting account balance and keys ([Issue #5894](https://github.com/onflow/flow-go/issues/5894), [Issue #5999](https://github.com/onflow/flow-go/issues/5999))
-    - Create proof of concept of transaction payer balance checks ([Issue #5823](https://github.com/onflow/flow-go/issues/5823))
+    - Add support for version beacon events to control script execution ([Issue #5788](https://github.com/onflow/flow-go/issues/5788) - In review, [Issue #5789](https://github.com/onflow/flow-go/issues/5789) - In review, [Issue #5790](https://github.com/onflow/flow-go/issues/5790))
+    - Expose separate endpoints for getting account balance and keys ([Issue #5999](https://github.com/onflow/flow-go/issues/5999))
+    - Create proof of concept of transaction payer balance checks ([Issue #5823](https://github.com/onflow/flow-go/issues/5823) - In review)
     - Add support for pruning execution data db on ANs ([Issue #6002](https://github.com/onflow/flow-go/issues/6002))
     - Add support for storing exec data using pebble db ([Issue #6017](https://github.com/onflow/flow-go/issues/6017))
+    - Start Registers DB pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066), [Issue #6068](https://github.com/onflow/flow-go/issues/6068))
 
 * <ins>Cryptography:</ins>
    - SPoCK aggregation: from BLS security proof to BLS aggregation security proof (more than a sprint)
