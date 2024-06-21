@@ -12,6 +12,7 @@
 - EN Badger DB -> Pebble DB POC - devnet ENs are running with pebble-based chunk data pack storage, disk usage growth slowed down from 1.7% to 1% / day.
 - Transaction Audit / inpection logic now [supports percentage-based transaction failure mode](https://github.com/onflow/contract-updater/pull/35), using on-chain randomness.
 - Crescendo Rewards BE fully set up with CI/CD on staging and production (thanks alex!)
+- Flow decentralization is now fully restored. No operator runs >1/3 of 94 consensus nodes
 
 ### General updates
 
@@ -466,14 +467,22 @@ Support
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
 **Done last sprint**
-
+- Node Operations
+    - a16z consolidated their nodes - spun down 3 nodes operated by Coinbase
+    - Edgevana onboarded; contract signed; lease transfer in process; will start running a VN in the next epoch
+    - Blockdaemon agreement signed for long-term node ops and NaaS partnership
+ - Operator branding (some wip)
+    - Gathered and collated branding details of 80+ node partners
+    - Finalized designs with .find team (see [figma](https://www.figma.com/design/RJI1oUrd6JzNHbRBV1khRN/Flowdiver---Nodes-page-redesign?node-id=0-1&t=1dNpoWudt4O63OKW-1))
+- Tokenomics documentation
+    - Node economics page with illustration is live - [link](https://developers.flow.com/networks/node-ops/node-operation/node-economics)
+    - EVM tokenomics page with illustration is live - [link](https://developers.flow.com/evm/fees)
+    - Brainstormed stable state Flow economics with Dete - how a certain future TPS and computation per transaction would affect fees, inflation etc. See some initial projections [here](https://docs.google.com/spreadsheets/d/1sy6gMHgU6jRNVAR92oX10S62brkuTs6JAhMqIc37jJY/edit#gid=0) 
 
 **This sprint**
-- Work with Doodles, Cryptotoys and Edgevana for new nodes; Blockdaemon for continued operations via lease formalization
-- Work on node operator branding and logos with .find team
-- Finalize and publish Flow EVM documentation on docsite
-- Discussion and decision on txn fee hike timeline
-- R&D and planning with Dete on post Crescendo surge pricing
+- Work on node operator branding and logos with .find team; test and ship new node operations page on flowdiver
+- Work with Dete on revising the narrative around inflation, fees and (stable-state) Flow economics
+- Upgrading tokenomics pages for easy comprehension 
 - Plan next cycle OKRs for governance
   
 **On Hold**
