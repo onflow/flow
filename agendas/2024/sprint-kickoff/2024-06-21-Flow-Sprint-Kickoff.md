@@ -11,6 +11,7 @@
 - Completed 2 EVM GW Features that were Testnet upgrade blockers: [Securing Flow account keys](https://github.com/onflow/flow-evm-gateway/issues/250) and [Fee history API](https://github.com/onflow/flow-evm-gateway/issues/143).
 - EN Badger DB -> Pebble DB POC - devnet ENs are running with pebble-based chunk data pack storage, disk usage growth slowed down from 1.7% to 1% / day.
 - Transaction Audit / inpection logic now [supports percentage-based transaction failure mode](https://github.com/onflow/contract-updater/pull/35), using on-chain randomness.
+- Crescendo Rewards BE fully set up with CI/CD on staging and production (thanks alex!)
 
 ### General updates
 
@@ -332,25 +333,33 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+- Create .gitignore file for imports and emulator key on init (https://github.com/onflow/flow-cli/issues/1646)
+- Fix Counter path in CLI init (https://github.com/onflow/flow-cli/issues/1647)
+
+**Rewards**
+- Rewards contract design finalized
+- Add skeleton loading for metric cards (https://github.com/onflow/crescendo-rewards/issues/20)
+- Add skeleton loading for leaderboard (https://github.com/onflow/crescendo-rewards/issues/21)
+- Add skeleton loading for rewards earned/locked (https://github.com/onflow/crescendo-rewards/issues/23)
+- Hook up leaderboard to API (https://github.com/onflow/crescendo-rewards/issues/14)
+- Hook up rewards component to the API (https://github.com/onflow/crescendo-rewards/issues/18) 
+
+
 **This sprint**
 **Sprint goal focusing on: Flow Port Asset Bridge and Token Transfer, FCL x WalletConnect Improvements, Crescendo Rewards**
 
 - [EPIC] Flow Port Asset Bridge [#284](https://github.com/onflow/flow-port/issues/284)
 - [EPIC] EVM Docs [#654](https://github.com/onflow/docs/issues/654)
 - [EPIC] Flow EVM Docs - Cadence Dev [#575](https://github.com/onflow/docs/issues/575)
-- [EPIC] Update Flow port for Cadence v1.0 instance [#279](https://github.com/onflow/flow-port/issues/279)
 - [EPIC] FCL WalletConnect Improvements https://github.com/onflow/fcl-js/issues/1872
 - [EPIC] Crescendo Rewards Portal
   - [FE](https://github.com/onflow/crescendo-rewards/issues/1 )
   - [BE](https://github.com/onflow/crescendo-rewards-be/issues/1)
   - [SC](https://github.com/onflow/crescendo-rewards-sc/issues/7)
+- Discover and Design for bridge.flow.com
 
 #### Smart Contract WG
 
-- Reviews for Increment.fi
-- Circle Support
-- Add Solidity implementation using EVM randomness
-- Discovery Design Inbox Standard
 
 **On Hold**
 
