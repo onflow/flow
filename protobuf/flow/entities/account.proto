@@ -22,3 +22,7 @@ message AccountKey {
   uint32 sequence_number = 6;
   bool revoked = 7;
 }
+
+message AccountKeyIndex {
+  uint32 value = 1;
+}

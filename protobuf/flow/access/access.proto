@@ -97,8 +97,6 @@ service AccessAPI {
   rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest)
       returns (AccountResponse);
 
-  // GetAccountBalance gets an account balance by address.
-  rpc GetAccountBalance(GetAccountBalanceRequest) returns (AccountBalanceResponse);
   // GetAccountBalanceAtLatestBlock gets an account balance by address from the latest sealed
   // execution state.
   rpc GetAccountBalanceAtLatestBlock(GetAccountBalanceAtLatestBlockRequest)
@@ -108,8 +106,6 @@ service AccessAPI {
   rpc GetAccountBalanceAtBlockHeight(GetAccountBalanceAtBlockHeightRequest)
       returns (AccountBalanceResponse);
 
-  // GetAccountKeys gets an account public keys by address.
-  rpc GetAccountKeys(GetAccountKeysRequest) returns (AccountKeysResponse);
   // GetAccountKeysAtLatestBlock gets an account public keys by address from the latest sealed
   // execution state.
   rpc GetAccountKeysAtLatestBlock(GetAccountKeysAtLatestBlockRequest)
@@ -446,10 +442,6 @@ message GetAccountAtBlockHeightRequest {
   uint64 block_height = 2;
 }
 
-message GetAccountBalanceRequest {
-  bytes address = 1;
-}
-
 message GetAccountBalanceAtLatestBlockRequest {
   bytes address = 1;
 }
@@ -460,16 +452,17 @@ message GetAccountBalanceAtBlockHeightRequest {
 }
 
 message AccountBalanceResponse {
-  uint64 account_balance = 1;
-  entities.Metadata metadata = 2;
-}
-
-message GetAccountKeysRequest {
-  bytes address = 1;
+  uint64 balance = 1;
+  uint64 available_balance = 2;
+  entities.Metadata metadata = 3;
 }
 
 message GetAccountKeysAtLatestBlockRequest {
+  // address of account
   bytes address = 1;
+  // index of key to return
+  // omit to return all keys
+  entities.AccountKeyIndex index = 2;
 }
 
 message GetAccountKeysAtBlockHeightRequest {

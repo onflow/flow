@@ -40,10 +40,8 @@ const (
 	AccessAPI_GetAccount_FullMethodName                            = "/flow.access.AccessAPI/GetAccount"
 	AccessAPI_GetAccountAtLatestBlock_FullMethodName               = "/flow.access.AccessAPI/GetAccountAtLatestBlock"
 	AccessAPI_GetAccountAtBlockHeight_FullMethodName               = "/flow.access.AccessAPI/GetAccountAtBlockHeight"
-	AccessAPI_GetAccountBalance_FullMethodName                     = "/flow.access.AccessAPI/GetAccountBalance"
 	AccessAPI_GetAccountBalanceAtLatestBlock_FullMethodName        = "/flow.access.AccessAPI/GetAccountBalanceAtLatestBlock"
 	AccessAPI_GetAccountBalanceAtBlockHeight_FullMethodName        = "/flow.access.AccessAPI/GetAccountBalanceAtBlockHeight"
-	AccessAPI_GetAccountKeys_FullMethodName                        = "/flow.access.AccessAPI/GetAccountKeys"
 	AccessAPI_GetAccountKeysAtLatestBlock_FullMethodName           = "/flow.access.AccessAPI/GetAccountKeysAtLatestBlock"
 	AccessAPI_GetAccountKeysAtBlockHeight_FullMethodName           = "/flow.access.AccessAPI/GetAccountKeysAtBlockHeight"
 	AccessAPI_ExecuteScriptAtLatestBlock_FullMethodName            = "/flow.access.AccessAPI/ExecuteScriptAtLatestBlock"
@@ -125,16 +123,12 @@ type AccessAPIClient interface {
 	// GetAccountAtBlockHeight gets an account by address at the given block
 	// height
 	GetAccountAtBlockHeight(ctx context.Context, in *GetAccountAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountResponse, error)
-	// GetAccountBalance gets an account balance by address.
-	GetAccountBalance(ctx context.Context, in *GetAccountBalanceRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error)
 	// GetAccountBalanceAtLatestBlock gets an account balance by address from the latest sealed
 	// execution state.
 	GetAccountBalanceAtLatestBlock(ctx context.Context, in *GetAccountBalanceAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error)
 	// GetAccountBalanceAtBlockHeight gets an account balance by address at the given block
 	// height
 	GetAccountBalanceAtBlockHeight(ctx context.Context, in *GetAccountBalanceAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error)
-	// GetAccountKeys gets an account public keys by address.
-	GetAccountKeys(ctx context.Context, in *GetAccountKeysRequest, opts ...grpc.CallOption) (*AccountKeysResponse, error)
 	// GetAccountKeysAtLatestBlock gets an account public keys by address from the latest sealed
 	// execution state.
 	GetAccountKeysAtLatestBlock(ctx context.Context, in *GetAccountKeysAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountKeysResponse, error)
@@ -444,15 +438,6 @@ func (c *accessAPIClient) GetAccountAtBlockHeight(ctx context.Context, in *GetAc
 	return out, nil
 }
 
-func (c *accessAPIClient) GetAccountBalance(ctx context.Context, in *GetAccountBalanceRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error) {
-	out := new(AccountBalanceResponse)
-	err := c.cc.Invoke(ctx, AccessAPI_GetAccountBalance_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *accessAPIClient) GetAccountBalanceAtLatestBlock(ctx context.Context, in *GetAccountBalanceAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error) {
 	out := new(AccountBalanceResponse)
 	err := c.cc.Invoke(ctx, AccessAPI_GetAccountBalanceAtLatestBlock_FullMethodName, in, out, opts...)
@@ -465,15 +450,6 @@ func (c *accessAPIClient) GetAccountBalanceAtLatestBlock(ctx context.Context, in
 func (c *accessAPIClient) GetAccountBalanceAtBlockHeight(ctx context.Context, in *GetAccountBalanceAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error) {
 	out := new(AccountBalanceResponse)
 	err := c.cc.Invoke(ctx, AccessAPI_GetAccountBalanceAtBlockHeight_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accessAPIClient) GetAccountKeys(ctx context.Context, in *GetAccountKeysRequest, opts ...grpc.CallOption) (*AccountKeysResponse, error) {
-	out := new(AccountKeysResponse)
-	err := c.cc.Invoke(ctx, AccessAPI_GetAccountKeys_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -973,16 +949,12 @@ type AccessAPIServer interface {
 	// GetAccountAtBlockHeight gets an account by address at the given block
 	// height
 	GetAccountAtBlockHeight(context.Context, *GetAccountAtBlockHeightRequest) (*AccountResponse, error)
-	// GetAccountBalance gets an account balance by address.
-	GetAccountBalance(context.Context, *GetAccountBalanceRequest) (*AccountBalanceResponse, error)
 	// GetAccountBalanceAtLatestBlock gets an account balance by address from the latest sealed
 	// execution state.
 	GetAccountBalanceAtLatestBlock(context.Context, *GetAccountBalanceAtLatestBlockRequest) (*AccountBalanceResponse, error)
 	// GetAccountBalanceAtBlockHeight gets an account balance by address at the given block
 	// height
 	GetAccountBalanceAtBlockHeight(context.Context, *GetAccountBalanceAtBlockHeightRequest) (*AccountBalanceResponse, error)
-	// GetAccountKeys gets an account public keys by address.
-	GetAccountKeys(context.Context, *GetAccountKeysRequest) (*AccountKeysResponse, error)
 	// GetAccountKeysAtLatestBlock gets an account public keys by address from the latest sealed
 	// execution state.
 	GetAccountKeysAtLatestBlock(context.Context, *GetAccountKeysAtLatestBlockRequest) (*AccountKeysResponse, error)
@@ -1162,17 +1134,11 @@ func (UnimplementedAccessAPIServer) GetAccountAtLatestBlock(context.Context, *Ge
 func (UnimplementedAccessAPIServer) GetAccountAtBlockHeight(context.Context, *GetAccountAtBlockHeightRequest) (*AccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountAtBlockHeight not implemented")
 }
-func (UnimplementedAccessAPIServer) GetAccountBalance(context.Context, *GetAccountBalanceRequest) (*AccountBalanceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAccountBalance not implemented")
-}
 func (UnimplementedAccessAPIServer) GetAccountBalanceAtLatestBlock(context.Context, *GetAccountBalanceAtLatestBlockRequest) (*AccountBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountBalanceAtLatestBlock not implemented")
 }
 func (UnimplementedAccessAPIServer) GetAccountBalanceAtBlockHeight(context.Context, *GetAccountBalanceAtBlockHeightRequest) (*AccountBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountBalanceAtBlockHeight not implemented")
-}
-func (UnimplementedAccessAPIServer) GetAccountKeys(context.Context, *GetAccountKeysRequest) (*AccountKeysResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAccountKeys not implemented")
 }
 func (UnimplementedAccessAPIServer) GetAccountKeysAtLatestBlock(context.Context, *GetAccountKeysAtLatestBlockRequest) (*AccountKeysResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountKeysAtLatestBlock not implemented")
@@ -1633,24 +1599,6 @@ func _AccessAPI_GetAccountAtBlockHeight_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AccessAPI_GetAccountBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAccountBalanceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetAccountBalance(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AccessAPI_GetAccountBalance_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetAccountBalance(ctx, req.(*GetAccountBalanceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _AccessAPI_GetAccountBalanceAtLatestBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAccountBalanceAtLatestBlockRequest)
 	if err := dec(in); err != nil {
@@ -1683,24 +1631,6 @@ func _AccessAPI_GetAccountBalanceAtBlockHeight_Handler(srv interface{}, ctx cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccessAPIServer).GetAccountBalanceAtBlockHeight(ctx, req.(*GetAccountBalanceAtBlockHeightRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccessAPI_GetAccountKeys_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAccountKeysRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccessAPIServer).GetAccountKeys(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AccessAPI_GetAccountKeys_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccessAPIServer).GetAccountKeys(ctx, req.(*GetAccountKeysRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2241,20 +2171,12 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AccessAPI_GetAccountAtBlockHeight_Handler,
 		},
 		{
-			MethodName: "GetAccountBalance",
-			Handler:    _AccessAPI_GetAccountBalance_Handler,
-		},
-		{
 			MethodName: "GetAccountBalanceAtLatestBlock",
 			Handler:    _AccessAPI_GetAccountBalanceAtLatestBlock_Handler,
 		},
 		{
 			MethodName: "GetAccountBalanceAtBlockHeight",
 			Handler:    _AccessAPI_GetAccountBalanceAtBlockHeight_Handler,
-		},
-		{
-			MethodName: "GetAccountKeys",
-			Handler:    _AccessAPI_GetAccountKeys_Handler,
 		},
 		{
 			MethodName: "GetAccountKeysAtLatestBlock",
