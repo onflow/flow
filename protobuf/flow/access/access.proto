@@ -468,6 +468,9 @@ message GetAccountKeysAtLatestBlockRequest {
 message GetAccountKeysAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
+  // index of key to return
+  // omit to return all keys
+  entities.AccountKeyIndex index = 3;
 }
 
 message AccountKeysResponse {
