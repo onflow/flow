@@ -97,6 +97,24 @@ service AccessAPI {
   rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest)
       returns (AccountResponse);
 
+  // GetAccountBalanceAtLatestBlock gets an account balance by address from the latest sealed
+  // execution state.
+  rpc GetAccountBalanceAtLatestBlock(GetAccountBalanceAtLatestBlockRequest)
+      returns (AccountBalanceResponse);
+  // GetAccountBalanceAtBlockHeight gets an account balance by address at the given block
+  // height
+  rpc GetAccountBalanceAtBlockHeight(GetAccountBalanceAtBlockHeightRequest)
+      returns (AccountBalanceResponse);
+
+  // GetAccountKeysAtLatestBlock gets an account public keys by address from the latest sealed
+  // execution state.
+  rpc GetAccountKeysAtLatestBlock(GetAccountKeysAtLatestBlockRequest)
+      returns (AccountKeysResponse);
+  // GetAccountKeysAtBlockHeight gets an account public keys by address at the given block
+  // height
+  rpc GetAccountKeysAtBlockHeight(GetAccountKeysAtBlockHeightRequest)
+      returns (AccountKeysResponse);
+
   // Scripts
 
   // ExecuteScriptAtLatestBlock executes a read-only Cadence script against the
@@ -422,6 +440,42 @@ message AccountResponse {
 message GetAccountAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
+}
+
+message GetAccountBalanceAtLatestBlockRequest {
+  bytes address = 1;
+}
+
+message GetAccountBalanceAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+}
+
+message AccountBalanceResponse {
+  uint64 balance = 1;
+  uint64 available_balance = 2;
+  entities.Metadata metadata = 3;
+}
+
+message GetAccountKeysAtLatestBlockRequest {
+  // address of account
+  bytes address = 1;
+  // index of key to return
+  // omit to return all keys
+  entities.AccountKeyIndex index = 2;
+}
+
+message GetAccountKeysAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+  // index of key to return
+  // omit to return all keys
+  entities.AccountKeyIndex index = 3;
+}
+
+message AccountKeysResponse {
+  repeated entities.AccountKey account_keys = 1;
+  entities.Metadata metadata = 2;
 }
 
 // Scripts
