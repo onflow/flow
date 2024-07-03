@@ -50,18 +50,22 @@ service ExecutionAPI {
   rpc GetTransactionResultsByBlockID(GetTransactionsByBlockIDRequest)
       returns (GetTransactionResultsResponse);
 
-  // GetTransactionErrorMessage gets the error messages of a failed transaction by id.
+  // GetTransactionErrorMessage gets the error messages of a failed transaction
+  // by id.
   rpc GetTransactionErrorMessage(GetTransactionErrorMessageRequest)
-    returns (GetTransactionErrorMessageResponse);
+      returns (GetTransactionErrorMessageResponse);
 
-  // GetTransactionErrorMessageByIndex gets the error messages of a failed transaction at the index.
-  rpc GetTransactionErrorMessageByIndex(GetTransactionErrorMessageByIndexRequest)
-    returns (GetTransactionErrorMessageResponse);
+  // GetTransactionErrorMessageByIndex gets the error messages of a failed
+  // transaction at the index.
+  rpc GetTransactionErrorMessageByIndex(
+      GetTransactionErrorMessageByIndexRequest)
+      returns (GetTransactionErrorMessageResponse);
 
-  // GetTransactionErrorMessagesByBlockID gets the error messages of all failed transactions in the
-  // block ordered by transaction index.
-  rpc GetTransactionErrorMessagesByBlockID(GetTransactionErrorMessagesByBlockIDRequest)
-    returns (GetTransactionErrorMessagesResponse);
+  // GetTransactionErrorMessagesByBlockID gets the error messages of all failed
+  // transactions in the block ordered by transaction index.
+  rpc GetTransactionErrorMessagesByBlockID(
+      GetTransactionErrorMessagesByBlockIDRequest)
+      returns (GetTransactionErrorMessagesResponse);
 
   // Registers
 

@@ -29,12 +29,13 @@ type NodeVersionInfo struct {
 	SporkId []byte `protobuf:"bytes,3,opt,name=spork_id,json=sporkId,proto3" json:"spork_id,omitempty"`
 	// The protocol version of the currently running node software.
 	ProtocolVersion uint64 `protobuf:"varint,4,opt,name=protocol_version,json=protocolVersion,proto3" json:"protocol_version,omitempty"`
-	// The spork root block height. This is the height of the first sealed block in the spork network.
+	// The spork root block height. This is the height of the first sealed block
+	// in the spork network.
 	SporkRootBlockHeight uint64 `protobuf:"varint,5,opt,name=spork_root_block_height,json=sporkRootBlockHeight,proto3" json:"spork_root_block_height,omitempty"`
-	// The node's root block height. This is the first sealed block in the node's protocol database.
-	// If the node started at the beginning of the spork, it is the same as the spork root block height.
-	// If the node started after the beginning of the spork, it is the height of the first sealed block
-	// indexed.
+	// The node's root block height. This is the first sealed block in the node's
+	// protocol database. If the node started at the beginning of the spork, it is
+	// the same as the spork root block height. If the node started after the
+	// beginning of the spork, it is the height of the first sealed block indexed.
 	NodeRootBlockHeight  uint64   `protobuf:"varint,6,opt,name=node_root_block_height,json=nodeRootBlockHeight,proto3" json:"node_root_block_height,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

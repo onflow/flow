@@ -55,12 +55,14 @@ type ExecutionAPIClient interface {
 	// GetTransactionResultByIndex gets the results of all transactions in the
 	// block ordered by transaction index.
 	GetTransactionResultsByBlockID(ctx context.Context, in *GetTransactionsByBlockIDRequest, opts ...grpc.CallOption) (*GetTransactionResultsResponse, error)
-	// GetTransactionErrorMessage gets the error messages of a failed transaction by id.
+	// GetTransactionErrorMessage gets the error messages of a failed transaction
+	// by id.
 	GetTransactionErrorMessage(ctx context.Context, in *GetTransactionErrorMessageRequest, opts ...grpc.CallOption) (*GetTransactionErrorMessageResponse, error)
-	// GetTransactionErrorMessageByIndex gets the error messages of a failed transaction at the index.
+	// GetTransactionErrorMessageByIndex gets the error messages of a failed
+	// transaction at the index.
 	GetTransactionErrorMessageByIndex(ctx context.Context, in *GetTransactionErrorMessageByIndexRequest, opts ...grpc.CallOption) (*GetTransactionErrorMessageResponse, error)
-	// GetTransactionErrorMessagesByBlockID gets the error messages of all failed transactions in the
-	// block ordered by transaction index.
+	// GetTransactionErrorMessagesByBlockID gets the error messages of all failed
+	// transactions in the block ordered by transaction index.
 	GetTransactionErrorMessagesByBlockID(ctx context.Context, in *GetTransactionErrorMessagesByBlockIDRequest, opts ...grpc.CallOption) (*GetTransactionErrorMessagesResponse, error)
 	// GetRegisterAtBlockID collects a register at the block with the given ID (if
 	// available).
@@ -217,12 +219,14 @@ type ExecutionAPIServer interface {
 	// GetTransactionResultByIndex gets the results of all transactions in the
 	// block ordered by transaction index.
 	GetTransactionResultsByBlockID(context.Context, *GetTransactionsByBlockIDRequest) (*GetTransactionResultsResponse, error)
-	// GetTransactionErrorMessage gets the error messages of a failed transaction by id.
+	// GetTransactionErrorMessage gets the error messages of a failed transaction
+	// by id.
 	GetTransactionErrorMessage(context.Context, *GetTransactionErrorMessageRequest) (*GetTransactionErrorMessageResponse, error)
-	// GetTransactionErrorMessageByIndex gets the error messages of a failed transaction at the index.
+	// GetTransactionErrorMessageByIndex gets the error messages of a failed
+	// transaction at the index.
 	GetTransactionErrorMessageByIndex(context.Context, *GetTransactionErrorMessageByIndexRequest) (*GetTransactionErrorMessageResponse, error)
-	// GetTransactionErrorMessagesByBlockID gets the error messages of all failed transactions in the
-	// block ordered by transaction index.
+	// GetTransactionErrorMessagesByBlockID gets the error messages of all failed
+	// transactions in the block ordered by transaction index.
 	GetTransactionErrorMessagesByBlockID(context.Context, *GetTransactionErrorMessagesByBlockIDRequest) (*GetTransactionErrorMessagesResponse, error)
 	// GetRegisterAtBlockID collects a register at the block with the given ID (if
 	// available).
