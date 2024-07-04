@@ -1,7 +1,7 @@
 # Overview
 
 ### Team Wins 🎉
-- 
+- First milesone for migrating badger to pebble proof of concept is completed. Now the mainnet test execution node is running pebble based protocol database and executing and storing latest blocks. 
 
 ### General updates
 
@@ -71,32 +71,63 @@ Cycle Objective(s):
 7) Improve execution performance to mitigate the impact of adding metadata to token standards
 
 **Done last sprint**
+ - Cadence language
+   - [Remove access to field slices from composite and interface types](https://github.com/onflow/cadence/pull/3432)
+   - [Fix invalidCadenceTypeError creation](https://github.com/onflow/flow-go/pull/6151)
+   - [Import contracts as references](https://github.com/onflow/cadence/pull/3417)
+   - Reviews wrapping up:
+     - [Allow borrowing of capability with subtype](https://github.com/onflow/cadence/pull/3449)
+     - [Fix toConstantSized](https://github.com/onflow/cadence/pull/3446)
+
+ - State migration for Crescendo release 
+   - [Improve Cadence 1.0 migration - clean up contract names and code](https://github.com/onflow/flow-go/pull/6148)
+   - [Fix Cadence 1.0 migration - ignore empty contracts when checking all contracts](https://github.com/onflow/flow-go/pull/6145)
+   - Updated all downstream dependencies to latest Cadence 1.0 preview release
+
+ - Cadence Execution
+   - [Badger DB -> Pebble DB protocol state migration POC](https://github.com/onflow/flow-go/issues/6137)
+ - Tooling
+   - [Added a script to move checkpoint files](https://github.com/onflow/flow-go/pull/6143)
+
+ - EVM Gateway
+   - [Add a buffer gas of "all but one 64th" for gas used on EVM.dryRun](https://github.com/onflow/flow-go/pull/6136)
+   - [Fix hash calculation of direct calls causing duplicate hashes](https://github.com/onflow/flow-go/pull/6118)
+   - [Remove unneeded dependency](https://github.com/onflow/flow-evm-gateway/pull/331)
+   - [Add missing uncle endpoints and max fee per gas](https://github.com/onflow/flow-evm-gateway/pull/316)
+   - [Bugfix invalid block number or hash](https://github.com/onflow/flow-evm-gateway/pull/313)
+
+Done and merged:
 
 **This sprint**
 
-DONE: Objective 1, KR 1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
-* All breaking changed released in a new CLI: v1.18.0-cadence-v1.0.0-preview.26
+ - Objective 1, KR4: Testnet Upgrade to Crescendo Release
+   - Continue work on migration optimizations.
+   - Investigate / Fix any security report incoming from bug bounty.
 
-IN PROGRESS: Objective 1, KR4: Testnet Upgrade to Crescendo Release
-* Completed Testnet migration with both Atree inlining and Cadence 1.0.
-* Completed [EVM Gateway development](https://github.com/onflow/flow-evm-gateway/issues/126) and [EVM Core development](https://github.com/onflow/flow-go/issues/5536) production readiness EPICs.
-* Continue work on migration optimizations.
-* Investigate / Fix any security report incoming from bug bounty.
-* Finish implementation of remaining EVM blockers: [1](https://github.com/onflow/flow-go/pull/6136), [2](https://github.com/onflow/flow-go/pull/6118)
-* Evaluate fixing [Random beacon history taking more space on chain than expected](https://github.com/onflow/flow-go/issues/5550)
+ - Objective 2, KR 1: Update transaction fees weights for the execution operations on TN and MN
+   -  Continue work on [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
 
-IN PROGRESS: Objective 2, KR 1: Update transaction fees weights for the execution operations on TN and MN
-* Continue work on [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
+ - State migration for Crescendo release 
+   - [Test Crescendo state migration with Mainnet state, and deploy to a new mainnet migration net](https://github.com/onflow/flow-go/issues/5851)
+   - [Comparison of execution states before and after the atree inlining](https://github.com/onflow/atree/issues/292)
+ 
+ - Other
+   - [Reducing spork time by improving checkpointing copying during bootstrapping](https://github.com/onflow/flow-go/issues/6167)
 
-DONE: Objective 4, KR1: Execution node handles restart from spork root block reguardless of how many blocks it is behind
-* Completed refactoring of Ingestion engine to [prevent EN entering crash loop](https://github.com/onflow/flow-go/issues/5298)
+**Completed OKRs**
+  * Objective 1, KR 1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
+    * All breaking changes released in a new CLI: v1.18.0-cadence-v1.0.0-preview.26
+  * Objective 4, KR1: Execution node handles restart from spork root block reguardless of how many blocks it is behind
+    * Completed refactoring of Ingestion engine to [prevent EN entering crash loop](https://github.com/onflow/flow-go/issues/5298)
 
 **On Hold**
 
-ON HOLD: Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
-* Continue work on making [Make TPS loader input more flexible](https://github.com/onflow/flow-go/issues/5490) for better analysis and tracking of performance data.
+ - Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
+    * Continue work on making [Make TPS loader input more flexible](https://github.com/onflow/flow-go/issues/5490) for better analysis and tracking of performance data.
 
-ON HOLD: * Start Atree optimization: [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
+- Other
+    * Start Atree optimization: [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
+    * Evaluate fixing [Random beacon history taking more space on chain than expected](https://github.com/onflow/flow-go/issues/5550)
 
 **Active Epics**
 
