@@ -147,6 +147,7 @@ Cycle Objective(s):
   - [Add epoch fallback phase](https://github.com/onflow/flow-go/issues/6092)
   - [`epochs.FallbackStateMachine` only tolerates narrow unexpected behaviour](https://github.com/onflow/flow-go/issues/6018)
   - Addressed comments and merged PR for https://github.com/onflow/flow-go/issues/6018, effectively completing it.
+  - [Modify EFM logic do not enter EFM while in EpochCommitted phase](https://github.com/onflow/flow-go/issues/5731)
   - [In review: Supporting epoch extensions in consensus committee](https://github.com/onflow/flow-go/pull/6154)
   - [In review: Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
 
