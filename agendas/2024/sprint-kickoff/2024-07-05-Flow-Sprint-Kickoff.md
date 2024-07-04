@@ -151,15 +151,15 @@ Cycle Objective(s):
   - [In review: Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
 
 * <ins>Data Availability:</ins>
-  - Complete ProtocolDB pruning design
   - Continue rollout of local script execution on QuickNode
   - KROK Team
-    - Add support for version beacon events to control script execution ([Issue #5788](https://github.com/onflow/flow-go/issues/5788) - In review, [Issue #5789](https://github.com/onflow/flow-go/issues/5789) - In review, [Issue #5790](https://github.com/onflow/flow-go/issues/5790))
-    - Expose separate endpoints for getting account balance and keys ([Issue #5999](https://github.com/onflow/flow-go/issues/5999))
-    - Create proof of concept of transaction payer balance checks ([Issue #5823](https://github.com/onflow/flow-go/issues/5823) - In review)
-    - Add support for pruning execution data db on ANs ([Issue #6002](https://github.com/onflow/flow-go/issues/6002))
-    - Add support for storing exec data using pebble db ([Issue #6017](https://github.com/onflow/flow-go/issues/6017))
-    - Start Registers DB pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066), [Issue #6068](https://github.com/onflow/flow-go/issues/6068))
+     - In review 
+        - Add support for version beacon events to control script execution
+           - [Issue #5788](https://github.com/onflow/flow-go/issues/5788)
+           - In review, [Issue #5789](https://github.com/onflow/flow-go/issues/5789)
+           - In review, [Issue #5790](https://github.com/onflow/flow-go/issues/5790)
+        - Expose separate endpoints for getting account balance and keys ([Issue #5999](https://github.com/onflow/flow-go/issues/5999))
+        - Create proof of concept of transaction payer balance checks ([Issue #5823](https://github.com/onflow/flow-go/issues/5823))
 
 * <ins>Other</ins>
   - Finished content piece for [public roadmap & vision for protocol decentralization](https://docs.google.com/document/d/1dfKevN2zbsMP6fVOuAM2FTcCDGBW2sPa5CcrO8Uccy8/edit). Now with marketing for review and planning
@@ -176,6 +176,16 @@ Cycle Objective(s):
   - [Support Epoch Extensions in HotStuff Committee](https://github.com/onflow/flow-go/pull/6154)
   - [Address comments and merge PR for: Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
   - [Implement last issue for epoch state machines for handling transitions into EFM in edge case](https://github.com/onflow/flow-go/issues/5631)
+
+* <ins>Data Availability:</ins>
+  - Complete ProtocolDB pruning design
+  - Continue rollout of local script execution on QuickNode
+
+  - KROK Team
+    - Create proof of concept of transaction payer balance checks ([Issue #5823](https://github.com/onflow/flow-go/issues/5823) - In review)
+    - Add support for pruning execution data db on ANs ([Issue #6002](https://github.com/onflow/flow-go/issues/6002))
+    - Add support for storing exec data using pebble db ([Issue #6017](https://github.com/onflow/flow-go/issues/6017))
+    - Start Registers DB pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066), [Issue #6068](https://github.com/onflow/flow-go/issues/6068))
 
 * <ins>Cryptography:</ins>
    - SPoCK aggregation: from BLS security proof to BLS aggregation security proof (multiple sprints)
