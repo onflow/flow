@@ -204,18 +204,21 @@ Cycle Objective(s):
 Cycle Objective(s): 
 - Resolving Circle's existing engineering improvements for USDC on Flow
 - Cadence 1.0 DEX Prep - IncrementFi
-- EVM partner onboarding: Moralis, Covalent, Ankr
+- EVM partner onboarding: Moralis, Covalent, Ankr, Credora
 - Deliver Axelar bridge [PAUSED]
 
 **Done last sprint**
+  * [JVM-SDK Access API refactoring + exception handling](https://github.com/onflow/flow-jvm-sdk/pull/55)
+  * [JVM-SDK Exception handling improvements](https://github.com/onflow/flow-jvm-sdk/pull/57)
 
 **This sprint**
-* [Backfill missing Access API subscription endpoints to JVM SDK](https://github.com/onflow/flow-jvm-sdk/pull/58)
-* Start Celer C1.0 upgrades
-* Review of new hash additions PR for JVM-SDK
+  * [Continue adding missing Access API endpoints to JVM SDK](https://github.com/onflow/flow-jvm-sdk/pull/61)
+  * [Continue adding missing Access API subscription endpoints to JVM SDK](https://github.com/onflow/flow-jvm-sdk/pull/58)
+  * Continue Celer C1.0 upgrades
+  * Review signature and hash updates PRs for JVM-SDK, [1](https://github.com/onflow/flow-jvm-sdk/pull/53) & [2](https://github.com/onflow/flow-jvm-sdk/pull/52)
 
 **On Hold**
-- Axelar Cadence bridge release waiting confirmation of build partners, costs and timelines for EVM release, no engineering ongoing
+  - Axelar Cadence bridge release waiting confirmation of build partners, costs and timelines for EVM release, no engineering ongoing
 
 **Active Epics**
 
