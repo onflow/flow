@@ -4,8 +4,7 @@
 - First milesone for migrating badger to pebble proof of concept is completed. Now the mainnet test execution node is running pebble based protocol database and executing and storing latest blocks.
 - Finished content piece for public roadmap & vision for protocol decentralization; current challenges and upcoming updates for permissionless consensus on Flow. Now with marketing for review and planning
 - Refined [branching convention](https://github.com/onflow/flow-go/blob/alex/branching-conventions/DEVELOPMENT.md) for `flow-go` 
-  (see Core-Protocol Working Group [meeting June 27](https://github.com/onflow/Flow-Working-Groups/blob/main/core_protocol_working_group/meetings/2024-06-27.md)
-  and respective PRs [#6162](https://github.com/onflow/flow-go/pull/6162), [#6177](https://github.com/onflow/flow-go/pull/6177))=======
+   - See Core-Protocol Working Group [meeting June 27](https://github.com/onflow/Flow-Working-Groups/blob/main/core_protocol_working_group/meetings/2024-06-27.md) and respective PRs [#6162](https://github.com/onflow/flow-go/pull/6162), [#6177](https://github.com/onflow/flow-go/pull/6177))
 
 ### General updates
 
