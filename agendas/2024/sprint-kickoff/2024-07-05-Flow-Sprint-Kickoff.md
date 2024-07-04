@@ -2,7 +2,7 @@
 
 ### Team Wins 🎉
 - First milesone for migrating badger to pebble proof of concept is completed. Now the mainnet test execution node is running pebble based protocol database and executing and storing latest blocks.
-- Finished content piece for public roadmap & vision for protocol decentralization; current challenges and upcoming updates for permissionless consensus on Flow. Now with marketing for review and planning
+- Content pieces [Path to Permissionless Participation in Flow](https://docs.google.com/document/d/1dfKevN2zbsMP6fVOuAM2FTcCDGBW2sPa5CcrO8Uccy8/edit) and [2-page executive summary](https://docs.google.com/document/d/1E2iiEFlPdhBW7EIUYFV3LICq575JyX8OHZNqiFb04Qk/edit#heading=h.2n9y1yguzk4q) (mature complete drafts), which describe challenges and roadmap for permissionless consensus on Flow.
 - Refined [branching convention](https://github.com/onflow/flow-go/blob/alex/branching-conventions/DEVELOPMENT.md) for `flow-go` 
     - See Core-Protocol Working Group [meeting June 27](https://github.com/onflow/Flow-Working-Groups/blob/main/core_protocol_working_group/meetings/2024-06-27.md) and respective PRs [#6162](https://github.com/onflow/flow-go/pull/6162), [#6177](https://github.com/onflow/flow-go/pull/6177)
 
@@ -162,8 +162,8 @@ Cycle Objective(s):
         - Create proof of concept of transaction payer balance checks ([Issue #5823](https://github.com/onflow/flow-go/issues/5823))
 
 * <ins>Other</ins>
-  - Finished content piece for [public roadmap & vision for protocol decentralization](https://docs.google.com/document/d/1dfKevN2zbsMP6fVOuAM2FTcCDGBW2sPa5CcrO8Uccy8/edit). Now with marketing for review and planning
-
+  - Finalizing content pieces [Path to Permissionless Participation in Flow](https://docs.google.com/document/d/1dfKevN2zbsMP6fVOuAM2FTcCDGBW2sPa5CcrO8Uccy8/edit) and [2-page executive summary](https://docs.google.com/document/d/1E2iiEFlPdhBW7EIUYFV3LICq575JyX8OHZNqiFb04Qk/edit#heading=h.2n9y1yguzk4q)
+  
 **This sprint**
 
 * <ins>EFM Recovery</ins>
