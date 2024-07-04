@@ -1,7 +1,8 @@
 # Overview
 
 ### Team Wins 🎉
-- First milesone for migrating badger to pebble proof of concept is completed. Now the mainnet test execution node is running pebble based protocol database and executing and storing latest blocks. 
+- First milesone for migrating badger to pebble proof of concept is completed. Now the mainnet test execution node is running pebble based protocol database and executing and storing latest blocks.
+- Finished content piece for public roadmap & vision for protocol decentralization; current challenges and upcoming updates for permissionless consensus on Flow. Now with marketing for review and planning
 
 ### General updates
 
@@ -10,7 +11,7 @@
 
 ---
 
-### Mainnet Uptime - Last 14 days (mm/dd/24 to mm/dd/24) \[JP]
+### Mainnet Uptime - Last 14 days (mm/dd/24 to mm/dd/24) \[Vishal]
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
@@ -96,8 +97,6 @@ Cycle Objective(s):
    - [Add missing uncle endpoints and max fee per gas](https://github.com/onflow/flow-evm-gateway/pull/316)
    - [Bugfix invalid block number or hash](https://github.com/onflow/flow-evm-gateway/pull/313)
 
-Done and merged:
-
 **This sprint**
 
  - Objective 1, KR4: Testnet Upgrade to Crescendo Release
@@ -115,7 +114,7 @@ Done and merged:
    - [Reducing spork time by improving checkpointing copying during bootstrapping](https://github.com/onflow/flow-go/issues/6167)
 
 **Completed OKRs**
-  * Objective 1, KR 1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
+  * Objective 1, KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
     * All breaking changes released in a new CLI: v1.18.0-cadence-v1.0.0-preview.26
   * Objective 4, KR1: Execution node handles restart from spork root block reguardless of how many blocks it is behind
     * Completed refactoring of Ingestion engine to [prevent EN entering crash loop](https://github.com/onflow/flow-go/issues/5298)
@@ -129,35 +128,25 @@ Done and merged:
     * Start Atree optimization: [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
     * Evaluate fixing [Random beacon history taking more space on chain than expected](https://github.com/onflow/flow-go/issues/5550)
 
-**Active Epics**
-
-
 ---
 
 ### **Core Protocol** \[Jerome]
 Cycle Objective(s): 
 
-* Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node
-* Reduce CPU usage on Execution node by 30% [GOAL MODIFIED]
+* Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node [IN PROGRESS]
+* Reduce CPU usage on Execution node by 30% [IN PROGRESS]
 * Translate crypto performance improvements to consensus block rate increase [DONE]
 * Continue design and implementation of Sporkless Epoch Fallback Recovery solution [DONE]
 
 **Done last Sprint:**
 
-
-**This sprint**
-
 * <ins>EFM Recovery</ins>
-  - [Update Ansible automation for Mainnet25 Dynamic Protocol state changes](https://github.com/onflow/flow-go/issues/5156)
+  - [Adding Epoch Fallback phase to data model](https://github.com/onflow/flow-go/pull/6116)
   - [Add epoch fallback phase](https://github.com/onflow/flow-go/issues/6092)
-  - [Update consensus committee EFM processing](https://github.com/onflow/flow-go/issues/5730)
-  - Review by SC team: [EpochRecover cadence transaction](https://github.com/onflow/flow-core-contracts/pull/420)
-  - Finish [Blocktime controller EFM changes](https://github.com/onflow/flow-go/issues/5732)
-  - Finish [`epochs.FallbackStateMachine` only tolerates narrow unexpected behaviour](https://github.com/onflow/flow-go/issues/6018)
-  - Finish [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
-  - [Update epoch lookup component](https://github.com/onflow/flow-go/issues/5763)
-  - [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
-  - [EFM Recovery benchnet testing](https://github.com/onflow/flow-go/issues/5945)
+  - [`epochs.FallbackStateMachine` only tolerates narrow unexpected behaviour](https://github.com/onflow/flow-go/issues/6018)
+  - Addressed comments and merged PR for https://github.com/onflow/flow-go/issues/6018, effectively completing it.
+  - [In review: Supporting epoch extensions in consensus committee](https://github.com/onflow/flow-go/pull/6154)
+  - [In review: Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
 
 * <ins>Data Availability:</ins>
   - Complete ProtocolDB pruning design
@@ -170,29 +159,31 @@ Cycle Objective(s):
     - Add support for storing exec data using pebble db ([Issue #6017](https://github.com/onflow/flow-go/issues/6017))
     - Start Registers DB pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066), [Issue #6068](https://github.com/onflow/flow-go/issues/6068))
 
+* <ins>Other</ins>
+  - Finished content piece for [public roadmap & vision for protocol decentralization](https://docs.google.com/document/d/1dfKevN2zbsMP6fVOuAM2FTcCDGBW2sPa5CcrO8Uccy8/edit). Now with marketing for review and planning
+
+**This sprint**
+
+* <ins>EFM Recovery</ins>
+  - [Update Ansible automation for Mainnet25 Dynamic Protocol state changes](https://github.com/onflow/flow-go/issues/5156)
+  - [Update consensus committee EFM processing](https://github.com/onflow/flow-go/issues/5730)
+  - Review by SC team: [EpochRecover cadence transaction](https://github.com/onflow/flow-core-contracts/pull/420)
+  - [Blocktime controller EFM changes](https://github.com/onflow/flow-go/issues/5732)
+  - [Update epoch lookup component](https://github.com/onflow/flow-go/issues/5763)
+  - [EFM Recovery benchnet testing](https://github.com/onflow/flow-go/issues/5945)
+  - [Support Epoch Extensions in HotStuff Committee](https://github.com/onflow/flow-go/pull/6154)
+  - [Address comments and merge PR for: Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
+  - [Implement last issue for epoch state machines for handling transitions into EFM in edge case](https://github.com/onflow/flow-go/issues/5631)
+
 * <ins>Cryptography:</ins>
-   - SPoCK aggregation: from BLS security proof to BLS aggregation security proof (more than a sprint)
+   - SPoCK aggregation: from BLS security proof to BLS aggregation security proof (multiple sprints)
 
 * <ins>Rosetta:</ins>
   - KROK: 
     - Rosetta Cadence updates for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52), [Issue #54](https://github.com/onflow/rosetta/issues/54) - PRs in review)
-  - DistributedLab: 
-    - Continue with remaining updates for Rosetta for EVM on Flow 
-    
-* <ins>Other:</ins>   
-  - Continue content piece for public roadmap & vision for protocol decentralization; current challenges and upcoming updates for permissionless consensus on Flow.
 
 **On Hold**
 * Implement BFT mitigations to enable 20 permissionless ANs
-
-**Active Epics**
-
-- Reinforcing Flow’s commitment to full protocol autonomy and scalability
-- Improve network performance
-- Improve network availability 
-- Simplify community contributions to core protocol and maintainability
-- Improve network reliability and data availability for dApp developers
-- Data-driven Prioritization and Scaling Engineering
 
 ---
 
