@@ -111,13 +111,18 @@ Cycle Objective(s):
  - State migration for Crescendo release 
    - [Test Crescendo state migration with Mainnet state, and deploy to a new mainnet migration net](https://github.com/onflow/flow-go/issues/5851)
    - [Comparison of execution states before and after the atree inlining](https://github.com/onflow/atree/issues/292)
- 
+
+- EVM Gateway
+   - [Add a method to return the value from a storage slot on a given addres](https://github.com/onflow/flow-go/issues/6178)
+   - KROK
+     - EVM Gateway benchmarking
+  
  - Other
    - [Reducing spork time by improving checkpointing copying during bootstrapping](https://github.com/onflow/flow-go/issues/6167)
 
 **Completed OKRs**
   * Objective 1, KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
-    * All breaking changes released in a new CLI: v1.18.0-cadence-v1.0.0-preview.26
+    * All breaking  released in a new CLI: v1.18.0-cadence-v1.0.0-preview.26
   * Objective 4, KR1: Execution node handles restart from spork root block reguardless of how many blocks it is behind
     * Completed refactoring of Ingestion engine to [prevent EN entering crash loop](https://github.com/onflow/flow-go/issues/5298)
 
