@@ -80,9 +80,11 @@ Cycle Objective(s):
    - [Remove access to field slices from composite and interface types](https://github.com/onflow/cadence/pull/3432)
    - [Fix invalidCadenceTypeError creation](https://github.com/onflow/flow-go/pull/6151)
    - [Import contracts as references](https://github.com/onflow/cadence/pull/3417)
-   - Reviews wrapping up:
+   - [Evaluate using JSONL instead of JSON array (reporters.ReportWriter) for diff-states command](https://github.com/onflow/flow-go/issues/6108)
+   - In review:
      - [Allow borrowing of capability with subtype](https://github.com/onflow/cadence/pull/3449)
      - [Fix toConstantSized](https://github.com/onflow/cadence/pull/3446)
+     - [Add support for JSONL report format as alternative to JSON array report](https://github.com/onflow/flow-go/pull/6176)
 
  - State migration for Crescendo release 
    - [Improve Cadence 1.0 migration - clean up contract names and code](https://github.com/onflow/flow-go/pull/6148)
@@ -110,6 +112,18 @@ Cycle Objective(s):
  - Objective 2, KR 1: Update transaction fees weights for the execution operations on TN and MN
    -  Continue work on [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
 
+ - Atree
+   -  Analyze `diff-states` (21GB report) for atree inlined vs non-inlined execution states that executed same mainnet blocks
+ 
+ -Cadence optimization
+   - Continue: [Cadence composites with attachment having different field types vs field values are rejected by CCF encoder](https://github.com/dapperlabs/cadence-internal/issues/241)
+   - [Provide ccf.EventsEncModeV0 and ccf.EventsEncModeV1 for encoding events in CCF format](https://github.com/onflow/cadence/issues/3448)
+   - For inlined and non-inlined states, re-execute again using:
+      - same blocks
+      - same starting point
+      - same vm configuration (prior run used Ice Lake vs Sky Lake)
+      - and save execution results (prior run's execution results were overwritten by storehouse tests).
+   
  - State migration for Crescendo release 
    - [Test Crescendo state migration with Mainnet state, and deploy to a new mainnet migration net](https://github.com/onflow/flow-go/issues/5851)
    - [Comparison of execution states before and after the atree inlining](https://github.com/onflow/atree/issues/292)
