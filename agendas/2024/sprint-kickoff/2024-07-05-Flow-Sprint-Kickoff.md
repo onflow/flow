@@ -115,15 +115,15 @@ Cycle Objective(s):
 
  - Atree
    -  Analyze `diff-states` (21GB report) for atree inlined vs non-inlined execution states that executed same mainnet blocks
- 
- - Cadence optimization
-   - Continue: [Cadence composites with attachment having different field types vs field values are rejected by CCF encoder](https://github.com/dapperlabs/cadence-internal/issues/241)
-   - [Provide ccf.EventsEncModeV0 and ccf.EventsEncModeV1 for encoding events in CCF format](https://github.com/onflow/cadence/issues/3448)
    - For inlined and non-inlined states, re-execute again using:
       - same blocks
       - same starting point
       - same vm configuration (prior run used Ice Lake vs Sky Lake)
       - and save execution results (prior run's execution results were overwritten by storehouse tests).
+ 
+ - Cadence optimization
+   - Continue: [Cadence composites with attachment having different field types vs field values are rejected by CCF encoder](https://github.com/dapperlabs/cadence-internal/issues/241)
+   - [Provide ccf.EventsEncModeV0 and ccf.EventsEncModeV1 for encoding events in CCF format](https://github.com/onflow/cadence/issues/3448)
    
  - State migration for Crescendo release 
    - [Test Crescendo state migration with Mainnet state, and deploy to a new mainnet migration net](https://github.com/onflow/flow-go/issues/5851)
