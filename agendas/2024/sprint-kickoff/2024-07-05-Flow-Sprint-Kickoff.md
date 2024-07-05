@@ -9,7 +9,7 @@
 - MVP of Flow Port asset Bridge as demo'd at all-hands
 - Bridge Smart Contract audit finalized, only low or informational findings
 - Flipside migration dashboard ready for feedback, [Dashboard](https://flipsidecrypto.xyz/adriaparcerisas/cadence-1.0-migration-tYSddf)
-- Contract Browser upgraded to facilitate deverloper in migration
+- Contract Browser upgraded to facilitate developer in migration
   
 ### General updates
 
