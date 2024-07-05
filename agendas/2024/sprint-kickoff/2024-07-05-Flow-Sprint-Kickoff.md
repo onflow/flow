@@ -6,6 +6,7 @@
 - Refined [branching convention](https://github.com/onflow/flow-go/blob/alex/branching-conventions/DEVELOPMENT.md) for `flow-go` 
     - See Core-Protocol Working Group [meeting June 27](https://github.com/onflow/Flow-Working-Groups/blob/main/core_protocol_working_group/meetings/2024-06-27.md) and respective PRs [#6162](https://github.com/onflow/flow-go/pull/6162), [#6177](https://github.com/onflow/flow-go/pull/6177)
 - First version of operator branding is now live on FlowDiver (see: https://www.flowdiver.io/node)
+- MVP of Flow Port asset Bridge as demo'd at all-hands
 
 ### General updates
 
@@ -282,6 +283,7 @@ Cycle Objective(s):
   - [BE](https://github.com/onflow/crescendo-rewards-be/issues/1)
   - [SC](https://github.com/onflow/crescendo-rewards-sc/issues/7)
 - Discover and Design for bridge.flow.com
+- [EPIC] EVM Bridge - [#1](https://github.com/onflow/flow-bridge-app/issues/1)
 
 #### Smart Contract WG
 
