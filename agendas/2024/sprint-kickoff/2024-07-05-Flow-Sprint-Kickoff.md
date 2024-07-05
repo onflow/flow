@@ -173,7 +173,7 @@ Cycle Objective(s):
   - In review: [Supporting epoch extensions in consensus committee](https://github.com/onflow/flow-go/pull/6154)
   - In review: [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
   - Ready to merge: [EFM integration tests, part 1](https://github.com/onflow/flow-go/pull/6156)
-  - Ready to merge: [EFM blocktime controller updates](https://github.com/onflow/flow-go/pull/6156)
+  - Ready to merge: [EFM blocktime controller updates](https://github.com/onflow/flow-go/issues/5732)
 
 * <ins>Data Availability:</ins>
   - Adjusted max script execution effort on public ANs to 10K (fails over to ENs)
@@ -194,16 +194,13 @@ Cycle Objective(s):
 * <ins>EFM Recovery</ins>
   - [Update Ansible automation for Mainnet25 Dynamic Protocol state changes](https://github.com/onflow/flow-go/issues/5156)
   - [Update consensus committee EFM processing](https://github.com/onflow/flow-go/issues/5730)
-  - Review by SC team: [EpochRecover cadence transaction](https://github.com/onflow/flow-core-contracts/pull/420)
-  - [Blocktime controller EFM changes](https://github.com/onflow/flow-go/issues/5732)
   - [Update epoch lookup component](https://github.com/onflow/flow-go/issues/5763)
   - [EFM Recovery benchnet testing](https://github.com/onflow/flow-go/issues/5945)
   - [Support Epoch Extensions in HotStuff Committee](https://github.com/onflow/flow-go/pull/6154)
-  - [Address comments and merge PR for: Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
-  - [Implement last issue for epoch state machines for handling transitions into EFM in edge case](https://github.com/onflow/flow-go/issues/5631)
-  - Merge open PRs 
+  - [Invalid Service Events shortly after Epoch Commit](https://github.com/onflow/flow-go/issues/5631)
+  - Address comments and merge PR: [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
+  - Merge EFM integration test and blocktime controller PRs 
   - Finish [EFM transaction Cadence PR](https://github.com/onflow/flow-core-contracts/pull/420)
-  - [Update Epoch Lookup Component](https://github.com/onflow/flow-go/issues/5763)
   
 * <ins>Data Availability:</ins>
   - Complete ProtocolDB pruning design
