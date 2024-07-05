@@ -13,19 +13,19 @@
 
 ---
 
-### Mainnet Uptime - Last 14 days (mm/dd/24 to mm/dd/24) \[Vishal]
+### Mainnet Uptime - Last 14 days (06/22/24 to 07/05/24) \[Vishal]
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%   |    100%       |       0%         |
 | Block Finalization      | 99.9%   |    100%       |       0%         |
-| Transaction Execution   | 99.9%   |    99.95%     |       49.6%      |
-| Block Sealing           | 99.9%   |    99.90%     |       99.3%      |
+| Transaction Execution   | 99.9%   |    100%       |       0%         |
+| Block Sealing           | 99.9%   |    100%       |       0%         |
 | Access API Liveness     | 99.9%   |    ? dashboard broken 😔  |       ?          |
 
 [SLO dashboards](https://flowfoundation.grafana.net/d/hgW3l-m4k/slo-dashboard?orgId=1&from=now-2w&to=now)
 
-[YTD SLA: 99.919%](https://app.metrika.co/flow/dashboard/slas?tr=YTD)
+[YTD SLA: 99.922%](https://app.metrika.co/flow/dashboard/slas?tr=YTD)
 
 ## Incidents
 
