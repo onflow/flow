@@ -7,7 +7,10 @@
     - See Core-Protocol Working Group [meeting June 27](https://github.com/onflow/Flow-Working-Groups/blob/main/core_protocol_working_group/meetings/2024-06-27.md) and respective PRs [#6162](https://github.com/onflow/flow-go/pull/6162), [#6177](https://github.com/onflow/flow-go/pull/6177)
 - First version of operator branding is now live on FlowDiver (see: https://www.flowdiver.io/node)
 - MVP of Flow Port asset Bridge as demo'd at all-hands
-
+- Bridge Smart Contract audit finalized, only low or informational findings
+- Flipside migration dashboard ready for feedback, [Dashboard](https://flipsidecrypto.xyz/adriaparcerisas/cadence-1.0-migration-tYSddf)
+- Contract Browser upgraded to facilitate deverloper in migration
+  
 ### General updates
 
 ### OOO
