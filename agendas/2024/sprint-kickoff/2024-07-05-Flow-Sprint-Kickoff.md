@@ -46,15 +46,16 @@
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
 | Drafted     | 7  |    9  |       0         |       7          |        **23**       |
-| Proposed    | 1  |    3 (+1)    |       2          |       0           |        **6** (+1)        |
+| Proposed    | 1  |    2 (-1)    |       2          |       0           |        **5** (-1)        |
 | Accepted    | 2  |    1     |       2       |       1          |        **6**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 3 |    21    |       2       |       1           |        **27**          |
+| Implemented | 3 |    22 (+1)    |       2       |       1           |        **28** (+1)          |
 | Released    | 4  |    0     |       3       |       6          |        **13**          |
-| Total       | **17**  |    **34** (+1)  |       **10**      |       **15**          |        **76** (+1)          |
+| Total       | **17**  |    **34**  |       **10**      |       **15**          |        **76**          |
 
 **Updates**
-* [Cadence] - FLIP for changing import statement semantics (FLIP-277) proposed
+* [Cadence] - FLIP for changing import statement semantics (FLIP-277) moved to implementation
+* FLIPs started by folks who have now left FF, need to reassign
 ---
 
 
