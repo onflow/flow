@@ -157,7 +157,7 @@ Cycle Objective(s):
   - [In review: Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
 
 * <ins>Data Availability:</ins>
-  - Continue rollout of local script execution on QuickNode
+  - Adjusted max script execution effort on public ANs to 10K (fails over to ENs)
   - KROK Team
      - In review 
         - Add support for version beacon events to control script execution
@@ -188,10 +188,11 @@ Cycle Objective(s):
   - Continue rollout of local script execution on QuickNode
 
   - KROK Team
-    - Create proof of concept of transaction payer balance checks ([Issue #5823](https://github.com/onflow/flow-go/issues/5823) - In review)
-    - Add support for pruning execution data db on ANs ([Issue #6002](https://github.com/onflow/flow-go/issues/6002))
-    - Add support for storing exec data using pebble db ([Issue #6017](https://github.com/onflow/flow-go/issues/6017))
-    - Start Registers DB pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066), [Issue #6068](https://github.com/onflow/flow-go/issues/6068))
+    - Add support for version beacon events to control script execution ([Issue #5788](https://github.com/onflow/flow-go/issues/5788) - In review, [Issue #5789](https://github.com/onflow/flow-go/issues/5789) - In review, [Issue #5790](https://github.com/onflow/flow-go/issues/5790))
+    - Complete proof of concept of transaction payer balance checks ([Issue #5823](https://github.com/onflow/flow-go/issues/5823) - In review)
+    - Add support for pruning execution data db on ANs ([Issue #6002](https://github.com/onflow/flow-go/issues/6002) - in review)
+    - Add support for storing exec data using pebble db ([Issue #6017](https://github.com/onflow/flow-go/issues/6017) - in review)
+    - Start Registers DB pruning (delayed from last sprint) ([Issue #6066](https://github.com/onflow/flow-go/issues/6066), [Issue #6068](https://github.com/onflow/flow-go/issues/6068))
 
 * <ins>Cryptography:</ins>
    - SPoCK aggregation: from BLS security proof to BLS aggregation security proof (multiple sprints)
