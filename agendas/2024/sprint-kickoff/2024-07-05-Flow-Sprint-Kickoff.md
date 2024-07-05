@@ -115,7 +115,7 @@ Cycle Objective(s):
  - Atree
    -  Analyze `diff-states` (21GB report) for atree inlined vs non-inlined execution states that executed same mainnet blocks
  
- -Cadence optimization
+ - Cadence optimization
    - Continue: [Cadence composites with attachment having different field types vs field values are rejected by CCF encoder](https://github.com/dapperlabs/cadence-internal/issues/241)
    - [Provide ccf.EventsEncModeV0 and ccf.EventsEncModeV1 for encoding events in CCF format](https://github.com/onflow/cadence/issues/3448)
    - For inlined and non-inlined states, re-execute again using:
