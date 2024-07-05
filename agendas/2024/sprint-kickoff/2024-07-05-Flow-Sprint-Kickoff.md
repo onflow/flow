@@ -324,12 +324,12 @@ Cycle Objective(s):
 
 **This sprint**
 
-- Add support for MigrationNet to Flow Wallet Extension
-- Refine "Homepage 2.0" UI/UX
+- Ship MigrationNet support for Flow Wallet Extension
+- Ship "Homepage 2.0" UI/UX
+- Polishing Account Linking UI/UX and functionality
 - Continue to best support Secure Enclave
   - User migration from Extension (seed phrase) to mobile (secure enclave) wallet security
-  - New account creation UI explaining the benefits of SE
-  - Explain any UI differences between seed phrase / SE wallets
+  - Explaining differences between seed phrase / SE wallets
   - Profile account recovery - one backup to a users multiple primary accounts
  
 **On Hold**
