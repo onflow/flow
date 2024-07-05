@@ -331,6 +331,27 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**Node Hosting**
+
+- [Move MN VN25 Infra to India](https://github.com/dapperlabs/terraform/pull/4270)
+- [Update Ansible config to support India region](https://github.com/dapperlabs/dapper-flow-hosting/pull/1529)
+- [Upgrade all network VMs to address SSH vuln](https://github.com/dapperlabs/terraform/pull/4287)
+- [Increase Disk Size for MN LNs](https://github.com/dapperlabs/terraform/pull/4279) 
+
+**DevEx Service Observability**
+
+- [Enable ingestion of Cloud Run logs to Loki](https://github.com/dapperlabs/flow-devex-infrastructure/pull/182)
+- [Enable GCP Metrics data source to query metrics from GCP](https://flowfoundation.grafana.net/explore?schemaVersion=1&panes=%7B%22dmn%22:%7B%22datasource%22:%22edqgkbo5bzapsa%22,%22queries%22:%5B%7B%22datasource%22:%7B%22type%22:%22stackdriver%22,%22uid%22:%22edqgkbo5bzapsa%22%7D,%22refId%22:%22A%22,%22queryType%22:%22timeSeriesList%22,%22timeSeriesList%22:%7B%22projectName%22:%22flow-devops%22,%22filters%22:%5B%5D,%22view%22:%22FULL%22%7D%7D%5D,%22range%22:%7B%22from%22:%22now-1h%22,%22to%22:%22now%22%7D%7D%7D&orgId=1)
+
+**CloudFlare Migration**
+
+- Proceeded with new account contract
+
+**Automation**
+
+- [Create New BigQuery Tables for Flaky Test & TPS Automation](https://github.com/dapperlabs/terraform/pull/4275)
+- [Update TPS automation to leverage new BQ table](https://github.com/onflow/flow-go/pull/6149)
+- [Update Flaky Test Automation to leverage new BQ table](https://github.com/onflow/flow-go/pull/6147)
 
 **This Sprint**
 - Assist with migration and spork prep efforts
