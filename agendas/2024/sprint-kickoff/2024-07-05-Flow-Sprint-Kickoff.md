@@ -5,6 +5,7 @@
 - Content pieces [Path to Permissionless Participation in Flow](https://docs.google.com/document/d/1dfKevN2zbsMP6fVOuAM2FTcCDGBW2sPa5CcrO8Uccy8/edit) and [2-page executive summary](https://docs.google.com/document/d/1E2iiEFlPdhBW7EIUYFV3LICq575JyX8OHZNqiFb04Qk/edit#heading=h.2n9y1yguzk4q) (mature complete drafts), which describe challenges and roadmap for permissionless consensus on Flow.
 - Refined [branching convention](https://github.com/onflow/flow-go/blob/alex/branching-conventions/DEVELOPMENT.md) for `flow-go` 
     - See Core-Protocol Working Group [meeting June 27](https://github.com/onflow/Flow-Working-Groups/blob/main/core_protocol_working_group/meetings/2024-06-27.md) and respective PRs [#6162](https://github.com/onflow/flow-go/pull/6162), [#6177](https://github.com/onflow/flow-go/pull/6177)
+- First version of operator branding is now live on FlowDiver (see: https://www.flowdiver.io/node)
 
 ### General updates
 
