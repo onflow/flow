@@ -382,13 +382,17 @@ Cycle Objective(s):
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
 **Done last sprint**
+- Edgevana: Lease agreement finalized; Edgevana now operating a verification node in Sydney, Australia—our first node on the continent
+- Node Operator Branding & geographical spread: Implementation underway on Flowdiver; see link [here](https://www.flowdiver.io/node)
+- Transaction fee strategy discussion with leaders; we will proceed with dynamic fee structure implementation, timed with crescedo launch
+- Governance Working Group: Presentation on FLIP tooling during the latest meeting
+- Planned Flow tokenomics re-visualization with graphics and better assortment of data on flow.com's tokenomics page
 
 **This sprint**
-- Work on node operator branding and logos with .find team; test and ship new node operations page on flowdiver
-- Work with Dete on revising the narrative around inflation, fees and (stable-state) Flow economics
-- Upgrading tokenomics pages for easy comprehension 
-- Plan next cycle OKRs for governance
-  
+- Take all Node branding changes live
+- R&D on dynamic fee structure and agreement on v0 algorithm for crescendo launch
+- Continue to upgrade Tokenomics pages
+
 **On Hold**
 
 
