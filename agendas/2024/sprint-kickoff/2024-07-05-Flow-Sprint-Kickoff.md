@@ -170,8 +170,10 @@ Cycle Objective(s):
   - [`epochs.FallbackStateMachine` only tolerates narrow unexpected behaviour](https://github.com/onflow/flow-go/issues/6018)
   - Addressed comments and merged PR for https://github.com/onflow/flow-go/issues/6018, effectively completing it.
   - [Modify EFM logic do not enter EFM while in EpochCommitted phase](https://github.com/onflow/flow-go/issues/5731)
-  - [In review: Supporting epoch extensions in consensus committee](https://github.com/onflow/flow-go/pull/6154)
-  - [In review: Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
+  - In review: [Supporting epoch extensions in consensus committee](https://github.com/onflow/flow-go/pull/6154)
+  - In review: [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
+  - Ready to merge: [EFM integration tests, part 1](https://github.com/onflow/flow-go/pull/6156)
+  - Ready to merge: [EFM blocktime controller updates](https://github.com/onflow/flow-go/pull/6156)
 
 * <ins>Data Availability:</ins>
   - Adjusted max script execution effort on public ANs to 10K (fails over to ENs)
@@ -199,7 +201,10 @@ Cycle Objective(s):
   - [Support Epoch Extensions in HotStuff Committee](https://github.com/onflow/flow-go/pull/6154)
   - [Address comments and merge PR for: Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
   - [Implement last issue for epoch state machines for handling transitions into EFM in edge case](https://github.com/onflow/flow-go/issues/5631)
-
+  - Merge open PRs 
+  - Finish [EFM transaction Cadence PR](https://github.com/onflow/flow-core-contracts/pull/420)
+  - [Update Epoch Lookup Component](https://github.com/onflow/flow-go/issues/5763)
+  
 * <ins>Data Availability:</ins>
   - Complete ProtocolDB pruning design
   - Continue rollout of local script execution on QuickNode
@@ -217,6 +222,10 @@ Cycle Objective(s):
 * <ins>Rosetta:</ins>
   - KROK: 
     - Rosetta Cadence updates for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52), [Issue #54](https://github.com/onflow/rosetta/issues/54) - PRs in review)
+
+* <ins>Other:</ins>
+  - Prepare for libp2p shipyard deep dive
+
 
 **On Hold**
 * Implement BFT mitigations to enable 20 permissionless ANs
