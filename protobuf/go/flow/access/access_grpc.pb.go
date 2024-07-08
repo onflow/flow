@@ -44,6 +44,8 @@ const (
 	AccessAPI_GetAccountBalanceAtBlockHeight_FullMethodName        = "/flow.access.AccessAPI/GetAccountBalanceAtBlockHeight"
 	AccessAPI_GetAccountKeysAtLatestBlock_FullMethodName           = "/flow.access.AccessAPI/GetAccountKeysAtLatestBlock"
 	AccessAPI_GetAccountKeysAtBlockHeight_FullMethodName           = "/flow.access.AccessAPI/GetAccountKeysAtBlockHeight"
+	AccessAPI_GetAccountKeyAtLatestBlock_FullMethodName            = "/flow.access.AccessAPI/GetAccountKeyAtLatestBlock"
+	AccessAPI_GetAccountKeyAtBlockHeight_FullMethodName            = "/flow.access.AccessAPI/GetAccountKeyAtBlockHeight"
 	AccessAPI_ExecuteScriptAtLatestBlock_FullMethodName            = "/flow.access.AccessAPI/ExecuteScriptAtLatestBlock"
 	AccessAPI_ExecuteScriptAtBlockID_FullMethodName                = "/flow.access.AccessAPI/ExecuteScriptAtBlockID"
 	AccessAPI_ExecuteScriptAtBlockHeight_FullMethodName            = "/flow.access.AccessAPI/ExecuteScriptAtBlockHeight"
@@ -135,6 +137,12 @@ type AccessAPIClient interface {
 	// GetAccountKeysAtBlockHeight gets an account public keys by address at the given block
 	// height
 	GetAccountKeysAtBlockHeight(ctx context.Context, in *GetAccountKeysAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountKeysResponse, error)
+	// GetAccountKeysAtLatestBlock gets an account public key by address and key index from the latest sealed
+	// execution state.
+	GetAccountKeyAtLatestBlock(ctx context.Context, in *GetAccountKeyAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountKeyResponse, error)
+	// GetAccountKeysAtBlockHeight gets an account public key by address and key index at the given block
+	// height
+	GetAccountKeyAtBlockHeight(ctx context.Context, in *GetAccountKeyAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountKeyResponse, error)
 	// ExecuteScriptAtLatestBlock executes a read-only Cadence script against the
 	// latest sealed execution state.
 	ExecuteScriptAtLatestBlock(ctx context.Context, in *ExecuteScriptAtLatestBlockRequest, opts ...grpc.CallOption) (*ExecuteScriptResponse, error)
@@ -468,6 +476,24 @@ func (c *accessAPIClient) GetAccountKeysAtLatestBlock(ctx context.Context, in *G
 func (c *accessAPIClient) GetAccountKeysAtBlockHeight(ctx context.Context, in *GetAccountKeysAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountKeysResponse, error) {
 	out := new(AccountKeysResponse)
 	err := c.cc.Invoke(ctx, AccessAPI_GetAccountKeysAtBlockHeight_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessAPIClient) GetAccountKeyAtLatestBlock(ctx context.Context, in *GetAccountKeyAtLatestBlockRequest, opts ...grpc.CallOption) (*AccountKeyResponse, error) {
+	out := new(AccountKeyResponse)
+	err := c.cc.Invoke(ctx, AccessAPI_GetAccountKeyAtLatestBlock_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessAPIClient) GetAccountKeyAtBlockHeight(ctx context.Context, in *GetAccountKeyAtBlockHeightRequest, opts ...grpc.CallOption) (*AccountKeyResponse, error) {
+	out := new(AccountKeyResponse)
+	err := c.cc.Invoke(ctx, AccessAPI_GetAccountKeyAtBlockHeight_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -961,6 +987,12 @@ type AccessAPIServer interface {
 	// GetAccountKeysAtBlockHeight gets an account public keys by address at the given block
 	// height
 	GetAccountKeysAtBlockHeight(context.Context, *GetAccountKeysAtBlockHeightRequest) (*AccountKeysResponse, error)
+	// GetAccountKeysAtLatestBlock gets an account public key by address and key index from the latest sealed
+	// execution state.
+	GetAccountKeyAtLatestBlock(context.Context, *GetAccountKeyAtLatestBlockRequest) (*AccountKeyResponse, error)
+	// GetAccountKeysAtBlockHeight gets an account public key by address and key index at the given block
+	// height
+	GetAccountKeyAtBlockHeight(context.Context, *GetAccountKeyAtBlockHeightRequest) (*AccountKeyResponse, error)
 	// ExecuteScriptAtLatestBlock executes a read-only Cadence script against the
 	// latest sealed execution state.
 	ExecuteScriptAtLatestBlock(context.Context, *ExecuteScriptAtLatestBlockRequest) (*ExecuteScriptResponse, error)
@@ -1145,6 +1177,12 @@ func (UnimplementedAccessAPIServer) GetAccountKeysAtLatestBlock(context.Context,
 }
 func (UnimplementedAccessAPIServer) GetAccountKeysAtBlockHeight(context.Context, *GetAccountKeysAtBlockHeightRequest) (*AccountKeysResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccountKeysAtBlockHeight not implemented")
+}
+func (UnimplementedAccessAPIServer) GetAccountKeyAtLatestBlock(context.Context, *GetAccountKeyAtLatestBlockRequest) (*AccountKeyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAccountKeyAtLatestBlock not implemented")
+}
+func (UnimplementedAccessAPIServer) GetAccountKeyAtBlockHeight(context.Context, *GetAccountKeyAtBlockHeightRequest) (*AccountKeyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAccountKeyAtBlockHeight not implemented")
 }
 func (UnimplementedAccessAPIServer) ExecuteScriptAtLatestBlock(context.Context, *ExecuteScriptAtLatestBlockRequest) (*ExecuteScriptResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteScriptAtLatestBlock not implemented")
@@ -1671,6 +1709,42 @@ func _AccessAPI_GetAccountKeysAtBlockHeight_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AccessAPI_GetAccountKeyAtLatestBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAccountKeyAtLatestBlockRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetAccountKeyAtLatestBlock(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccessAPI_GetAccountKeyAtLatestBlock_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetAccountKeyAtLatestBlock(ctx, req.(*GetAccountKeyAtLatestBlockRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccessAPI_GetAccountKeyAtBlockHeight_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAccountKeyAtBlockHeightRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetAccountKeyAtBlockHeight(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccessAPI_GetAccountKeyAtBlockHeight_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetAccountKeyAtBlockHeight(ctx, req.(*GetAccountKeyAtBlockHeightRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _AccessAPI_ExecuteScriptAtLatestBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ExecuteScriptAtLatestBlockRequest)
 	if err := dec(in); err != nil {
@@ -2185,6 +2259,14 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAccountKeysAtBlockHeight",
 			Handler:    _AccessAPI_GetAccountKeysAtBlockHeight_Handler,
+		},
+		{
+			MethodName: "GetAccountKeyAtLatestBlock",
+			Handler:    _AccessAPI_GetAccountKeyAtLatestBlock_Handler,
+		},
+		{
+			MethodName: "GetAccountKeyAtBlockHeight",
+			Handler:    _AccessAPI_GetAccountKeyAtBlockHeight_Handler,
 		},
 		{
 			MethodName: "ExecuteScriptAtLatestBlock",

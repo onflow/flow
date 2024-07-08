@@ -115,6 +115,15 @@ service AccessAPI {
   rpc GetAccountKeysAtBlockHeight(GetAccountKeysAtBlockHeightRequest)
       returns (AccountKeysResponse);
 
+  // GetAccountKeysAtLatestBlock gets an account public key by address and key index from the latest sealed
+  // execution state.
+  rpc GetAccountKeyAtLatestBlock(GetAccountKeyAtLatestBlockRequest)
+      returns (AccountKeyResponse);
+  // GetAccountKeysAtBlockHeight gets an account public key by address and key index at the given block
+  // height
+  rpc GetAccountKeyAtBlockHeight(GetAccountKeyAtBlockHeightRequest)
+      returns (AccountKeyResponse);
+
   // Scripts
 
   // ExecuteScriptAtLatestBlock executes a read-only Cadence script against the
@@ -460,21 +469,34 @@ message AccountBalanceResponse {
 message GetAccountKeysAtLatestBlockRequest {
   // address of account
   bytes address = 1;
+}
+
+message GetAccountKeyAtLatestBlockRequest {
+  // address of account
+  bytes address = 1;
   // index of key to return
-  // omit to return all keys
   entities.AccountKeyIndex index = 2;
 }
 
 message GetAccountKeysAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
+}
+
+message GetAccountKeyAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
   // index of key to return
-  // omit to return all keys
   entities.AccountKeyIndex index = 3;
 }
 
 message AccountKeysResponse {
   repeated entities.AccountKey account_keys = 1;
+  entities.Metadata metadata = 2;
+}
+
+message AccountKeyResponse {
+  entities.AccountKey account_key = 1;
   entities.Metadata metadata = 2;
 }
 
