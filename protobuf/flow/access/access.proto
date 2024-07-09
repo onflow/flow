@@ -97,6 +97,33 @@ service AccessAPI {
   rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest)
       returns (AccountResponse);
 
+  // GetAccountBalanceAtLatestBlock gets an account balance by address from the latest sealed
+  // execution state.
+  rpc GetAccountBalanceAtLatestBlock(GetAccountBalanceAtLatestBlockRequest)
+      returns (AccountBalanceResponse);
+  // GetAccountBalanceAtBlockHeight gets an account balance by address at the given block
+  // height
+  rpc GetAccountBalanceAtBlockHeight(GetAccountBalanceAtBlockHeightRequest)
+      returns (AccountBalanceResponse);
+
+  // GetAccountKeysAtLatestBlock gets an account public keys by address from the latest sealed
+  // execution state.
+  rpc GetAccountKeysAtLatestBlock(GetAccountKeysAtLatestBlockRequest)
+      returns (AccountKeysResponse);
+  // GetAccountKeysAtBlockHeight gets an account public keys by address at the given block
+  // height
+  rpc GetAccountKeysAtBlockHeight(GetAccountKeysAtBlockHeightRequest)
+      returns (AccountKeysResponse);
+
+  // GetAccountKeysAtLatestBlock gets an account public key by address and key index from the latest sealed
+  // execution state.
+  rpc GetAccountKeyAtLatestBlock(GetAccountKeyAtLatestBlockRequest)
+      returns (AccountKeyResponse);
+  // GetAccountKeysAtBlockHeight gets an account public key by address and key index at the given block
+  // height
+  rpc GetAccountKeyAtBlockHeight(GetAccountKeyAtBlockHeightRequest)
+      returns (AccountKeyResponse);
+
   // Scripts
 
   // ExecuteScriptAtLatestBlock executes a read-only Cadence script against the
@@ -422,6 +449,54 @@ message AccountResponse {
 message GetAccountAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
+}
+
+message GetAccountBalanceAtLatestBlockRequest {
+  bytes address = 1;
+}
+
+message GetAccountBalanceAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+}
+
+message AccountBalanceResponse {
+  uint64 balance = 1;
+  entities.Metadata metadata = 2;
+}
+
+message GetAccountKeysAtLatestBlockRequest {
+  // address of account
+  bytes address = 1;
+}
+
+message GetAccountKeyAtLatestBlockRequest {
+  // address of account
+  bytes address = 1;
+  // index of key to return
+  uint32 index = 2;
+}
+
+message GetAccountKeysAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+}
+
+message GetAccountKeyAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+  // index of key to return
+  uint32 index = 3;
+}
+
+message AccountKeysResponse {
+  repeated entities.AccountKey account_keys = 1;
+  entities.Metadata metadata = 2;
+}
+
+message AccountKeyResponse {
+  entities.AccountKey account_key = 1;
+  entities.Metadata metadata = 2;
 }
 
 // Scripts
