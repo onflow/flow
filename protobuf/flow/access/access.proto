@@ -462,8 +462,7 @@ message GetAccountBalanceAtBlockHeightRequest {
 
 message AccountBalanceResponse {
   uint64 balance = 1;
-  uint64 available_balance = 2;
-  entities.Metadata metadata = 3;
+  entities.Metadata metadata = 2;
 }
 
 message GetAccountKeysAtLatestBlockRequest {
@@ -475,7 +474,7 @@ message GetAccountKeyAtLatestBlockRequest {
   // address of account
   bytes address = 1;
   // index of key to return
-  entities.AccountKeyIndex index = 2;
+  uint32 index = 2;
 }
 
 message GetAccountKeysAtBlockHeightRequest {
@@ -487,7 +486,7 @@ message GetAccountKeyAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
   // index of key to return
-  entities.AccountKeyIndex index = 3;
+  uint32 index = 3;
 }
 
 message AccountKeysResponse {
