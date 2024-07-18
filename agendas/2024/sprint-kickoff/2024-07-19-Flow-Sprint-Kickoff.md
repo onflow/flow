@@ -1,7 +1,7 @@
 # Overview
 
 ### Team Wins 🎉
-- Finished deploying script execution to public QN nodes (live on 100% of public and studio nodes)
+- Finished deploying script execution to public QN nodes (live on 100% of public and studio nodes). Seeing a [70% reduction](https://flowfoundation.grafana.net/d/ddnerazd84um8d/script-execution?orgId=1&editPanel=3&from=now-60d&to=now) in script execution on the execution nodes since May.
 
 ### General updates
 
