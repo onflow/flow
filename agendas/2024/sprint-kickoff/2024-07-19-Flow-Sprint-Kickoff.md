@@ -1,7 +1,7 @@
 # Overview
 
 ### Team Wins 🎉
--   
+- Finished deploying script execution to public QN nodes (live on 100% of public and studio nodes)
 
 ### General updates
 
@@ -134,6 +134,11 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>Data Availability:</ins>
+  - Finished rollout of script execution on QN nodes
+  - KROK Team
+    - Add support for pruning execution data db on ANs ([PR #6109](https://github.com/onflow/flow-go/pull/6109))
+    - Proof of concept of transaction payer balance checks ([PR #6004](https://github.com/onflow/flow-go/pull/6004))
 
 
 **This sprint**
@@ -151,14 +156,13 @@ Cycle Objective(s):
   
 * <ins>Data Availability:</ins>
   - Complete ProtocolDB pruning design
-  - Continue rollout of local script execution on QuickNode
-
+  - Testing ChunkDataPack DB pruning PoC
   - KROK Team
     - Add support for version beacon events to control script execution ([Issue #5788](https://github.com/onflow/flow-go/issues/5788) - In review, [Issue #5789](https://github.com/onflow/flow-go/issues/5789) - In review, [Issue #5790](https://github.com/onflow/flow-go/issues/5790))
-    - Complete proof of concept of transaction payer balance checks ([Issue #5823](https://github.com/onflow/flow-go/issues/5823) - In review)
-    - Add support for pruning execution data db on ANs ([Issue #6002](https://github.com/onflow/flow-go/issues/6002) - in review)
+    - Improve execution data db pruning ([Issue #6138](https://github.com/onflow/flow-go/issues/6138) - in review)
     - Add support for storing exec data using pebble db ([Issue #6017](https://github.com/onflow/flow-go/issues/6017) - in review)
-    - Start Registers DB pruning (delayed from last sprint) ([Issue #6066](https://github.com/onflow/flow-go/issues/6066), [Issue #6068](https://github.com/onflow/flow-go/issues/6068))
+    - Add REST endpoints for getting account keys and balance ([Issue #6000](https://github.com/onflow/flow-go/issues/6000), [Issue #6001](https://github.com/onflow/flow-go/issues/6001))
+    - Expand on payer balance checks ([Issue #6128](https://github.com/onflow/flow-go/issues/6128), [Issue #6129](https://github.com/onflow/flow-go/issues/6129), [Issue #6139](https://github.com/onflow/flow-go/issues/6139), [Issue #6141](https://github.com/onflow/flow-go/issues/6141))
 
 * <ins>Cryptography:</ins>
    - SPoCK aggregation: from BLS security proof to BLS aggregation security proof (multiple sprints)
