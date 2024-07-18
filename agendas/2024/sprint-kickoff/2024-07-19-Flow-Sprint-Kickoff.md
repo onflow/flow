@@ -33,8 +33,8 @@
 
 ### Key Release Dates & Breaking Changes
 - Next Mainnet/Testnet network upgrade (spork):
-  - Testnet: Q3
-  - Mainnet: Q3 (see [announcement](https://flow.com/post/update-on-testnet-crescendo-network-upgrade))
+  - Testnet: Aug 14th
+  - Mainnet: Aug 28th (to be confirmed - subject to change)
 
 ---
 
