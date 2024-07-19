@@ -251,7 +251,6 @@ Cycle Objective(s):
 * <ins>Protocol misc</ins>
   - Reviewing Pebble database changes (in-progress)
 
-
 **This sprint**
 
 * <ins>EFM Recovery</ins>
@@ -282,8 +281,8 @@ Cycle Objective(s):
   - KROK: 
     - Rosetta Cadence updates for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52), [Issue #54](https://github.com/onflow/rosetta/issues/54) - PRs in review)
 
-* <ins>Other:</ins>
-  - Prepare for libp2p shipyard deep dive
+* <ins>Protocol misc</ins>
+  - Continue review of Pebble database changes
 
 
 **On Hold**
