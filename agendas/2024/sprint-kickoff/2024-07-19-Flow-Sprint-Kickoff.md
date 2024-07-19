@@ -368,9 +368,7 @@ Cycle Objective(s):
 
 **This sprint**
 
-- Ship MigrationNet support for Flow Wallet Extension
-- Ship "Homepage 2.0" UI/UX
-- Polishing Account Linking UI/UX and functionality
+- Continue & Ship Account Linking UI/UX and functionality
 - Continue to best support Secure Enclave
   - User migration from Extension (seed phrase) to mobile (secure enclave) wallet security
   - Explaining differences between seed phrase / SE wallets
