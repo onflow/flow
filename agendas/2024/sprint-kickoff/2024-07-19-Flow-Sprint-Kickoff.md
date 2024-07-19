@@ -475,11 +475,18 @@ Cycle Objective(s):
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
 **Done last sprint**
+- Node branding updates and geographical mapping are now live on flowdiver.io
+- Discussion on T-systems execution node economics; discussion to extend lease and add delegation - https://docs.google.com/spreadsheets/d/1-InDoobJW8iEkpANiVIWbFoQ2ipzZ087MGk0L1Fw9t8/edit?gid=1005520196#gid=1005520196 
+- Stable state economics to establish relationship bw fees and inflation - see https://docs.google.com/spreadsheets/d/1sy6gMHgU6jRNVAR92oX10S62brkuTs6JAhMqIc37jJY/edit?pli=1&gid=1655921460#gid=1655921460 
+- R&D on dynamic fee structure and designing v0 algorithm for crescendo launch - https://www.notion.so/flowfoundation/Dynamic-Transaction-Fees-on-Flow-fa7e7115e43a41a99ac9ca942dabcaf2
+- Tokenomics of Rewards platform - sell pressure analysis - https://docs.google.com/spreadsheets/d/1tvimCOh8NvGusSC8lGpvzgFMY8Y0mBSLuKaqRIMxPDI/edit?gid=1060583401#gid=1060583401 
 
 **This sprint**
-- Take all Node branding changes live
-- R&D on dynamic fee structure and agreement on v0 algorithm for crescendo launch
-- Continue to upgrade Tokenomics pages
+- Send out T-systems contract for continued lease and additional delegation; work with team to get the node live
+- Continue supporting rewards platform team on Tokenomics related analysis
+- Agreement with Dete and team on MVP of dynamic fee to be launched with Crescendo launch
+- Draft FLIP for dynamic fee
+- With Coinbase 48M delegation coming to an end, identify next steps
 
 **On Hold**
 
