@@ -47,17 +47,33 @@
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 7  |    9  |       0         |       7          |        **23**       |
-| Proposed    | 1  |    2 (-1)    |       2          |       0           |        **5** (-1)        |
+| Drafted     | 8  |    9  |       0         |       7          |        **24** (+1)       |
+| Proposed    | 1  |    2    |       2          |       0           |        **5**        |
 | Accepted    | 2  |    1     |       2       |       1          |        **6**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 3 |    22 (+1)    |       2       |       1           |        **28** (+1)          |
+| Implemented | 3 |    22    |       2       |       1           |        **28**          |
 | Released    | 4  |    0     |       3       |       6          |        **13**          |
-| Total       | **17**  |    **34**  |       **10**      |       **15**          |        **76**          |
+| Total       | **17** (+1)  |    **34**  |       **10**      |       **15**          |        **76** (+1)      |
 
 **Updates**
-* [Cadence] - FLIP for changing import statement semantics (FLIP-277) moved to implementation
-* FLIPs started by folks who have now left FF, need to reassign
+* [Application] - Integrating with the Lost and Found contract (drafted)
+* FLIPs that haven't moved in a while or need new owners or have old statuses
+  - Application -
+    - Interaction Templates
+    - Pool-Based DEX Swap Standard
+    - FCL Authz/Pre-Authz v2.0.0 Specification
+    - Contracts Import Syntax
+   - Cadence
+     - New behavior for attachments with entitlements
+     - Type Removal In Contract Updates
+     - Optional References to Indexed Accesses
+     - Next version changes to FLIX
+     - Attachments
+     - Mutability Restrictions
+     - Cadence Storage API Improvements
+     - Reference Creation Semantics
+     - View Functions
+     - Entitlements
 ---
 
 
