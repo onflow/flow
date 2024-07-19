@@ -211,7 +211,7 @@ Cadence Execution
 Cycle Objective(s): 
 
 * Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node [IN PROGRESS]
-* Reduce CPU usage on Execution node by 30% [IN PROGRESS]
+* Reduce CPU usage on Execution node by 30% [DONE]
 * Translate crypto performance improvements to consensus block rate increase [DONE]
 * Continue design and implementation of Sporkless Epoch Fallback Recovery solution [DONE]
 
