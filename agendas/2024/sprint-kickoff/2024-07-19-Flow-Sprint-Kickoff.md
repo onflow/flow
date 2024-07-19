@@ -393,6 +393,26 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**Node Hosting**
+- [Increase Memory for Mainnet SNs](https://github.com/dapperlabs/terraform/pull/4307)
+- [Increase Disk size for Devnet Nodes](https://github.com/dapperlabs/terraform/pull/4294)
+- [Add AN To Mainnet Migration network](https://github.com/dapperlabs/terraform/pull/4292)
+- [Create Infra for VNs in South Africa & Brazil](https://github.com/dapperlabs/terraform/pull/4288)
+- [Update Ansible configuration to support VNs in South Africa & Brazil](https://github.com/dapperlabs/dapper-flow-hosting/pull/1539)
+
+**CloudFlare Migration**
+- [Create Duplicate DNS records for Previewnet](https://github.com/dapperlabs/terraform/pull/4303)
+- [Create duplicate records for Flow Migration Devnet US](https://github.com/dapperlabs/terraform/pull/4302)
+- [Create duplicate records for Flow LB ](https://github.com/dapperlabs/terraform/pull/4301)
+- [Create duplicate records for Devnet50 in FF CloudFlare account](https://github.com/dapperlabs/terraform/pull/4300)
+- [Create duplicate records for Mainnet24 in FF CloudFlare account](https://github.com/dapperlabs/terraform/pull/4299)
+- [Create duplicate records for Historical Mainnet networks in FF CloudFlare account](https://github.com/dapperlabs/terraform/pull/4298)
+- [Create new zones & records in FF CloudFlare account](https://github.com/dapperlabs/terraform/pull/4297)
+- [Create Page rules in new CloudFlare account](https://github.com/dapperlabs/terraform/pull/4297)
+
+**DevEx Observability**
+- [Create pattern & configuration for scraping metrics from CloudRun services](https://github.com/dapperlabs/flow-devex-infrastructure/pull/184)
+
 **This Sprint**
 - Assist with migration and spork prep efforts
 - Continue removing dependencies on CloudFlare & assist with account creation
