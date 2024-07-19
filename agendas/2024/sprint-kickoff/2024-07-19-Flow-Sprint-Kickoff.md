@@ -86,7 +86,7 @@ State migration for Crescendo release
 
 
 Cadence Language
-- Feature:
+- Features:
     - [Emit events for capability controller operations](https://github.com/onflow/cadence/issues/3459)
         - [Emit events for more Capability Controller and capability operations](https://github.com/onflow/cadence/pull/3464)
         - [Emit events when capability controllers are issued](https://github.com/onflow/cadence/pull/3460)
@@ -94,10 +94,10 @@ Cadence Language
         - [Allow borrowing of capability with subtype](https://github.com/onflow/cadence/pull/3449)
     - [Add String.index and String.count, fix grapheme boundary functions](https://github.com/onflow/cadence/pull/3456)
     - [Add a String.contains function](https://github.com/onflow/cadence/pull/3455)
-- Improvement:
+- Improvements:
     - [Improve Cadence composite to Go struct decoding](https://github.com/onflow/cadence/pull/3469)
     - [Simplify subtyping](https://github.com/onflow/cadence/pull/3447)
-- Bugfix:
+- Bugfixes:
     - Go's string ops are not grapheme cluster aware:
         - [Fix String.replaceAll](https://github.com/onflow/cadence/pull/3458), [Fix String.split](https://github.com/onflow/cadence/pull/3457)
     - [toConstantSized does not work as expected](https://github.com/onflow/cadence/issues/3445)
@@ -109,10 +109,10 @@ Cadence Language
     - [Speed up update tool](https://github.com/onflow/cadence/pull/3468)
 
 Cadence Execution
-- Improvement:
-    - re-requisite for serving transaction metrcs via grpc endpoint: [Added transaction information to transaction execution metrics](https://github.com/onflow/flow-go/pull/6171)
+- Improvements:
+    - pre-requisite for serving transaction metrics via grpc endpoint: [Added transaction information to transaction execution metrics](https://github.com/onflow/flow-go/pull/6171)
     - [Enable new ingestion engine as default](https://github.com/onflow/flow-go/pull/6078)
-- Bugfix:
+- Bugfixes:
     - [Change account key index to uint32 from uint64](https://github.com/onflow/flow-go/issues/6204)
         - emulator: [Changed key index type to uint32](https://github.com/onflow/flow-emulator/pull/712)
         - Cadence: [Changed data type of account key index to uin32](https://github.com/onflow/cadence/pull/3465)
