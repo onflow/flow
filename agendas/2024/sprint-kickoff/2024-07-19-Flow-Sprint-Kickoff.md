@@ -296,19 +296,28 @@ Cycle Objective(s):
 Cycle Objective(s): 
 - Resolving Circle's existing engineering improvements for USDC on Flow
 - Cadence 1.0 DEX Prep - IncrementFi
-- EVM partner onboarding: Moralis, Covalent, Ankr, Credora
+- EVM partner onboarding
 - Deliver Axelar bridge [PAUSED]
 
 **Done last sprint**
+  * Supported partner EVM onboarding: Axelar, Ankr, Credora
+  * JVM-SDK (Lea)
+    * [Added missing Access API methods - initial setup](https://github.com/onflow/flow-jvm-sdk/pull/61)
+    * [Refactor Cadence inlined into Kotlin code into standalone .cdc files in project](https://github.com/onflow/flow-jvm-sdk/pull/64)
+    * Started: [Migrate SDK examples repo to improved project structure](https://github.com/onflow/flow-jvm-sdk/pull/62)
+  * Finalized EVM integration apporach for Credora on-chain credit scoring
   
 **This sprint**
-  * [Continue adding missing Access API endpoints to JVM SDK](https://github.com/onflow/flow-jvm-sdk/pull/61)
-  * [Continue adding missing Access API subscription endpoints to JVM SDK](https://github.com/onflow/flow-jvm-sdk/pull/58)
-  * Continue Celer C1.0 upgrades
-  * Review signature and hash updates PRs for JVM-SDK, [1](https://github.com/onflow/flow-jvm-sdk/pull/53) & [2](https://github.com/onflow/flow-jvm-sdk/pull/52)
+  * JVM-SDK 
+    * Review [Add missing Access API subscription endpoints to JVM SDK](https://github.com/onflow/flow-jvm-sdk/pull/58)
+    * Complete [Add missing Access API endpoints](https://github.com/onflow/flow-jvm-sdk/pull/63)
+    * Review signature and hash update PRs, [1](https://github.com/onflow/flow-jvm-sdk/pull/53) & [2](https://github.com/onflow/flow-jvm-sdk/pull/52)
+    * Merge: [Migrate SDK examples repo to improved project structure](https://github.com/onflow/flow-jvm-sdk/pull/62)
+    * [Update Cadence to 1.0](https://github.com/onflow/flow-jvm-sdk/issues/60)
+  * Partner support
+    * Install Ethereum Attestion Service (EAS) on Previewnet (Credora requirement)
 
 **On Hold**
-  - Axelar Cadence bridge release waiting confirmation of build partners, costs and timelines for EVM release, no engineering ongoing
 
 **Active Epics**
 
