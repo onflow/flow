@@ -2,6 +2,8 @@
 
 ### Team Wins 🎉
 - Finished deploying script execution to public QN nodes (live on 100% of public and studio nodes). Seeing a [70% reduction](https://flowfoundation.grafana.net/d/ddnerazd84um8d/script-execution?orgId=1&editPanel=3&from=now-60d&to=now) in script execution on the execution nodes since May.
+- Mainnet Crescendo migration environment now successfuly bootstrapped and passing end-to-end tests.
+- Atree register inlining migration [performance improved by ~10%](https://github.com/onflow/flow-go/pull/6193).
 
 ### General updates
 
@@ -73,39 +75,117 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+State migration for Crescendo release 
+- [Fix account link migration](https://github.com/onflow/cadence/pull/3461)
+- [Read epoch counter from protocol state snapshot](https://github.com/dapperlabs/dapper-flow-hosting/pull/1538)
+- stop jq crashing on large report files: [Add support for JSONL report as alternative to JSON array report](https://github.com/onflow/flow-go/issues/6175)
+    - [Add support for JSONL report format as alternative to JSON array report](https://github.com/onflow/flow-go/pull/6176)
+- optimization increasing performance of Atree register inlining by ~10%:
+    - [Optimize migrations by creating output payloads file in parallel to new trie creation](https://github.com/onflow/flow-go/pull/6193)
+    - [Port PR 6193 to master](https://github.com/onflow/flow-go/pull/6200)
+
+
+Cadence Language
+- Feature:
+    - [Emit events for capability controller operations](https://github.com/onflow/cadence/issues/3459)
+        - [Emit events for more Capability Controller and capability operations](https://github.com/onflow/cadence/pull/3464)
+        - [Emit events when capability controllers are issued](https://github.com/onflow/cadence/pull/3460)
+    - [Allow borrowing a concrete reference type to a capability linked as an interface type](https://github.com/onflow/cadence/issues/3080)
+        - [Allow borrowing of capability with subtype](https://github.com/onflow/cadence/pull/3449)
+    - [Add String.index and String.count, fix grapheme boundary functions](https://github.com/onflow/cadence/pull/3456)
+    - [Add a String.contains function](https://github.com/onflow/cadence/pull/3455)
+- Improvement:
+    - [Improve Cadence composite to Go struct decoding](https://github.com/onflow/cadence/pull/3469)
+    - [Simplify subtyping](https://github.com/onflow/cadence/pull/3447)
+- Bugfix:
+    - Go's string ops are not grapheme cluster aware:
+        - [Fix String.replaceAll](https://github.com/onflow/cadence/pull/3458), [Fix String.split](https://github.com/onflow/cadence/pull/3457)
+    - [toConstantSized does not work as expected](https://github.com/onflow/cadence/issues/3445)
+        - [Fix toConstantSized](https://github.com/onflow/cadence/pull/3446)
+- Tests
+    - [Add some more tests for string functions](https://github.com/onflow/cadence/pull/3453)
+- Minor fixes / Improvements
+    - [Update Fungible token transfer benchmark](https://github.com/onflow/cadence/pull/3473)
+    - [Speed up update tool](https://github.com/onflow/cadence/pull/3468)
+
+Cadence Execution
+- Improvement:
+    - re-requisite for serving transaction metrcs via grpc endpoint: [Added transaction information to transaction execution metrics](https://github.com/onflow/flow-go/pull/6171)
+    - [Enable new ingestion engine as default](https://github.com/onflow/flow-go/pull/6078)
+- Bugfix:
+    - [Change account key index to uint32 from uint64](https://github.com/onflow/flow-go/issues/6204)
+        - emulator: [Changed key index type to uint32](https://github.com/onflow/flow-emulator/pull/712)
+        - Cadence: [Changed data type of account key index to uin32](https://github.com/onflow/cadence/pull/3465)
+        - flow-go-sdk: [Changed flow account key id to uint32](https://github.com/onflow/flow-go-sdk/pull/705)
+        - flow-go: [Changed key index type to uint32](https://github.com/onflow/flow-go/pull/6201)
+- Tests:
+    - [Fix TestWriteAndReadCheckpointV6LeafMultipleTriesOK test](https://github.com/onflow/flow-go/issues/6166)
+        - [When reading leaf nodes from a checkpoint, also read from the top trie](https://github.com/onflow/flow-go/pull/6188)
+- Tooling:
+    - Bugfix: [Add the missing checkpoint subfile to be moved](https://github.com/onflow/flow-go/pull/6184)
+- Ops:
+    - Bootstrapping performance improvement: [Use link instead of copying the checkpoint files when bootstrapping Execution node.](https://github.com/onflow/flow-go/issues/6167)
+        - [Link checkpoint on bootstrapping](https://github.com/onflow/flow-go/pull/6173)
+- chores / dependency updates
+    - flowkit: [1](https://github.com/onflow/flowkit/pull/65)
+    - cadence-tools: [1](https://github.com/onflow/cadence-tools/pull/401), [2](https://github.com/onflow/cadence-tools/pull/400)
+    - emulator: [1](https://github.com/onflow/flow-emulator/pull/715), [2](https://github.com/onflow/flow-emulator/pull/714), [3](https://github.com/onflow/flow-emulator/pull/708)
+    - cadence: [1](https://github.com/onflow/cadence/pull/3475), [2](https://github.com/onflow/cadence/pull/3474), [3](https://github.com/onflow/cadence/pull/3472), [4](https://github.com/onflow/cadence/pull/3467), [5](https://github.com/onflow/cadence/pull/3454)
+    - flow-go: [1](https://github.com/onflow/flow-go/pull/6220), [2](https://github.com/onflow/flow-go/pull/6219), [3](https://github.com/onflow/flow-go/pull/6216), [4](https://github.com/onflow/flow-go/pull/6212), [5](https://github.com/onflow/flow-go/pull/6187), [6](https://github.com/onflow/flow-go/pull/6186)
+    - flow-go-sdk: [1](https://github.com/onflow/flow-go-sdk/pull/711), [2](https://github.com/onflow/flow-go-sdk/pull/706), [3](https://github.com/onflow/flow-go-sdk/pull/701)
+    - cadence-tols: [1](https://github.com/onflow/cadence-tools/pull/399)
+    - EVM Gateway: [1](https://github.com/onflow/flow-evm-gateway/pull/341)
+
+- EVM Core
+    - Improvements:
+        - [Simplify Go types in event types](https://github.com/onflow/flow-go/pull/6223)
+        - [Random source with 32 bytes](https://github.com/onflow/flow-go/issues/6165)
+            - [Extend random source size](https://github.com/onflow/flow-go/pull/6169)
+        - [replace block.TransactionHashes with TransactionHashRoot](https://github.com/onflow/flow-go/pull/6222)
+        - [delay EVM block proposal commitment till system chunk execution](https://github.com/onflow/flow-go/pull/6199)
+            - [Pre-work for delaying the EVM block formation](https://github.com/onflow/flow-go/pull/6195)
+        - [update geth version to v1.14.6](https://github.com/onflow/flow-go/issues/6189)
+    - Performance improvement:
+        - [Avoid hex encoding/decoding for event fields of type bytes](https://github.com/onflow/flow-go/pull/6190)
+            - [Avoid hex encoding/decoding for event fields of type bytes](https://github.com/onflow/flow-go/pull/6221)
+    - Docs
+        - [Differences between Flow EVM and Ethereum](https://github.com/onflow/docs/issues/821)
+
+- EVM Gateway
+    - Features:
+        - Dependecy for OpenZeppelin: [Get storage at API implementation](https://github.com/onflow/flow-evm-gateway/issues/351)
+            - [Get storage at API](https://github.com/onflow/flow-evm-gateway/pull/363)
+            - [Remote ledger](https://github.com/onflow/flow-evm-gateway/pull/362)
+        - [Wallet APIs](https://github.com/onflow/flow-evm-gateway/issues/129)
+            - [Add Wallet APIs for local development](https://github.com/onflow/flow-evm-gateway/pull/335)
+    - Improvements:
+        - [Batch database operations](https://github.com/onflow/flow-evm-gateway/issues/116)
+            - [Batch index updates](https://github.com/onflow/flow-evm-gateway/pull/332)
+        - [Consolidate decoding of transaction and receipt from EVM.TransactionExecuted event](https://github.com/onflow/flow-evm-gateway/issues/349)
+            - [Consolidate decoding of EVM.TransactionExecuted event for the contained transaction & receipt](https://github.com/onflow/flow-evm-gateway/pull/354)
+        - [Handle the hash calculation `DirectCall` change to maintain backwards compatibility](https://github.com/onflow/flow-evm-gateway/pull/339)
+    Bugfix:
+        - [Relax validation checks for transaction arguments/payload](https://github.com/onflow/flow-evm-gateway/pull/364)
+        - [Patch `DirectCall` hash calculation change](https://github.com/onflow/flow-evm-gateway/pull/344)
+        - [Patch `models.StorageReceipt` to accommodate the old format](https://github.com/onflow/flow-evm-gateway/pull/343)
+        - [Patch `models.StorageReceipt` decoding](https://github.com/onflow/flow-evm-gateway/pull/342)
 
 **This sprint**
 
  - Objective 1, KR4: Testnet Upgrade to Crescendo Release
-   - Continue work on migration optimizations.
+   - Investigate how we could [keep the values of contracts not upgraded to Cadence 1.0 working](https://www.notion.so/flowfoundation/Keep-values-with-types-of-broken-contracts-working-7a57ddf83a50456da6851ed1f65e26a9)
+   - Continue [comparison of execution states before and after the atree inlining](https://github.com/onflow/atree/issues/292)
+   - Continue: [Add support for composites with attachment to CCF encoder](https://github.com/dapperlabs/cadence-internal/issues/241)
+   - [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
    - Investigate / Fix any security report incoming from bug bounty.
 
  - Objective 2, KR 1: Update transaction fees weights for the execution operations on TN and MN
    -  Continue work on [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
 
- - Atree
-   -  Analyze `diff-states` (21GB report) for atree inlined vs non-inlined execution states that executed same mainnet blocks
-   - For inlined and non-inlined states, re-execute again using:
-      - same blocks
-      - same starting point
-      - same vm configuration (prior run used Ice Lake vs Sky Lake)
-      - and save execution results (prior run's execution results were overwritten by storehouse tests).
- 
- - Cadence optimization
-   - Continue: [Cadence composites with attachment having different field types vs field values are rejected by CCF encoder](https://github.com/dapperlabs/cadence-internal/issues/241)
-   - [Provide ccf.EventsEncModeV0 and ccf.EventsEncModeV1 for encoding events in CCF format](https://github.com/onflow/cadence/issues/3448)
-   
- - State migration for Crescendo release 
-   - [Test Crescendo state migration with Mainnet state, and deploy to a new mainnet migration net](https://github.com/onflow/flow-go/issues/5851)
-   - [Comparison of execution states before and after the atree inlining](https://github.com/onflow/atree/issues/292)
-
-- EVM Gateway
-   - [Add a method to return the value from a storage slot on a given addres](https://github.com/onflow/flow-go/issues/6178)
+- EVM 
+   - Continue implementation of [getStorageAt() endpoint](https://github.com/onflow/flow-evm-gateway/issues/336) - dependency for OpenZepplin.
    - KROK
      - EVM Gateway benchmarking
-  
- - Other
-   - [Reducing spork time by improving checkpointing copying during bootstrapping](https://github.com/onflow/flow-go/issues/6167)
 
 **Completed OKRs**
   * Objective 1, KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
