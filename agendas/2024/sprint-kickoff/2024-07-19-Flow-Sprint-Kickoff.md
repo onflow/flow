@@ -177,6 +177,7 @@ Cadence Execution
             - [Remote ledger](https://github.com/onflow/flow-evm-gateway/pull/362)
         - [Wallet APIs](https://github.com/onflow/flow-evm-gateway/issues/129)
             - [Add Wallet APIs for local development](https://github.com/onflow/flow-evm-gateway/pull/335)
+        - Add [getStorageAt() endpoint](https://github.com/onflow/flow-evm-gateway/issues/336) 
     - Improvements:
         - [Batch database operations](https://github.com/onflow/flow-evm-gateway/issues/116)
             - [Batch index updates](https://github.com/onflow/flow-evm-gateway/pull/332)
@@ -202,7 +203,6 @@ Cadence Execution
    -  Continue work on [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
 
 - EVM 
-   - Continue implementation of [getStorageAt() endpoint](https://github.com/onflow/flow-evm-gateway/issues/336) - dependency for OpenZepplin.
    - KROK
      - EVM Gateway benchmarking
 
