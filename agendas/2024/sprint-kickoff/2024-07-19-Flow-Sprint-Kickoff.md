@@ -6,6 +6,7 @@
 - Atree register inlining migration [performance improved by ~10%](https://github.com/onflow/flow-go/pull/6193).
 - Polished Flow Port to release ready state
 - Submitted Ledger Flow app (0.13.0) for approval after successfull Ledger Live testing
+- Completed Rosetta C1.0 updates and integration testing. Now handed off to Coinbase for acceptance testing
 
 ### General updates
 
@@ -222,19 +223,45 @@ Cycle Objective(s):
     - Add support for pruning execution data db on ANs ([PR #6109](https://github.com/onflow/flow-go/pull/6109))
     - Proof of concept of transaction payer balance checks ([PR #6004](https://github.com/onflow/flow-go/pull/6004))
 
+* <ins>EFM Recovery</ins>
+  - Merged: Add epoch extensions support to HotStuff Committee
+  - Ccoping DKG data model changes
+    - https://github.com/onflow/flow-go/issues/6213
+    - https://github.com/onflow/flow-go/issues/6214
+  - [Epoch State machine operates on current state](https://github.com/onflow/flow-go/pull/6168)
+  - [Fixed EFM entering logic on epoch boundary](https://github.com/onflow/flow-go/pull/6183)
+  - [Added valid `TargetEndTime` calculation for extended epoch](https://github.com/onflow/flow-go/pull/6203)
+  - [Added support for dynamic bootstrap in EFM](https://github.com/onflow/flow-go/pull/6192)
+  - [Added `EpochExtensionViewCount` to the KV store](https://github.com/onflow/flow-go/pull/6209)
+  - [Adjust blocktime controller](https://github.com/onflow/flow-go/pull/6102)
+  - [EFM Recovery Integration Tests: Part 1](https://github.com/onflow/flow-go/pull/6156)
+  - [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
+  - [Invalid Service Events shortly after Epoch Commit](https://github.com/onflow/flow-go/issues/5631)
+
+* <ins>Cryptography:</ins>
+   - SPoCK aggregation: understanding BLS aggregation security proofs:
+     - Boldyreva in the KOSK model
+     - Boneh in the the PoP model
+   - Random beacon protocol public identity updates - clarify threshold-based protocols models in the crypto package
+   - JVM-SDK crypto
+     - Continued reviews of crypto PRs
+     - Playing with the SDK to add missing tests (hash + ECDSA)
+   - state proofs: research papers for ideas to optimize state proofs using set accumulators or VCs
+
+* <ins>Protocol misc</ins>
+  - Reviewing Pebble database changes (in-progress)
+
 
 **This sprint**
 
 * <ins>EFM Recovery</ins>
-  - [Update Ansible automation for Mainnet25 Dynamic Protocol state changes](https://github.com/onflow/flow-go/issues/5156)
-  - [Update consensus committee EFM processing](https://github.com/onflow/flow-go/issues/5730)
-  - [Update epoch lookup component](https://github.com/onflow/flow-go/issues/5763)
-  - [EFM Recovery benchnet testing](https://github.com/onflow/flow-go/issues/5945)
-  - [Support Epoch Extensions in HotStuff Committee](https://github.com/onflow/flow-go/pull/6154)
-  - [Invalid Service Events shortly after Epoch Commit](https://github.com/onflow/flow-go/issues/5631)
-  - Address comments and merge PR: [Epoch State Machines should not use parentState in their business logic](https://github.com/onflow/flow-go/issues/6019)
-  - Merge EFM integration test and blocktime controller PRs 
+  - Minimal DKG data model changes required for Crescendo (part of https://github.com/onflow/flow-go/issues/6214)
+  - Testing and merging EFM recovery code to include in Crescendo
+  - Continue reviewing Pebble DB changes (time permitting)
+  - [Add a mutator for EpochExtensionViewCount](https://github.com/onflow/flow-go/issues/6227)
   - Finish [EFM transaction Cadence PR](https://github.com/onflow/flow-core-contracts/pull/420)
+  - [Epoch lookup component](https://github.com/onflow/flow-go/issues/5763)
+  - [EFM integration tests part 2](https://github.com/onflow/flow-go/issues/6164)
   
 * <ins>Data Availability:</ins>
   - Complete ProtocolDB pruning design
@@ -247,7 +274,9 @@ Cycle Objective(s):
     - Expand on payer balance checks ([Issue #6128](https://github.com/onflow/flow-go/issues/6128), [Issue #6129](https://github.com/onflow/flow-go/issues/6129), [Issue #6139](https://github.com/onflow/flow-go/issues/6139), [Issue #6141](https://github.com/onflow/flow-go/issues/6141))
 
 * <ins>Cryptography:</ins>
-   - SPoCK aggregation: from BLS security proof to BLS aggregation security proof (multiple sprints)
+   - Continue state proof brainstorm and research
+   - java-SDK: merge the hashing PR + create signing issues
+   - SPoCK aggregation research/analysis: will continue over more sprints
 
 * <ins>Rosetta:</ins>
   - KROK: 
