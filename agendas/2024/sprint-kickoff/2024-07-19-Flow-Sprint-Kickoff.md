@@ -4,6 +4,8 @@
 - Finished deploying script execution to public QN nodes (live on 100% of public and studio nodes). Seeing a [70% reduction](https://flowfoundation.grafana.net/d/ddnerazd84um8d/script-execution?orgId=1&editPanel=3&from=now-60d&to=now) in script execution on the execution nodes since May.
 - Mainnet Crescendo migration environment now successfuly bootstrapped and passing end-to-end tests.
 - Atree register inlining migration [performance improved by ~10%](https://github.com/onflow/flow-go/pull/6193).
+- Polished Flow Port to release ready state
+- Submitted Ledger Flow app (0.13.0) for approval after successfull Ledger Live testing
 
 ### General updates
 
@@ -296,24 +298,39 @@ Cycle Objective(s):
 - Use the Crescendo Release grow Flow's developer base and network activity
 
 **Done last sprint**
-
+- Fix CLI init feature issue on pre-release with c1: https://github.com/onflow/flow-cli/issues/1669 
+- Hook up mock scripts to job runner: https://github.com/onflow/crescendo-rewards-be/issues/14
+- Hook up mock tvl script results to db: https://github.com/onflow/crescendo-rewards-be/issues/17
+- Hook up mock summaries script to db: https://github.com/onflow/crescendo-rewards-be/issues/19
+- Fix alignment on metric card: https://github.com/onflow/crescendo-rewards/pull/36
+- Add activity card skeleton loader: https://github.com/onflow/crescendo-rewards/pull/35
+- Change “Partners” to “Explore” in navigation: https://github.com/onflow/crescendo-rewards/pull/33
+- Got all the Flow controlled contracts staged on mainnet: https://github.com/onflow/docs/issues/716
+- Updated marketplace tutorials for Cadence 1.0: https://github.com/onflow/docs/issues/800
+- Improve generic token transactions with assertions: https://github.com/onflow/flow-nft/issues/222 , https://github.com/onflow/flow-ft/issues/162
+- [Rewards-sc] Compose & align on system design: https://github.com/onflow/crescendo-rewards-sc/issues/8
+- [Rewards-sc] Create mocks to unblock app development: https://github.com/onflow/crescendo-rewards-sc/issues/12
+- [Rewards-sc] CI testing & Codecov: https://github.com/onflow/crescendo-rewards-sc/issues/6
+- [Rewards-sc] Enable lock/unlock functionality: https://github.com/onflow/crescendo-rewards-sc/issues/1
+- [Rewards-sc] Add participant summary query functionality: https://github.com/onflow/crescendo-rewards-sc/issues/5
+- [Rewards-sc] Create reward accrual model & calculations: https://github.com/onflow/crescendo-rewards-sc/issues/2
+- [Rewards-sc] Define & wire up distribution models #4: https://github.com/onflow/crescendo-rewards-sc/issues/4
+- [FCL Discovery] Update to NextJS 14 https://github.com/onflow/fcl-discovery/issues/188
+- [FCL Discovery] Add Get Wallet Page https://github.com/onflow/fcl-discovery/issues/195
+- [FCL Discovery] Wallet names truncated too short https://github.com/onflow/fcl-discovery/issues/166
+- [FCL Discovery] Move Configuration into a Context https://github.com/onflow/fcl-discovery/issues/191
+- [FCL JS] Misc Typescript Errors https://github.com/onflow/fcl-js/issues/1917 
 
 **This sprint**
-**Sprint goal focusing on: Flow Port Asset Bridge and Token Transfer, FCL x WalletConnect Improvements, Crescendo Rewards**
+**Sprint goal focusing on: Flow Cross VM Bridge, FCL x Discovery Revamp, Crescendo Rewards**
 
-- [EPIC] Flow Port Asset Bridge [#284](https://github.com/onflow/flow-port/issues/284)
-- [EPIC] EVM Docs [#654](https://github.com/onflow/docs/issues/654)
-- [EPIC] Flow EVM Docs - Cadence Dev [#575](https://github.com/onflow/docs/issues/575)
-- [EPIC] FCL WalletConnect Improvements https://github.com/onflow/fcl-js/issues/1872
 - [EPIC] Crescendo Rewards Portal
   - [FE](https://github.com/onflow/crescendo-rewards/issues/1 )
   - [BE](https://github.com/onflow/crescendo-rewards-be/issues/1)
   - [SC](https://github.com/onflow/crescendo-rewards-sc/issues/7)
-- Discover and Design for bridge.flow.com
-- [EPIC] EVM Bridge - [#1](https://github.com/onflow/flow-bridge-app/issues/1)
-
-#### Smart Contract WG
-
+- [EPIC FCL WalletConnect + Discovery Improvements](https://github.com/onflow/fcl-js/issues/1872)
+- [EPIC Solving Initialization/Storage Issues - Lost and Found FLIP and Port integration](https://github.com/onflow/flow-port/issues/292)
+- [EPIC - EVM Bridge - bridge.flow.com](https://github.com/onflow/flow-bridge-app/issues/1)
 
 **On Hold**
 
