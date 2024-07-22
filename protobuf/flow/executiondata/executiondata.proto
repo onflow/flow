@@ -265,19 +265,6 @@ service ExecutionDataAPI {
   rpc SubscribeAccountStatusesFromLatestBlock(
       SubscribeAccountStatusesFromLatestBlockRequest)
       returns (stream SubscribeAccountStatusesResponse);
-
-  // GetTransactionExecutionMetricsAfter gets the transaction execution metrics
-  // for blocks after the given block height.
-  // If no data is available for the given block height, the response will be
-  // empty. The execution node will only store metrics for a limited number of
-  // blocks,  so the request may return an empty response if the requested
-  // block height is too far in the past.
-  //
-  // Errors:
-  //  - No errors are expected.
-  rpc GetTransactionExecutionMetricsAfter(
-      GetTransactionExecutionMetricsAfterRequest)
-      returns (GetTransactionExecutionMetricsAfterResponse);
 }
 
 // The request for GetExecutionDataByBlockID
@@ -684,46 +671,4 @@ message StatusFilter {
   // network the node is connected to. i.e. only a mainnet address is valid for
   // a mainnet node. Addresses may optionally include the 0x prefix.
   repeated string address = 3;
-}
-
-// The request for GetTransactionExecutionMetricsAfter
-message GetTransactionExecutionMetricsAfterRequest {
-  // Block height after which to get transaction execution metrics.
-  uint64 block_height = 1;
-}
-
-// The response for GetTransactionExecutionMetricsAfter
-// The response contains the execution metrics for transactions in each block
-// after the requested block height. The execution node only keeps a limited
-// number of blocks in memory, so the response may not contain metrics for all
-// blocks. Only finalized and excecuted blocks will be in .
-message GetTransactionExecutionMetricsAfterResponse {
-  // the execution effort weight of a computation kind
-  message ExecutionEffortWeight {
-    // computation kind id
-    uint64 kind = 1;
-    // the weight of the computation kind
-    uint64 weight = 2;
-  }
-
-  // the data for one transaction
-  message Transaction {
-    // the transaction id
-    bytes transaction_id = 1;
-    // the execution time of the transaction in nanoseconds
-    uint64 execution_time = 2;
-    // the execution effort weights of the transaction
-    repeated ExecutionEffortWeight execution_effort_weights = 3;
-  }
-
-  // the data for one block
-  message Result {
-    // the block height of the block
-    uint64 block_height = 1;
-    // the list of transactions in the block
-    repeated Transaction transactions = 2;
-  }
-
-  // a list of results for each block
-  repeated Result results = 1;
 }

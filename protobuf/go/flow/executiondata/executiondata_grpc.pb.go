@@ -32,7 +32,6 @@ const (
 	ExecutionDataAPI_SubscribeAccountStatusesFromStartBlockID_FullMethodName   = "/flow.executiondata.ExecutionDataAPI/SubscribeAccountStatusesFromStartBlockID"
 	ExecutionDataAPI_SubscribeAccountStatusesFromStartHeight_FullMethodName    = "/flow.executiondata.ExecutionDataAPI/SubscribeAccountStatusesFromStartHeight"
 	ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlock_FullMethodName    = "/flow.executiondata.ExecutionDataAPI/SubscribeAccountStatusesFromLatestBlock"
-	ExecutionDataAPI_GetTransactionExecutionMetricsAfter_FullMethodName        = "/flow.executiondata.ExecutionDataAPI/GetTransactionExecutionMetricsAfter"
 )
 
 // ExecutionDataAPIClient is the client API for ExecutionDataAPI service.
@@ -265,16 +264,6 @@ type ExecutionDataAPIClient interface {
 	//
 	//	not been received.
 	SubscribeAccountStatusesFromLatestBlock(ctx context.Context, in *SubscribeAccountStatusesFromLatestBlockRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlockClient, error)
-	// GetTransactionExecutionMetricsAfter gets the transaction execution metrics
-	// for blocks after the given block height.
-	// If no data is available for the given block height, the response will be
-	// empty. The execution node will only store metrics for a limited number of
-	// blocks,  so the request may return an empty response if the requested
-	// block height is too far in the past.
-	//
-	// Errors:
-	//   - No errors are expected.
-	GetTransactionExecutionMetricsAfter(ctx context.Context, in *GetTransactionExecutionMetricsAfterRequest, opts ...grpc.CallOption) (*GetTransactionExecutionMetricsAfterResponse, error)
 }
 
 type executionDataAPIClient struct {
@@ -657,15 +646,6 @@ func (x *executionDataAPISubscribeAccountStatusesFromLatestBlockClient) Recv() (
 	return m, nil
 }
 
-func (c *executionDataAPIClient) GetTransactionExecutionMetricsAfter(ctx context.Context, in *GetTransactionExecutionMetricsAfterRequest, opts ...grpc.CallOption) (*GetTransactionExecutionMetricsAfterResponse, error) {
-	out := new(GetTransactionExecutionMetricsAfterResponse)
-	err := c.cc.Invoke(ctx, ExecutionDataAPI_GetTransactionExecutionMetricsAfter_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // ExecutionDataAPIServer is the server API for ExecutionDataAPI service.
 // All implementations should embed UnimplementedExecutionDataAPIServer
 // for forward compatibility
@@ -896,16 +876,6 @@ type ExecutionDataAPIServer interface {
 	//
 	//	not been received.
 	SubscribeAccountStatusesFromLatestBlock(*SubscribeAccountStatusesFromLatestBlockRequest, ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlockServer) error
-	// GetTransactionExecutionMetricsAfter gets the transaction execution metrics
-	// for blocks after the given block height.
-	// If no data is available for the given block height, the response will be
-	// empty. The execution node will only store metrics for a limited number of
-	// blocks,  so the request may return an empty response if the requested
-	// block height is too far in the past.
-	//
-	// Errors:
-	//   - No errors are expected.
-	GetTransactionExecutionMetricsAfter(context.Context, *GetTransactionExecutionMetricsAfterRequest) (*GetTransactionExecutionMetricsAfterResponse, error)
 }
 
 // UnimplementedExecutionDataAPIServer should be embedded to have forward compatible implementations.
@@ -950,9 +920,6 @@ func (UnimplementedExecutionDataAPIServer) SubscribeAccountStatusesFromStartHeig
 }
 func (UnimplementedExecutionDataAPIServer) SubscribeAccountStatusesFromLatestBlock(*SubscribeAccountStatusesFromLatestBlockRequest, ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlockServer) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeAccountStatusesFromLatestBlock not implemented")
-}
-func (UnimplementedExecutionDataAPIServer) GetTransactionExecutionMetricsAfter(context.Context, *GetTransactionExecutionMetricsAfterRequest) (*GetTransactionExecutionMetricsAfterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionExecutionMetricsAfter not implemented")
 }
 
 // UnsafeExecutionDataAPIServer may be embedded to opt out of forward compatibility for this service.
@@ -1233,24 +1200,6 @@ func (x *executionDataAPISubscribeAccountStatusesFromLatestBlockServer) Send(m *
 	return x.ServerStream.SendMsg(m)
 }
 
-func _ExecutionDataAPI_GetTransactionExecutionMetricsAfter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTransactionExecutionMetricsAfterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ExecutionDataAPIServer).GetTransactionExecutionMetricsAfter(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ExecutionDataAPI_GetTransactionExecutionMetricsAfter_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExecutionDataAPIServer).GetTransactionExecutionMetricsAfter(ctx, req.(*GetTransactionExecutionMetricsAfterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // ExecutionDataAPI_ServiceDesc is the grpc.ServiceDesc for ExecutionDataAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1265,10 +1214,6 @@ var ExecutionDataAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetRegisterValues",
 			Handler:    _ExecutionDataAPI_GetRegisterValues_Handler,
-		},
-		{
-			MethodName: "GetTransactionExecutionMetricsAfter",
-			Handler:    _ExecutionDataAPI_GetTransactionExecutionMetricsAfter_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

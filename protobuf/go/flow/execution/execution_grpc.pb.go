@@ -32,6 +32,7 @@ const (
 	ExecutionAPI_GetRegisterAtBlockID_FullMethodName                 = "/flow.execution.ExecutionAPI/GetRegisterAtBlockID"
 	ExecutionAPI_GetLatestBlockHeader_FullMethodName                 = "/flow.execution.ExecutionAPI/GetLatestBlockHeader"
 	ExecutionAPI_GetBlockHeaderByID_FullMethodName                   = "/flow.execution.ExecutionAPI/GetBlockHeaderByID"
+	ExecutionAPI_GetTransactionExecutionMetricsAfter_FullMethodName  = "/flow.execution.ExecutionAPI/GetTransactionExecutionMetricsAfter"
 )
 
 // ExecutionAPIClient is the client API for ExecutionAPI service.
@@ -71,6 +72,16 @@ type ExecutionAPIClient interface {
 	GetLatestBlockHeader(ctx context.Context, in *GetLatestBlockHeaderRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
 	// GetBlockHeaderByID gets a block header by ID.
 	GetBlockHeaderByID(ctx context.Context, in *GetBlockHeaderByIDRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
+	// GetTransactionExecutionMetricsAfter gets the transaction execution metrics
+	// for blocks after the given block height.
+	// If no data is available for the given block height, the response will be
+	// empty. The execution node will only store metrics for a limited number of
+	// blocks,  so the request may return an empty response if the requested
+	// block height is too far in the past.
+	//
+	// Errors:
+	//   - No errors are expected.
+	GetTransactionExecutionMetricsAfter(ctx context.Context, in *GetTransactionExecutionMetricsAfterRequest, opts ...grpc.CallOption) (*GetTransactionExecutionMetricsAfterResponse, error)
 }
 
 type executionAPIClient struct {
@@ -198,6 +209,15 @@ func (c *executionAPIClient) GetBlockHeaderByID(ctx context.Context, in *GetBloc
 	return out, nil
 }
 
+func (c *executionAPIClient) GetTransactionExecutionMetricsAfter(ctx context.Context, in *GetTransactionExecutionMetricsAfterRequest, opts ...grpc.CallOption) (*GetTransactionExecutionMetricsAfterResponse, error) {
+	out := new(GetTransactionExecutionMetricsAfterResponse)
+	err := c.cc.Invoke(ctx, ExecutionAPI_GetTransactionExecutionMetricsAfter_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ExecutionAPIServer is the server API for ExecutionAPI service.
 // All implementations should embed UnimplementedExecutionAPIServer
 // for forward compatibility
@@ -235,6 +255,16 @@ type ExecutionAPIServer interface {
 	GetLatestBlockHeader(context.Context, *GetLatestBlockHeaderRequest) (*BlockHeaderResponse, error)
 	// GetBlockHeaderByID gets a block header by ID.
 	GetBlockHeaderByID(context.Context, *GetBlockHeaderByIDRequest) (*BlockHeaderResponse, error)
+	// GetTransactionExecutionMetricsAfter gets the transaction execution metrics
+	// for blocks after the given block height.
+	// If no data is available for the given block height, the response will be
+	// empty. The execution node will only store metrics for a limited number of
+	// blocks,  so the request may return an empty response if the requested
+	// block height is too far in the past.
+	//
+	// Errors:
+	//   - No errors are expected.
+	GetTransactionExecutionMetricsAfter(context.Context, *GetTransactionExecutionMetricsAfterRequest) (*GetTransactionExecutionMetricsAfterResponse, error)
 }
 
 // UnimplementedExecutionAPIServer should be embedded to have forward compatible implementations.
@@ -279,6 +309,9 @@ func (UnimplementedExecutionAPIServer) GetLatestBlockHeader(context.Context, *Ge
 }
 func (UnimplementedExecutionAPIServer) GetBlockHeaderByID(context.Context, *GetBlockHeaderByIDRequest) (*BlockHeaderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBlockHeaderByID not implemented")
+}
+func (UnimplementedExecutionAPIServer) GetTransactionExecutionMetricsAfter(context.Context, *GetTransactionExecutionMetricsAfterRequest) (*GetTransactionExecutionMetricsAfterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionExecutionMetricsAfter not implemented")
 }
 
 // UnsafeExecutionAPIServer may be embedded to opt out of forward compatibility for this service.
@@ -526,6 +559,24 @@ func _ExecutionAPI_GetBlockHeaderByID_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ExecutionAPI_GetTransactionExecutionMetricsAfter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTransactionExecutionMetricsAfterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExecutionAPIServer).GetTransactionExecutionMetricsAfter(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ExecutionAPI_GetTransactionExecutionMetricsAfter_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExecutionAPIServer).GetTransactionExecutionMetricsAfter(ctx, req.(*GetTransactionExecutionMetricsAfterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ExecutionAPI_ServiceDesc is the grpc.ServiceDesc for ExecutionAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -584,6 +635,10 @@ var ExecutionAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetBlockHeaderByID",
 			Handler:    _ExecutionAPI_GetBlockHeaderByID_Handler,
+		},
+		{
+			MethodName: "GetTransactionExecutionMetricsAfter",
+			Handler:    _ExecutionAPI_GetTransactionExecutionMetricsAfter_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
