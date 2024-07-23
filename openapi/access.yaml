@@ -381,6 +381,40 @@ paths:
           $ref: '#/components/responses/404NotFound'
         '500':
           $ref: '#/components/responses/500InternalServerError'
+  /accounts/{address}/balance:
+    get:
+      summary: Get an Account Balance By Address
+      description: Get an account balance by provided address in latest "sealed" block or by provided block height.
+      tags:
+        - Accounts
+      parameters:
+        - name: address
+          in: path
+          schema:
+            $ref: '#/components/schemas/Address'
+          required: true
+          description: The address of the account.
+        - name: block_height
+          in: query
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
+          required: false
+          description: The block height to query for the account details at the "sealed" is used by default.
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountBalance'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
   /accounts/{address}/keys/{index}:
     get:
       summary: Get an individual Account Key By Address and Index
@@ -725,6 +759,15 @@ components:
               type: string
         _links:
           $ref: '#/components/schemas/Links'
+    AccountBalance:
+      type: object
+      required:
+        - balance
+      properties:
+        balance:
+          type: string
+          format: uint64
+          description: Flow balance of the account.
     AccountPublicKey:
       type: object
       required:
