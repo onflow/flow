@@ -1262,9 +1262,48 @@
       }
     },
     "testnet": {
+     "testnet50": {
+        "id": 50,
+        "live": true,
+        "name": "Testnet50",
+        "sporkTime": "2024-05-20T08:00:00Z",
+        "rootHeight": "185185854",
+        "rootParentId": "6a0ae7bf43660e813ee9c2d654f00476ac1bdc357ff47ad11f0e52fc1700d62f",
+        "rootStateCommitment": "e10d3c53608a1f195b7969fbc06763285281f64595be491630a1e1bdfbe69161",
+        "gitCommitHash": "0585789483c4f5ea423bb11afcfe862c9a99711e",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-50-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-50/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-50/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-50/public-root-information/node-infos.pub.json"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": ""
+          }
+        },
+        "tags": {
+          "flow-go-tag": "v0.33.23-failure-mode-revert-patch",
+          "flow-dps-tag": "v0.33.23-failure-mode-revert-patch",
+          "cadence-tag": "v0.33.23-failure-mode-revert-patch",
+          "docker-tag": "v0.33.23-failure-mode-revert-patch"
+        },
+        "accessNodes": [
+          "access.devnet.nodes.onflow.org:9000"
+        ],
+        "seedNodes": [
+          {
+            "address": "access-003.devnet50.nodes.onflow.org:3570",
+            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+          }
+        ]
+      },   
       "testnet49": {
         "id": 49,
-        "live": true,
+        "live": false,
         "name": "Testnet49",
         "sporkTime": "2023-11-02T08:00:00Z",
         "rootHeight": "129578013",
