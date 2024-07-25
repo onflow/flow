@@ -5,6 +5,7 @@ All URIs are relative to *https://rest-canary.onflow.org/v1/*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AccountsAddressGet**](AccountsApi.md#AccountsAddressGet) | **Get** /accounts/{address} | Get an Account By Address
+[**AccountsAddressKeysGet**](AccountsApi.md#AccountsAddressKeysGet) | **Get** /accounts/{address}/keys | Get an Account Keys By Address
 [**AccountsAddressKeysIndexGet**](AccountsApi.md#AccountsAddressKeysIndexGet) | **Get** /accounts/{address}/keys/{index} | Get an individual Account Key By Address and Index
 
 # **AccountsAddressGet**
@@ -33,6 +34,44 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Account**](Account.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **AccountsAddressKeysGet**
+> AccountPublicKeys AccountsAddressKeysGet(ctx, address, optional)
+Get an Account Keys By Address
+
+Get an account data by provided address in latest \"sealed\" block or by provided block height.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **address** | [**string**](.md)| The address of the account. | 
+ **optional** | ***AccountsApiAccountsAddressKeysGetOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a AccountsApiAccountsAddressKeysGetOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **blockHeight** | [**optional.Interface of BlockHeight**](.md)| The block height to query for the account details at the \&quot;sealed\&quot; is used by default. | 
+ **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
+ **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
+
+### Return type
+
+[**AccountPublicKeys**](AccountPublicKeys.md)
 
 ### Authorization
 

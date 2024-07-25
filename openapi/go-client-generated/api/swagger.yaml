@@ -707,6 +707,82 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /accounts/{address}/keys:
+    get:
+      tags:
+      - Accounts
+      summary: Get an Account Keys By Address
+      description: Get an account data by provided address in latest "sealed" block
+        or by provided block height.
+      parameters:
+      - name: address
+        in: path
+        description: The address of the account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/Address'
+      - name: block_height
+        in: query
+        description: The block height to query for the account details at the "sealed"
+          is used by default.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/BlockHeight'
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPublicKeys'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /accounts/{address}/keys/{index}:
     get:
       tags:
@@ -1179,6 +1255,33 @@ components:
         _expandable:
           keys: keys
           contracts: contracts
+    AccountPublicKeys:
+      required:
+      - keys
+      type: object
+      properties:
+        keys:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountPublicKey'
+      example:
+        keys:
+        - public_key: public_key
+          sequence_number: sequence_number
+          index: index
+          weight: weight
+          signing_algorithm: BLSBLS12381
+          revoked: true
+          hashing_algorithm: SHA2_256
+        - public_key: public_key
+          sequence_number: sequence_number
+          index: index
+          weight: weight
+          signing_algorithm: BLSBLS12381
+          revoked: true
+          hashing_algorithm: SHA2_256
     AccountPublicKey:
       required:
       - hashing_algorithm
