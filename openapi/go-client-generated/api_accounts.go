@@ -31,16 +31,12 @@ Get an account balance by provided address in latest \&quot;sealed\&quot; block 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param address The address of the account.
  * @param optional nil or *AccountsApiAccountsAddressBalanceGetOpts - Optional Parameters:
-     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The block height to query for the account details at the \&quot;sealed\&quot; is used by default.
-     * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
-     * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
+     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The block height to query for the account balance. \&quot;sealed\&quot; is used by default.
 @return AccountBalance
 */
 
 type AccountsApiAccountsAddressBalanceGetOpts struct {
     BlockHeight optional.Interface
-    Expand optional.Interface
-    Select_ optional.Interface
 }
 
 func (a *AccountsApiService) AccountsAddressBalanceGet(ctx context.Context, address string, localVarOptionals *AccountsApiAccountsAddressBalanceGetOpts) (AccountBalance, *http.Response, error) {
@@ -62,12 +58,6 @@ func (a *AccountsApiService) AccountsAddressBalanceGet(ctx context.Context, addr
 
 	if localVarOptionals != nil && localVarOptionals.BlockHeight.IsSet() {
 		localVarQueryParams.Add("block_height", parameterToString(localVarOptionals.BlockHeight.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
-		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
-	}
-	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
-		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
