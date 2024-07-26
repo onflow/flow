@@ -166,16 +166,12 @@ Get an account data by provided address in latest \&quot;sealed\&quot; block or 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param address The address of the account.
  * @param optional nil or *AccountsApiAccountsAddressKeysGetOpts - Optional Parameters:
-     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The block height to query for the account details at the \&quot;sealed\&quot; is used by default.
-     * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
-     * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
+     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The block height to query for the account balance. \&quot;sealed\&quot; is used by default.
 @return AccountPublicKeys
 */
 
 type AccountsApiAccountsAddressKeysGetOpts struct {
     BlockHeight optional.Interface
-    Expand optional.Interface
-    Select_ optional.Interface
 }
 
 func (a *AccountsApiService) AccountsAddressKeysGet(ctx context.Context, address string, localVarOptionals *AccountsApiAccountsAddressKeysGetOpts) (AccountPublicKeys, *http.Response, error) {
@@ -197,12 +193,6 @@ func (a *AccountsApiService) AccountsAddressKeysGet(ctx context.Context, address
 
 	if localVarOptionals != nil && localVarOptionals.BlockHeight.IsSet() {
 		localVarQueryParams.Add("block_height", parameterToString(localVarOptionals.BlockHeight.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
-		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
-	}
-	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
-		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}

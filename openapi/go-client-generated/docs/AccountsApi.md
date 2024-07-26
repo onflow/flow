@@ -65,9 +65,7 @@ Optional parameters are passed through a pointer to a AccountsApiAccountsAddress
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **blockHeight** | [**optional.Interface of BlockHeight**](.md)| The block height to query for the account details at the \&quot;sealed\&quot; is used by default. | 
- **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
- **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
+ **blockHeight** | [**optional.Interface of BlockHeight**](.md)| The block height to query for the account balance. \&quot;sealed\&quot; is used by default. | 
 
 ### Return type
 
