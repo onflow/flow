@@ -133,6 +133,12 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>Data Availability:</ins>
+  - KROK Team
+    - Implement VersionControl module ([PR #5984](https://github.com/onflow/flow-go/pull/5984))
+    - Improve execution data db pruning ([PR #6217](https://github.com/onflow/flow-go/pull/6217))
+    - Add REST endpoints for getting account keys and balance ([PR #6218](https://github.com/onflow/flow-go/pull/6218), [PR #6253](https://github.com/onflow/flow-go/pull/6253))
+
 
 **This sprint**
 
@@ -146,14 +152,15 @@ Cycle Objective(s):
   - [EFM integration tests part 2](https://github.com/onflow/flow-go/issues/6164)
   
 * <ins>Data Availability:</ins>
-  - Complete ProtocolDB pruning design
+  - ProtocolDB pruning design
   - Testing ChunkDataPack DB pruning PoC
   - KROK Team
-    - Add support for version beacon events to control script execution ([Issue #5788](https://github.com/onflow/flow-go/issues/5788) - In review, [Issue #5789](https://github.com/onflow/flow-go/issues/5789) - In review, [Issue #5790](https://github.com/onflow/flow-go/issues/5790))
-    - Improve execution data db pruning ([Issue #6138](https://github.com/onflow/flow-go/issues/6138) - in review)
+    - Add support for version beacon events to control script execution ([Issue #5789](https://github.com/onflow/flow-go/issues/5789) - In review, [Issue #5790](https://github.com/onflow/flow-go/issues/5790))
     - Add support for storing exec data using pebble db ([Issue #6017](https://github.com/onflow/flow-go/issues/6017) - in review)
-    - Add REST endpoints for getting account keys and balance ([Issue #6000](https://github.com/onflow/flow-go/issues/6000), [Issue #6001](https://github.com/onflow/flow-go/issues/6001))
-    - Expand on payer balance checks ([Issue #6128](https://github.com/onflow/flow-go/issues/6128), [Issue #6129](https://github.com/onflow/flow-go/issues/6129), [Issue #6139](https://github.com/onflow/flow-go/issues/6139), [Issue #6141](https://github.com/onflow/flow-go/issues/6141))
+    - Add support pruning pebble exec data db ([Issue #6260](https://github.com/onflow/flow-go/issues/6260))
+    - Add REST endpoints for getting account keys and balance ([Issue #6228](https://github.com/onflow/flow-go/issues/6228) - in review)
+    - Expand on payer balance checks ([Issue #6128](https://github.com/onflow/flow-go/issues/6128), [Issue #6129](https://github.com/onflow/flow-go/issues/6129), [Issue #6139](https://github.com/onflow/flow-go/issues/6139))
+    - Start registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066), [Issue #6068](https://github.com/onflow/flow-go/issues/6068))
 
 * <ins>Cryptography:</ins>
    - Continue state proof brainstorm and research
