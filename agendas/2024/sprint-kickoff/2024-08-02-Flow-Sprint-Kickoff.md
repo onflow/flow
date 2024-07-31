@@ -137,6 +137,7 @@ Cycle Objective(s):
   - KROK Team
     - Implement VersionControl module ([PR #5984](https://github.com/onflow/flow-go/pull/5984))
     - Improve execution data db pruning ([PR #6217](https://github.com/onflow/flow-go/pull/6217))
+    - Add support for storing exec data using pebble db ([PR #6180](https://github.com/onflow/flow-go/pull/6180))
     - Add REST endpoints for getting account keys and balance ([PR #6218](https://github.com/onflow/flow-go/pull/6218), [PR #6253](https://github.com/onflow/flow-go/pull/6253))
 
 
@@ -156,7 +157,6 @@ Cycle Objective(s):
   - Testing ChunkDataPack DB pruning PoC
   - KROK Team
     - Add support for version beacon events to control script execution ([Issue #5789](https://github.com/onflow/flow-go/issues/5789) - In review, [Issue #5790](https://github.com/onflow/flow-go/issues/5790))
-    - Add support for storing exec data using pebble db ([Issue #6017](https://github.com/onflow/flow-go/issues/6017) - in review)
     - Add support pruning pebble exec data db ([Issue #6260](https://github.com/onflow/flow-go/issues/6260))
     - Add REST endpoints for getting account keys and balance ([Issue #6228](https://github.com/onflow/flow-go/issues/6228) - in review)
     - Expand on payer balance checks ([Issue #6128](https://github.com/onflow/flow-go/issues/6128), [Issue #6129](https://github.com/onflow/flow-go/issues/6129), [Issue #6139](https://github.com/onflow/flow-go/issues/6139))
