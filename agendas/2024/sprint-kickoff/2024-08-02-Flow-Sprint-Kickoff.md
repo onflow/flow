@@ -1,7 +1,8 @@
 # Overview
 
 ### Team Wins 🎉
-- 
+- Successfully tested new Flow bridge UI, testing bridging axlUSDC from base to polygon
+
 
 ### General updates
 
@@ -230,11 +231,56 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**[Crescendo Rewards Contracts](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=66448908)**
+- Update Accrual & DistributionModel setters + fix _claimDistribution
+- Add minimum lockup field + setter
+- Reach +80% test coverage
+- Add tests and docs
+- Add relevant traits to NFT
+- Rename nonce to sequence
+- Update getPaginatedRegistry interface for finer control over return size
+- Add paginated Overview functionality
+
+**[Crescendo Rewards Backend](https://github.com/onflow/crescendo-rewards-be/issues/1)**
+- Trigger activity creation from job results
+- Hook up mock summaries script/job to db
+- Use mock script to get account reward summaries
+- Mock account API with multiple rewards summaries
+- Change leaderboard to resource model
+- Switch total locked from accounts to stats in db
+- Update schema to match new data structure
+- Run tests in CI
+- Add logger
+
+**[Crescendo Rewards Frontend](https://github.com/onflow/crescendo-rewards/issues/1)**
+- Create step boxes and container components
+- Create progress bar component
+- Create new partner card
+- Make page header
+- Add Flow logo and trophy icon to leaderboard
+- Update “days until” distribution card with progress, button, and time countdown
+- Update header layout and add disconnect dropdown
+- Add logo vis icon option to TVL card
+- Create NFT carousel section on rewards page
+- Hook up to account API
+- Change leaderboard to resource model
+- Move activities section to below metric cards
+- Hook up recent activity component to API
+- Switch activity API example data to new data format
+- Improve UI around account proof slowness
+- Add Dapper Wallet as a login option
+
+**Hybrid Custody Contracts**
+- [DEPLOYMENT] Deploy to Previewnet and update deployment details
+- Migration Contract Staging Contract
+- [BUG] Running into event limits on staging for long contracts
 
 
 **This sprint**
 **Sprint goal focusing on: Flow Cross VM Bridge, FCL x Discovery Revamp, Crescendo Rewards**
 
+- wUSDC Swap UI (Flow Port)
+- [wUSDC Contract](https://github.com/onflow/bridged-usdc) 
 - [EPIC] Crescendo Rewards Portal
   - [FE](https://github.com/onflow/crescendo-rewards/issues/1 )
   - [BE](https://github.com/onflow/crescendo-rewards-be/issues/1)
