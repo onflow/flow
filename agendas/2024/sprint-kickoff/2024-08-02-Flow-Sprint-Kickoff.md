@@ -2,6 +2,7 @@
 
 ### Team Wins 🎉
 - Successfully tested new Flow bridge UI, testing bridging axlUSDC from base to polygon
+- Stopped our and partner Consensus nodes from going OOM by adding new config flags (`GOMEMLIMIT=12GiB`)
 
 
 ### General updates
