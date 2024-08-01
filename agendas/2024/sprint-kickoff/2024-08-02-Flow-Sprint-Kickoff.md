@@ -20,16 +20,17 @@
 | Block Finalization      | 99.9%   |    100%       |       0%         |
 | Transaction Execution   | 99.9%   |    100%       |       0%         |
 | Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    100%       |       0%         |
+| Access API Liveness     | 99.9%   |    99.833%    |       167%       |
 
 [SLO dashboards](https://flowfoundation.grafana.net/d/hgW3l-m4k/slo-dashboard?orgId=1&from=now-2w&to=now)
 
 [YTD SLA: 99.922%](https://app.metrika.co/flow/dashboard/slas?tr=YTD)
 
 ## Incidents
+Sev 3 - 07/18: Consensus nodes kept crashing intermittently due to OOM. [Slack thread](https://flow-foundation.slack.com/archives/CUU2KQL4A/p1721310960751829)
 
 ### Mainnet
-
+- 
 
 (Sev [definition](https://www.notion.so/dapperlabs/Incident-Priorities-Severity-Levels-b65d7682336c46baa025ee512fd3efa3))
 
