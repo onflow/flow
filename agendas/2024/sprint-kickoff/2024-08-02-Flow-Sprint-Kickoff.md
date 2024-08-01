@@ -34,8 +34,8 @@
 
 ### Key Release Dates & Breaking Changes
 - Next Mainnet/Testnet network upgrade (spork):
-  - Testnet: Aug 14th
-  - Mainnet: Aug 28th (to be confirmed - subject to change)
+  - Testnet: Aug 14th 8:00 AM PT (3:00 PM UTC). Duration: 6 hours
+  - Mainnet: Sept 4th 5:00 AM PT (12:00 PM UTC). Duration: 6 hours
 
 ---
 
