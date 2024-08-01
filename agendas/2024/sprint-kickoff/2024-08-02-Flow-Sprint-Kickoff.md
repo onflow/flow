@@ -3,6 +3,10 @@
 ### Team Wins 🎉
 - Successfully tested new Flow bridge UI, testing bridging axlUSDC from base to polygon
 - Stopped ours and partner Consensus nodes from going OOM by adding a new config flag (`GOMEMLIMIT=12GiB`)
+- Completed diffing of transaction re-execution on inlined vs non-inlined state and validated there are no unexpected changes.
+- Cadence 1.0 feature branch with Atree register inlining support merged to flow-go master.
+- Implementation for handling of broken contracts (FLIP 282) deployed on Migration testnet.
+
 
 
 ### General updates
@@ -91,21 +95,95 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**State migration for Crescendo release**
+- [Merge atree inlining cadence v1.0](https://github.com/onflow/flow-go/pull/6275)
+- [Handle broken contracts](https://github.com/onflow/cadence/issues/3480)
+- [Add migration to setup EVM heartbeat resource](https://github.com/onflow/flow-go/pull/6251)
+- Improvemnts:
+    - [Migrate capability values targeting storage paths](https://github.com/onflow/cadence/pull/3503) - covers a new edge case discovered recently.
+    - [Always report checking errors for system contracts](https://github.com/onflow/flow-go/pull/6280)
+    - [Improve reporting of cyclic link migration errors](https://github.com/onflow/flow-go/pull/6279)
+    - [Fix non-determinism in contract code and contract names cleanup migration](https://github.com/onflow/flow-go/pull/6276)
+    - [Add stack traces back to unexpected errors](https://github.com/onflow/cadence/pull/3492)
+    - [Bring back members of path capability value](https://github.com/onflow/cadence/pull/3486)
+    - [Improve EVM contract migration](https://github.com/onflow/flow-go/pull/6249)
+- Bugfix:
+    - [Fix execution state extraction](https://github.com/onflow/flow-go/pull/6242)
+- tooling:
+    - [Add command to run a script](https://github.com/onflow/flow-go/pull/6231) - using payloads file or trie + state commitment
+
+**Cadence Language**
+- Improvements:
+    - [Return user error when CCF encodes attachment field](https://github.com/onflow/cadence/pull/3494)
+    - [Add an empty implementation of runtime.Interface](https://github.com/onflow/cadence/pull/3485)
+    - [Improve intersected type error message](https://github.com/onflow/cadence/pull/3483)
+- Bugfixes:
+    - [Data race for empty strings](https://github.com/onflow/cadence/issues/3477)
+    - [Problems loading values and @AnyResource](https://github.com/onflow/cadence/issues/3491)
+- Testing:
+    - [Add checker tests for nil-coalesce type inference](https://github.com/onflow/cadence/pull/3495)
+
+**Cadence Execution**
+- Improvement: 
+    - [Use Cadence's empty and test runtime.Interface implementations](https://github.com/onflow/flow-go/pull/6258)
+
+**EVM Core**
+- Feature:
+    - [Extending block hash lookup range to the last 256 with minimum storage overhead](https://github.com/onflow/flow-go/pull/6226)
+- Improvements:
+    - [Improve event emission](https://github.com/onflow/flow-go/pull/6224)
+    - [Skip tx debug tracing operation if unsafe](https://github.com/onflow/flow-go/pull/6262)
+    - [technical debt removal - part1](https://github.com/onflow/flow-go/pull/6243)
+    - [Refactoring precompiled contract call tracker](https://github.com/onflow/flow-go/pull/6232)
+    - [Adding metrics to the EVM](https://github.com/onflow/flow-go/pull/6233)
+- Bugfixes:
+    - [Trace supplied with invalid error](https://github.com/onflow/flow-go/pull/6268)
+    - [fix the issue with the new Geth tracing](https://github.com/onflow/flow-go/pull/6261)
+
+**EVM Gateway**
+- Breaking change:
+    - [Fixes required for flow-go breaking changes](https://github.com/onflow/flow-evm-gateway/pull/383)
+- Bugfixes:
+    - [Single bloom decoding ](https://github.com/onflow/flow-evm-gateway/pull/403)
+    - [Bugfix to avoid decoding empty blooms](https://github.com/onflow/flow-evm-gateway/pull/399)
+    - [Return storage copy of data](https://github.com/onflow/flow-evm-gateway/pull/397)
+    - [Bugfix nil value in log](https://github.com/onflow/flow-evm-gateway/pull/379)
+    - [Update check for empty `RemoteAddr` in `rateLimit` function](https://github.com/onflow/flow-evm-gateway/pull/392)
+    - [Match behavior regarding JSON-RPC APIs with default block parameter](https://github.com/onflow/flow-evm-gateway/issues/398)
+    - [eth_getBlockByNumber() not responsive to 'earliest' flag](https://github.com/onflow/flow-evm-gateway/issues/371)
+    - [Include the transactionsRoot hash in block response](https://github.com/onflow/flow-evm-gateway/issues/389)
+    - [Calculate size field on JSON-RPC calls that return block info](https://github.com/onflow/flow-evm-gateway/issues/375)
+    - [Update eth_syncing call to match JSON-RPC API specification](https://github.com/onflow/flow-evm-gateway/issues/376)
+    - [Calculate properly the CumulativeGasUsed field for transaction receipts](https://github.com/onflow/flow-evm-gateway/issues/357)
+    - [Populate the LogsBloom field, even for blocks without any transactions](https://github.com/onflow/flow-evm-gateway/issues/372)
+- Improvements:
+    - [Update CadenceEvents.Empty() function to avoid decoding EVM blocks twice](https://github.com/onflow/flow-evm-gateway/pull/368)
+    - [Add support for `EVM.heartbeat` resource on system chunk transaction](https://github.com/onflow/flow-emulator/pull/717)
+    - [Handle custom block numbers in eth_estimateGas endpoint](https://github.com/onflow/flow-evm-gateway/issues/380)
+    - Improved transaction error formatting
+        - [Use different error wrapping](https://github.com/onflow/flow-evm-gateway/pull/413)
+    - [Improve error reporting](https://github.com/onflow/flow-evm-gateway/issues/350)
+    - [Improve API error handling](https://github.com/onflow/flow-evm-gateway/pull/370)
+    - [Improve error wrapping](https://github.com/onflow/flow-evm-gateway/issues/70)
+    - [Use past block decoder](https://github.com/onflow/flow-evm-gateway/pull/395)
+    - [Pending transaction event from pool](https://github.com/onflow/flow-evm-gateway/pull/374)
+    - [Event broadcasting improvements](https://github.com/onflow/flow-evm-gateway/pull/334)
+- Testing:
+    - [Add an example test case for utilizing the `Multicall3` contract](https://github.com/onflow/flow-evm-gateway/pull/369)
 
 **This sprint**
 
  - Objective 1, KR4: Testnet Upgrade to Crescendo Release
-   - Investigate how we could [keep the values of contracts not upgraded to Cadence 1.0 working](https://www.notion.so/flowfoundation/Keep-values-with-types-of-broken-contracts-working-7a57ddf83a50456da6851ed1f65e26a9)
-   - Continue [comparison of execution states before and after the atree inlining](https://github.com/onflow/atree/issues/292)
-   - Continue: [Add support for composites with attachment to CCF encoder](https://github.com/dapperlabs/cadence-internal/issues/241)
-   - [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
+   - Continue: [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
    - Investigate / Fix any security report incoming from bug bounty.
+   - Upgrade TN to Crescendo release
 
  - Objective 2, KR 1: Update transaction fees weights for the execution operations on TN and MN
    -  Continue work on [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
 
 - EVM 
-   - KROK
+  - Continue testing EVM GW stability
+  - KROK
      - EVM Gateway benchmarking
 
 **Completed OKRs**
