@@ -140,17 +140,24 @@ Cycle Objective(s):
     - Add support for storing exec data using pebble db ([PR #6180](https://github.com/onflow/flow-go/pull/6180))
     - Add REST endpoints for getting account keys and balance ([PR #6218](https://github.com/onflow/flow-go/pull/6218), [PR #6253](https://github.com/onflow/flow-go/pull/6253))
 
+* <ins>EFM Recovery</ins>
+  - [Epoch Extensions Benchnet Testing](https://www.notion.so/flowfoundation/EFM-Recovery-Benchnet-Testing-Crescendo-Release-1bbd4eabe1ee41688b51ee7487c84822?pvs=4)
+  - Merged EFM Recovery feature branch for Crescendo release
+    - This includes epoch extension and protocol state machine recovery logic
+    - Excludes smart contract changes
+  - EFM Recovery Process
+    - [Integration Testing](https://github.com/onflow/flow-go/issues/6164) - test full recovery happy path
+    - [Smart contract changes](https://github.com/onflow/flow-core-contracts/pull/440)
+    - Adding EFM Recovery parameters to KVStore ([1](https://github.com/onflow/flow-go/pull/6272), [2](https://github.com/onflow/flow-go/pull/6209), [3](https://github.com/onflow/flow-go/pull/6229))
 
 **This sprint**
 
 * <ins>EFM Recovery</ins>
-  - Minimal DKG data model changes required for Crescendo (part of https://github.com/onflow/flow-go/issues/6214)
-  - Testing and merging EFM recovery code to include in Crescendo
-  - Continue reviewing Pebble DB changes (time permitting)
-  - [Add a mutator for EpochExtensionViewCount](https://github.com/onflow/flow-go/issues/6227)
-  - Finish [EFM transaction Cadence PR](https://github.com/onflow/flow-core-contracts/pull/420)
-  - [Epoch lookup component](https://github.com/onflow/flow-go/issues/5763)
-  - [EFM integration tests part 2](https://github.com/onflow/flow-go/issues/6164)
+  - EFM Recovery Process (cont.)
+    - [Integration Test](https://github.com/onflow/flow-go/issues/6164) - test failure cases
+    - [Smart contract changes](https://github.com/onflow/flow-core-contracts/pull/440) 
+  - [DKG Data Model](https://github.com/onflow/flow-go/issues/6214)
+    - Modifying data model for DKG outputs to support DKG committee != consenssu committee
   
 * <ins>Data Availability:</ins>
   - ProtocolDB pruning design
@@ -172,7 +179,8 @@ Cycle Objective(s):
     - Rosetta Cadence updates for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52), [Issue #54](https://github.com/onflow/rosetta/issues/54) - PRs in review)
 
 * <ins>Protocol misc</ins>
-  - Continue review of Pebble database changes
+  - Preparing for Testnet Spork
+    - [Consensus Timing Changes]([url](https://flowfoundation.notion.site/Cruise-Control-headroom-for-speedups-46dc17e07ae14462b03341e4432a907d?pvs=4))
 
 
 **On Hold**
