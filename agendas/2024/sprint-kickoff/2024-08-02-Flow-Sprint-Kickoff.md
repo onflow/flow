@@ -344,15 +344,40 @@ Cycle Objective(s):
 
 ### **Infra - JP**
 Cycle Objective(s): 
-- Solidify CloudFlare Migration plan and continue preparing for migration
-- Continue assisting with DevEx migration to Cloud Run
+- Migrate CloudFlare zones to new account
+- Prepare for Crescendo TN spork
+- Assist with EVM GW monitoring & preparation
 
 **Done last sprint**
 
+**CloudFlare Migration**
+- [Create DNS records & zones](https://github.com/dapperlabs/terraform/pull/4297)
+- [Create duplicate BN2 records](https://github.com/dapperlabs/flow-benchnet-automation-infrastructure/pull/49)
+- [Create duplicate DevEx records](https://github.com/dapperlabs/flow-devex-infrastructure/pull/186)
+- Migration cadencelang.dev zone
+- Migrate cadence-lang.org zone
+- Migrate cast.fyi zone
+
+**Node Hosting**
+- [Create Secondary Bucket for EVM traces on Previewnet](https://github.com/dapperlabs/terraform/pull/4313)
+- [Create Previewnet 2 network](https://github.com/dapperlabs/terraform/pull/4314)
+- [Create Previewnet2 Ansible configuration](https://github.com/dapperlabs/dapper-flow-hosting/pull/1547)
+- [Scale down Previewnet1](https://github.com/dapperlabs/terraform/pull/4315)
+- [Update Memory on Mainnet SNs](https://github.com/dapperlabs/terraform/pull/4307)
+- [Define systemd configuration for running AN binary](https://www.notion.so/flowfoundation/Access-Node-with-Binary-ca06681fb8334e9289451c93e71bc482)
+
+**System Performance**
+- Evaluate GOMEMLIMIT & kernel parameter impact on VM stability
+- Enable GOMEMLIMIT on DL & FF Collection Nodes to limit churn
+
+**Benchnet2**
+- [Evaluate long-lived network with increased disk space](https://github.com/onflow/flow-go/pull/6256)
+
 **This Sprint**
-- Assist with migration and spork prep efforts
-- Continue removing dependencies on CloudFlare & assist with account creation
-- Begin prep work to migration to new CloudFlare account
+- Continue Migrating CloudFlare zones 
+- Prepare EVM Gateway for TN Network Upgrade
+- Prepare Infra & configuration for TN Network upgrade
+- Assist with EVM Gateway Monitoring & Alerting
 
 ---
 
