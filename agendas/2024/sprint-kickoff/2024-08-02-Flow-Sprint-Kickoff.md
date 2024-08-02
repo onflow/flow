@@ -48,35 +48,18 @@
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 8  |    9  |       0         |       7          |        **24** (+1)       |
-| Proposed    | 1  |    2    |       2          |       0           |        **5**        |
-| Accepted    | 2  |    1     |       2       |       1          |        **6**          |
+| Drafted     | 8  |    8 (-1)  |       0         |       7          |        **23** (-1)       |
+| Proposed    | 1  |    2    |       3 (+1)          |       0           |        **6** (+1)        |
+| Accepted    | 2  |    1     |       2       |       2 (+1)          |        **7** (+1)          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 3 |    22    |       2       |       1           |        **28**          |
-| Released    | 4  |    0     |       3       |       6          |        **13**          |
-| Total       | **17** (+1)  |    **34**  |       **10**      |       **15**          |        **76** (+1)      |
+| Implemented | 3 |    24 (+2)    |       1       |       0           |        **28**          |
+| Released    | 4  |    0     |       4 (+1)       |       6          |        **14** (+1)          |
+| Total       | **18** (+1)  |    **35** (+1)  |       **11** (+1)      |       **15**          |        **79** (+3)      |
 
 **Updates**
-* [Application] - Integrating with the Lost and Found contract (drafted)
-* FLIPs that haven't moved in a while or need new owners or have old statuses
-  - Application -
-    - Interaction Templates
-    - Pool-Based DEX Swap Standard
-    - FCL Authz/Pre-Authz v2.0.0 Specification
-    - Contracts Import Syntax
-   - Cadence
-     - New behavior for attachments with entitlements
-     - Type Removal In Contract Updates
-     - Optional References to Indexed Accesses
-     - Next version changes to FLIX
-     - Attachments
-     - Mutability Restrictions
-     - Cadence Storage API Improvements
-     - Reference Creation Semantics
-     - View Functions
-     - Entitlements
----
-
+* Crescendo Network Upgrade - proposed
+* Changing import statement semantics - accepted
+* Import of pre-Cadence 1.0 Programs - proposed and accepted
 
 # Working Group Updates
 
