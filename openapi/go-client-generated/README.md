@@ -22,6 +22,7 @@ All URIs are relative to *https://rest-canary.onflow.org/v1/*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountsApi* | [**AccountsAddressGet**](docs/AccountsApi.md#accountsaddressget) | **Get** /accounts/{address} | Get an Account By Address
+*AccountsApi* | [**AccountsAddressKeysGet**](docs/AccountsApi.md#accountsaddresskeysget) | **Get** /accounts/{address}/keys | Get an Account Keys By Address
 *AccountsApi* | [**AccountsAddressKeysIndexGet**](docs/AccountsApi.md#accountsaddresskeysindexget) | **Get** /accounts/{address}/keys/{index} | Get an individual Account Key By Address and Index
 *BlocksApi* | [**BlocksGet**](docs/BlocksApi.md#blocksget) | **Get** /blocks | Gets Blocks by Height
 *BlocksApi* | [**BlocksIdGet**](docs/BlocksApi.md#blocksidget) | **Get** /blocks/{id} | Get Blocks by ID.
@@ -43,6 +44,7 @@ Class | Method | HTTP request | Description
  - [Account](docs/Account.md)
  - [AccountExpandable](docs/AccountExpandable.md)
  - [AccountPublicKey](docs/AccountPublicKey.md)
+ - [AccountPublicKeys](docs/AccountPublicKeys.md)
  - [AggregatedSignature](docs/AggregatedSignature.md)
  - [Block](docs/Block.md)
  - [BlockEvents](docs/BlockEvents.md)
