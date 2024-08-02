@@ -462,11 +462,11 @@ Cycle Objective(s):
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
 **Done last sprint**
-- T-systems contract for continued lease & additional delegation
+- EN operator contract for lease
 - Work with Dete on future fee on Flow (not be launched with Crescendo launch)
 
 **This sprint**
-- Work with T-systems team to get their execution node live
+- Get the execution node live
 - Continue supporting rewards platform team on Tokenomics related analysis
 - Model stable state economics, throughput, fees and inflation
 - Draft research doc that explains the vision
