@@ -21,4 +21,8 @@ message NodeVersionInfo {
     // If the node started after the beginning of the spork, it is the height of the first sealed block
     // indexed.
     uint64 node_root_block_height = 6;
+    // The first block that the node's version supports.
+    uint64 start_height = 7;
+    // The last block the node's version supports.
+    uint64 end_height = 8;
 }
