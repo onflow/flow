@@ -354,6 +354,16 @@ Cycle Objective(s):
 - Migration Contract Staging Contract
 - [BUG] Running into event limits on staging for long contracts
 
+**FCL Discovery**
+- [Revamp Milestone 1 - Collapsed View](https://github.com/onflow/fcl-discovery/issues/193)
+  - Add "Get Wallet" Page
+  - Combine mobile/extension wallets of same provider
+  - Add "Connect Wallet" Page where users select desired platform
+  - Fix Sentry issues
+  - Convert frontend to use `/api/wallets` route
+
+**VS Code Extension**
+- `textDocument/documentSymbol` failed keeps showing
 
 **This sprint**
 **Sprint goal focusing on: Flow Cross VM Bridge, FCL x Discovery Revamp, Crescendo Rewards**
