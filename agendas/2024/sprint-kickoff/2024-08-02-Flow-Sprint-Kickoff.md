@@ -462,13 +462,15 @@ Cycle Objective(s):
 Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
 
 **Done last sprint**
+- T-systems contract for continued lease & additional delegation
+- Work with Dete on future fee on Flow (not be launched with Crescendo launch)
 
 **This sprint**
-- Send out T-systems contract for continued lease and additional delegation; work with team to get the node live
+- Work with T-systems team to get their execution node live
 - Continue supporting rewards platform team on Tokenomics related analysis
-- Agreement with Dete and team on MVP of dynamic fee to be launched with Crescendo launch
-- Draft FLIP for dynamic fee
-- Identify next steps for Coinbase node operation
+- Model stable state economics, throughput, fees and inflation
+- Draft research doc that explains the vision
+- Organize monthly GWG
 
 **On Hold**
 
