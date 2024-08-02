@@ -230,6 +230,12 @@ Cycle Objective(s):
     - [Smart contract changes](https://github.com/onflow/flow-core-contracts/pull/440)
     - Adding EFM Recovery parameters to KVStore ([1](https://github.com/onflow/flow-go/pull/6272), [2](https://github.com/onflow/flow-go/pull/6209), [3](https://github.com/onflow/flow-go/pull/6229))
 
+* <ins>Cryptography</ins>
+  - java-SDK
+    - hashing clean up and new algos support ([merged](https://github.com/onflow/flow-jvm-sdk/pull/52))
+    - refactor ECDSA signing and support the SEC curve ([merged](https://github.com/onflow/flow-jvm-sdk/pull/71))
+  - looking at vector commitments papers for state proof optimizations ([summary](https://www.notion.so/flowfoundation/State-proofs-with-vector-commitments-b02d962a88b349d0be52e57eee3f6695))
+
 **This sprint**
 
 * <ins>EFM Recovery</ins>
@@ -250,9 +256,9 @@ Cycle Objective(s):
     - Start registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066), [Issue #6068](https://github.com/onflow/flow-go/issues/6068))
 
 * <ins>Cryptography:</ins>
-   - Continue state proof brainstorm and research
-   - java-SDK: merge the hashing PR + create signing issues
-   - SPoCK aggregation research/analysis: will continue over more sprints
+  - java-SDK: more tests on transaction signing and prepare for a release
+  - crypto module: integrate the new BLST release
+  - back to SPoCK aggregation if possible: contine with BLS aggregation security proofs
 
 * <ins>Rosetta:</ins>
   - KROK: 
