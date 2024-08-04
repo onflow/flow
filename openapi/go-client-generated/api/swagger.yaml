@@ -707,6 +707,56 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /accounts/{address}/balance:
+    get:
+      tags:
+      - Accounts
+      summary: Get an Account Balance By Address
+      description: Get an account balance by provided address in latest "sealed" block
+        or by provided block height.
+      parameters:
+      - name: address
+        in: path
+        description: The address of the account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/Address'
+      - name: block_height
+        in: query
+        description: The block height to query for the account balance. "sealed" is
+          used by default.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: '#/components/schemas/BlockHeight'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountBalance'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /accounts/{address}/keys/{index}:
     get:
       tags:
@@ -1179,6 +1229,17 @@ components:
         _expandable:
           keys: keys
           contracts: contracts
+    AccountBalance:
+      required:
+      - balance
+      type: object
+      properties:
+        balance:
+          type: string
+          description: Flow balance of the account.
+          format: uint64
+      example:
+        balance: balance
     AccountPublicKey:
       required:
       - hashing_algorithm
