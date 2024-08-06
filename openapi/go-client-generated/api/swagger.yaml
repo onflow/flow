@@ -2073,13 +2073,13 @@ components:
     NodeVersionInfo:
       required:
       - commit
-      - end_height
       - node_root_block_height
       - protocol_version
+      - protocol_version_end_height
+      - protocol_version_start_height
       - semver
       - spork_id
       - spork_root_block_height
-      - start_height
       type: object
       properties:
         semver:
@@ -2097,19 +2097,19 @@ components:
         node_root_block_height:
           type: string
           format: uint64
-        start_height:
+        protocol_version_start_height:
           type: string
           format: uint64
-        end_height:
+        protocol_version_end_height:
           type: string
           format: uint64
       example:
         protocol_version: protocol_version
-        end_height: end_height
         semver: semver
         commit: commit
-        start_height: start_height
+        protocol_version_start_height: protocol_version_start_height
         node_root_block_height: node_root_block_height
+        protocol_version_end_height: protocol_version_end_height
         spork_id: spork_id
         spork_root_block_height: spork_root_block_height
     SubscribeEvents:

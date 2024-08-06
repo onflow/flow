@@ -1202,8 +1202,8 @@ components:
         - protocol_version
         - spork_root_block_height
         - node_root_block_height
-        - start_height
-        - end_height
+        - protocol_version_start_height
+        - protocol_version_end_height
       properties:
         semver:
           type: string
@@ -1220,10 +1220,10 @@ components:
         node_root_block_height:
           type: string
           format: uint64
-        start_height:
+        protocol_version_start_height:
           type: string
           format: uint64
-        end_height:
+        protocol_version_end_height:
           type: string
           format: uint64
     SubscribeEvents:
