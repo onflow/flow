@@ -22,7 +22,7 @@ message NodeVersionInfo {
     // indexed.
     uint64 node_root_block_height = 6;
     // The first block that the node's version supports.
-    uint64 start_height = 7;
+    uint64 protocol_version_start_height = 7;
     // The last block the node's version supports.
-    uint64 end_height = 8;
+    uint64 protocol_version_end_height = 8;
 }
