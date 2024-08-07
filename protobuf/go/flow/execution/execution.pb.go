@@ -1216,7 +1216,8 @@ func (m *GetTransactionExecutionMetricsAfterRequest) GetBlockHeight() uint64 {
 // The response contains the execution metrics for transactions in each block
 // after the requested block height. The execution node only keeps a limited
 // number of blocks in memory, so the response may not contain metrics for all
-// blocks. Only finalized and excecuted blocks will be in .
+// blocks. Only finalized and executed blocks will be in the response.
+// The blocks are sorted by block height in descending order.
 type GetTransactionExecutionMetricsAfterResponse struct {
 	// a list of results for each block
 	Results              []*GetTransactionExecutionMetricsAfterResponse_Result `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty"`
