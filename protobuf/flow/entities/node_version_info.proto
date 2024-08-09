@@ -5,6 +5,13 @@ package flow.entities;
 option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
 option java_package = "org.onflow.protobuf.entities";
 
+message CompatibleRange {
+    // The first block that the version supports.
+    uint64 start_height = 1;
+    // The last block that the version supports.
+    uint64 end_height = 2;
+}
+
 message NodeVersionInfo {
     // The currently running node software version.
     string semver = 1;
@@ -21,8 +28,6 @@ message NodeVersionInfo {
     // If the node started after the beginning of the spork, it is the height of the first sealed block
     // indexed.
     uint64 node_root_block_height = 6;
-    // The first block that the node's version supports.
-    uint64 protocol_version_start_height = 7;
-    // The last block the node's version supports.
-    uint64 protocol_version_end_height = 8;
+    // The compatible execution version range.
+    CompatibleRange execution_version_range = 7;
 }
