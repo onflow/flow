@@ -1193,6 +1193,17 @@ components:
       properties:
         chain_id:
           type: string
+    CompatibleRange:
+      type: object
+      description: A compatible version range.
+      required:
+        - start_height
+        - end_height
+      properties:
+        start_height:
+          type: string
+        end_height:
+          type: string
     NodeVersionInfo:
       type: object
       required:
@@ -1202,8 +1213,7 @@ components:
         - protocol_version
         - spork_root_block_height
         - node_root_block_height
-        - protocol_version_start_height
-        - protocol_version_end_height
+        - execution_version_range
       properties:
         semver:
           type: string
@@ -1220,12 +1230,8 @@ components:
         node_root_block_height:
           type: string
           format: uint64
-        protocol_version_start_height:
-          type: string
-          format: uint64
-        protocol_version_end_height:
-          type: string
-          format: uint64
+        execution_version_range:
+          $ref: '#/components/schemas/CompatibleRange'
     SubscribeEvents:
       type: object
       properties:

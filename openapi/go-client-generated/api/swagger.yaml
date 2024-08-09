@@ -2070,13 +2070,26 @@ components:
           type: string
       example:
         chain_id: chain_id
+    CompatibleRange:
+      required:
+      - end_height
+      - start_height
+      type: object
+      properties:
+        start_height:
+          type: string
+        end_height:
+          type: string
+      description: A compatible version range.
+      example:
+        end_height: end_height
+        start_height: start_height
     NodeVersionInfo:
       required:
       - commit
+      - execution_version_range
       - node_root_block_height
       - protocol_version
-      - protocol_version_end_height
-      - protocol_version_start_height
       - semver
       - spork_id
       - spork_root_block_height
@@ -2097,19 +2110,16 @@ components:
         node_root_block_height:
           type: string
           format: uint64
-        protocol_version_start_height:
-          type: string
-          format: uint64
-        protocol_version_end_height:
-          type: string
-          format: uint64
+        execution_version_range:
+          $ref: '#/components/schemas/CompatibleRange'
       example:
         protocol_version: protocol_version
+        execution_version_range:
+          end_height: end_height
+          start_height: start_height
         semver: semver
         commit: commit
-        protocol_version_start_height: protocol_version_start_height
         node_root_block_height: node_root_block_height
-        protocol_version_end_height: protocol_version_end_height
         spork_id: spork_id
         spork_root_block_height: spork_root_block_height
     SubscribeEvents:
