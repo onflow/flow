@@ -2087,7 +2087,6 @@ components:
     NodeVersionInfo:
       required:
       - commit
-      - execution_version_range
       - node_root_block_height
       - protocol_version
       - semver
@@ -2110,14 +2109,14 @@ components:
         node_root_block_height:
           type: string
           format: uint64
-        execution_version_range:
+        compatible_range:
           $ref: '#/components/schemas/CompatibleRange'
       example:
         protocol_version: protocol_version
-        execution_version_range:
+        semver: semver
+        compatible_range:
           end_height: end_height
           start_height: start_height
-        semver: semver
         commit: commit
         node_root_block_height: node_root_block_height
         spork_id: spork_id

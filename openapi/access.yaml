@@ -1213,7 +1213,6 @@ components:
         - protocol_version
         - spork_root_block_height
         - node_root_block_height
-        - execution_version_range
       properties:
         semver:
           type: string
@@ -1230,7 +1229,7 @@ components:
         node_root_block_height:
           type: string
           format: uint64
-        execution_version_range:
+        compatible_range:
           $ref: '#/components/schemas/CompatibleRange'
     SubscribeEvents:
       type: object

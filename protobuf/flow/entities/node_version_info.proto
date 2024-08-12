@@ -28,6 +28,6 @@ message NodeVersionInfo {
     // If the node started after the beginning of the spork, it is the height of the first sealed block
     // indexed.
     uint64 node_root_block_height = 6;
-    // The compatible execution version range.
-    CompatibleRange execution_version_range = 7;
+    // The compatible version range.
+    CompatibleRange compatible_range = 7;
 }
