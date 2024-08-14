@@ -266,18 +266,36 @@ Cycle Objective(s):
 
 ### **Infra - JP**
 Cycle Objective(s): 
-- Migrate CloudFlare zones to new account
-- Prepare for Crescendo TN spork
-- Assist with EVM GW monitoring & preparation
+- Prepare flow.com, onflow.org & nodes.onflow.org domains for CloudFlare account migration
+- Prepare to spork FF & DL nodes 
 
 **Done last sprint**
 
+**CloudFlare**
+- [Migrate benchmark.onflow.org & benchnet.onflow.org to FF CloudFlare account](https://github.com/dapperlabs/terraform/pull/4319/files)
+
+**EVM Gateway**
+- [Create infra for Devnet EVM GW](https://github.com/dapperlabs/terraform/pull/4321) 
+- [Create KMS keys for Devnet EVM GW](https://github.com/dapperlabs/terraform/pull/4320) 
+- [Fix DNS records for Devnet EVM GW](https://github.com/dapperlabs/terraform/pull/4324)
+- [Create EVM GW Ansible config for Devnet](https://github.com/dapperlabs/dapper-flow-hosting/pull/1559)
+- [Create Dashboard for EVM GW Monitoring](https://flowfoundation.grafana.net/d/fdtxeq977nif4d/evm-gateway?var-network=devnet0&var-lb=testnet&from=now-5m&to=now&timezone=browser)
+- [Create Documentation for Monitoring & Access](https://www.notion.so/flowfoundation/EVM-Gateway-b5e363611abf4dfa963a471877cb5b92)
+- Create Alerts for Monitoring EVM GW System usage
+
+**Spork**
+- [Create Ansible Configuration for TN51 spork](https://github.com/dapperlabs/dapper-flow-hosting/pull/1558)
+- [Create Infra for TN51 Spork](https://github.com/dapperlabs/dapper-flow-hosting/pull/1558)
+- [Create Buckets for traces](https://github.com/dapperlabs/terraform/pull/4334)
+
+**Support**
+- [Create DNS record for bridge.flow.com](https://github.com/dapperlabs/terraform/pull/4335/files)
+- [Create KMS Key for USDC Contract](https://github.com/dapperlabs/terraform/pull/4326)
 
 **This Sprint**
-- Continue Migrating CloudFlare zones 
-- Prepare EVM Gateway for TN Network Upgrade
-- Prepare Infra & configuration for TN Network upgrade
-- Assist with EVM Gateway Monitoring & Alerting
+- Prepare CloudFlare zones for flow.com, onflow.org, and nodes.onflow.org migration 
+- Deploy MN EVM GW in preparation for MN spork 
+- Prepare Infra & configuration for MN Network upgrade
 
 ---
 
