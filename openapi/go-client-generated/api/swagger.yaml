@@ -2070,6 +2070,20 @@ components:
           type: string
       example:
         chain_id: chain_id
+    CompatibleRange:
+      required:
+      - end_height
+      - start_height
+      type: object
+      properties:
+        start_height:
+          type: string
+        end_height:
+          type: string
+      description: A compatible version range.
+      example:
+        end_height: end_height
+        start_height: start_height
     NodeVersionInfo:
       required:
       - commit
@@ -2095,9 +2109,14 @@ components:
         node_root_block_height:
           type: string
           format: uint64
+        compatible_range:
+          $ref: '#/components/schemas/CompatibleRange'
       example:
         protocol_version: protocol_version
         semver: semver
+        compatible_range:
+          end_height: end_height
+          start_height: start_height
         commit: commit
         node_root_block_height: node_root_block_height
         spork_id: spork_id
