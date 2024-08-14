@@ -1262,9 +1262,48 @@
       }
     },
     "testnet": {
+     "testnet51": {
+        "id": 51,
+        "live": true,
+        "name": "Testnet51",
+        "sporkTime": "2024-08-14T15:00:00Z",
+        "rootHeight": "211176670",
+        "rootParentId": "c92e07e5d4fbb3a64e0091085a190a4a1119bfc628c71efe513e373dc0482f5a",
+        "rootStateCommitment": "c3af77992f253f4dcfeac808912ff68e6f10923aa3fc4541a2e39eb9786c9eb3",
+        "gitCommitHash": "eeac47931cd6837ec6e29c4c0480609238959ccd",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-51-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-51/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-51/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-51/public-root-information/node-infos.pub.json"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": ""
+          }
+        },
+        "tags": {
+          "flow-go-tag": "v0.37.1",
+          "flow-dps-tag": "v0.37.1",
+          "cadence-tag": "v0.37.1",
+          "docker-tag": "v0.37.1"
+        },
+        "accessNodes": [
+          "access.devnet.nodes.onflow.org:9000"
+        ],
+        "seedNodes": [
+          {
+            "address": "access-003.devnet51.nodes.onflow.org:3570",
+            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+          }
+        ]
+      },
      "testnet50": {
         "id": 50,
-        "live": true,
+        "live": false,
         "name": "Testnet50",
         "sporkTime": "2024-05-20T08:00:00Z",
         "rootHeight": "185185854",
@@ -1292,15 +1331,15 @@
           "docker-tag": "v0.33.23-failure-mode-revert-patch"
         },
         "accessNodes": [
-          "access.devnet.nodes.onflow.org:9000"
+          "access-001.devnet50.nodes.onflow.org:9000"
         ],
         "seedNodes": [
           {
-            "address": "access-003.devnet50.nodes.onflow.org:3570",
+            "address": "access-001.devnet50.nodes.onflow.org:3570",
             "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
           }
         ]
-      },   
+      },
       "testnet49": {
         "id": 49,
         "live": false,
