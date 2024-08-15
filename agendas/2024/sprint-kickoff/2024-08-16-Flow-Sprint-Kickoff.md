@@ -1,10 +1,10 @@
 # Overview
 
 ### Team Wins 🎉
+
+- Crescendo live on Testnet!
 - Testnet Faucet is working with Cadence 1.0
 - USDCflow - Contract Deployment, [Docs](https://cadence-lang.org/docs/1.0/cadence-migration-guide/usdc-migration), and Flow Port Swap
-
-
 
 
 ### General updates
@@ -77,24 +77,100 @@ Cycle Objective(s):
 **Done last sprint**
 
 
+**Cadence Language**
+- Approved [FLIP 282: Import of pre-Cadence 1.0 Programs](https://github.com/onflow/flips/pull/283)
+- Contract update checker improvement: [Check updated contract name](https://github.com/onflow/cadence/pull/3530)
+
+**Cadence Execution**
+- Utility
+    - [Add a command to print all system addresses](https://github.com/onflow/flow-go/pull/6339)
+    - [Add support for detecting differing accounts](https://github.com/onflow/flow-go/pull/6225)
+- Atree improvement, enables simplifying of flow-go and Cadence codebase:
+    - [Add utility function SlabID.Address()](https://github.com/onflow/atree/issues/431)
+- CBOR improvement:
+    - [Add functions to check availablility of CBOR tag numbers](https://github.com/onflow/atree/pull/434)
+
+**EVM Core**
+- Bugfixes (Axelar blockers):
+    - [Patch storage root value issue](https://github.com/onflow/flow-go/pull/6295)
+    - [Deprecate legacy self destruct in the storage](https://github.com/onflow/flow-go/pull/6289)
+- Improvements:
+    - [skip debug trace uploading step if bucket name is empty](https://github.com/onflow/flow-go/pull/6335)
+    - [patch evm debug tracer to collect results and reset internal state after each tx execution](https://github.com/onflow/flow-go/pull/6327)
+    - [Populate all fields for the genesis block](https://github.com/onflow/flow-go/pull/6325)
+    - [port missing tracing updates to previewnet](https://github.com/onflow/flow-go/pull/6324)
+    - [improve debug tracing](https://github.com/onflow/flow-go/pull/6299)
+    - [patch backoff block loading](https://github.com/onflow/flow-go/pull/6286)
+    - [code and doc clean up](https://github.com/onflow/flow-go/pull/6252)
+
+**EVM Gateway**
+- Features:
+    - [Index only mode](https://github.com/onflow/flow-evm-gateway/pull/416)
+    - [Ensure indexing is idempotent](https://github.com/onflow/flow-evm-gateway/issues/400)
+- Bugfixes:
+    - [eth_getLogs does not validate the topics length](https://github.com/onflow/flow-evm-gateway/issues/422)
+    - [Block tags are not supported for eth_getTransactionByBlockNumberAndIndex](https://github.com/onflow/flow-evm-gateway/issues/419)
+    - [Block tags are not supported in eth_getBlockTransactionCountByNumber](https://github.com/onflow/flow-evm-gateway/issues/418)
+    - [eth_getBlockByNumber() not responsive to 'earliest' flag](https://github.com/onflow/flow-evm-gateway/issues/371)
+- Improvements:
+    - [Derive storage address from chain id](https://github.com/onflow/flow-evm-gateway/pull/435)
+    - [Report API crashers](https://github.com/onflow/flow-evm-gateway/issues/384)
+    - [General improvements to the metrics](https://github.com/onflow/flow-evm-gateway/pull/424)
+    - [Add lock during transaction build](https://github.com/onflow/flow-evm-gateway/pull/421)
+    - [Fix error logging](https://github.com/onflow/flow-evm-gateway/pull/438)
+    - [Remove Genesis block patch introduced for PreviewNet ](https://github.com/onflow/flow-evm-gateway/pull/434)
+    - [Minor fixes](https://github.com/onflow/flow-evm-gateway/pull/431)
+- Testing:
+    - [E2E network test improvements](https://github.com/onflow/flow-evm-gateway/pull/436)
+    - [Add live network tests](https://github.com/onflow/flow-evm-gateway/pull/432)
+
+**Crescendo TN upgrade**
+- State migration fixes & improvements:
+    - Fixing capability migration (discovered during setting network addresses on migrationmainnet):
+        - [Report the stored path of the untyped-capability](https://github.com/onflow/flow-go/pull/6328)
+        - [Add capability stored path info to the report](https://github.com/onflow/cadence/pull/3524)
+        - [Improve storage path capability migration reporting](https://github.com/onflow/cadence/pull/3522)
+        - [Improve borrow type inferrence for storage path capabilities](https://github.com/onflow/cadence/pull/3520)
+        - [Infer missing borrow type for storage capabilities](https://github.com/onflow/cadence/pull/3519)
+        - [Improve storage capability migration](https://github.com/onflow/flow-go/pull/6322)
+        - [Avoid conversion from sema-type to StaticType in storage cap migration](https://github.com/onflow/cadence/pull/3517)
+        - [Improve storage capability migration](https://github.com/onflow/cadence/pull/3516)
+        - [Merge and commit changes after issuing cap cons](https://github.com/onflow/flow-go/pull/6315)
+        - [Report and skip storage caps with no borrow type](https://github.com/onflow/flow-go/pull/6312)
+        - [Fix migration of storage path capabilities](https://github.com/onflow/flow-go/pull/6306)
+        - [Set capability issue handler in capability value migration](https://github.com/onflow/flow-go/pull/6303)
+- Dependency updates: [1](https://github.com/onflow/flow-cli/pull/1696), [2](https://github.com/onflow/flow-evm-gateway/pull/430), [3](https://github.com/onflow/flixkit-go/pull/74), [4](https://github.com/onflow/cadence-tools/pull/413), [5](https://github.com/onflow/flowkit/pull/69), [6](https://github.com/onflow/cadence-tools/pull/412), [7](https://github.com/onflow/flow-emulator/pull/728), [8](https://github.com/onflow/cadence-tools/pull/411), [9](https://github.com/onflow/flow-go-sdk/pull/726), [10](https://github.com/onflow/flow-go-sdk/pull/725), [11](https://github.com/onflow/flow-go/pull/6326), [12](https://github.com/onflow/flow-go/pull/6326), [13](https://github.com/onflow/flow-go-sdk/pull/724), [14](https://github.com/onflow/flow-go/pull/6317), [15](https://github.com/onflow/flow-go-sdk/pull/723), [16](https://github.com/onflow/flow-go-sdk/pull/720), [17](https://github.com/onflow/flow-emulator/pull/725), [18](https://github.com/onflow/cadence-tools/pull/410), [19](https://github.com/janezpodhostnik/flow-py-sdk/pull/62)
+- infra/config: [1](https://github.com/dapperlabs/dapper-flow-hosting/pull/1562), [2](https://github.com/dapperlabs/dapper-flow-hosting/pull/1556), [3](https://github.com/dapperlabs/dapper-flow-hosting/pull/1554), [4](https://github.com/dapperlabs/dapper-flow-hosting/pull/1552), [5](https://github.com/onflow/flow-evm-gateway/pull/414), [6](https://github.com/dapperlabs/dapper-flow-hosting/pull/1551)
+- publishing staged contracts report: [1](https://github.com/onflow/cadence/pull/3525), [2](https://github.com/onflow/cadence/pull/3510)
+
+
 **This sprint**
 
- - Objective 1, KR4: Testnet Upgrade to Crescendo Release
-   - Continue: [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
-   - Investigate / Fix any security report incoming from bug bounty.
-   - Upgrade TN to Crescendo release
+- Objective 1, KR5: Mainnet Upgrade to Crescendo Release
+  - Investigate and fix any high/critical severity issues reported on Crescendo on TN ([Crescendo launch on Mainnet tasklist](https://github.com/onflow/cadence/issues/2642))
+  - [Create util command to check storage health of execution state](https://github.com/onflow/flow-go/issues/6350)
+  - Continue: [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
+  - Investigate / Fix any security report incoming from bug bounty.
 
- - Objective 2, KR 1: Update transaction fees weights for the execution operations on TN and MN
-   -  Continue work on [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
+- Objective 2, KR 1: Update transaction fees weights for the execution operations on TN and MN
+  -  Continue work on [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
 
 - EVM 
-  - Continue testing EVM GW stability
+  - Continue monitoring EVM GW stability
+  - Start work on [local state index](https://github.com/onflow/flow-evm-gateway/issues/322)
   - KROK
      - EVM Gateway benchmarking
+
+- EVM Gateway
+  - continue work on [Metrics](https://github.com/onflow/flow-evm-gateway/issues/125) and [Benchmarking](https://github.com/onflow/flow-evm-gateway/issues/19)
+
+- Badger -> Pebble Investigation/POC
+  - Continue evaluation of [Protocol State Migration POC](https://github.com/onflow/flow-go/issues/6137) & schedule design discussion
 
 **Completed OKRs**
   * Objective 1, KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
     * All breaking  released in a new CLI: v1.18.0-cadence-v1.0.0-preview.26
+  * Objective 1, KR4: Testnet Upgrade to Crescendo Release
   * Objective 4, KR1: Execution node handles restart from spork root block reguardless of how many blocks it is behind
     * Completed refactoring of Ingestion engine to [prevent EN entering crash loop](https://github.com/onflow/flow-go/issues/5298)
 
