@@ -82,16 +82,16 @@ Cycle Objective(s):
 - Utility
     - [Add a command to print all system addresses](https://github.com/onflow/flow-go/pull/6339)
     - [Add support for detecting differing accounts](https://github.com/onflow/flow-go/pull/6225)
-- Atree improvement, enables simplifying of flow-go and Cadence codebase
+- Atree improvement, enables simplifying of flow-go and Cadence codebase:
     - [Add utility function SlabID.Address()](https://github.com/onflow/atree/issues/431)
-- CBOR improvement
+- CBOR improvement:
     - [Add functions to check availablility of CBOR tag numbers](https://github.com/onflow/atree/pull/434)
 
 **EVM Core**
-- Bugfix (Axelar blocker)
+- Bugfixes (Axelar blockers):
     - [Patch storage root value issue](https://github.com/onflow/flow-go/pull/6295)
     - [Deprecate legacy self destruct in the storage](https://github.com/onflow/flow-go/pull/6289)
-- Improvement
+- Improvements:
     - [skip debug trace uploading step if bucket name is empty](https://github.com/onflow/flow-go/pull/6335)
     - [patch evm debug tracer to collect results and reset internal state after each tx execution](https://github.com/onflow/flow-go/pull/6327)
     - [Populate all fields for the genesis block](https://github.com/onflow/flow-go/pull/6325)
@@ -101,15 +101,15 @@ Cycle Objective(s):
     - [code and doc clean up](https://github.com/onflow/flow-go/pull/6252)
 
 **EVM Gateway**
-- Feature
+- Features:
     - [Index only mode](https://github.com/onflow/flow-evm-gateway/pull/416)
     - [Ensure indexing is idempotent](https://github.com/onflow/flow-evm-gateway/issues/400)
-- Bugfix
+- Bugfixes:
     - [eth_getLogs does not validate the topics length](https://github.com/onflow/flow-evm-gateway/issues/422)
     - [Block tags are not supported for eth_getTransactionByBlockNumberAndIndex](https://github.com/onflow/flow-evm-gateway/issues/419)
     - [Block tags are not supported in eth_getBlockTransactionCountByNumber](https://github.com/onflow/flow-evm-gateway/issues/418)
     - [eth_getBlockByNumber() not responsive to 'earliest' flag](https://github.com/onflow/flow-evm-gateway/issues/371)
-- Improvement
+- Improvements:
     - [Derive storage address from chain id](https://github.com/onflow/flow-evm-gateway/pull/435)
     - [Report API crashers](https://github.com/onflow/flow-evm-gateway/issues/384)
     - [General improvements to the metrics](https://github.com/onflow/flow-evm-gateway/pull/424)
@@ -117,13 +117,13 @@ Cycle Objective(s):
     - [Fix error logging](https://github.com/onflow/flow-evm-gateway/pull/438)
     - [Remove Genesis block patch introduced for PreviewNet ](https://github.com/onflow/flow-evm-gateway/pull/434)
     - [Minor fixes](https://github.com/onflow/flow-evm-gateway/pull/431)
-- Testing
+- Testing:
     - [E2E network test improvements](https://github.com/onflow/flow-evm-gateway/pull/436)
     - [Add live network tests](https://github.com/onflow/flow-evm-gateway/pull/432)
 
 **Crescendo TN upgrade**
-- State migration fixes & improvements
-    - Fixing capability migration (discovered during setting network addresses on migrationmainnet)
+- State migration fixes & improvements:
+    - Fixing capability migration (discovered during setting network addresses on migrationmainnet):
         - [Report the stored path of the untyped-capability](https://github.com/onflow/flow-go/pull/6328)
         - [Add capability stored path info to the report](https://github.com/onflow/cadence/pull/3524)
         - [Improve storage path capability migration reporting](https://github.com/onflow/cadence/pull/3522)
