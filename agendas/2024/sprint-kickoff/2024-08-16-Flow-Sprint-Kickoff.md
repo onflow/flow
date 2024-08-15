@@ -1,7 +1,10 @@
 # Overview
 
 ### Team Wins 🎉
+
 - Crescendo live on Testnet!
+- Testnet Faucet is working with Cadence 1.0
+- USDCflow - Contract Deployment, [Docs](https://cadence-lang.org/docs/1.0/cadence-migration-guide/usdc-migration), and Flow Port Swap
 
 
 ### General updates
@@ -273,12 +276,89 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**Crescendo Rewards**
+
+**Smart Contracts**
+- Deployed Rewards Contract to Testnet
+- Successfully staged and migrated
+
+**Backend**
+
+- [Update Cadence code for minted fields]https://github.com/onflow/crescendo-rewards-be/issues/62)
+- [Remove accounts table](https://github.com/onflow/crescendo-rewards-be/issues/32)
+- [Script/Tx config based on environment](https://github.com/onflow/crescendo-rewards-be/issues/67)
+- [Setup last synced](https://github.com/onflow/crescendo-rewards-be/pull/69)
+- [Setup environment configurations](https://github.com/onflow/crescendo-rewards-be/issues/74)
+- [Setup testing](https://github.com/onflow/crescendo-rewards-be/issues/76) 
+
+**Frontend**
+
+- [Create new partner card](https://github.com/onflow/crescendo-rewards/issues/78)
+- [Refactor countdown card to use on various pages](https://github.com/onflow/crescendo-rewards/issues/80)
+- [Add locking form](https://github.com/onflow/crescendo-rewards/pull/83)
+- [Setup flow configuration](https://github.com/onflow/crescendo-rewards/issues/84)
+- [Change nft selection on carousel change](https://github.com/onflow/crescendo-rewards/pull/86)
+- [Add logic for locking to new or existing NFTs](https://github.com/onflow/crescendo-rewards/pull/87)
+- [Use lock end date from chain for countdown card](https://github.com/onflow/crescendo-rewards/issues/88)
+- [Add last synced to leaderboard](https://github.com/onflow/crescendo-rewards/issues/51)
+- [Resolve and display NFT](https://github.com/onflow/crescendo-rewards/issues/92)
+- [Handle NFT selection and deselection for locking form](https://github.com/onflow/crescendo-rewards/pull/94)
+- [Add metrics to rewards page](https://github.com/onflow/crescendo-rewards/pull/96)
+- [Refresh rewards page after lock](https://github.com/onflow/crescendo-rewards/issues/98)
+- [Add not connected wallet state on lock page](https://github.com/onflow/crescendo-rewards/issues/100)
+- [Add subheader](https://github.com/onflow/crescendo-rewards/issues/102) 
+- [Change partner grid layout to match new mock](https://github.com/onflow/crescendo-rewards/pull/104) 
+
+**X-Chain Axelar Bridge**
+- [Flow Bridge App Epic](https://github.com/onflow/flow-bridge-app/issues/1)
+
+**FCL Discovery**
+
+- [Custom-rendered QR codes](https://github.com/onflow/fcl-discovery/issues/212)
+- [Use Chakra theming properly](https://github.com/onflow/fcl-discovery/issues/214)
+- [Adjust Wallet Selection page to match designs](https://github.com/onflow/fcl-discovery/issues/215)
+- [GetWallet page does not respond to screen size changes properly](https://github.com/onflow/fcl-discovery/issues/217)
+- [walletUid appearing in /api/wallets result](https://github.com/onflow/fcl-discovery/issues/222)
+- [Implement authn bypass for extension services](https://github.com/onflow/fcl-discovery/issues/226)
+- [QR doesn't work in dark mode](https://github.com/onflow/fcl-discovery/issues/227)
+- [Add loading spinner to handle QR delay](https://github.com/onflow/fcl-discovery/issues/228)
+- [Mobile deeplinking](https://github.com/onflow/fcl-discovery/issues/232)
+- [Responsive modal for mobile](https://github.com/onflow/fcl-discovery/issues/233)
+- [Fix popup blocker issue with deeplinks on mobile](https://github.com/onflow/fcl-discovery/issues/235)
+- [Cleanup install links](https://github.com/onflow/fcl-discovery/issues/240)
+
+**VS Code Extension**
+
+- [InternalEVM is not recognized & results in problems within EVM contract](https://github.com/onflow/vscode-cadence/issues/574) 
+
+**Lost and Found FLIP**
+
+- FLIP Created (BD enagaing Flowty)
+- Implementation work beginning for Flow Port
+
+**Faucet**
+
+- Updated for Testnet
+ 
+**Flow Port**
+
+- wUSDC Flow Port Swap and Documentation
+
+**Docs**
+
+- [Add Internal Link Icons](https://github.com/onflow/docs/issues/805)
+
+**Flow CLI**
+
+- [Fix EVM contract in C1.0 Update Validator](https://github.com/onflow/flow-cli/issues/1693)
+
+**Smart Contracts**
+
+- [wUSDC Contract](https://github.com/onflow/bridged-usdc) 
 
 **This sprint**
-**Sprint goal focusing on: Flow Cross VM Bridge, FCL x Discovery Revamp, Crescendo Rewards**
+**Sprint goal Flow Axelar Cross-chain Bridge / Documentation Updates, Crescendo Rewards, FCL Discovery and WC Integration, Lost and Found (Integration - Flow Port, Flow Wallet)**
 
-- wUSDC Swap UI (Flow Port)
-- [wUSDC Contract](https://github.com/onflow/bridged-usdc) 
 - [EPIC] Crescendo Rewards Portal
   - [FE](https://github.com/onflow/crescendo-rewards/issues/1 )
   - [BE](https://github.com/onflow/crescendo-rewards-be/issues/1)
