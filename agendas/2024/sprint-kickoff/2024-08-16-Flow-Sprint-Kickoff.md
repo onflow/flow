@@ -30,14 +30,12 @@
 
 ## Incidents
 
-### Mainnet
-- Sev 4 - 07/18: Consensus nodes crashed intermittently due to OOM. [Slack thread](https://flow-foundation.slack.com/archives/CUU2KQL4A/p1721310960751829)
+None
 
 (Sev [definition](https://www.notion.so/flowfoundation/Incident-Priorities-Severity-Levels-1-e811b352feff4928b69a7e99df724c6a))
 
 ### Key Release Dates & Breaking Changes
 - Next Mainnet/Testnet network upgrade (spork):
-  - Testnet: Aug 14th 8:00 AM PT (3:00 PM UTC). Duration: 6 hours
   - Mainnet: Sept 4th **5:00 AM PT** (12:00 PM UTC). Duration: 6 hours
 
 ---
