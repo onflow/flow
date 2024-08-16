@@ -489,18 +489,19 @@ Cycle Objective(s):
 ---
 
 ### **Governance and Tokenomics** \[Kshitij]
-Cycle Objective(s): Transaction fees on EVM, increasing transaction fees and inflation reduction plan.
+Cycle Objective(s): Vision for long-term tokenomics and dynamic fees on Flow, launch Flow rewards platform
 
 **Done last sprint**
-- EN operator contract for lease
-- Work with Dete on future fee on Flow (not be launched with Crescendo launch)
+- Worked with Dete on future fees on Flow (not be launched with Crescendo launch) - txn fee, storage fee, other governance topics - [see notes](https://www.notion.so/flowfoundation/Dynamic-Transaction-Fees-on-Flow-fa7e7115e43a41a99ac9ca942dabcaf2)
+- Driving Flow rewards product w/ coordination amongst DeFi, engg, product, marketing, design, etc.
 
 **This sprint**
-- Get the execution node live
-- Continue supporting rewards platform team on Tokenomics related analysis
-- Model stable state economics, throughput, fees and inflation
-- Draft research doc that explains the vision
-- Organize monthly GWG
+- Finish contract audit and make recommended changes to the lock/unlock contract
+- Deploy lock and distribution contract on mainnet; FE on rewards.flow.com
+- Design and model yield (APY) and/or monthly "boost" - see draft [yield schedule](https://docs.google.com/spreadsheets/d/1aE-Q0fLx-tLdeB7xf1JduCE0nFXfuemJ2jWove4SCJE/edit?gid=0#gid=0)
+- Design tokenomics of hotdogs (point system) and raffles
+- Drive GTM - announcement and content
+- Continue working with Dete on stable state tokenomics 
 
 **On Hold**
 
