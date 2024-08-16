@@ -277,6 +277,7 @@ Cycle Objective(s):
 - Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
 - Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
 - Use the Crescendo Release grow Flow's developer base and network activity
+- Update developer docs to remove previewn net and added new documentation for EVM data indexers
 
 **Done last sprint**
 
