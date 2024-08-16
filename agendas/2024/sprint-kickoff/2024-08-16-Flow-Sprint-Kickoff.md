@@ -5,6 +5,7 @@
 - Crescendo live on Testnet!
 - Testnet Faucet is working with Cadence 1.0
 - USDCflow - Contract Deployment, [Docs](https://cadence-lang.org/docs/1.0/cadence-migration-guide/usdc-migration), and Flow Port Swap
+- Released completed Cadence 1.0 upgraded SDK to Maven
 
 
 ### General updates
@@ -192,6 +193,18 @@ Cycle Objective(s):
 * Continue design and implementation of Sporkless Epoch Fallback Recovery solution [DONE]
 
 **Done last Sprint:**
+* <ins>EFM Recovery</ins>
+  - [DKG smart contract updates](https://github.com/onflow/flow-core-contracts/pull/441) (on hold, awaiting input from S.C. team)
+  - [Update EpochLookup component: Process EpochExtended protocol events](https://github.com/onflow/flow-go/pull/6247)
+  - Started [EFM integration test part 2](https://github.com/onflow/flow-go/issues/6164)
+  - Started [EFM Recovery transaction PR](https://github.com/onflow/flow-core-contracts/pull/440)
+  - Refactoring and TODOs for EFM[1](https://github.com/onflow/flow-go/pull/6323), [2](https://github.com/onflow/flow-go/pull/6318)
+  - [Added telemetry for KV store and EFM](https://github.com/onflow/flow-go/pull/6291)
+  - [Extended KV storage to store EpochExtensionViewCount](https://github.com/onflow/flow-go/pull/6272)
+  - [Implemented EjectIdentity service event and integrated in the protocol state](https://github.com/onflow/flow-go/pull/6296)
+  - [Implemented protocol side changes on how EpochCommit and IndexMap is being used](https://github.com/onflow/flow-go/pull/6338)
+  - Reviewing Pebble PR
+  - Testnet spork prep
 
 * <ins>Data Availability:</ins>
   - Fixes for testnet after upgrade ([PR #6340](https://github.com/onflow/flow-go/pull/6340), [PR #6342](https://github.com/onflow/flow-go/pull/6342))
@@ -199,15 +212,24 @@ Cycle Objective(s):
     - Check version control during script execution ([PR #6134](https://github.com/onflow/flow-go/pull/6134))
     - Fix bug with `select` option in REST API ([PR #6300](https://github.com/onflow/flow-go/pull/6300))
     - Use indexed height as base when pruning execution data ([PR #6217](https://github.com/onflow/flow-go/pull/6217))
+* <ins>Cryptography:</ins>
+  - JVM-SDK
+    - [Finished refactoring ECDSA signatures + added tests](https://github.com/onflow/flow-jvm-sdk/pull/71)
+    - [Extended transaction signature tests and examples PR](https://github.com/onflow/flow-jvm-sdk/pull/77)
+  - State proofs: discussions and VC constructions research
+  - Update the crypto module with a new BLST release
+  - Secure enclave blog review
 
+* <ins>Rosetta:</ins>
+  - Released completed Cadence 1.0 upgraded SDK to Maven
+  
 **This sprint**
 
 * <ins>EFM Recovery</ins>
-  - EFM Recovery Process (cont.)
-    - [Integration Test](https://github.com/onflow/flow-go/issues/6164) - test failure cases
-    - [Smart contract changes](https://github.com/onflow/flow-core-contracts/pull/440) 
-  - [DKG Data Model](https://github.com/onflow/flow-go/issues/6214)
-    - Modifying data model for DKG outputs to support DKG committee != consenssu committee
+  - Finish Pebble PR review
+  - DKG smart contract updates (cont.)
+  - Address feedback and merge [EFM Recovery transaction](https://github.com/onflow/flow-core-contracts/pull/440) PR
+  - Finish [EFM integration test part 2](https://github.com/onflow/flow-go/issues/6164)
   
 * <ins>Data Availability:</ins>
   - ProtocolDB pruning design
@@ -220,13 +242,8 @@ Cycle Objective(s):
     - Test execution data pruning on testnet ([Issue #6358](https://github.com/onflow/flow-go/issues/6358))
 
 * <ins>Cryptography:</ins>
-  - java-SDK: more tests on transaction signing and prepare for a release
-  - crypto module: integrate the new BLST release
-  - back to SPoCK aggregation if possible: contine with BLS aggregation security proofs
-
-* <ins>Rosetta:</ins>
-  - KROK: 
-    - Rosetta Cadence updates for Crescendo ([Issue #52](https://github.com/onflow/rosetta/issues/52), [Issue #54](https://github.com/onflow/rosetta/issues/54) - PRs in review)
+  - State proofs: performance estimations of some VC/set accumulator constructions
+  - Pick up SPoCK aggregation related reads if time permits
 
 * <ins>Protocol misc</ins>
   - Preparing for Testnet Spork
@@ -241,25 +258,22 @@ Cycle Objective(s):
 ### **DeFi** \[Jerome]
 
 Cycle Objective(s): 
-- Resolving Circle's existing engineering improvements for USDC on Flow
-- Cadence 1.0 DEX Prep - IncrementFi
 - EVM partner onboarding
-- Deliver Axelar bridge [PAUSED]
+- Deliver Axelar bridge
 
 **Done last sprint**
-  
-  
+  * JVM-SDK 
+    * Addressed last loose ends required to release SDK
+  * Updated deBridge integration for testnet
+  * Axelar
+    * Unblocked compatibility test failures needing resolution by Axelar
+    * Provide guidance and support to build binaries for Access Node and EVM GW for permissionless validator node operators
+  * ANKR
+    * Addressed several EVM GW issues blocking them
   
 **This sprint**
-  * JVM-SDK 
-    * Review [Add missing Access API subscription endpoints to JVM SDK](https://github.com/onflow/flow-jvm-sdk/pull/58)
-    * Complete [Add missing Access API endpoints](https://github.com/onflow/flow-jvm-sdk/pull/63)
-    * Review signature and hash update PRs, [1](https://github.com/onflow/flow-jvm-sdk/pull/53) & [2](https://github.com/onflow/flow-jvm-sdk/pull/52)
-    * Merge: [Migrate SDK examples repo to improved project structure](https://github.com/onflow/flow-jvm-sdk/pull/62)
-    * [Update Cadence to 1.0](https://github.com/onflow/flow-jvm-sdk/issues/60)
-  * Partner support
-    * Install Ethereum Attestion Service (EAS) on Previewnet (Credora requirement)
-
+  * Continue supporting Axelar, Ankr, Coinmetrics 
+  
 **On Hold**
 
 **Active Epics**
