@@ -193,6 +193,12 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>Data Availability:</ins>
+  - Fixes for testnet after upgrade ([PR #6340](https://github.com/onflow/flow-go/pull/6340), [PR #6342](https://github.com/onflow/flow-go/pull/6342))
+  - KROK Team
+    - Check version control during script execution ([PR #6134](https://github.com/onflow/flow-go/pull/6134))
+    - Fix bug with `select` option in REST API ([PR #6300](https://github.com/onflow/flow-go/pull/6300))
+    - Use indexed height as base when pruning execution data ([PR #6217](https://github.com/onflow/flow-go/pull/6217))
 
 **This sprint**
 
@@ -205,13 +211,13 @@ Cycle Objective(s):
   
 * <ins>Data Availability:</ins>
   - ProtocolDB pruning design
-  - Testing ChunkDataPack DB pruning PoC
   - KROK Team
-    - Add support for version beacon events to control script execution ([Issue #5789](https://github.com/onflow/flow-go/issues/5789) - In review, [Issue #5790](https://github.com/onflow/flow-go/issues/5790))
-    - Add support pruning pebble exec data db ([Issue #6260](https://github.com/onflow/flow-go/issues/6260))
-    - Add REST endpoints for getting account keys and balance ([Issue #6228](https://github.com/onflow/flow-go/issues/6228) - in review)
-    - Expand on payer balance checks ([Issue #6128](https://github.com/onflow/flow-go/issues/6128), [Issue #6129](https://github.com/onflow/flow-go/issues/6129), [Issue #6139](https://github.com/onflow/flow-go/issues/6139))
-    - Start registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066), [Issue #6068](https://github.com/onflow/flow-go/issues/6068))
+    - Add StopControl for access nodes ([Issue #5790](https://github.com/onflow/flow-go/issues/5790) - In review)
+    - Add support pruning pebble exec data db ([Issue #6260](https://github.com/onflow/flow-go/issues/6260) - In review)
+    - Expand on payer balance checks ([Issue #6128](https://github.com/onflow/flow-go/issues/6128) - Waiting to merge, [Issue #6129](https://github.com/onflow/flow-go/issues/6129) - In review, [Issue #6139](https://github.com/onflow/flow-go/issues/6139) - In review)
+    - Start registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066) - In review, [Issue #6068](https://github.com/onflow/flow-go/issues/6068))
+    - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357))
+    - Test execution data pruning on testnet ([Issue #6358](https://github.com/onflow/flow-go/issues/6358))
 
 * <ins>Cryptography:</ins>
   - java-SDK: more tests on transaction signing and prepare for a release
