@@ -496,6 +496,7 @@ Cycle Objective(s): Vision for long-term tokenomics and dynamic fees on Flow, la
 - Driving Flow rewards product w/ coordination amongst DeFi, engg, product, marketing, design, etc.
 
 **This sprint**
+Rewards platform tracker [link](https://github.com/orgs/onflow/projects/65/views/1)
 - Finish contract audit and make recommended changes to the lock/unlock contract
 - Deploy lock and distribution contract on mainnet; FE on rewards.flow.com
 - Design and model yield (APY) and/or monthly "boost" - see draft [yield schedule](https://docs.google.com/spreadsheets/d/1aE-Q0fLx-tLdeB7xf1JduCE0nFXfuemJ2jWove4SCJE/edit?gid=0#gid=0)
