@@ -5,7 +5,7 @@
 - Crescendo live on Testnet!
 - Testnet Faucet is working with Cadence 1.0
 - USDCflow - Contract Deployment, [Docs](https://cadence-lang.org/docs/1.0/cadence-migration-guide/usdc-migration), and Flow Port Swap
-- Released completed Cadence 1.0 upgraded SDK to Maven
+- Released completed Cadence 1.0 upgraded JVM-SDK to Maven
 
 
 ### General updates
