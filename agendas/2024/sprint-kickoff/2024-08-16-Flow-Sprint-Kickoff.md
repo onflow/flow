@@ -45,18 +45,33 @@ None
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 8  |    8 (-1)  |       0         |       7          |        **23** (-1)       |
-| Proposed    | 1  |    2    |       3 (+1)          |       0           |        **6** (+1)        |
-| Accepted    | 2  |    1     |       2       |       2 (+1)          |        **7** (+1)          |
+| Drafted     | 8  |    7 (-1)  |       0         |       7          |        **22** (-1)       |
+| Proposed    | 1  |    2    |       3          |       0           |        **6**  |
+| Accepted    | 2  |    1     |       2       |       2        |        **7**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 3 |    24 (+2)    |       1       |       0           |        **28**          |
-| Released    | 4  |    0     |       4 (+1)       |       6          |        **14** (+1)          |
-| Total       | **18** (+1)  |    **35** (+1)  |       **11** (+1)      |       **15**          |        **79** (+3)      |
+| Implemented | 3 |    25 (+1)    |       1       |       0           |        **28**          |
+| Released    | 4  |    0     |       4       |       6          |        **14**         |
+| Total       | **18**  |    **35**  |       **11**     |       **15**          |        **79**   |
 
 **Updates**
-* Crescendo Network Upgrade - proposed
-* Changing import statement semantics - accepted
-* Import of pre-Cadence 1.0 Programs - proposed and accepted
+Import of pre-Cadence 1.0 Programs (Bastian) was implemented
+
+**FLIPs that need to be reassigned immediately:**
+
+**- Application**
+  - Interaction Templates (Paul Gebheim)
+  - Application - Pool-Based DEX Swap Standard (Satyam A.)
+
+**- Cadence**
+  - Type Removal In Contract Updates  (Daniel Sainati)
+  - Optional References to Indexed Accesses (Daniel Sainati)
+  - Mutability Restrictions  (Daniel Sainati)
+  - Cadence Storage API Improvements (Daniel Sainati)
+  - Reference Creation Semantics (Daniel Sainati)
+  - View Functions (Daniel Sainati)
+  - Entitlements (Daniel Sainati)
+  - New behavior for attachments with entitlements (Daniel Sainati)
+
 
 # Working Group Updates
 
