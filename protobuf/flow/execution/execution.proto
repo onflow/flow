@@ -85,7 +85,8 @@ service ExecutionAPI {
       returns (BlockHeaderResponse);
 
   // GetTransactionExecutionMetricsAfter gets the transaction execution metrics
-  // for blocks after the given block height.
+  // for blocks after the given block height. The blocks will be sorted by
+  // descending block height.
   // If no data is available for the given block height, the response will be
   // empty. The execution node will only store metrics for a limited number of
   // blocks,  so the request may return an empty response if the requested
@@ -234,6 +235,7 @@ message BlockHeaderResponse {
 // The request for GetTransactionExecutionMetricsAfter
 message GetTransactionExecutionMetricsAfterRequest {
   // Block height after which to get transaction execution metrics.
+  // this block height will not be included in the response.
   uint64 block_height = 1;
 }
 
@@ -270,6 +272,7 @@ message GetTransactionExecutionMetricsAfterResponse {
     repeated Transaction transactions = 2;
   }
 
-  // a list of results for each block
+  // a list of results for each block sorted by block height in
+  // descending order
   repeated Result results = 1;
 }

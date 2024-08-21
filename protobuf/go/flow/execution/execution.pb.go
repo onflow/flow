@@ -1170,6 +1170,7 @@ func (m *BlockHeaderResponse) GetBlock() *entities.BlockHeader {
 // The request for GetTransactionExecutionMetricsAfter
 type GetTransactionExecutionMetricsAfterRequest struct {
 	// Block height after which to get transaction execution metrics.
+	// this block height will not be included in the response.
 	BlockHeight          uint64   `protobuf:"varint,1,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1219,7 +1220,8 @@ func (m *GetTransactionExecutionMetricsAfterRequest) GetBlockHeight() uint64 {
 // blocks. Only finalized and executed blocks will be in the response.
 // The blocks are sorted by block height in descending order.
 type GetTransactionExecutionMetricsAfterResponse struct {
-	// a list of results for each block
+	// a list of results for each block sorted by block height in
+	// descending order
 	Results              []*GetTransactionExecutionMetricsAfterResponse_Result `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                              `json:"-"`
 	XXX_unrecognized     []byte                                                `json:"-"`

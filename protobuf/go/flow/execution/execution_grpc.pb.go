@@ -73,7 +73,8 @@ type ExecutionAPIClient interface {
 	// GetBlockHeaderByID gets a block header by ID.
 	GetBlockHeaderByID(ctx context.Context, in *GetBlockHeaderByIDRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
 	// GetTransactionExecutionMetricsAfter gets the transaction execution metrics
-	// for blocks after the given block height.
+	// for blocks after the given block height. The blocks will be sorted by
+	// descending block height.
 	// If no data is available for the given block height, the response will be
 	// empty. The execution node will only store metrics for a limited number of
 	// blocks,  so the request may return an empty response if the requested
@@ -256,7 +257,8 @@ type ExecutionAPIServer interface {
 	// GetBlockHeaderByID gets a block header by ID.
 	GetBlockHeaderByID(context.Context, *GetBlockHeaderByIDRequest) (*BlockHeaderResponse, error)
 	// GetTransactionExecutionMetricsAfter gets the transaction execution metrics
-	// for blocks after the given block height.
+	// for blocks after the given block height. The blocks will be sorted by
+	// descending block height.
 	// If no data is available for the given block height, the response will be
 	// empty. The execution node will only store metrics for a limited number of
 	// blocks,  so the request may return an empty response if the requested
