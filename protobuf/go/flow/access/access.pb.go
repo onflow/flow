@@ -2772,8 +2772,7 @@ type SubscribeBlocksFromStartBlockIDRequest struct {
 	// 1. BLOCK_FINALIZED
 	// 2. BLOCK_SEALED
 	BlockStatus entities.BlockStatus `protobuf:"varint,2,opt,name=block_status,json=blockStatus,proto3,enum=flow.entities.BlockStatus" json:"block_status,omitempty"`
-	// Boolean value determining the response: 'full' if `true`, 'light'
-	// otherwise.
+	// Boolean value determining the response: 'full' if `true`, 'light' otherwise.
 	FullBlockResponse    bool     `protobuf:"varint,3,opt,name=full_block_response,json=fullBlockResponse,proto3" json:"full_block_response,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -2837,8 +2836,7 @@ type SubscribeBlocksFromStartHeightRequest struct {
 	// 1. BLOCK_FINALIZED
 	// 2. BLOCK_SEALED
 	BlockStatus entities.BlockStatus `protobuf:"varint,2,opt,name=block_status,json=blockStatus,proto3,enum=flow.entities.BlockStatus" json:"block_status,omitempty"`
-	// Boolean value determining the response: 'full' if `true`, 'light'
-	// otherwise.
+	// Boolean value determining the response: 'full' if `true`, 'light' otherwise.
 	FullBlockResponse    bool     `protobuf:"varint,3,opt,name=full_block_response,json=fullBlockResponse,proto3" json:"full_block_response,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -2898,8 +2896,7 @@ type SubscribeBlocksFromLatestRequest struct {
 	// 1. BLOCK_FINALIZED
 	// 2. BLOCK_SEALED
 	BlockStatus entities.BlockStatus `protobuf:"varint,1,opt,name=block_status,json=blockStatus,proto3,enum=flow.entities.BlockStatus" json:"block_status,omitempty"`
-	// Boolean value determining the response: 'full' if `true`, 'light'
-	// otherwise.
+	// Boolean value determining the response: 'full' if `true`, 'light' otherwise.
 	FullBlockResponse    bool     `protobuf:"varint,2,opt,name=full_block_response,json=fullBlockResponse,proto3" json:"full_block_response,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -2945,8 +2942,7 @@ func (m *SubscribeBlocksFromLatestRequest) GetFullBlockResponse() bool {
 	return false
 }
 
-// The response for SubscribeBlocksFromStartBlockID,
-// SubscribeBlocksFromStartHeight, SubscribeBlocksFromLatest
+// The response for SubscribeBlocksFromStartBlockID, SubscribeBlocksFromStartHeight, SubscribeBlocksFromLatest
 type SubscribeBlocksResponse struct {
 	// The sealed or finalized blocks according to the block status
 	// in the request.
@@ -3148,8 +3144,7 @@ func (m *SubscribeBlockHeadersFromLatestRequest) GetBlockStatus() entities.Block
 	return entities.BlockStatus_BLOCK_UNKNOWN
 }
 
-// The response for SubscribeBlockHeadersFromStartBlockID,
-// SubscribeBlockHeadersFromStartHeight, SubscribeBlockHeadersFromLatest
+// The response for SubscribeBlockHeadersFromStartBlockID, SubscribeBlockHeadersFromStartHeight, SubscribeBlockHeadersFromLatest
 type SubscribeBlockHeadersResponse struct {
 	// The sealed or finalized block headers according to the block status
 	// in the request.
@@ -3351,17 +3346,16 @@ func (m *SubscribeBlockDigestsFromLatestRequest) GetBlockStatus() entities.Block
 	return entities.BlockStatus_BLOCK_UNKNOWN
 }
 
-// The response for SubscribeBlockDigestsFromStartBlockID,
-// SubscribeBlockDigestsFromStartHeight, SubscribeBlockDigestsFromLatest
+// The response for SubscribeBlockDigestsFromStartBlockID, SubscribeBlockDigestsFromStartHeight, SubscribeBlockDigestsFromLatest
 type SubscribeBlockDigestsResponse struct {
-	// The block ID of the new sealed or finalized block according to the block
-	// status in the request.
+	// The block ID of the new sealed or finalized block according to the block status
+	// in the request.
 	BlockId []byte `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
-	// The block height of the new sealed or finalized block according to the
-	// block status in the request.
+	// The block height of the new sealed or finalized block according to the block status
+	// in the request.
 	BlockHeight uint64 `protobuf:"varint,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
-	// The timestamp of the new sealed or finalized block according to the block
-	// status in the request.
+	// The timestamp of the new sealed or finalized block according to the block status
+	// in the request.
 	BlockTimestamp       *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=block_timestamp,json=blockTimestamp,proto3" json:"block_timestamp,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
 	XXX_unrecognized     []byte                 `json:"-"`
@@ -3414,8 +3408,7 @@ func (m *SubscribeBlockDigestsResponse) GetBlockTimestamp() *timestamppb.Timesta
 	return nil
 }
 
-// Request message for sending a transaction and subscribing to its status
-// changes.
+// Request message for sending a transaction and subscribing to its status changes.
 type SendAndSubscribeTransactionStatusesRequest struct {
 	// The transaction to be sent and tracked for status changes.
 	Transaction *entities.Transaction `protobuf:"bytes,1,opt,name=transaction,proto3" json:"transaction,omitempty"`
@@ -3473,8 +3466,7 @@ func (m *SendAndSubscribeTransactionStatusesRequest) GetEventEncodingVersion() e
 type SendAndSubscribeTransactionStatusesResponse struct {
 	// Transaction result of the tracked transaction
 	TransactionResults *TransactionResultResponse `protobuf:"bytes,1,opt,name=transaction_results,json=transactionResults,proto3" json:"transaction_results,omitempty"`
-	// The message index of the response message. Used by the client to ensure
-	// they received all messages. Starts from "0".
+	// The message index of the response message. Used by the client to ensure they received all messages. Starts from "0".
 	MessageIndex         uint64   `protobuf:"varint,2,opt,name=message_index,json=messageIndex,proto3" json:"message_index,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

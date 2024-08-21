@@ -49,10 +49,9 @@ type ExecutionDataAPIClient interface {
 	//	block has yet not been received.
 	GetExecutionDataByBlockID(ctx context.Context, in *GetExecutionDataByBlockIDRequest, opts ...grpc.CallOption) (*GetExecutionDataByBlockIDResponse, error)
 	// Deprecated: Do not use.
-	// Warning: this endpoint is deprecated and will be removed in future
-	// versions. Use SubscribeExecutionDataFromStartBlockID,
-	// SubscribeExecutionDataFromStartBlockHeight or
-	// SubscribeExecutionDataFromLatest.
+	// Warning: this endpoint is deprecated and will be removed in future versions.
+	// Use SubscribeExecutionDataFromStartBlockID, SubscribeExecutionDataFromStartBlockHeight
+	// or SubscribeExecutionDataFromLatest.
 	//
 	// SubscribeExecutionData streams execution data for all blocks starting at
 	// the requested start block, up until the latest available block. Once the
@@ -63,13 +62,13 @@ type ExecutionDataAPIClient interface {
 	// - InvalidArgument is returned if the request contains an invalid start
 	// block.
 	// - NotFound is returned if the start block is not currently available on the
-	// node. This may happen if the block was from a previous spork, or if the
-	// block has yet not been received.
+	// node. This may happen if the block was from a previous spork, or if the block
+	// has yet not been received.
 	SubscribeExecutionData(ctx context.Context, in *SubscribeExecutionDataRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataClient, error)
-	// SubscribeExecutionDataFromStartBlockID streams execution data for all
-	// blocks starting at the requested start block, up until the latest available
-	// block. Once the latest is reached, the stream will remain open and
-	// responses are sent for each new execution data as it becomes available.
+	// SubscribeExecutionDataFromStartBlockID streams execution data for all blocks
+	// starting at the requested start block, up until the latest available block.
+	// Once the latest is reached, the stream will remain open and responses are
+	// sent for each new execution data as it becomes available.
 	//
 	// Errors:
 	// - InvalidArgument is returned if the request contains an invalid start
@@ -78,10 +77,10 @@ type ExecutionDataAPIClient interface {
 	// node. This may happen if the block was from a previous spork,
 	// or if the block has yet not been received.
 	SubscribeExecutionDataFromStartBlockID(ctx context.Context, in *SubscribeExecutionDataFromStartBlockIDRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataFromStartBlockIDClient, error)
-	// SubscribeExecutionDataFromStartBlockHeight streams execution data for all
-	// blocks starting at the requested start block, up until the latest available
-	// block. Once the latest is reached, the stream will remain open and
-	// responses are sent for each new execution data as it becomes available.
+	// SubscribeExecutionDataFromStartBlockHeight streams execution data for all blocks
+	// starting at the requested start block, up until the latest available block.
+	// Once the latest is reached, the stream will remain open and responses are
+	// sent for each new execution data as it becomes available.
 	//
 	// Errors:
 	// - InvalidArgument is returned if the request contains an invalid start
@@ -90,8 +89,8 @@ type ExecutionDataAPIClient interface {
 	// node. This may happen if the block was from a previous spork,
 	// or if the block has yet not been received.
 	SubscribeExecutionDataFromStartBlockHeight(ctx context.Context, in *SubscribeExecutionDataFromStartBlockHeightRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataFromStartBlockHeightClient, error)
-	// SubscribeExecutionDataFromStartBlockHeight streams execution data for all
-	// blocks starting from the latest block.
+	// SubscribeExecutionDataFromStartBlockHeight streams execution data for all blocks
+	// starting from the latest block.
 	//
 	// Errors:
 	// - NotFound is returned if the start block is not currently available on the
@@ -99,9 +98,8 @@ type ExecutionDataAPIClient interface {
 	// or if the block has yet not been received.
 	SubscribeExecutionDataFromLatest(ctx context.Context, in *SubscribeExecutionDataFromLatestRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataFromLatestClient, error)
 	// Deprecated: Do not use.
-	// Warning: this endpoint is deprecated and will be removed in future
-	// versions. Use SubscribeEventsFromStartBlockID,
-	// SubscribeEventsFromStartHeight or SubscribeEventsFromLatest.
+	// Warning: this endpoint is deprecated and will be removed in future versions.
+	// Use SubscribeEventsFromStartBlockID, SubscribeEventsFromStartHeight or SubscribeEventsFromLatest.
 	//
 	// SubscribeEvents streams events for all blocks starting at the requested
 	// start block, up until the latest available block. Once the latest is
@@ -127,10 +125,10 @@ type ExecutionDataAPIClient interface {
 	//	happen if the block was from a previous spork, or if the block has yet
 	//	not been received.
 	SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error)
-	// SubscribeEventsFromStartBlockID streams events for all blocks starting at
-	// the requested start block id, up until the latest available block. Once the
-	// latest is reached, the stream will remain open and responses are sent for
-	// each new block as it becomes available.
+	// SubscribeEventsFromStartBlockID streams events for all blocks starting at the requested
+	// start block id, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
 	// Events within each block are filtered by the provided EventFilter, and only
 	// those events that match the filter are returned. If no filter is provided,
@@ -143,16 +141,15 @@ type ExecutionDataAPIClient interface {
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
-	// - InvalidArgument is returned if the request contains an invalid block ID
-	// or EventFilter.
+	// - InvalidArgument is returned if the request contains an invalid block ID or EventFilter.
 	// - NotFound is returned if the start block id or execution data are not
-	// currently available on the node. This may happen if the block was from a
-	// previous spork, or if the block has yet not been received.
+	// currently available on the node. This may happen if the block was from a previous spork, or if the
+	// block has yet not been received.
 	SubscribeEventsFromStartBlockID(ctx context.Context, in *SubscribeEventsFromStartBlockIDRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsFromStartBlockIDClient, error)
-	// SubscribeEventsFromStartHeight streams events for all blocks starting at
-	// the requested start block height, up until the latest available block. Once
-	// the latest is reached, the stream will remain open and responses are sent
-	// for each new block as it becomes available.
+	// SubscribeEventsFromStartHeight streams events for all blocks starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
 	// Events within each block are filtered by the provided EventFilter, and only
 	// those events that match the filter are returned. If no filter is provided,
@@ -165,15 +162,13 @@ type ExecutionDataAPIClient interface {
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
-	// - InvalidArgument is returned if the request contains an invalid
-	// EventFilter.
+	// - InvalidArgument is returned if the request contains an invalid EventFilter.
 	// - NotFound is returned if the start block height or execution data are not
-	// currently available on the node. This may happen if the block was from a
-	// previous spork, or if the block has yet not been received.
+	// currently available on the node. This may happen if the block was from a previous spork, or if the
+	// block has yet not been received.
 	SubscribeEventsFromStartHeight(ctx context.Context, in *SubscribeEventsFromStartHeightRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsFromStartHeightClient, error)
-	// SubscribeEventsFromLatest streams events for all blocks starting from the
-	// latest sealed block. The stream will remain open and responses are sent for
-	// each new block as it becomes available.
+	// SubscribeEventsFromLatest streams events for all blocks starting from the latest sealed
+	// block. The stream will remain open and responses are sent for each new block as it becomes available.
 	//
 	// Events within each block are filtered by the provided EventFilter, and only
 	// those events that match the filter are returned. If no filter is provided,
@@ -186,81 +181,76 @@ type ExecutionDataAPIClient interface {
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
-	// - InvalidArgument is returned if the request contains an invalid
-	// EventFilter.
+	// - InvalidArgument is returned if the request contains an invalid EventFilter.
 	SubscribeEventsFromLatest(ctx context.Context, in *SubscribeEventsFromLatestRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsFromLatestClient, error)
-	// GetRegisterValues gets the values for the given register IDs as of the
-	// given block height
+	// GetRegisterValues gets the values for the given register IDs as of the given block height
 	GetRegisterValues(ctx context.Context, in *GetRegisterValuesRequest, opts ...grpc.CallOption) (*GetRegisterValuesResponse, error)
-	// SubscribeAccountStatusesFromStartBlockID streams account statuses for all
-	// blocks starting at the requested start block ID, up until the latest
-	// available block. Once the latest is reached, the stream will remain open
-	// and responses are sent for each new block as it becomes available.
+	// SubscribeAccountStatusesFromStartBlockID streams account statuses for all blocks starting at the requested
+	// start block ID, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
-	// Events within each block are filtered by the provided StatusFilter, and
-	// only those events that match the filter are returned. If no filter is
-	// provided, all events are returned.
+	// Events within each block are filtered by the provided StatusFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
 	//
 	// Responses are returned for each block containing at least one event that
 	// matches the filter. Additionally, heartbeat responses
-	// (SubscribeAccountStatusesResponse with no events) are returned periodically
-	// to allow clients to track which blocks were searched. Clients can use this
+	// (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
 	// - InvalidArgument is returned if the request contains an invalid
 	// StatusFilter or start block.
 	// - NotFound is returned if the start block is not currently available on the
-	// node. This may happen if the block was from a previous spork, or if the
-	// block has yet
+	// node. This may happen if the block was from a previous spork, or if the block has yet
 	//
 	//	not been received.
 	SubscribeAccountStatusesFromStartBlockID(ctx context.Context, in *SubscribeAccountStatusesFromStartBlockIDRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeAccountStatusesFromStartBlockIDClient, error)
-	// SubscribeAccountStatusesFromStartHeight streams account statuses for all
-	// blocks starting at the requested start block height, up until the latest
-	// available block. Once the latest is reached, the stream will remain open
-	// and responses are sent for each new block as it becomes available.
+	// SubscribeAccountStatusesFromStartHeight streams account statuses for all blocks starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
-	// Events within each block are filtered by the provided StatusFilter, and
-	// only those events that match the filter are returned. If no filter is
-	// provided, all events are returned.
+	// Events within each block are filtered by the provided StatusFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
 	//
 	// Responses are returned for each block containing at least one event that
 	// matches the filter. Additionally, heartbeat responses
-	// (SubscribeAccountStatusesResponse with no events) are returned periodically
-	// to allow clients to track which blocks were searched. Clients can use this
+	// (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
 	// - InvalidArgument is returned if the request contains an invalid
 	// StatusFilter or start block.
 	// - NotFound is returned if the start block is not currently available on the
-	// node. This may happen if the block was from a previous spork, or if the
-	// block has yet
+	// node. This may happen if the block was from a previous spork, or if the block has yet
 	//
 	//	not been received.
 	SubscribeAccountStatusesFromStartHeight(ctx context.Context, in *SubscribeAccountStatusesFromStartHeightRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeAccountStatusesFromStartHeightClient, error)
-	// SubscribeAccountStatusesFromLatestBlock streams account statuses for all
-	// blocks starting at the last sealed block, up until the latest available
-	// block. Once the latest is reached, the stream will remain open and
-	// responses are sent for each new block as it becomes available.
+	// SubscribeAccountStatusesFromLatestBlock streams account statuses for all blocks starting
+	// at the last sealed block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
-	// Events within each block are filtered by the provided StatusFilter, and
-	// only those events that match the filter are returned. If no filter is
-	// provided, all events are returned.
+	// Events within each block are filtered by the provided StatusFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
 	//
 	// Responses are returned for each block containing at least one event that
 	// matches the filter. Additionally, heartbeat responses
-	// (SubscribeAccountStatusesResponse with no events) are returned periodically
-	// to allow clients to track which blocks were searched. Clients can use this
+	// (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
 	// - InvalidArgument is returned if the request contains an invalid
 	// StatusFilter or start block.
 	// - NotFound is returned if the start block is not currently available on the
-	// node. This may happen if the block was from a previous spork, or if the
-	// block has yet
+	// node. This may happen if the block was from a previous spork, or if the block has yet
 	//
 	//	not been received.
 	SubscribeAccountStatusesFromLatestBlock(ctx context.Context, in *SubscribeAccountStatusesFromLatestBlockRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlockClient, error)
@@ -661,10 +651,9 @@ type ExecutionDataAPIServer interface {
 	//	block has yet not been received.
 	GetExecutionDataByBlockID(context.Context, *GetExecutionDataByBlockIDRequest) (*GetExecutionDataByBlockIDResponse, error)
 	// Deprecated: Do not use.
-	// Warning: this endpoint is deprecated and will be removed in future
-	// versions. Use SubscribeExecutionDataFromStartBlockID,
-	// SubscribeExecutionDataFromStartBlockHeight or
-	// SubscribeExecutionDataFromLatest.
+	// Warning: this endpoint is deprecated and will be removed in future versions.
+	// Use SubscribeExecutionDataFromStartBlockID, SubscribeExecutionDataFromStartBlockHeight
+	// or SubscribeExecutionDataFromLatest.
 	//
 	// SubscribeExecutionData streams execution data for all blocks starting at
 	// the requested start block, up until the latest available block. Once the
@@ -675,13 +664,13 @@ type ExecutionDataAPIServer interface {
 	// - InvalidArgument is returned if the request contains an invalid start
 	// block.
 	// - NotFound is returned if the start block is not currently available on the
-	// node. This may happen if the block was from a previous spork, or if the
-	// block has yet not been received.
+	// node. This may happen if the block was from a previous spork, or if the block
+	// has yet not been received.
 	SubscribeExecutionData(*SubscribeExecutionDataRequest, ExecutionDataAPI_SubscribeExecutionDataServer) error
-	// SubscribeExecutionDataFromStartBlockID streams execution data for all
-	// blocks starting at the requested start block, up until the latest available
-	// block. Once the latest is reached, the stream will remain open and
-	// responses are sent for each new execution data as it becomes available.
+	// SubscribeExecutionDataFromStartBlockID streams execution data for all blocks
+	// starting at the requested start block, up until the latest available block.
+	// Once the latest is reached, the stream will remain open and responses are
+	// sent for each new execution data as it becomes available.
 	//
 	// Errors:
 	// - InvalidArgument is returned if the request contains an invalid start
@@ -690,10 +679,10 @@ type ExecutionDataAPIServer interface {
 	// node. This may happen if the block was from a previous spork,
 	// or if the block has yet not been received.
 	SubscribeExecutionDataFromStartBlockID(*SubscribeExecutionDataFromStartBlockIDRequest, ExecutionDataAPI_SubscribeExecutionDataFromStartBlockIDServer) error
-	// SubscribeExecutionDataFromStartBlockHeight streams execution data for all
-	// blocks starting at the requested start block, up until the latest available
-	// block. Once the latest is reached, the stream will remain open and
-	// responses are sent for each new execution data as it becomes available.
+	// SubscribeExecutionDataFromStartBlockHeight streams execution data for all blocks
+	// starting at the requested start block, up until the latest available block.
+	// Once the latest is reached, the stream will remain open and responses are
+	// sent for each new execution data as it becomes available.
 	//
 	// Errors:
 	// - InvalidArgument is returned if the request contains an invalid start
@@ -702,8 +691,8 @@ type ExecutionDataAPIServer interface {
 	// node. This may happen if the block was from a previous spork,
 	// or if the block has yet not been received.
 	SubscribeExecutionDataFromStartBlockHeight(*SubscribeExecutionDataFromStartBlockHeightRequest, ExecutionDataAPI_SubscribeExecutionDataFromStartBlockHeightServer) error
-	// SubscribeExecutionDataFromStartBlockHeight streams execution data for all
-	// blocks starting from the latest block.
+	// SubscribeExecutionDataFromStartBlockHeight streams execution data for all blocks
+	// starting from the latest block.
 	//
 	// Errors:
 	// - NotFound is returned if the start block is not currently available on the
@@ -711,9 +700,8 @@ type ExecutionDataAPIServer interface {
 	// or if the block has yet not been received.
 	SubscribeExecutionDataFromLatest(*SubscribeExecutionDataFromLatestRequest, ExecutionDataAPI_SubscribeExecutionDataFromLatestServer) error
 	// Deprecated: Do not use.
-	// Warning: this endpoint is deprecated and will be removed in future
-	// versions. Use SubscribeEventsFromStartBlockID,
-	// SubscribeEventsFromStartHeight or SubscribeEventsFromLatest.
+	// Warning: this endpoint is deprecated and will be removed in future versions.
+	// Use SubscribeEventsFromStartBlockID, SubscribeEventsFromStartHeight or SubscribeEventsFromLatest.
 	//
 	// SubscribeEvents streams events for all blocks starting at the requested
 	// start block, up until the latest available block. Once the latest is
@@ -739,10 +727,10 @@ type ExecutionDataAPIServer interface {
 	//	happen if the block was from a previous spork, or if the block has yet
 	//	not been received.
 	SubscribeEvents(*SubscribeEventsRequest, ExecutionDataAPI_SubscribeEventsServer) error
-	// SubscribeEventsFromStartBlockID streams events for all blocks starting at
-	// the requested start block id, up until the latest available block. Once the
-	// latest is reached, the stream will remain open and responses are sent for
-	// each new block as it becomes available.
+	// SubscribeEventsFromStartBlockID streams events for all blocks starting at the requested
+	// start block id, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
 	// Events within each block are filtered by the provided EventFilter, and only
 	// those events that match the filter are returned. If no filter is provided,
@@ -755,16 +743,15 @@ type ExecutionDataAPIServer interface {
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
-	// - InvalidArgument is returned if the request contains an invalid block ID
-	// or EventFilter.
+	// - InvalidArgument is returned if the request contains an invalid block ID or EventFilter.
 	// - NotFound is returned if the start block id or execution data are not
-	// currently available on the node. This may happen if the block was from a
-	// previous spork, or if the block has yet not been received.
+	// currently available on the node. This may happen if the block was from a previous spork, or if the
+	// block has yet not been received.
 	SubscribeEventsFromStartBlockID(*SubscribeEventsFromStartBlockIDRequest, ExecutionDataAPI_SubscribeEventsFromStartBlockIDServer) error
-	// SubscribeEventsFromStartHeight streams events for all blocks starting at
-	// the requested start block height, up until the latest available block. Once
-	// the latest is reached, the stream will remain open and responses are sent
-	// for each new block as it becomes available.
+	// SubscribeEventsFromStartHeight streams events for all blocks starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
 	// Events within each block are filtered by the provided EventFilter, and only
 	// those events that match the filter are returned. If no filter is provided,
@@ -777,15 +764,13 @@ type ExecutionDataAPIServer interface {
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
-	// - InvalidArgument is returned if the request contains an invalid
-	// EventFilter.
+	// - InvalidArgument is returned if the request contains an invalid EventFilter.
 	// - NotFound is returned if the start block height or execution data are not
-	// currently available on the node. This may happen if the block was from a
-	// previous spork, or if the block has yet not been received.
+	// currently available on the node. This may happen if the block was from a previous spork, or if the
+	// block has yet not been received.
 	SubscribeEventsFromStartHeight(*SubscribeEventsFromStartHeightRequest, ExecutionDataAPI_SubscribeEventsFromStartHeightServer) error
-	// SubscribeEventsFromLatest streams events for all blocks starting from the
-	// latest sealed block. The stream will remain open and responses are sent for
-	// each new block as it becomes available.
+	// SubscribeEventsFromLatest streams events for all blocks starting from the latest sealed
+	// block. The stream will remain open and responses are sent for each new block as it becomes available.
 	//
 	// Events within each block are filtered by the provided EventFilter, and only
 	// those events that match the filter are returned. If no filter is provided,
@@ -798,81 +783,76 @@ type ExecutionDataAPIServer interface {
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
-	// - InvalidArgument is returned if the request contains an invalid
-	// EventFilter.
+	// - InvalidArgument is returned if the request contains an invalid EventFilter.
 	SubscribeEventsFromLatest(*SubscribeEventsFromLatestRequest, ExecutionDataAPI_SubscribeEventsFromLatestServer) error
-	// GetRegisterValues gets the values for the given register IDs as of the
-	// given block height
+	// GetRegisterValues gets the values for the given register IDs as of the given block height
 	GetRegisterValues(context.Context, *GetRegisterValuesRequest) (*GetRegisterValuesResponse, error)
-	// SubscribeAccountStatusesFromStartBlockID streams account statuses for all
-	// blocks starting at the requested start block ID, up until the latest
-	// available block. Once the latest is reached, the stream will remain open
-	// and responses are sent for each new block as it becomes available.
+	// SubscribeAccountStatusesFromStartBlockID streams account statuses for all blocks starting at the requested
+	// start block ID, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
-	// Events within each block are filtered by the provided StatusFilter, and
-	// only those events that match the filter are returned. If no filter is
-	// provided, all events are returned.
+	// Events within each block are filtered by the provided StatusFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
 	//
 	// Responses are returned for each block containing at least one event that
 	// matches the filter. Additionally, heartbeat responses
-	// (SubscribeAccountStatusesResponse with no events) are returned periodically
-	// to allow clients to track which blocks were searched. Clients can use this
+	// (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
 	// - InvalidArgument is returned if the request contains an invalid
 	// StatusFilter or start block.
 	// - NotFound is returned if the start block is not currently available on the
-	// node. This may happen if the block was from a previous spork, or if the
-	// block has yet
+	// node. This may happen if the block was from a previous spork, or if the block has yet
 	//
 	//	not been received.
 	SubscribeAccountStatusesFromStartBlockID(*SubscribeAccountStatusesFromStartBlockIDRequest, ExecutionDataAPI_SubscribeAccountStatusesFromStartBlockIDServer) error
-	// SubscribeAccountStatusesFromStartHeight streams account statuses for all
-	// blocks starting at the requested start block height, up until the latest
-	// available block. Once the latest is reached, the stream will remain open
-	// and responses are sent for each new block as it becomes available.
+	// SubscribeAccountStatusesFromStartHeight streams account statuses for all blocks starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
-	// Events within each block are filtered by the provided StatusFilter, and
-	// only those events that match the filter are returned. If no filter is
-	// provided, all events are returned.
+	// Events within each block are filtered by the provided StatusFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
 	//
 	// Responses are returned for each block containing at least one event that
 	// matches the filter. Additionally, heartbeat responses
-	// (SubscribeAccountStatusesResponse with no events) are returned periodically
-	// to allow clients to track which blocks were searched. Clients can use this
+	// (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
 	// - InvalidArgument is returned if the request contains an invalid
 	// StatusFilter or start block.
 	// - NotFound is returned if the start block is not currently available on the
-	// node. This may happen if the block was from a previous spork, or if the
-	// block has yet
+	// node. This may happen if the block was from a previous spork, or if the block has yet
 	//
 	//	not been received.
 	SubscribeAccountStatusesFromStartHeight(*SubscribeAccountStatusesFromStartHeightRequest, ExecutionDataAPI_SubscribeAccountStatusesFromStartHeightServer) error
-	// SubscribeAccountStatusesFromLatestBlock streams account statuses for all
-	// blocks starting at the last sealed block, up until the latest available
-	// block. Once the latest is reached, the stream will remain open and
-	// responses are sent for each new block as it becomes available.
+	// SubscribeAccountStatusesFromLatestBlock streams account statuses for all blocks starting
+	// at the last sealed block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
-	// Events within each block are filtered by the provided StatusFilter, and
-	// only those events that match the filter are returned. If no filter is
-	// provided, all events are returned.
+	// Events within each block are filtered by the provided StatusFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
 	//
 	// Responses are returned for each block containing at least one event that
 	// matches the filter. Additionally, heartbeat responses
-	// (SubscribeAccountStatusesResponse with no events) are returned periodically
-	// to allow clients to track which blocks were searched. Clients can use this
+	// (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
 	// - InvalidArgument is returned if the request contains an invalid
 	// StatusFilter or start block.
 	// - NotFound is returned if the start block is not currently available on the
-	// node. This may happen if the block was from a previous spork, or if the
-	// block has yet
+	// node. This may happen if the block was from a previous spork, or if the block has yet
 	//
 	//	not been received.
 	SubscribeAccountStatusesFromLatestBlock(*SubscribeAccountStatusesFromLatestBlockRequest, ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlockServer) error
