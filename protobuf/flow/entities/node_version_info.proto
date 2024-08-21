@@ -5,21 +5,29 @@ package flow.entities;
 option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
 option java_package = "org.onflow.protobuf.entities";
 
+message CompatibleRange {
+    // The first block that the version supports.
+    uint64 start_height = 1;
+    // The last block that the version supports.
+    uint64 end_height = 2;
+}
+
 message NodeVersionInfo {
-  // The currently running node software version.
-  string semver = 1;
-  // The git commit hash of the currently running node software.
-  string commit = 2;
-  // The unique identifier for the node's network within the current spork.
-  bytes spork_id = 3;
-  // The protocol version of the currently running node software.
-  uint64 protocol_version = 4;
-  // The spork root block height. This is the height of the first sealed block
-  // in the spork network.
-  uint64 spork_root_block_height = 5;
-  // The node's root block height. This is the first sealed block in the node's
-  // protocol database. If the node started at the beginning of the spork, it is
-  // the same as the spork root block height. If the node started after the
-  // beginning of the spork, it is the height of the first sealed block indexed.
-  uint64 node_root_block_height = 6;
+    // The currently running node software version.
+    string semver = 1;
+    // The git commit hash of the currently running node software.
+    string commit = 2;
+    // The unique identifier for the node's network within the current spork.
+    bytes spork_id = 3;
+    // The protocol version of the currently running node software.
+    uint64 protocol_version = 4;
+    // The spork root block height. This is the height of the first sealed block in the spork network.
+    uint64 spork_root_block_height = 5;
+    // The node's root block height. This is the first sealed block in the node's protocol database.
+    // If the node started at the beginning of the spork, it is the same as the spork root block height.
+    // If the node started after the beginning of the spork, it is the height of the first sealed block
+    // indexed.
+    uint64 node_root_block_height = 6;
+    // The compatible version range.
+    CompatibleRange compatible_range = 7;
 }

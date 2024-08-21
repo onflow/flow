@@ -55,6 +55,7 @@ Class | Method | HTTP request | Description
  - [Collection](docs/Collection.md)
  - [CollectionExpandable](docs/CollectionExpandable.md)
  - [CollectionGuarantee](docs/CollectionGuarantee.md)
+ - [CompatibleRange](docs/CompatibleRange.md)
  - [Event](docs/Event.md)
  - [ExecutionResult](docs/ExecutionResult.md)
  - [HashingAlgorithm](docs/HashingAlgorithm.md)

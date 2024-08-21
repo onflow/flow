@@ -15,4 +15,5 @@ type NodeVersionInfo struct {
 	ProtocolVersion string `json:"protocol_version"`
 	SporkRootBlockHeight string `json:"spork_root_block_height"`
 	NodeRootBlockHeight string `json:"node_root_block_height"`
+	CompatibleRange *CompatibleRange `json:"compatible_range,omitempty"`
 }
