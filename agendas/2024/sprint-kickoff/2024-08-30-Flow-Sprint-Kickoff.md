@@ -175,9 +175,17 @@ Cycle Objective(s):
 - Deliver Axelar bridge
 
 **Done last sprint**
+  * Supported Axelar with node configuration and operational setup
+  * Supported Celer with contract upgrade. Contracts now staged on Mainnet
+  * Supported Safe.global with project spinup
+    * Created repo clones for project & Github Connection link for automation
+    * Created DNS names for testnet and mainnet endpoints
+    * Created EVM GW node infra behind those endpoints
+  * Updated JVM-SDK repo examples updates to parity with Go SDK 
   
 **This sprint**
-  * Continue supporting Axelar, Ankr, Coinmetrics 
+  * Continue supporting Axelar and other key partners
+  * Complete remaining JVM-SDK examples
   
 **On Hold**
 
