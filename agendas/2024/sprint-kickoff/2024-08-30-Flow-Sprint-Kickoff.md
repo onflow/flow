@@ -281,19 +281,39 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-**This sprint**
+**CloudFlare**
+- Migrate flow.com to FF CloudFlare account
+- Prepare onflow.org & nodes.onflow.org for migration to FF CloudFlare account
+- [Remove unnecessary records from onflow.org](https://github.com/dapperlabs/terraform/pull/4346)
 
-Rewards platform tracker [link](https://github.com/orgs/onflow/projects/65/views/1)
-- Finish contract audit and make recommended changes to the lock/unlock contract
-- Deploy lock and distribution contract on mainnet; FE on rewards.flow.com
-- Design and model yield (APY) and/or monthly "boost" - see draft [yield schedule](https://docs.google.com/spreadsheets/d/1aE-Q0fLx-tLdeB7xf1JduCE0nFXfuemJ2jWove4SCJE/edit?gid=0#gid=0)
-- Design tokenomics of hotdogs (point system) and raffles
-- Drive GTM - announcement and content
-- Continue working with Dete on stable state tokenomics 
+**EVM Gateway**
+- [Create Mainnet EVM GW infra](https://github.com/dapperlabs/terraform/pull/4341)
+- [Update KMS access for MN EVM GW](https://github.com/dapperlabs/terraform/pull/4362)
+- [Create KMS key for EVM account](https://github.com/dapperlabs/terraform/pull/4360)
+- [Create Mainnet EVM GWs for Safe](https://github.com/dapperlabs/terraform/pull/4356)
+- [Update Testnet records for Safe EVM GWs](https://github.com/dapperlabs/terraform/pull/4355)
+- [Create Testnet EVM GWs for Safe](https://github.com/dapperlabs/terraform/pull/4350)
+- [Create new EVM GW node for Blue/Green deployments](https://github.com/dapperlabs/terraform/pull/4349)
+- [Create MN EVM GW Ansible inventory](https://github.com/dapperlabs/dapper-flow-hosting/pull/1568)
 
-**On Hold**
+**Spork Cleanup**
+- [Scale down Devnet50 network](https://github.com/dapperlabs/terraform/pull/4338)
 
+**Spork Prep**
+- [Increase Migration Mainnet EN Disk Sizes](https://github.com/dapperlabs/terraform/pull/4358)
+- [Create MN25 Ansilbe Inventory & Vars](https://github.com/dapperlabs/dapper-flow-hosting/pull/1569)
+- Create MN25 Grafana alerts
+- Assist with access to Migration Mainnet
 
-**Active Epics**
+**Support**
+- [Fix bug in rate limit formatting](https://github.com/dapperlabs/dapper-flow-hosting/pull/1576)
+- [Add KMS Key for NFT Storefront](https://github.com/dapperlabs/terraform/pull/4340)
+- [Create dev machine for testing](https://github.com/dapperlabs/terraform/pull/4344)
+- [Create DNS records for new customer.io solution](https://github.com/dapperlabs/terraform/pull/4342)
 
-- N/A
+**This Sprint**
+- Prepare CloudFlare zones for flow.com, onflow.org, and nodes.onflow.org migration 
+- Migrate onflow.org & nodes.onflow.org zones to FF CloudFlare account
+- Create infrastructure for DL & FF nodes
+- Spork Mainnet
+- Cleanup all infra used for spork prep 
