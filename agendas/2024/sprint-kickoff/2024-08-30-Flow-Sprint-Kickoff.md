@@ -139,6 +139,14 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>Cryptography:</ins>
+
+  * State proofs: performance estimations of VC and set accumulator-based state trees:
+    * Add new bench functions in the crypto lib
+    * High level designs and operation estimations of EN and VN
+    * Ddesigns covered (KZG-Pointproofs-RSA accumulator) - designs studied but not finalized (Catalono-Pedersen IPA-Nguyen)
+  * JVM-SDK: minor review
+  * Secure enclave blog review
   
 **This sprint**
 
