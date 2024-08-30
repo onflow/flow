@@ -249,8 +249,8 @@ Cycle Objective(s):
   - Formalized protocol expectation: consensus finalization never holds for more than 1000 views
      - code :point_right: [`FinalizationSafetyThreshold`](https://github.com/onflow/flow-go/pull/6323)
      - documentation in code base ([PR #6323](https://github.com/onflow/flow-go/pull/6323), [#6318](https://github.com/onflow/flow-go/pull/6318), [#6384](https://github.com/onflow/flow-go/pull/6384))
-     - [Addressed all feedback on core contracts PR](https://github.com/onflow/flow-core-contracts/pull/440)
-     - [Published PR for integration test part 2](https://github.com/onflow/flow-go/pull/6424)
+  - [Addressed all feedback on core contracts PR](https://github.com/onflow/flow-core-contracts/pull/440)
+  - [Published PR for integration test part 2](https://github.com/onflow/flow-go/pull/6424)
 
 * <ins>Cryptography:</ins>
 
