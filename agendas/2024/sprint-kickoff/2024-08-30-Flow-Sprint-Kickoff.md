@@ -259,6 +259,14 @@ Cycle Objective(s):
 * <ins>Consensus Timing:</ins>
   - fixed systematic bias in block rate controller (aka [Cruise Control](https://github.com/onflow/flow-go/blob/master/consensus/hotstuff/cruisectl/README.md)) for small consensus committees (e.g. affecting testnet) [PRs [#6379](https://github.com/onflow/flow-go/pull/6379), [#6392](https://github.com/onflow/flow-go/pull/6392)]
 
+* <ins>Data Availability:</ins>
+  - Tested and documented process for generating checkpoints for AN dynamic bootstrapping ([notion](https://www.notion.so/flowfoundation/Build-and-Upload-Checkpoint-for-AN-Indexing-d3e916bc3a364a2bb484b289933b6a46))
+  - Tested and documented process for starting AN with local EVM Gateway ([notion](https://www.notion.so/flowfoundation/Setting-up-EVM-Gateway-with-a-local-Access-node-Setup-bab9978f5c9c4113a6b118fb27cc0296))
+  - KROK Team
+    - Add metrics for payer validation ([PR #6239](https://github.com/onflow/flow-go/pull/6239))
+    - Improvement to `ipfs/go-ds-pebble` ([PR #6411](https://github.com/onflow/flow-go/pull/6411), [ipfs/go-ds-pebble#36](https://github.com/ipfs/go-ds-pebble/pull/36))
+    - Add compatible range info to NodeVersionInfo endpoint ([PR #6294](https://github.com/onflow/flow-go/pull/6294))
+
 **This sprint**
 
 * <ins>EFM Recovery</ins>
@@ -266,16 +274,19 @@ Cycle Objective(s):
   - Address feedback and merge [EFM Recovery transaction](https://github.com/onflow/flow-core-contracts/pull/440) PR
   - Finish [EFM integration test part 2](https://github.com/onflow/flow-go/issues/6164)
   - allowing DKG key-sets to be re-used to recover from Epoch Fallback Mode, even if nodes are dropping out ([PR #6338](https://github.com/onflow/flow-go/pull/6338) ongoing) 
- 
+
 * <ins>Data Availability:</ins>
   - ProtocolDB pruning design
   - KROK Team
     - Add StopControl for access nodes ([Issue #5790](https://github.com/onflow/flow-go/issues/5790) - In review)
     - Add support pruning pebble exec data db ([Issue #6260](https://github.com/onflow/flow-go/issues/6260) - In review)
-    - Expand on payer balance checks ([Issue #6128](https://github.com/onflow/flow-go/issues/6128) - Waiting to merge, [Issue #6129](https://github.com/onflow/flow-go/issues/6129) - In review, [Issue #6139](https://github.com/onflow/flow-go/issues/6139) - In review)
-    - Start registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066) - In review, [Issue #6068](https://github.com/onflow/flow-go/issues/6068))
+    - Expand on payer balance checks ([Issue #6129](https://github.com/onflow/flow-go/issues/6129) - In review, [Issue #6139](https://github.com/onflow/flow-go/issues/6139) - In review)
+    - Start registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066) - In review, [Issue #6068](https://github.com/onflow/flow-go/issues/6068) - In review)
+    - Store Tx Result in database ([Issue #6302](https://github.com/onflow/flow-go/issues/6302))
     - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357))
     - Test execution data pruning on testnet ([Issue #6358](https://github.com/onflow/flow-go/issues/6358))
+    - Documentation improvements ([Issue #815](https://github.com/onflow/docs/issues/815), [Issue #727](https://github.com/onflow/docs/issues/727) - In review)
+    - Wrap up rosetta integration test improvements ([Issue #57](https://github.com/onflow/rosetta/issues/57))
 
 * <ins>Cryptography:</ins>
   - State proofs: performance estimations of some VC/set accumulator constructions
