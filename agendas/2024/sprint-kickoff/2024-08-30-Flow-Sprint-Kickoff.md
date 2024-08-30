@@ -6,6 +6,7 @@
 - Added check-storage command to util program to check health of execution state using snapshot.
 - Execution saturation on Devnet 51 is 40% lower compared with Devnet50 (14% -> 9%).
 - EVM dashboard up & running in Grafana.
+- Shipped preseason (locking season) of [Flow community rewards](rewards.flow.com) platform
 
 
 ### General updates
