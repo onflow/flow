@@ -249,6 +249,8 @@ Cycle Objective(s):
   - Formalized protocol expectation: consensus finalization never holds for more than 1000 views
      - code :point_right: [`FinalizationSafetyThreshold`](https://github.com/onflow/flow-go/pull/6323)
      - documentation in code base ([PR #6323](https://github.com/onflow/flow-go/pull/6323), [#6318](https://github.com/onflow/flow-go/pull/6318), [#6384](https://github.com/onflow/flow-go/pull/6384))
+     - [Addressed all feedback on core contracts PR](https://github.com/onflow/flow-core-contracts/pull/440)
+     - [Published PR for integration test part 2](https://github.com/onflow/flow-go/pull/6424)
 
 * <ins>Cryptography:</ins>
 
@@ -274,9 +276,10 @@ Cycle Objective(s):
 
 * <ins>EFM Recovery</ins>
   - DKG smart contract updates (cont.)
-  - Address feedback and merge [EFM Recovery transaction](https://github.com/onflow/flow-core-contracts/pull/440) PR
-  - Finish [EFM integration test part 2](https://github.com/onflow/flow-go/issues/6164)
-  - allowing DKG key-sets to be re-used to recover from Epoch Fallback Mode, even if nodes are dropping out ([PR #6338](https://github.com/onflow/flow-go/pull/6338) ongoing) 
+  - Final feedback and merge [EFM Recovery transaction](https://github.com/onflow/flow-core-contracts/pull/440) PR
+  - Address feedback [EFM integration test part 2](https://github.com/onflow/flow-go/issues/6164), [PR](https://github.com/onflow/flow-go/pull/6424)
+  - EFM Ejected node integration test https://github.com/onflow/flow-go/issues/6331
+  - Allowing DKG key-sets to be re-used to recover from Epoch Fallback Mode, even if nodes are dropping out ([PR #6338](https://github.com/onflow/flow-go/pull/6338) ongoing) 
 
 * <ins>Data Availability:</ins>
   - ProtocolDB pruning design
