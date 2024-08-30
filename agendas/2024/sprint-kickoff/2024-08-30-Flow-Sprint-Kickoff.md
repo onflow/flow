@@ -2,12 +2,11 @@
 
 ### Team Wins 🎉
 
-- Ready for Crescendo mainnet launch - v0.37.9.
+- Ready for Crescendo mainnet launch - v0.37.9
 - Added check-storage command to util program to check health of execution state using snapshot.
-- Execution saturation on Devnet 51 is 40% lower compared with Devnet50 (14% -> 9%).
-- EVM dashboard up & running in Grafana.
-- Shipped preseason (locking season) of [Flow community rewards](rewards.flow.com) platform
-
+- Execution saturation on Devnet 51 is 40% lower compared with Devnet50 (14% -> 9%)
+- EVM dashboard up & running in Grafana
+- Shipped preseason (locking season) of [Flow community rewards](rewards.flow.com) platform 
 
 ### General updates
 
@@ -243,6 +242,8 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>EFM Recovery</ins>
+
 * <ins>Cryptography:</ins>
 
   * State proofs: performance estimations of VC and set accumulator-based state trees:
@@ -251,11 +252,13 @@ Cycle Objective(s):
     * Ddesigns covered (KZG-Pointproofs-RSA accumulator) - designs studied but not finalized (Catalono-Pedersen IPA-Nguyen)
   * JVM-SDK: minor review
   * Secure enclave blog review
-  
+
+* <ins>Misc other</ins>
+  - Ongoing Pebble migration PR reviews
+
 **This sprint**
 
 * <ins>EFM Recovery</ins>
-  - Finish Pebble PR review
   - DKG smart contract updates (cont.)
   - Address feedback and merge [EFM Recovery transaction](https://github.com/onflow/flow-core-contracts/pull/440) PR
   - Finish [EFM integration test part 2](https://github.com/onflow/flow-go/issues/6164)
@@ -296,7 +299,7 @@ Cycle Objective(s):
   * Updated JVM-SDK repo examples updates to parity with Go SDK 
   
 **This sprint**
-  * Continue supporting Axelar and other key partners
+  * Continue supporting Celer, Axelar and other key partners
   * Complete remaining JVM-SDK examples
   
 **On Hold**
