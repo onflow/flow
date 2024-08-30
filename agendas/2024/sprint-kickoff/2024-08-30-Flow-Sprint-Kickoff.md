@@ -45,18 +45,17 @@ None
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 8  |    7 (-1)  |       0         |       7          |        **22** (-1)       |
+| Drafted     | 8  |    7  |       0         |       7          |        **22**       |
 | Proposed    | 1  |    2    |       3          |       0           |        **6**  |
 | Accepted    | 2  |    1     |       2       |       2        |        **7**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 3 |    25 (+1)    |       1       |       0           |        **28**          |
+| Implemented | 3 |    25    |       1       |       0           |        **29**          |
 | Released    | 4  |    0     |       4       |       6          |        **14**         |
 | Total       | **18**  |    **35**  |       **11**     |       **15**          |        **79**   |
 
-**Updates**
-Import of pre-Cadence 1.0 Programs (Bastian) was implemented
+**No New FLIPs**
 
-**FLIPs that need to be reassigned immediately:**
+**REMINDER - FLIPs that need to be reassigned immediately:**
 
 **- Application**
   - Interaction Templates (Paul Gebheim)
@@ -71,7 +70,6 @@ Import of pre-Cadence 1.0 Programs (Bastian) was implemented
   - View Functions (Daniel Sainati)
   - Entitlements (Daniel Sainati)
   - New behavior for attachments with entitlements (Daniel Sainati)
-
 
 # Working Group Updates
 
