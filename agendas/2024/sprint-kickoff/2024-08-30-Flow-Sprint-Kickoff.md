@@ -243,7 +243,7 @@ Cycle Objective(s):
 **Done last Sprint:**
 
 * <ins>EFM Recovery</ins>
-  - Formalized the protocol expectation: consensus finalization never holds for more than 1000 views
+  - Formalized protocol expectation: consensus finalization never holds for more than 1000 views
      - code :point_right: [`FinalizationSafetyThreshold`](https://github.com/onflow/flow-go/pull/6323)
      - documentation in code base ([PR #6323](https://github.com/onflow/flow-go/pull/6323), [#6318](https://github.com/onflow/flow-go/pull/6318), [#6384](https://github.com/onflow/flow-go/pull/6384))
 
@@ -257,7 +257,7 @@ Cycle Objective(s):
   * Secure enclave blog review
 
 * <ins>Consensus Timing:</ins>
-  - fixed systematic bias in block rate controller (aka [Cruise Control](https://github.com/onflow/flow-go/blob/master/consensus/hotstuff/cruisectl/README.md)) for small consensus committees (e.g. affecting testnet) (PRs [#6379](https://github.com/onflow/flow-go/pull/6379), [#6392](https://github.com/onflow/flow-go/pull/6392)
+  - fixed systematic bias in block rate controller (aka [Cruise Control](https://github.com/onflow/flow-go/blob/master/consensus/hotstuff/cruisectl/README.md)) for small consensus committees (e.g. affecting testnet) [PRs [#6379](https://github.com/onflow/flow-go/pull/6379), [#6392](https://github.com/onflow/flow-go/pull/6392)]
 
 **This sprint**
 
