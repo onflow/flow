@@ -2,7 +2,10 @@
 
 ### Team Wins 🎉
 
-- 
+- Ready for Crescendo mainnet launch - v0.37.9.
+- Added check-storage command to util program to check health of execution state using snapshot.
+- Execution saturation on Devnet 51 is 40% lower compared with Devnet50 (14% -> 9%).
+- EVM dashboard up & running in Grafana.
 
 
 ### General updates
@@ -88,28 +91,130 @@ Cycle Objective(s):
 **Done last sprint**
 
 
+**Crescendo MN upgrade**
+- Cadence migration
+    - Needed for CLI fix: [Export type requirement extraction](https://github.com/onflow/flow-go/pull/6395)
+- Network tooling / infra / bootstrap improvements
+    - [wait for downloading checkpoint before starting up consensus](https://github.com/dapperlabs/dapper-flow-hosting/pull/1577)
+    - [CI - print and include the sha256 checksum of the boot tools and util](https://github.com/onflow/flow-go/pull/6404)
+    - [check checkpoint has been downloaded](https://github.com/dapperlabs/dapper-flow-hosting/pull/1574)
+- Dependency updates (tooling updates & fixes)
+    - [1](https://github.com/onflow/flow-cli/pull/1714), [2](https://github.com/onflow/flow-cli/pull/1714), [3](https://github.com/onflow/flow-evm-gateway/pull/478), [4](https://github.com/onflow/flixkit-go/pull/76), [5](https://github.com/onflow/cadence-tools/pull/421), [6](https://github.com/onflow/flowkit/pull/71), [7](https://github.com/onflow/cadence-tools/pull/420), [8](https://github.com/onflow/flow-emulator/pull/738), [9](https://github.com/onflow/cadence-tools/pull/419), [10](https://github.com/onflow/flow-go/pull/6403), [11](https://github.com/onflow/flow-cli/pull/1704), [12](https://github.com/onflow/flow-evm-gateway/pull/470), [13](https://github.com/onflow/flow-go/pull/6390), [14](https://github.com/onflow/flow-go-sdk/pull/732), [15](https://github.com/onflow/flixkit-go/pull/75), [16](https://github.com/onflow/cadence-tools/pull/417), [17](https://github.com/onflow/flowkit/pull/70), [18](https://github.com/onflow/cadence-tools/pull/416), [19](https://github.com/onflow/flow-emulator/pull/734), [20](https://github.com/onflow/cadence-tools/pull/415), [21](https://github.com/onflow/flow-go/pull/6386), [22](https://github.com/onflow/flow-go-sdk/pull/731), [23](https://github.com/onflow/flow-go/pull/6383)
+
+**Cadence Language**
+- Handling of contracts not upgraded to 1.0
+    - [Fix program recovery](https://github.com/onflow/cadence/pull/3548)
+    - [Add Type.isRecovered field](https://github.com/onflow/cadence/pull/3505)
+- Bugfix
+    - [Fix contract update error when old program has errors](https://github.com/onflow/cadence/pull/3554)
+    - migration:
+        - [Cadence migration is non-deterministic since crescendo RC3](https://github.com/onflow/cadence/issues/3536)
+        - [View checking incorrectly assumes code type-checks](https://github.com/onflow/cadence/issues/3529)
+- Improvement
+    - [Check if CBOR tag number is reserved by atree before using it to encode Cadence values](https://github.com/onflow/cadence/pull/3532)
+    - [Cannot use interface-converted type-requirements in fields](https://github.com/onflow/cadence/issues/3527)
+- Docs
+    - [Improve the example for type-requirement removal](https://github.com/onflow/cadence-lang.org/pull/134)
+    - [Improve documentation for capabilities](https://github.com/onflow/cadence-lang.org/pull/133)
+- Tests
+    - [Smoke test update of enum key in dictionary](https://github.com/onflow/cadence/pull/3556)
+    - [Add regression tests for nil-coalescing bug](https://github.com/onflow/cadence/pull/3553)
+
+**Cadence Execution**
+- Handling of contracts not upgraded to 1.0
+    - [Enable program recovery on MN](https://github.com/onflow/flow-go/pull/6336)
+    - [Recover NFT Collections](https://github.com/onflow/flow-go/pull/6394)
+    - [Recover NFT contract](https://github.com/onflow/flow-go/pull/6388)
+- Bugfix
+    - [NormalizedExecutionTimePerComputationUnit reported incorrectly after spork](https://github.com/onflow/flow-go/issues/6346)
+- Util
+    - [Add command to debug transaction](https://github.com/onflow/flow-go/pull/6385)
+    - [Move and export some migration funcs to util package for reuse](https://github.com/onflow/flow-go/pull/6363)
+    - Diff-state:
+        - [Add support for cap_tag domain](https://github.com/onflow/flow-go/pull/6407)
+        - [Skip EVM storage account for value comparison](https://github.com/onflow/flow-go/pull/6401)
+    - Check-storage:
+        - [Add support for cap_tag domain](https://github.com/onflow/flow-go/issues/6405)
+        - [Skip EVM storage account](https://github.com/onflow/flow-go/pull/6399)
+        - [Add check-storage command to util program to check storage health of execution state](https://github.com/onflow/flow-go/pull/6364)
+- Execution effort re-calibration
+    - [Use multiple executions in local data collection](https://github.com/onflow/flow-execution-effort-estimation/pull/1)
+    - emulator: [Update execution effort constants](https://github.com/onflow/flow-emulator/pull/729)
+- Tests
+    - [Add test for storage capability migration determinism](https://github.com/onflow/flow-go/pull/6375)
+    - Atree: [Make smoke tests check if CBOR tag nums are reserved](https://github.com/onflow/atree/pull/436)
+
+**EVM Core**
+- Improvement
+    - [Decode legacy block event](https://github.com/onflow/flow-go/pull/6398)
+    - [Split contract implementation into separate package](https://github.com/onflow/flow-go/pull/6396)
+    - [Remove legacy migrations needed for Previewnet](https://github.com/onflow/flow-go/issues/6368)
+    - [Use a fixed coinbase address for Run and BatchRun and transfer gas fees afterward](https://github.com/onflow/flow-go/pull/6380)
+    - [Set prevrandao value on block level](https://github.com/onflow/flow-go/pull/6378)
+- Metrics & Logging
+    - [Let the system transaction report metrics](https://github.com/onflow/flow-go/pull/6362)
+    - [Expose logger to the EVM environment](https://github.com/onflow/flow-go/pull/6343)
+- Tests
+    - [Improve EVM addresses in tests](https://github.com/onflow/flow-go/pull/6400)
+
+**EVM Gateway**
+- Feature
+    - State Index
+        - [Ledger implementation](https://github.com/onflow/flow-evm-gateway/issues/449)
+- Bugfix
+    - [eth_getLogs returns incorrect records when filtering by block number](https://github.com/onflow/flow-evm-gateway/issues/439)
+    - [EffectiveGasPrice is not properly set for all transaction types](https://github.com/onflow/flow-evm-gateway/pull/479)
+    - [Index field on receipt logs does not return correct value for blocks with multiple transactions & logs](https://github.com/onflow/flow-evm-gateway/pull/462)
+    - [EVM blockheight metric being emitted is Cadence block height rather than EVM block height](https://github.com/onflow/flow-evm-gateway/issues/455)
+    - [Unsupported mainnet network ID for --flow-network-id config flag](https://github.com/onflow/flow-evm-gateway/issues/456)
+    - [Logging of API responses lacks certain fields](https://github.com/onflow/flow-evm-gateway/issues/440)
+    - [Fix calculation of `gasUsed` field returned on block endpoints](https://github.com/onflow/flow-evm-gateway/pull/444)
+- Improvement
+    - [Refactor bootstrap to make it modular](https://github.com/onflow/flow-evm-gateway/pull/481)
+    - [Make engine restart logic more resilient](https://github.com/onflow/flow-evm-gateway/issues/85)
+    - [Decode legacy block event](https://github.com/onflow/flow-evm-gateway/pull/475)
+    - [Decode legacy receipts](https://github.com/onflow/flow-evm-gateway/pull/474)
+    - [Refactor receipt model](https://github.com/onflow/flow-evm-gateway/pull/473)
+    - [eth_coinbase should reflect the actual coinbase being used on EVM.run](https://github.com/onflow/flow-evm-gateway/issues/490)
+    - [Patch block RLP decoding to handle addition of PrevRandao field](https://github.com/onflow/flow-evm-gateway/pull/472)
+    - [Optimize traces engine to handle empty blocks](https://github.com/onflow/flow-evm-gateway/issues/464)
+    - [Empty miner field on eth_getBlockByNumber](https://github.com/onflow/flow-evm-gateway/issues/454)
+    - [Enrich the information contained in error messages](https://github.com/onflow/flow-evm-gateway/pull/453)
+- Monitoring
+    - [Monitor operator balance](https://github.com/onflow/flow-evm-gateway/pull/487)
+- fixing index after TN HCU
+    - [Revert "Decode legacy receipts"](https://github.com/onflow/flow-evm-gateway/pull/485)
+- Minor fixes and improvements
+    - [Validate gas price in config](https://github.com/onflow/flow-evm-gateway/pull/494)
+    - [fix metric balance initialization](https://github.com/onflow/flow-evm-gateway/pull/493)
+    - [Wait for sigint signal](https://github.com/onflow/flow-evm-gateway/pull/492)
+- Docs
+    - [Update running docs](https://github.com/onflow/flow-evm-gateway/pull/484)
+
 **This sprint**
 
 - Objective 1, KR5: Mainnet Upgrade to Crescendo Release
   - Investigate and fix any high/critical severity issues reported on Crescendo on TN ([Crescendo launch on Mainnet tasklist](https://github.com/onflow/cadence/issues/2642))
-  - [Create util command to check storage health of execution state](https://github.com/onflow/flow-go/issues/6350)
-  - Continue: [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
   - Investigate / Fix any security report incoming from bug bounty.
 
 - Objective 2, KR 1: Update transaction fees weights for the execution operations on TN and MN
   -  Continue work on [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
 
+- Cadence Execution
+  - Continue: [Add support for storage health check of EVM registers](https://github.com/onflow/flow-go/issues/6393)
+  - Continue: [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
+
 - EVM 
   - Continue monitoring EVM GW stability
-  - Start work on [local state index](https://github.com/onflow/flow-evm-gateway/issues/322)
+  - Continue work on [local state index](https://github.com/onflow/flow-evm-gateway/issues/322)
   - KROK
      - EVM Gateway benchmarking
 
 - EVM Gateway
-  - continue work on [Metrics](https://github.com/onflow/flow-evm-gateway/issues/125) and [Benchmarking](https://github.com/onflow/flow-evm-gateway/issues/19)
+  - continue work on [Benchmarking](https://github.com/onflow/flow-evm-gateway/issues/19)
 
 - Badger -> Pebble Investigation/POC
-  - Continue evaluation of [Protocol State Migration POC](https://github.com/onflow/flow-go/issues/6137) & schedule design discussion
+  - Continue work on [Protocol State Migration POC](https://github.com/onflow/flow-go/issues/6137) -> changing interface to batch write from transaction to make the future switch to Pebble easier.
 
 **Completed OKRs**
   * Objective 1, KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
