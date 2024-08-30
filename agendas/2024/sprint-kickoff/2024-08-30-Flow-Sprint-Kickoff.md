@@ -200,9 +200,9 @@ Cycle Objective(s):
 - Objective 2, KR 1: Update transaction fees weights for the execution operations on TN and MN
   -  Continue work on [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
 
-Cadence Execution
-- Continue: [Add support for storage health check of EVM registers](https://github.com/onflow/flow-go/issues/6393)
-- Continue: [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
+- Cadence Execution
+  - Continue: [Add support for storage health check of EVM registers](https://github.com/onflow/flow-go/issues/6393)
+  - Continue: [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
 
 - EVM 
   - Continue monitoring EVM GW stability
