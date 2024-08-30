@@ -243,6 +243,9 @@ Cycle Objective(s):
 **Done last Sprint:**
 
 * <ins>EFM Recovery</ins>
+  - Formalized the protocol expectation: consensus finalization never holds for more than 1000 views
+     - code :point_right: [`FinalizationSafetyThreshold`](https://github.com/onflow/flow-go/pull/6323)
+     - documentation in code base ([PR #6323](https://github.com/onflow/flow-go/pull/6323), [#6318](https://github.com/onflow/flow-go/pull/6318), [#6384](https://github.com/onflow/flow-go/pull/6384))
 
 * <ins>Cryptography:</ins>
 
@@ -253,8 +256,8 @@ Cycle Objective(s):
   * JVM-SDK: minor review
   * Secure enclave blog review
 
-* <ins>Misc other</ins>
-  - Ongoing Pebble migration PR reviews
+* <ins>Consensus Timing:</ins>
+  - fixed systematic bias in block rate controller (aka [Cruise Control](https://github.com/onflow/flow-go/blob/master/consensus/hotstuff/cruisectl/README.md)) for small consensus committees (e.g. affecting testnet) (PRs [#6379](https://github.com/onflow/flow-go/pull/6379), [#6392](https://github.com/onflow/flow-go/pull/6392)
 
 **This sprint**
 
@@ -262,7 +265,8 @@ Cycle Objective(s):
   - DKG smart contract updates (cont.)
   - Address feedback and merge [EFM Recovery transaction](https://github.com/onflow/flow-core-contracts/pull/440) PR
   - Finish [EFM integration test part 2](https://github.com/onflow/flow-go/issues/6164)
-  
+  - allowing DKG key-sets to be re-used to recover from Epoch Fallback Mode, even if nodes are dropping out ([PR #6338](https://github.com/onflow/flow-go/pull/6338) ongoing) 
+ 
 * <ins>Data Availability:</ins>
   - ProtocolDB pruning design
   - KROK Team
@@ -277,6 +281,8 @@ Cycle Objective(s):
   - State proofs: performance estimations of some VC/set accumulator constructions
   - Pick up SPoCK aggregation related reads if time permits
 
+* <ins>Misc other</ins>
+  - Ongoing Pebble migration PR reviews
 
 **On Hold**
 * Implement BFT mitigations to enable 20 permissionless ANs
