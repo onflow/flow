@@ -420,4 +420,31 @@ Cycle Objective(s):
 - Migrate onflow.org & nodes.onflow.org zones to FF CloudFlare account
 - Create infrastructure for DL & FF nodes
 - Spork Mainnet
-- Cleanup all infra used for spork prep 
+- Cleanup all infra used for spork prep
+
+### **Governance and Tokenomics** \[Kshitij]
+Cycle Objective(s): Vision for long-term tokenomics and dynamic fees on Flow, launch Flow rewards platform (preseason and seaoson-1)
+
+**Done last sprint**
+- Shipped rewards.flow.com
+- Worked with Dete on future fees on Flow (not be launched with Crescendo launch) - txn fee, storage fee, other governance topics - [see notes](https://www.notion.so/flowfoundation/Dynamic-Transaction-Fees-on-Flow-fa7e7115e43a41a99ac9ca942dabcaf2)
+
+**This sprint**
+
+Rewards platform tracker [link](https://github.com/orgs/onflow/projects/65/views/1)
+- Drive updates for 09/04 - design, copy, legal changes, revise FAQs, migration downtime
+- For Season 1 (10/01 launch)
+  - Unblock eng on reward distribution part of the product
+  - Drive final decisions on points system, referral bonus, raffles, etc
+	- Drive partner discussions - defilama, auditor, anti-sybil, etc.
+  - Drive design and copy per the rebranding plan (tbd)
+- Continue working with Dete on stable state tokenomics
+- Discuss with a16z their node consolidation strategy
+
+**On Hold**
+
+
+**Active Epics**
+
+- N/A
+
