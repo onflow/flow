@@ -2,10 +2,10 @@
 
 ### Team Wins 🎉
 
-- Ready for Crescendo mainnet launch - v0.37.9.
+- Ready for Crescendo mainnet launch - v0.37.9
 - Added check-storage command to util program to check health of execution state using snapshot.
-- EVM dashboard up & running in Grafana.
-
+- EVM dashboard up & running in Grafana
+- Shipped preseason (locking season) of [Flow community rewards](rewards.flow.com) platform 
 
 ### General updates
 
@@ -44,18 +44,17 @@ None
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 8  |    7 (-1)  |       0         |       7          |        **22** (-1)       |
+| Drafted     | 8  |    7  |       0         |       7          |        **22**       |
 | Proposed    | 1  |    2    |       3          |       0           |        **6**  |
 | Accepted    | 2  |    1     |       2       |       2        |        **7**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 3 |    25 (+1)    |       1       |       0           |        **28**          |
+| Implemented | 3 |    25    |       1       |       0           |        **29**          |
 | Released    | 4  |    0     |       4       |       6          |        **14**         |
 | Total       | **18**  |    **35**  |       **11**     |       **15**          |        **79**   |
 
-**Updates**
-Import of pre-Cadence 1.0 Programs (Bastian) was implemented
+**No New FLIPs**
 
-**FLIPs that need to be reassigned immediately:**
+**REMINDER - FLIPs that need to be reassigned immediately:**
 
 **- Application**
   - Interaction Templates (Paul Gebheim)
@@ -70,7 +69,6 @@ Import of pre-Cadence 1.0 Programs (Bastian) was implemented
   - View Functions (Daniel Sainati)
   - Entitlements (Daniel Sainati)
   - New behavior for attachments with entitlements (Daniel Sainati)
-
 
 # Working Group Updates
 
@@ -243,6 +241,11 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>EFM Recovery</ins>
+  - Formalized protocol expectation: consensus finalization never holds for more than 1000 views
+     - code :point_right: [`FinalizationSafetyThreshold`](https://github.com/onflow/flow-go/pull/6323)
+     - documentation in code base ([PR #6323](https://github.com/onflow/flow-go/pull/6323), [#6318](https://github.com/onflow/flow-go/pull/6318), [#6384](https://github.com/onflow/flow-go/pull/6384))
+
 * <ins>Cryptography:</ins>
 
   * State proofs: performance estimations of VC and set accumulator-based state trees:
@@ -251,29 +254,45 @@ Cycle Objective(s):
     * Ddesigns covered (KZG-Pointproofs-RSA accumulator) - designs studied but not finalized (Catalono-Pedersen IPA-Nguyen)
   * JVM-SDK: minor review
   * Secure enclave blog review
-  
+
+* <ins>Consensus Timing:</ins>
+  - fixed systematic bias in block rate controller (aka [Cruise Control](https://github.com/onflow/flow-go/blob/master/consensus/hotstuff/cruisectl/README.md)) for small consensus committees (e.g. affecting testnet) [PRs [#6379](https://github.com/onflow/flow-go/pull/6379), [#6392](https://github.com/onflow/flow-go/pull/6392)]
+
+* <ins>Data Availability:</ins>
+  - Tested and documented process for generating checkpoints for AN dynamic bootstrapping ([notion](https://www.notion.so/flowfoundation/Build-and-Upload-Checkpoint-for-AN-Indexing-d3e916bc3a364a2bb484b289933b6a46))
+  - Tested and documented process for starting AN with local EVM Gateway ([notion](https://www.notion.so/flowfoundation/Setting-up-EVM-Gateway-with-a-local-Access-node-Setup-bab9978f5c9c4113a6b118fb27cc0296))
+  - KROK Team
+    - Add metrics for payer validation ([PR #6239](https://github.com/onflow/flow-go/pull/6239))
+    - Improvement to `ipfs/go-ds-pebble` ([PR #6411](https://github.com/onflow/flow-go/pull/6411), [ipfs/go-ds-pebble#36](https://github.com/ipfs/go-ds-pebble/pull/36))
+    - Add compatible range info to NodeVersionInfo endpoint ([PR #6294](https://github.com/onflow/flow-go/pull/6294))
+
 **This sprint**
 
 * <ins>EFM Recovery</ins>
-  - Finish Pebble PR review
   - DKG smart contract updates (cont.)
   - Address feedback and merge [EFM Recovery transaction](https://github.com/onflow/flow-core-contracts/pull/440) PR
   - Finish [EFM integration test part 2](https://github.com/onflow/flow-go/issues/6164)
-  
+  - allowing DKG key-sets to be re-used to recover from Epoch Fallback Mode, even if nodes are dropping out ([PR #6338](https://github.com/onflow/flow-go/pull/6338) ongoing) 
+
 * <ins>Data Availability:</ins>
   - ProtocolDB pruning design
   - KROK Team
     - Add StopControl for access nodes ([Issue #5790](https://github.com/onflow/flow-go/issues/5790) - In review)
     - Add support pruning pebble exec data db ([Issue #6260](https://github.com/onflow/flow-go/issues/6260) - In review)
-    - Expand on payer balance checks ([Issue #6128](https://github.com/onflow/flow-go/issues/6128) - Waiting to merge, [Issue #6129](https://github.com/onflow/flow-go/issues/6129) - In review, [Issue #6139](https://github.com/onflow/flow-go/issues/6139) - In review)
-    - Start registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066) - In review, [Issue #6068](https://github.com/onflow/flow-go/issues/6068))
+    - Expand on payer balance checks ([Issue #6129](https://github.com/onflow/flow-go/issues/6129) - In review, [Issue #6139](https://github.com/onflow/flow-go/issues/6139) - In review)
+    - Start registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066) - In review, [Issue #6068](https://github.com/onflow/flow-go/issues/6068) - In review)
+    - Store Tx Result in database ([Issue #6302](https://github.com/onflow/flow-go/issues/6302))
     - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357))
     - Test execution data pruning on testnet ([Issue #6358](https://github.com/onflow/flow-go/issues/6358))
+    - Documentation improvements ([Issue #815](https://github.com/onflow/docs/issues/815), [Issue #727](https://github.com/onflow/docs/issues/727) - In review)
+    - Wrap up rosetta integration test improvements ([Issue #57](https://github.com/onflow/rosetta/issues/57))
 
 * <ins>Cryptography:</ins>
   - State proofs: performance estimations of some VC/set accumulator constructions
   - Pick up SPoCK aggregation related reads if time permits
 
+* <ins>Misc other</ins>
+  - Ongoing Pebble migration PR reviews
 
 **On Hold**
 * Implement BFT mitigations to enable 20 permissionless ANs
@@ -296,7 +315,7 @@ Cycle Objective(s):
   * Updated JVM-SDK repo examples updates to parity with Go SDK 
   
 **This sprint**
-  * Continue supporting Axelar and other key partners
+  * Continue supporting Celer, Axelar and other key partners
   * Complete remaining JVM-SDK examples
   
 **On Hold**
@@ -420,4 +439,31 @@ Cycle Objective(s):
 - Migrate onflow.org & nodes.onflow.org zones to FF CloudFlare account
 - Create infrastructure for DL & FF nodes
 - Spork Mainnet
-- Cleanup all infra used for spork prep 
+- Cleanup all infra used for spork prep
+
+### **Governance and Tokenomics** \[Kshitij]
+Cycle Objective(s): Vision for long-term tokenomics and dynamic fees on Flow, launch Flow rewards platform (preseason and seaoson-1)
+
+**Done last sprint**
+- Shipped rewards.flow.com
+- Worked with Dete on future fees on Flow (not be launched with Crescendo launch) - txn fee, storage fee, other governance topics - [see notes](https://www.notion.so/flowfoundation/Dynamic-Transaction-Fees-on-Flow-fa7e7115e43a41a99ac9ca942dabcaf2)
+
+**This sprint**
+
+Rewards platform tracker [link](https://github.com/orgs/onflow/projects/65/views/1)
+- Drive updates for 09/04 - design, copy, legal changes, revise FAQs, migration downtime
+- For Season 1 (10/01 launch)
+  - Unblock eng on reward distribution part of the product
+  - Drive final decisions on points system, referral bonus, raffles, etc
+	- Drive partner discussions - defilama, auditor, anti-sybil, etc.
+  - Drive design and copy per the rebranding plan (tbd)
+- Continue working with Dete on stable state tokenomics
+- Discuss with a16z their node consolidation strategy
+
+**On Hold**
+
+
+**Active Epics**
+
+- N/A
+
