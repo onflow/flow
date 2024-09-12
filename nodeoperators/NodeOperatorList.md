@@ -92,6 +92,7 @@
 | Figment                | Consensus    | f07d945cbfc720d000a8fbb216b77cf0143f6e2b9d2568bc9af56802d45e75cf |
 | Figment                | Consensus    | f6fe4e61b17b6e45ba64690fa83ca0b4a3898d2f3732c8c60a985c85f7295a88 |
 | Figment                | Consensus    | fc16709e4a2d04ddc27ad6ecbe9411c0962beaf749c03d667187b9c394e13237 |
+| Firstset               | Verification | 7055e6d5f9f64d2decd195775711cb1575ac8aec0eb8dddbeba92444068c9d50 |
 | Flipside               | Collection   | 581525fa93d8fe4b334c179698c6e72baccb802593e55e40da61d24e589d85be |
 | Google                 | Execution    | a58b8447337b73dc58d1095dfe0a71a50097969377c6c86b68ec63bee1358ace |
 | Hasquark               | Verification | 55069e7e8926867bee8094bd31786f8f6b65c8c3bde468ae2275f33dc1245dc1 |
