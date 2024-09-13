@@ -153,6 +153,11 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>Data Availability:</ins>
+  - KROK Team
+    - Add StopControl for access nodes ([PR #6202](https://github.com/onflow/flow-go/pull/) - In review)
+
+
 **This sprint**
 
 * <ins>EFM Recovery</ins>
@@ -163,17 +168,13 @@ Cycle Objective(s):
   - Allowing DKG key-sets to be re-used to recover from Epoch Fallback Mode, even if nodes are dropping out ([PR #6338](https://github.com/onflow/flow-go/pull/6338) ongoing) 
 
 * <ins>Data Availability:</ins>
-  - ProtocolDB pruning design
   - KROK Team
-    - Add StopControl for access nodes ([Issue #5790](https://github.com/onflow/flow-go/issues/5790) - In review)
-    - Add support pruning pebble exec data db ([Issue #6260](https://github.com/onflow/flow-go/issues/6260) - In review)
     - Expand on payer balance checks ([Issue #6129](https://github.com/onflow/flow-go/issues/6129) - In review, [Issue #6139](https://github.com/onflow/flow-go/issues/6139) - In review)
-    - Start registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066) - In review, [Issue #6068](https://github.com/onflow/flow-go/issues/6068) - In review)
-    - Store Tx Result in database ([Issue #6302](https://github.com/onflow/flow-go/issues/6302))
-    - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357))
-    - Test execution data pruning on testnet ([Issue #6358](https://github.com/onflow/flow-go/issues/6358))
-    - Documentation improvements ([Issue #815](https://github.com/onflow/docs/issues/815), [Issue #727](https://github.com/onflow/docs/issues/727) - In review)
-    - Wrap up rosetta integration test improvements ([Issue #57](https://github.com/onflow/rosetta/issues/57))
+    - Registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066) - In review, [Issue #6068](https://github.com/onflow/flow-go/issues/6068) - In review)
+    - Store Tx Result in database ([Issue #6302](https://github.com/onflow/flow-go/issues/6302) - In progress)
+    - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357) - In progress)
+    - Documentation improvements ([Issue #815](https://github.com/onflow/docs/issues/815) - In review, [Issue #727](https://github.com/onflow/docs/issues/727) - In review)
+    - Access API / Go SDK alignment ([Issue #735](https://github.com/onflow/flow-go-sdk/issues/735))
 
 * <ins>Cryptography:</ins>
   - State proofs: performance estimations of some VC/set accumulator constructions
