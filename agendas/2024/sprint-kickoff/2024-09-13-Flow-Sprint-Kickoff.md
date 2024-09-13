@@ -8,7 +8,7 @@
 - Cadence Playground running Cadence 1.0
 - Celer deployed mainnet contracts this week and liquidity was opened today
 - Kittypunch launched EVM DEX on mainnet https://swap.kittypunch.xyz/#/swap
-- GNOSIS Safe.Global Ethereum Vult for tresury multi-sig launched on mainnet https://safe.flow.com
+- GNOSIS Safe.Global Ethereum Vault for tresury multi-sig launched on mainnet https://safe.flow.com
 
 ### General updates
 
@@ -290,7 +290,7 @@ Cycle Objective(s):
   * Supporting Ankr, Moralis, Axelar on EVM issues and node operations
   * Celer deployed mainnet contracts this week and liquidity was opened today
   * Kittypunch launched EVM DEX on mainnet https://swap.kittypunch.xyz/#/swap
-  * GNOSIS Safe.Global Ethereum Vult for tresury multi-sig launched on mainnet https://safe.flow.com
+  * GNOSIS Safe.Global Ethereum Vault for tresury multi-sig launched on mainnet https://safe.flow.com
 
   
 **This sprint**
