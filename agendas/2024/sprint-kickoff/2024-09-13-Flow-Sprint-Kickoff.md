@@ -155,7 +155,7 @@ Cycle Objective(s):
 
 * <ins>Data Availability:</ins>
   - KROK Team
-    - Add StopControl for access nodes ([PR #6202](https://github.com/onflow/flow-go/pull/) - In review)
+    - Add StopControl for access nodes ([PR #6202](https://github.com/onflow/flow-go/pull/6202))
 
 
 **This sprint**
