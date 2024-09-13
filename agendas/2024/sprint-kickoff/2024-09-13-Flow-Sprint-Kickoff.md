@@ -324,11 +324,25 @@ Contracts
 - [Rewards - Enable NFT Display retrieval by NFT ID](https://github.com/onflow/crescendo-rewards-sc/issues/87)
 
 Backend
-- 
+- [Add improved messaging to referral code validation](https://github.com/onflow/crescendo-rewards-be/pull/161)
 
 Frontend
 - [Add redemption page and period switch logic #350](https://github.com/onflow/crescendo-rewards/issues/350)
 - [Add emojis to leaderboard #338](https://github.com/onflow/crescendo-rewards/issues/338)
+- [Don’t render layout in app down mode](https://github.com/onflow/crescendo-rewards/pull/306 )
+- [Remove referral from search params after successful lockup](https://github.com/onflow/crescendo-rewards/pull/308 )
+- [Disable referral code validation when not authenticated](https://github.com/onflow/crescendo-rewards/pull/307 )
+- [Add NFT FAQ](https://github.com/onflow/crescendo-rewards/pull/309 )
+- [Fix pill not rendering](https://github.com/onflow/crescendo-rewards/pull/318 )
+- [Trigger form when logged in](https://github.com/onflow/crescendo-rewards/pull/325 )
+- [Remove characters from balance](https://github.com/onflow/crescendo-rewards/pull/327 )
+- [Switch useAccount to use AN from FE](https://github.com/onflow/crescendo-rewards/pull/328 )
+- [Add emojis to number patterns](https://github.com/onflow/crescendo-rewards/issues/338 )
+- [Make leaderboard an activity titles same size](https://github.com/onflow/crescendo-rewards/pull/340 )
+- [Add flow to partners coming soon page](https://github.com/onflow/crescendo-rewards/pull/341 )
+- [Fix usePeriod hook logic](https://github.com/onflow/crescendo-rewards/issues/348 )
+- [Add redemption page with period switch logic](https://github.com/onflow/crescendo-rewards/issues/350 )
+- [Setup NFT Selector for redemption page](https://github.com/onflow/crescendo-rewards/issues/352 )
 
 <ins>**Cadence Playground**<ins>
 - [Update Playground to support Cadence 1.0 #760](https://github.com/onflow/flow-playground/issues/760)
