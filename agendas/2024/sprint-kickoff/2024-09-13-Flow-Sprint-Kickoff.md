@@ -3,6 +3,7 @@
 ### Team Wins 🎉
 
 - Crescendo is LAUNCHED! 🎉💥
+- CloudFlare account migration executed with all zones migrated (JP)
 
 
 ### General updates
@@ -431,22 +432,38 @@ Cycle Objective(s):
 Cycle Objective(s): 
 - Prepare flow.com, onflow.org & nodes.onflow.org domains for CloudFlare account migration
 - Prepare to spork FF & DL nodes 
+- Clean up infra following spork
 
 **Done last sprint**
 
-**This sprint**
+**Spork**
+- Assisted in spork execution and triage
 
-Rewards platform tracker [link](https://github.com/orgs/onflow/projects/65/views/1)
-- Drive updates for 09/04 - design, copy, legal changes, revise FAQs, migration downtime
-- For Season 1 (10/01 launch)
-  - Unblock eng on reward distribution part of the product
-  - Drive final decisions on points system, referral bonus, raffles, etc
-	- Drive partner discussions - defilama, auditor, anti-sybil, etc.
-  - Drive design and copy per the rebranding plan (tbd)
-- Continue working with Dete on stable state tokenomics
-- Discuss with a16z their node consolidation strategy
+**CloudFlare**
+- Migrate onflow.org from DL account to FF account
+- Migrate nodes.onflow.org from DL account to FF account
+- [Clean Up orphaned records](https://github.com/dapperlabs/terraform/pull/4387)
 
-**On Hold**
+**EVM Gateway**
+- [Update ANs used for EVM GW](https://github.com/dapperlabs/dapper-flow-hosting/pull/1591)
+- [Create inventory for MN EVM GW](https://github.com/dapperlabs/dapper-flow-hosting/pull/1568)
+
+**Spork Cleanup**
+- Delete Previewnet infra
+- Delete Migration Testnet infra
+- [Delete Mainnet24 infra](https://github.com/dapperlabs/terraform/pull/4378)
+
+**Node Hosting**
+- [Update node.env for GO memlimits](https://github.com/dapperlabs/dapper-flow-hosting/pull/1584)
+- [Update playbooks for configuring DL nodes](https://github.com/dapperlabs/dapper-flow-hosting/pull/1587)
+- [Execute HCU on DL nodes](https://github.com/dapperlabs/dapper-flow-hosting/pull/1596)
+
+**This Sprint**
+- Finish merging & cleaning up old CF resources
+- Create infrastructure for DL & FF nodes
+- Spork Mainnet
+- Cleanup all infra used for spork prep
+- Assist with EVM GW observability
 
 
 **Active Epics**
