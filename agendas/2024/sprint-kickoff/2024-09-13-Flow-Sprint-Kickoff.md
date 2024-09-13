@@ -17,19 +17,22 @@
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%   |    100%       |       0%         |
-| Block Finalization      | 99.9%   |    100%       |       0%         |
-| Transaction Execution   | 99.9%   |    100%       |       0%         |
-| Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    99.956%    |       43.7%       |
+| Collection Finalization | 99.9%   |    100%       |       1964%      |
+| Block Finalization      | 99.9%   |    100%       |       1964%      |
+| Transaction Execution   | 99.9%   |    100%       |       1964%      |
+| Block Sealing           | 99.9%   |    100%       |       1964%      |
+| Access API Liveness     | 99.9%   |    99.956%    |       1964%      |
 
 [SLO dashboards](https://flowfoundation.grafana.net/d/hgW3l-m4k/slo-dashboard?orgId=1&from=now-2w&to=now)
 
-[YTD SLA: 99.922%](https://app.metrika.co/flow/dashboard/slas?tr=YTD)
+~~[YTD SLA: 99.922%](https://app.metrika.co/flow/dashboard/slas?tr=YTD)~~ Metrika dashboard is deprecated. An alternate dashboard will be set up.
 
 ## Incidents
 
-None
+### Mainnet
+Post network upgrade incidents -
+1. EVM Gateway issue ✔️resolved.
+2. Network in Epoch Fallback mode - will be resolved after the next network upgrade.
 
 (Sev [definition](https://www.notion.so/flowfoundation/Incident-Priorities-Severity-Levels-1-e811b352feff4928b69a7e99df724c6a))
 
