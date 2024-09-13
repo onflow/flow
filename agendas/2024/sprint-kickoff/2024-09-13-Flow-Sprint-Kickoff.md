@@ -225,21 +225,39 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>Crescendo upgrade</ins>
+  - Peter, Khalil and Jordan supported Crescendo upgrade and follow on operational issues
+  - Tarak: fix build on private repo
+
 * <ins>Data Availability:</ins>
   - KROK Team
     - Add StopControl for access nodes ([PR #6202](https://github.com/onflow/flow-go/pull/6202))
 
+* <ins>EFM Recovery</ins>
+  - Addressing PR reviews
+  - [DKG smart contract data model update](https://github.com/onflow/flow-go/issues/6213)
+  - [Protocol updates for DKG IndexMap](https://github.com/onflow/flow-go/pull/6338)
+  - [Consensus updates to block signing](https://github.com/onflow/flow-go/issues/6389)
 
+* <ins>Cryptography</ins>
+  - Last part of state proofs: performance estimations of VC and set accumulator-based state trees:
+    - SAGE scripts for operation bench
+    - New designs covered (Catalono - Pedersen IPA - Nguyen)
+    - IPA bench from cloning Ethereum go implementation - document IPA high level design
+    - Bench summary presented.
+ - Randomness: update docs and review implementation
+     
 **This sprint**
 
-* <ins>EFM Recovery</ins>
-  - DKG smart contract updates (cont.)
-  - Final feedback and merge [EFM Recovery transaction](https://github.com/onflow/flow-core-contracts/pull/440) PR
-  - Address feedback [EFM integration test part 2](https://github.com/onflow/flow-go/issues/6164), [PR](https://github.com/onflow/flow-go/pull/6424)
-  - EFM Ejected node integration test https://github.com/onflow/flow-go/issues/6331
-  - Allowing DKG key-sets to be re-used to recover from Epoch Fallback Mode, even if nodes are dropping out ([PR #6338](https://github.com/onflow/flow-go/pull/6338) ongoing) 
+* <ins>Crescendo upgrade</ins>
+  - Continue benchnet testing libp2p peer gater and add peer gater to flow-go
 
-* <ins>Data Availability:</ins>
+* <ins>EFM Recovery</ins>
+  - [Continue DKG smart contract data model update](https://github.com/onflow/flow-go/issues/6213)
+  - Protocol updates for DKG changes [https://github.com/onflow/flow-go/issues/6214]
+  - Finish up and merge [EFM Recovery transaction](https://github.com/onflow/flow-core-contracts/pull/440), EFM integration test part 2](https://github.com/onflow/flow-go/issues/6164), [EFM Integration Test Part 2](https://github.com/onflow/flow-go/pull/6424)
+    
+* <ins>Data Availability</ins>
   - KROK Team
     - Expand on payer balance checks ([Issue #6129](https://github.com/onflow/flow-go/issues/6129) - In review, [Issue #6139](https://github.com/onflow/flow-go/issues/6139) - In review)
     - Registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066) - In review, [Issue #6068](https://github.com/onflow/flow-go/issues/6068) - In review)
@@ -248,15 +266,13 @@ Cycle Objective(s):
     - Documentation improvements ([Issue #815](https://github.com/onflow/docs/issues/815) - In review, [Issue #727](https://github.com/onflow/docs/issues/727) - In review)
     - Access API / Go SDK alignment ([Issue #735](https://github.com/onflow/flow-go-sdk/issues/735))
 
-* <ins>Cryptography:</ins>
-  - State proofs: performance estimations of some VC/set accumulator constructions
-  - Pick up SPoCK aggregation related reads if time permits
+* <ins>Cryptography</ins>
+  - Get back to SPoCK aggregation related reads
 
 * <ins>Misc other</ins>
   - Ongoing Pebble migration PR reviews
 
 **On Hold**
-* Implement BFT mitigations to enable 20 permissionless ANs
 
 ---
 
