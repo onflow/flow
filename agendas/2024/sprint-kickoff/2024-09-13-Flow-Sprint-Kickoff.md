@@ -4,6 +4,9 @@
 
 - Crescendo is LAUNCHED! 🎉💥
 - CloudFlare account migration executed with all zones migrated (JP)
+- Flow Community Rewards successfully upgraded and running strong with 19,450,958 Total Locked FLOW
+- Cadence Playground running Cadence 1.0
+
 
 
 ### General updates
@@ -286,102 +289,68 @@ Cycle Objective(s):
 
 Cycle Objective(s):
 
-- Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
 - Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
-- Use the Crescendo Release grow Flow's developer base and network activity
-- Update developer docs to remove previewn net and added new documentation for EVM data indexers
+- Add Documentation and smooth rough edges to improve DX for EVM on Flow
+- Build Flow Community Rewards (RAIN) and Points Program
 
 **Done last sprint**
 
-**Crescendo Rewards** 
+<ins>**Crescendo Rewards**<ins>
 
 Contracts
-- [Replace AccrualModel.getWeightedAPR() with .getBoost()](https://github.com/onflow/crescendo-rewards-sc/issues/66)
-- [Respond to review findings](https://github.com/onflow/crescendo-rewards-sc/issues/67)
-- [Add svg render](https://github.com/onflow/crescendo-rewards-sc/pull/69)
-- [Finalize naming conventions & refactor](https://github.com/onflow/crescendo-rewards-sc/issues/70)
-- [Mainnet deployment](https://github.com/onflow/crescendo-rewards-sc/issues/77)
+- [Add scripts for any NFT image resolution #354](https://github.com/onflow/crescendo-rewards/pull/354)
+- [Add Flow image to FlowToken storage #12](https://github.com/onflow/dx-internal/issues/12)
+- [Bridge - Prepare a Mainnet account & deploy 0.42 dependency contracts](https://github.com/onflow/flow-evm-bridge/issues/108)
+- [Bridge - Enhance escrow interface for metadata resolution from escrowed NFTs & FT Vaults](https://github.com/onflow/flow-evm-bridge/issues/112)
+- [Bridge - Fix displays on bridged NFT & Token templates](https://github.com/onflow/flow-evm-bridge/issues/114)
+- [Bridge - Add the ability to update symbols in bridged ERC20/721 contracts](https://github.com/onflow/flow-evm-bridge/pull/118)
+- [Rewards - Set distribution period](https://github.com/onflow/crescendo-rewards-sc/issues/83)
+- [Rewards - Enable NFT Display retrieval by NFT ID](https://github.com/onflow/crescendo-rewards-sc/issues/87)
 
 Backend
-
-- [Fix @onflow/types error in logs](https://github.com/onflow/crescendo-rewards-be/issues/157)
-- [Fix Blocto Login](https://github.com/onflow/crescendo-rewards-be/issues/155)
-- [Secure referrals api routes using address in referral code](https://github.com/onflow/crescendo-rewards-be/issues/141)
-- [Move address validation into middleware](https://github.com/onflow/crescendo-rewards-be/issues/140)
-- [Setup cors with correct urls](https://github.com/onflow/crescendo-rewards-be/issues/137)
-- [Add referral verification route](https://github.com/onflow/crescendo-rewards-be/issues/122)
-- [Rewards APIs](https://github.com/onflow/crescendo-rewards-be/issues/114)
-- [Add user signature fallback for /verify](https://github.com/onflow/crescendo-rewards-be/issues/112)
-- [Setup production environment](https://github.com/onflow/crescendo-rewards-be/issues/108)
-- [add scripts for cadence 1.0](https://github.com/onflow/crescendo-rewards-be/issues/99)
-- [Deploy contracts to migrationnet](https://github.com/onflow/crescendo-rewards-be/issues/86)
-- [Hook up to testnet](https://github.com/onflow/crescendo-rewards-be/issues/85)
-- [Get job running on staging](https://github.com/onflow/crescendo-rewards-be/issues/84)
-- [Setup ratelimiting with redis](https://github.com/onflow/crescendo-rewards-be/issues/83)
-- [Secure any routes that need to be protected](https://github.com/onflow/crescendo-rewards-be/issues/60)
-- [Create referrals schema and helpers](https://github.com/onflow/crescendo-rewards-be/issues/45)
-- [Switch job runner from mock scripts to real on chain data](https://github.com/onflow/crescendo-rewards-be/issues/34)
+- 
 
 Frontend
+- [Add redemption page and period switch logic #350](https://github.com/onflow/crescendo-rewards/issues/350)
+- [Add emojis to leaderboard #338](https://github.com/onflow/crescendo-rewards/issues/338)
 
-- [Round leaderboard entries to nearest $FLOW](https://github.com/onflow/crescendo-rewards/issues/282)
-- [Add formatter for referral codes](https://github.com/onflow/crescendo-rewards/issues/280)
-- [Add more slides to carousel](https://github.com/onflow/crescendo-rewards/issues/238)
-- [Increase boost precision](https://github.com/onflow/crescendo-rewards/issues/226)
-- [Error displayed after logging in](https://github.com/onflow/crescendo-rewards/issues/196)
-- [Use SWR for activity hook](https://github.com/onflow/crescendo-rewards/issues/194)
-- [Verify referral code in form](https://github.com/onflow/crescendo-rewards/issues/182)
-- [Add lock period countdown](https://github.com/onflow/crescendo-rewards/issues/140)
-- [Setup WalletConnect](https://github.com/onflow/crescendo-rewards/issues/137)
-- [Link to block explorer](https://github.com/onflow/crescendo-rewards/issues/275)
-- [Add logic for minting a new nft even if you have an existing one](https://github.com/onflow/crescendo-rewards/issues/274)
-- [Coming soon partner page](https://github.com/onflow/crescendo-rewards/issues/219)
-- [Get account balance in hook](https://github.com/onflow/crescendo-rewards/issues/206)
-- [[FEATURE] Add 25%, 50%, and MAX buttons for Lock Input](https://github.com/onflow/crescendo-rewards/issues/205)
-- [[FEATURE] Improve Layout For Mobile](https://github.com/onflow/crescendo-rewards/issues/192)
-- [Make total value locked use animated component when increment when changed](https://github.com/onflow/crescendo-rewards/issues/191)
-- [Maintenence Mode from Env Var](https://github.com/onflow/crescendo-rewards/issues/189)
-- [Add boost to subheader](https://github.com/onflow/crescendo-rewards/issues/185)
-- [Animated value component](https://github.com/onflow/crescendo-rewards/issues/177)
-- [Distribution lock period, pre lock countdown, and other countdown card logic](https://github.com/onflow/crescendo-rewards/issues/172)
-- [Update partner card to match mock](https://github.com/onflow/crescendo-rewards/issues/129)
-- [Add jwt to account route](https://github.com/onflow/crescendo-rewards/issues/112)
-- [Remove dapper auth and show modal instead](https://github.com/onflow/crescendo-rewards/issues/107)
-- [Add rules dialogs](https://github.com/onflow/crescendo-rewards/issues/106)
-- [Non connected wallet state on lock page](https://github.com/onflow/crescendo-rewards/issues/100)
-
-X-Chain Axelar Bridge
-- [Flow Bridge App Epic](https://github.com/onflow/flow-bridge-app/issues/1)
-Waiting for Axelar contract deployment to testnet
-
-FCL Discovery
-- Shipped FCL Discovery V2 Improvements
-- [Don't show install links for unsupported browsers](https://github.com/onflow/fcl-discovery/issues/259)
-- [[V2] Milestone 2 - UI Completeness](https://github.com/onflow/fcl-discovery/issues/210)
-
-FCL
-- [Allow FCL Discovery to Display WalletConnect QR Codes while open](https://github.com/onflow/fcl-js/issues/1923)
-- [Allow FCL Discovery to Execute Extension While Open](https://github.com/onflow/fcl-js/issues/1924)
-- [[BUG] Dapper Wallet problems with Newer Releases](https://github.com/onflow/fcl-js/issues/1818)
-
-Flow CLI
-- [Include EVM stdlib in staging update validator](https://github.com/onflow/flow-cli/pull/1697)
+<ins>**Cadence Playground**<ins>
+- [Update Playground to support Cadence 1.0 #760](https://github.com/onflow/flow-playground/issues/760)
 
 Public Key Indexer 
 - [Update for Cadence v1](https://github.com/onflow/flow-public-key-indexer/issues/17)
 
-**This sprint**
-**Sprint goal Crescendo Readiness / Flow Axelar Cross-chain Bridge / Documentation Updates, Crescendo Rewards, Lost and Found (Integration - Flow Port, Flow Wallet)**
+<ins>**FCL/DISCOVERY**<ins>
+- [Remove Shadow From Discovery #254](https://github.com/onflow/fcl-discovery/issues/254)
+- [Add clipboard check #262](https://github.com/onflow/fcl-discovery/pull/262)
+- [Add clipboard-write Access to FCL IFRAME](https://github.com/onflow/fcl-js/issues/1946)
+- [fcl.payer argument type is incorrect](https://github.com/onflow/fcl-js/issues/1936)
+- [fcl.authenticate should be a promise](https://github.com/onflow/fcl-js/issues/1934)
+- [AppUtils verifyUserSignatures should return a Promise](https://github.com/onflow/fcl-js/issues/1933)
 
-- [EPIC] Crescendo Rewards Portal
+<ins>**Flow CLI**<ins>
+[CLI Hangs with certain commands](https://github.com/onflow/flow-cli/issues/1731)
+[Remove Cadence 1.0 Migration Features](https://github.com/onflow/flow-cli/issues/1726)
+
+<ins>**Flow Go SDK**<ins>
+[Remove Previewnet](https://github.com/onflow/flow-go-sdk/issues/739)
+
+<ins>**Flowkit**<ins>
+[Remove Previewnet](https://github.com/onflow/flowkit/issues/73)
+
+**This sprint**
+**Sprint Goal: Launch Rewards Redemption and Points Integration / Launch bridge.flow.com / Lost and Found (Integration - Flow Port, Flow Wallet)**
+
+- [EPIC] Flow Rewards (RAIN)
   - [FE](https://github.com/onflow/crescendo-rewards/issues/1 )
   - [BE](https://github.com/onflow/crescendo-rewards-be/issues/1)
   - [SC](https://github.com/onflow/crescendo-rewards-sc/issues/7)
-- [EPIC FCL WalletConnect + Discovery Improvements](https://github.com/onflow/fcl-js/issues/1872)
 - [EPIC Solving Initialization/Storage Issues - Lost and Found FLIP and Port integration](https://github.com/onflow/flow-port/issues/292)
-- [EPIC - EVM Bridge - bridge.flow.com](https://github.com/onflow/flow-bridge-app/issues/1)
+- [Flow Bridge App Epic](https://github.com/onflow/flow-bridge-app/issues/1)
 
 **On Hold**
+
+- bridge.flow.com
 
 ---
 
