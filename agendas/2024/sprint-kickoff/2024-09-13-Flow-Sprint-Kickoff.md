@@ -47,8 +47,8 @@ Post network upgrade incidents -
 
 ### Key Release Dates & Breaking Changes
 - Next Mainnet/Testnet network upgrade (spork):
-  - Testnet: Tues 17th Sept
-  - Mainnet: Wed 18th Sept
+  - Testnet: Wed 18th Sept
+  - Mainnet: Wed 25th Sept
 
 ---
 
