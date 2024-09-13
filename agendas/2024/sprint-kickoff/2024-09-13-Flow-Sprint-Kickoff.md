@@ -166,30 +166,25 @@ Cycle Objective(s):
 
 **This sprint**
 
-- Objective 1, KR5: Mainnet Upgrade to Crescendo Release
-  - Investigate and fix any high/critical severity issues reported on Crescendo on TN ([Crescendo launch on Mainnet tasklist](https://github.com/onflow/cadence/issues/2642))
-  - Investigate / Fix any security report incoming from bug bounty.
+- Complete Cadence deployment cleanup (requires one more spork)
 
 - Objective 2, KR 1: Update transaction fees weights for the execution operations on TN and MN
   -  Continue work on [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
 
 - Cadence Execution
-  - Continue: [Add support for storage health check of EVM registers](https://github.com/onflow/flow-go/issues/6393)
+  - Badger -> Pebble Investigation/POC
+    - Continue work on [Protocol State Migration POC](https://github.com/onflow/flow-go/issues/6137) -> changing interface to batch write from transaction to make the future switch to Pebble easier.
+  - Complete [util to export stats about execution state](https://github.com/onflow/flow-go/issues/6361)
   - Continue: [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
 
-- EVM 
-  - Continue monitoring EVM GW stability
-  - Continue work on [local state index](https://github.com/onflow/flow-evm-gateway/issues/322)
-  - KROK
-     - EVM Gateway benchmarking
-
 - EVM Gateway
+  - Continue monitoring / improving EVM GW stability
+  - Add tracing endpoint to unblock Alchemy
+  - Complete [local state index](https://github.com/onflow/flow-evm-gateway/issues/322)
   - continue work on [Benchmarking](https://github.com/onflow/flow-evm-gateway/issues/19)
 
-- Badger -> Pebble Investigation/POC
-  - Continue work on [Protocol State Migration POC](https://github.com/onflow/flow-go/issues/6137) -> changing interface to batch write from transaction to make the future switch to Pebble easier.
-
 **Completed OKRs**
+  * Objective 1, KR5: Mainnet Upgrade to Crescendo Release
   * Objective 1, KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
     * All breaking  released in a new CLI: v1.18.0-cadence-v1.0.0-preview.26
   * Objective 1, KR4: Testnet Upgrade to Crescendo Release
