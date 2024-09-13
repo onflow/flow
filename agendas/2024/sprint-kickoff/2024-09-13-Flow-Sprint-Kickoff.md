@@ -3,7 +3,6 @@
 ### Team Wins 🎉
 
 - Crescendo is LAUNCHED! 🎉💥
-- 
 
 
 ### General updates
@@ -87,6 +86,83 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**Cadence Language**
+- Security fix: [1](https://github.com/dapperlabs/cadence-internal/pull/244), [2](https://github.com/dapperlabs/cadence-internal/pull/243)
+- Bugfix
+    - [Handle unmigrated path capabilities and path links in Account.capabilities functions](https://github.com/onflow/cadence/pull/3562)
+    - [Fix cadence-parser npm package](https://github.com/onflow/cadence/pull/3555)
+- Improvement
+    - [Improve address decoding error](https://github.com/onflow/cadence/pull/3560)
+- Tooling
+    - [Fix CI: Flow CLI is 1.0 now](https://github.com/onflow/cadence/pull/3573)
+    - version bump - [Fix the version update check](https://github.com/onflow/cadence/pull/3572)
+    - [Fix storage explorer: Update dependencies, update API usage](https://github.com/onflow/cadence/pull/3566)
+- Tests
+    - [Add tests for exporting interface type](https://github.com/onflow/cadence/pull/3576)
+    - [Add test for modifying events during contract updates](https://github.com/onflow/cadence/pull/3561)
+    - [Add contract-update test for removing a field from nested resource](https://github.com/onflow/cadence/pull/3559)
+- Docs
+    - [Update example on front page to 1.0](https://github.com/onflow/cadence-lang.org/pull/143)
+    - [Fix description](https://github.com/onflow/cadence-lang.org/pull/144)
+    - [Default to current, i.e. 1.0](https://github.com/onflow/cadence-lang.org/pull/142)
+    - [Document valid changes for events during contract-updates](https://github.com/onflow/cadence-lang.org/pull/139)
+
+**Cadence Execution**
+- Bugfix
+    - [Fix metering invalidation](https://github.com/onflow/flow-go/pull/6377)
+        - [v0.37 - Fix metering invalidation](https://github.com/onflow/flow-go/pull/6461)
+- Spork-related
+    - migration bugfixes
+        - [v0.37 - Recover validation error pretty printing panic](https://github.com/onflow/flow-go/pull/6434)
+        - [Cadence 1.0 migration - Add EVM storage account creation migration](https://github.com/onflow/flow-go/pull/6422)
+    - [Service account Fee changes](https://github.com/onflow/service-account/pull/320)
+    - Flow hosting 
+        - [fix path in download checkpoint](https://github.com/dapperlabs/dapper-flow-hosting/pull/1599)
+        - Network recovery - [disable peer score](https://github.com/dapperlabs/dapper-flow-hosting/pull/1597)
+    - Improvements
+        - [Verification - Adding block id and height in verified approvals](https://github.com/onflow/flow-go/pull/6402)
+- Execution effort estimation
+    - [Save initial parameters](https://github.com/onflow/flow-execution-effort-estimation/pull/4)
+    - [Add grpc endpoint to EN for transaction execution metrics](https://github.com/onflow/flow-go/pull/6172)
+- Util improvements
+    - [Check checkpoint file exists when running state extraction](https://github.com/onflow/flow-go/pull/6459)
+    - [Add support for storage health check of EVM registers](https://github.com/onflow/flow-go/issues/6393)
+    - [Add command to debug a script](https://github.com/onflow/flow-go/pull/6425)
+- Tooling
+    - [Flow batch-scan](https://github.com/onflow/flow-batch-scan) - tool to scan all addresses on chain, [updated to Cadence 1.0](https://github.com/onflow/flow-batch-scan/pull/39)
+    - TPS Benchmark - [Change TPS dataset](https://github.com/onflow/flow-go/pull/6429)
+- Docs
+    - [update sha256sum for boot-tools of v0.37](https://github.com/onflow/docs/pull/876)
+
+**EVM Core**
+- Docs - [add a sample code for cadence arch call](https://github.com/onflow/docs/pull/885)
+
+**EVM Gateway**
+- Bugfix
+    - [Block 910 has a hash different then the one reported from evm-testnet.flowscan](https://github.com/onflow/flow-evm-gateway/issues/509)
+    - [Bugfix locking on logs filters](https://github.com/onflow/flow-evm-gateway/pull/506)
+    - [Receipts for deployments with COAs have both `contractAddress` and `to` fields present](https://github.com/onflow/flow-evm-gateway/pull/535)
+    - [Response returned from `eth_getBlockReceipts` endpoint is not properly marshalled](https://github.com/onflow/flow-evm-gateway/pull/533)
+    - [Crasher on validation of args](https://github.com/onflow/flow-evm-gateway/issues/525)
+    - [Incorrect hash value for empty `sha3Uncles` block field](https://github.com/onflow/flow-evm-gateway/pull/504)
+    - [The `height` in some log lines is displayed as a byte-array instead of numeric value](https://github.com/onflow/flow-evm-gateway/pull/497)
+- Improvements
+    - [Debug log all errors](https://github.com/onflow/flow-evm-gateway/pull/528)   
+    - [Increase trace download retry limit](https://github.com/onflow/flow-evm-gateway/pull/523)
+    - [EVM script execution caching](https://github.com/onflow/flow-evm-gateway/pull/521)
+    - [Improve Cadence scripts](https://github.com/onflow/flow-evm-gateway/pull/522)
+    - [Fix display of duplicate logs](https://github.com/onflow/flow-evm-gateway/pull/516)
+    - [Filter out errors for missing endpoints as they are not really relevant](https://github.com/onflow/flow-evm-gateway/pull/507)
+    - [Increase `batchRequestLimit` and `batchResponseMaxSize` constants](https://github.com/onflow/flow-evm-gateway/pull/505)
+    - [Support more signing algorithms for COA key](https://github.com/onflow/flow-evm-gateway/pull/501)
+    - [Improve COA creation transaction to gracefully handle existing COA in storage](https://github.com/onflow/flow-evm-gateway/pull/500)
+    - [Handle `ErrHeightOutOfRange` errors in `EstimateGas`](https://github.com/onflow/flow-evm-gateway/pull/498)
+- Testing
+    - [Improve network test with blockchain traverse](https://github.com/onflow/flow-evm-gateway/pull/517)
+    - [Update the `storage` solidity contract](https://github.com/onflow/flow-evm-gateway/pull/536)
+    - [Fix flaky E2E test for EVM state building](https://github.com/onflow/flow-evm-gateway/pull/532)
+    - [Add an E2E test for filling the EVM state with blocks & transactions](https://github.com/onflow/flow-evm-gateway/pull/526)
+    - [Add test cases for endpoint of the `PullAPI`](https://github.com/onflow/flow-evm-gateway/pull/510)
 
 **This sprint**
 
