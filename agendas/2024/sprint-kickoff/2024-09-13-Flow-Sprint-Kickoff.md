@@ -6,8 +6,9 @@
 - CloudFlare account migration executed with all zones migrated (JP)
 - Flow Community Rewards successfully upgraded and running strong with 19,450,958 Total Locked FLOW
 - Cadence Playground running Cadence 1.0
-
-
+- Celer deployed mainnet contracts this week and liquidity was opened today
+- Kittypunch launched EVM DEX on mainnet https://swap.kittypunch.xyz/#/swap
+- GNOSIS Safe.Global Ethereum Vult for tresury multi-sig launched on mainnet https://safe.flow.com
 
 ### General updates
 
@@ -286,10 +287,15 @@ Cycle Objective(s):
 - Deliver Axelar bridge
 
 **Done last sprint**
+  * Supporting Ankr, Moralis, Axelar on EVM issues and node operations
+  * Celer deployed mainnet contracts this week and liquidity was opened today
+  * Kittypunch launched EVM DEX on mainnet https://swap.kittypunch.xyz/#/swap
+  * GNOSIS Safe.Global Ethereum Vult for tresury multi-sig launched on mainnet https://safe.flow.com
+
   
 **This sprint**
-  * Continue supporting Celer, Axelar and other key partners
-  * Complete remaining JVM-SDK examples
+  * Contnue supporting Ankr, Axelar and other node operators
+  * Launch Axelar cross-chain bridge and axlUSDC once all vaidators are onboarded and critical mass is reached
   
 **On Hold**
 
