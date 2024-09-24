@@ -1301,9 +1301,47 @@
       }
     },
     "testnet": {
-     "testnet51": {
-        "id": 51,
+      "testnet52": {
+        "id": 52,
         "live": true,
+        "name": "Testnet52",
+        "sporkTime": "2024-09-24T15:00:00Z",
+        "rootHeight": "218215349",
+        "rootParentId": "20dd925a750399493cf7455f199c32c952e8010a6c0b4424dba00a193fa18e44",
+        "rootStateCommitment": "b0498700398cdc8c0c9368cc2f82fde62e8fe4b06e9c8af6c9bb619ab499e6c3",
+        "gitCommitHash": "25d9c2a9b89bac8fa003ca67928eb79b1427ea17",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-52-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-52/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-52/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-52/public-root-information/node-infos.pub.json"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": ""
+          }
+        },
+        "tags": {
+          "flow-go-tag": "v0.37.16-patch.1",
+          "cadence-tag": "v1.0.0-preview.52-patch.3",
+          "docker-tag": "v0.37.16-patch.1"
+        },
+        "accessNodes": [
+          "access.devnet.nodes.onflow.org:9000"
+        ],
+        "seedNodes": [
+          {
+            "address": "access-003.devnet52.nodes.onflow.org:3570",
+            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+          }
+        ]
+      },
+      "testnet51": {
+        "id": 51,
+        "live": false,
         "name": "Testnet51",
         "sporkTime": "2024-08-14T15:00:00Z",
         "rootHeight": "211176670",
@@ -1331,12 +1369,12 @@
           "docker-tag": "v0.37.1"
         },
         "accessNodes": [
-          "access.devnet.nodes.onflow.org:9000"
+          "access-001.devnet51.nodes.onflow.org:9000"
         ],
         "seedNodes": [
           {
-            "address": "access-003.devnet51.nodes.onflow.org:3570",
-            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+            "address": "access-001.devnet51.nodes.onflow.org:3570",
+            "key": "ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d"
           }
         ]
       },
@@ -1375,7 +1413,7 @@
         "seedNodes": [
           {
             "address": "access-001.devnet50.nodes.onflow.org:3570",
-            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+            "key": "ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d"
           }
         ]
       },
@@ -1409,12 +1447,12 @@
           "docker-tag": "v0.32.6-patch.1"
         },
         "accessNodes": [
-          "access.devnet.nodes.onflow.org:9000"
+          "access-001.devnet49.nodes.onflow.org:9000"
         ],
         "seedNodes": [
           {
-            "address": "access-003.devnet49.nodes.onflow.org:3570",
-            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+            "address": "access-001.devnet49.nodes.onflow.org:3570",
+            "key": "ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d"
           }
         ]
       },
@@ -1452,8 +1490,8 @@
         ],
         "seedNodes": [
           {
-            "address": "access-003.devnet48.nodes.onflow.org:3570",
-            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+            "address": "access-001.devnet48.nodes.onflow.org:3570",
+            "key": "ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d"
           }
         ]
       },
