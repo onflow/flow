@@ -2,6 +2,7 @@
 
 ### Team Wins 🎉
 
+- Mainnet is now out of Epoch Fallback Mode and automatic epoch transition has resumed.
 - [Joe](https://github.com/jsproz) joined the Cadence team this week!
 - Mainnet 26 upgrade went smoothly for the protocol team - the security fix discovered shortly after Crescendo release is now fixed and validated.
 - [Cadence 1.0 release](https://flow-foundation.slack.com/archives/C05RYHG0KEY/p1727390039557029)!
@@ -18,11 +19,11 @@
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%   |    98.04%    |       1964%      |
-| Block Finalization      | 99.9%   |    98.04%     |       1964%      |
-| Transaction Execution   | 99.9%   |    98.04%     |       1964%      |
-| Block Sealing           | 99.9%   |    98.04%     |       1964%      |
-| Access API Liveness     | 99.9%   |    98.04%     |       1964%      |
+| Collection Finalization | 99.9%   |    99.26%    |       744.05%     |
+| Block Finalization      | 99.9%   |    99.26%    |       744.05%     |
+| Transaction Execution   | 99.9%   |    99.26%    |       744.05%     |
+| Block Sealing           | 99.9%   |    99.26%    |       744.05%     |
+| Access API Liveness     | 99.9%   |    98.04%    |       1190.48%    |
 
 [SLO dashboards](https://flowfoundation.grafana.net/d/hgW3l-m4k/slo-dashboard?orgId=1&from=now-2w&to=now)
 
@@ -50,15 +51,16 @@ YTD SLA: 99.89%
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 8  |    7  |       0         |       7          |        **22**       |
+| Drafted     | 8  |    8 (+1)  |       0         |       7          |        **23** (+1)       |
 | Proposed    | 1  |    2    |       3          |       0           |        **6**  |
 | Accepted    | 2  |    1     |       2       |       2        |        **7**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
 | Implemented | 3 |    25    |       1       |       0           |        **29**          |
 | Released    | 4  |    0     |       4       |       6          |        **14**         |
-| Total       | **18**  |    **35**  |       **11**     |       **15**          |        **79**   |
+| Total       | **18**  |    **36** (+1)  |       **11**     |       **15**          |        **80** (+1)   |
 
-**No New FLIPs**
+**New FLIPs**
+- Cadence FLIP 288 (Draft Stage): Simple String Interpolation (to provide support for the use of identifiers in string interpolation) - by Raymond Zhang
 
 **REMINDER - FLIPs that need to be reassigned immediately:**
 
