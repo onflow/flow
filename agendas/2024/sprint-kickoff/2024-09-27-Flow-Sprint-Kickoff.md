@@ -56,7 +56,7 @@ YTD SLA: 99.89%
 | Total       | **18**  |    **36** (+1)  |       **11**     |       **15**          |        **80** (+1)   |
 
 **New FLIPs**
-Cadence FLIP 288 (Draft Stage): Simple String Interpolation (to provide support for the use of identifiers in string interpolation) - by Raymond Zhang
+- Cadence FLIP 288 (Draft Stage): Simple String Interpolation (to provide support for the use of identifiers in string interpolation) - by Raymond Zhang
 
 **REMINDER - FLIPs that need to be reassigned immediately:**
 
