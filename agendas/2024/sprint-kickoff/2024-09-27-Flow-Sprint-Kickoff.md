@@ -2,7 +2,7 @@
 
 ### Team Wins 🎉
 
-- Mainnet is now out of EFM.
+- Mainnet is now out of Epoch Fallback Mode and automatic epoch transition has resumed.
 
 ### General updates
 
@@ -15,11 +15,11 @@
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%   |    98.04%    |       1964%      |
-| Block Finalization      | 99.9%   |    98.04%     |       1964%      |
-| Transaction Execution   | 99.9%   |    98.04%     |       1964%      |
-| Block Sealing           | 99.9%   |    98.04%     |       1964%      |
-| Access API Liveness     | 99.9%   |    98.04%     |       1964%      |
+| Collection Finalization | 99.9%   |    99.26%    |       744.05%     |
+| Block Finalization      | 99.9%   |    99.26%    |       744.05%     |
+| Transaction Execution   | 99.9%   |    99.26%    |       744.05%     |
+| Block Sealing           | 99.9%   |    99.26%    |       744.05%     |
+| Access API Liveness     | 99.9%   |    98.04%    |       1190.48%    |
 
 [SLO dashboards](https://flowfoundation.grafana.net/d/hgW3l-m4k/slo-dashboard?orgId=1&from=now-2w&to=now)
 
