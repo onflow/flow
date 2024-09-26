@@ -47,15 +47,16 @@ YTD SLA: 99.89%
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 8  |    7  |       0         |       7          |        **22**       |
+| Drafted     | 8  |    8 (+1)  |       0         |       7          |        **23** (+1)       |
 | Proposed    | 1  |    2    |       3          |       0           |        **6**  |
 | Accepted    | 2  |    1     |       2       |       2        |        **7**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
 | Implemented | 3 |    25    |       1       |       0           |        **29**          |
 | Released    | 4  |    0     |       4       |       6          |        **14**         |
-| Total       | **18**  |    **35**  |       **11**     |       **15**          |        **79**   |
+| Total       | **18**  |    **36** (+1)  |       **11**     |       **15**          |        **80** (+1)   |
 
-**No New FLIPs**
+**New FLIPs**
+Cadence FLIP 288 (Draft Stage): Simple String Interpolation (to provide support for the use of identifiers in string interpolation) - by Raymond Zhang
 
 **REMINDER - FLIPs that need to be reassigned immediately:**
 
