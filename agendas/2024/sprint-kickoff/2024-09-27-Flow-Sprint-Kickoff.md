@@ -353,20 +353,33 @@ Cycle Objective(s):
 
 ### **Infra - JP**
 Cycle Objective(s): 
-- Prepare flow.com, onflow.org & nodes.onflow.org domains for CloudFlare account migration
 - Prepare to spork FF & DL nodes 
 - Clean up infra following spork
 
 **Done last sprint**
 
+**Observability**
+- Evaluate Grafana commit & usage
+- Consolidate synthetics to use k6 to save on commit
+- Create Grafana usage alerts
+- [Create more alerts for monitoring EVM Gateway](https://flowfoundation.grafana.net/alerting/list?view=list&search=EVM)
+- [Create documentation for EVM Gateway triage](https://www.notion.so/flowfoundation/Triaging-EVM-GW-issues-1071aee123248027878bd1e0761c6c69?pvs=25)
+- [Create documentation for Grafana billing monitoring](https://www.notion.so/flowfoundation/Grafana-Billing-Monitoring-1051aee123248072b123cb054dbf2f91)
 
+**Spork**
+- [Create Devnet52 Infra](https://github.com/dapperlabs/terraform/pull/4388)
+- [Create Mainnet26 FF Infra](https://github.com/dapperlabs/terraform/pull/4389)
+- [Create Mainnet26 DL Infra](https://github.com/dapperlabs/dapper-flow-nodes-infrastructure/pull/28)
+- [Delete Mainnet25 DL Infra](https://github.com/dapperlabs/dapper-flow-nodes-infrastructure/pull/30)
+- [Scale down Devnet51 Infra](https://github.com/dapperlabs/terraform/pull/4398)
+- [Scale down Mainnet25 FF Infra](https://github.com/dapperlabs/terraform/pull/4401)
+- [Delete Migration Mainnet Infra](https://github.com/dapperlabs/terraform/pull/4403)
+- [Update DNS records](https://github.com/dapperlabs/terraform/pull/4400)
+- [Create Ansible configuration for DL & FF](https://github.com/dapperlabs/dapper-flow-hosting/pull/1603)
 
 **This Sprint**
-- Finish merging & cleaning up old CF resources
-- Create infrastructure for DL & FF nodes
-- Spork Mainnet
-- Cleanup all infra used for spork prep
-- Assist with EVM GW observability
+- Improve external monitoring with synthetics
+- Evaluate remaining infra migration tasks
 
 
 **Active Epics**
