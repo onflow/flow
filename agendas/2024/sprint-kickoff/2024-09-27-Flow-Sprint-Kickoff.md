@@ -2,7 +2,7 @@
 
 ### Team Wins 🎉
 
-- 
+- Mainnet is now out of EFM.
 
 ### General updates
 
