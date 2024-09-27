@@ -6,7 +6,7 @@
 - [Joe](https://github.com/jsproz) joined the Cadence team this week!
 - Mainnet 26 upgrade went smoothly for the protocol team - the security fix discovered shortly after Crescendo release is now fixed and validated.
 - [Cadence 1.0 release](https://flow-foundation.slack.com/archives/C05RYHG0KEY/p1727390039557029)!
-- Update of the execution storage layer from release-candidate to [Atree v0.8.0](https://github.com/onflow/cadence/pull/3583) - this verison passed through 1034 hours of smoke tests and numerous storage health-checks on execution state snapshots before and after network upgrade to Crescendo release.
+- Update of the execution storage layer from release-candidate to [Atree v0.8.0](https://github.com/onflow/atree/releases/tag/v0.8.0) - this verison passed through 1034 hours of smoke tests and numerous storage health-checks on execution state snapshots before and after network upgrade to Crescendo release.
 
 ### General updates
 
