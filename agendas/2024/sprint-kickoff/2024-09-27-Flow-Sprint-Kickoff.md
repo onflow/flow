@@ -6,7 +6,7 @@
 - [Joe](https://github.com/jsproz) joined the Cadence team this week!
 - Mainnet 26 upgrade went smoothly for the protocol team
   - Security fix discovered shortly after Crescendo release is now fixed and validated.
-  - Libp2p message flood mitigation was released and all but 5 external VNs are back on the entwork 
+  - Libp2p message flood mitigation was released and all but 5 external VNs are back on the network 
 - [Cadence 1.0 release](https://flow-foundation.slack.com/archives/C05RYHG0KEY/p1727390039557029)!
 - Update of the execution storage layer from release-candidate to [Atree v0.8.0](https://github.com/onflow/cadence/pull/3583) - this version passed through 1034 hours of smoke tests and numerous storage health-checks on execution state snapshots before and after network upgrade to Crescendo release.
 
@@ -228,6 +228,7 @@ Cycle Objective(s):
       - [GetExecutionResultByID](https://github.com/onflow/flow-go-sdk/pull/757)
       - [GetSystemTransactionResult](https://github.com/onflow/flow-go-sdk/pull/756)
       - [Add computation usage to GetTransactionResult](https://github.com/onflow/flow-go-sdk/pull/774)
+      - [Add GetProtocolStateSnapshotByBlockID and GetProtocolStateSnapshotByHeight endpoints](https://github.com/onflow/flow-go-sdk/issues/749)
 
 * <ins>Post Crescendo upgrade stabilization</ins>
   - Finished benchnet testing adding libp2p peer gater to flow-go
@@ -242,16 +243,21 @@ Cycle Objective(s):
   - [Integration tests maintainance](https://github.com/onflow/flow-go/pull/6496)
   - Wrapping final PRs https://github.com/onflow/flow-core-contracts/pull/440, https://github.com/onflow/flow-go/pull/6424
     - Added support for DKGIndexMapping to both PRs
+
+* <ins>Cryptography</ins>
+  - State proofs: minor update to the Pedersen-IPA docs and numbers (code update and bench run) - notes and bench summary updated
+  - Randomness: review of EVM doc and new examples
+  - Proof of Possession of the staking key: vaccuumlabs knowledge transfer - rebased the PoP contract PR (ready for Ledger work)
+  - Random Beacon: quantify the current bias from Hotstuff based on computational indistinguishability (needs to be documented)
+  - SPoCK aggregation: progress on the definitions of multi-verifications - get the requirement from the Flow sealing design.
+identified new optimizations in the crypto lib
     
 **This sprint**
 
 * <ins>EFM Recovery</ins>
   - Wrap up previously created PRs
   - [Implement an integration test for EFM and DKG IndexMap](https://github.com/onflow/flow-go/issues/6331)
-
-   [Continue DKG smart contract data model update](https://github.com/onflow/flow-go/issues/6213)
   - Protocol updates for DKG changes [https://github.com/onflow/flow-go/issues/6214]
-  - Finish up and merge [EFM Recovery transaction](https://github.com/onflow/flow-core-contracts/pull/440), EFM integration test part 2](https://github.com/onflow/flow-go/issues/6164), [EFM Integration Test Part 2](https://github.com/onflow/flow-go/pull/6424)
     
 * <ins>Data Availability</ins>
   - KROK Team
@@ -259,11 +265,18 @@ Cycle Objective(s):
     - Registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066) - In review, [Issue #6068](https://github.com/onflow/flow-go/issues/6068) - In review)
     - Store Tx Result in database ([Issue #6302](https://github.com/onflow/flow-go/issues/6302) - In review, [Issue #6413](https://github.com/onflow/flow-go/issues/6413) - In progress)
     - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357) - In progress)
-    - Access API / Go SDK alignment ([Issue #735](https://github.com/onflow/flow-go-sdk/issues/735), [Issue #749](https://github.com/onflow/flow-go-sdk/issues/749), [Issue #746](https://github.com/onflow/flow-go-sdk/issues/746), [Issue #761](https://github.com/onflow/flow-go-sdk/issues/761), [Issue #745](https://github.com/onflow/flow-go-sdk/issues/745), [Issue #747](https://github.com/onflow/flow-go-sdk/issues/747), [Issue #763](https://github.com/onflow/flow-go-sdk/issues/763))
+    - Epic [Access API / Go SDK alignment](https://github.com/onflow/flow-go-sdk/issues/735)
+      - [Add SubscribeBlocks*, SubscribeBlockHeaders*, and SubscribeBlockDigests* endpoints](https://github.com/onflow/flow-go-sdk/issues/746)
+      - [Update GetNodeVersionInfo response object](https://github.com/onflow/flow-go-sdk/issues/761)
+      - [Add SendAndSubscribeTransactionStatuses endpoint](https://github.com/onflow/flow-go-sdk/issues/745)
+      - [Add SubscribeAccountStatuses* endpoints](https://github.com/onflow/flow-go-sdk/issues/747)
+      - [Unify streaming endpoints code duplication](https://github.com/onflow/flow-go-sdk/issues/763)
     - Add Time To Seal metric ([Issue #6448](https://github.com/onflow/flow-go/issues/6448))
 
 * <ins>Cryptography</ins>
-  - Get back to SPoCK aggregation related reads
+  - SPoCK aggregation
+  - Document the random beacon bias findings
+  - Remaining PoP work planning
 
 * <ins>Misc other</ins>
   - Ongoing Pebble migration PR reviews
@@ -281,12 +294,12 @@ Cycle Objective(s):
 **Done last sprint**
   * Worked with numerous Axelar node partners to get their nodes staked and added to testnet and mainnet
   * Support Trado, Kittypunch, and Ankr through various integration and teething issues
-  * Updated Axelar node operator doc and hosted two office hours for node operators
+  * Updated Axelar node operator docs and hosted two office hours for new node operators having issues
 
 **This sprint**
   * Focus remains on launch for Axelar cross-chain bridge and axlUSDC, once all vaidators are onboarded and critical mass is reached
   * Update Flow node operations docs to include latest EVM Gateway details
-  * Keep helping partner and node operators
+  * Keep helping partners and node operators
   
 **On Hold**
 
