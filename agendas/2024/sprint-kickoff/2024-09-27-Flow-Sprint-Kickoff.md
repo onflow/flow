@@ -327,7 +327,7 @@ Cycle Objective(s):
 **Done last sprint**
 
 **Rewards**
-- Redemption
+- [Redemption [EPIC] Claiming #358](https://github.com/onflow/crescendo-rewards/issues/358)
 - Boxes and Keys airdrop and integration
 
 **Dev Docs**
