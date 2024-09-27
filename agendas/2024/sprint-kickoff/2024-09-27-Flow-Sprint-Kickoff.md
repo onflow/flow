@@ -211,7 +211,7 @@ Improvements:
 ### **Core Protocol** \[Jerome]
 Cycle Objective(s): 
 
-* Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node [IN PROGRESS]
+* Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node [DONE]
 * Reduce CPU usage on Execution node by 30% [DONE]
 * Translate crypto performance improvements to consensus block rate increase [DONE]
 * Continue design and implementation of Sporkless Epoch Fallback Recovery solution [DONE]
@@ -232,7 +232,8 @@ Cycle Objective(s):
 
 * <ins>Post Crescendo upgrade stabilization</ins>
   - Finished benchnet testing adding libp2p peer gater to flow-go
-  - Add peer gater to lib2p gossipsub [PR #6479](https://github.com/onflow/flow-go/pull/6479)
+  - [Add peer gater to lib2p gossipsub](https://github.com/onflow/flow-go/pull/6479)
+  - [Removing observation bias for Cruise Control for small consensus committees](https://github.com/onflow/flow-go/pull/6392)
   - Networking documentation (in progress will be done today)
 
 * <ins>EFM Recovery</ins>
