@@ -35,15 +35,15 @@ YTD SLA: 99.52%
 - Updated downtime reported during the last sprint kickoff. see last sprint's [SLA section](https://github.com/onflow/flow/blob/master/agendas/2024/sprint-kickoff/2024-09-13-Flow-Sprint-Kickoff.md#sla-situation-updated-on-926)
 - Total downtime YTD -
   1. 4 HCUs 20 mins
-  2. Mainnet25(Crescendo) upgrade: 19h23m
-  3. P0 incident after mainnet25: 7h30m
-  4. Mainnet26: 3h48m
+  2. Sept 4th - Mainnet25(Crescendo) upgrade: 19h23m
+  3. Sept 5th - P0 incident after mainnet25: 7h30m
+  4. Sept 25th - Mainnet26: 3h48m
   
   Total: 31h
 
 
 ## Incidents
-- P1 - Sept 24th - EVM Transactions stopped. [slack thread](https://flow-foundation.slack.com/archives/C014WBGR1J9/p1727227388238869)
+- Sept 24th - P1 incident: EVM Transactions stopped. [slack thread](https://flow-foundation.slack.com/archives/C014WBGR1J9/p1727227388238869)
 
 
 (Sev [definition](https://www.notion.so/flowfoundation/Incident-Priorities-Severity-Levels-1-e811b352feff4928b69a7e99df724c6a))
