@@ -298,7 +298,7 @@ Cycle Objective(s):
 
 **Done last sprint**
   * Worked with numerous Axelar node partners to get their nodes staked and added to testnet and mainnet
-  * Support Trado, Kittypunch, and Ankr through various integration and teething issues
+  * Support Trado and Ankr through various integration and teething issues
   * Updated Axelar node operator docs and hosted two office hours for new node operators having issues
 
 **This sprint**
