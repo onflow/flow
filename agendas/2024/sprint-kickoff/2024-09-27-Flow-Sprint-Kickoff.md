@@ -9,6 +9,10 @@
   - Libp2p message flood mitigation was released and all but 5 external VNs are back on the network 
 - [Cadence 1.0 release](https://flow-foundation.slack.com/archives/C05RYHG0KEY/p1727390039557029)!
 - Update of the execution storage layer from release-candidate to [Atree v0.8.0](https://github.com/onflow/cadence/pull/3583) - this version passed through 1034 hours of smoke tests and numerous storage health-checks on execution state snapshots before and after network upgrade to Crescendo release.
+- Flow Community Rewards running strong with 29,318,979 Total Locked FLOW
+- Cadence Playground running Cadence 1.0
+- Restored NFT catalog to former glory
+
 
 ### General updates
 
@@ -322,8 +326,43 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**Rewards**
+- Redemption
+- Boxes and Keys airdrop and integration
+
+**Dev Docs**
+- Error messages guide
+- [Create and Test Playground Links for Cadence 1.0 Tutorials #799](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=66080152)
+
+**Playground**
+- Updated all tutorials to Cadence 1.0
+- Fix broken playground links
+- Fix for Playground API
+
+**Smart Contracts**
+- Fix Staking Contract Bug
+- Update NFT Error messages to be more descriptive
+- Update FT Error messages to be more descriptive
+- [Add evm onboarding blocklist functionality #123](https://github.com/onflow/flow-evm-bridge/pull/123)
+- [Add EVM contract onboarding blocklist #122](https://github.com/onflow/flow-evm-bridge/issues/122)
+- [Add base & implementation solidity contracts to demo secure randomness #20](https://github.com/onflow/random-coin-toss/pull/20)
+
+**CLI**
+- [Generalize & refactor project generator utility #1774](https://github.com/onflow/flow-cli/issues/1774)
+- [`flow generate` transaction generates a script #1763](https://github.com/onflow/flow-cli/issues/1763)
+- [Add flow generate test command #1760](https://github.com/onflow/flow-cli/issues/1760)
+- [Add aliases for Core Contracts in Dependency Manager #1753](https://github.com/onflow/flow-cli/issues/1753)
+- [Flow CLI warns of new version that's actually older #1747](https://github.com/onflow/flow-cli/issues/1747)
+- [Remove previewnet from init #1745](https://github.com/onflow/flow-cli/issues/1745)
+
+**Faucet**
+- [Update Flow Faucet to be Funding by Default #907](https://github.com/onflow/docs/issues/907)
+
+**FCL/Discovery**
+- [Unofficially installed extensions not showing in Discovery API #265](https://github.com/onflow/fcl-discovery/issues/265)
+
 **This sprint**
-**Sprint Goal: Launch Rewards Redemption and Points Integration / Launch bridge.flow.com / Lost and Found (Integration - Flow Port, Flow Wallet)**
+**Sprint Goal: Launch Rewards Redemption and Points Integration and Season 1 / Lost and Found (Integration - Flow Port, Flow Wallet)**
 
 - [EPIC] Flow Rewards (RAIN)
   - [FE](https://github.com/onflow/crescendo-rewards/issues/1 )
