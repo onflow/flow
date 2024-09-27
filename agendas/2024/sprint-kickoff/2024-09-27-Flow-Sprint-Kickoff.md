@@ -209,6 +209,20 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>Data Availability</ins>
+  - KROK Team
+    - Documentation improvements ([PR #896](https://github.com/onflow/docs/pull/896), [PR #877](https://github.com/onflow/docs/pull/877))
+    - SDK alignment
+      - [GetAccountBalance](https://github.com/onflow/flow-go-sdk/pull/742)
+      - [GetAccountKeys](https://github.com/onflow/flow-go-sdk/pull/753)
+      - [GetFullCollectionById](https://github.com/onflow/flow-go-sdk/pull/754)
+      - [GetExecutionResultByID](https://github.com/onflow/flow-go-sdk/pull/757)
+      - [GetSystemTransactionResult](https://github.com/onflow/flow-go-sdk/pull/756)
+      - [Add computation usage to GetTransactionResult](https://github.com/onflow/flow-go-sdk/pull/774)
+
+* <ins>Misc other</ins>
+  - Add peer gater to lib2p gossipsub [PR #6479](https://github.com/onflow/flow-go/pull/6479)
+
 **This sprint**
 
 * <ins>Crescendo upgrade</ins>
@@ -223,10 +237,10 @@ Cycle Objective(s):
   - KROK Team
     - Expand on payer balance checks ([Issue #6129](https://github.com/onflow/flow-go/issues/6129) - In review, [Issue #6139](https://github.com/onflow/flow-go/issues/6139) - In review)
     - Registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066) - In review, [Issue #6068](https://github.com/onflow/flow-go/issues/6068) - In review)
-    - Store Tx Result in database ([Issue #6302](https://github.com/onflow/flow-go/issues/6302) - In progress)
+    - Store Tx Result in database ([Issue #6302](https://github.com/onflow/flow-go/issues/6302) - In review, [Issue #6413](https://github.com/onflow/flow-go/issues/6413) - In progress)
     - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357) - In progress)
-    - Documentation improvements ([Issue #815](https://github.com/onflow/docs/issues/815) - In review, [Issue #727](https://github.com/onflow/docs/issues/727) - In review)
-    - Access API / Go SDK alignment ([Issue #735](https://github.com/onflow/flow-go-sdk/issues/735))
+    - Access API / Go SDK alignment ([Issue #735](https://github.com/onflow/flow-go-sdk/issues/735), [Issue #749](https://github.com/onflow/flow-go-sdk/issues/749), [Issue #746](https://github.com/onflow/flow-go-sdk/issues/746), [Issue #761](https://github.com/onflow/flow-go-sdk/issues/761), [Issue #745](https://github.com/onflow/flow-go-sdk/issues/745), [Issue #747](https://github.com/onflow/flow-go-sdk/issues/747), [Issue #763](https://github.com/onflow/flow-go-sdk/issues/763))
+    - Add Time To Seal metric ([Issue #6448](https://github.com/onflow/flow-go/issues/6448))
 
 * <ins>Cryptography</ins>
   - Get back to SPoCK aggregation related reads
