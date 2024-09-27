@@ -4,9 +4,11 @@
 
 - Mainnet is now out of Epoch Fallback Mode and automatic epoch transition has resumed.
 - [Joe](https://github.com/jsproz) joined the Cadence team this week!
-- Mainnet 26 upgrade went smoothly for the protocol team - the security fix discovered shortly after Crescendo release is now fixed and validated.
+- Mainnet 26 upgrade went smoothly for the protocol team
+  - Security fix discovered shortly after Crescendo release is now fixed and validated.
+  - Libp2p message flood mitigation was released and all but 5 external VNs are back on the entwork 
 - [Cadence 1.0 release](https://flow-foundation.slack.com/archives/C05RYHG0KEY/p1727390039557029)!
-- Update of the execution storage layer from release-candidate to [Atree v0.8.0](https://github.com/onflow/cadence/pull/3583) - this verison passed through 1034 hours of smoke tests and numerous storage health-checks on execution state snapshots before and after network upgrade to Crescendo release.
+- Update of the execution storage layer from release-candidate to [Atree v0.8.0](https://github.com/onflow/cadence/pull/3583) - this version passed through 1034 hours of smoke tests and numerous storage health-checks on execution state snapshots before and after network upgrade to Crescendo release.
 
 ### General updates
 
@@ -227,16 +229,27 @@ Cycle Objective(s):
       - [GetSystemTransactionResult](https://github.com/onflow/flow-go-sdk/pull/756)
       - [Add computation usage to GetTransactionResult](https://github.com/onflow/flow-go-sdk/pull/774)
 
-* <ins>Misc other</ins>
+* <ins>Post Crescendo upgrade stabilization</ins>
+  - Finished benchnet testing adding libp2p peer gater to flow-go
   - Add peer gater to lib2p gossipsub [PR #6479](https://github.com/onflow/flow-go/pull/6479)
-
-**This sprint**
-
-* <ins>Crescendo upgrade</ins>
-  - Continue benchnet testing libp2p peer gater and add peer gater to flow-go
+  - Networking documentation (in progress will be done today)
 
 * <ins>EFM Recovery</ins>
-  - [Continue DKG smart contract data model update](https://github.com/onflow/flow-go/issues/6213)
+  - [Implemented signing of own proposal by SafetyRules](https://github.com/onflow/flow-go/pull/6463)
+  - [DKG engine submit valid Index Map](https://github.com/onflow/flow-go/pull/6490)
+  - [Cadence to Go type conversion for EpochCommit](https://github.com/onflow/flow-go/pull/6490)
+  - [Cadence to Go type conversion for EpochRecover](https://github.com/onflow/flow-go/pull/6506)
+  - [Integration tests maintainance](https://github.com/onflow/flow-go/pull/6496)
+  - Wrapping final PRs https://github.com/onflow/flow-core-contracts/pull/440, https://github.com/onflow/flow-go/pull/6424
+    - Added support for DKGIndexMapping to both PRs
+    
+**This sprint**
+
+* <ins>EFM Recovery</ins>
+  - Wrap up previously created PRs
+  - [Implement an integration test for EFM and DKG IndexMap](https://github.com/onflow/flow-go/issues/6331)
+
+   [Continue DKG smart contract data model update](https://github.com/onflow/flow-go/issues/6213)
   - Protocol updates for DKG changes [https://github.com/onflow/flow-go/issues/6214]
   - Finish up and merge [EFM Recovery transaction](https://github.com/onflow/flow-core-contracts/pull/440), EFM integration test part 2](https://github.com/onflow/flow-go/issues/6164), [EFM Integration Test Part 2](https://github.com/onflow/flow-go/pull/6424)
     
@@ -266,11 +279,14 @@ Cycle Objective(s):
 - Deliver Axelar bridge
 
 **Done last sprint**
+  * Worked with numerous Axelar node partners to get their nodes staked and added to testnet and mainnet
+  * Support Trado, Kittypunch, and Ankr through various integration and teething issues
+  * Updated Axelar node operator doc and hosted two office hours for node operators
 
-  
 **This sprint**
-  * Contnue supporting Ankr, Axelar and other node operators
-  * Launch Axelar cross-chain bridge and axlUSDC once all vaidators are onboarded and critical mass is reached
+  * Focus remains on launch for Axelar cross-chain bridge and axlUSDC, once all vaidators are onboarded and critical mass is reached
+  * Update Flow node operations docs to include latest EVM Gateway details
+  * Keep helping partner and node operators
   
 **On Hold**
 
