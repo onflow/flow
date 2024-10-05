@@ -9,7 +9,7 @@ fun getProp(name: String, defaultValue: String? = null): String? {
 
 // configuration variables
 val defaultGroupId = "org.onflow"
-val defaultVersion = "1.0.0"
+val defaultVersion = "1.1.0"
 
 group = getProp("groupId", defaultGroupId)!!
 version = when {
