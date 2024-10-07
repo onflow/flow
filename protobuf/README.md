@@ -29,7 +29,7 @@ JVM support is in the alpha stage; many steps require manual intervention.
 
 ### Publishing with GitHub Actions
 
-The "com.vanniktech.maven.publish" plugin is used to automate Maven releases for JVM protobuf generation. More information on the release process can be found here [here](https://vanniktech.github.io/gradle-maven-publish-plugin/central/).
+The "com.vanniktech.maven.publish" plugin is used to automate Maven releases for JVM protobuf generation. More information on the release process can be found [here](https://vanniktech.github.io/gradle-maven-publish-plugin/central/).
 
 There are two GitHub Actions configured to run on the master branch:
 
