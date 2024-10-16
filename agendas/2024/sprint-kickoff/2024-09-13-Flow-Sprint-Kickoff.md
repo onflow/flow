@@ -29,14 +29,14 @@
 
 [SLO dashboards](https://flowfoundation.grafana.net/d/hgW3l-m4k/slo-dashboard?orgId=1&from=now-2w&to=now)
 
-YTD SLA: 99.89%
+YTD SLA: 99.43%
 	- Metrika dashboard is deprecated. An alternate dashboard will be set up.
 
 #### SLA situation [Updated on 9/26]
 
 - Goal: EOY 99.9% SLA
 - [Permissible downtime annually](https://uptime.is/99.9): 8h 41m
-- Downtime due to Crescendo upgrade: ~~6h 36m~~ 19h 23m
+- Downtime due to Crescendo upgrade: ~~6h 36m~~ ~~19h 23m~~ **30h30m**
 - Downtime due to previous HCUs in this year: ~20m (5m per HCU, 4 HCUs so far)
 - ~~Remaining budget to hit EOY goal of 99.9%: 1hr 45m~~ SLO budget has been exhausted for EOY Goal
 
