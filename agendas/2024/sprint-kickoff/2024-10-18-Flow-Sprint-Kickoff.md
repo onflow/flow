@@ -39,7 +39,7 @@ YTD SLA: 99.50%
 
 
 ## Incidents
-- 
+Monday, 2024-10-14 18:46:30 Pacific: Sev-3 - EVM Gateway 2 stopped processing EVM Blocks ([slack thread](https://flow-foundation.slack.com/archives/CUU2KQL4A/p1728959386019689?thread_ts=1728959285.639699&cid=CUU2KQL4A))
 
 (Sev [definition](https://www.notion.so/flowfoundation/Incident-Priorities-Severity-Levels-1-e811b352feff4928b69a7e99df724c6a))
 
