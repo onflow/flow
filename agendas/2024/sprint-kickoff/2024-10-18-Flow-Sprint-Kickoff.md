@@ -16,15 +16,15 @@
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%   |    99.26%    |       744.05%     |
-| Block Finalization      | 99.9%   |    99.26%    |       744.05%     |
-| Transaction Execution   | 99.9%   |    99.26%    |       744.05%     |
-| Block Sealing           | 99.9%   |    99.26%    |       744.05%     |
-| Access API Liveness     | 99.9%   |    98.04%    |       1190.48%    |
+| Collection Finalization | 99.9%   |    100%      |       0%          |
+| Block Finalization      | 99.9%   |    100%      |       0%          |
+| Transaction Execution   | 99.9%   |    99.95%    |       49.6%       |
+| Block Sealing           | 99.9%   |    100%      |       0%          |
+| Access API Liveness     | 99.9%   |    100%      |       0%          |
 
 [SLO dashboards](https://flowfoundation.grafana.net/d/hgW3l-m4k/slo-dashboard?orgId=1&from=now-2w&to=now)
 
-YTD SLA: 99.52%
+YTD SLA: 99.50%
 
 
 #### SLA situation
@@ -35,8 +35,7 @@ YTD SLA: 99.52%
   2. Sept 4th - Mainnet25(Crescendo) upgrade: 19h23m
   3. Sept 5th - P0 incident after mainnet25: 7h30m
   4. Sept 25th - Mainnet26: 3h48m
-  
-  Total: 31h
+  5. Oct 8th - HCU: 5m
 
 
 ## Incidents
