@@ -5,6 +5,7 @@
 - Cadence security fix ([disclosure](https://forum.flow.com/t/fixed-vulnerable-accounts-2024-10-01/6604)) and EVM contract fixes deployed.
 - Completed new util command 'checkpoint-collect-stats' that can be used to gain insights about current execution state as well as changes between any two checkpoints.
 - Planing first zero-downtime Cadence fix deployment.
+- Firt draft of [Cadence language spec](https://github.com/onflow/cadence/pull/3618)!
 - DOCS - Added GitHub Codeblocks For Snippets
 - Flow Community Rewards - Boxes Unlocking Launch
 - Migrated Mixpanel, Sentry to FF, Added Hotjar to developers.flow.com
