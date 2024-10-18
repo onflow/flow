@@ -185,6 +185,18 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>EFM Recovery</ins>
+  * [Updated type conversion of EpochCommit](https://github.com/onflow/flow-go/pull/6494)
+  * [Update DKG engine to submit a valid DKG index map](https://github.com/onflow/flow-go/pull/6490)
+
+* <ins>Cryptography</ins>
+  - SPoCK aggregation
+  - Document the random beacon bias findings
+  - Remaining PoP work planning
+
+* <ins>Misc other</ins>
+  - Updated networking docs https://www.notion.so/flowfoundation/Flow-Networking-Layer-Developer-Guide-67bae4ab28d84e36975b2ae918e2e48b
+
 * <ins>Data Availability</ins>
   - Add support for compatible versions during HCU ([PR #6535](https://github.com/onflow/flow-go/pull/6535))
   - KROK Team
@@ -201,9 +213,7 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>EFM Recovery</ins>
-  - Wrap up previously created PRs
   - [Implement an integration test for EFM and DKG IndexMap](https://github.com/onflow/flow-go/issues/6331)
-  - Protocol updates for DKG changes [https://github.com/onflow/flow-go/issues/6214]
     
 * <ins>Data Availability</ins>
   - KROK Team
@@ -219,8 +229,6 @@ Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation
-  - Document the random beacon bias findings
-  - Remaining PoP work planning
 
 * <ins>Misc other</ins>
   - Ongoing Pebble migration PR reviews
@@ -236,10 +244,13 @@ Cycle Objective(s):
 - Deliver Axelar bridge
 
 **Done last sprint**
+  * Supported devdock, Ankr, Trado, and Moralis who were variously blocked or had quesitons
+  * Completed Axelar pool funding test run on EVM testnet
+  * 
 
 **This sprint**
-  * Focus remains on launch for Axelar cross-chain bridge and axlUSDC, once all vaidators are onboarded and critical mass is reached
-  * Update Flow node operations docs to include latest EVM Gateway details
+  * Fund Axelar pools and confirm critical mass of validators for bridge activation
+  * Bug report for Trado on Flow Wallet  
   * Keep helping partners and node operators
   
 **On Hold**
