@@ -185,6 +185,18 @@ Cycle Objective(s):
 
 **Done last Sprint:**
 
+* <ins>Data Availability</ins>
+  - Add support for compatible versions during HCU ([PR #6535](https://github.com/onflow/flow-go/pull/6535))
+  - KROK Team
+    - Expand on payer balance checks ([PR #6297](https://github.com/onflow/flow-go/pull/6297), [PR #6292](https://github.com/onflow/flow-go/pull/6292))
+    - Enforce register pruning threshold ([PR #6345](https://github.com/onflow/flow-go/pull/6345))
+    - SDK alignment
+      - [SubscribeAccountStatuses](https://github.com/onflow/flow-go-sdk/pull/762)
+      - [SubscribeBlockHeaders](https://github.com/onflow/flow-go-sdk/pull/760)
+      - [SubscribeBlocks](https://github.com/onflow/flow-go-sdk/pull/758)
+      - [SubscribeBlockDigests](https://github.com/onflow/flow-go-sdk/pull/764)
+      - [SendAndSubscribeTransactionStatuses](https://github.com/onflow/flow-go-sdk/pull/772)
+      - [Update GetNodeVersionInfo](https://github.com/onflow/flow-go-sdk/pull/773)
 
 **This sprint**
 
@@ -195,17 +207,15 @@ Cycle Objective(s):
     
 * <ins>Data Availability</ins>
   - KROK Team
-    - Expand on payer balance checks ([Issue #6129](https://github.com/onflow/flow-go/issues/6129) - In review, [Issue #6139](https://github.com/onflow/flow-go/issues/6139) - In review)
-    - Registers db pruning ([Issue #6066](https://github.com/onflow/flow-go/issues/6066) - In review, [Issue #6068](https://github.com/onflow/flow-go/issues/6068) - In review)
-    - Store Tx Result in database ([Issue #6302](https://github.com/onflow/flow-go/issues/6302) - In review, [Issue #6413](https://github.com/onflow/flow-go/issues/6413) - In progress)
+    - Websockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
+      - Initial design ([Issue #6508](https://github.com/onflow/flow-go/issues/6508))
+    - Registers db pruning ([Issue #6068](https://github.com/onflow/flow-go/issues/6068) - In review)
+    - Store Tx Result in database ([Issue #6302](https://github.com/onflow/flow-go/issues/6302) - In review, [Issue #6413](https://github.com/onflow/flow-go/issues/6413) - In review)
     - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357) - In progress)
-    - Epic [Access API / Go SDK alignment](https://github.com/onflow/flow-go-sdk/issues/735)
-      - [Add SubscribeBlocks*, SubscribeBlockHeaders*, and SubscribeBlockDigests* endpoints](https://github.com/onflow/flow-go-sdk/issues/746)
-      - [Update GetNodeVersionInfo response object](https://github.com/onflow/flow-go-sdk/issues/761)
-      - [Add SendAndSubscribeTransactionStatuses endpoint](https://github.com/onflow/flow-go-sdk/issues/745)
-      - [Add SubscribeAccountStatuses* endpoints](https://github.com/onflow/flow-go-sdk/issues/747)
-      - [Unify streaming endpoints code duplication](https://github.com/onflow/flow-go-sdk/issues/763)
-    - Add Time To Seal metric ([Issue #6448](https://github.com/onflow/flow-go/issues/6448))
+    - Add Time To Seal metric ([Issue #6448](https://github.com/onflow/flow-go/issues/6448) - In review)
+    - Access API / Go SDK alignment ([Epic #735](https://github.com/onflow/flow-go-sdk/issues/735))
+      - Unify streaming endpoints code duplication ([Issue #763](https://github.com/onflow/flow-go-sdk/issues/763) - In review)
+      - Other endpoint improvements [1](https://github.com/onflow/flow-go-sdk/issues/765), [2](https://github.com/onflow/flow-go-sdk/issues/768), [3](https://github.com/onflow/flow-go-sdk/issues/766)
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation
