@@ -2,7 +2,9 @@
 
 ### Team Wins 🎉
 
-- 
+- Cadence security fix ([disclosure](https://forum.flow.com/t/fixed-vulnerable-accounts-2024-10-01/6604)) and EVM contract fixes deployed.
+- Completed new util command 'checkpoint-collect-stats' that can be used to gain insights about current execution state as well as changes between any two checkpoints.
+- Planing first zero-downtime Cadence fix deployment.
 
 
 ### General updates
@@ -97,33 +99,73 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+Cadence Language
+- Feture
+    - Extending Type by 2 new fields, removin the need for manual extraction: [Add Type.address and Type.contractName](https://github.com/onflow/cadence/pull/3570)
+- Security updates: [1](https://github.com/dapperlabs/cadence-internal/pull/271), [2](https://github.com/dapperlabs/cadence-internal/pull/269), [3](https://github.com/dapperlabs/cadence-internal/pull/268), [4](https://github.com/dapperlabs/cadence-internal/issues/265), [5](https://github.com/dapperlabs/cadence-internal/pull/266), [6](https://github.com/dapperlabs/cadence-internal/issues/262), [7](https://github.com/dapperlabs/cadence-internal/issues/260), [8](https://github.com/dapperlabs/cadence-internal/issues/248), [9](https://github.com/dapperlabs/flow-go/pull/6971), [10](https://github.com/onflow/flow-go/pull/6500), [11](https://github.com/dapperlabs/cadence-internal/issues/187)
+- Tech-debt removal
+    - [Explain the reason for support parsing legacy restricted types](https://github.com/onflow/cadence/pull/3614)
+    - [Split runtime/interpreter/value.go into multiple files](https://github.com/onflow/cadence/issues/2566)
+- Porting of intenral Bugfixes to public repo
+    - [Prevent leaving unreferenced slabs in storage while updating dictionary with enum key (port internal fix)](https://github.com/onflow/cadence/issues/3508)
+    - [Fix invocation boxing](https://github.com/onflow/cadence/pull/3601)
+    - [Port bug fixes from internal repo](https://github.com/onflow/cadence/pull/3600)
+- bugfix
+    - [Prevent migration tests from using out-of-sync data](https://github.com/onflow/cadence/pull/3597)
+- Dependency updates: [1](https://github.com/onflow/flow-go/pull/6556), [2](https://github.com/onflow/flow-emulator/pull/758), [3](https://github.com/onflow/cadence-tools/pull/432)
+- Docs
+    - [Example code for demonstrating nested resources incorrectly shows a value for a constant](https://github.com/onflow/cadence-lang.org/issues/159)
+    - [Using result as a variable name causes a checker error](https://github.com/onflow/cadence/issues/774)
+
+Cadence Execution
+- New util: [report stats about execution state](https://github.com/onflow/flow-go/issues/6361)
+    - [Update `checkpoint-collect-stats` command to support payloads file and state commitment](https://github.com/onflow/flow-go/pull/6478)
+- Security updates: [COA ownership proof fix](https://github.com/dapperlabs/flow-go/pull/6985)
+- Improvements
+    - [Requester engine -  Remove duplicated debug logs](https://github.com/onflow/flow-go/pull/6514)
+    - [Bootstrap - Fix duplication detection in root block finalization](https://github.com/onflow/flow-go/pull/6484)
+- HCU prep
+    - [make newPreRelease string required for HCU](https://github.com/onflow/flow-core-contracts/pull/453), [2](https://github.com/dapperlabs/dapper-flow-hosting/pull/1616), [3](https://github.com/dapperlabs/flow-go/pull/6983)
+
+EVM Core
+- Dry-run
+    - [Offchain package - part 1](https://github.com/onflow/flow-go/pull/6544)
+    - [adding a new encoding type for captured precompiled calls](https://github.com/onflow/flow-go/pull/6488)
+    - [Adding commitment over state update](https://github.com/onflow/flow-go/pull/6476)
+    - [add state update checksum to tx executed events](https://github.com/onflow/flow-go/pull/6477)
+
+EVM Gateway
+- Dependency updates: [1](https://github.com/onflow/flow-evm-gateway/pull/612)
+- Bugfix
+    - [Fix `Genesis` block hash calculation for `Testnet` network](https://github.com/onflow/flow-evm-gateway/pull/566)
+- Improvements (EVM Hardening)
+    - code de-duplication: [extract trace block common logic](https://github.com/onflow/flow-evm-gateway/pull/608)
+    - [Add generics to subscriber and publisher and fix potential deadlock](https://github.com/onflow/flow-evm-gateway/pull/602)
+    - [Refactor engine status](https://github.com/onflow/flow-evm-gateway/pull/600)
+    - [Add goimports linter](https://github.com/onflow/flow-evm-gateway/pull/599)
+    - [Add engine type to startup logs](https://github.com/onflow/flow-evm-gateway/pull/597)
+    - [Update the list of valid JSON-RPC methods](https://github.com/onflow/flow-evm-gateway/pull/613)
+    - [Avoid logging debug info for invalid JSON-RPC methods](https://github.com/onflow/flow-evm-gateway/pull/611)
+    - [Add the EVM GW version to log lines](https://github.com/onflow/flow-evm-gateway/pull/596)
+    - [Use the released tag version to identify newly-created docker images](https://github.com/onflow/flow-evm-gateway/pull/592)
+
 **This sprint**
 
-- OKR planning
-
-- EVM Gateway
-  - Unblock [Alchemy tracing](https://github.com/onflow/flow-evm-gateway/issues/530)
-  - improve [stability](https://github.com/onflow/flow-evm-gateway/issues/590)
+- Continue work on [EVM Gateway Hardening](https://github.com/onflow/flow-go/issues/6539)
 
 - Cadence Language
-  - Tech Debt
-  - Content
-  - Resume work on the compiler POC
+  - Continue addressing [Tech Debt](https://github.com/onflow/cadence/issues/3595)
+  - Start work on Content for [commuity outreach](https://github.com/onflow/cadence/issues/3596)
+  - Maybe resume work on the [Cadence compiler POC](https://github.com/onflow/cadence/issues/3612)
+  - Continue work on [Cadence language Specification](https://github.com/onflow/cadence/issues/3599)
+  - [Updating Source compatibility suite for C1.0](https://github.com/onflow/cadence/issues/3608)
 
 - Cadence Execution
-  - Continue work on [optimization for Cadence domain storage](https://github.com/onflow/cadence/issues/3584) (expected 30% execution state memory usage reduction when deployed)
-  - Badger -> Pebble Investigation/POC
-    - Continue work on [Protocol State Migration POC](https://github.com/onflow/flow-go/issues/6137) -> changing interface to batch write from transaction to make the future switch to Pebble easier.
-  - Complete [util to export stats about execution state](https://github.com/onflow/flow-go/issues/6361)
-
+  - Continue work on [optimization for Cadence domain storage](https://github.com/onflow/cadence/issues/3584)
+  - Badger -> Pebble migration:continue work on [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516)
+  
 **Completed OKRs**
-  * Objective 1, KR5: Mainnet Upgrade to Crescendo Release
-  * Objective 1, KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
-    * All breaking  released in a new CLI: v1.18.0-cadence-v1.0.0-preview.26
-  * Objective 1, KR4: Testnet Upgrade to Crescendo Release
-  * Objective 4, KR1: Execution node handles restart from spork root block reguardless of how many blocks it is behind
-    * Completed refactoring of Ingestion engine to [prevent EN entering crash loop](https://github.com/onflow/flow-go/issues/5298)
-
+  
 **On Hold**
 
 - Objective 2, KR 1: Update transaction fees weights for the execution operations on TN and MN
