@@ -89,6 +89,7 @@ Monday, 2024-10-14 18:46:30 Pacific: Sev-3 - EVM Gateway 2 stopped processing EV
 **Cycle Objectives**
 
 [Cadence Language](https://github.com/onflow/cadence/issues/3623)
+
 [Cadence VM (execution environment)](https://github.com/onflow/flow-go/issues/6577)
 
 **Done last sprint**
