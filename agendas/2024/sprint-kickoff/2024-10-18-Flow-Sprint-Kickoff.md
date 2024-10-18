@@ -55,16 +55,19 @@ Monday, 2024-10-14 18:46:30 Pacific: Sev-3 - EVM Gateway 2 stopped processing EV
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 8  |    8 (+1)  |       0         |       7          |        **23** (+1)       |
-| Proposed    | 1  |    2    |       3          |       0           |        **6**  |
+| Drafted     | 7 (-1)  |    6 (-2)  |       1 (+1)         |       7          |        **21** (-2)       |
+| Proposed    | 1  |    4 (+2)   |       3          |       0           |        **8** (+2)  |
 | Accepted    | 2  |    1     |       2       |       2        |        **7**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
 | Implemented | 3 |    25    |       1       |       0           |        **29**          |
 | Released    | 4  |    0     |       4       |       6          |        **14**         |
-| Total       | **18**  |    **36** (+1)  |       **11**     |       **15**          |        **80** (+1)   |
+| Total       | **17** (-1)  |    **36**   |       **12** (+1)     |       **15**          |        **80**   |
 
-**New FLIPs**
-- Cadence FLIP 288 (Draft Stage): Simple String Interpolation (to provide support for the use of identifiers in string interpolation) - by Raymond Zhang
+**Summary**
+
+* No new FLIPs
+* Cadence - Simple String Interpolation (Raymond) moved from drafted to proposed
+* Governance - removal of decommissioned nodes from the approved list
 
 **REMINDER - FLIPs that need to be reassigned immediately:**
 
