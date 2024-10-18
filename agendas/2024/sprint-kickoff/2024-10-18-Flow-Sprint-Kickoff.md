@@ -85,17 +85,11 @@ Monday, 2024-10-14 18:46:30 Pacific: Sev-3 - EVM Gateway 2 stopped processing EV
 # Working Group Updates
 
 ### **Cadence and Virtual Machine** \[Jan]
-Cycle Objective(s):
 
-1) Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
-2) Calibrate Transaction fees so that they accurately reflect resource usage during execution and deploy as part of Crescendo to avoid future disruption.
-3) Analyze execution runtime trends and risks to plan next set of scalability OKRs.
+**Cycle Objectives**
 
-* Stretch-goals:
-4) Expand testing capability of storehouse so that we can validate execution correctness and benchmark performance on Mainnet data
-5) Design a new Trie to improve performance of update operation, reduce memory usage and size of proofs and to support more flexible proof queries.
-6) Enable Concurrent Execution on one EN on Mainnet to validate correctness of the implementation (Detect execution forks)
-7) Improve execution performance to mitigate the impact of adding metadata to token standards
+[Cadence Language](https://github.com/onflow/cadence/issues/3623)
+[Cadence VM (execution environment)](https://github.com/onflow/flow-go/issues/6577)
 
 **Done last sprint**
 
