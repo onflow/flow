@@ -201,9 +201,11 @@ Cycle Objective(s):
   * [Preparing main EFM recovery logic for review](https://github.com/onflow/flow-core-contracts/pull/440)
 
 * <ins>Cryptography</ins>
-  - SPoCK aggregation
-  - Document the random beacon bias findings
-  - Remaining PoP work planning
+  - Randomness: continued review of EVM doc and examples
+  - Proof of Possession of the staking key:
+  - Random Beacon: documentation of the current computational indistinguishability bias
+  - SPoCK aggregation: progress on the multi verification definitions - reading of Boldireva's security proof of BLS multi-sig (KOSK based) (to be continued)
+  - reading of Pippenger's method to optimize some steps in the crypto lib (to be continued)
 
 * <ins>Data Availability</ins>
   - Add support for compatible versions during HCU ([PR #6535](https://github.com/onflow/flow-go/pull/6535))
@@ -244,7 +246,11 @@ Cycle Objective(s):
       - Other endpoint improvements [1](https://github.com/onflow/flow-go-sdk/issues/765), [2](https://github.com/onflow/flow-go-sdk/issues/768), [3](https://github.com/onflow/flow-go-sdk/issues/766)
 
 * <ins>Cryptography</ins>
-  - SPoCK aggregation
+  - Passkeys reading (understanding the standard)
+  - PoP:
+    - Polish the contract - Ledger backward compatibility
+    - Setup the Ledger environment to build Ledger apps
+  - SPoCK aggregation: continue reading the KOSK-based proof
 
 * <ins>Misc other</ins>
   - Ongoing Pebble migration PR reviews
