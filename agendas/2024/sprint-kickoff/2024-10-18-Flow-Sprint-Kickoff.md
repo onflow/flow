@@ -278,12 +278,32 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**Spork Clean Up**
+- [Add TN historical node configuration](https://github.com/dapperlabs/dapper-flow-hosting/pull/1618)
+- [Create historical snapshots & delete unnecessary nodes](https://github.com/dapperlabs/terraform/pull/4413)
+- [Delete MN25 VN lingering from spork](https://github.com/dapperlabs/terraform/pull/4409)
+- [Remove unnecessary operational nodes and resize historical node](https://github.com/dapperlabs/terraform/pull/4410)
+- Worked with engineers to clean up remaining infra from Crescendo spork
+
+**Support**
+- [Add new DNS records for Safe](https://github.com/dapperlabs/terraform/pull/4408)
+
+**Observability**
+- Fix broken routing of Grafana alerts
+- [Create documentation for routing alerts from DL to FF engineers](https://www.notion.so/flowfoundation/Routing-DL-Flow-Node-Alerts-1191aee12324807fb53fee4664155de4)
+
+**New Hire**
+- [Develop interview prep for open SRE role](https://www.notion.so/flowfoundation/Flow-SRE-Interview-Questions-11a1aee1232480eab5e0f4188f8eec8b)
+- Start initial SRE onboarding documentation 
+
+**Atlantis Migration**
+- Evaluate & document tasks for Atlantis Migration
+- [Identify all repos, modules, and config to be migrated](https://www.notion.so/flowfoundation/Terraform-Configuration-Migration-1211aee1232480b9b414f727a27a1a0e)
+- [Create new GCP project for dedicated Atlantis](https://github.com/orgs/onflow/projects/79/views/1?pane=issue&itemId=83525564&issue=onflow%7Cff-sre-infrastructure%7C5)
+- [Create & configure infra repos in onflow GH org](https://github.com/onflow/ff-sre-infrastructure/issues/16)
+
 **This Sprint**
 - Begin interviewing for SRE role
-- Start work to deploy dedicated FF Atlantis for Terraform
-- Finish importing Grafana resources into Terraform and add documentation
+- Continue work to migrate to dedicated FF Atlantis
+- Execute GCP IAM migration to Flow Foundation groups
 
-
-**Active Epics**
-
-- N/A
