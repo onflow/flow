@@ -55,19 +55,18 @@ Monday, 2024-10-14 18:46:30 Pacific: Sev-3 - EVM Gateway 2 stopped processing EV
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 7 (-1)  |    6 (-2)  |       1 (+1)         |       7          |        **21** (-2)       |
+| Drafted     | 8  |    6 (-2)  |       1 (+1)         |       7          |        **22** (-1)       |
 | Proposed    | 1  |    4 (+2)   |       3          |       0           |        **8** (+2)  |
 | Accepted    | 2  |    1     |       2       |       2        |        **7**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
 | Implemented | 3 |    25    |       1       |       0           |        **29**          |
 | Released    | 4  |    0     |       4       |       6          |        **14**         |
-| Total       | **17** (-1)  |    **36**   |       **12** (+1)     |       **15**          |        **80**   |
+| Total       | **18**  |    **36**   |       **12** (+1)     |       **15**          |        **81** (+1)   |
 
 **Summary**
 
-* No new FLIPs
-* Cadence - Simple String Interpolation (Raymond) moved from drafted to proposed
-* Governance - removal of decommissioned nodes from the approved list
+* Overall 1 new FLIP - [Governance] - removal of decommissioned nodes from the approved list
+* Movement of two cadence flips from draft to proposed (Simple String Interpolation by Raymond was one)
 
 **REMINDER - FLIPs that need to be reassigned immediately:**
 
