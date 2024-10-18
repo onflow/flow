@@ -191,15 +191,18 @@ Cycle Objective(s):
 
 * <ins>EFM Recovery</ins>
   * [Updated type conversion of EpochCommit](https://github.com/onflow/flow-go/pull/6494)
+  * [Updated type conversion of EpochRecover](https://github.com/onflow/flow-go/pull/6506)
   * [Update DKG engine to submit a valid DKG index map](https://github.com/onflow/flow-go/pull/6490)
+  * [Refactoring of model.Proposal](https://github.com/onflow/flow-go/pull/6526)
+  * [Implementing integration test for Epoch Recovery](https://github.com/onflow/flow-go/pull/6424)
+  * [Enable previously disabled EFM tests](https://github.com/onflow/flow-go/pull/6496)
+  * [Completed DKG index mapping smart contract changes](https://github.com/onflow/flow-core-contracts/pull/441)
+  * [Preparing main EFM recovery logic for review](https://github.com/onflow/flow-core-contracts/pull/440)
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation
   - Document the random beacon bias findings
   - Remaining PoP work planning
-
-* <ins>Misc other</ins>
-  - Updated networking docs https://www.notion.so/flowfoundation/Flow-Networking-Layer-Developer-Guide-67bae4ab28d84e36975b2ae918e2e48b
 
 * <ins>Data Availability</ins>
   - Add support for compatible versions during HCU ([PR #6535](https://github.com/onflow/flow-go/pull/6535))
@@ -214,10 +217,18 @@ Cycle Objective(s):
       - [SendAndSubscribeTransactionStatuses](https://github.com/onflow/flow-go-sdk/pull/772)
       - [Update GetNodeVersionInfo](https://github.com/onflow/flow-go-sdk/pull/773)
 
+* <ins>Misc other</ins>
+  - Updated networking docs https://www.notion.so/flowfoundation/Flow-Networking-Layer-Developer-Guide-67bae4ab28d84e36975b2ae918e2e48b
+  - Ongoing Pebble migration PR reviews
+
 **This sprint**
 
 * <ins>EFM Recovery</ins>
   - [Implement an integration test for EFM and DKG IndexMap](https://github.com/onflow/flow-go/issues/6331)
+  - Complete main EFM recovery logic PR
+  - [Merge Protocol version upgrade PR](https://github.com/onflow/flow-core-contracts/pull/419)
+  - Merge open PRs that are under review
+  - Finish integration test and related DKG issue
     
 * <ins>Data Availability</ins>
   - KROK Team
