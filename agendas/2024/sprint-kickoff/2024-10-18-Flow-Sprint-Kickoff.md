@@ -5,6 +5,10 @@
 - Cadence security fix ([disclosure](https://forum.flow.com/t/fixed-vulnerable-accounts-2024-10-01/6604)) and EVM contract fixes deployed.
 - Completed new util command 'checkpoint-collect-stats' that can be used to gain insights about current execution state as well as changes between any two checkpoints.
 - Planing first zero-downtime Cadence fix deployment.
+- DOCS - Added GitHub Codeblocks For Snippets
+- Flow Community Rewards - Boxes Unlocking Launch
+- Migrated Mixpanel, Sentry to FF, Added Hotjar to developers.flow.com
+
 
 
 ### General updates
@@ -273,10 +277,46 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+- Metrics
+  - Migrated Mixpanel and Sentry Projects from DL to FF
+  - Added Hotjar Analytics to developers.flow.com
+- Crescendo Rewards 
+  - Contracts
+    - [Fix claim transactions for large rewards collections #103](https://github.com/onflow/crescendo-rewards-sc/pull/103)
+  - Frontend
+    - [FEATURE Unlock boxes to get points #466](https://github.com/onflow/crescendo-rewards/issues/466 )
+    - Add param linking to specific FAQ tabs (https://github.com/onflow/crescendo-rewards/issues/469)
+    - Add boxes/keys icons (https://github.com/onflow/crescendo-rewards/issues/462)
+    - Add util for interacting with boxes/keys endpoint (https://github.com/onflow/crescendo-rewards/pull/460)
+- Smart Contracts
+  - [Add Cadence random in range & commit-reveal helper contract + Cadence tests #23](https://github.com/onflow/random-coin-toss/pull/23)
+- VM Bridge
+  - [Fix cases of underflow in event of storage decrease #129](https://github.com/onflow/flow-evm-bridge/pull/129)
+  - [Update Cross-VM bridge docs #930](https://github.com/onflow/docs/pull/930)
+- FCL
+  - [BUG subscribeEvents block timestamp is undefined #1964](https://github.com/onflow/fcl-js/issues/1964)
+  - Deep Linking Improvements (alpha)
+- Flow Port
+  - [EPIC Flow Port Asset Bridge #284](https://github.com/onflow/flow-port/issues/284)
+- Docs
+  - Added [GitHub Codeblocks](https://github.com/christian-bromann/docusaurus-theme-github-codeblock)
+  - [Add foundry contract verification command #929](https://github.com/onflow/docs/pull/929/files)
+  - [Update EVM Randomness docs #927](https://github.com/onflow/docs/pull/927)
+  - [Update Account Linking Docs for Cadence 1.0 and better error messages #924](https://github.com/onflow/docs/issues/924)
+  - Wrote blog post about recovering broken collection(https://github.com/onflow/dx-internal/issues/17)
+  - Cadence learning workshop for 4D team (https://github.com/onflow/dx-internal/issues/14)
+- Flow CLI
+  - Remove flow dev command
+  - [Add _test suffix when generating test files #1786](https://github.com/onflow/flow-cli/issues/1786)
+- NFT Catalog
+  - [Deprecation plan and forum post](https://forum.flow.com/t/replacing-nft-catalog-with-a-decentralized-alternative-proposal/6723)
+
+
 
 **This sprint**
-**Sprint Goal: Launch Rewards Redemption and Points Integration and Season 1 / Lost and Found (Integration - Flow Port, Flow Wallet)**
+**Sprint Goal: Cycle Kickoff - Refine and Assign OKR Initiatives and Drivers / Rewards Handoff / Lost and Found (Integration - Flow Port, Flow Wallet)**
 
+- [EPIC] Verify Completion of Commitments for EVM Launch Partners #25
 - [EPIC] Flow Rewards (RAIN)
   - [FE](https://github.com/onflow/crescendo-rewards/issues/1 )
   - [BE](https://github.com/onflow/crescendo-rewards-be/issues/1)
