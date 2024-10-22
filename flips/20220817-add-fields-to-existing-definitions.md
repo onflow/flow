@@ -1,12 +1,12 @@
 # Allow new fields in deployed Resources and Structs
 
-| Status        | Proposed                                                  |
-|---------------|:--------------------------------------------------------- |
-| **FLIP #**    | [1097](https://github.com/onflow/flow/pull/1097)            |
-| **Author(s)** | Deniz Mert Edincik (deniz@edincik.com)                    |
-|               | Austin Kline (austin@flowty.io)                           | 
-| **Sponsor**   |                                                           |
-| **Updated**   | 2022-08-17                                                |
+---
+status: proposed 
+flip: TBD
+authors: Deniz Mert Edincik (deniz@edincik.com), Austin Kline (austin@flowty.io)  
+sponsor: Bastian Mueller (bastian.mueller@flowfoundation.org)
+updated: 2022-08-17
+---
 
 ## Objective
 This proposed change will allow existing structs and resources to add new fields to them by
