@@ -6,7 +6,7 @@
 - Hyperlane validators needed for BTC bridge now stood up and being tested
 - Unblocked DevDock to use FCL w native Cadence for primary integration (AI domain partner builder)
 - Offer for Tim accepted as Protocol Eng I, starting Nov 18th
-- 
+- Integration test Emulator dependency removed
 
 ### General updates
 
