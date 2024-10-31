@@ -30,7 +30,7 @@
 YTD SLA: 99.52%
 
 ## Incidents
-1. Oct 30th 8:40 PM to 11:00 PM Pacific Sev 1 - `onflow.org` domain expired and failed to auto-renew ([slack thread](https://flow-foundation.slack.com/archives/CUU2KQL4A/p1730347480604789))
+1. Oct 30th 8:40 PM to 11:00 PM Pacific Sev 1 - `onflow.org` domain expired and failed to auto-renew ([Incident Response](https://www.notion.so/flowfoundation/Flow-onflow-org-domain-expiry-resulting-in-platform-wide-outages-10-30-2024-1301aee123248053b0d1d325ea99a809))
 
 (Sev [definition](https://www.notion.so/flowfoundation/Incident-Priorities-Severity-Levels-1-e811b352feff4928b69a7e99df724c6a))
 
