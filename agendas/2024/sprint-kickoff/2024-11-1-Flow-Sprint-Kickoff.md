@@ -7,6 +7,11 @@
 - Unblocked DevDock to use FCL w native Cadence for primary integration (AI domain partner builder)
 - Offer for Tim accepted as Protocol Eng I, starting Nov 18th
 - Integration test Emulator dependency removed
+- All reported Cadence security issues fixed & deployed
+- Deployed FVM feature that enables no-downtime Cadence update (short-term using version beacon, will be updated to use dynamic protocol state)
+- Cadence Source compatibility suite update - we now run unit tests on community repos to validate new Cadence versions & expaneded the suite to run tests using Cadence Testing Framework.
+- Validated Pebble DB releases data during pruning - we were able to prune the Data chunk pack DB from GBs after few days of running to ~6MB.
+- Cadence working group - Reviewed 8 open FLIPS, 3 approved, 1 ice-boxed ([#41](https://github.com/onflow/flips/pull/41)), 1 remains open for community contribution ([245](https://github.com/onflow/flips/pull/245)), 3 require follow-up ([198](https://github.com/onflow/flips/pull/198), [256](https://github.com/onflow/flips/pull/256), [295](https://github.com/onflow/flips/pull/295)).
 
 ### General updates
 
@@ -53,33 +58,111 @@ YTD SLA: 99.52%
 
 **Done last sprint**
 
+**Cadence Language**
+- Feature:
+    - Community request: [Add string formatting function](https://github.com/onflow/cadence/issues/3579)
+    - [FLIP 275](https://github.com/onflow/flips/blob/aff797600512cf1432474659035ee5a0b5ea195f/cadence/20240604-cadence-type-removal.md) implementation: [Allow removing type declarations from contracts](https://github.com/onflow/cadence/issues/3210)
+    - [Add a WebAssembly API](https://github.com/onflow/cadence/issues/2853)
+        - [Add meter method which returns remaining computation for given computation kind](https://github.com/onflow/flow-go/pull/6215)
+    - [Updating Source compatibility suite for C1.0](https://github.com/onflow/cadence/issues/3608)
+- Contribute to Cadence learning app POC:
+    - [Add first version of GoldStar contract](https://github.com/onflow/gold-star/pull/1)
+    - [Add a "deployed a contract" challenge](https://github.com/onflow/gold-star/pull/3)
+    - [Add a "no-op" challenge](https://github.com/onflow/gold-star/pull/2)
+- Bugfix:
+    - [Port security fixes](https://github.com/onflow/cadence/pull/3654)
+    - [v1.0 Port security fixes](https://github.com/onflow/cadence/pull/3653)
+    - security fixes: [1](https://github.com/onflow/cadence-internal/pull/273), [2](https://github.com/onflow/cadence-internal/pull/272)
+- Tech-debt removal:
+    - [Refactor and update struct stringer tests](https://github.com/onflow/cadence/pull/3661)
+    - [Refactor test utils](https://github.com/onflow/cadence/pull/3652)
+    - [Refactor tests](https://github.com/onflow/cadence/pull/3651)
+    - [Move architecture diagram to contributor documentation directory](https://github.com/onflow/cadence/pull/3650)
+    - [Update old uses of pub and priv](https://github.com/onflow/cadence/pull/3647)
+    - [Source Compatibility Suite update - enable tests using Cadence Testing Framework](https://github.com/onflow/cadence/pull/3644) - also added [green-goo-dao](https://github.com/green-goo-dao) community repo.
+        - [Update source compatibility suite for latest cadence v1.0.1](https://github.com/onflow/cadence/pull/3616)
+    - [Fix and improve CCF CDDL in comments](https://github.com/onflow/cadence/pull/3643)
+    - [Remove attachments enabling flag](https://github.com/onflow/cadence/pull/3642)
+    - [Move the crypto contract outside of cadence](https://github.com/onflow/cadence/issues/3135)
+        - [Resolve location of imported values](https://github.com/onflow/cadence/pull/3634)
+    - [Update contracts-compatibility-checker](https://github.com/onflow/cadence/pull/3631) to always use latest Cadence version.
+    - [Cleanup outdated FT/NFT related contract codes and tests](https://github.com/onflow/cadence/pull/3630)
+    - [Fix storage explorer tool](https://github.com/onflow/cadence/pull/3627)
+    - [Reorganize repository](https://github.com/onflow/cadence/issues/526)
+- FLIPs:
+    - approved [FLIP 275: Removal of Types in Contract Updates](https://github.com/onflow/flips/pull/276)
+    - approved [FLIP 293: StructStringer interface](https://github.com/onflow/flips/pull/294)
+    - approved [FLIP 288: Simple String Interpolation](https://github.com/onflow/flips/pull/289)
+- Chores:
+    - [Add a GitHub Action to get all contracts](https://github.com/onflow/cadence/pull/3663)
+    - [Update the config of the update tool](https://github.com/onflow/cadence/pull/3641)
+    - [Re-enable and update the Source Compatiblity Suite GitHub action](https://github.com/onflow/cadence/pull/3632)
+- Docs
+    - [Document Go patterns used in the codebase](https://github.com/onflow/cadence/pull/3649)
+    - [Remove details about unavailable type-removal pragma](https://github.com/onflow/cadence-lang.org/pull/167)
+    - [Remove Callout and Admonition mapping](https://github.com/onflow/cadence-lang.org/pull/165)
+    - [Update release docs with a section for versioning strategy](https://github.com/onflow/cadence/pull/3629)
+
+**Cadence Execution**
+- Feature
+    - Storage optimization: [Combine non-atree domain payloads into atree payloads](https://github.com/onflow/cadence/issues/3584)
+        - [Add function to check if address has unsaved changes in storage](https://github.com/onflow/atree/pull/450)
+    - Enabling No-downtime Cadence update: [Expose minimum required version to cadence interface
+](https://github.com/onflow/cadence/pull/3616)
+- Tech-debt
+    - [Remove deprecated ingestion engine](https://github.com/onflow/flow-go/pull/6510)
+    - [Remove Cadence 1.0 / Crescendo migrations](https://github.com/onflow/flow-go/pull/6572)
+- Dependency updates: [1](https://github.com/onflow/flow-go/pull/6608), [2](https://github.com/onflow/flow-go-sdk/pull/796), [3](https://github.com/onflow/flow-go/pull/6607), [4](https://github.com/onflow/flow-go-internal/pull/6990), [5](https://github.com/onflow/flow-go-internal/pull/6989), [6](https://github.com/onflow/flow-go-internal/pull/6988), [7](https://github.com/onflow/flow-evm-gateway/pull/623), [8](https://github.com/onflow/flixkit-go/pull/83), [9](https://github.com/onflow/cadence-tools/pull/441), [9](https://github.com/onflow/flowkit/pull/77), [10](https://github.com/onflow/cadence-tools/pull/440), [11](https://github.com/onflow/cadence-tools/pull/439), [12](https://github.com/onflow/flow-emulator/pull/765), [13](https://github.com/onflow/flow-go-sdk/pull/788), [14](https://github.com/onflow/flow-go-sdk/pull/787), [15](https://github.com/onflow/flow-go/pull/6581), [16](https://github.com/onflow/flow-go-sdk/pull/786)
+
+**EVM Core**
+- Package for Gateway dry-run feature:
+    - [Offchain package - part 2](https://github.com/onflow/flow-go/pull/6545)
+    - [Offchain package - part 3](https://github.com/onflow/flow-go/pull/6546)
+- bugfix:
+    - [Fix COA ownership proof](https://github.com/onflow/flow-go/pull/6550)
+- Improvements:
+    - enables concurrent use of emulator: [Make chain config concurrency safe](https://github.com/onflow/flow-go/pull/6578)
+- Util:
+    - New methods to test EVM Tx replayability: [adding event collection and verification utilities](https://github.com/onflow/flow-go/pull/6582)
+    - [add utility command to export EVM state](https://github.com/onflow/flow-go/pull/6561)
+    - [Adding account/slot/code iterators to the base storage](https://github.com/onflow/flow-go/pull/6555)
+
+**EVM Gateway**
+- Dry-run feature:
+    - [Remove traces downloader](https://github.com/onflow/flow-evm-gateway/pull/639)
+- Stabilization:
+    - [Fix block ingestion stalls](https://github.com/onflow/flow-go/issues/6609)
+- Bugfix:
+    - [Broken Chain in JSON rpc nodes with Flow-Testnet](https://github.com/onflow/flow-evm-gateway/issues/534)
+- Improvements:
+    - [Add the EVM GW version to log lines](https://github.com/onflow/flow-evm-gateway/pull/596)
+    - [Use the released tag version to identify newly-created docker images](https://github.com/onflow/flow-evm-gateway/pull/592)
+- API updates & improvements
+    - [Avoid logging debug info for invalid JSON-RPC methods](https://github.com/onflow/flow-evm-gateway/pull/611)
+    - [Update the list of valid JSON-RPC methods](https://github.com/onflow/flow-evm-gateway/pull/613)
 
 **This sprint**
 
 - Continue work on [EVM Gateway Hardening](https://github.com/onflow/flow-go/issues/6539)
 
 - Cadence Language
-  - Continue addressing [Tech Debt](https://github.com/onflow/cadence/issues/3595)
-  - Start work on Content for [commuity outreach](https://github.com/onflow/cadence/issues/3596)
-  - Maybe resume work on the [Cadence compiler POC](https://github.com/onflow/cadence/issues/3612)
+  - Complete remaining Tech-debt [Tech Debt](https://github.com/onflow/cadence/issues/3595)
+  - Continue work on Content for [commuity outreach](https://github.com/onflow/cadence/issues/3596)
+  - Continue work on the [Cadence compiler POC](https://github.com/onflow/cadence/issues/3612)
   - Continue work on [Cadence language Specification](https://github.com/onflow/cadence/issues/3599)
-  - [Updating Source compatibility suite for C1.0](https://github.com/onflow/cadence/issues/3608)
 
 - Cadence Execution
   - Continue work on [optimization for Cadence domain storage](https://github.com/onflow/cadence/issues/3584)
-  - Badger -> Pebble migration:continue work on [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516)
+  - Badger -> Pebble migration: continue work on [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516)
   
 **Completed OKRs**
   
 **On Hold**
 
-- Objective 2, KR 1: Update transaction fees weights for the execution operations on TN and MN
-  -  Continue work on [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
- 
-- Other
-    * Start Atree optimization: [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
-    * Evaluate fixing [Random beacon history taking more space on chain than expected](https://github.com/onflow/flow-go/issues/5550)
-    * Continue: [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
+- [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
+- [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
+- [Random beacon history taking more space on chain than expected](https://github.com/onflow/flow-go/issues/5550)
+- [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
 
 ---
 
