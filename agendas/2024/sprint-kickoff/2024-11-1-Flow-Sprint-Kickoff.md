@@ -22,27 +22,15 @@
 | Collection Finalization | 99.9%   |    100%      |       0%          |
 | Block Finalization      | 99.9%   |    100%      |       0%          |
 | Transaction Execution   | 99.9%   |    99.95%    |       49.6%       |
-| Block Sealing           | 99.9%   |    100%      |       0%          |
-| Access API Liveness     | 99.9%   |    100%      |       0%          |
+| Block Sealing           | 99.9%   |    99.96%    |       24.8%       |
+| Access API Liveness     | 99.9%   |    99.31%    |       694.44%     |
 
 [SLO dashboards](https://flowfoundation.grafana.net/d/hgW3l-m4k/slo-dashboard?orgId=1&from=now-2w&to=now)
 
-YTD SLA: 99.50%
-
-
-#### SLA situation
-
-- Updated downtime reported during the last sprint kickoff. see last sprint's [SLA section](https://github.com/onflow/flow/blob/master/agendas/2024/sprint-kickoff/2024-09-13-Flow-Sprint-Kickoff.md#sla-situation-updated-on-926)
-- Total downtime YTD -
-  1. 4 HCUs 20 mins
-  2. Sept 4th - Mainnet25(Crescendo) upgrade: 19h23m
-  3. Sept 5th - P0 incident after mainnet25: 7h30m
-  4. Sept 25th - Mainnet26: 3h48m
-  5. Oct 8th - HCU: 5m
-
+YTD SLA: 99.52%
 
 ## Incidents
-Monday, 2024-10-14 18:46:30 Pacific: Sev-3 - EVM Gateway 2 stopped processing EVM Blocks ([slack thread](https://flow-foundation.slack.com/archives/CUU2KQL4A/p1728959386019689?thread_ts=1728959285.639699&cid=CUU2KQL4A))
+1. Oct 30th 8:40 PM to 11:00 PM Pacific Sev 1 - `onflow.org` domain expired and failed to auto-renew ([slack thread](https://flow-foundation.slack.com/archives/CUU2KQL4A/p1730347480604789))
 
 (Sev [definition](https://www.notion.so/flowfoundation/Incident-Priorities-Severity-Levels-1-e811b352feff4928b69a7e99df724c6a))
 
