@@ -11,7 +11,7 @@
 - Deployed FVM feature that enables no-downtime Cadence update (short-term using version beacon, will be updated to use dynamic protocol state)
 - Cadence Source compatibility suite update - we now run unit tests on community repos to validate new Cadence versions & expaneded the suite to run tests using Cadence Testing Framework.
 - Validated Pebble DB releases data during pruning - we were able to prune the Data chunk pack DB from GBs after few days of running to ~6MB.
-- Cadence working group - Reviewed 8 open FLIPS, 3 approved, 1 ice-boxed ([#41](https://github.com/onflow/flips/pull/41)), 1 remains open for community contribution ([245](https://github.com/onflow/flips/pull/245)), 3 require follow-up ([198](https://github.com/onflow/flips/pull/198), [256](https://github.com/onflow/flips/pull/256), [295](https://github.com/onflow/flips/pull/295)).
+- Cadence working group - Reviewed 8 open FLIPS, 3 approved ([275](https://github.com/onflow/flips/pull/276), [288](https://github.com/onflow/flips/pull/289), [293](https://github.com/onflow/flips/pull/294)), 1 ice-boxed ([#41](https://github.com/onflow/flips/pull/41)), 1 remains open for community contribution ([251](https://github.com/onflow/flips/pull/245)), 3 require follow-up ([198](https://github.com/onflow/flips/pull/198), [255](https://github.com/onflow/flips/pull/256), [295](https://github.com/onflow/flips/pull/295)).
 
 ### General updates
 
