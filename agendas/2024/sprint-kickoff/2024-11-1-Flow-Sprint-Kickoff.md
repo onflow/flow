@@ -132,9 +132,13 @@ Cycle Objective(s):
 
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
 * Faster transaction results to improve user experience [IN PROGRESS]
-* Address vectors which risk network downtime [KR1: Protocol level HCU, KR2: Operationalize EFM Recovery] [IN PROGRESS]
+* Address vectors which risk network downtime
+  1. Protocol level HCU] [IN PROGRESS]
+  2. Operationalize EFM Recovery [NOT STARTED]
 * Add passkey support: Protocol design and scoping [NOT STARTED]
-* Furthering permissionless participation [KR1: Proof of Possession, KR2: SPoCK Research] [IN PROGRESS]
+* Furthering permissionless participation
+  1. Proof of Possession [IN PROGRESS]
+  2. KR2: SPoCK Research
 
 **Done last Sprint:**
   * Offer for Tim accepted as Protocol Eng I, starting Nov 18th
