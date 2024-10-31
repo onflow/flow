@@ -40,38 +40,6 @@ YTD SLA: 99.52%
 
 ---
 
-### FLIPs Tracker \[Kshitij]
-
-|                         | Application | Cadence | Governance | Protocol | Total |  
-|:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 8  |    6 (-2)  |       1 (+1)         |       7          |        **22** (-1)       |
-| Proposed    | 1  |    4 (+2)   |       3          |       0           |        **8** (+2)  |
-| Accepted    | 2  |    1     |       2       |       2        |        **7**          |
-| Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 3 |    25    |       1       |       0           |        **29**          |
-| Released    | 4  |    0     |       4       |       6          |        **14**         |
-| Total       | **18**  |    **36**   |       **12** (+1)     |       **15**          |        **81** (+1)   |
-
-**Summary**
-
-* Overall 1 new FLIP - [Governance] - removal of decommissioned nodes from the approved list
-* Movement of two cadence flips from draft to proposed (Simple String Interpolation by Raymond was one)
-
-**REMINDER - FLIPs that need to be reassigned immediately:**
-
-**- Application**
-  - Interaction Templates (Paul Gebheim)
-  - Application - Pool-Based DEX Swap Standard (Satyam A.)
-
-**- Cadence**
-  - Type Removal In Contract Updates  (Daniel Sainati)
-  - Optional References to Indexed Accesses (Daniel Sainati)
-  - Mutability Restrictions  (Daniel Sainati)
-  - Cadence Storage API Improvements (Daniel Sainati)
-  - Reference Creation Semantics (Daniel Sainati)
-  - View Functions (Daniel Sainati)
-  - Entitlements (Daniel Sainati)
-  - New behavior for attachments with entitlements (Daniel Sainati)
 
 # Working Group Updates
 
