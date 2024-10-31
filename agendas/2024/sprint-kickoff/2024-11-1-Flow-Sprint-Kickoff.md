@@ -297,12 +297,30 @@ Cycle Objective(s):
 ---
 
 ### **Infra - JP**
-Cycle Objective(s): 
-- [Please enter cycle objectives for Q4 2024]
-
 **Done last sprint**
 
+**BTC Bridge Integration**
+- Created new network & observability infra for hyperlane validators
+- Created configuration & infra for hyperlane nodes
+
+**Atlantis Migration**
+- Coordinated creation of Atlantis App in onflow Org
+- Created new atlantis infrastructure in FF SRE project
+- Created new GH teams in onflow org to match FF 
+- Created production SRE project
+- Migrated infra repos to onflow org
+- Reconfigured IAM to infra repos in onflow org
+- Migrated secrets for atlantis to FF SRE project
+- Migrated & rebuilt terraform modules to only include FF modules & code
+
+**IAM Group Migration**
+- Created FF IAM Google groups
+- Added FF members to groups
+
+**Support**
+- Created DNS record for new subdomain
+
 **This Sprint**
-- Begin interviewing for SRE role
-- Continue work to migrate to dedicated FF Atlantis
-- Execute GCP IAM migration to Flow Foundation groups
+- Complete GCP IAM migration to Flow Foundation groups
+- Assist in fixing workflows with GH repo migration
+- Assist in improving integration test execution
