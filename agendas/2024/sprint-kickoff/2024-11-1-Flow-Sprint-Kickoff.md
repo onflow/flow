@@ -12,6 +12,12 @@
 - Cadence Source compatibility suite update - we now run unit tests on community repos to validate new Cadence versions & expaneded the suite to run tests using Cadence Testing Framework.
 - Validated Pebble DB releases data during pruning - we were able to prune the Data chunk pack DB from GBs after few days of running to ~6MB.
 - Cadence working group - Reviewed 8 open FLIPS, 3 approved ([275](https://github.com/onflow/flips/pull/276), [288](https://github.com/onflow/flips/pull/289), [293](https://github.com/onflow/flips/pull/294)), 1 ice-boxed ([#41](https://github.com/onflow/flips/pull/41)), 1 remains open for community contribution ([251](https://github.com/onflow/flips/pull/245)), 3 require follow-up ([198](https://github.com/onflow/flips/pull/198), [255](https://github.com/onflow/flips/pull/256), [295](https://github.com/onflow/flips/pull/295)).
+- Flow AI added to Docs
+- Docs: Reduced steps in getting started and refocused docs home page focus from EVM to Cadence
+- Worked with community (Deniz) to optimize Cadence NFT serialization en route to EVM
+- Highest ever weekly FCL downloads besides v1.0 release
+- FCL-JS fully compatible with Telegram Apps
+
 
 ### General updates
 
