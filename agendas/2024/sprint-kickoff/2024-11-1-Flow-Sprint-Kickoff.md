@@ -188,6 +188,12 @@ Cycle Objective(s):
 * <ins>Cryptography</ins>
 
 * <ins>Data Availability</ins>
+  - KROK Team
+    - Websockets initial design complete
+    - Add Time To Seal metric ([PR #6512](https://github.com/onflow/flow-go/pull/6512), [PR #6605](https://github.com/onflow/flow-go/pull/6605))
+    - Store tx result error messages in database ([PR #6468](https://github.com/onflow/flow-go/pull/6468))
+    - SDK alignment [1](https://github.com/onflow/flow-go-sdk/pull/778), [2](https://github.com/onflow/flow-go-sdk/pull/779), [3](https://github.com/onflow/flow-go-sdk/pull/780), [4](https://github.com/onflow/flow-go-sdk/pull/790)
+    - Address tech debt [1](https://github.com/onflow/flow-go/pull/6547), [2](https://github.com/onflow/flow-go/pull/6554)
 
 * <ins>Misc other</ins>
   - Ongoing Pebble migration PR reviews
@@ -204,14 +210,15 @@ Cycle Objective(s):
 * <ins>Data Availability</ins>
   - KROK Team
     - Websockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
-      - Initial design ([Issue #6508](https://github.com/onflow/flow-go/issues/6508))
+      - Implement router ([Issue #6593](https://github.com/onflow/flow-go/issues/6593) - In review, [Issue #6583](https://github.com/onflow/flow-go/issues/6583) - In progress, [Issue #6584](https://github.com/onflow/flow-go/issues/6584) - In progress)
+      - Improvements to tx result streaming endpoint ([Issue #6573](https://github.com/onflow/flow-go/issues/6573), [Issue #6574](https://github.com/onflow/flow-go/issues/6574), [Issue #6575](https://github.com/onflow/flow-go/issues/6575), [Issue #6604](https://github.com/onflow/flow-go/issues/6604))
     - Registers db pruning ([Issue #6068](https://github.com/onflow/flow-go/issues/6068) - In review)
-    - Store Tx Result in database ([Issue #6302](https://github.com/onflow/flow-go/issues/6302) - In review, [Issue #6413](https://github.com/onflow/flow-go/issues/6413) - In review)
+    - Backfill tool for tx result errors ([Issue #6413](https://github.com/onflow/flow-go/issues/6413) - In review)
     - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357) - In progress)
-    - Add Time To Seal metric ([Issue #6448](https://github.com/onflow/flow-go/issues/6448) - In review)
     - Access API / Go SDK alignment ([Epic #735](https://github.com/onflow/flow-go-sdk/issues/735))
       - Unify streaming endpoints code duplication ([Issue #763](https://github.com/onflow/flow-go-sdk/issues/763) - In review)
-      - Other endpoint improvements [1](https://github.com/onflow/flow-go-sdk/issues/765), [2](https://github.com/onflow/flow-go-sdk/issues/768), [3](https://github.com/onflow/flow-go-sdk/issues/766)
+      - Fixes/Improvements [1](https://github.com/onflow/flow-go-sdk/issues/783), [2](https://github.com/onflow/flow-go-sdk/issues/784), [3](https://github.com/onflow/flow-go-sdk/issues/767)
+    - Tech debt [1](https://github.com/onflow/flow-go/issues/6564), [2](https://github.com/onflow/flow-go/issues/6566), [3](https://github.com/onflow/flow-go/issues/6497)
 
 * <ins>Cryptography</ins>
   - Passkeys reading (understanding the standard)
