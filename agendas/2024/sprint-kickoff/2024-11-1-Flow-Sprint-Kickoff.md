@@ -11,7 +11,19 @@
 - Deployed FVM feature that enables no-downtime Cadence update (short-term using version beacon, will be updated to use dynamic protocol state)
 - Cadence Source compatibility suite update - we now run unit tests on community repos to validate new Cadence versions & expaneded the suite to run tests using Cadence Testing Framework.
 - Validated Pebble DB releases data during pruning - we were able to prune the Data chunk pack DB from GBs after few days of running to ~6MB.
-- Cadence working group - Reviewed 8 open FLIPS, 3 approved ([275](https://github.com/onflow/flips/pull/276), [288](https://github.com/onflow/flips/pull/289), [293](https://github.com/onflow/flips/pull/294)), 1 ice-boxed ([#41](https://github.com/onflow/flips/pull/41)), 1 remains open for community contribution ([251](https://github.com/onflow/flips/pull/245)), 3 require follow-up ([198](https://github.com/onflow/flips/pull/198), [255](https://github.com/onflow/flips/pull/256), [295](https://github.com/onflow/flips/pull/295)).
+- Cadence working group - Reviewed 8 open FLIPS
+  - Approved
+    - [275](https://github.com/onflow/flips/pull/276)
+    - [288](https://github.com/onflow/flips/pull/289)
+    - [293](https://github.com/onflow/flips/pull/294)
+  - Ice-boxed
+    - [#41](https://github.com/onflow/flips/pull/41)
+  - Keeping open for community contribution
+    - [251](https://github.com/onflow/flips/pull/245)
+  - Require follow-up
+    - [198](https://github.com/onflow/flips/pull/198)
+    - [255](https://github.com/onflow/flips/pull/256)
+    - [295](https://github.com/onflow/flips/pull/295)
 
 ### General updates
 
@@ -36,6 +48,7 @@ YTD SLA: 99.52%
 
 ## Incidents
 1. Oct 30th 8:40 PM to 11:00 PM Pacific Sev 1 - `onflow.org` domain expired and failed to auto-renew ([Incident Response](https://www.notion.so/flowfoundation/Flow-onflow-org-domain-expiry-resulting-in-platform-wide-outages-10-30-2024-1301aee123248053b0d1d325ea99a809))
+  - A post-mortem review is being scheduled 
 
 (Sev [definition](https://www.notion.so/flowfoundation/Incident-Priorities-Severity-Levels-1-e811b352feff4928b69a7e99df724c6a))
 
@@ -172,20 +185,30 @@ Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
 * Faster transaction results to improve user experience [IN PROGRESS]
 * Address vectors which risk network downtime
-  1. Protocol level HCU] [IN PROGRESS]
-  2. Operationalize EFM Recovery [NOT STARTED]
+  1. Operationalize EFM Recovery [IN PROGRESS]
+  2. Protocol level HCU [NOT STARTED]
 * Add passkey support: Protocol design and scoping [NOT STARTED]
 * Furthering permissionless participation
   1. Proof of Possession [IN PROGRESS]
-  2. KR2: SPoCK Research
+  2. KR2: SPoCK Research [PAUSED]
 
 **Done last Sprint:**
-  * Offer for Tim accepted as Protocol Eng I, starting Nov 18th
-  * 
-
 * <ins>EFM Recovery</ins>
+  * All smart contract changes for EFM recovery are completed and ready for deployment
+  * Finalized and merged a bunch of open PRs from last sprint:
+    * [Model.Proposal refactoring](https://github.com/onflow/flow-go/pull/6526)
+    * [EFM recovery new types cadence conversion](https://github.com/onflow/flow-go/pull/6506)
+    * [Finalized and prepared for review EFM integration test and all needed changes to make it work](https://github.com/onflow/flow-go/pull/6424)
 
 * <ins>Cryptography</ins>
+  * Proof Of Possession:
+    * Update the contract - add new transaction for Ledger backward compatibility
+    * Setup the Ledger dev environment
+    * Started Ledger app update - fixing integration tests
+  * Reviewed account creation PR
+  * Update account key crypto constraints in core-contract repo and related documentation
+  * Review new "crypto" core-contract - tried to update the e2e repo but left GH issues
+  * Passkeys light reading
 
 * <ins>Data Availability</ins>
   - KROK Team
@@ -196,16 +219,18 @@ Cycle Objective(s):
     - Address tech debt [1](https://github.com/onflow/flow-go/pull/6547), [2](https://github.com/onflow/flow-go/pull/6554)
 
 * <ins>Misc other</ins>
+  - Offer for Tim accepted as Protocol Eng I, starting Nov 18th
+  - Merged Bluesign's Mini-Emulator to remove our flow-emulator dependency
   - Ongoing Pebble migration PR reviews
 
 **This sprint**
 
 * <ins>EFM Recovery</ins>
-  - [Implement an integration test for EFM and DKG IndexMap](https://github.com/onflow/flow-go/issues/6331)
-  - Complete main EFM recovery logic PR
-  - [Merge Protocol version upgrade PR](https://github.com/onflow/flow-core-contracts/pull/419)
-  - Merge open PRs that are under review
-  - Finish integration test and related DKG issue
+  - EFM Recovery Benchnet testing
+  - Address comments and merge [EFM Integration Test Part 2](https://github.com/onflow/flow-go/pull/6424)
+  - Look into potential deployment of EFM recovery using protocol upgrade.
+  - Tie loose ends in EFM
+
     
 * <ins>Data Availability</ins>
   - KROK Team
@@ -221,11 +246,11 @@ Cycle Objective(s):
     - Tech debt [1](https://github.com/onflow/flow-go/issues/6564), [2](https://github.com/onflow/flow-go/issues/6566), [3](https://github.com/onflow/flow-go/issues/6497)
 
 * <ins>Cryptography</ins>
-  - Passkeys reading (understanding the standard)
   - PoP:
-    - Polish the contract - Ledger backward compatibility
-    - Setup the Ledger environment to build Ledger apps
-  - SPoCK aggregation: continue reading the KOSK-based proof
+    * Continue Ledger app dev
+    * Fix remaining tests
+    * Fix js tests
+  - Continue passkeys research
 
 * <ins>Misc other</ins>
   - Ongoing Pebble migration PR reviews
