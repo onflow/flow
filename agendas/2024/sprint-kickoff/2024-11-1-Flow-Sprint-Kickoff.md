@@ -334,7 +334,7 @@ Ledger Specific:
 Issues
 - Docs Improvements https://github.com/onflow/docs/issues/745
 - Slack Issue Bot
-- Deprecation of js-testing
+- [IMPROVEMENT] Replace js tests with cadence tests [#105](https://github.com/onflow/nft-storefront/issues/105)
 - Transaction Management Guide
 - Cadence X EVM Examples (SC)
 - L&F integration (Flow Port)
