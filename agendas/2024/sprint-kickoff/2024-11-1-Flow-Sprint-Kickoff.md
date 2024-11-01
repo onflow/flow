@@ -367,9 +367,10 @@ Issues
 
 Cycle Objective(s): 
 
-- [Please enter cycle objectives for Q4 2024]
+- [Objective: Enable safe self-custody of assets on Flow with Flow Wallet](https://github.com/orgs/onflow/projects/66/views/1?filterQuery=wallet&pane=issue&itemId=82980989&issue=onflow%7Cflow-okrs%7C61)
 
 **Done last sprint**
+
 
 **This sprint**
 
