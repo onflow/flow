@@ -273,9 +273,7 @@ Cycle Objective(s):
   * Resolve 2x Axelar nodes activation issues to unblock bridge 
   * Keep helping partners and node operators
   * Review/merge upcoming JVM SDK PRs to get to Go SDK parity
-  * Soft launch Hyperlane BTC bridge (hopefully)
-  * Kick off Credora (off to on chain credit scoring) and Ethereum Attestion Service integration
-  
+
 **On Hold**
 
 ---
