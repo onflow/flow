@@ -24,6 +24,11 @@
     - [198](https://github.com/onflow/flips/pull/198)
     - [255](https://github.com/onflow/flips/pull/256)
     - [295](https://github.com/onflow/flips/pull/295)
+- Flow AI added to Docs
+- Docs: Reduced steps in getting started and refocused docs home page focus from EVM to Cadence
+- Worked with community (Deniz) to optimize Cadence NFT serialization en route to EVM
+- Highest ever weekly FCL downloads besides v1.0 release
+- FCL-JS fully compatible with Telegram Apps
 
 ### General updates
 
@@ -286,20 +291,81 @@ Cycle Objective(s):
 ### **User Experience** \[Greg]
 
 Cycle Objective(s):
- - [Please enter cycle objectives for Q4 2024]
+ - Improve Quality of Life, Level Up Dev Documentation and Learning Path, Supercharge EVMxCadence, Inspire and Excite Wave of New Flow Devs
 
 **Done last sprint**
+**Crescendo Rewards** 
+- Update Cryptoys image (https://github.com/onflow/crescendo-rewards/issues/483 )
+- Update Terms of Service (https://github.com/onflow/crescendo-rewards/issues/487 )
+- Remove claim section and move points box (https://github.com/onflow/crescendo-rewards/issues/489 )
+- Add store banner (https://github.com/onflow/crescendo-rewards/issues/491 )
+**Smart Contracts**
+- Deploy and test Crypto contract on testnet and mainnet
+- Updated LockedTokens to help reclaim leases
+- Upgraded FlowStakingCollection with better error messages
+- Blog post for broken Crescendo contracts
+**VM Bridge**
+- Fix cases of underflow in event of storage decrease
+- Update display type serialization
+- Optimize serialization
+- X-Chain Axelar Bridge (bridge.flow.com
+**FCL Discovery**
+- [[FEATURE] Capture SWR errors with Sentry](https://github.com/onflow/fcl-discovery/issues/271)
+FCL
+- [[FEATURE] Improved Cadence Error Reporting](https://github.com/onflow/fcl-js/issues/1891)
+- [[BUG] Mobile wallets deeplink during both authn & authz phase](https://github.com/onflow/fcl-js/issues/1971)
+- [[BUG] Mobile deep linking generates extra blank tab & doesnt work with in-app browsers](https://github.com/onflow/fcl-js/issues/1972)
+- [[TS] Provider type is missing fields](https://github.com/onflow/fcl-js/issues/1973)
+- [[Tech Debt] Update development dependencies (bunding dependencies, plugins, jest, typescript)](https://github.com/onflow/fcl-js/issues/1974)
+- [[FEATURE] Decrease transaction polling interval](https://github.com/onflow/fcl-js/issues/1988)
+- [[FEATURE] Add a check to prevent major version bumps](https://github.com/onflow/fcl-js/issues/1992)
+- [Restore FCL-WC deeplinking during authz request when initiated by non-WC/RPC pre-authz](https://github.com/onflow/fcl-js/issues/1998)
+**Flow Port**
+- Add Fungible Token list view
+Ledger Specific:
+- Fixed bug, Tell user they need to update Flow Ledger App (https://github.com/onflow/fcl-ledger-web/issues/79)
+- Updated fcl-ledger-web to use public key indexer for account discovery
+- Updated fcl-ledger-web to use proxy to future proof against spamming hardware-wallet-api account creation. (https://github.com/onflow/fcl-ledger-web/issues/80)
+**Docs**
+- Rewrite Step One Getting Started Page (https://github.com/onflow/docs/issues/947) 
+- Change focus of home page to Cadence (https://github.com/onflow/docs/issues/948 )
+- [Bug] part 1 autoscrolls to iframe on first load (https://github.com/onflow/docs/issues/954 )
+- Move flow runner output to right panel (https://github.com/onflow/docs/issues/955 )
+- Embedded runner in getting started should have code pre-populated (https://github.com/onflow/docs/issues/960 )
+- Fix any old references to flow setup (https://github.com/onflow/docs/issues/972 )
+- Consolidate Flow CLI instructions that are duplicated (https://github.com/onflow/docs/issues/974 )
+**Flow Go SDK**
+- [Fix Cadence examples #793](https://github.com/onflow/flow-go-sdk/pull/793)
+**Public Key Indexer** 
+- Added isReverted, signing/hash algo
+**Cadence VSCode Extension**
+- [Button to create flow.json file fails](https://github.com/onflow/vscode-cadence/issues/697)
+- [[LS] import Crypto no longer available](https://github.com/onflow/cadence-tools/issues/443)
 
 **This sprint**
-**Sprint Goal: Cycle Kickoff - Refine and Assign OKR Initiatives and Drivers / Rewards Handoff / Lost and Found (Integration - Flow Port, Flow Wallet)**
+**Sprint Goal: Improve Quality of Life, Dev Documentation and Learning Path, Supercharge EVMxCadence,  Rewards Handoff, Lost and Found (Integration - Flow Port, Flow Wallet)**
 
+- [EPIC] Dev Docs - Crucial Guides and Improvments [#745](https://github.com/onflow/docs/issues/745)
+- [EPIC] Streamline Mobile Wallet Support [#1976](https://github.com/onflow/fcl-js/issues/1976)
+- [EPIC] Improve Quality of Life and Reduce Technical Debt [#29](https://github.com/onflow/dx-internal/issues/29)
 - [EPIC] Verify Completion of Commitments for EVM Launch Partners #25
 - [EPIC] Flow Rewards (RAIN)
   - [FE](https://github.com/onflow/crescendo-rewards/issues/1 )
   - [BE](https://github.com/onflow/crescendo-rewards-be/issues/1)
-  - [SC](https://github.com/onflow/crescendo-rewards-sc/issues/7)
 - [EPIC Solving Initialization/Storage Issues - Lost and Found FLIP and Port integration](https://github.com/onflow/flow-port/issues/292)
 - [Flow Bridge App Epic](https://github.com/onflow/flow-bridge-app/issues/1)
+
+Issues
+- Docs Improvements https://github.com/onflow/docs/issues/745
+- Slack Issue Bot
+- [IMPROVEMENT] Replace js tests with cadence tests [#105](https://github.com/onflow/nft-storefront/issues/105)
+- Transaction Management Guide
+- Cadence X EVM Examples (SC)
+- L&F integration (Flow Port)
+- Snag Handoff (Site domain, Auto Unlock, API Update for Flipside)
+- Flow Wallet Chrome Extension support and improvements
+- EVM Apps Using Cadence (Supercharge Example)
+
 
 **On Hold**
 
