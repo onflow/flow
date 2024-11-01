@@ -13,7 +13,7 @@
 - Validated Pebble DB releases data during pruning - we were able to prune the Data chunk pack DB from GBs after few days of running to ~6MB.
 - Cadence working group - Reviewed 8 open FLIPS
   - Approved: [275](https://github.com/onflow/flips/pull/276), [288](https://github.com/onflow/flips/pull/289), [293](https://github.com/onflow/flips/pull/294)
-  - Ice-boxed: [#41](https://github.com/onflow/flips/pull/41)
+  - Ice-boxed: [41](https://github.com/onflow/flips/pull/41)
   - Keeping open for community contribution: [251](https://github.com/onflow/flips/pull/245)
   - Require follow-up: [198](https://github.com/onflow/flips/pull/198), [255](https://github.com/onflow/flips/pull/256), [295](https://github.com/onflow/flips/pull/295)
 - Flow AI added to Docs
