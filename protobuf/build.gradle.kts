@@ -9,7 +9,7 @@ fun getProp(name: String, defaultValue: String? = null): String? {
 
 // configuration variables
 val defaultGroupId = "org.onflow"
-val defaultVersion = "1.1.0"
+val defaultVersion = "1.1.1"
 
 group = getProp("groupId", defaultGroupId)!!
 version = when {
@@ -28,8 +28,8 @@ plugins {
     id ("com.vanniktech.maven.publish") version "0.28.0"
 }
 
-val protobufVersion = "3.14.0"
-val grpcVersion = "1.35.0"
+val protobufVersion = "4.26.0"
+val grpcVersion = "1.68.1"
 
 dependencies {
     api("com.google.protobuf:protobuf-java:$protobufVersion")
