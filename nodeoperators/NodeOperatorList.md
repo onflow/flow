@@ -16,6 +16,7 @@
 | Node Operator          | Node Type    | Node ID                                                          |
 | :---------------------:| :-----------:| :---------------------------------------------------------------:|
 | Alxo                   | Verification | f7422f2d3296ede4d1efb36ec55e3fd93702c061f7ee627881f0b3007beff2ed |
+| Ankr                   | Verification | f441ce06e155367c05c941b68fdb1bb3f0cb9efe0d8cc9a9932d7d1dbfd13f2c |
 | Binance Staking        | Verification | 7c589e6cc38508b27545d052073ab3aa84a35425bd2881205d778cca95f10a7b |
 | Bitcoin Louie          | Verification | fffba108a52e4ca8f5d30658c3f03f47ad1cc13a0995435c0532336236813218 |
 | Block Daemon           | Verification | 1cf032dd5b3cf9a63943e1f04472bb57cc1240d5cdd86c5fde05b4dabf8b1e7a |
