@@ -34,7 +34,8 @@
 | Total       | **18** |    **37** (+1)  |       **12**       |       **16**  (+1)        |        **83**  (+2)       |
 
 - Overall FLIPs went up by 2 as compared to last month
-- Some FLIPs are still not reflected in the project tracker. **Remember**: FLIP process starts with an issue creation.
+- Some FLIPs are still not reflected in the project tracker.
+- **Reminder**: FLIP process starts with an issue creation.
 (https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
   
 ### Key Release Dates & Breaking Changes
