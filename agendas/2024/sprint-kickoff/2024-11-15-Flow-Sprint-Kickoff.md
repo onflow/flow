@@ -21,17 +21,17 @@
 
 ---
 
-### FLIPs Tracker \[Kshitij]
+### FLIPs Tracker \[Vishal]
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 7  |    6    |       0          |       5          |        **18**          |
-| Proposed    | 3  |    1     |       2          |       1          |        **7**          |
-| Accepted    | 2  |    1     |       1       |       2          |        **6**          |
+| Drafted     | 8  |    6    |       0          |       8          |        **22**          |
+| Proposed    | 3  |    1     |       3          |       0          |        **7**          |
+| Accepted    | 2  |    1     |       2       |       2          |        **7**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 1  |    19    |       1       |       0          |        **21**          |
-| Released    | 4  |    0     |       2       |       4          |        **10**          |
-| Total       | **17**  |    **27**    |       **7**       |       **12**          |        **63**          |
+| Implemented | 3  |    28    |       1       |       0          |        **32**          |
+| Released    | 4  |    0     |       5       |       6          |        **15**          |
+| Total       | **20**  |    **36**    |       **12**       |       **16**          |        **84**          |
 
 - Overall FLIPs went up by 4 vis-a-vis last month (2 new application FLIP was drafted, while 2 moved from proposed status)
 - Some FLIPs are still not reflected in the project tracker. **Remember**: FLIP process starts with an issue creation.
