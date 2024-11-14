@@ -223,21 +223,37 @@ Cycle Objective(s):
 ---
 
 ### **Infra - JP**
-Cycle Objective(s): 
-- Migrate Flow metrics & logs to Flow Foundation grafana account to reduce cost on DapperLabs
 
 **Done last sprint**
 
-* 
+**Repo Migration**
+* [Fix BN2 Workflows in new repo](https://github.com/onflow/flow-go-internal/pull/6996)
+* Add support for new repo to reach BN2 cluster 
+
+**IAM Migration**
+* Add access for new FF groups in BN2
+* Worked with engineers to validate initial FF group changes
+
+**Automation**
+* [Created documentation for standardizing EN snapshots to benchmark project](https://www.notion.so/flowfoundation/Create-Disks-from-EN-Snapshots-1311aee123248034a8d6e6c7bda17dde)
+* [Created infrastructure for batch proccess execution](https://github.com/onflow/ff-sre-infrastructure/pull/55)
+* [Create automation for standardizing batch process execution with snapshot data](https://github.com/onflow/ff-sre-automation/pull/1)
+* [Add support for batch process timeouts](https://github.com/onflow/ff-sre-automation/pull/2)
+* [Document Batch Process Execution and Extension](https://www.notion.so/flowfoundation/Batch-Job-Execution-13d1aee1232480d18f03e61f2d4b1f2b)
+* Update integration & unit tests to support private cadence builds 
+
+**Hyperlane Deployment**
+* Deleted unnecessary validators 
+* Updated hyperlane images & validated requirements 
+
+**EVM GW**
+* Created new TN & MN EVM GW endpoints for preview testing
 
 **This sprint**
-
-**Goal of Sprint is to migrate from DapperLabs account to FlowFoundation account** 
-
-* 
-
-**On Hold**
-**Active Epics**
+* Finish FF IAM Group migration
+* Scope work to migrate domain registrars
+* Continue evaluating SRE candidates
+* Identify & document key SRE processes for the protocol team
 
 ---
 
