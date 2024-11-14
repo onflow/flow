@@ -25,15 +25,15 @@
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 8  |    6    |       0 (-1)          |       8 (+1)          |        **22**          |
-| Proposed    | 3 (+2)  |    1 (-3)    |       3          |       0          |        **7**          |
+| Drafted     | 8  |    6     |       0 (-1)       |       8 (+1)       |        **22**          |
+| Proposed    | 1  |    2 (-2)    |       3       |       0          |        **6**  (-2)        |
 | Accepted    | 2  |    1     |       2       |       2          |        **7**          |
 | Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 3  |    28 (+3)    |       1       |       0          |        **32**          |
-| Released    | 4  |    0     |       5 (+1)       |       6          |        **15**          |
-| Total       | **20** (+2) |    **36**    |       **12**       |       **16**  (+1)        |        **84**  (+3)       |
+| Implemented | 3  |    28 (+3)    |       1       |       0          |        **32**  (+3)      |
+| Released    | 4  |    0     |       5 (+1)       |       6          |        **15** (+1)         |
+| Total       | **18** |    **37** (+1)  |       **12**       |       **16**  (+1)        |        **83**  (+2)       |
 
-- Overall FLIPs went up by 3 as compared to last month
+- Overall FLIPs went up by 2 as compared to last month
 - Some FLIPs are still not reflected in the project tracker. **Remember**: FLIP process starts with an issue creation.
 (https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
   
