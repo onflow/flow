@@ -149,10 +149,18 @@ Cycle Objective(s):
 * <ins>Data Availability</ins>
   - KROK Team
     - Websockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
-      - Implement router ([Issue #6593](https://github.com/onflow/flow-go/issues/6593) - In review, [Issue #6583](https://github.com/onflow/flow-go/issues/6583) - In review, [Issue #6584](https://github.com/onflow/flow-go/issues/6584) - In review)
-      - Improvements to tx result streaming endpoint ([Issue #6573](https://github.com/onflow/flow-go/issues/6573), [Issue #6574](https://github.com/onflow/flow-go/issues/6574), [Issue #6604](https://github.com/onflow/flow-go/issues/6604))
+      - Implement controller and data providers ([Issue #6593](https://github.com/onflow/flow-go/issues/6593) - In review, [Issue #6583](https://github.com/onflow/flow-go/issues/6583) - In review, [Issue #6584](https://github.com/onflow/flow-go/issues/6584) - In review, [Issue #6617](https://github.com/onflow/flow-go/issues/6617) - In review)
+      - Improvements to tx result streaming endpoint ([Issue #6574](https://github.com/onflow/flow-go/issues/6574) - In progress, [Issue #6573](https://github.com/onflow/flow-go/issues/6573) - In progress)
+      - Refactor REST Routes Package ([Issue #6615](https://github.com/onflow/flow-go/issues/6615)- Merged)
     - Registers db pruning ([Issue #6068](https://github.com/onflow/flow-go/issues/6068) - In review)
     - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357) - In progress)
+    - Flow SDK([Epic #735]([https://github.com/onflow/flow-go-sdk](https://github.com/onflow/flow-go-sdk/issues/735)))
+      - Align SDK with latest Access API ([Issue #763](https://github.com/onflow/flow-go-sdk/issues/763) - Merged, [Issue #767](https://github.com/onflow/flow-go-sdk/issues/767) - Merged, [Issue #783](https://github.com/onflow/flow-go-sdk/issues/783) - Merged, [Issue #784](https://github.com/onflow/flow-go-sdk/issues/784) - Merged)
+    - Fixed issues where time-to-seal was NaN([Issue #6448](https://github.com/onflow/flow-go/issues/6448) - Merged)
+    - Ignore invalid peers([Issue #6565](https://github.com/onflow/flow-go/issues/6565) - Merged)
+    - Make REST message size limit configurable ([Issue #6566](https://github.com/onflow/flow-go/issues/6566) - Merged)
+    - Add util command to backfill tx error messages db([Issue #6413](https://github.com/onflow/flow-go/issues/6413) - Merged)
+    - Malleability: Design meetings, investigation, tasks scope preparation - done
 
 * <ins>Cryptography</ins>
   - PoP:
@@ -175,6 +183,14 @@ Cycle Objective(s):
   - [Implement last planned integration test](https://github.com/onflow/flow-go/issues/6645)
     
 * <ins>Data Availability</ins>
+  - KROK Team
+      - Websockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
+          - Implement controller and data providers ([Issue #6593](https://github.com/onflow/flow-go/issues/6593), [Issue #6583](https://github.com/onflow/flow-go/issues/6583), [Issue #6584](https://github.com/onflow/flow-go/issues/6584), [Issue #6617](https://github.com/onflow/flow-go/issues/6617))
+          - Improvements to tx result streaming endpoint ([Issue #6604](https://github.com/onflow/flow-go/issues/6604), [Issue #6574](https://github.com/onflow/flow-go/issues/6574), [Issue #6573](https://github.com/onflow/flow-go/issues/6573))
+     - Registers db pruning ([Issue #6068](https://github.com/onflow/flow-go/issues/6068))
+     - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357))
+     - Log error when unable to connect to bootstrap node([Issue #6576](https://github.com/onflow/flow-go/issues/6576))
+     - Malleability: Tasks descriptions, scope discussions
 
 * <ins>Cryptography</ins>
   - PoP:
