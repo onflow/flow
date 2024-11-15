@@ -209,11 +209,14 @@ Cycle Objective(s):
 
 * <ins>Data Availability</ins>
   - KROK Team
-    - Websockets initial design complete
-    - Add Time To Seal metric ([PR #6512](https://github.com/onflow/flow-go/pull/6512), [PR #6605](https://github.com/onflow/flow-go/pull/6605))
-    - Store tx result error messages in database ([PR #6468](https://github.com/onflow/flow-go/pull/6468))
-    - SDK alignment [1](https://github.com/onflow/flow-go-sdk/pull/778), [2](https://github.com/onflow/flow-go-sdk/pull/779), [3](https://github.com/onflow/flow-go-sdk/pull/780), [4](https://github.com/onflow/flow-go-sdk/pull/790)
-    - Address tech debt [1](https://github.com/onflow/flow-go/pull/6547), [2](https://github.com/onflow/flow-go/pull/6554)
+    - Backport payer balance checking PRs ([PR #6549](https://github.com/onflow/flow-go/pull/6549))
+    - Refactor REST package for websockets ([PR #6616](https://github.com/onflow/flow-go/pull/6616))
+    - Add tx error message backfill util ([PR #6525](https://github.com/onflow/flow-go/pull/6525))
+    - Refactor EN picking logic for tx result API ([PR #6499](https://github.com/onflow/flow-go/pull/6499))
+    - Update SendAndSubscribe to use 0 offset for MessageIndex ([PR #6598](https://github.com/onflow/flow-go/pull/6598))
+    - Fix bug in TTS metric ([PR #6624](https://github.com/onflow/flow-go/pull/6624))
+    - Security improvements ([PR #6621](https://github.com/onflow/flow-go/pull/6621), [PR #6596](https://github.com/onflow/flow-go/pull/6596), [PR #6567](https://github.com/onflow/flow-go/pull/6567))
+    - SDK alignment [1](https://github.com/onflow/flow-go-sdk/pull/794), [2](https://github.com/onflow/flow-go-sdk/pull/789), [3](https://github.com/onflow/flow-go-sdk/pull/792), [4](https://github.com/onflow/flow-go-sdk/pull/781)
 
 * <ins>Misc other</ins>
   - Offer for Tim accepted as Protocol Eng I, starting Nov 18th
@@ -232,15 +235,10 @@ Cycle Objective(s):
 * <ins>Data Availability</ins>
   - KROK Team
     - Websockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
-      - Implement router ([Issue #6593](https://github.com/onflow/flow-go/issues/6593) - In review, [Issue #6583](https://github.com/onflow/flow-go/issues/6583) - In progress, [Issue #6584](https://github.com/onflow/flow-go/issues/6584) - In progress)
-      - Improvements to tx result streaming endpoint ([Issue #6573](https://github.com/onflow/flow-go/issues/6573), [Issue #6574](https://github.com/onflow/flow-go/issues/6574), [Issue #6575](https://github.com/onflow/flow-go/issues/6575), [Issue #6604](https://github.com/onflow/flow-go/issues/6604))
+      - Implement router ([Issue #6593](https://github.com/onflow/flow-go/issues/6593) - In review, [Issue #6583](https://github.com/onflow/flow-go/issues/6583) - In review, [Issue #6584](https://github.com/onflow/flow-go/issues/6584) - In review)
+      - Improvements to tx result streaming endpoint ([Issue #6573](https://github.com/onflow/flow-go/issues/6573), [Issue #6574](https://github.com/onflow/flow-go/issues/6574), [Issue #6604](https://github.com/onflow/flow-go/issues/6604))
     - Registers db pruning ([Issue #6068](https://github.com/onflow/flow-go/issues/6068) - In review)
-    - Backfill tool for tx result errors ([Issue #6413](https://github.com/onflow/flow-go/issues/6413) - In review)
     - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357) - In progress)
-    - Access API / Go SDK alignment ([Epic #735](https://github.com/onflow/flow-go-sdk/issues/735))
-      - Unify streaming endpoints code duplication ([Issue #763](https://github.com/onflow/flow-go-sdk/issues/763) - In review)
-      - Fixes/Improvements [1](https://github.com/onflow/flow-go-sdk/issues/783), [2](https://github.com/onflow/flow-go-sdk/issues/784), [3](https://github.com/onflow/flow-go-sdk/issues/767)
-    - Tech debt [1](https://github.com/onflow/flow-go/issues/6564), [2](https://github.com/onflow/flow-go/issues/6566), [3](https://github.com/onflow/flow-go/issues/6497)
 
 * <ins>Cryptography</ins>
   - PoP:
