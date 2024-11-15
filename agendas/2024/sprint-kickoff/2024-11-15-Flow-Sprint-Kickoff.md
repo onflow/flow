@@ -141,10 +141,10 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>EFM Recovery</ins>
-  - Address comments and merge [EFM Integration Test Part 2](https://github.com/onflow/flow-go/pull/6424)
-  - Look into potential deployment of EFM recovery using protocol upgrade.
-  - Tie loose ends in EFM
-
+  - Continue working on different integration tests and recovery scenarios for EFM
+    - [EFM Integration Test Part 2 ](https://github.com/onflow/flow-go/pull/6424)
+    - [Node ejected before epoch recovery](https://github.com/onflow/flow-go/pull/6632)
+    - [Create integration test where DKG and consensus committees form a symmetric difference](https://github.com/onflow/flow-go/issues/6645)
     
 * <ins>Data Availability</ins>
   - KROK Team
@@ -171,7 +171,8 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>EFM Recovery</ins>
-
+  - Wrap up outstanding PRs currently under review
+  - [Implement last planned integration test](https://github.com/onflow/flow-go/issues/6645)
     
 * <ins>Data Availability</ins>
 
