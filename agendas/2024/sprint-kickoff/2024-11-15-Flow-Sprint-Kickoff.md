@@ -199,7 +199,7 @@ Cycle Objective(s):
 
 **This sprint**
 * Finalize multi-sign approach for Hyperlane and launch cbBTC bridge
-* Validate KittyPunch are unblocked once EVM GW local state index is released
+* Validate KittyPunch update unblocked once EVM GW local state index is released
 * Support Thirdweb w RPC Edge service standup using dedicated QuickNode ANs
 * Start onboarding Paradex and Layerzero 
   
