@@ -9,6 +9,7 @@
  * Updated starters
  * Created EVM Interoperability Challenges Draft Document
  * The new Getting Started documentation sections have been rewritten to connect all the tools, providing developers with a comprehensive understanding of how they work together. (PR In Review)
+ * Time to Seal metric, now on our dashboards
 
 
 --- 
