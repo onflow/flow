@@ -194,13 +194,14 @@ Cycle Objective(s):
 - Bring liquidity and and kick start ecosystem effects
   
 **Done last sprint**
-
-* 
+* Update Hyperlane valdiators to latest version and confirmed path to launch 
+* Wrapping up last remaining JVM SDK PRs to reach Go SDK parity
 
 **This sprint**
-
-*
-
+* Finalize multi-sign approach for Hyperlane and launch cbBTC bridge
+* Merge final two JVM SDK PRs to reach Go SDK parity and cur a release to Maven artifacts
+* Start onboarding Paradex and Layerzero 
+  
 **On Hold**
 - N/A
 
