@@ -141,7 +141,6 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>EFM Recovery</ins>
-  - EFM Recovery Benchnet testing
   - Address comments and merge [EFM Integration Test Part 2](https://github.com/onflow/flow-go/pull/6424)
   - Look into potential deployment of EFM recovery using protocol upgrade.
   - Tie loose ends in EFM
@@ -194,15 +193,15 @@ Cycle Objective(s):
 - Bring liquidity and and kick start ecosystem effects
   
 **Done last sprint**
-* Update Hyperlane valdiators to latest version and confirmed path to launch 
+* Update Hyperlane validators to latest version and confirmed path to launch 
 * Wrapping up last remaining JVM SDK PRs to reach Go SDK parity
 * Diagnosed rate limit issue that was blocking Snag when using Flow EVM 
 
 **This sprint**
 * Finalize multi-sign approach for Hyperlane and launch cbBTC bridge
-* Merge final two JVM SDK PRs to reach Go SDK parity and cur a release to Maven artifacts
-* Validate KittyPunch are unblocked once EMV GW local state index is released
-* Support Thirdweb in w RPC Edge service using their own dedicated ANs (QuickNode)
+* Merge final two JVM SDK PRs to reach Go SDK parity and publish release
+* Validate KittyPunch are unblocked once EVM GW local state index is released
+* Support Thirdweb w RPC Edge service standup using dedicated QuickNode ANs
 * Start onboarding Paradex and Layerzero 
   
 **On Hold**
