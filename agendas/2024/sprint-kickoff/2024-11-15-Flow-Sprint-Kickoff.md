@@ -2,7 +2,14 @@
 
  ### Team Wins 🎉
  
- * 
+ * Slack Bot
+ * Rewards auto combining boxes and keys
+ * Rewards store is live
+ * Deprecated nft-catalog, flow-js-testing
+ * Updated starters
+ * Created EVM Interoperability Challenges Draft Document
+ * The new Getting Started documentation sections have been rewritten to connect all the tools, providing developers with a comprehensive understanding of how they work together. (PR In Review)
+
 
 --- 
 
@@ -222,11 +229,41 @@ Cycle Objective(s):
 **Done last sprint**
 
 * Wrapping up last remaining JVM SDK PRs to reach Go SDK parity
+* Rewards
+  - [Setup claim section for auto-merging of points](https://github.com/onflow/crescendo-rewards/issues/502 )
+  - [Fix error handling in authentication challenge](https://github.com/onflow/crescendo-rewards-be/pull/236)
+  - Tease out tentative ask from Snag about point history log
+* CLI
+  - [Simplify and fix the Counter transaction generated with init](https://github.com/onflow/flow-cli/pull/1818 , https://github.com/onflow/flow-cli/issues/1817)
+  - [Improve init default project README with how to run the code](https://github.com/onflow/flow-cli/issues/1830 )
+  - [Upgrade FCL Next Scaffold](https://github.com/onflow/flow-cli/issues/1829 )
+* Docs
+  - [Rewrite Getting Started guides feature all tools with linked flow](https://github.com/onflow/docs/issues/970)
+  - [Published a guide on using Testnet Faucet for Cadence & EVM addresses](https://github.com/onflow/docs/issues/978)
+  - [Update FCL Discovery Service List](https://github.com/onflow/docs/issues/985)
+* Contracts
+  - [Create Flow solidity utilities repository](https://github.com/onflow/flow-sol-utils/issues/1)
+  - [Package solidity utilities for use in hardhat](https://github.com/onflow/flow-sol-utils/issues/2)
+  - [Update random coin toss example to use new sol utils repo](https://github.com/onflow/random-coin-toss/issues/26)
+  - [Code complete on Cadence X EVM batched execution example](https://github.com/onflow/batched-evm-exec-example/issues/1)
+* FCL
+  - [Default to Local Storage](https://github.com/onflow/fcl-js/issues/2002)
+  - [[BUG] fcl.mutate does not use the correct currentUser configuration](https://github.com/onflow/fcl-js/issues/2005)
 
 
 **This sprint**
 
 * Merge final two JVM SDK PRs to reach Go SDK parity and publish release
+* Docs
+  - Complete Cadence x EVM batched transactions walkthrough & blog post
+  - Continue on OKR: https://github.com/onflow/dx-internal/issues/33 
+* Smart Contracts
+  - Enhance HybridCustody transactions to better support NFT transfers from child accounts
+  - Begin work on VM bridge refinements
+* Miscellaneous Tools/Apps
+  - [Ledger support Register Node with Proof of Possession](https://github.com/onflow/flow-port/issues/364)
+  - [Lost and Found integration with Flow Port](https://github.com/onflow/flow-port/issues/366)
+
 
 **On Hold**
 
