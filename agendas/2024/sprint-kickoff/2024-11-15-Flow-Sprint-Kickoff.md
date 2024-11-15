@@ -196,7 +196,7 @@ Cycle Objective(s):
 **Done last sprint**
 * Update Hyperlane valdiators to latest version and confirmed path to launch 
 * Wrapping up last remaining JVM SDK PRs to reach Go SDK parity
-* Diagnosed rate limit issue that was affecting ThirdWeb issue that had been blocking Snag
+* Diagnosed rate limit issue that was blocking Snag when using Flow EVM 
 
 **This sprint**
 * Finalize multi-sign approach for Hyperlane and launch cbBTC bridge
