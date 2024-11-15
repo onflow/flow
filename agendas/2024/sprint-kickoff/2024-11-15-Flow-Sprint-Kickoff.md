@@ -34,7 +34,7 @@
 | Total       | **18** |    **49** (+13)  |       **12**       |       **16**  (+1)        |        **95**  (+14)       |
 
 - 1 new FLIP was added last month and 13 untracked FLIPS are now being tracked.
-~~- Some FLIPs are still not reflected in the project tracker.~~
+- ~~Some FLIPs are still not reflected in the project tracker.~~
 - **Reminder**: FLIP process starts with an issue creation.
 (https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
   
