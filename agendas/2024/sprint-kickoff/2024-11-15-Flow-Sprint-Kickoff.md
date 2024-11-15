@@ -14,10 +14,12 @@
 | Block Finalization      | 99.9%   |    100%       |       0%         |
 | Transaction Execution   | 99.9%   |    100%       |       0%         |
 | Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    99.97%     |       32.2%      |
+| Access API Liveness     | 99.9%   |    ?          |       ?          |
+
+YTD SLA: 99.54%
 
 #### Incidents
-* 
+* None
 
 ---
 
