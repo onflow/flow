@@ -277,14 +277,31 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-- N/A
+* News
+  - [News notifications extension frontend](https://github.com/Outblock/FRW-Extension/issues/141)
+  - [Add News by remote config](https://github.com/Outblock/FRW-Extension/issues/83)
+  - [Implement Conditional Display Logic for News Notifications](https://github.com/Outblock/FRW-Extension/issues/155)
+* Storage
+  - [Storage Alert (Storage Card)](https://github.com/Outblock/FRW-Extension/issues/145)
+  - [Low on storage warning](https://github.com/Outblock/FRW-Extension/issues/170)
+  - [Handle failed transactions due to storage](https://github.com/Outblock/FRW-Extension/issues/169)
+* General
+  - [Improve code formatting and linting](https://github.com/Outblock/FRW-Extension/issues/144)
+  - [Handle generic transaction failures in listenTransaction](https://github.com/Outblock/FRW-Extension/issues/168)
+  - [[BUG] Fix in app browser security issue](https://github.com/Outblock/FRW-iOS/issues/485)
+  - [[BUG] The button doesn't respond after switching account/network](https://github.com/Outblock/FRW-iOS/issues/343)
+
 
 **This sprint**
 
-- Begin creating developer documentation highlighting FlowEVM
-- Updating cadence transactions / scripts for Cadence 1.0
-- Begin executing on FlowEVM updates to Flow Wallet
-- Scheduled calls with MetaMask and Coinbase Wallet teams to intro FlowEVM and gather their requirements.
+- Continue squishing P0 + P1 bugs
+- Continue [Account storage improvements](https://github.com/Outblock/FRW/issues/61)
+- Continue [News panel improvements](https://github.com/Outblock/FRW-Extension/issues/163)
+- General
+  - [Add mixpanel event tracking](https://github.com/Outblock/FRW-Extension/issues/94)
+  - [Upgrade Node.js version from 16 to 20](https://github.com/Outblock/FRW-Extension/issues/111)
+  - [Add Crowdin integration](https://github.com/Outblock/FRW-Extension/issues/60)
+  - 
 
 **On Hold**
 
@@ -292,7 +309,7 @@ Cycle Objective(s):
 
 **Active Epics**
 
-- TBD
+- [Account storage improvements](https://github.com/Outblock/FRW/issues/61)
 
 ---
 
