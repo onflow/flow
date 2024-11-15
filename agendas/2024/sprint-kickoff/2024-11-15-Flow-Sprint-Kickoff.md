@@ -195,12 +195,10 @@ Cycle Objective(s):
   
 **Done last sprint**
 * Update Hyperlane validators to latest version and confirmed path to launch 
-* Wrapping up last remaining JVM SDK PRs to reach Go SDK parity
 * Diagnosed rate limit issue that was blocking Snag when using Flow EVM 
 
 **This sprint**
 * Finalize multi-sign approach for Hyperlane and launch cbBTC bridge
-* Merge final two JVM SDK PRs to reach Go SDK parity and publish release
 * Validate KittyPunch are unblocked once EVM GW local state index is released
 * Support Thirdweb w RPC Edge service standup using dedicated QuickNode ANs
 * Start onboarding Paradex and Layerzero 
@@ -223,10 +221,12 @@ Cycle Objective(s):
    
 **Done last sprint**
 
-*
+* Wrapping up last remaining JVM SDK PRs to reach Go SDK parity
+
 
 **This sprint**
 
+* Merge final two JVM SDK PRs to reach Go SDK parity and publish release
 
 **On Hold**
 
