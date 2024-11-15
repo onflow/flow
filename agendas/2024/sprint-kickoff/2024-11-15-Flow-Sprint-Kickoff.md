@@ -128,11 +128,15 @@ YTD SLA: 99.54%
 ### **Core Protocol** \[Jerome]
 Cycle Objective(s): 
 
-* Translate crypto performance improvements to consensus block rate increase
-* Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node
-* Reduce CPU usage on Execution node by 30%
-* Continue BFT mitigations to enable 10 permissionless ANs
-* Continue design of Dynamic Protocol 
+* Restore Flow protocol eng team to required critical mass [IN PROGRESS]
+* Faster transaction results to improve user experience [IN PROGRESS]
+* Address vectors which risk network downtime
+  1. Operationalize EFM Recovery [IN PROGRESS]
+  2. Protocol level HCU [NOT STARTED]
+* Add passkey support: Protocol design and scoping [NOT STARTED]
+* Furthering permissionless participation
+  1. Proof of Possession [IN PROGRESS]
+  2. KR2: SPoCK Research [PAUSED]
 
 **Done last sprint**
 
