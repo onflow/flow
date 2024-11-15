@@ -136,10 +136,46 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* 
+* <ins>EFM Recovery</ins>
+  - EFM Recovery Benchnet testing
+  - Address comments and merge [EFM Integration Test Part 2](https://github.com/onflow/flow-go/pull/6424)
+  - Look into potential deployment of EFM recovery using protocol upgrade.
+  - Tie loose ends in EFM
+
+    
+* <ins>Data Availability</ins>
+  - KROK Team
+    - Websockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
+      - Implement router ([Issue #6593](https://github.com/onflow/flow-go/issues/6593) - In review, [Issue #6583](https://github.com/onflow/flow-go/issues/6583) - In review, [Issue #6584](https://github.com/onflow/flow-go/issues/6584) - In review)
+      - Improvements to tx result streaming endpoint ([Issue #6573](https://github.com/onflow/flow-go/issues/6573), [Issue #6574](https://github.com/onflow/flow-go/issues/6574), [Issue #6604](https://github.com/onflow/flow-go/issues/6604))
+    - Registers db pruning ([Issue #6068](https://github.com/onflow/flow-go/issues/6068) - In review)
+    - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357) - In progress)
+
+* <ins>Cryptography</ins>
+  - PoP:
+    - Finished Ledger app code updates + Ledger JS client
+    - Fixed tests for Ledger app on simulator + js client tests
+      - However, simulator STAX device tests are broken - likely because of a recent Ledger test framework breaking change (checking with Vacuumlabs)
+    - Started tests on a real device (nanoS) + Tom has been working on a flow-port test version (debugging still ongoing)
+  - Brainstorm at erasure codes to optimize the networking layer messaging
+  - Eth global
+    - Hackathon prep : play with wallets - EVM - CLI
+    - Attending main and side events
+      
+* <ins>Misc other</ins>
+  - Ongoing Pebble migration PR reviews
 
 **This sprint**
 
+* <ins>EFM Recovery</ins>
+
+    
+* <ins>Data Availability</ins>
+
+* <ins>Cryptography</ins>
+  - PoP:
+    - Continue investigating the testing breaking change STAX issue with VacuumLabs
+    - Continue working on a real device and flow-port test (with Tom's support)
 * 
 
 **On Hold**
@@ -159,8 +195,6 @@ Cycle Objective(s):
 ### **DeFi** \[Jerome]
 
 Cycle Objective(s): 
-- Resolving Circle's existing engineering improvements for USDC on Flow
-- DEX Prep - IncrementFi
 - Bridge Prep - Axelar
 
 **Done last sprint**
