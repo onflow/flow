@@ -44,45 +44,82 @@
 
 ---
 
-
 # Working Group Updates
 
 ### **Cadence and Virtual Machine** \[Jan]
-Cycle Objective(s):
 
-1) Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
-2) Calibrate Transaction fees so that they accurately reflect resource usage during execution and deploy as part of Crescendo to avoid future disruption.
-3) Analyze execution runtime trends and risks to plan next set of scalability OKRs.
+**Cycle Objectives**
 
-* Stretch-goals:
-4) Expand testing capability of storehouse so that we can validate execution correctness and benchmark performance on Mainnet data
-5) Design a new Trie to improve performance of update operation, reduce memory usage and size of proofs and to support more flexible proof queries.
-6) Enable Concurrent Execution on one EN on Mainnet to validate correctness of the implementation (Detect execution forks)
-7) Improve execution performance to mitigate the impact of adding metadata to token standards
+[Cadence Language](https://github.com/onflow/cadence/issues/3623)
+
+[Cadence VM (execution environment)](https://github.com/onflow/flow-go/issues/6577)
 
 **Done last sprint**
 
-* 
+**Cadence Language**
+- Feature:
+    - [Add string formatting function](https://github.com/onflow/cadence/issues/3579)
+- Tech debt removal:
+    - [Remove unused Identifier() function from structs implementing atree.TypeInfo](https://github.com/onflow/cadence/issues/3674)
+- Collaboration on Cadence learning app (GoldStar):
+    - [Add challenge paths](https://github.com/onflow/gold-star/pull/6)
+    - [Add challenge which must be manually evaluated](https://github.com/onflow/gold-star/pull/5)
+    - [Refactor profile submissions and socials, add function and script to allow updating socials](https://github.com/onflow/gold-star/pull/4)
+- Tools improvements:
+    - Language server - [Update access modifiers to Cadence 1.0](https://github.com/onflow/cadence-tools/pull/445)
+
+**Cadence Execution**
+- Storage optimization: [Combine non-atree domain payloads into atree payloads](https://github.com/onflow/cadence/issues/3584)
+    - [Replace domain string with enum for AccountStorageMap key](https://github.com/onflow/cadence/pull/3677)
+    - [Refactor storage domains to prevent import cycles and simplify maintenance](https://github.com/onflow/cadence/pull/3673)
+    - [Combine domain payloads and provide on-the-fly migration](https://github.com/onflow/cadence/pull/3664)
+- Compiler POC - Move VM benchmarking:
+    - [Update to aptos-core](https://github.com/RZhang05/cadence_movevm/pull/1)
+- Minor improvement - [Print log when checks the executed block matches the sealed result](https://github.com/onflow/flow-go/pull/6559)
+
+**EVM Core**
+- Bugfix:
+    - [Move tracing reset to `OnTxEnd` hook](https://github.com/onflow/flow-go/pull/6627)
+
+**EVM Gateway**
+- Dry-run feature:
+    - [Ingestion Performance improvements](https://github.com/onflow/flow-evm-gateway/pull/653)
+    - [Storage fixes](https://github.com/onflow/flow-evm-gateway/pull/652)
+    - [Use batch to init blocks](https://github.com/onflow/flow-evm-gateway/pull/650)
+    - [Changed evm height in requester to uint](https://github.com/onflow/flow-evm-gateway/pull/649)
+    - [Special evm height handling](https://github.com/onflow/flow-evm-gateway/pull/645)
+    - [Add register storage](https://github.com/onflow/flow-evm-gateway/pull/640)
+    - [Integrate & incorporate flow-go's `onchain` package](https://github.com/onflow/flow-evm-gateway/pull/635)
+    - [Simplify usage of FixedHash field on Block type](https://github.com/onflow/flow-evm-gateway/pull/520)
+- ERC-4337 integration:
+    - [Add support for ethapi.StateOverride in relevant JSON-RPC endpoints](https://github.com/onflow/flow-evm-gateway/issues/655)
+- Bugfix:
+    - [Hardhat ignition deployments fail on testnet & mainnet](https://github.com/onflow/flow-evm-gateway/issues/647)
+- Testing:
+    - [Split out cadence arch and traces tests](https://github.com/onflow/flow-evm-gateway/pull/646)
 
 **This sprint**
 
-* 
+- Complete [EVM Gateway Hardening](https://github.com/onflow/flow-go/issues/6539)
+
+- Cadence Language
+  - Security report
+  - Complete remaining Tech-debt [Tech Debt](https://github.com/onflow/cadence/issues/3595)
+  - Continue work on Content for [commuity outreach](https://github.com/onflow/cadence/issues/3596)
+  - Continue work on the [Cadence compiler POC](https://github.com/onflow/cadence/issues/3612)
+  - Continue work on [Cadence language Specification](https://github.com/onflow/cadence/issues/3599)
+
+- Cadence Execution
+  - Complete [optimization for Cadence domain storage](https://github.com/onflow/cadence/issues/3584)
+  - Start new Trie research
+  - Evaluate / Start [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
+  - Badger -> Pebble migration: continue work on [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516)
 
 **On Hold**
 
-Objective 2: Calibrate Transaction fees so that they accurately reflect resource usage during execution and deploy as part of Crescendo to avoid future disruption
-- KR1: Update weights for the execution operations on TN and MN
-  - [Execution effort recalibration - data collection](https://github.com/onflow/flow-go/issues/5026)
-
-
-**Active Epics**
-
-Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
-- KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
-- KR2: Launch Cadence 1.0 on Crescendo Testnet
-- KR3: Launch EVM on Crescendo Testnet
-Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
-- KR1: Measure execution state growth trends, identify future bottlenecks and prioritize by urgency
+- [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
+- [Random beacon history taking more space on chain than expected](https://github.com/onflow/flow-go/issues/5550)
+- [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
 
 ---
 
