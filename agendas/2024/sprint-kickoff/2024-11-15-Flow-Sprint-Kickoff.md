@@ -152,6 +152,9 @@ Cycle Objective(s):
     - [EFM Integration Test Part 2 ](https://github.com/onflow/flow-go/pull/6424)
     - [Node ejected before epoch recovery](https://github.com/onflow/flow-go/pull/6632)
     - [Create integration test where DKG and consensus committees form a symmetric difference](https://github.com/onflow/flow-go/issues/6645)
+  - [Benchnet testing EFM recovery](https://github.com/onflow/flow-go/issues/5945)
+  - [Investigating service event verification bug revealed by Benchnet testing](https://github.com/onflow/flow-go/issues/6622)
+    - Finding a resolution which is low-enough effort and also compatible with HCU upgrade
     
 * <ins>Data Availability</ins>
   - KROK Team
@@ -180,6 +183,8 @@ Cycle Objective(s):
 * <ins>EFM Recovery</ins>
   - Wrap up outstanding PRs currently under review
   - [Implement last planned integration test](https://github.com/onflow/flow-go/issues/6645)
+  - Resolving the VN events chunk verification [bug](https://github.com/onflow/flow-go/issues/6622). Still some uncertainly on which approach we will take.
+  - Resume Benchnet testing
     
 * <ins>Data Availability</ins>
 
@@ -202,7 +207,7 @@ Cycle Objective(s):
   
 **Done last sprint**
 * Update Hyperlane validators to latest version and confirmed path to launch 
-* Diagnosed rate limit issue that was blocking Snag when using Flow EVM 
+* Diagnosed rate limit issue that was blocking Snag when using Flow EVM via Thirdweb
 
 **This sprint**
 * Finalize multi-sign approach for Hyperlane and launch cbBTC bridge
