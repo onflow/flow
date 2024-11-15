@@ -26,15 +26,15 @@
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
 | Drafted     | 8  |    6     |       0 (-1)       |       8 (+1)       |        **22**          |
-| Proposed    | 1  |    2 (-2)    |       3       |       0          |        **6**  (-2)        |
-| Accepted    | 2  |    1     |       2       |       2          |        **7**          |
-| Rejected    | 0  |    0     |       1       |       0          |        **1**          |
-| Implemented | 3  |    28 (+3)    |       1       |       0          |        **32**  (+3)      |
+| Proposed    | 1  |    2 (-2)     |       3       |       0          |        **6**  (-2)        |
+| Accepted    | 2  |    2 (+1)    |       2       |       2          |        **8** (+1)         |
+| Rejected    | 0  |    1 (+1)    |       1       |       0          |        **2** (+1)        |
+| Implemented | 3  |    38 (+13)    |       1       |       0          |        **42**  (+13)      |
 | Released    | 4  |    0     |       5 (+1)       |       6          |        **15** (+1)         |
-| Total       | **18** |    **37** (+1)  |       **12**       |       **16**  (+1)        |        **83**  (+2)       |
+| Total       | **18** |    **49** (+13)  |       **12**       |       **16**  (+1)        |        **95**  (+14)       |
 
-- Overall FLIPs went up by 2 as compared to last month
-- Some FLIPs are still not reflected in the project tracker.
+- 1 new FLIP was added last month and 13 untracked FLIPS are now being tracked.
+~~- Some FLIPs are still not reflected in the project tracker.~~
 - **Reminder**: FLIP process starts with an issue creation.
 (https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
   
