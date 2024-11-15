@@ -207,8 +207,7 @@ Cycle Objective(s):
 * <ins>Cryptography</ins>
   - PoP:
     - Continue investigating the testing breaking change STAX issue with VacuumLabs
-    - Continue working on a real device and flow-port test (with Tom's support)
-* 
+    - Continue working on a real device and flow-port test (with Tom's support) 
 
 **On Hold**
 
