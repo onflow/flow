@@ -183,24 +183,16 @@ Cycle Objective(s):
 * 
 
 **On Hold**
-* Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
 
-**Active Epics**
-
-- Reinforcing Flow’s commitment to full protocol autonomy and scalability
-- Improve network performance
-- Improve network availability 
-- Simplify community contributions to core protocol and maintainability
-- Improve network reliability and data availability for dApp developers
-- Data-driven Prioritization and Scaling Engineering
 
 ---
 
 ### **DeFi** \[Jerome]
 
 Cycle Objective(s): 
-- Bridge Prep - Axelar
-
+- Close gaps in Defi/Liquidity infrastructure post-Cadence 1.0
+- Bring liquidity and and kick start ecosystem effects
+  
 **Done last sprint**
 
 * 
@@ -220,63 +212,27 @@ Cycle Objective(s):
 
 ---
 
-### **User Experience** \[Greg]
+### **User Experience** \[Kan]
 
 Cycle Objective(s): 
-- Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
-- Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
-- Use the Crescendo Release grow Flow's developer base and network activity
-
+ - Improve Quality of Life, Level Up Dev Documentation and Learning Path, Supercharge EVMxCadence, Inspire and Excite Wave of New Flow Devs
+   
 **Done last sprint**
 
 *
 
 **This sprint**
 
-**Sprint goal focusing on adding docs and tool support for Crescendo network and Cadence 1.0**
-
-- [Add Crescendo network support to FCL Discovery](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=50332654)
-- [Add Crescendo Network to CLI (config, cmds, docs, etc)](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=50297186)
-- [Add/Publish Initial EVM Docs](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51952883)
-- [Docs Revamp v3](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=49327073)
-- [Add C1.0 Rules to Cadence Linter](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51952640)
-- [Update Playground to support Cadence 1.0](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=49844013)
-- [Stable Cadence Installation Workflow](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51951905)
-
 
 **On Hold**
 
-- [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
-
+- bridge.flow.com
+  
 ---
 
 ### **Wallet** \[Jeff]
 
 Cycle Objective(s): 
-
-- Ensure there exists a wallet ecosystem supports FlowEVM
-  - Release version 2.2 of Flow Wallet which supports FlowEVM
-    - Support Authn / Authz / User Sign with Web3.js and WalletConnect
-    - Support FT and NFT management cross VMs
-    - FlowEVM onboarding and COA creation
-  - Ensure commitments from key EVM wallet providers to support FlowEVM
-    - Secure FlowEVM as an option in the network selector list for MetaMask.
-    - Reach out to Coinbase wallet for a commitment to support FlowEVM
-  - Ensure commitments from key EVM wallet providers to support FlowEVM
-    - Reach out to Privy for a commitment to support FlowEVM
-    - Reach out to Bastion for a commitment to support FlowEVM
-    - Ensure awareness for existing Cadence aware wallet (aside from Flow Wallet) to support FlowEVM
-  - Provide a design document outlining the steps existing Cadence aware wallets can take to support FlowEVM.
-    - Reach out to Blocto for a commitment to support FlowEVM
-    - Reach out to Shadow wallet for a commitment to support FlowEVM
-    - Reach out to Magic for a commitment to support FlowEVM
-
-- Promote safe, human readable transaction authorization on Flow
-  - Secure a partnership with Blockaid to integrate their transaction simulation and security platform with FlowEVM.
-  - Ensure the existing MetaMask Blockaid integration is compatible with FlowEVM.
-
-- Modernize and improve FCL Discovery
-  - Create a PRD and associated community bounty/grant for UI/UX improvements and analytics additions to FCL Discovery.
 
 **Done last sprint**
 
