@@ -160,6 +160,7 @@ Cycle Objective(s):
 * Hyperlane cbBTC bridge tested and live for mainnet but not yet announced. Can do so after domain name for bridge URL is live
 
 **This sprint**
+* Create cbBTC bridge DNS and announce 
 * Validate KittyPunch update unblocked once EVM GW local state index is released
 * Start onboarding Paradex and Layerzero when they are ready
   
