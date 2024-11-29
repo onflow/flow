@@ -224,3 +224,26 @@ Cycle Objective(s):
 * Identify & document key SRE processes for the protocol team
 
 ---
+
+### **Governance - Vishal**
+
+Cycle Objective(s):
+1. Ensure the multisign process for Flow is efficient with effective community participation
+2. Maintain long-term decentralization of Flow consensus nodes by ensuring no operator controls 1/3rd or more of the network's consensus nodes
+3. Continue building a well-structured Flow Tokenomics framework to enhance community understanding, improve perception, and articulate a clear long-term vision
+4. Build and ship a new dashboard to provide node operators with real-time access to staking, epoch-related and other relevant data.
+
+**Done last sprint**
+* Reached out to all inactive multi-signers
+* Implemented FLIPS to remove two signers who no longer wished to continue as signers.
+* Discussed potential node operator lease to Dorahacks and Alchemy.
+* Synced with T-systems on various topics - node operations, self-custody instead of using a custodian etc.
+* Requested FindLabs for additional REST API to enable grafana alerting on node counts.
+* Time to finality discussion with Chainspect.app.
+
+**This sprint**
+* Lease account setup for Coinage/DAIC (new node operator)
+* Send out the lease contract for Dorahacks.
+* Setup alerting on node counts if FindLabs API is ready
+
+---
