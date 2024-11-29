@@ -12,12 +12,15 @@
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%   |    100%       |       0%         |
 | Block Finalization      | 99.9%   |    100%       |       0%         |
-| Transaction Execution   | 99.9%   |    100%       |       0%         |
+| Transaction Execution   | 99.9%   |    99.975%    |       0%         |
 | Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    ?          |       ?          |
+| Access API Liveness     | 99.9%   |    99.96%     |       0%         |
 
-YTD SLA: 99.54%
+YTD SLA: 99.53%
 
+#### HCU
+1. Nov 21st to roll out Cadence security fix and EVM core changes.
+   
 #### Incidents
 * None
 
