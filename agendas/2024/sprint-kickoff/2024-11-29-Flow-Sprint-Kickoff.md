@@ -30,18 +30,15 @@ YTD SLA: 99.53%
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 7 (-1) |    6     |       0       |       8        |        **21**          |
-| Proposed    | 1  |    2     |       3       |       0          |        **6**  (-2)        |
-| Accepted    | 2  |    1 (-1)    |       2       |       2          |        **8** (+1)         |
-| Rejected    | 0  |    1 (+1)    |       1       |       0          |        **2** (+1)        |
-| Implemented | 3  |    5 (-33)    |       1       |       0          |        **42**  (+13)      |
-| Released    | 4  |    34     |       7 (+2)       |       6          |        **15** (+1)         |
-| Total       | **17** |    **49**   |       **14** (+2)      |       **16**         |        **96**  (+2)       |
+| Drafted     | 7 (-1) |    6     |       0       |       8        |        **21** (-1)        |
+| Proposed    | 1  |    2     |       3       |       0          |        **6**          |
+| Accepted    | 2  |    1 (-1)    |       2       |       2          |        **7** (-1)         |
+| Rejected    | 0  |    1     |       1       |       0          |        **2**         |
+| Implemented | 3  |    5 (-33)    |       1       |       0          |        **9**  (-33)      |
+| Released    | 4  |    34 (+34)    |       7 (+2)       |       6          |        **51** (+36)         |
+| Total       | **17** (-1)|    **49**   |       **14** (+2)      |       **16**         |        **96**  (+1)       |
 
-- 1 new FLIP was added last month and 13 untracked FLIPS are now being tracked.
-- ~~Some FLIPs are still not reflected in the project tracker.~~
-- **Reminder**: FLIP process starts with an issue creation.
-(https://github.com/onflow/flips?tab=readme-ov-file#submitting-the-flip)
+- 2 new FLIPs were added in the last two weeks (one test issue was removed from tracking)
   
 ### Key Release Dates & Breaking Changes
 
