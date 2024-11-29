@@ -99,6 +99,16 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+* <ins>Data Availability</ins>
+  - KROK Team
+      - Websockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
+          - Implement controller and data providers ([Issue #6593](https://github.com/onflow/flow-go/issues/6593), [Issue #6583](https://github.com/onflow/flow-go/issues/6583), [Issue #6584](https://github.com/onflow/flow-go/issues/6584), [Issue #6617](https://github.com/onflow/flow-go/issues/6617), [Issue #6588](https://github.com/onflow/flow-go/issues/6588), [Issue #6638](https://github.com/onflow/flow-go/issues/6638), [Issue #6585](https://github.com/onflow/flow-go/issues/6585), [Issue #6635](https://github.com/onflow/flow-go/issues/6635), [Issue #6639](https://github.com/onflow/flow-go/issues/6639))
+          - Improvements to tx result streaming endpoint ([Issue #6604](https://github.com/onflow/flow-go/issues/6604), [Issue #6574](https://github.com/onflow/flow-go/issues/6574), [Issue #6573](https://github.com/onflow/flow-go/issues/6573))
+     - Registers db pruning ([Issue #6068](https://github.com/onflow/flow-go/issues/6068))
+     - Test pebble execution data db on mainnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357))
+     - Log error when unable to connect to bootstrap node([Issue #6576](https://github.com/onflow/flow-go/issues/6576))
+     - Malleability: Tasks descriptions, scope discussions
+
 **This sprint**
 
 * <ins>EFM Recovery</ins>
@@ -109,13 +119,9 @@ Cycle Objective(s):
     
 * <ins>Data Availability</ins>
   - KROK Team
-      - Websockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
-          - Implement controller and data providers ([Issue #6593](https://github.com/onflow/flow-go/issues/6593), [Issue #6583](https://github.com/onflow/flow-go/issues/6583), [Issue #6584](https://github.com/onflow/flow-go/issues/6584), [Issue #6617](https://github.com/onflow/flow-go/issues/6617))
-          - Improvements to tx result streaming endpoint ([Issue #6604](https://github.com/onflow/flow-go/issues/6604), [Issue #6574](https://github.com/onflow/flow-go/issues/6574), [Issue #6573](https://github.com/onflow/flow-go/issues/6573))
-     - Registers db pruning ([Issue #6068](https://github.com/onflow/flow-go/issues/6068))
-     - Test pebble execution data db on testnet ([Issue #6357](https://github.com/onflow/flow-go/issues/6357))
-     - Log error when unable to connect to bootstrap node([Issue #6576](https://github.com/onflow/flow-go/issues/6576))
-     - Malleability: Tasks descriptions, scope discussions
+      - WebSockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
+          - Continue to implement WebSockets controller, data providers and WebSockets controller error handling([Issue #6642](https://github.com/onflow/flow-go/issues/6642), [Issue #6640](https://github.com/onflow/flow-go/issues/6640), [Issue #6587](https://github.com/onflow/flow-go/issues/6587), [Issue #6637](https://github.com/onflow/flow-go/issues/6637), [Issue #6586](https://github.com/onflow/flow-go/issues/6586), [Issue #6641](https://github.com/onflow/flow-go/issues/6641))
+          - Improvements to tx result streaming endpoint ([Issue #6767](https://github.com/onflow/flow-go/issues/6767))
 
 * <ins>Cryptography</ins>
   - PoP:
