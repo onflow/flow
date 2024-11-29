@@ -3,6 +3,8 @@
  ### Team Wins 🎉
  
  * Flow has been added to [chainspect.app](https://chainspect.app/dashboard) (Vishal)
+ * Hyperlane cbBTC bridge tested and live for mainnet but not yet announced. Can do so after domain name for bridge URL is live
+ * 
 
 --- 
 
@@ -92,12 +94,23 @@ Cycle Objective(s):
 * Address vectors which risk network downtime
   1. Operationalize EFM Recovery [IN PROGRESS]
   2. Protocol level HCU [NOT STARTED]
-* Add passkey support: Protocol design and scoping [NOT STARTED]
+* Add passkey support: Protocol design and scoping [IN PROGRESS]
 * Furthering permissionless participation
   1. Proof of Possession [IN PROGRESS]
   2. KR2: SPoCK Research [PAUSED]
 
 **Done last sprint**
+
+* <ins>EFM Recovery</ins>
+  - Addressed comments and finalized [large integration test PR](https://github.com/onflow/flow-go/pull/6424)
+  - [Refactored usage of DKG in bootstrapping](https://github.com/onflow/flow-go/pull/6745)
+  - Started [implementation of a state machine for handling beacon key](https://github.com/onflow/flow-go/issues/6725)
+  - Continued Service Event Verification Bug
+    - Exploring strategies for modifying data models in backward-compatible way, for upcoming and future Protocol HCUs
+    - Integration test for the upgrade, validating [bug fix](https://github.com/onflow/flow-go/pull/6752)
+    - A working fix is complete - revisions from feedback to simplify backward-compatibility are ongoing
+  - Started [Upgrade Plan for EFM Recovery & Protocol HCU](https://flowfoundation.notion.site/EFM-Recovery-Release-Upgrade-Plan-14d1aee1232480228a87e43933815285?pvs=4)
+    - wip: documenting steps for deploying first Protocol HCU
 
 * <ins>Data Availability</ins>
   - KROK Team
@@ -109,13 +122,19 @@ Cycle Objective(s):
      - Log error when unable to connect to bootstrap node([Issue #6576](https://github.com/onflow/flow-go/issues/6576))
      - Malleability: Tasks descriptions, scope discussions
 
+* <ins>Cryptography</ins>   
+  - Short sprint because of time off
+  - PR reviews (randomness - linear codes)
+  - PoP: got back to debugging flow-port integration
+  - Started looking at docs for Passkeys
+
 **This sprint**
 
 * <ins>EFM Recovery</ins>
-  - Wrap up outstanding PRs currently under review
-  - [Implement last planned integration test](https://github.com/onflow/flow-go/issues/6645)
-  - Resolving the VN events chunk verification [bug](https://github.com/onflow/flow-go/issues/6622). Still some uncertainly on which approach we will take.
-  - Resume Benchnet testing
+  - Continue Service Event Verification Bug
+  - Continue upgrade planning for EFM Recovery & Protocol HCU
+  - Finish [implementation of state machine for handling beacon key](https://github.com/onflow/flow-go/issues/6725)
+  - Address comments and finalize additional [integration tests](https://github.com/onflow/flow-go/pull/6632)
     
 * <ins>Data Availability</ins>
   - KROK Team
@@ -124,12 +143,10 @@ Cycle Objective(s):
           - Improvements to tx result streaming endpoint ([Issue #6767](https://github.com/onflow/flow-go/issues/6767))
 
 * <ins>Cryptography</ins>
-  - PoP:
-    - Continue investigating the testing breaking change STAX issue with VacuumLabs
-    - Continue working on a real device and flow-port test (with Tom's support) 
+  - Passkeys: research and docs: fido2 specs 
+  - PoP: continue fixing tests in the background - follow up with VL
 
 **On Hold**
-
 
 ---
 
@@ -140,12 +157,11 @@ Cycle Objective(s):
 - Bring liquidity and and kick start ecosystem effects
   
 **Done last sprint**
+* Hyperlane cbBTC bridge tested and live for mainnet but not yet announced. Can do so after domain name for bridge URL is live
 
 **This sprint**
-* Finalize multi-sign approach for Hyperlane and launch cbBTC bridge
 * Validate KittyPunch update unblocked once EVM GW local state index is released
-* Support Thirdweb w RPC Edge service standup using dedicated QuickNode ANs
-* Start onboarding Paradex and Layerzero 
+* Start onboarding Paradex and Layerzero when they are ready
   
 **On Hold**
 - N/A
