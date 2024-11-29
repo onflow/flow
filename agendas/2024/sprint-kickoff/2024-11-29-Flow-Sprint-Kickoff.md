@@ -2,7 +2,7 @@
 
  ### Team Wins 🎉
  
- * 
+ * Flow has been added to [chainspect.app](https://chainspect.app/dashboard) (Vishal)
 
 --- 
 
