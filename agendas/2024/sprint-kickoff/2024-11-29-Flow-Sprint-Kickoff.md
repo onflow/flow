@@ -4,7 +4,12 @@
  
  * Flow has been added to [chainspect.app](https://chainspect.app/dashboard) (Vishal)
  * Hyperlane cbBTC bridge tested and live for mainnet but not yet announced. Can do so after domain name for bridge URL is live
- * 
+ * Deployed EVM GW with dry-run enabled on TN - enbales more flexibility in configuring EVM traces and reduces load on ANs.
+ * Deployed last remaining Cadence security report.
+ * Great Cadence team mini-onsite, discussed Cadence compiler workstream and aligned on next steps.
+ * Discussed and agreed on the trigger mechanism for firs ton-the-fly migration (to be used for non-atree domain register inlining).
+ * Completed all Cadence language tech-debt removal tasks planned for this cycle.
+ * Completed first Cadence compiler + VM OKR - benchmarking removed Move VM as potential candidate for runtime for performance reasons.
 
 --- 
 
@@ -60,16 +65,76 @@ YTD SLA: 99.53%
 
 **Done last sprint**
 
+**Cadence Language**
+- [Security fix port](https://github.com/onflow/cadence/pull/3690)
+- Cadence compiler
+    - Custom VM
+        - [Improve and test instruction printer](https://github.com/onflow/cadence/pull/3706)
+        - [Optimize function calls](https://github.com/onflow/cadence/pull/3704)
+    - [Standardize internal error messages](https://github.com/onflow/cadence/issues/3688)
+    - [Add some benchmark programs](https://github.com/onflow/cadence/pull/3702)
+    - [Remove the old compiler and VM PoC](https://github.com/onflow/cadence/pull/3705)
+    - [Composite benchmarking](https://github.com/RZhang05/cadence_movevm/pull/2)
+- Tech-debt removal:
+    - [Source Compatibility Suite: Switch to main Green Goo Dao repo](https://github.com/onflow/cadence/pull/3682)
+- Docs
+    - [Docusaurus Build fails](https://github.com/onflow/cadence-lang.org/issues/176)
+
+**Cadence Execution**
+- Storage optimization: [Combine non-atree domain payloads into atree payloads](https://github.com/onflow/cadence/issues/3584)
+    - [[Account Storage Maps] Add more tests for register reads for GetDomainStorageMap()](https://github.com/onflow/cadence/pull/3694)
+    - [Add Storage.AccountStorageFormat()](https://github.com/onflow/cadence/pull/3701)
+    - [[Account Storage Maps] Bump atree version to v0.8.1](https://github.com/onflow/cadence/pull/3699)
+    - [[Account Storage Maps] Add return value to account migration scheduling functions](https://github.com/onflow/cadence/pull/3695)
+    - [[Account Storage Maps] Reduce storage register reads when using `StorageFormatV2Enabled`](https://github.com/onflow/cadence/pull/3683)
+    - [[Account Storage Maps] Refactor migration](https://github.com/onflow/cadence/pull/3680)
+    - [[Account Storage Maps] Refactor storage into V1 and V2](https://github.com/onflow/cadence/pull/3678)
+- HCU-related chores & updates: [1](https://github.com/onflow/flow-go/pull/6753), [2](https://github.com/onflow/flow-go-internal/pull/7014)
+
+**EVM Core**
+- Bugfix blocking dry-run feature on GW:
+    - [Copy slice when setting block hash list](https://github.com/onflow/flow-go/pull/6734)
+    - v0.37 port: [Copy slice when setting block hash list](https://github.com/onflow/flow-go/pull/6740)
+- Bugfix for incorrectly labeled trace files: [Move trace ID generation outside the concurrent path](https://github.com/onflow/flow-go/pull/6626)
+- Minor improvement
+    - [update height in comment](https://github.com/onflow/flow-go/pull/6743)]
+
+**EVM Gateway**
+- Dry-run feature (local state index)
+    - [Use offchain package to create block context](https://github.com/onflow/flow-evm-gateway/pull/670)
+    - [Add offchain block context creation method](https://github.com/onflow/flow-go/pull/6751)
+    - [Add testcase for offchain evm backward compatibilities](https://github.com/onflow/flow-go/pull/6749)
+    - [Fix testnet EVM replay](https://github.com/onflow/flow-go/pull/6759)
+    - [Fix wrong block hash value for the 1st EVM block with `PrevRandao`](https://github.com/onflow/flow-evm-gateway/pull/666)
+    - [Handle ingestion of missing `EVM.BlockExecuted` event in backfill process](https://github.com/onflow/flow-evm-gateway/pull/664)
+    - [Handle missing EVM block event in backfill](https://github.com/onflow/flow-evm-gateway/pull/661)
+    - [Refactor re-execution](https://github.com/onflow/flow-evm-gateway/pull/658)
+- bugfix
+    - [eth_syncing returns incorrect start height](https://github.com/onflow/flow-evm-gateway/issues/644)
+- GW hardening / Improvements
+    - [Improve gas estimation logic for `eth_estimateGas`](https://github.com/onflow/flow-evm-gateway/pull/671)
+    - [Add debug_flowHeight API endpoint](https://github.com/onflow/flow-evm-gateway/pull/669)
+    - performance - [Remove redundant transactions mutex](https://github.com/onflow/flow-evm-gateway/pull/668)
+    - [Use instance of config instead of reference](https://github.com/onflow/flow-evm-gateway/pull/681)
+    - Rafactoring of startup/shudown handling to switch to node builder:
+        - temporary bugfix: [Fix closing channel twice](https://github.com/onflow/flow-evm-gateway/pull/680)
+        - [Close the AN clients on shutdown](https://github.com/onflow/flow-evm-gateway/pull/678)
+        - [Cleanup run cmd](https://github.com/onflow/flow-evm-gateway/pull/675)
+    - [Seperate creating and closing pebbleDB from storage](https://github.com/onflow/flow-evm-gateway/pull/677)
+    - coinbase for the EVM fees is now configurable
+        - [Remove transaction for COA resource creation](https://github.com/onflow/flow-evm-gateway/pull/674)
+        - [Run without coa account ](https://github.com/onflow/flow-evm-gateway/pull/667)
+    - Performance [Make EVM transaction submission non-blocking](https://github.com/onflow/flow-evm-gateway/issues/654)
+        - [Use a constant backoff retry strategy for retrieving the Flow transaction result](https://github.com/onflow/flow-evm-gateway/pull/672)
 
 **This sprint**
 
 - Complete [EVM Gateway Hardening](https://github.com/onflow/flow-go/issues/6539)
+  - Deploy dry-run on MN, productive more robust state-mismatch detection.
 
 - Cadence Language
-  - Security report
-  - Complete remaining Tech-debt [Tech Debt](https://github.com/onflow/cadence/issues/3595)
   - Continue work on Content for [commuity outreach](https://github.com/onflow/cadence/issues/3596)
-  - Continue work on the [Cadence compiler POC](https://github.com/onflow/cadence/issues/3612)
+  - Continue work on the [Cadence compiler POC - Phase 2](https://github.com/onflow/cadence/issues/3692)
   - Continue work on [Cadence language Specification](https://github.com/onflow/cadence/issues/3599)
 
 - Cadence Execution
@@ -77,6 +142,7 @@ YTD SLA: 99.53%
   - Start new Trie research
   - Evaluate / Start [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
   - Badger -> Pebble migration: continue work on [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516)
+  - Start work on [FVM Programs cache invalidation](https://github.com/onflow/flow-go/issues/6507)
 
 **On Hold**
 
