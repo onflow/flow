@@ -7,7 +7,7 @@
  * Deployed EVM GW with dry-run feature on TN - enables more flexibility in configuring EVM traces and reduces load on ANs.
  * Deployed last remaining Cadence security report.
  * Great Cadence team mini-onsite, discussed Cadence compiler workstream and aligned on next steps.
- * Discussed and agreed on the trigger mechanism for firs ton-the-fly migration (to be used for non-atree domain register inlining).
+ * Discussed and agreed on the trigger mechanism for first on-the-fly migration (to be used for non-atree domain register inlining).
  * Completed all Cadence language tech-debt removal tasks planned for this cycle.
  * Completed first Cadence compiler + VM OKR - benchmarking removed Move VM as potential candidate for runtime for performance reasons.
 
