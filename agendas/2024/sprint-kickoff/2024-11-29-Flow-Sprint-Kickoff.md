@@ -4,7 +4,7 @@
  
  * Flow has been added to [chainspect.app](https://chainspect.app/dashboard) (Vishal)
  * Hyperlane cbBTC bridge tested and live for mainnet but not yet announced
- * Deployed EVM GW with dry-run enabled on TN - enbales more flexibility in configuring EVM traces and reduces load on ANs.
+ * Deployed EVM GW with dry-run feature on TN - enables more flexibility in configuring EVM traces and reduces load on ANs.
  * Deployed last remaining Cadence security report.
  * Great Cadence team mini-onsite, discussed Cadence compiler workstream and aligned on next steps.
  * Discussed and agreed on the trigger mechanism for firs ton-the-fly migration (to be used for non-atree domain register inlining).
