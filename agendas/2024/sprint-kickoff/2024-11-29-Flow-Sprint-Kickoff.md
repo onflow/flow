@@ -300,11 +300,23 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**Automation**
+- [Add support for private registry builds](https://github.com/onflow/flow-go/pull/6742)
+- [Add cron schedule for checkpoint extraction](https://github.com/onflow/ff-sre-automation/pull/4)
+- [Update write access to private registry](https://github.com/onflow/ff-sre-infrastructure/pull/64)
+- [Create private container registry for builds](https://github.com/onflow/ff-sre-infrastructure/pull/63)
+
+**Node Hosting**
+- [Increase AN Disk Space](https://github.com/onflow/ff-sre-infrastructure/pull/66)
+
+**Support**
+- [Create DNS Record for BlueSky Validation](https://github.com/onflow/ff-sre-infrastructure/pull/65)
+
 **This sprint**
 * Finish FF IAM Group migration
+* Continue evaluating SRE candidates 
 * Scope work to migrate domain registrars
-* Continue evaluating SRE candidates
-* Identify & document key SRE processes for the protocol team
+* Scope work to migrate to artifact registry
 
 ---
 
