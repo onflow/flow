@@ -251,18 +251,29 @@ Cycle Objective(s):
    
 **Done last sprint**
 
-**This sprint**
-
-* Merge final two JVM SDK PRs to reach Go SDK parity and publish release
 * Docs
   - Complete Cadence x EVM batched transactions walkthrough & blog post
-  - Continue on OKR: https://github.com/onflow/dx-internal/issues/33 
-* Smart Contracts
-  - Enhance HybridCustody transactions to better support NFT transfers from child accounts
-  - Begin work on VM bridge refinements
+  - [Add FlowEVM to Rainbow support docs](https://github.com/onflow/docs/issues/1005)
+  - [Improve network configuration guide](https://github.com/onflow/docs/issues/1008)
+  - [Update readme commands](https://github.com/onflow/flow-cli/issues/1847)
+  - [Add snipit parsing](https://github.com/onflow/docs/issues/1016)
+* Steaming API Integration
+  - [Changes to fcl to support the new streaming API](https://github.com/onflow/flow-okrs/issues/80)
+  - [Create transport-http SubscriptionManager](https://github.com/onflow/fcl-js/issues/2015)
 * Miscellaneous Tools/Apps
-  - [Ledger support Register Node with Proof of Possession](https://github.com/onflow/flow-port/issues/364)
+  - [Fix Nu-Fi wallet not working with newlines in user message](https://github.com/onflow/crescendo-rewards/issues/507)
   - [Lost and Found integration with Flow Port](https://github.com/onflow/flow-port/issues/366)
+
+**This sprint**
+
+* Docs
+  - Continue on OKR: https://github.com/onflow/dx-internal/issues/33
+* Smart Contracts
+* Discovery phase on VM bridge refinements
+* Finalize and merge Streaming API integration
+* Continue Partner support
+  - Focus on Gelator
+
 
 
 **On Hold**
