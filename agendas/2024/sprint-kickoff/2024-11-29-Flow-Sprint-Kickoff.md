@@ -3,7 +3,7 @@
  ### Team Wins 🎉
  
  * Flow has been added to [chainspect.app](https://chainspect.app/dashboard) (Vishal)
- * Hyperlane cbBTC bridge tested and live for mainnet but not yet announced. Can do so after domain name for bridge URL is live
+ * Hyperlane cbBTC bridge tested and live for mainnet but not yet announced
  * Deployed EVM GW with dry-run enabled on TN - enbales more flexibility in configuring EVM traces and reduces load on ANs.
  * Deployed last remaining Cadence security report.
  * Great Cadence team mini-onsite, discussed Cadence compiler workstream and aligned on next steps.
@@ -227,10 +227,9 @@ Cycle Objective(s):
 - Bring liquidity and and kick start ecosystem effects
   
 **Done last sprint**
-* Hyperlane cbBTC bridge tested and live for mainnet but not yet announced. Can do so after domain name for bridge URL is live
+* Hyperlane cbBTC bridge tested and live for mainnet but not yet announced
 
 **This sprint**
-* Create cbBTC bridge DNS and announce 
 * Validate KittyPunch update unblocked once EVM GW local state index is released
 * Start onboarding Paradex and Layerzero when they are ready
   
