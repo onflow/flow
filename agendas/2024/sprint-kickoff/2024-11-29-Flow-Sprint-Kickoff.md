@@ -193,6 +193,10 @@ Cycle Objective(s):
   - PR reviews (randomness - linear codes)
   - PoP: got back to debugging flow-port integration
   - Started looking at docs for Passkeys
+ 
+* <ins>Misc other</ins>   
+  - Progress on trie research: detailed requirements completed
+  - Continued discussion on Dynamic Protocol State for Version Beacon (coordinating upgrades of the Execution Stack): https://github.com/onflow/flips/pull/296
 
 **This sprint**
 
