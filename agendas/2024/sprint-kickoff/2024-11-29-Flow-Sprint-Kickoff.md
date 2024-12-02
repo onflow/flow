@@ -197,6 +197,7 @@ Cycle Objective(s):
 * <ins>Misc other</ins>   
   - Progress on trie research: detailed requirements completed
   - Continued discussion on Dynamic Protocol State for Version Beacon (coordinating upgrades of the Execution Stack): https://github.com/onflow/flips/pull/296
+  - Continued Passkeys reading/research
 
 **This sprint**
 
