@@ -26,7 +26,7 @@ message Chunk {
   bytes end_state = 8;  // EndState inferred from next chunk or from the ER
   bytes execution_data_id = 9;
   bytes state_delta_commitment = 10; // a commitment over sorted list of register changes
-  optional uint32 service_event_count =
+  uint32 service_event_count =
       11; // number of service events emitted in this chunk (present in Protocol Version 2+)
 }
 
