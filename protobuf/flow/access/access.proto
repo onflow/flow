@@ -51,6 +51,8 @@ service AccessAPI {
 
   // GetCollectionByID gets a collection by ID.
   rpc GetCollectionByID(GetCollectionByIDRequest) returns (CollectionResponse);
+  // GetFullCollectionByID gets a collection by ID.
+  rpc GetFullCollectionByID(GetFullCollectionByIDRequest) returns (FullCollectionResponse);
 
   // Transactions
 
@@ -94,6 +96,33 @@ service AccessAPI {
   // height
   rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest)
       returns (AccountResponse);
+
+  // GetAccountBalanceAtLatestBlock gets an account balance by address from the latest sealed
+  // execution state.
+  rpc GetAccountBalanceAtLatestBlock(GetAccountBalanceAtLatestBlockRequest)
+      returns (AccountBalanceResponse);
+  // GetAccountBalanceAtBlockHeight gets an account balance by address at the given block
+  // height
+  rpc GetAccountBalanceAtBlockHeight(GetAccountBalanceAtBlockHeightRequest)
+      returns (AccountBalanceResponse);
+
+  // GetAccountKeysAtLatestBlock gets an account public keys by address from the latest sealed
+  // execution state.
+  rpc GetAccountKeysAtLatestBlock(GetAccountKeysAtLatestBlockRequest)
+      returns (AccountKeysResponse);
+  // GetAccountKeysAtBlockHeight gets an account public keys by address at the given block
+  // height
+  rpc GetAccountKeysAtBlockHeight(GetAccountKeysAtBlockHeightRequest)
+      returns (AccountKeysResponse);
+
+  // GetAccountKeysAtLatestBlock gets an account public key by address and key index from the latest sealed
+  // execution state.
+  rpc GetAccountKeyAtLatestBlock(GetAccountKeyAtLatestBlockRequest)
+      returns (AccountKeyResponse);
+  // GetAccountKeysAtBlockHeight gets an account public key by address and key index at the given block
+  // height
+  rpc GetAccountKeyAtBlockHeight(GetAccountKeyAtBlockHeightRequest)
+      returns (AccountKeyResponse);
 
   // Scripts
 
@@ -157,6 +186,105 @@ service AccessAPI {
   // GetExecutionResultByID returns Execution Result by its ID.
   rpc GetExecutionResultByID(GetExecutionResultByIDRequest)
       returns (ExecutionResultByIDResponse);
+
+  // Subscriptions
+
+  // Subscribe blocks
+
+  // SubscribeBlocksFromStartBlockID streams finalized or sealed blocks starting at the requested
+  // start block id, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
+  //
+  // Blocks are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed blocks will be returned.
+  rpc SubscribeBlocksFromStartBlockID(SubscribeBlocksFromStartBlockIDRequest)
+      returns (stream SubscribeBlocksResponse);
+
+  // SubscribeBlocksFromStartHeight streams finalized or sealed blocks starting at the requested
+  // start block height, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block as it becomes available.
+  //
+  // Blocks are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed blocks will be returned.
+  rpc SubscribeBlocksFromStartHeight(SubscribeBlocksFromStartHeightRequest)
+      returns (stream SubscribeBlocksResponse);
+
+  // SubscribeBlocksFromLatest streams finalized or sealed blocks starting from the latest finalized or sealed
+  // block. The stream will remain open and responses are sent for each new block as it becomes available.
+  //
+  // Blocks are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed blocks will be returned.
+  rpc SubscribeBlocksFromLatest(SubscribeBlocksFromLatestRequest)
+      returns (stream SubscribeBlocksResponse);
+
+  // Subscribe block headers
+
+  // SubscribeBlockHeadersFromStartBlockID streams finalized or sealed block headers starting at the requested
+  // start block id, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block header as it becomes available.
+  //
+  // Block headers are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed block headers will be returned.
+  rpc SubscribeBlockHeadersFromStartBlockID(SubscribeBlockHeadersFromStartBlockIDRequest)
+      returns (stream SubscribeBlockHeadersResponse);
+
+  // SubscribeBlockHeadersFromStartHeight streams finalized or sealed block headers starting at the requested
+  // start block height, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // block header as it becomes available.
+  //
+  // Block headers are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed block headers will be returned.
+  rpc SubscribeBlockHeadersFromStartHeight(SubscribeBlockHeadersFromStartHeightRequest)
+      returns (stream SubscribeBlockHeadersResponse);
+
+  // SubscribeBlockHeadersFromLatest streams finalized or sealed block headers starting from the latest finalized or sealed
+  // block. The stream will remain open and responses are sent for each new block header as it becomes available.
+  //
+  // Block headers are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed block headers will be returned.
+  rpc SubscribeBlockHeadersFromLatest(SubscribeBlockHeadersFromLatestRequest)
+      returns (stream SubscribeBlockHeadersResponse);
+
+  // Subscribe block digests
+
+  // SubscribeBlockDigestsFromStartBlockID streams finalized or sealed lightweight block starting at the requested
+  // start block id, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // lightweight block as it becomes available.
+  //
+  // Lightweight blocks are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed lightweight blocks will be returned.
+  rpc SubscribeBlockDigestsFromStartBlockID(SubscribeBlockDigestsFromStartBlockIDRequest)
+      returns (stream SubscribeBlockDigestsResponse);
+
+  // SubscribeBlockDigestsFromStartHeight streams finalized or sealed lightweight block starting at the requested
+  // start block height, up until the latest available block. Once the latest is
+  // reached, the stream will remain open and responses are sent for each new
+  // lightweight block as it becomes available.
+  //
+  // Lightweight blocks are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed lightweight blocks will be returned.
+  rpc SubscribeBlockDigestsFromStartHeight(SubscribeBlockDigestsFromStartHeightRequest)
+      returns (stream SubscribeBlockDigestsResponse);
+
+  // SubscribeBlockDigestsFromLatest streams finalized or sealed lightweight block headers starting of the latest finalized or sealed
+  // block. The stream will remain open and responses are sent for each new lightweight block as it becomes available.
+  //
+  // Lightweight blocks are only returned when they have reached the provided block status. For example,
+  // if the status is "sealed", only sealed lightweight blocks will be returned.
+  rpc SubscribeBlockDigestsFromLatest(SubscribeBlockDigestsFromLatestRequest)
+      returns (stream SubscribeBlockDigestsResponse);
+
+  // Subscribe transaction statuses
+
+  // SendAndSubscribeTransactionStatuses send a transaction and immediately subscribe to its status changes. The status
+  // is streamed back until the block containing the transaction becomes sealed.
+  rpc SendAndSubscribeTransactionStatuses(SendAndSubscribeTransactionStatusesRequest)
+        returns (stream SendAndSubscribeTransactionStatusesResponse);
 }
 
 message PingRequest {}
@@ -218,8 +346,17 @@ message GetCollectionByIDRequest {
   bytes id = 1;
 }
 
+message GetFullCollectionByIDRequest {
+  bytes id = 1;
+}
+
 message CollectionResponse {
   entities.Collection collection = 1;
+  entities.Metadata metadata = 2;
+}
+
+message FullCollectionResponse {
+  repeated entities.Transaction transactions = 1;
   entities.Metadata metadata = 2;
 }
 
@@ -312,6 +449,54 @@ message AccountResponse {
 message GetAccountAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
+}
+
+message GetAccountBalanceAtLatestBlockRequest {
+  bytes address = 1;
+}
+
+message GetAccountBalanceAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+}
+
+message AccountBalanceResponse {
+  uint64 balance = 1;
+  entities.Metadata metadata = 2;
+}
+
+message GetAccountKeysAtLatestBlockRequest {
+  // address of account
+  bytes address = 1;
+}
+
+message GetAccountKeyAtLatestBlockRequest {
+  // address of account
+  bytes address = 1;
+  // index of key to return
+  uint32 index = 2;
+}
+
+message GetAccountKeysAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+}
+
+message GetAccountKeyAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+  // index of key to return
+  uint32 index = 3;
+}
+
+message AccountKeysResponse {
+  repeated entities.AccountKey account_keys = 1;
+  entities.Metadata metadata = 2;
+}
+
+message AccountKeyResponse {
+  entities.AccountKey account_key = 1;
+  entities.Metadata metadata = 2;
 }
 
 // Scripts
@@ -408,4 +593,163 @@ message GetExecutionResultByIDRequest {
 message ExecutionResultByIDResponse {
   entities.ExecutionResult execution_result = 1;
   entities.Metadata metadata = 2;
+}
+
+// Subscriptions
+
+// Subscribe blocks
+
+// The request for SubscribeBlocksFromStartBlockID
+message SubscribeBlocksFromStartBlockIDRequest {
+  // Block ID of the first block to subscribe.
+  bytes start_block_id = 1;
+
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 2;
+
+  // Boolean value determining the response: 'full' if `true`, 'light' otherwise.
+  bool full_block_response = 3;
+}
+
+// The request for SubscribeBlocksFromStartHeight
+message SubscribeBlocksFromStartHeightRequest {
+  // Block height of the first block to subscribe.
+  uint64 start_block_height = 1;
+
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 2;
+
+  // Boolean value determining the response: 'full' if `true`, 'light' otherwise.
+  bool full_block_response = 3;
+}
+
+// The request for SubscribeBlocksFromLatest
+message SubscribeBlocksFromLatestRequest {
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 1;
+
+  // Boolean value determining the response: 'full' if `true`, 'light' otherwise.
+  bool full_block_response = 2;
+}
+
+// The response for SubscribeBlocksFromStartBlockID, SubscribeBlocksFromStartHeight, SubscribeBlocksFromLatest
+message SubscribeBlocksResponse {
+  // The sealed or finalized blocks according to the block status
+  // in the request.
+  entities.Block block = 1;
+}
+
+// Subscribe block headers
+
+// The request for SubscribeBlockHeadersFromStartBlockID
+message SubscribeBlockHeadersFromStartBlockIDRequest {
+  // Block ID of the first block header to subscribe.
+  bytes start_block_id = 1;
+
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 2;
+}
+
+// The request for SubscribeBlockHeadersFromStartHeight
+message SubscribeBlockHeadersFromStartHeightRequest {
+  // Block height of the first block header to subscribe.
+  uint64 start_block_height = 1;
+
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 2;
+}
+
+// The request for SubscribeBlockHeadersFromLatest
+message SubscribeBlockHeadersFromLatestRequest {
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 1;
+}
+
+// The response for SubscribeBlockHeadersFromStartBlockID, SubscribeBlockHeadersFromStartHeight, SubscribeBlockHeadersFromLatest
+message SubscribeBlockHeadersResponse {
+  // The sealed or finalized block headers according to the block status
+  // in the request.
+  entities.BlockHeader header = 1;
+}
+
+// Subscribe block digests
+
+// The request for SubscribeBlockDigestsFromStartBlockID
+message SubscribeBlockDigestsFromStartBlockIDRequest {
+  // Block ID of the first block to subscribe.
+  bytes start_block_id = 1;
+
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 2;
+}
+
+// The request for SubscribeBlockDigestsFromStartHeight
+message SubscribeBlockDigestsFromStartHeightRequest {
+  // Block height of the first block to subscribe.
+  uint64 start_block_height = 1;
+
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 2;
+}
+
+// The request for SubscribeBlockDigestsFromLatest
+message SubscribeBlockDigestsFromLatestRequest {
+  // Required block status of the block payload.
+  // Possible variants:
+  // 1. BLOCK_FINALIZED
+  // 2. BLOCK_SEALED
+  entities.BlockStatus block_status = 1;
+}
+
+// The response for SubscribeBlockDigestsFromStartBlockID, SubscribeBlockDigestsFromStartHeight, SubscribeBlockDigestsFromLatest
+message SubscribeBlockDigestsResponse {
+  // The block ID of the new sealed or finalized block according to the block status
+  // in the request.
+  bytes block_id = 1;
+  // The block height of the new sealed or finalized block according to the block status
+  // in the request.
+  uint64 block_height = 2;
+  // The timestamp of the new sealed or finalized block according to the block status
+  // in the request.
+  google.protobuf.Timestamp block_timestamp = 3;
+}
+
+// Request message for sending a transaction and subscribing to its status changes.
+message SendAndSubscribeTransactionStatusesRequest {
+    // The transaction to be sent and tracked for status changes.
+    entities.Transaction transaction = 1;
+    // The encoding for events in transaction result
+    entities.EventEncodingVersion event_encoding_version = 2;
+}
+
+// Response message for transaction status changes.
+message SendAndSubscribeTransactionStatusesResponse {
+    // Transaction result of the tracked transaction
+    TransactionResultResponse transaction_results = 1;
+    // The message index of the response message. Used by the client to ensure they received all messages. Starts from "0".
+    uint64 message_index = 2;
 }

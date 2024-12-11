@@ -10,7 +10,7 @@ Method | HTTP request | Description
 > SubscribeEvents SubscribeEventsGet(ctx, optional)
 Subscribe events
 
-Streaming on-chain events for all blocks starting at the requested start block, up until the latest available block. Once the latest is reached, the stream will remain open and responses are sent for each new block as it becomes available.
+IMPORTANT NOTE: This is a WebSocket connection, so the `ws://` or `wss://` schema should be used to subscribe to this endpoint.  This endpoint streams on-chain events for all blocks starting at the requested start block, up until the latest available block. Once the latest block is reached, the stream will remain open, and responses will be sent for each new block as it becomes available. 
 
 ### Required Parameters
 

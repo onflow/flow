@@ -19,10 +19,19 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ExecutionDataAPI_GetExecutionDataByBlockID_FullMethodName = "/flow.executiondata.ExecutionDataAPI/GetExecutionDataByBlockID"
-	ExecutionDataAPI_SubscribeExecutionData_FullMethodName    = "/flow.executiondata.ExecutionDataAPI/SubscribeExecutionData"
-	ExecutionDataAPI_SubscribeEvents_FullMethodName           = "/flow.executiondata.ExecutionDataAPI/SubscribeEvents"
-	ExecutionDataAPI_GetRegisterValues_FullMethodName         = "/flow.executiondata.ExecutionDataAPI/GetRegisterValues"
+	ExecutionDataAPI_GetExecutionDataByBlockID_FullMethodName                  = "/flow.executiondata.ExecutionDataAPI/GetExecutionDataByBlockID"
+	ExecutionDataAPI_SubscribeExecutionData_FullMethodName                     = "/flow.executiondata.ExecutionDataAPI/SubscribeExecutionData"
+	ExecutionDataAPI_SubscribeExecutionDataFromStartBlockID_FullMethodName     = "/flow.executiondata.ExecutionDataAPI/SubscribeExecutionDataFromStartBlockID"
+	ExecutionDataAPI_SubscribeExecutionDataFromStartBlockHeight_FullMethodName = "/flow.executiondata.ExecutionDataAPI/SubscribeExecutionDataFromStartBlockHeight"
+	ExecutionDataAPI_SubscribeExecutionDataFromLatest_FullMethodName           = "/flow.executiondata.ExecutionDataAPI/SubscribeExecutionDataFromLatest"
+	ExecutionDataAPI_SubscribeEvents_FullMethodName                            = "/flow.executiondata.ExecutionDataAPI/SubscribeEvents"
+	ExecutionDataAPI_SubscribeEventsFromStartBlockID_FullMethodName            = "/flow.executiondata.ExecutionDataAPI/SubscribeEventsFromStartBlockID"
+	ExecutionDataAPI_SubscribeEventsFromStartHeight_FullMethodName             = "/flow.executiondata.ExecutionDataAPI/SubscribeEventsFromStartHeight"
+	ExecutionDataAPI_SubscribeEventsFromLatest_FullMethodName                  = "/flow.executiondata.ExecutionDataAPI/SubscribeEventsFromLatest"
+	ExecutionDataAPI_GetRegisterValues_FullMethodName                          = "/flow.executiondata.ExecutionDataAPI/GetRegisterValues"
+	ExecutionDataAPI_SubscribeAccountStatusesFromStartBlockID_FullMethodName   = "/flow.executiondata.ExecutionDataAPI/SubscribeAccountStatusesFromStartBlockID"
+	ExecutionDataAPI_SubscribeAccountStatusesFromStartHeight_FullMethodName    = "/flow.executiondata.ExecutionDataAPI/SubscribeAccountStatusesFromStartHeight"
+	ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlock_FullMethodName    = "/flow.executiondata.ExecutionDataAPI/SubscribeAccountStatusesFromLatestBlock"
 )
 
 // ExecutionDataAPIClient is the client API for ExecutionDataAPI service.
@@ -39,6 +48,11 @@ type ExecutionDataAPIClient interface {
 	//	node. This may happen if the block was from a previous spork, or if the
 	//	block has yet not been received.
 	GetExecutionDataByBlockID(ctx context.Context, in *GetExecutionDataByBlockIDRequest, opts ...grpc.CallOption) (*GetExecutionDataByBlockIDResponse, error)
+	// Deprecated: Do not use.
+	// Warning: this endpoint is deprecated and will be removed in future versions.
+	// Use SubscribeExecutionDataFromStartBlockID, SubscribeExecutionDataFromStartBlockHeight
+	// or SubscribeExecutionDataFromLatest.
+	//
 	// SubscribeExecutionData streams execution data for all blocks starting at
 	// the requested start block, up until the latest available block. Once the
 	// latest is reached, the stream will remain open and responses are sent for
@@ -48,13 +62,71 @@ type ExecutionDataAPIClient interface {
 	// - InvalidArgument is returned if the request contains an invalid start
 	// block.
 	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork, or if the block
+	// has yet not been received.
+	SubscribeExecutionData(ctx context.Context, in *SubscribeExecutionDataRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataClient, error)
+	// SubscribeExecutionDataFromStartBlockID streams execution data for all blocks
+	// starting at the requested start block, up until the latest available block.
+	// Once the latest is reached, the stream will remain open and responses are
+	// sent for each new execution data as it becomes available.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid start
+	// block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork,
+	// or if the block has yet not been received.
+	SubscribeExecutionDataFromStartBlockID(ctx context.Context, in *SubscribeExecutionDataFromStartBlockIDRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataFromStartBlockIDClient, error)
+	// SubscribeExecutionDataFromStartBlockHeight streams execution data for all blocks
+	// starting at the requested start block, up until the latest available block.
+	// Once the latest is reached, the stream will remain open and responses are
+	// sent for each new execution data as it becomes available.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid start
+	// block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork,
+	// or if the block has yet not been received.
+	SubscribeExecutionDataFromStartBlockHeight(ctx context.Context, in *SubscribeExecutionDataFromStartBlockHeightRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataFromStartBlockHeightClient, error)
+	// SubscribeExecutionDataFromStartBlockHeight streams execution data for all blocks
+	// starting from the latest block.
+	//
+	// Errors:
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork,
+	// or if the block has yet not been received.
+	SubscribeExecutionDataFromLatest(ctx context.Context, in *SubscribeExecutionDataFromLatestRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataFromLatestClient, error)
+	// Deprecated: Do not use.
+	// Warning: this endpoint is deprecated and will be removed in future versions.
+	// Use SubscribeEventsFromStartBlockID, SubscribeEventsFromStartHeight or SubscribeEventsFromLatest.
+	//
+	// SubscribeEvents streams events for all blocks starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Events within each block are filtered by the provided EventFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
+	//
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heartbeat responses
+	// (SubscribeEventsResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
+	// information to determine which block to start from when reconnecting.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid
+	// EventFilter or start block.
+	// - NotFound is returned if the start block is not currently available on the
 	// node. This may
 	//
 	//	happen if the block was from a previous spork, or if the block has yet
 	//	not been received.
-	SubscribeExecutionData(ctx context.Context, in *SubscribeExecutionDataRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataClient, error)
-	// SubscribeEvents streams events for all blocks starting at the requested
-	// start block, up until the latest available block. Once the latest is
+	SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error)
+	// SubscribeEventsFromStartBlockID streams events for all blocks starting at the requested
+	// start block id, up until the latest available block. Once the latest is
 	// reached, the stream will remain open and responses are sent for each new
 	// block as it becomes available.
 	//
@@ -69,16 +141,119 @@ type ExecutionDataAPIClient interface {
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
-	// - InvalidArgument is returned if the request contains an invalid
-	// EventFilter or start block.
-	// - NotFound is returned if the start block is not currently available on the
-	// node. This may
+	// - InvalidArgument is returned if the request contains an invalid block ID or EventFilter.
+	// - NotFound is returned if the start block id or execution data are not
+	// currently available on the node. This may happen if the block was from a previous spork, or if the
+	// block has yet not been received.
+	SubscribeEventsFromStartBlockID(ctx context.Context, in *SubscribeEventsFromStartBlockIDRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsFromStartBlockIDClient, error)
+	// SubscribeEventsFromStartHeight streams events for all blocks starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
-	//	happen if the block was from a previous spork, or if the block has yet
-	//	not been received.
-	SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error)
+	// Events within each block are filtered by the provided EventFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
+	//
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heatbeat responses
+	// (SubscribeEventsResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
+	// information to determine which block to start from when reconnecting.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid EventFilter.
+	// - NotFound is returned if the start block height or execution data are not
+	// currently available on the node. This may happen if the block was from a previous spork, or if the
+	// block has yet not been received.
+	SubscribeEventsFromStartHeight(ctx context.Context, in *SubscribeEventsFromStartHeightRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsFromStartHeightClient, error)
+	// SubscribeEventsFromLatest streams events for all blocks starting from the latest sealed
+	// block. The stream will remain open and responses are sent for each new block as it becomes available.
+	//
+	// Events within each block are filtered by the provided EventFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
+	//
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heatbeat responses
+	// (SubscribeEventsResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
+	// information to determine which block to start from when reconnecting.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid EventFilter.
+	SubscribeEventsFromLatest(ctx context.Context, in *SubscribeEventsFromLatestRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsFromLatestClient, error)
 	// GetRegisterValues gets the values for the given register IDs as of the given block height
 	GetRegisterValues(ctx context.Context, in *GetRegisterValuesRequest, opts ...grpc.CallOption) (*GetRegisterValuesResponse, error)
+	// SubscribeAccountStatusesFromStartBlockID streams account statuses for all blocks starting at the requested
+	// start block ID, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Events within each block are filtered by the provided StatusFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
+	//
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heartbeat responses
+	// (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
+	// information to determine which block to start from when reconnecting.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid
+	// StatusFilter or start block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork, or if the block has yet
+	//
+	//	not been received.
+	SubscribeAccountStatusesFromStartBlockID(ctx context.Context, in *SubscribeAccountStatusesFromStartBlockIDRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeAccountStatusesFromStartBlockIDClient, error)
+	// SubscribeAccountStatusesFromStartHeight streams account statuses for all blocks starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Events within each block are filtered by the provided StatusFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
+	//
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heartbeat responses
+	// (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
+	// information to determine which block to start from when reconnecting.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid
+	// StatusFilter or start block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork, or if the block has yet
+	//
+	//	not been received.
+	SubscribeAccountStatusesFromStartHeight(ctx context.Context, in *SubscribeAccountStatusesFromStartHeightRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeAccountStatusesFromStartHeightClient, error)
+	// SubscribeAccountStatusesFromLatestBlock streams account statuses for all blocks starting
+	// at the last sealed block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Events within each block are filtered by the provided StatusFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
+	//
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heartbeat responses
+	// (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
+	// information to determine which block to start from when reconnecting.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid
+	// StatusFilter or start block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork, or if the block has yet
+	//
+	//	not been received.
+	SubscribeAccountStatusesFromLatestBlock(ctx context.Context, in *SubscribeAccountStatusesFromLatestBlockRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlockClient, error)
 }
 
 type executionDataAPIClient struct {
@@ -98,6 +273,7 @@ func (c *executionDataAPIClient) GetExecutionDataByBlockID(ctx context.Context, 
 	return out, nil
 }
 
+// Deprecated: Do not use.
 func (c *executionDataAPIClient) SubscribeExecutionData(ctx context.Context, in *SubscribeExecutionDataRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataClient, error) {
 	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[0], ExecutionDataAPI_SubscribeExecutionData_FullMethodName, opts...)
 	if err != nil {
@@ -130,8 +306,105 @@ func (x *executionDataAPISubscribeExecutionDataClient) Recv() (*SubscribeExecuti
 	return m, nil
 }
 
+func (c *executionDataAPIClient) SubscribeExecutionDataFromStartBlockID(ctx context.Context, in *SubscribeExecutionDataFromStartBlockIDRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataFromStartBlockIDClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[1], ExecutionDataAPI_SubscribeExecutionDataFromStartBlockID_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &executionDataAPISubscribeExecutionDataFromStartBlockIDClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ExecutionDataAPI_SubscribeExecutionDataFromStartBlockIDClient interface {
+	Recv() (*SubscribeExecutionDataResponse, error)
+	grpc.ClientStream
+}
+
+type executionDataAPISubscribeExecutionDataFromStartBlockIDClient struct {
+	grpc.ClientStream
+}
+
+func (x *executionDataAPISubscribeExecutionDataFromStartBlockIDClient) Recv() (*SubscribeExecutionDataResponse, error) {
+	m := new(SubscribeExecutionDataResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *executionDataAPIClient) SubscribeExecutionDataFromStartBlockHeight(ctx context.Context, in *SubscribeExecutionDataFromStartBlockHeightRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataFromStartBlockHeightClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[2], ExecutionDataAPI_SubscribeExecutionDataFromStartBlockHeight_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &executionDataAPISubscribeExecutionDataFromStartBlockHeightClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ExecutionDataAPI_SubscribeExecutionDataFromStartBlockHeightClient interface {
+	Recv() (*SubscribeExecutionDataResponse, error)
+	grpc.ClientStream
+}
+
+type executionDataAPISubscribeExecutionDataFromStartBlockHeightClient struct {
+	grpc.ClientStream
+}
+
+func (x *executionDataAPISubscribeExecutionDataFromStartBlockHeightClient) Recv() (*SubscribeExecutionDataResponse, error) {
+	m := new(SubscribeExecutionDataResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *executionDataAPIClient) SubscribeExecutionDataFromLatest(ctx context.Context, in *SubscribeExecutionDataFromLatestRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeExecutionDataFromLatestClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[3], ExecutionDataAPI_SubscribeExecutionDataFromLatest_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &executionDataAPISubscribeExecutionDataFromLatestClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ExecutionDataAPI_SubscribeExecutionDataFromLatestClient interface {
+	Recv() (*SubscribeExecutionDataResponse, error)
+	grpc.ClientStream
+}
+
+type executionDataAPISubscribeExecutionDataFromLatestClient struct {
+	grpc.ClientStream
+}
+
+func (x *executionDataAPISubscribeExecutionDataFromLatestClient) Recv() (*SubscribeExecutionDataResponse, error) {
+	m := new(SubscribeExecutionDataResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+// Deprecated: Do not use.
 func (c *executionDataAPIClient) SubscribeEvents(ctx context.Context, in *SubscribeEventsRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[1], ExecutionDataAPI_SubscribeEvents_FullMethodName, opts...)
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[4], ExecutionDataAPI_SubscribeEvents_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -162,6 +435,102 @@ func (x *executionDataAPISubscribeEventsClient) Recv() (*SubscribeEventsResponse
 	return m, nil
 }
 
+func (c *executionDataAPIClient) SubscribeEventsFromStartBlockID(ctx context.Context, in *SubscribeEventsFromStartBlockIDRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsFromStartBlockIDClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[5], ExecutionDataAPI_SubscribeEventsFromStartBlockID_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &executionDataAPISubscribeEventsFromStartBlockIDClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ExecutionDataAPI_SubscribeEventsFromStartBlockIDClient interface {
+	Recv() (*SubscribeEventsResponse, error)
+	grpc.ClientStream
+}
+
+type executionDataAPISubscribeEventsFromStartBlockIDClient struct {
+	grpc.ClientStream
+}
+
+func (x *executionDataAPISubscribeEventsFromStartBlockIDClient) Recv() (*SubscribeEventsResponse, error) {
+	m := new(SubscribeEventsResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *executionDataAPIClient) SubscribeEventsFromStartHeight(ctx context.Context, in *SubscribeEventsFromStartHeightRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsFromStartHeightClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[6], ExecutionDataAPI_SubscribeEventsFromStartHeight_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &executionDataAPISubscribeEventsFromStartHeightClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ExecutionDataAPI_SubscribeEventsFromStartHeightClient interface {
+	Recv() (*SubscribeEventsResponse, error)
+	grpc.ClientStream
+}
+
+type executionDataAPISubscribeEventsFromStartHeightClient struct {
+	grpc.ClientStream
+}
+
+func (x *executionDataAPISubscribeEventsFromStartHeightClient) Recv() (*SubscribeEventsResponse, error) {
+	m := new(SubscribeEventsResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *executionDataAPIClient) SubscribeEventsFromLatest(ctx context.Context, in *SubscribeEventsFromLatestRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeEventsFromLatestClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[7], ExecutionDataAPI_SubscribeEventsFromLatest_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &executionDataAPISubscribeEventsFromLatestClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ExecutionDataAPI_SubscribeEventsFromLatestClient interface {
+	Recv() (*SubscribeEventsResponse, error)
+	grpc.ClientStream
+}
+
+type executionDataAPISubscribeEventsFromLatestClient struct {
+	grpc.ClientStream
+}
+
+func (x *executionDataAPISubscribeEventsFromLatestClient) Recv() (*SubscribeEventsResponse, error) {
+	m := new(SubscribeEventsResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 func (c *executionDataAPIClient) GetRegisterValues(ctx context.Context, in *GetRegisterValuesRequest, opts ...grpc.CallOption) (*GetRegisterValuesResponse, error) {
 	out := new(GetRegisterValuesResponse)
 	err := c.cc.Invoke(ctx, ExecutionDataAPI_GetRegisterValues_FullMethodName, in, out, opts...)
@@ -169,6 +538,102 @@ func (c *executionDataAPIClient) GetRegisterValues(ctx context.Context, in *GetR
 		return nil, err
 	}
 	return out, nil
+}
+
+func (c *executionDataAPIClient) SubscribeAccountStatusesFromStartBlockID(ctx context.Context, in *SubscribeAccountStatusesFromStartBlockIDRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeAccountStatusesFromStartBlockIDClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[8], ExecutionDataAPI_SubscribeAccountStatusesFromStartBlockID_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &executionDataAPISubscribeAccountStatusesFromStartBlockIDClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ExecutionDataAPI_SubscribeAccountStatusesFromStartBlockIDClient interface {
+	Recv() (*SubscribeAccountStatusesResponse, error)
+	grpc.ClientStream
+}
+
+type executionDataAPISubscribeAccountStatusesFromStartBlockIDClient struct {
+	grpc.ClientStream
+}
+
+func (x *executionDataAPISubscribeAccountStatusesFromStartBlockIDClient) Recv() (*SubscribeAccountStatusesResponse, error) {
+	m := new(SubscribeAccountStatusesResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *executionDataAPIClient) SubscribeAccountStatusesFromStartHeight(ctx context.Context, in *SubscribeAccountStatusesFromStartHeightRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeAccountStatusesFromStartHeightClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[9], ExecutionDataAPI_SubscribeAccountStatusesFromStartHeight_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &executionDataAPISubscribeAccountStatusesFromStartHeightClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ExecutionDataAPI_SubscribeAccountStatusesFromStartHeightClient interface {
+	Recv() (*SubscribeAccountStatusesResponse, error)
+	grpc.ClientStream
+}
+
+type executionDataAPISubscribeAccountStatusesFromStartHeightClient struct {
+	grpc.ClientStream
+}
+
+func (x *executionDataAPISubscribeAccountStatusesFromStartHeightClient) Recv() (*SubscribeAccountStatusesResponse, error) {
+	m := new(SubscribeAccountStatusesResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *executionDataAPIClient) SubscribeAccountStatusesFromLatestBlock(ctx context.Context, in *SubscribeAccountStatusesFromLatestBlockRequest, opts ...grpc.CallOption) (ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlockClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ExecutionDataAPI_ServiceDesc.Streams[10], ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlock_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &executionDataAPISubscribeAccountStatusesFromLatestBlockClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlockClient interface {
+	Recv() (*SubscribeAccountStatusesResponse, error)
+	grpc.ClientStream
+}
+
+type executionDataAPISubscribeAccountStatusesFromLatestBlockClient struct {
+	grpc.ClientStream
+}
+
+func (x *executionDataAPISubscribeAccountStatusesFromLatestBlockClient) Recv() (*SubscribeAccountStatusesResponse, error) {
+	m := new(SubscribeAccountStatusesResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
 }
 
 // ExecutionDataAPIServer is the server API for ExecutionDataAPI service.
@@ -185,6 +650,11 @@ type ExecutionDataAPIServer interface {
 	//	node. This may happen if the block was from a previous spork, or if the
 	//	block has yet not been received.
 	GetExecutionDataByBlockID(context.Context, *GetExecutionDataByBlockIDRequest) (*GetExecutionDataByBlockIDResponse, error)
+	// Deprecated: Do not use.
+	// Warning: this endpoint is deprecated and will be removed in future versions.
+	// Use SubscribeExecutionDataFromStartBlockID, SubscribeExecutionDataFromStartBlockHeight
+	// or SubscribeExecutionDataFromLatest.
+	//
 	// SubscribeExecutionData streams execution data for all blocks starting at
 	// the requested start block, up until the latest available block. Once the
 	// latest is reached, the stream will remain open and responses are sent for
@@ -194,13 +664,71 @@ type ExecutionDataAPIServer interface {
 	// - InvalidArgument is returned if the request contains an invalid start
 	// block.
 	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork, or if the block
+	// has yet not been received.
+	SubscribeExecutionData(*SubscribeExecutionDataRequest, ExecutionDataAPI_SubscribeExecutionDataServer) error
+	// SubscribeExecutionDataFromStartBlockID streams execution data for all blocks
+	// starting at the requested start block, up until the latest available block.
+	// Once the latest is reached, the stream will remain open and responses are
+	// sent for each new execution data as it becomes available.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid start
+	// block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork,
+	// or if the block has yet not been received.
+	SubscribeExecutionDataFromStartBlockID(*SubscribeExecutionDataFromStartBlockIDRequest, ExecutionDataAPI_SubscribeExecutionDataFromStartBlockIDServer) error
+	// SubscribeExecutionDataFromStartBlockHeight streams execution data for all blocks
+	// starting at the requested start block, up until the latest available block.
+	// Once the latest is reached, the stream will remain open and responses are
+	// sent for each new execution data as it becomes available.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid start
+	// block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork,
+	// or if the block has yet not been received.
+	SubscribeExecutionDataFromStartBlockHeight(*SubscribeExecutionDataFromStartBlockHeightRequest, ExecutionDataAPI_SubscribeExecutionDataFromStartBlockHeightServer) error
+	// SubscribeExecutionDataFromStartBlockHeight streams execution data for all blocks
+	// starting from the latest block.
+	//
+	// Errors:
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork,
+	// or if the block has yet not been received.
+	SubscribeExecutionDataFromLatest(*SubscribeExecutionDataFromLatestRequest, ExecutionDataAPI_SubscribeExecutionDataFromLatestServer) error
+	// Deprecated: Do not use.
+	// Warning: this endpoint is deprecated and will be removed in future versions.
+	// Use SubscribeEventsFromStartBlockID, SubscribeEventsFromStartHeight or SubscribeEventsFromLatest.
+	//
+	// SubscribeEvents streams events for all blocks starting at the requested
+	// start block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Events within each block are filtered by the provided EventFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
+	//
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heartbeat responses
+	// (SubscribeEventsResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
+	// information to determine which block to start from when reconnecting.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid
+	// EventFilter or start block.
+	// - NotFound is returned if the start block is not currently available on the
 	// node. This may
 	//
 	//	happen if the block was from a previous spork, or if the block has yet
 	//	not been received.
-	SubscribeExecutionData(*SubscribeExecutionDataRequest, ExecutionDataAPI_SubscribeExecutionDataServer) error
-	// SubscribeEvents streams events for all blocks starting at the requested
-	// start block, up until the latest available block. Once the latest is
+	SubscribeEvents(*SubscribeEventsRequest, ExecutionDataAPI_SubscribeEventsServer) error
+	// SubscribeEventsFromStartBlockID streams events for all blocks starting at the requested
+	// start block id, up until the latest available block. Once the latest is
 	// reached, the stream will remain open and responses are sent for each new
 	// block as it becomes available.
 	//
@@ -215,16 +743,119 @@ type ExecutionDataAPIServer interface {
 	// information to determine which block to start from when reconnecting.
 	//
 	// Errors:
-	// - InvalidArgument is returned if the request contains an invalid
-	// EventFilter or start block.
-	// - NotFound is returned if the start block is not currently available on the
-	// node. This may
+	// - InvalidArgument is returned if the request contains an invalid block ID or EventFilter.
+	// - NotFound is returned if the start block id or execution data are not
+	// currently available on the node. This may happen if the block was from a previous spork, or if the
+	// block has yet not been received.
+	SubscribeEventsFromStartBlockID(*SubscribeEventsFromStartBlockIDRequest, ExecutionDataAPI_SubscribeEventsFromStartBlockIDServer) error
+	// SubscribeEventsFromStartHeight streams events for all blocks starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
 	//
-	//	happen if the block was from a previous spork, or if the block has yet
-	//	not been received.
-	SubscribeEvents(*SubscribeEventsRequest, ExecutionDataAPI_SubscribeEventsServer) error
+	// Events within each block are filtered by the provided EventFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
+	//
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heatbeat responses
+	// (SubscribeEventsResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
+	// information to determine which block to start from when reconnecting.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid EventFilter.
+	// - NotFound is returned if the start block height or execution data are not
+	// currently available on the node. This may happen if the block was from a previous spork, or if the
+	// block has yet not been received.
+	SubscribeEventsFromStartHeight(*SubscribeEventsFromStartHeightRequest, ExecutionDataAPI_SubscribeEventsFromStartHeightServer) error
+	// SubscribeEventsFromLatest streams events for all blocks starting from the latest sealed
+	// block. The stream will remain open and responses are sent for each new block as it becomes available.
+	//
+	// Events within each block are filtered by the provided EventFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
+	//
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heatbeat responses
+	// (SubscribeEventsResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
+	// information to determine which block to start from when reconnecting.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid EventFilter.
+	SubscribeEventsFromLatest(*SubscribeEventsFromLatestRequest, ExecutionDataAPI_SubscribeEventsFromLatestServer) error
 	// GetRegisterValues gets the values for the given register IDs as of the given block height
 	GetRegisterValues(context.Context, *GetRegisterValuesRequest) (*GetRegisterValuesResponse, error)
+	// SubscribeAccountStatusesFromStartBlockID streams account statuses for all blocks starting at the requested
+	// start block ID, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Events within each block are filtered by the provided StatusFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
+	//
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heartbeat responses
+	// (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
+	// information to determine which block to start from when reconnecting.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid
+	// StatusFilter or start block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork, or if the block has yet
+	//
+	//	not been received.
+	SubscribeAccountStatusesFromStartBlockID(*SubscribeAccountStatusesFromStartBlockIDRequest, ExecutionDataAPI_SubscribeAccountStatusesFromStartBlockIDServer) error
+	// SubscribeAccountStatusesFromStartHeight streams account statuses for all blocks starting at the requested
+	// start block height, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Events within each block are filtered by the provided StatusFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
+	//
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heartbeat responses
+	// (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
+	// information to determine which block to start from when reconnecting.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid
+	// StatusFilter or start block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork, or if the block has yet
+	//
+	//	not been received.
+	SubscribeAccountStatusesFromStartHeight(*SubscribeAccountStatusesFromStartHeightRequest, ExecutionDataAPI_SubscribeAccountStatusesFromStartHeightServer) error
+	// SubscribeAccountStatusesFromLatestBlock streams account statuses for all blocks starting
+	// at the last sealed block, up until the latest available block. Once the latest is
+	// reached, the stream will remain open and responses are sent for each new
+	// block as it becomes available.
+	//
+	// Events within each block are filtered by the provided StatusFilter, and only
+	// those events that match the filter are returned. If no filter is provided,
+	// all events are returned.
+	//
+	// Responses are returned for each block containing at least one event that
+	// matches the filter. Additionally, heartbeat responses
+	// (SubscribeAccountStatusesResponse with no events) are returned periodically to allow
+	// clients to track which blocks were searched. Clients can use this
+	// information to determine which block to start from when reconnecting.
+	//
+	// Errors:
+	// - InvalidArgument is returned if the request contains an invalid
+	// StatusFilter or start block.
+	// - NotFound is returned if the start block is not currently available on the
+	// node. This may happen if the block was from a previous spork, or if the block has yet
+	//
+	//	not been received.
+	SubscribeAccountStatusesFromLatestBlock(*SubscribeAccountStatusesFromLatestBlockRequest, ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlockServer) error
 }
 
 // UnimplementedExecutionDataAPIServer should be embedded to have forward compatible implementations.
@@ -237,11 +868,38 @@ func (UnimplementedExecutionDataAPIServer) GetExecutionDataByBlockID(context.Con
 func (UnimplementedExecutionDataAPIServer) SubscribeExecutionData(*SubscribeExecutionDataRequest, ExecutionDataAPI_SubscribeExecutionDataServer) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeExecutionData not implemented")
 }
+func (UnimplementedExecutionDataAPIServer) SubscribeExecutionDataFromStartBlockID(*SubscribeExecutionDataFromStartBlockIDRequest, ExecutionDataAPI_SubscribeExecutionDataFromStartBlockIDServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeExecutionDataFromStartBlockID not implemented")
+}
+func (UnimplementedExecutionDataAPIServer) SubscribeExecutionDataFromStartBlockHeight(*SubscribeExecutionDataFromStartBlockHeightRequest, ExecutionDataAPI_SubscribeExecutionDataFromStartBlockHeightServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeExecutionDataFromStartBlockHeight not implemented")
+}
+func (UnimplementedExecutionDataAPIServer) SubscribeExecutionDataFromLatest(*SubscribeExecutionDataFromLatestRequest, ExecutionDataAPI_SubscribeExecutionDataFromLatestServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeExecutionDataFromLatest not implemented")
+}
 func (UnimplementedExecutionDataAPIServer) SubscribeEvents(*SubscribeEventsRequest, ExecutionDataAPI_SubscribeEventsServer) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeEvents not implemented")
 }
+func (UnimplementedExecutionDataAPIServer) SubscribeEventsFromStartBlockID(*SubscribeEventsFromStartBlockIDRequest, ExecutionDataAPI_SubscribeEventsFromStartBlockIDServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeEventsFromStartBlockID not implemented")
+}
+func (UnimplementedExecutionDataAPIServer) SubscribeEventsFromStartHeight(*SubscribeEventsFromStartHeightRequest, ExecutionDataAPI_SubscribeEventsFromStartHeightServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeEventsFromStartHeight not implemented")
+}
+func (UnimplementedExecutionDataAPIServer) SubscribeEventsFromLatest(*SubscribeEventsFromLatestRequest, ExecutionDataAPI_SubscribeEventsFromLatestServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeEventsFromLatest not implemented")
+}
 func (UnimplementedExecutionDataAPIServer) GetRegisterValues(context.Context, *GetRegisterValuesRequest) (*GetRegisterValuesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRegisterValues not implemented")
+}
+func (UnimplementedExecutionDataAPIServer) SubscribeAccountStatusesFromStartBlockID(*SubscribeAccountStatusesFromStartBlockIDRequest, ExecutionDataAPI_SubscribeAccountStatusesFromStartBlockIDServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeAccountStatusesFromStartBlockID not implemented")
+}
+func (UnimplementedExecutionDataAPIServer) SubscribeAccountStatusesFromStartHeight(*SubscribeAccountStatusesFromStartHeightRequest, ExecutionDataAPI_SubscribeAccountStatusesFromStartHeightServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeAccountStatusesFromStartHeight not implemented")
+}
+func (UnimplementedExecutionDataAPIServer) SubscribeAccountStatusesFromLatestBlock(*SubscribeAccountStatusesFromLatestBlockRequest, ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlockServer) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeAccountStatusesFromLatestBlock not implemented")
 }
 
 // UnsafeExecutionDataAPIServer may be embedded to opt out of forward compatibility for this service.
@@ -294,6 +952,69 @@ func (x *executionDataAPISubscribeExecutionDataServer) Send(m *SubscribeExecutio
 	return x.ServerStream.SendMsg(m)
 }
 
+func _ExecutionDataAPI_SubscribeExecutionDataFromStartBlockID_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeExecutionDataFromStartBlockIDRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ExecutionDataAPIServer).SubscribeExecutionDataFromStartBlockID(m, &executionDataAPISubscribeExecutionDataFromStartBlockIDServer{stream})
+}
+
+type ExecutionDataAPI_SubscribeExecutionDataFromStartBlockIDServer interface {
+	Send(*SubscribeExecutionDataResponse) error
+	grpc.ServerStream
+}
+
+type executionDataAPISubscribeExecutionDataFromStartBlockIDServer struct {
+	grpc.ServerStream
+}
+
+func (x *executionDataAPISubscribeExecutionDataFromStartBlockIDServer) Send(m *SubscribeExecutionDataResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _ExecutionDataAPI_SubscribeExecutionDataFromStartBlockHeight_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeExecutionDataFromStartBlockHeightRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ExecutionDataAPIServer).SubscribeExecutionDataFromStartBlockHeight(m, &executionDataAPISubscribeExecutionDataFromStartBlockHeightServer{stream})
+}
+
+type ExecutionDataAPI_SubscribeExecutionDataFromStartBlockHeightServer interface {
+	Send(*SubscribeExecutionDataResponse) error
+	grpc.ServerStream
+}
+
+type executionDataAPISubscribeExecutionDataFromStartBlockHeightServer struct {
+	grpc.ServerStream
+}
+
+func (x *executionDataAPISubscribeExecutionDataFromStartBlockHeightServer) Send(m *SubscribeExecutionDataResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _ExecutionDataAPI_SubscribeExecutionDataFromLatest_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeExecutionDataFromLatestRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ExecutionDataAPIServer).SubscribeExecutionDataFromLatest(m, &executionDataAPISubscribeExecutionDataFromLatestServer{stream})
+}
+
+type ExecutionDataAPI_SubscribeExecutionDataFromLatestServer interface {
+	Send(*SubscribeExecutionDataResponse) error
+	grpc.ServerStream
+}
+
+type executionDataAPISubscribeExecutionDataFromLatestServer struct {
+	grpc.ServerStream
+}
+
+func (x *executionDataAPISubscribeExecutionDataFromLatestServer) Send(m *SubscribeExecutionDataResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 func _ExecutionDataAPI_SubscribeEvents_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(SubscribeEventsRequest)
 	if err := stream.RecvMsg(m); err != nil {
@@ -315,6 +1036,69 @@ func (x *executionDataAPISubscribeEventsServer) Send(m *SubscribeEventsResponse)
 	return x.ServerStream.SendMsg(m)
 }
 
+func _ExecutionDataAPI_SubscribeEventsFromStartBlockID_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeEventsFromStartBlockIDRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ExecutionDataAPIServer).SubscribeEventsFromStartBlockID(m, &executionDataAPISubscribeEventsFromStartBlockIDServer{stream})
+}
+
+type ExecutionDataAPI_SubscribeEventsFromStartBlockIDServer interface {
+	Send(*SubscribeEventsResponse) error
+	grpc.ServerStream
+}
+
+type executionDataAPISubscribeEventsFromStartBlockIDServer struct {
+	grpc.ServerStream
+}
+
+func (x *executionDataAPISubscribeEventsFromStartBlockIDServer) Send(m *SubscribeEventsResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _ExecutionDataAPI_SubscribeEventsFromStartHeight_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeEventsFromStartHeightRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ExecutionDataAPIServer).SubscribeEventsFromStartHeight(m, &executionDataAPISubscribeEventsFromStartHeightServer{stream})
+}
+
+type ExecutionDataAPI_SubscribeEventsFromStartHeightServer interface {
+	Send(*SubscribeEventsResponse) error
+	grpc.ServerStream
+}
+
+type executionDataAPISubscribeEventsFromStartHeightServer struct {
+	grpc.ServerStream
+}
+
+func (x *executionDataAPISubscribeEventsFromStartHeightServer) Send(m *SubscribeEventsResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _ExecutionDataAPI_SubscribeEventsFromLatest_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeEventsFromLatestRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ExecutionDataAPIServer).SubscribeEventsFromLatest(m, &executionDataAPISubscribeEventsFromLatestServer{stream})
+}
+
+type ExecutionDataAPI_SubscribeEventsFromLatestServer interface {
+	Send(*SubscribeEventsResponse) error
+	grpc.ServerStream
+}
+
+type executionDataAPISubscribeEventsFromLatestServer struct {
+	grpc.ServerStream
+}
+
+func (x *executionDataAPISubscribeEventsFromLatestServer) Send(m *SubscribeEventsResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 func _ExecutionDataAPI_GetRegisterValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetRegisterValuesRequest)
 	if err := dec(in); err != nil {
@@ -331,6 +1115,69 @@ func _ExecutionDataAPI_GetRegisterValues_Handler(srv interface{}, ctx context.Co
 		return srv.(ExecutionDataAPIServer).GetRegisterValues(ctx, req.(*GetRegisterValuesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
+}
+
+func _ExecutionDataAPI_SubscribeAccountStatusesFromStartBlockID_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeAccountStatusesFromStartBlockIDRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ExecutionDataAPIServer).SubscribeAccountStatusesFromStartBlockID(m, &executionDataAPISubscribeAccountStatusesFromStartBlockIDServer{stream})
+}
+
+type ExecutionDataAPI_SubscribeAccountStatusesFromStartBlockIDServer interface {
+	Send(*SubscribeAccountStatusesResponse) error
+	grpc.ServerStream
+}
+
+type executionDataAPISubscribeAccountStatusesFromStartBlockIDServer struct {
+	grpc.ServerStream
+}
+
+func (x *executionDataAPISubscribeAccountStatusesFromStartBlockIDServer) Send(m *SubscribeAccountStatusesResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _ExecutionDataAPI_SubscribeAccountStatusesFromStartHeight_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeAccountStatusesFromStartHeightRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ExecutionDataAPIServer).SubscribeAccountStatusesFromStartHeight(m, &executionDataAPISubscribeAccountStatusesFromStartHeightServer{stream})
+}
+
+type ExecutionDataAPI_SubscribeAccountStatusesFromStartHeightServer interface {
+	Send(*SubscribeAccountStatusesResponse) error
+	grpc.ServerStream
+}
+
+type executionDataAPISubscribeAccountStatusesFromStartHeightServer struct {
+	grpc.ServerStream
+}
+
+func (x *executionDataAPISubscribeAccountStatusesFromStartHeightServer) Send(m *SubscribeAccountStatusesResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlock_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeAccountStatusesFromLatestBlockRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ExecutionDataAPIServer).SubscribeAccountStatusesFromLatestBlock(m, &executionDataAPISubscribeAccountStatusesFromLatestBlockServer{stream})
+}
+
+type ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlockServer interface {
+	Send(*SubscribeAccountStatusesResponse) error
+	grpc.ServerStream
+}
+
+type executionDataAPISubscribeAccountStatusesFromLatestBlockServer struct {
+	grpc.ServerStream
+}
+
+func (x *executionDataAPISubscribeAccountStatusesFromLatestBlockServer) Send(m *SubscribeAccountStatusesResponse) error {
+	return x.ServerStream.SendMsg(m)
 }
 
 // ExecutionDataAPI_ServiceDesc is the grpc.ServiceDesc for ExecutionDataAPI service.
@@ -356,8 +1203,53 @@ var ExecutionDataAPI_ServiceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 		{
+			StreamName:    "SubscribeExecutionDataFromStartBlockID",
+			Handler:       _ExecutionDataAPI_SubscribeExecutionDataFromStartBlockID_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeExecutionDataFromStartBlockHeight",
+			Handler:       _ExecutionDataAPI_SubscribeExecutionDataFromStartBlockHeight_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeExecutionDataFromLatest",
+			Handler:       _ExecutionDataAPI_SubscribeExecutionDataFromLatest_Handler,
+			ServerStreams: true,
+		},
+		{
 			StreamName:    "SubscribeEvents",
 			Handler:       _ExecutionDataAPI_SubscribeEvents_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeEventsFromStartBlockID",
+			Handler:       _ExecutionDataAPI_SubscribeEventsFromStartBlockID_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeEventsFromStartHeight",
+			Handler:       _ExecutionDataAPI_SubscribeEventsFromStartHeight_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeEventsFromLatest",
+			Handler:       _ExecutionDataAPI_SubscribeEventsFromLatest_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeAccountStatusesFromStartBlockID",
+			Handler:       _ExecutionDataAPI_SubscribeAccountStatusesFromStartBlockID_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeAccountStatusesFromStartHeight",
+			Handler:       _ExecutionDataAPI_SubscribeAccountStatusesFromStartHeight_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeAccountStatusesFromLatestBlock",
+			Handler:       _ExecutionDataAPI_SubscribeAccountStatusesFromLatestBlock_Handler,
 			ServerStreams: true,
 		},
 	},

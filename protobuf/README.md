@@ -27,12 +27,19 @@ JVM support is in the alpha stage; many steps require manual intervention.
 
 `./gradlew generateProto` compiles Protobuf files into local Java classes.
 
-### Publishing
+### Publishing with GitHub Actions
 
-`./gradlew publishToSonatype` prepares and publishes compiled classes into JAR and uploads to OSSRH staging repository.
+The "com.vanniktech.maven.publish" plugin is used to automate Maven releases for JVM protobuf generation. More information on the release process can be found [here](https://vanniktech.github.io/gradle-maven-publish-plugin/central/).
 
-This requires signing artifacts which is done by [Signing Gradle plugin](https://docs.gradle.org/current/userguide/signing_plugin.html) - it requires
-external configuration and appropriate GPG Keys. Please refer to plugin and [OSSRH](https://central.sonatype.org/pages/working-with-pgp-signatures.html)
-documentation.
-Uploading to staging repo requires an approved Sonatype account. Please refer to [Gradle Nexus Publish Plugin](https://github.com/gradle-nexus/publish-plugin)
-documentation how to provide credentials.
+There are two GitHub Actions configured to run on the master branch:
+
+- SNAPSHOT: On every commit to the `master` branch a build is performed and if successful it is deployed as a snapshot version.
+- RELEASE: Whenever a tag is created with the pattern of `vXXX` a version with the name XXX is built and if successful deployed as a release version.
+
+The following GitHub repository secrets configure these actions:
+
+- `FLOW_JVM_SDK_CICD_PUBLISH_ENABLED`: (optional) Must be `true` for the publishing of artifacts to happen (defaults to `false`)
+- `FLOW_JVM_SDK_SIGNING_KEY`: (required if publish enabled) ascii armored version of the pgp key for signing releases
+- `FLOW_JVM_SDK_SIGNING_PASSWORD`: (required if publish enabled) password to the pgp key
+- `FLOW_JVM_SDK_SONATYPE_USERNAME`: (required if publish enabled) sonatype username
+- `FLOW_JVM_SDK_SONATYPE_PASSWORD`: (required if publish enabled) sonatype password

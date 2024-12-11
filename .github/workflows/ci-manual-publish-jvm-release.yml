@@ -1,0 +1,61 @@
+name: Manually Publish Release - JVM Protobuf
+on:
+  workflow_dispatch:
+    branches:
+      - master
+jobs:
+  build:
+    name: Manually publish release
+    runs-on: ubuntu-latest
+    env:
+      JAVA_OPTS: -Xmx2g -Dorg.gradle.daemon=false
+    #services:
+    #  flow-emulator:
+    #    image: gcr.io/flow-container-registry/emulator
+    #    env:
+    #      FLOW_VERBOSE: true
+    #      FLOW_PORT: 3569
+    #      FLOW_INTERVAL: 5s
+    #      FLOW_PERSIST: false
+    #    ports:
+    #      - 3569:3569
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v2 
+        with:
+          java-version: '21'
+          java-package: jdk
+          distribution: 'adopt'
+
+      - name: Make gradle executable
+        run: chmod +x ./protobuf/gradlew
+
+      - name: Build
+        id: build
+        run: cd protobuf && ./gradlew --warning-mode all check build
+
+      - name: Publish release
+        env:
+          JAVA_OPTS: -Xmx2g -Dorg.gradle.daemon=false
+          ORG_GRADLE_PROJECT_mavenCentralUsername:  '${{ secrets.FLOW_JVM_SDK_SONATYPE_USERNAME }}'
+          ORG_GRADLE_PROJECT_mavenCentralPassword:  '${{ secrets.FLOW_JVM_SDK_SONATYPE_PASSWORD }}'
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.FLOW_JVM_SDK_SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.FLOW_JVM_SDK_SIGNING_PASSWORD }}
+
+        run: |
+          cd protobuf
+          if [[ "${{ secrets.FLOW_JVM_SDK_CICD_PUBLISH_ENABLED }}" != "true" ]];
+          then
+            exit 0;
+          fi
+          ./gradlew \
+            -Psigning.key="${{ secrets.FLOW_JVM_SDK_SIGNING_KEY }}" \
+            -Psigning.password="${{ secrets.FLOW_JVM_SDK_SIGNING_PASSWORD }}" \
+            publishAndReleaseToMavenCentral --no-configuration-cache

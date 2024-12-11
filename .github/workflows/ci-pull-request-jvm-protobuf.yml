@@ -1,0 +1,36 @@
+name: Build Pull Request - JVM Protobuf
+on: pull_request
+
+jobs:
+  build:
+    name: Build pull request
+    runs-on: ubuntu-latest
+    env:
+      JAVA_OPTS: -Xmx2g -Dorg.gradle.daemon=false
+    #services:
+    #  flow-emulator:
+    #    image: gcr.io/flow-container-registry/emulator
+    #    env:
+    #      FLOW_VERBOSE: true
+    #      FLOW_PORT: 3569
+    #      FLOW_INTERVAL: 5s
+    #      FLOW_PERSIST: false
+    #    ports:
+    #      - 3569:3569
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '21'
+          java-package: jdk
+          distribution: 'adopt'
+
+      - name: Make gradle executable
+        run: chmod +x ./protobuf/gradlew
+
+      - name: Build
+        id: build
+        run: cd protobuf && ./gradlew --warning-mode all check build
