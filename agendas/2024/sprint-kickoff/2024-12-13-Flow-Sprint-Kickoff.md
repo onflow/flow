@@ -14,7 +14,7 @@
 | Block Finalization      | 99.9%   |    100%       |       0%         |
 | Transaction Execution   | 99.9%   |    100%       |       0%         |
 | Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    99.97%     |       32.2%      |
+| Access API Liveness     | 99.9%   |    ?     |       ?      |
 
 #### Incidents
 * 
@@ -201,18 +201,39 @@ Cycle Objective(s):
 ---
 
 ### **Infra - JP**
-Cycle Objective(s): 
-- Migrate Flow metrics & logs to Flow Foundation grafana account to reduce cost on DapperLabs
 
 **Done last sprint**
 
-* 
+**Automation**
+- Create Grafana integration for routing messages to slack
+- [Create infra for backwards compatibility automation](https://github.com/onflow/ff-sre-infrastructure/pull/70)
+- [Create automation for verifying backwards compatibility](https://github.com/onflow/ff-sre-automation/pull/7)
+- [Add polling and env var injection support to backwards compatibility automation](https://github.com/onflow/ff-sre-automation/pull/7)
+- [Update backwards compatibility automation to use proper CDP dir](https://github.com/onflow/ff-sre-automation/pull/9)
+
+**IAM Migration**
+- Clean up old IAM access in GCP projects
+- [Create Flow Foundation IAM groups](https://github.com/onflow/ff-sre-infrastructure/pull/54)
+- Validate access with team members before cutover
+- [Remove DL group access from FF GCP projects](https://github.com/onflow/ff-sre-infrastructure/pull/72)
+- [Remove KMS key access](https://github.com/onflow/ff-sre-infrastructure/pull/75)
+
+**GCR Migration**
+- Validated and executed copy of all images to Artifact Registry
+
+**Observability**
+- Fix K6 synthetic monitor(s) to gracefully fail on request timeout
+
+**Support**
+- [Create IAC for DNS record](https://github.com/onflow/ff-sre-infrastructure/pull/74)
+- [Create DNS record for docs.wallet.flow.com](https://github.com/onflow/ff-sre-infrastructure/pull/71) 
+- [Remove unnecessary wildcard record](https://github.com/onflow/ff-sre-infrastructure/pull/73)
 
 **This sprint**
-
-**Goal of Sprint is to migrate from DapperLabs account to FlowFoundation account** 
-
-* 
+* Fully migrate GCR to Artifact Registry
+* Assist in setup of TN fork for testing
+* Update CD workflow to leverage 
+* Continue interviewing SRE Candidates
 
 **On Hold**
 **Active Epics**
