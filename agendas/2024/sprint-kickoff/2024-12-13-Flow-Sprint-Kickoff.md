@@ -4,6 +4,7 @@
  
  * EVM Dry-run deployed on Mainnet (enables more flexibility in configuring EVM traces and reduces load on ANs)
  * Completed [DB access abstraction](https://github.com/onflow/flow-go/pull/6465) - first step towards replacing Badger DB.
+ * Latest EVM Gateway (v1.0.0-rc.17, deployed to testnet preview ednpoint) reduced latency of eth_sendRawTransaction from ~8-10s to sub-second response time.
 
 --- 
 
