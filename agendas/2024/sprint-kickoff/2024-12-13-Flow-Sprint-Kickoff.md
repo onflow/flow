@@ -2,7 +2,7 @@
 
  ### Team Wins 🎉
  
- * EVM Dry-run deployed on Mainnet (enbales more flexibility in configuring EVM traces and reduces load on ANs)
+ * EVM Dry-run deployed on Mainnet (enables more flexibility in configuring EVM traces and reduces load on ANs)
  * Completed abstraction of DB access - first step towards replacing Badger DB.
 
 --- 
