@@ -102,74 +102,106 @@ Cycle Objective(s):
 ### **Core Protocol** \[Jerome]
 Cycle Objective(s): 
 
-* Translate crypto performance improvements to consensus block rate increase
-* Provide developers secure and non-rate limited way to access all of chain data (transactions, blocks, account balance, events, account balance etc) by locally running an access or an observer node
-* Reduce CPU usage on Execution node by 30%
-* Continue BFT mitigations to enable 10 permissionless ANs
-* Continue design of Dynamic Protocol 
+* Restore Flow protocol eng team to required critical mass [IN PROGRESS]
+* Faster transaction results to improve user experience [IN PROGRESS]
+* Address vectors which risk network downtime
+  1. Operationalize EFM Recovery [IN PROGRESS]
+  2. Protocol level HCU [NOT STARTED]
+* Add passkey support: Protocol design and scoping [IN PROGRESS]
+* Furthering permissionless participation
+  1. Proof of Possession [IN PROGRESS]
+  2. KR2: SPoCK Research [PAUSED]
 
 **Done last sprint**
 
+* <ins>EFM and Protocol HCU</ins>
+
+  - Improving upgrade plan https://www.notion.so/flowfoundation/EFM-Recovery-Release-Upgrade-Plan-14d1aee1232480228a87e43933815285?pvs=4
+    - Avoid a small smart contract change
+    - Simplify steps to avoid second Protocol HCU
+  - Implement Protocol HCU version-aware upgrade logic [Issue #6796](https://github.com/onflow/flow-go/pull/6796), [Issue #1531](https://github.com/onflow/flow/pull/1531)
+  - Continued design and implementation of [recoverable random beacon key state machine](https://github.com/onflow/flow-go/pull/6771)
+  - [Ensure backward-compatibility of EpochCommit](https://github.com/onflow/flow-go/pull/6795)
+  - Updates to [integration tests](https://github.com/onflow/flow-go/pull/6632)
+
 * <ins>Data Availability</ins>
   - KROK Team
-      - Websockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
-          - Implement the controller and data providers ([Issue #6642](https://github.com/onflow/flow-go/issues/6642), [Issue #6640](https://github.com/onflow/flow-go/issues/6640), [Issue #6587](https://github.com/onflow/flow-go/issues/6587), [Issue #6637](https://github.com/onflow/flow-go/issues/6637), [Issue #6775](https://github.com/onflow/flow-go/issues/6775), [Issue #6767](https://github.com/onflow/flow-go/issues/6767), [Issue #6724](https://github.com/onflow/flow-go/issues/6724))
+    - Implement the Websocket controller and data providers
+       - [Issue #6642](https://github.com/onflow/flow-go/issues/6642)
+       - [Issue #6640](https://github.com/onflow/flow-go/issues/6640)
+       - [Issue #6587](https://github.com/onflow/flow-go/issues/6587)
+       - [Issue #6637](https://github.com/onflow/flow-go/issues/6637)
+       - [Issue #6775](https://github.com/onflow/flow-go/issues/6775)
+       - [Issue #6767](https://github.com/onflow/flow-go/issues/6767)
+       - [Issue #6724](https://github.com/onflow/flow-go/issues/6724)
 
+* <ins>Cryptography</ins>
 
+   - PoP
+      - Stax failure
+         - VL confirmed the breaking change issue in a dependent library - requires VacuumLabs help, discussion ongoing
+      - Flow Port integration and real device test: further debugging - Tom fixed the flow-port issue and integration has passed
+      - Real device testing: worked on fixing issue with screen display on new app build
+      - Work is paused till VL fixes the [repo issue](https://github.com/onflow/ledger-app-flow/pull/110)
+  - Passkeys
+      - Familiarization with other implementations (mainly apple, google)
+      - Reading up on FIDO2 specs, including CTAP and WebauthN, details on signatures (algos, data signed)
 
 **This sprint**
+
+* <ins>EFM and Protocol HCU</ins>
+  - Finalize and merge [backward-compatibility of EpochCommit](https://github.com/onflow/flow-go/pull/6795)
+  - Continue PR for recoverable random key state machine
+  - Continue on backward-compatibility updates needed for EFM
+
 * <ins>Data Availability</ins>
   - KROK Team
-      - WebSockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
-          - Continue to implement the WebSockets controller and data providers ([Issue #6641](https://github.com/onflow/flow-go/issues/6641), [Issue #6586](https://github.com/onflow/flow-go/issues/6586), [Issue #6799](https://github.com/onflow/flow-go/issues/6799), [Issue #6644](https://github.com/onflow/flow-go/issues/6644))
-      - Plan to address review remarks resulting from numerous PRs
+    - Continue to implement the WebSockets controller and data providers
+      - [Issue #6641](https://github.com/onflow/flow-go/issues/6641)
+      - [Issue #6586](https://github.com/onflow/flow-go/issues/6586)
+      - [Issue #6799](https://github.com/onflow/flow-go/issues/6799)
+      - [Issue #6644](https://github.com/onflow/flow-go/issues/6644))
+    - Address PR revoiew feedback
 
+* <ins>Cryptography</ins>
+  - Passkeys
+    - Present and discuss FVM implementation options
+      
 **On Hold**
 * Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
 
 **Active Epics**
-
-- Reinforcing Flow’s commitment to full protocol autonomy and scalability
-- Improve network performance
-- Improve network availability 
-- Simplify community contributions to core protocol and maintainability
-- Improve network reliability and data availability for dApp developers
-- Data-driven Prioritization and Scaling Engineering
+* Websockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
 
 ---
 
 ### **DeFi** \[Jerome]
 
 Cycle Objective(s): 
-- Resolving Circle's existing engineering improvements for USDC on Flow
-- DEX Prep - IncrementFi
-- Bridge Prep - Axelar
+- Close gaps in Defi/Liquidity infrastructure post-Cadence 1.0
+- Bring liquidity and and kick start ecosystem effects
 
 **Done last sprint**
 
-* 
+* Started LayerZero integration
+* Support Alchemy, .Find with EVM GW support
 
 **This sprint**
 
-*
+* Complete LayerZero integration
+* Support Thirdweb and other teams as needed for EVM GW node standup
 
 **On Hold**
 - N/A
 
-**Active Epics**
-
-- Establish Defi/Liquidity infrastructure for Cadence 1.0 update
-- Ensure Flow has best-in-class on- and off-ramps for USDC liquidity across DeFi ecosystem
-- Expand Flow DeFi ecosystem primitives and protocols
 
 ---
 
 ### **Developer Experience** \[Kan]
 
 Cycle Objective(s): 
-- Inspire and Excite EVM Devs To Supercharge Their EVM Apps Using Cadence Only Features
-- Improve Quality of Life and Reduce Technical Debt for Internal Dev Team
-- Empower developers with comprehensive documentation that accelerates their adoption of Flow by demonstrating crucial tasks and highlighting Flow-specific approaches
+ - Improve Quality of Life, Level Up Dev Documentation and Learning Path, Supercharge EVMxCadence, Inspire and Excite Wave of New Flow Devs
+
 
 **Done last sprint**
 
@@ -186,6 +218,7 @@ Cycle Objective(s):
 
 **This sprint**
 
+
 * [Discovery for VM bridge improvements](https://github.com/onflow/flow-evm-bridge/issues/135)
 * [Improvement of proposer key cycling example and documentation](https://github.com/onflow/dx-internal/issues/33)
 * [Assist Wallet team with CI/CD and automated testing](https://github.com/onflow/dx-internal/issues/47)
@@ -193,6 +226,7 @@ Cycle Objective(s):
 * [Continue Lost & Found integration](https://github.com/onflow/flow-port/issues/366)
 * [Update bridge.flow.com to be compatible with LayerZero](https://github.com/onflow/flow-bridge-app/issues/11)
 * [Support PoP work](https://github.com/onflow/flow-port/issues/364)
+
 
 **On Hold**
 
@@ -202,28 +236,9 @@ Cycle Objective(s):
 
 ### Wallet (Jeff) 
 
-**Cycle Objective(s):** 
-
-KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 2 per week on a 4-week rolling average.
-
-KR 2: KR 2: Improve SLA response time for critical (P0) issues to under 1 hour, with resolution within 12 hours, and high-priority issues (P1) to 12 hours, with resolution within 72 hours.
-
-KR 3: Ensure that 90% of accounts holding >= 100 FLOW, or having storage used greater than the minimum account storage are backed up.
-
 **Done last sprint**
 
-- Released Blocto key importing on Flow Wallet iOS
-- Released Mixpanel support to Flow Wallet iOS and Android
-- Resolved wallet connect issues on Flow Wallet extension
-- Released dynamic address support on Flow Wallet extension
-
 **This sprint**
-
-- Ship storage improvements to iOS, Android, Extension: https://github.com/Outblock/FRW/issues/61
-- Ship network deposit alert on iOS, Android, Extension
-- Ship mixpanel support to Flow Wallet extension
-- Start EVM calldata decoding on Flow Wallet Extension: https://github.com/Outblock/FRW/issues/84
-- Start adding Dropbox to cloud multibackup option on Flow Wallet iOS, Android: https://github.com/Outblock/FRW/issues/66
 
 **On Hold**
 
