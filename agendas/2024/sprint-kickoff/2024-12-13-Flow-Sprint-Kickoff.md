@@ -164,33 +164,39 @@ Cycle Objective(s):
 
 ---
 
-### **User Experience** \[Greg]
+### **Developer Experience** \[Kan]
 
 Cycle Objective(s): 
-- Bring Cadence 1.0 to market as part of the Crescendo release to minimize customer impact and developer effort
-- Bring EVM on Flow to Market as part of the Crescendo release to increase liquidity and bring top-tier developer platforms to our network
-- Use the Crescendo Release grow Flow's developer base and network activity
+- Inspire and Excite EVM Devs To Supercharge Their EVM Apps Using Cadence Only Features
+- Improve Quality of Life and Reduce Technical Debt for Internal Dev Team
+- Empower developers with comprehensive documentation that accelerates their adoption of Flow by demonstrating crucial tasks and highlighting Flow-specific approaches
 
 **Done last sprint**
 
-*
+* [Discovery for VM bridge improvements](https://github.com/onflow/flow-evm-bridge/issues/135)
+* [Improvement of proposer key cycling example and documentation](https://github.com/onflow/dx-internal/issues/33)
+* [Assist Wallet team with CI/CD and automated testing](https://github.com/onflow/dx-internal/issues/47)
+* [Start work on Gold Star, a new doc site initiative](https://github.com/onflow/dx-internal/issues/41)
+* [Continue Lost & Found integration](https://github.com/onflow/flow-port/issues/366)
+* [Update bridge.flow.com to be compatible with LayerZero](https://github.com/onflow/flow-bridge-app/issues/11)
+* [Support PoP work](https://github.com/onflow/flow-port/issues/364)
+* [(BUG) Flow port number input slow/laggy](https://github.com/onflow/flow-port/issues/381)
+* [Fix transaction error not being exported](https://github.com/onflow/fcl-js/issues/2042)
+  
 
 **This sprint**
 
-**Sprint goal focusing on adding docs and tool support for Crescendo network and Cadence 1.0**
-
-- [Add Crescendo network support to FCL Discovery](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=50332654)
-- [Add Crescendo Network to CLI (config, cmds, docs, etc)](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=50297186)
-- [Add/Publish Initial EVM Docs](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51952883)
-- [Docs Revamp v3](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=49327073)
-- [Add C1.0 Rules to Cadence Linter](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51952640)
-- [Update Playground to support Cadence 1.0](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=49844013)
-- [Stable Cadence Installation Workflow](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51951905)
-
+* [Discovery for VM bridge improvements](https://github.com/onflow/flow-evm-bridge/issues/135)
+* [Improvement of proposer key cycling example and documentation](https://github.com/onflow/dx-internal/issues/33)
+* [Assist Wallet team with CI/CD and automated testing](https://github.com/onflow/dx-internal/issues/47)
+* [Start work on Gold Star, a new doc site initiative](https://github.com/onflow/dx-internal/issues/41)
+* [Continue Lost & Found integration](https://github.com/onflow/flow-port/issues/366)
+* [Update bridge.flow.com to be compatible with LayerZero](https://github.com/onflow/flow-bridge-app/issues/11)
+* [Support PoP work](https://github.com/onflow/flow-port/issues/364)
 
 **On Hold**
 
-- [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
+- 
 
 ---
 
