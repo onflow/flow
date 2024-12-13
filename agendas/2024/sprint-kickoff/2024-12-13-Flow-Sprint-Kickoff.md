@@ -194,44 +194,30 @@ Cycle Objective(s):
 
 ---
 
-### **Wallet** \[Jeff]
+### Wallet (Jeff) 
 
-Cycle Objective(s): 
+**Cycle Objective(s):** 
 
-- Ensure there exists a wallet ecosystem supports FlowEVM
-  - Release version 2.2 of Flow Wallet which supports FlowEVM
-    - Support Authn / Authz / User Sign with Web3.js and WalletConnect
-    - Support FT and NFT management cross VMs
-    - FlowEVM onboarding and COA creation
-  - Ensure commitments from key EVM wallet providers to support FlowEVM
-    - Secure FlowEVM as an option in the network selector list for MetaMask.
-    - Reach out to Coinbase wallet for a commitment to support FlowEVM
-  - Ensure commitments from key EVM wallet providers to support FlowEVM
-    - Reach out to Privy for a commitment to support FlowEVM
-    - Reach out to Bastion for a commitment to support FlowEVM
-    - Ensure awareness for existing Cadence aware wallet (aside from Flow Wallet) to support FlowEVM
-  - Provide a design document outlining the steps existing Cadence aware wallets can take to support FlowEVM.
-    - Reach out to Blocto for a commitment to support FlowEVM
-    - Reach out to Shadow wallet for a commitment to support FlowEVM
-    - Reach out to Magic for a commitment to support FlowEVM
+KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 2 per week on a 4-week rolling average.
 
-- Promote safe, human readable transaction authorization on Flow
-  - Secure a partnership with Blockaid to integrate their transaction simulation and security platform with FlowEVM.
-  - Ensure the existing MetaMask Blockaid integration is compatible with FlowEVM.
+KR 2: KR 2: Improve SLA response time for critical (P0) issues to under 1 hour, with resolution within 12 hours, and high-priority issues (P1) to 12 hours, with resolution within 72 hours.
 
-- Modernize and improve FCL Discovery
-  - Create a PRD and associated community bounty/grant for UI/UX improvements and analytics additions to FCL Discovery.
+KR 3: Ensure that 90% of accounts holding >= 100 FLOW, or having storage used greater than the minimum account storage are backed up.
 
 **Done last sprint**
 
-- N/A
+- Released Blocto key importing on Flow Wallet iOS
+- Released Mixpanel support to Flow Wallet iOS and Android
+- Resolved wallet connect issues on Flow Wallet extension
+- Released dynamic address support on Flow Wallet extension
 
 **This sprint**
 
-- Begin creating developer documentation highlighting FlowEVM
-- Updating cadence transactions / scripts for Cadence 1.0
-- Begin executing on FlowEVM updates to Flow Wallet
-- Scheduled calls with MetaMask and Coinbase Wallet teams to intro FlowEVM and gather their requirements.
+- Ship storage improvements to iOS, Android, Extension: https://github.com/Outblock/FRW/issues/61
+- Ship network deposit alert on iOS, Android, Extension
+- Ship mixpanel support to Flow Wallet extension
+- Start EVM calldata decoding on Flow Wallet Extension: https://github.com/Outblock/FRW/issues/84
+- Start adding Dropbox to cloud multibackup option on Flow Wallet iOS, Android: https://github.com/Outblock/FRW/issues/66
 
 **On Hold**
 
