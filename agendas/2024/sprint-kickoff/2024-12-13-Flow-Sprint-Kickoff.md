@@ -160,8 +160,8 @@ Cycle Objective(s):
       - [Issue #6641](https://github.com/onflow/flow-go/issues/6641)
       - [Issue #6586](https://github.com/onflow/flow-go/issues/6586)
       - [Issue #6799](https://github.com/onflow/flow-go/issues/6799)
-      - [Issue #6644](https://github.com/onflow/flow-go/issues/6644))
-    - Address PR revoiew feedback
+      - [Issue #6644](https://github.com/onflow/flow-go/issues/6644)
+    - Address PR review feedback
 
 * <ins>Cryptography</ins>
   - Passkeys
