@@ -2,7 +2,8 @@
 
  ### Team Wins 🎉
  
- * 
+ * EVM Dry-run deployed on Mainnet (enables more flexibility in configuring EVM traces and reduces load on ANs)
+ * Completed [DB access abstraction](https://github.com/onflow/flow-go/pull/6465) - first step towards replacing Badger DB.
 
 --- 
 
@@ -28,39 +29,73 @@
 ### **Cadence and Virtual Machine** \[Jan]
 Cycle Objective(s):
 
-1) Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
-2) Calibrate Transaction fees so that they accurately reflect resource usage during execution and deploy as part of Crescendo to avoid future disruption.
-3) Analyze execution runtime trends and risks to plan next set of scalability OKRs.
+[Cadence Language](https://github.com/onflow/cadence/issues/3623)
 
-* Stretch-goals:
-4) Expand testing capability of storehouse so that we can validate execution correctness and benchmark performance on Mainnet data
-5) Design a new Trie to improve performance of update operation, reduce memory usage and size of proofs and to support more flexible proof queries.
-6) Enable Concurrent Execution on one EN on Mainnet to validate correctness of the implementation (Detect execution forks)
-7) Improve execution performance to mitigate the impact of adding metadata to token standards
+[Cadence VM (execution environment)](https://github.com/onflow/flow-go/issues/6577)
 
 **Done last sprint**
 
-* 
+**Cadence Language**
+- Cadence compiler
+    - [Allow compiler to generate instructions, retarget VM to use instructions](https://github.com/onflow/cadence/pull/3715)
+    - [Refactor instruction encoding/decoding](https://github.com/onflow/cadence/pull/3714)
+    - [Refactor bytecode encoding](https://github.com/onflow/cadence/pull/3713)
+    - Custom VM
+        - [Improve and test instruction printer](https://github.com/onflow/cadence/pull/3706)
+    - tech-debt removal: [Remove the old compiler and VM PoC](https://github.com/onflow/cadence/pull/3705)
+- Performance improvement
+    - [Lazily compute fields of account type values](https://github.com/onflow/cadence/pull/3710)
+
+**Cadence Execution**
+- [Add universal database operations](https://github.com/onflow/flow-go/pull/6465)
+- Storage optimization: [Combine non-atree domain payloads into atree payloads](https://github.com/onflow/cadence/issues/3584)
+- Execution validation - [Cadence backwards compatibility](https://github.com/onflow/flow-go/issues/6557)
+    - [Backport v0.37 cmd add verify execution result](https://github.com/onflow/flow-go/pull/6791)
+    - [[Util] Add verify execution result cmd](https://github.com/onflow/flow-go/pull/6746)
+
+**EVM Core**
+- Block re-execution fix: [Fix coinbase address change for old testnet](https://github.com/onflow/flow-go/pull/6763)
+
+**EVM Gateway**
+- Dry-run feature (local state index)
+- Improving latency of eth_sendRawTransaction - [Enable validation of submitted transactions with local state index](https://github.com/onflow/flow-evm-gateway/pull/693)
+    - [Make EVM transaction submission non-blocking](https://github.com/onflow/flow-evm-gateway/issues/654)
+    - [Validate transactions using local state](https://github.com/onflow/flow-evm-gateway/issues/586)
+    - [Improve key-rotation mechanism](https://github.com/onflow/flow-evm-gateway/issues/118)
+- GW Hardening Improvements:
+    - [Use instance of config instead of reference](https://github.com/onflow/flow-evm-gateway/pull/689)
+    - EVM state checkpointing & tooling:
+        - [Extract EVM state](https://github.com/onflow/flow-evm-gateway/pull/683)
+        - [Refactor Export EVM State and Compare State Diff](https://github.com/onflow/flow-go/pull/6760)
+        - [Add verification tool for evm offchain replay](https://github.com/onflow/flow-go/pull/6755)
+- Bugfixes:
+    - [eth_getLog() returns null instead of list if there are no transactions](https://github.com/onflow/flow-evm-gateway/issues/695)
+    - [Fix logical error in `eth_estimateGas` endpoint](https://github.com/onflow/flow-evm-gateway/pull/690)
+- Testing
+    - [Use proper variable in E2E test file for logs filtering](https://github.com/onflow/flow-evm-gateway/pull/698)
 
 **This sprint**
 
-* 
+- Continue [EVM Gateway Hardening](https://github.com/onflow/flow-go/issues/6539) stretch goals & release 1.0.0.
+
+- Cadence Language
+  - Continue work on Content for [commuity outreach](https://github.com/onflow/cadence/issues/3596)
+  - Continue work on the [Cadence compiler POC - Phase 2](https://github.com/onflow/cadence/issues/3692)
+  - Continue work on [Cadence language Specification](https://github.com/onflow/cadence/issues/3599)
+  - Start working on Blog post to communicate status & goals of the compiler POC.
+
+- Cadence Execution
+  - Complete [optimization for Cadence domain storage](https://github.com/onflow/cadence/issues/3584) - Testing
+  - Continue new Trie research
+  - Evaluate / Start [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
+  - Badger -> Pebble migration: continue work on [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516)
+  - Start work on [FVM Programs cache invalidation](https://github.com/onflow/flow-go/issues/6507)
 
 **On Hold**
 
-Objective 2: Calibrate Transaction fees so that they accurately reflect resource usage during execution and deploy as part of Crescendo to avoid future disruption
-- KR1: Update weights for the execution operations on TN and MN
-  - [Execution effort recalibration - data collection](https://github.com/onflow/flow-go/issues/5026)
-
-
-**Active Epics**
-
-Objective 1: Upgrade Mainnet to Crescendo Release with minimal impact on developers, to lower the barrier for cross chain liquidity on Flow
-- KR1: Enable Developers and the Flow Foundation to simulate Cadence 1.0 Contract upgrades
-- KR2: Launch Cadence 1.0 on Crescendo Testnet
-- KR3: Launch EVM on Crescendo Testnet
-Objective 3: Analyze execution runtime trends and risks to plan next set of scalability OKRs
-- KR1: Measure execution state growth trends, identify future bottlenecks and prioritize by urgency
+- [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
+- [Random beacon history taking more space on chain than expected](https://github.com/onflow/flow-go/issues/5550)
+- [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
 
 ---
 
