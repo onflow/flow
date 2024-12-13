@@ -237,9 +237,28 @@ Cycle Objective(s):
 
 ### Wallet (Jeff) 
 
+**Cycle Objective(s):** 
+
+KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 2 per week on a 4-week rolling average.
+
+KR 2: KR 2: Improve SLA response time for critical (P0) issues to under 1 hour, with resolution within 12 hours, and high-priority issues (P1) to 12 hours, with resolution within 72 hours.
+
+KR 3: Ensure that 90% of accounts holding >= 100 FLOW, or having storage used greater than the minimum account storage are backed up.
+
 **Done last sprint**
 
+- Released Blocto key importing on Flow Wallet iOS
+- Released Mixpanel support to Flow Wallet iOS and Android
+- Resolved wallet connect issues on Flow Wallet extension
+- Released dynamic address support on Flow Wallet extension
+
 **This sprint**
+
+- Ship storage improvements to iOS, Android, Extension: https://github.com/Outblock/FRW/issues/61
+- Ship network deposit alert on iOS, Android, Extension
+- Ship mixpanel support to Flow Wallet extension
+- Start EVM calldata decoding on Flow Wallet Extension: https://github.com/Outblock/FRW/issues/84
+- Start adding Dropbox to cloud multibackup option on Flow Wallet iOS, Android: https://github.com/Outblock/FRW/issues/66
 
 **On Hold**
 
