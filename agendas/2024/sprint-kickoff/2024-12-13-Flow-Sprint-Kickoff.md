@@ -110,11 +110,19 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* 
+* <ins>Data Availability</ins>
+  - KROK Team
+      - Websockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
+          - Implement the controller and data providers ([Issue #6642](https://github.com/onflow/flow-go/issues/6642), [Issue #6640](https://github.com/onflow/flow-go/issues/6640), [Issue #6587](https://github.com/onflow/flow-go/issues/6587), [Issue #6637](https://github.com/onflow/flow-go/issues/6637), [Issue #6775](https://github.com/onflow/flow-go/issues/6775), [Issue #6767](https://github.com/onflow/flow-go/issues/6767), [Issue #6724](https://github.com/onflow/flow-go/issues/6724))
+
+
 
 **This sprint**
-
-* 
+* <ins>Data Availability</ins>
+  - KROK Team
+      - WebSockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
+          - Continue to implement the WebSockets controller and data providers ([Issue #6641](https://github.com/onflow/flow-go/issues/6641), [Issue #6586](https://github.com/onflow/flow-go/issues/6586), [Issue #6799](https://github.com/onflow/flow-go/issues/6799), [Issue #6644](https://github.com/onflow/flow-go/issues/6644))
+      - Plan to address review remarks resulting from numerous PRs
 
 **On Hold**
 * Deliver public roadmap & vision for technical protocol decentralization focusing on current challenges and upcoming updates for permissionless consensus on Flow.
