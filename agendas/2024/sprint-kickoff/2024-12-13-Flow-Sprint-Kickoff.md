@@ -3,7 +3,7 @@
  ### Team Wins 🎉
  
  * EVM Dry-run deployed on Mainnet (enables more flexibility in configuring EVM traces and reduces load on ANs)
- * Completed abstraction of DB access - first step towards replacing Badger DB.
+ * Completed [DB access abstraction](https://github.com/onflow/flow-go/pull/6465) - first step towards replacing Badger DB.
 
 --- 
 
