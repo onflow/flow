@@ -197,21 +197,40 @@ Cycle Objective(s):
 
 ---
 
-### **User Experience** \[Kan]
+### **Developer Experience** \[Kan]
 
 Cycle Objective(s): 
  - Improve Quality of Life, Level Up Dev Documentation and Learning Path, Supercharge EVMxCadence, Inspire and Excite Wave of New Flow Devs
 
+
 **Done last sprint**
 
-*
+* [Discovery for VM bridge improvements](https://github.com/onflow/flow-evm-bridge/issues/135)
+* [Improvement of proposer key cycling example and documentation](https://github.com/onflow/dx-internal/issues/33)
+* [Assist Wallet team with CI/CD and automated testing](https://github.com/onflow/dx-internal/issues/47)
+* [Start work on Gold Star, a new doc site initiative](https://github.com/onflow/dx-internal/issues/41)
+* [Continue Lost & Found integration](https://github.com/onflow/flow-port/issues/366)
+* [Update bridge.flow.com to be compatible with LayerZero](https://github.com/onflow/flow-bridge-app/issues/11)
+* [Support PoP work](https://github.com/onflow/flow-port/issues/364)
+* [(BUG) Flow port number input slow/laggy](https://github.com/onflow/flow-port/issues/381)
+* [Fix transaction error not being exported](https://github.com/onflow/fcl-js/issues/2042)
+  
 
 **This sprint**
 
 
+* [Discovery for VM bridge improvements](https://github.com/onflow/flow-evm-bridge/issues/135)
+* [Improvement of proposer key cycling example and documentation](https://github.com/onflow/dx-internal/issues/33)
+* [Assist Wallet team with CI/CD and automated testing](https://github.com/onflow/dx-internal/issues/47)
+* [Start work on Gold Star, a new doc site initiative](https://github.com/onflow/dx-internal/issues/41)
+* [Continue Lost & Found integration](https://github.com/onflow/flow-port/issues/366)
+* [Update bridge.flow.com to be compatible with LayerZero](https://github.com/onflow/flow-bridge-app/issues/11)
+* [Support PoP work](https://github.com/onflow/flow-port/issues/364)
+
+
 **On Hold**
 
-- [Update Flowport for Cadence Crescendo instance](https://github.com/orgs/onflow/projects/13/views/85?pane=issue&itemId=51960824)
+- 
 
 ---
 
