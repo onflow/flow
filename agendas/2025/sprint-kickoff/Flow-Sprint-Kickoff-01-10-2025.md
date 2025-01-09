@@ -34,6 +34,8 @@
 | Total       | **17** |    **49**   |       **14**       |       **16**         |        **98**         |
 
 - 2 new FLIPs were added since 11/29
+  - 314: Import aliasing
+  - 316: FCL Ethereum Provider for Cross-VM Apps
   
 ### Key Release Dates & Breaking Changes
 * Upcoming HCU next week (week of 13th Jan)
