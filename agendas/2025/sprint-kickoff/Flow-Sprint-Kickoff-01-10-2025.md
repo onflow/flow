@@ -19,7 +19,23 @@
 #### Incidents
 * None
 
-### Network upgrades
+---
+
+### FLIPs Tracker \[Vishal]
+
+|                         | Application | Cadence | Governance | Protocol | Total |  
+|:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
+| Drafted     | 8 (+1) |    7 (+1)     |       0       |       8        |        **23** (+2)        |
+| Proposed    | 1  |    2     |       3       |       0          |        **6**          |
+| Accepted    | 2  |    1     |       2       |       2          |        **7**          |
+| Rejected    | 0  |    1     |       1       |       0          |        **2**         |
+| Implemented | 3  |    5     |       1       |       0          |        **9**        |
+| Released    | 4  |    34     |       7        |       6          |        **51**          |
+| Total       | **17** |    **49**   |       **14**       |       **16**         |        **98**         |
+
+- 2 new FLIPs were added since 11/29
+  
+### Key Release Dates & Breaking Changes
 * Upcoming HCU next week (week of 13th Jan)
 
 
