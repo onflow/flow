@@ -14,10 +14,13 @@
 | Block Finalization      | 99.9%   |    100%       |       0%         |
 | Transaction Execution   | 99.9%   |    100%       |       0%         |
 | Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    ?     |       ?      |
+| Access API Liveness     | 99.9%   |    100%       |       0%         |
 
 #### Incidents
-* 
+* None
+
+### Network upgrades
+* Upcoming HCU next week (week of 13th Jan)
 
 
 ---
