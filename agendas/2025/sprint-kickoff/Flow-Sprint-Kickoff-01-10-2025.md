@@ -2,7 +2,10 @@
 
  ### Team Wins 🎉
  
- * 
+ * Axelar ITS and LayerZero cross-chain messaging protocols now live on Mainnet
+ * PaypalUSD (PyUSD) live on mainnet
+ * https://bridge.flow.com is live 
+
 
 --- 
 
@@ -97,7 +100,12 @@ Cycle Objective(s):
 
 * <ins>EFM and Protocol HCU</ins>
 
-  - 
+  - [Finished and merged EFM Recovery integration test](https://github.com/onflow/flow-go/pull/6823)
+  - [Finished and merged follow up updates for Recoverable Random Beacon State Machine](https://github.com/onflow/flow-go/pull/6815)
+  - Work in progress on [DB migrations for flow.DKGEndState](https://github.com/onflow/flow-go/pull/6861)
+  - [DKG result submission backward compatibility](https://github.com/onflow/flow-go/issues/6816)
+  - Continue benchnet testing EFM recovery and [Protocol HCU](https://github.com/onflow/flow-go/issues/6849)
+    - [Adding config options to BN2](https://github.com/onflow/flow-go-internal/pull/7028)
 
 * <ins>Data Availability</ins>
   - KROK Team
@@ -106,20 +114,26 @@ Cycle Objective(s):
 * <ins>Cryptography</ins>
 
    - PoP
-      - 
+      - VacuumLabs resolved a dependency merge, unblocking Tarak to continue
+      - Started work to prepare Ledger PR in coordination with VacuumLabs
   - Passkeys
       - 
 
 **This sprint**
 
 * <ins>EFM and Protocol HCU</ins>
-  - 
+  - Finish benchnet testing EFM recovery and [Protocol HCU](https://github.com/onflow/flow-go/issues/6849)
+  - Finish backward compatibility issues
+  - Work on leftovers of EFM recovery
+  - Start prep work for [Protocol HCU](https://www.notion.so/flowfoundation/EFM-Recovery-Release-Upgrade-Plan-14d1aee1232480228a87e43933815285?pvs=4#15a1aee123248095b988c007875f0309) towards end of Jan
 
 * <ins>Data Availability</ins>
   - KROK Team
     - 
 
 * <ins>Cryptography</ins>
+  - PoP
+    - Publish Ledger PR for their review 
   - Passkeys
     - 
       
@@ -138,11 +152,14 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-
+- Axelar ITS hub was launched, now just waiting on Squid for token bridging
+- LayerZero cross-chain messaging protocol went live on Mainnet, now waiting for Stargate for token bridging
+- PaypalUSD (PyUSD) live on mainnet
+- https://bridge.flow.com is live 
 
 **This sprint**
 
-* 
+* Launch Squid and Stargate bridges
 
 **On Hold**
 - N/A
