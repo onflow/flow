@@ -7,6 +7,7 @@
  * Backwards compatibility CI workflow using VN now [runs concurrently](https://github.com/onflow/flow-go/pull/6830)
  * Cadence compiler POC now [generates Go code for the instructions from a single specification file](https://github.com/onflow/cadence/pull/3716).
  * Migration testnet bootstrapped & running v0.38.0-rc.1, testing on the fly migration for [Combine non-atree domain payloads into atree payloads](https://github.com/onflow/cadence/issues/3584)
+ * Dapperlabs (NBA and NFL) has switched to using QuickNode access nodes instead of the access nodes FF was hosting for them.
 
 --- 
 
