@@ -143,7 +143,17 @@ Cycle Objective(s):
 
 * <ins>Data Availability</ins>
   - KROK Team
-    - 
+    - WebSocket controller and data providers      
+      - [Issue #6586](https://github.com/onflow/flow-go/issues/6586)
+      - [Issue #6799](https://github.com/onflow/flow-go/issues/6799)
+      - [Issue #6819](https://github.com/onflow/flow-go/issues/6819)
+      - [Issue #6837](https://github.com/onflow/flow-go/issues/6837)
+      - [Issue #6845](https://github.com/onflow/flow-go/issues/6845)
+      - [Issue #6644](https://github.com/onflow/flow-go/issues/6644) (In Progress)
+      - [Issue #6641](https://github.com/onflow/flow-go/issues/6641) (In Progress)
+    - Worked on PRs review remarks    
+    - Malleability
+      - [Issue #6660](https://github.com/onflow/flow-go/issues/6660) (In Progress)
 
 * <ins>Cryptography</ins>
 
@@ -163,7 +173,17 @@ Cycle Objective(s):
 
 * <ins>Data Availability</ins>
   - KROK Team
-    - 
+    - WebSocket controller and data providers
+      - [Issue #6865](https://github.com/onflow/flow-go/issues/6865)
+      - [Issue #6644](https://github.com/onflow/flow-go/issues/6644)
+      - [Issue #6641](https://github.com/onflow/flow-go/issues/6641)
+      - [Issue #6643](https://github.com/onflow/flow-go/issues/6643)
+    - Optimistically sync
+      - [Issue #5454](https://github.com/onflow/flow-go/issues/5424) (In Progress, checking existing PR)
+    - Malleability
+      - [Issue #6660](https://github.com/onflow/flow-go/issues/6660)
+
+       
 
 * <ins>Cryptography</ins>
   - PoP
