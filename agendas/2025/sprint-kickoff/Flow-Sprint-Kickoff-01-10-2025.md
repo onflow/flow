@@ -5,7 +5,9 @@
  * Axelar ITS and LayerZero cross-chain messaging protocols now live on Mainnet
  * PaypalUSD (PyUSD) live on mainnet
  * https://bridge.flow.com is live 
-
+ * Backwards compatibility CI workflow using VN now [runs concurrently](https://github.com/onflow/flow-go/pull/6830)
+ * Cadence compiler POC now [generates Go code for the instructions from a single specification file](https://github.com/onflow/cadence/pull/3716).
+ * Migration testnet bootstrapped & running v0.38.0-rc.1, testing on the fly migration for [Combine non-atree domain payloads into atree payloads](https://github.com/onflow/cadence/issues/3584)
 
 --- 
 
@@ -58,22 +60,54 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**Cadence Language**
+- Cadence compiler:
+    - [Document effects of instructions on value stack and control stack](https://github.com/onflow/cadence/pull/3719)
+    - [Generate the code for the instructions](https://github.com/onflow/cadence/pull/3716)
+- Bugfix (internal): [1](https://github.com/onflow/cadence-internal/pull/293), [2](https://github.com/onflow/atree-internal/pull/3), [3](https://github.com/onflow/cadence-internal/pull/291), [4](https://github.com/onflow/cadence-internal/pull/290), [5](https://github.com/onflow/cadence-internal/pull/287), [6](https://github.com/onflow/atree-internal/pull/2)
+
+**Cadence Execution**
+- Storage optimization: [Combine non-atree domain payloads into atree payloads](https://github.com/onflow/cadence/issues/3584)
+    - [enable storage format v2 for all but mainnet](https://github.com/onflow/flow-go/pull/6864)
+- Validation backwards compatibility automation:
+    - [[Util] add nWorker to verify execution result](https://github.com/onflow/flow-go/pull/6830)
+    - [Use worker_count and bigger instance to run tests concurrently](https://github.com/onflow/ff-sre-automation/pull/10)
+    - [Fix verify execution result](https://github.com/onflow/flow-go/pull/6804)
+- [Use flow-go component model and node framework to compose the EVM Gatway and handle shutdown](https://github.com/onflow/flow-evm-gateway/pull/682)
+    - [Expose node component management](https://github.com/onflow/flow-go/pull/6769)
+- DB Access abstraction
+    - [Extract uncurried functions from storage writes](https://github.com/onflow/flow-go/pull/6803)
+- Tech-debt
+    - [Metrics server as component](https://github.com/onflow/flow-go/pull/6801)
+
+
+**EVM Gateway**
+- Finializing dry-run feature & Gateway 1.0 release:
+    - [Local state transaction re-execution](https://github.com/onflow/flow-evm-gateway/pull/712)
+- Code hardening & Tech-debt removal:
+    - [Remove obsolete config flags `stream-limit` & `stream-timeout`](https://github.com/onflow/flow-evm-gateway/pull/717)
+    - [Unnecessary runtime flags are required in --index-only mode](https://github.com/onflow/flow-evm-gateway/issues/706)
+    - [Apply rate-limit on tracing endpoints](https://github.com/onflow/flow-evm-gateway/pull/704)
+- Bugfix: 
+    - [Call tracer should return logs when the withLog config is enabled](https://github.com/onflow/flow-evm-gateway/issues/710)
+    - [Investigate failure on debug_TraceBlockByNumber endpoint for fees transfer tx](https://github.com/onflow/flow-evm-gateway/issues/708)
+    - [Skip account keys with different public key than the configured signer](https://github.com/onflow/flow-evm-gateway/pull/705)
+
 **This sprint**
 
-- Continue [EVM Gateway Hardening](https://github.com/onflow/flow-go/issues/6539) stretch goals & release 1.0.0.
-
 - Cadence Language
-  - Continue work on Content for [commuity outreach](https://github.com/onflow/cadence/issues/3596)
+  - Bugfix (internal) - complete and deploy
   - Continue work on the [Cadence compiler POC - Phase 2](https://github.com/onflow/cadence/issues/3692)
-  - Continue work on [Cadence language Specification](https://github.com/onflow/cadence/issues/3599)
-  - Start working on Blog post to communicate status & goals of the compiler POC.
+  - Continue working on Blog post to communicate status & goals of the compiler track.
 
 - Cadence Execution
-  - Complete [optimization for Cadence domain storage](https://github.com/onflow/cadence/issues/3584) - Testing
+  - Complete work on [FVM Programs cache invalidation](https://github.com/onflow/flow-go/issues/6507) & port to v0.37 for deployment
+  - Complete [optimization for Cadence domain storage](https://github.com/onflow/cadence/issues/3584) - Testing & deployment
   - Continue new Trie research
   - Evaluate / Start [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
   - Badger -> Pebble migration: continue work on [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516)
-  - Start work on [FVM Programs cache invalidation](https://github.com/onflow/flow-go/issues/6507)
+
+- Continue [EVM Gateway Hardening - phase 2](https://github.com/onflow/flow-evm-gateway/issues/700)
 
 **On Hold**
 
