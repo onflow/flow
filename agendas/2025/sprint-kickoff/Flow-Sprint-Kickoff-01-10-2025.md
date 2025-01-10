@@ -4,7 +4,6 @@
  
  * Axelar ITS and LayerZero cross-chain messaging protocols now live on Mainnet
  * PaypalUSD (PyUSD) live on mainnet
- * https://bridge.flow.com is live 
  * Backwards compatibility CI workflow using VN now [runs concurrently](https://github.com/onflow/flow-go/pull/6830)
  * Cadence compiler POC now [generates Go code for the instructions from a single specification file](https://github.com/onflow/cadence/pull/3716).
  * Migration testnet bootstrapped & running v0.38.0-rc.1, testing on the fly migration for [Combine non-atree domain payloads into atree payloads](https://github.com/onflow/cadence/issues/3584)
@@ -209,7 +208,7 @@ Cycle Objective(s):
 - Axelar ITS hub was launched, now just waiting on Squid for token bridging
 - LayerZero cross-chain messaging protocol went live on Mainnet, now waiting for Stargate for token bridging
 - PaypalUSD (PyUSD) live on mainnet
-- https://bridge.flow.com is live 
+- Bridging UI via SuperBridge now configured
 
 **This sprint**
 
@@ -229,16 +228,16 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+* [Exploration of EVM Gateway feature compatibility](https://github.com/onflow/flow-evm-bridge/issues/135)
+* [Improvement of proposer key cycling example and documentation](https://github.com/onflow/dx-internal/issues/33)
+* [Assist Wallet team with CI/CD and automated testing](https://github.com/onflow/dx-internal/issues/47)
+* [Started work on Gold Star, a new doc site initiative](https://github.com/onflow/dx-internal/issues/41)
+* [Lost & Found integration](https://github.com/onflow/flow-port/issues/366)
+
 
 **This sprint**
 
-
-* [Discovery for VM bridge improvements](https://github.com/onflow/flow-evm-bridge/issues/135)
-* [Improvement of proposer key cycling example and documentation](https://github.com/onflow/dx-internal/issues/33)
-* [Assist Wallet team with CI/CD and automated testing](https://github.com/onflow/dx-internal/issues/47)
-* [Start work on Gold Star, a new doc site initiative](https://github.com/onflow/dx-internal/issues/41)
-* [Continue Lost & Found integration](https://github.com/onflow/flow-port/issues/366)
-* [Update bridge.flow.com to be compatible with LayerZero](https://github.com/onflow/flow-bridge-app/issues/11)
+* [Continue work on Gold Star](https://github.com/onflow/dx-internal/issues/41)
 * [Support PoP work](https://github.com/onflow/flow-port/issues/364)
 
 
