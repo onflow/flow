@@ -271,13 +271,18 @@ KR 3: Ensure that 90% of accounts holding >= 100 FLOW, or having storage used gr
 
 **Done last sprint**
 
+- Shipped storage improvements to iOS, Android, Extension: https://github.com/Outblock/FRW/issues/61
+- Shipped network deposit alert on iOS, Android, Extension
+- Shipped mixpanel support to Flow Wallet extension
+- Shipped adding Dropbox to cloud multibackup option on Flow Wallet iOS, Android: https://github.com/Outblock/FRW/issues/66
+
 **This sprint**
 
-- Ship storage improvements to iOS, Android, Extension: https://github.com/Outblock/FRW/issues/61
-- Ship network deposit alert on iOS, Android, Extension
-- Ship mixpanel support to Flow Wallet extension
-- Start EVM calldata decoding on Flow Wallet Extension: https://github.com/Outblock/FRW/issues/84
-- Start adding Dropbox to cloud multibackup option on Flow Wallet iOS, Android: https://github.com/Outblock/FRW/issues/66
+- Continue Flow Wallet extension refactor
+- Continue EVM calldata decoding on Flow Wallet Extension: https://github.com/Outblock/FRW/issues/84
+- Continue EVM transaction id pre-calculation
+- Update Cadence EVM call transaction to use correct arguments
+- Fix Dapper Wallet account linking transaction signing issues
 
 **On Hold**
 
