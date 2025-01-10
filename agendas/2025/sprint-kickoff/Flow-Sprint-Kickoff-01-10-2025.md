@@ -158,10 +158,14 @@ Cycle Objective(s):
 * <ins>Cryptography</ins>
 
    - PoP
-      - VacuumLabs resolved a dependency merge, unblocking Tarak to continue
-      - Started work to prepare Ledger PR in coordination with VacuumLabs
+      - Stax failure: VL fixed the breaking change (which also adds support of the Flex device)
+      - VL submitted a PR to Ledger to fix the issue
+      - Fix ported to our repo and updated the PoP PR
+      - Final submission is waiting for another Ledger repo update
   - Passkeys
-      - 
+      - Contniued brainstorming possible designs - documentation
+      - Testing/validating potential breaking change in one design
+  - Cadence: review of an OOO fix in a math operation (left shift)
 
 **This sprint**
 
@@ -187,9 +191,11 @@ Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   - PoP
-    - Publish Ledger PR for their review 
+    - Port the latest updates from Ledger
+    - Prepare and submit a PR to Ledger
   - Passkeys
-    - 
+    - Review Access API/FVM design proposal and decide on next steps
+    - Document selected the design into a FLIP
       
 **On Hold**
 
