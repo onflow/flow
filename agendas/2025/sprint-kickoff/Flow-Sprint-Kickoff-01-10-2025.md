@@ -293,11 +293,28 @@ KR 3: Ensure that 90% of accounts holding >= 100 FLOW, or having storage used gr
 
 **Done last sprint**
 
+**Node Hosting**
+- Identified disk snapshots for deletion
+- Deleted unnecessary disk snapshots
+- [Modify FF snapshot retention periods to 90 days](https://github.com/onflow/ff-sre-infrastructure/pull/92)
+- [Modify DL snapshot retention periods](https://github.com/dapperlabs/dapper-flow-nodes-infrastructure/pull/36)
+
+**Observability**
+- [Reduce metric ingestion for DL nodes](https://github.com/onflow/dapper-flow-hosting/pull/1643)
+- [Get Grafana resources into IAC & version control](https://github.com/onflow/ff-sre-infrastructure/pull/90) 
+
+**Deployment Prep**
+- Assist with configuration of migration testnet
+- [Create migration mainnet infra](https://github.com/onflow/ff-sre-infrastructure/pull/91)
+- [Fix IAM for Ansible host](https://github.com/onflow/ff-sre-infrastructure/pull/87)
+
+**Key Management**
+- [Fix permissions on key](https://github.com/dapperlabs/dl-dapper-flow-admin-infrastructure/pull/6)
+
 **This sprint**
 * Fully migrate GCR to Artifact Registry
-* Assist in setup of TN fork for testing
-* Update CD workflow to leverage 
-* Continue interviewing SRE Candidates
+* Assist in setup of MN fork for testing
+* Migrate to Private Registry workflows 
 
 **On Hold**
 **Active Epics**
