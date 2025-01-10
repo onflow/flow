@@ -142,17 +142,19 @@ Cycle Objective(s):
 
 * <ins>Data Availability</ins>
   - KROK Team
-    - WebSocket controller and data providers      
-      - [Issue #6586](https://github.com/onflow/flow-go/issues/6586)
-      - [Issue #6799](https://github.com/onflow/flow-go/issues/6799)
-      - [Issue #6819](https://github.com/onflow/flow-go/issues/6819)
-      - [Issue #6837](https://github.com/onflow/flow-go/issues/6837)
-      - [Issue #6845](https://github.com/onflow/flow-go/issues/6845)
-      - [Issue #6644](https://github.com/onflow/flow-go/issues/6644) (In Progress)
-      - [Issue #6641](https://github.com/onflow/flow-go/issues/6641) (In Progress)
-    - Worked on PRs review remarks    
-    - Malleability
-      - [Issue #6660](https://github.com/onflow/flow-go/issues/6660) (In Progress)
+    - WebSocket controller and data providers
+      - [Add implementation for transaction status data providers](https://github.com/onflow/flow-go/issues/6586)
+      - [Implement inactivity tracker](https://github.com/onflow/flow-go/issues/6799)
+      - [Make response for data providers consistent with action responses](https://github.com/onflow/flow-go/issues/6819)
+      - [Heartbeat interval not reset correctly in streaming endpoints](https://github.com/onflow/flow-go/issues/6837)
+      - [Unify subscription and client IDs](https://github.com/onflow/flow-go/issues/6845)
+      - Started [Add documentation for new websockets](https://github.com/onflow/flow-go/issues/6644) 
+      - Started [Implement integration test for new websockets](https://github.com/onflow/flow-go/issues/6641)
+    - Addressed PR feedback    
+
+* <ins>Protocol - Malleability</ins>
+  - KROK Team
+    - Started [cluster.Block](https://github.com/onflow/flow-go/issues/6660)
 
 * <ins>Cryptography</ins>
 
@@ -168,6 +170,8 @@ Cycle Objective(s):
 
 **This sprint**
 
+
+
 * <ins>EFM and Protocol HCU</ins>
   - Finish benchnet testing EFM recovery and [Protocol HCU](https://github.com/onflow/flow-go/issues/6849)
   - Finish backward compatibility issues
@@ -177,17 +181,18 @@ Cycle Objective(s):
 * <ins>Data Availability</ins>
   - KROK Team
     - WebSocket controller and data providers
-      - [Issue #6865](https://github.com/onflow/flow-go/issues/6865)
-      - [Issue #6644](https://github.com/onflow/flow-go/issues/6644)
-      - [Issue #6641](https://github.com/onflow/flow-go/issues/6641)
-      - [Issue #6643](https://github.com/onflow/flow-go/issues/6643)
-    - Optimistically sync
-      - [Issue #5454](https://github.com/onflow/flow-go/issues/5424) (In Progress, checking existing PR)
-    - Malleability
-      - [Issue #6660](https://github.com/onflow/flow-go/issues/6660)
+      - [Add arguments getter for data providers](https://github.com/onflow/flow-go/issues/6865)
+      - [Add documentation for new websockets](https://github.com/onflow/flow-go/issues/6644)
+      - [Implement integration test for new websockets](https://github.com/onflow/flow-go/issues/6641)
+      - [Add examples for ws conn usages](https://github.com/onflow/flow-go/issues/6643)
+    - Support transaction soft finality in Access Node 
+      - Started reviewing code [Improve user experience by enabling dApps to utilize transaction soft finality](https://github.com/onflow/flow-go/issues/5424)
+
+* <ins>Protocol - Malleability</ins>
+  - KROK Team
+    - [cluster.Block](https://github.com/onflow/flow-go/issues/6660)
 
        
-
 * <ins>Cryptography</ins>
   - PoP
     - Port the latest updates from Ledger
