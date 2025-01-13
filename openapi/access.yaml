@@ -937,7 +937,6 @@ components:
       type: object
       required:
         - header
-        - _expandable
       properties:
         header:
           $ref: '#/components/schemas/BlockHeader'

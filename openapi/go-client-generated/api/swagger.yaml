@@ -1577,7 +1577,6 @@ components:
       - Expired
     Block:
       required:
-      - _expandable
       - header
       type: object
       properties:
