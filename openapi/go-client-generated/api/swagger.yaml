@@ -1577,6 +1577,7 @@ components:
       - Expired
     Block:
       required:
+      - block_status
       - header
       type: object
       properties:
@@ -1590,7 +1591,10 @@ components:
           $ref: '#/components/schemas/Block__expandable'
         _links:
           $ref: '#/components/schemas/Links'
+        block_status:
+          type: string
       example:
+        block_status: block_status
         payload:
           collection_guarantees:
           - collection_id: null

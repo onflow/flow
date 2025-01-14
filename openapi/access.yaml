@@ -937,6 +937,7 @@ components:
       type: object
       required:
         - header
+        - block_status
       properties:
         header:
           $ref: '#/components/schemas/BlockHeader'
@@ -954,6 +955,8 @@ components:
               format: uri
         _links:
           $ref: '#/components/schemas/Links'
+        block_status:
+          type: string
     BlockHeader:
       type: object
       required:
