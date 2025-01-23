@@ -937,9 +937,9 @@ components:
       type: string
       description: This value indicates the status of a block.
       enum:
-        - Unknown
-        - Finalized
-        - Sealed
+        - BLOCK_UNKNOWN
+        - BLOCK_FINALIZED
+        - BLOCK_SEALED
     Block:
       type: object
       required:
