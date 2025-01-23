@@ -51,6 +51,7 @@ Class | Method | HTTP request | Description
  - [BlockHeight](docs/BlockHeight.md)
  - [BlockPayload](docs/BlockPayload.md)
  - [BlockSeal](docs/BlockSeal.md)
+ - [BlockStatus](docs/BlockStatus.md)
  - [Chunk](docs/Chunk.md)
  - [Collection](docs/Collection.md)
  - [CollectionExpandable](docs/CollectionExpandable.md)

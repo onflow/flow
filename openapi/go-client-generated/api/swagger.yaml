@@ -1575,6 +1575,13 @@ components:
       - Executed
       - Sealed
       - Expired
+    BlockStatus:
+      type: string
+      description: This value indicates the status of a block.
+      enum:
+      - BLOCK_UNKNOWN
+      - BLOCK_FINALIZED
+      - BLOCK_SEALED
     Block:
       required:
       - block_status
@@ -1592,9 +1599,9 @@ components:
         _links:
           $ref: '#/components/schemas/Links'
         block_status:
-          type: string
+          $ref: '#/components/schemas/BlockStatus'
       example:
-        block_status: block_status
+        block_status: BLOCK_UNKNOWN
         payload:
           collection_guarantees:
           - collection_id: null
