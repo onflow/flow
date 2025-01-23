@@ -38,7 +38,9 @@
   - 316: FCL Ethereum Provider for Cross-VM Apps
   
 ### Key Release Dates & Breaking Changes
-* 
+* Height Coorindated Upgrade:
+  * Jan 24th (today) on Testnet
+  * Jan 27th, Monday on mainnet
 
 ---
 
