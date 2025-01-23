@@ -12,7 +12,7 @@ type BlockStatus string
 
 // List of BlockStatus
 const (
-	UNKNOWN_BlockStatus BlockStatus = "BLOCK_UNKNOWN"
-	FINALIZED_BlockStatus BlockStatus = "BLOCK_FINALIZED"
-	SEALED_BlockStatus BlockStatus = "BLOCK_SEALED"
+	UNKNOWN_BlockStatus BlockStatus = "Unknown"
+	FINALIZED_BlockStatus BlockStatus = "Finalized"
+	SEALED_BlockStatus BlockStatus = "Sealed"
 )

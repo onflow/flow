@@ -1579,9 +1579,9 @@ components:
       type: string
       description: This value indicates the status of a block.
       enum:
-      - BLOCK_UNKNOWN
-      - BLOCK_FINALIZED
-      - BLOCK_SEALED
+      - Unknown
+      - Finalized
+      - Sealed
     Block:
       required:
       - block_status
@@ -1601,7 +1601,7 @@ components:
         block_status:
           $ref: '#/components/schemas/BlockStatus'
       example:
-        block_status: BLOCK_UNKNOWN
+        block_status: Unknown
         payload:
           collection_guarantees:
           - collection_id: null
