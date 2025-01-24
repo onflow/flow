@@ -16,7 +16,7 @@
 | Block Sealing           | 99.9%   |    100%       |       0%         |
 | Access API Liveness     | 99.9%   |    99.973%    |       24.9%      |
 
-#### Incidents
+#### P0 or P1 Incidents
 * None
 
 ---
