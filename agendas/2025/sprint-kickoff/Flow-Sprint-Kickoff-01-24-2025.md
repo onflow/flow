@@ -4,7 +4,7 @@
  
  * Successful Testnet upgrade, seeing 3x TPs increase after the programs cacheinvalidation fix
  * Latest Ledger repo update was merged and then ported to our PoP work, and PR submitted to Ledger
- * Axelar launced on Flow EVM finally
+ * Axelar cross-chain message (ITS) launced on Flow EVM finally.Still need Squid to launch to bridge tokens
  * bridge.flow.com operational (currently privately on VPN IP only until launch)
  * pyUSD lockers deployed on Solana and Ethereum, and USDF operational on Flow
 
@@ -249,6 +249,7 @@ Cycle Objective(s):
 
 * Launch remaining coins using LayerZero, backed by Stargate
 * Ensure integration of WETH, USDC into bridge.flow.com
+* Launch Squid, 
 
 **On Hold**
 - N/A
