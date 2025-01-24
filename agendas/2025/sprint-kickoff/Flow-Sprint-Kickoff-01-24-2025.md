@@ -253,22 +253,21 @@ Cycle Objective(s):
 
 ### **Developer Tooling** \[Chase]
 
-Cycle Objective(s): 
- - Improve Quality of Life, Level Up Dev Documentation and Learning Path, Supercharge EVMxCadence, Inspire and Excite Wave of New Flow Devs
-
+Cycle Objective(s):
+- Lower the barrier to Cadence adoption and streamline EVM interoperability. [OKR](https://github.com/onflow/flow-okrs/issues/86)
 
 **Done last sprint**
 
+* [Continue work on Gold Star](https://github.com/onflow/dx-internal/issues/41)
+* Created docs components for the Developer Education team's homepage refresh
 
 **This sprint**
 
-* [Continue work on Gold Star](https://github.com/onflow/dx-internal/issues/41)
-* [Support PoP work](https://github.com/onflow/flow-port/issues/364)
-
+* [FCL Ethereum Provider for Cross-VM Apps](https://github.com/onflow/fcl-js/issues/2053)
 
 **On Hold**
 
-- 
+- N/A
 
 ---
 
