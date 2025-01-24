@@ -25,7 +25,7 @@
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 8 (+1) |    7 (+1)     |       0       |       8        |        **23** (+2)        |
+| Drafted     | 8  |    7      |       0       |       8        |        **23**         |
 | Proposed    | 1  |    2     |       3       |       0          |        **6**          |
 | Accepted    | 2  |    1     |       2       |       2          |        **7**          |
 | Rejected    | 0  |    1     |       1       |       0          |        **2**         |
@@ -33,12 +33,10 @@
 | Released    | 4  |    34     |       7        |       6          |        **51**          |
 | Total       | **17** |    **49**   |       **14**       |       **16**         |        **98**         |
 
-- 2 new FLIPs were added since 11/29
-  - 314: Import aliasing
-  - 316: FCL Ethereum Provider for Cross-VM Apps
+- no change from the last sprint.
   
 ### Key Release Dates & Breaking Changes
-* Height Coorindated Upgrade:
+* Height Coordinated Upgrade:
   * Jan 24th (today) on Testnet
   * Jan 27th, Monday on mainnet
 
