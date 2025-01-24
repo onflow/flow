@@ -258,11 +258,11 @@ Cycle Objective(s):
 
 **Done last sprint**
 * Dorhack contract review.
-* Shipyard contract review.
+* T-system lease account setup.
+* T-system has unstaked the Execution node. Node will be restaked next-to-next epoch.
 
 **This sprint**
-* Helping T-systems migrate their node.
-* Dorahack contract signing.
-* Shipyard contract signing.
+* Dorahack contract review signing.
+* Start contract review with Alchemy.
 
 ---
