@@ -231,7 +231,7 @@ Cycle Objective(s):
 
 ---
 
-### **Developer Experience** \[Kan]
+### **Developer Tooling** \[Chase]
 
 Cycle Objective(s): 
  - Improve Quality of Life, Level Up Dev Documentation and Learning Path, Supercharge EVMxCadence, Inspire and Excite Wave of New Flow Devs
@@ -252,7 +252,7 @@ Cycle Objective(s):
 
 ---
 
-### Wallet (Jeff) 
+### Applications / Wallet [Jeff] 
 
 **Cycle Objective(s):** 
 
