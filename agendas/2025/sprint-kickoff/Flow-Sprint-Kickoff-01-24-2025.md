@@ -41,7 +41,7 @@
   
 ### Key Release Dates & Breaking Changes
 * Height Coordinated Upgrade:
-  * Jan 24th (today) on Testnet
+  * Jan 24th (today) on Testnet ✔️
   * Jan 27th, Monday on mainnet
 
 ---
