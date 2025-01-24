@@ -119,7 +119,17 @@ Cycle Objective(s):
 
 * <ins>Protocol - Malleability</ins>
   - KROK Team
-    - 
+    - [[Malleability A] Remove unused entities: IncorporatedResultMap, ReceiptDataPack, ResultDataPack](https://github.com/onflow/flow-go/issues/6701)
+    - [[Malleability A] EpochSetup](https://github.com/onflow/flow-go/issues/6694)
+    - [[Malleability A] EpochRecover](https://github.com/onflow/flow-go/issues/6697)
+
+    Checked, but blocked by `herocache`:
+    - [AssignmentDataPack](https://github.com/onflow/flow-go/issues/6664)
+    - [appSpecificScoreRecordEntity](https://github.com/onflow/flow-go/issues/6663)
+    - [BlocksByCollection](https://github.com/onflow/flow-go/issues/6666)
+    - [ApprovalMapEntity](https://github.com/onflow/flow-go/issues/6662)
+    - [rpcSentEntity](https://github.com/onflow/flow-go/issues/6687)
+    
 
 * <ins>Cryptography</ins>
    - PoP
@@ -147,7 +157,10 @@ Cycle Objective(s):
 
 * <ins>Protocol - Malleability</ins>
   - KROK Team
-    - [cluster.Block](https://github.com/onflow/flow-go/issues/6660)
+    - [[Malleability A] ChannelList](https://github.com/onflow/flow-go/issues/6667)
+    - [[Malleability A] BlockDigest](https://github.com/onflow/flow-go/issues/6665)
+    - [[Malleability A] MissingCollection](https://github.com/onflow/flow-go/issues/6679)
+    - [[Malleability A] EpochCommit](https://github.com/onflow/flow-go/issues/6671)
 
        
 * <ins>Cryptography</ins>
