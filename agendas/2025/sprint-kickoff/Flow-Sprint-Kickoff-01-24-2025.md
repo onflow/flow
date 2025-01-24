@@ -259,7 +259,7 @@ Cycle Objective(s):
 **Done last sprint**
 * Dorhack contract review.
 * T-system lease account setup.
-* T-system has unstaked the Execution node. Node will be restaked next-to-next epoch.
+  - T-system has unstaked their Execution node. Node will be restaked next-to-next epoch.
 
 **This sprint**
 * Dorahack contract review signing.
