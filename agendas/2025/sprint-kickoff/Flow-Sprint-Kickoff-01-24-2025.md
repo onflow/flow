@@ -2,7 +2,9 @@
 
  ### Team Wins 🎉
  
- * Successful Testnet upgrade, seeing 3x TPs increase after the programs cacheinvalidation fix.
+ * Successful Testnet upgrade, seeing 3x TPs increase after the programs cacheinvalidation fix
+ * Latest Ledger repo update was merged and then ported to our PoP work
+ * Axelar launced on FLow EVM finally
 
 --- 
 
@@ -134,7 +136,11 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>EFM and Protocol HCU</ins>
-
+  - [Completed Benchnet testing of the upgrade process](https://github.com/onflow/flow-go/issues/6849)
+  - [Fixed encoding backward-compatibility](https://github.com/onflow/flow-go/pull/6879) 
+  - [DKG migration bug fix](https://github.com/onflow/flow-go/pull/6898)
+  - [HotStuff race](https://github.com/onflow/flow-go/pull/6921)
+  - [Benchnet testing of EFM recovery and related fixes](https://github.com/onflow/flow-go/issues/5945)
 
 * <ins>Data Availability</ins>
   - KROK Team
@@ -162,21 +168,30 @@ Cycle Objective(s):
     - [BlocksByCollection](https://github.com/onflow/flow-go/issues/6666)
     - [ApprovalMapEntity](https://github.com/onflow/flow-go/issues/6662)
     - [rpcSentEntity](https://github.com/onflow/flow-go/issues/6687)
-    
+
+* <ins>Protocol - Other</ins>
+  - Addressing tech debt and refactoring: [#6850](https://github.com/onflow/flow-go/issues/6850), [#6871](https://github.com/onflow/flow-go/issues/6871), [#6916](https://github.com/onflow/flow-go/issues/6687)
+  - Writing design document for Epoch API change
 
 * <ins>Cryptography</ins>
    - PoP
-      - 
+      - Latest Ledger repo update was merged and then ported to our PoP work
+      - [Prepared and submitted PoP changes](https://github.com/onflow/ledger-app-flow/pull/110) for review
+      - Pushed VaccumLabs help to ping Ledger about a review
   - Passkeys
-      - 
+      - Socs and options consolidate in Notion (non-public yet)
+      * Continued brianstorming and solution specifics
+      * Started writing FLIP for Protocol passkey change 
+      - Continued testing and validation:
+        - RLP new field behaviour (breaking-change related)
+        - RLP malleability possibility
+        - Looking at webauthn clients to implement e2e tests
 
 **This sprint**
 
 * <ins>EFM and Protocol HCU</ins>
-  - Finish benchnet testing EFM recovery and [Protocol HCU](https://github.com/onflow/flow-go/issues/6849)
-  - Finish backward compatibility issues
-  - Work on leftovers of EFM recovery
-  - Start prep work for [Protocol HCU](https://www.notion.so/flowfoundation/EFM-Recovery-Release-Upgrade-Plan-14d1aee1232480228a87e43933815285?pvs=4#15a1aee123248095b988c007875f0309) towards end of Jan
+  - Wrap up EFM Recovery benchnet testing
+  - Then tag a version for the Protocol HCU upgrade and begin upgrade process (pre-requisite is that all operators to upgrade over a rolling upgrade window of days/weeks)
 
 * <ins>Data Availability</ins>
   - KROK Team
@@ -189,20 +204,24 @@ Cycle Objective(s):
       - [Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
 
 * <ins>Protocol - Malleability</ins>
+  - Yurii to start on data malleability for core protocol types
   - KROK Team
     - [[Malleability A] ChannelList](https://github.com/onflow/flow-go/issues/6667)
     - [[Malleability A] BlockDigest](https://github.com/onflow/flow-go/issues/6665)
     - [[Malleability A] MissingCollection](https://github.com/onflow/flow-go/issues/6679)
     - [[Malleability A] EpochCommit](https://github.com/onflow/flow-go/issues/6671)
 
+* <ins>Protocol - Other</ins>
+  - Implementing the Epoch API change, per Protocol working group meeting
        
 * <ins>Cryptography</ins>
   - PoP
-    - Port the latest updates from Ledger
-    - Prepare and submit a PR to Ledger
+    - Continue discussion with VL and driving Ledger
+    - Resolve any remaining PR updates if needed for a quicker Ledger review
   - Passkeys
-    - Review Access API/FVM design proposal and decide on next steps
-    - Document selected the design into a FLIP
+    - Finalize an FVM scope to support webauthn
+    - Continue testing (RLP and e2e)
+    - Continue writing FlIP
       
 **On Hold**
 
@@ -219,11 +238,12 @@ Cycle Objective(s):
 
 **Done last sprint**
 
--
+- Axelar launced on FLow EVM finally
+- Started onboarding of Stork oracle to EVM
  
 **This sprint**
 
-* Launch Squid and Stargate bridges
+* Launch LayerZero and Starage 
 
 **On Hold**
 - N/A
