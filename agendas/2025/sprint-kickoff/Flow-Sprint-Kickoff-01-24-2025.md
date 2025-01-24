@@ -2,7 +2,7 @@
 
  ### Team Wins 🎉
  
- * Successful Testnet upgrade, seeing 3x TPs increase after the programs cacheinvalidation fix
+ * Successful Testnet upgrade, seeing ~4x TPs increase after the programs cacheinvalidation fix
  * Latest Ledger repo update was merged and then ported to our PoP work, and PR submitted to Ledger
  * Axelar cross-chain message (ITS) launced on Flow EVM finally.Still need Squid to launch to bridge tokens
  * bridge.flow.com operational (currently privately on VPN IP only until launch)
