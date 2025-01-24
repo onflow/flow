@@ -55,32 +55,65 @@ Cycle Objective(s):
 **Done last sprint**
 
 **Cadence Language**
+- Internal fixes: [1](https://github.com/onflow/cadence-internal/pull/300), [2](https://github.com/onflow/cadence-internal/pull/299), [3](https://github.com/onflow/cadence-internal/pull/298), [4](https://github.com/onflow/cadence-internal/pull/297), [5](https://github.com/onflow/atree-internal/pull/7), [6](https://github.com/onflow/atree-internal/pull/6), [7](https://github.com/onflow/cadence-internal/pull/295), [8](https://github.com/onflow/atree-internal/pull/4), [9](https://github.com/onflow/cadence-internal/pull/294), [10](https://github.com/onflow/cadence-internal/pull/292)
+- Compiler
+    - Testing: [Adjust parameters to reduce run-time when race detector is enabled](https://github.com/onflow/cadence/pull/3732)
+    - [Compiler feature branch update](https://github.com/onflow/cadence/pull/3730)
+- Automation
+    - [Backwards compatibilit check fix - Update get-contracts tool to use new find.xyz API](https://github.com/onflow/cadence/pull/3725)
 
 **Cadence Execution**
-
+- [Programs cache invalidation fix](https://github.com/onflow/flow-go/issues/6507)
+    - [Move execution parameter to separate account ](https://github.com/onflow/flow-go/pull/6891)
+    - [Get execution version from snapshot instead of state](https://github.com/onflow/flow-go/pull/6867)
+- Migration of Badger to Pebble DB
+    - Execution data
+        - [Refactor UpdateHighestExecutedBlockIfHigher with UpdateLatestExecutedBlock](https://github.com/onflow/flow-go/issues/6908)
+    - Chunk data pack
+        - [Refactor Chunk data packs modules to use generic storage interface](https://github.com/onflow/flow-go/pull/6892)
+        - [add a test case to verify compaction can reclaim disk space](https://github.com/onflow/flow-go/pull/6603)
+- Improvements
+    - [Update to Cadence v1.3.0](https://github.com/onflow/flow-go/pull/6779)
+    - Protocol state data access (Badger DB): [Combine the caches for last finalized and last sealed block](https://github.com/onflow/flow-go/pull/6915)
+- Tooling
+    - [Add util command to debug transaction](https://github.com/onflow/flow-go/pull/6923)
+    - [Uril - Backport v0.37 add query last executed sealed block](https://github.com/onflow/flow-go/pull/6920)
+- Automation - Backwards compatibility check
+    - Improvement [Log the progress of backward compatibility tests](https://github.com/onflow/flow-go/pull/6834)
+    - [add from-to height range](https://github.com/onflow/ff-sre-automation/pull/12)
 
 **EVM Gateway**
+- Improvement
+    - [Include human-friendly error messages on EVM transaction events](https://github.com/onflow/flow-go/pull/6836)
+    - [Support blockOverrides optional argument for eth_call JSON-RPC endpoint](https://github.com/onflow/flow-evm-gateway/issues/685)
+- tech-debt
+    - [Remove relic `TraceDownloadFailed` metric](https://github.com/onflow/flow-evm-gateway/pull/724)
+    - [Decommission the traces generation & GCP upload](https://github.com/onflow/flow-go/issues/6840)
 
 **This sprint**
 
 - Cadence Language
   - Bugfix (internal) - complete and deploy
   - Continue work on the [Cadence compiler POC - Phase 2](https://github.com/onflow/cadence/issues/3692)
-  - Continue working on Blog post to communicate status & goals of the compiler track.
+  - Publish Blog post to communicate status & goals of the compiler track.
 
 - Cadence Execution
-  - Complete work on [FVM Programs cache invalidation](https://github.com/onflow/flow-go/issues/6507) & port to v0.37 for deployment
+  - Deploy [FVM Programs cache invalidation](https://github.com/onflow/flow-go/issues/6507)
   - Complete [optimization for Cadence domain storage](https://github.com/onflow/cadence/issues/3584) - Testing & deployment
+  - Complete [Document versioning mechanics for dynamic protocol state](https://github.com/onflow/flow-go/issues/6887)
   - Continue new Trie research
-  - Evaluate / Start [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
-  - Badger -> Pebble migration: continue work on [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516)
+  - Continue [Atree - Refactor and reduce technical debt](https://github.com/onflow/atree/issues/464)
+  - Badger -> Pebble migration: continue work on [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516) and [execution state migration](https://github.com/onflow/flow-go/issues/6527)
+  - Continue [Finish design for passkey support](https://github.com/onflow/flow-go/issues/6927)
+  - Start [Execution performance benchmarking](https://github.com/onflow/flow-go/issues/6896)
 
-- Continue [EVM Gateway Hardening - phase 2](https://github.com/onflow/flow-evm-gateway/issues/700)
+- EVM Gateway
+  - Continue [PoC to allow indexing unsealed finalized execution results](https://github.com/onflow/flow-evm-gateway/issues/727)
+  - Continue [EVM Gateway Hardening - phase 2](https://github.com/onflow/flow-evm-gateway/issues/700)
 
 **On Hold**
-
+- [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
 - [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
-- [Random beacon history taking more space on chain than expected](https://github.com/onflow/flow-go/issues/5550)
 - [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
 
 ---
