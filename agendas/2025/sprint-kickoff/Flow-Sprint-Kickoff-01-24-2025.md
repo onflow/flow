@@ -3,8 +3,8 @@
  ### Team Wins 🎉
  
  * Successful Testnet upgrade, seeing 3x TPs increase after the programs cacheinvalidation fix
- * Latest Ledger repo update was merged and then ported to our PoP work
- * Axelar launced on FLow EVM finally
+ * Latest Ledger repo update was merged and then ported to our PoP work, and PR submitted to Ledger
+ * Axelar launced on Flow EVM finally
 
 --- 
 
