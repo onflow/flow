@@ -283,19 +283,22 @@ Cycle Objective(s):
 
 KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 2 per week on a 4-week rolling average.
 
-KR 2: KR 2: Improve SLA response time for critical (P0) issues to under 1 hour, with resolution within 12 hours, and high-priority issues (P1) to 12 hours, with resolution within 72 hours.
+KR 2: Ensure 100% integration test coverage of key user journeys for Flow Wallet extension, completed in order of business priority.
 
-KR 3: Ensure that 90% of accounts holding >= 100 FLOW, or having storage used greater than the minimum account storage are backed up.
 
 **Done last sprint**
 
 **This sprint**
 
-- Continue Flow Wallet extension refactor
-- Continue EVM calldata decoding on Flow Wallet Extension: https://github.com/Outblock/FRW/issues/84
-- Continue EVM transaction id pre-calculation
-- Update Cadence EVM call transaction to use correct arguments
-- Fix Dapper Wallet account linking transaction signing issues
+- Onboarded new iOS developer, Marty! 🎉
+- Continue Flow Wallet extension refactor.
+- Wallet: Fixed an issue with out Contract Call transaction script arguements, using UInt256 instead of UFix64.
+- Wallet: Fixed compatibility issues with signing messages from Flow Reward store.
+- Wallet: Fixes an issue with network switching displaying incorrect messaging to users.
+- Wallet: Improved support for new token launches, including TRUMP token.
+- Wallet: Fixed an issue with Google Drive backup impacting a small number of users.
+- Wallet: Fixed an issue loading COA details on android
+- Wallet: Resolved an issue where Flow Wallet extension failed to load copy for some users.
 
 **On Hold**
 
