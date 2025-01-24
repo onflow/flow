@@ -239,7 +239,7 @@ Cycle Objective(s):
 **Done last sprint**
 
 * [Continue work on Gold Star](https://github.com/onflow/dx-internal/issues/41)
-* Built docs components to support Education for docs home page refresh [Figma](https://www.figma.com/design/EyyYFkfXj02nOsJGrAMBz8/Flow-Dev-Portal---Design-File?node-id=744-10303&t=oMRIzzynVfq9vg6z-0)
+* Built docs components to support Education for docs home page refresh
 
 **This sprint**
 
