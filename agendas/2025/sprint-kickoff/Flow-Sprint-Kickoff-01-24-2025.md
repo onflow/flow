@@ -262,7 +262,7 @@ Cycle Objective(s):
   - T-system has unstaked their Execution node. Node will be restaked next-to-next epoch.
 
 **This sprint**
-* Dorahack contract review signing.
+* Dorahack contract review & signing.
 * Start contract review with Alchemy.
 
 ---
