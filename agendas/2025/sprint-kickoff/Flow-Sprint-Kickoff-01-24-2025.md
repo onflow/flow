@@ -2,7 +2,7 @@
 
  ### Team Wins 🎉
  
- * Successful TN upgrade, seeing 3x TPs increase after the programs cacheinvalidation fix.
+ * Successful Testnet upgrade, seeing 3x TPs increase after the programs cacheinvalidation fix.
 
 --- 
 
