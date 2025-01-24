@@ -106,6 +106,16 @@ Cycle Objective(s):
 * <ins>Data Availability</ins>
   - KROK Team
     - WebSocket controller and data providers
+      - [Add arguments getter for data providers](https://github.com/onflow/flow-go/issues/6865)
+      - Refactoring of transaction subscription to simplify logic and cover functionality with more tests(issues [#6573](https://github.com/onflow/flow-go/issues/6573), [#6767](https://github.com/onflow/flow-go/issues/6767))
+      - [Implement integration test for new websockets](https://github.com/onflow/flow-go/issues/6641)
+      - [Add documentation for new websockets](https://github.com/onflow/flow-go/issues/6644) (In Progress)
+      - [Add examples for ws conn usages](https://github.com/onflow/flow-go/issues/6643) (In Progress)
+      - [Tests for WebSockets connection limits](https://github.com/onflow/flow-go/issues/6876)
+    - Support transaction soft finality in the Access Node 
+      - Reviewed code in exiting PR [Improve user experience by enabling dApps to utilize transaction soft finality](https://github.com/onflow/flow-go/issues/5424)
+    - Other
+      - [Backport tx error messages PRs to v0.37 branch](https://github.com/onflow/flow-go/issues/6614)
 
 * <ins>Protocol - Malleability</ins>
   - KROK Team
@@ -128,12 +138,12 @@ Cycle Objective(s):
 * <ins>Data Availability</ins>
   - KROK Team
     - WebSocket controller and data providers
-      - [Add arguments getter for data providers](https://github.com/onflow/flow-go/issues/6865)
       - [Add documentation for new websockets](https://github.com/onflow/flow-go/issues/6644)
-      - [Implement integration test for new websockets](https://github.com/onflow/flow-go/issues/6641)
       - [Add examples for ws conn usages](https://github.com/onflow/flow-go/issues/6643)
-    - Support transaction soft finality in Access Node 
-      - Started reviewing code [Improve user experience by enabling dApps to utilize transaction soft finality](https://github.com/onflow/flow-go/issues/5424)
+    - Support transaction soft finality in the Access Node 
+      - Knowledge sharing about current Execution Sync and discussion of soft finality
+    - Other
+      - [Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
 
 * <ins>Protocol - Malleability</ins>
   - KROK Team
