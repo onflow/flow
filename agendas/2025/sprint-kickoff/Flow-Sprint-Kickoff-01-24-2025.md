@@ -5,6 +5,8 @@
  * Successful Testnet upgrade, seeing 3x TPs increase after the programs cacheinvalidation fix
  * Latest Ledger repo update was merged and then ported to our PoP work, and PR submitted to Ledger
  * Axelar launced on Flow EVM finally
+ * bridge.flow.com operational (currently privately on VPN IP only until launch)
+ * pyUSD lockers deployed on Solana and Ethereum, and USDF operational on Flow
 
 --- 
 
@@ -238,12 +240,15 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-- Axelar launced on FLow EVM finally
+- Axelar launced on Flow EVM finally
 - Started onboarding of Stork oracle to EVM
+- Finish up Deployment of pyUSD locker on Solana
+- Reploy USDF contract on Flow according to a few new requirements
  
 **This sprint**
 
-* Launch LayerZero and Starage 
+* Launch remaining coins using LayerZero, backed by Stargate
+* Ensure integration of WETH, USDC into bridge.flow.com
 
 **On Hold**
 - N/A
