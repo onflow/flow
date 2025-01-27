@@ -933,11 +933,18 @@ components:
         - Executed
         - Sealed
         - Expired
+    BlockStatus:
+      type: string
+      description: This value indicates the status of a block.
+      enum:
+        - BLOCK_UNKNOWN
+        - BLOCK_FINALIZED
+        - BLOCK_SEALED
     Block:
       type: object
       required:
         - header
-        - _expandable
+        - block_status
       properties:
         header:
           $ref: '#/components/schemas/BlockHeader'
@@ -955,6 +962,8 @@ components:
               format: uri
         _links:
           $ref: '#/components/schemas/Links'
+        block_status:
+          $ref: '#/components/schemas/BlockStatus'
     BlockHeader:
       type: object
       required:
