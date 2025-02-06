@@ -38,7 +38,8 @@
 * Height Coordinated Upgrade:
   * Monday, 10th Feb on Testnet
   * Thursday, 13th Feb on mainnet
-    Branch `v0.38`
+  
+  Branch `v0.38`
 
 ---
 
