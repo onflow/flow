@@ -241,10 +241,12 @@ Cycle Objective(s):
 4. Build and ship a new dashboard to provide node operators with real-time access to staking, epoch-related and other relevant data.
 
 **Done last sprint**
-* 
+* Dorahack contract signed.
+* T-systems node staked
 
 **This sprint**
-* Dorahack contract review & signing.
+
 * Start contract review with Alchemy.
+* Work with Dorahacks to onboard 4 new SN nodes.
 
 ---
