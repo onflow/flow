@@ -24,15 +24,15 @@
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 8  |    7      |       0       |       8        |        **23**         |
+| Drafted     | 9(+1) |    7      |       0       |       8        |        **24** (+1)       |
 | Proposed    | 1  |    2     |       3       |       0          |        **6**          |
 | Accepted    | 2  |    1     |       2       |       2          |        **7**          |
 | Rejected    | 0  |    1     |       1       |       0          |        **2**         |
 | Implemented | 3  |    5     |       1       |       0          |        **9**        |
 | Released    | 4  |    34     |       7        |       6          |        **51**          |
-| Total       | **17** |    **49**   |       **14**       |       **16**         |        **98**         |
+| Total       | **19** |    **50**   |       **14**       |       **16**         |        **99**         |
 
-- no change from the last sprint.
+- 1 new Flip added - [FLIP 318 - VM Bridge Support for Cross-VM NFTs](https://github.com/onflow/flips/issues/318)
   
 ### Key Release Dates & Breaking Changes
 * Height Coordinated Upgrade:
