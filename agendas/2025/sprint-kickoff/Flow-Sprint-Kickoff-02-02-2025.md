@@ -11,9 +11,9 @@
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%   |    100%       |       0%         |
 | Block Finalization      | 99.9%   |    100%       |       0%         |
-| Transaction Execution   | 99.9%   |    100%       |       0%         |
-| Block Sealing           | 99.9%   |    100%       |       0%         |
-| Access API Liveness     | 99.9%   |    99.973%    |       24.9%      |
+| Transaction Execution   | 99.9%   |    99.95%     |       49.6%      |
+| Block Sealing           | 99.9%   |    99.96%     |       24.8%      |
+| Access API Liveness     | 99.9%   |    100%       |       0%         |
 
 #### P0 or P1 Incidents
 * None
@@ -36,8 +36,9 @@
   
 ### Key Release Dates & Breaking Changes
 * Height Coordinated Upgrade:
-  * Jan 24th (today) on Testnet ✔️
-  * Jan 27th, Monday on mainnet
+  * Monday, 10th Feb on Testnet
+  * Thursday, 13th Feb on mainnet
+    Branch `v0.38`
 
 ---
 
