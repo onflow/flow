@@ -360,25 +360,35 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 ---
 
-### **Infra - JP**
+### **Infra** \[JP / Manny]
 
 **Done last sprint**
+  * Onboarded new SRE/Infra Engineer, Manny! 🎉
 
 **Node Hosting**
+  * [Infrastructure for MN26 shadow node](https://github.com/onflow/ff-sre-infrastructure/pull/155)
+  * [Import migration mainnet firewall rules to terraform codebase](https://github.com/onflow/ff-sre-infrastructure/pull/163)
+  * [Replacement of branch ref by new tag ref for network module](https://github.com/onflow/ff-sre-infrastructure/pull/165)
+  * [Recovery of terraform state after disk increase change](https://github.com/onflow/ff-sre-infrastructure/pull/175)
+  * Move/restore of disk snapshot between different GCP projects
+  * Fix GCP disk reattachment issue on migration testnet
 
 **Observability**
 
 **Deployment Prep**
+  * Tests in preparation for the switchover of EVM gateway to QN
 
 **Key Management**
 
 **This sprint**
-* Fully migrate GCR to Artifact Registry
-* Assist in setup of MN fork for testing
-* Migrate to Private Registry workflows 
+  * Network module codebase merge between Testnet and Mainnet
+  * Automation of new tagging strategy for terraform modules
+  * New logic to permit egress firewall rule exceptions with allow action
 
 **On Hold**
+
 **Active Epics**
+  * [Terraform Module Consolidation](https://github.com/onflow/ff-sre-infrastructure/issues/94)
 
 ---
 
