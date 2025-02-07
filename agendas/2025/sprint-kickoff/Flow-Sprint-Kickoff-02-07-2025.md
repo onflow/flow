@@ -170,17 +170,38 @@ Cycle Objective(s):
   2. KR2: SPoCK Research [PAUSED]
 
 **Done last sprint**
+
 * <ins>EFM and Protocol HCU</ins>
   - Finished and merged several issues for EFM: https://github.com/onflow/flow-go/pull/6936, https://github.com/onflow/flow-go/pull/6935,
 
 * <ins>Malleability</ins>
   - KROK Team
+  - Done:
+    - [[Malleability A] RoleList](https://github.com/onflow/flow-go/issues/6686)
+    - [[Malleability A] ChannelList](https://github.com/onflow/flow-go/issues/6667)
+    - [[Malleability A] MissingCollection](https://github.com/onflow/flow-go/issues/6679)
+    - [[Malleability A] BlockDigest](https://github.com/onflow/flow-go/issues/6665)
+  - In Review:
+    - [[Malleability A] EpochStateContainer](https://github.com/onflow/flow-go/issues/6695)
+    - [[Malleability A] pendingBlock](https://github.com/onflow/flow-go/issues/6661)
+    - [[Malleability A] EventIDs](https://github.com/onflow/flow-go/issues/6698)
+    - [[Malleability A] IdentifierList](https://github.com/onflow/flow-go/issues/6674)
+    - [[Malleability A] GenericIdentityList ](https://github.com/onflow/flow-go/issues/6699)
+    - [[Malleability A] Locator](https://github.com/onflow/flow-go/issues/6677)
+    - [[Malleability A] MinEpochStateEntry](https://github.com/onflow/flow-go/issues/6678)
+    - [[Malleability A] EpochCommit](https://github.com/onflow/flow-go/issues/6671)
   - Analysis and design proposal for updating mempool package: https://github.com/onflow/flow-go/issues/6703
   - Started generalizing approach for testing malleability
     * <ins>Data Availability</ins>
 
 * <ins>Data Availability</ins>
   - KROK Team
+    In Progress:
+      - [Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
+    In Review/Fixed remarks:
+      - [Refactoring to support subscribing to transaction statuses on existing transactions by txID] issues [#6573](https://github.com/onflow/flow-go/issues/6573), [#6767](https://github.com/onflow/flow-go/issues/6767)
+      - [Test Tx Result storage and backfill](https://github.com/onflow/flow-go/issues/6945)
+      - [Implement integration test for new websockets](https://github.com/onflow/flow-go/issues/6641)
 
 * <ins>Other</ins>
   - Completed majority of work for the [Epoch interface refactor](https://github.com/onflow/flow-go/issues/6191) ([#6941](https://github.com/onflow/flow-go/pull/6941), [#6965](https://github.com/onflow/flow-go/pull/6965), [#6974](https://github.com/onflow/flow-go/pull/6974), [#6985](https://github.com/onflow/flow-go/pull/6985))
@@ -203,10 +224,19 @@ Cycle Objective(s):
 * <ins>Data Availability</ins>
   - Deploy soft-finality PoC to testnet
   - KROK Team
+    - WebSocket controller and data providers
+    - Run test Access Node with WS support
+  - Other
+    - [Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
+    - Backport tx error messages PRs to mainnet25 version
 
 * <ins>Malleability</ins>
   - Finish generalized approach for testing malleability
   - KROK Team
+    - [[Malleability A] Attestation](https://github.com/onflow/flow-go/issues/6696)
+    - [[Malleability A] LightCollection](https://github.com/onflow/flow-go/issues/6676)
+    - [[Malleability A] QuorumCertificate](https://github.com/onflow/flow-go/issues/6684)
+    - Continue to work on tasks for Malleability A
 
 * <ins>Other</ins>
       
