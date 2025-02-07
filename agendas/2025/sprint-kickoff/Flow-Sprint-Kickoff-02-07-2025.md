@@ -162,10 +162,10 @@ Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
 * Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * Address vectors which risk network downtime
-  1. Operationalize EFM Recovery [IN PROGRESS]
-  2. Protocol level HCU [NOT STARTED]
+  1. Operationalize EFM Recovery [WRAPPING UP]
+  2. Protocol level HCU [SCHEDULING]
 * Faster transaction results to improve user experience [WRAPPING UP]
-* Add passkey support: Protocol design and scoping [WRAPPING UO]
+* Add passkey support: Protocol design and scoping [WRAPPING UP]
 * Furthering permissionless participation
   1. Proof of Possession [WRAPPING UP]
   2. KR2: SPoCK Research [PAUSED]
