@@ -190,9 +190,8 @@ Cycle Objective(s):
     - [[Malleability A] Locator](https://github.com/onflow/flow-go/issues/6677)
     - [[Malleability A] MinEpochStateEntry](https://github.com/onflow/flow-go/issues/6678)
     - [[Malleability A] EpochCommit](https://github.com/onflow/flow-go/issues/6671)
-  - Analysis and design proposal for updating mempool package: https://github.com/onflow/flow-go/issues/6703
+  - Analysis and [design proposal for updating mempool package](https://github.com/onflow/flow-go/issues/6703)
   - Started generalizing approach for testing malleability
-    * <ins>Data Availability</ins>
 
 * <ins>Data Availability</ins>
   - KROK Team
@@ -203,6 +202,16 @@ Cycle Objective(s):
       - [Test Tx Result storage and backfill](https://github.com/onflow/flow-go/issues/6945)
       - [Implement integration test for new websockets](https://github.com/onflow/flow-go/issues/6641)
 
+* <ins>EVM Gateway</ins>
+  - [Increase computation limit for Cadence tx](https://github.com/onflow/flow-evm-gateway/pull/736)
+  - [Update replayer logic to validate txs with new error message format](https://github.com/onflow/flow-go/issues/6951)
+  - [Fix metrics startup/shutdown](https://github.com/onflow/flow-evm-gateway/pull/741)
+  - [Update cadence/flow-go/flow-go-sdk/flow-emulator dependencies](https://github.com/onflow/flow-evm-gateway/pull/738)
+  - [Add metric to count iterations taken for `eth_estimateGas`](https://github.com/onflow/flow-evm-gateway/pull/725)
+  - [Trigger OnLog tracing hook for transactions with logs](https://github.com/onflow/flow-go/issues/6842)
+  - Tech-debt removal:
+      - [Remove buffer gas applied in EVM.dryRun](https://github.com/onflow/flow-go/issues/6843)
+      
 * <ins>Other</ins>
   - Completed majority of work for the [Epoch interface refactor](https://github.com/onflow/flow-go/issues/6191) ([#6941](https://github.com/onflow/flow-go/pull/6941), [#6965](https://github.com/onflow/flow-go/pull/6965), [#6974](https://github.com/onflow/flow-go/pull/6974), [#6985](https://github.com/onflow/flow-go/pull/6985))
   - Last iterations over the Protocol Autonomy Roadmap document to get it ready for publication
@@ -226,6 +235,7 @@ Cycle Objective(s):
   - KROK Team
     - WebSocket controller and data providers
     - Run test Access Node with WS support
+    - Start ramping on soft-finality project
   - Other
     - [Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
     - Backport tx error messages PRs to mainnet25 version
@@ -238,11 +248,13 @@ Cycle Objective(s):
     - [[Malleability A] QuorumCertificate](https://github.com/onflow/flow-go/issues/6684)
     - Continue to work on tasks for Malleability A
 
-* <ins>Other</ins>
+* <ins>EVM Gateway</ins>
+  - Continue [PoC to allow indexing unsealed finalized execution results](https://github.com/onflow/flow-evm-gateway/issues/727)
+  - Continue [EVM Gateway Hardening - phase 2](https://github.com/onflow/flow-evm-gateway/issues/700)
       
 * <ins>Cryptography</ins>
   - PoP
-    - 
+    - Coordinate release of Ledger app following PR merge
   - Passkeys
     - Complete writing FlIP
       
