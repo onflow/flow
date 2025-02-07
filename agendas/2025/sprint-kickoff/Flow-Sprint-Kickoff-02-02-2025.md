@@ -321,7 +321,7 @@ Cycle Objective(s):
 
 **Done last sprint**
 * Dorahack contract signed.
-* T-systems node staked
+* T-systems node staked and operational.
 
 **This sprint**
 
