@@ -248,6 +248,7 @@ Cycle Objective(s):
 
 * <ins>Malleability</ins>
   - Finish generalized approach for testing malleability
+  - Tim is joining the malleability effort
   - KROK Team
     - [[Malleability A] Attestation](https://github.com/onflow/flow-go/issues/6696)
     - [[Malleability A] LightCollection](https://github.com/onflow/flow-go/issues/6676)
