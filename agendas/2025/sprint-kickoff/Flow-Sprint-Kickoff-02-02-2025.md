@@ -2,7 +2,9 @@
 
  ### Team Wins 🎉
  
- * 
+ * Cadence compiler Blog post to communicate status & goals ready for publishing.
+ * Programs cache invalidation fix deployed on mainnet, improving TPS 2x.
+ * Completed [Document versioning mechanics for dynamic protocol state - Execution state parameters](https://www.notion.so/flowfoundation/Execution-State-Parameters-in-the-Dynamic-Protocol-State-18c1aee123248045939ee83864bf46a4)
 --- 
 
 ### Mainnet Uptime - Last 14 days (01/24/25 to 02/06/24) \[Vishal]
@@ -55,26 +57,93 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**Cadence Language**
+- [Cadence compiler milestone 2](https://github.com/onflow/cadence/issues/3742)
+    - [Generalize arithmetic instructions for all number values](https://github.com/onflow/cadence/pull/3761)
+    - [Document stack effects of instructions in their description](https://github.com/onflow/cadence/pull/3759)
+    - [Compile switch](https://github.com/onflow/cadence/pull/3757)
+    - [Compile if-let](https://github.com/onflow/cadence/pull/3756)
+    - [Improve compiler tests](https://github.com/onflow/cadence/pull/3755)
+    - [ Improve default functions existence with conditions](https://github.com/onflow/cadence/pull/3754)
+    - [Compile dictionary expressions, implement NewDictionary instruction](https://github.com/onflow/cadence/pull/3747)
+    - [Fix operand order for SetField and SetIndex instructions, check resource invalidation](https://github.com/onflow/cadence/pull/3746)
+    - [Improve VM stack operations](https://github.com/onflow/cadence/pull/3745)
+    - [Sync with master](https://github.com/onflow/cadence/pull/3744)
+    - [Support accessing `result` variable inside post conditions](https://github.com/onflow/cadence/pull/3741)
+    - [Support inherited functions and conditions through delegation](https://github.com/onflow/cadence/pull/3734)
+- CCF
+    - [Update ccf_specs.md to draft of 1.0.0](https://github.com/fxamacker/ccf_draft/pull/101)
+- Bugfix
+    - [Port internal fixes](https://github.com/onflow/cadence/pull/3740)
+- Tooling fixes/improvements
+    - Update tool
+        - chore: [Update config of update tool](https://github.com/onflow/cadence/pull/3753)
+        - [Handle command failures in update tool](https://github.com/onflow/cadence/pull/3749)
+- Updating dependencies: [1](https://github.com/onflow/flixkit-go/pull/90), [2](https://github.com/onflow/cadence-tools/pull/453), [3](https://github.com/onflow/flowkit/pull/82), [4](https://github.com/onflow/cadence-tools/pull/452), [5](https://github.com/onflow/flow-emulator/pull/786), [6](https://github.com/onflow/cadence-tools/pull/451), [7](https://github.com/onflow/flow-go/pull/6956), [8](https://github.com/onflow/flow-go-sdk/pull/803)
+- Automation
+    - [Fix backward compatibility job](https://github.com/onflow/cadence/pull/3750)
+- Docs
+    - [Machine readable syntax specification for compiler frontend generation](https://github.com/onflow/cadence/issues/3686)
+
+**Cadence Execution**
+- Storage optimization: [Combine non-atree domain payloads into atree payloads](https://github.com/onflow/cadence/issues/3584)
+    - [Add default fvm context to the epoch counter script ](https://github.com/onflow/flow-go/pull/6971)
+    - Testing
+        - [Enable storage format v2 on mainnet](https://github.com/onflow/flow-go/pull/6988)
+    - Util
+        - [Add support for account format v2 in util `check-storage`](https://github.com/onflow/flow-go/pull/6977)
+        - [Add stats about account format versions to util's checkpoint-collect-stats command](https://github.com/onflow/flow-go/pull/6882)
+- Migration of Badger to Pebble DB
+    - Execution data
+      - [Refactor Approvals to batch updates](https://github.com/onflow/flow-go/pull/6868)
+    - Chunk data pack
+        - [Add pruning functions](https://github.com/onflow/flow-go/pull/6919)
+        - [Add Iterator Creator](https://github.com/onflow/flow-go/pull/6890)
+        - [Add Block Iterator](https://github.com/onflow/flow-go/pull/6858)
+- Tech-debt removal:
+    - [Remove last remnants of Cadence 1.0 and authorization fixes migrations](https://github.com/onflow/flow-go/pull/6987)
+    - Atree [Refactor and reduce technical debt](https://github.com/onflow/atree/issues/464)
+        - [Use helper functions to compute array sizes in tests](https://github.com/onflow/atree/pull/500)
+        - [Avoid using unexported `mutableValueNotifier` in tests](https://github.com/onflow/atree/pull/499)
+        - [Rename vars to reduce confusion (sizes vs counts)](https://github.com/onflow/atree/pull/498)
+        - [Avoid using MapDataSlab & MapMetaDataSlab in tests](https://github.com/onflow/atree/pull/497)
+        - [Avoid using MapDataSlab & MapMetaDataSlab in tests](https://github.com/onflow/atree/pull/496)
+        - [Avoid creating ArrayMetaDataSlab directly in tests](https://github.com/onflow/atree/pull/495)
+        - [Avoid creating ArrayDataSlab directly in tests](https://github.com/onflow/atree/pull/490)
+        - [Avoid using unexported `OrderedMap` fields in tests](https://github.com/onflow/atree/pull/489)
+        - [Avoid using unexported `Array` fields in tests](https://github.com/onflow/atree/pull/488)
+        - [Avoid using unexported constants in tests](https://github.com/onflow/atree/pull/485)
+        - [Avoid using unexported `SlabID` fields in tests](https://github.com/onflow/atree/pull/484)
+        - [Export PersistentSlabStorage funcs in export_test.go](https://github.com/onflow/atree/pull/481)
+        - [Use NewDefaultDigesterBuilder() in tests](https://github.com/onflow/atree/pull/480)
+        - [Replace SlabID{...} with NewSlabID() in tests](https://github.com/onflow/atree/pull/479)
+        - [Rename and export `SlabIDLength` and related constants](https://github.com/onflow/atree/pull/478)
+        - [Remove old test files](https://github.com/onflow/atree/pull/475)
+- Tooling
+    - Remote debugger
+        - [Refactor the remote debugger and add support for using the execution data API](https://github.com/onflow/flow-go/pull/6929)
+- Automation improvements/fixes
+    - [Extract the checkpoint from last sealed and executed](https://github.com/onflow/ff-sre-automation/pull/16)
+    - Backward compatibility workflow
+        - [add stop-on-mismatch flag for backward compatibilities test](https://github.com/onflow/ff-sre-automation/pull/15)
+        - [Add flag to backward compatibilities testing tool to continue verify when mismatching is found](https://github.com/onflow/flow-go/pull/6954)
+- Test environment (migration testmet/mainnet)
+    - [Migration to add keys to service accounts for testing](https://github.com/onflow/flow-go/pull/6969)
+
 **This sprint**
 
 - Cadence Language
-  - Bugfix (internal) - complete and deploy
+  - investigate security report
   - Continue work on the [Cadence compiler POC - Phase 2](https://github.com/onflow/cadence/issues/3692)
-  - Publish Blog post to communicate status & goals of the compiler track.
 
 - Cadence Execution
-  - Deploy [FVM Programs cache invalidation](https://github.com/onflow/flow-go/issues/6507)
-  - Complete [optimization for Cadence domain storage](https://github.com/onflow/cadence/issues/3584) - Testing & deployment
-  - Complete [Document versioning mechanics for dynamic protocol state](https://github.com/onflow/flow-go/issues/6887)
+  - HCU
+    - Deploy [optimization for Cadence domain storage](https://github.com/onflow/cadence/issues/3584) - Testing & deployment
   - Continue new Trie research
   - Continue [Atree - Refactor and reduce technical debt](https://github.com/onflow/atree/issues/464)
   - Badger -> Pebble migration: continue work on [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516) and [execution state migration](https://github.com/onflow/flow-go/issues/6527)
-  - Continue [Finish design for passkey support](https://github.com/onflow/flow-go/issues/6927)
-  - Start [Execution performance benchmarking](https://github.com/onflow/flow-go/issues/6896)
-
-- EVM Gateway
-  - Continue [PoC to allow indexing unsealed finalized execution results](https://github.com/onflow/flow-evm-gateway/issues/727)
-  - Continue [EVM Gateway Hardening - phase 2](https://github.com/onflow/flow-evm-gateway/issues/700)
+  - Complete [Finish design for passkey support](https://github.com/onflow/flow-go/issues/6927)
+  - Continue [Execution performance benchmarking](https://github.com/onflow/flow-go/issues/6896)
 
 **On Hold**
 - [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
