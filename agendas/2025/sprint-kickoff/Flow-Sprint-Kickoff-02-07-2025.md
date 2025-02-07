@@ -5,6 +5,10 @@
  * Cadence compiler Blog post to communicate status & goals ready for publishing.
  * Programs cache invalidation fix deployed on mainnet, improving TPS 2x.
  * Completed [Document versioning mechanics for dynamic protocol state - Execution state parameters](https://www.notion.so/flowfoundation/Execution-State-Parameters-in-the-Dynamic-Protocol-State-18c1aee123248045939ee83864bf46a4)
+ * Stargate.finance, the primary cross-chain token bridge on LayerZero launched on EVM mainnet
+ * https://bridge.flow.com also launched on mainnet
+
+   
 --- 
 
 ### Mainnet Uptime - Last 14 days (01/24/25 to 02/06/24) \[Vishal]
@@ -166,22 +170,18 @@ Cycle Objective(s):
   2. KR2: SPoCK Research [PAUSED]
 
 **Done last sprint**
-* <ins>Data Availability</ins>
+
+* <ins>EFM and Protocol HCU</ins>
+  - Finished and merged several issues for EFM: https://github.com/onflow/flow-go/pull/6936, https://github.com/onflow/flow-go/pull/6935,
+
+* <ins>Malleability</ins>
   - KROK Team
-    In Progress:
-      - [Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
-    In Review/Fixed remarks:
-      - [Refactoring to support subscribing to transaction statuses on existing transactions by txID] issues [#6573](https://github.com/onflow/flow-go/issues/6573), [#6767](https://github.com/onflow/flow-go/issues/6767)
-      - [Test Tx Result storage and backfill](https://github.com/onflow/flow-go/issues/6945)
-      - [Implement integration test for new websockets](https://github.com/onflow/flow-go/issues/6641)
-* <ins>Protocol - Malleability</ins>
-  - KROK Team
-    Done:
+  - Done:
     - [[Malleability A] RoleList](https://github.com/onflow/flow-go/issues/6686)
     - [[Malleability A] ChannelList](https://github.com/onflow/flow-go/issues/6667)
     - [[Malleability A] MissingCollection](https://github.com/onflow/flow-go/issues/6679)
     - [[Malleability A] BlockDigest](https://github.com/onflow/flow-go/issues/6665)
-    In Review:
+  - In Review:
     - [[Malleability A] EpochStateContainer](https://github.com/onflow/flow-go/issues/6695)
     - [[Malleability A] pendingBlock](https://github.com/onflow/flow-go/issues/6661)
     - [[Malleability A] EventIDs](https://github.com/onflow/flow-go/issues/6698)
@@ -190,39 +190,61 @@ Cycle Objective(s):
     - [[Malleability A] Locator](https://github.com/onflow/flow-go/issues/6677)
     - [[Malleability A] MinEpochStateEntry](https://github.com/onflow/flow-go/issues/6678)
     - [[Malleability A] EpochCommit](https://github.com/onflow/flow-go/issues/6671)
+  - Analysis and design proposal for updating mempool package: https://github.com/onflow/flow-go/issues/6703
+  - Started generalizing approach for testing malleability
+    * <ins>Data Availability</ins>
+
+* <ins>Data Availability</ins>
+  - KROK Team
+    In Progress:
+      - [Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
+    In Review/Fixed remarks:
+      - [Refactoring to support subscribing to transaction statuses on existing transactions by txID] issues [#6573](https://github.com/onflow/flow-go/issues/6573), [#6767](https://github.com/onflow/flow-go/issues/6767)
+      - [Test Tx Result storage and backfill](https://github.com/onflow/flow-go/issues/6945)
+      - [Implement integration test for new websockets](https://github.com/onflow/flow-go/issues/6641)
+
+* <ins>Other</ins>
+  - Completed majority of work for the [Epoch interface refactor](https://github.com/onflow/flow-go/issues/6191) ([#6941](https://github.com/onflow/flow-go/pull/6941), [#6965](https://github.com/onflow/flow-go/pull/6965), [#6974](https://github.com/onflow/flow-go/pull/6974), [#6985](https://github.com/onflow/flow-go/pull/6985))
+  - Last iterations over the Protocol Autonomy Roadmap document to get it ready for publication
+  - Continued Trie research: discussed ideas about the storage backend
+
+* <ins>Cryptography</ins>
+  - PoP
+    - Submitted revised PR to Ledger to help expedite review
+  - Passkeys
+    - Completed validation and project scoping
+    - Continued writing FlIP
 
 **This sprint**
 
 * <ins>EFM and Protocol HCU</ins>
-  - Wrap up EFM Recovery benchnet testing
-  - Then tag a version for the Protocol HCU upgrade and begin upgrade process (pre-requisite is that all operators to upgrade over a rolling upgrade window of days/weeks)
-
+  - Launch prep
+  - Mop up tech debt item for EFM recovery: [Extend unit tests for service events conversion ](https://github.com/onflow/flow-go/issues/6961)
+   
 * <ins>Data Availability</ins>
+  - Deploy soft-finality PoC to testnet
   - KROK Team
     - WebSocket controller and data providers
-      - Run test Access Node with WS support
-    - Other
-      - [Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
-      - Backport tx error messages PRs to mainnet25 version
+    - Run test Access Node with WS support
+  - Other
+    - [Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
+    - Backport tx error messages PRs to mainnet25 version
 
-* <ins>Protocol - Malleability</ins>
+* <ins>Malleability</ins>
+  - Finish generalized approach for testing malleability
   - KROK Team
     - [[Malleability A] Attestation](https://github.com/onflow/flow-go/issues/6696)
     - [[Malleability A] LightCollection](https://github.com/onflow/flow-go/issues/6676)
     - [[Malleability A] QuorumCertificate](https://github.com/onflow/flow-go/issues/6684)
     - Continue to work on tasks for Malleability A
 
-* <ins>Protocol - Other</ins>
-  - Implementing the Epoch API change, per Protocol working group meeting
-       
+* <ins>Other</ins>
+      
 * <ins>Cryptography</ins>
   - PoP
-    - Continue discussion with VL and driving Ledger
-    - Resolve any remaining PR updates if needed for a quicker Ledger review
+    - 
   - Passkeys
-    - Finalize an FVM scope to support webauthn
-    - Continue testing (RLP and e2e)
-    - Continue writing FlIP
+    - Complete writing FlIP
       
 **On Hold**
 
@@ -238,12 +260,13 @@ Cycle Objective(s):
 - Bring liquidity and and kick start ecosystem effects
 
 **Done last sprint**
+- Stargate.finance launched!
+- bridge.flow.com launched!
+- Started onboarding Diamond Block (AMM)
+- Band protocol oracle on Cadence now supports 54 symbols (cryptocurrencies and fiat price pairs)
 
 **This sprint**
-
-* Launch remaining coins using LayerZero, backed by Stargate
-* Ensure integration of WETH, USDC into bridge.flow.com
-* Launch Squid, 
+ * Launch Squid, possibly
 
 **On Hold**
 - N/A
