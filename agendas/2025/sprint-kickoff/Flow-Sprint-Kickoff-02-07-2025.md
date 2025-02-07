@@ -5,9 +5,9 @@
  * Cadence compiler Blog post to communicate status & goals ready for publishing.
  * Programs cache invalidation fix deployed on mainnet, improving TPS 2x.
  * Completed [Document versioning mechanics for dynamic protocol state - Execution state parameters](https://www.notion.so/flowfoundation/Execution-State-Parameters-in-the-Dynamic-Protocol-State-18c1aee123248045939ee83864bf46a4)
- * Stargate.finance, the primary cross-chain token bridge on LayerZero launched on EVM mainnet
+ * https://stargate.finance, the primary cross-chain token bridge on LayerZero launched on EVM mainnet
  * https://bridge.flow.com also launched on mainnet
-
+ * Deployed soft-finality EVM GW PoC to testnet
    
 --- 
 
@@ -160,13 +160,14 @@ Cycle Objective(s):
 Cycle Objective(s): 
 
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
-* Faster transaction results to improve user experience [IN PROGRESS]
+* Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * Address vectors which risk network downtime
   1. Operationalize EFM Recovery [IN PROGRESS]
   2. Protocol level HCU [NOT STARTED]
-* Add passkey support: Protocol design and scoping [IN PROGRESS]
+* Faster transaction results to improve user experience [WRAPPING UP]
+* Add passkey support: Protocol design and scoping [WRAPPING UO]
 * Furthering permissionless participation
-  1. Proof of Possession [IN PROGRESS]
+  1. Proof of Possession [WRAPPING UP]
   2. KR2: SPoCK Research [PAUSED]
 
 **Done last sprint**
@@ -203,6 +204,7 @@ Cycle Objective(s):
       - [Implement integration test for new websockets](https://github.com/onflow/flow-go/issues/6641)
 
 * <ins>EVM Gateway</ins>
+  - Deployed soft-finality GW PoC to testnet
   - [Increase computation limit for Cadence tx](https://github.com/onflow/flow-evm-gateway/pull/736)
   - [Update replayer logic to validate txs with new error message format](https://github.com/onflow/flow-go/issues/6951)
   - [Fix metrics startup/shutdown](https://github.com/onflow/flow-evm-gateway/pull/741)
@@ -219,9 +221,14 @@ Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   - PoP
-    - Submitted revised PR to Ledger to help expedite review
+    - Reworked Ledger PR to limit the changes to PoP only (by reverting the latest non-PoP core-contract updates)
+    - New core-contract branch to track Ledger scripts
+    - PR reviewed and approved by Ledger
+    - Flow Port release is to integrate the new Ledger release to address nanoS deprecation issue (ongoing)
   - Passkeys
-    - Completed validation and project scoping
+    - Completed project scoping and agreed on design proposal
+    - Ongoing vaidation:
+      - Preparing a Go client to generate webauthn signatures 
     - Continued writing FlIP
 
 **This sprint**
@@ -231,7 +238,6 @@ Cycle Objective(s):
   - Mop up tech debt item for EFM recovery: [Extend unit tests for service events conversion ](https://github.com/onflow/flow-go/issues/6961)
    
 * <ins>Data Availability</ins>
-  - Deploy soft-finality PoC to testnet
   - KROK Team
     - WebSocket controller and data providers
     - Run test Access Node with WS support
@@ -254,9 +260,11 @@ Cycle Objective(s):
       
 * <ins>Cryptography</ins>
   - PoP
+    - Test flow-port release 
     - Coordinate release of Ledger app following PR merge
   - Passkeys
     - Complete writing FlIP
+    - Go client to generate webauthn signatures
       
 **On Hold**
 
