@@ -316,24 +316,28 @@ Cycle Objective(s):
 
 **Cycle Objective(s):** 
 
-KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 2 per week on a 4-week rolling average.
-
-KR 2: Ensure 100% integration test coverage of key user journeys for Flow Wallet extension, completed in order of business priority.
-
+KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 1 per week on a 4-week rolling average.
+ - Current (Feb 2): 6.75/week
 
 **Done last sprint**
 
-**This sprint**
-
 - Onboarded new iOS developer, Marty! 🎉
-- Continue Flow Wallet extension refactor.
-- Wallet: Fixed an issue with out Contract Call transaction script arguements, using UInt256 instead of UFix64.
-- Wallet: Fixed compatibility issues with signing messages from Flow Reward store.
-- Wallet: Fixes an issue with network switching displaying incorrect messaging to users.
-- Wallet: Improved support for new token launches, including TRUMP token.
-- Wallet: Fixed an issue with Google Drive backup impacting a small number of users.
-- Wallet: Fixed an issue loading COA details on android
-- Wallet: Resolved an issue where Flow Wallet extension failed to load copy for some users.
+  
+- Wallet: Released version 2.7 of Flow Wallet extension (release notes: https://github.com/onflow/FRW-Extension/releases/tag/2.7.0)
+  - Includes major stability improvements, resolving customer problems such as improved UI reliability, performance improvements, and transaction handling.
+
+**This sprint**
+  
+- Focusing on resolving immediate customer problems in Flow Wallet Extension:
+  - Token Display and Manipulation (6 issues in the past month)
+    - APAC team: Token Manipulation focus.
+    - PST team: Token Display focus.
+  
+  - UI / Profile Stability (4 issues in the past month)
+  - Backups / Recovery / Security (3 issues in the past month)
+ 
+- Flow Wallet iOS:
+  - Focus on resolving some quick-win items: Copy fixes, Small UI tweaks, FTUE improvements.
 
 **On Hold**
 
