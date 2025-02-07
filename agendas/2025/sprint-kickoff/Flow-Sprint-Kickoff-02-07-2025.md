@@ -7,7 +7,7 @@
  * Completed [Document versioning mechanics for dynamic protocol state - Execution state parameters](https://www.notion.so/flowfoundation/Execution-State-Parameters-in-the-Dynamic-Protocol-State-18c1aee123248045939ee83864bf46a4)
  * https://stargate.finance, the primary cross-chain token bridge on LayerZero launched on EVM mainnet
  * https://bridge.flow.com also launched on mainnet
- * Deployed soft-finality EVM GW PoC to testnet
+ * Deployed soft-finality EVM GW PoC to testnet. Trimmed tx response UX to ~5s compared ~9s on TN, to 8s vs 14s on MN 🎉
    
 --- 
 
