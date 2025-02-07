@@ -42,7 +42,7 @@
   
 ### Key Release Dates & Breaking Changes
 * Height Coordinated Upgrade:
-  * Monday, 10th Feb on Testnet
+  * Tuesday, 11th Feb on Testnet
   * Thursday, 13th Feb on mainnet
   
   Branch `v0.38`
