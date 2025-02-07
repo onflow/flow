@@ -166,6 +166,30 @@ Cycle Objective(s):
   2. KR2: SPoCK Research [PAUSED]
 
 **Done last sprint**
+* <ins>Data Availability</ins>
+  - KROK Team
+    In Progress:
+      - [Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
+    In Review/Fixed remarks:
+      - [Refactoring to support subscribing to transaction statuses on existing transactions by txID] issues [#6573](https://github.com/onflow/flow-go/issues/6573), [#6767](https://github.com/onflow/flow-go/issues/6767)
+      - [Test Tx Result storage and backfill](https://github.com/onflow/flow-go/issues/6945)
+      - [Implement integration test for new websockets](https://github.com/onflow/flow-go/issues/6641)
+* <ins>Protocol - Malleability</ins>
+  - KROK Team
+    Done:
+    - [[Malleability A] RoleList](https://github.com/onflow/flow-go/issues/6686)
+    - [[Malleability A] ChannelList](https://github.com/onflow/flow-go/issues/6667)
+    - [[Malleability A] MissingCollection](https://github.com/onflow/flow-go/issues/6679)
+    - [[Malleability A] BlockDigest](https://github.com/onflow/flow-go/issues/6665)
+    In Review:
+    - [[Malleability A] EpochStateContainer](https://github.com/onflow/flow-go/issues/6695)
+    - [[Malleability A] pendingBlock](https://github.com/onflow/flow-go/issues/6661)
+    - [[Malleability A] EventIDs](https://github.com/onflow/flow-go/issues/6698)
+    - [[Malleability A] IdentifierList](https://github.com/onflow/flow-go/issues/6674)
+    - [[Malleability A] GenericIdentityList ](https://github.com/onflow/flow-go/issues/6699)
+    - [[Malleability A] Locator](https://github.com/onflow/flow-go/issues/6677)
+    - [[Malleability A] MinEpochStateEntry](https://github.com/onflow/flow-go/issues/6678)
+    - [[Malleability A] EpochCommit](https://github.com/onflow/flow-go/issues/6671)
 
 **This sprint**
 
@@ -176,20 +200,17 @@ Cycle Objective(s):
 * <ins>Data Availability</ins>
   - KROK Team
     - WebSocket controller and data providers
-      - [Add documentation for new websockets](https://github.com/onflow/flow-go/issues/6644)
-      - [Add examples for ws conn usages](https://github.com/onflow/flow-go/issues/6643)
-    - Support transaction soft finality in the Access Node 
-      - Knowledge sharing about current Execution Sync and discussion of soft finality
+      - Run test Access Node with WS support
     - Other
       - [Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
+      - Backport tx error messages PRs to mainnet25 version
 
 * <ins>Protocol - Malleability</ins>
-  - Yurii to start on data malleability for core protocol types
   - KROK Team
-    - [[Malleability A] ChannelList](https://github.com/onflow/flow-go/issues/6667)
-    - [[Malleability A] BlockDigest](https://github.com/onflow/flow-go/issues/6665)
-    - [[Malleability A] MissingCollection](https://github.com/onflow/flow-go/issues/6679)
-    - [[Malleability A] EpochCommit](https://github.com/onflow/flow-go/issues/6671)
+    - [[Malleability A] Attestation](https://github.com/onflow/flow-go/issues/6696)
+    - [[Malleability A] LightCollection](https://github.com/onflow/flow-go/issues/6676)
+    - [[Malleability A] QuorumCertificate](https://github.com/onflow/flow-go/issues/6684)
+    - Continue to work on tasks for Malleability A
 
 * <ins>Protocol - Other</ins>
   - Implementing the Epoch API change, per Protocol working group meeting
