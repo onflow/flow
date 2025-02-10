@@ -114,7 +114,7 @@
 | Staked                 | Collection   | bbcbb4d70c26a1d573af62f6b727a930e53338e9b5d99865a7616999f99dad47 |
 | Staked                 | Verification | d5ac048967388a9f021f33f1a30141ab6f39cddec10f762c86b11a55aaa9c4f9 |
 | Staked                 | Collection   | fcb55c2d1fb2737b159704b5a30b194b8a8ddfb4691d55692af597ac6e236201 |
-| T-Systems              | Execution    | 2b396b7fab0102f104a2af7e095b145cc14da28f863564802e158afc3e07e638 |
+| Deutsche Telekom       | Execution    | 9f264537d1a2e2ab0baad9dbec599d2d8d7817f969a3851572c82a5dffdbbeb7 |
 | Taiwan Mobile          | Verification | e8f4bd649d08ecb5afb7023a0c5e8bb10ce56659399665da8cc9d517e7982f92 |
 | Ubisoft                | Verification | 6d0f707f944b024179553d9e31486beb7915148d86cfda43c85ecc33f4b9afc7 |
 | Ubisoft                | Collection   | eeaf114cbc49d1c6ed5d061b38c8f8a1743c3433bce384e0598fe505fda55e99 |
