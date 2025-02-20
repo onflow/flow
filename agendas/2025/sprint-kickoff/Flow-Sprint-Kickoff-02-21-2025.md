@@ -2,7 +2,9 @@
 
  ### Team Wins 🎉
  
- * 
+ * Mainnet now running v0.38, flow-go master ! This means we can now finally run our backwards-compatibility CI workflows to ensure it remains backwards compatible, making rolling upgrades much safer to do in the future.
+ * First on-the-fly migration of on-chain data running on mainnet, optimizing storage of 65M+ accounts - this would otherwise require prolonged outage during network upgrade.
+ * Added NFL tests to [Cadence CI](https://github.com/onflow/cadence/actions/workflows/ci.yml) - we run TapShot and NFL tests nightly to catch any regressions.
    
 --- 
 
@@ -48,29 +50,67 @@
 # Working Group Updates
 
 ### **Cadence and Virtual Machine** \[Jan]
-Cycle Objective(s):
+Q1 2025 Cycle Objective(s):
 
-[Cadence Language](https://github.com/onflow/cadence/issues/3623)
+[Cadence Language](https://github.com/onflow/cadence/issues/3726)
 
-[Cadence VM (execution environment)](https://github.com/onflow/flow-go/issues/6577)
+[Cadence VM (execution environment)](https://github.com/onflow/flow-go/issues/6881)
 
 **Done last sprint**
 
+**Cadence Language**
+- [Cadence compiler milestone 2](https://github.com/onflow/cadence/issues/3742)
+    - [Reenable compiler tests](https://github.com/onflow/cadence/pull/3774)
+    - [Add tests for compiling casting expressions to casting instructions](https://github.com/onflow/cadence/pull/3771)
+    - [Compile and execute emit statement](https://github.com/onflow/cadence/pull/3768)
+    - [Support basic casting operations in VM](https://github.com/onflow/cadence/pull/3767)
+    - [Decouple interpreter values from interpreter – Part 3](https://github.com/onflow/cadence/pull/3751)
+    - [Decouple interpreter values from interpreter – Part 2](https://github.com/onflow/cadence/pull/3748)
+    - [Decouple interpreter values from interpreter](https://github.com/onflow/cadence/pull/3698)
+- Fix Cadence CI to run tests from onboarded projects:
+    - [Fix and improve compat suite](https://github.com/onflow/cadence/pull/3780)
+- porting internal bugfixes: [1](https://github.com/onflow/cadence/pull/3779), [2](https://github.com/onflow/cadence/pull/3778), [3](https://github.com/onflow/cadence/pull/3776), [4](https://github.com/onflow/cadence/pull/3775)
+- dependency updates: 
+    - flow-go-sdk: [Update to Cadence v1.3.2](https://github.com/onflow/flow-go-sdk/pull/804)
+    - flow-cli: [Update to LS v1.2.1](https://github.com/onflow/flow-cli/pull/1888), [Update to Cadence v1.3.1, Go v1.23](https://github.com/onflow/flow-cli/pull/1884)
+
+**Cadence Execution**
+
+- Deployed [optimization for Cadence domain storage](https://github.com/onflow/cadence/issues/3584)
+- Completed [Design for passkey support](https://github.com/onflow/flow-go/issues/6927)
+- Migration of Badger to Pebble DB
+    - [[Storage Refactor] Init pebble DB in scaffold](https://github.com/onflow/flow-go/pull/6949)
+    - [[Storage Refactor] Refactor ConsumerProgress](https://github.com/onflow/flow-go/pull/6872)
+- Pre-requisite for Execution effort calibration: [Create a performance loader](https://github.com/onflow/flow-execution-effort-estimation/issues/9)
+    - [Fix docs](https://github.com/onflow/flow-execution-effort-estimation/pull/10), [Add lint and test CI](https://github.com/onflow/flow-execution-effort-estimation/pull/8), [Update packages and go version](https://github.com/onflow/flow-execution-effort-estimation/pull/7)
+- Cadence upgrades:
+    - [v1.3.3](https://github.com/onflow/flow-go/pull/7061), [v1.3.2](https://github.com/onflow/flow-go/pull/7054)
+- Tech-debt removal:
+    - Atree [Refactor and reduce technical debt](https://github.com/onflow/atree/issues/464)
+        - [Replace empty interface with `any`](https://github.com/onflow/atree/pull/514)
+        - [Split array_debug.go and map_debug.go into smaller files](https://github.com/onflow/atree/pull/513)
+        - [Replace `panic("not reachable")` with `panic(NewUnreachableError())`](https://github.com/onflow/atree/pull/512)
+        - [Split storage.go into smaller files](https://github.com/onflow/atree/pull/511)
+        - [Split storable.go & typeinfo.go into smaller files](https://github.com/onflow/atree/pull/510)
+        - [Split map.go into smaller files and group related functions](https://github.com/onflow/atree/pull/509)
+        - [Split array.go into smaller files and group related functions](https://github.com/onflow/atree/pull/508)
+        - [Refactor smoke test to reduce duplicate code](https://github.com/onflow/atree/pull/506)
+        - [Rename cmd/stress to cmd/smoke (it only contains smoke tests)](https://github.com/onflow/atree/pull/505)
+        - [Move test util funcs to test_utils package for reuse by smoke tests](https://github.com/onflow/atree/pull/504)
+        - [Decouple non-test and test code](https://github.com/onflow/atree/pull/503)
+        - [Use helper funcs to compute map byte sizes in tests](https://github.com/onflow/atree/pull/501)
+- Util improvement: [Add flag to ignore random beacon history to diff-states command of util program](https://github.com/onflow/flow-go/issues/6989)
 
 **This sprint**
 
 - Cadence Language
-  - investigate security report
   - Continue work on the [Cadence compiler POC - Phase 2](https://github.com/onflow/cadence/issues/3692)
 
 - Cadence Execution
-  - HCU
-    - Deploy [optimization for Cadence domain storage](https://github.com/onflow/cadence/issues/3584) - Testing & deployment
   - Continue new Trie research
   - Continue [Atree - Refactor and reduce technical debt](https://github.com/onflow/atree/issues/464)
   - Badger -> Pebble migration: continue work on [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516) and [execution state migration](https://github.com/onflow/flow-go/issues/6527)
-  - Complete [Finish design for passkey support](https://github.com/onflow/flow-go/issues/6927)
-  - Continue [Execution performance benchmarking](https://github.com/onflow/flow-go/issues/6896)
+  - Continue [Execution performance loader](https://github.com/onflow/flow-go/issues/6896)
 
 **On Hold**
 - [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
