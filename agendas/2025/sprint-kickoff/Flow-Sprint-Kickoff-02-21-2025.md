@@ -146,6 +146,45 @@ Cycle Objective(s):
   2. KR2: SPoCK Research [PAUSED]
 
 **Done last sprint**
+* <ins>Data Availability</ins>
+  - KROK Team
+  Done:
+    - [[Access] Could not unsubscribe with an internally generated subscription_id in new WebSockets](https://github.com/onflow/flow-go/issues/7006)
+    - [[Access] Crash when subscribing to "event" topic via new WebSockets](https://github.com/onflow/flow-go/issues/7005)
+  In Review:
+    - [[Access] Empty error object in successful WebSocket subscription responce](https://github.com/onflow/flow-go/issues/7009)
+    - [[Access] DataProviders does not catch invalid arguments](https://github.com/onflow/flow-go/issues/7066)
+    - [[Access] heartbeat_interval argument is missing in events/account statuses WebSocket data providers](https://github.com/onflow/flow-go/issues/7080)
+    - [[Access] Add documentation for new websockets](https://github.com/onflow/flow-go/issues/6644)
+    - [[Access] Gorilla WebSocket connection type may panic. We should catch it](https://github.com/onflow/flow-go/issues/7036)
+    - [[Access] Data providers should wrap context.Canceled error](https://github.com/onflow/flow-go/issues/7040)
+    - [[Access] Investigate gorilla ReadJSON return error on Close](https://github.com/onflow/flow-go/issues/7045)
+    - [[Access] Move data providers models to data provider package](https://github.com/onflow/flow-go/issues/7039)
+    - [[Access] Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
+    - [[Access] Backport tx error message PRs to v0.37.12](https://github.com/onflow/flow-go/issues/7011)
+  In Progress
+    - [[Access] Test new WebSocket functionality on mainnet](https://github.com/onflow/flow-go/issues/7013)
+
+
+* <ins>Malleability</ins>
+  - KROK Team
+    In Review:
+    - [[Malleability A] Attestation](https://github.com/onflow/flow-go/issues/6696)
+    - [[Malleability A] LightCollection](https://github.com/onflow/flow-go/issues/6676)
+    - [[Malleability A] QuorumCertificate](https://github.com/onflow/flow-go/issues/6684)
+    - [[Malleability A] TimeoutCertificate](https://github.com/onflow/flow-go/issues/6689)
+    - [[Malleability A] Modelv0](https://github.com/onflow/flow-go/issues/6681)
+    - [[Malleability A] Modelv1](https://github.com/onflow/flow-go/issues/6682)
+    - [[Malleability B] ExecutionResult](https://github.com/onflow/flow-go/issues/6655)
+    - [[Malleability B] Identity](https://github.com/onflow/flow-go/issues/6650)
+    - [[Malleability B] Event](https://github.com/onflow/flow-go/issues/6651)
+    Switched from Malleability B to the mempool package refactoring
+    In Progress:
+    - [[Malleability] Split the BackData interface, by separating out Adjust and AdjustWithInit](https://github.com/onflow/flow-go/issues/7078)
+    - [[Malleability] Update BackData to use generic arguments instead of flow.Identifier and flow.Entity](https://github.com/onflow/flow-go/issues/7070)
+
+    Mempool package: According to the investigation created 7 issues with descriptions 
+
 
 **This sprint**
 
@@ -155,21 +194,18 @@ Cycle Objective(s):
    
 * <ins>Data Availability</ins>
   - KROK Team
-    - WebSocket controller and data providers
-    - Run test Access Node with WS support
-    - Start ramping on soft-finality project
-  - Other
-    - [Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
-    - Backport tx error messages PRs to mainnet25 version
+    - [[Access] Test WebSocket functionality on mainnet](https://github.com/onflow/flow-go/issues/7013)
+    - [[Access] Add examples for ws conn usages](https://github.com/onflow/flow-go/issues/6643)
+    - [[Access] The "tx_id" argument must be required when subscribing for "transaction_statuses" topic via WebSockets](https://github.com/onflow/flow-go/issues/7083)
+    - Will start working on Optimistic Syncing tasks
 
 * <ins>Malleability</ins>
-  - Finish generalized approach for testing malleability
-  - Tim is joining the malleability effort
-  - KROK Team
-    - [[Malleability A] Attestation](https://github.com/onflow/flow-go/issues/6696)
-    - [[Malleability A] LightCollection](https://github.com/onflow/flow-go/issues/6676)
-    - [[Malleability A] QuorumCertificate](https://github.com/onflow/flow-go/issues/6684)
-    - Continue to work on tasks for Malleability A
+  - KROK Team: 
+    - [[Malleability] Update Backend to work with BackData](https://github.com/onflow/flow-go/issues/7072)
+    - [[Malleability] Update mapBackData to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7073)
+    - [[Malleability] Update herocache to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7074)
+    - Continue to work on refactoring of the mempool package
+
 
 * <ins>EVM Gateway</ins>
   - Continue [PoC to allow indexing unsealed finalized execution results](https://github.com/onflow/flow-evm-gateway/issues/727)
