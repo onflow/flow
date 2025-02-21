@@ -6,6 +6,7 @@
  * First on-the-fly migration of on-chain data running on mainnet, [optimizing storage of 65M+ accounts](https://github.com/onflow/cadence/issues/3584) - this would otherwise require prolonged outage during network upgrade.
  * Added NFL tests to [Cadence CI](https://github.com/onflow/cadence/actions/workflows/ci.yml) - we run TapShot and NFL tests nightly to catch any regressions.
  * New Ledger App which includes the Proof Of Possession changes for the node registeration transaction has been released.
+ * [Protocol Autonomy Roadmap](https://flow.com/protocol-autonomy-roadmap) published
    
 --- 
 
