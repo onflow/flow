@@ -311,11 +311,12 @@ Cycle Objective(s):
 4. Build and ship a new dashboard to provide node operators with real-time access to staking, epoch-related and other relevant data.
 
 **Done last sprint**
-
+* Reaching out to 5+ potential new consensus node operators.
 
 **This sprint**
 
-* Start contract review with Alchemy.
+* Contract signing with Alchemy.
 * Work with Dorahacks to onboard 4 new SN nodes.
+* Sharing contracts with one more SN node operators.
 
 ---
