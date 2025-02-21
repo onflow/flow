@@ -7,6 +7,7 @@
  * Added NFL tests to [Cadence CI](https://github.com/onflow/cadence/actions/workflows/ci.yml) - we run TapShot and NFL tests nightly to catch any regressions.
  * New Ledger App which includes the Proof Of Possession changes for the node registeration transaction has been released.
  * [Protocol Autonomy Roadmap](https://flow.com/protocol-autonomy-roadmap) published
+ * Janez documented [Execution State Parameters in the Dynamic Protocol State](https://www.notion.so/flowfoundation/Execution-State-Parameters-in-the-Dynamic-Protocol-State-18c1aee123248045939ee83864bf46a4?pvs=4) for broader team awareness
    
 --- 
 
@@ -163,7 +164,7 @@ Cycle Objective(s):
     - [[Access] Move data providers models to data provider package](https://github.com/onflow/flow-go/issues/7039)
     - [[Access] Backport tx error messages PRs to v0.33 branch](https://github.com/onflow/flow-go/issues/6613)
     - [[Access] Backport tx error message PRs to v0.37.12](https://github.com/onflow/flow-go/issues/7011)
-  In Progress
+  Started
     - [[Access] Test new WebSocket functionality on mainnet](https://github.com/onflow/flow-go/issues/7013)
 
 
@@ -180,18 +181,39 @@ Cycle Objective(s):
     - [[Malleability B] Identity](https://github.com/onflow/flow-go/issues/6650)
     - [[Malleability B] Event](https://github.com/onflow/flow-go/issues/6651)
     Switched from Malleability B to the mempool package refactoring
+    Mempool package: According to the investigation created 7 issues with descriptions 
+
     In Progress:
     - [[Malleability] Split the BackData interface, by separating out Adjust and AdjustWithInit](https://github.com/onflow/flow-go/issues/7078)
     - [[Malleability] Update BackData to use generic arguments instead of flow.Identifier and flow.Entity](https://github.com/onflow/flow-go/issues/7070)
+ - [Implementated automatic sanity checker for entities](https://github.com/onflow/flow-go/pull/7069)
+ - PR reviews for KROK on malleability
+ - Started malleability Vote, Seal, Header changes
 
-    Mempool package: According to the investigation created 7 issues with descriptions 
+* <ins>EFM and Protocol HCU</ins>
+  - Completed some [technical debt](https://github.com/onflow/flow-go/pull/6968) for EFM recovery 
+  - Merged all EFM Recovery feature branches and create "Protocol HCU" releases for EFM Recovery
+    - [flow-go@v0.39.0](https://github.com/onflow/flow-go/releases/tag/v0.39.0)
+    - [flow-core-contracts@v1.6.0](https://github.com/onflow/flow-core-contracts/releases/tag/lib%2Fgo%2Ftemplates%2Fv1.6.0)
+  - Started EFM Recovery / "Protocol HCU" process on Testnet
+  - Started on Protocol State changes for "Execution Parameters in Protocol State" https://github.com/onflow/flow-go/pull/7020
 
+* <ins>Cryptography</ins>
+  - PoP
+    - Release updated Ledger app!
+    - flow-port tests (+ new version for deprecated nanoS devices)
+  - Passkeys
+    - Webauthn client side tests surfaced a limitation in web APIs that prevent a design optimization
+    - Falling back to a less optimized proposal
+    - Continue FLIP 
+
+* <ins>Protocol misc</ins>
+ - Code review changes for Epoch Interface Refactor
 
 **This sprint**
 
 * <ins>EFM and Protocol HCU</ins>
-  - Launch prep
-  - Mop up tech debt item for EFM recovery: [Extend unit tests for service events conversion ](https://github.com/onflow/flow-go/issues/6961)
+  - Complete EFM Recovery rollout on Testnet
    
 * <ins>Data Availability</ins>
   - KROK Team
@@ -206,24 +228,22 @@ Cycle Objective(s):
     - [[Malleability] Update mapBackData to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7073)
     - [[Malleability] Update herocache to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7074)
     - Continue to work on refactoring of the mempool package
-
+  - Complete Vote, Seal, Header changes
+  - Support KROK malleability PR reviews
 
 * <ins>EVM Gateway</ins>
   - Continue [PoC to allow indexing unsealed finalized execution results](https://github.com/onflow/flow-evm-gateway/issues/727)
   - Continue [EVM Gateway Hardening - phase 2](https://github.com/onflow/flow-evm-gateway/issues/700)
       
 * <ins>Cryptography</ins>
-  - PoP
-    - Test flow-port release 
-    - Coordinate release of Ledger app following PR merge
   - Passkeys
-    - Complete writing FlIP
-    - Go client to generate webauthn signatures
+    - Propose FLIP at Protocol WG Community meeting next week
       
 **On Hold**
 
 **Active Epics**
-* Websockets redesign ([Epic #6163](https://github.com/onflow/flow-go/issues/6163))
+* [[EPIC] Malleability A](https://github.com/onflow/flow-go/issues/6649)
+* [[EPIC] Malleability B](https://github.com/onflow/flow-go/issues/6648)
 
 ---
 
@@ -235,9 +255,8 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-
 **This sprint**
- * Launch Squid, possibly
+
 
 **On Hold**
 - N/A
