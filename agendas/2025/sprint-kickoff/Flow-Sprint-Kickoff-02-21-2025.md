@@ -19,6 +19,8 @@
 | Block Sealing           | 99.9%   |    98.91%     |       1091.27%      |
 | Access API Liveness     | 99.9%   |    98.96%       |       1041.7%         |
 
+YTD SLA 99.69%
+
 #### P0 or P1 Incidents
 * 2 P0 incidents - [Postmortem]
 
