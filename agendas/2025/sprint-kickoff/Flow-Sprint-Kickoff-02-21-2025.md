@@ -214,15 +214,20 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+* [FCL Ethereum Provider for Cross-VM Apps](https://github.com/onflow/fcl-js/issues/2053)
+  * Released an alpha version of the FCL Ethereum provider
+  * Released an alpha version of the RainbowKit adapter
+  * Released an alpha version of the Wagmi adapter
 
 **This sprint**
 
 * [FCL Ethereum Provider for Cross-VM Apps](https://github.com/onflow/fcl-js/issues/2053)
-  * Get an alpha version of the provider/adapters to Dev Education to start building demos for Eth Denver
-  * Wrap up the remaining provider issues
-  * Complete the RainbowKit and Wagmi adapters
+  * Wrap up the remaining p2 provider/adapter issues
   * Write documentation for the provider and adapters
   * Create a demo video
+* [FCL React Hooks](https://github.com/onflow/flow-okrs/issues/86)
+  * Start work on the FCL React Hooks library
+  * Solve FCL blockers around config
 
 **On Hold**
 
