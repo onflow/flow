@@ -28,7 +28,7 @@
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 9(+1) |    7      |       0       |       8        |        **24** (+1)       |
+| Drafted     | 9 |    7      |       0       |       8        |        **24**        |
 | Proposed    | 1  |    2     |       3       |       0          |        **6**          |
 | Accepted    | 2  |    1     |       2       |       2          |        **7**          |
 | Rejected    | 0  |    1     |       1       |       0          |        **2**         |
@@ -36,7 +36,7 @@
 | Released    | 4  |    34     |       7        |       6          |        **51**          |
 | Total       | **19** |    **50**   |       **14**       |       **16**         |        **99**         |
 
-- 1 new Flip added - [FLIP 318 - VM Bridge Support for Cross-VM NFTs](https://github.com/onflow/flips/issues/318)
+- No changes since last sprint.
   
 ### Key Release Dates & Breaking Changes
 * Protocol HCU
