@@ -67,12 +67,21 @@ Q1 2025 Cycle Objective(s):
     - [Decouple interpreter values from interpreter – Part 3](https://github.com/onflow/cadence/pull/3751)
     - [Decouple interpreter values from interpreter – Part 2](https://github.com/onflow/cadence/pull/3748)
     - [Decouple interpreter values from interpreter](https://github.com/onflow/cadence/pull/3698)
+    - [Support compilation for before statements](https://github.com/onflow/cadence/pull/3763)
+    - [Inline inherited conditions instead generating a separate function](https://github.com/onflow/cadence/pull/3764)
 - Fix Cadence CI to run tests from onboarded projects:
     - [Fix and improve compat suite](https://github.com/onflow/cadence/pull/3780)
-- porting internal bugfixes: [1](https://github.com/onflow/cadence/pull/3779), [2](https://github.com/onflow/cadence/pull/3778), [3](https://github.com/onflow/cadence/pull/3776), [4](https://github.com/onflow/cadence/pull/3775)
-- dependency updates: 
-    - flow-go-sdk: [Update to Cadence v1.3.2](https://github.com/onflow/flow-go-sdk/pull/804)
-    - flow-cli: [Update to LS v1.2.1](https://github.com/onflow/flow-cli/pull/1888), [Update to Cadence v1.3.1, Go v1.23](https://github.com/onflow/flow-cli/pull/1884)
+- Port internal bugfixes: [1](https://github.com/onflow/cadence/pull/3779), [2](https://github.com/onflow/cadence/pull/3778), [3](https://github.com/onflow/cadence/pull/3776), [4](https://github.com/onflow/cadence/pull/3775)
+- Dependency updates: 
+    - flow-go-sdk:
+      - [Update to Cadence v1.3.2](https://github.com/onflow/flow-go-sdk/pull/804)
+      - [Update to Cadence v1.3.3](https://github.com/onflow/flow-go-sdk/pull/805)
+    - flow-go:
+      - [[v0.38] Update to Cadence v1.3.3](https://github.com/onflow/flow-go/pull/7060)
+      - [Update to Cadence v1.3.3](https://github.com/onflow/flow-go/pull/7061)
+    - flow-cli:
+      - [Update to LS v1.2.1](https://github.com/onflow/flow-cli/pull/1888)
+      - [Update to Cadence v1.3.1, Go v1.23](https://github.com/onflow/flow-cli/pull/1884)
 
 **Cadence Execution**
 
