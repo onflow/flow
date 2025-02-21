@@ -8,18 +8,18 @@
    
 --- 
 
-### Mainnet Uptime - Last 14 days (01/24/25 to 02/06/24) \[Vishal]
+### Mainnet Uptime - Last 14 days (02/06/25 to 02/19/25) \[Vishal]
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%   |    100%       |       0%         |
-| Block Finalization      | 99.9%   |    100%       |       0%         |
-| Transaction Execution   | 99.9%   |    99.95%     |       49.6%      |
-| Block Sealing           | 99.9%   |    99.96%     |       24.8%      |
-| Access API Liveness     | 99.9%   |    100%       |       0%         |
+| Collection Finalization | 99.9%   |    98.96%       |      1209.6%         |
+| Block Finalization      | 99.9%   |    98.96%       |       1209.6%         |
+| Transaction Execution   | 99.9%   |    98.91%     |       1091.27%      |
+| Block Sealing           | 99.9%   |    98.91%     |       1091.27%      |
+| Access API Liveness     | 99.9%   |    98.96%       |       1209.6%         |
 
 #### P0 or P1 Incidents
-* None
+* 2 P0 incidents - [Postmortem]
 
 ---
 
@@ -38,11 +38,9 @@
 - 1 new Flip added - [FLIP 318 - VM Bridge Support for Cross-VM NFTs](https://github.com/onflow/flips/issues/318)
   
 ### Key Release Dates & Breaking Changes
-* Height Coordinated Upgrade:
-  * Tuesday, 11th Feb on Testnet
-  * Thursday, 13th Feb on mainnet
-  
-  Branch `v0.38`
+* Protocol HCU
+  - Testnet: Week of 3rd March (after EthDenver)
+  - Mainnet: Week of 10th March
 
 ---
 
