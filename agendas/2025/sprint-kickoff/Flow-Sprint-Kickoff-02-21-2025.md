@@ -13,11 +13,11 @@
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%   |    98.96%       |      1209.6%         |
-| Block Finalization      | 99.9%   |    98.96%       |       1209.6%         |
+| Collection Finalization | 99.9%   |    98.96%       |      1041.7%         |
+| Block Finalization      | 99.9%   |    98.96%       |       1041.7%         |
 | Transaction Execution   | 99.9%   |    98.91%     |       1091.27%      |
 | Block Sealing           | 99.9%   |    98.91%     |       1091.27%      |
-| Access API Liveness     | 99.9%   |    98.96%       |       1209.6%         |
+| Access API Liveness     | 99.9%   |    98.96%       |       1041.7%         |
 
 #### P0 or P1 Incidents
 * 2 P0 incidents - [Postmortem]
