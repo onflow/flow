@@ -7,6 +7,7 @@
  * Added NFL tests to [Cadence CI](https://github.com/onflow/cadence/actions/workflows/ci.yml) - we run TapShot and NFL tests nightly to catch any regressions.
  * New Ledger App which includes the Proof Of Possession changes for the node registeration transaction has been released.
  * [Protocol Autonomy Roadmap](https://flow.com/protocol-autonomy-roadmap) published
+ * design proposal [Execution State Parameters in the Dynamic Protocol State](https://www.notion.so/flowfoundation/Execution-State-Parameters-in-the-Dynamic-Protocol-State-18c1aee123248045939ee83864bf46a4?pvs=4) 
    
 --- 
 
