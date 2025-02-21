@@ -3,7 +3,7 @@
  ### Team Wins 🎉
  
  * Mainnet now running v0.38, flow-go master ! This means we can now finally run our backwards-compatibility CI workflows to ensure it remains backwards compatible, making rolling upgrades much safer to do in the future.
- * First on-the-fly migration of on-chain data running on mainnet, optimizing storage of 65M+ accounts - this would otherwise require prolonged outage during network upgrade.
+ * First on-the-fly migration of on-chain data running on mainnet, [optimizing storage of 65M+ accounts](https://github.com/onflow/cadence/issues/3584) - this would otherwise require prolonged outage during network upgrade.
  * Added NFL tests to [Cadence CI](https://github.com/onflow/cadence/actions/workflows/ci.yml) - we run TapShot and NFL tests nightly to catch any regressions.
  * New Ledger App which includes the Proof Of Possession changes for the node registeration transaction has been released.
    
