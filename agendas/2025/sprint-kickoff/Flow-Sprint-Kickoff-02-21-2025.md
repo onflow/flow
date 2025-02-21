@@ -277,24 +277,25 @@ Cycle Objective(s):
 **Cycle Objective(s):** 
 
 KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 1 per week on a 4-week rolling average.
- - Current (Feb 2): 6.75/week
+ - Current (Feb 2): 6.25/week
+ - Positive early signal: 2 bugs/week last week!
 
 **Done last sprint**
-
-
 
 **This sprint**
   
 - Focusing on resolving immediate customer problems in Flow Wallet Extension:
   - Token Display and Manipulation (6 issues in the past month)
-    - APAC team: Token Manipulation focus.
-    - PST team: Token Display focus.
-  
   - UI / Profile Stability (4 issues in the past month)
   - Backups / Recovery / Security (3 issues in the past month)
  
-- Flow Wallet iOS:
-  - Focus on resolving some quick-win items: Copy fixes, Small UI tweaks, FTUE improvements.
+- Flow Wallet Extension:
+  - Release v2.7.3 - Fixes many customer problems in FT display/manipulation, app stability and more.
+  - Working on: UI Updates, NFT display/manipulation hardening
+ 
+- Flow Wallet iOS/Android:
+  - Continued focus on quick-win polish items: Copy fixes, UI tweaks, FTUE improvements.
+  - Targeting release early next week in advance of EthDenver
 
 **On Hold**
 
