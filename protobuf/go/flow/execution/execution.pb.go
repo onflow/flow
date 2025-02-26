@@ -1215,7 +1215,7 @@ func (m *GetTransactionExecutionMetricsAfterRequest) GetBlockHeight() uint64 {
 
 // The response for GetTransactionExecutionMetricsAfter
 // The response contains the execution metrics for transactions in each block
-// after the requested block height. The execution node only keeps a limited
+// after the requested block height (block_height + 1). The execution node only keeps a limited
 // number of blocks in memory, so the response may not contain metrics for all
 // blocks. Only finalized and executed blocks will be in the response.
 // The blocks are sorted by block height in descending order.
