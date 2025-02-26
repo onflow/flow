@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Commit** | **string** |  | [default to null]
 **SporkId** | **string** |  | [default to null]
 **ProtocolVersion** | **string** |  | [default to null]
+**ProtocolStateVersion** | **string** |  | [default to null]
 **SporkRootBlockHeight** | **string** |  | [default to null]
 **NodeRootBlockHeight** | **string** |  | [default to null]
 **CompatibleRange** | [***CompatibleRange**](CompatibleRange.md) |  | [optional] [default to null]
