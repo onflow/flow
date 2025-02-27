@@ -32,7 +32,7 @@ paths:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/BlockHeight'
+            $ref: "#/components/schemas/BlockHeight"
       - name: start_height
         in: query
         description: The start height of the block range to get. Must be used together
@@ -41,7 +41,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/BlockHeight'
+          $ref: "#/components/schemas/BlockHeight"
       - name: end_height
         in: query
         description: The ending height of the block range to get. Must be used together
@@ -50,7 +50,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/BlockHeight'
+          $ref: "#/components/schemas/BlockHeight"
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -85,26 +85,26 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Block'
+                  $ref: "#/components/schemas/Block"
                 x-content-type: application/json
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /blocks/{id}:
     get:
       tags:
@@ -125,7 +125,7 @@ paths:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/Identifier'
+            $ref: "#/components/schemas/Identifier"
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -160,26 +160,26 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Block'
+                  $ref: "#/components/schemas/Block"
                 x-content-type: application/json
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /blocks/{id}/payload:
     get:
       tags:
@@ -194,7 +194,7 @@ paths:
         style: simple
         explode: true
         schema:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -227,25 +227,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BlockPayload'
+                $ref: "#/components/schemas/BlockPayload"
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /transactions/{id}:
     get:
       tags:
@@ -260,7 +260,7 @@ paths:
         style: simple
         explode: false
         schema:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
       - name: block_id
         in: query
         description: A block ID optional parameter
@@ -268,7 +268,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
       - name: collection_id
         in: query
         description: A collection ID optional parameter.
@@ -276,7 +276,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -309,25 +309,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: "#/components/schemas/Transaction"
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /transaction_results/{transaction_id}:
     get:
       tags:
@@ -342,7 +342,7 @@ paths:
         style: simple
         explode: false
         schema:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
       - name: block_id
         in: query
         description: A block ID optional parameter
@@ -350,7 +350,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
       - name: collection_id
         in: query
         description: A collection ID optional parameter.
@@ -358,7 +358,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -391,25 +391,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionResult'
+                $ref: "#/components/schemas/TransactionResult"
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /transactions:
     post:
       tags:
@@ -422,7 +422,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/transactions_body'
+              $ref: "#/components/schemas/transactions_body"
         required: true
       responses:
         "201":
@@ -438,19 +438,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: "#/components/schemas/Transaction"
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /collections/{id}:
     get:
       tags:
@@ -465,7 +465,7 @@ paths:
         style: simple
         explode: false
         schema:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -498,25 +498,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Collection'
+                $ref: "#/components/schemas/Collection"
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /execution_results:
     get:
       tags:
@@ -536,7 +536,7 @@ paths:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/Identifier'
+            $ref: "#/components/schemas/Identifier"
       - name: select
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -558,26 +558,26 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExecutionResult'
+                  $ref: "#/components/schemas/ExecutionResult"
                 x-content-type: application/json
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /execution_results/{id}:
     get:
       tags:
@@ -592,7 +592,7 @@ paths:
         style: simple
         explode: false
         schema:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
       - name: select
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -612,25 +612,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExecutionResult'
+                $ref: "#/components/schemas/ExecutionResult"
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /accounts/{address}:
     get:
       tags:
@@ -646,7 +646,7 @@ paths:
         style: simple
         explode: false
         schema:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
       - name: block_height
         in: query
         description: The block height to query for the account details at the "sealed"
@@ -655,7 +655,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/BlockHeight'
+          $ref: "#/components/schemas/BlockHeight"
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -688,25 +688,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Account'
+                $ref: "#/components/schemas/Account"
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /accounts/{address}/keys/{index}:
     get:
       tags:
@@ -722,7 +722,7 @@ paths:
         style: simple
         explode: false
         schema:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
       - name: index
         in: path
         description: The index of the account key.
@@ -741,7 +741,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/BlockHeight'
+          $ref: "#/components/schemas/BlockHeight"
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -774,25 +774,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AccountPublicKey'
+                $ref: "#/components/schemas/AccountPublicKey"
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /scripts:
     post:
       tags:
@@ -810,7 +810,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
       - name: block_height
         in: query
         description: The height of the block to execute the script against. This parameter
@@ -819,13 +819,13 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/BlockHeight'
+          $ref: "#/components/schemas/BlockHeight"
       requestBody:
         description: The script to execute.
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/scripts_body'
+              $ref: "#/components/schemas/scripts_body"
         required: true
       responses:
         "200":
@@ -833,19 +833,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200'
+                $ref: "#/components/schemas/inline_response_200"
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /events:
     get:
       tags:
@@ -863,7 +863,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/EventType'
+          $ref: "#/components/schemas/EventType"
       - name: start_height
         in: query
         description: The start height of the block range for events. Must be used
@@ -873,7 +873,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/BlockHeight'
+          $ref: "#/components/schemas/BlockHeight"
       - name: end_height
         in: query
         description: The end height of the block range for events. Must be used together
@@ -883,7 +883,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/BlockHeight'
+          $ref: "#/components/schemas/BlockHeight"
       - name: block_ids
         in: query
         description: List of block IDs. Either provide this parameter or both height
@@ -898,7 +898,7 @@ paths:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/Identifier'
+            $ref: "#/components/schemas/Identifier"
       - name: select
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -918,25 +918,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BlockEvents'
+                $ref: "#/components/schemas/BlockEvents"
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /network/parameters:
     get:
       tags:
@@ -949,25 +949,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NetworkParameters'
+                $ref: "#/components/schemas/NetworkParameters"
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /node_version_info:
     get:
       tags:
@@ -981,25 +981,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NodeVersionInfo'
+                $ref: "#/components/schemas/NodeVersionInfo"
         "400":
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: Internal Server Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /subscribe_events:
     get:
       tags:
@@ -1020,7 +1020,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/BlockHeight'
+          $ref: "#/components/schemas/BlockHeight"
       - name: start_block_id
         in: query
         description: The block id of the events being streamed. Either provide this
@@ -1030,7 +1030,7 @@ paths:
         style: form
         explode: true
         schema:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
       - name: heartbeat_interval
         in: query
         description: Interval in block heights at which the server should return a
@@ -1054,7 +1054,7 @@ paths:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/EventType'
+            $ref: "#/components/schemas/EventType"
       - name: addresses
         in: query
         description: A comma-separated list of addresses who's events should be included.
@@ -1087,7 +1087,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubscribeEvents'
+                $ref: "#/components/schemas/SubscribeEvents"
         "400":
           description: |
             Bad Request
@@ -1096,7 +1096,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "408":
           description: |
             Server Timeout
@@ -1105,7 +1105,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "500":
           description: |
             Internal Server Error
@@ -1114,7 +1114,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         "503":
           description: |
             Service Unavailable
@@ -1123,7 +1123,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     Account:
@@ -1134,7 +1134,7 @@ components:
       type: object
       properties:
         address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         balance:
           type: string
           description: Flow balance of the account.
@@ -1144,16 +1144,16 @@ components:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/AccountPublicKey'
+            $ref: "#/components/schemas/AccountPublicKey"
         contracts:
           type: object
           additionalProperties:
             type: string
             format: byte
         _expandable:
-          $ref: '#/components/schemas/Account__expandable'
+          $ref: "#/components/schemas/Account__expandable"
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
       example:
         address: address
         balance: balance
@@ -1199,9 +1199,9 @@ components:
           description: Hex encoded public key.
           format: hex
         signing_algorithm:
-          $ref: '#/components/schemas/SigningAlgorithm'
+          $ref: "#/components/schemas/SigningAlgorithm"
         hashing_algorithm:
-          $ref: '#/components/schemas/HashingAlgorithm'
+          $ref: "#/components/schemas/HashingAlgorithm"
         sequence_number:
           type: string
           description: Current account sequence number.
@@ -1242,15 +1242,15 @@ components:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         transactions:
           type: array
           items:
-            $ref: '#/components/schemas/Transaction'
+            $ref: "#/components/schemas/Transaction"
         _expandable:
-          $ref: '#/components/schemas/Collection__expandable'
+          $ref: "#/components/schemas/Collection__expandable"
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
       example:
         _links:
           _self: _self
@@ -1374,7 +1374,7 @@ components:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         script:
           type: string
           description: Base64 encoded Cadence script.
@@ -1387,34 +1387,34 @@ components:
             type: string
             format: byte
         reference_block_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         gas_limit:
           type: string
           description: The limit on the amount of computation a transaction is allowed
             to preform.
           format: uint64
         payer:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         proposal_key:
-          $ref: '#/components/schemas/ProposalKey'
+          $ref: "#/components/schemas/ProposalKey"
         authorizers:
           type: array
           items:
-            $ref: '#/components/schemas/Address'
+            $ref: "#/components/schemas/Address"
         payload_signatures:
           type: array
           items:
-            $ref: '#/components/schemas/TransactionSignature'
+            $ref: "#/components/schemas/TransactionSignature"
         envelope_signatures:
           type: array
           items:
-            $ref: '#/components/schemas/TransactionSignature'
+            $ref: "#/components/schemas/TransactionSignature"
         result:
-          $ref: '#/components/schemas/TransactionResult'
+          $ref: "#/components/schemas/TransactionResult"
         _expandable:
-          $ref: '#/components/schemas/Transaction__expandable'
+          $ref: "#/components/schemas/Transaction__expandable"
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
       example:
         _links: null
         reference_block_id: null
@@ -1473,7 +1473,7 @@ components:
       type: object
       properties:
         address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         key_index:
           type: string
           format: uint64
@@ -1492,12 +1492,12 @@ components:
       type: object
       properties:
         address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         key_index:
           type: string
           format: uint64
         signature:
-          $ref: '#/components/schemas/Signature'
+          $ref: "#/components/schemas/Signature"
       description: Base64 encoded signature.
       example:
         address: null
@@ -1515,13 +1515,13 @@ components:
       type: object
       properties:
         block_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         collection_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         execution:
-          $ref: '#/components/schemas/TransactionExecution'
+          $ref: "#/components/schemas/TransactionExecution"
         status:
-          $ref: '#/components/schemas/TransactionStatus'
+          $ref: "#/components/schemas/TransactionStatus"
         status_code:
           type: integer
         error_message:
@@ -1533,9 +1533,9 @@ components:
         events:
           type: array
           items:
-            $ref: '#/components/schemas/Event'
+            $ref: "#/components/schemas/Event"
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
       example:
         collection_id: null
         error_message: error_message
@@ -1589,17 +1589,17 @@ components:
       type: object
       properties:
         header:
-          $ref: '#/components/schemas/BlockHeader'
+          $ref: "#/components/schemas/BlockHeader"
         payload:
-          $ref: '#/components/schemas/BlockPayload'
+          $ref: "#/components/schemas/BlockPayload"
         execution_result:
-          $ref: '#/components/schemas/ExecutionResult'
+          $ref: "#/components/schemas/ExecutionResult"
         _expandable:
-          $ref: '#/components/schemas/Block__expandable'
+          $ref: "#/components/schemas/Block__expandable"
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
         block_status:
-          $ref: '#/components/schemas/BlockStatus'
+          $ref: "#/components/schemas/BlockStatus"
       example:
         block_status: BLOCK_UNKNOWN
         payload:
@@ -1701,9 +1701,9 @@ components:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         parent_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         height:
           type: string
           format: uint64
@@ -1711,7 +1711,7 @@ components:
           type: string
           format: date-time
         parent_voter_signature:
-          $ref: '#/components/schemas/Signature'
+          $ref: "#/components/schemas/Signature"
       example:
         parent_id: null
         id: id
@@ -1728,12 +1728,12 @@ components:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/CollectionGuarantee'
+            $ref: "#/components/schemas/CollectionGuarantee"
         block_seals:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/BlockSeal'
+            $ref: "#/components/schemas/BlockSeal"
       example:
         collection_guarantees:
         - collection_id: null
@@ -1787,15 +1787,15 @@ components:
       type: object
       properties:
         collection_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         signer_ids:
           minItems: 1
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/Identifier'
+            $ref: "#/components/schemas/Identifier"
         signature:
-          $ref: '#/components/schemas/Signature'
+          $ref: "#/components/schemas/Signature"
       example:
         collection_id: null
         signer_ids:
@@ -1811,17 +1811,17 @@ components:
       type: object
       properties:
         block_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         result_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         final_state:
-          $ref: '#/components/schemas/StateCommitment'
+          $ref: "#/components/schemas/StateCommitment"
         aggregated_approval_signatures:
           minItems: 1
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/AggregatedSignature'
+            $ref: "#/components/schemas/AggregatedSignature"
       example:
         result_id: null
         final_state: final_state
@@ -1855,13 +1855,13 @@ components:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/Signature'
+            $ref: "#/components/schemas/Signature"
         signer_ids:
           minItems: 1
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/Identifier'
+            $ref: "#/components/schemas/Identifier"
       example:
         verifier_signatures:
         - null
@@ -1878,21 +1878,21 @@ components:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         block_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         events:
           type: array
           items:
-            $ref: '#/components/schemas/Event'
+            $ref: "#/components/schemas/Event"
         chunks:
           type: array
           items:
-            $ref: '#/components/schemas/Chunk'
+            $ref: "#/components/schemas/Chunk"
         previous_result_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
       example:
         _links:
           _self: _self
@@ -1931,7 +1931,7 @@ components:
       type: object
       properties:
         block_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         block_height:
           type: string
         block_timestamp:
@@ -1940,9 +1940,9 @@ components:
         events:
           type: array
           items:
-            $ref: '#/components/schemas/Event'
+            $ref: "#/components/schemas/Event"
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
       example:
         _links:
           _self: _self
@@ -1970,9 +1970,9 @@ components:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/EventType'
+          $ref: "#/components/schemas/EventType"
         transaction_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         transaction_index:
           type: string
           format: uint64
@@ -2033,7 +2033,7 @@ components:
       type: object
       properties:
         block_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         collection_index:
           type: string
           format: uint64
@@ -2098,6 +2098,7 @@ components:
       required:
       - commit
       - node_root_block_height
+      - protocol_state_version
       - protocol_version
       - semver
       - spork_id
@@ -2109,8 +2110,12 @@ components:
         commit:
           type: string
         spork_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         protocol_version:
+          type: string
+          format: uint64
+          deprecated: true
+        protocol_state_version:
           type: string
           format: uint64
         spork_root_block_height:
@@ -2120,7 +2125,7 @@ components:
           type: string
           format: uint64
         compatible_range:
-          $ref: '#/components/schemas/CompatibleRange'
+          $ref: "#/components/schemas/CompatibleRange"
       example:
         protocol_version: protocol_version
         semver: semver
@@ -2131,17 +2136,18 @@ components:
         node_root_block_height: node_root_block_height
         spork_id: spork_id
         spork_root_block_height: spork_root_block_height
+        protocol_state_version: protocol_state_version
     SubscribeEvents:
       type: object
       properties:
         BlockId:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         Height:
           type: string
         Events:
           type: array
           items:
-            $ref: '#/components/schemas/Event'
+            $ref: "#/components/schemas/Event"
       example:
         Events:
         - transaction_id: null
@@ -2181,30 +2187,30 @@ components:
             type: string
             format: base64
         reference_block_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         gas_limit:
           type: string
           description: The limit on the amount of computation a transaction is allowed
             to preform.
           format: uint64
         payer:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         proposal_key:
-          $ref: '#/components/schemas/ProposalKey'
+          $ref: "#/components/schemas/ProposalKey"
         authorizers:
           type: array
           items:
-            $ref: '#/components/schemas/Address'
+            $ref: "#/components/schemas/Address"
         payload_signatures:
           type: array
           description: A list of Base64 encoded signatures.
           items:
-            $ref: '#/components/schemas/TransactionSignature'
+            $ref: "#/components/schemas/TransactionSignature"
         envelope_signatures:
           type: array
           description: A list of Base64 encoded signatures.
           items:
-            $ref: '#/components/schemas/TransactionSignature'
+            $ref: "#/components/schemas/TransactionSignature"
     scripts_body:
       type: object
       properties:
@@ -2274,31 +2280,31 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     "404NotFound":
       description: Not Found
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     "408ServerTimeout":
       description: Server Timeout
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     "500InternalServerError":
       description: Internal Server Error
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     "503ServiceUnavailable":
       description: Service Unavailable
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     "400BadRequestWS":
       description: |
         Bad Request
@@ -2307,7 +2313,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     "408ServerTimeoutWS":
       description: |
         Server Timeout
@@ -2316,7 +2322,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     "500InternalServerErrorWS":
       description: |
         Internal Server Error
@@ -2325,7 +2331,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     "503ServiceUnavailableWS":
       description: |
         Service Unavailable
@@ -2334,7 +2340,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
   parameters:
     expandParam:
       name: expand
@@ -2372,7 +2378,7 @@ components:
       style: form
       explode: true
       schema:
-        $ref: '#/components/schemas/Identifier'
+        $ref: "#/components/schemas/Identifier"
     collectionIdParam:
       name: collection_id
       in: query
@@ -2381,4 +2387,4 @@ components:
       style: form
       explode: true
       schema:
-        $ref: '#/components/schemas/Identifier'
+        $ref: "#/components/schemas/Identifier"

@@ -1220,6 +1220,7 @@ components:
         - commit
         - spork_id
         - protocol_version
+        - protocol_state_version
         - spork_root_block_height
         - node_root_block_height
       properties:
@@ -1230,6 +1231,10 @@ components:
         spork_id:
           $ref: '#/components/schemas/Identifier'
         protocol_version:
+          type: string
+          deprecated: true
+          format: uint64
+        protocol_state_version:
           type: string
           format: uint64
         spork_root_block_height:

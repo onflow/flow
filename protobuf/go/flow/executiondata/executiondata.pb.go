@@ -741,7 +741,7 @@ type SubscribeEventsResponse struct {
 	Events []*entities.Event `protobuf:"bytes,3,rep,name=events,proto3" json:"events,omitempty"`
 	// Timestamp from the block containing the events.
 	BlockTimestamp *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=block_timestamp,json=blockTimestamp,proto3" json:"block_timestamp,omitempty"`
-	// The message index of the response message. Used by the client to ensure they received all messages. Starts from "1".
+	// The message index of the response message. Used by the client to ensure they received all messages. Starts from "0".
 	MessageIndex         uint64   `protobuf:"varint,5,opt,name=message_index,json=messageIndex,proto3" json:"message_index,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1240,7 +1240,7 @@ type SubscribeAccountStatusesResponse struct {
 	BlockId []byte `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
 	// Block height of the block containing the events.
 	BlockHeight uint64 `protobuf:"varint,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
-	// The message index of the response message. Used by the client to ensure they received all messages. Starts from "1".
+	// The message index of the response message. Used by the client to ensure they received all messages. Starts from "0".
 	MessageIndex uint64 `protobuf:"varint,3,opt,name=message_index,json=messageIndex,proto3" json:"message_index,omitempty"`
 	// The API may return no results which signals a periodic heartbeat. This
 	// allows clients to track which blocks were searched. Client can use this
