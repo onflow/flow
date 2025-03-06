@@ -14,7 +14,7 @@
 | Block Sealing           | 99.9%   |    100%       |      0%         |
 | Access API Liveness     | 99.9%   |    100%       |      0%         |
 
-YTD SLA 99.69%
+YTD SLA 99.76%
 
 #### P0 or P1 Incidents
 None
