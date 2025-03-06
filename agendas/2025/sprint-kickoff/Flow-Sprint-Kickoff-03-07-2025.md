@@ -1,24 +1,23 @@
 # Overview
 
  ### Team Wins 🎉
- 
-  
+ - First rolling upgrade with zero-downtime protocol state upgrade completed successfully on testnet
 --- 
 
 ### Mainnet Uptime - Last 14 days (02/20/25 to 03/06/25) \[Vishal]
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%   |    98.96%       |      1041.7%         |
-| Block Finalization      | 99.9%   |    98.96%       |       1041.7%         |
-| Transaction Execution   | 99.9%   |    98.91%     |       1091.27%      |
-| Block Sealing           | 99.9%   |    98.91%     |       1091.27%      |
-| Access API Liveness     | 99.9%   |    98.96%       |       1041.7%         |
+| Collection Finalization | 99.9%   |    100%       |      0%         |
+| Block Finalization      | 99.9%   |    100%       |      0%         |
+| Transaction Execution   | 99.9%   |    100%       |      0%         |
+| Block Sealing           | 99.9%   |    100%       |      0%         |
+| Access API Liveness     | 99.9%   |    100%       |      0%         |
 
 YTD SLA 99.69%
 
 #### P0 or P1 Incidents
-* 2 P0 incidents - [Postmortem](https://status.onflow.org/incidents/tp2zb9chpfk3)
+None
 
 ---
 
