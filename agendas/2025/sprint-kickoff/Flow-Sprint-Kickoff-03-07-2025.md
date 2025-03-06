@@ -36,10 +36,12 @@ None
 - No changes since last sprint.
   
 ### Key Release Dates & Breaking Changes
-* Protocol HCU
-  - Testnet: Week of 3rd March (after EthDenver)
-  - Mainnet: Week of 10th March
+* Rolling upgrade
+  - Testnet: ✔️
+  - Mainnet: ~Week of 17th March
 
+* EFM Recovery testing
+  - Testnet: Ongoing. Will be complete by 4 PM Pacific, 7th March.
 ---
 
 
@@ -233,11 +235,12 @@ Cycle Objective(s):
 4. Build and ship a new dashboard to provide node operators with real-time access to staking, epoch-related and other relevant data.
 
 **Done last sprint**
+* Onboarded 4 consensus nodes for Dorahacks.
+* Worked with Flipside, QuickNode, Edgevana, BlockDaemon to onboard new consensus nodes.
 
 **This sprint**
 
 * Contract signing with Alchemy.
-* Work with Dorahacks to onboard 4 new SN nodes.
-* Sharing contracts with one more SN node operators.
+* Contract review with Tibles, Hoodlums, Quicknode.
 
 ---
