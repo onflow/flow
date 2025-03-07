@@ -298,25 +298,25 @@ Cycle Objective(s):
 **Cycle Objective(s):** 
 
 KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 1 per week on a 4-week rolling average.
- - Current (Feb 2): 6.25/week
- - Positive early signal: 2 bugs/week last week!
+ - Current (Mar 7): 3.5/week - Down from 5.5/week just two weeks ago.
+ - Positive signal: 2 bugs/week last week!
 
 **Done last sprint**
 
 **This sprint**
-  
-- Focusing on resolving immediate customer problems in Flow Wallet Extension:
-  - Token Display and Manipulation (6 issues in the past month)
-  - UI / Profile Stability (4 issues in the past month)
-  - Backups / Recovery / Security (3 issues in the past month)
+
+- Continued focus on solving immediate customer problems within the product
  
 - Flow Wallet Extension:
-  - Release v2.7.3 - Fixes many customer problems in FT display/manipulation, app stability and more.
-  - Working on: UI Updates, NFT display/manipulation hardening
+  - Working on: Password / security management - Single password applied to all profiles
  
 - Flow Wallet iOS/Android:
-  - Continued focus on quick-win polish items: Copy fixes, UI tweaks, FTUE improvements.
-  - Targeting release early next week in advance of EthDenver
+  - Continued focus on quick-win polish items: Copy fixes, UI tweaks.
+  - Working on: NFT Page UI Updates, Token Management and Display items.
+
+- Other:
+  - New token indexer to faster support new token launches on Flow
+  - Support "verified" and "unverified" tokens in Flow Wallet, similar as Phantom on Solana
 
 **On Hold**
 
