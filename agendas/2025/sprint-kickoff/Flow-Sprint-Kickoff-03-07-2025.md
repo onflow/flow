@@ -169,9 +169,53 @@ Cycle Objective(s):
 * <ins>Data Availability</ins>
   - KROK Team
 
+    Done:
+    - [[Access] Test new WebSocket functionality on mainnet](https://github.com/onflow/flow-go/issues/7013)
+    - [[Access] Gorilla WebSocket connection type may panic. We should catch it](https://github.com/onflow/flow-go/issues/7036)
+    - [[Access] heartbeat_interval argument is missing in events/account statuses WebSocket data providers](https://github.com/onflow/flow-go/issues/7080)
+    - [[Access] DataProviders does not catch invalid arguments](https://github.com/onflow/flow-go/issues/7066)
+    - [[Access] Pending response from send and subscribe should return immediately](https://github.com/onflow/flow-go/issues/6573)
+    - [[Access] Improve SendAndSubscribe status handling](https://github.com/onflow/flow-go/issues/6574)
+    - [[Access] Subscribe to tx results over ws without sending tx](https://github.com/onflow/flow-go/issues/6767)
+  
+    In Progress:
+    - [[Access] Add examples for ws conn usages](https://github.com/onflow/flow-go/issues/6643)
+    - [[Access] The "tx_id" argument must be required when subscribing for "transaction_statuses" topic via WebSockets](https://github.com/onflow/flow-go/issues/7083)
+
 
 * <ins>Malleability</ins>
   - KROK Team
+  
+    Done:
+    - [[Malleability A] Attestation](https://github.com/onflow/flow-go/issues/6696)
+    - [[Malleability A] LightCollection](https://github.com/onflow/flow-go/issues/6676)
+    - [[Malleability A] QuorumCertificate](https://github.com/onflow/flow-go/issues/6684)
+    - [[Malleability A] TimeoutCertificate](https://github.com/onflow/flow-go/issues/6689)
+    - [[Malleability A] Modelv0](https://github.com/onflow/flow-go/issues/6681)
+    - [[Malleability A] Modelv1](https://github.com/onflow/flow-go/issues/6682)
+    - [[Malleability A] EventIDs](https://github.com/onflow/flow-go/issues/6698)
+    - [[Malleability A] EpochStateContainer](https://github.com/onflow/flow-go/issues/6695)
+    - [[Malleability A] MinEpochStateEntry](https://github.com/onflow/flow-go/issues/6678)
+    - [[Malleability A] Locator](https://github.com/onflow/flow-go/issues/6677)
+    - [[Malleability A] IdentifierList](https://github.com/onflow/flow-go/issues/6677)
+    - [[Malleability A] GenericIdentityList](https://github.com/onflow/flow-go/issues/6699)
+    - [[Malleability A] EpochRecover](https://github.com/onflow/flow-go/issues/6697)
+    - [[Malleability B] ExecutionResult](https://github.com/onflow/flow-go/issues/6655)
+    - [[Malleability A] EpochCommit](https://github.com/onflow/flow-go/issues/6671)
+    - [[Malleability B] pendingBlock](https://github.com/onflow/flow-go/issues/6661)
+    - [[Malleability B] Identity](https://github.com/onflow/flow-go/issues/6650)
+    - [[Malleability B] Event](https://github.com/onflow/flow-go/issues/6651)
+    - [[Malleability] Split the BackData interface, by separating Adjust and AdjustWithInit](https://github.com/onflow/flow-go/issues/7078)
+    
+    In Review:
+    - [[Malleability] Update BackData to use generic arguments instead of flow.Identifier and flow.Entity](https://github.com/onflow/flow-go/issues/7070)
+    - [[Malleability] Update Backend to work with BackData](https://github.com/onflow/flow-go/issues/7072)
+    - [[Malleability] Update mapBackData to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7073)
+    - [[Malleability] Fix root interfaces implementations under stdmap package](https://github.com/onflow/flow-go/issues/7075)
+   
+   In Progress:
+    - [[Malleability] Update herocache to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7074)
+    - [[Malleability] Fix remaining usages of the mempool/herocache structures that now rely on generics](https://github.com/onflow/flow-go/issues/7076)
 
 * <ins>EFM and Protocol HCU</ins>
 
@@ -185,9 +229,17 @@ Cycle Objective(s):
    
 * <ins>Data Availability</ins>
   - KROK Team
+    - [[Access] The TODO Context should be changed in WebSocket Handler](https://github.com/onflow/flow-go/issues/7109)
+    - [[Access] Add new gRPC subscription documentation and deprecate old implementation](https://github.com/onflow/docs/issues/1150)
+    - Work on Optimistic Syncing tasks will begin. The proposal document is ready, and development will proceed based on the suggested architectural changes.
+    - Support KROK data availability PR reviews
 
 * <ins>Malleability</ins>
-  - KROK Team: 
+  - KROK Team:
+    - [[Malleability] Update herocache to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7074)
+    - [[Malleability] Fix remaining usages of the mempool/herocache structures that now rely on generics](https://github.com/onflow/flow-go/issues/7076)
+    - Continue to work on refactoring of the mempool package
+  - Support KROK malleability PR reviews
 
 * <ins>EVM Gateway</ins>
       
