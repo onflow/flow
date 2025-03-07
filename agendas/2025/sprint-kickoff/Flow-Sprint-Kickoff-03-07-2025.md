@@ -231,7 +231,7 @@ Cycle Objective(s):
   - KROK Team
     - [[Access] The TODO Context should be changed in WebSocket Handler](https://github.com/onflow/flow-go/issues/7109)
     - [[Access] Add new gRPC subscription documentation and deprecate old implementation](https://github.com/onflow/docs/issues/1150)
-    - Will start working on Optimistic Syncing tasks
+    - Work on Optimistic Syncing tasks will begin. The proposal document is ready, and development will proceed based on the suggested architectural changes.
     - Support KROK data availability PR reviews
 
 * <ins>Malleability</ins>
