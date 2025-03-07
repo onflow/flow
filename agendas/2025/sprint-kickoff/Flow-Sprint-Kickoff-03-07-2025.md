@@ -3,6 +3,8 @@
  ### Team Wins 🎉
  - First rolling upgrade with zero-downtime protocol state upgrade completed successfully on testnet
  - Completed implementation of chunk data packs & execution data to Pebble DB migration & automated pruning (testing in progress)
+ - Completed passkey technical design FLIP
+
 --- 
 
 ### Mainnet Uptime - Last 14 days (02/20/25 to 03/06/25) \[Vishal]
@@ -178,7 +180,7 @@ Cycle Objective(s):
     - [[Access] Improve SendAndSubscribe status handling](https://github.com/onflow/flow-go/issues/6574)
     - [[Access] Subscribe to tx results over ws without sending tx](https://github.com/onflow/flow-go/issues/6767)
   
-    In Progress:
+    Started:
     - [[Access] Add examples for ws conn usages](https://github.com/onflow/flow-go/issues/6643)
     - [[Access] The "tx_id" argument must be required when subscribing for "transaction_statuses" topic via WebSockets](https://github.com/onflow/flow-go/issues/7083)
 
@@ -213,38 +215,47 @@ Cycle Objective(s):
     - [[Malleability] Update mapBackData to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7073)
     - [[Malleability] Fix root interfaces implementations under stdmap package](https://github.com/onflow/flow-go/issues/7075)
    
-   In Progress:
+   Started:
     - [[Malleability] Update herocache to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7074)
     - [[Malleability] Fix remaining usages of the mempool/herocache structures that now rely on generics](https://github.com/onflow/flow-go/issues/7076)
-
+ - [Automatic malleability checker](https://github.com/onflow/flow-go/pull/7069)
+ - Started [Malleability checker follow up](https://github.com/onflow/flow-go/pull/7124)
+   
 * <ins>EFM and Protocol HCU</ins>
+ - Completed Protocol HCU upgrade for EFM recovery on testnet  
+
+* <ins>EVM Gateway</ins>
+ - Misc bug fixes
+ - Completed and released soft-finality PoC for Eth Denver       
 
 * <ins>Cryptography</ins>
+ - Completed passkey technical desoign FLIP
 
 * <ins>Protocol misc</ins>
-
+ - Completed Epoch Interface refactor
+   
 **This sprint**
 
-* <ins>EFM and Protocol HCU</ins>
-   
 * <ins>Data Availability</ins>
-  - KROK Team
+ - KROK Team
     - [[Access] The TODO Context should be changed in WebSocket Handler](https://github.com/onflow/flow-go/issues/7109)
     - [[Access] Add new gRPC subscription documentation and deprecate old implementation](https://github.com/onflow/docs/issues/1150)
     - Work on Optimistic Syncing tasks will begin. The proposal document is ready, and development will proceed based on the suggested architectural changes.
-    - Support KROK data availability PR reviews
+  - Support KROK data availability PR reviews
 
 * <ins>Malleability</ins>
-  - KROK Team:
+ - KROK Team:
     - [[Malleability] Update herocache to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7074)
     - [[Malleability] Fix remaining usages of the mempool/herocache structures that now rely on generics](https://github.com/onflow/flow-go/issues/7076)
     - Continue to work on refactoring of the mempool package
   - Support KROK malleability PR reviews
 
 * <ins>EVM Gateway</ins>
-      
+ - Continue soft finality        
+
 * <ins>Cryptography</ins>
-      
+ -       
+
 **On Hold**
 
 **Active Epics**
