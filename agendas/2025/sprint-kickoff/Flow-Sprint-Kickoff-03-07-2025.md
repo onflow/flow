@@ -2,6 +2,7 @@
 
  ### Team Wins 🎉
  - First rolling upgrade with zero-downtime protocol state upgrade completed successfully on testnet
+ - Completed implementation of chunk data packs & execution data to Pebble DB migration & automated pruning (testing in progress)
 --- 
 
 ### Mainnet Uptime - Last 14 days (02/20/25 to 03/06/25) \[Vishal]
@@ -56,16 +57,90 @@ Q1 2025 Cycle Objective(s):
 
 **Done last sprint**
 
+**Cadence Language**
+
+- [Cadence compiler milestone 2](https://github.com/onflow/cadence/issues/3742)
+    - [Compile force expression](https://github.com/onflow/cadence/pull/3803)
+    - [Update fungible token tests](https://github.com/onflow/cadence/pull/3802)
+    - [Compile transaction pre/post conditions](https://github.com/onflow/cadence/pull/3801)
+    - [Compile remaining unary operators](https://github.com/onflow/cadence/pull/3800)
+    - [Produce an un-encoded program by the compiler](https://github.com/onflow/cadence/pull/3798)
+    - [Compile bitwise operators, add bitwise instructions](https://github.com/onflow/cadence/pull/3797)
+    - [Compile boolean operators](https://github.com/onflow/cadence/pull/3796)
+    - [Compile conditional expression](https://github.com/onflow/cadence/pull/3795)
+    - [Compile for-loops](https://github.com/onflow/cadence/pull/3793)
+    - [Compile fixed-point literals and add UFix64 to VM](https://github.com/onflow/cadence/pull/3791)
+    - [Implement scoping](https://github.com/onflow/cadence/pull/3789)
+    - [Fix break in switch](https://github.com/onflow/cadence/pull/3787)
+    - [Make existing interpreter values reusable in VM](https://github.com/onflow/cadence/issues/3693)
+        - [Decouple interpreter values from interpreter Part 5](https://github.com/onflow/cadence/pull/3792)
+        - [Make the number interfaces in the value-package generic](https://github.com/onflow/cadence/pull/3790)
+        - [Decouple interpreter values from interpreter Part 4](https://github.com/onflow/cadence/pull/3766)
+    - Testing
+        - [Add compiler tests for default functions and function conditions](https://github.com/onflow/cadence/pull/3788)
+        - [Re-enable skipped tests](https://github.com/onflow/cadence/pull/3794)
+        - [Test compilation of currently supported features](https://github.com/onflow/cadence/issues/3773)
+- machine readable language specification
+    - [fix syntax specification for import declaration](https://github.com/onflow/cadence/pull/3810)
+    - [address latest comments](https://github.com/onflow/cadence/pull/3760)
+- bugfix
+    - [Fix TestHashable](https://github.com/onflow/cadence/pull/3807)
+- tech-debt removal
+    - [Re-enable skipped entitlement mapping tests](https://github.com/onflow/cadence/pull/3806)
+- automation
+    - [Fix get-contracts workflow](https://github.com/onflow/cadence/pull/3809)
+
+**Cadence Execution**
+- [Migration of Badger to Pebble DB](https://github.com/onflow/flow-go/issues/6515)
+    - [Add logs to pebble db ops](https://github.com/onflow/flow-go/pull/7113)
+    - [Chunk data pack pruning config fix](https://github.com/onflow/flow-go/pull/7112)
+    - [Prevent overwriting own receipts index for the same block.](https://github.com/onflow/flow-go/pull/7107)
+    - [Improve chunk data pack pruner logging and metrics](https://github.com/onflow/flow-go/pull/7086)
+    - [Refactor storage version beacon](https://github.com/onflow/flow-go/pull/7085)
+    - [Refactor computation result status storage](https://github.com/onflow/flow-go/pull/7084)
+    - [Using flags to roll out database operation changes for Verification nodes](https://github.com/onflow/flow-go/pull/6948)
+    - [Refactor Chunk Locators to badger updates](https://github.com/onflow/flow-go/pull/6947)
+    - [Add Engine for pruning chunk data pack](https://github.com/onflow/flow-go/pull/6946)
+    - [Refactor saving execution results](https://github.com/onflow/flow-go/pull/6906)
+    - Util fixes
+        - [Refactor read chunk data pack in read-badger command](https://github.com/onflow/flow-go/pull/7090)
+- Tech-debt removal:
+    - Atree [Refactor and reduce technical debt](https://github.com/onflow/atree/issues/464)
+        - [Simplify slab operations and reduce risks](https://github.com/onflow/atree/pull/534)
+        - [Use go1.21 clear() instead of loops to clear elements](https://github.com/onflow/atree/pull/533)
+        - [Use go1.21 slices package in map](https://github.com/onflow/atree/pull/532)
+        - [Use go1.21 slices package in array](https://github.com/onflow/atree/pull/531)
+        - [Refactor ArrayMetaDataSlab.SplitChildSlab() to improve readability](https://github.com/onflow/atree/pull/530)
+        - [Refactor to simplify rebalancing child slabs in map](https://github.com/onflow/atree/pull/528)
+        - [Refactor to simplify merging child slabs in map](https://github.com/onflow/atree/pull/527)
+        - [Refactor to simplify rebalancing child slabs in array](https://github.com/onflow/atree/pull/526)
+        - [Refactor to simplify merging child slabs in array](https://github.com/onflow/atree/pull/525)
+        - [Use go1.21 slices package functions in tests](https://github.com/onflow/atree/pull/524)
+        - [Simplify and lint test code to improve maintainability and fix flakey test](https://github.com/onflow/atree/pull/522)
+        - [Refactor non-test code to use range loops](https://github.com/onflow/atree/pull/521)
+        - [Improve consistency of variable names in map tests](https://github.com/onflow/atree/pull/520)
+        - [Refactor map tests & validation to use range loops](https://github.com/onflow/atree/pull/519)
+        - [Improve consistency of variable names in array tests](https://github.com/onflow/atree/pull/516)
+        - [Refactor array test & validation code to use range loops](https://github.com/onflow/atree/pull/515) 
+- Improvements
+    - [Collection node: remove unused db dependencies](https://github.com/onflow/flow-go/pull/7055)
+    - Util [Refactor util program diff-states cmd](https://github.com/onflow/flow-go/pull/7016)
+
 **This sprint**
 
 - Cadence Language
+  - Bugfix
   - Continue work on the [Cadence compiler POC - Phase 2](https://github.com/onflow/cadence/issues/3692)
 
 - Cadence Execution
   - Continue new Trie research
-  - Continue [Atree - Refactor and reduce technical debt](https://github.com/onflow/atree/issues/464)
-  - Badger -> Pebble migration: continue work on [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516) and [execution state migration](https://github.com/onflow/flow-go/issues/6527)
-  - Continue [Execution performance loader](https://github.com/onflow/flow-go/issues/6896)
+  - Complete [Atree - Refactor and reduce technical debt](https://github.com/onflow/atree/issues/464)
+  - Badger -> Pebble migration: complete work on [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516) and [execution state migration](https://github.com/onflow/flow-go/issues/6527)
+  - Complete [Execution performance loader](https://github.com/onflow/flow-go/issues/6896)
+  - Complete performance deep-dive (needs on TPS loader)
+  - Start upgrade of EVM core to "Pectra" release
+  - Start work on migration of non-execution components from Badger -> Pebble DB
+  
 
 **On Hold**
 - [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
