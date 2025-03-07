@@ -348,7 +348,7 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
   * Research about MN26 outage, landing on "[Known Issue: Deadlocked Docker Daemon](https://grafana.com/docs/loki/latest/send-data/docker-driver/#known-issue-deadlocked-docker-daemon)"
-  * [New tags with non-blocking mode enabled on cloud-init on ff-terraform-modules](https://github.com/onflow/ff-terraform-modules/releases/tag)
+  * [New tags with non-blocking mode enabled on cloud-init on ff-terraform-modules](https://github.com/onflow/ff-terraform-modules/tags)
   * [Enable non-blocking mode for Loki log driver on TN52](https://github.com/onflow/ff-sre-infrastructure/pull/190)
   * [Enable non-blocking mode for Loki log driver on MN26](https://github.com/onflow/ff-sre-infrastructure/pull/189)
   * [Create playbook for docker daemon restart](https://github.com/onflow/dapper-flow-hosting/pull/1671/files)
