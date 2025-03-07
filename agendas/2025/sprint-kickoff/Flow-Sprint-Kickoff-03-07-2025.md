@@ -229,7 +229,7 @@ Cycle Objective(s):
   - Completed and released soft-finality PoC for Eth Denver       
 
 * <ins>Cryptography</ins>
-  - Completed passkey technical desoign FLIP
+  - Completed passkey [technical design FLIP](https://github.com/onflow/flips/pull/320)
 
 * <ins>Protocol misc</ins>
   - Completed Epoch Interface refactor
