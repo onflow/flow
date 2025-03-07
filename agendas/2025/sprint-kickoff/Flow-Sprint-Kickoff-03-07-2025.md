@@ -222,22 +222,22 @@ Cycle Objective(s):
  - Started [Malleability checker follow up](https://github.com/onflow/flow-go/pull/7124)
    
 * <ins>EFM and Protocol HCU</ins>
- - Completed Protocol HCU upgrade for EFM recovery on testnet  
+  - Completed Protocol HCU upgrade for EFM recovery on testnet  
 
 * <ins>EVM Gateway</ins>
- - Misc bug fixes
- - Completed and released soft-finality PoC for Eth Denver       
+  - Misc bug fixes
+  - Completed and released soft-finality PoC for Eth Denver       
 
 * <ins>Cryptography</ins>
- - Completed passkey technical desoign FLIP
+  - Completed passkey technical desoign FLIP
 
 * <ins>Protocol misc</ins>
- - Completed Epoch Interface refactor
+  - Completed Epoch Interface refactor
    
 **This sprint**
 
 * <ins>Data Availability</ins>
- - KROK Team
+  - KROK Team
     - [[Access] The TODO Context should be changed in WebSocket Handler](https://github.com/onflow/flow-go/issues/7109)
     - [[Access] Add new gRPC subscription documentation and deprecate old implementation](https://github.com/onflow/docs/issues/1150)
     - Work on Optimistic Syncing tasks will begin. The proposal document is ready, and development will proceed based on the suggested architectural changes.
@@ -251,10 +251,10 @@ Cycle Objective(s):
   - Support KROK malleability PR reviews
 
 * <ins>EVM Gateway</ins>
- - Continue soft finality        
+  - Continue soft finality        
 
 * <ins>Cryptography</ins>
- -       
+  -       
 
 **On Hold**
 
@@ -271,9 +271,14 @@ Cycle Objective(s):
 - Bring liquidity and and kick start ecosystem effects
 
 **Done last sprint**
+ - Completed oversight of contract audit for Kittypunch new product launches (Flow Strategy)
+ - Mopped up issues with Metamask not having token icons and other misc
+ - Started DeFi vision proposal doc
 
 **This sprint**
-
+ - Continue DeFi vision proposal doc
+ - Support/track contract audit for More Markets product launch
+ - Support/track second contract audit for Kittypunch with Zenith
 
 **On Hold**
 - N/A
