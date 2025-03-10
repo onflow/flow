@@ -71,6 +71,10 @@
 | Coinbase Cloud         | Consensus    | f36176beb56175277ec31b77f51058a69ae1ebe9a13d990aa93f943d48793fd4 |
 | Coinbase Cloud         | Consensus    | fabe5c7917f1368d0a01dde06da7e7b6da8ea8e872e62f4853afbc536ea8d59d |
 | Coinbase Cloud         | Consensus    | fdbe6cb2bc0e45671e977ba621746d113aaa7f045c5d3274addcd6141c8c765d |
+| DoraHacks              | Consensus    | 30f193fa5829e58454c0eb9ae0f2c9aae98cf4445b9b782d928c78b4589e1d58 |
+| DoraHacks              | Consensus    | babcdd6cbb72a26c8470fea1090af31e9b419b331d7bda0496e28134b698d70a |
+| DoraHacks              | Consensus    | bf0629b59694a3403c88e05e6e290983e8d9faff7593089f6a1ab0f670b5d9b1 |
+| DoraHacks              | Consensus    | 0232d16ec0499215ba981b13d0acca886da6dbb23e76d6c272756380cc9b4e27 |
 | DSRV                   | Consensus    | 947771ab1fd233d8694aee6c4a4259ee7e2241f4a201067aaa28adbb989d7c97 |
 | Figment                | Collection   | 1408c08272beb24ad4fe4e531a9b937a26ee72c5f56b50ac8f2b889c3c42d316 |
 | Figment                | Consensus    | 18e3cb625008338db803fd2d0fc2725b8f2ff988db992cfb2683f49d3ef29941 |
