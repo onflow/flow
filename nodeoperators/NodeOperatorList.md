@@ -32,45 +32,6 @@
 | Chainlayer             | Collection   | 050dfd9898470c042e9190b8a9136122dee26dad438cf5b49307f55fe4dbcc98 |
 | Chainlayer             | Consensus    | 62de4fa4b6a05b8beb5868a5259caca4efa966aa0cb867fdd776c73abe9370ad |
 | Chainlayer             | Verification | d4ffda5cbdea87f6464d37c7ab079d3f8589454d2de2b6bce1cc6c6f20829dc2 |
-| Coinbase Cloud         | Consensus    | 022699aba098bce3eb3a8709f29feafa9793f65de7d24d37a46310d788cbcc74 |
-| Coinbase Cloud         | Consensus    | 07e3017f5327ed10b7cfa0e3b3f7dc97df8f1ce2cc9d9be25e7aef00e932a691 |
-| Coinbase Cloud         | Consensus    | 10ea3b6872e187b3835bf57f6a9597738aa6b396c03c1549f4cdac789ae27e8e |
-| Coinbase Cloud         | Consensus    | 166d1b52831da570fb37f0d85ded5d164937bc7ae976a6037bc33a77c3113735 |
-| Coinbase Cloud         | Consensus    | 1a697950a4843dc67bbd34cbb0016854e64e66f088b54447beeea6999ff7641d |
-| Coinbase Cloud         | Consensus    | 2040bd128455e833c0968bf51c0a2eb4d05399e1ab5ac323d38170b975688bea |
-| Coinbase Cloud         | Consensus    | 245efcb37ebdb2966bafc0112dd86bc1f5e1d3ffa70b66887eaeb3a667b3f477 |
-| Coinbase Cloud         | Consensus    | 3890fd0a26c0272807b731d0dda0eb15bfa5183533032303e062e9206e9f4e69 |
-| Coinbase Cloud         | Collection   | 48ba5aabeaf1a7c1bc6a96b20c8e9f6cbe7f6b3c77faec3b77fa66a630abf8c7 |
-| Coinbase Cloud         | Consensus    | 490e27d1d5335f20473871f06324f4cff862d4fc22c4af7ab87574292764c518 |
-| Coinbase Cloud         | Consensus    | 492bab4b9cb02c97bd2b03859640002e8d81eb2bc33e723ae8fabcc64f30d653 |
-| Coinbase Cloud         | Consensus    | 54abbaea844dfc3c6cc0f58f0170783d6d01bef578761113558c4321a3e1a0df |
-| Coinbase Cloud         | Consensus    | 7133b78ac9e788c428a354f2f96b5cc8109123425a88cc75d729bf5adfd0a25d |
-| Coinbase Cloud         | Consensus    | 76a117e9635097b8a7ef6ac867f1525a76854b7e42b38075e3b422bd73e5dd2f |
-| Coinbase Cloud         | Verification | 79949f163dac6b72ab72c1d12b9677d71dd9367f7331d59425b485050c8712d9 |
-| Coinbase Cloud         | Consensus    | 7db974a1aa956a2693ae0bafc357e8b220d30c8a0c64213badfc603e8b911d9a |
-| Coinbase Cloud         | Verification | 8790cc2cabdb172e5a96c24c150865031e1818f6f84fbd68894efd0d0d12dc96 |
-| Coinbase Cloud         | Consensus    | 8d16bacfd9854ccdc0496ec2b99fc9dab94e5810686bd4df2bd956a8a8f81fa0 |
-| Coinbase Cloud         | Consensus    | 8f4d09dae7918afbf62c48fa968a9e8b0891cee8442065fa47cc05f4bc9a8a91 |
-| Coinbase Cloud         | Consensus    | 95ffacf0c05757cff71a4ee49e025d5a6d1103a3aa7d91253079e1bfb7c22458 |
-| Coinbase Cloud         | Consensus    | a01657135399d9817a1b9933c7663077ef9e376fbe72bf56d687b23d75c2f76c |
-| Coinbase Cloud         | Consensus    | a1bd45dbbf9077ce0ada513e2055ab4276ff81891936b0b8374617eee50c6987 |
-| Coinbase Cloud         | Consensus    | a494a83f3eee8d95c49931a26483907aabe7bf8d6325a777b9033734756614f1 |
-| Coinbase Cloud         | Consensus    | a65461e68eae80c9bd9d8edc81857c7d2cd83ba9992433c468e9ef6515d32006 |
-| Coinbase Cloud         | Verification | a8a34668b9c3eb824955df6f184832199d78aedacba3c846ee76e89cde7c1c98 |
-| Coinbase Cloud         | Consensus    | adbd46d6628bb41e84635f436b3411da4dde2d80854c1b6ead3373cc962d4be6 |
-| Coinbase Cloud         | Consensus    | af8450d3906c7c3af8981736bbfbc67da78d71bee82c6f301f7656bc62815945 |
-| Coinbase Cloud         | Verification | b17280bf57adad0de648d827a7ccbe81c74cf6a9cc44af4778587b133747a2f9 |
-| Coinbase Cloud         | Consensus    | b38182167be80a81f7c7534da5c72cc6e59c0922e2aced43f8b01df3630cf788 |
-| Coinbase Cloud         | Consensus    | b5e3cdbeb4986460b57a5a363789bb587eae7bff05589dcd122bcedc62be6664 |
-| Coinbase Cloud         | Consensus    | b68dbd999fbf3084685833efdb6e65038f90d53992290919c0cb8332b6ac93bd |
-| Coinbase Cloud         | Consensus    | ccd5e456be83922268ee4a07841f7c6c2f009fac77b80828e08f7e7efd6e5278 |
-| Coinbase Cloud         | Consensus    | e09a474478e44aed738b680d04eca770953468a80151a2491f90296009b0ee65 |
-| Coinbase Cloud         | Collection   | e20501aa4f972ddeddbd3905566389109b02b8eacd2d0dc48a4f2a567dedd648 |
-| Coinbase Cloud         | Consensus    | e2314f73ff8aa1fa7110b180b5e5d113898e56bc6b43f9e5c889a6bffebeec0e |
-| Coinbase Cloud         | Consensus    | e782fb8a9895251a82cb68b87d1306748775188c9fca97a9b91b444ddd5f7e11 |
-| Coinbase Cloud         | Consensus    | f36176beb56175277ec31b77f51058a69ae1ebe9a13d990aa93f943d48793fd4 |
-| Coinbase Cloud         | Consensus    | fabe5c7917f1368d0a01dde06da7e7b6da8ea8e872e62f4853afbc536ea8d59d |
-| Coinbase Cloud         | Consensus    | fdbe6cb2bc0e45671e977ba621746d113aaa7f045c5d3274addcd6141c8c765d |
 | DoraHacks              | Consensus    | 30f193fa5829e58454c0eb9ae0f2c9aae98cf4445b9b782d928c78b4589e1d58 |
 | DoraHacks              | Consensus    | babcdd6cbb72a26c8470fea1090af31e9b419b331d7bda0496e28134b698d70a |
 | DoraHacks              | Consensus    | bf0629b59694a3403c88e05e6e290983e8d9faff7593089f6a1ab0f670b5d9b1 |
