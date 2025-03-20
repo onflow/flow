@@ -52,11 +52,11 @@
   - FLIP 318: VM Bridge Support for Cross-VM NFTs - `Accepted`
   
 ### Key Release Dates & Breaking Changes
-* Rolling upgrade
+* Rolling upgrade to `v0.39.0`
   - Mainnet:
-   - FF nodes have been updated
-   - Operator nodes will be updated by 3/31
-   - Protocol upgrade - first week of April
+     - FF nodes have been updated
+     - Operator nodes will be updated by 3/31
+     - Protocol upgrade - first week of April
 
 ---
 
