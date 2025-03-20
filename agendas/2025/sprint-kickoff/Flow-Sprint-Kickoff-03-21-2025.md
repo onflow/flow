@@ -13,21 +13,21 @@
 | Block Finalization      | 99.9%   |    100%       |      0%         |
 | Transaction Execution   | 99.9%   |    100%       |      0%         |
 | Block Sealing           | 99.9%   |    100%       |      0%         |
-| Access API Liveness     | 99.9%   |    100%       |      0%         |
+| Access API Liveness     | 99.9%   |    99.97%      |      24.8%         |
 
 
 #### YTD SLA
 
-| Incident/upgrade       | Date      | Collection | Consensus | Execution | Verification | Access (QN) | Total  | Comments      |
-| ---------------------- | --------- | ---------- | --------- | --------- | ------------ | ----------- | ------ | ------------- |
-| HCU                    | 1/27/2025 |            |           | 5         | 5            |             | 5      |               |
-| P0 Incident            | 2/18/2025 | 180        | 180       | 180       | 180          |             | 180    | Grafana issue |
-| P0 Incident            | 2/19/2025 | 30         | 30        | 30        | 30           |             | 30     | Grafana issue |
-| HCU                    | 2/18/2025 |            |           | 5         | 5            |             | 5      |               |
-| HCU                    | 2/18/2025 |            |           | 5         | 5            |             | 5      |               |
-| Total downtime in mins |           | 210        | 210       | 225       | 225          | 0           | 225    |               |
-| YTD (03/20/25) SLA     |           | 99.81%     | 99.81%    | 99.80%    | 99.80%       | 100.00%     | 99.80% |               |
-| SLA for 2025           |           | 99.96%     | 99.96%    | 99.96%    | 99.96%       | 100.00%     | 99.96% |               |
+| Incident/upgrade       | Date      | Collection | Consensus | Execution | Verification  | Total  | Comments      |
+| ---------------------- | --------- | ---------- | --------- | --------- | ------------ | ------ | ------------- |
+| HCU                    | 1/27/2025 |            |           | 5         | 5            | 5      |               |
+| P0 Incident            | 2/18/2025 | 180        | 180       | 180       | 180          | 180    | Grafana issue |
+| P0 Incident            | 2/19/2025 | 30         | 30        | 30        | 30           | 30     | Grafana issue |
+| HCU                    | 2/18/2025 |            |           | 5         | 5            | 5      |               |
+| HCU                    | 2/18/2025 |            |           | 5         | 5            | 5      |               |
+| Total downtime in mins |           | 210        | 210       | 225       | 225          | 225    |               |
+| YTD (03/20/25) SLA     |           | 99.81%     | 99.81%    | 99.80%    | 99.80%       | 99.80% |               |
+| SLA for 2025           |           | 99.96%     | 99.96%    | 99.96%    | 99.96%       | 99.96% |               |
 
 #### P0 or P1 Incidents
 None
