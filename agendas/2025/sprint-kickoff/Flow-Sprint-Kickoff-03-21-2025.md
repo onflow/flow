@@ -29,8 +29,9 @@
 | YTD (03/20/25) SLA     |           | 99.81%     | 99.81%    | 99.80%    | 99.80%       | 99.80% |               |
 | SLA for 2025           |           | 99.96%     | 99.96%    | 99.96%    | 99.96%       | 99.96% |               |
 
-#### P0 or P1 Incidents
-None
+#### Incidents
+- P0 and P1: None
+- P2: Incident - Block rate fell to 1 block per second. Root cause: Incorrect networking setup on consensus nodes run by a partner.
 
 ---
 
