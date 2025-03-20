@@ -39,15 +39,17 @@
 
 |                         | Application | Cadence | Governance | Protocol | Total |  
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 9 |    7      |       0       |       8        |        **24**        |
+| Drafted     | 9 |    7      |       0       |       8 (+1)       |        **25** (+1)      |
 | Proposed    | 1  |    2     |       3       |       0          |        **6**          |
-| Accepted    | 2  |    1     |       2       |       2          |        **7**          |
+| Accepted    | 3 (+1) |    1     |       2       |       2          |        **8** (+1)         |
 | Rejected    | 0  |    1     |       1       |       0          |        **2**         |
 | Implemented | 3  |    5     |       1       |       0          |        **9**        |
 | Released    | 4  |    34     |       7        |       6          |        **51**          |
-| Total       | **19** |    **50**   |       **14**       |       **16**         |        **99**         |
+| Total       | **19** |    **50**   |       **14**       |       **16**         |        **101** (+1)        |
 
-- No changes since last sprint.
+- Two new FLIPs
+  - FLIP 321: Redundancy Improvement - update service account signers - `Drafted`
+  - FLIP 318: VM Bridge Support for Cross-VM NFTs - `Accepted`
   
 ### Key Release Dates & Breaking Changes
 * Rolling upgrade
