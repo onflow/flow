@@ -53,10 +53,11 @@
   
 ### Key Release Dates & Breaking Changes
 * Rolling upgrade
-  - Mainnet: ~Week of 17th March
+  - Mainnet:
+   - FF nodes have been updated
+   - Operator nodes will be updated by 3/31
+   - Protocol upgrade - first week of April
 
-* EFM Recovery testing
-  - Testnet: Ongoing. Will be complete by 4 PM Pacific, 7th March.
 ---
 
 
@@ -251,11 +252,13 @@ Cycle Objective(s):
 4. Build and ship a new dashboard to provide node operators with real-time access to staking, epoch-related and other relevant data.
 
 **Done last sprint**
-* 
+* Contract review with Alchemy, Tibles, Hoodlums, Quicknode.
 
 **This sprint**
 
 * Contract signing with Alchemy.
-* Contract review with Tibles, Hoodlums, Quicknode.
+* Contract review with Tibles, Quicknode.
+* Flipside 5 SNs onboarding.
+* BlockDaemon 5 SNs onboarding.
 
 ---
