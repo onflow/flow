@@ -1,7 +1,7 @@
 # Overview
 
  ### Team Wins 🎉
- - 
+ - Successfully tested EFM recovery on testnet
 
 --- 
 
