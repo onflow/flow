@@ -259,7 +259,11 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 ### **Infra** \[JP / Manny]
 
 **Done last sprint**
- 
+  * Adjustments to loki driver settings on docker daemon config to mitigate log loss
+  * Improvements to the docker daemon restart playbook to make it compatible to TN
+  * Page redirection from `testnet-faucet.onflow.org` to `faucet.flow.com`
+  * DNS changes to enable the switch of our status page to `status.flow.com`
+  * [Changes to allow automation jobs to use all available resources on GCP instances](https://github.com/onflow/ff-sre-automation/pull/20)
 
 **Observability**
 
@@ -268,12 +272,13 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 **Key Management**
 
 **This sprint**
-  * Consolidation of cloud-init configs between TN and MN
-  * Release automation for terraform modules with semantic versioning 
-  * Rollout of a fix of the issue where the last logs before a crash were not being pushed to grafana
+  * Consolidate Terraform Network Modules into a Single Module
+  * Migration of “Live” Networks to the New Module
+  * Document and Automate New Tagging Strategy
 
 **On Hold**
-
+  * [Improve Synthetic Monitoring Coverage](https://github.com/onflow/ff-sre-infrastructure/issues/108)
+    
 **Active Epics**
   * [Terraform Module Consolidation](https://github.com/onflow/ff-sre-infrastructure/issues/94)
 
