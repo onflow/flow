@@ -1,8 +1,10 @@
 # Overview
 
  ### Team Wins 🎉
- - Successfully tested EFM recovery on testnet
-
+ * Successfully tested EFM recovery on testnet
+ * Completed new TPS loader and run manual test, confirming no performance regression since pre-Crescendo (Sep 3rd).
+ * Completed [Atree refactor to remove technical debt](https://github.com/onflow/atree/issues/464).
+ * Complete work on Bader -> Pebble DB for [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516).
 --- 
 
 ### Mainnet Uptime - Last 14 days (03/07/25 to 03/20/25) \[Vishal]
@@ -73,16 +75,50 @@ Q1 2025 Cycle Objective(s):
 **Done last sprint**
 
 **Cadence Language**
+- [Compiler Milestone 3](https://github.com/onflow/cadence/issues/3769)
+    - [Run existing interpreter tests with the compiler and VM](https://github.com/onflow/cadence/pull/3813)
+    - [Optimize allocations and program components](https://github.com/onflow/cadence/pull/3808)
+- Bugfixes : [1](https://github.com/onflow/cadence-internal/pull/319), [2](https://github.com/onflow/cadence-internal/pull/318), [3](https://github.com/onflow/cadence-internal/pull/317)
 
 **Cadence Execution**
+- [Migration of Badger to Pebble DB](https://github.com/onflow/flow-go/issues/6515)
+    - Optimization: [Release Pebble batch resource to reduce memory use](https://github.com/onflow/flow-go/pull/7153)
+    - [Use generic protocol db](https://github.com/onflow/flow-go/pull/7120)
+    - [Migrate last executed block from badger to pebble](https://github.com/onflow/flow-go/pull/7117)
+    - [Refactor collections storage](https://github.com/onflow/flow-go/pull/7059)
+    - [Update pebble dir path](https://github.com/onflow/flow-go/pull/7141)
+    - Util:
+        - [Read storage stats - add key count and total value size for each prefix](https://github.com/onflow/flow-go/pull/7131)
+        - [update util to read results from pebble](https://github.com/onflow/flow-go/pull/7092)
+    - Bugfix: [InitBadgerAndPebble() not closing badger.DB on error](https://github.com/onflow/flow-go/pull/7125)
+    - Testing: [Backport master non-breaking changes to `v0.39`](https://github.com/onflow/flow-go/pull/7142)
+- Execution effort calibration - [Create a performance loader](https://github.com/onflow/flow-execution-effort-estimation/issues/9)
+    - [testing with localnet](https://github.com/onflow/flow-execution-effort-estimation/pull/23)
+    - [Reduce starting TPS spike when loading with a specific TPS](https://github.com/onflow/flow-execution-effort-estimation/issues/14)
+    - [Better observability](https://github.com/onflow/flow-execution-effort-estimation/issues/20)
+    - [Create more proposer keys at loader startup](https://github.com/onflow/flow-execution-effort-estimation/issues/17)
+    - [Add documentation for running/using the TPS loader](https://github.com/onflow/flow-execution-effort-estimation/issues/12)
+    - [Account provider should autodetect and use all account keys with the same public key](https://github.com/onflow/flow-execution-effort-estimation/issues/13)
+    - [TPS loader with constant load](https://github.com/onflow/flow-execution-effort-estimation/pull/16)
+- Improvement:
+    - [Remove redundant call to saveExecutionResults](https://github.com/onflow/flow-go/pull/7118)
+    - Atree: [Fix flakey smoke test](https://github.com/onflow/atree/issues/535)
+- Bugfix:
+    - CBOR: [https://github.com/fxamacker/cbor/pull/636](https://github.com/fxamacker/cbor/pull/636)
 
 **This sprint**
 
 - Cadence Language
-  
+  - Bugfix deployemnt
+  - Continue work on the [Compiler Milestone 3](https://github.com/onflow/cadence/issues/3769)
 
 - Cadence Execution
-  
+  - Continue new Trie research
+  - Badger -> Pebble migration [Milestone 2](https://github.com/onflow/flow-go/issues/6515): [DB access refactoring for low-risk data on EN, VN and AN](https://github.com/onflow/flow-go/issues/6527)
+  - Complete [Execution performance loader](https://github.com/onflow/flow-execution-effort-estimation/issues/9)
+  - Complete performance deep-dive: analyze CPU profile produced on migration testnet with new TPS loader to identify new bottlenecks / opportunities for further optimizations.
+  - Continue supporting upgrade of EVM core to "Pectra" release
+  - Start work on [Execution effort calibration](https://github.com/onflow/flow-go/issues/5598) (depnds on the [TPS loader](https://github.com/onflow/flow-execution-effort-estimation/issues/9))
 
 **On Hold**
 - [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
