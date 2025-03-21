@@ -148,19 +148,45 @@ Cycle Objective(s):
   - KROK Team
 
     Done:
+    - [[Access] Implement integration test for new websockets](https://github.com/onflow/flow-go/issues/6907)
+    - [[Access] Add examples for ws conn usages](https://github.com/onflow/flow-go/issues/6643)
+    - [[Access] The "tx_id" argument must be required when subscribing for "transaction_statuses" topic via WebSockets](https://github.com/onflow/flow-go/issues/7083)
+    - [[Access] Investigate gorrilla ReadJSON return error on Close](https://github.com/onflow/flow-go/issues/7045)
+    - [[Access] Empty error object in successful WebSocket subscription responce](https://github.com/onflow/flow-go/issues/7009)
+
+    In Review:
+    - [[Access] The TODO Context should be changed in WebSocket Handler](https://github.com/onflow/flow-go/issues/7109)
+    - [[Access] Data providers should wrap context.Canceled error](https://github.com/onflow/flow-go/issues/7040)
   
     Started:
-
+    - [[Access] Started dive into WIP Optimistic Syncing document]
 
 * <ins>Malleability</ins>
   - KROK Team
   
     Done:
-
+    - [[Malleability] Update mapBackData to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7073)
+    - [[Malleability] Update BackData to use generic arguments instead of flow.Identifier and flow.Entity](https://github.com/onflow/flow-go/issues/7070)
+    - [[Malleability] Update Backend to work with BackData](https://github.com/onflow/flow-go/issues/7072)
+    - [[Malleability] Fix root interfaces implementations under stdmap package](https://github.com/onflow/flow-go/issues/7075)
+    - [[Malleability] AssignmentDataPack](https://github.com/onflow/flow-go/issues/6664)
+    - [[Malleability] Fix ID misuse in IdEntity type](https://github.com/onflow/flow-go/issues/6709)
+    - [[Malleability] Fix ID misuse in IdMapEntity type](https://github.com/onflow/flow-go/issues/6711)
+    - [[Malleability] Fix ID misuse of inMemChunkStatus type](https://github.com/onflow/flow-go/issues/6706)
+    - [[Malleability] BlocksByCollection](https://github.com/onflow/flow-go/issues/6666)
+    - [[Malleability] Fix ID misuse in TransactionTiming type](https://github.com/onflow/flow-go/issues/6700)
+    - [[Malleability] Fix ID misuse in chunkRequestStatus type](https://github.com/onflow/flow-go/issues/6708)
     
     In Review:
-   
-   Started:
+    - [[Malleability] Update herocache to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7074)
+    - [[Malleability] Follow up for fixing root interface implementations in the stdmap package](https://github.com/onflow/flow-go/issues/7166)
+    - [[Malleability] ApprovalMapEntity](https://github.com/onflow/flow-go/issues/6662)
+    - [[Malleability] Fix ID misuse in Queue type](https://github.com/onflow/flow-go/issues/6707)
+      
+    Started:
+    - [[Malleability B] ResultApproval](https://github.com/onflow/flow-go/issues/6652)
+    - [[Malleability] Fix ID misuse in ExecutableBlock type](https://github.com/onflow/flow-go/issues/6672)
+    - [[Malleability] Fix remaining usages of the mempool/herocache structures that now rely on generics](https://github.com/onflow/flow-go/issues/7076)
    
 * <ins>EFM and Protocol HCU</ins>
   -
@@ -175,12 +201,18 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability</ins>
-  - KROK Team
-  - Support KROK data availability PR reviews
+ - KROK Team:
+   - Support KROK data availability PR reviews
+   - Continue dive into WIP Optimistic Syncing document and start work on first tasks
 
 * <ins>Malleability</ins>
  - KROK Team:
-  - Support KROK malleability PR reviews
+   - Support KROK malleability PR reviews
+   - A big bunch of ID misuse tasks will be ready for review and potentially moved to done
+   - [[Malleability B] ResultApproval](https://github.com/onflow/flow-go/issues/6652)
+   - [[Malleability] Fix ID misuse in ExecutableBlock type](https://github.com/onflow/flow-go/issues/6672)
+   - [Malleability] Fix remaining usages of the mempool/herocache structures that now rely on generics](https://github.com/onflow/flow-go/issues/7076)
+    
 
 * <ins>EVM Gateway</ins>
   - Continue integration of Ethereum Pectra updates
