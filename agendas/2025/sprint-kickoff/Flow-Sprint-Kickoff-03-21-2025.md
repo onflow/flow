@@ -5,7 +5,7 @@
  * Completed new TPS loader and run manual test, confirming no performance regression since pre-Crescendo (Sep 3rd).
  * Completed [Atree refactor to remove technical debt](https://github.com/onflow/atree/issues/464).
  * Complete work on Badger -> Pebble DB for [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516).
---- 
+---
 
 ### Mainnet Uptime - Last 14 days (03/07/25 to 03/20/25) \[Vishal]
 
@@ -39,7 +39,7 @@
 
 ### FLIPs Tracker \[Vishal]
 
-|                         | Application | Cadence | Governance | Protocol | Total |  
+|                         | Application | Cadence | Governance | Protocol | Total |
 |:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
 | Drafted     | 9 |    7      |       0       |       8 (+1)       |        **25** (+1)      |
 | Proposed    | 1  |    2     |       3       |       0          |        **6**          |
@@ -52,7 +52,7 @@
 - Two new FLIPs
   - FLIP 321: Redundancy Improvement - update service account signers - `Drafted`
   - FLIP 318: VM Bridge Support for Cross-VM NFTs - `Accepted`
-  
+
 ### Key Release Dates & Breaking Changes
 * Rolling upgrade to `v0.39.0`
   - Mainnet:
@@ -128,13 +128,13 @@ Q1 2025 Cycle Objective(s):
 ---
 
 ### **Core Protocol** \[Jerome]
-Cycle Objective(s): 
+Cycle Objective(s):
 
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
 * Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * Address vectors which risk network downtime
   1. Operationalize EFM Recovery [DONE]
-  2. Protocol level HCU [IN PROGRESS] 
+  2. Protocol level HCU [IN PROGRESS]
 * EVM Gateway phase 2 (Pectra & Soft finality Prod) [IN PROGRESS]
 * Support full spork history across HCU version boundaries (PoC) [BLOCKED]
 * Faster transaction results to improve user experience [DONE]
@@ -157,13 +157,13 @@ Cycle Objective(s):
     In Review:
     - [[Access] The TODO Context should be changed in WebSocket Handler](https://github.com/onflow/flow-go/issues/7109)
     - [[Access] Data providers should wrap context.Canceled error](https://github.com/onflow/flow-go/issues/7040)
-  
+
     Started:
     - [Access] Started dive into WIP Optimistic Syncing document
 
 * <ins>Malleability</ins>
   - KROK Team
-  
+
     Done:
     - [[Malleability] Update mapBackData to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7073)
     - [[Malleability] Update BackData to use generic arguments instead of flow.Identifier and flow.Entity](https://github.com/onflow/flow-go/issues/7070)
@@ -176,24 +176,24 @@ Cycle Objective(s):
     - [[Malleability] BlocksByCollection](https://github.com/onflow/flow-go/issues/6666)
     - [[Malleability] Fix ID misuse in TransactionTiming type](https://github.com/onflow/flow-go/issues/6700)
     - [[Malleability] Fix ID misuse in chunkRequestStatus type](https://github.com/onflow/flow-go/issues/6708)
-    
+
     In Review:
     - [[Malleability] Update herocache to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7074)
     - [[Malleability] Follow up for fixing root interface implementations in the stdmap package](https://github.com/onflow/flow-go/issues/7166)
     - [[Malleability] ApprovalMapEntity](https://github.com/onflow/flow-go/issues/6662)
     - [[Malleability] Fix ID misuse in Queue type](https://github.com/onflow/flow-go/issues/6707)
-      
+
     Started:
     - [[Malleability B] ResultApproval](https://github.com/onflow/flow-go/issues/6652)
     - [[Malleability] Fix ID misuse in ExecutableBlock type](https://github.com/onflow/flow-go/issues/6672)
     - [[Malleability] Fix remaining usages of the mempool/herocache structures that now rely on generics](https://github.com/onflow/flow-go/issues/7076)
-      
+
   - [Finished implementation of malleability checker](https://github.com/onflow/flow-go/pull/7069)
   - [Kicking off discussion for broad code base change](https://github.com/onflow/flow-go/issues/7164)
   - Addressed malleability for core structures: [1](https://github.com/onflow/flow-go/pull/7150), [2](https://github.com/onflow/flow-go/pull/7130), [3](https://github.com/onflow/flow-go/pull/7129)
   - Refactoring block proposals as part of Header malleability
   - KROK PR reviews
-   
+
 * <ins>EFM and Protocol HCU</ins>
   - [EFM Recovery Runbook](https://www.notion.so/flowfoundation/Runbook-Epoch-Fallback-Mode-EFM-Recovery-1b41aee1232480609b0ee27df8483c69?pvs=4)
 
@@ -214,7 +214,7 @@ Cycle Objective(s):
   - Mainnet consensus timeouts debugging & recovery incident
   - Mainnet Rolling Upgrade to v0.39
   - Started [Execution Stack Versioning in Protocol State](https://github.com/onflow/flow-go/issues/6999)
-   
+
 **This sprint**
 
 * <ins>Data Availability</ins>
@@ -232,7 +232,7 @@ Cycle Objective(s):
  - Continue [Address ambiguity between identifier and hash of an entity](https://github.com/onflow/flow-go/issues/7164)
  - Continuing block proposal refactor
  - Continue KROK PR reviews
-    
+
 
 * <ins>EVM Gateway</ins>
   - Continue integration of Ethereum Pectra updates
@@ -242,7 +242,7 @@ Cycle Objective(s):
   - Webauthn/passkeys:
     - more wallet team syncs
   - Protocol working group Passkeys FLIP presentation
-  - Return to SPoCK aggregation      
+  - Return to SPoCK aggregation
 
 * <ins>Protocol misc</ins>
   - Mainnet Protocol State HCU upgrade (contingent to sufficient operators upgrading nodes)
@@ -262,7 +262,7 @@ Cycle Objective(s):
 
 ### **DeFi** \[Jerome]
 
-Cycle Objective(s): 
+Cycle Objective(s):
 - Close gaps in Defi/Liquidity infrastructure post-Cadence 1.0
 - Bring liquidity and and kick start ecosystem effects
 
@@ -290,16 +290,20 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+- Completed KR 1: Cross-VM is live with demo video, docs, and packages. Coming out of alpha soon.
+- Started work on KR 2: Flow React Hooks Library is now in progress.
+- Completed KR 3: Experimental soft finality flag will go out in the next FCL release.
+
 **This sprint**
 
-
-- N/A
+- Finish coding the Flow React Hooks Library
+- Start documentation for the Flow React Hooks Library
 
 ---
 
-### Applications / Wallet [Jeff] 
+### Applications / Wallet [Jeff]
 
-**Cycle Objective(s):** 
+**Cycle Objective(s):**
 
 KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 1 per week on a 4-week rolling average.
  - Current (Mar 7): 3.5/week - Down from 5.5/week just two weeks ago.
@@ -341,7 +345,7 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **On Hold**
   * [Improve Synthetic Monitoring Coverage](https://github.com/onflow/ff-sre-infrastructure/issues/108)
-    
+
 **Active Epics**
   * [Terraform Module Consolidation](https://github.com/onflow/ff-sre-infrastructure/issues/94)
 
