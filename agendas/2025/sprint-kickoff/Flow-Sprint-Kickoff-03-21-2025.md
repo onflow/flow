@@ -318,7 +318,8 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 **This sprint**
 
 - Automatically support new token launches within the wallet - new verified/unverified token feature
-
+- Support paying VM bridge fee during transaction
+- Migration from SimpleHash to Moralis
 
 - Extension:
   - Support 1 password across all profiles on Extension
