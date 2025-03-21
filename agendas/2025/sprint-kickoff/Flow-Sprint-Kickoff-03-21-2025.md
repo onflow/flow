@@ -306,12 +306,24 @@ Cycle Objective(s):
 **Cycle Objective(s):**
 
 KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 1 per week on a 4-week rolling average.
- - Current (Mar 7): 3.5/week - Down from 5.5/week just two weeks ago.
- - Positive signal: 2 bugs/week last week!
+ - Current (Mar 21): 3.25/week
 
 **Done last sprint**
 
+- Supported NBA Top Shot launch on OpenSea by releasing NFT search across all platforms
+
 **This sprint**
+
+- Automatically support new token launches within the wallet - new verified/unverified token feature
+
+
+- Extension:
+  - Support 1 password across all profiles on Extension
+
+- iOS/Android:
+  - New token display format for small values
+  - Support transferring tokens with up to their supported precision
+  - UI Updates to NFT page
 
 **On Hold**
 
