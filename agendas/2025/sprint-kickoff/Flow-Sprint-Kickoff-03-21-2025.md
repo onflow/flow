@@ -145,6 +145,7 @@ Cycle Objective(s):
 
 **Done last sprint**
 * <ins>Data Availability</ins>
+  - Published initial draft [FLIP 322: Optimistic Syncing of Execution Data](https://github.com/onflow/flips/pull/323)
   - KROK Team
 
     Done:
@@ -218,6 +219,8 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability</ins>
+ - Address feedback from FLIP
+ - Create initial issues for Optimistic syncing project
  - KROK Team:
    - Support KROK data availability PR reviews
    - Continue dive into WIP Optimistic Syncing document and start work on first tasks
