@@ -290,7 +290,7 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-- Completed KR 1: Cross-VM is live with demo video, docs, and packages. Coming out of alpha soon.
+- Completed KR 1: Cross-VM is live with demo video, docs, packages, and marketing. Coming out of alpha soon.
 - Started work on KR 2: Flow React Hooks Library is now in progress.
 - Completed KR 3: Experimental soft finality flag will go out in the next FCL release.
 
