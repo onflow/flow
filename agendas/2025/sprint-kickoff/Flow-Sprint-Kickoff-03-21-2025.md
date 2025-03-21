@@ -4,7 +4,7 @@
  * Successfully tested EFM recovery on testnet
  * Completed new TPS loader and run manual test, confirming no performance regression since pre-Crescendo (Sep 3rd).
  * Completed [Atree refactor to remove technical debt](https://github.com/onflow/atree/issues/464).
- * Complete work on Bader -> Pebble DB for [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516).
+ * Complete work on Badger -> Pebble DB for [Chunk Data pack Pruner](https://github.com/onflow/flow-go/issues/6516).
 --- 
 
 ### Mainnet Uptime - Last 14 days (03/07/25 to 03/20/25) \[Vishal]
@@ -135,13 +135,13 @@ Cycle Objective(s):
 * Address vectors which risk network downtime
   1. Operationalize EFM Recovery [DONE]
   2. Protocol level HCU [IN PROGRESS] 
-* EVM Gateway phase 2 [IN PROGRESS]
+* EVM Gateway phase 2 (Pectra & Soft finality Prod) [IN PROGRESS]
 * Support full spork history across HCU version boundaries (PoC) [BLOCKED]
 * Faster transaction results to improve user experience [DONE]
 * Add passkey support: Protocol design and scoping [DONE]
 * Furthering permissionless participation
   1. Proof of Possession [DONE]
-  2. KR2: SPoCK Research [PAUSED]
+  2. KR2: SPoCK Research [IN PROGRESS]
 
 **Done last sprint**
 * <ins>Data Availability</ins>
@@ -159,7 +159,7 @@ Cycle Objective(s):
     - [[Access] Data providers should wrap context.Canceled error](https://github.com/onflow/flow-go/issues/7040)
   
     Started:
-    - [[Access] Started dive into WIP Optimistic Syncing document]
+    - [Access] Started dive into WIP Optimistic Syncing document
 
 * <ins>Malleability</ins>
   - KROK Team
@@ -187,16 +187,33 @@ Cycle Objective(s):
     - [[Malleability B] ResultApproval](https://github.com/onflow/flow-go/issues/6652)
     - [[Malleability] Fix ID misuse in ExecutableBlock type](https://github.com/onflow/flow-go/issues/6672)
     - [[Malleability] Fix remaining usages of the mempool/herocache structures that now rely on generics](https://github.com/onflow/flow-go/issues/7076)
+      
+  - [Finished implementation of malleability checker](https://github.com/onflow/flow-go/pull/7069)
+  - [Kicking off discussion for broad code base change](https://github.com/onflow/flow-go/issues/7164)
+  - Addressed malleability for core structures: [1](https://github.com/onflow/flow-go/pull/7150), [2](https://github.com/onflow/flow-go/pull/7130), [3](https://github.com/onflow/flow-go/pull/7129)
+  - Refactoring block proposals as part of Header malleability
+  - KROK PR reviews
    
 * <ins>EFM and Protocol HCU</ins>
-  -
+  - [EFM Recovery Runbook](https://www.notion.so/flowfoundation/Runbook-Epoch-Fallback-Mode-EFM-Recovery-1b41aee1232480609b0ee27df8483c69?pvs=4)
 
 * <ins>EVM Gateway</ins>
   - Continue integration of Ethereum Pectra updates
 
 * <ins>Cryptography</ins>
+  - Webauthn/passkeys:
+     - [Webauthn credential support FLIP submitted](https://github.com/onflow/flips/pull/320) and under community review
+     - Added more tests (using browsers with regards to RP ID) and corresponding FLIP updates
+  - Crypto package:
+     - [Update internal dependency of Flow crypto](https://github.com/onflow/crypto/pull/21)
+     - [Use Pippenger's multi-scalar multiplication](https://github.com/onflow/crypto/pull/23) for faster block proposal
+  - SPoCK aggregation
+     - Pick up research notes from last year
 
 * <ins>Protocol misc</ins>
+  - Mainnet consensus timeouts debugging & recovery incident
+  - Mainnet Rolling Upgrade to v0.39
+  - Started [Execution Stack Versioning in Protocol State](https://github.com/onflow/flow-go/issues/6999)
    
 **This sprint**
 
@@ -212,14 +229,24 @@ Cycle Objective(s):
    - [[Malleability B] ResultApproval](https://github.com/onflow/flow-go/issues/6652)
    - [[Malleability] Fix ID misuse in ExecutableBlock type](https://github.com/onflow/flow-go/issues/6672)
    - [Malleability] Fix remaining usages of the mempool/herocache structures that now rely on generics](https://github.com/onflow/flow-go/issues/7076)
+ - Continue [Address ambiguity between identifier and hash of an entity](https://github.com/onflow/flow-go/issues/7164)
+ - Continuing block proposal refactor
+ - Continue KROK PR reviews
     
 
 * <ins>EVM Gateway</ins>
   - Continue integration of Ethereum Pectra updates
-  - Update Quicknode and Alchemy GW nodes to use stopgap soft-finality version
+  - Update Quicknode and Alchemy GW nodes to use interim soft-finality version
 
 * <ins>Cryptography</ins>
-  -       
+  - Webauthn/passkeys:
+    - more wallet team syncs
+  - Protocol working group Passkeys FLIP presentation
+  - Return to SPoCK aggregation      
+
+* <ins>Protocol misc</ins>
+  - Mainnet Protocol State HCU upgrade (contingent to sufficient operators upgrading nodes)
+  - Continue [Execution Stack Versioning in Protocol State](https://github.com/onflow/flow-go/issues/6999)
 
 **On Hold**
 
@@ -240,11 +267,15 @@ Cycle Objective(s):
 - Bring liquidity and and kick start ecosystem effects
 
 **Done last sprint**
+ - Iterated on DeFi vision and Cadence protocol ideas
+ - Assess apprach for orphaned WFLOW liquidity recovery
+ - More Market contract audit completed
+ - Started onboarding for Defined.fi
 
 **This sprint**
- - Continue DeFi vision proposal doc
- - Support/track contract audit for More Markets product launch
- - Support/track second contract audit for Kittypunch with Zenith
+ - Continue DeFi vision product/tech discussions with Roham & Dete
+ - Start development to migrate orphaned WFLOW liquidity
+ - DeBridge (intent based cross-chain bridge) will go live on Mainnet Mar 25/26th
 
 **On Hold**
 - N/A
