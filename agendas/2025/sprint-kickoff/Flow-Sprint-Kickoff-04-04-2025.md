@@ -2,6 +2,9 @@
 
  ### Team Wins 🎉
  * DeBridge (intent based cross-chain bridge) went live on 3/31
+ * [CCF 1.0 spec released](https://github.com/onflow/ccf/releases/tag/v1.0.0)
+ * Completed [Execution performance loader](https://github.com/onflow/flow-execution-effort-estimation/issues/9)
+ * Chunk data-pack pruning enabled on Mainnet EN
 
 ---
 
@@ -69,6 +72,47 @@ Q2 2025 Cycle Objective(s):
 
 **Done last sprint**
 
+**Cadence Language**
+- [Compiler Milestone 3](https://github.com/onflow/cadence/issues/3769)
+    - [Sync `feature/compiler` branch with the updated master branch](https://github.com/onflow/cadence/pull/3837)
+    - [Port non- compiler/vm changes from `feature/compiler` branch](https://github.com/onflow/cadence/pull/3836)
+    - [Add stdlib functions for `Account.Capabilities` and `Account.StorageCapabilities`](https://github.com/onflow/cadence/pull/3832)
+    - [Add remaining `Account.Storage` stdlib functions to the VM](https://github.com/onflow/cadence/pull/3831)
+    - [Add type construction and conversion standard-library functions](https://github.com/onflow/cadence/pull/3829)
+    - [Refactor type casting/conversions and re-use in both interpreter and VM](https://github.com/onflow/cadence/issues/3770)
+    - [Sync with master](https://github.com/onflow/cadence/pull/3820)
+    - [Make existing interpreter values reusable in VM](https://github.com/onflow/cadence/issues/3693)
+        - [Re-use interpreter's account related stdlibs in vm](https://github.com/onflow/cadence/pull/3827)
+        - [Decouple `interpreter.Invocation` from the `Interpreter` instance](https://github.com/onflow/cadence/pull/3826)
+        - [Re-use interpreter.Value in the VM](https://github.com/onflow/cadence/pull/3825)
+        - [Decouple `ValueIndexableValue` interface from the interpreter](https://github.com/onflow/cadence/pull/3824)
+        - [Decouple `GetMember` and `SetMember` methods of `interpreter.Value` from the interpreter](https://github.com/onflow/cadence/pull/3822)
+        - [Decouple `Value.MeteredString` method from the interpreter](https://github.com/onflow/cadence/pull/3821)
+        - [Decouple `value.Transfer` method from the interpreter](https://github.com/onflow/cadence/pull/3819)
+        - [Refactor `vm.Value` and related operations to be independent of the `vm.Config`](https://github.com/onflow/cadence/pull/3817)
+    - [Conditional returns compilation](https://github.com/onflow/cadence/issues/3772)
+    - Testing
+        - [Fix FT test in vm](https://github.com/onflow/cadence/pull/3830)
+- internal bugfix: [1](https://github.com/onflow/cadence-internal/pull/328), [2](https://github.com/onflow/cadence-internal/pull/324), [3](https://github.com/onflow/cadence-internal/pull/323), [4](https://github.com/onflow/cadence-internal/pull/320), [5](https://github.com/onflow/cadence-internal/pull/316)
+
+**Cadence Execution**
+- dependency for execution effort Calibration: [TPS loader](Create a performance loader)
+    - [Add metrics and fix duration flag](https://github.com/onflow/flow-execution-effort-estimation/pull/29)
+    - [Fix expiry and add convinience for running on other networks besides localnet](https://github.com/onflow/flow-execution-effort-estimation/pull/24)
+- [CCF 1.0 spec release](https://github.com/onflow/flow-go/issues/6764)
+    - [Clarify a security consideration and link to Section 1.2 of RFC 8949](https://github.com/fxamacker/ccf_draft/pull/104)
+    - [Improve text for CCF Specification 1.0.0](https://github.com/fxamacker/ccf_draft/pull/103)
+    - [Sync with onflow/ccf unmerged PR 7 commit 6703acb](https://github.com/fxamacker/ccf_draft/pull/102)
+    - [Update to CCF Specification 1.0](https://github.com/onflow/ccf/pull/7)
+- CBOR
+    - Performance improvement: [Optimize internal calls to UnmarshalCBOR() for ByteString, RawTag, and SimpleValue](https://github.com/fxamacker/cbor/issues/646)
+    - bugfix: [Port updated error handling in RawTag.UnmarshalCBOR(), etc. to match cbor.Unmarshal()](https://github.com/fxamacker/cbor/pull/645)
+    - [Sync feature/stream-mode branch with v2.7.0](https://github.com/fxamacker/cbor/pull/640)
+- Docs
+    - [Update docs for cbor v2.8.0](https://github.com/fxamacker/cbor/pull/649)
+- Bugfix
+    - profiler crashing EN: [disable block profiler](https://github.com/onflow/flow-go/pull/7215)
+
 **This sprint**
 
 - Cadence Language
@@ -78,10 +122,10 @@ Q2 2025 Cycle Objective(s):
 - Cadence Execution
   - Continue new Trie research
   - Badger -> Pebble migration [Milestone 2](https://github.com/onflow/flow-go/issues/6515): [DB access refactoring for low-risk data on EN, VN and AN](https://github.com/onflow/flow-go/issues/6527)
-  - Complete [Execution performance loader](https://github.com/onflow/flow-execution-effort-estimation/issues/9)
-  - Complete performance deep-dive: analyze CPU profile produced on migration testnet with new TPS loader to identify new bottlenecks / opportunities for further optimizations.
+  - Complete performance deep-dive: analyze CPU profile produced on migration testnet * Mainnet with new TPS loader to identify new bottlenecks / opportunities for further optimizations.
+    - Investigate slowness with approvals enabled
   - Continue supporting upgrade of EVM core to "Pectra" release
-  - Start work on [Execution effort calibration](https://github.com/onflow/flow-go/issues/5598) (depnds on the [TPS loader](https://github.com/onflow/flow-execution-effort-estimation/issues/9))
+  - Start [Migration of EN version beacon to Dyn. Prot. State](https://github.com/onflow/flow-go/issues/6788)
 
 **On Hold**
 - [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
