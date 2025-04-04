@@ -309,19 +309,19 @@ Cycle Objective(s):
 **Cycle Objective(s):**
 
 KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 1 per week on a 4-week rolling average.
- - Current (Mar 21): 3.25/week
+ - Current (Apr 4): 4.25/week
 
 **Done last sprint**
 
+- Migration from SimpleHash to Moralis
+
+Extension:
+  - Support 1 password across all profiles on Extension
 
 **This sprint**
 
 - Automatically support new token launches within the wallet - new verified/unverified token feature
 - Support paying VM bridge fee during transaction
-- Migration from SimpleHash to Moralis
-
-- Extension:
-  - Support 1 password across all profiles on Extension
 
 - iOS/Android:
   - New token display format for small values
