@@ -355,12 +355,14 @@ Cycle Objective(s):
 4. Build and ship a new dashboard to provide node operators with real-time access to staking, epoch-related and other relevant data.
 
 **Done last sprint**
-
-**This sprint**
-
   * Contract signing with Alchemy.
   * Contract review with Tibles, Quicknode.
   * Flipside 5 SNs onboarding.
-  * BlockDaemon 5 SNs onboarding.
+  * BlockDaemon 5 SNs onboarding
+    
+**This sprint**
+  * BlockDaemon 10 SNs onboarding.
+  * Alchemy node onboarding.
+  * QuickNode Contract review and signing.
 
 ---
