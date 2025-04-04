@@ -203,8 +203,8 @@ Cycle Objective(s):
     - [[Malleability] Fix ID misuse in IncorporatedResultSeal type](https://github.com/onflow/flow-go/issues/6705)
     - [[Malleability] MockEntity](https://github.com/onflow/flow-go/issues/6680)
     - [[Malleability] Fix ID implementation of IncorporatedResult type](https://github.com/onflow/flow-go/issues/6675)
-    - [[Malleability B] Chunk](https://github.com/onflow/flow-go/issues/6659)  
-    
+    - [[Malleability B] Chunk](https://github.com/onflow/flow-go/issues/6659)
+
     In Review:
     - [[Malleability C] ChunkDataPack](https://github.com/onflow/flow-go/issues/6720)
 
@@ -213,7 +213,7 @@ Cycle Objective(s):
     - [[Malleability A] TimeoutObject](https://github.com/onflow/flow-go/issues/6690)
 
 * <ins>EFM and Protocol HCU</ins>
-  
+
 * <ins>EVM Gateway</ins>
   - Continue integration of Ethereum Pectra updates
 
@@ -226,7 +226,7 @@ Cycle Objective(s):
 * <ins>Data Availability</ins>
  - KROK Team:
    - Support Data availibility PR reviews
-   - Finish started tasks, discuss approaches for some parts of optimistic sync series of tasks, continue development 
+   - Finish started tasks, discuss approaches for some parts of optimistic sync series of tasks, continue development
 
 * <ins>Malleability</ins>
  - Support KROK malleability PR reviews
@@ -277,15 +277,21 @@ Cycle Objective(s):
 ### **Developer Tooling** \[Chase]
 
 Cycle Objective(s):
-- Lower the barrier to Cadence adoption and streamline EVM interoperability. [OKR](https://github.com/onflow/flow-okrs/issues/86)
+- Q1: Lower the barrier to Cadence adoption and streamline EVM interoperability. [OKR](https://github.com/onflow/flow-okrs/issues/86)
+- Q2: Improve the quality of developer engagement by optimizing Flow’s core surfaces and making it easier for developers to evaluate and explore the ecosystem.
 
 **Done last sprint**
 
+- Finished coding Flow Kit library (React Hooks) and released alpha
+- Released soft finality on FCL and updated documentation
+- Integrated Streaming API in FCL and added documentation
 
 **This sprint**
 
-- Finish coding the Flow React Hooks Library
-- Start documentation for the Flow React Hooks Library
+- Fix miscellaneous issues in the Kit alpha
+- Write documentation for the Kit library
+- Address TypeScript issues in FCL
+- Research solutions for Metamask interacting with Cadence
 
 ---
 
@@ -359,7 +365,7 @@ Cycle Objective(s):
   * Contract review with Tibles, Quicknode.
   * Flipside 5 SNs onboarding.
   * BlockDaemon 5 SNs onboarding
-    
+
 **This sprint**
   * BlockDaemon 10 SNs onboarding.
   * Alchemy node onboarding.
