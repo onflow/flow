@@ -5,6 +5,8 @@
  * [CCF 1.0 spec released](https://github.com/onflow/ccf/releases/tag/v1.0.0)
  * Completed [Execution performance loader](https://github.com/onflow/flow-execution-effort-estimation/issues/9)
  * Chunk data-pack pruning enabled on Mainnet EN
+ * Protcol upgrade on mainnet with zero-downtime completed.
+ * Epoch Fallback Mode recovery mechanism is enabled on mainnet.
 
 ---
 
@@ -29,8 +31,8 @@
 | HCU                    | 2/18/2025 |            |           | 5         |              | 5      |               |
 | HCU                    | 2/18/2025 |            |           | 5         |              | 5      |               |
 | Total downtime in mins |           | 210        | 210       | 225       | 210          | 225    |               |
-| YTD (03/20/25) SLA     |           | 99.81%     | 99.81%    | 99.80%    | 99.81%       | 99.80% |               |
-| SLA for 2025           |           | 99.96%     | 99.96%    | 99.96%    | 99.96%       | 99.96% |               |
+| YTD (03/20/25) SLA     |           | 99.84%     | 99.84%    | 99.83%    | 99.84%       | 99.83% |               |
+| SLA for 2025           |           | 99.96%     | 99.96%    | 99.96%    | 100%       | 99.96% |               |
 
 #### Incidents
 - P0 and P1: None
@@ -52,11 +54,9 @@
 - Two new FLIPs
 
 ### Key Release Dates & Breaking Changes
-* Rolling upgrade to `v0.39.0`
-  - Mainnet:
-     - FF nodes have been updated
-     - Operator nodes will be updated by 3/31
-     - Protocol upgrade - first week of April
+* HCU
+   - Tesnet: Wednesday, 9th April
+   - Mainnet: Thursday, 10th April
 
 ---
 
