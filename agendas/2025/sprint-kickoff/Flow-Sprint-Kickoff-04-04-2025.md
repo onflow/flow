@@ -282,16 +282,16 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-- Finished coding Flow Kit library (React Hooks) and released alpha
-- Released soft finality on FCL and updated documentation
-- Integrated Streaming API in FCL and added documentation
+- Finished coding the Flow Kit library (React Hooks) and released the alpha version
+- Released soft finality support in FCL and updated the documentation
+- Integrated the Streaming API into FCL and added documentation
 
 **This sprint**
 
 - Fix miscellaneous issues in the Kit alpha
 - Write documentation for the Kit library
 - Address TypeScript issues in FCL
-- Research solutions for Metamask interacting with Cadence
+- Research solutions for enabling Metamask to interact with Cadence
 
 ---
 
