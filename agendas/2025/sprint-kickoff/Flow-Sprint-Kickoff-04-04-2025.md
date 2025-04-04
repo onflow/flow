@@ -140,12 +140,9 @@ Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
 * Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * Address vectors which risk network downtime
-  1. Operationalize EFM Recovery [DONE]
-  2. Protocol level HCU [IN PROGRESS]
+  1. Protocol level HCU [DONE]
 * EVM Gateway phase 2 (Pectra & Soft finality Prod) [IN PROGRESS]
 * Support full spork history across HCU version boundaries (PoC) [BLOCKED]
-* Faster transaction results to improve user experience [DONE]
-* Add passkey support: Protocol design and scoping [DONE]
 * Furthering permissionless participation
   1. Proof of Possession [DONE]
   2. KR2: SPoCK Research [IN PROGRESS]
