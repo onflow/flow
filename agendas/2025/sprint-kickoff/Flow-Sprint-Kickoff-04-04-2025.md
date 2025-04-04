@@ -233,13 +233,13 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability</ins>
- - General release of websockets 
+  - General release of websockets 
 
 * <ins>Malleability</ins>
- - Support KROK malleability PR reviews
- - Continue Malleability tasks
- - KROK Team:
-   - Finish active tasks, pick up few tasks that are left for malleability, review implementation
+  - Support KROK malleability PR reviews
+  - Continue Malleability tasks
+  - KROK Team:
+    - Finish active tasks, pick up few tasks that are left for malleability, review implementation
 
 * <ins>EVM Gateway</ins>
   - Start merging Ethereum Pectra updates
