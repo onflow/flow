@@ -5,8 +5,8 @@
  * [CCF 1.0 spec released](https://github.com/onflow/ccf/releases/tag/v1.0.0)
  * Completed [Execution performance loader](https://github.com/onflow/flow-execution-effort-estimation/issues/9)
  * Chunk data-pack pruning enabled on Mainnet EN
- * Protcol upgrade on mainnet with zero-downtime completed.
- * Epoch Fallback Mode recovery mechanism is enabled on mainnet.
+ * Protocol upgrade on mainnet with zero-downtime completed
+ * Epoch Fallback Mode recovery mechanism is enabled on mainnet
 
 ---
 
@@ -174,6 +174,12 @@ Cycle Objective(s):
     - [[DataAvailability] Implement processing pipeline state machine](https://github.com/onflow/flow-go/issues/7201)
 
 * <ins>Malleability</ins>
+  - Working on [proposal for updating flow.Entity interface](https://github.com/onflow/flow-go/issues/7164)
+  - Continued work on [Header malleability changes](https://github.com/onflow/flow-go/issues/6656)
+  - [Execution Receipt](https://github.com/onflow/flow-go/issues/6653)
+  - [Extended malleability checker](https://github.com/onflow/flow-go/pull/7237)
+  - Completed first PR review for Chunk
+  - Support KROK PR reviews
   - KROK Team
 
     Done:
@@ -220,21 +226,18 @@ Cycle Objective(s):
 * <ins>Cryptography</ins>
 
 * <ins>Protocol misc</ins>
-
+  - Mainnet Protocol State Version Upgrade
+  - [Noisy logs audit](https://github.com/onflow/flow-go/pull/7174)
+    
 **This sprint**
 
 * <ins>Data Availability</ins>
- - KROK Team:
-   - Support Data availibility PR reviews
-   - Finish started tasks, discuss approaches for some parts of optimistic sync series of tasks, continue development 
+ - General release of websockets 
 
 * <ins>Malleability</ins>
  - Support KROK malleability PR reviews
  - KROK Team:
-   - Support KROK malleability PR reviews
    - Finish active tasks, pick up few tasks that are left for malleability, review implementation
-
-
 
 * <ins>EVM Gateway</ins>
   - Start merging Ethereum Pectra updates
@@ -263,10 +266,11 @@ Cycle Objective(s):
 
 **Done last sprint**
  - DeBridge (intent based cross-chain bridge) went live on 3/31
+ - Resolved product scope for first priority DeFi component, Cadence smart vault
 
 **This sprint**
- - Continue DeFi vision product/tech discussions with Roham & Dete
- - Start development to migrate orphaned WFLOW liquidity
+ - Prepare first draft design/PoC interfaces for Cadence smart vault
+ - Complete WFLOW liquidity migration
 
 **On Hold**
 - N/A
