@@ -224,7 +224,16 @@ Cycle Objective(s):
   - Continue integration of Ethereum Pectra updates
 
 * <ins>Cryptography</ins>
-  - Coming back to Spock Research
+  - Webauthn/passkeys:
+    - FLIP presented at the protocol WG - new discussion with Janez
+    - Added new tests to confirm backward compatibility and check RLP edge case
+    - Added new FLIP details about serializing the new signature format
+  - Crypto package:
+    - Integrate a breaking change in an internal dependency (fixes an issue when building in Go1.24)
+    - New version tagged and imported in Flow repos
+    - Started a proper Go1.24 integration (requires some refactoring)
+  - SPoCK aggregation
+    - Focus on zk extractor and simulator in the KOSK case
 
 * <ins>Protocol misc</ins>
   - Mainnet Protocol State Version Upgrade
@@ -245,7 +254,8 @@ Cycle Objective(s):
   - Start merging Ethereum Pectra updates
 
 * <ins>Cryptography</ins>
-  - Spock research
+  - Finalize the crypto 1.24 integration
+  - SPoCK aggregation
 
 **On Hold**
 
@@ -255,7 +265,7 @@ Cycle Objective(s):
 * [[EPIC] Malleability C](https://github.com/onflow/flow-go/issues/6647)
 * [[EPIC] Malleability: Herocache](https://github.com/onflow/flow-go/issues/6646)
 * [[EPIC] EVM Gateway Phase 2](https://github.com/onflow/flow-evm-gateway/issues/700)
-* [[EPIC] Access Node supports soft-finality updates]
+* [[EPIC] Access Node supports soft-finality updates](https://github.com/onflow/flow-go/issues/6646)
 
 ---
 
