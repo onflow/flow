@@ -224,6 +224,7 @@ Cycle Objective(s):
   - Continue integration of Ethereum Pectra updates
 
 * <ins>Cryptography</ins>
+  - Coming back to Spock Research
 
 * <ins>Protocol misc</ins>
   - Mainnet Protocol State Version Upgrade
@@ -236,6 +237,7 @@ Cycle Objective(s):
 
 * <ins>Malleability</ins>
  - Support KROK malleability PR reviews
+ - Continue Malleability tasks
  - KROK Team:
    - Finish active tasks, pick up few tasks that are left for malleability, review implementation
 
@@ -243,8 +245,7 @@ Cycle Objective(s):
   - Start merging Ethereum Pectra updates
 
 * <ins>Cryptography</ins>
-
-* <ins>Protocol misc</ins>
+  - Spock research
 
 **On Hold**
 
