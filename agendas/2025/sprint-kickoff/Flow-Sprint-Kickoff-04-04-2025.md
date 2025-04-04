@@ -155,21 +155,62 @@ Cycle Objective(s):
   - KROK Team
 
     Done:
+    - [[Access] The TODO Context should be changed in WebSocket Handler](https://github.com/onflow/flow-go/issues/7109)
+    - [[Access] Data providers should wrap context.Canceled error](https://github.com/onflow/flow-go/issues/7040)
+    - [[Access] Move data providers models to data provider package](https://github.com/onflow/flow-go/issues/7039)
+    - [[Access] Change max subscription error code](https://github.com/onflow/flow-go/issues/7177)
+    - [[Access] Implement integration test for new websockets](https://github.com/onflow/flow-go/issues/6907)
 
     In Review:
+    - [[DataAvailability] Create in-memory Transactions storage implementation](https://github.com/onflow/flow-go/issues/7188)
+    - [[DataAvailability] Create in-memory LightTransactionResults storage implementation](https://github.com/onflow/flow-go/issues/7184)
+    - [[DataAvailability] Create in-memory TransactionResultErrorMessages storage implementation](https://github.com/onflow/flow-go/issues/7185)
+    - [[DataAvailability] Create in-memory Events storage implementation](https://github.com/onflow/flow-go/issues/7183)
+    - [[DataAvailability] Create in-memory Registers storage implementation](https://github.com/onflow/flow-go/issues/7186)
+    - [[DataAvailability] Create in-memory Collections storage implementation](https://github.com/onflow/flow-go/issues/7187)
 
-    Started:
+    In Progress:
+    - [[DataAvailability] Implement Persister interface](https://github.com/onflow/flow-go/issues/7198)
+    - [[DataAvailability] Implement processing pipeline state machine](https://github.com/onflow/flow-go/issues/7201)
 
 * <ins>Malleability</ins>
   - KROK Team
 
     Done:
-
+    - [[Malleability] appSpecificScoreRecordEntity](https://github.com/onflow/flow-go/issues/6663)
+    - [[Malleability] Fix ID misuse in chunkRequestStatus type](https://github.com/onflow/flow-go/issues/6708)
+    - [[Malleability] rpcSentEntity](https://github.com/onflow/flow-go/issues/6687)
+    - [[Malleability] Fix ID misuse in receiveCacheEntry type](https://github.com/onflow/flow-go/issues/6685)
+    - [[Malleability] Fix ID misuse in ipEntity type](https://github.com/onflow/flow-go/issues/6710)
+    - [[Malleability] Fix ID misuse in txtEntity type](https://github.com/onflow/flow-go/issues/6714)
+    - [[Malleability] Fix ID misuse in UnicastConfigEntity type](https://github.com/onflow/flow-go/issues/6691)
+    - [[Malleability] Fix ID misuse in duplicateMessagesCounterEntity type](https://github.com/onflow/flow-go/issues/6670)
+    - [[Malleability] Fix ID misuse in gossipsubSpamRecordEntity type](https://github.com/onflow/flow-go/issues/6673)
+    - [[Malleability] Fix misuse in WrappedEntity type](https://github.com/onflow/flow-go/issues/6693)
+    - [[Malleability] Fix ID misuse in disallowListCacheEntity type](https://github.com/onflow/flow-go/issues/6669)
+    - [[Malleability] Fix ID misuse in ProtocolSpamRecordEntity type](https://github.com/onflow/flow-go/issues/6683)
+    - [[Malleability] BlockExecutionDataEntity](https://github.com/onflow/flow-go/issues/6657)
+    - [[Malleability] Fix ID misuse in MessageEntity type](https://github.com/onflow/flow-go/issues/6712)
+    - [[Malleability] Fix ID misuse in ClusterPrefixedMessagesReceivedRecord type](https://github.com/onflow/flow-go/issues/6668)
+    - [[Malleability] Fix ID misuse in SubscriptionRecordEntity type](https://github.com/onflow/flow-go/issues/6713)
+    - [[Malleability B] ResultApproval](https://github.com/onflow/flow-go/issues/6652)
+    - [[Malleability] Fix ID misuse in ExecutableBlock type](https://github.com/onflow/flow-go/issues/6672)
+    - [[Malleability] Fix remaining usages of the mempool/herocache structures that now rely on generics](https://github.com/onflow/flow-go/issues/7076)
+    - [[Malleability] Update herocache to use generics and implement BackData](https://github.com/onflow/flow-go/issues/7074)
+    - [[Malleability] Fix ID misuse in Queue type](https://github.com/onflow/flow-go/issues/6707)
+    - [[Malleability] ApprovalMapEntity](https://github.com/onflow/flow-go/issues/6662)
+    - [[Malleability] Follow up for fixing root interface implementations in the stdmap package](https://github.com/onflow/flow-go/issues/7166)
+    - [[Malleability] Fix ID misuse in IncorporatedResultSeal type](https://github.com/onflow/flow-go/issues/6705)
+    - [[Malleability] MockEntity](https://github.com/onflow/flow-go/issues/6680)
+    - [[Malleability] Fix ID implementation of IncorporatedResult type](https://github.com/onflow/flow-go/issues/6675)
+    - [[Malleability B] Chunk](https://github.com/onflow/flow-go/issues/6659)  
+    
     In Review:
+    - [[Malleability C] ChunkDataPack](https://github.com/onflow/flow-go/issues/6720)
 
-    Started:
-
-  - KROK PR reviews
+    In Progress:
+    - [[Malleability C] CollectionGuarantee](https://github.com/onflow/flow-go/issues/6722)
+    - [[Malleability A] TimeoutObject](https://github.com/onflow/flow-go/issues/6690)
 
 * <ins>EFM and Protocol HCU</ins>
   
@@ -184,10 +225,15 @@ Cycle Objective(s):
 
 * <ins>Data Availability</ins>
  - KROK Team:
+   - Support Data availibility PR reviews
+   - Finish started tasks, discuss approaches for some parts of optimistic sync series of tasks, continue development 
 
 * <ins>Malleability</ins>
  - Support KROK malleability PR reviews
  - KROK Team:
+   - Support KROK malleability PR reviews
+   - Finish active tasks, pick up few tasks that are left for malleability, review implementation
+
 
 
 * <ins>EVM Gateway</ins>
