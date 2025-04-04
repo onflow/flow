@@ -5,8 +5,8 @@
  * [CCF 1.0 spec released](https://github.com/onflow/ccf/releases/tag/v1.0.0)
  * Completed [Execution performance loader](https://github.com/onflow/flow-execution-effort-estimation/issues/9)
  * Chunk data-pack pruning enabled on Mainnet EN
- * Protcol upgrade on mainnet with zero-downtime completed.
- * Epoch Fallback Mode recovery mechanism is enabled on mainnet.
+ * Protocol upgrade on mainnet with zero-downtime completed
+ * Epoch Fallback Mode recovery mechanism is enabled on mainnet
 
 ---
 
@@ -174,6 +174,12 @@ Cycle Objective(s):
     - [[DataAvailability] Implement processing pipeline state machine](https://github.com/onflow/flow-go/issues/7201)
 
 * <ins>Malleability</ins>
+  - Working on [proposal for updating flow.Entity interface](https://github.com/onflow/flow-go/issues/7164)
+  - Continued work on [Header malleability changes](https://github.com/onflow/flow-go/issues/6656)
+  - [Execution Receipt](https://github.com/onflow/flow-go/issues/6653)
+  - [Extended malleability checker](https://github.com/onflow/flow-go/pull/7237)
+  - Completed first PR review for Chunk
+  - Support KROK PR reviews
   - KROK Team
 
     Done:
@@ -218,9 +224,21 @@ Cycle Objective(s):
   - Continue integration of Ethereum Pectra updates
 
 * <ins>Cryptography</ins>
+  - Webauthn/passkeys:
+    - FLIP presented at the protocol WG - new discussion with Janez
+    - Added new tests to confirm backward compatibility and check RLP edge case
+    - Added new FLIP details about serializing the new signature format
+  - Crypto package:
+    - Integrate a breaking change in an internal dependency (fixes an issue when building in Go1.24)
+    - New version tagged and imported in Flow repos
+    - Started a proper Go1.24 integration (requires some refactoring)
+  - SPoCK aggregation
+    - Focus on zk extractor and simulator in the KOSK case
 
 * <ins>Protocol misc</ins>
-
+  - Mainnet Protocol State Version Upgrade
+  - [Noisy logs audit](https://github.com/onflow/flow-go/pull/7174)
+    
 **This sprint**
 
 * <ins>Data Availability</ins>
@@ -229,19 +247,17 @@ Cycle Objective(s):
    - Finish started tasks, discuss approaches for some parts of optimistic sync series of tasks, continue development
 
 * <ins>Malleability</ins>
- - Support KROK malleability PR reviews
- - KROK Team:
-   - Support KROK malleability PR reviews
-   - Finish active tasks, pick up few tasks that are left for malleability, review implementation
-
-
+  - Support KROK malleability PR reviews
+  - Continue Malleability tasks
+  - KROK Team:
+    - Finish active tasks, pick up few tasks that are left for malleability, review implementation
 
 * <ins>EVM Gateway</ins>
   - Start merging Ethereum Pectra updates
 
 * <ins>Cryptography</ins>
-
-* <ins>Protocol misc</ins>
+  - Finalize the crypto 1.24 integration
+  - SPoCK aggregation
 
 **On Hold**
 
@@ -251,7 +267,7 @@ Cycle Objective(s):
 * [[EPIC] Malleability C](https://github.com/onflow/flow-go/issues/6647)
 * [[EPIC] Malleability: Herocache](https://github.com/onflow/flow-go/issues/6646)
 * [[EPIC] EVM Gateway Phase 2](https://github.com/onflow/flow-evm-gateway/issues/700)
-* [[EPIC] Access Node supports soft-finality updates]
+* [[EPIC] Access Node supports soft-finality updates](https://github.com/onflow/flow-go/issues/6646)
 
 ---
 
@@ -263,10 +279,11 @@ Cycle Objective(s):
 
 **Done last sprint**
  - DeBridge (intent based cross-chain bridge) went live on 3/31
+ - Resolved product scope for first priority DeFi component, Cadence smart vault
 
 **This sprint**
- - Continue DeFi vision product/tech discussions with Roham & Dete
- - Start development to migrate orphaned WFLOW liquidity
+ - Prepare first draft design/PoC interfaces for Cadence smart vault
+ - Complete WFLOW liquidity migration
 
 **On Hold**
 - N/A
@@ -333,22 +350,57 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
 
-**Observability**
+**Automation**
+* [Fix skipping genesis upload during sporks & migration network deployments](https://github.com/onflow/ff-sre-infrastructure/issues/217) 
 
-**Deployment Prep**
+**Node Hosting**
+* [Upgrade MN AN disk sizes](https://github.com/onflow/ff-sre-infrastructure/pull/212)
 
-**Key Management**
+**Cost Optimization**
+* [Identify & Resolve Increase in Log Query Costs](https://github.com/onflow/ff-sre-infrastructure/issues/236)
+* [Create documentation for reviewing log query usage](https://github.com/onflow/ff-sre-infrastructure/issues/214)
+
+**Terraform Module Consolidation**
+* [Add release workflow](https://github.com/onflow/ff-terraform-modules/pull/2)
+
+**Flow Wallet**
+* [Renew cert for Flow Wallet OpenAPI service](https://github.com/onflow/ff-sre-infrastructure/issues/241)
+* [Update billing accounts for Flow Wallet GCP Projects](https://github.com/onflow/ff-sre-infrastructure/issues/242)
 
 **This sprint**
-  * Consolidate Terraform Network Modules into a Single Module
-  * Migration of “Live” Networks to the New Module
-  * Document and Automate New Tagging Strategy
 
-**On Hold**
-  * [Improve Synthetic Monitoring Coverage](https://github.com/onflow/ff-sre-infrastructure/issues/108)
+**Cost Optimization**
+* [Deprecate Canary Network](https://github.com/onflow/ff-sre-infrastructure/issues/218)
+* [Create standard for creating & destroying migration networks](https://github.com/onflow/ff-sre-infrastructure/issues/239)
+
+**Docker Logging Resliience**
+* [Update DL Nodes with non-blocking docker driver](https://github.com/onflow/ff-sre-infrastructure/issues/238)
+* [Evaluate & design solution to address limitations of docker logging driver](https://github.com/onflow/ff-sre-infrastructure/issues/240)
+
+**Private Image Builds**
+* [Update the terraform module for the migration networks to support pulling private images](https://github.com/onflow/ff-sre-infrastructure/issues/230)
+* [Create GitHub Action Workflow for promoting docker images](https://github.com/onflow/ff-sre-infrastructure/issues/227)
+* [Update Devnet to support pulling private images](https://github.com/onflow/ff-sre-infrastructure/issues/228)
+
+**Terraform Module Consolidation**
+* [Consolidate Terraform Network Modules into a Single Module ](https://github.com/onflow/ff-sre-infrastructure/issues/98)
+* [Migrate “Live” Networks to the New Module](https://github.com/onflow/ff-sre-infrastructure/issues/99)
+* [Create Strategy for Tagging Terraform Modules](https://github.com/onflow/ff-sre-infrastructure/issues/95)
+* [Resolve Conflict from consolidated signle module](https://github.com/onflow/ff-sre-infrastructure/issues/234)
+
+**Flow Wallet Migration**
+* [Create new repo for managing wallet infrastructure](https://github.com/onflow/ff-sre-infrastructure/issues/223)
+* [Document Terraform infra repo creation for Atlantis integration](https://github.com/onflow/ff-sre-infrastructure/issues/224)
+* [Craete Wallet DNS records on flow subdomains](https://github.com/onflow/ff-sre-infrastructure/issues/222)
+
+**Observability**
+* [Re-align manual changes in Grafana with Terraform](https://github.com/onflow/ff-sre-infrastructure/issues/216)
 
 **Active Epics**
-  * [Terraform Module Consolidation](https://github.com/onflow/ff-sre-infrastructure/issues/94)
+* [Cost Optimization & Reduction](https://github.com/onflow/ff-sre-infrastructure/issues/235)
+* [Docker Logging Resilience](https://github.com/onflow/ff-sre-infrastructure/issues/237)
+* [Terraform Module Consolidation](https://github.com/onflow/ff-sre-infrastructure/issues/94)
+* [Support Private Image Builds](https://github.com/orgs/onflow/projects/79/views/1?pane=issue&itemId=104950609&issue=onflow%7Cff-sre-infrastructure%7C225)
 
 ---
 
