@@ -59,7 +59,7 @@ type Configuration struct {
 
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
-		BasePath:      "https://rest-canary.onflow.org/v1/",
+		BasePath:      "https://rest-testnet.onflow.org/v1",
 		DefaultHeader: make(map[string]string),
 		UserAgent:     "Swagger-Codegen/1.0.0/go",
 	}

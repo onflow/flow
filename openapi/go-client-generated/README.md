@@ -17,7 +17,7 @@ import "./swagger"
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://rest-canary.onflow.org/v1/*
+All URIs are relative to *https://rest-testnet.onflow.org/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
