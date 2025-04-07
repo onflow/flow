@@ -3,8 +3,6 @@ info:
   version: "1.0.0"
   title: "Access API"
 servers:
-  - url: https://rest-canary.onflow.org/v1/
-    description: Flow Canary
   - url: https://rest-testnet.onflow.org/v1
     description: Flow Testnet
   - url: https://rest-mainnet.onflow.org/v1
