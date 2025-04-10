@@ -1,6 +1,6 @@
 # {{classname}}
 
-All URIs are relative to *https://rest-canary.onflow.org/v1/*
+All URIs are relative to *https://rest-testnet.onflow.org/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
