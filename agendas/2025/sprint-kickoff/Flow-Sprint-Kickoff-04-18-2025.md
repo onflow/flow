@@ -4,6 +4,7 @@
 
  * Completed Cadence [Compiler Milestone 3](https://github.com/onflow/cadence/issues/3769) - Realistic fungible token transfer.
  * Optimizations found while working on Badger -> Peble storage refactoring, increasing execution throughput by ~15%.
+ * Websocket API live on public endpoint and available through fcl.
 
 ---
 
@@ -359,14 +360,13 @@ Cycle Objective(s):
 4. Build and ship a new dashboard to provide node operators with real-time access to staking, epoch-related and other relevant data.
 
 **Done last sprint**
-  * Contract signing with Alchemy.
-  * Contract review with Tibles, Quicknode.
-  * Flipside 5 SNs onboarding.
-  * BlockDaemon 5 SNs onboarding
+  * BlockDaemon 10 SNs onboarded.
+  * Alchemy 2 SNs onboarded.
+  * Tibles 2 SNs onboarded.
+  * No operator controls 1/3rd or more of the network's consensus nodes
 
 **This sprint**
-  * BlockDaemon 10 SNs onboarding.
-  * Alchemy node onboarding.
-  * QuickNode Contract review and signing.
+
+  * Vishal OOO
 
 ---
