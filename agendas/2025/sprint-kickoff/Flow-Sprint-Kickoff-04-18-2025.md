@@ -1,7 +1,9 @@
 # Overview
 
  ### Team Wins 🎉
- * 
+
+ * Completed Cadence [Compiler Milestone 3](https://github.com/onflow/cadence/issues/3769) - Realistic fungible token transfer.
+ * Optimizations found while working on Badger -> Peble storage refactoring, increasing execution throughput by ~15%.
 
 ---
 
@@ -67,27 +69,75 @@ Q2 2025 Cycle Objective(s):
 **Done last sprint**
 
 **Cadence Language**
+- [Compiler milestone 4 - FVM integration & execution of book-keeping functions](https://github.com/onflow/cadence/issues/3856)
+    - [Separate out the re-usable components of the `vm.Config`](https://github.com/onflow/cadence/pull/3881)
+- [Compiler Milestone 3](https://github.com/onflow/cadence/issues/3769)
+    - [Fix condition compiling](https://github.com/onflow/cadence/pull/3877)
+    - [Improve compilation of static method invocations](https://github.com/onflow/cadence/pull/3876)
+    - [Optimize transfer instructions](https://github.com/onflow/cadence/pull/3875)
+    - [Enable access to last instruction, test codegens](https://github.com/onflow/cadence/pull/3874)
+    - [Fix native function dynamic dispatching](https://github.com/onflow/cadence/pull/3873)
+    - [Support builtin methods for user-defined types](https://github.com/onflow/cadence/pull/3872)
+    - [Improve program printing](https://github.com/onflow/cadence/pull/3871)
+    - [Rename path instruction](https://github.com/onflow/cadence/pull/3870)
+    - [Register common type-bound functions for all builtin types](https://github.com/onflow/cadence/pull/3869)
+    - [Improve program printer](https://github.com/onflow/cadence/pull/3868)
+    - [Run setup account transaction in FT test](https://github.com/onflow/cadence/pull/3867)
+    - [Skip anonymous functions in linker](https://github.com/onflow/cadence/pull/3866)
+    - [Improve compilation of constants](https://github.com/onflow/cadence/pull/3862)
+    - [Make FT transfer VM test realistic](https://github.com/onflow/cadence/issues/3857)
+    - [Implement more builtin types and functions](https://github.com/onflow/cadence/pull/3859)
+    - [Support entitlements in compiler/vm](https://github.com/onflow/cadence/pull/3858)
+    - [Clean up VM tests](https://github.com/onflow/cadence/pull/3853)
+    - [Complete the implementation of vm function values](https://github.com/onflow/cadence/pull/3851)
+    - [Add UUID to resources](https://github.com/onflow/cadence/pull/3850)
+    - [Sync `feature/compiler` with `master`](https://github.com/onflow/cadence/pull/3848)
+    - [Implement closed upvalues in VM](https://github.com/onflow/cadence/pull/3846)
+    - [Make existing interpreter values reusable in VM](https://github.com/onflow/cadence/issues/3693)
+    - [Implement unclosed upvalues in VM](https://github.com/onflow/cadence/pull/3843)
+    - [Compile upvalues](https://github.com/onflow/cadence/pull/3842)
+    - [Work towards implementing closures](https://github.com/onflow/cadence/pull/3840)
+    - [Compile simple inner functions](https://github.com/onflow/cadence/pull/3839)
+    - Testing:
+        - [Test contract `account` and resource `owner` fields](https://github.com/onflow/cadence/pull/3841)
+- Port internal fixes to public repo fter HCU:
+    - [Port v1.3.4 to master](https://github.com/onflow/cadence/pull/3854)
+    - [[v1.3] Port internal v1.3.4-rc.2](https://github.com/onflow/cadence/pull/3852)
+- Internal fixes: [1](https://github.com/onflow/cadence-internal/pull/329)
 
 **Cadence Execution**
-
+- [Migration of Badger to Pebble DB](https://github.com/onflow/flow-go/issues/6515)
+    - bugfixes:
+        - [Discard BadgerDB transaction when iterator is closed](https://github.com/onflow/flow-go/pull/7254)
+        - [Close BadgerDB before db init functions return error](https://github.com/onflow/flow-go/pull/7229)
+    - [Remove old code in `initBadgerDB()`](https://github.com/onflow/flow-go/pull/7230)
+    - [Refactor storage collections for access node](https://github.com/onflow/flow-go/pull/7093)
+- Storage Performance Optimizations:
+    - [Optimize speed & memory for generating db keys (BadgerDB and Pebble)](https://github.com/onflow/flow-go/pull/7243)
+    - [Optimize storing execution receipts in BadgerDB](https://github.com/onflow/flow-go/pull/7238)
+- TPS Loader
+    - [Add PID controller](https://github.com/onflow/flow-execution-effort-estimation/pull/30)
+- HCU dependency updates:
+    - [Update to Cadence v1.3.4 and atree v0.10.0](https://github.com/onflow/flow-go/pull/7261)
+    - [[v0.40] Update to Cadence v1.3.4 and atree v0.10.0](https://github.com/onflow/flow-go/pull/7260)
 
 **This sprint**
 
 - Cadence Language
-  - Bugfix deployemnt
-  - Continue work on the [Compiler Milestone 3](https://github.com/onflow/cadence/issues/3769)
+  - Investigate bug report
+  - Continue work on the [Compiler Milestone 4](https://github.com/onflow/cadence/issues/3856)
 
 - Cadence Execution
-  - Continue new Trie research
-  - Badger -> Pebble migration [Milestone 2](https://github.com/onflow/flow-go/issues/6515): [DB access refactoring for low-risk data on EN, VN and AN](https://github.com/onflow/flow-go/issues/6527)
+  - Complete Badger -> Pebble migration [Milestone 2](https://github.com/onflow/flow-go/issues/6515)
   - Complete performance deep-dive: analyze CPU profile produced on migration testnet * Mainnet with new TPS loader to identify new bottlenecks / opportunities for further optimizations.
-    - Investigate slowness with approvals enabled
+  - Continue new Trie research
+  - Continue work on [Badger -> Pebble DB M3: unblock pruning of Execution, Access and Verification data](https://github.com/onflow/flow-go/issues/7242)
   - Continue supporting upgrade of EVM core to "Pectra" release
-  - Start [Migration of EN version beacon to Dyn. Prot. State](https://github.com/onflow/flow-go/issues/6788)
+  - Start [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
 
 **On Hold**
+- [Migration of EN version beacon to Dyn. Prot. State](https://github.com/onflow/flow-go/issues/6788)
 - [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
-- [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
 - [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
 
 ---
