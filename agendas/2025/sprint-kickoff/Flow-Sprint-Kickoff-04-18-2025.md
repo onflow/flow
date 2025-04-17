@@ -248,7 +248,7 @@ Extension:
 
 **Done last sprint**
 
-**Projects Work**
+**Project Work**
 
 **Docker Logging Resliience**
 - [Bring current loki driver configuration from nodes to terraform](https://github.com/onflow/ff-sre-infrastructure/issues/251)
