@@ -114,6 +114,9 @@ Cycle Objective(s):
 
 * <ins>Malleability</ins>
   - Support KROK PR reviews
+  - Immutable data structures
+     - Researched and started implementing [`structwrite` linter](https://github.com/onflow/flow-go/pull/7310)
+     - Added [tracking issues](https://github.com/onflow/flow-go/issues/7269) for immutable data structures 
   - KROK Team
 
     Done:
@@ -127,9 +130,10 @@ Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation
-    - 
+
+    
 * <ins>Protocol misc</ins>
- 
+  - Completed technical overview to implement [state and event proofs for light clients](https://www.notion.so/flowfoundation/State-and-Event-Proofs-1d11aee123248096975ef55b1d05bb1e) on Flow
 
 **This sprint**
 
@@ -138,7 +142,7 @@ Cycle Objective(s):
 
 * <ins>Malleability</ins>
   - Support KROK malleability PR reviews
-  - Continue Malleability tasks
+  - Continuing [`structwrite` linter](https://github.com/onflow/flow-go/issues/7271) and integrate with CI 
   - KROK Team:
     - 
 
@@ -148,6 +152,9 @@ Cycle Objective(s):
 * <ins>Cryptography</ins>
   - SPoCK aggregation
 
+* <ins>Protocol misc</ins>
+  - Integrate lock context library into Follower as PoC for Pebble locking strategy (once Pebble version of Follower is complete)
+  - 
 **On Hold**
 
 **Active Epics**
