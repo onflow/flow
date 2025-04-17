@@ -248,56 +248,50 @@ Extension:
 
 **Done last sprint**
 
-**Automation**
-* [Fix skipping genesis upload during sporks & migration network deployments](https://github.com/onflow/ff-sre-infrastructure/issues/217)
-
-**Node Hosting**
-* [Upgrade MN AN disk sizes](https://github.com/onflow/ff-sre-infrastructure/pull/212)
-
-**Cost Optimization**
-* [Identify & Resolve Increase in Log Query Costs](https://github.com/onflow/ff-sre-infrastructure/issues/236)
-* [Create documentation for reviewing log query usage](https://github.com/onflow/ff-sre-infrastructure/issues/214)
-
-**Terraform Module Consolidation**
-* [Add release workflow](https://github.com/onflow/ff-terraform-modules/pull/2)
-
-**Flow Wallet**
-* [Renew cert for Flow Wallet OpenAPI service](https://github.com/onflow/ff-sre-infrastructure/issues/241)
-* [Update billing accounts for Flow Wallet GCP Projects](https://github.com/onflow/ff-sre-infrastructure/issues/242)
-
-**This sprint**
-
-**Cost Optimization**
-* [Deprecate Canary Network](https://github.com/onflow/ff-sre-infrastructure/issues/218)
-* [Create standard for creating & destroying migration networks](https://github.com/onflow/ff-sre-infrastructure/issues/239)
+**Projects Work**
 
 **Docker Logging Resliience**
-* [Update DL Nodes with non-blocking docker driver](https://github.com/onflow/ff-sre-infrastructure/issues/238)
-* [Evaluate & design solution to address limitations of docker logging driver](https://github.com/onflow/ff-sre-infrastructure/issues/240)
+- [Bring current loki driver configuration from nodes to terraform](https://github.com/onflow/ff-sre-infrastructure/issues/251)
+- [Execute rolling upgrade against DL nodes to deploy docker daemon changes to the logging driver](https://github.com/onflow/ff-sre-infrastructure/issues/250)
+- [Create Ansible playbook to update DL Nodes with non-blocking docker driver solution](https://github.com/onflow/ff-sre-infrastructure/issues/238)
+- [Evaluate & design solution to address limitations of docker logging driver](https://github.com/onflow/ff-sre-infrastructure/issues/240)
 
-**Private Image Builds**
-* [Update the terraform module for the migration networks to support pulling private images](https://github.com/onflow/ff-sre-infrastructure/issues/230)
-* [Create GitHub Action Workflow for promoting docker images](https://github.com/onflow/ff-sre-infrastructure/issues/227)
-* [Update Devnet to support pulling private images](https://github.com/onflow/ff-sre-infrastructure/issues/228)
 
 **Terraform Module Consolidation**
-* [Consolidate Terraform Network Modules into a Single Module ](https://github.com/onflow/ff-sre-infrastructure/issues/98)
-* [Migrate “Live” Networks to the New Module](https://github.com/onflow/ff-sre-infrastructure/issues/99)
-* [Create Strategy for Tagging Terraform Modules](https://github.com/onflow/ff-sre-infrastructure/issues/95)
-* [Resolve Conflict from consolidated signle module](https://github.com/onflow/ff-sre-infrastructure/issues/234)
+- [Consolidate Terraform Network Modules into a Single Module](https://github.com/onflow/ff-sre-infrastructure/issues/98)
+- [Create Strategy for Tagging Terraform Modules](https://github.com/onflow/ff-sre-infrastructure/issues/95)
+- [Migrate “Live” Networks to the New Module](https://github.com/onflow/ff-sre-infrastructure/issues/99)
+- [Document Terraform infra repo creation process](https://github.com/onflow/ff-sre-infrastructure/issues/224)
 
-**Flow Wallet Migration**
-* [Create new repo for managing wallet infrastructure](https://github.com/onflow/ff-sre-infrastructure/issues/223)
-* [Document Terraform infra repo creation for Atlantis integration](https://github.com/onflow/ff-sre-infrastructure/issues/224)
-* [Craete Wallet DNS records on flow subdomains](https://github.com/onflow/ff-sre-infrastructure/issues/222)
+**Cost Optimization & Reduction**
+- [Deprecate Canary Network](https://github.com/onflow/ff-sre-infrastructure/issues/218)
 
-**Observability**
-* [Re-align manual changes in Grafana with Terraform](https://github.com/onflow/ff-sre-infrastructure/issues/216)
+**Wallet Infra Migration**
+- [Copy 4D terraform modules to ff-terraform-modules repo](https://github.com/onflow/ff-sre-infrastructure/issues/280)
+
+**Optimize Alert Management**
+- [Create HTTP uptime monitors to monitor Envoy Accessibility](https://github.com/onflow/ff-sre-infrastructure/issues/271)
+
+**Support & Maintenance**
+
+- [Update MN EVM GW DNS to route to QN](https://github.com/onflow/ff-sre-infrastructure/issues/286)
+- [Create redirect from rewards.flow.com to store.flow.com](https://github.com/onflow/ff-sre-infrastructure/issues/284)
+- [Increase Devnet52 SN data disk size](https://github.com/onflow/ff-sre-infrastructure/issues/279)
+- [Increase Devnet52 AN disk space](https://github.com/onflow/ff-sre-infrastructure/issues/274)
+- [Clean up MN AN boot disk space](https://github.com/onflow/ff-sre-infrastructure/issues/273)
+- [Add support for accessing the Flow BigQuery dataset](https://github.com/onflow/ff-sre-infrastructure/issues/266)
+- [Update signers for service account KMS keys](https://github.com/onflow/ff-sre-infrastructure/issues/265)
+- [Update TN Envoy logging for analytics](https://github.com/onflow/ff-sre-infrastructure/issues/263)
+- [Create documentation for querying Loki logs with logcli](https://github.com/onflow/ff-sre-infrastructure/issues/256)
+- [Collect Loki Logs for Shipyard](https://github.com/onflow/ff-sre-infrastructure/issues/255)
+- [Add missing ANs to Migration Mainnet Ansible configuration](https://github.com/onflow/ff-sre-infrastructure/issues/247)
+- [Create new repo for managing wallet infrastructure](https://github.com/onflow/ff-sre-infrastructure/issues/223)
+- [Create Wallet DNS records on flow subdomains](https://github.com/onflow/ff-sre-infrastructure/issues/222)
+- [Re-align manual changes in Grafana with Terraform](https://github.com/onflow/ff-sre-infrastructure/issues/216)
 
 **Active Epics**
+* [Integrate Grafana Alloy Agent](https://github.com/onflow/ff-sre-infrastructure/issues/100)
 * [Cost Optimization & Reduction](https://github.com/onflow/ff-sre-infrastructure/issues/235)
-* [Docker Logging Resilience](https://github.com/onflow/ff-sre-infrastructure/issues/237)
-* [Terraform Module Consolidation](https://github.com/onflow/ff-sre-infrastructure/issues/94)
 * [Support Private Image Builds](https://github.com/orgs/onflow/projects/79/views/1?pane=issue&itemId=104950609&issue=onflow%7Cff-sre-infrastructure%7C225)
 
 ---
