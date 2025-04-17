@@ -49,7 +49,10 @@
 | Released    | 4  |    34     |       9         |       6          |        **53**          |
 | Total       | **19** |    **50**   |       **16**       |       **17**         |        **102**         |
 
-- No change this sprint.
+- Three new FLIPS
+  1. FLIP 322: Optimistic Syncing of Execution Data (added last sprint)
+  2. FLIP 321: Redundancy Improvement - update service account signers
+  3. FLIP 326: Redundancy Improvement - update service account signers (part 2)
 
 ### Key Release Dates & Breaking Changes
 
