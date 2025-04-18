@@ -161,10 +161,20 @@ Cycle Objective(s):
   - KROK Team
 
     Done:
-    
+    - [[Access] When sent transaction remains in pending status](https://github.com/onflow/flow-go/issues/7264)
+    - [[DataAvailability] Create in-memory Transactions storage implementation](https://github.com/onflow/flow-go/issues/7188)
+    - [[DataAvailability] Create in-memory LightTransactionResults storage implementation](https://github.com/onflow/flow-go/issues/7184)
+    - [[DataAvailability] Create in-memory TransactionResultErrorMessages storage implementation](https://github.com/onflow/flow-go/issues/7185)
+    - [[DataAvailability] Create in-memory Events storage implementation](https://github.com/onflow/flow-go/issues/7183)
+    - [[DataAvailability] Create in-memory Collections storage implementation](https://github.com/onflow/flow-go/issues/7187)
+
     In Review:
-    
-    In Progress:
+    - [[DataAvailability] Implement Persister interface](https://github.com/onflow/flow-go/issues/7198)
+    - [[DataAvailability] Create in-memory Registers storage implementation](https://github.com/onflow/flow-go/issues/7186)
+   
+    In Progress: 
+    - [[DataAvailability] Implement Download step logic](https://github.com/onflow/flow-go/issues/7202)
+    - [[DataAvailability] Implement processing pipeline state machine](https://github.com/onflow/flow-go/issues/7201)
     
 
 * <ins>Malleability</ins>
@@ -175,10 +185,14 @@ Cycle Objective(s):
   - KROK Team
 
     Done:
+    - [[Malleability A] TimeoutObject](https://github.com/onflow/flow-go/issues/6690)
 
-    In Review:
-    
+    In Review: 
+    - [[Malleability C] CollectionGuarantee](https://github.com/onflow/flow-go/issues/6722)
+    - [[Malleability] Review structs with stub ID implementation](https://github.com/onflow/flow-go/issues/7226)
+  
     In Progress:
+    - [[Malleability C] cluster.Block](https://github.com/onflow/flow-go/issues/6660)
    
 * <ins>EVM Gateway</ins>
   - Merged Ethereum Pectra updates and started testing
@@ -193,13 +207,17 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability</ins>
-  - General release of websockets
+  - Continue to work on "In Progress" tasks and PR-s remarks
+  - [[DataAvailability] Implement Index step logic](https://github.com/onflow/flow-go/issues/7203)
+  - [[DataAvailability] Implement Persist step logic](https://github.com/onflow/flow-go/issues/7204)
+  
 
 * <ins>Malleability</ins>
   - Support KROK malleability PR reviews
   - Continuing [`structwrite` linter](https://github.com/onflow/flow-go/issues/7271) and integrate with CI 
   - KROK Team:
-    - 
+    - Continue to work on "In Progress" tasks and PRs remarks
+    - Start tasks from ["[Epic] [Malleability] Hashable Data Structures are Immutable"](https://github.com/onflow/flow-go/issues/7269)
 
 * <ins>EVM Gateway</ins>
   - Test EVM Pectra upgrade process on migrationnet
