@@ -33,9 +33,14 @@
 | YTD (04/17/25) SLA     |           | 99.86%     | 99.86%    | 99.85%    | 99.86%       | 99.85% |               |
 | SLA for 2025           |           | 99.96%     | 99.96%    | 99.96%    | 99.96%       | 99.96% |               |
 
-#### Incidents
+### Incidents
+
+### Mainnet 
 - P0 and P1: None
 
+### Testnet
+- P0: Tuesday, April 15th at 9:28 AM for ~40 mins - Consensus finalization halted.
+  
 ---
 
 ### FLIPs Tracker \[Vishal]
