@@ -39,8 +39,16 @@
 - P0 and P1: None
 
 ### Testnet
-- P0: Tuesday, April 15th at 9:28 AM for ~40 mins - Consensus finalization halted.
-  
+- P0
+  1. Tuesday, 15th April 9:28 AM for ~40 mins - Consensus finalization halted.
+   - Consensus nodes ran out of disk space
+   - Additional disk was provisioned.
+
+  2. Tuesday, 9th April 7:33 AM PT for 2 hours - Consensus finalization halted.
+   - Root cause unknown.
+   - Networking layer is the current suspect.
+   - Shipyard is investigating the networking layer.
+
 ---
 
 ### FLIPs Tracker \[Vishal]
