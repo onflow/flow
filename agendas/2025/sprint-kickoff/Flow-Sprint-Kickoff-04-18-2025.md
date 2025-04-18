@@ -386,6 +386,7 @@ Cycle Objective(s):
   * BlockDaemon 10 SNs onboarded.
   * Alchemy 2 SNs onboarded.
   * Tibles 2 SNs onboarded.
+  * Total consensus node count: 88
   * No operator controls 1/3rd or more of the network's consensus nodes
 
 **This sprint**
