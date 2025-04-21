@@ -309,25 +309,20 @@ Cycle Objective(s):
 
 **Cycle Objective(s):**
 
-KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 1 per week on a 4-week rolling average.
- - Current (Apr 4): 4.25/week
+KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 0.5 per week on a 4-week rolling average.
+ - Current (Apr 21): 1.75/week
 
 **Done last sprint**
 
-- Migration from SimpleHash to Moralis
+- Extension:
+  - Data model update - faster, more reliable UI.
 
-Extension:
-  - Support 1 password across all profiles on Extension
+- Mobile (iOS/Android):
+  - Flow Wallet Kit - single library for handling Flow specific business logic, key management etc across iOS/Android. Will reduce user facing bugs and enable us to move faster, more reliably.  
 
 **This sprint**
 
-- Automatically support new token launches within the wallet - new verified/unverified token feature
-- Support paying VM bridge fee during transaction
-
-- iOS/Android:
-  - New token display format for small values
-  - Support transferring tokens with up to their supported precision
-  - UI Updates to NFT page
+- Automatically support new token launches faster within the wallet -> new verified/unverified token feature
 
 **On Hold**
 
