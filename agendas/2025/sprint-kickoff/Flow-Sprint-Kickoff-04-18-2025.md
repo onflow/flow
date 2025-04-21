@@ -192,6 +192,7 @@ Cycle Objective(s):
 
 * <ins>Malleability</ins>
   - Support KROK PR reviews
+  - Continued work on Header and Block
   - Immutable data structures
      - Researched and started implementing [`structwrite` linter](https://github.com/onflow/flow-go/pull/7310)
      - Added [tracking issues](https://github.com/onflow/flow-go/issues/7269) for immutable data structures
@@ -211,7 +212,10 @@ Cycle Objective(s):
   - Merged Ethereum Pectra updates and started testing
 
 * <ins>Cryptography</ins>
+  - Crypto package
+     - Includes [GoLang 1.24 integration with some refactors](https://github.com/onflow/crypto/pull/26)
   - SPoCK aggregation
+     - KOSK vs PoP models - How to switch a security proof from using KOSK to PoP
 
 
 * <ins>Protocol misc</ins>
@@ -228,6 +232,7 @@ Cycle Objective(s):
 * <ins>Malleability</ins>
   - Support KROK malleability PR reviews
   - Continuing [`structwrite` linter](https://github.com/onflow/flow-go/issues/7271) and integrate with CI
+  - Complete Header Timestamp
   - KROK Team:
     - Continue to work on "In Progress" tasks and PRs remarks
     - Start tasks from ["[Epic] [Malleability] Hashable Data Structures are Immutable"](https://github.com/onflow/flow-go/issues/7269)
@@ -237,6 +242,7 @@ Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation
+  - Crypto package: re-audit GoLang 1.24 refactors before merging
 
 * <ins>Protocol misc</ins>
   - Integrate lock context library into Follower as PoC for Pebble locking strategy (once Pebble version of Follower is complete)
