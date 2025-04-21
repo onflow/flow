@@ -35,7 +35,7 @@
 
 ### Incidents
 
-### Mainnet 
+### Mainnet
 - P0 and P1: None
 
 ### Testnet
@@ -184,36 +184,36 @@ Cycle Objective(s):
     In Review:
     - [[DataAvailability] Implement Persister interface](https://github.com/onflow/flow-go/issues/7198)
     - [[DataAvailability] Create in-memory Registers storage implementation](https://github.com/onflow/flow-go/issues/7186)
-   
-    In Progress: 
+
+    In Progress:
     - [[DataAvailability] Implement Download step logic](https://github.com/onflow/flow-go/issues/7202)
     - [[DataAvailability] Implement processing pipeline state machine](https://github.com/onflow/flow-go/issues/7201)
-    
+
 
 * <ins>Malleability</ins>
   - Support KROK PR reviews
   - Immutable data structures
      - Researched and started implementing [`structwrite` linter](https://github.com/onflow/flow-go/pull/7310)
-     - Added [tracking issues](https://github.com/onflow/flow-go/issues/7269) for immutable data structures 
+     - Added [tracking issues](https://github.com/onflow/flow-go/issues/7269) for immutable data structures
   - KROK Team
 
     Done:
     - [[Malleability A] TimeoutObject](https://github.com/onflow/flow-go/issues/6690)
 
-    In Review: 
+    In Review:
     - [[Malleability C] CollectionGuarantee](https://github.com/onflow/flow-go/issues/6722)
     - [[Malleability] Review structs with stub ID implementation](https://github.com/onflow/flow-go/issues/7226)
-  
+
     In Progress:
     - [[Malleability C] cluster.Block](https://github.com/onflow/flow-go/issues/6660)
-   
+
 * <ins>EVM Gateway</ins>
   - Merged Ethereum Pectra updates and started testing
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation
 
-    
+
 * <ins>Protocol misc</ins>
   - Completed technical overview to implement [state and event proofs for light clients](https://www.notion.so/flowfoundation/State-and-Event-Proofs-1d11aee123248096975ef55b1d05bb1e) on Flow
 
@@ -223,11 +223,11 @@ Cycle Objective(s):
   - Continue to work on "In Progress" tasks and PR-s remarks
   - [[DataAvailability] Implement Index step logic](https://github.com/onflow/flow-go/issues/7203)
   - [[DataAvailability] Implement Persist step logic](https://github.com/onflow/flow-go/issues/7204)
-  
+
 
 * <ins>Malleability</ins>
   - Support KROK malleability PR reviews
-  - Continuing [`structwrite` linter](https://github.com/onflow/flow-go/issues/7271) and integrate with CI 
+  - Continuing [`structwrite` linter](https://github.com/onflow/flow-go/issues/7271) and integrate with CI
   - KROK Team:
     - Continue to work on "In Progress" tasks and PRs remarks
     - Start tasks from ["[Epic] [Malleability] Hashable Data Structures are Immutable"](https://github.com/onflow/flow-go/issues/7269)
@@ -240,7 +240,7 @@ Cycle Objective(s):
 
 * <ins>Protocol misc</ins>
   - Integrate lock context library into Follower as PoC for Pebble locking strategy (once Pebble version of Follower is complete)
-  - 
+  -
 **On Hold**
 
 **Active Epics**
@@ -278,21 +278,24 @@ Cycle Objective(s):
 ### **Developer Tooling** \[Chase]
 
 Cycle Objective(s):
-- Q1: Lower the barrier to Cadence adoption and streamline EVM interoperability. [OKR](https://github.com/onflow/flow-okrs/issues/86)
-- Q2: Improve the quality of developer engagement by optimizing Flow’s core surfaces and making it easier for developers to evaluate and explore the ecosystem.
+- Improve the quality of developer engagement by optimizing Flow’s core surfaces and making it easier for developers to evaluate and explore the ecosystem. [OKR](https://github.com/onflow/flow-okrs/issues/109)
 
 **Done last sprint**
 
-- Finished coding the Flow Kit library (React Hooks) and released the alpha version
-- Released soft finality support in FCL and updated the documentation
-- Integrated the Streaming API into FCL and added documentation
+- Wrote API documentation for the new `@onflow/kit` library
+- Converted the front-end Getting Started guide to use the `@onflow/kit` library
+- Continued work on streaming API support in FCL
+- Simplified app configuration using FCL network defaults
+- Added metrics to better understand developer usage on Emulator and Testnet
+- Addressed various backlog issues and bugs
 
 **This sprint**
 
-- Fix miscellaneous issues in the Kit alpha
-- Write documentation for the Kit library
-- Address TypeScript issues in FCL
-- Research solutions for enabling Metamask to interact with Cadence
+- Improve TypeScript support in the JS SDK
+- Begin building components for the `@onflow/kit` library
+- Expose randomness through a React hook in the `@onflow/kit` library
+- Moved the cross-VM batch transaction hook from the scaffold to `@onflow/kit`
+- Identify other cross-VM hook opportunities
 
 ---
 
