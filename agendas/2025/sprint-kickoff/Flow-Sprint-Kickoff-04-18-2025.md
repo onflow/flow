@@ -3,7 +3,7 @@
  ### Team Wins 🎉
 
  * Completed Cadence [Compiler Milestone 3](https://github.com/onflow/cadence/issues/3769) - Realistic fungible token transfer.
- * Optimizations found while working on Badger -> Peble storage refactoring, increasing execution throughput by ~15%.
+ * Completed [an optimization](https://github.com/onflow/flow-go/pull/7255) found while working on Badger -> Pebble storage refactoring, reducing block execution time by ~15%.
  * Websocket API live on public endpoint and available through fcl.
 
 ---
