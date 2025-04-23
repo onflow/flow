@@ -10,7 +10,9 @@ message ExecutionResult {
   bytes block_id = 2;
   repeated Chunk chunks = 3;
   repeated ServiceEvent service_events = 4;
-  bytes execution_data_id = 5;
+  bytes execution_data_id = 5; // hash of execution data (internally partitioned chunk by chunk);
+                               // requires additional consistency checks compared to including the
+                               // execution data into their corresponding chunks directly
 }
 
 message Chunk {
@@ -25,7 +27,9 @@ message Chunk {
   uint64 index = 7;     // chunk index inside the ER (starts from zero)
   bytes end_state = 8;  // EndState inferred from next chunk or from the ER
   bytes execution_data_id =
-      9; // ExecutionDataID for chunk. currently unused and reserved for future use
+      9; // ExecutionDataID for chunk. Currently unused and reserved for future use. This
+         // representation has less surface for byzantine nodes to create data inconsistencies
+         // compared to the `execution_data_id` being included at the ExecutionResult's root level.
   bytes state_delta_commitment = 10; // a commitment over sorted list of register changes
   uint32 service_event_count =
       11; // number of service events emitted in this chunk (present in Protocol Version 2+)
