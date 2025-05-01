@@ -2,7 +2,7 @@
 
  ### Team Wins 🎉
 
- * 
+ * First public app identified building with the new `@onflow/kit` library just released
 
 ---
 
@@ -38,7 +38,7 @@
 
 ### Testnet
 - P0
-  
+
 
 ---
 
@@ -174,14 +174,20 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+- Improved TypeScript support in the JS SDK
+- Identified cross-VM hooks for `@onflow/kit`
+- Created randomness React hook for `@onflow/kit`
+- Built the `Connect` component for `@onflow/kit`
+- Added chain ID hook to `@onflow/kit`
+- Enhanced the FCL spec with a new security feature for account proofs
 
 **This sprint**
 
-- Improve TypeScript support in the JS SDK
-- Begin building components for the `@onflow/kit` library
-- Expose randomness through a React hook in the `@onflow/kit` library
-- Moved the cross-VM batch transaction hook from the scaffold to `@onflow/kit`
-- Identify other cross-VM hook opportunities
+- Automating FCL/JS SDK API documentation with TypeScript/JSDoc
+- Migrating the cross-VM batch transaction hook from the scaffold to `@onflow/kit`
+- Adding a theming system for components in `@onflow/kit`
+- Building a profile component for `@onflow/kit`
+- Building a transaction component for `@onflow/kit`
 
 ---
 
