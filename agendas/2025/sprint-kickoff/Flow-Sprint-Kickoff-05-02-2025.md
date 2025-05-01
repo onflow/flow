@@ -2,7 +2,7 @@
 
  ### Team Wins 🎉
 
- * First public app identified building with the new `@onflow/kit` library just released
+ * First public app identified building with the newly released `@onflow/kit` library.
 
 ---
 
