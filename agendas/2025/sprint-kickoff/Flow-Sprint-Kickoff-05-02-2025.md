@@ -3,6 +3,8 @@
  ### Team Wins 🎉
 
  * First public app identified building with the newly released `@onflow/kit` library.
+ * Closed - [Badger -> Pebble DB M2 - DB access refactoring for low-risk data (AN, EN, VN)](https://github.com/onflow/flow-go/issues/6527)
+ * New TPS loader now runs automatically & [metrics are pushed to FF grafana](https://flowfoundation.grafana.net/goto/5zvXQvbNg?orgId=1).
 
 ---
 
@@ -76,6 +78,82 @@ Q2 2025 Cycle Objective(s):
 
 **Done last sprint**
 
+**Cadence Language**
+- Cadence <> Storage - breaking change (Not affecting devs on Flow)
+    - [Remove register reads related to account storage format V1](https://github.com/onflow/cadence/issues/3815)
+- [Compiler milestone 4 - FVM integration & execution of book-keeping functions](https://github.com/onflow/cadence/issues/3856)
+    - [[Compiler] Fix argument compilation: transfer to parameter type, not argument type](https://github.com/onflow/cadence/pull/3918)
+    - [[Compiler] Unify emission of event value and event fields, enable event emission in VM environment](https://github.com/onflow/cadence/pull/3916)
+    - [[Compiler] Skip events compilation](https://github.com/onflow/cadence/pull/3915)
+    - [[Compiler] Improve and fix event emission](https://github.com/onflow/cadence/pull/3914)
+    - [[Compiler] Add support for resource fields in VM environment](https://github.com/onflow/cadence/pull/3913)
+    - [[Compiler] Configure account handler in VM environment](https://github.com/onflow/cadence/pull/3912)
+    - [[Compiler] Implement saturating arithmetic functions in VM](https://github.com/onflow/cadence/pull/3911)
+    - [[Compiler] Fix contract value use inside of contract](https://github.com/onflow/cadence/pull/3910)
+    - [[Compiler] Various improvements/fixes](https://github.com/onflow/cadence/pull/3909)
+    - [[Compiler] Fix function invocation](https://github.com/onflow/cadence/pull/3908)
+    - [[Compiler] Add dictionary built-in functions](https://github.com/onflow/cadence/pull/3907)
+    - [[Compiler] Sync compiler branch with master](https://github.com/onflow/cadence/pull/3904)
+    - [[Compiler] Refactor qualified name generation](https://github.com/onflow/cadence/pull/3898)
+    - [[Compiler] Derive the function type from the receiver for bound-function values](https://github.com/onflow/cadence/pull/3897)
+    - [[Compiler] Invoke contract function externally](https://github.com/onflow/cadence/pull/3895)
+    - [[Compiler] Implement Compiler/VM-based environment, enable for contract invocations](https://github.com/onflow/cadence/pull/3894)
+    - [[Compiler] Sync compiler feature branch with master](https://github.com/onflow/cadence/pull/3893)
+    - [[Compiler] Merge master](https://github.com/onflow/cadence/pull/3887)
+    - [[Compiler] Support use of member-functions as function-pointers](https://github.com/onflow/cadence/pull/3886)
+    - [[Compiler] Separate methods from fields for `SimpleCompositeValue`](https://github.com/onflow/cadence/pull/3890)
+    - [[Compiler] Fix inherited conditions compilation](https://github.com/onflow/cadence/pull/3884)
+    - [[Compiler] Optimize transfers](https://github.com/onflow/cadence/pull/3879)
+    - [Port changes to the `interpreter` package from the `feature/compiler` branch](https://github.com/onflow/cadence/pull/3892) 
+    - FVM Integration
+        - [Decouple NewEnumCaseValue from interpreter](https://github.com/onflow/cadence/pull/3900)
+        - [Refactor runtime package](https://github.com/onflow/cadence/pull/3888)
+        - [Decouple runtime code from interpreter](https://github.com/onflow/cadence/pull/3885)
+        - [Refactor interpreter environment – Part 2](https://github.com/onflow/cadence/pull/3883)
+        - [Refactor interpreter environment](https://github.com/onflow/cadence/pull/3882)
+- Minor improvements / chores
+    - [Improve generation / tool usage](https://github.com/onflow/cadence/pull/3905)
+    - [Fix version of parser NPM package](https://github.com/onflow/cadence/pull/3902)
+- Testing
+    - [Test interface function with conditions](https://github.com/onflow/cadence/pull/3889)
+- Dependency updates:
+    - [Update to Cadence v1.4.0](https://github.com/onflow/flow-go-sdk/pull/843)
+    - [Update dependency for golang.org/x/tools](https://github.com/onflow/cadence/pull/3899)
+    - [Update to Cadence v1.4.0](https://github.com/onflow/flow-go/pull/7353)
+
+**Cadence Execution**
+- Tech-debt removal:
+    - [Refactor to rename blocklist to disallowlist for consistency](https://github.com/onflow/flow-go/pull/7363)
+    - [Remove account storage format v2 migration](https://github.com/onflow/flow-go/pull/7344)
+- [Badger -> Pebble DB M2 - DB access refactoring for low-risk data (AN, EN, VN)](https://github.com/onflow/flow-go/issues/6527)
+    - [[Access] Add support for multi-store reading of events, lightTransactionResults, etc. (BadgerDB & Pebble)](https://github.com/onflow/flow-go/pull/7335)
+    - [[Access] Add support for multi-store reading of collections & transactions in Access Nodes](https://github.com/onflow/flow-go/pull/7321)
+    - [[Storage] Add database multiReader, multiIterator, multiSeeker (BadgerDB, Pebble)](https://github.com/onflow/flow-go/pull/7320)
+- [Migration of Badger to Pebble DB](https://github.com/onflow/flow-go/issues/6515)
+    - [Badger -> Pebble DB M3: unblock pruning of Execution, Access and Verification data](https://github.com/onflow/flow-go/issues/7242)
+        - [[Storage] Support NodeDisallowList for db migration](https://github.com/onflow/flow-go/pull/7361)
+    - Improvements:
+        - [[Storage] Update DB.Reader() API to not return error](https://github.com/onflow/flow-go/pull/7354)
+        - [[Storage] Remove unneeded lock in storage Callbacks and document it isn't safe for concurrent use](https://github.com/onflow/flow-go/pull/7352)
+        - [Remove database dependency from consensus builder](https://github.com/onflow/flow-go/pull/7347)
+        - [[Storage] Add db Seeker for up to ~50x speedup & ~18x less memory seeking key in range (BadgerDB, Pebble)](https://github.com/onflow/flow-go/pull/7255)
+    - Bugfixes:
+        - [[Storage] Fix deadlock in batch writes](https://github.com/onflow/flow-go/pull/7341)
+        - [[Storage] Fix batch remove in ServiceEvents to use the correct batch (BadgerDB, Pebble)](https://github.com/onflow/flow-go/pull/7323)
+        - [Add a Close() to Batch interface and use it to prevent memory leak (BadgerDB & Pebble)](https://github.com/onflow/flow-go/issues/7258)
+- TPS loader
+    - [PID parameter tweaks](https://github.com/onflow/flow-execution-effort-estimation/pull/31)
+- Improvement
+    - [Improve remote debugger](https://github.com/onflow/flow-go/pull/7001)
+- Dependency updates:
+    - [Bump `onflow/go-ethereum` dependency to `v1.15.9`](https://github.com/onflow/flow-go/pull/7241)
+- CBOR
+    - [Update docs for TimeMode, Tag, RawTag, and add example for Embedded JSON Tag for CBOR](https://github.com/fxamacker/cbor/pull/659)
+
+**EVM**
+[Add some E2E tests for `debug_*` endpoints with unset tracer](https://github.com/onflow/flow-evm-gateway/pull/808)
+[Sync with Geth version `v1.15.8`](https://github.com/onflow/go-ethereum/pull/22)
+[Sync with Geth version `v1.15.9`](https://github.com/onflow/go-ethereum/pull/23)
 
 **This sprint**
 
