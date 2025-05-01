@@ -98,7 +98,7 @@ Q2 2025 Cycle Objective(s):
 
 ---
 
-### **Core Protocol** \[Jerome]
+### **Core Protocol** \[]
 Cycle Objective(s):
 
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
@@ -146,7 +146,7 @@ Cycle Objective(s):
 
 ---
 
-### **DeFi** \[Jerome]
+### **DeFi** \[]
 
 Cycle Objective(s):
 - Close gaps in Defi/Liquidity infrastructure post-Cadence 1.0
