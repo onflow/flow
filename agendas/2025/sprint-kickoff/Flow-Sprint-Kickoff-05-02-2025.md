@@ -162,8 +162,6 @@ Q2 2025 Cycle Objective(s):
   - Continue work on the [Compiler Milestone 4](https://github.com/onflow/cadence/issues/3856)
 
 - Cadence Execution
-  - Complete Badger -> Pebble migration [Milestone 2](https://github.com/onflow/flow-go/issues/6515)
-  - Complete performance deep-dive: analyze CPU profile produced on migration testnet * Mainnet with new TPS loader to identify new bottlenecks / opportunities for further optimizations.
   - Continue new Trie research
   - Continue work on [Badger -> Pebble DB M3: unblock pruning of Execution, Access and Verification data](https://github.com/onflow/flow-go/issues/7242)
   - Continue supporting upgrade of EVM core to "Pectra" release
