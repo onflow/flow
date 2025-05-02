@@ -3,7 +3,8 @@
  ### Team Wins 🎉
 
  * First public app identified building with the newly released `@onflow/kit` library.
-
+ * added custom [linter](https://github.com/onflow/flow-go/issues/7271) to enforce conceptually immutable structs in `flow-go` are not modified
+ * 
 ---
 
 ### Mainnet Uptime - Last 14 days (04/18/25 to 05/02/25) \[JP]
@@ -98,17 +99,40 @@ Q2 2025 Cycle Objective(s):
 
 ---
 
-### **Core Protocol** \[]
+### **Core Protocol** \[Alex]
 Cycle Objective(s):
 
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
 * Improve network reliability by reducing API load on execution node [IN PROGRESS]
-* EVM Gateway integrate Pectra upgrade [IN PROGRESS]
 * Address data structure malleability risk [IN PROGRESS]
 * Furthering permissionless participation
   2. KR2: SPoCK Research [IN PROGRESS]
 
 **Done last sprint**
+
+* <ins>Data Availability</ins>
+
+
+
+* <ins>Malleability</ins>
+  - added custom [linter](https://github.com/onflow/flow-go/issues/7271) to enforce conceptually immutable structs in `flow-go` are not modified
+  - exploring merge strategies (:point_right: [notion](https://www.notion.so/flowfoundation/Malleability-master-Merging-strategy-1e51aee12324800fb80aceba59cf4f2c?pvs=4) writeup)
+  - collision-resistant hashing for 
+    - [CollectionGuarantee](https://github.com/onflow/flow-go/pull/7248) (completed)
+    - [cluster.Block](https://github.com/onflow/flow-go/issues/6660) (PR in review)
+    - [flow.Block](https://github.com/onflow/flow-go/issues/6716) (implementation ongoing)
+  - simplified [heropool](https://github.com/onflow/flow-go/pull/7342) (in areas where it previously violated immutability)  
+
+* <ins>Cryptography</ins>
+  - SPoCK aggregation (ongoing)
+  - Crypto package: audit and merge go1.24 changes.
+  - Review, update and refine `FlowVRF` developer documentation 
+    support marketing to write a new blog post
+
+* <ins>Supporting Badger to Pebble</ins>
+  - reviewing PR for Pebble version of Consensus Follower (ongoing)
+  - change Header's `Timestamp` to unambiguous representation (remove time zone)
+
 
 **This sprint**
 
@@ -120,22 +144,19 @@ Cycle Objective(s):
 
 * <ins>Malleability</ins>
   - Support KROK malleability PR reviews
-  - Continuing [`structwrite` linter](https://github.com/onflow/flow-go/issues/7271) and integrate with CI
-  - Complete Header Timestamp
-  - KROK Team:
-    - Continue to work on "In Progress" tasks and PRs remarks
-    - Start tasks from ["[Epic] [Malleability] Hashable Data Structures are Immutable"](https://github.com/onflow/flow-go/issues/7269)
-
-* <ins>EVM Gateway</ins>
-  - Test EVM Pectra upgrade process on migrationnet
+  - Continue on collision-resistant hashing for [flow.Block](https://github.com/onflow/flow-go/issues/6716)
+  - enforcing immutability of hashable data structures :point_right: [[Epic]](https://github.com/onflow/flow-go/issues/7269)
+    - `MissingCollection`
+    - `Vote`
+    - `IncorporatedResult`
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation
-  - Crypto package: re-audit GoLang 1.24 refactors before merging
 
 * <ins>Protocol misc</ins>
-  - Integrate lock context library into Follower as PoC for Pebble locking strategy (once Pebble version of Follower is complete)
-  -
+  - reviewing PR for Pebble version of Consensus Follower (ongoing) 
+  - Integrate `lock context` library as PoC for atomic read-write operations on Pebble (once Pebble version of Follower is complete)
+
 **On Hold**
 
 **Active Epics**
@@ -146,7 +167,7 @@ Cycle Objective(s):
 
 ---
 
-### **DeFi** \[]
+### **DeFi** \[ ~~Jerome~~ :]
 
 Cycle Objective(s):
 - Close gaps in Defi/Liquidity infrastructure post-Cadence 1.0
@@ -154,15 +175,10 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-
 **This sprint**
- - Continue developing StackFi PoCs
- - Complete off-chain trigger PoC
- - Start WFLOW migration
- - Finalize yield source partners for streamline
 
 **On Hold**
-- N/A
+
 
 
 ---
@@ -226,7 +242,7 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 ---
 
-### **Governance - Vishal**
+### **Governance** \[Vishal]
 
 Cycle Objective(s):
 1. Ensure the multisign process for Flow is efficient with effective community participation
