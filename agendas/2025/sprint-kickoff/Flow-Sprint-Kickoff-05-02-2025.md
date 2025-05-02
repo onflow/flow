@@ -4,7 +4,8 @@
 
  * First public app identified building with the newly released `@onflow/kit` library.
  * added custom [linter](https://github.com/onflow/flow-go/issues/7271) to enforce conceptually immutable structs in `flow-go` are not modified
- * 
+ * BN2 now supports private cadence builds as well as running existing images
+
 ---
 
 ### Mainnet Uptime - Last 14 days (04/18/25 to 05/02/25) \[JP]
@@ -13,8 +14,8 @@
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%   |    100%       |      0%         |
 | Block Finalization      | 99.9%   |    100%       |      0%         |
-| Transaction Execution   | 99.9%   |    99.95%     |      49.6%      |
-| Block Sealing           | 99.9%   |    99.98%     |      24.8       |
+| Transaction Execution   | 99.9%   |    100%       |      49.6%      |
+| Block Sealing           | 99.9%   |    100%       |      24.8       |
 | Access API Liveness     | 99.9%   |    100%       |      0%         |
 
 
@@ -29,10 +30,13 @@
 | HCU                    | 2/18/2025 |            |           | 5         |              | 5      |               |
 | HCU                    | 4/10/2025 |            |           | 5         |              | 5      |               |
 | Total downtime in mins |           | 210        | 210       | 230       | 210          | 230    |               |
-| YTD (04/17/25) SLA     |           | 99.86%     | 99.86%    | 99.85%    | 99.86%       | 99.85% |               |
+| YTD (5/2/25) SLA       |           | 99.86%     | 99.86%    | 99.85%    | 99.86%       | 99.85% |               |
 | SLA for 2025           |           | 99.96%     | 99.96%    | 99.96%    | 99.96%       | 99.96% |               |
 
 ### Incidents
+
+### Integrations
+- Metamask had a change that required changes to our EVM GW gas price. We are working with their team to ensure that the gas prices is properly calculated.
 
 ### Mainnet
 - P0 and P1: None
@@ -235,6 +239,26 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
 
+**Support**
+- [Delete unnecessary Access Node Transaction Result alert](https://github.com/onflow/ff-sre-infrastructure/issues/319)
+- [Clean up CDPs on DL ENs to reclaim disk space](https://github.com/onflow/ff-sre-infrastructure/issues/318)
+- [Fix deletion of PVCs on BN2](https://github.com/onflow/ff-sre-infrastructure/issues/311)
+- [Change Ansible Playbook to support --check execution flag](https://github.com/onflow/ff-sre-infrastructure/issues/316)
+
+**Private Image Builds**
+- [Grant service accounts access to the private registry](https://github.com/onflow/ff-sre-infrastructure/issues/306)
+- [Create GitHub Action Workflow for promoting docker images](https://github.com/onflow/ff-sre-infrastructure/issues/227)
+- [Update Build workflow to use GitHub App](https://github.com/onflow/ff-sre-infrastructure/issues/309)
+- [Update BN2 to use private registry for building & running images](https://github.com/onflow/ff-sre-infrastructure/issues/231)
+- [Push recent images to private registry](https://github.com/onflow/ff-sre-infrastructure/issues/268)
+- [Document how to leverage BN2 build flexibility](https://github.com/onflow/ff-sre-infrastructure/issues/317)
+- [Delete existing build workflows](https://github.com/onflow/ff-sre-infrastructure/issues/310)
+- [Update Ansible configuration to support private registry](https://github.com/onflow/ff-sre-infrastructure/issues/305)
+- [Update the terraform module for networks to support pulling private images](https://github.com/onflow/ff-sre-infrastructure/issues/230)
+- [Update Devnet to support pulling private images](https://github.com/onflow/ff-sre-infrastructure/issues/228)
+
+**Grafana Alloy**
+- [Create Ansible Playbook for Enabling/Disabling Profiling](https://github.com/onflow/ff-sre-infrastructure/issues/103)
 
 **Active Epics**
 * [Integrate Grafana Alloy Agent](https://github.com/onflow/ff-sre-infrastructure/issues/100)
