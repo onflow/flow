@@ -104,6 +104,7 @@ Cycle Objective(s):
 
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
 * Improve network reliability by reducing API load on execution node [IN PROGRESS]
+* EVM Gateway integrate Pectra upgrade [IN PROGRESS]
 * Address data structure malleability risk [IN PROGRESS]
 * Furthering permissionless participation
   2. KR2: SPoCK Research [IN PROGRESS]
