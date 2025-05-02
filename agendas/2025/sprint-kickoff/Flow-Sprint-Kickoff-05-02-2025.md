@@ -244,6 +244,7 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 - [Clean up CDPs on DL ENs to reclaim disk space](https://github.com/onflow/ff-sre-infrastructure/issues/318)
 - [Fix deletion of PVCs on BN2](https://github.com/onflow/ff-sre-infrastructure/issues/311)
 - [Change Ansible Playbook to support --check execution flag](https://github.com/onflow/ff-sre-infrastructure/issues/316)
+- [Enable prometheus data source from TPS automation](https://github.com/orgs/onflow/projects/79/views/1?pane=issue&itemId=105597591&issue=onflow%7Cff-sre-infrastructure%7C254)
 
 **Private Image Builds**
 - [Grant service accounts access to the private registry](https://github.com/onflow/ff-sre-infrastructure/issues/306)
