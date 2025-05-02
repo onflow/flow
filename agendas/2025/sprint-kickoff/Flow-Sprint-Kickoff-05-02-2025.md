@@ -17,8 +17,8 @@
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%   |    100%       |      0%         |
 | Block Finalization      | 99.9%   |    100%       |      0%         |
-| Transaction Execution   | 99.9%   |    100%       |      49.6%      |
-| Block Sealing           | 99.9%   |    100%       |      24.8       |
+| Transaction Execution   | 99.9%   |    100%       |      0%      |
+| Block Sealing           | 99.9%   |    100%       |      0%       |
 | Access API Liveness     | 99.9%   |    100%       |      0%         |
 
 
