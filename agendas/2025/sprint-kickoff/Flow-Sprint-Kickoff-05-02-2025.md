@@ -308,13 +308,17 @@ Cycle Objective(s):
 **Cycle Objective(s):**
 
 KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 0.5 per week on a 4-week rolling average.
- - Current (Apr 21): 1.75/week
+ - Current (Apr 21): 1.25/week
 
 **Done last sprint**
 
 **This sprint**
 
 - Automatically support new token launches faster within the wallet -> new verified/unverified token feature
+- Resolving a number of known issues with Flow Wallet Extension:
+  - Switching to testnet
+  - Switching accounts during app authn
+  - Signing complex data
 
 **On Hold**
 
