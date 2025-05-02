@@ -3,8 +3,11 @@
  ### Team Wins 🎉
 
  * First public app identified building with the newly released `@onflow/kit` library.
+
  * Closed - [Badger -> Pebble DB M2 - DB access refactoring for low-risk data (AN, EN, VN)](https://github.com/onflow/flow-go/issues/6527)
  * New TPS loader now runs automatically & [metrics are pushed to FF grafana](https://flowfoundation.grafana.net/goto/5zvXQvbNg?orgId=1).
+ * added custom [linter](https://github.com/onflow/flow-go/issues/7271) to enforce conceptually immutable structs in `flow-go` are not modified
+ * BN2 now supports private cadence builds as well as running existing images
 
 ---
 
@@ -14,8 +17,8 @@
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%   |    100%       |      0%         |
 | Block Finalization      | 99.9%   |    100%       |      0%         |
-| Transaction Execution   | 99.9%   |    99.95%     |      49.6%      |
-| Block Sealing           | 99.9%   |    99.98%     |      24.8       |
+| Transaction Execution   | 99.9%   |    100%       |      49.6%      |
+| Block Sealing           | 99.9%   |    100%       |      24.8       |
 | Access API Liveness     | 99.9%   |    100%       |      0%         |
 
 
@@ -30,10 +33,13 @@
 | HCU                    | 2/18/2025 |            |           | 5         |              | 5      |               |
 | HCU                    | 4/10/2025 |            |           | 5         |              | 5      |               |
 | Total downtime in mins |           | 210        | 210       | 230       | 210          | 230    |               |
-| YTD (04/17/25) SLA     |           | 99.86%     | 99.86%    | 99.85%    | 99.86%       | 99.85% |               |
+| YTD (5/2/25) SLA       |           | 99.86%     | 99.86%    | 99.85%    | 99.86%       | 99.85% |               |
 | SLA for 2025           |           | 99.96%     | 99.96%    | 99.96%    | 99.96%       | 99.96% |               |
 
 ### Incidents
+
+### Integrations
+- Metamask had a change that required changes to our EVM GW gas price. We are working with their team to ensure that the gas prices is properly calculated.
 
 ### Mainnet
 - P0 and P1: None
@@ -174,7 +180,7 @@ Q2 2025 Cycle Objective(s):
 
 ---
 
-### **Core Protocol** \[]
+### **Core Protocol** \[Alex]
 Cycle Objective(s):
 
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
@@ -186,32 +192,67 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+* <ins>Data Availability</ins>
+  * Supported KROK with PR reviews
+  * Finished draft of Optimistic Sync Milestone 2 design
+  * Started work on new ingestion engine and Results Forest
+  * KROK Team
+    
+    Done:
+    - [[DataAvailability] Create in-memory Registers storage implementation](https://github.com/onflow/flow-go/issues/7186)
+
+    In Review:
+    - [[DataAvailability] Implement Persister interface](https://github.com/onflow/flow-go/issues/7198)
+    - [[DataAvailability] Implement processing pipeline state machine](https://github.com/onflow/flow-go/issues/7201)
+    - [[DataAvailability] Implement Download step logic](https://github.com/onflow/flow-go/issues/7202)
+    - [[DataAvailability] Create a module that downloads tx result error messages](https://github.com/onflow/flow-go/issues/7356)
+
+    In Progress:
+    - [[DataAvailability] Implement Index step logic](https://github.com/onflow/flow-go/issues/7203)
+
+* <ins>Malleability</ins>
+  - added custom [linter](https://github.com/onflow/flow-go/issues/7271) to enforce conceptually immutable structs in `flow-go` are not modified
+  - exploring merge strategies (:point_right: [notion](https://www.notion.so/flowfoundation/Malleability-master-Merging-strategy-1e51aee12324800fb80aceba59cf4f2c?pvs=4) writeup)
+  - collision-resistant hashing for 
+    - [CollectionGuarantee](https://github.com/onflow/flow-go/pull/7248) (completed)
+    - [cluster.Block](https://github.com/onflow/flow-go/issues/6660) (PR in review)
+    - [flow.Block](https://github.com/onflow/flow-go/issues/6716) (implementation ongoing)
+  - simplified [heropool](https://github.com/onflow/flow-go/pull/7342) (in areas where it previously violated immutability)  
+
+* <ins>Cryptography</ins>
+  - SPoCK aggregation (ongoing)
+  - Crypto package: audit and merge go1.24 changes.
+  - Review, update and refine `FlowVRF` developer documentation 
+    support marketing to write a new blog post
+
+* <ins>Supporting Badger to Pebble</ins>
+  - reviewing PR for Pebble version of Consensus Follower (ongoing)
+  - change Header's `Timestamp` to unambiguous representation (remove time zone)
+
+
 **This sprint**
 
 * <ins>Data Availability</ins>
-  - Continue to work on "In Progress" tasks and PR-s remarks
-  - [[DataAvailability] Implement Index step logic](https://github.com/onflow/flow-go/issues/7203)
-  - [[DataAvailability] Implement Persist step logic](https://github.com/onflow/flow-go/issues/7204)
-
+  * Continue work on ingestion engine and Results Forest
+  * KROK Team
+    - [[DataAvailability] Implement Persist step logic](https://github.com/onflow/flow-go/issues/7204)
+    - Continue to work on _Optimistic Syncing_ related issues from epic [[DataAvailability] Fork Aware Execution Data processing](https://github.com/onflow/flow-go/issues/6900). Will continue with "In Progress" tasks and PRs in review.
 
 * <ins>Malleability</ins>
   - Support KROK malleability PR reviews
-  - Continuing [`structwrite` linter](https://github.com/onflow/flow-go/issues/7271) and integrate with CI
-  - Complete Header Timestamp
-  - KROK Team:
-    - Continue to work on "In Progress" tasks and PRs remarks
-    - Start tasks from ["[Epic] [Malleability] Hashable Data Structures are Immutable"](https://github.com/onflow/flow-go/issues/7269)
-
-* <ins>EVM Gateway</ins>
-  - Test EVM Pectra upgrade process on migrationnet
+  - Continue on collision-resistant hashing for [flow.Block](https://github.com/onflow/flow-go/issues/6716)
+  - enforcing immutability of hashable data structures :point_right: [[Epic]](https://github.com/onflow/flow-go/issues/7269)
+    - `MissingCollection`
+    - `Vote`
+    - `IncorporatedResult`
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation
-  - Crypto package: re-audit GoLang 1.24 refactors before merging
 
 * <ins>Protocol misc</ins>
-  - Integrate lock context library into Follower as PoC for Pebble locking strategy (once Pebble version of Follower is complete)
-  -
+  - reviewing PR for Pebble version of Consensus Follower (ongoing) 
+  - Integrate `lock context` library as PoC for atomic read-write operations on Pebble (once Pebble version of Follower is complete)
+
 **On Hold**
 
 **Active Epics**
@@ -222,7 +263,7 @@ Cycle Objective(s):
 
 ---
 
-### **DeFi** \[]
+### **DeFi** \[ ~~Jerome~~ :]
 
 Cycle Objective(s):
 - Close gaps in Defi/Liquidity infrastructure post-Cadence 1.0
@@ -230,15 +271,10 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-
 **This sprint**
- - Continue developing StackFi PoCs
- - Complete off-chain trigger PoC
- - Start WFLOW migration
- - Finalize yield source partners for streamline
 
 **On Hold**
-- N/A
+
 
 
 ---
@@ -294,6 +330,27 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
 
+**Support**
+- [Delete unnecessary Access Node Transaction Result alert](https://github.com/onflow/ff-sre-infrastructure/issues/319)
+- [Clean up CDPs on DL ENs to reclaim disk space](https://github.com/onflow/ff-sre-infrastructure/issues/318)
+- [Fix deletion of PVCs on BN2](https://github.com/onflow/ff-sre-infrastructure/issues/311)
+- [Change Ansible Playbook to support --check execution flag](https://github.com/onflow/ff-sre-infrastructure/issues/316)
+- [Enable prometheus data source from TPS automation](https://github.com/orgs/onflow/projects/79/views/1?pane=issue&itemId=105597591&issue=onflow%7Cff-sre-infrastructure%7C254)
+
+**Private Image Builds**
+- [Grant service accounts access to the private registry](https://github.com/onflow/ff-sre-infrastructure/issues/306)
+- [Create GitHub Action Workflow for promoting docker images](https://github.com/onflow/ff-sre-infrastructure/issues/227)
+- [Update Build workflow to use GitHub App](https://github.com/onflow/ff-sre-infrastructure/issues/309)
+- [Update BN2 to use private registry for building & running images](https://github.com/onflow/ff-sre-infrastructure/issues/231)
+- [Push recent images to private registry](https://github.com/onflow/ff-sre-infrastructure/issues/268)
+- [Document how to leverage BN2 build flexibility](https://github.com/onflow/ff-sre-infrastructure/issues/317)
+- [Delete existing build workflows](https://github.com/onflow/ff-sre-infrastructure/issues/310)
+- [Update Ansible configuration to support private registry](https://github.com/onflow/ff-sre-infrastructure/issues/305)
+- [Update the terraform module for networks to support pulling private images](https://github.com/onflow/ff-sre-infrastructure/issues/230)
+- [Update Devnet to support pulling private images](https://github.com/onflow/ff-sre-infrastructure/issues/228)
+
+**Grafana Alloy**
+- [Create Ansible Playbook for Enabling/Disabling Profiling](https://github.com/onflow/ff-sre-infrastructure/issues/103)
 
 **Active Epics**
 * [Integrate Grafana Alloy Agent](https://github.com/onflow/ff-sre-infrastructure/issues/100)
@@ -302,7 +359,7 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 ---
 
-### **Governance - Vishal**
+### **Governance** \[Vishal]
 
 Cycle Objective(s):
 1. Ensure the multisign process for Flow is efficient with effective community participation
