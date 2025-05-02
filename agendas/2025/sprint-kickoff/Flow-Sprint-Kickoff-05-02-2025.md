@@ -113,6 +113,17 @@ Cycle Objective(s):
 
 * <ins>Data Availability</ins>
 
+  Done:
+  - [[DataAvailability] Create in-memory Registers storage implementation](https://github.com/onflow/flow-go/issues/7186)
+
+  In Review:
+  - [[DataAvailability] Implement Persister interface](https://github.com/onflow/flow-go/issues/7198)
+  - [[DataAvailability] Implement processing pipeline state machine](https://github.com/onflow/flow-go/issues/7201)
+  - [[DataAvailability] Implement Download step logic](https://github.com/onflow/flow-go/issues/7202)
+
+  In Progress:
+  - [[DataAvailability] Implement Index step logic](https://github.com/onflow/flow-go/issues/7203)
+  - [[DataAvailability] Create a module that downloads tx result error messages](https://github.com/onflow/flow-go/issues/7356)
 
 
 * <ins>Malleability</ins>
@@ -138,8 +149,7 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability</ins>
-  - Continue to work on "In Progress" tasks and PR-s remarks
-  - [[DataAvailability] Implement Index step logic](https://github.com/onflow/flow-go/issues/7203)
+  - Continue to work on _Optimistic Syncing_ related issues from epic [[DataAvailability] Fork Aware Execution Data processing](https://github.com/onflow/flow-go/issues/6900). Will continue with "In Progress" tasks and PRs in review.
   - [[DataAvailability] Implement Persist step logic](https://github.com/onflow/flow-go/issues/7204)
 
 
