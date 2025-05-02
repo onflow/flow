@@ -116,6 +116,9 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Data Availability</ins>
+  * Supported KROK with PR reviews
+  * Finished draft of Optimistic Sync Milestone 2 design
+  * Started work on new ingestion engine and Results Forest
   * KROK Team
     
     Done:
@@ -153,6 +156,7 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability</ins>
+  * Continue work on ingestion engine and Results Forest
   * KROK Team
     - [[DataAvailability] Implement Persist step logic](https://github.com/onflow/flow-go/issues/7204)
     - Continue to work on _Optimistic Syncing_ related issues from epic [[DataAvailability] Fork Aware Execution Data processing](https://github.com/onflow/flow-go/issues/6900). Will continue with "In Progress" tasks and PRs in review.
