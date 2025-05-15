@@ -234,10 +234,41 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
 
+**DNS Migration**
+- [Delete the benchmark.onflow.org CloudFlare zone](https://github.com/onflow/ff-sre-infrastructure/issues/300)
+- [Deleted unused DNS load balancers](https://github.com/onflow/ff-sre-infrastructure/issues/293)
+- [Duplicate historical node records that have not been moved to standard deployment](https://github.com/onflow/ff-sre-infrastructure/issues/368)
+- [Duplicate non node records to onflow.org](https://github.com/onflow/ff-sre-infrastructure/issues/370)
+- [Identify key telemetry for monitoring Grafana Alloy agent](https://github.com/onflow/ff-sre-infrastructure/issues/260)
+- [Migrate Devnet EVM GW LB to CNAME](https://github.com/onflow/ff-sre-infrastructure/issues/291)
+- [Migrate Mainnet DNS Load Balancers to CNAME records](https://github.com/onflow/ff-sre-infrastructure/issues/292)
+- [Migrate Migration Testnet DNS Load Balancers](https://github.com/onflow/ff-sre-infrastructure/issues/302)
+- [Migrate access.devnet.nodes.onflow.org to TCP LB](https://github.com/onflow/ff-sre-infrastructure/issues/379)
+- [Migrate atlantis.ops.onflow.org to onflow.org zone](https://github.com/onflow/ff-sre-infrastructure/issues/340)
+- [Migrate benchnet.onflow.org records to onflow.org](https://github.com/onflow/ff-sre-infrastructure/issues/301)
+- [Recreate Mainnet historical DNS records in the onflow.org zone](https://github.com/onflow/ff-sre-infrastructure/issues/295)
+- [Recreate Migration network records](https://github.com/onflow/ff-sre-infrastructure/issues/361)
+- [Recreate the Devnet DNS records in the onflow.org zone](https://github.com/onflow/ff-sre-infrastructure/issues/297)
+- [Recreate the Mainnet DNS records in the onflow.org zone](https://github.com/onflow/ff-sre-infrastructure/issues/296)
+- [Update Mainnet to support pulling private images](https://github.com/onflow/ff-sre-infrastructure/issues/229)
+- [Update network terraform module to include additional records on onflow.org zone](https://github.com/onflow/ff-sre-infrastructure/issues/299)
+
+-**Support**
+- [Enable networking.googleapis.com service in ff-sre-production](https://github.com/onflow/ff-sre-infrastructure/issues/376)
+- [Fix Envoy config not being templated for LNs](https://github.com/onflow/ff-sre-infrastructure/issues/351)
+- [Grant Migration Testnet Service Account access to TN EVM KMS keys](https://github.com/onflow/ff-sre-infrastructure/issues/344)
+- [Increase AN8 instance size to have more memory](https://github.com/onflow/ff-sre-infrastructure/issues/341)
+- [Update DL LNs & VNs to include GOMEMLIMIT](https://github.com/onflow/ff-sre-infrastructure/issues/352)
+- [Update checkpoint extraction workflow to be more robust](https://github.com/onflow/ff-sre-infrastructure/issues/328)
+
+**Grafana Alloy Implementation**
+- [Create bucket to store Alloy binaries](https://github.com/onflow/ff-sre-infrastructure/issues/322)
+- [Create secrets for configuration and load at VM startup](https://github.com/onflow/ff-sre-infrastructure/issues/102)
 
 
 **Active Epics**
-
+* [Integrate Grafana Alloy Agent](https://github.com/onflow/ff-sre-infrastructure/issues/100)
+* [Support Private Image Builds](https://github.com/orgs/onflow/projects/79/views/1?pane=issue&itemId=104950609&issue=onflow%7Cff-sre-infrastructure%7C225)
 
 ---
 
