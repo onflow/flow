@@ -208,7 +208,12 @@ Cycle Objective(s):
       [[Malleability Immutable] Enforce immutability for EpochCommit](https://github.com/onflow/flow-go/issues/7286)
 
 * <ins>Cryptography</ins>
-
+  - SPoCK aggregation
+  - Proof of Possession:
+    - Check with partner to support the update
+    - Update bootstrapping tool PR
+  - Randomness: review of the fcl tool and updated docs
+  - Passkeys: review implementation draft
 
 * <ins>Supporting Badger to Pebble</ins>
 
@@ -223,12 +228,6 @@ Cycle Objective(s):
     * Continue working on Malleability Immutable tasks and on the [flow.Block](https://github.com/onflow/flow-go/issues/6716) malleability review remarks.
 
 * <ins>Cryptography</ins>
-  - SPoCK aggregation
-  - Proof of Possession:
-    - Check with partner to support the update
-    - Update bootstrapping tool PR
-  - Randomness: review of the fcl tool and updated docs
-  - Passkeys: review implementation draft
 
 * <ins>Protocol misc</ins>
 
