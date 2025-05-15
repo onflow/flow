@@ -123,17 +123,31 @@ Cycle Objective(s):
 * <ins>Data Availability</ins>
 
   * KROK Team
-    
-    Done:
-    
 
-    In Review:
-
-
-    In Progress:
+    * Done:
+    * In Review:
+    * In Progress:
 
 
 * <ins>Malleability</ins>
+  *  KROK Team
+    * Done:
+
+      [[Malleability C] cluster.Block](https://github.com/onflow/flow-go/issues/6660)
+    * In Review:
+
+      [[Malleability C] flow.Block](https://github.com/onflow/flow-go/issues/6716)
+    * In Progress:
+
+      [[Malleability Immutable] Enforce immutability for EpochRecover](https://github.com/onflow/flow-go/issues/7285)
+
+      [[Malleability Immutable] Enforce immutability for EpochSetup](https://github.com/onflow/flow-go/issues/7284)
+
+      [[Malleability Immutable] Enforce immutability for EpochCommit](https://github.com/onflow/flow-go/issues/7286)
+    * Next Sprint:
+
+      Continue working on Malleability Immutable tasks and on the [flow.Block](https://github.com/onflow/flow-go/issues/6716) malleability review remarks.
+
 
 * <ins>Cryptography</ins>
 
