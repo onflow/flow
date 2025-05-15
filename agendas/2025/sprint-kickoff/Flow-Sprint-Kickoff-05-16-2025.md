@@ -251,6 +251,9 @@ Cycle Objective(s):
 
 **Active Epics**
 
+* [[EPIC] Malleability B](https://github.com/onflow/flow-go/issues/6648)
+* [[EPIC] Malleability C](https://github.com/onflow/flow-go/issues/6647)
+* [[EPIC] Access Node supports soft-finality updates](https://github.com/onflow/flow-go/issues/6646)
 
 ---
 
