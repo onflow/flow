@@ -20,16 +20,17 @@
 
 #### YTD SLA
 
-| Incident/upgrade       | Date      | Collection | Consensus | Execution | Verification  | Total  | Comments      |
-| ---------------------- | --------- | ---------- | --------- | --------- | ------------ | ------ | ------------- |
+| Incident/upgrade       | Date      | Collection | Consensus | Execution | Verification | Total  | Comments      |
+| ---------------------- |-----------|------------|-----------|-----------|--------------|--------| ------------- |
 | HCU                    | 1/27/2025 |            |           | 5         |              | 5      |               |
 | P0 Incident            | 2/18/2025 | 180        | 180       | 180       | 180          | 180    | Grafana issue |
 | P0 Incident            | 2/19/2025 | 30         | 30        | 30        | 30           | 30     | Grafana issue |
 | HCU                    | 2/18/2025 |            |           | 5         |              | 5      |               |
 | HCU                    | 2/18/2025 |            |           | 5         |              | 5      |               |
 | HCU                    | 4/10/2025 |            |           | 5         |              | 5      |               |
-| Total downtime in mins |           | 210        | 210       | 230       | 210          | 230    |               |
-| YTD (5/2/25) SLA       |           | 99.86%     | 99.86%    | 99.85%    | 99.86%       | 99.85% |               |
+| HCU                    | 5/15/2025 |            |           | 5         |              | 5      |               |
+| Total downtime in mins |           | 210        | 210       | 235       | 210          | 230    |               |
+| YTD (5/2/25) SLA       |           | 99.89%     | 99.89%    | 99.88%    | 99.89%       | 99.88% |               |
 | SLA for 2025           |           | 99.96%     | 99.96%    | 99.96%    | 99.96%       | 99.96% |               |
 
 ### Incidents
