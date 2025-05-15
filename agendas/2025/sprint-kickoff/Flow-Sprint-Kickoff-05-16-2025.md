@@ -185,27 +185,43 @@ Cycle Objective(s):
   * KROK Team
 
     * Done:
+
+      [[DataAvailability] Implement Persister interface](https://github.com/onflow/flow-go/issues/7198)
+
+      [[DataAvailability] Implement processing pipeline state machine](https://github.com/onflow/flow-go/issues/7201)
+
     * In Review:
+
+      [[DataAvailability] Implement Index step logic](https://github.com/onflow/flow-go/issues/7203)
+
+      [[DataAvailability] Implement Download step logic](https://github.com/onflow/flow-go/issues/7202)
+
+      [[DataAvailability] Create a module that downloads tx result error messages](https://github.com/onflow/flow-go/issues/7356)
+
+      [[DataAvailability] Implement Download step logic](https://github.com/onflow/flow-go/issues/7202)
+
     * In Progress:
+
+      Working on code review remarks
 
 
 * <ins>Malleability</ins>
   * Supported KROK with PR reviews for `cluster.Block`, `flow.Block`.
   * ID caching strategy discussion and review.
   *  KROK Team
-    * Done:
+     * Done:
 
-      [[Malleability C] cluster.Block](https://github.com/onflow/flow-go/issues/6660)
-    * In Review:
+       [[Malleability C] cluster.Block](https://github.com/onflow/flow-go/issues/6660)
+     * In Review:
 
-      [[Malleability C] flow.Block](https://github.com/onflow/flow-go/issues/6716)
-    * In Progress:
+       [[Malleability C] flow.Block](https://github.com/onflow/flow-go/issues/6716)
+     * In Progress:
 
-      [[Malleability Immutable] Enforce immutability for EpochRecover](https://github.com/onflow/flow-go/issues/7285)
+       [[Malleability Immutable] Enforce immutability for EpochRecover](https://github.com/onflow/flow-go/issues/7285)
 
-      [[Malleability Immutable] Enforce immutability for EpochSetup](https://github.com/onflow/flow-go/issues/7284)
+       [[Malleability Immutable] Enforce immutability for EpochSetup](https://github.com/onflow/flow-go/issues/7284)
 
-      [[Malleability Immutable] Enforce immutability for EpochCommit](https://github.com/onflow/flow-go/issues/7286)
+       [[Malleability Immutable] Enforce immutability for EpochCommit](https://github.com/onflow/flow-go/issues/7286)
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation
