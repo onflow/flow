@@ -2,6 +2,7 @@
 
  ### Team Wins 🎉
 
+* Tidal Onsite - General Milestones and outcomes decided upon
 * EVM Pectra update live on Flow Mainnet!
 * First version of [Execution node with Compiler + VM integrated](https://github.com/onflow/flow-go/pull/7369) to run Fee deduction, Account balance and Storage limits checks ready for testing!
 * Cadence [Compiler Milestone 5: All interpreter tests for existing functionality](https://github.com/onflow/cadence/issues/3922) progressing super well, 60% of test coverage (~500/800 tests) now run on the VM.
