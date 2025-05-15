@@ -2,8 +2,9 @@
 
  ### Team Wins 🎉
 
-*
-*
+* EVM Pectra update live on Flow Mainnet!
+* First version of [Execution node with Compiler + VM integrated](https://github.com/onflow/flow-go/pull/7369) to run Fee deduction, Account balance and Storage limits checks ready for testing!
+* Cadence [Compiler Milestone 5: All interpreter tests for existing functionality](https://github.com/onflow/cadence/issues/3922) progressing super well, 60% of test coverage (~500/800 tests) now run on the VM.
 
 ---
 
@@ -84,21 +85,79 @@ Q2 2025 Cycle Objective(s):
 **Done last sprint**
 
 **Cadence Language**
-
+- [Compiler milestone 4 - FVM integration & execution of book-keeping functions](https://github.com/onflow/cadence/issues/3856)
+    - [Port non-compiler/VM changes from feature branch to master](https://github.com/onflow/cadence/pull/3919)
+- [Compiler Milestone 5: All interpreter tests for existing functionality](https://github.com/onflow/cadence/issues/3922)
+    - [[Compiler] Run more tests with the compiler and VM](https://github.com/onflow/cadence/pull/3921)
+    - [[Compiler] Run for-statement tests with compiler](https://github.com/onflow/cadence/pull/3923)
+    - [[Compiler] Refactor test utility functions](https://github.com/onflow/cadence/pull/3924)
+    - [[Compiler] Run more tests with the compiler](https://github.com/onflow/cadence/pull/3925)
+    - [[Compiler] Run `interpreter/misc_test.go` with compiler](https://github.com/onflow/cadence/pull/3926)
+    - [[Compiler] Enable more misc tests](https://github.com/onflow/cadence/pull/3928)
+    - [[Compiler] Pass `vm.Context` instead of `vm.Config` to contract function handler](https://github.com/onflow/cadence/pull/3933)
+    - [[Compiler] Fix compilation of inherited conditions with different parameters](https://github.com/onflow/cadence/pull/3932)
+    - [[Compiler] Refactor function invocation on vm](https://github.com/onflow/cadence/pull/3934)
+    - [[Compiler] Add receiver validation for bound functions](https://github.com/onflow/cadence/pull/3935)
+    - [[Compiler] Add string stdlib functions](https://github.com/onflow/cadence/pull/3936)
+    - [Refactor type constructors](https://github.com/onflow/cadence/pull/3942)
+    - [[Compiler] Run most metatype tests and all interface tests with compiler/VM](https://github.com/onflow/cadence/pull/3941)
+    - [[Compiler] Register type constructor functions in VM, run runtime-type tests with compiler/VM](https://github.com/onflow/cadence/pull/3945)
+- [Compiler - Next Milestone](https://github.com/onflow/cadence/issues/3804)
+    - [[Compiler] Enable conditions test](https://github.com/onflow/cadence/pull/3917)
+    - [[Compiler] Compile global variables](https://github.com/onflow/cadence/pull/3920)
+    - [[Compiler] Compile position info as a line-number table](https://github.com/onflow/cadence/pull/3939)
+- Tech debt
+    - [Improve error wrapping of runtime interface calls](https://github.com/onflow/cadence/pull/3927)
+    - [Improve computation metering interface](https://github.com/onflow/cadence/pull/3929)
+- Chore
+    - [Port non-compiler/VM changes from feature branch to master](https://github.com/onflow/cadence/pull/3930)
+    - [Update linter, lint](https://github.com/onflow/cadence/pull/3940)
+    - [ Port non-compiler/VM changes from feature branch to master ](https://github.com/onflow/cadence/pull/3943)
+    - [Sync compiler/VM feature branch](https://github.com/onflow/cadence/pull/3944)
 
 **Cadence Execution**
-
+- [Badger -> Pebble DB M3: unblock pruning of Execution, Access and Verification data](https://github.com/onflow/flow-go/issues/7242)
+    - [Add lock context to storage cache](https://github.com/onflow/flow-go/pull/7393)
+    - [[Storing] Refactor hotstuff Persister](https://github.com/onflow/flow-go/pull/7358)
+    - [[Util] Refactor the flags for reading datadir and pebble-dir](https://github.com/onflow/flow-go/pull/7380)
+- Checkpointing performance improvement:
+    - [Reduce state extraction w/o migration by ~29 minutes (~2.5x speedup)](https://github.com/onflow/flow-go/pull/7373)
+- Testing improvement:
+    - [Add additional test to check for state commitment changes](https://github.com/onflow/flow-go/pull/7377)
+- End-End tests updates:
+    - [Update flow-go](https://github.com/onflow/flow-e2e-tests/pull/63)
+    - [Skip AccountV2Migration contract checking](https://github.com/onflow/flow-e2e-tests/pull/64)
+TPS loader fixes & improvements
+    - [Localnet hooks for TPS loader](https://github.com/onflow/flow-go/pull/7165)
+    - [Continous loading](https://github.com/onflow/flow-execution-effort-estimation/pull/32)
+    - [Refactor Component Engine](https://github.com/onflow/flow-execution-effort-estimation/pull/36)
+    - [Read starting TPS from big query](https://github.com/onflow/flow-execution-effort-estimation/pull/37)
+    - [Loader fixes](https://github.com/onflow/flow-execution-effort-estimation/pull/38)
+    - [Extract block emmiter from transaction sender](https://github.com/onflow/flow-execution-effort-estimation/pull/39)
+    - [Transaction Data Scraper](https://github.com/onflow/flow-execution-effort-estimation/pull/40)
 
 **EVM**
+- Pectra upgrade prep:
+    - [Update to and enable EVM Pectra hard-fork](https://github.com/onflow/flow-go/pull/7328)
+    - [Sync with Geth version `v1.15.10`](https://github.com/onflow/go-ethereum/pull/24)
+    - [Update to EVM Pectra hard-fork](https://github.com/onflow/flow-evm-gateway/pull/805)
+    - [Back-port EVM Pectra hard-fork to soft finality](https://github.com/onflow/flow-evm-gateway/pull/816)
+- Bugfixes:
+- [Create `ValidationOptions` for each tx submission](https://github.com/onflow/flow-evm-gateway/pull/818)
+- [Return authorization list for `SetCodeTx` type](https://github.com/onflow/flow-evm-gateway/pull/821)
 
 
 **This sprint**
 
 - Cadence Language
-
+  - Test [Compiler Milestone 4](https://github.com/onflow/cadence/issues/3856) on migration TN and capture CPU profiles.
+  - Continue working on [Compiler Milestone 5: All interpreter tests for existing functionality](https://github.com/onflow/cadence/issues/3922)
 
 - Cadence Execution
-
+  - Continue new Trie research
+  - Continue work on [Badger -> Pebble DB M3: unblock pruning of Execution, Access and Verification data](https://github.com/onflow/flow-go/issues/7242)
+  - Continue [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
+  - Wrap-up hackathon project
 
 **On Hold**
 - [Migration of EN version beacon to Dyn. Prot. State](https://github.com/onflow/flow-go/issues/6788)
