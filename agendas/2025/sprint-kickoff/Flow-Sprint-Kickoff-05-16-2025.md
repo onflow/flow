@@ -230,16 +230,17 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 ### **Governance** \[Vishal]
 
 Cycle Objective(s):
-1. Ensure the multisign process for Flow is efficient with effective community participation
+1. Ensure the multisign process for Flow is efficient with effective community participation [DONE]
 2. Maintain long-term decentralization of Flow consensus nodes by ensuring no operator controls 1/3rd or more of the network's consensus nodes
 3. Continue building a well-structured Flow Tokenomics framework to enhance community understanding, improve perception, and articulate a clear long-term vision
 4. Build and ship a new dashboard to provide node operators with real-time access to staking, epoch-related and other relevant data.
 
 **Done last sprint**
-
+N/A
 
 **This sprint**
 
-  * Vishal OOO
+1. Onboard 5 new consensus nodes run by QuickNode.
+2. Continue Flow tokenomics discussion with Dete
 
 ---
