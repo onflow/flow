@@ -64,7 +64,7 @@
 | Released    | 4  |    34     |       9         |       6          |        **53**          |
 | Total       | **19** |    **50**   |       **16**       |       **17**         |        **102**         |
 
-
+* No change
 
 ### Key Release Dates & Breaking Changes
 n/A
@@ -241,6 +241,6 @@ N/A
 **This sprint**
 
 1. Onboard 5 new consensus nodes run by QuickNode.
-2. Continue Flow tokenomics discussion with Dete
+2. Continue Flow tokenomics framework discussion with Dete
 
 ---
