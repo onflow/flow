@@ -235,7 +235,7 @@ Cycle Objective(s):
 
 ---
 
-### **DeFi** \[]
+### **DeFi** \[Kan]
 
 Cycle Objective(s):
 - Close gaps in Defi/Liquidity infrastructure post-Cadence 1.0
@@ -243,7 +243,23 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+Tidal Onsite
+- Outlined the stages of deliverables
+ - Tracer Bullet
+ - Closed Beta
+ - Open Beta
+- Tracer Bullet
+ - Front End scaffold complete
+ - Backend Infrastructure Setup, including emulator setup
+ - On Chain Event Interfaces complete
+
 **This sprint**
+Tidal
+- Continue working on Tracer Bullet
+ - Replace mock data with Backend Interactions
+ - Move backend towards more onchain interactions
+ - Continue connecting onchain work flow via DeFi blocks
+ - Continue working towards one full "position" user flow
 
 **On Hold**
 
