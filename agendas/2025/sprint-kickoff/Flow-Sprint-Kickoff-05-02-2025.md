@@ -110,7 +110,7 @@ Q2 2025 Cycle Objective(s):
     - [[Compiler] Separate methods from fields for `SimpleCompositeValue`](https://github.com/onflow/cadence/pull/3890)
     - [[Compiler] Fix inherited conditions compilation](https://github.com/onflow/cadence/pull/3884)
     - [[Compiler] Optimize transfers](https://github.com/onflow/cadence/pull/3879)
-    - [Port changes to the `interpreter` package from the `feature/compiler` branch](https://github.com/onflow/cadence/pull/3892) 
+    - [Port changes to the `interpreter` package from the `feature/compiler` branch](https://github.com/onflow/cadence/pull/3892)
     - FVM Integration
         - [Decouple NewEnumCaseValue from interpreter](https://github.com/onflow/cadence/pull/3900)
         - [Refactor runtime package](https://github.com/onflow/cadence/pull/3888)
@@ -197,7 +197,7 @@ Cycle Objective(s):
   * Finished draft of Optimistic Sync Milestone 2 design
   * Started work on new ingestion engine and Results Forest
   * KROK Team
-    
+
     Done:
     - [[DataAvailability] Create in-memory Registers storage implementation](https://github.com/onflow/flow-go/issues/7186)
 
@@ -213,16 +213,16 @@ Cycle Objective(s):
 * <ins>Malleability</ins>
   - added custom [linter](https://github.com/onflow/flow-go/issues/7271) to enforce conceptually immutable structs in `flow-go` are not modified
   - exploring merge strategies (:point_right: [notion](https://www.notion.so/flowfoundation/Malleability-master-Merging-strategy-1e51aee12324800fb80aceba59cf4f2c?pvs=4) writeup)
-  - collision-resistant hashing for 
+  - collision-resistant hashing for
     - [CollectionGuarantee](https://github.com/onflow/flow-go/pull/7248) (completed)
     - [cluster.Block](https://github.com/onflow/flow-go/issues/6660) (PR in review)
     - [flow.Block](https://github.com/onflow/flow-go/issues/6716) (implementation ongoing)
-  - simplified [heropool](https://github.com/onflow/flow-go/pull/7342) (in areas where it previously violated immutability)  
+  - simplified [heropool](https://github.com/onflow/flow-go/pull/7342) (in areas where it previously violated immutability)
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation (ongoing)
   - Crypto package: audit and merge go1.24 changes.
-  - Review, update and refine `FlowVRF` developer documentation 
+  - Review, update and refine `FlowVRF` developer documentation
     support marketing to write a new blog post
 
 * <ins>Supporting Badger to Pebble</ins>
@@ -250,7 +250,7 @@ Cycle Objective(s):
   - SPoCK aggregation
 
 * <ins>Protocol misc</ins>
-  - reviewing PR for Pebble version of Consensus Follower (ongoing) 
+  - reviewing PR for Pebble version of Consensus Follower (ongoing)
   - Integrate `lock context` library as PoC for atomic read-write operations on Pebble (once Pebble version of Follower is complete)
 
 **On Hold**
@@ -286,20 +286,22 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-- Improved TypeScript support in the JS SDK
-- Identified cross-VM hooks for `@onflow/kit`
-- Created randomness React hook for `@onflow/kit`
-- Built the `Connect` component for `@onflow/kit`
-- Added chain ID hook to `@onflow/kit`
-- Enhanced the FCL spec with a new security feature for account proofs
+* Set up automated API documentation generation for FCL/SDK using TypeScript and JSDoc.
+* Migrated the cross-VM batch transaction hook from the scaffold to `@onflow/kit`.
+* Added a theming system for components in `@onflow/kit`.
+* Added a cross-VM balance hook to `@onflow/kit`.
+* Participated in a hackathon.
 
 **This sprint**
 
-- Automating FCL/JS SDK API documentation with TypeScript/JSDoc
-- Migrating the cross-VM batch transaction hook from the scaffold to `@onflow/kit`
-- Adding a theming system for components in `@onflow/kit`
-- Building a profile component for `@onflow/kit`
-- Building a transaction component for `@onflow/kit`
+* Set up CI for automated documentation generation.
+* Convert FCL core exposed APIs to TypeScript.
+* Build a profile component for `@onflow/kit`.
+* Build a transaction component for `@onflow/kit`.
+* Add a cross-VM FT spend hook to `@onflow/kit`.
+* Add a cross-VM NFT spend hook to `@onflow/kit`.
+* Add an NFT hook to `@onflow/kit`.
+* Add a child accounts hook to `@onflow/kit`.
 
 ---
 
