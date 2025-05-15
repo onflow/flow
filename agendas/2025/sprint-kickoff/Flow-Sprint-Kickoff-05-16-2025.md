@@ -41,7 +41,13 @@
 - P0 and P1: None
 
 ### Testnet
-- P0
+#### P0
+- 14th May 12:50 AM Pacific: EVM GW nodes stopped on testnet.
+  - Root cause: EVM GWs were mistakenly updated to incorrect node software version.
+
+#### P1
+- 13th May 9:08 AM Pacific: Block explorer (flowscan) couldn't index new contracts.
+  - Root cause: AN1 on testnet was behind in terms of block height. Removing AN1 from load balancer rotation solved the problem.
 
 
 ---
