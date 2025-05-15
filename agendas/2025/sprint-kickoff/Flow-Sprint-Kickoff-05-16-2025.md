@@ -254,7 +254,7 @@ N/A
 
 **This sprint**
 
-1. Onboard 5 new consensus nodes run by QuickNode.
+1. Onboard 5 new consensus nodes that will be run by QuickNode.
 2. Continue Flow tokenomics framework discussion with Dete
 
 ---
