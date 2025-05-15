@@ -190,6 +190,8 @@ Cycle Objective(s):
 
 
 * <ins>Malleability</ins>
+  * Supported KROK with PR reviews for `cluster.Block`, `flow.Block`.
+  * ID caching strategy discussion and review.
   *  KROK Team
     * Done:
 
@@ -204,10 +206,6 @@ Cycle Objective(s):
       [[Malleability Immutable] Enforce immutability for EpochSetup](https://github.com/onflow/flow-go/issues/7284)
 
       [[Malleability Immutable] Enforce immutability for EpochCommit](https://github.com/onflow/flow-go/issues/7286)
-    * Next Sprint:
-
-      Continue working on Malleability Immutable tasks and on the [flow.Block](https://github.com/onflow/flow-go/issues/6716) malleability review remarks.
-
 
 * <ins>Cryptography</ins>
 
@@ -222,10 +220,15 @@ Cycle Objective(s):
  
 
 * <ins>Malleability</ins>
-
+    * Continue working on Malleability Immutable tasks and on the [flow.Block](https://github.com/onflow/flow-go/issues/6716) malleability review remarks.
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation
+  - Proof of Possession:
+    - Check with partner to support the update
+    - Update bootstrapping tool PR
+  - Randomness: review of the fcl tool and updated docs
+  - Passkeys: review implementation draft
 
 * <ins>Protocol misc</ins>
 
@@ -240,7 +243,7 @@ Cycle Objective(s):
 
 Cycle Objective(s):
 - Close gaps in Defi/Liquidity infrastructure post-Cadence 1.0
-- Bring liquidity and and kick start ecosystem effects
+- Bring liquidity and kickstart ecosystem effects
 
 **Done last sprint**
 
