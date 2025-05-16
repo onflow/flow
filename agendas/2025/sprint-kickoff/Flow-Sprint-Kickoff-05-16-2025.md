@@ -13,11 +13,11 @@
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%   |    100%       |      0%         |
-| Block Finalization      | 99.9%   |    100%       |      0%         |
-| Transaction Execution   | 99.9%   |    100%       |      0%      |
-| Block Sealing           | 99.9%   |    100%       |      0%       |
-| Access API Liveness     | 99.9%   |    100%       |      0%         |
+| Collection Finalization | 99.9%   |     100%      |        0%         |
+| Block Finalization      | 99.9%   |     100%      |        0%         |
+| Transaction Execution   | 99.9%   |    99.975%    |       24.8%       |
+| Block Sealing           | 99.9%   |     100%      |        0%         |
+| Access API Liveness     | 99.9%   |     100%      |        0%         |
 
 
 #### YTD SLA
@@ -32,7 +32,7 @@
 | HCU                    | 4/10/2025 |            |           | 5         |              | 5      |               |
 | HCU                    | 5/15/2025 |            |           | 5         |              | 5      |               |
 | Total downtime in mins |           | 210        | 210       | 235       | 210          | 230    |               |
-| YTD (5/2/25) SLA       |           | 99.89%     | 99.89%    | 99.88%    | 99.89%       | 99.88% |               |
+| YTD (5/16/25) SLA       |           | 99.89%     | 99.89%    | 99.88%    | 99.89%       | 99.88% |               |
 | SLA for 2025           |           | 99.96%     | 99.96%    | 99.96%    | 99.96%       | 99.96% |               |
 
 ### Incidents
@@ -185,49 +185,102 @@ Cycle Objective(s):
   * KROK Team
 
     * Done:
+
+      [[Access] The WebSoket connection closes after a few seconds of being active on testnet](https://github.com/onflow/flow-go/issues/7403) - Investigated root case of an issue. But this appears to be a machine configuration issue. I'm not sure if we will need any more input from us.
+
+      **_Optimistic Syncing:_**
+
+      [[DataAvailability] Implement Persister interface](https://github.com/onflow/flow-go/issues/7198)
+
+      [[DataAvailability] Implement processing pipeline state machine](https://github.com/onflow/flow-go/issues/7201)
+
+
     * In Review:
+
+      **_Optimistic Syncing:_**
+
+      [[DataAvailability] Implement Index step logic](https://github.com/onflow/flow-go/issues/7203)
+
+      [[DataAvailability] Implement Download step logic](https://github.com/onflow/flow-go/issues/7202)
+
+      [[DataAvailability] Create a module that downloads the tx result error messages](https://github.com/onflow/flow-go/issues/7356)
+
+      [[DataAvailability] Implement Download step logic](https://github.com/onflow/flow-go/issues/7202)
+
     * In Progress:
+
+      **_Optimistic Syncing:_**
+
+      [[DataAvailability] Implement Persist step logic](https://github.com/onflow/flow-go/issues/7204)
 
 
 * <ins>Malleability</ins>
   * Supported KROK with PR reviews for `cluster.Block`, `flow.Block`.
   * ID caching strategy discussion and review.
   *  KROK Team
-    * Done:
+     * Done:
 
-      [[Malleability C] cluster.Block](https://github.com/onflow/flow-go/issues/6660)
-    * In Review:
+       [[Malleability C] cluster.Block](https://github.com/onflow/flow-go/issues/6660)
+     * In Review:
 
-      [[Malleability C] flow.Block](https://github.com/onflow/flow-go/issues/6716)
-    * In Progress:
+       [[Malleability C] flow.Block](https://github.com/onflow/flow-go/issues/6716)
 
-      [[Malleability Immutable] Enforce immutability for EpochRecover](https://github.com/onflow/flow-go/issues/7285)
+       [[Malleability Immutable] Enforce immutability for EpochRecover (draft)](https://github.com/onflow/flow-go/issues/7285)
 
-      [[Malleability Immutable] Enforce immutability for EpochSetup](https://github.com/onflow/flow-go/issues/7284)
+       [[Malleability Immutable] Enforce immutability for EpochSetup (draft)](https://github.com/onflow/flow-go/issues/7284)
 
-      [[Malleability Immutable] Enforce immutability for EpochCommit](https://github.com/onflow/flow-go/issues/7286)
+       [[Malleability Immutable] Enforce immutability for EpochCommit (draft)](https://github.com/onflow/flow-go/issues/7286)
+
+       [[Malleability Immutable] Enforce immutability for MissingCollection.](https://github.com/onflow/flow-go/issues/7275)
+
+       [[Malleability Immutable] Enforce immutability for Vote.](https://github.com/onflow/flow-go/issues/7273)
+
+       [[Malleability Immutable] Enforce immutability for IncorporatedResult.](https://github.com/onflow/flow-go/issues/7292)
+
+     * In Progress:
+
+       [[Malleability Immutable] Enforce immutability for MinEpochStateEntry](https://github.com/onflow/flow-go/issues/7293)
+
+       [[Malleability Immutable] Enforce immutability for EpochStateEntry](https://github.com/onflow/flow-go/issues/7295)
+
+       [[Malleability Immutable] Enforce immutability for RichEpochStateEntry](https://github.com/onflow/flow-go/issues/7296)
+
+       [[Malleability Immutable] Enforce immutability for Collection.](https://github.com/onflow/flow-go/issues/7281)
+
+       [[Malleability Immutable] Enforce immutability for CollectionGuarantee.](https://github.com/onflow/flow-go/issues/7283)
+
+       [[Malleability Immutable] Enforce immutability for QuorumCertificate.](https://github.com/onflow/flow-go/issues/7297)
 
 * <ins>Cryptography</ins>
-  - SPoCK aggregation
+  - SPoCK aggregation research.
   - Proof of Possession:
     - Check with partner to support the update
     - Update bootstrapping tool PR
-  - Randomness: review of the fcl tool and updated docs
-  - Passkeys: review implementation draft
-
-* <ins>Supporting Badger to Pebble</ins>
-
-
+  - Randomness: Reviewed Kit (the fcl tool) for usages of randomness, provided feedback and updated tool's docs.
+  - Passkeys: Worked on the draft implementation of the Passkey FLIP.
 
 **This sprint**
 
 * <ins>Data Availability</ins>
 
+  * KROK Team
+
+      **_Optimistic Syncing:_**
+
+      [[DataAvailability] Integrate pipeline processing steps into Core](https://github.com/onflow/flow-go/issues/7374)
+
+      Continue working towards [milestone 1](https://www.notion.so/flowfoundation/Optimistic-Syncing-System-Design-1c11aee12324807d9b42f3f25f6ab7db?pvs=4#1c11aee1232480b7ac2af58af084107a) for Optimistic syncing new issues and Review Remarks
+  
+ 
 
 * <ins>Malleability</ins>
-    * Continue working on Malleability Immutable tasks and on the [flow.Block](https://github.com/onflow/flow-go/issues/6716) malleability review remarks.
+    
+    * KROK Team      
+      
+        Continue working on Malleability Immutable tasks and the [flow.Block](https://github.com/onflow/flow-go/issues/6716) malleability review remarks.
 
 * <ins>Cryptography</ins>
+  * Continue SPoCK aggregation research
 
 * <ins>Protocol misc</ins>
 
@@ -235,6 +288,9 @@ Cycle Objective(s):
 
 **Active Epics**
 
+* [[EPIC] Malleability B](https://github.com/onflow/flow-go/issues/6648)
+* [[EPIC] Malleability C](https://github.com/onflow/flow-go/issues/6647)
+* [[EPIC] Access Node supports soft-finality updates](https://github.com/onflow/flow-go/issues/6646)
 
 ---
 
@@ -256,6 +312,21 @@ Tidal Onsite
  - Backend Infrastructure Setup, including emulator setup
  - On Chain Event Interfaces complete
 
+WFLOW LayerZero OFT
+- Design implementation plan
+- Setup Safe on ETH Mainnet
+- Transfer ownership of WFLOW contract from Wrapped team
+- Verify and remove roles
+- Write scripts and complete transfer of ownership
+- Write foundry scripts for
+ - MintAndBurnAdapter deployment
+ - Give minting and burning rights on ETH mainnet
+ - Configuring LayerZero Decenteralized Verifier Networks
+ - Set peers
+ - NOFT deployment on Flow EVM
+ - Collateralize NOFT gas adapter on Flow EVM
+- Ongoing Fork testing
+
 **This sprint**
 Tidal
 - Continue working on Tracer Bullet
@@ -263,6 +334,11 @@ Tidal
  - Move backend towards more onchain interactions
  - Continue connecting onchain work flow via DeFi blocks
  - Continue working towards one full "position" user flow
+
+WFLOW LayerZero OFT
+- Transfer Flow from Wrapped Anchorage Account to Flow EVM
+- Complete Fork Testing
+- Start Mainnet deployment and configuration
 
 **On Hold**
 
