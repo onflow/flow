@@ -222,7 +222,7 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability</ins>
- 
+
 
 * <ins>Malleability</ins>
     * Continue working on Malleability Immutable tasks and on the [flow.Block](https://github.com/onflow/flow-go/issues/6716) malleability review remarks.
@@ -277,11 +277,22 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-
+- Set up automated API documentation generation for FCL/SDK using TypeScript and JSDoc
+- Migrated the cross-VM batch transaction hook from the scaffold to `@onflow/kit`
+- Added a theming system for components in `@onflow/kit`
+- Added a cross-VM balance hook to `@onflow/kit`
+- Participated in a hackathon
 
 **This sprint**
 
-
+- Set up CI for automated documentation generation
+- Convert FCL core exposed APIs to TypeScript
+- Build a profile component for `@onflow/kit`
+- Build a transaction component for `@onflow/kit`
+- Add a cross-VM FT spend hook to `@onflow/kit`
+- Add a cross-VM NFT spend hook to `@onflow/kit`
+- Add an NFT hook to `@onflow/kit`
+- Add a child accounts hook to `@onflow/kit`
 
 ---
 
