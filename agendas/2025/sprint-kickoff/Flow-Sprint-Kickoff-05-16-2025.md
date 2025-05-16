@@ -186,23 +186,32 @@ Cycle Objective(s):
 
     * Done:
 
+      [[Access] The WebSoket connection closes after a few seconds of being active on testnet](https://github.com/onflow/flow-go/issues/7403) - Investigated root case of an issue. But this appears to be a machine configuration issue. I'm not sure if we will need any more input from us.
+
+      **_Optimistic Syncing:_**
+
       [[DataAvailability] Implement Persister interface](https://github.com/onflow/flow-go/issues/7198)
 
       [[DataAvailability] Implement processing pipeline state machine](https://github.com/onflow/flow-go/issues/7201)
 
+
     * In Review:
+
+      **_Optimistic Syncing:_**
 
       [[DataAvailability] Implement Index step logic](https://github.com/onflow/flow-go/issues/7203)
 
       [[DataAvailability] Implement Download step logic](https://github.com/onflow/flow-go/issues/7202)
 
-      [[DataAvailability] Create a module that downloads tx result error messages](https://github.com/onflow/flow-go/issues/7356)
+      [[DataAvailability] Create a module that downloads the tx result error messages](https://github.com/onflow/flow-go/issues/7356)
 
       [[DataAvailability] Implement Download step logic](https://github.com/onflow/flow-go/issues/7202)
 
     * In Progress:
 
-      Working on code review remarks
+      **_Optimistic Syncing:_**
+
+      [[DataAvailability] Implement Persist step logic](https://github.com/onflow/flow-go/issues/7204)
 
 
 * <ins>Malleability</ins>
@@ -215,13 +224,32 @@ Cycle Objective(s):
      * In Review:
 
        [[Malleability C] flow.Block](https://github.com/onflow/flow-go/issues/6716)
+
+       [[Malleability Immutable] Enforce immutability for EpochRecover (draft)](https://github.com/onflow/flow-go/issues/7285)
+
+       [[Malleability Immutable] Enforce immutability for EpochSetup (draft)](https://github.com/onflow/flow-go/issues/7284)
+
+       [[Malleability Immutable] Enforce immutability for EpochCommit (draft)](https://github.com/onflow/flow-go/issues/7286)
+
+       [[Malleability Immutable] Enforce immutability for MissingCollection.](https://github.com/onflow/flow-go/issues/7275)
+
+       [[Malleability Immutable] Enforce immutability for Vote.](https://github.com/onflow/flow-go/issues/7273)
+
+       [[Malleability Immutable] Enforce immutability for IncorporatedResult.](https://github.com/onflow/flow-go/issues/7292)
+
      * In Progress:
 
-       [[Malleability Immutable] Enforce immutability for EpochRecover](https://github.com/onflow/flow-go/issues/7285)
+       [[Malleability Immutable] Enforce immutability for MinEpochStateEntry](https://github.com/onflow/flow-go/issues/7293)
 
-       [[Malleability Immutable] Enforce immutability for EpochSetup](https://github.com/onflow/flow-go/issues/7284)
+       [[Malleability Immutable] Enforce immutability for EpochStateEntry](https://github.com/onflow/flow-go/issues/7295)
 
-       [[Malleability Immutable] Enforce immutability for EpochCommit](https://github.com/onflow/flow-go/issues/7286)
+       [[Malleability Immutable] Enforce immutability for RichEpochStateEntry](https://github.com/onflow/flow-go/issues/7296)
+
+       [[Malleability Immutable] Enforce immutability for Collection.](https://github.com/onflow/flow-go/issues/7281)
+
+       [[Malleability Immutable] Enforce immutability for CollectionGuarantee.](https://github.com/onflow/flow-go/issues/7283)
+
+       [[Malleability Immutable] Enforce immutability for QuorumCertificate.](https://github.com/onflow/flow-go/issues/7297)
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation research.
@@ -234,11 +262,22 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability</ins>
-  * Continue working towards [milestone 1](https://www.notion.so/flowfoundation/Optimistic-Syncing-System-Design-1c11aee12324807d9b42f3f25f6ab7db?pvs=4#1c11aee1232480b7ac2af58af084107a) for Optimistic sync
+
+  * KROK Team
+
+      **_Optimistic Syncing:_**
+
+      [[DataAvailability] Integrate pipeline processing steps into Core](https://github.com/onflow/flow-go/issues/7374)
+
+      Continue working towards [milestone 1](https://www.notion.so/flowfoundation/Optimistic-Syncing-System-Design-1c11aee12324807d9b42f3f25f6ab7db?pvs=4#1c11aee1232480b7ac2af58af084107a) for Optimistic syncing new issues and Review Remarks
+  
  
 
 * <ins>Malleability</ins>
-    * Continue working on Malleability Immutable tasks and on the [flow.Block](https://github.com/onflow/flow-go/issues/6716) malleability review remarks.
+    
+    * KROK Team      
+      
+        Continue working on Malleability Immutable tasks and the [flow.Block](https://github.com/onflow/flow-go/issues/6716) malleability review remarks.
 
 * <ins>Cryptography</ins>
   * Continue SPoCK aggregation research
