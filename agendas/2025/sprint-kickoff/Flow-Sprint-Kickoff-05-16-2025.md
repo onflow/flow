@@ -275,6 +275,21 @@ Tidal Onsite
  - Backend Infrastructure Setup, including emulator setup
  - On Chain Event Interfaces complete
 
+WFLOW LayerZero OFT
+- Design implementation plan
+- Setup Safe on ETH Mainnet
+- Transfer ownership of WFLOW contract from Wrapped team
+- Verify and remove roles
+- Write scripts and complete transfer of ownership
+- Write foundry scripts for
+ - MintAndBurnAdapter deployment
+ - Give minting and burning rights on ETH mainnet
+ - Configuring LayerZero Decenteralized Verifier Networks
+ - Set peers
+ - NOFT deployment on Flow EVM
+ - Collateralize NOFT gas adapter on Flow EVM
+- Ongoing Fork testing
+
 **This sprint**
 Tidal
 - Continue working on Tracer Bullet
@@ -282,6 +297,11 @@ Tidal
  - Move backend towards more onchain interactions
  - Continue connecting onchain work flow via DeFi blocks
  - Continue working towards one full "position" user flow
+
+WFLOW LayerZero OFT
+- Transfer Flow from Wrapped Anchorage Account to Flow EVM
+- Complete Fork Testing
+- Start Mainnet deployment and configuration
 
 **On Hold**
 
