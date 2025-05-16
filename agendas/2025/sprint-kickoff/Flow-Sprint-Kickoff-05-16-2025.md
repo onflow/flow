@@ -253,7 +253,7 @@ Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation research.
-    - Reviewed proof aggregation techniques (Boldyreva 2003, Boneh-Drijvers 2018), explored SPoCK aggregation design, and investigated key assumptions like surjective hashing and strong transitivity.
+    - Finished reading Boldyreva’s 2003 verif-aggregate proof (KOSK based) - sketching a KOSK-based proof for SPoCK aggregation - reading 2018 Boneh-Drijvers new proofs (PoP based) for multi-verif and verif-aggregate - looked at surjective hashing assumptions - looked at link of Spock aggregation and strong transitivity
   - Proof of Possession:
     - Check with partner to support the update
     - Update bootstrapping tool PR
@@ -282,7 +282,7 @@ Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   * Continue SPoCK aggregation research
-    * Refine SPoCK aggregation model (multi-verifier vs aggregated verification), deepen analysis of strong transitivity, and study security proofs for same-message, PoP-based setups.
+    * Continue on strong transitivity assumptions - Refine the current SPoCk agg definitions (multi-verif or agg-verif or both) - security proofs of Boneh-Drivers for same message and PoP-based
 
 * <ins>Protocol misc</ins>
 
