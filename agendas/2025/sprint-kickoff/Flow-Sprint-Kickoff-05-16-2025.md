@@ -253,6 +253,7 @@ Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   - SPoCK aggregation research.
+    - Reviewed proof aggregation techniques (Boldyreva 2003, Boneh-Drijvers 2018), explored SPoCK aggregation design, and investigated key assumptions like surjective hashing and strong transitivity.
   - Proof of Possession:
     - Check with partner to support the update
     - Update bootstrapping tool PR
@@ -281,6 +282,7 @@ Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   * Continue SPoCK aggregation research
+    * Refine SPoCK aggregation model (multi-verifier vs aggregated verification), deepen analysis of strong transitivity, and study security proofs for same-message, PoP-based setups.
 
 * <ins>Protocol misc</ins>
 
