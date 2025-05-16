@@ -128,7 +128,7 @@ Q2 2025 Cycle Objective(s):
 - End-End tests updates:
     - [Update flow-go](https://github.com/onflow/flow-e2e-tests/pull/63)
     - [Skip AccountV2Migration contract checking](https://github.com/onflow/flow-e2e-tests/pull/64)
-TPS loader fixes & improvements
+- TPS loader fixes & improvements
     - [Localnet hooks for TPS loader](https://github.com/onflow/flow-go/pull/7165)
     - [Continous loading](https://github.com/onflow/flow-execution-effort-estimation/pull/32)
     - [Refactor Component Engine](https://github.com/onflow/flow-execution-effort-estimation/pull/36)
