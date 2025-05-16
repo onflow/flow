@@ -224,26 +224,24 @@ Cycle Objective(s):
        [[Malleability Immutable] Enforce immutability for EpochCommit](https://github.com/onflow/flow-go/issues/7286)
 
 * <ins>Cryptography</ins>
-  - SPoCK aggregation
+  - SPoCK aggregation research.
   - Proof of Possession:
     - Check with partner to support the update
     - Update bootstrapping tool PR
-  - Randomness: review of the fcl tool and updated docs
-  - Passkeys: review implementation draft
-
-* <ins>Supporting Badger to Pebble</ins>
-
-
+  - Randomness: Reviewed Kit (the fcl tool) for usages of randomness, provided feedback and updated tool's docs.
+  - Passkeys: Worked on the draft implementation of the Passkey FLIP.
 
 **This sprint**
 
 * <ins>Data Availability</ins>
+  * Continue working towards [milestone 1](https://www.notion.so/flowfoundation/Optimistic-Syncing-System-Design-1c11aee12324807d9b42f3f25f6ab7db?pvs=4#1c11aee1232480b7ac2af58af084107a) for Optimistic sync
  
 
 * <ins>Malleability</ins>
     * Continue working on Malleability Immutable tasks and on the [flow.Block](https://github.com/onflow/flow-go/issues/6716) malleability review remarks.
 
 * <ins>Cryptography</ins>
+  * Continue SPoCK aggregation research
 
 * <ins>Protocol misc</ins>
 
