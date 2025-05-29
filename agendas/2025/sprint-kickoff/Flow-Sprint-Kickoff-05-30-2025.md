@@ -242,10 +242,32 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
 
+**Support**
+- [Fix BN2 operational components](https://github.com/onflow/ff-sre-infrastructure/issues/414)
+- [Grant Raymond access to MN testing EN](https://github.com/onflow/ff-sre-infrastructure/issues/412)
+- [Update KMS Keys to remove users and ensure availability](https://github.com/onflow/ff-sre-infrastructure/issues/408)
+- [Clean up MN AN Boot disk logs](https://github.com/onflow/ff-sre-infrastructure/issues/390)
+- [Increase DL LN data disks](https://github.com/onflow/ff-sre-infrastructure/issues/391)
+- [Increase MN AN & LN Data disks](https://github.com/onflow/ff-sre-infrastructure/issues/388)
+
+**Incidet Response**
+- [Fix escalation policy to template for incident commanders](https://github.com/onflow/ff-sre-infrastructure/issues/410)
+- [Integrate slack into schedule rotations](https://github.com/onflow/ff-sre-infrastructure/issues/397)
+- [Configure slack group for each protocol on-call schedule](https://github.com/onflow/ff-sre-infrastructure/issues/396)
+
+**Coudflare**
+- [Create script to validate zone records](https://github.com/onflow/ff-sre-infrastructure/issues/303)
+- [Delete nodes.onflow.org zone](https://github.com/onflow/ff-sre-infrastructure/issues/375)
+- [Remove all records in the nodes.onflow.org zone in Terraform](https://github.com/onflow/ff-sre-infrastructure/issues/374)
+- [Remove NS records for nodes.onflow.org & validate cutover to onflow.org](https://github.com/onflow/ff-sre-infrastructure/issues/304)
+
+**Grafana Alloy**
+- [Create Documentation for Testing Cloud-init Changes Locally](https://github.com/onflow/ff-sre-infrastructure/issues/392)
+- [Create Grafana Alloy Configuration](https://github.com/onflow/ff-sre-infrastructure/issues/257)
 
 **Active Epics**
 * [Integrate Grafana Alloy Agent](https://github.com/onflow/ff-sre-infrastructure/issues/100)
-* [Support Private Image Builds](https://github.com/orgs/onflow/projects/79/views/1?pane=issue&itemId=104950609&issue=onflow%7Cff-sre-infrastructure%7C225)
+* [Incident Management & Response](https://github.com/orgs/onflow/projects/79/views/1?pane=issue&itemId=93739820&issue=onflow%7Cff-sre-infrastructure%7C131)
 
 ---
 
