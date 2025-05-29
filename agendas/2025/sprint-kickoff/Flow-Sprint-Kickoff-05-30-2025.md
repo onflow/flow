@@ -124,13 +124,36 @@ Cycle Objective(s):
  
 
 * <ins>Malleability</ins>
-  
-* <ins>Cryptography</ins>
-  - SPoCK aggregation research.
-  
-  - Proof of Possession:
+  * PR reviews
+  * KROK Team
+    * Done:
+      -   [\[Malleability C\] flow.Block](https://github.com/onflow/flow-go/issues/6660)
+    * In Review (fixing comments):
+      -   [\[Malleability Immutable\] Enforce immutability for EpochRecover](https://github.com/onflow/flow-go/issues/7285)
+      -   [\[Malleability Immutable\] Enforce immutability for EpochSetup](https://github.com/onflow/flow-go/issues/7284)
+      -   [\[Malleability Immutable\] Enforce immutability for EpochCommit](https://github.com/onflow/flow-go/issues/7286)
+      -   [\[Malleability Immutable\] Enforce immutability for MinEpochStateEntry](https://github.com/onflow/flow-go/issues/7293)
+      -   [\[Malleability Immutable\] Enforce immutability for EpochStateEntry](https://github.com/onflow/flow-go/issues/7295)
+      -   [\[Malleability Immutable\] Enforce immutability for RichEpochStateEntry](https://github.com/onflow/flow-go/issues/7296)
+      -   [\[Malleability Immutable\] Enforce immutability for Locator](https://github.com/onflow/flow-go/issues/7276)
+      -   [\[Malleability Immutable\] Enforce immutability for EpochProtocolStateAdapter](https://github.com/onflow/flow-go/issues/7307)
+      -   [\[Malleability Immutable\] Enforce immutability for EpochStateContainer](https://github.com/onflow/flow-go/issues/7294)
+      -   [\[Malleability Immutable\] Enforce immutability for ComputationResult](https://github.com/onflow/flow-go/issues/7274)
+      -   [\[Malleability Immutable\] Enforce immutability for TimeoutCertificate](https://github.com/onflow/flow-go/issues/7302)
+      -   [\[Malleability Immutable\] Enforce immutability for TimeoutObject](https://github.com/onflow/flow-go/issues/7272)
+      -   [\[Malleability Immutable\] Enforce immutability for ChunkDataPackRequest](https://github.com/onflow/flow-go/issues/7305)
+      -   [\[Malleability Immutable\] Enforce immutability for ChunkDataPackResponse](https://github.com/onflow/flow-go/issues/7306)
+    * In Progress:
+      -   [\[Malleability Immutable\] Enforce immutability for Event](https://github.com/onflow/flow-go/issues/7287)
 
-  - Passkeys: 
+
+* <ins>Cryptography</ins>
+  - Proof of Possession: prepare for updating the staking process:
+    - update and review of the bootstrapping utility (review still ongoing)
+    - update and merge the core-contracts changes
+    - docs and announcements
+  - SPoCK aggregation: finished analysing the PoP-based security proof in Boneh-Drijvers-Neven 2018 and Ristenpart 2006 (BLS multi-signatures)
+  - Passkeys: continue the implementation review and adding suggestions
 
 **This sprint**
 
@@ -138,9 +161,17 @@ Cycle Objective(s):
  
 
 * <ins>Malleability</ins>
+  * PR reviews
+  * KROK Team
+    - Continue working on Malleability Immutable tasks and on review remarks from previous sprint.
+
 
 * <ins>Cryptography</ins>
- 
+  - Proof of Possession: merge all PRs and core-contract updates on TN/MN
+  - SPoCK next steps: sketch a PoP-based proof of (simple) SPoCK unforgeabilty - sketch a KOSK-based proof of multi-SPoCK
+  - Passkeys: continue review and implementation
+  
+
 * <ins>Protocol misc</ins>
 
 **On Hold**
