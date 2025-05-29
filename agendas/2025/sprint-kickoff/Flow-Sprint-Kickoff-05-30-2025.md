@@ -2,6 +2,9 @@
 
  ### Team Wins 🎉
 
+* EN on Testnet now runs with rpotocol data migrated from Bafger to Pebble.
+* Cadence compiler + VM successfully runs on migration testnet, executing fee deduction and account balance check.
+
 ---
 
 ### Mainnet Uptime - Last 14 days (05/16/25 to 05/30/25) \[Vishal]
@@ -81,21 +84,85 @@ Q2 2025 Cycle Objective(s):
 **Done last sprint**
 
 **Cadence Language**
-
+- [Compiler Milestone 5: All interpreter tests for existing functionality](https://github.com/onflow/cadence/issues/3922)
+    - [[Compiler] Improve invocation of external functions and transactions](https://github.com/onflow/cadence/pull/3947)
+    - [[Compiler] Include location range for panicked errors in vm](https://github.com/onflow/cadence/pull/3946)
+    - [[Compiler] Enable arithmetic and bitwise tests to run with compiler/VM](https://github.com/onflow/cadence/pull/3948)
+    - [[Compiler] Enable more interpreter tests to be run with the compiler / VM](https://github.com/onflow/cadence/pull/3949)
+    - [[Compiler] Make the location-range field settable in all interpreter errors](https://github.com/onflow/cadence/pull/3950)
+    - [[Compiler] Run more tests with compiler/vm](https://github.com/onflow/cadence/pull/3953)
+    - [[Compiler] Run `resources-test` with the compiler](https://github.com/onflow/cadence/pull/3938)
+    - [[Compiler] Improve imports compilation for transitive dependencies](https://github.com/onflow/cadence/pull/3957)
+    - [[Compiler] Remove dependency to `interpreter.Config` from VM](https://github.com/onflow/cadence/pull/3964)
+- [Compiler Milestone 6: More features and tech debt](https://github.com/onflow/cadence/issues/3976)
+    - [Refactor string value parsers and big-endian bytes converters to be reusable in compiler/VM](https://github.com/onflow/cadence/pull/3977)
+    - [[Compiler] Implement `Number` types' methods and static functions ](https://github.com/onflow/cadence/pull/3982)
+    - [[Compiler] Implement built-in methods and functions for `Address`](https://github.com/onflow/cadence/pull/3983)
+    - [[Compiler] Support optional chaining in compiler](https://github.com/onflow/cadence/pull/3984)
+- Compiler optimization: [[Compiler] Add compiled programs to programs cache](https://github.com/onflow/cadence/issues/3954)
+    - [[Compiler] Cache compiled programs](https://github.com/onflow/cadence/pull/3956)
+- Compiler tech-debt:
+    - [Remove unreachable test cases](https://github.com/onflow/cadence/pull/3969)
+- [Revert removal of Account format v1](https://github.com/onflow/cadence/issues/3963)
+    - [Revert "Remove register reads related to account storage format V1"](https://github.com/onflow/cadence/pull/3962)
+    - [[v1.4] Revert "Remove register reads related to account storage format V1"](https://github.com/onflow/cadence/pull/3967)
+    - [[v1.4] Revert "Remove support for account storage format V1"](https://github.com/onflow/cadence/pull/3973)
+    - [[v1.4] Always enable storage format V2, remove migration code](https://github.com/onflow/cadence/pull/3975)
+    - [Revert removal of storage format v1 support](https://github.com/onflow/cadence/pull/3980)
+- Improvement:
+    - [Prompt for reporting unhelpful error messages and contributing to improvements](https://github.com/onflow/cadence/issues/3711)
+    - Make parser more robust: [Ensure unbounded loops in parser eventually make progress](https://github.com/onflow/cadence/pull/3974)
+- Chores:
+    - [Fix release action](https://github.com/onflow/cadence/pull/3961)
+    - [[Compiler] Sync feature branch with master](https://github.com/onflow/cadence/pull/3960)
+    - [[v1.4] Port v1.4.1-rc.2](https://github.com/onflow/cadence/pull/3966)
+    - [Port 1.4.1 to master](https://github.com/onflow/cadence/pull/3968)
+    - [[v1.4] Fix version](https://github.com/onflow/cadence/pull/3970)
+    - [Port non-compiler/VM changes from feature branch to master](https://github.com/onflow/cadence/pull/3951)
+    - [[Compiler] Sync feature branch with master](https://github.com/onflow/cadence/pull/3952)
+    - [Port non-compiler/VM changes from feature branch to master ](https://github.com/onflow/cadence/pull/3958)
+- Bugfix:
+    - [Improve value visitor: Only call checked visitor](https://github.com/onflow/cadence/pull/3955)
+- Internal fixes: [1](https://github.com/onflow/cadence-internal/pull/335), [2](https://github.com/onflow/cadence-internal/pull/336), [3](https://github.com/onflow/cadence-internal/pull/332), [4](https://github.com/onflow/cadence-internal/pull/337)
+- Docs:
+    - [Add UInt and Int to values-and-types.](https://github.com/onflow/cadence-lang.org/pull/207)
+    - [Add documentation for string templates.](https://github.com/onflow/cadence-lang.org/pull/212)
 
 **Cadence Execution**
 
-
-**EVM**
+- Improvements:
+    - Performance:
+        - [[Storage] Optimize memory cache key creation and key format for some stores](https://github.com/onflow/flow-go/pull/7391)
+        - [[Storage] Optimize iterating and seeking with BadgerDB](https://github.com/onflow/flow-go/pull/7432)
+    - [Fix multiple versions of msgpack being used](https://github.com/onflow/flow-go/pull/7399)
+    - [[Storage] Support Execution Fork Evidence for new databases (BadgerDB & Pebble)](https://github.com/onflow/flow-go/pull/7388)
+- Bugfixes:
+    - [[Storage] Fix Writer.Set() & Writer.Delete() args not being safe to modify (BadgerDB)](https://github.com/onflow/flow-go/pull/7400)
+    - [[Storage] Fix memory caches getting out of sync with databases (BadgerDB and Pebble)](https://github.com/onflow/flow-go/pull/7324)
+- Chores:
+    - [Update to Cadence v1.4.1](https://github.com/onflow/flow-go/pull/7434)
+    - [[Backport] update master to Cadence v1.4.1](https://github.com/onflow/flow-go/pull/7440)
+    - [Update to Cadence v1.5.1](https://github.com/onflow/flow-go/pull/7442)
+    - [[Backport] updating Pectra upgrade timestamps](https://github.com/onflow/flow-go/pull/7450)
+    - [Update to Cadence v1.6.0](https://github.com/onflow/flow-go/pull/7446)
+- CBOR:
+    - [Update README for Embedded JSON Tag for CBOR (tag 262)](https://github.com/fxamacker/cbor/pull/662)
+    - [Refactor to use reflect package functions](https://github.com/fxamacker/cbor/pull/663)
 
 
 
 **This sprint**
 
 - Cadence Language
+  - Continue Compiler Milestones [5](https://github.com/onflow/cadence/issues/3922) & [6](https://github.com/onflow/cadence/issues/3976).
+  - Complete [automation of storage iteration](https://github.com/onflow/cadence/issues/2688).
+  - Start work on [Cadence Fuzzer automation](https://github.com/onflow/cadence/issues/3985).
 
 - Cadence Execution
-
+  - Continue new Trie research
+  - Continue work on [Badger -> Pebble DB M3: unblock pruning of Execution, Access and Verification data](https://github.com/onflow/flow-go/issues/7242)
+  - Continue [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
+  - Continue [EOA control delegation](https://github.com/onflow/flow-go/issues/7441)
 
 **On Hold**
 - [Migration of EN version beacon to Dyn. Prot. State](https://github.com/onflow/flow-go/issues/6788)
