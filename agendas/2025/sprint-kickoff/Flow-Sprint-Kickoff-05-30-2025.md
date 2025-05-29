@@ -214,14 +214,16 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 Cycle Objective(s):
 1. Ensure the multisign process for Flow is efficient with effective community participation [DONE]
-2. Maintain long-term decentralization of Flow consensus nodes by ensuring no operator controls 1/3rd or more of the network's consensus nodes
+2. Maintain long-term decentralization of Flow consensus nodes by ensuring no operator controls 1/3rd or more of the network's consensus nodes [DONE]
 3. Continue building a well-structured Flow Tokenomics framework to enhance community understanding, improve perception, and articulate a clear long-term vision
 4. Build and ship a new dashboard to provide node operators with real-time access to staking, epoch-related and other relevant data.
 
 **Done last sprint**
-N/A
+1. 5 new consensus nodes were added to the network.
+2. Tokenomics discussion with Dete.
 
 **This sprint**
-
+1. Triage incoming Flow validator applications and coordinate token leases and onboarding if approved
+2. Continue Tokenomics discussion with Dete
 
 ---
