@@ -2,8 +2,8 @@
 
  ### Team Wins 🎉
 
-* EN on Testnet now runs with rpotocol data migrated from Bafger to Pebble.
-* Cadence compiler + VM successfully runs on migration testnet, executing fee deduction and account balance check.
+* EN on Testnet now runs with rpotocol data migrated from Badger to Pebble.
+* Cadence compiler + VM successfully runs on migration testnet, executing fee deduction and account balance check functions.
 
 ---
 
