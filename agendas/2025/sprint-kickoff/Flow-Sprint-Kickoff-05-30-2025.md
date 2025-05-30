@@ -194,6 +194,7 @@ Cycle Objective(s):
 
 * <ins>Malleability</ins>
   * PR reviews
+  * Compatibility testing and preparation for partial merge of malleability branch [PR 7447](https://github.com/onflow/flow-go/issues/7447)
   * KROK Team
     * Done:
       -   [\[Malleability C\] flow.Block](https://github.com/onflow/flow-go/issues/6660)
@@ -245,8 +246,8 @@ Cycle Objective(s):
     - Start work on refactoring collection ingestion ([Issue-7443](https://github.com/onflow/flow-go/issues/7443))
 
 * <ins>Malleability</ins>
-  * PR reviews
-  * Compatibility testing and preparation for partial merge of malleability branch [PR 7447](https://github.com/onflow/flow-go/issues/7447)
+  * Testing for malleability branch on Benchnet
+  * Continue PR Reviews
   * KROK Team
     - Continue working on Malleability Immutable tasks and on review remarks from previous sprint.
     - [Malleability Immutable] Enforce immutability for Header]
