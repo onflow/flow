@@ -212,6 +212,15 @@ Cycle Objective(s):
       -   [\[Malleability Immutable\] Enforce immutability for TimeoutObject](https://github.com/onflow/flow-go/issues/7272)
       -   [\[Malleability Immutable\] Enforce immutability for ChunkDataPackRequest](https://github.com/onflow/flow-go/issues/7305)
       -   [\[Malleability Immutable\] Enforce immutability for ChunkDataPackResponse](https://github.com/onflow/flow-go/issues/7306)
+      -   [Malleability Immutable] Enforce immutability for ResultApproval]
+      -   [Malleability Immutable] Enforce immutability for ResultApprovalBody]
+      -   [Malleability Immutable] Enforce immutability for Attestation]
+      -   [Malleability Immutable] Enforce immutability for QuorumCertificate]
+      -   [Malleability Immutable] Enforce immutability for CollectionGuarantee]
+      -   [Malleability Immutable] Enforce immutability for Collection]
+      -   [Malleability Immutable] Enforce immutability for Chunk]
+      -   [Malleability Immutable] Enforce immutability for ChunkDataPack]
+      -   [Malleability Immutable] Enforce immutability for ExecutionResult]
     * In Progress:
       -   [\[Malleability Immutable\] Enforce immutability for Event](https://github.com/onflow/flow-go/issues/7287)
 
@@ -228,7 +237,7 @@ Cycle Objective(s):
 
 * <ins>Data Availability</ins>
   - Continue work on results forest
-  - Complete writeups for Milestone 2 issues
+  - Complete writeups for Optimistic Sync Milestone 2 issues
   - KROK Team
     - Complete work on new [Indexer](https://github.com/onflow/flow-go/issues/7203), [Persister](https://github.com/onflow/flow-go/issues/7204) and [Downloader](https://github.com/onflow/flow-go/issues/7356) implementations (in review)
     - Complete work on integrating statemachine steps into Core module ([Issue-7374](https://github.com/onflow/flow-go/issues/7374))
@@ -237,8 +246,12 @@ Cycle Objective(s):
 
 * <ins>Malleability</ins>
   * PR reviews
+  * Compatibility testing and preparation for partial merge of malleability branch [PR 7447](https://github.com/onflow/flow-go/issues/7447)
   * KROK Team
     - Continue working on Malleability Immutable tasks and on review remarks from previous sprint.
+    - [Malleability Immutable] Enforce immutability for Header]
+    - [Malleability Immutable] Enforce immutability for TransactionBody]
+    - [Malleability Immutable] Enforce immutability for Transaction]
 
 
 * <ins>Cryptography</ins>
