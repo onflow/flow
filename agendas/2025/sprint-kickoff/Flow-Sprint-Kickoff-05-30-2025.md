@@ -185,10 +185,12 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Data Availability</ins>
-
+  * Operational work around version compatibility issues on mainnet
+  * Fixes for HCU compatibility ([1](https://github.com/onflow/flow-go/pull/7421), [2](https://github.com/onflow/flow-go/pull/7420), [3](https://github.com/onflow/flow-go/pull/7424), [4](https://github.com/onflow/flow-go/pull/7444), [5](https://github.com/onflow/flow-go/pull/7425), [6](https://github.com/onflow/flow-go/pull/7445))
+  * Fix service event indexing ([PR-7426](https://github.com/onflow/flow-go/pull/7426))
   * KROK Team
-
- 
+    * Redesigned ExecutionDataRequester ([PR-7329](https://github.com/onflow/flow-go/pull/7329))
+    * Implement interface for persisting caches ([PR-7394](https://github.com/onflow/flow-go/pull/7394))
 
 * <ins>Malleability</ins>
   * PR reviews
@@ -225,7 +227,13 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability</ins>
- 
+  - Continue work on results forest
+  - Complete writeups for Milestone 2 issues
+  - KROK Team
+    - Complete work on new [Indexer](https://github.com/onflow/flow-go/issues/7203), [Persister](https://github.com/onflow/flow-go/issues/7204) and [Downloader](https://github.com/onflow/flow-go/issues/7356) implementations (in review)
+    - Complete work on integrating statemachine steps into Core module ([Issue-7374](https://github.com/onflow/flow-go/issues/7374))
+    - Start work on state machine functional tests ([Issue-7379](http://github.com/onflow/flow-go/issues/7379))
+    - Start work on refactoring collection ingestion ([Issue-7443](https://github.com/onflow/flow-go/issues/7443))
 
 * <ins>Malleability</ins>
   * PR reviews
