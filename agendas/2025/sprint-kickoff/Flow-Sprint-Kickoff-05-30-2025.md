@@ -46,7 +46,7 @@ N/A
 ### Key Release Dates & Breaking Changes
 
 1. HCU to rollout the change to re-introduce the ability to read account storage format v1.
-- Testnet June 2nd, Monday (Time is TBD).
+- Testnet June 2nd, Monday 8AM Pacific.
 - Mainnet June 3rd, Tuesday 8AM Pacific.
 
 2. Proof of Possession rollout
