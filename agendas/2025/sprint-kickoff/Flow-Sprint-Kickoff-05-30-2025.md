@@ -187,7 +187,17 @@ Cycle Objective(s):
 * <ins>Data Availability</ins>
 
   * KROK Team
-
+      * Done:
+          * [[DataAvailability] Create a module that downloads the tx result error messages](https://github.com/onflow/flow-go/issues/7356)
+          * [[DataAvailability] Implement Download step logic](https://github.com/onflow/flow-go/issues/7202)
+    
+      * In Review (Working on review remarks):
+          * [[DataAvailability] Implement Index step logic](https://github.com/onflow/flow-go/issues/7203)
+          * [[DataAvailability] Implement Persist step logic](https://github.com/onflow/flow-go/issues/7204)
+    
+      * In Progress:
+          * [[DataAvailability] Integrate pipeline processing steps into Core](https://github.com/onflow/flow-go/issues/7374)
+          * [[DataAvailability] Extract collection ingestion into separate component](https://github.com/onflow/flow-go/issues/7443)
  
 
 * <ins>Malleability</ins>
@@ -195,6 +205,7 @@ Cycle Objective(s):
   * KROK Team
     * Done:
       -   [\[Malleability C\] flow.Block](https://github.com/onflow/flow-go/issues/6660)
+      -   [\[Malleability C\] flow.Block #6716 - follow up about refactoring the UntrustedProposal and flow.BlockProposal](https://github.com/onflow/flow-go/issues/6716)
     * In Review (fixing comments):
       -   [\[Malleability Immutable\] Enforce immutability for EpochRecover](https://github.com/onflow/flow-go/issues/7285)
       -   [\[Malleability Immutable\] Enforce immutability for EpochSetup](https://github.com/onflow/flow-go/issues/7284)
@@ -210,8 +221,23 @@ Cycle Objective(s):
       -   [\[Malleability Immutable\] Enforce immutability for TimeoutObject](https://github.com/onflow/flow-go/issues/7272)
       -   [\[Malleability Immutable\] Enforce immutability for ChunkDataPackRequest](https://github.com/onflow/flow-go/issues/7305)
       -   [\[Malleability Immutable\] Enforce immutability for ChunkDataPackResponse](https://github.com/onflow/flow-go/issues/7306)
+      -   [\[Malleability Immutable\] Enforce immutability for MissingCollection](https://github.com/onflow/flow-go/issues/7275)
+      -   [\[Malleability Immutable\] Enforce immutability for IncorporatedResult](https://github.com/onflow/flow-go/issues/7292)
+      -   [\[Malleability Immutable\] Enforce immutability for Vote](https://github.com/onflow/flow-go/issues/7273)
+      -   [\[Malleability Immutable\] Enforce immutability for ResultApproval](https://github.com/onflow/flow-go/issues/7300)
+      -   [\[Malleability Immutable\] Enforce immutability for ResultApprovalBody](https://github.com/onflow/flow-go/issues/7299)
+      -   [\[Malleability Immutable\] Enforce immutability for Attestation](https://github.com/onflow/flow-go/issues/7298)
+      -   [\[Malleability Immutable\] Enforce immutability for QuorumCertificate](https://github.com/onflow/flow-go/issues/7297)
+      -   [\[Malleability Immutable\] Enforce immutability for CollectionGuarantee](https://github.com/onflow/flow-go/issues/7283)
+      -   [\[Malleability Immutable\] Enforce immutability for Collection](https://github.com/onflow/flow-go/issues/7281)
+      -   [\[Malleability Immutable\] Enforce immutability for Chunk](https://github.com/onflow/flow-go/issues/7279)
+      -   [\[Malleability Immutable\] Enforce immutability for ChunkDataPack](https://github.com/onflow/flow-go/issues/7280)
+      -   [\[Malleability Immutable\] Enforce immutability for ExecutionResult](https://github.com/onflow/flow-go/issues/7290)
     * In Progress:
       -   [\[Malleability Immutable\] Enforce immutability for Event](https://github.com/onflow/flow-go/issues/7287)
+      -   [\[Malleability Immutable\] Enforce immutability for Header](https://github.com/onflow/flow-go/issues/7291)
+      -   [\[Malleability Immutable\] Enforce immutability for TransactionBody](https://github.com/onflow/flow-go/issues/7303)
+      -   [\[Malleability Immutable\] Enforce immutability for Transaction](https://github.com/onflow/flow-go/issues/7304)
 
 
 * <ins>Cryptography</ins>
@@ -225,7 +251,8 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability</ins>
- 
+  * [[DataAvailability] Extract collection ingestion into separate component](https://github.com/onflow/flow-go/issues/7443)
+  * Continue working towards [milestone 1](https://www.notion.so/flowfoundation/Optimistic-Syncing-System-Design-1c11aee12324807d9b42f3f25f6ab7db?pvs=4#1c11aee1232480b7ac2af58af084107a) for Optimistic syncing new issues and Review Remarks 
 
 * <ins>Malleability</ins>
   * PR reviews
