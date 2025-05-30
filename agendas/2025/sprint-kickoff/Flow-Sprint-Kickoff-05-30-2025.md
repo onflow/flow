@@ -188,7 +188,7 @@ Cycle Objective(s):
 
   * KROK Team
 
- 
+
 
 * <ins>Malleability</ins>
   * PR reviews
@@ -225,7 +225,7 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability</ins>
- 
+
 
 * <ins>Malleability</ins>
   * PR reviews
@@ -237,7 +237,7 @@ Cycle Objective(s):
   - Proof of Possession: merge all PRs and core-contract updates on TN/MN
   - SPoCK next steps: sketch a PoP-based proof of (simple) SPoCK unforgeabilty - sketch a KOSK-based proof of multi-SPoCK
   - Passkeys: continue review and implementation
-  
+
 
 * <ins>Protocol misc</ins>
 
@@ -272,13 +272,27 @@ Cycle Objective(s):
 Cycle Objective(s):
 - Improve the quality of developer engagement by optimizing Flow’s core surfaces and making it easier for developers to evaluate and explore the ecosystem. [OKR](https://github.com/onflow/flow-okrs/issues/109)
 
-**Done last sprint**
+**Done Last Sprint**
 
+- Added the `TransactionLink` component to `@onflow/kit`
+- Built and released the `useCrossVmBatchTransaction` hook for `@onflow/kit`
+- Built and released the `useCrossVmTokenBalance` hook for `@onflow/kit`
+- Released FCL streaming support
+- Fixed various bugs identified during the hackathon
+- Set up CI for automated documentation generation
+- Converted FCL core exposed APIs to TypeScript
+- Attended a conference and supported Flow builders during the hackathon
 
+**This Sprint**
 
-**This sprint**
-
-
+- Convert exposed APIs in non-core FCL subpackages to TypeScript
+- Build a profile feature in the `Connect` component for `@onflow/kit`
+- Build the `TransactionStatusDialog` component for `@onflow/kit`
+- Add a cross-VM FT spend hook to `@onflow/kit`
+- Add a cross-VM NFT spend hook to `@onflow/kit`
+- Add an NFT hook to `@onflow/kit`
+- Add a child accounts hook to `@onflow/kit`
+- Add documentation for the newly released hooks
 
 ---
 
