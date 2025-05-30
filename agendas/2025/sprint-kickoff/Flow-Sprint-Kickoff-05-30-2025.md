@@ -280,8 +280,22 @@ Cycle Objective(s):
 - Bring liquidity and kickstart ecosystem effects
 
 **Done last sprint**
+- Significant progress on AlpenFlow smart contract
+ - Setup CI and testing with 90%+ coverage
+- DeFiBlocks now has two stacks, FungibleTokenStack.cdc and SwapStack.cdc
+ - About ready for first strategy
+- Front end with majority of functionality available and hooked up
+ - Looking for UI review
+- Back end also setup and ready for SC integration
+
+- WFLOW migration underway
+- Accounts setup, and LayerZero integration complete and tested
+- Adding collateral ASAP
 
 **This sprint**
+- Aim to complete Tracer Bullet
+- Full UI review
+- Further next step discussions
 
 **On Hold**
 
