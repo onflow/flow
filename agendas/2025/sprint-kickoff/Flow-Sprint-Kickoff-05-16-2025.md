@@ -181,7 +181,6 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Data Availability</ins>
-
   * KROK Team
 
     * Done:
