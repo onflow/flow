@@ -260,9 +260,7 @@ Cycle Objective(s):
   - SPoCK next steps: sketch a PoP-based proof of (simple) SPoCK unforgeabilty - sketch a KOSK-based proof of multi-SPoCK
   - Passkeys: continue review and implementation
 
-
-* <ins>Protocol misc</ins>
-
+  
 **On Hold**
 
 **Active Epics**
