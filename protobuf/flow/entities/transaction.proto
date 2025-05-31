@@ -27,6 +27,7 @@ message Transaction {
     bytes address = 1;
     uint32 key_id = 2;
     bytes signature = 3;
+    bytes extension_data = 4;
   }
 
   bytes script = 1;
