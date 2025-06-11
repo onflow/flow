@@ -102,7 +102,7 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Data Availability</ins>
-  * 
+  *
   * KROK Team
     * Redesigned ExecutionDataRequester ([PR-7329](https://github.com/onflow/flow-go/pull/7329))
     * Implement interface for persisting caches ([PR-7394](https://github.com/onflow/flow-go/pull/7394))
@@ -129,7 +129,7 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability</ins>
-  - 
+  -
   - KROK Team
 
 
@@ -144,7 +144,7 @@ Cycle Objective(s):
   - SPoCK next steps: sketch a PoP-based proof of (simple) SPoCK unforgeabilty - sketch a KOSK-based proof of multi-SPoCK
   - Passkeys: continue review and implementation
 
-  
+
 **On Hold**
 
 **Active Epics**
@@ -180,10 +180,27 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
-
+- Converted exposed APIs in FCL and FCL React Native to TypeScript
+- Built a profile feature in the `Connect` component for `@onflow/kit`
+- Added the following new compon
+- Built the `TransactionDialog` component for `@onflow/kit`
+- Released and wrote docs for for the following hooks:
+    - `useCrossVmBatchTransaction`
+    - `useCrossVmSpendToken`
+    - `useCrossVmSpendNft`
+    - `useFlowChainId`
+- Upgraded tooling for Proof of Possession
+- Improved automated docs generation
 
 **This Sprint**
 
+- Fix issues with global FCL config
+- Improve automated docs with examples sourced from JSDoc
+- Finish live demo components in documentation
+- Improve `Connect` profile with balance from Cross-VM hook
+- Create a general Cadence side balance hook
+- Polish UI on components before release
+- Address remaining bugs in epic before release
 
 ---
 
