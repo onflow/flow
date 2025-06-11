@@ -194,7 +194,7 @@ Cycle Objective(s):
 
 **This Sprint**
 
-- Fix issues global FCL config issues
+- Fix issues with global FCL config
 - Improve automated docs with examples sourced from JSDoc
 - Finish live demo components in documentation
 - Improve `Connect` profile with balance from Cross-VM hook
