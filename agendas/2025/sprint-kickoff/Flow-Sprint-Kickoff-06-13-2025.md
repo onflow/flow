@@ -3,7 +3,9 @@
  ### Team Wins 🎉
 
 * Proof of Possession rolled out to mainnet.
-*
+* Closed Compiler + VM milestones 6 & 7 - running book-keeping functions (account balance check, storage limit check, fee deduction) speeds up execution by ~13%, with minimal effort spent on optimizations.
+* Completed automatic fuzzing of parser & typechecker.
+
 ---
 
 ### Mainnet Uptime - Last 14 days (05/30/25 to 06/13/25) \[Vishal]
@@ -79,13 +81,88 @@ Q2 2025 Cycle Objective(s):
 **Done last sprint**
 
 **Cadence Language**
-
+- [Compiler Milestone 6: More features and tech debt](https://github.com/onflow/cadence/issues/3976)
+    - [[Compiler] Compile second value assignment](https://github.com/onflow/cadence/pull/3987)
+    - [[Compiler] Check resource loss in assignments](https://github.com/onflow/cadence/pull/3988)
+    - [[Compiler] Compile enums](https://github.com/onflow/cadence/pull/3989)
+- [Compiler Milestone 7: Complete FVM bookkeeping functions](https://github.com/onflow/cadence/issues/3991)
+    - [[Compiler] Computation metering](https://github.com/onflow/cadence/pull/3998)
+- [Compiler Milestone 8: Optimize (features used by) FVM book-keeping](https://github.com/onflow/cadence/issues/3992)
+    - [[Compiler] Optimize computation metering](https://github.com/onflow/cadence/pull/4002)
+    - [[Compiler] Optimize builtin globals in VM](https://github.com/onflow/cadence/pull/4011)
+    - [[Compiler] Optimize builtin globals in Compiler](https://github.com/onflow/cadence/pull/4012)
+- [Compiler Milestone 9: Run user-submitted transactions and scripts](https://github.com/onflow/cadence/issues/3993)
+    - [[Compiler] Enable execution of scripts with VM](https://github.com/onflow/cadence/pull/4000)
+    - [[Compiler] Enable execution of transactions with VM](https://github.com/onflow/cadence/pull/4001)
+    - [[Compiler] Compile swap statements](https://github.com/onflow/cadence/pull/4003)
+    - [[Compiler] Transfer and convert index indexing/key expression](https://github.com/onflow/cadence/pull/4005)
+    - [[Compiler] Test implicit boxing](https://github.com/onflow/cadence/pull/4006)
+    - [[Compiler] Emit default destroyed events when resources are destroyed](https://github.com/onflow/cadence/pull/4004)
+    - [[Compiler] Implement storage and container mutation prevention](https://github.com/onflow/cadence/pull/4007)
+    - [[Compiler] Validate the destruction of already destroyed resources](https://github.com/onflow/cadence/pull/4009)
+    - [[Compiler] Meter computation for "entry point" function invocations in interpreter](https://github.com/onflow/cadence/pull/4008)
+    - [[Compiler] Improve memory metering](https://github.com/onflow/cadence/pull/4010)
+- [Compiler - Next Milestone](https://github.com/onflow/cadence/issues/3804)
+    - [[Compiler] Run some more tests with the compiler/vm](https://github.com/onflow/cadence/pull/3999)
+- Automatic fuzzing of parser & typechecker
+    - [Vairous improvements and additions](https://github.com/onflow/cadence-fuzzer/pull/20)
+    - [Update to Cadence v1.5.1](https://github.com/onflow/cadence-fuzzer/pull/18)
+    - [Add support for parsing corpus file to command](https://github.com/onflow/cadence-fuzzer/pull/19)
+    - [Fix CI](https://github.com/onflow/cadence-fuzzer/pull/22)
+    - [Allow using cadence-internal, update to latest internal version](https://github.com/onflow/cadence-fuzzer/pull/23)
+    - [Automate fuzzing to run nightly.](https://github.com/onflow/cadence-fuzzer/pull/21)
+- Tool Bugfix:
+    - [Fix get-contracts tool](https://github.com/onflow/cadence/pull/3812)
+- internal fixes, HCU prep: [1](https://github.com/onflow/cadence-internal/pull/341), [2](https://github.com/onflow/cadence-internal/pull/339), [3](https://github.com/onflow/flow-go-internal/pull/7087)
+- Regression prevention: [Add CI automation to verify storage iteration](https://github.com/onflow/cadence/issues/2688)
+    - [Storage iteration](https://github.com/onflow/cadence/pull/3990)
+- Testing:
+    - [[Compiler] Test optional arguments](https://github.com/onflow/cadence/pull/3997)
+- chores:
+    - [Port non-compiler/VM changes from feature branch to master](https://github.com/onflow/cadence/pull/3994)
+    - [[Compiler] Sync feature branch with master](https://github.com/onflow/cadence/pull/3995)
+- Docs: 
+    - [Add removed string template section back.](https://github.com/onflow/cadence-lang.org/pull/224)
 
 **Cadence Execution**
 
-  * Investigating Pebble-related panic bug https://github.com/onflow/flow-go/pull/7489
+- [Badger -> Pebble DB M3: unblock pruning of Execution, Access and Verification data](https://github.com/onflow/flow-go/issues/7242)
+    - [[Execution] Disable halfway data migration from badger to pebble](https://github.com/onflow/flow-go/pull/7439)
+    - [[Storage] Add storage data migration functions](https://github.com/onflow/flow-go/pull/7396)
+    - [[Backport v0.42] [Storage] Ensure batch.Close is called exactly once.](https://github.com/onflow/flow-go/pull/7491)
+    - [[Storage] Ensure batch.Close is called exactly once.](https://github.com/onflow/flow-go/pull/7490)
+    - [[Util]  Add pebble checkpoint util](https://github.com/onflow/flow-go/pull/7468)
+- [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
+    - [Expose initial fund amount as a config option](https://github.com/onflow/flow-execution-effort-estimation/pull/46)
+    - [Fix key id assigment when creating new proposers](https://github.com/onflow/flow-execution-effort-estimation/pull/47)
+    - [Reenable local data collection](https://github.com/onflow/flow-execution-effort-estimation/pull/48)
+    - [Add calibration command](https://github.com/onflow/flow-execution-effort-estimation/pull/49)
+    - [Add Session ID to db tables](https://github.com/onflow/flow-execution-effort-estimation/pull/50)
+- Performance optimizations
+    - [[FVM] Cache version beacon per context](https://github.com/onflow/flow-go/pull/7438)
+- Investigation: [Pebble panic](https://github.com/onflow/flow-go/pull/7489)
+- Fix downstream build issues
+    - [Remove replace directive to fix downstream build issue](https://github.com/onflow/flow-go/pull/7505)
+CBOR: [Improve DupMapKeyError message](https://github.com/fxamacker/cbor/pull/670)
+
+**Flow EVM**
+- Core: [Fix high CPU usage related to EVM `DeltaView.AddressInAccessList`](https://github.com/onflow/flow-go/pull/7405)
+- GW: [Move RPC calls to constants to reduce string object allocations](https://github.com/onflow/flow-evm-gateway/pull/824)
 
 **This sprint**
+
+- Cadence Language
+  - Continue Compiler Milestone [9: Run user-submitted transactions and scripts](https://github.com/onflow/cadence/issues/3993) and - [8: Optimize (features used by) FVM book-keeping](https://github.com/onflow/cadence/issues/3992).
+
+- Cadence Execution
+  - Continue new Trie research
+  - Continue work on Badger -> Pebble DB [M3: unblock pruning of Execution, Access and Verification data](https://github.com/onflow/flow-go/issues/7242) and [M4: remove dependency on Badger DB completely from ENs and ANs](https://github.com/onflow/flow-go/issues/7265).
+  - Continue [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598).
+  - Continue [EOA control delegation](https://github.com/onflow/flow-go/issues/7441).
+  - Continue [Scheduled callbacks](https://github.com/onflow/flow-go/issues/7482).
+
+- EVM
+  - Start [Transactions are not guaranteed to run according to their arrival order](https://github.com/onflow/flow-evm-gateway/issues/699)
 
 
 **On Hold**
