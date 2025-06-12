@@ -2,6 +2,7 @@
 
  ### Team Wins 🎉
 
+* Proof of Possession rolled out to mainnet.
 * Closed Compiler + VM milestones 6 & 7 - running book-keeping functions (account balance check, storage limit check, fee deduction) speeds up execution by ~13%, with minimal effort spent on optimizations.
 * Completed automatic fuzzing of parser & typechecker.
 
@@ -14,7 +15,7 @@
 | Collection Finalization | 99.9%   |     100%      |        0%         |
 | Block Finalization      | 99.9%   |     100%      |        0%         |
 | Transaction Execution   | 99.9%   |    99.975%    |       24.8%       |
-| Block Sealing           | 99.9%   |     100%      |        0%         |
+| Block Sealing           | 99.9%   |  99.975%      |    24.8%          |
 | Access API Liveness     | 99.9%   |     100%      |        0%         |
 
 
@@ -28,8 +29,9 @@
 | HCU                    | 2/18/2025 |           |          | 5         |              | 5      |               |
 | HCU                    | 2/18/2025 |           |          | 5         |              | 5      |               |
 | HCU                    | 4/10/2025 |           |          | 5         |              | 5      |               |
-| HCU                    | 5/15/2025 |           |          | 5         |              | 5      |               |
-| Total downtime in mins |           | 210       | 210      | 240       | 210          | 240    |               |
+| HCU                    | 5/15/2025 |           |          | 7         |              | 7      |               |
+| HCU                    | 6/3/2025  |           |          | 9         |              | 9      |               |
+| Total downtime in mins |           | 210       | 210      | 251       | 210          | 251    |               |
 | YTD (5/29/25) SLA      |           | 99.9%     | 99.9%    | 99.89%    | 99.9%        | 99.89% |               |
 | SLA for 2025           |           | 99.96%    | 99.96%   | 99.95%    | 99.96%       | 99.95% |               |
 
@@ -37,13 +39,16 @@
 
 ### Testnet
 
-1. P0: 23rd May, Friday - 6AM Pacific to 10AM Pacific
-  Transaction execution stopped. Execution nodes went OOM due to a Cadence edge case when parsing a transaction.
+N/A
 
 ### Mainnet
 N/A
 
 ### Key Release Dates & Breaking Changes
+
+HCU next week
+- Testnet - Monday, 16th June
+- Mainnet - Tuesday, 17th June
 
 ---
 
@@ -120,6 +125,7 @@ Q2 2025 Cycle Objective(s):
     - [Add removed string template section back.](https://github.com/onflow/cadence-lang.org/pull/224)
 
 **Cadence Execution**
+
 - [Badger -> Pebble DB M3: unblock pruning of Execution, Access and Verification data](https://github.com/onflow/flow-go/issues/7242)
     - [[Execution] Disable halfway data migration from badger to pebble](https://github.com/onflow/flow-go/pull/7439)
     - [[Storage] Add storage data migration functions](https://github.com/onflow/flow-go/pull/7396)
@@ -134,6 +140,7 @@ Q2 2025 Cycle Objective(s):
     - [Add Session ID to db tables](https://github.com/onflow/flow-execution-effort-estimation/pull/50)
 - Performance optimizations
     - [[FVM] Cache version beacon per context](https://github.com/onflow/flow-go/pull/7438)
+- Investigation: [Pebble panic](https://github.com/onflow/flow-go/pull/7489)
 - Fix downstream build issues
     - [Remove replace directive to fix downstream build issue](https://github.com/onflow/flow-go/pull/7505)
 CBOR: [Improve DupMapKeyError message](https://github.com/fxamacker/cbor/pull/670)
@@ -179,13 +186,14 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Data Availability</ins>
-  *
+  * PR reviews
   * KROK Team
     * Redesigned ExecutionDataRequester ([PR-7329](https://github.com/onflow/flow-go/pull/7329))
     * Implement interface for persisting caches ([PR-7394](https://github.com/onflow/flow-go/pull/7394))
 
 * <ins>Malleability</ins>
-  * PR reviews
+  * Immutability PR reviews
+  * Investigating using untrusted models for network message inputs https://github.com/onflow/flow-go/issues/7449
   * KROK Team
     * Done:
 
@@ -196,12 +204,12 @@ Cycle Objective(s):
 
 
 * <ins>Cryptography</ins>
-  - Proof of Possession: prepare for updating the staking process:
-    - update and review of the bootstrapping utility (review still ongoing)
-    - update and merge the core-contracts changes
-    - docs and announcements
-  - SPoCK aggregation: finished analysing the PoP-based security proof in Boneh-Drijvers-Neven 2018 and Ristenpart 2006 (BLS multi-signatures)
-  - Passkeys: continue the implementation review and adding suggestions
+  - Proof of Possession:
+    - merge all PRs and core-contract updates on TN/MN
+    - Roll out PoP to testnet and mainnet
+      - Addressed issues that came up during the rollout
+  - SPoCK: sketch a PoP-based proof of (simple) SPoCK unforgeabilty - sketch a KOSK-based proof of multi-SPoCK
+  - Passkeys: continue review and implementation
 
 **This sprint**
 
@@ -332,15 +340,21 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 ### **Governance** \[Vishal]
 
 Cycle Objective(s):
-1. Ensure the multisign process for Flow is efficient with effective community participation [DONE]
+1. Ensure the multi-sign process for Flow is efficient with effective community participation [DONE]
 2. Maintain long-term decentralization of Flow consensus nodes by ensuring no operator controls 1/3rd or more of the network's consensus nodes [DONE]
 3. Continue building a well-structured Flow Tokenomics framework to enhance community understanding, improve perception, and articulate a clear long-term vision
 4. Build and ship a new dashboard to provide node operators with real-time access to staking, epoch-related and other relevant data.
 
 **Done last sprint**
 
+* Tokenomics discussion with Deiter [Notion doc](https://www.notion.so/flowfoundation/Flow-Tokenomics-Framework-2001aee1232480aeab1ec87407d76b9e)
+  * Topic: Transaciton Fees
 
 **This sprint**
+
+* Continue Tokenomics discussion.
+  * Topic: Transaction Fees
+* Token lease agreement review for two new node operators.
 
 
 ---
