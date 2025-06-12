@@ -127,12 +127,12 @@ Cycle Objective(s):
 
 
 * <ins>Cryptography</ins>
-  - Proof of Possession: prepare for updating the staking process:
-    - update and review of the bootstrapping utility (review still ongoing)
-    - update and merge the core-contracts changes
-    - docs and announcements
-  - SPoCK aggregation: finished analysing the PoP-based security proof in Boneh-Drijvers-Neven 2018 and Ristenpart 2006 (BLS multi-signatures)
-  - Passkeys: continue the implementation review and adding suggestions
+  - Proof of Possession:
+    - merge all PRs and core-contract updates on TN/MN
+    - Roll out PoP to testnet and mainnet
+      - Addressed issues that came up during the rollout
+  - SPoCK: sketch a PoP-based proof of (simple) SPoCK unforgeabilty - sketch a KOSK-based proof of multi-SPoCK
+  - Passkeys: continue review and implementation
 
 **This sprint**
 
@@ -270,8 +270,14 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+* Tokenomics discussion with Deiter [Notion doc](https://www.notion.so/flowfoundation/Flow-Tokenomics-Framework-2001aee1232480aeab1ec87407d76b9e)
+  * Topic: Transaciton Fees
 
 **This sprint**
+
+* Continue Tokenomics discussion.
+  * Topic: Transaction Fees
+* Token lease agreement review for two new node operators.
 
 
 ---
