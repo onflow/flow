@@ -5,6 +5,7 @@
 * Proof of Possession rolled out to mainnet.
 * Closed Compiler + VM milestones 6 & 7 - running book-keeping functions (account balance check, storage limit check, fee deduction) speeds up execution by ~13%, with minimal effort spent on optimizations.
 * Completed automatic fuzzing of parser & typechecker.
+* Optimizations of version beacon access/use by the execution runtime improved execution saturation by ~30%.
 
 ---
 
