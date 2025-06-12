@@ -57,17 +57,18 @@ HCU next week
 
 ### FLIPs Tracker \[Vishal]
 
-|                         | Application | Cadence | Governance | Protocol | Total |
-|:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-----------------:|
-| Drafted     | 8 |    7      |       0       |       9          |        **24**       |
-| Proposed    | 1  |    2     |       3       |       0          |        **6**          |
-| Accepted    | 3  |    1     |       2       |       2          |        **8**          |
-| Rejected    | 0  |    1     |       1       |       0          |        **2**         |
-| Implemented | 3  |    5     |       1       |       0          |        **9**        |
-| Released    | 4  |    34     |       9         |       6          |        **53**          |
-| Total       | **19** |    **50**   |       **16**       |       **17**         |        **102**         |
+|                         | Application | Cadence | Governance | Protocol |  Total  |
+|:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-------:|
+| Drafted     | 8 |    7      |       0       |       9          | **25**  |
+| Proposed    | 1  |    2     |       3       |       0          |  **6**  |
+| Accepted    | 3  |    1     |       2       |       2          |  **8**  |
+| Rejected    | 0  |    1     |       1       |       0          |  **2**  |
+| Implemented | 3  |    5     |       1       |       0          |  **9**  |
+| Released    | 4  |    34     |       9         |       6          | **53**  |
+| Total       | **19** |    **50**   |       **16**       |       **17**         | **103** |
 
-* No change
+One new FLIP -
+* [FLIP 330: Scheduled Callbacks](https://github.com/onflow/flips/issues/330)
 
 ---
 
