@@ -6,6 +6,8 @@
 * Closed Compiler + VM milestones 6 & 7 - running book-keeping functions (account balance check, storage limit check, fee deduction) speeds up execution by ~13%, with minimal effort spent on optimizations.
 * Completed automatic fuzzing of parser & typechecker.
 * Optimizations of version beacon access/use by the execution runtime improved execution saturation by ~30%.
+* Grafana Alloy has been deployed to networks & BN2 for collecting profiles
+* CloudFlare has been successfully moved to Business Plan
 
 ---
 
@@ -318,6 +320,17 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
 
+**AI**
+- [Grant google user group access to Agentspace](https://github.com/onflow/ff-sre-infrastructure/issues/433)
+- [Work with Google to get access to Agentspace](https://github.com/onflow/ff-sre-infrastructure/issues/411)
+
+**Observability & Incident Response**
+- [Evaluate/Create slack workflow for Grafana](https://github.com/onflow/ff-sre-infrastructure/issues/399)
+- [Update IRM incidents to go to single slack channel](https://github.com/onflow/ff-sre-infrastructure/issues/409)
+
+**Cloudflare Plan Migration**
+- [Move onflow.org & flow.com zones to Business Plan](https://github.com/onflow/ff-sre-infrastructure/issues/373)
+
 **Grafana Alloy**
 - [Add Support to VM Cloud-init to Integrate Grafana Alloy Agent](https://github.com/onflow/ff-sre-infrastructure/issues/101)
 - [Add Grafana Alloy Support to migration networks](https://github.com/onflow/ff-sre-infrastructure/issues/258)
@@ -330,6 +343,17 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 - [Deploy Grafana Alloy Agent to Handle Profile Collections from Within BN2 K8s Cluster](https://github.com/onflow/ff-sre-infrastructure/issues/105)
 - [Update Flow Node Helm Charts & Workflow to support dynamic enablement of profiling](https://github.com/onflow/ff-sre-infrastructure/issues/106)
 - [Execute rolling deploy on MN to add Grafana Alloy agent support](https://github.com/onflow/ff-sre-infrastructure/issues/261)
+
+**Support**
+- [Upgrade TN52 LN disks](https://github.com/onflow/ff-sre-infrastructure/issues/442)
+- [Increase MN26 FF SN & VN data disk sizes](https://github.com/onflow/ff-sre-infrastructure/issues/443)
+- [Create dev-rel project & database for the dev-rel team](https://github.com/onflow/ff-sre-infrastructure/issues/434)
+- [Create additional TPS automation instance for execution effort testing](https://github.com/onflow/ff-sre-infrastructure/issues/426)
+- [Increase MN26 DL SN & VN data disks](https://github.com/onflow/ff-sre-infrastructure/issues/444)
+- [Store token for cross-repo clones to enable fuzzing](https://github.com/onflow/ff-sre-infrastructure/issues/447)
+- [Clean up CDPs on Devnet ENs](https://github.com/onflow/ff-sre-infrastructure/issues/432)
+- [Grant Tim access to use BN2](https://github.com/onflow/ff-sre-infrastructure/issues/429)
+- [Fix orphaned records in CloudFlare](https://github.com/onflow/ff-sre-infrastructure/issues/423)
 
 **Active Epics**
 * [Integrate Grafana Alloy Agent](https://github.com/onflow/ff-sre-infrastructure/issues/100)
