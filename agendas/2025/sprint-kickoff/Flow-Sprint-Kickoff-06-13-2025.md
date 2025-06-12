@@ -2,6 +2,8 @@
 
  ### Team Wins 🎉
 
+* Proof of Possession rolled out to mainnet.
+*
 ---
 
 ### Mainnet Uptime - Last 14 days (05/30/25 to 06/13/25) \[Vishal]
@@ -11,7 +13,7 @@
 | Collection Finalization | 99.9%   |     100%      |        0%         |
 | Block Finalization      | 99.9%   |     100%      |        0%         |
 | Transaction Execution   | 99.9%   |    99.975%    |       24.8%       |
-| Block Sealing           | 99.9%   |     100%      |        0%         |
+| Block Sealing           | 99.9%   |  99.975%      |    24.8%          |
 | Access API Liveness     | 99.9%   |     100%      |        0%         |
 
 
@@ -25,8 +27,9 @@
 | HCU                    | 2/18/2025 |           |          | 5         |              | 5      |               |
 | HCU                    | 2/18/2025 |           |          | 5         |              | 5      |               |
 | HCU                    | 4/10/2025 |           |          | 5         |              | 5      |               |
-| HCU                    | 5/15/2025 |           |          | 5         |              | 5      |               |
-| Total downtime in mins |           | 210       | 210      | 240       | 210          | 240    |               |
+| HCU                    | 5/15/2025 |           |          | 7         |              | 7      |               |
+| HCU                    | 6/3/2025  |           |          | 9         |              | 9      |               |
+| Total downtime in mins |           | 210       | 210      | 251       | 210          | 251    |               |
 | YTD (5/29/25) SLA      |           | 99.9%     | 99.9%    | 99.89%    | 99.9%        | 99.89% |               |
 | SLA for 2025           |           | 99.96%    | 99.96%   | 99.95%    | 99.96%       | 99.95% |               |
 
@@ -34,13 +37,16 @@
 
 ### Testnet
 
-1. P0: 23rd May, Friday - 6AM Pacific to 10AM Pacific
-  Transaction execution stopped. Execution nodes went OOM due to a Cadence edge case when parsing a transaction.
+N/A
 
 ### Mainnet
 N/A
 
 ### Key Release Dates & Breaking Changes
+
+HCU next week
+- Testnet - Monday, 16th June
+- Mainnet - Tuesday, 17th June
 
 ---
 
@@ -255,7 +261,7 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 ### **Governance** \[Vishal]
 
 Cycle Objective(s):
-1. Ensure the multisign process for Flow is efficient with effective community participation [DONE]
+1. Ensure the multi-sign process for Flow is efficient with effective community participation [DONE]
 2. Maintain long-term decentralization of Flow consensus nodes by ensuring no operator controls 1/3rd or more of the network's consensus nodes [DONE]
 3. Continue building a well-structured Flow Tokenomics framework to enhance community understanding, improve perception, and articulate a clear long-term vision
 4. Build and ship a new dashboard to provide node operators with real-time access to staking, epoch-related and other relevant data.
