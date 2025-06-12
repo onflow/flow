@@ -232,6 +232,18 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
 
+**Grafana Alloy**
+- [Add Support to VM Cloud-init to Integrate Grafana Alloy Agent](https://github.com/onflow/ff-sre-infrastructure/issues/101)
+- [Add Grafana Alloy Support to migration networks](https://github.com/onflow/ff-sre-infrastructure/issues/258)
+- [Add support to Alloy to include the `version` log label from Docker/Flow services](https://github.com/onflow/ff-sre-infrastructure/issues/403)
+- [Execute rolling deploy on TN to add Grafana Alloy agent support](https://github.com/onflow/ff-sre-infrastructure/issues/259)
+- [Remove PROFILING_ENABLED requirement from manage-profiling.yml playbook](https://github.com/onflow/ff-sre-infrastructure/issues/418)
+- [Sanitize Alloy's Logs](https://github.com/onflow/ff-sre-infrastructure/issues/440)
+- [Improve Alloy service security and organization](https://github.com/onflow/ff-sre-infrastructure/issues/417)
+- [Create a Strategy for Scraping Profiles in BN2 K8s](https://github.com/onflow/ff-sre-infrastructure/issues/104)
+- [Deploy Grafana Alloy Agent to Handle Profile Collections from Within BN2 K8s Cluster](https://github.com/onflow/ff-sre-infrastructure/issues/105)
+- [Update Flow Node Helm Charts & Workflow to support dynamic enablement of profiling](https://github.com/onflow/ff-sre-infrastructure/issues/106)
+- [Execute rolling deploy on MN to add Grafana Alloy agent support](https://github.com/onflow/ff-sre-infrastructure/issues/261)
 
 **Active Epics**
 * [Integrate Grafana Alloy Agent](https://github.com/onflow/ff-sre-infrastructure/issues/100)
