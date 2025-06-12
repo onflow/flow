@@ -83,6 +83,7 @@ Q2 2025 Cycle Objective(s):
 
 **Cadence Execution**
 
+  * Investigating Pebble-related panic bug https://github.com/onflow/flow-go/pull/7489
 
 **This sprint**
 
@@ -108,13 +109,14 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Data Availability</ins>
-  *
+  * PR reviews
   * KROK Team
     * Redesigned ExecutionDataRequester ([PR-7329](https://github.com/onflow/flow-go/pull/7329))
     * Implement interface for persisting caches ([PR-7394](https://github.com/onflow/flow-go/pull/7394))
 
 * <ins>Malleability</ins>
-  * PR reviews
+  * Immutability PR reviews
+  * Investigating using untrusted models for network message inputs https://github.com/onflow/flow-go/issues/7449
   * KROK Team
     * Done:
 
