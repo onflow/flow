@@ -295,9 +295,33 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+Liquidity:
+- Added Wrapped Flow to bridge.flow.com
+
+Tidal
+- [Tidal FE](https://github.com/onflow/tidal-fe)
+ - Improve onboarding
+ - Add CTA highlights
+ - Attempt to improve time to first position creation 
+- [Tidal BE](https://github.com/onflow/tidal-be)
+ - [Add Metrics](https://github.com/onflow/tidal-be/pull/2)
+ - [Add CodeCov](https://github.com/onflow/tidal-be/pull/3)
+ - [Start Smart Contract integration](https://github.com/onflow/tidal-be/pull/4)
+- [Tidal SC](https://github.com/onflow/tidal-sc)
+ - [DeFi blocks integration](https://github.com/onflow/tidal-sc/pull/6)
+ - [Add Strategy composition & AutoBalancer management contracts](https://github.com/onflow/tidal-sc/pull/7)
+- [Tidal Protocol](https://github.com/onflow/TidalProtocol)
+ - [Add Code Cov](https://github.com/onflow/TidalProtocol/pull/11)
+ - [Continue refining core functionality](https://github.com/onflow/TidalProtocol/pull/8)
+ - [Add unit tests](https://github.com/onflow/TidalProtocol/pull/9)
+ - [Add Pool and position creation](https://github.com/onflow/TidalProtocol/pull/10) 
+
 
 **This sprint**
 
+Wrap up tracer bullet
+ - Full run through of Tidal User Flow, including on chain auto balancer
+ - Explore deficiencies and adjustments for Closed Beta
 
 **On Hold**
 
