@@ -192,7 +192,6 @@ Cycle Objective(s):
 
 * <ins>Data Availability</ins>
   * PR reviews
-  * Benchnet compatibility testing for partial malleability merge
   * KROK Team
     * Done:
         -   [[DataAvailability] Implement Index step logic #7203](https://github.com/onflow/flow-go/issues/7203) 
@@ -208,6 +207,7 @@ Cycle Objective(s):
 * <ins>Malleability</ins>
   * Immutability PR reviews
   * Investigating using untrusted models for network message inputs https://github.com/onflow/flow-go/issues/7449
+  * Benchnet compatibility testing for partial malleability merge
   * KROK Team
     * Done:
         -   [[Malleability Immutable] Enforce immutability for EpochRecover #7285](https://github.com/onflow/flow-go/issues/7285)
@@ -255,6 +255,8 @@ Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability:</ins>
+  - Continue work on results forest
+  - Start design for fork aware storage interface
   - PR reviews for milestone 2
   - KROK Team
     -   Continue working on Ingestion engine reimplementation tasks and address review remarks from the previous sprint
