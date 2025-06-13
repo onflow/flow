@@ -242,7 +242,7 @@ Cycle Objective(s):
     - update of testnet and mainnet core contracts
     - End-to-end tests using Ledger and flow-port
     - Docs update
-  - Attempt to update flow-mgmt for internal node staking
+    - [WIP] flow-mgmt update for internal node staking
   - Passkeys: finished FVM review and added tests
   - SPoCK aggregation: minor progress
 
