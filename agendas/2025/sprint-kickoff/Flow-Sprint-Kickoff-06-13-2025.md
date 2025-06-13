@@ -3,6 +3,8 @@
  ### Team Wins 🎉
 
 * Proof of Possession rolled out to mainnet.
+* Strategy to transition 80%—90% of code from `feature/malleability` to master --
+  significantly decreasing change surface for future conflicts until we can roll out breaking changes in Spork
 * Closed Compiler + VM milestones 6 & 7 - running book-keeping functions (account balance check, storage limit check, fee deduction) speeds up execution by ~13%, with minimal effort spent on optimizations.
 * Completed automatic fuzzing of parser & typechecker.
 * Optimizations of version beacon access/use by the execution runtime improved execution saturation by ~30%.
@@ -205,8 +207,6 @@ Cycle Objective(s):
 
     * In Progress:
 
-
-
 * <ins>Cryptography</ins>
   - Proof of Possession:
     - merge all PRs and core-contract updates on TN/MN
@@ -215,10 +215,14 @@ Cycle Objective(s):
   - SPoCK: sketch a PoP-based proof of (simple) SPoCK unforgeabilty - sketch a KOSK-based proof of multi-SPoCK
   - Passkeys: continue review and implementation
 
+* <ins>research:</ins>
+  - analyzing Solana's new [Alpenglow Consensus Paper](https://drive.google.com/file/d/1y_7ddr8oNOknTQYHzXeeMD2ProQ0WjMs/view)
+    and adjacent body of new consensus research \[[1](https://eprint.iacr.org/2023/463),[2](https://arxiv.org/abs/2505.08771),[3](https://arxiv.org/abs/2408.04728),[4](https://arxiv.org/abs/2102.07240)\] (ongoing)
+
+
 **This sprint**
 
 * <ins>Data Availability</ins>
-  -
   - KROK Team
 
 
@@ -227,11 +231,15 @@ Cycle Objective(s):
   * KROK Team
 
 
-
 * <ins>Cryptography</ins>
 
   - SPoCK next steps: sketch a PoP-based proof of (simple) SPoCK unforgeabilty - sketch a KOSK-based proof of multi-SPoCK
   - Passkeys: continue review and implementation
+
+* <ins>research:</ins>
+  - finish analyzing [Alpenglow Consensus](https://drive.google.com/file/d/1y_7ddr8oNOknTQYHzXeeMD2ProQ0WjMs/view)
+    & prep for protocol study group presentation
+
 
 
 **On Hold**
