@@ -237,7 +237,7 @@ Cycle Objective(s):
         -   [[Malleability Immutable] Enforce immutability for ResultApproval #7300](https://github.com/onflow/flow-go/issues/7300)
 
 * <ins>Cryptography</ins>
-  - Proof of Possession: epic closed
+  - Proof of Possession:
     - bootstrapping utility fixes
     - update of testnet and mainnet core contracts
     - End-to-end tests using Ledger and flow-port
