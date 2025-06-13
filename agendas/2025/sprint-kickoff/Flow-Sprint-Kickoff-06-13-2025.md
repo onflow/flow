@@ -245,6 +245,7 @@ Cycle Objective(s):
     - [WIP] flow-mgmt update for internal node staking
   - Passkeys: finished FVM review and added tests
   - SPoCK aggregation: minor progress
+  - Investigate technical debt in flow-go node-info
 
 * <ins>Research</ins>
   - Analyzing Solana's new [Alpenglow Consensus Paper](https://drive.google.com/file/d/1y_7ddr8oNOknTQYHzXeeMD2ProQ0WjMs/view)
