@@ -185,13 +185,14 @@ Cycle Objective(s):
 * EVM Gateway integrate Pectra upgrade [DONE]
 * Address data structure malleability risk [IN PROGRESS]
 * Furthering permissionless participation
-  * KR1: Proof of Possession [IN PROGRESS]
+  * KR1: Proof of Possession [DONE]
   * KR2: SPoCK Research [IN PROGRESS]
 
 **Done last sprint**
 
 * <ins>Data Availability</ins>
-  * PR reviews
+  * Immutability PR reviews
+  * Benchnet compatibility testing for partial malleability merge
   * KROK Team
     * Done:
         -   [[DataAvailability] Implement Index step logic #7203](https://github.com/onflow/flow-go/issues/7203) 
@@ -236,38 +237,41 @@ Cycle Objective(s):
         -   [[Malleability Immutable] Enforce immutability for ResultApproval #7300](https://github.com/onflow/flow-go/issues/7300)
 
 * <ins>Cryptography</ins>
-  - Proof of Possession:
-    - merge all PRs and core-contract updates on TN/MN
-    - Roll out PoP to testnet and mainnet
-      - Addressed issues that came up during the rollout
-  - SPoCK: sketch a PoP-based proof of (simple) SPoCK unforgeabilty - sketch a KOSK-based proof of multi-SPoCK
-  - Passkeys: continue review and implementation
+  - Proof of Possession: epic closed
+    - bootstrapping utility fixes
+    - update of testnet and mainnet core contracts
+    - End-to-end tests using Ledger and flow-port
+    - Docs update
+  - Attempt to update flow-mgmt for internal node staking
+  - Passkeys: finished FVM review and added tests
+  - SPoCK aggregation: minor progress
 
-* <ins>research:</ins>
-  - analyzing Solana's new [Alpenglow Consensus Paper](https://drive.google.com/file/d/1y_7ddr8oNOknTQYHzXeeMD2ProQ0WjMs/view)
+* <ins>Research</ins>
+  - Analyzing Solana's new [Alpenglow Consensus Paper](https://drive.google.com/file/d/1y_7ddr8oNOknTQYHzXeeMD2ProQ0WjMs/view)
     and adjacent body of new consensus research \[[1](https://eprint.iacr.org/2023/463),[2](https://arxiv.org/abs/2505.08771),[3](https://arxiv.org/abs/2408.04728),[4](https://arxiv.org/abs/2102.07240)\] (ongoing)
 
 
 **This sprint**
 
 * <ins>Data Availability:</ins>
+  - PR reviews for milestone 2
   - KROK Team
     -   Continue working on Ingestion engine reimplementation tasks and address review remarks from the previous sprint
 
-* <ins>Malleability:</ins>
+* <ins>Malleability</ins>
   - KROK Team
     -   Continue working on `Malleability Immutable` tasks and address review remarks from the previous sprint
     -   [[Malleability Immutable] Enforce immutability for Header #7291](https://github.com/onflow/flow-go/issues/7291)
 
 * <ins>Cryptography</ins>
+  - Passkeys: continue reviewing Access/Collection changes
+  - Multi-SPoCK - roll out from last sprint:
+    - Sketch a PoP-based proof of (simple) SPoCK unforgeabilty
+    - Sketch a KOSK-based proof of multi-SPoCK
 
-  - SPoCK next steps: sketch a PoP-based proof of (simple) SPoCK unforgeabilty - sketch a KOSK-based proof of multi-SPoCK
-  - Passkeys: continue review and implementation
-
-* <ins>research:</ins>
-  - finish analyzing [Alpenglow Consensus](https://drive.google.com/file/d/1y_7ddr8oNOknTQYHzXeeMD2ProQ0WjMs/view)
+* <ins>Research</ins>
+  - Finish analyzing [Alpenglow Consensus](https://drive.google.com/file/d/1y_7ddr8oNOknTQYHzXeeMD2ProQ0WjMs/view)
     & prep for protocol study group presentation
-
 
 
 **On Hold**
