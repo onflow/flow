@@ -190,20 +190,48 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Data Availability</ins>
-  * PR reviews
   * KROK Team
-    * Redesigned ExecutionDataRequester ([PR-7329](https://github.com/onflow/flow-go/pull/7329))
-    * Implement interface for persisting caches ([PR-7394](https://github.com/onflow/flow-go/pull/7394))
+    * Done:
+        -   [[DataAvailability] Implement Index step logic #7203](https://github.com/onflow/flow-go/issues/7203) 
+    * In Review (Working on review remarks):
+        -   [[DataAvailability] Implement Persist step logic #7204](https://github.com/onflow/flow-go/issues/7204)
+        -   [[DataAvailability] Integrate pipeline processing steps into Core #7374](https://github.com/onflow/flow-go/issues/7374)
+        -   [[DataAvailability] Extract collection ingestion into separate component #7443](https://github.com/onflow/flow-go/issues/7443)
+        -   [[DataAvailability] Create a module that downloads tx result error messages #7356](https://github.com/onflow/flow-go/issues/7356)
+    * In Progress:
+        -   [[DataAvailability] Create simplified version of ingestion engine #7461](https://github.com/onflow/flow-go/issues/7461)
+        -   [[DataAvailability] Add functional tests for processing pipeline #7379](https://github.com/onflow/flow-go/issues/7379)
 
 * <ins>Malleability</ins>
   * Immutability PR reviews
   * Investigating using untrusted models for network message inputs https://github.com/onflow/flow-go/issues/7449
   * KROK Team
     * Done:
-
-    * In Review (fixing comments):
-
+        -   [[Malleability Immutable] Enforce immutability for EpochRecover #7285](https://github.com/onflow/flow-go/issues/7285)
+        -   [[Malleability Immutable] Enforce immutability for EpochSetup #7284](https://github.com/onflow/flow-go/issues/7284)
+        -   [[Malleability Immutable] Enforce immutability for EpochCommit #7286](https://github.com/onflow/flow-go/issues/7286)
+        -   [[Malleability Immutable] Enforce immutability for MinEpochStateEntry #7293](https://github.com/onflow/flow-go/issues/7293)
+        -   [[Malleability Immutable] Enforce immutability for EpochStateEntry #7295](https://github.com/onflow/flow-go/issues/7295)
+        -   [[Malleability Immutable] Enforce immutability for RichEpochStateEntry #7296](https://github.com/onflow/flow-go/issues/7296)
+        -   [[Malleability Immutable] Enforce immutability for EpochProtocolStateAdapter #7307](https://github.com/onflow/flow-go/issues/7307)
+        -   [[Malleability Immutable] Enforce immutability for EpochStateContainer #7294](https://github.com/onflow/flow-go/issues/7294)
+        -   [[Malleability Immutable] Enforce immutability for ChunkDataPackRequest #7305](https://github.com/onflow/flow-go/issues/7305)
+        -   [[Malleability Immutable] Enforce immutability for ChunkDataPackResponse #7306](https://github.com/onflow/flow-go/issues/7306)
+    * In Review (Working on review remarks):
+        -   [[Malleability Immutable] Enforce immutability for Locator #7276](https://github.com/onflow/flow-go/issues/7276)
+        -   [[Malleability Immutable] Enforce immutability for ComputationResult #7274](https://github.com/onflow/flow-go/issues/7274)
+        -   [[Malleability Immutable] Enforce immutability for TimeoutCertificate #7302](https://github.com/onflow/flow-go/issues/7302)
+        -   [[Malleability Immutable] Enforce immutability for TimeoutObject #7272](https://github.com/onflow/flow-go/issues/7272)
+        -   [[Malleability Immutable] Enforce immutability for CollectionGuarantee #7283](https://github.com/onflow/flow-go/issues/7283)
+        -   [[Malleability Immutable] Enforce immutability for Collection #7281](https://github.com/onflow/flow-go/issues/7281)
+        -   [[Malleability Immutable] Enforce immutability for Vote #7273](https://github.com/onflow/flow-go/issues/7273)
+        -   [[Malleability Immutable] Enforce immutability for MissingCollection #7275](https://github.com/onflow/flow-go/issues/7275)
+        -   [[Malleability Immutable] Enforce immutability for IncorporatedResult #7292](https://github.com/onflow/flow-go/issues/7292)
     * In Progress:
+        -   [[Malleability Immutable] Enforce immutability for Event #7287](https://github.com/onflow/flow-go/issues/7287)
+        -   [[Malleability Immutable] Enforce immutability for ResultApprovalBody #7299](https://github.com/onflow/flow-go/issues/7299)
+        -   [[Malleability Immutable] Enforce immutability for Attestation #7298](https://github.com/onflow/flow-go/issues/7298)
+        -   [[Malleability Immutable] Enforce immutability for ResultApproval #7300](https://github.com/onflow/flow-go/issues/7300)
 
 * <ins>Cryptography</ins>
   - Proof of Possession:
@@ -220,14 +248,14 @@ Cycle Objective(s):
 
 **This sprint**
 
-* <ins>Data Availability</ins>
+* <ins>Data Availability:</ins>
   - KROK Team
+    -   Continue working on Ingestion engine reimplementation tasks and address review remarks from the previous sprint
 
-
-* <ins>Malleability</ins>
-  * Continue PR Reviews
-  * KROK Team
-
+* <ins>Malleability:</ins>
+  - KROK Team
+    -   Continue working on `Malleability Immutable` tasks and address review remarks from the previous sprint
+    -   [[Malleability Immutable] Enforce immutability for Header #7291](https://github.com/onflow/flow-go/issues/7291)
 
 * <ins>Cryptography</ins>
 
