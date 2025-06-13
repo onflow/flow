@@ -191,7 +191,10 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Data Availability</ins>
-  * Immutability PR reviews
+  - Milestone 1 - Build the processing pipeline engine [In Progress]
+  - Milestone 2 - Integrate pipeline into a fork-aware system [In Progress]
+  - Milestone 3 - API changes. [Not started]
+  * PR reviews
   * Benchnet compatibility testing for partial malleability merge
   * KROK Team
     * Done:
