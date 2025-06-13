@@ -413,7 +413,7 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* Tokenomics discussion with Deiter [Notion doc](https://www.notion.so/flowfoundation/Flow-Tokenomics-Framework-2001aee1232480aeab1ec87407d76b9e)
+* Tokenomics discussion with Dieter [Notion doc](https://www.notion.so/flowfoundation/Flow-Tokenomics-Framework-2001aee1232480aeab1ec87407d76b9e)
   * Topic: Transaciton Fees
 
 **This sprint**
