@@ -49,9 +49,9 @@ N/A
 
 ### Key Release Dates & Breaking Changes
 
-HCU next week
-- Testnet - Monday, 16th June
-- Mainnet - Tuesday, 17th June
+HCU next week to deploy a Cadence update
+- Testnet - Monday, 16th June, 8 AM Pacific
+- Mainnet - Tuesday, 17th June, 8 AM Pacific
 
 ---
 
