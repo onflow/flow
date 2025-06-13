@@ -136,6 +136,7 @@ Q2 2025 Cycle Objective(s):
     - [[Backport v0.42] [Storage] Ensure batch.Close is called exactly once.](https://github.com/onflow/flow-go/pull/7491)
     - [[Storage] Ensure batch.Close is called exactly once.](https://github.com/onflow/flow-go/pull/7490)
     - [[Util]  Add pebble checkpoint util](https://github.com/onflow/flow-go/pull/7468)
+    - [[Execution] Investigating Pebble-related panic bug](https://github.com/onflow/flow-go/pull/7489)
 - [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
     - [Expose initial fund amount as a config option](https://github.com/onflow/flow-execution-effort-estimation/pull/46)
     - [Fix key id assigment when creating new proposers](https://github.com/onflow/flow-execution-effort-estimation/pull/47)
@@ -190,6 +191,7 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Data Availability</ins>
+  * PR reviews
   * KROK Team
     * Done:
         -   [[DataAvailability] Implement Index step logic #7203](https://github.com/onflow/flow-go/issues/7203) 
