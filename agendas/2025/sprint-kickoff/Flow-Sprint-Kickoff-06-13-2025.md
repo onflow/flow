@@ -3,8 +3,6 @@
  ### Team Wins 🎉
 
 * Proof of Possession rolled out to mainnet.
-* Strategy to transition 80%—90% of code from `feature/malleability` to master --
-  significantly decreasing change surface for future conflicts until we can roll out breaking changes in Spork
 * Closed Compiler + VM milestones 6 & 7 - running book-keeping functions (account balance check, storage limit check, fee deduction) speeds up execution by ~13%, with minimal effort spent on optimizations.
 * Completed automatic fuzzing of parser & typechecker.
 * Optimizations of version beacon access/use by the execution runtime improved execution saturation by ~30%.
