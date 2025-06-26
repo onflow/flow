@@ -1,7 +1,7 @@
 # Overview
 
  ### Team Wins 🎉
-
+* Solana's Alpenglow Consensus review
 
 ---
 
@@ -285,11 +285,11 @@ Cycle Objective(s):
 **Done last sprint**
 
 * Tokenomics discussion with Dieter [Notion doc](https://www.notion.so/flowfoundation/Flow-Tokenomics-Framework-2001aee1232480aeab1ec87407d76b9e)
-  * Topic: Transaciton Fees
+  * Topic: Transaciton Fees, Surge Factor
 
 **This sprint**
 
 * Continue Tokenomics discussion.
-  * Topic: Surge factor
+  * Topic: FLIP for Surge factor
 
 ---
