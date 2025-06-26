@@ -11,26 +11,27 @@
 |:------------------------|:------:|:-------------:|:-----------------:|
 | Collection Finalization | 99.9%   |     100%      |        0%         |
 | Block Finalization      | 99.9%   |     100%      |        0%         |
-| Transaction Execution   | 99.9%   |    99.975%    |       24.8%       |
-| Block Sealing           | 99.9%   |  99.975%      |    24.8%          |
+| Transaction Execution   | 99.9%   |    99.95%     |       49.6%       |
+| Block Sealing           | 99.9%   |    99.95%     |       49.6%       |
 | Access API Liveness     | 99.9%   |     100%      |        0%         |
 
 
 #### YTD SLA
 
 | Incident/upgrade       | Date      | Collection | Consensus | Execution | Verification | Total  | Comments      |
-|------------------------|-----------|-----------|----------|-----------|--------------|--------| ------------- |
-| HCU                    | 1/27/2025 |           |          | 5         |              | 5      |               |
-| P0 Incident            | 2/18/2025 | 180       | 180      | 180       | 180          | 180    | Grafana issue |
-| P0 Incident            | 2/19/2025 | 30        | 30       | 30        | 30           | 30     | Grafana issue |
-| HCU                    | 2/18/2025 |           |          | 5         |              | 5      |               |
-| HCU                    | 2/18/2025 |           |          | 5         |              | 5      |               |
-| HCU                    | 4/10/2025 |           |          | 5         |              | 5      |               |
-| HCU                    | 5/15/2025 |           |          | 7         |              | 7      |               |
-| HCU                    | 6/3/2025  |           |          | 9         |              | 9      |               |
-| Total downtime in mins |           | 210       | 210      | 251       | 210          | 251    |               |
-| YTD (5/29/25) SLA      |           | 99.9%     | 99.9%    | 99.89%    | 99.9%        | 99.89% |               |
-| SLA for 2025           |           | 99.96%    | 99.96%   | 99.95%    | 99.96%       | 99.95% |               |
+|------------------------|-----------|------------|-----------|-----------|--------------|--------| ------------- |
+| HCU                    | 1/27/2025 |            |           | 5         |              | 5      |               |
+| P0 Incident            | 2/18/2025 | 180        | 180       | 180       | 180          | 180    | Grafana issue |
+| P0 Incident            | 2/19/2025 | 30         | 30        | 30        | 30           | 30     | Grafana issue |
+| HCU                    | 2/18/2025 |            |           | 5         |              | 5      |               |
+| HCU                    | 2/18/2025 |            |           | 5         |              | 5      |               |
+| HCU                    | 4/10/2025 |            |           | 5         |              | 5      |               |
+| HCU                    | 5/15/2025 |            |           | 7         |              | 7      |               |
+| HCU                    | 6/3/2025  |            |           | 9         |              | 9      |               |
+| HCU                    | 6/16/2025 |            |           | 12        |              | 12     |               |
+| Total downtime in mins |           | 210        | 210       | 251       | 210          | 251    |               |
+| YTD (6/26/25) SLA      |           | 99.92%     | 99.92%    | 99.9%     | 99.92%       | 99.9%  |               |
+| SLA for 2025           |           | 99.96%     | 99.96%    | 99.95%    | 99.96%       | 99.95% |               |
 
 ### Incidents
 
@@ -60,8 +61,10 @@ Full network upgrade (Spork) Fall 2025.
 | Total       | **19** |    **50**   |       **16**       |       **17**         | **104** |
 
 One new FLIP -
+- [FLIP 332: Enforcing Domain-Based Networking Addresses for Nodes](https://github.com/onflow/flips/blob/main/protocol/20250619-network-address-validation.md)
 
-[FLIP 332: Enforcing Domain-Based Networking Addresses for Nodes](https://github.com/onflow/flips/blob/main/protocol/20250619-network-address-validation.md)
+FLIP Review -
+- [FLIP-330: Schedule Callback](https://github.com/onflow/flips/pull/331) Review on July 2nd, 9AM Pacific
 
 ---
 
