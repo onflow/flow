@@ -2,6 +2,7 @@
 
  ### Team Wins 🎉
 * Solana's Alpenglow Consensus review
+* Closed [Flip 314: Import Aliasing](https://github.com/onflow/flips/pull/315)
 
 ---
 
@@ -81,47 +82,94 @@ Q2 2025 Cycle Objective(s):
 **Done last sprint**
 
 **Cadence Language**
-
-- Automatic fuzzing of parser & typechecker
-
-- Tool Bugfix:
-
-
-- Regression prevention: [Add CI automation to verify storage iteration](https://github.com/onflow/cadence/issues/2688)
-
-- Testing:
-
-- chores:
-
-- Docs: 
-
+- FLIP: [Flip 314: Import Aliasing](https://github.com/onflow/flips/pull/315)
+- [Compiler Milestone 9: Run user-submitted transactions and scripts](https://github.com/onflow/cadence/issues/3993)
+    - [[Compiler] Improve scripts](https://github.com/onflow/cadence/pull/4013)
+    - [[Compiler] Enable more runtime tests to be run with compiler/VM](https://github.com/onflow/cadence/pull/4014)
+- [Compiler Milestone 10: Remaining known feature gaps (some exceptions)](https://github.com/onflow/cadence/issues/4015)
+    - [[Compiler] Implement `Capability.check` function, fix `Capability.borrow`](https://github.com/onflow/cadence/pull/4017)
+    - [[Compiler] Implement String Templates](https://github.com/onflow/cadence/pull/4019)
+    - [[Compiler] Close upvalues for locals of for loops](https://github.com/onflow/cadence/pull/4020)
+    - [[Compiler] Compile void expressions](https://github.com/onflow/cadence/pull/4023)
+    - [[Compiler] Compile conditions in function-expressions and inner-functions](https://github.com/onflow/cadence/pull/4027)
+    - [[Compiler] Refactor stdlib functions](https://github.com/onflow/cadence/pull/4030)
+    - [[Compiler] Implement more stdlib functions](https://github.com/onflow/cadence/pull/4031)
+    - [[Compiler] Implement Account.Keys functions for VM](https://github.com/onflow/cadence/pull/4032)
+    - [[Compiler] Implement Account.Inbox and Account.AccountCapabilities functions for VM](https://github.com/onflow/cadence/pull/4034)
+    - [[Compiler] Implement RLP and BLS functions for VM](https://github.com/onflow/cadence/pull/4035)
+    - [[Compiler] Implement StorageCapabilityController and AccountCapabilityController functions for VM](https://github.com/onflow/cadence/pull/4036)
+    - [[Compiler] Implement HashAlgorithm and SignatureAlgorithm for VM](https://github.com/onflow/cadence/pull/4037)
+    - [[Compiler] Implement PublicKey constructor for VM](https://github.com/onflow/cadence/pull/4038)
+    - [[Compiler] Allow loading of `flow.*` types in VM environment](https://github.com/onflow/cadence/pull/4039)
+    - [[Compiler] Refactor method invocation](https://github.com/onflow/cadence/pull/4041)
+    - [[Compiler] Implement some `Account.Contracts` and `DeployedContract` functions](https://github.com/onflow/cadence/pull/4044)
+    - [[Compiler] Add member access type validation in VM](https://github.com/onflow/cadence/pull/4047)
+- [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
+    - [[Compiler] Run more tests with compiler](https://github.com/onflow/cadence/pull/4029)
+    - [[Compiler] Fix use of imported enum cases](https://github.com/onflow/cadence/pull/4043)
+    - [[Compiler] Remove environment composite functions handler](https://github.com/onflow/cadence/pull/4042)
+- Improvements:
+    - Performance optimization: [Remove unnecessary storage commit at end of script execution](https://github.com/onflow/cadence/pull/4046)
+    - [Improve bimap insertion and tests](https://github.com/onflow/cadence/pull/4045)
+- Bugfix: 
+    - [Fix race when array/dictionary entitlement set is used concurrently](https://github.com/onflow/cadence/pull/4040)
+- Automation: 
+    - [Setup automated fuzzing of Cadence repo](https://github.com/onflow/cadence/issues/3985)
+        - [Fix CCF encoder fuzzer](https://github.com/onflow/cadence-fuzzer/pull/25)
+        - [Fix decoder fuzzing ](https://github.com/onflow/cadence-fuzzer/pull/26)
+        - [Fix cache with restore/clear/save workaround.](https://github.com/onflow/cadence-fuzzer/pull/27)
+- Tooling:
+    - [Improve API for test framework](https://github.com/onflow/cadence/pull/4018)
+    - [[Test] Update to Cadence v1.6.0](https://github.com/onflow/cadence-tools/pull/471)
+- Chores:
+    - [Port v1.6.1-rc.1](https://github.com/onflow/cadence/pull/4022)
+    - [[v1.6] Port v1.6.1-rc.1](https://github.com/onflow/cadence/pull/4021)
+    - [Merge master into the compiler feature branch](https://github.com/onflow/cadence/pull/4051)
+    - [Merge compiler feature branch](https://github.com/onflow/cadence/pull/4049)
 
 **Cadence Execution**
 
+- [Execution effort calibration](https://github.com/onflow/flow-go/issues/5598)
+    - [Collect timing information from multiple ENs](https://github.com/onflow/flow-execution-effort-estimation/pull/55)
+    - [Use previous calibration results](https://github.com/onflow/flow-execution-effort-estimation/pull/57)
+    - [Improve transaction random generation](https://github.com/onflow/flow-execution-effort-estimation/pull/58)
 - [Badger -> Pebble DB M3: unblock pruning of Execution, Access and Verification data](https://github.com/onflow/flow-go/issues/7242)
-
-- [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
-
-- Performance optimizations
-
-- Investigation: [Pebble panic](https://github.com/onflow/flow-go/pull/7489)
-
-- Fix downstream build issues
-
-
+    - [[Util] Storage data migration with SSTables (~10x migration speed improvement)](https://github.com/onflow/flow-go/pull/7467)
+- [Badger -> Pebble DB M4: remove dependency on Badger DB completely from ENs and ANs](https://github.com/onflow/flow-go/issues/7265)
+    - [[Storage] execution node support pebble based execution data store](https://github.com/onflow/flow-go/pull/7506)
+Testing:
+    - [Update FVM benchmarks to Cadence 1.0](https://github.com/onflow/flow-go/pull/7509)
+    - [Add startup option to disable transaction fees](https://github.com/onflow/flow-go/pull/7517)
+- chores:
+    - [[v0.42] Update to Cadence v1.6.1](https://github.com/onflow/flow-go/pull/7519)
+    - [Update to Cadence v1.6.2](https://github.com/onflow/flow-go/pull/7518)
+    - [Update to Cadence v1.6.2](https://github.com/onflow/flow-go-sdk/pull/863)
+    - [Update to Cadence v1.6.3](https://github.com/onflow/flow-go-sdk/pull/866)
 
 **Flow EVM**
-- Core: [Fix high CPU usage related to EVM `DeltaView.AddressInAccessList`](https://github.com/onflow/flow-go/pull/7405)
-- GW: [Move RPC calls to constants to reduce string object allocations](https://github.com/onflow/flow-evm-gateway/pull/824)
+- Improvements:
+    - [[Backport v0.42] Fix high CPU usage related to EVM `DeltaView.AddressInAccessList`](https://github.com/onflow/flow-go/pull/7502)
+    - [Implement `BatchTxPool` to handle nonce mismatch issues](https://github.com/onflow/flow-evm-gateway/pull/831)
+- Bugfix:
+    - [Add logic to properly handle JSON-RPC calls exceeding the configured write timeout](https://github.com/onflow/flow-evm-gateway/pull/825)
+- Chore:
+    - [[Backport] Implement `BatchTxPool` to handle nonce mismatch issues](https://github.com/onflow/flow-evm-gateway/pull/833)
 
 **This sprint**
 
 - Cadence Language
+  - Continue Compiler Milestone [9: Run user-submitted transactions and scripts](https://github.com/onflow/cadence/issues/3993) and [10: Remaining known feature gaps (some exceptions)](https://github.com/onflow/cadence/issues/4015).
 
 - Cadence Execution
-
+  - Continue new Trie research
+  - Continue work on Badger -> Pebble DB [M3: unblock pruning of Execution, Access and Verification data](https://github.com/onflow/flow-go/issues/7242) and [M4: remove dependency on Badger DB completely from ENs and ANs](https://github.com/onflow/flow-go/issues/7265).
+  - Continue [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598).
+  - Continue [EOA control delegation](https://github.com/onflow/flow-go/issues/7441).
+  - Continue [Scheduled callbacks](https://github.com/onflow/flow-go/issues/7482).
 
 - EVM
+  - Complete [Transactions are not guaranteed to run according to their arrival order](https://github.com/onflow/flow-evm-gateway/issues/699)
+  - Start EVM GW resilience improvements[1](https://github.com/onflow/flow-evm-gateway/issues/764), [2](https://github.com/onflow/flow-evm-gateway/issues/778)
 
 
 
