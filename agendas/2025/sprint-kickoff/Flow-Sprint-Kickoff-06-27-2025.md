@@ -280,10 +280,44 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
 
-**This sprint**
+**Observability/Incident Response**
+- [Create contact points for informational routing](https://github.com/onflow/ff-sre-infrastructure/issues/458)
+- [Identify gaps in alert runbooks](https://github.com/onflow/ff-sre-infrastructure/issues/478)
+- [Create Runbook for Go Routines > 15000 Alert](https://github.com/onflow/ff-sre-infrastructure/issues/516)
+- [Create Runbook for Data Disk Usage > 90% Alert](https://github.com/onflow/ff-sre-infrastructure/issues/510)
+- [Create Runbook for Boot Disk Usage > 75% Alert](https://github.com/onflow/ff-sre-infrastructure/issues/508)
+- [Create Runbook for Collection Node Message Queue Backlog Alert](https://github.com/onflow/ff-sre-infrastructure/issues/502)
+- [Fix alerts to handle defaulting to zero](https://github.com/onflow/ff-sre-infrastructure/issues/487)
+- [Update slack alert templating to improve readability](https://github.com/onflow/ff-sre-infrastructure/issues/477)
+- [Increase Profiles Ingestion Rate Threshold](https://github.com/onflow/ff-sre-infrastructure/issues/455)
+- [Classify Alerts Into a Tiered List (P0 to P4)](https://github.com/onflow/ff-sre-infrastructure/issues/135)
+- [Create alert for log query usage](https://github.com/onflow/ff-sre-infrastructure/issues/215)
+- [Create new slack channels for informational alerts and testing](https://github.com/onflow/ff-sre-infrastructure/issues/457)
+- [Increase timeouts on synthetic monitors](https://github.com/onflow/ff-sre-infrastructure/issues/472)
+- [Link panels to Grafana alerts](https://github.com/onflow/ff-sre-infrastructure/issues/438)
+
+**Security**
+- [Review Web Security Program](https://github.com/onflow/ff-sre-infrastructure/issues/454)
+- [Triage Security Issue FLOWWEB-43](https://github.com/onflow/ff-sre-infrastructure/issues/501)
+- [Triage Web Security Issue FLOWWEB-37](https://github.com/onflow/ff-sre-infrastructure/issues/484)
+
+**Grafana Alloy Agent**
+
+**Tidal Infra & Observability**
+- [Create DevEx Applications Monitoring Strategy](https://github.com/onflow/ff-sre-infrastructure/issues/460)
+
+**Automation**
+- [Install OPs agent on Batch jobs](https://github.com/onflow/ff-sre-infrastructure/issues/449)
+- [Add support for executing batch jobs without snapshots](https://github.com/onflow/ff-sre-infrastructure/issues/453)
+
+**Support**
+- [Increase Devnet52 SN data disks](https://github.com/onflow/ff-sre-infrastructure/issues/522)
+- [Increase MN26 AN data disks](https://github.com/onflow/ff-sre-infrastructure/issues/495)
+- [Remove DL Access Nodes](https://github.com/onflow/ff-sre-infrastructure/issues/406)
+- [Delete Testing machine for TPS automation](https://github.com/onflow/ff-sre-infrastructure/issues/490)
+- [Grant access to 4d staging GCP project](https://github.com/onflow/ff-sre-infrastructure/issues/481)
 
 **Active Epics**
-* [Integrate Grafana Alloy Agent](https://github.com/onflow/ff-sre-infrastructure/issues/100)
 * [Incident Management & Response](https://github.com/orgs/onflow/projects/79/views/1?pane=issue&itemId=93739820&issue=onflow%7Cff-sre-infrastructure%7C131)
 * [Tidal Infra & Observability Optimization](https://github.com/onflow/ff-sre-infrastructure/issues/450)
 
