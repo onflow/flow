@@ -157,18 +157,36 @@ Cycle Objective(s):
 
 * <ins>Malleability</ins>
   * Immutability PR reviews
-  * KROK Team
-    * Done:
-    * In Review (Working on review remarks):
-    * In Progress:
+    * KROK Team
+
+      * **_Done:_**
+
+        -   [\[Malleability Immutable\] Enforce immutability for Locator](https://github.com/onflow/flow-go/issues/7285)
+        -   [\[Malleability Immutable\] Enforce immutability for ComputationResult](https://github.com/onflow/flow-go/issues/7285)
+        -   [\[Malleability Immutable\] Enforce immutability for TimeoutCertificate](https://github.com/onflow/flow-go/issues/7285)
+        -   [\[Malleability Immutable\] Enforce immutability for TimeoutObject](https://github.com/onflow/flow-go/issues/7285)
+        -   [\[Malleability Immutable\] Enforce immutability for Event](https://github.com/onflow/flow-go/issues/7287)
+        -   [\[Malleability Immutable\] Enforce immutability for Seal](https://github.com/onflow/flow-go/issues/7301)
+        -   [\[Malleability Immutable\] Enforce immutability for ExecutionReceipt](https://github.com/onflow/flow-go/issues/7288)
+        -   [\[Malleability Immutable\] Enforce immutability for UnsignedExecutionReceipt](https://github.com/onflow/flow-go/issues/7530)
+        -   [\[Malleability Immutable\] Enforce immutability for ExecutionReceiptStub](https://github.com/onflow/flow-go/issues/7289)
+        -   [\[Malleability Immutable\] Enforce immutability for UnsignedExecutionReceiptStub](https://github.com/onflow/flow-go/issues/7536)
+
+      **_In Review_:**
+
+      -   [\[Malleability Immutable\] Add ExecutionResult validation to UnsignedExecutionReceipt constructor](https://github.com/onflow/flow-go/issues/7543)
+
+      **_In Progress_:**
+      -   [\[Malleability Immutable\] Enforce immutability for Block (cluster)](https://github.com/onflow/flow-go/issues/7277)
 
 * <ins>Cryptography</ins>
-  - Proof of Possession:
+  - Proof of Possession: Emulator update
+  - Passkeys: PR reviews
 
 * <ins>Research</ins>
   - Analyzing Solana's new [Alpenglow Consensus Paper](https://drive.google.com/file/d/1y_7ddr8oNOknTQYHzXeeMD2ProQ0WjMs/view)
     and adjacent body of new consensus research \[[1](https://eprint.iacr.org/2023/463),[2](https://arxiv.org/abs/2505.08771),[3](https://arxiv.org/abs/2408.04728),[4](https://arxiv.org/abs/2102.07240)\] (ongoing)
-
+  - Present analysis during the core protocol working group / protocol study group.
 
 **This sprint**
 
@@ -176,14 +194,11 @@ Cycle Objective(s):
 
 * <ins>Malleability</ins>
   - KROK Team
+    -   Continue [\[Malleability Immutable\] Enforce immutability for Block (cluster)](https://github.com/onflow/flow-go/issues/7277)
+    -   [\[Malleability Immutable\] Enforce immutability for Block (flow)](https://github.com/onflow/flow-go/issues/7278)
+    -   Review remarks from previous sprint
 
 * <ins>Cryptography</ins>
-  - Passkeys: 
-
-
-* <ins>Research</ins>
-  - Finish analyzing [Alpenglow Consensus](https://drive.google.com/file/d/1y_7ddr8oNOknTQYHzXeeMD2ProQ0WjMs/view)
-    & prep for protocol study group presentation
 
 
 **On Hold**
