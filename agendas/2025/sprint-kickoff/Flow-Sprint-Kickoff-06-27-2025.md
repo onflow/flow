@@ -194,15 +194,20 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Data Availability</ins>
-  * PR reviews for Milestone 1 of Optimistic Sync
-  * Initial draft of caching layer.
-  * KROK Team
-    * Done: [Add here]
-       
-    * In Review (Working on review remarks):
- 
-    * In Progress:
-
+  - PR reviews for Milestones 1 & 2 of Optimistic Sync
+  - Initial draft of caching layer.
+  - [Add LatestPersistedSealedResult module](https://github.com/onflow/flow-go/pull/7460)
+  - [Improve error handling in new indexer module and storage](https://github.com/onflow/flow-go/pull/7513)
+  - KROK Team
+    - Done: [Add here]
+      - [[DataAvailability] Add new error message requester](https://github.com/onflow/flow-go/pull/7484)
+      - [[DataAvailability] Integrate pipeline processing steps into Core](https://github.com/onflow/flow-go/pull/7470)
+      - [[DataAvailability] Implement Persist step logic](https://github.com/onflow/flow-go/pull/7415)
+      - [[DataAvailability] Extract collection syncing logic from ingestion engine](https://github.com/onflow/flow-go/pull/7455)
+    - In Review (Working on review remarks):
+      - [[DataAvailability] Add functional tests for processing pipeline](https://github.com/onflow/flow-go/pull/7526)
+      - [[DataAvailability] Create simplified version of ingestion engine](https://github.com/onflow/flow-go/pull/7504)
+      - [[DataAvailability] Improve ingestion engine error handling](http://github.com/onflow/flow-go/pull/7552)
 
 * <ins>Malleability</ins>
   * PR review and support for current Immutability issues
@@ -245,7 +250,10 @@ Cycle Objective(s):
   - Milestone 2 Optimistic Sync: Continue work on result forest.
   - Ingestion engine refactoring in progress
   - KROK Team
-    - [Add here]
+    - Continue iterating on in-review PRs
+    - [[DataAvailability] Create module to get ExecutionResult for request criteria](https://github.com/onflow/flow-go/issues/7546)
+    - [[DataAvailability] Refactor execution state APIs into local and EN query modules](https://github.com/onflow/flow-go/issues/7547)
+    - Continue with Milestone 3 API tasks.
 
 * <ins>Malleability</ins>
   - Continue PR review and support for current Immutability issues
