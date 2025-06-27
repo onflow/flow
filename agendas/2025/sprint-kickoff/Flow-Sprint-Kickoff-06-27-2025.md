@@ -45,7 +45,7 @@ N/A
 
 ### Key Release Dates & Breaking Changes
 
-Full network upgrade (Spork) Fall 2025. 
+Full network upgrade (Spork) Fall 2025.
 
 ---
 
@@ -111,9 +111,9 @@ Q2 2025 Cycle Objective(s):
 - Improvements:
     - Performance optimization: [Remove unnecessary storage commit at end of script execution](https://github.com/onflow/cadence/pull/4046)
     - [Improve bimap insertion and tests](https://github.com/onflow/cadence/pull/4045)
-- Bugfix: 
+- Bugfix:
     - [Fix race when array/dictionary entitlement set is used concurrently](https://github.com/onflow/cadence/pull/4040)
-- Automation: 
+- Automation:
     - [Setup automated fuzzing of Cadence repo](https://github.com/onflow/cadence/issues/3985)
         - [Fix CCF encoder fuzzer](https://github.com/onflow/cadence-fuzzer/pull/25)
         - [Fix decoder fuzzing ](https://github.com/onflow/cadence-fuzzer/pull/26)
@@ -318,10 +318,41 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
-
+- **Component & Hook Development**
+  - Built `TransactionButton` component and integrated it into the live demo area
+  - Improved `Connect` component with Cross-VM token balance display
+  - Created and documented the `useCrossVmTransactionStatus` hook
+  - Added raw query hook support from community request
+  - Added context support for transaction state handling in `TransactionButton`
+  - Added emulator support for Cross-VM hooks
+- **Documentation & Demos**
+  - Wrote documentation for:
+    - `Connect`
+    - `TransactionButton`
+    - `TransactionLink`
+    - `TransactionDialog`
+    - `useCrossVmTransactionStatus`
+  - Continued development of live demo area on the docs site
+  - Polished component UI for release and began dark mode support
+- **Tooling & Infrastructure**
+  - Started building an internal demo/testing environment for rapid iteration
+  - Initiated refactor of global FCL config
+  - Released CLI with emulator EVM Bridge functionality
+- **TypeScript Support**
+  - Extracted SDK reference material into JSDoc within the `onflow/sdk` package
+  - Completed enriched descriptions and examples for `onflow/sdk`
+  - Continued improving `onflow/fcl` JSDoc examples
 
 **This Sprint**
 
+- Support developers at the Eth Hackathon
+- Release components in the library
+- Launch the live demo area in the documentation
+- Write a blog post for the components release
+- Finish the global config issue
+- Add the `useFlowTransaction` hook
+- Make the token type configurable in the `Connect` component
+- Begin work on DeFi block support in the tooling
 
 ---
 
