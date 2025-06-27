@@ -213,26 +213,33 @@ Cycle Objective(s):
   * PR review and support for current Immutability issues
   * Investigating strategies for enforcing data structure structural validity at the network layer boundary
   * KROK Team
-
-    * **_Done:_**
-
-      -   [\[Malleability Immutable\] Enforce immutability for Locator](https://github.com/onflow/flow-go/issues/7285)
-      -   [\[Malleability Immutable\] Enforce immutability for ComputationResult](https://github.com/onflow/flow-go/issues/7285)
-      -   [\[Malleability Immutable\] Enforce immutability for TimeoutCertificate](https://github.com/onflow/flow-go/issues/7285)
-      -   [\[Malleability Immutable\] Enforce immutability for TimeoutObject](https://github.com/onflow/flow-go/issues/7285)
-      -   [\[Malleability Immutable\] Enforce immutability for Event](https://github.com/onflow/flow-go/issues/7287)
-      -   [\[Malleability Immutable\] Enforce immutability for Seal](https://github.com/onflow/flow-go/issues/7301)
-      -   [\[Malleability Immutable\] Enforce immutability for ExecutionReceipt](https://github.com/onflow/flow-go/issues/7288)
-      -   [\[Malleability Immutable\] Enforce immutability for UnsignedExecutionReceipt](https://github.com/onflow/flow-go/issues/7530)
-      -   [\[Malleability Immutable\] Enforce immutability for ExecutionReceiptStub](https://github.com/onflow/flow-go/issues/7289)
-      -   [\[Malleability Immutable\] Enforce immutability for UnsignedExecutionReceiptStub](https://github.com/onflow/flow-go/issues/7536)
-
-    * **_In Review_:**
-
-      -   [\[Malleability Immutable\] Add ExecutionResult validation to UnsignedExecutionReceipt constructor](https://github.com/onflow/flow-go/issues/7543)
-
-    * **_In Progress_:**
-      -   [\[Malleability Immutable\] Enforce immutability for Block (cluster)](https://github.com/onflow/flow-go/issues/7277)
+    * Done:
+        * [[Malleability Immutable] Enforce immutability for CollectionGuarantee #7283](https://github.com/onflow/flow-go/issues/7283)
+        * [[Malleability Immutable] Enforce immutability for Collection #7281](https://github.com/onflow/flow-go/issues/7281)
+        * [[Malleability Immutable] Enforce immutability for Vote #7273](https://github.com/onflow/flow-go/issues/7273)
+        * [[Malleability Immutable] Enforce immutability for MissingCollection #7275](https://github.com/onflow/flow-go/issues/7275)
+        * [[Malleability Immutable] Enforce immutability for IncorporatedResult #7292](https://github.com/onflow/flow-go/issues/7292)
+        * [[Malleability Immutable] Enforce immutability for Chunk #7279](https://github.com/onflow/flow-go/issues/7279)
+        * [[Malleability Immutable] Enforce immutability for ChunkDataPack #7280](https://github.com/onflow/flow-go/issues/7280)
+        * [[Malleability Immutable] Enforce immutability for ExecutionResult #7290](https://github.com/onflow/flow-go/issues/7290)
+        * [[Malleability Immutable] Enforce immutability for ResultApprovalBody #7299](https://github.com/onflow/flow-go/issues/7299)
+        * [[Malleability Immutable] Enforce immutability for Attestation #7298](https://github.com/onflow/flow-go/issues/7298)
+        * [[Malleability Immutable] Enforce immutability for ResultApproval #7300](https://github.com/onflow/flow-go/issues/7300)
+        * [[Malleability Immutable] Enforce immutability for Locator #7276](https://github.com/onflow/flow-go/issues/7276)
+        * [[Malleability Immutable] Enforce immutability for ComputationResult #7274](https://github.com/onflow/flow-go/issues/7274)
+        * [[Malleability Immutable] Enforce immutability for TimeoutCertificate #7302](https://github.com/onflow/flow-go/issues/7302)
+        * [[Malleability Immutable] Enforce immutability for TimeoutObject #7272](https://github.com/onflow/flow-go/issues/7272)
+        * [[Malleability Immutable] Enforce immutability for Event #7287](https://github.com/onflow/flow-go/issues/7287)
+        * [[Malleability Immutable] Enforce immutability for Seal #7301](https://github.com/onflow/flow-go/issues/7301)
+        * [[Malleability Immutable] Enforce immutability for ExecutionReceipt #7288](https://github.com/onflow/flow-go/issues/7288)
+        * [[Malleability Immutable] Enforce immutability for UnsignedExecutionReceipt #7530](https://github.com/onflow/flow-go/issues/7530)
+        * [[Malleability Immutable] Enforce immutability for ExecutionReceiptStub #7289](https://github.com/onflow/flow-go/issues/7289)
+        * [[Malleability Immutable] Enforce immutability for UnsignedExecutionReceiptStub #7536](https://github.com/onflow/flow-go/issues/7536)
+    * In Review:
+        * [[Malleability Immutable] Enforce immutability for QuorumCertificate](https://github.com/onflow/flow-go/pull/7542)
+        * [[Malleability Immutable] Add ExecutionResult validation to UnsignedExecutionReceipt constructor #7543](https://github.com/onflow/flow-go/issues/7543)
+    * In Progress:
+        * [[Malleability Immutable] Enforce immutability for Block (cluster) #7277](https://github.com/onflow/flow-go/issues/7277)
 
 * <ins>Cryptography</ins>
     - Passkeys: review - PR merging and branches clean up - implemented new access/collection transaction validation + some refactors (PR submitted)
@@ -259,9 +266,12 @@ Cycle Objective(s):
   - Continue PR review and support for current Immutability issues
   - Continue investigating strategies for enforcing data structure structural validity at the network layer boundary
   - KROK Team
-    -   Continue [\[Malleability Immutable\] Enforce immutability for Block (cluster)](https://github.com/onflow/flow-go/issues/7277)
-    -   [\[Malleability Immutable\] Enforce immutability for Block (flow)](https://github.com/onflow/flow-go/issues/7278)
-    -   Review remarks from previous sprint
+    - [[Malleability Immutable] Enforce immutability for Header #7291](https://github.com/onflow/flow-go/issues/7291)
+    - [[Malleability Immutable] Enforce immutability for Transaction #7304](https://github.com/onflow/flow-go/issues/7304)
+    - [[Malleability Immutable] Enforce immutability for TransactionBody #7303](https://github.com/onflow/flow-go/issues/7303)
+    - Continue [[Malleability Immutable] Enforce immutability for Block (cluster) #7277](https://github.com/onflow/flow-go/issues/7277)
+    - [[Malleability Immutable] Enforce immutability for Block (flow) #7278](https://github.com/onflow/flow-go/issues/7278)
+    - Address review remarks from previous sprint
 
 * <ins>Cryptography</ins>
   - Focus back on SPoCK
