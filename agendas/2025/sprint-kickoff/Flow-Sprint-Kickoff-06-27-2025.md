@@ -366,23 +366,15 @@ Cycle Objective(s):
 **Cycle Objective(s):**
 
 KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 0.5 per week on a 4-week rolling average.
- - Current (June 13: 0.5/week -> 95% decrease in bugs since Jen/Feb!
+ - Current (June 27): 0.25/week -> 98% decrease in bugs since Jen/Feb!
 
 **Done last sprint**
 
-
-
 **This sprint**
 
-
-
-**On Hold**
-
-- N/A
-
-**Active Epics**
-
-- TBD
+- Continuing on our multi-account per profile feature, where users will be able to manage multiple accounts within a single profile.
+- Adding support for ERC-1155 semi-fungible NFTs
+- Fixed an issue with KittyPunch passport interacting with Flow Wallet
 
 ---
 
