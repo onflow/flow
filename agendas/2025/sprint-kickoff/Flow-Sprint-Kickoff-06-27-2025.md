@@ -196,10 +196,10 @@ Cycle Objective(s):
 * <ins>Data Availability</ins>
   - PR reviews for Milestones 1 & 2 of Optimistic Sync
   - Initial draft of caching layer.
-  - [Add LatestPersistedSealedResult module](https://github.com/onflow/flow-go/pull/7460)
-  - [Improve error handling in new indexer module and storage](https://github.com/onflow/flow-go/pull/7513)
+  - [[DataAvailability] Add LatestPersistedSealedResult module](https://github.com/onflow/flow-go/pull/7460)
+  - [[DataAvailability] Improve error handling in new indexer module and storage](https://github.com/onflow/flow-go/pull/7513)
   - KROK Team
-    - Done: [Add here]
+    - Done:
       - [[DataAvailability] Add new error message requester](https://github.com/onflow/flow-go/pull/7484)
       - [[DataAvailability] Integrate pipeline processing steps into Core](https://github.com/onflow/flow-go/pull/7470)
       - [[DataAvailability] Implement Persist step logic](https://github.com/onflow/flow-go/pull/7415)
