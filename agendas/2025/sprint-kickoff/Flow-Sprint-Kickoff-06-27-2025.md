@@ -194,21 +194,20 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Data Availability</ins>
-  * PR reviews for Milestone 1 of Optimistic Sync
-  * Initial draft of caching layer.
-  * KROK Team
-    * Done:
-        * [[DataAvailability] Extract collection ingestion into separate component #7443](https://github.com/onflow/flow-go/issues/7443)
-        * [[DataAvailability] Create a module that downloads tx result error messages #7356](https://github.com/onflow/flow-go/issues/7356)
-        * [[DataAvailability] Implement Persist step logic #7204](https://github.com/onflow/flow-go/issues/7204)
-    * In Review (fixing comments):
-        * [[DataAvailability] Add functional tests for processing pipeline #7379](https://github.com/onflow/flow-go/issues/7379)
-        * [[DataAvailability] Integrate pipeline processing steps into Core #7374](https://github.com/onflow/flow-go/issues/7374)
-        * [[DataAvailability] Create simplified version of ingestion engine #7461](https://github.com/onflow/flow-go/issues/7461)
-    * In Progress:
-        * [[DataAvailability] Fix log and continue anti-pattern in ingestion engine #7510](https://github.com/onflow/flow-go/issues/7510)
-        * [[DataAvailability] Create module to get ExecutionResult for request criteria #7546](https://github.com/onflow/flow-go/issues/7546)
-
+  - PR reviews for Milestones 1 & 2 of Optimistic Sync
+  - Initial draft of caching layer.
+  - [[DataAvailability] Add LatestPersistedSealedResult module](https://github.com/onflow/flow-go/pull/7460)
+  - [[DataAvailability] Improve error handling in new indexer module and storage](https://github.com/onflow/flow-go/pull/7513)
+  - KROK Team
+    - Done:
+      - [[DataAvailability] Add new error message requester](https://github.com/onflow/flow-go/pull/7484)
+      - [[DataAvailability] Integrate pipeline processing steps into Core](https://github.com/onflow/flow-go/pull/7470)
+      - [[DataAvailability] Implement Persist step logic](https://github.com/onflow/flow-go/pull/7415)
+      - [[DataAvailability] Extract collection syncing logic from ingestion engine](https://github.com/onflow/flow-go/pull/7455)
+    - In Review (Working on review remarks):
+      - [[DataAvailability] Add functional tests for processing pipeline](https://github.com/onflow/flow-go/pull/7526)
+      - [[DataAvailability] Create simplified version of ingestion engine](https://github.com/onflow/flow-go/pull/7504)
+      - [[DataAvailability] Improve ingestion engine error handling](http://github.com/onflow/flow-go/pull/7552)
 
 * <ins>Malleability</ins>
   * PR review and support for current Immutability issues
@@ -258,8 +257,10 @@ Cycle Objective(s):
   - Milestone 2 Optimistic Sync: Continue work on result forest.
   - Ingestion engine refactoring in progress
   - KROK Team
-    - Address review remarks from previous sprint
-    - [[DataAvailability] Refactor execution state APIs into local and EN query modules #7547](https://github.com/onflow/flow-go/issues/7547)
+    - Continue iterating on in-review PRs
+    - [[DataAvailability] Create module to get ExecutionResult for request criteria](https://github.com/onflow/flow-go/issues/7546)
+    - [[DataAvailability] Refactor execution state APIs into local and EN query modules](https://github.com/onflow/flow-go/issues/7547)
+    - Continue with Milestone 3 API tasks.
 
 * <ins>Malleability</ins>
   - Continue PR review and support for current Immutability issues
