@@ -3,6 +3,7 @@
  ### Team Wins 🎉
 * Solana's Alpenglow Consensus review
 * Closed [Flip 314: Import Aliasing](https://github.com/onflow/flips/pull/315)
+* Tracer Bullet Demo
 
 ---
 
@@ -294,16 +295,19 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-Liquidity:
-
-
 Tidal:
-
+- Completed all 3 Tracer Bullet Flows
+  -  Collateral price increase -> Rebalance to increase investment in yield source
+  -  Collateral price decrease -> Do not liquidate, but instead reduce yield position
+  -  Yield price increase -> Rebalance, increase total number of collateral tokens, and then re-invest into yield source
 
 
 **This sprint**
 
-Wrap up tracer bullet
+- Resolve some small numerical discrepancies
+- Solidify tests in the three Tracer Bullet flows
+- Set timing and scope of closed beta
+- Start integration with Scheduled Callbacks on Emulator
 
 
 **On Hold**
