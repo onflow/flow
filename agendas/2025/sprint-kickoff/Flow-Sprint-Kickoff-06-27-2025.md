@@ -53,14 +53,14 @@ Full network upgrade (Spork) Fall 2025.
 ### FLIPs Tracker \[Vishal]
 
 |                         | Application | Cadence | Governance | Protocol |  Total  |
-|:------------------------|:------:|:-------------:|:-----------------:|:-----------------:|:-------:|
-| Drafted     | 8 |    7      |       0       |       9          | **25**  |
-| Proposed    | 1  |    2     |       3       |       0          |  **7**  |
-| Accepted    | 3  |    1     |       2       |       2          |  **8**  |
-| Rejected    | 0  |    1     |       1       |       0          |  **2**  |
-| Implemented | 3  |    5     |       1       |       0          |  **9**  |
-| Released    | 4  |    34     |       9         |       6          | **53**  |
-| Total       | **19** |    **50**   |       **16**       |       **17**         | **104** |
+|:------------------------|:------:|:-------------:|:-----------------:|:--------:|:-------:|
+| Drafted     | 8 |    7      |       0       |    10    | **25**  |
+| Proposed    | 1  |    2     |       3       |    0     |  **7**  |
+| Accepted    | 3  |    1     |       2       |    2     |  **8**  |
+| Rejected    | 0  |    1     |       1       |    0     |  **2**  |
+| Implemented | 3  |    5     |       1       |    0     |  **9**  |
+| Released    | 4  |    34     |       9         |    6     | **53**  |
+| Total       | **19** |    **50**   |       **16**       |  **18**  | **104** |
 
 One new FLIP -
 - [FLIP 332: Enforcing Domain-Based Networking Addresses for Nodes](https://github.com/onflow/flips/blob/main/protocol/20250619-network-address-validation.md)

@@ -56,17 +56,17 @@ Full network upgrade (Spork) Fall 2025.
 
 |                         | Application | Cadence | Governance | Protocol |  Total  |
 |:------------------------|:------:|:-------:|:-----------------:|:--------:|:-------:|
-| Drafted     | 8 |    6    |       0       |    8     | **24**  |
+| Drafted     | 8 |    7    |       0       |    9     | **24**  |
 | Proposed    | 1  |    2    |       3       |    0     |  **6**  |
 | Accepted    | 3  |    2    |       2       |    3     | **10**  |
 | Rejected    | 0  |    1    |       1       |    0     |  **2**  |
 | Implemented | 3  |    5    |       1       |    0     |  **9**  |
 | Released    | 4  |   34    |       9         |    6     | **53**  |
-| Total       | **19** | **50**  |       **16**       |  **17**  | **104** |
+| Total       | **19** | **50**  |       **16**       |  **18**  | **104** |
 
-Two FLIPS moved to `Accepted`
+One FLIP moved to `Accepted`
 - [FLIP 332: Enforcing Domain-Based Networking Addresses for Nodes](https://github.com/onflow/flips/blob/main/protocol/20250619-network-address-validation.md)
-- [FLIP-330: Schedule Callback](https://github.com/onflow/flips/pull/331) Review on July 2nd, 9AM Pacific
+
 
 ---
 
