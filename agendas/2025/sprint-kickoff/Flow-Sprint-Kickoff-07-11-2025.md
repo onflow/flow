@@ -35,18 +35,16 @@
 
 ### Incidents
 
-No incidents
-
 ### Testnet
 
-N/A
+July 10th: [P0 incident](https://status.flow.com/incidents/mvm0j940b0tf) from 11:00 AM to 11:20 AM - Sealing and Finalization halted
 
 ### Mainnet
 N/A
 
 ### Key Release Dates & Breaking Changes
 
-Full network upgrade (Spork) Fall 2025.
+Network upgrade (Spork) Fall 2025.
 - Testnet in Sept
 - Mainnet in Oct
 
