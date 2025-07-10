@@ -3,6 +3,10 @@
  ### Team Wins 🎉
 * Flow protocol onsite to set the Q3 OKRs (see Q3 OKRs [here](https://github.com/orgs/onflow/projects/91))
 * Review of [FLIP-330: Schedule Callback](https://github.com/onflow/flips/pull/331).
+* At the ETHGlobal Cannes Hackathon, Flow was the most used L1/L2 chain, two Flow projects won top hackathon prizes, and 54 new products were built.
+* React SDK components library is ready for release
+* FCL and the JS SDK now fully support TypeScript after the next release
+
 ---
 
 ### Mainnet Uptime - Last 14 days (06/28/25 to 07/11/25) \[Vishal]
@@ -240,22 +244,23 @@ Wrap up tracer bullet
 ### **Developer Tooling** \[Chase]
 
 Cycle Objective(s):
-- Improve the quality of developer engagement by optimizing Flow’s core surfaces and making it easier for developers to evaluate and explore the ecosystem. [OKR](https://github.com/onflow/flow-okrs/issues/109)
+- Reduce the time and complexity required to prototype, test, and iterate on DeFi apps on Flow using modular agents, composable building blocks, and developer-centric tooling. [OKR](https://github.com/onflow/flow-okrs/issues/125)
 
 **Done Last Sprint**
-
-- **Component & Hook Development**
-
-- **Documentation & Demos**
-
-- **Tooling & Infrastructure**
-
-- **TypeScript Support**
-
+- Supported developers at the Eth Hackathon
+- Finished all components for release of the React SDK components
+- Finished the live demo area in the documentation
+- Wrote a blog post for the components release
+- Finished the global config issue
+- Added the `useFlowTransaction` hook
 
 **This Sprint**
-
-
+- Release new components in the React SDK
+- Identify DeFi Blocks use cases
+- Create DeFi Blocks outputs for demo
+- Create DeFi blocks for swap component
+- Create rules files for AI dev tools
+- Support effort for Cadence errors with context for AI
 
 ---
 
