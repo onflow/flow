@@ -142,7 +142,7 @@ Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Data Availability</ins>
-  - PR Reviews
+  - Optimistic Sync PR reviews
   - KROK Team
     - Done:
 
@@ -150,19 +150,31 @@ Cycle Objective(s):
 
 
 * <ins>Malleability</ins>
-  * PR review and support for current Immutability issues
+  * Malleability PR reviews
   * KROK Team
-    * Done:
 
-    * In Review:
+    **_Done:_**
 
-    * In Progress:
+      -   [\[Malleability Immutable\] Add ExecutionResult validation to UnsignedExecutionReceipt constructor](https://github.com/onflow/flow-go/issues/7285)
+      -   [\[Malleability Immutable\] Enforce immutability for Block (cluster)](https://github.com/onflow/flow-go/issues/7285)
+      -   [\[Malleability\] Remaining TODOs and Cleanup #7311](https://github.com/onflow/flow-go/issues/7311) - (Medium Priority part)
+      -   [Malleability Immutable] Enforce immutability for QuorumCertificate
+
+    **_In Review_**:
+
+      -   [\[Malleability Immutable\] Enforce immutability for Block (flow)](https://github.com/onflow/flow-go/issues/7543)
+      -   [Malleability Immutable] Enforce immutability for Header
+
+    **_In Progress_**:
+
+      -   [\[Malleability\] Remaining TODOs and Cleanup #7311](https://github.com/onflow/flow-go/issues/7311) - (Low Priority part)
 
 
 * <ins>Cryptography</ins>
 
 
-* <ins>Research</ins>
+* <ins>Other</ins>
+  - Fixing sealing segment bug [#5181](https://github.com/onflow/flow-go/pull/5181)
 
 
 **This sprint**
@@ -175,6 +187,10 @@ Cycle Objective(s):
 * <ins>Malleability</ins>
   - Continue PR review and support for current Immutability issues
   - KROK Team
+    - Review remarks from previous sprint
+    - [\[Malleability\] Remaining TODOs and Cleanup #7311](https://github.com/onflow/flow-go/issues/7311) - (Low and High Priority part)
+    - [Malleability Immutable] Enforce immutability for Transaction
+    - [Malleability Immutable] Enforce immutability for TransactionBody
 
 
 * <ins>Cryptography</ins>
@@ -290,11 +306,9 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 ### **Governance** \[Vishal]
 
-Cycle Objective(s):
-1. Ensure the multi-sign process for Flow is efficient with effective community participation [DONE]
-2. Maintain long-term decentralization of Flow consensus nodes by ensuring no operator controls 1/3rd or more of the network's consensus nodes [DONE]
-3. Continue building a well-structured Flow Tokenomics framework to enhance community understanding, improve perception, and articulate a clear long-term vision
-4. Build and ship a new dashboard to provide node operators with real-time access to staking, epoch-related and other relevant data.
+[Q3 Cycle Objective(s)](https://github.com/orgs/onflow/projects/91/views/5):
+1. Surge Pricing
+2. Develop a internal document for Flow Tokenomics
 
 **Done last sprint**
 
@@ -304,6 +318,6 @@ Cycle Objective(s):
 **This sprint**
 
 * Continue Tokenomics discussion.
-  * Topic: FLIP for Surge factor
+  * Topic: Finalize FLIP for Surge factor
 
 ---
