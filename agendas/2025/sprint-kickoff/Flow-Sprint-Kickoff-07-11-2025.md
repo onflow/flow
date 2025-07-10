@@ -1,7 +1,7 @@
 # Overview
 
  ### Team Wins 🎉
-* Flow protocol onsite to set the Q3 OKRs (see Q3 OKRs [here](https://github.com/orgs/onflow/projects/91/views/3) and [here](https://github.com/orgs/onflow/projects/91/views/4))
+* Flow protocol onsite to set the Q3 OKRs (see Q3 OKRs [here](https://github.com/orgs/onflow/projects/91))
 * Review of [FLIP-330: Schedule Callback](https://github.com/onflow/flips/pull/331).
 ---
 
