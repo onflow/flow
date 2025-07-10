@@ -129,17 +129,19 @@ Testing:
 ---
 
 ### **Core Protocol** \[Vishal]
-Cycle Objective(s):
-
+Q3 Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
-* Improve network reliability by reducing API load on execution node [IN PROGRESS]
-* EVM Gateway integrate Pectra upgrade [DONE]
-* Address data structure malleability risk [IN PROGRESS]
-* Furthering permissionless participation
-  * KR1: Proof of Possession [DONE]
-  * KR2: SPoCK Research [IN PROGRESS]
+* Overload resilience  [IN PROGRESS]
+* Q3 Network Upgrade (Spork) [TODO]
+* [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
+* SPoCK Research [IN PROGRESS]
+* Address data structure **malleability** risk [IN PROGRESS]
+* Collectors submit votes for root block for spork bootstrapping [TODO]
 
 **Done last sprint**
+
+* <ins>Overload resilience</ins>
+  - Setting up migrationtestnet for load testing
 
 * <ins>Data Availability</ins>
   - Optimistic Sync PR reviews
@@ -178,6 +180,9 @@ Cycle Objective(s):
 
 
 **This sprint**
+
+* <ins>Overload resilience</ins>
+  - Fixing the TPS loader to run long-running load tests.
 
 * <ins>Data Availability:</ins>
 
