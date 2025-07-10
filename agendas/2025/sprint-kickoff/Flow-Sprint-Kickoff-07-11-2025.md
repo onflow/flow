@@ -4,8 +4,8 @@
 * Flow protocol onsite to set the Q3 OKRs (see Q3 OKRs [here](https://github.com/orgs/onflow/projects/91))
 * Review of [FLIP-330: Schedule Callback](https://github.com/onflow/flips/pull/331).
 * At the ETHGlobal Cannes Hackathon, Flow was the most used L1/L2 chain, two Flow projects won top hackathon prizes, and 54 new products were built.
-* React SDK components library is ready for release
-* FCL and the JS SDK now fully support TypeScript after the next release
+* React SDK components library is ready for release.
+* FCL and the JS SDK now fully support TypeScript after the next release.
 
 ---
 
