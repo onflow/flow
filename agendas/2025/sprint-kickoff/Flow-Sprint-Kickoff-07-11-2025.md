@@ -262,20 +262,20 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-Liquidity:
 
+#### Tidal:
 
-Tidal:
-
+*Bug Squashing and Productionization*
+- Overflow and edgecase handling
+- Decimal Precision
+- Math adjustments
 
 
 **This sprint**
 
-Wrap up tracer bullet
-
-
-**On Hold**
-
+- Schedule Callback integration
+- Oracle implementation design
+- Liqudation mechanism design
 
 
 ---
