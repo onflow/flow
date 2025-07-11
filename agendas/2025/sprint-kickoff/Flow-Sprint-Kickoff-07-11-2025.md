@@ -170,16 +170,16 @@ Q3 Cycle Objective(s):
   - Optimistic Sync PR reviews
   - KROK Team
     - Done:
-      -   [\[DataAvailability\] Create simplified version of ingestion engine](https://github.com/onflow/flow-go/pull/7504)
+      - [\[DataAvailability\] Create simplified version of ingestion engine](https://github.com/onflow/flow-go/pull/7504)
 
     - In Review (Working on review remarks):
-      -   [\[DataAvailability\] Add functional tests for processing pipeline](https://github.com/onflow/flow-go/pull/7526)
-      -   [\[DataAvailability\] Improve ingestion engine error handling](https://github.com/onflow/flow-go/pull/7552)
-      -   [\[DataAvailability\] Create module to get ExecutionResult for request criteria](https://github.com/onflow/flow-go/issues/7546)
+      - [\[DataAvailability\] Add functional tests for processing pipeline](https://github.com/onflow/flow-go/pull/7526)
+      - [\[DataAvailability\] Improve ingestion engine error handling](https://github.com/onflow/flow-go/pull/7552)
+      - [\[DataAvailability\] Create module to get ExecutionResult for request criteria](https://github.com/onflow/flow-go/issues/7546)
      
     - In Progress
-      -   [\[DataAvailability\] Refactor execution state APIs into local and EN query modules](https://github.com/onflow/flow-go/issues/7547)
-      -   [\[DataAvailability\] Add update to LatestPersistedSealedResult to persister](https://github.com/onflow/flow-go/issues/7556)
+      - [\[DataAvailability\] Refactor execution state APIs into local and EN query modules](https://github.com/onflow/flow-go/issues/7547)
+      - [\[DataAvailability\] Add update to LatestPersistedSealedResult to persister](https://github.com/onflow/flow-go/issues/7556)
 
 
 * <ins>Malleability</ins>
@@ -189,21 +189,21 @@ Q3 Cycle Objective(s):
 
     **_Done:_**
 
-      -   [\[Malleability Immutable\] Add ExecutionResult validation to UnsignedExecutionReceipt constructor](https://github.com/onflow/flow-go/issues/7285)
-      -   [\[Malleability Immutable\] Enforce immutability for Block (cluster)](https://github.com/onflow/flow-go/issues/7285)
-      -   [\[Malleability\] Remaining TODOs and Cleanup #7311](https://github.com/onflow/flow-go/issues/7311) - (Medium Priority part)
-      -   [\[Malleability Immutable\] Enforce immutability for QuorumCertificate #7297](https://github.com/onflow/flow-go/issues/7297)
+      - [\[Malleability Immutable\] Add ExecutionResult validation to UnsignedExecutionReceipt constructor](https://github.com/onflow/flow-go/issues/7285)
+      - [\[Malleability Immutable\] Enforce immutability for Block (cluster)](https://github.com/onflow/flow-go/issues/7285)
+      - [\[Malleability\] Remaining TODOs and Cleanup #7311](https://github.com/onflow/flow-go/issues/7311) - (Medium Priority part)
+      - [\[Malleability Immutable\] Enforce immutability for QuorumCertificate #7297](https://github.com/onflow/flow-go/issues/7297)
 
     **_In Review_**:
 
-      -   [\[Malleability Immutable\] Enforce immutability for Block (flow)](https://github.com/onflow/flow-go/issues/7543)
-      -   [\[Malleability Immutable\] Enforce immutability for Header #7291](https://github.com/onflow/flow-go/issues/7291)
+      - [\[Malleability Immutable\] Enforce immutability for Block (flow)](https://github.com/onflow/flow-go/issues/7543)
+      - [\[Malleability Immutable\] Enforce immutability for Header #7291](https://github.com/onflow/flow-go/issues/7291)
 
     **_In Progress_**:
 
-      -   [\[Malleability\] Remaining TODOs and Cleanup #7311](https://github.com/onflow/flow-go/issues/7311) - (Low Priority part)
-      -   [\[Malleability Immutable\] Enforce immutability for Transaction #7303](https://github.com/onflow/flow-go/issues/7303)
-      -   [\[Malleability Immutable\] Enforce immutability for TransactionBody #7304](https://github.com/onflow/flow-go/issues/7304)
+      - [\[Malleability\] Remaining TODOs and Cleanup #7311](https://github.com/onflow/flow-go/issues/7311) - (Low Priority part)
+      - [\[Malleability Immutable\] Enforce immutability for Transaction #7303](https://github.com/onflow/flow-go/issues/7303)
+      - [\[Malleability Immutable\] Enforce immutability for TransactionBody #7304](https://github.com/onflow/flow-go/issues/7304)
 
 
 * <ins>Cryptography</ins>
@@ -224,10 +224,11 @@ Q3 Cycle Objective(s):
 
 * <ins>Data Availability:</ins>
   - PR Reviews
+  - Milestone 2 Optimistic Sync: Continue work on result forest.
   - KROK Team
-    -   [\[DataAvailability\] Refactor execution state APIs into local and EN query modules](https://github.com/onflow/flow-go/issues/7547)
-    -   [\[DataAvailability\] Add update to LatestPersistedSealedResult to persister](https://github.com/onflow/flow-go/issues/7556)
-    -   Addressing review remarks from the previous sprint PRs
+    - [\[DataAvailability\] Refactor execution state APIs into local and EN query modules](https://github.com/onflow/flow-go/issues/7547)
+    - [\[DataAvailability\] Add update to LatestPersistedSealedResult to persister](https://github.com/onflow/flow-go/issues/7556)
+    - Continue with Milestone 3 API tasks.
 
 
 * <ins>Malleability</ins>
