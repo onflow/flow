@@ -158,7 +158,7 @@ Q3 Cycle Objective(s):
 * Q3 Network Upgrade (Spork) [TODO]
 * [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * SPoCK Research [IN PROGRESS]
-* Address data structure **malleability** risk [IN PROGRESS]
+* Address data structure malleability risk [IN PROGRESS]
 * Collectors submit votes for root block for spork bootstrapping [TODO]
 
 **Done last sprint**
@@ -184,6 +184,7 @@ Q3 Cycle Objective(s):
 
 * <ins>Malleability</ins>
   * Malleability PR reviews
+  * Updating malleability merge branches
   * KROK Team
 
     **_Done:_**
@@ -222,7 +223,7 @@ Q3 Cycle Objective(s):
   - Fixing the TPS loader to run long-running load tests.
 
 * <ins>Data Availability:</ins>
-
+  - PR Reviews
   - KROK Team
     -   [\[DataAvailability\] Refactor execution state APIs into local and EN query modules](https://github.com/onflow/flow-go/issues/7547)
     -   [\[DataAvailability\] Add update to LatestPersistedSealedResult to persister](https://github.com/onflow/flow-go/issues/7556)
@@ -231,6 +232,7 @@ Q3 Cycle Objective(s):
 
 * <ins>Malleability</ins>
   - Continue PR review and support for current Immutability issues
+  - Continuing Benchnet testing for malleability rollout
   - KROK Team
     - Addressing review remarks from the previous sprint PRs
     - [\[Malleability\] Remaining TODOs and Cleanup #7311](https://github.com/onflow/flow-go/issues/7311) - (Low and High Priority part)
