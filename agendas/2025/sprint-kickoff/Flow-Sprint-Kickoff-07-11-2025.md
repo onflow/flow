@@ -2,7 +2,8 @@
 
  ### Team Wins 🎉
 * Flow protocol onsite to set the Q3 OKRs (see Q3 OKRs [here](https://github.com/orgs/onflow/projects/91))
-* Review of [FLIP-330: Schedule Callback](https://github.com/onflow/flips/pull/331).
+* Review of [FLIP-330: Schedule Callback](https://github.com/onflow/flips/pull/331) went through 2nd round of reviews with no major blockers raised.
+* Shadow mainnet execution node running on PebbleDB passed the 2-week test with no issues detected.
 ---
 
 ### Mainnet Uptime - Last 14 days (06/28/25 to 07/11/25) \[Vishal]
@@ -81,43 +82,62 @@ Q2 2025 Cycle Objective(s):
 **Done last sprint**
 
 **Cadence Language**
-
-- Improvements:
-
-- Bugfix:
-
-- Automation:
-
-- Tooling:
-
-- Chores:
-
+- [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059)
+    - [[Compiler] Enable TestInterpretInterfaceFieldUse to be run with the VM](https://github.com/onflow/cadence/pull/4080)
+- [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
+    - [Re-use static-type to sema-type conversion results](https://github.com/onflow/cadence/pull/4054)
+    - [[Compiler] Fix compilation of dynamic method invocation via optional chaining](https://github.com/onflow/cadence/pull/4056)
+    - [[Compiler] Add support for injected values and types in VM environment](https://github.com/onflow/cadence/pull/4055)
+    - [[Compiler] Implement contract deployment and update in VM environment](https://github.com/onflow/cadence/pull/4060)
+    - [[Compiler] Implement contract removal and recoverable contract update for VM environment](https://github.com/onflow/cadence/pull/4061)
+    - [[Compiler] Recover errors in VM like in interpreter](https://github.com/onflow/cadence/pull/4065)
+    - [[Compiler] Improve VM config](https://github.com/onflow/cadence/pull/4066)
+    - [[Compiler] Add call stack depth limit to VM ](https://github.com/onflow/cadence/pull/4067)
+    - [[Compiler] Implement getting contract value in VM](https://github.com/onflow/cadence/pull/4069)
+    - [[Compiler] Optimize VM context creation](https://github.com/onflow/cadence/pull/4071)
+    - [[Compiler] Various improvements](https://github.com/onflow/cadence/pull/4070)
+    - [[Compiler] Fix nested loops](https://github.com/onflow/cadence/pull/4074)
+    - [[Compiler] Support meta-type `isRecovered` field in VM](https://github.com/onflow/cadence/pull/4073)
+    - [[Compiler] Use the correct environment for runtime tests](https://github.com/onflow/cadence/pull/4075)
+    - [[Compiler] Register common built-in type bound functions for values injected into VM environment](https://github.com/onflow/cadence/pull/4072)
+    - [[Compiler] Produce ConditionError for pre/post condition failures in VM](https://github.com/onflow/cadence/pull/4077)
+    - [[Compiler] Support iterating storage with broken types in VM](https://github.com/onflow/cadence/pull/4079)
+    - [[Compiler] Implement InclusiveRange](https://github.com/onflow/cadence/pull/4081)
+    - [[Compiler] Fix inherited default destroy event compilation](https://github.com/onflow/cadence/pull/4082)
+- Compiler / VM Testing:
+    - [[Compiler] Enable more tests to be run with with compiler/VM](https://github.com/onflow/cadence/pull/4076)
+    - [[Compiler] Enable more tests for VM or add TODO](https://github.com/onflow/cadence/pull/4083)
+- Improving AI understanding of Cadence: 
+    -  [Add a tool to generate a CSV file of all parser and semantic errors](https://github.com/onflow/cadence/pull/4064)
+- Bugfix
+    - [Remove interpreter shared state feature](https://github.com/onflow/cadence/pull/4078)
 
 **Cadence Execution**
-
-- [Execution effort calibration](https://github.com/onflow/flow-go/issues/5598)
-
-Testing:
-
-- chores:
-
+- [Callback scheduler](https://github.com/onflow/flow-core-contracts/pull/485)
+- Enabling Cadence VM: [Implement EVM functionality for Cadence VM](https://github.com/onflow/flow-go/pull/7559)
+- Atree improvement: [Refactor to modernize and reduce code](https://github.com/onflow/atree/pull/557)
 
 **Flow EVM**
-- Improvements:
-
-- Bugfix:
-
-- Chore:
+- [Optimize logic on `BatchTxPool` for single tx EOAs](https://github.com/onflow/flow-evm-gateway/pull/835)
 
 
 **This sprint**
 
 - Cadence Language
+  - Continue [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059).
+  - Support any changes need to improve AI use of Cadence language server (reviewing / updating errors).
 
 - Cadence Execution
-
+  - Continue new Trie research
+  - Continue work on Badger -> Pebble DB [M4: remove dependency on Badger DB completely from ENs and ANs](https://github.com/onflow/flow-go/issues/7265).
+  - Continue [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598).
+  - Continue [EOA control delegation](https://github.com/onflow/flow-go/issues/7441).
+  - Continue [Scheduled callbacks](https://github.com/onflow/flow-go/issues/7482).
 
 - EVM
+  - merge to soft finality branch and deploy: [Optimize logic on BatchTxPool for single tx EOAs](https://github.com/onflow/flow-evm-gateway/pull/835)
+  - complete work to [Integrate JSON-RPC API specification changes from Geth releases](https://github.com/onflow/flow-evm-gateway/issues/840)
+  - Start EVM GW resilience improvements[1](https://github.com/onflow/flow-evm-gateway/issues/764), [2](https://github.com/onflow/flow-evm-gateway/issues/778)
 
 
 
