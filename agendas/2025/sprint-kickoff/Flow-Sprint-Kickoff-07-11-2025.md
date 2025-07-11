@@ -66,8 +66,8 @@ Network upgrade (Spork) Fall 2025.
 | Released    | 4  |   34    |       9         |    6     | **53**  |
 | Total       | **19** | **50**  |       **16**       |  **18**  | **104** |
 
-One FLIP moved to `Accepted`
-- [FLIP 332: Enforcing Domain-Based Networking Addresses for Nodes](https://github.com/onflow/flips/blob/main/protocol/20250619-network-address-validation.md)
+
+- [FLIP 332: Enforcing Domain-Based Networking Addresses for Nodes](https://github.com/onflow/flips/blob/main/protocol/20250619-network-address-validation.md) moved to `Accepted`
 
 
 ---
@@ -206,7 +206,11 @@ Q3 Cycle Objective(s):
 
 
 * <ins>Cryptography</ins>
-
+  * Passkeys: PR review
+  * Proof of Possession: Completed the blog and it is now ready to be published.
+  * multi-SPoCK: Starting reading another PoP-based proof of BLS multi signature.
+  * Threshold signature: addressed security report through minor improvement of the repo comments
+  * Crypto library: Tried Devin AI in a long refactor task.
 
 * <ins>Other</ins>
   - Fixing sealing segment bug [#5181](https://github.com/onflow/flow-go/pull/5181)
@@ -235,7 +239,8 @@ Q3 Cycle Objective(s):
 
 
 * <ins>Cryptography</ins>
-
+  * Passkeys: Continue PR review.
+  * SPoCK: Finish the current proof understanding.
 
 **On Hold**
 
