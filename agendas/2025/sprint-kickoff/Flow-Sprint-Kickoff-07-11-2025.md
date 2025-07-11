@@ -4,6 +4,9 @@
 * Flow protocol onsite to set the Q3 OKRs (see Q3 OKRs [here](https://github.com/orgs/onflow/projects/91))
 * Review of [FLIP-330: Schedule Callback](https://github.com/onflow/flips/pull/331) went through 2nd round of reviews with no major blockers raised.
 * Shadow mainnet execution node running on PebbleDB passed the 2-week test with no issues detected.
+* At the ETHGlobal Cannes Hackathon, Flow was the most used L1/L2 chain, two Flow projects won top hackathon prizes, and 54 new products were built.
+* React SDK components library alpha release available & stable release scheduled this week.
+* FCL and the JS SDK now fully support TypeScript after the next release.
 ---
 
 ### Mainnet Uptime - Last 14 days (06/28/25 to 07/11/25) \[Vishal]
@@ -260,22 +263,23 @@ Wrap up tracer bullet
 ### **Developer Tooling** \[Chase]
 
 Cycle Objective(s):
-- Improve the quality of developer engagement by optimizing Flow’s core surfaces and making it easier for developers to evaluate and explore the ecosystem. [OKR](https://github.com/onflow/flow-okrs/issues/109)
+- Reduce the time and complexity required to prototype, test, and iterate on DeFi apps on Flow using modular agents, composable building blocks, and developer-centric tooling. [OKR](https://github.com/onflow/flow-okrs/issues/125)
 
 **Done Last Sprint**
-
-- **Component & Hook Development**
-
-- **Documentation & Demos**
-
-- **Tooling & Infrastructure**
-
-- **TypeScript Support**
-
+- Supported developers at the Eth Hackathon
+- Finished all components for release of the React SDK components
+- Finished the live demo area in the documentation
+- Wrote a blog post for the components release
+- Finished the global config issue
+- Added the `useFlowTransaction` hook
 
 **This Sprint**
-
-
+- Release new components in the React SDK
+- Identify DeFi Blocks use cases
+- Create DeFi Blocks outputs for demo
+- Create DeFi blocks for swap component
+- Create rules files for AI dev tools
+- Support effort for Cadence errors with context for AI
 
 ---
 
@@ -308,24 +312,47 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
 
-**Observability/Incident Response**
+**Monitoring & Observability**
+- [Create runbook for troubleshooting Alloy observability alerts](https://github.com/onflow/ff-sre-infrastructure/issues/519)
+- [Create Runbook for Memory Usage alert Alert](https://github.com/onflow/ff-sre-infrastructure/issues/515)
+- [Create Runbook for Outbound Traffic alert Alert](https://github.com/onflow/ff-sre-infrastructure/issues/514)
+- [Create Runbook for Inbound Traffic alert Alert](https://github.com/onflow/ff-sre-infrastructure/issues/513)
+- [Create Runbook for Has Stopped Finalizing Alert](https://github.com/onflow/ff-sre-infrastructure/issues/512)
+- [Create Runbook for Accessibility for Envoy Alert](https://github.com/onflow/ff-sre-infrastructure/issues/511)
+- [Create Runbook for CPU Usage > 90% Alert](https://github.com/onflow/ff-sre-infrastructure/issues/509)
+- [Create Runbook for Message Rejection Alert](https://github.com/onflow/ff-sre-infrastructure/issues/507)
+- [Create Runbook for Execution Transaction Throughput < 0.01 Alert](https://github.com/onflow/ff-sre-infrastructure/issues/506)
+- [Create Runbook for Execution Rate < 0.0001 Alert](https://github.com/onflow/ff-sre-infrastructure/issues/505)
+- [Create alert for go routines](https://github.com/onflow/ff-sre-infrastructure/issues/498)
+- [Create new alert for monitoring unsealed blocks > 100](https://github.com/onflow/ff-sre-infrastructure/issues/493)
+- [Fix issues within alerts module & usage](https://github.com/onflow/ff-sre-infrastructure/issues/521)
+- [Update SRE alerts to go to the #alerts-sre-info channel](https://github.com/onflow/ff-sre-infrastructure/issues/528)
+- [Update Alerts Ref to Latest Tag](https://github.com/onflow/ff-sre-infrastructure/issues/546)
+
+**Tidal Support**
+- [Help the 4D team to move playwright reports to an S3 bucket](https://github.com/onflow/ff-sre-infrastructure/issues/536)
+- [Create Dedicated Cloud SQL Instance](https://github.com/onflow/ff-sre-infrastructure/issues/465)
+- [Integrate Cloud SQL with Grafana Cloud Monitoring](https://github.com/onflow/ff-sre-infrastructure/issues/461)
 
 **Security**
+- [Triage Security Issue FLOWWEB-55](https://github.com/onflow/ff-sre-infrastructure/issues/534)
+- [Triage Security Issue FLOWWEB-53](https://github.com/onflow/ff-sre-infrastructure/issues/531)
 
-
-**Grafana Alloy Agent**
-
-**Tidal Infra & Observability**
-
-
-**Automation**
-
+**QuickNode Migration**
+- [Change the Authorized Google Account on Partner Registry](https://github.com/onflow/ff-sre-infrastructure/issues/548)
+- [Create new registry for external partners](https://github.com/onflow/ff-sre-infrastructure/issues/538)
 
 **Support**
+- [Update TN52 GOMEMLIMIT on LNs](https://github.com/onflow/ff-sre-infrastructure/issues/535)
+- [Execute EN CDP clean up to reclaim disk space](https://github.com/onflow/ff-sre-infrastructure/issues/527)
+- [Create EN disk clean up documentation for the DL SRE team](https://github.com/onflow/ff-sre-infrastructure/issues/526)
+- [TN52 Data Disk Cleaning - EN2](https://github.com/onflow/ff-sre-infrastructure/issues/542)
+- [Add New Collection Cluster to Migration Testnet](https://github.com/onflow/ff-sre-infrastructure/issues/543)
 
 
 **Active Epics**
-
+- [Tidal Infra & Observability](https://github.com/onflow/ff-sre-infrastructure/issues/450)
+- [Monitoring & Observability](https://github.com/onflow/ff-sre-infrastructure/issues/118)
 
 ---
 
