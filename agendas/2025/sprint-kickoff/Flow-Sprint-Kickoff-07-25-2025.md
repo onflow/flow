@@ -128,7 +128,7 @@ Q2 2025 Cycle Objective(s):
 
 - Badger -> Pebble migration
     - [[Storage] Use lockctx to store approvals](https://github.com/onflow/flow-go/pull/7406)
-TPS loader improvements - network stress testing
+- TPS loader improvements - network stress testing
     - [Use finalised block as reference block](https://github.com/onflow/flow-execution-effort-estimation/pull/60)
     - [Change transaction expiry](https://github.com/onflow/flow-execution-effort-estimation/pull/62)
     - [Retry on not executed error](https://github.com/onflow/flow-execution-effort-estimation/pull/63)
