@@ -2,6 +2,8 @@
 
  ### Team Wins 🎉
 
+ * React SDK is live with components
+
 ---
 
 ### Mainnet Uptime - Last 14 days (07/14/25 to 07/25/25) \[Vishal]
@@ -84,7 +86,7 @@ Q2 2025 Cycle Objective(s):
 
 - Compiler / VM Testing:
 
-- Improving AI understanding of Cadence: 
+- Improving AI understanding of Cadence:
 
 - Bugfix
 
@@ -95,7 +97,7 @@ Q2 2025 Cycle Objective(s):
 - Atree improvement: [Refactor to modernize and reduce code](https://github.com/onflow/atree/pull/557)
 
 **Flow EVM**
-- 
+-
 
 
 **This sprint**
@@ -130,7 +132,7 @@ Q3 Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Overload resilience</ins>
-  - 
+  -
 
 * <ins>Data Availability</ins>
   - Optimistic Sync PR reviews
@@ -140,7 +142,7 @@ Q3 Cycle Objective(s):
 
     - In Review (Working on review remarks):
 
-     
+
     - In Progress
 
 
@@ -234,9 +236,29 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
+* React SDK
+  * Added style isolation to mitigate CSS app/library conflicts
+  * Created demo environment deployed to Vercel for JS library testing
+  * Released components in the new React SDK
+* DeFi Actions / AI
+  * Identified DeFi Actions use cases
+  * Created DeFi Actions outputs for demo
+  * Created bridging token React hook for React SDK
+  * Added CLI new project config to improve Cursor AI context
+  * Supported effort for Cadence errors with context for AI
+  * Reduced Dependency Manager prompts for agents with smart alias determination
+  * Added block explorer link to CLI transaction outputs
+*  Switched SDKs & documentation to use latest finalized vs sealed for the reference block
 
 **This Sprint**
 
+* DeFi Actions / AI
+  * Solidifying DeFi Actions demo outputs
+  * Getting DeFi Actions outputs to consistently generate with AI
+  * Determine best LLM model for Cadence AI generation
+  * Expose emulator scheduled callbacks through CLI
+  * Expose scheduled callbacks through Cadence testing environment
+  * Look into manipulating time for scheduled callbacks in emulator/CLI
 
 ---
 
