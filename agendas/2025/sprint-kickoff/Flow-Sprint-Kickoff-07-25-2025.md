@@ -3,6 +3,10 @@
  ### Team Wins 🎉
 
  * React SDK is live with components
+ * Cadence compiler + VM - basically no features left to support, started testing user Tx execution, testing execution correctness of book-keeping functions passed verification of 115K blocks.
+* Badger -> Pebble migration - all node types being tested on testnet right now - very promising results so far! CPU spikes are gone, memory usage dropped from ~50% to under 10% (we need to wait longer to verify it is stable).
+* EVM Gateway - completed work to increase TPS for high-traffic accounts & optimized key release logic to reduce the time the key becomes available.
+* Network stress testing - loader improvements made it possible to sustain 300TPS load for 3 hours, promising collection thsize throttling results.
 
 ---
 
@@ -84,35 +88,98 @@ Q2 2025 Cycle Objective(s):
 
 **Cadence Language**
 
-- Compiler / VM Testing:
-
-- Improving AI understanding of Cadence:
-
-- Bugfix
-
+- [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059)
+    - [[Compiler] Enable more tests to be run with VM](https://github.com/onflow/cadence/pull/4085)
+    - [[Compiler] Fix second-value assignment for index-expressions](https://github.com/onflow/cadence/pull/4088)
+    - [[Compiler] Fix expression evaluation order of second value assignments](https://github.com/onflow/cadence/pull/4090)
+    - [[Compiler] Transaction pre/post conditions are already executed](https://github.com/onflow/cadence/pull/4094)
+    - [[Compiler] Enable computation metering / limiting tests to be run with compiler/VM](https://github.com/onflow/cadence/pull/4095)
+    - [[Compiler] Fix `TestRuntimeWrappedErrorHandling` when running with VM](https://github.com/onflow/cadence/pull/4093)
+    - [[Compiler] Fix contract deployment / initialization](https://github.com/onflow/cadence/pull/4092)
+    - [Interpreter: Evaluate and transfer invocation, array, and dictionary arguments immediately](https://github.com/onflow/cadence/pull/4089)
+    - [[Compiler] Enable contract update program caching test for VM](https://github.com/onflow/cadence/pull/4098)
+    - [Rework test to actual feature: checking return value type](https://github.com/onflow/cadence/pull/4091)
+    - [[Compiler] Update and enable test checking GetOrLoadProgram hits for VM](https://github.com/onflow/cadence/pull/4096)
+    - [[Compiler] Test construction of InclusiveRange with VM, resolve TODO](https://github.com/onflow/cadence/pull/4099)
+    - [[Compiler] Create an implicit reference for self variable](https://github.com/onflow/cadence/pull/4097)
+    - [[Compiler] Implement Context.RecoverErrors in VM](https://github.com/onflow/cadence/pull/4101)
+    - [[Compiler] Enable storage reference bound function tests](https://github.com/onflow/cadence/pull/4102)
+    - [[Compiler] Enable memory metering tests to be run with compiler/VM](https://github.com/onflow/cadence/pull/4100)
+    - [[Compiler] Add corresponding VM tests for missing interpreter test](https://github.com/onflow/cadence/pull/4106)
+    - [[Compiler] Run more tests with compiler/VM](https://github.com/onflow/cadence/pull/4109)
+    - [[Compiler] Fix optional binding expression evaluation order](https://github.com/onflow/cadence/pull/4110)
+    - [[Compiler] Fix compilation of for loops over non-reference array with reference values](https://github.com/onflow/cadence/pull/4114)
+    - [[Compiler] Create `SimpleCompositeValue`s for transactions](https://github.com/onflow/cadence/pull/4116)
+    - [Improve event emission](https://github.com/onflow/cadence/pull/4117)
+    - [[Compiler] Fix optional chaining in compiler](https://github.com/onflow/cadence/pull/4118)
+    - [Add a new tool to decode a single slab](https://github.com/onflow/cadence/pull/4119)
+- [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
+    - [Clean up test utils](https://github.com/onflow/cadence/pull/4084)
+    - [[Compiler] Refactor function invocation](https://github.com/onflow/cadence/pull/4103)
+    - [[Compiler] Pass the receiver separately to the builtin functions](https://github.com/onflow/cadence/pull/4104)
+    - [[Compiler] Fix external invocations of bound functions](https://github.com/onflow/cadence/pull/4105)
+    - [[Compiler] Remove outdated todo's in VM](https://github.com/onflow/cadence/pull/4113)
+    - [Fix Array.map and Array.filter](https://github.com/onflow/cadence/pull/4115)
+    - [[Compiler] Improve naming and meter UUID field and value creation in VM](https://github.com/onflow/cadence/pull/4120)
+- tech-debt removal
+    - [Remove unused error](https://github.com/onflow/cadence/pull/4112)
 
 **Cadence Execution**
-- [Callback scheduler](https://github.com/onflow/flow-core-contracts/pull/485)
-- Enabling Cadence VM: [Implement EVM functionality for Cadence VM](https://github.com/onflow/flow-go/pull/7559)
-- Atree improvement: [Refactor to modernize and reduce code](https://github.com/onflow/atree/pull/557)
+
+- Badger -> Pebble migration
+    - [[Storage] Use lockctx to store approvals](https://github.com/onflow/flow-go/pull/7406)
+- TPS loader improvements - network stress testing
+    - [Use finalised block as reference block](https://github.com/onflow/flow-execution-effort-estimation/pull/60)
+    - [Change transaction expiry](https://github.com/onflow/flow-execution-effort-estimation/pull/62)
+    - [Retry on not executed error](https://github.com/onflow/flow-execution-effort-estimation/pull/63)
+    - [Allow multiple access nodes](https://github.com/onflow/flow-execution-effort-estimation/pull/64)
+    - [Fix bug when streaming from multiple ANs](https://github.com/onflow/flow-execution-effort-estimation/pull/66)
+    - [Revert "allow multiple access nodes"](https://github.com/onflow/flow-execution-effort-estimation/pull/67)
+    - [Retry account creation and update metrics](https://github.com/onflow/flow-execution-effort-estimation/pull/65)
+    - [Fix retry on get tx to short](https://github.com/onflow/flow-execution-effort-estimation/pull/69)
+    - [Tweak TX expiry handling](https://github.com/onflow/flow-execution-effort-estimation/pull/70)
+- Tech-debt
+    - [[Storage] Optimize the IterFunction](https://github.com/onflow/flow-go/pull/7582)
+- CBOR Improvement
+    - [Add TimeRFC3339NanoUTC option for encoding to CBOR time](https://github.com/fxamacker/cbor/issues/687)
 
 **Flow EVM**
--
+
+- [Integrate JSON-RPC API specification changes from Geth releases](https://github.com/onflow/flow-evm-gateway/issues/840)
+    - [Remove `totalDifficulty` field from `Block` type](https://github.com/onflow/flow-evm-gateway/pull/847]
+- Bugfix:
+    - [Fix endpoint crashes due to non-replay protected EVM transactions](https://github.com/onflow/flow-evm-gateway/pull/846)
+    - [Problem when calculating tx's fee based on EIP-1559](https://github.com/onflow/flow-evm-gateway/issues/748)
+- Improvements:
+    - [Improve release frequency for signing keys](https://github.com/onflow/flow-evm-gateway/pull/842)
+    - [Improve release frequency of signing keys for soft-finality](https://github.com/onflow/flow-evm-gateway/pull/850)
+    - [Add metric for the total number of dropped EVM transactions](https://github.com/onflow/flow-evm-gateway/pull/837)
+    - [Add metric to count the number of rate-limited transactions](https://github.com/onflow/flow-evm-gateway/pull/839)
+- Chores:
+    - [Sync soft-finality with changes from `main` branch](https://github.com/onflow/flow-evm-gateway/pull/843)
+    - [Sync soft-finality branch with changes from main](https://github.com/onflow/flow-evm-gateway/pull/848)
+    - [Run Go modernize tool to simplify code-base](https://github.com/onflow/flow-evm-gateway/pull/844)
 
 
 **This sprint**
 
 - Cadence Language
-
+  - Continue [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059).
+  - Support any changes need to improve AI use of Cadence language server (reviewing / updating errors).
+  - Maybe start [Metering optimization](https://github.com/onflow/cadence/issues/4058).
 
 - Cadence Execution
-
+  - Continue work on Badger -> Pebble DB [M4: remove dependency on Badger DB completely from ENs and ANs](https://github.com/onflow/flow-go/issues/7265).
+  - Continue [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598).
+  - Continue [Scheduled callbacks](https://github.com/onflow/flow-go/issues/7482).
 
 - EVM
-
-
+  - Continue: [Integrate JSON-RPC API specification changes from Geth releases](https://github.com/onflow/flow-evm-gateway/issues/840)
+  - Start EVM GW resilience improvements[1](https://github.com/onflow/flow-evm-gateway/issues/764), [2](https://github.com/onflow/flow-evm-gateway/issues/778)
 
 **On Hold**
+- New Trie research
+- [EOA control delegation](https://github.com/onflow/flow-go/issues/7441).
 - [Migration of EN version beacon to Dyn. Prot. State](https://github.com/onflow/flow-go/issues/6788)
 - [Adding support for lazy decoding of registers](https://github.com/onflow/atree/issues/341)
 - [Provide immutable settings for each CCF format](https://github.com/onflow/cadence/issues/3448)
