@@ -292,18 +292,35 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 **Done last sprint**
 
 **Monitoring & Observability**
+- [Delete Protocol & Resource Alerts That Are Not Created by the Module](https://github.com/onflow/ff-sre-infrastructure/issues/122)
+- [Document the Methods for Adding, Updating, or Configuring Network Alerts](https://github.com/onflow/ff-sre-infrastructure/issues/123)
+- [Create shadow on-call schedule for training engineers](https://github.com/onflow/ff-sre-infrastructure/issues/532)
+- [Update terraform modules & contact points to support runbooks](https://github.com/onflow/ff-sre-infrastructure/issues/533)
 
+**Automation**
+- [Update image builds GHA workflow to support new partner registry](https://github.com/onflow/ff-sre-infrastructure/issues/539)
 
-**Tidal Support**
+**Tidal**
+- [Support DevEx for Data Migration and Cleanup Resources Post-changes](https://github.com/onflow/ff-sre-infrastructure/issues/623)
+- [Review and Optimize Cloud Run Logs and Metrics Collection](https://github.com/onflow/ff-sre-infrastructure/issues/462)
 
+**Security**
+- [Triage Security Issue FLOWWEB-46](https://github.com/onflow/ff-sre-infrastructure/issues/615)
 
 **Support**
-
-
+- [Update historical node module to support new GCP providers](https://github.com/onflow/ff-sre-infrastructure/issues/651)
+- [Grant access to shadow EN](https://github.com/onflow/ff-sre-infrastructure/issues/644)
+- [Fix TN EVM5 disk space](https://github.com/onflow/ff-sre-infrastructure/issues/643)
+- [Create new endpoint & DNS record for EVM GW](https://github.com/onflow/ff-sre-infrastructure/issues/639)
+- [Increase Devnet Data disks](https://github.com/onflow/ff-sre-infrastructure/issues/618)
+- [Increase MN data disks](https://github.com/onflow/ff-sre-infrastructure/issues/617)
+- [Create pattern for granting Gemini access](https://github.com/onflow/ff-sre-infrastructure/issues/558)
+- [Recreate TPS load testing instance for testing](https://github.com/onflow/ff-sre-infrastructure/issues/648)
+- [Add firewall rules for Migration Testnet & Migration Mainnet](https://github.com/onflow/ff-sre-infrastructure/issues/552)
 
 **Active Epics**
 - [Tidal Infra & Observability](https://github.com/onflow/ff-sre-infrastructure/issues/450)
-- [Monitoring & Observability](https://github.com/onflow/ff-sre-infrastructure/issues/118)
+- Node Hosting & Automation
 
 ---
 
