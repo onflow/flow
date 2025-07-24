@@ -1446,15 +1446,8 @@
           "cadence-tag": "v0.33.23-failure-mode-revert-patch",
           "docker-tag": "v0.33.23-failure-mode-revert-patch"
         },
-        "accessNodes": [
-          "access-001.devnet50.nodes.onflow.org:9000"
-        ],
-        "seedNodes": [
-          {
-            "address": "access-001.devnet50.nodes.onflow.org:3570",
-            "key": "ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d"
-          }
-        ]
+        "accessNodes": [],
+        "seedNodes": []
       },
       "testnet49": {
         "id": 49,
@@ -1485,19 +1478,12 @@
           "cadence-tag": "v0.42.3-patch.1",
           "docker-tag": "v0.32.6-patch.1"
         },
-        "accessNodes": [
-          "access-001.devnet49.nodes.onflow.org:9000"
-        ],
-        "seedNodes": [
-          {
-            "address": "access-001.devnet49.nodes.onflow.org:3570",
-            "key": "ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d"
-          }
-        ]
+        "accessNodes": [],
+        "seedNodes": []
       },
       "testnet48": {
         "id": 48,
-        "live": true,
+        "live": false,
         "name": "Testnet48",
         "sporkTime": "2023-10-25T15:21:04Z",
         "rootHeight": "127720466",
@@ -1524,19 +1510,12 @@
           "cadence-tag": "v0.42.1",
           "docker-tag": "v0.32.3"
         },
-        "accessNodes": [
-          "access-001.devnet48.nodes.onflow.org:9000"
-        ],
-        "seedNodes": [
-          {
-            "address": "access-001.devnet48.nodes.onflow.org:3570",
-            "key": "ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d"
-          }
-        ]
+        "accessNodes": [],
+        "seedNodes": []
       },
       "testnet47": {
         "id": 47,
-        "live": true,
+        "live": false,
         "name": "Testnet47",
         "sporkTime": "2023-08-04T21:00:00Z",
         "rootHeight": "113167876",
@@ -1563,15 +1542,8 @@
           "cadence-tag": "v0.39.14",
           "docker-tag": "v0.31.13"
         },
-        "accessNodes": [
-          "access-001.devnet47.nodes.onflow.org:9000"
-        ],
-        "seedNodes": [
-          {
-            "address": "access-001.devnet47.nodes.onflow.org:3570",
-            "key": "ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d"
-          }
-        ]
+        "accessNodes": [],
+        "seedNodes": []
       },
       "testnet46": {
         "id": 46,
@@ -1602,15 +1574,8 @@
           "cadence-tag": "v0.39.5",
           "docker-tag": "v0.31.4"
         },
-        "accessNodes": [
-          "access-001.devnet46.nodes.onflow.org:9000"
-        ],
-        "seedNodes": [
-          {
-            "address": "access-001.devnet46.nodes.onflow.org:3570",
-            "key": "ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d"
-          }
-        ]
+        "accessNodes": [],
+        "seedNodes": []
       },
       "testnet45": {
         "id": 45,
@@ -1641,15 +1606,8 @@
           "cadence-tag": "v0.39.1",
           "docker-tag": "v0.31.2"
         },
-        "accessNodes": [
-          "access-001.devnet45.nodes.onflow.org:9000"
-        ],
-        "seedNodes": [
-          {
-            "address": "access-001.devnet45.nodes.onflow.org:3570",
-            "key": "ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d"
-          }
-        ]
+        "accessNodes": [],
+        "seedNodes": []
       },
       "testnet44": {
         "id": 44,
@@ -1680,15 +1638,8 @@
           "cadence-tag": "v0.38.1",
           "docker-tag": "v0.30.6"
         },
-        "accessNodes": [
-          "access-001.devnet44.nodes.onflow.org:9000"
-        ],
-        "seedNodes": [
-          {
-            "address": "access-001.devnet44.nodes.onflow.org:3570",
-            "key": "ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d"
-          }
-        ]
+        "accessNodes": [],
+        "seedNodes": []
       },
       "testnet43": {
         "id": 43,
@@ -1723,15 +1674,8 @@
           "cadence-tag": "v0.38.1",
           "docker-tag": "v0.30.3"
         },
-        "accessNodes": [
-          "access-001.devnet43.nodes.onflow.org:9000"
-        ],
-        "seedNodes": [
-          {
-            "address": "access-001.devnet43.nodes.onflow.org:3570",
-            "key": "ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d"
-          }
-        ]
+        "accessNodes": [],
+        "seedNodes": []
       },
       "testnet42": {
         "id": 42,
@@ -1807,7 +1751,7 @@
       },
       "testnet40": {
         "id": 40,
-        "live": true,
+        "live": false,
         "name": "Testnet40",
         "sporkTime": "2023-01-23T01:11:00Z",
         "rootHeight": "92473965",
@@ -1843,7 +1787,7 @@
       },
       "testnet39": {
         "id": 39,
-        "live": true,
+        "live": false,
         "name": "Testnet39",
         "sporkTime": "2023-01-04T01:00:00Z",
         "rootHeight": "90595736",
@@ -1879,7 +1823,7 @@
       },
       "testnet38": {
         "id": 38,
-        "live": true,
+        "live": false,
         "name": "Testnet38",
         "sporkTime": "2022-10-19T02:00:00Z",
         "rootHeight": "83007730",
@@ -1915,7 +1859,7 @@
       },
       "testnet37": {
         "id": 37,
-        "live": true,
+        "live": false,
         "name": "Testnet37",
         "sporkTime": "2022-08-10T02:00:00Z",
         "rootHeight": "76159167",
@@ -1951,7 +1895,7 @@
       },
       "testnet36": {
         "id": 36,
-        "live": true,
+        "live": false,
         "name": "Testnet36",
         "sporkTime": "2022-07-27T02:00:00Z",
         "rootHeight": "74786360",
@@ -1987,7 +1931,7 @@
       },
       "testnet35": {
         "id": 35,
-        "live": true,
+        "live": false,
         "name": "Testnet35",
         "sporkTime": "2022-06-10T02:00:00Z",
         "rootHeight": "70072575",
@@ -2023,7 +1967,7 @@
       },
       "testnet34": {
         "id": 34,
-        "live": true,
+        "live": false,
         "name": "Testnet34",
         "sporkTime": "2022-04-04T16:00:00Z",
         "rootHeight": "64904846",
