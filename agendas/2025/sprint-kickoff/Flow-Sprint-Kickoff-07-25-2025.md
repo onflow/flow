@@ -2,6 +2,8 @@
 
  ### Team Wins 🎉
 
+ * React SDK is live with components
+
 ---
 
 ### Mainnet Uptime - Last 14 days (07/14/25 to 07/25/25) \[Vishal]
