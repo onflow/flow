@@ -202,14 +202,14 @@ Q3 Cycle Objective(s):
   - Optimistic Sync PR reviews
   - KROK Team
     - Done:
-
-
+      - [\[DataAvailability\] Add update to LatestPersistedSealedResult to persister #7556](https://github.com/onflow/flow-go/pull/7556)
     - In Review (Working on review remarks):
-
-
-    - In Progress
-
-
+      - [\[DataAvailability\] Add functional tests for processing pipeline #7526](https://github.com/onflow/flow-go/pull/7526)
+      - [\[DataAvailability\] Improve ingestion engine error handling #7552](https://github.com/onflow/flow-go/pull/7552)
+      - [\[DataAvailability\] Create module to get ExecutionResult for request criteria #7546](https://github.com/onflow/flow-go/issues/7546)
+      - [\[DataAvailability\] Refactor execution state APIs into local and EN query modules #7547](https://github.com/onflow/flow-go/issues/7547)
+      - [\[DataAvailability\] Refactor scripts backend package #7577](https://github.com/onflow/flow-go/issues/7577)
+      - [\[DataAvailability\] Refactor transactions backend package #7574](https://github.com/onflow/flow-go/issues/7574)
 
 * <ins>Malleability</ins>
   * Malleability PR reviews
@@ -217,11 +217,14 @@ Q3 Cycle Objective(s):
     * Implementing malleability changes for Rosetta
     * Testing Rosetta on Benchnet
   * KROK Team
-    * In Review
-      * [Malleability Immutable] Enforce immutability for Transaction] - [7303](https://github.com/onflow/flow-go/issues/7303)
-      * [Malleability Immutable] Enforce immutability for TransactionBody - [7304](https://github.com/onflow/flow-go/issues/7304)
-
-
+    * Done:
+      * [\[Malleability Immutable\] Enforce immutability for Block (flow)](https://github.com/onflow/flow-go/issues/7278)
+      * [\[Malleability Immutable\] Enforce immutability for Header - 7291](https://github.com/onflow/flow-go/issues/7291)
+    * In Review:
+      * [\[Malleability\] Remaining TODOs and Cleanup #7311 - (High and Low Priority part)](https://github.com/onflow/flow-go/issues/7311)
+    * In Progress:
+      * [\[Malleability Immutable\] Enforce immutability for Transaction - 7303](https://github.com/onflow/flow-go/issues/7303)
+      * [\[Malleability Immutable\] Enforce immutability for TransactionBody - 7304](https://github.com/onflow/flow-go/issues/7304)
 
 
 * <ins>Cryptography</ins>
@@ -241,6 +244,9 @@ Q3 Cycle Objective(s):
   - PR Reviews
   - Milestone 2 Optimistic Sync: Continue work on result forest.
   - KROK Team
+    - Addressing review remarks from the previous sprint
+    - [\[DataAvailability\] Define storage layer api interface #7613](https://github.com/onflow/flow-go/issues/7613)
+    - Will start to work on [\[DataAvailability\] Execution Data API Updates #7182](https://github.com/onflow/flow-go/issues/7182) epic issues
 
 
 
@@ -252,6 +258,9 @@ Q3 Cycle Objective(s):
     - Improving documentation/automation for Rosetta
   - KROK Team
     - Drive [7303](https://github.com/onflow/flow-go/issues/7303) and [7304](https://github.com/onflow/flow-go/issues/7304) to completion.
+    - Addressing review remarks from the previous sprint
+    - [Implementing Malleability changes in Rosetta](https://github.com/onflow/rosetta/issues/80)
+
 
 
 
