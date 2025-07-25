@@ -211,7 +211,9 @@ Q3 Cycle Objective(s):
 
 * <ins>Malleability</ins>
   * Malleability PR reviews
-  * Updating malleability merge branches
+  * Rosetta
+    * Implementing malleability changes for Rosetta
+    * Testing Rosetta on Benchnet
   * KROK Team
 
     **_Done:_**
@@ -252,6 +254,9 @@ Q3 Cycle Objective(s):
 * <ins>Malleability</ins>
   - Continue PR review and support for current Immutability issues
   - Continuing Benchnet testing for malleability rollout
+  - Rosetta
+    - Continue Rosetta testing
+    - Improving documentation/automation for Rosetta
   - KROK Team
 
 
