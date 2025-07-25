@@ -217,16 +217,9 @@ Q3 Cycle Objective(s):
     * Implementing malleability changes for Rosetta
     * Testing Rosetta on Benchnet
   * KROK Team
-
-    **_Done:_**
-
-
-
-    **_In Review_**:
-
-
-
-    **_In Progress_**:
+    * In Review
+      * [Malleability Immutable] Enforce immutability for Transaction] - [7303](https://github.com/onflow/flow-go/issues/7303)
+      * [Malleability Immutable] Enforce immutability for TransactionBody - [7304](https://github.com/onflow/flow-go/issues/7304)
 
 
 
@@ -258,6 +251,7 @@ Q3 Cycle Objective(s):
     - Continue Rosetta testing
     - Improving documentation/automation for Rosetta
   - KROK Team
+    - Drive [7303](https://github.com/onflow/flow-go/issues/7303) and [7304](https://github.com/onflow/flow-go/issues/7304) to completion.
 
 
 
