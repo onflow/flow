@@ -347,24 +347,18 @@ Cycle Objective(s):
 
 **Cycle Objective(s):**
 
-KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 0.5 per week on a 4-week rolling average.
- - Current (June 13: 0.5/week -> 95% decrease in bugs since Jen/Feb!
+KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 0.25 per week on a 4-week rolling average.
+ - Current (July 25: 0.25/week -> 95% decrease in bugs since Jen/Feb!
 
 **Done last sprint**
 
-
+- Completed initial implementation of FRW-Core library, code share between Extension & Mobile for
+- Initial integration of React-native on mobile
+- Initial UI complete for updated send asset workflow on mobile
 
 **This sprint**
 
-
-
-**On Hold**
-
-- N/A
-
-**Active Epics**
-
-- TBD
+- Complete send asset workflow across all platforms.
 
 ---
 
