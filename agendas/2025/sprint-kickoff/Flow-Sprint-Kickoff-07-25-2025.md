@@ -200,6 +200,8 @@ Q3 Cycle Objective(s):
 
 * <ins>Data Availability</ins>
   - Optimistic Sync PR reviews
+  - Fixed API block status bug ([PR 7601](https://github.com/onflow/flow-go/pull/7601))
+  - Priority Queue for results forest ([PR 7554](https://github.com/onflow/flow-go/pull/7554))
   - KROK Team
     - Done:
       - [\[DataAvailability\] Add update to LatestPersistedSealedResult to persister #7556](https://github.com/onflow/flow-go/pull/7556)
@@ -243,6 +245,7 @@ Q3 Cycle Objective(s):
 * <ins>Data Availability:</ins>
   - PR Reviews
   - Milestone 2 Optimistic Sync: Continue work on result forest.
+  - Milestone 3 Optimistic Sync: Finish API updates design and issues.
   - KROK Team
     - Addressing review remarks from the previous sprint
     - [\[DataAvailability\] Define storage layer api interface #7613](https://github.com/onflow/flow-go/issues/7613)
