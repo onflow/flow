@@ -194,9 +194,9 @@ Q3 Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Overload resilience</ins>
-- Improved the loader to stress test the network at 300 TPS for 3 hours
-- Working on early signal metric to warn us execution is falling behind
-- Built the first version of the technical lever to handle overload via [collection size throttling](https://github.com/onflow/flow-okrs/issues/140)
+  - Improved the loader to stress test the network at 300 TPS for 3 hours
+  - Working on early signal metric to warn when execution is falling behind
+  - Built the first version of the technical lever to handle overload via [collection size throttling](https://github.com/onflow/flow-okrs/issues/140)
 
 * <ins>Data Availability</ins>
   - Optimistic Sync PR reviews
@@ -245,7 +245,7 @@ Q3 Cycle Objective(s):
 
 * <ins>Overload resilience</ins>
   - Continue network benchmarking
-  - Continue improving and testing the collection size throttling implementation.
+  - Improve and test the collection size throttling implementation.
 
 * <ins>Data Availability:</ins>
   - PR Reviews
