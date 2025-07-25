@@ -57,14 +57,14 @@ Network upgrade (Spork) Fall 2025.
 |:------------------------|:------:|:-------:|:-----------------:|:--------:|:-------:|
 | Drafted     | 8 |    7    |       0       |    9     | **24**  |
 | Proposed    | 1  |    2    |       3       |    0     |  **6**  |
-| Accepted    | 3  |    2    |       2       |    3     | **10**  |
+| Accepted    | 3  |    2    |       2       |    2     |  **9**  |
 | Rejected    | 0  |    1    |       1       |    0     |  **2**  |
 | Implemented | 3  |    5    |       1       |    0     |  **9**  |
-| Released    | 4  |   34    |       9         |    6     | **53**  |
+| Released    | 4  |   34    |       9         |    7     | **54**  |
 | Total       | **19** | **50**  |       **16**       |  **18**  | **104** |
 
 
-- [FLIP 332: Enforcing Domain-Based Networking Addresses for Nodes](https://github.com/onflow/flips/blob/main/protocol/20250619-network-address-validation.md) moved to `Released`
+- [FLIP 332: Enforcing Domain-Based Networking Addresses for Nodes](https://github.com/onflow/flips/blob/main/protocol/20250619-network-address-validation.md) is live on testnet and mainnet.
 
 
 ---
@@ -394,12 +394,12 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
 
-* Published Surge Pricing FLIP
+* Surge Pricing FLIP internal review
 * Deep-dive into infused Tokens
 
 **This sprint**
 
-* Drive Surge Pricing FLIP disucssion.
+* Publish the Surge pricing FLIP and drive the discussion.
 * Continue work on infused tokens
 
 ---
