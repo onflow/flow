@@ -40,18 +40,13 @@
 
 ### Incidents
 
-### Testnet
-
-N/A
-
-### Mainnet
-N/A
+No P0 or P1 incident on testnet or mainnet
 
 ### Key Release Dates & Breaking Changes
 
 
 Network upgrade (Spork) Fall 2025.
-- Testnet in **Sept, 17th (Wednesday)**
+- Testnet in **Mid Sept**
 - Mainnet in **Oct, 1st (Wednesday)**
 
 ---
