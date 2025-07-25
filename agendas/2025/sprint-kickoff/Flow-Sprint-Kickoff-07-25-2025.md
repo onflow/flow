@@ -232,15 +232,12 @@ Q3 Cycle Objective(s):
 
 
 * <ins>Cryptography</ins>
-  * Passkeys: PR review
-  * Proof of Possession: Completed the blog and it is now ready to be published.
-  * multi-SPoCK: Starting reading another PoP-based proof of BLS multi signature.
-  * Threshold signature: addressed security report through minor improvement of the repo comments
-  * Crypto library: Tried Devin AI in a long refactor task.
+  * Passkeys: Completed flow-go-sdk PR review
+  * Multi-SPoCK:
+    * Finished reading the Ristenpart proof of multi-BLS unforgeability under PoP (minor game details used to lower attack bounds will be revisited in the future)
+    * Working on elevating the current simple-SPoCK unforgeability proof (2020) from KOSK to PoP (task in progress and will continue)
 
-* <ins>Other</ins>
-
-
+  
 **This sprint**
 
 * <ins>Overload resilience</ins>
@@ -265,8 +262,7 @@ Q3 Cycle Objective(s):
 
 
 * <ins>Cryptography</ins>
-  * Passkeys: ?
-  * SPoCK: ?
+  - SPoCK: Continue on the tasks from last sprint (simple-SPoCK proof with PoP)
 
 **On Hold**
 
