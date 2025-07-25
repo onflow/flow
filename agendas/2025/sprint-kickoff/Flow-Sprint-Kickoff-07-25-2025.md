@@ -214,8 +214,8 @@ Q3 Cycle Objective(s):
 * <ins>Malleability</ins>
   * Malleability PR reviews
   * Rosetta
-    * Implementing malleability changes for Rosetta
-    * Testing Rosetta on Benchnet
+    * [Implementing Malleability changes in Rosetta](https://github.com/onflow/rosetta/issues/80)
+      * Testing Rosetta on Benchnet
   * KROK Team
     * Done:
       * [\[Malleability Immutable\] Enforce immutability for Block (flow)](https://github.com/onflow/flow-go/issues/7278)
@@ -246,7 +246,7 @@ Q3 Cycle Objective(s):
   - KROK Team
     - Addressing review remarks from the previous sprint
     - [\[DataAvailability\] Define storage layer api interface #7613](https://github.com/onflow/flow-go/issues/7613)
-    - Will start to work on [\[DataAvailability\] Execution Data API Updates #7182](https://github.com/onflow/flow-go/issues/7182) epic issues
+    - Will start to work on Milestone 3 [\[DataAvailability\] Execution Data API Updates #7182](https://github.com/onflow/flow-go/issues/7182) epic issues
 
 
 
@@ -255,12 +255,10 @@ Q3 Cycle Objective(s):
   - Continuing Benchnet testing for malleability rollout
   - Rosetta
     - Continue Rosetta testing
-    - Improving documentation/automation for Rosetta
+    - [Implementing Malleability changes in Rosetta](https://github.com/onflow/rosetta/issues/80)
   - KROK Team
     - Drive [7303](https://github.com/onflow/flow-go/issues/7303) and [7304](https://github.com/onflow/flow-go/issues/7304) to completion.
     - Addressing review remarks from the previous sprint
-    - [Implementing Malleability changes in Rosetta](https://github.com/onflow/rosetta/issues/80)
-
 
 
 
