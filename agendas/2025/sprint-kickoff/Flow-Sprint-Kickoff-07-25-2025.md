@@ -278,13 +278,24 @@ Cycle Objective(s):
 
 
 #### Tidal:
+- Liquidity Modeling
+- Precision improvements
 
-
+#### DeFi Actions:
+- FLIP Draft
+- Universal Id
 
 
 **This sprint**
 
+#### Tidal:
+- Further economic Modeling
+- Oracle/AMM integrations
 
+#### DeFi Actions:
+- Universal Id
+- Documentation + refinement
+- Audit prep
 
 
 ---
