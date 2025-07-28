@@ -17,4 +17,5 @@ message CollectionGuarantee {
   bytes signature = 4;
   repeated bytes signer_ids = 5; // deprecated!! value will be empty. replaced by signer_indices
   bytes signer_indices = 6;
+  bytes cluster_chain_id = 7;
 }

@@ -1005,6 +1005,8 @@ components:
         - collection_id
         - signer_ids
         - signature
+        - reference_block_id
+        - cluster_chain_id
       properties:
         collection_id:
           $ref: '#/components/schemas/Identifier'
@@ -1016,6 +1018,10 @@ components:
           uniqueItems: true
         signature:
           $ref: '#/components/schemas/Signature'
+        reference_block_id:
+          $ref: '#/components/schemas/Identifier'
+        cluster_chain_id:
+          $ref: string
     BlockSeal:
       type: object
       required:
