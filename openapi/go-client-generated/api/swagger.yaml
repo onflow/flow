@@ -1787,7 +1787,7 @@ components:
           block_id: null
     CollectionGuarantee:
       required:
-      - chain_id
+      - cluster_chain_id
       - collection_id
       - reference_block_id
       - signature

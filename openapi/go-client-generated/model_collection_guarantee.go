@@ -13,5 +13,5 @@ type CollectionGuarantee struct {
 	SignerIds []string `json:"signer_ids"`
 	Signature string `json:"signature"`
 	ReferenceBlockId string `json:"reference_block_id"`
-	ClusterChainId string `json:"cluster_chain_id,omitempty"`
+	ClusterChainId string `json:"cluster_chain_id"`
 }

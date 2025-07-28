@@ -1006,7 +1006,7 @@ components:
         - signer_ids
         - signature
         - reference_block_id
-        - chain_id
+        - cluster_chain_id
       properties:
         collection_id:
           $ref: '#/components/schemas/Identifier'
