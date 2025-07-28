@@ -1020,7 +1020,7 @@ components:
           $ref: '#/components/schemas/Signature'
         reference_block_id:
           $ref: '#/components/schemas/Identifier'
-        chain_id:
+        cluster_chain_id:
           $ref: string
     BlockSeal:
       type: object
