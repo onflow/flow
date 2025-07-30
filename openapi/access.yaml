@@ -1021,7 +1021,7 @@ components:
         reference_block_id:
           $ref: '#/components/schemas/Identifier'
         cluster_chain_id:
-          $ref: string
+          type: string
     BlockSeal:
       type: object
       required:
