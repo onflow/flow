@@ -11,7 +11,9 @@ import "flow/entities/block.proto";
 import "flow/entities/collection.proto";
 import "flow/entities/event.proto";
 import "flow/entities/execution_result.proto";
+import "flow/entities/execution_state.proto";
 import "flow/entities/metadata.proto";
+import "flow/entities/executor_metadata.proto";
 import "flow/entities/node_version_info.proto";
 import "flow/entities/transaction.proto";
 import "google/protobuf/timestamp.proto";
@@ -376,41 +378,49 @@ message GetTransactionRequest {
   bytes block_id = 2;
   bytes collection_id = 3;
   entities.EventEncodingVersion event_encoding_version = 4;
+  entities.ExecutionStateQuery execution_state_query = 5;
 }
 
 message GetSystemTransactionRequest {
   bytes block_id = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message GetSystemTransactionResultRequest {
   bytes block_id = 1;
   entities.EventEncodingVersion event_encoding_version = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message GetTransactionByIndexRequest {
   bytes block_id = 1;
   uint32 index = 2;
   entities.EventEncodingVersion event_encoding_version = 3;
+  entities.ExecutionStateQuery execution_state_query = 4;
 }
 
 message GetTransactionsByBlockIDRequest {
   bytes block_id = 1;
   entities.EventEncodingVersion event_encoding_version = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message TransactionResultsResponse {
   repeated TransactionResultResponse transaction_results = 1;
   entities.Metadata metadata = 2;
+  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message TransactionsResponse {
   repeated entities.Transaction transactions = 1;
   entities.Metadata metadata = 2;
+  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message TransactionResponse {
   entities.Transaction transaction = 1;
   entities.Metadata metadata = 2;
+  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message TransactionResultResponse {
@@ -424,50 +434,60 @@ message TransactionResultResponse {
   uint64 block_height = 8;
   entities.Metadata metadata = 9;
   uint64 computation_usage = 10;
+  entities.ExecutorMetadata executor_metadata = 11;
 }
 
 // Accounts
 
 message GetAccountRequest {
   bytes address = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message GetAccountResponse {
   entities.Account account = 1;
   entities.Metadata metadata = 2;
+  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message GetAccountAtLatestBlockRequest {
   bytes address = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message AccountResponse {
   entities.Account account = 1;
   entities.Metadata metadata = 2;
+  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message GetAccountAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message GetAccountBalanceAtLatestBlockRequest {
   bytes address = 1;
+  entities.ExecutorMetadata executor_metadata = 2;
 }
 
 message GetAccountBalanceAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message AccountBalanceResponse {
   uint64 balance = 1;
   entities.Metadata metadata = 2;
+  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message GetAccountKeysAtLatestBlockRequest {
   // address of account
   bytes address = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message GetAccountKeyAtLatestBlockRequest {
@@ -475,11 +495,13 @@ message GetAccountKeyAtLatestBlockRequest {
   bytes address = 1;
   // index of key to return
   uint32 index = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message GetAccountKeysAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message GetAccountKeyAtBlockHeightRequest {
@@ -487,16 +509,19 @@ message GetAccountKeyAtBlockHeightRequest {
   uint64 block_height = 2;
   // index of key to return
   uint32 index = 3;
+  entities.ExecutionStateQuery execution_state_query = 4;
 }
 
 message AccountKeysResponse {
   repeated entities.AccountKey account_keys = 1;
   entities.Metadata metadata = 2;
+  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message AccountKeyResponse {
   entities.AccountKey account_key = 1;
   entities.Metadata metadata = 2;
+  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 // Scripts
@@ -504,24 +529,28 @@ message AccountKeyResponse {
 message ExecuteScriptAtLatestBlockRequest {
   bytes script = 1;
   repeated bytes arguments = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message ExecuteScriptAtBlockIDRequest {
   bytes block_id = 1;
   bytes script = 2;
   repeated bytes arguments = 3;
+  entities.ExecutionStateQuery execution_state_query = 4;
 }
 
 message ExecuteScriptAtBlockHeightRequest {
   uint64 block_height = 1;
   bytes script = 2;
   repeated bytes arguments = 3;
+  entities.ExecutionStateQuery execution_state_query = 4;
 }
 
 message ExecuteScriptResponse {
   bytes value = 1;
   entities.Metadata metadata = 2;
   uint64 computation_usage = 3;
+  entities.ExecutorMetadata executor_metadata = 4;
 }
 
 // Events
@@ -531,12 +560,14 @@ message GetEventsForHeightRangeRequest {
   uint64 start_height = 2;
   uint64 end_height = 3;
   entities.EventEncodingVersion event_encoding_version = 4;
+  entities.ExecutionStateQuery execution_state_query = 5;
 }
 
 message GetEventsForBlockIDsRequest {
   string type = 1;
   repeated bytes block_ids = 2;
   entities.EventEncodingVersion event_encoding_version = 3;
+  entities.ExecutionStateQuery execution_state_query = 4;
 }
 
 message EventsResponse {
@@ -548,6 +579,7 @@ message EventsResponse {
   }
   repeated Result results = 1;
   entities.Metadata metadata = 2;
+  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 // Network Parameters
@@ -579,20 +611,24 @@ message ProtocolStateSnapshotResponse {
 
 message GetExecutionResultForBlockIDRequest {
   bytes block_id = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message ExecutionResultForBlockIDResponse {
   entities.ExecutionResult execution_result = 1;
   entities.Metadata metadata = 2;
+  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message GetExecutionResultByIDRequest {
   bytes id = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message ExecutionResultByIDResponse {
   entities.ExecutionResult execution_result = 1;
   entities.Metadata metadata = 2;
+  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 // Subscriptions
@@ -744,6 +780,7 @@ message SendAndSubscribeTransactionStatusesRequest {
     entities.Transaction transaction = 1;
     // The encoding for events in transaction result
     entities.EventEncodingVersion event_encoding_version = 2;
+    entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 // Response message for transaction status changes.

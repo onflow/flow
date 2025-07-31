@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package flow.entities;
+
+option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
+option java_package = "org.onflow.protobuf.entities";
+
+message ExecutionStateQuery {
+  uint64 agreeing_executors = 1;
+  repeated bytes required_executor_id = 2;
+  bool include_executor_metadata = 3;
+}
