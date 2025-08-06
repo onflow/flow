@@ -13,7 +13,6 @@ import "flow/entities/event.proto";
 import "flow/entities/execution_result.proto";
 import "flow/entities/execution_state.proto";
 import "flow/entities/metadata.proto";
-import "flow/entities/executor_metadata.proto";
 import "flow/entities/node_version_info.proto";
 import "flow/entities/transaction.proto";
 import "google/protobuf/timestamp.proto";
@@ -378,49 +377,41 @@ message GetTransactionRequest {
   bytes block_id = 2;
   bytes collection_id = 3;
   entities.EventEncodingVersion event_encoding_version = 4;
-  entities.ExecutionStateQuery execution_state_query = 5;
 }
 
 message GetSystemTransactionRequest {
   bytes block_id = 1;
-  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message GetSystemTransactionResultRequest {
   bytes block_id = 1;
   entities.EventEncodingVersion event_encoding_version = 2;
-  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message GetTransactionByIndexRequest {
   bytes block_id = 1;
   uint32 index = 2;
   entities.EventEncodingVersion event_encoding_version = 3;
-  entities.ExecutionStateQuery execution_state_query = 4;
 }
 
 message GetTransactionsByBlockIDRequest {
   bytes block_id = 1;
   entities.EventEncodingVersion event_encoding_version = 2;
-  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message TransactionResultsResponse {
   repeated TransactionResultResponse transaction_results = 1;
   entities.Metadata metadata = 2;
-  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message TransactionsResponse {
   repeated entities.Transaction transactions = 1;
   entities.Metadata metadata = 2;
-  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message TransactionResponse {
   entities.Transaction transaction = 1;
   entities.Metadata metadata = 2;
-  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message TransactionResultResponse {
@@ -434,7 +425,6 @@ message TransactionResultResponse {
   uint64 block_height = 8;
   entities.Metadata metadata = 9;
   uint64 computation_usage = 10;
-  entities.ExecutorMetadata executor_metadata = 11;
 }
 
 // Accounts
@@ -447,7 +437,6 @@ message GetAccountRequest {
 message GetAccountResponse {
   entities.Account account = 1;
   entities.Metadata metadata = 2;
-  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message GetAccountAtLatestBlockRequest {
@@ -458,7 +447,6 @@ message GetAccountAtLatestBlockRequest {
 message AccountResponse {
   entities.Account account = 1;
   entities.Metadata metadata = 2;
-  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message GetAccountAtBlockHeightRequest {
@@ -469,7 +457,6 @@ message GetAccountAtBlockHeightRequest {
 
 message GetAccountBalanceAtLatestBlockRequest {
   bytes address = 1;
-  entities.ExecutorMetadata executor_metadata = 2;
 }
 
 message GetAccountBalanceAtBlockHeightRequest {
@@ -481,7 +468,6 @@ message GetAccountBalanceAtBlockHeightRequest {
 message AccountBalanceResponse {
   uint64 balance = 1;
   entities.Metadata metadata = 2;
-  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message GetAccountKeysAtLatestBlockRequest {
@@ -515,13 +501,11 @@ message GetAccountKeyAtBlockHeightRequest {
 message AccountKeysResponse {
   repeated entities.AccountKey account_keys = 1;
   entities.Metadata metadata = 2;
-  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message AccountKeyResponse {
   entities.AccountKey account_key = 1;
   entities.Metadata metadata = 2;
-  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 // Scripts
@@ -550,7 +534,6 @@ message ExecuteScriptResponse {
   bytes value = 1;
   entities.Metadata metadata = 2;
   uint64 computation_usage = 3;
-  entities.ExecutorMetadata executor_metadata = 4;
 }
 
 // Events
@@ -579,7 +562,6 @@ message EventsResponse {
   }
   repeated Result results = 1;
   entities.Metadata metadata = 2;
-  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 // Network Parameters
@@ -617,7 +599,6 @@ message GetExecutionResultForBlockIDRequest {
 message ExecutionResultForBlockIDResponse {
   entities.ExecutionResult execution_result = 1;
   entities.Metadata metadata = 2;
-  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 message GetExecutionResultByIDRequest {
@@ -628,7 +609,6 @@ message GetExecutionResultByIDRequest {
 message ExecutionResultByIDResponse {
   entities.ExecutionResult execution_result = 1;
   entities.Metadata metadata = 2;
-  entities.ExecutorMetadata executor_metadata = 3;
 }
 
 // Subscriptions
