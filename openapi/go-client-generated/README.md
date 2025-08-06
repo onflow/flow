@@ -59,6 +59,7 @@ Class | Method | HTTP request | Description
  - [CompatibleRange](docs/CompatibleRange.md)
  - [Event](docs/Event.md)
  - [ExecutionResult](docs/ExecutionResult.md)
+ - [ExecutorMetadata](docs/ExecutorMetadata.md)
  - [HashingAlgorithm](docs/HashingAlgorithm.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [Links](docs/Links.md)

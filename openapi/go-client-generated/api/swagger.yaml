@@ -383,6 +383,39 @@ paths:
           type: array
           items:
             type: string
+      - name: agreeing_executors_count
+        in: query
+        description: A minimum number of execution receipts for the execution result.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: uint64
+      - name: required_executor_ids
+        in: query
+        description: "A set of execution node IDs, one of which must have produced\
+          \ the execution result."
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: "#/components/schemas/Identifier"
+      - name: include_executor_metadata
+        in: query
+        description: Specifies whether or not to include the executor metadata in
+          the response.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
       responses:
         "200":
           description: OK
@@ -548,6 +581,39 @@ paths:
           type: array
           items:
             type: string
+      - name: agreeing_executors_count
+        in: query
+        description: A minimum number of execution receipts for the execution result.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: uint64
+      - name: required_executor_ids
+        in: query
+        description: "A set of execution node IDs, one of which must have produced\
+          \ the execution result."
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: "#/components/schemas/Identifier"
+      - name: include_executor_metadata
+        in: query
+        description: Specifies whether or not to include the executor metadata in
+          the response.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
       responses:
         "200":
           description: OK
@@ -604,6 +670,39 @@ paths:
           type: array
           items:
             type: string
+      - name: agreeing_executors_count
+        in: query
+        description: A minimum number of execution receipts for the execution result.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: uint64
+      - name: required_executor_ids
+        in: query
+        description: "A set of execution node IDs, one of which must have produced\
+          \ the execution result."
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: "#/components/schemas/Identifier"
+      - name: include_executor_metadata
+        in: query
+        description: Specifies whether or not to include the executor metadata in
+          the response.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
       responses:
         "200":
           description: OK
@@ -680,6 +779,39 @@ paths:
           type: array
           items:
             type: string
+      - name: agreeing_executors_count
+        in: query
+        description: A minimum number of execution receipts for the execution result.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: uint64
+      - name: required_executor_ids
+        in: query
+        description: "A set of execution node IDs, one of which must have produced\
+          \ the execution result."
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: "#/components/schemas/Identifier"
+      - name: include_executor_metadata
+        in: query
+        description: Specifies whether or not to include the executor metadata in
+          the response.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
       responses:
         "200":
           description: OK
@@ -766,6 +898,39 @@ paths:
           type: array
           items:
             type: string
+      - name: agreeing_executors_count
+        in: query
+        description: A minimum number of execution receipts for the execution result.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: uint64
+      - name: required_executor_ids
+        in: query
+        description: "A set of execution node IDs, one of which must have produced\
+          \ the execution result."
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: "#/components/schemas/Identifier"
+      - name: include_executor_metadata
+        in: query
+        description: Specifies whether or not to include the executor metadata in
+          the response.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
       responses:
         "200":
           description: OK
@@ -910,6 +1075,39 @@ paths:
           type: array
           items:
             type: string
+      - name: agreeing_executors_count
+        in: query
+        description: A minimum number of execution receipts for the execution result.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: uint64
+      - name: required_executor_ids
+        in: query
+        description: "A set of execution node IDs, one of which must have produced\
+          \ the execution result."
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: "#/components/schemas/Identifier"
+      - name: include_executor_metadata
+        in: query
+        description: Specifies whether or not to include the executor metadata in
+          the response.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
       responses:
         "200":
           description: OK
@@ -1124,6 +1322,20 @@ paths:
                 $ref: "#/components/schemas/Error"
 components:
   schemas:
+    ExecutorMetadata:
+      type: object
+      properties:
+        execution_result_id:
+          $ref: "#/components/schemas/Identifier"
+        executor_ids:
+          type: array
+          items:
+            $ref: "#/components/schemas/Identifier"
+      example:
+        execution_result_id: null
+        executor_ids:
+        - null
+        - null
     Account:
       required:
       - _expandable
@@ -1148,6 +1360,8 @@ components:
           additionalProperties:
             type: string
             format: byte
+        execution_metadata:
+          $ref: "#/components/schemas/ExecutorMetadata"
         _expandable:
           $ref: "#/components/schemas/Account__expandable"
         _links:
@@ -1165,6 +1379,11 @@ components:
           signing_algorithm: BLSBLS12381
           revoked: true
           hashing_algorithm: SHA2_256
+          execution_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
         - public_key: public_key
           sequence_number: sequence_number
           index: index
@@ -1172,11 +1391,17 @@ components:
           signing_algorithm: BLSBLS12381
           revoked: true
           hashing_algorithm: SHA2_256
+          execution_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
         contracts:
           key: ""
         _expandable:
           keys: keys
           contracts: contracts
+        execution_metadata: null
     AccountPublicKey:
       required:
       - hashing_algorithm
@@ -1211,6 +1436,8 @@ components:
         revoked:
           type: boolean
           description: Flag indicating whether the key is active or not.
+        execution_metadata:
+          $ref: "#/components/schemas/ExecutorMetadata"
       example:
         public_key: public_key
         sequence_number: sequence_number
@@ -1219,6 +1446,11 @@ components:
         signing_algorithm: BLSBLS12381
         revoked: true
         hashing_algorithm: SHA2_256
+        execution_metadata:
+          execution_result_id: null
+          executor_ids:
+          - null
+          - null
     SigningAlgorithm:
       type: string
       enum:
@@ -1278,6 +1510,11 @@ components:
               transaction_index: transaction_index
               type: type
               event_index: event_index
+            execution_metadata:
+              execution_result_id: null
+              executor_ids:
+              - null
+              - null
             status: Pending
           envelope_signatures:
           - null
@@ -1327,6 +1564,11 @@ components:
               transaction_index: transaction_index
               type: type
               event_index: event_index
+            execution_metadata:
+              execution_result_id: null
+              executor_ids:
+              - null
+              - null
             status: Pending
           envelope_signatures:
           - null
@@ -1438,6 +1680,11 @@ components:
             transaction_index: transaction_index
             type: type
             event_index: event_index
+          execution_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
           status: Pending
         envelope_signatures:
         - null
@@ -1532,6 +1779,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Event"
+        execution_metadata:
+          $ref: "#/components/schemas/ExecutorMetadata"
         _links:
           $ref: "#/components/schemas/Links"
       example:
@@ -1554,6 +1803,11 @@ components:
           transaction_index: transaction_index
           type: type
           event_index: event_index
+        execution_metadata:
+          execution_result_id: null
+          executor_ids:
+          - null
+          - null
         status: Pending
     TransactionExecution:
       type: string
@@ -1690,6 +1944,11 @@ components:
             transaction_index: transaction_index
             type: type
             event_index: event_index
+          execution_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
         _expandable:
           payload: payload
           execution_result: http://example.com/aeiou
@@ -1905,6 +2164,8 @@ components:
             $ref: "#/components/schemas/Chunk"
         previous_result_id:
           $ref: "#/components/schemas/Identifier"
+        execution_metadata:
+          $ref: "#/components/schemas/ExecutorMetadata"
         _links:
           $ref: "#/components/schemas/Links"
       example:
@@ -1941,6 +2202,11 @@ components:
           transaction_index: transaction_index
           type: type
           event_index: event_index
+        execution_metadata:
+          execution_result_id: null
+          executor_ids:
+          - null
+          - null
     BlockEvents:
       type: object
       properties:
@@ -1955,6 +2221,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Event"
+        execution_metadata:
+          $ref: "#/components/schemas/ExecutorMetadata"
         _links:
           $ref: "#/components/schemas/Links"
       example:
@@ -1974,6 +2242,11 @@ components:
           transaction_index: transaction_index
           type: type
           event_index: event_index
+        execution_metadata:
+          execution_result_id: null
+          executor_ids:
+          - null
+          - null
     Event:
       required:
       - event_index
@@ -2402,3 +2675,39 @@ components:
       explode: true
       schema:
         $ref: "#/components/schemas/Identifier"
+    agreeingExecutorsCount:
+      name: agreeing_executors_count
+      in: query
+      description: A minimum number of execution receipts for the execution result.
+      required: false
+      allowEmptyValue: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        format: uint64
+    requiredExecutorIds:
+      name: required_executor_ids
+      in: query
+      description: "A set of execution node IDs, one of which must have produced the\
+        \ execution result."
+      required: false
+      style: form
+      explode: false
+      schema:
+        minItems: 1
+        uniqueItems: true
+        type: array
+        items:
+          $ref: "#/components/schemas/Identifier"
+    includeExecutorMetadata:
+      name: include_executor_metadata
+      in: query
+      description: Specifies whether or not to include the executor metadata in the
+        response.
+      required: false
+      allowEmptyValue: false
+      style: form
+      explode: true
+      schema:
+        type: boolean

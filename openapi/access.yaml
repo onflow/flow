@@ -167,6 +167,9 @@ paths:
         - $ref: '#/components/parameters/collectionIdParam'
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/agreeingExecutorsCount'
+        - $ref: '#/components/parameters/requiredExecutorIds'
+        - $ref: '#/components/parameters/includeExecutorMetadata'
       responses:
         '200':
           description: OK
@@ -303,6 +306,9 @@ paths:
           style: form
           required: true
         - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/agreeingExecutorsCount'
+        - $ref: '#/components/parameters/requiredExecutorIds'
+        - $ref: '#/components/parameters/includeExecutorMetadata'
       responses:
         '200':
           description: OK
@@ -332,6 +338,9 @@ paths:
           required: true
           description: The ID of the execution result.
         - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/agreeingExecutorsCount'
+        - $ref: '#/components/parameters/requiredExecutorIds'
+        - $ref: '#/components/parameters/includeExecutorMetadata'
       responses:
         '200':
           description: OK
@@ -366,6 +375,9 @@ paths:
           description: The block height to query for the account details at the "sealed" is used by default.
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/agreeingExecutorsCount'
+        - $ref: '#/components/parameters/requiredExecutorIds'
+        - $ref: '#/components/parameters/includeExecutorMetadata'
       responses:
         '200':
           description: OK
@@ -408,6 +420,9 @@ paths:
           description: The block height to query for the account details at the "sealed" is used by default.
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/agreeingExecutorsCount'
+        - $ref: '#/components/parameters/requiredExecutorIds'
+        - $ref: '#/components/parameters/includeExecutorMetadata'
       responses:
         '200':
           description: OK
@@ -530,6 +545,9 @@ paths:
             maxItems: 50
             uniqueItems: true
         - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/agreeingExecutorsCount'
+        - $ref: '#/components/parameters/requiredExecutorIds'
+        - $ref: '#/components/parameters/includeExecutorMetadata'
   /network/parameters:
     get:
       summary: Get Network Parameters
@@ -689,7 +707,46 @@ components:
       schema:
         $ref: '#/components/schemas/Identifier'
       required: false
+    agreeingExecutorsCount:
+      description: A minimum number of execution receipts for the execution result.
+      name: agreeing_executors_count
+      in: query
+      allowEmptyValue: false
+      schema:
+        type: string
+        format: uint64
+      required: false
+    requiredExecutorIds:
+      description: A set of execution node IDs, one of which must have produced the execution result.
+      name: required_executor_ids
+      in: query
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/Identifier'
+        minItems: 1
+        uniqueItems: true
+      explode: false
+      style: form
+      required: false
+    includeExecutorMetadata:
+      description: Specifies whether or not to include the executor metadata in the response.
+      name: include_executor_metadata
+      in: query
+      allowEmptyValue: false
+      schema:
+        type: boolean
+      required: false
   schemas:
+    ExecutorMetadata:
+      type: object
+      properties:
+        execution_result_id:
+          $ref: '#/components/schemas/Identifier'
+        executor_ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier'
     Account:
       type: object
       required:
@@ -714,6 +771,8 @@ components:
           additionalProperties:
             type: string
             format: byte
+        execution_metadata:
+          $ref: '#/components/schemas/ExecutorMetadata'
         _expandable:
           type: object
           properties:
@@ -757,6 +816,8 @@ components:
         revoked:
           type: boolean
           description: Flag indicating whether the key is active or not.
+        execution_metadata:
+          $ref: '#/components/schemas/ExecutorMetadata'
     SigningAlgorithm:
       type: string
       enum:
@@ -913,6 +974,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
+        execution_metadata:
+          $ref: '#/components/schemas/ExecutorMetadata'
         _links:
           $ref: '#/components/schemas/Links'
     TransactionExecution:
@@ -1087,6 +1150,8 @@ components:
             $ref: '#/components/schemas/Chunk'
         previous_result_id:
           $ref: '#/components/schemas/Identifier'
+        execution_metadata:
+          $ref: '#/components/schemas/ExecutorMetadata'
         _links:
           $ref: '#/components/schemas/Links'
     BlockEvents:
@@ -1103,6 +1168,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
+        execution_metadata:
+          $ref: '#/components/schemas/ExecutorMetadata'
         _links:
           $ref: '#/components/schemas/Links'
     Event:
@@ -1260,6 +1327,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
+
   responses:
     400BadRequest:
       description: Bad Request

@@ -34,6 +34,9 @@ Query on-chain events by their name in the specified blocks heights or block IDs
      * @param "EndHeight" (optional.Interface of BlockHeight) -  The end height of the block range for events. Must be used together with &#x60;start_height&#x60;. This parameter is incompatible with &#x60;block_ids&#x60;.
      * @param "BlockIds" (optional.Interface of []string) -  List of block IDs. Either provide this parameter or both height parameters. This parameter is incompatible with heights parameters.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
+     * @param "AgreeingExecutorsCount" (optional.String) -  A minimum number of execution receipts for the execution result.
+     * @param "RequiredExecutorIds" (optional.Interface of []string) -  A set of execution node IDs, one of which must have produced the execution result.
+     * @param "IncludeExecutorMetadata" (optional.Bool) -  Specifies whether or not to include the executor metadata in the response.
 @return BlockEvents
 */
 
@@ -42,6 +45,9 @@ type EventsApiEventsGetOpts struct {
     EndHeight optional.Interface
     BlockIds optional.Interface
     Select_ optional.Interface
+    AgreeingExecutorsCount optional.String
+    RequiredExecutorIds optional.Interface
+    IncludeExecutorMetadata optional.Bool
 }
 
 func (a *EventsApiService) EventsGet(ctx context.Context, type_ string, localVarOptionals *EventsApiEventsGetOpts) (BlockEvents, *http.Response, error) {
@@ -72,6 +78,15 @@ func (a *EventsApiService) EventsGet(ctx context.Context, type_ string, localVar
 	}
 	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
 		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.AgreeingExecutorsCount.IsSet() {
+		localVarQueryParams.Add("agreeing_executors_count", parameterToString(localVarOptionals.AgreeingExecutorsCount.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.RequiredExecutorIds.IsSet() {
+		localVarQueryParams.Add("required_executor_ids", parameterToString(localVarOptionals.RequiredExecutorIds.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.IncludeExecutorMetadata.IsSet() {
+		localVarQueryParams.Add("include_executor_metadata", parameterToString(localVarOptionals.IncludeExecutorMetadata.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
