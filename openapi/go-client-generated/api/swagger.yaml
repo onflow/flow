@@ -1360,13 +1360,14 @@ components:
           additionalProperties:
             type: string
             format: byte
-        execution_metadata:
+        executor_metadata:
           $ref: "#/components/schemas/ExecutorMetadata"
         _expandable:
           $ref: "#/components/schemas/Account__expandable"
         _links:
           $ref: "#/components/schemas/Links"
       example:
+        executor_metadata: null
         address: address
         balance: balance
         _links:
@@ -1374,34 +1375,33 @@ components:
         keys:
         - public_key: public_key
           sequence_number: sequence_number
+          executor_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
           index: index
           weight: weight
           signing_algorithm: BLSBLS12381
           revoked: true
           hashing_algorithm: SHA2_256
-          execution_metadata:
-            execution_result_id: null
-            executor_ids:
-            - null
-            - null
         - public_key: public_key
           sequence_number: sequence_number
+          executor_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
           index: index
           weight: weight
           signing_algorithm: BLSBLS12381
           revoked: true
           hashing_algorithm: SHA2_256
-          execution_metadata:
-            execution_result_id: null
-            executor_ids:
-            - null
-            - null
         contracts:
           key: ""
         _expandable:
           keys: keys
           contracts: contracts
-        execution_metadata: null
     AccountPublicKey:
       required:
       - hashing_algorithm
@@ -1436,21 +1436,21 @@ components:
         revoked:
           type: boolean
           description: Flag indicating whether the key is active or not.
-        execution_metadata:
+        executor_metadata:
           $ref: "#/components/schemas/ExecutorMetadata"
       example:
         public_key: public_key
         sequence_number: sequence_number
+        executor_metadata:
+          execution_result_id: null
+          executor_ids:
+          - null
+          - null
         index: index
         weight: weight
         signing_algorithm: BLSBLS12381
         revoked: true
         hashing_algorithm: SHA2_256
-        execution_metadata:
-          execution_result_id: null
-          executor_ids:
-          - null
-          - null
     SigningAlgorithm:
       type: string
       enum:
@@ -1493,6 +1493,11 @@ components:
           result:
             collection_id: null
             error_message: error_message
+            executor_metadata:
+              execution_result_id: null
+              executor_ids:
+              - null
+              - null
             execution: Pending
             status_code: 0
             _links:
@@ -1510,11 +1515,6 @@ components:
               transaction_index: transaction_index
               type: type
               event_index: event_index
-            execution_metadata:
-              execution_result_id: null
-              executor_ids:
-              - null
-              - null
             status: Pending
           envelope_signatures:
           - null
@@ -1547,6 +1547,11 @@ components:
           result:
             collection_id: null
             error_message: error_message
+            executor_metadata:
+              execution_result_id: null
+              executor_ids:
+              - null
+              - null
             execution: Pending
             status_code: 0
             _links:
@@ -1564,11 +1569,6 @@ components:
               transaction_index: transaction_index
               type: type
               event_index: event_index
-            execution_metadata:
-              execution_result_id: null
-              executor_ids:
-              - null
-              - null
             status: Pending
           envelope_signatures:
           - null
@@ -1663,6 +1663,11 @@ components:
         result:
           collection_id: null
           error_message: error_message
+          executor_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
           execution: Pending
           status_code: 0
           _links:
@@ -1680,11 +1685,6 @@ components:
             transaction_index: transaction_index
             type: type
             event_index: event_index
-          execution_metadata:
-            execution_result_id: null
-            executor_ids:
-            - null
-            - null
           status: Pending
         envelope_signatures:
         - null
@@ -1779,13 +1779,18 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Event"
-        execution_metadata:
+        executor_metadata:
           $ref: "#/components/schemas/ExecutorMetadata"
         _links:
           $ref: "#/components/schemas/Links"
       example:
         collection_id: null
         error_message: error_message
+        executor_metadata:
+          execution_result_id: null
+          executor_ids:
+          - null
+          - null
         execution: Pending
         status_code: 0
         _links:
@@ -1803,11 +1808,6 @@ components:
           transaction_index: transaction_index
           type: type
           event_index: event_index
-        execution_metadata:
-          execution_result_id: null
-          executor_ids:
-          - null
-          - null
         status: Pending
     TransactionExecution:
       type: string
@@ -1911,6 +1911,11 @@ components:
           height: height
           timestamp: 2000-01-23T04:56:07.000+00:00
         execution_result:
+          executor_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
           _links:
             _self: _self
           chunks:
@@ -1944,11 +1949,6 @@ components:
             transaction_index: transaction_index
             type: type
             event_index: event_index
-          execution_metadata:
-            execution_result_id: null
-            executor_ids:
-            - null
-            - null
         _expandable:
           payload: payload
           execution_result: http://example.com/aeiou
@@ -2164,11 +2164,16 @@ components:
             $ref: "#/components/schemas/Chunk"
         previous_result_id:
           $ref: "#/components/schemas/Identifier"
-        execution_metadata:
+        executor_metadata:
           $ref: "#/components/schemas/ExecutorMetadata"
         _links:
           $ref: "#/components/schemas/Links"
       example:
+        executor_metadata:
+          execution_result_id: null
+          executor_ids:
+          - null
+          - null
         _links:
           _self: _self
         chunks:
@@ -2202,11 +2207,6 @@ components:
           transaction_index: transaction_index
           type: type
           event_index: event_index
-        execution_metadata:
-          execution_result_id: null
-          executor_ids:
-          - null
-          - null
     BlockEvents:
       type: object
       properties:
@@ -2221,11 +2221,16 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Event"
-        execution_metadata:
+        executor_metadata:
           $ref: "#/components/schemas/ExecutorMetadata"
         _links:
           $ref: "#/components/schemas/Links"
       example:
+        executor_metadata:
+          execution_result_id: null
+          executor_ids:
+          - null
+          - null
         _links:
           _self: _self
         block_timestamp: 2000-01-23T04:56:07.000+00:00
@@ -2242,11 +2247,6 @@ components:
           transaction_index: transaction_index
           type: type
           event_index: event_index
-        execution_metadata:
-          execution_result_id: null
-          executor_ids:
-          - null
-          - null
     Event:
       required:
       - event_index

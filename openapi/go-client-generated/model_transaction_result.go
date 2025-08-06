@@ -18,6 +18,6 @@ type TransactionResult struct {
 	ErrorMessage string `json:"error_message"`
 	ComputationUsed string `json:"computation_used"`
 	Events []Event `json:"events"`
-	ExecutionMetadata *ExecutorMetadata `json:"execution_metadata,omitempty"`
+	ExecutorMetadata *ExecutorMetadata `json:"executor_metadata,omitempty"`
 	Links *Links `json:"_links,omitempty"`
 }

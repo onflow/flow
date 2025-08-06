@@ -771,7 +771,7 @@ components:
           additionalProperties:
             type: string
             format: byte
-        execution_metadata:
+        executor_metadata:
           $ref: '#/components/schemas/ExecutorMetadata'
         _expandable:
           type: object
@@ -816,7 +816,7 @@ components:
         revoked:
           type: boolean
           description: Flag indicating whether the key is active or not.
-        execution_metadata:
+        executor_metadata:
           $ref: '#/components/schemas/ExecutorMetadata'
     SigningAlgorithm:
       type: string
@@ -974,7 +974,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
-        execution_metadata:
+        executor_metadata:
           $ref: '#/components/schemas/ExecutorMetadata'
         _links:
           $ref: '#/components/schemas/Links'
@@ -1150,7 +1150,7 @@ components:
             $ref: '#/components/schemas/Chunk'
         previous_result_id:
           $ref: '#/components/schemas/Identifier'
-        execution_metadata:
+        executor_metadata:
           $ref: '#/components/schemas/ExecutorMetadata'
         _links:
           $ref: '#/components/schemas/Links'
@@ -1168,7 +1168,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
-        execution_metadata:
+        executor_metadata:
           $ref: '#/components/schemas/ExecutorMetadata'
         _links:
           $ref: '#/components/schemas/Links'

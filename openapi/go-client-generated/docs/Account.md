@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Balance** | **string** | Flow balance of the account. | [default to null]
 **Keys** | [**[]AccountPublicKey**](AccountPublicKey.md) |  | [optional] [default to null]
 **Contracts** | **map[string]string** |  | [optional] [default to null]
-**ExecutionMetadata** | [***ExecutorMetadata**](ExecutorMetadata.md) |  | [optional] [default to null]
+**ExecutorMetadata** | [***ExecutorMetadata**](ExecutorMetadata.md) |  | [optional] [default to null]
 **Expandable** | [***AccountExpandable**](Account__expandable.md) |  | [default to null]
 **Links** | [***Links**](Links.md) |  | [optional] [default to null]
 
