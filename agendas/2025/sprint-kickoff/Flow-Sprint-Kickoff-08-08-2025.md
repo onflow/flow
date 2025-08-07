@@ -2,7 +2,9 @@
 
  ### Team Wins 🎉
 
-
+* Fixed the `no signing keys available` error on EVM GW by improving key handling logic. Transaction error rate dropped from 200 per sec to almost 0. 
+* Switched the Geth dependency in EVM GW from the forked version to the original version. EN, AN, VN updates coming sood.
+* Switched Testnet traffic to QuickNode nodes.
 
 ---
 
