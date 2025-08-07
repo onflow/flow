@@ -5,16 +5,25 @@ package flow.entities;
 option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
 option java_package = "org.onflow.protobuf.entities";
 
+// ExecutorMetadata contains data about the execution result used to serve the request.
 message ExecutorMetadata {
+  // ID of the ExecutionResult used to serve the request
   bytes execution_result_id = 1;
+  // Node IDs of Execution nodes that produced the result
   repeated bytes executor_id = 2;
 }
 
+// Metadata contains data about the node's state at the time of the request.
 message Metadata {
+  // Block ID of the latest finalized block
   bytes latest_finalized_block_id = 1;
+  // Height of the latest finalized block
   uint64 latest_finalized_height = 2;
+  // Node's unique ID
   bytes node_id = 3;
+  // Height of the latest block who's execution state data is fully indexed
   uint64 highest_indexed_height = 4;
-  ExecutorMetadata event_encoding_version = 5;
+  // Metadata about the execution result used to serve the request.
+  ExecutorMetadata execution_state_query = 5;
 }
 
