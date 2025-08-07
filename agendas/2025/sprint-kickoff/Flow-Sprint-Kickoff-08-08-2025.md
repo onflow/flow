@@ -32,18 +32,20 @@
 | HCU                    | 5/15/2025 |            |           | 7         |              | 7      |               |
 | HCU                    | 6/3/2025  |            |           | 9         |              | 9      |               |
 | HCU                    | 6/16/2025 |            |           | 12        |              | 12     |               |
-| Total downtime in mins |           | 210        | 210       | 263       | 210          | 263    |               |
+| HCU                    | 8/7/2025  |            |           | 9         |              | 9      |               |
+| Total downtime in mins |           | 210        | 210       | 272       | 210          | 272    |               |
 | YTD SLA                |           | 99.93%     | 99.93%    | 99.91%    | 99.93%       | 99.91% |               |
 | SLA for 2025           |           | 99.96%     | 99.96%    | 99.95%    | 99.96%       | 99.95% |               |
 
 ### Incidents
 
-No P0 or P1 incident on testnet or mainnet
+1. Testnet and Mainnet: HCU on 8/6 and 8/7 respectively to roll out a Cadence update
+2. Testnet: 7/25, 9:54 AM to 10:05, Sealing halt due to a large block/transaction being processed.
 
 ### Key Release Dates & Breaking Changes
 
 
-Network upgrade (Spork) Fall 2025.
+Forte Network upgrade (Spork) Fall 2025.
 - Testnet in **Sept, 17th (Wednesday)**
 - Mainnet in **Oct, 1st (Wednesday)**
 
@@ -52,15 +54,18 @@ Network upgrade (Spork) Fall 2025.
 ### FLIPs Tracker \[Vishal]
 
 |                         | Application | Cadence | Governance | Protocol |  Total  |
-|:------------------------|:------:|:-------:|:-----------------:|:--------:|:-------:|
-| Drafted     | 8 |    7    |       0       |    9     | **24**  |
-| Proposed    | 1  |    2    |       3       |    0     |  **6**  |
-| Accepted    | 3  |    2    |       2       |    2     |  **9**  |
-| Rejected    | 0  |    1    |       1       |    0     |  **2**  |
-| Implemented | 3  |    5    |       1       |    0     |  **9**  |
-| Released    | 4  |   34    |       9         |    7     | **54**  |
-| Total       | **19** | **50**  |       **16**       |  **18**  | **104** |
+|:------------------------|:-----------:|:-------:|:----------:|:--------:|:-------:|
+| Drafted     |      9      |    6    |     0      |    10    | **25**  |
+| Proposed    |      1      |    2    |     4      |    0     |  **7**  |
+| Accepted    |      3      |    2    |     2      |    2     |  **9**  |
+| Rejected    |      0      |    1    |     1      |    0     |  **2**  |
+| Implemented |      3      |    5    |     1      |    0     |  **9**  |
+| Released    |      4      |   34    |     9      |    7     | **54**  |
+| Total       |   **19**    | **50**  |   **17**   |  **19**  | **106** |
 
+#### New FLIPs
+1. [FLIP 336: Dynamic Transaction Fees](https://github.com/onflow/flips/pull/337)
+2. [FLIP 338: Flow Actions: Composable Standards for Protocols](https://github.com/onflow/flips/pull/339)
 
 ---
 
