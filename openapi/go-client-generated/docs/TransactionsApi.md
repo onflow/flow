@@ -31,6 +31,9 @@ Name | Type | Description  | Notes
  **collectionId** | [**optional.Interface of string**](.md)| A collection ID optional parameter. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
+ **agreeingExecutorsCount** | **optional.String**| A minimum number of execution receipts for the execution result. | 
+ **requiredExecutorIds** | [**optional.Interface of []string**](string.md)| A set of execution node IDs, one of which must have produced the execution result. | 
+ **includeExecutorMetadata** | **optional.Bool**| Specifies whether or not to include the executor metadata in the response. | 
 
 ### Return type
 

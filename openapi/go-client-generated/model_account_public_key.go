@@ -21,4 +21,5 @@ type AccountPublicKey struct {
 	Weight string `json:"weight"`
 	// Flag indicating whether the key is active or not.
 	Revoked bool `json:"revoked"`
+	Metadata *Metadata `json:"metadata,omitempty"`
 }

@@ -29,6 +29,9 @@ Name | Type | Description  | Notes
  **blockHeight** | [**optional.Interface of BlockHeight**](.md)| The block height to query for the account details at the \&quot;sealed\&quot; is used by default. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
+ **agreeingExecutorsCount** | **optional.String**| A minimum number of execution receipts for the execution result. | 
+ **requiredExecutorIds** | [**optional.Interface of []string**](string.md)| A set of execution node IDs, one of which must have produced the execution result. | 
+ **includeExecutorMetadata** | **optional.Bool**| Specifies whether or not to include the executor metadata in the response. | 
 
 ### Return type
 
@@ -69,6 +72,9 @@ Name | Type | Description  | Notes
  **blockHeight** | [**optional.Interface of BlockHeight**](.md)| The block height to query for the account details at the \&quot;sealed\&quot; is used by default. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
+ **agreeingExecutorsCount** | **optional.String**| A minimum number of execution receipts for the execution result. | 
+ **requiredExecutorIds** | [**optional.Interface of []string**](string.md)| A set of execution node IDs, one of which must have produced the execution result. | 
+ **includeExecutorMetadata** | **optional.Bool**| Specifies whether or not to include the executor metadata in the response. | 
 
 ### Return type
 

@@ -34,6 +34,9 @@ Get an account data by provided address in latest \&quot;sealed\&quot; block or 
      * @param "BlockHeight" (optional.Interface of BlockHeight) -  The block height to query for the account details at the \&quot;sealed\&quot; is used by default.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
+     * @param "AgreeingExecutorsCount" (optional.String) -  A minimum number of execution receipts for the execution result.
+     * @param "RequiredExecutorIds" (optional.Interface of []string) -  A set of execution node IDs, one of which must have produced the execution result.
+     * @param "IncludeExecutorMetadata" (optional.Bool) -  Specifies whether or not to include the executor metadata in the response.
 @return Account
 */
 
@@ -41,6 +44,9 @@ type AccountsApiAccountsAddressGetOpts struct {
     BlockHeight optional.Interface
     Expand optional.Interface
     Select_ optional.Interface
+    AgreeingExecutorsCount optional.String
+    RequiredExecutorIds optional.Interface
+    IncludeExecutorMetadata optional.Bool
 }
 
 func (a *AccountsApiService) AccountsAddressGet(ctx context.Context, address string, localVarOptionals *AccountsApiAccountsAddressGetOpts) (Account, *http.Response, error) {
@@ -68,6 +74,15 @@ func (a *AccountsApiService) AccountsAddressGet(ctx context.Context, address str
 	}
 	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
 		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.AgreeingExecutorsCount.IsSet() {
+		localVarQueryParams.Add("agreeing_executors_count", parameterToString(localVarOptionals.AgreeingExecutorsCount.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.RequiredExecutorIds.IsSet() {
+		localVarQueryParams.Add("required_executor_ids", parameterToString(localVarOptionals.RequiredExecutorIds.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.IncludeExecutorMetadata.IsSet() {
+		localVarQueryParams.Add("include_executor_metadata", parameterToString(localVarOptionals.IncludeExecutorMetadata.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -170,6 +185,9 @@ Get an account data by provided address in latest \&quot;sealed\&quot; block or 
      * @param "BlockHeight" (optional.Interface of BlockHeight) -  The block height to query for the account details at the \&quot;sealed\&quot; is used by default.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
+     * @param "AgreeingExecutorsCount" (optional.String) -  A minimum number of execution receipts for the execution result.
+     * @param "RequiredExecutorIds" (optional.Interface of []string) -  A set of execution node IDs, one of which must have produced the execution result.
+     * @param "IncludeExecutorMetadata" (optional.Bool) -  Specifies whether or not to include the executor metadata in the response.
 @return AccountPublicKey
 */
 
@@ -177,6 +195,9 @@ type AccountsApiAccountsAddressKeysIndexGetOpts struct {
     BlockHeight optional.Interface
     Expand optional.Interface
     Select_ optional.Interface
+    AgreeingExecutorsCount optional.String
+    RequiredExecutorIds optional.Interface
+    IncludeExecutorMetadata optional.Bool
 }
 
 func (a *AccountsApiService) AccountsAddressKeysIndexGet(ctx context.Context, address string, index string, localVarOptionals *AccountsApiAccountsAddressKeysIndexGetOpts) (AccountPublicKey, *http.Response, error) {
@@ -205,6 +226,15 @@ func (a *AccountsApiService) AccountsAddressKeysIndexGet(ctx context.Context, ad
 	}
 	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
 		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.AgreeingExecutorsCount.IsSet() {
+		localVarQueryParams.Add("agreeing_executors_count", parameterToString(localVarOptionals.AgreeingExecutorsCount.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.RequiredExecutorIds.IsSet() {
+		localVarQueryParams.Add("required_executor_ids", parameterToString(localVarOptionals.RequiredExecutorIds.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.IncludeExecutorMetadata.IsSet() {
+		localVarQueryParams.Add("include_executor_metadata", parameterToString(localVarOptionals.IncludeExecutorMetadata.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}

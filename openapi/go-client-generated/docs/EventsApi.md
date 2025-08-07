@@ -29,6 +29,9 @@ Name | Type | Description  | Notes
  **endHeight** | [**optional.Interface of BlockHeight**](.md)| The end height of the block range for events. Must be used together with &#x60;start_height&#x60;. This parameter is incompatible with &#x60;block_ids&#x60;. | 
  **blockIds** | [**optional.Interface of []string**](string.md)| List of block IDs. Either provide this parameter or both height parameters. This parameter is incompatible with heights parameters. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
+ **agreeingExecutorsCount** | **optional.String**| A minimum number of execution receipts for the execution result. | 
+ **requiredExecutorIds** | [**optional.Interface of []string**](string.md)| A set of execution node IDs, one of which must have produced the execution result. | 
+ **includeExecutorMetadata** | **optional.Bool**| Specifies whether or not to include the executor metadata in the response. | 
 
 ### Return type
 

@@ -11,6 +11,7 @@ import "flow/entities/block.proto";
 import "flow/entities/collection.proto";
 import "flow/entities/event.proto";
 import "flow/entities/execution_result.proto";
+import "flow/entities/execution_state.proto";
 import "flow/entities/metadata.proto";
 import "flow/entities/node_version_info.proto";
 import "flow/entities/transaction.proto";
@@ -385,6 +386,7 @@ message GetSystemTransactionRequest {
 message GetSystemTransactionResultRequest {
   bytes block_id = 1;
   entities.EventEncodingVersion event_encoding_version = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message GetTransactionByIndexRequest {
@@ -430,6 +432,7 @@ message TransactionResultResponse {
 
 message GetAccountRequest {
   bytes address = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message GetAccountResponse {
@@ -439,6 +442,7 @@ message GetAccountResponse {
 
 message GetAccountAtLatestBlockRequest {
   bytes address = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message AccountResponse {
@@ -449,15 +453,18 @@ message AccountResponse {
 message GetAccountAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message GetAccountBalanceAtLatestBlockRequest {
   bytes address = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message GetAccountBalanceAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message AccountBalanceResponse {
@@ -468,6 +475,7 @@ message AccountBalanceResponse {
 message GetAccountKeysAtLatestBlockRequest {
   // address of account
   bytes address = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message GetAccountKeyAtLatestBlockRequest {
@@ -475,11 +483,13 @@ message GetAccountKeyAtLatestBlockRequest {
   bytes address = 1;
   // index of key to return
   uint32 index = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message GetAccountKeysAtBlockHeightRequest {
   bytes address = 1;
   uint64 block_height = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message GetAccountKeyAtBlockHeightRequest {
@@ -487,6 +497,7 @@ message GetAccountKeyAtBlockHeightRequest {
   uint64 block_height = 2;
   // index of key to return
   uint32 index = 3;
+  entities.ExecutionStateQuery execution_state_query = 4;
 }
 
 message AccountKeysResponse {
@@ -504,18 +515,21 @@ message AccountKeyResponse {
 message ExecuteScriptAtLatestBlockRequest {
   bytes script = 1;
   repeated bytes arguments = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message ExecuteScriptAtBlockIDRequest {
   bytes block_id = 1;
   bytes script = 2;
   repeated bytes arguments = 3;
+  entities.ExecutionStateQuery execution_state_query = 4;
 }
 
 message ExecuteScriptAtBlockHeightRequest {
   uint64 block_height = 1;
   bytes script = 2;
   repeated bytes arguments = 3;
+  entities.ExecutionStateQuery execution_state_query = 4;
 }
 
 message ExecuteScriptResponse {
@@ -531,12 +545,14 @@ message GetEventsForHeightRangeRequest {
   uint64 start_height = 2;
   uint64 end_height = 3;
   entities.EventEncodingVersion event_encoding_version = 4;
+  entities.ExecutionStateQuery execution_state_query = 5;
 }
 
 message GetEventsForBlockIDsRequest {
   string type = 1;
   repeated bytes block_ids = 2;
   entities.EventEncodingVersion event_encoding_version = 3;
+  entities.ExecutionStateQuery execution_state_query = 4;
 }
 
 message EventsResponse {
@@ -579,6 +595,7 @@ message ProtocolStateSnapshotResponse {
 
 message GetExecutionResultForBlockIDRequest {
   bytes block_id = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message ExecutionResultForBlockIDResponse {
@@ -588,6 +605,7 @@ message ExecutionResultForBlockIDResponse {
 
 message GetExecutionResultByIDRequest {
   bytes id = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message ExecutionResultByIDResponse {
@@ -744,6 +762,7 @@ message SendAndSubscribeTransactionStatusesRequest {
     entities.Transaction transaction = 1;
     // The encoding for events in transaction result
     entities.EventEncodingVersion event_encoding_version = 2;
+    entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 // Response message for transaction status changes.

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package flow.entities;
+
+option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
+option java_package = "org.onflow.protobuf.entities";
+
+// ExecutionStateQuery defines the criteria to use when selecting the
+// ExecutionResult to use for the requested data.
+message ExecutionStateQuery {
+  // Minimum number of execution receipts for the execution result.
+  uint64 agreeing_executors_count = 1;
+  // Set of execution node IDs, one of which must have produced the execution result.
+  repeated bytes required_executor_id = 2;
+  // Whether or not to include ExecutorMetadata in the response.
+  bool include_executor_metadata = 3;
+}
