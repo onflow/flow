@@ -2,9 +2,10 @@
 
  ### Team Wins 🎉
 
-* Fixed the `no signing keys available` error on EVM GW by improving key handling logic. Transaction error rate dropped from 200 per sec to almost 0. 
+* Fixed the `no signing keys available` error on EVM GW by improving key handling logic. Transaction error rate dropped from 200 per sec to almost 0.
 * Switched the Geth dependency in EVM GW from the forked version to the original version. EN, AN, VN updates coming sood.
 * Switched Testnet traffic to QuickNode nodes.
+* [Sceduled Callbacks] Managed to successfully run scheduled callbacks execution on localnet, which is a step closer to mainnet.
 
 ---
 
@@ -93,22 +94,32 @@ Q2 2025 Cycle Objective(s):
 **Cadence Execution**
 
 - Badger -> Pebble migration
+    - [[Storage] Replace with lockctx Manager](https://github.com/onflow/flow-go/pull/7628)
+    - [[Storage] Refactor storage for Follower Engine](https://github.com/onflow/flow-go/pull/7262)
+    - [[Storage] Refactor mutator.Extend with DeferredDBOps](https://github.com/onflow/flow-go/pull/7609)
+    - [[Storage] Collection Cluster State](https://github.com/onflow/flow-go/pull/7452)
+    - Deployed latest version to one of each node type on both mainnet and testnet.
+    - Finished data migration to pebble for one of each node type on Testnet, been running on pebble for 2 weeks now without issues.
 
 - TPS loader improvements - network stress testing
+    - [[Tweak error handling](https://github.com/onflow/flow-execution-effort-estimation/pull/71)
 
-- Tech-debt
+- Sceduled Callbacks
+    - Successfully run scheduled callbacks execution on localnet,
+    - FLIP closed to being approved.
 
-- CBOR Improvement
-
+- Storage Key Deduplication
+    - [Deduplicate storage keys in the execution state, updated estimation of register reduction: ~86millions](https://github.com/onflow/flow-go/issues/7573#issuecomment-3162242757)
+    - [Add empty-migration flag to execution-state-extract to measure minimum spork migration time](https://github.com/onflow/flow-go/pull/7643)
+    - [Remove unused migration flags in execution-state-extract](https://github.com/onflow/flow-go/pull/7641)
+    - Measured the migration time on mainnet snapshot (with no migration)
 
 **Flow EVM**
 
-- Bugfix:
-
 - Improvements:
-
-- Chores:
-
+    - [Give blocks a better chance to become sealed before calling `NotifyBlock`](https://github.com/onflow/flow-evm-gateway/pull/853)
+    - [Improve performance of `BatchTxPool` for single-tx EOAs](https://github.com/onflow/flow-evm-gateway/pull/852)
+    - [Replace Geth fork with original Geth] (https://github.com/onflow/flow-go/pull/7676)
 
 
 **This sprint**
@@ -117,10 +128,12 @@ Q2 2025 Cycle Objective(s):
 
 
 - Cadence Execution
-
+    - Continue [Badger -> Pebble migration](https://github.com/onflow/flow-go/issues/7265)
+    - Continue [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598).
+    - Continue [Scheduled callbacks](https://github.com/onflow/flow-go/issues/7482).
 
 - EVM
-
+  - Continue EVM GW resilience improvements[1](https://github.com/onflow/flow-evm-gateway/issues/764), [2](https://github.com/onflow/flow-evm-gateway/issues/778)
 
 **On Hold**
 - New Trie research
@@ -169,7 +182,7 @@ Q3 Cycle Objective(s):
 * <ins>Cryptography</ins>
   * Multi-SPoCK:
 
-  
+
 **This sprint**
 
 * <ins>Overload resilience</ins>
