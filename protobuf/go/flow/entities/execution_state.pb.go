@@ -20,9 +20,14 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+// ExecutionStateQuery defines the criteria to use when selecting the
+// ExecutionResult to use for the requested data.
 type ExecutionStateQuery struct {
-	AgreeingExecutorsCount  uint64   `protobuf:"varint,1,opt,name=agreeing_executors_count,json=agreeingExecutorsCount,proto3" json:"agreeing_executors_count,omitempty"`
-	RequiredExecutorId      [][]byte `protobuf:"bytes,2,rep,name=required_executor_id,json=requiredExecutorId,proto3" json:"required_executor_id,omitempty"`
+	// Minimum number of execution receipts for the execution result.
+	AgreeingExecutorsCount uint64 `protobuf:"varint,1,opt,name=agreeing_executors_count,json=agreeingExecutorsCount,proto3" json:"agreeing_executors_count,omitempty"`
+	// Set of execution node IDs, one of which must have produced the execution result.
+	RequiredExecutorId [][]byte `protobuf:"bytes,2,rep,name=required_executor_id,json=requiredExecutorId,proto3" json:"required_executor_id,omitempty"`
+	// Whether or not to include ExecutorMetadata in the response.
 	IncludeExecutorMetadata bool     `protobuf:"varint,3,opt,name=include_executor_metadata,json=includeExecutorMetadata,proto3" json:"include_executor_metadata,omitempty"`
 	XXX_NoUnkeyedLiteral    struct{} `json:"-"`
 	XXX_unrecognized        []byte   `json:"-"`

@@ -386,6 +386,7 @@ message GetSystemTransactionRequest {
 message GetSystemTransactionResultRequest {
   bytes block_id = 1;
   entities.EventEncodingVersion event_encoding_version = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message GetTransactionByIndexRequest {
@@ -457,6 +458,7 @@ message GetAccountAtBlockHeightRequest {
 
 message GetAccountBalanceAtLatestBlockRequest {
   bytes address = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message GetAccountBalanceAtBlockHeightRequest {
