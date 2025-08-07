@@ -266,23 +266,30 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
 
-**Monitoring & Observability**
+**Tidal Observability**
+- [Refactor Synthetic Checks for Tidal](https://github.com/onflow/ff-sre-infrastructure/issues/662)
+- [Create Tidal Team On-Call Schedule and Alert Routing](https://github.com/onflow/ff-sre-infrastructure/issues/469)
+- [Create Runbook for Cloud SQL Database Alerts](https://github.com/onflow/ff-sre-infrastructure/issues/471)
+- [Monitor Health Check Endpoints for Cloud Run Services](https://github.com/onflow/ff-sre-infrastructure/issues/464)
 
-
-**Automation**
-
-
-**Tidal**
-
+**Node Hosting**
+- [Update transit tool to support generation of keys without push](https://github.com/onflow/ff-sre-infrastructure/issues/684)
+- [Update transit pull to bucket command line arg](https://github.com/onflow/ff-sre-infrastructure/issues/683)
+- [Update flow-network terraform module to support role based service account](https://github.com/onflow/ff-sre-infrastructure/issues/598)
+- [Create documentation for executing HCU](https://github.com/onflow/ff-sre-infrastructure/issues/593)
 
 **Security**
-
+- [Triage Security Issue FLOWWEB-77](https://github.com/onflow/ff-sre-infrastructure/issues/687)
+- [Triage Security Issue FLOWWEB-66](https://github.com/onflow/ff-sre-infrastructure/issues/659)
+- [Triage Security Issue FLOWWEB-65](https://github.com/onflow/ff-sre-infrastructure/issues/658)
 
 **Support**
-
-
-**Active Epics**
-
+- [Update Flix DNS Record on Cloudflare](https://github.com/onflow/ff-sre-infrastructure/issues/673)
+- [Update DNS records for Move to QN](https://github.com/onflow/ff-sre-infrastructure/issues/690)
+- [Copy SSH keys to 1Pass](https://github.com/onflow/ff-sre-infrastructure/issues/689)
+- [Create KMS keys for new smart contracts](https://github.com/onflow/ff-sre-infrastructure/issues/686)
+- [Remove Sentora EVM GW Endpoint](https://github.com/onflow/ff-sre-infrastructure/issues/678)
+- [Increase rate limits for Gemini](https://github.com/onflow/ff-sre-infrastructure/issues/620)
 
 ---
 
