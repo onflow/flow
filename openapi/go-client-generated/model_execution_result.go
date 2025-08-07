@@ -14,6 +14,6 @@ type ExecutionResult struct {
 	Events []Event `json:"events"`
 	Chunks []Chunk `json:"chunks,omitempty"`
 	PreviousResultId string `json:"previous_result_id"`
-	ExecutorMetadata *ExecutorMetadata `json:"executor_metadata,omitempty"`
+	Metadata *Metadata `json:"metadata,omitempty"`
 	Links *Links `json:"_links,omitempty"`
 }

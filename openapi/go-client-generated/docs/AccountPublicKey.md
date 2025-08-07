@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **SequenceNumber** | **string** | Current account sequence number. | [default to null]
 **Weight** | **string** | Weight of the key. | [default to null]
 **Revoked** | **bool** | Flag indicating whether the key is active or not. | [default to null]
-**ExecutorMetadata** | [***ExecutorMetadata**](ExecutorMetadata.md) |  | [optional] [default to null]
+**Metadata** | [***Metadata**](Metadata.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

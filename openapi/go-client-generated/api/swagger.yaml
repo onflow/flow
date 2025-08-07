@@ -1322,6 +1322,18 @@ paths:
                 $ref: "#/components/schemas/Error"
 components:
   schemas:
+    Metadata:
+      type: object
+      properties:
+        executor_metadata:
+          $ref: "#/components/schemas/ExecutorMetadata"
+      description: Contains data about the node's state at the time of the request.
+      example:
+        executor_metadata:
+          execution_result_id: null
+          executor_ids:
+          - null
+          - null
     ExecutorMetadata:
       type: object
       properties:
@@ -1331,6 +1343,7 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Identifier"
+      description: Contains data about the execution result used to serve the request.
       example:
         execution_result_id: null
         executor_ids:
@@ -1360,14 +1373,14 @@ components:
           additionalProperties:
             type: string
             format: byte
-        executor_metadata:
-          $ref: "#/components/schemas/ExecutorMetadata"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
         _expandable:
           $ref: "#/components/schemas/Account__expandable"
         _links:
           $ref: "#/components/schemas/Links"
       example:
-        executor_metadata: null
+        metadata: null
         address: address
         balance: balance
         _links:
@@ -1375,11 +1388,12 @@ components:
         keys:
         - public_key: public_key
           sequence_number: sequence_number
-          executor_metadata:
-            execution_result_id: null
-            executor_ids:
-            - null
-            - null
+          metadata:
+            executor_metadata:
+              execution_result_id: null
+              executor_ids:
+              - null
+              - null
           index: index
           weight: weight
           signing_algorithm: BLSBLS12381
@@ -1387,11 +1401,12 @@ components:
           hashing_algorithm: SHA2_256
         - public_key: public_key
           sequence_number: sequence_number
-          executor_metadata:
-            execution_result_id: null
-            executor_ids:
-            - null
-            - null
+          metadata:
+            executor_metadata:
+              execution_result_id: null
+              executor_ids:
+              - null
+              - null
           index: index
           weight: weight
           signing_algorithm: BLSBLS12381
@@ -1436,16 +1451,17 @@ components:
         revoked:
           type: boolean
           description: Flag indicating whether the key is active or not.
-        executor_metadata:
-          $ref: "#/components/schemas/ExecutorMetadata"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
       example:
         public_key: public_key
         sequence_number: sequence_number
-        executor_metadata:
-          execution_result_id: null
-          executor_ids:
-          - null
-          - null
+        metadata:
+          executor_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
         index: index
         weight: weight
         signing_algorithm: BLSBLS12381
@@ -1493,12 +1509,13 @@ components:
           result:
             collection_id: null
             error_message: error_message
-            executor_metadata:
-              execution_result_id: null
-              executor_ids:
-              - null
-              - null
             execution: Pending
+            metadata:
+              executor_metadata:
+                execution_result_id: null
+                executor_ids:
+                - null
+                - null
             status_code: 0
             _links:
               _self: _self
@@ -1547,12 +1564,13 @@ components:
           result:
             collection_id: null
             error_message: error_message
-            executor_metadata:
-              execution_result_id: null
-              executor_ids:
-              - null
-              - null
             execution: Pending
+            metadata:
+              executor_metadata:
+                execution_result_id: null
+                executor_ids:
+                - null
+                - null
             status_code: 0
             _links:
               _self: _self
@@ -1663,12 +1681,13 @@ components:
         result:
           collection_id: null
           error_message: error_message
-          executor_metadata:
-            execution_result_id: null
-            executor_ids:
-            - null
-            - null
           execution: Pending
+          metadata:
+            executor_metadata:
+              execution_result_id: null
+              executor_ids:
+              - null
+              - null
           status_code: 0
           _links:
             _self: _self
@@ -1779,19 +1798,20 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Event"
-        executor_metadata:
-          $ref: "#/components/schemas/ExecutorMetadata"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
         _links:
           $ref: "#/components/schemas/Links"
       example:
         collection_id: null
         error_message: error_message
-        executor_metadata:
-          execution_result_id: null
-          executor_ids:
-          - null
-          - null
         execution: Pending
+        metadata:
+          executor_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
         status_code: 0
         _links:
           _self: _self
@@ -1911,11 +1931,12 @@ components:
           height: height
           timestamp: 2000-01-23T04:56:07.000+00:00
         execution_result:
-          executor_metadata:
-            execution_result_id: null
-            executor_ids:
-            - null
-            - null
+          metadata:
+            executor_metadata:
+              execution_result_id: null
+              executor_ids:
+              - null
+              - null
           _links:
             _self: _self
           chunks:
@@ -2164,16 +2185,17 @@ components:
             $ref: "#/components/schemas/Chunk"
         previous_result_id:
           $ref: "#/components/schemas/Identifier"
-        executor_metadata:
-          $ref: "#/components/schemas/ExecutorMetadata"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
         _links:
           $ref: "#/components/schemas/Links"
       example:
-        executor_metadata:
-          execution_result_id: null
-          executor_ids:
-          - null
-          - null
+        metadata:
+          executor_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
         _links:
           _self: _self
         chunks:
@@ -2221,16 +2243,17 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Event"
-        executor_metadata:
-          $ref: "#/components/schemas/ExecutorMetadata"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
         _links:
           $ref: "#/components/schemas/Links"
       example:
-        executor_metadata:
-          execution_result_id: null
-          executor_ids:
-          - null
-          - null
+        metadata:
+          executor_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
         _links:
           _self: _self
         block_timestamp: 2000-01-23T04:56:07.000+00:00

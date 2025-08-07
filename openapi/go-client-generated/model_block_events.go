@@ -16,6 +16,6 @@ type BlockEvents struct {
 	BlockHeight string `json:"block_height,omitempty"`
 	BlockTimestamp time.Time `json:"block_timestamp,omitempty"`
 	Events []Event `json:"events,omitempty"`
-	ExecutorMetadata *ExecutorMetadata `json:"executor_metadata,omitempty"`
+	Metadata *Metadata `json:"metadata,omitempty"`
 	Links *Links `json:"_links,omitempty"`
 }

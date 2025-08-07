@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Events** | [**[]Event**](Event.md) |  | [default to null]
 **Chunks** | [**[]Chunk**](Chunk.md) |  | [optional] [default to null]
 **PreviousResultId** | **string** |  | [default to null]
-**ExecutorMetadata** | [***ExecutorMetadata**](ExecutorMetadata.md) |  | [optional] [default to null]
+**Metadata** | [***Metadata**](Metadata.md) |  | [optional] [default to null]
 **Links** | [***Links**](Links.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

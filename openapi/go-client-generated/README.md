@@ -63,6 +63,7 @@ Class | Method | HTTP request | Description
  - [HashingAlgorithm](docs/HashingAlgorithm.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [Links](docs/Links.md)
+ - [Metadata](docs/Metadata.md)
  - [ModelError](docs/ModelError.md)
  - [NetworkParameters](docs/NetworkParameters.md)
  - [NodeVersionInfo](docs/NodeVersionInfo.md)

@@ -738,8 +738,15 @@ components:
         type: boolean
       required: false
   schemas:
+    Metadata:
+      description: Contains data about the node's state at the time of the request.
+      type: object
+      properties:
+        executor_metadata:
+          $ref: '#/components/schemas/ExecutorMetadata'
     ExecutorMetadata:
       type: object
+      description: Contains data about the execution result used to serve the request.
       properties:
         execution_result_id:
           $ref: '#/components/schemas/Identifier'
@@ -771,8 +778,8 @@ components:
           additionalProperties:
             type: string
             format: byte
-        executor_metadata:
-          $ref: '#/components/schemas/ExecutorMetadata'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
         _expandable:
           type: object
           properties:
@@ -816,8 +823,8 @@ components:
         revoked:
           type: boolean
           description: Flag indicating whether the key is active or not.
-        executor_metadata:
-          $ref: '#/components/schemas/ExecutorMetadata'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
     SigningAlgorithm:
       type: string
       enum:
@@ -974,8 +981,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
-        executor_metadata:
-          $ref: '#/components/schemas/ExecutorMetadata'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
         _links:
           $ref: '#/components/schemas/Links'
     TransactionExecution:
@@ -1150,8 +1157,8 @@ components:
             $ref: '#/components/schemas/Chunk'
         previous_result_id:
           $ref: '#/components/schemas/Identifier'
-        executor_metadata:
-          $ref: '#/components/schemas/ExecutorMetadata'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
         _links:
           $ref: '#/components/schemas/Links'
     BlockEvents:
@@ -1168,8 +1175,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
-        executor_metadata:
-          $ref: '#/components/schemas/ExecutorMetadata'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
         _links:
           $ref: '#/components/schemas/Links'
     Event:
