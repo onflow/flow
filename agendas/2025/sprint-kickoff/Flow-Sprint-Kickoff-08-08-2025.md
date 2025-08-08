@@ -73,23 +73,44 @@ Forte Network upgrade (Spork) Fall 2025.
 
 # Working Group Updates
 
-### **Cadence and Virtual Machine** \[Bastian]
-Q2 2025 Cycle Objective(s):
+### **Cadence Language and Execution** \[Bastian]
 
-[Cadence Language](https://github.com/onflow/cadence/issues/3726)
+Q3 2025 Cycle Objective(s):
 
-[Cadence VM (execution environment)](https://github.com/onflow/flow-go/issues/6881)
+- [Cadence Language goals](https://github.com/onflow/cadence/issues/4057)
+- [Cadence Execution goals](https://github.com/onflow/flow-go/issues/7569)
 
 **Done last sprint**
 
-**Cadence Language**
+**Cadence Language** \[Bastian]
 
-- [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059)
+- Compiler:
+  - [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059)
+  - [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
+  - https://github.com/onflow/cadence/pull/4087
+  - https://github.com/onflow/cadence/pull/4118
+  - https://github.com/onflow/cadence/pull/4120
+  - https://github.com/onflow/cadence/pull/4121
+  - https://github.com/onflow/cadence/pull/4122
+  - https://github.com/onflow/cadence/pull/4125
+  - Can re-execute blocks without crashers, but execution state differences
+  - On halt, new priorities below
 
-- [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
+- [Fixed-point type improvements](https://github.com/onflow/flow-okrs/issues/142)
+  - Add `Fix128` using new library (https://github.com/onflow/fixed-point), for Tidal and DeFi Actions
+  - https://github.com/onflow/cadence/pull/4087
+  - Later: Add `UFix128`, replace `UFix64`/`Fix64` implementation
 
-- tech-debt removal
+- [Make Cadence development great with AIs](https://github.com/onflow/flow-okrs/issues/143)
+  - https://github.com/onflow/cadence/issues/4062
+  - https://github.com/onflow/cadence/pull/4126
+  - https://github.com/onflow/cadence/pull/4129
+  - https://github.com/onflow/cadence/pull/4128
+  - https://github.com/onflow/cadence/pull/4130
+  - https://github.com/onflow/cadence/pull/4132
+  - https://github.com/onflow/cadence/pull/4137
 
+- Security fix: https://github.com/onflow/cadence/pull/4134
 
 **Cadence Execution** \[Leo]
 
