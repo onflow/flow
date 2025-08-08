@@ -277,14 +277,22 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
-* React SDK
-
 * DeFi Actions / AI
-
+  * Created & tested 3 new DeFi Actions connectors required for demo
+    * Increment Fi Staking Rewards Source
+    * Increment Fi Staking Rewards Sink
+    * Increment Fi LP Token Swapper
+  * Completed the DeFi Actions restaking transaction output for demo
+  * Created first pass of context files for AI generation of demo transaction & demo scaffold
+  * Exposed emulator scheduled callbacks through CLI
 
 **This Sprint**
 
 * DeFi Actions / AI
+  * Deploy connectors & test restaking transaction on Mainnet
+  * Iterate on demo AI context files to improve quality & consistency of generated code
+  * Create scheduled callback restaking transaction for demo
+  * Continue work on AI benchmarking framework
 
 
 ---
