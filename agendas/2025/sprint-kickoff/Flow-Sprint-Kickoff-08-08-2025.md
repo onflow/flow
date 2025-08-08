@@ -198,6 +198,7 @@ Q3 Cycle Objective(s):
 * <ins>Data Availability</ins>
   - Optimistic Sync PR reviews
   - Completed Milestone 3 API design and issues.
+  - Initial Access API Error handling refactor ([PR 7106](https://github.com/onflow/flow-go/pull/7106))
   - KROK Team
     - Done:
       - [[Data Availability] Refactor execution state APIs into local and EN query modules #7547](https://github.com/onflow/flow-go/issues/7547)
