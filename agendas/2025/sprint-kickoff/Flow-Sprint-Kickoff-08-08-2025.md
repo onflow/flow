@@ -197,6 +197,7 @@ Q3 Cycle Objective(s):
 
 * <ins>Data Availability</ins>
   - Optimistic Sync PR reviews
+  - Completed Milestone 3 API design and issues.
   - KROK Team
     - Done:
       - [[Data Availability] Refactor execution state APIs into local and EN query modules #7547](https://github.com/onflow/flow-go/issues/7547)
@@ -246,6 +247,8 @@ Q3 Cycle Objective(s):
 
 * <ins>Data Availability:</ins>
   - PR Reviews
+  - Debug memory corruption [issue](https://github.com/onflow/flow-go/issues/7684)
+  - Milestone 2 Optimistic Sync: Continue work on result forest.
   - KROK Team:
     - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
     - [[Data Availability] Implement fork-aware Transaction Results Endpoints #7644](https://github.com/onflow/flow-go/issues/7644)
