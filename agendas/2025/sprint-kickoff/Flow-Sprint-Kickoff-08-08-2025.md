@@ -167,8 +167,20 @@ Q3 Cycle Objective(s):
   - Optimistic Sync PR reviews
   - KROK Team
     - Done:
+      - [[Data Availability] Refactor execution state APIs into local and EN query modules #7547](https://github.com/onflow/flow-go/issues/7547)
+      - [[Data Availability] Refactor scripts backend package #7577](https://github.com/onflow/flow-go/issues/7577)
+      - [[Data Availability] Refactor transactions backend package #7574](https://github.com/onflow/flow-go/issues/7574)
+      - [[Data Availability] Add functional tests for processing pipeline #7526](https://github.com/onflow/flow-go/issues/7526)
+      - [[Data Availability] Create module to get ExecutionResult for request criteria #7546](https://github.com/onflow/flow-go/issues/7546)
+      - [[Data Availability] Define storage layer api interface #7613](https://github.com/onflow/flow-go/issues/7613)
+      - [[Data Availability] Figure out where backend's script executor used and move it to appropriate package #7664](https://github.com/onflow/flow-go/issues/7664)
+      - [[Data Availability] post refactoring clean-up #7663](https://github.com/onflow/flow-go/issues/7663)
 
     - In Review (Working on review remarks):
+      - [[Data Availability] Add new execution state request and response params #7616](https://github.com/onflow/flow-go/issues/7616)
+    
+    - In Progress:
+      - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652) 
 
 
 * <ins>Malleability</ins>
@@ -177,10 +189,14 @@ Q3 Cycle Objective(s):
   * Updating and testing [Rosetta for malleability](https://github.com/onflow/rosetta/issues/80) changes.
   * KROK Team
     * Done:
+      * [[Malleability] Remaining TODOs and Cleanup #7311](https://github.com/onflow/flow-go/issues/7311)
+      * [[Bootstrapping] Spork root block view extends previous spork #6784](https://github.com/onflow/flow-go/issues/6784)
+      * [[Malleability Immutable] Enforce immutability for TransactionBody #7303](https://github.com/onflow/flow-go/issues/7303)
+      * [[Malleability Immutable] Enforce immutability for Transaction #7304](https://github.com/onflow/flow-go/issues/7304)
 
     * In Review:
-
-    * In Progress:
+      * [[Protocol KV Store] Update bootstrapping to support transferring KVStore from old network to new #5973](https://github.com/onflow/flow-go/issues/5973)
+      * [[Malleability] Remaining TODOs and Cleanup #7311](https://github.com/onflow/flow-go/issues/7311) (Low Priority task with renaming [PR #7637](https://github.com/onflow/flow-go/pull/7637))
 
 
 * <ins>Cryptography</ins>
@@ -198,14 +214,17 @@ Q3 Cycle Objective(s):
 
 * <ins>Data Availability:</ins>
   - PR Reviews
-  - KROK Team
+  - KROK Team:
+    - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
+    - [[Data Availability] Implement fork-aware Transaction Results Endpoints #7644](https://github.com/onflow/flow-go/issues/7644)
 
 
 * <ins>Malleability</ins>
   - Migrationnet testing malleability branch.
   - Merging malleability branch to master
   - Resolving merge conflicts with Pebble
-  - KROK Team
+  - KROK Team:
+    - Addressing review remarks from the previous sprint
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
