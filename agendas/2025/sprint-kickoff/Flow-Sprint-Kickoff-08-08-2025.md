@@ -73,23 +73,47 @@ Forte Network upgrade (Spork) Fall 2025.
 
 # Working Group Updates
 
-### **Cadence and Virtual Machine** \[Bastian]
-Q2 2025 Cycle Objective(s):
+### **Cadence Language and Execution** \[Bastian]
 
-[Cadence Language](https://github.com/onflow/cadence/issues/3726)
+Q3 2025 Cycle Objective(s):
 
-[Cadence VM (execution environment)](https://github.com/onflow/flow-go/issues/6881)
+- [Cadence Language goals](https://github.com/onflow/cadence/issues/4057)
+- [Cadence Execution goals](https://github.com/onflow/flow-go/issues/7569)
 
 **Done last sprint**
 
-**Cadence Language**
+**Cadence Language** \[Bastian]
 
-- [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059)
+- Compiler:
+  - [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059)
+  - [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
+  - [[Compiler] Attachments #3/3](https://github.com/onflow/cadence/pull/4111)
+  - [[Compiler] Fix optional chaining in compiler](https://github.com/onflow/cadence/pull/4118)
+  - [[Compiler] Improve naming and meter UUID field and value creation in VM](https://github.com/onflow/cadence/pull/4120)
+  - [[Compiler] Print stacktrace for VM errors](https://github.com/onflow/cadence/pull/4121)
+  - [[Compiler] Improve tracing in interpreter, add support for tracing to VM](https://github.com/onflow/cadence/pull/4122)
+  - [[Compiler] Import Aliasing](https://github.com/onflow/cadence/pull/4125)
+  - Can re-execute blocks without crashers, but execution state differences
+  - On halt, new priorities below
 
-- [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
+- [Fixed-point type improvements](https://github.com/onflow/flow-okrs/issues/142)
+  - Add `Fix128` using new library (https://github.com/onflow/fixed-point), for Tidal and DeFi Actions
+  - [[WIP] Add Fix128 type to Cadence](https://github.com/onflow/cadence/pull/4131)
+  - Later: Add `UFix128`, replace `UFix64`/`Fix64` implementation
 
-- tech-debt removal
+- [Make Cadence development great with AIs](https://github.com/onflow/flow-okrs/issues/143)
+  - [Improve Cadence Errors to Support LLM Efficiency](https://github.com/onflow/cadence/issues/4062)
+  - [[4062-part-3] Update Cadence Errors](https://github.com/onflow/cadence/pull/4126)
+  - [[4062-part-4] Update Cadence Errors](https://github.com/onflow/cadence/pull/4128)
+  - [Improve errors and suggested fixes, add tests](https://github.com/onflow/cadence/pull/4129)
+  - [Show migration note and documentation link in pretty error printer](https://github.com/onflow/cadence/pull/4130)
+  - [Validate documentation links of errors](https://github.com/onflow/cadence/pull/4132)
+  - [Improve errors](https://github.com/onflow/cadence/pull/4137)
+  - [[LS] Add documentation link as code description, and migration note](https://github.com/onflow/cadence-tools/pull/485)
+  - [[LS] Render unreachable code as unnecessary](https://github.com/onflow/cadence-tools/pull/486)
 
+- Security fixes
+  - [Fix conformance kind mismatch error reporting](https://github.com/onflow/cadence/pull/4134)
 
 **Cadence Execution** \[Leo]
 
@@ -119,8 +143,13 @@ Q2 2025 Cycle Objective(s):
 - Improvements:
     - [Give blocks a better chance to become sealed before calling `NotifyBlock`](https://github.com/onflow/flow-evm-gateway/pull/853)
     - [Improve performance of `BatchTxPool` for single-tx EOAs](https://github.com/onflow/flow-evm-gateway/pull/852)
-    - [Replace Geth fork with original Geth] (https://github.com/onflow/flow-go/pull/7676)
-
+    - [flow-go: Replace Geth fork with original Geth](https://github.com/onflow/flow-go/pull/7676)
+    - [Add reconnect logic to RPCEventSubscriber](https://github.com/onflow/flow-evm-gateway/pull/856)
+    - [Replace custom-defined FilterCriteria type with the relevant type from Geth](https://github.com/onflow/flow-evm-gateway/pull/849)
+    - [flow-evm-gateway: Replace Geth fork with original Geth](https://github.com/onflow/flow-evm-gateway/pull/859)
+- Chores:
+    - [Update onflow/go-ethereum to latest v1.16.2](https://github.com/onflow/flow-evm-gateway/pull/855)
+    - [Bump onflow/go-ethereum dependency to v1.16.2](https://github.com/onflow/flow-go/pull/7660)
 
 **This sprint**
 
@@ -133,7 +162,10 @@ Q2 2025 Cycle Objective(s):
     - Continue [Scheduled callbacks](https://github.com/onflow/flow-go/issues/7482).
 
 - EVM
-  - Continue EVM GW resilience improvements [1](https://github.com/onflow/flow-evm-gateway/issues/764), [2](https://github.com/onflow/flow-evm-gateway/issues/778)
+  - Continue [Improve resilience on connections with upstream ANs](https://github.com/onflow/flow-evm-gateway/issues/764)
+  - Continue [Integrate JSON-RPC API specification changes from Geth releases](https://github.com/onflow/flow-evm-gateway/issues/840)
+  - Continue [flow-go: Replace Geth fork with original Geth](https://github.com/onflow/flow-go/pull/7676)
+  - Continue [flow-evm-gateway: Replace Geth fork with original Geth](https://github.com/onflow/flow-evm-gateway/pull/859)
 
 **On Hold**
 - New Trie research
