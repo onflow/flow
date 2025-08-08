@@ -341,6 +341,10 @@ Cycle Objective(s):
   * Continue work on AI benchmarking framework
   * Document usage of scheduled callbacks in emulator on Developer Docs
   * Support Education Team in creating materials for third-party builders using DeFi Actions at hackathon
+  * Expose scheduled callbacks through `flow cadence test` CLI command
+
+* Misc
+  * Update Developer Tooling repos to use non-forked Geth dependency
 
 ---
 
