@@ -41,7 +41,7 @@
 ### Incidents
 
 1. Testnet and Mainnet: HCU on 8/6 and 8/7 respectively to roll out a Cadence update
-2. Testnet: 7/25, 9:54 AM to 10:05, Sealing halt due to a large block/transaction being processed.
+2. Testnet: 7/25, 9:54 AM to 10:05, Sealing halt due to a large transaction hitting a metering edge case.
 
 ### Key Release Dates & Breaking Changes
 
@@ -173,7 +173,8 @@ Q3 Cycle Objective(s):
 
 * <ins>Malleability</ins>
   * Malleability PR reviews
-  * Rosetta
+  * Wrote the implementation plan for extending immutable constructors to network and database boundary ([issue 7449](https://github.com/onflow/flow-go/issues/7449))
+  * Updating and testing [Rosetta for malleability](https://github.com/onflow/rosetta/issues/80) changes.
   * KROK Team
     * Done:
 
@@ -182,9 +183,11 @@ Q3 Cycle Objective(s):
     * In Progress:
 
 
-
 * <ins>Cryptography</ins>
   * Multi-SPoCK:
+    - Deep dive into updating simple-SPoCK security proof from the KOSK to the PoP assumption.
+      - Tried scenarios and constructions to use a BLS-SPoCK-PoP forger to solve co-DCDH, co-CDH, BLS-SPoCK-KOSK, BLS existential forgery
+      - Documented this work. Will be revisiting it later
 
 
 **This sprint**
@@ -198,19 +201,18 @@ Q3 Cycle Objective(s):
   - KROK Team
 
 
-
 * <ins>Malleability</ins>
-  - Continue PR review and support for current Immutability issues
-  - Rosetta
-    - Continue Rosetta testing
-    - [Implementing Malleability changes in Rosetta](https://github.com/onflow/rosetta/issues/80)
+  - Migrationnet testing malleability branch.
+  - Merging malleability branch to master
+  - Resolving merge conflicts with Pebble
   - KROK Team
 
 
-
+* <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
+  - Start the design.
 
 * <ins>Cryptography</ins>
-  - SPoCK: Continue on the tasks from last sprint (simple-SPoCK proof with PoP)
+  - SPoCK: continue with multi-SPoCK definitions using KOSK as key registration
 
 **On Hold**
 
@@ -324,6 +326,7 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 **Done last sprint**
 
 * Published Surge pricing FLIP
+* Internal discussion on Surge pricing effect on EVM.
 * Continue work on infused tokens
 
 **This sprint**
