@@ -87,30 +87,33 @@ Q3 2025 Cycle Objective(s):
 - Compiler:
   - [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059)
   - [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
-  - https://github.com/onflow/cadence/pull/4087
-  - https://github.com/onflow/cadence/pull/4118
-  - https://github.com/onflow/cadence/pull/4120
-  - https://github.com/onflow/cadence/pull/4121
-  - https://github.com/onflow/cadence/pull/4122
-  - https://github.com/onflow/cadence/pull/4125
+  - [[Compiler] Attachments #3/3](https://github.com/onflow/cadence/pull/4111)
+  - [[Compiler] Fix optional chaining in compiler](https://github.com/onflow/cadence/pull/4118)
+  - [[Compiler] Improve naming and meter UUID field and value creation in VM](https://github.com/onflow/cadence/pull/4120)
+  - [[Compiler] Print stacktrace for VM errors](https://github.com/onflow/cadence/pull/4121)
+  - [[Compiler] Improve tracing in interpreter, add support for tracing to VM](https://github.com/onflow/cadence/pull/4122)
+  - [[Compiler] Import Aliasing](https://github.com/onflow/cadence/pull/4125)
   - Can re-execute blocks without crashers, but execution state differences
   - On halt, new priorities below
 
 - [Fixed-point type improvements](https://github.com/onflow/flow-okrs/issues/142)
   - Add `Fix128` using new library (https://github.com/onflow/fixed-point), for Tidal and DeFi Actions
-  - https://github.com/onflow/cadence/pull/4087
+  - [[WIP] Add Fix128 type to Cadence](https://github.com/onflow/cadence/pull/4131)
   - Later: Add `UFix128`, replace `UFix64`/`Fix64` implementation
 
 - [Make Cadence development great with AIs](https://github.com/onflow/flow-okrs/issues/143)
-  - https://github.com/onflow/cadence/issues/4062
-  - https://github.com/onflow/cadence/pull/4126
-  - https://github.com/onflow/cadence/pull/4129
-  - https://github.com/onflow/cadence/pull/4128
-  - https://github.com/onflow/cadence/pull/4130
-  - https://github.com/onflow/cadence/pull/4132
-  - https://github.com/onflow/cadence/pull/4137
+  - [Improve Cadence Errors to Support LLM Efficiency](https://github.com/onflow/cadence/issues/4062)
+  - [[4062-part-3] Update Cadence Errors](https://github.com/onflow/cadence/pull/4126)
+  - [[4062-part-4] Update Cadence Errors](https://github.com/onflow/cadence/pull/4128)
+  - [Improve errors and suggested fixes, add tests](https://github.com/onflow/cadence/pull/4129)
+  - [Show migration note and documentation link in pretty error printer](https://github.com/onflow/cadence/pull/4130)
+  - [Validate documentation links of errors](https://github.com/onflow/cadence/pull/4132)
+  - [Improve errors](https://github.com/onflow/cadence/pull/4137)
+  - [[LS] Add documentation link as code description, and migration note](https://github.com/onflow/cadence-tools/pull/485)
+  - [[LS] Render unreachable code as unnecessary](https://github.com/onflow/cadence-tools/pull/486)
 
-- Security fix: https://github.com/onflow/cadence/pull/4134
+- Security fixes
+  - [Fix conformance kind mismatch error reporting](https://github.com/onflow/cadence/pull/4134)
 
 **Cadence Execution** \[Leo]
 
