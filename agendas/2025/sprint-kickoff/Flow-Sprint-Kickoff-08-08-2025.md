@@ -6,6 +6,7 @@
 * [EVM GW] Switched the Geth dependency in EVM GW from the forked version to the original version. EN, AN, VN updates coming soon.
 * [Data availability] Switched Testnet traffic to QuickNode nodes.
 * [Sceduled Callbacks] Managed to successfully run scheduled callbacks execution on localnet, which is a step closer to mainnet.
+* [Tidal] Completed first round of Mathematical Precision improvements
 
 ---
 
@@ -286,22 +287,32 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-
 #### Tidal:
+- New Tidal re-design completed this week
+- Completion of first round of math and precision enhancements
+- Started Tidal Protocol refactoring
 
 
 #### DeFi Actions:
 
+- DeFi Actions FLIP in review
+- Preparation to Open Source
+- Preparation for Audit starting next week
+- Deployment to Mainnet/Testnet
 
 
 **This sprint**
 
 #### Tidal:
 
+- Continue refactor / Polish
+- Continue integration work with KittyPunch
+
 
 #### DeFi Actions:
 
-
+- Assist Auditors
+- Assist Hackathon Demo
 
 ---
 
