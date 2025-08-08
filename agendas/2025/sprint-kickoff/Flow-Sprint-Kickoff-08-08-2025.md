@@ -119,8 +119,13 @@ Q2 2025 Cycle Objective(s):
 - Improvements:
     - [Give blocks a better chance to become sealed before calling `NotifyBlock`](https://github.com/onflow/flow-evm-gateway/pull/853)
     - [Improve performance of `BatchTxPool` for single-tx EOAs](https://github.com/onflow/flow-evm-gateway/pull/852)
-    - [Replace Geth fork with original Geth] (https://github.com/onflow/flow-go/pull/7676)
-
+    - [flow-go: Replace Geth fork with original Geth](https://github.com/onflow/flow-go/pull/7676)
+    - [Add reconnect logic to RPCEventSubscriber](https://github.com/onflow/flow-evm-gateway/pull/856)
+    - [Replace custom-defined FilterCriteria type with the relevant type from Geth](https://github.com/onflow/flow-evm-gateway/pull/849)
+    - [flow-evm-gateway: Replace Geth fork with original Geth](https://github.com/onflow/flow-evm-gateway/pull/859)
+- Chores:
+    - [Update onflow/go-ethereum to latest v1.16.2](https://github.com/onflow/flow-evm-gateway/pull/855)
+    - [Bump onflow/go-ethereum dependency to v1.16.2](https://github.com/onflow/flow-go/pull/7660)
 
 **This sprint**
 
@@ -133,7 +138,10 @@ Q2 2025 Cycle Objective(s):
     - Continue [Scheduled callbacks](https://github.com/onflow/flow-go/issues/7482).
 
 - EVM
-  - Continue EVM GW resilience improvements [1](https://github.com/onflow/flow-evm-gateway/issues/764), [2](https://github.com/onflow/flow-evm-gateway/issues/778)
+  - Continue [Improve resilience on connections with upstream ANs](https://github.com/onflow/flow-evm-gateway/issues/764)
+  - Continue [Integrate JSON-RPC API specification changes from Geth releases](https://github.com/onflow/flow-evm-gateway/issues/840)
+  - Continue [flow-go: Replace Geth fork with original Geth](https://github.com/onflow/flow-go/pull/7676)
+  - Continue [flow-evm-gateway: Replace Geth fork with original Geth](https://github.com/onflow/flow-evm-gateway/pull/859)
 
 **On Hold**
 - New Trie research
