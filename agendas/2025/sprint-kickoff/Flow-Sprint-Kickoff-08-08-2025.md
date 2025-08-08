@@ -189,11 +189,10 @@ Q3 Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Overload resilience</ins>
-  - Internal review for network benchmarking
-  - Identified a reliable leading indicator for network congestion.
   - Implemented and tested Collection size throttling mechanism.
-  - Implement service transaction prioritization mechanism
+  - Implemented a service transaction prioritization mechanism
   - Continue running more tests with different combination of load and collection throttling mechanism plus service transaction prioritization.
+  - Internal review for network benchmarking
 
 * <ins>Data Availability</ins>
   - Optimistic Sync PR reviews
