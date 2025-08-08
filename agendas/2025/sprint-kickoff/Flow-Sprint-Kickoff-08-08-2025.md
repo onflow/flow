@@ -340,7 +340,7 @@ Cycle Objective(s):
   * Create scheduled callback restaking transaction for demo
   * Continue work on AI benchmarking framework
   * Document usage of scheduled callbacks in emulator on Developer Docs
-
+  * Support Education Team in creating materials for third-party builders using DeFi Actions at hackathon
 
 ---
 
