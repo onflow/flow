@@ -325,6 +325,7 @@ Cycle Objective(s):
   * Iterate on demo AI context files to improve quality & consistency of generated code
   * Create scheduled callback restaking transaction for demo
   * Continue work on AI benchmarking framework
+  * Document usage of scheduled callbacks in emulator on Developer Docs
 
 
 ---
