@@ -91,7 +91,7 @@ Q2 2025 Cycle Objective(s):
 - tech-debt removal
 
 
-**Cadence Execution**
+**Cadence Execution** \[Leo]
 
 - Badger -> Pebble migration
     - [[Storage] Replace with lockctx Manager](https://github.com/onflow/flow-go/pull/7628)
@@ -133,7 +133,7 @@ Q2 2025 Cycle Objective(s):
     - Continue [Scheduled callbacks](https://github.com/onflow/flow-go/issues/7482).
 
 - EVM
-  - Continue EVM GW resilience improvements[1](https://github.com/onflow/flow-evm-gateway/issues/764), [2](https://github.com/onflow/flow-evm-gateway/issues/778)
+  - Continue EVM GW resilience improvements [1](https://github.com/onflow/flow-evm-gateway/issues/764), [2](https://github.com/onflow/flow-evm-gateway/issues/778)
 
 **On Hold**
 - New Trie research
@@ -157,7 +157,11 @@ Q3 Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Overload resilience</ins>
-
+  - Internal review for network benchmarking
+  - Identified a reliable leading indicator for network congestion.
+  - Implemented and tested Collection size throttling mechanism.
+  - Implement service transaction prioritization mechanism
+  - Continue running more tests with different combination of load and collection throttling mechanism plus service transaction prioritization.
 
 * <ins>Data Availability</ins>
   - Optimistic Sync PR reviews
@@ -186,8 +190,8 @@ Q3 Cycle Objective(s):
 **This sprint**
 
 * <ins>Overload resilience</ins>
-  - Continue network benchmarking
-  - Improve and test the collection size throttling implementation.
+  - Second round of internal review (today).
+  - Continue network benchmarking.
 
 * <ins>Data Availability:</ins>
   - PR Reviews
