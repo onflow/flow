@@ -349,13 +349,17 @@ Cycle Objective(s):
 **Cycle Objective(s):**
 
 KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 0.25 per week on a 4-week rolling average.
- - Current (July 25: 0.25/week -> 98% decrease in bugs since Jan/Feb!
+ - Current (Aug 8: 0.25/week -> 98% decrease in bugs since Jan/Feb!)
 
 **Done last sprint**
-
-
+- Completed initial demo of new send workflow within the product
+  - Consolodated codebase into new shared monorepo
+  - Using same core logic to power each platform
 
 **This sprint**
+- Ship send workflow updates across iOS/Android + finish and ship on Extension
+- Starting secure/full profile updates -> adding full seed phrase + EOA support to Flow Wallet
+
 
 
 ---
