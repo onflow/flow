@@ -345,10 +345,12 @@ message BlockResponse {
 
 message GetCollectionByIDRequest {
   bytes id = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message GetFullCollectionByIDRequest {
   bytes id = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message CollectionResponse {
@@ -365,6 +367,7 @@ message FullCollectionResponse {
 
 message SendTransactionRequest {
   entities.Transaction transaction = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message SendTransactionResponse {
@@ -377,6 +380,7 @@ message GetTransactionRequest {
   bytes block_id = 2;
   bytes collection_id = 3;
   entities.EventEncodingVersion event_encoding_version = 4;
+  entities.ExecutionStateQuery execution_state_query = 5;
 }
 
 message GetSystemTransactionRequest {
@@ -393,11 +397,13 @@ message GetTransactionByIndexRequest {
   bytes block_id = 1;
   uint32 index = 2;
   entities.EventEncodingVersion event_encoding_version = 3;
+  entities.ExecutionStateQuery execution_state_query = 4;
 }
 
 message GetTransactionsByBlockIDRequest {
   bytes block_id = 1;
   entities.EventEncodingVersion event_encoding_version = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message TransactionResultsResponse {
