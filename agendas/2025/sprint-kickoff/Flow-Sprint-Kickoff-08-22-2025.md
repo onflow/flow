@@ -135,16 +135,16 @@ Q3 2025 Cycle Objective(s):
 Q3 Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
 * Overload resilience  [IN PROGRESS]
-* Q3 Network Upgrade (Spork) [TODO]
+* Q3 Network Upgrade (Spork) [IN PROGRESS]
 * [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * SPoCK Research [IN PROGRESS]
 * Address data structure malleability risk [IN PROGRESS]
-* Collectors submit votes for root block for spork bootstrapping [TODO]
+* Collectors submit votes for root block for spork bootstrapping [IN PROGRESS]
 
 **Done last sprint**
 
 * <ins>Overload resilience</ins>
-
+  * Second round of internal review.
 
 * <ins>Data Availability</ins>
 
@@ -167,8 +167,7 @@ Q3 Cycle Objective(s):
 **This sprint**
 
 * <ins>Overload resilience</ins>
-  - Second round of internal review (today).
-  - Continue network benchmarking.
+  * Review and merge Collection Throttling [PR](https://github.com/onflow/flow-go/pull/7683)
 
 * <ins>Data Availability:</ins>
   - PR Reviews
@@ -291,10 +290,11 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 **Done last sprint**
 
 * Surge pricing FLIP marked as `Accepted`
+* Resumed working on the internal document for infused tokens
 
 **This sprint**
 
 * Testing Surge pricing on Testnet.
-* Continue work on infused tokens
+* Continue work on the internal document for infused tokens
 
 ---
