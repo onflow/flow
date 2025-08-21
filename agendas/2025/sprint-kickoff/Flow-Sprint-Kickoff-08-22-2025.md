@@ -43,7 +43,7 @@ N/A
 
 Forte Network upgrade (Spork) Fall 2025.
 - Testnet in **Sept, 17th (Wednesday)**
-- Mainnet in **Oct, 1st (Wednesday)**
+- Mainnet in **End of Oct**
 
 ---
 
