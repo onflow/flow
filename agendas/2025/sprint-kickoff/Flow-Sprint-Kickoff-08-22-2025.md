@@ -94,16 +94,24 @@ Q3 2025 Cycle Objective(s):
 
 - Badger -> Pebble migration
   - PR reviews.
-  - Continue testing on mainnet with one node of each type running Pebble.
+  - Continued migrating more nodes to Pebble. Now we have one node of each type on both mainnet and testnet running on Pebble.
+  - 3/7 PRs have been reviewed and merged to the feature branch.
 
 - TPS loader improvements - network stress testing
-
+    - Started working on measurment and FLIP
 
 - Sceduled Callbacks
 
 
 - Storage Key Deduplication
-
+    - Migration for Account Public Key Deduplication
+        - [Dry-runs to measure mainnet spork migration and deduplication migration times](https://github.com/onflow/flow-go/pull/7738#issuecomment-3207687160) using m1 and m3 vm on benchnet
+        - [Add public key deduplication migration program (PR #7738)](https://github.com/onflow/flow-go/pull/7738)
+    - Runtime Public Key Deduplication and Account Status Format v4
+        - [Add runtime public key deduplication (issue 7754)](https://github.com/onflow/flow-go/issues/7754)
+        - [Add support for account status format v4 (issue 7756)](https://github.com/onflow/flow-go/issues/7756)
+    - Internal
+        - Identified existing issue and the team gathered related data [flow-go-internal 7106](https://github.com/onflow/flow-go-internal/issues/7106)
 
 **Flow EVM**
 
@@ -118,6 +126,20 @@ Q3 2025 Cycle Objective(s):
 
 
 - Cadence Execution
+    - Continue Badger -> Pebble
+        - Complete all the 7 PRs review and merge them to the feature branch.
+        - Merging pebble and malleability feature branch, solve all the conflicts and getting it ready for main branch merge.
+        - Migrate 10-30% of nodes on testnet, and mainnet to pebble.
+
+    - Continue [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598) Finishing up measurements and FLIP
+
+    - Begin with the epic of [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571)
+
+    - Continue Migration for Account Public Key Deduplication
+        - continue. [Add public key deduplication migration (PR 7738)](https://github.com/onflow/flow-go/pull/7738)
+        - continue. [Add runtime public key deduplication (issue 7754)](https://github.com/onflow/flow-go/issues/7754)
+        - continue. [Add support for account status format v4 (issue 7756)](https://github.com/onflow/flow-go/issues/7756)
+        - Add fix for [flow-go-internal 7106](https://github.com/onflow/flow-go-internal/issues/7106)
 
   - Badger -> Pebble migration
     - Continue PR reviews.
