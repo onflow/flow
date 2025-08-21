@@ -93,7 +93,8 @@ Q3 2025 Cycle Objective(s):
 **Cadence Execution** \[Leo]
 
 - Badger -> Pebble migration
-
+  - PR reviews.
+  - Continue testing on mainnet with one node of each type running Pebble.
 
 - TPS loader improvements - network stress testing
 
@@ -118,6 +119,10 @@ Q3 2025 Cycle Objective(s):
 
 - Cadence Execution
 
+  - Badger -> Pebble migration
+    - Continue PR reviews.
+    - Continue testing on mainnet with more nodes of each type running Pebble.
+    - Merge the Malleability branch into Pebble branch.
 
 - EVM
 
