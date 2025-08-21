@@ -263,15 +263,29 @@ Cycle Objective(s):
 **Done Last Sprint**
 
 * DeFi Actions / AI
+  * Deployed connectors & test restaking transaction on Mainnet
+  * Iterated on demo AI context files to improve quality & consistency of generated code
+  * Created scheduled callback restaking transaction for demo
+  * Built AI benchmarking framework
+  * Documented usage of scheduled callbacks in emulator on Developer Docs
+  * Supported Education Team in creating materials for third-party builders using DeFi Actions at hackathon
+  * Exposed scheduled callbacks through `flow cadence test` CLI command
 
+* Misc
+  * Addressed hackathon documentation feedback by rewriting `flow.json` configuration docs
 
 **This Sprint**
 
-* DeFi Actions / AI
+* React SDK
+  * Build NFT hook for getting NFT metadata
+  * Build NFT component for getting NFT metadata
+  * Build NFT bridge from EVM to Cadence Hook
+  * Build FT bridge from EVM to Cadence Hook
+  * Enable CLI project creation from any directory and streamline getting started guide
 
-
-* Misc
-
+* Testnet <-> Mainnet
+  * Mock support for USDF on Testnet
+  * Integrate mock with tooling
 
 ---
 
