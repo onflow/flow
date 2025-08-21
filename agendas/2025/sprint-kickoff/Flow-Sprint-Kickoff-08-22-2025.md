@@ -116,6 +116,7 @@ Q3 2025 Cycle Objective(s):
 **Flow EVM**
 
 - Improvements:
+    - Fixed Gateway's connectivity issue related to event streaming. Confirmed the fix worked. https://github.com/onflow/flow-evm-gateway/issues/708
 
 - Chores:
 
@@ -147,6 +148,7 @@ Q3 2025 Cycle Objective(s):
     - Merge the Malleability branch into Pebble branch.
 
 - EVM
+  - Start working on the price surge issue https://github.com/onflow/flow-evm-gateway/issues/863
 
 
 **On Hold**
