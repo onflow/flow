@@ -52,16 +52,15 @@ Forte Network upgrade (Spork) Fall 2025.
 |                         | Application | Cadence | Governance | Protocol |  Total  |
 |:------------------------|:-----------:|:-------:|:----------:|:--------:|:-------:|
 | Drafted     |      9      |    6    |     0      |    10    | **25**  |
-| Proposed    |      1      |    2    |     4      |    0     |  **7**  |
-| Accepted    |      3      |    2    |     2      |    2     |  **9**  |
+| Proposed    |      1      |    3    |     4      |    0     |  **7**  |
+| Accepted    |      3      |    2    |     3      |    2     | **10**  |
 | Rejected    |      0      |    1    |     1      |    0     |  **2**  |
 | Implemented |      3      |    5    |     1      |    0     |  **9**  |
 | Released    |      4      |   34    |     9      |    7     | **54**  |
-| Total       |   **19**    | **50**  |   **17**   |  **19**  | **106** |
+| Total       |   **19**    | **50**  |   **17**   |  **19**  | **107** |
 
 #### New FLIPs
-1. [FLIP 336: Dynamic Transaction Fees](https://github.com/onflow/flips/pull/337)
-2. [FLIP 338: Flow Actions: Composable Standards for Protocols](https://github.com/onflow/flips/pull/339)
+1. [Add 128-bit fixed-point types to Cadence](https://github.com/onflow/flips/issues/341)
 
 ---
 
