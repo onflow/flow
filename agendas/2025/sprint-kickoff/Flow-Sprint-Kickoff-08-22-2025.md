@@ -394,16 +394,20 @@ Cycle Objective(s):
 
 **Cycle Objective(s):**
 
-KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 0.25 per week on a 4-week rolling average.
- - Current (Aug 8: 0.25/week -> 98% decrease in bugs since Jan/Feb!)
+Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 0.25 per week on a 4-week rolling average.
+ - Current (Aug 22: 0.25/week -> 98% decrease in bugs since Jan/Feb!)
 
 **Done last sprint**
 
+- Completed initiaial implementation of new send workflow using React Native, enabling users to more fluidly manage assets between their accounts on Cadence and EVM.
+- Integrated a new cross-platform UI library, Tamagui, enabling us to write UI once and use it across our three platforms, iOS, Android, Web.
 
 **This sprint**
 
-
-
+- Ship the new send workflow across all three platforms.
+- In parallel:
+  - Continue work on multi-account per profile support, now built with React Native.
+  - Start work on Full/Secure profile support -> Enabling users to opt-in to a seed-phrase native profile with full EOA support.
 
 ---
 
