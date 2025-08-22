@@ -24,6 +24,6 @@ message Metadata {
   // Height of the latest block who's execution state data is fully indexed
   uint64 highest_indexed_height = 4;
   // Metadata about the execution result used to serve the request.
-  ExecutorMetadata execution_state_query = 5;
+  ExecutorMetadata executor_metadata = 5;
 }
 
