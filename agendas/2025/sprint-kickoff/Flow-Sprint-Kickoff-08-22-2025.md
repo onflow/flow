@@ -411,17 +411,37 @@ Reduce the number of critical (potential loss of assets / P0) and high priority 
 
 **Done last sprint**
 
-**Tidal Observability**
+**Tidal**
+- [Adjust Tidal's Synthetic Checks](https://github.com/onflow/ff-sre-infrastructure/issues/705)
+- [Create Runbook for Synthetic Monitoring Alerts](https://github.com/onflow/ff-sre-infrastructure/issues/695)
 
+**Observability**
+- [Configure additional tracing flags for ENs](https://github.com/onflow/ff-sre-infrastructure/issues/711)
+- [Enable tracing on Migration Mainnet](https://github.com/onflow/ff-sre-infrastructure/issues/671)
+- [Enable tracing on Testnet](https://github.com/onflow/ff-sre-infrastructure/issues/670)
+- [Enable tracing on Migration Testnet](https://github.com/onflow/ff-sre-infrastructure/issues/669)
+- [Update cloud-init to support injection of tempo secrets](https://github.com/onflow/ff-sre-infrastructure/issues/667)
+- [Create & store secrets for sending traces to Tempo](https://github.com/onflow/ff-sre-infrastructure/issues/665)
+- [Update Ansible env config to point to local alloy instance](https://github.com/onflow/ff-sre-infrastructure/issues/668)
+- [Update Alloy Configuration to Support Tracing](https://github.com/onflow/ff-sre-infrastructure/issues/664)
 
-**Node Hosting**
-
-
-**Security**
-
+**Spork Prep**
+- [Update transit tooling to support temp folder for root block generation](https://github.com/onflow/ff-sre-infrastructure/issues/703)
+- [Create bucket for testing root block voting](https://github.com/onflow/ff-sre-infrastructure/issues/701)
+- [Automate root block voting for SNs](https://github.com/onflow/ff-sre-infrastructure/issues/700)
+- [Align bootstrap script with transit tooling](https://github.com/onflow/ff-sre-infrastructure/issues/699)
+- [Create bootstrap script for generating & storing bootstrap info](https://github.com/onflow/ff-sre-infrastructure/issues/682)
+- [Create script for generating & storing Ansible SSH keys](https://github.com/onflow/ff-sre-infrastructure/issues/681)
+- [Update DL Ansible setup to be configurable](https://github.com/onflow/ff-sre-infrastructure/issues/680)
+- [Migrate DL node setup to Debian 12](https://github.com/onflow/ff-sre-infrastructure/issues/632)
+- [Create Infrastructure for ops network](https://github.com/onflow/ff-sre-infrastructure/issues/630)
 
 **Support**
-
+- [Increase Batch Job Instance VM size](https://github.com/onflow/ff-sre-infrastructure/issues/723)
+- [Make Agentspace available to the entire team](https://github.com/onflow/ff-sre-infrastructure/issues/692)
+- [Add Gemini Licenses for Team members](https://github.com/onflow/ff-sre-infrastructure/issues/698)
+- [Setup DockerHub secrets](https://github.com/onflow/ff-sre-infrastructure/issues/696)
+- [Disable Gemini Trial](https://github.com/onflow/ff-sre-infrastructure/issues/693)
 
 ---
 
