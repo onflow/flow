@@ -121,7 +121,7 @@ Q3 2025 Cycle Objective(s):
 - Performance optimization: Metering refactor
   - [Refactor memory metering](https://github.com/onflow/cadence/pull/4166)
   - [Refactor computation metering](https://github.com/onflow/cadence/pull/4167)
- 
+
 - Updated downstream dependencies (SDK, Emulator, Cadence tools, etc.)
   - [Switch from forked to upstream go-ethereum](https://github.com/onflow/flow-go-sdk/pull/893)
   - [Update to Cadence v1.7.0-preview.1](https://github.com/onflow/flow-emulator/pull/839)
@@ -182,13 +182,13 @@ Q3 2025 Cycle Objective(s):
 - Cadence Language
   - Review and merge PRs, code freeze
   - Approve FLIP
-  - Back to compiler: Investigate execution state differences 
+  - Back to compiler: Investigate execution state differences
 
 - Cadence Execution
     - Continue Badger -> Pebble
-        - Complete all the 7 PRs review and merge them to the feature branch.
-        - Merging pebble and malleability feature branch, solve all the conflicts and getting it ready for main branch merge.
-        - Migrate 10-30% of nodes on testnet, and mainnet to pebble.
+        - Continue PR reviews.
+        - Continue testing on mainnet with more nodes of each type running Pebble.
+        - Merge the Malleability branch into Pebble branch.
 
     - Continue [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598) Finishing up measurements and FLIP
 
@@ -199,11 +199,6 @@ Q3 2025 Cycle Objective(s):
         - continue. [Add runtime public key deduplication (issue 7754)](https://github.com/onflow/flow-go/issues/7754)
         - continue. [Add support for account status format v4 (issue 7756)](https://github.com/onflow/flow-go/issues/7756)
         - Add fix for [flow-go-internal 7106](https://github.com/onflow/flow-go-internal/issues/7106)
-
-  - Badger -> Pebble migration
-    - Continue PR reviews.
-    - Continue testing on mainnet with more nodes of each type running Pebble.
-    - Merge the Malleability branch into Pebble branch.
 
 - EVM
   - Start working on the price surge issue https://github.com/onflow/flow-evm-gateway/issues/863
@@ -250,10 +245,10 @@ Q3 Cycle Objective(s):
     - [[DataAvailability] Implement fork-aware Account Endpoints #7650](https://github.com/onflow/flow-go/issues/7650)
   * Milestones status:
     - milestone 1: completed
-    - milestone 2: 
+    - milestone 2:
       - Epic 7180: in progress: 4 done, 3 in progress out of 11
       - Epic 7181: completed
-    - milestone 3: 
+    - milestone 3:
       - Epic 7182: 6/14 done, 0 in progress
       - Epic 7610: 2/7 done, 0 in progress
       - Epic 7615: 3 in progress, 3 in review, out of 12
