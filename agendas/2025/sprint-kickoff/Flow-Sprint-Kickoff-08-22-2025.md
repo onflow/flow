@@ -1,7 +1,7 @@
 # Overview
 
  ### Team Wins 🎉
-
+- [Network Resilience] Concluded the testing for network resilience and identified the leading indicator for network overload and the technical lever to recover from it.
 
 ---
 
@@ -43,7 +43,7 @@ N/A
 
 Forte Network upgrade (Spork) Fall 2025.
 - Testnet in **Sept, 17th (Wednesday)**
-- Mainnet in **End of Oct**
+- ⚠️ Mainnet in **End of Oct**
 
 ---
 
@@ -139,16 +139,16 @@ Q3 2025 Cycle Objective(s):
 
 **Cadence Execution** \[Leo]
 
+**Done last sprint**
+
 - Badger -> Pebble migration
   - PR reviews.
   - Continued migrating more nodes to Pebble. Now we have one node of each type on both mainnet and testnet running on Pebble.
   - 3/7 PRs have been reviewed and merged to the feature branch.
 
-- TPS loader improvements - network stress testing
-    - Started working on measurment and FLIP
-
-- Sceduled Callbacks
-
+- [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598)
+  - TPS loader improvements - network stress testing
+      - Started working on measurement and FLIP
 
 - Storage Key Deduplication
     - Migration for Account Public Key Deduplication
@@ -160,13 +160,22 @@ Q3 2025 Cycle Objective(s):
     - Internal
         - Identified existing issue and the team gathered related data [flow-go-internal 7106](https://github.com/onflow/flow-go-internal/issues/7106)
 
+- Scheduled Callbacks
+  - PR review of the FlowCallbackScheduler contract
+    - https://github.com/onflow/flow-core-contracts/pull/513
+    - https://github.com/onflow/flow-core-contracts/pull/489
+    - https://github.com/onflow/flow-core-contracts/pull/509
+  - Writing test for the contract changes.
+  - PR review of the flow-go changes
+    - https://github.com/onflow/flow-go/pull/7579
+    - https://github.com/onflow/flow-go/pull/7672
+    - https://github.com/onflow/flow-go/pull/7673
+
 **Flow EVM**
 
 - Improvements:
     - Fixed Gateway's connectivity issue related to event streaming. Confirmed the fix worked. https://github.com/onflow/flow-evm-gateway/issues/708
-
-- Chores:
-
+      - This also resolved issue reported by Okex
 
 **This sprint**
 
@@ -183,7 +192,7 @@ Q3 2025 Cycle Objective(s):
 
     - Continue [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598) Finishing up measurements and FLIP
 
-    - Begin with the epic of [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571)
+    - Begin the epic of [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571)
 
     - Continue Migration for Account Public Key Deduplication
         - continue. [Add public key deduplication migration (PR 7738)](https://github.com/onflow/flow-go/pull/7738)
@@ -199,6 +208,8 @@ Q3 2025 Cycle Objective(s):
 - EVM
   - Start working on the price surge issue https://github.com/onflow/flow-evm-gateway/issues/863
 
+- Scheduled Callbacks
+  - Continue core contract and flow-go PR reviews.
 
 **On Hold**
 - New Trie research
@@ -230,13 +241,16 @@ Q3 Cycle Objective(s):
 
 * <ins>Malleability</ins>
   * Malleability PR reviews
+  * Testing on migration testnet
+    * Fixes to spork utilities
   * KROK Team
     * Done:
 
 
     * In Review:
 
-
+* <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
+  * Completed initial design - [Design doc](https://www.notion.so/flowfoundation/Collection-node-decentralization-Bootstrapping-24f1aee12324801b9780ee0abbbc09d0)
 
 * <ins>Cryptography</ins>
   * Multi-SPoCK:
@@ -252,13 +266,15 @@ Q3 Cycle Objective(s):
   - KROK Team:
 
 
-
 * <ins>Malleability</ins>
-
+  - Continue testing on migration testnet
+  - Merge the malleability branch to master
   - KROK Team:
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
+  - Breaking down the design into issues.
+  - Working through the issues.
 
 
 * <ins>Cryptography</ins>
