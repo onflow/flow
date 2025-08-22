@@ -11,7 +11,7 @@ message ExecutionStateQuery {
   // Minimum number of execution receipts for the execution result.
   uint64 agreeing_executors_count = 1;
   // Set of execution node IDs, one of which must have produced the execution result.
-  repeated bytes required_executor_id = 2;
+  repeated bytes required_executor_ids = 2;
   // Whether or not to include ExecutorMetadata in the response.
   bool include_executor_metadata = 3;
 }
