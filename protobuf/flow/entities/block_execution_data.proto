@@ -8,44 +8,51 @@ option java_package = "org.onflow.protobuf.entities";
 import "flow/entities/event.proto";
 import "flow/entities/transaction.proto";
 
-// BlockExecutionData represents the collection of data produced while execiting the block.
+// BlockExecutionData represents the collection of data produced while execiting
+// the block.
 message BlockExecutionData {
   // Block ID of the block that was executed.
   bytes block_id = 1;
 
   // Ordered list of ChunkExecutionData produced while executing the block.
   //
-  // Note: there will be one ChunkExecutionData per collection in the block, plus one for the
-  // service chunk. The service chunk is executed last and is always the last chunk in the list.
+  // Note: there will be one ChunkExecutionData per collection in the block,
+  // plus one for the service chunk. The service chunk is executed last and is
+  // always the last chunk in the list.
   repeated ChunkExecutionData chunk_execution_data = 2;
 }
 
-// ChunkExecutionData represents the collection of data produced while executing a chunk.
+// ChunkExecutionData represents the collection of data produced while executing
+// a chunk.
 message ChunkExecutionData {
-  // Ordered list of transactions included in the collection that was executed in the chunk.
+  // Ordered list of transactions included in the collection that was executed
+  // in the chunk.
   ExecutionDataCollection collection = 1;
 
   // Events emitted by transactions in the collection.
   //
-  // Note: events listed in the last ChunkExecutionData in the BlockExecutionData were emitted by
-  // the service transaction. Some, but not all, of these events are service events.
+  // Note: events listed in the last ChunkExecutionData in the
+  // BlockExecutionData were emitted by the service transaction. Some, but not
+  // all, of these events are service events.
   repeated Event events = 2;
 
   // TrieUpdate produced by executing the collection.
   //
-  // TrieUpdates contain a list of registers that were modified during chunk execution. The value
-  // included is the new value of the register.
+  // TrieUpdates contain a list of registers that were modified during chunk
+  // execution. The value included is the new value of the register.
   TrieUpdate trieUpdate = 3;
 
   // Transaction results produced by executing the collection.
   //
-  // Note: these are not the same type of results returned by other RPCs. These results are sepcific
-  // to execution data. The most notable difference is they only include a boolean value to indicate
-  // whether or not an error was encountered during execution, not the error itself.
+  // Note: these are not the same type of results returned by other RPCs. These
+  // results are sepcific to execution data. The most notable difference is they
+  // only include a boolean value to indicate whether or not an error was
+  // encountered during execution, not the error itself.
   repeated ExecutionDataTransactionResult transaction_results = 4;
 }
 
-// ExecutionDataCollection represents the collection of transactions that were executed within a chunk.
+// ExecutionDataCollection represents the collection of transactions that were
+// executed within a chunk.
 //
 // Note: this is not the same type as the entities.Collection.
 message ExecutionDataCollection {
@@ -55,22 +62,24 @@ message ExecutionDataCollection {
 
 // TrieUpdate produced by executing the collection.
 //
-// TrieUpdates contain a list of registers that were modified during chunk execution. The value
-// included is the new value of the register.
+// TrieUpdates contain a list of registers that were modified during chunk
+// execution. The value included is the new value of the register.
 message TrieUpdate {
   // RootHash is the root hash of the trie before the update is applied.
   bytes root_hash = 1;
 
   // List of register paths updated.
   //
-  // Note: paths and payloads map 1:1 with eachother. i.e. for each element in path, the value in
-  // payloads at the same index is the value of the register at that path.
+  // Note: paths and payloads map 1:1 with eachother. i.e. for each element in
+  // path, the value in payloads at the same index is the value of the register
+  // at that path.
   repeated bytes paths = 2;
 
   // List of register values updated.
   //
-  // Note: paths and payloads map 1:1 with eachother. i.e. for each element in path, the value in
-  // payloads at the same index is the value of the register at that path.
+  // Note: paths and payloads map 1:1 with eachother. i.e. for each element in
+  // path, the value in payloads at the same index is the value of the register
+  // at that path.
   repeated Payload payloads = 3;
 }
 
@@ -93,12 +102,14 @@ message KeyPart {
   bytes value = 2;
 }
 
-// ExecutionDataTransactionResult represents the result of executing a transaction.
+// ExecutionDataTransactionResult represents the result of executing a
+// transaction.
 message ExecutionDataTransactionResult {
   // Transaction ID of the transaction that was executed.
   bytes transaction_id = 1;
 
-  // Boolean indicating whether or not the transaction's execution failed with an error.
+  // Boolean indicating whether or not the transaction's execution failed with
+  // an error.
   bool failed = 2;
 
   // Amount of computation used during execution.
