@@ -236,8 +236,27 @@ Q3 Cycle Objective(s):
   * Second round of internal review.
 
 * <ins>Data Availability</ins>
-
-
+* KROK Team
+  * Done:
+    - [[Data Availability] Add new execution state request and response params #7616](https://github.com/onflow/flow-go/issues/7616)
+  * In Review:
+    - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
+    - [[DataAvailability] Implement fork-aware Streaming Events Endpoints #7657](https://github.com/onflow/flow-go/issues/7657)
+    - [[DataAvailability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
+    - [[Data Availability] Add execution state query and executor metadata field to proto models #7759](https://github.com/onflow/flow-go/issues/7759)
+  * In Progress:
+    - [[Data Availability] Implement fork-aware Transaction Results Endpoints #7644](https://github.com/onflow/flow-go/issues/7644)
+    - [[DataAvailability] Implement fork-aware System Transaction Endpoints #7648](https://github.com/onflow/flow-go/issues/7648)
+    - [[DataAvailability] Implement fork-aware Account Endpoints #7650](https://github.com/onflow/flow-go/issues/7650)
+  * Milestones status:
+    - milestone 1: completed
+    - milestone 2: 
+      - Epic 7180: in progress: 4 done, 3 in progress out of 11
+      - Epic 7181: completed
+    - milestone 3: 
+      - Epic 7182: 6/14 done, 0 in progress
+      - Epic 7610: 2/7 done, 0 in progress
+      - Epic 7615: 3 in progress, 3 in review, out of 12
 
 * <ins>Malleability</ins>
   * Malleability PR reviews
@@ -245,9 +264,17 @@ Q3 Cycle Objective(s):
     * Fixes to spork utilities
   * KROK Team
     * Done:
-
-
+      - [[Protocol KV Store] Update bootstrapping to support transferring KVStore from old network to new #5973](https://github.com/onflow/flow-go/issues/5973)
+      - [[Malleability Immutable] Extend InterfaceFromMessageCode, define UntrustedMessage interface #7696](https://github.com/onflow/flow-go/issues/7696)
     * In Review:
+      - [[Immutable Models M2] messages.BlockResponse: message/internal split + validation #7709](https://github.com/onflow/flow-go/issues/7709)
+      - [[Immutable Models M2] messages.ClusterBlockResponse: message/internal split + validation #7703](https://github.com/onflow/flow-go/issues/7703)
+      - [[Immutable Models M2] messages.ClusterBlockProposal: message/internal split + validation #7701](https://github.com/onflow/flow-go/issues/7701)
+      - [[Immutable Models M2] messages.BlockProposal: message/internal split + validation #7698](https://github.com/onflow/flow-go/issues/7698)
+    * In Progress:
+      - [[Immutable Models M2] messages.ApprovalRequest: message/internal split + validation #7717](https://github.com/onflow/flow-go/issues/7717)
+      - [[Immutable Models M2] messages.ApprovalResponse: message/internal split + validation #7718](https://github.com/onflow/flow-go/issues/7718)
+      - [[Immutable Models M2] flow.CollectionGuarantee: message/internal split + validation #7710](https://github.com/onflow/flow-go/issues/7710)
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
   * Completed initial design - [Design doc](https://www.notion.so/flowfoundation/Collection-node-decentralization-Bootstrapping-24f1aee12324801b9780ee0abbbc09d0)
@@ -267,12 +294,16 @@ Q3 Cycle Objective(s):
 * <ins>Data Availability:</ins>
   - PR Reviews
   - KROK Team:
+    - Work on PR Reviews
+    - Continue working on milestone 3 API changes for caching layer ( more complex part for this epic should be done, next tasks would be more straightforward )
 
 
 * <ins>Malleability</ins>
   - Continue testing on migration testnet
   - Merge the malleability branch to master
   - KROK Team:
+    - Work on PR Reviews
+    - Work on new types from [Immutable Models M2] message/internal split + validation
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
