@@ -2,6 +2,8 @@
 
  ### Team Wins 🎉
 - [Network Resilience] Concluded the testing for network resilience and identified the leading indicator for network overload and the technical lever to recover from it.
+- [AI] AI result evaluation frame work (internal) MVP done
+- [Tidal] Refactor phase 1 (pure function refactor) complete
 
 ---
 
@@ -333,23 +335,26 @@ Cycle Objective(s):
 **Done last sprint**
 
 #### Tidal:
-
+- Pure function PR merged
+- Liquidation value logic PR code complete
 
 
 #### DeFi Actions:
+- Audit ongoing
 
-
-
+#### Other
+- Layer Zero (Solana Bridge side) issues resolved this week
 
 **This sprint**
 
 #### Tidal:
-
+- Continue integrations, and finalize Uniswap v3 (Kitty Punch) connector
+- Closed beta gating/authentication logic
 
 
 
 #### DeFi Actions:
-
+- Complete audit and evaluate possible changes needed
 
 
 ---
