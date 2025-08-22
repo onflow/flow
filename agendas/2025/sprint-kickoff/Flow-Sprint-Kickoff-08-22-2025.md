@@ -362,11 +362,11 @@ Cycle Objective(s):
 * DeFi Actions / AI
   * Deployed connectors & test restaking transaction on Mainnet
   * Iterated on demo AI context files to improve quality & consistency of generated code
-  * Created scheduled callback restaking transaction for demo
   * Built AI benchmarking framework
   * Documented usage of scheduled callbacks in emulator on Developer Docs
   * Supported Education Team in creating materials for third-party builders using DeFi Actions at hackathon
-  * Exposed scheduled callbacks through `flow cadence test` CLI command
+  * Created Scheduled Callbacks scaffold repo with example implementations and optimized for AI development
+  * Created Flow actions scaffold repo with example implementations and optimized for AI development
 
 * Misc
   * Addressed hackathon documentation feedback by rewriting `flow.json` configuration docs
