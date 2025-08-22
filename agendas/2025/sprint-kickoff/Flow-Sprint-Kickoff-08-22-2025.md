@@ -231,6 +231,7 @@ Q3 Cycle Objective(s):
   * Second round of internal review.
 
 * <ins>Data Availability</ins>
+* PR reviews
 * KROK Team
   * Done:
     - [[Data Availability] Add new execution state request and response params #7616](https://github.com/onflow/flow-go/issues/7616)
