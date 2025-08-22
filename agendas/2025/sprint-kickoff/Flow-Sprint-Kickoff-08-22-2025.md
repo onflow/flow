@@ -289,6 +289,8 @@ Q3 Cycle Objective(s):
 
 * <ins>Data Availability:</ins>
   - PR Reviews
+  - Continue to debug memory corruption [issue](https://github.com/onflow/flow-go/issues/7684)
+  - Milestone 2 Optimistic Sync: Continue work on result forest.
   - KROK Team:
     - Work on PR Reviews
     - Continue working on milestone 3 API changes for caching layer ( more complex part for this epic should be done, next tasks would be more straightforward )
