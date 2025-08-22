@@ -254,7 +254,10 @@ Q3 Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   * Multi-SPoCK:
-
+    - finished documenting what was done so far in simple SPoCK, specifically the the attempts to prove SPoCK-Knowledge under the PoP assumption (for a later revisit)
+    - worked on defining the multi-SPoCK scheme (following [Bellare's](https://cseweb.ucsd.edu/~mihir/papers/multisignatures.pdf) definitions of Multi-Signature)
+    - SPoCK Batch verification and proof aggregation of distinct messages (WIP)
+    - worked on defining the BLS-multi-SPoCK scheme (a construction of multi-SPoCK)
 
 **This sprint**
 
@@ -278,6 +281,8 @@ Q3 Cycle Objective(s):
 
 
 * <ins>Cryptography</ins>
+  * Continue working on Spock aggregation
+    * Next are the security games of multi-SPoCK (necessary to state the security definition and then security proofs)
 
 
 **On Hold**
