@@ -171,7 +171,9 @@ Q3 2025 Cycle Objective(s):
 **This sprint**
 
 - Cadence Language
-
+  - Review and merge PRs, code freeze
+  - Approve FLIP
+  - Back to compiler: Investigate execution state differences 
 
 - Cadence Execution
     - Continue Badger -> Pebble
