@@ -79,16 +79,63 @@ Q3 2025 Cycle Objective(s):
 **Cadence Language** \[Bastian]
 
 - Compiler:
-
+  - [[Compiler] Import Aliasing](https://github.com/onflow/cadence/pull/4125)
+  - [[Compiler] Attachments #1/3](https://github.com/onflow/cadence/pull/4052)
+  - [[Compiler] Attachments #2/3](https://github.com/onflow/cadence/pull/4087)
+  - [[Compiler] Attachments #3/3](https://github.com/onflow/cadence/pull/4111)
 
 - [Fixed-point type improvements](https://github.com/onflow/flow-okrs/issues/142)
-
+  - [Add more tests for Fix128 type/value](https://github.com/onflow/cadence/pull/4140)
+  - [Add UFix128 type to Cadence](https://github.com/onflow/cadence/pull/4147)
+  - [Improve fixedpoint conversions](https://github.com/onflow/cadence/pull/4151)
+  - [Test least-significant decimal point truncation](https://github.com/onflow/cadence/pull/4155)
+  - [[Compiler] Support Fix128 and UFix128 types in compiler](https://github.com/onflow/cadence/pull/4164)
+  - [Add Fix128 and UFix128 types to Cadence](https://github.com/onflow/cadence/pull/4131)
+  - [Add Fix128 and UFix128 types to CCF spec](https://github.com/onflow/ccf/pull/8)
+  - [Add constructor for Fix128 and UFix128 types](https://github.com/onflow/fixed-point/pull/1)
+  - [Add 128-bit fixed-point types to Cadence](https://github.com/onflow/flips/issues/341)
 
 - [Make Cadence development great with AIs](https://github.com/onflow/flow-okrs/issues/143)
+  - [[4062-part-4] Update Cadence Errors](https://github.com/onflow/cadence/pull/4128)
+  - [Improve errors and suggested fixes, add tests](https://github.com/onflow/cadence/pull/4129)
+  - [Show migration note and documentation link in pretty error printer](https://github.com/onflow/cadence/pull/4130)
+  - [Improve errors](https://github.com/onflow/cadence/pull/4137)
+  - [Improve type parsing errors](https://github.com/onflow/cadence/pull/4141)
+  - [Improve comment and statement parsing errors](https://github.com/onflow/cadence/pull/4142)
+  - [Improve parsing errors](https://github.com/onflow/cadence/pull/4143)
+  - [Improve sema errors](https://github.com/onflow/cadence/pull/4144)
+  - [Improve declaration parsing errors](https://github.com/onflow/cadence/pull/4146)
+  - [Improve statement parsing errors](https://github.com/onflow/cadence/pull/4148)
+  - [Improve parsing errors](https://github.com/onflow/cadence/pull/4149)
+  - [Improve expression parsing errors ](https://github.com/onflow/cadence/pull/4150)
+  - [Add suggested fixes to errors](https://github.com/onflow/cadence/pull/4157)
+  - [Add suggested fixes to errors](https://github.com/onflow/cadence/pull/4158)
+  - [Add and improve suggested fixes](https://github.com/onflow/cadence/pull/4159)
+  - [Simplify errors for pub access modifier](https://github.com/onflow/cadence/pull/4160)
+  - [Improve insertion positions of suggested fixes](https://github.com/onflow/cadence/pull/4161)
+  - [Improve error messages](https://github.com/onflow/cadence/pull/4163)
+  - [Add suggested fixes for sema errors](https://github.com/onflow/cadence/pull/4165)
+  - [[LS] Add documentation link as code description, and migration note](https://github.com/onflow/cadence-tools/pull/485)
+  - [Add missing information](https://github.com/onflow/cadence-lang.org/pull/255)
 
+- Performance optimization: Metering refactor
+  - [Refactor memory metering](https://github.com/onflow/cadence/pull/4166)
+  - [Refactor computation metering](https://github.com/onflow/cadence/pull/4167)
+ 
+- Updated downstream dependencies (SDK, Emulator, Cadence tools, etc.)
+  - [Switch from forked to upstream go-ethereum](https://github.com/onflow/flow-go-sdk/pull/893)
+  - [Update to Cadence v1.7.0-preview.1](https://github.com/onflow/flow-emulator/pull/839)
+  - [Update to Flow Go SDK v1.7.0 and latest flow-go](https://github.com/onflow/flow-emulator/pull/840)
+  - [[lint] Update to Cadence v1.7.0-preview.1](https://github.com/onflow/cadence-tools/pull/487)
+  - [[test] Update to Cadence v1.7.0-preview.1](https://github.com/onflow/cadence-tools/pull/488)
+  - [[languageserver] Update to Cadence v1.7.0-preview.1](https://github.com/onflow/cadence-tools/pull/489)
+  - [Update to Cadence v1.7.0-preview.1](https://github.com/onflow/rosetta/pull/87)
+  - [Update to Cadence v1.7.0-preview.1](https://github.com/onflow/flixkit-go/pull/93)
 
-- Security fixes
-
+- Tooling
+  - [Add a tool which allows applying changes to a Go expression](https://github.com/onflow/cadence/pull/4145)
+  - [Improve release note generation](https://github.com/onflow/cadence/pull/4154)
+  - [Add Rosetta to the config of the update tool](https://github.com/onflow/cadence/pull/4156)
 
 **Cadence Execution** \[Leo]
 
