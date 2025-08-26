@@ -20,16 +20,14 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// BlockExecutionData represents the collection of data produced while execiting
-// the block.
+// BlockExecutionData represents the collection of data produced while execiting the block.
 type BlockExecutionData struct {
 	// Block ID of the block that was executed.
 	BlockId []byte `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
 	// Ordered list of ChunkExecutionData produced while executing the block.
 	//
-	// Note: there will be one ChunkExecutionData per collection in the block,
-	// plus one for the service chunk. The service chunk is executed last and is
-	// always the last chunk in the list.
+	// Note: there will be one ChunkExecutionData per collection in the block, plus one for the
+	// service chunk. The service chunk is executed last and is always the last chunk in the list.
 	ChunkExecutionData   []*ChunkExecutionData `protobuf:"bytes,2,rep,name=chunk_execution_data,json=chunkExecutionData,proto3" json:"chunk_execution_data,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
@@ -75,29 +73,25 @@ func (m *BlockExecutionData) GetChunkExecutionData() []*ChunkExecutionData {
 	return nil
 }
 
-// ChunkExecutionData represents the collection of data produced while executing
-// a chunk.
+// ChunkExecutionData represents the collection of data produced while executing a chunk.
 type ChunkExecutionData struct {
-	// Ordered list of transactions included in the collection that was executed
-	// in the chunk.
+	// Ordered list of transactions included in the collection that was executed in the chunk.
 	Collection *ExecutionDataCollection `protobuf:"bytes,1,opt,name=collection,proto3" json:"collection,omitempty"`
 	// Events emitted by transactions in the collection.
 	//
-	// Note: events listed in the last ChunkExecutionData in the
-	// BlockExecutionData were emitted by the service transaction. Some, but not
-	// all, of these events are service events.
+	// Note: events listed in the last ChunkExecutionData in the BlockExecutionData were emitted by
+	// the service transaction. Some, but not all, of these events are service events.
 	Events []*Event `protobuf:"bytes,2,rep,name=events,proto3" json:"events,omitempty"`
 	// TrieUpdate produced by executing the collection.
 	//
-	// TrieUpdates contain a list of registers that were modified during chunk
-	// execution. The value included is the new value of the register.
+	// TrieUpdates contain a list of registers that were modified during chunk execution. The value
+	// included is the new value of the register.
 	TrieUpdate *TrieUpdate `protobuf:"bytes,3,opt,name=trieUpdate,proto3" json:"trieUpdate,omitempty"`
 	// Transaction results produced by executing the collection.
 	//
-	// Note: these are not the same type of results returned by other RPCs. These
-	// results are sepcific to execution data. The most notable difference is they
-	// only include a boolean value to indicate whether or not an error was
-	// encountered during execution, not the error itself.
+	// Note: these are not the same type of results returned by other RPCs. These results are sepcific
+	// to execution data. The most notable difference is they only include a boolean value to indicate
+	// whether or not an error was encountered during execution, not the error itself.
 	TransactionResults   []*ExecutionDataTransactionResult `protobuf:"bytes,4,rep,name=transaction_results,json=transactionResults,proto3" json:"transaction_results,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                          `json:"-"`
 	XXX_unrecognized     []byte                            `json:"-"`
@@ -157,8 +151,7 @@ func (m *ChunkExecutionData) GetTransactionResults() []*ExecutionDataTransaction
 	return nil
 }
 
-// ExecutionDataCollection represents the collection of transactions that were
-// executed within a chunk.
+// ExecutionDataCollection represents the collection of transactions that were executed within a chunk.
 //
 // Note: this is not the same type as the entities.Collection.
 type ExecutionDataCollection struct {
@@ -203,22 +196,20 @@ func (m *ExecutionDataCollection) GetTransactions() []*Transaction {
 
 // TrieUpdate produced by executing the collection.
 //
-// TrieUpdates contain a list of registers that were modified during chunk
-// execution. The value included is the new value of the register.
+// TrieUpdates contain a list of registers that were modified during chunk execution. The value
+// included is the new value of the register.
 type TrieUpdate struct {
 	// RootHash is the root hash of the trie before the update is applied.
 	RootHash []byte `protobuf:"bytes,1,opt,name=root_hash,json=rootHash,proto3" json:"root_hash,omitempty"`
 	// List of register paths updated.
 	//
-	// Note: paths and payloads map 1:1 with eachother. i.e. for each element in
-	// path, the value in payloads at the same index is the value of the register
-	// at that path.
+	// Note: paths and payloads map 1:1 with eachother. i.e. for each element in path, the value in
+	// payloads at the same index is the value of the register at that path.
 	Paths [][]byte `protobuf:"bytes,2,rep,name=paths,proto3" json:"paths,omitempty"`
 	// List of register values updated.
 	//
-	// Note: paths and payloads map 1:1 with eachother. i.e. for each element in
-	// path, the value in payloads at the same index is the value of the register
-	// at that path.
+	// Note: paths and payloads map 1:1 with eachother. i.e. for each element in path, the value in
+	// payloads at the same index is the value of the register at that path.
 	Payloads             []*Payload `protobuf:"bytes,3,rep,name=payloads,proto3" json:"payloads,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
@@ -372,13 +363,11 @@ func (m *KeyPart) GetValue() []byte {
 	return nil
 }
 
-// ExecutionDataTransactionResult represents the result of executing a
-// transaction.
+// ExecutionDataTransactionResult represents the result of executing a transaction.
 type ExecutionDataTransactionResult struct {
 	// Transaction ID of the transaction that was executed.
 	TransactionId []byte `protobuf:"bytes,1,opt,name=transaction_id,json=transactionId,proto3" json:"transaction_id,omitempty"`
-	// Boolean indicating whether or not the transaction's execution failed with
-	// an error.
+	// Boolean indicating whether or not the transaction's execution failed with an error.
 	Failed bool `protobuf:"varint,2,opt,name=failed,proto3" json:"failed,omitempty"`
 	// Amount of computation used during execution.
 	ComputationUsed      uint64   `protobuf:"varint,3,opt,name=computation_used,json=computationUsed,proto3" json:"computation_used,omitempty"`
