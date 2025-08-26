@@ -14,7 +14,8 @@ message BlockHeader {
   google.protobuf.Timestamp timestamp = 4;
   bytes payload_hash = 5;
   uint64 view = 6;
-  repeated bytes parent_voter_ids = 7; // deprecated!! value will be empty. replaced by parent_vote_indices
+  repeated bytes parent_voter_ids =
+      7;  // deprecated!! value will be empty. replaced by parent_vote_indices
   bytes parent_voter_sig_data = 8;
   bytes proposer_id = 9;
   bytes proposer_sig_data = 10;
