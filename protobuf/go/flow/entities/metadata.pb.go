@@ -20,7 +20,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// ExecutorMetadata contains data about the execution result used to serve the request.
+// ExecutorMetadata contains data about the execution result used to serve the
+// request.
 type ExecutorMetadata struct {
 	// ID of the ExecutionResult used to serve the request
 	ExecutionResultId []byte `protobuf:"bytes,1,opt,name=execution_result_id,json=executionResultId,proto3" json:"execution_result_id,omitempty"`

@@ -92,15 +92,18 @@ func (m *ExecutionResult) GetExecutionDataId() []byte {
 }
 
 type Chunk struct {
-	CollectionIndex      uint32   `protobuf:"varint,1,opt,name=CollectionIndex,proto3" json:"CollectionIndex,omitempty"`
-	StartState           []byte   `protobuf:"bytes,2,opt,name=start_state,json=startState,proto3" json:"start_state,omitempty"`
-	EventCollection      []byte   `protobuf:"bytes,3,opt,name=event_collection,json=eventCollection,proto3" json:"event_collection,omitempty"`
-	BlockId              []byte   `protobuf:"bytes,4,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
-	TotalComputationUsed uint64   `protobuf:"varint,5,opt,name=total_computation_used,json=totalComputationUsed,proto3" json:"total_computation_used,omitempty"`
-	NumberOfTransactions uint32   `protobuf:"varint,6,opt,name=number_of_transactions,json=numberOfTransactions,proto3" json:"number_of_transactions,omitempty"`
-	Index                uint64   `protobuf:"varint,7,opt,name=index,proto3" json:"index,omitempty"`
-	EndState             []byte   `protobuf:"bytes,8,opt,name=end_state,json=endState,proto3" json:"end_state,omitempty"`
-	ExecutionDataId      []byte   `protobuf:"bytes,9,opt,name=execution_data_id,json=executionDataId,proto3" json:"execution_data_id,omitempty"`
+	CollectionIndex      uint32 `protobuf:"varint,1,opt,name=CollectionIndex,proto3" json:"CollectionIndex,omitempty"`
+	StartState           []byte `protobuf:"bytes,2,opt,name=start_state,json=startState,proto3" json:"start_state,omitempty"`
+	EventCollection      []byte `protobuf:"bytes,3,opt,name=event_collection,json=eventCollection,proto3" json:"event_collection,omitempty"`
+	BlockId              []byte `protobuf:"bytes,4,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
+	TotalComputationUsed uint64 `protobuf:"varint,5,opt,name=total_computation_used,json=totalComputationUsed,proto3" json:"total_computation_used,omitempty"`
+	NumberOfTransactions uint32 `protobuf:"varint,6,opt,name=number_of_transactions,json=numberOfTransactions,proto3" json:"number_of_transactions,omitempty"`
+	Index                uint64 `protobuf:"varint,7,opt,name=index,proto3" json:"index,omitempty"`
+	EndState             []byte `protobuf:"bytes,8,opt,name=end_state,json=endState,proto3" json:"end_state,omitempty"`
+	ExecutionDataId      []byte `protobuf:"bytes,9,opt,name=execution_data_id,json=executionDataId,proto3" json:"execution_data_id,omitempty"`
+	// use. This representation has less surface for byzantine nodes to
+	// create data inconsistencies compared to the `execution_data_id`
+	// being included at the ExecutionResult's root level.
 	StateDeltaCommitment []byte   `protobuf:"bytes,10,opt,name=state_delta_commitment,json=stateDeltaCommitment,proto3" json:"state_delta_commitment,omitempty"`
 	ServiceEventCount    uint32   `protobuf:"varint,11,opt,name=service_event_count,json=serviceEventCount,proto3" json:"service_event_count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`

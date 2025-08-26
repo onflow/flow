@@ -265,12 +265,18 @@ message GetExecutionDataByBlockIDRequest {
   // 1. CCF
   // 2. JSON-CDC
   entities.EventEncodingVersion event_encoding_version = 2;
+
+  // Criteria for selecting which executors to use when fetching data.
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 // The response for GetExecutionDataByBlockID
 message GetExecutionDataByBlockIDResponse {
   // BlockExecutionData for the block.
   entities.BlockExecutionData block_execution_data = 1;
+
+  // Metadata about the execution result that was used to produce this response.
+  entities.ExecutorMetadata executor_metadata = 2;
 }
 
 // The request for SubscribeExecutionData
@@ -292,6 +298,9 @@ message SubscribeExecutionDataRequest {
   // 1. CCF
   // 2. JSON-CDC
   entities.EventEncodingVersion event_encoding_version = 3;
+
+  // Criteria for selecting which executors to use when fetching data.
+  entities.ExecutionStateQuery execution_state_query = 4;
 }
 
 // The response for SubscribeExecutionData
@@ -305,6 +314,9 @@ message SubscribeExecutionDataResponse {
 
   // Timestamp from the block containing the execution data.
   google.protobuf.Timestamp block_timestamp = 3;
+
+  // Metadata about the execution result that was used to produce this response.
+  entities.ExecutorMetadata executor_metadata = 4;
 }
 
 // The request for SubscribeExecutionDataFromStartBlockIDRequest
@@ -317,6 +329,9 @@ message SubscribeExecutionDataFromStartBlockIDRequest {
   // 1. CCF
   // 2. JSON-CDC
   entities.EventEncodingVersion event_encoding_version = 2;
+
+  // Criteria for selecting which executors to use when fetching data.
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 // The request for SubscribeExecutionDataFromStartBlockHeightRequest
@@ -329,6 +344,9 @@ message SubscribeExecutionDataFromStartBlockHeightRequest {
   // 1. CCF
   // 2. JSON-CDC
   entities.EventEncodingVersion event_encoding_version = 2;
+
+  // Criteria for selecting which executors to use when fetching data.
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 // The request for SubscribeExecutionDataFromLatestRequest
@@ -338,6 +356,9 @@ message SubscribeExecutionDataFromLatestRequest {
   // 1. CCF
   // 2. JSON-CDC
   entities.EventEncodingVersion event_encoding_version = 1;
+
+  // Criteria for selecting which executors to use when fetching data.
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 // The request for SubscribeEvents
@@ -536,6 +557,9 @@ message GetRegisterValuesRequest {
 
   // Register IDs of the Ledger.RegisterID format with an owner and key.
   repeated entities.RegisterID register_ids = 2;
+
+  // Criteria for selecting which executors to use when fetching data.
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 // response for GetRegisterValues
@@ -543,6 +567,9 @@ message GetRegisterValuesResponse {
 
   // raw register values at the given height.
   repeated bytes values = 1;
+
+  // Metadata about the execution result that was used to produce this response.
+  entities.ExecutorMetadata executor_metadata = 2;
 }
 
 // The request for SubscribeAccountStatusesFromStartBlockID
