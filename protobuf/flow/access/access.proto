@@ -380,10 +380,12 @@ message GetTransactionRequest {
 }
 
 message GetSystemTransactionRequest {
+  bytes id = 2;
   bytes block_id = 1;
 }
 
 message GetSystemTransactionResultRequest {
+  bytes id = 4;
   bytes block_id = 1;
   entities.EventEncodingVersion event_encoding_version = 2;
   entities.ExecutionStateQuery execution_state_query = 3;
