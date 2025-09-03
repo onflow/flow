@@ -2,6 +2,7 @@
 
 ### Team Wins 🎉
 
+- All core malleability changes are now complete and ready to be rolled out as part of the spork.
 
 ---
 
