@@ -380,13 +380,27 @@ message GetTransactionRequest {
 }
 
 message GetSystemTransactionRequest {
+  // BlockID of the block that contains the system transaction.
   bytes block_id = 1;
+
+  // ID of the system transaction. [optional]
+  // If unset, the last system transaction is returned.
+  bytes id = 2;
 }
 
 message GetSystemTransactionResultRequest {
+  // BlockID of the block that contains the system transaction.
   bytes block_id = 1;
+
+  // Desired event payload encoding.
   entities.EventEncodingVersion event_encoding_version = 2;
+
+  // Execution state query parameters used for unsealed blocks. [optional]
   entities.ExecutionStateQuery execution_state_query = 3;
+
+  // ID of the system transaction. [optional]
+  // If unset, the result of the last system transaction is returned.
+  bytes id = 4;
 }
 
 message GetTransactionByIndexRequest {
