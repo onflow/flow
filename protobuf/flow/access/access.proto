@@ -380,8 +380,12 @@ message GetTransactionRequest {
 }
 
 message GetSystemTransactionRequest {
-  bytes id = 2;
+  // BlockID of the block that contains the system transaction.
   bytes block_id = 1;
+
+  // ID of the system transaction. [optional]
+  // If unset, the last system transaction is returned.
+  bytes id = 2;
 }
 
 message GetSystemTransactionResultRequest {
