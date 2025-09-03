@@ -10,7 +10,7 @@ message ExecutorMetadata {
   // ID of the ExecutionResult used to serve the request
   bytes execution_result_id = 1;
   // Node IDs of Execution nodes that produced the result
-  repeated bytes executor_id = 2;
+  repeated bytes executor_ids = 2;
 }
 
 // Metadata contains data about the node's state at the time of the request.
