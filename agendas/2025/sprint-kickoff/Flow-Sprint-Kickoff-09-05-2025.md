@@ -358,7 +358,7 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 ---
 
-### **Infra** \[JP / Manny]
+### **Infra** \[Manny]
 
 **Done last sprint**
 
