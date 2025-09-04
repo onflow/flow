@@ -146,7 +146,7 @@ Q3 2025 Cycle Objective(s):
 - [Public key de-duplication](https://github.com/onflow/flow-go/issues/7573)
     - [Add account public key deduplication migration](https://github.com/onflow/flow-go/pull/7738)
 - Metering improvement: [Refactor and cleanup FVM metering](https://github.com/onflow/flow-go/pull/7810)
-Bugfix: 
+Bugfix:
     - [Revert "Remove EFM backward compatibility logic for `DGKIndexMap`"](https://github.com/onflow/flow-go/pull/7809)
     - [Fix localnet startup](https://github.com/onflow/flow-go/pull/7779)
     - [Fix localnet bootstrapping](https://github.com/onflow/flow-go/pull/7788)
@@ -296,15 +296,41 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
-* DeFi Actions / AI
+* React SDK
+  * Built a NFT hook for getting NFT metadata
+  * Built a NFT bridge from EVM to Cadence Hook
+  * Built a FT bridge from EVM to Cadence Hook
 
+* CLI Improvements
+  * Enabled CLI project creation from any directory
+  * Replaced old prompting library in CLI with bubbletea
+  * CLI styling updates to give it a refreshed look
+  * Rewrote `generate` command docs
+  * Improved developer and AI-agent assistance in deploy errors
+
+* Scheduled Callbacks
+  * Built a CronJob contract for reuse
+
+* Testnet <-> Mainnet
+  * Mock support for USDF on Testnet
 
 **This Sprint**
 
-* DeFi Actions / AI
+* React SDK
+  * Building an NFT Card component
+  * Building a component to send Fungible Tokens (w/ Lost & Found integration)
+  * Building a marketing/landing page
 
+* CLI Improvements
+  * Integrating Flow Actions into `flow init`
+  * Integrating Flow Actions into Dependency Manager
+  * Rewriting more docs sections
 
-* Misc
+* Scheduled Callbacks
+  * Generating a default SC project from `flow init` if selected
+
+* Testnet <-> Mainnet
+  * Integrating testnet mocking into tooling
 
 
 ---
