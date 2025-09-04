@@ -204,7 +204,7 @@ Q3 Cycle Objective(s):
 * [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * SPoCK Research [IN PROGRESS]
 * Address data structure malleability risk [IN PROGRESS]
-* Collectors submit votes for root block for spork bootstrapping [TODO]
+* Collectors submit votes for root block for spork bootstrapping [IN PROGRESS]
 
 **Done last sprint**
 
@@ -215,41 +215,70 @@ Q3 Cycle Objective(s):
 * <ins>Data Availability</ins>
 
 
-
 * <ins>Malleability</ins>
   * Malleability PR reviews
   * KROK Team
     * Done:
-
+      - [[Immutable Models M2] messages.ClusterBlockProposal: message/internal split + validation #7701](https://github.com/onflow/flow-go/issues/7701)
+      - [[Immutable Models M2] messages.BlockProposal: message/internal split + validation #7698](https://github.com/onflow/flow-go/issues/7698)
+      - [[Immutable Models M2] messages.BlockResponse: message/internal split + validation #7709](https://github.com/onflow/flow-go/issues/7709)
+      - [[Immutable Models M2] messages.ClusterBlockResponse: message/internal split + validation #7703](https://github.com/onflow/flow-go/issues/7703)
+      - [[Immutable Models M2] flow.CollectionGuarantee: message/internal split + validation #7710](https://github.com/onflow/flow-go/issues/7710)
+      - [[Immutable Models M2] messages.BatchRequest: message/internal split + validation #7708](https://github.com/onflow/flow-go/issues/7708)
+      - [[Immutable Models M2] messages.SyncRequest: message/internal split + validation #7705](https://github.com/onflow/flow-go/issues/7705)
+      - [[Immutable Models M2] messages.SyncResponse: message/internal split + validation #7706](https://github.com/onflow/flow-go/issues/7706)
 
     * In Review:
-
-
+      - [[Immutable Models M2] messages.ChunkDataRequest: message/internal split + validation #7715](https://github.com/onflow/flow-go/issues/7715)
+      - [[Immutable Models M2] messages.ChunkDataResponse: message/internal split + validation #7716](https://github.com/onflow/flow-go/issues/7716)
+      - [[Immutable Models M2] messages.RangeRequest: message/internal split + validation #7707](https://github.com/onflow/flow-go/issues/7707)
+      - [[Immutable Models M2] messages.TimeoutObject: message/internal split + validation #7700](https://github.com/onflow/flow-go/issues/7700)
+      - [[Immutable Models M2] messages.ClusterTimeoutObject: message/internal split + validation #7704](https://github.com/onflow/flow-go/issues/7704)
+    
+    * In Progress:
+      - [[Immutable Models M2] flow.ExecutionReceipt: message/internal split + validation #7713](https://github.com/onflow/flow-go/issues/7713)
+      - [[Immutable Models M2] messages.DKGMessage: message/internal split + validation #7721](https://github.com/onflow/flow-go/issues/7721)
 
 * <ins>Cryptography</ins>
+  * Passkeys:
+    - Update integration tests and merge access API changes
+    - PR review
+  * Security report about integer casting: analysis and minor update
   * Multi-SPoCK:
+    - iterations on the security games of multi-SPoCK
+    - security of multi-BLS-SPoCK implementation: wrote 2 proofs for key-forgery and knowledge forgery under KOSK
+    - possible definition of a batch SPoCK verification (optional so will keep it aside for now)
+    - minor progress on SPoCK aggregation (for distinct secrets)
+    - setting up OverLeaf for paper editing
 
+* <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
+  - Design walk through during the core protocol WG call.
 
 **This sprint**
 
 * <ins>Overload resilience</ins>
+  - Document how to use or adjust the collection throttling mechanism during times of overload.
 
 
 * <ins>Data Availability:</ins>
   - PR Reviews
   - KROK Team:
 
-
-
+  
 * <ins>Malleability</ins>
-
+  - PR reviews
   - KROK Team:
+    - Address review remarks from previous sprint
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
-
+  - Split design into multiple issues and work through some of those issues.
 
 * <ins>Cryptography</ins>
+  * SPoCK:
+    - more on PoP-based proofs for multi-SPoCK
+    - more on SPoCK aggregation with distinct secrets: including getting back to Boneh-Drijvers-Neven paper
+    - start editing paper using OverLeaf
 
 
 **On Hold**
