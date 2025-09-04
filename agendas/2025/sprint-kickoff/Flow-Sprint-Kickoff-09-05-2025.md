@@ -2,7 +2,11 @@
 
 ### Team Wins 🎉
 
-- All core malleability changes are now complete and ready to be rolled out as part of the spork.
+* All core malleability changes are now complete and ready to be rolled out as part of the spork.
+* Flip to [add 128-bit fixed-point types to Cadence](https://github.com/onflow/flips/pull/342) was approved & implementation completed & merged
+* All protocol changes for scheduled callbacks are merged
+* Completed Cadence changes to make it easier for LLMs to build with Cadence
+* Completed metering optimization changes across Cadence & FVM
 
 ---
 
@@ -77,50 +81,108 @@ Q3 2025 Cycle Objective(s):
 
 **Done last sprint**
 
-**Cadence Language** \[Bastian]
+**Cadence Language**
 
-- Compiler:
+- FLIP: [341: Add 128-bit fixed-point types to Cadence](https://github.com/onflow/flips/pull/342)
+- [Improve Cadence Errors to Support LLM Efficiency](https://github.com/onflow/cadence/issues/4062)
+    - [Improve error messages](https://github.com/onflow/cadence/pull/4163)
+    - [Add suggested fixes for sema errors](https://github.com/onflow/cadence/pull/4165)
+    - [Add suggested fix for duplicate conformance error](https://github.com/onflow/cadence/pull/4201)
+    - [Add missing information.](https://github.com/onflow/cadence-lang.org/pull/255)
+- [Add 128-bit wide decimal fixed-point types](https://github.com/onflow/cadence/issues/484)
+    - [Handle external overflow/underflow errors from library](https://github.com/onflow/cadence/pull/4170)
+    - [Update to latest fixed-point version](https://github.com/onflow/cadence/pull/4194)
+    - [Add `Fix128` and `UFix128` types to Cadence](https://github.com/onflow/cadence/pull/4131)
+    - [Bump fixed-point version to `v0.1.1`](https://github.com/onflow/cadence/pull/4196)
+- [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059)
+    - Fixed couple of root-causes that produce different execution result between interpreter and compiler+VM
+        - [[Compiler] Improve tracing in VM](https://github.com/onflow/cadence/pull/4175)
+        - [[Compiler] Do not transfer and convert moved value](https://github.com/onflow/cadence/pull/4193)
+        - [[Compiler] Attachments #2/3](https://github.com/onflow/cadence/pull/4087)
+- [Remove support for account storage format V1](https://github.com/onflow/cadence/pull/4086)
+- [Metering optimization](https://github.com/onflow/cadence/issues/4058)
+    - [Refactor memory metering](https://github.com/onflow/cadence/pull/4166)
+    - [Refactor computation metering](https://github.com/onflow/cadence/pull/4167)
+- [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
+    - Tech-debt:
+        - [Make tracing enabled a build time flag](https://github.com/onflow/cadence/pull/4187)
+        - [[Compiler] Move empty initializer and enum lookup function creation from compiler into desugaring.](https://github.com/onflow/cadence/pull/4185)
+        - [[Compiler] Fix enums](https://github.com/onflow/cadence/pull/4189)
+        - [[Compiler] Split VM Typeloader into separate dedicated methods.](https://github.com/onflow/cadence/pull/4192)
+- New feature: [[Interpreter] Import Aliasing](https://github.com/onflow/cadence/pull/4033)
+- Fixed-point library:
+    - [Introduce dedicated error types for different errors](https://github.com/onflow/fixed-point/pull/5)
+- bugs
+    - [Pretty printing crashing on incomplete AST nodes](https://github.com/onflow/cadence/issues/4171)
+        - [Handle partial AST nodes when pretty printing – Part 2](https://github.com/onflow/cadence/pull/4176)
+        - [Handle partial AST nodes when pretty printing](https://github.com/onflow/cadence/pull/4173)
+        - [Handle partial AST nodes when pretty printing – Part 3](https://github.com/onflow/cadence/pull/4178)
+        - [Handle partial AST nodes when pretty printing – Part 4](https://github.com/onflow/cadence/pull/4179)
+        - [Fix spacing in pretty printed AST nodes](https://github.com/onflow/cadence/pull/4180)
+    - [Use truncation instead of rounding for `big.Int` division](https://github.com/onflow/cadence/pull/4184)
+- Minor Improvement
+    - [Return non-pointer error types as non-pointer values](https://github.com/onflow/cadence/pull/4182)
+- chores
+    - [Bump atree version to v0.10.1](https://github.com/onflow/cadence/pull/4168)
+    - [Update dependencies](https://github.com/onflow/cadence/pull/4169)
+    - [Update to Cadence v1.7.0-preview.1](https://github.com/onflow/flow-cli/pull/2018)
 
-
-- [Fixed-point type improvements](https://github.com/onflow/flow-okrs/issues/142)
-
-
-- [Make Cadence development great with AIs](https://github.com/onflow/flow-okrs/issues/143)
-
-
-- Security fixes
-
-
-**Cadence Execution** \[Leo]
-
-- Badger -> Pebble migration
-
-
-- TPS loader improvements - network stress testing
-
-
-- Scheduled Callbacks
-
-
-- Storage Key Deduplication
-
+**Cadence Execution**
+- [Scheduled Callbacks](https://github.com/onflow/flow-go/issues/7482)
+    - [[Scheduled Callbacks] Integrate callback scheduler contract](https://github.com/onflow/flow-go/pull/7579)
+    - [[Scheduled Callbacks] Verification](https://github.com/onflow/flow-go/pull/7673)
+    - [[Access] Add Access API methods to get all system collection transactions](https://github.com/onflow/flow-go/issues/7784)
+        - [[Scheduled Callbacks] Add optional system transaction ID argument](https://github.com/onflow/flow/pull/1627)
+    - [[Scheduled Callbacks] E2E Tests](https://github.com/onflow/flow-go/pull/7672)
+- Badger -> Pebble
+    - [[Util] Update Util to support both badger and pebble based database](https://github.com/onflow/flow-go/pull/7469)
+    - [[Storage] Collection Cluster State](https://github.com/onflow/flow-go/pull/7452)
+    - [[Chunk Data Pack Pruner] Add block view index](https://github.com/onflow/flow-go/pull/6933)
+    - [[Feature] Storage Refactor to use Pebble DB as backend](https://github.com/onflow/flow-go/pull/7262)
+    - [[Storing] Refactor Storing Collections](https://github.com/onflow/flow-go/pull/7736)
+    - [[Testing] Refactor testing lock manager usage](https://github.com/onflow/flow-go/pull/7773)
+    - [[Storage] Adding more consistency check in storage operation](https://github.com/onflow/flow-go/pull/7741)
+    - [[v0.42.4] Revert remove efm backward compatibility for feature pebble branch](https://github.com/onflow/flow-go/pull/7808)
+- [Public key de-duplication](https://github.com/onflow/flow-go/issues/7573)
+    - [Add account public key deduplication migration](https://github.com/onflow/flow-go/pull/7738)
+- Metering improvement: [Refactor and cleanup FVM metering](https://github.com/onflow/flow-go/pull/7810)
+Bugfix: 
+    - [Revert "Remove EFM backward compatibility logic for `DGKIndexMap`"](https://github.com/onflow/flow-go/pull/7809)
+    - [Fix localnet startup](https://github.com/onflow/flow-go/pull/7779)
+    - [Fix localnet bootstrapping](https://github.com/onflow/flow-go/pull/7788)
+Testing:
+    - [[Flow EVM] Add a test case utilizing a read-write heavy EVM tx](https://github.com/onflow/flow-go/pull/7745)
+Chores:
+    - [Update to Cadence v1.7.0-preview.2](https://github.com/onflow/flow-go/pull/7780)
+    - [Update to Cadence v1.7.0-preview.3](https://github.com/onflow/flow-go/pull/7822)
 
 **Flow EVM**
-
-- Improvements:
-
-- Chores:
-
+- [Update to Cadence v1.7.0-preview.1](https://github.com/onflow/flow-evm-gateway/pull/870)
+- Emulator fix: [Respect config values for EVM VM bridge setup](https://github.com/onflow/flow-emulator/pull/827)
+- chore: [Sync Soft Finality with changes from `main` branch ](https://github.com/onflow/flow-evm-gateway/pull/869)
 
 **This sprint**
 
 - Cadence Language
-
+  - Close [FLIP 343: Fix numeric type rounding inconsistency](https://github.com/onflow/flips/pull/344/)
+  - Back to compiler: Investigate execution state differences
 
 - Cadence Execution
-
+  - Complete Badger -> Pebble PR - merge in prep for spork
+        - Continue testing on mainnet with more nodes of each type running Pebble.
+        - Complete review & [Merge the Pebble branch to flow-go master](https://github.com/onflow/flow-go/pull/7794).
+  - Complete [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598) Finishing up measurements, publish FLIP
+    - remaining: [Disable FVM metering inside EVM transactions](https://github.com/onflow/flow-go/pull/7825)
+  - Complete Account Public Key Deduplication
+    - [Add runtime detection and more efficient storage of duplicate account public keys](https://github.com/onflow/flow-go/issues/7754)
+    - [Add support for account status format v4](https://github.com/onflow/flow-go/issues/7756)
+    - close [bug](https://github.com/onflow/flow-go-internal/issues/7106)
+  - Continue [Badger -> Pebble: remaining tasks and cleanup](https://github.com/onflow/flow-go/issues/7682)
+  - Start work on [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571)
 
 - EVM
+  - Continue: [Update eth_gasPrice and eth_feeHistory response as per the current surge](https://github.com/onflow/flow-evm-gateway/issues/864)
+  - Continue: [Integrate JSON-RPC API specification changes from Geth releases](https://github.com/onflow/flow-evm-gateway/issues/840)
 
 
 **On Hold**
