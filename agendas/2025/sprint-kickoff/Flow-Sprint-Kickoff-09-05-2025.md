@@ -7,6 +7,7 @@
 * All protocol changes for scheduled callbacks are merged
 * Completed Cadence changes to make it easier for LLMs to build with Cadence
 * Completed metering optimization changes across Cadence & FVM
+* Successfully tested surge price on testnet
 
 ---
 
@@ -56,16 +57,17 @@ Forte Network upgrade (Spork) Fall 2025.
 
 |                         | Application | Cadence | Governance | Protocol |  Total  |
 |:------------------------|:-----------:|:-------:|:----------:|:--------:|:-------:|
-| Drafted     |      9      |    6    |     0      |    10    | **25**  |
+| Drafted     |      9      |    7    |     0      |    10    | **26**  |
 | Proposed    |      1      |    2    |     4      |    0     |  **7**  |
-| Accepted    |      3      |    2    |     2      |    2     |  **9**  |
+| Accepted    |      3      |    2    |     3      |    2     | **10**  |
 | Rejected    |      0      |    1    |     1      |    0     |  **2**  |
 | Implemented |      3      |    5    |     1      |    0     |  **9**  |
 | Released    |      4      |   34    |     9      |    7     | **54**  |
-| Total       |   **19**    | **50**  |   **17**   |  **19**  | **106** |
+| Total       |   **20**    | **52**  |   **17**   |  **19**  | **108** |
 
 #### New FLIPs
 
+- [FLIP 343: Fix numeric type rounding inconsistency](https://github.com/onflow/flips/pull/344)
 
 ---
 
@@ -207,6 +209,7 @@ Q3 Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Overload resilience</ins>
+  - Reviewed and merged in the [collection throttling implementation](https://github.com/onflow/flow-go/pull/7683)
 
 
 * <ins>Data Availability</ins>
@@ -353,10 +356,11 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 **Done last sprint**
 
 * Surge price testing on Testnet
+* Iterated on the Infused token document
 
 **This sprint**
 
 * Testing Surge pricing on Mainnet.
-* Continue work on infused tokens
+* Continue work on the infused tokens.
 
 ---
