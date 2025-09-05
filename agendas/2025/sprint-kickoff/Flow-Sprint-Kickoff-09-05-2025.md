@@ -230,6 +230,16 @@ Q3 Cycle Objective(s):
       - [[Data Availability] Added missing execution query status parameteres to requests #1620](https://github.com/onflow/flow/pull/1620)
       - [[Data Availability] Add execution state query field to executiondata protobuf #1622](https://github.com/onflow/flow/pull/1622)
 
+    * Milestones status:
+      - milestone 1: completed
+      - milestone 2:
+        - Epic 7180: in progress: 4 done, 3 in progress out of 11
+        - Epic 7181: completed
+      - milestone 3:
+        - Epic 7182: 6/14 done, 0 in progress
+        - Epic 7610: 2/7 done, 0 in progress
+        - Epic 7615: 1 in progress, 5 in review, out of 12
+
 * <ins>Immutable Models M2</ins>
   * Immutable Models PR reviews
   * KROK Team
