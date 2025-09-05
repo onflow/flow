@@ -411,15 +411,19 @@ Cycle Objective(s):
 **Cycle Objective(s):**
 
 KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 0.25 per week on a 4-week rolling average.
-- Current (Aug 8: 0.25/week -> 98% decrease in bugs since Jan/Feb!)
+- Current (Sep 5: 0.25/week -> 98% decrease in bugs since Jan/Feb!)
 
 **Done last sprint**
 
+- Completed initaital implementation of a new workflow in React Native on Flow Wallet!
+  - Shipping send workflow today for iOS/Android as soon as google approves our release.
 
 **This sprint**
 
-
-
+- Start implementation of our new Full/Secure profile feature - adding EOA support on all platforms.
+- Integrating Flow Wallet SDK on extension, and updating it to support EOA accounts.
+- Completing Tamagui cross-platform UI support, releasing an updated version of the send workflow with it included.
+- Complete & ship Flow Wallet extension new send workflow.
 
 ---
 
