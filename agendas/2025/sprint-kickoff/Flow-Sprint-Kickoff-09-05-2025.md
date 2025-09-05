@@ -213,12 +213,31 @@ Q3 Cycle Objective(s):
 
 
 * <ins>Data Availability</ins>
-
-
-* <ins>Malleability</ins>
-  * Malleability PR reviews
+  * Data Availability PR reviews
   * KROK Team
     * Done:
+      - [[Data Availability] Add execution state query and executor metadata field to proto models #7759](https://github.com/onflow/flow-go/issues/7759)
+
+    * In Review:
+      - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
+      - [[Data Availability] Implement fork-aware Streaming Events Endpoints #7657](https://github.com/onflow/flow-go/issues/7657)
+      - [[Data Availability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
+      - [[Data Availability] Implement fork-aware Transaction Results Endpoints #7644](https://github.com/onflow/flow-go/issues/7644)
+      - [[Data Availability] Implement fork-aware System Transaction Endpoints #7648](https://github.com/onflow/flow-go/issues/7648)
+
+    * In Progress:
+      - [[Data Availability] Implement fork-aware Account Endpoints #7650](https://github.com/onflow/flow-go/issues/7650)
+      - [[Data Availability] Added missing execution query status parameteres to requests #1620](https://github.com/onflow/flow/pull/1620)
+      - [[Data Availability] Add execution state query field to executiondata protobuf #1622](https://github.com/onflow/flow/pull/1622)
+
+* <ins>Immutable Models M2</ins>
+  * Immutable Models PR reviews
+  * KROK Team
+    * Done:
+      - [[Immutable Models M2] messages.EntityResponse: message/internal split + validation #7720](https://github.com/onflow/flow-go/issues/7720)
+      - [[Immutable Models M2] messages.EntityRequest: message/internal split + validation #7719](https://github.com/onflow/flow-go/issues/7719)
+      - [[Immutable Models M2] messages.ApprovalResponse: message/internal split + validation #7718](https://github.com/onflow/flow-go/issues/7718)
+      - [[Immutable Models M2] messages.ApprovalRequest: message/internal split + validation #7717](https://github.com/onflow/flow-go/issues/7717)
       - [[Immutable Models M2] messages.ClusterBlockProposal: message/internal split + validation #7701](https://github.com/onflow/flow-go/issues/7701)
       - [[Immutable Models M2] messages.BlockProposal: message/internal split + validation #7698](https://github.com/onflow/flow-go/issues/7698)
       - [[Immutable Models M2] messages.BlockResponse: message/internal split + validation #7709](https://github.com/onflow/flow-go/issues/7709)
@@ -227,17 +246,23 @@ Q3 Cycle Objective(s):
       - [[Immutable Models M2] messages.BatchRequest: message/internal split + validation #7708](https://github.com/onflow/flow-go/issues/7708)
       - [[Immutable Models M2] messages.SyncRequest: message/internal split + validation #7705](https://github.com/onflow/flow-go/issues/7705)
       - [[Immutable Models M2] messages.SyncResponse: message/internal split + validation #7706](https://github.com/onflow/flow-go/issues/7706)
-
-    * In Review:
       - [[Immutable Models M2] messages.ChunkDataRequest: message/internal split + validation #7715](https://github.com/onflow/flow-go/issues/7715)
       - [[Immutable Models M2] messages.ChunkDataResponse: message/internal split + validation #7716](https://github.com/onflow/flow-go/issues/7716)
       - [[Immutable Models M2] messages.RangeRequest: message/internal split + validation #7707](https://github.com/onflow/flow-go/issues/7707)
+
+    * In Review:
+      - [[Immutable Models M2] messages.BlockVote: message/internal split + validation #7699](https://github.com/onflow/flow-go/issues/7699)
+      - [[Immutable Models M2] messages.ClusterBlockVote: message/internal split + validation #7702](https://github.com/onflow/flow-go/issues/7702)
+      - [[Immutable Models M2] messages.TransactionBody: message/internal split + validation #7711](https://github.com/onflow/flow-go/issues/7711)
+      - [[Immutable Models M2] messages.Transaction: message/internal split + validation #7712](https://github.com/onflow/flow-go/issues/7712)
       - [[Immutable Models M2] messages.TimeoutObject: message/internal split + validation #7700](https://github.com/onflow/flow-go/issues/7700)
       - [[Immutable Models M2] messages.ClusterTimeoutObject: message/internal split + validation #7704](https://github.com/onflow/flow-go/issues/7704)
-    
+
     * In Progress:
+      - [[Immutable Models M2] flow.ResultApproval: message/internal split + validation #7714](https://github.com/onflow/flow-go/issues/7714)
+      - [[Immutable Models M2] messages.TestMessage: message/internal split + validation #7721](https://github.com/onflow/flow-go/issues/7721)
       - [[Immutable Models M2] flow.ExecutionReceipt: message/internal split + validation #7713](https://github.com/onflow/flow-go/issues/7713)
-      - [[Immutable Models M2] messages.DKGMessage: message/internal split + validation #7721](https://github.com/onflow/flow-go/issues/7721)
+      - [[Immutable Models M2] messages.DKGMessage: message/internal split + validation #7722](https://github.com/onflow/flow-go/issues/7722)
 
 * <ins>Cryptography</ins>
   * Passkeys:
@@ -263,12 +288,16 @@ Q3 Cycle Objective(s):
 * <ins>Data Availability:</ins>
   - PR Reviews
   - KROK Team:
+    - Address reviews from previous sprint
+    - Work on new Endpoints    
 
   
-* <ins>Malleability</ins>
+* <ins>Immutable Models M2</ins>
   - PR reviews
   - KROK Team:
     - Address review remarks from previous sprint
+    - Finish Immutable Models M2 set of tasks
+    - Work on new set of tasks that arise
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
