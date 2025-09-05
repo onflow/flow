@@ -214,9 +214,13 @@ Q3 Cycle Objective(s):
 
 * <ins>Data Availability</ins>
   * Data Availability PR reviews
+  * Design and PR reviews for schedule callbacks API updates
+  * [Admin] Fix hang during admin server shutdown (https://github.com/onflow/flow-go/pull/7771)
   * KROK Team
     * Done:
       - [[Data Availability] Add execution state query and executor metadata field to proto models #7759](https://github.com/onflow/flow-go/issues/7759)
+      - [[Data Availability] Added missing execution query status parameteres to requests #1620](https://github.com/onflow/flow/pull/1620)
+      - [[Data Availability] Add execution state query field to executiondata protobuf #1622](https://github.com/onflow/flow/pull/1622)
 
     * In Review:
       - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
@@ -227,18 +231,16 @@ Q3 Cycle Objective(s):
 
     * In Progress:
       - [[Data Availability] Implement fork-aware Account Endpoints #7650](https://github.com/onflow/flow-go/issues/7650)
-      - [[Data Availability] Added missing execution query status parameteres to requests #1620](https://github.com/onflow/flow/pull/1620)
-      - [[Data Availability] Add execution state query field to executiondata protobuf #1622](https://github.com/onflow/flow/pull/1622)
 
     * Milestones status:
       - milestone 1: completed
       - milestone 2:
-        - Epic 7180: in progress: 4 done, 3 in progress out of 11
-        - Epic 7181: completed
+        - [Epic 7180](https://github.com/onflow/flow-go/issues/7180): in progress: 4 done, 5 in progress out of 11
+        - [Epic 7181](https://github.com/onflow/flow-go/issues/7181): 1 done, more issues to be created after 7180
       - milestone 3:
-        - Epic 7182: 6/14 done, 0 in progress
-        - Epic 7610: 2/7 done, 0 in progress
-        - Epic 7615: 1 in progress, 5 in review, out of 12
+        - [Epic 7182](https://github.com/onflow/flow-go/issues/7182): 6/14 done, 2 in progress
+        - [Epic 7615](https://github.com/onflow/flow-go/issues/7615): 1 in progress, 6 in review, out of 12
+        - [Epic 7610](https://github.com/onflow/flow-go/issues/7610): 2/7 done, 0 in progress
 
 * <ins>Immutable Models M2</ins>
   * Immutable Models PR reviews
@@ -297,9 +299,13 @@ Q3 Cycle Objective(s):
 
 * <ins>Data Availability:</ins>
   - PR Reviews
+  - Continue supporting scheduled callbacks API updates
+  - Design for new scheduled callbacks API endpoints
+  - Continue debugging memory corruption
+  - Continue results forest implementation and testing
   - KROK Team:
     - Address reviews from previous sprint
-    - Work on new Endpoints    
+    - Continue work on API Updates (Issue 7615)(https://github.com/onflow/flow-go/issues/7615)
 
   
 * <ins>Immutable Models M2</ins>
