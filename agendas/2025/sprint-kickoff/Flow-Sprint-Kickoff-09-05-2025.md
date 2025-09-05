@@ -3,6 +3,7 @@
 ### Team Wins 🎉
 
 * All core malleability changes are now complete and ready to be rolled out as part of the spork.
+* [Scheduled Callbacks FLIP](https://github.com/onflow/flips/pull/331) accepted
 * Flip to [add 128-bit fixed-point types to Cadence](https://github.com/onflow/flips/pull/342) was approved & implementation completed & merged
 * All protocol changes for scheduled callbacks are merged
 * Completed Cadence changes to make it easier for LLMs to build with Cadence
