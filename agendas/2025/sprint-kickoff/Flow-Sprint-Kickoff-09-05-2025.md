@@ -339,24 +339,20 @@ Cycle Objective(s):
 **Done last sprint**
 
 #### Tidal:
-
-
-
-#### DeFi Actions:
-
-
+- [Liquidator interface review](https://github.com/onflow/TidalProtocol/pull/40)
+- [Liquidation logic code complete](https://github.com/onflow/TidalProtocol/pull/41)
+- Oracle documentation and design complete
+- Closed Beta Gating logic
+- Flow Actions Audit complete
 
 
 **This sprint**
 
 #### Tidal:
-
-
-
-
-#### DeFi Actions:
-
-
+- Oracle integration implementation
+- AMM integration implementation
+- Closed Beta gating logic
+- Audit Feedback
 
 ---
 
