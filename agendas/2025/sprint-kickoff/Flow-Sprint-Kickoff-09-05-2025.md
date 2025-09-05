@@ -432,17 +432,21 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
 
-**Tidal Observability**
+**Tidal**
+- [Create Terraform Module for Service Level Alerting](https://github.com/onflow/ff-sre-infrastructure/issues/622)
+- [Create Cloud Run Metrics Alerts](https://github.com/onflow/ff-sre-infrastructure/issues/468)
+- [Create Database Metrics Alerts](https://github.com/onflow/ff-sre-infrastructure/issues/466)
 
-
-**Node Hosting**
-
-
-**Security**
-
+**Observability**
+- [Ensure Mainnet can support tracing](https://github.com/onflow/ff-sre-infrastructure/issues/672)
+- [Enable tracing on Testnet](https://github.com/onflow/ff-sre-infrastructure/issues/670)
 
 **Support**
-
+- [Investigate Docker Login Issue on Flow Go CI](https://github.com/onflow/ff-sre-infrastructure/issues/735)
+- [Create DNS Record for Rebrandly](https://github.com/onflow/ff-sre-infrastructure/issues/733)
+- [Terminate TPS automation machine used for testing](https://github.com/onflow/ff-sre-infrastructure/issues/730)
+- [MN26 Data Disk Increase - ANs](https://github.com/onflow/ff-sre-infrastructure/issues/726)
+- [Fix Integration CI with environment for secrets](https://github.com/onflow/ff-sre-infrastructure/issues/704)
 
 ---
 
