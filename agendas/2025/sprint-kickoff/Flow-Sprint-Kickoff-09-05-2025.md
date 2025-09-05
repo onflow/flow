@@ -465,7 +465,7 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **This sprint**
 
-* Testing Surge pricing on Mainnet.
+* Testing Surge pricing on Mainnet (see [announcement](https://status.flow.com/incidents/12hsh0hz556q)).
 * Continue work on the infused tokens.
 
 ---
