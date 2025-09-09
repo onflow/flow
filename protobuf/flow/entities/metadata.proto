@@ -5,7 +5,8 @@ package flow.entities;
 option go_package = "github.com/onflow/flow/protobuf/go/flow/entities";
 option java_package = "org.onflow.protobuf.entities";
 
-// ExecutorMetadata contains data about the execution result used to serve the request.
+// ExecutorMetadata contains data about the execution result used to serve the
+// request.
 message ExecutorMetadata {
   // ID of the ExecutionResult used to serve the request
   bytes execution_result_id = 1;
@@ -26,4 +27,3 @@ message Metadata {
   // Metadata about the execution result used to serve the request.
   ExecutorMetadata executor_metadata = 5;
 }
-
