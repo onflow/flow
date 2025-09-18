@@ -3,6 +3,7 @@
 ### Team Wins 🎉
 
 * Forte is live on testnet
+* New CLI release brings a facelift and features that make life easier for AI agents and developers
 
 ---
 
@@ -191,7 +192,7 @@ Q3 Cycle Objective(s):
   - KROK Team:
 
 
-  
+
 * <ins>Immutable Models M2</ins>
   - PR reviews
   - KROK Team:
@@ -242,32 +243,57 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
-* React SDK
-
+* FCL/React SDK
+  * Planned with third parties for bridging wrapped BTC to Cadence
+  * Started on supporting Scheduled Transactions hooks and component
+  * Added basic support for passkeys to FCL
 
 * CLI Improvements
+  * Integrated DeFi Actions into `flow init`
+  * Integrated DeFi Actions into Dependency Manager
+  * Started work on Scheduled Transactions Manager feature
+  * Allow account funding by account name
+  * Interactive account funding when no account provided
+  * New look and feel with branded CLI
+  * Improved lists in CLI with scroll component
+  * Added support for Cadence project creation from existing directories
+  * Resolve relative directories with project creation
+  * Added dependencies list command
+  * Improved messaging in developer pain points
+  * Fixed Windows Bug
+  * Fixed termination signal bug
 
+* Scheduled Transactions
+  * Soldified Scheduled Transactions Manager with smart contract team
+  * Updated Scheduled Transactions scaffold with Manager changes
+  * Added support to Go SDK for system transactions API changes
+  * Working with smart contract team to expose Scheduled Transactions in EVM
 
-* Scheduled Callbacks
-
-
-* Testnet <-> Mainnet
-
+* VSCode Extension
+  * Fixed tab reloading issue
+  * Fixed non-root config support
 
 **This Sprint**
 
-* React SDK
-
+* FCL/React SDK
+  * Continue on supporting Scheduled Transactions hooks and component
+  * Send FT hook/component
+  * Additional passkeys support in FCL Discovery
+  * Additional passkeys support in the React SDK
+  * React SDK marketing site
 
 * CLI Improvements
+  * Continue work on Scheduled Transactions Manager feature
+  * Add easy deployment setup for DeFi Actions
 
-
-* Scheduled Callbacks
-
+* Scheduled Transactions
+  * Generate a default project from `flow init` if selected
+  * Continue working with smart contract team to expose Scheduled Transactions in EVM
+  * Support System Transaction API changes in FCL
+  * Support System Transaction API changes in CLI
 
 * Testnet <-> Mainnet
-
-
+  * Integrate testnet mocking into tooling
 
 ---
 
