@@ -299,17 +299,14 @@ Cycle Objective(s):
 
 ### Applications / Wallet [Jeff]
 
-**Cycle Objective(s):**
-
-KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 0.25 per week on a 4-week rolling average.
-- Current (Sep 5: 0.25/week -> 98% decrease in bugs since Jan/Feb!)
-
 **Done last sprint**
 
+- Released v1.0, and completed v1.1 of our React Native integration, releasing our updated Send tokens workflow across all platforms 🎉
 
 **This sprint**
 
-
+- Adding support for surge pricing across all platforms.
+- Adding support for Full/Secure profiles in Flow Wallet, giving users EOAs and Seed Phrases to secure their accounts on EVM on Flow.
 
 ---
 
