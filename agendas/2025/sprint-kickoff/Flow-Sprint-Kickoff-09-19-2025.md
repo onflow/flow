@@ -125,7 +125,7 @@ Chores:
 Q3 Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
 * Overload resilience  [IN PROGRESS]
-* Q3 Network Upgrade (Spork) [TODO]
+* Q3 Network Upgrade (Spork) [IN PROGRESS]
 * [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * SPoCK Research [IN PROGRESS]
 * Address data structure malleability risk [IN PROGRESS]
@@ -134,8 +134,16 @@ Q3 Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Overload resilience</ins>
+  - Identified performance issues when testing PebbleDB changes on migration testnet
+  - Documented issues [here](https://github.com/onflow/flow-go/issues/7860)
+    - [Issue 7863: Re-evaluate Collector Throttling Parameters](https://github.com/onflow/flow-go/issues/7863)
 
-
+* Q3 Network Upgrade (Spork)
+  - Preparation for the testnet spork
+    - Rosetta testing
+    - Release notes review
+    - Content for malleability, execution effort calibration.
+    - etc.
 
 * <ins>Data Availability</ins>
 
@@ -159,7 +167,7 @@ Q3 Cycle Objective(s):
         - [Epic 7615](https://github.com/onflow/flow-go/issues/7615): 1 in progress, 6 in review, out of 12
         - [Epic 7610](https://github.com/onflow/flow-go/issues/7610): 2/7 done, 0 in progress
 
-* <ins>Immutable Models M2</ins>
+* <ins>Immutable Models M2 (Address data structure malleability risk) </ins>
   * Immutable Models PR reviews
   * KROK Team
     * Done:
@@ -173,8 +181,10 @@ Q3 Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   * Passkeys:
-
+    * PR review and merge to master
+    * Testing on Testnet
   * Multi-SPoCK:
+    * 
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
@@ -190,20 +200,24 @@ Q3 Cycle Objective(s):
   - PR Reviews
   - KROK Team:
 
-
-
-* <ins>Immutable Models M2</ins>
+* <ins>Immutable Models M2 (Address data structure malleability risk)</ins>
   - PR reviews
+  - Supporting KROK to wrap up [network layer model validation](https://github.com/onflow/flow-go/pull/7887)
   - KROK Team:
     - Address review remarks from previous sprint
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
+  - Implementation for collector decentralization bootstrapping
 
 
 * <ins>Cryptography</ins>
   * SPoCK:
 
+* Misc (work items not tied to OKR)
+  * Content, Content, Content 😃
+  * Implementing observability for emergency sealing
+  * Preparing Pebble transition docs and presenting next week during the Core protocol working group meeting
 
 
 **On Hold**
