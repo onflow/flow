@@ -33,15 +33,14 @@
 | HCU                    | 6/16/2025 |            |           | 12        |              | 12     |               |
 | HCU                    | 8/7/2025  |            |           | 9         |              | 9      |               |
 | Total downtime in mins |           | 210        | 210       | 272       | 210          | 272    |               |
-| YTD SLA                |           | 99.94%     | 99.94%    | 99.92%    | 99.94%       | 99.92% |               |
+| YTD SLA                |           | 99.94%     | 99.94%    | 99.93%    | 99.94%       | 99.93% |               |
 | SLA for 2025           |           | 99.96%     | 99.96%    | 99.95%    | 99.96%       | 99.95% |               |
 
 ### Incidents
 
-N/A
+No P0 or P1 incidents.
 
 ### Key Release Dates & Breaking Changes
-
 
 Forte Network upgrade (Spork) Fall 2025.
 - Mainnet in **Oct, 22nd (Wednesday)**
@@ -62,7 +61,7 @@ Forte Network upgrade (Spork) Fall 2025.
 
 #### New FLIPs
 
-
+N/A
 
 ---
 
