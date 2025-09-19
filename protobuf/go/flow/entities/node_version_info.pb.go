@@ -77,21 +77,23 @@ type NodeVersionInfo struct {
 	// The unique identifier for the node's network within the current spork.
 	SporkId []byte `protobuf:"bytes,3,opt,name=spork_id,json=sporkId,proto3" json:"spork_id,omitempty"`
 	// The deprecated protocol version number.
-	// Previously this referred to the major software version as of the most recent spork.
-	// Replaced by protocol_state_version.
+	// Previously this referred to the major software version as of the most
+	// recent spork. Replaced by protocol_state_version.
 	ProtocolVersion uint64 `protobuf:"varint,4,opt,name=protocol_version,json=protocolVersion,proto3" json:"protocol_version,omitempty"` // Deprecated: Do not use.
-	// The spork root block height. This is the height of the first sealed block in the spork network.
+	// The spork root block height. This is the height of the first sealed block
+	// in the spork network.
 	SporkRootBlockHeight uint64 `protobuf:"varint,5,opt,name=spork_root_block_height,json=sporkRootBlockHeight,proto3" json:"spork_root_block_height,omitempty"`
-	// The node's root block height. This is the first sealed block in the node's protocol database.
-	// If the node started at the beginning of the spork, it is the same as the spork root block height.
-	// If the node started after the beginning of the spork, it is the height of the first sealed block
-	// indexed.
+	// The node's root block height. This is the first sealed block in the node's
+	// protocol database. If the node started at the beginning of the spork, it is
+	// the same as the spork root block height. If the node started after the
+	// beginning of the spork, it is the height of the first sealed block indexed.
 	NodeRootBlockHeight uint64 `protobuf:"varint,6,opt,name=node_root_block_height,json=nodeRootBlockHeight,proto3" json:"node_root_block_height,omitempty"`
 	// The compatible version range.
 	CompatibleRange *CompatibleRange `protobuf:"bytes,7,opt,name=compatible_range,json=compatibleRange,proto3" json:"compatible_range,omitempty"`
 	// The Protocol State version as of the latest finalized block.
-	// This tracks the schema version of the Protocol State and is used to coordinate breaking changes in the Protocol.
-	// Version numbers are monotonically increasing.
+	// This tracks the schema version of the Protocol State and is used to
+	// coordinate breaking changes in the Protocol. Version numbers are
+	// monotonically increasing.
 	ProtocolStateVersion uint64   `protobuf:"varint,8,opt,name=protocol_state_version,json=protocolStateVersion,proto3" json:"protocol_state_version,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

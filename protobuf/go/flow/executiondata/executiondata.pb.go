@@ -840,7 +840,8 @@ type SubscribeEventsResponse struct {
 	Events []*entities.Event `protobuf:"bytes,3,rep,name=events,proto3" json:"events,omitempty"`
 	// Timestamp from the block containing the events.
 	BlockTimestamp *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=block_timestamp,json=blockTimestamp,proto3" json:"block_timestamp,omitempty"`
-	// The message index of the response message. Used by the client to ensure they received all messages. Starts from "0".
+	// The message index of the response message. Used by the client to ensure
+	// they received all messages. Starts from "0".
 	MessageIndex uint64 `protobuf:"varint,5,opt,name=message_index,json=messageIndex,proto3" json:"message_index,omitempty"`
 	// Metadata about the execution result that was used to produce this response.
 	ExecutorMetadata     *entities.ExecutorMetadata `protobuf:"bytes,6,opt,name=executor_metadata,json=executorMetadata,proto3" json:"executor_metadata,omitempty"`
@@ -1125,10 +1126,10 @@ type SubscribeAccountStatusesFromStartBlockIDRequest struct {
 	// If no filter is provided, all statuses are returned.
 	Filter *StatusFilter `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Interval in block heights at which the server should return a heartbeat
-	// message to the client. The heartbeat is a normal SubscribeAccountStatusesResponse
-	// with no events, and allows clients to track which blocks were searched.
-	// Clients can use this information to determine which block to start from
-	// when reconnecting.
+	// message to the client. The heartbeat is a normal
+	// SubscribeAccountStatusesResponse with no events, and allows clients to
+	// track which blocks were searched. Clients can use this information to
+	// determine which block to start from when reconnecting.
 	//
 	// The interval is calculated from the last response returned, which could be
 	// either another heartbeat or a response containing events.
@@ -1220,10 +1221,10 @@ type SubscribeAccountStatusesFromStartHeightRequest struct {
 	// If no filter is provided, all statuses are returned.
 	Filter *StatusFilter `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Interval in block heights at which the server should return a heartbeat
-	// message to the client. The heartbeat is a normal SubscribeAccountStatusesResponse
-	// with no events, and allows clients to track which blocks were searched.
-	// Clients can use this information to determine which block to start from
-	// when reconnecting.
+	// message to the client. The heartbeat is a normal
+	// SubscribeAccountStatusesResponse with no events, and allows clients to
+	// track which blocks were searched. Clients can use this information to
+	// determine which block to start from when reconnecting.
 	//
 	// The interval is calculated from the last response returned, which could be
 	// either another heartbeat or a response containing events.
@@ -1310,10 +1311,10 @@ type SubscribeAccountStatusesFromLatestBlockRequest struct {
 	// If no filter is provided, all statuses are returned.
 	Filter *StatusFilter `protobuf:"bytes,1,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Interval in block heights at which the server should return a heartbeat
-	// message to the client. The heartbeat is a normal SubscribeAccountStatusesResponse
-	// with no events, and allows clients to track which blocks were searched.
-	// Clients can use this information to determine which block to start from
-	// when reconnecting.
+	// message to the client. The heartbeat is a normal
+	// SubscribeAccountStatusesResponse with no events, and allows clients to
+	// track which blocks were searched. Clients can use this information to
+	// determine which block to start from when reconnecting.
 	//
 	// The interval is calculated from the last response returned, which could be
 	// either another heartbeat or a response containing events.
@@ -1393,7 +1394,8 @@ type SubscribeAccountStatusesResponse struct {
 	BlockId []byte `protobuf:"bytes,1,opt,name=block_id,json=blockId,proto3" json:"block_id,omitempty"`
 	// Block height of the block containing the events.
 	BlockHeight uint64 `protobuf:"varint,2,opt,name=block_height,json=blockHeight,proto3" json:"block_height,omitempty"`
-	// The message index of the response message. Used by the client to ensure they received all messages. Starts from "0".
+	// The message index of the response message. Used by the client to ensure
+	// they received all messages. Starts from "0".
 	MessageIndex uint64 `protobuf:"varint,3,opt,name=message_index,json=messageIndex,proto3" json:"message_index,omitempty"`
 	// The API may return no results which signals a periodic heartbeat. This
 	// allows clients to track which blocks were searched. Client can use this
@@ -1519,11 +1521,11 @@ func (m *SubscribeAccountStatusesResponse_Result) GetEvents() []*entities.Event 
 
 // StatusesFilter defines the filter to apply to block events.
 // Filters match for events with types in the included event_type list, that are
-// related to at least one address from the provided address list. An event who's
-// type matches but address does not is ignored, and vice versa.
-// If no event_types are provided, all account related protocol event types are matched.
-// If no addresses are provided, any address matches.
-// If there are any invalid filters, the API will return an InvalidArgument error.
+// related to at least one address from the provided address list. An event
+// who's type matches but address does not is ignored, and vice versa. If no
+// event_types are provided, all account related protocol event types are
+// matched. If no addresses are provided, any address matches. If there are any
+// invalid filters, the API will return an InvalidArgument error.
 type StatusFilter struct {
 	// A list of full event types to include.
 	//
@@ -1536,8 +1538,9 @@ type StatusFilter struct {
 	EventType []string `protobuf:"bytes,1,rep,name=event_type,json=eventType,proto3" json:"event_type,omitempty"`
 	// A list of addresses who's events should be included.
 	//
-	// All events matching the provided event_types that are related to any of the provided addresses
-	// will be returned. If no addresses are provided, all events matching event_types will be returned.
+	// All events matching the provided event_types that are related to any of the
+	// provided addresses will be returned. If no addresses are provided, all
+	// events matching event_types will be returned.
 	//
 	// Addresses must be Flow account addresses in hex format and valid for the
 	// network the node is connected to. i.e. only a mainnet address is valid for
