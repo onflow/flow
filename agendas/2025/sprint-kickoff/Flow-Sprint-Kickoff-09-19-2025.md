@@ -221,34 +221,51 @@ Q3 Cycle Objective(s):
 
   * KROK Team
     * Done:
-
-
+      
     * In Review:
-
-
+      - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
+      - [[Data Availability] Implement fork-aware Transaction Results Endpoints #7644](https://github.com/onflow/flow-go/issues/7644)
+      - [[Data Availability] Implement fork-aware System Transaction Endpoints #7648](https://github.com/onflow/flow-go/issues/7648)
+        
     * In Progress:
-
+      - [[Data Availability] Implement fork-aware Account Endpoints #7650](https://github.com/onflow/flow-go/issues/7650)
+      - [[Data Availability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
+      - [[Data Availability] Implement fork-aware Streaming Events Endpoints #7657](https://github.com/onflow/flow-go/issues/7657)
+      - [[Data Availability] Implement fork-aware Script Endpoints #7651](https://github.com/onflow/flow-go/issues/7651)
 
     * Milestones status:
       - milestone 1: completed
       - milestone 2:
-        - [Epic 7180](https://github.com/onflow/flow-go/issues/7180): in progress: 4 done, 5 in progress out of 11
+        - [Epic 7180](https://github.com/onflow/flow-go/issues/7180): in progress: 4 done, 3 in progress out of 12 ( 1 newly addded, 1 closed by gh )
         - [Epic 7181](https://github.com/onflow/flow-go/issues/7181): 1 done, more issues to be created after 7180
       - milestone 3:
         - [Epic 7182](https://github.com/onflow/flow-go/issues/7182): 6/14 done, 2 in progress
-        - [Epic 7615](https://github.com/onflow/flow-go/issues/7615): 1 in progress, 6 in review, out of 12
+        - [Epic 7615](https://github.com/onflow/flow-go/issues/7615): 4 in progress, 3 in review, out of 12 ( some tasks require extra changes and were sent back to progress ) 
         - [Epic 7610](https://github.com/onflow/flow-go/issues/7610): 2/7 done, 0 in progress
 
 * <ins>Immutable Models M2 (Address data structure malleability risk) </ins>
   * Immutable Models PR reviews
+    
   * KROK Team
     * Done:
-
-
+      - [[Immutable Models M2] flow.ResultApproval: message/internal split + validation #7714](https://github.com/onflow/flow-go/issues/7714)
+      - [[Immutable Models M2] messages.DKGMessage: message/internal split + validation #7722](https://github.com/onflow/flow-go/issues/7722)
+      - [[Immutable Models M2] messages.TestMessage: message/internal split + validation #7721](https://github.com/onflow/flow-go/issues/7721)
+      - [[Immutable Models M2] flow.ExecutionReceipt: message/internal split + validation #7713](https://github.com/onflow/flow-go/issues/7713)
+      - [[Immutable Models M2] messages.TransactionBody: message/internal split + validation #7711](https://github.com/onflow/flow-go/issues/7711)
+      - [[Immutable Models M2] messages.Transaction: message/internal split + validation #7712](https://github.com/onflow/flow-go/issues/7712)
+      - [[Immutable Models M2] messages.BlockVote: message/internal split + validation #7699](https://github.com/onflow/flow-go/issues/7699)
+      - [[Immutable Models M2] messages.ClusterBlockVote: message/internal split + validation #7702](https://github.com/onflow/flow-go/issues/7702)
+      - [[Immutable Models M2] messages.ClusterTimeoutObject: message/internal split + validation #7704](https://github.com/onflow/flow-go/issues/7704)
+      - [[Immutable Models M2] messages.TimeoutObject: message/internal split + validation #7700](https://github.com/onflow/flow-go/issues/7700)
+      - [[Protocol misc improvements] Avoid unittest.BlockFixture to create invalid blocks when option WithParent is given #7826](https://github.com/onflow/flow-go/issues/7826)
+      - [[Protocol misc improvements] InstanceParams no longer reads anything from the database; hence remove database field #7836](https://github.com/onflow/flow-go/issues/7836)
+      - [[Protocol misc improvements] Consolidate InstanceParams into one storage object #7837](https://github.com/onflow/flow-go/issues/7837)
+      - [[Immutable Models M2] Test changes to the networking layer introduced in the feature/networking-layer-immutability branch #7888](https://github.com/onflow/flow-go/issues/7888)
+      
     * In Review:
-
-
     * In Progress:
+      - Work on Immutable models finished for KROK team
 
 
 * <ins>Cryptography</ins>
@@ -272,12 +289,14 @@ Q3 Cycle Objective(s):
 * <ins>Data Availability:</ins>
   - PR Reviews
   - KROK Team:
+    - PR reviews
+    - Hop on new tasks from 3rd milestone - Uliana and Andrii added to team to strengthen progress here
 
 * <ins>Immutable Models M2 (Address data structure malleability risk)</ins>
   - PR reviews
   - Supporting KROK to wrap up [network layer model validation](https://github.com/onflow/flow-go/pull/7887)
   - KROK Team:
-    - Address review remarks from previous sprint
+    - Work on immutable models finished for KROK team atm.
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
