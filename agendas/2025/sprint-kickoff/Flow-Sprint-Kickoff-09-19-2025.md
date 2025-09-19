@@ -184,10 +184,11 @@ Q3 Cycle Objective(s):
     * PR review and merge to master
     * Testing on Testnet
   * Multi-SPoCK:
-    * 
+    * Aggregate multi SPoCK (over distinct secrets): definition and security property.
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
+  * N/A
 
 
 **This sprint**
@@ -213,6 +214,8 @@ Q3 Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   * SPoCK:
+    * aggregate multi SPoCK (over distinct secrets): security proof
+    * spock paper editing
 
 * Misc (work items not tied to OKR)
   * Content, Content, Content 😃
