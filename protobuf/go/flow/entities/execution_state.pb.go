@@ -25,7 +25,8 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 type ExecutionStateQuery struct {
 	// Minimum number of execution receipts for the execution result.
 	AgreeingExecutorsCount uint64 `protobuf:"varint,1,opt,name=agreeing_executors_count,json=agreeingExecutorsCount,proto3" json:"agreeing_executors_count,omitempty"`
-	// Set of execution node IDs, one of which must have produced the execution result.
+	// Set of execution node IDs, one of which must have produced the execution
+	// result.
 	RequiredExecutorIds [][]byte `protobuf:"bytes,2,rep,name=required_executor_ids,json=requiredExecutorIds,proto3" json:"required_executor_ids,omitempty"`
 	// Whether or not to include ExecutorMetadata in the response.
 	IncludeExecutorMetadata bool     `protobuf:"varint,3,opt,name=include_executor_metadata,json=includeExecutorMetadata,proto3" json:"include_executor_metadata,omitempty"`

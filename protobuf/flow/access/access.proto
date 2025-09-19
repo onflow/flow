@@ -418,7 +418,7 @@ message GetSystemTransactionRequest {
   bytes id = 2;
 
   // Execution state query parameters used for unsealed blocks. [optional]
-  entities.ExecutionStateQuery execution_state_query = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message GetSystemTransactionResultRequest {
