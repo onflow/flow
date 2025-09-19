@@ -416,6 +416,9 @@ message GetSystemTransactionRequest {
   // ID of the system transaction. [optional]
   // If unset, the last system transaction is returned.
   bytes id = 2;
+
+  // Execution state query parameters used for unsealed blocks. [optional]
+  entities.ExecutionStateQuery execution_state_query = 2;
 }
 
 message GetSystemTransactionResultRequest {
