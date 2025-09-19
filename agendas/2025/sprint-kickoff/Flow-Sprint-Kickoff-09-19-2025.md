@@ -218,10 +218,11 @@ Q3 Cycle Objective(s):
     - etc.
 
 * <ins>Data Availability</ins>
-
+  - Enable scheduled transactions by default ([PR #7899](https://github.com/onflow/flow-go/pull/7899))
+  - Update Access API endpoints to support schedule callbacks MVP ([PR #7890](https://github.com/onflow/flow-go/pull/7890))
+  - Improve derived tx status handling and documentation ([PR #7844](https://github.com/onflow/flow-go/pull/7844))
+  - Improve API request/response limit config ([PR #7815](https://github.com/onflow/flow-go/pull/7815))
   * KROK Team
-    * Done:
-      
     * In Review:
       - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
       - [[Data Availability] Implement fork-aware Transaction Results Endpoints #7644](https://github.com/onflow/flow-go/issues/7644)
@@ -288,9 +289,13 @@ Q3 Cycle Objective(s):
 
 * <ins>Data Availability:</ins>
   - PR Reviews
+  - Allow streaming from the spork root block ([PR 7913](https://github.com/onflow/flow-go/pull/7913))
+  - Refactor connection caching to address race condition in test ([PR 7859](https://github.com/onflow/flow-go/pull/7859))
+  - Backfill tx error messages on last few networks (TN52, MN25, MN24)
+  - Continue work on Milestone 2
   - KROK Team:
     - PR reviews
-    - Hop on new tasks from 3rd milestone - Uliana and Andrii added to team to strengthen progress here
+    - Continue work on 3rd milestone - Uliana and Andrii added to team to strengthen progress here
 
 * <ins>Immutable Models M2 (Address data structure malleability risk)</ins>
   - PR reviews
