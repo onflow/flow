@@ -426,14 +426,30 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-**Tidal**
-
-
-**Observability**
-
+**TN53 Spork**
+- [Remove TN52 Alerts after TN53 Spork](https://github.com/onflow/ff-sre-infrastructure/issues/766)
+- [Update Synthetic Monitors for ANs to point to TN53](https://github.com/onflow/ff-sre-infrastructure/issues/765)
+- [Update EVM GW Flags and Versions after the TN53 Spork](https://github.com/onflow/ff-sre-infrastructure/issues/763)
+- [Configure Prometheus Node for TN53](https://github.com/onflow/ff-sre-infrastructure/issues/760)
+- [Adjust Grafana Dashboards for TN53](https://github.com/onflow/ff-sre-infrastructure/issues/758)
+- [Create Dashboard for Data Disk Size Definitions for TN53 and MN27](https://github.com/onflow/ff-sre-infrastructure/issues/754)
+- [Update DNS Record for TN53 Secure Endpoint](https://github.com/onflow/ff-sre-infrastructure/issues/749)
+- [Create Alerts for TN53 Nodes](https://github.com/onflow/ff-sre-infrastructure/issues/748)
+- [Create Resources for TN53 Infra on Terraform](https://github.com/onflow/ff-sre-infrastructure/issues/747)
+- [Add Ansible Inventory and Group Vars for TN53](https://github.com/onflow/ff-sre-infrastructure/issues/746)
+- [Validate Quotas for TN53 - GCP Project `flow-hosting`](https://github.com/onflow/ff-sre-infrastructure/issues/745)
+- [Create SRE Spork Checklist for TN53](https://github.com/onflow/ff-sre-infrastructure/issues/744)
+- [Add Validation Flag to the State Extraction Util Command](https://github.com/onflow/ff-sre-infrastructure/issues/751)
 
 **Support**
+- [Change Notification Policy for Alloy Observability Alerts](https://github.com/onflow/ff-sre-infrastructure/issues/755)
+- [MN26 Data Disk Increase - AN3/8](https://github.com/onflow/ff-sre-infrastructure/issues/752)
 
+**Security**
+- [Perform a Security Check on GitHub Repositories - NPM Packages](https://github.com/onflow/ff-sre-infrastructure/issues/742)
+
+**Costs**
+- [Investigate GCP Billing Increase](https://github.com/onflow/ff-sre-infrastructure/issues/739)
 
 ---
 
