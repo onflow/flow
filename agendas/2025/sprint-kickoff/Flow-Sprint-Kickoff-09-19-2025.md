@@ -287,6 +287,8 @@ Q3 Cycle Objective(s):
 * <ins>Overload resilience</ins>
   - Document how to use or adjust the collection throttling mechanism during times of overload.
 
+* Q3 Network Upgrade (Spork)
+  - Start mainnet spork prep
 
 * <ins>Data Availability:</ins>
   - PR Reviews
