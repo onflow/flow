@@ -339,13 +339,18 @@ Cycle Objective(s):
 **Done last sprint**
 
 #### Tidal:
-
-
+- Wrap up Closed Beta Gating work
+- Finalized liquidation PRs
+- Completed addressing Audit comments for Flow Actions and responded to auditors
+- Continued work on Oracle integration
 
 **This sprint**
 
 #### Tidal:
-
+- Move product to testnet testing phase
+- Merge liqudation PRs
+- Continue work on Oracle integrations
+- Continue work on AMM integrations
 
 ---
 
