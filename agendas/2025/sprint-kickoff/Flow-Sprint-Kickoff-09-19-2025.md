@@ -212,6 +212,7 @@ Q3 Cycle Objective(s):
 
 * Q3 Network Upgrade (Spork)
   - Preparation for the testnet spork
+    - Testing on migration testnet
     - Rosetta testing
     - Release notes review
     - Content for malleability, execution effort calibration.
