@@ -4,6 +4,9 @@
 
 * Forte is live on testnet
 * New CLI release brings a facelift and features that make life easier for AI agents and developers
+* [Scheduled Callbacks FLIP](https://github.com/onflow/flips/pull/331) accepted.
+* Confirmed improved Testnet execution performance (execution saturation, memory usage) after Forte upgrade.
+* [FLIP 343: Fix numeric type rounding inconsistency](https://github.com/onflow/flips/pull/344/) accepted.
 
 ---
 
@@ -79,38 +82,107 @@ Q3 2025 Cycle Objective(s):
 
 **Cadence Language**
 
+- Feature: Import Aliasing
+    - [Improve import aliasing](https://github.com/onflow/cadence/pull/4199)
+    - [[Compiler] Import Aliasing](https://github.com/onflow/cadence/pull/4125)
+    - [Import Aliasing](https://github.com/onflow/cadence/pull/4203)
+- [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059)
+    - [Improve tracing](https://github.com/onflow/cadence/pull/4217)
+    - [Improve tracing](https://github.com/onflow/cadence/pull/4218)
+    - [[Compiler] Simplify imported globals linking](https://github.com/onflow/cadence/pull/4220)
+    - [[Compiler] Initialize all variable of all imports](https://github.com/onflow/cadence/pull/4222)
+    - [[Compiler] Improve enum case value global initialization](https://github.com/onflow/cadence/pull/4221)
+    - [[Compiler] Initialize all variables of a dynamically linked program](https://github.com/onflow/cadence/pull/4223)
+    - [[Compiler] Refactor dynamic method invocation](https://github.com/onflow/cadence/pull/4226)
+    - [[Compiler] Use global's index instead of array index during linking](https://github.com/onflow/cadence/pull/4227)
+- [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
+    - [[Compiler] Improve globals.](https://github.com/onflow/cadence/pull/4211)
+    - [[Compiler] Reuse elaboration for imports when possible.](https://github.com/onflow/cadence/pull/4215)
+    - [[Compiler] Add control flow basic block visualization to program printer.](https://github.com/onflow/cadence/pull/4197)
+- bugfix
+    - [Fix tracing of function invocations](https://github.com/onflow/cadence/pull/4224)
+    - [[Compiler] Fix `invokeMethodDynamic`](https://github.com/onflow/cadence/pull/4225)
+    - internal: [1](https://github.com/onflow/cadence-internal/pull/347), [2](https://github.com/onflow/cadence-internal/pull/346), [3](https://github.com/onflow/cadence-internal/pull/333), [4](https://github.com/onflow/cadence-internal/pull/334), [5](https://github.com/onflow/cadence-internal/pull/343)
+- Docs
+    - [Document `Fix128` type](https://github.com/onflow/cadence-lang.org/pull/268)
+- Tools
+    - [[lint] Update to Cadence v1.7.0](https://github.com/onflow/cadence-tools/pull/492)
+    - [[LS] Render unreachable code as unnecessary](https://github.com/onflow/cadence-tools/pull/486)
+    - [[test] Update to Cadence v1.7.0](https://github.com/onflow/cadence-tools/pull/493)
+    - [[languageserver] Update to Cadence v1.7.0](https://github.com/onflow/cadence-tools/pull/494)
+    - [[LS] Improve hover](https://github.com/onflow/cadence-tools/pull/496)
+Flips
+    - [FLIP 343: Fix numeric type rounding inconsistency](https://github.com/onflow/flips/pull/344)
 
 
 **Cadence Execution**
-- [Scheduled Callbacks](https://github.com/onflow/flow-go/issues/7482)
 
+- Feature: [Public key de-duplication](https://github.com/onflow/flow-go/issues/7573)
+    - [Change report format for storage used migration from JSON to CSV](https://github.com/onflow/flow-go/pull/7835)
+    - [Add runtime public key duplicate detection and storage with support for account status v4 format](https://github.com/onflow/flow-go/pull/7829)
+    - [Reduce register reads by using Accounts.GetRuntimeAccountPublicKey](https://github.com/onflow/flow-go/pull/7841)
+    - bugfix: [Fix the RegisterSize() function](https://github.com/onflow/flow-go/pull/7834)
+    - Tooling updates: 
+        - [Create diff-keys utility to compare account public keys before and after migration](https://github.com/onflow/flow-go/pull/7875)
+        - [Add option to validate account public key migration](https://github.com/onflow/flow-go/pull/7878)
+- Feature: [Add support for tracing to debug-tx command](https://github.com/onflow/flow-go/pull/7793)
 - Badger -> Pebble
-
-- [Public key de-duplication](https://github.com/onflow/flow-go/issues/7573)
-
-- Metering improvement: [Refactor and cleanup FVM metering](https://github.com/onflow/flow-go/pull/7810)
-
-- Bugfix:
-
-Testing:
-
-Chores:
-
+    - [[Storage] Change Default DB to be Pebble for the upcoming spork](https://github.com/onflow/flow-go/pull/7796)
+    - [[Storage] Enable the ByView methods](https://github.com/onflow/flow-go/pull/7806)
+    - [[Storage] Minor refactor](https://github.com/onflow/flow-go/pull/7799)
+    - [[Storage] Follower use protocol db](https://github.com/onflow/flow-go/pull/7833)
+    - [[Storage] Change Default DB to be Pebble for the upcoming spork](https://github.com/onflow/flow-go/pull/7840)
+    - [[Storage] Replace badger with pebble in tests](https://github.com/onflow/flow-go/pull/7814)
+    - [[Util] Use pebble datastore](https://github.com/onflow/flow-go/pull/7861)
+- Scheduled transactions
+    - [[Scheduled Callbacks] API inclussion of scheduled callbacks](https://github.com/onflow/flow-go/pull/7805)
+    - [Update to newest version of the FlowTransactionScheduler contract](https://github.com/onflow/flow-go/pull/7891)
+    - [Add scheduled transactions default cli parameters](https://github.com/onflow/flow-go/pull/7902)
+    - [[Scheduled Callbacks] Add scheduled transaction metrics](https://github.com/onflow/flow-go/pull/7901)
+- Metering improvement: [Disable FVM metering inside EVM transactions](https://github.com/onflow/flow-go/pull/7825)
+- Forte upgrade chores
+    - [[Backport] v0.42.4 backport revert cadence](https://github.com/onflow/flow-go/pull/7831)
+    - [v0.42.4 revert cadence.1.7.0](https://github.com/onflow/flow-go/pull/7813)
+    - [[Feature] Pebble merge into master](https://github.com/onflow/flow-go/pull/7794)
+    - [Bump `ethereum/go-ethereum` dependency to `v1.16.3`](https://github.com/onflow/flow-go/pull/7817)
+    - [Update to Cadence v1.7.0](https://github.com/onflow/flow-go/pull/7853)
+    - [Merge feature account public key deduplication to master](https://github.com/onflow/flow-go/pull/7869)
 
 **Flow EVM**
+- Core: [[Flow EVM] Handle non-existing accounts in all of state overrides methods](https://github.com/onflow/flow-go/pull/7737)
+- Gateway
+    - Integrating JSON-RPC API specification changes from Geth releases
+        - [Apply block overrides in `eth_estimateGas` JSON-RPC endpoint](https://github.com/onflow/flow-evm-gateway/pull/876)
+    - Improvements
+        - [Include `errorCode` from EVM `txResult` in Cadence assert message](https://github.com/onflow/flow-evm-gateway/pull/874)
+        - [Improve logging for eth_call & eth_estimateGas](https://github.com/onflow/flow-evm-gateway/issues/862)
+- chores
+    - [Update to Cadence v1.7.0](https://github.com/onflow/flow-evm-gateway/pull/877)
+    - [Update Dockerfile go version to `1.25`](https://github.com/onflow/flow-evm-gateway/pull/878)
+    - [[Back-port] Bump flow-go version to `v0.43.0`](https://github.com/onflow/flow-evm-gateway/pull/882)
+    - [Bump flow-go version to `v0.43.0`](https://github.com/onflow/flow-evm-gateway/pull/881)
+- tooling
+    [Allow manual image build](https://github.com/onflow/flow-evm-gateway/pull/879)
 
 
 **This sprint**
 
 - Cadence Language
-
+  - Back to compiler
+      - Continue investigating execution state differences
+      - Continue tackling tech-debt & optimizations
 
 - Cadence Execution
-
+  - Complete [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598) Finishing up measurements, publish FLIP
+  - Complete bugfix: [Fix memory caches getting out of sync with db](https://github.com/onflow/flow-go/pull/7597)
+  - Continue [Badger -> Pebble: remaining tasks and cleanup](https://github.com/onflow/flow-go/issues/7682)
+  - Start work on [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571)
+  - Start working on new storage format documentation & key de-duplication comms/blog.
 
 - EVM
-
-
+  - Complete: [Improve Tracking of the Surge factor](https://github.com/onflow/flow-evm-gateway/issues/863)
+  - Continue: [Improve resilience on connections with upstream ANs](https://github.com/onflow/flow-evm-gateway/issues/764)
+  - Continue: [Integrate JSON-RPC API specification changes from Geth releases](https://github.com/onflow/flow-evm-gateway/issues/840)
 
 **On Hold**
 - New Trie research
