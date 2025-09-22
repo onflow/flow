@@ -1882,14 +1882,14 @@ components:
             - null
             signature: null
             reference_block_id: null
-            cluster_chain_id: "{}"
+            cluster_chain_id: cluster_chain_id
           - collection_id: null
             signer_ids:
             - null
             - null
             signature: null
             reference_block_id: null
-            cluster_chain_id: "{}"
+            cluster_chain_id: cluster_chain_id
           block_seals:
           - result_id: null
             final_state: final_state
@@ -2024,14 +2024,14 @@ components:
           - null
           signature: null
           reference_block_id: null
-          cluster_chain_id: "{}"
+          cluster_chain_id: cluster_chain_id
         - collection_id: null
           signer_ids:
           - null
           - null
           signature: null
           reference_block_id: null
-          cluster_chain_id: "{}"
+          cluster_chain_id: cluster_chain_id
         block_seals:
         - result_id: null
           final_state: final_state
@@ -2087,7 +2087,7 @@ components:
         reference_block_id:
           $ref: "#/components/schemas/Identifier"
         cluster_chain_id:
-          $ref: "#/components/schemas/string"
+          type: string
       example:
         collection_id: null
         signer_ids:
@@ -2095,7 +2095,7 @@ components:
         - null
         signature: null
         reference_block_id: null
-        cluster_chain_id: "{}"
+        cluster_chain_id: cluster_chain_id
     BlockSeal:
       required:
       - aggregated_approval_signatures
