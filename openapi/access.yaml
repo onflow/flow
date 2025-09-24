@@ -1179,6 +1179,14 @@ components:
           $ref: '#/components/schemas/Metadata'
         _links:
           $ref: '#/components/schemas/Links'
+    ExecuteScriptResponse:
+      type: object
+      properties:
+        value:
+          type: string
+          format: byte
+        metadata:
+          $ref: '#/components/schemas/Metadata'
     Event:
       type: object
       required:

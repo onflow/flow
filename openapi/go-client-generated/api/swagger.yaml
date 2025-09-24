@@ -2270,6 +2270,14 @@ components:
           transaction_index: transaction_index
           type: type
           event_index: event_index
+    ExecuteScriptResponse:
+      type: object
+      properties:
+        value:
+          type: string
+          format: byte
+        metadata:
+          $ref: "#/components/schemas/Metadata"
     Event:
       required:
       - event_index
