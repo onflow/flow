@@ -85,6 +85,14 @@ service AccessAPI {
   rpc GetSystemTransactionResult(GetSystemTransactionResultRequest)
       returns (TransactionResultResponse);
 
+  // GetScheduledTransaction gets a scheduled transaction body for a given callback ID
+  rpc GetScheduledTransaction(GetScheduledTransactionRequest)
+      returns (TransactionResponse);
+
+  // GetScheduledTransactionResult gets a scheduled transaction result for a given callback ID
+  rpc GetScheduledTransactionResult(GetScheduledTransactionResultRequest)
+      returns (TransactionResultResponse);
+
   // Accounts
 
   // GetAccount is an alias for GetAccountAtLatestBlock.
@@ -434,6 +442,25 @@ message GetSystemTransactionResultRequest {
   // ID of the system transaction. [optional]
   // If unset, the result of the last system transaction is returned.
   bytes id = 4;
+}
+
+message GetScheduledTransactionRequest {
+  // id field of the scheduled transaction returned by the system contract.
+  uint32 id = 1;
+
+  // Execution state query parameters used for unsealed blocks. [optional]
+  entities.ExecutionStateQuery execution_state_query = 2;
+}
+
+message GetScheduledTransactionResultRequest {
+  // id field of the scheduled transaction returned by the system contract.
+  uint32 id = 1;
+
+  // Desired event payload encoding.
+  entities.EventEncodingVersion event_encoding_version = 2;
+
+  // Execution state query parameters used for unsealed blocks. [optional]
+  entities.ExecutionStateQuery execution_state_query = 3;
 }
 
 message GetTransactionByIndexRequest {
