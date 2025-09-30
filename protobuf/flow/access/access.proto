@@ -446,7 +446,7 @@ message GetSystemTransactionResultRequest {
 
 message GetScheduledTransactionRequest {
   // id field of the scheduled transaction returned by the system contract.
-  uint32 id = 1;
+  uint64 id = 1;
 
   // Execution state query parameters used for unsealed blocks. [optional]
   entities.ExecutionStateQuery execution_state_query = 2;
@@ -454,7 +454,7 @@ message GetScheduledTransactionRequest {
 
 message GetScheduledTransactionResultRequest {
   // id field of the scheduled transaction returned by the system contract.
-  uint32 id = 1;
+  uint64 id = 1;
 
   // Desired event payload encoding.
   entities.EventEncodingVersion event_encoding_version = 2;
