@@ -119,6 +119,7 @@ Q3 2025 Cycle Objective(s):
         - [[Storage] Refactor operations to update parent children block index](https://github.com/onflow/flow-go/pull/7930)
         - [[Storage] Refactor index cluster height](https://github.com/onflow/flow-go/pull/7954)
         - [[Storage] Refactor epoch protocol state](https://github.com/onflow/flow-go/pull/7964)
+    - Presented as part of [Core Protocol Working Group call](https://github.com/onflow/Flow-Working-Groups/blob/main/core_protocol_working_group/meetings/2025-09-25.md): Introduction of the new storage backend and API for Flow nodes
 - Scheduled Transactions
     - System transaction execution result logging fix: 
         - [[Scheduled Callbacks] Update logger values](https://github.com/onflow/flow-go/pull/7944)
@@ -257,10 +258,10 @@ Q3 Cycle Objective(s):
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
   * Continuing development on Collector Bootstrapping
+  * Addressing tx deduplication edge case https://github.com/onflow/flow-go/issues/7758
 
 * Other items not covered in OKRs:
   - Mitigating double-counting attack for byzantine primary [6127](https://github.com/onflow/flow-go-internal/issues/6127)
-  - Addressing tx deduplication edge case https://github.com/onflow/flow-go/issues/7758
   - Content pieces for Forte - Malleability, Key deduplication, execution effort calibration.
 
 **This sprint**
@@ -282,6 +283,7 @@ Q3 Cycle Objective(s):
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
   - Continuing development on Collector Bootstrapping
+  - Addressing tx deduplication edge case https://github.com/onflow/flow-go/issues/7758
 
 * <ins>Cryptography</ins>
   * SPoCK:
@@ -290,7 +292,6 @@ Q3 Cycle Objective(s):
 
 * Other items not covered in OKRs:
   - Finish implementation for mitigating double-counting attack for byzantine primary [6127](https://github.com/onflow/flow-go-internal/issues/6127)
-  - Addressing tx deduplication edge case https://github.com/onflow/flow-go/issues/7758
 
 **On Hold**
 
