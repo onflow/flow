@@ -6,7 +6,7 @@
 
 ---
 
-### Mainnet Uptime - Last 14 days (09/4/25 to 09/18/25) \[Vishal]
+### Mainnet Uptime - Last 14 days (09/19/25 to 10/03/25) \[Manny]
 
 |                         | Target | Current Score | Error budget used |
 |:------------------------|:------:|:-------------:|:-----------------:|
@@ -32,25 +32,25 @@
 | HCU                    | 6/16/2025 |            |           | 12        |              | 12     |               |
 | HCU                    | 8/7/2025  |            |           | 9         |              | 9      |               |
 | Total downtime in mins |           | 210        | 210       | 272       | 210          | 272    |               |
-| YTD SLA                |           | 99.94%     | 99.94%    | 99.92%    | 99.94%       | 99.92% |               |
+| YTD SLA                |           | 99.95%     | 99.95%    | 99.93%    | 99.95%       | 99.93% |               |
 | SLA for 2025           |           | 99.96%     | 99.96%    | 99.95%    | 99.96%       | 99.95% |               |
 
 ### Incidents
 
-- [P0](https://status.flow.com/incidents/kdngmc7jgf8r) on **Testnet** on 9/23
+- [P0](https://status.flow.com/incidents/kdngmc7jgf8r) on **Testnet** on 9/23, 19:17 UTC to ~19:27 UTC
   - Block rate dropped to zero
   - Root cause: Manual error during a rolling upgrade of the testnet nodes.
 
 ### Key Release Dates & Breaking Changes
 
-- Testnet HCU - ~next week, exact date is TBD
+- Testnet HCU - ~next week, exact date is still TBD
 
 - Forte Network upgrade (Spork) Fall 2025.
   - Mainnet in **Oct, 22nd (Wednesday)**
 
 ---
 
-### FLIPs Tracker \[Vishal]
+### FLIPs Tracker \[Manny]
 
 |                         | Application | Cadence | Governance | Protocol |  Total  |
 |:------------------------|:-----------:|:-------:|:----------:|:--------:|:-------:|
@@ -71,7 +71,7 @@
 
 # Working Group Updates
 
-### **Cadence Language and Execution** \[Bastian]
+### **Cadence Language and Execution** \[Jan]
 
 Q3 2025 Cycle Objective(s):
 
