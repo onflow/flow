@@ -137,7 +137,7 @@ Q3 Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Overload resilience</ins>
-  - Create [runbook](https://www.notion.so/flowfoundation/Finalization-Execution-Sealing-Halt-80cf3938551e4dad808e166690f3892e) on how to use or adjust the collection throttling mechanism during times of overload.
+  - Create [runbook (mature draft)](https://www.notion.so/flowfoundation/Finalization-Execution-Sealing-Halt-80cf3938551e4dad808e166690f3892e) on how to use or adjust the collection throttling mechanism during times of overload.
   - Added additional pannels to mainnet dashboard for improved visibility 
 
 * Q3 Network Upgrade (Spork)
@@ -199,7 +199,7 @@ Q3 Cycle Objective(s):
 **This sprint**
 
 * <ins>Overload resilience</ins>
-  - Complete the runbook on collection throttling.
+  - Complete the [runbook](https://www.notion.so/flowfoundation/Finalization-Execution-Sealing-Halt-80cf3938551e4dad808e166690f3892e) on collection throttling.
   - Add metrics for tx prioritization
 
 * <ins>Data Availability:</ins>
