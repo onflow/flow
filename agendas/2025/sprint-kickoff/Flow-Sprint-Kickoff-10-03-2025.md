@@ -138,6 +138,7 @@ Q3 Cycle Objective(s):
 
 * <ins>Overload resilience</ins>
   - Create [runbook](https://www.notion.so/flowfoundation/Finalization-Execution-Sealing-Halt-80cf3938551e4dad808e166690f3892e) on how to use or adjust the collection throttling mechanism during times of overload.
+  - Added additional pannels to mainnet dashboard for improved visibility 
 
 * Q3 Network Upgrade (Spork)
   - Dry run of root block voting with consensus node partner - Figment.
