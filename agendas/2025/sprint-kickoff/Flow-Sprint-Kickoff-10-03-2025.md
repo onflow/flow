@@ -124,11 +124,11 @@ Chores:
 
 ---
 
-### **Core Protocol** \[Vishal]
+### **Core Protocol** \[Alex]
 Q3 Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
 * Overload resilience  [IN PROGRESS]
-* Q3 Network Upgrade (Spork) [TODO]
+* Q3 Network Upgrade (Spork) [IN PROGRESS]
 * [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * SPoCK Research [IN PROGRESS]
 * Address data structure malleability risk [IN PROGRESS]
@@ -137,11 +137,16 @@ Q3 Cycle Objective(s):
 **Done last sprint**
 
 * <ins>Overload resilience</ins>
+  - Create a runbook on how to use or adjust the collection throttling mechanism during times of overload.
 
-
+* Q3 Network Upgrade (Spork)
+  - Dry run of root block voting with consensus node partner - Figment.
+  - Sync with QuickNode on steps for mainnet network upgrade.
 
 * <ins>Data Availability</ins>
-
+  * New APIs for Scheduled Transactions
+  * Investigate the execution data sync issues observed on FF testnet access nodes.
+  * PR reviews
   * KROK Team
     * Done:
 
@@ -179,18 +184,24 @@ Q3 Cycle Objective(s):
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
+  * Continuing development on Collector Bootstrapping
 
+* Other items not covered in OKRs:
+  - Mitigating double-counting attack for byzantine primary [6127](https://github.com/onflow/flow-go-internal/issues/6127)
+  - Addressing tx deduplication edge case https://github.com/onflow/flow-go/issues/7758
+  - Content pieces for Forte - Malleability, Key deduplication, execution effort calibration.
 
 **This sprint**
 
 * <ins>Overload resilience</ins>
-  - Document how to use or adjust the collection throttling mechanism during times of overload.
-
+  - Complete the runbook on collection throttling.
+  - Add metrics for tx prioritization
 
 * <ins>Data Availability:</ins>
+  - New APIs for Scheduled Transactions
+  - Roll out the fix for the execution sync issue.
   - PR Reviews
   - KROK Team:
-
 
 
 * <ins>Immutable Models M2</ins>
@@ -200,12 +211,14 @@ Q3 Cycle Objective(s):
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
-
+  - Continuing development on Collector Bootstrapping
 
 * <ins>Cryptography</ins>
   * SPoCK:
 
-
+* Other items not covered in OKRs:
+  - Finish implementation for mitigating double-counting attack for byzantine primary [6127](https://github.com/onflow/flow-go-internal/issues/6127)
+  - Addressing tx deduplication edge case https://github.com/onflow/flow-go/issues/7758
 
 **On Hold**
 
@@ -303,7 +316,7 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 ---
 
-### **Governance** \[Vishal]
+### **Governance** \[Kan]
 
 [Q3 Cycle Objective(s)](https://github.com/orgs/onflow/projects/91/views/5):
 1. Surge Pricing
