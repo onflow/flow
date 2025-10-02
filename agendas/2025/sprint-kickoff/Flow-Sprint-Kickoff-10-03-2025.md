@@ -2,7 +2,8 @@
 
 ### Team Wins 🎉
 
-
+* Completed [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059) - over 14K transactions tested for correctness, including varied load from TPS loader.
+* Completed migration and bootstrapping of Forte release candidate on migration mainnet test network.
 
 ---
 
