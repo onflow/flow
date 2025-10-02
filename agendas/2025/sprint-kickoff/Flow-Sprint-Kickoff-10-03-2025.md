@@ -178,10 +178,14 @@ Q3 Cycle Objective(s):
 
 
 * <ins>Cryptography</ins>
-  * Passkeys:
-
-  * Multi-SPoCK:
-
+  * SPoCK:
+    - continued on SPoCK aggregation for distinct secrets (different from multi-SPoCK):
+      - more on the security proof
+      - exploring a way to further aggregate proofs (special case when "matching" provers are known)
+        - working on defining the aggregation and its security requirements
+        - working on proof feasibility (ongoing)
+      - paper: minor progress in editing
+      - followed up with Riad (to check his availability for review)
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
   * Continuing development on Collector Bootstrapping
@@ -203,18 +207,18 @@ Q3 Cycle Objective(s):
   - PR Reviews
   - KROK Team:
 
-
 * <ins>Immutable Models M2</ins>
   - PR reviews
   - KROK Team:
     - Address review remarks from previous sprint
-
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
   - Continuing development on Collector Bootstrapping
 
 * <ins>Cryptography</ins>
   * SPoCK:
+    - continue on SPoCK aggregation for distinct secrets (different from multi-SPoCK)
+    - make progress on the paper
 
 * Other items not covered in OKRs:
   - Finish implementation for mitigating double-counting attack for byzantine primary [6127](https://github.com/onflow/flow-go-internal/issues/6127)
