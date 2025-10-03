@@ -213,10 +213,18 @@ Q3 Cycle Objective(s):
   - Sync with QuickNode on steps for mainnet network upgrade.
 
 * <ins>Data Availability</ins>
-  * New APIs for Scheduled Transactions
-  * Investigate the execution data sync issues observed on FF testnet access nodes.
-  * PR reviews
+  - PR reviews
+  - Backfilled data required to shutdown historic ENs for MN 24, 25 and TN 52
+  - Started new APIs for Scheduled Transactions
+  - Investigate the execution data sync issues observed on FF testnet access nodes. ([Issue 7120](https://github.com/onflow/flow-go-internal/issues/7120))
+  - [Access] Request collections immediately ([PR 7926](https://github.com/onflow/flow-go/pull/7926))
+  - [Access] Allow streaming from the spork root block ([PR 7913](https://github.com/onflow/flow-go/pull/7913))
+  - [Access] Fix unsynchronized concurrent access in downloader ([PR 7989](https://github.com/onflow/flow-go/pull/7989))
+  - Add ExecutionStateQuery parameter to GetSystemTransactionRequest ([PR 1636](https://github.com/onflow/flow/pull/1636))
+  - Update apis to return executor metadata by reference ([PR 7953](https://github.com/onflow/flow-go/pull/7953))
+  - Testing and CI [1](https://github.com/onflow/flow-go/pull/7973), [2](https://github.com/onflow/flow-go/pull/7966), [3](https://github.com/onflow/flow-go/pull/7948), [4](https://github.com/onflow/flow-go/pull/7777), [5](https://github.com/onflow/flow-go/pull/7687), [6](https://github.com/onflow/flow-go/pull/7904)
   * KROK Team
+    - [DataAvailability] Add ExecuteScriptResponse to openapi ([PR 1637](https://github.com/onflow/flow/pull/1637))
     * In Review:
       - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
       - [[Data Availability] Refactor events test in http package #7923](https://github.com/onflow/flow-go/issues/7923)
