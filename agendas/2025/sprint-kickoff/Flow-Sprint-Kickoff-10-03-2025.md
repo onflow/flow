@@ -284,11 +284,6 @@ Q3 Cycle Objective(s):
   - KROK Team:
      - Continue work on Access API execution state endpoints ( milestone 3 )
 
-* <ins>Immutable Models M2</ins>
-  - PR reviews
-  - KROK Team:
-    - Work on Immutable models finished for KROK team atm, all assigned tasks closed
-
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
   - Continuing development on Collector Bootstrapping
   - Addressing tx deduplication edge case https://github.com/onflow/flow-go/issues/7758
