@@ -4,6 +4,7 @@
 
 * Completed [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059) - over 14K transactions tested for correctness, including varied load from TPS loader.
 * Completed migration and bootstrapping of Forte release candidate on migration mainnet test network.
+* New CLI releases with Scheduled Transaction scaffolding, new commands, and other misc improvements.
 
 ---
 
@@ -121,7 +122,7 @@ Q3 2025 Cycle Objective(s):
         - [[Storage] Refactor epoch protocol state](https://github.com/onflow/flow-go/pull/7964)
     - Presented as part of [Core Protocol Working Group call](https://github.com/onflow/Flow-Working-Groups/blob/main/core_protocol_working_group/meetings/2025-09-25.md): Introduction of the new storage backend and API for Flow nodes
 - Scheduled Transactions
-    - System transaction execution result logging fix: 
+    - System transaction execution result logging fix:
         - [[Scheduled Callbacks] Update logger values](https://github.com/onflow/flow-go/pull/7944)
         - [Change system chunk logging](https://github.com/onflow/flow-go/pull/7993)
 - Atree debugging improvements:
@@ -134,7 +135,7 @@ Q3 2025 Cycle Objective(s):
     - [Describe RLE++ encoding more and introduce data format design without technical details (yet)](https://github.com/fxamacker/draft-notes-about-deduplicating-public-keys/pull/4)
 - Bugfix
     - [[Storage] Fix memory caches getting out of sync with db (BadgerDB & Pebble)](https://github.com/onflow/flow-go/pull/7597)
-- util 
+- util
     - [Support account status v4 in checkpoint-collect-stats util](https://github.com/onflow/flow-go/pull/7925)
     - [Update storage health check to add account key validation, etc.](https://github.com/onflow/flow-go/pull/7917)
     - [[Util] Logging - fix the log when generating key for bootstrap](https://github.com/onflow/flow-go/pull/7842)
@@ -206,7 +207,7 @@ Q3 Cycle Objective(s):
 
 * <ins>Overload resilience</ins>
   - Create [runbook (mature draft)](https://www.notion.so/flowfoundation/Finalization-Execution-Sealing-Halt-80cf3938551e4dad808e166690f3892e) on how to use or adjust the collection throttling mechanism during times of overload.
-  - Added additional pannels to mainnet dashboard for improved visibility 
+  - Added additional pannels to mainnet dashboard for improved visibility
 
 * Q3 Network Upgrade (Spork)
   - Dry run of root block voting with consensus node partner - Figment.
@@ -228,7 +229,7 @@ Q3 Cycle Objective(s):
     * In Review:
       - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
       - [[Data Availability] Refactor events test in http package #7923](https://github.com/onflow/flow-go/issues/7923)
-        
+
     * In Progress:
       - [[Data Availability] Implement fork-aware Execution Data Endpoints #7656](https://github.com/onflow/flow-go/issues/7656)
       - [[Data Availability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
@@ -336,31 +337,61 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
-* React SDK
-
+* React SDK/FCL
+  * Created passkeys demo
+  * Finished React SDK demo playground for showcasing components and hooks
+  * Broke up documentation into hooks, components, and overview sections
+  * Supported DevRel team for bridging wrapped BTC to Cadence
+  * Added `useFlowAuthz` hook
+  * Added `useFlowSchedule` hook
 
 * CLI Improvements
-
+  * Introduced new command to check `flow.json` configured accounts validity against emulator state to improve `flow.json` and emulator syncing issue
+  * Started adding Scheduled Transactions Manager functionality to the CLI
+  * Created Scheduled Transactions scaffold
+  * Revamped `flow init` with basic, Scheduled Transactions, or custom scaffolding
+  * Added support for funding emulator accounts with `flow accounts fund`  in CLI
+  * Added dependency tree installation view to CLI Dependency Manager
+  * Bugfix: mixing testnet and mainnet dependency sources
 
 * Scheduled Callbacks
-
+  * Created Scheduled Transactions scaffold
+  * Fixed bugs in the Scheduled Transactions emulator integration
 
 * Testnet <-> Mainnet
-
+  * Created USDF project scaffold with testnet mock
 
 **This Sprint**
 
-* React SDK
+* React SDK / FCL
+  * Deploy playground to react.flow.com
+  * Improve docs overview with playground
+  * Launch React SDK demo playground
+  * Work with design to get a React SDK banner on flow.com
+  * Finish `useBridgeTokenFromEvm`, `useBridgeNftFromEvm`, and `useFlowNft` hooks
+  * Finish NFT card component
+  * Update docs for new hooks and components
+  * Integrate scheduled transactions viewer in `<Connect />` button profile modal
+  * Create passkeys doc on creating and signing with Flow user passkeys
+  * Continue support on LDK work with DevRel
 
+* DeFi Actions
+  * DeFi Actions scaffold to use mainnet forking emulator
+  * Add tooling support for mainnet forking
+  * Add docs for mainnet forking
 
 * CLI Improvements
-
+  * Update this DeFi Actions scaffold to be used in `flow init`
+  * Continue work on Scheduled Transactions manager feature
+  * Improve outputs with branded colors for better readability
+  * Create command to migrate accounts with key to key/file location for best practice security
+  * Begin creating more scaffolding for different project types
 
 * Scheduled Callbacks
-
+  * Get FlowCron contract reviewed and tested
 
 * Testnet <-> Mainnet
-
+  * Integrate dynamic USDF scaffold into `flow init`
 
 
 ---
