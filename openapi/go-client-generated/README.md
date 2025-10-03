@@ -34,6 +34,10 @@ Class | Method | HTTP request | Description
 *NodeVersionInfoApi* | [**NodeVersionInfoGet**](docs/NodeVersionInfoApi.md#nodeversioninfoget) | **Get** /node_version_info | Get Node Version Information
 *ScriptsApi* | [**ScriptsPost**](docs/ScriptsApi.md#scriptspost) | **Post** /scripts | Execute a Cadence Script
 *SubscribeEventsApi* | [**SubscribeEventsGet**](docs/SubscribeEventsApi.md#subscribeeventsget) | **Get** /subscribe_events | Subscribe events
+*TransactionsApi* | [**ScheduledTransactionResultsIdGet**](docs/TransactionsApi.md#scheduledtransactionresultsidget) | **Get** /scheduled_transaction_results/{id} | Get a Scheduled Transaction Result by ID.
+*TransactionsApi* | [**ScheduledTransactionsIdGet**](docs/TransactionsApi.md#scheduledtransactionsidget) | **Get** /scheduled_transactions/{id} | Get a Scheduled Transaction by ID.
+*TransactionsApi* | [**SystemTransactionResultsTransactionIdGet**](docs/TransactionsApi.md#systemtransactionresultstransactionidget) | **Get** /system_transaction_results/{transaction_id} | Get a System Transaction Result by ID.
+*TransactionsApi* | [**SystemTransactionsIdGet**](docs/TransactionsApi.md#systemtransactionsidget) | **Get** /system_transactions/{id} | Get a System Transaction by ID.
 *TransactionsApi* | [**TransactionResultsTransactionIdGet**](docs/TransactionsApi.md#transactionresultstransactionidget) | **Get** /transaction_results/{transaction_id} | Get a Transaction Result by ID.
 *TransactionsApi* | [**TransactionsIdGet**](docs/TransactionsApi.md#transactionsidget) | **Get** /transactions/{id} | Get a Transaction by ID.
 *TransactionsApi* | [**TransactionsPost**](docs/TransactionsApi.md#transactionspost) | **Post** /transactions | Submit a Transaction

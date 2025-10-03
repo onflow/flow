@@ -258,6 +258,134 @@ paths:
           $ref: '#/components/responses/400BadRequest'
         '500':
           $ref: '#/components/responses/500InternalServerError'
+  /system_transactions/{id}:
+    get:
+      summary: Get a System Transaction by ID.
+      description: Get a system transaction body by the provided transaction ID.
+      tags:
+        - Transactions
+      parameters:
+        - description: The ID of the system transaction to get.
+          name: id
+          in: path
+          schema:
+            $ref: '#/components/schemas/Identifier'
+          required: true
+        - $ref: '#/components/parameters/blockIdParam'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/agreeingExecutorsCount'
+        - $ref: '#/components/parameters/requiredExecutorIds'
+        - $ref: '#/components/parameters/includeExecutorMetadata'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
+  /system_transaction_results/{transaction_id}:
+    get:
+      summary: Get a System Transaction Result by ID.
+      description: Get system transaction result by the transaction result ID.
+      tags:
+        - Transactions
+      parameters:
+        - description: The system transaction ID of the transaction result.
+          name: transaction_id
+          in: path
+          schema:
+            $ref: '#/components/schemas/Identifier'
+          required: true
+        - $ref: '#/components/parameters/blockIdParam'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/agreeingExecutorsCount'
+        - $ref: '#/components/parameters/requiredExecutorIds'
+        - $ref: '#/components/parameters/includeExecutorMetadata'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResult'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
+  /scheduled_transactions/{id}:
+    get:
+      summary: Get a Scheduled Transaction by ID.
+      description: Get a scheduled transaction body by the provided scheduled transaction id field.
+      tags:
+        - Transactions
+      parameters:
+        - description: The scheduled transaction's `id` field returned by the system contract.
+          name: id
+          in: path
+          schema:
+            type: string
+            format: uint64
+          required: true
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/agreeingExecutorsCount'
+        - $ref: '#/components/parameters/requiredExecutorIds'
+        - $ref: '#/components/parameters/includeExecutorMetadata'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
+  /scheduled_transaction_results/{id}:
+    get:
+      summary: Get a Scheduled Transaction Result by ID.
+      description: Get scheduled transaction result by the scheduled transaction ID.
+      tags:
+        - Transactions
+      parameters:
+        - description: The scheduled transaction's `id` field returned by the system contract.
+          name: id
+          in: path
+          schema:
+            type: string
+            format: uint64
+          required: true
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/agreeingExecutorsCount'
+        - $ref: '#/components/parameters/requiredExecutorIds'
+        - $ref: '#/components/parameters/includeExecutorMetadata'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResult'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
   /collections/{id}:
     get:
       summary: Gets a Collection by ID
