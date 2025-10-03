@@ -217,34 +217,32 @@ Q3 Cycle Objective(s):
   * Investigate the execution data sync issues observed on FF testnet access nodes.
   * PR reviews
   * KROK Team
-    * Done:
-
-
     * In Review:
-
-
+      - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
+      - [[Data Availability] Refactor events test in http package #7923](https://github.com/onflow/flow-go/issues/7923)
+        
     * In Progress:
-
+      - [[Data Availability] Implement fork-aware Execution Data Endpoints #7656](https://github.com/onflow/flow-go/issues/7656)
+      - [[Data Availability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
+      - [[Data Availability] Implement fork-aware Streaming Events Endpoints #7657](https://github.com/onflow/flow-go/issues/7657)
+      - [[Data Availability] Implement fork-aware Script Endpoints #7651](https://github.com/onflow/flow-go/issues/7651)
 
     * Milestones status:
       - milestone 1: completed
-
       - milestone 2:
-
+        - [Epic 7180](https://github.com/onflow/flow-go/issues/7180): 4 done, 3 in progress out of 12
+        - [Epic 7181](https://github.com/onflow/flow-go/issues/7181): 1 done, more issues to be created after 7180
       - milestone 3:
+        - [Epic 7182](https://github.com/onflow/flow-go/issues/7182): 6/17 done ( some new sub-issues added )
+        - [Epic 7615](https://github.com/onflow/flow-go/issues/7615): 5 in progress, 3 in review, out of 12
+        - [Epic 7610](https://github.com/onflow/flow-go/issues/7610): 2/7 done, 0 in progress
 
 
 * <ins>Immutable Models M2</ins>
   * Immutable Models PR reviews
   * KROK Team
     * Done:
-
-
-    * In Review:
-
-
-    * In Progress:
-
+      - Work on Immutable models finished for KROK team atm, all assigned tasks closed
 
 * <ins>Cryptography</ins>
   * SPoCK:
@@ -275,11 +273,12 @@ Q3 Cycle Objective(s):
   - Roll out the fix for the execution sync issue.
   - PR Reviews
   - KROK Team:
+     - Continue work on Access API execution state endpoints ( milestone 3 )
 
 * <ins>Immutable Models M2</ins>
   - PR reviews
   - KROK Team:
-    - Address review remarks from previous sprint
+    - Work on Immutable models finished for KROK team atm, all assigned tasks closed
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
   - Continuing development on Collector Bootstrapping
