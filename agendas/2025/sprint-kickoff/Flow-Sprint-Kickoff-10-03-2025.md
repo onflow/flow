@@ -367,17 +367,17 @@ Cycle Objective(s):
 
 ### Applications / Wallet [Jeff]
 
-**Cycle Objective(s):**
-
-KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 0.25 per week on a 4-week rolling average.
-- Current (Sep 5: 0.25/week -> 98% decrease in bugs since Jan/Feb!)
 
 **Done last sprint**
 
+- Completed v1.1 of our React Native integration, fixing issues with the send workflow
+- ~50% completed support for Surge Pricing across all platforms.
 
 **This sprint**
 
-
+- MVP of Surge Pricing support across all platforms
+- Release MVP support for EOAs in Flow Wallet extension
+- FTUE/Onboarding workflows for Full/Secure profile support on mobile
 
 ---
 
