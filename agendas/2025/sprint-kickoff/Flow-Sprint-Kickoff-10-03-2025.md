@@ -321,12 +321,18 @@ Cycle Objective(s):
 
 #### Tidal:
 
-
+- Liquidation logic merged
+- Testnet integration with More Markets vault
+- Band Oracle integration
+- Tidal Protocol repo polish in preparation for audit submission
 
 **This sprint**
 
 #### Tidal:
 
+- Finalize Testnet integration with More Markets vault
+- Work through general Oracle abstraction
+- Internal live testing
 
 ---
 
