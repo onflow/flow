@@ -386,13 +386,30 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 **Done last sprint**
 
 **Tidal**
+- [Configure Crypto KMS Permissions via Terraform](https://github.com/onflow/ff-sre-infrastructure/issues/777)
 
+**Spork**
+- [Scale Down TN52 Nodes after the TN53 Spork](https://github.com/onflow/ff-sre-infrastructure/issues/770)
+- [Deploy New Util to TN53](https://github.com/onflow/ff-sre-infrastructure/issues/772)
+- [Execute Rolling Deploy to TN53 to Replace Pebble Flag](https://github.com/onflow/ff-sre-infrastructure/issues/773)
+- [Update Automation Snapshot Schedule from TN52 to TN53](https://github.com/onflow/ff-sre-infrastructure/issues/797)
 
 **Observability**
-
+- [Create Monitoring Resources for Forte War Room](https://github.com/onflow/ff-sre-infrastructure/issues/741)
 
 **Support**
+- [Configure Public Buckets for EVM GW DB Backups](https://github.com/onflow/ff-sre-infrastructure/issues/784)
+- [Configure Registry Permissions for DL Access to Flow Emulator Image](https://github.com/onflow/ff-sre-infrastructure/issues/783)
+- [Deploy New Util to MN26](https://github.com/onflow/ff-sre-infrastructure/issues/801)
+- [Update OS Version of Migration MN and TN Nodes](https://github.com/onflow/ff-sre-infrastructure/issues/771)
+- [Update DNS Records for Migration of Sites between Webflow Accounts](https://github.com/onflow/ff-sre-infrastructure/issues/790)
+- [Create DNS Records for Playground App](https://github.com/onflow/ff-sre-infrastructure/issues/811)
 
+**Costs**
+- [Review Snapshot Policy Document](https://github.com/onflow/ff-sre-infrastructure/issues/796)
+- [Disable Snapshots for Historical Networks in `flow-hosting` project](https://github.com/onflow/ff-sre-infrastructure/issues/794)
+- [Disable Snapshots for Historical Networks in `flow-multi-region` project](https://github.com/onflow/ff-sre-infrastructure/issues/803)
+- [Disable Snapshots for Migration Networks](https://github.com/onflow/ff-sre-infrastructure/issues/789)
 
 ---
 
