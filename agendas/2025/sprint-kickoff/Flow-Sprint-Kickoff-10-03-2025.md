@@ -392,6 +392,7 @@ Cycle Objective(s):
   * Improve outputs with branded colors for better readability
   * Create command to migrate accounts with key to key/file location for best practice security
   * Begin creating more scaffolding for different project types
+  * Add support for contract mocks to Dependency Manager
 
 * Scheduled Callbacks
   * Get FlowCron contract reviewed and tested
