@@ -2,7 +2,8 @@
 
 ### Team Wins 🎉
 
-
+- React SDK playground is now live at [react.flow.com](https://react.flow.com).
+- Stablecoin scaffold with a testnet USDF mock is available in the latest CLI release.
 
 ---
 
@@ -239,31 +240,41 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
-* React SDK
+-React SDK / FCL
+  - Finished and launched the playground on [react.flow.com](https://react.flow.com)
+  - Improved the docs overview with the playground
+  - Added `useFlowScheduledTransaction`, `useFlowAuthz`, `useBridgeNftFromEvm`, and `useBridgeTokenFromEvm` hooks
+  - Created documentation on creating and signing with Flow user passkeys
+  - Provided DevRel bridging support
 
+-Stablecoins
+  - Created a stablecoin project scaffold with a testnet mock
+  - Added USDF with a testnet mock scaffold to `flow init`
 
-* CLI Improvements
+-Forking Mainnet
+  - Improved Dev Wallet to support mainnet forking
+  - Opened an emulator PR to rename the fork flag for better alignment with industry terminology
+  - Added forking support in `flow test`
 
-
-* Scheduled Callbacks
-
-
-* Testnet <-> Mainnet
-
+-Other
+  - Updated Cadence syntax highlighting
 
 **This Sprint**
 
-* React SDK
+- React SDK
+  - Surface Scheduled Transactions in the `<Connect />` profile
+  - Complete the NFT Card
+  - Add documentation for new hooks
+  - Create a Next.js starter for the React SDK
 
-
-* CLI Improvements
-
-
-* Scheduled Callbacks
-
-
-* Testnet <-> Mainnet
-
+- CLI
+  - Complete the Scheduled Transactions management feature
+  - Improve output readability
+  - Add USDF testnet mock to the Dependency Manager
+  - Enable running scripts and transactions from a URL
+  - Implement emulator account bootstrapping
+  - Create a DeFi Actions scaffold with forking and add it to the `init` command
+  - Improve documentation for the `init` command
 
 
 ---
