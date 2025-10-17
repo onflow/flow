@@ -37,6 +37,8 @@ const (
 	AccessAPI_GetTransactionsByBlockID_FullMethodName              = "/flow.access.AccessAPI/GetTransactionsByBlockID"
 	AccessAPI_GetSystemTransaction_FullMethodName                  = "/flow.access.AccessAPI/GetSystemTransaction"
 	AccessAPI_GetSystemTransactionResult_FullMethodName            = "/flow.access.AccessAPI/GetSystemTransactionResult"
+	AccessAPI_GetScheduledTransaction_FullMethodName               = "/flow.access.AccessAPI/GetScheduledTransaction"
+	AccessAPI_GetScheduledTransactionResult_FullMethodName         = "/flow.access.AccessAPI/GetScheduledTransactionResult"
 	AccessAPI_GetAccount_FullMethodName                            = "/flow.access.AccessAPI/GetAccount"
 	AccessAPI_GetAccountAtLatestBlock_FullMethodName               = "/flow.access.AccessAPI/GetAccountAtLatestBlock"
 	AccessAPI_GetAccountAtBlockHeight_FullMethodName               = "/flow.access.AccessAPI/GetAccountAtBlockHeight"
@@ -114,6 +116,10 @@ type AccessAPIClient interface {
 	// GetSystemTransactionResult gets a system transaction result for a
 	// specified block
 	GetSystemTransactionResult(ctx context.Context, in *GetSystemTransactionResultRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error)
+	// GetScheduledTransaction gets a scheduled transaction body for a given callback ID
+	GetScheduledTransaction(ctx context.Context, in *GetScheduledTransactionRequest, opts ...grpc.CallOption) (*TransactionResponse, error)
+	// GetScheduledTransactionResult gets a scheduled transaction result for a given callback ID
+	GetScheduledTransactionResult(ctx context.Context, in *GetScheduledTransactionResultRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
 	//
 	// Warning: this function is deprecated. It behaves identically to
@@ -430,6 +436,24 @@ func (c *accessAPIClient) GetSystemTransaction(ctx context.Context, in *GetSyste
 func (c *accessAPIClient) GetSystemTransactionResult(ctx context.Context, in *GetSystemTransactionResultRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error) {
 	out := new(TransactionResultResponse)
 	err := c.cc.Invoke(ctx, AccessAPI_GetSystemTransactionResult_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessAPIClient) GetScheduledTransaction(ctx context.Context, in *GetScheduledTransactionRequest, opts ...grpc.CallOption) (*TransactionResponse, error) {
+	out := new(TransactionResponse)
+	err := c.cc.Invoke(ctx, AccessAPI_GetScheduledTransaction_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessAPIClient) GetScheduledTransactionResult(ctx context.Context, in *GetScheduledTransactionResultRequest, opts ...grpc.CallOption) (*TransactionResultResponse, error) {
+	out := new(TransactionResultResponse)
+	err := c.cc.Invoke(ctx, AccessAPI_GetScheduledTransactionResult_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -981,6 +1005,10 @@ type AccessAPIServer interface {
 	// GetSystemTransactionResult gets a system transaction result for a
 	// specified block
 	GetSystemTransactionResult(context.Context, *GetSystemTransactionResultRequest) (*TransactionResultResponse, error)
+	// GetScheduledTransaction gets a scheduled transaction body for a given callback ID
+	GetScheduledTransaction(context.Context, *GetScheduledTransactionRequest) (*TransactionResponse, error)
+	// GetScheduledTransactionResult gets a scheduled transaction result for a given callback ID
+	GetScheduledTransactionResult(context.Context, *GetScheduledTransactionResultRequest) (*TransactionResultResponse, error)
 	// GetAccount is an alias for GetAccountAtLatestBlock.
 	//
 	// Warning: this function is deprecated. It behaves identically to
@@ -1190,6 +1218,12 @@ func (UnimplementedAccessAPIServer) GetSystemTransaction(context.Context, *GetSy
 }
 func (UnimplementedAccessAPIServer) GetSystemTransactionResult(context.Context, *GetSystemTransactionResultRequest) (*TransactionResultResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSystemTransactionResult not implemented")
+}
+func (UnimplementedAccessAPIServer) GetScheduledTransaction(context.Context, *GetScheduledTransactionRequest) (*TransactionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetScheduledTransaction not implemented")
+}
+func (UnimplementedAccessAPIServer) GetScheduledTransactionResult(context.Context, *GetScheduledTransactionResultRequest) (*TransactionResultResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetScheduledTransactionResult not implemented")
 }
 func (UnimplementedAccessAPIServer) GetAccount(context.Context, *GetAccountRequest) (*GetAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccount not implemented")
@@ -1613,6 +1647,42 @@ func _AccessAPI_GetSystemTransactionResult_Handler(srv interface{}, ctx context.
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccessAPIServer).GetSystemTransactionResult(ctx, req.(*GetSystemTransactionResultRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccessAPI_GetScheduledTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetScheduledTransactionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetScheduledTransaction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccessAPI_GetScheduledTransaction_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetScheduledTransaction(ctx, req.(*GetScheduledTransactionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccessAPI_GetScheduledTransactionResult_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetScheduledTransactionResultRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetScheduledTransactionResult(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccessAPI_GetScheduledTransactionResult_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetScheduledTransactionResult(ctx, req.(*GetScheduledTransactionResultRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2265,6 +2335,14 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetSystemTransactionResult",
 			Handler:    _AccessAPI_GetSystemTransactionResult_Handler,
+		},
+		{
+			MethodName: "GetScheduledTransaction",
+			Handler:    _AccessAPI_GetScheduledTransaction_Handler,
+		},
+		{
+			MethodName: "GetScheduledTransactionResult",
+			Handler:    _AccessAPI_GetScheduledTransactionResult_Handler,
 		},
 		{
 			MethodName: "GetAccount",

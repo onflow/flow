@@ -123,15 +123,17 @@ paths:
   /transactions/{id}:
     get:
       summary: Get a Transaction by ID.
-      description: Get a transaction data by the provided transaction ID.
+      description: Get a transaction data by the provided transaction ID. If the transaction is a scheduled transaction, it can alternatively be retrieved by the scheduled transaction ID field returned by the system contract.
       tags:
         - Transactions
       parameters:
-        - description: The ID of the transaction to get.
+        - description: The ID of the transaction, or id field of the scheduled transaction returned by the system contract.
           name: id
           in: path
           schema:
-            $ref: '#/components/schemas/Identifier'
+            oneOf:
+              - $ref: '#/components/schemas/Identifier'
+              - $ref: '#/components/schemas/ScheduledTransactionId'
           required: true
         - $ref: '#/components/parameters/blockIdParam'
         - $ref: '#/components/parameters/collectionIdParam'
@@ -152,16 +154,18 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /transaction_results/{transaction_id}:
     get:
-      summary: Get a Transaction Result by ID.
-      description: Get transaction result by the transaction result ID.
+      summary: Get a Transaction Result by transaction ID or scheduled transaction ID.
+      description: Get transaction result by the transaction's ID. If the transaction is a scheduled transaction, it can alternatively be retrieved by the scheduled transaction ID field returned by the system contract.
       tags:
         - Transactions
       parameters:
-        - description: The transaction ID of the transaction result.
+        - description: The transaction ID of the transaction result, or id field of the scheduled transaction returned by the system contract.
           name: transaction_id
           in: path
           schema:
-            $ref: '#/components/schemas/Identifier'
+            oneOf:
+              - $ref: '#/components/schemas/Identifier'
+              - $ref: '#/components/schemas/ScheduledTransactionId'
           required: true
         - $ref: '#/components/parameters/blockIdParam'
         - $ref: '#/components/parameters/collectionIdParam'
@@ -1230,6 +1234,10 @@ components:
       type: string
       format: hexadecimal
       pattern: '[a-fA-F0-9]{64}'
+    ScheduledTransactionId:
+      description: The ID of a scheduled transaction.
+      type: string
+      format: uint64
     Signature:
       description: A variable length signature.
       type: string

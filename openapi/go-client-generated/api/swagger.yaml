@@ -249,16 +249,19 @@ paths:
       tags:
       - Transactions
       summary: Get a Transaction by ID.
-      description: Get a transaction data by the provided transaction ID.
+      description: "Get a transaction data by the provided transaction ID. If the\
+        \ transaction is a scheduled transaction, it can alternatively be retrieved\
+        \ by the scheduled transaction ID field returned by the system contract."
       parameters:
       - name: id
         in: path
-        description: The ID of the transaction to get.
+        description: "The ID of the transaction, or id field of the scheduled transaction\
+          \ returned by the system contract."
         required: true
         style: simple
         explode: false
         schema:
-          $ref: "#/components/schemas/Identifier"
+          $ref: "#/components/schemas/id"
       - name: block_id
         in: query
         description: A block ID optional parameter
@@ -330,17 +333,21 @@ paths:
     get:
       tags:
       - Transactions
-      summary: Get a Transaction Result by ID.
-      description: Get transaction result by the transaction result ID.
+      summary: Get a Transaction Result by transaction ID or scheduled transaction
+        ID.
+      description: "Get transaction result by the transaction's ID. If the transaction\
+        \ is a scheduled transaction, it can alternatively be retrieved by the scheduled\
+        \ transaction ID field returned by the system contract."
       parameters:
       - name: transaction_id
         in: path
-        description: The transaction ID of the transaction result.
+        description: "The transaction ID of the transaction result, or id field of\
+          \ the scheduled transaction returned by the system contract."
         required: true
         style: simple
         explode: false
         schema:
-          $ref: "#/components/schemas/Identifier"
+          $ref: "#/components/schemas/transaction_id"
       - name: block_id
         in: query
         description: A block ID optional parameter
@@ -2327,6 +2334,10 @@ components:
       type: string
       description: A 32-byte unique identifier for an entity.
       format: hexadecimal
+    ScheduledTransactionId:
+      type: string
+      description: The ID of a scheduled transaction.
+      format: uint64
     Signature:
       type: string
       description: A variable length signature.
@@ -2480,6 +2491,14 @@ components:
           event_index: event_index
         BlockId: BlockId
         Height: Height
+    id:
+      oneOf:
+      - $ref: "#/components/schemas/Identifier"
+      - $ref: "#/components/schemas/ScheduledTransactionId"
+    transaction_id:
+      oneOf:
+      - $ref: "#/components/schemas/Identifier"
+      - $ref: "#/components/schemas/ScheduledTransactionId"
     transactions_body:
       required:
       - arguments

@@ -26,10 +26,10 @@ var (
 
 type TransactionsApiService service
 /*
-TransactionsApiService Get a Transaction Result by ID.
-Get transaction result by the transaction result ID.
+TransactionsApiService Get a Transaction Result by transaction ID or scheduled transaction ID.
+Get transaction result by the transaction&#x27;s ID. If the transaction is a scheduled transaction, it can alternatively be retrieved by the scheduled transaction ID field returned by the system contract.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param transactionId The transaction ID of the transaction result.
+ * @param transactionId The transaction ID of the transaction result, or id field of the scheduled transaction returned by the system contract.
  * @param optional nil or *TransactionsApiTransactionResultsTransactionIdGetOpts - Optional Parameters:
      * @param "BlockId" (optional.Interface of string) -  A block ID optional parameter
      * @param "CollectionId" (optional.Interface of string) -  A collection ID optional parameter.
@@ -51,7 +51,7 @@ type TransactionsApiTransactionResultsTransactionIdGetOpts struct {
     IncludeExecutorMetadata optional.Bool
 }
 
-func (a *TransactionsApiService) TransactionResultsTransactionIdGet(ctx context.Context, transactionId string, localVarOptionals *TransactionsApiTransactionResultsTransactionIdGetOpts) (TransactionResult, *http.Response, error) {
+func (a *TransactionsApiService) TransactionResultsTransactionIdGet(ctx context.Context, transactionId TransactionId, localVarOptionals *TransactionsApiTransactionResultsTransactionIdGetOpts) (TransactionResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -182,9 +182,9 @@ func (a *TransactionsApiService) TransactionResultsTransactionIdGet(ctx context.
 }
 /*
 TransactionsApiService Get a Transaction by ID.
-Get a transaction data by the provided transaction ID.
+Get a transaction data by the provided transaction ID. If the transaction is a scheduled transaction, it can alternatively be retrieved by the scheduled transaction ID field returned by the system contract.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param id The ID of the transaction to get.
+ * @param id The ID of the transaction, or id field of the scheduled transaction returned by the system contract.
  * @param optional nil or *TransactionsApiTransactionsIdGetOpts - Optional Parameters:
      * @param "BlockId" (optional.Interface of string) -  A block ID optional parameter
      * @param "CollectionId" (optional.Interface of string) -  A collection ID optional parameter.
@@ -200,7 +200,7 @@ type TransactionsApiTransactionsIdGetOpts struct {
     Select_ optional.Interface
 }
 
-func (a *TransactionsApiService) TransactionsIdGet(ctx context.Context, id string, localVarOptionals *TransactionsApiTransactionsIdGetOpts) (Transaction, *http.Response, error) {
+func (a *TransactionsApiService) TransactionsIdGet(ctx context.Context, id Id, localVarOptionals *TransactionsApiTransactionsIdGetOpts) (Transaction, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
