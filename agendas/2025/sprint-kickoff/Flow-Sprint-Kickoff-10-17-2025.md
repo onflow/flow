@@ -426,17 +426,18 @@ Cycle Objective(s):
 
 ### Applications / Wallet [Jeff]
 
-**Cycle Objective(s):**
-
-KR 1: Reduce the number of critical (potential loss of assets / P0) and high priority (P1) bugs experienced to an average of 0.25 per week on a 4-week rolling average.
-- Current (Sep 5: 0.25/week -> 98% decrease in bugs since Jan/Feb!)
-
 **Done last sprint**
 
+- Shipped v3.0.2 of Flow Wallet, fully integrating cross-platform UI across all Flow Wallat platforms.
+    - Now sharing not only business logic cross platforms, thanks to react native, but also UI code as well.
+- Resolved a customer facing bug with transferring tokens on FW extension
+- New wallet.flow.com site, check it out 🎉
 
 **This sprint**
 
-
+- Top priority is shipping surge pricing support on all platforms
+- Aiming to release MVP EOA support on Flow Wallet extension.
+- Starting EOA support on mobile
 
 ---
 
