@@ -272,6 +272,7 @@ Cycle Objective(s):
   - Improve output readability
   - Add USDF testnet mock to the Dependency Manager
   - Enable running scripts and transactions from a URL
+  - Add shorthand syntax for running scripts/txs
   - Implement emulator account bootstrapping
   - Create a DeFi Actions scaffold with forking and add it to the `init` command
   - Improve documentation for the `init` command
