@@ -341,14 +341,21 @@ KR 1: Reduce the number of critical (potential loss of assets / P0) and high pri
 
 **Done last sprint**
 
-**Tidal**
-
-
-**Observability**
-
+**MN27 Spork Prep**
+- [Set Debian 12 as Default OS Version for Ansible/Prometheus Nodes](https://github.com/onflow/ff-sre-infrastructure/issues/831)
+- [Update OS version for the Ansible/Prometheus machines on TN53](https://github.com/onflow/ff-sre-infrastructure/issues/761)
+- [Update OS version for the Ansible/Prometheus machines on Migration TN/MN](https://github.com/onflow/ff-sre-infrastructure/issues/762)
+- [Create SRE Spork Checklist for MN27](https://github.com/onflow/ff-sre-infrastructure/issues/818)
+- [Validate Quotas for MN27 - GCP Project `flow-multi-region`](https://github.com/onflow/ff-sre-infrastructure/issues/819)
+- [Adjust Grafana Dashboards for MN27](https://github.com/onflow/ff-sre-infrastructure/issues/824)
 
 **Support**
+- [Create Blue Node on MN23 for Downgrade Tests](https://github.com/onflow/ff-sre-infrastructure/issues/810)
+- [Adjust CNAME and TXT DNS Records for Flow and Wallet](https://github.com/onflow/ff-sre-infrastructure/issues/837)
+- [Update TXT DNS Records for Webflow Migration of Wallet and Core](https://github.com/onflow/ff-sre-infrastructure/issues/839)
 
+**Security**
+- [Triage Security Issue FLOWWEB-93](https://github.com/onflow/ff-sre-infrastructure/issues/841)
 
 ---
 
