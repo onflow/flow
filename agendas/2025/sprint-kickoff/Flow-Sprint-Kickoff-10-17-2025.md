@@ -128,12 +128,12 @@ Q4 Cycle Objective(s):
 * Network Upgrade (Spork) [IN PROGRESS]
 * [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * SPoCK Research [IN PROGRESS]
-* Investigate root cause of sealing lag [IN PROGRESS]
+* Investigate root cause of sealing lag 🆕 [IN PROGRESS]
 * Collectors submit votes for root block for spork bootstrapping [IN PROGRESS]
+* Proof of Collection Finality 🆕 [Not Started]
 * Migrate EN version beacon to Dyn. Prot. State [Not Started]
-* Proof of Collection Finality [Not Started]
 * Concurrent Transaction execution [Not Started]
-* Downgrade historical node hardware [Not Started]
+* Downgrade historical node hardware 🆕 [Not Started]
 
 Q3 Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
@@ -192,11 +192,13 @@ Q3 Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   * Passkeys:
-
+    * Doc site update
   * Multi-SPoCK:
+    * Continues research.
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
+  * Continue implementation and testing.
 
 * <ins>Investigate root cause of sealing lag</ins>
   - Started working on sealing lag investigation
@@ -215,7 +217,6 @@ Q3 Cycle Objective(s):
   - KROK Team:
 
 
-
 * <ins>Immutable Models M2</ins>
   - PR reviews
   - KROK Team:
@@ -223,6 +224,7 @@ Q3 Cycle Objective(s):
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
+  * Continue implementation and testing.
 
 
 * <ins>Cryptography</ins>
@@ -230,6 +232,11 @@ Q3 Cycle Objective(s):
 
 * <ins>Investigate root cause of sealing lag</ins>
   - Continue working on sealing lag causes
+
+* Other items not covered in OKRs:
+  - Complete the mitigation of the double-counting attack for byzantine primary [6127](https://github.com/onflow/flow-go-internal/issues/6127)
+  - Iterate over content pieces and get them ready for publication.
+  - Research on Zcash.
 
 **On Hold**
 
