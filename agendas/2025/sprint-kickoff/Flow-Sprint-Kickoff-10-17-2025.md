@@ -84,33 +84,33 @@ Q3 2025 Cycle Objective(s):
 
 **Cadence Language**
 
-- Feature
+- Features:
     - [Add support for collecting computation usage profiles](https://github.com/onflow/cadence/pull/4266)
         - [Improve computation profiling](https://github.com/onflow/cadence/pull/4276)
         - [Improve computation profiling](https://github.com/onflow/cadence/pull/4279)
     - [Improve Cadence Errors to Support LLM Efficiency](https://github.com/onflow/cadence/issues/4062)
         - [Improve type conversion error](https://github.com/onflow/cadence/pull/4181)
-- Bugfixes
+- Bugfixes:
     - [Fix 128-bit fixed-point code](https://github.com/onflow/cadence/pull/4252)
     - [[v1.7] Fix 128-bit fixed-point code](https://github.com/onflow/cadence/pull/4253)
 - Improvements
     - [Remove per-context coverage report, use runtime config's](https://github.com/onflow/cadence/pull/4255)
     - [Speed up benchmarks](https://github.com/onflow/cadence/pull/4261)
-- Tech debt
+- Tech debt:
     - [Replace for-delete loops with clear](https://github.com/onflow/cadence/pull/4277)
 - [Compiler Milestone 11 - Execution of user transactions](https://github.com/onflow/cadence/issues/4059)
     - [Add support for comparing two map data slabs to slab decoding tool](https://github.com/onflow/cadence/pull/4234)
 - [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
-    - Feture
+    - Feature:
         - [Compile Attachments](https://github.com/onflow/cadence/issues/4028)
             - [Merge master into Attachment compilation feature branch](https://github.com/onflow/cadence/pull/4274)
             - [Address reviews on compilation for attachments.](https://github.com/onflow/cadence/pull/4275)
             - [[Compiler] Attachments](https://github.com/onflow/cadence/pull/4204)
-    - Performance optimization
+    - Performance optimizations:
         - [Avoid unnecessary allocation of type arguments iterators](https://github.com/onflow/cadence/pull/4271)
         - [Avoid conversion from StaticType to sema.Type during runtime sub-type checking](https://github.com/onflow/cadence/issues/3691)
             - [[Subtyping Generator] Add schema](https://github.com/onflow/cadence/pull/4297)
-    - tech debt
+    - tech debt:
         - [Unify interpreter and VM host/native functions](https://github.com/onflow/cadence/issues/4216)
             - [[Compiler] Unify natives.](https://github.com/onflow/cadence/pull/4248)
             - [Merge master into unify natives.](https://github.com/onflow/cadence/pull/4265)
@@ -125,13 +125,13 @@ Q3 2025 Cycle Objective(s):
         - [Replace variadic arguments parameters with slices](https://github.com/onflow/cadence/pull/4269)
         - [Fix naming of "type parameters" which are actually type arguments](https://github.com/onflow/cadence/pull/4270)
         - [Remove `vm.NativeFunctionVM` and adaption to `interpreter.NativeFunction`](https://github.com/onflow/cadence/pull/4272)
-    - bugfix
+    - bugfixes:
         - [[Compiler] Fix and improve compiler/VM benchmarks and tests, fix CI](https://github.com/onflow/cadence/pull/4257)
         - [[Compiler] Fix performance regression](https://github.com/onflow/cadence/pull/4258)
-- chores
+- chores:
     - [Update to Go 1.24](https://github.com/onflow/cadence/pull/4267)
     - [Fix job name for get contracts action](https://github.com/onflow/cadence/pull/4303)
-- Tooloing
+- Tooloing:
     - [Add support for fixed-point literals to grammar](https://github.com/onflow/vscode-cadence/pull/794)
     - emulator: [Parallelize tests](https://github.com/onflow/flow-emulator/pull/878)
 
@@ -144,11 +144,11 @@ Q3 2025 Cycle Objective(s):
         - [[Storage] Refactor execution fork evidence](https://github.com/onflow/flow-go/pull/8017)
         - [[Storage] Refactor indexing transaction error message](https://github.com/onflow/flow-go/pull/8021)
         - [[Storage] Refactor stored chunk data pack](https://github.com/onflow/flow-go/pull/7983)
-- Scheduled Transactions
+- Scheduled Transactions:
     - [process user Txs if process() fails](https://github.com/onflow/flow-go/issues/7987)
         - [Gracefully handle process execution failure](https://github.com/onflow/flow-go/pull/7992)
     - emulator: [Update scheduled transaction usage](https://github.com/onflow/flow-emulator/pull/873)
-- Public key de-duplication content
+- Public key de-duplication content:
     - [Summarize goals, add results, and compare them](https://github.com/fxamacker/draft-notes-about-deduplicating-public-keys/pull/5)
     - [Clarify, add more results, mention why we don't estimate EN RAM usage reduction](https://github.com/fxamacker/draft-notes-about-deduplicating-public-keys/pull/7)
     - [Clarify that this migration only modifies non-atree payloads](https://github.com/fxamacker/draft-notes-about-deduplicating-public-keys/pull/8)
@@ -156,21 +156,21 @@ Q3 2025 Cycle Objective(s):
     - [How we cut 210M cryptographic hashes and 29GB data](https://github.com/fxamacker/draft-notes-about-deduplicating-public-keys/pull/10)
     - [Mention cumulative impact of reducing payload count](https://github.com/fxamacker/draft-notes-about-deduplicating-public-keys/pull/11)
     - [Replace Intro with How We Cut 210M Hashes and 29GB State](https://github.com/fxamacker/draft-notes-about-deduplicating-public-keys/pull/12)
-- Bugfix
+- Bugfix:
     - [[Execution] Fix chunk data pack store](https://github.com/onflow/flow-go/pull/8046)
-- Improvements
+- Improvements:
     - [[Cmd] improve logging for verify execution result](https://github.com/onflow/flow-go/pull/7828)
     - [[FVM] Clean up test runtime](https://github.com/onflow/flow-go/pull/8003)
     - [Parallelize tests in FVM and execution](https://github.com/onflow/flow-go/pull/8027)
-- Tech debt
+- Tech debt:
     - [Remove legacy migration used in Crescendo](https://github.com/onflow/flow-go/pull/8036)
-- Atree
+- Atree:
     - [Bump Go and linter versions and update the code](https://github.com/onflow/atree/pull/582)
     - [Change slab size related variables from uint64 to uint32](https://github.com/onflow/atree/pull/586)
-- TPS loader
+- TPS loader:
     - [Add scheduled transactions](https://github.com/onflow/flow-execution-effort-estimation/pull/74)
     - [Disable AN local-only mode](https://github.com/onflow/flow-execution-effort-estimation/pull/75)
-- chores / dependency updates
+- chores / dependency updates:
     - E2E tests: [Update flow go](https://github.com/onflow/flow-e2e-tests/pull/65)
     - [Update to Cadence v1.7.1](https://github.com/onflow/flow-go-sdk/pull/925)
     - [Bump `ethereum/go-ethereum` dependency to `v1.16.4`](https://github.com/onflow/flow-go-sdk/pull/926)
@@ -179,10 +179,10 @@ Q3 2025 Cycle Objective(s):
     - [[Cadence VM] Merge master](https://github.com/onflow/flow-go/pull/8006)
 
 **Flow EVM**
-- Core
+- Core:
     - [Bump `ethereum/go-ethereum` dependency to `v1.16.4`](https://github.com/onflow/flow-go/pull/7984)
 - Gateway
-    - Improvement
+    - Improvements:
         - [Collect EVM-related events during VM bridge bootstrapping](https://github.com/onflow/flow-go/pull/7999)
         - [Relax log-level on `processLockedKeys()` for tx results](https://github.com/onflow/flow-evm-gateway/pull/898)
     - Bugfixes:
@@ -190,7 +190,7 @@ Q3 2025 Cycle Objective(s):
         - [[Flow EVM] Fix bug on `ChainRules()` as we are already on `Merge`](https://github.com/onflow/flow-go/pull/8047)
         - [Always re-index latest Cadence block](https://github.com/onflow/flow-evm-gateway/pull/776)
         - [Run E2E tests with EVM VM bridge enabled](https://github.com/onflow/flow-evm-gateway/pull/894)
-    - Tech-debt
+    - Tech-debt:
         - [Merge the 2 Cadence transactions files into a single one](https://github.com/onflow/flow-evm-gateway/pull/897)
 
 **This sprint**
