@@ -362,12 +362,18 @@ Cycle Objective(s):
 
 #### Tidal:
 
-
+- Product discussions
+- Testnet Deployment
+- Adapting simulation scenarios into test cases
+- Technical Documentation
+- Pass TidalProtocol repo to auditors
 
 **This sprint**
 
 #### Tidal:
-
+- Internal testnet testing
+- Complete transformation of simulation scenarios into test cases
+- Further discuss and create technical documentation and tutorials
 
 ---
 
