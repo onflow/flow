@@ -122,20 +122,41 @@ Chores:
 ---
 
 ### **Core Protocol** \[Vishal]
-Q3 Cycle Objective(s):
+
+Q4 Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
-* Overload resilience  [IN PROGRESS]
-* Q3 Network Upgrade (Spork) [TODO]
+* Network Upgrade (Spork) [IN PROGRESS]
 * [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * SPoCK Research [IN PROGRESS]
-* Address data structure malleability risk [IN PROGRESS]
+* Investigate root cause of sealing lag [IN PROGRESS]
+* Collectors submit votes for root block for spork bootstrapping [IN PROGRESS]
+* Migrate EN version beacon to Dyn. Prot. State [Not Started]
+* Proof of Collection Finality [Not Started]
+* Concurrent Transaction execution [Not Started]
+* Downgrade historical node hardware [Not Started]
+
+Q3 Cycle Objective(s):
+* Restore Flow protocol eng team to required critical mass [IN PROGRESS]
+* Overload resilience  [Done]
+* Network Upgrade (Spork) [IN PROGRESS]
+* [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
+* SPoCK Research [IN PROGRESS]
+* Address data structure malleability risk [Done]
 * Collectors submit votes for root block for spork bootstrapping [IN PROGRESS]
 
 **Done last sprint**
 
 * <ins>Overload resilience</ins>
+  - Finished the [runbook](https://www.notion.so/flowfoundation/Runbook-Collection-Throttling-27e1aee1232480b18450d9e32a594448) for collection throttling
+  - Added metrics for tx prioritization
 
-
+* Q3 Network Upgrade (Spork)
+  - Preparing for the mainnet network upgrade.
+  - HCU on testnet to roll out updates on master after the testnet network upgrade.
+  - Testing on migration mainnet.
+  - Ansible script update to signal start of root-block voting.
+  - Walk through of the network upgrade process.
+  - Sync with QuickNode on steps for mainnet network upgrade.
 
 * <ins>Data Availability</ins>
 
@@ -177,12 +198,17 @@ Q3 Cycle Objective(s):
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
 
+* <ins>Investigate root cause of sealing lag</ins>
+  - Started working on sealing lag investigation
+
+* Other items not covered in OKRs:
+  - Mitigating double-counting attack for byzantine primary [6127](https://github.com/onflow/flow-go-internal/issues/6127)
+  - Content pieces for Forte - [Malleability](https://www.notion.so/flowfoundation/Advancing-Protocol-Autonomy-with-Data-Integrity-Blog-Post-Draft-2721aee1232480f1ad24d188ea90e253), [Key deduplication](https://www.notion.so/flowfoundation/Draft-Blog-post-for-Key-Deduplication-2741aee123248080acf5cb2a585e2d71), [Execution Effort Calibration](https://www.notion.so/flowfoundation/Draft-Blog-post-for-Execution-Effort-Calibration-2-1-28d1aee1232480d090f6c87933bc69a6).
 
 **This sprint**
 
-* <ins>Overload resilience</ins>
-  - Document how to use or adjust the collection throttling mechanism during times of overload.
-
+* <ins>Q3 Network Upgrade (Spork)</ins>
+  - Execute the mainnet network upgrade
 
 * <ins>Data Availability:</ins>
   - PR Reviews
@@ -202,7 +228,8 @@ Q3 Cycle Objective(s):
 * <ins>Cryptography</ins>
   * SPoCK:
 
-
+* <ins>Investigate root cause of sealing lag</ins>
+  - Continue working on sealing lag causes
 
 **On Hold**
 
