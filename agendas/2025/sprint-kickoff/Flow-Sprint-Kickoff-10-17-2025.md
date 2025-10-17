@@ -159,34 +159,40 @@ Q3 Cycle Objective(s):
   - Sync with QuickNode on steps for mainnet network upgrade.
 
 * <ins>Data Availability</ins>
+  - Add schedule transaction indexing ([PR 8025](https://github.com/onflow/flow-go/pull/8025))
+  - Refactor pipeline core logic storage ([PR 8010](https://github.com/onflow/flow-go/pull/8010))
+  - Fix execution sync issues on testnet ([PR 8007](https://github.com/onflow/flow-go/pull/8007), [PR 7990](https://github.com/onflow/flow-go/pull/7990))
+  - Add compatibility override for testnet HCU v0.43.1 ([PR 8044](https://github.com/onflow/flow-go/pull/8044))
+  - Speedup websockets keepalive test ([PR 8012](https://github.com/onflow/flow-go/pull/8012))
+  - Tx errors indexing and metrics ([PR 7991](https://github.com/onflow/flow-go/pull/7991), [PR 8004](https://github.com/onflow/flow-go/pull/8004))
+  - Bug fixes ([PR 7996](https://github.com/onflow/flow-go/pull/7996), [PR 8041](https://github.com/onflow/flow-go/pull/8041))
 
-* KROK Team
+  * KROK Team
 
-    * Done:
-      - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)    
+      * Done:
+        - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)    
 
-    * In Review:
-      - [[Data Availability] Refactor events test in http package #7923](https://github.com/onflow/flow-go/issues/7923)
-      - [[Data Availability] Add operator config for execution result query Criteria #7879](https://github.com/onflow/flow-go/issues/7879)
-      - [[Data Availability] Improve Collection Endpoints error handling and documentation #7649](https://github.com/onflow/flow-go/issues/7649)
-      - [[Data Availability] Implement fork-aware Script Endpoints #7651](https://github.com/onflow/flow-go/issues/7651)
+      * In Review:
+        - [[Data Availability] Refactor events test in http package #7923](https://github.com/onflow/flow-go/issues/7923)
+        - [[Data Availability] Add operator config for execution result query Criteria #7879](https://github.com/onflow/flow-go/issues/7879)
+        - [[Data Availability] Improve Collection Endpoints error handling and documentation #7649](https://github.com/onflow/flow-go/issues/7649)
+        - [[Data Availability] Implement fork-aware Script Endpoints #7651](https://github.com/onflow/flow-go/issues/7651)
 
-    * In Progress:
-      - [[Data Availability] Implement fork-aware Execution Data Endpoints #7656](https://github.com/onflow/flow-go/issues/7656)
-      - [[Data Availability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
-      - [[Data Availability] Implement fork-aware Streaming Events Endpoints #7657](https://github.com/onflow/flow-go/issues/7657)
-      - [[Data Availability] Implement fork-aware Registers Endpoints #7655](https://github.com/onflow/flow-go/issues/7655)
+      * In Progress:
+        - [[Data Availability] Implement fork-aware Execution Data Endpoints #7656](https://github.com/onflow/flow-go/issues/7656)
+        - [[Data Availability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
+        - [[Data Availability] Implement fork-aware Streaming Events Endpoints #7657](https://github.com/onflow/flow-go/issues/7657)
+        - [[Data Availability] Implement fork-aware Registers Endpoints #7655](https://github.com/onflow/flow-go/issues/7655)
 
-
-    * Milestones status:
-      - milestone 1: completed
-      - milestone 2:
-        - [Epic 7180](https://github.com/onflow/flow-go/issues/7180): 4 done, 3 in progress out of 12
-        - [Epic 7181](https://github.com/onflow/flow-go/issues/7181): 1 done, more issues to be created after 7180
-      - milestone 3:
-        - [Epic 7182](https://github.com/onflow/flow-go/issues/7182): 7/17 done
-        - [Epic 7615](https://github.com/onflow/flow-go/issues/7615): 1 done, 6 in progress, 2 in review, out of 12
-        - [Epic 7610](https://github.com/onflow/flow-go/issues/7610): 2/7 done, 0 in progress
+  * Milestones status:
+    - milestone 1: completed
+    - milestone 2:
+      - [Epic 7180](https://github.com/onflow/flow-go/issues/7180): 4 done, 3 in progress out of 12
+      - [Epic 7181](https://github.com/onflow/flow-go/issues/7181): 1 done, more issues to be created after 7180
+    - milestone 3:
+      - [Epic 7182](https://github.com/onflow/flow-go/issues/7182): 7/17 done
+      - [Epic 7615](https://github.com/onflow/flow-go/issues/7615): 1 done, 6 in progress, 2 in review, out of 12
+      - [Epic 7610](https://github.com/onflow/flow-go/issues/7610): 2/7 done, 0 in progress
 
 
 * <ins>Immutable Models M2</ins>
@@ -218,7 +224,9 @@ Q3 Cycle Objective(s):
   - Execute the mainnet network upgrade
 
 * <ins>Data Availability:</ins>
-  - PR Reviews
+  - Finish scheduled transaction API changes
+  - Continue on milestone 2 work.
+  - Support the spork.
   - KROK Team:
      - Continue work on Access API execution state endpoints ( milestone 3 )
 
