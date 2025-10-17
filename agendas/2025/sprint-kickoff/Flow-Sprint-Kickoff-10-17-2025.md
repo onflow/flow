@@ -300,11 +300,12 @@ Q3 Cycle Objective(s):
   * Passkeys:
     * Doc site update
   * Multi-SPoCK:
-    * Continues research.
+    * paper: formulating definitions (ongoing)
+  * Looking into Zcash shielded pool
 
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
-  * Continue implementation and testing.
+  * Finished implementation of new bootstrapping commands for collectors.
 
 * <ins>Investigate root cause of sealing lag</ins>
   - Started working on sealing lag investigation
@@ -326,11 +327,12 @@ Q3 Cycle Objective(s):
      - Continue work on Access API execution state endpoints ( milestone 3 )
 
 * <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
-  * Continue implementation and testing.
+  * Testing, documentation, and script updates for collector bootstrapping
 
 
 * <ins>Cryptography</ins>
-  * SPoCK:
+  * SPoCK paper
+  * Zcash - complete research work
 
 * <ins>Investigate root cause of sealing lag</ins>
   - Continue working on sealing lag causes
