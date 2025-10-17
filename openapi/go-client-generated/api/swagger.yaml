@@ -249,16 +249,19 @@ paths:
       tags:
       - Transactions
       summary: Get a Transaction by ID.
-      description: Get a transaction data by the provided transaction ID.
+      description: "Get a transaction data by the provided transaction ID. If the\
+        \ transaction is a scheduled transaction, it can alternatively be retrieved\
+        \ by the scheduled transaction ID field returned by the system contract."
       parameters:
       - name: id
         in: path
-        description: The ID of the transaction to get.
+        description: "The ID of the transaction, or id field of the scheduled transaction\
+          \ returned by the system contract."
         required: true
         style: simple
         explode: false
         schema:
-          $ref: "#/components/schemas/Identifier"
+          $ref: "#/components/schemas/id"
       - name: block_id
         in: query
         description: A block ID optional parameter
@@ -330,17 +333,21 @@ paths:
     get:
       tags:
       - Transactions
-      summary: Get a Transaction Result by ID.
-      description: Get transaction result by the transaction result ID.
+      summary: Get a Transaction Result by transaction ID or scheduled transaction
+        ID.
+      description: "Get transaction result by the transaction's ID. If the transaction\
+        \ is a scheduled transaction, it can alternatively be retrieved by the scheduled\
+        \ transaction ID field returned by the system contract."
       parameters:
       - name: transaction_id
         in: path
-        description: The transaction ID of the transaction result.
+        description: "The transaction ID of the transaction result, or id field of\
+          \ the scheduled transaction returned by the system contract."
         required: true
         style: simple
         explode: false
         schema:
-          $ref: "#/components/schemas/Identifier"
+          $ref: "#/components/schemas/transaction_id"
       - name: block_id
         in: query
         description: A block ID optional parameter
@@ -472,423 +479,6 @@ paths:
                 $ref: "#/components/schemas/Transaction"
         "400":
           description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  /system_transactions/{id}:
-    get:
-      tags:
-      - Transactions
-      summary: Get a System Transaction by ID.
-      description: Get a system transaction body by the provided transaction ID.
-      parameters:
-      - name: id
-        in: path
-        description: The ID of the system transaction to get.
-        required: true
-        style: simple
-        explode: false
-        schema:
-          $ref: "#/components/schemas/Identifier"
-      - name: block_id
-        in: query
-        description: A block ID optional parameter
-        required: false
-        style: form
-        explode: true
-        schema:
-          $ref: "#/components/schemas/Identifier"
-      - name: expand
-        in: query
-        description: A comma-separated list indicating which properties of the content
-          to expand.
-        required: false
-        style: form
-        explode: false
-        schema:
-          minItems: 1
-          uniqueItems: true
-          type: array
-          items:
-            type: string
-      - name: select
-        in: query
-        description: A comma-separated list indicating which properties of the content
-          to return.
-        required: false
-        style: form
-        explode: false
-        schema:
-          minItems: 1
-          uniqueItems: true
-          type: array
-          items:
-            type: string
-      - name: agreeing_executors_count
-        in: query
-        description: A minimum number of execution receipts for the execution result.
-        required: false
-        allowEmptyValue: false
-        style: form
-        explode: true
-        schema:
-          type: string
-          format: uint64
-      - name: required_executor_ids
-        in: query
-        description: "A set of execution node IDs, one of which must have produced\
-          \ the execution result."
-        required: false
-        style: form
-        explode: false
-        schema:
-          minItems: 1
-          uniqueItems: true
-          type: array
-          items:
-            $ref: "#/components/schemas/Identifier"
-      - name: include_executor_metadata
-        in: query
-        description: Specifies whether or not to include the executor metadata in
-          the response.
-        required: false
-        allowEmptyValue: false
-        style: form
-        explode: true
-        schema:
-          type: boolean
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Transaction"
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "404":
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  /system_transaction_results/{transaction_id}:
-    get:
-      tags:
-      - Transactions
-      summary: Get a System Transaction Result by ID.
-      description: Get system transaction result by the transaction result ID.
-      parameters:
-      - name: transaction_id
-        in: path
-        description: The system transaction ID of the transaction result.
-        required: true
-        style: simple
-        explode: false
-        schema:
-          $ref: "#/components/schemas/Identifier"
-      - name: block_id
-        in: query
-        description: A block ID optional parameter
-        required: false
-        style: form
-        explode: true
-        schema:
-          $ref: "#/components/schemas/Identifier"
-      - name: expand
-        in: query
-        description: A comma-separated list indicating which properties of the content
-          to expand.
-        required: false
-        style: form
-        explode: false
-        schema:
-          minItems: 1
-          uniqueItems: true
-          type: array
-          items:
-            type: string
-      - name: select
-        in: query
-        description: A comma-separated list indicating which properties of the content
-          to return.
-        required: false
-        style: form
-        explode: false
-        schema:
-          minItems: 1
-          uniqueItems: true
-          type: array
-          items:
-            type: string
-      - name: agreeing_executors_count
-        in: query
-        description: A minimum number of execution receipts for the execution result.
-        required: false
-        allowEmptyValue: false
-        style: form
-        explode: true
-        schema:
-          type: string
-          format: uint64
-      - name: required_executor_ids
-        in: query
-        description: "A set of execution node IDs, one of which must have produced\
-          \ the execution result."
-        required: false
-        style: form
-        explode: false
-        schema:
-          minItems: 1
-          uniqueItems: true
-          type: array
-          items:
-            $ref: "#/components/schemas/Identifier"
-      - name: include_executor_metadata
-        in: query
-        description: Specifies whether or not to include the executor metadata in
-          the response.
-        required: false
-        allowEmptyValue: false
-        style: form
-        explode: true
-        schema:
-          type: boolean
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TransactionResult"
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "404":
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  /scheduled_transactions/{id}:
-    get:
-      tags:
-      - Transactions
-      summary: Get a Scheduled Transaction by ID.
-      description: Get a scheduled transaction body by the provided scheduled transaction
-        id field.
-      parameters:
-      - name: id
-        in: path
-        description: The scheduled transaction's `id` field returned by the system
-          contract.
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          format: uint64
-      - name: expand
-        in: query
-        description: A comma-separated list indicating which properties of the content
-          to expand.
-        required: false
-        style: form
-        explode: false
-        schema:
-          minItems: 1
-          uniqueItems: true
-          type: array
-          items:
-            type: string
-      - name: select
-        in: query
-        description: A comma-separated list indicating which properties of the content
-          to return.
-        required: false
-        style: form
-        explode: false
-        schema:
-          minItems: 1
-          uniqueItems: true
-          type: array
-          items:
-            type: string
-      - name: agreeing_executors_count
-        in: query
-        description: A minimum number of execution receipts for the execution result.
-        required: false
-        allowEmptyValue: false
-        style: form
-        explode: true
-        schema:
-          type: string
-          format: uint64
-      - name: required_executor_ids
-        in: query
-        description: "A set of execution node IDs, one of which must have produced\
-          \ the execution result."
-        required: false
-        style: form
-        explode: false
-        schema:
-          minItems: 1
-          uniqueItems: true
-          type: array
-          items:
-            $ref: "#/components/schemas/Identifier"
-      - name: include_executor_metadata
-        in: query
-        description: Specifies whether or not to include the executor metadata in
-          the response.
-        required: false
-        allowEmptyValue: false
-        style: form
-        explode: true
-        schema:
-          type: boolean
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Transaction"
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "404":
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  /scheduled_transaction_results/{id}:
-    get:
-      tags:
-      - Transactions
-      summary: Get a Scheduled Transaction Result by ID.
-      description: Get scheduled transaction result by the scheduled transaction ID.
-      parameters:
-      - name: id
-        in: path
-        description: The scheduled transaction's `id` field returned by the system
-          contract.
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          format: uint64
-      - name: expand
-        in: query
-        description: A comma-separated list indicating which properties of the content
-          to expand.
-        required: false
-        style: form
-        explode: false
-        schema:
-          minItems: 1
-          uniqueItems: true
-          type: array
-          items:
-            type: string
-      - name: select
-        in: query
-        description: A comma-separated list indicating which properties of the content
-          to return.
-        required: false
-        style: form
-        explode: false
-        schema:
-          minItems: 1
-          uniqueItems: true
-          type: array
-          items:
-            type: string
-      - name: agreeing_executors_count
-        in: query
-        description: A minimum number of execution receipts for the execution result.
-        required: false
-        allowEmptyValue: false
-        style: form
-        explode: true
-        schema:
-          type: string
-          format: uint64
-      - name: required_executor_ids
-        in: query
-        description: "A set of execution node IDs, one of which must have produced\
-          \ the execution result."
-        required: false
-        style: form
-        explode: false
-        schema:
-          minItems: 1
-          uniqueItems: true
-          type: array
-          items:
-            $ref: "#/components/schemas/Identifier"
-      - name: include_executor_metadata
-        in: query
-        description: Specifies whether or not to include the executor metadata in
-          the response.
-        required: false
-        allowEmptyValue: false
-        style: form
-        explode: true
-        schema:
-          type: boolean
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TransactionResult"
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "404":
-          description: Not Found
           content:
             application/json:
               schema:
@@ -2744,6 +2334,10 @@ components:
       type: string
       description: A 32-byte unique identifier for an entity.
       format: hexadecimal
+    ScheduledTransactionId:
+      type: string
+      description: The ID of a scheduled transaction.
+      format: uint64
     Signature:
       type: string
       description: A variable length signature.
@@ -2897,6 +2491,14 @@ components:
           event_index: event_index
         BlockId: BlockId
         Height: Height
+    id:
+      oneOf:
+      - $ref: "#/components/schemas/Identifier"
+      - $ref: "#/components/schemas/ScheduledTransactionId"
+    transaction_id:
+      oneOf:
+      - $ref: "#/components/schemas/Identifier"
+      - $ref: "#/components/schemas/ScheduledTransactionId"
     transactions_body:
       required:
       - arguments
