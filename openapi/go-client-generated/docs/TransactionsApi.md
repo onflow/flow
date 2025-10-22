@@ -4,22 +4,22 @@ All URIs are relative to *https://rest-testnet.onflow.org/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**TransactionResultsTransactionIdGet**](TransactionsApi.md#TransactionResultsTransactionIdGet) | **Get** /transaction_results/{transaction_id} | Get a Transaction Result by ID.
+[**TransactionResultsTransactionIdGet**](TransactionsApi.md#TransactionResultsTransactionIdGet) | **Get** /transaction_results/{transaction_id} | Get a Transaction Result by transaction ID or scheduled transaction ID.
 [**TransactionsIdGet**](TransactionsApi.md#TransactionsIdGet) | **Get** /transactions/{id} | Get a Transaction by ID.
 [**TransactionsPost**](TransactionsApi.md#TransactionsPost) | **Post** /transactions | Submit a Transaction
 
 # **TransactionResultsTransactionIdGet**
 > TransactionResult TransactionResultsTransactionIdGet(ctx, transactionId, optional)
-Get a Transaction Result by ID.
+Get a Transaction Result by transaction ID or scheduled transaction ID.
 
-Get transaction result by the transaction result ID.
+Get transaction result by the transaction's ID. If the transaction is a scheduled transaction, it can alternatively be retrieved by the scheduled transaction ID field returned by the system contract.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **transactionId** | [**string**](.md)| The transaction ID of the transaction result. | 
+  **transactionId** | [**TransactionId**](.md)| The transaction ID of the transaction result, or id field of the scheduled transaction returned by the system contract. | 
  **optional** | ***TransactionsApiTransactionResultsTransactionIdGetOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -54,14 +54,14 @@ No authorization required
 > Transaction TransactionsIdGet(ctx, id, optional)
 Get a Transaction by ID.
 
-Get a transaction data by the provided transaction ID.
+Get a transaction data by the provided transaction ID. If the transaction is a scheduled transaction, it can alternatively be retrieved by the scheduled transaction ID field returned by the system contract.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **id** | [**string**](.md)| The ID of the transaction to get. | 
+  **id** | [**Id**](.md)| The ID of the transaction, or id field of the scheduled transaction returned by the system contract. | 
  **optional** | ***TransactionsApiTransactionsIdGetOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
