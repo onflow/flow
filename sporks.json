@@ -9,7 +9,7 @@
         "rootHeight": "130290659",
         "rootParentId": "28d657bc8c6b0608e4c7caef3fb37b5b05f58c7bfedd1b8e556bd0940735e9cd",
         "rootStateCommitment": "46c078553c221a7265bea83ff9aa178ec6cbe4865a6ae55219ecd0db81357a67",
-        "gitCommitHash": "98a6ac408fdd86dba0011e698d40ebd71f4276fa",
+        "gitCommitHash": "fabd1242ca2266a2c0f53fa31a1636ea664bd45d",
         "stateArtefacts": {
           "gcp": {
             "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/mainnet-27-execution/public-root-information/root.checkpoint",
