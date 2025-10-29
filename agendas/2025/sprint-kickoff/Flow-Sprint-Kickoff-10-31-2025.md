@@ -3,6 +3,7 @@
 ### Team Wins 🎉
 
 - Forte is now live!
+- We averted a crisis by ensuring network epoch transition succeeds and does not enter the Epoch Fallback Mode - thanks to Jordan S.
 
 ---
 
