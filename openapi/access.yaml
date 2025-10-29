@@ -442,7 +442,7 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /accounts/{address}/balance:
    get:
-      summary: Get account balance By Address and BlockHeight
+      summary: Get account balance by Address and BlockHeight.
       description: Get an account data by provided address and block height.
       tags:
         - Accounts

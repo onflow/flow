@@ -4,13 +4,13 @@ All URIs are relative to *https://rest-testnet.onflow.org/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AccountsAddressBalanceGet**](AccountsApi.md#AccountsAddressBalanceGet) | **Get** /accounts/{address}/balance | Get account balance By Address and BlockHeight
+[**AccountsAddressBalanceGet**](AccountsApi.md#AccountsAddressBalanceGet) | **Get** /accounts/{address}/balance | Get account balance by Address and BlockHeight.
 [**AccountsAddressGet**](AccountsApi.md#AccountsAddressGet) | **Get** /accounts/{address} | Get an Account By Address
 [**AccountsAddressKeysIndexGet**](AccountsApi.md#AccountsAddressKeysIndexGet) | **Get** /accounts/{address}/keys/{index} | Get an individual Account Key By Address and Index
 
 # **AccountsAddressBalanceGet**
 > AccountBalance AccountsAddressBalanceGet(ctx, address, optional)
-Get account balance By Address and BlockHeight
+Get account balance by Address and BlockHeight.
 
 Get an account data by provided address and block height.
 

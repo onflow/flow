@@ -21,7 +21,7 @@ All URIs are relative to *https://rest-testnet.onflow.org/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountsApi* | [**AccountsAddressBalanceGet**](docs/AccountsApi.md#accountsaddressbalanceget) | **Get** /accounts/{address}/balance | Get account balance By Address and BlockHeight
+*AccountsApi* | [**AccountsAddressBalanceGet**](docs/AccountsApi.md#accountsaddressbalanceget) | **Get** /accounts/{address}/balance | Get account balance by Address and BlockHeight.
 *AccountsApi* | [**AccountsAddressGet**](docs/AccountsApi.md#accountsaddressget) | **Get** /accounts/{address} | Get an Account By Address
 *AccountsApi* | [**AccountsAddressKeysIndexGet**](docs/AccountsApi.md#accountsaddresskeysindexget) | **Get** /accounts/{address}/keys/{index} | Get an individual Account Key By Address and Index
 *BlocksApi* | [**BlocksGet**](docs/BlocksApi.md#blocksget) | **Get** /blocks | Gets Blocks by Height

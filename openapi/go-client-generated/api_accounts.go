@@ -26,7 +26,7 @@ var (
 
 type AccountsApiService service
 /*
-AccountsApiService Get account balance By Address and BlockHeight
+AccountsApiService Get account balance by Address and BlockHeight.
 Get an account data by provided address and block height.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param address The address of the account.
