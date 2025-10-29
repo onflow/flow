@@ -963,6 +963,114 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /accounts/{address}/balance:
+    get:
+      tags:
+      - Accounts
+      summary: Get account balance By Address and BlockHeight
+      description: Get an account data by provided address and block height.
+      parameters:
+      - name: address
+        in: path
+        description: The address of the account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Address"
+      - name: block_height
+        in: query
+        description: The block height to query for the account details at the "sealed"
+          is used by default.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/BlockHeight"
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: agreeing_executors_count
+        in: query
+        description: A minimum number of execution receipts for the execution result.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: uint64
+      - name: required_executor_ids
+        in: query
+        description: "A set of execution node IDs, one of which must have produced\
+          \ the execution result."
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: "#/components/schemas/Identifier"
+      - name: include_executor_metadata
+        in: query
+        description: Specifies whether or not to include the executor metadata in
+          the response.
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AccountBalance"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
   /scripts:
     post:
       tags:
@@ -1474,6 +1582,25 @@ components:
         signing_algorithm: BLSBLS12381
         revoked: true
         hashing_algorithm: SHA2_256
+    AccountBalance:
+      required:
+      - balance
+      type: object
+      properties:
+        balance:
+          type: string
+          description: Flow balance of the account.
+          format: uint64
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      example:
+        metadata:
+          executor_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
+        balance: balance
     SigningAlgorithm:
       type: string
       enum:
