@@ -4,7 +4,9 @@
 
 - Forte is now live!
 - We averted a crisis by ensuring network epoch transition succeeds and does not enter the Epoch Fallback Mode - thanks to Jordan S.
-- Published new technical blogs about [state optimization - account key deduplication](https://www.flow.com/engineering-blogs/optimizing-flow-for-scale-speed-and-sustainability) and nearly done with publishing [execution weight recalibration (notion link)](https://www.notion.so/flowfoundation/To-be-published-once-weights-are-live-Blog-post-for-Execution-Effort-Calibration-2-28d1aee1232480d090f6c87933bc69a6).
+- Two content pieces are live - [Key deduplication](https://www.flow.com/engineering-blogs/optimizing-flow-for-scale-speed-and-sustainability) and [Data integrity](https://www.flow.com/engineering-blogs/advancing-protocol-autonomy-with-data-integrity)
+- Fork testing is available
+- 10 new hooks are live in the React SDK
 
 ---
 
@@ -54,13 +56,17 @@
 
 |             | Application | Cadence | Governance | Protocol |  Total  |
 |:------------|:-----------:|:-------:|:----------:|:--------:|:-------:|
-| Drafted     |      9      |    7    |     0      |    10    | **26**  |
-| Proposed    |      1      |    2    |     4      |    0     |  **7**  |
-| Accepted    |      3      |    2    |     3      |    2     | **10**  |
+| Drafted     |      9      |    6    |     0      |    9     | **24**  |
+| Proposed    |      1      |    2    |     3      |    1     |  **7**  |
+| Accepted    |      3      |    2    |     3      |    1     |  **9**  |
 | Rejected    |      0      |    1    |     1      |    0     |  **2**  |
-| Implemented |      3      |    7    |     1      |    0     | **11**  |
-| Released    |      4      |   34    |     9      |    7     | **54**  |
-| Total       |   **20**    | **54**  |   **17**   |  **19**  | **110** |
+| Implemented |      3      |    6    |     1      |    0     | **10**  |
+| Released    |      4      |   35    |     9      |    10    | **58**  |
+| Total       |   **20**    | **52**  |   **17**   |  **21**  | **110** |
+
+- 4 FLIPs marked as `Released`
+- 1 FLIP  marked as `Accepted`
+- 1 FLIP marked as `Implemented`
 
 #### New FLIPs
 
@@ -175,31 +181,21 @@ Q3 2025 Cycle Objective(s):
 
 Q4 Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
-* Network Upgrade (Spork) [IN PROGRESS]
+* Network Upgrade (Spork) [Done]
 * [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * SPoCK Research [IN PROGRESS]
-* Investigate root cause of sealing lag 🆕 [IN PROGRESS]
+* Investigate root cause of sealing lag [IN PROGRESS]
 * Collectors submit votes for root block for spork bootstrapping [IN PROGRESS]
-* Proof of Collection Finality 🆕 [Not Started]
+* Building blocks for Collection Nodes Decentralization [IN PROGRESS]
 * Migrate EN version beacon to Dyn. Prot. State [Not Started]
 * Concurrent Transaction execution [Not Started]
-* Downgrade historical node hardware 🆕 [Not Started]
-
-Q3 Cycle Objective(s):
-* Restore Flow protocol eng team to required critical mass [IN PROGRESS]
-* Overload resilience  [Done]
-* Network Upgrade (Spork) [IN PROGRESS]
-* [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
-* SPoCK Research [IN PROGRESS]
-* Address data structure malleability risk [Done]
-* Collectors submit votes for root block for spork bootstrapping [IN PROGRESS]
+* Downgrade historical node hardware [Not Started]
 
 **Done last sprint**
 
-* <ins>Overload resilience</ins>
-
-
 * Q3 Network Upgrade (Spork)
+  * [Retrospective](https://status.flow.com/incidents/x91d6t1x1qh4)
+  * Debugging issues that some of the CEX has run into.
 
 
 * <ins>Data Availability</ins>
@@ -217,13 +213,11 @@ Q3 Cycle Objective(s):
 
   * Milestones status:
     - milestone 1: completed
+
     - milestone 2:
-      - [Epic 7180](https://github.com/onflow/flow-go/issues/7180): 4 done, 3 in progress out of 12
-      - [Epic 7181](https://github.com/onflow/flow-go/issues/7181): 1 done, more issues to be created after 7180
+
     - milestone 3:
-      - [Epic 7182](https://github.com/onflow/flow-go/issues/7182): 7/17 done
-      - [Epic 7615](https://github.com/onflow/flow-go/issues/7615): 1 done, 6 in progress, 2 in review, out of 12
-      - [Epic 7610](https://github.com/onflow/flow-go/issues/7610): 2/7 done, 0 in progress
+
 
 
 * <ins>Immutable Models M2</ins>
@@ -233,48 +227,79 @@ Q3 Cycle Objective(s):
 
 
 * <ins>Cryptography</ins>
-
+  * Zcash shielded protocol: summary and checked more concepts
   * Multi-SPoCK:
+    * SPoCK paper: more editing
 
 
+* <ins>Collectors submit votes for root block for spork bootstrapping</ins>
+  * Implemented tests.
 
-
-* <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
-
+* <ins>Building blocks for Collection Nodes Decentralization</ins>
+  * Scoping [Collector Decentralization Milestone E](https://github.com/orgs/onflow/projects/80)
+  * Proof of Collection Finality [design doc](https://www.notion.so/flowfoundation/Proof-of-Collection-Finality-29c1aee1232480deb0c2e8d872e34ba9)
 
 * <ins>Investigate root cause of sealing lag</ins>
+  * Completed investigation.
+  * Presentation to the large group.
 
 
 * Other items not covered in OKRs:
+  * Content pieces:
+    * Data Integrity ([published](https://flow.com/engineering-blogs/advancing-protocol-autonomy-with-data-integrity))
+    * Key deduplication ([published](https://www.flow.com/engineering-blogs/optimizing-flow-for-scale-speed-and-sustainability))
+    * Transaction Fees ([ready to be published](https://www.notion.so/flowfoundation/To-be-published-once-weights-are-live-Blog-post-for-Execution-Effort-Calibration-2-28d1aee1232480d090f6c87933bc69a6?source=copy_link))
 
 **This sprint**
 
-* <ins>Q3 Network Upgrade (Spork)</ins>
+
+* Q3 Network Upgrade (Spork)
+  * Continue debugging issues that some of the CEX have run into.
 
 
-* <ins>Data Availability:</ins>
+* <ins>Data Availability</ins>
 
 
-* <ins>[Protocol Autonomy: Collection decentralization OKR](https://github.com/onflow/flow-okrs/issues/115)</ins>
+* KROK Team
+
+  * Done:
+
+
+      * In Review:
+
+
+      * In Progress:
+
+* Milestones status:
+  - milestone 1: completed
+  - 
+  - milestone 2:
+  
+  - milestone 3:
+
+
+
+* <ins>Immutable Models M2</ins>
+  * Immutable Models PR reviews
+  * KROK Team
 
 
 
 * <ins>Cryptography</ins>
+  * Multi-SPoCK:
+    * Continue editing SPoCK paper
 
 
-* <ins>Investigate root cause of sealing lag</ins>
+* <ins>Collectors submit votes for root block for spork bootstrapping</ins>
+  * Complete the test implementation
+
+* <ins>Building blocks for Collection Nodes Decentralization</ins>
+  * Continue working on the [design doc](https://www.notion.so/flowfoundation/Proof-of-Collection-Finality-29c1aee1232480deb0c2e8d872e34ba9) and internal review.
 
 
 * Other items not covered in OKRs:
-
-
-**On Hold**
-
-**Active Epics**
-
-* [[EPIC] Malleability B](https://github.com/onflow/flow-go/issues/6648)
-* [[EPIC] Malleability C](https://github.com/onflow/flow-go/issues/6647)
-* [[EPIC] Access Node supports soft-finality updates](https://github.com/onflow/flow-go/issues/6646)
+  * Content piece
+    * Publish Transaction Fees ([ready to be published](https://www.notion.so/flowfoundation/To-be-published-once-weights-are-live-Blog-post-for-Execution-Effort-Calibration-2-28d1aee1232480d090f6c87933bc69a6?source=copy_link))
 
 ---
 
@@ -308,26 +333,45 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
--React SDK / FCL
+- React SDK/FCL
+  - Built a Scheduled Transactions management component
+  - Surface Scheduled Transactions in the `<Connect />` profile
+  - Completed the NFT Card
+  - Released 10 new hooks
+  - Add documentation for new hooks
+  - Create a Next.js starter for the React SDK
 
-
--Stablecoins
-
-
--Forking Mainnet
-
-
--Other
-
+- CLI
+  - Completed and released the Scheduled Transactions management feature
+  - Improve account output readability
+  - Added ability to get account by name, not just address
+  - Implement emulator account bootstrapping
+  - Create a DeFi Actions scaffold to the `init` command
+  - Improve documentation for the `init` command
+  - Completed & released testing guidelines revamp + dedicated fork testing document
 
 **This Sprint**
 
-- React SDK
+- Fork Testing
+  - Add inline syntax for fork testing
+  - Write forked emulator usage tutorial
+  - Create ability to simulate dependencies in Cadence test framework
+  - Define stubs and create example off-chain infra stub
 
+- Mobile
+  - Add support for multiple tokens balances in profile modal
+  - Break profile out from connect as its own component
+  - Begin work on React Native scaffold for the React SDK
+  - Identify mobile blockers and start fixing
 
-- CLI
+- React SDK Liquidity
+  - Spec/plan liquidity components
 
-
+- Misc
+  - Support import aliasing in CLI/flowkit
+  - Support import aliasing in FCL
+  - Review hackathon projects
+  - Enable linting for all Cadence files when no file argument is provided
 
 ---
 
@@ -366,11 +410,10 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-* No updates :(
+* Preliminary work for Transactions Fees FLIP.
 
 **This sprint**
 
-* Add panels to community dashboard explaining when and why surge pricing is active.
-* Continue tokenomics discussion with Dete.
+* Continue working on the Transaction Fees FLIP.
 
 ---
