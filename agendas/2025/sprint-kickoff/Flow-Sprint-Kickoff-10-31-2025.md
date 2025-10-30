@@ -4,6 +4,7 @@
 
 - Forte is now live!
 - We averted a crisis by ensuring network epoch transition succeeds and does not enter the Epoch Fallback Mode - thanks to Jordan S.
+- Two content pieces are live - [Key deduplication](https://www.flow.com/engineering-blogs/optimizing-flow-for-scale-speed-and-sustainability) and [Data integrity](https://www.flow.com/engineering-blogs/advancing-protocol-autonomy-with-data-integrity)
 - Fork testing is available
 - 10 new hooks are live in the React SDK
 
