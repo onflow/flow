@@ -318,6 +318,7 @@ Cycle Objective(s):
   - Support import aliasing in CLI/flowkit
   - Support import aliasing in FCL
   - Review hackathon projects
+  - Enable linting for all Cadence files when no file argument is provided
 
 ---
 
