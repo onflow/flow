@@ -4,6 +4,8 @@
 
 - Forte is now live!
 - We averted a crisis by ensuring network epoch transition succeeds and does not enter the Epoch Fallback Mode - thanks to Jordan S.
+- Fork testing is available
+- 10 new hooks are live in the React SDK
 
 ---
 
@@ -278,26 +280,44 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
--React SDK / FCL
+- React SDK/FCL
+  - Built a Scheduled Transactions management component
+  - Surface Scheduled Transactions in the `<Connect />` profile
+  - Completed the NFT Card
+  - Released 10 new hooks
+  - Add documentation for new hooks
+  - Create a Next.js starter for the React SDK
 
-
--Stablecoins
-
-
--Forking Mainnet
-
-
--Other
-
+- CLI
+  - Completed and released the Scheduled Transactions management feature
+  - Improve account output readability
+  - Added ability to get account by name, not just address
+  - Implement emulator account bootstrapping
+  - Create a DeFi Actions scaffold to the `init` command
+  - Improve documentation for the `init` command
+  - Completed & released testing guidelines revamp + dedicated fork testing document
 
 **This Sprint**
 
-- React SDK
+- Fork Testing
+  - Add inline syntax for fork testing
+  - Write forked emulator usage tutorial
+  - Create ability to simulate dependencies in Cadence test framework
+  - Define stubs and create example off-chain infra stub
 
+- Mobile
+  - Add support for multiple tokens balances in profile modal
+  - Break profile out from connect as its own component
+  - Begin work on React Native scaffold for the React SDK
+  - Identify mobile blockers and start fixing
 
-- CLI
+- React SDK Liquidity
+  - Spec/plan liquidity components
 
-
+- Misc
+  - Support import aliasing in CLI/flowkit
+  - Support import aliasing in FCL
+  - Review hackathon projects
 
 ---
 
