@@ -55,13 +55,17 @@
 
 |             | Application | Cadence | Governance | Protocol |  Total  |
 |:------------|:-----------:|:-------:|:----------:|:--------:|:-------:|
-| Drafted     |      9      |    7    |     0      |    10    | **26**  |
-| Proposed    |      1      |    2    |     4      |    0     |  **7**  |
-| Accepted    |      3      |    2    |     3      |    2     | **10**  |
+| Drafted     |      9      |    6    |     0      |    9     | **24**  |
+| Proposed    |      1      |    2    |     3      |    1     |  **7**  |
+| Accepted    |      3      |    2    |     3      |    1     |  **9**  |
 | Rejected    |      0      |    1    |     1      |    0     |  **2**  |
-| Implemented |      3      |    7    |     1      |    0     | **11**  |
-| Released    |      4      |   34    |     9      |    7     | **54**  |
-| Total       |   **20**    | **54**  |   **17**   |  **19**  | **110** |
+| Implemented |      3      |    6    |     1      |    0     | **10**  |
+| Released    |      4      |   35    |     9      |    10    | **58**  |
+| Total       |   **20**    | **52**  |   **17**   |  **21**  | **110** |
+
+- 4 FLIPs marked as `Released`
+- 1 FLIP  marked as `Accepted`
+- 1 FLIP marked as `Implemented`
 
 #### New FLIPs
 
