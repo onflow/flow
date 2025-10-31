@@ -7,6 +7,7 @@
 - Two content pieces are live - [Key deduplication](https://www.flow.com/engineering-blogs/optimizing-flow-for-scale-speed-and-sustainability) and [Data integrity](https://www.flow.com/engineering-blogs/advancing-protocol-autonomy-with-data-integrity)
 - Fork testing is available
 - 10 new hooks are live in the React SDK
+- FlowALP Deployed to [Mainnet](https://www.flowview.app/account/0x6b00ff876c299c61/contract)!
 
 ---
 
@@ -317,18 +318,23 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-#### Tidal:
+#### FlowALP:
 
-- Product discussions
-- Testnet Deployment
-- Adapting simulation scenarios into test cases
-- Technical Documentation
-- Pass TidalProtocol repo to auditors
+- Massaging the Testnet deployment to allow better and more "production like" testing
+- Mainnet Deployment of the Flow ALP contract
+- Discussions around MOET, and working through non-AMM redemption paths
+- Continued work of simulation scenarios, and working it into a test framework
+- Initial Design and PoC of EVM compatibility for Flow Vaults
 
 **This sprint**
 
-#### Tidal:
+#### Flow ALP & Flow Vaults:
 
+- Deployment of Flow Vaults smart contract on Mainnet
+- Integration of Mainnet Flow ALP and Flow Vaults with More market vaults/AMMs and Mainnet Oracles
+- Automate liqudiation checking logic
+- Finalize MOET redemption path
+- Start Mainnet internal testing
 
 ---
 
