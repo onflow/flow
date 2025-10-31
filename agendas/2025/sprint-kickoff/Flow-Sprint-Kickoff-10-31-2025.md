@@ -396,12 +396,32 @@ Cycle Objective(s):
 **Done last sprint**
 
 **MN27 Spork Prep**
-
+- [Create Alerts for MN27 Nodes](https://github.com/onflow/ff-sre-infrastructure/issues/822)
+- [Update DNS Record for MN27 Secure Endpoint](https://github.com/onflow/ff-sre-infrastructure/issues/823)
+- [Update EVM GW Flags and Versions after the MN27 Spork](https://github.com/onflow/ff-sre-infrastructure/issues/826)
+- [Update Synthetic Monitors for ANs to point to MN27](https://github.com/onflow/ff-sre-infrastructure/issues/827)
+- [Remove MN26 Alerts after MN27 Spork](https://github.com/onflow/ff-sre-infrastructure/issues/828)
+- [Scale Down MN26 Nodes after the MN27 Spork](https://github.com/onflow/ff-sre-infrastructure/issues/829)
+- [Update Automation Snapshot Schedule from MN26 to MN27](https://github.com/onflow/ff-sre-infrastructure/issues/830)
+- [Enable Profiling for MN27](https://github.com/onflow/ff-sre-infrastructure/issues/847)
+- [Update TN and MN Versions for Automation Jobs](https://github.com/onflow/ff-sre-infrastructure/issues/857)
 
 **Support**
+- [Investigate Alert Devnet Machine Account Balance](https://github.com/onflow/ff-sre-infrastructure/issues/781)
+- [Review DL Alerts Escalation Policies](https://github.com/onflow/ff-sre-infrastructure/issues/788)
+- [Update DNS Records for developers.flow.com](https://github.com/onflow/ff-sre-infrastructure/issues/851)
+- [Create Public Bucket for Collection Voting Tests](https://github.com/onflow/ff-sre-infrastructure/issues/853)
+- [Create DNS Redirection for staging.developers.flow.com](https://github.com/onflow/ff-sre-infrastructure/issues/855)
 
-
-**Security**
+**Cost Optimization**
+- [Implement Labeling Scheme for Snapshots](https://github.com/onflow/ff-sre-infrastructure/issues/868)
+- [Clean up Obsolete Snapshots for Live Networks](https://github.com/onflow/ff-sre-infrastructure/issues/814)
+- [Power Off Newer Historical ENs for Runtime Savings](https://github.com/onflow/ff-sre-infrastructure/issues/859)
+- [Downgrade Machine Type for ENs on Migration MN](https://github.com/onflow/ff-sre-infrastructure/issues/862)
+- [Terminate MN26 Shadow Node](https://github.com/onflow/ff-sre-infrastructure/issues/866)
+- [Create Final Snapshots for AN1/EN1 on TN52](https://github.com/onflow/ff-sre-infrastructure/issues/870)
+- [Create New Final Snapshots for AN1s on MN24 and MN25](https://github.com/onflow/ff-sre-infrastructure/issues/873)
+- [Create Final Snapshots for AN1/EN1 on MN26](https://github.com/onflow/ff-sre-infrastructure/issues/876)
 
 
 ---
