@@ -381,11 +381,13 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-
+- Completed and released surge pricing support, enabling and warning users when they are going to pay gas for their transactions when surge pricing is active.
+- Started our MVP EOA suport on all platforms, enabling users to interact with EOAs instead of COAs within Flow Wallet.
 
 **This sprint**
 
-
+- Complete and ship MVP EOA support on all platforms.
+- Start on our next release, adding support for device and cloud backup/recovery for profiles with an EOA.
 
 ---
 
