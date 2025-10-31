@@ -276,16 +276,6 @@ Q4 Cycle Objective(s):
   * KROK Team
     - Continue work on Access API execution state endpoints ( milestone 3 )
 
-
-* Milestones status:
-  - milestone 1: completed
-  - 
-  - milestone 2:
-  
-  - milestone 3:
-
-
-
 * <ins>Immutable Models M2</ins>
   * Immutable Models PR reviews
   * KROK Team
