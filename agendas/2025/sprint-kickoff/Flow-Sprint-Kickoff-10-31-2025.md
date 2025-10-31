@@ -120,7 +120,7 @@ Q3 2025 Cycle Objective(s):
 - Performance improvement: [Add GroupCache, a new LRU optimized for removing related keys](https://github.com/fxamacker/golang-lru/pull/1)
 - Technical [content preparation (account key deduplication)](https://github.com/fxamacker/draft-notes-about-deduplicating-public-keys/pull/14)
 - CBOR [Improvement for interoperability/transcoding between CBOR & JSON]((https://github.com/fxamacker/cbor/pull/715))
-- Atree 
+- Atree
     - cleanup: [Remove unused storage function FixLoadedBrokenReferences](https://github.com/onflow/atree/pull/588)
     - testing: [Add parallelism to tests to reduce atree test duration (64m -> 31m)](https://github.com/onflow/atree/pull/584)
 - End-End tests:
@@ -157,7 +157,7 @@ Q3 2025 Cycle Objective(s):
     - Continue tackling compiler tech-debt & optimizations
 
 - Cadence Execution
-  - Complete [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598) - apply new weights 
+  - Complete [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598) - apply new weights
   - Continue [Badger -> Pebble: remaining tasks and cleanup](https://github.com/onflow/flow-go/issues/7682)
   - Continue [Versioning of Execution Stack via Dynamic Protocol State](https://github.com/onflow/flow-go/issues/6999)
   - Start [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571)
@@ -204,7 +204,7 @@ Q4 Cycle Objective(s):
   * KROK Team
       * Done:
         - [[Data Availability] Add operator config for execution result query Criteria #7879](https://github.com/onflow/flow-go/issues/7879)
-        - [[Data Availability] Implement fork-aware Execution Data Endpoints #7656](https://github.com/onflow/flow-go/issues/7656)    
+        - [[Data Availability] Implement fork-aware Execution Data Endpoints #7656](https://github.com/onflow/flow-go/issues/7656)
 
       * In Review:
         - [[Data Availability] Refactor events test in http package #7923](https://github.com/onflow/flow-go/issues/7923)
@@ -331,7 +331,7 @@ Cycle Objective(s):
 ### **Developer Tooling** \[Chase]
 
 Cycle Objective(s):
-- Reduce the time and complexity required to prototype, test, and iterate on DeFi apps on Flow using modular agents, composable building blocks, and developer-centric tooling. [OKR](https://github.com/onflow/flow-okrs/issues/125)
+- Equip the Flow ecosystem with the capabilities required for developers to launch and iterate on Minimum Viable Consumer DeFi Apps with minimal friction [OKR](https://github.com/onflow/flow-okrs/issues/162)
 
 **Done Last Sprint**
 
