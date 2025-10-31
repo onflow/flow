@@ -199,10 +199,8 @@ Q4 Cycle Objective(s):
 
 
 * <ins>Data Availability</ins>
-
-
+  * Merge Scheduled Tx APIs (needs to be deployed) ([PR 1638](https://github.com/onflow/flow/pull/1638), [PR 8037](https://github.com/onflow/flow-go/pull/8037), [PR 8052](https://github.com/onflow/flow-go/pull/8052))
   * KROK Team
-
       * Done:
         - [[Data Availability] Add operator config for execution result query Criteria #7879](https://github.com/onflow/flow-go/issues/7879)
         - [[Data Availability] Implement fork-aware Execution Data Endpoints #7656](https://github.com/onflow/flow-go/issues/7656)    
@@ -271,9 +269,10 @@ Q4 Cycle Objective(s):
 
 
 * <ins>Data Availability</ins>
-
-
-* KROK Team
+  * Address collection ingestions issues reported by operators
+  * Deploy Scheduled Tx Endpoints
+  * Continue on milestone 2 work.
+  * KROK Team
     - Continue work on Access API execution state endpoints ( milestone 3 )
 
 
