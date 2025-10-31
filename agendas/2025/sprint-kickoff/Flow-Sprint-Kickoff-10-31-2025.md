@@ -233,7 +233,7 @@ Q4 Cycle Objective(s):
 
 
 * <ins>Collectors submit votes for root block for spork bootstrapping</ins>
-  * Implemented tests.
+  * Testing and bootstrap automation
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
   * Scoping [Collector Decentralization Milestone E](https://github.com/orgs/onflow/projects/80)
@@ -291,7 +291,7 @@ Q4 Cycle Objective(s):
 
 
 * <ins>Collectors submit votes for root block for spork bootstrapping</ins>
-  * Complete the test implementation
+  * Add happy path test for reusing already-created cluster assignment/QCs from the previous network
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
   * Continue working on the [design doc](https://www.notion.so/flowfoundation/Proof-of-Collection-Finality-29c1aee1232480deb0c2e8d872e34ba9) and internal review.
