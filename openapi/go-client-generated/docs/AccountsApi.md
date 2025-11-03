@@ -12,7 +12,7 @@ Method | HTTP request | Description
 > AccountBalance AccountsAddressBalanceGet(ctx, address, optional)
 Get account balance by Address and BlockHeight.
 
-Get an account data by provided address and block height.
+Get an account's balance by the provided address and block height.
 
 ### Required Parameters
 
@@ -27,7 +27,7 @@ Optional parameters are passed through a pointer to a AccountsApiAccountsAddress
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **blockHeight** | [**optional.Interface of BlockHeight**](.md)| The block height to query for the account details at the \&quot;sealed\&quot; is used by default. | 
+ **blockHeight** | [**optional.Interface of BlockHeight**](.md)| The block height at which to query for the account details. \&quot;sealed\&quot; is used by default. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
  **agreeingExecutorsCount** | **optional.String**| A minimum number of execution receipts for the execution result. | 

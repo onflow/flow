@@ -968,7 +968,7 @@ paths:
       tags:
       - Accounts
       summary: Get account balance by Address and BlockHeight.
-      description: Get an account data by provided address and block height.
+      description: Get an account's balance by the provided address and block height.
       parameters:
       - name: address
         in: path
@@ -980,7 +980,7 @@ paths:
           $ref: "#/components/schemas/Address"
       - name: block_height
         in: query
-        description: The block height to query for the account details at the "sealed"
+        description: The block height at which to query for the account details. "sealed"
           is used by default.
         required: false
         style: form

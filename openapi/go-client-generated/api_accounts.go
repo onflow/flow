@@ -27,11 +27,11 @@ var (
 type AccountsApiService service
 /*
 AccountsApiService Get account balance by Address and BlockHeight.
-Get an account data by provided address and block height.
+Get an account&#x27;s balance by the provided address and block height.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param address The address of the account.
  * @param optional nil or *AccountsApiAccountsAddressBalanceGetOpts - Optional Parameters:
-     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The block height to query for the account details at the \&quot;sealed\&quot; is used by default.
+     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The block height at which to query for the account details. \&quot;sealed\&quot; is used by default.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
      * @param "AgreeingExecutorsCount" (optional.String) -  A minimum number of execution receipts for the execution result.
