@@ -7,7 +7,7 @@
 
 ---
 
-### Mainnet Uptime - Last 14 days (11/1/25 to 11/14/25) \[Vishal]
+### Mainnet Uptime - Last 14 days (11/1/25 to 11/14/25) \[Manny]
 
 
 |                         | Target | Current Score | Error budget used |
@@ -19,7 +19,7 @@
 | Access API Liveness     | 99.9%   |     100%      |        0%         |
 
 
-#### YTD SLA
+#### YTD SLA \[Manny]
 
 | Incident/upgrade       | Date       | Collection | Consensus | Execution | Verification | Total      | Comments      |
 |------------------------|------------|------------|-----------|-----------|--------------|------------|---------------|
@@ -38,18 +38,18 @@
 | YTD SLA                |            | 99.89%     | 99.90%    | 99.89%    | 99.90%       | 99.84%     |               |
 | SLA for 2025           |            | 99.91%     | 99.91%    | 99.90%    | 99.91%       | **99.86%** |               |
 
-### Incidents
+### Incidents \[Manny]
 
 - Testnet HCU 9/12
   - Update includes the change to the account used by ScheduledTransaction, Cadence update and Fusaka on EVM GW.
 
-### Key Release Dates & Breaking Changes
+### Key Release Dates & Breaking Changes \[Manny]
 
 - Mainnet HCU on Monday, 9/17.
 
 ---
 
-### FLIPs Tracker \[Vishal]
+### FLIPs Tracker \[Manny]
 
 |             | Application | Cadence | Governance | Protocol |  Total  |
 |:------------|:-----------:|:-------:|:----------:|:--------:|:-------:|
