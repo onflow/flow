@@ -316,7 +316,7 @@ Cycle Objective(s):
 
 ### **Governance** \[Vishal]
 
-[Q3 Cycle Objective(s)](https://github.com/orgs/onflow/projects/91/views/5):
+[Q4 Cycle Objective(s)](https://github.com/orgs/onflow/projects/91/views/5):
 1. Surge Pricing
 2. Develop an internal document for Flow Tokenomics
 
