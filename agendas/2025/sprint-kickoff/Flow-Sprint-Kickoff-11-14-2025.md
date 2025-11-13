@@ -187,21 +187,22 @@ Q4 Cycle Objective(s):
 
 
 * <ins>Collectors submit votes for root block for spork bootstrapping</ins>
-  * Update to network upgrade automation scripts used for the network upgrade.
+  * Testing and automation for network bootstrapping during a spork with decentralized collector nodes
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
   * [Proof of Collection Finality Design (pending feedback)](https://www.notion.so/flowfoundation/Proof-of-Collection-Finality-29c1aee1232480deb0c2e8d872e34ba9)
   * Auditing Collection Node engines for Permissionless changes
     * Transaction ingestion: [8073](https://github.com/onflow/flow-go/issues/8073)
     * Cluster block Sync protocol: [8062](https://github.com/onflow/flow-go/issues/8062)
+    * Audit on request/provider engine.
 
 
 * <ins>Investigate root cause of sealing lag</ins>
     * Implemented a change to increase concurrency on the Verification node.
       * change will be rolled out as part of the HCU.
 
-
 * Other items not covered in OKRs:
+  * Ongoing work on double-counting attack: [7918](https://github.com/onflow/flow-go/pull/7918)
 
 
 **This sprint**
@@ -223,7 +224,7 @@ Q4 Cycle Objective(s):
 
 
 * <ins>Collectors submit votes for root block for spork bootstrapping</ins>
-  * Testing automation changes on migrationnet.
+  * Merging bootstrapping changes enabling decentralized collector nodes: [115](https://github.com/onflow/flow-okrs/issues/115)
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
   * Continue internal review of [Proof of Collection Finality Design (pending feedback)](https://www.notion.so/flowfoundation/Proof-of-Collection-Finality-29c1aee1232480deb0c2e8d872e34ba9)
@@ -233,8 +234,8 @@ Q4 Cycle Objective(s):
 
 
 * Other items not covered in OKRs:
-  * Content piece
-    * Publish Transaction Fees ([ready to be published](https://www.notion.so/flowfoundation/To-be-published-once-weights-are-live-Blog-post-for-Execution-Effort-Calibration-2-28d1aee1232480d090f6c87933bc69a6?source=copy_link))
+  * Rosetta scheduled transactions investigation/followup
+  * Finish double-counting attack: [7918](https://github.com/onflow/flow-go/pull/7918)
 
 ---
 
