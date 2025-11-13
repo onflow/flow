@@ -130,7 +130,7 @@ Q3 2025 Cycle Objective(s):
 
 ---
 
-### **Core Protocol** \[Vishal]
+### **Core Protocol** \[Alex]
 
 Q4 Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
@@ -140,9 +140,7 @@ Q4 Cycle Objective(s):
 * Investigate root cause of sealing lag [IN PROGRESS]
 * Collectors submit votes for root block for spork bootstrapping [IN PROGRESS]
 * Building blocks for Collection Nodes Decentralization [IN PROGRESS]
-* Migrate EN version beacon to Dyn. Prot. State [Not Started]
-* Concurrent Transaction execution [Not Started]
-* Downgrade historical node hardware [Not Started]
+* Downgrade historical node hardware [IN PROGRESS]
 
 **Done last sprint**
 
@@ -152,7 +150,6 @@ Q4 Cycle Objective(s):
 
 
 * <ins>Data Availability</ins>
-  * Merge Scheduled Tx APIs (needs to be deployed) ([PR 1638](https://github.com/onflow/flow/pull/1638), [PR 8037](https://github.com/onflow/flow-go/pull/8037), [PR 8052](https://github.com/onflow/flow-go/pull/8052))
   * KROK Team
       * Done:
 
@@ -180,25 +177,31 @@ Q4 Cycle Objective(s):
   * KROK Team
 
 
-
 * <ins>Cryptography</ins>
   * Multi-SPoCK:
-    * SPoCK paper: more editing
+    * SPoCK paper:
+      * Continued editing paper
+      * Alignment on the research scope and external support
+      * Consolidate the aggregate-multi-SPoCK knowledge forgery proof
+      * Removed the alternative construction of SPoCK proof (more optimization) because of a security issue
 
 
 * <ins>Collectors submit votes for root block for spork bootstrapping</ins>
-  * Update to automation scripts used for the network upgrade.
+  * Update to network upgrade automation scripts used for the network upgrade.
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
+  * [Proof of Collection Finality Design (pending feedback)](https://www.notion.so/flowfoundation/Proof-of-Collection-Finality-29c1aee1232480deb0c2e8d872e34ba9)
+  * Auditing Collection Node engines for Permissionless changes
+    * Transaction ingestion: [8073](https://github.com/onflow/flow-go/issues/8073)
+    * Cluster block Sync protocol: [8062](https://github.com/onflow/flow-go/issues/8062)
 
 
 * <ins>Investigate root cause of sealing lag</ins>
-    * PR to increase concurrency on the Verification node.
+    * Implemented a change to increase concurrency on the Verification node.
       * change will be rolled out as part of the HCU.
 
 
 * Other items not covered in OKRs:
-  * Content pieces:
 
 
 **This sprint**
@@ -214,7 +217,6 @@ Q4 Cycle Objective(s):
   * KROK Team
 
 
-
 * <ins>Cryptography</ins>
   * Multi-SPoCK:
     * Continue editing SPoCK paper
@@ -224,7 +226,10 @@ Q4 Cycle Objective(s):
   * Testing automation changes on migrationnet.
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
-  * Continue working on the [design doc](https://www.notion.so/flowfoundation/Proof-of-Collection-Finality-29c1aee1232480deb0c2e8d872e34ba9) and internal review.
+  * Continue internal review of [Proof of Collection Finality Design (pending feedback)](https://www.notion.so/flowfoundation/Proof-of-Collection-Finality-29c1aee1232480deb0c2e8d872e34ba9)
+  * Continue Auditing Collection Node engines for Permissionless changes
+    * Transaction ingestion: [8073](https://github.com/onflow/flow-go/issues/8073)
+    * Cluster block Sync protocol: [8062](https://github.com/onflow/flow-go/issues/8062)
 
 
 * Other items not covered in OKRs:
