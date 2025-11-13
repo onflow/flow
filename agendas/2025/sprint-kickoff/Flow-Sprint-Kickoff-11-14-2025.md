@@ -2,7 +2,8 @@
 
 ### Team Wins 🎉
 
-
+- We have realized more than 50% savings for our infra related costs (thank you Manny)
+- All CEX have re-enabled Flow withdrawal and deposit (thank you Peter)
 
 ---
 
@@ -40,10 +41,11 @@
 ### Incidents
 
 - Testnet HCU 9/12
+  - Update includes the change to the account used by ScheduledTransaction, Cadence update and Fusaka on EVM GW.
 
 ### Key Release Dates & Breaking Changes
 
-- Mainnet HCU on 9/17.
+- Mainnet HCU on Monday, 9/17.
 
 ---
 
