@@ -4,7 +4,7 @@
 
 - We have realized more than 50% savings for our infra related costs (thank you Manny)
 - All CEX have re-enabled Flow withdrawal and deposit (thank you Peter)
-- New transaction execution weight are now live on Testnet.
+- New transaction execution weights are now live on Testnet.
 - Scheduled transactions authorizer account changed deployed on Testnet.
 - Investigations into transactions consuming large amount of execution resources helped to improve efficiency of some contracts by (reducing compute and memopry usage to 1/3).
 - Completed EVM upgrade to Fusaka - when the Mainnet network upgrade is completed Fusaka will be enabled automatically the same day as Ethereum mainnet.
