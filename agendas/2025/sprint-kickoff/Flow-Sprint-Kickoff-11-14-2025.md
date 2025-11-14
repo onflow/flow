@@ -178,7 +178,7 @@ Q3 2025 Cycle Objective(s):
   - Maybe: New Trie research
 
 - EVM
-  - Start: Deep-dive into EVM fees.
+  - Start: [Deep-dive into EVM fees](https://github.com/onflow/flow-evm-gateway/issues/922).
   - Continue: [EVM Gateway Compatibility with Surge Pricing](https://github.com/onflow/flow-evm-gateway/issues/861)
   - Complete: [Improve Tracking of the Surge factor](https://github.com/onflow/flow-evm-gateway/issues/863)
   - Complete: [Improve resilience on connections with upstream ANs](https://github.com/onflow/flow-evm-gateway/issues/764)
