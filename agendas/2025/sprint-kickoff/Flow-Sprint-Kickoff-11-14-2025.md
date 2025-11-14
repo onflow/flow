@@ -410,13 +410,41 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+**Cost Optimization**
+- [Sync Machine Types from MN27 to TN53 for LNs and SNs](https://github.com/onflow/ff-sre-infrastructure/issues/916)
+- [Terminate AN1/EN1 on TN51](https://github.com/onflow/ff-sre-infrastructure/issues/878)
+- [Cleanup Snapshot Schedules for AN1/EN1 on MN26](https://github.com/onflow/ff-sre-infrastructure/issues/879)
+- [Delete Data Disks from EN1s on MN24, 25, 26 and TN52](https://github.com/onflow/ff-sre-infrastructure/issues/892)
+- [Terminate Blue Testing EN on MN23](https://github.com/onflow/ff-sre-infrastructure/issues/894)
+- [Downsize Machine Type for EN1 MN22](https://github.com/onflow/ff-sre-infrastructure/issues/886)
+- [Downsize Machine Type for EN1 MN23](https://github.com/onflow/ff-sre-infrastructure/issues/889)
+- [Downsize Machine Type for EN1 MN21](https://github.com/onflow/ff-sre-infrastructure/issues/890)
+- [Downsize Machine Type for EN1 MN20](https://github.com/onflow/ff-sre-infrastructure/issues/891)
+- [Downsize Machine Type for EN1 MN19](https://github.com/onflow/ff-sre-infrastructure/issues/898)
+- [Downsize Machine Type for EN1 MN18](https://github.com/onflow/ff-sre-infrastructure/issues/899)
+- [Downsize Machine Type for EN1 MN17](https://github.com/onflow/ff-sre-infrastructure/issues/900)
+- [Downsize Machine Type for EN1 MN16](https://github.com/onflow/ff-sre-infrastructure/issues/901)
+- [Downsize Machine Type for EN1 MN14](https://github.com/onflow/ff-sre-infrastructure/issues/902)
+- [Downsize Machine Type for EN1 MN12](https://github.com/onflow/ff-sre-infrastructure/issues/903)
+- [Downsize Machine Type for EN1 MN11](https://github.com/onflow/ff-sre-infrastructure/issues/904)
+- [Downsize Machine Type for EN1 MN10](https://github.com/onflow/ff-sre-infrastructure/issues/905)
+- [Downsize Machine Type for EN1 MN9](https://github.com/onflow/ff-sre-infrastructure/issues/906)
+- [Downsize Machine Type for EN1 MN8](https://github.com/onflow/ff-sre-infrastructure/issues/907)
+- [Downsize Machine Type for EN1 MN7](https://github.com/onflow/ff-sre-infrastructure/issues/908)
+- [Downsize Machine Type for EN1 MN6](https://github.com/onflow/ff-sre-infrastructure/issues/909)
 
 **Support**
+- [Rolling Deploy TN53 ENs](https://github.com/onflow/ff-sre-infrastructure/issues/885)
+- [Rolling Deploy MN27 ENs](https://github.com/onflow/ff-sre-infrastructure/issues/896)
+- [Increase Data Disks for ENs MN27](https://github.com/onflow/ff-sre-infrastructure/issues/911)
+- [Create DNS Records for Protofire](https://github.com/onflow/ff-sre-infrastructure/issues/917)
+- [Create DNS record for Amplifi](https://github.com/onflow/ff-sre-infrastructure/issues/920)
+- [Update TN EVM GWs Version for the TN HCU](https://github.com/onflow/ff-sre-infrastructure/issues/922)
+- [Create swap DNS Records for Protofire](https://github.com/onflow/ff-sre-infrastructure/issues/925)
+- [Add KMS key ring and keys for DevEx on testnet](https://github.com/onflow/ff-sre-infrastructure/issues/883)
 
-
-**Cost Optimization**
-
-
+**Security**
+- [Triage Security Issue FLOWWEB-107](https://github.com/onflow/ff-sre-infrastructure/issues/914)
 
 ---
 
