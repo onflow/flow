@@ -212,25 +212,35 @@ Q4 Cycle Objective(s):
 * <ins>Data Availability</ins>
   * KROK Team
       * Done:
-
+        - [[Data Availability] Deduplicate blockIDs passed to GetEventsForBlockIDs #7897](https://github.com/onflow/flow-go/issues/7897)
 
       * In Review:
-
+        - [[Data Availability] Refactor events test in http package #7923](https://github.com/onflow/flow-go/issues/7923)
+        - [[Data Availability] Improve Collection Endpoints error handling and documentation #7649](https://github.com/onflow/flow-go/issues/7649)
+        - [[Data Availability] Implement fork-aware Script Endpoints #7651](https://github.com/onflow/flow-go/issues/7651)
+        - [[Data Availability] Update LatestPersistedSealedResult module to use storage lock #7611](https://github.com/onflow/flow-go/issues/7611)
+        - [[Access] TestMainCtxCancellationDuringRequestingExecutionData is flaky #7898](https://github.com/onflow/flow-go/issues/7898)
+        - [[Data Availability] Refactor remaining backend structs to match updated execution state endpoints #7627](https://github.com/onflow/flow-go/issues/7627)
+        - [[Data Availability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
+        - [[Data Availability] Implement fork-aware Streaming Events Endpoints #7657](https://github.com/onflow/flow-go/issues/7657)
+        - [[Data Availability] Implement fork-aware Account Endpoints #7650](https://github.com/onflow/flow-go/issues/7650)
+        - [[Data Availability] Implement fork-aware Registers Endpoints #7655](https://github.com/onflow/flow-go/issues/7655)
+        - [[Data Availability] Refactor subscription package #8093](https://github.com/onflow/flow-go/issues/8093)
 
       * In Progress:
 
-
+        - [[Access] Update collection syncing to use jobqueue #8117](https://github.com/onflow/flow-go/issues/8117)
+        - [[Data Availability] Implement fork-aware Execution Data subscription Endpoints #8059](https://github.com/onflow/flow-go/issues/8059)
 
   * Milestones status:
     - milestone 1: completed
     - milestone 2:
-      - [Epic 7180](https://github.com/onflow/flow-go/issues/7180): 4 done, 3 in progress out of 12
+      - [Epic 7180](https://github.com/onflow/flow-go/issues/7180): 5 done, 3 in progress out of 12
       - [Epic 7181](https://github.com/onflow/flow-go/issues/7181): 1 done, more issues to be created after 7180
     - milestone 3:
-      - [Epic 7182](https://github.com/onflow/flow-go/issues/7182): 10/17 done
-      - [Epic 7615](https://github.com/onflow/flow-go/issues/7615): 2 done, 5 in progress, 2 in review, out of 12
-      - [Epic 7610](https://github.com/onflow/flow-go/issues/7610): 2/7 done, 0 in progress
-
+      - [Epic 7182](https://github.com/onflow/flow-go/issues/7182): 11/17 done
+      - [Epic 7615](https://github.com/onflow/flow-go/issues/7615): 3 done, 7 in progress/review, out of 12
+      - [Epic 7610](https://github.com/onflow/flow-go/issues/7610): 2/7 done, 2 in progress/review
 
 * <ins>Immutable Models M2</ins>
   * Immutable Models PR reviews
@@ -272,6 +282,8 @@ Q4 Cycle Objective(s):
   * Continue on milestone 2 work.
   * KROK Team
     - Continue work on Access API execution state endpoints ( milestone 3 )
+    - Perform reviews
+    - Fix review remarks
 
 * <ins>Immutable Models M2</ins>
   * Immutable Models PR reviews
