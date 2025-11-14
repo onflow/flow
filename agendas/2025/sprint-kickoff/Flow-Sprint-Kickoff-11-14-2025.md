@@ -404,11 +404,14 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-
+- Completed initial dev implementation of MVP EOA suport on Flow Wallet extension.
+  - Starting internal testing asap next week after resolving found issues.
+- Started support for EOAs on iOS and Android.
 
 **This sprint**
 
-
+- Complete and ship MVP EOA support on all platforms.
+- Start on our next release, adding support for device and cloud backup/recovery for profiles with an EOA.
 
 ---
 
