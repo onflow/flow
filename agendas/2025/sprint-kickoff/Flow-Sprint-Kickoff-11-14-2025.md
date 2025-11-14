@@ -4,6 +4,11 @@
 
 - We have realized more than 50% savings for our infra related costs (thank you Manny)
 - All CEX have re-enabled Flow withdrawal and deposit (thank you Peter)
+- New transaction execution weight are now live on Testnet.
+- Scheduled transactions authorizer account changed deployed on Testnet.
+- Investigations into transactions consuming large amount of execution resources helped to improve efficiency of some contracts by (reducing compute and memopry usage to 1/3).
+- Completed EVM upgrade to Fusaka - when the Mainnet network upgrade is completed Fusaka will be enabled automatically the same day as Ethereum mainnet.
+- Completed performance improvement of EVM GW which [avoids querying AN for latest block on each tx submission](https://github.com/onflow/flow-evm-gateway/issues/895) - reducing 2 access nodes API calls for each EVM transaction.
 
 ---
 
@@ -79,6 +84,87 @@ Q3 2025 Cycle Objective(s):
 
 **Cadence Language**
 
+- [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
+    - Performance optimization
+        - [Avoid conversion from StaticType to sema.Type during runtime sub-type checking](https://github.com/onflow/cadence/issues/3691)
+            - [[Subtyping Generator] Improve DSL schema](https://github.com/onflow/cadence/pull/4318)
+            - [[Subtyping Generator] Fix return statement generation and add tests](https://github.com/onflow/cadence/pull/4320)
+            - [[Subtyping Generator] Add support for a default rule](https://github.com/onflow/cadence/pull/4326)
+            - [[Subtyping Generator] Add tests for type-checker's subtype check](https://github.com/onflow/cadence/pull/4332)
+        - [Peephole optimizations](https://github.com/onflow/cadence/issues/4305)
+            [Add peephole pass with potential optimizations.](https://github.com/onflow/cadence/pull/4319)
+        - [Compute typeID only once for complex types](https://github.com/onflow/cadence/pull/4325)
+        - [[Compiler] Pool maps created for resource reference tracking](https://github.com/onflow/cadence/pull/4328)
+        - [Always call into the type-converter-context to convert from sema to static types](https://github.com/onflow/cadence/pull/4333)
+- [Improve Cadence Errors to Support LLM Efficiency](https://github.com/onflow/cadence/issues/4062)
+    - [Better error message when failing to decode cadence json](https://github.com/onflow/cadence/issues/4209)
+        - [Improve JSON decode error messages with path context](https://github.com/onflow/cadence/pull/4302)
+- Other minor optimizations:
+    - [Optimize event emission](https://github.com/onflow/cadence/pull/4334)
+    - [Optimize subtype check](https://github.com/onflow/cadence/pull/4338)
+- Tooling
+    - [Add support for collecting computation profiles](https://github.com/onflow/flow-emulator/pull/877)
+    - [Fix and improve computation profiling](https://github.com/onflow/flow-emulator/pull/904)
+    - [Add endpoint to download ZIP file of all contracts](https://github.com/onflow/flow-emulator/pull/905)
+- Chores
+    - [Add GH action to publish NPM package for parser on release](https://github.com/onflow/cadence/pull/4321)
+    - [Bump onflow/atree to v0.12.0 and fxamacker/cbor to v2.9.0 of stream-mode branch](https://github.com/onflow/cadence/pull/4324)
+    - [[lint] Update to Cadence v1.8.3](https://github.com/onflow/cadence-tools/pull/524)
+    - [[test] Update to Cadence v1.8.3](https://github.com/onflow/cadence-tools/pull/525)
+    - [[languageserver] Update to Cadence v1.8.3](https://github.com/onflow/cadence-tools/pull/528)
+    - [[LS] Improve NPM publish action](https://github.com/onflow/cadence-tools/pull/526)
+    - [Update code owners](https://github.com/onflow/cadence-tools/pull/527)
+    - [Update to Cadence v1.8.3](https://github.com/onflow/flixkit-go/pull/98)
+    - [Update to Cadence v1.8.3](https://github.com/onflow/flow-emulator/pull/900)
+    - [Update to Cadence v1.8.3](https://github.com/onflow/flow-evm-gateway/pull/918)
+    - [Merge `master` into Cadence VM feature branch, update to fixed Cadence version](https://github.com/onflow/flow-go/pull/8087)
+    - [Update to Cadence v1.8.3](https://github.com/onflow/flowkit/pull/165)
+
+**Cadence Execution**
+
+- Checduled transactions - changing authorizer account
+    - [[Scheduled Transactions] Update the transaction execution authorizer](https://github.com/onflow/flow-go/pull/8102)
+    - [[Scheduled Transactions] Update the transaction execution authorizer](https://github.com/onflow/flow-go/pull/8122)
+    - [[AN] WIP Versioned system collection](https://github.com/onflow/flow-go/pull/8119)
+- Network Operation:
+    - optimize execution node disk usage:
+        - [Keep 3 days of chunk data pack data instead of 18 days. ](https://github.com/onflow/dapper-flow-hosting/pull/1804)
+        - [change the pruning threshold for mainnet EN](https://github.com/onflow/dapper-flow-hosting/pull/1805)
+        - [Change the default chunk data pack pruning threshold to 15 days](https://github.com/onflow/flow-go/pull/8118)
+    - [[Util] Add --executed flag to read-protocol-state snapshot command](https://github.com/onflow/flow-go/pull/8104)
+- Improvements
+    - [Rename schedulde callbacks to transactions](https://github.com/onflow/flow-go/pull/8109)
+- Bugfix:
+    - [1](https://github.com/onflow/flow-go-internal/pull/7125)
+- Automation
+    - [fix checkpoint extraction script to read block ID and height](https://github.com/onflow/ff-sre-automation/pull/30)
+- Network upgrade to v0.44 - preparation:
+    - [Update Testnet System Colletion Version - V0.44](https://github.com/onflow/flow-go/pull/8139)
+    - [Update Testnet System Colletion Version](https://github.com/onflow/flow-go/pull/8140)
+    - [Fix system collection test v0.44](https://github.com/onflow/flow-go/pull/8149)
+    - [Add Mainnet System Collection Version Boundary - v0.44](https://github.com/onflow/flow-go/pull/8150)
+- Chore:
+    - [Update flow/protobuf/go/flow v0.4.18](https://github.com/onflow/flow-go-sdk/pull/946)
+
+**Flow EVM**
+- Features
+    - [Ethereum Fusaka Update](https://github.com/onflow/flow-evm-gateway/issues/912)
+        - [Enable EVM Fusaka hard-fork](https://github.com/onflow/flow-evm-gateway/pull/913)
+        - [Enable EVM Fusaka hard-fork for `PreviewNet` (a.k.a Emulator) & `Testnet`](https://github.com/onflow/flow-go/pull/8085)
+- Optimization
+    - [[Flow EVM] Optimize block formation](https://github.com/onflow/flow-go/issues/6958)
+        - [Eliminate duplicate storage read operation when creating EVM `BlockContext`](https://github.com/onflow/flow-go/pull/8053)
+    - [Avoid querying AN for COA account](https://github.com/onflow/flow-evm-gateway/issues/773)
+        - [Update tx submission logic to only fetch a single account key from the COA](https://github.com/onflow/flow-evm-gateway/pull/911)
+    - [Avoid querying AN for latest block on each tx submission](https://github.com/onflow/flow-evm-gateway/issues/895)
+        - [Track the latest finalized block header for tx submission](https://github.com/onflow/flow-evm-gateway/pull/896)
+- Network operation:
+    - [Update `MainnetInitCadenceHeight` to the first height of `mainnet25`](https://github.com/onflow/flow-evm-gateway/pull/910)
+- Chore
+    - [Update `flow-go` version to `v0.44` release branch](https://github.com/onflow/flow-evm-gateway/pull/919)
+
+**Cadence Language**
+
 - Investigating security reports
 - [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
     - Performance optimization
@@ -115,13 +201,25 @@ Q3 2025 Cycle Objective(s):
 **This sprint**
 
 
+**This sprint**
+
 - Cadence Language
     - Continue tackling compiler tech-debt & optimizations
 
 - Cadence Execution
-
+  - Complete [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598) - apply new weights on Mainnet
+  - Continue [Badger -> Pebble: remaining tasks and cleanup](https://github.com/onflow/flow-go/issues/7682)
+  - Continue [Versioning of Execution Stack via Dynamic Protocol State](https://github.com/onflow/flow-go/issues/6999)
+  - Continue [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571)
+  - Continue [Storehouse](https://github.com/onflow/flow-okrs/issues/166)
+  - Start [Scheduled Transactions for EVM](https://github.com/onflow/flow-go/issues/8019)
+  - Maybe: New Trie research
 
 - EVM
+  - Start: Deep-dive into EVM fees.
+  - Continue: [EVM Gateway Compatibility with Surge Pricing](https://github.com/onflow/flow-evm-gateway/issues/861)
+  - Complete: [Improve Tracking of the Surge factor](https://github.com/onflow/flow-evm-gateway/issues/863)
+  - Complete: [Improve resilience on connections with upstream ANs](https://github.com/onflow/flow-evm-gateway/issues/764)
 
 
 **On Hold**
