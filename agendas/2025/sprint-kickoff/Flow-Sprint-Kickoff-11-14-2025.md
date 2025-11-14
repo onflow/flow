@@ -266,25 +266,59 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
-- React SDK/FCL
+- Fork Testing
+  - Added inline fork testing syntax
+  - Created fork testing video
 
+- Mobile
+  - Started building React Native scaffold for the React SDK
+  - Began identifying mobile issues to tackle in scaffold
 
-- CLI
+- React SDK Liquidity
+  - Spec'd plan for fund component
+
+- Misc
+  - Hackathon judging
+  - Implemented all missing scheduled & system transaction data access API features in the emulator
+  - Implemented new websocket streaming endpoints in the emulator (was blocking forking)
+  - Released NFT Card component
+  - Released Scheduled Transactions component
+  - Added Scheduled Transactions display to profile modal
+  - Added support for multiple tokens balances in profile modal
+  - Managed FlowCron deployment on testnet and make repo public with docs
+  - Created documentation for new React SDK components and hooks
+  - Added `discoveryAuthnExclude` support to the React SDK
+  - Added support for UID & Fixed Bug In FCL Discovery Filtering
+  - Add UFix128 and Fix128 fixed-point types to FCL
+  - Improved JSDoc in FCL for `createFlowClient` method
+	- Improved docs on `createFlowClient` for advanced FCL configuration
+  - Added support for import aliasing to FCL
+  - Added support for import aliasing to flowkit
+  - Added flowkit docs for partners
 
 
 **This Sprint**
 
 - Fork Testing
-
+  - Complete fork testing emulator doc
+  - Document dependency mocking for forked network
+  - Add analytics for fork testing usage
 
 - Mobile
-
+  - Fix polyfills for React Native React SDK scaffold
+  - Create Expo starter
+  - Create WalletConnect / Flow Wallet issues
+  - Test React SDK hooks on React Native
 
 - React SDK Liquidity
-
+  - Build UI for Fund component
+  - Build a Relay integration for the Fund component
 
 - Misc
-
+  - Add import alias support in Dependency Manager and CLI
+  - Rename gas language across tooling to compute
+  - Document React SDK Discovery Options
+  - Remove legacy fallback for FCL transaction polling
 
 ---
 
