@@ -197,7 +197,7 @@ Q4 Cycle Objective(s):
 * Network Upgrade (Spork) [Done]
 * [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * SPoCK Research [IN PROGRESS]
-* Investigate root cause of sealing lag [IN PROGRESS]
+* Investigate root cause of sealing lag [Done]
 * Collectors submit votes for root block for spork bootstrapping [IN PROGRESS]
 * Building blocks for Collection Nodes Decentralization [IN PROGRESS]
 * Downgrade historical node hardware [IN PROGRESS]
