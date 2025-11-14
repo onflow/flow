@@ -6,7 +6,7 @@
 - All CEX have re-enabled Flow withdrawal and deposit (thank you Peter)
 - New transaction execution weights are now live on Testnet.
 - Scheduled transactions authorizer account changed deployed on Testnet.
-- Investigations into transactions consuming large amount of execution resources helped to improve efficiency of some contracts by (reducing compute and memopry usage to 1/3).
+- Investigations into transactions consuming large amount of execution resources helped to improve efficiency of some contracts by (reducing compute and memory usage to 1/3).
 - Completed EVM upgrade to Fusaka - when the Mainnet network upgrade is completed Fusaka will be enabled automatically the same day as Ethereum mainnet.
 - Completed performance improvement of EVM GW which [avoids querying AN for latest block on each tx submission](https://github.com/onflow/flow-evm-gateway/issues/895) - reducing 2 access nodes API calls for each EVM transaction.
 
