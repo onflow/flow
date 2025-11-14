@@ -319,15 +319,21 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-#### FlowALP:
-
+#### Flow ALP & Flow Vaults:
+- Mainnet Deployment of Smart contracts completed this spring
+- FE and BE setup of infrastructure
+- Implementation of Scheduled Transaction for auto balancing
+- Redemption flow
+- EVM equivalence for Flow ALP actions
 
 
 **This sprint**
 
 #### Flow ALP & Flow Vaults:
-
-
+- Internal Beta
+- Oracle aggregation
+- Enabling Scheduled Transactions and start tuning parameters
+- Finalize EVM equivalence, start on UI
 
 ---
 
