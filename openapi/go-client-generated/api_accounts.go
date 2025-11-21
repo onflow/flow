@@ -326,6 +326,156 @@ func (a *AccountsApiService) AccountsAddressGet(ctx context.Context, address str
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
+AccountsApiService Get Account Keys By Address
+Get an account data by provided address in latest \&quot;sealed\&quot; block or by provided block height.
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param address The address of the account.
+ * @param optional nil or *AccountsApiAccountsAddressKeysGetOpts - Optional Parameters:
+     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The block height to query for the account details. \&quot;sealed\&quot; is used by default.
+     * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
+     * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
+     * @param "AgreeingExecutorsCount" (optional.String) -  A minimum number of execution receipts for the execution result.
+     * @param "RequiredExecutorIds" (optional.Interface of []string) -  A set of execution node IDs, one of which must have produced the execution result.
+     * @param "IncludeExecutorMetadata" (optional.Bool) -  Specifies whether or not to include the executor metadata in the response.
+@return AccountPublicKeys
+*/
+
+type AccountsApiAccountsAddressKeysGetOpts struct {
+    BlockHeight optional.Interface
+    Expand optional.Interface
+    Select_ optional.Interface
+    AgreeingExecutorsCount optional.String
+    RequiredExecutorIds optional.Interface
+    IncludeExecutorMetadata optional.Bool
+}
+
+func (a *AccountsApiService) AccountsAddressKeysGet(ctx context.Context, address string, localVarOptionals *AccountsApiAccountsAddressKeysGetOpts) (AccountPublicKeys, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		localVarReturnValue AccountPublicKeys
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/accounts/{address}/keys"
+	localVarPath = strings.Replace(localVarPath, "{"+"address"+"}", fmt.Sprintf("%v", address), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.BlockHeight.IsSet() {
+		localVarQueryParams.Add("block_height", parameterToString(localVarOptionals.BlockHeight.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
+		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
+		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.AgreeingExecutorsCount.IsSet() {
+		localVarQueryParams.Add("agreeing_executors_count", parameterToString(localVarOptionals.AgreeingExecutorsCount.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.RequiredExecutorIds.IsSet() {
+		localVarQueryParams.Add("required_executor_ids", parameterToString(localVarOptionals.RequiredExecutorIds.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.IncludeExecutorMetadata.IsSet() {
+		localVarQueryParams.Add("include_executor_metadata", parameterToString(localVarOptionals.IncludeExecutorMetadata.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	if localVarHttpResponse.StatusCode < 300 {
+		// If we succeed, return the data, otherwise pass on to decode error.
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		if err == nil { 
+			return localVarReturnValue, localVarHttpResponse, err
+		}
+	}
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericSwaggerError{
+			body: localVarBody,
+			error: localVarHttpResponse.Status,
+		}
+		if localVarHttpResponse.StatusCode == 200 {
+			var v AccountPublicKeys
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 400 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 404 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 500 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHttpResponse, nil
+}
+/*
 AccountsApiService Get an individual Account Key By Address and Index
 Get an account data by provided address in latest \&quot;sealed\&quot; block or by provided block height.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
