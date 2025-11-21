@@ -331,7 +331,7 @@ Get an account data by provided address in latest \&quot;sealed\&quot; block or 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param address The address of the account.
  * @param optional nil or *AccountsApiAccountsAddressKeysGetOpts - Optional Parameters:
-     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The block height to query for the account details at the \&quot;sealed\&quot; is used by default.
+     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The block height to query for the account details. \&quot;sealed\&quot; is used by default.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
      * @param "AgreeingExecutorsCount" (optional.String) -  A minimum number of execution receipts for the execution result.

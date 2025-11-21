@@ -981,8 +981,8 @@ paths:
           $ref: "#/components/schemas/Address"
       - name: block_height
         in: query
-        description: The block height to query for the account details at the "sealed"
-          is used by default.
+        description: The block height to query for the account details. "sealed" is
+          used by default.
         required: false
         style: form
         explode: true
