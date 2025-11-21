@@ -458,7 +458,7 @@ paths:
           schema:
             $ref: '#/components/schemas/BlockHeight'
           required: false
-          description: The block height to query for the account details at the "sealed" is used by default.
+          description: The block height to query for the account details. "sealed" is used by default.
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
         - $ref: '#/components/parameters/agreeingExecutorsCount'
