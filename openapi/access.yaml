@@ -440,6 +440,43 @@ paths:
           $ref: '#/components/responses/404NotFound'
         '500':
           $ref: '#/components/responses/500InternalServerError'
+  /accounts/{address}/keys:
+    get:
+      summary: Get Account Keys By Address
+      description: Get an account data by provided address in latest "sealed" block or by provided block height.
+      tags:
+        - Accounts
+      parameters:
+        - name: address
+          in: path
+          schema:
+            $ref: '#/components/schemas/Address'
+          required: true
+          description: The address of the account.
+        - name: block_height
+          in: query
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
+          required: false
+          description: The block height to query for the account details at the "sealed" is used by default.
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/agreeingExecutorsCount'
+        - $ref: '#/components/parameters/requiredExecutorIds'
+        - $ref: '#/components/parameters/includeExecutorMetadata'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPublicKeys'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
   /accounts/{address}/balance:
    get:
       summary: Get account balance by Address and BlockHeight.
@@ -864,6 +901,19 @@ components:
         revoked:
           type: boolean
           description: Flag indicating whether the key is active or not.
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+    AccountPublicKeys:
+      type: object
+      required:
+        - keys
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountPublicKey'
+          minItems: 1
+          uniqueItems: true
         metadata:
           $ref: '#/components/schemas/Metadata'
     AccountBalance:
