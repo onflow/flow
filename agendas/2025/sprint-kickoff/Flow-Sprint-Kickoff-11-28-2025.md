@@ -42,7 +42,7 @@
     - Mainnet HCU on Monday, 9/20
 
 - Unplanned downtime:
-    - EVM GW downtime: ~40 mins 
+    - EVM GW downtime: ~40 mins
 
 ### Key Release Dates & Breaking Changes \[Vishal]
 
@@ -258,30 +258,55 @@ Cycle Objective(s):
 **Done Last Sprint**
 
 - Fork Testing
-
+  - Created Fork Testing video
+  - Created Fork Testing doc for emulator
+  - Added analytics to track forking usage
+  - Updated Cadence Test Framework Docs to New Pragma Fork Testing Syntax
+  - Improve forked network import aliasing in `flow.json` for Flow Emulator
+  - Released DeFi Actions Forking Scaffold to Flow CLI
 
 - Mobile
-
+  - Worked on `fcl-react-native` fixing polyfills
+  - Created a starter project "flow-expo-starter" with `fcl-react-native`
+  - Create and tested a WalletConnect/Flow Wallet integration with `fcl-react-native`
+  - Specced `react-native-sdk` architecture
+  - Created React Native SDK connect UI
 
 - React SDK Liquidity
-
+  - Completed `Fund` component spec and mocks
+  - Started building UI for `Fund` component
 
 - Misc
-
+  - Added Cadence import aliasing support to CLI/Dependency Manager
+  - Fixed Cadence import aliasing bug in flowkit
+  - Created docs for Cadence import aliasing with `flow.json`
+  - Renamed gas language across tooling to compute
+  - Documented React SDK Discovery WalletConnect options
+  - Updated FCL Discovery docs for WalletConnect
+  - Documented new FCL Discovery Options for FCL & React SDK
 
 
 **This Sprint**
 
 - Fork Testing
-
+  - Document dependency mocking for forked network
 
 - Mobile
-
+  - Complete `fcl-react-native` WalletConnect implementation
+  - Test Expo starter and Flow Wallet/WalletConnect
+  - Create new React Native SDK for mobile
+  - Create shared React SDK hooks package for usage in new React Native lib
+  - Switch existing hooks usage to the new shared package
 
 - React SDK Liquidity
-
+  - Build UI for Fund component
+  - Build demo for `Fund` component in React SDK playground
+  - Build Moonpay fiat on-ramp integration for `Fund` component
+  - Build Relay crypto on-ramp integration for `Fund` component
 
 - Misc
+  - Deploy `FlowCron` to mainnet
+  - System transactions support in `flow blocks get`
 
 
 ---
