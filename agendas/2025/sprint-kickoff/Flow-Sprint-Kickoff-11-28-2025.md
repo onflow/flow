@@ -159,11 +159,8 @@ Q4 Cycle Objective(s):
 
 **Done last sprint**
 
-* Q3 Network Upgrade (Spork)
-
-
-
 * <ins>Data Availability</ins>
+  * PR reviews
   * KROK Team
       * Done:
         - [[Data Availability] Implement fork-aware Script Endpoints #7651](https://github.com/onflow/flow-go/issues/7651)
@@ -181,16 +178,12 @@ Q4 Cycle Objective(s):
         - [[Access] Optimize access integration tests runtime #7157](https://github.com/onflow/flow-go/issues/7157)
         - [[Access] Compatible Range in node version info does not reflect compatibility overrides #7014](https://github.com/onflow/flow-go/issues/7014)
 
-
       * In Progress:
-
         - [[Data Availability] Implement fork-aware Execution Data subscription Endpoints #8059](https://github.com/onflow/flow-go/issues/8059)
         - [[Data Availability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
         - [[Data Availability] Implement fork-aware Streaming Events Endpoints #7657](https://github.com/onflow/flow-go/issues/7657)
         - [[Access] Fix error codes for GetTransactionResultsByBlockID during HCU #8178](https://github.com/onflow/flow-go/issues/8178)
-        
-        
-        
+
 * Milestones status:
     - milestone 1: completed
     - milestone 2:
@@ -206,52 +199,48 @@ Q4 Cycle Objective(s):
   * Immutable Models PR reviews
   * KROK Team
 
-
 * <ins>Cryptography</ins>
   * Multi-SPoCK:
-    * SPoCK paper:
-
+    - Agreement with a researcher to help review the multi-SPoCK work (expected to start in January)
+    - More progress on the paper
+    - Adjustment of the definitions to claim "public key aggregation"
+    - Review of other papers - DKG design and a PQC idea.
 
 
 * <ins>Collectors submit votes for root block for spork bootstrapping</ins>
-  * Testing and automation for network bootstrapping during a spork with decentralized collector nodes
+  * Testing and automation for network bootstrapping during a spork with decentralized collector nodes.
+  * Addressing PR comments and merging in the changes to master.
+  * Providing updates to DL for the changes to the Spork process for collection node participation.
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
-  * [Proof of Collection Finality Design (pending feedback)](https://www.notion.so/flowfoundation/Proof-of-Collection-Finality-29c1aee1232480deb0c2e8d872e34ba9)
+  * Finished [Proof of Collection Finality Design (pending feedback)](https://www.notion.so/flowfoundation/Proof-of-Collection-Finality-29c1aee1232480deb0c2e8d872e34ba9)
+  * Created [issues for Proof of Collection Finality OKR](https://github.com/onflow/flow-go/issues/8057)
   * Auditing Collection Node engines for Permissionless changes
-
-
-
-* <ins>Investigate root cause of sealing lag</ins>
-
+  * Started on issue [8170: BlockBuffer BFT improvement implementation](https://github.com/onflow/flow-go/issues/8170)
+  * Updates to the requester engine to increase BFT resilience https://github.com/onflow/flow-go/issues/8063
 
 * Other items not covered in OKRs:
-
+  * Byzantine leader double-counting, addressing comments, implementing new approach: https://github.com/onflow/flow-go/pull/7918
+  * Updates to the Access API for Schedule Transactions.
 
 
 **This sprint**
 
 * <ins>Data Availability</ins>
-
+  * PR reviews
   * KROK Team 
     - Continue work on reviews and milestone 3 tasks
 
-* <ins>Immutable Models M2</ins>
-
-
-
 * <ins>Cryptography</ins>
-
-
-
-* <ins>Collectors submit votes for root block for spork bootstrapping</ins>
+  - Continue working on the Spock paper
 
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
-
+  * Continue implementation
 
 
 * Other items not covered in OKRs:
+  * Finish fix for [double-counting](https://github.com/onflow/flow-go-internal/issues/6127) and merge it
 
 
 ---
