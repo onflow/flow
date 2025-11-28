@@ -60,14 +60,15 @@
 |             | Application | Cadence | Governance | Protocol |  Total  |
 |:------------|:-----------:|:-------:|:----------:|:--------:|:-------:|
 | Drafted     |      9      |    6    |     0      |    9     | **24**  |
-| Proposed    |      1      |    2    |     3      |    1     |  **7**  |
+| Proposed    |      1      |    2    |     4      |    1     |  **7**  |
 | Accepted    |      3      |    2    |     3      |    1     |  **9**  |
 | Rejected    |      0      |    1    |     1      |    0     |  **2**  |
 | Implemented |      3      |    6    |     1      |    0     | **10**  |
-| Released    |      4      |   35    |     9      |    10    | **58**  |
-| Total       |   **20**    | **52**  |   **17**   |  **21**  | **110** |
+| Released    |      4      |   35    |     10     |    10    | **59**  |
+| Total       |   **20**    | **52**  |   **18**   |  **21**  | **111** |
 
-- No change
+- [FLIP 346: Variable Transaction Fees - Execution Effort II](https://github.com/onflow/flips/blob/main/protocol/20251008-execution-effort-2.md) released.
+- One new FLIP proposed - [FLIP 351: Transaction Fee Update to Enable Inflation-Neutral Tokenomics](https://github.com/onflow/flips/pull/352)
 
 ---
 
