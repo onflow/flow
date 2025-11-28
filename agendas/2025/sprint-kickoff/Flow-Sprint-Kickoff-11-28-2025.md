@@ -2,6 +2,7 @@
 
 ### Team Wins 🎉
 
+- We realized infra cost savings with historical nodes 16 to 23 downgraded to a single VM (thanks Manny)
 
 ---
 
@@ -31,9 +32,10 @@
 | HCU                    | 6/3/2025   |            |           | 9         |              | 9          |               |
 | HCU                    | 6/16/2025  |            |           | 12        |              | 12         |               |
 | HCU                    | 8/7/2025   |            |           | 9         |              | 9          |               |
-| Forte network upgrade  | 10/22/2025 | 284        | 240       | 240       | 240          | 470        | 470           |
-| Total downtime in mins |            | 210        | 210       | 272       | 210          | 272        |               |
-| YTD SLA                |            | 99.89%     | 99.90%    | 99.89%    | 99.90%       | 99.84%     |               |
+| Forte network upgrade  | 10/22/2025 | 284        | 240       | 240       | 240          | 470        |               |
+| HCU                    | 11/20/2025 |            |           | 9         |              | 9          |               |
+| Total downtime in mins |            | 494        | 450       | 521       | 450          | 751        |               |
+| YTD SLA                |            | 99.90%     | 99.91%    | 99.89%    | 99.91%       | 99.84%     |               |
 | SLA for 2025           |            | 99.91%     | 99.91%    | 99.90%    | 99.91%       | **99.86%** |               |
 
 ### Incidents \[Vishal]
@@ -42,11 +44,14 @@
     - Mainnet HCU on Monday, 9/20
 
 - Unplanned downtime:
-    - EVM GW downtime: ~40 mins
+    - EVM GW downtime for 40 minutes: Friday,Nov 21st from 11:00 AM to 11:38 AM UTC (3:00 AM to 3:38 AM Pacific)
+
 
 ### Key Release Dates & Breaking Changes \[Vishal]
 
-
+- Transaction Fee update as per [FLIP 351: Transaction Fee Update to Enable Inflation-Neutral Tokenomics](https://github.com/onflow/flips/pull/352)
+  - Testnet: Mon, Dec 1st (see [announcement](https://forum.flow.com/t/upcoming-testnet-update-transaction-fee-changes-going-live-on-monday-dec-1/8405))
+  - Mainnet: Thursday, Dec 4th (tentative)
 
 ---
 
