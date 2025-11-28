@@ -209,15 +209,17 @@ Q4 Cycle Objective(s):
 
 * <ins>Collectors submit votes for root block for spork bootstrapping</ins>
   * Testing and automation for network bootstrapping during a spork with decentralized collector nodes.
-  * Addressing PR comments and merging in the changes to master.
+  * Completed and merged all PRs for Collector Bootstrapping decentralization https://github.com/onflow/flow-okrs/issues/115
   * Providing updates to DL for the changes to the Spork process for collection node participation.
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
   * Finished [Proof of Collection Finality Design (pending feedback)](https://www.notion.so/flowfoundation/Proof-of-Collection-Finality-29c1aee1232480deb0c2e8d872e34ba9)
   * Created [issues for Proof of Collection Finality OKR](https://github.com/onflow/flow-go/issues/8057)
   * Auditing Collection Node engines for Permissionless changes
-  * Started on issue [8170: BlockBuffer BFT improvement implementation](https://github.com/onflow/flow-go/issues/8170)
-  * Updates to the requester engine to increase BFT resilience https://github.com/onflow/flow-go/issues/8063
+  * Started on issue:
+    * [8170: BlockBuffer BFT improvement implementation](https://github.com/onflow/flow-go/issues/8170)
+    * [8063: Updates to the requester engine to increase BFT resilience](https://github.com/onflow/flow-go/issues/8063)
+    * [4202: Differentiate between cluster and consensus headers at storage layer](https://github.com/onflow/flow-go/issues/4204)
 
 * Other items not covered in OKRs:
   * Byzantine leader double-counting, addressing comments, implementing new approach: https://github.com/onflow/flow-go/pull/7918
@@ -236,7 +238,8 @@ Q4 Cycle Objective(s):
 
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
-  * Continue implementation
+  * Continue implementation on current issues
+    * Improve Collection & Consensus Sync Engines: [8173](https://github.com/onflow/flow-go/issues/8173) and [8174](https://github.com/onflow/flow-go/issues/8174)  
 
 
 * Other items not covered in OKRs:
