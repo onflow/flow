@@ -391,11 +391,15 @@ Cycle Objective(s):
 
 **Done last sprint**
 
-
+- Shipped v3.1 of Flow Wallet extension -> adding EOA support.
+    - This will help prevent users from losing assets when sending to their COA address on other networks.
+- Continued development of v3.1 on Flow Wallet iOS & Android
 
 **This sprint**
 
-
+- Ship v3.1 on Flow Wallet iOS & Android, adding EOA support
+- Start on v3.2 -> Adding device and cloud backup support to EOA profiles on Flow Wallet.
+- Start engineering breakdown for v3.3  -> Adding support for multiple accounts per profile.
 
 ---
 
