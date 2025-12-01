@@ -373,9 +373,6 @@ Cycle Objective(s):
 - [Create CNAME and TXT DNS Records for Earn](https://github.com/onflow/ff-sre-infrastructure/issues/961)
 
 
-**Security**
-
-
 ---
 
 ### **Governance** \[Vishal]
