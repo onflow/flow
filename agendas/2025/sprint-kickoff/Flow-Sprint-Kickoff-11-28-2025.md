@@ -345,9 +345,32 @@ Cycle Objective(s):
 **Done last sprint**
 
 **Cost Optimization**
+- [Change Automation Jobs to Fetch from the Standard Snapshot Schedule for EN1s](https://github.com/onflow/ff-sre-infrastructure/issues/881)
+- [Remove Custom Snapshot Schedule for Automation Jobs](https://github.com/onflow/ff-sre-infrastructure/issues/934)
+- [Downsize Machine Type for ENs TN53](https://github.com/onflow/ff-sre-infrastructure/issues/931)
+- [Downsize Machine Type for ENs Migration TN](https://github.com/onflow/ff-sre-infrastructure/issues/932)
+- [Create Historical Node with Local SSDs for Consolidation Tests](https://github.com/onflow/ff-sre-infrastructure/issues/938)
+- [Downsize MN22 EN1 for Tests Running Flow Service with Swapfile](https://github.com/onflow/ff-sre-infrastructure/issues/942)
+- [Create Ansible Role for Consolidated Historical Node with Support for Debian 12](https://github.com/onflow/ff-sre-infrastructure/issues/945)
+- [Create Consolidation Node for Historical ENs](https://github.com/onflow/ff-sre-infrastructure/issues/946)
+- [Create Ansible Role for Host-based Routing for Historical ANs/ENs](https://github.com/onflow/ff-sre-infrastructure/issues/948)
+- [Create Archive Snapshots for ENs from MN5-MN23 and Remove Standard Snapshots](https://github.com/onflow/ff-sre-infrastructure/issues/949)
+- [Implement Labeling Scheme for Snapshots from Historical Nodes on Flow Multi Region](https://github.com/onflow/ff-sre-infrastructure/issues/954)
+- [Add New MN00 EN to Mainnet Historical Inventory for Consolidation of MN23 and below](https://github.com/onflow/ff-sre-infrastructure/issues/956)
+- [Create Ansible Roles for Creating Swap Partition in RAID 0 from Local SSD Disks](https://github.com/onflow/ff-sre-infrastructure/issues/957)
+- [Research and Implement Kernel Tuning on Consolidated EN to Optimize Swap Usage](https://github.com/onflow/ff-sre-infrastructure/issues/958)
 
 
 **Support**
+- [Update DNS Records for Port](https://github.com/onflow/ff-sre-infrastructure/issues/928)
+- [Create DNS Records for Flow Vaults](https://github.com/onflow/ff-sre-infrastructure/issues/936)
+- [Reconcile Snapshot Policy Changes for Historical Networks](https://github.com/onflow/ff-sre-infrastructure/issues/941)
+- [Update Version for ANs before the MN27 HCU](https://github.com/onflow/ff-sre-infrastructure/issues/940)
+- [Rolling Deploy on EVM Gateway Nodes for TN/MN](https://github.com/onflow/ff-sre-infrastructure/issues/950)
+- [Create Gemini API Keys for the Wallet Team](https://github.com/onflow/ff-sre-infrastructure/issues/951)
+- [Update DNS Staging Safe Records for Protofire](https://github.com/onflow/ff-sre-infrastructure/issues/952)
+- [Increase Data Disk Size for TN53 LNs](https://github.com/onflow/ff-sre-infrastructure/issues/959)
+- [Create CNAME and TXT DNS Records for Earn](https://github.com/onflow/ff-sre-infrastructure/issues/961)
 
 
 **Security**
