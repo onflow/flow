@@ -220,21 +220,22 @@ Q4 Cycle Objective(s):
 
 * <ins>Data Availability</ins>
   * PR reviews
+  * Allow reindexing last block's protocol data ([PR 8165](https://github.com/onflow/flow-go/pull/8165))
   * KROK Team
       * Done:
         - [[Data Availability] Implement fork-aware Script Endpoints #7651](https://github.com/onflow/flow-go/issues/7651)
-        - [[Access] TestMainCtxCancellationDuringRequestingExecutionData is flaky #7898](https://github.com/onflow/flow-go/issues/7898)
-        - [[Data Availability] Improve Collection Endpoints error handling and documentation #7649](https://github.com/onflow/flow-go/issues/7649)
-        - [[Data Availability] Refactor remaining backend structs to match updated execution state endpoints #7627](https://github.com/onflow/flow-go/issues/7627)
-        - [[DataAvailability] Add getAccountKeys request and response to openapi #1658](https://github.com/onflow/flow/issues/1658)
         - [[Data Availability] Implement fork-aware Account Endpoints #7650](https://github.com/onflow/flow-go/issues/7650)
         - [[Data Availability] Implement fork-aware Registers Endpoints #7655](https://github.com/onflow/flow-go/issues/7655)
+        - [[DataAvailability] Add getAccountKeys request and response to openapi #1658](https://github.com/onflow/flow/issues/1658)
+        - [[Data Availability] Improve Collection Endpoints error handling and documentation #7649](https://github.com/onflow/flow-go/issues/7649)
+        - [[Data Availability] Refactor remaining backend structs to match updated execution state endpoints #7627](https://github.com/onflow/flow-go/issues/7627)
+        - [[Access] TestMainCtxCancellationDuringRequestingExecutionData is flaky #7898](https://github.com/onflow/flow-go/issues/7898)
+        - [[Access] Optimize access integration tests runtime #7157](https://github.com/onflow/flow-go/issues/7157)
 
       * In Review:
         - [[Data Availability] Refactor events test in http package #7923](https://github.com/onflow/flow-go/issues/7923)
         - [[Data Availability] Update LatestPersistedSealedResult module to use storage lock #7611](https://github.com/onflow/flow-go/issues/7611)
         - [[Data Availability] Refactor subscription package #8093](https://github.com/onflow/flow-go/issues/8093)
-        - [[Access] Optimize access integration tests runtime #7157](https://github.com/onflow/flow-go/issues/7157)
         - [[Access] Compatible Range in node version info does not reflect compatibility overrides #7014](https://github.com/onflow/flow-go/issues/7014)
 
       * In Progress:
@@ -288,7 +289,7 @@ Q4 Cycle Objective(s):
 **This sprint**
 
 * <ins>Data Availability</ins>
-  * PR reviews
+  * Continue work on Milestone 2 tasks
   * KROK Team 
     - Continue work on reviews and milestone 3 tasks
 
