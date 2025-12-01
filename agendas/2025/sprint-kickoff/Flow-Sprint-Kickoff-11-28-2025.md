@@ -2,7 +2,7 @@
 
 ### Team Wins 🎉
 
-- We realized infra cost savings with historical ENs 5 to 23 consolitdated to a single VM (thanks Manny)
+- We realized infra cost savings with historical ENs 5 to 23 consolidated into a single VM (thanks Manny)
 
 ---
 
