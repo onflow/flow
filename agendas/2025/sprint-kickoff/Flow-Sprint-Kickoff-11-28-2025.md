@@ -317,12 +317,17 @@ Cycle Objective(s):
 
 #### Flow ALP & Flow Vaults:
 
-
+- Address Audit Comments
+- Merge Scheduling Transactions PR
+- EVM integration
 
 **This sprint**
 
 #### Flow ALP & Flow Vaults:
 
+- Continue working through audit comments
+- Make adjustments to liquidation mechanism
+- EVM UI integration
 
 ---
 
