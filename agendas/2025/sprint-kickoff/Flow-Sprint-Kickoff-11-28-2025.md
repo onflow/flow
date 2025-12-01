@@ -2,7 +2,7 @@
 
 ### Team Wins 🎉
 
-- We realized infra cost savings with historical nodes 16 to 23 downgraded to a single VM (thanks Manny)
+- We realized infra cost savings with historical ENs 5 to 23 consolidated into a single VM (thanks Manny)
 - Completed [Execution Effort Calibration](https://github.com/onflow/flow-go/issues/5598) - new metering weights are now live on Mainnet.
 - Compiler correctness testing - another run on shadow node, found 7 register mismatches in 110K blocks, getting very close to functional parity with interpreter.
 - Cadence VM optimization that [generates subtype information](https://flow-foundation.slack.com/archives/C07NFGGAGHM/p1764096289230409?thread_ts=1763767664.350509&cid=C07NFGGAGHM) shows ~20% performance improvement (ns/op, allocs/op) over current VM.
@@ -268,15 +268,17 @@ Q4 Cycle Objective(s):
 
 * <ins>Collectors submit votes for root block for spork bootstrapping</ins>
   * Testing and automation for network bootstrapping during a spork with decentralized collector nodes.
-  * Addressing PR comments and merging in the changes to master.
+  * Completed and merged all PRs for Collector Bootstrapping decentralization https://github.com/onflow/flow-okrs/issues/115
   * Providing updates to DL for the changes to the Spork process for collection node participation.
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
   * Finished [Proof of Collection Finality Design (pending feedback)](https://www.notion.so/flowfoundation/Proof-of-Collection-Finality-29c1aee1232480deb0c2e8d872e34ba9)
   * Created [issues for Proof of Collection Finality OKR](https://github.com/onflow/flow-go/issues/8057)
   * Auditing Collection Node engines for Permissionless changes
-  * Started on issue [8170: BlockBuffer BFT improvement implementation](https://github.com/onflow/flow-go/issues/8170)
-  * Updates to the requester engine to increase BFT resilience https://github.com/onflow/flow-go/issues/8063
+  * Started on issue:
+    * [8170: BlockBuffer BFT improvement implementation](https://github.com/onflow/flow-go/issues/8170)
+    * [8063: Updates to the requester engine to increase BFT resilience](https://github.com/onflow/flow-go/issues/8063)
+    * [4202: Differentiate between cluster and consensus headers at storage layer](https://github.com/onflow/flow-go/issues/4204)
 
 * Other items not covered in OKRs:
   * Byzantine leader double-counting, addressing comments, implementing new approach: https://github.com/onflow/flow-go/pull/7918
@@ -295,7 +297,8 @@ Q4 Cycle Objective(s):
 
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
-  * Continue implementation
+  * Continue implementation on current issues
+    * Improve Collection & Consensus Sync Engines: [8173](https://github.com/onflow/flow-go/issues/8173) and [8174](https://github.com/onflow/flow-go/issues/8174)  
 
 
 * Other items not covered in OKRs:
@@ -401,12 +404,32 @@ Cycle Objective(s):
 **Done last sprint**
 
 **Cost Optimization**
+- [Change Automation Jobs to Fetch from the Standard Snapshot Schedule for EN1s](https://github.com/onflow/ff-sre-infrastructure/issues/881)
+- [Remove Custom Snapshot Schedule for Automation Jobs](https://github.com/onflow/ff-sre-infrastructure/issues/934)
+- [Downsize Machine Type for ENs TN53](https://github.com/onflow/ff-sre-infrastructure/issues/931)
+- [Downsize Machine Type for ENs Migration TN](https://github.com/onflow/ff-sre-infrastructure/issues/932)
+- [Create Historical Node with Local SSDs for Consolidation Tests](https://github.com/onflow/ff-sre-infrastructure/issues/938)
+- [Downsize MN22 EN1 for Tests Running Flow Service with Swapfile](https://github.com/onflow/ff-sre-infrastructure/issues/942)
+- [Create Ansible Role for Consolidated Historical Node with Support for Debian 12](https://github.com/onflow/ff-sre-infrastructure/issues/945)
+- [Create Consolidation Node for Historical ENs](https://github.com/onflow/ff-sre-infrastructure/issues/946)
+- [Create Ansible Role for Host-based Routing for Historical ANs/ENs](https://github.com/onflow/ff-sre-infrastructure/issues/948)
+- [Create Archive Snapshots for ENs from MN5-MN23 and Remove Standard Snapshots](https://github.com/onflow/ff-sre-infrastructure/issues/949)
+- [Implement Labeling Scheme for Snapshots from Historical Nodes on Flow Multi Region](https://github.com/onflow/ff-sre-infrastructure/issues/954)
+- [Add New MN00 EN to Mainnet Historical Inventory for Consolidation of MN23 and below](https://github.com/onflow/ff-sre-infrastructure/issues/956)
+- [Create Ansible Roles for Creating Swap Partition in RAID 0 from Local SSD Disks](https://github.com/onflow/ff-sre-infrastructure/issues/957)
+- [Research and Implement Kernel Tuning on Consolidated EN to Optimize Swap Usage](https://github.com/onflow/ff-sre-infrastructure/issues/958)
 
 
 **Support**
-
-
-**Security**
+- [Update DNS Records for Port](https://github.com/onflow/ff-sre-infrastructure/issues/928)
+- [Create DNS Records for Flow Vaults](https://github.com/onflow/ff-sre-infrastructure/issues/936)
+- [Reconcile Snapshot Policy Changes for Historical Networks](https://github.com/onflow/ff-sre-infrastructure/issues/941)
+- [Update Version for ANs before the MN27 HCU](https://github.com/onflow/ff-sre-infrastructure/issues/940)
+- [Rolling Deploy on EVM Gateway Nodes for TN/MN](https://github.com/onflow/ff-sre-infrastructure/issues/950)
+- [Create Gemini API Keys for the Wallet Team](https://github.com/onflow/ff-sre-infrastructure/issues/951)
+- [Update DNS Staging Safe Records for Protofire](https://github.com/onflow/ff-sre-infrastructure/issues/952)
+- [Increase Data Disk Size for TN53 LNs](https://github.com/onflow/ff-sre-infrastructure/issues/959)
+- [Create CNAME and TXT DNS Records for Earn](https://github.com/onflow/ff-sre-infrastructure/issues/961)
 
 
 ---
