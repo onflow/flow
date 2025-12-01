@@ -8,7 +8,7 @@
 - Cadence VM optimization that [generates subtype information](https://flow-foundation.slack.com/archives/C07NFGGAGHM/p1764096289230409?thread_ts=1763767664.350509&cid=C07NFGGAGHM) shows ~20% performance improvement (ns/op, allocs/op) over current VM.
 - Cadence benchmark now uses transactions from TPS loader built for execution weights data collection modelling, which provides much more robust coverage of Cadence ooperations/functionality.
 - EVM fusaka upgrade now live on Testnet, going live on Mainnet Dec 3rd, same day as ETH mainnet.
-- Error rate of EVM Gateway Txs recu ed from 4 errors/sec to 0.5.
+- Error rate of EVM Gateway Txs reduced from 4 errors/sec to 0.5.
 
 ---
 
