@@ -152,6 +152,39 @@ paths:
           $ref: '#/components/responses/404NotFound'
         '500':
           $ref: '#/components/responses/500InternalServerError'
+  /transaction_results:
+    get:
+      summary: Get Transaction Results by Block ID
+      description: Retrieve a list of transaction results for a specific block. This includes results for system and scheduled transactions.
+      tags:
+        - Transactions
+      parameters:
+        - name: block_id
+          in: query
+          required: true
+          description: The ID of the block to retrieve transaction results for.
+          schema:
+            $ref: '#/components/schemas/Identifier'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+        - $ref: '#/components/parameters/agreeingExecutorsCount'
+        - $ref: '#/components/parameters/requiredExecutorIds'
+        - $ref: '#/components/parameters/includeExecutorMetadata'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionResult'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
   /transaction_results/{transaction_id}:
     get:
       summary: Get a Transaction Result by transaction ID or scheduled transaction ID.
@@ -188,6 +221,35 @@ paths:
         '500':
           $ref: '#/components/responses/500InternalServerError'
   /transactions:
+    get:
+      summary: Get Transactions by Block ID
+      description: Retrieve a list of transactions for a specific block. This includes system and scheduled transactions.
+      tags:
+        - Transactions
+      parameters:
+        - name: block_id
+          in: query
+          required: true
+          description: The ID of the block to retrieve transactions for.
+          schema:
+            $ref: '#/components/schemas/Identifier'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
     post:
       summary: Submit a Transaction
       description: Send a new signed transaction payload to the network with [required transaction fields](https://docs.onflow.org/flow-go-sdk/#transactions).
