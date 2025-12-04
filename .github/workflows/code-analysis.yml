@@ -39,6 +39,7 @@ jobs:
      #   run: rm -f ~/.gitconfig && git config --global url.https://$ORG_READER_USERNAME:$ORG_READER_PAT@github.com/.insteadOf https://github.com/ && cat ~/.gitconfig
 
       - name: Tidy Go and mod vendor
+        working-directory: protobuf/go/flow
         run: go mod tidy && go mod vendor
 
 
@@ -49,6 +50,7 @@ jobs:
           queries: security-extended
 
       - name: Build
+        working-directory: protobuf/go/flow
         run: CGO_ENABLED=0 go build -mod=vendor -tags=no_cgo ./... 
 
       - name: CodeQL Analyze 
