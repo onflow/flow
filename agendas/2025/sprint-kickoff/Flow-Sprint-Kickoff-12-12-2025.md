@@ -233,11 +233,24 @@ Cycle Objective(s):
 
 #### Flow ALP & Flow Vaults:
 
-
+- Continue working through audit comments
+- EVM UI integration and testing
+- Completed development of the Arb bot
+- Integrated the Flow-looping strategy into FYV to be used by Peak Money.
+- Implementation of BTC and ETH as collateral types
+- Flow Action issues [72](https://github.com/onflow/FlowActions/pull/72) and [77](
+    https://github.com/onflow/FlowActions/pull/77)
 
 **This sprint**
 
 #### Flow ALP & Flow Vaults:
+
+- Continue working through audit comments
+- EVM UI integration and testing
+- Arb bot deployment
+- Continue implementation of BTC and ETH as collateral types
+- Continue fixing Flow Action issues [72](https://github.com/onflow/FlowActions/pull/72) and [77](
+  https://github.com/onflow/FlowActions/pull/77)
 
 
 
