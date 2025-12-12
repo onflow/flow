@@ -168,7 +168,6 @@ Q4 Cycle Objective(s):
 
 * <ins>Data Availability</ins>
   * PR reviews
-  * Allow reindexing last block's protocol data ([PR 8165](https://github.com/onflow/flow-go/pull/8165))
   * KROK Team
       * Done:
 
@@ -190,18 +189,14 @@ Q4 Cycle Objective(s):
       - [Epic 7610](https://github.com/onflow/flow-go/issues/7610): 3/7 done, 2 in progress/review
 
 
-* <ins>Immutable Models M2</ins>
-  * Immutable Models PR reviews
-  * KROK Team
-
 * <ins>Cryptography</ins>
   * Multi-SPoCK:
 
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
 
-  * Started on issue:
-
+  * (Proof of Collection Finality Working group presentation)[https://github.com/onflow/Flow-Working-Groups/blob/main/core_protocol_working_group/meetings/2025-12-10.md#links-and-further-reading]
+  * Completed [BlockBuffer improvements](https://github.com/onflow/flow-go/issues/8170) implementation
 
 * Other items not covered in OKRs:
 
@@ -346,6 +341,7 @@ Cycle Objective(s):
 
 * Coordination and roll out the transaction fee increase on testnet on Mon, Dec 1st.
 * Coordination and roll out the transaction fee increase on mainnet on Thursday, Dec 4th.
+  * Machine account balance verification following fee update
 
 
 **This sprint**
