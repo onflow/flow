@@ -165,6 +165,12 @@ paths:
           description: The ID of the block to retrieve transaction results for.
           schema:
             $ref: '#/components/schemas/Identifier'
+        - name: block_height
+          in: query
+          required: false
+          description: The height of the block to retrieve transaction results for. This parameter is incompatible with `block_id`.
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
         - $ref: '#/components/parameters/agreeingExecutorsCount'
@@ -233,6 +239,12 @@ paths:
           description: The ID of the block to retrieve transactions for.
           schema:
             $ref: '#/components/schemas/Identifier'
+        - name: block_height
+          in: query
+          required: false
+          description: The height of the block to retrieve transaction results for. This parameter is incompatible with `block_id`.
+          schema:
+            $ref: '#/components/schemas/BlockHeight'
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
       responses:

@@ -29,6 +29,7 @@ Optional parameters are passed through a pointer to a TransactionsApiTransaction
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **blockHeight** | [**optional.Interface of BlockHeight**](.md)| The height of the block to retrieve transaction results for. This parameter is incompatible with &#x60;block_id&#x60;. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
  **agreeingExecutorsCount** | **optional.String**| A minimum number of execution receipts for the execution result. | 
@@ -111,6 +112,7 @@ Optional parameters are passed through a pointer to a TransactionsApiTransaction
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **blockHeight** | [**optional.Interface of BlockHeight**](.md)| The height of the block to retrieve transaction results for. This parameter is incompatible with &#x60;block_id&#x60;. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
 

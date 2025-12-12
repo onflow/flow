@@ -31,6 +31,7 @@ Retrieve a list of transaction results for a specific block. This includes resul
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param blockId The ID of the block to retrieve transaction results for.
  * @param optional nil or *TransactionsApiTransactionResultsGetOpts - Optional Parameters:
+     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The height of the block to retrieve transaction results for. This parameter is incompatible with &#x60;block_id&#x60;.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
      * @param "AgreeingExecutorsCount" (optional.String) -  A minimum number of execution receipts for the execution result.
@@ -40,6 +41,7 @@ Retrieve a list of transaction results for a specific block. This includes resul
 */
 
 type TransactionsApiTransactionResultsGetOpts struct {
+    BlockHeight optional.Interface
     Expand optional.Interface
     Select_ optional.Interface
     AgreeingExecutorsCount optional.String
@@ -64,6 +66,9 @@ func (a *TransactionsApiService) TransactionResultsGet(ctx context.Context, bloc
 	localVarFormParams := url.Values{}
 
 	localVarQueryParams.Add("block_id", parameterToString(blockId, ""))
+	if localVarOptionals != nil && localVarOptionals.BlockHeight.IsSet() {
+		localVarQueryParams.Add("block_height", parameterToString(localVarOptionals.BlockHeight.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
 		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
 	}
@@ -331,12 +336,14 @@ Retrieve a list of transactions for a specific block. This includes system and s
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param blockId The ID of the block to retrieve transactions for.
  * @param optional nil or *TransactionsApiTransactionsGetOpts - Optional Parameters:
+     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The height of the block to retrieve transaction results for. This parameter is incompatible with &#x60;block_id&#x60;.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
 @return []Transaction
 */
 
 type TransactionsApiTransactionsGetOpts struct {
+    BlockHeight optional.Interface
     Expand optional.Interface
     Select_ optional.Interface
 }
@@ -358,6 +365,9 @@ func (a *TransactionsApiService) TransactionsGet(ctx context.Context, blockId st
 	localVarFormParams := url.Values{}
 
 	localVarQueryParams.Add("block_id", parameterToString(blockId, ""))
+	if localVarOptionals != nil && localVarOptionals.BlockHeight.IsSet() {
+		localVarQueryParams.Add("block_height", parameterToString(localVarOptionals.BlockHeight.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
 		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
 	}

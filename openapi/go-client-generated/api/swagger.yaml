@@ -345,6 +345,15 @@ paths:
         explode: true
         schema:
           $ref: "#/components/schemas/Identifier"
+      - name: block_height
+        in: query
+        description: The height of the block to retrieve transaction results for.
+          This parameter is incompatible with `block_id`.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/BlockHeight"
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -567,6 +576,15 @@ paths:
         explode: true
         schema:
           $ref: "#/components/schemas/Identifier"
+      - name: block_height
+        in: query
+        description: The height of the block to retrieve transaction results for.
+          This parameter is incompatible with `block_id`.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/BlockHeight"
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
