@@ -223,7 +223,7 @@ paths:
   /transactions:
     get:
       summary: Get Transactions by Block ID
-      description: Retrieve a list of transactions for a specific block. This includes system and scheduled transactions.
+      description: Retrieve a list of transactions for a specific block. This includes submitted, system, and scheduled transactions.
       tags:
         - Transactions
       parameters:
