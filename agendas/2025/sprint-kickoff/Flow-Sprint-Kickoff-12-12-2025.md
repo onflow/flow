@@ -256,13 +256,13 @@ Cycle Objective(s):
 **Done Last Sprint**
 
 - Fork Testing
-  - Document dependency mocking for forked network
+  - Documented dependency mocking for forked network
 
 - Mobile
   - Fixed latest WalletConnect redirect issue with wallet
   - Created new React Native SDK package for native UI requirements
   - Created share React hooks library for React SDK and React Native SDK
-  - Add native UI for wallet connections
+  - Added native UI for wallet connections
 
 - React SDK Liquidity
   - Added new internal UI components for the React SDK
