@@ -380,11 +380,23 @@ Cycle Objective(s):
 **Done last sprint**
 
 **Cost Optimization**
+- [Remove Resources for SN / LN / VN from Historical Networks](https://github.com/onflow/ff-sre-infrastructure/issues/937)
+- [Remove Snapshot Schedules and Snapshots for non-US Nodes](https://github.com/onflow/ff-sre-infrastructure/issues/971)
 
-
+**Historical Nodes**
+- [Recreate Data Disks for Historical ENs MN1-23 with Reduced Sizes](https://github.com/onflow/ff-sre-infrastructure/issues/978)
+- [Create Archive Snapshots for MN1-4 ENs and Remove Standard Snapshots](https://github.com/onflow/ff-sre-infrastructure/issues/983)
+- [Reconcile DNS State after the Historical ENs Consolidation](https://github.com/onflow/ff-sre-infrastructure/issues/968)
+- [Terminate Blue EN MN23 used for Consolidation Tests](https://github.com/onflow/ff-sre-infrastructure/issues/969)
+- [Migrate MN1-4 ENs to Consolidated MN00 EN](https://github.com/onflow/ff-sre-infrastructure/issues/982)
+- [Migrate MN24 AN to the Historical Node Setup](https://github.com/onflow/ff-sre-infrastructure/issues/965)
 
 **Support**
-
+- [Create DNS Record for Actions Flow](https://github.com/onflow/ff-sre-infrastructure/issues/976)
+- [Create Additional EVM GW Nodes on MN](https://github.com/onflow/ff-sre-infrastructure/issues/979)
+- [Update EVM GW Tag and Flags on MN](https://github.com/onflow/ff-sre-infrastructure/issues/981)
+- [Downsize EVM GW Nodes After Upsizing during Outage](https://github.com/onflow/ff-sre-infrastructure/issues/985)
+- [Fix Permissions for EVM Migration TN SA to Pull Secrets](https://github.com/onflow/ff-sre-infrastructure/issues/990)
 
 
 ---
