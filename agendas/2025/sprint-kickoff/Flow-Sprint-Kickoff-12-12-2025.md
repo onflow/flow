@@ -5,6 +5,10 @@
 - Transaction fees update is live
 - Additional infra savings realized with downsizing historical node disk size.
 - Fusaka is live on mainnet
+- TPS load on mainnet reached 1247 TPS (measurement confirmed by Dune)
+- Cadence compiler/VM testing now successfully verified 2.5 Million blocks (~23 days of mainnet traffic) match execution with current interpreter.
+- FVM Benchmark of optimized VM vs interpreter now shows VM ~13% (6.2->5.4ms) faster performing token transfer and ~20% fster on average across varied Tx load (confimration on test network pending).
+- Completed deep-dive into EVM fees & [reduced the error rate close to 0](https://flow-foundation.slack.com/archives/C08B276QSR0/p1764955298847359).
 
 ---
 
@@ -84,67 +88,87 @@ Q3 2025 Cycle Objective(s):
 
 **Cadence Language**
 
-- Improvements
-
-- [Compiler Milestone X - remaining known gaps](https://github.com/onflow/cadence/issues/3804)
-    - Feature
-
-    - Performance optimizations:
-
-    - bugfix
-
-- Internal biugfix: [1](https://github.com/onflow/cadence-internal/pull/355), [2](https://github.com/onflow/cadence-internal/pull/354)
+- [Prepare Cadence compiler for deployment](https://github.com/onflow/cadence/issues/4307)
+    - correctness testing
+        - [Fix mismatch indexing expression key transfer mismatch between interpreter and compiler](https://github.com/onflow/cadence/pull/4365)
+        - [Check inner value in `SomeValue.isInvalidatedResource`](https://github.com/onflow/cadence/pull/4369)
+        - [[Compiler] Skip resource-loss check for temporary variable assignments](https://github.com/onflow/cadence/pull/4376)
+    - bugfixes
+        - [[Compiler] Fix compilation of attachments](https://github.com/onflow/cadence/pull/4378)
+        - [[Compiler] Fix captured implicit reference values](https://github.com/onflow/cadence/pull/4382)
+        - [[Compiler] Fix compilation of inherited post condition with before expression](https://github.com/onflow/cadence/pull/4385)
+    - optimizations
+        - [[Compiler] Remove unnecessary copy of arguments](https://github.com/onflow/cadence/pull/4377)
+        - [[Subtyping Generator] Merge master](https://github.com/onflow/cadence/pull/4381)
+        - [[Compiler] Avoid redundant set-local/get-local instructions in empty non-attachment constructors](https://github.com/onflow/cadence/pull/4383)
+- Improvement
+    - [Improve pretty printing](https://github.com/onflow/cadence/pull/4384)
 - Testing
-
-- Tools
-
-- Chores
-
+    - [Enable subtyping comparison in CI](https://github.com/onflow/cadence/pull/4352)
+    - [Compare storage for vm vs interpreter during tests](https://github.com/onflow/cadence/pull/4368)
+    - [[Compiler] Fix tests](https://github.com/onflow/cadence/pull/4386)
+- chores
+    - [Fix release workflow](https://github.com/onflow/cadence/pull/4366)
+    - [[v1.8] Port v1.8.8-rc.1](https://github.com/onflow/cadence/pull/4371)
+    - [[v1.8] Fix NPM package version](https://github.com/onflow/cadence/pull/4372)
+    - [Merge v1.8.8](https://github.com/onflow/cadence/pull/4374)
+    - [Merge v1.8.5-rc into v1.8.8-rc](https://github.com/onflow/cadence-internal/pull/356)
+    - [[Cadence VM] Merge master](https://github.com/onflow/flow-go/pull/8210)
+    - [Update to Cadence v1.8.7](https://github.com/onflow/flow-go/pull/8209)
+    - [[v0.44] Update Cadence to v1.8.8-rc.1](https://github.com/onflow/flow-go-internal/pull/7130)
+    - [Update to Cadence v1.8.7](https://github.com/onflow/flow-go-sdk/pull/959)
+    - [Update to Cadence v1.9.1](https://github.com/onflow/flow-go-sdk/pull/965)
 
 **Cadence Execution**
 
-- [FLIP 346: Variable Transaction Fees - Execution Effort II.](https://github.com/onflow/flips/pull/347)
-
-- [Badger -> Pebble: remaining tasks and cleanup](https://github.com/onflow/flow-go/issues/7682)
-
-- Access node collection fetching improvements POC
-
-- Cadence VM initiaization
-
+- [[Access] Asynchronous Collection Indexing Design](https://github.com/onflow/flow-go/issues/8121)
+    - POC
+        - [Optimize CollectionFinalized with BlockIDByCollectionID](https://github.com/onflow/flow-go/pull/8186)
+        - [[Access] Indexer remove redundant header reads](https://github.com/onflow/flow-go/pull/8226)
+- Network upgrade prep
+    - [Add Mainnet System Collection Version Boundary](https://github.com/onflow/flow-go/pull/8151)
+- Cadence VM
+    - [[Cadence VM] Run certain integration tests with Cadence VM](https://github.com/onflow/flow-go/pull/8197)
+    - [[Cadence VM] Update to Cadence 60e882a13d71](https://github.com/onflow/flow-go/pull/8220)
+    - [[v0.44] Update to Cadence v1.8.8](https://github.com/onflow/flow-go/pull/8224)
+    - [[Cadence VM] Update to Cadence 5ab6de2](https://github.com/onflow/flow-go/pull/8228)
+    - [[Cadence VM] Port #8223](https://github.com/onflow/flow-go/pull/8229)
+    - [[Cadence VM] Update to Cadence v1.9.1](https://github.com/onflow/flow-go/pull/8235)
+    - [Update to Cadence v1.9.1](https://github.com/onflow/flow-go/pull/8234)
+    - [[Cadence VM] Update to Cadence v1.9.2](https://github.com/onflow/flow-go/pull/8243)
+    - [[Cadence VM] Improve computation metering / limiting in remote debugger and VM comparison](https://github.com/onflow/flow-go/pull/8250)
+    - [[Cadence VM] Fall back to remote debugger-based comparison](https://github.com/onflow/flow-go/pull/8253)
 - Improvement
-
-- Bugfix
-
-- Tools
-
-- Testing
-
-- Docs
-
-- chores
+    - [Improve conversion of Flow address to Cadence address](https://github.com/onflow/flow-go/pull/8214)
+- tech-debt
+    - [Always enable EVM in FVM](https://github.com/onflow/flow-go/pull/8211)
+- testing
+    - [[Testing] Skip wintermute test suite due to flakiness](https://github.com/onflow/flow-go/pull/8187)
 
 
 **Flow EVM**
-- Core
-    - Bugfix
-
-- Gateway
-    - Improvement
-
-    - Bugfix
-
-
+- no PRs merged this sprint
 
 **This sprint**
 
 - Cadence Language
-
+    - Continue compiler correctness testing
+    - Continue tacklig compiler+VM tech-debt
+    - Continue deep-dive on compiler+VM performace
 
 - Cadence Execution
-
+  - Continue [Badger -> Pebble: remaining tasks and cleanup](https://github.com/onflow/flow-go/issues/7682)
+  - Continue [Versioning of Execution Stack via Dynamic Protocol State](https://github.com/onflow/flow-go/issues/6999)
+  - Continue [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571)
+  - Continue [Storehouse](https://github.com/onflow/flow-okrs/issues/166)
+  - Continue [Scheduled Transactions for EVM](https://github.com/onflow/flow-go/issues/8019)
+  - Maybe: New Trie research
 
 - EVM
-
+  - Continue: Investigation into EVM GW issue discovered during mainnet load test.
+  - Continue: [EVM Gateway Compatibility with Surge Pricing](https://github.com/onflow/flow-evm-gateway/issues/861)
+  - Start: [Investigate performance issue on EVM txs](https://github.com/onflow/flow-go-internal/issues/7128)
+  - Complete: [Improve resilience on connections with upstream ANs](https://github.com/onflow/flow-evm-gateway/issues/764)
 
 **On Hold**
 - [EOA control delegation](https://github.com/onflow/flow-go/issues/7441).
