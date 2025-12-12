@@ -231,7 +231,8 @@ Q4 Cycle Objective(s):
 
 * <ins>Cryptography</ins>
   * Multi-SPoCK:
-
+    * contract review of the external researcher still ongoing (tentative review start end of Jan)
+    * paper editing
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
 
@@ -239,7 +240,7 @@ Q4 Cycle Objective(s):
   * Completed [BlockBuffer improvements](https://github.com/onflow/flow-go/issues/8170) implementation
 
 * Other items not covered in OKRs:
-
+  * Content pieces: Blog post for Execution Effort Calibration and Badger to PebbleDB Migration 
 
 **This sprint**
 
@@ -254,11 +255,6 @@ Q4 Cycle Objective(s):
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
   * Continue implementation on current issues
-
-
-
-* Other items not covered in OKRs:
-
 
 
 ---
