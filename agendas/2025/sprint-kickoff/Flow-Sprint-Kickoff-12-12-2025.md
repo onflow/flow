@@ -9,6 +9,7 @@
 - Cadence compiler/VM testing now successfully verified 2.5 Million blocks (~23 days of mainnet traffic) match execution with current interpreter.
 - FVM Benchmark of optimized VM vs interpreter now shows VM ~13% (6.2->5.4ms) faster performing token transfer and ~20% fster on average across varied Tx load (confimration on test network pending).
 - Completed deep-dive into EVM fees & [reduced the error rate close to 0](https://flow-foundation.slack.com/archives/C08B276QSR0/p1764955298847359).
+- Access node [POC tthat optimizes collection fetching](https://github.com/onflow/flow-go/pull/8154) shows very promising results to reduce duration of requests for finalized blocks/Txs by ~1.5s.
 
 ---
 
