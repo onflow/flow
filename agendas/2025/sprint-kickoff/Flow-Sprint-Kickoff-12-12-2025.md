@@ -210,7 +210,7 @@ Q4 Cycle Objective(s):
 
 * <ins>Data Availability</ins>
   * Continue work on Milestone 2 tasks
-  * KROK Team 
+  * KROK Team
     - Continue work on reviews and milestone 3 tasks
 
 * <ins>Cryptography</ins>
@@ -256,31 +256,56 @@ Cycle Objective(s):
 **Done Last Sprint**
 
 - Fork Testing
-
+  - Documented dependency mocking for forked network
 
 - Mobile
-
+  - Fixed latest WalletConnect redirect issue with wallet
+  - Created new React Native SDK package for native UI requirements
+  - Created share React hooks library for React SDK and React Native SDK
+  - Added native UI for wallet connections
 
 - React SDK Liquidity
-
+  - Added new internal UI components for the React SDK
+  - Built the Fund component UI
+  - Added the Fund component to the demo playground
+  - Created Fund Crypto API interfaces
+  - Created Fund Relay.Link integration
+  - Created Fund Fiat API interfaces
+  - Build React SDK Relay crypto on-ramp integration
+  - Started React SDK Moonpay fiat on-ramp integration
 
 - Misc
-
+  - Documented Emulator Account Creation Flag Usage
+  - Began improving theming support across the React SDK
+  - Finished and released CLI import aliasing support
+  - Support narrative arc marketing efforts
+  - Added system transactions to `flow blocks get`
+  - Added ability to run `flow cadence lint` on all files at once
+  - Documented instructions for DevRel to run recurring TVL helper
 
 
 **This Sprint**
 
-- Fork Testing
-
-
 - Mobile
-
+  - Add Connect and Profile components to react-native-sdk
+  - Complete react-native-sdk package and publish it
+  - Complete flow-expo-starter package fully integrated with react-native-sdk
+  - Update playground with banner for react-native-sdk usage
+  - Begin building Fund native UI
+  - Begin integrating Fund component native integration
 
 - React SDK Liquidity
-
+ - Move fund hook to share hooks library
+ - Integrate fiat Fund component with React SDK Hooks
+ - Add cross VM bridging to React SDK Fund component
+ - Document React SDK Fund usage
+ - Document vanilla @onflow/payments usage
 
 - Misc
-
+  - Fix fcl-js npm publish problem
+  - Address FlowCron review feedback
+  - Finish theming support across React SDK
+  - Create marketing materials for Q4 tooling work
 
 
 ---
