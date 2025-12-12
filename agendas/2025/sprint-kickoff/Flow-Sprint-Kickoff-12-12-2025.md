@@ -194,13 +194,29 @@ Q4 Cycle Objective(s):
   * PR reviews
   * KROK Team
       * Done:
-
+        - [[Access] Compatible Range in node version info does not reflect compatibility overrides #7014](https://github.com/onflow/flow-go/issues/7014)
+        - [[Access] Fix error codes for GetTransactionResultsByBlockID during HCU #8178](https://github.com/onflow/flow-go/issues/8178)
+        - [[Data Availability] add a check for executors passed by a client #8204](https://github.com/onflow/flow-go/issues/8204)
 
       * In Review:
+        - [[Data Availability] Refactor events test in http package #7923](https://github.com/onflow/flow-go/issues/7923)
+        - [[Data Availability] Update LatestPersistedSealedResult module to use storage lock #7611](https://github.com/onflow/flow-go/issues/7611)
+        - [[Data Availability] Refactor subscription package #8093](https://github.com/onflow/flow-go/issues/8093)
+        - [[Access] Improve grpc converter tests. #8127](https://github.com/onflow/flow-go/issues/8127)
+        - [[Data Availability] Remove or adjust index reporter in execution data tracker #8135](https://github.com/onflow/flow-go/issues/8135)
+        - [[Data Availability] Implement AncestorResultID check in ExecutionResultQueryProvider #7587](https://github.com/onflow/flow-go/issues/7587)
+        - [[Access] Add endpoints to get transaction and results by block #8206](https://github.com/onflow/flow-go/issues/8206)
+        - [[Data Availability] Rewrite backend execution data tests from scratch #8231](https://github.com/onflow/flow-go/issues/8231)
 
 
       * In Progress:
-
+        - [[Data Availability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
+        - [[Data Availability] Implement fork-aware Streaming Events Endpoints #7657](https://github.com/onflow/flow-go/issues/7657)
+        - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
+        - [[Data Availability] Implement fork-aware Transaction Results Endpoints #7644](https://github.com/onflow/flow-go/issues/7644)
+        - [[Data Availability] Implement fork-aware Streaming Transaction Status Endpoints #7654](https://github.com/onflow/flow-go/issues/7654)
+        - [[Data Availability] Implement fork-aware Execution Data subscription Endpoints #8059](https://github.com/onflow/flow-go/issues/8059)
+        
 
 * Milestones status:
     - milestone 1: completed
@@ -208,10 +224,9 @@ Q4 Cycle Objective(s):
       - [Epic 7180](https://github.com/onflow/flow-go/issues/7180): 5 done, 3 in progress out of 12
       - [Epic 7181](https://github.com/onflow/flow-go/issues/7181): 1 done, more issues to be created after 7180
     - milestone 3:
-      - [Epic 7182](https://github.com/onflow/flow-go/issues/7182): 11/17 done
+      - [Epic 7182](https://github.com/onflow/flow-go/issues/7182): 11/17 done, 3 in progress/review
       - [Epic 7615](https://github.com/onflow/flow-go/issues/7615): 6 done, 5 in progress/review, out of 12
       - [Epic 7610](https://github.com/onflow/flow-go/issues/7610): 3/7 done, 2 in progress/review
-
 
 * <ins>Cryptography</ins>
   * Multi-SPoCK:
