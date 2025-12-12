@@ -264,7 +264,7 @@ Q4 Cycle Objective(s):
 
 ---
 
-### **DeFi** \[Kan]
+### **DeFi** \[Vishal]
 
 Cycle Objective(s):
 - Close gaps in Defi/Liquidity infrastructure post-Cadence 1.0
