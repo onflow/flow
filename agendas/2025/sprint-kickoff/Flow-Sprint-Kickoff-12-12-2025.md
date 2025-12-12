@@ -193,11 +193,16 @@ Q4 Cycle Objective(s):
 
 * <ins>Data Availability</ins>
   * PR reviews
+  * Refactor optimistic sync pipeline ([PR 8201](https://github.com/onflow/flow-go/pull/8201))
+  * Merge master into feature/optimistic-sync - 2025-11-19 ([PR 8168](https://github.com/onflow/flow-go/pull/8168))
+  * HCU related work [1](https://github.com/onflow/flow-go/pull/8216), [2](https://github.com/onflow/flow-go/pull/8216), [3](https://github.com/onflow/flow-go/pull/8218)
+  * CI improvements [1](https://github.com/onflow/flow-go/pull/8223), [2](https://github.com/onflow/flow-go/pull/8246)
   * KROK Team
       * Done:
         - [[Access] Compatible Range in node version info does not reflect compatibility overrides #7014](https://github.com/onflow/flow-go/issues/7014)
         - [[Access] Fix error codes for GetTransactionResultsByBlockID during HCU #8178](https://github.com/onflow/flow-go/issues/8178)
         - [[Data Availability] add a check for executors passed by a client #8204](https://github.com/onflow/flow-go/issues/8204)
+        - Optimize access integration tests runtime ([PR 8190](https://github.com/onflow/flow-go/pull/8190))
 
       * In Review:
         - [[Data Availability] Refactor events test in http package #7923](https://github.com/onflow/flow-go/issues/7923)
