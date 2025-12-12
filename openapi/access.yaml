@@ -222,7 +222,7 @@ paths:
           $ref: '#/components/responses/500InternalServerError'
   /transactions:
     get:
-      summary: Get Transactions by Block ID
+      summary: Get Transactions by block
       description: Retrieve a list of transactions for a specific block. This includes submitted, system, and scheduled transactions.
       tags:
         - Transactions
