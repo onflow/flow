@@ -155,7 +155,7 @@ paths:
   /transaction_results:
     get:
       summary: Get Transaction Results by Block ID
-      description: Retrieve a list of transaction results for a specific block. This includes results for system and scheduled transactions.
+      description: Retrieve a list of transaction results for a specific block. This includes results for submitted, system, and scheduled transactions.
       tags:
         - Transactions
       parameters:
