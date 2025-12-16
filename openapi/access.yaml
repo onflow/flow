@@ -162,7 +162,7 @@ paths:
         - name: block_id
           in: query
           required: false
-          description: The ID of the block to retrieve transaction results for.
+          description: The ID of the block containing the transactions. The request may include either `block_id` or `block_height`, but not both.
           schema:
             $ref: '#/components/schemas/Identifier'
         - name: block_height
