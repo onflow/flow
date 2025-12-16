@@ -242,7 +242,7 @@ paths:
         - name: block_height
           in: query
           required: false
-          description: The height of the block to retrieve transaction results for. This parameter is incompatible with `block_id`.
+          description: The height of the block containing the transactions. The request may include either `block_id` or `block_height`, but not both.
           schema:
             $ref: '#/components/schemas/BlockHeight'
         - $ref: '#/components/parameters/expandParam'
