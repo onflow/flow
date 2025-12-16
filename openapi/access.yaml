@@ -161,7 +161,7 @@ paths:
       parameters:
         - name: block_id
           in: query
-          required: true
+          required: false
           description: The ID of the block to retrieve transaction results for.
           schema:
             $ref: '#/components/schemas/Identifier'
