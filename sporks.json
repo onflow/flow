@@ -5,7 +5,7 @@
         "id": 28,
         "live": true,
         "name": "Mainnet-28",
-        "sporkTime": "2025-12-30T02:45:00Z",
+        "sporkTime": "2025-12-29T02:45:00Z",
         "rootHeight": "137390146",
         "rootParentId": "ee69349b5044c4c1cb959ac5beccbe3df896b370fb098808fb9a6eada57b3f7f",
         "rootStateCommitment": "d0a13c09f930322c5f053113354211acbf4d8c5eeb524c7004eb7c9d052c4bbe",
