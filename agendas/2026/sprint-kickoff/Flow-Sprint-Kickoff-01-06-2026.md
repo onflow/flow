@@ -231,8 +231,30 @@ Q1 Cycle Objective(s):
   * PR reviews
   * optimistic sync caching layer design anf fork-aware execution result processing (temporarily deprioritized)
   * KROK Team
-  
-    …
+      * Done:
+        - [[Access] Improve grpc converter tests. #8127](https://github.com/onflow/flow-go/issues/8127)     
+        - [[Access] CollectionID and TransactionID don't validate length #8241](https://github.com/onflow/flow-go/issues/8241)
+        - [[Access] Add endpoints to get transaction and results by block #8206](https://github.com/onflow/flow-go/issues/8206)
+
+      * In Review:
+        - [[Data Availability] Refactor events test in http package #7923](https://github.com/onflow/flow-go/issues/7923)
+        - [[Data Availability] Update LatestPersistedSealedResult module to use storage lock #7611](https://github.com/onflow/flow-go/issues/7611)
+        - [[Data Availability] Refactor subscription package #8093](https://github.com/onflow/flow-go/issues/8093)
+        - [[Data Availability] Remove or adjust index reporter in execution data tracker #8135](https://github.com/onflow/flow-go/issues/8135)
+        - [[Data Availability] Implement AncestorResultID check in ExecutionResultQueryProvider #7587](https://github.com/onflow/flow-go/issues/7587)
+        - [[Data Availability] Rewrite backend execution data tests from scratch #8231](https://github.com/onflow/flow-go/issues/8231)
+
+      * In Progress:
+        
+        - [[Data Availability] Implement fork-aware Transaction Results Endpoints #7644](https://github.com/onflow/flow-go/issues/7644)
+        - [[Data Availability] Implement fork-aware Execution Data subscription Endpoints #8059](https://github.com/onflow/flow-go/issues/8059)
+        - [[Data Availability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
+        - [[Data Availability] Implement fork-aware Streaming Events Endpoints #7657](https://github.com/onflow/flow-go/issues/7657)
+        - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
+
+      * On Hold ( Draft done, currently on pause since Taras moved to DeFi ):
+
+        - [[Data Availability] Implement fork-aware Streaming Transaction Status Endpoints #7654](https://github.com/onflow/flow-go/issues/7654)
 
 <!-- Commented out for conciseness, as we typically don't iterate over the milestone status in sprint kickoffs:
 * Milestones status:
