@@ -2,14 +2,9 @@
 
 ### Team Wins 🎉
 
-- Transaction fees update is live
-- Additional infra savings realized with downsizing historical node disk size.
-- Fusaka is live on mainnet
-- TPS load on mainnet reached 1247 TPS (measurement confirmed by Dune)
-- Cadence compiler/VM testing now successfully verified 2.5 Million blocks (~23 days of mainnet traffic) match execution with current interpreter.
-- FVM Benchmark of optimized VM vs interpreter now shows VM ~13% (6.2->5.4ms) faster performing token transfer and ~20% fster on average across varied Tx load (confimration on test network pending).
-- Completed deep-dive into EVM fees & [reduced the error rate close to 0](https://flow-foundation.slack.com/archives/C08B276QSR0/p1764955298847359).
-- Access node [POC tthat optimizes collection fetching](https://github.com/onflow/flow-go/pull/8154) shows very promising results to reduce duration of requests for finalized blocks/Txs by ~1.5s.
+- Attack recovery
+- Blog post [Migrating Flow Node Storage from BadgerDB to PebbleDB](https://flow-foundation.slack.com/archives/C0A3GTVNKK3/p1765497777894339) (draft in gDocs; ready for publication)
+- …
 
 ---
 
@@ -177,53 +172,39 @@ Q3 2025 Cycle Objective(s):
 
 ---
 
-### **Core Protocol** \[Vishal]
+### **Core Protocol** \[Alex]
 
-Q4 Cycle Objective(s):
+Q1 Cycle Objective(s):
+* Support DeFi strategy [IN PROGRESS]
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
-* Network Upgrade (Spork) [Done]
 * [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * SPoCK Research [IN PROGRESS]
-* Investigate root cause of sealing lag [Done]
-* Collectors submit votes for root block for spork bootstrapping [Done]
 * Building blocks for Collection Nodes Decentralization [IN PROGRESS]
 * Downgrade historical node hardware [IN PROGRESS]
 
-**Done last sprint**
+**Last sprint: completed and ongoing**
+
+* <ins>Attack recovery</ins>
+  * disaster containment
+  * analysis of attack and movement of funds
+  * supporting Sporks & HCUs 
+  * Helping Coinbase with Rosetta 
+  * transactions to recover fraudulent funds 
+
+* <ins>DeFi strategy</ins>
+   * Flow Credit Markets \[FCM] liquidation
+
+* <ins>Building blocks for Collection Nodes Decentralization</ins>
+    * [Block Buffer](https://github.com/onflow/flow-go/issues/8170) resilience for byzantine scenarios ([PR 8196](https://github.com/onflow/flow-go/pull/8196), work ongoing)
+    * Improved header storage ([PR 8222](https://github.com/onflow/flow-go/pull/8222), work ongoing)
 
 * <ins>Data Availability</ins>
   * PR reviews
-  * Refactor optimistic sync pipeline ([PR 8201](https://github.com/onflow/flow-go/pull/8201))
-  * Merge master into feature/optimistic-sync - 2025-11-19 ([PR 8168](https://github.com/onflow/flow-go/pull/8168))
-  * HCU related work [1](https://github.com/onflow/flow-go/pull/8216), [2](https://github.com/onflow/flow-go/pull/8216), [3](https://github.com/onflow/flow-go/pull/8218)
-  * CI improvements [1](https://github.com/onflow/flow-go/pull/8223), [2](https://github.com/onflow/flow-go/pull/8246)
   * KROK Team
-      * Done:
-        - [[Access] Compatible Range in node version info does not reflect compatibility overrides #7014](https://github.com/onflow/flow-go/issues/7014)
-        - [[Access] Fix error codes for GetTransactionResultsByBlockID during HCU #8178](https://github.com/onflow/flow-go/issues/8178)
-        - [[Data Availability] add a check for executors passed by a client #8204](https://github.com/onflow/flow-go/issues/8204)
-        - Optimize access integration tests runtime ([PR 8190](https://github.com/onflow/flow-go/pull/8190))
+  
+    …
 
-      * In Review:
-        - [[Data Availability] Refactor events test in http package #7923](https://github.com/onflow/flow-go/issues/7923)
-        - [[Data Availability] Update LatestPersistedSealedResult module to use storage lock #7611](https://github.com/onflow/flow-go/issues/7611)
-        - [[Data Availability] Refactor subscription package #8093](https://github.com/onflow/flow-go/issues/8093)
-        - [[Access] Improve grpc converter tests. #8127](https://github.com/onflow/flow-go/issues/8127)
-        - [[Data Availability] Remove or adjust index reporter in execution data tracker #8135](https://github.com/onflow/flow-go/issues/8135)
-        - [[Data Availability] Implement AncestorResultID check in ExecutionResultQueryProvider #7587](https://github.com/onflow/flow-go/issues/7587)
-        - [[Access] Add endpoints to get transaction and results by block #8206](https://github.com/onflow/flow-go/issues/8206)
-        - [[Data Availability] Rewrite backend execution data tests from scratch #8231](https://github.com/onflow/flow-go/issues/8231)
-
-
-      * In Progress:
-        - [[Data Availability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
-        - [[Data Availability] Implement fork-aware Streaming Events Endpoints #7657](https://github.com/onflow/flow-go/issues/7657)
-        - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
-        - [[Data Availability] Implement fork-aware Transaction Results Endpoints #7644](https://github.com/onflow/flow-go/issues/7644)
-        - [[Data Availability] Implement fork-aware Streaming Transaction Status Endpoints #7654](https://github.com/onflow/flow-go/issues/7654)
-        - [[Data Availability] Implement fork-aware Execution Data subscription Endpoints #8059](https://github.com/onflow/flow-go/issues/8059)
-        
-
+<!-- Commented out for conciseness, as we typically don't iterate over the milestone status in sprint kickoffs
 * Milestones status:
     - milestone 1: completed
     - milestone 2:
@@ -233,34 +214,27 @@ Q4 Cycle Objective(s):
       - [Epic 7182](https://github.com/onflow/flow-go/issues/7182): 11/17 done, 3 in progress/review
       - [Epic 7615](https://github.com/onflow/flow-go/issues/7615): 6 done, 5 in progress/review, out of 12
       - [Epic 7610](https://github.com/onflow/flow-go/issues/7610): 3/7 done, 2 in progress/review
+ -->
 
 * <ins>Cryptography</ins>
-  * Multi-SPoCK:
+  * Multi-SPoCK (work ongoing):
     * contract review of the external researcher still ongoing (tentative review start end of Jan)
     * paper editing
 
-* <ins>Building blocks for Collection Nodes Decentralization</ins>
-
-  * (Proof of Collection Finality Working group presentation)[https://github.com/onflow/Flow-Working-Groups/blob/main/core_protocol_working_group/meetings/2025-12-10.md#links-and-further-reading]
-  * Completed [BlockBuffer improvements](https://github.com/onflow/flow-go/issues/8170) implementation
-
-* Other items not covered in OKRs:
-  * Content pieces: Blog post for Execution Effort Calibration and Badger to PebbleDB Migration 
 
 **This sprint**
 
-* <ins>Data Availability</ins>
-  * Continue work on Milestone 2 tasks
-  * KROK Team
-    - Continue work on reviews and milestone 3 tasks
+* <ins>Attack recovery</ins>
+   * Supporting Coinbase get Rosetta running (ongoing)
+   * reclaiming tokens, additional analysis as needed, look into improved monitoring
 
-* <ins>Cryptography</ins>
-  - Continue working on the Spock paper
-
+* <ins>DeFi strategy</ins>
+    * FCM liquidation, testing, addressing audit feedback
 
 * <ins>Building blocks for Collection Nodes Decentralization</ins>
-  * Continue implementation on current issues
-
+    * [Block Buffer](https://github.com/onflow/flow-go/issues/8170) resilience against resource-exhaustion attacks by an equivocating leader ([PR 8196](https://github.com/onflow/flow-go/pull/8196) continued)
+    * Improved header storage ([PR 8222](https://github.com/onflow/flow-go/pull/8222))
+    * Verifiability of Cluster Syn data in Byzantine scenarios  ([issue 8173)](https://github.com/onflow/flow-go/issues/8173)))
 
 ---
 
