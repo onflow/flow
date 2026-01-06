@@ -6,6 +6,7 @@
 - Blog post [Migrating Flow Node Storage from BadgerDB to PebbleDB](https://flow-foundation.slack.com/archives/C0A3GTVNKK3/p1765497777894339) (draft in gDocs; ready for publication)
 - Starting testing of Concurrent Tx execution.
 - Storehouse background indexing done - potentially enables zer-downtime execution layer block-height/view coordinated upgrades.
+- [Patrick](https://github.com/holyfuchs) joined Execution team!
 
 ---
 
