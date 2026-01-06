@@ -340,6 +340,7 @@ Cycle Objective(s):
   - Document React SDK Fund Component Usage
   - Document Vanilla Fund Package Usage
   - Create `FlowCron` usage docs 
+  - Add error for conflicting deployments issue in the CLI
   - Add developer notice in Discovery on testnet if WalletConnect is not setup
   - Create command for converting keys in flow.json to file pattern
   - Add warning if keys are detected to use command to convert to file pattern
