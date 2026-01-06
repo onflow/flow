@@ -10,18 +10,6 @@
 
 ---
 
-### Mainnet Uptime - Last 14 days (11/28/25 to 12/12/25) \[Vishal]
-
-
-|                         | Target | Current Score | Error budget used |
-|:------------------------|:------:|:-------------:|:-----------------:|
-| Collection Finalization | 99.9%   |     100%      |        0%         |
-| Block Finalization      | 99.9%   |     100%      |        0%         |
-| Transaction Execution   | 99.9%   |    99.975%    |       24.8%       |
-| Block Sealing           | 99.9%   |    99.975%    |       24.8%       |
-| Access API Liveness     | 99.9%   |     100%      |        0%         |
-
-
 #### YTD SLA \[Vishal]
 
 ##### 2025
@@ -46,7 +34,7 @@
 | Network Upgrade        | 12/29/2025 |            |           |           |              | 909        | Second Network Upgrade                       |
 | HCU                    | 12/29/2025 |            |           |           |              | 60         |                                              |
 | Total downtime in mins |            |            |           |           |              | 3982       |                                              |
-| SLA for 2025           |            | 99.91%     | 99.91%    | 99.90%    | 99.91%       | **99.26%** |                                              |
+| SLA for 2025           |            |            |           |           |              | **99.26%** |                                              |
 
 ##### 2026
 
