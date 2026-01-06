@@ -82,6 +82,7 @@
 | Released    |      4      |   35    |     11     |    10    | **60**  |
 | Total       |   **20**    | **52**  |   **19**   |  **21**  | **112** |
 
+No change since last time.
 
 ---
 
@@ -437,10 +438,7 @@ Cycle Objective(s):
 3. Develop an internal document for Flow Tokenomics [Paused]
 
 **Done last sprint**
-
-* Coordination and roll out the transaction fee increase on testnet on Mon, Dec 1st.
-* Coordination and roll out the transaction fee increase on mainnet on Thursday, Dec 4th.
-  * Machine account balance verification following fee update
+* No updates
 
 
 **This sprint**
