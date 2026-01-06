@@ -403,7 +403,6 @@ Cycle Objective(s):
 - [Create CloudRun Module to Run Account Balances Bot](https://github.com/onflow/ff-sre-infrastructure/issues/1003)
 - [Create CloudRun Module to Run Arbitrage Bot](https://github.com/onflow/ff-sre-infrastructure/issues/1004)
 - [Configure IAM Access for Arb bot on CloudRun](https://github.com/onflow/ff-sre-infrastructure/issues/1005)
-- [Update CODEOWNERS for ff-4d-infrastructure](https://github.com/onflow/ff-sre-infrastructure/issues/1006)
 
 **Support**
 - [Increase Data Disks for TN53](https://github.com/onflow/ff-sre-infrastructure/issues/1000)
