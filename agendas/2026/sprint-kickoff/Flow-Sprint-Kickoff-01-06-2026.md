@@ -216,7 +216,6 @@ Q1 Cycle Objective(s):
   * analysis of attack and movement of funds
   * supporting Sporks & HCUs 
   * Supporting Coinbase get Rosetta running (**ongoing**)
-  * generating transactions to recover fraudulent funds
   * supported FVM change to allow the service account to control any other account
   * support reclaiming tokens, additional analysis as needed, look into improved monitoring (**ongoing**)
 
