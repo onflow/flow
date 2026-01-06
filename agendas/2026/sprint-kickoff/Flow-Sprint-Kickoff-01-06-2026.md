@@ -203,32 +203,38 @@ Q1 Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
 * [Data Availability] Improve network reliability by reducing API load on execution node [IN PROGRESS]
 * SPoCK Research [IN PROGRESS]
-* Building blocks for Collection Nodes Decentralization [IN PROGRESS]
-* Downgrade historical node hardware [IN PROGRESS]
+* Building towards few Permissionless Collection Nodes [IN PROGRESS]
+* Downgrade historical node hardware
 
-**Last sprint: completed and ongoing**
+**Last sprint completed, ongoing and starting**
 
 * <ins>Attack recovery</ins>
-  * disaster containment
+  * taking down mainnet 27
   * analysis of attack and movement of funds
   * supporting Sporks & HCUs 
-  * Helping Coinbase with Rosetta 
-  * transactions to recover fraudulent funds 
+  * Supporting Coinbase get Rosetta running (**ongoing**)
+  * generating transactions to recover fraudulent funds
+  * supported FVM change to allow the service account to control any other account
+  * support reclaiming tokens, additional analysis as needed, look into improved monitoring (**ongoing**)
 
 * <ins>DeFi strategy</ins>
-   * Flow Credit Markets \[FCM] liquidation
+   * Flow Credit Markets \[FCM] liquidation (**ongoing**) 
 
-* <ins>Building blocks for Collection Nodes Decentralization</ins>
-    * [Block Buffer](https://github.com/onflow/flow-go/issues/8170) resilience for byzantine scenarios ([PR 8196](https://github.com/onflow/flow-go/pull/8196), work ongoing)
-    * Improved header storage ([PR 8222](https://github.com/onflow/flow-go/pull/8222), work ongoing)
+     **starting** _this sprint_: testing, addressing audit feedback 
+    
+* <ins>Building Towards Permissionless Collection Nodes</ins>
+    * [Buffer for (out-of-order) inbound blocks](https://github.com/onflow/flow-go/issues/8170): resilience against resource-exhaustion attacks by an equivocating leader ([PR 8196](https://github.com/onflow/flow-go/pull/8196) **continued**)
+    * Header Storage ([PR 8222](https://github.com/onflow/flow-go/pull/8222), work **ongoing**):  improved resilience by [differentiating between Consensus and Cluster Headers storage](https://github.com/onflow/flow-go/issues/4204)
+    * **starting** _this sprint_:  Verifiability of Cluster Syn data in Byzantine scenarios  ([issue 8173)](https://github.com/onflow/flow-go/issues/8173)))
 
 * <ins>Data Availability</ins>
   * PR reviews
+  * optimistic sync caching layer design anf fork-aware execution result processing (temporarily deprioritized)
   * KROK Team
   
     …
 
-<!-- Commented out for conciseness, as we typically don't iterate over the milestone status in sprint kickoffs
+<!-- Commented out for conciseness, as we typically don't iterate over the milestone status in sprint kickoffs:
 * Milestones status:
     - milestone 1: completed
     - milestone 2:
@@ -241,24 +247,10 @@ Q1 Cycle Objective(s):
  -->
 
 * <ins>Cryptography</ins>
-  * Multi-SPoCK (work ongoing):
-    * contract review of the external researcher still ongoing (tentative review start end of Jan)
-    * paper editing
-
-
-**This sprint**
-
-* <ins>Attack recovery</ins>
-   * Supporting Coinbase get Rosetta running (ongoing)
-   * reclaiming tokens, additional analysis as needed, look into improved monitoring
-
-* <ins>DeFi strategy</ins>
-    * FCM liquidation, testing, addressing audit feedback
-
-* <ins>Building blocks for Collection Nodes Decentralization</ins>
-    * [Block Buffer](https://github.com/onflow/flow-go/issues/8170) resilience against resource-exhaustion attacks by an equivocating leader ([PR 8196](https://github.com/onflow/flow-go/pull/8196) continued)
-    * Improved header storage ([PR 8222](https://github.com/onflow/flow-go/pull/8222))
-    * Verifiability of Cluster Syn data in Byzantine scenarios  ([issue 8173)](https://github.com/onflow/flow-go/issues/8173)))
+  * Multi-SPoCK (**ongoing**):
+    * SPoCK paper
+    * Spearbit follow up (external researcher for pre-submission peer review)
+  * Interview candidate for wallet team
 
 ---
 
