@@ -313,57 +313,36 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
-- Fork Testing
-  - Documented dependency mocking for forked network
-
-- Mobile
-  - Fixed latest WalletConnect redirect issue with wallet
-  - Created new React Native SDK package for native UI requirements
-  - Created share React hooks library for React SDK and React Native SDK
-  - Added native UI for wallet connections
-
-- React SDK Liquidity
-  - Added new internal UI components for the React SDK
-  - Built the Fund component UI
-  - Added the Fund component to the demo playground
-  - Created Fund Crypto API interfaces
-  - Created Fund Relay.Link integration
-  - Created Fund Fiat API interfaces
-  - Build React SDK Relay crypto on-ramp integration
-  - Started React SDK Moonpay fiat on-ramp integration
-
 - Misc
-  - Documented Emulator Account Creation Flag Usage
-  - Began improving theming support across the React SDK
-  - Finished and released CLI import aliasing support
-  - Support narrative arc marketing efforts
-  - Added system transactions to `flow blocks get`
-  - Added ability to run `flow cadence lint` on all files at once
-  - Documented instructions for DevRel to run recurring TVL helper
-
+  - Review technical incident content for marketing
+  - Fix CLI address check bug for non-standard networks
+  - Add legacy `Crypto` identifier support to `flow cadence lint`
+  - Support data collection efforts for exploit analysis
 
 **This Sprint**
 
-- Mobile
-  - Add Connect and Profile components to react-native-sdk
-  - Complete react-native-sdk package and publish it
-  - Complete flow-expo-starter package fully integrated with react-native-sdk
-  - Update playground with banner for react-native-sdk usage
-  - Begin building Fund native UI
-  - Begin integrating Fund component native integration
-
-- React SDK Liquidity
- - Move fund hook to share hooks library
- - Integrate fiat Fund component with React SDK Hooks
- - Add cross VM bridging to React SDK Fund component
- - Document React SDK Fund usage
- - Document vanilla @onflow/payments usage
+- React SDK
+ - Create Fund component UI for React Native
+ - Update React SDK starter project to latest nextjs version
+ - Add React Native SDK Fund component example to Starter project
+ - Fix fcl-js playground workflow problem after latest release workflow upgrade
 
 - Misc
-  - Fix fcl-js npm publish problem
-  - Address FlowCron review feedback
-  - Finish theming support across React SDK
-  - Create marketing materials for Q4 tooling work
+  - Create technical content to support post mortem marketing efforts
+  - Restore DefiLlama TVL Helper affected by network halt
+  - Investigate flow-go issue affecting forking + CLI release
+  - Update VSCode JSON Schema Resolution to support latest flow.json changes
+  - Add support for block height pins to dependency manager
+  - Add support for `GetAccountAtBlockHeight` RPC to flowkit
+  - Add advanced network resolutions to test framework fork mode to align with emulator
+  - Fix Flow CLI `flow blocks get` block seals output
+  - Add zerodev support to React SDK Fund Component
+  - Document React SDK Fund Component Usage
+  - Document Vanilla Fund Package Usage
+  - Create `FlowCron` usage docs 
+  - Add developer notice in Discovery on testnet if WalletConnect is not setup
+  - Create command for converting keys in flow.json to file pattern
+  - Add warning if keys are detected to use command to convert to file pattern
 
 
 ---
