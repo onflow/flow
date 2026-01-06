@@ -385,7 +385,7 @@ Cycle Objective(s):
 
 **Support**
 - [Increase Data Disks for TN53](https://github.com/onflow/ff-sre-infrastructure/issues/1000)
-- [Create Doc on How to Provision Additional EVM GW Nodes](https://github.com/onflow/ff-sre-infrastructure/issues/984)
+- [Create Doc on How to Provision Additional EVM GW Nodes and related Operations](https://github.com/onflow/ff-sre-infrastructure/issues/984)
 - [Investigate `set-output` issue on private build workflow](https://github.com/onflow/ff-sre-infrastructure/issues/1015)
 
 ---
