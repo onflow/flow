@@ -117,7 +117,7 @@ Q3 2025 Cycle Objective(s):
 
 **Cadence Execution**
 
-Security incident mitigation
+- Security incident mitigation
     - [Add account restricting](https://github.com/onflow/flow-go/pull/8271)
     - [Add Service account overide](https://github.com/onflow/flow-go/pull/8273)
     - [[v0.44] Allow transactions authorized by restricted account but payed by service account](https://github.com/onflow/flow-go/pull/8275)
@@ -125,14 +125,14 @@ Security incident mitigation
     - [Restrict EVM access to EOAs with proven malicious activity](https://github.com/onflow/flow-go/pull/8272)
         - [Suggestion to 8272: move the msg.From check to proc.run](https://github.com/onflow/flow-go/pull/8286)
     - [Access node fix script execution with evm](https://github.com/onflow/flow-go/pull/8290)
-Storehouse
+- Storehouse
     - [Storehouse: Background indexing](https://github.com/onflow/flow-go/issues/8244)
     - [[Storehouse] Storehouse checkpoint validator](https://github.com/onflow/flow-go/pull/8257)
-Concurrent execution
+- Concurrent execution
     - [[FVM] Fix concurent execution metrics](https://github.com/onflow/flow-go/pull/8261)
-Improvements
+- Improvements
     - Atree: [[SECURITY] Add more guidelines for security disclosures](https://github.com/onflow/atree/pull/592)
-Network upgrade
+- Network upgrade
     - [Mainnet28](https://github.com/onflow/dapper-flow-hosting/pull/1821)
     - [mainnet28 update evm gateway configs](https://github.com/onflow/dapper-flow-hosting/pull/1823)
     - [not require approvals for mainnet28 spork](https://github.com/onflow/dapper-flow-hosting/pull/1824)
@@ -145,18 +145,19 @@ Network upgrade
     - [use v0.44.5 for mainnet28](https://github.com/onflow/dapper-flow-hosting/pull/1831)
     - [[After Mainnet28 Spork] Restore the state read after mainnet28 spork](https://github.com/onflow/dapper-flow-hosting/pull/1826)
     - [Create disks from latest mainnet & devnet snapshots](https://github.com/onflow/ff-sre-infrastructure/pull/998)
-TPS loader
+- TPS loader
     - [Add benchmark tests](https://github.com/onflow/flow-execution-effort-estimation/pull/80)
     - [Extract certain transactions for reusability.](https://github.com/onflow/flow-execution-effort-estimation/pull/81)
     - [Add account reuse](https://github.com/onflow/flow-execution-effort-estimation/pull/82)
-Tests
+- Tests
     - [Add tests to check some account keys on mainnet](https://github.com/onflow/flow-e2e-tests/pull/70)
 
 **Flow EVM**
-Core
+
+- Core
     - Improvement
         - [Support abi encoding of EVM tuple types](https://github.com/onflow/flow-go/issues/8020)
-Gateway
+- Gateway
     - bugfix:
         - [Emit ApiErrorOccurred metric for request timed out errors](https://github.com/onflow/flow-evm-gateway/issues/931)
     - Improvement
