@@ -24,33 +24,48 @@
 
 #### YTD SLA \[Vishal]
 
-| Incident/upgrade       | Date       | Collection | Consensus | Execution | Verification | Total      | Comments      |
-|------------------------|------------|------------|-----------|-----------|--------------|------------|---------------|
-| HCU                    | 1/27/2025  |            |           | 5         |              | 5          |               |
-| P0 Incident            | 2/18/2025  | 180        | 180       | 180       | 180          | 180        | Grafana issue |
-| P0 Incident            | 2/19/2025  | 30         | 30        | 30        | 30           | 30         | Grafana issue |
-| HCU                    | 2/18/2025  |            |           | 5         |              | 5          |               |
-| HCU                    | 2/18/2025  |            |           | 5         |              | 5          |               |
-| HCU                    | 4/10/2025  |            |           | 5         |              | 5          |               |
-| HCU                    | 5/15/2025  |            |           | 7         |              | 7          |               |
-| HCU                    | 6/3/2025   |            |           | 9         |              | 9          |               |
-| HCU                    | 6/16/2025  |            |           | 12        |              | 12         |               |
-| HCU                    | 8/7/2025   |            |           | 9         |              | 9          |               |
-| Forte network upgrade  | 10/22/2025 | 284        | 240       | 240       | 240          | 470        |               |
-| HCU                    | 11/20/2025 |            |           | 9         |              | 9          |               |
-| HCU                    | 12/04/2025 |            |           | 9         |              | 9          |               |
-| Total downtime in mins |            | 494        | 450       | 530       | 450          | 760        |               |
-| YTD SLA                |            | 99.90%     | 99.91%    | 99.89%    | 99.91%       | 99.85%     |               |
-| SLA for 2025           |            | 99.91%     | 99.91%    | 99.90%    | 99.91%       | **99.86%** |               |
+##### 2025
+
+| Incident/upgrade       | Date       | Collection | Consensus | Execution | Verification | Total      | Comments                                     |
+|------------------------|------------|------------|-----------|-----------|--------------|------------|----------------------------------------------|
+| HCU                    | 1/27/2025  |            |           | 5         |              | 5          |                                              |
+| P0 Incident            | 2/18/2025  | 180        | 180       | 180       | 180          | 180        | Grafana issue                                |
+| P0 Incident            | 2/19/2025  | 30         | 30        | 30        | 30           | 30         | Grafana issue                                |
+| HCU                    | 2/18/2025  |            |           | 5         |              | 5          |                                              |
+| HCU                    | 2/18/2025  |            |           | 5         |              | 5          |                                              |
+| HCU                    | 4/10/2025  |            |           | 5         |              | 5          |                                              |
+| HCU                    | 5/15/2025  |            |           | 7         |              | 7          |                                              |
+| HCU                    | 6/3/2025   |            |           | 9         |              | 9          |                                              |
+| HCU                    | 6/16/2025  |            |           | 12        |              | 12         |                                              |
+| HCU                    | 8/7/2025   |            |           | 9         |              | 9          |                                              |
+| Forte network upgrade  | 10/22/2025 | 284        | 240       | 240       | 240          | 470        |                                              |
+| HCU                    | 11/20/2025 |            |           | 9         |              | 9          |                                              |
+| HCU                    | 12/04/2025 |            |           | 9         |              | 9          |                                              |
+| Network Upgrade        | 12/27/2025 |            |           |           |              | 60         | First Network Upgrade Post Security Incident |
+| Network Upgrade        | 12/28/2025 |            |           |           |              | 1440       | Transaction Ingestion Off                    |
+| Network Upgrade        | 12/29/2025 |            |           |           |              | 909        | Second Network Upgrade                       |
+| HCU                    | 12/29/2025 |            |           |           |              | 60         |                                              |
+| Total downtime in mins |            |            |           |           |              | 3982       |                                              |
+| SLA for 2025           |            | 99.91%     | 99.91%    | 99.90%    | 99.91%       | **99.26%** |                                              |
+
+##### 2026
+
+| Incident/upgrade        | Date     | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Total  | Comments                                |
+|-------------------------|----------|------------|-----------|-----------|--------------|-------------|--------|--------|-----------------------------------------|
+| HCU                     | 1/1/2026 |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
+| HCU                     | 1/2/2026 |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
+| HCU                     | 1/3/2026 |            |           | 9         |              |             |        | 9      | Security Fix                            |
+| HCU                     | 1/3/2026 |            |           | 9         |              |             |        | 9      | Repeated the HCU                        |
+| Enter new incident here |          |            |           |           |              |             |        |        |                                         |
+| Total downtime in mins  |          | 0          | 0         | 36        | 0            | 0           | 0      | 36     |                                         |
+| YTD (01/06/26) SLA      |          | 100.00%    | 100.00%   | 99.53%    | 100.00%      | 100.00%     |        | 99.53% |                                         |
+| SLA for 2026            |          | 100.00%    | 100.00%   | 99.99%    | 100.00%      | 100.00%     |        | 99.99% |                                         |
 
 ### Incidents \[Vishal]
 
-- Planned downtime
-  - HCU on 12/4
-
-- Unplanned downtime:
-    - EVM GW downtime for 10 hours minutes: Friday, Dec 5th.
-    - [Postmortem report](https://status.flow.com/incidents/69wv7m70pyxv)
+- Unplanned downtime: Dec 28th, 29th, 
+  - Security incident.
+  - Postmortem to be published soon.
 
 
 ---
@@ -67,8 +82,6 @@
 | Released    |      4      |   35    |     11     |    10    | **60**  |
 | Total       |   **20**    | **52**  |   **19**   |  **21**  | **112** |
 
-- [FLIP 351: Transaction Fee Update to Enable Inflation-Neutral Tokenomics](https://github.com/onflow/flips/blob/main/governance/20251119-transaction-fee-update.md) released.
-- One new FLIP proposed - [FLIP 353: Automatic Restaking](https://github.com/onflow/flips/issues/354)
 
 ---
 
