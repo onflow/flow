@@ -362,30 +362,38 @@ Cycle Objective(s):
 
 ---
 
-### **Infra** \[Manny]
+### **Infra** \[Kan]
 
 **Done last sprint**
 
 **MN28 Spork**
-- [Create checklist and infra for MN28 spork](https://github.com/onflow/ff-sre-infrastructure/issues/1023)
-- [Update MN secure endpoint DNS record for MN28](https://github.com/onflow/ff-sre-infrastructure/issues/1018)
-- [Update ANs synthetic monitors to reference MN28](https://github.com/onflow/ff-sre-infrastructure/issues/1019)
-- [Create alerts for MN28](https://github.com/onflow/ff-sre-infrastructure/issues/1017)
-- [Remove MN27 alerts](https://github.com/onflow/ff-sre-infrastructure/issues/1020)
+- [Update the checkpoint extraction job to point to MN28](https://github.com/onflow/ff-sre-infrastructure/issues/1016)
+- [Delete MN27 shadow node](https://github.com/onflow/ff-sre-infrastructure/issues/1021)
+- [Reconcile Terraform State after MN EVM Data Disk Changes](https://github.com/onflow/ff-sre-infrastructure/issues/1034)
+- [Disable Snapshot Policy for MN27 Nodes](https://github.com/onflow/ff-sre-infrastructure/issues/1037)
+- [Create Final Snapshots for MN27 AN1/EN1](https://github.com/onflow/ff-sre-infrastructure/issues/1059)
+- [Remove MN27 instances except for AN1](https://github.com/onflow/ff-sre-infrastructure/issues/1058)
 
 **Historical Nodes**
-- [Create Historical Access Node for TN52](https://github.com/onflow/ff-sre-infrastructure/issues/994)
+- [Terminate Ansible/Prometheus Nodes on MN26](https://github.com/onflow/ff-sre-infrastructure/issues/880)
+- [Delete the old MN24 AN1/EN1 nodes after replacement by new historical nodes](https://github.com/onflow/ff-sre-infrastructure/issues/1045)
+- [Switch the DNS record for MN24 AN to point to the new historical node](https://github.com/onflow/ff-sre-infrastructure/issues/1026)
+- [Configure GCP scopes for TN52 historical blue AN service account](https://github.com/onflow/ff-sre-infrastructure/issues/1040)
+- [Grant Access to Blue AN TN52 for Pulling Images from Private Registry](https://github.com/onflow/ff-sre-infrastructure/issues/1002)
+- [Configure Docker authentication on Debian 12 TN52 Historical AN](https://github.com/onflow/ff-sre-infrastructure/issues/1062)
+- [Add Blue TN52 AN to the Historical TN Inventory](https://github.com/onflow/ff-sre-infrastructure/issues/997)
+- [Switch the DNS record for TN52 AN to point to the new historical node](https://github.com/onflow/ff-sre-infrastructure/issues/1043)
+- [Delete the old TN52 AN1/EN1 after replacement by new historical AN](https://github.com/onflow/ff-sre-infrastructure/issues/1049)
 
-**FCM**
-- [Create Instance for Flow Vaults Arb Bot](https://github.com/onflow/ff-sre-infrastructure/issues/999)
-- [Create CloudRun Module to Run Account Balances Bot](https://github.com/onflow/ff-sre-infrastructure/issues/1003)
-- [Create CloudRun Module to Run Arbitrage Bot](https://github.com/onflow/ff-sre-infrastructure/issues/1004)
-- [Configure IAM Access for Arb bot on CloudRun](https://github.com/onflow/ff-sre-infrastructure/issues/1005)
+**Cost Optimization**
+- [Document Termination/Recreation of Migration MN and TN Nodes](https://github.com/onflow/ff-sre-infrastructure/issues/888)
+- [Downsize Data Disks for Migration TN/MN](https://github.com/onflow/ff-sre-infrastructure/issues/1052)
 
 **Support**
-- [Increase Data Disks for TN53](https://github.com/onflow/ff-sre-infrastructure/issues/1000)
-- [Create Doc on How to Provision Additional EVM GW Nodes and related Operations](https://github.com/onflow/ff-sre-infrastructure/issues/984)
-- [Investigate `set-output` issue on private build workflow](https://github.com/onflow/ff-sre-infrastructure/issues/1015)
+- [Configure flow-go to allow execution and service ledger image builds](https://github.com/onflow/ff-sre-infrastructure/issues/1025)
+- [Configure GCP scopes for MN28 shadow node service account](https://github.com/onflow/ff-sre-infrastructure/issues/1031)
+- [Configure Docker authentication on Debian 12 MN28 shadow node](https://github.com/onflow/ff-sre-infrastructure/issues/1032)
+- [Allow MN28 shadow node service account to pull private images](https://github.com/onflow/ff-sre-infrastructure/issues/1030)
 
 ---
 
