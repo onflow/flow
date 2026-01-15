@@ -3,13 +3,12 @@
 ### Team Wins 🎉
 
 - Attack recovery is now complete - all accounts have been unrestricted.
+- CB has resumed Flow deposit and withdrawal.
 
 
 ---
 
 #### YTD SLA \[Vishal]
-
-##### 2026
 
 | Incident/upgrade       | Date     | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Total  | Comments                                |
 |------------------------|----------|------------|-----------|-----------|--------------|-------------|--------|--------|-----------------------------------------|
@@ -163,20 +162,33 @@ Q1 Cycle Objective(s):
 
 ---
 
-### **DeFi** \[Vishal]
-
-Cycle Objective(s):
-- Close gaps in Defi/Liquidity infrastructure post-Cadence 1.0
-- Bring liquidity and kickstart ecosystem effects
+### **DeFi - FCM and FYV ** \[Vishal]
 
 **Done last sprint**
 
-#### Flow ALP & Flow Vaults:
-
-
+- Switch from USDF to PyUSD vault to unblock Peak Money ✅
+- Address Deposit Rate related review comments received from Quantstamp on the FCM contract ✅
+- Review and address Quantstamp audit comments on the FYV and FlowAction contracts - In Progress
+- Add stabilityFee parameter for Protocol Stability [#85](https://github.com/onflow/FlowCreditMarket/issues/85) - Ready for review
+- Insurance fund implementation [#84](https://github.com/onflow/FlowCreditMarket/issues/84) - Adding tests.
+- FYV front-end
+  - [#70](https://github.com/onflow/FlowYieldVaults-fe/pull/70) ✅
+    - Integrate backend pending api to get pending evm transactions
+    - Add network status banner when network is having issues, notify the user of degraded service.
+  - EVM: Allow user claiming refund if posision creation fails [#73](https://github.com/onflow/FlowYieldVaults-fe/issues/73)
+- Bug fix [129](https://github.com/onflow/FlowYieldVaults/issues/129) to allow withdrawal from FYV on the EVM side ✅
+- Doc site update [1626](https://github.com/onflow/docs/pull/1626)
+- Redesign of the liquidation process: [87](https://github.com/onflow/FlowCreditMarket/issues/87)
+  - Implemented manual liquidation [93](https://github.com/onflow/FlowCreditMarket/issues/93) - In review
+  - Implement basic DEX interface for automated liquidation [94](https://github.com/onflow/FlowCreditMarket/issues/94) - In review
+- Setting up the Testing framework [#122](https://github.com/onflow/FlowYieldVaults/issues/122) - In progress
+- FCM Whitepaper [#106](https://github.com/onflow/FlowCreditMarket/issues/106) - broken up into short-term and long-term milestones (blog, technical note, whitepaper)
 
 **This sprint**
 
+- Continue on all the issues in-progress ☝️
+- Review QuantStamp audit comments for FYV EVM contract
+- Respond to Quantstamp's **FCM** review comments with the new changes.
 
 
 ---
