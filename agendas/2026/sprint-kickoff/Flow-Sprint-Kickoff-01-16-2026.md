@@ -122,17 +122,24 @@ Q1 Cycle Objective(s):
 * Support DeFi strategy [IN PROGRESS]
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
 * [Data Availability] Improve network reliability by reducing API load on execution node [PAUSED]
-* SPoCK Research [IN PROGRESS]
 * Building towards few Permissionless Collection Nodes [PAUSED]
+* SPoCK Research [IN PROGRESS]
 * Downgrade historical node hardware [COMPLETE]
 
 **Last sprint completed, ongoing and starting**
 
 * <ins>Attack recovery</ins>
+  * Forensic analysis to unrestrict additional accounts.
+  * FT recovery from attacker account - composing transactions, coordinating service committee signing.
+  * Bringing Coinbase back online
 
-    
 * <ins>Building Towards Permissionless Collection Nodes</ins>
-
+  * Created [new set of issues](https://github.com/onflow/flow-go/issues/8325) for pending blocks processing BFT improvements
+  * Total User Stories: 35
+    - Done: 5
+    - In Review: 1
+    - In Progress: 4
+  * Work on this OKR will be paused
 
 * <ins>Data Availability</ins>
   * PR reviews
@@ -145,10 +152,13 @@ Q1 Cycle Objective(s):
 
 
       * In Progress:
-
-
+  * Work on this OKR will be paused.
 
 * <ins>Cryptography</ins>
+  * Spearbit: agreement concluded - legal review ongoing
+  * paper editing:
+    * definitions and security of Multi-SPoCK and Aggregate Multi-SPoCK (done)
+    * currently writing the BLS-Multi-SPoCK construction
 
 
 ---
