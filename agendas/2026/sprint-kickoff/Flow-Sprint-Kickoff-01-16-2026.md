@@ -3,6 +3,7 @@
 ### Team Wins 🎉
 
 - Attack recovery is now complete - all accounts have been unrestricted.
+- We completed Execution node POC that separetes ledger from the EN process & enables zero-downtime EN upgrade.
 
 
 ---
@@ -59,54 +60,107 @@ Q3 2025 Cycle Objective(s):
 **Done last sprint**
 
 **Cadence Language**
-- Bugfixes:
 
-- Improvement
-
-- Tools
-
+- Compiler / VM
+    - [[Cadence VM] Build execution image with Cadence VM enabled](https://github.com/onflow/flow-go/pull/8247)
+    - correctness testing: [[Cadence VM] Improve compiler/VM / interpreter comparison tool](https://github.com/onflow/flow-go/pull/8221)
+    - Improvements: 
+        - [[Compiler] Validate static argument types in contract initializer](https://github.com/onflow/cadence/pull/4411)
+        - Performance:
+            - [[Compiler] Optimize call frames in the VM](https://github.com/onflow/cadence/pull/4380)
+    - bugfix
+        - [[Compiler] Remove additional transfers of indexing values in swap statements](https://github.com/onflow/cadence/pull/4413)
+- Improvements
+    - Tools
+        - [Parenthesize pretty-printed types](https://github.com/onflow/cadence/pull/4402)
+        - [Parenthesize sema and static type strings](https://github.com/onflow/cadence/pull/4407)
+        - [Improve comments in generated Go code ](https://github.com/onflow/cadence/pull/4414)    
+        - [Add the variable declaration value's actual type to the elaboration](https://github.com/onflow/cadence/pull/4415)
+        - [Add support for decoding into cadence.Address and *big.Int](https://github.com/onflow/cadence/pull/4412)
+    - Performance:
+        - [Avoid unnecessary repeated type conversions](https://github.com/onflow/cadence/pull/4409)
+- bugfixes
+    - [Check move operator for resource-typed extra arguments](https://github.com/onflow/cadence/pull/4400)
+    - [Add suggested fix for invalid reference to optional type error](https://github.com/onflow/cadence/pull/4408)
+    - internal: [1](https://github.com/onflow/cadence-internal/pull/360), [2](https://github.com/onflow/cadence-internal/pull/361), [3](https://github.com/onflow/cadence-internal/pull/362), [4](https://github.com/onflow/cadence-internal/pull/371)
+    - tooling:
+        - [[LS] Fix code action for replacement diagnostic](https://github.com/onflow/cadence-tools/pull/562)
 - chores
-
+    - [[v1.8] Port v1.8.12-rc.1](https://github.com/onflow/cadence/pull/4403)
+    - [Port internal v1.8.12-rc.1](https://github.com/onflow/cadence/pull/4404)
+    - [[v0.44] Update to Cadence v1.8.12](https://github.com/onflow/flow-go/pull/8304)
+    - [Update to Cadence v1.9.3](https://github.com/onflow/flow-go/pull/8298)
+    - [Update to Cadence v1.9.4](https://github.com/onflow/flow-go/pull/8318)
+    - [[v0.44.18-rc] Update to Cadence v1.8.12-rc.1](https://github.com/onflow/flow-go-internal/pull/7138)
+    - [Update to Cadence v1.9.3](https://github.com/onflow/flow-go-sdk/pull/974)
+    - [Update to Cadence v1.9.4](https://github.com/onflow/flow-go-sdk/pull/975)
+    - [Update to Cadence v1.9.5](https://github.com/onflow/flow-go-sdk/pull/981)
 
 **Cadence Execution**
 
-- Security incident mitigation
-
-- Storehouse
-
+- Related to security incident remediation:
+    - [Revert: Add service account override](https://github.com/onflow/flow-go/pull/8324)
 - Concurrent execution
-
-- Improvements
-
-- Network upgrade
-
-- TPS loader
-
-- Tests
+    - [[FVM] Fix concurent execution metrics](https://github.com/onflow/flow-go/pull/8261)
+    - [[FVM] Expose transaction index to Cadence](https://github.com/onflow/flow-go/pull/8252)
+- Storehouse
+    - [[Storehouse] Storehouse checkpoint validator](https://github.com/onflow/flow-go/pull/8257)
+    - [Move ledger to standalone service](https://github.com/onflow/flow-go/issues/8308)
+        - [[Breaking Change] Normalize nil payload value encoding to empty slice](https://github.com/onflow/flow-go/pull/8307)
+- Improvement:
+    - TPS loader
+        - [Add account reuse](https://github.com/onflow/flow-execution-effort-estimation/pull/82)
+    - performance: 
+        - [[FVM] Refactor EVM injection and Cadence Runtime creation](https://github.com/onflow/flow-go/issues/8301)
+            - [[FVM] Add chain as a parameter to the runtime pool](https://github.com/onflow/flow-go/pull/8302)
+            - [[FVM] Resolve reusable runtime environment import cycle](https://github.com/onflow/flow-go/pull/8303)
+            - [[FVM] Make Chain a non-optional part of context construction](https://github.com/onflow/flow-go/pull/8312)
+            - [[FVM] Change InternalEVM injection to happen once](https://github.com/onflow/flow-go/pull/8313)
+            - [[FVM] Split the Script and Transction runtimes earlier in the stack to avoid missuse](https://github.com/onflow/flow-go/pull/8321)
+- Bugix:
+    - internal: [1](https://github.com/onflow/atree-internal/pull/17)
+- Tech debt
+    - [Add account key metadata utility functions to FVM pkgs](https://github.com/onflow/flow-go/pull/8315)
+    - [Remove public key deduplication migration and diff key program](https://github.com/onflow/flow-go/pull/8316)
+    - Code cleanup: [[FVM] Remove unused ExecutedCollectionConsumer](https://github.com/onflow/flow-go/pull/8306)
 
 
 **Flow EVM**
 
 - Core
-    - Improvement
-
+    - Related to security incident remediation:
+        - [Add EVM function to reclaim ERC20 tokens from attacker's EOA addresses](https://github.com/onflow/flow-go/pull/8293)
+        - [[Flow EVM] Add test cases for restricted EOA functionality](https://github.com/onflow/flow-go/pull/8297)
+        - [[Flow EVM] Add functionality to restrict EOAs from accessing EVM](https://github.com/onflow/flow-go/pull/8310)
+    - bugfix
+        - [Panic on FLOW remainder in UInt to UFix64 conversion](https://github.com/onflow/flow-go/issues/6856)
+            - [Truncate amount on `COA.withdraw` call to maximum Flow token vault precision](https://github.com/onflow/flow-go/pull/6877)
 - Gateway
-    - bugfix:
-
     - Improvement
-
-    - chore:
-
+        - [Add metric to track the Flow total supply on each block](https://github.com/onflow/flow-evm-gateway/pull/949)
+        - [Add a metric to count the EVM block processing time during event ingestion](https://github.com/onflow/flow-evm-gateway/pull/944)
+        - Performance
+            - [Remove tx trace generation & storage from ingestion engine](https://github.com/onflow/flow-evm-gateway/pull/939)
 
 **This sprint**
 
 - Cadence Language
-
+    - security incident follow-up, FCM support
+    - On-hold: compiler correctness testing
+    - On-hold: tacklig compiler+VM tech-debt
+    - On-hold: deep-dive on compiler+VM performace
 
 - Cadence Execution
-
+    - Complete enabling EN zero-downtime HCU
+    - Continue testing [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571)
+    - Park [Versioning of Execution Stack via Dynamic Protocol State](https://github.com/onflow/flow-go/issues/6999)
+    - On-hold [Badger -> Pebble: remaining tasks and cleanup](https://github.com/onflow/flow-go/issues/7682)
+    - On-Hold [Storehouse](https://github.com/onflow/flow-okrs/issues/166)
+    - On-Hold: [Scheduled Transactions for EVM](https://github.com/onflow/flow-go/issues/8019)
+    - On-Hold: New Trie research
 
 - EVM
+    - On-Hold, FCM support
 
 
 **On Hold**
@@ -178,12 +232,21 @@ Core protocol, Cadence and Execution team will be working on FCM, Security and P
 
 ### Security
 
-
-
+- [Cadence security improvements](https://github.com/onflow/cadence-internal/issues/367)
+    - expand defensive code, tech-debt review
+    - external audit
+- update bug bounty program
+- Execution node fraud detection (storage layer)
+- In-house tools
+    - off-chain anomaly detection
+    - analytics (transaction & account trails)
+- Evaluate existing anomaly detection tools (contract / Tx anomalies)
 
 ### Performance
 
-
+- Concurrent Tx execution
+- Scheduled transactions performance deep-dive
+- Cross-vm bridging performance deep-dive
 
 ---
 
