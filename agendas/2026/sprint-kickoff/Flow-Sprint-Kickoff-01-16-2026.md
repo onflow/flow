@@ -24,7 +24,7 @@
 ### Incidents \[Vishal]
 
 - Jan 7th, 11:23 AM Pacific to 11:55 AM Pacific EVM Public endpoint became unusable.
-  - Root cause: Node operator user error.
+  - Root cause: Node operator misconfigured the endpoint (human error).
 
 - Rolling upgrade to `v0.44.19` to remove additional privileges granted to Service Account (no downtime)
 
