@@ -11,15 +11,16 @@
 
 ##### 2026
 
-| Incident/upgrade        | Date     | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Total  | Comments                                |
-|-------------------------|----------|------------|-----------|-----------|--------------|-------------|--------|--------|-----------------------------------------|
-| HCU                     | 1/1/2026 |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
-| HCU                     | 1/2/2026 |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
-| HCU                     | 1/3/2026 |            |           | 9         |              |             |        | 9      | Security Fix                            |
-| HCU                     | 1/3/2026 |            |           | 9         |              |             |        | 9      | Repeated the HCU                        |
-| Total downtime in mins  |          | 0          | 0         | 36        | 0            | 0           | 0      | 36     |                                         |
-| YTD (01/06/26) SLA      |          | 100.00%    | 100.00%   | 99.53%    | 100.00%      | 100.00%     |        | 99.83% |                                         |
-| SLA for 2026            |          | 100.00%    | 100.00%   | 99.99%    | 100.00%      | 100.00%     |        | 99.99% |                                         |
+| Incident/upgrade       | Date     | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Total  | Comments                                |
+|------------------------|----------|------------|-----------|-----------|--------------|-------------|--------|--------|-----------------------------------------|
+| HCU                    | 1/1/2026 |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
+| HCU                    | 1/2/2026 |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
+| HCU                    | 1/3/2026 |            |           | 9         |              |             |        | 9      | Security Fix                            |
+| HCU                    | 1/3/2026 |            |           | 9         |              |             |        | 9      | Repeated the HCU                        |
+| EVM GW Issue           | 1/7/2026 |            |           | 9         |              |             | 32     | 32     | Public EVM endpoint unavailable         |
+| Total downtime in mins |          | 0          | 0         | 36        | 0            | 0           | 32     | 68     |                                         |
+| YTD (01/06/26) SLA     |          | 100.00%    | 100.00%   | 99.53%    | 100.00%      | 100.00%     |        | 99.68% |                                         |
+| SLA for 2026           |          | 100.00%    | 100.00%   | 99.99%    | 100.00%      | 100.00%     |        | 99.99% |                                         |
 
 ### Incidents \[Vishal]
 
