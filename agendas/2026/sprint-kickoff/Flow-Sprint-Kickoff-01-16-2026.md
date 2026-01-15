@@ -179,8 +179,15 @@ Core protocol, Cadence and Execution team will be working on FCM, Security and P
 
 ### Security
 
+**Done Last Sprint**
 
+- Created product spec (wireframes, technical docs, API spec) for financial analytics tooling
 
+**This Sprint**
+
+- Address feedback on API proposal for financial analytics tool
+- Begin building the UI for the financial analytics tool
+- FYV Forking Simulation
 
 ### Performance
 
@@ -195,15 +202,48 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
+- React SDK
+  - Finished React Native SDK Fund component UI 
+  - Updated React SDK starter project to latest nextjs version (From 15 to 16)
+  - Completed React Native SDK Fund component UI to be like React SDK one
+  - Added React Native SDK Fund component example to Starter project
+  - Tested Fund component in Starter project live on mobile device to verify data flow
+  - Added developer notice in Discovery on testnet if WalletConnect is not setup
+
 - Misc
+  - Created command for converting keys in flow.json to file pattern
+  - Added warning if keys are detected to use command to convert to file pattern
+  - Created technical content to support post mortem marketing efforts
+  - Update ai-data-retriever with 3 more problems
+  - Test web search usage in ai-data-retriever
+  - Create FlowCron usage docs and add to docs "Cadence/Advanced Concepts" section
+  - Restore DefiLlama TVL Helper affected by network halt
+  - Investigate flow-go issue affecting forking + CLI release
+  - Update VSCode JSON Schema Resolution to support latest flow.json changes
+  - Add support for block height pins to dependency manager
+  - Add support for GetAccountAtBlockHeight RPC to flowkit
+  - Add advanced network resolutions to test framework fork mode to align with emulator
+  - Fix Flow CLI flow blocks get block seals output
+  - Update Cadence Test Framework Docs to Latest Syntax
+  - Support Flow Yield Vaults Fork Testing Efforts
+  - Investigate strategies for EVM state manipulation in Cadence Test Framework
+  - Create Cadence Profiling Command
+  - Created article on on-chain SVG NFTs for marketing
+  - Created article on on-chain Cadence vs Solidity forking
 
 
 **This Sprint**
 
 - React SDK
+  - Add react-sdk and react-native-sdk starters creation options during flow cli init
+  - Update react-native-sdk documentation
 
 - Misc
-
+  - Document Cadence Profiling Command & Share with Find Team
+  - Support Flow Yield Vaults Fork Testing Efforts
+  - Support financial analytics tool building
+  - Fix fcl-js playground workflow problem after latest release workflow upgrade
+  - Create more marketing materials from a technical angle
 
 
 ---
