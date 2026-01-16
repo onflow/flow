@@ -278,7 +278,7 @@ Core protocol, Cadence and Execution team will be working on FCM, Security and P
 
 - In-house financial analytics & fraud detection tooling
   - transaction & account trail  
-   - Created product spec (wireframes, technical docs, API spec) for 
+   - Created product spec (wireframes, technical docs, API spec)
 
 **This Sprint**
 
