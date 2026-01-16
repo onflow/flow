@@ -361,10 +361,12 @@ Cycle Objective(s):
 
 **Done last sprint**
 
+- Shipped the Blocto Keystore migration workflow on all platforms.
+  - Replaces user's old blocto keys with new recovery phrase derived keys.
 
 **This sprint**
 
-
+- Ship version 3.1, adding EOA support on all platforms. 
 
 ---
 
