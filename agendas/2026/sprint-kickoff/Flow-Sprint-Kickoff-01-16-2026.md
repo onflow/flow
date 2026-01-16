@@ -3,24 +3,24 @@
 ### Team Wins 🎉
 
 - Attack recovery is now complete - all accounts have been unrestricted.
-- We completed Execution node POC that separetes ledger from the EN process & enables zero-downtime EN upgrade.
+- CB has resumed Flow deposit and withdrawal.
+- Completed Execution node POC that separetes ledger from the EN process & enables zero-downtime EN upgrade.
 
 
 ---
 
 #### YTD SLA \[Vishal]
 
-##### 2026
-
-| Incident/upgrade        | Date     | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Total  | Comments                                |
-|-------------------------|----------|------------|-----------|-----------|--------------|-------------|--------|--------|-----------------------------------------|
-| HCU                     | 1/1/2026 |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
-| HCU                     | 1/2/2026 |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
-| HCU                     | 1/3/2026 |            |           | 9         |              |             |        | 9      | Security Fix                            |
-| HCU                     | 1/3/2026 |            |           | 9         |              |             |        | 9      | Repeated the HCU                        |
-| Total downtime in mins  |          | 0          | 0         | 36        | 0            | 0           | 0      | 36     |                                         |
-| YTD (01/06/26) SLA      |          | 100.00%    | 100.00%   | 99.53%    | 100.00%      | 100.00%     |        | 99.83% |                                         |
-| SLA for 2026            |          | 100.00%    | 100.00%   | 99.99%    | 100.00%      | 100.00%     |        | 99.99% |                                         |
+| Incident/upgrade       | Date     | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Total  | Comments                                |
+|------------------------|----------|------------|-----------|-----------|--------------|-------------|--------|--------|-----------------------------------------|
+| HCU                    | 1/1/2026 |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
+| HCU                    | 1/2/2026 |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
+| HCU                    | 1/3/2026 |            |           | 9         |              |             |        | 9      | Security Fix                            |
+| HCU                    | 1/3/2026 |            |           | 9         |              |             |        | 9      | Repeated the HCU                        |
+| EVM GW Issue           | 1/7/2026 |            |           | 9         |              |             | 32     | 32     | Public EVM endpoint unavailable         |
+| Total downtime in mins |          | 0          | 0         | 36        | 0            | 0           | 32     | 68     |                                         |
+| YTD (01/06/26) SLA     |          | 100.00%    | 100.00%   | 99.53%    | 100.00%      | 100.00%     |        | 99.68% |                                         |
+| SLA for 2026           |          | 100.00%    | 100.00%   | 99.99%    | 100.00%      | 100.00%     |        | 99.99% |                                         |
 
 ### Incidents \[Vishal]
 
@@ -175,17 +175,24 @@ Q1 Cycle Objective(s):
 * Support DeFi strategy [IN PROGRESS]
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
 * [Data Availability] Improve network reliability by reducing API load on execution node [PAUSED]
-* SPoCK Research [IN PROGRESS]
 * Building towards few Permissionless Collection Nodes [PAUSED]
+* SPoCK Research [IN PROGRESS]
 * Downgrade historical node hardware [COMPLETE]
 
 **Last sprint completed, ongoing and starting**
 
 * <ins>Attack recovery</ins>
+  * Forensic analysis to unrestrict additional accounts.
+  * FT recovery from attacker account - composing transactions, coordinating service committee signing.
+  * Bringing Coinbase back online
 
-    
 * <ins>Building Towards Permissionless Collection Nodes</ins>
-
+  * Created [new set of issues](https://github.com/onflow/flow-go/issues/8325) for pending blocks processing BFT improvements
+  * Total User Stories: 35
+    - Done: 5
+    - In Review: 1
+    - In Progress: 4
+  * Work on this OKR will be paused
 
 * <ins>Data Availability</ins>
   * PR reviews
@@ -198,28 +205,44 @@ Q1 Cycle Objective(s):
 
 
       * In Progress:
-
-
+  * Work on this OKR will be paused.
 
 * <ins>Cryptography</ins>
+  * Spearbit: agreement concluded - legal review ongoing
+  * paper editing:
+    * definitions and security of Multi-SPoCK and Aggregate Multi-SPoCK (done)
+    * currently writing the BLS-Multi-SPoCK construction
 
 
 ---
 
-### **DeFi** \[Vishal]
-
-Cycle Objective(s):
-- Close gaps in Defi/Liquidity infrastructure post-Cadence 1.0
-- Bring liquidity and kickstart ecosystem effects
+### **DeFi - FCM and FYV ** \[Vishal]
 
 **Done last sprint**
 
-#### Flow ALP & Flow Vaults:
-
-
+- Switch from USDF to PyUSD vault to unblock Peak Money ✅
+- Address Deposit Rate related review comments received from Quantstamp on the FCM contract ✅
+- Review and address Quantstamp audit comments on the FYV and FlowAction contracts - In Progress
+- Add stabilityFee parameter for Protocol Stability [#85](https://github.com/onflow/FlowCreditMarket/issues/85) - Ready for review
+- Insurance fund implementation [#84](https://github.com/onflow/FlowCreditMarket/issues/84) - Adding tests.
+- FYV front-end
+  - [#70](https://github.com/onflow/FlowYieldVaults-fe/pull/70) ✅
+    - Integrate backend pending api to get pending evm transactions
+    - Add network status banner when network is having issues, notify the user of degraded service.
+  - EVM: Allow user claiming refund if posision creation fails [#73](https://github.com/onflow/FlowYieldVaults-fe/issues/73)
+- Bug fix [129](https://github.com/onflow/FlowYieldVaults/issues/129) to allow withdrawal from FYV on the EVM side ✅
+- Doc site update [1626](https://github.com/onflow/docs/pull/1626)
+- Redesign of the liquidation process: [87](https://github.com/onflow/FlowCreditMarket/issues/87)
+  - Implemented manual liquidation [93](https://github.com/onflow/FlowCreditMarket/issues/93) - In review
+  - Implement basic DEX interface for automated liquidation [94](https://github.com/onflow/FlowCreditMarket/issues/94) - In review
+- Setting up the Testing framework [#122](https://github.com/onflow/FlowYieldVaults/issues/122) - In progress
+- FCM Whitepaper [#106](https://github.com/onflow/FlowCreditMarket/issues/106) - broken up into short-term and long-term milestones (blog, technical note, whitepaper)
 
 **This sprint**
 
+- Continue on all the issues in-progress ☝️
+- Review QuantStamp audit comments for FYV EVM contract
+- Respond to Quantstamp's **FCM** review comments with the new changes.
 
 
 ---
@@ -232,21 +255,33 @@ Core protocol, Cadence and Execution team will be working on FCM, Security and P
 
 ### Security
 
+**Done Last Sprint**
+
+- In-house financial analytics & fraud detection tooling
+  - transaction & account trail  
+   - Created product spec (wireframes, technical docs, API spec) for 
+
+**This Sprint**
+
 - [Cadence security improvements](https://github.com/onflow/cadence-internal/issues/367)
-    - expand defensive code, tech-debt review
-    - external audit
-- update bug bounty program
-- Execution node fraud detection (storage layer)
-- In-house tools
-    - off-chain anomaly detection
-    - analytics (transaction & account trails)
+  - Continue work on defensive code
+  - Start tech-debt review
+  - Start external audit of the exploited functionality
+- Complete update of bug bounty program
+- Start Execution node fraud detection (storage layer)
+- In-house financial analytics & fraud detection tooling
+  - Continue: off-chain anomaly detection
+  - Continue: transaction & account trail
+   - Address feedback on API proposal for financial analytics tool
+   - Begin building the UI for the financial analytics tool
+   - FYV Forking Simulation
 - Evaluate existing anomaly detection tools (contract / Tx anomalies)
 
 ### Performance
 
-- Concurrent Tx execution
-- Scheduled transactions performance deep-dive
-- Cross-vm bridging performance deep-dive
+- Continue: Concurrent Tx execution
+- Continue: Scheduled transactions performance deep-dive
+- Start: Cross-vm bridging performance deep-dive
 
 ---
 
@@ -257,15 +292,48 @@ Cycle Objective(s):
 
 **Done Last Sprint**
 
+- React SDK
+  - Finished React Native SDK Fund component UI 
+  - Updated React SDK starter project to latest nextjs version (From 15 to 16)
+  - Completed React Native SDK Fund component UI to be like React SDK one
+  - Added React Native SDK Fund component example to Starter project
+  - Tested Fund component in Starter project live on mobile device to verify data flow
+  - Added developer notice in Discovery on testnet if WalletConnect is not setup
+
 - Misc
+  - Created command for converting keys in flow.json to file pattern
+  - Added warning if keys are detected to use command to convert to file pattern
+  - Created technical content to support post mortem marketing efforts
+  - Update ai-data-retriever with 3 more problems
+  - Test web search usage in ai-data-retriever
+  - Create FlowCron usage docs and add to docs "Cadence/Advanced Concepts" section
+  - Restore DefiLlama TVL Helper affected by network halt
+  - Investigate flow-go issue affecting forking + CLI release
+  - Update VSCode JSON Schema Resolution to support latest flow.json changes
+  - Add support for block height pins to dependency manager
+  - Add support for GetAccountAtBlockHeight RPC to flowkit
+  - Add advanced network resolutions to test framework fork mode to align with emulator
+  - Fix Flow CLI flow blocks get block seals output
+  - Update Cadence Test Framework Docs to Latest Syntax
+  - Support Flow Yield Vaults Fork Testing Efforts
+  - Investigate strategies for EVM state manipulation in Cadence Test Framework
+  - Create Cadence Profiling Command
+  - Created article on on-chain SVG NFTs for marketing
+  - Created article on on-chain Cadence vs Solidity forking
 
 
 **This Sprint**
 
 - React SDK
+  - Add react-sdk and react-native-sdk starters creation options during flow cli init
+  - Update react-native-sdk documentation
 
 - Misc
-
+  - Document Cadence Profiling Command & Share with Find Team
+  - Support Flow Yield Vaults Fork Testing Efforts
+  - Support financial analytics tool building
+  - Fix fcl-js playground workflow problem after latest release workflow upgrade
+  - Create more marketing materials from a technical angle
 
 
 ---
