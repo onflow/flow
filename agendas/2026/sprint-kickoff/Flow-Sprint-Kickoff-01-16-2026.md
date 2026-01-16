@@ -234,7 +234,7 @@ Q1 Cycle Objective(s):
 
 ---
 
-### **DeFi - FCM and FYV ** \[Vishal]
+### DeFi - FCM and FYV \[Vishal]
 
 **Done last sprint**
 
@@ -272,7 +272,7 @@ Q1 Cycle Objective(s):
 Core protocol, Cadence and Execution team will be working on FCM, Security and Performance related OKRs starting this sprint.
 
 
-### Security
+### Security [Jan]
 
 **Done Last Sprint**
 
@@ -296,7 +296,7 @@ Core protocol, Cadence and Execution team will be working on FCM, Security and P
    - FYV Forking Simulation
 - Evaluate existing anomaly detection tools (contract / Tx anomalies)
 
-### Performance
+### Performance [Jan]
 
 - Continue: Concurrent Tx execution
 - Continue: Scheduled transactions performance deep-dive
