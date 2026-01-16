@@ -278,7 +278,7 @@ Core protocol, Cadence and Execution team will be working on FCM, Security and P
 
 - In-house financial analytics & fraud detection tooling
   - transaction & account trail  
-   - Created product spec (wireframes, technical docs, API spec)
+    - Created product spec (wireframes, technical docs, API spec)
 
 **This Sprint**
 
@@ -291,9 +291,9 @@ Core protocol, Cadence and Execution team will be working on FCM, Security and P
 - In-house financial analytics & fraud detection tooling
   - Continue: off-chain anomaly detection
   - Continue: transaction & account trail
-   - Address feedback on API proposal for financial analytics tool
-   - Begin building the UI for the financial analytics tool
-   - FYV Forking Simulation
+    - Address feedback on API proposal for financial analytics tool
+    - Begin building the UI for the financial analytics tool
+    - FYV Forking Simulation
 - Evaluate existing anomaly detection tools (contract / Tx anomalies)
 
 ### Performance [Jan]
