@@ -198,13 +198,31 @@ Q1 Cycle Objective(s):
   * PR reviews
   * optimistic sync caching layer design anf fork-aware execution result processing (temporarily deprioritized)
   * KROK Team
+      * Data Availability
       * Done:
-
+        - [[Data Availability] Implement fork-aware Execution Data subscription Endpoints #8059](https://github.com/onflow/flow-go/issues/8059)
+        - [[Data Availability] Rewrite backend execution data tests from scratch #8231](https://github.com/onflow/flow-go/issues/8231)
+        - [[Data Availability] Remove or adjust index reporter in execution data tracker #8135](https://github.com/onflow/flow-go/issues/8135)
+        - [[Data Availability] Implement ParentExecutionResultID check in ExecutionResultProvider #8347](https://github.com/onflow/flow-go/issues/8347)
 
       * In Review:
-
+        - [[Data Availability] Refactor events test in http package #7923](https://github.com/onflow/flow-go/issues/7923)
+        - [[Data Availability] Update LatestPersistedSealedResult module to use storage lock #7611](https://github.com/onflow/flow-go/issues/7611)
+        - [[Data Availability] Refactor subscription package #8093](https://github.com/onflow/flow-go/issues/8093)
+        - [[Data Availability] Implement fork-aware Transaction Results Endpoints #7644](https://github.com/onflow/flow-go/issues/7644)
+        - [[Data Availability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
+        - [[Data Availability] Implement fork-aware Streaming Events Endpoints #7657](https://github.com/onflow/flow-go/issues/7657)
+        - [[Data Availability] Implement fork-aware Events Endpoints #7652](https://github.com/onflow/flow-go/issues/7652)
+        - [[Data Availability] Design and develop new unit tests for streaming account statuses endpoints (backend) #8329](https://github.com/onflow/flow-go/issues/8329)
+        - [[Data Availability] Design and develop new unit tests for streaming events endpoints (backend) #8328](https://github.com/onflow/flow-go/issues/8328)
+        - [[Data Availability] Turn on integration & unit tests that were skipped due to active work on optimistic sync package #8331](https://github.com/onflow/flow-go/issues/8331)
 
       * In Progress:
+      	- All current tasks in review, working on fixes/remarks to close them due to upcoming pause.
+
+      * On Pause ( Draft done, currently on pause since Taras moved to DeFi ):
+
+        - [[Data Availability] Implement fork-aware Streaming Transaction Status Endpoints #7654](https://github.com/onflow/flow-go/issues/7654)
   * Work on this OKR will be paused.
 
 * <ins>Cryptography</ins>
@@ -223,8 +241,9 @@ Q1 Cycle Objective(s):
 - Switch from USDF to PyUSD vault to unblock Peak Money ✅
 - Address Deposit Rate related review comments received from Quantstamp on the FCM contract ✅
 - Review and address Quantstamp audit comments on the FYV and FlowAction contracts - In Progress
-- Add stabilityFee parameter for Protocol Stability [#85](https://github.com/onflow/FlowCreditMarket/issues/85) - Ready for review
-- Insurance fund implementation [#84](https://github.com/onflow/FlowCreditMarket/issues/84) - Adding tests.
+- Add stabilityFee parameter for Protocol Stability [#85](https://github.com/onflow/FlowCreditMarket/issues/85) - In progress
+- Insurance fund implementation [#84](https://github.com/onflow/FlowCreditMarket/issues/84) - In review, fixing remarks
+- Wrong calculation FlowCreditMarket->perSecondInterestRate [ #110](https://github.com/onflow/FlowCreditMarket/issues/110) - found possible issue, adding fix 
 - FYV front-end
   - [#70](https://github.com/onflow/FlowYieldVaults-fe/pull/70) ✅
     - Integrate backend pending api to get pending evm transactions
