@@ -3,7 +3,13 @@
 ### Team Wins 🎉
 
 
-
+- Completed mainnet upgrade to latest flow-go, delivering:
+    - [safer](https://github.com/onflow/cadence/pull/4424) and [faster](https://github.com/onflow/flow-go/issues/8301) Flow runtime.
+    - foundation for [zero-downtime HCU](https://github.com/onflow/flow-go/issues/8308)
+    - upgrade to [latest release of geth](https://github.com/onflow/flow-go/pull/8360)
+- Completed testing of concurrent Tx execution performance, demonstrating:
+    - no execution forks
+    - over 50% transaction throughput on synthetic token transfer load with 50% chance of collisions.
 
 ---
 
@@ -55,54 +61,52 @@ Q3 2025 Cycle Objective(s):
 
 **Cadence Language**
 
-- Compiler / VM
-
-    - Improvements:
-    - 
-        - Performance:
-
-    - bugfix
-
-- Improvements
-    - Tools
-
-    - Performance:
-
-- bugfixes
-
-- chores
-
+- Compiler testing:
+    - [[Compiler] Enable compiler for remaining account tests](https://github.com/onflow/cadence/pull/4421)
+- Tooling improvements:
+    - [[lint] Add redundant type annotation analyzer](https://github.com/onflow/cadence-tools/pull/570)
+    - [[lint] Add a cyclomatic complexity analysis](https://github.com/onflow/cadence-tools/pull/571)
+    - [[lint] Add a nil-check/force-unwrap analysis](https://github.com/onflow/cadence-tools/pull/572)
+    - [[LS] Add missing range to hover response](https://github.com/onflow/cadence-tools/pull/576)
+- Chores:
+    - [Update to atree v0.12.1](https://github.com/onflow/cadence/pull/4425)
+    - [[test] Update to Cadence v1.9.6](https://github.com/onflow/cadence-tools/pull/578)
+    - [[lint] Update to Cadence v1.9.7](https://github.com/onflow/cadence-tools/pull/580)
+    - [[lint] Update to Cadence v1.9.5](https://github.com/onflow/cadence-tools/pull/569)
+    - [[lint] Update to Cadence v1.9.6](https://github.com/onflow/cadence-tools/pull/577)
+    - [Update to Cadence v1.9.6](https://github.com/onflow/flow-emulator/pull/955)
+    - [Update to Cadence v1.9.6](https://github.com/onflow/flow-go/pull/8362)
+    - [[v0.45] Update to Cadence v1.9.7 and atree v0.12.1](https://github.com/onflow/flow-go/pull/8372)
+    - [Update to Cadence v1.9.7](https://github.com/onflow/flow-go/pull/8374)
+    - [Update to Cadence v1.9.7-rc.1 and atree v0.12.1-rc.1](https://github.com/onflow/flow-go-internal/pull/7144)
 
 **Cadence Execution**
 
-- Related to security incident remediation:
-
-- Concurrent execution
-
 - Storehouse
-
-- Improvement:
-    - TPS loader
-
-    - performance: 
-
-- Bugix:
-
-- Tech debt
-
-
+    - [[Storehouse] Background storehouse indexing](https://github.com/onflow/flow-go/pull/8255)- enables storing register updates even when storehouse is turned off, so that storehouse can be enabled with no downtime.
+- Improvements:
+    - Performance
+        - completed [Refactoring of EVM injection and Cadence Runtime creation](https://github.com/onflow/flow-go/issues/8301)
+    - [[FVM] Refactor cadence declarations in FVM](https://github.com/onflow/flow-go/pull/8356)
+    - [Makefile and build fixes](https://github.com/onflow/flow-go/pull/8355)
+- ops
+    - [Upsize data disks on migration TN](https://github.com/onflow/ff-sre-infrastructure/pull/1070)
+    - [increase devent53-access disk](https://github.com/onflow/ff-sre-infrastructure/pull/1086)
+- chores
+    - Atree: [Port v0.12.1 to main](https://github.com/onflow/atree/pull/624)
+    - [Update flow-go](https://github.com/onflow/flow-emulator/pull/946)
 
 **Flow EVM**
-
 - Core
-    - Related to security incident remediation:
-
-    - bugfix
-
+    - [Update to latest `ethereum/go-ethereum` version](https://github.com/onflow/flow-go/pull/8360)
+    - Improvements
+        - developer experience: [Improve error handling for Cadence Arch precompiles](https://github.com/onflow/flow-go/pull/8341)
+    - Bugfixes:
+        - [Check for integer overflow when reading ABI encoded bytes](https://github.com/onflow/flow-go/pull/8357)
+        - [Handle empty RLP list in Cadence Arch `verifyCOAOwnershipProof()`](https://github.com/onflow/flow-go/pull/8361)
 - Gateway
-    - Improvement
+    - [Update to latest `ethereum/go-ethereum` version](https://github.com/onflow/flow-evm-gateway/pull/951)
 
-        - Performance
 
 
 **This sprint**
@@ -114,8 +118,8 @@ Q3 2025 Cycle Objective(s):
 
 - Cadence Execution
     - Complete enabling EN zero-downtime HCU
-    - Continue testing [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571)
-    - Park [Versioning of Execution Stack via Dynamic Protocol State](https://github.com/onflow/flow-go/issues/6999)
+    - Complete testing [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571)
+    - On-hold [Versioning of Execution Stack via Dynamic Protocol State](https://github.com/onflow/flow-go/issues/6999)
     - On-hold [Badger -> Pebble: remaining tasks and cleanup](https://github.com/onflow/flow-go/issues/7682)
     - On-Hold [Storehouse](https://github.com/onflow/flow-okrs/issues/166)
     - On-Hold: [Scheduled Transactions for EVM](https://github.com/onflow/flow-go/issues/8019)
@@ -170,25 +174,54 @@ Q1 Cycle Objective(s):
 **Done Last Sprint**
 
 - In-house financial analytics & fraud detection tooling
+    - Finished spec for the new analytics tool
+    - Complete flow-analytics project initial setup and architecture
+    - Add initial node graph implementation to flow analytics
+    - Build node-graph navigator panel for flow-analytics
+    - Built the Sankey chart visualization for token flows
+    - Add vercel preview in PRs and preview with auth for flow-analytics
+  
+- Cadence security improvements
+    - Completed mainnet upgrade of ~14 defensive checks and bugfixes:
+        - [Remove special handling of empty identifier in member access](https://github.com/onflow/cadence/pull/4419)
+        - [Fix string template expression parsing with quoted quotes](https://github.com/onflow/cadence/pull/4420)
+        - [Fix ComputationProfile holding on to environment reference](https://github.com/onflow/cadence/pull/4418)
+        - additional 10 internal PRs: [Port v1.9.7-rc.1](https://github.com/onflow/cadence/pull/4424)
+    - Completed tech-debt review
+    - Started external audit of the exploited functionality.
 
+- Completed & reviewed draft of bug bounty program.
+
+- Started Execution node fraud detection (storage layer).
 
 **This Sprint**
 
-- [Cadence security improvements](https://github.com/onflow/cadence-internal/issues/367)
-  - Continue work on defensive code
-  - Start tech-debt review
-  - Start external audit of the exploited functionality
-- Complete update of bug bounty program
-- Start Execution node fraud detection (storage layer)
+- Cadence security:
+  - Continue external audit of the exploited functionality
+- Complete update of bug bounty program with HackenProof.
+- Continue execution node fraud detection (storage layer)
 - In-house financial analytics & fraud detection tooling
+    - Color Sankey chart to indicate token flow VM movements
+    - Complete node-graph visualization with multiple interconnected nodes for flow-analytics
+    - Add data loading through transactions endpoint to load node graph for flow-analytics
+    - Add header with search bar in flow-analytics
+    - Add filters panel with node graph update in flow analytics
 
-- Evaluate existing anomaly detection tools (contract / Tx anomalies)
+- On Hold (capacity)
+    - Revive total token supply tracker
+    - Evaluate existing anomaly detection tools (contract / Tx anomalies)
 
 ### Performance [Jan]
 
-- Continue: Concurrent Tx execution
+**Done Last Sprint**
+
+- Completed testing of Concurrent Tx execution: performance and correctness.
+
+**This Sprint**
+
+- Complete testing of Concurrent Tx execution - epoch switchover.
 - Continue: Scheduled transactions performance deep-dive
-- Start: Cross-vm bridging performance deep-dive
+- Continue: Cross-vm bridging performance deep-dive
 
 ---
 
