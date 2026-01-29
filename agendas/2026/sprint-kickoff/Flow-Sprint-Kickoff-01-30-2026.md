@@ -156,11 +156,13 @@ Q1 Cycle Objective(s):
 
 **Done last sprint**
 
-
+- Reviewed existing FCM simulation testing work
+- Investigating Precision Loss in Forked Scenario 1
+- Converting FYV Forking Scenarios
 
 **This sprint**
 
-
+- Converting FYV Forking Simulation Scenarios
 
 
 ---
@@ -170,6 +172,12 @@ Q1 Cycle Objective(s):
 **Done Last Sprint**
 
 - In-house financial analytics & fraud detection tooling
+  - Finished spec for the new analytics tool
+  - Complete flow-analytics project initial setup and architecture
+  - Add initial node graph implementation to flow analytics
+  - Build node-graph navigator panel for flow-analytics
+  - Built the Sankey chart visualization for token flows
+  - Add vercel preview in PRs and preview with auth for flow-analytics
 
 
 **This Sprint**
@@ -181,6 +189,11 @@ Q1 Cycle Objective(s):
 - Complete update of bug bounty program
 - Start Execution node fraud detection (storage layer)
 - In-house financial analytics & fraud detection tooling
+  - Color Sankey chart to indicate token flow VM movements
+  - Complete node-graph visualization with multiple interconnected nodes for flow-analytics
+  - Add data loading through transactions endpoint to load node graph for flow-analytics
+  - Add header with search bar in flow-analytics
+  - Add filters panel with node graph update in flow analytics
 
 - Evaluate existing anomaly detection tools (contract / Tx anomalies)
 
@@ -195,29 +208,20 @@ Q1 Cycle Objective(s):
 ### **Developer Tooling** \[Chase]
 
 Cycle Objective(s):
-- Equip the Flow ecosystem with the capabilities required for developers to launch and iterate on Minimum Viable Consumer DeFi Apps with minimal friction [OKR](https://github.com/onflow/flow-okrs/issues/162)
+https://github.com/onflow/flow-okrs/issues/176
+https://github.com/onflow/flow-okrs/issues/175
 
 **Done Last Sprint**
 
-- React SDK
-
-
-- Misc
-
-
+- Assist on security analytics tool and FCM testing
+- Create documentation for flow cadence profile command
+- Add (CI) Caching for Forked Emulator & Test Framework
+- Completed FlowCron documentation
 
 **This Sprint**
 
-- React SDK
-  - Add react-sdk and react-native-sdk starters creation options during flow cli init
-  - Update react-native-sdk documentation
-
-- Misc
-  - Document Cadence Profiling Command & Share with Find Team
-  - Support Flow Yield Vaults Fork Testing Efforts
-  - Support financial analytics tool building
-  - Fix fcl-js playground workflow problem after latest release workflow upgrade
-  - Create more marketing materials from a technical angle
+- Assist on security analytics tool and FCM testing
+- Update CLI Forking Tests To Use Local Emulator Instead of AN
 
 
 ---
