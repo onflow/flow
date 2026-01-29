@@ -213,14 +213,14 @@ https://github.com/onflow/flow-okrs/issues/175
 
 **Done Last Sprint**
 
-- Assist on security and FCM
+- Assist on security analytics tool and FCM testing
 - Create documentation for flow cadence profile command
 - Add (CI) Caching for Forked Emulator & Test Framework
 - Completed FlowCron documentation
 
 **This Sprint**
 
-- Assist on security and FCM
+- Assist on security analytics tool and FCM testing
 - Update CLI Forking Tests To Use Local Emulator Instead of AN
 
 
