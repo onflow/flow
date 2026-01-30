@@ -351,17 +351,27 @@ https://github.com/onflow/flow-okrs/issues/175
 
 **Done last sprint**
 
-**MN28 Spork**
+**Execution Ledger Service**
+- [Repurpose Port 9999 to be used by Execution Ledger Service Metrics](https://github.com/onflow/ff-sre-infrastructure/issues/1072)
+- [Test Execution Ledger Metrics Scraping and Pushing to Grafana](https://github.com/onflow/ff-sre-infrastructure/issues/1073)
+- [Create Ansible Role and Playbook to Deploy the Execution Ledger Service](https://github.com/onflow/ff-sre-infrastructure/issues/1075)
+- [Adjust Migration TN to Set Flags for the Execution Ledger Service](https://github.com/onflow/ff-sre-infrastructure/issues/1076)
+- [Update Prometheus on Live Networks to Allow Scraping the Execution Ledger Metrics](https://github.com/onflow/ff-sre-infrastructure/issues/1082)
+- [Bootstrap Migration TN and Deploy the Execution Ledger Service](https://github.com/onflow/ff-sre-infrastructure/issues/1088)
 
+**Observability**
+- [Expand Profiling on Live Networks](https://github.com/onflow/ff-sre-infrastructure/issues/1079)
 
 **Historical Nodes**
-
-
-**Cost Optimization**
-
+- [Update MN27 AN1 Flags for Serving Local Data](https://github.com/onflow/ff-sre-infrastructure/issues/1077)
 
 **Support**
+- [Investigate CI errors on flow-go-internal](https://github.com/onflow/ff-sre-infrastructure/issues/1050)
+- [Extract and Upload a Copy of the MN EVM GW Database for BitGet's Recovery](https://github.com/onflow/ff-sre-infrastructure/issues/1087)
+- [Downsize data disks on migration TN](https://github.com/onflow/ff-sre-infrastructure/issues/1089)
 
+**Security**
+- [Triage Security Issue FLOWWEB-128](https://github.com/onflow/ff-sre-infrastructure/issues/1091)
 
 ---
 
