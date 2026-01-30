@@ -15,19 +15,29 @@
 
 #### YTD SLA \[Vishal]
 
-| Incident/upgrade       | Date     | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Total  | Comments                                |
-|------------------------|----------|------------|-----------|-----------|--------------|-------------|--------|--------|-----------------------------------------|
-| HCU                    | 1/1/2026 |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
-| HCU                    | 1/2/2026 |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
-| HCU                    | 1/3/2026 |            |           | 9         |              |             |        | 9      | Security Fix                            |
-| HCU                    | 1/3/2026 |            |           | 9         |              |             |        | 9      | Repeated the HCU                        |
-| EVM GW Issue           | 1/7/2026 |            |           | 9         |              |             | 32     | 32     | Public EVM endpoint unavailable         |
-| Total downtime in mins |          | 0          | 0         | 36        | 0            | 0           | 32     | 68     |                                         |
-| YTD (01/06/26) SLA     |          | 100.00%    | 100.00%   | 99.53%    | 100.00%      | 100.00%     |        | 99.68% |                                         |
-| SLA for 2026           |          | 100.00%    | 100.00%   | 99.99%    | 100.00%      | 100.00%     |        | 99.99% |                                         |
+| Incident/upgrade       | Date      | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Total  | Comments                                |
+|------------------------|-----------|------------|-----------|-----------|--------------|-------------|--------|--------|-----------------------------------------|
+| HCU                    | 1/1/2026  |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
+| HCU                    | 1/2/2026  |            |           | 9         |              |             |        | 9      | Part of recovery from Security Incident |
+| HCU                    | 1/3/2026  |            |           | 9         |              |             |        | 9      | Security Fix                            |
+| HCU                    | 1/3/2026  |            |           | 9         |              |             |        | 9      | Repeated the HCU                        |
+| EVM GW Issue           | 1/7/2026  |            |           | 9         |              |             | 32     | 32     | Public EVM endpoint unavailable         |
+| HCU                    | 1/29/2026 |            |           | 8         |              |             |        | 9      | Security Fix                            |
+| Total downtime in mins |           | 0          | 0         | 44        | 0            | 0           | 32     | 76     |                                         |
+| YTD (01/06/26) SLA     |           | 100.00%    | 100.00%   | 99.89%    | 100.00%      | 100.00%     |        | 99.82% |                                         |
+| SLA for 2026           |           | 100.00%    | 100.00%   | 99.99%    | 100.00%      | 100.00%     |        | 99.99% |                                         |
 
 ### Incidents \[Vishal]
 
+1. Testnet ingestion degraded - Jan 27th, 8:05 AM Pacific to Jan 28th, 10:25 AM  Pacific - P1
+   - EFM triggered.
+   - Root cause: Collection nodes keep going out-of-memory.
+   - Short-term fix: Collection nodes were restarted.
+   - Long-term fix: Will be fixed with the rolling upgrade of [v0.45.1](https://github.com/onflow/flow-go/releases/tag/v0.45.1
+   - EFM was successfully exited using the Epoch recovery mechanism.
+
+2. Height Coordinated Upgrade - Jan 28th Testnet, Jan 29th Mainnet
+   - [v0.45.0](https://github.com/onflow/flow-go/releases/tag/v0.45.0)
 
 ---
 
@@ -147,7 +157,7 @@ Q1 Cycle Objective(s):
 **Last sprint completed, ongoing and starting**
 
 * <ins>Attack recovery</ins>
-  * 
+  * Burning the counterfeit tokens.
 
 
 * <ins>Cryptography</ins>
