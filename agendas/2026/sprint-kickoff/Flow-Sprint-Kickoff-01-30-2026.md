@@ -174,12 +174,15 @@ Q1 Cycle Objective(s):
 **Done Last Sprint**
 
 - In-house financial analytics & fraud detection tooling
-    - Finished spec for the new analytics tool
-    - Complete flow-analytics project initial setup and architecture
-    - Add initial node graph implementation to flow analytics
-    - Build node-graph navigator panel for flow-analytics
-    - Built the Sankey chart visualization for token flows
-    - Add vercel preview in PRs and preview with auth for flow-analytics
+    - transaction & account trail  
+        - Finished spec for the new analytics tool
+        - Complete flow-analytics project initial setup and architecture
+        - Add initial node graph implementation to flow analytics
+        - Build node-graph navigator panel for flow-analytics
+        - Built the Sankey chart visualization for token flows
+        - Add vercel preview in PRs and preview with auth for flow-analytics
+    - Malicious contract detection
+        - [POC](https://github.com/onflow/ripple-slack-bot) complete
   
 - Cadence security improvements
     - Completed mainnet upgrade of ~14 defensive checks and bugfixes:
@@ -201,11 +204,15 @@ Q1 Cycle Objective(s):
 - Complete update of bug bounty program with HackenProof.
 - Continue execution node fraud detection (storage layer)
 - In-house financial analytics & fraud detection tooling
-    - Color Sankey chart to indicate token flow VM movements
-    - Complete node-graph visualization with multiple interconnected nodes for flow-analytics
-    - Add data loading through transactions endpoint to load node graph for flow-analytics
-    - Add header with search bar in flow-analytics
-    - Add filters panel with node graph update in flow analytics
+    - transaction & account trail  
+        - Color Sankey chart to indicate token flow VM movements
+        - Complete node-graph visualization with multiple interconnected nodes for flow-analytics
+        - Add data loading through transactions endpoint to load node graph for flow-analytics
+        - Add header with search bar in flow-analytics
+        - Add filters panel with node graph update in flow analytics
+    - Continue: Malicious contract detection
+        - deploy on CloudRun, add CI/CD setup.
+    - Start: anomalous event monitoring
 
 - On Hold (capacity)
     - Revive total token supply tracker
