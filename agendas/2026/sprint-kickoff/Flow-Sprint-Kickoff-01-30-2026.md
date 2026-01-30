@@ -239,7 +239,7 @@ Q1 Cycle Objective(s):
     - Address design flaws around entitlements.
   - Start working on an off-chain monitoring and alerting service for FCM.
 
--FYV
+- FYV
   - Supervisor worker re-architecture.
   - UI and BE issues.
 
