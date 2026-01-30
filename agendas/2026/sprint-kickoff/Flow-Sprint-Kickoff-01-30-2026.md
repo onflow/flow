@@ -350,7 +350,7 @@ https://github.com/onflow/flow-okrs/issues/175
 - Ship version 3.1 on mobile, with full support for EOAs and COA->EOA migration
 ---
 
-### **Infra** \[Kan]
+### **Infra** \[MAnny]
 
 **Done last sprint**
 
