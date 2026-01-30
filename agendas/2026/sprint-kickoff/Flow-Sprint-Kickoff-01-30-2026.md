@@ -31,8 +31,8 @@
 
 1. Testnet ingestion degraded - Jan 27th, 8:05 AM Pacific to Jan 28th, 10:25 AM  Pacific - P1
    - EFM triggered.
-   - Root cause: Collection nodes keep going out-of-memory.
-   - Short-term fix: Collection nodes were restarted.
+   - Root cause: Collection nodes kept going out-of-memory.
+   - Immediate fix: Collection nodes were restarted.
    - Long-term fix: Will be fixed with the rolling upgrade of [v0.45.1](https://github.com/onflow/flow-go/releases/tag/v0.45.1
    - EFM was successfully exited using the Epoch recovery mechanism.
 
