@@ -149,7 +149,16 @@ Q3 2025 Cycle Objective(s):
 
 Q1 Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
-* [Data Availability] Improve network reliability by reducing API load on execution node [PAUSED]
+* [Data Availability] Improve network reliability by reducing API load on execution node [PAUSED]* [Data Availability] Improve network reliability by reducing API load on execution node [PAUSED]
+* KROK Team - before getting on hold with the current set of tasks - merged some more that were on final review phases ( last ones )
+* Done:
+    - [[Data Availability] Implement fork-aware Transaction Results Endpoints #7644](https://github.com/onflow/flow-go/issues/7644)
+    - [[Data Availability] Implement fork-aware Streaming Account Events Endpoints #7658](https://github.com/onflow/flow-go/issues/7658)
+    - [[Data Availability] Implement fork-aware Streaming Events Endpoints #7657](https://github.com/onflow/flow-go/issues/7657)
+    - [[Data Availability] Design and develop new unit tests for streaming account statuses endpoints (backend) #8329](https://github.com/onflow/flow-go/issues/8329)
+    - [[Data Availability] Design and develop new unit tests for streaming events endpoints (backend) #8328](https://github.com/onflow/flow-go/issues/8328)
+    - [[Data Availability] Turn on integration & unit tests that were skipped due to active work on optimistic sync package #8331](https://github.com/onflow/flow-go/issues/8331)
+
 * Building towards few Permissionless Collection Nodes [PAUSED]
 * SPoCK Research [IN PROGRESS]
 * Downgrade historical node hardware [COMPLETE]
@@ -185,6 +194,22 @@ Q1 Cycle Objective(s):
   - Implementing the rebalancing logic in FCM (design and discussion) [#80](https://github.com/onflow/FlowCreditMarket/issues/90)
   - Starting bi-weekly Q&A sessions for knowledge sharing.
   - Team identified several important design flaws and have issued them up.
+  - KROK Team:
+      * Done:
+          - [[FlowCreditMarket] Add stabilityFee parameter for Protocol Stability ](https://github.com/onflow/FlowCreditMarket/issues/85)
+          - [[FlowCreditMarket] Insurance fund implementation ](https://github.com/onflow/FlowCreditMarket/issues/84)
+          - [[FlowCreditMarket] Wrong calculation FlowCreditMarket->perSecondInterestRate #110 ](https://github.com/onflow/FlowCreditMarket/issues/110)
+          - [[FlowActions] FLOW-14 Incomplete Components Info #109 ](https://github.com/onflow/FlowActions/issues/109)
+          - [[FlowActions] FLOW-13 Low Gas Estimations #108 ](https://github.com/onflow/FlowActions/issues/108)
+          
+      * In Review:
+          - [[FlowActions] S4 Improve UniswapV3 swap precision #114 ](https://github.com/onflow/FlowActions/issues/114)
+          - [[FlowActions] FLOW-10 Missing Input Validation #105 ](https://github.com/onflow/FlowActions/issues/105)
+      
+      * In Progress
+          - [[FlowActions] FLOW-15 Unfinished TODOs #110 ](https://github.com/onflow/FlowActions/issues/110)
+          - [[FlowActions] S5 General Improvements #115 ](https://github.com/onflow/FlowActions/issues/115)
+          - [[FlowCreditMarket] Offchain analytics and alerting for FCM health and positions #122 ](https://github.com/onflow/FlowCreditMarket/issues/122)
 
 - FYV
   - Redesigning the supervisor and worker architecture
