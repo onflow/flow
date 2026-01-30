@@ -341,12 +341,13 @@ https://github.com/onflow/flow-okrs/issues/175
 
 **Done last sprint**
 
-
+- Shipped version 3.1 on Extension:
+    - Added full EOA support
+    - Support for migrating from COA to EOA
 
 **This sprint**
 
-- Ship version 3.1, adding EOA support on all platforms. 
-
+- Ship version 3.1 on mobile, with full support for EOAs and COA->EOA migration
 ---
 
 ### **Infra** \[Kan]
