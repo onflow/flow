@@ -159,10 +159,12 @@ Q1 Cycle Objective(s):
 * <ins>Attack recovery</ins>
   * Burning the counterfeit tokens.
 
-
 * <ins>Cryptography</ins>
+  * Paper editing: security proofs (3 out 4 are done) - finalizing the 4th conclusion and general review
+  * Next sprint - onboarding Spearbit.
 
-
+* <ins>FVM improvement</ins>
+  * Stricter transaction verification (see [forum post](https://forum.flow.com/t/stricter-transaction-verification-in-the-flow-virtual-machine-fvm-and-access-api/8481)) in FVM and Access node.
 
 ---
 
@@ -170,14 +172,57 @@ Q1 Cycle Objective(s):
 
 **Done last sprint**
 
-- Reviewed existing FCM simulation testing work
-- Investigating Precision Loss in Forked Scenario 1
-- Converting FYV Forking Scenarios
+- Addressing contract review comments
+  - [FCM: 4/5](https://github.com/orgs/onflow/projects/99/views/15)
+  - [FlowActions: 13/20](https://github.com/onflow/FlowActions/issues/95)
+  - [FYV: 3/11](https://github.com/onflow/FlowYieldVaults/issues/131)
+  - [FYV EVM: 5/19](https://github.com/onflow/FlowYieldVaultsEVM/issues/15)
+
+- FCM
+  - Addressing issues with deposits to FLOW and PyUSD0 vaults [#114](https://github.com/onflow/FlowCreditMarket/issues/114)
+  - Redesign of the liquidation process [#87](https://github.com/onflow/FlowCreditMarket/issues/87) - PR review and discussion
+  - Addressing feedback received on the EVM UniswapV3SwapConnectors [#93](https://github.com/onflow/FlowActions/issues/93)
+  - Implementing the rebalancing logic in FCM (design and discussion) [#80](https://github.com/onflow/FlowCreditMarket/issues/90)
+  - Starting bi-weekly Q&A sessions for knowledge sharing.
+  - Team identified several important design flaws and have issued them up.
+
+- FYV
+  - Redesigning the supervisor and worker architecture
+  - Addressing UI and backend [issues](https://github.com/orgs/onflow/projects/99/views/2)
+  - FYV EVM contract improvement [#39](https://github.com/onflow/FlowYieldVaultsEVM/issues/39)
+
+- FYV Testing
+  - Reviewed existing FCM simulation testing work
+  - Investigating Precision Loss in Forked Scenario 1
+  - Converting FYV Forking Scenarios
+
+- FCM Whitepaper
+  - Aligned on goals and action items in a working session yesterday.
+  - Expanding the technical depth of Section 1 of the primer
+  - Revalidating and double-confirming key assumptions.
+  - Reviewing suggestions and cleaning up the formatting and messaging.
 
 **This sprint**
 
-- Converting FYV Forking Simulation Scenarios
+- FCM
+  - Continue making progress towards addressing review comments.
+  - Continue working towards all of the `in progress issues` for both FCM and FYV
+    - Liquidation implementation PR reviews.
+    - Re-balancing logic.
+    - Address design flaws around entitlements.
+  - Start working on an off-chain monitoring and alerting service for FCM.
 
+-FYV
+  - Supervisor worker re-architecture.
+  - UI and BE issues.
+
+- FYV Testing
+  - Converting FYV Forking Simulation Scenarios
+
+- FCM Whitepaper
+  - Derive a public-facing doc from the current WIP technical content piece.
+  - Continue to validate key assumptions.
+  - Doc site PR will be merged next week. Please review if you haven't already: [#1626](https://github.com/onflow/docs/pull/1626)
 
 ---
 
