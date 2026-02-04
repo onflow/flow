@@ -5,3 +5,7 @@ generate:
 .PHONY: format
 format:
 	find ./flow/ -name "*.proto" | xargs clang-format -style=google -i
+
+.PHONY: tidy
+tidy:
+	cd go/flow && go mod tidy
