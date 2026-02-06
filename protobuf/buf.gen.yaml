@@ -1,10 +1,10 @@
-version: v1beta1
+version: v1
 plugins:
-  - name: go
+  - plugin: buf.build/protocolbuffers/go
     out: go
     opt:
       - paths=source_relative
-  - name: go-grpc
+  - plugin: buf.build/grpc/go
     out: go
     opt:
       - paths=source_relative
