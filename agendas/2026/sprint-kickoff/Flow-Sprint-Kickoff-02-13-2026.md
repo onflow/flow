@@ -29,6 +29,10 @@
 - Height Coordinated Upgrade - Feb 6th on Mainnet
    - [v0.46.0](https://github.com/onflow/flow-go/releases/tag/v0.46.0)
 
+- P0 issue on Testnet - Finalization halted - Feb 11th.
+  - Network upgrade (spork) had to be done to recover the network.
+  - [Postmortem](https://status.flow.com/incidents/wmbfxpwhgz64)
+
 ---
 
 ### FLIPs Tracker \[Vishal]
