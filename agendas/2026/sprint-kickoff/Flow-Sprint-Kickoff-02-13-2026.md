@@ -233,7 +233,12 @@ Q1 Cycle Objective(s):
     - Completed mainnet upgrade of [~5 defensive checks and bugfixes](https://github.com/onflow/cadence/pull/4431)
 - In-house financial analytics & fraud detection tooling
     - transaction & account trail  
-        - Chase TBD
+        - Built the indexer framework and account transactions indexer
+        - Started building the account transactions API
+        - Completed node-graph visualization with multiple interconnected nodes
+        - Added data loading through transactions endpoint to load node graph
+        - Added header with search bar
+        - Added filters panel with node graph update
 - Update of bug bounty program with HackenProof.
     - Draft shared with HackenProof for feedback.
 - Fungible token supply monitoring
@@ -248,7 +253,10 @@ Q1 Cycle Objective(s):
   - Start work on [AI-assisted vulnerability detection](https://github.com/onflow/cadence-internal/issues/404)
 - In-house financial analytics & fraud detection tooling
     - transaction & account trail 
-        - Chase TBD
+        - Rework frontend to use new historical API service mocks
+        - Finish the indexer and start collecting the data on mainnet
+        - Finish the REST API for account transactions
+        - Start on account tranfers indexer and APIs
     - Continue: Malicious contract detection
         - deploy on CloudRun, add CI/CD setup.
 - Update of bug bounty program with HackenProof.
@@ -293,11 +301,28 @@ https://github.com/onflow/flow-okrs/issues/175
 
 **Done Last Sprint**
 
-
+- Assist on security analytics tool, block explorer, and FCM testing (covered in other sections)
+- Block Explorer
+  - New home page metrics (price, tps, block time)
+  - Top contracts page
+  - Contract page with events, imports, and live streaming contract events
+  - NFT collections page
+  - Account storage inspection view
+  - Live activity page with filters and custom event watching
+  - Setup new API service for serving historical data
+  - Created API endpoints on service layer with mock data
 
 **This Sprint**
 
-
+- Assist on security analytics tool, block explorer, and FCM testing (covered in other sections)
+- Block Explorer
+  - Tokens page
+  - Build API service layer
+  - Build historical UI on explorer
+  - Hook up service layer to new access node endpoints
+  - Hook up historical UI to endpoints
+  - Create API documentation
+  - Create docker build for API service
 
 
 ---
