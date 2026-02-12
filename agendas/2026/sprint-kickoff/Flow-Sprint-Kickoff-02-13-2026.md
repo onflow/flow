@@ -316,6 +316,7 @@ https://github.com/onflow/flow-okrs/issues/175
 **Done Last Sprint**
 
 - Assist on security analytics tool, block explorer, and FCM testing (covered in other sections)
+- Fix CLI Account Creation
 - Block Explorer
   - New home page metrics (price, tps, block time)
   - Top contracts page
@@ -329,6 +330,7 @@ https://github.com/onflow/flow-okrs/issues/175
 **This Sprint**
 
 - Assist on security analytics tool, block explorer, and FCM testing (covered in other sections)
+- Add support for new apply fixes feature to `flow cadence lint`
 - Block Explorer
   - Tokens page
   - Build API service layer
