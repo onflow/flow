@@ -202,6 +202,7 @@ Q1 Cycle Objective(s):
   - Started on improving unit test coverage ([#136](https://github.com/onflow/FlowCreditMarket/issues/136))
   - Implemented the Morpho erc4626 Swap and Sink connectors ([#126](https://github.com/onflow/FlowActions/pull/126))
   - Implemented the first version of the FCM observer ([#3](https://github.com/onflow/fcm-observer/issues/3))
+  - First cut of the [FCM marketing site](https://flow-com-foundation.webflow.io/fcm/fcm)
 
   - KROK Team:
       * Done:
@@ -211,14 +212,19 @@ Q1 Cycle Objective(s):
       * In Progress
 
 
-
 - FYV
+  - Redesigning the supervisor and worker architecture [[#10](https://github.com/onflow/FlowYieldVaultsEVM/issues/10)]
+  - Addressing UI and backend [issues](https://github.com/orgs/onflow/projects/99/views/2)
+  - FYV EVM contract improvement [#39](https://github.com/onflow/FlowYieldVaultsEVM/issues/39)
+  - Determining all the TODOs for the MVP version of FYV.
 
 
 - FYV Testing
 
 
-- FCM Whitepaper
+- FCM Whitepaper/Documentation
+  - Continued working on the [FCM primer](https://docs.google.com/document/d/1Ph9xnx1JvvJQdMVZoEDtTagnx_FLo0wiQZCi1BjqxyE/edit?tab=t.0#heading=h.xowwye5i17vb)
+  - 
 
 
 **This sprint**
@@ -229,9 +235,13 @@ Q1 Cycle Objective(s):
   - Continue improving Unit test coverage (cover additional testing gaps, see Scope under [issue 136](https://github.com/onflow/FlowCreditMarket/issues/136))
 
 - FYV
-
+  - Redesigning the supervisor and worker architecture [[#10](https://github.com/onflow/FlowYieldVaultsEVM/issues/10)]
+  - Addressing UI and backend [issues](https://github.com/orgs/onflow/projects/99/views/2)
+  - FYV EVM contract improvement [#39](https://github.com/onflow/FlowYieldVaultsEVM/issues/39)
+  - Align on timelines and milestones for internal FYV testing.
 
 - FYV Testing
+  - 
 
 
 - FCM Whitepaper
