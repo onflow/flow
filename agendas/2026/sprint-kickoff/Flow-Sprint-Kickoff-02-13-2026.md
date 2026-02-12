@@ -2,7 +2,9 @@
 
 ### Team Wins 🎉
 
--
+- another uneventful HCU that deployed new security fixes ([v0.46.0](https://github.com/onflow/flow-go/releases/tag/v0.46.0))
+- Completed implementation of Execution node [zero-downtime HCU](https://github.com/onflow/flow-go/issues/8308)
+- Completeted initial implementation of [malicious contract detection](https://github.com/onflow/ripple-slack-bot)
 
 ---
 
@@ -52,56 +54,96 @@
 
 ### **Cadence Language and Execution** \[Jan]
 
-Q3 2025 Cycle Objective(s):
-
-- [Cadence Language goals](https://github.com/onflow/cadence/issues/4057)
-- [Cadence Execution goals](https://github.com/onflow/flow-go/issues/7569)
-
 **Done last sprint**
 
 **Cadence Language**
 
-- Compiler testing:
-
-- Tooling improvements:
-
+- Improvements:
+    - [Improve AST walking ](https://github.com/onflow/cadence/pull/4434)
+    - robustness of compiler tests: [Improve assertions for instructions by introducing "pretty" instructions](https://github.com/onflow/cadence/pull/4423)
+    - backwards compatibility evaluation: [Improve Source Compatibility Suite](https://github.com/onflow/cadence/pull/4428)
+- Bugfixes:
+    - [Fix function type for `Capability.borrow`/`check`](https://github.com/onflow/cadence-internal/pull/396)
+    - [Improve #395](https://github.com/onflow/cadence-internal/pull/397)
+    - [Fix sibling subtyping in interface inheritance](https://github.com/onflow/cadence-internal/pull/395)
+    - [Fix contract update validation of reference and function types](https://github.com/onflow/cadence-internal/pull/399)
+    - [Prevent entitlement escalation via references](https://github.com/onflow/cadence-internal/pull/398)
+    - [Fix entitlement escalation with default function and function-typed field](https://github.com/onflow/cadence-internal/pull/401)
+    - [Fix optional boxing for containers](https://github.com/onflow/cadence-internal/pull/403)
+    - [Add 'internal error' prefix to the missing internal errors](https://github.com/onflow/cadence-internal/pull/409)        
+- Tooling:
+    - Lint feature [Add a new analyzer to detect unused variables and parameters](https://github.com/onflow/cadence-tools/pull/591)
+    - bugfixes:
+        - Linter: [Fix false positives for redundant type annotation/cast when type annotation is required](https://github.com/onflow/cadence-tools/pull/586)
+        - Language server: [ Fix function and constructor types in completion items](https://github.com/onflow/cadence-tools/pull/588)
+- Testing:
+    - new feature: [Inject the `getTransactionIndex()` stdlib function in the testing environment](https://github.com/onflow/cadence-tools/pull/582)
 - Chores:
-
+    - porting of bugfixes to public repo: [Port v1.9.8-rc.2](https://github.com/onflow/cadence/pull/4431) 
+    - [Update changelog](https://github.com/onflow/cadence/pull/4435)
+    - [[test] Update to Cadence v1.9.7](https://github.com/onflow/cadence-tools/pull/581)
+    - [[languageserver] Update to Cadence v1.9.7](https://github.com/onflow/cadence-tools/pull/583)
+    - [[languageserver] Update to Cadence v1.9.7](https://github.com/onflow/cadence-tools/pull/587)
+    - [Update to Cadence v1.9.7](https://github.com/onflow/flixkit-go/pull/102)
+    - [Update to Cadence v1.9.7](https://github.com/onflow/flow-cli/pull/2265)
+    - [Update to lint v1.7.4 and languageserver v1.9.2](https://github.com/onflow/flow-cli/pull/2270)
+    - [Update to latest versions of Cadence and Flow Emulator](https://github.com/onflow/flow-core-contracts/pull/576)
+    - [Update to Cadence v1.9.7](https://github.com/onflow/flow-evm-gateway/pull/952)
+    - [[v0.46] Update to Cadence v1.9.8](https://github.com/onflow/flow-go/pull/8396)
+    - [Update to Cadence v1.9.8](https://github.com/onflow/flow-go/pull/8395)
 
 **Cadence Execution**
 
-- Storehouse
-
+- Zero-downtime network upgrade:
+    - [POC Ledger Service](https://github.com/onflow/flow-go/pull/8309)
+    - [[Ledger Service] Add more improvements](https://github.com/onflow/flow-go/pull/8350)
+    - [remove the double quote for ledger version](https://github.com/onflow/dapper-flow-hosting/pull/1855)
+- Concurrent transactions execution testing:
+    - [Add load with specifiable concurrency](https://github.com/onflow/flow-execution-effort-estimation/pull/83)
 - Improvements:
-
-
-- ops
-
-- chores
-
-
+    - FVM refactor & Cleanup: [Unexport reusable runtime](https://github.com/onflow/flow-go/pull/8373)
+    - [Fix lint warning](https://github.com/onflow/flow-go/pull/8380)
+- Bugfixes:
+    - [[Access] Access ingestion error handle](https://github.com/onflow/flow-go/pull/8385)
+    - [[Access] v0.45 handle collection already indexed](https://github.com/onflow/flow-go/pull/8389)
+- Cleanup / Tech-debt removal:
+    - [[FVM] Remove unused error](https://github.com/onflow/flow-go/pull/8393)
+    - [Cleanup flips folder](https://github.com/onflow/flow-go/pull/8388)
+    - [Remove unused revive](https://github.com/onflow/flow-go/pull/8387)
+    - [Cleanup bors references](https://github.com/onflow/flow-go/pull/8386)
+- Testing:
+    - [Fix flaky epoch test](https://github.com/onflow/flow-go/pull/8394)
+- chore:
+    - [Upgrade mockery](https://github.com/onflow/flow-go/pull/8322)
 
 **Flow EVM**
+
 - Core
-
-    - Improvements
-
-    - Bugfixes:
-
-- Gateway
-
-
+    - Feature:
+        - [Implement ABI encoding/decoding for arrays of Solidity tuples](https://github.com/onflow/flow-go/issues/8370)
+            - [[Flow EVM] Implement ABI encoding/decoding for arrays of Solidity tuples](https://github.com/onflow/flow-go/pull/8371)
+    - post-inicident cleanup:
+        - [Remove EOA restriction functionality](https://github.com/onflow/flow-go/issues/8369)
 
 
 **This sprint**
 
 - Cadence Language
-
+    - On-hold: compiler correctness testing
+    - On-hold: tacklig compiler+VM tech-debt
+    - On-hold: deep-dive on compiler+VM performace
 
 - Cadence Execution
-
+    - Complete testing of EN zero-downtime HCU
+    - Complete testing [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571) - epoch switchover
+    - On-hold [Versioning of Execution Stack via Dynamic Protocol State](https://github.com/onflow/flow-go/issues/6999)
+    - On-hold [Badger -> Pebble: remaining tasks and cleanup](https://github.com/onflow/flow-go/issues/7682)
+    - On-Hold [Storehouse](https://github.com/onflow/flow-okrs/issues/166)
+    - On-Hold: [Scheduled Transactions for EVM](https://github.com/onflow/flow-go/issues/8019)
+    - On-Hold: New Trie research
 
 - EVM
+    - On-Hold, FCM support
 
 
 
@@ -187,50 +229,59 @@ Q1 Cycle Objective(s):
 
 **Done Last Sprint**
 
+- Cadence security improvements:
+    - Completed mainnet upgrade of [~5 defensive checks and bugfixes](https://github.com/onflow/cadence/pull/4431)
 - In-house financial analytics & fraud detection tooling
     - transaction & account trail  
-
-    - Malicious contract detection
-
-  
-- Cadence security improvements
-    - Completed mainnet upgrade of ~14 defensive checks and bugfixes:
-
-    - Completed tech-debt review
-    - Started external audit of the exploited functionality.
-
-- Completed & reviewed draft of bug bounty program.
-
-- Started Execution node fraud detection (storage layer).
+        - Chase TBD
+- Update of bug bounty program with HackenProof.
+    - Draft shared with HackenProof for feedback.
+- Fungible token supply monitoring
+    - Started implementation of differential tracker (chunk-data-pack level)
+    - [Update and cleanup](https://github.com/onflow/flow-batch-scan/pull/40)
+    - [Update rate limits + minor CI cleanup](https://github.com/onflow/flow-batch-scan/pull/41)
 
 **This Sprint**
 
-- Cadence security:
-
-- Complete update of bug bounty program with HackenProof.
-- Continue execution node fraud detection (storage layer)
+- Cadence security improvements:
+  - Continue external audit of the exploited functionality
+  - Start work on [AI-assisted vulnerability detection](https://github.com/onflow/cadence-internal/issues/404)
 - In-house financial analytics & fraud detection tooling
-    - transaction & account trail  
-
+    - transaction & account trail 
+        - Chase TBD
     - Continue: Malicious contract detection
-
-    - Start: anomalous event monitoring
+        - deploy on CloudRun, add CI/CD setup.
+- Update of bug bounty program with HackenProof.
+    - completed review of pwending reports
+    - publish updated program
+- Fungible token supply monitoring
+    - Complete implementation of differential tracker (chunk-data-pack level)
 
 - On Hold (capacity)
-    - Revive total token supply tracker
+    - In-house financial analytics & fraud detection tooling
+        - anomalous event monitoring (focusing on analytics tooling)
     - Evaluate existing anomaly detection tools (contract / Tx anomalies)
+    - Execution node fraud detection (storage layer).
 
 ### Performance [Jan]
 
 **Done Last Sprint**
 
+- Cross-vm bridging performance improvements:
+    - EVM Core:
+        - [[Flow EVM] Optimize EVMDecodeABI by removing an ArrayValue iteration](https://github.com/onflow/flow-go/pull/8397)
+        - [[Flow EVM] Optimize EVMEncodeABI by removing an ArrayValue iteration](https://github.com/onflow/flow-go/pull/8398)
+        - [[Flow EVM] Optimize EVMEncodeABI by creating Go reflect types at startup and reusing them](https://github.com/onflow/flow-go/pull/8399)
+        - [[Flow EVM] Optimize EVM dryCall by removing RLP encoding/decoding](https://github.com/onflow/flow-go/pull/8400)
 
+- Started work on simplifying transaction scheduler contract to improve performance
 
 **This Sprint**
 
-- Complete testing of Concurrent Tx execution - epoch switchover.
-- Continue: Scheduled transactions performance deep-dive
-- Continue: Cross-vm bridging performance deep-dive
+- Continue: simplify transaction scheduler to improve performance 
+- Continue: Cross-vm bridging performance improvements:
+    - [Optimize Flow EVM by creating wrapper functions to reduce conversion overhead](https://github.com/onflow/flow-go/issues/8405)
+    - [Optimize Flow EVM block formation](https://github.com/onflow/flow-go/issues/6958)
 
 ---
 
