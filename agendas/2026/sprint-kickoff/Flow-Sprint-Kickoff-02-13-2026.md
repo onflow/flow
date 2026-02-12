@@ -29,9 +29,16 @@
 - Height Coordinated Upgrade - Feb 6th on Mainnet
    - [v0.46.0](https://github.com/onflow/flow-go/releases/tag/v0.46.0)
 
-- P0 issue on Testnet - Finalization halted - Feb 11th.
+- P0 Testnet - Finalization halted - Feb 11th
   - Network upgrade (spork) had to be done to recover the network.
   - [Postmortem](https://status.flow.com/incidents/wmbfxpwhgz64)
+  - Total downtime:
+    - Sealing halted for 2hr, 28 mins.
+    - Public EVM GW endpoint unavailable for 18hrs.
+
+- P0 Mainnet - Sealing halt - Feb 11 for ~7 mins
+  - FF and DL execution nodes went OOM and restarted.
+  - Resolution - Execution node hardware upgraded
 
 ---
 
