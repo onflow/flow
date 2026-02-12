@@ -238,6 +238,8 @@ Q1 Cycle Objective(s):
     - Draft shared with HackenProof for feedback.
 - Fungible token supply monitoring
     - Started implementation of differential tracker (chunk-data-pack level)
+    - [Update and cleanup](https://github.com/onflow/flow-batch-scan/pull/40)
+    - [Update rate limits + minor CI cleanup](https://github.com/onflow/flow-batch-scan/pull/41)
 
 **This Sprint**
 
@@ -265,9 +267,6 @@ Q1 Cycle Objective(s):
 
 **Done Last Sprint**
 
-- Token supply monitoring:
-    - [Update and cleanup](https://github.com/onflow/flow-batch-scan/pull/40)
-    - [Update rate limits + minor CI cleanup](https://github.com/onflow/flow-batch-scan/pull/41)
 - Cross-vm bridging performance improvements:
     - EVM Core:
         - [[Flow EVM] Optimize EVMDecodeABI by removing an ArrayValue iteration](https://github.com/onflow/flow-go/pull/8397)
@@ -279,7 +278,6 @@ Q1 Cycle Objective(s):
 
 **This Sprint**
 
-- Complete testing of Concurrent Tx execution - epoch switchover.
 - Continue: simplify transaction scheduler to improve performance 
 - Continue: Cross-vm bridging performance improvements:
     - [Optimize Flow EVM by creating wrapper functions to reduce conversion overhead](https://github.com/onflow/flow-go/issues/8405)
