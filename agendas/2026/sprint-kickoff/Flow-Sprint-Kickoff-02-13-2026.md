@@ -2,8 +2,8 @@
 
 ### Team Wins 🎉
 
-- another uneventful HCU that deployed new security fixes (v0.46.0)
-- Completed implementation of Execution node zero-downtime HCU
+- another uneventful HCU that deployed new security fixes ([v0.46.0](https://github.com/onflow/flow-go/releases/tag/v0.46.0))
+- Completed implementation of Execution node [zero-downtime HCU](https://github.com/onflow/flow-go/issues/8308)
 - Completeted initial implementation of [malicious contract detection](https://github.com/onflow/ripple-slack-bot)
 
 ---
@@ -54,16 +54,11 @@
 
 ### **Cadence Language and Execution** \[Jan]
 
-Q3 2025 Cycle Objective(s):
-
-- [Cadence Language goals](https://github.com/onflow/cadence/issues/4057)
-- [Cadence Execution goals](https://github.com/onflow/flow-go/issues/7569)
-
 **Done last sprint**
 
 **Cadence Language**
 
-- Improvements
+- Improvements:
     - [Improve AST walking ](https://github.com/onflow/cadence/pull/4434)
     - robustness of compiler tests: [Improve assertions for instructions by introducing "pretty" instructions](https://github.com/onflow/cadence/pull/4423)
     - backwards compatibility evaluation: [Improve Source Compatibility Suite](https://github.com/onflow/cadence/pull/4428)
@@ -103,12 +98,12 @@ Q3 2025 Cycle Objective(s):
     - [POC Ledger Service](https://github.com/onflow/flow-go/pull/8309)
     - [[Ledger Service] Add more improvements](https://github.com/onflow/flow-go/pull/8350)
     - [remove the double quote for ledger version](https://github.com/onflow/dapper-flow-hosting/pull/1855)
-- Concurrent transactions execution:
+- Concurrent transactions execution testing:
     - [Add load with specifiable concurrency](https://github.com/onflow/flow-execution-effort-estimation/pull/83)
 - Improvements:
     - FVM refactor & Cleanup: [Unexport reusable runtime](https://github.com/onflow/flow-go/pull/8373)
     - [Fix lint warning](https://github.com/onflow/flow-go/pull/8380)
-- Bugfix:
+- Bugfixes:
     - [[Access] Access ingestion error handle](https://github.com/onflow/flow-go/pull/8385)
     - [[Access] v0.45 handle collection already indexed](https://github.com/onflow/flow-go/pull/8389)
 - Cleanup / Tech-debt removal:
@@ -118,7 +113,7 @@ Q3 2025 Cycle Objective(s):
     - [Cleanup bors references](https://github.com/onflow/flow-go/pull/8386)
 - Testing:
     - [Fix flaky epoch test](https://github.com/onflow/flow-go/pull/8394)
-- chores:
+- chore:
     - [Upgrade mockery](https://github.com/onflow/flow-go/pull/8322)
 
 **Flow EVM**
@@ -139,9 +134,8 @@ Q3 2025 Cycle Objective(s):
     - On-hold: deep-dive on compiler+VM performace
 
 - Cadence Execution
-    - Complete implementation of differential scan for token supply monitoring
     - Complete testing of EN zero-downtime HCU
-    - Complete testing [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571)
+    - Complete testing [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571) - epoch switchover
     - On-hold [Versioning of Execution Stack via Dynamic Protocol State](https://github.com/onflow/flow-go/issues/6999)
     - On-hold [Badger -> Pebble: remaining tasks and cleanup](https://github.com/onflow/flow-go/issues/7682)
     - On-Hold [Storehouse](https://github.com/onflow/flow-okrs/issues/166)
