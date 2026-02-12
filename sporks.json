@@ -1418,9 +1418,47 @@
       }
     },
     "testnet": {
+      "testnet54": {
+        "id": 54,
+        "live": true,
+        "name": "Testnet54",
+        "sporkTime": "2026-02-12T04:38:06Z",
+        "rootHeight": "305778201",
+        "rootParentId": "c26d0ebae62f0c39f8a8a2d94d49622b5fb46ec6f44888de2090e0c37783e440",
+        "rootStateCommitment": "1c886e1717c638506d55cc446d1b0e7fb8f189222f0b74212b2d810143b9bfe6",
+        "gitCommitHash": "ae8fb8a4337cf99b119946c7906eee49075513b6",
+        "stateArtefacts": {
+          "gcp": {
+            "rootCheckpointFile": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-54-execution/public-root-information/root.checkpoint",
+            "rootProtocolStateSnapshot": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-54/public-root-information/root-protocol-state-snapshot.json",
+            "rootProtocolStateSnapshotSignature": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-54/public-root-information/root-protocol-state-snapshot.json.asc",
+            "nodeInfo": "https://storage.googleapis.com/flow-genesis-bootstrap/testnet-54/public-root-information/node-infos.pub.json"
+          },
+          "s3": {
+            "rootCheckpointFile": "",
+            "rootProtocolStateSnapshot": "",
+            "nodeInfo": "",
+            "executionStateBucket": ""
+          }
+        },
+        "tags": {
+          "flow-go-tag": "v0.46.0",
+          "cadence-tag": "v1.9.8",
+          "docker-tag": "v0.46.0"
+        },
+        "accessNodes": [
+          "access.devnet.nodes.onflow.org:9000"
+        ],
+        "seedNodes": [
+          {
+            "address": "access-003.devnet54.nodes.onflow.org:3570",
+            "key": "b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7"
+          }
+        ]
+      },
       "testnet53": {
         "id": 53,
-        "live": true,
+        "live": false,
         "name": "Testnet53",
         "sporkTime": "2025-09-17T15:00:00Z",
         "rootHeight": "280224020",
