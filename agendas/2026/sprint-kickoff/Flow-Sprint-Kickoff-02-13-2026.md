@@ -168,24 +168,17 @@
 
 Q1 Cycle Objective(s):
 * Restore Flow protocol eng team to required critical mass [IN PROGRESS]
-* [Data Availability] Improve network reliability by reducing API load on execution node [PAUSED]* [Data Availability] Improve network reliability by reducing API load on execution node [PAUSED]
+* [Data Availability] Improve network reliability by reducing API load on execution node [PAUSED]
 * Building towards few Permissionless Collection Nodes [PAUSED]
 * SPoCK Research [IN PROGRESS]
 * Downgrade historical node hardware [COMPLETE]
 
 **Last sprint completed, ongoing and starting**
 
-* <ins>Data Availability</ins>
-    * Done:
-
-
-* <ins>Attack recovery</ins>
-
 
 * <ins>Cryptography</ins>
 
 
-* <ins>FVM improvement</ins>
 
 ---
 
@@ -194,17 +187,25 @@ Q1 Cycle Objective(s):
 **Done last sprint**
 
 - Addressing contract review comments
-  - [FCM: 4/5](https://github.com/orgs/onflow/projects/99/views/15)
-  - [FlowActions: 13/20](https://github.com/onflow/FlowActions/issues/95)
-  - [FYV: 3/11](https://github.com/onflow/FlowYieldVaults/issues/131)
+  - [FCM: 5/5](https://github.com/orgs/onflow/projects/99/views/15) ✅
+  - [FlowActions: 15/20](https://github.com/onflow/FlowActions/issues/95)
+  - [FYV: 6/11](https://github.com/onflow/FlowYieldVaults/issues/131)
   - [FYV EVM: 5/19](https://github.com/onflow/FlowYieldVaultsEVM/issues/15)
 
-- FCM
+- ALP
+  - Kicked off the second round of the QuantStamp review for FCM contracts.
+    - Includes:
+      - Fixes for all there earlier comments.
+      - New liquidation logic.
+      - Improved position based permissions.
+      - Global pause mechanism
+  - Started on improving unit test coverage ([#136](https://github.com/onflow/FlowCreditMarket/issues/136))
+  - Implemented the Morpho erc4626 Swap and Sink connectors ([#126](https://github.com/onflow/FlowActions/pull/126))
+  - Implemented the first version of the FCM observer ([#3](https://github.com/onflow/fcm-observer/issues/3))
 
   - KROK Team:
       * Done:
 
-          
       * In Review:
 
       * In Progress
@@ -222,8 +223,10 @@ Q1 Cycle Objective(s):
 
 **This sprint**
 
-- FCM
-
+- ALP
+  - Add the Scheduled Transaction Rebalancing implementation to the QS review.
+  - Address all the remaining QS review comments to kick of second round of audit for the FYV, FYV EVM and Flow Actions contract.
+  - Continue improving Unit test coverage (cover additional testing gaps, see Scope under [issue 136](https://github.com/onflow/FlowCreditMarket/issues/136))
 
 - FYV
 
