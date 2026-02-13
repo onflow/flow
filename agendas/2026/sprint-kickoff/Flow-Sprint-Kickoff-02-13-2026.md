@@ -10,26 +10,32 @@
 
 #### YTD SLA \[Vishal]
 
-| Incident/upgrade       | Date      | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Overall | Comments                                |
-|------------------------|-----------|------------|-----------|-----------|--------------|-------------|--------|---------|-----------------------------------------|
-| HCU                    | 1/1/2026  |            |           | 9         |              |             |        | 9       | Part of recovery from Security Incident |
-| HCU                    | 1/2/2026  |            |           | 9         |              |             |        | 9       | Part of recovery from Security Incident |
-| HCU                    | 1/3/2026  |            |           | 9         |              |             |        | 9       | Security Fix                            |
-| HCU                    | 1/3/2026  |            |           | 9         |              |             |        | 9       | Repeated the HCU                        |
-| EVM GW Issue           | 1/7/2026  |            |           | 9         |              |             | 32     | 32      | Public EVM endpoint unavailable         |
-| HCU                    | 1/29/2026 |            |           | 8         |              |             |        | 8       | Security Fix                            |
-| HCU                    | 2/6/2026  |            |           | 8         |              |             |        | 8       | Security Fix                            |
-| Sealing halt           | 2/11/2026 |            |           | 7         |              |             |        | 7       | Security Fix                            |
-| Total downtime in mins |           | 0          | 0         | 59        | 0            | 0           | 32     | 91      |                                         |
-| YTD (01/06/26) SLA     |           | 100.00%    | 100.00%   | 99.90%    | 100.00%      | 100.00%     | 99.95% | 99.85%  |                                         |
-| SLA for 2026           |           | 100.00%    | 100.00%   | 99.99%    | 100.00%      | 100.00%     | 99.99% | 99.98%  |                                         |
+| Incident/upgrade       | Date      | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Overall | Comments                                          |
+|------------------------|-----------|------------|-----------|-----------|--------------|-------------|--------|---------|---------------------------------------------------|
+| HCU                    | 1/1/2026  |            |           | 9         |              |             |        | 9       | Part of recovery from Security Incident           |
+| HCU                    | 1/2/2026  |            |           | 9         |              |             |        | 9       | Part of recovery from Security Incident           |
+| HCU                    | 1/3/2026  |            |           | 9         |              |             |        | 9       | Security Fix                                      |
+| HCU                    | 1/3/2026  |            |           | 9         |              |             |        | 9       | Repeated the HCU                                  |
+| EVM GW Issue           | 1/7/2026  |            |           | 9         |              |             | 32     | 32      | Public EVM endpoint unavailable                   |
+| HCU                    | 1/29/2026 |            |           | 8         |              |             |        | 8       | Security Fix                                      |
+| HCU                    | 2/6/2026  |            |           | 8         |              |             |        | 8       | Security Fix                                      |
+| Sealing halt           | 2/11/2026 |            |           | 7         |              |             |        | 7       | FF and DL execution nodes went OOM and restarted  |
+| HCU                    | 2/13/2026 |            |           | 9         |              |             |        | 9       | Security Fix                                      ||
+| Total downtime in mins |           | 0          | 0         | 68        | 0            | 0           | 32     | 100     |                                                   |
+| YTD (01/06/26) SLA     |           | 100.00%    | 100.00%   | 99.89%    | 100.00%      | 100.00%     | 99.95% | 99.84%  |                                                   |
+| SLA for 2026           |           | 100.00%    | 100.00%   | 99.99%    | 100.00%      | 100.00%     | 99.99% | 99.98%  |                                                   |
 
 ### Incidents \[Vishal]
 
 
+#### Planned downtime
 - Height Coordinated Upgrade - Feb 6th on Mainnet
    - [v0.46.0](https://github.com/onflow/flow-go/releases/tag/v0.46.0)
 
+- Height Coordinated Upgrade - Feb 13th on Mainnet
+  - v0.46.1-rc.1
+
+#### Unplanned downtime
 - P0 Testnet - Finalization halted - Feb 11th
   - Network upgrade (spork) had to be done to recover the network.
   - [Postmortem](https://status.flow.com/incidents/wmbfxpwhgz64)
