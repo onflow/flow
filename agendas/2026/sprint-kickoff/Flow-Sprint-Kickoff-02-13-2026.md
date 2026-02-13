@@ -178,6 +178,7 @@ Q1 Cycle Objective(s):
 
 
 * <ins>Cryptography</ins>
+  * SPoCK: finalized the paper draft and shared it with Wilson - we had a first call and went through theoretical questions and I updated the draft - he’s now reviewing the draft
 
 
 
@@ -235,7 +236,6 @@ Q1 Cycle Objective(s):
 
 - FCM Whitepaper/Documentation
   - Continued working on the [FCM primer](https://docs.google.com/document/d/1Ph9xnx1JvvJQdMVZoEDtTagnx_FLo0wiQZCi1BjqxyE/edit?tab=t.0#heading=h.xowwye5i17vb)
-  - 
 
 
 **This sprint**
@@ -259,6 +259,8 @@ Q1 Cycle Objective(s):
 
 
 - FCM Whitepaper
+  - Publish primer
+  - Continue working on the whitepaper.
 
 
 ---
