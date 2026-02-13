@@ -385,18 +385,43 @@ https://github.com/onflow/flow-okrs/issues/175
 **Done last sprint**
 
 
-
 **Observability**
+- [Expand Access Nodes Synthetic Checks Probes Coverage](https://github.com/onflow/ff-sre-infrastructure/issues/1095)
+- [Expand EVM Synthetic Checks Probes Coverage](https://github.com/onflow/ff-sre-infrastructure/issues/1097)
 
+**FCM**
+- [Create Instance for the FCM Analytics API Development](https://github.com/onflow/ff-sre-infrastructure/issues/1099)
+- [Configure Private Registry access for the FCM Analytics API Instance SA](https://github.com/onflow/ff-sre-infrastructure/issues/1145)
+- [Create Deploy CI for FCM Observer](https://github.com/onflow/ff-sre-infrastructure/issues/1114)
+- [Add Variables for FCM Observer Cloud Run Deploy](https://github.com/onflow/ff-sre-infrastructure/issues/1115)
+- [Create Cloud Run Resources for FCM Observer](https://github.com/onflow/ff-sre-infrastructure/issues/1116)
 
-**Historical Nodes**
+**Execution Ledger Service**
+- [Update TN53 Inventory with Flags for the Execution Ledger Service](https://github.com/onflow/ff-sre-infrastructure/issues/1102)
+- [Deploy the Execution Ledger Service to TN53 ENs](https://github.com/onflow/ff-sre-infrastructure/issues/1108)
+- [Add Tasks for Orchestrating the Activation of the Execution Ledger Service](https://github.com/onflow/ff-sre-infrastructure/issues/1111)
 
+**TN54 Spork**
+- [Create SRE Spork Checklist for TN54](https://github.com/onflow/ff-sre-infrastructure/issues/1118)
+- [Validate Quotas for TN54 - GCP Project flow-hosting](https://github.com/onflow/ff-sre-infrastructure/issues/1119)
+- [Create Resources for TN54 Infra on Terraform](https://github.com/onflow/ff-sre-infrastructure/issues/1120)
+- [Create Alerts for TN54 Nodes](https://github.com/onflow/ff-sre-infrastructure/issues/1122)
+- [Update DNS Record for TN54 Secure Endpoint](https://github.com/onflow/ff-sre-infrastructure/issues/1123)
+- [Update Dashboard Vars with TN54](https://github.com/onflow/ff-sre-infrastructure/issues/1125)
+- [Configure the Prometheus Node for TN54](https://github.com/onflow/ff-sre-infrastructure/issues/1126)
+- [Remove Alerts from TN53](https://github.com/onflow/ff-sre-infrastructure/issues/1127)
+- [Update Synthetic Monitors for ANs to point to TN54](https://github.com/onflow/ff-sre-infrastructure/issues/1133)
+- [Scale Down TN53 Nodes after the TN54 Spork](https://github.com/onflow/ff-sre-infrastructure/issues/1134)
+- [Enable Profiling on TN54](https://github.com/onflow/ff-sre-infrastructure/issues/1136)
+- [Take Final Snapshots for TN53 AN1/EN1](https://github.com/onflow/ff-sre-infrastructure/issues/1138)
 
 **Support**
-
-
-**Security**
-
+- [Investigate Error on Copy Branch Workflow on flow-go-internal](https://github.com/onflow/ff-sre-infrastructure/issues/1098)
+- [Investigate Spike in Network Internet Data Transfer from ENs to APAC](https://github.com/onflow/ff-sre-infrastructure/issues/1101)
+- [Downgrade Machine Type for MN28 ENs](https://github.com/onflow/ff-sre-infrastructure/issues/1105)
+- [Configure Gemini API Key for FF's n8n](https://github.com/onflow/ff-sre-infrastructure/issues/1112)
+- [Add DNS record for flow.com's verification on Claude AI](https://github.com/onflow/ff-sre-infrastructure/issues/1113)
+- [Bump Machine Type for ENs on MN28 to fix OOM](https://github.com/onflow/ff-sre-infrastructure/issues/1131)
 
 ---
 
