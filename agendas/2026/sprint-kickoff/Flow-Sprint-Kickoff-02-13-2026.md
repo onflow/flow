@@ -379,11 +379,14 @@ https://github.com/onflow/flow-okrs/issues/175
 
 **Done last sprint**
 
-
+- Shipped version 3.1 on Extension & Mobile:
+  - Added full EOA support across all platforms 🎉
 
 **This sprint**
 
--
+- UI/UX Polish for new FTUE of 3.1 on mobile
+- Complete initial "Earn" integration into Flow Wallet, directing users to explore opportunities on Peak Money and vaults.flow.com to earn!  
+
 ---
 
 ### **Infra** \[Manny]
