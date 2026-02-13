@@ -221,6 +221,9 @@ Q1 Cycle Objective(s):
 
 
 - FYV Testing
+  - Configure Morpho Vault state manipulation for forked mainnet simulations
+  - Configure UniswapV3 Pool state manipulation for forked mainnet simulations
+  - Continued conversion of FYV scenarios to forked mainnet simulation
 
 
 - FCM Whitepaper/Documentation
@@ -242,7 +245,10 @@ Q1 Cycle Objective(s):
   - Align on timelines and milestones for internal FYV testing.
 
 - FYV Testing
-  - 
+  - Complete conversion of FYV scenarios to forked mainnet simulation
+  - Investigate discrepancies identified in forked tests
+  - Recreate Python simulation in forked Cadence Test environment
+  - Configure CI caching for forked tests
 
 
 - FCM Whitepaper
