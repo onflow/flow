@@ -207,11 +207,18 @@ Q1 Cycle Objective(s):
 
   - KROK Team:
       * Done:
+        - [[FlowActions] FLOW-10 Missing Input Validation #105 ](https://github.com/onflow/FlowActions/issues/105)
+        - [[FlowActions] S4 Improve UniswapV3 swap precision #114 ](https://github.com/onflow/FlowActions/issues/114) 
 
-      * In Review:
-
+      * In Review:   
+        - [[FlowActions] FLOW-15 Unfinished TODOs #110 ](https://github.com/onflow/FlowActions/issues/110)
+        - [[FlowActions] S5 General Improvements #115 ](https://github.com/onflow/FlowActions/issues/115) 
+      
       * In Progress
-
+        - [[FlowCreditMarket] Offchain analytics and alerting for FCM health and positions #122 ](https://github.com/onflow/fcm-observer/issues/3)        
+        - [[FlowCreditMarket] Improve Unit Test Coverage for FCM #136 ](https://github.com/onflow/FlowCreditMarket/issues/136)
+        - [[FlowCreditMarket] Multiple Collateral Types & Cross-Asset Operations Testing #148 ](https://github.com/onflow/FlowCreditMarket/issues/148)
+        - [[FlowCreditMarket] Multi-Position Scenarios Testing #147 ](https://github.com/onflow/FlowCreditMarket/issues/147)
 
 - FYV
   - Redesigning the supervisor and worker architecture [[#10](https://github.com/onflow/FlowYieldVaultsEVM/issues/10)]
