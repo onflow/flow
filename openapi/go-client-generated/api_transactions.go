@@ -26,12 +26,12 @@ var (
 
 type TransactionsApiService service
 /*
-TransactionsApiService Get Transaction Results by Block ID
-Retrieve a list of transaction results for a specific block. This includes results for system and scheduled transactions.
+TransactionsApiService Get Transaction Results by block
+Retrieve a list of transaction results for a specific block. This includes results for submitted, system, and scheduled transactions.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param blockId The ID of the block to retrieve transaction results for.
  * @param optional nil or *TransactionsApiTransactionResultsGetOpts - Optional Parameters:
-     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The height of the block to retrieve transaction results for. This parameter is incompatible with &#x60;block_id&#x60;.
+     * @param "BlockId" (optional.Interface of string) -  The ID of the block containing the transactions. The request may include either &#x60;block_id&#x60; or &#x60;block_height&#x60;, but not both.
+     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The height of the block containing the transactions. The request may include either &#x60;block_id&#x60; or &#x60;block_height&#x60;, but not both.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
      * @param "AgreeingExecutorsCount" (optional.String) -  A minimum number of execution receipts for the execution result.
@@ -41,6 +41,7 @@ Retrieve a list of transaction results for a specific block. This includes resul
 */
 
 type TransactionsApiTransactionResultsGetOpts struct {
+    BlockId optional.Interface
     BlockHeight optional.Interface
     Expand optional.Interface
     Select_ optional.Interface
@@ -49,7 +50,7 @@ type TransactionsApiTransactionResultsGetOpts struct {
     IncludeExecutorMetadata optional.Bool
 }
 
-func (a *TransactionsApiService) TransactionResultsGet(ctx context.Context, blockId string, localVarOptionals *TransactionsApiTransactionResultsGetOpts) ([]TransactionResult, *http.Response, error) {
+func (a *TransactionsApiService) TransactionResultsGet(ctx context.Context, localVarOptionals *TransactionsApiTransactionResultsGetOpts) ([]TransactionResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -65,7 +66,9 @@ func (a *TransactionsApiService) TransactionResultsGet(ctx context.Context, bloc
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	localVarQueryParams.Add("block_id", parameterToString(blockId, ""))
+	if localVarOptionals != nil && localVarOptionals.BlockId.IsSet() {
+		localVarQueryParams.Add("block_id", parameterToString(localVarOptionals.BlockId.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.BlockHeight.IsSet() {
 		localVarQueryParams.Add("block_height", parameterToString(localVarOptionals.BlockHeight.Value(), ""))
 	}
@@ -179,7 +182,7 @@ func (a *TransactionsApiService) TransactionResultsGet(ctx context.Context, bloc
 TransactionsApiService Get a Transaction Result by transaction ID or scheduled transaction ID.
 Get transaction result by the transaction&#x27;s ID. If the transaction is a scheduled transaction, it can alternatively be retrieved by the scheduled transaction ID field returned by the system contract.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param transactionId The transaction ID of the transaction result, or id field of the scheduled transaction returned by the system contract.
+ * @param transactionId A transaction identifier. This may be a 64-character hex-encoded transaction ID (e.g. &#x60;a1b2c3...&#x60;) or a uint64 scheduled transaction ID returned by the system contract.
  * @param optional nil or *TransactionsApiTransactionResultsTransactionIdGetOpts - Optional Parameters:
      * @param "BlockId" (optional.Interface of string) -  A block ID optional parameter
      * @param "CollectionId" (optional.Interface of string) -  A collection ID optional parameter.
@@ -201,7 +204,7 @@ type TransactionsApiTransactionResultsTransactionIdGetOpts struct {
     IncludeExecutorMetadata optional.Bool
 }
 
-func (a *TransactionsApiService) TransactionResultsTransactionIdGet(ctx context.Context, transactionId TransactionId, localVarOptionals *TransactionsApiTransactionResultsTransactionIdGetOpts) (TransactionResult, *http.Response, error) {
+func (a *TransactionsApiService) TransactionResultsTransactionIdGet(ctx context.Context, transactionId string, localVarOptionals *TransactionsApiTransactionResultsTransactionIdGetOpts) (TransactionResult, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -331,24 +334,25 @@ func (a *TransactionsApiService) TransactionResultsTransactionIdGet(ctx context.
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
-TransactionsApiService Get Transactions by Block ID
-Retrieve a list of transactions for a specific block. This includes system and scheduled transactions.
+TransactionsApiService Get Transactions by block
+Retrieve a list of transactions for a specific block. This includes submitted, system, and scheduled transactions.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param blockId The ID of the block to retrieve transactions for.
  * @param optional nil or *TransactionsApiTransactionsGetOpts - Optional Parameters:
-     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The height of the block to retrieve transaction results for. This parameter is incompatible with &#x60;block_id&#x60;.
+     * @param "BlockId" (optional.Interface of string) -  The ID of the block containing the transactions. The request may include either &#x60;block_id&#x60; or &#x60;block_height&#x60;, but not both.
+     * @param "BlockHeight" (optional.Interface of BlockHeight) -  The height of the block containing the transactions. The request may include either &#x60;block_id&#x60; or &#x60;block_height&#x60;, but not both.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
 @return []Transaction
 */
 
 type TransactionsApiTransactionsGetOpts struct {
+    BlockId optional.Interface
     BlockHeight optional.Interface
     Expand optional.Interface
     Select_ optional.Interface
 }
 
-func (a *TransactionsApiService) TransactionsGet(ctx context.Context, blockId string, localVarOptionals *TransactionsApiTransactionsGetOpts) ([]Transaction, *http.Response, error) {
+func (a *TransactionsApiService) TransactionsGet(ctx context.Context, localVarOptionals *TransactionsApiTransactionsGetOpts) ([]Transaction, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -364,7 +368,9 @@ func (a *TransactionsApiService) TransactionsGet(ctx context.Context, blockId st
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	localVarQueryParams.Add("block_id", parameterToString(blockId, ""))
+	if localVarOptionals != nil && localVarOptionals.BlockId.IsSet() {
+		localVarQueryParams.Add("block_id", parameterToString(localVarOptionals.BlockId.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.BlockHeight.IsSet() {
 		localVarQueryParams.Add("block_height", parameterToString(localVarOptionals.BlockHeight.Value(), ""))
 	}
@@ -469,7 +475,7 @@ func (a *TransactionsApiService) TransactionsGet(ctx context.Context, blockId st
 TransactionsApiService Get a Transaction by ID.
 Get a transaction data by the provided transaction ID. If the transaction is a scheduled transaction, it can alternatively be retrieved by the scheduled transaction ID field returned by the system contract.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param id The ID of the transaction, or id field of the scheduled transaction returned by the system contract.
+ * @param id A transaction identifier. This may be a 64-character hex-encoded transaction ID (e.g. &#x60;a1b2c3...&#x60;) or a uint64 scheduled transaction ID returned by the system contract.
  * @param optional nil or *TransactionsApiTransactionsIdGetOpts - Optional Parameters:
      * @param "BlockId" (optional.Interface of string) -  A block ID optional parameter
      * @param "CollectionId" (optional.Interface of string) -  A collection ID optional parameter.
@@ -485,7 +491,7 @@ type TransactionsApiTransactionsIdGetOpts struct {
     Select_ optional.Interface
 }
 
-func (a *TransactionsApiService) TransactionsIdGet(ctx context.Context, id Id, localVarOptionals *TransactionsApiTransactionsIdGetOpts) (Transaction, *http.Response, error) {
+func (a *TransactionsApiService) TransactionsIdGet(ctx context.Context, id string, localVarOptionals *TransactionsApiTransactionsIdGetOpts) (Transaction, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}

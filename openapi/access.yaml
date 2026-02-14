@@ -127,13 +127,11 @@ paths:
       tags:
         - Transactions
       parameters:
-        - description: The ID of the transaction, or id field of the scheduled transaction returned by the system contract.
+        - description: A transaction identifier. This may be a 64-character hex-encoded transaction ID (e.g. `a1b2c3...`) or a uint64 scheduled transaction ID returned by the system contract.
           name: id
           in: path
           schema:
-            oneOf:
-              - $ref: '#/components/schemas/Identifier'
-              - $ref: '#/components/schemas/ScheduledTransactionId'
+            type: string
           required: true
         - $ref: '#/components/parameters/blockIdParam'
         - $ref: '#/components/parameters/collectionIdParam'
@@ -198,13 +196,11 @@ paths:
       tags:
         - Transactions
       parameters:
-        - description: The transaction ID of the transaction result, or id field of the scheduled transaction returned by the system contract.
+        - description: A transaction identifier. This may be a 64-character hex-encoded transaction ID (e.g. `a1b2c3...`) or a uint64 scheduled transaction ID returned by the system contract.
           name: transaction_id
           in: path
           schema:
-            oneOf:
-              - $ref: '#/components/schemas/Identifier'
-              - $ref: '#/components/schemas/ScheduledTransactionId'
+            type: string
           required: true
         - $ref: '#/components/parameters/blockIdParam'
         - $ref: '#/components/parameters/collectionIdParam'
