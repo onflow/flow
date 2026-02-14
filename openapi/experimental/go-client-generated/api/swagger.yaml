@@ -1,0 +1,731 @@
+openapi: 3.0.0
+info:
+  title: Flow Experimental API
+  description: |
+    Experimental API endpoints for the Flow Access Node. These endpoints are subject to change without notice.
+    Endpoints may be moved to a permanent API once they are stable.
+  version: 0.1.0
+servers:
+- url: https://rest-testnet.onflow.org
+  description: Flow Testnet
+- url: https://rest-mainnet.onflow.org
+  description: Flow Mainnet
+tags:
+- name: Accounts
+  description: Endpoints for querying account-related data.
+paths:
+  /experimental/v1/accounts/{address}/transactions:
+    get:
+      tags:
+      - Accounts
+      summary: Get account transactions
+      description: |
+        Returns a paginated list of transactions for the given account address,
+        ordered descending by block height (newest first).
+      operationId: getAccountTransactions
+      parameters:
+      - name: address
+        in: path
+        description: The account address (hex-encoded without 0x prefix).
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Address"
+      - name: cursor
+        in: query
+        description: Opaque pagination cursor from a previous response's `next_cursor`
+          field.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/Cursor"
+      - name: limit
+        in: query
+        description: The maximum number of results to return.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 200
+          minimum: 1
+          type: integer
+          default: 50
+      - name: roles
+        in: query
+        description: A comma-separated list indicating which roles to filter by.
+        required: false
+        style: form
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Role"
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: A page of account transactions.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AccountTransactionsResponse"
+        "400":
+          description: "Bad request (invalid address, cursor, or limit)."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No account found for the given address.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "412":
+          description: Precondition failed (account transaction index not initialized).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    AccountTransactionsResponse:
+      required:
+      - transactions
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: "#/components/schemas/AccountTransaction"
+        next_cursor:
+          $ref: "#/components/schemas/Cursor"
+      example:
+        next_cursor: next_cursor
+        transactions:
+        - transaction_id: transaction_id
+          result: null
+          _links: null
+          roles:
+          - authorizer
+          - authorizer
+          block_height: block_height
+          transaction_index: transaction_index
+          _expandable:
+            result: http://example.com/aeiou
+            transaction: http://example.com/aeiou
+          transaction:
+            _links: null
+            reference_block_id: null
+            payer: payer
+            script: script
+            result:
+              collection_id: null
+              error_message: error_message
+              execution: Pending
+              status_code: 0
+              _links:
+                _self: _self
+              block_id: null
+              computation_used: computation_used
+              events:
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              status: Pending
+            envelope_signatures:
+            - null
+            - null
+            gas_limit: gas_limit
+            payload_signatures:
+            - address: null
+              signature: ""
+              key_index: key_index
+            - address: null
+              signature: ""
+              key_index: key_index
+            arguments:
+            - ""
+            - ""
+            id: null
+            authorizers:
+            - null
+            - null
+            _expandable:
+              result: http://example.com/aeiou
+            proposal_key:
+              sequence_number: sequence_number
+              address: null
+              key_index: key_index
+        - transaction_id: transaction_id
+          result: null
+          _links: null
+          roles:
+          - authorizer
+          - authorizer
+          block_height: block_height
+          transaction_index: transaction_index
+          _expandable:
+            result: http://example.com/aeiou
+            transaction: http://example.com/aeiou
+          transaction:
+            _links: null
+            reference_block_id: null
+            payer: payer
+            script: script
+            result:
+              collection_id: null
+              error_message: error_message
+              execution: Pending
+              status_code: 0
+              _links:
+                _self: _self
+              block_id: null
+              computation_used: computation_used
+              events:
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              status: Pending
+            envelope_signatures:
+            - null
+            - null
+            gas_limit: gas_limit
+            payload_signatures:
+            - address: null
+              signature: ""
+              key_index: key_index
+            - address: null
+              signature: ""
+              key_index: key_index
+            arguments:
+            - ""
+            - ""
+            id: null
+            authorizers:
+            - null
+            - null
+            _expandable:
+              result: http://example.com/aeiou
+            proposal_key:
+              sequence_number: sequence_number
+              address: null
+              key_index: key_index
+    AccountTransaction:
+      required:
+      - _expandable
+      - block_height
+      - roles
+      - transaction_id
+      - transaction_index
+      type: object
+      properties:
+        block_height:
+          type: string
+          description: Block height where the transaction was included.
+          format: uint64
+        transaction_id:
+          $ref: "#/components/schemas/Identifier"
+        transaction_index:
+          type: string
+          description: Index of the transaction within the block.
+          format: uint32
+        roles:
+          type: array
+          items:
+            type: string
+            enum:
+            - authorizer
+            - payer
+            - proposer
+            - interacted
+        transaction:
+          $ref: "#/components/schemas/Transaction"
+        result:
+          $ref: "#/components/schemas/TransactionResult"
+        _expandable:
+          $ref: "#/components/schemas/AccountTransaction__expandable"
+        _links:
+          $ref: "#/components/schemas/Links"
+      example:
+        transaction_id: transaction_id
+        result: null
+        _links: null
+        roles:
+        - authorizer
+        - authorizer
+        block_height: block_height
+        transaction_index: transaction_index
+        _expandable:
+          result: http://example.com/aeiou
+          transaction: http://example.com/aeiou
+        transaction:
+          _links: null
+          reference_block_id: null
+          payer: payer
+          script: script
+          result:
+            collection_id: null
+            error_message: error_message
+            execution: Pending
+            status_code: 0
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: computation_used
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            status: Pending
+          envelope_signatures:
+          - null
+          - null
+          gas_limit: gas_limit
+          payload_signatures:
+          - address: null
+            signature: ""
+            key_index: key_index
+          - address: null
+            signature: ""
+            key_index: key_index
+          arguments:
+          - ""
+          - ""
+          id: null
+          authorizers:
+          - null
+          - null
+          _expandable:
+            result: http://example.com/aeiou
+          proposal_key:
+            sequence_number: sequence_number
+            address: null
+            key_index: key_index
+    Address:
+      pattern: "^[a-fA-F0-9]{16}$"
+      type: string
+      description: The 8-byte address of an account.
+      format: hexadecimal
+    Cursor:
+      type: string
+      description: Opaque pagination cursor from a previous response's `next_cursor`
+        field.
+      format: base64
+    Event:
+      required:
+      - event_index
+      - payload
+      - transaction_id
+      - transaction_index
+      - type
+      type: object
+      properties:
+        type:
+          $ref: "#/components/schemas/EventType"
+        transaction_id:
+          $ref: "#/components/schemas/Identifier"
+        transaction_index:
+          type: string
+          format: uint64
+        event_index:
+          type: string
+          format: uint64
+        payload:
+          type: string
+          format: byte
+      example:
+        transaction_id: null
+        payload: ""
+        transaction_index: transaction_index
+        type: type
+        event_index: event_index
+    EventType:
+      type: string
+      description: The qualified event type.
+    Identifier:
+      pattern: "^[a-fA-F0-9]{64}$"
+      type: string
+      description: A 32-byte unique identifier for an entity.
+      format: hexadecimal
+    Links:
+      type: object
+      properties:
+        _self:
+          type: string
+      example:
+        _self: _self
+    ProposalKey:
+      required:
+      - address
+      - key_index
+      - sequence_number
+      type: object
+      properties:
+        address:
+          $ref: "#/components/schemas/Address"
+        key_index:
+          type: string
+          format: uint64
+        sequence_number:
+          type: string
+          format: uint64
+      example:
+        sequence_number: sequence_number
+        address: null
+        key_index: key_index
+    Role:
+      type: string
+      enum:
+      - authorizer
+      - payer
+      - proposer
+      - interacted
+    Signature:
+      type: string
+      description: A variable length signature.
+      format: byte
+    Transaction:
+      required:
+      - _expandable
+      - arguments
+      - authorizers
+      - envelope_signatures
+      - gas_limit
+      - id
+      - payer
+      - payload_signatures
+      - proposal_key
+      - reference_block_id
+      - script
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/Identifier"
+        script:
+          type: string
+          description: Base64 encoded Cadence script.
+          format: base64
+        arguments:
+          type: array
+          description: "Array of Base64 encoded arguments with in [JSON-Cadence interchange\
+            \ format](https://docs.onflow.org/cadence/json-cadence-spec/)."
+          items:
+            type: string
+            format: byte
+        reference_block_id:
+          $ref: "#/components/schemas/Identifier"
+        gas_limit:
+          type: string
+          description: The limit on the amount of computation a transaction is allowed
+            to perform.
+          format: uint64
+        payer:
+          $ref: "#/components/schemas/Address"
+        proposal_key:
+          $ref: "#/components/schemas/ProposalKey"
+        authorizers:
+          type: array
+          items:
+            $ref: "#/components/schemas/Address"
+        payload_signatures:
+          type: array
+          items:
+            $ref: "#/components/schemas/TransactionSignature"
+        envelope_signatures:
+          type: array
+          items:
+            $ref: "#/components/schemas/TransactionSignature"
+        result:
+          $ref: "#/components/schemas/TransactionResult"
+        _expandable:
+          $ref: "#/components/schemas/Transaction__expandable"
+        _links:
+          $ref: "#/components/schemas/Links"
+      example:
+        _links: null
+        reference_block_id: null
+        payer: payer
+        script: script
+        result:
+          collection_id: null
+          error_message: error_message
+          execution: Pending
+          status_code: 0
+          _links:
+            _self: _self
+          block_id: null
+          computation_used: computation_used
+          events:
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          status: Pending
+        envelope_signatures:
+        - null
+        - null
+        gas_limit: gas_limit
+        payload_signatures:
+        - address: null
+          signature: ""
+          key_index: key_index
+        - address: null
+          signature: ""
+          key_index: key_index
+        arguments:
+        - ""
+        - ""
+        id: null
+        authorizers:
+        - null
+        - null
+        _expandable:
+          result: http://example.com/aeiou
+        proposal_key:
+          sequence_number: sequence_number
+          address: null
+          key_index: key_index
+    TransactionResult:
+      required:
+      - block_id
+      - collection_id
+      - computation_used
+      - error_message
+      - events
+      - status
+      - status_code
+      type: object
+      properties:
+        block_id:
+          $ref: "#/components/schemas/Identifier"
+        collection_id:
+          $ref: "#/components/schemas/Identifier"
+        execution:
+          $ref: "#/components/schemas/TransactionExecution"
+        status:
+          $ref: "#/components/schemas/TransactionStatus"
+        status_code:
+          type: integer
+        error_message:
+          type: string
+          description: Provided transaction error in case the transaction wasn't successful.
+        computation_used:
+          type: string
+          format: uint64
+        events:
+          type: array
+          items:
+            $ref: "#/components/schemas/Event"
+        _links:
+          $ref: "#/components/schemas/Links"
+      example:
+        collection_id: null
+        error_message: error_message
+        execution: Pending
+        status_code: 0
+        _links:
+          _self: _self
+        block_id: null
+        computation_used: computation_used
+        events:
+        - transaction_id: null
+          payload: ""
+          transaction_index: transaction_index
+          type: type
+          event_index: event_index
+        - transaction_id: null
+          payload: ""
+          transaction_index: transaction_index
+          type: type
+          event_index: event_index
+        status: Pending
+    TransactionExecution:
+      type: string
+      description: "This value indicates whether the transaction execution succeeded\
+        \ or not, this value should be checked when determining transaction success."
+      enum:
+      - Pending
+      - Success
+      - Failure
+    TransactionStatus:
+      type: string
+      description: This value indicates the state of the transaction execution. Only
+        sealed and expired are final and immutable states.
+      enum:
+      - Pending
+      - Finalized
+      - Executed
+      - Sealed
+      - Expired
+    TransactionSignature:
+      required:
+      - address
+      - key_index
+      - signature
+      type: object
+      properties:
+        address:
+          $ref: "#/components/schemas/Address"
+        key_index:
+          type: string
+          format: uint64
+        signature:
+          $ref: "#/components/schemas/Signature"
+      description: Base64 encoded signature.
+      example:
+        address: null
+        signature: ""
+        key_index: key_index
+    Error:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+    AccountTransaction__expandable:
+      type: object
+      properties:
+        transaction:
+          type: string
+          description: Link to fetch the full transaction body.
+          format: uri
+        result:
+          type: string
+          description: Link to fetch the transaction result.
+          format: uri
+      description: "Contains URI links for fields not included in the response. When\
+        \ a field is expanded via the `expand` query parameter, it appears inline\
+        \ and is removed from `_expandable`."
+      example:
+        result: http://example.com/aeiou
+        transaction: http://example.com/aeiou
+    Transaction__expandable:
+      type: object
+      properties:
+        result:
+          type: string
+          format: uri
+      example:
+        result: http://example.com/aeiou
+  parameters:
+    cursorParam:
+      name: cursor
+      in: query
+      description: Opaque pagination cursor from a previous response's `next_cursor`
+        field.
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: "#/components/schemas/Cursor"
+    limitParam:
+      name: limit
+      in: query
+      description: The maximum number of results to return.
+      required: false
+      style: form
+      explode: true
+      schema:
+        maximum: 200
+        minimum: 1
+        type: integer
+        default: 50
+    rolesParam:
+      name: roles
+      in: query
+      description: A comma-separated list indicating which roles to filter by.
+      required: false
+      style: form
+      explode: false
+      schema:
+        $ref: "#/components/schemas/Role"
+    expandParam:
+      name: expand
+      in: query
+      description: A comma-separated list indicating which properties of the content
+        to expand.
+      required: false
+      style: form
+      explode: false
+      schema:
+        minItems: 1
+        uniqueItems: true
+        type: array
+        items:
+          type: string
+    selectParam:
+      name: select
+      in: query
+      description: A comma-separated list indicating which properties of the content
+        to return.
+      required: false
+      style: form
+      explode: false
+      schema:
+        minItems: 1
+        uniqueItems: true
+        type: array
+        items:
+          type: string

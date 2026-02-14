@@ -6,6 +6,9 @@
 # IDE related files
 .idea
 .vscode
+.local
+.claude
+.cursor
 
 # Gradle temp files
 protobuf/.gradle
