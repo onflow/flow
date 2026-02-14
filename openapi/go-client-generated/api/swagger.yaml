@@ -255,13 +255,14 @@ paths:
       parameters:
       - name: id
         in: path
-        description: "The ID of the transaction, or id field of the scheduled transaction\
-          \ returned by the system contract."
+        description: A transaction identifier. This may be a 64-character hex-encoded
+          transaction ID (e.g. `a1b2c3...`) or a uint64 scheduled transaction ID returned
+          by the system contract.
         required: true
         style: simple
         explode: false
         schema:
-          $ref: "#/components/schemas/id"
+          type: string
       - name: block_id
         in: query
         description: A block ID optional parameter
@@ -333,22 +334,23 @@ paths:
     get:
       tags:
       - Transactions
-      summary: Get Transaction Results by Block ID
-      description: Retrieve a list of transaction results for a specific block. This
-        includes results for system and scheduled transactions.
+      summary: Get Transaction Results by block
+      description: "Retrieve a list of transaction results for a specific block. This\
+        \ includes results for submitted, system, and scheduled transactions."
       parameters:
       - name: block_id
         in: query
-        description: The ID of the block to retrieve transaction results for.
-        required: true
+        description: "The ID of the block containing the transactions. The request\
+          \ may include either `block_id` or `block_height`, but not both."
+        required: false
         style: form
         explode: true
         schema:
           $ref: "#/components/schemas/Identifier"
       - name: block_height
         in: query
-        description: The height of the block to retrieve transaction results for.
-          This parameter is incompatible with `block_id`.
+        description: "The height of the block containing the transactions. The request\
+          \ may include either `block_id` or `block_height`, but not both."
         required: false
         style: form
         explode: true
@@ -453,13 +455,14 @@ paths:
       parameters:
       - name: transaction_id
         in: path
-        description: "The transaction ID of the transaction result, or id field of\
-          \ the scheduled transaction returned by the system contract."
+        description: A transaction identifier. This may be a 64-character hex-encoded
+          transaction ID (e.g. `a1b2c3...`) or a uint64 scheduled transaction ID returned
+          by the system contract.
         required: true
         style: simple
         explode: false
         schema:
-          $ref: "#/components/schemas/transaction_id"
+          type: string
       - name: block_id
         in: query
         description: A block ID optional parameter
@@ -564,22 +567,23 @@ paths:
     get:
       tags:
       - Transactions
-      summary: Get Transactions by Block ID
-      description: Retrieve a list of transactions for a specific block. This includes
-        system and scheduled transactions.
+      summary: Get Transactions by block
+      description: "Retrieve a list of transactions for a specific block. This includes\
+        \ submitted, system, and scheduled transactions."
       parameters:
       - name: block_id
         in: query
-        description: The ID of the block to retrieve transactions for.
-        required: true
+        description: "The ID of the block containing the transactions. The request\
+          \ may include either `block_id` or `block_height`, but not both."
+        required: false
         style: form
         explode: true
         schema:
           $ref: "#/components/schemas/Identifier"
       - name: block_height
         in: query
-        description: The height of the block to retrieve transaction results for.
-          This parameter is incompatible with `block_id`.
+        description: "The height of the block containing the transactions. The request\
+          \ may include either `block_id` or `block_height`, but not both."
         required: false
         style: form
         explode: true
@@ -2964,14 +2968,6 @@ components:
           event_index: event_index
         BlockId: BlockId
         Height: Height
-    id:
-      oneOf:
-      - $ref: "#/components/schemas/Identifier"
-      - $ref: "#/components/schemas/ScheduledTransactionId"
-    transaction_id:
-      oneOf:
-      - $ref: "#/components/schemas/Identifier"
-      - $ref: "#/components/schemas/ScheduledTransactionId"
     transactions_body:
       required:
       - arguments
