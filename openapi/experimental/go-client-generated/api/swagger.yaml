@@ -1617,7 +1617,7 @@ components:
       type: string
       enum:
       - sender
-      - receiver
+      - recipient
     Error:
       required:
       - code

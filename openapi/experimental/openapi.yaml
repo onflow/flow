@@ -678,7 +678,7 @@ components:
       type: string
       enum:
         - sender
-        - receiver
+        - recipient
 
     Error:
       type: object

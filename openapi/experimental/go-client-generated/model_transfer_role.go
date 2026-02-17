@@ -13,5 +13,5 @@ type TransferRole string
 // List of TransferRole
 const (
 	SENDER_TransferRole TransferRole = "sender"
-	RECEIVER_TransferRole TransferRole = "receiver"
+	RECIPIENT_TransferRole TransferRole = "recipient"
 )
