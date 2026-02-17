@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BlockHeight** | **string** | Block height where the transaction was included. | [default to null]
+**Timestamp** | [**time.Time**](time.Time.md) | Timestamp of the block where the transaction was included. | [default to null]
 **TransactionId** | **string** |  | [default to null]
 **TransactionIndex** | **string** | Index of the transaction within the block. | [default to null]
 **Roles** | **[]string** |  | [default to null]

@@ -450,6 +450,7 @@ components:
               sequence_number: sequence_number
               address: null
               key_index: key_index
+          timestamp: 2000-01-23T04:56:07.000+00:00
         - transaction_id: transaction_id
           result: null
           _links: null
@@ -511,11 +512,13 @@ components:
               sequence_number: sequence_number
               address: null
               key_index: key_index
+          timestamp: 2000-01-23T04:56:07.000+00:00
     AccountTransaction:
       required:
       - _expandable
       - block_height
       - roles
+      - timestamp
       - transaction_id
       - transaction_index
       type: object
@@ -524,6 +527,10 @@ components:
           type: string
           description: Block height where the transaction was included.
           format: uint64
+        timestamp:
+          type: string
+          description: Timestamp of the block where the transaction was included.
+          format: date-time
         transaction_id:
           $ref: "#/components/schemas/Identifier"
         transaction_index:
@@ -609,6 +616,7 @@ components:
             sequence_number: sequence_number
             address: null
             key_index: key_index
+        timestamp: 2000-01-23T04:56:07.000+00:00
     Address:
       pattern: "^[a-fA-F0-9]{16}$"
       type: string

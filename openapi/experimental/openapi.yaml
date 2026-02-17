@@ -285,6 +285,7 @@ components:
       type: object
       required:
         - block_height
+        - timestamp
         - transaction_id
         - transaction_index
         - roles
@@ -294,6 +295,10 @@ components:
           description: Block height where the transaction was included.
           type: string
           format: uint64
+        timestamp:
+          description: Timestamp of the block where the transaction was included.
+          type: string
+          format: date-time
         transaction_id:
           $ref: '#/components/schemas/Identifier'
         transaction_index:
