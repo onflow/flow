@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TransactionId** | **string** |  | [default to null]
 **BlockHeight** | **string** | Block height where the transfer was included. | [default to null]
+**Timestamp** | [**time.Time**](time.Time.md) | Timestamp of the block where the transfer was included. | [default to null]
 **TransactionIndex** | **string** | Index of the transaction within the block. | [default to null]
 **EventIndices** | **[]string** | Indices of the events within the transaction that represent this transfer. | [default to null]
 **TokenType** | **string** | Fully qualified NFT collection type (e.g. &#x60;A.1654653399040a61.MyNFT&#x60;). | [default to null]

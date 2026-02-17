@@ -553,6 +553,7 @@ components:
       required:
         - transaction_id
         - block_height
+        - timestamp
         - transaction_index
         - event_indices
         - token_type
@@ -567,6 +568,10 @@ components:
           description: Block height where the transfer was included.
           type: string
           format: uint64
+        timestamp:
+          description: Timestamp of the block where the transfer was included.
+          type: string
+          format: date-time
         transaction_index:
           description: Index of the transaction within the block.
           type: string
@@ -614,6 +619,7 @@ components:
       required:
         - transaction_id
         - block_height
+        - timestamp
         - transaction_index
         - event_indices
         - token_type
@@ -628,6 +634,10 @@ components:
           description: Block height where the transfer was included.
           type: string
           format: uint64
+        timestamp:
+          description: Timestamp of the block where the transfer was included.
+          type: string
+          format: date-time
         transaction_index:
           description: Index of the transaction within the block.
           type: string

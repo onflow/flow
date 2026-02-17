@@ -1009,6 +1009,7 @@ components:
             transaction_index: transaction_index
             type: type
             event_index: event_index
+          timestamp: 2000-01-23T04:56:07.000+00:00
         - transaction_id: transaction_id
           amount: amount
           _links:
@@ -1106,6 +1107,7 @@ components:
             transaction_index: transaction_index
             type: type
             event_index: event_index
+          timestamp: 2000-01-23T04:56:07.000+00:00
     AccountNonFungibleTransfersResponse:
       required:
       - transfers
@@ -1217,6 +1219,7 @@ components:
             transaction_index: transaction_index
             type: type
             event_index: event_index
+          timestamp: 2000-01-23T04:56:07.000+00:00
         - transaction_id: transaction_id
           _links:
             _self: _self
@@ -1314,6 +1317,7 @@ components:
             transaction_index: transaction_index
             type: type
             event_index: event_index
+          timestamp: 2000-01-23T04:56:07.000+00:00
     FungibleTokenTransfer:
       required:
       - _expandable
@@ -1322,6 +1326,7 @@ components:
       - event_indices
       - recipient_address
       - source_address
+      - timestamp
       - token_type
       - transaction_id
       - transaction_index
@@ -1333,6 +1338,10 @@ components:
           type: string
           description: Block height where the transfer was included.
           format: uint64
+        timestamp:
+          type: string
+          description: Timestamp of the block where the transfer was included.
+          format: date-time
         transaction_index:
           type: string
           description: Index of the transaction within the block.
@@ -1464,6 +1473,7 @@ components:
           transaction_index: transaction_index
           type: type
           event_index: event_index
+        timestamp: 2000-01-23T04:56:07.000+00:00
     NonFungibleTokenTransfer:
       required:
       - _expandable
@@ -1472,6 +1482,7 @@ components:
       - nft_id
       - recipient_address
       - source_address
+      - timestamp
       - token_type
       - transaction_id
       - transaction_index
@@ -1483,6 +1494,10 @@ components:
           type: string
           description: Block height where the transfer was included.
           format: uint64
+        timestamp:
+          type: string
+          description: Timestamp of the block where the transfer was included.
+          format: date-time
         transaction_index:
           type: string
           description: Index of the transaction within the block.
@@ -1615,6 +1630,7 @@ components:
           transaction_index: transaction_index
           type: type
           event_index: event_index
+        timestamp: 2000-01-23T04:56:07.000+00:00
     TransferRole:
       type: string
       enum:
