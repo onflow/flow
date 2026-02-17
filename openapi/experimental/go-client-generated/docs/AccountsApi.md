@@ -31,7 +31,7 @@ Name | Type | Description  | Notes
  **limit** | **optional.Int32**| The maximum number of results to return. | [default to 50]
  **tokenType** | **optional.String**| Filter by fully qualified token type (e.g. &#x60;A.1654653399040a61.FlowToken&#x60;). | 
  **sourceAddress** | [**optional.Interface of string**](.md)| Filter by the sender address of the transfer. | 
- **destinationAddress** | [**optional.Interface of string**](.md)| Filter by the recipient address of the transfer. | 
+ **recipientAddress** | [**optional.Interface of string**](.md)| Filter by the recipient address of the transfer. | 
  **role** | [**optional.Interface of TransferRole**](.md)| Filter by the account&#x27;s role in the transfer. If unset, returns both sent and received transfers. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
  **limit** | **optional.Int32**| The maximum number of results to return. | [default to 50]
  **tokenType** | **optional.String**| Filter by fully qualified token type (e.g. &#x60;A.1654653399040a61.FlowToken&#x60;). | 
  **sourceAddress** | [**optional.Interface of string**](.md)| Filter by the sender address of the transfer. | 
- **destinationAddress** | [**optional.Interface of string**](.md)| Filter by the recipient address of the transfer. | 
+ **recipientAddress** | [**optional.Interface of string**](.md)| Filter by the recipient address of the transfer. | 
  **role** | [**optional.Interface of TransferRole**](.md)| Filter by the account&#x27;s role in the transfer. If unset, returns both sent and received transfers. | 
  **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
  **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 

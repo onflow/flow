@@ -35,7 +35,7 @@ Returns a paginated list of fungible token transfers for the given account addre
      * @param "Limit" (optional.Int32) -  The maximum number of results to return.
      * @param "TokenType" (optional.String) -  Filter by fully qualified token type (e.g. &#x60;A.1654653399040a61.FlowToken&#x60;).
      * @param "SourceAddress" (optional.Interface of string) -  Filter by the sender address of the transfer.
-     * @param "DestinationAddress" (optional.Interface of string) -  Filter by the recipient address of the transfer.
+     * @param "RecipientAddress" (optional.Interface of string) -  Filter by the recipient address of the transfer.
      * @param "Role" (optional.Interface of TransferRole) -  Filter by the account&#x27;s role in the transfer. If unset, returns both sent and received transfers.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
@@ -47,7 +47,7 @@ type AccountsApiGetAccountFungibleTransfersOpts struct {
     Limit optional.Int32
     TokenType optional.String
     SourceAddress optional.Interface
-    DestinationAddress optional.Interface
+    RecipientAddress optional.Interface
     Role optional.Interface
     Expand optional.Interface
     Select_ optional.Interface
@@ -82,8 +82,8 @@ func (a *AccountsApiService) GetAccountFungibleTransfers(ctx context.Context, ad
 	if localVarOptionals != nil && localVarOptionals.SourceAddress.IsSet() {
 		localVarQueryParams.Add("source_address", parameterToString(localVarOptionals.SourceAddress.Value(), ""))
 	}
-	if localVarOptionals != nil && localVarOptionals.DestinationAddress.IsSet() {
-		localVarQueryParams.Add("destination_address", parameterToString(localVarOptionals.DestinationAddress.Value(), ""))
+	if localVarOptionals != nil && localVarOptionals.RecipientAddress.IsSet() {
+		localVarQueryParams.Add("recipient_address", parameterToString(localVarOptionals.RecipientAddress.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.Role.IsSet() {
 		localVarQueryParams.Add("role", parameterToString(localVarOptionals.Role.Value(), ""))
@@ -205,7 +205,7 @@ Returns a paginated list of non-fungible token transfers for the given account a
      * @param "Limit" (optional.Int32) -  The maximum number of results to return.
      * @param "TokenType" (optional.String) -  Filter by fully qualified token type (e.g. &#x60;A.1654653399040a61.FlowToken&#x60;).
      * @param "SourceAddress" (optional.Interface of string) -  Filter by the sender address of the transfer.
-     * @param "DestinationAddress" (optional.Interface of string) -  Filter by the recipient address of the transfer.
+     * @param "RecipientAddress" (optional.Interface of string) -  Filter by the recipient address of the transfer.
      * @param "Role" (optional.Interface of TransferRole) -  Filter by the account&#x27;s role in the transfer. If unset, returns both sent and received transfers.
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
@@ -217,7 +217,7 @@ type AccountsApiGetAccountNonFungibleTransfersOpts struct {
     Limit optional.Int32
     TokenType optional.String
     SourceAddress optional.Interface
-    DestinationAddress optional.Interface
+    RecipientAddress optional.Interface
     Role optional.Interface
     Expand optional.Interface
     Select_ optional.Interface
@@ -252,8 +252,8 @@ func (a *AccountsApiService) GetAccountNonFungibleTransfers(ctx context.Context,
 	if localVarOptionals != nil && localVarOptionals.SourceAddress.IsSet() {
 		localVarQueryParams.Add("source_address", parameterToString(localVarOptionals.SourceAddress.Value(), ""))
 	}
-	if localVarOptionals != nil && localVarOptionals.DestinationAddress.IsSet() {
-		localVarQueryParams.Add("destination_address", parameterToString(localVarOptionals.DestinationAddress.Value(), ""))
+	if localVarOptionals != nil && localVarOptionals.RecipientAddress.IsSet() {
+		localVarQueryParams.Add("recipient_address", parameterToString(localVarOptionals.RecipientAddress.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.Role.IsSet() {
 		localVarQueryParams.Add("role", parameterToString(localVarOptionals.Role.Value(), ""))

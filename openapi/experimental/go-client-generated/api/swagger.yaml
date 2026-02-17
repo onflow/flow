@@ -171,7 +171,7 @@ paths:
         explode: true
         schema:
           $ref: "#/components/schemas/Address"
-      - name: destination_address
+      - name: recipient_address
         in: query
         description: Filter by the recipient address of the transfer.
         required: false
@@ -299,7 +299,7 @@ paths:
         explode: true
         schema:
           $ref: "#/components/schemas/Address"
-      - name: destination_address
+      - name: recipient_address
         in: query
         description: Filter by the recipient address of the transfer.
         required: false
@@ -1753,8 +1753,8 @@ components:
       explode: true
       schema:
         $ref: "#/components/schemas/Address"
-    destinationAddressParam:
-      name: destination_address
+    recipientAddressParam:
+      name: recipient_address
       in: query
       description: Filter by the recipient address of the transfer.
       required: false

@@ -92,7 +92,7 @@ paths:
         - $ref: '#/components/parameters/limitParam'
         - $ref: '#/components/parameters/tokenTypeParam'
         - $ref: '#/components/parameters/sourceAddressParam'
-        - $ref: '#/components/parameters/destinationAddressParam'
+        - $ref: '#/components/parameters/recipientAddressParam'
         - $ref: '#/components/parameters/transferRoleParam'
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
@@ -148,7 +148,7 @@ paths:
         - $ref: '#/components/parameters/limitParam'
         - $ref: '#/components/parameters/tokenTypeParam'
         - $ref: '#/components/parameters/sourceAddressParam'
-        - $ref: '#/components/parameters/destinationAddressParam'
+        - $ref: '#/components/parameters/recipientAddressParam'
         - $ref: '#/components/parameters/transferRoleParam'
         - $ref: '#/components/parameters/expandParam'
         - $ref: '#/components/parameters/selectParam'
@@ -254,9 +254,9 @@ components:
       schema:
         $ref: '#/components/schemas/Address'
       required: false
-    destinationAddressParam:
+    recipientAddressParam:
       description: Filter by the recipient address of the transfer.
-      name: destination_address
+      name: recipient_address
       in: query
       schema:
         $ref: '#/components/schemas/Address'
