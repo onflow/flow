@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Transaction** | [***Transaction**](Transaction.md) |  | [optional] [default to null]
 **Result** | [***TransactionResult**](TransactionResult.md) |  | [optional] [default to null]
 **Events** | [**[]Event**](Event.md) |  | [optional] [default to null]
-**Expandable** | [***FungibleTokenTransferExpandable**](FungibleTokenTransfer__expandable.md) |  | [default to null]
+**Expandable** | [***AccountTransactionExpandable**](AccountTransaction__expandable.md) |  | [default to null]
 **Links** | [***Links**](Links.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

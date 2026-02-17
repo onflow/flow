@@ -25,6 +25,6 @@ type FungibleTokenTransfer struct {
 	Transaction *Transaction `json:"transaction,omitempty"`
 	Result *TransactionResult `json:"result,omitempty"`
 	Events []Event `json:"events,omitempty"`
-	Expandable *FungibleTokenTransferExpandable `json:"_expandable"`
+	Expandable *AccountTransactionExpandable `json:"_expandable"`
 	Links *Links `json:"_links,omitempty"`
 }

@@ -34,7 +34,6 @@ Class | Method | HTTP request | Description
  - [AccountTransactionsResponse](docs/AccountTransactionsResponse.md)
  - [Event](docs/Event.md)
  - [FungibleTokenTransfer](docs/FungibleTokenTransfer.md)
- - [FungibleTokenTransferExpandable](docs/FungibleTokenTransferExpandable.md)
  - [Links](docs/Links.md)
  - [ModelError](docs/ModelError.md)
  - [NonFungibleTokenTransfer](docs/NonFungibleTokenTransfer.md)

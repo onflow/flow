@@ -940,7 +940,6 @@ components:
           _expandable:
             result: http://example.com/aeiou
             transaction: http://example.com/aeiou
-            events: http://example.com/aeiou
           transaction:
             _links: null
             reference_block_id: null
@@ -1038,7 +1037,6 @@ components:
           _expandable:
             result: http://example.com/aeiou
             transaction: http://example.com/aeiou
-            events: http://example.com/aeiou
           transaction:
             _links: null
             reference_block_id: null
@@ -1150,7 +1148,6 @@ components:
           _expandable:
             result: http://example.com/aeiou
             transaction: http://example.com/aeiou
-            events: http://example.com/aeiou
           transaction:
             _links: null
             reference_block_id: null
@@ -1248,7 +1245,6 @@ components:
           _expandable:
             result: http://example.com/aeiou
             transaction: http://example.com/aeiou
-            events: http://example.com/aeiou
           transaction:
             _links: null
             reference_block_id: null
@@ -1359,7 +1355,7 @@ components:
           items:
             $ref: "#/components/schemas/Event"
         _expandable:
-          $ref: "#/components/schemas/FungibleTokenTransfer__expandable"
+          $ref: "#/components/schemas/AccountTransaction__expandable"
         _links:
           $ref: "#/components/schemas/Links"
       example:
@@ -1399,7 +1395,6 @@ components:
         _expandable:
           result: http://example.com/aeiou
           transaction: http://example.com/aeiou
-          events: http://example.com/aeiou
         transaction:
           _links: null
           reference_block_id: null
@@ -1511,7 +1506,7 @@ components:
           items:
             $ref: "#/components/schemas/Event"
         _expandable:
-          $ref: "#/components/schemas/FungibleTokenTransfer__expandable"
+          $ref: "#/components/schemas/AccountTransaction__expandable"
         _links:
           $ref: "#/components/schemas/Links"
       example:
@@ -1551,7 +1546,6 @@ components:
         _expandable:
           result: http://example.com/aeiou
           transaction: http://example.com/aeiou
-          events: http://example.com/aeiou
         transaction:
           _links: null
           reference_block_id: null
@@ -1653,28 +1647,6 @@ components:
           format: uri
       example:
         result: http://example.com/aeiou
-    FungibleTokenTransfer__expandable:
-      type: object
-      properties:
-        transaction:
-          type: string
-          description: Link to fetch the full transaction body.
-          format: uri
-        result:
-          type: string
-          description: Link to fetch the transaction result.
-          format: uri
-        events:
-          type: string
-          description: Link to fetch the transaction events.
-          format: uri
-      description: "Contains URI links for fields not included in the response. When\
-        \ a field is expanded via the `expand` query parameter, it appears inline\
-        \ and is removed from `_expandable`."
-      example:
-        result: http://example.com/aeiou
-        transaction: http://example.com/aeiou
-        events: http://example.com/aeiou
   parameters:
     cursorParam:
       name: cursor

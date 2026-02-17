@@ -602,10 +602,6 @@ components:
               type: string
               format: uri
               description: Link to fetch the transaction result.
-            events:
-              type: string
-              format: uri
-              description: Link to fetch the transaction events.
         _links:
           $ref: '#/components/schemas/Links'
     NonFungibleTokenTransfer:
@@ -668,10 +664,6 @@ components:
               type: string
               format: uri
               description: Link to fetch the transaction result.
-            events:
-              type: string
-              format: uri
-              description: Link to fetch the transaction events.
         _links:
           $ref: '#/components/schemas/Links'
     TransferRole:
