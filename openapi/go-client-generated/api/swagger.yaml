@@ -2327,11 +2327,13 @@ components:
     TransactionType:
       type: string
       description: "This value indicates whether the transaction is a standard transaction,\
-        \ a scheduled transaction, or a system transaction."
+        \ a scheduled transaction, or a system transaction. Unknown is returned for\
+        \ transactions that are not yet executed or could not be determined."
       enum:
       - standard
       - scheduled
       - system
+      - unknown
     TransactionExecution:
       type: string
       description: "This value indicates whether the transaction execution succeded\
