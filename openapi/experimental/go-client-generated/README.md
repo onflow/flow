@@ -21,16 +21,22 @@ All URIs are relative to *https://rest-testnet.onflow.org*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccountsApi* | [**GetAccountFungibleTransfers**](docs/AccountsApi.md#getaccountfungibletransfers) | **Get** /experimental/v1/accounts/{address}/ft/transfers | Get account fungible token transfers
+*AccountsApi* | [**GetAccountNonFungibleTransfers**](docs/AccountsApi.md#getaccountnonfungibletransfers) | **Get** /experimental/v1/accounts/{address}/nft/transfers | Get account non-fungible token transfers
 *AccountsApi* | [**GetAccountTransactions**](docs/AccountsApi.md#getaccounttransactions) | **Get** /experimental/v1/accounts/{address}/transactions | Get account transactions
 
 ## Documentation For Models
 
+ - [AccountFungibleTransfersResponse](docs/AccountFungibleTransfersResponse.md)
+ - [AccountNonFungibleTransfersResponse](docs/AccountNonFungibleTransfersResponse.md)
  - [AccountTransaction](docs/AccountTransaction.md)
  - [AccountTransactionExpandable](docs/AccountTransactionExpandable.md)
  - [AccountTransactionsResponse](docs/AccountTransactionsResponse.md)
  - [Event](docs/Event.md)
+ - [FungibleTokenTransfer](docs/FungibleTokenTransfer.md)
  - [Links](docs/Links.md)
  - [ModelError](docs/ModelError.md)
+ - [NonFungibleTokenTransfer](docs/NonFungibleTokenTransfer.md)
  - [ProposalKey](docs/ProposalKey.md)
  - [Role](docs/Role.md)
  - [Transaction](docs/Transaction.md)
@@ -39,6 +45,7 @@ Class | Method | HTTP request | Description
  - [TransactionResult](docs/TransactionResult.md)
  - [TransactionSignature](docs/TransactionSignature.md)
  - [TransactionStatus](docs/TransactionStatus.md)
+ - [TransferRole](docs/TransferRole.md)
 
 ## Documentation For Authorization
  Endpoints do not require authorization.

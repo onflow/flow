@@ -72,6 +72,118 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /experimental/v1/accounts/{address}/ft/transfers:
+    get:
+      summary: Get account fungible token transfers
+      description: |
+        Returns a paginated list of fungible token transfers for the given account address,
+        ordered descending by block height (newest first).
+      operationId: getAccountFungibleTransfers
+      tags:
+        - Accounts
+      parameters:
+        - name: address
+          in: path
+          required: true
+          description: The account address (hex-encoded without 0x prefix).
+          schema:
+            $ref: '#/components/schemas/Address'
+        - $ref: '#/components/parameters/cursorParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/tokenTypeParam'
+        - $ref: '#/components/parameters/sourceAddressParam'
+        - $ref: '#/components/parameters/recipientAddressParam'
+        - $ref: '#/components/parameters/transferRoleParam'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        "200":
+          description: A page of fungible token transfers.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AccountFungibleTransfersResponse"
+        "400":
+          description: Bad request (invalid address, cursor, or limit).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No account found for the given address.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "412":
+          description: Precondition failed (account transfer index not initialized).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/accounts/{address}/nft/transfers:
+    get:
+      summary: Get account non-fungible token transfers
+      description: |
+        Returns a paginated list of non-fungible token transfers for the given account address,
+        ordered descending by block height (newest first).
+      operationId: getAccountNonFungibleTransfers
+      tags:
+        - Accounts
+      parameters:
+        - name: address
+          in: path
+          required: true
+          description: The account address (hex-encoded without 0x prefix).
+          schema:
+            $ref: '#/components/schemas/Address'
+        - $ref: '#/components/parameters/cursorParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/tokenTypeParam'
+        - $ref: '#/components/parameters/sourceAddressParam'
+        - $ref: '#/components/parameters/recipientAddressParam'
+        - $ref: '#/components/parameters/transferRoleParam'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        "200":
+          description: A page of non-fungible token transfers.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AccountNonFungibleTransfersResponse"
+        "400":
+          description: Bad request (invalid address, cursor, or limit).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No account found for the given address.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "412":
+          description: Precondition failed (account transfer index not initialized).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
 components:
   parameters:
     cursorParam:
@@ -127,6 +239,34 @@ components:
         uniqueItems: true
       explode: false
       style: form
+      required: false
+    tokenTypeParam:
+      description: Filter by fully qualified token type (e.g. `A.1654653399040a61.FlowToken`).
+      name: token_type
+      in: query
+      schema:
+        type: string
+      required: false
+    sourceAddressParam:
+      description: Filter by the sender address of the transfer.
+      name: source_address
+      in: query
+      schema:
+        $ref: '#/components/schemas/Address'
+      required: false
+    recipientAddressParam:
+      description: Filter by the recipient address of the transfer.
+      name: recipient_address
+      in: query
+      schema:
+        $ref: '#/components/schemas/Address'
+      required: false
+    transferRoleParam:
+      description: Filter by the account's role in the transfer. If unset, returns both sent and received transfers.
+      name: role
+      in: query
+      schema:
+        $ref: '#/components/schemas/TransferRole'
       required: false
 
   schemas:
@@ -385,6 +525,167 @@ components:
           format: uint64
         signature:
           $ref: '#/components/schemas/Signature'
+
+    AccountFungibleTransfersResponse:
+      type: object
+      required:
+        - transfers
+      properties:
+        transfers:
+          type: array
+          items:
+            $ref: "#/components/schemas/FungibleTokenTransfer"
+        next_cursor:
+          $ref: '#/components/schemas/Cursor'
+    AccountNonFungibleTransfersResponse:
+      type: object
+      required:
+        - transfers
+      properties:
+        transfers:
+          type: array
+          items:
+            $ref: "#/components/schemas/NonFungibleTokenTransfer"
+        next_cursor:
+          $ref: '#/components/schemas/Cursor'
+    FungibleTokenTransfer:
+      type: object
+      required:
+        - transaction_id
+        - block_height
+        - timestamp
+        - transaction_index
+        - event_indices
+        - token_type
+        - amount
+        - source_address
+        - recipient_address
+        - _expandable
+      properties:
+        transaction_id:
+          $ref: '#/components/schemas/Identifier'
+        block_height:
+          description: Block height where the transfer was included.
+          type: string
+          format: uint64
+        timestamp:
+          description: Timestamp of the block where the transfer was included.
+          type: string
+          format: date-time
+        transaction_index:
+          description: Index of the transaction within the block.
+          type: string
+          format: uint32
+        event_indices:
+          description: Indices of the events within the transaction that represent this transfer.
+          type: array
+          items:
+            type: string
+            format: uint32
+        token_type:
+          description: Fully qualified token type identifier (e.g. `A.1654653399040a61.FlowToken`).
+          type: string
+        amount:
+          description: Amount of tokens transferred, as a decimal string.
+          type: string
+        source_address:
+          $ref: '#/components/schemas/Address'
+        recipient_address:
+          $ref: '#/components/schemas/Address'
+        transaction:
+          $ref: '#/components/schemas/Transaction'
+        result:
+          $ref: '#/components/schemas/TransactionResult'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        _expandable:
+          type: object
+          description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
+          properties:
+            transaction:
+              type: string
+              format: uri
+              description: Link to fetch the full transaction body.
+            result:
+              type: string
+              format: uri
+              description: Link to fetch the transaction result.
+        _links:
+          $ref: '#/components/schemas/Links'
+    NonFungibleTokenTransfer:
+      type: object
+      required:
+        - transaction_id
+        - block_height
+        - timestamp
+        - transaction_index
+        - event_indices
+        - token_type
+        - nft_id
+        - source_address
+        - recipient_address
+        - _expandable
+      properties:
+        transaction_id:
+          $ref: '#/components/schemas/Identifier'
+        block_height:
+          description: Block height where the transfer was included.
+          type: string
+          format: uint64
+        timestamp:
+          description: Timestamp of the block where the transfer was included.
+          type: string
+          format: date-time
+        transaction_index:
+          description: Index of the transaction within the block.
+          type: string
+          format: uint32
+        event_indices:
+          description: Indices of the events within the transaction that represent this transfer.
+          type: array
+          items:
+            type: string
+            format: uint32
+        token_type:
+          description: Fully qualified NFT collection type (e.g. `A.1654653399040a61.MyNFT`).
+          type: string
+        nft_id:
+          description: Unique identifier of the NFT within its collection.
+          type: string
+          format: uint64
+        source_address:
+          $ref: '#/components/schemas/Address'
+        recipient_address:
+          $ref: '#/components/schemas/Address'
+        transaction:
+          $ref: '#/components/schemas/Transaction'
+        result:
+          $ref: '#/components/schemas/TransactionResult'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        _expandable:
+          type: object
+          description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
+          properties:
+            transaction:
+              type: string
+              format: uri
+              description: Link to fetch the full transaction body.
+            result:
+              type: string
+              format: uri
+              description: Link to fetch the transaction result.
+        _links:
+          $ref: '#/components/schemas/Links'
+    TransferRole:
+      type: string
+      enum:
+        - sender
+        - recipient
 
     Error:
       type: object

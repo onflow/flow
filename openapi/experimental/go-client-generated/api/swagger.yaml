@@ -117,6 +117,262 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /experimental/v1/accounts/{address}/ft/transfers:
+    get:
+      tags:
+      - Accounts
+      summary: Get account fungible token transfers
+      description: |
+        Returns a paginated list of fungible token transfers for the given account address,
+        ordered descending by block height (newest first).
+      operationId: getAccountFungibleTransfers
+      parameters:
+      - name: address
+        in: path
+        description: The account address (hex-encoded without 0x prefix).
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Address"
+      - name: cursor
+        in: query
+        description: Opaque pagination cursor from a previous response's `next_cursor`
+          field.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/Cursor"
+      - name: limit
+        in: query
+        description: The maximum number of results to return.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 200
+          minimum: 1
+          type: integer
+          default: 50
+      - name: token_type
+        in: query
+        description: Filter by fully qualified token type (e.g. `A.1654653399040a61.FlowToken`).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: source_address
+        in: query
+        description: Filter by the sender address of the transfer.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/Address"
+      - name: recipient_address
+        in: query
+        description: Filter by the recipient address of the transfer.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/Address"
+      - name: role
+        in: query
+        description: "Filter by the account's role in the transfer. If unset, returns\
+          \ both sent and received transfers."
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/TransferRole"
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: A page of fungible token transfers.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AccountFungibleTransfersResponse"
+        "400":
+          description: "Bad request (invalid address, cursor, or limit)."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No account found for the given address.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "412":
+          description: Precondition failed (account transfer index not initialized).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /experimental/v1/accounts/{address}/nft/transfers:
+    get:
+      tags:
+      - Accounts
+      summary: Get account non-fungible token transfers
+      description: |
+        Returns a paginated list of non-fungible token transfers for the given account address,
+        ordered descending by block height (newest first).
+      operationId: getAccountNonFungibleTransfers
+      parameters:
+      - name: address
+        in: path
+        description: The account address (hex-encoded without 0x prefix).
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Address"
+      - name: cursor
+        in: query
+        description: Opaque pagination cursor from a previous response's `next_cursor`
+          field.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/Cursor"
+      - name: limit
+        in: query
+        description: The maximum number of results to return.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 200
+          minimum: 1
+          type: integer
+          default: 50
+      - name: token_type
+        in: query
+        description: Filter by fully qualified token type (e.g. `A.1654653399040a61.FlowToken`).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: source_address
+        in: query
+        description: Filter by the sender address of the transfer.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/Address"
+      - name: recipient_address
+        in: query
+        description: Filter by the recipient address of the transfer.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/Address"
+      - name: role
+        in: query
+        description: "Filter by the account's role in the transfer. If unset, returns\
+          \ both sent and received transfers."
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/TransferRole"
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: A page of non-fungible token transfers.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AccountNonFungibleTransfersResponse"
+        "400":
+          description: "Bad request (invalid address, cursor, or limit)."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No account found for the given address.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "412":
+          description: Precondition failed (account transfer index not initialized).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     AccountTransactionsResponse:
@@ -642,6 +898,744 @@ components:
         address: null
         signature: ""
         key_index: key_index
+    AccountFungibleTransfersResponse:
+      required:
+      - transfers
+      type: object
+      properties:
+        transfers:
+          type: array
+          items:
+            $ref: "#/components/schemas/FungibleTokenTransfer"
+        next_cursor:
+          $ref: "#/components/schemas/Cursor"
+      example:
+        next_cursor: next_cursor
+        transfers:
+        - transaction_id: transaction_id
+          amount: amount
+          _links:
+            _self: _self
+          event_indices:
+          - event_indices
+          - event_indices
+          block_height: block_height
+          transaction_index: transaction_index
+          recipient_address: null
+          token_type: token_type
+          result:
+            collection_id: null
+            error_message: error_message
+            execution: Pending
+            status_code: 0
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: computation_used
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            status: Pending
+          source_address: source_address
+          _expandable:
+            result: http://example.com/aeiou
+            transaction: http://example.com/aeiou
+          transaction:
+            _links: null
+            reference_block_id: null
+            payer: payer
+            script: script
+            result:
+              collection_id: null
+              error_message: error_message
+              execution: Pending
+              status_code: 0
+              _links:
+                _self: _self
+              block_id: null
+              computation_used: computation_used
+              events:
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              status: Pending
+            envelope_signatures:
+            - null
+            - null
+            gas_limit: gas_limit
+            payload_signatures:
+            - address: null
+              signature: ""
+              key_index: key_index
+            - address: null
+              signature: ""
+              key_index: key_index
+            arguments:
+            - ""
+            - ""
+            id: null
+            authorizers:
+            - null
+            - null
+            _expandable:
+              result: http://example.com/aeiou
+            proposal_key:
+              sequence_number: sequence_number
+              address: null
+              key_index: key_index
+          events:
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - transaction_id: transaction_id
+          amount: amount
+          _links:
+            _self: _self
+          event_indices:
+          - event_indices
+          - event_indices
+          block_height: block_height
+          transaction_index: transaction_index
+          recipient_address: null
+          token_type: token_type
+          result:
+            collection_id: null
+            error_message: error_message
+            execution: Pending
+            status_code: 0
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: computation_used
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            status: Pending
+          source_address: source_address
+          _expandable:
+            result: http://example.com/aeiou
+            transaction: http://example.com/aeiou
+          transaction:
+            _links: null
+            reference_block_id: null
+            payer: payer
+            script: script
+            result:
+              collection_id: null
+              error_message: error_message
+              execution: Pending
+              status_code: 0
+              _links:
+                _self: _self
+              block_id: null
+              computation_used: computation_used
+              events:
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              status: Pending
+            envelope_signatures:
+            - null
+            - null
+            gas_limit: gas_limit
+            payload_signatures:
+            - address: null
+              signature: ""
+              key_index: key_index
+            - address: null
+              signature: ""
+              key_index: key_index
+            arguments:
+            - ""
+            - ""
+            id: null
+            authorizers:
+            - null
+            - null
+            _expandable:
+              result: http://example.com/aeiou
+            proposal_key:
+              sequence_number: sequence_number
+              address: null
+              key_index: key_index
+          events:
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          timestamp: 2000-01-23T04:56:07.000+00:00
+    AccountNonFungibleTransfersResponse:
+      required:
+      - transfers
+      type: object
+      properties:
+        transfers:
+          type: array
+          items:
+            $ref: "#/components/schemas/NonFungibleTokenTransfer"
+        next_cursor:
+          $ref: "#/components/schemas/Cursor"
+      example:
+        next_cursor: next_cursor
+        transfers:
+        - transaction_id: transaction_id
+          _links:
+            _self: _self
+          event_indices:
+          - event_indices
+          - event_indices
+          block_height: block_height
+          transaction_index: transaction_index
+          recipient_address: null
+          token_type: token_type
+          result:
+            collection_id: null
+            error_message: error_message
+            execution: Pending
+            status_code: 0
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: computation_used
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            status: Pending
+          nft_id: nft_id
+          source_address: source_address
+          _expandable:
+            result: http://example.com/aeiou
+            transaction: http://example.com/aeiou
+          transaction:
+            _links: null
+            reference_block_id: null
+            payer: payer
+            script: script
+            result:
+              collection_id: null
+              error_message: error_message
+              execution: Pending
+              status_code: 0
+              _links:
+                _self: _self
+              block_id: null
+              computation_used: computation_used
+              events:
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              status: Pending
+            envelope_signatures:
+            - null
+            - null
+            gas_limit: gas_limit
+            payload_signatures:
+            - address: null
+              signature: ""
+              key_index: key_index
+            - address: null
+              signature: ""
+              key_index: key_index
+            arguments:
+            - ""
+            - ""
+            id: null
+            authorizers:
+            - null
+            - null
+            _expandable:
+              result: http://example.com/aeiou
+            proposal_key:
+              sequence_number: sequence_number
+              address: null
+              key_index: key_index
+          events:
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - transaction_id: transaction_id
+          _links:
+            _self: _self
+          event_indices:
+          - event_indices
+          - event_indices
+          block_height: block_height
+          transaction_index: transaction_index
+          recipient_address: null
+          token_type: token_type
+          result:
+            collection_id: null
+            error_message: error_message
+            execution: Pending
+            status_code: 0
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: computation_used
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            status: Pending
+          nft_id: nft_id
+          source_address: source_address
+          _expandable:
+            result: http://example.com/aeiou
+            transaction: http://example.com/aeiou
+          transaction:
+            _links: null
+            reference_block_id: null
+            payer: payer
+            script: script
+            result:
+              collection_id: null
+              error_message: error_message
+              execution: Pending
+              status_code: 0
+              _links:
+                _self: _self
+              block_id: null
+              computation_used: computation_used
+              events:
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              status: Pending
+            envelope_signatures:
+            - null
+            - null
+            gas_limit: gas_limit
+            payload_signatures:
+            - address: null
+              signature: ""
+              key_index: key_index
+            - address: null
+              signature: ""
+              key_index: key_index
+            arguments:
+            - ""
+            - ""
+            id: null
+            authorizers:
+            - null
+            - null
+            _expandable:
+              result: http://example.com/aeiou
+            proposal_key:
+              sequence_number: sequence_number
+              address: null
+              key_index: key_index
+          events:
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          timestamp: 2000-01-23T04:56:07.000+00:00
+    FungibleTokenTransfer:
+      required:
+      - _expandable
+      - amount
+      - block_height
+      - event_indices
+      - recipient_address
+      - source_address
+      - timestamp
+      - token_type
+      - transaction_id
+      - transaction_index
+      type: object
+      properties:
+        transaction_id:
+          $ref: "#/components/schemas/Identifier"
+        block_height:
+          type: string
+          description: Block height where the transfer was included.
+          format: uint64
+        timestamp:
+          type: string
+          description: Timestamp of the block where the transfer was included.
+          format: date-time
+        transaction_index:
+          type: string
+          description: Index of the transaction within the block.
+          format: uint32
+        event_indices:
+          type: array
+          description: Indices of the events within the transaction that represent
+            this transfer.
+          items:
+            type: string
+            format: uint32
+        token_type:
+          type: string
+          description: Fully qualified token type identifier (e.g. `A.1654653399040a61.FlowToken`).
+        amount:
+          type: string
+          description: "Amount of tokens transferred, as a decimal string."
+        source_address:
+          $ref: "#/components/schemas/Address"
+        recipient_address:
+          $ref: "#/components/schemas/Address"
+        transaction:
+          $ref: "#/components/schemas/Transaction"
+        result:
+          $ref: "#/components/schemas/TransactionResult"
+        events:
+          type: array
+          items:
+            $ref: "#/components/schemas/Event"
+        _expandable:
+          $ref: "#/components/schemas/AccountTransaction__expandable"
+        _links:
+          $ref: "#/components/schemas/Links"
+      example:
+        transaction_id: transaction_id
+        amount: amount
+        _links:
+          _self: _self
+        event_indices:
+        - event_indices
+        - event_indices
+        block_height: block_height
+        transaction_index: transaction_index
+        recipient_address: null
+        token_type: token_type
+        result:
+          collection_id: null
+          error_message: error_message
+          execution: Pending
+          status_code: 0
+          _links:
+            _self: _self
+          block_id: null
+          computation_used: computation_used
+          events:
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          status: Pending
+        source_address: source_address
+        _expandable:
+          result: http://example.com/aeiou
+          transaction: http://example.com/aeiou
+        transaction:
+          _links: null
+          reference_block_id: null
+          payer: payer
+          script: script
+          result:
+            collection_id: null
+            error_message: error_message
+            execution: Pending
+            status_code: 0
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: computation_used
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            status: Pending
+          envelope_signatures:
+          - null
+          - null
+          gas_limit: gas_limit
+          payload_signatures:
+          - address: null
+            signature: ""
+            key_index: key_index
+          - address: null
+            signature: ""
+            key_index: key_index
+          arguments:
+          - ""
+          - ""
+          id: null
+          authorizers:
+          - null
+          - null
+          _expandable:
+            result: http://example.com/aeiou
+          proposal_key:
+            sequence_number: sequence_number
+            address: null
+            key_index: key_index
+        events:
+        - transaction_id: null
+          payload: ""
+          transaction_index: transaction_index
+          type: type
+          event_index: event_index
+        - transaction_id: null
+          payload: ""
+          transaction_index: transaction_index
+          type: type
+          event_index: event_index
+        timestamp: 2000-01-23T04:56:07.000+00:00
+    NonFungibleTokenTransfer:
+      required:
+      - _expandable
+      - block_height
+      - event_indices
+      - nft_id
+      - recipient_address
+      - source_address
+      - timestamp
+      - token_type
+      - transaction_id
+      - transaction_index
+      type: object
+      properties:
+        transaction_id:
+          $ref: "#/components/schemas/Identifier"
+        block_height:
+          type: string
+          description: Block height where the transfer was included.
+          format: uint64
+        timestamp:
+          type: string
+          description: Timestamp of the block where the transfer was included.
+          format: date-time
+        transaction_index:
+          type: string
+          description: Index of the transaction within the block.
+          format: uint32
+        event_indices:
+          type: array
+          description: Indices of the events within the transaction that represent
+            this transfer.
+          items:
+            type: string
+            format: uint32
+        token_type:
+          type: string
+          description: Fully qualified NFT collection type (e.g. `A.1654653399040a61.MyNFT`).
+        nft_id:
+          type: string
+          description: Unique identifier of the NFT within its collection.
+          format: uint64
+        source_address:
+          $ref: "#/components/schemas/Address"
+        recipient_address:
+          $ref: "#/components/schemas/Address"
+        transaction:
+          $ref: "#/components/schemas/Transaction"
+        result:
+          $ref: "#/components/schemas/TransactionResult"
+        events:
+          type: array
+          items:
+            $ref: "#/components/schemas/Event"
+        _expandable:
+          $ref: "#/components/schemas/AccountTransaction__expandable"
+        _links:
+          $ref: "#/components/schemas/Links"
+      example:
+        transaction_id: transaction_id
+        _links:
+          _self: _self
+        event_indices:
+        - event_indices
+        - event_indices
+        block_height: block_height
+        transaction_index: transaction_index
+        recipient_address: null
+        token_type: token_type
+        result:
+          collection_id: null
+          error_message: error_message
+          execution: Pending
+          status_code: 0
+          _links:
+            _self: _self
+          block_id: null
+          computation_used: computation_used
+          events:
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          status: Pending
+        nft_id: nft_id
+        source_address: source_address
+        _expandable:
+          result: http://example.com/aeiou
+          transaction: http://example.com/aeiou
+        transaction:
+          _links: null
+          reference_block_id: null
+          payer: payer
+          script: script
+          result:
+            collection_id: null
+            error_message: error_message
+            execution: Pending
+            status_code: 0
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: computation_used
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            status: Pending
+          envelope_signatures:
+          - null
+          - null
+          gas_limit: gas_limit
+          payload_signatures:
+          - address: null
+            signature: ""
+            key_index: key_index
+          - address: null
+            signature: ""
+            key_index: key_index
+          arguments:
+          - ""
+          - ""
+          id: null
+          authorizers:
+          - null
+          - null
+          _expandable:
+            result: http://example.com/aeiou
+          proposal_key:
+            sequence_number: sequence_number
+            address: null
+            key_index: key_index
+        events:
+        - transaction_id: null
+          payload: ""
+          transaction_index: transaction_index
+          type: type
+          event_index: event_index
+        - transaction_id: null
+          payload: ""
+          transaction_index: transaction_index
+          type: type
+          event_index: event_index
+        timestamp: 2000-01-23T04:56:07.000+00:00
+    TransferRole:
+      type: string
+      enum:
+      - sender
+      - recipient
     Error:
       required:
       - code
@@ -737,3 +1731,40 @@ components:
         type: array
         items:
           type: string
+    tokenTypeParam:
+      name: token_type
+      in: query
+      description: Filter by fully qualified token type (e.g. `A.1654653399040a61.FlowToken`).
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    sourceAddressParam:
+      name: source_address
+      in: query
+      description: Filter by the sender address of the transfer.
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: "#/components/schemas/Address"
+    recipientAddressParam:
+      name: recipient_address
+      in: query
+      description: Filter by the recipient address of the transfer.
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: "#/components/schemas/Address"
+    transferRoleParam:
+      name: role
+      in: query
+      description: "Filter by the account's role in the transfer. If unset, returns\
+        \ both sent and received transfers."
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: "#/components/schemas/TransferRole"
