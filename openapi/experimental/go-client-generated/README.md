@@ -45,6 +45,7 @@ Class | Method | HTTP request | Description
  - [TransactionResult](docs/TransactionResult.md)
  - [TransactionSignature](docs/TransactionSignature.md)
  - [TransactionStatus](docs/TransactionStatus.md)
+ - [TransactionType](docs/TransactionType.md)
  - [TransferRole](docs/TransferRole.md)
 
 ## Documentation For Authorization

@@ -17,6 +17,7 @@ type TransactionResult struct {
 	// Provided transaction error in case the transaction wasn't successful.
 	ErrorMessage string `json:"error_message"`
 	ComputationUsed string `json:"computation_used"`
+	TransactionType *TransactionType `json:"transaction_type,omitempty"`
 	Events []Event `json:"events"`
 	Links *Links `json:"_links,omitempty"`
 }

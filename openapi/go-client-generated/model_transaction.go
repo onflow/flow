@@ -22,6 +22,7 @@ type Transaction struct {
 	Authorizers []string `json:"authorizers"`
 	PayloadSignatures []TransactionSignature `json:"payload_signatures"`
 	EnvelopeSignatures []TransactionSignature `json:"envelope_signatures"`
+	TransactionType *TransactionType `json:"transaction_type,omitempty"`
 	Result *TransactionResult `json:"result,omitempty"`
 	Expandable *TransactionExpandable `json:"_expandable"`
 	Links *Links `json:"_links,omitempty"`

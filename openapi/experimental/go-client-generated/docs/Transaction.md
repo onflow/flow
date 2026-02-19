@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Authorizers** | **[]string** |  | [default to null]
 **PayloadSignatures** | [**[]TransactionSignature**](TransactionSignature.md) |  | [default to null]
 **EnvelopeSignatures** | [**[]TransactionSignature**](TransactionSignature.md) |  | [default to null]
+**TransactionType** | [***TransactionType**](TransactionType.md) |  | [optional] [default to null]
 **Result** | [***TransactionResult**](TransactionResult.md) |  | [optional] [default to null]
 **Expandable** | [***TransactionExpandable**](Transaction__expandable.md) |  | [default to null]
 **Links** | [***Links**](Links.md) |  | [optional] [default to null]
