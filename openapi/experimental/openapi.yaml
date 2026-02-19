@@ -1,0 +1,398 @@
+openapi: 3.0.0
+info:
+  title: Flow Experimental API
+  description: |
+    Experimental API endpoints for the Flow Access Node. These endpoints are subject to change without notice.
+    Endpoints may be moved to a permanent API once they are stable.
+  version: 0.1.0
+
+servers:
+  - url: https://rest-testnet.onflow.org
+    description: Flow Testnet
+  - url: https://rest-mainnet.onflow.org
+    description: Flow Mainnet
+
+security: []
+
+tags:
+  - name: Accounts
+    description: Endpoints for querying account-related data.
+
+paths:
+  /experimental/v1/accounts/{address}/transactions:
+    get:
+      summary: Get account transactions
+      description: |
+        Returns a paginated list of transactions for the given account address,
+        ordered descending by block height (newest first).
+      operationId: getAccountTransactions
+      tags:
+        - Accounts
+      parameters:
+        - name: address
+          in: path
+          required: true
+          description: The account address (hex-encoded without 0x prefix).
+          schema:
+            $ref: '#/components/schemas/Address'
+        - $ref: '#/components/parameters/cursorParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/rolesParam'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        "200":
+          description: A page of account transactions.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AccountTransactionsResponse"
+        "400":
+          description: Bad request (invalid address, cursor, or limit).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No account found for the given address.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "412":
+          description: Precondition failed (account transaction index not initialized).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  parameters:
+    cursorParam:
+      description: Opaque pagination cursor from a previous response's `next_cursor` field.
+      name: cursor
+      in: query
+      schema:
+        $ref: '#/components/schemas/Cursor'
+      required: false
+    limitParam:
+      description: The maximum number of results to return.
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 50
+      required: false
+    rolesParam:
+      description: A comma-separated list indicating which roles to filter by.
+      name: roles
+      in: query
+      schema:
+        $ref: '#/components/schemas/Role'
+        minItems: 1
+        uniqueItems: true
+      explode: false
+      style: form
+      required: false
+    expandParam:
+      description: A comma-separated list indicating which properties of the content to expand.
+      name: expand
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+        minItems: 1
+        uniqueItems: true
+      explode: false
+      style: form
+      required: false
+    selectParam:
+      description: A comma-separated list indicating which properties of the content to return.
+      name: select
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+        minItems: 1
+        uniqueItems: true
+      explode: false
+      style: form
+      required: false
+
+  schemas:
+    AccountTransactionsResponse:
+      type: object
+      required:
+        - transactions
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: "#/components/schemas/AccountTransaction"
+        next_cursor:
+          $ref: '#/components/schemas/Cursor'
+    AccountTransaction:
+      type: object
+      required:
+        - block_height
+        - timestamp
+        - transaction_id
+        - transaction_index
+        - roles
+        - _expandable
+      properties:
+        block_height:
+          description: Block height where the transaction was included.
+          type: string
+          format: uint64
+        timestamp:
+          description: Timestamp of the block where the transaction was included.
+          type: string
+          format: date-time
+        transaction_id:
+          $ref: '#/components/schemas/Identifier'
+        transaction_index:
+          description: Index of the transaction within the block.
+          type: string
+          format: uint32
+        roles:
+          type: array
+          items:
+            type: string
+            enum:
+              - authorizer
+              - payer
+              - proposer
+              - interacted
+        transaction:
+          $ref: '#/components/schemas/Transaction'
+        result:
+          $ref: '#/components/schemas/TransactionResult'
+        _expandable:
+          type: object
+          description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
+          properties:
+            transaction:
+              type: string
+              format: uri
+              description: Link to fetch the full transaction body.
+            result:
+              type: string
+              format: uri
+              description: Link to fetch the transaction result.
+        _links:
+          $ref: '#/components/schemas/Links'
+    Address:
+      description: The 8-byte address of an account.
+      type: string
+      format: hexadecimal
+      pattern: '^[a-fA-F0-9]{16}$'
+    Cursor:
+      description: Opaque pagination cursor from a previous response's `next_cursor` field.
+      type: string
+      format: base64
+    Event:
+      type: object
+      required:
+        - type
+        - transaction_id
+        - transaction_index
+        - event_index
+        - payload
+      properties:
+        type:
+          $ref: '#/components/schemas/EventType'
+        transaction_id:
+          $ref: '#/components/schemas/Identifier'
+        transaction_index:
+          type: string
+          format: uint64
+        event_index:
+          type: string
+          format: uint64
+        payload:
+          type: string
+          format: byte
+    EventType:
+      description: The qualified event type.
+      type: string
+    Identifier:
+      description: A 32-byte unique identifier for an entity.
+      type: string
+      format: hexadecimal
+      pattern: '^[a-fA-F0-9]{64}$'
+    Links:
+      type: object
+      properties:
+        _self:
+          type: string
+    ProposalKey:
+      type: object
+      required:
+        - address
+        - key_index
+        - sequence_number
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        key_index:
+          type: string
+          format: uint64
+        sequence_number:
+          type: string
+          format: uint64
+    Role:
+      type: string
+      enum:
+        - authorizer
+        - payer
+        - proposer
+        - interacted
+    Signature:
+      description: A variable length signature.
+      type: string
+      format: byte
+    Transaction:
+      type: object
+      required:
+        - id
+        - script
+        - arguments
+        - reference_block_id
+        - gas_limit
+        - payer
+        - proposal_key
+        - authorizers
+        - payload_signatures
+        - envelope_signatures
+        - _expandable
+      properties:
+        id:
+          $ref: '#/components/schemas/Identifier'
+        script:
+          type: string
+          format: base64
+          description: Base64 encoded Cadence script.
+        arguments:
+          type: array
+          description: Array of Base64 encoded arguments with in [JSON-Cadence interchange format](https://docs.onflow.org/cadence/json-cadence-spec/).
+          items:
+            type: string
+            format: byte
+        reference_block_id:
+          $ref: '#/components/schemas/Identifier'
+        gas_limit:
+          type: string
+          format: uint64
+          description: The limit on the amount of computation a transaction is allowed to perform.
+        payer:
+          $ref: '#/components/schemas/Address'
+        proposal_key:
+          $ref: '#/components/schemas/ProposalKey'
+        authorizers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        payload_signatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionSignature'
+        envelope_signatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionSignature'
+        result:
+          $ref: '#/components/schemas/TransactionResult'
+        _expandable:
+          type: object
+          properties:
+            result:
+              type: string
+              format: uri
+        _links:
+          $ref: '#/components/schemas/Links'
+    TransactionResult:
+      type: object
+      required:
+        - block_id
+        - collection_id
+        - status
+        - status_code
+        - error_message
+        - computation_used
+        - events
+      properties:
+        block_id:
+          $ref: '#/components/schemas/Identifier'
+        collection_id:
+          $ref: '#/components/schemas/Identifier'
+        execution:
+          $ref: '#/components/schemas/TransactionExecution'
+        status:
+          $ref: '#/components/schemas/TransactionStatus'
+        status_code:
+          type: integer
+        error_message:
+          type: string
+          description: Provided transaction error in case the transaction wasn't successful.
+        computation_used:
+          type: string
+          format: uint64
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        _links:
+          $ref: '#/components/schemas/Links'
+    TransactionExecution:
+      type: string
+      description: This value indicates whether the transaction execution succeeded or not, this value should be checked when determining transaction success. 
+      enum:
+        - Pending
+        - Success
+        - Failure
+    TransactionStatus:
+      type: string
+      description: This value indicates the state of the transaction execution. Only sealed and expired are final and immutable states.
+      enum:
+        - Pending
+        - Finalized
+        - Executed
+        - Sealed
+        - Expired
+    TransactionSignature:
+      description: Base64 encoded signature.
+      type: object
+      required:
+        - address
+        - key_index
+        - signature
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        key_index:
+          type: string
+          format: uint64
+        signature:
+          $ref: '#/components/schemas/Signature'
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
