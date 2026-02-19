@@ -36,9 +36,9 @@ Class | Method | HTTP request | Description
 *NodeVersionInfoApi* | [**NodeVersionInfoGet**](docs/NodeVersionInfoApi.md#nodeversioninfoget) | **Get** /node_version_info | Get Node Version Information
 *ScriptsApi* | [**ScriptsPost**](docs/ScriptsApi.md#scriptspost) | **Post** /scripts | Execute a Cadence Script
 *SubscribeEventsApi* | [**SubscribeEventsGet**](docs/SubscribeEventsApi.md#subscribeeventsget) | **Get** /subscribe_events | Subscribe events
-*TransactionsApi* | [**TransactionResultsGet**](docs/TransactionsApi.md#transactionresultsget) | **Get** /transaction_results | Get Transaction Results by Block ID
+*TransactionsApi* | [**TransactionResultsGet**](docs/TransactionsApi.md#transactionresultsget) | **Get** /transaction_results | Get Transaction Results by block
 *TransactionsApi* | [**TransactionResultsTransactionIdGet**](docs/TransactionsApi.md#transactionresultstransactionidget) | **Get** /transaction_results/{transaction_id} | Get a Transaction Result by transaction ID or scheduled transaction ID.
-*TransactionsApi* | [**TransactionsGet**](docs/TransactionsApi.md#transactionsget) | **Get** /transactions | Get Transactions by Block ID
+*TransactionsApi* | [**TransactionsGet**](docs/TransactionsApi.md#transactionsget) | **Get** /transactions | Get Transactions by block
 *TransactionsApi* | [**TransactionsIdGet**](docs/TransactionsApi.md#transactionsidget) | **Get** /transactions/{id} | Get a Transaction by ID.
 *TransactionsApi* | [**TransactionsPost**](docs/TransactionsApi.md#transactionspost) | **Post** /transactions | Submit a Transaction
 
@@ -68,7 +68,6 @@ Class | Method | HTTP request | Description
  - [ExecutionResult](docs/ExecutionResult.md)
  - [ExecutorMetadata](docs/ExecutorMetadata.md)
  - [HashingAlgorithm](docs/HashingAlgorithm.md)
- - [Id](docs/Id.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [Links](docs/Links.md)
  - [Metadata](docs/Metadata.md)
@@ -82,7 +81,6 @@ Class | Method | HTTP request | Description
  - [Transaction](docs/Transaction.md)
  - [TransactionExecution](docs/TransactionExecution.md)
  - [TransactionExpandable](docs/TransactionExpandable.md)
- - [TransactionId](docs/TransactionId.md)
  - [TransactionResult](docs/TransactionResult.md)
  - [TransactionSignature](docs/TransactionSignature.md)
  - [TransactionStatus](docs/TransactionStatus.md)
