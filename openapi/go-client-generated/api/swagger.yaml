@@ -1988,6 +1988,7 @@ components:
         transactions:
         - _links: null
           reference_block_id: null
+          transaction_type: standard
           payer: payer
           script: script
           result:
@@ -2003,6 +2004,7 @@ components:
             status_code: 0
             _links:
               _self: _self
+            transaction_type: null
             block_id: null
             computation_used: computation_used
             events:
@@ -2043,6 +2045,7 @@ components:
             key_index: key_index
         - _links: null
           reference_block_id: null
+          transaction_type: standard
           payer: payer
           script: script
           result:
@@ -2058,6 +2061,7 @@ components:
             status_code: 0
             _links:
               _self: _self
+            transaction_type: null
             block_id: null
             computation_used: computation_used
             events:
@@ -2151,6 +2155,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/TransactionSignature"
+        transaction_type:
+          $ref: "#/components/schemas/TransactionType"
         result:
           $ref: "#/components/schemas/TransactionResult"
         _expandable:
@@ -2160,6 +2166,7 @@ components:
       example:
         _links: null
         reference_block_id: null
+        transaction_type: standard
         payer: payer
         script: script
         result:
@@ -2175,6 +2182,7 @@ components:
           status_code: 0
           _links:
             _self: _self
+          transaction_type: null
           block_id: null
           computation_used: computation_used
           events:
@@ -2278,6 +2286,8 @@ components:
         computation_used:
           type: string
           format: uint64
+        transaction_type:
+          $ref: "#/components/schemas/TransactionType"
         events:
           type: array
           items:
@@ -2299,6 +2309,7 @@ components:
         status_code: 0
         _links:
           _self: _self
+        transaction_type: null
         block_id: null
         computation_used: computation_used
         events:
@@ -2313,6 +2324,16 @@ components:
           type: type
           event_index: event_index
         status: Pending
+    TransactionType:
+      type: string
+      description: "This value indicates whether the transaction is a standard transaction,\
+        \ a scheduled transaction, or a system transaction. Unknown is returned for\
+        \ transactions that are not yet executed or could not be determined."
+      enum:
+      - standard
+      - scheduled
+      - system
+      - unknown
     TransactionExecution:
       type: string
       description: "This value indicates whether the transaction execution succeded\

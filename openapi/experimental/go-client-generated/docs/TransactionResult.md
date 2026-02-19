@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **StatusCode** | **int32** |  | [default to null]
 **ErrorMessage** | **string** | Provided transaction error in case the transaction wasn&#x27;t successful. | [default to null]
 **ComputationUsed** | **string** |  | [default to null]
+**TransactionType** | [***TransactionType**](TransactionType.md) |  | [optional] [default to null]
 **Events** | [**[]Event**](Event.md) |  | [default to null]
 **Links** | [***Links**](Links.md) |  | [optional] [default to null]
 

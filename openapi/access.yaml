@@ -1082,6 +1082,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TransactionSignature'
+        transaction_type:
+          $ref: '#/components/schemas/TransactionType'
         result:
           $ref: '#/components/schemas/TransactionResult'
         _expandable:
@@ -1149,6 +1151,8 @@ components:
         computation_used:
           type: string
           format: uint64
+        transaction_type:
+          $ref: '#/components/schemas/TransactionType'
         events:
           type: array
           items:
@@ -1157,9 +1161,17 @@ components:
           $ref: '#/components/schemas/Metadata'
         _links:
           $ref: '#/components/schemas/Links'
+    TransactionType:
+      type: string
+      description: This value indicates whether the transaction is a standard transaction, a scheduled transaction, or a system transaction. Unknown is returned for transactions that are not yet executed or could not be determined.
+      enum:
+        - standard
+        - scheduled
+        - system
+        - unknown
     TransactionExecution:
       type: string
-      description: This value indicates whether the transaction execution succeded or not, this value should be checked when determining transaction success. 
+      description: This value indicates whether the transaction execution succeded or not, this value should be checked when determining transaction success.
       enum:
         - Pending
         - Success
