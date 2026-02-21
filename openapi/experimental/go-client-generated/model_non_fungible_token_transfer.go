@@ -29,7 +29,6 @@ type NonFungibleTokenTransfer struct {
 	RecipientAddress string `json:"recipient_address"`
 	Transaction *Transaction `json:"transaction,omitempty"`
 	Result *TransactionResult `json:"result,omitempty"`
-	Events []Event `json:"events,omitempty"`
 	Expandable *AccountTransactionExpandable `json:"_expandable"`
 	Links *Links `json:"_links,omitempty"`
 }

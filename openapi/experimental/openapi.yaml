@@ -17,6 +17,8 @@ security: []
 tags:
   - name: Accounts
     description: Endpoints for querying account-related data.
+  - name: ScheduledTransactions
+    description: Endpoints for querying scheduled transaction data.
 
 paths:
   /experimental/v1/accounts/{address}/transactions:
@@ -55,12 +57,6 @@ paths:
                 $ref: "#/components/schemas/Error"
         "404":
           description: No account found for the given address.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "412":
-          description: Precondition failed (account transaction index not initialized).
           content:
             application/json:
               schema:
@@ -115,12 +111,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        "412":
-          description: Precondition failed (account transfer index not initialized).
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
         "429":
           description: Too many requests.
           content:
@@ -171,8 +161,140 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        "412":
-          description: Precondition failed (account transfer index not initialized).
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/scheduled:
+    get:
+      summary: List scheduled transactions
+      description: |
+        Returns a paginated list of scheduled transactions, ordered descending by scheduled transaction identifier (newest first).
+        Results can be filtered by status, priority, time range, and transaction handler properties.
+      operationId: getScheduledTransactions
+      tags:
+        - ScheduledTransactions
+      parameters:
+        - $ref: '#/components/parameters/cursorParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/scheduledStatusesParam'
+        - $ref: '#/components/parameters/priorityParam'
+        - $ref: '#/components/parameters/startTimeParam'
+        - $ref: '#/components/parameters/endTimeParam'
+        - $ref: '#/components/parameters/handlerOwnerParam'
+        - $ref: '#/components/parameters/handlerTypeIdentifierParam'
+        - $ref: '#/components/parameters/handlerUuidParam'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        "200":
+          description: A page of scheduled transactions.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScheduledTransactionsResponse"
+        "400":
+          description: Bad request (invalid filter parameters, cursor, or limit).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/scheduled/transaction/{id}:
+    get:
+      summary: Get scheduled transaction by ID
+      description: Returns the scheduled transaction with the given ID.
+      operationId: getScheduledTransactionByID
+      tags:
+        - ScheduledTransactions
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The scheduled transaction identifier (hex-encoded).
+          schema:
+            $ref: '#/components/schemas/Identifier'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        "200":
+          description: The scheduled transaction.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScheduledTransaction"
+        "400":
+          description: Bad request (invalid transaction ID).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No scheduled transaction found for the given ID.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/scheduled/account/{address}:
+    get:
+      summary: List scheduled transactions for an account
+      description: |
+        Returns a paginated list of scheduled transactions associated with the given account address,
+        ordered descending by scheduled time (newest first).
+        Results can be filtered by status, priority, time range, and transaction handler properties.
+      operationId: getScheduledTransactionsByAccount
+      tags:
+        - ScheduledTransactions
+        - Accounts
+      parameters:
+        - name: address
+          in: path
+          required: true
+          description: The account address (hex-encoded without 0x prefix).
+          schema:
+            $ref: '#/components/schemas/Address'
+        - $ref: '#/components/parameters/cursorParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/scheduledStatusesParam'
+        - $ref: '#/components/parameters/priorityParam'
+        - $ref: '#/components/parameters/startTimeParam'
+        - $ref: '#/components/parameters/endTimeParam'
+        - $ref: '#/components/parameters/handlerOwnerParam'
+        - $ref: '#/components/parameters/handlerTypeIdentifierParam'
+        - $ref: '#/components/parameters/handlerUuidParam'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        "200":
+          description: A page of scheduled transactions.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScheduledTransactionsResponse"
+        "400":
+          description: Bad request (invalid address, filter parameters, cursor, or limit).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No account found for the given address.
           content:
             application/json:
               schema:
@@ -267,6 +389,64 @@ components:
       in: query
       schema:
         $ref: '#/components/schemas/TransferRole'
+      required: false
+    scheduledStatusesParam:
+      description: A comma-separated list of scheduled transaction statuses to filter by.
+      name: statuses
+      in: query
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/ScheduledTransactionStatus'
+        minItems: 1
+        uniqueItems: true
+      explode: false
+      style: form
+      required: false
+    priorityParam:
+      description: Filter by scheduled transaction priority.
+      name: priority
+      in: query
+      schema:
+        $ref: '#/components/schemas/ScheduledTransactionPriority'
+      required: false
+    startTimeParam:
+      description: Filter to include only scheduled transactions with a scheduled time at or after this value (inclusive, RFC 3339).
+      name: start_time
+      in: query
+      schema:
+        type: string
+        format: date-time
+      required: false
+    endTimeParam:
+      description: Filter to include only scheduled transactions with a scheduled time at or before this value (inclusive, RFC 3339).
+      name: end_time
+      in: query
+      schema:
+        type: string
+        format: date-time
+      required: false
+    handlerOwnerParam:
+      description: Filter by the address of the account that owns the transaction handler.
+      name: handler_owner
+      in: query
+      schema:
+        $ref: '#/components/schemas/Address'
+      required: false
+    handlerTypeIdentifierParam:
+      description: Filter by the Cadence type identifier of the transaction handler (e.g. `A.1654653399040a61.MyScheduler.Handler`).
+      name: handler_type_identifier
+      in: query
+      schema:
+        type: string
+      required: false
+    handlerUuidParam:
+      description: Filter by the UUID of the transaction handler resource.
+      name: handler_uuid
+      in: query
+      schema:
+        type: string
+        format: uint64
       required: false
 
   schemas:
@@ -596,10 +776,6 @@ components:
           $ref: '#/components/schemas/Transaction'
         result:
           $ref: '#/components/schemas/TransactionResult'
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
         _expandable:
           type: object
           description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
@@ -663,10 +839,6 @@ components:
           $ref: '#/components/schemas/Transaction'
         result:
           $ref: '#/components/schemas/TransactionResult'
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
         _expandable:
           type: object
           description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
@@ -686,6 +858,131 @@ components:
       enum:
         - sender
         - recipient
+
+    ScheduledTransactionsResponse:
+      type: object
+      required:
+        - scheduled_transactions
+      properties:
+        scheduled_transactions:
+          type: array
+          items:
+            $ref: "#/components/schemas/ScheduledTransaction"
+        next_cursor:
+          $ref: '#/components/schemas/Cursor'
+    ScheduledTransaction:
+      type: object
+      required:
+        - id
+        - status
+        - priority
+        - timestamp
+        - execution_effort
+        - fees
+        - transaction_handler_owner
+        - transaction_handler_type_identifier
+        - transaction_handler_uuid
+        - _expandable
+      properties:
+        id:
+          description: Scheduler-assigned uint64 identifier.
+          type: string
+          format: uint64
+        status:
+          $ref: '#/components/schemas/ScheduledTransactionStatus'
+        priority:
+          $ref: '#/components/schemas/ScheduledTransactionPriority'
+        timestamp:
+          description: Scheduled execution timestamp as a UFix64 decimal string.
+          type: string
+        execution_effort:
+          description: Execution effort estimate as a UFix64 decimal string.
+          type: string
+        fees:
+          description: Scheduled fee as a UFix64 decimal string.
+          type: string
+        transaction_handler_owner:
+          description: Address of the account that owns the transaction handler.
+          $ref: '#/components/schemas/Address'
+        transaction_handler_type_identifier:
+          description: Fully qualified Cadence type identifier of the transaction handler (e.g. `A.1654653399040a61.MyScheduler.Handler`).
+          type: string
+        transaction_handler_uuid:
+          description: Resource UUID of the transaction handler.
+          type: string
+          format: uint64
+        transaction_handler_public_path:
+          description: Public path of the transaction handler, if set.
+          type: string
+        fees_returned:
+          description: Fees returned on cancellation, as a UFix64 decimal string.
+          type: string
+        fees_deducted:
+          description: Fees deducted on cancellation, as a UFix64 decimal string.
+          type: string
+        scheduled_transaction_id:
+          description: Flow transaction ID of the scheduling transaction.
+          $ref: '#/components/schemas/Identifier'
+        executed_transaction_id:
+          description: Flow transaction ID of the execution transaction.
+          $ref: '#/components/schemas/Identifier'
+        cancelled_transaction_id:
+          description: Flow transaction ID of the cancellation transaction.
+          $ref: '#/components/schemas/Identifier'
+        failed_transaction_id:
+          description: Flow transaction ID of the failure transaction.
+          $ref: '#/components/schemas/Identifier'
+        transaction:
+          $ref: '#/components/schemas/Transaction'
+        result:
+          $ref: '#/components/schemas/TransactionResult'
+        handler_contract:
+          $ref: '#/components/schemas/Contract'
+        _expandable:
+          type: object
+          description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
+          properties:
+            transaction:
+              type: string
+              format: uri
+              description: Link to fetch the full transaction body.
+            result:
+              type: string
+              format: uri
+              description: Link to fetch the transaction result.
+            handler_contract:
+              type: string
+              format: uri
+              description: Link to fetch the Cadence contract that implements the transaction handler.
+        _links:
+          $ref: '#/components/schemas/Links'
+    Contract:
+      type: object
+      required:
+        - identifier
+        - body
+      properties:
+        identifier:
+          description: Unique identifier for the contract (e.g. `A.1654653399040a61.MyContract`).
+          type: string
+        body:
+          description: Full source code of the contract.
+          type: string
+    ScheduledTransactionStatus:
+      type: string
+      description: The current lifecycle status of a scheduled transaction.
+      enum:
+        - scheduled
+        - executed
+        - cancelled
+        - failed
+    ScheduledTransactionPriority:
+      type: string
+      description: The execution priority of a scheduled transaction.
+      enum:
+        - low
+        - medium
+        - high
 
     Error:
       type: object

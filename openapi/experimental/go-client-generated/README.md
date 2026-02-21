@@ -24,6 +24,10 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**GetAccountFungibleTransfers**](docs/AccountsApi.md#getaccountfungibletransfers) | **Get** /experimental/v1/accounts/{address}/ft/transfers | Get account fungible token transfers
 *AccountsApi* | [**GetAccountNonFungibleTransfers**](docs/AccountsApi.md#getaccountnonfungibletransfers) | **Get** /experimental/v1/accounts/{address}/nft/transfers | Get account non-fungible token transfers
 *AccountsApi* | [**GetAccountTransactions**](docs/AccountsApi.md#getaccounttransactions) | **Get** /experimental/v1/accounts/{address}/transactions | Get account transactions
+*AccountsApi* | [**GetScheduledTransactionsByAccount**](docs/AccountsApi.md#getscheduledtransactionsbyaccount) | **Get** /experimental/v1/scheduled/account/{address} | List scheduled transactions for an account
+*ScheduledTransactionsApi* | [**GetScheduledTransactionByID**](docs/ScheduledTransactionsApi.md#getscheduledtransactionbyid) | **Get** /experimental/v1/scheduled/transaction/{id} | Get scheduled transaction by ID
+*ScheduledTransactionsApi* | [**GetScheduledTransactions**](docs/ScheduledTransactionsApi.md#getscheduledtransactions) | **Get** /experimental/v1/scheduled | List scheduled transactions
+*ScheduledTransactionsApi* | [**GetScheduledTransactionsByAccount**](docs/ScheduledTransactionsApi.md#getscheduledtransactionsbyaccount) | **Get** /experimental/v1/scheduled/account/{address} | List scheduled transactions for an account
 
 ## Documentation For Models
 
@@ -32,6 +36,7 @@ Class | Method | HTTP request | Description
  - [AccountTransaction](docs/AccountTransaction.md)
  - [AccountTransactionExpandable](docs/AccountTransactionExpandable.md)
  - [AccountTransactionsResponse](docs/AccountTransactionsResponse.md)
+ - [Contract](docs/Contract.md)
  - [Event](docs/Event.md)
  - [FungibleTokenTransfer](docs/FungibleTokenTransfer.md)
  - [Links](docs/Links.md)
@@ -39,6 +44,11 @@ Class | Method | HTTP request | Description
  - [NonFungibleTokenTransfer](docs/NonFungibleTokenTransfer.md)
  - [ProposalKey](docs/ProposalKey.md)
  - [Role](docs/Role.md)
+ - [ScheduledTransaction](docs/ScheduledTransaction.md)
+ - [ScheduledTransactionExpandable](docs/ScheduledTransactionExpandable.md)
+ - [ScheduledTransactionPriority](docs/ScheduledTransactionPriority.md)
+ - [ScheduledTransactionStatus](docs/ScheduledTransactionStatus.md)
+ - [ScheduledTransactionsResponse](docs/ScheduledTransactionsResponse.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionExecution](docs/TransactionExecution.md)
  - [TransactionExpandable](docs/TransactionExpandable.md)
