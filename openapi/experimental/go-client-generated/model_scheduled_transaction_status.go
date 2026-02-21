@@ -12,8 +12,8 @@ type ScheduledTransactionStatus string
 
 // List of ScheduledTransactionStatus
 const (
-	PENDING_ScheduledTransactionStatus ScheduledTransactionStatus = "Pending"
-	EXECUTED_ScheduledTransactionStatus ScheduledTransactionStatus = "Executed"
-	FAILED_ScheduledTransactionStatus ScheduledTransactionStatus = "Failed"
-	CANCELLED_ScheduledTransactionStatus ScheduledTransactionStatus = "Cancelled"
+	SCHEDULED_ScheduledTransactionStatus ScheduledTransactionStatus = "scheduled"
+	EXECUTED_ScheduledTransactionStatus ScheduledTransactionStatus = "executed"
+	CANCELLED_ScheduledTransactionStatus ScheduledTransactionStatus = "cancelled"
+	FAILED_ScheduledTransactionStatus ScheduledTransactionStatus = "failed"
 )

@@ -870,9 +870,9 @@ components:
     ScheduledTransactionsResponse:
       type: object
       required:
-        - transactions
+        - scheduled_transactions
       properties:
-        transactions:
+        scheduled_transactions:
           type: array
           items:
             $ref: "#/components/schemas/ScheduledTransaction"
@@ -885,72 +885,77 @@ components:
         - status
         - priority
         - timestamp
-        - handler
-        - _expandable
+        - execution_effort
+        - fees
+        - transaction_handler_owner
+        - transaction_handler_type_identifier
+        - transaction_handler_uuid
       properties:
         id:
-          $ref: '#/components/schemas/Identifier'
+          description: Scheduler-assigned uint64 identifier.
+          type: string
+          format: uint64
         status:
           $ref: '#/components/schemas/ScheduledTransactionStatus'
         priority:
           $ref: '#/components/schemas/ScheduledTransactionPriority'
         timestamp:
-          description: The time at which the transaction is scheduled to execute.
+          description: Scheduled execution timestamp as a UFix64 decimal string.
           type: string
-          format: date-time
-        handler:
-          $ref: '#/components/schemas/TransactionHandler'
-        transaction:
-          $ref: '#/components/schemas/Transaction'
-        result:
-          $ref: '#/components/schemas/TransactionResult'
-        _expandable:
-          type: object
-          description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
-          properties:
-            transaction:
-              type: string
-              format: uri
-              description: Link to fetch the full transaction body.
-            result:
-              type: string
-              format: uri
-              description: Link to fetch the transaction result.
-        _links:
-          $ref: '#/components/schemas/Links'
-    TransactionHandler:
-      type: object
-      description: Identifies the Cadence resource responsible for handling the scheduled transaction.
-      required:
-        - owner
-        - type_identifier
-        - uuid
-      properties:
-        owner:
-          description: Address of the account that owns the transaction handler resource.
+        execution_effort:
+          description: Execution effort estimate as a UFix64 decimal string.
+          type: string
+        fees:
+          description: Scheduled fee as a UFix64 decimal string.
+          type: string
+        transaction_handler_owner:
+          description: Address of the account that owns the transaction handler.
           $ref: '#/components/schemas/Address'
-        type_identifier:
+        transaction_handler_type_identifier:
           description: Fully qualified Cadence type identifier of the transaction handler (e.g. `A.1654653399040a61.MyScheduler.Handler`).
           type: string
-        uuid:
-          description: UUID of the transaction handler resource.
+        transaction_handler_uuid:
+          description: Resource UUID of the transaction handler.
           type: string
           format: uint64
+        transaction_handler_public_path:
+          description: Public path of the transaction handler, if set.
+          type: string
+        fees_returned:
+          description: Fees returned on cancellation, as a UFix64 decimal string.
+          type: string
+        fees_deducted:
+          description: Fees deducted on cancellation, as a UFix64 decimal string.
+          type: string
+        scheduled_transaction_id:
+          description: Flow transaction ID of the scheduling transaction.
+          $ref: '#/components/schemas/Identifier'
+        executed_transaction_id:
+          description: Flow transaction ID of the execution transaction.
+          $ref: '#/components/schemas/Identifier'
+        cancelled_transaction_id:
+          description: Flow transaction ID of the cancellation transaction.
+          $ref: '#/components/schemas/Identifier'
+        failed_transaction_id:
+          description: Flow transaction ID of the failure transaction.
+          $ref: '#/components/schemas/Identifier'
+        _links:
+          $ref: '#/components/schemas/Links'
     ScheduledTransactionStatus:
       type: string
       description: The current lifecycle status of a scheduled transaction.
       enum:
-        - Pending
-        - Executed
-        - Failed
-        - Cancelled
+        - scheduled
+        - executed
+        - cancelled
+        - failed
     ScheduledTransactionPriority:
       type: string
       description: The execution priority of a scheduled transaction.
       enum:
-        - Low
-        - Medium
-        - High
+        - low
+        - medium
+        - high
 
     Error:
       type: object

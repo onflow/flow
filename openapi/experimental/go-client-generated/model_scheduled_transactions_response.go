@@ -9,6 +9,6 @@
 package swagger
 
 type ScheduledTransactionsResponse struct {
-	Transactions []ScheduledTransaction `json:"transactions"`
+	ScheduledTransactions []ScheduledTransaction `json:"scheduled_transactions"`
 	NextCursor string `json:"next_cursor,omitempty"`
 }

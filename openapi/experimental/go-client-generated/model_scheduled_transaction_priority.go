@@ -12,7 +12,7 @@ type ScheduledTransactionPriority string
 
 // List of ScheduledTransactionPriority
 const (
-	LOW_ScheduledTransactionPriority ScheduledTransactionPriority = "Low"
-	MEDIUM_ScheduledTransactionPriority ScheduledTransactionPriority = "Medium"
-	HIGH_ScheduledTransactionPriority ScheduledTransactionPriority = "High"
+	LOW_ScheduledTransactionPriority ScheduledTransactionPriority = "low"
+	MEDIUM_ScheduledTransactionPriority ScheduledTransactionPriority = "medium"
+	HIGH_ScheduledTransactionPriority ScheduledTransactionPriority = "high"
 )

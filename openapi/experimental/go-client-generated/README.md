@@ -50,7 +50,6 @@ Class | Method | HTTP request | Description
  - [Transaction](docs/Transaction.md)
  - [TransactionExecution](docs/TransactionExecution.md)
  - [TransactionExpandable](docs/TransactionExpandable.md)
- - [TransactionHandler](docs/TransactionHandler.md)
  - [TransactionResult](docs/TransactionResult.md)
  - [TransactionSignature](docs/TransactionSignature.md)
  - [TransactionStatus](docs/TransactionStatus.md)

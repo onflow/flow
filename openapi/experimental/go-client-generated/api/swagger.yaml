@@ -1992,339 +1992,147 @@ components:
       - recipient
     ScheduledTransactionsResponse:
       required:
-      - transactions
+      - scheduled_transactions
       type: object
       properties:
-        transactions:
+        scheduled_transactions:
           type: array
           items:
             $ref: "#/components/schemas/ScheduledTransaction"
         next_cursor:
           $ref: "#/components/schemas/Cursor"
       example:
+        scheduled_transactions:
+        - fees: fees
+          fees_deducted: fees_deducted
+          transaction_handler_public_path: transaction_handler_public_path
+          _links:
+            _self: _self
+          failed_transaction_id: null
+          priority: low
+          transaction_handler_type_identifier: transaction_handler_type_identifier
+          execution_effort: execution_effort
+          transaction_handler_owner: transaction_handler_owner
+          transaction_handler_uuid: transaction_handler_uuid
+          scheduled_transaction_id: scheduled_transaction_id
+          cancelled_transaction_id: null
+          id: id
+          executed_transaction_id: null
+          fees_returned: fees_returned
+          status: scheduled
+          timestamp: timestamp
+        - fees: fees
+          fees_deducted: fees_deducted
+          transaction_handler_public_path: transaction_handler_public_path
+          _links:
+            _self: _self
+          failed_transaction_id: null
+          priority: low
+          transaction_handler_type_identifier: transaction_handler_type_identifier
+          execution_effort: execution_effort
+          transaction_handler_owner: transaction_handler_owner
+          transaction_handler_uuid: transaction_handler_uuid
+          scheduled_transaction_id: scheduled_transaction_id
+          cancelled_transaction_id: null
+          id: id
+          executed_transaction_id: null
+          fees_returned: fees_returned
+          status: scheduled
+          timestamp: timestamp
         next_cursor: next_cursor
-        transactions:
-        - result:
-            collection_id: null
-            error_message: error_message
-            execution: Pending
-            status_code: 0
-            _links:
-              _self: _self
-            block_id: null
-            computation_used: computation_used
-            events:
-            - transaction_id: null
-              payload: ""
-              transaction_index: transaction_index
-              type: type
-              event_index: event_index
-            - transaction_id: null
-              payload: ""
-              transaction_index: transaction_index
-              type: type
-              event_index: event_index
-            status: Pending
-          handler:
-            owner: owner
-            uuid: uuid
-            type_identifier: type_identifier
-          _links:
-            _self: _self
-          id: id
-          priority: Low
-          _expandable:
-            result: http://example.com/aeiou
-            transaction: http://example.com/aeiou
-          transaction:
-            _links: null
-            reference_block_id: null
-            payer: payer
-            script: script
-            result:
-              collection_id: null
-              error_message: error_message
-              execution: Pending
-              status_code: 0
-              _links:
-                _self: _self
-              block_id: null
-              computation_used: computation_used
-              events:
-              - transaction_id: null
-                payload: ""
-                transaction_index: transaction_index
-                type: type
-                event_index: event_index
-              - transaction_id: null
-                payload: ""
-                transaction_index: transaction_index
-                type: type
-                event_index: event_index
-              status: Pending
-            envelope_signatures:
-            - null
-            - null
-            gas_limit: gas_limit
-            payload_signatures:
-            - address: null
-              signature: ""
-              key_index: key_index
-            - address: null
-              signature: ""
-              key_index: key_index
-            arguments:
-            - ""
-            - ""
-            id: null
-            authorizers:
-            - null
-            - null
-            _expandable:
-              result: http://example.com/aeiou
-            proposal_key:
-              sequence_number: sequence_number
-              address: null
-              key_index: key_index
-          status: Pending
-          timestamp: 2000-01-23T04:56:07.000+00:00
-        - result:
-            collection_id: null
-            error_message: error_message
-            execution: Pending
-            status_code: 0
-            _links:
-              _self: _self
-            block_id: null
-            computation_used: computation_used
-            events:
-            - transaction_id: null
-              payload: ""
-              transaction_index: transaction_index
-              type: type
-              event_index: event_index
-            - transaction_id: null
-              payload: ""
-              transaction_index: transaction_index
-              type: type
-              event_index: event_index
-            status: Pending
-          handler:
-            owner: owner
-            uuid: uuid
-            type_identifier: type_identifier
-          _links:
-            _self: _self
-          id: id
-          priority: Low
-          _expandable:
-            result: http://example.com/aeiou
-            transaction: http://example.com/aeiou
-          transaction:
-            _links: null
-            reference_block_id: null
-            payer: payer
-            script: script
-            result:
-              collection_id: null
-              error_message: error_message
-              execution: Pending
-              status_code: 0
-              _links:
-                _self: _self
-              block_id: null
-              computation_used: computation_used
-              events:
-              - transaction_id: null
-                payload: ""
-                transaction_index: transaction_index
-                type: type
-                event_index: event_index
-              - transaction_id: null
-                payload: ""
-                transaction_index: transaction_index
-                type: type
-                event_index: event_index
-              status: Pending
-            envelope_signatures:
-            - null
-            - null
-            gas_limit: gas_limit
-            payload_signatures:
-            - address: null
-              signature: ""
-              key_index: key_index
-            - address: null
-              signature: ""
-              key_index: key_index
-            arguments:
-            - ""
-            - ""
-            id: null
-            authorizers:
-            - null
-            - null
-            _expandable:
-              result: http://example.com/aeiou
-            proposal_key:
-              sequence_number: sequence_number
-              address: null
-              key_index: key_index
-          status: Pending
-          timestamp: 2000-01-23T04:56:07.000+00:00
     ScheduledTransaction:
       required:
-      - _expandable
-      - handler
+      - execution_effort
+      - fees
       - id
       - priority
       - status
       - timestamp
+      - transaction_handler_owner
+      - transaction_handler_type_identifier
+      - transaction_handler_uuid
       type: object
       properties:
         id:
-          $ref: "#/components/schemas/Identifier"
+          type: string
+          description: Scheduler-assigned uint64 identifier.
+          format: uint64
         status:
           $ref: "#/components/schemas/ScheduledTransactionStatus"
         priority:
           $ref: "#/components/schemas/ScheduledTransactionPriority"
         timestamp:
           type: string
-          description: The time at which the transaction is scheduled to execute.
-          format: date-time
-        handler:
-          $ref: "#/components/schemas/TransactionHandler"
-        transaction:
-          $ref: "#/components/schemas/Transaction"
-        result:
-          $ref: "#/components/schemas/TransactionResult"
-        _expandable:
-          $ref: "#/components/schemas/AccountTransaction__expandable"
-        _links:
-          $ref: "#/components/schemas/Links"
-      example:
-        result:
-          collection_id: null
-          error_message: error_message
-          execution: Pending
-          status_code: 0
-          _links:
-            _self: _self
-          block_id: null
-          computation_used: computation_used
-          events:
-          - transaction_id: null
-            payload: ""
-            transaction_index: transaction_index
-            type: type
-            event_index: event_index
-          - transaction_id: null
-            payload: ""
-            transaction_index: transaction_index
-            type: type
-            event_index: event_index
-          status: Pending
-        handler:
-          owner: owner
-          uuid: uuid
-          type_identifier: type_identifier
-        _links:
-          _self: _self
-        id: id
-        priority: Low
-        _expandable:
-          result: http://example.com/aeiou
-          transaction: http://example.com/aeiou
-        transaction:
-          _links: null
-          reference_block_id: null
-          payer: payer
-          script: script
-          result:
-            collection_id: null
-            error_message: error_message
-            execution: Pending
-            status_code: 0
-            _links:
-              _self: _self
-            block_id: null
-            computation_used: computation_used
-            events:
-            - transaction_id: null
-              payload: ""
-              transaction_index: transaction_index
-              type: type
-              event_index: event_index
-            - transaction_id: null
-              payload: ""
-              transaction_index: transaction_index
-              type: type
-              event_index: event_index
-            status: Pending
-          envelope_signatures:
-          - null
-          - null
-          gas_limit: gas_limit
-          payload_signatures:
-          - address: null
-            signature: ""
-            key_index: key_index
-          - address: null
-            signature: ""
-            key_index: key_index
-          arguments:
-          - ""
-          - ""
-          id: null
-          authorizers:
-          - null
-          - null
-          _expandable:
-            result: http://example.com/aeiou
-          proposal_key:
-            sequence_number: sequence_number
-            address: null
-            key_index: key_index
-        status: Pending
-        timestamp: 2000-01-23T04:56:07.000+00:00
-    TransactionHandler:
-      required:
-      - owner
-      - type_identifier
-      - uuid
-      type: object
-      properties:
-        owner:
+          description: Scheduled execution timestamp as a UFix64 decimal string.
+        execution_effort:
+          type: string
+          description: Execution effort estimate as a UFix64 decimal string.
+        fees:
+          type: string
+          description: Scheduled fee as a UFix64 decimal string.
+        transaction_handler_owner:
           $ref: "#/components/schemas/Address"
-        type_identifier:
+        transaction_handler_type_identifier:
           type: string
           description: Fully qualified Cadence type identifier of the transaction
             handler (e.g. `A.1654653399040a61.MyScheduler.Handler`).
-        uuid:
+        transaction_handler_uuid:
           type: string
-          description: UUID of the transaction handler resource.
+          description: Resource UUID of the transaction handler.
           format: uint64
-      description: Identifies the Cadence resource responsible for handling the scheduled
-        transaction.
+        transaction_handler_public_path:
+          type: string
+          description: "Public path of the transaction handler, if set."
+        fees_returned:
+          type: string
+          description: "Fees returned on cancellation, as a UFix64 decimal string."
+        fees_deducted:
+          type: string
+          description: "Fees deducted on cancellation, as a UFix64 decimal string."
+        scheduled_transaction_id:
+          $ref: "#/components/schemas/Identifier"
+        executed_transaction_id:
+          $ref: "#/components/schemas/Identifier"
+        cancelled_transaction_id:
+          $ref: "#/components/schemas/Identifier"
+        failed_transaction_id:
+          $ref: "#/components/schemas/Identifier"
+        _links:
+          $ref: "#/components/schemas/Links"
       example:
-        owner: owner
-        uuid: uuid
-        type_identifier: type_identifier
+        fees: fees
+        fees_deducted: fees_deducted
+        transaction_handler_public_path: transaction_handler_public_path
+        _links:
+          _self: _self
+        failed_transaction_id: null
+        priority: low
+        transaction_handler_type_identifier: transaction_handler_type_identifier
+        execution_effort: execution_effort
+        transaction_handler_owner: transaction_handler_owner
+        transaction_handler_uuid: transaction_handler_uuid
+        scheduled_transaction_id: scheduled_transaction_id
+        cancelled_transaction_id: null
+        id: id
+        executed_transaction_id: null
+        fees_returned: fees_returned
+        status: scheduled
+        timestamp: timestamp
     ScheduledTransactionStatus:
       type: string
       description: The current lifecycle status of a scheduled transaction.
       enum:
-      - Pending
-      - Executed
-      - Failed
-      - Cancelled
+      - scheduled
+      - executed
+      - cancelled
+      - failed
     ScheduledTransactionPriority:
       type: string
       description: The execution priority of a scheduled transaction.
       enum:
-      - Low
-      - Medium
-      - High
+      - low
+      - medium
+      - high
     Error:
       required:
       - code
