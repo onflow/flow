@@ -34,5 +34,6 @@ type ScheduledTransaction struct {
 	ExecutedTransactionId string `json:"executed_transaction_id,omitempty"`
 	CancelledTransactionId string `json:"cancelled_transaction_id,omitempty"`
 	FailedTransactionId string `json:"failed_transaction_id,omitempty"`
+	Expandable *AccountTransactionExpandable `json:"_expandable"`
 	Links *Links `json:"_links,omitempty"`
 }

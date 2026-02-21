@@ -776,10 +776,6 @@ components:
           $ref: '#/components/schemas/Transaction'
         result:
           $ref: '#/components/schemas/TransactionResult'
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
         _expandable:
           type: object
           description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
@@ -843,10 +839,6 @@ components:
           $ref: '#/components/schemas/Transaction'
         result:
           $ref: '#/components/schemas/TransactionResult'
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
         _expandable:
           type: object
           description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
@@ -890,6 +882,7 @@ components:
         - transaction_handler_owner
         - transaction_handler_type_identifier
         - transaction_handler_uuid
+        - _expandable
       properties:
         id:
           description: Scheduler-assigned uint64 identifier.
@@ -939,6 +932,18 @@ components:
         failed_transaction_id:
           description: Flow transaction ID of the failure transaction.
           $ref: '#/components/schemas/Identifier'
+        _expandable:
+          type: object
+          description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
+          properties:
+            transaction:
+              type: string
+              format: uri
+              description: Link to fetch the full transaction body.
+            result:
+              type: string
+              format: uri
+              description: Link to fetch the transaction result.
         _links:
           $ref: '#/components/schemas/Links'
     ScheduledTransactionStatus:

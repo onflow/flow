@@ -1352,17 +1352,6 @@ components:
               sequence_number: sequence_number
               address: null
               key_index: key_index
-          events:
-          - transaction_id: null
-            payload: ""
-            transaction_index: transaction_index
-            type: type
-            event_index: event_index
-          - transaction_id: null
-            payload: ""
-            transaction_index: transaction_index
-            type: type
-            event_index: event_index
           timestamp: 2000-01-23T04:56:07.000+00:00
         - transaction_id: transaction_id
           amount: amount
@@ -1450,17 +1439,6 @@ components:
               sequence_number: sequence_number
               address: null
               key_index: key_index
-          events:
-          - transaction_id: null
-            payload: ""
-            transaction_index: transaction_index
-            type: type
-            event_index: event_index
-          - transaction_id: null
-            payload: ""
-            transaction_index: transaction_index
-            type: type
-            event_index: event_index
           timestamp: 2000-01-23T04:56:07.000+00:00
     AccountNonFungibleTransfersResponse:
       required:
@@ -1562,17 +1540,6 @@ components:
               sequence_number: sequence_number
               address: null
               key_index: key_index
-          events:
-          - transaction_id: null
-            payload: ""
-            transaction_index: transaction_index
-            type: type
-            event_index: event_index
-          - transaction_id: null
-            payload: ""
-            transaction_index: transaction_index
-            type: type
-            event_index: event_index
           timestamp: 2000-01-23T04:56:07.000+00:00
         - transaction_id: transaction_id
           _links:
@@ -1660,17 +1627,6 @@ components:
               sequence_number: sequence_number
               address: null
               key_index: key_index
-          events:
-          - transaction_id: null
-            payload: ""
-            transaction_index: transaction_index
-            type: type
-            event_index: event_index
-          - transaction_id: null
-            payload: ""
-            transaction_index: transaction_index
-            type: type
-            event_index: event_index
           timestamp: 2000-01-23T04:56:07.000+00:00
     FungibleTokenTransfer:
       required:
@@ -1721,10 +1677,6 @@ components:
           $ref: "#/components/schemas/Transaction"
         result:
           $ref: "#/components/schemas/TransactionResult"
-        events:
-          type: array
-          items:
-            $ref: "#/components/schemas/Event"
         _expandable:
           $ref: "#/components/schemas/AccountTransaction__expandable"
         _links:
@@ -1816,17 +1768,6 @@ components:
             sequence_number: sequence_number
             address: null
             key_index: key_index
-        events:
-        - transaction_id: null
-          payload: ""
-          transaction_index: transaction_index
-          type: type
-          event_index: event_index
-        - transaction_id: null
-          payload: ""
-          transaction_index: transaction_index
-          type: type
-          event_index: event_index
         timestamp: 2000-01-23T04:56:07.000+00:00
     NonFungibleTokenTransfer:
       required:
@@ -1878,10 +1819,6 @@ components:
           $ref: "#/components/schemas/Transaction"
         result:
           $ref: "#/components/schemas/TransactionResult"
-        events:
-          type: array
-          items:
-            $ref: "#/components/schemas/Event"
         _expandable:
           $ref: "#/components/schemas/AccountTransaction__expandable"
         _links:
@@ -1973,17 +1910,6 @@ components:
             sequence_number: sequence_number
             address: null
             key_index: key_index
-        events:
-        - transaction_id: null
-          payload: ""
-          transaction_index: transaction_index
-          type: type
-          event_index: event_index
-        - transaction_id: null
-          payload: ""
-          transaction_index: transaction_index
-          type: type
-          event_index: event_index
         timestamp: 2000-01-23T04:56:07.000+00:00
     TransferRole:
       type: string
@@ -2018,6 +1944,9 @@ components:
           cancelled_transaction_id: null
           id: id
           executed_transaction_id: null
+          _expandable:
+            result: http://example.com/aeiou
+            transaction: http://example.com/aeiou
           fees_returned: fees_returned
           status: scheduled
           timestamp: timestamp
@@ -2036,12 +1965,16 @@ components:
           cancelled_transaction_id: null
           id: id
           executed_transaction_id: null
+          _expandable:
+            result: http://example.com/aeiou
+            transaction: http://example.com/aeiou
           fees_returned: fees_returned
           status: scheduled
           timestamp: timestamp
         next_cursor: next_cursor
     ScheduledTransaction:
       required:
+      - _expandable
       - execution_effort
       - fees
       - id
@@ -2097,6 +2030,8 @@ components:
           $ref: "#/components/schemas/Identifier"
         failed_transaction_id:
           $ref: "#/components/schemas/Identifier"
+        _expandable:
+          $ref: "#/components/schemas/AccountTransaction__expandable"
         _links:
           $ref: "#/components/schemas/Links"
       example:
@@ -2115,6 +2050,9 @@ components:
         cancelled_transaction_id: null
         id: id
         executed_transaction_id: null
+        _expandable:
+          result: http://example.com/aeiou
+          transaction: http://example.com/aeiou
         fees_returned: fees_returned
         status: scheduled
         timestamp: timestamp
