@@ -1936,6 +1936,27 @@ components:
             _self: _self
           failed_transaction_id: null
           priority: low
+          result:
+            collection_id: null
+            error_message: error_message
+            execution: Pending
+            status_code: 0
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: computation_used
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            status: Pending
           transaction_handler_type_identifier: transaction_handler_type_identifier
           execution_effort: execution_effort
           transaction_handler_owner: transaction_handler_owner
@@ -1944,10 +1965,64 @@ components:
           cancelled_transaction_id: null
           id: id
           executed_transaction_id: null
+          handler_contract:
+            identifier: identifier
+            body: body
           _expandable:
             result: http://example.com/aeiou
+            handler_contract: http://example.com/aeiou
             transaction: http://example.com/aeiou
           fees_returned: fees_returned
+          transaction:
+            _links: null
+            reference_block_id: null
+            payer: payer
+            script: script
+            result:
+              collection_id: null
+              error_message: error_message
+              execution: Pending
+              status_code: 0
+              _links:
+                _self: _self
+              block_id: null
+              computation_used: computation_used
+              events:
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              status: Pending
+            envelope_signatures:
+            - null
+            - null
+            gas_limit: gas_limit
+            payload_signatures:
+            - address: null
+              signature: ""
+              key_index: key_index
+            - address: null
+              signature: ""
+              key_index: key_index
+            arguments:
+            - ""
+            - ""
+            id: null
+            authorizers:
+            - null
+            - null
+            _expandable:
+              result: http://example.com/aeiou
+            proposal_key:
+              sequence_number: sequence_number
+              address: null
+              key_index: key_index
           status: scheduled
           timestamp: timestamp
         - fees: fees
@@ -1957,6 +2032,27 @@ components:
             _self: _self
           failed_transaction_id: null
           priority: low
+          result:
+            collection_id: null
+            error_message: error_message
+            execution: Pending
+            status_code: 0
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: computation_used
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            status: Pending
           transaction_handler_type_identifier: transaction_handler_type_identifier
           execution_effort: execution_effort
           transaction_handler_owner: transaction_handler_owner
@@ -1965,10 +2061,64 @@ components:
           cancelled_transaction_id: null
           id: id
           executed_transaction_id: null
+          handler_contract:
+            identifier: identifier
+            body: body
           _expandable:
             result: http://example.com/aeiou
+            handler_contract: http://example.com/aeiou
             transaction: http://example.com/aeiou
           fees_returned: fees_returned
+          transaction:
+            _links: null
+            reference_block_id: null
+            payer: payer
+            script: script
+            result:
+              collection_id: null
+              error_message: error_message
+              execution: Pending
+              status_code: 0
+              _links:
+                _self: _self
+              block_id: null
+              computation_used: computation_used
+              events:
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              status: Pending
+            envelope_signatures:
+            - null
+            - null
+            gas_limit: gas_limit
+            payload_signatures:
+            - address: null
+              signature: ""
+              key_index: key_index
+            - address: null
+              signature: ""
+              key_index: key_index
+            arguments:
+            - ""
+            - ""
+            id: null
+            authorizers:
+            - null
+            - null
+            _expandable:
+              result: http://example.com/aeiou
+            proposal_key:
+              sequence_number: sequence_number
+              address: null
+              key_index: key_index
           status: scheduled
           timestamp: timestamp
         next_cursor: next_cursor
@@ -2030,8 +2180,14 @@ components:
           $ref: "#/components/schemas/Identifier"
         failed_transaction_id:
           $ref: "#/components/schemas/Identifier"
+        transaction:
+          $ref: "#/components/schemas/Transaction"
+        result:
+          $ref: "#/components/schemas/TransactionResult"
+        handler_contract:
+          $ref: "#/components/schemas/Contract"
         _expandable:
-          $ref: "#/components/schemas/AccountTransaction__expandable"
+          $ref: "#/components/schemas/ScheduledTransaction__expandable"
         _links:
           $ref: "#/components/schemas/Links"
       example:
@@ -2042,6 +2198,27 @@ components:
           _self: _self
         failed_transaction_id: null
         priority: low
+        result:
+          collection_id: null
+          error_message: error_message
+          execution: Pending
+          status_code: 0
+          _links:
+            _self: _self
+          block_id: null
+          computation_used: computation_used
+          events:
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          status: Pending
         transaction_handler_type_identifier: transaction_handler_type_identifier
         execution_effort: execution_effort
         transaction_handler_owner: transaction_handler_owner
@@ -2050,12 +2227,81 @@ components:
         cancelled_transaction_id: null
         id: id
         executed_transaction_id: null
+        handler_contract:
+          identifier: identifier
+          body: body
         _expandable:
           result: http://example.com/aeiou
+          handler_contract: http://example.com/aeiou
           transaction: http://example.com/aeiou
         fees_returned: fees_returned
+        transaction:
+          _links: null
+          reference_block_id: null
+          payer: payer
+          script: script
+          result:
+            collection_id: null
+            error_message: error_message
+            execution: Pending
+            status_code: 0
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: computation_used
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            status: Pending
+          envelope_signatures:
+          - null
+          - null
+          gas_limit: gas_limit
+          payload_signatures:
+          - address: null
+            signature: ""
+            key_index: key_index
+          - address: null
+            signature: ""
+            key_index: key_index
+          arguments:
+          - ""
+          - ""
+          id: null
+          authorizers:
+          - null
+          - null
+          _expandable:
+            result: http://example.com/aeiou
+          proposal_key:
+            sequence_number: sequence_number
+            address: null
+            key_index: key_index
         status: scheduled
         timestamp: timestamp
+    Contract:
+      required:
+      - body
+      - identifier
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: Unique identifier for the contract (e.g. `A.1654653399040a61.MyContract`).
+        body:
+          type: string
+          description: Full source code of the contract.
+      example:
+        identifier: identifier
+        body: body
     ScheduledTransactionStatus:
       type: string
       description: The current lifecycle status of a scheduled transaction.
@@ -2106,6 +2352,29 @@ components:
           format: uri
       example:
         result: http://example.com/aeiou
+    ScheduledTransaction__expandable:
+      type: object
+      properties:
+        transaction:
+          type: string
+          description: Link to fetch the full transaction body.
+          format: uri
+        result:
+          type: string
+          description: Link to fetch the transaction result.
+          format: uri
+        handler_contract:
+          type: string
+          description: Link to fetch the Cadence contract that implements the transaction
+            handler.
+          format: uri
+      description: "Contains URI links for fields not included in the response. When\
+        \ a field is expanded via the `expand` query parameter, it appears inline\
+        \ and is removed from `_expandable`."
+      example:
+        result: http://example.com/aeiou
+        handler_contract: http://example.com/aeiou
+        transaction: http://example.com/aeiou
   parameters:
     cursorParam:
       name: cursor

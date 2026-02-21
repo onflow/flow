@@ -932,6 +932,12 @@ components:
         failed_transaction_id:
           description: Flow transaction ID of the failure transaction.
           $ref: '#/components/schemas/Identifier'
+        transaction:
+          $ref: '#/components/schemas/Transaction'
+        result:
+          $ref: '#/components/schemas/TransactionResult'
+        handler_contract:
+          $ref: '#/components/schemas/Contract'
         _expandable:
           type: object
           description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
@@ -944,8 +950,24 @@ components:
               type: string
               format: uri
               description: Link to fetch the transaction result.
+            handler_contract:
+              type: string
+              format: uri
+              description: Link to fetch the Cadence contract that implements the transaction handler.
         _links:
           $ref: '#/components/schemas/Links'
+    Contract:
+      type: object
+      required:
+        - identifier
+        - body
+      properties:
+        identifier:
+          description: Unique identifier for the contract (e.g. `A.1654653399040a61.MyContract`).
+          type: string
+        body:
+          description: Full source code of the contract.
+          type: string
     ScheduledTransactionStatus:
       type: string
       description: The current lifecycle status of a scheduled transaction.
