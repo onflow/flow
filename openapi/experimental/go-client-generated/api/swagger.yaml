@@ -13,6 +13,8 @@ servers:
 tags:
 - name: Accounts
   description: Endpoints for querying account-related data.
+- name: ScheduledTransactions
+  description: Endpoints for querying scheduled transaction data.
 paths:
   /experimental/v1/accounts/{address}/transactions:
     get:
@@ -101,12 +103,6 @@ paths:
                 $ref: "#/components/schemas/Error"
         "404":
           description: No account found for the given address.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-        "412":
-          description: Precondition failed (account transaction index not initialized).
           content:
             application/json:
               schema:
@@ -233,12 +229,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        "412":
-          description: Precondition failed (account transfer index not initialized).
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
         "429":
           description: Too many requests.
           content:
@@ -361,8 +351,372 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-        "412":
-          description: Precondition failed (account transfer index not initialized).
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /experimental/v1/scheduled:
+    get:
+      tags:
+      - ScheduledTransactions
+      summary: List scheduled transactions
+      description: |
+        Returns a paginated list of scheduled transactions, ordered descending by scheduled transaction identifier (newest first).
+        Results can be filtered by status, priority, time range, and transaction handler properties.
+      operationId: getScheduledTransactions
+      parameters:
+      - name: cursor
+        in: query
+        description: Opaque pagination cursor from a previous response's `next_cursor`
+          field.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/Cursor"
+      - name: limit
+        in: query
+        description: The maximum number of results to return.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 200
+          minimum: 1
+          type: integer
+          default: 50
+      - name: statuses
+        in: query
+        description: A comma-separated list of scheduled transaction statuses to filter
+          by.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: "#/components/schemas/ScheduledTransactionStatus"
+      - name: priority
+        in: query
+        description: Filter by scheduled transaction priority.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/ScheduledTransactionPriority"
+      - name: start_time
+        in: query
+        description: "Filter to include only scheduled transactions with a scheduled\
+          \ time at or after this value (inclusive, RFC 3339)."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date-time
+      - name: end_time
+        in: query
+        description: "Filter to include only scheduled transactions with a scheduled\
+          \ time at or before this value (inclusive, RFC 3339)."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date-time
+      - name: handler_owner
+        in: query
+        description: Filter by the address of the account that owns the transaction
+          handler.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/Address"
+      - name: handler_type_identifier
+        in: query
+        description: Filter by the Cadence type identifier of the transaction handler
+          (e.g. `A.1654653399040a61.MyScheduler.Handler`).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: handler_uuid
+        in: query
+        description: Filter by the UUID of the transaction handler resource.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: uint64
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: A page of scheduled transactions.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScheduledTransactionsResponse"
+        "400":
+          description: "Bad request (invalid filter parameters, cursor, or limit)."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /experimental/v1/scheduled/transaction/{id}:
+    get:
+      tags:
+      - ScheduledTransactions
+      summary: Get scheduled transaction by ID
+      description: Returns the scheduled transaction with the given ID.
+      operationId: getScheduledTransactionByID
+      parameters:
+      - name: id
+        in: path
+        description: The scheduled transaction identifier (hex-encoded).
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Identifier"
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: The scheduled transaction.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScheduledTransaction"
+        "400":
+          description: Bad request (invalid transaction ID).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No scheduled transaction found for the given ID.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /experimental/v1/scheduled/account/{address}:
+    get:
+      tags:
+      - ScheduledTransactions
+      - Accounts
+      summary: List scheduled transactions for an account
+      description: |
+        Returns a paginated list of scheduled transactions associated with the given account address,
+        ordered descending by scheduled time (newest first).
+        Results can be filtered by status, priority, time range, and transaction handler properties.
+      operationId: getScheduledTransactionsByAccount
+      parameters:
+      - name: address
+        in: path
+        description: The account address (hex-encoded without 0x prefix).
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Address"
+      - name: cursor
+        in: query
+        description: Opaque pagination cursor from a previous response's `next_cursor`
+          field.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/Cursor"
+      - name: limit
+        in: query
+        description: The maximum number of results to return.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 200
+          minimum: 1
+          type: integer
+          default: 50
+      - name: statuses
+        in: query
+        description: A comma-separated list of scheduled transaction statuses to filter
+          by.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            $ref: "#/components/schemas/ScheduledTransactionStatus"
+      - name: priority
+        in: query
+        description: Filter by scheduled transaction priority.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/ScheduledTransactionPriority"
+      - name: start_time
+        in: query
+        description: "Filter to include only scheduled transactions with a scheduled\
+          \ time at or after this value (inclusive, RFC 3339)."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date-time
+      - name: end_time
+        in: query
+        description: "Filter to include only scheduled transactions with a scheduled\
+          \ time at or before this value (inclusive, RFC 3339)."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date-time
+      - name: handler_owner
+        in: query
+        description: Filter by the address of the account that owns the transaction
+          handler.
+        required: false
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/Address"
+      - name: handler_type_identifier
+        in: query
+        description: Filter by the Cadence type identifier of the transaction handler
+          (e.g. `A.1654653399040a61.MyScheduler.Handler`).
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: handler_uuid
+        in: query
+        description: Filter by the UUID of the transaction handler resource.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: uint64
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: A page of scheduled transactions.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScheduledTransactionsResponse"
+        "400":
+          description: "Bad request (invalid address, filter parameters, cursor, or\
+            \ limit)."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No account found for the given address.
           content:
             application/json:
               schema:
@@ -1636,6 +1990,341 @@ components:
       enum:
       - sender
       - recipient
+    ScheduledTransactionsResponse:
+      required:
+      - transactions
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: "#/components/schemas/ScheduledTransaction"
+        next_cursor:
+          $ref: "#/components/schemas/Cursor"
+      example:
+        next_cursor: next_cursor
+        transactions:
+        - result:
+            collection_id: null
+            error_message: error_message
+            execution: Pending
+            status_code: 0
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: computation_used
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            status: Pending
+          handler:
+            owner: owner
+            uuid: uuid
+            type_identifier: type_identifier
+          _links:
+            _self: _self
+          id: id
+          priority: Low
+          _expandable:
+            result: http://example.com/aeiou
+            transaction: http://example.com/aeiou
+          transaction:
+            _links: null
+            reference_block_id: null
+            payer: payer
+            script: script
+            result:
+              collection_id: null
+              error_message: error_message
+              execution: Pending
+              status_code: 0
+              _links:
+                _self: _self
+              block_id: null
+              computation_used: computation_used
+              events:
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              status: Pending
+            envelope_signatures:
+            - null
+            - null
+            gas_limit: gas_limit
+            payload_signatures:
+            - address: null
+              signature: ""
+              key_index: key_index
+            - address: null
+              signature: ""
+              key_index: key_index
+            arguments:
+            - ""
+            - ""
+            id: null
+            authorizers:
+            - null
+            - null
+            _expandable:
+              result: http://example.com/aeiou
+            proposal_key:
+              sequence_number: sequence_number
+              address: null
+              key_index: key_index
+          status: Pending
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - result:
+            collection_id: null
+            error_message: error_message
+            execution: Pending
+            status_code: 0
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: computation_used
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            status: Pending
+          handler:
+            owner: owner
+            uuid: uuid
+            type_identifier: type_identifier
+          _links:
+            _self: _self
+          id: id
+          priority: Low
+          _expandable:
+            result: http://example.com/aeiou
+            transaction: http://example.com/aeiou
+          transaction:
+            _links: null
+            reference_block_id: null
+            payer: payer
+            script: script
+            result:
+              collection_id: null
+              error_message: error_message
+              execution: Pending
+              status_code: 0
+              _links:
+                _self: _self
+              block_id: null
+              computation_used: computation_used
+              events:
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              - transaction_id: null
+                payload: ""
+                transaction_index: transaction_index
+                type: type
+                event_index: event_index
+              status: Pending
+            envelope_signatures:
+            - null
+            - null
+            gas_limit: gas_limit
+            payload_signatures:
+            - address: null
+              signature: ""
+              key_index: key_index
+            - address: null
+              signature: ""
+              key_index: key_index
+            arguments:
+            - ""
+            - ""
+            id: null
+            authorizers:
+            - null
+            - null
+            _expandable:
+              result: http://example.com/aeiou
+            proposal_key:
+              sequence_number: sequence_number
+              address: null
+              key_index: key_index
+          status: Pending
+          timestamp: 2000-01-23T04:56:07.000+00:00
+    ScheduledTransaction:
+      required:
+      - _expandable
+      - handler
+      - id
+      - priority
+      - status
+      - timestamp
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/Identifier"
+        status:
+          $ref: "#/components/schemas/ScheduledTransactionStatus"
+        priority:
+          $ref: "#/components/schemas/ScheduledTransactionPriority"
+        timestamp:
+          type: string
+          description: The time at which the transaction is scheduled to execute.
+          format: date-time
+        handler:
+          $ref: "#/components/schemas/TransactionHandler"
+        transaction:
+          $ref: "#/components/schemas/Transaction"
+        result:
+          $ref: "#/components/schemas/TransactionResult"
+        _expandable:
+          $ref: "#/components/schemas/AccountTransaction__expandable"
+        _links:
+          $ref: "#/components/schemas/Links"
+      example:
+        result:
+          collection_id: null
+          error_message: error_message
+          execution: Pending
+          status_code: 0
+          _links:
+            _self: _self
+          block_id: null
+          computation_used: computation_used
+          events:
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          status: Pending
+        handler:
+          owner: owner
+          uuid: uuid
+          type_identifier: type_identifier
+        _links:
+          _self: _self
+        id: id
+        priority: Low
+        _expandable:
+          result: http://example.com/aeiou
+          transaction: http://example.com/aeiou
+        transaction:
+          _links: null
+          reference_block_id: null
+          payer: payer
+          script: script
+          result:
+            collection_id: null
+            error_message: error_message
+            execution: Pending
+            status_code: 0
+            _links:
+              _self: _self
+            block_id: null
+            computation_used: computation_used
+            events:
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            - transaction_id: null
+              payload: ""
+              transaction_index: transaction_index
+              type: type
+              event_index: event_index
+            status: Pending
+          envelope_signatures:
+          - null
+          - null
+          gas_limit: gas_limit
+          payload_signatures:
+          - address: null
+            signature: ""
+            key_index: key_index
+          - address: null
+            signature: ""
+            key_index: key_index
+          arguments:
+          - ""
+          - ""
+          id: null
+          authorizers:
+          - null
+          - null
+          _expandable:
+            result: http://example.com/aeiou
+          proposal_key:
+            sequence_number: sequence_number
+            address: null
+            key_index: key_index
+        status: Pending
+        timestamp: 2000-01-23T04:56:07.000+00:00
+    TransactionHandler:
+      required:
+      - owner
+      - type_identifier
+      - uuid
+      type: object
+      properties:
+        owner:
+          $ref: "#/components/schemas/Address"
+        type_identifier:
+          type: string
+          description: Fully qualified Cadence type identifier of the transaction
+            handler (e.g. `A.1654653399040a61.MyScheduler.Handler`).
+        uuid:
+          type: string
+          description: UUID of the transaction handler resource.
+          format: uint64
+      description: Identifies the Cadence resource responsible for handling the scheduled
+        transaction.
+      example:
+        owner: owner
+        uuid: uuid
+        type_identifier: type_identifier
+    ScheduledTransactionStatus:
+      type: string
+      description: The current lifecycle status of a scheduled transaction.
+      enum:
+      - Pending
+      - Executed
+      - Failed
+      - Cancelled
+    ScheduledTransactionPriority:
+      type: string
+      description: The execution priority of a scheduled transaction.
+      enum:
+      - Low
+      - Medium
+      - High
     Error:
       required:
       - code
@@ -1768,3 +2457,78 @@ components:
       explode: true
       schema:
         $ref: "#/components/schemas/TransferRole"
+    scheduledStatusesParam:
+      name: statuses
+      in: query
+      description: A comma-separated list of scheduled transaction statuses to filter
+        by.
+      required: false
+      style: form
+      explode: false
+      schema:
+        minItems: 1
+        uniqueItems: true
+        type: array
+        items:
+          $ref: "#/components/schemas/ScheduledTransactionStatus"
+    priorityParam:
+      name: priority
+      in: query
+      description: Filter by scheduled transaction priority.
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: "#/components/schemas/ScheduledTransactionPriority"
+    startTimeParam:
+      name: start_time
+      in: query
+      description: "Filter to include only scheduled transactions with a scheduled\
+        \ time at or after this value (inclusive, RFC 3339)."
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        format: date-time
+    endTimeParam:
+      name: end_time
+      in: query
+      description: "Filter to include only scheduled transactions with a scheduled\
+        \ time at or before this value (inclusive, RFC 3339)."
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        format: date-time
+    handlerOwnerParam:
+      name: handler_owner
+      in: query
+      description: Filter by the address of the account that owns the transaction
+        handler.
+      required: false
+      style: form
+      explode: true
+      schema:
+        $ref: "#/components/schemas/Address"
+    handlerTypeIdentifierParam:
+      name: handler_type_identifier
+      in: query
+      description: Filter by the Cadence type identifier of the transaction handler
+        (e.g. `A.1654653399040a61.MyScheduler.Handler`).
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    handlerUuidParam:
+      name: handler_uuid
+      in: query
+      description: Filter by the UUID of the transaction handler resource.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        format: uint64
