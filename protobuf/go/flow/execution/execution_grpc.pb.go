@@ -32,6 +32,8 @@ const (
 	ExecutionAPI_GetRegisterAtBlockID_FullMethodName                 = "/flow.execution.ExecutionAPI/GetRegisterAtBlockID"
 	ExecutionAPI_GetLatestBlockHeader_FullMethodName                 = "/flow.execution.ExecutionAPI/GetLatestBlockHeader"
 	ExecutionAPI_GetBlockHeaderByID_FullMethodName                   = "/flow.execution.ExecutionAPI/GetBlockHeaderByID"
+	ExecutionAPI_GetExecutionResultForBlockID_FullMethodName         = "/flow.execution.ExecutionAPI/GetExecutionResultForBlockID"
+	ExecutionAPI_GetExecutionResultByID_FullMethodName               = "/flow.execution.ExecutionAPI/GetExecutionResultByID"
 	ExecutionAPI_GetTransactionExecutionMetricsAfter_FullMethodName  = "/flow.execution.ExecutionAPI/GetTransactionExecutionMetricsAfter"
 )
 
@@ -72,6 +74,12 @@ type ExecutionAPIClient interface {
 	GetLatestBlockHeader(ctx context.Context, in *GetLatestBlockHeaderRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
 	// GetBlockHeaderByID gets a block header by ID.
 	GetBlockHeaderByID(ctx context.Context, in *GetBlockHeaderByIDRequest, opts ...grpc.CallOption) (*BlockHeaderResponse, error)
+	// GetExecutionResultForBlockID returns Execution Result for a given block.
+	// At present, Execution Node might not have execution results for every block
+	// and as usual, until sealed, this data can change
+	GetExecutionResultForBlockID(ctx context.Context, in *GetExecutionResultForBlockIDRequest, opts ...grpc.CallOption) (*ExecutionResultForBlockIDResponse, error)
+	// GetExecutionResultByID returns Execution Result by its ID.
+	GetExecutionResultByID(ctx context.Context, in *GetExecutionResultByIDRequest, opts ...grpc.CallOption) (*ExecutionResultByIDResponse, error)
 	// GetTransactionExecutionMetricsAfter gets the transaction execution metrics
 	// for blocks after the given block height. The blocks will be sorted by
 	// descending block height.
@@ -210,6 +218,24 @@ func (c *executionAPIClient) GetBlockHeaderByID(ctx context.Context, in *GetBloc
 	return out, nil
 }
 
+func (c *executionAPIClient) GetExecutionResultForBlockID(ctx context.Context, in *GetExecutionResultForBlockIDRequest, opts ...grpc.CallOption) (*ExecutionResultForBlockIDResponse, error) {
+	out := new(ExecutionResultForBlockIDResponse)
+	err := c.cc.Invoke(ctx, ExecutionAPI_GetExecutionResultForBlockID_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *executionAPIClient) GetExecutionResultByID(ctx context.Context, in *GetExecutionResultByIDRequest, opts ...grpc.CallOption) (*ExecutionResultByIDResponse, error) {
+	out := new(ExecutionResultByIDResponse)
+	err := c.cc.Invoke(ctx, ExecutionAPI_GetExecutionResultByID_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *executionAPIClient) GetTransactionExecutionMetricsAfter(ctx context.Context, in *GetTransactionExecutionMetricsAfterRequest, opts ...grpc.CallOption) (*GetTransactionExecutionMetricsAfterResponse, error) {
 	out := new(GetTransactionExecutionMetricsAfterResponse)
 	err := c.cc.Invoke(ctx, ExecutionAPI_GetTransactionExecutionMetricsAfter_FullMethodName, in, out, opts...)
@@ -256,6 +282,12 @@ type ExecutionAPIServer interface {
 	GetLatestBlockHeader(context.Context, *GetLatestBlockHeaderRequest) (*BlockHeaderResponse, error)
 	// GetBlockHeaderByID gets a block header by ID.
 	GetBlockHeaderByID(context.Context, *GetBlockHeaderByIDRequest) (*BlockHeaderResponse, error)
+	// GetExecutionResultForBlockID returns Execution Result for a given block.
+	// At present, Execution Node might not have execution results for every block
+	// and as usual, until sealed, this data can change
+	GetExecutionResultForBlockID(context.Context, *GetExecutionResultForBlockIDRequest) (*ExecutionResultForBlockIDResponse, error)
+	// GetExecutionResultByID returns Execution Result by its ID.
+	GetExecutionResultByID(context.Context, *GetExecutionResultByIDRequest) (*ExecutionResultByIDResponse, error)
 	// GetTransactionExecutionMetricsAfter gets the transaction execution metrics
 	// for blocks after the given block height. The blocks will be sorted by
 	// descending block height.
@@ -311,6 +343,12 @@ func (UnimplementedExecutionAPIServer) GetLatestBlockHeader(context.Context, *Ge
 }
 func (UnimplementedExecutionAPIServer) GetBlockHeaderByID(context.Context, *GetBlockHeaderByIDRequest) (*BlockHeaderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBlockHeaderByID not implemented")
+}
+func (UnimplementedExecutionAPIServer) GetExecutionResultForBlockID(context.Context, *GetExecutionResultForBlockIDRequest) (*ExecutionResultForBlockIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetExecutionResultForBlockID not implemented")
+}
+func (UnimplementedExecutionAPIServer) GetExecutionResultByID(context.Context, *GetExecutionResultByIDRequest) (*ExecutionResultByIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetExecutionResultByID not implemented")
 }
 func (UnimplementedExecutionAPIServer) GetTransactionExecutionMetricsAfter(context.Context, *GetTransactionExecutionMetricsAfterRequest) (*GetTransactionExecutionMetricsAfterResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionExecutionMetricsAfter not implemented")
@@ -561,6 +599,42 @@ func _ExecutionAPI_GetBlockHeaderByID_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ExecutionAPI_GetExecutionResultForBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetExecutionResultForBlockIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExecutionAPIServer).GetExecutionResultForBlockID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ExecutionAPI_GetExecutionResultForBlockID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExecutionAPIServer).GetExecutionResultForBlockID(ctx, req.(*GetExecutionResultForBlockIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ExecutionAPI_GetExecutionResultByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetExecutionResultByIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExecutionAPIServer).GetExecutionResultByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ExecutionAPI_GetExecutionResultByID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExecutionAPIServer).GetExecutionResultByID(ctx, req.(*GetExecutionResultByIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ExecutionAPI_GetTransactionExecutionMetricsAfter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetTransactionExecutionMetricsAfterRequest)
 	if err := dec(in); err != nil {
@@ -637,6 +711,14 @@ var ExecutionAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetBlockHeaderByID",
 			Handler:    _ExecutionAPI_GetBlockHeaderByID_Handler,
+		},
+		{
+			MethodName: "GetExecutionResultForBlockID",
+			Handler:    _ExecutionAPI_GetExecutionResultForBlockID_Handler,
+		},
+		{
+			MethodName: "GetExecutionResultByID",
+			Handler:    _ExecutionAPI_GetExecutionResultByID_Handler,
 		},
 		{
 			MethodName: "GetTransactionExecutionMetricsAfter",

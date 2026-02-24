@@ -8,6 +8,7 @@ option java_package = "org.onflow.protobuf.execution";
 import "flow/entities/account.proto";
 import "flow/entities/block_header.proto";
 import "flow/entities/event.proto";
+import "flow/entities/execution_result.proto";
 import "flow/entities/transaction.proto";
 
 // ExecutionAPI is the API provided by the execution nodes.
@@ -83,6 +84,18 @@ service ExecutionAPI {
   // GetBlockHeaderByID gets a block header by ID.
   rpc GetBlockHeaderByID(GetBlockHeaderByIDRequest)
       returns (BlockHeaderResponse);
+
+  // ExecutionResults
+
+  // GetExecutionResultForBlockID returns Execution Result for a given block.
+  // At present, Execution Node might not have execution results for every block
+  // and as usual, until sealed, this data can change
+  rpc GetExecutionResultForBlockID(GetExecutionResultForBlockIDRequest)
+      returns (ExecutionResultForBlockIDResponse);
+
+  // GetExecutionResultByID returns Execution Result by its ID.
+  rpc GetExecutionResultByID(GetExecutionResultByIDRequest)
+      returns (ExecutionResultByIDResponse);
 
   // GetTransactionExecutionMetricsAfter gets the transaction execution metrics
   // for blocks after the given block height. The blocks will be sorted by
@@ -229,6 +242,24 @@ message GetBlockHeaderByIDRequest {
 
 message BlockHeaderResponse {
   entities.BlockHeader block = 1;
+}
+
+// Execution Results
+
+message GetExecutionResultForBlockIDRequest {
+  bytes block_id = 1;
+}
+
+message ExecutionResultForBlockIDResponse {
+  entities.ExecutionResult execution_result = 1;
+}
+
+message GetExecutionResultByIDRequest {
+  bytes id = 1;
+}
+
+message ExecutionResultByIDResponse {
+  entities.ExecutionResult execution_result = 1;
 }
 
 // The request for GetTransactionExecutionMetricsAfter
