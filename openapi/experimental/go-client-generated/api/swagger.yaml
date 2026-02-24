@@ -1934,8 +1934,8 @@ components:
           transaction_handler_public_path: transaction_handler_public_path
           _links:
             _self: _self
-          failed_transaction_id: null
           priority: low
+          created_transaction_id: created_transaction_id
           result:
             collection_id: null
             error_message: error_message
@@ -1961,7 +1961,6 @@ components:
           execution_effort: execution_effort
           transaction_handler_owner: transaction_handler_owner
           transaction_handler_uuid: transaction_handler_uuid
-          scheduled_transaction_id: scheduled_transaction_id
           cancelled_transaction_id: null
           id: id
           executed_transaction_id: null
@@ -2030,8 +2029,8 @@ components:
           transaction_handler_public_path: transaction_handler_public_path
           _links:
             _self: _self
-          failed_transaction_id: null
           priority: low
+          created_transaction_id: created_transaction_id
           result:
             collection_id: null
             error_message: error_message
@@ -2057,7 +2056,6 @@ components:
           execution_effort: execution_effort
           transaction_handler_owner: transaction_handler_owner
           transaction_handler_uuid: transaction_handler_uuid
-          scheduled_transaction_id: scheduled_transaction_id
           cancelled_transaction_id: null
           id: id
           executed_transaction_id: null
@@ -2125,6 +2123,7 @@ components:
     ScheduledTransaction:
       required:
       - _expandable
+      - created_transaction_id
       - execution_effort
       - fees
       - id
@@ -2172,13 +2171,11 @@ components:
         fees_deducted:
           type: string
           description: "Fees deducted on cancellation, as a UFix64 decimal string."
-        scheduled_transaction_id:
+        created_transaction_id:
           $ref: "#/components/schemas/Identifier"
         executed_transaction_id:
           $ref: "#/components/schemas/Identifier"
         cancelled_transaction_id:
-          $ref: "#/components/schemas/Identifier"
-        failed_transaction_id:
           $ref: "#/components/schemas/Identifier"
         transaction:
           $ref: "#/components/schemas/Transaction"
@@ -2196,8 +2193,8 @@ components:
         transaction_handler_public_path: transaction_handler_public_path
         _links:
           _self: _self
-        failed_transaction_id: null
         priority: low
+        created_transaction_id: created_transaction_id
         result:
           collection_id: null
           error_message: error_message
@@ -2223,7 +2220,6 @@ components:
         execution_effort: execution_effort
         transaction_handler_owner: transaction_handler_owner
         transaction_handler_uuid: transaction_handler_uuid
-        scheduled_transaction_id: scheduled_transaction_id
         cancelled_transaction_id: null
         id: id
         executed_transaction_id: null

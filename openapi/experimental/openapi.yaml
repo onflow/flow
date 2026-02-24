@@ -882,6 +882,7 @@ components:
         - transaction_handler_owner
         - transaction_handler_type_identifier
         - transaction_handler_uuid
+        - created_transaction_id
         - _expandable
       properties:
         id:
@@ -920,17 +921,14 @@ components:
         fees_deducted:
           description: Fees deducted on cancellation, as a UFix64 decimal string.
           type: string
-        scheduled_transaction_id:
-          description: Flow transaction ID of the scheduling transaction.
+        created_transaction_id:
+          description: Flow transaction ID of the transaction in which the scheduled transaction was created.
           $ref: '#/components/schemas/Identifier'
         executed_transaction_id:
           description: Flow transaction ID of the execution transaction.
           $ref: '#/components/schemas/Identifier'
         cancelled_transaction_id:
           description: Flow transaction ID of the cancellation transaction.
-          $ref: '#/components/schemas/Identifier'
-        failed_transaction_id:
-          description: Flow transaction ID of the failure transaction.
           $ref: '#/components/schemas/Identifier'
         transaction:
           $ref: '#/components/schemas/Transaction'
