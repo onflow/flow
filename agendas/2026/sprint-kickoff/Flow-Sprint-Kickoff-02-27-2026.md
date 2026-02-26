@@ -2,7 +2,9 @@
 
 ### Team Wins 🎉
 
-- Successfully executed the first zero-downtime HCU on mainnet
+- Successfully executed the first zero-downtime execution upgrade on mainnet
+- Cross-VM optimizations show 15-20% improvement in the FYV transaction cost in benchmarks.
+- Transaction scheduling contract optimizations show ~25% improvement in the execution effort consumed.
 
 ---
 
@@ -69,51 +71,56 @@ Total Downtime in minutes
 
 **Cadence Language**
 
-- Improvements:
-
-- Bugfixes:
- 
-- Tooling:
-
-- Testing:
-
-- Chores:
-
+- Latest security improvements: [[v1.9.10](https://github.com/onflow/cadence/pull/4444)
+- more work on improving security: [1]](https://github.com/onflow/cadence-internal/pull/427), [2](https://github.com/onflow/cadence-internal/pull/422), [3](https://github.com/onflow/cadence-internal/pull/432)
+- Update [compiler to keep up with the security improvements](https://github.com/onflow/cadence-internal/pull/428)
+- chores:
+    - [[v1.9] Port v1.9.9-rc.2](https://github.com/onflow/cadence/pull/4439)
+    - [Port v1.9.9-rc.2](https://github.com/onflow/cadence/pull/4440)
+    - [Port v1.9.10-rc.1](https://github.com/onflow/cadence/pull/4445)
+    - [Update to Cadence v1.9.9](https://github.com/onflow/flow-go-sdk/pull/992)
+    - [Update to Cadence v1.9.10](https://github.com/onflow/flow-go-sdk/pull/1005)
+    - [[v0.46] Update to Cadence v1.9.9](https://github.com/onflow/flow-go/pull/8413)
+    - [Update to Cadence v1.9.9](https://github.com/onflow/flow-go/pull/8412)
+    - [[v0.47] Update to Cadence v1.9.10](https://github.com/onflow/flow-go/pull/8461)
+    - [Update to Cadence v1.9.10](https://github.com/onflow/flow-go/pull/8464)
+    - [[v0.47] Update to Cadence v1.9.10-rc.1](https://github.com/onflow/flow-go-internal/pull/7163)
 
 **Cadence Execution**
 
-- Zero-downtime network upgrade:
-
-- Concurrent transactions execution testing:
-
-- Improvements:
-
-- Bugfixes:
-
-- Cleanup / Tech-debt removal:
-
-- Testing:
-
-- chore:
-
+- 
+- Bugfix:
+    - [Remove unnecessary CAS guard from SubscriptionProvider.updateTopics()](https://github.com/onflow/flow-go/pull/8407)
+    - [[Access] Fix `ParseAddress()` by only removing prefix "0x"](https://github.com/onflow/flow-go/pull/8453)
+- Improvement:
+    - related to the consensus outage triggered by dynamic bootstrap: [[Consensus] Add --require-beacon-key flag to fail fast on missing DKG keys at consensus node startup](https://github.com/onflow/flow-go/pull/8410)
+- Tech-debt: 
+    - [[FVM] Remove legacy account status formats code](https://github.com/onflow/flow-go/pull/8299)
+- Chores:
+    - [Cleanup unused kubernetes related deployments](https://github.com/onflow/flow-go/pull/8384)
+    - [Mockery fixes](https://github.com/onflow/flow-go/pull/8423)
+    - [add ledger image build](https://github.com/onflow/flow-go-internal/pull/7146)
 
 **Flow EVM**
-
-- Core
-    - Feature:
-
-    - post-inicident cleanup:
+- Core:
+    - Imporovement
+        - metering: [[Flow EVM] Add proper meter and gas limit checks for EVM dry operations](https://github.com/onflow/flow-go/pull/8416)
+        - system contract: [[Flow EVM] Apply general suggestions from QuantStamp audit report](https://github.com/onflow/flow-go/pull/8439)
+    - Bugfix:
+        - [[Flow EVM] Add strict hex-prefix check when parsing `EVM` addresses from `String`](https://github.com/onflow/flow-go/pull/8437)
+- Gateway:
+    - [Add parent hash verification during block ingestion](https://github.com/onflow/flow-evm-gateway/pull/954)
 
 
 **This sprint**
 
 - Cadence Language
+    - Continue work on security improvements
     - On-hold: compiler correctness testing
     - On-hold: tacklig compiler+VM tech-debt
     - On-hold: deep-dive on compiler+VM performace
 
 - Cadence Execution
-    - Complete testing of EN zero-downtime HCU
     - Complete testing [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571) - epoch switchover
     - On-hold [Versioning of Execution Stack via Dynamic Protocol State](https://github.com/onflow/flow-go/issues/6999)
     - On-hold [Badger -> Pebble: remaining tasks and cleanup](https://github.com/onflow/flow-go/issues/7682)
@@ -123,8 +130,6 @@ Total Downtime in minutes
 
 - EVM
     - On-Hold, FCM support
-
-
 
 **On Hold**
 - [EOA control delegation](https://github.com/onflow/flow-go/issues/7441).
@@ -206,25 +211,24 @@ Q1 Cycle Objective(s):
 
 **Done Last Sprint**
 
-- Cadence security improvements:
-
+- Cadence security improvements: covered in Cadence language section
 - In-house financial analytics & fraud detection tooling
-
+    - Chase TBD
 - Update of bug bounty program with HackenProof.
-
+    - [Program updated](https://hackenproof.com/programs/flow-protocol) with more details on scope and rewrite to reduce repetitive statements.
 - Fungible token supply monitoring
+    - [flow-go PR](https://github.com/onflow/flow-go/pull/8424) in progress, [Cadence dependency](https://github.com/onflow/cadence/pull/4442) merged.
 
 
 **This Sprint**
 
-- Cadence security improvements:
-
+- Cadence security improvements: Continue work on more improvements, maybe start experimentation with Claude security
 - In-house financial analytics & fraud detection tooling
-
+    - Chase TBD
 - Update of bug bounty program with HackenProof.
-
+    - update program to add more info on reproducers and reports priotitization
 - Fungible token supply monitoring
-
+    - complete the initial version and run on one EN
 
 - On Hold (capacity)
 
@@ -233,16 +237,15 @@ Q1 Cycle Objective(s):
 
 **Done Last Sprint**
 
-- Cross-vm bridging performance improvements:
-    - EVM Core:
-
-
-- Started work on simplifying transaction scheduler contract to improve performance
+- [Cross-VM operations](https://github.com/onflow/flow-go/issues/8401) performance improvements:
+        - [[Flow EVM] Add new EVM functions that can be used to reduce computation cost of transactions](https://github.com/onflow/flow-go/pull/8418)
+        - [[Flow EVM] Optimize and reduce computation cost of four EVM functions](https://github.com/onflow/flow-go/pull/8434)
+- Completed [scheduler contract performance improvements](https://github.com/onflow/flow-core-contracts/pull/580)
 
 **This Sprint**
 
-- Continue: simplify transaction scheduler to improve performance 
-- Continue: Cross-vm bridging performance improvements:
+- Complete: simplify transaction scheduler to improve performance 
+- Continue: Cross-vm bridging performance improvements
 
 
 ---
