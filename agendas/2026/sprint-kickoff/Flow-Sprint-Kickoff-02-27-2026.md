@@ -2,34 +2,43 @@
 
 ### Team Wins 🎉
 
-
+- Successfully executed the first zero-downtime HCU on mainnet
 
 ---
 
 #### YTD SLA \[Vishal]
 
-| Incident/upgrade       | Date      | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Overall | Comments                                          |
-|------------------------|-----------|------------|-----------|-----------|--------------|-------------|--------|---------|---------------------------------------------------|
-| HCU                    | 1/1/2026  |            |           | 9         |              |             |        | 9       | Part of recovery from Security Incident           |
-| HCU                    | 1/2/2026  |            |           | 9         |              |             |        | 9       | Part of recovery from Security Incident           |
-| HCU                    | 1/3/2026  |            |           | 9         |              |             |        | 9       | Security Fix                                      |
-| HCU                    | 1/3/2026  |            |           | 9         |              |             |        | 9       | Repeated the HCU                                  |
-| EVM GW Issue           | 1/7/2026  |            |           | 9         |              |             | 32     | 32      | Public EVM endpoint unavailable                   |
-| HCU                    | 1/29/2026 |            |           | 8         |              |             |        | 8       | Security Fix                                      |
-| HCU                    | 2/6/2026  |            |           | 8         |              |             |        | 8       | Security Fix                                      |
-| Sealing halt           | 2/11/2026 |            |           | 7         |              |             |        | 7       | FF and DL execution nodes went OOM and restarted  |
-| HCU                    | 2/13/2026 |            |           | 9         |              |             |        | 9       | Security Fix                                      ||
-| Total downtime in mins |           | 0          | 0         | 68        | 0            | 0           | 32     | 100     |                                                   |
-| YTD (01/06/26) SLA     |           | 100.00%    | 100.00%   | 99.89%    | 100.00%      | 100.00%     | 99.95% | 99.84%  |                                                   |
-| SLA for 2026           |           | 100.00%    | 100.00%   | 99.99%    | 100.00%      | 100.00%     | 99.99% | 99.98%  |                                                   |
+Total Downtime in minutes
+
+| Incident/upgrade   | Date      | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Overall | Comments                                         |
+|--------------------|-----------|------------|-----------|-----------|--------------|-------------|--------|---------|--------------------------------------------------|
+| HCU                | 1/1/2026  |            |           | 9         |              |             |        | 9       | Part of recovery from Security Incident          |
+| HCU                | 1/2/2026  |            |           | 9         |              |             |        | 9       | Part of recovery from Security Incident          |
+| HCU                | 1/3/2026  |            |           | 9         |              |             |        | 9       | Security Fix                                     |
+| HCU                | 1/3/2026  |            |           | 9         |              |             |        | 9       | Repeated the HCU                                 |
+| HCU                | 1/6/2026  |            |           | 9         |              |             |        | 9       | Security Fix                                     |
+| EVM GW Issue       | 1/7/2026  |            |           | 9         |              |             | 32     | 32      | Public EVM endpoint unavailable                  |
+| HCU                | 1/29/2026 |            |           | 8         |              |             |        | 8       | Security Fix                                     |
+| HCU                | 2/6/2026  |            |           | 8         |              |             |        | 8       | Security Fix                                     |
+| Sealing halt       | 2/11/2026 |            |           | 7         |              |             |        | 7       | FF and DL execution nodes went OOM and restarted |
+| HCU                | 2/13/2026 |            |           | 9         |              |             |        | 9       | Security Fix                                     |
+| Sealing Halt       | 2/23/2026 |            | 240       | 240       |              |             |        | 240     | Consensus halted                                 |
+| HCU                | 2/24/2026 |            |           | 0.13      |              |             |        | 9       | EN update caused a sealing halt                  |
+| Total downtime     |           | 0          | 0         | 68        | 0            | 0           | 32     | 100     |                                                  |
+| YTD (01/06/26) SLA |           | 100.00%    | 99.71%    | 99.61%    | 100.00%      | 100.00%     | 99.96% | 99.57%  |                                                  |
+| SLA for 2026       |           | 100.00%    | 99.95%    | 99.94%    | 100.00%      | 100.00%     | 99.99% | 99.93%  |                                                  |
 
 ### Incidents \[Vishal]
 
 
 #### Planned downtime
 
+- HCUs on 2/13 and 2/24
 
 #### Unplanned downtime
+
+- Sealing halt on 2/23/2026
+  - [Retrospective](https://status.flow.com/incidents/d2rdc04vx65w)
 
 
 ---
@@ -38,15 +47,16 @@
 
 |             | Application | Cadence | Governance | Protocol |  Total  |
 |:------------|:-----------:|:-------:|:----------:|:--------:|:-------:|
-| Drafted     |      9      |    8    |     0      |    9     | **26**  |
+| Drafted     |      9      |    8    |     0      |    9     | **27**  |
 | Proposed    |      1      |    2    |     4      |    0     |  **7**  |
 | Accepted    |      3      |    2    |     3      |    1     |  **9**  |
 | Rejected    |      0      |    1    |     1      |    0     |  **2**  |
 | Implemented |      3      |    6    |     1      |    0     | **10**  |
 | Released    |      4      |   35    |     11     |    10    | **60**  |
-| Total       |   **20**    | **54**  |   **19**   |  **21**  | **114** |
+| Total       |   **20**    | **55**  |   **19**   |  **21**  | **115** |
 
-
+- 1 new FLIP Added
+  - [FLIP 359: Allow for-in loop over dictionary keys](https://github.com/onflow/flips/issues/359)
 
 ---
 
