@@ -491,6 +491,161 @@ func (a *AccountsApiService) GetAccountTransactions(ctx context.Context, address
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
+AccountsApiService List contracts for an account
+Returns a paginated list of contracts deployed to the given account address, ordered ascending by contract name. Results can be filtered by contract name and block height range. 
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param address The account address (hex-encoded without 0x prefix).
+ * @param optional nil or *AccountsApiGetContractsByAccountOpts - Optional Parameters:
+     * @param "Cursor" (optional.Interface of string) -  Opaque pagination cursor from a previous response&#x27;s &#x60;next_cursor&#x60; field.
+     * @param "Limit" (optional.Int32) -  The maximum number of results to return.
+     * @param "ContractName" (optional.String) -  Filter by case sensitive contract name (unqualified, e.g. &#x60;EVM&#x60;).
+     * @param "StartBlock" (optional.String) -  Filter to include only deployments at or after this block height (inclusive).
+     * @param "EndBlock" (optional.String) -  Filter to include only deployments at or before this block height (inclusive).
+     * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
+     * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
+@return ContractsResponse
+*/
+
+type AccountsApiGetContractsByAccountOpts struct {
+    Cursor optional.Interface
+    Limit optional.Int32
+    ContractName optional.String
+    StartBlock optional.String
+    EndBlock optional.String
+    Expand optional.Interface
+    Select_ optional.Interface
+}
+
+func (a *AccountsApiService) GetContractsByAccount(ctx context.Context, address string, localVarOptionals *AccountsApiGetContractsByAccountOpts) (ContractsResponse, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		localVarReturnValue ContractsResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/experimental/v1/contracts/account/{address}"
+	localVarPath = strings.Replace(localVarPath, "{"+"address"+"}", fmt.Sprintf("%v", address), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.Cursor.IsSet() {
+		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
+		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ContractName.IsSet() {
+		localVarQueryParams.Add("contract_name", parameterToString(localVarOptionals.ContractName.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.StartBlock.IsSet() {
+		localVarQueryParams.Add("start_block", parameterToString(localVarOptionals.StartBlock.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EndBlock.IsSet() {
+		localVarQueryParams.Add("end_block", parameterToString(localVarOptionals.EndBlock.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
+		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
+		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	if localVarHttpResponse.StatusCode < 300 {
+		// If we succeed, return the data, otherwise pass on to decode error.
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		if err == nil { 
+			return localVarReturnValue, localVarHttpResponse, err
+		}
+	}
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericSwaggerError{
+			body: localVarBody,
+			error: localVarHttpResponse.Status,
+		}
+		if localVarHttpResponse.StatusCode == 200 {
+			var v ContractsResponse
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 400 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 404 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 429 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHttpResponse, nil
+}
+/*
 AccountsApiService List scheduled transactions for an account
 Returns a paginated list of scheduled transactions associated with the given account address, ordered descending by scheduled time (newest first). Results can be filtered by status, priority, time range, and transaction handler properties. 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

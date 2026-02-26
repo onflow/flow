@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**GetAccountFungibleTransfers**](AccountsApi.md#GetAccountFungibleTransfers) | **Get** /experimental/v1/accounts/{address}/ft/transfers | Get account fungible token transfers
 [**GetAccountNonFungibleTransfers**](AccountsApi.md#GetAccountNonFungibleTransfers) | **Get** /experimental/v1/accounts/{address}/nft/transfers | Get account non-fungible token transfers
 [**GetAccountTransactions**](AccountsApi.md#GetAccountTransactions) | **Get** /experimental/v1/accounts/{address}/transactions | Get account transactions
+[**GetContractsByAccount**](AccountsApi.md#GetContractsByAccount) | **Get** /experimental/v1/contracts/account/{address} | List contracts for an account
 [**GetScheduledTransactionsByAccount**](AccountsApi.md#GetScheduledTransactionsByAccount) | **Get** /experimental/v1/scheduled/account/{address} | List scheduled transactions for an account
 
 # **GetAccountFungibleTransfers**
@@ -123,6 +124,48 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AccountTransactionsResponse**](AccountTransactionsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetContractsByAccount**
+> ContractsResponse GetContractsByAccount(ctx, address, optional)
+List contracts for an account
+
+Returns a paginated list of contracts deployed to the given account address, ordered ascending by contract name. Results can be filtered by contract name and block height range. 
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **address** | [**string**](.md)| The account address (hex-encoded without 0x prefix). | 
+ **optional** | ***AccountsApiGetContractsByAccountOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a AccountsApiGetContractsByAccountOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cursor** | [**optional.Interface of string**](.md)| Opaque pagination cursor from a previous response&#x27;s &#x60;next_cursor&#x60; field. | 
+ **limit** | **optional.Int32**| The maximum number of results to return. | [default to 50]
+ **contractName** | **optional.String**| Filter by case sensitive contract name (unqualified, e.g. &#x60;EVM&#x60;). | 
+ **startBlock** | **optional.String**| Filter to include only deployments at or after this block height (inclusive). | 
+ **endBlock** | **optional.String**| Filter to include only deployments at or before this block height (inclusive). | 
+ **expand** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to expand. | 
+ **select_** | [**optional.Interface of []string**](string.md)| A comma-separated list indicating which properties of the content to return. | 
+
+### Return type
+
+[**ContractsResponse**](ContractsResponse.md)
 
 ### Authorization
 
