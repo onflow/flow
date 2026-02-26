@@ -89,7 +89,6 @@ Total Downtime in minutes
 
 **Cadence Execution**
 
-- 
 - Bugfix:
     - [Remove unnecessary CAS guard from SubscriptionProvider.updateTopics()](https://github.com/onflow/flow-go/pull/8407)
     - [[Access] Fix `ParseAddress()` by only removing prefix "0x"](https://github.com/onflow/flow-go/pull/8453)
@@ -236,7 +235,6 @@ Goals:
 - Fungible token supply monitoring
     - [flow-go PR](https://github.com/onflow/flow-go/pull/8424) in progress, [Cadence dependency](https://github.com/onflow/cadence/pull/4442) merged.
 
-
 **This Sprint**
 
 - Cadence security improvements: Continue work on more improvements, maybe start experimentation with Claude security
@@ -248,6 +246,9 @@ Goals:
     - complete the initial version and run on one EN
 
 - On Hold (capacity)
+    - In-house financial analytics & fraud detection tooling
+        - anomalous event monitoring (focusing on analytics tooling)
+    - Evaluate existing anomaly detection tools (contract / Tx anomalies)
 
 
 ### Performance [Jan]
