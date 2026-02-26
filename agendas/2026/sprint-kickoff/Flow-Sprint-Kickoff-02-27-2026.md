@@ -164,9 +164,6 @@ Q1 Cycle Objective(s):
 - ALP
   - Implementing the Oracle Aggregator [#132](https://github.com/onflow/FlowALP/issues/132)
   - Making FCM contracts easy to upgrade [#166](https://github.com/onflow/FlowALP/issues/166)
-  - Testing framework for simulation testing [#175](https://github.com/onflow/flow-okrs/issues/175)
-    - blocks around EVM cheat codes have been resolved.
-    - Scenarios are in draft PRs
   - Improving Unit test coverage (cover additional testing gaps, see Scope under [issue 136](https://github.com/onflow/FlowCreditMarket/issues/136)) - WIP
   - Offchain Analytics and Alerting [#3](https://github.com/onflow/fcm-observer/issues/3)
     - Metrics for Positions, TVL, observer health and polling have been implemented.
@@ -184,32 +181,40 @@ Q1 Cycle Objective(s):
   - Redesigning the supervisor and worker architecture [[#10](https://github.com/onflow/FlowYieldVaultsEVM/issues/10)]
     - In review ([PR #44](https://github.com/onflow/FlowYieldVaultsEVM/pull/44))
     - Testing on testnet
-- 
-
-
+  - Implementing the pyUSD0 vault for PeakMoney and FYV [#180](https://github.com/onflow/FlowYieldVaults/issues/184)
+  - Addressing the Cadence --> EVM loss of precision issue to unblock PM.
+  - Report profit and loss accurately on the vault.com user interface [#101](https://github.com/onflow/FlowYieldVaults-fe/issues/101)
 
 - FYV Testing
-
-
+  - Testing framework for simulation testing [#175](https://github.com/onflow/flow-okrs/issues/175)
+    - blocks around EVM cheat codes have been resolved.
+    - Scenarios are in draft PRs
 
 - FCM Whitepaper/Documentation
-
+  - FCM Primer and simulations (catching up on prior art and investigating routes towards white paper).
+  - Researching analytical model with the goal to prove soundness properties of Lending Protocol
+  - New landing page is live - https://flow.com/fcm
 
 
 **This sprint**
 
-- ALP
+Goals:
+1. FYV internal testing
+2. Kick off second round of the QS review for FYV.
 
+- ALP
+  - Complete the Oracle Aggregator implementation.
+  - Continue the work to make FCM contracts more upgradabale - [#166](https://github.com/onflow/FlowALP/issues/166)
 
 - FYV
-
+  - Resolve all outstanding issues to start internal testing.
+  - Work with PM to integrate the PyUSD0 strategy.
 
 - FYV Testing
-
-
+  - Merge PRs for testing scenarios.
 
 - FCM Whitepaper
-
+  - Publish primer (~2nd week of March.)
 
 
 ---
