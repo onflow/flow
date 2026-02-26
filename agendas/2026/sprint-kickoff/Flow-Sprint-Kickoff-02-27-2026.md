@@ -3,6 +3,7 @@
 ### Team Wins 🎉
 
 - Successfully executed the first zero-downtime HCU on mainnet
+- QuantStamp review of Core EVM contract complete - no major issues found.
 
 ---
 
@@ -156,12 +157,19 @@ Q1 Cycle Objective(s):
 
 - Addressing contract review comments
   - [FCM: 5/5](https://github.com/orgs/onflow/projects/99/views/15) ✅
-  - [FlowActions: 15/20](https://github.com/onflow/FlowActions/issues/95)
-  - [FYV: 6/11](https://github.com/onflow/FlowYieldVaults/issues/131)
-  - [FYV EVM: 5/19](https://github.com/onflow/FlowYieldVaultsEVM/issues/15)
+  - [FlowActions: 17/20](https://github.com/onflow/FlowActions/issues/95)
+  - [FYV: 8/11](https://github.com/onflow/FlowYieldVaults/issues/131)
+  - [FYV EVM: 7/19](https://github.com/onflow/FlowYieldVaultsEVM/issues/15)
 
 - ALP
-
+  - Implementing the Oracle Aggregator [#132](https://github.com/onflow/FlowALP/issues/132)
+  - Making FCM contracts easy to upgrade [#166](https://github.com/onflow/FlowALP/issues/166)
+  - Testing framework for simulation testing [#175](https://github.com/onflow/flow-okrs/issues/175)
+    - blocks around EVM cheat codes have been resolved.
+    - Scenarios are in draft PRs
+  - Improving Unit test coverage (cover additional testing gaps, see Scope under [issue 136](https://github.com/onflow/FlowCreditMarket/issues/136)) - WIP
+  - Offchain Analytics and Alerting [#3](https://github.com/onflow/fcm-observer/issues/3)
+    - Metrics for Positions, TVL, observer health and polling have been implemented.
   - KROK Team:
       * Done:
 
@@ -173,6 +181,10 @@ Q1 Cycle Objective(s):
 
 
 - FYV
+  - Redesigning the supervisor and worker architecture [[#10](https://github.com/onflow/FlowYieldVaultsEVM/issues/10)]
+    - In review ([PR #44](https://github.com/onflow/FlowYieldVaultsEVM/pull/44))
+    - Testing on testnet
+- 
 
 
 
