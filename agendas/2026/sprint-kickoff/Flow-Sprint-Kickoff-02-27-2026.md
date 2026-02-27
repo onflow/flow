@@ -6,6 +6,7 @@
 - QuantStamp review of Core EVM contract complete - no major issues found.
 - Cross-VM optimizations show 15-20% improvement in the FYV transaction cost in benchmarks.
 - Transaction scheduling contract optimizations show ~25% improvement in the execution effort consumed.
+- [ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) - protocol for agent discovery and trust through reputation and validation now deployed on FLow EVM.
 - explorer.flow.com is live
 
 ---
