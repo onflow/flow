@@ -360,10 +360,12 @@ https://github.com/onflow/flow-okrs/issues/175
 
 **Done last sprint**
 
-
+- Updates & polish to v3.1 FTUE
+- Started our "Earn" integration
 
 **This sprint**
 
+- Complete first milestone for our "Earn" integration - directing users to either Peak Money or vaults.flow.com to earn
 
 ---
 
