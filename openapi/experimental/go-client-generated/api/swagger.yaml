@@ -2933,11 +2933,13 @@ components:
       properties:
         transaction:
           type: string
-          description: Link to fetch the full transaction body.
+          description: Link to fetch the full transaction body of the transaction
+            in which the scheduled transaction was executed.
           format: uri
         result:
           type: string
-          description: Link to fetch the transaction result.
+          description: Link to fetch the transaction result of the transaction in
+            which the scheduled transaction was executed.
           format: uri
         handler_contract:
           type: string
