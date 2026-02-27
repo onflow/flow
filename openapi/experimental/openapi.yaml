@@ -38,12 +38,12 @@ paths:
           required: true
           description: The account address (hex-encoded without 0x prefix).
           schema:
-            $ref: '#/components/schemas/Address'
-        - $ref: '#/components/parameters/cursorParam'
-        - $ref: '#/components/parameters/limitParam'
-        - $ref: '#/components/parameters/rolesParam'
-        - $ref: '#/components/parameters/expandParam'
-        - $ref: '#/components/parameters/selectParam'
+            $ref: "#/components/schemas/Address"
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/rolesParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
       responses:
         "200":
           description: A page of account transactions.
@@ -85,15 +85,14 @@ paths:
           required: true
           description: The account address (hex-encoded without 0x prefix).
           schema:
-            $ref: '#/components/schemas/Address'
-        - $ref: '#/components/parameters/cursorParam'
-        - $ref: '#/components/parameters/limitParam'
-        - $ref: '#/components/parameters/tokenTypeParam'
-        - $ref: '#/components/parameters/sourceAddressParam'
-        - $ref: '#/components/parameters/recipientAddressParam'
-        - $ref: '#/components/parameters/transferRoleParam'
-        - $ref: '#/components/parameters/expandParam'
-        - $ref: '#/components/parameters/selectParam'
+            $ref: "#/components/schemas/Address"
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/tokenTypeParam"
+        - $ref: "#/components/parameters/sourceAddressParam"
+        - $ref: "#/components/parameters/recipientAddressParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
       responses:
         "200":
           description: A page of fungible token transfers.
@@ -135,15 +134,14 @@ paths:
           required: true
           description: The account address (hex-encoded without 0x prefix).
           schema:
-            $ref: '#/components/schemas/Address'
-        - $ref: '#/components/parameters/cursorParam'
-        - $ref: '#/components/parameters/limitParam'
-        - $ref: '#/components/parameters/tokenTypeParam'
-        - $ref: '#/components/parameters/sourceAddressParam'
-        - $ref: '#/components/parameters/recipientAddressParam'
-        - $ref: '#/components/parameters/transferRoleParam'
-        - $ref: '#/components/parameters/expandParam'
-        - $ref: '#/components/parameters/selectParam'
+            $ref: "#/components/schemas/Address"
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/tokenTypeParam"
+        - $ref: "#/components/parameters/sourceAddressParam"
+        - $ref: "#/components/parameters/recipientAddressParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
       responses:
         "200":
           description: A page of non-fungible token transfers.
@@ -180,17 +178,17 @@ paths:
       tags:
         - ScheduledTransactions
       parameters:
-        - $ref: '#/components/parameters/cursorParam'
-        - $ref: '#/components/parameters/limitParam'
-        - $ref: '#/components/parameters/scheduledStatusesParam'
-        - $ref: '#/components/parameters/priorityParam'
-        - $ref: '#/components/parameters/startTimeParam'
-        - $ref: '#/components/parameters/endTimeParam'
-        - $ref: '#/components/parameters/handlerOwnerParam'
-        - $ref: '#/components/parameters/handlerTypeIdentifierParam'
-        - $ref: '#/components/parameters/handlerUuidParam'
-        - $ref: '#/components/parameters/expandParam'
-        - $ref: '#/components/parameters/selectParam'
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/scheduledStatusesParam"
+        - $ref: "#/components/parameters/priorityParam"
+        - $ref: "#/components/parameters/startTimeParam"
+        - $ref: "#/components/parameters/endTimeParam"
+        - $ref: "#/components/parameters/handlerOwnerParam"
+        - $ref: "#/components/parameters/handlerTypeIdentifierParam"
+        - $ref: "#/components/parameters/handlerUuidParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
       responses:
         "200":
           description: A page of scheduled transactions.
@@ -224,9 +222,9 @@ paths:
           required: true
           description: The scheduled transaction identifier (hex-encoded).
           schema:
-            $ref: '#/components/schemas/Identifier'
-        - $ref: '#/components/parameters/expandParam'
-        - $ref: '#/components/parameters/selectParam'
+            $ref: "#/components/schemas/Identifier"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
       responses:
         "200":
           description: The scheduled transaction.
@@ -270,18 +268,18 @@ paths:
           required: true
           description: The account address (hex-encoded without 0x prefix).
           schema:
-            $ref: '#/components/schemas/Address'
-        - $ref: '#/components/parameters/cursorParam'
-        - $ref: '#/components/parameters/limitParam'
-        - $ref: '#/components/parameters/scheduledStatusesParam'
-        - $ref: '#/components/parameters/priorityParam'
-        - $ref: '#/components/parameters/startTimeParam'
-        - $ref: '#/components/parameters/endTimeParam'
-        - $ref: '#/components/parameters/handlerOwnerParam'
-        - $ref: '#/components/parameters/handlerTypeIdentifierParam'
-        - $ref: '#/components/parameters/handlerUuidParam'
-        - $ref: '#/components/parameters/expandParam'
-        - $ref: '#/components/parameters/selectParam'
+            $ref: "#/components/schemas/Address"
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/scheduledStatusesParam"
+        - $ref: "#/components/parameters/priorityParam"
+        - $ref: "#/components/parameters/startTimeParam"
+        - $ref: "#/components/parameters/endTimeParam"
+        - $ref: "#/components/parameters/handlerOwnerParam"
+        - $ref: "#/components/parameters/handlerTypeIdentifierParam"
+        - $ref: "#/components/parameters/handlerUuidParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
       responses:
         "200":
           description: A page of scheduled transactions.
@@ -319,13 +317,13 @@ paths:
       tags:
         - Contracts
       parameters:
-        - $ref: '#/components/parameters/cursorParam'
-        - $ref: '#/components/parameters/limitParam'
-        - $ref: '#/components/parameters/contractNameParam'
-        - $ref: '#/components/parameters/startBlockParam'
-        - $ref: '#/components/parameters/endBlockParam'
-        - $ref: '#/components/parameters/expandParam'
-        - $ref: '#/components/parameters/selectParam'
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/contractNameParam"
+        - $ref: "#/components/parameters/startBlockParam"
+        - $ref: "#/components/parameters/endBlockParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
       responses:
         "200":
           description: A page of contracts.
@@ -363,14 +361,14 @@ paths:
           required: true
           description: The account address (hex-encoded without 0x prefix).
           schema:
-            $ref: '#/components/schemas/Address'
-        - $ref: '#/components/parameters/cursorParam'
-        - $ref: '#/components/parameters/limitParam'
-        - $ref: '#/components/parameters/contractNameParam'
-        - $ref: '#/components/parameters/startBlockParam'
-        - $ref: '#/components/parameters/endBlockParam'
-        - $ref: '#/components/parameters/expandParam'
-        - $ref: '#/components/parameters/selectParam'
+            $ref: "#/components/schemas/Address"
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/contractNameParam"
+        - $ref: "#/components/parameters/startBlockParam"
+        - $ref: "#/components/parameters/endBlockParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
       responses:
         "200":
           description: A page of contracts for the account.
@@ -410,9 +408,9 @@ paths:
           required: true
           description: The case sensitive address-qualified contract identifier (e.g. `A.1654653399040a61.EVM`).
           schema:
-            $ref: '#/components/schemas/ContractIdentifier'
-        - $ref: '#/components/parameters/expandParam'
-        - $ref: '#/components/parameters/selectParam'
+            $ref: "#/components/schemas/ContractIdentifier"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
       responses:
         "200":
           description: The contract deployment.
@@ -455,13 +453,13 @@ paths:
           required: true
           description: The address-qualified contract identifier (e.g. `A.1654653399040a61.EVM`).
           schema:
-            $ref: '#/components/schemas/ContractIdentifier'
-        - $ref: '#/components/parameters/cursorParam'
-        - $ref: '#/components/parameters/limitParam'
-        - $ref: '#/components/parameters/startBlockParam'
-        - $ref: '#/components/parameters/endBlockParam'
-        - $ref: '#/components/parameters/expandParam'
-        - $ref: '#/components/parameters/selectParam'
+            $ref: "#/components/schemas/ContractIdentifier"
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/startBlockParam"
+        - $ref: "#/components/parameters/endBlockParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
       responses:
         "200":
           description: A page of contract deployments.
@@ -495,7 +493,7 @@ components:
       name: cursor
       in: query
       schema:
-        $ref: '#/components/schemas/Cursor'
+        $ref: "#/components/schemas/Cursor"
       required: false
     limitParam:
       description: The maximum number of results to return.
@@ -512,7 +510,7 @@ components:
       name: roles
       in: query
       schema:
-        $ref: '#/components/schemas/Role'
+        $ref: "#/components/schemas/Role"
         minItems: 1
         uniqueItems: true
       explode: false
@@ -556,21 +554,14 @@ components:
       name: source_address
       in: query
       schema:
-        $ref: '#/components/schemas/Address'
+        $ref: "#/components/schemas/Address"
       required: false
     recipientAddressParam:
       description: Filter by the recipient address of the transfer.
       name: recipient_address
       in: query
       schema:
-        $ref: '#/components/schemas/Address'
-      required: false
-    transferRoleParam:
-      description: Filter by the account's role in the transfer. If unset, returns both sent and received transfers.
-      name: role
-      in: query
-      schema:
-        $ref: '#/components/schemas/TransferRole'
+        $ref: "#/components/schemas/Address"
       required: false
     scheduledStatusesParam:
       description: A comma-separated list of scheduled transaction statuses to filter by.
@@ -579,7 +570,7 @@ components:
       schema:
         type: array
         items:
-          $ref: '#/components/schemas/ScheduledTransactionStatus'
+          $ref: "#/components/schemas/ScheduledTransactionStatus"
         minItems: 1
         uniqueItems: true
       explode: false
@@ -590,7 +581,7 @@ components:
       name: priority
       in: query
       schema:
-        $ref: '#/components/schemas/ScheduledTransactionPriority'
+        $ref: "#/components/schemas/ScheduledTransactionPriority"
       required: false
     startTimeParam:
       description: Filter to include only scheduled transactions with a scheduled time at or after this value (inclusive, RFC 3339).
@@ -613,7 +604,7 @@ components:
       name: handler_owner
       in: query
       schema:
-        $ref: '#/components/schemas/Address'
+        $ref: "#/components/schemas/Address"
       required: false
     handlerTypeIdentifierParam:
       description: Filter by the Cadence type identifier of the transaction handler (e.g. `A.1654653399040a61.MyScheduler.Handler`).
@@ -665,7 +656,7 @@ components:
           items:
             $ref: "#/components/schemas/AccountTransaction"
         next_cursor:
-          $ref: '#/components/schemas/Cursor'
+          $ref: "#/components/schemas/Cursor"
     AccountTransaction:
       type: object
       required:
@@ -685,7 +676,7 @@ components:
           type: string
           format: date-time
         transaction_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         transaction_index:
           description: Index of the transaction within the block.
           type: string
@@ -700,9 +691,9 @@ components:
               - proposer
               - interacted
         transaction:
-          $ref: '#/components/schemas/Transaction'
+          $ref: "#/components/schemas/Transaction"
         result:
-          $ref: '#/components/schemas/TransactionResult'
+          $ref: "#/components/schemas/TransactionResult"
         _expandable:
           type: object
           description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
@@ -716,12 +707,12 @@ components:
               format: uri
               description: Link to fetch the transaction result.
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
     Address:
       description: The 8-byte address of an account.
       type: string
       format: hexadecimal
-      pattern: '^[a-fA-F0-9]{16}$'
+      pattern: "^[a-fA-F0-9]{16}$"
     Cursor:
       description: Opaque pagination cursor from a previous response's `next_cursor` field.
       type: string
@@ -736,9 +727,9 @@ components:
         - payload
       properties:
         type:
-          $ref: '#/components/schemas/EventType'
+          $ref: "#/components/schemas/EventType"
         transaction_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         transaction_index:
           type: string
           format: uint64
@@ -755,7 +746,7 @@ components:
       description: A 32-byte unique identifier for an entity.
       type: string
       format: hexadecimal
-      pattern: '^[a-fA-F0-9]{64}$'
+      pattern: "^[a-fA-F0-9]{64}$"
     Links:
       type: object
       properties:
@@ -769,7 +760,7 @@ components:
         - sequence_number
       properties:
         address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         key_index:
           type: string
           format: uint64
@@ -803,7 +794,7 @@ components:
         - _expandable
       properties:
         id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         script:
           type: string
           format: base64
@@ -815,29 +806,29 @@ components:
             type: string
             format: byte
         reference_block_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         gas_limit:
           type: string
           format: uint64
           description: The limit on the amount of computation a transaction is allowed to perform.
         payer:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         proposal_key:
-          $ref: '#/components/schemas/ProposalKey'
+          $ref: "#/components/schemas/ProposalKey"
         authorizers:
           type: array
           items:
-            $ref: '#/components/schemas/Address'
+            $ref: "#/components/schemas/Address"
         payload_signatures:
           type: array
           items:
-            $ref: '#/components/schemas/TransactionSignature'
+            $ref: "#/components/schemas/TransactionSignature"
         envelope_signatures:
           type: array
           items:
-            $ref: '#/components/schemas/TransactionSignature'
+            $ref: "#/components/schemas/TransactionSignature"
         result:
-          $ref: '#/components/schemas/TransactionResult'
+          $ref: "#/components/schemas/TransactionResult"
         _expandable:
           type: object
           properties:
@@ -845,7 +836,7 @@ components:
               type: string
               format: uri
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
     TransactionResult:
       type: object
       required:
@@ -858,13 +849,13 @@ components:
         - events
       properties:
         block_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         collection_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         execution:
-          $ref: '#/components/schemas/TransactionExecution'
+          $ref: "#/components/schemas/TransactionExecution"
         status:
-          $ref: '#/components/schemas/TransactionStatus'
+          $ref: "#/components/schemas/TransactionStatus"
         status_code:
           type: integer
         error_message:
@@ -876,12 +867,12 @@ components:
         events:
           type: array
           items:
-            $ref: '#/components/schemas/Event'
+            $ref: "#/components/schemas/Event"
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
     TransactionExecution:
       type: string
-      description: This value indicates whether the transaction execution succeeded or not, this value should be checked when determining transaction success. 
+      description: This value indicates whether the transaction execution succeeded or not, this value should be checked when determining transaction success.
       enum:
         - Pending
         - Success
@@ -904,12 +895,12 @@ components:
         - signature
       properties:
         address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         key_index:
           type: string
           format: uint64
         signature:
-          $ref: '#/components/schemas/Signature'
+          $ref: "#/components/schemas/Signature"
 
     AccountFungibleTransfersResponse:
       type: object
@@ -921,7 +912,7 @@ components:
           items:
             $ref: "#/components/schemas/FungibleTokenTransfer"
         next_cursor:
-          $ref: '#/components/schemas/Cursor'
+          $ref: "#/components/schemas/Cursor"
     AccountNonFungibleTransfersResponse:
       type: object
       required:
@@ -932,7 +923,7 @@ components:
           items:
             $ref: "#/components/schemas/NonFungibleTokenTransfer"
         next_cursor:
-          $ref: '#/components/schemas/Cursor'
+          $ref: "#/components/schemas/Cursor"
     FungibleTokenTransfer:
       type: object
       required:
@@ -948,7 +939,7 @@ components:
         - _expandable
       properties:
         transaction_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         block_height:
           description: Block height where the transfer was included.
           type: string
@@ -974,13 +965,13 @@ components:
           description: Amount of tokens transferred, as a decimal string.
           type: string
         source_address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         recipient_address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         transaction:
-          $ref: '#/components/schemas/Transaction'
+          $ref: "#/components/schemas/Transaction"
         result:
-          $ref: '#/components/schemas/TransactionResult'
+          $ref: "#/components/schemas/TransactionResult"
         _expandable:
           type: object
           description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
@@ -994,7 +985,7 @@ components:
               format: uri
               description: Link to fetch the transaction result.
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
     NonFungibleTokenTransfer:
       type: object
       required:
@@ -1010,7 +1001,7 @@ components:
         - _expandable
       properties:
         transaction_id:
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         block_height:
           description: Block height where the transfer was included.
           type: string
@@ -1037,13 +1028,13 @@ components:
           type: string
           format: uint64
         source_address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         recipient_address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         transaction:
-          $ref: '#/components/schemas/Transaction'
+          $ref: "#/components/schemas/Transaction"
         result:
-          $ref: '#/components/schemas/TransactionResult'
+          $ref: "#/components/schemas/TransactionResult"
         _expandable:
           type: object
           description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
@@ -1057,7 +1048,7 @@ components:
               format: uri
               description: Link to fetch the transaction result.
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
     TransferRole:
       type: string
       enum:
@@ -1074,7 +1065,7 @@ components:
           items:
             $ref: "#/components/schemas/ScheduledTransaction"
         next_cursor:
-          $ref: '#/components/schemas/Cursor'
+          $ref: "#/components/schemas/Cursor"
     ScheduledTransaction:
       type: object
       required:
@@ -1095,9 +1086,9 @@ components:
           type: string
           format: uint64
         status:
-          $ref: '#/components/schemas/ScheduledTransactionStatus'
+          $ref: "#/components/schemas/ScheduledTransactionStatus"
         priority:
-          $ref: '#/components/schemas/ScheduledTransactionPriority'
+          $ref: "#/components/schemas/ScheduledTransactionPriority"
         timestamp:
           description: Scheduled execution timestamp as a UFix64 decimal string.
           type: string
@@ -1109,7 +1100,7 @@ components:
           type: string
         transaction_handler_owner:
           description: Address of the account that owns the transaction handler.
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         transaction_handler_type_identifier:
           description: Fully qualified Cadence type identifier of the transaction handler (e.g. `A.1654653399040a61.MyScheduler.Handler`).
           type: string
@@ -1128,19 +1119,19 @@ components:
           type: string
         created_transaction_id:
           description: Flow transaction ID of the transaction in which the scheduled transaction was created.
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         executed_transaction_id:
           description: Flow transaction ID of the execution transaction.
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         cancelled_transaction_id:
           description: Flow transaction ID of the cancellation transaction.
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         transaction:
-          $ref: '#/components/schemas/Transaction'
+          $ref: "#/components/schemas/Transaction"
         result:
-          $ref: '#/components/schemas/TransactionResult'
+          $ref: "#/components/schemas/TransactionResult"
         handler_contract:
-          $ref: '#/components/schemas/ContractDeployment'
+          $ref: "#/components/schemas/ContractDeployment"
         _expandable:
           type: object
           description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
@@ -1158,7 +1149,7 @@ components:
               format: uri
               description: Link to fetch the Cadence contract that implements the transaction handler.
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
     ScheduledTransactionStatus:
       type: string
       description: The current lifecycle status of a scheduled transaction.
@@ -1191,17 +1182,17 @@ components:
       properties:
         contract_id:
           description: Address-qualified canonical identifier (e.g. `A.1654653399040a61.EVM`).
-          $ref: '#/components/schemas/ContractIdentifier'
+          $ref: "#/components/schemas/ContractIdentifier"
         address:
           description: Account that owns the contract.
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         block_height:
           description: Block height at which this deployment was applied.
           type: string
           format: uint64
         transaction_id:
           description: ID of the transaction that applied this deployment.
-          $ref: '#/components/schemas/Identifier'
+          $ref: "#/components/schemas/Identifier"
         tx_index:
           description: Position of the deploying transaction within its block.
           type: string
@@ -1222,7 +1213,7 @@ components:
           description: True if the deployment was created during bootstrapping based on the current chain state, not based on a protocol event. When true, block_height, transaction_id, tx_index, and event_index are absent.
           type: boolean
         transaction:
-          $ref: '#/components/schemas/Transaction'
+          $ref: "#/components/schemas/Transaction"
         _expandable:
           type: object
           description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
@@ -1236,7 +1227,7 @@ components:
               format: uri
               description: Link to fetch the transaction result.
         _links:
-          $ref: '#/components/schemas/Links'
+          $ref: "#/components/schemas/Links"
 
     ContractsResponse:
       type: object
@@ -1246,9 +1237,9 @@ components:
         contracts:
           type: array
           items:
-            $ref: '#/components/schemas/ContractDeployment'
+            $ref: "#/components/schemas/ContractDeployment"
         next_cursor:
-          $ref: '#/components/schemas/Cursor'
+          $ref: "#/components/schemas/Cursor"
 
     ContractDeploymentsResponse:
       type: object
@@ -1258,9 +1249,9 @@ components:
         deployments:
           type: array
           items:
-            $ref: '#/components/schemas/ContractDeployment'
+            $ref: "#/components/schemas/ContractDeployment"
         next_cursor:
-          $ref: '#/components/schemas/Cursor'
+          $ref: "#/components/schemas/Cursor"
 
     Error:
       type: object

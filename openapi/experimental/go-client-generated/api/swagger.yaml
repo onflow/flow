@@ -177,15 +177,6 @@ paths:
         explode: true
         schema:
           $ref: "#/components/schemas/Address"
-      - name: role
-        in: query
-        description: "Filter by the account's role in the transfer. If unset, returns\
-          \ both sent and received transfers."
-        required: false
-        style: form
-        explode: true
-        schema:
-          $ref: "#/components/schemas/TransferRole"
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -299,15 +290,6 @@ paths:
         explode: true
         schema:
           $ref: "#/components/schemas/Address"
-      - name: role
-        in: query
-        description: "Filter by the account's role in the transfer. If unset, returns\
-          \ both sent and received transfers."
-        required: false
-        style: form
-        explode: true
-        schema:
-          $ref: "#/components/schemas/TransferRole"
       - name: expand
         in: query
         description: A comma-separated list indicating which properties of the content
@@ -3057,16 +3039,6 @@ components:
       explode: true
       schema:
         $ref: "#/components/schemas/Address"
-    transferRoleParam:
-      name: role
-      in: query
-      description: "Filter by the account's role in the transfer. If unset, returns\
-        \ both sent and received transfers."
-      required: false
-      style: form
-      explode: true
-      schema:
-        $ref: "#/components/schemas/TransferRole"
     scheduledStatusesParam:
       name: statuses
       in: query
