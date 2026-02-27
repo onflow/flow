@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetScheduledTransactionByID**](ScheduledTransactionsApi.md#GetScheduledTransactionByID) | **Get** /experimental/v1/scheduled/transaction/{id} | Get scheduled transaction by ID
 [**GetScheduledTransactions**](ScheduledTransactionsApi.md#GetScheduledTransactions) | **Get** /experimental/v1/scheduled | List scheduled transactions
-[**GetScheduledTransactionsByAccount**](ScheduledTransactionsApi.md#GetScheduledTransactionsByAccount) | **Get** /experimental/v1/scheduled/account/{address} | List scheduled transactions for an account
+[**GetScheduledTransactionsByAccount**](ScheduledTransactionsApi.md#GetScheduledTransactionsByAccount) | **Get** /experimental/v1/accounts/{address}/scheduled | List scheduled transactions for an account
 
 # **GetScheduledTransactionByID**
 > ScheduledTransaction GetScheduledTransactionByID(ctx, id, optional)

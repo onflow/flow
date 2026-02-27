@@ -24,10 +24,10 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**GetAccountFungibleTransfers**](docs/AccountsApi.md#getaccountfungibletransfers) | **Get** /experimental/v1/accounts/{address}/ft/transfers | Get account fungible token transfers
 *AccountsApi* | [**GetAccountNonFungibleTransfers**](docs/AccountsApi.md#getaccountnonfungibletransfers) | **Get** /experimental/v1/accounts/{address}/nft/transfers | Get account non-fungible token transfers
 *AccountsApi* | [**GetAccountTransactions**](docs/AccountsApi.md#getaccounttransactions) | **Get** /experimental/v1/accounts/{address}/transactions | Get account transactions
-*AccountsApi* | [**GetScheduledTransactionsByAccount**](docs/AccountsApi.md#getscheduledtransactionsbyaccount) | **Get** /experimental/v1/scheduled/account/{address} | List scheduled transactions for an account
+*AccountsApi* | [**GetScheduledTransactionsByAccount**](docs/AccountsApi.md#getscheduledtransactionsbyaccount) | **Get** /experimental/v1/accounts/{address}/scheduled | List scheduled transactions for an account
 *ScheduledTransactionsApi* | [**GetScheduledTransactionByID**](docs/ScheduledTransactionsApi.md#getscheduledtransactionbyid) | **Get** /experimental/v1/scheduled/transaction/{id} | Get scheduled transaction by ID
 *ScheduledTransactionsApi* | [**GetScheduledTransactions**](docs/ScheduledTransactionsApi.md#getscheduledtransactions) | **Get** /experimental/v1/scheduled | List scheduled transactions
-*ScheduledTransactionsApi* | [**GetScheduledTransactionsByAccount**](docs/ScheduledTransactionsApi.md#getscheduledtransactionsbyaccount) | **Get** /experimental/v1/scheduled/account/{address} | List scheduled transactions for an account
+*ScheduledTransactionsApi* | [**GetScheduledTransactionsByAccount**](docs/ScheduledTransactionsApi.md#getscheduledtransactionsbyaccount) | **Get** /experimental/v1/accounts/{address}/scheduled | List scheduled transactions for an account
 
 ## Documentation For Models
 

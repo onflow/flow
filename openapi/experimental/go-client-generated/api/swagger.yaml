@@ -567,7 +567,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  /experimental/v1/scheduled/account/{address}:
+  /experimental/v1/accounts/{address}/scheduled:
     get:
       tags:
       - ScheduledTransactions

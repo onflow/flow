@@ -362,7 +362,7 @@ func (a *ScheduledTransactionsApiService) GetScheduledTransactionsByAccount(ctx 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/experimental/v1/scheduled/account/{address}"
+	localVarPath := a.client.cfg.BasePath + "/experimental/v1/accounts/{address}/scheduled"
 	localVarPath = strings.Replace(localVarPath, "{"+"address"+"}", fmt.Sprintf("%v", address), -1)
 
 	localVarHeaderParams := make(map[string]string)
