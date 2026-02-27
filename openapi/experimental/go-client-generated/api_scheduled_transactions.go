@@ -24,70 +24,40 @@ var (
 	_ context.Context
 )
 
-type AccountsApiService service
+type ScheduledTransactionsApiService service
 /*
-AccountsApiService Get account fungible token transfers
-Returns a paginated list of fungible token transfers for the given account address, ordered descending by block height (newest first). 
+ScheduledTransactionsApiService Get scheduled transaction by ID
+Returns the scheduled transaction with the given ID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param address The account address (hex-encoded without 0x prefix).
- * @param optional nil or *AccountsApiGetAccountFungibleTransfersOpts - Optional Parameters:
-     * @param "Cursor" (optional.Interface of string) -  Opaque pagination cursor from a previous response&#x27;s &#x60;next_cursor&#x60; field.
-     * @param "Limit" (optional.Int32) -  The maximum number of results to return.
-     * @param "TokenType" (optional.String) -  Filter by fully qualified token type (e.g. &#x60;A.1654653399040a61.FlowToken&#x60;).
-     * @param "SourceAddress" (optional.Interface of string) -  Filter by the sender address of the transfer.
-     * @param "RecipientAddress" (optional.Interface of string) -  Filter by the recipient address of the transfer.
-     * @param "Role" (optional.Interface of TransferRole) -  Filter by the account&#x27;s role in the transfer. If unset, returns both sent and received transfers.
+ * @param id The scheduled transaction identifier (hex-encoded).
+ * @param optional nil or *ScheduledTransactionsApiGetScheduledTransactionByIDOpts - Optional Parameters:
      * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
      * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
-@return AccountFungibleTransfersResponse
+@return ScheduledTransaction
 */
 
-type AccountsApiGetAccountFungibleTransfersOpts struct {
-    Cursor optional.Interface
-    Limit optional.Int32
-    TokenType optional.String
-    SourceAddress optional.Interface
-    RecipientAddress optional.Interface
-    Role optional.Interface
+type ScheduledTransactionsApiGetScheduledTransactionByIDOpts struct {
     Expand optional.Interface
     Select_ optional.Interface
 }
 
-func (a *AccountsApiService) GetAccountFungibleTransfers(ctx context.Context, address string, localVarOptionals *AccountsApiGetAccountFungibleTransfersOpts) (AccountFungibleTransfersResponse, *http.Response, error) {
+func (a *ScheduledTransactionsApiService) GetScheduledTransactionByID(ctx context.Context, id string, localVarOptionals *ScheduledTransactionsApiGetScheduledTransactionByIDOpts) (ScheduledTransaction, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue AccountFungibleTransfersResponse
+		localVarReturnValue ScheduledTransaction
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/experimental/v1/accounts/{address}/ft/transfers"
-	localVarPath = strings.Replace(localVarPath, "{"+"address"+"}", fmt.Sprintf("%v", address), -1)
+	localVarPath := a.client.cfg.BasePath + "/experimental/v1/scheduled/transaction/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if localVarOptionals != nil && localVarOptionals.Cursor.IsSet() {
-		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
-		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.TokenType.IsSet() {
-		localVarQueryParams.Add("token_type", parameterToString(localVarOptionals.TokenType.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.SourceAddress.IsSet() {
-		localVarQueryParams.Add("source_address", parameterToString(localVarOptionals.SourceAddress.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.RecipientAddress.IsSet() {
-		localVarQueryParams.Add("recipient_address", parameterToString(localVarOptionals.RecipientAddress.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Role.IsSet() {
-		localVarQueryParams.Add("role", parameterToString(localVarOptionals.Role.Value(), ""))
-	}
 	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
 		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
 	}
@@ -141,7 +111,7 @@ func (a *AccountsApiService) GetAccountFungibleTransfers(ctx context.Context, ad
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v AccountFungibleTransfersResponse
+			var v ScheduledTransaction
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -186,316 +156,10 @@ func (a *AccountsApiService) GetAccountFungibleTransfers(ctx context.Context, ad
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
-AccountsApiService Get account non-fungible token transfers
-Returns a paginated list of non-fungible token transfers for the given account address, ordered descending by block height (newest first). 
+ScheduledTransactionsApiService List scheduled transactions
+Returns a paginated list of scheduled transactions, ordered descending by scheduled transaction identifier (newest first). Results can be filtered by status, priority, time range, and transaction handler properties. 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param address The account address (hex-encoded without 0x prefix).
- * @param optional nil or *AccountsApiGetAccountNonFungibleTransfersOpts - Optional Parameters:
-     * @param "Cursor" (optional.Interface of string) -  Opaque pagination cursor from a previous response&#x27;s &#x60;next_cursor&#x60; field.
-     * @param "Limit" (optional.Int32) -  The maximum number of results to return.
-     * @param "TokenType" (optional.String) -  Filter by fully qualified token type (e.g. &#x60;A.1654653399040a61.FlowToken&#x60;).
-     * @param "SourceAddress" (optional.Interface of string) -  Filter by the sender address of the transfer.
-     * @param "RecipientAddress" (optional.Interface of string) -  Filter by the recipient address of the transfer.
-     * @param "Role" (optional.Interface of TransferRole) -  Filter by the account&#x27;s role in the transfer. If unset, returns both sent and received transfers.
-     * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
-     * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
-@return AccountNonFungibleTransfersResponse
-*/
-
-type AccountsApiGetAccountNonFungibleTransfersOpts struct {
-    Cursor optional.Interface
-    Limit optional.Int32
-    TokenType optional.String
-    SourceAddress optional.Interface
-    RecipientAddress optional.Interface
-    Role optional.Interface
-    Expand optional.Interface
-    Select_ optional.Interface
-}
-
-func (a *AccountsApiService) GetAccountNonFungibleTransfers(ctx context.Context, address string, localVarOptionals *AccountsApiGetAccountNonFungibleTransfersOpts) (AccountNonFungibleTransfersResponse, *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
-		localVarReturnValue AccountNonFungibleTransfersResponse
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/experimental/v1/accounts/{address}/nft/transfers"
-	localVarPath = strings.Replace(localVarPath, "{"+"address"+"}", fmt.Sprintf("%v", address), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if localVarOptionals != nil && localVarOptionals.Cursor.IsSet() {
-		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
-		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.TokenType.IsSet() {
-		localVarQueryParams.Add("token_type", parameterToString(localVarOptionals.TokenType.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.SourceAddress.IsSet() {
-		localVarQueryParams.Add("source_address", parameterToString(localVarOptionals.SourceAddress.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.RecipientAddress.IsSet() {
-		localVarQueryParams.Add("recipient_address", parameterToString(localVarOptionals.RecipientAddress.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Role.IsSet() {
-		localVarQueryParams.Add("role", parameterToString(localVarOptionals.Role.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
-		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
-	}
-	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
-		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
-	}
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	if localVarHttpResponse.StatusCode < 300 {
-		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
-			return localVarReturnValue, localVarHttpResponse, err
-		}
-	}
-
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body: localVarBody,
-			error: localVarHttpResponse.Status,
-		}
-		if localVarHttpResponse.StatusCode == 200 {
-			var v AccountNonFungibleTransfersResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		if localVarHttpResponse.StatusCode == 400 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		if localVarHttpResponse.StatusCode == 404 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		if localVarHttpResponse.StatusCode == 429 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		return localVarReturnValue, localVarHttpResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHttpResponse, nil
-}
-/*
-AccountsApiService Get account transactions
-Returns a paginated list of transactions for the given account address, ordered descending by block height (newest first). 
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param address The account address (hex-encoded without 0x prefix).
- * @param optional nil or *AccountsApiGetAccountTransactionsOpts - Optional Parameters:
-     * @param "Cursor" (optional.Interface of string) -  Opaque pagination cursor from a previous response&#x27;s &#x60;next_cursor&#x60; field.
-     * @param "Limit" (optional.Int32) -  The maximum number of results to return.
-     * @param "Roles" (optional.Interface of Role) -  A comma-separated list indicating which roles to filter by.
-     * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
-     * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
-@return AccountTransactionsResponse
-*/
-
-type AccountsApiGetAccountTransactionsOpts struct {
-    Cursor optional.Interface
-    Limit optional.Int32
-    Roles optional.Interface
-    Expand optional.Interface
-    Select_ optional.Interface
-}
-
-func (a *AccountsApiService) GetAccountTransactions(ctx context.Context, address string, localVarOptionals *AccountsApiGetAccountTransactionsOpts) (AccountTransactionsResponse, *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
-		localVarReturnValue AccountTransactionsResponse
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/experimental/v1/accounts/{address}/transactions"
-	localVarPath = strings.Replace(localVarPath, "{"+"address"+"}", fmt.Sprintf("%v", address), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if localVarOptionals != nil && localVarOptionals.Cursor.IsSet() {
-		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
-		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Roles.IsSet() {
-		localVarQueryParams.Add("roles", parameterToString(localVarOptionals.Roles.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
-		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
-	}
-	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
-		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
-	}
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	if localVarHttpResponse.StatusCode < 300 {
-		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
-			return localVarReturnValue, localVarHttpResponse, err
-		}
-	}
-
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body: localVarBody,
-			error: localVarHttpResponse.Status,
-		}
-		if localVarHttpResponse.StatusCode == 200 {
-			var v AccountTransactionsResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		if localVarHttpResponse.StatusCode == 400 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		if localVarHttpResponse.StatusCode == 404 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		if localVarHttpResponse.StatusCode == 429 {
-			var v ModelError
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		return localVarReturnValue, localVarHttpResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHttpResponse, nil
-}
-/*
-AccountsApiService List scheduled transactions for an account
-Returns a paginated list of scheduled transactions associated with the given account address, ordered descending by scheduled time (newest first). Results can be filtered by status, priority, time range, and transaction handler properties. 
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param address The account address (hex-encoded without 0x prefix).
- * @param optional nil or *AccountsApiGetScheduledTransactionsByAccountOpts - Optional Parameters:
+ * @param optional nil or *ScheduledTransactionsApiGetScheduledTransactionsOpts - Optional Parameters:
      * @param "Cursor" (optional.Interface of string) -  Opaque pagination cursor from a previous response&#x27;s &#x60;next_cursor&#x60; field.
      * @param "Limit" (optional.Int32) -  The maximum number of results to return.
      * @param "Statuses" (optional.Interface of []ScheduledTransactionStatus) -  A comma-separated list of scheduled transaction statuses to filter by.
@@ -510,7 +174,7 @@ Returns a paginated list of scheduled transactions associated with the given acc
 @return ScheduledTransactionsResponse
 */
 
-type AccountsApiGetScheduledTransactionsByAccountOpts struct {
+type ScheduledTransactionsApiGetScheduledTransactionsOpts struct {
     Cursor optional.Interface
     Limit optional.Int32
     Statuses optional.Interface
@@ -524,7 +188,171 @@ type AccountsApiGetScheduledTransactionsByAccountOpts struct {
     Select_ optional.Interface
 }
 
-func (a *AccountsApiService) GetScheduledTransactionsByAccount(ctx context.Context, address string, localVarOptionals *AccountsApiGetScheduledTransactionsByAccountOpts) (ScheduledTransactionsResponse, *http.Response, error) {
+func (a *ScheduledTransactionsApiService) GetScheduledTransactions(ctx context.Context, localVarOptionals *ScheduledTransactionsApiGetScheduledTransactionsOpts) (ScheduledTransactionsResponse, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		localVarReturnValue ScheduledTransactionsResponse
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/experimental/v1/scheduled"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.Cursor.IsSet() {
+		localVarQueryParams.Add("cursor", parameterToString(localVarOptionals.Cursor.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
+		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Statuses.IsSet() {
+		localVarQueryParams.Add("statuses", parameterToString(localVarOptionals.Statuses.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.Priority.IsSet() {
+		localVarQueryParams.Add("priority", parameterToString(localVarOptionals.Priority.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.StartTime.IsSet() {
+		localVarQueryParams.Add("start_time", parameterToString(localVarOptionals.StartTime.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EndTime.IsSet() {
+		localVarQueryParams.Add("end_time", parameterToString(localVarOptionals.EndTime.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.HandlerOwner.IsSet() {
+		localVarQueryParams.Add("handler_owner", parameterToString(localVarOptionals.HandlerOwner.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.HandlerTypeIdentifier.IsSet() {
+		localVarQueryParams.Add("handler_type_identifier", parameterToString(localVarOptionals.HandlerTypeIdentifier.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.HandlerUuid.IsSet() {
+		localVarQueryParams.Add("handler_uuid", parameterToString(localVarOptionals.HandlerUuid.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Expand.IsSet() {
+		localVarQueryParams.Add("expand", parameterToString(localVarOptionals.Expand.Value(), "csv"))
+	}
+	if localVarOptionals != nil && localVarOptionals.Select_.IsSet() {
+		localVarQueryParams.Add("select", parameterToString(localVarOptionals.Select_.Value(), "csv"))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	if localVarHttpResponse.StatusCode < 300 {
+		// If we succeed, return the data, otherwise pass on to decode error.
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		if err == nil { 
+			return localVarReturnValue, localVarHttpResponse, err
+		}
+	}
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericSwaggerError{
+			body: localVarBody,
+			error: localVarHttpResponse.Status,
+		}
+		if localVarHttpResponse.StatusCode == 200 {
+			var v ScheduledTransactionsResponse
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 400 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 429 {
+			var v ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHttpResponse, nil
+}
+/*
+ScheduledTransactionsApiService List scheduled transactions for an account
+Returns a paginated list of scheduled transactions associated with the given account address, ordered descending by scheduled time (newest first). Results can be filtered by status, priority, time range, and transaction handler properties. 
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param address The account address (hex-encoded without 0x prefix).
+ * @param optional nil or *ScheduledTransactionsApiGetScheduledTransactionsByAccountOpts - Optional Parameters:
+     * @param "Cursor" (optional.Interface of string) -  Opaque pagination cursor from a previous response&#x27;s &#x60;next_cursor&#x60; field.
+     * @param "Limit" (optional.Int32) -  The maximum number of results to return.
+     * @param "Statuses" (optional.Interface of []ScheduledTransactionStatus) -  A comma-separated list of scheduled transaction statuses to filter by.
+     * @param "Priority" (optional.Interface of ScheduledTransactionPriority) -  Filter by scheduled transaction priority.
+     * @param "StartTime" (optional.Time) -  Filter to include only scheduled transactions with a scheduled time at or after this value (inclusive, RFC 3339).
+     * @param "EndTime" (optional.Time) -  Filter to include only scheduled transactions with a scheduled time at or before this value (inclusive, RFC 3339).
+     * @param "HandlerOwner" (optional.Interface of string) -  Filter by the address of the account that owns the transaction handler.
+     * @param "HandlerTypeIdentifier" (optional.String) -  Filter by the Cadence type identifier of the transaction handler (e.g. &#x60;A.1654653399040a61.MyScheduler.Handler&#x60;).
+     * @param "HandlerUuid" (optional.String) -  Filter by the UUID of the transaction handler resource.
+     * @param "Expand" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to expand.
+     * @param "Select_" (optional.Interface of []string) -  A comma-separated list indicating which properties of the content to return.
+@return ScheduledTransactionsResponse
+*/
+
+type ScheduledTransactionsApiGetScheduledTransactionsByAccountOpts struct {
+    Cursor optional.Interface
+    Limit optional.Int32
+    Statuses optional.Interface
+    Priority optional.Interface
+    StartTime optional.Time
+    EndTime optional.Time
+    HandlerOwner optional.Interface
+    HandlerTypeIdentifier optional.String
+    HandlerUuid optional.String
+    Expand optional.Interface
+    Select_ optional.Interface
+}
+
+func (a *ScheduledTransactionsApiService) GetScheduledTransactionsByAccount(ctx context.Context, address string, localVarOptionals *ScheduledTransactionsApiGetScheduledTransactionsByAccountOpts) (ScheduledTransactionsResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
