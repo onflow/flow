@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**GetAccountFungibleTransfers**](AccountsApi.md#GetAccountFungibleTransfers) | **Get** /experimental/v1/accounts/{address}/ft/transfers | Get account fungible token transfers
 [**GetAccountNonFungibleTransfers**](AccountsApi.md#GetAccountNonFungibleTransfers) | **Get** /experimental/v1/accounts/{address}/nft/transfers | Get account non-fungible token transfers
 [**GetAccountTransactions**](AccountsApi.md#GetAccountTransactions) | **Get** /experimental/v1/accounts/{address}/transactions | Get account transactions
-[**GetContractsByAccount**](AccountsApi.md#GetContractsByAccount) | **Get** /experimental/v1/contracts/account/{address} | List contracts for an account
+[**GetContractsByAccount**](AccountsApi.md#GetContractsByAccount) | **Get** /experimental/v1/accounts/{address}/contracts | List contracts for an account
 [**GetScheduledTransactionsByAccount**](AccountsApi.md#GetScheduledTransactionsByAccount) | **Get** /experimental/v1/accounts/{address}/scheduled | List scheduled transactions for an account
 
 # **GetAccountFungibleTransfers**

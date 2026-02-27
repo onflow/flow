@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**GetContractByIdentifier**](ContractsApi.md#GetContractByIdentifier) | **Get** /experimental/v1/contracts/{identifier} | Get contract by identifier
 [**GetContractDeployments**](ContractsApi.md#GetContractDeployments) | **Get** /experimental/v1/contracts/{identifier}/deployments | List deployments for a contract
 [**GetContracts**](ContractsApi.md#GetContracts) | **Get** /experimental/v1/contracts | List contracts
-[**GetContractsByAccount**](ContractsApi.md#GetContractsByAccount) | **Get** /experimental/v1/contracts/account/{address} | List contracts for an account
+[**GetContractsByAccount**](ContractsApi.md#GetContractsByAccount) | **Get** /experimental/v1/accounts/{address}/contracts | List contracts for an account
 
 # **GetContractByIdentifier**
 > ContractDeployment GetContractByIdentifier(ctx, identifier, optional)

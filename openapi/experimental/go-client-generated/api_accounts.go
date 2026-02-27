@@ -526,7 +526,7 @@ func (a *AccountsApiService) GetContractsByAccount(ctx context.Context, address 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/experimental/v1/contracts/account/{address}"
+	localVarPath := a.client.cfg.BasePath + "/experimental/v1/accounts/{address}/contracts"
 	localVarPath = strings.Replace(localVarPath, "{"+"address"+"}", fmt.Sprintf("%v", address), -1)
 
 	localVarHeaderParams := make(map[string]string)

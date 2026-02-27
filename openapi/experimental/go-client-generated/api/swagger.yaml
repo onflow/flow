@@ -833,7 +833,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  /experimental/v1/contracts/account/{address}:
+  /experimental/v1/accounts/{address}/contracts:
     get:
       tags:
       - Contracts
