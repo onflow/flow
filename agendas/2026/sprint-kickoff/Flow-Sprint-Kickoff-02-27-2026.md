@@ -333,19 +333,21 @@ https://github.com/onflow/flow-okrs/issues/175
 
 **Done last sprint**
 
+**Flow Explorer**
+- [Configure BigQuery for Flow Blockchain - Community Public Dataset](https://github.com/onflow/ff-sre-infrastructure/issues/1151)
+- [Add infra resources to deploy totalsupply to staging](https://github.com/onflow/ff-sre-infrastructure/issues/1152)
+- [Add infra resources to deploy API explorer to staging](https://github.com/onflow/ff-sre-infrastructure/issues/1153)
+- [Onboard `flowscan.com` zone to Cloudflare](https://github.com/onflow/ff-sre-infrastructure/issues/1157)
+- [Redirect `flowscan.com` and `www.flowscan.com` to `explorer.flow.com`](https://github.com/onflow/ff-sre-infrastructure/issues/1158)
 
-**Observability**
-
-
-**FCM**
-
-**Execution Ledger Service**
-
-
-**TN54 Spork**
-
+**Flow Nodes**
+- [Update Automation Snapshot Schedule from TN53 to TN54](https://github.com/onflow/ff-sre-infrastructure/issues/1135)
+- [Delete Daily Snapshots of TN53 Nodes](https://github.com/onflow/ff-sre-infrastructure/issues/1140)
+- [Delete TN52 Historical AN after the TN54 Spork](https://github.com/onflow/ff-sre-infrastructure/issues/1143)
+- [Delete Daily Snapshots of MN27 Nodes](https://github.com/onflow/ff-sre-infrastructure/issues/1155)
 
 **Support**
+- [Create SA and Token for Grafana MCP Testing](https://github.com/onflow/ff-sre-infrastructure/issues/1154)
 
 
 ---
