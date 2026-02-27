@@ -9,11 +9,9 @@
 package swagger
 
 // Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
-type ScheduledTransactionExpandable struct {
-	// Link to fetch the full transaction body of the transaction in which the scheduled transaction was executed.
+type ContractDeploymentExpandable struct {
+	// Link to fetch the full transaction that applied this deployment.
 	Transaction string `json:"transaction,omitempty"`
-	// Link to fetch the transaction result of the transaction in which the scheduled transaction was executed.
+	// Link to fetch the transaction result.
 	Result string `json:"result,omitempty"`
-	// Link to fetch the Cadence contract that implements the transaction handler.
-	HandlerContract string `json:"handler_contract,omitempty"`
 }

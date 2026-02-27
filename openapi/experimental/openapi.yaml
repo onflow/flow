@@ -19,6 +19,8 @@ tags:
     description: Endpoints for querying account-related data.
   - name: ScheduledTransactions
     description: Endpoints for querying scheduled transaction data.
+  - name: Contracts
+    description: Endpoints for querying contract deployment data.
 
 paths:
   /experimental/v1/accounts/{address}/transactions:
@@ -306,6 +308,186 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+  /experimental/v1/contracts:
+    get:
+      summary: List contracts
+      description: |
+        Returns a paginated list of contracts (latest deployment per unique contract identifier),
+        ordered descending by contract address.
+        Results can be filtered by contract name and block height range.
+      operationId: getContracts
+      tags:
+        - Contracts
+      parameters:
+        - $ref: '#/components/parameters/cursorParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/contractNameParam'
+        - $ref: '#/components/parameters/startBlockParam'
+        - $ref: '#/components/parameters/endBlockParam'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        "200":
+          description: A page of contracts.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContractsResponse"
+        "400":
+          description: Bad request (invalid filter parameters, cursor, or limit).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/accounts/{address}/contracts:
+    get:
+      summary: List contracts for an account
+      description: |
+        Returns a paginated list of contracts deployed to the given account address,
+        ordered ascending by contract name.
+        Results can be filtered by contract name and block height range.
+      operationId: getContractsByAccount
+      tags:
+        - Contracts
+        - Accounts
+      parameters:
+        - name: address
+          in: path
+          required: true
+          description: The account address (hex-encoded without 0x prefix).
+          schema:
+            $ref: '#/components/schemas/Address'
+        - $ref: '#/components/parameters/cursorParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/contractNameParam'
+        - $ref: '#/components/parameters/startBlockParam'
+        - $ref: '#/components/parameters/endBlockParam'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        "200":
+          description: A page of contracts for the account.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContractsResponse"
+        "400":
+          description: Bad request (invalid address, filter parameters, cursor, or limit).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No account found for the given address.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/contracts/{identifier}:
+    get:
+      summary: Get contract by identifier
+      description: Returns the latest deployment for the contract with the given identifier.
+      operationId: getContractByIdentifier
+      tags:
+        - Contracts
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          description: The case sensitive address-qualified contract identifier (e.g. `A.1654653399040a61.EVM`).
+          schema:
+            $ref: '#/components/schemas/ContractIdentifier'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        "200":
+          description: The contract deployment.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContractDeployment"
+        "400":
+          description: Bad request (invalid identifier).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No contract found for the given identifier.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/contracts/{identifier}/deployments:
+    get:
+      summary: List deployments for a contract
+      description: |
+        Returns a paginated list of all historical deployments for the contract with the given identifier,
+        ordered descending by block height (newest first).
+        Results can be filtered by block height range.
+      operationId: getContractDeployments
+      tags:
+        - Contracts
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          description: The address-qualified contract identifier (e.g. `A.1654653399040a61.EVM`).
+          schema:
+            $ref: '#/components/schemas/ContractIdentifier'
+        - $ref: '#/components/parameters/cursorParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/startBlockParam'
+        - $ref: '#/components/parameters/endBlockParam'
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        "200":
+          description: A page of contract deployments.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContractDeploymentsResponse"
+        "400":
+          description: Bad request (invalid identifier, filter parameters, cursor, or limit).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No contract found for the given identifier.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
 components:
   parameters:
     cursorParam:
@@ -443,6 +625,29 @@ components:
     handlerUuidParam:
       description: Filter by the UUID of the transaction handler resource.
       name: handler_uuid
+      in: query
+      schema:
+        type: string
+        format: uint64
+      required: false
+    contractNameParam:
+      description: Filter by case sensitive contract name (unqualified, e.g. `EVM`).
+      name: contract_name
+      in: query
+      schema:
+        type: string
+      required: false
+    startBlockParam:
+      description: Filter to include only deployments at or after this block height (inclusive).
+      name: start_block
+      in: query
+      schema:
+        type: string
+        format: uint64
+      required: false
+    endBlockParam:
+      description: Filter to include only deployments at or before this block height (inclusive).
+      name: end_block
       in: query
       schema:
         type: string
@@ -935,7 +1140,7 @@ components:
         result:
           $ref: '#/components/schemas/TransactionResult'
         handler_contract:
-          $ref: '#/components/schemas/Contract'
+          $ref: '#/components/schemas/ContractDeployment'
         _expandable:
           type: object
           description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
@@ -943,29 +1148,17 @@ components:
             transaction:
               type: string
               format: uri
-              description: Link to fetch the full transaction body.
+              description: Link to fetch the full transaction body of the transaction in which the scheduled transaction was executed.
             result:
               type: string
               format: uri
-              description: Link to fetch the transaction result.
+              description: Link to fetch the transaction result of the transaction in which the scheduled transaction was executed.
             handler_contract:
               type: string
               format: uri
               description: Link to fetch the Cadence contract that implements the transaction handler.
         _links:
           $ref: '#/components/schemas/Links'
-    Contract:
-      type: object
-      required:
-        - identifier
-        - body
-      properties:
-        identifier:
-          description: Unique identifier for the contract (e.g. `A.1654653399040a61.MyContract`).
-          type: string
-        body:
-          description: Full source code of the contract.
-          type: string
     ScheduledTransactionStatus:
       type: string
       description: The current lifecycle status of a scheduled transaction.
@@ -981,6 +1174,93 @@ components:
         - low
         - medium
         - high
+
+    ContractIdentifier:
+      description: Address-qualified Cadence contract identifier (e.g. `A.1654653399040a61.EVM`).
+      type: string
+      pattern: '^A\.[a-fA-F0-9]{16}\.[a-zA-Z_][a-zA-Z0-9_]*$'
+
+    ContractDeployment:
+      type: object
+      required:
+        - contract_id
+        - address
+        - code
+        - code_hash
+        - _expandable
+      properties:
+        contract_id:
+          description: Address-qualified canonical identifier (e.g. `A.1654653399040a61.EVM`).
+          $ref: '#/components/schemas/ContractIdentifier'
+        address:
+          description: Account that owns the contract.
+          $ref: '#/components/schemas/Address'
+        block_height:
+          description: Block height at which this deployment was applied.
+          type: string
+          format: uint64
+        transaction_id:
+          description: ID of the transaction that applied this deployment.
+          $ref: '#/components/schemas/Identifier'
+        tx_index:
+          description: Position of the deploying transaction within its block.
+          type: string
+          format: uint32
+        event_index:
+          description: Position of the contract event within its transaction.
+          type: string
+          format: uint32
+        code:
+          description: Base64-encoded Cadence source code of the contract deployed.
+          type: string
+          format: byte
+        code_hash:
+          description: Hex-encoded SHA3-256 hash of the contract code.
+          type: string
+          format: hexadecimal
+        is_placeholder:
+          description: True if the deployment was created during bootstrapping based on the current chain state, not based on a protocol event. When true, block_height, transaction_id, tx_index, and event_index are absent.
+          type: boolean
+        transaction:
+          $ref: '#/components/schemas/Transaction'
+        _expandable:
+          type: object
+          description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.
+          properties:
+            transaction:
+              type: string
+              format: uri
+              description: Link to fetch the full transaction that applied this deployment.
+            result:
+              type: string
+              format: uri
+              description: Link to fetch the transaction result.
+        _links:
+          $ref: '#/components/schemas/Links'
+
+    ContractsResponse:
+      type: object
+      required:
+        - contracts
+      properties:
+        contracts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractDeployment'
+        next_cursor:
+          $ref: '#/components/schemas/Cursor'
+
+    ContractDeploymentsResponse:
+      type: object
+      required:
+        - deployments
+      properties:
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractDeployment'
+        next_cursor:
+          $ref: '#/components/schemas/Cursor'
 
     Error:
       type: object

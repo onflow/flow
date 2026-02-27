@@ -24,7 +24,12 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**GetAccountFungibleTransfers**](docs/AccountsApi.md#getaccountfungibletransfers) | **Get** /experimental/v1/accounts/{address}/ft/transfers | Get account fungible token transfers
 *AccountsApi* | [**GetAccountNonFungibleTransfers**](docs/AccountsApi.md#getaccountnonfungibletransfers) | **Get** /experimental/v1/accounts/{address}/nft/transfers | Get account non-fungible token transfers
 *AccountsApi* | [**GetAccountTransactions**](docs/AccountsApi.md#getaccounttransactions) | **Get** /experimental/v1/accounts/{address}/transactions | Get account transactions
+*AccountsApi* | [**GetContractsByAccount**](docs/AccountsApi.md#getcontractsbyaccount) | **Get** /experimental/v1/accounts/{address}/contracts | List contracts for an account
 *AccountsApi* | [**GetScheduledTransactionsByAccount**](docs/AccountsApi.md#getscheduledtransactionsbyaccount) | **Get** /experimental/v1/accounts/{address}/scheduled | List scheduled transactions for an account
+*ContractsApi* | [**GetContractByIdentifier**](docs/ContractsApi.md#getcontractbyidentifier) | **Get** /experimental/v1/contracts/{identifier} | Get contract by identifier
+*ContractsApi* | [**GetContractDeployments**](docs/ContractsApi.md#getcontractdeployments) | **Get** /experimental/v1/contracts/{identifier}/deployments | List deployments for a contract
+*ContractsApi* | [**GetContracts**](docs/ContractsApi.md#getcontracts) | **Get** /experimental/v1/contracts | List contracts
+*ContractsApi* | [**GetContractsByAccount**](docs/ContractsApi.md#getcontractsbyaccount) | **Get** /experimental/v1/accounts/{address}/contracts | List contracts for an account
 *ScheduledTransactionsApi* | [**GetScheduledTransactionByID**](docs/ScheduledTransactionsApi.md#getscheduledtransactionbyid) | **Get** /experimental/v1/scheduled/transaction/{id} | Get scheduled transaction by ID
 *ScheduledTransactionsApi* | [**GetScheduledTransactions**](docs/ScheduledTransactionsApi.md#getscheduledtransactions) | **Get** /experimental/v1/scheduled | List scheduled transactions
 *ScheduledTransactionsApi* | [**GetScheduledTransactionsByAccount**](docs/ScheduledTransactionsApi.md#getscheduledtransactionsbyaccount) | **Get** /experimental/v1/accounts/{address}/scheduled | List scheduled transactions for an account
@@ -36,7 +41,10 @@ Class | Method | HTTP request | Description
  - [AccountTransaction](docs/AccountTransaction.md)
  - [AccountTransactionExpandable](docs/AccountTransactionExpandable.md)
  - [AccountTransactionsResponse](docs/AccountTransactionsResponse.md)
- - [Contract](docs/Contract.md)
+ - [ContractDeployment](docs/ContractDeployment.md)
+ - [ContractDeploymentExpandable](docs/ContractDeploymentExpandable.md)
+ - [ContractDeploymentsResponse](docs/ContractDeploymentsResponse.md)
+ - [ContractsResponse](docs/ContractsResponse.md)
  - [Event](docs/Event.md)
  - [FungibleTokenTransfer](docs/FungibleTokenTransfer.md)
  - [Links](docs/Links.md)
