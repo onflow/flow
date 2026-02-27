@@ -83,8 +83,8 @@ Total Downtime in minutes
 
 **Cadence Language**
 
-- Latest security improvements: [[v1.9.10](https://github.com/onflow/cadence/pull/4444)
-- more work on improving security: [1]](https://github.com/onflow/cadence-internal/pull/427), [2](https://github.com/onflow/cadence-internal/pull/422), [3](https://github.com/onflow/cadence-internal/pull/432)
+- Latest security improvements: [v1.9.10](https://github.com/onflow/cadence/pull/4444)
+- more work on improving security: [1](https://github.com/onflow/cadence-internal/pull/427), [2](https://github.com/onflow/cadence-internal/pull/422), [3](https://github.com/onflow/cadence-internal/pull/432)
 - Update [compiler to keep up with the security improvements](https://github.com/onflow/cadence-internal/pull/428)
 - chores:
     - [[v1.9] Port v1.9.9-rc.2](https://github.com/onflow/cadence/pull/4439)
