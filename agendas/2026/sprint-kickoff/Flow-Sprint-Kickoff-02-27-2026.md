@@ -174,13 +174,33 @@ Q1 Cycle Objective(s):
     - Metrics for Positions, TVL, observer health and polling have been implemented.
   - KROK Team:
       * Done:
+        - MVP version of offchain analytics was deployed incuding tasks below, extra metrics and extensions in progress
+        - [[FCMObserver] FCM Observer - Initial Implementation #4 ](https://github.com/onflow/fcm-observer/issues/4)
+        - [[FCMObserver] Refactor ingestion engine as it has become a god object #10 ](https://github.com/onflow/fcm-observer/issues/10)
+        - [[FCMObserver] Create a generic interface for the data (metrics) fetched via cadence scripts #40 ](https://github.com/onflow/fcm-observer/issues/40)
+        - [[FCMObserver] Add mockery, mocks, and unit test for FlowALPv0.Opened event #42 ](https://github.com/onflow/fcm-observer/issues/42)
+        - [[FCMObserver] FCM Observer - Additional metrics, local monitoring stack. #6 ](https://github.com/onflow/fcm-observer/issues/6)
+        - [[FCMObserver] ALP: Rebalances per hour (double check) #15 ](https://github.com/onflow/fcm-observer/issues/15)
+        - [[FCMObserver] ALP: Rebalance Up events (HF < healthy range) (P1) #19 ](https://github.com/onflow/fcm-observer/issues/19)
+        - [[FCMObserver] ALP: Rebalance Down events (HF > healthy range) (P1) #20 ](https://github.com/onflow/fcm-observer/issues/20)
+        - [[FCMObserver] Number of users tracked vs beta capabilities granted (P1) #27 ](https://github.com/onflow/fcm-observer/issues/27)
+        - [[FCMObserver] Total credit and total debt (P2) #34 ](https://github.com/onflow/fcm-observer/issues/34)
+        - [[FCMObserver] Total current MOET supply (P1) #35 ](https://github.com/onflow/fcm-observer/issues/35)
+        - [[FCMObserver] Add rebalancer metrics from FYV project #39 ](https://github.com/onflow/fcm-observer/issues/39)
+        - [[FlowActions] S5 General Improvements #115 ](https://github.com/onflow/FlowActions/issues/115)
 
-
-      * In Review:   
-
+      * In Review: 
+        - [[FlowActions] FLOW-15 Unfinished TODOs #110 ](https://github.com/onflow/FlowActions/issues/110)
+        - [[FlowALP] Multi-Position Scenarios Testing #147 ](https://github.com/onflow/FlowALP/issues/147)      
+        - [[FlowALP] Multiple Collateral Types & Cross-Asset Operations Testing #148 ](https://github.com/onflow/FlowALP/issues/148)
+        - [[FlowALP] Oracle Failure & Manipulation Testing #149 ](https://github.com/onflow/FlowALP/issues/149)
+        - [[FlowCreditMarket] Liquidation Edge Cases #173 ](https://github.com/onflow/FlowCreditMarket/issues/173)
       
       * In Progress
-
+        - [[FlowALP] Interest Rate Boundary Conditions Testing #180 ](https://github.com/onflow/FlowALP/issues/180)
+        - [[FlowALP] Access Control - Unauthorized access, privilege escalation, entitlement enforcement #177 ](https://github.com/onflow/FlowALP/issues/177)
+        - [[FCMObserver] Balance per vault histogram (P2) #29 ](https://github.com/onflow/fcm-observer/issues/29)
+        - [[FCMObserver] Total number of vaults (P2) #28 ](https://github.com/onflow/fcm-observer/issues/28)
 
 - FYV
   - Redesigning the supervisor and worker architecture [[#10](https://github.com/onflow/FlowYieldVaultsEVM/issues/10)]
