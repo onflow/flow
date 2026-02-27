@@ -37,13 +37,22 @@ Total Downtime in minutes
 
 #### Planned downtime
 
-- HCUs on 2/13 and 2/24
+##### Height Coordinated Upgrades (HCU)
+- [v0.47.0](https://github.com/onflow/flow-go/releases/tag/v0.47.0)
+  - Mainnet 2/24, Testnet 2/23, 2/18 (test only)
+  - Zero-downtime HCU
+
+- [v0.46.1](https://github.com/onflow/flow-go/releases/tag/v0.46.1)
+  - Mainnet 2/13, Testnet 2/12
 
 #### Unplanned downtime
 
-- Sealing halt on 2/23/2026
+- Mainnet Sealing halt on 2/23/2026
+  - 4 hrs
   - [Retrospective](https://status.flow.com/incidents/d2rdc04vx65w)
 
+- Testnet System chunks failure on 2/25/2026
+  - 1 hour
 
 ---
 
@@ -152,6 +161,15 @@ Q1 Cycle Objective(s):
 
 * <ins>Cryptography</ins>
 
+- SPoCK paper:
+  - Spearbit delivered first round of feedback - back and forth constructive discussions on the feedback
+    - a few areas of improvements and subtle cases identified
+    - we are still discussing the best ways to update (basically the security games)
+    - updated the paper for other less problematic points
+
+- Crypto module:
+  - Go 1.26 brings breaking changes to the go standard library and the crypto module currently breaks for 1.26
+    - checking new external ECDSA dependencies for the 1.26 update - still ongoing
 
 
 ---
@@ -376,7 +394,7 @@ https://github.com/onflow/flow-okrs/issues/175
 
 [Q4 Cycle Objective(s)](https://github.com/orgs/onflow/projects/91/views/5):
 1. Transactions fees update [Done]
-2. Surge Pricing [In Progress]
+2. Surge Pricing [Paused]
 3. Develop an internal document for Flow Tokenomics [Paused]
 
 **Done last sprint**
