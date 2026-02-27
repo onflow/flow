@@ -283,7 +283,7 @@ https://github.com/onflow/flow-okrs/issues/175
   - Deployed FLOW total supply API for CoinGecko and CoinMarketCap
   - Completed infrastructure setup for mainnet and testnet exporter and API service
   - Finished first version of flow-explorer API endpoints
-  - Completed Stake & Eggs redesign
+  - Completed redesign
   - Added node page with delegations
   - Reworked account page to reduce staking focus
   - Added historical transactions to account page
