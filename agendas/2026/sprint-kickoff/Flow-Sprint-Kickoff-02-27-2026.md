@@ -6,6 +6,7 @@
 - QuantStamp review of Core EVM contract complete - no major issues found.
 - Cross-VM optimizations show 15-20% improvement in the FYV transaction cost in benchmarks.
 - Transaction scheduling contract optimizations show ~25% improvement in the execution effort consumed.
+- explorer.flow.com is live
 
 ---
 
@@ -229,7 +230,7 @@ Goals:
 
 - Cadence security improvements: covered in Cadence language section
 - In-house financial analytics & fraud detection tooling
-    - Chase TBD
+    - Blocked until APIs are finished in explorer work
 - Update of bug bounty program with HackenProof.
     - [Program updated](https://hackenproof.com/programs/flow-protocol) with more details on scope and rewrite to reduce repetitive statements.
 - Fungible token supply monitoring
@@ -239,7 +240,7 @@ Goals:
 
 - Cadence security improvements: Continue work on more improvements, maybe start experimentation with Claude security
 - In-house financial analytics & fraud detection tooling
-    - Chase TBD
+    - Blocked until APIs are finished in explorer work
 - Update of bug bounty program with HackenProof.
     - update program to add more info on reproducers and reports priotitization
 - Fungible token supply monitoring
@@ -278,14 +279,42 @@ https://github.com/onflow/flow-okrs/issues/175
 
 - Assist on security analytics tool, block explorer, and FCM testing (covered in other sections)
 - Block Explorer
-
+  - Set up indexing for account transactions, account transfers, and scheduled transactions
+  - Deployed FLOW total supply API for CoinGecko and CoinMarketCap
+  - Completed infrastructure setup for mainnet and testnet exporter and API service
+  - Finished first version of flow-explorer API endpoints
+  - Completed Stake & Eggs redesign
+  - Added node page with delegations
+  - Reworked account page to reduce staking focus
+  - Added historical transactions to account page
+  - Added transaction timestamps
+  - Displayed code errors on transaction page
+  - Created displays for system and scheduled transactions on the transaction page
+  - Added tags to the transaction page
+  - Fixed NFT and FT data issue
+  - Created NFT collection page
+  - Created token page
+  - Added surge factor to home page
+  - Added highlights section to home page
+  - Added locations to node cards
+  - Added globe visualization with node locations
+  - Rebranded the site
 
 **This Sprint**
 
-
 - Block Explorer
-
-
+  - Finish contract indexer
+  - Start historic indexing
+  - Implement flow-explorer API contract endpoints
+  - Implement flow-explorer API scheduled transaction endpoints
+  - Build new flow-explorer frontend pages
+  - Add total transactions metric
+  - Hook up analytics and events
+  - Add search suggestions
+  - Add contracts history
+  - Improve the NFT display in account page
+  - Link Cadence Txns to related wrapped EVM transactions
+  - Make COAs intuitive to users
 
 ---
 
