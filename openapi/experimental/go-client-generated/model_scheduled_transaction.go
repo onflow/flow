@@ -35,7 +35,7 @@ type ScheduledTransaction struct {
 	CancelledTransactionId string `json:"cancelled_transaction_id,omitempty"`
 	Transaction *Transaction `json:"transaction,omitempty"`
 	Result *TransactionResult `json:"result,omitempty"`
-	HandlerContract *Contract `json:"handler_contract,omitempty"`
+	HandlerContract *ContractDeployment `json:"handler_contract,omitempty"`
 	Expandable *ScheduledTransactionExpandable `json:"_expandable"`
 	Links *Links `json:"_links,omitempty"`
 }

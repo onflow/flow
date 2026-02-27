@@ -41,7 +41,6 @@ Class | Method | HTTP request | Description
  - [AccountTransaction](docs/AccountTransaction.md)
  - [AccountTransactionExpandable](docs/AccountTransactionExpandable.md)
  - [AccountTransactionsResponse](docs/AccountTransactionsResponse.md)
- - [Contract](docs/Contract.md)
  - [ContractDeployment](docs/ContractDeployment.md)
  - [ContractDeploymentExpandable](docs/ContractDeploymentExpandable.md)
  - [ContractDeploymentsResponse](docs/ContractDeploymentsResponse.md)

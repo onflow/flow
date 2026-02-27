@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **CancelledTransactionId** | **string** |  | [optional] [default to null]
 **Transaction** | [***Transaction**](Transaction.md) |  | [optional] [default to null]
 **Result** | [***TransactionResult**](TransactionResult.md) |  | [optional] [default to null]
-**HandlerContract** | [***Contract**](Contract.md) |  | [optional] [default to null]
+**HandlerContract** | [***ContractDeployment**](ContractDeployment.md) |  | [optional] [default to null]
 **Expandable** | [***ScheduledTransactionExpandable**](ScheduledTransaction__expandable.md) |  | [default to null]
 **Links** | [***Links**](Links.md) |  | [optional] [default to null]
 

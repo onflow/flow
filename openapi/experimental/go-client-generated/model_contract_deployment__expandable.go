@@ -12,4 +12,6 @@ package swagger
 type ContractDeploymentExpandable struct {
 	// Link to fetch the full transaction that applied this deployment.
 	Transaction string `json:"transaction,omitempty"`
+	// Link to fetch the transaction result.
+	Result string `json:"result,omitempty"`
 }

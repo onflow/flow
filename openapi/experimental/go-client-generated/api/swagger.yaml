@@ -2337,8 +2337,7 @@ components:
         - fees: fees
           fees_deducted: fees_deducted
           transaction_handler_public_path: transaction_handler_public_path
-          _links:
-            _self: _self
+          _links: null
           priority: low
           created_transaction_id: created_transaction_id
           result:
@@ -2370,8 +2369,21 @@ components:
           id: id
           executed_transaction_id: null
           handler_contract:
-            identifier: identifier
-            body: body
+            transaction_id: null
+            address: null
+            code: ""
+            _links:
+              _self: _self
+            contract_id: contract_id
+            is_placeholder: true
+            block_height: block_height
+            tx_index: tx_index
+            _expandable:
+              result: http://example.com/aeiou
+              transaction: http://example.com/aeiou
+            event_index: event_index
+            code_hash: code_hash
+            transaction: null
           _expandable:
             result: http://example.com/aeiou
             handler_contract: http://example.com/aeiou
@@ -2432,8 +2444,7 @@ components:
         - fees: fees
           fees_deducted: fees_deducted
           transaction_handler_public_path: transaction_handler_public_path
-          _links:
-            _self: _self
+          _links: null
           priority: low
           created_transaction_id: created_transaction_id
           result:
@@ -2465,8 +2476,21 @@ components:
           id: id
           executed_transaction_id: null
           handler_contract:
-            identifier: identifier
-            body: body
+            transaction_id: null
+            address: null
+            code: ""
+            _links:
+              _self: _self
+            contract_id: contract_id
+            is_placeholder: true
+            block_height: block_height
+            tx_index: tx_index
+            _expandable:
+              result: http://example.com/aeiou
+              transaction: http://example.com/aeiou
+            event_index: event_index
+            code_hash: code_hash
+            transaction: null
           _expandable:
             result: http://example.com/aeiou
             handler_contract: http://example.com/aeiou
@@ -2587,7 +2611,7 @@ components:
         result:
           $ref: "#/components/schemas/TransactionResult"
         handler_contract:
-          $ref: "#/components/schemas/Contract"
+          $ref: "#/components/schemas/ContractDeployment"
         _expandable:
           $ref: "#/components/schemas/ScheduledTransaction__expandable"
         _links:
@@ -2596,8 +2620,7 @@ components:
         fees: fees
         fees_deducted: fees_deducted
         transaction_handler_public_path: transaction_handler_public_path
-        _links:
-          _self: _self
+        _links: null
         priority: low
         created_transaction_id: created_transaction_id
         result:
@@ -2629,8 +2652,21 @@ components:
         id: id
         executed_transaction_id: null
         handler_contract:
-          identifier: identifier
-          body: body
+          transaction_id: null
+          address: null
+          code: ""
+          _links:
+            _self: _self
+          contract_id: contract_id
+          is_placeholder: true
+          block_height: block_height
+          tx_index: tx_index
+          _expandable:
+            result: http://example.com/aeiou
+            transaction: http://example.com/aeiou
+          event_index: event_index
+          code_hash: code_hash
+          transaction: null
         _expandable:
           result: http://example.com/aeiou
           handler_contract: http://example.com/aeiou
@@ -2688,21 +2724,6 @@ components:
             key_index: key_index
         status: scheduled
         timestamp: timestamp
-    Contract:
-      required:
-      - body
-      - identifier
-      type: object
-      properties:
-        identifier:
-          type: string
-          description: Unique identifier for the contract (e.g. `A.1654653399040a61.MyContract`).
-        body:
-          type: string
-          description: Full source code of the contract.
-      example:
-        identifier: identifier
-        body: body
     ScheduledTransactionStatus:
       type: string
       description: The current lifecycle status of a scheduled transaction.
@@ -2769,8 +2790,8 @@ components:
         _links:
           $ref: "#/components/schemas/Links"
       example:
-        transaction_id: transaction_id
-        address: address
+        transaction_id: null
+        address: null
         code: ""
         _links:
           _self: _self
@@ -2779,59 +2800,11 @@ components:
         block_height: block_height
         tx_index: tx_index
         _expandable:
+          result: http://example.com/aeiou
           transaction: http://example.com/aeiou
         event_index: event_index
         code_hash: code_hash
-        transaction:
-          _links: null
-          reference_block_id: null
-          payer: payer
-          script: script
-          result:
-            collection_id: null
-            error_message: error_message
-            execution: Pending
-            status_code: 0
-            _links:
-              _self: _self
-            block_id: null
-            computation_used: computation_used
-            events:
-            - transaction_id: null
-              payload: ""
-              transaction_index: transaction_index
-              type: type
-              event_index: event_index
-            - transaction_id: null
-              payload: ""
-              transaction_index: transaction_index
-              type: type
-              event_index: event_index
-            status: Pending
-          envelope_signatures:
-          - null
-          - null
-          gas_limit: gas_limit
-          payload_signatures:
-          - address: null
-            signature: ""
-            key_index: key_index
-          - address: null
-            signature: ""
-            key_index: key_index
-          arguments:
-          - ""
-          - ""
-          id: null
-          authorizers:
-          - null
-          - null
-          _expandable:
-            result: http://example.com/aeiou
-          proposal_key:
-            sequence_number: sequence_number
-            address: null
-            key_index: key_index
+        transaction: null
     ContractsResponse:
       required:
       - contracts
@@ -2846,8 +2819,8 @@ components:
       example:
         next_cursor: next_cursor
         contracts:
-        - transaction_id: transaction_id
-          address: address
+        - transaction_id: null
+          address: null
           code: ""
           _links:
             _self: _self
@@ -2856,61 +2829,13 @@ components:
           block_height: block_height
           tx_index: tx_index
           _expandable:
+            result: http://example.com/aeiou
             transaction: http://example.com/aeiou
           event_index: event_index
           code_hash: code_hash
-          transaction:
-            _links: null
-            reference_block_id: null
-            payer: payer
-            script: script
-            result:
-              collection_id: null
-              error_message: error_message
-              execution: Pending
-              status_code: 0
-              _links:
-                _self: _self
-              block_id: null
-              computation_used: computation_used
-              events:
-              - transaction_id: null
-                payload: ""
-                transaction_index: transaction_index
-                type: type
-                event_index: event_index
-              - transaction_id: null
-                payload: ""
-                transaction_index: transaction_index
-                type: type
-                event_index: event_index
-              status: Pending
-            envelope_signatures:
-            - null
-            - null
-            gas_limit: gas_limit
-            payload_signatures:
-            - address: null
-              signature: ""
-              key_index: key_index
-            - address: null
-              signature: ""
-              key_index: key_index
-            arguments:
-            - ""
-            - ""
-            id: null
-            authorizers:
-            - null
-            - null
-            _expandable:
-              result: http://example.com/aeiou
-            proposal_key:
-              sequence_number: sequence_number
-              address: null
-              key_index: key_index
-        - transaction_id: transaction_id
-          address: address
+          transaction: null
+        - transaction_id: null
+          address: null
           code: ""
           _links:
             _self: _self
@@ -2919,59 +2844,11 @@ components:
           block_height: block_height
           tx_index: tx_index
           _expandable:
+            result: http://example.com/aeiou
             transaction: http://example.com/aeiou
           event_index: event_index
           code_hash: code_hash
-          transaction:
-            _links: null
-            reference_block_id: null
-            payer: payer
-            script: script
-            result:
-              collection_id: null
-              error_message: error_message
-              execution: Pending
-              status_code: 0
-              _links:
-                _self: _self
-              block_id: null
-              computation_used: computation_used
-              events:
-              - transaction_id: null
-                payload: ""
-                transaction_index: transaction_index
-                type: type
-                event_index: event_index
-              - transaction_id: null
-                payload: ""
-                transaction_index: transaction_index
-                type: type
-                event_index: event_index
-              status: Pending
-            envelope_signatures:
-            - null
-            - null
-            gas_limit: gas_limit
-            payload_signatures:
-            - address: null
-              signature: ""
-              key_index: key_index
-            - address: null
-              signature: ""
-              key_index: key_index
-            arguments:
-            - ""
-            - ""
-            id: null
-            authorizers:
-            - null
-            - null
-            _expandable:
-              result: http://example.com/aeiou
-            proposal_key:
-              sequence_number: sequence_number
-              address: null
-              key_index: key_index
+          transaction: null
     ContractDeploymentsResponse:
       required:
       - deployments
@@ -2985,8 +2862,8 @@ components:
           $ref: "#/components/schemas/Cursor"
       example:
         deployments:
-        - transaction_id: transaction_id
-          address: address
+        - transaction_id: null
+          address: null
           code: ""
           _links:
             _self: _self
@@ -2995,61 +2872,13 @@ components:
           block_height: block_height
           tx_index: tx_index
           _expandable:
+            result: http://example.com/aeiou
             transaction: http://example.com/aeiou
           event_index: event_index
           code_hash: code_hash
-          transaction:
-            _links: null
-            reference_block_id: null
-            payer: payer
-            script: script
-            result:
-              collection_id: null
-              error_message: error_message
-              execution: Pending
-              status_code: 0
-              _links:
-                _self: _self
-              block_id: null
-              computation_used: computation_used
-              events:
-              - transaction_id: null
-                payload: ""
-                transaction_index: transaction_index
-                type: type
-                event_index: event_index
-              - transaction_id: null
-                payload: ""
-                transaction_index: transaction_index
-                type: type
-                event_index: event_index
-              status: Pending
-            envelope_signatures:
-            - null
-            - null
-            gas_limit: gas_limit
-            payload_signatures:
-            - address: null
-              signature: ""
-              key_index: key_index
-            - address: null
-              signature: ""
-              key_index: key_index
-            arguments:
-            - ""
-            - ""
-            id: null
-            authorizers:
-            - null
-            - null
-            _expandable:
-              result: http://example.com/aeiou
-            proposal_key:
-              sequence_number: sequence_number
-              address: null
-              key_index: key_index
-        - transaction_id: transaction_id
-          address: address
+          transaction: null
+        - transaction_id: null
+          address: null
           code: ""
           _links:
             _self: _self
@@ -3058,59 +2887,11 @@ components:
           block_height: block_height
           tx_index: tx_index
           _expandable:
+            result: http://example.com/aeiou
             transaction: http://example.com/aeiou
           event_index: event_index
           code_hash: code_hash
-          transaction:
-            _links: null
-            reference_block_id: null
-            payer: payer
-            script: script
-            result:
-              collection_id: null
-              error_message: error_message
-              execution: Pending
-              status_code: 0
-              _links:
-                _self: _self
-              block_id: null
-              computation_used: computation_used
-              events:
-              - transaction_id: null
-                payload: ""
-                transaction_index: transaction_index
-                type: type
-                event_index: event_index
-              - transaction_id: null
-                payload: ""
-                transaction_index: transaction_index
-                type: type
-                event_index: event_index
-              status: Pending
-            envelope_signatures:
-            - null
-            - null
-            gas_limit: gas_limit
-            payload_signatures:
-            - address: null
-              signature: ""
-              key_index: key_index
-            - address: null
-              signature: ""
-              key_index: key_index
-            arguments:
-            - ""
-            - ""
-            id: null
-            authorizers:
-            - null
-            - null
-            _expandable:
-              result: http://example.com/aeiou
-            proposal_key:
-              sequence_number: sequence_number
-              address: null
-              key_index: key_index
+          transaction: null
         next_cursor: next_cursor
     Error:
       required:
@@ -3177,10 +2958,15 @@ components:
           type: string
           description: Link to fetch the full transaction that applied this deployment.
           format: uri
+        result:
+          type: string
+          description: Link to fetch the transaction result.
+          format: uri
       description: "Contains URI links for fields not included in the response. When\
         \ a field is expanded via the `expand` query parameter, it appears inline\
         \ and is removed from `_expandable`."
       example:
+        result: http://example.com/aeiou
         transaction: http://example.com/aeiou
   parameters:
     cursorParam:
