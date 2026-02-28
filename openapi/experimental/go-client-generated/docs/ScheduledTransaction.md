@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **CreatedTransactionId** | **string** |  | [default to null]
 **ExecutedTransactionId** | **string** |  | [optional] [default to null]
 **CancelledTransactionId** | **string** |  | [optional] [default to null]
+**IsPlaceholder** | **bool** | True if the scheduled transaction was created during bootstrapping based on the current chain state, not based on a protocol event. When true, block_height, transaction_id, tx_index, and event_index are absent. | [optional] [default to null]
 **Transaction** | [***Transaction**](Transaction.md) |  | [optional] [default to null]
 **Result** | [***TransactionResult**](TransactionResult.md) |  | [optional] [default to null]
 **HandlerContract** | [***ContractDeployment**](ContractDeployment.md) |  | [optional] [default to null]

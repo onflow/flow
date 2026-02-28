@@ -2347,6 +2347,7 @@ components:
           execution_effort: execution_effort
           transaction_handler_owner: transaction_handler_owner
           transaction_handler_uuid: transaction_handler_uuid
+          is_placeholder: true
           cancelled_transaction_id: null
           id: id
           executed_transaction_id: null
@@ -2357,14 +2358,15 @@ components:
             _links:
               _self: _self
             contract_id: contract_id
-            is_placeholder: true
             block_height: block_height
+            event_index: event_index
+            code_hash: code_hash
+            result: null
+            is_placeholder: true
             tx_index: tx_index
             _expandable:
               result: http://example.com/aeiou
               transaction: http://example.com/aeiou
-            event_index: event_index
-            code_hash: code_hash
             transaction: null
           _expandable:
             result: http://example.com/aeiou
@@ -2454,6 +2456,7 @@ components:
           execution_effort: execution_effort
           transaction_handler_owner: transaction_handler_owner
           transaction_handler_uuid: transaction_handler_uuid
+          is_placeholder: true
           cancelled_transaction_id: null
           id: id
           executed_transaction_id: null
@@ -2464,14 +2467,15 @@ components:
             _links:
               _self: _self
             contract_id: contract_id
-            is_placeholder: true
             block_height: block_height
+            event_index: event_index
+            code_hash: code_hash
+            result: null
+            is_placeholder: true
             tx_index: tx_index
             _expandable:
               result: http://example.com/aeiou
               transaction: http://example.com/aeiou
-            event_index: event_index
-            code_hash: code_hash
             transaction: null
           _expandable:
             result: http://example.com/aeiou
@@ -2588,6 +2592,11 @@ components:
           $ref: "#/components/schemas/Identifier"
         cancelled_transaction_id:
           $ref: "#/components/schemas/Identifier"
+        is_placeholder:
+          type: boolean
+          description: "True if the scheduled transaction was created during bootstrapping\
+            \ based on the current chain state, not based on a protocol event. When\
+            \ true, block_height, transaction_id, tx_index, and event_index are absent."
         transaction:
           $ref: "#/components/schemas/Transaction"
         result:
@@ -2630,6 +2639,7 @@ components:
         execution_effort: execution_effort
         transaction_handler_owner: transaction_handler_owner
         transaction_handler_uuid: transaction_handler_uuid
+        is_placeholder: true
         cancelled_transaction_id: null
         id: id
         executed_transaction_id: null
@@ -2640,14 +2650,15 @@ components:
           _links:
             _self: _self
           contract_id: contract_id
-          is_placeholder: true
           block_height: block_height
+          event_index: event_index
+          code_hash: code_hash
+          result: null
+          is_placeholder: true
           tx_index: tx_index
           _expandable:
             result: http://example.com/aeiou
             transaction: http://example.com/aeiou
-          event_index: event_index
-          code_hash: code_hash
           transaction: null
         _expandable:
           result: http://example.com/aeiou
@@ -2767,6 +2778,8 @@ components:
             \ block_height, transaction_id, tx_index, and event_index are absent."
         transaction:
           $ref: "#/components/schemas/Transaction"
+        result:
+          $ref: "#/components/schemas/TransactionResult"
         _expandable:
           $ref: "#/components/schemas/ContractDeployment__expandable"
         _links:
@@ -2778,14 +2791,15 @@ components:
         _links:
           _self: _self
         contract_id: contract_id
-        is_placeholder: true
         block_height: block_height
+        event_index: event_index
+        code_hash: code_hash
+        result: null
+        is_placeholder: true
         tx_index: tx_index
         _expandable:
           result: http://example.com/aeiou
           transaction: http://example.com/aeiou
-        event_index: event_index
-        code_hash: code_hash
         transaction: null
     ContractsResponse:
       required:
@@ -2807,14 +2821,15 @@ components:
           _links:
             _self: _self
           contract_id: contract_id
-          is_placeholder: true
           block_height: block_height
+          event_index: event_index
+          code_hash: code_hash
+          result: null
+          is_placeholder: true
           tx_index: tx_index
           _expandable:
             result: http://example.com/aeiou
             transaction: http://example.com/aeiou
-          event_index: event_index
-          code_hash: code_hash
           transaction: null
         - transaction_id: null
           address: null
@@ -2822,14 +2837,15 @@ components:
           _links:
             _self: _self
           contract_id: contract_id
-          is_placeholder: true
           block_height: block_height
+          event_index: event_index
+          code_hash: code_hash
+          result: null
+          is_placeholder: true
           tx_index: tx_index
           _expandable:
             result: http://example.com/aeiou
             transaction: http://example.com/aeiou
-          event_index: event_index
-          code_hash: code_hash
           transaction: null
     ContractDeploymentsResponse:
       required:
@@ -2850,14 +2866,15 @@ components:
           _links:
             _self: _self
           contract_id: contract_id
-          is_placeholder: true
           block_height: block_height
+          event_index: event_index
+          code_hash: code_hash
+          result: null
+          is_placeholder: true
           tx_index: tx_index
           _expandable:
             result: http://example.com/aeiou
             transaction: http://example.com/aeiou
-          event_index: event_index
-          code_hash: code_hash
           transaction: null
         - transaction_id: null
           address: null
@@ -2865,14 +2882,15 @@ components:
           _links:
             _self: _self
           contract_id: contract_id
-          is_placeholder: true
           block_height: block_height
+          event_index: event_index
+          code_hash: code_hash
+          result: null
+          is_placeholder: true
           tx_index: tx_index
           _expandable:
             result: http://example.com/aeiou
             transaction: http://example.com/aeiou
-          event_index: event_index
-          code_hash: code_hash
           transaction: null
         next_cursor: next_cursor
     Error:

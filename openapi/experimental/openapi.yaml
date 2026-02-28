@@ -1126,6 +1126,9 @@ components:
         cancelled_transaction_id:
           description: Flow transaction ID of the cancellation transaction.
           $ref: "#/components/schemas/Identifier"
+        is_placeholder:
+          description: True if the scheduled transaction was created during bootstrapping based on the current chain state, not based on a protocol event. When true, block_height, transaction_id, tx_index, and event_index are absent.
+          type: boolean
         transaction:
           $ref: "#/components/schemas/Transaction"
         result:
@@ -1214,6 +1217,8 @@ components:
           type: boolean
         transaction:
           $ref: "#/components/schemas/Transaction"
+        result:
+          $ref: "#/components/schemas/TransactionResult"
         _expandable:
           type: object
           description: Contains URI links for fields not included in the response. When a field is expanded via the `expand` query parameter, it appears inline and is removed from `_expandable`.

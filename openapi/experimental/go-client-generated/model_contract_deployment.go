@@ -25,6 +25,7 @@ type ContractDeployment struct {
 	// True if the deployment was created during bootstrapping based on the current chain state, not based on a protocol event. When true, block_height, transaction_id, tx_index, and event_index are absent.
 	IsPlaceholder bool `json:"is_placeholder,omitempty"`
 	Transaction *Transaction `json:"transaction,omitempty"`
+	Result *TransactionResult `json:"result,omitempty"`
 	Expandable *ContractDeploymentExpandable `json:"_expandable"`
 	Links *Links `json:"_links,omitempty"`
 }
