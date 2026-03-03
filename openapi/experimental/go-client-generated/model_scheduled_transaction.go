@@ -33,6 +33,8 @@ type ScheduledTransaction struct {
 	CreatedTransactionId string `json:"created_transaction_id"`
 	ExecutedTransactionId string `json:"executed_transaction_id,omitempty"`
 	CancelledTransactionId string `json:"cancelled_transaction_id,omitempty"`
+	// True if the scheduled transaction was created during bootstrapping based on the current chain state, not based on a protocol event. When true, block_height, transaction_id, tx_index, and event_index are absent.
+	IsPlaceholder bool `json:"is_placeholder,omitempty"`
 	Transaction *Transaction `json:"transaction,omitempty"`
 	Result *TransactionResult `json:"result,omitempty"`
 	HandlerContract *ContractDeployment `json:"handler_contract,omitempty"`

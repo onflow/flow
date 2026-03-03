@@ -9,10 +9,11 @@ Name | Type | Description | Notes
 **TransactionId** | **string** |  | [optional] [default to null]
 **TxIndex** | **string** | Position of the deploying transaction within its block. | [optional] [default to null]
 **EventIndex** | **string** | Position of the contract event within its transaction. | [optional] [default to null]
-**Code** | **string** | Base64-encoded Cadence source code of the contract deployed. | [default to null]
+**Code** | **string** | Base64-encoded Cadence source code of the contract deployed. | [optional] [default to null]
 **CodeHash** | **string** | Hex-encoded SHA3-256 hash of the contract code. | [default to null]
 **IsPlaceholder** | **bool** | True if the deployment was created during bootstrapping based on the current chain state, not based on a protocol event. When true, block_height, transaction_id, tx_index, and event_index are absent. | [optional] [default to null]
 **Transaction** | [***Transaction**](Transaction.md) |  | [optional] [default to null]
+**Result** | [***TransactionResult**](TransactionResult.md) |  | [optional] [default to null]
 **Expandable** | [***ContractDeploymentExpandable**](ContractDeployment__expandable.md) |  | [default to null]
 **Links** | [***Links**](Links.md) |  | [optional] [default to null]
 
