@@ -2366,6 +2366,7 @@ components:
             tx_index: tx_index
             _expandable:
               result: http://example.com/aeiou
+              code: http://example.com/aeiou
               transaction: http://example.com/aeiou
             transaction: null
           _expandable:
@@ -2475,6 +2476,7 @@ components:
             tx_index: tx_index
             _expandable:
               result: http://example.com/aeiou
+              code: http://example.com/aeiou
               transaction: http://example.com/aeiou
             transaction: null
           _expandable:
@@ -2658,6 +2660,7 @@ components:
           tx_index: tx_index
           _expandable:
             result: http://example.com/aeiou
+            code: http://example.com/aeiou
             transaction: http://example.com/aeiou
           transaction: null
         _expandable:
@@ -2740,7 +2743,6 @@ components:
       required:
       - _expandable
       - address
-      - code
       - code_hash
       - contract_id
       type: object
@@ -2799,6 +2801,7 @@ components:
         tx_index: tx_index
         _expandable:
           result: http://example.com/aeiou
+          code: http://example.com/aeiou
           transaction: http://example.com/aeiou
         transaction: null
     ContractsResponse:
@@ -2829,6 +2832,7 @@ components:
           tx_index: tx_index
           _expandable:
             result: http://example.com/aeiou
+            code: http://example.com/aeiou
             transaction: http://example.com/aeiou
           transaction: null
         - transaction_id: null
@@ -2845,6 +2849,7 @@ components:
           tx_index: tx_index
           _expandable:
             result: http://example.com/aeiou
+            code: http://example.com/aeiou
             transaction: http://example.com/aeiou
           transaction: null
     ContractDeploymentsResponse:
@@ -2874,6 +2879,7 @@ components:
           tx_index: tx_index
           _expandable:
             result: http://example.com/aeiou
+            code: http://example.com/aeiou
             transaction: http://example.com/aeiou
           transaction: null
         - transaction_id: null
@@ -2890,6 +2896,7 @@ components:
           tx_index: tx_index
           _expandable:
             result: http://example.com/aeiou
+            code: http://example.com/aeiou
             transaction: http://example.com/aeiou
           transaction: null
         next_cursor: next_cursor
@@ -2956,6 +2963,10 @@ components:
     ContractDeployment__expandable:
       type: object
       properties:
+        code:
+          type: string
+          description: Link to fetch the Cadence source code of this deployment.
+          format: uri
         transaction:
           type: string
           description: Link to fetch the full transaction that applied this deployment.
@@ -2969,6 +2980,7 @@ components:
         \ and is removed from `_expandable`."
       example:
         result: http://example.com/aeiou
+        code: http://example.com/aeiou
         transaction: http://example.com/aeiou
   parameters:
     cursorParam:
