@@ -929,6 +929,144 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /execution_receipts:
+    get:
+      tags:
+      - Execution Receipts
+      summary: Get Execution Receipts by Block ID
+      description: Get all execution receipts for the provided block ID.
+      parameters:
+      - name: block_id
+        in: query
+        description: The ID of the block.
+        required: true
+        style: form
+        explode: true
+        schema:
+          $ref: "#/components/schemas/Identifier"
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ExecutionReceipt"
+                x-content-type: application/json
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /execution_receipts/results/{id}:
+    get:
+      tags:
+      - Execution Receipts
+      summary: Get Execution Receipts by Result ID
+      description: Get all execution receipts for the provided execution result ID.
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the execution result.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: "#/components/schemas/Identifier"
+      - name: expand
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to expand.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      - name: select
+        in: query
+        description: A comma-separated list indicating which properties of the content
+          to return.
+        required: false
+        style: form
+        explode: false
+        schema:
+          minItems: 1
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ExecutionReceipt"
+                x-content-type: application/json
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
   /accounts/{address}:
     get:
       tags:
@@ -2713,6 +2851,87 @@ components:
           transaction_index: transaction_index
           type: type
           event_index: event_index
+    ExecutionReceipt:
+      required:
+      - _expandable
+      - executor_id
+      - executor_signature
+      - result_id
+      type: object
+      properties:
+        executor_id:
+          $ref: "#/components/schemas/Identifier"
+        result_id:
+          $ref: "#/components/schemas/Identifier"
+        spocks:
+          type: array
+          items:
+            type: string
+            format: byte
+        executor_signature:
+          type: string
+          format: byte
+        execution_result:
+          $ref: "#/components/schemas/ExecutionResult"
+        _expandable:
+          $ref: "#/components/schemas/ExecutionReceipt__expandable"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      example:
+        executor_signature: ""
+        spocks:
+        - ""
+        - ""
+        metadata:
+          executor_metadata:
+            execution_result_id: null
+            executor_ids:
+            - null
+            - null
+        result_id: null
+        execution_result:
+          metadata:
+            executor_metadata:
+              execution_result_id: null
+              executor_ids:
+              - null
+              - null
+          _links:
+            _self: _self
+          chunks:
+          - start_state: ""
+            index: index
+            number_of_transactions: number_of_transactions
+            collection_index: collection_index
+            end_state: ""
+            event_collection: ""
+            block_id: null
+            total_computation_used: total_computation_used
+          - start_state: ""
+            index: index
+            number_of_transactions: number_of_transactions
+            collection_index: collection_index
+            end_state: ""
+            event_collection: ""
+            block_id: null
+            total_computation_used: total_computation_used
+          id: null
+          previous_result_id: null
+          block_id: null
+          events:
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+          - transaction_id: null
+            payload: ""
+            transaction_index: transaction_index
+            type: type
+            event_index: event_index
+        _expandable:
+          execution_result: http://example.com/aeiou
+        executor_id: executor_id
     BlockEvents:
       type: object
       properties:
@@ -3079,6 +3298,14 @@ components:
           format: uri
       example:
         payload: payload
+        execution_result: http://example.com/aeiou
+    ExecutionReceipt__expandable:
+      type: object
+      properties:
+        execution_result:
+          type: string
+          format: uri
+      example:
         execution_result: http://example.com/aeiou
   responses:
     "400BadRequest":

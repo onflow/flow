@@ -59,6 +59,8 @@ const (
 	AccessAPI_GetProtocolStateSnapshotByHeight_FullMethodName      = "/flow.access.AccessAPI/GetProtocolStateSnapshotByHeight"
 	AccessAPI_GetExecutionResultForBlockID_FullMethodName          = "/flow.access.AccessAPI/GetExecutionResultForBlockID"
 	AccessAPI_GetExecutionResultByID_FullMethodName                = "/flow.access.AccessAPI/GetExecutionResultByID"
+	AccessAPI_GetExecutionReceiptsByBlockID_FullMethodName         = "/flow.access.AccessAPI/GetExecutionReceiptsByBlockID"
+	AccessAPI_GetExecutionReceiptsByResultID_FullMethodName        = "/flow.access.AccessAPI/GetExecutionReceiptsByResultID"
 	AccessAPI_SubscribeBlocksFromStartBlockID_FullMethodName       = "/flow.access.AccessAPI/SubscribeBlocksFromStartBlockID"
 	AccessAPI_SubscribeBlocksFromStartHeight_FullMethodName        = "/flow.access.AccessAPI/SubscribeBlocksFromStartHeight"
 	AccessAPI_SubscribeBlocksFromLatest_FullMethodName             = "/flow.access.AccessAPI/SubscribeBlocksFromLatest"
@@ -184,6 +186,13 @@ type AccessAPIClient interface {
 	GetExecutionResultForBlockID(ctx context.Context, in *GetExecutionResultForBlockIDRequest, opts ...grpc.CallOption) (*ExecutionResultForBlockIDResponse, error)
 	// GetExecutionResultByID returns Execution Result by its ID.
 	GetExecutionResultByID(ctx context.Context, in *GetExecutionResultByIDRequest, opts ...grpc.CallOption) (*ExecutionResultByIDResponse, error)
+	// GetExecutionReceiptsByBlockID returns all execution receipts for a given
+	// block ID. Optionally includes the full ExecutionResult in each receipt.
+	GetExecutionReceiptsByBlockID(ctx context.Context, in *GetExecutionReceiptsByBlockIDRequest, opts ...grpc.CallOption) (*ExecutionReceiptsResponse, error)
+	// GetExecutionReceiptsByResultID returns all execution receipts for a given
+	// execution result ID. Optionally includes the full ExecutionResult in each
+	// receipt.
+	GetExecutionReceiptsByResultID(ctx context.Context, in *GetExecutionReceiptsByResultIDRequest, opts ...grpc.CallOption) (*ExecutionReceiptsResponse, error)
 	// SubscribeBlocksFromStartBlockID streams finalized or sealed blocks starting
 	// at the requested start block id, up until the latest available block. Once
 	// the latest is reached, the stream will remain open and responses are sent
@@ -640,6 +649,24 @@ func (c *accessAPIClient) GetExecutionResultByID(ctx context.Context, in *GetExe
 	return out, nil
 }
 
+func (c *accessAPIClient) GetExecutionReceiptsByBlockID(ctx context.Context, in *GetExecutionReceiptsByBlockIDRequest, opts ...grpc.CallOption) (*ExecutionReceiptsResponse, error) {
+	out := new(ExecutionReceiptsResponse)
+	err := c.cc.Invoke(ctx, AccessAPI_GetExecutionReceiptsByBlockID_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accessAPIClient) GetExecutionReceiptsByResultID(ctx context.Context, in *GetExecutionReceiptsByResultIDRequest, opts ...grpc.CallOption) (*ExecutionReceiptsResponse, error) {
+	out := new(ExecutionReceiptsResponse)
+	err := c.cc.Invoke(ctx, AccessAPI_GetExecutionReceiptsByResultID_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *accessAPIClient) SubscribeBlocksFromStartBlockID(ctx context.Context, in *SubscribeBlocksFromStartBlockIDRequest, opts ...grpc.CallOption) (AccessAPI_SubscribeBlocksFromStartBlockIDClient, error) {
 	stream, err := c.cc.NewStream(ctx, &AccessAPI_ServiceDesc.Streams[0], AccessAPI_SubscribeBlocksFromStartBlockID_FullMethodName, opts...)
 	if err != nil {
@@ -1073,6 +1100,13 @@ type AccessAPIServer interface {
 	GetExecutionResultForBlockID(context.Context, *GetExecutionResultForBlockIDRequest) (*ExecutionResultForBlockIDResponse, error)
 	// GetExecutionResultByID returns Execution Result by its ID.
 	GetExecutionResultByID(context.Context, *GetExecutionResultByIDRequest) (*ExecutionResultByIDResponse, error)
+	// GetExecutionReceiptsByBlockID returns all execution receipts for a given
+	// block ID. Optionally includes the full ExecutionResult in each receipt.
+	GetExecutionReceiptsByBlockID(context.Context, *GetExecutionReceiptsByBlockIDRequest) (*ExecutionReceiptsResponse, error)
+	// GetExecutionReceiptsByResultID returns all execution receipts for a given
+	// execution result ID. Optionally includes the full ExecutionResult in each
+	// receipt.
+	GetExecutionReceiptsByResultID(context.Context, *GetExecutionReceiptsByResultIDRequest) (*ExecutionReceiptsResponse, error)
 	// SubscribeBlocksFromStartBlockID streams finalized or sealed blocks starting
 	// at the requested start block id, up until the latest available block. Once
 	// the latest is reached, the stream will remain open and responses are sent
@@ -1284,6 +1318,12 @@ func (UnimplementedAccessAPIServer) GetExecutionResultForBlockID(context.Context
 }
 func (UnimplementedAccessAPIServer) GetExecutionResultByID(context.Context, *GetExecutionResultByIDRequest) (*ExecutionResultByIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetExecutionResultByID not implemented")
+}
+func (UnimplementedAccessAPIServer) GetExecutionReceiptsByBlockID(context.Context, *GetExecutionReceiptsByBlockIDRequest) (*ExecutionReceiptsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetExecutionReceiptsByBlockID not implemented")
+}
+func (UnimplementedAccessAPIServer) GetExecutionReceiptsByResultID(context.Context, *GetExecutionReceiptsByResultIDRequest) (*ExecutionReceiptsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetExecutionReceiptsByResultID not implemented")
 }
 func (UnimplementedAccessAPIServer) SubscribeBlocksFromStartBlockID(*SubscribeBlocksFromStartBlockIDRequest, AccessAPI_SubscribeBlocksFromStartBlockIDServer) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeBlocksFromStartBlockID not implemented")
@@ -2047,6 +2087,42 @@ func _AccessAPI_GetExecutionResultByID_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AccessAPI_GetExecutionReceiptsByBlockID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetExecutionReceiptsByBlockIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetExecutionReceiptsByBlockID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccessAPI_GetExecutionReceiptsByBlockID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetExecutionReceiptsByBlockID(ctx, req.(*GetExecutionReceiptsByBlockIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccessAPI_GetExecutionReceiptsByResultID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetExecutionReceiptsByResultIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccessAPIServer).GetExecutionReceiptsByResultID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccessAPI_GetExecutionReceiptsByResultID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccessAPIServer).GetExecutionReceiptsByResultID(ctx, req.(*GetExecutionReceiptsByResultIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _AccessAPI_SubscribeBlocksFromStartBlockID_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(SubscribeBlocksFromStartBlockIDRequest)
 	if err := stream.RecvMsg(m); err != nil {
@@ -2423,6 +2499,14 @@ var AccessAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetExecutionResultByID",
 			Handler:    _AccessAPI_GetExecutionResultByID_Handler,
+		},
+		{
+			MethodName: "GetExecutionReceiptsByBlockID",
+			Handler:    _AccessAPI_GetExecutionReceiptsByBlockID_Handler,
+		},
+		{
+			MethodName: "GetExecutionReceiptsByResultID",
+			Handler:    _AccessAPI_GetExecutionReceiptsByResultID_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
