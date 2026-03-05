@@ -1079,6 +1079,7 @@ components:
         - transaction_handler_type_identifier
         - transaction_handler_uuid
         - created_transaction_id
+        - created_at
         - _expandable
       properties:
         id:
@@ -1126,6 +1127,14 @@ components:
         cancelled_transaction_id:
           description: Flow transaction ID of the cancellation transaction.
           $ref: "#/components/schemas/Identifier"
+        created_at:
+          description: Timestamp of the block in which the scheduled transaction was created (RFC 3339).
+          type: string
+          format: date-time
+        completed_at:
+          description: Timestamp of the block in which the scheduled transaction was executed or cancelled (RFC 3339). Populated only when status is `executed`, `cancelled`, or `failed`.
+          type: string
+          format: date-time
         is_placeholder:
           description: True if the scheduled transaction was created during bootstrapping based on the current chain state, not based on a protocol event. When true, block_height, transaction_id, tx_index, and event_index are absent.
           type: boolean

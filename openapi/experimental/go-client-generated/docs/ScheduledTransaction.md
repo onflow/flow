@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **CreatedTransactionId** | **string** |  | [default to null]
 **ExecutedTransactionId** | **string** |  | [optional] [default to null]
 **CancelledTransactionId** | **string** |  | [optional] [default to null]
+**CreatedAt** | [**time.Time**](time.Time.md) | Timestamp of the block in which the scheduled transaction was created (RFC 3339). | [default to null]
+**CompletedAt** | [**time.Time**](time.Time.md) | Timestamp of the block in which the scheduled transaction was executed or cancelled (RFC 3339). Populated only when status is &#x60;executed&#x60;, &#x60;cancelled&#x60;, or &#x60;failed&#x60;. | [optional] [default to null]
 **IsPlaceholder** | **bool** | True if the scheduled transaction was created during bootstrapping based on the current chain state, not based on a protocol event. When true, block_height, transaction_id, tx_index, and event_index are absent. | [optional] [default to null]
 **Transaction** | [***Transaction**](Transaction.md) |  | [optional] [default to null]
 **Result** | [***TransactionResult**](TransactionResult.md) |  | [optional] [default to null]

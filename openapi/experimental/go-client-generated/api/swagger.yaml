@@ -2320,6 +2320,7 @@ components:
           fees_deducted: fees_deducted
           transaction_handler_public_path: transaction_handler_public_path
           _links: null
+          created_at: 2000-01-23T04:56:07.000+00:00
           priority: low
           created_transaction_id: created_transaction_id
           result:
@@ -2343,6 +2344,7 @@ components:
               type: type
               event_index: event_index
             status: Pending
+          completed_at: 2000-01-23T04:56:07.000+00:00
           transaction_handler_type_identifier: transaction_handler_type_identifier
           execution_effort: execution_effort
           transaction_handler_owner: transaction_handler_owner
@@ -2430,6 +2432,7 @@ components:
           fees_deducted: fees_deducted
           transaction_handler_public_path: transaction_handler_public_path
           _links: null
+          created_at: 2000-01-23T04:56:07.000+00:00
           priority: low
           created_transaction_id: created_transaction_id
           result:
@@ -2453,6 +2456,7 @@ components:
               type: type
               event_index: event_index
             status: Pending
+          completed_at: 2000-01-23T04:56:07.000+00:00
           transaction_handler_type_identifier: transaction_handler_type_identifier
           execution_effort: execution_effort
           transaction_handler_owner: transaction_handler_owner
@@ -2540,6 +2544,7 @@ components:
     ScheduledTransaction:
       required:
       - _expandable
+      - created_at
       - created_transaction_id
       - execution_effort
       - fees
@@ -2594,6 +2599,17 @@ components:
           $ref: "#/components/schemas/Identifier"
         cancelled_transaction_id:
           $ref: "#/components/schemas/Identifier"
+        created_at:
+          type: string
+          description: Timestamp of the block in which the scheduled transaction was
+            created (RFC 3339).
+          format: date-time
+        completed_at:
+          type: string
+          description: "Timestamp of the block in which the scheduled transaction\
+            \ was executed or cancelled (RFC 3339). Populated only when status is\
+            \ `executed`, `cancelled`, or `failed`."
+          format: date-time
         is_placeholder:
           type: boolean
           description: "True if the scheduled transaction was created during bootstrapping\
@@ -2614,6 +2630,7 @@ components:
         fees_deducted: fees_deducted
         transaction_handler_public_path: transaction_handler_public_path
         _links: null
+        created_at: 2000-01-23T04:56:07.000+00:00
         priority: low
         created_transaction_id: created_transaction_id
         result:
@@ -2637,6 +2654,7 @@ components:
             type: type
             event_index: event_index
           status: Pending
+        completed_at: 2000-01-23T04:56:07.000+00:00
         transaction_handler_type_identifier: transaction_handler_type_identifier
         execution_effort: execution_effort
         transaction_handler_owner: transaction_handler_owner
