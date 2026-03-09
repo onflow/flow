@@ -200,6 +200,17 @@ service AccessAPI {
   rpc GetExecutionResultByID(GetExecutionResultByIDRequest)
       returns (ExecutionResultByIDResponse);
 
+  // GetExecutionReceiptsByBlockID returns all execution receipts for a given
+  // block ID. Optionally includes the full ExecutionResult in each receipt.
+  rpc GetExecutionReceiptsByBlockID(GetExecutionReceiptsByBlockIDRequest)
+      returns (ExecutionReceiptsResponse);
+
+  // GetExecutionReceiptsByResultID returns all execution receipts for a given
+  // execution result ID. Optionally includes the full ExecutionResult in each
+  // receipt.
+  rpc GetExecutionReceiptsByResultID(GetExecutionReceiptsByResultIDRequest)
+      returns (ExecutionReceiptsResponse);
+
   // Subscriptions
 
   // Subscribe blocks
@@ -686,6 +697,25 @@ message GetExecutionResultByIDRequest {
 
 message ExecutionResultByIDResponse {
   entities.ExecutionResult execution_result = 1;
+  entities.Metadata metadata = 2;
+}
+
+// Execution Receipts
+
+message GetExecutionReceiptsByBlockIDRequest {
+  bytes block_id = 1;
+  // If true, each receipt will include the full ExecutionResult.
+  bool include_result = 2;
+}
+
+message GetExecutionReceiptsByResultIDRequest {
+  bytes result_id = 1;
+  // If true, each receipt will include the full ExecutionResult.
+  bool include_result = 2;
+}
+
+message ExecutionReceiptsResponse {
+  repeated entities.ExecutionReceipt receipts = 1;
   entities.Metadata metadata = 2;
 }
 

@@ -44,8 +44,13 @@ message ServiceEvent {
 }
 
 message ExecutionReceiptMeta {
-  bytes executor_id = 1;
-  bytes result_id = 2;
-  repeated bytes spocks = 3;
-  bytes executor_signature = 4;
+  bytes executor_id = 1;        // Node ID of the execution node who produced the receipt.
+  bytes result_id = 2;          // ID of the execution result.
+  repeated bytes spocks = 3;    // Spocks of the execution result.
+  bytes executor_signature = 4; // Signature from the execution node who produced the receipt.
+}
+
+message ExecutionReceipt {
+  ExecutionReceiptMeta meta = 1;
+  ExecutionResult execution_result = 2;  // optional; only set if requested
 }

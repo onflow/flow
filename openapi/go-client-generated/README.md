@@ -30,6 +30,8 @@ Class | Method | HTTP request | Description
 *BlocksApi* | [**BlocksIdPayloadGet**](docs/BlocksApi.md#blocksidpayloadget) | **Get** /blocks/{id}/payload | Get Block Payload by Block ID.
 *CollectionsApi* | [**CollectionsIdGet**](docs/CollectionsApi.md#collectionsidget) | **Get** /collections/{id} | Gets a Collection by ID
 *EventsApi* | [**EventsGet**](docs/EventsApi.md#eventsget) | **Get** /events | Get Events
+*ExecutionReceiptsApi* | [**ExecutionReceiptsGet**](docs/ExecutionReceiptsApi.md#executionreceiptsget) | **Get** /execution_receipts | Get Execution Receipts by Block ID
+*ExecutionReceiptsApi* | [**ExecutionReceiptsResultsIdGet**](docs/ExecutionReceiptsApi.md#executionreceiptsresultsidget) | **Get** /execution_receipts/results/{id} | Get Execution Receipts by Result ID
 *ExecutionResultsApi* | [**ExecutionResultsGet**](docs/ExecutionResultsApi.md#executionresultsget) | **Get** /execution_results | Get Execution Results by Block ID
 *ExecutionResultsApi* | [**ExecutionResultsIdGet**](docs/ExecutionResultsApi.md#executionresultsidget) | **Get** /execution_results/{id} | Get Execution Result by ID
 *NetworkApi* | [**NetworkParametersGet**](docs/NetworkApi.md#networkparametersget) | **Get** /network/parameters | Get Network Parameters
@@ -65,6 +67,8 @@ Class | Method | HTTP request | Description
  - [CompatibleRange](docs/CompatibleRange.md)
  - [Event](docs/Event.md)
  - [ExecuteScriptResponse](docs/ExecuteScriptResponse.md)
+ - [ExecutionReceipt](docs/ExecutionReceipt.md)
+ - [ExecutionReceiptExpandable](docs/ExecutionReceiptExpandable.md)
  - [ExecutionResult](docs/ExecutionResult.md)
  - [ExecutorMetadata](docs/ExecutorMetadata.md)
  - [HashingAlgorithm](docs/HashingAlgorithm.md)

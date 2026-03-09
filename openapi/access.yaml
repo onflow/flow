@@ -428,6 +428,66 @@ paths:
           $ref: '#/components/responses/404NotFound'
         '500':
           $ref: '#/components/responses/500InternalServerError'
+  /execution_receipts:
+    get:
+      summary: Get Execution Receipts by Block ID
+      description: Get all execution receipts for the provided block ID.
+      tags:
+        - Execution Receipts
+      parameters:
+        - name: block_id
+          in: query
+          schema:
+            $ref: '#/components/schemas/Identifier'
+          required: true
+          description: The ID of the block.
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExecutionReceipt'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
+  /execution_receipts/results/{id}:
+    get:
+      summary: Get Execution Receipts by Result ID
+      description: Get all execution receipts for the provided execution result ID.
+      tags:
+        - Execution Receipts
+      parameters:
+        - name: id
+          in: path
+          schema:
+            $ref: '#/components/schemas/Identifier'
+          required: true
+          description: The ID of the execution result.
+        - $ref: '#/components/parameters/expandParam'
+        - $ref: '#/components/parameters/selectParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExecutionReceipt'
+        '400':
+          $ref: '#/components/responses/400BadRequest'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+          $ref: '#/components/responses/500InternalServerError'
   /accounts/{address}:
     get:
       summary: Get an Account By Address
@@ -1333,6 +1393,37 @@ components:
           $ref: '#/components/schemas/Metadata'
         _links:
           $ref: '#/components/schemas/Links'
+    ExecutionReceipt:
+      type: object
+      required:
+        - executor_id
+        - result_id
+        - executor_signature
+        - _expandable
+      properties:
+        executor_id:
+          description: Node ID of the execution node who produced the receipt.
+          $ref: '#/components/schemas/Identifier'
+        result_id:
+          $ref: '#/components/schemas/Identifier'
+        spocks:
+          type: array
+          items:
+            type: string
+            format: byte
+        executor_signature:
+          type: string
+          format: byte
+        execution_result:
+          $ref: '#/components/schemas/ExecutionResult'
+        _expandable:
+          type: object
+          properties:
+            execution_result:
+              type: string
+              format: uri
+        metadata:
+          $ref: '#/components/schemas/Metadata'
     BlockEvents:
       type: object
       properties:

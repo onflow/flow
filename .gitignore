@@ -13,3 +13,6 @@
 # Gradle temp files
 protobuf/.gradle
 protobuf/build
+
+# agent plans
+/docs/plans
