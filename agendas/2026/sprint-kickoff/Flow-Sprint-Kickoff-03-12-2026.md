@@ -202,8 +202,6 @@ Q1 Cycle Objective(s):
 
 **This Sprint**
 
-- Cadence security improvements: [1](https://github.com/onflow/cadence-internal/issues/450), [2](https://github.com/onflow/cadence-internal/issues/406), [3](https://github.com/onflow/cadence-internal/issues/430)
-
 - Update of bug bounty program with HackenProof.
     - Continue work on core contracts before adding to scope
 
@@ -211,7 +209,7 @@ Q1 Cycle Objective(s):
     - test on one TN EN and collect data
 
 - On Hold (capacity)
-    - In-house financial analytics & fraud detection tooling
+    - In-house financial analytics & fraud detection tooling - Blocked by explorer work
 
 ### Performance [Jan]
 
@@ -243,21 +241,64 @@ Q1 Cycle Objective(s):
 ### **Developer Tooling** \[Chase]
 
 Cycle Objective(s):
-https://github.com/onflow/flow-okrs/issues/176
-https://github.com/onflow/flow-okrs/issues/175
+https://github.com/onflow/flow-okrs/issues/206
 
-**Done Last Sprint**
+**Last Sprint**
 
-- Assist on security analytics tool, block explorer, and FCM testing (covered in other sections)
-- Block Explorer
+* Explorer & UI
+  * Search input validation and dropdown options
+  * Transaction fee stat cards
+  * Account page redesign with NFTs and FTs support
+  * Added EVM navigation link and EVM COA links
+  * Created UI for COAs
+  * Added explanations for node counts
+  * Setup analytics
+  * Added claimable tokens alert and claim dialog
+  * Added transactions page
+  * Added scheduled transactions page
+  * Added blocks page
+  * Redesigned explorer home page
+  * Added mainnet/testnet toggle
+  * Implemented API hooks
+  * Improved transactions API endpoint
+  * Implemented contracts API endpoints and improvements
+  * Implemented scheduled transactions API endpoints
+  * Added advanced contract search functionality
+  * Implemented simple group API improvements
+* Access API & Indexer
+  * Added receipt endpoints to the Access API
+  * Merged extended index improvements
+  * Updated OpenAPI specifications
+  * Fixed flaky TestProduceConsume pebble panic
+  * Added account transactions secondary index
+  * Added execution receipt handling and block ID validation
+  * Improved database error reporting
+  * Added GitHub workflow automation and documentation improvements
+* Infrastructure & Ops
+  * Enabled analytics VM access to explorer VM
+  * Updated DNS configuration for evm.flow.com
+  * Increased rate limits and updated experimental infrastructure components
 
+**Next Sprint**
 
-**This Sprint**
-
-
-- Block Explorer
-
-
+* Explorer & UI
+  * Remember and suggest previous searches
+  * Fix FCL cross VM bug
+  * Add WalletConnect support for mobile
+  * Add info bubbles and explainers for roles on the transactions page
+  * Update contract page to show contract deployments
+  * Add NFT transfer tabs to account page
+  * Add FT transfer tabs to account page
+  * Review NFT transfers API endpoint with latest indexer implementation
+  * Review FT transfers API endpoint with latest indexer implementation
+  * Address explorer backlog issues
+  * Node operator admin page
+* Indexer
+  * Deploy live indexer
+  * Begin backfilling 2025 sporks
+  * Add secondary indexers for transfers, contracts, accounts, and epoch rewards
+* Community
+  * Assist with judging projects for the PL Genesis hackathon
 
 ---
 
