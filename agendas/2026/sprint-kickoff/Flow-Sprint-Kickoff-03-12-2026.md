@@ -235,7 +235,7 @@ Q1 Cycle Objective(s):
 
 - Continue: Cross-vm bridging performance improvements
     - start updating contracts to use optimized functions.
-    - start relaibration of execution effort weights to reflect optimized functions in operations pricing.
+    - start re-calibration of execution effort weights to reflect optimized functions in operations pricing.
 
 
 ---
