@@ -80,14 +80,6 @@
     - Cadence testing tramework improvement to facilitate testing of Solidity contracts: [Add `EVM` helper functions for testing environment](https://github.com/onflow/flow-go/pull/8391)
     - bugfix: [ Fix padding logic on `EncodeBytes` for data with multiple chunks](https://github.com/onflow/flow-go/pull/8425)        
 
-**other**
-- deployed on mainnet: [Simplify Scheduled Transaction priority limits](https://github.com/onflow/flow-core-contracts/pull/580)
-- smart contracts bugfixes:
-    - [Fix small bugs in TokenForwarding for bricked forwarder and wrong getSupportedVaultTypes](https://github.com/onflow/flow-ft/pull/185)
-    - [Fix: three FungibleTokenSwitchboard bugs](https://github.com/onflow/flow-ft/pull/186)
-    - [Fix getViews/resolveView mismatch and EVMBytesMetadata force-unwrap in ExampleNFT](https://github.com/onflow/flow-nft/pull/264)
-    - [Fix five remaining bugs from security review](https://github.com/onflow/flow-nft/pull/265)
-
 **This sprint**
 
 - Cadence Language
@@ -191,9 +183,6 @@ Q1 Cycle Objective(s):
 - Cadence security improvements:
     - Security improvements: [1](https://github.com/onflow/cadence-internal/pull/438), [2](https://github.com/onflow/cadence-internal/pull/425), [3](https://github.com/onflow/cadence-internal/pull/437), [4](https://github.com/onflow/cadence-internal/pull/444), [5](https://github.com/onflow/cadence-internal/pull/433), [6](https://github.com/onflow/cadence-internal/pull/445), [7](https://github.com/onflow/cadence-internal/pull/447), [8](https://github.com/onflow/cadence-internal/pull/448), [9](https://github.com/onflow/cadence-internal/pull/446), [10](https://github.com/onflow/cadence-internal/pull/453)
 
-- In-house financial analytics & fraud detection tooling
-    - on hold
-
 - Update of bug bounty program with HackenProof.
     - updated to [v1.2](https://drive.google.com/drive/folders/1BBl_M9uZIJk4MjZvm52tOMtomFNqUaY7)
         - Clarify reporting requirements.
@@ -204,6 +193,12 @@ Q1 Cycle Objective(s):
 
 - EVM Core - enable emergency pausing of all EVM-related APIs by governance comittee multisig:
     - [Add pause functionality on EVM system contract](https://github.com/onflow/flow-go/issues/8311)
+
+- Smart contracts review and bugfixes:
+    - [Fix small bugs in TokenForwarding for bricked forwarder and wrong getSupportedVaultTypes](https://github.com/onflow/flow-ft/pull/185)
+    - [Fix: three FungibleTokenSwitchboard bugs](https://github.com/onflow/flow-ft/pull/186)
+    - [Fix getViews/resolveView mismatch and EVMBytesMetadata force-unwrap in ExampleNFT](https://github.com/onflow/flow-nft/pull/264)
+    - [Fix five remaining bugs from security review](https://github.com/onflow/flow-nft/pull/265)
 
 **This Sprint**
 
