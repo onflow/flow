@@ -2,7 +2,9 @@
 
 ### Team Wins 🎉
 
-
+- Approved 3 pending Cadence Flips ([1](https://github.com/onflow/flips/issues/359)[2](https://github.com/onflow/flips/issues/357), [3](https://github.com/onflow/flips/issues/355)) adding new features.
+- Optimized transaction scheduler deployed on Mainnet.
+- Completed testing of [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571), updated fees contract deployed on Mainnet and fee collection is now sharded on 3 child accounts.
 
 ---
 
@@ -59,52 +61,44 @@
 
 **Cadence Language**
 
-- Improvements:
-
-- Bugfixes:
-
-- Tooling:
-
-- Testing:
-
-- Chores:
-
+- Flips (new features):
+    - adds for-in loop support for dictionaries: [FLIP 359: Allow for-in loop over dictionary keys](https://github.com/onflow/flips/issues/359)
+    - standard lib addition for finding min/max of comparable values: [FLIP 357: Add Comparison Functions to Cadence](https://github.com/onflow/flips/issues/357)
+    - improves input validation: [FLIP 355: Cadence Guard Statement](https://github.com/onflow/flips/issues/355)
+- Testing
+    - [Assert pretty instructions](https://github.com/onflow/cadence/pull/4451)
+- Tools:
+    - [[lint] Add support for applying suggested fixes](https://github.com/onflow/cadence-tools/pull/592)
 
 **Cadence Execution**
-
-- Zero-downtime network upgrade:
-
-- Concurrent transactions execution testing:
-
-- Improvements:
-
-- Bugfixes:
-
-- Cleanup / Tech-debt removal:
-
-- Testing:
-
-- chore:
-
+- Logging improvement: [Improve debug logs for mismatching events](https://github.com/onflow/flow-go/pull/8479)
+- Ops/Util improvement: [[Util] add subcommand to remove execution fork](https://github.com/onflow/flow-go/pull/8465)
 
 **Flow EVM**
 
 - Core
-    - Feature:
+    - Cadence testing tramework improvement to facilitate testing of Solidity contracts: [Add `EVM` helper functions for testing environment](https://github.com/onflow/flow-go/pull/8391)
+    - bugfix: [ Fix padding logic on `EncodeBytes` for data with multiple chunks](https://github.com/onflow/flow-go/pull/8425)        
 
-    - post-inicident cleanup:
-
+**other**
+- deployed on mainnet: [Simplify Scheduled Transaction priority limits](https://github.com/onflow/flow-core-contracts/pull/580)
+- smart contracts bugfixes:
+    - [Fix small bugs in TokenForwarding for bricked forwarder and wrong getSupportedVaultTypes](https://github.com/onflow/flow-ft/pull/185)
+    - [Fix: three FungibleTokenSwitchboard bugs](https://github.com/onflow/flow-ft/pull/186)
+    - [Fix getViews/resolveView mismatch and EVMBytesMetadata force-unwrap in ExampleNFT](https://github.com/onflow/flow-nft/pull/264)
+    - [Fix five remaining bugs from security review](https://github.com/onflow/flow-nft/pull/265)
 
 **This sprint**
 
 - Cadence Language
+    - Continue work on security improvements
     - On-hold: compiler correctness testing
     - On-hold: tacklig compiler+VM tech-debt
     - On-hold: deep-dive on compiler+VM performace
 
 - Cadence Execution
-    - Complete testing of EN zero-downtime HCU
-    - Complete testing [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571) - epoch switchover
+    - Test conscurrent execution on one TN EN.
+    - Test token supply tracking on one TN EN.
     - On-hold [Versioning of Execution Stack via Dynamic Protocol State](https://github.com/onflow/flow-go/issues/6999)
     - On-hold [Badger -> Pebble: remaining tasks and cleanup](https://github.com/onflow/flow-go/issues/7682)
     - On-Hold [Storehouse](https://github.com/onflow/flow-okrs/issues/166)
@@ -113,8 +107,6 @@
 
 - EVM
     - On-Hold, FCM support
-
-
 
 **On Hold**
 - [EOA control delegation](https://github.com/onflow/flow-go/issues/7441).
@@ -197,42 +189,58 @@ Q1 Cycle Objective(s):
 **Done Last Sprint**
 
 - Cadence security improvements:
+    - Security improvements: [1](https://github.com/onflow/cadence-internal/pull/438), [2](https://github.com/onflow/cadence-internal/pull/425), [3](https://github.com/onflow/cadence-internal/pull/437), [4](https://github.com/onflow/cadence-internal/pull/444), [5](https://github.com/onflow/cadence-internal/pull/433), [6](https://github.com/onflow/cadence-internal/pull/445), [7](https://github.com/onflow/cadence-internal/pull/447), [8](https://github.com/onflow/cadence-internal/pull/448), [9](https://github.com/onflow/cadence-internal/pull/446), [10](https://github.com/onflow/cadence-internal/pull/453)
 
 - In-house financial analytics & fraud detection tooling
+    - on hold
 
 - Update of bug bounty program with HackenProof.
+    - updated to [v1.2](https://drive.google.com/drive/folders/1BBl_M9uZIJk4MjZvm52tOMtomFNqUaY7)
+        - Clarify reporting requirements.
+        - Added Target-specific reporting requirement for Execution layer.
 
 - Fungible token supply monitoring
+    - [Implement Iterator interfaces for LoadedValueIterator](https://github.com/onflow/atree/pull/635)
 
+- EVM Core - enable emergency pausing of all EVM-related APIs by governance comittee multisig:
+    - [Add pause functionality on EVM system contract](https://github.com/onflow/flow-go/issues/8311)
 
 **This Sprint**
 
-- Cadence security improvements:
-
-- In-house financial analytics & fraud detection tooling
+- Cadence security improvements: [1](https://github.com/onflow/cadence-internal/issues/450), [2](https://github.com/onflow/cadence-internal/issues/406), [3](https://github.com/onflow/cadence-internal/issues/430)
 
 - Update of bug bounty program with HackenProof.
+    - Continue work on core contracts before adding to scope
 
 - Fungible token supply monitoring
-
+    - test on one TN EN and collect data
 
 - On Hold (capacity)
-
+    - In-house financial analytics & fraud detection tooling
 
 ### Performance [Jan]
 
 **Done Last Sprint**
 
 - Cross-vm bridging performance improvements:
-    - EVM Core:
+    - [Cross-VM operations](https://github.com/onflow/flow-go/issues/8401) performance improvements:
+        - Cadence:
+            - [Optimize Cadence ArrayValue and Go []byte conversions (up to 13.7x faster and 8x less memory)](https://github.com/onflow/cadence/pull/4443)
+            - [Optimize transferring array, dict, and composite (e.g., 2x faster for byte arrays)](https://github.com/onflow/cadence/pull/4448)
+            - [Replace mapLoadedValueIterator wrapper by using Atree implementation](https://github.com/onflow/cadence/pull/4449)
+        - Atree:
+            - [Add two new functions to optimize atree array and Go []byte conversions](https://github.com/onflow/atree/pull/629)
+            - [Add support for faster copying of array and map](https://github.com/onflow/atree/pull/633)
 
 
-- Started work on simplifying transaction scheduler contract to improve performance
+- Completed work on simplifying transaction scheduler contract to improve performance
+    - deployed on mainnet: [Simplify Scheduled Transaction priority limits](https://github.com/onflow/flow-core-contracts/pull/580)
 
 **This Sprint**
 
-- Continue: simplify transaction scheduler to improve performance
-- Continue: Cross-vm bridging performance improvements:
+- Continue: Cross-vm bridging performance improvements
+    - start updating contracts to use optimized functions.
+    - start relaibration of execution effort weights to reflect optimized functions in operations pricing.
 
 
 ---
