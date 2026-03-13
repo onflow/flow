@@ -123,7 +123,22 @@ Q1 Cycle Objective(s):
 
 * <ins>Cryptography</ins>
 
+Last sprint:
 
+- SPoCK paper: 
+  - explored different ways with Wilson to improve the security definitions of Multi-SPoCK - wrote a new proposition to be reviewed by Wilson next week
+  - Wilson is still reviewing one edge case of identity keys 
+  - checking 2 new external papers for possible references around batch verification
+
+- cryptography module: fixing breaking changes in ECDSA with Go1.26 (ongoing slowly) 
+
+- security reports: helping with reports triaging
+
+Next sprint:
+
+- SPoCK paper: validate the Multi-SPoCK definition and update the proofs - move to Aggregate-Multi-SPoCK
+- continue on security reports
+- cryptography module if time allows
 
 ---
 
