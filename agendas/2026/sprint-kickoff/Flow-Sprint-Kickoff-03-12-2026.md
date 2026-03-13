@@ -5,34 +5,37 @@
 - Approved 3 pending Cadence Flips ([1](https://github.com/onflow/flips/issues/359)[2](https://github.com/onflow/flips/issues/357), [3](https://github.com/onflow/flips/issues/355)) adding new features.
 - Optimized transaction scheduler deployed on Mainnet.
 - Completed testing of [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571), updated fees contract deployed on Mainnet and fee collection is now sharded on 3 child accounts.
+- Kicked of the internal testing for `vaults.flow.com`
 
 ---
 
 #### YTD SLA \[Vishal]
 
-| Incident/upgrade       | Date      | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Overall | Comments                                          |
-|------------------------|-----------|------------|-----------|-----------|--------------|-------------|--------|---------|---------------------------------------------------|
-| HCU                    | 1/1/2026  |            |           | 9         |              |             |        | 9       | Part of recovery from Security Incident           |
-| HCU                    | 1/2/2026  |            |           | 9         |              |             |        | 9       | Part of recovery from Security Incident           |
-| HCU                    | 1/3/2026  |            |           | 9         |              |             |        | 9       | Security Fix                                      |
-| HCU                    | 1/3/2026  |            |           | 9         |              |             |        | 9       | Repeated the HCU                                  |
-| EVM GW Issue           | 1/7/2026  |            |           | 9         |              |             | 32     | 32      | Public EVM endpoint unavailable                   |
-| HCU                    | 1/29/2026 |            |           | 8         |              |             |        | 8       | Security Fix                                      |
-| HCU                    | 2/6/2026  |            |           | 8         |              |             |        | 8       | Security Fix                                      |
-| Sealing halt           | 2/11/2026 |            |           | 7         |              |             |        | 7       | FF and DL execution nodes went OOM and restarted  |
-| HCU                    | 2/13/2026 |            |           | 9         |              |             |        | 9       | Security Fix                                      ||
-| Total downtime in mins |           | 0          | 0         | 68        | 0            | 0           | 32     | 100     |                                                   |
-| YTD (01/06/26) SLA     |           | 100.00%    | 100.00%   | 99.89%    | 100.00%      | 100.00%     | 99.95% | 99.84%  |                                                   |
-| SLA for 2026           |           | 100.00%    | 100.00%   | 99.99%    | 100.00%      | 100.00%     | 99.99% | 99.98%  |                                                   |
+| Incident/upgrade   | Date      | Collection | Consensus | Execution | Verification | Access (QN) | EVM GW | Overall | Comments                                         |
+|--------------------|-----------|------------|-----------|-----------|--------------|-------------|--------|---------|--------------------------------------------------|
+| HCU                | 1/1/2026  |            |           | 9         |              |             |        | 9       | Part of recovery from Security Incident          |
+| HCU                | 1/2/2026  |            |           | 9         |              |             |        | 9       | Part of recovery from Security Incident          |
+| HCU                | 1/3/2026  |            |           | 9         |              |             |        | 9       | Security Fix                                     |
+| HCU                | 1/3/2026  |            |           | 9         |              |             |        | 9       | Repeated the HCU                                 |
+| HCU                | 1/6/2026  |            |           | 9         |              |             |        | 9       | Security Fix                                     |
+| EVM GW Issue       | 1/7/2026  |            |           | 9         |              |             | 32     | 32      | Public EVM endpoint unavailable                  |
+| HCU                | 1/29/2026 |            |           | 8         |              |             |        | 8       | Security Fix                                     |
+| HCU                | 2/6/2026  |            |           | 8         |              |             |        | 8       | Security Fix                                     |
+| Sealing halt       | 2/11/2026 |            |           | 7         |              |             |        | 7       | FF and DL execution nodes went OOM and restarted |
+| HCU                | 2/13/2026 |            |           | 9         |              |             |        | 9       | Security Fix                                     |
+| Sealing Halt       | 2/23/2026 |            | 240       | 240       |              |             |        | 240     | Consensus halted                                 |
+| HCU                | 2/24/2026 |            |           | 0.13      |              |             |        | 9       | EN update caused a sealing halt                  |
+| Total downtime     |           | 0          | 0         | 68        | 0            | 0           | 32     | 100     |                                                  |
+| YTD (03/12/26) SLA |           | 100.00%    | 99.76%    | 99.69%    | 100.00%      | 100.00%     | 99.97% | 99.66%  |                                                  |
+| SLA for 2026       |           | 100.00%    | 99.95%    | 99.94%    | 100.00%      | 100.00%     | 99.99% | 99.93%  |                                                  |
 
 ### Incidents \[Vishal]
 
+- No incidents
 
 #### Planned downtime
 
-
-#### Unplanned downtime
-
+- No planned downtime
 
 ---
 
@@ -40,15 +43,15 @@
 
 |             | Application | Cadence | Governance | Protocol |  Total  |
 |:------------|:-----------:|:-------:|:----------:|:--------:|:-------:|
-| Drafted     |      9      |    8    |     0      |    9     | **26**  |
+| Drafted     |      9      |    9    |     0      |    9     | **27**  |
 | Proposed    |      1      |    2    |     4      |    0     |  **7**  |
 | Accepted    |      3      |    2    |     3      |    1     |  **9**  |
 | Rejected    |      0      |    1    |     1      |    0     |  **2**  |
 | Implemented |      3      |    6    |     1      |    0     | **10**  |
 | Released    |      4      |   35    |     11     |    10    | **60**  |
-| Total       |   **20**    | **54**  |   **19**   |  **21**  | **114** |
+| Total       |   **20**    | **55**  |   **19**   |  **21**  | **115** |
 
-
+- No new FLIP added
 
 ---
 
@@ -129,10 +132,10 @@ Q1 Cycle Objective(s):
 **Done last sprint**
 
 - Addressing contract review comments
-    - [FCM: 5/5](https://github.com/orgs/onflow/projects/99/views/15) ✅
-    - [FlowActions: 15/20](https://github.com/onflow/FlowActions/issues/95)
-    - [FYV: 6/11](https://github.com/onflow/FlowYieldVaults/issues/131)
-    - [FYV EVM: 5/19](https://github.com/onflow/FlowYieldVaultsEVM/issues/15)
+    - [Second review Flow ALP: 0/32](https://github.com/onflow/FlowALP/issues/209)
+    - [FlowActions: 18/20](https://github.com/onflow/FlowActions/issues/95)
+    - [FYV: 11/12](https://github.com/onflow/FlowYieldVaults/issues/131)
+    - [FYV EVM: 12/19](https://github.com/onflow/FlowYieldVaultsEVM/issues/15)
 
 - ALP
 
@@ -147,32 +150,40 @@ Q1 Cycle Objective(s):
 
 
 - FYV
-
+  - PyUSD0 -> AlphaYield Looping vault strategy live on mainnet
+  - Resolving backend and UI issues to start internal testing
+  - Oracle Aggregator implementation ([#132](https://github.com/onflow/FlowALP/issues/132)) in review
+  - First iteration of Improving contract upgradeability and maintainability ([166](https://github.com/onflow/FlowALP/issues/166))
+  - Redesigning the supervisor and worker architecture [[#10](https://github.com/onflow/FlowYieldVaultsEVM/issues/10)] complete
+  - Fixed the issue to report profit and loss accurately on the vault.com user interface [#101](https://github.com/onflow/FlowYieldVaults-fe/issues/101)
 
 
 - FYV Testing
-
+  - Testing framework for simulation testing [#175](https://github.com/onflow/flow-okrs/issues/175)
+    - All basic scenarios have been merged in.
 
 
 - FCM Whitepaper/Documentation
-
-
+  - Flow Memo is live - https://flow.com/fcm-memo
 
 **This sprint**
 
-- ALP
+Goals:
+1. Support FYV internal testing
+2. Kick off second round of the QS review for FYV.
 
+- ALP
+  - Continue the work to make FCM contracts more upgradabale - [#166](https://github.com/onflow/FlowALP/issues/166)
 
 - FYV
-
+  - Debug issues recently discovered when using the PyUSD0 strategy
+  - Work with PM to integrate the PyUSD0 strategy.
 
 - FYV Testing
-
-
+  - Continue on the work to convert unit-zero simulations to use the new testing framework
 
 - FCM Whitepaper
-
-
+  - Continue working on the primer
 
 ---
 
