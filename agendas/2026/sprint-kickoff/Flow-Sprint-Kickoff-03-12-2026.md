@@ -2,7 +2,7 @@
 
 ### Team Wins 🎉
 
-- Approved 3 pending Cadence Flips ([1](https://github.com/onflow/flips/issues/359)[2](https://github.com/onflow/flips/issues/357), [3](https://github.com/onflow/flips/issues/355)) adding new features.
+- Approved 3 pending Cadence Flips ([1](https://github.com/onflow/flips/issues/359), [2](https://github.com/onflow/flips/issues/357), [3](https://github.com/onflow/flips/issues/355)) adding new features.
 - Optimized transaction scheduler deployed on Mainnet.
 - Completed testing of [Concurrent transaction execution](https://github.com/onflow/flow-go/issues/7571), updated fees contract deployed on Mainnet and fee collection is now sharded on 3 child accounts.
 - Kicked of the internal testing for `vaults.flow.com`
