@@ -374,10 +374,16 @@ https://github.com/onflow/flow-okrs/issues/206
 
 **Done last sprint**
 
-
+- Completed v3.1 on mobile, enabling full EOA support across all platforms.
+- Started on the asset Claim workflow, finally removing the need for recipiants to have pre-configured their account with a collection/vault before receiving an asset.
+    - Flow Wallet now sends assets to lost + found when transferring to an unconfigured recipiant
+    - Allows users to claim assets waiting for them in lost + found
+- Started multi-account per profile, enabling multiple Cadence + EVM accounts in a single profile
 
 **This sprint**
 
+- Complate multi-acocunt per profile
+- Complete claim workflow
 
 ---
 
