@@ -141,13 +141,55 @@ Q1 Cycle Objective(s):
 
     - KROK Team:
         * Done:
+        - [[FlowALP] Oracle Failure & Manipulation Testing #149 ](https://github.com/onflow/FlowALP/issues/149)
+        - [[FlowALP] Multiple Collateral Types & Cross-Asset Operations Testing #148 ](https://github.com/onflow/FlowALP/issues/148)
+        - [[FlowActions] FLOW-15 Unfinished TODOs #110 ](https://github.com/onflow/FlowActions/issues/110)
+        - [[FlowALP] Multi-Position Scenarios Testing #147 ](https://github.com/onflow/FlowALP/issues/147)
+        - [[FlowYieldVaults] Added script from observer service #205 ](https://github.com/onflow/FlowYieldVaults/issues/205)
+        
+        - [[FCMObserver] Update FlowALP submodule and replace FlowALPv0 event with FlowALPEvents contract #51 ](https://github.com/onflow/fcm-observer/issues/51) 
+        - [[FCMObserver] Add rebalancer metrics from FYV project #39 ](https://github.com/onflow/fcm-observer/issues/39)
+        - [[FCMObserver] Move get_beta_users_active.cdc to FlowALP #58 ](https://github.com/onflow/fcm-observer/issues/58)
+        - [[FCMObserver] ALP: Average rebalancing cost (P2) #16 ](https://github.com/onflow/fcm-observer/issues/16)
+        - [[FCMObserver] FYV: Rebalances per hour (P1) #21 ](https://github.com/onflow/fcm-observer/issues/21)
+        - [[FCMObserver] FYV: Average rebalancing cost (P2) #22 ](https://github.com/onflow/fcm-observer/issues/22)
+        - [[FCMObserver] FYV: Liquidations avoided (count and amount, underestimated) (P2) #24 ](https://github.com/onflow/fcm-observer/issues/24)
+        - [[FCMObserver] FYV: Rebalance Up events (HF < healthy range) (P1) #25 ](https://github.com/onflow/fcm-observer/issues/25)
+        - [[FCMObserver] FYV: Rebalance Down events (HF > healthy range) (P1) #26 ](https://github.com/onflow/fcm-observer/issues/26)
+        - [[FCMObserver] Total assets borrowed (P2) #33 ](https://github.com/onflow/fcm-observer/issues/33)
+        - [[FCMObserver] Assets backing MOET (reserve backing) (P2) #36 ](https://github.com/onflow/fcm-observer/issues/36)
+        - [[FCMObserver] Add integration tests for the observer #12 ](https://github.com/onflow/fcm-observer/issues/12)
+        - [[FCMObserver] Move all scripts to FlowALP repo #53 ](https://github.com/onflow/fcm-observer/issues/53)
+        - [[FCMObserver] Set up tests on CI #54 ](https://github.com/onflow/fcm-observer/issues/54)
+        - [[FCMObserver] Add unit tests for event handlers #56 ](https://github.com/onflow/fcm-observer/issues/56)
+        - [[FCMObserver] Add metric to track script failures #61 ](https://github.com/onflow/fcm-observer/issues/61)
+        - [[FCMObserver] Add metrics for successful/bad event handler execution #66 ](https://github.com/onflow/fcm-observer/issues/66)
+        - [[FCMObserver] Update flow_config.json file with names of real contracts #68 ](https://github.com/onflow/fcm-observer/issues/68)
+        - [[FCMObserver] Add metric for successful script execution (counter) #70 ](https://github.com/onflow/fcm-observer/issues/70)
+        - [[FCMObserver] Handle pool ID in FYV metrics #73 ](https://github.com/onflow/fcm-observer/issues/73)
+        - [[FCMObserver] Do not depend on pool ID to be 0 in code #74 ](https://github.com/onflow/fcm-observer/issues/74)
+        - [[FCMObserver] Handle LiquidationExecutedViaDex event #78 ](https://github.com/onflow/fcm-observer/issues/78) 
+        - [[FCMObserver] Update event types to be consistent with FlowALP v0 version rather than with main #82 ](https://github.com/onflow/fcm-observer/issues/82)
+        - [[FCMObserver] Total turnover (total assets traded: inflow + outflow) (P3) #31 ](https://github.com/onflow/fcm-observer/issues/31)
+        - [[FCMObserver] FYV: Number of rebalancing failures (P1) #23 ](https://github.com/onflow/fcm-observer/issues/23)
+        - [[FCMObserver] Insurance balance (amount of interest paid via MOET balance) (P2) #32 ](https://github.com/onflow/fcm-observer/issues/32)
+        - [[FCMObserver] ALP: Liquidations avoided (count and amount, underestimated) (P2) #18 ](https://github.com/onflow/fcm-observer/issues/18)
+        - [[FCMObserver] Total number of vaults (P2) #28 ](https://github.com/onflow/fcm-observer/issues/28)
+        
+                
+      * In Review: 
+        - [[FlowALP] On-chain oracle failure testing #256 ](https://github.com/onflow/FlowALP/issues/256) 
+        - [[FlowALP] FLO-2: setInsuranceRate() and setStabilityFeeRate() Retroactively Applies New Rates and Fails to Update Interest Rates #211 ](https://github.com/onflow/FlowALP/issues/211)
+        - [[FlowALP] Liquidation Edge Cases #173 ](https://github.com/onflow/FlowALP/issues/173)
+        - [[FlowALP] Access Control - Unauthorized access, privilege escalation, entitlement enforcement #177 ](https://github.com/onflow/FlowALP/issues/177)
+        - [[FCMObserver] Added core FYV metrics #49 ](https://github.com/onflow/fcm-observer/issues/49)
 
-
-      * In Review:   
-
-      
+                
       * In Progress
-
+        - [[FlowALP] Interest Rate Boundary Conditions Testing #180 ](https://github.com/onflow/FlowALP/issues/180)
+        - [[FlowALP] FLO-12: Fee Calculation Diverges From Rate Allocation Formula #221 ](https://github.com/onflow/FlowALP/issues/221)
+        - [[FCMObserver] Balance per vault histogram (P2) #29 ](https://github.com/onflow/fcm-observer/issues/29)
+        - [[FCMObserver] Split ALP and FYV event handlers into different packages #87 ](https://github.com/onflow/fcm-observer/issues/87) 
 
 - FYV
   - PyUSD0 -> AlphaYield Looping vault strategy live on mainnet
