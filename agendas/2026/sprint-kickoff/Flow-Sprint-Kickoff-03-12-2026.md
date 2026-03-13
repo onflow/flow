@@ -361,6 +361,8 @@ https://github.com/onflow/flow-okrs/issues/206
   * Review FT transfers API endpoint with latest indexer implementation
   * Address explorer backlog issues
   * Node operator admin page
+  * Look into AI integration
+  * Figure out how to move financial analytics features to explorer
 * Indexer
   * Deploy live indexer
   * Begin backfilling 2025 sporks
