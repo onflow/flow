@@ -391,19 +391,35 @@ https://github.com/onflow/flow-okrs/issues/206
 
 **Done last sprint**
 
-
-**Observability**
-
-
 **FCM**
+- [Create CloudSQL Databases for Historic Data Explorer](https://github.com/onflow/ff-sre-infrastructure/issues/1162)
+- [Rotate Passwords for Historic Explorer DBs Users](https://github.com/onflow/ff-sre-infrastructure/issues/1172)
+- [Fix Issue with Historic DBs Users Passwords and CloudSQL Edition Parameter](https://github.com/onflow/ff-sre-infrastructure/issues/1181)
+- [Cleanup repository settings for API explorer setup on Cloud Run](https://github.com/onflow/ff-sre-infrastructure/issues/1159)
 
-**Execution Ledger Service**
+**DevOps**
+- [Evaluate Blacksmith discounted cost eligibility](https://github.com/onflow/ff-sre-infrastructure/issues/1164)
+- [Configure Blacksmith authorization for CI repositories](https://github.com/onflow/ff-sre-infrastructure/issues/1165)
+- [Define Blacksmith runner configurations](https://github.com/onflow/ff-sre-infrastructure/issues/1166)
+- [Implement CI runner changes for flow-go](https://github.com/onflow/ff-sre-infrastructure/issues/1167)
+- [Implement CI runner changes for flow-go-internal](https://github.com/onflow/ff-sre-infrastructure/issues/1168)
+- [Validate Blacksmith runner functionality and CI time](https://github.com/onflow/ff-sre-infrastructure/issues/1169)
+- [Set up Blacksmith billing for Flow](https://github.com/onflow/ff-sre-infrastructure/issues/1171)
 
+**Node Operations**
+- [Create Summary Script for Simplifying Terraform PRs Reviews](https://github.com/onflow/ff-sre-infrastructure/issues/1175)
+- [Adjust Atlantis Repo Config to Run the Summary as a Post Workflow Webhook](https://github.com/onflow/ff-sre-infrastructure/issues/1176)
+- [Upload Summary Script to Atlantis Instance](https://github.com/onflow/ff-sre-infrastructure/issues/1177)
 
-**TN54 Spork**
-
+**FinOps**
+- [Estimate Cost Savings from Node Count Reduction](https://github.com/onflow/ff-sre-infrastructure/issues/1179)
+- [Estimate Costs for Restoring Snapshots from all Historic ANs](https://github.com/onflow/ff-sre-infrastructure/issues/1182)
 
 **Support**
+- [Create GCP OAuth Endpoint for AI integrations](https://github.com/onflow/ff-sre-infrastructure/issues/1178)
+- [Fix Terraform Deprecation Messages on ff-4d-infrastructure](https://github.com/onflow/ff-sre-infrastructure/issues/1100)
+- [Update Terraform's modules versions on ff-4d-infrastructure repository](https://github.com/onflow/ff-sre-infrastructure/issues/1174)
+- [Reduce Data Disks for idle Migration TN](https://github.com/onflow/ff-sre-infrastructure/issues/1147)
 
 
 ---
