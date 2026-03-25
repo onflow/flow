@@ -226,7 +226,7 @@ https://github.com/onflow/flow-okrs/issues/206
 
 **Last Sprint**
 
-* Explorer & UI
+* Explorer
   * Added previous searches suggestions
   * Add NFT transfer tabs to account page
   * Add FT transfer tabs to account page
@@ -240,7 +240,7 @@ https://github.com/onflow/flow-okrs/issues/206
 
 **Next Sprint**
 
-* Explorer & UI
+* Explorer
   * Finish backfilling mainnet26
   * Start backfilling mainnet24-25
   * Deploy and backfill indexers for accounts, transfers, scheduled tx
