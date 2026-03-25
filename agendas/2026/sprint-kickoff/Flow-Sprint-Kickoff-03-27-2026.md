@@ -226,21 +226,26 @@ https://github.com/onflow/flow-okrs/issues/206
 
 **Last Sprint**
 
-* Explorer & UI
-
-* Access API & Indexer
-
-* Infrastructure & Ops
-
+* Explorer
+  * Added previous searches suggestions
+  * Add NFT transfer tabs to account page
+  * Add FT transfer tabs to account page
+  * Deployed live indexer
+  * Backfilled core data for mainnet 27
+  * Started backfill core data for mainnet 26 - in progress
+  * Deployed contract deployments indexer
+  * Started indexers for accounts, transfers, scheduled tx
+  * Various performance and observability improvements to the live and backfill indexers
+  * Created Access API (rest/grpc) that can server current and historical data
 
 **Next Sprint**
 
-* Explorer & UI
-
-* Indexer
-
-* Community
-
+* Explorer
+  * Finish backfilling mainnet26
+  * Start backfilling mainnet24-25
+  * Deploy and backfill indexers for accounts, transfers, scheduled tx
+  * Start indexers for contracts, tokens, staking rewards, evm blocks & tx
+  * Integrate indexer data into flow explorer
 
 ---
 
