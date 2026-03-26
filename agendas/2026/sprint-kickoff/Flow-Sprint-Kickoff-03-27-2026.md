@@ -24,8 +24,8 @@
 | Sealing Halt       | 2/23/2026 |            | 240       | 240       |              |             |        | 240     | Consensus halted                                 |
 | HCU                | 2/24/2026 |            |           | 0.13      |              |             |        | 0.13    | Zero downtime HCU                                |
 | Total downtime     |           | 0          | 240       | 317.13    | 0            | 0           | 32     | 349.13  |                                                  |
-| YTD (03/12/26) SLA |           | 100.00%    | 99.80%    | 99.74%    | 100.00%      | 100.00%     | 99.97% | 99.71%  |                                                  |
-| SLA for 2026       |           | 100.00%    | 99.94%    | 99.94%    | 100.00%      | 100.00%     | 99.99% | 99.93%  |                                                  |
+| YTD (03/26/26) SLA |           | 100.00%    | 99.80%    | 99.74%    | 100.00%      | 100.00%     | 99.97% | 99.71%  |                                                  |
+| SLA for 2026       |           | 100.00%    | 99.95%    | 99.94%    | 100.00%      | 100.00%     | 99.99% | 99.93%  |                                                  |
 
 ### Incidents \[Vishal]
 
@@ -149,15 +149,17 @@ Next sprint:
 **Done last sprint**
 
 - Addressing contract review comments
-    - [Second review Flow ALP: 0/32](https://github.com/onflow/FlowALP/issues/209)
+    - [Second review Flow ALP: 13/32](https://github.com/onflow/FlowALP/issues/209)
     - [FlowActions: 18/20](https://github.com/onflow/FlowActions/issues/95)
-    - [FYV: 11/12](https://github.com/onflow/FlowYieldVaults/issues/131)
-    - [FYV EVM: 12/19](https://github.com/onflow/FlowYieldVaultsEVM/issues/15)
+    - [FYV: 12/13](https://github.com/onflow/FlowYieldVaults/issues/131)
+    - [FYV EVM: 14/21](https://github.com/onflow/FlowYieldVaultsEVM/issues/15)
 
 - ALP
-
-    - KROK Team:
-        * Done:
+  - Oracle Aggregator implementation ([#132](https://github.com/onflow/FlowALP/issues/132)) merged.
+  - Worked on addressing several Quantstamp Audit findings from the second round of review.
+  - Arb
+  - KROK Team:
+      * Done:
 
         
                 
@@ -169,14 +171,31 @@ Next sprint:
 
 
 - FYV
-
-
+  - Addressed all QuantStamp findings on the FYV contract.
+  - FUSDEV strategy improvements and [PR](https://github.com/onflow/FlowYieldVaults/pull/215) review
+  - More than 75 Front-end and backend [issues](https://github.com/onflow/FlowYieldVaults-fe/issues?q=is%3Aissue%20state%3Aclosed%20closed%3A%3E%40today-2w&page=1) discovered during internal testing.
+  - Worked through FYV EVM Quantstamp issues
 
 - FYV Testing
+  - Porting over the UnitZero scenarios: 9 in progress, 2 done, 3 remaining ([doc](https://www.notion.so/flowfoundation/UnitZero-Simulation-Overview-32d1aee123248019be2de5f78fb5e0c2))
+  - Unit Testing:
 
+      | Scope | Status |
+      |-------|--------|
+      | Multi-Position Scenarios | ✅ Done |
+      | Multi-Collateral & Cross-Asset | ✅ Done |
+      | Oracle Failure & Manipulation | ✅ Done |
+      | On-chain oracle failure | 🚧 In review |
+      | Liquidation Edge Cases |  ✅ Done |
+      | Interest Rate Boundaries |  🚧 In review |
+      | Deposit Capacity Attacks |🚧 In progress |
+      | Rebalancing Failures | 🚧 In review |
+      | Access Control | ✅ Done |
+      | DeFi Connector Integration | 🚧 In progress  |
 
 
 - FCM Whitepaper/Documentation
+    - Research of ALP stability proof and FCM Primer
 
 
 **This sprint**
@@ -184,15 +203,21 @@ Next sprint:
 Goals:
 1. Continue FYV internal testing
 2. Kick off second round of the QS review for FYV.
+3. Evaluate the impact of excluding MOET from v1 and determine the necessary design revisions.
 
 - ALP
-  - Continue the work to make FCM contracts more upgradabale - [#166](https://github.com/onflow/FlowALP/issues/166)
+  - Address the remaining QS issues.
+  - Address the outstanding security issues.
 
 - FYV
-
+  - Complete FUSDEV strategy improvements [PR](https://github.com/onflow/FlowYieldVaults/pull/215)
+  - Arb-bot implementation for FUSDEV/PyUSD0 (issue [#12](https://github.com/onflow/arb-bot/issues/12))
+  - Continue addressing the remaining FYV Frontend and backend issues.
+  - Complete the FYV EVM Quantstamp issues
 
 - FYV Testing
-  - Continue on the work to convert unit-zero simulations to use the new testing framework
+  - Port over the remaining UnitZero scenarios
+  - Unit testing: PR reviews for the remaining unit tests.
 
 - FCM Whitepaper
   - Continue working on the primer
