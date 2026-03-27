@@ -367,19 +367,30 @@ https://github.com/onflow/flow-okrs/issues/206
 **Done last sprint**
 
 **FCM**
-
+- [Configure IAM for Access to the Historic DBs via CloudSQL Studio](https://github.com/onflow/ff-sre-infrastructure/issues/1192)
+- [Create GCP bucket for Historic ANs Archive](https://github.com/onflow/ff-sre-infrastructure/issues/1193)
+- [Allow Backup Temp Node to Access Historic DBs](https://github.com/onflow/ff-sre-infrastructure/issues/1203)
+- [Set up Static External IP for Backup Temp Node on Flow Multi Region](https://github.com/onflow/ff-sre-infrastructure/issues/1204)
+- [Create RO Users on Historic Databases](https://github.com/onflow/ff-sre-infrastructure/issues/1210)
 
 **DevOps**
-
+- [Estimate monthly Blacksmith costs](https://github.com/onflow/ff-sre-infrastructure/issues/1170)
+- [Update Required Checks List to include Integration Tests with blacksmith runners](https://github.com/onflow/ff-sre-infrastructure/issues/1185)
+- [Upgrade GH Actions on flow-go to Fix Node.js 20 Deprecation Messages](https://github.com/onflow/ff-sre-infrastructure/issues/1195)
+- [Upgrade GH Actions on flow-go-internal to Fix Node.js 20 Deprecation Messages](https://github.com/onflow/ff-sre-infrastructure/issues/1196)
 
 **Node Operations**
-
-
-**FinOps**
-
+- [Power off MN28 VNs and LNs Instances in the Node Count Reduction List](https://github.com/onflow/ff-sre-infrastructure/issues/1186)
+- [Delete Alerts from MN28 VNs and LNs Instances in the Node Count Reduction List](https://github.com/onflow/ff-sre-infrastructure/issues/1187)
+- [Update MN28 Shadow Node Machine Type to match ENs](https://github.com/onflow/ff-sre-infrastructure/issues/1198)
+- [Create Archive Snapshots for MN28 LNs in the Node Count Reduction List](https://github.com/onflow/ff-sre-infrastructure/issues/1205)
+- [Create Archive Snapshots for MN28 VNs in the Node Count Reduction List](https://github.com/onflow/ff-sre-infrastructure/issues/1211)
+- [Delete MN28 LNs and VNs in the Node Count Reduction List](https://github.com/onflow/ff-sre-infrastructure/issues/1212)
+- [Create Silences and Power off MN28 LNs Instances in the Node Count Reduction List - Wave #2](https://github.com/onflow/ff-sre-infrastructure/issues/1214)
 
 **Support**
-
+- [Troubleshoot Flaky CI Integration Tests after the Switch to Blacksmith](https://github.com/onflow/ff-sre-infrastructure/issues/1189)
+- [Troubleshoot Issue after Restoring the MN28 Shadow EN from a New Snapshot](https://github.com/onflow/ff-sre-infrastructure/issues/1191)
 
 
 ---
