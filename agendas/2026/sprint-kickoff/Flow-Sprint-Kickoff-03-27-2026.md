@@ -167,15 +167,44 @@ Next sprint:
   - Arb
   - KROK Team:
       * Done:
+        - [[FlowALP] FLO-1: Uncollected Protocol Fees Are Permanently Lost when Reserves Are Low #210 ](https://github.com/onflow/FlowALP/issues/210)
+        - [[FlowALP] FLO-2: setInsuranceRate() and setStabilityFeeRate() Retroactively Applies New Rates and Fails to Update Interest Rates #211 ](https://github.com/onflow/FlowALP/issues/211)
+        - [[FlowALP] Access Control - Unauthorized access, privilege escalation, entitlement enforcement #177 ](https://github.com/onflow/FlowALP/issues/177)
+        - [[FlowALP] Liquidation Edge Cases #173 ](https://github.com/onflow/FlowALP/issues/173)
 
+        - [[FCMObserver] Added core FYV metrics #49 ](https://github.com/onflow/fcm-observer/issues/49)
+        - [[FCMObserver] Split ALP and FYV event handlers into different packages #87 ](https://github.com/onflow/fcm-observer/issues/87)
+        - [[FCMObserver] Scripts registered in the runner don't use backoff mechanism #64 ](https://github.com/onflow/fcm-observer/issues/64)
+        - [[FCMObserver] Handle new PositionClosed event #79 ](https://github.com/onflow/fcm-observer/issues/79)
+        - [[FCMObserver] Add script to gather all the active positions at startup #91 ](https://github.com/onflow/fcm-observer/issues/91)
+        - [[FCMObserver] Script runner should respect access node's rate limiter #92 ](https://github.com/onflow/fcm-observer/issues/92)
+        - [[FCMObserver] Script that gets position data should be fired only once #95 ](https://github.com/onflow/fcm-observer/issues/95)
+        - [[FCMObserver] https://github.com/onflow/fcm-observer/issues/104 ](https://github.com/onflow/fcm-observer/issues/104)
+        - [[FCMObserver] Run get position by ID script periodically temporary #107 ](https://github.com/onflow/fcm-observer/issues/107)
+        - [[FCMObserver] Add alp_ and fyv_ prefix where needed for ALL metrics to differentiate them clearly #110 ](https://github.com/onflow/fcm-observer/issues/110)
+        - [[FCMObserver] Query scripts with circular queue instead of batches #109 ](https://github.com/onflow/fcm-observer/issues/109)
+        - [[FCMObserver] Remove RecordLastPollTime or change the impl to use different underlying metric #99 ](https://github.com/onflow/fcm-observer/issues/99)
+        - [[FCMObserver] Mark liquidated/closed positions instead of deleting them #96 ](https://github.com/onflow/fcm-observer/issues/96)
+        - [[FCMObserver] Script execution interval should be a bit faster than scrap interval #94 ](https://github.com/onflow/fcm-observer/issues/94)
         
-                
       * In Review: 
-
-
+        - [[FlowALP] On-chain oracle failure testing #256 ](https://github.com/onflow/FlowALP/issues/256)
+        - [[FlowALP] Interest Rate Boundary Conditions Testing #180 ](https://github.com/onflow/FlowALP/issues/180)
+        - [[FlowALP] Rebalancing Failures #280 ](https://github.com/onflow/FlowALP/issues/280)
+        - [[FlowALP] FLO-12: Fee Calculation Diverges From Rate Allocation Formula #221 ](https://github.com/onflow/FlowALP/issues/221)
+        - [[FCMObserver] Monitor pools for the ALP and FYV. #98 ](https://github.com/onflow/fcm-observer/issues/98)
+        - [[FCMObserver] Monitoring pools for alp fyv #111 ](https://github.com/onflow/fcm-observer/issues/111)
+        - [[FCMObserver] Add script for monitoring pools #222 ](https://github.com/onflow/fcm-observer/issues/222)
+        - [[FCMObserver] Fix fcm_alp_rebalancing_cost metric to record transaction cost of the rebalance #118 ](https://github.com/onflow/fcm-observer/issues/118)
+        - [[FCMObserver] Implements the "Balance per vault" metric #119 ](https://github.com/onflow/fcm-observer/issues/119)
+        - [[FCMObserver] Rename fcm_alp_rebalancing_cost to fcm_alp_rebalancing_amount #120 ](https://github.com/onflow/fcm-observer/issues/120)
                 
       * In Progress
-
+        - [[FCMObserver] Balance per vault histogram (P2) #29 ](https://github.com/onflow/fcm-observer/issues/29)
+        - [[FCMObserver] Update dashboards on Grafana and make sure all metrics gather correctly #101 ](https://github.com/onflow/fcm-observer/issues/101)
+        - [[FCMObserver] Register all positions to script runner on startup #122 ](https://github.com/onflow/fcm-observer/issues/122)
+        - [[FlowALP] DeFi Connector Integration Tests #282 ](https://github.com/onflow/FlowALP/issues/282)
+        - [[FlowALP] Deposit Capacity Attacks #283 ](https://github.com/onflow/FlowALP/issues/283)
 
 - FYV
   - Addressed all QuantStamp findings on the FYV contract.
