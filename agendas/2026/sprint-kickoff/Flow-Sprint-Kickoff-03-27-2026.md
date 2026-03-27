@@ -232,6 +232,7 @@ Next sprint:
 
 - FCM Whitepaper/Documentation
     - Research of ALP stability proof and FCM Primer
+    - We now have updated simulation results for a 24% Collateral crash, which we trust, incorporated into the primer.
 
 
 **This sprint**
