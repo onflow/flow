@@ -136,10 +136,17 @@ Q1 Cycle Objective(s):
 
 Last sprint:
 
-- SPoCK: 
-
+- SPoCK paper:
+  - multi-spock security definition improved with new updates which broke the current unforgeability proof
+  - considered multiple fixes and their tradeoffs - to be discussed with Wilson
+- cryptography module: progress on ECDSA refactor for Go1.26
+- security reports and bug bounty
 
 Next sprint:
+
+- SPoCK paper: discussing potential fixes with Wilson
+- security reports and bug bounty
+- ECDSA with go1.26 tests and code audit
 
 
 ---
