@@ -351,17 +351,6 @@ https://github.com/onflow/flow-okrs/issues/206
 
 ---
 
-### Applications / Wallet [Jeff]
-
-**Done last sprint**
-
-
-
-**This sprint**
-
-
----
-
 ### **Infra** \[Manny]
 
 **Done last sprint**
