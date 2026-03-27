@@ -164,7 +164,6 @@ Next sprint:
 - ALP
   - Oracle Aggregator implementation ([#132](https://github.com/onflow/FlowALP/issues/132)) merged.
   - Worked on addressing several Quantstamp Audit findings from the second round of review.
-  - Arb
   - KROK Team:
       * Done:
         - [[FlowALP] FLO-1: Uncollected Protocol Fees Are Permanently Lost when Reserves Are Low #210 ](https://github.com/onflow/FlowALP/issues/210)
@@ -214,6 +213,7 @@ Next sprint:
 
 - FYV Testing
   - Porting over the UnitZero scenarios: 9 in progress, 2 done, 3 remaining ([doc](https://www.notion.so/flowfoundation/UnitZero-Simulation-Overview-32d1aee123248019be2de5f78fb5e0c2))
+    - Done means asserting that 0 liquidations occur.
   - Unit Testing:
 
       | Scope | Status |
