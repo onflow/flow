@@ -243,7 +243,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /experimental/v1/ft/{token}:
+  /experimental/v1/ft/{ft_type}:
     get:
       summary: Get fungible token details
       description: Returns details for the fungible token with the given fully qualified identifier.
@@ -251,7 +251,7 @@ paths:
       tags:
         - FungibleTokens
       parameters:
-        - name: token
+        - name: ft_type
           in: path
           required: true
           description: Fully qualified token type identifier (e.g. `A.1654653399040a61.FlowToken`).
@@ -285,7 +285,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /experimental/v1/ft/{token}/holders:
+  /experimental/v1/ft/{ft_type}/holders:
     get:
       summary: List fungible token holders
       description: |
@@ -295,7 +295,7 @@ paths:
       tags:
         - FungibleTokens
       parameters:
-        - name: token
+        - name: ft_type
           in: path
           required: true
           description: Fully qualified token type identifier (e.g. `A.1654653399040a61.FlowToken`).
@@ -402,7 +402,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /experimental/v1/nft/{token}:
+  /experimental/v1/nft/{nft_type}:
     get:
       summary: Get non-fungible token details
       description: Returns details for the non-fungible token collection with the given fully qualified identifier.
@@ -410,7 +410,7 @@ paths:
       tags:
         - NonFungibleTokens
       parameters:
-        - name: token
+        - name: nft_type
           in: path
           required: true
           description: Fully qualified NFT collection type identifier (e.g. `A.1654653399040a61.TopShot`).
@@ -444,7 +444,56 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /experimental/v1/nft/{token}/holders:
+  /experimental/v1/nft/{nft_type}/item/{nft_id}:
+    get:
+      summary: Get individual NFT
+      description: Returns details for a specific NFT within a collection.
+      operationId: getNonFungibleTokenItem
+      tags:
+        - NonFungibleTokens
+      parameters:
+        - name: nft_type
+          in: path
+          required: true
+          description: Fully qualified NFT collection type identifier (e.g. `A.1654653399040a61.TopShot`).
+          schema:
+            $ref: "#/components/schemas/ContractIdentifier"
+        - name: nft_id
+          in: path
+          required: true
+          description: Unique identifier of the NFT within its collection.
+          schema:
+            type: string
+            format: uint64
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
+      responses:
+        "200":
+          description: The NFT details.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NonFungibleToken"
+        "400":
+          description: Bad request (invalid token identifier or NFT ID).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No NFT found for the given identifier.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/nft/{nft_type}/holders:
     get:
       summary: List non-fungible token holders
       description: |
@@ -454,7 +503,7 @@ paths:
       tags:
         - NonFungibleTokens
       parameters:
-        - name: token
+        - name: nft_type
           in: path
           required: true
           description: Fully qualified NFT collection type identifier (e.g. `A.1654653399040a61.TopShot`).
