@@ -243,10 +243,18 @@ https://github.com/onflow/flow-okrs/issues/206
 **Last Sprint**
 
 * Explorer
+  * Finished backfilling core data to mainnet24 (Nov 2023)
+  * Uploaded AN db archives for mainnet 24-27
+  * Deploy and backfill account keys, contracts, contract imports, tokens, tx/block fees, staking rewards, contract/account labels, evm blocks & tx
+  * Deploy access, experimental, and find-compatible APIs using our index (serving data from mainnet24 to current)
+  * Redesign block details page with transactions table
+  * Support system transaction results via block-scoped URLs
 
 **Next Sprint**
 
 * Explorer
+  * Finish backfilling secondary indices
+  * Integrate indexer data into flow explorer
 
 ---
 
