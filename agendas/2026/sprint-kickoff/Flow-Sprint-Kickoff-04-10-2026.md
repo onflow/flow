@@ -109,17 +109,13 @@ Q1 Cycle Objective(s):
 
 **Last sprint completed, ongoing and starting**
 
-
 * <ins>Cryptography</ins>
 
 Last sprint:
-
-
+ - multi-SPoCK: brainstorm on BLS construction updates to fix a few issues - fixes got discussed with Wilson (Spearbit)
 
 Next sprint:
-
-
-
+ - fixes discussed earlier will be applied to the paper draft.
 
 ---
 
@@ -128,57 +124,77 @@ Next sprint:
 **Done last sprint**
 
 - Addressing contract review comments
-    - [Second review Flow ALP: 13/32](https://github.com/onflow/FlowALP/issues/209)
-    - [FlowActions: 18/20](https://github.com/onflow/FlowActions/issues/95)
-    - [FYV: 12/13](https://github.com/onflow/FlowYieldVaults/issues/131)
-    - [FYV EVM: 14/21](https://github.com/onflow/FlowYieldVaultsEVM/issues/15)
+    - [Second review Flow ALP: 15/32](https://github.com/onflow/FlowALP/issues/209)
+    - [FlowActions: 20/20](https://github.com/onflow/FlowActions/issues/95)
+    - [FYV: 13/13](https://github.com/onflow/FlowYieldVaults/issues/131)
+    - [FYV EVM: 19/21](https://github.com/onflow/FlowYieldVaultsEVM/issues/15)
 
 - ALP
-
+  - Continue working on the QS audit comments.
+  - Decision on how to handle Interest Curve utilization rate (see [ADR](https://github.com/onflow/FlowALP/pull/303/changes))
 
 - FYV
-
+  - Started testing with friendlies
+  - Implemented the changes to use PyUSD0 instead of MOET as the debt token in the strategy.
+  - Fixed end-to-end tests on FYV BE
+  - Addressed 15 [UI related issues](https://github.com/onflow/FlowYieldVaults-fe/issues?q=is%3Aissue%20state%3Aclosed)
+  - Added support for Address allowlist on the FYV EVM.
 
 - FYV Testing
-  - Porting over the UnitZero scenarios: 9 in progress, 2 done, 3 remaining ([doc](https://www.notion.so/flowfoundation/UnitZero-Simulation-Overview-32d1aee123248019be2de5f78fb5e0c2))
+  - Porting over the UnitZero scenarios: 4 in progress, 8 done, 2 remaining ([doc](https://www.notion.so/flowfoundation/UnitZero-Simulation-Overview-32d1aee123248019be2de5f78fb5e0c2))
 
   - Unit Testing:
 
-      | Scope | Status |
-      |-------|--------|
-      | Multi-Position Scenarios | ✅ Done |
-      | Multi-Collateral & Cross-Asset | ✅ Done |
-      | Oracle Failure & Manipulation | ✅ Done |
-      | On-chain oracle failure | 🚧 In review |
-      | Liquidation Edge Cases |  ✅ Done |
-      | Interest Rate Boundaries |  🚧 In review |
-      | Deposit Capacity Attacks |🚧 In progress |
-      | Rebalancing Failures | 🚧 In review |
-      | Access Control | ✅ Done |
-      | DeFi Connector Integration | 🚧 In progress  |
+    | Scope | Status |
+    |-------|--------|
+    | Multi-Position Scenarios | ✅ Done |
+    | Multi-Collateral & Cross-Asset | ✅ Done |
+    | Oracle Failure & Manipulation | ✅ Done |
+    | Liquidation Edge Cases |  ✅ Done |
+    | Interest Rate Boundaries |  🚧 In review |
+    | Deposit Capacity Attacks |🚧 In review |
+    | Rebalancing Failures | 🚧 In review |
+    | Access Control | ✅ Done |
+    | DeFi Connector Integration | 🚧 In review  |
 
+  -  Patrick's [Simulator](https://holyfuchs.github.io/flow-docs/)
+
+- Arb-bot
+  - Add FUSDEV/PYUSD0 support ([#12](https://github.com/onflow/arb-bot/issues/12))
+  - [Improvements](https://github.com/onflow/arb-bot/pulls?q=is%3Apr+is%3Aclosed+codex) suggested by codex
+  - [Improvement](Audit Sheets export for flash and execution outcomes) to audit sheets exported by the bot
 
 - FCM Whitepaper/Documentation
+  - FCM Primer: updated section with experimental simulation results
+  - FCM stability research
+  - FCM simulations debugging and consolidation
 
+- FCM Observer
+  - Query all positions at service startup ([122](https://github.com/onflow/fcm-observer/issues/122))
 
 **This sprint**
 
 Goals:
-1. Continue FYV internal testing
-2. Kick off second round of the QS review for FYV.
-3. Evaluate the impact of excluding MOET from v1 and determine the necessary design revisions.
+1. Continue FYV testing with friendlies
+2. Kick off second round of the QS review for FYV, FYV EVM and Flow Action.
+3. Hash out timeline and scope for the v0.2 milestone
 
 - ALP
-
+  - Address the remaining QuantStamp issues.
 
 - FYV
-
+  - Address the issues related to APR and PnL calculations
+  - Support PeakMoney integration.
 
 - FYV Testing
-
+  - Continue porting the remaining unitzero scenarios.
+  - Merge outstanding unit-testing PRs.
 
 - FCM Whitepaper
+  - Continue working on FCM Primer
 
+- FCM observer
+  - Continue implementation of the cost of rebalancing metric.
 
 ---
 
