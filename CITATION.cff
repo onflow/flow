@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use flow in your research or reference it, please cite it as below."
+title: "flow: Central hub for the Flow network — protocol specs, interface definitions, and governance"
+authors:
+  - name: "Flow Foundation"
+    website: "https://flow.com"
+repository-code: "https://github.com/onflow/flow"
+url: "https://flow.com"
+license: Apache-2.0
+type: software
+keywords:
+  - flow
+  - flow-network
+  - blockchain
+  - layer-1
+  - proof-of-stake
+  - cadence
+  - smart-contracts
+  - protocol
