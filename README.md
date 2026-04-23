@@ -65,12 +65,6 @@ See [`protobuf/README.md`](./protobuf/README.md) for generation instructions usi
 **How do I report a security vulnerability?**
 See [SECURITY.md](SECURITY.md) for responsible disclosure instructions. Do not file public issues for security vulnerabilities.
 
-## Community
-
-- [Flow Discord](https://discord.gg/flow)
-- [Flow Forum](https://forum.flow.com)
-- [Flow Improvement Proposals](https://github.com/onflow/flips)
-
 ## About Flow
 
 This repo is part of the [Flow network](https://flow.com), a Layer 1 blockchain built for consumer applications, AI Agents, and DeFi at scale.
