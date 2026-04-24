@@ -2,7 +2,8 @@
 
 ### Team Wins 🎉
 
-
+- Transaction level token supply change monitoring is live on mainnet.
+- The blockscout hosted EVM explorers are live: [mainnet](https://evm.flow.com/) and [testnet](https://testnet.evm.flow.com/)
 
 ---
 
@@ -24,7 +25,7 @@
 | HCU                | 2/24/2026 |            |           | 0.13      |              |             |        | 0.13    | Zero downtime HCU                                |
 | HCU                | 4/07/2026 |            |           | 0.13      |              |             |        | 0.13    | Zero downtime HCU                                |
 | Total downtime     |           | 0          | 240       | 317.26    | 0            | 0           | 32     | 349.26  |                                                  |
-| YTD (04/22/26) SLA |           | 100.00%    | 99.85%    | 99.80%    | 100.00%      | 100.00%     | 99.98% | 99.78%  |                                                  |
+| YTD (04/24/26) SLA |           | 100.00%    | 99.85%    | 99.81%    | 100.00%      | 100.00%     | 99.98% | 99.79%  |                                                  |
 | SLA for 2026       |           | 100.00%    | 99.95%    | 99.94%    | 100.00%      | 100.00%     | 99.99% | 99.93%  |                                                  |
 
 ### Incidents \[Vishal]
@@ -61,16 +62,28 @@
 
 ### **Core Protocol** \[Vishal]
 
-Objectives:
-
-
 **Last sprint completed, ongoing and starting**
 
+Project board: [Flow Core 2026](https://github.com/orgs/onflow/projects/109)
+
 Last sprint:
+- Deployed transaction level token supply change monitoring on mainnet.
+- Drafted [OKRs](https://docs.google.com/document/d/1GILdIH6jO6xgUklR-5CyhaQs2GvB_tUGF5XElOjrGTA/edit?usp=sharing)
+- Core contract upgrades with Claude suggested changes ([#207](https://github.com/onflow/flow-okrs/issues/207)) (8/24)
+- Deployed execution weights bug fix to mainnet ([#207](https://github.com/onflow/flow-okrs/issues/207))
+- Cadence security update ([#222](https://github.com/onflow/flow-okrs/issues/222))
+  - Fixes for developer foot gun.
+  - Coordinating breaking change with two partners who will be affected.
+- LayerZero bridge configuration update for USDF and PyUSD0 ([#225](https://github.com/onflow/flow-okrs/issues/225))
+- Fixes to address 4 networking related security reports ([#226](https://github.com/onflow/flow-okrs/issues/226))
+- Governance: Analysis for an inflation reduction plan ([#220](https://github.com/onflow/flow-okrs/issues/220))
 
 
 Next sprint:
-
+- Continue core contract upgrades (#207)
+- Address additional security reports received recently.
+- Rollout Cadence security update as zero-downtime HCU (#222)
+- Finalize the inflation reduction plan (#220)
 
 ---
 
@@ -106,8 +119,6 @@ Next sprint:
 * **[FCM Primer](https://docs.google.com/document/d/1Ph9xnx1JvvJQdMVZoEDtTagnx_FLo0wiQZCi1BjqxyE/edit) polish** — light editorial polish on our public-facing overview of FCM's active-rebalancing lending model (live doc).
 
 
-
-
 ---
 
 ### Security [Jan]
@@ -118,21 +129,5 @@ Next sprint:
 
 **This Sprint**
 
-
-
-
----
-
-
-### **Governance** \[Vishal]
-
-Objectives:
-
-**Done last sprint**
-* No updates
-
-
-**This sprint**
-* No Updates
 
 ---
