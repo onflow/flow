@@ -77,6 +77,9 @@ Last sprint:
 - LayerZero bridge configuration update for USDF and PyUSD0 ([#225](https://github.com/onflow/flow-okrs/issues/225))
 - Fixes to address 4 networking related security reports ([#226](https://github.com/onflow/flow-okrs/issues/226))
 - Governance: Analysis for an inflation reduction plan ([#220](https://github.com/onflow/flow-okrs/issues/220))
+- Finished backfilling flow index to Crescendo (mainnet 25)
+- Updated flow-cli to support api.index.flow.com - Access API with data back to mainnet24 (Nov 2023)
+- Moved evm explorer DNS over to blockscout instance
 
 
 Next sprint:
@@ -84,6 +87,8 @@ Next sprint:
 - Address additional security reports received recently.
 - Rollout Cadence security update as zero-downtime HCU (#222)
 - Finalize the inflation reduction plan (#220)
+- Final index backfill tasks (account and nft metadata)
+- Finalize flowscan migration plan
 
 ---
 
