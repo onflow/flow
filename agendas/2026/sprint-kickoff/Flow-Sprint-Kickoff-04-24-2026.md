@@ -84,7 +84,7 @@ Last sprint:
 
 Next sprint:
 - Continue core contract upgrades (#207)
-- Address additional security reports received recently.
+- Working on additional infra changes
 - Rollout Cadence security update as zero-downtime HCU (#222)
 - Finalize the inflation reduction plan (#220)
 - Final index backfill tasks (account and nft metadata)
