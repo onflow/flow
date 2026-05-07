@@ -91,17 +91,6 @@ Next sprint:
 
 ---
 
-### Security [Jan]
-
-**Done Last Sprint**
-
-
-
-**This Sprint**
-
-
----
-
 ## Riptide [Jan]
 
 **Done Last Sprint**
