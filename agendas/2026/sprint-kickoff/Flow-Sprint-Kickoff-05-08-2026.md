@@ -2,7 +2,9 @@
 
 ### Team Wins 🎉
 
-
+* OpenWorkFlow 
+    - launched [LLM oracle webapp](https://openworkflow-oracle-webapp.vercel.app/) on mainnet supporting FLOW and USDC.e as accepted payment types (USDC, pyUSD and USDT coming up soon).
+    - Settled on the first public app to launch next sprint, enabling experimentation with agent coordination.
 
 ---
 
@@ -96,6 +98,14 @@ Next sprint:
 
 **Done Last Sprint**
 
-
+- Launched LLM oracle webapp on Mainnet
+- Demoed ResearchTown example on emulator
+- Aligned on first public launch scope
 
 **This Sprint**
+
+- First public launch
+- Add more payment token yupes to LLM Oracle Webapp
+- Enable Claude managed agents as second oracle type
+- Expand docs - "deploy your first agent" section
+- Continue investigation on OpenClaw / NanoClaw / Hermes agents joining the agent ecosystem autonomously.
