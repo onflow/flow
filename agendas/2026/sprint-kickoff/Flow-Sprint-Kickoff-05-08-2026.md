@@ -69,26 +69,27 @@ Project board: [Flow Core 2026](https://github.com/orgs/onflow/projects/109)
 [OKRs](https://docs.google.com/document/d/1GILdIH6jO6xgUklR-5CyhaQs2GvB_tUGF5XElOjrGTA)
 
 Last sprint:
-- Finalized OKRs
-- Drafted [OKRs](https://docs.google.com/document/d/1GILdIH6jO6xgUklR-5CyhaQs2GvB_tUGF5XElOjrGTA/edit?usp=sharing)
-- Rolled out a fix to address HackenProof security report (252) ([#4](https://github.com/onflow/flow-core-contracts-internal/issues/4))
-- Core contract upgrades with Claude suggested changes ([#207](https://github.com/onflow/flow-okrs/issues/207)) (13/24)
 
+- Finalized [OKRs](https://docs.google.com/document/d/1GILdIH6jO6xgUklR-5CyhaQs2GvB_tUGF5XElOjrGTA/edit?usp=sharing)
+- Rolled out security fixes to resolve two issues reported through HackenProof:
+  1. ([#4](https://github.com/onflow/flow-core-contracts-internal/issues/4))
+  2. ([#5](https://github.com/onflow/flow-core-contracts-internal/pull/5))
 - Cadence security update ([#222](https://github.com/onflow/flow-okrs/issues/222))
   - PR reviews
   - Assisting partners to update their contracts.
-  - Compatibility testing
-- Governance:
-  - Drafted internal version of FLIP proposing the new inflation reduction plan ([#220](https://github.com/onflow/flow-okrs/issues/220))
-
+  - Preparing the tag
+  - Backward compatibility testing
+- Governance: Drafted internal version of FLIP proposing the new inflation reduction plan ([#220](https://github.com/onflow/flow-okrs/issues/220))
+- Started the work for recalibration of execution weights ([#211](https://github.com/onflow/flow-okrs/issues/211)) 
+- Core contract upgrades with Claude suggested changes ([#207](https://github.com/onflow/flow-okrs/issues/207)) (13/24)
+- Discussion around EVM initiated actions in Cadence ([thread](https://dapperlabs.slack.com/archives/C03200G1YP4/p1777480766167859))
 
 Next sprint:
-- Continue core contract upgrades (#207)
-- Address additional security reports received recently.
+
 - Rollout Cadence security update as zero-downtime HCU (#222)
 - Finalize the inflation reduction plan (#220)
-- Final index backfill tasks (account and nft metadata)
-- Finalize flowscan migration plan
+- Continue the execution weight recalibration work.
+- Finish core contract upgrades (#207)
 
 ---
 
