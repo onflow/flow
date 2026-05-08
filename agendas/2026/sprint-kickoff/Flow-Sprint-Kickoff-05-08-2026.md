@@ -2,7 +2,7 @@
 
 ### Team Wins 🎉
 
-
+- 🗡️ Slayed two security issues
 
 ---
 
