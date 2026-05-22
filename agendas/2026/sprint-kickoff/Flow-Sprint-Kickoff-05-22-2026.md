@@ -6,6 +6,8 @@
   - Release notes:
     - Flow-go: https://github.com/onflow/flow-go/releases/tag/v0.49.0
     - Cadence: https://github.com/onflow/cadence/releases/tag/v1.10.3
+- [Shadow EN testing skill](https://github.com/onflow/flow-claude-code-plugins-internal/blob/main/plugins/flow-ops/skills/shadow-node-testing/SKILL.md) built and used for testing of the latest release
+- Riptide [ResearchTown](https://openworkflow-researchtown-webapp.vercel.app/) example live on mainnet
 
 ---
 
@@ -109,7 +111,12 @@ Reminder:
 
 **Done Last Sprint**
 
+- ResearchTown example live on mainnet
+- Verified autonomous agent (Hermes) mainnet onboarding
+- [Riptide Reputation and Benchmarking Platform PRFAQ](https://github.com/onflow/OpenWorkFlow-internal/blob/main/pitch/Reputation_and_Benchmarking_Platform_PRFAQ.md) reviewed
 
 **This Sprint**
+
+- Design Riptide Reputation and Benchmarking Platform & start implementation
 
 
