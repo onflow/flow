@@ -17,6 +17,10 @@ security: []
 tags:
   - name: Accounts
     description: Endpoints for querying account-related data.
+  - name: FungibleTokens
+    description: Endpoints for querying fungible token data.
+  - name: NonFungibleTokens
+    description: Endpoints for querying non-fungible token data.
   - name: ScheduledTransactions
     description: Endpoints for querying scheduled transaction data.
   - name: Contracts
@@ -157,6 +161,373 @@ paths:
                 $ref: "#/components/schemas/Error"
         "404":
           description: No account found for the given address.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/ft:
+    get:
+      summary: List fungible tokens
+      description: |
+        Returns a paginated list of fungible tokens known to the network.
+      operationId: getFungibleTokens
+      tags:
+        - FungibleTokens
+      parameters:
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/labelParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
+      responses:
+        "200":
+          description: A page of fungible tokens.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FungibleTokensResponse"
+        "400":
+          description: Bad request (invalid cursor, limit, or filter).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/ft/transfers:
+    get:
+      summary: List fungible token transfers
+      description: |
+        Returns a paginated list of fungible token transfers across the network,
+        ordered descending by block height (newest first).
+      operationId: getFungibleTransfers
+      tags:
+        - FungibleTokens
+      parameters:
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/tokenTypeParam"
+        - $ref: "#/components/parameters/sourceAddressParam"
+        - $ref: "#/components/parameters/recipientAddressParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
+      responses:
+        "200":
+          description: A page of fungible token transfers.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FungibleTransfersResponse"
+        "400":
+          description: Bad request (invalid cursor, limit, or filter).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/ft/{ft_type}:
+    get:
+      summary: Get fungible token details
+      description: Returns details for the fungible token with the given fully qualified identifier.
+      operationId: getFungibleTokenByID
+      tags:
+        - FungibleTokens
+      parameters:
+        - name: ft_type
+          in: path
+          required: true
+          description: Fully qualified token type identifier (e.g. `A.1654653399040a61.FlowToken`).
+          schema:
+            $ref: "#/components/schemas/ContractIdentifier"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
+      responses:
+        "200":
+          description: The fungible token details.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FungibleToken"
+        "400":
+          description: Bad request (invalid token identifier).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No fungible token found for the given identifier.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/ft/{ft_type}/holders:
+    get:
+      summary: List fungible token holders
+      description: |
+        Returns a paginated list of holders of the given fungible token,
+        ordered descending by balance.
+      operationId: getFungibleTokenHolders
+      tags:
+        - FungibleTokens
+      parameters:
+        - name: ft_type
+          in: path
+          required: true
+          description: Fully qualified token type identifier (e.g. `A.1654653399040a61.FlowToken`).
+          schema:
+            $ref: "#/components/schemas/ContractIdentifier"
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
+      responses:
+        "200":
+          description: A page of token holders.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FungibleTokenHoldersResponse"
+        "400":
+          description: Bad request (invalid token identifier, cursor, or limit).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No fungible token found for the given identifier.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/nft:
+    get:
+      summary: List non-fungible tokens
+      description: |
+        Returns a paginated list of non-fungible token collections known to the network.
+      operationId: getNonFungibleTokens
+      tags:
+        - NonFungibleTokens
+      parameters:
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/labelParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
+      responses:
+        "200":
+          description: A page of non-fungible token collections.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NonFungibleTokensResponse"
+        "400":
+          description: Bad request (invalid cursor, limit, or filter).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/nft/transfers:
+    get:
+      summary: List non-fungible token transfers
+      description: |
+        Returns a paginated list of non-fungible token transfers across the network,
+        ordered descending by block height (newest first).
+      operationId: getNonFungibleTransfers
+      tags:
+        - NonFungibleTokens
+      parameters:
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/tokenTypeParam"
+        - $ref: "#/components/parameters/sourceAddressParam"
+        - $ref: "#/components/parameters/recipientAddressParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
+      responses:
+        "200":
+          description: A page of non-fungible token transfers.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NonFungibleTransfersResponse"
+        "400":
+          description: Bad request (invalid cursor, limit, or filter).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/nft/{nft_type}:
+    get:
+      summary: Get non-fungible token details
+      description: Returns details for the non-fungible token collection with the given fully qualified identifier.
+      operationId: getNonFungibleTokenByID
+      tags:
+        - NonFungibleTokens
+      parameters:
+        - name: nft_type
+          in: path
+          required: true
+          description: Fully qualified NFT collection type identifier (e.g. `A.1654653399040a61.TopShot`).
+          schema:
+            $ref: "#/components/schemas/ContractIdentifier"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
+      responses:
+        "200":
+          description: The non-fungible token collection details.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NonFungibleToken"
+        "400":
+          description: Bad request (invalid token identifier).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No non-fungible token found for the given identifier.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/nft/{nft_type}/item/{nft_id}:
+    get:
+      summary: Get individual NFT
+      description: Returns details for a specific NFT within a collection.
+      operationId: getNonFungibleTokenItem
+      tags:
+        - NonFungibleTokens
+      parameters:
+        - name: nft_type
+          in: path
+          required: true
+          description: Fully qualified NFT collection type identifier (e.g. `A.1654653399040a61.TopShot`).
+          schema:
+            $ref: "#/components/schemas/ContractIdentifier"
+        - name: nft_id
+          in: path
+          required: true
+          description: Unique identifier of the NFT within its collection.
+          schema:
+            type: string
+            format: uint64
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
+      responses:
+        "200":
+          description: The NFT details.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NonFungibleToken"
+        "400":
+          description: Bad request (invalid token identifier or NFT ID).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No NFT found for the given identifier.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "429":
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /experimental/v1/nft/{nft_type}/holders:
+    get:
+      summary: List non-fungible token holders
+      description: |
+        Returns a paginated list of holders of the given non-fungible token collection,
+        ordered descending by count.
+      operationId: getNonFungibleTokenHolders
+      tags:
+        - NonFungibleTokens
+      parameters:
+        - name: nft_type
+          in: path
+          required: true
+          description: Fully qualified NFT collection type identifier (e.g. `A.1654653399040a61.TopShot`).
+          schema:
+            $ref: "#/components/schemas/ContractIdentifier"
+        - $ref: "#/components/parameters/cursorParam"
+        - $ref: "#/components/parameters/limitParam"
+        - $ref: "#/components/parameters/expandParam"
+        - $ref: "#/components/parameters/selectParam"
+      responses:
+        "200":
+          description: A page of token holders.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NonFungibleTokenHoldersResponse"
+        "400":
+          description: Bad request (invalid token identifier, cursor, or limit).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No non-fungible token found for the given identifier.
           content:
             application/json:
               schema:
@@ -621,6 +992,13 @@ components:
         type: string
         format: uint64
       required: false
+    labelParam:
+      description: Filter by token label.
+      name: label
+      in: query
+      schema:
+        type: string
+      required: false
     contractNameParam:
       description: Filter by case sensitive contract name (unqualified, e.g. `EVM`).
       name: contract_name
@@ -1054,6 +1432,206 @@ components:
       enum:
         - sender
         - recipient
+
+    FungibleToken:
+      type: object
+      required:
+        - name
+        - symbol
+        - decimals
+        - total_supply
+        - address
+        - contract
+        - holder_count
+      properties:
+        name:
+          description: Display name of the token.
+          type: string
+        symbol:
+          description: Ticker symbol of the token.
+          type: string
+        description:
+          description: Human-readable description of the token.
+          type: string
+        decimals:
+          description: Number of decimal places for the token.
+          type: integer
+        total_supply:
+          description: Total supply of the token, as a decimal string.
+          type: string
+        coingecko_url:
+          description: URL to the token's CoinGecko page.
+          type: string
+          format: uri
+        coinmarketcap_url:
+          description: URL to the token's CoinMarketCap page.
+          type: string
+          format: uri
+        created_at:
+          description: Timestamp when the token contract was first deployed (RFC 3339).
+          type: string
+          format: date-time
+        created_tx_id:
+          description: Transaction ID of the initial contract deployment.
+          $ref: "#/components/schemas/Identifier"
+        address:
+          description: Account address that owns the token contract.
+          $ref: "#/components/schemas/Address"
+        contract:
+          description: Fully qualified contract identifier.
+          $ref: "#/components/schemas/ContractIdentifier"
+        holder_count:
+          description: Number of accounts holding a non-zero balance.
+          type: integer
+        labels:
+          description: Classification labels for the token.
+          type: array
+          items:
+            type: string
+        _links:
+          $ref: "#/components/schemas/Links"
+    FungibleTokensResponse:
+      type: object
+      required:
+        - tokens
+      properties:
+        tokens:
+          type: array
+          items:
+            $ref: "#/components/schemas/FungibleToken"
+        next_cursor:
+          $ref: "#/components/schemas/Cursor"
+    FungibleTransfersResponse:
+      type: object
+      required:
+        - transfers
+      properties:
+        transfers:
+          type: array
+          items:
+            $ref: "#/components/schemas/FungibleTokenTransfer"
+        next_cursor:
+          $ref: "#/components/schemas/Cursor"
+    FungibleTokenHolder:
+      type: object
+      required:
+        - address
+        - balance
+        - percent
+      properties:
+        address:
+          $ref: "#/components/schemas/Address"
+        balance:
+          description: Token balance held by the account, as a decimal string.
+          type: string
+        percent:
+          description: Percentage of total supply held by the account, as a decimal string.
+          type: string
+    FungibleTokenHoldersResponse:
+      type: object
+      required:
+        - holders
+      properties:
+        holders:
+          type: array
+          items:
+            $ref: "#/components/schemas/FungibleTokenHolder"
+        next_cursor:
+          $ref: "#/components/schemas/Cursor"
+
+    NonFungibleToken:
+      type: object
+      required:
+        - display_name
+        - total_count
+        - address
+        - contract
+      properties:
+        display_name:
+          description: Display name of the NFT collection.
+          type: string
+        description:
+          description: Human-readable description of the NFT collection.
+          type: string
+        total_count:
+          description: Total number of NFTs minted in this collection.
+          type: integer
+        external_url:
+          description: External URL for the NFT collection.
+          type: string
+          format: uri
+        logo_url:
+          description: URL to the collection's logo image.
+          type: string
+          format: uri
+        created_at:
+          description: Timestamp when the NFT contract was first deployed (RFC 3339).
+          type: string
+          format: date-time
+        created_tx_id:
+          description: Transaction ID of the initial contract deployment.
+          $ref: "#/components/schemas/Identifier"
+        address:
+          description: Account address that owns the NFT contract.
+          $ref: "#/components/schemas/Address"
+        contract:
+          description: Fully qualified contract identifier.
+          $ref: "#/components/schemas/ContractIdentifier"
+        labels:
+          description: Classification labels for the NFT collection.
+          type: array
+          items:
+            type: string
+        _links:
+          $ref: "#/components/schemas/Links"
+    NonFungibleTokensResponse:
+      type: object
+      required:
+        - tokens
+      properties:
+        tokens:
+          type: array
+          items:
+            $ref: "#/components/schemas/NonFungibleToken"
+        next_cursor:
+          $ref: "#/components/schemas/Cursor"
+    NonFungibleTransfersResponse:
+      type: object
+      required:
+        - transfers
+      properties:
+        transfers:
+          type: array
+          items:
+            $ref: "#/components/schemas/NonFungibleTokenTransfer"
+        next_cursor:
+          $ref: "#/components/schemas/Cursor"
+    NonFungibleTokenHolder:
+      type: object
+      required:
+        - address
+        - count
+        - percent
+      properties:
+        address:
+          $ref: "#/components/schemas/Address"
+        count:
+          description: Number of NFTs held by the account in this collection.
+          type: integer
+        percent:
+          description: Percentage of total collection held by the account, as a decimal string.
+          type: string
+    NonFungibleTokenHoldersResponse:
+      type: object
+      required:
+        - holders
+      properties:
+        holders:
+          type: array
+          items:
+            $ref: "#/components/schemas/NonFungibleTokenHolder"
+        next_cursor:
+          $ref: "#/components/schemas/Cursor"
 
     ScheduledTransactionsResponse:
       type: object
