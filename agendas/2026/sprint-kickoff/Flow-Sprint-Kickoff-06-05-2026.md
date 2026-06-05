@@ -2,7 +2,7 @@
 
 ### Team Wins 🎉
 
-
+- External security audit complete
 
 ---
 
@@ -25,7 +25,7 @@
 | HCU                | 4/07/2026 |            |           | 0.13      |              |             |        | 0.13    | Zero downtime HCU                                |
 | HCU                | 5/18/2026 |            |           | 0.13      |              |             |        | 0.13    | Zero downtime HCU                                |
 | Total downtime     |           | 0          | 240       | 317.39    | 0            | 0           | 32     | 349.39  |                                                  |
-| YTD (04/24/26) SLA |           | 100.00%    | 99.88%    | 99.84%    | 100.00%      | 100.00%     | 99.98% | 99.83%  |                                                  |
+| YTD (06/05/26) SLA |           | 100.00%    | 99.89%    | 99.86%    | 100.00%      | 100.00%     | 99.98% | 99.84%  |                                                  |
 | SLA for 2026       |           | 100.00%    | 99.95%    | 99.94%    | 100.00%      | 100.00%     | 99.99% | 99.93%  |                                                  |
 
 ### Incidents \[Vishal]
@@ -34,7 +34,7 @@
 
 #### Planned downtime
 
-- TBD
+- HCU next sprint, exact dates are still tbd.
 
 
 ---
@@ -51,7 +51,10 @@
 | Released    |      4      |   35    |     11     |    10    | **61**  |
 | Total       |   **20**    | **55**  |   **21**   |  **21**  | **117** |
 
-
+- no new FLIP added this week.
+  - Execution weight recalibration - internal review
+  - Inflation reduction - internal review
+  - Storage Fees - Data collection complete
 ---
 
 
@@ -69,12 +72,31 @@ Project board: [Flow Core 2026](https://github.com/orgs/onflow/projects/109)
 
 Last sprint:
 
-
+- Cadence and Atree updates to be rolled out as part of the HCU
+- External security audit complete
+- Reduce redundant infra ([#1247](https://github.com/onflow/ff-sre-infrastructure/issues/1247))
+- Storehouse design discussion ([#231](https://github.com/onflow/flow-okrs/issues/231))
+- Investigate the Flow bridge issue ([#235](https://github.com/onflow/flow-okrs/issues/235))
+- Data collection for the Storage Fee FLIP ([#7213](https://github.com/onflow/flow-go-internal/issues/7213))
+- Recalibration of execution weights FLIP ([#211](https://github.com/onflow/flow-okrs/issues/211))
+- Flow EVM Gateway fix to resolve issue reported by DFNS.
+- Flow Python SDK release with Access API updates - https://github.com/onflow/flow-py-sdk/releases/tag/v2.0.3
+- Started the FindLabs infra migration([#215](https://github.com/onflow/flow-okrs/issues/215))
+- Expand the e2e test coverage ([#72](https://github.com/onflow/flow-e2e-tests/issues/72))
+  - Added tests for EVM
+  - Improved the scaffold
+  - New Claude skill `add-e2e-test` that makes it easy to add new tests
 
 Next sprint:
 
-
-
+- HCU to roll out Cadence and Atree update and the fix for stale cluster topic metrics ([#8555](https://github.com/onflow/flow-go/issues/8555)
+- Continue working on the Storehouse design and implementation
+- Continue the FindLabs infra migration
+- Investigate the Flow bridge issue ([#235](https://github.com/onflow/flow-okrs/issues/235))
+- Publish the three FLIPS
+  - Execution weight recalibration
+  - Inflation reduction
+  - Storage Fees
 
 ---
 
