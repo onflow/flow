@@ -103,10 +103,11 @@ Next sprint:
 ## Riptide [Jan]
 
 **Done Last Sprint**
-
-
+- Researched and discussed Reputation platform
+- Pivoted to validation research and delivered validation demo app
 
 **This Sprint**
+- Expanding the validation demo to collaboration demo
 
 
 
