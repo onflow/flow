@@ -2,7 +2,7 @@
 
 ### Team Wins 🎉
 
-
+- [Execution weight recalibration FLIP](https://github.com/onflow/flips/pull/369) published
 
 ---
 
@@ -44,15 +44,15 @@
 |             | Application | Cadence | Governance | Protocol |  Total  |
 |:------------|:-----------:|:-------:|:----------:|:--------:|:-------:|
 | Drafted     |      9      |    9    |     0      |    9     | **27**  |
-| Proposed    |      1      |    2    |     5      |    0     |  **7**  |
+| Proposed    |      1      |    2    |     4      |    1     |  **7**  |
 | Accepted    |      3      |    2    |     3      |    1     |  **9**  |
 | Rejected    |      0      |    1    |     1      |    0     |  **2**  |
 | Implemented |      3      |    6    |     1      |    0     | **10**  |
-| Released    |      4      |   35    |     11     |    10    | **61**  |
-| Total       |   **20**    | **55**  |   **21**   |  **21**  | **117** |
+| Released    |      4      |   35    |     12     |    10    | **63**  |
+| Total       |   **20**    | **55**  |   **21**   |  **22**  | **118** |
 
 - new FLIP added:
-  - Execution weight recalibration
+  - Execution weight recalibration: https://github.com/onflow/flips/pull/369
 
 - FLIPs coming up:
   - Storage Fees - Data collection complete
@@ -74,9 +74,36 @@ Project board: [Flow Core 2026](https://github.com/orgs/onflow/projects/109)
 
 Last sprint:
 
-
+- Execution weight recalibration FLIP published.
+  - Working with dApps and clients to ensure readiness w.r.t the transaction fee increase
+- Storehouse ([#231](https://github.com/onflow/flow-okrs/issues/231))
+  - Implementation ongoing (mutiple [PRs](https://github.com/onflow/flow-go/pulls?q=is%3Apr+is%3Aopen+Storehouse))
+  - Core functionality working on localnet
+  - Testing on shadow node.
+- Investigate the Flow bridge issue ([#235](https://github.com/onflow/flow-okrs/issues/235))
+  - [PR](https://github.com/onflow/flow-evm-bridge/pull/214) has been merged
+- Adding a nonce aware transaction pool to the EVM Gateway [#971](https://github.com/onflow/flow-evm-gateway/pull/971)
+  - Mature fix to resolve the original issue reported by DFNS.
+  - Working on the implementation.
+- Started the FindLabs infra migration([#215](https://github.com/onflow/flow-okrs/issues/215))
+  - Github repos, kubernetes configuration, secrets have been ported/recreated.
+  - Testnet migration in progress
+- Investigated token tracking alert and implemented fix.
+- Update to Go 1.26
+  - Update of flow-go: https://github.com/onflow/flow-go/pull/8582
+  - Crypto: https://github.com/onflow/crypto/pull/42
+- Fable run against flow-go and Cadence
+- Published and [Atree tutorial](https://github.com/onflow/atree-internal/tree/leo/chapters/chapters/01-one-slab)
 
 Next sprint:
+
+- HCU to roll out updates for Cadence, Atree, fix for stale cluster topic metrics ([#8555](https://github.com/onflow/flow-go/issues/8555), token tracking.
+- Roll out the execution weight recalibration FLIP
+- Storehouse - continue implementation
+- Expand the e2e test coverage ([#72](https://github.com/onflow/flow-e2e-tests/issues/72))
+  - Add tests for Rosetta
+- Continue implementation of the nonce aware transaction pool #971.
+- Continue the FindLabs infra migration
 
 
 
