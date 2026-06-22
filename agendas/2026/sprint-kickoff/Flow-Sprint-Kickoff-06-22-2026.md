@@ -3,6 +3,7 @@
 ### Team Wins 🎉
 
 - [Execution weight recalibration FLIP](https://github.com/onflow/flips/pull/369) published
+- Payload-less Trie (Storehouse) running on shadow node, initial data on memory usage and TPS look very promising!
 
 ---
 
@@ -113,9 +114,11 @@ Next sprint:
 
 **Done Last Sprint**
 
-
+- Completed Senate demo - multi-party spec-driven agentic loop
 
 **This Sprint**
+
+- expanding on the Senate demo - moving to standalone service
 
 
 
