@@ -25,17 +25,21 @@
 | HCU                | 4/07/2026 |            |           | 0.13      |              |             |        | 0.13    | Zero downtime HCU                                |
 | HCU                | 5/18/2026 |            |           | 0.13      |              |             |        | 0.13    | Zero downtime HCU                                |
 | Total downtime     |           | 0          | 240       | 317.39    | 0            | 0           | 32     | 349.39  |                                                  |
-| YTD (06/05/26) SLA |           | 100.00%    | 99.89%    | 99.86%    | 100.00%      | 100.00%     | 99.98% | 99.84%  |                                                  |
+| YTD (06/01/26) SLA |           | 100.00%    | 99.91%    | 99.88%    | 100.00%      | 100.00%     | 99.99% | 99.87%  |                                                  |
 | SLA for 2026       |           | 100.00%    | 99.95%    | 99.94%    | 100.00%      | 100.00%     | 99.99% | 99.93%  |                                                  |
 
 ### Incidents \[Vishal]
 
-- No incidents
+- Testnet incident - Sev-3 Devnet54 EN System Chunk Critical Error
+  - June 29th, 12:04 PM Pacific to 1:48 PM
+  - Detail doc [here](https://app.notion.com/p/flowfoundation/Testnet-system-chunk-transaction-failing-depleted-FlowToken-Minter-06-29-2026-8971aee12324839fab9f0101a6b4bc20)
+  - Root cause: The system chunk transaction on every testnet block was failing with `Error Code 1101` during the staking-auction phase of epoch 3023 because the `FlowToken.Minter` resource borrowed by `FlowIDTableStaking` to pay epoch-3022 rewards had a remaining `allowedAmount` of **104.11028590 FLOW**, while the contract was trying to mint **200.98379286 FLOW**. The Minter's allowance is a running budget that decrements on each mint, and it had been gradually drained over years of testnet operation.
+  - Fix: The fix was a transaction that creates a fresh Minter via `FlowToken.Administrator.createNewMinter` and replaces the depleted one at `/storage/flowTokenMinter` on `0x9eca2b38b18b5dfe`. After the fix sealed, the next block's system chunk minted ~180 FLOW for staking rewards, the bug was cleared, and downstream services (EVM Gateway) began recovering through the affected block window.
+  - No impact on mainnet and mainnet has enough allowance to for the minter to not experience this issue.
 
 #### Planned downtime
 
 - No HCU for this sprint
-
 
 ---
 
@@ -51,7 +55,7 @@
 | Released    |      4      |   35    |     12     |    10    | **63**  |
 | Total       |   **20**    | **55**  |   **21**   |  **22**  | **118** |
 
-- new FLIP added:
+- Last new FLIP added:
   - Execution weight recalibration: https://github.com/onflow/flips/pull/369
 
 - FLIPs coming up:
@@ -79,7 +83,8 @@ Last sprint:
   - Working with dApps and clients to ensure readiness w.r.t the transaction fee increase
   - Replied to comments received on the FLIP
 - Storehouse ([#231](https://github.com/onflow/flow-okrs/issues/231))
-  - Testing on shadow node.
+  - Testing on shadow node (28 days without any issues)
+  - Create tools to generate and verfiy checkpoints for payloadless Trie.
 - Adding a nonce aware transaction pool to the EVM Gateway [#971](https://github.com/onflow/flow-evm-gateway/pull/971)
   - Mature fix to resolve the original issue reported by DFNS.
   - Working on the implementation.
@@ -89,7 +94,10 @@ Last sprint:
 
 Next sprint:
 
-- Storehouse - continue testing
+- Storehouse
+  - continue testing
+  - implement optimizations
+  - Outstanding PR reviews
 - Expand the e2e test coverage ([#72](https://github.com/onflow/flow-e2e-tests/issues/72))
   - Add tests for Rosetta
 - Continue implementation of the nonce aware transaction pool #971.
