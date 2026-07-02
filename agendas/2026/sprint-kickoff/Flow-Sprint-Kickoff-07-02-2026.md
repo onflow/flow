@@ -100,7 +100,7 @@ Next sprint:
   - Outstanding PR reviews
 - Expand the e2e test coverage ([#72](https://github.com/onflow/flow-e2e-tests/issues/72))
   - Add tests for Rosetta
-- Continue implementation of the nonce aware transaction pool #971.
+- Roll out the implementation of the nonce aware transaction pool #971.
 - Continue the FindLabs infra migration
   - Switch over data sources for Dune and BigQuery
   - Decided on the date for the switch over to our infra.
