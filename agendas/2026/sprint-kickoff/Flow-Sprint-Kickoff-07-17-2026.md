@@ -23,13 +23,21 @@
 | HCU                | 2/24/2026 |            |           | 0.13      |              |             |        | 0.13    | Zero downtime HCU                                |
 | HCU                | 4/07/2026 |            |           | 0.13      |              |             |        | 0.13    | Zero downtime HCU                                |
 | HCU                | 5/18/2026 |            |           | 0.13      |              |             |        | 0.13    | Zero downtime HCU                                |
-| Total downtime     |           | 0          | 240       | 317.39    | 0            | 0           | 32     | 349.39  |                                                  |
-| YTD (06/01/26) SLA |           | 100.00%    | 99.91%    | 99.88%    | 100.00%      | 100.00%     | 99.99% | 99.87%  |                                                  |
-| SLA for 2026       |           | 100.00%    | 99.95%    | 99.94%    | 100.00%      | 100.00%     | 99.99% | 99.93%  |                                                  |
+| HCU                | 6/03/2026 |            |           | 0.13      |              |             |        | 0.13    | Zero downtime HCU                                |
+| Total downtime     |           | 0          | 240       | 317.52    | 0            | 0           | 32     | 349.52  |                                                  |
+| YTD (07/16/26) SLA |           | 100.00%    | 99.92%    | 99.89%    | 100.00%      | 100.00%     | 99.99% | 99.88%  |                                                  |
+| SLA for 2026       |           | 100.00%    | 99.94%    | 99.94%    | 100.00%      | 100.00%     | 99.99% | 99.93%  |                                                  |
 
 ### Incidents \[Vishal]
 
-- Mainnet EVM GW incident
+- Mainnet EVM GW incident:
+  - 07/15/2026 10PM Pacific to 07/16/2026 11:15AM
+  - FF EVM GW stopped indexing data
+  - Root cause - A recent change for the Glamsterdam upgrade pinned EVM GW to a flow-go branch that persisted a different codeHash for codeless accounts than the value that gets checksummed.
+  - Fix -
+    - Revert the flow-go change and pin EVM to the latest flow-go tag
+    - Repair diverged stores by re-indexing EVM GW from a block height before the change was deployed (both testnet and mainnet)
+  - More [here](https://app.notion.com/p/flowfoundation/Mainnet-EVM-GW-stopped-indexing-07-15-2026-e361aee12324821183c001f21e548a63)
 
 #### Planned downtime
 
@@ -49,11 +57,8 @@
 | Released    |      4      |   35    |     12     |    10    | **63**  |
 | Total       |   **20**    | **55**  |   **21**   |  **22**  | **118** |
 
-- Last new FLIP added:
-  - Execution weight recalibration: https://github.com/onflow/flips/pull/369
-
 - FLIPs coming up:
-  - Storage Fees - Data collection complete
+  - Storage Fees
 
 ---
 
@@ -74,29 +79,44 @@ Last sprint:
 
 - Execution weight recalibration FLIP
   - Working with dApps and clients to ensure readiness w.r.t the transaction fee increase
-  - Replied to comments received on the FLIP
+  - FLIP marked as `approved`
 - Storehouse ([#231](https://github.com/onflow/flow-okrs/issues/231))
-  - Testing on shadow node (28 days without any issues)
-  - Create tools to generate and verfiy checkpoints for payloadless Trie.
+  - PR reviews
+  - Testing additional optimizations
+  - Deployed to TN Execution node
+    - Memory usage dropped from 177GB to 57GB
 - Adding a nonce aware transaction pool to the EVM Gateway [#971](https://github.com/onflow/flow-evm-gateway/pull/971)
   - Tested the fix on testnet and mainnet.
 - FindLabs infra migration([#215](https://github.com/onflow/flow-okrs/issues/215))
   - Validating that our infra is at parity with FindLabs
   - Setting up Dune and BigQuery pipelines
+- Fixing a metering bug
+    - Cleaning up metering code to make it more understandable and thus secure
+- Improving the token inspector
+- Cadence:
+  - Addressing Hackenproof security reports
+  - Additional fixes to tighten gaps related to past fixes
+  - Resumed the work on testing the compiler/vm
+    - Updated the compiler feature branch in flow-go to the latest on master
+    - Re-executing blocks to compare results
 
 Next sprint:
 
+- Execution weight recalibration FLIP
+  - Working with dApps and clients to ensure readiness w.r.t the transaction fee increase
 - Storehouse
-  - continue testing
-  - implement optimizations
-  - Outstanding PR reviews
-- Expand the e2e test coverage ([#72](https://github.com/onflow/flow-e2e-tests/issues/72))
-  - Add tests for Rosetta
+  - Continue testing
+  - Continue PR reviews
+  - Deploy to additional testnet Execution nodes (EN) and possibly also deploy to a mainnet EN.
 - Roll out the implementation of the nonce aware transaction pool #971 to node operator EVM GW
 - Complete the FindLabs infra migration
   - Switch over data sources for Dune and BigQuery
-  - Cut over
-
+  - Final cut over
+- Expand the e2e test coverage ([#72](https://github.com/onflow/flow-e2e-tests/issues/72))
+  - Add tests for Rosetta
+- Cadence:
+  - Run backward compatibility suite for latest Cadence fixes
+  - Compiler/VM - Continue re-executing blocks and compare results.
 
 
 ---
