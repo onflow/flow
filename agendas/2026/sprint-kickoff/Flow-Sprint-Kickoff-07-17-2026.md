@@ -2,6 +2,8 @@
 
 ### Team Wins 🎉
 
+- Storehouse successfully deployed to a testnet Execution node
+  - Memory usage dropped from 177GB to 57GB
 
 ---
 
