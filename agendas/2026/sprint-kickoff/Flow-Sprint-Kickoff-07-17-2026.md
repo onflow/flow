@@ -32,7 +32,7 @@
 
 ### Incidents \[Vishal]
 
-- Mainnet EVM GW incident:
+- Mainnet EVM GW incident (Sev 2):
   - 07/15/2026 10PM Pacific to 07/16/2026 11:15AM
   - FF EVM GW stopped indexing data
   - Root cause - A recent change for the Glamsterdam upgrade pinned EVM GW to a flow-go branch that persisted a different codeHash for codeless accounts than the value that gets checksummed.
