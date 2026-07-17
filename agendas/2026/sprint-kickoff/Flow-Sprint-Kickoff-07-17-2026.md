@@ -125,11 +125,11 @@ Next sprint:
 
 **Done Last Sprint**
 
-- Completed testing of spec-driven development process and it's feasibility for further product development.
+- Completed testing of first iteration of spec-eval and added presentation [here](https://onflow.github.io/OpenWorkFlow/spec-eval-presentation-20260710/index.html).
 
 **This Sprint**
 
-- expanding on the Senate demo - developing product wireframes and prototype.
+- Started prototyping the two-sided marketplace vision and building the product [spec](https://github.com/onflow/OpenWorkFlow/blob/main/prototypes/riptide/specs/001-riptide-v1/spec.md).
 
 
 
