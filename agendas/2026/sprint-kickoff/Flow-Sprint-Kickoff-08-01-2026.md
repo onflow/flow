@@ -126,12 +126,11 @@ Next sprint:
 
 **Done Last Sprint**
 
-- Completed testing of first iteration of spec-eval and added presentation [here](https://onflow.github.io/OpenWorkFlow/spec-eval-presentation-20260710/index.html).
+- RipTide was deployed to [staging](https://riptide-staging.vercel.app/).
+- Built automated spec -> deploy pipeline to iterate on RipTide's product shape.
+- Current version is a two-phase marketplace (spec, build) tokenizing founders projects.
 
 **This Sprint**
 
-- Started prototyping the two-sided marketplace vision and building the product [spec](https://github.com/onflow/OpenWorkFlow/blob/main/prototypes/riptide/specs/001-riptide-v1/spec.md).
-
-
-
-
+- Prototyping tokenized roadmaps
+- Exploring agent contracts, terms, and negotiation
