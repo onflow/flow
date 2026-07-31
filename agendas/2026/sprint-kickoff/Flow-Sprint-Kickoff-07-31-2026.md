@@ -83,6 +83,7 @@ Project board: [Flow Core 2026](https://github.com/orgs/onflow/projects/109)
 [OKRs](https://docs.google.com/document/d/1GILdIH6jO6xgUklR-5CyhaQs2GvB_tUGF5XElOjrGTA)
 
 Last sprint:
+
 - Execution weight recalibration FLIP-370
   - Rollout: Testnet Jul 22, mainnet Jul 27 ([flips#370](https://github.com/onflow/flips/issues/369), [service-account#462](https://github.com/onflow/service-account/issues/462), [flow-go#8622](https://github.com/onflow/flow-go/issues/8622))
   - Triaged the one breakage (Peak Money) and handed off a fix report.
@@ -113,6 +114,12 @@ Last sprint:
 - Kimi K3 audit of flow-go and Cadence
 - Cadence:
   - Ran backward compatibility suite for latest Cadence fixes
+    - Uncovered and issue and have a fix for FlowFees.
+  - Ran the compiler/vm comparison tool
+    - Identified some differences
+    - Fixed some of them, started working on the remaining
+    - Did some improvements to the tool along the way.
+  - Addressed issues identified by the Kimi K3 audit.
 - Infra-cost analysis
 - CI/CD:
   - ~8 flaky-test/CI fixes merged or approved.
@@ -136,7 +143,8 @@ Next sprint:
   - Address [flow-e2e-tests#94](https://github.com/onflow/flow-e2e-tests/pull/94).
 - Address the Kimi K3 audit findings
 - Cadence:
-  - Run backward compatibility suite for latest Cadence fixes
+  - Re-Run backward compatibility suite for latest Cadence fixes once more blocks are executed on MN with the updated FlowFees.
+    - Fix the remaining mismatches
   - Compiler/VM - Continue re-executing blocks and compare results.
 - Crypto library update from Go 1.25 to 1.26
 - Implement a few infra-cost optimizations
