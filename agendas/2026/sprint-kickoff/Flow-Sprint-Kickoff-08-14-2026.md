@@ -2,7 +2,7 @@
 
 ### Team Wins 🎉
 
-- Rosetta test now part of the e2e test suite
+- Rosetta tests now part of the e2e test suite
 
 ---
 
@@ -74,7 +74,7 @@ Project board: [Flow Core 2026](https://github.com/orgs/onflow/projects/109)
 Last sprint:
 
 - Storehouse ([#231](https://github.com/onflow/flow-okrs/issues/231))
- - paused
+  - paused
 - FindLabs infra migration([#215](https://github.com/onflow/flow-okrs/issues/215))
   - Documented process to create new API Keys.
   - Grafana alerting
