@@ -154,8 +154,9 @@ Next sprint:
 
 **Done Last Sprint**
 
-
+- Working version of prototype deployed to staging and testing started with OctopusRodeo team.
 
 **This Sprint**
 
-n
+- Improve the process of iterating on the spec build.
+- Discuss the tokenomics of stake allocation for agents that successfully deliver spec build and start implementing the contracts once we agree on the approach.
