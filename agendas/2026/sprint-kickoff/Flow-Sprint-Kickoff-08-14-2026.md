@@ -82,10 +82,10 @@ Last sprint:
   - Testing
     - e2e testing on Migration testnet
     - Backward compatibility testing
-- EVM GW [Issue-983](https://github.com/onflow/flow-evm-gateway/issues/983)
+- EVM GW DFNS issue [Issue-983](https://github.com/onflow/flow-evm-gateway/issues/983)
   - PR review
 - Rosetta
-  - Rosetta fee tracking mechanism was updated with the multi-receiver fee changes on testnet [rosetta#100](https://github.com/onflow/rosetta/pull/100).
+  - Fee tracking mechanism was updated with the multi-receiver fee changes on testnet [rosetta#100](https://github.com/onflow/rosetta/pull/100).
     - Additional improvement [rosetta#101](https://github.com/onflow/rosetta/pull/101)
   - Rosetta test now part of the Flow e2e test suite [flow-e2e-tests#95](https://github.com/onflow/flow-e2e-tests/issues/95).
 - Improvement to FVM Metering
@@ -120,7 +120,7 @@ Next sprint:
 - Storehouse
   - Continue PR reviews
   - Deploy to additional testnet Execution nodes (EN3)
-- Roll out the solution for EVM GW [Issue-983](https://github.com/onflow/flow-evm-gateway/issues/983)
+- Roll out the mempool solution for the EVM GW DFNS [Issue-983](https://github.com/onflow/flow-evm-gateway/issues/983)
 - Address additional Hackenproof security reports
 - Rosetta: Review and merge additional improvement [rosetta#101](https://github.com/onflow/rosetta/pull/101)
 - Work through the Kimi K3 audit findings
