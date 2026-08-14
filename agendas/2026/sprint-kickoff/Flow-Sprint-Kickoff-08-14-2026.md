@@ -2,7 +2,7 @@
 
 ### Team Wins 🎉
 
-
+- Rosetta test now part of the e2e test suite
 
 ---
 
