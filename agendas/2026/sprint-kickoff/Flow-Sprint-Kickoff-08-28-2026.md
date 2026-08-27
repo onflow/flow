@@ -73,22 +73,19 @@ Project board: [Flow Core 2026](https://github.com/orgs/onflow/projects/109)
 Last sprint:
 
 - Storehouse ([#231](https://github.com/onflow/flow-okrs/issues/231))
-  - Resume testing on testnet
-  - Estimate cost savings
+  - Resume testing on testnet (2 out of the 3 ENs are running storehouse)
+  - Investigate process to swtich from an EN running storehouse back to a non-storehouse EN as a recovery mechanism.
+  - Estimated cost savings
 - HCU on testnet and mainnet
+  - https://github.com/onflow/flow-go/releases/tag/v0.51.0
 - EVM GW DFNS issue [Issue-983](https://github.com/onflow/flow-evm-gateway/issues/983)
   - PR reviews
   - Testing on testnet and mainnet
   - Rolling out to external EVM GW node operators
   - [Release notes](https://github.com/onflow/flow-evm-gateway/releases/tag/v1.5.7)
-- Security:
-  - FLOWPROT-340 (scheduler reentrancy) — fix live on mainnet 2026-08-04 — [service-account#464](https://github.com/onflow/service-account/issues/464), [service-account#459](https://github.com/onflow/service-account/issues/459)
-  - FLOWPROT-327 (DeployCOA bricking) — fix merged into v0.51-rc for the next HCU — [flow-go-internal#7235](https://github.com/onflow/flow-go-internal/issues/7235)
-  - FLOWPROT-362 (fee underpayment) — partially done: native Account.balance + strict fee deduction merged into v0.51-rc; continues — [flow-go-internal#7240](https://github.com/onflow/flow-go-internal/issues/7240), [flow-core-contracts-internal#9](https://github.com/onflow/flow-core-contracts-internal/issues/9)
-
 - Cadence:
-
-
+  - Addressing security reports
+  - Fixed the import confusion bug in the compiler/vm, and did some refactoring
 - Infra-cost optimization
   - Stopped hyperlane validator
 - Access node shutdown issue ([flow-go#8666](https://github.com/onflow/flow-go/issues/8666))
@@ -106,6 +103,8 @@ Next sprint:
 - Cadence:
   - Continuing on fixing the gaps found on compiler/vm and doing some refactoring
   - Re-run the execution-results comparison tool for compiler/vm.
+- Security
+  - Investigate reports from hackenproof not related to Cadence.
 - Implement additional infra-cost optimizations
 - Storage Fee FLIP
   - Internal doc review
