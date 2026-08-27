@@ -90,6 +90,10 @@ Last sprint:
   - Stopped hyperlane validator
 - Access node shutdown issue ([flow-go#8666](https://github.com/onflow/flow-go/issues/8666))
   - [Solution](https://github.com/onflow/flow-go/pull/8662) merged into master
+- EVM Bridge issue ([flw-evm-bridge#216](https://github.com/onflow/flow-evm-bridge/pull/216))
+  - PM reported an urgent issue where users were unable to enter strategies due to an "insufficient computation" error.
+  - The root cause was identified as a gradual increase in computation units (CU) per transaction causing first-time strategy entries to exceed the transaction limit.
+  - A fix involving deploying updated contracts to testnet and then mainnet was implemented, resolving the issue for users, and further investigation into the CU growth is ongoing.
 
 
 Next sprint:
