@@ -85,7 +85,7 @@ Last sprint:
   - [Release notes](https://github.com/onflow/flow-evm-gateway/releases/tag/v1.5.7)
 - Cadence:
   - Addressing security reports
-  - Fixed the import confusion bug in the compiler/vm, and did some refactoring
+  - Fixed the import confusion bug in the compiler/vm, and did some refactoring ([cadence#3804](https://github.com/onflow/cadence/issues/3804))
 - Infra-cost optimization
   - Stopped hyperlane validator
 - Access node shutdown issue ([flow-go#8666](https://github.com/onflow/flow-go/issues/8666))
