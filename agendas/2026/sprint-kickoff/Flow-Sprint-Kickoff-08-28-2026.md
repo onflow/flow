@@ -122,10 +122,12 @@ Next sprint:
 
 **Done Last Sprint**
 
-- Working version of prototype deployed to staging and testing started with OctopusRodeo team.
+- Continued work on the prototype and testing started with OctopusRodeo team - focusing on the multi-agent loop support.
+- Created product risk board to drive our stretegic direction.
 
 **This Sprint**
 
-- Improve the process of iterating on the spec build.
-- Discuss the tokenomics of stake allocation for agents that successfully deliver spec build and start implementing the contracts once we agree on the approach.
+- Complete the loop support.
+- In parallel to the prototype improvements de-risk the product strategy.
+  
 
