@@ -2,7 +2,7 @@
 
 ### Team Wins 🎉
 
-
+- AnkrFlow Security incident has been addressed (see [postmortem](https://x.com/AnkrLabsTeam/status/2094909584712638632) posted by Ankr)
 
 ---
 
@@ -27,7 +27,7 @@
 | HCU                | 7/02/2026 |            |           | 0.13      |              |             |        | 0.13    | Zero downtime HCU                                |
 | HCU                | 8/18/2026 |            |           | 0.13      |              |             |        | 0.13    | Zero downtime HCU                                |
 | Total downtime     |           | 0          | 240       | 317.65    | 0            | 0           | 32     | 349.65  |                                                  |
-| YTD (08/14/26) SLA |           | 100.00%    | 99.93%    | 99.91%    | 100.00%      | 100.00%     | 99.99% | 99.90%  |                                                  |
+| YTD (09/10/26) SLA |           | 100.00%    | 99.93%    | 99.91%    | 100.00%      | 100.00%     | 99.99% | 99.90%  |                                                  |
 | SLA for 2026       |           | 100.00%    | 99.95%    | 99.94%    | 100.00%      | 100.00%     | 99.99% | 99.93%  |                                                  |
 
 ### Incidents \[Vishal]
@@ -73,16 +73,11 @@ Project board: [Flow Core 2026](https://github.com/orgs/onflow/projects/109)
 Last sprint:
 
 - Storehouse ([#231](https://github.com/onflow/flow-okrs/issues/231))
-  - Resume testing on testnet (2 out of the 3 ENs are running storehouse)
-  - Investigate process to swtich from an EN running storehouse back to a non-storehouse EN as a recovery mechanism.
-  - Estimated cost savings
-- HCU on testnet and mainnet
-  - https://github.com/onflow/flow-go/releases/tag/v0.51.0
-- EVM GW DFNS issue [Issue-983](https://github.com/onflow/flow-evm-gateway/issues/983)
+  - Continue testing on testnet (2 out of the 3 ENs are running storehouse)
   - PR reviews
-  - Testing on testnet and mainnet
-  - Rolling out to external EVM GW node operators
-  - [Release notes](https://github.com/onflow/flow-evm-gateway/releases/tag/v1.5.7)
+- EVM GW DFNS issue [Issue-983](https://github.com/onflow/flow-evm-gateway/issues/983)
+  - DFNS traffic moved over to the public node
+  - Addressed a follow-up issue reported by Alchemy ([flow-evm-gw#993](#https://github.com/onflow/flow-evm-gateway/pull/993))
 - Cadence:
   - Addressing security reports
   - Fixed the import confusion bug in the compiler/vm, and did some refactoring ([cadence#3804](https://github.com/onflow/cadence/issues/3804))
