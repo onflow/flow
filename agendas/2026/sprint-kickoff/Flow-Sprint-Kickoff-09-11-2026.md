@@ -77,19 +77,15 @@ Last sprint:
   - PR reviews
 - EVM GW DFNS issue [Issue-983](https://github.com/onflow/flow-evm-gateway/issues/983)
   - DFNS traffic moved over to the public node
-  - Addressed a follow-up issue reported by Alchemy ([flow-evm-gw#993](#https://github.com/onflow/flow-evm-gateway/pull/993))
-- Cadence:
-  - Addressing security reports
-  - Fixed the import confusion bug in the compiler/vm, and did some refactoring ([cadence#3804](https://github.com/onflow/cadence/issues/3804))
+  - Addressed a follow-up issue reported by Alchemy ([flow-evm-gw#993](#https://github.com/onflow/flow-evm-gateway/pull/993)) through release [v1.5.8](https://github.com/onflow/flow-evm-gateway/releases/tag/v1.5.8)
+- Flow-EVM-Bridge:
+  - Address multiple issues reported through Hackenproof and found through an internal audit.
 - Infra-cost optimization
-  - Stopped hyperlane validator
-- Access node shutdown issue ([flow-go#8666](https://github.com/onflow/flow-go/issues/8666))
-  - [Solution](https://github.com/onflow/flow-go/pull/8662) merged into master
-- EVM Bridge issue ([flw-evm-bridge#216](https://github.com/onflow/flow-evm-bridge/pull/216))
-  - PM reported an urgent issue where users were unable to enter strategies due to an "insufficient computation" error.
-  - The root cause was identified as a gradual increase in computation units (CU) per transaction causing first-time strategy entries to exceed the transaction limit.
-  - A fix involving deploying updated contracts to testnet and then mainnet was implemented, resolving the issue for users, and further investigation into the CU growth is ongoing.
-
+  - Analysis of cost-optimization.
+- Storage Fee FLIP
+  - Data analysis to decide on the rollout plan
+- Kimi K3 audit
+  - Reviewing PRs
 
 Next sprint:
 
@@ -97,19 +93,17 @@ Next sprint:
   - Continue PR reviews
   - Deploy to additional testnet Execution nodes (EN3)
 - Address additional Hackenproof security reports
-- Rosetta: Review and merge additional improvement [rosetta#101](https://github.com/onflow/rosetta/pull/101)
 - Triage the remaining Kimi K3 audit findings
 - Cadence:
-  - Continuing on fixing the gaps found on compiler/vm and doing some refactoring
+  - Run the backward compatibility test suite once more, for the last Cadence security fix(es).
+  - Once above is completed, do another Cadence release
   - Re-run the execution-results comparison tool for compiler/vm.
 - Security
   - Investigate reports from hackenproof not related to Cadence.
 - Implement additional infra-cost optimizations
 - Storage Fee FLIP
-  - Internal doc review
-  - Publish the FLIP
-- Dynamic inclusion fees
-  - Automate data gathering for inclusion fees
+  - Second round of internal review.
+  - FLIP draft
 
 ---
 
