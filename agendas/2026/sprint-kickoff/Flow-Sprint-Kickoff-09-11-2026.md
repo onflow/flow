@@ -79,7 +79,7 @@ Last sprint:
   - DFNS traffic moved over to the public node
   - Addressed a follow-up issue reported by Alchemy ([flow-evm-gw#993](#https://github.com/onflow/flow-evm-gateway/pull/993)) through release [v1.5.8](https://github.com/onflow/flow-evm-gateway/releases/tag/v1.5.8)
 - Flow-EVM-Bridge:
-  - Address multiple issues reported through Hackenproof and found through an internal audit.
+  - Address multiple [issues](https://github.com/onflow/security/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22component%3A%20evm%22) reported through Hackenproof and found through an [internal audit](https://github.com/onflow/flow-evm-bridge-internal/issues/1.
 - Infra-cost optimization
   - Analysis of cost-optimization.
 - Storage Fee FLIP
