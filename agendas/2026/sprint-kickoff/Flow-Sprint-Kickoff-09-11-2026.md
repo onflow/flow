@@ -108,10 +108,14 @@ Next sprint:
 
 **Done Last Sprint**
 
-
+- Pushed Riptide to build internal project to evaluate multiple risks - build quality, cost, throughput. 
+- Started discussion and deep-dive on enabling expert agents via the platform.
+- Started engaging new builder to test the platformprototype.
 
 **This Sprint**
 
-
+- Deep-dive on internal project build quality and improve the eval spec.
+- Continue work on the expert agent use-case.
+- Maybe onboard more varied agents (providers / models)
   
 
